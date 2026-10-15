@@ -1,0 +1,4 @@
+Source archive: CMakeLists.zip
+SHA-256: 1cbada4c873c49f229e5624dce15687d539ecc31f9ceeaf2a6f4277c4f95d153
+Snapshot date range: files archived through 2026-04-21
+Scope: scientific source code, evaluation models, article configurations and ablation configurations.
