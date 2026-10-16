@@ -4,8 +4,8 @@
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1 and 2 are integrated with qualified node and UV targets.
-The integrated CTest passed 11/11 with zero skips and 74 Python controls,
+Stage 3 slices 1-3 are integrated with qualified node and UV targets.
+The integrated CTest passes 12/12 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
@@ -133,7 +133,7 @@ scope limits: [node lifetime evidence](evidence/STAGE3_NODE_LIFETIME.md).
 
 Slice 2 adds `tests/uv_memory` and required CTest application.uv_lifetime,
 compiling 14 actual production units. `tools/qualify_uv_lifetime.py` requires
-26 ASan/Debug CRT cases, including deliberate invalid access/leak controls,
+the original 26 ASan/Debug CRT cases, including invalid access/leak controls,
 pending-template cleanup, ordered ownership transfer, midpoint aliases and
 allocation-denied teardown/transfer preparation. The same runner fails the
 pinned original. The bounded results do not qualify arbitrary allocation failure,
@@ -146,7 +146,7 @@ observed allocation ordinal in Edge construction, both Face constructors,
 default front construction and Edge/Face setVertices. Failed replacement must
 preserve endpoints, cache identity/geometry and scalar state. Endpoint-alias
 replacement and normal geometry are separate ASan/CRT controls. The pinned
-original fails; candidate and exact-revision closure results are recorded in
+original fails; candidate, exact-head and implementation-main results are recorded in
 [primitive allocation evidence](evidence/STAGE3_UV_ALLOCATION.md). This bounded
 scope leaves template/Boundary registration, other setters and full-application
 allocation failure qualification open.
@@ -161,13 +161,13 @@ API coverage are available; a config file is not generated documentation.
 
 ## Primary references reviewed 2026-10-15
 
-- https://clang.llvm.org/docs/ClangFormatStyleOptions.html — repository style file.
-- https://clang.llvm.org/extra/clang-tidy/ — compilation database and diagnostics.
-- https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines — RAII, ownership,
+- https://clang.llvm.org/docs/ClangFormatStyleOptions.html â€” repository style file.
+- https://clang.llvm.org/extra/clang-tidy/ â€” compilation database and diagnostics.
+- https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines â€” RAII, ownership,
   resource safety, interfaces and separation of responsibilities.
-- https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html — shared presets.
-- https://cmake.org/cmake/help/latest/manual/ctest.1.html — test discovery/execution.
-- https://clang.llvm.org/docs/AddressSanitizer.html — instrumentation and limits.
-- https://www.doxygen.nl/manual/config.html — API extraction and warning controls.
+- https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html â€” shared presets.
+- https://cmake.org/cmake/help/latest/manual/ctest.1.html â€” test discovery/execution.
+- https://clang.llvm.org/docs/AddressSanitizer.html â€” instrumentation and limits.
+- https://www.doxygen.nl/manual/config.html â€” API extraction and warning controls.
 
 These are engineering references, not a proof that legacy code follows them.

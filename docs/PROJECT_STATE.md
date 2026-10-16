@@ -134,24 +134,30 @@ exceptions, generic adjacency and cache mutation, full process leaks and
 parallel paths still need qualification.
 Stage 4 may unblock actual instrumentation barriers. Keep one active item.
 
-## Stage 3 slice 3 active (#14): primitive allocation commit
+## Stage 3 slice 3 qualified (#14, PR #15)
 
-Entry main `0146fbd4925721a53a9b52717b82c5af8c4e0115` and all 715 blobs were
-audited. Entry CTest 11/11, 74 Python controls, UV 26/26, node 7/7, selected lint
-and exact Eistute/Book regression pass. No concurrent work or hosted checks.
+Head `fce74915755d1535b89dbd280cbc1ba3813f9b91` integrated as main
+`68ef4db735d3c478215815128309c6bdd7a8e90c`, preserving tree
+`2bb4359687579a9069e162b228228dea2b1197be` (737 blobs). Exact-head and
+implementation-main gates pass: CTest 12/12, zero skips, 74 Python controls,
+UV 35/35, node 7/7, five-unit selected lint, changed-range formatting, inventory
+and strict repeated Eistute/Book regression. Last accepted meshes remain
+1,168/4,256 triangles with 189 matching CSV fields and positive incidence
+coverage. All scientific policies and independent numerical verifiers remain.
 
-The new unchanged 35-case runner fails the pinned original: Edge/front
-construction retains resources, failed Edge/Face setVertices changes live state,
-and a Face midpoint alias is freed then read during replacement. Both Face
-constructors pass their independent failure controls. The candidate prepares
-caches and Boundary ownership before commit. Complete candidate gates pass:
-CTest 12/12, 74 Python controls, UV 35/35, node 7/7, selected lint/formatting and
-strict article regression. Exact-head and post-merge gates remain before closure.
-See `docs/evidence/STAGE3_UV_ALLOCATION.md` and ADR-0004.
+The original runner stays failed with Edge/front construction retention,
+partially changed failed cache replacement and a Face endpoint-alias UAF.
+Both Face constructors are passing controls. Local owners now prepare caches
+and Boundary adoption before commit. All 53 measured primitive allocation
+failures unwind without retention and preserve the required live/caller state.
+This documentation-only closure preserves every qualified production/tool/test/
+build/input/vendor identity. See `docs/evidence/STAGE3_UV_ALLOCATION_CLOSURE.md`
+and ADR-0004; the wider stage 3 remains open with three qualified slices.
 
-This is a prerequisite boundary. Template creation/arrays, Boundary registration,
-additional setters and helper temporaries remain before samples/rollback. The
-wider stage 3 and stages 4-11 keep their previously stated open scope.
+Next bounded scope: template arrays/object creation before registration and
+Boundary registration, followed by other setters/helper temporaries, then curve
+sample/initialization ownership and rollback. Full-process and parallel memory
+qualification, other template patterns and same-front reuse remain open.
 
 ## Open blockers and limitations
 
