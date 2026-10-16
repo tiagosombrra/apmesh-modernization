@@ -192,6 +192,47 @@ void midpoint_alias() {
   require(destroyed == 3, "borrowed midpoint alias is not destroyed by face detachment");
 }
 
+void face_alias_cache() {
+  int destroyed = 0;
+  auto a = std::make_unique<CountedVertex>(0, 0, destroyed);
+  auto b = std::make_unique<CountedVertex>(3, 0, destroyed);
+  auto c = std::make_unique<CountedVertex>(0, 3, destroyed);
+  {
+    Face face(a.get(), b.get(), c.get(), a.get(), 17);
+    face.setVertices(a.get(), b.get(), c.get());
+    require(destroyed == 0 && face.getMid() != a.get(),
+            "cache replacement preserves the borrowed endpoint alias");
+    require(face.getMid()->getX() == 1 && face.getMid()->getY() == 1,
+            "replacement midpoint retains the centroid formula");
+    face.DetachVertices();
+  }
+  require(destroyed == 0, "endpoints remain caller-owned after explicit detachment");
+}
+
+void primitive_contracts() {
+  Vertex a(0, 0), b(3, 4), c(0, 3), d(6, 0);
+  Edge edge(&a, &b, 19);
+  edge.setLen(0.25);
+  require(edge.length() == 5 && edge.getMid()->getX() == 1.5 && edge.getMid()->getY() == 2,
+          "edge construction geometry");
+  edge.setVertices(&a, &d);
+  require(edge.getV1() == &a && edge.getV2() == &d && edge.length() == 6 &&
+              edge.getMid()->getX() == 3 && edge.getMid()->getY() == 0 && edge.getLen() == 0.25 &&
+              edge.getId() == 19,
+          "edge replacement geometry, scalar state and identity");
+  edge.setVertices(nullptr, nullptr);
+  require(edge.length() == 0 && edge.getMid()->getX() == 0 && edge.getMid()->getY() == 0,
+          "null endpoint replacement retains default cache geometry");
+  Face face(&a, &b, &c, 23);
+  face.h = 0.5;
+  face.setVertices(&a, &d, &c);
+  require(face.getMid()->getX() == 2 && face.getMid()->getY() == 1 && face.surface() == 9 &&
+              face.h == 0.5 && face.getId() == 23,
+          "face replacement geometry, scalar state and identity");
+  face.DetachVertices();
+  face_alias_cache();
+}
+
 #if defined(_MSC_VER) && defined(_DEBUG)
 int denied_allocations = 0;
 int allocation_attempts = 0;
@@ -275,6 +316,118 @@ void transfer_allocation_failure() {
   }
   std::printf("transfer_allocation_failures=3 measured_allocations=%d\n", total);
 }
+
+class AllocationScope {
+public:
+  explicit AllocationScope(int ordinal) {
+    allocation_attempts = denied_allocations = 0;
+    forbid_allocations = false;
+    fail_after = ordinal;
+    previous_ = _CrtSetAllocHook(allocation_hook);
+  }
+  ~AllocationScope() { _CrtSetAllocHook(previous_); }
+  AllocationScope(const AllocationScope&) = delete;
+  AllocationScope& operator=(const AllocationScope&) = delete;
+
+private:
+  _CRT_ALLOC_HOOK previous_;
+};
+
+template <class Action> int measure_allocations(Action action) {
+  AllocationScope hook(-1);
+  action();
+  return allocation_attempts;
+}
+
+template <class Action> bool inject_allocation_failure(int ordinal, Action action) {
+  bool caught = false;
+  {
+    AllocationScope hook(ordinal);
+    try {
+      action();
+    } catch (const std::bad_alloc&) {
+      caught = true;
+    }
+  }
+  return caught && denied_allocations == 1;
+}
+
+template <class Action> void construction_failures(const char* name, Action action) {
+  const int total = measure_allocations(action);
+  require(total > 0, "construction control has positive measured allocation coverage");
+  for (int ordinal = 0; ordinal < total; ++ordinal)
+    require(inject_allocation_failure(ordinal, action),
+            "every construction failure reaches caller");
+  std::printf("allocation_failure_sites=%s:%d/%d\n", name, total, total);
+}
+
+void edge_construction_failures() {
+  int destroyed = 0;
+  auto a = std::make_unique<CountedVertex>(0, 0, destroyed);
+  auto b = std::make_unique<CountedVertex>(3, 4, destroyed);
+  construction_failures("edge", [&] {
+    Edge edge(a.get(), b.get());
+    edge.DetachVertices();
+  });
+  require(destroyed == 0, "failed edge construction never adopts caller endpoints");
+}
+
+void face_construction_failures() {
+  int destroyed = 0;
+  auto a = std::make_unique<CountedVertex>(0, 0, destroyed);
+  auto b = std::make_unique<CountedVertex>(3, 0, destroyed);
+  auto c = std::make_unique<CountedVertex>(0, 3, destroyed);
+  construction_failures("face", [&] {
+    Face face(a.get(), b.get(), c.get(), 1);
+    face.DetachVertices();
+  });
+  construction_failures("face-explicit", [&] {
+    Face face(a.get(), b.get(), c.get(), a.get(), 1);
+    face.DetachVertices();
+  });
+  require(destroyed == 0, "failed face construction never adopts caller endpoints/midpoint");
+}
+
+void cache_replacement_failures(bool is_edge) {
+  Vertex a(0, 0), b(3, 4), c(0, 3), d(6, 0);
+  int total = 0;
+  if (is_edge) {
+    Edge edge(&a, &b);
+    total = measure_allocations([&] { edge.setVertices(&c, &d); });
+    edge.DetachVertices();
+  } else {
+    Face face(&a, &b, &c);
+    total = measure_allocations([&] { face.setVertices(&b, &c, &d); });
+    face.DetachVertices();
+  }
+  require(total > 0, "cache control has positive measured allocation coverage");
+  bool unchanged = true;
+  for (int ordinal = 0; ordinal < total; ++ordinal) {
+    if (is_edge) {
+      Edge edge(&a, &b, 19);
+      edge.setLen(0.25);
+      auto* midpoint = edge.getMid();
+      const bool caught = inject_allocation_failure(ordinal, [&] { edge.setVertices(&c, &d); });
+      unchanged = unchanged && caught && edge.getV1() == &a && edge.getV2() == &b &&
+                  edge.getMid() == midpoint && edge.length() == 5 && edge.getLen() == 0.25 &&
+                  midpoint->getX() == 1.5 && midpoint->getY() == 2 && edge.getId() == 19;
+      edge.DetachVertices();
+    } else {
+      Face face(&a, &b, &c, 23);
+      face.h = 0.5;
+      auto* midpoint = face.getMid();
+      const bool caught = inject_allocation_failure(ordinal, [&] { face.setVertices(&b, &c, &d); });
+      unchanged = unchanged && caught && face.getV1() == &a && face.getV2() == &b &&
+                  face.getV3() == &c && face.getMid() == midpoint && midpoint->getX() == 1 &&
+                  midpoint->getY() == 7.0 / 3.0 && face.h == 0.5 && face.getId() == 23;
+      face.DetachVertices();
+    }
+  }
+  std::printf("allocation_failure_sites=%s-cache:%d/%d unchanged=%d\n", is_edge ? "edge" : "face",
+              total, total, unchanged ? 1 : 0);
+  require(unchanged,
+          "failed replacement preserves endpoints, cache identity/geometry and scalar state");
+}
 #endif
 
 void scenario(const char* mode) {
@@ -294,6 +447,10 @@ void scenario(const char* mode) {
     transfer_order();
   else if (std::strcmp(mode, "midpoint-alias") == 0)
     midpoint_alias();
+  else if (std::strcmp(mode, "face-alias-cache") == 0)
+    face_alias_cache();
+  else if (std::strcmp(mode, "primitive-contracts") == 0)
+    primitive_contracts();
   else if (std::strcmp(mode, "partial") == 0) {
     int destroyed = 0;
     partial(destroyed).reset();
@@ -311,6 +468,23 @@ void scenario(const char* mode) {
       allocation_hook_control();
     else
       transfer_allocation_failure();
+#else
+    require(false, "Debug CRT allocation hook required");
+#endif
+  } else if (std::strcmp(mode, "edge-construction-failure") == 0 ||
+             std::strcmp(mode, "face-construction-failure") == 0 ||
+             std::strcmp(mode, "front-construction-failure") == 0 ||
+             std::strcmp(mode, "edge-cache-failure") == 0 ||
+             std::strcmp(mode, "face-cache-failure") == 0) {
+#if defined(_MSC_VER) && defined(_DEBUG)
+    if (std::strcmp(mode, "edge-construction-failure") == 0)
+      edge_construction_failures();
+    else if (std::strcmp(mode, "face-construction-failure") == 0)
+      face_construction_failures();
+    else if (std::strcmp(mode, "front-construction-failure") == 0)
+      construction_failures("front", [] { AdvancingFront front; });
+    else
+      cache_replacement_failures(std::strcmp(mode, "edge-cache-failure") == 0);
 #else
     require(false, "Debug CRT allocation hook required");
 #endif
@@ -341,6 +515,10 @@ int main(int argc, char** argv) {
 #if defined(_MSC_VER) && defined(_DEBUG)
   _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
   _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDERR);
+  _CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
+  _CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
+  _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+  _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
   _CrtMemState before{}, after{}, delta{};
   _CrtMemCheckpoint(&before);
 #endif

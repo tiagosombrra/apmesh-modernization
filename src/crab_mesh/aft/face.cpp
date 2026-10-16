@@ -1,5 +1,7 @@
 #include "../../../include/crab_mesh/aft/face.h"
 
+#include <memory>
+
 Face::Face(Vertex *v1, Vertex *v2, Vertex *v3, long int id) : Shape(id) {
   mid = nullptr;
 
@@ -50,12 +52,12 @@ void Face::DetachVertices() noexcept {
   v[0] = v[1] = v[2] = nullptr;
 }
 
-Vertex *Face::makeMid() {
+Vertex* Face::makeMid(Vertex* first, Vertex* second, Vertex* third) {
   Vertex *m = new Vertex();
 
-  if (v[0] && v[1] && v[2]) {
-    m->setPosition((v[0]->getX() + v[1]->getX() + v[2]->getX()) / 3.0,
-                   (v[0]->getY() + v[1]->getY() + v[2]->getY()) / 3.0);
+  if (first && second && third) {
+    m->setPosition((first->getX() + second->getX() + third->getX()) / 3.0,
+                   (first->getY() + second->getY() + third->getY()) / 3.0);
 
     // cout << "triangulo " << id << ", meio = ( " << m->getX() << ", " <<
     // m->getY() << " )" << endl;
@@ -71,17 +73,16 @@ void Face::setV2(Vertex *v) { this->v[1] = v; }
 void Face::setV3(Vertex *v) { this->v[2] = v; }
 
 void Face::setVertices(Vertex *v1, Vertex *v2, Vertex *v3) {
+  // Preserve the live state until allocation succeeds; an endpoint alias is borrowed.
+  std::unique_ptr<Vertex> next_mid(makeMid(v1, v2, v3));
+  if (mid && mid != v[0] && mid != v[1] && mid != v[2])
+    delete mid;
+
   setV1(v1);
   setV2(v2);
   setV3(v3);
 
-  if (mid) {
-    delete mid;
-
-    mid = nullptr;
-  }
-
-  mid = makeMid();
+  mid = next_mid.release();
 }
 
 Vertex *Face::getV1() { return v[0]; }

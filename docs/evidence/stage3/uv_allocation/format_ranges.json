@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "scope": "Changed production ranges relative to pinned entry sources; no blanket legacy formatting",
+  "files": [
+    {
+      "path": "include/crab_mesh/aft/edge.h",
+      "ranges": [
+        [
+          42,
+          44
+        ],
+        [
+          58,
+          59
+        ]
+      ],
+      "applied_replacements": 0,
+      "remaining_replacements": 0
+    },
+    {
+      "path": "include/crab_mesh/aft/face.h",
+      "ranges": [
+        [
+          24,
+          24
+        ],
+        [
+          39,
+          41
+        ]
+      ],
+      "applied_replacements": 1,
+      "remaining_replacements": 0
+    },
+    {
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "ranges": [
+        [
+          7,
+          7
+        ],
+        [
+          180,
+          183
+        ]
+      ],
+      "applied_replacements": 0,
+      "remaining_replacements": 0
+    },
+    {
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "ranges": [
+        [
+          3,
+          4
+        ],
+        [
+          39,
+          41
+        ],
+        [
+          44,
+          45
+        ],
+        [
+          51,
+          53
+        ],
+        [
+          56,
+          57
+        ],
+        [
+          68,
+          71
+        ],
+        [
+          105,
+          106
+        ]
+      ],
+      "applied_replacements": 2,
+      "remaining_replacements": 0
+    },
+    {
+      "path": "src/crab_mesh/aft/face.cpp",
+      "ranges": [
+        [
+          2,
+          3
+        ],
+        [
+          55,
+          55
+        ],
+        [
+          58,
+          60
+        ],
+        [
+          76,
+          80
+        ],
+        [
+          85,
+          85
+        ]
+      ],
+      "applied_replacements": 0,
+      "remaining_replacements": 0
+    }
+  ]
+}

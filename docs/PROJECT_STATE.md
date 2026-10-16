@@ -9,7 +9,7 @@ Scope: implementation modernization preserving the published technique.
 - Exact 513-blob publication import at `cbfb863fb014e798289d824e158f67922036a5e3`.
 - Source commit and tree pinned; licenses, citation and historical README kept.
 - Initial audit, validation status and unapplied candidate patch retained.
-- English working agreement and complete stages 0–11 plan.
+- English working agreement and complete stages 0â€“11 plan.
 - EditorConfig, clang-format/tidy configurations, explicit local quality commands,
   optional staged-byte hook, CMake presets and meaningful CTest registration.
 - Compatibility-report checker rejects empty or zero-comparison coverage.
@@ -133,6 +133,25 @@ constructor/setter replacement. Curve sample/rollback ownership, other UV
 exceptions, generic adjacency and cache mutation, full process leaks and
 parallel paths still need qualification.
 Stage 4 may unblock actual instrumentation barriers. Keep one active item.
+
+## Stage 3 slice 3 active (#14): primitive allocation commit
+
+Entry main `0146fbd4925721a53a9b52717b82c5af8c4e0115` and all 715 blobs were
+audited. Entry CTest 11/11, 74 Python controls, UV 26/26, node 7/7, selected lint
+and exact Eistute/Book regression pass. No concurrent work or hosted checks.
+
+The new unchanged 35-case runner fails the pinned original: Edge/front
+construction retains resources, failed Edge/Face setVertices changes live state,
+and a Face midpoint alias is freed then read during replacement. Both Face
+constructors pass their independent failure controls. The candidate prepares
+caches and Boundary ownership before commit. Complete candidate gates pass:
+CTest 12/12, 74 Python controls, UV 35/35, node 7/7, selected lint/formatting and
+strict article regression. Exact-head and post-merge gates remain before closure.
+See `docs/evidence/STAGE3_UV_ALLOCATION.md` and ADR-0004.
+
+This is a prerequisite boundary. Template creation/arrays, Boundary registration,
+additional setters and helper temporaries remain before samples/rollback. The
+wider stage 3 and stages 4-11 keep their previously stated open scope.
 
 ## Open blockers and limitations
 

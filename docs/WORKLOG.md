@@ -15,8 +15,12 @@ Current status: stages 0-2 closed; stage 3 in progress with slices 1 and 2
 qualified; stages 4-11 pending. The original failed runner, initial fixture/build/
 lint failures and bounded tool/exception/template-pattern limitations remain
 recorded. The documentation closure preserves the qualified implementation.
-Next: pre-registration UV allocation failure and constructor/setter replacement.
-Curve sample/initialization ownership and rollback follow that bounded scope.
+Active item #14 first qualifies Edge/Face primitive construction/setVertices,
+endpoint-alias cache replacement and default front construction. The original
+fails the extended runner; complete candidate gates pass CTest 12/12, UV 35/35,
+node 7/7, selected lint/formatting and strict article regression. Required
+exact-head and post-merge gates remain before closure. Actual template/Boundary
+registration and other exception scopes follow, then curve samples/rollback.
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),

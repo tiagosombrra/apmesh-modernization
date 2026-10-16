@@ -1,6 +1,6 @@
 {
   "schema": "apmesh-architecture-contracts-v1",
-  "reviewed_base": "0f2473622800907e2d15e1d5ab6216caedb36797",
+  "reviewed_base": "0146fbd4925721a53a9b52717b82c5af8c4e0115",
   "scope": "Human-reviewed static contracts with source anchors. Stage 3 node-copy and UV lifecycle boundaries have isolated ASan/Debug CRT evidence; full application and parallel paths remain unqualified.",
   "contracts": [
     {
@@ -210,12 +210,12 @@
     {
       "id": "C10",
       "topic": "Front/quadtree ownership",
-      "statement": "Default AdvancingFront allocates Boundary/Quadtree. Quadtree owns generated template vertices, edges and faces until an allocation-free ordered splice transfers them to front owner lists. It destroys any untransferred template payload on failure or abandonment before deleting its root/boundary.",
+      "statement": "Default AdvancingFront allocates Boundary/Quadtree. Quadtree owns generated template vertices, edges and faces until an allocation-free ordered splice transfers them to front owner lists. It destroys any untransferred template payload on failure or abandonment before deleting its root/boundary. Default front construction guards Boundary until Quadtree construction completes; failure before adoption leaves no retained boundary.",
       "limits": "Getters return borrowed pointer views; template owner getters are empty after transfer. External-pointer constructor/setter replacement, mate-root sharing, arbitrary creation-time allocation failure and full-process cleanup remain unqualified.",
       "evidence": [
         {
           "path": "src/crab_mesh/aft/advancing_front.cpp",
-          "anchor": "boundary = new Boundary();"
+          "anchor": "auto pending_boundary = std::make_unique<Boundary>();"
         },
         {
           "path": "src/crab_mesh/aft/advancing_front.cpp",
@@ -242,8 +242,8 @@
     {
       "id": "C11",
       "topic": "CRABMesh detach protocol",
-      "statement": "Edge/Face destructors retain legacy endpoint ownership outside shared containers. Boundary, Quadtree and front cleanup call DetachVertices without allocating; Face detachment releases a midpoint alias to an endpoint while preserving distinct cache ownership.",
-      "limits": "Conditional detachment remains explicit; normal, partial, failed/exceptional post-template exits and selected transfer-allocation failures are isolated controls, not universal observer ownership or arbitrary exception safety.",
+      "statement": "Edge/Face destructors retain legacy endpoint ownership outside shared containers. Boundary, Quadtree and front cleanup call DetachVertices without allocating; Face detachment releases a midpoint alias to an endpoint while preserving distinct cache ownership. Edge/Face setVertices prepare owned caches before committing endpoints; allocation failure preserves live state. Face cache replacement preserves an old endpoint-alias midpoint as borrowed.",
+      "limits": "Conditional detachment remains explicit; normal, partial, failed/exceptional post-template exits and selected transfer-allocation failures are isolated controls, not universal observer ownership or arbitrary exception safety. New setter endpoints must not alias a distinct cache owned by that object. Generic individual setters, parametric midpoint replacement and template/Boundary registration failures are not covered by the primitive slice.",
       "evidence": [
         {
           "path": "src/crab_mesh/aft/edge.cpp",
@@ -268,6 +268,14 @@
         {
           "path": "src/crab_mesh/aft/face.cpp",
           "anchor": "void Face::DetachVertices() noexcept"
+        },
+        {
+          "path": "src/crab_mesh/aft/edge.cpp",
+          "anchor": "std::unique_ptr<Vertex> next_vector(makeVector(v1, v2));"
+        },
+        {
+          "path": "src/crab_mesh/aft/face.cpp",
+          "anchor": "std::unique_ptr<Vertex> next_mid(makeMid(v1, v2, v3));"
         }
       ]
     },

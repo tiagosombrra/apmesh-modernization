@@ -1,0 +1,29 @@
+UV lifetime diagnostic
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+allocation_failure_sites=edge:6/6
+CRT retained_blocks=9 retained_bytes=336
+Dumping objects ->
+{620} normal block at 0x00000288E70F0AC0, 40 bytes long.
+ Data: <                > C0 0A 0F E7 88 02 00 00 C0 0A 0F E7 88 02 00 00 
+{619} normal block at 0x00000288E70F40D0, 16 bytes long.
+ Data: <                > B0 D0 0D E7 88 02 00 00 00 00 00 00 00 00 00 00 
+{618} normal block at 0x00000288E70DD090, 56 bytes long.
+ Data: < Y)\            > B8 59 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{616} normal block at 0x00000288E70F0D60, 40 bytes long.
+ Data: <`       `       > 60 0D 0F E7 88 02 00 00 60 0D 0F E7 88 02 00 00 
+{615} normal block at 0x00000288E70F3770, 16 bytes long.
+ Data: <                > D0 D3 0D E7 88 02 00 00 00 00 00 00 00 00 00 00 
+{614} normal block at 0x00000288E70DD3B0, 56 bytes long.
+ Data: < Y)\            > B8 59 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{613} normal block at 0x00000288E70F0820, 40 bytes long.
+ Data: <                > 20 08 0F E7 88 02 00 00 20 08 0F E7 88 02 00 00 
+{612} normal block at 0x00000288E70F3630, 16 bytes long.
+ Data: <P               > 50 D3 0D E7 88 02 00 00 00 00 00 00 00 00 00 00 
+{611} normal block at 0x00000288E70DD330, 56 bytes long.
+ Data: < Y)\            > B8 59 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+Object dump complete.

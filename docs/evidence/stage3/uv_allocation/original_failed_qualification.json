@@ -1,0 +1,450 @@
+{
+  "status": "failed",
+  "scope": "14 actual UV/curve/numerical production units; isolated ASan invalid-access and Debug CRT retained-block/allocation-hook coverage. Not full application, LSan, UBSan or arbitrary exception safety.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-allocation-baseline-asan\\RelWithDebInfo\\uv_lifetime_probe.exe",
+      "sha256": "3a124aa3a8c2bc1c6014c5d8e9e1e36e6b82a7639c5ffde4b83c7390ef03a740"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-allocation-baseline-crt\\Debug\\uv_lifetime_probe.exe",
+      "sha256": "c220050be170ee930734452a21334c051b64c14b18633ed7912b32b5caa372cf"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "partial",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "exception",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "1dc2dbcb8e2ac38719f7bd177981f81f8fc2abe78923d6b39789bc25b9c7c7bc"
+    },
+    {
+      "instrument": "asan",
+      "mode": "topology-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "pending-tree",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "transfer-contract",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "transfer-order",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "midpoint-alias",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0",
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "990c0db89a4df29dfb5fa1b4eb3715170a8abeda6d97c98f60dc4c726c2a9e5d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "primitive-contracts",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "5dbd4697bc32f74ed11e7c5c6d6296edb3cc94d9c9a9de4667f7b8c52bed4a1b"
+    },
+    {
+      "instrument": "asan",
+      "mode": "face-alias-cache",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "bc53b33519506e59af997ad53cd1898a93ef2650ff912337de1ad0b0aebd68a7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "partial",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+    },
+    {
+      "instrument": "crt",
+      "mode": "exception",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "ea788692f9f97777ad252f7551aae078e2c21c81c1e28f84cf596e259e0a1427"
+    },
+    {
+      "instrument": "crt",
+      "mode": "topology-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+    },
+    {
+      "instrument": "crt",
+      "mode": "pending-tree",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-contract",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-order",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "midpoint-alias",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0",
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "641a31309ee2441e9eface31f7236d5a9c0fb7500f6b350a53964cff628ac2e0"
+    },
+    {
+      "instrument": "crt",
+      "mode": "primitive-contracts",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "1dbb9bddbd909704a464eb61a8a7e06f87e72da2df6a7e043762c6d86dab5a9f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "face-alias-cache",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "1dbb9bddbd909704a464eb61a8a7e06f87e72da2df6a7e043762c6d86dab5a9f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "teardown-allocation",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "teardown_allocation_attempts=0"
+      ],
+      "log_sha256": "3875b8bd074b85dc04e96e83ef494ee5799e74bd81e2aeaca02b03b8b776d7c5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ],
+      "log_sha256": "aa4d95fe8a89fefb071a9ad83d6d6e7f45caef2e314f6094e66c13033fa20f2f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-allocation-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "transfer_allocation_failures=3 measured_allocations=342"
+      ],
+      "log_sha256": "ffa573c9ec64b128bf72bbb302e948947dd1a387ddf8aaf75e059725880e33b5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "edge-construction-failure",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 9,
+      "retained_bytes": 336,
+      "observations": [
+        "allocation_failure_sites=edge:6/6"
+      ],
+      "log_sha256": "0062fbc88aa08dd94f905b2346ef8a413edb00b0f0a6595940f827f1443b6623"
+    },
+    {
+      "instrument": "crt",
+      "mode": "face-construction-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_failure_sites=face-explicit:3/3",
+        "allocation_failure_sites=face:3/3"
+      ],
+      "log_sha256": "cf9464ddbc63ce35909f0285bb28f942433a62818bd0820112279ee218da8f8a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "front-construction-failure",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 55,
+      "retained_bytes": 1936,
+      "observations": [
+        "allocation_failure_sites=front:32/32"
+      ],
+      "log_sha256": "d071fab8ee196c9ae24bad23bf2beb592441e6dca65a8333daf2e1a2b7c555f7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "edge-cache-failure",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "allocation_failure_sites=edge-cache:6/6 unchanged=0"
+      ],
+      "log_sha256": "ee22a8c74e404a921c1e7b18820245908c69ba2a162dedaa370a23126b3b46db"
+    },
+    {
+      "instrument": "crt",
+      "mode": "face-cache-failure",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "allocation_failure_sites=face-cache:3/3 unchanged=0"
+      ],
+      "log_sha256": "59b26261b257b896836aad44075f94c71804dad6af5e8ed1b8dedbacd6362c90"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "f3377e912751a7c9e316f3efc1f277bc586aa5ae79264234237dfbdd65255669"
+    },
+    {
+      "instrument": "asan",
+      "mode": "shared-delete",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "de2aa73823a3adeab173b66ec001b5773ab9c544494ec6c9334fd2909d4a3459"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "expected_diagnostic": "retained-blocks",
+      "passed": true,
+      "retained_blocks": 3,
+      "retained_bytes": 112,
+      "observations": [],
+      "log_sha256": "d452f2f0dbd29729f303e240dac5737a6ce0e8b174133a18ec023eb99ca8b0c0"
+    }
+  ]
+}

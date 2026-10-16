@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 454,
+    "literal_include_directives": 457,
     "first_party_include_edges": 268
   },
   "cross_component_directives": [
@@ -349,7 +349,7 @@
     "list": 12,
     "locale": 1,
     "map": 6,
-    "memory": 10,
+    "memory": 13,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -383,7 +383,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "e160aafd9c9a1773294b19653cbb23b31dc24d34eb4bd12454c60053e6ec500e"
+      "sha256": "7463f192c0e720004081017f43617774b9e7decc71d76b68b678e94484c759fa"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -671,8 +671,8 @@
       "path": "include/crab_mesh/aft/edge.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "e618b0e96c12364153743f53a56e7afbec34720fb13ac62531079c73e9b48f64",
-      "bytes": 2693,
+      "sha256": "9459a8a59ba55ae93d976e513e4c5ca5d0cbef2d90cf57fe604a66b86305677d",
+      "bytes": 2950,
       "includes": [
         {
           "line": 4,
@@ -715,8 +715,8 @@
       "path": "include/crab_mesh/aft/face.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "3fb854f6c7a94202c30f6cebdfe32f806712ec3442e6ac15e055faeb0095e0d7",
-      "bytes": 1729,
+      "sha256": "65c730651e28bd53c07e302d5caef26cd6b6890265d297445c775e169f697f2f",
+      "bytes": 1970,
       "includes": [
         {
           "line": 4,
@@ -3042,8 +3042,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "7fc58bc08cff4c7d5c0451fdb8a8650591288d196707a0fe0e764d68cf82aa3d",
-      "bytes": 46272,
+      "sha256": "1b6d11c5bfdcadd279c19039c20cfb749d2ce6dc37ae4745465e9d2d18985ae9",
+      "bytes": 46444,
       "includes": [
         {
           "line": 1,
@@ -3079,6 +3079,13 @@
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -3102,8 +3109,8 @@
       "path": "src/crab_mesh/aft/edge.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "4f382b44a175b405b475436333d1c6546cefa9610884516d114b8f273cdde3aa",
-      "bytes": 14590,
+      "sha256": "4c809ca435e2a9e64994b9682eb143b8bc000602f7b1ab2d60110c505c90366e",
+      "bytes": 14899,
       "includes": [
         {
           "line": 1,
@@ -3118,6 +3125,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/edge.h"
+        },
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -3125,8 +3139,8 @@
       "path": "src/crab_mesh/aft/face.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "c16a6323d02ccb068fa436a519ef623d775b4ab0834fb20aa5bc7c1d33b37732",
-      "bytes": 9770,
+      "sha256": "c6d4280201d55af31fdf7fcab957f6c5b05540eaa4f9d3421d55a0c42a78c4d7",
+      "bytes": 10017,
       "includes": [
         {
           "line": 1,
@@ -3134,6 +3148,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/face.h"
+        },
+        {
+          "line": 3,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -4672,7 +4693,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 83,
+    "source_anchors": 85,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

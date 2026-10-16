@@ -1,0 +1,6 @@
+{
+  "status": "historical failed candidate build; corrected before qualification",
+  "diagnostic": "std::make_unique was unavailable because the explicit <memory> include was missing from advancing_front.cpp at the first build",
+  "repair": "Added the required standard header; full final source rebuilt successfully without changing compiler flags",
+  "raw_log_sha256": "3583c32df0042e2a68f1fac2043fb88f440dc20b22e9bfa0c3690ead2d7392d1"
+}

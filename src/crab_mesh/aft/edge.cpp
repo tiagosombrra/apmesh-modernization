@@ -1,6 +1,8 @@
 #include "data/curve/curve_orientation.h"
 #include "../../../include/crab_mesh/aft/edge.h"
 
+#include <memory>
+
 Edge::Edge(Vertex *v1, Vertex *v2, long int id) : Shape(id) {
   mid = vector = nullptr;
 
@@ -34,23 +36,25 @@ Edge::~Edge() {
 
 void Edge::DetachVertices() noexcept { v[0] = v[1] = nullptr; }
 
-Vertex *Edge::makeMid() {
+Vertex* Edge::makeMid() { return makeMid(v[0], v[1]); }
+
+Vertex* Edge::makeMid(Vertex* first, Vertex* second) {
   Vertex *v = new Vertex();
 
-  if (this->v[0] && this->v[1]) {
-    v->setPosition((this->v[0]->getX() + this->v[1]->getX()) / 2.0,
-                   (this->v[0]->getY() + this->v[1]->getY()) / 2.0);
+  if (first && second) {
+    v->setPosition((first->getX() + second->getX()) / 2.0, (first->getY() + second->getY()) / 2.0);
   }
 
   return v;
 }
 
-Vertex *Edge::makeVector() {
+Vertex* Edge::makeVector() { return makeVector(v[0], v[1]); }
+
+Vertex* Edge::makeVector(Vertex* first, Vertex* second) {
   Vertex *v = new Vertex();
 
-  if (this->v[0] && this->v[1]) {
-    v->setPosition(this->v[1]->getX() - this->v[0]->getX(),
-                   this->v[1]->getY() - this->v[0]->getY());
+  if (first && second) {
+    v->setPosition(second->getX() - first->getX(), second->getY() - first->getY());
   }
 
   return v;
@@ -61,6 +65,10 @@ void Edge::setV1(Vertex *v) { this->v[0] = v; }
 void Edge::setV2(Vertex *v) { this->v[1] = v; }
 
 void Edge::setVertices(Vertex *v1, Vertex *v2) {
+  // Prepare both owned caches before changing live endpoints or bounds.
+  std::unique_ptr<Vertex> next_mid(makeMid(v1, v2));
+  std::unique_ptr<Vertex> next_vector(makeVector(v1, v2));
+
   setV1(v1);
   setV2(v2);
 
@@ -94,8 +102,8 @@ void Edge::setVertices(Vertex *v1, Vertex *v2) {
     vector = nullptr;
   }
 
-  mid = makeMid();
-  vector = makeVector();
+  mid = next_mid.release();
+  vector = next_vector.release();
 }
 
 Vertex *Edge::getV1() { return v[0]; }

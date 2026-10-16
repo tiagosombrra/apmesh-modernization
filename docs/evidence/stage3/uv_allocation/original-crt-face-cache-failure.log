@@ -1,0 +1,6 @@
+UV lifetime diagnostic
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+allocation_failure_sites=face-cache:3/3 unchanged=0
+Contract failed: failed replacement preserves endpoints, cache identity/geometry and scalar state

@@ -39,6 +39,9 @@ class Edge : public Shape {
   CurveAdaptiveParametric *c;
   bool curve_reversed_ = false;
 
+  Vertex* makeMid(Vertex* first, Vertex* second);
+  Vertex* makeVector(Vertex* first, Vertex* second);
+
 public:
   Vertex *makeMid();
   Vertex *makeVector();
@@ -52,6 +55,8 @@ public:
 
    void setV1(Vertex* v);
    void setV2(Vertex* v);
+   // On allocation failure, endpoints, bounds and both caches remain unchanged.
+   // New endpoints must not alias a distinct cache owned by this edge.
    void setVertices(Vertex* v1, Vertex* v2);
    Vertex* getV1();
    Vertex* getV2();
