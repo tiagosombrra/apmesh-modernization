@@ -1,0 +1,108 @@
+{
+  "qualified_head": "fd59206497b12e3352fc8bea634702d7fe9eb8a9",
+  "tree": "b2ce576483247a804a5a2335951739f007dc54c0",
+  "verified_remote_blobs": 632,
+  "local_text_blobs": 630,
+  "remote_only_immutable_artifacts": [
+    "assets/grsi_representative.png",
+    "paper/preprint.pdf"
+  ],
+  "source_manifest_unchanged": true,
+  "executable_sha256": "782fa6d0c235bca7f3fcb1e02e623cb105855f918a74c0616f262948c60a632e",
+  "ctest": {
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0
+  },
+  "selected_exporter_tidy": "passed",
+  "article_models": {
+    "eistute": {
+      "repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "782fa6d0c235bca7f3fcb1e02e623cb105855f918a74c0616f262948c60a632e",
+        "configuration_sha256": "b31876db3a973d806af89f04d696ad21e2c753170db507566fc419f5b68039ff"
+      },
+      "controlled_comparison": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "schemas": [
+        {
+          "status": "passed",
+          "rows": 5,
+          "compared_fields": 105,
+          "differences": []
+        },
+        {
+          "status": "passed",
+          "rows": 5,
+          "compared_fields": 105,
+          "differences": []
+        }
+      ]
+    },
+    "book": {
+      "repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "782fa6d0c235bca7f3fcb1e02e623cb105855f918a74c0616f262948c60a632e",
+        "configuration_sha256": "7bc863ce664a0024ae1f538b8fe3dce48a5ab4c90a4d6f3390c77d3710198cab"
+      },
+      "controlled_comparison": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "schemas": [
+        {
+          "status": "passed",
+          "rows": 4,
+          "compared_fields": 84,
+          "differences": []
+        },
+        {
+          "status": "passed",
+          "rows": 4,
+          "compared_fields": 84,
+          "differences": []
+        }
+      ]
+    }
+  },
+  "audit": {
+    "code": "reviewed orientation/control construction, boundary traversal, outgoing corner ownership and parameter/arc mapping",
+    "tests": "independent analytic, actual mixed orientation, accepted/rejected/retry, corrupt fixture and analyzer controls",
+    "contracts": "exact strict oracle, existing evaluation/export budgets and scientific policy unchanged",
+    "documentation": "current state and explicit defect/output ledger updated; historical failures preserved",
+    "known_inventory": "ownership/sanitizers, parallel modes, legacy warnings, Eigen, C++23, Doxygen and Decor Shelf generation remain later-stage work"
+  },
+  "status": "passed"
+}

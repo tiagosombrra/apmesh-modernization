@@ -1,0 +1,7 @@
+[1/1] (1/2) Processing file C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/src/input_output/incidence_snapshot.cpp.
+53 warnings generated.
+[1/1] (2/2) Processing file C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/src/input_output/incidence_snapshot.cpp.
+62 warnings generated.
+Suppressed 62 warnings (18 in non-user code, 44 with check filters).
+Use -header-filter=.* or leave it as default to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+tidy coverage: 1 files
