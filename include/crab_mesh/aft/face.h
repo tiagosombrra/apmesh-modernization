@@ -26,10 +26,12 @@ class Face : public Shape {
  public:
   double h;
 
-  Face(Vertex *v1 = NULL, Vertex *v2 = NULL, Vertex *v3 = NULL,
-       long int id = 0);
+  Face(Vertex* v1 = nullptr, Vertex* v2 = nullptr, Vertex* v3 = nullptr, long int id = 0);
   Face(Vertex *v1, Vertex *v2, Vertex *v3, Vertex *mid, long int id);
-  ~Face();
+  ~Face() override;
+
+  // Release endpoint ownership without allocating or rebuilding the cached midpoint.
+  void DetachVertices() noexcept;
 
   void setV1(Vertex *v);
   void setV2(Vertex *v);
@@ -66,7 +68,7 @@ class Face : public Shape {
   bool hits(Face *f);
   bool hits(Edge *e);
 
-  string getText();
+  string getText() override;
 
   // #if USE_OPENGL
   //     void highlight();

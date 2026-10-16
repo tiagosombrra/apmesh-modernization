@@ -3,23 +3,16 @@
 ## Purpose and current limits
 
 These commands automate repeatable checks; they do not certify the full
-application. The integrated bootstrap registers tooling controls and an archived-artifact
-check. Application ownership, accepted-state generation and sanitizer qualification
-remain open. The legacy warnings/style debt is not declared resolved.
-
-The stage 1 draft also registers real executable invalid-input controls and
-positive shipped-model grammar controls. Its independent generation verifier
-has negative controls for rejected targets, invalid geometry, altered counts,
-missing evidence, absent incidence coverage and numerical report drift.
-The prior numerical reduction-order repair passes exact Eistute/Book repetition.
-The incidence follow-up checks every sheet against source controls and actual
-triangles. Full CTest now contains seven tests: five pass and two required gates
-fail (`application.boundary_orientation`, `application.metric_schema`). The
-failures expose pre-existing reversed geometry and CSV label/value defects;
-they are not skipped or marked expected failures. 65 Python controls pass.
-Selected exporter clang-tidy fails on 18 inherited header/Eigen diagnostics;
-the checks were not weakened. Keep the draft unmerged. See
-`evidence/STAGE1_INCIDENCE_AUDIT.md` for commands, evidence and next repairs.
+application. Stages 1 and 2 are integrated and closed for their measured scope.
+Stage 3 slice 1 is integrated; slice 2 adds a qualified candidate UV target.
+The current candidate CTest passes 11/11 with zero skips and 74 Python controls,
+including real invalid inputs, orientation, metric schema, independent verifier
+negative controls, architecture freshness and actual analyzer scope controls.
+Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
+orientation/schema/lint failures are repaired and retained as historical
+evidence in `evidence/STAGE1_CLOSURE.md`. They are not current failing gates.
+Selected lint scopes pass unchanged diagnostic rules; legacy warning/style debt,
+full-application memory qualification and broad portability remain open.
 
 
 Requirements: Python >=3.10, Git, CMake >=3.21 and Ninja for presets. The imported
@@ -137,6 +130,15 @@ MSVC ASan and separate Debug CRT builds are qualified by
 `tools/qualify_node_lifetime.py`, including deliberately invalid controls. The
 runner rejects absent diagnostics and nonzero valid-case exits. Commands and
 scope limits: [node lifetime evidence](evidence/STAGE3_NODE_LIFETIME.md).
+
+Slice 2 adds `tests/uv_memory` and required CTest application.uv_lifetime,
+compiling 14 actual production units. `tools/qualify_uv_lifetime.py` requires
+26 ASan/Debug CRT cases, including deliberate invalid access/leak controls,
+pending-template cleanup, ordered ownership transfer, midpoint aliases and
+allocation-denied teardown/transfer preparation. The same runner fails the
+pinned original. Candidate results do not qualify arbitrary allocation failure,
+every template pattern or the full application. Commands and exact-head closure
+requirements: [UV lifetime evidence](evidence/STAGE3_UV_LIFETIME.md).
 
 ```sh
 python tools/quality.py docs

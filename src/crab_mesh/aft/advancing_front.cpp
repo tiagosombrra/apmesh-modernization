@@ -211,7 +211,7 @@ AdvancingFront::~AdvancingFront() {
     Face *f = mesh.front();
     mesh.pop_front();
 
-    f->setVertices(NULL, NULL, NULL);
+    f->DetachVertices();
 
     delete f;
   }
@@ -220,7 +220,7 @@ AdvancingFront::~AdvancingFront() {
     Edge *e = innerEdges.front();
     innerEdges.pop_front();
 
-    e->setVertices(NULL, NULL);
+    e->DetachVertices();
 
     delete e;
   }
@@ -241,7 +241,7 @@ AdvancingFront::~AdvancingFront() {
 
   delete quadtree;
 
-  quadtree = NULL;
+  quadtree = nullptr;
 }
 
 void AdvancingFront::makeInitialFront() {
@@ -415,7 +415,7 @@ bool AdvancingFront::interceptionTest(Edge *e, Vertex *candidate,
       }
     }
 
-    f.setVertices(NULL, NULL, NULL);
+    f.setVertices(nullptr, nullptr, nullptr);
 
     // cout << "fim inte teste" << endl;
   }
@@ -462,7 +462,7 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
 
   double h = 1.0;
 
-  best = (geometryPhase) ? makeIdealVertex(e, h) : NULL;
+  best = (geometryPhase) ? makeIdealVertex(e, h) : nullptr;
 
   VertexList bestVertices;
 
@@ -503,7 +503,7 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
 
         delete best;
 
-        best = NULL;
+        best = nullptr;
 
         // std::cerr << "matches = " << matches << "; outbox = " << outbox << ";
         // outdistance = " << outdistance << "; outnormal = " << outnormal <<
@@ -526,7 +526,7 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
 
         delete best;
 
-        best = NULL;
+        best = nullptr;
 
         return false;
       }
@@ -562,7 +562,7 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
     if (intercept) {
       delete best;
 
-      best = NULL;
+      best = nullptr;
 
       // std::cerr << "false,  NULL; reason = intercept == true" << std::endl;
 
@@ -584,7 +584,7 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
       if (tooClose) {
         delete best;
 
-        best = NULL;
+        best = nullptr;
 
         // std::cerr << "false,  NULL; reason = tooClose == true" << std::endl;
 
@@ -635,7 +635,7 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
         // caso em que os 2 vertices, candidate e best sao geometricamente
         // iguais, mas topologicamente diferentes
         Edge *candidateEdge1, *candidateEdge2;
-        candidateEdge1 = candidateEdge2 = NULL;
+        candidateEdge1 = candidateEdge2 = nullptr;
 
         for (EdgeList::iterator iter = front.begin(); iter != front.end();
              iter++) {
@@ -727,7 +727,7 @@ void AdvancingFront::insertInFront(Edge *last, Edge *e) {
 }
 
 Edge *AdvancingFront::findEdge(Vertex *v1, Vertex *v2) {
-  Edge *e = NULL;
+  Edge* e = nullptr;
 
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
     if ((*iter)->equals(v1, v2)) {
@@ -830,7 +830,7 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased,
     frontVertices.push_back((*iter)->getV1());
   }
 
-  Edge *last = NULL;
+  Edge* last = nullptr;
 
   if (frontBased && geometryPhase) {
     last = new Edge();
@@ -838,7 +838,7 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased,
   }
 
   while (true) {
-    Edge *e = NULL;
+    Edge* e = nullptr;
 
     if (frontBased) {
       if (front.empty()) {
@@ -858,12 +858,12 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased,
 
     if (frontBased && (e == last)) {
       delete last;
-      last = NULL;
+      last = nullptr;
 
       continue;
     }
 
-    Vertex *best = NULL;
+    Vertex* best = nullptr;
     bool existed = findBestVertex(e, best, geometryPhase);
 
     if (!best) {
@@ -905,7 +905,7 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased,
     }
 
     Edge *e1, *e2;
-    e1 = e2 = NULL;
+    e1 = e2 = nullptr;
 
     if (existed) {
       e1 = findEdge(e->getV1(), best);
@@ -1004,8 +1004,6 @@ void AdvancingFront::fillMesh() {
     Vertex *v = quadVertices.front();
     quadVertices.pop_front();
 
-    innerVertices.push_back(v);
-
     bool found = false;
 
     for (VertexList::iterator iter = vertices.begin(); iter != vertices.end();
@@ -1028,8 +1026,6 @@ void AdvancingFront::fillMesh() {
     Edge *e = quadEdges.front();
     quadEdges.pop_front();
 
-    innerEdges.push_back(e);
-
     bool found = false;
 
     for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
@@ -1045,9 +1041,9 @@ void AdvancingFront::fillMesh() {
     }
   }
 
-  FaceList quadMesh = quadtree->getMesh();
-
-  mesh.insert(mesh.end(), quadMesh.begin(), quadMesh.end());
+  // Prepare allocating observer views first. If this throws, the quadtree still
+  // owns every template object. Commit all owner lists with nonthrowing splices.
+  quadtree->TransferTemplateMesh(innerVertices, innerEdges, mesh);
 }
 
 bool AdvancingFront::laplacianSmoothing(bool &changed) {
@@ -1229,8 +1225,8 @@ bool AdvancingFront::qualityShapeSmoothing(bool &changed) {
     for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end();
          ++faceIter) {
       Face *face = (*faceIter);
-      Vertex *a = NULL;
-      Vertex *b = NULL;
+      Vertex* a = nullptr;
+      Vertex* b = nullptr;
 
       if (!FaceOppositeEdge(face, v, a, b)) {
         continue;
@@ -1650,8 +1646,8 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool &changed) {
     for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end();
          ++faceIter) {
       Face *face = (*faceIter);
-      Vertex *a = NULL;
-      Vertex *b = NULL;
+      Vertex* a = nullptr;
+      Vertex* b = nullptr;
 
       if (!FaceOppositeEdge(face, v, a, b)) {
         continue;

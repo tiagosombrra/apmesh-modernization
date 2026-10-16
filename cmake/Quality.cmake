@@ -3,6 +3,10 @@ include(CTest)
 if(BUILD_TESTING)
   find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
   add_subdirectory(tests/memory)
+  add_subdirectory(tests/uv_memory)
+  add_test(NAME application.uv_lifetime COMMAND uv_lifetime_probe contracts)
+  set_tests_properties(application.uv_lifetime
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 60)
   add_test(NAME application.node_lifetime COMMAND node_lifetime_probe contracts)
   set_tests_properties(application.node_lifetime
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)

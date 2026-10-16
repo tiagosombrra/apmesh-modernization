@@ -28,7 +28,7 @@ class Vertex : public Shape {
 
  public:
   Vertex(double x = 0.0, double y = 0.0, long int id = 0);
-  ~Vertex();
+  ~Vertex() override;
 
   void setX(double x);
   void setY(double y);

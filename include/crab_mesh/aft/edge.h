@@ -44,78 +44,81 @@ public:
   Vertex *makeVector();
 
  public:
-  Edge(Vertex *v1 = NULL, Vertex *v2 = NULL, long int id = 0);
-  ~Edge();
+   Edge(Vertex* v1 = nullptr, Vertex* v2 = nullptr, long int id = 0);
+   ~Edge() override;
 
-  void setV1(Vertex *v);
-  void setV2(Vertex *v);
-  void setVertices(Vertex *v1, Vertex *v2);
-  Vertex *getV1();
-  Vertex *getV2();
+   // Release endpoint ownership before shared-topology teardown; caches remain owned.
+   void DetachVertices() noexcept;
 
-  void setInBoundary(bool inBoundary);
-  bool isInBoundary();
+   void setV1(Vertex* v);
+   void setV2(Vertex* v);
+   void setVertices(Vertex* v1, Vertex* v2);
+   Vertex* getV1();
+   Vertex* getV2();
 
-  // #if USE_OPENGL
-  //     void setWidth(double width);
-  // #endif //#if USE_OPENGL
+   void setInBoundary(bool inBoundary);
+   bool isInBoundary();
 
-  void setFree(bool free);
-  bool isFree();
+   // #if USE_OPENGL
+   //     void setWidth(double width);
+   // #endif //#if USE_OPENGL
 
-  void setCell(QuadtreeCell *cell);
-  QuadtreeCell *getCell();
+   void setFree(bool free);
+   bool isFree();
 
-  Vertex *getMid();
+   void setCell(QuadtreeCell* cell);
+   QuadtreeCell* getCell();
 
-  double length();
+   Vertex* getMid();
 
-  bool intercept(Edge *e);
-  bool intercept(Vertex *v1, Vertex *v2);
-  bool intercept(Vertex *v);
-  bool intercept(double x, double y);
+   double length();
 
-  double straightDistance(Vertex *v);
-  double distance(Vertex *v);
-  double distance(double x, double y);
+   bool intercept(Edge* e);
+   bool intercept(Vertex* v1, Vertex* v2);
+   bool intercept(Vertex* v);
+   bool intercept(double x, double y);
 
-  double dot(Vertex *v);
+   double straightDistance(Vertex* v);
+   double distance(Vertex* v);
+   double distance(double x, double y);
 
-  bool left(Vertex *v);
-  bool left(double x, double y);
+   double dot(Vertex* v);
 
-  bool right(Vertex *v);
-  bool right(double x, double y);
+   bool left(Vertex* v);
+   bool left(double x, double y);
 
-  bool accordingToNormal(Vertex *v, bool inEdgeTest = false);
+   bool right(Vertex* v);
+   bool right(double x, double y);
 
-  double angle(Edge *e);
-  double angle(Vertex *v1, Vertex *v2);
+   bool accordingToNormal(Vertex* v, bool inEdgeTest = false);
 
-  Vertex *normal();
+   double angle(Edge* e);
+   double angle(Vertex* v1, Vertex* v2);
 
-  bool equals(Edge *e);
-  bool equals(Vertex *v1, Vertex *v2);
-  bool matches(Edge *e);
-  bool matches(Vertex *v1, Vertex *v2);
+   Vertex* normal();
 
-  // metodos do Daniel Siqueira
-  void setCurva(CurveAdaptiveParametric*, bool reversed = false);
-  void setLen(double len);
-  double getLen();
-  void makeParamMid();
+   bool equals(Edge* e);
+   bool equals(Vertex* v1, Vertex* v2);
+   bool matches(Edge* e);
+   bool matches(Vertex* v1, Vertex* v2);
 
-  string getText() override;
+   // metodos do Daniel Siqueira
+   void setCurva(CurveAdaptiveParametric*, bool reversed = false);
+   void setLen(double len);
+   double getLen();
+   void makeParamMid();
 
-  // #if USE_OPENGL
-  //     void highlight();
-  //     void highlight(bool highlightCell);
-  //     void unhighlight();
-  //     void unhighlight(bool highlightCell);
+   string getText() override;
 
-  //    void draw();
-  //    void drawNormal();
-  // #endif //#if USE_OPENGL
+   // #if USE_OPENGL
+   //     void highlight();
+   //     void highlight(bool highlightCell);
+   //     void unhighlight();
+   //     void unhighlight(bool highlightCell);
+
+   //    void draw();
+   //    void drawNormal();
+   // #endif //#if USE_OPENGL
 };
 }  // namespace Basics
 }  // namespace Par2DJMesh

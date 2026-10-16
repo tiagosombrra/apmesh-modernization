@@ -1,0 +1,85 @@
+{
+  "retained_failures": [
+    {
+      "raw_log": "uv-msvc-initial-build.log",
+      "raw_sha256": "bdb98f6becd52741ffd32a66b6542c520bbfe83710b9cdb9d606716349fa4fb9",
+      "diagnostics": [
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(11,18): error C2059: erro de sintaxe: ')' [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(11,18): error C2334: token(s) inesperado(s) precedendo ':'; ignorando corpo aparente de fun\u251c\u00ba\u251c\u00fao [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(13,2): error C2143: erro de sintaxe: ')' ausente antes de ';' [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(13,2): error C2059: erro de sintaxe: ')' [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(13,2): error C2238: token(s) inesperado(s) precedendo ';' [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(19,18): error C2062: tipo 'int' inesperado [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(19,18): error C2334: token(s) inesperado(s) precedendo ':'; ignorando corpo aparente de fun\u251c\u00ba\u251c\u00fao [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(21,1): error C2143: erro de sintaxe: ')' ausente antes de ';' [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(21,1): error C2059: erro de sintaxe: ')' [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(21,1): error C2238: token(s) inesperado(s) precedendo ';' [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\include\\crab_mesh\\numerical\\equation_root_function.h(21,1): error C1201: n\u251c\u00fao \u251c\u00ae poss\u251c\u00a1vel continuar ap\u251c\u2502s erro de sintaxe na defini\u251c\u00ba\u251c\u00fao de template de classe [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]"
+      ]
+    },
+    {
+      "raw_log": "uv-msvc-portability-build.log",
+      "raw_sha256": "3910dbcb47f68f388b7db5217f3a70270fe69676097af147cac6b2e31f0d3f4e",
+      "diagnostics": [
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\quadtree.cpp(328,23): error C2065: '__LONG_MAX__': identificador n\u251c\u00fao declarado [C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\uv_lifetime_probe.vcxproj]"
+      ]
+    },
+    {
+      "raw_log": "uv-candidate-tidy.log",
+      "raw_sha256": "5e2ae179628886499304ae7493661b5cfd8fb4db7844e04b5273ebbeac347906",
+      "diagnostics": [
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/advancing_front.h:99:49: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/advancing_front.h:99:68: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/advancing_front.h:119:11: error: prefer using 'override' or (rarely) 'final' instead of 'virtual' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/advancing_front.h:158:10: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/boundary.h:35:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/edge.h:47:21: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/edge.h:47:40: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/edge.h:48:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/face.h:29:21: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/face.h:29:40: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/face.h:29:59: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/face.h:32:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/face.h:72:10: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/quadtree.h:53:33: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/quadtree.h:54:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/quadtree_cell.h:68:33: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/quadtree_cell.h:68:53: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/quadtree_cell.h:68:73: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/quadtree_cell.h:69:39: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/quadtree_cell.h:70:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft/../../../include/crab_mesh/aft/vertex.h:31:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:244:14: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:418:19: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:418:25: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:418:31: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:465:52: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:506:16: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:529:16: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:565:14: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:587:16: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:638:43: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:730:13: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:833:16: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:841:15: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:861:14: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:866:20: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:908:15: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:1228:19: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:1229:19: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:1649:19: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]",
+        "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\advancing_front.cpp:1650:19: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]"
+      ]
+    }
+  ],
+  "baseline_compatibility_defines": [
+    "NOMINMAX",
+    "__LONG_MAX__=LONG_MAX"
+  ],
+  "candidate_requires_compatibility_defines": false,
+  "exception_unwind_flag": "/EHsc",
+  "reviewed_source_pointer_lines": 41,
+  "reviewed_override_annotations": 9,
+  "diagnostic_configuration_unchanged": true,
+  "gcc_long_bound_static_assert_passed": true
+}

@@ -32,7 +32,7 @@ private:
 
  public:
   Boundary();
-  ~Boundary();
+  ~Boundary() override;
 
   void setBoundary(VertexList boundary);
   VertexList getBoundary();

@@ -1,0 +1,117 @@
+{
+  "classification": "Invalid null-curve test fixture omitted caller-supplied normalized edge sizes; not product-defect qualification",
+  "repair": "Supply the exact Euclidean quarter-side size for straight unit sides before generation",
+  "unqualified_original_observations": {
+    "executables": {
+      "asan": "c5e231fb515632fa22a3b4268f219ed066eebe3044c398938551864ae755219a",
+      "crt": "a503e4288f380f310a4e8fe54b00759def195fd1c5589908befae62d2b59f493"
+    },
+    "compatibility_defines": [
+      "NOMINMAX",
+      "__LONG_MAX__=LONG_MAX"
+    ],
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "normal",
+        "exit_code": 3221225477,
+        "lines": [],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "instrument": "asan",
+        "mode": "partial",
+        "exit_code": 0,
+        "lines": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-contract",
+        "exit_code": 3221225477,
+        "lines": [],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "lines": [
+          "==16376==ERROR: AddressSanitizer: heap-use-after-free on address 0x11bd6a2a09a0 at pc 0x7ff730227893 bp 0x00148e13fb90 sp 0x00148e13fb98"
+        ],
+        "log_sha256": "165c8b43c850dece771f5d3167c613debf36b4d1596b744eb253e7917b7338a9"
+      },
+      {
+        "instrument": "asan",
+        "mode": "shared-delete",
+        "exit_code": 1,
+        "lines": [
+          "==21052==ERROR: AddressSanitizer: heap-use-after-free on address 0x122d2e7a0990 at pc 0x7ff73022995c bp 0x00c60a6ff950 sp 0x00c60a6ff958"
+        ],
+        "log_sha256": "e1ba519efca9bc8d567e3a9c618e3338b664afa04091a009db67f106093ffae6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal",
+        "exit_code": 3221225725,
+        "lines": [],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "instrument": "crt",
+        "mode": "partial",
+        "exit_code": 0,
+        "lines": [
+          "CRT retained_blocks=0 retained_bytes=0"
+        ],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure",
+        "exit_code": 3221225725,
+        "lines": [],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "instrument": "crt",
+        "mode": "exception",
+        "exit_code": 3221225725,
+        "lines": [],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "instrument": "crt",
+        "mode": "topology-failure",
+        "exit_code": 3221225725,
+        "lines": [],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "instrument": "crt",
+        "mode": "pending-tree",
+        "exit_code": 3221225725,
+        "lines": [],
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "instrument": "crt",
+        "mode": "teardown-allocation",
+        "exit_code": 73,
+        "lines": [
+          "teardown allocation caused termination"
+        ],
+        "log_sha256": "3e7f59dc23f25cde0fc9fd587b380f956685f8a0e6b8ff6da6428fce0b8d85ad"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "lines": [
+          "CRT retained_blocks=3 retained_bytes=112"
+        ],
+        "log_sha256": "295aeb19a4cffced24b4120098dddeb7545884b9fdbecf6c98e9a30f296fd4e4"
+      }
+    ]
+  }
+}

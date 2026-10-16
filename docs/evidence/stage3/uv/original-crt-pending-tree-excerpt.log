@@ -1,0 +1,5 @@
+Excerpt only; full raw log SHA-256: 89844f7e1b609bd316b16beaa406a96df7b4826dff572717ca86f1a0a58e5e00
+UV lifetime diagnostic
+CRT retained_blocks=1515 retained_bytes=68464
+Dumping objects ->
+Object dump complete.

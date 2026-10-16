@@ -2,7 +2,7 @@
 #include "../../../include/crab_mesh/aft/edge.h"
 
 Edge::Edge(Vertex *v1, Vertex *v2, long int id) : Shape(id) {
-  mid = vector = NULL;
+  mid = vector = nullptr;
 
   xmax = ymax = DBL_MAX;
   xmin = ymin = DBL_MIN;
@@ -10,10 +10,10 @@ Edge::Edge(Vertex *v1, Vertex *v2, long int id) : Shape(id) {
   len = -1.0;
 
   setVertices(v1, v2);
-  setCell(NULL);
+  setCell(nullptr);
   setFree(true);
   setInBoundary(false);
-  setCurva(NULL);
+  setCurva(nullptr);
   // #if USE_OPENGL
   //     setWidth(1.0);
   //     //figura
@@ -31,6 +31,8 @@ Edge::~Edge() {
   if (mid) delete mid;
   if (vector) delete vector;
 }
+
+void Edge::DetachVertices() noexcept { v[0] = v[1] = nullptr; }
 
 Vertex *Edge::makeMid() {
   Vertex *v = new Vertex();
@@ -83,13 +85,13 @@ void Edge::setVertices(Vertex *v1, Vertex *v2) {
   if (mid) {
     delete mid;
 
-    mid = NULL;
+    mid = nullptr;
   }
 
   if (vector) {
     delete vector;
 
-    vector = NULL;
+    vector = nullptr;
   }
 
   mid = makeMid();
@@ -467,7 +469,7 @@ double Edge::angle(Vertex *va, Vertex *vb) {
 
   result = angle(&e);
 
-  e.setVertices(NULL, NULL);
+  e.setVertices(nullptr, nullptr);
 
   return result;
 }
@@ -534,7 +536,7 @@ void Edge::makeParamMid() {
   if (mid) {
     delete mid;
 
-    mid = NULL;
+    mid = nullptr;
   }
 
   double t = -1.0;
