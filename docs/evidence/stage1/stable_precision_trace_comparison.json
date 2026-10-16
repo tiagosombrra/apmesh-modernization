@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "precision_digits": 17,
+  "trace_files": 8,
+  "compared_node_rows": 12968,
+  "all_internal_trace_bytes_equal": true,
+  "trace_fields": [
+    "step",
+    "retry",
+    "patch",
+    "node_local",
+    "node_id",
+    "x",
+    "y",
+    "z",
+    "ga",
+    "gd",
+    "ha",
+    "hd",
+    "adjacency_count",
+    "adjacent_ids",
+    "adjacent_areas",
+    "adjacent_angles"
+  ],
+  "files": [
+    {
+      "name": "numerical_trace_call_0.csv",
+      "rows": 20,
+      "byte_identical": true,
+      "sha256_first": "8ff9b8cf157ca8cb7b538628778153a779d7f0c9feca8d54818976353f934a48",
+      "sha256_second": "8ff9b8cf157ca8cb7b538628778153a779d7f0c9feca8d54818976353f934a48"
+    },
+    {
+      "name": "numerical_trace_call_1.csv",
+      "rows": 668,
+      "byte_identical": true,
+      "sha256_first": "bf30449a7ee2c8dafff7323fdbfd5938651e4783cdb114d6b3e450b23b3c4e19",
+      "sha256_second": "bf30449a7ee2c8dafff7323fdbfd5938651e4783cdb114d6b3e450b23b3c4e19"
+    },
+    {
+      "name": "numerical_trace_call_2.csv",
+      "rows": 1144,
+      "byte_identical": true,
+      "sha256_first": "a11641a3939615e080ae76e41d09532d8c0c3d3bd091eca38dddc4835b431664",
+      "sha256_second": "a11641a3939615e080ae76e41d09532d8c0c3d3bd091eca38dddc4835b431664"
+    },
+    {
+      "name": "numerical_trace_call_3.csv",
+      "rows": 1144,
+      "byte_identical": true,
+      "sha256_first": "a56ee9f1c98c70561d5d8cd9806fab3b2952f823f184012801bbd0c1d7d2abf2",
+      "sha256_second": "a56ee9f1c98c70561d5d8cd9806fab3b2952f823f184012801bbd0c1d7d2abf2"
+    },
+    {
+      "name": "numerical_trace_call_4.csv",
+      "rows": 1248,
+      "byte_identical": true,
+      "sha256_first": "a2d02897e0a4e1567c4058df9a4bcd52a9f494c88e547b5887dc2d3320c747ce",
+      "sha256_second": "a2d02897e0a4e1567c4058df9a4bcd52a9f494c88e547b5887dc2d3320c747ce"
+    },
+    {
+      "name": "numerical_trace_call_5.csv",
+      "rows": 1248,
+      "byte_identical": true,
+      "sha256_first": "c4f4909c62c023b2d754535c6842c0dfa6d79f987bc9117fd80f785c46e1c8d7",
+      "sha256_second": "c4f4909c62c023b2d754535c6842c0dfa6d79f987bc9117fd80f785c46e1c8d7"
+    },
+    {
+      "name": "numerical_trace_call_6.csv",
+      "rows": 3748,
+      "byte_identical": true,
+      "sha256_first": "bd4f1a83ca79f1672afb549358a680688ea35d4de5c489f74a50dcf2407c108e",
+      "sha256_second": "bd4f1a83ca79f1672afb549358a680688ea35d4de5c489f74a50dcf2407c108e"
+    },
+    {
+      "name": "numerical_trace_call_7.csv",
+      "rows": 3748,
+      "byte_identical": true,
+      "sha256_first": "c3541b7b481a80c30e333b6885e89d0679aac33b29463a613d7174a10666b015",
+      "sha256_second": "c3541b7b481a80c30e333b6885e89d0679aac33b29463a613d7174a10666b015"
+    }
+  ]
+}

@@ -3,12 +3,13 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stage 0 integrated in PR #1; stage 1 candidate implementation
-and tests are available in a draft delivery tracked by issue #2. Strict Eistute
-numerical comparison fails in the unchanged baseline as well as before/after
-the candidate. Keep the gate failing; do not infer numerical equivalence solely
-from identical six-significant-digit OBJ files. Per-incidence boundary coverage
-remains open. Stages 2–11 have not started.
+Current status: stage 0 integrated in PR #1; stage 1 remains the sole active
+work item (issue #2, draft PR #3). The Eistute numerical instability was isolated
+to pointer-ordered Laplacian sums. A documented logical-edge-order defect repair
+passes strict repetitions and controlled reference comparisons for Eistute and
+Book. Original-reference differences remain recorded; no tolerance was relaxed.
+Per-incidence boundary coverage remains the integration blocker. Stages 2-11
+have not started. See evidence/STAGE1_SMOOTHING_ORDER.md.
 
 ## Non-negotiable boundary
 

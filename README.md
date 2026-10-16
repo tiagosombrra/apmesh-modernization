@@ -45,10 +45,13 @@ python tools/verify_generation.py build/candidate/eistute --baseline build/basel
 python tools/repeat_generation.py --exe build/baseline/bin/ap_mesh --model eistute --output build/repeat-eistute --report repeat.json
 ```
 
-Integration is blocked: the original Eistute executable varies in numerical
-reports even with identical configuration and command. Exact OBJ files and
-accept/reject steps alone do not establish numerical repeatability. See
-docs/evidence/STAGE1_VALIDATION.md. No tolerance was relaxed.
+The Eistute repeatability defect was traced to pointer-ordered Laplacian sums.
+The draft now orders those sums by unique logical edge ID. Strict repetitions
+and controlled reference comparisons pass for Eistute and Book without relaxing
+tolerances. This is an explicit behavior-changing defect repair; the original
+reference's numerical differences remain recorded. See
+[the follow-up evidence](docs/evidence/STAGE1_SMOOTHING_ORDER.md).
+Integration remains blocked by missing per-incidence boundary validation.
 
 ## Repository policy
 

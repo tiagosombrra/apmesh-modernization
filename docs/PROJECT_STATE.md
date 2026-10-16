@@ -33,17 +33,27 @@ strict before/after comparisons and exact-configuration repeatability tooling.
 
 Executed: GCC serial build, 38 Python controls, 23 real invalid-input controls,
 three valid shipped model grammars, six valid configuration controls and CTest
-4/4. New C++ validator/consumer formatting and consumer clang-tidy passed.
-Book preserved every OBJ and all decision/metric fields. Eistute preserved every
-OBJ and accepted/rejected steps, but strict numerical-report comparison failed.
-The unchanged reference executable also varies numerically between repetitions,
-including runs with identical configuration bytes, command and output paths.
-See `docs/evidence/STAGE1_VALIDATION.md` and its JSON evidence.
+5/5. New C++ header/probe formatting and consumer clang-tidy passed.
 
-Next action: localize the pre-existing numerical instability without changing
-formulas, iteration ordering, stopping thresholds or comparison tolerances.
-Keep the strict failing gate and draft PR until the discrepancy is explained
-and the required comparison passes. No root cause is asserted yet.
+Numerical root cause proved: EdgeSet orders Edge* addresses, so identical
+Laplacian inputs were summed in different orders. A full-precision trace found
+5,685 different sums with otherwise identical inputs in 424,144 aligned vertex
+visits. The draft now sorts adjacency by unique edge ID and rejects ambiguous
+IDs. This is a behavior-changing defect repair, not a numerical-neutral refactor.
+Formulas, weights, thresholds, vertex iteration, quality checks and acceptance
+policy remain unchanged. No tolerance was relaxed.
+
+Strict Eistute/Book candidate repetitions pass: 5/4 identical OBJ files and all
+CSV/decision fields equal. The controlled reference (main plus only the same
+smoothing-order repair) also repeats exactly for Eistute and compares exactly
+with the input-validation candidate for both cases. Last accepted stage remains
+1: Eistute 1,168 triangles, Book 4,418. Original-reference Eistute comparison
+still fails in 43 fields and remains recorded; Book remains exact. See
+`docs/evidence/STAGE1_SMOOTHING_ORDER.md` and its source/executable manifests.
+
+Next action: export and independently check every shared-boundary incidence,
+including reversed orientations and non-manifold sheets. Keep draft PR #3 and
+main unchanged until that gate and the declared regression checks pass.
 
 Per-incidence boundary validation also remains open: legacy OBJ lacks patch
 incidence labels, and synchronized legacy reports compare zero curve groups.
@@ -53,8 +63,8 @@ Do not mark stage 1 complete or begin stage 2 while this work item is open.
 
 ## Open blockers and limitations
 
-- Main still has the historical input/verifier defects. The stage 1 draft repairs
-  those defects, but integration is blocked by reference numerical repeatability.
+- Main still has the historical input/verifier and pointer-order defects. The
+  draft repairs them; integration is blocked by missing boundary incidence proof.
 - Compatibility instrumentation may record zero compared groups; the new checker
   rejects such a report but does not repair the instrumentation itself.
 - Ownership findings, timers, duplicate mesh representations, VLAs and warning

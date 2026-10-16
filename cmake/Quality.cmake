@@ -13,6 +13,12 @@ if(BUILD_TESTING)
   add_executable(input_validation_probe "${CMAKE_SOURCE_DIR}/tests/input_validation_probe.cpp")
   target_compile_features(input_validation_probe PRIVATE cxx_std_17)
   target_include_directories(input_validation_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
+  add_executable(smoothing_adjacency_probe "${CMAKE_SOURCE_DIR}/tests/smoothing_adjacency_probe.cpp")
+  target_compile_features(smoothing_adjacency_probe PRIVATE cxx_std_17)
+  target_include_directories(smoothing_adjacency_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
+  add_test(NAME application.smoothing_adjacency_order COMMAND smoothing_adjacency_probe)
+  set_tests_properties(application.smoothing_adjacency_order
+    PROPERTIES LABELS "application;numerical-control" TIMEOUT 30)
   add_test(NAME application.valid_input_grammar
     COMMAND input_validation_probe
       "${CMAKE_SOURCE_DIR}/input_models/eistute2.fixed.bp"

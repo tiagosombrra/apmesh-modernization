@@ -1,3 +1,8 @@
+> Historical validation record for PR #3 at 7853dd3. The follow-up in
+> STAGE1_SMOOTHING_ORDER.md isolates and repairs the numerical repeatability
+> defect. The failures below remain unchanged evidence. Per-incidence boundary
+> coverage still blocks integration.
+
 # Stage 1 draft validation: repairs implemented, integration blocked
 
 Date: 2026-10-16 UTC / 2026-10-15 America/Fortaleza.

@@ -1,3 +1,4 @@
+#include "../../../include/crab_mesh/aft/smoothing_adjacency.h"
 #include "../../../include/crab_mesh/aft/advancing_front.h"
 
 #include <cfloat>
@@ -739,13 +740,7 @@ Edge *AdvancingFront::findEdge(Vertex *v1, Vertex *v2) {
 }
 
 EdgeList AdvancingFront::findAdjacentEdges(Vertex *v) {
-  EdgeList adjacency;
-
-  EdgeSet adjacentEdges = v->getAdjacentEdges();
-
-  adjacency.insert(adjacency.end(), adjacentEdges.begin(), adjacentEdges.end());
-
-  return adjacency;
+  return orderedSmoothingAdjacency(v->getAdjacentEdges());
 }
 
 FaceList AdvancingFront::findAdjacentFaces(const FaceList &faces, Vertex *v) {

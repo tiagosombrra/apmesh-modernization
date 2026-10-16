@@ -54,7 +54,11 @@ does not change meshing, adaptation or scientific acceptance thresholds.
 Strict regression additionally requires identical OBJ hashes, all decision
 fields, all CSV fields, accepted/rejected steps, final attempt reason and source
 configuration hash. Numerical report differences fail; no new numeric tolerance
-is introduced to conceal the current Eistute repeatability blocker.
+is introduced to conceal a discrepancy. The original reference's failed
+repetitions remain evidence. The isolated smoothing-order defect repair is
+qualified separately: compare the input-validation candidate against a reference
+with only the same logical-order repair, require exact repetition of both, and
+retain the original-reference differences. See evidence/STAGE1_SMOOTHING_ORDER.md.
 
 ## Boundary coverage limit
 
