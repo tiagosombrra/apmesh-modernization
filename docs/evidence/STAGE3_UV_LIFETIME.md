@@ -121,8 +121,9 @@ python tools/repeat_generation.py --exe build/local-serial/bin/ap_mesh.exe --mod
 ## Closure boundary and remaining work
 
 Code, contracts, tests, source identities, source inventory, scientific scope
-and failure inventory are audited at this candidate checkpoint. Exact published
-head and post-merge gates are still required before work-item closure. Large CRT
+and failure inventory were audited at this candidate checkpoint. Exact published
+head and post-merge gates subsequently passed; see
+[integration closure](STAGE3_UV_CLOSURE.md) and its retained reports. Large CRT
 object dumps stay local with raw hashes; compact diagnostic excerpts and failed
 baseline status are retained. Missing ASan leak coverage is not treated as a
 pass: separate CRT retained-block measurements provide the bounded evidence.

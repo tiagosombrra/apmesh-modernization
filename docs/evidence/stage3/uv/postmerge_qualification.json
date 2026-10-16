@@ -1,0 +1,599 @@
+{
+  "status": "passed",
+  "revision": "5bfcadaaa2172c297448c9870c0f468feeae8f4a",
+  "entry_main": "0f2473622800907e2d15e1d5ab6216caedb36797",
+  "entry_tree": "ddde9c8a1ebb930c2890b0cc098ec698beb1cf1c",
+  "ctest": {
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0
+  },
+  "python_controls": 74,
+  "uv_memory": {
+    "status": "passed",
+    "scope": "14 actual UV/curve/numerical production units; isolated ASan invalid-access and Debug CRT retained-block/allocation-hook coverage. Not full application, LSan, UBSan or arbitrary exception safety.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\RelWithDebInfo\\uv_lifetime_probe.exe",
+        "sha256": "7256c64d5e515bdb22770cf7c014f155be11a9a3e3631d72414e82eb0cc7fe44"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-crt\\Debug\\uv_lifetime_probe.exe",
+        "sha256": "5dbc4e645da8330af61250e10697d7acd0bc8cbea57443c675e3f6ef0ac5968a"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "normal",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "partial",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "exception",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "1dc2dbcb8e2ac38719f7bd177981f81f8fc2abe78923d6b39789bc25b9c7c7bc"
+      },
+      {
+        "instrument": "asan",
+        "mode": "topology-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "pending-tree",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-contract",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-order",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "midpoint-alias",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0",
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "990c0db89a4df29dfb5fa1b4eb3715170a8abeda6d97c98f60dc4c726c2a9e5d"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "partial",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "exception",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "ea788692f9f97777ad252f7551aae078e2c21c81c1e28f84cf596e259e0a1427"
+      },
+      {
+        "instrument": "crt",
+        "mode": "topology-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "pending-tree",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-contract",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-order",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "midpoint-alias",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0",
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "641a31309ee2441e9eface31f7236d5a9c0fb7500f6b350a53964cff628ac2e0"
+      },
+      {
+        "instrument": "crt",
+        "mode": "teardown-allocation",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "teardown_allocation_attempts=0"
+        ],
+        "log_sha256": "3875b8bd074b85dc04e96e83ef494ee5799e74bd81e2aeaca02b03b8b776d7c5"
+      },
+      {
+        "instrument": "crt",
+        "mode": "allocation-hook-control",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_hook_control=detected"
+        ],
+        "log_sha256": "aa4d95fe8a89fefb071a9ad83d6d6e7f45caef2e314f6094e66c13033fa20f2f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-allocation-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "transfer_allocation_failures=3 measured_allocations=342"
+        ],
+        "log_sha256": "ffa573c9ec64b128bf72bbb302e948947dd1a387ddf8aaf75e059725880e33b5"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "01522945625df72fab3071b5a8fa619d38d73c77d4625d644a30d7b2eb66c321"
+      },
+      {
+        "instrument": "asan",
+        "mode": "shared-delete",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "b787dff7b5b1b88fd24aac11c3148ca3091768858ad15f3c331ea33efc21fbb6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "retained_blocks": 3,
+        "retained_bytes": 112,
+        "observations": [],
+        "log_sha256": "88457e13ea06da9d296dc8162b74fbe6977dd00e594deaa190272417eb0dab37"
+      }
+    ]
+  },
+  "previous_node_boundary": {
+    "status": "passed",
+    "scope": "Isolated actual physical node/submesh/triangle production sources; no whole-application or UBSan/LSan qualification.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-node-msvc\\RelWithDebInfo\\node_lifetime_probe.exe",
+        "sha256": "7b7dedfa359eeea0ed4754d94e16dd8cd7aeaca2c335f6780ceea4fee989f844"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-node-crt\\Debug\\node_lifetime_probe.exe",
+        "sha256": "ce577b21cfb9bd3c5c9259a8ba1f7fe0b66404f972719dc9bd3874e90a58ae6a"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "log_sha256": "141e8fbd9c2ffff499edfa54b524ea0c4302b9a43e837856297a3406aa2f4d7e"
+      },
+      {
+        "instrument": "asan",
+        "mode": "double-free",
+        "exit_code": 1,
+        "expected_diagnostic": "attempting double-free",
+        "passed": true,
+        "log_sha256": "6b17abbddfdb7b596ba22fe5f0d8a640ccba4abc1231a85dde2adbd1eecfc46c"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "log_sha256": "9d30e3b1360d202c93b0a1580c3a0b486d5a9a590b2f439f4b76a760c1ad4dbf"
+      }
+    ]
+  },
+  "models": {
+    "eistute": {
+      "repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "6cbb57bbfed033ebf5b8b11a359a628fbf92b1d1273fab357ca94511f026a8e8",
+        "configuration_sha256": "bbfeffc4dbe2e7c991a4b428cb6cf4ed77239dd26ff1b2a97139d35a7e1ff403"
+      },
+      "entry_repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "b1244378f7638d4508df04d76e091615a62158d76a5a1f7068b1079321d46adf",
+        "configuration_sha256": "e4831247ebc1aebf9c5ebd335437504bad5e4de39f0ec011d47693459fab0f5d"
+      },
+      "strict_vs_entry": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "entry_vs_previous_slice": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 5,
+        "compared_fields": 105,
+        "differences": []
+      },
+      "run_identity": {
+        "model": "eistute",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 24.96694430000207,
+        "executable_sha256": "6cbb57bbfed033ebf5b8b11a359a628fbf92b1d1273fab357ca94511f026a8e8",
+        "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+        "input_model": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\input_models\\eistute2.fixed.bp",
+        "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-postmerge-eistute-repeat\\working\\article.conf"
+        ]
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3,
+        4
+      ]
+    },
+    "book": {
+      "repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "6cbb57bbfed033ebf5b8b11a359a628fbf92b1d1273fab357ca94511f026a8e8",
+        "configuration_sha256": "d0cb7c0ab5bf5c708e16bfb918834df28e23a3ea4cb0c13ff35ef6f1ee1da046"
+      },
+      "entry_repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "b1244378f7638d4508df04d76e091615a62158d76a5a1f7068b1079321d46adf",
+        "configuration_sha256": "460e26c51e1845c9295afb3fabc8883ff91cc77ae4673567938b604ef0dbcec9"
+      },
+      "strict_vs_entry": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "entry_vs_previous_slice": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 4,
+        "compared_fields": 84,
+        "differences": []
+      },
+      "run_identity": {
+        "model": "book",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 7.036396200004674,
+        "executable_sha256": "6cbb57bbfed033ebf5b8b11a359a628fbf92b1d1273fab357ca94511f026a8e8",
+        "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+        "input_model": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\input_models\\book_v7a.bp",
+        "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-postmerge-book-repeat\\working\\article.conf"
+        ]
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3
+      ]
+    }
+  },
+  "source_inventory_sha256": "3334095992429aa422555362aa96d3f15bdf7397d8b734b7ac464aa543ced351",
+  "log_sha256": {
+    "postmerge-ctest.log": "b5bfa3d711ea3e24e7cbc201c60cd6ab2d87fddefedf79cad6af7d098c100c96",
+    "postmerge-inventory.log": "76f5c01066d5aecbaf99fe8226bc3f156774a7bdd3cece68ff8e809cee100294",
+    "postmerge-tidy.log": "387fa14890e50c98f9a1f6d372ec66b9e237d76af8bdaacbc4ed4df40249d1c4"
+  }
+}

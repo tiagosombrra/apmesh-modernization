@@ -4,8 +4,8 @@
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slice 1 is integrated; slice 2 adds a qualified candidate UV target.
-The current candidate CTest passes 11/11 with zero skips and 74 Python controls,
+Stage 3 slices 1 and 2 are integrated with qualified node and UV targets.
+The current CTest passes 11/11 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
@@ -136,7 +136,7 @@ compiling 14 actual production units. `tools/qualify_uv_lifetime.py` requires
 26 ASan/Debug CRT cases, including deliberate invalid access/leak controls,
 pending-template cleanup, ordered ownership transfer, midpoint aliases and
 allocation-denied teardown/transfer preparation. The same runner fails the
-pinned original. Candidate results do not qualify arbitrary allocation failure,
+pinned original. The bounded results do not qualify arbitrary allocation failure,
 every template pattern or the full application. Commands and exact-head closure
 requirements: [UV lifetime evidence](evidence/STAGE3_UV_LIFETIME.md).
 
