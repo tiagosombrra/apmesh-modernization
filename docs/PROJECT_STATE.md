@@ -14,9 +14,10 @@ Scope: implementation modernization preserving the published technique.
   optional staged-byte hook, CMake presets and meaningful CTest registration.
 - Compatibility-report checker rejects empty or zero-comparison coverage.
 
-## Active work item
+## Delivery status
 
-Stage 0 bootstrap publication and exact-revision verification. See
+Stage 0 implementation is complete and locally validated. Publication and
+integration are tracked in GitHub PR #1. See
 `docs/evidence/BOOTSTRAP_VALIDATION.md` for executed checks and limitations.
 No automatic hosted workflows or paid Actions have been created.
 
