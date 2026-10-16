@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "model": "eistute",
+  "compared_meshes": 5,
+  "all_obj_byte_identical": true,
+  "all_acceptance_fields_equal": true,
+  "last_accepted_step": 1,
+  "last_accepted_triangles": 1168,
+  "boundary_incidence_coverage": "verified",
+  "boundary_regression": "exact",
+  "same_executable_same_configuration_same_command": true,
+  "executable_sha256": "8feffcafe43790759897d2bbad6e5f4da6ad2f587379e72a403524158650c9a5",
+  "configuration_sha256": "541f8d0fb9d7f6c14668ec203e421d349d31e528abb3e4ebeb230b4f98fafe64"
+}

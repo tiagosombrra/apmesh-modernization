@@ -18,6 +18,7 @@
 #include "../include/data/vertex_adaptive.h"
 #include "../include/generator/generator_adaptive.h"
 #include "../include/input_output/models_3d.h"
+#include "../include/input_output/input_validation.h"
 #include "../include/input_output/patch_reader.h"
 #include "../include/timer/timer.h"
 
@@ -306,7 +307,7 @@ std::unordered_map<std::string, std::string> ReadConfigFile(
   std::ifstream file(path.c_str());
   std::unordered_map<std::string, std::string> values;
   if (!file.is_open()) {
-    throw std::runtime_error("Nao foi possivel abrir config: " + path);
+    throw std::runtime_error("Cannot open configuration: " + path);
   }
   std::string line;
   while (std::getline(file, line)) {
@@ -316,13 +317,17 @@ std::unordered_map<std::string, std::string> ReadConfigFile(
     }
     const size_t equal_pos = trimmed.find('=');
     if (equal_pos == std::string::npos) {
-      continue;
+      throw std::runtime_error("Expected KEY=VALUE in configuration: " + trimmed);
     }
     const std::string key = Trim(trimmed.substr(0, equal_pos));
     const std::string value = Trim(trimmed.substr(equal_pos + 1));
-    if (!key.empty()) {
-      values[key] = value;
+    apmesh::io::ValidateConfigValue(key, value);
+    if (!values.emplace(key, value).second) {
+      throw std::runtime_error("Duplicate configuration key: " + key);
     }
+  }
+  if (file.bad()) {
+    throw std::runtime_error("Cannot read configuration: " + path);
   }
   return values;
 }
@@ -442,7 +447,7 @@ RuntimeConfig LoadRuntimeConfig(const std::string& path) {
 
   if (config.input_model.empty() || config.output_prefix.empty()) {
     throw std::runtime_error(
-        "Config incompleta: INPUT_MODEL e OUTPUT_PREFIX sao obrigatorios");
+        "INPUT_MODEL and OUTPUT_PREFIX are required");
   }
 
   config.adaptive_intensity =
@@ -558,7 +563,7 @@ int main(int argc, char **argv) {
 #endif
 
   const bool config_mode =
-      (argc >= 3 && std::string(argv[1]) == "--config");
+      (argc == 3 && std::string(argv[1]) == "--config");
   if (config_mode) {
     try {
       const RuntimeConfig config = LoadRuntimeConfig(argv[2]);
@@ -613,13 +618,12 @@ int main(int argc, char **argv) {
       }
       return run_rc;
     } catch (const std::exception& ex) {
-      cout << "Erro ao carregar config: " << ex.what() << endl;
+      std::cerr << "Error: input or configuration failure: " << ex.what() << std::endl;
       return -1;
     }
   }
 
-  cout << "Erro: execucao legada por argv foi removida." << endl;
-  cout << "Use: apmesh --config <arquivo.conf>" << endl;
+  std::cerr << "Error: expected ap_mesh --config <configuration.conf>" << std::endl;
 #if USE_MPI
   MPI_Finalize();
 #endif

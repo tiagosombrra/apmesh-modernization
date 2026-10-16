@@ -12,7 +12,7 @@ class TriangleAdaptive : public ElementAdaptive {
   TriangleAdaptive();
   // será construído no sentido n1->n2->n3
   TriangleAdaptive(NodeAdaptive* n1, NodeAdaptive* n2, NodeAdaptive* n3);
-  virtual ~TriangleAdaptive();
+  ~TriangleAdaptive() override;
 
   void CalculateArea() override;    // OBS: Não normalizar a normal!!!!
   void CalculateNormal() override;  // OBS: Não normalizar a normal!

@@ -27,10 +27,24 @@ ctest --preset local-serial
 python tools/quality.py doctor
 ```
 
-The CTest suite currently checks tooling controls and the archived Eistute
-artifact. It does not yet establish accepted-state scientific regression or
-full memory safety. Commands fail on empty test discovery. Doxygen, full lint,
-sanitizer campaigns, C++23 migration and Eigen replacement remain planned work.
+The local suite has nine required tooling, input, geometry, orientation and
+report-semantics tests. clang-tidy is required for its real header-scope controls;
+LLVM 22.1.8 is the qualified version. Commands fail on empty discovery or missing
+tools. Full memory safety, legacy lint cleanup, Doxygen, C++23 and Eigen removal
+remain later work.
+
+## Stage 1 closure candidate
+
+Strict Eistute/Book repetition and independent accepted-state/boundary validation
+pass. Actual reversed curved/non-manifold generation and named CSV semantics
+now pass their previously failing gates. Pointer-order smoothing, reversed
+incidences, corner arcs and CSV labels are explicitly classified defect repairs.
+Raw prior-version failures remain stored; strict minimally corrected reference
+comparisons pass without relaxed tolerances. See
+[the repair and regression evidence](docs/evidence/STAGE1_ORIENTATION_REPAIR.md).
+
+PR #3 still requires exact-head audit and post-merge validation before stage 2.
+See [project state](docs/PROJECT_STATE.md) for the recorded integration status.
 
 ## Repository policy
 

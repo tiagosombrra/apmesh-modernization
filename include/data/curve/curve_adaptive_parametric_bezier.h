@@ -15,7 +15,7 @@ class CurveAdaptiveParametricBezier : public CurveAdaptiveParametric {
                                 const PointAdaptive point2,
                                 const PointAdaptive point3);
   explicit CurveAdaptiveParametricBezier(CurveAdaptiveParametricBezier *);
-  ~CurveAdaptiveParametricBezier();
+  ~CurveAdaptiveParametricBezier() override;
 
   double CalculateCurvature(double parameter) override;
 

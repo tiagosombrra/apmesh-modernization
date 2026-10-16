@@ -1,0 +1,779 @@
+[
+  {
+    "label": "baseline",
+    "model": "eistute",
+    "process": {
+      "model": "eistute",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 23.093938499994692,
+      "executable_sha256": "38811329b8e776f1818303e2cdd7b92cbd8e2669f7bfe7129bfeb31a6927a45d",
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "relocated_keys": [
+        "INPUT_MODEL",
+        "OUTPUT_PREFIX"
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-baseline.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\baseline\\eistute\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3,
+      4
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 20,
+        "triangles": 16,
+        "quality_min_3d": 0.07530967163572758,
+        "quality_mean_3d": 0.5854942639742902,
+        "boundary_edges_by_index": 16,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7857f37f5e3f901debc39101ee0256e89a6447bc2009cc60eada11ce11f830fc",
+        "csv_node_incidences": 20
+      },
+      "1": {
+        "vertices": 638,
+        "triangles": 1168,
+        "quality_min_3d": 0.19211749119927266,
+        "quality_mean_3d": 0.6747211131408297,
+        "boundary_edges_by_index": 124,
+        "nonmanifold_edges_by_index": 9,
+        "sha256": "f738e7757ff21daed664dde8db1ee9250e2b61d1728fbc749cab6463e7185509",
+        "csv_node_incidences": 668
+      },
+      "2": {
+        "vertices": 1093,
+        "triangles": 2008,
+        "quality_min_3d": 0.1806122234630574,
+        "quality_mean_3d": 0.6720753914498974,
+        "boundary_edges_by_index": 208,
+        "nonmanifold_edges_by_index": 16,
+        "sha256": "027201058789466170eb0e829501150a27684bdbc7504b2eef98b0dd23aa43cd",
+        "csv_node_incidences": 1144
+      },
+      "3": {
+        "vertices": 1191,
+        "triangles": 2196,
+        "quality_min_3d": 0.18179748019948175,
+        "quality_mean_3d": 0.6666801684028403,
+        "boundary_edges_by_index": 220,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "6f5eb5b87341d78f76dffb8c13e4df548680065b511614c2f8ba89f0e13857b0",
+        "csv_node_incidences": 1248
+      },
+      "4": {
+        "vertices": 3691,
+        "triangles": 7184,
+        "quality_min_3d": 0.13000827773553444,
+        "quality_mean_3d": 0.6276193261886501,
+        "boundary_edges_by_index": 232,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "c0c55cbdf473233408dd21a9a17b542adee12f969e187abaea8116f103080e18",
+        "csv_node_incidences": 3748
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "0.285481",
+      "1": "0.0620594",
+      "2": "0.0775291",
+      "3": "0.0746173",
+      "4": "0.0104805"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  },
+  {
+    "label": "baseline",
+    "model": "book",
+    "process": {
+      "model": "book",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 5.706250600000203,
+      "executable_sha256": "38811329b8e776f1818303e2cdd7b92cbd8e2669f7bfe7129bfeb31a6927a45d",
+      "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+      "relocated_keys": [
+        "INPUT_MODEL",
+        "OUTPUT_PREFIX"
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-baseline.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\baseline\\book\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 140,
+        "triangles": 112,
+        "quality_min_3d": 0.3759665299398476,
+        "quality_mean_3d": 0.6956916213597163,
+        "boundary_edges_by_index": 112,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7e8876fef33788d235be82602005a1472a4f9e14580798c66989b09990ac1c69",
+        "csv_node_incidences": 140
+      },
+      "1": {
+        "vertices": 2417,
+        "triangles": 4418,
+        "quality_min_3d": 0.40735839430490683,
+        "quality_mean_3d": 0.7387696774794412,
+        "boundary_edges_by_index": 700,
+        "nonmanifold_edges_by_index": 11,
+        "sha256": "a07c365903ec17520252ced4c0decacd3b1da2990f2127751ac472d70d775aa0",
+        "csv_node_incidences": 2741
+      },
+      "2": {
+        "vertices": 11770,
+        "triangles": 21874,
+        "quality_min_3d": 0.061352806999263994,
+        "quality_mean_3d": 0.5617724953061424,
+        "boundary_edges_by_index": 5382,
+        "nonmanifold_edges_by_index": 143,
+        "sha256": "24a69c17d6bf5af0910cff6f3dae4717e6cbb588f5d54cd0e62f7cd4c2ff051c",
+        "csv_node_incidences": 15658
+      },
+      "3": {
+        "vertices": 11798,
+        "triangles": 21930,
+        "quality_min_3d": 0.061352806999263994,
+        "quality_mean_3d": 0.5612182598697383,
+        "boundary_edges_by_index": 5382,
+        "nonmanifold_edges_by_index": 143,
+        "sha256": "a15398ba684e6cfb1657afd3ba27d1e322f37dcd1b9a554adf76210bc512677a",
+        "csv_node_incidences": 15686
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "51.5505",
+      "1": "36.9887",
+      "2": "189.627",
+      "3": "189.172"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  },
+  {
+    "label": "baseline-repeat",
+    "model": "eistute",
+    "process": {
+      "model": "eistute",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 26.784236799998325,
+      "executable_sha256": "38811329b8e776f1818303e2cdd7b92cbd8e2669f7bfe7129bfeb31a6927a45d",
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "relocated_keys": [
+        "INPUT_MODEL",
+        "OUTPUT_PREFIX"
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-baseline.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\baseline-repeat\\eistute\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3,
+      4
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 20,
+        "triangles": 16,
+        "quality_min_3d": 0.07530967163572758,
+        "quality_mean_3d": 0.5854942639742902,
+        "boundary_edges_by_index": 16,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7857f37f5e3f901debc39101ee0256e89a6447bc2009cc60eada11ce11f830fc",
+        "csv_node_incidences": 20
+      },
+      "1": {
+        "vertices": 638,
+        "triangles": 1168,
+        "quality_min_3d": 0.19211749119927266,
+        "quality_mean_3d": 0.6747211131408297,
+        "boundary_edges_by_index": 124,
+        "nonmanifold_edges_by_index": 9,
+        "sha256": "f738e7757ff21daed664dde8db1ee9250e2b61d1728fbc749cab6463e7185509",
+        "csv_node_incidences": 668
+      },
+      "2": {
+        "vertices": 1093,
+        "triangles": 2008,
+        "quality_min_3d": 0.1806122234630574,
+        "quality_mean_3d": 0.6720753914498974,
+        "boundary_edges_by_index": 208,
+        "nonmanifold_edges_by_index": 16,
+        "sha256": "027201058789466170eb0e829501150a27684bdbc7504b2eef98b0dd23aa43cd",
+        "csv_node_incidences": 1144
+      },
+      "3": {
+        "vertices": 1191,
+        "triangles": 2196,
+        "quality_min_3d": 0.18179748019948175,
+        "quality_mean_3d": 0.6666801684028403,
+        "boundary_edges_by_index": 220,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "6f5eb5b87341d78f76dffb8c13e4df548680065b511614c2f8ba89f0e13857b0",
+        "csv_node_incidences": 1248
+      },
+      "4": {
+        "vertices": 3691,
+        "triangles": 7184,
+        "quality_min_3d": 0.13000827773553444,
+        "quality_mean_3d": 0.6276193261886501,
+        "boundary_edges_by_index": 232,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "c0c55cbdf473233408dd21a9a17b542adee12f969e187abaea8116f103080e18",
+        "csv_node_incidences": 3748
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "0.285481",
+      "1": "0.0620633",
+      "2": "0.0775294",
+      "3": "0.0746173",
+      "4": "0.0104806"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  },
+  {
+    "label": "candidate",
+    "model": "eistute",
+    "process": {
+      "model": "eistute",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 23.437787499999104,
+      "executable_sha256": "899ab3405764ddd4c06ba1c84da3f82c9ebe9fe7a48a556874e5ff33f421321b",
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "relocated_keys": [
+        "INPUT_MODEL",
+        "OUTPUT_PREFIX"
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\candidate\\eistute\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3,
+      4
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 20,
+        "triangles": 16,
+        "quality_min_3d": 0.07530967163572758,
+        "quality_mean_3d": 0.5854942639742902,
+        "boundary_edges_by_index": 16,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7857f37f5e3f901debc39101ee0256e89a6447bc2009cc60eada11ce11f830fc",
+        "csv_node_incidences": 20
+      },
+      "1": {
+        "vertices": 638,
+        "triangles": 1168,
+        "quality_min_3d": 0.19211749119927266,
+        "quality_mean_3d": 0.6747211131408297,
+        "boundary_edges_by_index": 124,
+        "nonmanifold_edges_by_index": 9,
+        "sha256": "f738e7757ff21daed664dde8db1ee9250e2b61d1728fbc749cab6463e7185509",
+        "csv_node_incidences": 668
+      },
+      "2": {
+        "vertices": 1093,
+        "triangles": 2008,
+        "quality_min_3d": 0.1806122234630574,
+        "quality_mean_3d": 0.6720753914498974,
+        "boundary_edges_by_index": 208,
+        "nonmanifold_edges_by_index": 16,
+        "sha256": "027201058789466170eb0e829501150a27684bdbc7504b2eef98b0dd23aa43cd",
+        "csv_node_incidences": 1144
+      },
+      "3": {
+        "vertices": 1191,
+        "triangles": 2196,
+        "quality_min_3d": 0.18179748019948175,
+        "quality_mean_3d": 0.6666801684028403,
+        "boundary_edges_by_index": 220,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "6f5eb5b87341d78f76dffb8c13e4df548680065b511614c2f8ba89f0e13857b0",
+        "csv_node_incidences": 1248
+      },
+      "4": {
+        "vertices": 3691,
+        "triangles": 7184,
+        "quality_min_3d": 0.13000827773553444,
+        "quality_mean_3d": 0.6276193261886501,
+        "boundary_edges_by_index": 232,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "c0c55cbdf473233408dd21a9a17b542adee12f969e187abaea8116f103080e18",
+        "csv_node_incidences": 3748
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "0.285481",
+      "1": "0.0620612",
+      "2": "0.0775291",
+      "3": "0.0746173",
+      "4": "0.0104806"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  },
+  {
+    "label": "candidate",
+    "model": "book",
+    "process": {
+      "model": "book",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 5.995780700002797,
+      "executable_sha256": "899ab3405764ddd4c06ba1c84da3f82c9ebe9fe7a48a556874e5ff33f421321b",
+      "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+      "relocated_keys": [
+        "INPUT_MODEL",
+        "OUTPUT_PREFIX"
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\candidate\\book\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 140,
+        "triangles": 112,
+        "quality_min_3d": 0.3759665299398476,
+        "quality_mean_3d": 0.6956916213597163,
+        "boundary_edges_by_index": 112,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7e8876fef33788d235be82602005a1472a4f9e14580798c66989b09990ac1c69",
+        "csv_node_incidences": 140
+      },
+      "1": {
+        "vertices": 2417,
+        "triangles": 4418,
+        "quality_min_3d": 0.40735839430490683,
+        "quality_mean_3d": 0.7387696774794412,
+        "boundary_edges_by_index": 700,
+        "nonmanifold_edges_by_index": 11,
+        "sha256": "a07c365903ec17520252ced4c0decacd3b1da2990f2127751ac472d70d775aa0",
+        "csv_node_incidences": 2741
+      },
+      "2": {
+        "vertices": 11770,
+        "triangles": 21874,
+        "quality_min_3d": 0.061352806999263994,
+        "quality_mean_3d": 0.5617724953061424,
+        "boundary_edges_by_index": 5382,
+        "nonmanifold_edges_by_index": 143,
+        "sha256": "24a69c17d6bf5af0910cff6f3dae4717e6cbb588f5d54cd0e62f7cd4c2ff051c",
+        "csv_node_incidences": 15658
+      },
+      "3": {
+        "vertices": 11798,
+        "triangles": 21930,
+        "quality_min_3d": 0.061352806999263994,
+        "quality_mean_3d": 0.5612182598697383,
+        "boundary_edges_by_index": 5382,
+        "nonmanifold_edges_by_index": 143,
+        "sha256": "a15398ba684e6cfb1657afd3ba27d1e322f37dcd1b9a554adf76210bc512677a",
+        "csv_node_incidences": 15686
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "51.5505",
+      "1": "36.9887",
+      "2": "189.627",
+      "3": "189.172"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  },
+  {
+    "label": "candidate-final",
+    "model": "eistute",
+    "process": {
+      "model": "eistute",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 23.619539699997404,
+      "executable_sha256": "68a9c3464203602d460dbbabe4858fe095ea128e1c5e51bf9b9157e22595e0cb",
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "relocated_keys": [
+        "INPUT_MODEL",
+        "OUTPUT_PREFIX"
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\candidate-final\\eistute\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3,
+      4
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 20,
+        "triangles": 16,
+        "quality_min_3d": 0.07530967163572758,
+        "quality_mean_3d": 0.5854942639742902,
+        "boundary_edges_by_index": 16,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7857f37f5e3f901debc39101ee0256e89a6447bc2009cc60eada11ce11f830fc",
+        "csv_node_incidences": 20
+      },
+      "1": {
+        "vertices": 638,
+        "triangles": 1168,
+        "quality_min_3d": 0.19211749119927266,
+        "quality_mean_3d": 0.6747211131408297,
+        "boundary_edges_by_index": 124,
+        "nonmanifold_edges_by_index": 9,
+        "sha256": "f738e7757ff21daed664dde8db1ee9250e2b61d1728fbc749cab6463e7185509",
+        "csv_node_incidences": 668
+      },
+      "2": {
+        "vertices": 1093,
+        "triangles": 2008,
+        "quality_min_3d": 0.1806122234630574,
+        "quality_mean_3d": 0.6720753914498974,
+        "boundary_edges_by_index": 208,
+        "nonmanifold_edges_by_index": 16,
+        "sha256": "027201058789466170eb0e829501150a27684bdbc7504b2eef98b0dd23aa43cd",
+        "csv_node_incidences": 1144
+      },
+      "3": {
+        "vertices": 1191,
+        "triangles": 2196,
+        "quality_min_3d": 0.18179748019948175,
+        "quality_mean_3d": 0.6666801684028403,
+        "boundary_edges_by_index": 220,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "6f5eb5b87341d78f76dffb8c13e4df548680065b511614c2f8ba89f0e13857b0",
+        "csv_node_incidences": 1248
+      },
+      "4": {
+        "vertices": 3691,
+        "triangles": 7184,
+        "quality_min_3d": 0.13000827773553444,
+        "quality_mean_3d": 0.6276193261886501,
+        "boundary_edges_by_index": 232,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "c0c55cbdf473233408dd21a9a17b542adee12f969e187abaea8116f103080e18",
+        "csv_node_incidences": 3748
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "0.285481",
+      "1": "0.0620635",
+      "2": "0.0775294",
+      "3": "0.0746173",
+      "4": "0.0104806"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  },
+  {
+    "label": "candidate-final",
+    "model": "book",
+    "process": {
+      "model": "book",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 6.2430105000021285,
+      "executable_sha256": "68a9c3464203602d460dbbabe4858fe095ea128e1c5e51bf9b9157e22595e0cb",
+      "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+      "relocated_keys": [
+        "INPUT_MODEL",
+        "OUTPUT_PREFIX"
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\candidate-final\\book\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 140,
+        "triangles": 112,
+        "quality_min_3d": 0.3759665299398476,
+        "quality_mean_3d": 0.6956916213597163,
+        "boundary_edges_by_index": 112,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7e8876fef33788d235be82602005a1472a4f9e14580798c66989b09990ac1c69",
+        "csv_node_incidences": 140
+      },
+      "1": {
+        "vertices": 2417,
+        "triangles": 4418,
+        "quality_min_3d": 0.40735839430490683,
+        "quality_mean_3d": 0.7387696774794412,
+        "boundary_edges_by_index": 700,
+        "nonmanifold_edges_by_index": 11,
+        "sha256": "a07c365903ec17520252ced4c0decacd3b1da2990f2127751ac472d70d775aa0",
+        "csv_node_incidences": 2741
+      },
+      "2": {
+        "vertices": 11770,
+        "triangles": 21874,
+        "quality_min_3d": 0.061352806999263994,
+        "quality_mean_3d": 0.5617724953061424,
+        "boundary_edges_by_index": 5382,
+        "nonmanifold_edges_by_index": 143,
+        "sha256": "24a69c17d6bf5af0910cff6f3dae4717e6cbb588f5d54cd0e62f7cd4c2ff051c",
+        "csv_node_incidences": 15658
+      },
+      "3": {
+        "vertices": 11798,
+        "triangles": 21930,
+        "quality_min_3d": 0.061352806999263994,
+        "quality_mean_3d": 0.5612182598697383,
+        "boundary_edges_by_index": 5382,
+        "nonmanifold_edges_by_index": 143,
+        "sha256": "a15398ba684e6cfb1657afd3ba27d1e322f37dcd1b9a554adf76210bc512677a",
+        "csv_node_incidences": 15686
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "51.5505",
+      "1": "36.9887",
+      "2": "189.627",
+      "3": "189.172"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  },
+  {
+    "label": "fixed-repetition-1",
+    "model": "eistute",
+    "process": {
+      "model": "eistute",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 23.706247399997665,
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "executable_sha256": "38811329b8e776f1818303e2cdd7b92cbd8e2669f7bfe7129bfeb31a6927a45d",
+      "configuration_sha256": "5f5aae039fe989d075216a17d366639baaef0b54315a837913f7717370904291",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-baseline.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\fixed-configuration\\eistute\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3,
+      4
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 20,
+        "triangles": 16,
+        "quality_min_3d": 0.07530967163572758,
+        "quality_mean_3d": 0.5854942639742902,
+        "boundary_edges_by_index": 16,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7857f37f5e3f901debc39101ee0256e89a6447bc2009cc60eada11ce11f830fc",
+        "csv_node_incidences": 20
+      },
+      "1": {
+        "vertices": 638,
+        "triangles": 1168,
+        "quality_min_3d": 0.19211749119927266,
+        "quality_mean_3d": 0.6747211131408297,
+        "boundary_edges_by_index": 124,
+        "nonmanifold_edges_by_index": 9,
+        "sha256": "f738e7757ff21daed664dde8db1ee9250e2b61d1728fbc749cab6463e7185509",
+        "csv_node_incidences": 668
+      },
+      "2": {
+        "vertices": 1093,
+        "triangles": 2008,
+        "quality_min_3d": 0.1806122234630574,
+        "quality_mean_3d": 0.6720753914498974,
+        "boundary_edges_by_index": 208,
+        "nonmanifold_edges_by_index": 16,
+        "sha256": "027201058789466170eb0e829501150a27684bdbc7504b2eef98b0dd23aa43cd",
+        "csv_node_incidences": 1144
+      },
+      "3": {
+        "vertices": 1191,
+        "triangles": 2196,
+        "quality_min_3d": 0.18179748019948175,
+        "quality_mean_3d": 0.6666801684028403,
+        "boundary_edges_by_index": 220,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "6f5eb5b87341d78f76dffb8c13e4df548680065b511614c2f8ba89f0e13857b0",
+        "csv_node_incidences": 1248
+      },
+      "4": {
+        "vertices": 3691,
+        "triangles": 7184,
+        "quality_min_3d": 0.13000827773553444,
+        "quality_mean_3d": 0.6276193261886501,
+        "boundary_edges_by_index": 232,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "c0c55cbdf473233408dd21a9a17b542adee12f969e187abaea8116f103080e18",
+        "csv_node_incidences": 3748
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "0.285481",
+      "1": "0.062065",
+      "2": "0.077527",
+      "3": "0.0746173",
+      "4": "0.0104806"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  },
+  {
+    "label": "fixed-repetition-2",
+    "model": "eistute",
+    "process": {
+      "model": "eistute",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 25.852442399998836,
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "executable_sha256": "38811329b8e776f1818303e2cdd7b92cbd8e2669f7bfe7129bfeb31a6927a45d",
+      "configuration_sha256": "5f5aae039fe989d075216a17d366639baaef0b54315a837913f7717370904291",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-baseline.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-campaign\\fixed-configuration\\eistute\\article.conf"
+      ]
+    },
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3,
+      4
+    ],
+    "last_accepted_step": 1,
+    "meshes": {
+      "0": {
+        "vertices": 20,
+        "triangles": 16,
+        "quality_min_3d": 0.07530967163572758,
+        "quality_mean_3d": 0.5854942639742902,
+        "boundary_edges_by_index": 16,
+        "nonmanifold_edges_by_index": 0,
+        "sha256": "7857f37f5e3f901debc39101ee0256e89a6447bc2009cc60eada11ce11f830fc",
+        "csv_node_incidences": 20
+      },
+      "1": {
+        "vertices": 638,
+        "triangles": 1168,
+        "quality_min_3d": 0.19211749119927266,
+        "quality_mean_3d": 0.6747211131408297,
+        "boundary_edges_by_index": 124,
+        "nonmanifold_edges_by_index": 9,
+        "sha256": "f738e7757ff21daed664dde8db1ee9250e2b61d1728fbc749cab6463e7185509",
+        "csv_node_incidences": 668
+      },
+      "2": {
+        "vertices": 1093,
+        "triangles": 2008,
+        "quality_min_3d": 0.1806122234630574,
+        "quality_mean_3d": 0.6720753914498974,
+        "boundary_edges_by_index": 208,
+        "nonmanifold_edges_by_index": 16,
+        "sha256": "027201058789466170eb0e829501150a27684bdbc7504b2eef98b0dd23aa43cd",
+        "csv_node_incidences": 1144
+      },
+      "3": {
+        "vertices": 1191,
+        "triangles": 2196,
+        "quality_min_3d": 0.18179748019948175,
+        "quality_mean_3d": 0.6666801684028403,
+        "boundary_edges_by_index": 220,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "6f5eb5b87341d78f76dffb8c13e4df548680065b511614c2f8ba89f0e13857b0",
+        "csv_node_incidences": 1248
+      },
+      "4": {
+        "vertices": 3691,
+        "triangles": 7184,
+        "quality_min_3d": 0.13000827773553444,
+        "quality_mean_3d": 0.6276193261886501,
+        "boundary_edges_by_index": 232,
+        "nonmanifold_edges_by_index": 18,
+        "sha256": "c0c55cbdf473233408dd21a9a17b542adee12f969e187abaea8116f103080e18",
+        "csv_node_incidences": 3748
+      }
+    },
+    "reported_error_by_stage": {
+      "0": "0.285481",
+      "1": "0.0620575",
+      "2": "0.0775281",
+      "3": "0.0746173",
+      "4": "0.0104806"
+    },
+    "boundary_incidence_coverage": "not_available_in_legacy_export"
+  }
+]

@@ -1,0 +1,318 @@
+{
+  "model": "eistute",
+  "status": "failed",
+  "differences": [
+    {
+      "field": "metrics.0.actual_element_growth",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.0.actual_elements_step",
+      "reference": "1",
+      "candidate": "16"
+    },
+    {
+      "field": "metrics.0.adaptation_relaxation",
+      "reference": "1",
+      "candidate": "0.3"
+    },
+    {
+      "field": "metrics.0.budget_driver_mode",
+      "reference": "0.3",
+      "candidate": "initial"
+    },
+    {
+      "field": "metrics.0.generation_control_mode",
+      "reference": "0",
+      "candidate": "initial"
+    },
+    {
+      "field": "metrics.0.local_budget_mode",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.0.patch_consistency_penalty",
+      "reference": "initial",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.0.target_element_growth",
+      "reference": "16",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.0.top_patch_candidate_count",
+      "reference": "initial",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.1.actual_element_growth",
+      "reference": "0.00019394",
+      "candidate": "73"
+    },
+    {
+      "field": "metrics.1.actual_elements_step",
+      "reference": "1.02",
+      "candidate": "1168"
+    },
+    {
+      "field": "metrics.1.adaptation_relaxation",
+      "reference": "1",
+      "candidate": "0.3"
+    },
+    {
+      "field": "metrics.1.budget_driver_mode",
+      "reference": "0.3",
+      "candidate": "budget_driven"
+    },
+    {
+      "field": "metrics.1.consistency_regularization_active",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.1.generation_control_mode",
+      "reference": "1",
+      "candidate": "repair"
+    },
+    {
+      "field": "metrics.1.local_budget_mode",
+      "reference": "1.02",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.1.patch_consistency_penalty",
+      "reference": "budget_driven",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.1.step_efficiency",
+      "reference": "0",
+      "candidate": "0.00019394"
+    },
+    {
+      "field": "metrics.1.target_element_growth",
+      "reference": "16.32",
+      "candidate": "1.02"
+    },
+    {
+      "field": "metrics.1.target_elements_step",
+      "reference": "1168",
+      "candidate": "16.32"
+    },
+    {
+      "field": "metrics.1.target_growth_step",
+      "reference": "73",
+      "candidate": "1.02"
+    },
+    {
+      "field": "metrics.1.top_patch_candidate_count",
+      "reference": "repair",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.2.actual_element_growth",
+      "reference": "-1.8412e-05",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.2.actual_elements_step",
+      "reference": "1.02",
+      "candidate": "2008"
+    },
+    {
+      "field": "metrics.2.adaptation_relaxation",
+      "reference": "1",
+      "candidate": "0.3"
+    },
+    {
+      "field": "metrics.2.budget_driver_mode",
+      "reference": "0.3",
+      "candidate": "budget_driven"
+    },
+    {
+      "field": "metrics.2.generation_control_mode",
+      "reference": "0",
+      "candidate": "repair"
+    },
+    {
+      "field": "metrics.2.improved_top_patches",
+      "reference": "4",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.2.local_budget_mode",
+      "reference": "1.02",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.2.patch_consistency_penalty",
+      "reference": "budget_driven",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.2.step_efficiency",
+      "reference": "0",
+      "candidate": "-1.8412e-05"
+    },
+    {
+      "field": "metrics.2.target_element_growth",
+      "reference": "1191.36",
+      "candidate": "1.02"
+    },
+    {
+      "field": "metrics.2.target_elements_step",
+      "reference": "2008",
+      "candidate": "1191.36"
+    },
+    {
+      "field": "metrics.2.target_growth_step",
+      "reference": "1",
+      "candidate": "1.02"
+    },
+    {
+      "field": "metrics.2.top_patch_candidate_count",
+      "reference": "repair",
+      "candidate": "4"
+    },
+    {
+      "field": "metrics.3.actual_element_growth",
+      "reference": "-1.2213e-05",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.3.actual_elements_step",
+      "reference": "1.02",
+      "candidate": "2196"
+    },
+    {
+      "field": "metrics.3.adaptation_relaxation",
+      "reference": "1",
+      "candidate": "0.3"
+    },
+    {
+      "field": "metrics.3.budget_driver_mode",
+      "reference": "0.3",
+      "candidate": "budget_driven"
+    },
+    {
+      "field": "metrics.3.generation_control_mode",
+      "reference": "0",
+      "candidate": "repair"
+    },
+    {
+      "field": "metrics.3.improved_top_patches",
+      "reference": "4",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.3.local_budget_mode",
+      "reference": "1.02",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.3.patch_consistency_penalty",
+      "reference": "budget_driven",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.3.step_efficiency",
+      "reference": "0",
+      "candidate": "-1.2213e-05"
+    },
+    {
+      "field": "metrics.3.target_element_growth",
+      "reference": "1191.36",
+      "candidate": "1.02"
+    },
+    {
+      "field": "metrics.3.target_elements_step",
+      "reference": "2196",
+      "candidate": "1191.36"
+    },
+    {
+      "field": "metrics.3.target_growth_step",
+      "reference": "1",
+      "candidate": "1.02"
+    },
+    {
+      "field": "metrics.3.top_patch_candidate_count",
+      "reference": "repair",
+      "candidate": "4"
+    },
+    {
+      "field": "metrics.4.actual_element_growth",
+      "reference": "8.57409e-06",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.4.actual_elements_step",
+      "reference": "1.02",
+      "candidate": "7184"
+    },
+    {
+      "field": "metrics.4.adaptation_relaxation",
+      "reference": "1",
+      "candidate": "0.3"
+    },
+    {
+      "field": "metrics.4.budget_driver_mode",
+      "reference": "0.3",
+      "candidate": "budget_driven"
+    },
+    {
+      "field": "metrics.4.consistency_regularization_active",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.4.generation_control_mode",
+      "reference": "1",
+      "candidate": "refine"
+    },
+    {
+      "field": "metrics.4.local_budget_mode",
+      "reference": "1.02",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.4.local_progress_coverage",
+      "reference": "4",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.4.patch_consistency_penalty",
+      "reference": "budget_driven",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.4.step_efficiency",
+      "reference": "1",
+      "candidate": "8.57409e-06"
+    },
+    {
+      "field": "metrics.4.target_element_growth",
+      "reference": "1191.36",
+      "candidate": "1.02"
+    },
+    {
+      "field": "metrics.4.target_elements_step",
+      "reference": "7184",
+      "candidate": "1191.36"
+    },
+    {
+      "field": "metrics.4.target_growth_step",
+      "reference": "1",
+      "candidate": "1.02"
+    },
+    {
+      "field": "metrics.4.top_patch_candidate_count",
+      "reference": "refine",
+      "candidate": "4"
+    }
+  ],
+  "all_obj_byte_identical": true,
+  "accepted_rejected_steps_equal": true
+}

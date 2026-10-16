@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "model": "eistute",
+  "compared_meshes": 5,
+  "all_obj_byte_identical": true,
+  "all_acceptance_fields_equal": true,
+  "last_accepted_step": 1,
+  "last_accepted_triangles": 1168,
+  "boundary_incidence_coverage": "not_available_in_legacy_export",
+  "same_executable_same_configuration_same_command": true,
+  "executable_sha256": "a71aab74416f52fb50799217dda32945d9b6368df8f0d0d693e43e01937e71a7",
+  "configuration_sha256": "bf178c02b0228878738376f2aa54ab9272dfac40be30e008c83c4a648eb85fbc"
+}

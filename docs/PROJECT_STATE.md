@@ -21,21 +21,53 @@ integration are tracked in GitHub PR #1. See
 `docs/evidence/BOOTSTRAP_VALIDATION.md` for executed checks and limitations.
 No automatic hosted workflows or paid Actions have been created.
 
-## Next work item: stage 1
+## Active work item: stage 1 (closure qualification)
 
-Audit remote main/branches/open PRs/checks, then implement explicit invalid-input
-failure and trustworthy accepted-state regression. Inspect the input failure path
-before changing behavior; reproduce the existing false success with a negative
-test. Keep publication artifacts, attempted candidates and accepted output separate.
-Check each boundary incidence independently; reject zero-coverage confirmation.
-Use the prior patch as evidence only, not an automatically accepted repair.
+Issue #2 and PR #3 remain the sole active delivery. Main is still
+`b4087a472015d6898687c0aeff444efb4f1a9524` before integration.
+Stage 0 was integrated through PR #1.
+
+Implemented: strict CLI/configuration/BP validation; independent accepted-state
+OBJ/CSV/log and per-incidence verification; exact repeatability; deterministic
+logical-edge smoothing order; coherent patch-incidence orientation through
+control-net construction, coarse mesh and adaptive reconstruction; physical arc
+mapping and corner-curve repair; corrected CSV header semantics.
+
+Closure candidate results: native Windows GCC 16.1.0 serial C++17 Release build
+PASS; CTest **9/9 PASS, zero skipped**; 65 Python controls, 23 invalid-input
+controls, 14 real orientation cases covering 44 attempted states, analytic
+constructor/arc tests and actual analyzer scope controls PASS. Selected exporter
+clang-tidy and changed C++ range formatting PASS. Vendor files are unchanged;
+first-party diagnostics remain errors and full legacy warning debt is open.
+
+Eistute and Book repeat exactly with fixed executable/configuration/command,
+including all acceptance/CSV fields, OBJ and incidence snapshots. Every attempted
+article state has positive shared-incidence coverage and zero measured position
+gap. Both models accept steps 0 and 1. Last accepted triangles: Eistute 1,168;
+Book 4,256. The Book change from 4,418 is an explicit corner-curve defect repair.
+Raw previous-candidate comparisons remain failed and retained, including CSV
+label corrections. Strict comparison to a reference with only the two minimal
+CSV/corner fixes passes for both models. No oracle or tolerance was relaxed.
+
+The previously required reversed-generation and CSV-schema failures are repaired.
+Historical failures remain evidence. Current detailed results and source/input/
+executable hashes: `docs/evidence/STAGE1_ORIENTATION_REPAIR.md` and
+`docs/evidence/stage1/orientation/`. Earlier incidence and smoothing reports are
+historical observations, not current gate status.
+
+Next: verify the exact published PR head, recheck remote concurrency/checks,
+integrate only with green required gates, and repeat regression on main. Record
+post-merge closure before starting stage 2's mesh/architecture inventory. Every
+stage requires the user's requested explicit audit and regression.
 
 ## Open blockers and limitations
 
-- Invalid input can still return success; historical generation verifier may
-  approve a rejected Eistute stage. These application defects are not fixed here.
-- Compatibility instrumentation may record zero compared groups; the new checker
-  rejects such a report but does not repair the instrumentation itself.
+- Integration and post-merge qualification remain pending until recorded on
+  the actual delivery revision. Prepublication passing checks alone do not close
+  the stage. Stages 2-11 have not begun.
+- Legacy compatibility summaries still compare zero groups when synchronized.
+  Independent incidence evidence now measures actual sheets and does not treat
+  that legacy zero as proof of compatibility.
 - Ownership findings, timers, duplicate mesh representations, VLAs and warning
   debt remain. No full-application leak-free claim is justified.
 - Eigen remains; CRABMesh consolidation, complete English renaming, generated

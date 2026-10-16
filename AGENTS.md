@@ -33,3 +33,10 @@ rejected candidates or unavailable tools as successful validation.
 Open reviewable PRs; merge only after required local gates pass on the exact
 head revision and remote checks, if configured, are green. Recheck after merge.
 Update plan/state and evidence with results, failures and remaining limitations.
+
+At the end of every stage, perform an explicit closure audit of the code, tests,
+contracts, documentation, scientific scope and known failure/coverage inventory.
+Run the required regression on the exact delivery revision, including negative
+controls and accepted/rejected traces. Record commands, hashes, results and
+unresolved findings. A failing or unmeasured required gate blocks stage closure
+and integration. After merge, repeat validation on main before the next stage.

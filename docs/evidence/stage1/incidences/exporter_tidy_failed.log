@@ -1,0 +1,82 @@
+62 warnings generated.
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Memory.h:107:19: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  107 |   if (original == 0) return 0;
+      |                   ^
+      |                   nullptr
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Memory.h:107:29: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  107 |   if (original == 0) return 0;
+      |                             ^
+      |                             nullptr
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Memory.h:129:14: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  129 |   if (ptr == 0) return handmade_aligned_malloc(size);
+      |              ^
+      |              nullptr
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Memory.h:133:19: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  133 |   if (original == 0) return 0;
+      |                   ^
+      |                   nullptr
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Memory.h:133:29: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  133 |   if (original == 0) return 0;
+      |                             ^
+      |                             nullptr
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Memory.h:913:58: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  913 |   pointer allocate(size_type num, const void* /*hint*/ = 0)
+      |                                                          ^
+      |                                                          nullptr
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Meta.h:669:120: error: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression,-warnings-as-errors]
+  669 |   template <typename C> static meta_yes testFunctor(C const *,typename enable_if<(sizeof(return_ptr<C>()->operator()())>0)>::type * = 0);
+      |                                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Meta.h:678:132: error: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression,-warnings-as-errors]
+  678 |   template <typename C> static meta_yes testFunctor(C const *,typename enable_if<(sizeof(return_ptr<C>()->operator()(IndexType(0)))>0)>::type * = 0);
+      |                                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/../../data/../../libs/Eigen/src/Core/util/Meta.h:687:145: error: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression,-warnings-as-errors]
+  687 |   template <typename C> static meta_yes testFunctor(C const *,typename enable_if<(sizeof(return_ptr<C>()->operator()(IndexType(0),IndexType(0)))>0)>::type * = 0);
+      |                                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/bisection_equation_root.h:21:18: error: prefer using 'override' or (rarely) 'final' instead of 'virtual' [modernize-use-override,-warnings-as-errors]
+   21 |   virtual double execute(EquationRootFunction *function);
+      |   ~~~~~~~        ^                                      
+      |                                                          override
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/bisection_equation_root.h:28:18: error: prefer using 'override' or (rarely) 'final' instead of 'virtual' [modernize-use-override,-warnings-as-errors]
+   28 |   virtual double execute(EquationRootFunction *function, int maxSteps,
+      |   ~~~~~~~        ^
+   29 |                          double tolerance, bool testFunction, bool testStepSize,
+   30 |                          bool &ok);
+      |                                   
+      |                                    override
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/bisection_equation_root.h:43:18: error: prefer using 'override' or (rarely) 'final' instead of 'virtual' [modernize-use-override,-warnings-as-errors]
+   43 |   virtual double execute(EquationRootFunction *function, int maxSteps,
+      |   ~~~~~~~        ^
+   44 |                          double tolerance, bool testFunction, bool testStepSize,
+   45 |                          bool &ok);
+      |                                   
+      |                                    override
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/bisection_equation_root.h:58:18: error: prefer using 'override' or (rarely) 'final' instead of 'virtual' [modernize-use-override,-warnings-as-errors]
+   58 |   virtual double execute(EquationRootFunction *function, int maxSteps,
+      |   ~~~~~~~        ^
+   59 |                          double tolerance, bool testFunction, bool testStepSize,
+   60 |                          bool &ok);
+      |                                   
+      |                                    override
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../../crab_mesh/numerical/function.h:13:18: error: prefer using 'override' or (rarely) 'final' instead of 'virtual' [modernize-use-override,-warnings-as-errors]
+   13 |   virtual double f(const double x[1]);
+      |   ~~~~~~~        ^                   
+      |                                       override
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/../triangle_adaptive.h:15:11: error: prefer using 'override' or (rarely) 'final' instead of 'virtual' [modernize-use-override,-warnings-as-errors]
+   15 |   virtual ~TriangleAdaptive();
+      |   ~~~~~~~ ^                  
+      |                               override
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/curve_adaptive_parametric.h:24:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]
+   24 |   ~CurveAdaptiveParametric();
+      |   ^                         
+      |                              override
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/../../data/curve/curve_adaptive_parametric_bezier.h:18:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]
+   18 |   ~CurveAdaptiveParametricBezier();
+      |   ^                               
+      |                                    override
+C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/include/data/patch/patch_bezier.h:34:3: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]
+   34 |   ~PatchBezier();
+      |   ^             
+      |                  override
+Suppressed 44 warnings (44 with check filters).
+18 warnings treated as errors
+Quality command failed: Command '['C:\\msys64\\ucrt64\\bin\\clang-tidy.EXE', '-p', 'C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial', 'C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\src\\input_output\\incidence_snapshot.cpp']' returned non-zero exit status 1.

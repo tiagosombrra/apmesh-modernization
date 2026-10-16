@@ -1,0 +1,106 @@
+--- a/src/crab_mesh/aft/advancing_front.cpp
++++ b/src/crab_mesh/aft/advancing_front.cpp
+@@ -1,3 +1,6 @@
++#include <cstdlib>
++#include <fstream>
++#include <iomanip>
+ #include "../../../include/crab_mesh/aft/advancing_front.h"
+ 
+ #include <cfloat>
+@@ -1057,6 +1060,17 @@
+ 
+ bool AdvancingFront::laplacianSmoothing(bool &changed) {
+   changed = false;
++  static unsigned int smoothing_call = 0;
++  const unsigned int smoothing_index = smoothing_call++;
++  std::ofstream smoothing_trace;
++  const char* smoothing_path = std::getenv("APMESH_SMOOTHING_TRACE");
++  if (smoothing_path != nullptr && smoothing_path[0] != '\0') {
++    const bool existed = std::ifstream(smoothing_path).good();
++    smoothing_trace.open(smoothing_path, std::ios::app);
++    smoothing_trace << std::setprecision(17);
++    if (!existed) smoothing_trace << "call,step,patch,vertex,old_x,old_y,neighbors,raw_x,raw_y,den\n";
++  }
++
+ 
+   static const double qualityTolerance = 1.0e-8;
+ 
+@@ -1094,6 +1108,17 @@
+     oldAverageQuality /= static_cast<double>(faceCount);
+     const double oldScore = 0.6 * oldAverageQuality + 0.4 * oldMinQuality;
+ 
++
++    if (smoothing_trace.is_open()) {
++      smoothing_trace << smoothing_index << ',' << run_stats.adaptive_step << ',' << run_stats.patch_index
++        << ',' << v->getId() << ',' << oldx << ',' << oldy << ',';
++      for (Edge* edge : adjacency) {
++        Vertex* neighbor = edge->getV1() == v ? edge->getV2() : edge->getV1();
++        smoothing_trace << edge->getId() << ':' << neighbor->getId() << ':'
++          << neighbor->getX() << ':' << neighbor->getY() << '|';
++      }
++    }
++
+     while (!adjacency.empty()) {
+       Edge *e = adjacency.front();
+ 
+@@ -1106,6 +1131,9 @@
+ 
+       den += weight;
+     }
++
++
++    if (smoothing_trace.is_open()) smoothing_trace << ',' << numx << ',' << numy << ',' << den << '\n';
+ 
+     den = (den > TOLERANCE_AFT) ? phi / den : 0;
+ 
+--- a/src/generator/generator_adaptive.cpp
++++ b/src/generator/generator_adaptive.cpp
+@@ -6,6 +6,8 @@
+ #include "data/geometry.h"
+ 
+ #include <ostream>
++#include <cstdlib>
++#include <iomanip>
+ #include <cstdio>
+ #include <unordered_set>
+ #include <unordered_map>
+@@ -6403,6 +6405,17 @@
+   std::vector<double> sub_errors(Ns, 0.0);
+   unsigned long long gauss_nodes_total = 0ULL;
+   unsigned long long mean_nodes_total = 0ULL;
++
++  static unsigned int numerical_call = 0;
++  std::ofstream numerical_trace;
++  const char* numerical_prefix = std::getenv("APMESH_NUMERICAL_TRACE_PREFIX");
++  if (numerical_prefix != nullptr && numerical_prefix[0] != '\0') {
++    numerical_trace.open(std::string(numerical_prefix) + "_call_" +
++                         std::to_string(numerical_call++) + ".csv");
++    numerical_trace << std::setprecision(17);
++    numerical_trace << "step,retry,patch,node_local,node_id,x,y,z,ga,gd,ha,hd,adjacency_count,adjacent_ids,adjacent_areas,adjacent_angles\n";
++  }
++
+ #if USE_MPI
+ #if USE_OPENMP
+   // Seção de código para MPI + OpenMP
+@@ -6473,6 +6486,21 @@
+       double Gd = kd.CalculateGaussCurvature();
+       double Ha = ka.CalculateMeanCurvature();
+       double Hd = kd.CalculateMeanCurvature();
++
++      if (numerical_trace.is_open()) {
++        const auto* traced_node = static_cast<NodeAdaptive*>(point_adaptive);
++        numerical_trace << step_ << ',' << ADAPTIVE_CURRENT_RETRY << ',' << i << ',' << j << ','
++          << traced_node->GetId() << ',' << traced_node->GetX() << ',' << traced_node->GetY() << ','
++          << traced_node->GetZ() << ',' << Ga << ',' << Gd << ',' << Ha << ',' << Hd << ','
++          << traced_node->GetNumberElements() << ',';
++        for (auto* element : traced_node->GetElements()) numerical_trace << element->GetId() << '|';
++        numerical_trace << ',';
++        for (auto* element : traced_node->GetElements()) numerical_trace << element->GetArea() << '|';
++        numerical_trace << ',';
++        for (auto* element : traced_node->GetElements()) numerical_trace << element->GetAngle(*traced_node) << '|';
++        numerical_trace << '\n';
++      }
++
+       // atualiza as curvaturas do nó ( para que não sejam recalculadas na
+       // adaptação das curvas e do domínio )
+       (static_cast<NodeAdaptive*>(point_adaptive))->SetGa(Ga);

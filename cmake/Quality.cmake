@@ -7,8 +7,56 @@ if(BUILD_TESTING)
       -s "${CMAKE_SOURCE_DIR}/tests/tooling" -p "test_*.py" -v)
   add_test(NAME reference.archived_eistute_artifact
     COMMAND "${Python3_EXECUTABLE}" scripts/verify_reference.py)
+  add_test(NAME application.invalid_inputs
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/cli_failures.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --workspace "${CMAKE_BINARY_DIR}/input-controls")
+  add_test(NAME application.boundary_orientation
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/boundary_orientation_case.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --workspace "${CMAKE_BINARY_DIR}/orientation-controls")
+  set_tests_properties(application.boundary_orientation
+    PROPERTIES LABELS "application;boundary-incidence;required-gate" TIMEOUT 300)
+  add_test(NAME application.metric_schema
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/metric_schema_case.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --workspace "${CMAKE_BINARY_DIR}/metric-schema-controls")
+  set_tests_properties(application.metric_schema
+    PROPERTIES LABELS "application;metric-schema;required-gate" TIMEOUT 90)
+  set(orientation_probe_sources ${AP_MESH_SOURCES})
+  list(REMOVE_ITEM orientation_probe_sources "${CMAKE_SOURCE_DIR}/src/main.cpp")
+  add_executable(curve_orientation_probe
+    "${CMAKE_SOURCE_DIR}/tests/curve_orientation_probe.cpp" ${orientation_probe_sources})
+  target_compile_features(curve_orientation_probe PRIVATE cxx_std_17)
+  target_include_directories(curve_orientation_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(curve_orientation_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+  if(AP_MESH_DISABLE_STRICT_ALIASING AND NOT MSVC)
+    target_compile_options(curve_orientation_probe PRIVATE -fno-strict-aliasing)
+  endif()
+  add_test(NAME application.curve_orientation_arclength COMMAND curve_orientation_probe)
+  set_tests_properties(application.curve_orientation_arclength
+    PROPERTIES LABELS "application;boundary-incidence;required-gate" TIMEOUT 30)
+  add_test(NAME tooling.tidy_header_scope
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/tidy_scope_case.py")
+  set_tests_properties(tooling.tidy_header_scope
+    PROPERTIES LABELS "tooling;required-gate" TIMEOUT 60)
+  add_executable(input_validation_probe "${CMAKE_SOURCE_DIR}/tests/input_validation_probe.cpp")
+  target_compile_features(input_validation_probe PRIVATE cxx_std_17)
+  target_include_directories(input_validation_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
+  add_executable(smoothing_adjacency_probe "${CMAKE_SOURCE_DIR}/tests/smoothing_adjacency_probe.cpp")
+  target_compile_features(smoothing_adjacency_probe PRIVATE cxx_std_17)
+  target_include_directories(smoothing_adjacency_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
+  add_test(NAME application.smoothing_adjacency_order COMMAND smoothing_adjacency_probe)
+  set_tests_properties(application.smoothing_adjacency_order
+    PROPERTIES LABELS "application;numerical-control" TIMEOUT 30)
+  add_test(NAME application.valid_input_grammar
+    COMMAND input_validation_probe
+      "${CMAKE_SOURCE_DIR}/input_models/eistute2.fixed.bp"
+      "${CMAKE_SOURCE_DIR}/input_models/book_v7a.bp"
+      "${CMAKE_SOURCE_DIR}/input_models/ribbed_bracket_nm_decor.bp")
   set_tests_properties(tooling.controls reference.archived_eistute_artifact
     PROPERTIES WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}" TIMEOUT 60)
   set_tests_properties(tooling.controls PROPERTIES LABELS "tooling")
   set_tests_properties(reference.archived_eistute_artifact PROPERTIES LABELS "archived-artifact")
+  set_tests_properties(application.invalid_inputs PROPERTIES LABELS "application;negative-input" TIMEOUT 60)
+  set_tests_properties(application.valid_input_grammar PROPERTIES LABELS "application;positive-input" TIMEOUT 30)
 endif()

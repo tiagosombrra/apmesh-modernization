@@ -3,15 +3,12 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-## Non-negotiable boundary
-
-Preserve parametric patches, shared-curve synchronization, boundary adaptation
-passes, quadtree/templates, advancing-front reconstruction, curvature-error
-definitions, and acceptance/stopping policy. Record defect repairs that change
-results separately. QUAD, anisotropy and replacement algorithms require an
-explicit scientific proposal and advisor agreement after software stabilization.
-
-## Deliveries and gates
+Current status: stage 0 integrated in PR #1; stage 1 remains the sole active
+work item (issue #2, PR #3) for exact-head and post-merge closure qualification.
+The required orientation and CSV defects are repaired; CTest is 9/9. All article
+repetitions and strict minimally corrected reference comparisons pass. Raw
+previous-candidate differences remain explicitly recorded. See
+`evidence/STAGE1_ORIENTATION_REPAIR.md`. Stage 2 waits for completed closure.
 
 | Stage | Scope | Completion evidence |
 |---|---|---|
@@ -31,6 +28,24 @@ explicit scientific proposal and advisor agreement after software stabilization.
 English, tests and contracts accompany each touched component; stages 7 and 8
 are comprehensive closure reviews. Stages 3/4 may alternate to unblock memory
 tools, with one active work item at a time. No broad rewrite before stage 2.
+
+## Mandatory stage closure
+
+Every stage ends with an audit and regression before it can be marked complete:
+
+1. Recheck remote main, branches, PRs and checks for concurrent work.
+2. Review the code delta, scientific invariants, contracts and documentation.
+3. Challenge coverage with independent positive and deliberately broken controls;
+   inspect accepted, rejected, retry and rollback evidence where applicable.
+4. Run the required regression on the exact delivery revision. Retain commands,
+   source/input/executable identities, results, failures and coverage limits.
+5. Keep the stage open when a required gate fails or lacks observations. Fix the
+   cause without weakening the assertion or silently replacing its oracle.
+6. Integrate only when required gates pass, then validate main again. Update the
+   state and evidence before beginning the next stage.
+
+This closure rule was explicitly requested by the user on 2026-10-15 Fortaleza.
+It reduces the chance of unnoticed errors; it is not a claim of exhaustive proof.
 
 ## Test program
 

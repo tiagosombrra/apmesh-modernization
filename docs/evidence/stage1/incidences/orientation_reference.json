@@ -1,0 +1,86 @@
+{
+  "status": "failed",
+  "workspace": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u",
+  "cases": [
+    {
+      "case": "aligned_manifold",
+      "sheets": 2,
+      "reversed": false,
+      "process": {
+        "model": "aligned_manifold",
+        "status": "completed",
+        "exit_code": 0,
+        "input_model": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u\\aligned_manifold\\control.bp",
+        "input_model_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444",
+        "executable_sha256": "576017ca492312475e6890bc1f76c5faee9eaf7f6be72df4e1f8360cbd55a1e9",
+        "command": [
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stable-smoothing-final.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u\\aligned_manifold\\article.conf"
+        ]
+      },
+      "status": "failed",
+      "error": "Per-incidence boundary coverage is unavailable in the legacy export"
+    },
+    {
+      "case": "reversed_manifold",
+      "sheets": 2,
+      "reversed": true,
+      "process": {
+        "model": "reversed_manifold",
+        "status": "completed",
+        "exit_code": 0,
+        "input_model": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u\\reversed_manifold\\control.bp",
+        "input_model_sha256": "b15fb9c6f174669d15f82ee812553a1d94734474d66c01d65bdfd916f04f7955",
+        "executable_sha256": "576017ca492312475e6890bc1f76c5faee9eaf7f6be72df4e1f8360cbd55a1e9",
+        "command": [
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stable-smoothing-final.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u\\reversed_manifold\\article.conf"
+        ]
+      },
+      "status": "failed",
+      "error": "Degenerate exported triangle"
+    },
+    {
+      "case": "aligned_nonmanifold",
+      "sheets": 3,
+      "reversed": false,
+      "process": {
+        "model": "aligned_nonmanifold",
+        "status": "completed",
+        "exit_code": 0,
+        "input_model": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u\\aligned_nonmanifold\\control.bp",
+        "input_model_sha256": "00aec216ff1349b2fcf17b91fbc7ec80e4aad8e4e7d0a58799f1438fede89f1b",
+        "executable_sha256": "576017ca492312475e6890bc1f76c5faee9eaf7f6be72df4e1f8360cbd55a1e9",
+        "command": [
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stable-smoothing-final.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u\\aligned_nonmanifold\\article.conf"
+        ]
+      },
+      "status": "failed",
+      "error": "Per-incidence boundary coverage is unavailable in the legacy export"
+    },
+    {
+      "case": "reversed_nonmanifold",
+      "sheets": 3,
+      "reversed": true,
+      "process": {
+        "model": "reversed_nonmanifold",
+        "status": "completed",
+        "exit_code": 0,
+        "input_model": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u\\reversed_nonmanifold\\control.bp",
+        "input_model_sha256": "cabde0a76881380ffea6cc83568bd6e55a9ca1229fae052c082eba39c912c5fd",
+        "executable_sha256": "576017ca492312475e6890bc1f76c5faee9eaf7f6be72df4e1f8360cbd55a1e9",
+        "command": [
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stable-smoothing-final.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\orientation-reference\\run-2q4g883u\\reversed_nonmanifold\\article.conf"
+        ]
+      },
+      "status": "failed",
+      "error": "Degenerate exported triangle"
+    }
+  ]
+}

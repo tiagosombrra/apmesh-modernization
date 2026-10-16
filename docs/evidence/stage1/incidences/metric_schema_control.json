@@ -1,0 +1,62 @@
+{
+  "status": "failed",
+  "rows": 1,
+  "compared_fields": 21,
+  "differences": [
+    {
+      "step": 0,
+      "field": "adaptation_relaxation",
+      "csv": "1",
+      "analysis_log": "0.3"
+    },
+    {
+      "step": 0,
+      "field": "local_budget_mode",
+      "csv": "0",
+      "analysis_log": "1"
+    },
+    {
+      "step": 0,
+      "field": "target_element_growth",
+      "csv": "8",
+      "analysis_log": "0"
+    },
+    {
+      "step": 0,
+      "field": "actual_elements_step",
+      "csv": "1",
+      "analysis_log": "8"
+    },
+    {
+      "step": 0,
+      "field": "actual_element_growth",
+      "csv": "0",
+      "analysis_log": "1"
+    },
+    {
+      "step": 0,
+      "field": "top_patch_candidate_count",
+      "csv": "initial",
+      "analysis_log": "0"
+    },
+    {
+      "step": 0,
+      "field": "generation_control_mode",
+      "csv": "0",
+      "analysis_log": "initial"
+    },
+    {
+      "step": 0,
+      "field": "patch_consistency_penalty",
+      "csv": "initial",
+      "analysis_log": "0"
+    },
+    {
+      "step": 0,
+      "field": "budget_driver_mode",
+      "csv": "0.3",
+      "analysis_log": "initial"
+    }
+  ],
+  "geometry_control": "passed"
+}

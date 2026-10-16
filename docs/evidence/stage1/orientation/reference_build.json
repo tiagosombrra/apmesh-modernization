@@ -1,0 +1,23 @@
+{
+  "status": "reference_built",
+  "base": "28494333d6223de309770c233cbc1d10ea1371a3",
+  "candidate_files_sha256": {
+    "include/crab_mesh/aft/boundary.h": "31c9df2c88651f3c81fce326c424b2a92b055410cbe65296dc7370d066898424",
+    "include/crab_mesh/aft/edge.h": "5889696671928c88a20c9ba385fbba87a128ecce24c8f83a11a28285bbbba7f4",
+    "include/crab_mesh/numerical/bisection_equation_root.h": "aaa785491c35a8d1af693cfe2b9367f4ec7ee9b1eb990a2b97b435b9e75edda5",
+    "include/crab_mesh/numerical/function.h": "761ee2b4f10ad6b5d854f97461897e761f06461f3bca06acf559fef860e15f8c",
+    "include/data/curve/curve_adaptive_parametric.h": "a4f519d7f99452082171af85997e84ca616b5547876b1700dec2d4e9c42949b9",
+    "include/data/curve/curve_adaptive_parametric_bezier.h": "e9e80821697a8f8e728985761d60af548e0eaf6fd00141a89c7752af21909ec1",
+    "include/data/patch/patch_bezier.h": "4162d1fc48b2def2162f5bd5eb365c92befaafc47be54e60e3591d6791e38e59",
+    "include/data/patch/patch_coons.h": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c",
+    "include/data/triangle_adaptive.h": "3c801f2596606396ba0a944cf447074cdc9aa4aee69373590197efcdc67db51b",
+    "src/adapter/adapter.cpp": "d154744b8ac5207cd78d6bd10e464ee35034c7c66cc7c6a0bba954ffcef5ed9f",
+    "src/crab_mesh/aft/boundary.cpp": "427a4da5985f53fbb0c76daf7f69e8ccffbd79c7a8fdebbbfe13fef5fe56ccf3",
+    "src/crab_mesh/aft/edge.cpp": "b7f6885dd537426e011f78a1830263db99f7adfca7d820dba737a85a07dd7247",
+    "src/data/patch/patch_bezier.cpp": "4bc29e28aee79ca4f9a61b769296d3d6c3d04593e9592e992e0c7dbb8b55f7bd",
+    "src/generator/generator_adaptive.cpp": "e9695e5fc8af6ad0d913b54fbb758cf1a997c989e3b550d5cc85d7bbb48582e2",
+    "src/input_output/patch_reader.cpp": "6611aec35c7fc9feb6f9e0b3d79f3461aa4e000c571d557fd637438e8b27836a"
+  },
+  "reference_executable_sha256": "c2f1aae17429b4aac8ebec1fb524b42bf5660920d926cdc22fc391ae870732d7",
+  "candidate_source_restored_exactly": true
+}

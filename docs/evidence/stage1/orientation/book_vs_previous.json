@@ -1,0 +1,1443 @@
+{
+  "model": "book",
+  "status": "failed",
+  "differences": [
+    {
+      "field": "decisions.1.fields.acceptance_score",
+      "reference": "-0.329246",
+      "candidate": "-0.398428"
+    },
+    {
+      "field": "decisions.1.fields.actual_element_growth",
+      "reference": "39.4464",
+      "candidate": "38"
+    },
+    {
+      "field": "decisions.1.fields.actual_elements_step",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "decisions.1.fields.angle_quality_mean_3d",
+      "reference": "0.546266",
+      "candidate": "0.542876"
+    },
+    {
+      "field": "decisions.1.fields.candidate_elements_before_budget_retry",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "decisions.1.fields.edge_ratio_mean_3d",
+      "reference": "0.548567",
+      "candidate": "0.545237"
+    },
+    {
+      "field": "decisions.1.fields.element_growth_factor",
+      "reference": "39.4464",
+      "candidate": "38"
+    },
+    {
+      "field": "decisions.1.fields.eligible_patch_elements_sum",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "decisions.1.fields.error_improvement",
+      "reference": "0.282476",
+      "candidate": "0.181629"
+    },
+    {
+      "field": "decisions.1.fields.max_angle_mean_3d",
+      "reference": "89.0346",
+      "candidate": "88.8"
+    },
+    {
+      "field": "decisions.1.fields.max_angle_p95_3d",
+      "reference": "113.134",
+      "candidate": "112.716"
+    },
+    {
+      "field": "decisions.1.fields.min_angle_mean_3d",
+      "reference": "32.7759",
+      "candidate": "32.5726"
+    },
+    {
+      "field": "decisions.1.fields.min_angle_p05_3d",
+      "reference": "23.2119",
+      "candidate": "23.4559"
+    },
+    {
+      "field": "decisions.1.fields.overshoot_ratio",
+      "reference": "39.4464",
+      "candidate": "38"
+    },
+    {
+      "field": "decisions.1.fields.q_ge_0_60",
+      "reference": "0.87732",
+      "candidate": "0.884164"
+    },
+    {
+      "field": "decisions.1.fields.q_ge_0_60_3d",
+      "reference": "0.87732",
+      "candidate": "0.884164"
+    },
+    {
+      "field": "decisions.1.fields.quality_mean",
+      "reference": "0.73877",
+      "candidate": "0.738542"
+    },
+    {
+      "field": "decisions.1.fields.quality_mean_3d",
+      "reference": "0.73877",
+      "candidate": "0.738542"
+    },
+    {
+      "field": "decisions.1.fields.quality_mean_uv",
+      "reference": "0.918788",
+      "candidate": "0.917996"
+    },
+    {
+      "field": "decisions.1.fields.quality_min_uv",
+      "reference": "0.76222",
+      "candidate": "0.761846"
+    },
+    {
+      "field": "decisions.1.fields.step_efficiency",
+      "reference": "0.00338174",
+      "candidate": "0.00225942"
+    },
+    {
+      "field": "decisions.1.fields.transition_coherence_penalty",
+      "reference": "10.1889",
+      "candidate": "9.83835"
+    },
+    {
+      "field": "decisions.1.fields.transition_imbalance_mean_real",
+      "reference": "0.031808",
+      "candidate": "0.0447368"
+    },
+    {
+      "field": "decisions.2.fields.acceptance_score",
+      "reference": "-6.44945",
+      "candidate": "-5.11839"
+    },
+    {
+      "field": "decisions.2.fields.actual_element_growth",
+      "reference": "4.95111",
+      "candidate": "4.64615"
+    },
+    {
+      "field": "decisions.2.fields.actual_elements_step",
+      "reference": "21874",
+      "candidate": "19774"
+    },
+    {
+      "field": "decisions.2.fields.angle_quality_mean_3d",
+      "reference": "0.394325",
+      "candidate": "0.43859"
+    },
+    {
+      "field": "decisions.2.fields.candidate_elements_before_budget_retry",
+      "reference": "21874",
+      "candidate": "19774"
+    },
+    {
+      "field": "decisions.2.fields.edge_ratio_mean_3d",
+      "reference": "0.409519",
+      "candidate": "0.455056"
+    },
+    {
+      "field": "decisions.2.fields.element_growth_factor",
+      "reference": "4.95111",
+      "candidate": "4.64615"
+    },
+    {
+      "field": "decisions.2.fields.eligible_patch_elements_sum",
+      "reference": "21874",
+      "candidate": "19774"
+    },
+    {
+      "field": "decisions.2.fields.eligible_patch_mean_factor",
+      "reference": "1.03025",
+      "candidate": "1.03929"
+    },
+    {
+      "field": "decisions.2.fields.error_improvement",
+      "reference": "-4.12662",
+      "candidate": "-3.00433"
+    },
+    {
+      "field": "decisions.2.fields.max_angle_mean_3d",
+      "reference": "97.5884",
+      "candidate": "95.9816"
+    },
+    {
+      "field": "decisions.2.fields.max_angle_p95_3d",
+      "reference": "131.98",
+      "candidate": "135.052"
+    },
+    {
+      "field": "decisions.2.fields.min_angle_mean_3d",
+      "reference": "23.6595",
+      "candidate": "26.3154"
+    },
+    {
+      "field": "decisions.2.fields.min_angle_p05_3d",
+      "reference": "6.43417",
+      "candidate": "11.0473"
+    },
+    {
+      "field": "decisions.2.fields.overshoot_ratio",
+      "reference": "4.95111",
+      "candidate": "4.64615"
+    },
+    {
+      "field": "decisions.2.fields.poor_ratio",
+      "reference": "0.189357",
+      "candidate": "0.101042"
+    },
+    {
+      "field": "decisions.2.fields.poor_ratio_3d",
+      "reference": "0.189357",
+      "candidate": "0.101042"
+    },
+    {
+      "field": "decisions.2.fields.poor_ratio_uv",
+      "reference": "0.167733",
+      "candidate": "0.0394963"
+    },
+    {
+      "field": "decisions.2.fields.q_ge_0_60",
+      "reference": "0.573146",
+      "candidate": "0.636796"
+    },
+    {
+      "field": "decisions.2.fields.q_ge_0_60_3d",
+      "reference": "0.573146",
+      "candidate": "0.636796"
+    },
+    {
+      "field": "decisions.2.fields.q_ge_0_60_uv",
+      "reference": "0.684694",
+      "candidate": "0.78052"
+    },
+    {
+      "field": "decisions.2.fields.quality_mean",
+      "reference": "0.561773",
+      "candidate": "0.610109"
+    },
+    {
+      "field": "decisions.2.fields.quality_mean_3d",
+      "reference": "0.561773",
+      "candidate": "0.610109"
+    },
+    {
+      "field": "decisions.2.fields.quality_mean_uv",
+      "reference": "0.646769",
+      "candidate": "0.712897"
+    },
+    {
+      "field": "decisions.2.fields.quality_min",
+      "reference": "0.0613526",
+      "candidate": "0.0951287"
+    },
+    {
+      "field": "decisions.2.fields.quality_min_3d",
+      "reference": "0.0613526",
+      "candidate": "0.0951287"
+    },
+    {
+      "field": "decisions.2.fields.quality_min_uv",
+      "reference": "0.112214",
+      "candidate": "0.180908"
+    },
+    {
+      "field": "decisions.2.fields.step_efficiency",
+      "reference": "-0.00874417",
+      "candidate": "-0.00816761"
+    },
+    {
+      "field": "decisions.2.fields.target_elements_step",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "decisions.2.fields.transition_coherence_penalty",
+      "reference": "1.07349",
+      "candidate": "0.997251"
+    },
+    {
+      "field": "decisions.3.fields.acceptance_score",
+      "reference": "-6.44235",
+      "candidate": "-5.11286"
+    },
+    {
+      "field": "decisions.3.fields.actual_element_growth",
+      "reference": "4.96378",
+      "candidate": "4.6593"
+    },
+    {
+      "field": "decisions.3.fields.actual_elements_step",
+      "reference": "21930",
+      "candidate": "19830"
+    },
+    {
+      "field": "decisions.3.fields.angle_quality_mean_3d",
+      "reference": "0.39346",
+      "candidate": "0.437477"
+    },
+    {
+      "field": "decisions.3.fields.candidate_elements_before_budget_retry",
+      "reference": "21930",
+      "candidate": "19830"
+    },
+    {
+      "field": "decisions.3.fields.edge_ratio_mean_3d",
+      "reference": "0.408456",
+      "candidate": "0.453707"
+    },
+    {
+      "field": "decisions.3.fields.element_growth_factor",
+      "reference": "4.96378",
+      "candidate": "4.6593"
+    },
+    {
+      "field": "decisions.3.fields.eligible_patch_elements_sum",
+      "reference": "21930",
+      "candidate": "19830"
+    },
+    {
+      "field": "decisions.3.fields.eligible_patch_mean_factor",
+      "reference": "1.03025",
+      "candidate": "1.03929"
+    },
+    {
+      "field": "decisions.3.fields.error_improvement",
+      "reference": "-4.11432",
+      "candidate": "-2.99351"
+    },
+    {
+      "field": "decisions.3.fields.max_angle_mean_3d",
+      "reference": "97.7758",
+      "candidate": "96.2047"
+    },
+    {
+      "field": "decisions.3.fields.max_angle_p95_3d",
+      "reference": "131.952",
+      "candidate": "135.029"
+    },
+    {
+      "field": "decisions.3.fields.min_angle_mean_3d",
+      "reference": "23.6076",
+      "candidate": "26.2486"
+    },
+    {
+      "field": "decisions.3.fields.min_angle_p05_3d",
+      "reference": "6.44069",
+      "candidate": "11.0615"
+    },
+    {
+      "field": "decisions.3.fields.overshoot_ratio",
+      "reference": "4.96378",
+      "candidate": "4.6593"
+    },
+    {
+      "field": "decisions.3.fields.poor_ratio",
+      "reference": "0.188874",
+      "candidate": "0.100706"
+    },
+    {
+      "field": "decisions.3.fields.poor_ratio_3d",
+      "reference": "0.188874",
+      "candidate": "0.100706"
+    },
+    {
+      "field": "decisions.3.fields.poor_ratio_uv",
+      "reference": "0.167305",
+      "candidate": "0.0393848"
+    },
+    {
+      "field": "decisions.3.fields.q_ge_0_60",
+      "reference": "0.576699",
+      "candidate": "0.640847"
+    },
+    {
+      "field": "decisions.3.fields.q_ge_0_60_3d",
+      "reference": "0.576699",
+      "candidate": "0.640847"
+    },
+    {
+      "field": "decisions.3.fields.q_ge_0_60_uv",
+      "reference": "0.685545",
+      "candidate": "0.781089"
+    },
+    {
+      "field": "decisions.3.fields.quality_mean",
+      "reference": "0.561218",
+      "candidate": "0.609302"
+    },
+    {
+      "field": "decisions.3.fields.quality_mean_3d",
+      "reference": "0.561218",
+      "candidate": "0.609302"
+    },
+    {
+      "field": "decisions.3.fields.quality_mean_uv",
+      "reference": "0.645286",
+      "candidate": "0.711066"
+    },
+    {
+      "field": "decisions.3.fields.quality_min",
+      "reference": "0.0613526",
+      "candidate": "0.0951287"
+    },
+    {
+      "field": "decisions.3.fields.quality_min_3d",
+      "reference": "0.0613526",
+      "candidate": "0.0951287"
+    },
+    {
+      "field": "decisions.3.fields.quality_min_uv",
+      "reference": "0.112214",
+      "candidate": "0.180908"
+    },
+    {
+      "field": "decisions.3.fields.step_efficiency",
+      "reference": "-0.00869023",
+      "candidate": "-0.00810894"
+    },
+    {
+      "field": "decisions.3.fields.target_elements_step",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "decisions.3.fields.transition_coherence_penalty",
+      "reference": "1.07666",
+      "candidate": "1.00054"
+    },
+    {
+      "field": "metrics.0.actual_element_growth",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.0.actual_elements_step",
+      "reference": "1",
+      "candidate": "112"
+    },
+    {
+      "field": "metrics.0.adaptation_relaxation",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.0.budget_driver_mode",
+      "reference": "1",
+      "candidate": "initial"
+    },
+    {
+      "field": "metrics.0.generation_control_mode",
+      "reference": "0",
+      "candidate": "initial"
+    },
+    {
+      "field": "metrics.0.local_budget_mode",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.0.patch_consistency_penalty",
+      "reference": "initial",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.0.retry_enabled",
+      "reference": "1",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.0.target_element_growth",
+      "reference": "112",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.0.top_patch_candidate_count",
+      "reference": "initial",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.1.acceptance_score",
+      "reference": "-0.329246",
+      "candidate": "-0.398428"
+    },
+    {
+      "field": "metrics.1.actual_element_growth",
+      "reference": "0.00338174",
+      "candidate": "38"
+    },
+    {
+      "field": "metrics.1.actual_elements_step",
+      "reference": "1.8",
+      "candidate": "4256"
+    },
+    {
+      "field": "metrics.1.actual_growth_step",
+      "reference": "39.4464",
+      "candidate": "38"
+    },
+    {
+      "field": "metrics.1.adaptation_relaxation",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.1.angle_quality_mean_3d",
+      "reference": "0.546266",
+      "candidate": "0.542876"
+    },
+    {
+      "field": "metrics.1.area_max",
+      "reference": "0.0347007",
+      "candidate": "0.0330024"
+    },
+    {
+      "field": "metrics.1.area_mean",
+      "reference": "0.0135165",
+      "candidate": "0.0140311"
+    },
+    {
+      "field": "metrics.1.area_std",
+      "reference": "0.00661862",
+      "candidate": "0.00662297"
+    },
+    {
+      "field": "metrics.1.budget_driver_mode",
+      "reference": "1",
+      "candidate": "factor_driven"
+    },
+    {
+      "field": "metrics.1.candidate_elements_before_budget_retry",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "metrics.1.edge_ratio_mean_3d",
+      "reference": "0.548567",
+      "candidate": "0.545237"
+    },
+    {
+      "field": "metrics.1.element_growth_factor",
+      "reference": "39.4464",
+      "candidate": "38"
+    },
+    {
+      "field": "metrics.1.elements",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "metrics.1.elements_delta",
+      "reference": "4306",
+      "candidate": "4144"
+    },
+    {
+      "field": "metrics.1.eligible_patch_elements_sum",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "metrics.1.error",
+      "reference": "36.9887",
+      "candidate": "42.1875"
+    },
+    {
+      "field": "metrics.1.error_global_surface_curvature",
+      "reference": "36.9887",
+      "candidate": "42.1875"
+    },
+    {
+      "field": "metrics.1.error_improvement_abs",
+      "reference": "14.5618",
+      "candidate": "9.36305"
+    },
+    {
+      "field": "metrics.1.error_improvement_pct",
+      "reference": "28.2476",
+      "candidate": "18.1629"
+    },
+    {
+      "field": "metrics.1.error_improvement_per_element",
+      "reference": "0.00338174",
+      "candidate": "0.00225942"
+    },
+    {
+      "field": "metrics.1.error_normalized",
+      "reference": "0.717524",
+      "candidate": "0.818371"
+    },
+    {
+      "field": "metrics.1.error_total_reduction_pct",
+      "reference": "28.2476",
+      "candidate": "18.1629"
+    },
+    {
+      "field": "metrics.1.excellent_ratio_ge_0_80",
+      "reference": "32.096",
+      "candidate": "30.7331"
+    },
+    {
+      "field": "metrics.1.gauss_nodes",
+      "reference": "2739",
+      "candidate": "2658"
+    },
+    {
+      "field": "metrics.1.gauss_ratio",
+      "reference": "0.99927",
+      "candidate": "0.999248"
+    },
+    {
+      "field": "metrics.1.generation_control_mode",
+      "reference": "0",
+      "candidate": "normal"
+    },
+    {
+      "field": "metrics.1.local_budget_mode",
+      "reference": "1.8",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.1.max_angle_mean_3d",
+      "reference": "89.0346",
+      "candidate": "88.8"
+    },
+    {
+      "field": "metrics.1.max_angle_p95_3d",
+      "reference": "113.146",
+      "candidate": "112.717"
+    },
+    {
+      "field": "metrics.1.mean_ratio",
+      "reference": "0.000729661",
+      "candidate": "0.00075188"
+    },
+    {
+      "field": "metrics.1.min_angle_mean_3d",
+      "reference": "32.7759",
+      "candidate": "32.5726"
+    },
+    {
+      "field": "metrics.1.min_angle_p05_3d",
+      "reference": "23.2425",
+      "candidate": "23.4582"
+    },
+    {
+      "field": "metrics.1.nodes",
+      "reference": "2741",
+      "candidate": "2660"
+    },
+    {
+      "field": "metrics.1.patch_consistency_penalty",
+      "reference": "factor_driven",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.1.q_ge_0_60",
+      "reference": "87.732",
+      "candidate": "88.4164"
+    },
+    {
+      "field": "metrics.1.quality_max",
+      "reference": "0.982243",
+      "candidate": "0.98273"
+    },
+    {
+      "field": "metrics.1.quality_mean",
+      "reference": "0.73877",
+      "candidate": "0.738542"
+    },
+    {
+      "field": "metrics.1.quality_p05",
+      "reference": "0.514795",
+      "candidate": "0.518664"
+    },
+    {
+      "field": "metrics.1.quality_p50",
+      "reference": "0.73749",
+      "candidate": "0.736506"
+    },
+    {
+      "field": "metrics.1.quality_p95",
+      "reference": "0.935522",
+      "candidate": "0.933476"
+    },
+    {
+      "field": "metrics.1.quality_std",
+      "reference": "0.121049",
+      "candidate": "0.118981"
+    },
+    {
+      "field": "metrics.1.quality_uv_excellent_ratio_ge_0_80",
+      "reference": "96.8764",
+      "candidate": "98.2378"
+    },
+    {
+      "field": "metrics.1.quality_uv_max",
+      "reference": "0.999961",
+      "candidate": "0.999963"
+    },
+    {
+      "field": "metrics.1.quality_uv_mean",
+      "reference": "0.918788",
+      "candidate": "0.917996"
+    },
+    {
+      "field": "metrics.1.quality_uv_min",
+      "reference": "0.76222",
+      "candidate": "0.761846"
+    },
+    {
+      "field": "metrics.1.quality_uv_p05",
+      "reference": "0.818112",
+      "candidate": "0.821999"
+    },
+    {
+      "field": "metrics.1.quality_uv_p50",
+      "reference": "0.926741",
+      "candidate": "0.923012"
+    },
+    {
+      "field": "metrics.1.quality_uv_p95",
+      "reference": "0.995059",
+      "candidate": "0.99448"
+    },
+    {
+      "field": "metrics.1.quality_uv_std",
+      "reference": "0.0549223",
+      "candidate": "0.0531346"
+    },
+    {
+      "field": "metrics.1.retry_enabled",
+      "reference": "1",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.1.step_efficiency",
+      "reference": "0",
+      "candidate": "0.00225942"
+    },
+    {
+      "field": "metrics.1.target_element_growth",
+      "reference": "112",
+      "candidate": "1.8"
+    },
+    {
+      "field": "metrics.1.target_elements_step",
+      "reference": "4418",
+      "candidate": "112"
+    },
+    {
+      "field": "metrics.1.target_growth_step",
+      "reference": "39.4464",
+      "candidate": "1.8"
+    },
+    {
+      "field": "metrics.1.top_patch_candidate_count",
+      "reference": "normal",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.1.unique_edges",
+      "reference": "6834",
+      "candidate": "6591"
+    },
+    {
+      "field": "metrics.2.actual_element_growth",
+      "reference": "-0.00874417",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.2.actual_elements_step",
+      "reference": "1.8",
+      "candidate": "19774"
+    },
+    {
+      "field": "metrics.2.adaptation_relaxation",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.2.angle_quality_mean_3d",
+      "reference": "0.394325",
+      "candidate": "0.43859"
+    },
+    {
+      "field": "metrics.2.area_max",
+      "reference": "0.009168",
+      "candidate": "0.00924543"
+    },
+    {
+      "field": "metrics.2.area_mean",
+      "reference": "0.0027312",
+      "candidate": "0.00302126"
+    },
+    {
+      "field": "metrics.2.area_min",
+      "reference": "0.000122277",
+      "candidate": "0.000212226"
+    },
+    {
+      "field": "metrics.2.area_std",
+      "reference": "0.00209669",
+      "candidate": "0.00206787"
+    },
+    {
+      "field": "metrics.2.boundary_edges",
+      "reference": "5382",
+      "candidate": "5298"
+    },
+    {
+      "field": "metrics.2.budget_driver_mode",
+      "reference": "1",
+      "candidate": "factor_driven"
+    },
+    {
+      "field": "metrics.2.candidate_elements_before_budget_retry",
+      "reference": "21874",
+      "candidate": "19774"
+    },
+    {
+      "field": "metrics.2.edge_ratio_mean_3d",
+      "reference": "0.409519",
+      "candidate": "0.455056"
+    },
+    {
+      "field": "metrics.2.elements",
+      "reference": "21874",
+      "candidate": "19774"
+    },
+    {
+      "field": "metrics.2.elements_delta",
+      "reference": "17456",
+      "candidate": "15518"
+    },
+    {
+      "field": "metrics.2.elements_prev",
+      "reference": "4418",
+      "candidate": "4256"
+    },
+    {
+      "field": "metrics.2.eligible_patch_elements_sum",
+      "reference": "21874",
+      "candidate": "19774"
+    },
+    {
+      "field": "metrics.2.eligible_patch_mean_factor",
+      "reference": "1.03025",
+      "candidate": "1.03929"
+    },
+    {
+      "field": "metrics.2.error",
+      "reference": "189.627",
+      "candidate": "168.932"
+    },
+    {
+      "field": "metrics.2.error_global_surface_curvature",
+      "reference": "189.627",
+      "candidate": "168.932"
+    },
+    {
+      "field": "metrics.2.error_global_surface_curvature_prev",
+      "reference": "36.9887",
+      "candidate": "42.1875"
+    },
+    {
+      "field": "metrics.2.error_improvement_abs",
+      "reference": "-152.638",
+      "candidate": "-126.745"
+    },
+    {
+      "field": "metrics.2.error_improvement_pct",
+      "reference": "-412.662",
+      "candidate": "-300.433"
+    },
+    {
+      "field": "metrics.2.error_normalized",
+      "reference": "3.67847",
+      "candidate": "3.27703"
+    },
+    {
+      "field": "metrics.2.error_prev",
+      "reference": "36.9887",
+      "candidate": "42.1875"
+    },
+    {
+      "field": "metrics.2.error_total_reduction_pct",
+      "reference": "-267.847",
+      "candidate": "-227.703"
+    },
+    {
+      "field": "metrics.2.excellent_ratio_ge_0_80",
+      "reference": "8.55811",
+      "candidate": "11.3533"
+    },
+    {
+      "field": "metrics.2.generation_control_mode",
+      "reference": "0",
+      "candidate": "budget_constrained"
+    },
+    {
+      "field": "metrics.2.improved_top_patches",
+      "reference": "20",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.2.local_budget_mode",
+      "reference": "1.8",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.2.max_angle_mean_3d",
+      "reference": "97.5884",
+      "candidate": "95.9816"
+    },
+    {
+      "field": "metrics.2.max_angle_p95_3d",
+      "reference": "131.989",
+      "candidate": "135.058"
+    },
+    {
+      "field": "metrics.2.min_angle_mean_3d",
+      "reference": "23.6595",
+      "candidate": "26.3154"
+    },
+    {
+      "field": "metrics.2.min_angle_p05_3d",
+      "reference": "6.43461",
+      "candidate": "11.0475"
+    },
+    {
+      "field": "metrics.2.nodes",
+      "reference": "15658",
+      "candidate": "13558"
+    },
+    {
+      "field": "metrics.2.nonmanifold_edges",
+      "reference": "143",
+      "candidate": "71"
+    },
+    {
+      "field": "metrics.2.patch_consistency_penalty",
+      "reference": "factor_driven",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.2.poor_ratio_lt_0_30",
+      "reference": "18.9357",
+      "candidate": "10.1042"
+    },
+    {
+      "field": "metrics.2.q_ge_0_60",
+      "reference": "57.3146",
+      "candidate": "63.6796"
+    },
+    {
+      "field": "metrics.2.quality_max",
+      "reference": "0.999931",
+      "candidate": "0.99973"
+    },
+    {
+      "field": "metrics.2.quality_mean",
+      "reference": "0.561773",
+      "candidate": "0.610109"
+    },
+    {
+      "field": "metrics.2.quality_min",
+      "reference": "0.0613526",
+      "candidate": "0.0951287"
+    },
+    {
+      "field": "metrics.2.quality_p05",
+      "reference": "0.1601",
+      "candidate": "0.237597"
+    },
+    {
+      "field": "metrics.2.quality_p50",
+      "reference": "0.65278",
+      "candidate": "0.681029"
+    },
+    {
+      "field": "metrics.2.quality_p95",
+      "reference": "0.870969",
+      "candidate": "0.903729"
+    },
+    {
+      "field": "metrics.2.quality_std",
+      "reference": "0.227964",
+      "candidate": "0.20264"
+    },
+    {
+      "field": "metrics.2.quality_uv_excellent_ratio_ge_0_80",
+      "reference": "53.9728",
+      "candidate": "58.0712"
+    },
+    {
+      "field": "metrics.2.quality_uv_max",
+      "reference": "0.999986",
+      "candidate": "0.997417"
+    },
+    {
+      "field": "metrics.2.quality_uv_mean",
+      "reference": "0.646769",
+      "candidate": "0.712897"
+    },
+    {
+      "field": "metrics.2.quality_uv_min",
+      "reference": "0.112214",
+      "candidate": "0.180908"
+    },
+    {
+      "field": "metrics.2.quality_uv_p05",
+      "reference": "0.127444",
+      "candidate": "0.350349"
+    },
+    {
+      "field": "metrics.2.quality_uv_p50",
+      "reference": "0.807083",
+      "candidate": "0.8121"
+    },
+    {
+      "field": "metrics.2.quality_uv_p95",
+      "reference": "0.870113",
+      "candidate": "0.872294"
+    },
+    {
+      "field": "metrics.2.quality_uv_poor_ratio_lt_0_30",
+      "reference": "16.7733",
+      "candidate": "3.94963"
+    },
+    {
+      "field": "metrics.2.quality_uv_q_ge_0_60",
+      "reference": "68.4694",
+      "candidate": "78.052"
+    },
+    {
+      "field": "metrics.2.quality_uv_std",
+      "reference": "0.258437",
+      "candidate": "0.18421"
+    },
+    {
+      "field": "metrics.2.retry_enabled",
+      "reference": "1",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.2.step_efficiency",
+      "reference": "0",
+      "candidate": "-0.00816761"
+    },
+    {
+      "field": "metrics.2.target_element_growth",
+      "reference": "4418",
+      "candidate": "1.8"
+    },
+    {
+      "field": "metrics.2.target_elements_step",
+      "reference": "21874",
+      "candidate": "4256"
+    },
+    {
+      "field": "metrics.2.target_growth_step",
+      "reference": "1",
+      "candidate": "1.8"
+    },
+    {
+      "field": "metrics.2.top_patch_candidate_count",
+      "reference": "budget_constrained",
+      "candidate": "20"
+    },
+    {
+      "field": "metrics.2.unique_edges",
+      "reference": "33643",
+      "candidate": "31387"
+    },
+    {
+      "field": "metrics.3.actual_element_growth",
+      "reference": "-0.00869023",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.3.actual_elements_step",
+      "reference": "1.5",
+      "candidate": "19830"
+    },
+    {
+      "field": "metrics.3.adaptation_relaxation",
+      "reference": "0",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.3.angle_quality_mean_3d",
+      "reference": "0.39346",
+      "candidate": "0.437477"
+    },
+    {
+      "field": "metrics.3.area_max",
+      "reference": "0.00770932",
+      "candidate": "0.00907073"
+    },
+    {
+      "field": "metrics.3.area_mean",
+      "reference": "0.00272422",
+      "candidate": "0.00301272"
+    },
+    {
+      "field": "metrics.3.area_min",
+      "reference": "0.000122277",
+      "candidate": "0.000212226"
+    },
+    {
+      "field": "metrics.3.area_std",
+      "reference": "0.00207614",
+      "candidate": "0.0020461"
+    },
+    {
+      "field": "metrics.3.boundary_edges",
+      "reference": "5382",
+      "candidate": "5298"
+    },
+    {
+      "field": "metrics.3.budget_driver_mode",
+      "reference": "1",
+      "candidate": "factor_driven"
+    },
+    {
+      "field": "metrics.3.candidate_elements_before_budget_retry",
+      "reference": "21930",
+      "candidate": "19830"
+    },
+    {
+      "field": "metrics.3.edge_ratio_mean_3d",
+      "reference": "0.408456",
+      "candidate": "0.453707"
+    },
+    {
+      "field": "metrics.3.elements",
+      "reference": "21930",
+      "candidate": "19830"
+    },
+    {
+      "field": "metrics.3.elements_prev",
+      "reference": "21930",
+      "candidate": "19830"
+    },
+    {
+      "field": "metrics.3.eligible_patch_elements_sum",
+      "reference": "21930",
+      "candidate": "19830"
+    },
+    {
+      "field": "metrics.3.eligible_patch_mean_factor",
+      "reference": "1.03025",
+      "candidate": "1.03929"
+    },
+    {
+      "field": "metrics.3.error",
+      "reference": "189.172",
+      "candidate": "168.476"
+    },
+    {
+      "field": "metrics.3.error_global_surface_curvature",
+      "reference": "189.172",
+      "candidate": "168.476"
+    },
+    {
+      "field": "metrics.3.error_global_surface_curvature_prev",
+      "reference": "36.9887",
+      "candidate": "42.1875"
+    },
+    {
+      "field": "metrics.3.error_improvement_abs",
+      "reference": "-152.183",
+      "candidate": "-126.289"
+    },
+    {
+      "field": "metrics.3.error_improvement_pct",
+      "reference": "-411.432",
+      "candidate": "-299.351"
+    },
+    {
+      "field": "metrics.3.error_normalized",
+      "reference": "3.66964",
+      "candidate": "3.26818"
+    },
+    {
+      "field": "metrics.3.error_prev",
+      "reference": "36.9887",
+      "candidate": "42.1875"
+    },
+    {
+      "field": "metrics.3.error_total_reduction_pct",
+      "reference": "-266.964",
+      "candidate": "-226.818"
+    },
+    {
+      "field": "metrics.3.excellent_ratio_ge_0_80",
+      "reference": "8.13953",
+      "candidate": "10.8976"
+    },
+    {
+      "field": "metrics.3.generation_control_mode",
+      "reference": "0",
+      "candidate": "budget_constrained"
+    },
+    {
+      "field": "metrics.3.improved_top_patches",
+      "reference": "20",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.3.local_budget_mode",
+      "reference": "1.5",
+      "candidate": "1"
+    },
+    {
+      "field": "metrics.3.max_angle_mean_3d",
+      "reference": "97.7758",
+      "candidate": "96.2047"
+    },
+    {
+      "field": "metrics.3.max_angle_p95_3d",
+      "reference": "131.953",
+      "candidate": "135.029"
+    },
+    {
+      "field": "metrics.3.min_angle_mean_3d",
+      "reference": "23.6076",
+      "candidate": "26.2486"
+    },
+    {
+      "field": "metrics.3.min_angle_p05_3d",
+      "reference": "6.44081",
+      "candidate": "11.0616"
+    },
+    {
+      "field": "metrics.3.nodes",
+      "reference": "15686",
+      "candidate": "13586"
+    },
+    {
+      "field": "metrics.3.nonmanifold_edges",
+      "reference": "143",
+      "candidate": "71"
+    },
+    {
+      "field": "metrics.3.patch_consistency_penalty",
+      "reference": "factor_driven",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.3.poor_ratio_lt_0_30",
+      "reference": "18.8874",
+      "candidate": "10.0706"
+    },
+    {
+      "field": "metrics.3.q_ge_0_60",
+      "reference": "57.6699",
+      "candidate": "64.0847"
+    },
+    {
+      "field": "metrics.3.quality_max",
+      "reference": "0.999931",
+      "candidate": "0.99973"
+    },
+    {
+      "field": "metrics.3.quality_mean",
+      "reference": "0.561218",
+      "candidate": "0.609302"
+    },
+    {
+      "field": "metrics.3.quality_min",
+      "reference": "0.0613526",
+      "candidate": "0.0951287"
+    },
+    {
+      "field": "metrics.3.quality_p05",
+      "reference": "0.160114",
+      "candidate": "0.237636"
+    },
+    {
+      "field": "metrics.3.quality_p50",
+      "reference": "0.657724",
+      "candidate": "0.68278"
+    },
+    {
+      "field": "metrics.3.quality_p95",
+      "reference": "0.865405",
+      "candidate": "0.902989"
+    },
+    {
+      "field": "metrics.3.quality_std",
+      "reference": "0.226646",
+      "candidate": "0.201186"
+    },
+    {
+      "field": "metrics.3.quality_uv_excellent_ratio_ge_0_80",
+      "reference": "54.104",
+      "candidate": "58.1745"
+    },
+    {
+      "field": "metrics.3.quality_uv_max",
+      "reference": "0.999986",
+      "candidate": "0.996023"
+    },
+    {
+      "field": "metrics.3.quality_uv_mean",
+      "reference": "0.645286",
+      "candidate": "0.711066"
+    },
+    {
+      "field": "metrics.3.quality_uv_min",
+      "reference": "0.112214",
+      "candidate": "0.180908"
+    },
+    {
+      "field": "metrics.3.quality_uv_p05",
+      "reference": "0.127444",
+      "candidate": "0.350354"
+    },
+    {
+      "field": "metrics.3.quality_uv_p50",
+      "reference": "0.807406",
+      "candidate": "0.812356"
+    },
+    {
+      "field": "metrics.3.quality_uv_p95",
+      "reference": "0.846671",
+      "candidate": "0.854019"
+    },
+    {
+      "field": "metrics.3.quality_uv_poor_ratio_lt_0_30",
+      "reference": "16.7305",
+      "candidate": "3.93848"
+    },
+    {
+      "field": "metrics.3.quality_uv_q_ge_0_60",
+      "reference": "68.5545",
+      "candidate": "78.1089"
+    },
+    {
+      "field": "metrics.3.quality_uv_std",
+      "reference": "0.256637",
+      "candidate": "0.182297"
+    },
+    {
+      "field": "metrics.3.retry_enabled",
+      "reference": "1",
+      "candidate": "0"
+    },
+    {
+      "field": "metrics.3.step_efficiency",
+      "reference": "0",
+      "candidate": "-0.00810894"
+    },
+    {
+      "field": "metrics.3.target_element_growth",
+      "reference": "4418",
+      "candidate": "1.5"
+    },
+    {
+      "field": "metrics.3.target_elements_step",
+      "reference": "21930",
+      "candidate": "4256"
+    },
+    {
+      "field": "metrics.3.target_growth_step",
+      "reference": "1",
+      "candidate": "1.5"
+    },
+    {
+      "field": "metrics.3.top_patch_candidate_count",
+      "reference": "budget_constrained",
+      "candidate": "20"
+    },
+    {
+      "field": "metrics.3.unique_edges",
+      "reference": "33727",
+      "candidate": "31471"
+    },
+    {
+      "field": "boundary_incidences.1.node_incidences",
+      "reference": 2741,
+      "candidate": 2660
+    },
+    {
+      "field": "boundary_incidences.1.snapshot_sha256",
+      "reference": "3dcee4442b98e435921caad62001172f62a7c8e86a66cbf9858ab0df0576c578",
+      "candidate": "65fe370395a48a1e540528a3bc4c22aab478168f9f567111c404841a67e3e3f1"
+    },
+    {
+      "field": "boundary_incidences.1.triangles",
+      "reference": 4418,
+      "candidate": 4256
+    },
+    {
+      "field": "boundary_incidences.2.boundary_segments",
+      "reference": 9386,
+      "candidate": 7286
+    },
+    {
+      "field": "boundary_incidences.2.node_incidences",
+      "reference": 15658,
+      "candidate": 13558
+    },
+    {
+      "field": "boundary_incidences.2.snapshot_sha256",
+      "reference": "46a5f82ab0bd71be38bf73c6a6a947e2fbf07df53e25b4e859d2eceb5aaabad6",
+      "candidate": "87f802b10b0fabbcac4afbc132b2428591ac74cac209c4d351495874c8e40c26"
+    },
+    {
+      "field": "boundary_incidences.2.triangles",
+      "reference": 21874,
+      "candidate": 19774
+    },
+    {
+      "field": "boundary_incidences.3.boundary_segments",
+      "reference": 9386,
+      "candidate": 7286
+    },
+    {
+      "field": "boundary_incidences.3.node_incidences",
+      "reference": 15686,
+      "candidate": 13586
+    },
+    {
+      "field": "boundary_incidences.3.snapshot_sha256",
+      "reference": "9fe709b0b7c8b16c2caf6379a0274a439ddd07ea0cdf80408c39ebeb9709171e",
+      "candidate": "a7fc08cdfb2fb521381233b8e2494e3aa8c7841065364365236417cf239c9a09"
+    },
+    {
+      "field": "boundary_incidences.3.triangles",
+      "reference": 21930,
+      "candidate": 19830
+    },
+    {
+      "field": "mesh.1.sha256",
+      "reference": "a07c365903ec17520252ced4c0decacd3b1da2990f2127751ac472d70d775aa0",
+      "candidate": "806f5139d9d27811297d5f595ebeebe63f5e2a4eb2dfcab62dd3b79397cca7a2"
+    },
+    {
+      "field": "mesh.2.sha256",
+      "reference": "24a69c17d6bf5af0910cff6f3dae4717e6cbb588f5d54cd0e62f7cd4c2ff051c",
+      "candidate": "b0fd44b0b3d4d55c693906267702733ffe2a7ebb102b9b23fdc5c2a16311d05c"
+    },
+    {
+      "field": "mesh.3.sha256",
+      "reference": "a15398ba684e6cfb1657afd3ba27d1e322f37dcd1b9a554adf76210bc512677a",
+      "candidate": "9598cbcc976cf9ef84a569001f62032f09da74c32a0e3b0be6c9dbee957057af"
+    }
+  ],
+  "all_obj_byte_identical": false,
+  "accepted_rejected_steps_equal": true
+}

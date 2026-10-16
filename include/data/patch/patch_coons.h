@@ -24,6 +24,9 @@ class PatchCoons : public Patch {
   CurveAdaptive* GetCurve(unsigned int position) noexcept;
   const CurveAdaptive* GetCurve(unsigned int position) const noexcept;
 
+  // Orientation belongs to the patch incidence, not to the shared curve object.
+  virtual bool IsCurveReversed(unsigned int) const noexcept { return false; }
+
   virtual std::tuple<double, double> FindUV(const PointAdaptive& p) = 0;
   virtual PointAdaptive Parameterize(double u, double v) = 0;
 

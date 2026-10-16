@@ -37,8 +37,9 @@ class Edge : public Shape {
   // Daniel Siqueira
   // ponteiro para a curva
   CurveAdaptiveParametric *c;
+  bool curve_reversed_ = false;
 
- public:
+public:
   Vertex *makeMid();
   Vertex *makeVector();
 
@@ -99,7 +100,7 @@ class Edge : public Shape {
   bool matches(Vertex *v1, Vertex *v2);
 
   // metodos do Daniel Siqueira
-  void setCurva(CurveAdaptiveParametric *);
+  void setCurva(CurveAdaptiveParametric*, bool reversed = false);
   void setLen(double len);
   double getLen();
   void makeParamMid();

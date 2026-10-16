@@ -5,6 +5,10 @@ import json
 import re
 from pathlib import Path
 from typing import Optional
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
+from verify_generation import require_accepted_artifact
 
 _STAGE_RE = re.compile(r"passo_(\d+)_malha_(\d+)\.obj$")
 
@@ -80,6 +84,10 @@ def verify_result(
         fail(f"stage {final_stage} mesh was not found; available stages: {found}")
 
     mesh = final_meshes[-1]
+    try:
+        require_accepted_artifact(mesh)
+    except (ValueError, OSError) as error:
+        fail(str(error))
     triangles = count_triangles(mesh)
     if triangles <= 0:
         fail(f"final mesh contains no triangular faces: {mesh}")

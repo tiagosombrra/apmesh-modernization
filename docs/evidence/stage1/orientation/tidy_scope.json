@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "control": "lexical_vendor_path",
+      "exit_code": 0,
+      "expected_diagnostic_failure": false
+    },
+    {
+      "control": "first_party_header",
+      "exit_code": 1,
+      "expected_diagnostic_failure": true
+    },
+    {
+      "control": "first_party_source",
+      "exit_code": 1,
+      "expected_diagnostic_failure": true
+    }
+  ]
+}

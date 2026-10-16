@@ -3,9 +3,24 @@
 ## Purpose and current limits
 
 These commands automate repeatable checks; they do not certify the full
-application. CTest currently registers tooling controls and an archived-artifact
+application. The integrated bootstrap registers tooling controls and an archived-artifact
 check. Application ownership, accepted-state generation and sanitizer qualification
 remain open. The legacy warnings/style debt is not declared resolved.
+
+The stage 1 draft also registers real executable invalid-input controls and
+positive shipped-model grammar controls. Its independent generation verifier
+has negative controls for rejected targets, invalid geometry, altered counts,
+missing evidence, absent incidence coverage and numerical report drift.
+The prior numerical reduction-order repair passes exact Eistute/Book repetition.
+The incidence follow-up checks every sheet against source controls and actual
+triangles. Full CTest now contains seven tests: five pass and two required gates
+fail (`application.boundary_orientation`, `application.metric_schema`). The
+failures expose pre-existing reversed geometry and CSV label/value defects;
+they are not skipped or marked expected failures. 65 Python controls pass.
+Selected exporter clang-tidy fails on 18 inherited header/Eigen diagnostics;
+the checks were not weakened. Keep the draft unmerged. See
+`evidence/STAGE1_INCIDENCE_AUDIT.md` for commands, evidence and next repairs.
+
 
 Requirements: Python >=3.10, Git, CMake >=3.21 and Ninja for presets. The imported
 code still targets C++17. GCC/Clang/MSVC qualification and C++23 migration are
@@ -62,6 +77,15 @@ clang-analyzer, selected bugprone, modernize and performance checks. Diagnostics
 fail the selected scope. No --fix mode exists for tidy; ownership, overrides,
 renames, noexcept, const and container changes require reviewed evidence.
 Do not use automatic global fixes or add NOLINT merely to silence findings.
+
+The vendor header exclusion also applies to lexical include/../../libs paths
+that otherwise match the first-party header filter. Checks and warnings-as-errors
+remain unchanged. Required CTest tooling.tidy_header_scope invokes the actual
+analyzer with a vendor positive control and first-party header/source negative
+controls. Missing clang-tidy or lost first-party diagnostics fails the test.
+LLVM 22.1.8 is qualified; other versions must support ExcludeHeaderFilterRegex.
+Selected exporter lint coverage is not a full legacy lint-clean claim.
+
 
 ## Optional local pre-commit hook
 

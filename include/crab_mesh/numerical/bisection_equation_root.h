@@ -18,18 +18,17 @@ class BisectionEquationRoot : public Data::Numerical::EquationRoot {
   virtual double execute(EquationRootFunction *function, int maxSteps,
                          double tolerance, bool &ok);
   virtual double execute(EquationRootFunction *function, bool &ok);
-  virtual double execute(EquationRootFunction *function);
+  double execute(EquationRootFunction* function) override;
 };
 
 class ClosestBisectionEquationRoot
     : public Data::Numerical::BisectionEquationRoot {
  public:
   using Data::Numerical::BisectionEquationRoot::execute;
-  virtual double execute(EquationRootFunction *function, int maxSteps,
-                         double tolerance, bool testFunction, bool testStepSize,
-                         bool &ok);
+  double execute(EquationRootFunction* function, int maxSteps, double tolerance, bool testFunction,
+                 bool testStepSize, bool& ok) override;
 
- protected:
+protected:
   virtual double recursiveExecute(EquationRootFunction *function, double min,
                                   double max, double fmin, double fmax,
                                   int maxSteps, double tolerance,
@@ -40,11 +39,10 @@ class ClosestBisectionEquationRoot
 class MaxBisectionEquationRoot : public Data::Numerical::BisectionEquationRoot {
  public:
   using Data::Numerical::BisectionEquationRoot::execute;
-  virtual double execute(EquationRootFunction *function, int maxSteps,
-                         double tolerance, bool testFunction, bool testStepSize,
-                         bool &ok);
+  double execute(EquationRootFunction* function, int maxSteps, double tolerance, bool testFunction,
+                 bool testStepSize, bool& ok) override;
 
- protected:
+protected:
   virtual double recursiveExecute(EquationRootFunction *function, double min,
                                   double max, double fmin, double fmax,
                                   int maxSteps, double tolerance,
@@ -55,11 +53,10 @@ class MaxBisectionEquationRoot : public Data::Numerical::BisectionEquationRoot {
 class MinBisectionEquationRoot : public Data::Numerical::BisectionEquationRoot {
  public:
   using Data::Numerical::BisectionEquationRoot::execute;
-  virtual double execute(EquationRootFunction *function, int maxSteps,
-                         double tolerance, bool testFunction, bool testStepSize,
-                         bool &ok);
+  double execute(EquationRootFunction* function, int maxSteps, double tolerance, bool testFunction,
+                 bool testStepSize, bool& ok) override;
 
- protected:
+protected:
   virtual double recursiveExecute(EquationRootFunction *function, double min,
                                   double max, double fmin, double fmax,
                                   int maxSteps, double tolerance,

@@ -1,0 +1,14 @@
+{
+  "1": {
+    "status": "passed",
+    "rows": 5,
+    "compared_fields": 105,
+    "differences": []
+  },
+  "2": {
+    "status": "passed",
+    "rows": 5,
+    "compared_fields": 105,
+    "differences": []
+  }
+}

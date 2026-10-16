@@ -21,7 +21,7 @@ class CurveAdaptiveParametric : public CurveAdaptive {
   CurveAdaptiveParametric(const PointAdaptive point0,
                           const PointAdaptive point1);
   explicit CurveAdaptiveParametric(CurveAdaptiveParametric*);
-  ~CurveAdaptiveParametric();
+  ~CurveAdaptiveParametric() override;
 
   // calcula o comprimento de curva de p1 a p2
   double CalculateLengthPoints(const PointAdaptive& point1,

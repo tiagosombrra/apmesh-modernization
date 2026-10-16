@@ -31,7 +31,9 @@ class PatchBezier : public PatchCoons {
               const PointAdaptive pt32, const PointAdaptive pt33,
               bool signal_curve1 = true, bool signal_curve2 = true,
               bool signal_curve3 = true, bool signal_curve4 = true);
-  ~PatchBezier();
+  ~PatchBezier() override;
+
+  bool IsCurveReversed(unsigned int position) const noexcept override;
 
   PointAdaptive CalculatePointUV();
   void PrintAllMatrixPatchBezier();

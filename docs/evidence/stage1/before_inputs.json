@@ -1,0 +1,32 @@
+[
+  {
+    "case": "missing",
+    "exit_code": 0,
+    "obj_files": 1,
+    "stderr_tail": ""
+  },
+  {
+    "case": "empty",
+    "exit_code": 0,
+    "obj_files": 1,
+    "stderr_tail": ""
+  },
+  {
+    "case": "unknown-record",
+    "exit_code": 0,
+    "obj_files": 1,
+    "stderr_tail": ""
+  },
+  {
+    "case": "short-vertex",
+    "exit_code": 0,
+    "obj_files": 1,
+    "stderr_tail": ""
+  },
+  {
+    "case": "short-patch",
+    "exit_code": 0,
+    "obj_files": 1,
+    "stderr_tail": ""
+  }
+]

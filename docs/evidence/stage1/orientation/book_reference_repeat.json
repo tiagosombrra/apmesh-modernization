@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "model": "book",
+  "compared_meshes": 4,
+  "all_obj_byte_identical": true,
+  "all_acceptance_fields_equal": true,
+  "last_accepted_step": 1,
+  "last_accepted_triangles": 4256,
+  "boundary_incidence_coverage": "verified",
+  "boundary_regression": "exact",
+  "same_executable_same_configuration_same_command": true,
+  "executable_sha256": "c2f1aae17429b4aac8ebec1fb524b42bf5660920d926cdc22fc391ae870732d7",
+  "configuration_sha256": "8e27c6bc6e739383061be27dcb9162b35cfc4d2e1edf8b2436dd07a60f2582a2"
+}

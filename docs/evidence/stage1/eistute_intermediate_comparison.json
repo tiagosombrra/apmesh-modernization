@@ -1,0 +1,198 @@
+{
+  "model": "eistute",
+  "status": "failed",
+  "differences": [
+    {
+      "field": "decisions.1.fields.acceptance_score",
+      "reference": "-7.68812",
+      "candidate": "-7.68813"
+    },
+    {
+      "field": "decisions.1.fields.error_improvement",
+      "reference": "0.782615",
+      "candidate": "0.782608"
+    },
+    {
+      "field": "decisions.1.fields.step_efficiency",
+      "reference": "0.000193942",
+      "candidate": "0.000193941"
+    },
+    {
+      "field": "decisions.2.fields.acceptance_score",
+      "reference": "-0.721985",
+      "candidate": "-0.721948"
+    },
+    {
+      "field": "decisions.2.fields.error_improvement",
+      "reference": "-0.249273",
+      "candidate": "-0.249235"
+    },
+    {
+      "field": "decisions.2.fields.step_efficiency",
+      "reference": "-1.84163e-05",
+      "candidate": "-1.84141e-05"
+    },
+    {
+      "field": "decisions.3.fields.acceptance_score",
+      "reference": "-0.941805",
+      "candidate": "-0.941769"
+    },
+    {
+      "field": "decisions.3.fields.error_improvement",
+      "reference": "-0.202353",
+      "candidate": "-0.202317"
+    },
+    {
+      "field": "decisions.3.fields.step_efficiency",
+      "reference": "-1.22159e-05",
+      "candidate": "-1.2214e-05"
+    },
+    {
+      "field": "decisions.4.fields.error_improvement",
+      "reference": "0.831121",
+      "candidate": "0.831125"
+    },
+    {
+      "field": "decisions.4.fields.step_efficiency",
+      "reference": "8.57361e-06",
+      "candidate": "8.57391e-06"
+    },
+    {
+      "field": "metrics.1.acceptance_score",
+      "reference": "-7.68812",
+      "candidate": "-7.68813"
+    },
+    {
+      "field": "metrics.1.actual_element_growth",
+      "reference": "0.000193942",
+      "candidate": "0.000193941"
+    },
+    {
+      "field": "metrics.1.error",
+      "reference": "0.0620594",
+      "candidate": "0.0620612"
+    },
+    {
+      "field": "metrics.1.error_global_surface_curvature",
+      "reference": "0.0620594",
+      "candidate": "0.0620612"
+    },
+    {
+      "field": "metrics.1.error_improvement_abs",
+      "reference": "0.223422",
+      "candidate": "0.22342"
+    },
+    {
+      "field": "metrics.1.error_improvement_pct",
+      "reference": "78.2615",
+      "candidate": "78.2608"
+    },
+    {
+      "field": "metrics.1.error_improvement_per_element",
+      "reference": "0.000193942",
+      "candidate": "0.000193941"
+    },
+    {
+      "field": "metrics.1.error_normalized",
+      "reference": "0.217385",
+      "candidate": "0.217392"
+    },
+    {
+      "field": "metrics.1.error_total_reduction_pct",
+      "reference": "78.2615",
+      "candidate": "78.2608"
+    },
+    {
+      "field": "metrics.2.actual_element_growth",
+      "reference": "-1.84163e-05",
+      "candidate": "-1.84141e-05"
+    },
+    {
+      "field": "metrics.2.error_global_surface_curvature_prev",
+      "reference": "0.0620594",
+      "candidate": "0.0620612"
+    },
+    {
+      "field": "metrics.2.error_improvement_abs",
+      "reference": "-0.0154697",
+      "candidate": "-0.0154678"
+    },
+    {
+      "field": "metrics.2.error_improvement_pct",
+      "reference": "-24.9273",
+      "candidate": "-24.9235"
+    },
+    {
+      "field": "metrics.2.error_prev",
+      "reference": "0.0620594",
+      "candidate": "0.0620612"
+    },
+    {
+      "field": "metrics.3.actual_element_growth",
+      "reference": "-1.22159e-05",
+      "candidate": "-1.2214e-05"
+    },
+    {
+      "field": "metrics.3.error_global_surface_curvature_prev",
+      "reference": "0.0620594",
+      "candidate": "0.0620612"
+    },
+    {
+      "field": "metrics.3.error_improvement_abs",
+      "reference": "-0.0125579",
+      "candidate": "-0.012556"
+    },
+    {
+      "field": "metrics.3.error_improvement_pct",
+      "reference": "-20.2353",
+      "candidate": "-20.2317"
+    },
+    {
+      "field": "metrics.3.error_prev",
+      "reference": "0.0620594",
+      "candidate": "0.0620612"
+    },
+    {
+      "field": "metrics.4.actual_element_growth",
+      "reference": "8.57361e-06",
+      "candidate": "8.57391e-06"
+    },
+    {
+      "field": "metrics.4.error",
+      "reference": "0.0104805",
+      "candidate": "0.0104806"
+    },
+    {
+      "field": "metrics.4.error_global_surface_curvature",
+      "reference": "0.0104805",
+      "candidate": "0.0104806"
+    },
+    {
+      "field": "metrics.4.error_global_surface_curvature_prev",
+      "reference": "0.0620594",
+      "candidate": "0.0620612"
+    },
+    {
+      "field": "metrics.4.error_improvement_abs",
+      "reference": "0.0515789",
+      "candidate": "0.0515806"
+    },
+    {
+      "field": "metrics.4.error_improvement_pct",
+      "reference": "83.1121",
+      "candidate": "83.1125"
+    },
+    {
+      "field": "metrics.4.error_normalized",
+      "reference": "0.0367117",
+      "candidate": "0.036712"
+    },
+    {
+      "field": "metrics.4.error_prev",
+      "reference": "0.0620594",
+      "candidate": "0.0620612"
+    }
+  ],
+  "all_obj_byte_identical": true,
+  "accepted_rejected_steps_equal": true
+}

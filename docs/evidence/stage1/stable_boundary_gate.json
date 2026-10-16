@@ -1,0 +1,6 @@
+{
+  "status": "blocked",
+  "expected_negative_control": "passed",
+  "error": "Compatibility is unmeasured: compared_groups <= 0",
+  "incidence_coverage": "unavailable"
+}
