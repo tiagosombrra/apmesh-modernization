@@ -1,0 +1,212 @@
+{
+  "status": "passed",
+  "revision": "6c6c2f2d50f5870fd92e4edbc91fc5d901a1cd22",
+  "qualified_head": "6c6c2f2d50f5870fd92e4edbc91fc5d901a1cd22",
+  "qualified_tree": "41874ce10a950d713ffcf245880d651d8a874c21",
+  "remote_blobs_verified": 674,
+  "local_text_blobs_verified": 672,
+  "ctest": {
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0
+  },
+  "python_controls": 74,
+  "memory": {
+    "status": "passed",
+    "scope": "Isolated actual physical node/submesh/triangle production sources; no whole-application or UBSan/LSan qualification.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-node-msvc\\RelWithDebInfo\\node_lifetime_probe.exe",
+        "sha256": "7b7dedfa359eeea0ed4754d94e16dd8cd7aeaca2c335f6780ceea4fee989f844"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-node-crt\\Debug\\node_lifetime_probe.exe",
+        "sha256": "ce577b21cfb9bd3c5c9259a8ba1f7fe0b66404f972719dc9bd3874e90a58ae6a"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "log_sha256": "50109e300397fac66b3b444e7767577826bd3aa6845c5e27573cff3bcbe909b6"
+      },
+      {
+        "instrument": "asan",
+        "mode": "double-free",
+        "exit_code": 1,
+        "expected_diagnostic": "attempting double-free",
+        "passed": true,
+        "log_sha256": "42b2e54c3afbd1e22685eec815a6e4d9db45ceee777080c01376b3685367e040"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "log_sha256": "daed61c5004a979caa9b1fb8d9985feb797df57a2511b0c004b54a9d79c5318a"
+      }
+    ]
+  },
+  "models": {
+    "eistute": {
+      "repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "b1244378f7638d4508df04d76e091615a62158d76a5a1f7068b1079321d46adf",
+        "configuration_sha256": "9cf353507991fdaa49f598b08d38ca6515c1774dd3b3e2a71c8c352ce5419b9a"
+      },
+      "strict_vs_entry": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 5,
+        "compared_fields": 105,
+        "differences": []
+      },
+      "run_identity": {
+        "model": "eistute",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 28.314156799999182,
+        "executable_sha256": "b1244378f7638d4508df04d76e091615a62158d76a5a1f7068b1079321d46adf",
+        "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+        "input_model": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\input_models\\eistute2.fixed.bp",
+        "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-head-eistute-repeat\\working\\article.conf"
+        ]
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3,
+        4
+      ]
+    },
+    "book": {
+      "repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "b1244378f7638d4508df04d76e091615a62158d76a5a1f7068b1079321d46adf",
+        "configuration_sha256": "218852fd60b128558290412bbfcdf98bf14b32f4ed65b3683310275980d887ef"
+      },
+      "strict_vs_entry": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 4,
+        "compared_fields": 84,
+        "differences": []
+      },
+      "run_identity": {
+        "model": "book",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 9.49310239999977,
+        "executable_sha256": "b1244378f7638d4508df04d76e091615a62158d76a5a1f7068b1079321d46adf",
+        "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+        "input_model": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\input_models\\book_v7a.bp",
+        "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-head-book-repeat\\working\\article.conf"
+        ]
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3
+      ]
+    }
+  },
+  "log_sha256": {
+    "head-ctest.log": "99b152f72dd9dc1694015ec70517460d7c15137eb9c16ba66f8d05ef984132a5",
+    "head-inventory.log": "bfba17dfad80477bd92864c84c9d9fe0ed59ea945193e5f9f5838be17cb71900",
+    "head-tidy.log": "a010f7417599464d3d6d2f182d45b03d0c356cbe2facc46cb6fba790b214ade9"
+  }
+}

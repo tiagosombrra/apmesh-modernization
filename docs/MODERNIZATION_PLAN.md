@@ -9,11 +9,13 @@ domain/lifecycle contracts, ADR and repair sequence. Exact-head and post-merge
 CTest 9/9, 73 Python controls and strict Eistute/Book regression pass with
 production identities unchanged. See `evidence/STAGE2_CLOSURE.md`.
 Stage 3 is in progress (#8): a reproduced foreign-adjacency use-after-free at
-SetNoh is repaired with isolated ASan/Debug CRT controls; candidate CTest 10/10
-and exact Eistute/Book regression pass. Head/post-merge qualification is pending;
-the wider stage remains open. Next slice is UV front/edge/face teardown. Stage 4
+SetNoh is repaired with isolated ASan/Debug CRT controls; candidate, published
+head and main CTest 10/10 and exact Eistute/Book regression pass (PR #9, head
+6c6c2f2d50f5870fd92e4edbc91fc5d901a1cd22, main e30fa99a8ea6da709f3943e8975efb31d9610b1d).
+Slice 1 is qualified; the wider stage remains open. Next slice is UV
+front/edge/face teardown. Stage 4
 may unblock proved diagnostic-tool portability barriers; stages 4-11 remain
-pending. See `evidence/STAGE3_NODE_LIFETIME.md`. Architecture:
+pending. See `evidence/STAGE3_SLICE1_CLOSURE.md` and `WORKLOG.md`. Architecture:
 `architecture/MESH_ARCHITECTURE.md` and
 `architecture/REFACTOR_SEQUENCE.md`.
 

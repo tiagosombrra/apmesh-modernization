@@ -90,7 +90,13 @@ Current audit and exact-head/post-merge evidence:
 `docs/evidence/STAGE2_ARCHITECTURE_AUDIT.md`, `docs/evidence/STAGE2_CLOSURE.md`
 and `docs/evidence/stage2/`.
 
-## Stage 3 in progress: physical node copy boundary (#8)
+## Stage 3 in progress: slice 1 qualified (#8, PR #9)
+
+Qualified head `6c6c2f2d50f5870fd92e4edbc91fc5d901a1cd22` integrated as main
+`e30fa99a8ea6da709f3943e8975efb31d9610b1d`, preserving the exact 674-blob tree.
+All required gates passed again after merge. This documentation-only follow-up
+preserves qualified production/tool/test/build/input identities. See
+`docs/evidence/STAGE3_SLICE1_CLOSURE.md` and `docs/WORKLOG.md`.
 
 The first bounded slice repairs a reproduced ASan heap-use-after-free: SetNoh
 copied foreign element observers into a new mesh node. It now preserves scalar
@@ -98,15 +104,15 @@ state while clearing those observers; local triangles rebuild adjacency. The
 header explicitly distinguishes copying from unique/raw ownership adoption.
 General node copies and triangle removal/replacement remain outside this slice.
 
-Candidate gates: CTest 10/10, zero skips; 74 Python controls; selected SubMesh
+Candidate, exact-head and main gates: CTest 10/10, zero skips; 74 Python controls; selected SubMesh
 lint/formatting; seven qualified ASan/Debug CRT cases including deliberate UAF,
 double-free and leak controls. Repeated Eistute/Book and strict entry/stage-2
 comparisons are exact across all nine attempted states, preserving 1,168/4,256
 last-accepted triangles and measured shared-incidence coverage. See
 `docs/evidence/STAGE3_NODE_LIFETIME.md` and `docs/evidence/stage3/`.
 
-Published-head and post-merge gates are required before issue #8 closure. Stage 3
-remains open. Next slice: coherent UV front/edge/face normal/partial/failure
+Slice 1 is complete for its measured boundary; the full stage 3 remains open.
+Next slice: coherent UV front/edge/face normal/partial/failure
 teardown. Curve sample/rollback ownership, UV exceptions, generic adjacency and
 cache mutation, full process leaks and parallel paths still need qualification.
 Stage 4 may unblock actual instrumentation barriers. Keep one active item.
