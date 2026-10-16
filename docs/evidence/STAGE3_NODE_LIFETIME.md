@@ -1,5 +1,8 @@
 # Stage 3, slice 1: physical node copy boundary
 
+This is the retained candidate checkpoint. Final exact-head/post-merge results
+and work-item closure are recorded in [the slice audit](STAGE3_SLICE1_CLOSURE.md).
+
 Work item: #8. Entry main: `6c56e307b1e932399c88ba961a9de40bf87ecbca`;
 tree: `9c7dee056042e911ec1c19e2abced94da64b965e`.
 Classification: demonstrated lifetime defect repair, with no observed scientific
