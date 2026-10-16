@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "qualification": "prepublication; exact-head, concurrency/check and post-merge gates remain required",
+  "base_main": "d4561c9421226503cb4a478faad71ed5ad012381",
+  "base_tree": "b6ab987ae795ac1713adcde7b262c6303a412915",
+  "issue": 5,
+  "classification": "engineering-only tooling/documentation inventory",
+  "source_inventory_summary": {
+    "files": 122,
+    "translation_units": 57,
+    "headers": 65,
+    "directory_components": {
+      "adapter": 2,
+      "cli": 1,
+      "crab_mesh/aft": 17,
+      "crab_mesh/numerical": 7,
+      "crab_mesh/performer": 5,
+      "curvature": 7,
+      "data": 18,
+      "data/curve": 9,
+      "data/mesh": 4,
+      "data/patch": 8,
+      "data/tree": 2,
+      "estimate": 2,
+      "generator": 2,
+      "input_output": 11,
+      "parallel": 25,
+      "timer": 2
+    },
+    "literal_include_directives": 453,
+    "first_party_include_edges": 268
+  },
+  "review_traceability": {
+    "contracts": 22,
+    "source_anchors": 78,
+    "scope": "source anchors exist; semantic statements require independent review"
+  },
+  "build_inputs": [
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "1ba622112219d46cf1adc1922a3b9cfbbae3e03cd1f8f641099493f880bc95f2"
+    },
+    {
+      "path": "CMakePresets.json",
+      "sha256": "1490377d69b8c9bdd2bccd95f0c10fd2fae0e37baf518ddff34d4155e9691d5e"
+    },
+    {
+      "path": "cmake/Quality.cmake",
+      "sha256": "8cead3742ca77d7195945dc51c39f83f2d70f93dca1681a35608d34994bf689c"
+    }
+  ],
+  "ctest": {
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0
+  },
+  "python_controls": 73,
+  "new_inventory_controls": 8,
+  "invalid_input_controls": 23,
+  "orientation_cases": 14,
+  "orientation_attempted_states": 44,
+  "selected_exporter_tidy": "passed",
+  "production_source_and_build_changes": 0,
+  "formula_order_tolerance_policy_changes": 0,
+  "executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+  "toolchain": {
+    "compiler": "g++.exe (Rev5, Built by MSYS2 project) 16.1.0\nCopyright (C) 2026 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "cmake": "cmake version 4.4.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "ctest": "ctest version 4.4.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "clang_tidy": "LLVM (http://llvm.org/):\n  LLVM version 22.1.8\n  Optimized build."
+  },
+  "deliverable_sha256": {
+    "tools/inventory_architecture.py": "bbd2e202cfd0b563cde03950bbab90d203481995cf4a12b5adef850ed803c0de",
+    "tests/tooling/test_architecture_inventory.py": "4c8047208ce103bed0ed97dcc6f8e7b4dfe3fec6fe2399989ed689fdcc1687cf",
+    "docs/architecture/contracts.json": "2ca169edc55ae632877123c91f43105e3f320b6a279bdc06db3a9cc1f2a37e37",
+    "docs/architecture/source_inventory.json": "c104a99f102f1bc52c7d33b0351faf7902f68b665b737fedae7c2ea1125a200b",
+    "docs/architecture/MESH_ARCHITECTURE.md": "ec16123941f07f1a72667a289453b85ef70e23136e7e222b9a9a64e29761b20e",
+    "docs/architecture/REFACTOR_SEQUENCE.md": "a12b861d5ab10b75f5cd5d538ff9fbe4017e42e43e3b2f139cef3180323b998a",
+    "docs/decisions/ADR-0001-mesh-domains-and-lifetimes.md": "026ec4f9c98a710a3bf198c331651858fabf7842c459faac0451c9fa73f101fb"
+  },
+  "known_limits": [
+    "lexical inventory does not prove active preprocessing, ownership, runtime reachability or memory safety",
+    "newly indexed lifecycle/cache/copy hazards require separate dynamic characterization",
+    "parallel routing remains unqualified; macro bridge gap recorded",
+    "full legacy warning cleanup, sanitizers, Eigen removal, C++23, generated Doxygen, Decor Shelf and performance remain later-stage work"
+  ],
+  "scientific_regression": "exact entry/fresh-build/stage-1 comparisons and positive incidence/CSV evidence in entry_regression.json"
+}

@@ -1,0 +1,210 @@
+# Mesh architecture and lifecycle inventory
+
+Reviewed base: `d4561c9421226503cb4a478faad71ed5ad012381`.
+Work item: stage 2, issue #5. Classification: engineering inventory.
+
+The current generator already has parametric patches, canonical shared boundary
+curves and CRABMesh reconstruction. Their responsibilities are mapped here so
+later ownership and library changes preserve the published execution sequence.
+This delivery changes development tooling and documentation; production sources,
+build settings, model inputs and scientific policy retain their base identities.
+
+## Evidence and coverage
+
+[source_inventory.json](source_inventory.json) deterministically covers all
+122 first-party C++ files: 57 translation units and 65 headers, plus hashes for
+the three CMake inputs. It records 453 potential literal include directives and
+268 distinct directed first-party include edges. Conditional branches are kept;
+this is not the active preprocessed graph. The 16 directory groups below are
+source organization, not automatically inferred architectural layers.
+
+[contracts.json](contracts.json) contains 22 reviewed contracts with 78 exact
+source anchors. The checker rejects stale files, missing anchors and empty
+coverage. Matching anchors establishes traceability; it does not prove the
+semantic statements or all runtime paths. The statements below come from
+focused source review, with uncertainty and deferred qualification stated.
+
+| Directory family | Files | Responsibility and relevant boundary |
+| --- | ---: | --- |
+| cli | 1 | RuntimeConfig, validation, process globals, thin-entry candidate; currently src/main.cpp also supplies legacy runtime definitions |
+| generator | 2 | Initial mesh, adaptive policy/budgets/history, retries, rollback, acceptance, saving and quality/report aggregation |
+| adapter | 2 | Curve discretization and physical/UV mesh conversion around each CRABMesh reconstruction attempt |
+| data | 18 | Physical point/vector/node/triangle/model/geometry concepts and broad shared definitions |
+| data/curve | 9 | Parametric Bezier/Hermite curves, canonical samples and orientation mapping |
+| data/patch | 8 | Surface control nets, evaluation, derivatives, inverse mapping and current-submesh observers |
+| data/mesh | 4 | Owned physical mesh/submesh/node/element containers |
+| data/tree | 2 | One-dimensional curve refinement tree; distinct from the two-dimensional domain quadtree |
+| crab_mesh/aft | 17 | UV vertices/edges/faces, boundary, quadtree/templates, front reconstruction and improvement |
+| crab_mesh/numerical | 7 | Equation/root functions and bisection variants used by numerical geometry helpers |
+| crab_mesh/performer | 5 | ID allocation and ranges; local front IDs remain a separate context |
+| curvature | 7 | Analytical surface curvature, discrete physical-mesh curvature and adjacency ordering |
+| estimate | 2 | Legacy patch workload estimation and alternative loading path, principally parallel distribution support |
+| input_output | 11 | BP/model readers, input validation, independent incidence observation and historical writers |
+| parallel | 25 | Communicator/thread abstractions and MPI/OpenMP-specific implementations; effective execution unqualified here |
+| timer | 2 | Interval accumulation and reporting; performance qualification deferred |
+
+The fresh compilation database contains all 57 production translation units.
+Compilation of a file with inactive branches does not qualify those branches.
+Development Python tools/tests, vendored Eigen and publication artifacts have
+different roles and are outside the 122-file production count.
+
+## Scientific sequence and actual component boundaries
+
+Contracts C01, C08-C09, C12-C14 and C20 identify the corresponding source symbols.
+The serial configuration path constructs Geometry and Model, loads BP patches,
+creates the coarse physical mesh and computes the initial curvature/error state.
+An adaptive step snapshots the accepted state, restores it for each retry,
+adapts shared curves, then adapts patch interiors and evaluates the candidate.
+Saving/observing a rejected candidate precedes restoring accepted observers and
+curve samples; saving does not change its acceptance classification.
+
+```mermaid
+flowchart TD
+  A[Accepted state] --> B[Snapshot and restore]
+  B --> C[Shared curve adaptation]
+  C --> D[Adapter and UV reconstruction]
+  D --> E[Physical mesh evaluation]
+  E --> F{Acceptance policy}
+  F -->|accept| A
+  F -->|retry| B
+  F -->|reject| G[Observe rejected candidate]
+  G --> H[Restore accepted state]
+  H --> A
+```
+
+Within `AdvancingFront::execute`, the preserved order is quadtree generation
+from the previous UV mesh, neighbor refinement, optional template insertion,
+initial-front construction, geometric front generation, conditional topological
+fallback, fill and improvement. Curve adaptation, that quadtree, template choice,
+front advancement, smoothing and acceptance are scientific preservation points.
+The inventory does not replace any of them with another triangulator.
+
+### Geometry and coordinate domains
+
+| Concept | Domain/units | Identity and conversion |
+| --- | --- | --- |
+| PointAdaptive / NodeAdaptive | Physical XYZ in model units; the input carries no general unit-conversion contract | Physical logical ID; nodes copied into different submeshes can retain the same boundary ID |
+| PatchCoons / PatchBezier | Parametric surface over local [0,1] squared, control net in XYZ | Geometry owns the patch; Parameterize maps UV to XYZ and FindUV is an iterative inverse/projection path |
+| Canonical CurveAdaptiveParametric | Stored parameter t in [0,1], evaluated point in XYZ | Shared by matching complete control tuples, direct or reversed; it still guides boundary discretization |
+| Patch incidence | Local increasing side parameter | Orientation maps t or 1-t; reversal is distinct from the clockwise traversal of sides 2/3 |
+| Par2DJMesh::Vertex | Local UV despite x/y accessor names | Temporary per-patch front identity; Adapter maps Vertex pointers to owned physical nodes during one attempt |
+| Par2DJMesh::Face | UV triangle, h derived using physical old-triangle area fractions and scaling | Previous TriangleAdaptive UV corners seed old faces; generated faces become physical triangles |
+| TriangleAdaptive | Physical triangle with three local UV tuples | Borrowed physical nodes, cached area/normal/angles, per-corner patch parameters |
+| Edge::length / Edge::getLen | Euclidean UV length / boundary physical arc normalized by whole curve length | Distinct metrics; physical midpoint integration consumes increasing canonical limits |
+| Quality and curvature | Quality is dimensionless; analytical/discrete curvature refer to the surface/physical mesh respectively | UV quality and XYZ quality can differ under surface mapping; analytical and discrete curvature are not duplicate formulas |
+
+There is no new welding operation in canonical curve storage. The input reader
+still uses its legacy control interning/matching policies; independent incidence
+validation binds the exact source net and detects alterations. Serial OBJ export
+deduplicates physical node incidences by logical ID, not by XYZ proximity. One ID
+with conflicting coordinates is invalid. Pointer identity, UV-local identity,
+physical ID and source-curve identity cannot be interchanged (C07-C09, C21).
+
+### Conversion ledger
+
+| Boundary | Actual source operation | Preservation obligation |
+| --- | --- | --- |
+| BP to geometry | PatchReader interns controls, reuses complete curves and passes incidence direction to PatchBezier | Input control net, complete curve identity and all incident sheets |
+| Canonical samples to local boundary | Adapter traverses ordered curve points and maps local side UV; reverse incidences complement parameters | Same partition and XYZ for every sheet, independent of patch traversal |
+| Old physical triangles to old UV faces | Adapter reads GetParametersN1/N2/N3 and allocates temporary Vertex/Face objects | UV belongs to the same patch; h normalization still uses physical area fractions |
+| CRABMesh UV result to physical mesh | Parameterize for interior nodes; boundary node copies preserve IDs; map<Vertex*,NodeAdaptive*> resolves generated triangle corners | New owners, coherent adjacency, UV tuples and global IDs survive temporary-front destruction |
+| Candidate to saved/accepted state | SaveMesh moves ownership to save_mesh_; policy/logs classify the saved attempt separately | No rejected candidate substituted for an accepted result |
+| Rollback to accepted curves | Capture id/XYZ, delete unique current sample pointers, reconstruct by ID and reset curve lists | Observer invalidation is explicit; samples are not stable pointers across retries |
+
+## Ownership, observers and lifetime hazards
+
+| Object/container | Owner/adoption evidenced by source | Observers, copy behavior and teardown |
+| --- | --- | --- |
+| Geometry | unique_ptr points/vectors/curves/patches; raw Insert APIs adopt | PatchCoons curve lists and CurveAdaptive incident patch lists borrow |
+| Model | Destructor deletes meshes_ raw pointers | geometry_ is borrowed; the serial root uses stack Geometry. Implicit Model copy semantics need review |
+| GeneratorAdaptive | mesh_ and save_mesh_ own physical meshes; Adapter is a member | Current accepted mesh may come from mesh_ or the last saved state; the broader legacy Model collection is a different ownership route |
+| MeshAdaptive | unique_ptr submeshes; positional reset deletes replaced owner | A Patch current-submesh observer must be rebound after replacement/rollback |
+| SubMesh | unique_ptr nodes/elements; AddNoh moves, SetElement adopts | SetNoh copies the supplied node, contrary to its grouped header ownership comment; caller keeps responsibility for the original |
+| TriangleAdaptive | SubMesh owns the element | Node pointers borrow; construction registers adjacency; destruction does not unregister; cached values need invalidation policy |
+| NodeAdaptive | SubMesh owns physical node copies | Adjacent elements are borrowed; implicit copy copies raw adjacency. GetNoh on TriangleAdaptive returns a value copy |
+| Curve sample lists | CurveAdaptive explicitly does not own them | Orchestration creates/deletes/restores samples; complete terminal/exception ownership needs stage 3 qualification |
+| Default AdvancingFront | Allocates boundary/quadtree; deletes quadtree | Quadtree deletes its non-null boundary and root; setters/external constructors need explicit adoption semantics |
+| Boundary | Deletes boundary edges after nulling endpoints, then deletes vertices | Completed-edge curve belongs to the previous outgoing side; borrowed source curve outlives the attempt |
+| Edge / Face | Destructors delete non-null endpoints and some cached midpoint/vector allocations | Shared mesh endpoints require caller detachment. Front/boundary destructors use this protocol; exceptional paths need tests |
+| Quadtree / QuadtreeCell | Root, boundary and cell midpoints/children have conditional deletion paths | Mate/root sharing, neighbors, leaves, template/front aliases need a lifetime map before changing destruction |
+| Adapter attempt | unique_ptr SubMesh until selected result.release() | Temporary old UV faces are deleted on explicit success/failure paths; exceptions before those loops remain unqualified |
+
+C02-C07 and C10-C13 support these observations. This is not a sanitizer report.
+RAII containers in one layer do not establish whole-application memory safety.
+The detach-before-delete protocol is a proved source design fact; an actual
+crash or leak on every such path is not asserted. Stage 3 must challenge partial
+construction, replacement, failure, retries and teardown with qualified tools.
+
+The pointer-taking PatchCoons copy constructor calls only the Patch base and
+leaves its curve vector empty, while the Bezier pointer-copy path copies other
+fields separately (C22). This is not a complete qualified clone contract. The
+existing orientation probe checks copied direction flags; it does not qualify
+copying every observer or all geometry mutation APIs.
+
+## Dependency and computation ledger
+
+The potential header graph has one strongly connected set of six headers:
+boundary, edge, face, quadtree, quadtree_cell and vertex under crab_mesh/aft.
+It is a lexical include cycle, not proof of a runtime object cycle. Forward
+declarations and a narrow domain boundary can be considered in stage 6 after
+lifetime contracts; breaking it mechanically now would not resolve ownership.
+
+Central data/definitions.h exposes broad namespace aliases, Eigen types and
+platform/compiler conditionals to many unrelated consumers. Direct vendored
+Eigen includes resolve there. The inventory also reports an Eigen/Eigen spelling
+from a conditional system-search branch; system include resolution is not
+performed. Optional GL, MPI/OpenMP, Linux and Windows headers are potential
+dependencies across all branches, not mandatory serial runtime dependencies.
+
+| Similar computation/concept | Source locations/contracts | Consolidation disposition |
+| --- | --- | --- |
+| Curve length, midpoint and numerical roots | CurveAdaptiveParametric, Edge::makeParamMid, numerical bisection helpers; C08/C16 | Geometry integration primitive may be shared later; canonical/local intervals and existing solver/roundoff behavior must remain explicit |
+| Analytical vs discrete curvature | CurvatureAnalytical and CurvatureDiscrete; C14 | Keep distinct quantities and their adjacency/derivative dependencies |
+| UV vs physical quality aggregates | Adapter, AdvancingFront, GeneratorAdaptive; C15 | Candidate shared aggregation only after units, stages, thresholds and summation order are compared |
+| Physical Point/Vector vs UV Vertex | data vs crab_mesh/aft; C09/C21 | Keep domain types distinct; share only proven mathematical primitives |
+| Bezier/Hermite matrices and small inverse systems | Patch/Curve implementations and Eigen aliases; C16/C17 | Inventory actual operations first; stage 5 requires analytic, aliasing and differential controls |
+| Serial/OpenMP adaptation implementations | AdaptDomain/AdaptDomainOmp and Generator variants | Similar control flow is not proof of equivalence; effective build routing and thread/lifetime contracts precede consolidation |
+| Repeated data copies and saved candidates | Node value access, SubMesh::SetNoh, save_mesh_; C04/C05/C13 | Measure ownership and retention needs; removing copies may invalidate independent submesh observers or the regression trace |
+| Output/report writers | Generator WriteMesh/WriteQualityMesh, WriteOBJFile and independent observer | Unify only after identity, ordering, field meaning, precision and historical compatibility are specified |
+| Timer vs Data::time | timer/timer.cpp and data/definitions.cpp; C19 | Qualify clock behavior before benchmarks or claims about optimization |
+
+### Configuration gap requiring later qualification
+
+CMake sets AP_MESH_HAS_OPENMP/AP_MESH_HAS_MPI; production branches primarily
+test USE_OPENMP/USE_MPI, defaulted false in data/definitions.h. No bridge for the
+AP_MESH_HAS names appears in the indexed production files (C18). External
+defines can change that result. Stage 4 must prove effective preprocessor values
+and selected execution path when toggles are enabled. Linking OpenMP or passing
+two threads alone does not qualify parallel execution. Historical process runs
+remain historical observations; this stage makes no new parallel claim.
+
+## Invalidation contracts and next step
+
+Changing coordinates requires considering triangle normal/area/angle caches,
+node curvature/adjacency, front edge midpoint/vector/box caches and quality
+summaries. Changing a control requires Bezier coefficient and length/derivative
+state coherence. Several public control setters assign a point without rebuilding
+coefficient matrices; the curve setters differ in recomputing length (C17).
+These mutation APIs are not qualified merely by immutable-input CLI regression.
+
+Replacing a candidate invalidates old SubMesh/Node/Element observers; restoring
+curve samples invalidates their old addresses even when IDs and XYZ are equal.
+No coordinate-proximity test may stand in for that lifecycle transition.
+The next implementation work is staged in
+[REFACTOR_SEQUENCE.md](REFACTOR_SEQUENCE.md), with the domain/lifetime decision
+record in [ADR-0001](../decisions/ADR-0001-mesh-domains-and-lifetimes.md).
+
+Reproduce the retained evidence with:
+
+```sh
+python tools/inventory_architecture.py --output docs/architecture/source_inventory.json --contracts docs/architecture/contracts.json --check
+python -m unittest discover -s tests/tooling -p test_architecture_inventory.py -v
+```
+
+All source anchors and retained inventory are checked in the normal tooling
+CTest through the new test module. Eight new positive/negative controls cover
+missing/added source coverage, comment handling and exact directive lines,
+potential cycles, missing/outside anchors, duplicate/empty contract IDs and the
+actual retained inventory. Whole-stage qualification is recorded separately in
+the stage 2 evidence report; lexical coverage does not replace scientific or
+dynamic memory regression.

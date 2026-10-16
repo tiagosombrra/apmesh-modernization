@@ -1,0 +1,495 @@
+{
+  "schema": "apmesh-architecture-contracts-v1",
+  "reviewed_base": "d4561c9421226503cb4a478faad71ed5ad012381",
+  "scope": "Human-reviewed static contracts; anchor checks prove traceability only. No production changes or dynamic memory/parallel qualification.",
+  "contracts": [
+    {
+      "id": "C01",
+      "topic": "CLI runtime context",
+      "statement": "The configuration entry point validates input and copies RuntimeConfig values into process globals before invoking GeneratorAdaptive through synthetic legacy arguments.",
+      "limits": "Re-entrant independent configurations are not established; extracting a context is stage 6 work.",
+      "evidence": [
+        {
+          "path": "src/main.cpp",
+          "anchor": "void ApplyRuntimeConfig(const RuntimeConfig& config)"
+        },
+        {
+          "path": "src/main.cpp",
+          "anchor": "std::vector<std::string> synthetic_args_storage"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "Geometry geometry;"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "topic": "Root ownership",
+      "statement": "In serial Execute, Geometry and Model are stack objects; Model borrows geometry_ and its destructor deletes pointers stored in meshes_.",
+      "limits": "Model copy safety and all alternative MPI/model-loader lifetime routes are not qualified.",
+      "evidence": [
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "Model model;"
+        },
+        {
+          "path": "src/data/model.cpp",
+          "anchor": "delete mesh;"
+        },
+        {
+          "path": "include/data/model.h",
+          "anchor": "Geometry* geometry_;"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "topic": "Geometry ownership",
+      "statement": "Geometry owns points, vectors, curves and patches with unique_ptr containers; raw InsertCurve/InsertPatch APIs adopt the argument.",
+      "limits": "Aliased adoption or observers surviving Geometry destruction remain caller obligations.",
+      "evidence": [
+        {
+          "path": "include/data/geometry.h",
+          "anchor": "std::vector<std::unique_ptr<CurveAdaptive>> curves_;"
+        },
+        {
+          "path": "src/data/geometry.cpp",
+          "anchor": "curves_.emplace_back(curve);"
+        },
+        {
+          "path": "src/data/geometry.cpp",
+          "anchor": "patches_.emplace_back(patch);"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "topic": "Physical mesh ownership and node copy",
+      "statement": "MeshAdaptive owns SubMesh objects, each SubMesh owns nodes/elements; SetNoh copies *noh while SetElement adopts its pointer.",
+      "limits": "The grouped header comment says raw-pointer ownership, contradicting SetNoh; caller ownership and copied adjacency need explicit contracts before repair.",
+      "evidence": [
+        {
+          "path": "include/data/mesh/mesh_adaptive.h",
+          "anchor": "std::vector<std::unique_ptr<SubMesh>> sub_meshes_;"
+        },
+        {
+          "path": "include/data/mesh/sub_mesh.h",
+          "anchor": "Compatibility API: takes ownership of raw pointers."
+        },
+        {
+          "path": "src/data/mesh/sub_mesh.cpp",
+          "anchor": "auto copy = std::make_unique<NodeAdaptive>(*noh);"
+        },
+        {
+          "path": "src/data/mesh/sub_mesh.cpp",
+          "anchor": "elements_.emplace_back(element);"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "topic": "Physical topology and caches",
+      "statement": "TriangleAdaptive borrows three NodeAdaptive pointers, registers itself in each adjacency and caches normal, area and angles. NodeAdaptive adjacency is an observer list.",
+      "limits": "Default node copies also copy observer lists; removal, coordinate mutation, cache refresh and destruction order require lifecycle qualification.",
+      "evidence": [
+        {
+          "path": "src/data/triangle_adaptive.cpp",
+          "anchor": "this->n1_->InsertElement(this);"
+        },
+        {
+          "path": "src/data/triangle_adaptive.cpp",
+          "anchor": "TriangleAdaptive::~TriangleAdaptive() {}"
+        },
+        {
+          "path": "include/data/node_adaptive.h",
+          "anchor": "std::list<ElementAdaptive *> elements_;"
+        },
+        {
+          "path": "src/data/node_adaptive.cpp",
+          "anchor": "this->elements_.clear();"
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "topic": "Patch/submesh observers",
+      "statement": "Patch stores a non-owning current SubMesh pointer and SubMesh stores a non-owning Patch pointer. PatchCoons borrows Geometry-owned curves.",
+      "limits": "Replacing a submesh invalidates old observers; rollback must rebind every patch before the next adaptation.",
+      "evidence": [
+        {
+          "path": "include/data/patch/patch.h",
+          "anchor": "SubMesh* sub_mesh_ = nullptr;"
+        },
+        {
+          "path": "include/data/mesh/sub_mesh.h",
+          "anchor": "Patch* patch_ = nullptr;"
+        },
+        {
+          "path": "include/data/patch/patch_coons.h",
+          "anchor": "std::vector<CurveAdaptive*> curves_;"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "auto restore_geometry_submeshes"
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "topic": "Shared curve identity and samples",
+      "statement": "Geometry reuses matching four-control Bezier curves in direct or reverse direction. CurveAdaptive does not delete its sampled points; its point and patch lists are observers.",
+      "limits": "Legacy proximity-based matching and sample ownership are not replaced by this inventory; snapshot/restore currently deletes and recreates sample nodes explicitly.",
+      "evidence": [
+        {
+          "path": "src/data/geometry.cpp",
+          "anchor": "if (same_direction || reversed_direction)"
+        },
+        {
+          "path": "src/data/curve/curve_adaptive.cpp",
+          "anchor": "CurveAdaptive is NOT the owner."
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "std::unordered_set<PointAdaptive*> unique_points;"
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "topic": "Incidence orientation",
+      "statement": "Each patch incidence maps local t to canonical t or 1-t; control construction, adaptive boundary traversal and physical edge intervals consume that direction.",
+      "limits": "Canonical curve storage does not introduce welding or a new boundary-generation technique.",
+      "evidence": [
+        {
+          "path": "src/input_output/patch_reader.cpp",
+          "anchor": "bool UsesForwardControls("
+        },
+        {
+          "path": "include/data/curve/curve_orientation.h",
+          "anchor": "inline double OrientedParameter("
+        },
+        {
+          "path": "src/adapter/adapter.cpp",
+          "anchor": "void AppendReversedSide("
+        },
+        {
+          "path": "src/crab_mesh/aft/edge.cpp",
+          "anchor": "apmesh::geometry::OrientedInterval("
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "topic": "Physical/parametric conversion",
+      "statement": "Adapter creates old 2D faces from each physical triangle’s stored UV, seeds current boundary vertices from canonical samples, executes CRABMesh, maps new interior vertices through PatchCoons::Parameterize and preserves UV on output triangles.",
+      "limits": "Parametric vertices and physical nodes have distinct identity/units and must not be merged into a universal mesh.",
+      "evidence": [
+        {
+          "path": "src/adapter/adapter.cpp",
+          "anchor": "FaceList mesh_old;"
+        },
+        {
+          "path": "src/adapter/adapter.cpp",
+          "anchor": "map<Vertex*, NodeAdaptive*> vertex_to_node;"
+        },
+        {
+          "path": "src/adapter/adapter.cpp",
+          "anchor": "coons_patch->Parameterize(vertex->getX(), vertex->getY())"
+        },
+        {
+          "path": "src/adapter/adapter.cpp",
+          "anchor": "static_cast<TriangleAdaptive*>(element)->SetParametersN1("
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "topic": "Front/quadtree ownership",
+      "statement": "Default AdvancingFront allocates Boundary and Quadtree; its destructor deletes the quadtree; Quadtree deletes a non-null boundary and root.",
+      "limits": "External-pointer constructors/setters imply adoption and special mate-root sharing; no universal observer-only or leak-free interpretation is justified.",
+      "evidence": [
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "boundary = new Boundary();"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "delete quadtree;"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree.cpp",
+          "anchor": "Quadtree::~Quadtree()"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree.cpp",
+          "anchor": "delete boundary;"
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "topic": "CRABMesh detach protocol",
+      "statement": "Edge and Face destructors delete non-null endpoint pointers, although mesh vertices are shared. Boundary/front cleanup detaches endpoints before deleting these objects.",
+      "limits": "This is a conditional destruction protocol, not consistent observer ownership; exceptional/fallback/partial teardown paths need stage 3 negative controls.",
+      "evidence": [
+        {
+          "path": "src/crab_mesh/aft/edge.cpp",
+          "anchor": "if (v[0]) {"
+        },
+        {
+          "path": "src/crab_mesh/aft/face.cpp",
+          "anchor": "if (v[0]) delete v[0];"
+        },
+        {
+          "path": "src/crab_mesh/aft/boundary.cpp",
+          "anchor": "e->setVertices(NULL, NULL);"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "f->setVertices(NULL, NULL, NULL);"
+        }
+      ]
+    },
+    {
+      "id": "C12",
+      "topic": "Retry and rollback state",
+      "statement": "Generator snapshots curve point id/XYZ, restores patch submesh observers, deletes unique sampled point pointers, then reconstructs shared samples by ID before retries and after rejection.",
+      "limits": "Raw pointer stability is not preserved; error/history/budget state and every inner attempt require explicit transaction/observer contracts.",
+      "evidence": [
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "struct CurvePointSnapshot"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "auto restore_curve_snapshots"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "point_by_id[point.id] = restored;"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "restore_curve_snapshots(geometry, accepted_curve_snapshots);"
+        }
+      ]
+    },
+    {
+      "id": "C13",
+      "topic": "Attempt vs accepted ownership",
+      "statement": "Generator retains saved accepted and rejected meshes via unique_ptr; SaveMesh observes the candidate before later rollback. Adapter returns the selected attempt via release().",
+      "limits": "Saving a rejected candidate does not accept it; holding more meshes changes retention/peak-memory behavior and is not permission to prune the scientific trace.",
+      "evidence": [
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "save_mesh_.emplace_back(step_, std::move(malha));"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "apmesh::io::WriteIncidenceSnapshot(*saved_mesh, incidence_path, step_);"
+        },
+        {
+          "path": "src/adapter/adapter.cpp",
+          "anchor": "return best.sub_mesh.release();"
+        }
+      ]
+    },
+    {
+      "id": "C14",
+      "topic": "Surface vs mesh curvature",
+      "statement": "CurvatureAnalytical evaluates surface derivatives after FindUV; CurvatureDiscrete uses physical-node triangle adjacency, areas and angles.",
+      "limits": "Analytical and discrete curvatures are different quantities used for error/adaptation; consolidating their formulas would change the technique.",
+      "evidence": [
+        {
+          "path": "src/curvature/curvature_analytical.cpp",
+          "anchor": "std::tuple<double, double> t = p.FindUV(v);"
+        },
+        {
+          "path": "src/curvature/curvature_discrete.cpp",
+          "anchor": "this->AdjacencySort(noh);"
+        },
+        {
+          "path": "src/curvature/curvature_discrete.cpp",
+          "anchor": "return (3.0 * (this->factor_disc_ - this->sum_phi_) / this->a_);"
+        }
+      ]
+    },
+    {
+      "id": "C15",
+      "topic": "Metric repetition across domains",
+      "statement": "Adapter and AdvancingFront both compute face quality statistics, while Generator computes physical mesh statistics. These measurements can refer to different stages and coordinate spaces.",
+      "limits": "Shared aggregation is only a future candidate after domains, thresholds, degenerate handling and floating-point ordering are proved equivalent.",
+      "evidence": [
+        {
+          "path": "src/adapter/adapter.cpp",
+          "anchor": "ComputeFaceMetricStats("
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "StageFaceStats ComputeStageFaceStats("
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "GeneratorAdaptive::MeshQualityStats GeneratorAdaptive::ComputeMeshQualityStats("
+        }
+      ]
+    },
+    {
+      "id": "C16",
+      "topic": "Eigen/numerical dependency",
+      "statement": "Central definitions expose Eigen fixed-size aliases; PatchBezier evaluation and inverse mapping use matrix operations. CRABMesh also has root-finding numerical helpers.",
+      "limits": "No alternative solver or Eigen deletion is authorized by this inventory; stage 5 requires analytic and aliasing/differential comparisons.",
+      "evidence": [
+        {
+          "path": "include/data/definitions.h",
+          "anchor": "typedef Matrix<double, 4, 4> Matrix4x4;"
+        },
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "Matrix<double, 3, 3> matrix;"
+        },
+        {
+          "path": "src/data/curve/curve_adaptive_parametric.cpp",
+          "anchor": "Data::Numerical::ClosestBisectionEquationRoot"
+        }
+      ]
+    },
+    {
+      "id": "C17",
+      "topic": "Cache invalidation",
+      "statement": "Several patch/Bezier control setters assign point members without rebuilding coefficient matrices; curve setters differ in whether length is recomputed.",
+      "limits": "This statically visible mutation contract is not evidence of a current serial CLI regression. Define immutability or explicit rebuild and test it before reuse.",
+      "evidence": [
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "void PatchBezier::SetPt00(const PointAdaptive point) { pt00_ = point; }"
+        },
+        {
+          "path": "src/data/curve/curve_adaptive_parametric_bezier.cpp",
+          "anchor": "this->point2_ = point;"
+        },
+        {
+          "path": "src/data/curve/curve_adaptive_parametric.cpp",
+          "anchor": "void CurveAdaptiveParametric::SetPoint1("
+        }
+      ]
+    },
+    {
+      "id": "C18",
+      "topic": "Parallel build contract",
+      "statement": "CMake defines AP_MESH_HAS_OPENMP/AP_MESH_HAS_MPI, while production branches use USE_OPENMP/USE_MPI with false defaults.",
+      "limits": "No bridge appears in indexed production files; external defines may alter this. Stage 4 must qualify effective preprocessing and routing, not merely successful linkage.",
+      "evidence": [
+        {
+          "path": "CMakeLists.txt",
+          "anchor": "AP_MESH_HAS_OPENMP=1"
+        },
+        {
+          "path": "CMakeLists.txt",
+          "anchor": "AP_MESH_HAS_MPI=1"
+        },
+        {
+          "path": "include/data/definitions.h",
+          "anchor": "#define USE_OPENMP FALSE"
+        },
+        {
+          "path": "include/data/definitions.h",
+          "anchor": "#define USE_MPI FALSE"
+        }
+      ]
+    },
+    {
+      "id": "C19",
+      "topic": "Timing boundary",
+      "statement": "Timer accumulates gettimeofday-based intervals; Data::time uses platform-dependent implementations.",
+      "limits": "Current clock resolution/monotonicity and performance comparability are not qualified; no speedup claim follows from this inventory.",
+      "evidence": [
+        {
+          "path": "src/timer/timer.cpp",
+          "anchor": "gettimeofday(&begin, 0);"
+        },
+        {
+          "path": "src/data/definitions.cpp",
+          "anchor": "return static_cast<Real>(std::time(nullptr));"
+        }
+      ]
+    },
+    {
+      "id": "C20",
+      "topic": "Scientific order",
+      "statement": "AdvancingFront executes old-mesh quadtree generation, neighbor refinement, optional templates, geometric front with conditional topology fallback, then fill and improvement. Generator adapts shared curves before patch interiors and evaluates candidates before acceptance/rollback.",
+      "limits": "This ordering is a preservation constraint, not a proposed replacement algorithm.",
+      "evidence": [
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "status = quadtree->generate(oldmesh);"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "status = quadtree->refineAccordingToNeighbors();"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "status = quadtree->makeTemplateBasedMesh();"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "status = makeTopologyBasedMesh();"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "status = improveMesh();"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "AdaptCurve(geometry);"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "AdaptDomain(geometry, mesh_.get());"
+        }
+      ]
+    },
+    {
+      "id": "C21",
+      "topic": "Physical identity and export",
+      "statement": "Serial mesh export deduplicates submesh node incidences by logical global node ID; pointer equality or close XYZ is not the export identity. Local front IDs and physical IDs use different contexts.",
+      "limits": "Boundary copies may share a logical ID across submeshes; conflicting coordinates for one ID are invalid. Proximity matching during input must not silently become export welding.",
+      "evidence": [
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "std::unordered_map<ULInt, unsigned long int> node_index;"
+        },
+        {
+          "path": "src/adapter/adapter.cpp",
+          "anchor": "node->SetId(id_manager->next(0));"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "lastVertexId = lastEdgeId = lastFaceId = 0;"
+        }
+      ]
+    },
+    {
+      "id": "C22",
+      "topic": "Pointer-copy constructor contract",
+      "statement": "PatchCoons(PatchCoons*) invokes only its Patch base copy path and leaves its curve vector default-constructed; the pointer-taking Bezier copy separately copies control/matrix/direction fields.",
+      "limits": "These paths are not a qualified complete geometry clone; no current serial CLI failure is inferred. Copy/observer semantics need separate tests before reuse or ownership consolidation.",
+      "evidence": [
+        {
+          "path": "src/data/patch/patch_coons.cpp",
+          "anchor": "PatchCoons::PatchCoons(PatchCoons* patch_coons) : Patch(patch_coons) {}"
+        },
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "PatchBezier::PatchBezier(PatchBezier* patch_bezier) : PatchCoons(patch_bezier)"
+        },
+        {
+          "path": "include/data/patch/patch_coons.h",
+          "anchor": "std::vector<CurveAdaptive*> curves_;"
+        }
+      ]
+    }
+  ]
+}
