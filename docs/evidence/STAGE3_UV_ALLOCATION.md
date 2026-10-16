@@ -96,8 +96,9 @@ python tools/repeat_generation.py --exe build/local-serial/bin/ap_mesh.exe --mod
 ## Closure requirements and remaining scope
 
 Code, tests, contracts, scientific invariants and the failure/coverage inventory
-are reviewed at this checkpoint. Exact published-head and post-merge gates are
-required before closure. Original, entry and candidate reports retain source/
+are reviewed at this checkpoint. Exact published-head and post-merge gates
+subsequently passed; see [integration closure](STAGE3_UV_ALLOCATION_CLOSURE.md).
+Original, entry and candidate reports retain source/
 input/executable identities and raw diagnostic/log hashes.
 
 Next: template arrays/object creation before registration, Boundary registration,

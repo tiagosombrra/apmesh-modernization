@@ -1,0 +1,709 @@
+{
+  "status": "passed",
+  "revision": "68ef4db735d3c478215815128309c6bdd7a8e90c",
+  "entry_main": "0146fbd4925721a53a9b52717b82c5af8c4e0115",
+  "entry_tree": "8edd39eaf92f5795cea4e35bb1647cdc9bc310eb",
+  "ctest": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0
+  },
+  "python_controls": 74,
+  "uv_memory": {
+    "status": "passed",
+    "scope": "14 actual UV/curve/numerical production units; isolated ASan invalid-access and Debug CRT retained-block/allocation-hook coverage. Not full application, LSan, UBSan or arbitrary exception safety.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-msvc\\RelWithDebInfo\\uv_lifetime_probe.exe",
+        "sha256": "5d96fbf4c7955653a43fc4c0923a9d47ae6052f865e125b4e7d3c363a5d0dfab"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-crt\\Debug\\uv_lifetime_probe.exe",
+        "sha256": "98f7cf42425e7523b1aaefabd32ab42b55971dd45c1316bb327bef745d693d68"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "normal",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "partial",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "exception",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "1dc2dbcb8e2ac38719f7bd177981f81f8fc2abe78923d6b39789bc25b9c7c7bc"
+      },
+      {
+        "instrument": "asan",
+        "mode": "topology-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "pending-tree",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-contract",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-order",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "midpoint-alias",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0",
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "990c0db89a4df29dfb5fa1b4eb3715170a8abeda6d97c98f60dc4c726c2a9e5d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "primitive-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "face-alias-cache",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "partial",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "exception",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "ea788692f9f97777ad252f7551aae078e2c21c81c1e28f84cf596e259e0a1427"
+      },
+      {
+        "instrument": "crt",
+        "mode": "topology-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "pending-tree",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-contract",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-order",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "midpoint-alias",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0",
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "641a31309ee2441e9eface31f7236d5a9c0fb7500f6b350a53964cff628ac2e0"
+      },
+      {
+        "instrument": "crt",
+        "mode": "primitive-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-alias-cache",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "teardown-allocation",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "teardown_allocation_attempts=0"
+        ],
+        "log_sha256": "3875b8bd074b85dc04e96e83ef494ee5799e74bd81e2aeaca02b03b8b776d7c5"
+      },
+      {
+        "instrument": "crt",
+        "mode": "allocation-hook-control",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_hook_control=detected"
+        ],
+        "log_sha256": "aa4d95fe8a89fefb071a9ad83d6d6e7f45caef2e314f6094e66c13033fa20f2f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-allocation-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "transfer_allocation_failures=3 measured_allocations=342"
+        ],
+        "log_sha256": "ffa573c9ec64b128bf72bbb302e948947dd1a387ddf8aaf75e059725880e33b5"
+      },
+      {
+        "instrument": "crt",
+        "mode": "edge-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=edge:6/6"
+        ],
+        "log_sha256": "7e51b6935fe2f0460d75dde14ea29e55a11c480425bb38094728f20016497fa3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=face-explicit:3/3",
+          "allocation_failure_sites=face:3/3"
+        ],
+        "log_sha256": "cf9464ddbc63ce35909f0285bb28f942433a62818bd0820112279ee218da8f8a"
+      },
+      {
+        "instrument": "crt",
+        "mode": "front-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=front:32/32"
+        ],
+        "log_sha256": "0c852a11c3538f102771b5b5a3a24048bd1be6166fab8ccade0ecf171842e897"
+      },
+      {
+        "instrument": "crt",
+        "mode": "edge-cache-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=edge-cache:6/6 unchanged=1"
+        ],
+        "log_sha256": "b92f616542234d7110faffcc75f88a0d4c79f2c1dd054b954f9df63b8095e5b4"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-cache-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=face-cache:3/3 unchanged=1"
+        ],
+        "log_sha256": "5c306ebbc1ed1416d4b47bb05e01398c5dd84fca077e49376e52664595d2b9f1"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "f74f66e3cf306901ca86c3904e8a19fd9d9965856a31caa215dbad311e82f97e"
+      },
+      {
+        "instrument": "asan",
+        "mode": "shared-delete",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "0183212dd1771a00456446ad4be5422609e7efa206a6871ac78a231a465b6905"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "retained_blocks": 3,
+        "retained_bytes": 112,
+        "observations": [],
+        "log_sha256": "55912618cc5d77c07b1795e398a9a16c736ef21eee4a066f7f17688e627310c5"
+      }
+    ]
+  },
+  "previous_node_boundary": {
+    "status": "passed",
+    "scope": "Isolated actual physical node/submesh/triangle production sources; no whole-application or UBSan/LSan qualification.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-node-msvc\\RelWithDebInfo\\node_lifetime_probe.exe",
+        "sha256": "7b7dedfa359eeea0ed4754d94e16dd8cd7aeaca2c335f6780ceea4fee989f844"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-node-crt\\Debug\\node_lifetime_probe.exe",
+        "sha256": "ce577b21cfb9bd3c5c9259a8ba1f7fe0b66404f972719dc9bd3874e90a58ae6a"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "log_sha256": "482a416ca71c78f1ce646702efd7b2a79a090e7976f21d5a882197268df9469e"
+      },
+      {
+        "instrument": "asan",
+        "mode": "double-free",
+        "exit_code": 1,
+        "expected_diagnostic": "attempting double-free",
+        "passed": true,
+        "log_sha256": "58ddd17f8c3f0f37eb35995675aac342778bb54d33c48d156c23b3da5ea8e29c"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "log_sha256": "16530a99386512b8d5d4ae9c8f2128786cff8f623d8324cb1f172082db7b52fe"
+      }
+    ]
+  },
+  "models": {
+    "eistute": {
+      "repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "c8075286a4753123765f43d2f13c2e757b20ea7c8bfcdfb409f209f716987aad",
+        "configuration_sha256": "4a7e32214aa160a77d7ed36256c6d0a0244d48650450df4eb93eeaef8d7d4298"
+      },
+      "entry_repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "6cbb57bbfed033ebf5b8b11a359a628fbf92b1d1273fab357ca94511f026a8e8",
+        "configuration_sha256": "a1920b3432976d1665c468747c0fae81dee41c7def3212943d48577166caaa8e"
+      },
+      "strict_vs_entry": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "entry_vs_previous_slice": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 5,
+        "compared_fields": 105,
+        "differences": []
+      },
+      "run_identity": {
+        "model": "eistute",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 28.39858529999765,
+        "executable_sha256": "c8075286a4753123765f43d2f13c2e757b20ea7c8bfcdfb409f209f716987aad",
+        "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+        "input_model": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\input_models\\eistute2.fixed.bp",
+        "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-allocpostmerge-eistute-repeat\\working\\article.conf"
+        ]
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3,
+        4
+      ]
+    },
+    "book": {
+      "repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "c8075286a4753123765f43d2f13c2e757b20ea7c8bfcdfb409f209f716987aad",
+        "configuration_sha256": "69b04f34306800879714453832c4e54e4b3551e8a6f36732f2f1415f573917ab"
+      },
+      "entry_repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "6cbb57bbfed033ebf5b8b11a359a628fbf92b1d1273fab357ca94511f026a8e8",
+        "configuration_sha256": "c5083acf845b4e0a2274b9763448acc16d6b22338dc47fdd21940e7d0a905ca6"
+      },
+      "strict_vs_entry": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "entry_vs_previous_slice": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 4,
+        "compared_fields": 84,
+        "differences": []
+      },
+      "run_identity": {
+        "model": "book",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 7.784970900000189,
+        "executable_sha256": "c8075286a4753123765f43d2f13c2e757b20ea7c8bfcdfb409f209f716987aad",
+        "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+        "input_model": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\input_models\\book_v7a.bp",
+        "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-allocpostmerge-book-repeat\\working\\article.conf"
+        ]
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3
+      ]
+    }
+  },
+  "source_inventory_sha256": "6f0428dd5b45fd34cfddc15c8509675dedf2613f3f7a9c26020d9edea1b99b3c",
+  "log_sha256": {
+    "postmerge-ctest.log": "1873735018f55a36ef85c076b1087a1a5f7e8a27912abaea28e8296adbf46aa8",
+    "postmerge-inventory.log": "da52c140326e9467331af7cfcabee9116b1737c1517fdfc84e80060c71ac36cb",
+    "postmerge-tidy.log": "387fa14890e50c98f9a1f6d372ec66b9e237d76af8bdaacbc4ed4df40249d1c4"
+  }
+}

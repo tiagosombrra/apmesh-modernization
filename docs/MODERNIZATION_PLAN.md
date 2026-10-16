@@ -4,12 +4,13 @@ Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
 Current status: stages 0-2 are integrated and closed for their measured scope.
-Active item #14 qualifies the next primitive prerequisite: Edge/Face constructor
-and setVertices failures, endpoint-alias cache replacement and default front
-construction. The pinned original fails the extended controls; candidate CTest
-12/12, UV 35/35, node 7/7, lint/formatting and strict article regression pass.
-Exact-head and main closure gates remain required. Template/Boundary registration and wider exception scopes follow;
-see `evidence/STAGE3_UV_ALLOCATION.md`. This does not close the full stage 3.
+Stage 3 slice 3 (#14, PR #15) is qualified: primitive construction/cache
+replacement and default front construction pass exact-head and implementation-
+main CTest 12/12, UV 35/35, node 7/7, lint/formatting and strict article regression.
+The original failed runner is retained. Three measured slices are closed;
+the full stage 3 remains open. Next are template/Boundary registration failures,
+other mutation/helper scopes and samples/rollback. See
+`evidence/STAGE3_UV_ALLOCATION_CLOSURE.md`.
 Stage 2 (issue #5, PR #6) delivered the complete production inventory, reviewed
 domain/lifecycle contracts, ADR and repair sequence. Exact-head and post-merge
 CTest 9/9, 73 Python controls and strict Eistute/Book regression pass with
@@ -22,8 +23,8 @@ Slices 1 and 2 are qualified; the wider stage remains open. Slice 2 (#11,
 PR #12), registered UV template ownership and normal/partial/failure teardown,
 passes exact-head and main gates: CTest 11/11, 26 UV instrument cases, seven
 previous node cases and exact article regression. Its integrated tree contains
-706 verified blobs. See `evidence/STAGE3_UV_CLOSURE.md`. Next bounded scope is
-pre-registration allocation failure and constructor/setter replacement. Stage 4
+706 verified blobs. See `evidence/STAGE3_UV_CLOSURE.md`. The remaining sequence covers
+template/Boundary registration and additional mutation/helper scopes. Stage 4
 may unblock proved diagnostic-tool portability barriers; stages 4-11 remain
 pending. See `evidence/STAGE3_SLICE1_CLOSURE.md` and `WORKLOG.md`. Architecture:
 `architecture/MESH_ARCHITECTURE.md` and
