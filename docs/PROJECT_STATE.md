@@ -112,15 +112,23 @@ last-accepted triangles and measured shared-incidence coverage. See
 `docs/evidence/STAGE3_NODE_LIFETIME.md` and `docs/evidence/stage3/`.
 
 Slice 1 is complete for its measured boundary; the full stage 3 remains open.
-Slice 2 (#11) is locally qualified and awaiting exact-head integration and
-post-merge regression. Registered UV templates now have a single owner through
-failure and ordered transfer; endpoint teardown allocates nothing and handles
-midpoint aliases. Candidate CTest 11/11, 26 UV ASan/CRT cases, seven previous
-node cases, selected lint/formatting and exact Eistute/Book regression pass.
-See `docs/evidence/STAGE3_UV_LIFETIME.md` and ADR-0003. No scientific policy or
-independent verifier changed. This candidate result is not integration closure.
+## Stage 3 slice 2 qualified (#11, PR #12)
 
-Next bounded scope after closure: allocation failure before UV registration and
+Head `a5fb2cd0d7ebbe6dc10f98689f4d6caa60419c0c` integrated as main
+`5bfcadaaa2172c297448c9870c0f468feeae8f4a`, preserving the exact 706-blob tree
+`306907d63f893767736bddfd995cf313f1bfcf8f`. Exact-head and post-merge CTest
+11/11, 74 Python controls, 26 UV ASan/CRT cases, seven previous node cases,
+selected lint/formatting and strict repeated Eistute/Book regression pass.
+Registered UV templates have a single owner through failure and ordered
+transfer; endpoint teardown allocates nothing and handles midpoint aliases.
+Both models retain 1,168/4,256 last-accepted triangles, exact OBJ/acceptance/
+incidence results and 189 matching named CSV fields. No scientific policy,
+independent verifier, input or vendor changed. The documentation closure
+preserves all qualified production/tool/test/build/input identities; see
+`docs/evidence/STAGE3_UV_CLOSURE.md`, the failed original and ADR-0003.
+Only this measured slice is closed; the wider stage 3 remains open.
+
+Next bounded scope: allocation failure before UV registration and
 constructor/setter replacement. Curve sample/rollback ownership, other UV
 exceptions, generic adjacency and cache mutation, full process leaks and
 parallel paths still need qualification.

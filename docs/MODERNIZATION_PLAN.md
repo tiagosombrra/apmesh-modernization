@@ -12,11 +12,11 @@ Stage 3 is in progress (#8): a reproduced foreign-adjacency use-after-free at
 SetNoh is repaired with isolated ASan/Debug CRT controls; candidate, published
 head and main CTest 10/10 and exact Eistute/Book regression pass (PR #9, head
 6c6c2f2d50f5870fd92e4edbc91fc5d901a1cd22, main e30fa99a8ea6da709f3943e8975efb31d9610b1d).
-Slice 1 is qualified; the wider stage remains open. Slice 2 (#11), registered UV
-template ownership and normal/partial/failure teardown, passes candidate gates:
-CTest 11/11, 26 UV instrument cases, seven previous node cases and exact article
-regression. Exact-head integration and post-merge gates remain before closure;
-see `evidence/STAGE3_UV_LIFETIME.md`. Next bounded scope after this delivery is
+Slices 1 and 2 are qualified; the wider stage remains open. Slice 2 (#11,
+PR #12), registered UV template ownership and normal/partial/failure teardown,
+passes exact-head and main gates: CTest 11/11, 26 UV instrument cases, seven
+previous node cases and exact article regression. Its integrated tree contains
+706 verified blobs. See `evidence/STAGE3_UV_CLOSURE.md`. Next bounded scope is
 pre-registration allocation failure and constructor/setter replacement. Stage 4
 may unblock proved diagnostic-tool portability barriers; stages 4-11 remain
 pending. See `evidence/STAGE3_SLICE1_CLOSURE.md` and `WORKLOG.md`. Architecture:
