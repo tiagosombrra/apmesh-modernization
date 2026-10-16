@@ -3,12 +3,11 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stage 0 integrated in PR #1; stage 1 remains the sole active
-work item (issue #2, PR #3) for exact-head and post-merge closure qualification.
-The required orientation and CSV defects are repaired; CTest is 9/9. All article
-repetitions and strict minimally corrected reference comparisons pass. Raw
-previous-candidate differences remain explicitly recorded. See
-`evidence/STAGE1_ORIENTATION_REPAIR.md`. Stage 2 waits for completed closure.
+Current status: stages 0 and 1 are integrated and closed for their measured
+scope (PRs #1 and #3). Stage 1 passed its exact-head and post-merge audits,
+CTest 9/9, strict Eistute/Book repetition, minimally corrected reference
+comparison and independent incidence/CSV gates. Historical raw differences are
+retained. See `evidence/STAGE1_CLOSURE.md`. Stage 2 is next and not started.
 
 | Stage | Scope | Completion evidence |
 |---|---|---|

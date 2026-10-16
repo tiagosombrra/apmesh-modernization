@@ -33,7 +33,7 @@ LLVM 22.1.8 is the qualified version. Commands fail on empty discovery or missin
 tools. Full memory safety, legacy lint cleanup, Doxygen, C++23 and Eigen removal
 remain later work.
 
-## Stage 1 closure candidate
+## Stage 1 completed
 
 Strict Eistute/Book repetition and independent accepted-state/boundary validation
 pass. Actual reversed curved/non-manifold generation and named CSV semantics
@@ -43,8 +43,9 @@ Raw prior-version failures remain stored; strict minimally corrected reference
 comparisons pass without relaxed tolerances. See
 [the repair and regression evidence](docs/evidence/STAGE1_ORIENTATION_REPAIR.md).
 
-PR #3 still requires exact-head audit and post-merge validation before stage 2.
-See [project state](docs/PROJECT_STATE.md) for the recorded integration status.
+PR #3 is integrated. Exact-head and post-merge validation pass; see
+[the closure record](docs/evidence/STAGE1_CLOSURE.md). Stage 2's mesh/architecture
+inventory is next. Later work remains constrained by the same regression gates.
 
 ## Repository policy
 

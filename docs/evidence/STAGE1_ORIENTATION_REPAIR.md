@@ -1,3 +1,6 @@
+> Pre-integration checkpoint. STAGE1_CLOSURE.md records the subsequent exact-head
+> audit, integration and successful post-merge regression.
+
 # Stage 1 closure candidate: orientation and report repairs
 
 Date: 2026-10-16 UTC. Work item: issue #2 / PR #3.
