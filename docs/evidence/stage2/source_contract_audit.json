@@ -1,0 +1,8 @@
+{
+  "production_files_unchanged": 122,
+  "build_files_unchanged": 3,
+  "compiled_production_translation_units": 57,
+  "missing_compile_units": [],
+  "ap_mesh_has_bridge_mentions_in_production": [],
+  "scope": "Static source/build contract check; no parallel-route or memory qualification"
+}

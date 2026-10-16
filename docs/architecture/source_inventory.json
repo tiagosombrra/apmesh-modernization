@@ -1,0 +1,4663 @@
+{
+  "schema": "apmesh-source-inventory-v1",
+  "scope": "all first-party include/src C++ files; potential literal includes, all conditions",
+  "limitations": [
+    "No preprocessor or raw-string grammar expansion",
+    "No system include search, ownership inference or runtime proof",
+    "Directory components describe source organization, not semantic layers"
+  ],
+  "summary": {
+    "files": 122,
+    "translation_units": 57,
+    "headers": 65,
+    "directory_components": {
+      "adapter": 2,
+      "cli": 1,
+      "crab_mesh/aft": 17,
+      "crab_mesh/numerical": 7,
+      "crab_mesh/performer": 5,
+      "curvature": 7,
+      "data": 18,
+      "data/curve": 9,
+      "data/mesh": 4,
+      "data/patch": 8,
+      "data/tree": 2,
+      "estimate": 2,
+      "generator": 2,
+      "input_output": 11,
+      "parallel": 25,
+      "timer": 2
+    },
+    "literal_include_directives": 453,
+    "first_party_include_edges": 268
+  },
+  "cross_component_directives": [
+    {
+      "from": "adapter",
+      "to": "crab_mesh/aft",
+      "count": 5
+    },
+    {
+      "from": "adapter",
+      "to": "crab_mesh/performer",
+      "count": 1
+    },
+    {
+      "from": "adapter",
+      "to": "curvature",
+      "count": 2
+    },
+    {
+      "from": "adapter",
+      "to": "data",
+      "count": 1
+    },
+    {
+      "from": "adapter",
+      "to": "data/curve",
+      "count": 2
+    },
+    {
+      "from": "adapter",
+      "to": "data/mesh",
+      "count": 1
+    },
+    {
+      "from": "adapter",
+      "to": "data/patch",
+      "count": 1
+    },
+    {
+      "from": "adapter",
+      "to": "data/tree",
+      "count": 1
+    },
+    {
+      "from": "adapter",
+      "to": "parallel",
+      "count": 1
+    },
+    {
+      "from": "cli",
+      "to": "data",
+      "count": 4
+    },
+    {
+      "from": "cli",
+      "to": "data/curve",
+      "count": 2
+    },
+    {
+      "from": "cli",
+      "to": "data/patch",
+      "count": 2
+    },
+    {
+      "from": "cli",
+      "to": "generator",
+      "count": 1
+    },
+    {
+      "from": "cli",
+      "to": "input_output",
+      "count": 3
+    },
+    {
+      "from": "cli",
+      "to": "timer",
+      "count": 1
+    },
+    {
+      "from": "crab_mesh/aft",
+      "to": "data",
+      "count": 8
+    },
+    {
+      "from": "crab_mesh/aft",
+      "to": "data/curve",
+      "count": 3
+    },
+    {
+      "from": "crab_mesh/numerical",
+      "to": "data",
+      "count": 5
+    },
+    {
+      "from": "crab_mesh/performer",
+      "to": "data",
+      "count": 1
+    },
+    {
+      "from": "curvature",
+      "to": "data",
+      "count": 6
+    },
+    {
+      "from": "curvature",
+      "to": "data/patch",
+      "count": 1
+    },
+    {
+      "from": "data",
+      "to": "data/curve",
+      "count": 2
+    },
+    {
+      "from": "data",
+      "to": "data/mesh",
+      "count": 1
+    },
+    {
+      "from": "data",
+      "to": "data/patch",
+      "count": 1
+    },
+    {
+      "from": "data/curve",
+      "to": "crab_mesh/numerical",
+      "count": 2
+    },
+    {
+      "from": "data/curve",
+      "to": "data",
+      "count": 5
+    },
+    {
+      "from": "data/curve",
+      "to": "data/patch",
+      "count": 1
+    },
+    {
+      "from": "data/mesh",
+      "to": "data",
+      "count": 2
+    },
+    {
+      "from": "data/patch",
+      "to": "data",
+      "count": 1
+    },
+    {
+      "from": "data/patch",
+      "to": "data/curve",
+      "count": 2
+    },
+    {
+      "from": "data/tree",
+      "to": "data/curve",
+      "count": 1
+    },
+    {
+      "from": "estimate",
+      "to": "adapter",
+      "count": 1
+    },
+    {
+      "from": "estimate",
+      "to": "data",
+      "count": 3
+    },
+    {
+      "from": "estimate",
+      "to": "data/curve",
+      "count": 2
+    },
+    {
+      "from": "estimate",
+      "to": "data/mesh",
+      "count": 1
+    },
+    {
+      "from": "estimate",
+      "to": "data/patch",
+      "count": 1
+    },
+    {
+      "from": "estimate",
+      "to": "generator",
+      "count": 1
+    },
+    {
+      "from": "estimate",
+      "to": "input_output",
+      "count": 2
+    },
+    {
+      "from": "estimate",
+      "to": "timer",
+      "count": 1
+    },
+    {
+      "from": "generator",
+      "to": "adapter",
+      "count": 1
+    },
+    {
+      "from": "generator",
+      "to": "crab_mesh/performer",
+      "count": 1
+    },
+    {
+      "from": "generator",
+      "to": "curvature",
+      "count": 2
+    },
+    {
+      "from": "generator",
+      "to": "data",
+      "count": 4
+    },
+    {
+      "from": "generator",
+      "to": "data/curve",
+      "count": 3
+    },
+    {
+      "from": "generator",
+      "to": "data/mesh",
+      "count": 1
+    },
+    {
+      "from": "generator",
+      "to": "data/patch",
+      "count": 2
+    },
+    {
+      "from": "generator",
+      "to": "estimate",
+      "count": 1
+    },
+    {
+      "from": "generator",
+      "to": "input_output",
+      "count": 3
+    },
+    {
+      "from": "generator",
+      "to": "parallel",
+      "count": 1
+    },
+    {
+      "from": "generator",
+      "to": "timer",
+      "count": 1
+    },
+    {
+      "from": "input_output",
+      "to": "data",
+      "count": 9
+    },
+    {
+      "from": "input_output",
+      "to": "data/curve",
+      "count": 2
+    },
+    {
+      "from": "input_output",
+      "to": "data/mesh",
+      "count": 4
+    },
+    {
+      "from": "input_output",
+      "to": "data/patch",
+      "count": 5
+    },
+    {
+      "from": "parallel",
+      "to": "crab_mesh/performer",
+      "count": 2
+    },
+    {
+      "from": "timer",
+      "to": "data",
+      "count": 1
+    }
+  ],
+  "potential_include_cycles": [
+    [
+      "include/crab_mesh/aft/boundary.h",
+      "include/crab_mesh/aft/edge.h",
+      "include/crab_mesh/aft/face.h",
+      "include/crab_mesh/aft/quadtree.h",
+      "include/crab_mesh/aft/quadtree_cell.h",
+      "include/crab_mesh/aft/vertex.h"
+    ]
+  ],
+  "toolchain_or_unresolved_headers": {
+    "Eigen/Eigen": 1,
+    "GL/gl.h": 1,
+    "GL/glu.h": 1,
+    "GL/glut.h": 1,
+    "algorithm": 8,
+    "array": 4,
+    "atomic": 3,
+    "cctype": 1,
+    "cfloat": 5,
+    "climits": 1,
+    "cmath": 16,
+    "cstddef": 1,
+    "cstdio": 3,
+    "cstdlib": 5,
+    "cstring": 1,
+    "ctime": 3,
+    "execinfo.h": 1,
+    "filesystem": 1,
+    "fstream": 9,
+    "iomanip": 2,
+    "iostream": 10,
+    "limits": 5,
+    "list": 12,
+    "locale": 1,
+    "map": 6,
+    "memory": 10,
+    "mpi.h": 2,
+    "numeric": 1,
+    "omp.h": 3,
+    "ostream": 1,
+    "queue": 2,
+    "set": 2,
+    "sstream": 6,
+    "stdexcept": 5,
+    "stdio.h": 1,
+    "string": 6,
+    "sys/time.h": 2,
+    "system_error": 1,
+    "tuple": 5,
+    "typeinfo": 1,
+    "unistd.h": 1,
+    "unordered_map": 5,
+    "unordered_set": 4,
+    "utility": 4,
+    "vector": 15,
+    "windows.h": 1,
+    "winsock2.h": 1
+  },
+  "build_inputs": [
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "1ba622112219d46cf1adc1922a3b9cfbbae3e03cd1f8f641099493f880bc95f2"
+    },
+    {
+      "path": "CMakePresets.json",
+      "sha256": "1490377d69b8c9bdd2bccd95f0c10fd2fae0e37baf518ddff34d4155e9691d5e"
+    },
+    {
+      "path": "cmake/Quality.cmake",
+      "sha256": "8cead3742ca77d7195945dc51c39f83f2d70f93dca1681a35608d34994bf689c"
+    }
+  ],
+  "files": [
+    {
+      "path": "include/adapter/adapter.h",
+      "component_by_directory": "adapter",
+      "kind": "header",
+      "sha256": "e982c49965e82ec36a7209950fe5e309fd4d14b9cd17d35bd9a55584df249ba2",
+      "bytes": 3982,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "cstdlib",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "limits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 11,
+          "spelling": "../crab_mesh/aft/advancing_front.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/advancing_front.h"
+        },
+        {
+          "line": 12,
+          "spelling": "../crab_mesh/aft/boundary.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/boundary.h"
+        },
+        {
+          "line": 13,
+          "spelling": "../crab_mesh/aft/edge.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/edge.h"
+        },
+        {
+          "line": 14,
+          "spelling": "../crab_mesh/aft/face.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/face.h"
+        },
+        {
+          "line": 15,
+          "spelling": "../crab_mesh/aft/vertex.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/vertex.h"
+        },
+        {
+          "line": 16,
+          "spelling": "../crab_mesh/performer/ranged_id_manager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/ranged_id_manager.h"
+        },
+        {
+          "line": 17,
+          "spelling": "../curvature/curvature_analytical.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature_analytical.h"
+        },
+        {
+          "line": 18,
+          "spelling": "../curvature/curvature_discrete.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature_discrete.h"
+        },
+        {
+          "line": 19,
+          "spelling": "../data/curve/curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        },
+        {
+          "line": 20,
+          "spelling": "../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 21,
+          "spelling": "../data/mesh/sub_mesh.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/sub_mesh.h"
+        },
+        {
+          "line": 22,
+          "spelling": "../data/patch/patch_coons.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_coons.h"
+        },
+        {
+          "line": 23,
+          "spelling": "../data/tree/bin_tree.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/tree/bin_tree.h"
+        },
+        {
+          "line": 24,
+          "spelling": "../parallel/TMCommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/TMCommunicator.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/advancing_front.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "024bf95ce3feb0c9bb527f9b7995b49046c8ce12040c3b4e2706b2c43b4d79e9",
+      "bytes": 4631,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "boundary.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/boundary.h"
+        },
+        {
+          "line": 6,
+          "spelling": "edge.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/edge.h"
+        },
+        {
+          "line": 7,
+          "spelling": "face.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/face.h"
+        },
+        {
+          "line": 8,
+          "spelling": "quadtree.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree.h"
+        },
+        {
+          "line": 9,
+          "spelling": "quadtree_cell.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree_cell.h"
+        },
+        {
+          "line": 10,
+          "spelling": "shape.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/shape.h"
+        },
+        {
+          "line": 11,
+          "spelling": "vertex.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/vertex.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/boundary.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "31c9df2c88651f3c81fce326c424b2a92b055410cbe65296dc7370d066898424",
+      "bytes": 1566,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/curve/curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        },
+        {
+          "line": 5,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 6,
+          "spelling": "edge.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/edge.h"
+        },
+        {
+          "line": 7,
+          "spelling": "quadtree.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree.h"
+        },
+        {
+          "line": 8,
+          "spelling": "quadtree_cell.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree_cell.h"
+        },
+        {
+          "line": 9,
+          "spelling": "shape.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/shape.h"
+        },
+        {
+          "line": 10,
+          "spelling": "vertex.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/vertex.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/edge.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "5889696671928c88a20c9ba385fbba87a128ecce24c8f83a11a28285bbbba7f4",
+      "bytes": 2503,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/curve/curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        },
+        {
+          "line": 5,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 6,
+          "spelling": "quadtree_cell.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree_cell.h"
+        },
+        {
+          "line": 7,
+          "spelling": "shape.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/shape.h"
+        },
+        {
+          "line": 8,
+          "spelling": "vertex.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/vertex.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/face.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "53f040dd0dffad38e7dcb5834967794ce362c8752e7b3a6984089cf4bd80c746",
+      "bytes": 1588,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "edge.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/edge.h"
+        },
+        {
+          "line": 6,
+          "spelling": "shape.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/shape.h"
+        },
+        {
+          "line": 7,
+          "spelling": "vertex.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/vertex.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/quadtree.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "708b5508caef0cee59b49806b238e2635eabd7520a2f6b345b7eb3728f3253a5",
+      "bytes": 2691,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "boundary.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/boundary.h"
+        },
+        {
+          "line": 6,
+          "spelling": "edge.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/edge.h"
+        },
+        {
+          "line": 7,
+          "spelling": "face.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/face.h"
+        },
+        {
+          "line": 8,
+          "spelling": "quadtree_cell.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree_cell.h"
+        },
+        {
+          "line": 9,
+          "spelling": "shape.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/shape.h"
+        },
+        {
+          "line": 10,
+          "spelling": "vertex.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/vertex.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/quadtree_cell.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "3a575b96b64ee2a21bcb477c33bd36f8f5259b34cff30d606e3674951c6e38e8",
+      "bytes": 3307,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "boundary.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/boundary.h"
+        },
+        {
+          "line": 6,
+          "spelling": "edge.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/edge.h"
+        },
+        {
+          "line": 7,
+          "spelling": "face.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/face.h"
+        },
+        {
+          "line": 8,
+          "spelling": "quadtree.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree.h"
+        },
+        {
+          "line": 9,
+          "spelling": "shape.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/shape.h"
+        },
+        {
+          "line": 10,
+          "spelling": "vertex.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/vertex.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/shape.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "14646f2689e09b420db63aaab4c0f65f1705e8715f1afee2a9efbee20919274c",
+      "bytes": 1100,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/smoothing_adjacency.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "ae076f74f189caf8c7526d4ad7ac3c6ad8842ce50b6ce9349e8704edea94a848",
+      "bytes": 940,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/aft/vertex.h",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "header",
+      "sha256": "f993e9f0bb130754e884948b62bf27645a8a333ae0b011d14085565664b32055",
+      "bytes": 1854,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "edge.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/edge.h"
+        },
+        {
+          "line": 6,
+          "spelling": "shape.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/shape.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/numerical/bisection_equation_root.h",
+      "component_by_directory": "crab_mesh/numerical",
+      "kind": "header",
+      "sha256": "aaa785491c35a8d1af693cfe2b9367f4ec7ee9b1eb990a2b97b435b9e75edda5",
+      "bytes": 3035,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "equation_root.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/numerical/equation_root.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/numerical/equation_root.h",
+      "component_by_directory": "crab_mesh/numerical",
+      "kind": "header",
+      "sha256": "947af36340320faa5667ae9ac8e1781126706b65d4ed17e090f0b9e8e3b718f7",
+      "bytes": 390,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "equation_root_function.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/numerical/equation_root_function.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/numerical/equation_root_function.h",
+      "component_by_directory": "crab_mesh/numerical",
+      "kind": "header",
+      "sha256": "85910793a59d6e9c8100a13594b63c93e107b7b61d9ea94cd4c8cdd1d31a1e6a",
+      "bytes": 633,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "function.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/numerical/function.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/numerical/function.h",
+      "component_by_directory": "crab_mesh/numerical",
+      "kind": "header",
+      "sha256": "761ee2b4f10ad6b5d854f97461897e761f06461f3bca06acf559fef860e15f8c",
+      "bytes": 436,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "multi_variable_function.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/numerical/multi_variable_function.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/numerical/multi_variable_function.h",
+      "component_by_directory": "crab_mesh/numerical",
+      "kind": "header",
+      "sha256": "4a9ffdadc12012baab823a9a9dfc8a8cd2fe7070369501c7c8286cbf1292fc4e",
+      "bytes": 391,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/performer/definitions.h",
+      "component_by_directory": "crab_mesh/performer",
+      "kind": "header",
+      "sha256": "12b05d295c742010aebd9f9a79a98dd19056a3bcbc1566bb58f73013cecbbd75",
+      "bytes": 4029,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 6,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/performer/id_manager.h",
+      "component_by_directory": "crab_mesh/performer",
+      "kind": "header",
+      "sha256": "646a30cc911b58b6e5558488ad0ff437b48c658a3b3b0ed36e92a501db245368",
+      "bytes": 598,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "include/crab_mesh/performer/ranged_id_manager.h",
+      "component_by_directory": "crab_mesh/performer",
+      "kind": "header",
+      "sha256": "12175a843270e92f5dad37a87bdb0aed0525c08390651709e89eb68e343c5a3c",
+      "bytes": 1003,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "id_manager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/id_manager.h"
+        }
+      ]
+    },
+    {
+      "path": "include/curvature/adjacent.h",
+      "component_by_directory": "curvature",
+      "kind": "header",
+      "sha256": "8ed6c1c4a2cf77c33d6ca1b3d465229cadda98c42fedd5c6c288f068f0cd3b05",
+      "bytes": 1366,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "../data/node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
+        },
+        {
+          "line": 9,
+          "spelling": "../data/triangle_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/triangle_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/curvature/curvature.h",
+      "component_by_directory": "curvature",
+      "kind": "header",
+      "sha256": "55ebfbf08f743ce42d7faa7a3b0bc179840ca7c97209c96f9ba181629f03b43d",
+      "bytes": 220,
+      "includes": []
+    },
+    {
+      "path": "include/curvature/curvature_analytical.h",
+      "component_by_directory": "curvature",
+      "kind": "header",
+      "sha256": "7564e80b8f0cbe185e67c04fd6f7501c142b457ca6f45b7743c55bd7259edd95",
+      "bytes": 696,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "tuple",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "../data/patch/patch_coons.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_coons.h"
+        },
+        {
+          "line": 8,
+          "spelling": "../data/point_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/point_adaptive.h"
+        },
+        {
+          "line": 9,
+          "spelling": "../data/vector_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vector_adaptive.h"
+        },
+        {
+          "line": 10,
+          "spelling": "curvature.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature.h"
+        }
+      ]
+    },
+    {
+      "path": "include/curvature/curvature_discrete.h",
+      "component_by_directory": "curvature",
+      "kind": "header",
+      "sha256": "24386f86069820fb6e130bfbcf91835a759ff59b6bfd6eb6d27b15c02eeca9d1",
+      "bytes": 845,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "cstdlib",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "../data/element_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/element_adaptive.h"
+        },
+        {
+          "line": 9,
+          "spelling": "../data/node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
+        },
+        {
+          "line": 10,
+          "spelling": "adjacent.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/adjacent.h"
+        },
+        {
+          "line": 11,
+          "spelling": "curvature.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/curve/curve_adaptive.h",
+      "component_by_directory": "data/curve",
+      "kind": "header",
+      "sha256": "d995b3f060d9c08e634ed1bb093d4addf5b11778c95411f20800e8a969e784d0",
+      "bytes": 1684,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "../node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
+        },
+        {
+          "line": 8,
+          "spelling": "../patch/patch.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch.h"
+        },
+        {
+          "line": 9,
+          "spelling": "../triangle_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/triangle_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/curve/curve_adaptive_parametric.h",
+      "component_by_directory": "data/curve",
+      "kind": "header",
+      "sha256": "a4f519d7f99452082171af85997e84ca616b5547876b1700dec2d4e9c42949b9",
+      "bytes": 3828,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "../../crab_mesh/numerical/bisection_equation_root.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/numerical/bisection_equation_root.h"
+        },
+        {
+          "line": 8,
+          "spelling": "../../crab_mesh/numerical/equation_root_function.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/numerical/equation_root_function.h"
+        },
+        {
+          "line": 9,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 10,
+          "spelling": "../vector_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vector_adaptive.h"
+        },
+        {
+          "line": 11,
+          "spelling": "../vertex_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vertex_adaptive.h"
+        },
+        {
+          "line": 12,
+          "spelling": "curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/curve/curve_adaptive_parametric_bezier.h",
+      "component_by_directory": "data/curve",
+      "kind": "header",
+      "sha256": "e9e80821697a8f8e728985761d60af548e0eaf6fd00141a89c7752af21909ec1",
+      "bytes": 1287,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/curve/curve_adaptive_parametric_hermite.h",
+      "component_by_directory": "data/curve",
+      "kind": "header",
+      "sha256": "215c1696e4e15dd82ce3c76b6c0e43fca2c40c53a5d62ec22f9da2b9296f0d2a",
+      "bytes": 1053,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/curve/curve_orientation.h",
+      "component_by_directory": "data/curve",
+      "kind": "header",
+      "sha256": "c71f55a1bed0c03f3809539f27281495fabb7adf1e6e203f85f78cf4c8bca2c4",
+      "bytes": 724,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/data/definitions.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "2cda48f51b301ff9642c6e7f741b49b06121d6d3c3c12eae4852834080e3bfb4",
+      "bytes": 22197,
+      "includes": [
+        {
+          "line": 131,
+          "spelling": "mpi.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 141,
+          "spelling": "winsock2.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 145,
+          "spelling": "windows.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 153,
+          "spelling": "sys/time.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 156,
+          "spelling": "cfloat",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 157,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 158,
+          "spelling": "cstdlib",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 159,
+          "spelling": "ctime",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 160,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 161,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 162,
+          "spelling": "limits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 163,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 164,
+          "spelling": "set",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 165,
+          "spelling": "sstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 166,
+          "spelling": "tuple",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 170,
+          "spelling": "../../libs/Eigen/Dense",
+          "form": "quote",
+          "scope": "vendor",
+          "target": "libs/Eigen/Dense"
+        },
+        {
+          "line": 171,
+          "spelling": "../../libs/Eigen/Eigen",
+          "form": "quote",
+          "scope": "vendor",
+          "target": "libs/Eigen/Eigen"
+        },
+        {
+          "line": 173,
+          "spelling": "Eigen/Eigen",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 175,
+          "spelling": "../../libs/Eigen/Dense",
+          "form": "quote",
+          "scope": "vendor",
+          "target": "libs/Eigen/Dense"
+        },
+        {
+          "line": 176,
+          "spelling": "../../libs/Eigen/Eigen",
+          "form": "quote",
+          "scope": "vendor",
+          "target": "libs/Eigen/Eigen"
+        },
+        {
+          "line": 183,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 184,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 185,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 186,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 187,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 188,
+          "spelling": "queue",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 189,
+          "spelling": "set",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 190,
+          "spelling": "sstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 191,
+          "spelling": "typeinfo",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 192,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 195,
+          "spelling": "tuple",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 196,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 197,
+          "spelling": "unordered_set",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 200,
+          "spelling": "cfloat",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 201,
+          "spelling": "climits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 202,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 233,
+          "spelling": "GL/gl.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 234,
+          "spelling": "GL/glu.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 235,
+          "spelling": "GL/glut.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/data/element_adaptive.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "697208ca742732f354383428ddcf6d453a471c45936c0398f5ffc5bbd1829f75",
+      "bytes": 644,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "vector_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vector_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/geometry.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "642dd1ac34568906ccb9c7b4c28fa29d9eb85f2fdd8b3a3375007c89e74890f9",
+      "bytes": 1638,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/data/mesh/mesh_adaptive.h",
+      "component_by_directory": "data/mesh",
+      "kind": "header",
+      "sha256": "df16f68728e8bf8d1d388cb107e89e4bfea6569a80664475b1ff22dad7b9c08a",
+      "bytes": 1305,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/data/mesh/sub_mesh.h",
+      "component_by_directory": "data/mesh",
+      "kind": "header",
+      "sha256": "f72e20134fdcf675831c807885130bc9e868161216f0f9b84105228d68b3b36a",
+      "bytes": 1393,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/data/model.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146",
+      "bytes": 537,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "../data/mesh/mesh_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/mesh_adaptive.h"
+        },
+        {
+          "line": 7,
+          "spelling": "geometry.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/geometry.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/node_adaptive.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "e2a1bd282814b53b3640fe5a3fce50c689d98c278b52f8ef7594ddd1dae979cd",
+      "bytes": 1252,
+      "includes": [
+        {
+          "line": 5,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "element_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/element_adaptive.h"
+        },
+        {
+          "line": 8,
+          "spelling": "point_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/point_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/patch/patch.h",
+      "component_by_directory": "data/patch",
+      "kind": "header",
+      "sha256": "70d96c24d0a58ad1870b64beefcdd8db30fda550c9c3064bffb553e390f43354",
+      "bytes": 620,
+      "includes": []
+    },
+    {
+      "path": "include/data/patch/patch_bezier.h",
+      "component_by_directory": "data/patch",
+      "kind": "header",
+      "sha256": "4162d1fc48b2def2162f5bd5eb365c92befaafc47be54e60e3591d6791e38e59",
+      "bytes": 5731,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/curve/curve_adaptive_parametric_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
+        },
+        {
+          "line": 5,
+          "spelling": "patch_coons.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_coons.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/patch/patch_coons.h",
+      "component_by_directory": "data/patch",
+      "kind": "header",
+      "sha256": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c",
+      "bytes": 1796,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "tuple",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "patch.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/patch/patch_hermite.h",
+      "component_by_directory": "data/patch",
+      "kind": "header",
+      "sha256": "b76313f5016ece3c438867897f05aed043e394f8e85741e3bd630b4900558e3b",
+      "bytes": 3697,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../../data/curve/curve_adaptive_parametric_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_hermite.h"
+        },
+        {
+          "line": 5,
+          "spelling": "../../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 6,
+          "spelling": "patch_coons.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_coons.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/point_adaptive.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "5f0fc3de972dc9fdf395ea9b572eb5bc1dde470da54b0a7a5c7f58594c14f188",
+      "bytes": 787,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/data/tree/bin_tree.h",
+      "component_by_directory": "data/tree",
+      "kind": "header",
+      "sha256": "f6a0f675bfff86e7e905a8de1a8276a28799af3fe48d9dad84bc3c9d0d85538d",
+      "bytes": 1270,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "../curve/curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/triangle_adaptive.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "3c801f2596606396ba0a944cf447074cdc9aa4aee69373590197efcdc67db51b",
+      "bytes": 1816,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "tuple",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "element_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/element_adaptive.h"
+        },
+        {
+          "line": 7,
+          "spelling": "node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
+        },
+        {
+          "line": 8,
+          "spelling": "vector_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vector_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/vector_adaptive.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "7f0d7e8eb2528afcceee8b07082afd48a80f8496638b51cc311c1a3ff3ef0e49",
+      "bytes": 1450,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "point_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/point_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/vertex_adaptive.h",
+      "component_by_directory": "data",
+      "kind": "header",
+      "sha256": "19ec49e0925b3b9eb05c2d9aaaf30b49c6d179e7913a00cd23e7ede1ce708c37",
+      "bytes": 301,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "point_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/point_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/estimate/charge_estimate_process.h",
+      "component_by_directory": "estimate",
+      "kind": "header",
+      "sha256": "d931e5ba90bb5be5532a6dd7d6f26294dff7459b1f57b606f84ba5aa22c17dd3",
+      "bytes": 1764,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "../adapter/adapter.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/adapter/adapter.h"
+        },
+        {
+          "line": 9,
+          "spelling": "../data/curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
+        },
+        {
+          "line": 10,
+          "spelling": "../data/curve/curve_adaptive_parametric_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
+        },
+        {
+          "line": 11,
+          "spelling": "../data/geometry.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/geometry.h"
+        },
+        {
+          "line": 12,
+          "spelling": "../data/mesh/mesh_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/mesh_adaptive.h"
+        },
+        {
+          "line": 13,
+          "spelling": "../data/patch/patch_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_bezier.h"
+        },
+        {
+          "line": 14,
+          "spelling": "../data/point_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/point_adaptive.h"
+        },
+        {
+          "line": 15,
+          "spelling": "../data/vertex_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vertex_adaptive.h"
+        },
+        {
+          "line": 16,
+          "spelling": "../input_output/patch_reader.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/patch_reader.h"
+        },
+        {
+          "line": 17,
+          "spelling": "../input_output/write_obj_file.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/write_obj_file.h"
+        },
+        {
+          "line": 18,
+          "spelling": "../timer/timer.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/timer/timer.h"
+        }
+      ]
+    },
+    {
+      "path": "include/generator/generator_adaptive.h",
+      "component_by_directory": "generator",
+      "kind": "header",
+      "sha256": "2c9e5e059e760db17f24e17f1dc2139625500982f0e1378c13c1613cc24af4df",
+      "bytes": 25754,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "omp.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 11,
+          "spelling": "../adapter/adapter.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/adapter/adapter.h"
+        },
+        {
+          "line": 12,
+          "spelling": "../crab_mesh/performer/ranged_id_manager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/ranged_id_manager.h"
+        },
+        {
+          "line": 13,
+          "spelling": "../curvature/curvature_analytical.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature_analytical.h"
+        },
+        {
+          "line": 14,
+          "spelling": "../curvature/curvature_discrete.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature_discrete.h"
+        },
+        {
+          "line": 15,
+          "spelling": "../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 16,
+          "spelling": "../data/node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
+        },
+        {
+          "line": 17,
+          "spelling": "../data/patch/patch_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_bezier.h"
+        },
+        {
+          "line": 18,
+          "spelling": "../data/patch/patch_coons.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_coons.h"
+        },
+        {
+          "line": 19,
+          "spelling": "../data/triangle_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/triangle_adaptive.h"
+        },
+        {
+          "line": 20,
+          "spelling": "../data/mesh/mesh_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/mesh_adaptive.h"
+        },
+        {
+          "line": 21,
+          "spelling": "../estimate/charge_estimate_process.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/charge_estimate_process.h"
+        },
+        {
+          "line": 22,
+          "spelling": "../input_output/models_3d.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/models_3d.h"
+        },
+        {
+          "line": 23,
+          "spelling": "../input_output/patch_reader.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/patch_reader.h"
+        },
+        {
+          "line": 24,
+          "spelling": "../parallel/ApMeshCommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/ApMeshCommunicator.h"
+        },
+        {
+          "line": 25,
+          "spelling": "../timer/timer.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/timer/timer.h"
+        }
+      ]
+    },
+    {
+      "path": "include/input_output/file.h",
+      "component_by_directory": "input_output",
+      "kind": "header",
+      "sha256": "ac1bc40afd7bbba0f83cfb8b6a74dad77eb4ccfaa3a0e27429e03099265370a6",
+      "bytes": 842,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "cstdlib",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "cstring",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 11,
+          "spelling": "../data/model.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/model.h"
+        }
+      ]
+    },
+    {
+      "path": "include/input_output/incidence_snapshot.h",
+      "component_by_directory": "input_output",
+      "kind": "header",
+      "sha256": "429fd06fc20f833799e468b889b17c064686d25a9a556577a57319aaabc7a8da",
+      "bytes": 447,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/input_output/input_validation.h",
+      "component_by_directory": "input_output",
+      "kind": "header",
+      "sha256": "8f78718f470366a0747ece2c7a335d1acb6732e15c23462a4c98ca01266fa120",
+      "bytes": 7679,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "limits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "sstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
+          "spelling": "unordered_set",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/input_output/models_3d.h",
+      "component_by_directory": "input_output",
+      "kind": "header",
+      "sha256": "6ba1d18ea73c26a5eb5ec239eb5210a66129c0e4ff11e99885de1944b142f05b",
+      "bytes": 2207,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../data/curve/curve_adaptive_parametric_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
+        },
+        {
+          "line": 5,
+          "spelling": "../data/curve/curve_adaptive_parametric_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_hermite.h"
+        },
+        {
+          "line": 6,
+          "spelling": "../data/geometry.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/geometry.h"
+        },
+        {
+          "line": 7,
+          "spelling": "../data/patch/patch_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_bezier.h"
+        },
+        {
+          "line": 8,
+          "spelling": "../data/patch/patch_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_hermite.h"
+        },
+        {
+          "line": 9,
+          "spelling": "../data/vector_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vector_adaptive.h"
+        },
+        {
+          "line": 10,
+          "spelling": "../data/vertex_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vertex_adaptive.h"
+        },
+        {
+          "line": 11,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 12,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/input_output/patch_reader.h",
+      "component_by_directory": "input_output",
+      "kind": "header",
+      "sha256": "d333b5d2329cae360f43f3290b205511dbcf19d17a41d193942648cfb5cbbf65",
+      "bytes": 1199,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "sstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "../data/model.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/model.h"
+        },
+        {
+          "line": 10,
+          "spelling": "../data/patch/patch_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_bezier.h"
+        },
+        {
+          "line": 11,
+          "spelling": "../data/patch/patch_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_hermite.h"
+        },
+        {
+          "line": 12,
+          "spelling": "../data/point_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/point_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "include/input_output/write_obj_file.h",
+      "component_by_directory": "input_output",
+      "kind": "header",
+      "sha256": "00133307a4a5321685d8ff83af5ccaa67bdae184c8eec5ade6006a59fe92c8f7",
+      "bytes": 546,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "ctime",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "sstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "../data/mesh/mesh_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/mesh_adaptive.h"
+        },
+        {
+          "line": 9,
+          "spelling": "../data/triangle_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/triangle_adaptive.h"
+        },
+        {
+          "line": 10,
+          "spelling": "../data/mesh/sub_mesh.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/sub_mesh.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/ApMeshCommunicator.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "713cc671fb7d87e162292e9c7fb96fa88d63afd27e9fe617e42d790b86226d29",
+      "bytes": 428,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "TMCommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/TMCommunicator.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/Communicator.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "9479fd100b7736c6a26e340a90120d90884139ed094a27216947cac90d2bcf85",
+      "bytes": 50139,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/Definitions.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "47ef680b1fdee6713738f7d11baaa71317cf872dd9d35383160b355fca8c54b0",
+      "bytes": 1726,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../crab_mesh/performer/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/Message.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "09c962d640f13cb181f5e88541f7f275dab1081d73bbe571d3c6a5dd49186a1e",
+      "bytes": 418,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "Transferable.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Transferable.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/MPICommunicator.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "f776d35ad7714e24c9d93d85f0304559dcce15af315234cfa171805e1b07a647",
+      "bytes": 12584,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Communicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Communicator.h"
+        },
+        {
+          "line": 5,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        },
+        {
+          "line": 8,
+          "spelling": "mpi.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/MPIMessage.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "4a2cf0b07fdeec0ec2c5aa470c1f7d7336fec3df569ad175d7bd0dcc089a5e8d",
+      "bytes": 697,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        },
+        {
+          "line": 8,
+          "spelling": "Message.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Message.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/NoCommunicator.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "dff4ba1363265c93b8b413d7740222e38c9df363147e079a39de8a85cb4423f6",
+      "bytes": 5919,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Communicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Communicator.h"
+        },
+        {
+          "line": 5,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/NoThreadManager.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "52ddc9ddb4b03aef12c79e881df62caa5ba961000932a4be7cde3bbe3c971a6b",
+      "bytes": 629,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "ThreadManager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/ThreadManager.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/OMPThreadManager.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "391bc1d94693af3979875d6c2fe01bb5a7fa89e36f6844369a8caa7c47c3f055",
+      "bytes": 623,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        },
+        {
+          "line": 8,
+          "spelling": "ThreadManager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/ThreadManager.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/ParallelMeshGenerator.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "e32c28f8114e6a04674717534e469c109854517cbe2f0e1dac61283d2752851a",
+      "bytes": 497,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../crab_mesh/performer/ranged_id_manager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/ranged_id_manager.h"
+        },
+        {
+          "line": 5,
+          "spelling": "TMCommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/TMCommunicator.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/ThreadManager.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "f4ba3d8d804812bef48e6f7903d969145d3fa551485b3691db78a2e61c450213",
+      "bytes": 692,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/TMCommunicator.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "11fbc6fdeea4408d9b73b0bdeddc31181906f2e9089369d03da0ecac4055583e",
+      "bytes": 1137,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        },
+        {
+          "line": 5,
+          "spelling": "MPICommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/MPICommunicator.h"
+        },
+        {
+          "line": 6,
+          "spelling": "NoCommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/NoCommunicator.h"
+        },
+        {
+          "line": 7,
+          "spelling": "NoThreadManager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/NoThreadManager.h"
+        },
+        {
+          "line": 8,
+          "spelling": "OMPThreadManager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/OMPThreadManager.h"
+        }
+      ]
+    },
+    {
+      "path": "include/parallel/Transferable.h",
+      "component_by_directory": "parallel",
+      "kind": "header",
+      "sha256": "f7ac36e57bf4d861a30c4d176385d9b7896ae6b38f3d39e52906895c755dc260",
+      "bytes": 1141,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "Definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "include/timer/timer.h",
+      "component_by_directory": "timer",
+      "kind": "header",
+      "sha256": "dbf8c2a8bc229f1c61a377313b2724ef9d5dc36ae139c8788ae2c223c03b397c",
+      "bytes": 1842,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "stdio.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "cstdio",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "sstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
+          "spelling": "../data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        }
+      ]
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "component_by_directory": "adapter",
+      "kind": "translation_unit",
+      "sha256": "d154744b8ac5207cd78d6bd10e464ee35034c7c66cc7c6a0bba954ffcef5ed9f",
+      "bytes": 72542,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/adapter/adapter.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/adapter/adapter.h"
+        },
+        {
+          "line": 2,
+          "spelling": "data/curve/curve_orientation.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_orientation.h"
+        },
+        {
+          "line": 3,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "queue",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "translation_unit",
+      "sha256": "d0bd9182320ae6ec0f8d13c9fa0fe15d8849247564ff2d825fe8bbf5408e21e8",
+      "bytes": 46170,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/aft/smoothing_adjacency.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/smoothing_adjacency.h"
+        },
+        {
+          "line": 2,
+          "spelling": "../../../include/crab_mesh/aft/advancing_front.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/advancing_front.h"
+        },
+        {
+          "line": 4,
+          "spelling": "cfloat",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/aft/boundary.cpp",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "translation_unit",
+      "sha256": "427a4da5985f53fbb0c76daf7f69e8ccffbd79c7a8fdebbbfe13fef5fe56ccf3",
+      "bytes": 4905,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/aft/boundary.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/boundary.h"
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "translation_unit",
+      "sha256": "b7f6885dd537426e011f78a1830263db99f7adfca7d820dba737a85a07dd7247",
+      "bytes": 14501,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "data/curve/curve_orientation.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_orientation.h"
+        },
+        {
+          "line": 2,
+          "spelling": "../../../include/crab_mesh/aft/edge.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/edge.h"
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/aft/face.cpp",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "translation_unit",
+      "sha256": "a225f9fbdefe8895e497b0990a143935cb47205d14f2541b8147be73dca8c144",
+      "bytes": 9527,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/aft/face.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/face.h"
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "translation_unit",
+      "sha256": "b44b1d678259e1c90e023fd4300a804df7964523b5ab6853c10e65af3dc11165",
+      "bytes": 12207,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/aft/quadtree.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree.h"
+        },
+        {
+          "line": 3,
+          "spelling": "cfloat",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "translation_unit",
+      "sha256": "59be7a577860e92dfcd0643cde32606680901b93038d49e75b28ad2b844a4496",
+      "bytes": 57188,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/aft/quadtree_cell.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/quadtree_cell.h"
+        },
+        {
+          "line": 3,
+          "spelling": "array",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "cfloat",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/aft/shape.cpp",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "translation_unit",
+      "sha256": "11dcc8bc03e19594c9c69357e42aa23861ac9d16baf3328bd0f3bab90755f0e9",
+      "bytes": 1150,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/aft/shape.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/shape.h"
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/aft/vertex.cpp",
+      "component_by_directory": "crab_mesh/aft",
+      "kind": "translation_unit",
+      "sha256": "930551af2d3c0deaa4de3126b9ae27c7ef86b17f6455482ad8ae2d752ad6034b",
+      "bytes": 5325,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/aft/vertex.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/vertex.h"
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/numerical/bisection_equation_root.cpp",
+      "component_by_directory": "crab_mesh/numerical",
+      "kind": "translation_unit",
+      "sha256": "795d40b137ff31970997ffc8beb2fa2f49b491371f54fd9a484e179eb83126d7",
+      "bytes": 11351,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/numerical/bisection_equation_root.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/numerical/bisection_equation_root.h"
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/numerical/function.cpp",
+      "component_by_directory": "crab_mesh/numerical",
+      "kind": "translation_unit",
+      "sha256": "f58ca8b76b46d498374fe0b0b6fe0aee6e36c6b6ca657f12f69250d022ad2f95",
+      "bytes": 197,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/numerical/function.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/numerical/function.h"
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/performer/id_manager.cpp",
+      "component_by_directory": "crab_mesh/performer",
+      "kind": "translation_unit",
+      "sha256": "be18aebb9154571dbf615bbe4f1b9f386a34909b51c0fa73d9733f9324f8e2f7",
+      "bytes": 761,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/performer/id_manager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/id_manager.h"
+        }
+      ]
+    },
+    {
+      "path": "src/crab_mesh/performer/ranged_id_manager.cpp",
+      "component_by_directory": "crab_mesh/performer",
+      "kind": "translation_unit",
+      "sha256": "3104b013a1123f223a271770e2e9bbbb3026aec40498a5b51fc8b8002f1e4398",
+      "bytes": 2717,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/crab_mesh/performer/ranged_id_manager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/ranged_id_manager.h"
+        }
+      ]
+    },
+    {
+      "path": "src/curvature/adjacent.cpp",
+      "component_by_directory": "curvature",
+      "kind": "translation_unit",
+      "sha256": "1c2f6911cd0c479381f00cd2571a0b7d9599de13744e4ab78217fc54afb9de19",
+      "bytes": 6204,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/curvature/adjacent.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/adjacent.h"
+        }
+      ]
+    },
+    {
+      "path": "src/curvature/curvature_analytical.cpp",
+      "component_by_directory": "curvature",
+      "kind": "translation_unit",
+      "sha256": "f5e9c5c29f8d56d58ea2b1637e95818aa57a1d1d4bbb38d76a0acd358c254666",
+      "bytes": 3220,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/curvature/curvature_analytical.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature_analytical.h"
+        }
+      ]
+    },
+    {
+      "path": "src/curvature/curvature_discrete.cpp",
+      "component_by_directory": "curvature",
+      "kind": "translation_unit",
+      "sha256": "1f784b4f8fa894df444f1d4f82d41c60dabd20980444ffd6d8529c1f2fd2d4a3",
+      "bytes": 4853,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/curvature/curvature_discrete.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature_discrete.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/curve/curve_adaptive.cpp",
+      "component_by_directory": "data/curve",
+      "kind": "translation_unit",
+      "sha256": "17d241c7ce3b9e486aa776c143266d1938e42015520c74b7f8b5b12eef8f91eb",
+      "bytes": 2195,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/data/curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/curve/curve_adaptive_parametric.cpp",
+      "component_by_directory": "data/curve",
+      "kind": "translation_unit",
+      "sha256": "8786a74bb9df0dc04338ae7f7d09428382968124525721c5d354991bab8787cc",
+      "bytes": 19201,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/data/curve/curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/curve/curve_adaptive_parametric_bezier.cpp",
+      "component_by_directory": "data/curve",
+      "kind": "translation_unit",
+      "sha256": "43c6abbb8f46dbf7b3028b3d3583ee7c886772522ce7cdadd42258457c33c5aa",
+      "bytes": 7526,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/data/curve/curve_adaptive_parametric_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/curve/curve_adaptive_parametric_hermite.cpp",
+      "component_by_directory": "data/curve",
+      "kind": "translation_unit",
+      "sha256": "b082fa6c0d21717bc109bfef2ed863bca8455916dc6495ce77f9aedba244807d",
+      "bytes": 7392,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/data/curve/curve_adaptive_parametric_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_hermite.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/definitions.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "b138dab0a059311c9c56f6b584116380626c11b2c8aac1a75b4323b1f9a2de59",
+      "bytes": 8959,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 3,
+          "spelling": "cstdio",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "cstdlib",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "execinfo.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "unistd.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 26,
+          "spelling": "sys/time.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 28,
+          "spelling": "omp.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 30,
+          "spelling": "ctime",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/data/element_adaptive.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "8ef44029a086d7a60481c514a38594c2ead8f7e2ea8ed1c72774001893698d01",
+      "bytes": 439,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/data/element_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/element_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/geometry.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "96ea56152e98ebd6c37c52b5268efa3b46bb976438eddf819d98c2ffc39fb822",
+      "bytes": 2831,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "data/geometry.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/geometry.h"
+        },
+        {
+          "line": 3,
+          "spelling": "unordered_set",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "data/curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
+        },
+        {
+          "line": 6,
+          "spelling": "data/curve/curve_adaptive_parametric_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
+        },
+        {
+          "line": 7,
+          "spelling": "data/patch/patch.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch.h"
+        },
+        {
+          "line": 8,
+          "spelling": "data/point_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/point_adaptive.h"
+        },
+        {
+          "line": 9,
+          "spelling": "data/vector_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vector_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/mesh/mesh_adaptive.cpp",
+      "component_by_directory": "data/mesh",
+      "kind": "translation_unit",
+      "sha256": "a2a8b941052b066cf1f479e0cd1f6824ffdc904de5ca17a5f2b062fc37eb2091",
+      "bytes": 2176,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "data/mesh/mesh_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/mesh_adaptive.h"
+        },
+        {
+          "line": 3,
+          "spelling": "data/mesh/sub_mesh.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/sub_mesh.h"
+        },
+        {
+          "line": 5,
+          "spelling": "cstddef",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/data/mesh/sub_mesh.cpp",
+      "component_by_directory": "data/mesh",
+      "kind": "translation_unit",
+      "sha256": "694574c505cc931ddd093ca63109341d80e201d59a877e70f29420fe4ee803e7",
+      "bytes": 1808,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "data/mesh/sub_mesh.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/sub_mesh.h"
+        },
+        {
+          "line": 3,
+          "spelling": "data/node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
+        },
+        {
+          "line": 4,
+          "spelling": "data/element_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/element_adaptive.h"
+        },
+        {
+          "line": 5,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/data/model.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d",
+      "bytes": 825,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/data/model.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/model.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/node_adaptive.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "c58e6b49d0d2c881c0ee16b95f9a36f8157cb58c15a0de61377b02e07b1bc2fc",
+      "bytes": 1788,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/data/node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/patch/patch.cpp",
+      "component_by_directory": "data/patch",
+      "kind": "translation_unit",
+      "sha256": "c67345bb8c4640a4e23bac62e0897013ed7d6b3425af6c6fc56681990c134e9a",
+      "bytes": 518,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "data/patch/patch.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "component_by_directory": "data/patch",
+      "kind": "translation_unit",
+      "sha256": "4bc29e28aee79ca4f9a61b769296d3d6c3d04593e9592e992e0c7dbb8b55f7bd",
+      "bytes": 26975,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/data/patch/patch_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_bezier.h"
+        },
+        {
+          "line": 3,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "atomic",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/data/patch/patch_coons.cpp",
+      "component_by_directory": "data/patch",
+      "kind": "translation_unit",
+      "sha256": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+      "bytes": 919,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "data/patch/patch_coons.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_coons.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "component_by_directory": "data/patch",
+      "kind": "translation_unit",
+      "sha256": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+      "bytes": 20624,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../../include/data/patch/patch_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_hermite.h"
+        },
+        {
+          "line": 3,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "atomic",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/data/point_adaptive.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "9e6837ec53f69bd23a602433aa5455668a6bb62605616c8059c0f7b42349b2ec",
+      "bytes": 1695,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/data/point_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/point_adaptive.h"
+        },
+        {
+          "line": 3,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/data/tree/bin_tree.cpp",
+      "component_by_directory": "data/tree",
+      "kind": "translation_unit",
+      "sha256": "634571c828856b4906c01ac8c7ee0b0f998465d57dda25e28554d17601a3d863",
+      "bytes": 4452,
+      "includes": [
+        {
+          "line": 3,
+          "spelling": "../../../include/data/tree/bin_tree.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/tree/bin_tree.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/triangle_adaptive.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "8043d216b23996a01c60bf3d030ba066efcc17692017b2da0ad7c46ddf30c1dc",
+      "bytes": 4291,
+      "includes": [
+        {
+          "line": 3,
+          "spelling": "../../include/data/triangle_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/triangle_adaptive.h"
+        },
+        {
+          "line": 5,
+          "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/data/vector_adaptive.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "c910b1091f4907b54725a6184c00c7a006e26ea63231b4d9182c4e829817f960",
+      "bytes": 3216,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/data/vector_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vector_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/data/vertex_adaptive.cpp",
+      "component_by_directory": "data",
+      "kind": "translation_unit",
+      "sha256": "1ea11fe39adf711a9dc8df763ff2e11fba2a408a7d17e55429f732bb3172c4e5",
+      "bytes": 321,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/data/vertex_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vertex_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/estimate/charge_estimate_process.cpp",
+      "component_by_directory": "estimate",
+      "kind": "translation_unit",
+      "sha256": "179585756ad741bcad1dded027bd7ddcc87291d9a059f6d7e1a7ade3915ebe14",
+      "bytes": 31929,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/estimate/charge_estimate_process.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/charge_estimate_process.h"
+        },
+        {
+          "line": 3,
+          "spelling": "../../include/generator/generator_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/generator_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "component_by_directory": "generator",
+      "kind": "translation_unit",
+      "sha256": "e9695e5fc8af6ad0d913b54fbb758cf1a997c989e3b550d5cc85d7bbb48582e2",
+      "bytes": 349480,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/generator/generator_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/generator_adaptive.h"
+        },
+        {
+          "line": 3,
+          "spelling": "data/curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
+        },
+        {
+          "line": 4,
+          "spelling": "data/curve/curve_adaptive_parametric_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
+        },
+        {
+          "line": 5,
+          "spelling": "data/curve/curve_adaptive_parametric_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_hermite.h"
+        },
+        {
+          "line": 6,
+          "spelling": "data/geometry.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/geometry.h"
+        },
+        {
+          "line": 7,
+          "spelling": "input_output/incidence_snapshot.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/incidence_snapshot.h"
+        },
+        {
+          "line": 9,
+          "spelling": "array",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
+          "spelling": "ostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 11,
+          "spelling": "cstdio",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 12,
+          "spelling": "unordered_set",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 13,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 14,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 15,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 16,
+          "spelling": "limits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 17,
+          "spelling": "numeric",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 18,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 19,
+          "spelling": "filesystem",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 20,
+          "spelling": "system_error",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/input_output/file.cpp",
+      "component_by_directory": "input_output",
+      "kind": "translation_unit",
+      "sha256": "5f7492afae0c0c15c0d4d9f4e1b3c363e90d1a81da24063252720cc1ed61368d",
+      "bytes": 5994,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/input_output/file.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/file.h"
+        }
+      ]
+    },
+    {
+      "path": "src/input_output/incidence_snapshot.cpp",
+      "component_by_directory": "input_output",
+      "kind": "translation_unit",
+      "sha256": "00181029b23c95caddc977570a14fd613be24eec4cd912a85f19cd6045c8175f",
+      "bytes": 4404,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "input_output/incidence_snapshot.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/incidence_snapshot.h"
+        },
+        {
+          "line": 3,
+          "spelling": "array",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "iomanip",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "limits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "locale",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 12,
+          "spelling": "data/mesh/mesh_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/mesh_adaptive.h"
+        },
+        {
+          "line": 13,
+          "spelling": "data/mesh/sub_mesh.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/sub_mesh.h"
+        },
+        {
+          "line": 14,
+          "spelling": "data/patch/patch_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_bezier.h"
+        },
+        {
+          "line": 15,
+          "spelling": "data/triangle_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/triangle_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "component_by_directory": "input_output",
+      "kind": "translation_unit",
+      "sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "bytes": 136365,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/input_output/models_3d.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/models_3d.h"
+        },
+        {
+          "line": 3,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "component_by_directory": "input_output",
+      "kind": "translation_unit",
+      "sha256": "6611aec35c7fc9feb6f9e0b3d79f3461aa4e000c571d557fd637438e8b27836a",
+      "bytes": 29312,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/input_output/patch_reader.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/patch_reader.h"
+        },
+        {
+          "line": 2,
+          "spelling": "../../include/input_output/input_validation.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/input_validation.h"
+        },
+        {
+          "line": 4,
+          "spelling": "array",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
+          "spelling": "../../include/data/vertex_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vertex_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/input_output/write_obj_file.cpp",
+      "component_by_directory": "input_output",
+      "kind": "translation_unit",
+      "sha256": "846fd45f39f6202c146e2bf4cd71f1716b75cb3dd0905f15184d354550f1e804",
+      "bytes": 4242,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/input_output/write_obj_file.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/write_obj_file.h"
+        }
+      ]
+    },
+    {
+      "path": "src/main.cpp",
+      "component_by_directory": "cli",
+      "kind": "translation_unit",
+      "sha256": "e797253772a2a91c865707f776e93583ab7b08379ad3272365ce02c6bbc930d8",
+      "bytes": 27445,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 2,
+          "spelling": "atomic",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 3,
+          "spelling": "cctype",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "fstream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "iomanip",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 11,
+          "spelling": "../include/data/curve/curve_adaptive_parametric_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
+        },
+        {
+          "line": 12,
+          "spelling": "../include/data/curve/curve_adaptive_parametric_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_hermite.h"
+        },
+        {
+          "line": 13,
+          "spelling": "../include/data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
+        },
+        {
+          "line": 14,
+          "spelling": "../include/data/model.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/model.h"
+        },
+        {
+          "line": 15,
+          "spelling": "../include/data/patch/patch_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_bezier.h"
+        },
+        {
+          "line": 16,
+          "spelling": "../include/data/patch/patch_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_hermite.h"
+        },
+        {
+          "line": 17,
+          "spelling": "../include/data/vector_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vector_adaptive.h"
+        },
+        {
+          "line": 18,
+          "spelling": "../include/data/vertex_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/vertex_adaptive.h"
+        },
+        {
+          "line": 19,
+          "spelling": "../include/generator/generator_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/generator_adaptive.h"
+        },
+        {
+          "line": 20,
+          "spelling": "../include/input_output/models_3d.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/models_3d.h"
+        },
+        {
+          "line": 21,
+          "spelling": "../include/input_output/input_validation.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/input_validation.h"
+        },
+        {
+          "line": 22,
+          "spelling": "../include/input_output/patch_reader.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/patch_reader.h"
+        },
+        {
+          "line": 23,
+          "spelling": "../include/timer/timer.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/timer/timer.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/ApMeshCommunicator.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "ade20100c52544b8558452cd462314177a7d879385e7fbee9134327bdf1e2054",
+      "bytes": 457,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/ApMeshCommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/ApMeshCommunicator.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/Communicator.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "436005342cc0453b7852ffb7ec4a700158830b6bd748300532191cdf2daadabf",
+      "bytes": 104929,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/Communicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Communicator.h"
+        },
+        {
+          "line": 3,
+          "spelling": "../../include/parallel/Transferable.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Transferable.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/Message.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "b1f78586f993885afda0284d24db6223789acb48ccfa0e5b7c791e427fdeae60",
+      "bytes": 417,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/Message.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Message.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/MPICommunicator.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "016112b2ce38d5a80e0d07a7fd12e8aef123b1411464aad3632231468c98538d",
+      "bytes": 29957,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/MPICommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/MPICommunicator.h"
+        },
+        {
+          "line": 5,
+          "spelling": "../../include/parallel/MPIMessage.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/MPIMessage.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/MPIMessage.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "3c9fa02c80ecd462b779ea47e59f750773532514f89aff852234f13e65621c72",
+      "bytes": 1420,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/MPIMessage.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/MPIMessage.h"
+        },
+        {
+          "line": 5,
+          "spelling": "../../include/parallel/MPICommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/MPICommunicator.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/NoCommunicator.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "f48baf07bb374c3cf0d900f3e8c105242a560645340630c38036805237d2cdb8",
+      "bytes": 8312,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/NoCommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/NoCommunicator.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/NoThreadManager.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "6a65c14634fb2adf16432bf7ae0cd513132718ced31e74453954c2f0ecd5cbd9",
+      "bytes": 689,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/NoThreadManager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/NoThreadManager.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/OMPThreadManager.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "8a8101844f785ba8dac6e1669cc724f444b016aaa5b7e9eddae30e506edcf4c7",
+      "bytes": 907,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/OMPThreadManager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/OMPThreadManager.h"
+        },
+        {
+          "line": 5,
+          "spelling": "omp.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/ParallelMeshGenerator.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "dbf6d5ef902727e4b74622132d2aae2e34547e87955d951e8c3c79d519b5c467",
+      "bytes": 973,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/ParallelMeshGenerator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/ParallelMeshGenerator.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/ThreadManager.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "d668948c19f8bb01a87dcc2d65bb9cb5d72e7d35ec9f12782e890c9ec3f4e40b",
+      "bytes": 505,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/ThreadManager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/ThreadManager.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/TMCommunicator.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "4a4fb7d73db965171f65232aee4b77cbe2f4b6755ab562f97504a93201f8c900",
+      "bytes": 2086,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/TMCommunicator.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/TMCommunicator.h"
+        }
+      ]
+    },
+    {
+      "path": "src/parallel/Transferable.cpp",
+      "component_by_directory": "parallel",
+      "kind": "translation_unit",
+      "sha256": "e7b5357b7883654986c5d4a2820cd9d7a619ba61a9cc9af78caae234e70ae142",
+      "bytes": 399,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/parallel/Transferable.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/parallel/Transferable.h"
+        }
+      ]
+    },
+    {
+      "path": "src/timer/timer.cpp",
+      "component_by_directory": "timer",
+      "kind": "translation_unit",
+      "sha256": "7c534c88eeb3e39dbad7ab0ea6891dd19b93a06d2a1de7d714888dfeec4c9a09",
+      "bytes": 8529,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "../../include/timer/timer.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/timer/timer.h"
+        }
+      ]
+    }
+  ],
+  "contract_traceability": {
+    "contracts": 22,
+    "source_anchors": 78,
+    "scope": "source anchors exist; semantic statements require independent review"
+  }
+}

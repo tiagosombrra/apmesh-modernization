@@ -1,0 +1,177 @@
+{
+  "base_main": "d4561c9421226503cb4a478faad71ed5ad012381",
+  "base_tree": "b6ab987ae795ac1713adcde7b262c6303a412915",
+  "local_text_blobs_verified": 636,
+  "immutable_remote_artifacts_preserved": 2,
+  "entry_ctest": {
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0
+  },
+  "reference_executable_sha256": "782fa6d0c235bca7f3fcb1e02e623cb105855f918a74c0616f262948c60a632e",
+  "rebuilt_executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+  "article_results": {
+    "eistute": {
+      "entry_repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "782fa6d0c235bca7f3fcb1e02e623cb105855f918a74c0616f262948c60a632e",
+        "configuration_sha256": "f22f4ecdbc238818399d28b895e75f67172d51bc6260055fdd1496ff1a27c24a"
+      },
+      "candidate_repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+        "configuration_sha256": "468ffb4125f0bc511ee637e274841c5bcada0b7870f730e6866c0b42d687df39"
+      },
+      "strict_candidate_vs_entry": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "strict_entry_vs_stage1_archive": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "named_csv_audits": {
+        "entry": [
+          {
+            "status": "passed",
+            "rows": 5,
+            "compared_fields": 105,
+            "differences": []
+          },
+          {
+            "status": "passed",
+            "rows": 5,
+            "compared_fields": 105,
+            "differences": []
+          }
+        ],
+        "candidate": [
+          {
+            "status": "passed",
+            "rows": 5,
+            "compared_fields": 105,
+            "differences": []
+          },
+          {
+            "status": "passed",
+            "rows": 5,
+            "compared_fields": 105,
+            "differences": []
+          }
+        ]
+      }
+    },
+    "book": {
+      "entry_repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "782fa6d0c235bca7f3fcb1e02e623cb105855f918a74c0616f262948c60a632e",
+        "configuration_sha256": "7b565a70f3667bd7e64d24440ff19da4cb58e7301d83a53bb4b2798b50892ce0"
+      },
+      "candidate_repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+        "configuration_sha256": "b1ca15d64e66155bdd0a51f86f2cd0a8dc7ead4b465806f48ab21459f5ef39a0"
+      },
+      "strict_candidate_vs_entry": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "strict_entry_vs_stage1_archive": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "named_csv_audits": {
+        "entry": [
+          {
+            "status": "passed",
+            "rows": 4,
+            "compared_fields": 84,
+            "differences": []
+          },
+          {
+            "status": "passed",
+            "rows": 4,
+            "compared_fields": 84,
+            "differences": []
+          }
+        ],
+        "candidate": [
+          {
+            "status": "passed",
+            "rows": 4,
+            "compared_fields": 84,
+            "differences": []
+          },
+          {
+            "status": "passed",
+            "rows": 4,
+            "compared_fields": 84,
+            "differences": []
+          }
+        ]
+      }
+    }
+  },
+  "status": "passed",
+  "qualification": "entry and independent rebuilt candidate; exact delivery and post-merge validation still required"
+}

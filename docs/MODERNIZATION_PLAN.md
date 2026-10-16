@@ -4,10 +4,12 @@ Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
 Current status: stages 0 and 1 are integrated and closed for their measured
-scope (PRs #1 and #3). Stage 1 passed its exact-head and post-merge audits,
-CTest 9/9, strict Eistute/Book repetition, minimally corrected reference
-comparison and independent incidence/CSV gates. Historical raw differences are
-retained. See `evidence/STAGE1_CLOSURE.md`. Stage 2 is next and not started.
+scope. Stage 2 is the sole active item (#5) for final delivery qualification.
+Its complete production inventory, domain/lifecycle contracts, decision record
+and prioritized follow-up are in `architecture/MESH_ARCHITECTURE.md` and
+`architecture/REFACTOR_SEQUENCE.md`. Entry/candidate regression passes with
+production identities unchanged; exact-head and post-merge gates remain.
+Stage 3 is next; stages 3/4 may alternate only to unblock proved tooling barriers.
 
 | Stage | Scope | Completion evidence |
 |---|---|---|

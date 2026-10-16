@@ -56,18 +56,44 @@ executable hashes: `docs/evidence/STAGE1_ORIENTATION_REPAIR.md` and
 `docs/evidence/stage1/orientation/`. Earlier incidence and smoothing reports are
 historical observations, not current gate status.
 
-## Next work item: stage 2 (not started)
+## Active work item: stage 2 (closure qualification)
 
-Inventory the physical and parametric mesh concepts, CRABMesh responsibilities,
-owners/observers, identity, conversions, duplicate computations and dependencies.
-Do this before broad abstractions or consolidation. Create one focused work item
-and retain stage 1 regression as the guard. Every stage ends with an explicit
-closure audit and regression, as requested by the user.
+Issue #5 is the sole active work item. Base main is
+`d4561c9421226503cb4a478faad71ed5ad012381`; stage 1 issue #2 is closed.
+The entry remote audit found no open PR/issue or hosted workflow/check.
+
+Delivered: a reproducible inventory of all 122 production C++ files (57 units,
+65 headers), three build inputs, 22 reviewed contracts and 78 source anchors;
+physical/UV domain and identity/conversion maps, ownership/invalidation and
+computation-duplication ledgers, one six-header include cycle, an engineering
+ADR and a dependency-ordered repair sequence. Production/build/model/config/
+vendor and existing verifier identities are unchanged.
+
+Entry CTest 9/9 and its 65 Python controls passed. The candidate CTest is also
+9/9 with zero skips, now including 73 Python controls after eight independent
+inventory controls. Fresh-build Eistute/Book repetitions and strict entry/
+previous-stage comparisons pass for all nine attempted states, with positive
+incidence coverage and named CSV audits. Selected exporter lint passes.
+
+Source review records the node copy/adoption contradiction, copied adjacency,
+manual endpoint detachment, rollback observer invalidation, patch-copy and cache
+mutation limits, and the build macro/routing gap. These are differentiated from
+newly reproduced runtime defects. No new memory or parallel qualification is
+claimed. Architecture: `docs/architecture/MESH_ARCHITECTURE.md`; decisions and
+next-slice priorities: `docs/architecture/REFACTOR_SEQUENCE.md` and
+`docs/decisions/ADR-0001-mesh-domains-and-lifetimes.md`.
+
+Next: qualify the exact delivery revision, integrate only after passing gates,
+and repeat main validation. Stage 3 then starts with physical-node copy/adoption
+and adjacency lifecycle characterization using qualified diagnostics; stage 4
+may unblock tooling if a proved portability barrier requires it. Current audit:
+`docs/evidence/STAGE2_ARCHITECTURE_AUDIT.md` and `docs/evidence/stage2/`.
 
 ## Open blockers and limitations
 
-- Stage 1 is closed for its measured serial scope. Stages 2-11 have not begun;
-  broad numerical, memory, portability and documentation qualification remain open.
+- Stage 1 is closed for its measured serial scope; stage 2 awaits final
+  delivery qualification. Stages 3-11 remain pending. Broad numerical, memory,
+  portability and generated-documentation qualification remain open.
 - Legacy compatibility summaries still compare zero groups when synchronized.
   Independent incidence evidence now measures actual sheets and does not treat
   that legacy zero as proof of compatibility.
@@ -76,8 +102,8 @@ closure audit and regression, as requested by the user.
 - Eigen remains; CRABMesh consolidation, complete English renaming, generated
   Doxygen review, C++23 qualification and performance work remain open.
 - The archived-artifact test is not a new accepted-mesh generation experiment.
-- Local Git network access cannot resolve github.com; remote operations use the
-  GitHub connector. Local source validation excludes the two binary publication
+- Earlier local Git networking failed DNS; this delivery uses the GitHub
+  connector for remote operations. Local source validation excludes the two binary publication
   artifacts; their remote import hashes are independently compared with source.
 
 ## Continuation rule

@@ -87,6 +87,20 @@ LLVM 22.1.8 is qualified; other versions must support ExcludeHeaderFilterRegex.
 Selected exporter lint coverage is not a full legacy lint-clean claim.
 
 
+## Architecture inventory freshness
+
+```sh
+python tools/inventory_architecture.py --output docs/architecture/source_inventory.json --contracts docs/architecture/contracts.json --check
+```
+
+The deterministic lexical inventory covers every first-party production C++
+file and hashes the CMake inputs. Eight positive/negative controls, including
+retained-inventory freshness, run through normal tooling CTest. The source
+anchor checker establishes traceability only; ownership conclusions require
+human code review and dynamic safety requires qualified instruments. Conditional
+includes are potential dependencies, not active-preprocessor or runtime proof.
+Regenerate explicitly without --check only after reviewing actual source changes.
+
 ## Optional local pre-commit hook
 
 ```sh

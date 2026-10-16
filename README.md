@@ -45,7 +45,17 @@ comparisons pass without relaxed tolerances. See
 
 PR #3 is integrated. Exact-head and post-merge validation pass; see
 [the closure record](docs/evidence/STAGE1_CLOSURE.md). Stage 2's mesh/architecture
-inventory is next. Later work remains constrained by the same regression gates.
+inventory follows the same regression gates.
+
+## Stage 2 architecture inventory
+
+[The source-backed architecture map](docs/architecture/MESH_ARCHITECTURE.md)
+covers every production C++ header/unit, domain/identity conversions and lifecycle
+contracts. [The follow-up sequence](docs/architecture/REFACTOR_SEQUENCE.md) keeps
+physical/UV meshes distinct and prioritizes qualified ownership work before
+consolidation. The candidate adds development tooling and eight controls;
+production sources and scientific outputs remain exact. Final delivery and
+post-merge status are tracked in [project state](docs/PROJECT_STATE.md).
 
 ## Repository policy
 
