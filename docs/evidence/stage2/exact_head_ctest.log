@@ -1,0 +1,34 @@
+Test project C:/Users/tiago/.codex/.chatgpt-projects/g-p-6a78da0b01848191b90be3c9c5708c4f/work/apmesh-modernization/build/local-serial
+    Start 1: tooling.controls
+1/9 Test #1: tooling.controls ..........................   Passed    1.56 sec
+    Start 2: reference.archived_eistute_artifact
+2/9 Test #2: reference.archived_eistute_artifact .......   Passed    0.06 sec
+    Start 3: application.invalid_inputs
+3/9 Test #3: application.invalid_inputs ................   Passed    0.35 sec
+    Start 4: application.boundary_orientation
+4/9 Test #4: application.boundary_orientation ..........   Passed    7.77 sec
+    Start 5: application.metric_schema
+5/9 Test #5: application.metric_schema .................   Passed    0.19 sec
+    Start 6: application.curve_orientation_arclength
+6/9 Test #6: application.curve_orientation_arclength ...   Passed    0.01 sec
+    Start 7: tooling.tidy_header_scope
+7/9 Test #7: tooling.tidy_header_scope .................   Passed    0.37 sec
+    Start 8: application.smoothing_adjacency_order
+8/9 Test #8: application.smoothing_adjacency_order .....   Passed    0.01 sec
+    Start 9: application.valid_input_grammar
+9/9 Test #9: application.valid_input_grammar ...........   Passed    0.02 sec
+
+100% tests passed out of 9
+
+Label Time Summary:
+application           =   8.36 sec*proc (6 tests)
+archived-artifact     =   0.06 sec*proc (1 test)
+boundary-incidence    =   7.79 sec*proc (2 tests)
+metric-schema         =   0.19 sec*proc (1 test)
+negative-input        =   0.35 sec*proc (1 test)
+numerical-control     =   0.01 sec*proc (1 test)
+positive-input        =   0.02 sec*proc (1 test)
+required-gate         =   8.35 sec*proc (4 tests)
+tooling               =   1.93 sec*proc (2 tests)
+
+Total Test time (real) =  10.37 sec

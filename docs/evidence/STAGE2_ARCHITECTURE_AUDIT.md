@@ -1,3 +1,6 @@
+> Pre-integration checkpoint. STAGE2_CLOSURE.md records subsequent exact-head
+> audit, integration and successful post-merge regression.
+
 # Stage 2 architecture inventory: closure candidate audit
 
 Date: 2026-10-16. Work item: issue #5.
