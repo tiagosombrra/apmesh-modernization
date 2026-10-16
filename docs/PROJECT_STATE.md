@@ -21,19 +21,40 @@ integration are tracked in GitHub PR #1. See
 `docs/evidence/BOOTSTRAP_VALIDATION.md` for executed checks and limitations.
 No automatic hosted workflows or paid Actions have been created.
 
-## Next work item: stage 1
+## Active work item: stage 1 (draft; integration blocked)
 
-Audit remote main/branches/open PRs/checks, then implement explicit invalid-input
-failure and trustworthy accepted-state regression. Inspect the input failure path
-before changing behavior; reproduce the existing false success with a negative
-test. Keep publication artifacts, attempted candidates and accepted output separate.
-Check each boundary incidence independently; reject zero-coverage confirmation.
-Use the prior patch as evidence only, not an automatically accepted repair.
+Issue #2 tracks the candidate delivery. Main remains at
+`b4087a472015d6898687c0aeff444efb4f1a9524`; these stage 1 changes are not integrated.
+
+Implemented: strict configuration syntax/numeric checks, pre-allocation BP
+grammar validation, English CLI error diagnostics, independent OBJ/CSV/log
+verification, rejection of historical targets without accepted-state evidence,
+strict before/after comparisons and exact-configuration repeatability tooling.
+
+Executed: GCC serial build, 38 Python controls, 23 real invalid-input controls,
+three valid shipped model grammars, six valid configuration controls and CTest
+4/4. New C++ validator/consumer formatting and consumer clang-tidy passed.
+Book preserved every OBJ and all decision/metric fields. Eistute preserved every
+OBJ and accepted/rejected steps, but strict numerical-report comparison failed.
+The unchanged reference executable also varies numerically between repetitions,
+including runs with identical configuration bytes, command and output paths.
+See `docs/evidence/STAGE1_VALIDATION.md` and its JSON evidence.
+
+Next action: localize the pre-existing numerical instability without changing
+formulas, iteration ordering, stopping thresholds or comparison tolerances.
+Keep the strict failing gate and draft PR until the discrepancy is explained
+and the required comparison passes. No root cause is asserted yet.
+
+Per-incidence boundary validation also remains open: legacy OBJ lacks patch
+incidence labels, and synchronized legacy reports compare zero curve groups.
+The new verifier explicitly reports absent incidence coverage and fails the
+strict boundary-coverage request, even if a legacy group summary is measured.
+Do not mark stage 1 complete or begin stage 2 while this work item is open.
 
 ## Open blockers and limitations
 
-- Invalid input can still return success; historical generation verifier may
-  approve a rejected Eistute stage. These application defects are not fixed here.
+- Main still has the historical input/verifier defects. The stage 1 draft repairs
+  those defects, but integration is blocked by reference numerical repeatability.
 - Compatibility instrumentation may record zero compared groups; the new checker
   rejects such a report but does not repair the instrumentation itself.
 - Ownership findings, timers, duplicate mesh representations, VLAs and warning

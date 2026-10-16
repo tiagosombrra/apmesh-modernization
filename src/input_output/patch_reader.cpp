@@ -1,4 +1,5 @@
 #include "../../include/input_output/patch_reader.h"
+#include "../../include/input_output/input_validation.h"
 
 #include <cmath>
 #include <memory>
@@ -614,6 +615,7 @@ std::list<PatchBezier*> PatchReader::LoaderRibFile() {
 }
 
 std::list<PatchBezier*> PatchReader::LoaderBezierPatchFile(string fileName) {
+  apmesh::io::ValidateBezierPatchInput(fileName);
   patch_ = new PatchBezier();
 
   if (!fileName.empty()) {
@@ -726,10 +728,10 @@ std::list<PatchBezier*> PatchReader::LoaderBezierPatchFile(string fileName) {
 }
 
 Geometry* PatchReader::ReaderFilePatches(Geometry* geometry, string file_name) {
-  PatchReader* patch_reader = new PatchReader();
+  // Validation failures must unwind this reader without leaking its allocation.
+  PatchReader patch_reader;
   std::list<PatchBezier*> patches =
-      patch_reader->LoaderBezierPatchFile(file_name);
-  delete patch_reader;
+      patch_reader.LoaderBezierPatchFile(file_name);
 
   PointAdaptive* p00;
   PointAdaptive* p01;

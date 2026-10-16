@@ -1,0 +1,140 @@
+[
+  {
+    "case": "missing_model",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Cannot open model input: C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "empty_model",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Model input contains no complete bicubic patch: C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "unknown_record",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid model C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp:1: unsupported record: garbage",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "short_vertex",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid model C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp:1: a vertex requires exactly three finite coordinates",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "extra_coordinate",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid model C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp:1: unexpected trailing data",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "nan_coordinate",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid model C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp:1: a vertex requires exactly three finite coordinates",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "short_patch",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid model C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp:17: a patch requires 16 valid zero-based indices of preceding vertices",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "out_of_bounds_patch",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid model C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp:17: a patch requires 16 valid zero-based indices of preceding vertices",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "negative_patch_index",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid model C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp:17: a patch requires 16 valid zero-based indices of preceding vertices",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "no_patches",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Model input contains no complete bicubic patch: C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "indented_record",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid model C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/stage1-cli-final/tmptkdl3qk7/model.bp:1: v/p records must begin in column 1",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "bad_config_syntax",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Expected KEY=VALUE in configuration: NOT A SETTING",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "unknown_key",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Unknown configuration key: NUM_THEADS",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "invalid_integer",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid numeric configuration value for NUM_THREADS: 1.5",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "zero_threads",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid numeric configuration value for NUM_THREADS: 0",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "invalid_float",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid numeric configuration value for EPSYLON: 1e-7junk",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "nan_float",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid numeric configuration value for EPSYLON: nan",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "infinite_float",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Invalid numeric configuration value for EPSYLON: inf",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "invalid_mode",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Unsupported configuration value for WRITE_MODE: garbage",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "duplicate_key",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Duplicate configuration key: NUM_THREADS",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "missing_config",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: input or configuration failure: Cannot open configuration: C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\stage1-cli-final\\tmptkdl3qk7\\absent.conf",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "missing_arguments",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: expected ap_mesh --config <configuration.conf>",
+    "generated_artifacts": 0
+  },
+  {
+    "case": "extra_arguments",
+    "exit_code": 4294967295,
+    "diagnostic": "Error: expected ap_mesh --config <configuration.conf>",
+    "generated_artifacts": 0
+  }
+]

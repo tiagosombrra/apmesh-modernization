@@ -3,9 +3,16 @@
 ## Purpose and current limits
 
 These commands automate repeatable checks; they do not certify the full
-application. CTest currently registers tooling controls and an archived-artifact
+application. The integrated bootstrap registers tooling controls and an archived-artifact
 check. Application ownership, accepted-state generation and sanitizer qualification
 remain open. The legacy warnings/style debt is not declared resolved.
+
+The stage 1 draft also registers real executable invalid-input controls and
+positive shipped-model grammar controls. Its independent generation verifier
+has negative controls for rejected targets, invalid geometry, altered counts,
+missing evidence, absent incidence coverage and numerical report drift.
+The strict Eistute comparison currently fails, including baseline self-comparison;
+passing CTest alone does not authorize integration. See evidence/STAGE1_VALIDATION.md.
 
 Requirements: Python >=3.10, Git, CMake >=3.21 and Ninja for presets. The imported
 code still targets C++17. GCC/Clang/MSVC qualification and C++23 migration are

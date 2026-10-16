@@ -27,10 +27,28 @@ ctest --preset local-serial
 python tools/quality.py doctor
 ```
 
-The CTest suite currently checks tooling controls and the archived Eistute
+The initial integrated CTest suite checks tooling controls and the archived Eistute
 artifact. It does not yet establish accepted-state scientific regression or
 full memory safety. Commands fail on empty test discovery. Doxygen, full lint,
 sanitizer campaigns, C++23 migration and Eigen replacement remain planned work.
+
+## Stage 1 candidate (not integrated)
+
+This draft additionally checks real invalid CLI/model/configuration inputs and
+the three valid shipped model grammars. The independent generation checker
+selects the last accepted state, cross-checks candidate OBJ/CSV/log evidence and
+recomputes exported geometry. It does not substitute a rejected target artifact
+for an accepted result.
+
+```sh
+python tools/verify_generation.py build/candidate/eistute --baseline build/baseline/eistute --report comparison.json
+python tools/repeat_generation.py --exe build/baseline/bin/ap_mesh --model eistute --output build/repeat-eistute --report repeat.json
+```
+
+Integration is blocked: the original Eistute executable varies in numerical
+reports even with identical configuration and command. Exact OBJ files and
+accept/reject steps alone do not establish numerical repeatability. See
+docs/evidence/STAGE1_VALIDATION.md. No tolerance was relaxed.
 
 ## Repository policy
 

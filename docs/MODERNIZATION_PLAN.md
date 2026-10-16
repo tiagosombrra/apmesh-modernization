@@ -3,6 +3,13 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
+Current status: stage 0 integrated in PR #1; stage 1 candidate implementation
+and tests are available in a draft delivery tracked by issue #2. Strict Eistute
+numerical comparison fails in the unchanged baseline as well as before/after
+the candidate. Keep the gate failing; do not infer numerical equivalence solely
+from identical six-significant-digit OBJ files. Per-incidence boundary coverage
+remains open. Stages 2–11 have not started.
+
 ## Non-negotiable boundary
 
 Preserve parametric patches, shared-curve synchronization, boundary adaptation
