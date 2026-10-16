@@ -1,0 +1,136 @@
+{
+  "status": "passed",
+  "qualified_head": "3544c99501ceb5883795c4211215df8a5d01b23f",
+  "tree": "d7803664cfeac6771c376898d7bfc9db8c759b19",
+  "remote_blobs_verified": 653,
+  "local_text_blobs_matched": 651,
+  "production_build_inputs_models_vendor_verifiers_unchanged": true,
+  "ctest": {
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0
+  },
+  "python_controls": 73,
+  "new_inventory_controls": 8,
+  "source_inventory": {
+    "files": 122,
+    "translation_units": 57,
+    "headers": 65,
+    "directory_components": {
+      "adapter": 2,
+      "cli": 1,
+      "crab_mesh/aft": 17,
+      "crab_mesh/numerical": 7,
+      "crab_mesh/performer": 5,
+      "curvature": 7,
+      "data": 18,
+      "data/curve": 9,
+      "data/mesh": 4,
+      "data/patch": 8,
+      "data/tree": 2,
+      "estimate": 2,
+      "generator": 2,
+      "input_output": 11,
+      "parallel": 25,
+      "timer": 2
+    },
+    "literal_include_directives": 453,
+    "first_party_include_edges": 268
+  },
+  "traceability": {
+    "contracts": 22,
+    "source_anchors": 78,
+    "scope": "source anchors exist; semantic statements require independent review"
+  },
+  "selected_exporter_tidy": "passed",
+  "article_results": {
+    "eistute": {
+      "repetition": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+        "configuration_sha256": "41a88e9aea8eb90038d27e7a50ce8ad084cca5eb21310e395c6108ede52d2af2"
+      },
+      "strict_vs_entry": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audits": [
+        {
+          "status": "passed",
+          "rows": 5,
+          "compared_fields": 105,
+          "differences": []
+        },
+        {
+          "status": "passed",
+          "rows": 5,
+          "compared_fields": 105,
+          "differences": []
+        }
+      ]
+    },
+    "book": {
+      "repetition": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+        "configuration_sha256": "23ecf9576f87eec4c6e186f8070e4e24ec40c16c28fb18d0e17c9b9e0549655a"
+      },
+      "strict_vs_entry": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audits": [
+        {
+          "status": "passed",
+          "rows": 4,
+          "compared_fields": 84,
+          "differences": []
+        },
+        {
+          "status": "passed",
+          "rows": 4,
+          "compared_fields": 84,
+          "differences": []
+        }
+      ]
+    }
+  },
+  "executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+  "closure_audit": [
+    "development code delta and independent invalid controls",
+    "complete source coverage with lexical limitations",
+    "human-reviewed coordinate/identity/conversion/owner/cache/retry contracts",
+    "scientific source/order/policy and exact accepted/rejected/incidence/CSV preservation",
+    "continuity, ADR, later-stage failure and coverage inventory"
+  ]
+}
