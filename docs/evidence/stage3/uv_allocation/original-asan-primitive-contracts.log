@@ -1,0 +1,75 @@
+UV lifetime diagnostic
+=================================================================
+==10576==ERROR: AddressSanitizer: heap-use-after-free on address 0x11bfb2ea0038 at pc 0x7ff73977cf33 bp 0x00a86373f200 sp 0x00a86373f208
+READ of size 8 at 0x11bfb2ea0038 thread T0
+    #0 0x7ff73977cf32 in Par2DJMesh::Basics::Vertex::getY(void) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-allocation-baseline-source\src\crab_mesh\aft\vertex.cpp:28
+    #1 0x7ff739784d1c in Par2DJMesh::Basics::Face::makeMid(void) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-allocation-baseline-source\src\crab_mesh\aft\face.cpp:57
+    #2 0x7ff7397856ee in Par2DJMesh::Basics::Face::setVertices(class Par2DJMesh::Basics::Vertex *, class Par2DJMesh::Basics::Vertex *, class Par2DJMesh::Basics::Vertex *) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-allocation-baseline-source\src\crab_mesh\aft\face.cpp:84
+    #3 0x7ff7397714f2 in `anonymous namespace'::face_alias_cache C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:202
+    #4 0x7ff73977380c in `anonymous namespace'::primitive_contracts C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:233
+    #5 0x7ff739773dd4 in `anonymous namespace'::scenario C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:453
+    #6 0x7ff7397759e6 in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:546
+    #7 0x7ff7397d3fd3 in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #8 0x7ff7397d3fd3 in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #9 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #10 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+0x11bfb2ea0038 is located 24 bytes inside of 56-byte region [0x11bfb2ea0020,0x11bfb2ea0058)
+freed by thread T0 here:
+    #0 0x7ff7397d30e3 in operator delete(void *, unsigned __int64) D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_win_delete_scalar_size_thunk.cpp:41
+    #1 0x7ff73976f328 in `anonymous namespace'::CountedVertex::`scalar deleting destructor' (C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-allocation-baseline-asan\RelWithDebInfo\uv_lifetime_probe.exe+0x14000f328)
+    #2 0x7ff7397856b8 in Par2DJMesh::Basics::Face::setVertices(class Par2DJMesh::Basics::Vertex *, class Par2DJMesh::Basics::Vertex *, class Par2DJMesh::Basics::Vertex *) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-allocation-baseline-source\src\crab_mesh\aft\face.cpp:79
+    #3 0x7ff7397714f2 in `anonymous namespace'::face_alias_cache C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:202
+    #4 0x7ff73977380c in `anonymous namespace'::primitive_contracts C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:233
+    #5 0x7ff739773dd4 in `anonymous namespace'::scenario C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:453
+    #6 0x7ff7397759e6 in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:546
+    #7 0x7ff7397d3fd3 in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #8 0x7ff7397d3fd3 in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #9 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #10 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+previously allocated by thread T0 here:
+    #0 0x7ff7397d3055 in operator new(unsigned __int64) D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_win_new_scalar_thunk.cpp:40
+    #1 0x7ff739771419 in std::make_unique C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory:3630
+    #2 0x7ff739771419 in `anonymous namespace'::face_alias_cache C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:197
+    #3 0x7ff73977380c in `anonymous namespace'::primitive_contracts C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:233
+    #4 0x7ff739773dd4 in `anonymous namespace'::scenario C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:453
+    #5 0x7ff7397759e6 in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:546
+    #6 0x7ff7397d3fd3 in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #7 0x7ff7397d3fd3 in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #8 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #9 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+SUMMARY: AddressSanitizer: heap-use-after-free C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-allocation-baseline-source\src\crab_mesh\aft\vertex.cpp:28 in Par2DJMesh::Basics::Vertex::getY(void)
+Shadow bytes around the buggy address:
+  0x11bfb2e9fd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x11bfb2e9fe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x11bfb2e9fe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x11bfb2e9ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x11bfb2e9ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x11bfb2ea0000: fa fa fa fa fd fd fd[fd]fd fd fd fa fa fa fa fa
+  0x11bfb2ea0080: 00 00 00 00 00 00 00 fa fa fa fa fa 00 00 00 00
+  0x11bfb2ea0100: 00 00 00 fa fa fa fa fa fd fd fd fd fd fd fd fd
+  0x11bfb2ea0180: fa fa fa fa fd fd fd fd fd fd fd fd fa fa fa fa
+  0x11bfb2ea0200: fd fd fd fd fd fd fd fd fa fa fa fa fd fd fd fd
+  0x11bfb2ea0280: fd fd fd fd fa fa fa fa fd fd fd fd fd fd fd fd
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==10576==ABORTING

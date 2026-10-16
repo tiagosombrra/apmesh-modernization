@@ -1,0 +1,147 @@
+UV lifetime diagnostic
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+Client hook allocation failure.
+allocation_failure_sites=front:32/32
+CRT retained_blocks=55 retained_bytes=1936
+Dumping objects ->
+{1113} normal block at 0x000001BB961B4FF0, 24 bytes long.
+ Data: < O       O      > F0 4F 1B 96 BB 01 00 00 F0 4F 1B 96 BB 01 00 00 
+{1112} normal block at 0x000001BB961B3D80, 16 bytes long.
+ Data: < X              > E8 58 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{1111} normal block at 0x000001BB961B4B70, 24 bytes long.
+ Data: <pK      pK      > 70 4B 1B 96 BB 01 00 00 70 4B 1B 96 BB 01 00 00 
+{1110} normal block at 0x000001BB961B4000, 16 bytes long.
+ Data: < X              > D0 58 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{1109} normal block at 0x000001BB961B58C0, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1083} normal block at 0x000001BB961B4D50, 24 bytes long.
+ Data: <PM      PM      > 50 4D 1B 96 BB 01 00 00 50 4D 1B 96 BB 01 00 00 
+{1082} normal block at 0x000001BB961B3470, 16 bytes long.
+ Data: < _              > C8 5F 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{1081} normal block at 0x000001BB961B4AB0, 24 bytes long.
+ Data: < J       J      > B0 4A 1B 96 BB 01 00 00 B0 4A 1B 96 BB 01 00 00 
+{1080} normal block at 0x000001BB961B3A60, 16 bytes long.
+ Data: < _              > B0 5F 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{1079} normal block at 0x000001BB961B5FA0, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1054} normal block at 0x000001BB961B5650, 24 bytes long.
+ Data: <PV      PV      > 50 56 1B 96 BB 01 00 00 50 56 1B 96 BB 01 00 00 
+{1053} normal block at 0x000001BB961B38D0, 16 bytes long.
+ Data: < ^              > 88 5E 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{1052} normal block at 0x000001BB961B55F0, 24 bytes long.
+ Data: < U       U      > F0 55 1B 96 BB 01 00 00 F0 55 1B 96 BB 01 00 00 
+{1051} normal block at 0x000001BB961B3790, 16 bytes long.
+ Data: <p^              > 70 5E 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{1050} normal block at 0x000001BB961B5E60, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1026} normal block at 0x000001BB961B4990, 24 bytes long.
+ Data: < I       I      > 90 49 1B 96 BB 01 00 00 90 49 1B 96 BB 01 00 00 
+{1025} normal block at 0x000001BB961B3880, 16 bytes long.
+ Data: <8F              > 38 46 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{1024} normal block at 0x000001BB961B24E0, 24 bytes long.
+ Data: < $       $      > E0 24 1B 96 BB 01 00 00 E0 24 1B 96 BB 01 00 00 
+{1023} normal block at 0x000001BB961B3E20, 16 bytes long.
+ Data: < F              > 20 46 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{1022} normal block at 0x000001BB961B4610, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{999} normal block at 0x000001BB961B3140, 24 bytes long.
+ Data: <@1      @1      > 40 31 1B 96 BB 01 00 00 40 31 1B 96 BB 01 00 00 
+{998} normal block at 0x000001BB961B39C0, 16 bytes long.
+ Data: < E              > 98 45 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{997} normal block at 0x000001BB961B2F00, 24 bytes long.
+ Data: < /       /      > 00 2F 1B 96 BB 01 00 00 00 2F 1B 96 BB 01 00 00 
+{996} normal block at 0x000001BB961B42D0, 16 bytes long.
+ Data: < E              > 80 45 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{995} normal block at 0x000001BB961B4570, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{973} normal block at 0x000001BB961B2780, 24 bytes long.
+ Data: < '       '      > 80 27 1B 96 BB 01 00 00 80 27 1B 96 BB 01 00 00 
+{972} normal block at 0x000001BB961B3830, 16 bytes long.
+ Data: < D              > F8 44 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{971} normal block at 0x000001BB961B23C0, 24 bytes long.
+ Data: < #       #      > C0 23 1B 96 BB 01 00 00 C0 23 1B 96 BB 01 00 00 
+{970} normal block at 0x000001BB961B3B00, 16 bytes long.
+ Data: < D              > E0 44 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{969} normal block at 0x000001BB961B44D0, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{948} normal block at 0x000001BB961B2C60, 24 bytes long.
+ Data: <`,      `,      > 60 2C 1B 96 BB 01 00 00 60 2C 1B 96 BB 01 00 00 
+{947} normal block at 0x000001BB961B3650, 16 bytes long.
+ Data: <XD              > 58 44 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{946} normal block at 0x000001BB961B2B40, 24 bytes long.
+ Data: <@+      @+      > 40 2B 1B 96 BB 01 00 00 40 2B 1B 96 BB 01 00 00 
+{945} normal block at 0x000001BB961B3740, 16 bytes long.
+ Data: <@D              > 40 44 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{944} normal block at 0x000001BB961B4430, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{924} normal block at 0x000001BB961B2960, 24 bytes long.
+ Data: <`)      `)      > 60 29 1B 96 BB 01 00 00 60 29 1B 96 BB 01 00 00 
+{923} normal block at 0x000001BB961B4050, 16 bytes long.
+ Data: < C              > B8 43 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{922} normal block at 0x000001BB961B25A0, 24 bytes long.
+ Data: < %       %      > A0 25 1B 96 BB 01 00 00 A0 25 1B 96 BB 01 00 00 
+{921} normal block at 0x000001BB961B3510, 16 bytes long.
+ Data: < C              > A0 43 1B 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{920} normal block at 0x000001BB961B4390, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{901} normal block at 0x000001BB961B2BA0, 24 bytes long.
+ Data: < +       +      > A0 2B 1B 96 BB 01 00 00 A0 2B 1B 96 BB 01 00 00 
+{900} normal block at 0x000001BB961B3DD0, 16 bytes long.
+ Data: <(               > 28 12 1A 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{899} normal block at 0x000001BB961B2DE0, 24 bytes long.
+ Data: < -       -      > E0 2D 1B 96 BB 01 00 00 E0 2D 1B 96 BB 01 00 00 
+{898} normal block at 0x000001BB961B34C0, 16 bytes long.
+ Data: <                > 10 12 1A 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{897} normal block at 0x000001BB961A1200, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{879} normal block at 0x000001BB961B32C0, 24 bytes long.
+ Data: < 2       2      > C0 32 1B 96 BB 01 00 00 C0 32 1B 96 BB 01 00 00 
+{878} normal block at 0x000001BB961B3970, 16 bytes long.
+ Data: <                > B8 D0 19 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{877} normal block at 0x000001BB961B3200, 24 bytes long.
+ Data: < 2       2      > 00 32 1B 96 BB 01 00 00 00 32 1B 96 BB 01 00 00 
+{876} normal block at 0x000001BB961B3B50, 16 bytes long.
+ Data: <                > A0 D0 19 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{875} normal block at 0x000001BB9619D090, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{858} normal block at 0x000001BB961B2AE0, 24 bytes long.
+ Data: < *       *      > E0 2A 1B 96 BB 01 00 00 E0 2A 1B 96 BB 01 00 00 
+{857} normal block at 0x000001BB961B36A0, 16 bytes long.
+ Data: <X               > 58 D3 19 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{856} normal block at 0x000001BB961B2D20, 24 bytes long.
+ Data: < -       -      > 20 2D 1B 96 BB 01 00 00 20 2D 1B 96 BB 01 00 00 
+{855} normal block at 0x000001BB961B3FB0, 16 bytes long.
+ Data: <@               > 40 D3 19 96 BB 01 00 00 00 00 00 00 00 00 00 00 
+{854} normal block at 0x000001BB9619D330, 96 bytes long.
+ Data: <  )\            > E0 84 29 5C F6 7F 00 00 00 00 00 00 CD CD CD CD 
+Object dump complete.

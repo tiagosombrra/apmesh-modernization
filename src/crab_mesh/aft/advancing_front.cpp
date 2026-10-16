@@ -4,6 +4,7 @@
 #include <cfloat>
 #include <algorithm>
 #include <map>
+#include <memory>
 
 extern int AFT_LOCAL_POSTPROCESS_PASSES;
 extern double AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD;
@@ -176,8 +177,10 @@ AdvancingFrontRunStats::AdvancingFrontRunStats()
 AdvancingFront::AdvancingFront(double factor, [[maybe_unused]] double tolerance,
                                unsigned int numImproves, double phi)
     : Shape() {
-  boundary = new Boundary();
-  quadtree = new Quadtree(boundary, factor);
+  // Retain the boundary locally until quadtree construction adopts it.
+  auto pending_boundary = std::make_unique<Boundary>();
+  quadtree = new Quadtree(pending_boundary.get(), factor);
+  boundary = pending_boundary.release();
 
   // cout << "AdvancingFront tolerance: " << tolerance << endl;
   // Shape::setTolerance(tolerance);

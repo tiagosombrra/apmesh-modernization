@@ -5,7 +5,7 @@
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
 Stage 3 slices 1 and 2 are integrated with qualified node and UV targets.
-The current CTest passes 11/11 with zero skips and 74 Python controls,
+The integrated CTest passed 11/11 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
@@ -139,6 +139,17 @@ allocation-denied teardown/transfer preparation. The same runner fails the
 pinned original. The bounded results do not qualify arbitrary allocation failure,
 every template pattern or the full application. Commands and exact-head closure
 requirements: [UV lifetime evidence](evidence/STAGE3_UV_LIFETIME.md).
+
+Slice 3 extends the same runner to 35 cases and adds required CTest
+application.uv_primitive_contracts (12 total CTest entries). It measures every
+observed allocation ordinal in Edge construction, both Face constructors,
+default front construction and Edge/Face setVertices. Failed replacement must
+preserve endpoints, cache identity/geometry and scalar state. Endpoint-alias
+replacement and normal geometry are separate ASan/CRT controls. The pinned
+original fails; candidate and exact-revision closure results are recorded in
+[primitive allocation evidence](evidence/STAGE3_UV_ALLOCATION.md). This bounded
+scope leaves template/Boundary registration, other setters and full-application
+allocation failure qualification open.
 
 ```sh
 python tools/quality.py docs

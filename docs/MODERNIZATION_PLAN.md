@@ -4,6 +4,12 @@ Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
 Current status: stages 0-2 are integrated and closed for their measured scope.
+Active item #14 qualifies the next primitive prerequisite: Edge/Face constructor
+and setVertices failures, endpoint-alias cache replacement and default front
+construction. The pinned original fails the extended controls; candidate CTest
+12/12, UV 35/35, node 7/7, lint/formatting and strict article regression pass.
+Exact-head and main closure gates remain required. Template/Boundary registration and wider exception scopes follow;
+see `evidence/STAGE3_UV_ALLOCATION.md`. This does not close the full stage 3.
 Stage 2 (issue #5, PR #6) delivered the complete production inventory, reviewed
 domain/lifecycle contracts, ADR and repair sequence. Exact-head and post-merge
 CTest 9/9, 73 Python controls and strict Eistute/Book regression pass with

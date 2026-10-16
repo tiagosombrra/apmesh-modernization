@@ -21,7 +21,7 @@ class Face : public Shape {
   Vertex *mid;
 
  private:
-  Vertex *makeMid();
+   Vertex* makeMid(Vertex* first, Vertex* second, Vertex* third);
 
  public:
   double h;
@@ -36,6 +36,9 @@ class Face : public Shape {
   void setV1(Vertex *v);
   void setV2(Vertex *v);
   void setV3(Vertex *v);
+  // Commit the new midpoint/endpoints only after allocation succeeds.
+  // An old endpoint-alias midpoint remains borrowed. New endpoints must not
+  // alias a distinct cache owned by this face.
   void setVertices(Vertex *v1, Vertex *v2, Vertex *v3);
   Vertex *getV1();
   Vertex *getV2();

@@ -1,0 +1,43 @@
+{
+  "entry_main": "0146fbd4925721a53a9b52717b82c5af8c4e0115",
+  "pinned_original_files": 416,
+  "pinned_blob_map_sha256": "cbc5301f78771af31d58926bb8960381cb9bd4f6eb195fa8ebf4f925ff5d8c4a",
+  "production_units": [
+    "src/crab_mesh/aft/advancing_front.cpp",
+    "src/crab_mesh/aft/boundary.cpp",
+    "src/crab_mesh/aft/edge.cpp",
+    "src/crab_mesh/aft/face.cpp",
+    "src/crab_mesh/aft/quadtree.cpp",
+    "src/crab_mesh/aft/quadtree_cell.cpp",
+    "src/crab_mesh/aft/shape.cpp",
+    "src/crab_mesh/aft/vertex.cpp",
+    "src/crab_mesh/numerical/bisection_equation_root.cpp",
+    "src/crab_mesh/numerical/function.cpp",
+    "src/data/curve/curve_adaptive.cpp",
+    "src/data/curve/curve_adaptive_parametric.cpp",
+    "src/data/point_adaptive.cpp",
+    "src/data/vector_adaptive.cpp"
+  ],
+  "sha256": {
+    "src/data/point_adaptive.cpp": "9e6837ec53f69bd23a602433aa5455668a6bb62605616c8059c0f7b42349b2ec",
+    "src/data/vector_adaptive.cpp": "c910b1091f4907b54725a6184c00c7a006e26ea63231b4d9182c4e829817f960",
+    "src/data/curve/curve_adaptive.cpp": "17d241c7ce3b9e486aa776c143266d1938e42015520c74b7f8b5b12eef8f91eb",
+    "src/data/curve/curve_adaptive_parametric.cpp": "8786a74bb9df0dc04338ae7f7d09428382968124525721c5d354991bab8787cc",
+    "src/crab_mesh/aft/advancing_front.cpp": "1b6d11c5bfdcadd279c19039c20cfb749d2ce6dc37ae4745465e9d2d18985ae9",
+    "src/crab_mesh/aft/boundary.cpp": "466d7eb3966fde34e37b28a1bdfebc7a951e46ebf97c8bd0144aa8bbf73ca765",
+    "src/crab_mesh/aft/edge.cpp": "4c809ca435e2a9e64994b9682eb143b8bc000602f7b1ab2d60110c505c90366e",
+    "src/crab_mesh/aft/face.cpp": "c6d4280201d55af31fdf7fcab957f6c5b05540eaa4f9d3421d55a0c42a78c4d7",
+    "src/crab_mesh/aft/quadtree.cpp": "c9a4aa534c974dc0f5dd73e4967b0de54f9b256574e3564396eea4346ebd2c6f",
+    "src/crab_mesh/aft/quadtree_cell.cpp": "59be7a577860e92dfcd0643cde32606680901b93038d49e75b28ad2b844a4496",
+    "src/crab_mesh/aft/shape.cpp": "11dcc8bc03e19594c9c69357e42aa23861ac9d16baf3328bd0f3bab90755f0e9",
+    "src/crab_mesh/aft/vertex.cpp": "930551af2d3c0deaa4de3126b9ae27c7ef86b17f6455482ad8ae2d752ad6034b",
+    "src/crab_mesh/numerical/bisection_equation_root.cpp": "795d40b137ff31970997ffc8beb2fa2f49b491371f54fd9a484e179eb83126d7",
+    "src/crab_mesh/numerical/function.cpp": "f58ca8b76b46d498374fe0b0b6fe0aee6e36c6b6ca657f12f69250d022ad2f95",
+    "include/crab_mesh/aft/edge.h": "9459a8a59ba55ae93d976e513e4c5ca5d0cbef2d90cf57fe604a66b86305677d",
+    "include/crab_mesh/aft/face.h": "65c730651e28bd53c07e302d5caef26cd6b6890265d297445c775e169f697f2f",
+    "tests/uv_memory/probe.cpp": "140e2a7da128a098730df3a04e73023e42f8d64d8bced2a1c5f74ac18c8f90d2",
+    "tools/qualify_uv_lifetime.py": "ac1b7fcb428a2738ccf417cd5bd4f5c3e865bacb720d7d82f7d446c5d65bfa06",
+    "cmake/Quality.cmake": "7463f192c0e720004081017f43617774b9e7decc71d76b68b678e94484c759fa"
+  },
+  "source_inventory_sha256": "6f0428dd5b45fd34cfddc15c8509675dedf2613f3f7a9c26020d9edea1b99b3c"
+}

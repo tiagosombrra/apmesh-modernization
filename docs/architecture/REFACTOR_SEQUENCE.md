@@ -17,6 +17,14 @@ failure/exception and selected transfer-allocation failures. The wider UV
 lifecycle is still open: next characterize object creation before registration
 and constructor/setter replacement, then curve sample/rollback ownership.
 
+Issue #14 takes the primitive prerequisite first: Edge/Face constructors and
+setVertices, endpoint-alias cache replacement and default front construction.
+Pinned-original controls reproduce cache/front construction leaks, failed live
+state and an endpoint-alias UAF. Both Face constructors are positive unwind
+controls. Actual template arrays/object creation and Boundary registration,
+other setters and helper temporary scopes follow this bounded delivery before
+the sample/rollback work. See ADR-0004 and the primitive allocation evidence.
+
 The completed first slice characterized copying before repair. SetNoh now
 explicitly copies scalar state and clears foreign adjacency; general implicit
 node copies still carry observers. Initial-mesh callers need independent copies;

@@ -6,6 +6,14 @@ in stage 3, issue #8. Classification: engineering inventory and lifecycle repair
 UV registered-template ownership and allocation-free detachment are reviewed
 against `0f2473622800907e2d15e1d5ab6216caedb36797` in issue #11.
 
+Issue #14 reviews primitive construction/cache replacement against main
+`0146fbd4925721a53a9b52717b82c5af8c4e0115`. Edge/Face prepare owned caches
+before committing endpoints, preserving live state on allocation failure and
+retaining a Face midpoint alias as borrowed. Default front construction guards
+Boundary until Quadtree adoption. This prerequisite does not qualify template
+creation/registration, other setters or arbitrary front exceptions. See ADR-0004
+and `../evidence/STAGE3_UV_ALLOCATION.md`.
+
 The current generator already has parametric patches, canonical shared boundary
 curves and CRABMesh reconstruction. Their responsibilities are mapped here so
 later ownership and library changes preserve the published execution sequence.
