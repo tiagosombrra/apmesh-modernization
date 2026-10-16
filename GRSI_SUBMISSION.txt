@@ -1,0 +1,67 @@
+Graphics Replicability Stamp Initiative Submission Metadata
+
+Paper title:
+Adaptive Meshing of Non-Manifold Parametric Patch Complexes with Shared-Curve Compatibility
+
+Manuscript:
+CAG-D-26-00358R2
+
+Publication status:
+Final version of record published in Elsevier Computers & Graphics
+DOI: https://doi.org/10.1016/j.cag.2026.104707
+ScienceDirect: https://www.sciencedirect.com/science/article/pii/S0097849326001780
+Article number: 104707
+Publisher item identifier (PII): S0097849326001780
+
+Preprint:
+https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi/main/paper/preprint.pdf
+
+Preprint version:
+Authors' original pre-peer-review manuscript; not the accepted manuscript,
+Article in Press, journal proof, or final publisher-formatted version of record.
+
+Authors:
+Tiago Guimarães Sombra
+Joaquim Bento Cavalcante-Neto
+Creto Augusto Vidal
+
+Journal:
+Elsevier Computers & Graphics
+
+Track:
+Computer Graphics
+
+Code repository:
+https://github.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi
+
+Primary supported operating system:
+Windows 10 or Windows 11, 64-bit
+
+Representative paper result:
+Figure 7, Section 4.3, “Eistute model”
+
+Representative execution script:
+reproduce_eistute_windows.bat
+
+Representative generated data:
+results/eistute/*passo_4_malha_4.obj
+
+Result semantics:
+The representative object is the saved stage-4 candidate mesh used in Figure 7.
+Rejected adaptive candidates are intentionally retained for analysis; the stage-4
+OBJ is verified against the archived paper target independently of the hybrid
+transition-acceptance decision.
+
+Expected target:
+Stage 4
+7,184 triangular faces
+Normalized error 0.036712
+Total error reduction 96.3288%
+58.6303% of triangles with quality q >= 0.60
+Recorded mean shared-curve compatibility error 0.0
+
+Installation instructions:
+INSTALL_WINDOWS.txt
+
+Reviewer guide:
+docs/GRSI_REVIEW_GUIDE.md

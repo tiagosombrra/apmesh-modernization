@@ -1,0 +1,43 @@
+GRSI REVIEW AUTHORIZATION AND LIABILITY STATEMENT
+
+Paper:
+Adaptive Meshing of Non-Manifold Parametric Patch Complexes with Shared-Curve Compatibility
+
+Authors:
+Tiago Guimarães Sombra
+Joaquim Bento Cavalcante-Neto
+Creto Augusto Vidal
+
+Repository:
+https://github.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi
+
+The authors authorize the Graphics Replicability Stamp Initiative (GRSI),
+its committee members, and the reviewer assigned to this submission to:
+
+1. download and retain a working copy of the submitted repository for the
+   duration of the review;
+2. inspect, compile, execute, test and analyze the submitted source code,
+   scripts, input data, configurations and generated outputs;
+3. communicate technical findings and requested corrections to the authors;
+4. report the review decision to the GRSI and the participating journal; and
+5. publicly advertise the successful review and the award of the Graphics
+   Replicability Stamp after approval.
+
+This authorization does not transfer ownership of the software, article,
+models or data. Use and redistribution remain governed by the licenses and
+notices included in the repository.
+
+The software and associated materials are provided without warranty, as
+described in the repository LICENSE file.
+
+The corresponding author confirms that all coauthors were informed about the
+GRSI submission and provided written consent to participate.
+
+Corresponding author:
+Tiago Guimarães Sombra
+
+Date:
+2026-07-20
+
+Electronic confirmation:
+CONFIRMED

@@ -1,0 +1,53 @@
+[
+  {
+    "name": "real_formatter_rejects_bad_style",
+    "arguments": [
+      "format",
+      "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\tests\\tooling\\format_control.cpp"
+    ],
+    "expected_exit": 1,
+    "exit": 1,
+    "output": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\tests\\tooling\\format_control.cpp:1:11: error: code should be clang-formatted [-Wclang-format-violations]\nint main(){return 0;}\n          ^\nC:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\tests\\tooling\\format_control.cpp:1:12: error: code should be clang-formatted [-Wclang-format-violations]\nint main(){return 0;}\n           ^\nC:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\tests\\tooling\\format_control.cpp:1:21: error: code should be clang-formatted [-Wclang-format-violations]\nint main(){return 0;}\n                    ^\nQuality command failed: Command '['C:\\\\msys64\\\\ucrt64\\\\bin\\\\clang-format.EXE', '--style=file', '--dry-run', '--Werror', 'C:\\\\Users\\\\tiago\\\\Documents\\\\Codex\\\\2026-10-14\\\\new-chat\\\\work\\\\apmesh-modernization\\\\tests\\\\tooling\\\\format_control.cpp']' returned non-zero exit status 1.\n"
+  },
+  {
+    "name": "explicit_formatter_fix",
+    "arguments": [
+      "format",
+      "--fix",
+      "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\tests\\tooling\\format_control.cpp"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "output": "format coverage: 1 files\n"
+  },
+  {
+    "name": "real_formatter_accepts_fixed_style",
+    "arguments": [
+      "format",
+      "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\tests\\tooling\\format_control.cpp"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "output": "format coverage: 1 files\n"
+  },
+  {
+    "name": "empty_selection_fails",
+    "arguments": [
+      "format",
+      "not_cpp.png"
+    ],
+    "expected_exit": 1,
+    "exit": 1,
+    "output": "Quality command failed: No applicable files selected; validation has no coverage\n"
+  },
+  {
+    "name": "outside_path_fails",
+    "arguments": [
+      "whitespace",
+      "../outside.cpp"
+    ],
+    "expected_exit": 1,
+    "exit": 1,
+    "output": "Quality command failed: Path is outside the repository: ../outside.cpp\n"
+  }
+]

@@ -1,0 +1,23 @@
+build/
+build-*/
+results/
+*.o
+*.exe
+*.log
+.DS_Store
+.vscode/
+.idea/
+
+# Preserve scientific OBJ meshes
+!reference/**/*.obj
+!input_models/**/*.obj
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Local modernization outputs
+build/
+results/
+__pycache__/
+*.pyc
+CMakeUserPresets.json

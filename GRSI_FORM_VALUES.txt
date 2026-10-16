@@ -1,0 +1,66 @@
+GRSI ONLINE SUBMISSION FORM — PREPARED VALUES
+
+Code URL
+--------
+https://github.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi
+
+Short description
+-----------------
+C++17 implementation of adaptive triangular meshing for non-manifold
+parametric patch complexes with shared-curve compatibility. The parameter-free
+GRSI script compiles the software, reproduces the five Eistute states 0–4 used
+in Figure 7, exports the saved stage-4 candidate OBJ mesh, and verifies the
+published 7,184-triangle target. Rejected adaptive candidates are intentionally
+retained for analysis, so the stage-4 data remain available independently of
+the hybrid transition-acceptance decision.
+
+Operating system
+----------------
+Windows
+
+Representative image — direct PNG URL
+-------------------------------------
+https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi/main/assets/grsi_representative.png
+
+The image is exactly 250 × 250 pixels.
+
+Preprint URL — direct PDF
+-------------------------
+https://raw.githubusercontent.com/tiagosombrra/adaptive-nonmanifold-meshing-grsi/main/paper/preprint.pdf
+
+The PDF is the authors' original pre-peer-review manuscript. It is not the
+accepted manuscript, an Article in Press, a journal proof, or the final
+publisher-formatted version of record.
+
+Journal/conference
+------------------
+Elsevier Computers & Graphics (C&G)
+
+Submission track
+----------------
+Computer Graphics
+
+Paper title
+-----------
+Adaptive Meshing of Non-Manifold Parametric Patch Complexes with Shared-Curve Compatibility
+
+Authors
+-------
+Tiago Guimarães Sombra, Joaquim Bento Cavalcante-Neto, Creto Augusto Vidal
+
+Representative paper result
+----------------------------
+Figure 7, Section 4.3, “Eistute model”, saved stage-4 candidate mesh
+
+Repository reproduction script
+------------------------------
+reproduce_eistute_windows.bat
+
+Author-consent confirmation
+---------------------------
+Written consent from all coauthors has been retained.
+
+Contact details
+---------------
+Corresponding author: Tiago Guimarães Sombra
+Contact email: tiagosombrra@gmail.com

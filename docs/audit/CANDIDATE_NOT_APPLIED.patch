@@ -1,0 +1,140 @@
+--- a/include/data/definitions.h
++++ b/include/data/definitions.h
+@@ -138,10 +138,10 @@
+ #endif  // #if USE_MPI
+ 
+ #if defined(_WIN32)
+-#include <winsock2.h>  // timeval
+ #ifndef NOMINMAX
+ #define NOMINMAX
+ #endif
++#include <winsock2.h>  // timeval
+ #include <windows.h>
+ #ifdef IN
+ #undef IN
+--- a/include/data/mesh/sub_mesh.h
++++ b/include/data/mesh/sub_mesh.h
+@@ -33,9 +33,12 @@
+   void AddNoh(std::unique_ptr<NodeAdaptive> noh);
+   void AddElement(std::unique_ptr<ElementAdaptive> element);
+ 
+-  // Compatibility API: takes ownership of raw pointers.
+-  // (English comment)
++  /** @brief Copy a node into this submesh.
++   * @param noh Borrowed source node; ownership remains with the caller.
++   * @note Use AddNoh to transfer ownership without creating a copy.
++   */
+   void SetNoh(NodeAdaptive* noh);
++  /** @brief Transfer ownership of an element allocated with new. */
+   void SetElement(ElementAdaptive* element);
+ 
+   unsigned int GetNumberNos() const noexcept;
+--- a/src/crab_mesh/aft/quadtree.cpp
++++ b/src/crab_mesh/aft/quadtree.cpp
+@@ -1,6 +1,7 @@
+ #include "../../../include/crab_mesh/aft/quadtree.h"
+ 
+ #include <cfloat>
++#include <limits>
+ 
+ extern double TEMPLATE_POOR_SCORE_THRESHOLD;
+ 
+@@ -325,7 +326,7 @@
+   // 2o Passo
+   EdgeList edges = boundary->getEdges();
+ 
+-  long int minLevel = __LONG_MAX__;
++  long int minLevel = (std::numeric_limits<long>::max)();
+ 
+   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
+     long int level = (*iter)->getCell()->getLevel();
+--- a/src/curvature/curvature_discrete.cpp
++++ b/src/curvature/curvature_discrete.cpp
+@@ -99,7 +99,7 @@
+   }
+ 
+   //		se nova_lista não estiver vazia
+-  //			fator = M_PI ( n está na borda! )
++  //			fator = 3.141592653589793238462643383279502884 ( n está na borda! )
+   //			E recebe primeiro elemento da lista elementos ( sem
+   // retirar
+   //) 			enquanto encontrar um elemento adjacente à direita de E
+@@ -108,7 +108,7 @@
+   //				retire E' de nova_lista e insira no início de
+   // elementos 				E recebe E'
+   if (!new_list_elements.empty()) {
+-    this->factor_disc_ = M_PI;  // n está na borda !!!
++    this->factor_disc_ = 3.141592653589793238462643383279502884;  // n está na borda !!!
+     element_front = this->elements_.front();
+ 
+     bool find_adj_right = true;  // encontrou um adjacente à direita
+@@ -125,15 +125,15 @@
+   }
+   //		senão
+   //			se o primeiro elemento P de elementos for adjacente ao
+-  // último U 				fator = 2*M_PI ( n está no interior )
+-  // senão 				fator = M_PI ( n está na borda
++  // último U 				fator = 2*3.141592653589793238462643383279502884 ( n está no interior )
++  // senão 				fator = 3.141592653589793238462643383279502884 ( n está na borda
+   //)
+   else {
+     if (adjacent_.ConfirmRightAdjacency(noh, *(this->elements_.front()),
+                                         *(this->elements_.back()))) {
+-      this->factor_disc_ = 2 * M_PI;  // n está no interior !!!
++      this->factor_disc_ = 2 * 3.141592653589793238462643383279502884;  // n está no interior !!!
+       this->elements_.push_back(this->elements_.front());  // lista "circular"
+     } else
+-      this->factor_disc_ = M_PI;  // n está no interior !!!
++      this->factor_disc_ = 3.141592653589793238462643383279502884;  // n está no interior !!!
+   }
+ }
+--- a/src/data/mesh/mesh_adaptive.cpp
++++ b/src/data/mesh/mesh_adaptive.cpp
+@@ -13,6 +13,8 @@
+ 
+ void MeshAdaptive::InsertSubMeshAdaptiveByPosition(SubMesh* sub_mesh_adaptive,
+                                                    const signed int position) {
++  // Own the supplied object even when validation rejects its index.
++  std::unique_ptr<SubMesh> owned(sub_mesh_adaptive);
+   if (position < 0) {
+     // Invalid index; ignore to keep behavior safe.
+     // (English comment)
+@@ -27,7 +29,7 @@
+ 
+   // Takes ownership. Replaces existing item (old one is deleted automatically).
+   // (English comment)
+-  sub_meshes_[idx].reset(sub_mesh_adaptive);
++  sub_meshes_[idx] = std::move(owned);
+ }
+ 
+ void MeshAdaptive::InsertSubMeshAdaptive(SubMesh* sub_mesh_adaptive) {
+--- a/src/generator/generator_adaptive.cpp
++++ b/src/generator/generator_adaptive.cpp
+@@ -5564,9 +5564,10 @@
+   }
+ 
+   // Coarse initial mesh: 4 triangles per patch with a central node.
+-  PointAdaptive* center_point = new NodeAdaptive(patch->Parameterize(0.5, 0.5));
+-  center_point->SetId(id_manager->next(0));
+-  sub_mesh->SetNoh(static_cast<NodeAdaptive*>(center_point));
++  // SetNoh copies its argument; the temporary source needs no heap owner.
++  NodeAdaptive center_point(patch->Parameterize(0.5, 0.5));
++  center_point.SetId(id_manager->next(0));
++  sub_mesh->SetNoh(&center_point);
+ 
+   ElementAdaptive* e1 = new TriangleAdaptive(
+       sub_mesh->GetNoh(0), sub_mesh->GetNoh(1), sub_mesh->GetNoh(4));
+@@ -6341,9 +6342,10 @@
+   }
+ 
+   // Coarse initial mesh: 4 triangles per patch with a central node.
+-  PointAdaptive* center = new NodeAdaptive(patch->Parameterize(0.5, 0.5));
+-  center->SetId(idManager->next(0));
+-  sub->SetNoh(static_cast<NodeAdaptive*>(center));
++  // Preserve node values and IDs while releasing the copied source automatically.
++  NodeAdaptive center(patch->Parameterize(0.5, 0.5));
++  center.SetId(idManager->next(0));
++  sub->SetNoh(&center);
+ 
+   ElementAdaptive* e1 =
+       new TriangleAdaptive(sub->GetNoh(0), sub->GetNoh(1), sub->GetNoh(4));
