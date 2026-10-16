@@ -1,24 +1,26 @@
 # Mesh architecture and lifecycle inventory
 
-Reviewed base: `d4561c9421226503cb4a478faad71ed5ad012381`.
-Work item: stage 2, issue #5. Classification: engineering inventory.
+Initial inventory base: `d4561c9421226503cb4a478faad71ed5ad012381` (stage 2, #5).
+Node-copy contract reviewed against `6c56e307b1e932399c88ba961a9de40bf87ecbca`
+in stage 3, issue #8. Classification: engineering inventory and lifecycle repair.
 
 The current generator already has parametric patches, canonical shared boundary
 curves and CRABMesh reconstruction. Their responsibilities are mapped here so
 later ownership and library changes preserve the published execution sequence.
-This delivery changes development tooling and documentation; production sources,
-build settings, model inputs and scientific policy retain their base identities.
+Stage 2 changed tooling/documentation only. Stage 3 repairs the SetNoh copy
+boundary by dropping foreign element observers; scalar state and scientific
+policy remain preserved. See [node lifetime evidence](../evidence/STAGE3_NODE_LIFETIME.md).
 
 ## Evidence and coverage
 
 [source_inventory.json](source_inventory.json) deterministically covers all
 122 first-party C++ files: 57 translation units and 65 headers, plus hashes for
-the three CMake inputs. It records 453 potential literal include directives and
+the four CMake inputs (including the isolated memory probe). It records 453 potential literal include directives and
 268 distinct directed first-party include edges. Conditional branches are kept;
 this is not the active preprocessed graph. The 16 directory groups below are
 source organization, not automatically inferred architectural layers.
 
-[contracts.json](contracts.json) contains 22 reviewed contracts with 78 exact
+[contracts.json](contracts.json) contains 22 reviewed contracts with 79 exact
 source anchors. The checker rejects stale files, missing anchors and empty
 coverage. Matching anchors establishes traceability; it does not prove the
 semantic statements or all runtime paths. The statements below come from
@@ -119,9 +121,9 @@ physical ID and source-curve identity cannot be interchanged (C07-C09, C21).
 | Model | Destructor deletes meshes_ raw pointers | geometry_ is borrowed; the serial root uses stack Geometry. Implicit Model copy semantics need review |
 | GeneratorAdaptive | mesh_ and save_mesh_ own physical meshes; Adapter is a member | Current accepted mesh may come from mesh_ or the last saved state; the broader legacy Model collection is a different ownership route |
 | MeshAdaptive | unique_ptr submeshes; positional reset deletes replaced owner | A Patch current-submesh observer must be rebound after replacement/rollback |
-| SubMesh | unique_ptr nodes/elements; AddNoh moves, SetElement adopts | SetNoh copies the supplied node, contrary to its grouped header ownership comment; caller keeps responsibility for the original |
+| SubMesh | unique_ptr nodes/elements; AddNoh moves, SetElement adopts | SetNoh copies scalar state and clears foreign adjacency; caller retains the source. The header now distinguishes copy from adoption |
 | TriangleAdaptive | SubMesh owns the element | Node pointers borrow; construction registers adjacency; destruction does not unregister; cached values need invalidation policy |
-| NodeAdaptive | SubMesh owns physical node copies | Adjacent elements are borrowed; implicit copy copies raw adjacency. GetNoh on TriangleAdaptive returns a value copy |
+| NodeAdaptive | SubMesh owns physical node copies | Adjacent elements are borrowed; general implicit copies retain adjacency. SetNoh clears it at the new mesh boundary. GetNoh on TriangleAdaptive still returns a value copy |
 | Curve sample lists | CurveAdaptive explicitly does not own them | Orchestration creates/deletes/restores samples; complete terminal/exception ownership needs stage 3 qualification |
 | Default AdvancingFront | Allocates boundary/quadtree; deletes quadtree | Quadtree deletes its non-null boundary and root; setters/external constructors need explicit adoption semantics |
 | Boundary | Deletes boundary edges after nulling endpoints, then deletes vertices | Completed-edge curve belongs to the previous outgoing side; borrowed source curve outlives the attempt |

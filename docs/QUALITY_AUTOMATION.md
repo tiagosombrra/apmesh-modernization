@@ -131,6 +131,13 @@ equivalents, including negative controls and repeated rejection/rebuild paths.
 Windows ASan alone does not establish Linux leak coverage. Never claim memory
 safety beyond the cases and instruments run.
 
+Stage 3 adds a standalone physical node/submesh/triangle target under
+`tests/memory`, also registered in normal CTest as application.node_lifetime.
+MSVC ASan and separate Debug CRT builds are qualified by
+`tools/qualify_node_lifetime.py`, including deliberately invalid controls. The
+runner rejects absent diagnostics and nonzero valid-case exits. Commands and
+scope limits: [node lifetime evidence](evidence/STAGE3_NODE_LIFETIME.md).
+
 ```sh
 python tools/quality.py docs
 ```

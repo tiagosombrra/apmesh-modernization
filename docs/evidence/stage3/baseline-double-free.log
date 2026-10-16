@@ -1,0 +1,31 @@
+=================================================================
+==26516==ERROR: AddressSanitizer: attempting double-free on 0x11ea6d0a0020 in thread T0:
+    #0 0x7ffa35c7d4e8 in free D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_malloc_win.cpp:125
+    #1 0x7ff7f667270a in `anonymous namespace'::broken C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:117
+    #2 0x7ff7f667367e in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:136
+    #3 0x7ff7f6682b3b in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #4 0x7ff7f6682b3b in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #5 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #6 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+0x11ea6d0a0020 is located 0 bytes inside of 64-byte region [0x11ea6d0a0020,0x11ea6d0a0060)
+freed by thread T0 here:
+    #0 0x7ffa35c7d4e8 in free D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_malloc_win.cpp:125
+    #1 0x7ff7f6672701 in `anonymous namespace'::broken C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:116
+    #2 0x7ff7f667367e in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:136
+    #3 0x7ff7f6682b3b in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #4 0x7ff7f6682b3b in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #5 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #6 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+previously allocated by thread T0 here:
+    #0 0x7ffa35c7d638 in malloc D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_malloc_win.cpp:134
+    #1 0x7ff7f66726f5 in `anonymous namespace'::broken C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:115
+    #2 0x7ff7f667367e in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:136
+    #3 0x7ff7f6682b3b in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #4 0x7ff7f6682b3b in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #5 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #6 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+SUMMARY: AddressSanitizer: double-free C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:117 in `anonymous namespace'::broken
+==26516==ABORTING

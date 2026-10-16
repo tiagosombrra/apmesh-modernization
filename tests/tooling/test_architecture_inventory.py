@@ -47,6 +47,17 @@ class ArchitectureInventoryTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Empty source root"):
                 inventory.inventory(root)
 
+    def test_nested_test_build_changes_invalidate_inventory(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as folder:
+            root = self.fixture(folder)
+            build = root / "tests/memory/CMakeLists.txt"
+            build.parent.mkdir(parents=True)
+            build.write_text("add_executable(probe probe.cpp)\n", encoding="utf-8")
+            first = inventory.inventory(root)
+            self.assertIn("tests/memory/CMakeLists.txt", [f["path"] for f in first["build_inputs"]])
+            build.write_text("add_executable(other other.cpp)\n", encoding="utf-8")
+            self.assertNotEqual(first, inventory.inventory(root))
+
     def test_comments_are_ignored_and_literal_line_is_exact(self):
         with tempfile.TemporaryDirectory(dir=ROOT) as folder:
             root = self.fixture(folder)

@@ -6,6 +6,14 @@ Only one work item is active at a time; required regression gates remain exact.
 
 ## First stage 3 slice: establish and qualify lifecycle boundaries
 
+Issue #8 implements the narrow SetNoh copy boundary: a reproduced expired
+triangle observer is excluded from new owned nodes. Scalar state, caller
+ownership and general NodeAdaptive value-copy behavior are preserved. Isolated
+ASan and Debug CRT controls are qualified; see
+[evidence](../evidence/STAGE3_NODE_LIFETIME.md). This does not close stage 3.
+Next priority is the coherent UV front/edge/face teardown slice below, including
+normal, partial and failed generation paths, before broader ownership changes.
+
 The first slice should characterize physical node adoption/copy and adjacency
 lifetime before changing its API. C04/C05 prove a discrepancy: SetNoh copies a
 NodeAdaptive while its grouped comment promises adoption; the implicit node

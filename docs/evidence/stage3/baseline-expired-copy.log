@@ -1,0 +1,67 @@
+=================================================================
+==24556==ERROR: AddressSanitizer: heap-use-after-free on address 0x117f9b2a0050 at pc 0x7ff7f667eb93 bp 0x003c3a2ff5e0 sp 0x003c3a2ff5e8
+READ of size 8 at 0x117f9b2a0050 thread T0
+    #0 0x7ff7f667eb92 in ElementAdaptive::GetArea(void) const C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\src\data\element_adaptive.cpp:11
+    #1 0x7ff7f667252b in `anonymous namespace'::broken C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:105
+    #2 0x7ff7f667367e in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:136
+    #3 0x7ff7f6682b3b in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #4 0x7ff7f6682b3b in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #5 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #6 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+0x117f9b2a0050 is located 16 bytes inside of 144-byte region [0x117f9b2a0040,0x117f9b2a00d0)
+freed by thread T0 here:
+    #0 0x7ff7f6682223 in operator delete(void *, unsigned __int64) D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_win_delete_scalar_size_thunk.cpp:41
+    #1 0x7ff7f667f335 in TriangleAdaptive::`scalar deleting dtor'(unsigned int) (C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-msvc\RelWithDebInfo\node_lifetime_probe.exe+0x14000f335)
+    #2 0x7ff7f66724fe in std::default_delete<TriangleAdaptive>::operator() C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory:3309
+    #3 0x7ff7f66724fe in std::unique_ptr<TriangleAdaptive,std::default_delete<TriangleAdaptive> >::reset C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory:3471
+    #4 0x7ff7f66724fe in `anonymous namespace'::broken C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:102
+    #5 0x7ff7f667367e in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:136
+    #6 0x7ff7f6682b3b in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #7 0x7ff7f6682b3b in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #8 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #9 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+previously allocated by thread T0 here:
+    #0 0x7ff7f6682195 in operator new(unsigned __int64) D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_win_new_scalar_thunk.cpp:40
+    #1 0x7ff7f6672460 in std::make_unique C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory:3630
+    #2 0x7ff7f6672460 in `anonymous namespace'::broken C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:100
+    #3 0x7ff7f667367e in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\tests\memory\probe.cpp:136
+    #4 0x7ff7f6682b3b in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #5 0x7ff7f6682b3b in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #6 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #7 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+SUMMARY: AddressSanitizer: heap-use-after-free C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\stage3-baseline-source\src\data\element_adaptive.cpp:11 in ElementAdaptive::GetArea(void) const
+Shadow bytes around the buggy address:
+  0x117f9b29fd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x117f9b29fe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x117f9b29fe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x117f9b29ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x117f9b29ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x117f9b2a0000: fa fa fa fa fa fa fa fa fd fd[fd]fd fd fd fd fd
+  0x117f9b2a0080: fd fd fd fd fd fd fd fd fd fd fa fa fa fa fa fa
+  0x117f9b2a0100: fa fa 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x117f9b2a0180: 00 00 00 fa fa fa fa fa fa fa fa fa 00 00 00 00
+  0x117f9b2a0200: 00 00 00 00 00 00 00 00 00 00 00 00 02 fa fa fa
+  0x117f9b2a0280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==24556==ABORTING

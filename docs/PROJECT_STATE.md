@@ -90,17 +90,31 @@ Current audit and exact-head/post-merge evidence:
 `docs/evidence/STAGE2_ARCHITECTURE_AUDIT.md`, `docs/evidence/STAGE2_CLOSURE.md`
 and `docs/evidence/stage2/`.
 
-## Next work item: stage 3 (not started)
+## Stage 3 in progress: physical node copy boundary (#8)
 
-Start with physical-node copy/adoption and adjacency lifecycle characterization.
-Prove the diagnostic tool with positive and deliberately invalid controls, then
-repair only demonstrated lifetime defects in a small reviewed slice. Stage 4 may
-unblock that work if an actual portability barrier prevents instrumentation.
-Keep one active item, exact scientific regression and end-stage audit/closure.
+The first bounded slice repairs a reproduced ASan heap-use-after-free: SetNoh
+copied foreign element observers into a new mesh node. It now preserves scalar
+state while clearing those observers; local triangles rebuild adjacency. The
+header explicitly distinguishes copying from unique/raw ownership adoption.
+General node copies and triangle removal/replacement remain outside this slice.
+
+Candidate gates: CTest 10/10, zero skips; 74 Python controls; selected SubMesh
+lint/formatting; seven qualified ASan/Debug CRT cases including deliberate UAF,
+double-free and leak controls. Repeated Eistute/Book and strict entry/stage-2
+comparisons are exact across all nine attempted states, preserving 1,168/4,256
+last-accepted triangles and measured shared-incidence coverage. See
+`docs/evidence/STAGE3_NODE_LIFETIME.md` and `docs/evidence/stage3/`.
+
+Published-head and post-merge gates are required before issue #8 closure. Stage 3
+remains open. Next slice: coherent UV front/edge/face normal/partial/failure
+teardown. Curve sample/rollback ownership, UV exceptions, generic adjacency and
+cache mutation, full process leaks and parallel paths still need qualification.
+Stage 4 may unblock actual instrumentation barriers. Keep one active item.
 
 ## Open blockers and limitations
 
-- Stages 0-2 are closed for their measured scope. Stages 3-11 remain pending;
+- Stages 0-2 are closed for their measured scope. Stage 3 is in progress and
+  stages 4-11 remain pending;
   architecture inventory is not dynamic memory, parallel or portability
   qualification. Broad numerical and generated-documentation work remains open.
 - Legacy compatibility summaries still compare zero groups when synchronized.

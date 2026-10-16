@@ -8,9 +8,13 @@ Stage 2 (issue #5, PR #6) delivered the complete production inventory, reviewed
 domain/lifecycle contracts, ADR and repair sequence. Exact-head and post-merge
 CTest 9/9, 73 Python controls and strict Eistute/Book regression pass with
 production identities unchanged. See `evidence/STAGE2_CLOSURE.md`.
-Stage 3 is next: bounded node copy/adoption and adjacency lifecycle qualification;
-stage 4 may unblock proved diagnostic-tool portability barriers. Stages 3-11
-remain pending. Architecture: `architecture/MESH_ARCHITECTURE.md` and
+Stage 3 is in progress (#8): a reproduced foreign-adjacency use-after-free at
+SetNoh is repaired with isolated ASan/Debug CRT controls; candidate CTest 10/10
+and exact Eistute/Book regression pass. Head/post-merge qualification is pending;
+the wider stage remains open. Next slice is UV front/edge/face teardown. Stage 4
+may unblock proved diagnostic-tool portability barriers; stages 4-11 remain
+pending. See `evidence/STAGE3_NODE_LIFETIME.md`. Architecture:
+`architecture/MESH_ARCHITECTURE.md` and
 `architecture/REFACTOR_SEQUENCE.md`.
 
 | Stage | Scope | Completion evidence |
