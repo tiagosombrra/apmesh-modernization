@@ -63,82 +63,82 @@ class QuadtreeCell : public Shape {
   void makeMeshType6();
 
  public:
-  QuadtreeCell(long int id,
-               // MainDrive *mainDrive,
-               Quadtree *tree = NULL, Vertex *min = NULL, Vertex *max = NULL,
-               QuadtreeCell *parent = NULL, long int level = 0);
-  ~QuadtreeCell();
+   QuadtreeCell(long int id,
+                // MainDrive *mainDrive,
+                Quadtree* tree = nullptr, Vertex* min = nullptr, Vertex* max = nullptr,
+                QuadtreeCell* parent = nullptr, long int level = 0);
+   ~QuadtreeCell() override;
 
-  void setQuadtree(Quadtree *tree);
+   void setQuadtree(Quadtree* tree);
 
-  void setLevel(long int level);
-  long int getLevel();
+   void setLevel(long int level);
+   long int getLevel();
 
-  double getSize();
+   double getSize();
 
-  void setParent(QuadtreeCell *parent);
-  QuadtreeCell *getParent();
+   void setParent(QuadtreeCell* parent);
+   QuadtreeCell* getParent();
 
-  void setChild(int position, QuadtreeCell *child);
-  QuadtreeCell *getChild(int position);
+   void setChild(int position, QuadtreeCell* child);
+   QuadtreeCell* getChild(int position);
 
-  void setBox(Vertex *min, Vertex *max);
-  Vertex *getMin();
-  Vertex *getMax();
+   void setBox(Vertex* min, Vertex* max);
+   Vertex* getMin();
+   Vertex* getMax();
 
-  void setNeighbors(int direction, QuadtreeCellList neighbors);
-  QuadtreeCellList getNeighbors(int direction);
+   void setNeighbors(int direction, QuadtreeCellList neighbors);
+   QuadtreeCellList getNeighbors(int direction);
 
-  // retorna o numero de celulas da subarvore que tem this como raiz
-  int getNumCells();
+   // retorna o numero de celulas da subarvore que tem this como raiz
+   int getNumCells();
 
-  // retorna os vertices das arestas internas à essa celula
-  VertexList getVertices();
-  EdgeList getEdges();
+   // retorna os vertices das arestas internas à essa celula
+   VertexList getVertices();
+   EdgeList getEdges();
 
-  bool shouldSubdivide(Edge *e);
-  bool shouldSubdivide(Face *f);
+   bool shouldSubdivide(Edge* e);
+   bool shouldSubdivide(Face* f);
 
-  void addEdge(Edge *e);
-  void removeEdge(Edge *e);
-  void clearEdges();
-  QuadtreeCell *findCell(Edge *e);
-  QuadtreeCell *findCell(Face *f);
+   void addEdge(Edge* e);
+   void removeEdge(Edge* e);
+   void clearEdges();
+   QuadtreeCell* findCell(Edge* e);
+   QuadtreeCell* findCell(Face* f);
 
-  bool in(Vertex *v);
-  bool on(Vertex *v);
-  bool out(Vertex *v);
+   bool in(Vertex* v);
+   bool on(Vertex* v);
+   bool out(Vertex* v);
 
-  double height();
-  double surface();
+   double height();
+   double surface();
 
-  bool subdivide(Edge *e);
-  bool subdivide(Face *f);
-  void subdivideToLevel(unsigned long int level);
-  bool subdivideAccordingToNeighbors();
+   bool subdivide(Edge* e);
+   bool subdivide(Face* f);
+   void subdivideToLevel(unsigned long int level);
+   bool subdivideAccordingToNeighbors();
 
-  bool subdivided();
+   bool subdivided();
 
-  // para a geracao baseada em templates
-  void sortNeighbors();
-  bool inBoundary();
+   // para a geracao baseada em templates
+   void sortNeighbors();
+   bool inBoundary();
 
-  void makeOuterVertices();
-  void makeOuterEdges();
-  void makeTemplateBasedMesh();
+   void makeOuterVertices();
+   void makeOuterEdges();
+   void makeTemplateBasedMesh();
 
-  string getText() override;
+   string getText() override;
 
-  // #if USE_OPENGL
-  //     void highlight();
-  //     void highlight(bool highlightEdges, /*debug*/bool
-  //     dontHighlightNeighbors = false/*endebug*/); void highlightAsNeighbor();
-  //     void unhighlight(); void unhighlight(bool highlightEdges, /*debug*/bool
-  //     dontHighlightNeighbors = false/*endebug*/); void
-  //     unhighlightAsNeighbor();
+   // #if USE_OPENGL
+   //     void highlight();
+   //     void highlight(bool highlightEdges, /*debug*/bool
+   //     dontHighlightNeighbors = false/*endebug*/); void highlightAsNeighbor();
+   //     void unhighlight(); void unhighlight(bool highlightEdges, /*debug*/bool
+   //     dontHighlightNeighbors = false/*endebug*/); void
+   //     unhighlightAsNeighbor();
 
-  //    void draw();
-  // #endif //#if USE_OPENGL
+   //    void draw();
+   // #endif //#if USE_OPENGL
 };
 }  // namespace AFT
 }  // namespace Par2DJMesh

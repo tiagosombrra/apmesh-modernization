@@ -138,10 +138,10 @@
 #endif  // #if USE_MPI
 
 #if defined(_WIN32)
-#include <winsock2.h>  // timeval
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
+#include <winsock2.h> // timeval; NOMINMAX must precede every Windows header.
 #include <windows.h>
 #ifdef IN
 #undef IN

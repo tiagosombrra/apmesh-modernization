@@ -11,20 +11,21 @@ triangle observer is excluded from new owned nodes. Scalar state, caller
 ownership and general NodeAdaptive value-copy behavior are preserved. Isolated
 ASan and Debug CRT controls are qualified; see
 [evidence](../evidence/STAGE3_NODE_LIFETIME.md). This does not close stage 3.
-Next priority is the coherent UV front/edge/face teardown slice below, including
-normal, partial and failed generation paths, before broader ownership changes.
+Issue #11 qualifies the next bounded UV boundary: registered template cleanup,
+owner transfer and shared-endpoint detachment under normal, partial, post-template
+failure/exception and selected transfer-allocation failures. The wider UV
+lifecycle is still open: next characterize object creation before registration
+and constructor/setter replacement, then curve sample/rollback ownership.
 
-The first slice should characterize physical node adoption/copy and adjacency
-lifetime before changing its API. C04/C05 prove a discrepancy: SetNoh copies a
-NodeAdaptive while its grouped comment promises adoption; the implicit node
-copy also carries element observers. Existing initial-mesh callers depend on
-having an independent owned copy. Changing SetNoh to adopt in place would be a
-behavior change with different deletion and observer consequences.
+The completed first slice characterized copying before repair. SetNoh now
+explicitly copies scalar state and clears foreign adjacency; general implicit
+node copies still carry observers. Initial-mesh callers need independent copies;
+changing their boundary to adoption would alter deletion and observer semantics.
 
 | Priority | Source fact and risk classification | Required experiment before repair | Small implementation boundary |
 | --- | --- | --- | --- |
-| P1 | C04/C05: copy/adopt contradiction and copied element observers; source-proved contract ambiguity | Distinct caller/owned node identity, ID/XYZ preservation, independent submeshes, original lifetime, copied adjacency and deliberate expired observer controls | Separate explicit copy/adopt names or contracts with caller audit; rebuild/rebind adjacency as justified, preserving numerical order |
-| P1 | C10/C11: Face/Edge delete shared endpoints unless detached; source-proved conditional teardown | Normal, partial, failed front, quadtree/template and exception exits with deliberate duplicate/dangling/leak controls | Explicit owners and observer-only topology under one coherent front lifecycle, in a bounded patch |
+| P1 | C04/C05: SetNoh boundary repaired in #8; general node copies remain observer-bearing | Completed copy/adoption tests; separately qualify generic snapshots and adjacency removal | Keep local reconstruction order and explicit source ownership |
+| P1 | C10/C11: registered payload cleanup/transfer and allocation-free detachment qualified in #11 | Controlled post-template failure/exception and transfer-allocation controls; pre-registration creation and constructor/setter failures remain | Extend explicit ownership to remaining creation scopes without changing template/front policies |
 | P1 | C07/C12: sampled curves are non-owning but restoration explicitly deletes/recreates nodes | Shared corners across more than two sheets, retry/rejection, retained accepted mesh, final shutdown and repeated runs | Establish an exclusive sample owner or an explicit cleanup/transfer scope; preserve ID/partition restoration |
 | P1 | C09/C13: raw temporary old UV faces and release of selected result | Exception injection before/after front generation, failed structural fallback, rejected selected attempt | RAII for temporary UV resources, adopted result boundary and safe failure cleanup |
 | P2 | C02/C22: Model raw-owned mesh collection and pointer-taking patch copy semantics | Copy prohibition/transfer expectations; borrowed curve graph and current-submesh observers; no double destruction | Make copy/move intent explicit only after usage and compatibility review |

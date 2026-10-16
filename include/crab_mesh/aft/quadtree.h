@@ -50,72 +50,78 @@ class Quadtree : public Shape {
   QuadtreeTemplateStats template_stats;
 
  public:
-  Quadtree(Boundary *boundary = NULL, double factor = 0.85);
-  ~Quadtree();
+   Quadtree(Boundary* boundary = nullptr, double factor = 0.85);
+   ~Quadtree() override;
 
-  void setFactor(double factor);
-  double getFactor();
-  void setMaxLevelCap(long int max_level_cap);
-  long int getMaxLevelCap() const;
+   void setFactor(double factor);
+   double getFactor();
+   void setMaxLevelCap(long int max_level_cap);
+   long int getMaxLevelCap() const;
 
-  void setBoundary(Boundary *boundary);
-  Boundary *getBoundary();
+   void setBoundary(Boundary* boundary);
+   Boundary* getBoundary();
 
-  void setRoot(QuadtreeCell *root);
-  QuadtreeCell *getRoot();
+   void setRoot(QuadtreeCell* root);
+   QuadtreeCell* getRoot();
 
-  // retira cell como folha e adiciona os filhos de cell
-  void addLeaves(QuadtreeCell *cell);
-  QuadtreeCellList getLeaves();
+   // retira cell como folha e adiciona os filhos de cell
+   void addLeaves(QuadtreeCell* cell);
+   QuadtreeCellList getLeaves();
 
-  int getNumCells();
+   int getNumCells();
 
-  Vertex *getMin();
-  Vertex *getMax();
+   Vertex* getMin();
+   Vertex* getMax();
 
-  long int getCellId();
+   long int getCellId();
 
-  void findCell(Edge *e);
+   void findCell(Edge* e);
 
-  bool in(Vertex *v);
-  bool on(Vertex *v);
-  bool out(Vertex *v);
+   bool in(Vertex* v);
+   bool on(Vertex* v);
+   bool out(Vertex* v);
 
-  enum MethodStatus generate(const FaceList &oldmesh);
-  enum MethodStatus refineToLevel();
-  enum MethodStatus refineAccordingToNeighbors();
+   enum MethodStatus generate(const FaceList& oldmesh);
+   enum MethodStatus refineToLevel();
+   enum MethodStatus refineAccordingToNeighbors();
 
-  bool execute(const FaceList &oldmesh);
+   bool execute(const FaceList& oldmesh);
 
-  // para a geracao baseada em templates
-  long int vertexId();
-  long int edgeId();
-  long int faceId();
+   // para a geracao baseada em templates
+   long int vertexId();
+   long int edgeId();
+   long int faceId();
 
-  EdgeList getFront();
-  EdgeList getEdges();
-  VertexList getVertices();
-  FaceList getMesh();
+   EdgeList getFront();
+   EdgeList getEdges();
+   VertexList getVertices();
+   FaceList getMesh();
 
-  void add(Vertex *v);
-  void add(Edge *e);
-  void add(Face *f);
-  void addFront(Edge *e);
-  void ResetTemplateStats();
-  void RecordTemplateChoice(int type, double score);
-  void RecordLowQualitySubdivision();
-  const QuadtreeTemplateStats& GetTemplateStats() const;
+   // Append template owners in order and empty the source lists without allocation.
+   // Getters expose borrowed views before transfer; cells/front remain observers.
+   void TransferTemplateMesh(VertexList& destination_vertices, EdgeList& destination_edges,
+                             FaceList& destination_faces) noexcept;
 
-  enum MethodStatus makeTemplateBasedMesh();
+   // Adopt each generated object exactly once until TransferTemplateMesh is called.
+   void add(Vertex* v);
+   void add(Edge* e);
+   void add(Face* f);
+   void addFront(Edge* e);
+   void ResetTemplateStats();
+   void RecordTemplateChoice(int type, double score);
+   void RecordLowQualitySubdivision();
+   const QuadtreeTemplateStats& GetTemplateStats() const;
 
-  string getText() override;
+   enum MethodStatus makeTemplateBasedMesh();
 
-  // #if USE_OPENGL
-  //     void highlight();
-  //     void unhighlight();
+   string getText() override;
 
-  //    void draw();
-  // #endif //#if USE_OPENGL
+   // #if USE_OPENGL
+   //     void highlight();
+   //     void unhighlight();
+
+   //    void draw();
+   // #endif //#if USE_OPENGL
 };
 }  // namespace AFT
 }  // namespace Par2DJMesh

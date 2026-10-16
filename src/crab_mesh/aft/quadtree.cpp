@@ -1,6 +1,7 @@
 #include "../../../include/crab_mesh/aft/quadtree.h"
 
 #include <cfloat>
+#include <climits>
 
 extern double TEMPLATE_POOR_SCORE_THRESHOLD;
 
@@ -150,7 +151,7 @@ void escreve(Quadtree *q, int i) {
 Quadtree::Quadtree(Boundary *boundary, double factor) : Shape(), maxLevelCap(-1) {
   setBoundary(boundary);
   setFactor(factor);
-  setRoot(NULL);
+  setRoot(nullptr);
   ResetTemplateStats();
 
   // #if USE_OPENGL
@@ -164,6 +165,26 @@ Quadtree::Quadtree(Boundary *boundary, double factor) : Shape(), maxLevelCap(-1)
 }
 
 Quadtree::~Quadtree() {
+  // Failed or abandoned runs still own template objects that were not transferred.
+  while (!mesh.empty()) {
+    Face* face = mesh.front();
+    mesh.pop_front();
+    face->DetachVertices();
+    delete face;
+  }
+  while (!edges.empty()) {
+    Edge* edge = edges.front();
+    edges.pop_front();
+    edge->DetachVertices();
+    delete edge;
+  }
+  while (!vertices.empty()) {
+    Vertex* vertex = vertices.front();
+    vertices.pop_front();
+    delete vertex;
+  }
+  front.clear();
+
   // quando boundary == NULL, entao a quadtree mate estah envolvida.
   // nesse caso, os root->min e root->max sao os mesmos para as
   // duas quadtrees, assim como a boundary. logo, root->min, root->max e
@@ -238,9 +259,9 @@ QuadtreeCellList Quadtree::getLeaves() { return leaves; }
 
 int Quadtree::getNumCells() { return root ? root->getNumCells() : 0; }
 
-Vertex *Quadtree::getMin() { return root ? root->getMin() : NULL; }
+Vertex* Quadtree::getMin() { return root ? root->getMin() : nullptr; }
 
-Vertex *Quadtree::getMax() { return root ? root->getMax() : NULL; }
+Vertex* Quadtree::getMax() { return root ? root->getMax() : nullptr; }
 
 long int Quadtree::getCellId() { return ++id; }
 
@@ -325,7 +346,7 @@ enum MethodStatus Quadtree::refineToLevel() {
   // 2o Passo
   EdgeList edges = boundary->getEdges();
 
-  long int minLevel = __LONG_MAX__;
+  long int minLevel = LONG_MAX;
 
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
     long int level = (*iter)->getCell()->getLevel();
@@ -386,6 +407,13 @@ EdgeList Quadtree::getEdges() { return edges; }
 VertexList Quadtree::getVertices() { return vertices; }
 
 FaceList Quadtree::getMesh() { return mesh; }
+
+void Quadtree::TransferTemplateMesh(VertexList& destination_vertices, EdgeList& destination_edges,
+                                    FaceList& destination_faces) noexcept {
+  destination_vertices.splice(destination_vertices.end(), vertices);
+  destination_edges.splice(destination_edges.end(), edges);
+  destination_faces.splice(destination_faces.end(), mesh);
+}
 
 void Quadtree::add(Vertex *v) { vertices.push_back(v); }
 

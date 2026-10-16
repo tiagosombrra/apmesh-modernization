@@ -1,7 +1,7 @@
 #include "../../../include/crab_mesh/aft/face.h"
 
 Face::Face(Vertex *v1, Vertex *v2, Vertex *v3, long int id) : Shape(id) {
-  mid = NULL;
+  mid = nullptr;
 
   setVertices(v1, v2, v3);
 
@@ -16,7 +16,7 @@ Face::Face(Vertex *v1, Vertex *v2, Vertex *v3, long int id) : Shape(id) {
 
 Face::Face(Vertex *v1, Vertex *v2, Vertex *v3, Vertex *mid, long int id)
     : Shape(id) {
-  this->mid = NULL;
+  this->mid = nullptr;
 
   setVertices(v1, v2, v3);
 
@@ -36,11 +36,18 @@ Face::Face(Vertex *v1, Vertex *v2, Vertex *v3, Vertex *mid, long int id)
 Face::~Face() {
   if ((mid) && (mid != v[0]) && (mid != v[1]) && (mid != v[2])) delete mid;
 
-  mid = NULL;
+  mid = nullptr;
 
   if (v[0]) delete v[0];
   if (v[1]) delete v[1];
   if (v[2]) delete v[2];
+}
+
+void Face::DetachVertices() noexcept {
+  // The explicit-midpoint constructor permits a borrowed endpoint as midpoint.
+  if (mid == v[0] || mid == v[1] || mid == v[2])
+    mid = nullptr;
+  v[0] = v[1] = v[2] = nullptr;
 }
 
 Vertex *Face::makeMid() {
@@ -71,7 +78,7 @@ void Face::setVertices(Vertex *v1, Vertex *v2, Vertex *v3) {
   if (mid) {
     delete mid;
 
-    mid = NULL;
+    mid = nullptr;
   }
 
   mid = makeMid();
@@ -250,7 +257,7 @@ double Face::quality() {
 
   rCirc = (d > rCirc) ? d : rCirc;
 
-  e.setVertices(NULL, NULL);
+  e.setVertices(nullptr, nullptr);
 
   delete insc;
   delete circ;
@@ -277,7 +284,7 @@ bool Face::hasEdge(Vertex *v1, Vertex *v2) {
 bool Face::hasEdge(Edge *e) { return hasEdge(e->getV1(), e->getV2()); }
 
 bool Face::isAdjacent(Face *f) {
-  if ((f == NULL) || (f == this)) {
+  if ((f == nullptr) || (f == this)) {
     return false;
   }
 

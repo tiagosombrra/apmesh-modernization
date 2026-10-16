@@ -1,0 +1,70 @@
+UV lifetime diagnostic
+=================================================================
+==13892==ERROR: AddressSanitizer: heap-use-after-free on address 0x122e3c2a0020 at pc 0x7ff739d1b937 bp 0x00f9974ff520 sp 0x00f9974ff520
+READ of size 8 at 0x122e3c2a0020 thread T0
+    #0 0x7ff739d1b936 in Par2DJMesh::AFT::AdvancingFront::~AdvancingFront(void) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-baseline-source\src\crab_mesh\aft\advancing_front.cpp:232
+    #1 0x7ff739ce1bf0 in `anonymous namespace'::midpoint_alias C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:191
+    #2 0x7ff739ce31ea in `anonymous namespace'::scenario C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:296
+    #3 0x7ff739ce4d86 in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:368
+    #4 0x7ff739d42fd3 in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #5 0x7ff739d42fd3 in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #6 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #7 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+0x122e3c2a0020 is located 0 bytes inside of 56-byte region [0x122e3c2a0020,0x122e3c2a0058)
+freed by thread T0 here:
+    #0 0x7ff739d420e3 in operator delete(void *, unsigned __int64) D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_win_delete_scalar_size_thunk.cpp:41
+    #1 0x7ff739cdf008 in `anonymous namespace'::CountedVertex::`scalar deleting destructor' (C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-baseline-msvc\RelWithDebInfo\uv_lifetime_probe.exe+0x14000f008)
+    #2 0x7ff739cf4828 in Par2DJMesh::Basics::Face::setVertices(class Par2DJMesh::Basics::Vertex *, class Par2DJMesh::Basics::Vertex *, class Par2DJMesh::Basics::Vertex *) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-baseline-source\src\crab_mesh\aft\face.cpp:72
+    #3 0x7ff739d1b820 in Par2DJMesh::AFT::AdvancingFront::~AdvancingFront(void) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-baseline-source\src\crab_mesh\aft\advancing_front.cpp:214
+    #4 0x7ff739ce1bf0 in `anonymous namespace'::midpoint_alias C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:191
+    #5 0x7ff739ce31ea in `anonymous namespace'::scenario C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:296
+    #6 0x7ff739ce4d86 in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:368
+    #7 0x7ff739d42fd3 in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #8 0x7ff739d42fd3 in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #9 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #10 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+previously allocated by thread T0 here:
+    #0 0x7ff739d42055 in operator new(unsigned __int64) D:\a\_work\1\s\src\vctools\asan\llvm\compiler-rt\lib\asan\asan_win_new_scalar_thunk.cpp:40
+    #1 0x7ff739ce17e8 in `anonymous namespace'::midpoint_alias C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:186
+    #2 0x7ff739ce31ea in `anonymous namespace'::scenario C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:296
+    #3 0x7ff739ce4d86 in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:368
+    #4 0x7ff739d42fd3 in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #5 0x7ff739d42fd3 in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #6 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #7 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+SUMMARY: AddressSanitizer: heap-use-after-free C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-baseline-source\src\crab_mesh\aft\advancing_front.cpp:232 in Par2DJMesh::AFT::AdvancingFront::~AdvancingFront(void)
+Shadow bytes around the buggy address:
+  0x122e3c29fd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x122e3c29fe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x122e3c29fe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x122e3c29ff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x122e3c29ff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x122e3c2a0000: fa fa fa fa[fd]fd fd fd fd fd fd fa fa fa fa fa
+  0x122e3c2a0080: 00 00 00 00 00 00 00 fa fa fa fa fa 00 00 00 00
+  0x122e3c2a0100: 00 00 00 fa fa fa fa fa fd fd fd fd fd fd fd fa
+  0x122e3c2a0180: fa fa fa fa fd fd fd fd fd fd fd fd fa fa fa fa
+  0x122e3c2a0200: fd fd fd fd fd fd fd fd fa fa fa fa fd fd fd fd
+  0x122e3c2a0280: fd fd fd fd fa fa fa fa fd fd fd fd fd fd fd fd
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==13892==ABORTING

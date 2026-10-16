@@ -3,6 +3,8 @@
 Initial inventory base: `d4561c9421226503cb4a478faad71ed5ad012381` (stage 2, #5).
 Node-copy contract reviewed against `6c56e307b1e932399c88ba961a9de40bf87ecbca`
 in stage 3, issue #8. Classification: engineering inventory and lifecycle repair.
+UV registered-template ownership and allocation-free detachment are reviewed
+against `0f2473622800907e2d15e1d5ab6216caedb36797` in issue #11.
 
 The current generator already has parametric patches, canonical shared boundary
 curves and CRABMesh reconstruction. Their responsibilities are mapped here so
@@ -10,17 +12,20 @@ later ownership and library changes preserve the published execution sequence.
 Stage 2 changed tooling/documentation only. Stage 3 repairs the SetNoh copy
 boundary by dropping foreign element observers; scalar state and scientific
 policy remain preserved. See [node lifetime evidence](../evidence/STAGE3_NODE_LIFETIME.md).
+The next slice owns untransferred templates in Quadtree, prepares front observer
+views before ordered owner transfer, and detaches shared endpoints without new
+allocations. See [UV evidence](../evidence/STAGE3_UV_LIFETIME.md).
 
 ## Evidence and coverage
 
 [source_inventory.json](source_inventory.json) deterministically covers all
 122 first-party C++ files: 57 translation units and 65 headers, plus hashes for
-the four CMake inputs (including the isolated memory probe). It records 453 potential literal include directives and
+the five CMake inputs (including both isolated memory probes). It records 454 potential literal include directives and
 268 distinct directed first-party include edges. Conditional branches are kept;
 this is not the active preprocessed graph. The 16 directory groups below are
 source organization, not automatically inferred architectural layers.
 
-[contracts.json](contracts.json) contains 22 reviewed contracts with 79 exact
+[contracts.json](contracts.json) contains 22 reviewed contracts with 83 exact
 source anchors. The checker rejects stale files, missing anchors and empty
 coverage. Matching anchors establishes traceability; it does not prove the
 semantic statements or all runtime paths. The statements below come from
@@ -125,10 +130,10 @@ physical ID and source-curve identity cannot be interchanged (C07-C09, C21).
 | TriangleAdaptive | SubMesh owns the element | Node pointers borrow; construction registers adjacency; destruction does not unregister; cached values need invalidation policy |
 | NodeAdaptive | SubMesh owns physical node copies | Adjacent elements are borrowed; general implicit copies retain adjacency. SetNoh clears it at the new mesh boundary. GetNoh on TriangleAdaptive still returns a value copy |
 | Curve sample lists | CurveAdaptive explicitly does not own them | Orchestration creates/deletes/restores samples; complete terminal/exception ownership needs stage 3 qualification |
-| Default AdvancingFront | Allocates boundary/quadtree; deletes quadtree | Quadtree deletes its non-null boundary and root; setters/external constructors need explicit adoption semantics |
-| Boundary | Deletes boundary edges after nulling endpoints, then deletes vertices | Completed-edge curve belongs to the previous outgoing side; borrowed source curve outlives the attempt |
-| Edge / Face | Destructors delete non-null endpoints and some cached midpoint/vector allocations | Shared mesh endpoints require caller detachment. Front/boundary destructors use this protocol; exceptional paths need tests |
-| Quadtree / QuadtreeCell | Root, boundary and cell midpoints/children have conditional deletion paths | Mate/root sharing, neighbors, leaves, template/front aliases need a lifetime map before changing destruction |
+| Default AdvancingFront | Allocates boundary/quadtree; deletes its owned faces, inner edges/vertices, then quadtree | Front receives template owner lists only after allocating observer preparation; setters/external constructors remain unqualified |
+| Boundary | Detaches endpoints without allocation, deletes edges, then vertices | Completed-edge curve belongs to the previous outgoing side; borrowed source curve outlives the attempt |
+| Edge / Face | Legacy destructors retain endpoint ownership outside shared containers; own distinct midpoint/vector caches | Containers call DetachVertices without allocating; Face releases a midpoint alias to an endpoint. Generic raw adoption still requires unique ownership |
+| Quadtree / QuadtreeCell | Quadtree owns registered template objects until ordered list splices transfer them to front; pending payload is deleted on failure/abandonment | Cells, leaves and front lists are observers; root/boundary/midpoint deletion remains conditional. Pre-registration creation failures and mate/root sharing remain unqualified |
 | Adapter attempt | unique_ptr SubMesh until selected result.release() | Temporary old UV faces are deleted on explicit success/failure paths; exceptions before those loops remain unqualified |
 
 C02-C07 and C10-C13 support these observations. This is not a sanitizer report.

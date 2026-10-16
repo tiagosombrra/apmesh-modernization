@@ -112,9 +112,18 @@ last-accepted triangles and measured shared-incidence coverage. See
 `docs/evidence/STAGE3_NODE_LIFETIME.md` and `docs/evidence/stage3/`.
 
 Slice 1 is complete for its measured boundary; the full stage 3 remains open.
-Next slice: coherent UV front/edge/face normal/partial/failure
-teardown. Curve sample/rollback ownership, UV exceptions, generic adjacency and
-cache mutation, full process leaks and parallel paths still need qualification.
+Slice 2 (#11) is locally qualified and awaiting exact-head integration and
+post-merge regression. Registered UV templates now have a single owner through
+failure and ordered transfer; endpoint teardown allocates nothing and handles
+midpoint aliases. Candidate CTest 11/11, 26 UV ASan/CRT cases, seven previous
+node cases, selected lint/formatting and exact Eistute/Book regression pass.
+See `docs/evidence/STAGE3_UV_LIFETIME.md` and ADR-0003. No scientific policy or
+independent verifier changed. This candidate result is not integration closure.
+
+Next bounded scope after closure: allocation failure before UV registration and
+constructor/setter replacement. Curve sample/rollback ownership, other UV
+exceptions, generic adjacency and cache mutation, full process leaks and
+parallel paths still need qualification.
 Stage 4 may unblock actual instrumentation barriers. Keep one active item.
 
 ## Open blockers and limitations

@@ -1,0 +1,4 @@
+UV lifetime diagnostic
+Client hook allocation failure.
+Client hook allocation failure at file minkernel\crts\ucrt\src\appcrt\stdio\_sftbuf.cpp line 94.
+teardown allocation caused termination

@@ -96,7 +96,7 @@ class AdvancingFront : public Shape {
   EdgeList findAdjacentEdges(Vertex *v);
   FaceList findAdjacentFaces(const FaceList &faces, Vertex *v);
 
-  void removeFromFront(Vertex *v1, Vertex *v2 = NULL, Vertex *v3 = NULL);
+  void removeFromFront(Vertex* v1, Vertex* v2 = nullptr, Vertex* v3 = nullptr);
 
   virtual enum MethodStatus makeMesh(bool frontBased,
                                      bool geometryPhase = true);
@@ -116,7 +116,7 @@ class AdvancingFront : public Shape {
   AdvancingFront(Boundary *boundary, Quadtree *quadtree,
                  double tolerance = 1.e-8, unsigned int numImproves = 5);
 
-  virtual ~AdvancingFront();
+  ~AdvancingFront() override;
 
   //    static double getTolerance();
 
@@ -155,7 +155,7 @@ class AdvancingFront : public Shape {
 
   bool execute(const FaceList &oldmesh);
 
-  string getText();
+  string getText() override;
 
   // #if USE_OPENGL
   //     void highlight();

@@ -3,7 +3,7 @@
 Boundary::Boundary() : Shape() {
   lastVertexId = lastEdgeId = 0;
 
-  first = NULL;
+  first = nullptr;
 }
 
 Boundary::~Boundary() {
@@ -11,7 +11,7 @@ Boundary::~Boundary() {
     Edge *e = edges.front();
     edges.pop_front();
 
-    e->setVertices(NULL, NULL);
+    e->DetachVertices();
 
     delete e;
   }
@@ -25,7 +25,7 @@ Boundary::~Boundary() {
 }
 
 Edge *Boundary::makeEdge(Vertex *v) {
-  Edge *e = NULL;
+  Edge* e = nullptr;
 
   e = new Edge(boundary.back(), v, ++lastEdgeId);
 
@@ -58,7 +58,7 @@ long int Boundary::getLastVertexId() { return lastVertexId; }
 long int Boundary::getLastEdgeId() { return lastEdgeId; }
 
 Vertex* Boundary::addVertex(double x, double y, CurveAdaptiveParametric* c, bool reversed) {
-  Vertex *v = NULL;
+  Vertex* v = nullptr;
 
   v = new Vertex(x, y, ++lastVertexId);
 
@@ -103,7 +103,7 @@ Vertex* Boundary::addVertex(double x, double y, CurveAdaptiveParametric* c, bool
 }
 
 Vertex *Boundary::addVertex(long int id, double x, double y) {
-  Vertex *v = addVertex(x, y, NULL);
+  Vertex* v = addVertex(x, y, nullptr);
 
   if (v) {
     v->setId(id);
@@ -126,7 +126,7 @@ bool Boundary::close(CurveAdaptiveParametric* c, bool reversed) {
   boundary.back()->addAdjacentEdge(e);
   first->addAdjacentEdge(e);
 
-  first = NULL;
+  first = nullptr;
 
   ////figura
   // #if USE_OPENGL
@@ -148,7 +148,7 @@ Edge *Boundary::getEdge(long int id) {
     }
   }
 
-  return NULL;
+  return nullptr;
 }
 
 Vertex *Boundary::getVertex(long int id) {
@@ -159,7 +159,7 @@ Vertex *Boundary::getVertex(long int id) {
     }
   }
 
-  return NULL;
+  return nullptr;
 }
 
 void Boundary::getBox(double *minX, double *minY, double *maxX, double *maxY) {

@@ -1,0 +1,336 @@
+{
+  "status": "failed",
+  "scope": "14 actual UV/curve/numerical production units; isolated ASan invalid-access and Debug CRT retained-block/allocation-hook coverage. Not full application, LSan, UBSan or arbitrary exception safety.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-baseline-msvc\\RelWithDebInfo\\uv_lifetime_probe.exe",
+      "sha256": "38c2c1c4c451a51d92dc201ef4739c2b60a963b1c4c0a08bf696fd9670613388"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\uv-baseline-crt\\Debug\\uv_lifetime_probe.exe",
+      "sha256": "f5dcf5011eff8780db704f13eec5ad34163c7d8a02f1f1c7830350d52534e628"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "partial",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "exception",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "1dc2dbcb8e2ac38719f7bd177981f81f8fc2abe78923d6b39789bc25b9c7c7bc"
+    },
+    {
+      "instrument": "asan",
+      "mode": "topology-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "pending-tree",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "transfer-contract",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "67c78b84bff714512f55230e33bdeecffa36ca85839e2fb7db579d65b50f2119"
+    },
+    {
+      "instrument": "asan",
+      "mode": "transfer-order",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "e717a4ae891a79a7c6f6006a85134adf65b61c976d2470efcf1f73751d6e7525"
+    },
+    {
+      "instrument": "asan",
+      "mode": "midpoint-alias",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d0b5e5592bdc0af58d04f89cb5fd9ea17581a00b65707a9bd27a4a64dad59e92"
+    },
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0",
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "2b27666646a46e8267f63908c912b608a9ff0d89eabb2bf127475829dc5d0d34"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "partial",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 1363,
+      "retained_bytes": 61584,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "85d079a9a4c340369b8c28b9fc94702199a46d63c054999bcdbb28d86229ca36"
+    },
+    {
+      "instrument": "crt",
+      "mode": "exception",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 1363,
+      "retained_bytes": 61584,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "8ca4f426cb17a13c0a0caf643a49c9fc3a2d12e0d435e22c922b2148db029aeb"
+    },
+    {
+      "instrument": "crt",
+      "mode": "topology-failure",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 1363,
+      "retained_bytes": 61584,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "3f3aedcf58c9f79e131ae71244a32e9919d2cc625438dacaf333db00a0cf4687"
+    },
+    {
+      "instrument": "crt",
+      "mode": "pending-tree",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 1515,
+      "retained_bytes": 68464,
+      "observations": [],
+      "log_sha256": "89844f7e1b609bd316b16beaa406a96df7b4826dff572717ca86f1a0a58e5e00"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-contract",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "67c78b84bff714512f55230e33bdeecffa36ca85839e2fb7db579d65b50f2119"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-order",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "e717a4ae891a79a7c6f6006a85134adf65b61c976d2470efcf1f73751d6e7525"
+    },
+    {
+      "instrument": "crt",
+      "mode": "midpoint-alias",
+      "exit_code": 3221225477,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "bacf2317c5b37eb6cdbdc7837288d1500d1ed6760aa90eb2612545157c7aa5b9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0",
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "2b27666646a46e8267f63908c912b608a9ff0d89eabb2bf127475829dc5d0d34"
+    },
+    {
+      "instrument": "crt",
+      "mode": "teardown-allocation",
+      "exit_code": 73,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "741bacde32b6a9c8b925d11e487ed6198318f64eee1d31e2e72db5e022ddded4"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ],
+      "log_sha256": "aa4d95fe8a89fefb071a9ad83d6d6e7f45caef2e314f6094e66c13033fa20f2f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-allocation-failure",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "f268d3921ca84599c461a34b8404c695f0b28c0dc9ee37fc3bf4b807a8ada723"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "68ec2d7a73a6af7ec48221bed8b83f7df0c52aff0d17b84cdf8e0f702cd58f5e"
+    },
+    {
+      "instrument": "asan",
+      "mode": "shared-delete",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "539b2e1b88ecb7a6006afb419b257c943025330c165d68efb3e351364e9d076b"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "expected_diagnostic": "retained-blocks",
+      "passed": true,
+      "retained_blocks": 3,
+      "retained_bytes": 112,
+      "observations": [],
+      "log_sha256": "ed09df515b7755597b999732a7db62dc7917b53a8f99c938a2004837c850552f"
+    }
+  ]
+}

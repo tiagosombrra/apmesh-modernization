@@ -1,7 +1,7 @@
 {
   "schema": "apmesh-architecture-contracts-v1",
-  "reviewed_base": "6c56e307b1e932399c88ba961a9de40bf87ecbca",
-  "scope": "Human-reviewed static contracts with source anchors. Stage 3 node-copy boundary has isolated ASan/Debug CRT evidence; other dynamic and parallel paths remain unqualified.",
+  "reviewed_base": "0f2473622800907e2d15e1d5ab6216caedb36797",
+  "scope": "Human-reviewed static contracts with source anchors. Stage 3 node-copy and UV lifecycle boundaries have isolated ASan/Debug CRT evidence; full application and parallel paths remain unqualified.",
   "contracts": [
     {
       "id": "C01",
@@ -210,8 +210,8 @@
     {
       "id": "C10",
       "topic": "Front/quadtree ownership",
-      "statement": "Default AdvancingFront allocates Boundary and Quadtree; its destructor deletes the quadtree; Quadtree deletes a non-null boundary and root.",
-      "limits": "External-pointer constructors/setters imply adoption and special mate-root sharing; no universal observer-only or leak-free interpretation is justified.",
+      "statement": "Default AdvancingFront allocates Boundary/Quadtree. Quadtree owns generated template vertices, edges and faces until an allocation-free ordered splice transfers them to front owner lists. It destroys any untransferred template payload on failure or abandonment before deleting its root/boundary.",
+      "limits": "Getters return borrowed pointer views; template owner getters are empty after transfer. External-pointer constructor/setter replacement, mate-root sharing, arbitrary creation-time allocation failure and full-process cleanup remain unqualified.",
       "evidence": [
         {
           "path": "src/crab_mesh/aft/advancing_front.cpp",
@@ -228,14 +228,22 @@
         {
           "path": "src/crab_mesh/aft/quadtree.cpp",
           "anchor": "delete boundary;"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree.cpp",
+          "anchor": "destination_vertices.splice(destination_vertices.end(), vertices);"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "quadtree->TransferTemplateMesh(innerVertices, innerEdges, mesh);"
         }
       ]
     },
     {
       "id": "C11",
       "topic": "CRABMesh detach protocol",
-      "statement": "Edge and Face destructors delete non-null endpoint pointers, although mesh vertices are shared. Boundary/front cleanup detaches endpoints before deleting these objects.",
-      "limits": "This is a conditional destruction protocol, not consistent observer ownership; exceptional/fallback/partial teardown paths need stage 3 negative controls.",
+      "statement": "Edge/Face destructors retain legacy endpoint ownership outside shared containers. Boundary, Quadtree and front cleanup call DetachVertices without allocating; Face detachment releases a midpoint alias to an endpoint while preserving distinct cache ownership.",
+      "limits": "Conditional detachment remains explicit; normal, partial, failed/exceptional post-template exits and selected transfer-allocation failures are isolated controls, not universal observer ownership or arbitrary exception safety.",
       "evidence": [
         {
           "path": "src/crab_mesh/aft/edge.cpp",
@@ -247,11 +255,19 @@
         },
         {
           "path": "src/crab_mesh/aft/boundary.cpp",
-          "anchor": "e->setVertices(NULL, NULL);"
+          "anchor": "e->DetachVertices();"
         },
         {
           "path": "src/crab_mesh/aft/advancing_front.cpp",
-          "anchor": "f->setVertices(NULL, NULL, NULL);"
+          "anchor": "f->DetachVertices();"
+        },
+        {
+          "path": "src/crab_mesh/aft/edge.cpp",
+          "anchor": "void Edge::DetachVertices() noexcept"
+        },
+        {
+          "path": "src/crab_mesh/aft/face.cpp",
+          "anchor": "void Face::DetachVertices() noexcept"
         }
       ]
     },
