@@ -1,0 +1,25 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 21, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "local-serial",
+      "displayName": "Serial historical algorithm with local tooling tests",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/local-serial",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "AP_MESH_USE_OPENMP": false,
+        "AP_MESH_USE_MPI": false,
+        "AP_MESH_ENABLE_LTO": false,
+        "BUILD_TESTING": true
+      }
+    }
+  ],
+  "buildPresets": [{ "name": "local-serial", "configurePreset": "local-serial" }],
+  "testPresets": [{
+    "name": "local-serial", "configurePreset": "local-serial",
+    "output": { "outputOnFailure": true }, "execution": { "noTestsAction": "error" }
+  }]
+}

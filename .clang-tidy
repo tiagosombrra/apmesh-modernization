@@ -1,0 +1,4 @@
+Checks: '-*,clang-analyzer-*,bugprone-use-after-move,bugprone-sizeof-expression,bugprone-undefined-memory-manipulation,modernize-use-nullptr,modernize-use-override,performance-unnecessary-copy-initialization'
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*[/\\](include|src)[/\\].*'
+FormatStyle: file

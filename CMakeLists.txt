@@ -196,3 +196,6 @@ message(STATUS "MPI: ${AP_MESH_USE_MPI}")
 message(STATUS "OpenMP: ${AP_MESH_USE_OPENMP}")
 message(STATUS "LTO: ${AP_MESH_ENABLE_LTO}")
 message(STATUS "Static MinGW runtime: ${AP_MESH_STATIC_MINGW_RUNTIME}")
+
+# Register local quality controls separately from scientific regression.
+include(cmake/Quality.cmake)

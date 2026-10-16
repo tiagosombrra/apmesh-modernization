@@ -1,0 +1,28 @@
+{
+  "historical_blobs_unchanged": 511,
+  "candidate_and_openmp_comparisons": [
+    {
+      "run": "candidate-gcc-final",
+      "model": "eistute",
+      "all_obj_byte_identical": true,
+      "accepted_states_equal": true
+    },
+    {
+      "run": "candidate-gcc-final",
+      "model": "book",
+      "all_obj_byte_identical": true,
+      "accepted_states_equal": true
+    },
+    {
+      "run": "gcc-openmp-two",
+      "model": "eistute",
+      "all_obj_byte_identical": true,
+      "accepted_states_equal": true
+    }
+  ],
+  "full_application_sanitizer": "BLOCKED_BY_MSVC_PORTABILITY_ERRORS",
+  "doxygen_generation": "NOT_RUN_TOOL_UNAVAILABLE",
+  "mpi": "NOT_RUN",
+  "linux_lsan_ubsan": "NOT_RUN",
+  "note": "See report for failed preparation/build attempts and bounded claims."
+}

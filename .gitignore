@@ -14,3 +14,10 @@ results/
 # Python generated files
 __pycache__/
 *.py[cod]
+
+# Local modernization outputs
+build/
+results/
+__pycache__/
+*.pyc
+CMakeUserPresets.json
