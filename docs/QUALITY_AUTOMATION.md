@@ -11,13 +11,16 @@ The stage 1 draft also registers real executable invalid-input controls and
 positive shipped-model grammar controls. Its independent generation verifier
 has negative controls for rejected targets, invalid geometry, altered counts,
 missing evidence, absent incidence coverage and numerical report drift.
-The original Eistute reference fails strict repeatability. The follow-up logical
-edge-order repair passes exact Eistute/Book repetition and comparison against a
-reference containing only that repair. CTest now includes a cancellation test
-across six logical allocation permutations and a duplicate-ID negative control.
-Passing CTest alone does not authorize integration: per-incidence boundary
-coverage remains open. See evidence/STAGE1_SMOOTHING_ORDER.md and the historical
-failures in evidence/STAGE1_VALIDATION.md.
+The prior numerical reduction-order repair passes exact Eistute/Book repetition.
+The incidence follow-up checks every sheet against source controls and actual
+triangles. Full CTest now contains seven tests: five pass and two required gates
+fail (`application.boundary_orientation`, `application.metric_schema`). The
+failures expose pre-existing reversed geometry and CSV label/value defects;
+they are not skipped or marked expected failures. 65 Python controls pass.
+Selected exporter clang-tidy fails on 18 inherited header/Eigen diagnostics;
+the checks were not weakened. Keep the draft unmerged. See
+`evidence/STAGE1_INCIDENCE_AUDIT.md` for commands, evidence and next repairs.
+
 
 Requirements: Python >=3.10, Git, CMake >=3.21 and Ninja for presets. The imported
 code still targets C++17. GCC/Clang/MSVC qualification and C++23 migration are

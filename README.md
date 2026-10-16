@@ -51,7 +51,11 @@ and controlled reference comparisons pass for Eistute and Book without relaxing
 tolerances. This is an explicit behavior-changing defect repair; the original
 reference's numerical differences remain recorded. See
 [the follow-up evidence](docs/evidence/STAGE1_SMOOTHING_ORDER.md).
-Integration remains blocked by missing per-incidence boundary validation.
+Per-incidence export/checking now passes for all nine Eistute/Book attempted
+states. The closure audit exposed two pre-existing defects: actual reversed
+incidences generate degenerate geometry, and CSV control fields are mislabelled.
+Both are required failing CTests; current CTest status is 5/7, with no skips.
+Keep the delivery draft. See [the incidence audit](docs/evidence/STAGE1_INCIDENCE_AUDIT.md).
 
 ## Repository policy
 

@@ -4,6 +4,7 @@
 #include "data/curve/curve_adaptive_parametric_bezier.h"
 #include "data/curve/curve_adaptive_parametric_hermite.h"
 #include "data/geometry.h"
+#include "input_output/incidence_snapshot.h"
 
 #include <ostream>
 #include <cstdio>
@@ -7951,6 +7952,13 @@ void GeneratorAdaptive::SaveMesh(std::unique_ptr<MeshAdaptive> malha, int step_)
   if (!saved_mesh) {
     return;
   }
+
+#if !USE_MPI
+  const std::string incidence_path =
+      NAME_MODEL + "_passo_" + std::to_string(step_) + "_incidences.json";
+  EnsureOutputParentDirectories(incidence_path);
+  apmesh::io::WriteIncidenceSnapshot(*saved_mesh, incidence_path, step_);
+#endif
 
 #if USE_MPI
   if (WRITE_MESH == std::string("q")) {

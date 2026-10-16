@@ -5,7 +5,8 @@
 `tools/run_generation_case.py` runs one article configuration in a fresh output
 directory. Only INPUT_MODEL and OUTPUT_PREFIX are relocated; source config and
 executable hashes, command, exit code, timeout and wall time are retained in
-process.json. Never reuse an output directory for qualification.
+process.json. New runs also bind the exact input model path/hash and reject input
+mutation during generation. Never reuse an output directory for qualification.
 
 `tools/repeat_generation.py` performs two runs with the exact same executable,
 configuration bytes, command, working directory and output prefix. It backs up
@@ -60,15 +61,60 @@ qualified separately: compare the input-validation candidate against a reference
 with only the same logical-order repair, require exact repetition of both, and
 retain the original-reference differences. See evidence/STAGE1_SMOOTHING_ORDER.md.
 
-## Boundary coverage limit
+## Incidence evidence and coverage
 
-The legacy OBJ carries no patch/sheet incidence labels. Its indexed edge counts
-cannot prove compatibility of every incident parametric boundary. Moreover,
-the legacy summary only compares curve groups when synchronization is disabled.
-The synchronized article cases consequently report compared_groups=0.
+The serial SaveMesh observer writes apmesh-incidence-v1 JSON for every attempted
+state, before later adaptation or rollback changes the state. Each snapshot
+contains the stage, ordered patch indices, four runtime curve-group identities,
+16 control points in BP record order, all owned node IDs/XYZ and every actual
+triangle's local index and three [node_id,u,v,x,y,z] corners. Floating-point
+values use max_digits10 and the classic locale. Non-finite values or output
+failures throw. The observer does not call parameterization/inverse mapping.
+MPI snapshots and non-Bezier input APIs are not qualified by this implementation.
 
-`--require-boundary-coverage` fails for the current export, even if a legacy
-group summary is measured. Default accepted-mesh validation reports absent
-incidence coverage explicitly and does not certify compatibility. Exporting
-and independently checking each incidence, including reversed orientation and
-non-manifold sheets, remains required work; do not infer it from error zero.
+The independent checker binds the recorded model hash, derives expected curve
+identity from exact BP control tuples (forward or reversed), checks every patch
+control net, and derives actual boundary chains from triangle incidences. Every
+side must cover [0,1] without gaps/overlaps/disconnections. It compares all sheets
+in each shared group, including non-manifold groups, after orientation
+normalization. It checks runtime group splits/merges, local UV consistency,
+node/face positions, global node identity and exact connectivity against the
+actual OBJ (with only its documented six-digit coordinate serialization).
+
+De Casteljau provides an independent boundary evaluator. Explicit arithmetic
+budgets are 4*epsilon for parameter complement round trips and
+512*epsilon*max(1,absolute control coordinate) per XYZ coordinate for evaluator
+roundoff. They are not discretization, welding or scientific error budgets and
+do not relax strict numerical report comparison. Input controls and identity
+matching remain exact; legacy proximity-based interning that changes the source
+net will be detected, not silently accepted. These budgets are qualified for the
+measured fixtures/cases, not a universal forward-error proof for arbitrary scales.
+
+If any snapshot exists, it must cover exactly every attempted state. Missing,
+malformed, contradictory or failed incidence evidence fails default verification
+as well as strict coverage requests. Without snapshots, legacy mesh checks can
+run but explicitly report absent incidence coverage. Strict coverage requires
+positive shared-incidence comparisons in every state; zero is never a pass.
+The synchronized legacy group summary remains unmeasured; actual snapshot
+observations provide independent evidence rather than certifying that summary.
+
+When both runs have snapshots, strict repetition compares all incidence fields
+and snapshot hashes exactly. Before/after comparison against an old reference
+without snapshots explicitly returns boundary_regression=not_compared_legacy_reference;
+it must be accompanied by separate positive coverage validation of the candidate.
+
+## Separate mandatory report-semantics gate
+
+Exact CSV repetition can reproduce a mislabelled column. The closure audit found
+that adaptation_relaxation is placed differently in the legacy CSV header and
+emitted row, shifting intermediate control labels. The independent
+`tools/audit_metric_schema.py` checks 21 named control fields against the per-stage
+analysis log without a numerical tolerance. `application.metric_schema` exercises
+this check through actual generation and currently fails. Passing mesh/incidence
+validation and strict repetition does not substitute for this required semantic
+gate. See evidence/STAGE1_INCIDENCE_AUDIT.md.
+
+Actual mixed-orientation generation currently also fails required CTest
+`application.boundary_orientation`: the program can accept a degenerate initial
+mesh. Analytic positive checker fixtures do not qualify the generator. Both
+failures block stage 1 closure and integration; historical failures remain stored.

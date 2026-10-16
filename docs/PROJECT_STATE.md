@@ -31,42 +31,57 @@ grammar validation, English CLI error diagnostics, independent OBJ/CSV/log
 verification, rejection of historical targets without accepted-state evidence,
 strict before/after comparisons and exact-configuration repeatability tooling.
 
-Executed: GCC serial build, 38 Python controls, 23 real invalid-input controls,
-three valid shipped model grammars, six valid configuration controls and CTest
-5/5. New C++ header/probe formatting and consumer clang-tidy passed.
+Executed in the current incidence follow-up: native Windows GCC 16.1.0 serial
+C++17 build PASS; 65 Python controls and 23 executable invalid-input controls
+PASS. New exporter/header format PASS. Full CTest is **5 passed, 2 failed,
+0 skipped**; the two new required application gates expose pre-existing defects.
+Selected exporter clang-tidy also fails on 18 existing included legacy/Eigen
+header diagnostics; no suppressions or vendor edits were applied.
 
-Numerical root cause proved: EdgeSet orders Edge* addresses, so identical
-Laplacian inputs were summed in different orders. A full-precision trace found
-5,685 different sums with otherwise identical inputs in 424,144 aligned vertex
-visits. The draft now sorts adjacency by unique edge ID and rejects ambiguous
-IDs. This is a behavior-changing defect repair, not a numerical-neutral refactor.
-Formulas, weights, thresholds, vertex iteration, quality checks and acceptance
-policy remain unchanged. No tolerance was relaxed.
+The prior pointer-ordered Laplacian defect is repaired and remains documented
+as a behavior-changing defect repair. Current article repetitions preserve every
+OBJ, CSV/acceptance field and incidence snapshot exactly. Before/after comparison
+against the previous candidate preserves every old artifact/decision field.
+The original-reference numerical failures remain recorded.
 
-Strict Eistute/Book candidate repetitions pass: 5/4 identical OBJ files and all
-CSV/decision fields equal. The controlled reference (main plus only the same
-smoothing-order repair) also repeats exactly for Eistute and compares exactly
-with the input-validation candidate for both cases. Last accepted stage remains
-1: Eistute 1,168 triangles, Book 4,418. Original-reference Eistute comparison
-still fails in 43 fields and remains recorded; Book remains exact. See
-`docs/evidence/STAGE1_SMOOTHING_ORDER.md` and its source/executable manifests.
+Per-incidence observation is now implemented: all 16 Eistute / 112 Book patch
+sides are checked in each of their 5 / 4 attempted states, including rejected
+candidates. Shared non-manifold curves have 4 / 28 sheets, with 3 / 27 independent
+comparisons per state and zero observed shared-position gap. Last accepted stage
+remains 1: Eistute 1,168 triangles; Book 4,418. The independent checker has positive
+mixed-orientation controls, but those do not qualify actual reversed generation.
 
-Next action: export and independently check every shared-boundary incidence,
-including reversed orientations and non-manifold sheets. Keep draft PR #3 and
-main unchanged until that gate and the declared regression checks pass.
+The closure audit found two required failures:
 
-Per-incidence boundary validation also remains open: legacy OBJ lacks patch
-incidence labels, and synchronized legacy reports compare zero curve groups.
-The new verifier explicitly reports absent incidence coverage and fails the
-strict boundary-coverage request, even if a legacy group summary is measured.
-Do not mark stage 1 complete or begin stage 2 while this work item is open.
+- `application.boundary_orientation`: aligned manifold/non-manifold controls
+  pass, but reversed controls return success with accepted degenerate geometry.
+  The previous executable produces identical failing OBJ bytes. A reused curve's
+  stored direction is consumed without a coherent patch-incidence mapping;
+  source control points and shared endpoints are altered in the analytic control.
+- `application.metric_schema`: CSV control-column labels do not align with their
+  emitted values. A real aligned control has nine mismatches against named log
+  fields. Previous Eistute output also fails the independent semantic audit.
+  Exact before/after equality alone preserves this existing reporting defect.
+
+Next action: repair direction handling in control-net construction and local
+boundary-to-UV mapping, then qualify real reversed adaptive/retry/rollback cases.
+Repair CSV header/value alignment with independent controls and an explicit
+output-change record. Re-run closure audit and all required gates on the same
+revision. Keep PR #3 draft and main unchanged; do not begin stage 2.
+
+Evidence: `docs/evidence/STAGE1_INCIDENCE_AUDIT.md` and
+`docs/evidence/stage1/incidences/`. The historical numerical investigation is in
+`docs/evidence/STAGE1_SMOOTHING_ORDER.md`. Every stage now requires an explicit
+closing audit, regression, failure inventory and post-merge validation.
 
 ## Open blockers and limitations
 
 - Main still has the historical input/verifier and pointer-order defects. The
-  draft repairs them; integration is blocked by missing boundary incidence proof.
-- Compatibility instrumentation may record zero compared groups; the new checker
-  rejects such a report but does not repair the instrumentation itself.
+  draft repairs them but cannot integrate while reversed geometry and CSV
+  semantics fail required gates.
+- Legacy compatibility summaries still compare zero groups when synchronized.
+  Independent incidence evidence now measures actual sheets and does not treat
+  that legacy zero as proof of compatibility.
 - Ownership findings, timers, duplicate mesh representations, VLAs and warning
   debt remain. No full-application leak-free claim is justified.
 - Eigen remains; CRABMesh consolidation, complete English renaming, generated

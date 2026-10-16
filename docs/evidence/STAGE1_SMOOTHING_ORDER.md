@@ -1,3 +1,8 @@
+> Historical follow-up at 3271996. The subsequent STAGE1_INCIDENCE_AUDIT.md
+> implements measured incidence checking and records newly exposed required
+> failures. Current CTest is 5/7, not the historical 5/5 below. No stage closure
+> or integration is qualified by this earlier numerical result alone.
+
 # Stage 1 follow-up: deterministic smoothing reductions
 
 Date: 2026-10-16 UTC. Work item: issue #2 / draft PR #3.

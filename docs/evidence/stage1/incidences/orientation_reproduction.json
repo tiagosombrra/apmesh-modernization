@@ -1,0 +1,46 @@
+[
+  {
+    "case": "aligned_manifold",
+    "candidate_exit_code": 0,
+    "reference_exit_code": 0,
+    "input_bytes_equal": true,
+    "obj_bytes_equal": true,
+    "obj_sha256": "e4a2acdbedc830cda0ea5730f39c92cc615779700d056059b1497e0bdc16f432",
+    "candidate_verification": "passed",
+    "candidate_error": null,
+    "reference_error": "Per-incidence boundary coverage is unavailable in the legacy export"
+  },
+  {
+    "case": "reversed_manifold",
+    "candidate_exit_code": 0,
+    "reference_exit_code": 0,
+    "input_bytes_equal": true,
+    "obj_bytes_equal": true,
+    "obj_sha256": "1a9a65e1b8abd186dc591f08f4f011a680fde346027abc15cf4bfe5cc3202b56",
+    "candidate_verification": "failed",
+    "candidate_error": "Degenerate exported triangle",
+    "reference_error": "Degenerate exported triangle"
+  },
+  {
+    "case": "aligned_nonmanifold",
+    "candidate_exit_code": 0,
+    "reference_exit_code": 0,
+    "input_bytes_equal": true,
+    "obj_bytes_equal": true,
+    "obj_sha256": "ea6f7172bd5c2dfe8d4a4bdfc98beb9d13a00afc27cf32ad2988402f570a6996",
+    "candidate_verification": "passed",
+    "candidate_error": null,
+    "reference_error": "Per-incidence boundary coverage is unavailable in the legacy export"
+  },
+  {
+    "case": "reversed_nonmanifold",
+    "candidate_exit_code": 0,
+    "reference_exit_code": 0,
+    "input_bytes_equal": true,
+    "obj_bytes_equal": true,
+    "obj_sha256": "8ff662e2bbfbaff7053bcec30feb152b465e8f4b5066d010d1660596867f8ca8",
+    "candidate_verification": "failed",
+    "candidate_error": "Degenerate exported triangle",
+    "reference_error": "Degenerate exported triangle"
+  }
+]

@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 
 from check_compatibility import validate as validate_compatibility
+from check_boundary_incidence import inspect_snapshot
 
 MESH = re.compile(r"(.+)_passo_(\d+)_malha_(\d+)\.obj$")
 LOG = re.compile(r"(.+)_passo_(\d+)_acceptance_(accepted|rejected)\.log$")
@@ -24,6 +25,12 @@ class RegressionMismatch(ValueError):
     def __init__(self, report):
         self.report = report
         super().__init__(f"Strict generation regression: {len(report['differences'])} differing fields")
+
+
+class BoundaryCoverageMismatch(ValueError):
+    def __init__(self, report):
+        self.report = report
+        super().__init__("Independent boundary incidence validation failed")
 
 
 def differing_fields(left, right, path=""):
@@ -184,11 +191,36 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
             validate_compatibility(compatibility_paths[0])
             compatibility = "legacy_summary_measured"
         except ValueError as error:
-            if require_boundary or not str(error).startswith(("Compatibility is unmeasured", "Compatibility report contains no observations")):
+            if not str(error).startswith(("Compatibility is unmeasured", "Compatibility report contains no observations")):
                 raise
-    elif require_boundary:
+    elif len(compatibility_paths) > 1:
         raise ValueError("Boundary compatibility report is missing or ambiguous")
-    if require_boundary:
+    snapshots = list(root.glob("*_incidences.json"))
+    incidence_reports = {}
+    coverage = "not_available_in_legacy_export"
+    if snapshots:
+        expected_paths = {root / f"{prefix}_passo_{step}_incidences.json" for step in meshes}
+        if set(snapshots) != expected_paths:
+            raise ValueError("Incidence snapshots must cover exactly every attempted state")
+        model = Path(process.get("input_model", ""))
+        if not model.is_file() or not process.get("input_model_sha256"):
+            raise ValueError("Incidence verification requires the recorded input model identity")
+        if hashlib.sha256(model.read_bytes()).hexdigest() != process["input_model_sha256"]:
+            raise ValueError("Input model differs from the executed generation")
+        for step, mesh in sorted(meshes.items()):
+            path = root / f"{prefix}_passo_{step}_incidences.json"
+            boundary = inspect_snapshot(path, model, mesh, step)
+            if boundary["node_incidences"] != statistics[step]["csv_node_incidences"]:
+                raise ValueError("Snapshot node incidences disagree with metrics")
+            incidence_reports[step] = boundary
+        if any(item["status"] != "passed" for item in incidence_reports.values()):
+            raise BoundaryCoverageMismatch({"status": "failed", "model": process["model"],
+                                            "boundary_incidences": incidence_reports})
+        coverage = ("verified" if all(item["compared_incidences"] > 0 for item in incidence_reports.values())
+                    else "no_shared_boundary_comparisons")
+    if require_boundary and coverage != "verified":
+        if coverage == "no_shared_boundary_comparisons":
+            raise ValueError("Shared-boundary incidence validation contains no comparisons")
         raise ValueError("Per-incidence boundary coverage is unavailable in the legacy export")
     # Legacy group summaries do not prove per-sheet incidence coverage.
     return {"model": process["model"], "accepted_steps": accepted, "rejected_steps": rejected,
@@ -196,7 +228,8 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
             "last_accepted_step": accepted[-1], "meshes": statistics, "decisions": decisions,
             "stop_reason": metrics[max(decisions)]["stop_reason"], "metrics": metrics,
             "boundary_compatibility": compatibility,
-            "boundary_incidence_coverage": "not_available_in_legacy_export",
+            "boundary_incidence_coverage": coverage, "boundary_incidences": incidence_reports,
+            "input_model_sha256": process.get("input_model_sha256"),
             "quality_comparison_abs_tolerance": EXPORTED_QUALITY_ABS_TOLERANCE}
 
 
@@ -204,6 +237,12 @@ def compare_runs(reference: dict, candidate: dict) -> dict:
     differences = []
     for key in ["model", "source_config_sha256", "accepted_steps", "rejected_steps", "last_accepted_step", "decisions", "metrics", "stop_reason"]:
         differences.extend(differing_fields(reference[key], candidate[key], key))
+    if reference.get("input_model_sha256") and candidate.get("input_model_sha256"):
+        differences.extend(differing_fields(reference["input_model_sha256"], candidate["input_model_sha256"], "input_model_sha256"))
+    boundary_comparison = "not_compared_legacy_reference"
+    if reference.get("boundary_incidences") and candidate.get("boundary_incidences"):
+        differences.extend(differing_fields(reference["boundary_incidences"], candidate["boundary_incidences"], "boundary_incidences"))
+        boundary_comparison = "exact"
     if set(reference["meshes"]) != set(candidate["meshes"]):
         raise ValueError("Generated mesh coverage changed")
     for step in reference["meshes"]:
@@ -218,7 +257,8 @@ def compare_runs(reference: dict, candidate: dict) -> dict:
             "all_obj_byte_identical": True, "all_acceptance_fields_equal": True,
             "last_accepted_step": candidate["last_accepted_step"],
             "last_accepted_triangles": candidate["meshes"][candidate["last_accepted_step"]]["triangles"],
-            "boundary_incidence_coverage": candidate["boundary_incidence_coverage"]}
+            "boundary_incidence_coverage": candidate["boundary_incidence_coverage"],
+            "boundary_regression": boundary_comparison}
 
 
 if __name__ == "__main__":
@@ -237,7 +277,7 @@ if __name__ == "__main__":
         if args.report:
             args.report.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
         print(json.dumps(report))
-    except RegressionMismatch as error:
+    except (RegressionMismatch, BoundaryCoverageMismatch) as error:
         if args.report:
             args.report.write_text(json.dumps(error.report, indent=2) + "\n", encoding="utf-8", newline="\n")
         parser.exit(1, f"{error}\n")

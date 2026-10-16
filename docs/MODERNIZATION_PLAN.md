@@ -4,12 +4,12 @@ Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
 Current status: stage 0 integrated in PR #1; stage 1 remains the sole active
-work item (issue #2, draft PR #3). The Eistute numerical instability was isolated
-to pointer-ordered Laplacian sums. A documented logical-edge-order defect repair
-passes strict repetitions and controlled reference comparisons for Eistute and
-Book. Original-reference differences remain recorded; no tolerance was relaxed.
-Per-incidence boundary coverage remains the integration blocker. Stages 2-11
-have not started. See evidence/STAGE1_SMOOTHING_ORDER.md.
+work item (issue #2, draft PR #3). The numerical reduction-order repair passes
+strict Eistute/Book repetition. New per-incidence export/checking passes for all
+nine attempted article states. Closure audit now exposes required failures for
+actual reversed-incidence generation and CSV header/value semantics. Current
+CTest is 5 passed / 2 failed / 0 skipped; integration remains blocked. Stages 2-11
+have not begun. See evidence/STAGE1_INCIDENCE_AUDIT.md.
 
 ## Non-negotiable boundary
 
@@ -39,6 +39,24 @@ explicit scientific proposal and advisor agreement after software stabilization.
 English, tests and contracts accompany each touched component; stages 7 and 8
 are comprehensive closure reviews. Stages 3/4 may alternate to unblock memory
 tools, with one active work item at a time. No broad rewrite before stage 2.
+
+## Mandatory stage closure
+
+Every stage ends with an audit and regression before it can be marked complete:
+
+1. Recheck remote main, branches, PRs and checks for concurrent work.
+2. Review the code delta, scientific invariants, contracts and documentation.
+3. Challenge coverage with independent positive and deliberately broken controls;
+   inspect accepted, rejected, retry and rollback evidence where applicable.
+4. Run the required regression on the exact delivery revision. Retain commands,
+   source/input/executable identities, results, failures and coverage limits.
+5. Keep the stage open when a required gate fails or lacks observations. Fix the
+   cause without weakening the assertion or silently replacing its oracle.
+6. Integrate only when required gates pass, then validate main again. Update the
+   state and evidence before beginning the next stage.
+
+This closure rule was explicitly requested by the user on 2026-10-15 Fortaleza.
+It reduces the chance of unnoticed errors; it is not a claim of exhaustive proof.
 
 ## Test program
 

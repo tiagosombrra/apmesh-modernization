@@ -10,6 +10,16 @@ if(BUILD_TESTING)
   add_test(NAME application.invalid_inputs
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/cli_failures.py"
       --exe "$<TARGET_FILE:ap_mesh>" --workspace "${CMAKE_BINARY_DIR}/input-controls")
+  add_test(NAME application.boundary_orientation
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/boundary_orientation_case.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --workspace "${CMAKE_BINARY_DIR}/orientation-controls")
+  set_tests_properties(application.boundary_orientation
+    PROPERTIES LABELS "application;boundary-incidence;required-gate" TIMEOUT 300)
+  add_test(NAME application.metric_schema
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/metric_schema_case.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --workspace "${CMAKE_BINARY_DIR}/metric-schema-controls")
+  set_tests_properties(application.metric_schema
+    PROPERTIES LABELS "application;metric-schema;required-gate" TIMEOUT 90)
   add_executable(input_validation_probe "${CMAKE_SOURCE_DIR}/tests/input_validation_probe.cpp")
   target_compile_features(input_validation_probe PRIVATE cxx_std_17)
   target_include_directories(input_validation_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")

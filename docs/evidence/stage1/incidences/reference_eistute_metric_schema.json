@@ -1,0 +1,379 @@
+{
+  "status": "failed",
+  "rows": 5,
+  "compared_fields": 105,
+  "differences": [
+    {
+      "step": 0,
+      "field": "adaptation_relaxation",
+      "csv": "1",
+      "analysis_log": "0.3"
+    },
+    {
+      "step": 0,
+      "field": "local_budget_mode",
+      "csv": "0",
+      "analysis_log": "1"
+    },
+    {
+      "step": 0,
+      "field": "target_element_growth",
+      "csv": "16",
+      "analysis_log": "0"
+    },
+    {
+      "step": 0,
+      "field": "actual_elements_step",
+      "csv": "1",
+      "analysis_log": "16"
+    },
+    {
+      "step": 0,
+      "field": "actual_element_growth",
+      "csv": "0",
+      "analysis_log": "1"
+    },
+    {
+      "step": 0,
+      "field": "top_patch_candidate_count",
+      "csv": "initial",
+      "analysis_log": "0"
+    },
+    {
+      "step": 0,
+      "field": "generation_control_mode",
+      "csv": "0",
+      "analysis_log": "initial"
+    },
+    {
+      "step": 0,
+      "field": "patch_consistency_penalty",
+      "csv": "initial",
+      "analysis_log": "0"
+    },
+    {
+      "step": 0,
+      "field": "budget_driver_mode",
+      "csv": "0.3",
+      "analysis_log": "initial"
+    },
+    {
+      "step": 1,
+      "field": "adaptation_relaxation",
+      "csv": "1",
+      "analysis_log": "0.3"
+    },
+    {
+      "step": 1,
+      "field": "local_budget_mode",
+      "csv": "1.02",
+      "analysis_log": "1"
+    },
+    {
+      "step": 1,
+      "field": "target_element_growth",
+      "csv": "16.32",
+      "analysis_log": "1.02"
+    },
+    {
+      "step": 1,
+      "field": "target_elements_step",
+      "csv": "1168",
+      "analysis_log": "16.32"
+    },
+    {
+      "step": 1,
+      "field": "actual_elements_step",
+      "csv": "1.02",
+      "analysis_log": "1168"
+    },
+    {
+      "step": 1,
+      "field": "target_growth_step",
+      "csv": "73",
+      "analysis_log": "1.02"
+    },
+    {
+      "step": 1,
+      "field": "actual_element_growth",
+      "csv": "0.00019394",
+      "analysis_log": "73"
+    },
+    {
+      "step": 1,
+      "field": "step_efficiency",
+      "csv": "0",
+      "analysis_log": "0.00019394"
+    },
+    {
+      "step": 1,
+      "field": "top_patch_candidate_count",
+      "csv": "repair",
+      "analysis_log": "0"
+    },
+    {
+      "step": 1,
+      "field": "generation_control_mode",
+      "csv": "1",
+      "analysis_log": "repair"
+    },
+    {
+      "step": 1,
+      "field": "consistency_regularization_active",
+      "csv": "0",
+      "analysis_log": "1"
+    },
+    {
+      "step": 1,
+      "field": "patch_consistency_penalty",
+      "csv": "budget_driven",
+      "analysis_log": "0"
+    },
+    {
+      "step": 1,
+      "field": "budget_driver_mode",
+      "csv": "0.3",
+      "analysis_log": "budget_driven"
+    },
+    {
+      "step": 2,
+      "field": "adaptation_relaxation",
+      "csv": "1",
+      "analysis_log": "0.3"
+    },
+    {
+      "step": 2,
+      "field": "local_budget_mode",
+      "csv": "1.02",
+      "analysis_log": "1"
+    },
+    {
+      "step": 2,
+      "field": "target_element_growth",
+      "csv": "1191.36",
+      "analysis_log": "1.02"
+    },
+    {
+      "step": 2,
+      "field": "target_elements_step",
+      "csv": "2008",
+      "analysis_log": "1191.36"
+    },
+    {
+      "step": 2,
+      "field": "actual_elements_step",
+      "csv": "1.02",
+      "analysis_log": "2008"
+    },
+    {
+      "step": 2,
+      "field": "target_growth_step",
+      "csv": "1",
+      "analysis_log": "1.02"
+    },
+    {
+      "step": 2,
+      "field": "actual_element_growth",
+      "csv": "-1.8412e-05",
+      "analysis_log": "1"
+    },
+    {
+      "step": 2,
+      "field": "step_efficiency",
+      "csv": "0",
+      "analysis_log": "-1.8412e-05"
+    },
+    {
+      "step": 2,
+      "field": "improved_top_patches",
+      "csv": "4",
+      "analysis_log": "0"
+    },
+    {
+      "step": 2,
+      "field": "top_patch_candidate_count",
+      "csv": "repair",
+      "analysis_log": "4"
+    },
+    {
+      "step": 2,
+      "field": "generation_control_mode",
+      "csv": "0",
+      "analysis_log": "repair"
+    },
+    {
+      "step": 2,
+      "field": "patch_consistency_penalty",
+      "csv": "budget_driven",
+      "analysis_log": "0"
+    },
+    {
+      "step": 2,
+      "field": "budget_driver_mode",
+      "csv": "0.3",
+      "analysis_log": "budget_driven"
+    },
+    {
+      "step": 3,
+      "field": "adaptation_relaxation",
+      "csv": "1",
+      "analysis_log": "0.3"
+    },
+    {
+      "step": 3,
+      "field": "local_budget_mode",
+      "csv": "1.02",
+      "analysis_log": "1"
+    },
+    {
+      "step": 3,
+      "field": "target_element_growth",
+      "csv": "1191.36",
+      "analysis_log": "1.02"
+    },
+    {
+      "step": 3,
+      "field": "target_elements_step",
+      "csv": "2196",
+      "analysis_log": "1191.36"
+    },
+    {
+      "step": 3,
+      "field": "actual_elements_step",
+      "csv": "1.02",
+      "analysis_log": "2196"
+    },
+    {
+      "step": 3,
+      "field": "target_growth_step",
+      "csv": "1",
+      "analysis_log": "1.02"
+    },
+    {
+      "step": 3,
+      "field": "actual_element_growth",
+      "csv": "-1.2213e-05",
+      "analysis_log": "1"
+    },
+    {
+      "step": 3,
+      "field": "step_efficiency",
+      "csv": "0",
+      "analysis_log": "-1.2213e-05"
+    },
+    {
+      "step": 3,
+      "field": "improved_top_patches",
+      "csv": "4",
+      "analysis_log": "0"
+    },
+    {
+      "step": 3,
+      "field": "top_patch_candidate_count",
+      "csv": "repair",
+      "analysis_log": "4"
+    },
+    {
+      "step": 3,
+      "field": "generation_control_mode",
+      "csv": "0",
+      "analysis_log": "repair"
+    },
+    {
+      "step": 3,
+      "field": "patch_consistency_penalty",
+      "csv": "budget_driven",
+      "analysis_log": "0"
+    },
+    {
+      "step": 3,
+      "field": "budget_driver_mode",
+      "csv": "0.3",
+      "analysis_log": "budget_driven"
+    },
+    {
+      "step": 4,
+      "field": "adaptation_relaxation",
+      "csv": "1",
+      "analysis_log": "0.3"
+    },
+    {
+      "step": 4,
+      "field": "local_budget_mode",
+      "csv": "1.02",
+      "analysis_log": "1"
+    },
+    {
+      "step": 4,
+      "field": "target_element_growth",
+      "csv": "1191.36",
+      "analysis_log": "1.02"
+    },
+    {
+      "step": 4,
+      "field": "target_elements_step",
+      "csv": "7184",
+      "analysis_log": "1191.36"
+    },
+    {
+      "step": 4,
+      "field": "actual_elements_step",
+      "csv": "1.02",
+      "analysis_log": "7184"
+    },
+    {
+      "step": 4,
+      "field": "target_growth_step",
+      "csv": "1",
+      "analysis_log": "1.02"
+    },
+    {
+      "step": 4,
+      "field": "actual_element_growth",
+      "csv": "8.57409e-06",
+      "analysis_log": "1"
+    },
+    {
+      "step": 4,
+      "field": "step_efficiency",
+      "csv": "1",
+      "analysis_log": "8.57409e-06"
+    },
+    {
+      "step": 4,
+      "field": "local_progress_coverage",
+      "csv": "4",
+      "analysis_log": "1"
+    },
+    {
+      "step": 4,
+      "field": "top_patch_candidate_count",
+      "csv": "refine",
+      "analysis_log": "4"
+    },
+    {
+      "step": 4,
+      "field": "generation_control_mode",
+      "csv": "1",
+      "analysis_log": "refine"
+    },
+    {
+      "step": 4,
+      "field": "consistency_regularization_active",
+      "csv": "0",
+      "analysis_log": "1"
+    },
+    {
+      "step": 4,
+      "field": "patch_consistency_penalty",
+      "csv": "budget_driven",
+      "analysis_log": "0"
+    },
+    {
+      "step": 4,
+      "field": "budget_driver_mode",
+      "csv": "0.3",
+      "analysis_log": "budget_driven"
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "status": "failed",
+  "workspace": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq",
+  "cases": [
+    {
+      "case": "aligned_manifold",
+      "sheets": 2,
+      "reversed": false,
+      "process": {
+        "model": "aligned_manifold",
+        "status": "completed",
+        "exit_code": 0,
+        "input_model": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq\\aligned_manifold\\control.bp",
+        "input_model_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444",
+        "executable_sha256": "2a452a53b05740b93b3a9c4580b099f1419e23d5543dd98a3c83de8bf7b74ccc",
+        "command": [
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq\\aligned_manifold\\article.conf"
+        ]
+      },
+      "status": "passed",
+      "boundary_incidences": {
+        "0": {
+          "status": "passed",
+          "step": 0,
+          "patches": 2,
+          "incidences": 8,
+          "curve_groups": 7,
+          "shared_groups": 1,
+          "shared_incidences": 2,
+          "compared_incidences": 1,
+          "nonmanifold_groups": 0,
+          "max_curve_incidence": 2,
+          "reversed_incidences": 2,
+          "boundary_segments": 8,
+          "reversed_shared_incidences": 0,
+          "mixed_orientation_groups": 0,
+          "node_incidences": 10,
+          "triangles": 8,
+          "max_curve_error": 0.0,
+          "max_shared_gap": 0.0,
+          "parameter_roundtrip_budget": 8.881784197001252e-16,
+          "evaluation_roundoff_factor": 1.1368683772161603e-13,
+          "issues": {},
+          "examples": [],
+          "snapshot_sha256": "6a7175d570caf33a75c2e342361ec9ac9b0d21a770f29b8f907b48331b7254ac",
+          "input_model_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444"
+        }
+      }
+    },
+    {
+      "case": "reversed_manifold",
+      "sheets": 2,
+      "reversed": true,
+      "process": {
+        "model": "reversed_manifold",
+        "status": "completed",
+        "exit_code": 0,
+        "input_model": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq\\reversed_manifold\\control.bp",
+        "input_model_sha256": "b15fb9c6f174669d15f82ee812553a1d94734474d66c01d65bdfd916f04f7955",
+        "executable_sha256": "2a452a53b05740b93b3a9c4580b099f1419e23d5543dd98a3c83de8bf7b74ccc",
+        "command": [
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq\\reversed_manifold\\article.conf"
+        ]
+      },
+      "status": "failed",
+      "error": "Degenerate exported triangle",
+      "boundary_diagnostic": {
+        "status": "failed",
+        "step": 0,
+        "patches": 2,
+        "incidences": 8,
+        "curve_groups": 7,
+        "shared_groups": 1,
+        "shared_incidences": 2,
+        "compared_incidences": 1,
+        "nonmanifold_groups": 0,
+        "max_curve_incidence": 2,
+        "reversed_incidences": 4,
+        "boundary_segments": 8,
+        "reversed_shared_incidences": 1,
+        "mixed_orientation_groups": 1,
+        "node_incidences": 10,
+        "triangles": 8,
+        "max_curve_error": 1.0,
+        "max_shared_gap": 1,
+        "parameter_roundtrip_budget": 8.881784197001252e-16,
+        "evaluation_roundoff_factor": 1.1368683772161603e-13,
+        "issues": {
+          "source_control_mismatch": 1,
+          "off_source_boundary": 2,
+          "shared_position_mismatch": 1
+        },
+        "examples": [
+          {
+            "kind": "source_control_mismatch",
+            "patch": 1
+          },
+          {
+            "kind": "off_source_boundary",
+            "patch": 1,
+            "slot": 2,
+            "parameter": 0,
+            "error": 1.0,
+            "roundoff_budget": 1.1368683772161603e-13
+          },
+          {
+            "kind": "off_source_boundary",
+            "patch": 1,
+            "slot": 3,
+            "parameter": 1,
+            "error": 1.0,
+            "roundoff_budget": 1.1368683772161603e-13
+          },
+          {
+            "kind": "shared_position_mismatch",
+            "patch": 1,
+            "slot": 3,
+            "gap": 1,
+            "roundoff_budget": 1.1368683772161603e-13
+          }
+        ],
+        "snapshot_sha256": "af2396c250ac2a79bdda0d393c596fe685abb084ec45edc1932da335f316c84a",
+        "input_model_sha256": "b15fb9c6f174669d15f82ee812553a1d94734474d66c01d65bdfd916f04f7955"
+      }
+    },
+    {
+      "case": "aligned_nonmanifold",
+      "sheets": 3,
+      "reversed": false,
+      "process": {
+        "model": "aligned_nonmanifold",
+        "status": "completed",
+        "exit_code": 0,
+        "input_model": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq\\aligned_nonmanifold\\control.bp",
+        "input_model_sha256": "00aec216ff1349b2fcf17b91fbc7ec80e4aad8e4e7d0a58799f1438fede89f1b",
+        "executable_sha256": "2a452a53b05740b93b3a9c4580b099f1419e23d5543dd98a3c83de8bf7b74ccc",
+        "command": [
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq\\aligned_nonmanifold\\article.conf"
+        ]
+      },
+      "status": "passed",
+      "boundary_incidences": {
+        "0": {
+          "status": "passed",
+          "step": 0,
+          "patches": 3,
+          "incidences": 12,
+          "curve_groups": 10,
+          "shared_groups": 1,
+          "shared_incidences": 3,
+          "compared_incidences": 2,
+          "nonmanifold_groups": 1,
+          "max_curve_incidence": 3,
+          "reversed_incidences": 4,
+          "boundary_segments": 12,
+          "reversed_shared_incidences": 0,
+          "mixed_orientation_groups": 0,
+          "node_incidences": 15,
+          "triangles": 12,
+          "max_curve_error": 0.0,
+          "max_shared_gap": 0.0,
+          "parameter_roundtrip_budget": 8.881784197001252e-16,
+          "evaluation_roundoff_factor": 1.1368683772161603e-13,
+          "issues": {},
+          "examples": [],
+          "snapshot_sha256": "72c09af8c75be60a11ba1df68c15cfaeb472daed17adb3925dea9046572a66c0",
+          "input_model_sha256": "00aec216ff1349b2fcf17b91fbc7ec80e4aad8e4e7d0a58799f1438fede89f1b"
+        }
+      }
+    },
+    {
+      "case": "reversed_nonmanifold",
+      "sheets": 3,
+      "reversed": true,
+      "process": {
+        "model": "reversed_nonmanifold",
+        "status": "completed",
+        "exit_code": 0,
+        "input_model": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq\\reversed_nonmanifold\\control.bp",
+        "input_model_sha256": "cabde0a76881380ffea6cc83568bd6e55a9ca1229fae052c082eba39c912c5fd",
+        "executable_sha256": "2a452a53b05740b93b3a9c4580b099f1419e23d5543dd98a3c83de8bf7b74ccc",
+        "command": [
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-p2rxolkq\\reversed_nonmanifold\\article.conf"
+        ]
+      },
+      "status": "failed",
+      "error": "Degenerate exported triangle",
+      "boundary_diagnostic": {
+        "status": "failed",
+        "step": 0,
+        "patches": 3,
+        "incidences": 12,
+        "curve_groups": 10,
+        "shared_groups": 1,
+        "shared_incidences": 3,
+        "compared_incidences": 2,
+        "nonmanifold_groups": 1,
+        "max_curve_incidence": 3,
+        "reversed_incidences": 6,
+        "boundary_segments": 12,
+        "reversed_shared_incidences": 1,
+        "mixed_orientation_groups": 1,
+        "node_incidences": 15,
+        "triangles": 12,
+        "max_curve_error": 1.0,
+        "max_shared_gap": 1,
+        "parameter_roundtrip_budget": 8.881784197001252e-16,
+        "evaluation_roundoff_factor": 1.1368683772161603e-13,
+        "issues": {
+          "source_control_mismatch": 1,
+          "off_source_boundary": 2,
+          "shared_position_mismatch": 1
+        },
+        "examples": [
+          {
+            "kind": "source_control_mismatch",
+            "patch": 2
+          },
+          {
+            "kind": "off_source_boundary",
+            "patch": 2,
+            "slot": 2,
+            "parameter": 0,
+            "error": 1.0,
+            "roundoff_budget": 1.1368683772161603e-13
+          },
+          {
+            "kind": "off_source_boundary",
+            "patch": 2,
+            "slot": 3,
+            "parameter": 1,
+            "error": 1.0,
+            "roundoff_budget": 1.1368683772161603e-13
+          },
+          {
+            "kind": "shared_position_mismatch",
+            "patch": 2,
+            "slot": 3,
+            "gap": 1,
+            "roundoff_budget": 1.1368683772161603e-13
+          }
+        ],
+        "snapshot_sha256": "4a91a5af92aa1cc3d68f8b9a1c229bdc2ee31f151998ffd2e1350dd1d673a61f",
+        "input_model_sha256": "cabde0a76881380ffea6cc83568bd6e55a9ca1229fae052c082eba39c912c5fd"
+      }
+    }
+  ]
+}
