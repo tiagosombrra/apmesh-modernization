@@ -16,6 +16,27 @@ constexpr double kFindUvDamping = 0.65;
 constexpr double kFindUvParamTol = 1e-5;
 // Parada por erro 3D no patch (fracao de TOLERANCE usada na malha).
 constexpr double kFindUvSpatialFactor = 50.0;
+
+PointAdaptive OrientedControl(CurveAdaptive* curve, unsigned int index, bool forward) {
+  const auto* bezier = static_cast<CurveAdaptiveParametricBezier*>(curve);
+  switch (forward ? index : 3 - index) {
+  case 0:
+    return bezier->GetPoint0();
+  case 1:
+    return bezier->GetPoint1();
+  case 2:
+    return bezier->GetPoint2();
+  default:
+    return bezier->GetPoint3();
+  }
+}
+
+CurveAdaptiveParametricBezier* CreateOrientedCurve(const PointAdaptive& p0, const PointAdaptive& p1,
+                                                   const PointAdaptive& p2, const PointAdaptive& p3,
+                                                   bool forward) {
+  return forward ? new CurveAdaptiveParametricBezier(p0, p1, p2, p3)
+                 : new CurveAdaptiveParametricBezier(p3, p2, p1, p0);
+}
 }  // namespace
 
 PatchBezier::PatchBezier()
@@ -33,6 +54,10 @@ PatchBezier::PatchBezier()
       id_patch_bezier_(0) {}
 
 PatchBezier::PatchBezier(PatchBezier* patch_bezier) : PatchCoons(patch_bezier) {
+  signal_curve1_ = patch_bezier->signal_curve1_;
+  signal_curve2_ = patch_bezier->signal_curve2_;
+  signal_curve3_ = patch_bezier->signal_curve3_;
+  signal_curve4_ = patch_bezier->signal_curve4_;
   this->pt03_ = patch_bezier->pt03_;
   this->pt13_ = patch_bezier->pt13_;
   this->pt23_ = patch_bezier->pt23_;
@@ -94,33 +119,21 @@ PatchBezier::PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,
   //
   // 3. Seta os atributos de acordo com as curvas
   //
-  this->pt00_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve1)->GetPoint0();
-  this->pt10_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve1)->GetPoint1();
-  this->pt20_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve1)->GetPoint2();
+  this->pt00_ = OrientedControl(curve1, 0, signal_curve1);
+  this->pt10_ = OrientedControl(curve1, 1, signal_curve1);
+  this->pt20_ = OrientedControl(curve1, 2, signal_curve1);
 
-  this->pt30_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve2)->GetPoint0();
-  this->pt31_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve2)->GetPoint1();
-  this->pt32_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve2)->GetPoint2();
+  this->pt30_ = OrientedControl(curve2, 0, signal_curve2);
+  this->pt31_ = OrientedControl(curve2, 1, signal_curve2);
+  this->pt32_ = OrientedControl(curve2, 2, signal_curve2);
 
-  this->pt13_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve3)->GetPoint1();
-  this->pt23_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve3)->GetPoint2();
-  this->pt33_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve3)->GetPoint3();
+  this->pt13_ = OrientedControl(curve3, 1, signal_curve3);
+  this->pt23_ = OrientedControl(curve3, 2, signal_curve3);
+  this->pt33_ = OrientedControl(curve3, 3, signal_curve3);
 
-  this->pt01_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve4)->GetPoint1();
-  this->pt02_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve4)->GetPoint2();
-  this->pt03_ =
-      static_cast<CurveAdaptiveParametricBezier*>(curve4)->GetPoint3();
+  this->pt01_ = OrientedControl(curve4, 1, signal_curve4);
+  this->pt02_ = OrientedControl(curve4, 2, signal_curve4);
+  this->pt03_ = OrientedControl(curve4, 3, signal_curve4);
 
   this->pt11_ = pt11;
   this->pt21_ = pt21;
@@ -248,14 +261,10 @@ PatchBezier ::PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,
 
   // 1. Inclui as curvas na lista de curvas de CoonsPatch
   //
-  this->curves_.push_back(
-      new CurveAdaptiveParametricBezier(pt00_, pt10_, pt20_, pt30_));
-  this->curves_.push_back(
-      new CurveAdaptiveParametricBezier(pt30_, pt31_, pt32_, pt33_));
-  this->curves_.push_back(
-      new CurveAdaptiveParametricBezier(pt03_, pt13_, pt23_, pt33_));
-  this->curves_.push_back(
-      new CurveAdaptiveParametricBezier(pt00_, pt01_, pt02_, pt03_));
+  this->curves_.push_back(CreateOrientedCurve(pt00_, pt10_, pt20_, pt30_, signal_curve1));
+  this->curves_.push_back(CreateOrientedCurve(pt30_, pt31_, pt32_, pt33_, signal_curve2));
+  this->curves_.push_back(CreateOrientedCurve(pt03_, pt13_, pt23_, pt33_, signal_curve3));
+  this->curves_.push_back(CreateOrientedCurve(pt00_, pt01_, pt02_, pt03_, signal_curve4));
   //
   // 2. Aloca espaço para as matrizes
   //
@@ -828,4 +837,19 @@ Matrix4x4 PatchBezier::StartBezierMatrix() {
   matrix_bezier(3, 3) = 0;
 
   return matrix_bezier;
+}
+
+bool PatchBezier::IsCurveReversed(unsigned int position) const noexcept {
+  switch (position) {
+  case 0:
+    return !signal_curve1_;
+  case 1:
+    return !signal_curve2_;
+  case 2:
+    return !signal_curve3_;
+  case 3:
+    return !signal_curve4_;
+  default:
+    return false;
+  }
 }

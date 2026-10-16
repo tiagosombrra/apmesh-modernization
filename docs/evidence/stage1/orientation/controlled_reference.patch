@@ -1,0 +1,42 @@
+--- a/include/crab_mesh/aft/boundary.h
++++ b/include/crab_mesh/aft/boundary.h
+@@ -24,6 +24,7 @@
+   long int lastEdgeId;
+ 
+   Vertex *first;
++  CurveAdaptiveParametric* outgoing_curve_ = nullptr;
+ 
+  private:
+   Edge *makeEdge(Vertex *v);
+--- a/src/crab_mesh/aft/boundary.cpp
++++ b/src/crab_mesh/aft/boundary.cpp
+@@ -75,7 +75,7 @@
+   } else if (!boundary.empty()) {
+     Edge *e = makeEdge(v);
+ 
+-    e->setCurva(c);
++    e->setCurva(outgoing_curve_);
+ 
+     e->makeParamMid();
+ 
+@@ -95,6 +95,7 @@
+   }
+ 
+   boundary.push_back(v);
++  outgoing_curve_ = c;
+ 
+   return v;
+ }
+--- a/src/generator/generator_adaptive.cpp
++++ b/src/generator/generator_adaptive.cpp
+@@ -7708,8 +7708,8 @@
+     csv << "step,rank,nodes,elements,error,error_prev,error_global_surface_curvature,error_global_surface_curvature_prev,error_improvement_abs,"
+            "error_improvement_pct,error_normalized,error_total_reduction_pct,elements_prev,elements_delta,element_growth_factor,"
+            "error_improvement_per_element,acceptance_score,gauss_nodes,mean_nodes,gauss_ratio,mean_ratio,error_floor,min_error_drop_abs,"
+-           "min_error_drop_per_element,retry_attempt,adaptation_relaxation,"
+-           "retry_enabled,local_budget_mode,target_element_growth,target_elements_step,actual_elements_step,target_growth_step,actual_growth_step,actual_element_growth,step_efficiency,local_progress_coverage,improved_top_patches,top_patch_candidate_count,generation_control_mode,consistency_regularization_active,patch_budget_dispersion,patch_h_dispersion,actual_patch_element_dispersion,curve_balance_dispersion,patch_consistency_penalty,budget_driver_mode,"
++           "min_error_drop_per_element,retry_attempt,"
++           "retry_enabled,local_budget_mode,target_element_growth,target_elements_step,actual_elements_step,target_growth_step,actual_growth_step,actual_element_growth,step_efficiency,local_progress_coverage,improved_top_patches,top_patch_candidate_count,generation_control_mode,consistency_regularization_active,patch_budget_dispersion,patch_h_dispersion,actual_patch_element_dispersion,curve_balance_dispersion,patch_consistency_penalty,budget_driver_mode,adaptation_relaxation,"
+            "adaptation_max_delta,adaptive_retry_count,adaptive_retry_shrink,max_retry_element_growth_factor,max_retry_element_growth_abs,"
+            "element_budget_abs,element_budget_growth_factor,element_budget_soft_limit,candidate_elements_before_budget_retry,budget_retry_count,budget_limited,budget_final_status,"
+            "step_mode,budget_pressure,eligible_patch_count,eligible_patch_elements_sum,eligible_patch_mean_factor,eligible_patch_mean_h_scale,"

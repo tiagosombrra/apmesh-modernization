@@ -1,3 +1,4 @@
+#include "data/curve/curve_orientation.h"
 #include "../../../include/crab_mesh/aft/edge.h"
 
 Edge::Edge(Vertex *v1, Vertex *v2, long int id) : Shape(id) {
@@ -516,7 +517,10 @@ bool Edge::matches(Vertex *v1, Vertex *v2) {
   return ((this->v[0] == v1) && (this->v[1] == v2));
 }
 
-void Edge::setCurva(CurveAdaptiveParametric *c) { this->c = c; }
+void Edge::setCurva(CurveAdaptiveParametric* c, bool reversed) {
+  this->c = c;
+  curve_reversed_ = reversed;
+}
 
 void Edge::setLen(double len) { this->len = len; }
 
@@ -535,46 +539,52 @@ void Edge::makeParamMid() {
 
   double t = -1.0;
 
+  auto midpoint = [&](double first, double last) {
+    const auto interval = apmesh::geometry::OrientedInterval(first, last, curve_reversed_);
+    const double parameter = c->CalculateMidparameterByParamters(interval.first, interval.second);
+    return apmesh::geometry::OrientedParameter(parameter, curve_reversed_);
+  };
+  auto arc_length = [&](double first, double last) {
+    const auto interval = apmesh::geometry::OrientedInterval(first, last, curve_reversed_);
+    return c->CalculateParametricLength(interval.first, interval.second);
+  };
+
   if ((v[0]->getY() == 0.0) && (v[0]->getX() < 1.0)) {
     // curva 1
     // Ponto p = c->pontoMedio(v[0]->getX(), v[1]->getX());
 
-    t = c->CalculateMidparameterByParamters(v[0]->getX(), v[1]->getX());
+    t = midpoint(v[0]->getX(), v[1]->getX());
 
     mid = new Vertex(t, 0.0);
 
-    len = c->CalculateParametricLength(v[0]->getX(), v[1]->getX()) /
-          c->GetLength();
+    len = arc_length(v[0]->getX(), v[1]->getX()) / c->GetLength();
   } else if ((v[0]->getX() == 1.0) && (v[0]->getY() < 1.0)) {
     // curva 2
     // Ponto p = c->pontoMedio(v[0]->getY(), v[1]->getY());
 
-    t = c->CalculateMidparameterByParamters(v[0]->getY(), v[1]->getY());
+    t = midpoint(v[0]->getY(), v[1]->getY());
 
     mid = new Vertex(1.0, t);
 
-    len = c->CalculateParametricLength(v[0]->getY(), v[1]->getY()) /
-          c->GetLength();
+    len = arc_length(v[0]->getY(), v[1]->getY()) / c->GetLength();
   } else if ((v[0]->getY() == 1.0) && (v[0]->getX() > 0.0)) {
     // curva 3
     // Ponto p = c->pontoMedio(v[0]->getX(), v[1]->getX());
 
-    t = c->CalculateMidparameterByParamters(v[1]->getX(), v[0]->getX());
+    t = midpoint(v[1]->getX(), v[0]->getX());
 
     mid = new Vertex(t, 1.0);
 
-    len = c->CalculateParametricLength(v[1]->getX(), v[0]->getX()) /
-          c->GetLength();
+    len = arc_length(v[1]->getX(), v[0]->getX()) / c->GetLength();
   } else if ((v[0]->getX() == 0.0) && (v[0]->getY() > 0.0)) {
     // curva 4
     // Ponto p = c->pontoMedio(v[0]->getY(), v[1]->getY());
 
-    t = c->CalculateMidparameterByParamters(v[1]->getY(), v[0]->getY());
+    t = midpoint(v[1]->getY(), v[0]->getY());
 
     mid = new Vertex(0.0, t);
 
-    len = c->CalculateParametricLength(v[1]->getY(), v[0]->getY()) /
-          c->GetLength();
+    len = arc_length(v[1]->getY(), v[0]->getY()) / c->GetLength();
   } else {
     mid = makeMid();
 

@@ -20,6 +20,25 @@ if(BUILD_TESTING)
       --exe "$<TARGET_FILE:ap_mesh>" --workspace "${CMAKE_BINARY_DIR}/metric-schema-controls")
   set_tests_properties(application.metric_schema
     PROPERTIES LABELS "application;metric-schema;required-gate" TIMEOUT 90)
+  set(orientation_probe_sources ${AP_MESH_SOURCES})
+  list(REMOVE_ITEM orientation_probe_sources "${CMAKE_SOURCE_DIR}/src/main.cpp")
+  add_executable(curve_orientation_probe
+    "${CMAKE_SOURCE_DIR}/tests/curve_orientation_probe.cpp" ${orientation_probe_sources})
+  target_compile_features(curve_orientation_probe PRIVATE cxx_std_17)
+  target_include_directories(curve_orientation_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(curve_orientation_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+  if(AP_MESH_DISABLE_STRICT_ALIASING AND NOT MSVC)
+    target_compile_options(curve_orientation_probe PRIVATE -fno-strict-aliasing)
+  endif()
+  add_test(NAME application.curve_orientation_arclength COMMAND curve_orientation_probe)
+  set_tests_properties(application.curve_orientation_arclength
+    PROPERTIES LABELS "application;boundary-incidence;required-gate" TIMEOUT 30)
+  add_test(NAME tooling.tidy_header_scope
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/tidy_scope_case.py")
+  set_tests_properties(tooling.tidy_header_scope
+    PROPERTIES LABELS "tooling;required-gate" TIMEOUT 60)
   add_executable(input_validation_probe "${CMAKE_SOURCE_DIR}/tests/input_validation_probe.cpp")
   target_compile_features(input_validation_probe PRIVATE cxx_std_17)
   target_include_directories(input_validation_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")

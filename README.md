@@ -27,35 +27,24 @@ ctest --preset local-serial
 python tools/quality.py doctor
 ```
 
-The initial integrated CTest suite checks tooling controls and the archived Eistute
-artifact. It does not yet establish accepted-state scientific regression or
-full memory safety. Commands fail on empty test discovery. Doxygen, full lint,
-sanitizer campaigns, C++23 migration and Eigen replacement remain planned work.
+The local suite has nine required tooling, input, geometry, orientation and
+report-semantics tests. clang-tidy is required for its real header-scope controls;
+LLVM 22.1.8 is the qualified version. Commands fail on empty discovery or missing
+tools. Full memory safety, legacy lint cleanup, Doxygen, C++23 and Eigen removal
+remain later work.
 
-## Stage 1 candidate (not integrated)
+## Stage 1 closure candidate
 
-This draft additionally checks real invalid CLI/model/configuration inputs and
-the three valid shipped model grammars. The independent generation checker
-selects the last accepted state, cross-checks candidate OBJ/CSV/log evidence and
-recomputes exported geometry. It does not substitute a rejected target artifact
-for an accepted result.
+Strict Eistute/Book repetition and independent accepted-state/boundary validation
+pass. Actual reversed curved/non-manifold generation and named CSV semantics
+now pass their previously failing gates. Pointer-order smoothing, reversed
+incidences, corner arcs and CSV labels are explicitly classified defect repairs.
+Raw prior-version failures remain stored; strict minimally corrected reference
+comparisons pass without relaxed tolerances. See
+[the repair and regression evidence](docs/evidence/STAGE1_ORIENTATION_REPAIR.md).
 
-```sh
-python tools/verify_generation.py build/candidate/eistute --baseline build/baseline/eistute --report comparison.json
-python tools/repeat_generation.py --exe build/baseline/bin/ap_mesh --model eistute --output build/repeat-eistute --report repeat.json
-```
-
-The Eistute repeatability defect was traced to pointer-ordered Laplacian sums.
-The draft now orders those sums by unique logical edge ID. Strict repetitions
-and controlled reference comparisons pass for Eistute and Book without relaxing
-tolerances. This is an explicit behavior-changing defect repair; the original
-reference's numerical differences remain recorded. See
-[the follow-up evidence](docs/evidence/STAGE1_SMOOTHING_ORDER.md).
-Per-incidence export/checking now passes for all nine Eistute/Book attempted
-states. The closure audit exposed two pre-existing defects: actual reversed
-incidences generate degenerate geometry, and CSV control fields are mislabelled.
-Both are required failing CTests; current CTest status is 5/7, with no skips.
-Keep the delivery draft. See [the incidence audit](docs/evidence/STAGE1_INCIDENCE_AUDIT.md).
+PR #3 still requires exact-head audit and post-merge validation before stage 2.
+See [project state](docs/PROJECT_STATE.md) for the recorded integration status.
 
 ## Repository policy
 

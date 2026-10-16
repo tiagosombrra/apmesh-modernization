@@ -6,6 +6,7 @@
 #include "data/geometry.h"
 #include "input_output/incidence_snapshot.h"
 
+#include <array>
 #include <ostream>
 #include <cstdio>
 #include <unordered_set>
@@ -5564,6 +5565,13 @@ SubMesh* GeneratorAdaptive::GeneratorInitialMeshOmp(
     }
   }
 
+  const std::array<CurveAdaptive*, 4> initialized_curves = {c1, c2, c3, c4};
+  for (unsigned int slot = 0; slot < initialized_curves.size(); ++slot) {
+    if (initialized_curves[slot] != nullptr && patch->IsCurveReversed(slot)) {
+      initialized_curves[slot]->GetPoints().reverse();
+    }
+  }
+
   // Coarse initial mesh: 4 triangles per patch with a central node.
   PointAdaptive* center_point = new NodeAdaptive(patch->Parameterize(0.5, 0.5));
   center_point->SetId(id_manager->next(0));
@@ -6338,6 +6346,13 @@ SubMesh* GeneratorAdaptive::InitialMesh(PatchCoons* patch,
 
       sub->SetNoh(static_cast<NodeAdaptive*>(p));
       if (!inserted) delete p;
+    }
+  }
+
+  const std::array<CurveAdaptive*, 4> initialized_curves = {c1, c2, c3, c4};
+  for (unsigned int slot = 0; slot < initialized_curves.size(); ++slot) {
+    if (initialized_curves[slot] != nullptr && patch->IsCurveReversed(slot)) {
+      initialized_curves[slot]->GetPoints().reverse();
     }
   }
 
@@ -7705,20 +7720,34 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
       csvName.str().c_str(),
       rewrite_csv ? std::ios::out : (std::ios::out | std::ios::app));
   if (!csv_exists || rewrite_csv) {
-    csv << "step,rank,nodes,elements,error,error_prev,error_global_surface_curvature,error_global_surface_curvature_prev,error_improvement_abs,"
-           "error_improvement_pct,error_normalized,error_total_reduction_pct,elements_prev,elements_delta,element_growth_factor,"
-           "error_improvement_per_element,acceptance_score,gauss_nodes,mean_nodes,gauss_ratio,mean_ratio,error_floor,min_error_drop_abs,"
-           "min_error_drop_per_element,retry_attempt,adaptation_relaxation,"
-           "retry_enabled,local_budget_mode,target_element_growth,target_elements_step,actual_elements_step,target_growth_step,actual_growth_step,actual_element_growth,step_efficiency,local_progress_coverage,improved_top_patches,top_patch_candidate_count,generation_control_mode,consistency_regularization_active,patch_budget_dispersion,patch_h_dispersion,actual_patch_element_dispersion,curve_balance_dispersion,patch_consistency_penalty,budget_driver_mode,"
-           "adaptation_max_delta,adaptive_retry_count,adaptive_retry_shrink,max_retry_element_growth_factor,max_retry_element_growth_abs,"
-           "element_budget_abs,element_budget_growth_factor,element_budget_soft_limit,candidate_elements_before_budget_retry,budget_retry_count,budget_limited,budget_final_status,"
-           "step_mode,budget_pressure,eligible_patch_count,eligible_patch_elements_sum,eligible_patch_mean_factor,eligible_patch_mean_h_scale,"
+    csv << "step,rank,nodes,elements,error,error_prev,error_global_surface_curvature,error_global_"
+           "surface_curvature_prev,error_improvement_abs,"
+           "error_improvement_pct,error_normalized,error_total_reduction_pct,elements_prev,"
+           "elements_delta,element_growth_factor,"
+           "error_improvement_per_element,acceptance_score,gauss_nodes,mean_nodes,gauss_ratio,mean_"
+           "ratio,error_floor,min_error_drop_abs,"
+           "min_error_drop_per_element,retry_attempt,"
+           "retry_enabled,local_budget_mode,target_element_growth,target_elements_step,actual_"
+           "elements_step,target_growth_step,actual_growth_step,actual_element_growth,step_"
+           "efficiency,local_progress_coverage,improved_top_patches,top_patch_candidate_count,"
+           "generation_control_mode,consistency_regularization_active,patch_budget_dispersion,"
+           "patch_h_dispersion,actual_patch_element_dispersion,curve_balance_dispersion,patch_"
+           "consistency_penalty,budget_driver_mode,adaptation_relaxation,"
+           "adaptation_max_delta,adaptive_retry_count,adaptive_retry_shrink,max_retry_element_"
+           "growth_factor,max_retry_element_growth_abs,"
+           "element_budget_abs,element_budget_growth_factor,element_budget_soft_limit,candidate_"
+           "elements_before_budget_retry,budget_retry_count,budget_limited,budget_final_status,"
+           "step_mode,budget_pressure,eligible_patch_count,eligible_patch_elements_sum,eligible_"
+           "patch_mean_factor,eligible_patch_mean_h_scale,"
            "step_purpose,underresolved_transition_fraction_real,transition_imbalance_max_real,"
            "stop_reason,quality_min,quality_p05,quality_p50,"
            "quality_p95,quality_max,quality_mean,quality_std,poor_ratio_lt_0_30,"
            "q_ge_0_60,excellent_ratio_ge_0_80,"
-           "angle_quality_mean_3d,edge_ratio_mean_3d,min_angle_mean_3d,min_angle_p05_3d,max_angle_mean_3d,max_angle_p95_3d,"
-           "quality_uv_min,quality_uv_p05,quality_uv_p50,quality_uv_p95,quality_uv_max,quality_uv_mean,quality_uv_std,quality_uv_poor_ratio_lt_0_30,quality_uv_q_ge_0_60,quality_uv_excellent_ratio_ge_0_80,"
+           "angle_quality_mean_3d,edge_ratio_mean_3d,min_angle_mean_3d,min_angle_p05_3d,max_angle_"
+           "mean_3d,max_angle_p95_3d,"
+           "quality_uv_min,quality_uv_p05,quality_uv_p50,quality_uv_p95,quality_uv_max,quality_uv_"
+           "mean,quality_uv_std,quality_uv_poor_ratio_lt_0_30,quality_uv_q_ge_0_60,quality_uv_"
+           "excellent_ratio_ge_0_80,"
            "area_min,area_mean,area_max,area_std,"
            "unique_edges,boundary_edges,nonmanifold_edges,laplacian_iterations,"
            "laplacian_factor"

@@ -1,7 +1,7 @@
-> Historical follow-up at 3271996. The subsequent STAGE1_INCIDENCE_AUDIT.md
-> implements measured incidence checking and records newly exposed required
-> failures. Current CTest is 5/7, not the historical 5/5 below. No stage closure
-> or integration is qualified by this earlier numerical result alone.
+> Historical report. STAGE1_ORIENTATION_REPAIR.md records subsequent repairs,
+> passing gates and the current closure candidate. Failures below are retained
+> as observations of their stated revision.
+
 
 # Stage 1 follow-up: deterministic smoothing reductions
 

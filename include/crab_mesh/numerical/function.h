@@ -10,7 +10,7 @@ class Function : public Data::Numerical::MultiVariableFunction<1> {
  public:
   virtual double f(double x) = 0;
 
-  virtual double f(const double x[1]);
+  double f(const double x[1]) override;
 };
 }  // namespace Numerical
 }  // namespace Data

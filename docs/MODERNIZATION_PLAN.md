@@ -4,22 +4,11 @@ Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
 Current status: stage 0 integrated in PR #1; stage 1 remains the sole active
-work item (issue #2, draft PR #3). The numerical reduction-order repair passes
-strict Eistute/Book repetition. New per-incidence export/checking passes for all
-nine attempted article states. Closure audit now exposes required failures for
-actual reversed-incidence generation and CSV header/value semantics. Current
-CTest is 5 passed / 2 failed / 0 skipped; integration remains blocked. Stages 2-11
-have not begun. See evidence/STAGE1_INCIDENCE_AUDIT.md.
-
-## Non-negotiable boundary
-
-Preserve parametric patches, shared-curve synchronization, boundary adaptation
-passes, quadtree/templates, advancing-front reconstruction, curvature-error
-definitions, and acceptance/stopping policy. Record defect repairs that change
-results separately. QUAD, anisotropy and replacement algorithms require an
-explicit scientific proposal and advisor agreement after software stabilization.
-
-## Deliveries and gates
+work item (issue #2, PR #3) for exact-head and post-merge closure qualification.
+The required orientation and CSV defects are repaired; CTest is 9/9. All article
+repetitions and strict minimally corrected reference comparisons pass. Raw
+previous-candidate differences remain explicitly recorded. See
+`evidence/STAGE1_ORIENTATION_REPAIR.md`. Stage 2 waits for completed closure.
 
 | Stage | Scope | Completion evidence |
 |---|---|---|

@@ -103,18 +103,26 @@ and snapshot hashes exactly. Before/after comparison against an old reference
 without snapshots explicitly returns boundary_regression=not_compared_legacy_reference;
 it must be accompanied by separate positive coverage validation of the candidate.
 
-## Separate mandatory report-semantics gate
+## Separate mandatory report-semantics and orientation gates
 
-Exact CSV repetition can reproduce a mislabelled column. The closure audit found
-that adaptation_relaxation is placed differently in the legacy CSV header and
-emitted row, shifting intermediate control labels. The independent
-`tools/audit_metric_schema.py` checks 21 named control fields against the per-stage
-analysis log without a numerical tolerance. `application.metric_schema` exercises
-this check through actual generation and currently fails. Passing mesh/incidence
-validation and strict repetition does not substitute for this required semantic
-gate. See evidence/STAGE1_INCIDENCE_AUDIT.md.
+Exact CSV repetition can reproduce a mislabelled column. The corrected header
+places adaptation_relaxation after budget_driver_mode, matching row order.
+`tools/audit_metric_schema.py` independently checks 21 named control fields
+against every per-stage analysis log without a numerical tolerance.
+`application.metric_schema` must pass through actual generation; mesh validity
+and exact repetition do not substitute for this required semantic gate.
 
-Actual mixed-orientation generation currently also fails required CTest
-`application.boundary_orientation`: the program can accept a degenerate initial
-mesh. Analytic positive checker fixtures do not qualify the generator. Both
-failures block stage 1 closure and integration; historical failures remain stored.
+`application.boundary_orientation` must pass real aligned/reversed manifold and
+non-manifold generation, including asymmetric curved boundaries on all four
+sides, adaptation, rejection and forced retry. It checks source control nets,
+local UV, actual mesh chains and positive shared-incidence coverage. Analytic
+checker fixtures alone do not qualify the generator. The physical arc/constructor
+probe and actual tidy header-scope controls are also required CTests.
+
+The historical failures remain in evidence/STAGE1_INCIDENCE_AUDIT.md. Repairs,
+changed output classification and passing closure candidate results are in
+evidence/STAGE1_ORIENTATION_REPAIR.md. Raw strict comparison to the defective
+previous version remains failed. A separately built reference with only the
+minimal CSV/corner-curve fixes isolates the orientation implementation; require
+exact repetition and strict candidate/reference comparison for both article
+models. This is an explicit defect-repair ledger, not a changed oracle or budget.

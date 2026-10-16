@@ -24,8 +24,10 @@ class Boundary : public Shape {
   long int lastEdgeId;
 
   Vertex *first;
+  CurveAdaptiveParametric* outgoing_curve_ = nullptr;
+  bool outgoing_reversed_ = false;
 
- private:
+private:
   Edge *makeEdge(Vertex *v);
 
  public:
@@ -41,9 +43,9 @@ class Boundary : public Shape {
   long int getLastVertexId();
   long int getLastEdgeId();
 
-  Vertex *addVertex(double x, double y, CurveAdaptiveParametric *c);
+  Vertex* addVertex(double x, double y, CurveAdaptiveParametric* c, bool reversed = false);
   Vertex *addVertex(long int id, double x, double y);
-  bool close(CurveAdaptiveParametric *c);
+  bool close(CurveAdaptiveParametric* c, bool reversed = false);
 
   Edge *getEdge(long int id);
   Vertex *getVertex(long int id);

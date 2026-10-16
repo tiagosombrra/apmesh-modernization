@@ -1,4 +1,5 @@
 #include "../../include/adapter/adapter.h"
+#include "data/curve/curve_orientation.h"
 #include <algorithm>
 #include <cmath>
 #include <memory>
@@ -24,6 +25,29 @@ extern int PATCH_QUADTREE_DEPTH_STEPN;
 extern int ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH;
 
 namespace {
+// Only reversed incidences need a parameter complement and reversed point traversal.
+void AppendReversedSide(AdvancingFront& front, PatchCoons& patch, unsigned int slot,
+                        SubMesh& submesh, std::map<Vertex*, NodeAdaptive*>& vertex_to_node) {
+  auto* curve = static_cast<CurveAdaptiveParametric*>(patch.GetCurve(slot));
+  const std::vector<double> parameters(curve->parameters_.begin(), curve->parameters_.end());
+  if (parameters.size() < 2 || parameters.size() != curve->GetNumBerPoints()) {
+    throw std::runtime_error("Reversed incidence has inconsistent point/parameter counts");
+  }
+  const std::size_t count = parameters.size();
+  for (std::size_t offset = 0; offset + 1 < count; ++offset) {
+    const std::size_t index = slot < 2 ? count - 1 - offset : offset;
+    const double local = apmesh::geometry::OrientedParameter(parameters[index], true);
+    const double u = slot == 1 ? 1.0 : (slot == 3 ? 0.0 : local);
+    const double v = slot == 0 ? 0.0 : (slot == 2 ? 1.0 : local);
+    Vertex* vertex = front.getBoundary()->addVertex(u, v, curve, true);
+    auto* original = static_cast<NodeAdaptive*>(curve->GetPoint(static_cast<unsigned int>(index)));
+    auto copy = std::make_unique<NodeAdaptive>(*original);
+    copy->SetId(original->GetId());
+    vertex_to_node[vertex] = copy.get();
+    submesh.AddNoh(std::move(copy));
+  }
+}
+
 double ClampValue(const double value, const double lower, const double upper) {
   return std::max(lower, std::min(value, upper));
 }
@@ -927,6 +951,10 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
   // 1) For each curve of the patch.
   for (unsigned int i = 0; i < coons_patch->GetNumBerCurves(); ++i) {
     CurveAdaptive* curve = coons_patch->GetCurve(i);
+    if (coons_patch->IsCurveReversed(i)) {
+      AppendReversedSide(avanco, *coons_patch, i, *sub_mesh_new, vertex_to_node);
+      continue;
+    }
 
     if (i == 0 || i == 1) {
       auto last_parameter =
@@ -995,7 +1023,8 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
   }
 
   avanco.getBoundary()->close(static_cast<CurveAdaptiveParametric*>(
-      coons_patch->GetCurve(coons_patch->GetNumBerCurves() - 1)));
+                                  coons_patch->GetCurve(coons_patch->GetNumBerCurves() - 1)),
+                              coons_patch->IsCurveReversed(coons_patch->GetNumBerCurves() - 1));
 
   SubMesh* sub_mesh_old = coons_patch->GetSubMesh();
 
@@ -1445,6 +1474,10 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
     for (unsigned int i = 0; i < coons_patch->GetNumBerCurves(); ++i) {
       CurveAdaptive* curve = coons_patch->GetCurve(i);
       static_cast<CurveAdaptiveParametric*>(curve)->SortPointsByParameters();
+      if (coons_patch->IsCurveReversed(i)) {
+        AppendReversedSide(avanco, *coons_patch, i, *result.sub_mesh, vertex_to_node);
+        continue;
+      }
       if (i == 0 || i == 1) {
         auto last_parameter =
             static_cast<CurveAdaptiveParametric*>(curve)->parameters_.end();
@@ -1496,7 +1529,8 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
     }
 
     avanco.getBoundary()->close(static_cast<CurveAdaptiveParametric*>(
-        coons_patch->GetCurve(coons_patch->GetNumBerCurves() - 1)));
+                                    coons_patch->GetCurve(coons_patch->GetNumBerCurves() - 1)),
+                                coons_patch->IsCurveReversed(coons_patch->GetNumBerCurves() - 1));
 
     SubMesh* sub_mesh_old = coons_patch->GetSubMesh();
     FaceList mesh_old;

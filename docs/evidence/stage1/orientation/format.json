@@ -1,0 +1,164 @@
+{
+  "status": "passed",
+  "files": [
+    {
+      "path": "src/adapter/adapter.cpp",
+      "changed_ranges": [
+        "--lines=2:2",
+        "--lines=28:50",
+        "--lines=954:957",
+        "--lines=1026:1027",
+        "--lines=1477:1480",
+        "--lines=1532:1533"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "changed_ranges": [
+        "--lines=9:9",
+        "--lines=5568:5574",
+        "--lines=6349:6355",
+        "--lines=7723:7741",
+        "--lines=7746:7750"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "changed_ranges": [
+        "--lines=4:4",
+        "--lines=7:7",
+        "--lines=18:48",
+        "--lines=840:844"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "changed_ranges": [
+        "--lines=19:39",
+        "--lines=57:60",
+        "--lines=122:124",
+        "--lines=126:128",
+        "--lines=130:132",
+        "--lines=134:136",
+        "--lines=264:267",
+        "--lines=841:855"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "src/crab_mesh/aft/boundary.cpp",
+      "changed_ranges": [
+        "--lines=60:60",
+        "--lines=78:79",
+        "--lines=99:100",
+        "--lines=119:119",
+        "--lines=122:122"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "changed_ranges": [
+        "--lines=1:1",
+        "--lines=520:523",
+        "--lines=542:551",
+        "--lines=556:556",
+        "--lines=560:560",
+        "--lines=565:565",
+        "--lines=569:569",
+        "--lines=574:574",
+        "--lines=578:578",
+        "--lines=583:583",
+        "--lines=587:587"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/data/triangle_adaptive.h",
+      "changed_ranges": [
+        "--lines=15:15"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/data/curve/curve_adaptive_parametric.h",
+      "changed_ranges": [
+        "--lines=24:24"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/data/curve/curve_adaptive_parametric_bezier.h",
+      "changed_ranges": [
+        "--lines=18:18"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/data/patch/patch_bezier.h",
+      "changed_ranges": [
+        "--lines=34:36"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/data/patch/patch_coons.h",
+      "changed_ranges": [
+        "--lines=27:29"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/crab_mesh/aft/boundary.h",
+      "changed_ranges": [
+        "--lines=27:28",
+        "--lines=30:30",
+        "--lines=46:46",
+        "--lines=48:48"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/crab_mesh/aft/edge.h",
+      "changed_ranges": [
+        "--lines=40:40",
+        "--lines=42:42",
+        "--lines=103:103"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/crab_mesh/numerical/bisection_equation_root.h",
+      "changed_ranges": [
+        "--lines=21:21",
+        "--lines=28:29",
+        "--lines=31:31",
+        "--lines=42:43",
+        "--lines=45:45",
+        "--lines=56:57",
+        "--lines=59:59"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "include/crab_mesh/numerical/function.h",
+      "changed_ranges": [
+        "--lines=13:13"
+      ],
+      "exit_code": 0
+    },
+    {
+      "path": "tests/curve_orientation_probe.cpp",
+      "scope": "whole_new_file",
+      "exit_code": 0
+    },
+    {
+      "path": "include/data/curve/curve_orientation.h",
+      "scope": "whole_new_file",
+      "exit_code": 0
+    }
+  ]
+}

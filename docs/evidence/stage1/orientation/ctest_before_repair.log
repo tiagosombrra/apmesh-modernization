@@ -1,0 +1,39 @@
+Test project C:/Users/tiago/Documents/Codex/2026-10-14/new-chat/work/apmesh-modernization/build/local-serial
+    Start 1: tooling.controls
+1/7 Test #1: tooling.controls ........................   Passed    1.13 sec
+    Start 2: reference.archived_eistute_artifact
+2/7 Test #2: reference.archived_eistute_artifact .....   Passed    0.07 sec
+    Start 3: application.invalid_inputs
+3/7 Test #3: application.invalid_inputs ..............   Passed    0.40 sec
+    Start 4: application.boundary_orientation
+4/7 Test #4: application.boundary_orientation ........***Failed    0.41 sec
+{"status": "failed", "report": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\orientation-controls\\run-_izbcz3o\\orientation_report.json", "cases": [{"case": "aligned_manifold", "status": "passed", "error": null}, {"case": "reversed_manifold", "status": "failed", "error": "Degenerate exported triangle"}, {"case": "aligned_nonmanifold", "status": "passed", "error": null}, {"case": "reversed_nonmanifold", "status": "failed", "error": "Degenerate exported triangle"}]}
+
+    Start 5: application.metric_schema
+5/7 Test #5: application.metric_schema ...............***Failed    0.19 sec
+{"status": "failed", "geometry_control": "passed", "differences": 9, "report": "C:\\Users\\tiago\\Documents\\Codex\\2026-10-14\\new-chat\\work\\apmesh-modernization\\build\\local-serial\\metric-schema-controls\\run-3rzfpkqy\\metric_schema_report.json"}
+
+    Start 6: application.smoothing_adjacency_order
+6/7 Test #6: application.smoothing_adjacency_order ...   Passed    0.05 sec
+    Start 7: application.valid_input_grammar
+7/7 Test #7: application.valid_input_grammar .........   Passed    0.04 sec
+
+71% tests passed, 2 tests failed out of 7
+
+Label Time Summary:
+application           =   1.10 sec*proc (5 tests)
+archived-artifact     =   0.07 sec*proc (1 test)
+boundary-incidence    =   0.41 sec*proc (1 test)
+metric-schema         =   0.19 sec*proc (1 test)
+negative-input        =   0.40 sec*proc (1 test)
+numerical-control     =   0.05 sec*proc (1 test)
+positive-input        =   0.04 sec*proc (1 test)
+required-gate         =   0.60 sec*proc (2 tests)
+tooling               =   1.13 sec*proc (1 test)
+
+Total Test time (real) =   2.31 sec
+
+The following tests FAILED:
+	  4 - application.boundary_orientation (Failed)         application boundary-incidence required-gate
+	  5 - application.metric_schema (Failed)                application metric-schema required-gate
+Errors while running CTest

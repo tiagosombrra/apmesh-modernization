@@ -1,8 +1,10 @@
 #include "../../include/input_output/patch_reader.h"
 #include "../../include/input_output/input_validation.h"
 
+#include <array>
 #include <cmath>
 #include <memory>
+#include <stdexcept>
 #include <vector>
 
 #include "../../include/data/vertex_adaptive.h"
@@ -13,6 +15,37 @@ namespace {
 // igualdade exacta bit-a-bit. Tolerância fixa e estrita: independente de EPSYLON
 // do adaptador (que pode ser 1e-2), para não fundir controlos vizinhos legítimos.
 constexpr double kBpControlMergeTol = 1e-7;
+
+bool UsesForwardControls(CurveAdaptive* curve, const PointAdaptive& p0, const PointAdaptive& p1,
+                         const PointAdaptive& p2, const PointAdaptive& p3) {
+  const auto* bezier = static_cast<CurveAdaptiveParametricBezier*>(curve);
+  const std::array<PointAdaptive, 4> stored = {bezier->GetPoint0(), bezier->GetPoint1(),
+                                               bezier->GetPoint2(), bezier->GetPoint3()};
+  const std::array<PointAdaptive, 4> expected = {p0, p1, p2, p3};
+  auto matches = [&](bool reverse, bool exact) {
+    for (std::size_t i = 0; i < stored.size(); ++i) {
+      const auto& actual = stored[reverse ? 3 - i : i];
+      const auto& wanted = expected[i];
+      if (exact) {
+        if (actual.GetX() != wanted.GetX() || actual.GetY() != wanted.GetY() ||
+            actual.GetZ() != wanted.GetZ())
+          return false;
+      } else if (!(actual == wanted))
+        return false;
+    }
+    return true;
+  };
+  // Resolve direction exactly first; keep the existing curve-match policy as fallback.
+  if (matches(false, true))
+    return true;
+  if (matches(true, true))
+    return false;
+  if (matches(false, false))
+    return true;
+  if (matches(true, false))
+    return false;
+  throw std::logic_error("Matched shared curve has inconsistent control direction");
+}
 
 VertexAdaptive* InternControlPoint(
     const PointAdaptive& src,
@@ -804,8 +837,11 @@ Geometry* PatchReader::ReaderFilePatches(Geometry* geometry, string file_name) {
       geometry->InsertCurve(patch_c4);
     }
 
-    (*it) = new PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11, *p21,
-                            *p12, *p22);
+    (*it) = new PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11, *p21, *p12, *p22,
+                            UsesForwardControls(patch_c1, *p00, *p10, *p20, *p30),
+                            UsesForwardControls(patch_c2, *p30, *p31, *p32, *p33),
+                            UsesForwardControls(patch_c3, *p03, *p13, *p23, *p33),
+                            UsesForwardControls(patch_c4, *p00, *p01, *p02, *p03));
 
     geometry->InsertPatch((*it));
   }

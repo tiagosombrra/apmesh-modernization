@@ -57,7 +57,7 @@ long int Boundary::getLastVertexId() { return lastVertexId; }
 
 long int Boundary::getLastEdgeId() { return lastEdgeId; }
 
-Vertex *Boundary::addVertex(double x, double y, CurveAdaptiveParametric *c) {
+Vertex* Boundary::addVertex(double x, double y, CurveAdaptiveParametric* c, bool reversed) {
   Vertex *v = NULL;
 
   v = new Vertex(x, y, ++lastVertexId);
@@ -75,7 +75,8 @@ Vertex *Boundary::addVertex(double x, double y, CurveAdaptiveParametric *c) {
   } else if (!boundary.empty()) {
     Edge *e = makeEdge(v);
 
-    e->setCurva(c);
+    // The completed edge belongs to the previous vertex's outgoing side.
+    e->setCurva(outgoing_curve_, outgoing_reversed_);
 
     e->makeParamMid();
 
@@ -95,6 +96,8 @@ Vertex *Boundary::addVertex(double x, double y, CurveAdaptiveParametric *c) {
   }
 
   boundary.push_back(v);
+  outgoing_curve_ = c;
+  outgoing_reversed_ = reversed;
 
   return v;
 }
@@ -113,10 +116,10 @@ Vertex *Boundary::addVertex(long int id, double x, double y) {
   return v;
 }
 
-bool Boundary::close(CurveAdaptiveParametric *c) {
+bool Boundary::close(CurveAdaptiveParametric* c, bool reversed) {
   Edge *e = new Edge(boundary.back(), first, ++lastEdgeId);
 
-  e->setCurva(c);
+  e->setCurva(c, reversed);
 
   e->makeParamMid();
 

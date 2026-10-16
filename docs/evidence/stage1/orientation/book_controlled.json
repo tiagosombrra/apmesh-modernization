@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "model": "book",
+  "compared_meshes": 4,
+  "all_obj_byte_identical": true,
+  "all_acceptance_fields_equal": true,
+  "last_accepted_step": 1,
+  "last_accepted_triangles": 4256,
+  "boundary_incidence_coverage": "verified",
+  "boundary_regression": "exact"
+}

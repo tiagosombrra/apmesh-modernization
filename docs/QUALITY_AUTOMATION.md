@@ -78,6 +78,15 @@ fail the selected scope. No --fix mode exists for tidy; ownership, overrides,
 renames, noexcept, const and container changes require reviewed evidence.
 Do not use automatic global fixes or add NOLINT merely to silence findings.
 
+The vendor header exclusion also applies to lexical include/../../libs paths
+that otherwise match the first-party header filter. Checks and warnings-as-errors
+remain unchanged. Required CTest tooling.tidy_header_scope invokes the actual
+analyzer with a vendor positive control and first-party header/source negative
+controls. Missing clang-tidy or lost first-party diagnostics fails the test.
+LLVM 22.1.8 is qualified; other versions must support ExcludeHeaderFilterRegex.
+Selected exporter lint coverage is not a full legacy lint-clean claim.
+
+
 ## Optional local pre-commit hook
 
 ```sh

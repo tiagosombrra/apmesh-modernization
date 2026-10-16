@@ -1,3 +1,7 @@
+> Historical report. STAGE1_ORIENTATION_REPAIR.md records subsequent repairs,
+> passing gates and the current closure candidate. Failures below are retained
+> as observations of their stated revision.
+
 # Stage 1: incidence export and independent closure audit
 
 Date: 2026-10-16 UTC (2026-10-15 Fortaleza).
