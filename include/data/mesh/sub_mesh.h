@@ -9,12 +9,11 @@ class NodeAdaptive;
 class ElementAdaptive;
 
 class SubMesh {
- public:
+public:
   SubMesh();
-  ~SubMesh();  // Defined in .cpp to keep forward declarations valid.
+  ~SubMesh(); // Defined in .cpp to keep forward declarations valid.
 
   // Non-copyable to avoid double free.
-  // (English comment)
   SubMesh(const SubMesh&) = delete;
   SubMesh& operator=(const SubMesh&) = delete;
 
@@ -30,22 +29,25 @@ class SubMesh {
   ElementAdaptive* GetElement(unsigned int position) noexcept;
   const ElementAdaptive* GetElement(unsigned int position) const noexcept;
 
+  // Transfer unique ownership; the node's address and adjacency are preserved.
   void AddNoh(std::unique_ptr<NodeAdaptive> noh);
   void AddElement(std::unique_ptr<ElementAdaptive> element);
 
-  // Compatibility API: takes ownership of raw pointers.
-  // (English comment)
+  // Copy ID, position and curvature state into a new owned node. The caller
+  // retains the source. Foreign element observers are excluded; local triangles
+  // register their adjacency after construction. A null source is ignored.
   void SetNoh(NodeAdaptive* noh);
+  // Adopt an element allocated with new. Its nodes must outlive the element.
   void SetElement(ElementAdaptive* element);
 
   unsigned int GetNumberNos() const noexcept;
   unsigned int GetNumberElements() const noexcept;
 
- private:
-  Patch* patch_ = nullptr;  // non-owning
+private:
+  Patch* patch_ = nullptr; // non-owning
 
   std::vector<std::unique_ptr<NodeAdaptive>> nos_;
   std::vector<std::unique_ptr<ElementAdaptive>> elements_;
 };
 
-#endif  // DATA_MESH_SUB_MESH_H
+#endif // DATA_MESH_SUB_MESH_H

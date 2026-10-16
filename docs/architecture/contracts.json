@@ -1,7 +1,7 @@
 {
   "schema": "apmesh-architecture-contracts-v1",
-  "reviewed_base": "d4561c9421226503cb4a478faad71ed5ad012381",
-  "scope": "Human-reviewed static contracts; anchor checks prove traceability only. No production changes or dynamic memory/parallel qualification.",
+  "reviewed_base": "6c56e307b1e932399c88ba961a9de40bf87ecbca",
+  "scope": "Human-reviewed static contracts with source anchors. Stage 3 node-copy boundary has isolated ASan/Debug CRT evidence; other dynamic and parallel paths remain unqualified.",
   "contracts": [
     {
       "id": "C01",
@@ -66,8 +66,8 @@
     {
       "id": "C04",
       "topic": "Physical mesh ownership and node copy",
-      "statement": "MeshAdaptive owns SubMesh objects, each SubMesh owns nodes/elements; SetNoh copies *noh while SetElement adopts its pointer.",
-      "limits": "The grouped header comment says raw-pointer ownership, contradicting SetNoh; caller ownership and copied adjacency need explicit contracts before repair.",
+      "statement": "MeshAdaptive owns SubMesh objects; SubMesh owns nodes/elements. SetNoh copies ID, position and curvature state into an independent node, clearing foreign element observers. AddNoh transfers unique ownership and preserves identity; SetElement adopts its pointer.",
+      "limits": "The source of SetNoh remains caller-owned. Only this boundary and local reconstruction/move/replacement are instrumented; general NodeAdaptive value copies and full mesh lifecycles remain separate.",
       "evidence": [
         {
           "path": "include/data/mesh/mesh_adaptive.h",
@@ -75,7 +75,7 @@
         },
         {
           "path": "include/data/mesh/sub_mesh.h",
-          "anchor": "Compatibility API: takes ownership of raw pointers."
+          "anchor": "Copy ID, position and curvature state into a new owned node."
         },
         {
           "path": "src/data/mesh/sub_mesh.cpp",
@@ -84,6 +84,10 @@
         {
           "path": "src/data/mesh/sub_mesh.cpp",
           "anchor": "elements_.emplace_back(element);"
+        },
+        {
+          "path": "src/data/mesh/sub_mesh.cpp",
+          "anchor": "copy->ClearElements();"
         }
       ]
     },
@@ -91,7 +95,7 @@
       "id": "C05",
       "topic": "Physical topology and caches",
       "statement": "TriangleAdaptive borrows three NodeAdaptive pointers, registers itself in each adjacency and caches normal, area and angles. NodeAdaptive adjacency is an observer list.",
-      "limits": "Default node copies also copy observer lists; removal, coordinate mutation, cache refresh and destruction order require lifecycle qualification.",
+      "limits": "General node copies retain observer lists; SubMesh::SetNoh explicitly clears them. Triangle removal, ReplaceNode, coordinate mutation, cache refresh and wider destruction paths remain unqualified.",
       "evidence": [
         {
           "path": "src/data/triangle_adaptive.cpp",
@@ -182,7 +186,7 @@
     {
       "id": "C09",
       "topic": "Physical/parametric conversion",
-      "statement": "Adapter creates old 2D faces from each physical triangle’s stored UV, seeds current boundary vertices from canonical samples, executes CRABMesh, maps new interior vertices through PatchCoons::Parameterize and preserves UV on output triangles.",
+      "statement": "Adapter creates old 2D faces from each physical triangle\u2019s stored UV, seeds current boundary vertices from canonical samples, executes CRABMesh, maps new interior vertices through PatchCoons::Parameterize and preserves UV on output triangles.",
       "limits": "Parametric vertices and physical nodes have distinct identity/units and must not be merged into a universal mesh.",
       "evidence": [
         {

@@ -121,6 +121,7 @@ def inventory(root):
                       "includes": includes})
     build_paths = [root / "CMakeLists.txt", root / "CMakePresets.json"]
     build_paths.extend(sorted((root / "cmake").glob("*.cmake")))
+    build_paths.extend(sorted((root / "tests").rglob("CMakeLists.txt")))
     build_inputs = [{"path": path.relative_to(root).as_posix(),
                      "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
                     for path in build_paths if path.is_file()]

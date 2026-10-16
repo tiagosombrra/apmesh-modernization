@@ -1,0 +1,114 @@
+{
+  "eistute": {
+    "entry_repetition": {
+      "status": "passed",
+      "model": "eistute",
+      "compared_meshes": 5,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 1168,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact",
+      "same_executable_same_configuration_same_command": true,
+      "executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+      "configuration_sha256": "f510adcf2f504d58e8e7d72a503d5521ea219ad59fad987fee56adf7ef98ce5e"
+    },
+    "candidate_repetition": {
+      "status": "passed",
+      "model": "eistute",
+      "compared_meshes": 5,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 1168,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact",
+      "same_executable_same_configuration_same_command": true,
+      "executable_sha256": "b1244378f7638d4508df04d76e091615a62158d76a5a1f7068b1079321d46adf",
+      "configuration_sha256": "d817e2a196eda65aad47fc7f9e5fc605a9bbbddc79954a15eea9e64ca8695b3a"
+    },
+    "candidate_vs_entry": {
+      "model": "eistute",
+      "compared_meshes": 5,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 1168,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact"
+    },
+    "entry_vs_stage2": {
+      "model": "eistute",
+      "compared_meshes": 5,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 1168,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact"
+    },
+    "csv_audit": {
+      "status": "passed",
+      "rows": 5,
+      "compared_fields": 105,
+      "differences": []
+    }
+  },
+  "book": {
+    "entry_repetition": {
+      "status": "passed",
+      "model": "book",
+      "compared_meshes": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 4256,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact",
+      "same_executable_same_configuration_same_command": true,
+      "executable_sha256": "aa02aa970dfa277d1e4590bb31d46a3ec35f8f36734accd7d2bfbf08027d1301",
+      "configuration_sha256": "b205c3ce0a508902437d70b7aa0639429d021d6cb177e76100166919a21679da"
+    },
+    "candidate_repetition": {
+      "status": "passed",
+      "model": "book",
+      "compared_meshes": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 4256,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact",
+      "same_executable_same_configuration_same_command": true,
+      "executable_sha256": "b1244378f7638d4508df04d76e091615a62158d76a5a1f7068b1079321d46adf",
+      "configuration_sha256": "44865bf95cf48eba883643fd1e287c59927d9dd66fc51c50b1326d258cb96a41"
+    },
+    "candidate_vs_entry": {
+      "model": "book",
+      "compared_meshes": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 4256,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact"
+    },
+    "entry_vs_stage2": {
+      "model": "book",
+      "compared_meshes": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 4256,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact"
+    },
+    "csv_audit": {
+      "status": "passed",
+      "rows": 4,
+      "compared_fields": 84,
+      "differences": []
+    }
+  }
+}

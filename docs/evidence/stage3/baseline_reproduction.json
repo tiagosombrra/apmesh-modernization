@@ -1,0 +1,36 @@
+{
+  "production_base": "6c56e307b1e932399c88ba961a9de40bf87ecbca",
+  "baseline_executable_sha256": "4faa06e3d149e90b175113aa148a769b78b0faa5447453ee0867f23b7cc303b7",
+  "same_final_probe": true,
+  "scope": "Pinned original production implementation files; current compatible headers include documentation-only SubMesh contract correction; final probe source unchanged. Baseline copies stay in build.",
+  "cases": [
+    {
+      "mode": "contracts",
+      "exit_code": 1,
+      "expected": "Contract failed: copied node starts without foreign element observers",
+      "observed": true,
+      "log_sha256": "0aa97c6440b42e02af7977d73880b114a6bc9072cb86ee1770c7f5c189c810a4"
+    },
+    {
+      "mode": "expired-copy",
+      "exit_code": 1,
+      "expected": "ERROR: AddressSanitizer: heap-use-after-free",
+      "observed": true,
+      "log_sha256": "a1e7f23d34cf7d18fb2e8749dbfaaa60571ec08277bbacc1203a841f3f7973d7"
+    },
+    {
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected": "ERROR: AddressSanitizer: heap-use-after-free",
+      "observed": true,
+      "log_sha256": "768047d0ea6a348df9610f3bd40298b6f2040f4e8f723e4cf5d94ff4684470d0"
+    },
+    {
+      "mode": "double-free",
+      "exit_code": 1,
+      "expected": "ERROR: AddressSanitizer: attempting double-free",
+      "observed": true,
+      "log_sha256": "a7fb2806789e8e7d1288db40e8dfffcbc536e4254ef4fdade406653692d03dd5"
+    }
+  ]
+}

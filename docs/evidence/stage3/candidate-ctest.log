@@ -1,0 +1,37 @@
+Test project C:/Users/tiago/.codex/.chatgpt-projects/g-p-6a78da0b01848191b90be3c9c5708c4f/work/apmesh-modernization/build/local-serial
+      Start  1: application.node_lifetime
+ 1/10 Test  #1: application.node_lifetime .................   Passed    0.27 sec
+      Start  2: tooling.controls
+ 2/10 Test  #2: tooling.controls ..........................   Passed    4.98 sec
+      Start  3: reference.archived_eistute_artifact
+ 3/10 Test  #3: reference.archived_eistute_artifact .......   Passed    0.25 sec
+      Start  4: application.invalid_inputs
+ 4/10 Test  #4: application.invalid_inputs ................   Passed    1.16 sec
+      Start  5: application.boundary_orientation
+ 5/10 Test  #5: application.boundary_orientation ..........   Passed   14.69 sec
+      Start  6: application.metric_schema
+ 6/10 Test  #6: application.metric_schema .................   Passed    0.37 sec
+      Start  7: application.curve_orientation_arclength
+ 7/10 Test  #7: application.curve_orientation_arclength ...   Passed    0.24 sec
+      Start  8: tooling.tidy_header_scope
+ 8/10 Test  #8: tooling.tidy_header_scope .................   Passed    0.63 sec
+      Start  9: application.smoothing_adjacency_order
+ 9/10 Test  #9: application.smoothing_adjacency_order .....   Passed    0.04 sec
+      Start 10: application.valid_input_grammar
+10/10 Test #10: application.valid_input_grammar ...........   Passed    0.04 sec
+
+100% tests passed out of 10
+
+Label Time Summary:
+application           =  16.81 sec*proc (7 tests)
+archived-artifact     =   0.25 sec*proc (1 test)
+boundary-incidence    =  14.93 sec*proc (2 tests)
+lifecycle             =   0.27 sec*proc (1 test)
+metric-schema         =   0.37 sec*proc (1 test)
+negative-input        =   1.16 sec*proc (1 test)
+numerical-control     =   0.04 sec*proc (1 test)
+positive-input        =   0.04 sec*proc (1 test)
+required-gate         =  16.20 sec*proc (5 tests)
+tooling               =   5.61 sec*proc (2 tests)
+
+Total Test time (real) =  22.84 sec

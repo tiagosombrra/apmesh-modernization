@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "scope": "Isolated actual physical node/submesh/triangle production sources; no whole-application or UBSan/LSan qualification.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-node-msvc\\RelWithDebInfo\\node_lifetime_probe.exe",
+      "sha256": "7b7dedfa359eeea0ed4754d94e16dd8cd7aeaca2c335f6780ceea4fee989f844"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\stage3-node-crt\\Debug\\node_lifetime_probe.exe",
+      "sha256": "ce577b21cfb9bd3c5c9259a8ba1f7fe0b66404f972719dc9bd3874e90a58ae6a"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+    },
+    {
+      "instrument": "asan",
+      "mode": "expired-copy",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "log_sha256": "ed53f1127e45c46d8a87149b91f87c2696c85a073375d506ee5619f7b8e59af8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "double-free",
+      "exit_code": 1,
+      "expected_diagnostic": "attempting double-free",
+      "passed": true,
+      "log_sha256": "16ff972b0762bfeea8b13cdb132d39ce7fabd7b52dd00729acc75f4d5d6fddf0"
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "expired-copy",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "expected_diagnostic": "retained-blocks",
+      "passed": true,
+      "log_sha256": "21fd1fbac994ef4d1a086c6b032d940e88a7b194a9cff08efe76267c13caa207"
+    }
+  ]
+}
