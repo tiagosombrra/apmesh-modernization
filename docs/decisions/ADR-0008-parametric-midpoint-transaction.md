@@ -1,6 +1,7 @@
 # ADR-0008: commit parametric midpoint replacement after preparation
 
-Status: candidate qualified; exact-head and post-merge gates required.
+Status: accepted; exact-head and implementation-main complete campaigns pass.
+Documentation-only closure checks remain required; see the closure evidence.
 Issue #26. Classification: behavior-changing defect repair on allocation-failure
 exits, preserving successful scientific computations. No scientific proposal.
 
