@@ -74,7 +74,8 @@ entry/previous-slice comparisons, positive shared-incidence coverage and zero
 measured gap. Acceptance remains steps 0/1 and last accepted triangle counts
 1,168/4,256; all 189 named CSV fields must match. Application SHA256:
 `3ee790c311e7912772d8c87d9f9afb572ff797f65d229b3ecc237a391f01bee7`.
-Exact published-head and implementation-main campaigns remain required.
+Exact published-head and implementation-main campaigns pass; see
+STAGE3_UV_TREE_CLOSURE.md.
 
 ## Evidence and setup history
 

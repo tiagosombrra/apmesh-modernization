@@ -1,0 +1,106 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "C:\\Program Files\\CMake\\bin\\cmake.exe",
+        "--version"
+      ],
+      "output": "cmake version 4.4.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\cmake.exe",
+        "--version"
+      ],
+      "output": "cmake version 4.4.0\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\g++.exe",
+        "--version"
+      ],
+      "output": "g++.exe (Rev5, Built by MSYS2 project) 16.1.0\r\nCopyright (C) 2026 Free Software Foundation, Inc.\r\nThis is free software; see the source for copying conditions.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\r\n\r\n"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\clang-tidy.exe",
+        "--version"
+      ],
+      "output": "LLVM (http://llvm.org/):\n  LLVM version 22.1.8\n  Optimized build.\n"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\clang-format.exe",
+        "--version"
+      ],
+      "output": "clang-format version 22.1.8 (https://github.com/msys2/MINGW-packages 6e4e79c2f86eeb534e324e583f2057dc9fd5ecab)\n"
+    }
+  ],
+  "compilers": {
+    "local-serial": [
+      {
+        "path": "build/local-serial/CMakeFiles/4.4.0/CMakeCXXCompiler.cmake",
+        "sha256": "4d7bff2062e2e91294a72310a74bfbfebffbc9bcf70ef3b864f25ec4cbcda5ba",
+        "values": {
+          "CMAKE_CXX_COMPILER": "\"C:/msys64/ucrt64/bin/c++.exe\"",
+          "CMAKE_CXX_COMPILER_ID": "\"GNU\"",
+          "CMAKE_CXX_COMPILER_VERSION": "\"16.1.0\"",
+          "CMAKE_CXX_COMPILER_ARCHITECTURE_ID": "\"x86_64\"",
+          "CMAKE_CXX_SIZEOF_DATA_PTR": "\"8\""
+        }
+      }
+    ],
+    "uv-msvc": [
+      {
+        "path": "build/uv-msvc/CMakeFiles/4.4.0/CMakeCXXCompiler.cmake",
+        "sha256": "f7d5972c393f8fc8485c65c19369895103659c558f61764a75e67df0d2ce041f",
+        "values": {
+          "CMAKE_CXX_COMPILER": "\"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe\"",
+          "CMAKE_CXX_COMPILER_ID": "\"MSVC\"",
+          "CMAKE_CXX_COMPILER_VERSION": "\"19.44.35229.0\"",
+          "CMAKE_CXX_COMPILER_ARCHITECTURE_ID": "\"x64\"",
+          "CMAKE_CXX_SIZEOF_DATA_PTR": "\"8\""
+        }
+      }
+    ],
+    "uv-crt": [
+      {
+        "path": "build/uv-crt/CMakeFiles/4.4.0/CMakeCXXCompiler.cmake",
+        "sha256": "f7d5972c393f8fc8485c65c19369895103659c558f61764a75e67df0d2ce041f",
+        "values": {
+          "CMAKE_CXX_COMPILER": "\"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe\"",
+          "CMAKE_CXX_COMPILER_ID": "\"MSVC\"",
+          "CMAKE_CXX_COMPILER_VERSION": "\"19.44.35229.0\"",
+          "CMAKE_CXX_COMPILER_ARCHITECTURE_ID": "\"x64\"",
+          "CMAKE_CXX_SIZEOF_DATA_PTR": "\"8\""
+        }
+      }
+    ],
+    "tree0a": [
+      {
+        "path": "build/tree0a/CMakeFiles/4.4.3/CMakeCXXCompiler.cmake",
+        "sha256": "f7d5972c393f8fc8485c65c19369895103659c558f61764a75e67df0d2ce041f",
+        "values": {
+          "CMAKE_CXX_COMPILER": "\"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe\"",
+          "CMAKE_CXX_COMPILER_ID": "\"MSVC\"",
+          "CMAKE_CXX_COMPILER_VERSION": "\"19.44.35229.0\"",
+          "CMAKE_CXX_COMPILER_ARCHITECTURE_ID": "\"x64\"",
+          "CMAKE_CXX_SIZEOF_DATA_PTR": "\"8\""
+        }
+      }
+    ],
+    "tree0d": [
+      {
+        "path": "build/tree0d/CMakeFiles/4.4.3/CMakeCXXCompiler.cmake",
+        "sha256": "f7d5972c393f8fc8485c65c19369895103659c558f61764a75e67df0d2ce041f",
+        "values": {
+          "CMAKE_CXX_COMPILER": "\"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe\"",
+          "CMAKE_CXX_COMPILER_ID": "\"MSVC\"",
+          "CMAKE_CXX_COMPILER_VERSION": "\"19.44.35229.0\"",
+          "CMAKE_CXX_COMPILER_ARCHITECTURE_ID": "\"x64\"",
+          "CMAKE_CXX_SIZEOF_DATA_PTR": "\"8\""
+        }
+      }
+    ]
+  }
+}
