@@ -4,36 +4,26 @@ Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
 Current status: stages 0-2 are integrated and closed for their measured scope.
-Active item #17 covers pending Boundary/template registration, Face::quality
-unwind and demonstrated missing-cell-context access. Candidate CTest 14/14,
-UV 49/49, node 7/7, six-unit lint/formatting and exact scientific regression
-pass. Exact-head and main gates remain; see `evidence/STAGE3_UV_REGISTRATION.md`.
-The full stage 3 remains open; earlier tree construction, remaining helper/
-mutation/curve scopes and sample/rollback follow this bounded delivery.
-Stage 3 slice 3 (#14, PR #15) is qualified: primitive construction/cache
-replacement and default front construction pass exact-head and implementation-
-main CTest 12/12, UV 35/35, node 7/7, lint/formatting and strict article regression.
-The original failed runner is retained. Three measured slices are closed;
-the full stage 3 remains open. Next are template/Boundary registration failures,
-other mutation/helper scopes and samples/rollback. See
-`evidence/STAGE3_UV_ALLOCATION_CLOSURE.md`.
-Stage 2 (issue #5, PR #6) delivered the complete production inventory, reviewed
-domain/lifecycle contracts, ADR and repair sequence. Exact-head and post-merge
-CTest 9/9, 73 Python controls and strict Eistute/Book regression pass with
-production identities unchanged. See `evidence/STAGE2_CLOSURE.md`.
-Stage 3 is in progress (#8): a reproduced foreign-adjacency use-after-free at
-SetNoh is repaired with isolated ASan/Debug CRT controls; candidate, published
-head and main CTest 10/10 and exact Eistute/Book regression pass (PR #9, head
-6c6c2f2d50f5870fd92e4edbc91fc5d901a1cd22, main e30fa99a8ea6da709f3943e8975efb31d9610b1d).
-Slices 1 and 2 are qualified; the wider stage remains open. Slice 2 (#11,
-PR #12), registered UV template ownership and normal/partial/failure teardown,
-passes exact-head and main gates: CTest 11/11, 26 UV instrument cases, seven
-previous node cases and exact article regression. Its integrated tree contains
-706 verified blobs. See `evidence/STAGE3_UV_CLOSURE.md`. The remaining sequence covers
-template/Boundary registration and additional mutation/helper scopes. Stage 4
-may unblock proved diagnostic-tool portability barriers; stages 4-11 remain
-pending. See `evidence/STAGE3_SLICE1_CLOSURE.md` and `WORKLOG.md`. Architecture:
-`architecture/MESH_ARCHITECTURE.md` and
+Stage 3 slice 4 (#17, PR #18) is qualified.
+Head `ef89fd9d3305a9ed4c88548df086540d00bbadd3` integrated through PR #18 as main
+`da3eed2dc351cfe1a82b117d686164686c738d95`, preserving tree `465fea56b1267644c352b1200250dc033b062188`
+(784 blobs). Exact-head and implementation-main gates pass: CTest 14/14, zero
+skips, 74 Python controls, UV 49/49, node 7/7, six-unit selected lint,
+changed-range formatting, inventory and strict Eistute/Book regression.
+Eight new sweeps inject 1,361 allocation failures; both missing-quadtree
+subdivision overloads are independently qualified. Successful UV geometry,
+IDs, registration order and allocation counts match the pinned original.
+All nine scientific mesh states and acceptance/incidence results remain exact;
+last accepted meshes retain 1,168/4,256 triangles and 189 matching CSV fields.
+The original fails 12 of the 49 cases while its previous 35 remain passing.
+
+The wider stage 3 remains open with four qualified slices. Next qualify
+earlier tree generation/subdivision, remaining mutation/helper and curve
+internal scopes, then sample/initialization/rollback ownership. Other template
+patterns, full-process and parallel/LSan/UBSan scope remain open.
+See `evidence/STAGE3_UV_REGISTRATION_CLOSURE.md`. Earlier qualified
+slices remain detailed in PROJECT_STATE.md, WORKLOG.md and their unchanged
+evidence records. Architecture: `architecture/MESH_ARCHITECTURE.md` and
 `architecture/REFACTOR_SEQUENCE.md`.
 
 | Stage | Scope | Completion evidence |

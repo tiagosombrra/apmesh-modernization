@@ -90,7 +90,8 @@ gap, exact OBJ/acceptance/CSV/incidence results and 189 matching named CSV field
 Both accept steps 0/1; Eistute/Book retain **1,168/4,256** triangles. No oracle or
 tolerance change. Candidate application SHA-256:
 `f843a1e64a38bd70a03bcce8aed145dd8306ce6cfbb62786eabe078281f398e1`.
-Exact published-head and post-merge closure gates remain required.
+Exact published-head and implementation-main gates pass; see
+STAGE3_UV_REGISTRATION_CLOSURE.md.
 
 Original, entry and candidate reports, failed diagnostic excerpts, raw log hashes,
 source identities and format ranges are under `stage3/uv_registration/`. Large
