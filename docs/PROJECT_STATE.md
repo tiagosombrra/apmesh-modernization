@@ -272,3 +272,27 @@ remain open. Stages 0-2 stay closed; stages 4-11 remain pending.
 
 Doxygen 1.18.0 is installed; the submitted initial run fails on undocumented
 members. Comprehensive documentation remains stage 8 with strict warnings.
+
+## Active stage 3 slice 7 (#26): parametric midpoint replacement
+
+Entry main b4090d05ff5ba11b64db3561f7ad38244145325a was reaudited with
+864 exact blobs; fresh UV 68/68 and node 7/7 entry controls pass. The retained
+serial baseline has identical qualified inputs on entry documentation-main.
+The pinned original loses the old midpoint on the first denied allocation in
+all ten new sweeps. Preparation in a local owner now commits midpoint and length
+only after success; old-cache destruction is explicitly delayed until commit.
+
+Candidate CTest 17/17, zero skips, 74 Python controls, UV 81/81, node 7/7,
+six-unit lint, formatting, inventory and repeated strict Eistute/Book entry
+regression pass. All nine states, incidence/acceptance results, 189 CSV fields
+and 1,168/4,256 accepted triangles remain exact. Ten sweeps deny 30 allocations,
+preserving cache/caller state and successful retry. Original/repaired normal
+traces and allocation counts match. Exact published-head and post-merge gates
+remain required; this is a behavior-changing exceptional-exit defect repair,
+not a scientific change. See evidence/STAGE3_PARAMETRIC_MIDPOINT.md and ADR-0008.
+
+Direct polynomial point/gradient, arc and midpoint examples observe zero
+allocations: curve-internal allocation-failure coverage remains unmeasured.
+Curve evaluation scratch stays mutable. Other curve mutation/constructor/setter
+failures, shared samples/initialization/rollback, general observers and
+full-process/parallel/LSan/UBSan remain open. Full stage 3 is still open.

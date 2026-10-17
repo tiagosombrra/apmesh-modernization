@@ -18,7 +18,8 @@ def qualify(asan, crt, runtime, output):
     valid = ["normal", "partial", "failure", "exception", "topology-failure", "pending-tree",
              "transfer-contract", "transfer-order", "midpoint-alias", "contracts",
              "primitive-contracts", "face-alias-cache", "registration-contracts",
-             "unowned-edge-query", "unowned-face-query", "tree-contracts", "angle-contracts"]
+             "unowned-edge-query", "unowned-face-query", "tree-contracts", "angle-contracts",
+             "parametric-contracts"]
     cases = [(kind, executable, mode, None) for kind, executable in [("asan", asan), ("crt", crt)]
              for mode in valid]
     cases += [("crt", crt, "teardown-allocation", None),
@@ -35,6 +36,8 @@ def qualify(asan, crt, runtime, output):
                   "template-one-failure", "template-four-failure")],
               *[("crt", crt, f"tree-failure-{stage}", None) for stage in range(5)],
               *[("crt", crt, f"angle-failure-{variant}", None) for variant in range(10)],
+              *[("crt", crt, f"parametric-failure-{variant}", None) for variant in range(10)],
+              ("crt", crt, "curve-allocation-observation", None),
               ("asan", asan, "use-after-free", "heap-use-after-free"),
               ("asan", asan, "shared-delete", "heap-use-after-free"),
               ("crt", crt, "leak", "retained-blocks")]
@@ -64,6 +67,16 @@ def qualify(asan, crt, runtime, output):
                 measured = re.findall(r"angle_success=branch:(\d) adjacency:(\d) value:\S+ preserved:4", text)
                 passed = passed and len(measured) == 10 and set(measured) == {
                     (str(branch), str(adjacency)) for branch in range(5) for adjacency in range(2)}
+            if mode == "parametric-contracts":
+                measured = re.findall(r"parametric_success=variant:(\d+) x:\S+ y:\S+ len:\S+ null:[01]", text)
+                samples = re.findall(r"curve_success=sample:(\d) x:\S+ gradient:\S+", text)
+                passed = passed and len(measured) == 11 and set(measured) == {str(i) for i in range(11)}
+                passed = passed and len(samples) == 5 and set(samples) == {str(i) for i in range(5)}
+            if mode == "curve-allocation-observation":
+                measured = re.findall(r"curve_allocation_observation=([\w-]+):(\d+)", text)
+                passed = passed and len(measured) == 3 and {name for name, count in measured} == {
+                    "point-gradient", "arc", "midpoint"}
+                passed = passed and "curve_allocation_failure_coverage=unmeasured" in text
             if mode == "transfer-allocation-failure":
                 passed = passed and "transfer_allocation_failures=3" in text
             if mode in {"edge-construction-failure", "face-construction-failure",
@@ -91,6 +104,11 @@ def qualify(asan, crt, runtime, output):
                 passed = passed and len(sites) == 1 and all(
                     int(injected) == int(total) > 0 for injected, total in sites)
                 passed = passed and "unchanged=1 retry=1" in text
+            if mode.startswith("parametric-failure-"):
+                sites = re.findall(r"parametric_failure_sites=\d+:(\d+)/(\d+)", text)
+                passed = passed and len(sites) == 1 and all(
+                    int(injected) == int(total) > 0 for injected, total in sites)
+                passed = passed and "unchanged=1 retry=1" in text
         result = {"instrument": kind, "mode": mode, "exit_code": process.returncode,
                   "expected_diagnostic": diagnostic, "passed": passed,
                   "retained_blocks": int(retained[1]) if retained else None,
@@ -100,7 +118,9 @@ def qualify(asan, crt, runtime, output):
                        "transfer_allocation_failures=", "allocation_hook_control=", "teardown_allocation_attempts=",
                        "allocation_failure_sites=", "registration_failure_sites=", "registration_measured=",
                        "tree_failure_sites=", "tree_measured=", "angle_failure_sites=",
-                       "angle_measured=", "angle_success="))}),
+                       "angle_measured=", "angle_success=", "parametric_success=", "parametric_measured=",
+                       "parametric_failure_sites=", "curve_success=", "curve_integral=",
+                       "curve_allocation_observation=", "curve_allocation_failure_coverage="))}),
                   "log_sha256": hashlib.sha256(data).hexdigest()}
         results.append(result)
         print(json.dumps({key: value for key, value in result.items() if key != "log_sha256"}), flush=True)

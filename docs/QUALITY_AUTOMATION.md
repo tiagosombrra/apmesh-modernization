@@ -207,3 +207,16 @@ ADR-0007 for exact commands, diagnostic history and limits.
 Doxygen 1.18.0 is now installed locally. The submitted initial documentation
 run fails on undocumented APIs; this remains a stage-8 failure inventory, not
 a documentation pass. Warning enforcement is unchanged.
+
+## Parametric midpoint replacement (#26)
+
+The candidate adds required application.uv_parametric_contracts: 17 CTest
+entries, 74 Python controls, 81 UV instrument cases and seven previous node
+cases. Eleven normal variants cover four sides/both directions, interior
+fallback and null-curve no-op; ten CRT sweeps deny 30 allocations and require
+unchanged cache identity/geometry and length, caller state and successful retry.
+Normal success traces and successful allocation counts match the original.
+Actual curve position/gradient, signed arc and midpoint have independent
+analytic controls. Their three measured operation scopes observe zero
+allocations; this is explicitly unmeasured curve-internal failure coverage.
+See evidence/STAGE3_PARAMETRIC_MIDPOINT.md and ADR-0008 for commands and limits.

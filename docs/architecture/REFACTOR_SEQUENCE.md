@@ -108,3 +108,14 @@ measured sweeps include copied adjacency and final cache reset. Continue other
 helper/mutation and curve-internal scopes, then parametric midpoint replacement
 and samples/initialization/rollback. Do not generalize successful helper reuse
 to failed-tree observer consumption or retry. See ADR-0007 and the slice evidence.
+
+## Parametric midpoint cache boundary (#26)
+
+Prepare the replacement midpoint/normalized length before changing live Edge
+state, then destroy the old owned cache and commit. Old-cache observer lifetime
+ends on successful commit; allocation failure preserves its identity/geometry.
+Curve evaluation scratch remains mutable. C11 and ADR-0008 record the measured
+four-side/two-direction, fallback and null-curve boundary. Zero allocations in
+the direct polynomial examples do not qualify failures inside all curve APIs.
+Continue other curve mutation/constructor/setter paths before sample ownership,
+initialization and rollback; full-process and parallel qualification stay open.

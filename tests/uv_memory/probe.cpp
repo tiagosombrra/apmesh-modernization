@@ -124,6 +124,169 @@ private:
   int& destroyed_;
 };
 
+double analytic_curve_position(double parameter) {
+  return 0.3 * parameter + 0.6 * parameter * parameter + 0.1 * parameter * parameter * parameter;
+}
+
+double analytic_curve_inverse(double position) {
+  double low = 0, high = 1;
+  for (int step = 0; step < 80; ++step) {
+    const double middle = (low + high) / 2;
+    if (analytic_curve_position(middle) < position)
+      low = middle;
+    else
+      high = middle;
+  }
+  return (low + high) / 2;
+}
+
+void prepare_parametric_curve(CurveAdaptiveParametric& curve) {
+  // Initialize the production polynomial evaluator directly, without a replacement generator.
+  Matrix4x1 coefficients;
+  coefficients << 0.1, 0.6, 0.3, 0.0;
+  curve.SetMatGeoGx(coefficients);
+  curve.CalculateLengthCurve();
+  require(std::abs(curve.GetLength() - 1.0) < 1e-12, "analytic physical curve length");
+}
+
+void curve_evaluation_contracts() {
+  CurveAdaptiveParametric curve;
+  prepare_parametric_curve(curve);
+  int sample = 0;
+  for (double parameter : {0.0, 0.125, 0.5, 0.875, 1.0}) {
+    const auto point = curve.FindPointByParameter(parameter);
+    const auto gradient = curve.CalculateGradientByParameter(parameter);
+    require(std::abs(point.GetX() - analytic_curve_position(parameter)) < 1e-12 &&
+                point.GetY() == 0 && point.GetZ() == 0,
+            "production curve position agrees with independent polynomial");
+    const double expected_gradient = 0.3 + 1.2 * parameter + 0.3 * parameter * parameter;
+    require(std::abs(gradient.GetX() - expected_gradient) < 1e-12 && gradient.GetY() == 0 &&
+                gradient.GetZ() == 0,
+            "production curve gradient agrees with independent derivative");
+    std::printf("curve_success=sample:%d x:%a gradient:%a\n", sample++, point.GetX(),
+                gradient.GetX());
+  }
+  const double expected_arc = analytic_curve_position(0.875) - analytic_curve_position(0.125);
+  const double length = curve.CalculateParametricLength(0.125, 0.875);
+  require(std::abs(length - expected_arc) < 1e-12, "physical arc agrees with analytic integral");
+  require(std::abs(curve.CalculateParametricLength(0.875, 0.125) + expected_arc) < 1e-12,
+          "reversed direct integration preserves its signed interval");
+  const double midpoint = curve.CalculateMidparameterByParamters(0.125, 0.875);
+  const double expected_midpoint =
+      analytic_curve_inverse((analytic_curve_position(0.125) + analytic_curve_position(0.875)) / 2);
+  // The legacy physical residual stops at TOLERANCE; dx/dt is at least 0.3.
+  require(std::abs(midpoint - expected_midpoint) < TOLERANCE / 0.3,
+          "physical midpoint agrees with independent inverse within the solver residual bound");
+  std::printf("curve_integral=%a midpoint:%a\n", length, midpoint);
+}
+
+class ParametricFixture {
+public:
+  ParametricFixture(std::array<int, 2>& destroyed, int variant)
+      : destroyed_(destroyed), side_(variant == 10 ? 4 : variant / 2),
+        reversed_(variant != 10 && variant % 2 != 0), bound_(variant != 10),
+        first_(std::make_unique<CountedVertex>(sides_[side_][0], sides_[side_][1], destroyed[0])),
+        last_(std::make_unique<CountedVertex>(sides_[side_][2], sides_[side_][3], destroyed[1])),
+        edge_(first_.get(), last_.get(), 301 + variant), original_midpoint_(edge_.getMid()),
+        original_x_(original_midpoint_->getX()), original_y_(original_midpoint_->getY()),
+        id_(301 + variant) {
+    prepare_parametric_curve(curve_);
+    edge_.setCurva(bound_ ? &curve_ : nullptr, reversed_);
+    edge_.setLen(0.375);
+    edge_.setFree(false);
+    first_->addAdjacentEdge(&edge_);
+    last_->addAdjacentEdge(&edge_);
+  }
+  ~ParametricFixture() { edge_.DetachVertices(); }
+  ParametricFixture(const ParametricFixture&) = delete;
+  ParametricFixture& operator=(const ParametricFixture&) = delete;
+
+  void replace() { edge_.makeParamMid(); }
+
+  void check_common() {
+    require(destroyed_[0] == 0 && destroyed_[1] == 0 && edge_.getV1() == first_.get() &&
+                edge_.getV2() == last_.get() && edge_.getId() == id_ && !edge_.isFree(),
+            "parametric replacement preserves caller ownership and edge identity/scalars");
+    require(first_->getX() == sides_[side_][0] && first_->getY() == sides_[side_][1] &&
+                last_->getX() == sides_[side_][2] && last_->getY() == sides_[side_][3],
+            "parametric replacement preserves endpoint geometry");
+    for (auto* vertex : {first_.get(), last_.get()}) {
+      const auto adjacent = vertex->getAdjacentEdges();
+      require(adjacent.size() == 1 && adjacent.count(&edge_) == 1,
+              "parametric replacement preserves caller adjacency");
+    }
+    const auto coefficients = curve_.GetMatGeoGx();
+    require(coefficients(0) == 0.1 && coefficients(1) == 0.6 && coefficients(2) == 0.3 &&
+                coefficients(3) == 0.0 && std::abs(curve_.GetLength() - 1.0) < 1e-12,
+            "curve coefficients and total length remain unchanged; evaluation scratch is mutable");
+  }
+
+  void check_unchanged() {
+    check_common();
+    require(edge_.getMid() == original_midpoint_ && edge_.getLen() == 0.375,
+            "failed parametric replacement preserves midpoint identity and normalized length");
+    require(original_midpoint_->getX() == original_x_ && original_midpoint_->getY() == original_y_,
+            "failed parametric replacement preserves cached geometry");
+  }
+
+  void check_success(int variant) {
+    check_common();
+    if (!bound_) {
+      check_unchanged();
+    } else if (side_ == 4) {
+      require(std::abs(edge_.getMid()->getX() - 0.5) < 1e-15 &&
+                  std::abs(edge_.getMid()->getY() - 0.45) < 1e-15 && edge_.getLen() == -1,
+              "interior fallback preserves geometric midpoint and length sentinel");
+    } else {
+      const double first = sides_[side_][side_ % 2 == 0 ? 0 : 1];
+      const double last = sides_[side_][side_ % 2 == 0 ? 2 : 3];
+      const double physical_first = reversed_ ? 1 - first : first;
+      const double physical_last = reversed_ ? 1 - last : last;
+      double expected = analytic_curve_inverse(
+          (analytic_curve_position(physical_first) + analytic_curve_position(physical_last)) / 2);
+      if (reversed_)
+        expected = 1 - expected;
+      const double actual = side_ % 2 == 0 ? edge_.getMid()->getX() : edge_.getMid()->getY();
+      require(std::abs(actual - expected) < TOLERANCE / 0.3,
+              "parametric midpoint preserves physical incidence direction");
+      const double fixed = side_ % 2 == 0 ? edge_.getMid()->getY() : edge_.getMid()->getX();
+      require(fixed == (side_ == 0 || side_ == 3 ? 0 : 1), "midpoint remains on its patch side");
+      require(std::abs(edge_.getLen() - std::abs(analytic_curve_position(physical_last) -
+                                                 analytic_curve_position(physical_first))) < 1e-12,
+              "normalized physical arc agrees with independent integral");
+    }
+    std::printf("parametric_success=variant:%d x:%a y:%a len:%a null:%d\n", variant,
+                edge_.getMid()->getX(), edge_.getMid()->getY(), edge_.getLen(), bound_ ? 0 : 1);
+  }
+
+private:
+  inline static constexpr std::array<std::array<double, 4>, 5> sides_{
+      {{0, 0, 0.5, 0}, {1, 0, 1, 0.5}, {1, 1, 0.5, 1}, {0, 1, 0, 0.5}, {0.2, 0.2, 0.8, 0.7}}};
+  std::array<int, 2>& destroyed_;
+  int side_;
+  bool reversed_, bound_;
+  CurveAdaptiveParametric curve_;
+  std::unique_ptr<CountedVertex> first_, last_;
+  Edge edge_;
+  Vertex* original_midpoint_;
+  double original_x_, original_y_;
+  long id_;
+};
+
+void parametric_contracts() {
+  curve_evaluation_contracts();
+  for (int variant = 0; variant < 11; ++variant) {
+    std::array<int, 2> destroyed{};
+    {
+      ParametricFixture fixture(destroyed, variant);
+      fixture.replace();
+      fixture.check_success(variant);
+    }
+    require(destroyed[0] == 1 && destroyed[1] == 1,
+            "parametric caller teardown occurs exactly once");
+  }
+}
+
 class AngleFixture {
 public:
   AngleFixture(std::array<int, 4>& destroyed, bool adjacency)
@@ -586,6 +749,59 @@ template <class Action> bool inject_allocation_failure(int ordinal, Action actio
   return caught && denied_allocations == 1;
 }
 
+void parametric_allocation_failures(int variant) {
+  int total = 0;
+  std::array<int, 2> calibrated_destroyed{};
+  {
+    ParametricFixture fixture(calibrated_destroyed, variant);
+    total = measure_allocations([&] { fixture.replace(); });
+    fixture.check_success(variant);
+  }
+  require(calibrated_destroyed[0] == 1 && calibrated_destroyed[1] == 1,
+          "calibrated parametric teardown occurs exactly once");
+  require(total > 0, "parametric sweep has positive measured allocation coverage");
+  std::printf("parametric_measured=%d:%d\n", variant, total);
+  for (int ordinal = 0; ordinal < total; ++ordinal) {
+    std::array<int, 2> destroyed{};
+    {
+      ParametricFixture fixture(destroyed, variant);
+      std::printf("parametric_inject=%d:%d\n", variant, ordinal);
+      require(inject_allocation_failure(ordinal, [&] { fixture.replace(); }),
+              "every measured parametric allocation denial propagates exactly once");
+      fixture.check_unchanged();
+      fixture.replace();
+      fixture.check_success(variant);
+    }
+    require(destroyed[0] == 1 && destroyed[1] == 1,
+            "caller endpoints survive every failed replacement");
+  }
+  std::printf("parametric_failure_sites=%d:%d/%d unchanged=1 retry=1\n", variant, total, total);
+}
+
+void curve_allocation_observation() {
+  CurveAdaptiveParametric curve;
+  prepare_parametric_curve(curve);
+  PointAdaptive point;
+  VectorAdaptive gradient;
+  const int point_count = measure_allocations([&] {
+    point = curve.FindPointByParameter(0.5);
+    gradient = curve.CalculateGradientByParameter(0.5);
+  });
+  double arc = 0, midpoint = 0;
+  const int arc_count =
+      measure_allocations([&] { arc = curve.CalculateParametricLength(0.125, 0.875); });
+  const int midpoint_count =
+      measure_allocations([&] { midpoint = curve.CalculateMidparameterByParamters(0.125, 0.875); });
+  require(std::abs(point.GetX() - analytic_curve_position(0.5)) < 1e-12 &&
+              std::abs(gradient.GetX() - 0.975) < 1e-12 && arc > 0 && midpoint > 0.125 &&
+              midpoint < 0.875,
+          "allocation observations execute positive analytic curve operations");
+  std::printf("curve_allocation_observation=point-gradient:%d\n", point_count);
+  std::printf("curve_allocation_observation=arc:%d\n", arc_count);
+  std::printf("curve_allocation_observation=midpoint:%d\n", midpoint_count);
+  std::puts("curve_allocation_failure_coverage=unmeasured");
+}
+
 void angle_allocation_failures(int variant) {
   const int branch = variant % 5;
   const bool adjacency = variant >= 5;
@@ -885,8 +1101,23 @@ void scenario(const char* mode) {
     primitive_contracts();
   else if (std::strcmp(mode, "angle-contracts") == 0)
     angle_contracts();
-  else if (std::strncmp(mode, "angle-failure-", 14) == 0 && std::strlen(mode) == 15 &&
-           mode[14] >= '0' && mode[14] <= '9') {
+  else if (std::strcmp(mode, "parametric-contracts") == 0)
+    parametric_contracts();
+  else if (std::strcmp(mode, "curve-allocation-observation") == 0) {
+#if defined(_MSC_VER) && defined(_DEBUG)
+    curve_allocation_observation();
+#else
+    require(false, "Debug CRT allocation hook required");
+#endif
+  } else if (std::strncmp(mode, "parametric-failure-", 19) == 0 && std::strlen(mode) == 20 &&
+             mode[19] >= '0' && mode[19] <= '9') {
+#if defined(_MSC_VER) && defined(_DEBUG)
+    parametric_allocation_failures(mode[19] - '0');
+#else
+    require(false, "Debug CRT allocation hook required");
+#endif
+  } else if (std::strncmp(mode, "angle-failure-", 14) == 0 && std::strlen(mode) == 15 &&
+             mode[14] >= '0' && mode[14] <= '9') {
 #if defined(_MSC_VER) && defined(_DEBUG)
     angle_allocation_failures(mode[14] - '0');
 #else
