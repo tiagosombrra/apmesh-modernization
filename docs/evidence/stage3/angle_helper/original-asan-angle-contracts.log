@@ -1,0 +1,12 @@
+UV lifetime diagnostic
+angle_success=branch:0 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4
+angle_success=branch:1 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4
+angle_success=branch:2 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4
+angle_success=branch:3 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4
+angle_success=branch:4 adjacency:0 value:-0x1.0000000000000p+0 preserved:4
+angle_success=branch:0 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4
+angle_success=branch:1 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4
+angle_success=branch:2 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4
+angle_success=branch:3 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4
+angle_success=branch:4 adjacency:1 value:-0x1.0000000000000p+0 preserved:4
+PASS

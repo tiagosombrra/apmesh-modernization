@@ -98,3 +98,13 @@ actual neighbor refinement; failed trees permit destruction only. Successful
 allocation, cell/neighbor/leaf order and scientific expressions are preserved.
 Mate/root sharing, retry and full-process/parallel qualification remain open.
 See ADR-0006 and `../evidence/STAGE3_UV_TREE.md`.
+
+## Angle-query temporary boundary (#23)
+
+The angle helper's borrowed endpoint lifetime is the next bounded repair:
+original allocation failures delete caller vertices, while a local detach guard
+preserves them without changing successful computation/allocation order. Ten
+measured sweeps include copied adjacency and final cache reset. Continue other
+helper/mutation and curve-internal scopes, then parametric midpoint replacement
+and samples/initialization/rollback. Do not generalize successful helper reuse
+to failed-tree observer consumption or retry. See ADR-0007 and the slice evidence.

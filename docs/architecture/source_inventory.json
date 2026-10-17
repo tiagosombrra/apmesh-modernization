@@ -383,7 +383,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "d762bf2ee831f44b3b221ae597909ea24bcc63aad4952a1f47f01e97ddd8dc9c"
+      "sha256": "e880a5449fb87bac73c2107cb5a67174cfc5741d7af1d4fb5d8cc99e6294828d"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -671,8 +671,8 @@
       "path": "include/crab_mesh/aft/edge.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "9459a8a59ba55ae93d976e513e4c5ca5d0cbef2d90cf57fe604a66b86305677d",
-      "bytes": 2950,
+      "sha256": "7a2cb3acf261470d01fee7662fc8d997564a31d969852ce39015815922ae626c",
+      "bytes": 3048,
       "includes": [
         {
           "line": 4,
@@ -3116,8 +3116,8 @@
       "path": "src/crab_mesh/aft/edge.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "4c809ca435e2a9e64994b9682eb143b8bc000602f7b1ab2d60110c505c90366e",
-      "bytes": 14899,
+      "sha256": "5f717323a3a49c59a6c70218596dfa348c057d082234ef1fdd1f9679209d48fa",
+      "bytes": 15006,
       "includes": [
         {
           "line": 1,
@@ -4751,7 +4751,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 94,
+    "source_anchors": 95,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

@@ -240,3 +240,13 @@ actual neighbor refinement; failed trees permit destruction only. Successful
 allocation, cell/neighbor/leaf order and scientific expressions are preserved.
 Mate/root sharing, retry and full-process/parallel qualification remain open.
 See ADR-0006 and `../evidence/STAGE3_UV_TREE.md`.
+
+## Angle-query temporary boundary (#23)
+
+The angle-query temporary borrows endpoints and must detach them on every exit
+before the legacy Edge destructor runs. C11 records this narrow exception
+guarantee. Ten calibrated sweeps cover four matches and nonadjacency with empty/
+populated observers, including successful helper reuse after failure. Original
+and candidate successful geometry/allocation counts match. General copied
+observers, other mutation/helpers and curve operations remain separate scopes.
+See ADR-0007 and `../evidence/STAGE3_ANGLE_HELPER.md`.

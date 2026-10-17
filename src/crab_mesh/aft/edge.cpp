@@ -471,6 +471,10 @@ double Edge::angle(Edge *e) {
 
 double Edge::angle(Vertex *va, Vertex *vb) {
   /*static*/ Edge e;
+  struct EndpointScope {
+    Edge& edge;
+    ~EndpointScope() { edge.DetachVertices(); }
+  } endpoints{e};
   /*static*/ double result;
 
   e.setVertices(va, vb);

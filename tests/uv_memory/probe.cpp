@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <array>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -120,6 +123,95 @@ public:
 private:
   int& destroyed_;
 };
+
+class AngleFixture {
+public:
+  AngleFixture(std::array<int, 4>& destroyed, bool adjacency)
+      : destroyed_(destroyed), a_(std::make_unique<CountedVertex>(0, 0, destroyed[0])),
+        b_(std::make_unique<CountedVertex>(3, 0, destroyed[1])),
+        c_(std::make_unique<CountedVertex>(3, 4, destroyed[2])),
+        d_(std::make_unique<CountedVertex>(0, 4, destroyed[3])), edge_(a_.get(), b_.get(), 107),
+        midpoint_(edge_.getMid()), adjacency_(adjacency) {
+    edge_.setLen(0.25);
+    edge_.setFree(false);
+    if (adjacency_)
+      for (auto* vertex : vertices())
+        vertex->addAdjacentEdge(&edge_);
+  }
+  ~AngleFixture() { edge_.DetachVertices(); }
+  AngleFixture(const AngleFixture&) = delete;
+  AngleFixture& operator=(const AngleFixture&) = delete;
+
+  double angle(int branch) {
+    switch (branch) {
+    case 0:
+      return edge_.angle(a_.get(), c_.get());
+    case 1:
+      return edge_.angle(c_.get(), a_.get());
+    case 2:
+      return edge_.angle(b_.get(), d_.get());
+    case 3:
+      return edge_.angle(d_.get(), b_.get());
+    default:
+      return edge_.angle(c_.get(), d_.get());
+    }
+  }
+
+  void check() {
+    require(std::all_of(destroyed_.begin(), destroyed_.end(), [](int count) { return count == 0; }),
+            "angle helper preserves every caller-owned endpoint");
+    require(edge_.getV1() == a_.get() && edge_.getV2() == b_.get() && edge_.getMid() == midpoint_ &&
+                midpoint_->getX() == 1.5 && midpoint_->getY() == 0 && edge_.getLen() == 0.25 &&
+                edge_.getId() == 107 && !edge_.isFree() && edge_.length() == 3,
+            "angle helper preserves receiver identity, geometry and scalar state");
+    const std::array<double, 4> x{0, 3, 3, 0}, y{0, 0, 4, 4};
+    const auto points = vertices();
+    for (std::size_t index = 0; index < points.size(); ++index) {
+      require(points[index]->getX() == x[index] && points[index]->getY() == y[index],
+              "angle helper preserves caller geometry");
+      const auto adjacent = points[index]->getAdjacentEdges();
+      require(adjacent.size() == (adjacency_ ? 1U : 0U) &&
+                  (!adjacency_ || adjacent.count(&edge_) == 1),
+              "angle helper preserves caller adjacency identity");
+    }
+  }
+
+private:
+  std::array<Vertex*, 4> vertices() { return {a_.get(), b_.get(), c_.get(), d_.get()}; }
+  std::array<int, 4>& destroyed_;
+  std::unique_ptr<CountedVertex> a_, b_, c_, d_;
+  Edge edge_;
+  Vertex* midpoint_;
+  bool adjacency_;
+};
+
+void check_angle(double actual, int branch) {
+  // The adjacent fixtures form a 3-4-5 right triangle at either receiver endpoint.
+  const double expected = branch == 4 ? -1.0 : std::atan2(4.0, 3.0);
+  require(std::abs(actual - expected) < 1e-12,
+          "angle helper agrees with independent triangle geometry");
+}
+
+void check_angle_destruction(const std::array<int, 4>& destroyed) {
+  require(std::all_of(destroyed.begin(), destroyed.end(), [](int count) { return count == 1; }),
+          "caller destroys each angle-fixture endpoint exactly once");
+}
+
+void angle_contracts() {
+  for (int adjacency = 0; adjacency < 2; ++adjacency)
+    for (int branch = 0; branch < 5; ++branch) {
+      std::array<int, 4> destroyed{};
+      {
+        AngleFixture fixture(destroyed, adjacency != 0);
+        const double value = fixture.angle(branch);
+        check_angle(value, branch);
+        fixture.check();
+        std::printf("angle_success=branch:%d adjacency:%d value:%a preserved:4\n", branch,
+                    adjacency, value);
+      }
+      check_angle_destruction(destroyed);
+    }
+}
 
 std::unique_ptr<AdvancingFront> partial(int& destroyed) {
   auto front = std::make_unique<AdvancingFront>();
@@ -494,6 +586,37 @@ template <class Action> bool inject_allocation_failure(int ordinal, Action actio
   return caught && denied_allocations == 1;
 }
 
+void angle_allocation_failures(int variant) {
+  const int branch = variant % 5;
+  const bool adjacency = variant >= 5;
+  int total = 0;
+  std::array<int, 4> calibrated_destroyed{};
+  {
+    AngleFixture fixture(calibrated_destroyed, adjacency);
+    double result = 0;
+    total = measure_allocations([&] { result = fixture.angle(branch); });
+    check_angle(result, branch);
+    fixture.check();
+  }
+  check_angle_destruction(calibrated_destroyed);
+  require(total > 0, "angle sweep has positive measured allocation coverage");
+  std::printf("angle_measured=%d:%d\n", variant, total);
+  for (int ordinal = 0; ordinal < total; ++ordinal) {
+    std::array<int, 4> destroyed{};
+    {
+      AngleFixture fixture(destroyed, adjacency);
+      std::printf("angle_inject=%d:%d\n", variant, ordinal);
+      require(inject_allocation_failure(ordinal, [&] { fixture.angle(branch); }),
+              "every angle allocation denial propagates exactly once");
+      fixture.check();
+      check_angle(fixture.angle(branch), branch);
+      fixture.check();
+    }
+    check_angle_destruction(destroyed);
+  }
+  std::printf("angle_failure_sites=%d:%d/%d unchanged=1 retry=1\n", variant, total, total);
+}
+
 template <class Action> void construction_failures(const char* name, Action action) {
   const int total = measure_allocations(action);
   require(total > 0, "construction control has positive measured allocation coverage");
@@ -760,7 +883,16 @@ void scenario(const char* mode) {
     face_alias_cache();
   else if (std::strcmp(mode, "primitive-contracts") == 0)
     primitive_contracts();
-  else if (std::strcmp(mode, "registration-contracts") == 0)
+  else if (std::strcmp(mode, "angle-contracts") == 0)
+    angle_contracts();
+  else if (std::strncmp(mode, "angle-failure-", 14) == 0 && std::strlen(mode) == 15 &&
+           mode[14] >= '0' && mode[14] <= '9') {
+#if defined(_MSC_VER) && defined(_DEBUG)
+    angle_allocation_failures(mode[14] - '0');
+#else
+    require(false, "Debug CRT allocation hook required");
+#endif
+  } else if (std::strcmp(mode, "registration-contracts") == 0)
     registration_contracts();
   else if (std::strcmp(mode, "tree-contracts") == 0)
     tree_contracts();

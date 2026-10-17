@@ -98,6 +98,7 @@ public:
    bool accordingToNormal(Vertex* v, bool inEdgeTest = false);
 
    double angle(Edge* e);
+   /// Borrow endpoints for this query; success and allocation failure preserve caller ownership.
    double angle(Vertex* v1, Vertex* v2);
 
    Vertex* normal();
