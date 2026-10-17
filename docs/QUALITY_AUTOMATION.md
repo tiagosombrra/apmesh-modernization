@@ -4,8 +4,8 @@
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-4 are integrated with qualified node and UV targets.
-The integrated CTest passes 14/14 with zero skips and 74 Python controls,
+Stage 3 slices 1-5 are integrated with qualified node and UV targets.
+The integrated CTest passes 15/15 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
@@ -184,7 +184,7 @@ These are engineering references, not a proof that legacy code follows them.
 
 ## Tree construction qualification (#20)
 
-The candidate adds required application.uv_tree_contracts: 15 CTest tests,
+The integrated suite includes required application.uv_tree_contracts: 15 CTest tests,
 74 Python controls, 56 UV instrument cases and seven previous node cases.
 Five independently calibrated CRT sweeps inject 3,470 allocation failures,
 covering root, uniform subdivision, edge/old-face generation and real neighbor

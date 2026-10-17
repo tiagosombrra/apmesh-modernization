@@ -56,7 +56,12 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3's bounded ownership/lifecycle qualification is next.
+Stage 3 is in progress with five qualified ownership/lifecycle slices.
+The latest guards root and midpoint construction across 3,470 injected
+allocation failures. CTest 15/15, UV 56/56, node 7/7 and strict Eistute/Book
+regressions pass before and after integration. See
+[the latest closure](docs/evidence/STAGE3_UV_TREE_CLOSURE.md).
+Full-application memory and parallel qualification remain open.
 
 ## Repository policy
 

@@ -190,6 +190,32 @@ patterns, full-process and parallel/LSan/UBSan scope remain open.
 
 See `evidence/STAGE3_UV_REGISTRATION_CLOSURE.md` and ADR-0005.
 
+## Stage 3 slice 5 qualified (#20, PR #21)
+
+Head `4f0c9bed6d1d1a52b6cdab88a26a9323040614f9` integrated through PR #21 as main
+`83eefa8c6006cc39dcdc35d463b8611d6f038538`, preserving tree `fa76355260fad7184d236f5680dac3ea67e5b6b6`
+(818 blobs). Exact-head and implementation-main full campaigns pass: CTest
+15/15 with zero skips, 74 Python controls, UV 56/56, node 7/7, six-unit selected
+lint, changed-range formatting, fresh inventory and strict Eistute/Book
+regression. All nine attempted states, 189 CSV fields, acceptance/incidence
+results and 1,168/4,256 last-accepted triangles remain exact.
+
+Five calibrated sweeps inject 3,470 allocation failures across initial root,
+uniform subdivision, boundary-edge/old-face generation and actual neighbor
+refinement. The original fails all five; its previous 49 cases and both new
+success traces pass. Candidate success traces and allocation counts match
+original; valid cases retain zero normal CRT blocks/bytes. Root bounds and
+midpoint construction are locally owned until complete adoption. Only two
+production implementation files change; no scientific expression or policy
+changes. See ADR-0006 and `evidence/STAGE3_UV_TREE_CLOSURE.md`.
+
+The wider stage 3 remains open with five qualified slices. Next characterize
+remaining mutation/helper temporaries and curve-internal allocation failures,
+then sample/initialization/rollback ownership. Other tree/mate/setter paths,
+same-tree retry/observer consumption after failure, other templates and
+full-process/parallel/LSan/UBSan qualification remain open. Stages 0-2 are
+closed for measured scope; stages 4-11 remain pending.
+
 ## Open blockers and limitations
 
 - Stages 0-2 are closed for their measured scope. Stage 3 is in progress and
@@ -214,12 +240,3 @@ One work item at a time. Every delivery records scope, reviewed changes,
 executed checks, toolchain, failures and next step. Recheck remote authority
 before writing and after integration. Scientific algorithm changes wait for
 explicit advisor alignment.
-
-## Active stage 3 slice 5 (#20)
-
-Entry main `4bfb31d54cdfb566a564724851d28a0bc02a93a0` passed the full
-14-test, 49-UV, seven-node, six-unit lint and exact Eistute/Book entry campaign.
-Five measured tree generation/subdivision sweeps reproduce retained allocations
-in the pinned original. Root bounds and midpoint construction are guarded in
-the candidate; full candidate and publication gates remain before closure.
-No scientific expressions or refinement criteria are changed.
