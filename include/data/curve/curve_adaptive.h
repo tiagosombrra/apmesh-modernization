@@ -21,7 +21,8 @@ class CurveAdaptive {
   unsigned int GetNumBerPoints() const;
   // retorna o i-ésimo ponto
   PointAdaptive* GetPoint(const unsigned int position);
-  // troca a lista de pontos
+  /// Replace borrowed point observers; allocation failure preserves the live list and its nodes.
+  /// Success invalidates old element observers, but never destroys pointed-to objects.
   void SetPoints(std::list<PointAdaptive*> new_points);
   std::list<PointAdaptive*>& GetPoints();
   void InsertPatch(Patch* patch);

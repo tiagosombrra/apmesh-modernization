@@ -1,0 +1,33 @@
+[1/1] (1/4) Processing file C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/data/curve/curve_adaptive.cpp.
+2 warnings generated.
+[1/1] (2/4) Processing file C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/data/curve/curve_adaptive.cpp.
+2 warnings generated.
+[1/1] (3/4) Processing file C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/data/curve/curve_adaptive.cpp.
+2 warnings generated.
+[1/1] (4/4) Processing file C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/data/curve/curve_adaptive.cpp.
+2 warnings generated.
+Suppressed 2 warnings (2 with check filters).
+[1/1] (1/4) Processing file C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/data/curve/curve_adaptive_parametric.cpp.
+79 warnings generated.
+[1/1] (2/4) Processing file C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/data/curve/curve_adaptive_parametric.cpp.
+114 warnings generated.
+[1/1] (3/4) Processing file C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/data/curve/curve_adaptive_parametric.cpp.
+149 warnings generated.
+[1/1] (4/4) Processing file C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/data/curve/curve_adaptive_parametric.cpp.
+184 warnings generated.
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\src\data\curve\curve_adaptive_parametric.cpp:146:12: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]
+  146 |     double min() { return 0.0; };
+      |            ^
+      |                  override
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\src\data\curve\curve_adaptive_parametric.cpp:147:12: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]
+  147 |     double max() { return 1.0; };
+      |            ^
+      |                  override
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\src\data\curve\curve_adaptive_parametric.cpp:150:12: error: annotate this function with 'override' or (rarely) 'final' [modernize-use-override,-warnings-as-errors]
+  150 |     double f(double parameter) {
+      |            ^
+      |                                override
+Suppressed 172 warnings (128 in non-user code, 44 with check filters).
+Use -header-filter=.* or leave it as default to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+3 warnings treated as errors
+Quality command failed: Command '['C:\\msys64\\ucrt64\\bin\\clang-tidy.EXE', '-p', 'C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17', 'C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\src\\data\\curve\\curve_adaptive_parametric.cpp']' returned non-zero exit status 1.

@@ -220,3 +220,14 @@ Actual curve position/gradient, signed arc and midpoint have independent
 analytic controls. Their three measured operation scopes observe zero
 allocations; this is explicitly unmeasured curve-internal failure coverage.
 See evidence/STAGE3_PARAMETRIC_MIDPOINT.md and ADR-0008 for commands and limits.
+
+## Curve collection replacement (#29)
+
+The candidate adds application.curve_collection_contracts, taking CTest to 18
+entries with zero skips and 74 Python controls. The separate seven-production-
+unit curve probe qualifies 19 ASan/CRT cases, including 14 normal setter variants,
+two pointer-taking copy constructors and 76 allocation denials in 14 sweeps.
+Prior UV 81/81 and node 7/7 controls remain required. Selected lint covers the
+two actual curve implementation units with unchanged diagnostic rules.
+List-node invalidation and independent per-list transactions are explicit.
+See evidence/STAGE3_CURVE_COLLECTIONS.md and ADR-0009 for commands and limits.

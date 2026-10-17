@@ -1,0 +1,1217 @@
+Versão do MSBuild 17.14.60+43b635718 para .NET Framework
+
+  1>Checking Build System
+  Building Custom Rule C:/Users/tiago/Documents/dev/research/apmesh-modernization/tests/curve_memory/CMakeLists.txt
+  probe.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(103,9): warning C4005: 'AF_IPX': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(457,9):
+      ver a definição anterior de "AF_IPX"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(147,9): warning C4005: 'AF_MAX': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(476,9):
+      ver a definição anterior de "AF_MAX"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(187,9): warning C4005: 'SO_DONTLINGER': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(399,9):
+      ver a definição anterior de "SO_DONTLINGER"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(246,16): error C2011: 'sockaddr': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(482,8):
+      consulte a declaração de 'sockaddr'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(448,5): error C2143: erro de sintaxe: '}' ausente antes de 'constante' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(448,5): error C2059: erro de sintaxe: 'constante' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(502,1): error C2143: erro de sintaxe: ';' ausente antes de '}' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(502,3): error C4430: faltando especificador de tipo - int assumido. Observação: C++ não suporta default-int [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(502,13): error C4430: faltando especificador de tipo - int assumido. Observação: C++ não suporta default-int [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  curve_adaptive.cpp
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(583,9): warning C4005: 'IN_CLASSA': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(284,9):
+      ver a definição anterior de "IN_CLASSA"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(589,9): warning C4005: 'IN_CLASSB': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(290,9):
+      ver a definição anterior de "IN_CLASSB"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(595,9): warning C4005: 'IN_CLASSC': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(296,9):
+      ver a definição anterior de "IN_CLASSC"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(606,9): warning C4005: 'INADDR_ANY': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(301,9):
+      ver a definição anterior de "INADDR_ANY"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(608,9): warning C4005: 'INADDR_BROADCAST': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(303,9):
+      ver a definição anterior de "INADDR_BROADCAST"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\shared\ws2def.h(644,16): error C2011: 'sockaddr_in': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(309,8):
+      consulte a declaração de 'sockaddr_in'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(136,16): error C2011: 'fd_set': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(65,16):
+      consulte a declaração de 'fd_set'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(158,9): warning C4005: 'FD_SET': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(96,9):
+      ver a definição anterior de "FD_SET"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(180,8): error C2011: 'timeval': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(108,8):
+      consulte a declaração de 'timeval'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(236,9): error C2011: 'hostent': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(164,9):
+      consulte a declaração de 'hostent'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(249,9): error C2011: 'netent': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(177,9):
+      consulte a declaração de 'netent'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(256,9): error C2011: 'servent': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(184,9):
+      consulte a declaração de 'servent'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(268,9): error C2011: 'protoent': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(196,9):
+      consulte a declaração de 'protoent'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(364,16): error C2011: 'WSAData': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(319,16):
+      consulte a declaração de 'WSAData'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(462,8): error C2011: 'sockproto': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(491,8):
+      consulte a declaração de 'sockproto'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(504,9): error C2011: 'linger': redefinição do tipo 'struct' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(528,9):
+      consulte a declaração de 'linger'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(517,9): warning C4005: 'SOMAXCONN': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(541,9):
+      ver a definição anterior de "SOMAXCONN"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(551,9): warning C4005: 'FD_READ': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(559,9):
+      ver a definição anterior de "FD_READ"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(554,9): warning C4005: 'FD_WRITE': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(560,9):
+      ver a definição anterior de "FD_WRITE"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(557,9): warning C4005: 'FD_OOB': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(561,9):
+      ver a definição anterior de "FD_OOB"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(560,9): warning C4005: 'FD_ACCEPT': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(562,9):
+      ver a definição anterior de "FD_ACCEPT"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(563,9): warning C4005: 'FD_CONNECT': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(563,9):
+      ver a definição anterior de "FD_CONNECT"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(566,9): warning C4005: 'FD_CLOSE': redefinição de macro [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(564,9):
+      ver a definição anterior de "FD_CLOSE"
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1633,1): error C2375: 'accept': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(739,19):
+      consulte a declaração de 'accept'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1655,1): error C2375: 'bind': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(744,16):
+      consulte a declaração de 'bind'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1676,1): error C2375: 'closesocket': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(749,16):
+      consulte a declaração de 'closesocket'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1693,1): error C2375: 'connect': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(751,16):
+      consulte a declaração de 'connect'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1714,1): error C2375: 'ioctlsocket': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(756,16):
+      consulte a declaração de 'ioctlsocket'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1737,1): error C2375: 'getpeername': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(761,16):
+      consulte a declaração de 'getpeername'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1758,1): error C2375: 'getsockname': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(766,16):
+      consulte a declaração de 'getsockname'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1779,1): error C2375: 'getsockopt': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(771,16):
+      consulte a declaração de 'getsockopt'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1804,1): error C2375: 'htonl': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(778,19):
+      consulte a declaração de 'htonl'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1821,1): error C2375: 'htons': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(780,20):
+      consulte a declaração de 'htons'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1839,1): error C2375: 'inet_addr': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(782,26):
+      consulte a declaração de 'inet_addr'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1857,1): error C2375: 'inet_ntoa': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(784,23):
+      consulte a declaração de 'inet_ntoa'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1957,1): error C2375: 'listen': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(786,16):
+      consulte a declaração de 'listen'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1976,1): error C2375: 'ntohl': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(790,19):
+      consulte a declaração de 'ntohl'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(1993,1): error C2375: 'ntohs': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(792,20):
+      consulte a declaração de 'ntohs'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2010,1): error C2375: 'recv': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(794,16):
+      consulte a declaração de 'recv'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2033,1): error C2375: 'recvfrom': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(800,16):
+      consulte a declaração de 'recvfrom'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2060,1): error C2375: 'select': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(808,16):
+      consulte a declaração de 'select'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2085,1): error C2375: 'send': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(815,16):
+      consulte a declaração de 'send'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2108,1): error C2375: 'sendto': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(821,16):
+      consulte a declaração de 'sendto'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2135,1): error C2375: 'setsockopt': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(829,16):
+      consulte a declaração de 'setsockopt'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2160,1): error C2375: 'shutdown': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(836,16):
+      consulte a declaração de 'shutdown'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2180,1): error C2375: 'socket': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(840,19):
+      consulte a declaração de 'socket'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2205,1): error C2375: 'gethostbyaddr': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(847,33):
+      consulte a declaração de 'gethostbyaddr'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2227,1): error C2375: 'gethostbyname': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(852,33):
+      consulte a declaração de 'gethostbyname'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2244,1): error C2375: 'gethostname': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(854,16):
+      consulte a declaração de 'gethostname'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2284,1): error C2375: 'getservbyport': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(858,33):
+      consulte a declaração de 'getservbyport'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2303,1): error C2375: 'getservbyname': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(862,33):
+      consulte a declaração de 'getservbyname'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2322,1): error C2375: 'getprotobynumber': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(866,34):
+      consulte a declaração de 'getprotobynumber'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2339,1): error C2375: 'getprotobyname': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(868,34):
+      consulte a declaração de 'getprotobyname'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2359,1): error C2375: 'WSAStartup': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(872,16):
+      consulte a declaração de 'WSAStartup'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2379,1): error C2375: 'WSACleanup': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(876,16):
+      consulte a declaração de 'WSACleanup'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2396,1): error C2375: 'WSASetLastError': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(878,17):
+      consulte a declaração de 'WSASetLastError'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2413,1): error C2375: 'WSAGetLastError': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(880,16):
+      consulte a declaração de 'WSAGetLastError'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2434,1): error C2375: 'WSAIsBlocking': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(882,17):
+      consulte a declaração de 'WSAIsBlocking'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2452,1): error C2375: 'WSAUnhookBlockingHook': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(884,16):
+      consulte a declaração de 'WSAUnhookBlockingHook'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2470,1): error C2375: 'WSASetBlockingHook': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(886,20):
+      consulte a declaração de 'WSASetBlockingHook'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2488,1): error C2375: 'WSACancelBlockingCall': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(888,16):
+      consulte a declaração de 'WSACancelBlockingCall'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2506,1): error C2375: 'WSAAsyncGetServByName': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(890,19):
+      consulte a declaração de 'WSAAsyncGetServByName'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2534,1): error C2375: 'WSAAsyncGetServByPort': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(898,19):
+      consulte a declaração de 'WSAAsyncGetServByPort'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2562,1): error C2375: 'WSAAsyncGetProtoByName': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(906,19):
+      consulte a declaração de 'WSAAsyncGetProtoByName'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2588,1): error C2375: 'WSAAsyncGetProtoByNumber': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(913,19):
+      consulte a declaração de 'WSAAsyncGetProtoByNumber'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2614,1): error C2375: 'WSAAsyncGetHostByName': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(920,19):
+      consulte a declaração de 'WSAAsyncGetHostByName'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2640,1): error C2375: 'WSAAsyncGetHostByAddr': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(927,19):
+      consulte a declaração de 'WSAAsyncGetHostByAddr'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2670,1): error C2375: 'WSACancelAsyncRequest': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(936,16):
+      consulte a declaração de 'WSACancelAsyncRequest'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(2688,1): error C2375: 'WSAAsyncSelect': redefinição; vínculo diferente [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock.h(938,16):
+      consulte a declaração de 'WSAAsyncSelect'
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(4320,1): error C2059: erro de sintaxe: '}' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\winsock2.h(4320,1): error C2143: erro de sintaxe: ';' ausente antes de '}' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_filebuf.hpp(27,1): error C2143: erro de sintaxe: ';' ausente antes de '{' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_filebuf.hpp(27,1): error C2447: '{': faltando cabeçalho de função (lista formal de estilo antigo?) [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\fstream(57,38): error C2065: '_Is_any_path': identificador não declarado [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+      C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\fstream(57,38):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+          ao compilar o modelo de classe 'std::basic_ifstream'
+
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\fstream(57,62): error C2988: declaração/definição de template irreconhecível [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\fstream(57,62): error C2059: erro de sintaxe: '=' [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\fstream(60,9): error C2334: token(s) inesperado(s) precedendo ':'; ignorando corpo aparente de função [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\fstream(20,1): error C1075: '{': nenhum token correspondente encontrado [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../../tests/curve_memory/probe.cpp')
+
+  curve_adaptive_parametric.cpp
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(219,9): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(219,9):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(219,9):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\include\data\curve\curve_adaptive_parametric.h(98,13):
+          consulte a referência à instanciação 'Eigen::Matrix<double,1,4,1,1,4>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(179,12):
+          consulte a referência à instanciação 'Eigen::PlainObjectBase<Eigen::Matrix<double,1,4,1,1,4>>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(98,67):
+          consulte a referência à instanciação 'Eigen::MatrixBase<Derived>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\MatrixBase.h(49,12):
+          consulte a referência à instanciação 'Eigen::DenseBase<Derived>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseBase.h(43,12):
+          consulte a referência à instanciação 'Eigen::DenseCoeffsBase<Derived,3>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(556,12):
+          consulte a referência à instanciação 'Eigen::DenseCoeffsBase<Derived,1>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(342,33):
+          ao compilar a função de membro 'double &Eigen::DenseCoeffsBase<Derived,1>::coeffRef(Eigen::EigenBase<Derived>::Index,Eigen::EigenBase<Derived>::Index)' do modelo da classe
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(368,7):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,1>::coeffRef' em 'Eigen::DenseCoeffsBase<Derived,1>::operator ()'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(245,31):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,1>::operator ()' em 'CurveAdaptiveParametric::FindPointByParameter'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(346,42):
+          consulte a referência à instanciação 'Eigen::internal::evaluator<Derived>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(274,5):
+          consulte a referência à instanciação 'Eigen::internal::evaluator<Eigen::PlainObjectBase<Eigen::Matrix<double,1,4,1,1,4>>>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(217,11):
+          ao compilar a função de membro 'double &Eigen::internal::evaluator<Eigen::PlainObjectBase<Eigen::Matrix<double,1,4,1,1,4>>>::coeffRef(Eigen::Index,Eigen::Index)' do modelo da classe
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(346,7):
+              veja a primeira referência a 'Eigen::internal::evaluator<Eigen::PlainObjectBase<Eigen::Matrix<double,1,4,1,1,4>>>::coeffRef' em 'Eigen::DenseCoeffsBase<Derived,1>::coeffRef'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(368,7):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,1>::coeffRef' em 'Eigen::DenseCoeffsBase<Derived,1>::operator ()'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(245,31):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,1>::operator ()' em 'CurveAdaptiveParametric::FindPointByParameter'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(204,9): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(204,9):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(204,9):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(426,40):
+          consulte a referência à instanciação 'Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Product.h(71,24):
+          consulte a referência à instanciação 'Eigen::ProductImpl<_Lhs,_Rhs,0,Eigen::internal::product_promote_storage_type<Eigen::internal::traits<Derived>::StorageKind,Eigen::internal::traits<Eigen::Matrix<double,4,1,0,4,1>>::StorageKind,6>::ret>' do modelo da classe que está sendo compilada
+          with
+          [
+              _Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              _Rhs=Eigen::Matrix<double,4,1,0,4,1>,
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Product.h(153,22):
+          consulte a referência à instanciação 'Eigen::internal::dense_product_base<Lhs,Rhs,0,6>' do modelo da classe que está sendo compilada
+          with
+          [
+              Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              Rhs=Eigen::Matrix<double,4,1,0,4,1>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Product.h(127,63):
+          consulte a referência à instanciação 'Eigen::MatrixBase<Derived>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\MatrixBase.h(49,12):
+          consulte a referência à instanciação 'Eigen::DenseBase<Derived>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseBase.h(43,12):
+          consulte a referência à instanciação 'Eigen::DenseCoeffsBase<Derived,0>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(97,41):
+          ao compilar a função de membro 'double Eigen::DenseCoeffsBase<Derived,0>::coeff(Eigen::EigenBase<Derived>::Index,Eigen::EigenBase<Derived>::Index) const' do modelo da classe
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(120,7):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::coeff' em 'Eigen::DenseCoeffsBase<Derived,0>::operator ()'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(426,13):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::operator ()' em 'CurveAdaptiveParametric::CalculatePointT'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(101,42):
+          consulte a referência à instanciação 'Eigen::internal::evaluator<Derived>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(30,11):
+          consulte a referência à instanciação 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(97,12):
+          consulte a referência à instanciação 'Eigen::internal::evaluator<Eigen::Matrix<double,1,1,0,1,1>>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(274,5):
+          consulte a referência à instanciação 'Eigen::internal::evaluator<Eigen::PlainObjectBase<Eigen::Matrix<double,1,1,0,1,1>>>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(202,19):
+          ao compilar a função de membro 'const double &Eigen::internal::evaluator<Eigen::PlainObjectBase<Eigen::Matrix<double,1,1,0,1,1>>>::coeff(Eigen::Index,Eigen::Index) const' do modelo da classe
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(101,7):
+              veja a primeira referência a 'Eigen::internal::evaluator<Eigen::PlainObjectBase<Eigen::Matrix<double,1,1,0,1,1>>>::coeff' em 'Eigen::DenseCoeffsBase<Derived,0>::coeff'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(120,7):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::coeff' em 'Eigen::DenseCoeffsBase<Derived,0>::operator ()'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(426,13):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::operator ()' em 'CurveAdaptiveParametric::CalculatePointT'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(461,27): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(461,27):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(461,27):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(106,21):
+          ao compilar a função de membro 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>::product_evaluator(const Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0> &)' do modelo da classe
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(35,86):
+              veja a primeira referência a 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>::product_evaluator' em 'Eigen::internal::evaluator<Derived>::evaluator'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          and
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(101,7):
+              veja a primeira referência a 'Eigen::internal::evaluator<Derived>::evaluator' em 'Eigen::DenseCoeffsBase<Derived,0>::coeff'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(120,7):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::coeff' em 'Eigen::DenseCoeffsBase<Derived,0>::operator ()'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(426,13):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::operator ()' em 'CurveAdaptiveParametric::CalculatePointT'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(124,69):
+          consulte a referência à instanciação 'void Eigen::internal::generic_product_impl<Lhs,Rhs,LhsShape,RhsShape,6>::evalTo<Eigen::Matrix<double,1,1,0,1,1>>(Dst &,const Lhs &,const Rhs &)' do modelo que está sendo compilada
+          with
+          [
+              Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              Rhs=Eigen::Matrix<double,4,1,0,4,1>,
+              LhsShape=Eigen::DenseShape,
+              RhsShape=Eigen::DenseShape,
+              Dst=Eigen::Matrix<double,1,1,0,1,1>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(251,42):
+          consulte a referência à instanciação 'Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<ScalarA,ScalarB>,const Derived,const Eigen::Matrix<double,4,1,0,4,1>>' do modelo da classe que está sendo compilada
+          with
+          [
+              ScalarA=double,
+              ScalarB=double,
+              Derived=Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CwiseBinaryOp.h(78,10):
+          consulte a referência à instanciação 'Eigen::CwiseBinaryOpImpl<BinaryOp,LhsType,RhsType,Eigen::internal::cwise_promote_storage_type<Eigen::internal::traits<Derived>::StorageKind,Eigen::internal::traits<Eigen::Matrix<double,4,1,0,4,1>>::StorageKind,BinaryOp>::ret>' do modelo da classe que está sendo compilada
+          with
+          [
+              BinaryOp=Eigen::internal::scalar_product_op<double,double>,
+              LhsType=Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,
+              RhsType=Eigen::Matrix<double,4,1,0,4,1>,
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CwiseBinaryOp.h(149,76):
+          consulte a referência à instanciação 'Eigen::MatrixBase<Derived>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\MatrixBase.h(49,12):
+          consulte a referência à instanciação 'Eigen::DenseBase<Derived>' do modelo da classe que está sendo compilada
+          with
+          [
+              Derived=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(460,1):
+          ao compilar a função de membro 'double Eigen::DenseBase<Derived>::sum(void) const' do modelo da classe
+          with
+          [
+              Derived=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(251,23):
+              veja a primeira referência a 'Eigen::DenseBase<Derived>::sum' em 'Eigen::internal::generic_product_impl<Lhs,Rhs,LhsShape,RhsShape,6>::evalTo'
+          with
+          [
+              Derived=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>
+          ]
+          and
+          [
+              Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              Rhs=Eigen::Matrix<double,4,1,0,4,1>,
+              LhsShape=Eigen::DenseShape,
+              RhsShape=Eigen::DenseShape
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(124,75):
+              veja a primeira referência a 'Eigen::internal::generic_product_impl<Lhs,Rhs,LhsShape,RhsShape,6>::evalTo' em 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>::product_evaluator'
+          with
+          [
+              Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              Rhs=Eigen::Matrix<double,4,1,0,4,1>,
+              LhsShape=Eigen::DenseShape,
+              RhsShape=Eigen::DenseShape
+          ]
+          and
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(35,86):
+              veja a primeira referência a 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>::product_evaluator' em 'Eigen::internal::evaluator<Derived>::evaluator'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          and
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(101,7):
+              veja a primeira referência a 'Eigen::internal::evaluator<Derived>::evaluator' em 'Eigen::DenseCoeffsBase<Derived,0>::coeff'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(120,7):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::coeff' em 'Eigen::DenseCoeffsBase<Derived,0>::operator ()'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(426,13):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::operator ()' em 'CurveAdaptiveParametric::CalculatePointT'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(177,16): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(177,16):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(177,16):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(167,37):
+          consulte a referência à instanciação 'Eigen::PlainObjectBase<Eigen::Matrix<double,1,1,0,1,1>>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(175,33):
+          ao compilar a função de membro 'double &Eigen::PlainObjectBase<Eigen::Matrix<double,1,1,0,1,1>>::coeffRef(Eigen::EigenBase<Derived>::Index,Eigen::EigenBase<Derived>::Index)' do modelo da classe
+          with
+          [
+              Derived=Eigen::Matrix<double,1,1,0,1,1>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(251,23):
+              veja a primeira referência a 'Eigen::PlainObjectBase<Eigen::Matrix<double,1,1,0,1,1>>::coeffRef' em 'Eigen::internal::generic_product_impl<Lhs,Rhs,LhsShape,RhsShape,6>::evalTo'
+          with
+          [
+              Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              Rhs=Eigen::Matrix<double,4,1,0,4,1>,
+              LhsShape=Eigen::DenseShape,
+              RhsShape=Eigen::DenseShape
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(124,75):
+              veja a primeira referência a 'Eigen::internal::generic_product_impl<Lhs,Rhs,LhsShape,RhsShape,6>::evalTo' em 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>::product_evaluator'
+          with
+          [
+              Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              Rhs=Eigen::Matrix<double,4,1,0,4,1>,
+              LhsShape=Eigen::DenseShape,
+              RhsShape=Eigen::DenseShape
+          ]
+          and
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(35,86):
+              veja a primeira referência a 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>::product_evaluator' em 'Eigen::internal::evaluator<Derived>::evaluator'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          and
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(101,7):
+              veja a primeira referência a 'Eigen::internal::evaluator<Derived>::evaluator' em 'Eigen::DenseCoeffsBase<Derived,0>::coeff'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(120,7):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::coeff' em 'Eigen::DenseCoeffsBase<Derived,0>::operator ()'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(426,13):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::operator ()' em 'CurveAdaptiveParametric::CalculatePointT'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Transpose.h(454,52): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Transpose.h(454,52):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Transpose.h(454,52):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Geometry\arch\Geometry_SIMD.h(94,8):
+          ao compilar a especialização parcial do modelo de classe 'Eigen::internal::quat_product<1,Derived,OtherDerived,double>'
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Geometry\arch\Geometry_SIMD.h(101,36):
+          consulte a referência à instanciação 'Eigen::Quaternion<double,0>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Geometry\Quaternion.h(273,27):
+          consulte a referência à instanciação 'Eigen::QuaternionBase<Eigen::Quaternion<double,0>>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Geometry\Quaternion.h(46,34):
+          consulte a referência à instanciação 'Eigen::Matrix<double,4,1,0,4,1>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(206,33):
+          ao compilar a função de membro 'Eigen::Matrix<double,4,1,0,4,1> &Eigen::Matrix<double,4,1,0,4,1>::operator =(const Eigen::Matrix<double,4,1,0,4,1> &)' do modelo da classe
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(46,21):
+              veja a primeira referência a 'Eigen::Matrix<double,4,1,0,4,1>::operator =' em 'CurveAdaptiveParametric::CurveAdaptiveParametric'
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(208,20):
+          consulte a referência à instanciação 'Derived &Eigen::PlainObjectBase<Derived>::_set<Derived>(const Eigen::DenseBase<Derived> &)' do modelo que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,4,1,0,4,1>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(779,17):
+          consulte a referência à instanciação 'void Eigen::internal::call_assignment<Derived,Derived>(Dst &,const Src &)' do modelo que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,4,1,0,4,1>,
+              Dst=Eigen::Matrix<double,4,1,0,4,1>,
+              Src=Eigen::Matrix<double,4,1,0,4,1>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(836,3):
+          consulte a referência à instanciação 'void Eigen::internal::call_assignment<Dst,Src,Eigen::internal::assign_op<double,double>>(Dst &,const Src &,const Func &,void *)' do modelo que está sendo compilada
+          with
+          [
+              Dst=Eigen::Matrix<double,4,1,0,4,1>,
+              Src=Eigen::Matrix<double,4,1,0,4,1>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(858,3):
+          consulte a referência à instanciação 'void Eigen::internal::call_assignment_no_alias<Dst,Src,Func>(Dst &,const Src &,const Func &)' do modelo que está sendo compilada
+          with
+          [
+              Dst=Eigen::Matrix<double,4,1,0,4,1>,
+              Src=Eigen::Matrix<double,4,1,0,4,1>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(890,46):
+          consulte a referência à instanciação 'Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>' do modelo da classe que está sendo compilada
+          with
+          [
+              Src=Eigen::Matrix<double,4,1,0,4,1>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(948,35):
+          ao compilar a função de membro 'void Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>::run(DstXprType &,const SrcXprType &,const Functor &)' do modelo da classe
+          with
+          [
+              Src=Eigen::Matrix<double,4,1,0,4,1>,
+              Func=Eigen::internal::assign_op<double,double>,
+              DstXprType=Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,
+              SrcXprType=Eigen::Matrix<double,4,1,0,4,1>,
+              Functor=Eigen::internal::assign_op<double,double>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(890,49):
+              veja a primeira referência a 'Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>::run' em 'Eigen::internal::call_assignment_no_alias'
+          with
+          [
+              Src=Eigen::Matrix<double,4,1,0,4,1>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(858,3):
+              veja a primeira referência a 'Eigen::internal::call_assignment_no_alias' em 'Eigen::internal::call_assignment'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(836,3):
+              veja a primeira referência a 'Eigen::internal::call_assignment' em 'Eigen::internal::call_assignment'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(779,17):
+              veja a primeira referência a 'Eigen::internal::call_assignment' em 'Eigen::PlainObjectBase<Eigen::Matrix<double,4,1,0,4,1>>::_set'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(208,7):
+              veja a primeira referência a 'Eigen::PlainObjectBase<Eigen::Matrix<double,4,1,0,4,1>>::_set' em 'Eigen::Matrix<double,4,1,0,4,1>::operator ='
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(46,21):
+              veja a primeira referência a 'Eigen::Matrix<double,4,1,0,4,1>::operator =' em 'CurveAdaptiveParametric::CurveAdaptiveParametric'
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(951,15):
+          consulte a referência à instanciação 'void Eigen::internal::check_for_aliasing<DstXprType,SrcXprType>(const Dst &,const Src &)' do modelo que está sendo compilada
+          with
+          [
+              DstXprType=Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,
+              SrcXprType=Eigen::Matrix<double,4,1,0,4,1>,
+              Dst=Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,
+              Src=Eigen::Matrix<double,4,1,0,4,1>
+          ]
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(343,24): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(343,24):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(343,24):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(460,1):
+          ao compilar a função de membro 'double Eigen::DenseBase<Derived>::sum(void) const' do modelo da classe
+          with
+          [
+              Derived=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(251,23):
+              veja a primeira referência a 'Eigen::DenseBase<Derived>::sum' em 'Eigen::internal::generic_product_impl<Lhs,Rhs,LhsShape,RhsShape,6>::evalTo'
+          with
+          [
+              Derived=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>
+          ]
+          and
+          [
+              Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              Rhs=Eigen::Matrix<double,4,1,0,4,1>,
+              LhsShape=Eigen::DenseShape,
+              RhsShape=Eigen::DenseShape
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(124,75):
+              veja a primeira referência a 'Eigen::internal::generic_product_impl<Lhs,Rhs,LhsShape,RhsShape,6>::evalTo' em 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>::product_evaluator'
+          with
+          [
+              Lhs=Eigen::Matrix<double,1,4,1,1,4>,
+              Rhs=Eigen::Matrix<double,4,1,0,4,1>,
+              LhsShape=Eigen::DenseShape,
+              RhsShape=Eigen::DenseShape
+          ]
+          and
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\ProductEvaluators.h(35,86):
+              veja a primeira referência a 'Eigen::internal::product_evaluator<Eigen::Product<Derived,Eigen::Matrix<double,4,1,0,4,1>,0>,6,Eigen::DenseShape,Eigen::DenseShape,double,double>::product_evaluator' em 'Eigen::internal::evaluator<Derived>::evaluator'
+          with
+          [
+              Derived=Eigen::Matrix<double,1,4,1,1,4>
+          ]
+          and
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(101,7):
+              veja a primeira referência a 'Eigen::internal::evaluator<Derived>::evaluator' em 'Eigen::DenseCoeffsBase<Derived,0>::coeff'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\DenseCoeffsBase.h(120,7):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::coeff' em 'Eigen::DenseCoeffsBase<Derived,0>::operator ()'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(426,13):
+              veja a primeira referência a 'Eigen::DenseCoeffsBase<Derived,0>::operator ()' em 'CurveAdaptiveParametric::CalculatePointT'
+          with
+          [
+              Derived=Eigen::Product<Eigen::Matrix<double,1,4,1,1,4>,Eigen::Matrix<double,4,1,0,4,1>,0>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(463,20):
+          consulte a referência à instanciação 'double Eigen::DenseBase<Derived>::redux<Eigen::internal::scalar_sum_op<double,double>>(const Func &) const' do modelo que está sendo compilada
+          with
+          [
+              Derived=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>,
+              Func=Eigen::internal::scalar_sum_op<double,double>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(418,53):
+          consulte a referência à instanciação 'double Eigen::internal::redux_impl<Func,Eigen::DenseBase<Derived>::redux::ThisEvaluator,3,2>::run<Derived>(const Evaluator &,const Func &,const XprType &)' do modelo que está sendo compilada
+          with
+          [
+              Func=Eigen::internal::scalar_sum_op<double,double>,
+              Derived=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>,
+              Evaluator=Eigen::DenseBase<Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>>::redux::ThisEvaluator,
+              XprType=Eigen::CwiseBinaryOp<Eigen::internal::scalar_product_op<double,double>,const Eigen::Transpose<const Eigen::Matrix<double,1,4,1,1,4>>,const Eigen::Matrix<double,4,1,0,4,1>>
+          ]
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(345,26): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Redux.h(345,26):
+      considere usar a instrução 'if constexpr' em seu lugar
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(235,9): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(235,9):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(235,9):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\include\data\curve\curve_adaptive_parametric.h(96,13):
+          consulte a referência à instanciação 'Eigen::Matrix<double,4,4,0,4,4>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(206,33):
+          ao compilar a função de membro 'Eigen::Matrix<double,4,4,0,4,4> &Eigen::Matrix<double,4,4,0,4,4>::operator =(const Eigen::Matrix<double,4,4,0,4,4> &)' do modelo da classe
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(49,19):
+              veja a primeira referência a 'Eigen::Matrix<double,4,4,0,4,4>::operator =' em 'CurveAdaptiveParametric::CurveAdaptiveParametric'
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(208,20):
+          consulte a referência à instanciação 'Derived &Eigen::PlainObjectBase<Derived>::_set<Derived>(const Eigen::DenseBase<Derived> &)' do modelo que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,4,4,0,4,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(779,17):
+          consulte a referência à instanciação 'void Eigen::internal::call_assignment<Derived,Derived>(Dst &,const Src &)' do modelo que está sendo compilada
+          with
+          [
+              Derived=Eigen::Matrix<double,4,4,0,4,4>,
+              Dst=Eigen::Matrix<double,4,4,0,4,4>,
+              Src=Eigen::Matrix<double,4,4,0,4,4>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(836,3):
+          consulte a referência à instanciação 'void Eigen::internal::call_assignment<Dst,Src,Eigen::internal::assign_op<double,double>>(Dst &,const Src &,const Func &,void *)' do modelo que está sendo compilada
+          with
+          [
+              Dst=Eigen::Matrix<double,4,4,0,4,4>,
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(858,3):
+          consulte a referência à instanciação 'void Eigen::internal::call_assignment_no_alias<Dst,Src,Func>(Dst &,const Src &,const Func &)' do modelo que está sendo compilada
+          with
+          [
+              Dst=Eigen::Matrix<double,4,4,0,4,4>,
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(890,46):
+          consulte a referência à instanciação 'Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>' do modelo da classe que está sendo compilada
+          with
+          [
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(948,35):
+          ao compilar a função de membro 'void Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>::run(DstXprType &,const SrcXprType &,const Functor &)' do modelo da classe
+          with
+          [
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>,
+              DstXprType=Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,
+              SrcXprType=Eigen::Matrix<double,4,4,0,4,4>,
+              Functor=Eigen::internal::assign_op<double,double>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(890,49):
+              veja a primeira referência a 'Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>::run' em 'Eigen::internal::call_assignment_no_alias'
+          with
+          [
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(858,3):
+              veja a primeira referência a 'Eigen::internal::call_assignment_no_alias' em 'Eigen::internal::call_assignment'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(836,3):
+              veja a primeira referência a 'Eigen::internal::call_assignment' em 'Eigen::internal::call_assignment'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(779,17):
+              veja a primeira referência a 'Eigen::internal::call_assignment' em 'Eigen::PlainObjectBase<Eigen::Matrix<double,4,4,0,4,4>>::_set'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(208,7):
+              veja a primeira referência a 'Eigen::PlainObjectBase<Eigen::Matrix<double,4,4,0,4,4>>::_set' em 'Eigen::Matrix<double,4,4,0,4,4>::operator ='
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(49,19):
+              veja a primeira referência a 'Eigen::Matrix<double,4,4,0,4,4>::operator =' em 'CurveAdaptiveParametric::CurveAdaptiveParametric'
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(954,5):
+          consulte a referência à instanciação 'void Eigen::internal::call_dense_assignment_loop<DstXprType,SrcXprType,Functor>(DstXprType &,const SrcXprType &,const Functor &)' do modelo que está sendo compilada
+          with
+          [
+              DstXprType=Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,
+              SrcXprType=Eigen::Matrix<double,4,4,0,4,4>,
+              Functor=Eigen::internal::assign_op<double,double>
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(785,34):
+          consulte a referência à instanciação 'Eigen::internal::dense_assignment_loop<Eigen::internal::call_dense_assignment_loop::Kernel,2,2>' do modelo da classe que está sendo compilada
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(486,53):
+          ao compilar a função de membro 'void Eigen::internal::dense_assignment_loop<Eigen::internal::call_dense_assignment_loop::Kernel,2,2>::run(Kernel &)' do modelo da classe
+          with
+          [
+              Kernel=Eigen::internal::call_dense_assignment_loop::Kernel
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(785,37):
+              veja a primeira referência a 'Eigen::internal::dense_assignment_loop<Eigen::internal::call_dense_assignment_loop::Kernel,2,2>::run' em 'Eigen::internal::call_dense_assignment_loop'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(954,5):
+              veja a primeira referência a 'Eigen::internal::call_dense_assignment_loop' em 'Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>::run'
+          with
+          [
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(890,49):
+              veja a primeira referência a 'Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>::run' em 'Eigen::internal::call_assignment_no_alias'
+          with
+          [
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(858,3):
+              veja a primeira referência a 'Eigen::internal::call_assignment_no_alias' em 'Eigen::internal::call_assignment'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(836,3):
+              veja a primeira referência a 'Eigen::internal::call_assignment' em 'Eigen::internal::call_assignment'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(779,17):
+              veja a primeira referência a 'Eigen::internal::call_assignment' em 'Eigen::PlainObjectBase<Eigen::Matrix<double,4,4,0,4,4>>::_set'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(208,7):
+              veja a primeira referência a 'Eigen::PlainObjectBase<Eigen::Matrix<double,4,4,0,4,4>>::_set' em 'Eigen::Matrix<double,4,4,0,4,4>::operator ='
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(49,19):
+              veja a primeira referência a 'Eigen::Matrix<double,4,4,0,4,4>::operator =' em 'CurveAdaptiveParametric::CurveAdaptiveParametric'
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(489,96):
+          consulte a referência à instanciação 'Eigen::internal::copy_using_evaluator_innervec_CompleteUnrolling<Kernel,0,16>' do modelo da classe que está sendo compilada
+          with
+          [
+              Kernel=Eigen::internal::call_dense_assignment_loop::Kernel
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(277,53):
+          ao compilar a função de membro 'void Eigen::internal::copy_using_evaluator_innervec_CompleteUnrolling<Kernel,0,16>::run(Kernel &)' do modelo da classe
+          with
+          [
+              Kernel=Eigen::internal::call_dense_assignment_loop::Kernel
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(489,99):
+              veja a primeira referência a 'Eigen::internal::copy_using_evaluator_innervec_CompleteUnrolling<Kernel,0,16>::run' em 'Eigen::internal::dense_assignment_loop<Eigen::internal::call_dense_assignment_loop::Kernel,2,2>::run'
+          with
+          [
+              Kernel=Eigen::internal::call_dense_assignment_loop::Kernel
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(785,37):
+              veja a primeira referência a 'Eigen::internal::dense_assignment_loop<Eigen::internal::call_dense_assignment_loop::Kernel,2,2>::run' em 'Eigen::internal::call_dense_assignment_loop'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(954,5):
+              veja a primeira referência a 'Eigen::internal::call_dense_assignment_loop' em 'Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>::run'
+          with
+          [
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(890,49):
+              veja a primeira referência a 'Eigen::internal::Assignment<Eigen::internal::call_assignment_no_alias::ActualDstTypeCleaned,Src,Func,Eigen::internal::AssignmentKind<Eigen::DenseShape,Eigen::DenseShape>::Kind,void>::run' em 'Eigen::internal::call_assignment_no_alias'
+          with
+          [
+              Src=Eigen::Matrix<double,4,4,0,4,4>,
+              Func=Eigen::internal::assign_op<double,double>
+          ]
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(858,3):
+              veja a primeira referência a 'Eigen::internal::call_assignment_no_alias' em 'Eigen::internal::call_assignment'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(836,3):
+              veja a primeira referência a 'Eigen::internal::call_assignment' em 'Eigen::internal::call_assignment'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\PlainObjectBase.h(779,17):
+              veja a primeira referência a 'Eigen::internal::call_assignment' em 'Eigen::PlainObjectBase<Eigen::Matrix<double,4,4,0,4,4>>::_set'
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\Matrix.h(208,7):
+              veja a primeira referência a 'Eigen::PlainObjectBase<Eigen::Matrix<double,4,4,0,4,4>>::_set' em 'Eigen::Matrix<double,4,4,0,4,4>::operator ='
+              C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\curve\curve_adaptive_parametric.cpp(49,19):
+              veja a primeira referência a 'Eigen::Matrix<double,4,4,0,4,4>::operator =' em 'CurveAdaptiveParametric::CurveAdaptiveParametric'
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(279,21):
+          consulte a referência à instanciação 'void Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::call_dense_assignment_loop::DstEvaluatorType,Eigen::internal::call_dense_assignment_loop::SrcEvaluatorType,Functor,0>::assignPacketByOuterInner<Eigen::internal::copy_using_evaluator_innervec_CompleteUnrolling<Kernel,0,16>::SrcAlignment,Eigen::internal::copy_using_evaluator_innervec_CompleteUnrolling<Kernel,0,16>::SrcAlignment,__m128d>(Eigen::Index,Eigen::Index)' do modelo que está sendo compilada
+          with
+          [
+              Functor=Eigen::internal::assign_op<double,double>,
+              Kernel=Eigen::internal::call_dense_assignment_loop::Kernel
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(689,5):
+          consulte a referência à instanciação 'void Eigen::internal::generic_dense_assignment_kernel<Eigen::internal::call_dense_assignment_loop::DstEvaluatorType,Eigen::internal::call_dense_assignment_loop::SrcEvaluatorType,Functor,0>::assignPacket<16,16,PacketType>(Eigen::Index,Eigen::Index)' do modelo que está sendo compilada
+          with
+          [
+              Functor=Eigen::internal::assign_op<double,double>,
+              PacketType=__m128d
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(675,89):
+          consulte a referência à instanciação 'PacketType Eigen::internal::evaluator<Eigen::PlainObjectBase<Eigen::Matrix<double,4,4,0,4,4>>>::packet<16,PacketType>(Eigen::Index,Eigen::Index) const' do modelo que está sendo compilada
+          with
+          [
+              PacketType=__m128d
+          ]
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\GenericPacketMath.h(966,16): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\GenericPacketMath.h(966,16):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\GenericPacketMath.h(966,16):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(675,89):
+          consulte a referência à instanciação 'PacketType Eigen::internal::evaluator<Eigen::PlainObjectBase<Eigen::Matrix<double,4,4,0,4,4>>>::packet<16,PacketType>(Eigen::Index,Eigen::Index) const' do modelo que está sendo compilada
+          with
+          [
+              PacketType=__m128d
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\CoreEvaluators.h(236,14):
+          consulte a referência à instanciação 'Packet Eigen::internal::ploadt<PacketType,16>(const Eigen::internal::unpacket_traits<Eigen::internal::Packet2d>::type *)' do modelo que está sendo compilada
+          with
+          [
+              Packet=__m128d,
+              PacketType=__m128d
+          ]
+
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\GenericPacketMath.h(977,16): warning C4127: expressão condicional é constante [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  (compilando o arquivo fonte '../s8-original/src/data/curve/curve_adaptive_parametric.cpp')
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\GenericPacketMath.h(977,16):
+      considere usar a instrução 'if constexpr' em seu lugar
+      C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\GenericPacketMath.h(977,16):
+      o contexto de instanciação do modelo (o mais antigo primeiro) é
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\AssignEvaluator.h(675,24):
+          consulte a referência à instanciação 'void Eigen::internal::assign_op<double,double>::assignPacket<16,PacketType>(DstScalar *,const Packet &) const' do modelo que está sendo compilada
+          with
+          [
+              PacketType=__m128d,
+              DstScalar=double,
+              Packet=__m128d
+          ]
+          C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\libs\Eigen\src\Core\functors\AssignmentFunctors.h(28,15):
+          consulte a referência à instanciação 'void Eigen::internal::pstoret<DstScalar,Packet,16>(Scalar *,const Packet &)' do modelo que está sendo compilada
+          with
+          [
+              DstScalar=double,
+              Packet=__m128d,
+              Scalar=double
+          ]
+
+  point_adaptive.cpp
+C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\s8-original\src\data\point_adaptive.cpp(7,37): warning C4245: 'inicializando': conversão de 'int' para 'unsigned long', incompatibilidade de signed/unsigned [C:\Users\tiago\Documents\dev\research\apmesh-modernization\build\c8od\curve_collection_probe.vcxproj]
+  vector_adaptive.cpp
+  patch.cpp
+  function.cpp
+  bisection_equation_root.cpp
+  Gerando Código...

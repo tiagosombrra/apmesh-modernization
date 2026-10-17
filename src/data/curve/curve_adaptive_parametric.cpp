@@ -143,11 +143,11 @@ double CurveAdaptiveParametric::FindParameterByPoint(
     const PointAdaptive* point;
     CurveAdaptiveParametric* curva;
 
-    double min() { return 0.0; };
-    double max() { return 1.0; };
+    double min() override { return 0.0; };
+    double max() override { return 1.0; };
 
     using Data::Numerical::EquationRootFunction::f;
-    double f(double parameter) {
+    double f(double parameter) override {
       PointAdaptive point1 = curva->FindPointByParameter(parameter);
       return point->CalculateDistance(point1);
     };
@@ -349,9 +349,8 @@ void CurveAdaptiveParametric::SortPointsByParameters() {
   this->points_.sort(Compare);
 }
 
-void CurveAdaptiveParametric::UpdateParameters(
-    const list<double> new_parameters) {
-  this->parameters_ = new_parameters;
+void CurveAdaptiveParametric::UpdateParameters(list<double> new_parameters) {
+  this->parameters_.swap(new_parameters);
 }
 
 Matrix4x1 CurveAdaptiveParametric::GetMatGeoGx() const {

@@ -114,3 +114,31 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
+
+## Active stage 3 slice 8 (#29): curve collection transactions
+
+The original SetPoints and UpdateParameters partially overwrite populated live
+lists when growth allocation fails (ordinal 7 in both measured fixtures).
+The other 17 original instrument cases behave as expected, including deliberate
+invalid controls. Each setter now swaps its already prepared by-value input.
+Allocation failure preserves live values/nodes and caller lvalue inputs;
+successful replacement invalidates old list-element observers. Borrowed objects
+remain caller-owned. Redundant copy allocations and successful node reuse
+intentionally change; old list nodes are destroyed after swap.
+
+Candidate CTest 18/18, zero skips, 74 Python controls, curve 19/19, previous UV
+81/81 and node 7/7 pass. Fourteen independently calibrated sweeps deny all 76
+measured ordinals; normal ordered value/pointer traces match the original.
+Two-unit selected lint, formatting, inventory and strict repeated Eistute/Book
+entry regression pass, preserving all nine states, measured incidences,
+acceptance/rejection, 189 CSV fields and 1,168/4,256 accepted triangles.
+Exact published-head and implementation-main campaigns remain required.
+
+This is an exceptional-exit defect repair. The two setters are independent,
+not a joint point/parameter transaction. Pointer-taking copy controls qualify
+unwind, observers and selected initialized scalar/coefficient state; the current
+parametric constructor omits the parameter sequence, which remains a separate
+semantic finding. Derived constructors, other mutation, shared sample ownership,
+initialization/rollback, general observers and full-process/parallel/LSan/UBSan
+remain open. Full stage 3 remains open. See evidence/STAGE3_CURVE_COLLECTIONS.md
+and ADR-0009. Doxygen undocumented-API debt remains stage 8.

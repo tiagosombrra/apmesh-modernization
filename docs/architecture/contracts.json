@@ -142,8 +142,8 @@
     {
       "id": "C07",
       "topic": "Shared curve identity and samples",
-      "statement": "Geometry reuses matching four-control Bezier curves in direct or reverse direction. CurveAdaptive does not delete its sampled points; its point and patch lists are observers.",
-      "limits": "Legacy proximity-based matching and sample ownership are not replaced by this inventory; snapshot/restore currently deletes and recreates sample nodes explicitly.",
+      "statement": "Geometry reuses matching four-control Bezier curves in direct or reverse direction. CurveAdaptive does not delete its sampled points; its point and patch lists are observers. SetPoints and UpdateParameters each commit their prepared by-value list by swap; allocation failure preserves that live list and its element nodes. Successful replacement preserves ordered pointer/value results and invalidates old list-element observers without deleting borrowed points or patches.",
+      "limits": "Legacy proximity-based matching and sample ownership are not replaced by this inventory; snapshot/restore currently deletes and recreates sample nodes explicitly. The two setters are independent transactions, not a paired point/parameter transaction. Successful list-node reuse is not promised; redundant copy allocations are removed and old nodes are destroyed after swap. Pointer-taking constructor controls cover borrowed collections and initialized scalar/coefficient state only; parametric copy parameter-sequence semantics and derived curves remain separate.",
       "evidence": [
         {
           "path": "src/data/geometry.cpp",
@@ -156,6 +156,14 @@
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "std::unordered_set<PointAdaptive*> unique_points;"
+        },
+        {
+          "path": "src/data/curve/curve_adaptive.cpp",
+          "anchor": "this->points_.swap(new_points);"
+        },
+        {
+          "path": "src/data/curve/curve_adaptive_parametric.cpp",
+          "anchor": "this->parameters_.swap(new_parameters);"
         }
       ]
     },

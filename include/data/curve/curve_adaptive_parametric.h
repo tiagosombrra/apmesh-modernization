@@ -49,7 +49,9 @@ class CurveAdaptiveParametric : public CurveAdaptive {
                                           const double parameter2);
   // ordena a lista de pontos de acordo com suas coordenadas paramétricas
   void SortPointsByParameters();
-  void UpdateParameters(const list<double> new_parameters);
+  /// Replace this sequence independently of points; failure preserves values and list nodes.
+  /// Success invalidates old element observers; point/parameter updates are not a joint transaction.
+  void UpdateParameters(list<double> new_parameters);
 
   Matrix4x1 GetMatGeoGx() const;
   void SetMatGeoGx(const Matrix4x1& mat_geo_gx);

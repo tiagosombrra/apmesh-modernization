@@ -1,0 +1,6 @@
+deliberate-leak=000001743F6B2760
+CRT retained_blocks=1 retained_bytes=40
+Dumping objects ->
+{317} normal block at 0x000001743F6B2760, 40 bytes long.
+ Data: <   A            > F0 F8 02 41 F7 7F 00 00 00 00 00 00 CD CD CD CD 
+Object dump complete.
