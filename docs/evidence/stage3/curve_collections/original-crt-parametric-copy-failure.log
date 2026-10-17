@@ -1,0 +1,22 @@
+collection_measured=kind:parametric-copy variant:0 allocations:9
+collection_inject=kind:parametric-copy variant:0 ordinal:0
+Client hook allocation failure.
+collection_inject=kind:parametric-copy variant:0 ordinal:1
+Client hook allocation failure.
+collection_inject=kind:parametric-copy variant:0 ordinal:2
+Client hook allocation failure.
+collection_inject=kind:parametric-copy variant:0 ordinal:3
+Client hook allocation failure.
+collection_inject=kind:parametric-copy variant:0 ordinal:4
+Client hook allocation failure.
+collection_inject=kind:parametric-copy variant:0 ordinal:5
+Client hook allocation failure.
+collection_inject=kind:parametric-copy variant:0 ordinal:6
+Client hook allocation failure.
+collection_inject=kind:parametric-copy variant:0 ordinal:7
+Client hook allocation failure.
+collection_inject=kind:parametric-copy variant:0 ordinal:8
+Client hook allocation failure.
+collection_failure_sites=kind:parametric-copy variant:0 denied:9/9 unchanged=1 retry=1
+CRT retained_blocks=0 retained_bytes=0
+PASS

@@ -44,7 +44,7 @@ void CurveAdaptive::InsertPatch(Patch* patch) {
 void CurveAdaptive::ClearPatches() { this->patches_.clear(); }
 
 void CurveAdaptive::SetPoints(std::list<PointAdaptive*> new_points) {
-  this->points_ = new_points;
+  this->points_.swap(new_points);
 }
 
 std::list<PointAdaptive*>& CurveAdaptive::GetPoints() { return this->points_; }

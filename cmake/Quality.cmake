@@ -4,6 +4,10 @@ if(BUILD_TESTING)
   find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
   add_subdirectory(tests/memory)
   add_subdirectory(tests/uv_memory)
+  add_subdirectory(tests/curve_memory)
+  add_test(NAME application.curve_collection_contracts COMMAND curve_collection_probe contracts)
+  set_tests_properties(application.curve_collection_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_test(NAME application.uv_lifetime COMMAND uv_lifetime_probe contracts)
   set_tests_properties(application.uv_lifetime
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 60)

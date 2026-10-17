@@ -1,0 +1,10 @@
+collection_measured=kind:points variant:4 allocations:2
+collection_inject=kind:points variant:4 ordinal:0
+Client hook allocation failure.
+collection_success=kind:points variant:4 values:
+collection_inject=kind:points variant:4 ordinal:1
+Client hook allocation failure.
+collection_success=kind:points variant:4 values:
+collection_failure_sites=kind:points variant:4 denied:2/2 unchanged=1 retry=1
+CRT retained_blocks=0 retained_bytes=0
+PASS

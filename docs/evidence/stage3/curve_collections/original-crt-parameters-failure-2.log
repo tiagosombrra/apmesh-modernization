@@ -1,0 +1,16 @@
+collection_measured=kind:parameters variant:2 allocations:4
+collection_inject=kind:parameters variant:2 ordinal:0
+Client hook allocation failure.
+collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,
+collection_inject=kind:parameters variant:2 ordinal:1
+Client hook allocation failure.
+collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,
+collection_inject=kind:parameters variant:2 ordinal:2
+Client hook allocation failure.
+collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,
+collection_inject=kind:parameters variant:2 ordinal:3
+Client hook allocation failure.
+collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,
+collection_failure_sites=kind:parameters variant:2 denied:4/4 unchanged=1 retry=1
+CRT retained_blocks=0 retained_bytes=0
+PASS

@@ -1,0 +1,17 @@
+collection_success=kind:points variant:0 values:7,6,-1,7,5,
+collection_success=kind:points variant:1 values:7,6,-1,7,5,
+collection_success=kind:points variant:2 values:7,6,
+collection_success=kind:points variant:3 values:7,6,-1,
+collection_success=kind:points variant:4 values:
+collection_success=kind:points variant:5 values:0,1,2,
+collection_success=kind:points variant:6 values:7,6,-1,7,5,
+collection_copy=kind:0 borrowed:1
+collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,
+collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,
+collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,
+collection_success=kind:parameters variant:3 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,
+collection_success=kind:parameters variant:4 values:
+collection_success=kind:parameters variant:5 values:0x0.0000000000000p+0,0x1.0000000000000p-3,0x1.0000000000000p-2,
+collection_success=kind:parameters variant:6 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,
+collection_copy=kind:1 borrowed:1
+PASS

@@ -1,0 +1,99 @@
+{
+  "logs": [
+    {
+      "local_raw_log": "build/s8-original-final-curve/asan-contracts.log",
+      "sha256": "3e917d8b2ddd9061ca66d10fc4fb85d9fee5e97d7af747186d0a20fd43c9041d",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/asan-use-after-free.log",
+      "sha256": "fb4324ae4df2b389cc8a14ab4dec99d9608b6f9fe3895b12bb121c90049bf06e",
+      "retained_in_current_tree": false
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-allocation-hook-control.log",
+      "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-base-copy-failure.log",
+      "sha256": "bc91541a47012ecb39a9436164a7cbcd6ec6e2a35c3b4d68ecdf7516aa08569d",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-contracts.log",
+      "sha256": "57448579b11860f3b65d1ffbfbc8e9b07f0727968dc1aef13364a2678d083116",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-leak.log",
+      "sha256": "f9e2fb43e90752dc36e07d7c3c40297885779347fce47b85c02aff371ceadbc6",
+      "retained_in_current_tree": false
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-parameters-failure-0.log",
+      "sha256": "ea835da14fdb5760a2ddbd4f3a983467d20db3caac2f19a4ea43eae6626f93f0",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-parameters-failure-1.log",
+      "sha256": "bbd062318276816d0832a98c89e50f82a1e03cdcc18f4a9303c7199e3e20e62b",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-parameters-failure-2.log",
+      "sha256": "0ad8e293eacf000838c8e8e1589ae22ee8f295b3c254dcaafa091a399d9438af",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-parameters-failure-3.log",
+      "sha256": "1355c49c217d064e467f857f19243086cb6820fd74e5903dd496159180143015",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-parameters-failure-4.log",
+      "sha256": "adea5e0582e73cfcb95b507efb41e01b8cd42b2f0c1acadd94ee057e89eca5b9",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-parameters-failure-5.log",
+      "sha256": "e71ac525cce0e12d48abebd70dc12091d631b85ac06d55b7d10ab2e12123a596",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-parametric-copy-failure.log",
+      "sha256": "a5453e164d5d95a6167fee97a1d59e9bcac7209afaeefc9b07f75a26e3adff78",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-points-failure-0.log",
+      "sha256": "ff616bbdebc90976a14107aa9fcccab0b65c47f5a518e85a6e145d7dc453f9ba",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-points-failure-1.log",
+      "sha256": "4db71e2c93784ee36bb054e0bae1afdf2fbd36f8af73b7ede21e85b9cae955e1",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-points-failure-2.log",
+      "sha256": "473b56dbe0b35324a9ac5cff3cdba5788b33f335caee02cbf6ce7200ac50fd2e",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-points-failure-3.log",
+      "sha256": "c00493daa7e93c2acec88b909a0ca23cff732533987eb7336c38350239779806",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-points-failure-4.log",
+      "sha256": "b74763ce571aa4d56645d2f46ce355d13a5d4a70dacc02f9cb19789e9175f173",
+      "retained_in_current_tree": true
+    },
+    {
+      "local_raw_log": "build/s8-original-final-curve/crt-points-failure-5.log",
+      "sha256": "dcdc5d15fe28d99eb777ee7996672dfebbbe0609a9a1e8d6a7c4cf8465720496",
+      "retained_in_current_tree": true
+    }
+  ]
+}

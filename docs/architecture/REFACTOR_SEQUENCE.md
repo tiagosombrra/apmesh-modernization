@@ -119,3 +119,16 @@ four-side/two-direction, fallback and null-curve boundary. Zero allocations in
 the direct polynomial examples do not qualify failures inside all curve APIs.
 Continue other curve mutation/constructor/setter paths before sample ownership,
 initialization and rollback; full-process and parallel qualification stay open.
+
+## Curve collection transaction boundary (#29)
+
+SetPoints and UpdateParameters each swap their prepared by-value input into the
+live list. C07 defines failed value/node stability, borrowed object ownership,
+successful element-observer invalidation and the intentional removal of the
+second copy. The two setter calls do not form a joint transaction. Reviewed
+serial adapter/generator callers use copied local lists or consume iterators
+outside replacement calls; generic external observer compatibility is not
+claimed. The pointer-taking parametric constructor currently omits parameters_;
+its full value-copy semantics and derived constructors remain open findings.
+Continue remaining curve constructor/mutation contracts before shared sample
+ownership, initialization and rollback. See ADR-0009 and the slice evidence.

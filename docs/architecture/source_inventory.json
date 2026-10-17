@@ -383,7 +383,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "bf86972075c8a4476e8aa69d8b903689497fea02883f33b3d116aa3543f5d70d"
+      "sha256": "13d562c5aabd59f290e6bd30232865221baf6e189db4b7366aef1743bf3cd337"
+    },
+    {
+      "path": "tests/curve_memory/CMakeLists.txt",
+      "sha256": "4fc2b9dd9b13b6964abafed799497dbec8074d30ce6d3501b48ef8c348d8a7f1"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1268,8 +1272,8 @@
       "path": "include/data/curve/curve_adaptive.h",
       "component_by_directory": "data/curve",
       "kind": "header",
-      "sha256": "d995b3f060d9c08e634ed1bb093d4addf5b11778c95411f20800e8a969e784d0",
-      "bytes": 1684,
+      "sha256": "0c710a895c1432b5bdc40794bb65f4e84ee88d7645e0ae96896351aa153f7aa6",
+      "bytes": 1841,
       "includes": [
         {
           "line": 4,
@@ -1312,8 +1316,8 @@
       "path": "include/data/curve/curve_adaptive_parametric.h",
       "component_by_directory": "data/curve",
       "kind": "header",
-      "sha256": "a4f519d7f99452082171af85997e84ca616b5547876b1700dec2d4e9c42949b9",
-      "bytes": 3828,
+      "sha256": "ff77c1675f67381b13a06ab9c1679cc141f16127717824445485b34a461a46c7",
+      "bytes": 4018,
       "includes": [
         {
           "line": 4,
@@ -3438,8 +3442,8 @@
       "path": "src/data/curve/curve_adaptive.cpp",
       "component_by_directory": "data/curve",
       "kind": "translation_unit",
-      "sha256": "17d241c7ce3b9e486aa776c143266d1938e42015520c74b7f8b5b12eef8f91eb",
-      "bytes": 2195,
+      "sha256": "b23e530a413cf177ddfaf8a2a4724cbe18aaa6d6fcfbc6641834cb367ef651d9",
+      "bytes": 2199,
       "includes": [
         {
           "line": 1,
@@ -3454,8 +3458,8 @@
       "path": "src/data/curve/curve_adaptive_parametric.cpp",
       "component_by_directory": "data/curve",
       "kind": "translation_unit",
-      "sha256": "8786a74bb9df0dc04338ae7f7d09428382968124525721c5d354991bab8787cc",
-      "bytes": 19201,
+      "sha256": "80af375c81d6ac72b95f89bd054e998cf433fddb0e81b697e8ae02d68d17e034",
+      "bytes": 19221,
       "includes": [
         {
           "line": 1,
@@ -4751,7 +4755,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 96,
+    "source_anchors": 98,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

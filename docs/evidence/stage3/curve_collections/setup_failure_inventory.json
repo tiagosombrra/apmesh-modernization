@@ -1,0 +1,17 @@
+{
+  "failures": [
+    {
+      "local_raw_log": "build/s8-original-asan-build.log",
+      "sha256": "cc0bd0e9900080f50bd3f10666f209b6ad87bc2fa4f75922167b9e9e3ca5ffa5",
+      "retained_readable_derivative": "s8-original-asan-build.log.utf8.txt",
+      "classification": "New probe Windows include-order setup failure; no product qualification. Aggregate shell ended with log reads, so its zero exit did not represent MSBuild success."
+    },
+    {
+      "local_raw_log": "build/s8-original-crt-build.log",
+      "sha256": "d2053c5bd7fa20a20ea3ff95caecd517f342fe8a5403bfacc3aa8270193c6203",
+      "retained_readable_derivative": "s8-original-crt-build.log.utf8.txt",
+      "classification": "New probe Windows include-order setup failure; no product qualification. Aggregate shell ended with log reads, so its zero exit did not represent MSBuild success."
+    }
+  ],
+  "resolution": "Remove the probe Windows-header include that preceded the established definitions.h winsock2/windows ordering. Final original and repaired builds use the same corrected probe; no production header or diagnostic rule was weakened."
+}
