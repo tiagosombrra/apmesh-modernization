@@ -1,0 +1,21 @@
+{
+  "command": [
+    "git",
+    "-c",
+    "core.whitespace=cr-at-eol",
+    "diff",
+    "--check",
+    "b7b96b8d397d754606423694e73a5bc46b9f2134",
+    "HEAD"
+  ],
+  "exit_code": 2,
+  "local_raw_log": "build/s8-publication-diff-failure.log",
+  "sha256": "127da237c2e771ebf6068edaed7ce132f85788219ef205ecd86153648acce01d",
+  "diagnostics": [
+    "docs/evidence/stage3/curve_collections/original-asan-use-after-free.log:44: trailing whitespace.",
+    "+  Partially addressable: 01 02 03 04 05 06 07 ",
+    "docs/evidence/stage3/curve_collections/original-crt-leak.log:5: trailing whitespace.",
+    "+ Data: <   A            > F0 F8 02 41 F7 7F 00 00 00 00 00 00 CD CD CD CD "
+  ],
+  "resolution": "Keep the two raw deliberate-negative logs unchanged locally with hashes; remove those raw artifacts from the delivery tree. Preserve all case outcomes and identities; final diff checks remain required."
+}

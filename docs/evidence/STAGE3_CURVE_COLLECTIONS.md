@@ -120,12 +120,20 @@ Adding only those three override annotations and refreshing the source inventory
 unblocked the unchanged analyzer rules. The complete fresh candidate campaign
 then passed; no hidden retry of unchanged failed sources is claimed.
 
-Compact candidate/entry/original reports, all original raw case logs, snapshot
+Compact candidate/entry/original reports, original normal and replacement-failure logs, snapshot
 maps and toolchains are retained in stage3/curve_collections/. Large candidate
 instrument and verbose CTest/JUnit logs remain local with hashes. Exact published-
 head and implementation-main complete campaigns remain required before closure.
 No hosted checks or Actions are configured. Audit code/tests/contracts/docs,
 scientific scope and the failure/coverage inventory before closing this item.
+
+The first publication whitespace gate found trailing spaces in the raw original
+ASan UAF and CRT deliberate-leak diagnostic logs. They remain byte-for-byte
+local with hashes in original_raw_log_inventory.json; they are not normalized
+or claimed as current tracked raw artifacts. The diagnostic case results and
+hashes remain in original_qualification.json. publication_failure_inventory.json
+retains the failed diff check and correction. Final delivery whitespace checks
+remain required; no rule or diagnostic is suppressed.
 
 Other curve constructor/mutation contracts, the parametric copy parameter
 sequence, shared samples, initialization/rollback, general observers, joint
