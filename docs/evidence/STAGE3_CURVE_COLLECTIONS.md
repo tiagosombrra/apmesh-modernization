@@ -123,7 +123,8 @@ then passed; no hidden retry of unchanged failed sources is claimed.
 Compact candidate/entry/original reports, original normal and replacement-failure logs, snapshot
 maps and toolchains are retained in stage3/curve_collections/. Large candidate
 instrument and verbose CTest/JUnit logs remain local with hashes. Exact published-
-head and implementation-main complete campaigns remain required before closure.
+head and implementation-main complete campaigns subsequently passed; see
+STAGE3_CURVE_COLLECTIONS_CLOSURE.md.
 No hosted checks or Actions are configured. Audit code/tests/contracts/docs,
 scientific scope and the failure/coverage inventory before closing this item.
 

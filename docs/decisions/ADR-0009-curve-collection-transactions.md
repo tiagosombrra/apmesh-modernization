@@ -1,6 +1,7 @@
 # ADR-0009: commit prepared curve collections by swap
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact-head and implementation-main complete campaigns pass.
+Documentation-only closure gates remain required; see the closure evidence.
 Issue #29. Classification: behavior-changing defect repair on exceptional exits.
 
 ## Reproduced boundary
