@@ -126,8 +126,8 @@ analysis-log audit. Candidate executable SHA-256:
 The qualification-input identity digest is
 `07e509f2a985fdcf36542da2b986cc86fb157cfa0afc9d16bdd64afe42b50452`.
 See stage3/angle_helper/candidate_qualification.json and source_identities.json.
-This identifies a working candidate; published-head and post-merge validation
-are still mandatory.
+This identifies the earlier working candidate. Published-head and post-merge
+validation subsequently passed; the closure record preserves those identities.
 
 ## Failure history, audit and remaining scope
 
@@ -143,8 +143,8 @@ The retained candidate lint text is an explicitly whitespace-normalized UTF-8
 derivative; its original UTF-16 raw hash remains in the qualification record.
 
 Code, tests, C11 contract, source inventory, documentation, scientific scope and
-failure/coverage limits are reviewed together. Complete head and post-merge
-campaigns remain required before this slice closes. Compact reports and source/
+failure/coverage limits are reviewed together. Complete exact-head and implementation-main
+campaigns subsequently passed; see STAGE3_ANGLE_HELPER_CLOSURE.md. Compact reports and source/
 input/executable/log identities are retained under stage3/angle_helper/; large
 raw campaigns remain local with hashes rather than being described as complete
 archived logs.

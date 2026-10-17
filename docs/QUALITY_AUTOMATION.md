@@ -4,8 +4,8 @@
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-5 are integrated with qualified node and UV targets.
-The integrated CTest passes 15/15 with zero skips and 74 Python controls,
+Stage 3 slices 1-6 are integrated with qualified node and UV targets.
+The integrated CTest passes 16/16 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
@@ -155,9 +155,9 @@ allocation failure qualification open.
 python tools/quality.py docs
 ```
 
-Doxygen is configured to report undocumented APIs and fail on warnings. Full
-documentation generation is pending until a Doxygen-equipped environment and
-API coverage are available; a config file is not generated documentation.
+Doxygen is configured to report undocumented APIs and fail on warnings. Doxygen 1.18.0 is installed, but the initial documentation gate fails on
+undocumented members. Complete API coverage and generated-page review remain
+stage 8; a config file or installed tool is not generated-documentation validation.
 
 ## Pending registration qualification
 
@@ -184,7 +184,7 @@ These are engineering references, not a proof that legacy code follows them.
 
 ## Tree construction qualification (#20)
 
-The integrated suite includes required application.uv_tree_contracts: 15 CTest tests,
+Slice 5 introduced required application.uv_tree_contracts: 15 CTest tests at that boundary,
 74 Python controls, 56 UV instrument cases and seven previous node cases.
 Five independently calibrated CRT sweeps inject 3,470 allocation failures,
 covering root, uniform subdivision, edge/old-face generation and real neighbor
@@ -194,7 +194,7 @@ are not. See `evidence/STAGE3_UV_TREE.md` and ADR-0006.
 
 ## Angle-helper borrowed endpoints (#23)
 
-The candidate adds required application.uv_angle_contracts: 16 CTest tests,
+Slice 6 adds required application.uv_angle_contracts: 16 CTest tests,
 74 Python controls, 68 UV instrument cases and seven previous node cases.
 Ten calibrated CRT sweeps deny 252 allocations through four endpoint-match
 branches and the nonadjacent branch with empty/populated adjacency. They require
