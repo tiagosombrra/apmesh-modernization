@@ -273,26 +273,30 @@ remain open. Stages 0-2 stay closed; stages 4-11 remain pending.
 Doxygen 1.18.0 is installed; the submitted initial run fails on undocumented
 members. Comprehensive documentation remains stage 8 with strict warnings.
 
-## Active stage 3 slice 7 (#26): parametric midpoint replacement
+## Stage 3 slice 7 qualified (#26, PR #27)
 
-Entry main b4090d05ff5ba11b64db3561f7ad38244145325a was reaudited with
-864 exact blobs; fresh UV 68/68 and node 7/7 entry controls pass. The retained
-serial baseline has identical qualified inputs on entry documentation-main.
-The pinned original loses the old midpoint on the first denied allocation in
-all ten new sweeps. Preparation in a local owner now commits midpoint and length
-only after success; old-cache destruction is explicitly delayed until commit.
+Head `4781226726bd36d7ff64afb273ed53c37630b6f3` integrated through PR #27 as main
+`61dc86ecaeede57ec838a5bb754f237b2013085a`, preserving complete tree
+`ac04e95600a403e12952fb68f84a5e6c5a8abaa6` (889 blobs). Exact-head and
+implementation-main complete campaigns pass: CTest 17/17, zero skips, 74 Python
+controls, UV 81/81, node 7/7, six-unit lint, range formatting, inventory and
+strict repeated Eistute/Book regression. All nine states, acceptance/rejection,
+measured incidences, 189 CSV fields and 1,168/4,256 accepted triangles remain
+exact. The original fails ten replacement sweeps; all 30 measured denials now
+preserve cache/caller state and permit successful retry. Original/repaired
+normal traces and successful allocation counts match.
 
-Candidate CTest 17/17, zero skips, 74 Python controls, UV 81/81, node 7/7,
-six-unit lint, formatting, inventory and repeated strict Eistute/Book entry
-regression pass. All nine states, incidence/acceptance results, 189 CSV fields
-and 1,168/4,256 accepted triangles remain exact. Ten sweeps deny 30 allocations,
-preserving cache/caller state and successful retry. Original/repaired normal
-traces and allocation counts match. Exact published-head and post-merge gates
-remain required; this is a behavior-changing exceptional-exit defect repair,
-not a scientific change. See evidence/STAGE3_PARAMETRIC_MIDPOINT.md and ADR-0008.
+The midpoint and normalized length prepare locally before commit. Old-cache
+destruction is deliberately delayed; old/new caches coexist briefly, without
+an address-reuse or peak-memory promise. Arithmetic, oriented intervals,
+integration/bisection tolerances/stopping and null/fallback policies remain.
+Curve evaluation scratch stays mutable. Three direct numerical operation
+scopes observe zero allocations, explicitly leaving their internal allocation-
+failure coverage unmeasured. This is an exceptional-exit defect repair, not a
+scientific change. See evidence/STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md and ADR-0008.
 
-Direct polynomial point/gradient, arc and midpoint examples observe zero
-allocations: curve-internal allocation-failure coverage remains unmeasured.
-Curve evaluation scratch stays mutable. Other curve mutation/constructor/setter
-failures, shared samples/initialization/rollback, general observers and
-full-process/parallel/LSan/UBSan remain open. Full stage 3 is still open.
+Full stage 3 remains open with seven qualified slices. Next characterize other
+curve mutation/constructor/setter failures, then shared sample ownership,
+initialization and rollback. General observers, other helper/template/tree/mate
+paths, failed-tree observer consumption/retry and full-process/parallel/LSan/
+UBSan qualification remain open. Stages 0-2 stay closed; stages 4-11 stay pending.

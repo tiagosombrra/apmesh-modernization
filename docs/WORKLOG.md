@@ -14,29 +14,18 @@ failures, hashes and limitations stay in the linked evidence records.
 | 2026-10-17, stage 3 slice 4 | #17, PR #18; head ef89fd9d3305a9ed4c88548df086540d00bbadd3, main da3eed2dc351cfe1a82b117d686164686c738d95; evidence/STAGE3_UV_REGISTRATION_CLOSURE.md | Pending Boundary/template registration and Face::quality unwind repaired; missing-quadtree queries throw; 784-blob tree; head/main CTest 14/14, UV 49/49, node 7/7, 1,361 allocation failures, exact article/UV traces |
 | 2026-10-17, stage 3 slice 5 | #20, PR #21; head 4f0c9bed6d1d1a52b6cdab88a26a9323040614f9, main 83eefa8c6006cc39dcdc35d463b8611d6f038538; evidence/STAGE3_UV_TREE_CLOSURE.md | Root extents and midpoint construction guarded until adoption; 818-blob tree; head/main CTest 15/15, UV 56/56, node 7/7, 3,470 allocation failures and exact tree/scientific traces |
 | 2026-10-17, stage 3 slice 6 | #23, PR #24; head da684dd6a2a1fefe709fc8906cce837da4b2ea24, main 1d7d5992d90f09d8cf7747d9023d9b39ef3d089b; evidence/STAGE3_ANGLE_HELPER_CLOSURE.md | Angle-helper borrowed endpoints survive allocation failure; head/main CTest 16/16, UV 68/68, node 7/7, 252 allocation denials, unchanged angle traces/counts and exact article regression |
+| 2026-10-17, stage 3 slice 7 | #26, PR #27; head 4781226726bd36d7ff64afb273ed53c37630b6f3, main 61dc86ecaeede57ec838a5bb754f237b2013085a; evidence/STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md | Transactional midpoint/length replacement; head/main CTest 17/17, UV 81/81, node 7/7, 30 allocation denials, exact normal traces/counts and article regression; direct curve allocation failure remains unmeasured |
 
-Current status: stages 0-2 closed; stage 3 in progress with six qualified
+Current status: stages 0-2 closed; stage 3 in progress with seven qualified
 slices; stages 4-11 pending.
 
-The wider stage 3 remains open with six qualified slices. Next characterize
-remaining helper/mutation and curve-internal allocation failures, then
-parametric midpoint replacement and sample/initialization/rollback ownership.
-Other setters/templates/tree/mate paths, general copied observers, failed-tree
-observer consumption/retry, full-process and parallel/LSan/UBSan qualification
-remain open. Stages 0-2 stay closed; stages 4-11 remain pending.
+Full stage 3 remains open with seven qualified slices. Next characterize other
+curve mutation/constructor/setter failures, then shared sample ownership,
+initialization and rollback. General observers, other helper/template/tree/mate
+paths, failed-tree observer consumption/retry and full-process/parallel/LSan/
+UBSan qualification remain open. Stages 0-2 stay closed; stages 4-11 stay pending.
 
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 6 closure](evidence/STAGE3_ANGLE_HELPER_CLOSURE.md).
-
-## Active stage 3 slice 7 (#26): parametric midpoint replacement
-
-Candidate CTest 17/17, 74 controls, UV 81/81, node 7/7, six-unit lint,
-formatting, inventory and strict repeated Eistute/Book entry regression pass.
-Ten original failed replacement sweeps now preserve cache/caller state through
-all 30 allocation denials and successful retry. Destruction of the old cache
-is delayed to commit; successful arithmetic, allocation counts and outputs
-remain exact. Direct curve examples observe zero allocations and do not qualify
-internal allocation failure. Exact head/main gates remain required; full stage
-3 stays open. See evidence/STAGE3_PARAMETRIC_MIDPOINT.md and ADR-0008.
+[slice 7 closure](evidence/STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md).

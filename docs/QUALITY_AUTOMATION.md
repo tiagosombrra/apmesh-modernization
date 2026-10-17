@@ -4,8 +4,8 @@
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-6 are integrated with qualified node and UV targets.
-The integrated CTest passes 16/16 with zero skips and 74 Python controls,
+Stage 3 slices 1-7 are integrated with qualified node and UV targets.
+The integrated CTest passes 17/17 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
@@ -210,7 +210,7 @@ a documentation pass. Warning enforcement is unchanged.
 
 ## Parametric midpoint replacement (#26)
 
-The candidate adds required application.uv_parametric_contracts: 17 CTest
+Slice 7 adds required application.uv_parametric_contracts: 17 CTest
 entries, 74 Python controls, 81 UV instrument cases and seven previous node
 cases. Eleven normal variants cover four sides/both directions, interior
 fallback and null-curve no-op; ten CRT sweeps deny 30 allocations and require

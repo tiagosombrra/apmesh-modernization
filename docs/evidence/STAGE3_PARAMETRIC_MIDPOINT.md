@@ -120,9 +120,10 @@ positive incidence coverage, zero measured position gap, unchanged accepted
 steps 0/1 and rejected Eistute 2/3/4 and Book 2/3. Final accepted triangles stay
 1,168/4,256 and 189 separately audited named CSV fields must agree.
 
-Exact published-head and post-merge complete campaigns remain required before
-slice closure. The public reports retain source/input/executable/toolchain and
-raw-log hashes, full case inventories and failed original diagnostics. Large
+Exact published-head and implementation-main complete campaigns subsequently
+passed; see STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md. The public reports retain
+source/input/executable/toolchain and raw-log hashes, full case inventories
+and failed original diagnostics. Large
 instrument and verbose CTest/JUnit logs remain local with hashes. No hosted
 checks or paid Actions are configured. No oracle, tolerance or policy is relaxed.
 
@@ -145,4 +146,4 @@ Application SHA-256: `04bbfdb9d4d9aa38e6c5c50a1e382af9162fe6a1df1c64dbb2e30d547c
 Qualified input identity: `5bbab057eaa92a9c2de31d7c15319b4ad617e5e8c53da02fa3cfce838e6d7a44`.
 Full candidate and original failed reports, successful traces and exact source
 maps are retained in stage3/parametric_midpoint/. Published-head/main campaigns
-remain required before closure.
+subsequently passed; see the consolidated closure record.
