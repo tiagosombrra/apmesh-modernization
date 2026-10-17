@@ -18,7 +18,7 @@ def qualify(asan, crt, runtime, output):
     valid = ["normal", "partial", "failure", "exception", "topology-failure", "pending-tree",
              "transfer-contract", "transfer-order", "midpoint-alias", "contracts",
              "primitive-contracts", "face-alias-cache", "registration-contracts",
-             "unowned-edge-query", "unowned-face-query"]
+             "unowned-edge-query", "unowned-face-query", "tree-contracts"]
     cases = [(kind, executable, mode, None) for kind, executable in [("asan", asan), ("crt", crt)]
              for mode in valid]
     cases += [("crt", crt, "teardown-allocation", None),
@@ -33,13 +33,14 @@ def qualify(asan, crt, runtime, output):
                   "boundary-first-failure", "boundary-append-failure", "boundary-close-failure",
                   "face-quality-failure", "outer-vertex-failure", "outer-edge-failure",
                   "template-one-failure", "template-four-failure")],
+              *[("crt", crt, f"tree-failure-{stage}", None) for stage in range(5)],
               ("asan", asan, "use-after-free", "heap-use-after-free"),
               ("asan", asan, "shared-delete", "heap-use-after-free"),
               ("crt", crt, "leak", "retained-blocks")]
     results = []
     for kind, executable, mode, diagnostic in cases:
         timeout = 180 if mode in {"outer-vertex-failure", "outer-edge-failure",
-                                  "template-one-failure", "template-four-failure"} else 30
+                                  "template-one-failure", "template-four-failure"} or mode.startswith("tree-failure-") else 30
         process = subprocess.run([str(executable.resolve()), mode], env=environment,
                                  stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout)
         data = process.stdout
@@ -76,6 +77,10 @@ def qualify(asan, crt, runtime, output):
                     int(injected) == int(total) > 0 for injected, total in sites)
                 if mode.startswith("boundary-"):
                     passed = passed and "unchanged=1" in text
+            if mode.startswith("tree-failure-"):
+                sites = re.findall(r"tree_failure_sites=\d+:(\d+)/(\d+)", text)
+                passed = passed and len(sites) == 1 and all(
+                    int(injected) == int(total) > 0 for injected, total in sites)
         result = {"instrument": kind, "mode": mode, "exit_code": process.returncode,
                   "expected_diagnostic": diagnostic, "passed": passed,
                   "retained_blocks": int(retained[1]) if retained else None,
@@ -83,7 +88,8 @@ def qualify(asan, crt, runtime, output):
                   "observations": sorted({line for line in text.splitlines() if line.startswith(
                       ("generated_faces=", "template_type_counts=", "templates_before_failure=",
                        "transfer_allocation_failures=", "allocation_hook_control=", "teardown_allocation_attempts=",
-                       "allocation_failure_sites=", "registration_failure_sites=", "registration_measured="))}),
+                       "allocation_failure_sites=", "registration_failure_sites=", "registration_measured=",
+                       "tree_failure_sites=", "tree_measured="))}),
                   "log_sha256": hashlib.sha256(data).hexdigest()}
         results.append(result)
         print(json.dumps({key: value for key, value in result.items() if key != "log_sha256"}), flush=True)

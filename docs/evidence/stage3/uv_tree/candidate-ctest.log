@@ -1,0 +1,47 @@
+Test project C:/Users/tiago/.codex/.chatgpt-projects/g-p-6a78da0b01848191b90be3c9c5708c4f/work/apmesh-modernization/build/local-serial
+      Start  1: application.uv_lifetime
+ 1/15 Test  #1: application.uv_lifetime ...................   Passed    0.14 sec
+      Start  2: application.uv_primitive_contracts
+ 2/15 Test  #2: application.uv_primitive_contracts ........   Passed    0.02 sec
+      Start  3: application.uv_registration_contracts
+ 3/15 Test  #3: application.uv_registration_contracts .....   Passed    0.03 sec
+      Start  4: application.uv_unowned_cell
+ 4/15 Test  #4: application.uv_unowned_cell ...............   Passed    0.02 sec
+      Start  5: application.uv_tree_contracts
+ 5/15 Test  #5: application.uv_tree_contracts .............   Passed    0.05 sec
+      Start  6: application.node_lifetime
+ 6/15 Test  #6: application.node_lifetime .................   Passed    0.02 sec
+      Start  7: tooling.controls
+ 7/15 Test  #7: tooling.controls ..........................   Passed    2.44 sec
+      Start  8: reference.archived_eistute_artifact
+ 8/15 Test  #8: reference.archived_eistute_artifact .......   Passed    0.08 sec
+      Start  9: application.invalid_inputs
+ 9/15 Test  #9: application.invalid_inputs ................   Passed    0.68 sec
+      Start 10: application.boundary_orientation
+10/15 Test #10: application.boundary_orientation ..........   Passed   10.26 sec
+      Start 11: application.metric_schema
+11/15 Test #11: application.metric_schema .................   Passed    0.25 sec
+      Start 12: application.curve_orientation_arclength
+12/15 Test #12: application.curve_orientation_arclength ...   Passed    0.17 sec
+      Start 13: tooling.tidy_header_scope
+13/15 Test #13: tooling.tidy_header_scope .................   Passed    0.43 sec
+      Start 14: application.smoothing_adjacency_order
+14/15 Test #14: application.smoothing_adjacency_order .....   Passed    0.03 sec
+      Start 15: application.valid_input_grammar
+15/15 Test #15: application.valid_input_grammar ...........   Passed    0.03 sec
+
+100% tests passed out of 15
+
+Label Time Summary:
+application           =  11.71 sec*proc (12 tests)
+archived-artifact     =   0.08 sec*proc (1 test)
+boundary-incidence    =  10.43 sec*proc (2 tests)
+lifecycle             =   0.29 sec*proc (6 tests)
+metric-schema         =   0.25 sec*proc (1 test)
+negative-input        =   0.68 sec*proc (1 test)
+numerical-control     =   0.03 sec*proc (1 test)
+positive-input        =   0.03 sec*proc (1 test)
+required-gate         =  11.40 sec*proc (10 tests)
+tooling               =   2.87 sec*proc (2 tests)
+
+Total Test time (real) =  14.72 sec

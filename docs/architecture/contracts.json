@@ -1,6 +1,6 @@
 {
   "schema": "apmesh-architecture-contracts-v1",
-  "reviewed_base": "c341ba7cb7b514b4073330e59ccef14d000e45de",
+  "reviewed_base": "4bfb31d54cdfb566a564724851d28a0bc02a93a0",
   "scope": "Human-reviewed static contracts with source anchors. Stage 3 node-copy and UV lifecycle boundaries have isolated ASan/Debug CRT evidence; full application and parallel paths remain unqualified.",
   "contracts": [
     {
@@ -210,8 +210,8 @@
     {
       "id": "C10",
       "topic": "Front/quadtree ownership",
-      "statement": "Default AdvancingFront allocates Boundary/Quadtree. Quadtree owns generated template vertices, edges and faces until an allocation-free ordered splice transfers them to front owner lists. It destroys any untransferred template payload on failure or abandonment before deleting its root/boundary. Default front construction guards Boundary until Quadtree construction completes; failure before adoption leaves no retained boundary. TemplateStorage owns unregistered template buffers/objects and releases only successfully registered prefixes to Quadtree. Outer creation uses local vertex/edge guards until registration.",
-      "limits": "Getters return borrowed pointer views; template owner getters are empty after transfer. External-pointer constructor/setter replacement, mate-root sharing, arbitrary creation-time allocation failure and full-process cleanup remain unqualified. After a template creation exception, the tree is qualified for destruction only; observer consumption and same-tree retry are not supported by this slice. Prepared fixture covers types 1 and 4, not all patterns or earlier tree subdivision failures.",
+      "statement": "Default AdvancingFront allocates Boundary/Quadtree. Quadtree owns generated template vertices, edges and faces until an allocation-free ordered splice transfers them to front owner lists. It destroys any untransferred template payload on failure or abandonment before deleting its root/boundary. Default front construction guards Boundary until Quadtree construction completes; failure before adoption leaves no retained boundary. TemplateStorage owns unregistered template buffers/objects and releases only successfully registered prefixes to Quadtree. Outer creation uses local vertex/edge guards until registration. Initial root extents stay locally owned until root construction succeeds. Midpoint buffers and all five vertices remain locally owned until complete construction; successful allocation and subdivision order is unchanged.",
+      "limits": "Getters return borrowed pointer views; template owner getters are empty after transfer. External-pointer constructor/setter replacement, mate-root sharing, full-process cleanup remain unqualified. After a template creation exception, the tree is qualified for destruction only; observer consumption and same-tree retry are not supported by this slice. Prepared fixture covers types 1 and 4, not all patterns. Root-only generation, one uniform subdivision, edge/old-face generation and prepared neighbor refinement are allocation-failure destruction controls; failed trees must not be queried or retried.",
       "evidence": [
         {
           "path": "src/crab_mesh/aft/advancing_front.cpp",
@@ -248,6 +248,14 @@
         {
           "path": "src/crab_mesh/aft/quadtree_cell.cpp",
           "anchor": "v[0] = pending_vertex.release();"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree.cpp",
+          "anchor": "auto min = std::make_unique<Vertex>(minX, minY);"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "std::array<std::unique_ptr<Vertex>, 5> pending;"
         }
       ]
     },

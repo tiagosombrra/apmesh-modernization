@@ -25,3 +25,12 @@ No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
 [slice 4 closure](evidence/STAGE3_UV_REGISTRATION_CLOSURE.md).
+
+## Active stage 3 slice 5 (#20)
+
+Entry main `4bfb31d54cdfb566a564724851d28a0bc02a93a0` passed the full
+14-test, 49-UV, seven-node, six-unit lint and exact Eistute/Book entry campaign.
+Five measured tree generation/subdivision sweeps reproduce retained allocations
+in the pinned original. Root bounds and midpoint construction are guarded in
+the candidate; full candidate and publication gates remain before closure.
+No scientific expressions or refinement criteria are changed.

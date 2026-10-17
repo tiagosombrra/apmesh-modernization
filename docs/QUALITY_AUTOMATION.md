@@ -181,3 +181,13 @@ permits retry; failed templates are qualified for destruction only. See
 - https://www.doxygen.nl/manual/config.html - API extraction and warning controls.
 
 These are engineering references, not a proof that legacy code follows them.
+
+## Tree construction qualification (#20)
+
+The candidate adds required application.uv_tree_contracts: 15 CTest tests,
+74 Python controls, 56 UV instrument cases and seven previous node cases.
+Five independently calibrated CRT sweeps inject 3,470 allocation failures,
+covering root, uniform subdivision, edge/old-face generation and real neighbor
+refinement. Full original/candidate success traces and allocation counts must
+match. Failed-tree destruction is qualified; retries and observer consumption
+are not. See `evidence/STAGE3_UV_TREE.md` and ADR-0006.

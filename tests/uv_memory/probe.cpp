@@ -288,6 +288,93 @@ void registration_contracts() {
                 face->getV2()->getId(), face->getV3()->getId());
 }
 
+struct TreeFixture {
+  Vertex a{0.2, 0.2}, b{0.3, 0.2}, c{0.2, 0.3};
+  Face face{&a, &b, &c};
+  FaceList oldmesh;
+  std::unique_ptr<Quadtree> tree;
+
+  explicit TreeFixture(int stage) {
+    auto boundary = std::make_unique<Boundary>();
+    if (stage < 2) {
+      boundary->addVertex(0, 0, nullptr);
+    } else {
+      square(*boundary);
+    }
+    tree = std::make_unique<Quadtree>(boundary.get());
+    boundary.release();
+    if (stage == 1) {
+      auto min = std::make_unique<Vertex>(0, 0);
+      auto max = std::make_unique<Vertex>(1, 1);
+      auto root =
+          std::make_unique<QuadtreeCell>(tree->getCellId(), tree.get(), min.get(), max.get());
+      tree->setRoot(root.get());
+      root.release();
+      min.release();
+      max.release();
+    }
+    face.h = 0.125;
+    if (stage == 3)
+      oldmesh.push_back(&face);
+    if (stage == 4) {
+      require(tree->generate({}) == QUAD_INITIAL_TREE_DONE, "neighbor fixture generates");
+      // Refine a real leaf through the public API to create a level gap of two.
+      auto* leaf = tree->getLeaves().front();
+      leaf->subdivideToLevel(leaf->getLevel() + 2);
+    }
+  }
+  ~TreeFixture() { face.DetachVertices(); }
+};
+
+void tree_operation(TreeFixture& fixture, int stage) {
+  if (stage == 1)
+    fixture.tree->getRoot()->subdivideToLevel(1);
+  else if (stage == 4)
+    require(fixture.tree->refineAccordingToNeighbors() == QUAD_REFINE_ACCORDING_TO_NEIGHBORS_DONE,
+            "neighbor refinement completes");
+  else
+    require(fixture.tree->generate(fixture.oldmesh) == QUAD_INITIAL_TREE_DONE,
+            "tree generation completes");
+}
+
+void trace_tree(QuadtreeCell* cell) {
+  std::printf("tree_cell=%ld,%lu,%a,%a,%a,%a\n", cell->getId(), cell->getLevel(),
+              cell->getMin()->getX(), cell->getMin()->getY(), cell->getMax()->getX(),
+              cell->getMax()->getY());
+  for (int direction = 0; direction < 4; ++direction)
+    for (auto* neighbor : cell->getNeighbors(direction))
+      std::printf("tree_neighbor=%ld,%d,%ld\n", cell->getId(), direction, neighbor->getId());
+  for (auto* edge : cell->getEdges())
+    std::printf("tree_edge=%ld,%ld\n", cell->getId(), edge->getId());
+  if (cell->subdivided())
+    for (int position = 0; position < 4; ++position) {
+      require(cell->getChild(position)->getParent() == cell, "child borrows actual parent");
+      trace_tree(cell->getChild(position));
+    }
+}
+
+void tree_contracts() {
+  for (int stage = 0; stage < 5; ++stage) {
+    TreeFixture fixture(stage);
+    const int before = fixture.tree->getNumCells();
+    tree_operation(fixture, stage);
+    if (stage == 1)
+      require(fixture.tree->getNumCells() == 5 && fixture.tree->getLeaves().size() == 4,
+              "one subdivision produces four registered children");
+    if (stage == 3)
+      require(fixture.face.getV1() == &fixture.a && fixture.face.h == 0.125,
+              "old mesh remains borrowed without parameter mutation");
+    if (stage == 4)
+      require(fixture.tree->getNumCells() > before, "neighbor refinement really subdivides");
+    std::printf("tree_stage=%d\n", stage);
+    trace_tree(fixture.tree->getRoot());
+    for (auto* leaf : fixture.tree->getLeaves()) {
+      require(!leaf->subdivided(), "registered leaves have no children");
+      std::printf("tree_leaf=%ld\n", leaf->getId());
+    }
+  }
+}
+
 #if defined(_MSC_VER) && defined(_DEBUG)
 int denied_allocations = 0;
 int allocation_attempts = 0;
@@ -484,6 +571,27 @@ void cache_replacement_failures(bool is_edge) {
           "failed replacement preserves endpoints, cache identity/geometry and scalar state");
 }
 
+void tree_allocation_failures(int stage) {
+  int total = 0;
+  {
+    TreeFixture fixture(stage);
+    const int before = fixture.tree->getNumCells();
+    total = measure_allocations([&] { tree_operation(fixture, stage); });
+    if (stage == 4)
+      require(fixture.tree->getNumCells() > before, "measured neighbor refinement subdivides");
+  }
+  require(total > 0, "tree sweep has positive measured allocation coverage");
+  std::printf("tree_measured=%d:%d\n", stage, total);
+  for (int ordinal = 0; ordinal < total; ++ordinal) {
+    TreeFixture fixture(stage);
+    std::printf("tree_inject=%d:%d\n", stage, ordinal);
+    require(inject_allocation_failure(ordinal, [&] { tree_operation(fixture, stage); }),
+            "every tree allocation denial reaches caller");
+    // Only destruction is permitted after failed generation/subdivision.
+  }
+  std::printf("tree_failure_sites=%d:%d/%d\n", stage, total, total);
+}
+
 void boundary_registration_failures(int mode) {
   auto prepare = [mode] {
     auto boundary = std::make_unique<Boundary>();
@@ -654,7 +762,16 @@ void scenario(const char* mode) {
     primitive_contracts();
   else if (std::strcmp(mode, "registration-contracts") == 0)
     registration_contracts();
-  else if (std::strcmp(mode, "unowned-edge-query") == 0)
+  else if (std::strcmp(mode, "tree-contracts") == 0)
+    tree_contracts();
+  else if (std::strncmp(mode, "tree-failure-", 13) == 0 && std::strlen(mode) == 14 &&
+           mode[13] >= '0' && mode[13] <= '4') {
+#if defined(_MSC_VER) && defined(_DEBUG)
+    tree_allocation_failures(mode[13] - '0');
+#else
+    require(false, "Debug CRT allocation hook required");
+#endif
+  } else if (std::strcmp(mode, "unowned-edge-query") == 0)
     unowned_cell_query(false);
   else if (std::strcmp(mode, "unowned-face-query") == 0)
     unowned_cell_query(true);

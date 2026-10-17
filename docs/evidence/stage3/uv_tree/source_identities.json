@@ -1,0 +1,24 @@
+{
+  "entry_main": "4bfb31d54cdfb566a564724851d28a0bc02a93a0",
+  "sha256": {
+    "src/crab_mesh/aft/shape.cpp": "11dcc8bc03e19594c9c69357e42aa23861ac9d16baf3328bd0f3bab90755f0e9",
+    "src/crab_mesh/aft/vertex.cpp": "930551af2d3c0deaa4de3126b9ae27c7ef86b17f6455482ad8ae2d752ad6034b",
+    "src/crab_mesh/aft/edge.cpp": "4c809ca435e2a9e64994b9682eb143b8bc000602f7b1ab2d60110c505c90366e",
+    "src/crab_mesh/aft/face.cpp": "5affe37a06f0d44ed584f1950da6f51901fa65e67521fd9f1fab0c684e8973d4",
+    "src/crab_mesh/aft/boundary.cpp": "6b5f1b60b64ad9301dd0f77103f3f92cdb93ec6b3e327b0dcabc1ef83fe8167b",
+    "src/crab_mesh/aft/quadtree_cell.cpp": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+    "src/crab_mesh/aft/quadtree.cpp": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+    "src/crab_mesh/aft/advancing_front.cpp": "1b6d11c5bfdcadd279c19039c20cfb749d2ce6dc37ae4745465e9d2d18985ae9",
+    "src/data/curve/curve_adaptive.cpp": "17d241c7ce3b9e486aa776c143266d1938e42015520c74b7f8b5b12eef8f91eb",
+    "src/data/curve/curve_adaptive_parametric.cpp": "8786a74bb9df0dc04338ae7f7d09428382968124525721c5d354991bab8787cc",
+    "src/data/point_adaptive.cpp": "9e6837ec53f69bd23a602433aa5455668a6bb62605616c8059c0f7b42349b2ec",
+    "src/data/vector_adaptive.cpp": "c910b1091f4907b54725a6184c00c7a006e26ea63231b4d9182c4e829817f960",
+    "src/crab_mesh/numerical/function.cpp": "f58ca8b76b46d498374fe0b0b6fe0aee6e36c6b6ca657f12f69250d022ad2f95",
+    "src/crab_mesh/numerical/bisection_equation_root.cpp": "795d40b137ff31970997ffc8beb2fa2f49b491371f54fd9a484e179eb83126d7",
+    "tests/uv_memory/probe.cpp": "3afe856cd9c368a3b90b0280547ce736e7b3eca79108d85bd39fe2a25bc23aff",
+    "tools/qualify_uv_lifetime.py": "b629746372b1e41368ad81ac1dfc5cea9b9d7f1bdbf1ffd4ef5c971e1c328063",
+    "tests/uv_memory/CMakeLists.txt": "aa4e2b0267ad5445fb2defbb341ca87b57383ade3ffd6d658eb754b465a8f343",
+    "cmake/Quality.cmake": "d762bf2ee831f44b3b221ae597909ea24bcc63aad4952a1f47f01e97ddd8dc9c"
+  },
+  "instrument_scope": "14 actual production units; MSVC ASan and separate Debug CRT allocation hook/normal block checks; not full process or LSan/UBSan."
+}
