@@ -262,8 +262,8 @@
     {
       "id": "C11",
       "topic": "CRABMesh detach protocol",
-      "statement": "Edge/Face destructors retain legacy endpoint ownership outside shared containers. Boundary, Quadtree and front cleanup call DetachVertices without allocating; Face detachment releases a midpoint alias to an endpoint while preserving distinct cache ownership. Edge/Face setVertices prepare owned caches before committing endpoints; allocation failure preserves live state. Face cache replacement preserves an old endpoint-alias midpoint as borrowed. Boundary registration guards temporary vertices/edges and commits IDs/contour state only after owner nodes succeed, rolling back edge observers on failure. Face::quality owns temporary centers and detaches its borrowed-endpoint edge on unwind. Public subdivision queries require an attached quadtree and throw std::logic_error when it is missing; owned-cell numerical criteria remain unchanged.",
-      "limits": "Conditional detachment remains explicit; normal, partial, failed/exceptional post-template exits and selected transfer-allocation failures are isolated controls, not universal observer ownership or arbitrary exception safety. New setter endpoints must not alias a distinct cache owned by that object. Generic individual setters, parametric midpoint replacement and template/Boundary registration failures are not covered by the primitive slice. Registration controls use a null-curve fixture and a quadtree prepared through the real front generate/refine sequence; they do not qualify curve-internal failures, arbitrary setters or all helper paths.",
+      "statement": "Edge/Face destructors retain legacy endpoint ownership outside shared containers. Boundary, Quadtree and front cleanup call DetachVertices without allocating; Face detachment releases a midpoint alias to an endpoint while preserving distinct cache ownership. Edge/Face setVertices prepare owned caches before committing endpoints; allocation failure preserves live state. Face cache replacement preserves an old endpoint-alias midpoint as borrowed. Boundary registration guards temporary vertices/edges and commits IDs/contour state only after owner nodes succeed, rolling back edge observers on failure. Face::quality owns temporary centers and detaches its borrowed-endpoint edge on unwind. Public subdivision queries require an attached quadtree and throw std::logic_error when it is missing; owned-cell numerical criteria remain unchanged. Edge::angle(Vertex*, Vertex*) also detaches its temporary borrowed endpoints on every exit, including allocation failure during cache construction/reset or copied adjacency.",
+      "limits": "Conditional detachment remains explicit; normal, partial, failed/exceptional post-template exits and selected transfer-allocation failures are isolated controls, not universal observer ownership or arbitrary exception safety. New setter endpoints must not alias a distinct cache owned by that object. Generic individual setters, parametric midpoint replacement and template/Boundary registration failures are not covered by the primitive slice. Registration controls use a null-curve fixture and a quadtree prepared through the real front generate/refine sequence; they do not qualify curve-internal failures, arbitrary setters or all helper paths. Angle-helper qualification covers four endpoint-match branches and the nonadjacent branch with empty/populated caller adjacency; it does not qualify every helper or curve operation.",
       "evidence": [
         {
           "path": "src/crab_mesh/aft/edge.cpp",
@@ -312,6 +312,10 @@
         {
           "path": "src/crab_mesh/aft/quadtree_cell.cpp",
           "anchor": "throw std::logic_error(\"UV subdivision requires an attached quadtree\");"
+        },
+        {
+          "path": "src/crab_mesh/aft/edge.cpp",
+          "anchor": "~EndpointScope() { edge.DetachVertices(); }"
         }
       ]
     },

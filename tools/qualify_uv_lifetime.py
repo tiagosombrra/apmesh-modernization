@@ -18,7 +18,7 @@ def qualify(asan, crt, runtime, output):
     valid = ["normal", "partial", "failure", "exception", "topology-failure", "pending-tree",
              "transfer-contract", "transfer-order", "midpoint-alias", "contracts",
              "primitive-contracts", "face-alias-cache", "registration-contracts",
-             "unowned-edge-query", "unowned-face-query", "tree-contracts"]
+             "unowned-edge-query", "unowned-face-query", "tree-contracts", "angle-contracts"]
     cases = [(kind, executable, mode, None) for kind, executable in [("asan", asan), ("crt", crt)]
              for mode in valid]
     cases += [("crt", crt, "teardown-allocation", None),
@@ -34,6 +34,7 @@ def qualify(asan, crt, runtime, output):
                   "face-quality-failure", "outer-vertex-failure", "outer-edge-failure",
                   "template-one-failure", "template-four-failure")],
               *[("crt", crt, f"tree-failure-{stage}", None) for stage in range(5)],
+              *[("crt", crt, f"angle-failure-{variant}", None) for variant in range(10)],
               ("asan", asan, "use-after-free", "heap-use-after-free"),
               ("asan", asan, "shared-delete", "heap-use-after-free"),
               ("crt", crt, "leak", "retained-blocks")]
@@ -59,6 +60,10 @@ def qualify(asan, crt, runtime, output):
                 passed = passed and "teardown_allocation_attempts=0" in text
             if mode == "allocation-hook-control":
                 passed = passed and "allocation_hook_control=detected" in text
+            if mode == "angle-contracts":
+                measured = re.findall(r"angle_success=branch:(\d) adjacency:(\d) value:\S+ preserved:4", text)
+                passed = passed and len(measured) == 10 and set(measured) == {
+                    (str(branch), str(adjacency)) for branch in range(5) for adjacency in range(2)}
             if mode == "transfer-allocation-failure":
                 passed = passed and "transfer_allocation_failures=3" in text
             if mode in {"edge-construction-failure", "face-construction-failure",
@@ -81,6 +86,11 @@ def qualify(asan, crt, runtime, output):
                 sites = re.findall(r"tree_failure_sites=\d+:(\d+)/(\d+)", text)
                 passed = passed and len(sites) == 1 and all(
                     int(injected) == int(total) > 0 for injected, total in sites)
+            if mode.startswith("angle-failure-"):
+                sites = re.findall(r"angle_failure_sites=\d+:(\d+)/(\d+)", text)
+                passed = passed and len(sites) == 1 and all(
+                    int(injected) == int(total) > 0 for injected, total in sites)
+                passed = passed and "unchanged=1 retry=1" in text
         result = {"instrument": kind, "mode": mode, "exit_code": process.returncode,
                   "expected_diagnostic": diagnostic, "passed": passed,
                   "retained_blocks": int(retained[1]) if retained else None,
@@ -89,7 +99,8 @@ def qualify(asan, crt, runtime, output):
                       ("generated_faces=", "template_type_counts=", "templates_before_failure=",
                        "transfer_allocation_failures=", "allocation_hook_control=", "teardown_allocation_attempts=",
                        "allocation_failure_sites=", "registration_failure_sites=", "registration_measured=",
-                       "tree_failure_sites=", "tree_measured="))}),
+                       "tree_failure_sites=", "tree_measured=", "angle_failure_sites=",
+                       "angle_measured=", "angle_success="))}),
                   "log_sha256": hashlib.sha256(data).hexdigest()}
         results.append(result)
         print(json.dumps({key: value for key, value in result.items() if key != "log_sha256"}), flush=True)

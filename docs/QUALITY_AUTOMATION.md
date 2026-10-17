@@ -191,3 +191,19 @@ covering root, uniform subdivision, edge/old-face generation and real neighbor
 refinement. Full original/candidate success traces and allocation counts must
 match. Failed-tree destruction is qualified; retries and observer consumption
 are not. See `evidence/STAGE3_UV_TREE.md` and ADR-0006.
+
+## Angle-helper borrowed endpoints (#23)
+
+The candidate adds required application.uv_angle_contracts: 16 CTest tests,
+74 Python controls, 68 UV instrument cases and seven previous node cases.
+Ten calibrated CRT sweeps deny 252 allocations through four endpoint-match
+branches and the nonadjacent branch with empty/populated adjacency. They require
+caller ownership/state, receiver cache/scalar state and successful query reuse
+after every caught failure. ASan/CRT normal traces and successful allocation
+counts match the original; the original fails all ten new sweeps. Prior 56
+instrument controls remain required. See evidence/STAGE3_ANGLE_HELPER.md and
+ADR-0007 for exact commands, diagnostic history and limits.
+
+Doxygen 1.18.0 is now installed locally. The submitted initial documentation
+run fails on undocumented APIs; this remains a stage-8 failure inventory, not
+a documentation pass. Warning enforcement is unchanged.

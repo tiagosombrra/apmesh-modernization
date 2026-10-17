@@ -1,0 +1,1328 @@
+{
+  "status": "passed",
+  "phase": "candidate",
+  "revision": "e488c64eecacf1af3d8ac0e47043e85e216f8370",
+  "entry_main": "e488c64eecacf1af3d8ac0e47043e85e216f8370",
+  "commands": [
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "--preset",
+        "windows-gcc17",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "log": "build.log",
+      "sha256": "7716162f3cd3b99cf3b8a8dd6decf324e08c7e941aae7e730baba5e4fc8c075b"
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "build/u6a",
+        "--config",
+        "RelWithDebInfo",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "log": "asan-build.log",
+      "sha256": "266b1db68e4ca5eb26fc500941f773b0ed0b83792d2d7fff1f2f77ae36dce4fc"
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "build/u6d",
+        "--config",
+        "Debug",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "log": "crt-build.log",
+      "sha256": "91129c2fe562a7c2736097a54e73574a88eedef1eacfc4823d4ae36631987db7"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "tools/inventory_architecture.py",
+        "--output",
+        "docs/architecture/source_inventory.json",
+        "--contracts",
+        "docs/architecture/contracts.json",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": "inventory.log",
+      "sha256": "ca91197514655c41cbf9cbc1e5858585cfe3c88826b7c570b163f8cd4c2e0baf"
+    },
+    {
+      "argv": [
+        "ctest",
+        "--preset",
+        "windows-gcc17",
+        "--verbose",
+        "--output-junit",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s6-candidate\\ctest.xml"
+      ],
+      "exit_code": 0,
+      "log": "ctest.log",
+      "sha256": "f09dcbe369e9c39132eb6bd5f0c5e8cdd505efe204adf1ff6f2b3c531ec22f8f"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "tools/qualify_uv_lifetime.py",
+        "--asan",
+        "build/u6a/RelWithDebInfo/uv_lifetime_probe.exe",
+        "--crt",
+        "build/u6d/Debug/uv_lifetime_probe.exe",
+        "--runtime",
+        "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+        "--output",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s6-candidate\\uv"
+      ],
+      "exit_code": 0,
+      "log": "uv.log",
+      "sha256": "7e30dd7d4e86567af3c49e637d67e79f4c5b5e383f08055b5b4dd5d23455ed29"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "tools/qualify_node_lifetime.py",
+        "--asan",
+        "build/n6a/RelWithDebInfo/node_lifetime_probe.exe",
+        "--crt",
+        "build/n6d/Debug/node_lifetime_probe.exe",
+        "--runtime",
+        "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+        "--output",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s6-candidate\\node"
+      ],
+      "exit_code": 0,
+      "log": "node.log",
+      "sha256": "b7c88567f67eaa30bcbe59a46e2f6387199a082b77f31fa2cc3adaf91331b7dc"
+    },
+    {
+      "argv": [
+        "clang-format",
+        "--dry-run",
+        "--Werror",
+        "tests/uv_memory/probe.cpp"
+      ],
+      "exit_code": 0,
+      "log": "probe-format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "clang-format",
+        "--output-replacements-xml",
+        "--lines=474:477",
+        "src/crab_mesh/aft/edge.cpp"
+      ],
+      "exit_code": 0,
+      "log": "source-format.xml",
+      "sha256": "6b54da875f19874d6639b4545526b0d36c8acdbd346fb34cc4133106704c221a"
+    },
+    {
+      "argv": [
+        "clang-format",
+        "--output-replacements-xml",
+        "--lines=101:101",
+        "include/crab_mesh/aft/edge.h"
+      ],
+      "exit_code": 0,
+      "log": "header-format.xml",
+      "sha256": "6b54da875f19874d6639b4545526b0d36c8acdbd346fb34cc4133106704c221a"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "diff",
+        "--check",
+        "e488c64eecacf1af3d8ac0e47043e85e216f8370"
+      ],
+      "exit_code": 0,
+      "log": "diff-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "source_identity": {
+    "sha256": "07e509f2a985fdcf36542da2b986cc86fb157cfa0afc9d16bdd64afe42b50452",
+    "files": 507,
+    "record": "source_identities.json"
+  },
+  "ctest": {
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "python_controls": 74,
+    "names": [
+      "application.uv_lifetime",
+      "application.uv_primitive_contracts",
+      "application.uv_registration_contracts",
+      "application.uv_unowned_cell",
+      "application.uv_tree_contracts",
+      "application.uv_angle_contracts",
+      "application.node_lifetime",
+      "tooling.controls",
+      "reference.archived_eistute_artifact",
+      "application.invalid_inputs",
+      "application.boundary_orientation",
+      "application.metric_schema",
+      "application.curve_orientation_arclength",
+      "tooling.tidy_header_scope",
+      "application.smoothing_adjacency_order",
+      "application.valid_input_grammar"
+    ]
+  },
+  "uv_memory": {
+    "status": "passed",
+    "scope": "14 actual UV/curve/numerical production units; isolated ASan invalid-access and Debug CRT retained-block/allocation-hook coverage. Not full application, LSan, UBSan or arbitrary exception safety.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\u6a\\RelWithDebInfo\\uv_lifetime_probe.exe",
+        "sha256": "67f845826ad1491f5db87fdf306cd1931f9e900e4ffd6a7503a611283dfe2733"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\u6d\\Debug\\uv_lifetime_probe.exe",
+        "sha256": "12847dd0c353d4c527b839f7c2678ebab09fc6f870fe5764adc331ccec4e6d71"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "normal",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "partial",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "exception",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "1dc2dbcb8e2ac38719f7bd177981f81f8fc2abe78923d6b39789bc25b9c7c7bc"
+      },
+      {
+        "instrument": "asan",
+        "mode": "topology-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "pending-tree",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-contract",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-order",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "midpoint-alias",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0",
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "990c0db89a4df29dfb5fa1b4eb3715170a8abeda6d97c98f60dc4c726c2a9e5d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "primitive-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "face-alias-cache",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "registration-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "7b47639bc8ef1b8ec7b2fcfc74f60c1bdc395b598346834057f25989a850a315"
+      },
+      {
+        "instrument": "asan",
+        "mode": "unowned-edge-query",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "unowned-face-query",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "tree-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "8cca046ddc5000aa1ee4801481d3572837811bbb23b0f945a4ac3b4bbe044e70"
+      },
+      {
+        "instrument": "asan",
+        "mode": "angle-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "angle_success=branch:0 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:0 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:1 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:1 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:2 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:2 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:3 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:3 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:4 adjacency:0 value:-0x1.0000000000000p+0 preserved:4",
+          "angle_success=branch:4 adjacency:1 value:-0x1.0000000000000p+0 preserved:4"
+        ],
+        "log_sha256": "ecc97cc80496a6fc7dd7a455171601b219d8b4f9e39e28c4d3059781b325d7ea"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "partial",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "exception",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "ea788692f9f97777ad252f7551aae078e2c21c81c1e28f84cf596e259e0a1427"
+      },
+      {
+        "instrument": "crt",
+        "mode": "topology-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "pending-tree",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-contract",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-order",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "midpoint-alias",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0",
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "641a31309ee2441e9eface31f7236d5a9c0fb7500f6b350a53964cff628ac2e0"
+      },
+      {
+        "instrument": "crt",
+        "mode": "primitive-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-alias-cache",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "registration-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "55a79f59685c4783d60c4a7a9f6a2148815c3ac1d1e684d1898a690725173f16"
+      },
+      {
+        "instrument": "crt",
+        "mode": "unowned-edge-query",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "unowned-face-query",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "21f4231724f0dbf7aa54474b8aa7b49e7c16f55da081719b541fe821886ee73c"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_success=branch:0 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:0 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:1 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:1 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:2 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:2 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:3 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:3 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:4 adjacency:0 value:-0x1.0000000000000p+0 preserved:4",
+          "angle_success=branch:4 adjacency:1 value:-0x1.0000000000000p+0 preserved:4"
+        ],
+        "log_sha256": "9d5bee70c607859bd22b1fd5c9c6ef588d916a980e5160e9ce6ee1c915c11d3e"
+      },
+      {
+        "instrument": "crt",
+        "mode": "teardown-allocation",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "teardown_allocation_attempts=0"
+        ],
+        "log_sha256": "3875b8bd074b85dc04e96e83ef494ee5799e74bd81e2aeaca02b03b8b776d7c5"
+      },
+      {
+        "instrument": "crt",
+        "mode": "allocation-hook-control",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_hook_control=detected"
+        ],
+        "log_sha256": "aa4d95fe8a89fefb071a9ad83d6d6e7f45caef2e314f6094e66c13033fa20f2f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-allocation-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "transfer_allocation_failures=3 measured_allocations=342"
+        ],
+        "log_sha256": "ffa573c9ec64b128bf72bbb302e948947dd1a387ddf8aaf75e059725880e33b5"
+      },
+      {
+        "instrument": "crt",
+        "mode": "edge-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=edge:6/6"
+        ],
+        "log_sha256": "7e51b6935fe2f0460d75dde14ea29e55a11c480425bb38094728f20016497fa3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=face-explicit:3/3",
+          "allocation_failure_sites=face:3/3"
+        ],
+        "log_sha256": "cf9464ddbc63ce35909f0285bb28f942433a62818bd0820112279ee218da8f8a"
+      },
+      {
+        "instrument": "crt",
+        "mode": "front-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=front:32/32"
+        ],
+        "log_sha256": "0c852a11c3538f102771b5b5a3a24048bd1be6166fab8ccade0ecf171842e897"
+      },
+      {
+        "instrument": "crt",
+        "mode": "edge-cache-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=edge-cache:6/6 unchanged=1"
+        ],
+        "log_sha256": "b92f616542234d7110faffcc75f88a0d4c79f2c1dd054b954f9df63b8095e5b4"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-cache-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=face-cache:3/3 unchanged=1"
+        ],
+        "log_sha256": "5c306ebbc1ed1416d4b47bb05e01398c5dd84fca077e49376e52664595d2b9f1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "boundary-first-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=boundary-0:4/4 unchanged=1"
+        ],
+        "log_sha256": "3a3fe6c2bb5e26b48da26fc93274943454457da7735f6451bac7168de1c96c91"
+      },
+      {
+        "instrument": "crt",
+        "mode": "boundary-append-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=boundary-1:14/14 unchanged=1"
+        ],
+        "log_sha256": "736e1965b1c526f7c7c5da1fae15bf6149ae9a5e795308352599c9cb2a6cc5e3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "boundary-close-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=boundary-2:10/10 unchanged=1"
+        ],
+        "log_sha256": "253aa05c43ddbe2a5083fc960417b104ae138979b9e37cfc5497141a6e5deffe"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-quality-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=face-quality:36/36",
+          "registration_measured=face-quality:36"
+        ],
+        "log_sha256": "1ba202d02c9a0003aab56413dffab165dc82f447512b7944a76f60283604ab75"
+      },
+      {
+        "instrument": "crt",
+        "mode": "outer-vertex-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=template-0:164/164",
+          "registration_measured=template-0:164"
+        ],
+        "log_sha256": "051db91114bef724fac21f68a8351ab2e829f8ad8b4ed00dd8d852f986cd5579"
+      },
+      {
+        "instrument": "crt",
+        "mode": "outer-edge-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=template-1:664/664",
+          "registration_measured=template-1:664"
+        ],
+        "log_sha256": "06afecfa39ae4002603a5139ecc66860c474a5bbd39c375f8d36a2d7b4536749"
+      },
+      {
+        "instrument": "crt",
+        "mode": "template-one-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=template-2:134/134",
+          "registration_measured=template-2:134"
+        ],
+        "log_sha256": "be14b769815ac63b3e7efe20fb9d3e489286f6caa5c31713164ea1f50c89fa53"
+      },
+      {
+        "instrument": "crt",
+        "mode": "template-four-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=template-3:335/335",
+          "registration_measured=template-3:335"
+        ],
+        "log_sha256": "53b1c9fe99adcca641a297afb30bddcfb466e215e5fccc30034967963f1bc3ac"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=0:20/20",
+          "tree_measured=0:20"
+        ],
+        "log_sha256": "4de7c4227ec818afa97ab1ad9c982e57a0dcb7ae0b403285678540089dad4b7f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=1:80/80",
+          "tree_measured=1:80"
+        ],
+        "log_sha256": "cfe3ef4f0f443a2519235cddc27d7c27d79ae94215dba1ff78efa440a791f591"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=2:1490/1490",
+          "tree_measured=2:1490"
+        ],
+        "log_sha256": "01c4d171e6c749068ae5c6c681973b25863bad14532f4e5dea9108dd3328058c"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-3",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=3:1578/1578",
+          "tree_measured=3:1578"
+        ],
+        "log_sha256": "784ac0b29d7ff0a3b184bb8b782b72cad004f47f0d5ebac72f28d52be8a62e7d"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-4",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=4:302/302",
+          "tree_measured=4:302"
+        ],
+        "log_sha256": "52398dc3df5ce9447d6c9c2d1b282796b3e14cd6df43dbc5da4a316550413f51"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=0:24/24 unchanged=1 retry=1",
+          "angle_measured=0:24"
+        ],
+        "log_sha256": "8dc0782ea343edddf1d4e2e8c905b4b423efeb5fb584b8f9c69b726f5d26e1aa"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=1:24/24 unchanged=1 retry=1",
+          "angle_measured=1:24"
+        ],
+        "log_sha256": "50c62a797a8573275262f663a17d62500e4ff5f466fc4b0aaf0cf487dfb257e7"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=2:24/24 unchanged=1 retry=1",
+          "angle_measured=2:24"
+        ],
+        "log_sha256": "a3ea19b396b11469cf9b2c77fed1071b6890b355692e319a789f7bda4588b5b3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-3",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=3:24/24 unchanged=1 retry=1",
+          "angle_measured=3:24"
+        ],
+        "log_sha256": "4f1b14567ee78dff9f943a3c7b2521f2db2a83b4f82ae15dc53adba224a3b151"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-4",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=4:24/24 unchanged=1 retry=1",
+          "angle_measured=4:24"
+        ],
+        "log_sha256": "d3721b1bffcc94ee02f016b18db952baa1db2c12ffae8eb440ec1ca9854940b4"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-5",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=5:27/27 unchanged=1 retry=1",
+          "angle_measured=5:27"
+        ],
+        "log_sha256": "ec33b6b230a9d03e8a911379674ba7c8cfc9eeff500ffc1f62201dd499be5fae"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-6",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=6:27/27 unchanged=1 retry=1",
+          "angle_measured=6:27"
+        ],
+        "log_sha256": "318acfe00d5b9af408acc736d7952157fb865d16f58ca840de307f3282733e2d"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-7",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=7:27/27 unchanged=1 retry=1",
+          "angle_measured=7:27"
+        ],
+        "log_sha256": "dbb78d8462d9f3284e7fc730c4b176bc242dfd89d9813d4779b4acc063580dbb"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-8",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=8:27/27 unchanged=1 retry=1",
+          "angle_measured=8:27"
+        ],
+        "log_sha256": "95d6519f4c8a78c6aecc0e36b63b0cfca5aca2d6a83c748c53baa65b5054f80f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-9",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=9:24/24 unchanged=1 retry=1",
+          "angle_measured=9:24"
+        ],
+        "log_sha256": "3a7e409a6cd0ad5192b8d011429c6b968dbb3c9a722502a22e44f9ed3809a2a1"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "aff5c8777ef1a25a5e29eda4ec5852d889ccce68abaa22cfa429c46550cc627b"
+      },
+      {
+        "instrument": "asan",
+        "mode": "shared-delete",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "5a67e6e5fb11ab992c5f30240bf0a906d392d3918fdaada9e789ba435d86c336"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "retained_blocks": 3,
+        "retained_bytes": 112,
+        "observations": [],
+        "log_sha256": "1c0eebc532986b0d19f9267cd94fa31c56dc27f6993fe1b15197ac16194a6045"
+      }
+    ]
+  },
+  "previous_node_boundary": {
+    "status": "passed",
+    "scope": "Isolated actual physical node/submesh/triangle production sources; no whole-application or UBSan/LSan qualification.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\n6a\\RelWithDebInfo\\node_lifetime_probe.exe",
+        "sha256": "7be3d864b3901606aa251e5135b8ef4fc257c52bfe576606cb824d0f2ca12c30"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\n6d\\Debug\\node_lifetime_probe.exe",
+        "sha256": "3251204e14dee1c78157073e87cc825cb9701887a1c7803d8da5c4a9b09e4c0d"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "log_sha256": "1cc815adb0605db9feda49cd14fe534699829c21b5b03e74176cc00a512444ce"
+      },
+      {
+        "instrument": "asan",
+        "mode": "double-free",
+        "exit_code": 1,
+        "expected_diagnostic": "attempting double-free",
+        "passed": true,
+        "log_sha256": "d5d26162fc40214d7410824793f105c6c9b2d53c5d14e34823094ae758d18978"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "log_sha256": "b37ada20c25943fcc49a82f0a25393e5bfc9e6ca7516844321e8f49437de4f53"
+      }
+    ]
+  },
+  "angle_comparison": {
+    "original_failures": 10,
+    "original_positive_cases": 58,
+    "allocation_counts": {
+      "0": 24,
+      "1": 24,
+      "2": 24,
+      "3": 24,
+      "4": 24,
+      "5": 27,
+      "6": 27,
+      "7": 27,
+      "8": 27,
+      "9": 24
+    },
+    "injected_ordinals": 252,
+    "successful_trace_sha256": {
+      "asan": "ecc97cc80496a6fc7dd7a455171601b219d8b4f9e39e28c4d3059781b325d7ea",
+      "crt": "9d5bee70c607859bd22b1fd5c9c6ef588d916a980e5160e9ce6ee1c915c11d3e"
+    },
+    "allocation_counts_equal": true,
+    "caller_state_preserved": true,
+    "retry_qualified": true
+  },
+  "setup_history": [
+    {
+      "error": "Previously executed candidate selected lint did not complete",
+      "resolution": "Decoded the completed PowerShell UTF-16 log before checking coverage; reused only hash-verified passing gates"
+    }
+  ],
+  "selected_tidy": {
+    "coverage": 6,
+    "sha256": "8c81965e0f303b143719e7704b9dbd9da39a872eebb5c0f9f3f2a75a924a7af6",
+    "command": [
+      "C:\\msys64\\ucrt64\\bin\\python.exe",
+      "tools/quality.py",
+      "tidy",
+      "src/crab_mesh/aft/advancing_front.cpp",
+      "src/crab_mesh/aft/boundary.cpp",
+      "src/crab_mesh/aft/edge.cpp",
+      "src/crab_mesh/aft/face.cpp",
+      "src/crab_mesh/aft/quadtree.cpp",
+      "src/crab_mesh/aft/quadtree_cell.cpp",
+      "--build",
+      "build/windows-gcc17"
+    ]
+  },
+  "models": {
+    "eistute": {
+      "repeatability": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "68cf0e9985ff314502e7146dc76eb02d9a863d63c73a0166d93c9f2f20398d83",
+        "configuration_sha256": "76cc8682cf000deb461e22a987c521b093713812722e7b94ffaffe3508b756ea"
+      },
+      "entry_comparison": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 5,
+        "compared_fields": 105,
+        "differences": []
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3,
+        4
+      ],
+      "run_identity": {
+        "model": "eistute",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 21.15381279999565,
+        "executable_sha256": "68cf0e9985ff314502e7146dc76eb02d9a863d63c73a0166d93c9f2f20398d83",
+        "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+        "input_model": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\input_models\\eistute2.fixed.bp",
+        "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s6-candidate\\eistute\\working\\article.conf"
+        ]
+      }
+    },
+    "book": {
+      "repeatability": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "68cf0e9985ff314502e7146dc76eb02d9a863d63c73a0166d93c9f2f20398d83",
+        "configuration_sha256": "4ba5cd685bd70fdaf898953bad1d1d6092ae96c433a303beac4ff54435752189"
+      },
+      "entry_comparison": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 4,
+        "compared_fields": 84,
+        "differences": []
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3
+      ],
+      "run_identity": {
+        "model": "book",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 6.0420759999979055,
+        "executable_sha256": "68cf0e9985ff314502e7146dc76eb02d9a863d63c73a0166d93c9f2f20398d83",
+        "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+        "input_model": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\input_models\\book_v7a.bp",
+        "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s6-candidate\\book\\working\\article.conf"
+        ]
+      }
+    }
+  },
+  "application_sha256": "68cf0e9985ff314502e7146dc76eb02d9a863d63c73a0166d93c9f2f20398d83",
+  "raw_report_sha256": "8aec493672cdbbe2622b77838be919fa11b1ea68917d02fe97991e00f2a2867f"
+}

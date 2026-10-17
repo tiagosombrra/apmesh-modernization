@@ -112,3 +112,15 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
+
+## Active stage 3 slice 6 (#23)
+
+Candidate angle-helper lifetime repair is qualified: CTest 16/16, 74 Python
+controls, UV 68/68, node 7/7, six-unit lint, formatting, inventory and exact
+repeated Eistute/Book regression against entry main e488c64. The original fails
+ten allocation sweeps; all 252 measured denials preserve caller ownership and
+permit a successful helper query after the repair. Successful angle traces and
+allocation counts match original. Exact published-head and post-merge gates
+remain required; this does not close full stage 3. See
+evidence/STAGE3_ANGLE_HELPER.md and ADR-0007. Continue remaining helper/mutation
+and curve-internal scopes before sample/initialization/rollback ownership.

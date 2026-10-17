@@ -1,0 +1,75 @@
+{
+  "attempts": [
+    {
+      "name": "initial-collection-failure.json",
+      "status": "failed",
+      "error": "Previously executed candidate selected lint did not complete",
+      "raw_report_sha256": "de5edaa59ce0812ffd7b959a9a20865d0751186d04727c6333f35729570deb33",
+      "passing_product_gates": {
+        "ctest": {
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "python_controls": 74,
+          "names": [
+            "application.uv_lifetime",
+            "application.uv_primitive_contracts",
+            "application.uv_registration_contracts",
+            "application.uv_unowned_cell",
+            "application.uv_tree_contracts",
+            "application.uv_angle_contracts",
+            "application.node_lifetime",
+            "tooling.controls",
+            "reference.archived_eistute_artifact",
+            "application.invalid_inputs",
+            "application.boundary_orientation",
+            "application.metric_schema",
+            "application.curve_orientation_arclength",
+            "tooling.tidy_header_scope",
+            "application.smoothing_adjacency_order",
+            "application.valid_input_grammar"
+          ]
+        },
+        "uv_status": "passed",
+        "node_status": "passed"
+      }
+    },
+    {
+      "name": "second-collection-failure.json",
+      "status": "failed",
+      "error": "Previously executed candidate selected lint did not complete",
+      "raw_report_sha256": "5d19d7762f3505fa8d2d22238fb308e68fdbecdcd7e7510ec691dd7faf30f278",
+      "passing_product_gates": {
+        "ctest": {
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "python_controls": 74,
+          "names": [
+            "application.uv_lifetime",
+            "application.uv_primitive_contracts",
+            "application.uv_registration_contracts",
+            "application.uv_unowned_cell",
+            "application.uv_tree_contracts",
+            "application.uv_angle_contracts",
+            "application.node_lifetime",
+            "tooling.controls",
+            "reference.archived_eistute_artifact",
+            "application.invalid_inputs",
+            "application.boundary_orientation",
+            "application.metric_schema",
+            "application.curve_orientation_arclength",
+            "tooling.tidy_header_scope",
+            "application.smoothing_adjacency_order",
+            "application.valid_input_grammar"
+          ]
+        },
+        "uv_status": "passed",
+        "node_status": "passed"
+      }
+    }
+  ],
+  "cause": "Completed PowerShell lint log is UTF-16LE; byte-only UTF-8 marker search falsely reported incomplete lint",
+  "resolution": "Decoded raw completed log; reused only hash-verified successful gates with unchanged input identities",
+  "raw_tidy_sha256": "8c81965e0f303b143719e7704b9dbd9da39a872eebb5c0f9f3f2a75a924a7af6"
+}

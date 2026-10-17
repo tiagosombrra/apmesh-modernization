@@ -28,3 +28,15 @@ No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
 [slice 5 closure](evidence/STAGE3_UV_TREE_CLOSURE.md).
+
+## Active stage 3 slice 6 (#23)
+
+Entry main e488c64 was reaudited; fresh UV 56/56 and node 7/7 controls pass.
+Pinned-original angle queries destroy borrowed endpoints on allocation failure
+in all ten new sweeps. A local scope guard repairs that exception boundary.
+Candidate CTest 16/16, 74 Python controls, UV 68/68, node 7/7, 252 allocation
+denials, six-unit lint, formatting, inventory and strict repeated Eistute/Book
+regression pass. Successful traces/counts and all nine article states remain
+exact; publication/main qualification is still required. Initial UTF-16 lint-log
+collection failures are retained separately from passing product gates. See
+[slice evidence](evidence/STAGE3_ANGLE_HELPER.md) and ADR-0007.

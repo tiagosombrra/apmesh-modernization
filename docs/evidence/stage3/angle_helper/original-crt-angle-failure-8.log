@@ -1,0 +1,29 @@
+UV lifetime diagnostic
+angle_measured=8:27
+angle_inject=8:0
+Client hook allocation failure.
+angle_inject=8:1
+Client hook allocation failure.
+angle_inject=8:2
+Client hook allocation failure.
+angle_inject=8:3
+Client hook allocation failure.
+angle_inject=8:4
+Client hook allocation failure.
+angle_inject=8:5
+Client hook allocation failure.
+angle_inject=8:6
+Client hook allocation failure.
+angle_inject=8:7
+Client hook allocation failure.
+angle_inject=8:8
+Client hook allocation failure.
+angle_inject=8:9
+Client hook allocation failure.
+angle_inject=8:10
+Client hook allocation failure.
+angle_inject=8:11
+Client hook allocation failure.
+angle_inject=8:12
+Client hook allocation failure.
+Contract failed: angle helper preserves every caller-owned endpoint

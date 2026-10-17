@@ -240,3 +240,32 @@ One work item at a time. Every delivery records scope, reviewed changes,
 executed checks, toolchain, failures and next step. Recheck remote authority
 before writing and after integration. Scientific algorithm changes wait for
 explicit advisor alignment.
+
+## Active stage 3 slice 6 (#23): angle-helper endpoint lifetime
+
+Entry main `e488c64eecacf1af3d8ac0e47043e85e216f8370` was reaudited with
+all 828 working files matching their Git blobs. Fresh entry UV 56/56 and node
+7/7 ASan/CRT controls pass; the serial baseline is the retained exact-main
+continuation campaign at that same revision.
+
+The pinned original destroys caller-owned endpoints when allocation fails in
+Edge::angle(Vertex*, Vertex*). All ten new sweeps fail while the prior 56 cases
+and both new successful geometry cases pass. A local detachment guard repairs
+this exceptional lifetime boundary without changing formulas, operation order
+or successful allocation counts/traces. This is a behavior-changing defect
+repair on exceptional exits, not a scientific change.
+
+Candidate gates pass: CTest 16/16, zero skips, 74 Python controls, UV 68/68,
+node 7/7, six-unit selected lint, range formatting, inventory and strict repeated
+Eistute/Book entry comparison. Ten calibrated sweeps deny 252 allocations,
+preserving caller/receiver state and permitting a successful helper query after
+each failure. Article states, incidence coverage, 189 CSV fields and last
+accepted 1,168/4,256 triangles remain exact. Published-head and post-merge gates
+remain required before this slice closes. See evidence/STAGE3_ANGLE_HELPER.md
+and ADR-0007.
+
+Doxygen 1.18.0 is installed; its submitted initial run fails on undocumented
+members. Comprehensive documentation remains pending in stage 8, with the
+strict warning gate retained. Other helpers/mutation, curve-internal failures,
+parametric midpoint replacement and sample/initialization/rollback ownership
+follow this bounded slice. Full stage 3 remains open.
