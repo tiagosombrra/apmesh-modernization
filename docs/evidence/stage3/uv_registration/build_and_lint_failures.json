@@ -1,0 +1,19 @@
+{
+  "lint": {
+    "modernize_nullptr": 8,
+    "null_owner_dereferences": 2,
+    "repair": "Eight reviewed pointer-only lines and two demonstrated missing-context logic_error guards; unchanged analyzer configuration"
+  },
+  "configuration": {
+    "uv-registration-baseline-asan": {
+      "sha256": "0cb8b69ffe2bae457add0a30e9189b0d0a33718924c6d30257cdd2ee53d8b094",
+      "diagnostic": "MSB6003 link.exe task DirectoryNotFoundException in long TryCompile tracking path",
+      "repair": "Shortened build directories to reg0a/reg0d; same compiler and flags configure/build successfully"
+    },
+    "uv-registration-baseline-crt": {
+      "sha256": "daa623028ddd7accea9a54337a62b77924ccf85e9041dcdc96cc8c619efb577d",
+      "diagnostic": "MSB6003 link.exe task DirectoryNotFoundException in long TryCompile tracking path",
+      "repair": "Shortened build directories to reg0a/reg0d; same compiler and flags configure/build successfully"
+    }
+  }
+}

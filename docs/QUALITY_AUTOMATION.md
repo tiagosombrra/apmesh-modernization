@@ -159,15 +159,25 @@ Doxygen is configured to report undocumented APIs and fail on warnings. Full
 documentation generation is pending until a Doxygen-equipped environment and
 API coverage are available; a config file is not generated documentation.
 
+## Pending registration qualification
+
+Slice 4 extends the same runner to 49 cases and normal CTest to 14 entries.
+Eight new sweeps deny 1,361 measured allocations in Boundary registration,
+quality temporaries and prepared template creation. Missing-cell-context
+queries throw std::logic_error; owned-cell numerical criteria are unchanged.
+Selected lint covers six production units. The Boundary null-curve fixture
+permits retry; failed templates are qualified for destruction only. See
+[evidence](evidence/STAGE3_UV_REGISTRATION.md) for instruments and limits.
+
 ## Primary references reviewed 2026-10-15
 
-- https://clang.llvm.org/docs/ClangFormatStyleOptions.html â€” repository style file.
-- https://clang.llvm.org/extra/clang-tidy/ â€” compilation database and diagnostics.
-- https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines â€” RAII, ownership,
+- https://clang.llvm.org/docs/ClangFormatStyleOptions.html - repository style file.
+- https://clang.llvm.org/extra/clang-tidy/ - compilation database and diagnostics.
+- https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines - RAII, ownership,
   resource safety, interfaces and separation of responsibilities.
-- https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html â€” shared presets.
-- https://cmake.org/cmake/help/latest/manual/ctest.1.html â€” test discovery/execution.
-- https://clang.llvm.org/docs/AddressSanitizer.html â€” instrumentation and limits.
-- https://www.doxygen.nl/manual/config.html â€” API extraction and warning controls.
+- https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html - shared presets.
+- https://cmake.org/cmake/help/latest/manual/ctest.1.html - test discovery/execution.
+- https://clang.llvm.org/docs/AddressSanitizer.html - instrumentation and limits.
+- https://www.doxygen.nl/manual/config.html - API extraction and warning controls.
 
 These are engineering references, not a proof that legacy code follows them.

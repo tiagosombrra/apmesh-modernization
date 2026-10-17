@@ -1,6 +1,6 @@
 # Project state
 
-Updated: 2026-10-16 UTC.
+Updated: 2026-10-17 UTC.
 Scope: implementation modernization preserving the published technique.
 
 ## Completed in stage 0
@@ -9,7 +9,7 @@ Scope: implementation modernization preserving the published technique.
 - Exact 513-blob publication import at `cbfb863fb014e798289d824e158f67922036a5e3`.
 - Source commit and tree pinned; licenses, citation and historical README kept.
 - Initial audit, validation status and unapplied candidate patch retained.
-- English working agreement and complete stages 0â€“11 plan.
+- English working agreement and complete stages 0-11 plan.
 - EditorConfig, clang-format/tidy configurations, explicit local quality commands,
   optional staged-byte hook, CMake presets and meaningful CTest registration.
 - Compatibility-report checker rejects empty or zero-comparison coverage.
@@ -158,6 +158,29 @@ Next bounded scope: template arrays/object creation before registration and
 Boundary registration, followed by other setters/helper temporaries, then curve
 sample/initialization ownership and rollback. Full-process and parallel memory
 qualification, other template patterns and same-front reuse remain open.
+
+## Stage 3 slice 4 active (#17): pending UV registration
+
+Entry main `c341ba7cb7b514b4073330e59ccef14d000e45de` and all 746 blobs were
+audited. Complete candidate gates pass: CTest 14/14, 74 Python controls,
+UV 49/49, node 7/7, six-unit selected lint, changed-range formatting, inventory
+and exact Eistute/Book repetition and entry/previous-slice comparison. Successful
+UV geometry/ID/owner-order traces and measured allocation counts match original.
+Eight new sweeps inject 1,361 failures; both null-owner subdivision overloads
+are independently qualified. The original 49-case runner stays failed in
+12 cases while its previous 35 still pass.
+
+Boundary guards pending registration and commits contour/IDs after success;
+TemplateStorage owns unregistered suffixes while Quadtree owns adopted prefixes;
+Face::quality unwinds borrowed endpoints/owned centers safely. Missing quadtree
+context throws std::logic_error without changing valid subdivision criteria.
+Exact-head and post-merge gates remain before closure. See
+`docs/evidence/STAGE3_UV_REGISTRATION.md` and ADR-0005.
+
+Template failure is qualified for destruction, not retry or observer consumption.
+Next: earlier tree generation/subdivision, remaining mutation/helper and curve
+internal scopes, then sample/initialization/rollback ownership. Other template
+patterns and full-process/parallel/LSan/UBSan scope remain open.
 
 ## Open blockers and limitations
 

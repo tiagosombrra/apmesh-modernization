@@ -1,0 +1,74 @@
+{
+  "asan-unowned-edge-query.log": {
+    "original_sha256": "4507ec9cba6c7e90306a90f69e78c5444952cd7949e5ede9e14d1a0645bfb35a",
+    "original_bytes": 2380,
+    "retained_file": "original-asan-unowned-edge-query.log",
+    "retained_sha256": "4507ec9cba6c7e90306a90f69e78c5444952cd7949e5ede9e14d1a0645bfb35a"
+  },
+  "asan-unowned-face-query.log": {
+    "original_sha256": "1282f1900c7f172ce2cadce5ef2d0f76a258496cec603157ac37a95cc0c37764",
+    "original_bytes": 2378,
+    "retained_file": "original-asan-unowned-face-query.log",
+    "retained_sha256": "1282f1900c7f172ce2cadce5ef2d0f76a258496cec603157ac37a95cc0c37764"
+  },
+  "crt-unowned-edge-query.log": {
+    "original_sha256": "bacf2317c5b37eb6cdbdc7837288d1500d1ed6760aa90eb2612545157c7aa5b9",
+    "original_bytes": 24,
+    "retained_file": "original-crt-unowned-edge-query.log",
+    "retained_sha256": "bacf2317c5b37eb6cdbdc7837288d1500d1ed6760aa90eb2612545157c7aa5b9"
+  },
+  "crt-unowned-face-query.log": {
+    "original_sha256": "bacf2317c5b37eb6cdbdc7837288d1500d1ed6760aa90eb2612545157c7aa5b9",
+    "original_bytes": 24,
+    "retained_file": "original-crt-unowned-face-query.log",
+    "retained_sha256": "bacf2317c5b37eb6cdbdc7837288d1500d1ed6760aa90eb2612545157c7aa5b9"
+  },
+  "crt-boundary-first-failure.log": {
+    "original_sha256": "dd6e4e2e98c703d66af2e460501c329d76181eea953a854b0f004095801e8583",
+    "original_bytes": 974,
+    "retained_file": "original-crt-boundary-first-failure.log",
+    "retained_sha256": "dd6e4e2e98c703d66af2e460501c329d76181eea953a854b0f004095801e8583"
+  },
+  "crt-boundary-append-failure.log": {
+    "original_sha256": "37ab3242959d32de19d06c37c5d782a7b2e223ea40c8bc304b77e218f2544abf",
+    "original_bytes": 9307,
+    "retained_file": "original-crt-boundary-append-failure.log",
+    "retained_sha256": "37ab3242959d32de19d06c37c5d782a7b2e223ea40c8bc304b77e218f2544abf"
+  },
+  "crt-boundary-close-failure.log": {
+    "original_sha256": "7d2e8551c65620139acc813dca483c75900728e2c511a53795254e7b059e3f65",
+    "original_bytes": 4146,
+    "retained_file": "original-crt-boundary-close-failure.log",
+    "retained_sha256": "7d2e8551c65620139acc813dca483c75900728e2c511a53795254e7b059e3f65"
+  },
+  "crt-face-quality-failure.log": {
+    "original_sha256": "6a324e408641e461cbcb96c03f35b400124a26ddfc9f1b9e3e20f73ce6f5802c",
+    "original_bytes": 1493,
+    "retained_file": "original-crt-face-quality-failure.log",
+    "retained_sha256": "6a324e408641e461cbcb96c03f35b400124a26ddfc9f1b9e3e20f73ce6f5802c"
+  },
+  "crt-outer-vertex-failure.log": {
+    "original_sha256": "a7d64d21eb8aba1338eda72a4d36a9a7e3a9743d5bffff5936746722bbfd69a3",
+    "original_bytes": 27800,
+    "retained_file": "original-crt-outer-vertex-failure-excerpt.log",
+    "retained_sha256": "660a68c5e93825ab066d203a6e8de1b56bb162aeee68be622c41f040259c5455"
+  },
+  "crt-outer-edge-failure.log": {
+    "original_sha256": "a8dc708ea77fabe0cf29c6f0d3a7475255a9c7d997429fbbbcc59f525214eddd",
+    "original_bytes": 249988,
+    "retained_file": "original-crt-outer-edge-failure-excerpt.log",
+    "retained_sha256": "3457202d211ebc47b959543f390ea17b493e18f57ce88ae9cceef724dab44178"
+  },
+  "crt-template-one-failure.log": {
+    "original_sha256": "1ab9c25799a1542545a04a380c45d9b4bb3a248feca43afc6140ff03c9bd7b5b",
+    "original_bytes": 5479,
+    "retained_file": "original-crt-template-one-failure.log",
+    "retained_sha256": "1ab9c25799a1542545a04a380c45d9b4bb3a248feca43afc6140ff03c9bd7b5b"
+  },
+  "crt-template-four-failure.log": {
+    "original_sha256": "06bcc4094d9cd69f3b5550d3204e04b533e2aa593aca6225c47d65b086e11940",
+    "original_bytes": 9336,
+    "retained_file": "original-crt-template-four-failure.log",
+    "retained_sha256": "06bcc4094d9cd69f3b5550d3204e04b533e2aa593aca6225c47d65b086e11940"
+  }
+}

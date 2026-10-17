@@ -1,6 +1,6 @@
 {
   "schema": "apmesh-architecture-contracts-v1",
-  "reviewed_base": "0146fbd4925721a53a9b52717b82c5af8c4e0115",
+  "reviewed_base": "c341ba7cb7b514b4073330e59ccef14d000e45de",
   "scope": "Human-reviewed static contracts with source anchors. Stage 3 node-copy and UV lifecycle boundaries have isolated ASan/Debug CRT evidence; full application and parallel paths remain unqualified.",
   "contracts": [
     {
@@ -210,8 +210,8 @@
     {
       "id": "C10",
       "topic": "Front/quadtree ownership",
-      "statement": "Default AdvancingFront allocates Boundary/Quadtree. Quadtree owns generated template vertices, edges and faces until an allocation-free ordered splice transfers them to front owner lists. It destroys any untransferred template payload on failure or abandonment before deleting its root/boundary. Default front construction guards Boundary until Quadtree construction completes; failure before adoption leaves no retained boundary.",
-      "limits": "Getters return borrowed pointer views; template owner getters are empty after transfer. External-pointer constructor/setter replacement, mate-root sharing, arbitrary creation-time allocation failure and full-process cleanup remain unqualified.",
+      "statement": "Default AdvancingFront allocates Boundary/Quadtree. Quadtree owns generated template vertices, edges and faces until an allocation-free ordered splice transfers them to front owner lists. It destroys any untransferred template payload on failure or abandonment before deleting its root/boundary. Default front construction guards Boundary until Quadtree construction completes; failure before adoption leaves no retained boundary. TemplateStorage owns unregistered template buffers/objects and releases only successfully registered prefixes to Quadtree. Outer creation uses local vertex/edge guards until registration.",
+      "limits": "Getters return borrowed pointer views; template owner getters are empty after transfer. External-pointer constructor/setter replacement, mate-root sharing, arbitrary creation-time allocation failure and full-process cleanup remain unqualified. After a template creation exception, the tree is qualified for destruction only; observer consumption and same-tree retry are not supported by this slice. Prepared fixture covers types 1 and 4, not all patterns or earlier tree subdivision failures.",
       "evidence": [
         {
           "path": "src/crab_mesh/aft/advancing_front.cpp",
@@ -236,14 +236,26 @@
         {
           "path": "src/crab_mesh/aft/advancing_front.cpp",
           "anchor": "quadtree->TransferTemplateMesh(innerVertices, innerEdges, mesh);"
+        },
+        {
+          "path": "src/crab_mesh/aft/pending_template.h",
+          "anchor": "class TemplateStorage"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "pending.AdoptedEdge();"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "v[0] = pending_vertex.release();"
         }
       ]
     },
     {
       "id": "C11",
       "topic": "CRABMesh detach protocol",
-      "statement": "Edge/Face destructors retain legacy endpoint ownership outside shared containers. Boundary, Quadtree and front cleanup call DetachVertices without allocating; Face detachment releases a midpoint alias to an endpoint while preserving distinct cache ownership. Edge/Face setVertices prepare owned caches before committing endpoints; allocation failure preserves live state. Face cache replacement preserves an old endpoint-alias midpoint as borrowed.",
-      "limits": "Conditional detachment remains explicit; normal, partial, failed/exceptional post-template exits and selected transfer-allocation failures are isolated controls, not universal observer ownership or arbitrary exception safety. New setter endpoints must not alias a distinct cache owned by that object. Generic individual setters, parametric midpoint replacement and template/Boundary registration failures are not covered by the primitive slice.",
+      "statement": "Edge/Face destructors retain legacy endpoint ownership outside shared containers. Boundary, Quadtree and front cleanup call DetachVertices without allocating; Face detachment releases a midpoint alias to an endpoint while preserving distinct cache ownership. Edge/Face setVertices prepare owned caches before committing endpoints; allocation failure preserves live state. Face cache replacement preserves an old endpoint-alias midpoint as borrowed. Boundary registration guards temporary vertices/edges and commits IDs/contour state only after owner nodes succeed, rolling back edge observers on failure. Face::quality owns temporary centers and detaches its borrowed-endpoint edge on unwind. Public subdivision queries require an attached quadtree and throw std::logic_error when it is missing; owned-cell numerical criteria remain unchanged.",
+      "limits": "Conditional detachment remains explicit; normal, partial, failed/exceptional post-template exits and selected transfer-allocation failures are isolated controls, not universal observer ownership or arbitrary exception safety. New setter endpoints must not alias a distinct cache owned by that object. Generic individual setters, parametric midpoint replacement and template/Boundary registration failures are not covered by the primitive slice. Registration controls use a null-curve fixture and a quadtree prepared through the real front generate/refine sequence; they do not qualify curve-internal failures, arbitrary setters or all helper paths.",
       "evidence": [
         {
           "path": "src/crab_mesh/aft/edge.cpp",
@@ -276,6 +288,22 @@
         {
           "path": "src/crab_mesh/aft/face.cpp",
           "anchor": "std::unique_ptr<Vertex> next_mid(makeMid(v1, v2, v3));"
+        },
+        {
+          "path": "src/crab_mesh/aft/boundary.cpp",
+          "anchor": "edges.pop_back();"
+        },
+        {
+          "path": "src/crab_mesh/aft/face.cpp",
+          "anchor": "~EndpointScope()"
+        },
+        {
+          "path": "src/crab_mesh/aft/pending_template.h",
+          "anchor": "edge->getV1()->removeAdjacentEdge(edge);"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "throw std::logic_error(\"UV subdivision requires an attached quadtree\");"
         }
       ]
     },

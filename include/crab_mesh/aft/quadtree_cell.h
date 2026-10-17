@@ -96,6 +96,7 @@ class QuadtreeCell : public Shape {
    VertexList getVertices();
    EdgeList getEdges();
 
+   // Subdivision queries require a quadtree; missing context throws std::logic_error.
    bool shouldSubdivide(Edge* e);
    bool shouldSubdivide(Face* f);
 

@@ -25,6 +25,14 @@ controls. Actual template arrays/object creation and Boundary registration,
 other setters and helper temporary scopes follow this bounded delivery before
 the sample/rollback work. See ADR-0004 and the primitive allocation evidence.
 
+Issue #17 qualifies pending Boundary/template registration and the necessary
+Face::quality temporary unwind. The prepared real fixture measures outer
+vertices/edges and template types 1/4, with destruction-only cleanup after a
+template exception. Boundary failures preserve state and permit retry in its
+null-curve fixture. Earlier tree generation/subdivision, remaining setters/
+helper paths and curve internals follow before sample/initialization/rollback.
+Do not broaden these observations to every template pattern or arbitrary reuse.
+
 The completed first slice characterized copying before repair. SetNoh now
 explicitly copies scalar state and clears foreign adjacency; general implicit
 node copies still carry observers. Initial-mesh callers need independent copies;

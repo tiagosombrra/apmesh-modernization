@@ -1,0 +1,12 @@
+{
+  "uvreg-original-measurement": {
+    "raw_report_sha256": "e2cb270174cc21ebd334b248d0b5a6877d203e382331c028901be91363aa8237",
+    "unqualified_case": "template-four-failure",
+    "reason": "Quadtree.execute adds uniform refineToLevel; fixture had no type-4 leaf. Final fixture matches AdvancingFront generate/refineAccordingToNeighbors and retains the required type assertion."
+  },
+  "uvreg-original-final-measurement": {
+    "raw_report_sha256": "c4ab9e3534cbe11b4d5f757d8bbd9072f010e75e709234eeaed6f57239fdf3f1",
+    "unqualified_case": "template-four-failure",
+    "reason": "Quadtree.execute adds uniform refineToLevel; fixture had no type-4 leaf. Final fixture matches AdvancingFront generate/refineAccordingToNeighbors and retains the required type assertion."
+  }
+}

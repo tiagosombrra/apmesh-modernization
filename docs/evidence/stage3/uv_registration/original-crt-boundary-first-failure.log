@@ -1,0 +1,18 @@
+UV lifetime diagnostic
+Client hook allocation failure.
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+registration_failure_sites=boundary-0:4/4 unchanged=0
+CRT retained_blocks=3 retained_bytes=112
+Dumping objects ->
+{690} normal block at 0x0000022ECE04FA20, 40 bytes long.
+ Data: <    .       .   > 20 FA 04 CE 2E 02 00 00 20 FA 04 CE 2E 02 00 00 
+{689} normal block at 0x0000022ECE054D00, 16 bytes long.
+ Data: < &  .           > 00 26 04 CE 2E 02 00 00 00 00 00 00 00 00 00 00 
+{688} normal block at 0x0000022ECE0425E0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 01 00 00 00 CD CD CD CD 
+Object dump complete.

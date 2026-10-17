@@ -1,0 +1,19 @@
+{
+  "cause": "Native Python default cp1252 read of UTF-8 during local editing; all subsequent reads use explicit UTF-8",
+  "changes": {
+    "src\\crab_mesh\\aft\\quadtree_cell.cpp": {
+      "before_sha256": "0e1a9af85e2a5847856209ec5099490a712eb8907d5fc3f84b25eee99fa53001",
+      "after_sha256": "cd6a53c57d33902682134d7aac49494472ae356aaa8ee334caf7884c4d2937ce",
+      "repair": "Restore the unchanged Portuguese comment exactly from pinned entry; no code token changes"
+    },
+    "docs/PROJECT_STATE.md": {
+      "before_sha256": "27a68c631f65e6c6946b45f3546b9c477746c0636fed26acd2c474a2f8af21f1",
+      "after_sha256": "91fc87249e935ad845ba090e20728f67206f3a0d69c210d1cc8eeaa750ee2478"
+    },
+    "docs/QUALITY_AUTOMATION.md": {
+      "before_sha256": "7fbe878f7f70e706b1c3bde72c4fa2c13beae62e94cab6802423d9199ea1c491",
+      "after_sha256": "4cd2de1cece61e1ed05b8c7c42500ca3777a01212e66ccb563186a2fba56a84e"
+    }
+  },
+  "regression": "Final source rebuilt and requalified before publication"
+}
