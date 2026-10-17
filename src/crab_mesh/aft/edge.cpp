@@ -545,12 +545,8 @@ void Edge::makeParamMid() {
     return;
   }
 
-  if (mid) {
-    delete mid;
-
-    mid = nullptr;
-  }
-
+  std::unique_ptr<Vertex> next_mid;
+  double next_len = -1.0;
   double t = -1.0;
 
   auto midpoint = [&](double first, double last) {
@@ -569,41 +565,44 @@ void Edge::makeParamMid() {
 
     t = midpoint(v[0]->getX(), v[1]->getX());
 
-    mid = new Vertex(t, 0.0);
+    next_mid.reset(new Vertex(t, 0.0));
 
-    len = arc_length(v[0]->getX(), v[1]->getX()) / c->GetLength();
+    next_len = arc_length(v[0]->getX(), v[1]->getX()) / c->GetLength();
   } else if ((v[0]->getX() == 1.0) && (v[0]->getY() < 1.0)) {
     // curva 2
     // Ponto p = c->pontoMedio(v[0]->getY(), v[1]->getY());
 
     t = midpoint(v[0]->getY(), v[1]->getY());
 
-    mid = new Vertex(1.0, t);
+    next_mid.reset(new Vertex(1.0, t));
 
-    len = arc_length(v[0]->getY(), v[1]->getY()) / c->GetLength();
+    next_len = arc_length(v[0]->getY(), v[1]->getY()) / c->GetLength();
   } else if ((v[0]->getY() == 1.0) && (v[0]->getX() > 0.0)) {
     // curva 3
     // Ponto p = c->pontoMedio(v[0]->getX(), v[1]->getX());
 
     t = midpoint(v[1]->getX(), v[0]->getX());
 
-    mid = new Vertex(t, 1.0);
+    next_mid.reset(new Vertex(t, 1.0));
 
-    len = arc_length(v[1]->getX(), v[0]->getX()) / c->GetLength();
+    next_len = arc_length(v[1]->getX(), v[0]->getX()) / c->GetLength();
   } else if ((v[0]->getX() == 0.0) && (v[0]->getY() > 0.0)) {
     // curva 4
     // Ponto p = c->pontoMedio(v[0]->getY(), v[1]->getY());
 
     t = midpoint(v[1]->getY(), v[0]->getY());
 
-    mid = new Vertex(0.0, t);
+    next_mid.reset(new Vertex(0.0, t));
 
-    len = arc_length(v[1]->getY(), v[0]->getY()) / c->GetLength();
+    next_len = arc_length(v[1]->getY(), v[0]->getY()) / c->GetLength();
   } else {
-    mid = makeMid();
-
-    len = -1.0;
+    next_mid.reset(makeMid());
   }
+
+  // Commit both caches only after all curve evaluation and construction succeeds.
+  delete mid;
+  mid = next_mid.release();
+  len = next_len;
 }
 
 string Edge::getText() {

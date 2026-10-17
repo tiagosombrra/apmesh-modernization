@@ -22,6 +22,9 @@ if(BUILD_TESTING)
   add_test(NAME application.uv_angle_contracts COMMAND uv_lifetime_probe angle-contracts)
   set_tests_properties(application.uv_angle_contracts
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
+  add_test(NAME application.uv_parametric_contracts COMMAND uv_lifetime_probe parametric-contracts)
+  set_tests_properties(application.uv_parametric_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_test(NAME application.node_lifetime COMMAND node_lifetime_probe contracts)
   set_tests_properties(application.node_lifetime
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)

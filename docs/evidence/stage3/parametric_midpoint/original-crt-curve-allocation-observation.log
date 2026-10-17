@@ -1,0 +1,7 @@
+UV lifetime diagnostic
+curve_allocation_observation=point-gradient:0
+curve_allocation_observation=arc:0
+curve_allocation_observation=midpoint:0
+curve_allocation_failure_coverage=unmeasured
+CRT retained_blocks=0 retained_bytes=0
+PASS

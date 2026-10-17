@@ -250,3 +250,14 @@ populated observers, including successful helper reuse after failure. Original
 and candidate successful geometry/allocation counts match. General copied
 observers, other mutation/helpers and curve operations remain separate scopes.
 See ADR-0007 and `../evidence/STAGE3_ANGLE_HELPER.md`.
+
+## Parametric midpoint cache boundary (#26)
+
+Prepare the replacement midpoint/normalized length before changing live Edge
+state, then destroy the old owned cache and commit. Old-cache observer lifetime
+ends on successful commit; allocation failure preserves its identity/geometry.
+Curve evaluation scratch remains mutable. C11 and ADR-0008 record the measured
+four-side/two-direction, fallback and null-curve boundary. Zero allocations in
+the direct polynomial examples do not qualify failures inside all curve APIs.
+Continue other curve mutation/constructor/setter paths before sample ownership,
+initialization and rollback; full-process and parallel qualification stay open.

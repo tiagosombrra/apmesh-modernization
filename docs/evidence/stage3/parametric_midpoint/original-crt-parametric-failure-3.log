@@ -1,0 +1,6 @@
+UV lifetime diagnostic
+parametric_success=variant:3 x:0x1.0000000000000p+0 y:0x1.b488700000000p-3 len:0x1.60000000001dfp-1 null:0
+parametric_measured=3:3
+parametric_inject=3:0
+Client hook allocation failure.
+Contract failed: failed parametric replacement preserves midpoint identity and normalized length

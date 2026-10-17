@@ -114,3 +114,14 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
+
+## Active stage 3 slice 7 (#26): parametric midpoint replacement
+
+Candidate CTest 17/17, 74 controls, UV 81/81, node 7/7, six-unit lint,
+formatting, inventory and strict repeated Eistute/Book entry regression pass.
+Ten original failed replacement sweeps now preserve cache/caller state through
+all 30 allocation denials and successful retry. Destruction of the old cache
+is delayed to commit; successful arithmetic, allocation counts and outputs
+remain exact. Direct curve examples observe zero allocations and do not qualify
+internal allocation failure. Exact head/main gates remain required; full stage
+3 stays open. See evidence/STAGE3_PARAMETRIC_MIDPOINT.md and ADR-0008.

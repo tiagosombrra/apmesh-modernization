@@ -1,0 +1,1115 @@
+{
+  "status": "failed",
+  "scope": "14 actual UV/curve/numerical production units; isolated ASan invalid-access and Debug CRT retained-block/allocation-hook coverage. Not full application, LSan, UBSan or arbitrary exception safety.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\u7oa\\RelWithDebInfo\\uv_lifetime_probe.exe",
+      "sha256": "1a26c7d519920571f04d861cf2a232de44602d987d2a8968e22545208502136a"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\u7od\\Debug\\uv_lifetime_probe.exe",
+      "sha256": "e42360859ac48e556efae8a4b248d5772ecfab6998f5b0e50c8136dc5bd12686"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "partial",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "exception",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "1dc2dbcb8e2ac38719f7bd177981f81f8fc2abe78923d6b39789bc25b9c7c7bc"
+    },
+    {
+      "instrument": "asan",
+      "mode": "topology-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "pending-tree",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "transfer-contract",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "transfer-order",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "midpoint-alias",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0",
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "990c0db89a4df29dfb5fa1b4eb3715170a8abeda6d97c98f60dc4c726c2a9e5d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "primitive-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "face-alias-cache",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "registration-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "7b47639bc8ef1b8ec7b2fcfc74f60c1bdc395b598346834057f25989a850a315"
+    },
+    {
+      "instrument": "asan",
+      "mode": "unowned-edge-query",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "unowned-face-query",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+    },
+    {
+      "instrument": "asan",
+      "mode": "tree-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "8cca046ddc5000aa1ee4801481d3572837811bbb23b0f945a4ac3b4bbe044e70"
+    },
+    {
+      "instrument": "asan",
+      "mode": "angle-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "angle_success=branch:0 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:0 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:1 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:1 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:2 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:2 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:3 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:3 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:4 adjacency:0 value:-0x1.0000000000000p+0 preserved:4",
+        "angle_success=branch:4 adjacency:1 value:-0x1.0000000000000p+0 preserved:4"
+      ],
+      "log_sha256": "ecc97cc80496a6fc7dd7a455171601b219d8b4f9e39e28c4d3059781b325d7ea"
+    },
+    {
+      "instrument": "asan",
+      "mode": "parametric-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "curve_integral=0x1.7bccccccccb66p-1 midpoint:0x1.335e09e000000p-1",
+        "curve_success=sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "curve_success=sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+        "curve_success=sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+        "curve_success=sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "curve_success=sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "parametric_success=variant:0 x:0x1.413dab0000000p-2 y:0x0.0000000000000p+0 len:0x1.4000000000140p-2 null:0",
+        "parametric_success=variant:1 x:0x1.b488700000000p-3 y:0x0.0000000000000p+0 len:0x1.60000000001dfp-1 null:0",
+        "parametric_success=variant:10 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:0x1.8000000000000p-2 null:1",
+        "parametric_success=variant:2 x:0x1.0000000000000p+0 y:0x1.413dab0000000p-2 len:0x1.4000000000140p-2 null:0",
+        "parametric_success=variant:3 x:0x1.0000000000000p+0 y:0x1.b488700000000p-3 len:0x1.60000000001dfp-1 null:0",
+        "parametric_success=variant:4 x:0x1.92dde40000000p-1 y:0x1.0000000000000p+0 len:0x1.60000000001dfp-1 null:0",
+        "parametric_success=variant:5 x:0x1.5f612a8000000p-1 y:0x1.0000000000000p+0 len:0x1.4000000000140p-2 null:0",
+        "parametric_success=variant:6 x:0x0.0000000000000p+0 y:0x1.92dde40000000p-1 len:0x1.60000000001dfp-1 null:0",
+        "parametric_success=variant:7 x:0x0.0000000000000p+0 y:0x1.5f612a8000000p-1 len:0x1.4000000000140p-2 null:0",
+        "parametric_success=variant:8 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0",
+        "parametric_success=variant:9 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0"
+      ],
+      "log_sha256": "0ec4526662d39431c51a4fae5bdf07933498475b9d9643361c9c518fcc08e71c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "partial",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+    },
+    {
+      "instrument": "crt",
+      "mode": "exception",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "ea788692f9f97777ad252f7551aae078e2c21c81c1e28f84cf596e259e0a1427"
+    },
+    {
+      "instrument": "crt",
+      "mode": "topology-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+    },
+    {
+      "instrument": "crt",
+      "mode": "pending-tree",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-contract",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0"
+      ],
+      "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-order",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "midpoint-alias",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "generated_faces=104 templates=24",
+        "template_type_counts=20,0,0,4,0,0",
+        "templates_before_failure=64"
+      ],
+      "log_sha256": "641a31309ee2441e9eface31f7236d5a9c0fb7500f6b350a53964cff628ac2e0"
+    },
+    {
+      "instrument": "crt",
+      "mode": "primitive-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "face-alias-cache",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "registration-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "55a79f59685c4783d60c4a7a9f6a2148815c3ac1d1e684d1898a690725173f16"
+    },
+    {
+      "instrument": "crt",
+      "mode": "unowned-edge-query",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "unowned-face-query",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+    },
+    {
+      "instrument": "crt",
+      "mode": "tree-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [],
+      "log_sha256": "21f4231724f0dbf7aa54474b8aa7b49e7c16f55da081719b541fe821886ee73c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_success=branch:0 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:0 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:1 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:1 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:2 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:2 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:3 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:3 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+        "angle_success=branch:4 adjacency:0 value:-0x1.0000000000000p+0 preserved:4",
+        "angle_success=branch:4 adjacency:1 value:-0x1.0000000000000p+0 preserved:4"
+      ],
+      "log_sha256": "9d5bee70c607859bd22b1fd5c9c6ef588d916a980e5160e9ce6ee1c915c11d3e"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-contracts",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "curve_integral=0x1.7bccccccccb66p-1 midpoint:0x1.335e09e000000p-1",
+        "curve_success=sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "curve_success=sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+        "curve_success=sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+        "curve_success=sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "curve_success=sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "parametric_success=variant:0 x:0x1.413dab0000000p-2 y:0x0.0000000000000p+0 len:0x1.4000000000140p-2 null:0",
+        "parametric_success=variant:1 x:0x1.b488700000000p-3 y:0x0.0000000000000p+0 len:0x1.60000000001dfp-1 null:0",
+        "parametric_success=variant:10 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:0x1.8000000000000p-2 null:1",
+        "parametric_success=variant:2 x:0x1.0000000000000p+0 y:0x1.413dab0000000p-2 len:0x1.4000000000140p-2 null:0",
+        "parametric_success=variant:3 x:0x1.0000000000000p+0 y:0x1.b488700000000p-3 len:0x1.60000000001dfp-1 null:0",
+        "parametric_success=variant:4 x:0x1.92dde40000000p-1 y:0x1.0000000000000p+0 len:0x1.60000000001dfp-1 null:0",
+        "parametric_success=variant:5 x:0x1.5f612a8000000p-1 y:0x1.0000000000000p+0 len:0x1.4000000000140p-2 null:0",
+        "parametric_success=variant:6 x:0x0.0000000000000p+0 y:0x1.92dde40000000p-1 len:0x1.60000000001dfp-1 null:0",
+        "parametric_success=variant:7 x:0x0.0000000000000p+0 y:0x1.5f612a8000000p-1 len:0x1.4000000000140p-2 null:0",
+        "parametric_success=variant:8 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0",
+        "parametric_success=variant:9 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0"
+      ],
+      "log_sha256": "06e1cfd861bf6de30f6cdafde4ae5492189e292b5298473a96d0825a38eb8255"
+    },
+    {
+      "instrument": "crt",
+      "mode": "teardown-allocation",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "teardown_allocation_attempts=0"
+      ],
+      "log_sha256": "3875b8bd074b85dc04e96e83ef494ee5799e74bd81e2aeaca02b03b8b776d7c5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ],
+      "log_sha256": "aa4d95fe8a89fefb071a9ad83d6d6e7f45caef2e314f6094e66c13033fa20f2f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "transfer-allocation-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "transfer_allocation_failures=3 measured_allocations=342"
+      ],
+      "log_sha256": "ffa573c9ec64b128bf72bbb302e948947dd1a387ddf8aaf75e059725880e33b5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "edge-construction-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_failure_sites=edge:6/6"
+      ],
+      "log_sha256": "7e51b6935fe2f0460d75dde14ea29e55a11c480425bb38094728f20016497fa3"
+    },
+    {
+      "instrument": "crt",
+      "mode": "face-construction-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_failure_sites=face-explicit:3/3",
+        "allocation_failure_sites=face:3/3"
+      ],
+      "log_sha256": "cf9464ddbc63ce35909f0285bb28f942433a62818bd0820112279ee218da8f8a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "front-construction-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_failure_sites=front:32/32"
+      ],
+      "log_sha256": "0c852a11c3538f102771b5b5a3a24048bd1be6166fab8ccade0ecf171842e897"
+    },
+    {
+      "instrument": "crt",
+      "mode": "edge-cache-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_failure_sites=edge-cache:6/6 unchanged=1"
+      ],
+      "log_sha256": "b92f616542234d7110faffcc75f88a0d4c79f2c1dd054b954f9df63b8095e5b4"
+    },
+    {
+      "instrument": "crt",
+      "mode": "face-cache-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_failure_sites=face-cache:3/3 unchanged=1"
+      ],
+      "log_sha256": "5c306ebbc1ed1416d4b47bb05e01398c5dd84fca077e49376e52664595d2b9f1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "boundary-first-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "registration_failure_sites=boundary-0:4/4 unchanged=1"
+      ],
+      "log_sha256": "3a3fe6c2bb5e26b48da26fc93274943454457da7735f6451bac7168de1c96c91"
+    },
+    {
+      "instrument": "crt",
+      "mode": "boundary-append-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "registration_failure_sites=boundary-1:14/14 unchanged=1"
+      ],
+      "log_sha256": "736e1965b1c526f7c7c5da1fae15bf6149ae9a5e795308352599c9cb2a6cc5e3"
+    },
+    {
+      "instrument": "crt",
+      "mode": "boundary-close-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "registration_failure_sites=boundary-2:10/10 unchanged=1"
+      ],
+      "log_sha256": "253aa05c43ddbe2a5083fc960417b104ae138979b9e37cfc5497141a6e5deffe"
+    },
+    {
+      "instrument": "crt",
+      "mode": "face-quality-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "registration_failure_sites=face-quality:36/36",
+        "registration_measured=face-quality:36"
+      ],
+      "log_sha256": "1ba202d02c9a0003aab56413dffab165dc82f447512b7944a76f60283604ab75"
+    },
+    {
+      "instrument": "crt",
+      "mode": "outer-vertex-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "registration_failure_sites=template-0:164/164",
+        "registration_measured=template-0:164"
+      ],
+      "log_sha256": "051db91114bef724fac21f68a8351ab2e829f8ad8b4ed00dd8d852f986cd5579"
+    },
+    {
+      "instrument": "crt",
+      "mode": "outer-edge-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "registration_failure_sites=template-1:664/664",
+        "registration_measured=template-1:664"
+      ],
+      "log_sha256": "06afecfa39ae4002603a5139ecc66860c474a5bbd39c375f8d36a2d7b4536749"
+    },
+    {
+      "instrument": "crt",
+      "mode": "template-one-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "registration_failure_sites=template-2:134/134",
+        "registration_measured=template-2:134"
+      ],
+      "log_sha256": "be14b769815ac63b3e7efe20fb9d3e489286f6caa5c31713164ea1f50c89fa53"
+    },
+    {
+      "instrument": "crt",
+      "mode": "template-four-failure",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "registration_failure_sites=template-3:335/335",
+        "registration_measured=template-3:335"
+      ],
+      "log_sha256": "53b1c9fe99adcca641a297afb30bddcfb466e215e5fccc30034967963f1bc3ac"
+    },
+    {
+      "instrument": "crt",
+      "mode": "tree-failure-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "tree_failure_sites=0:20/20",
+        "tree_measured=0:20"
+      ],
+      "log_sha256": "4de7c4227ec818afa97ab1ad9c982e57a0dcb7ae0b403285678540089dad4b7f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "tree-failure-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "tree_failure_sites=1:80/80",
+        "tree_measured=1:80"
+      ],
+      "log_sha256": "cfe3ef4f0f443a2519235cddc27d7c27d79ae94215dba1ff78efa440a791f591"
+    },
+    {
+      "instrument": "crt",
+      "mode": "tree-failure-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "tree_failure_sites=2:1490/1490",
+        "tree_measured=2:1490"
+      ],
+      "log_sha256": "01c4d171e6c749068ae5c6c681973b25863bad14532f4e5dea9108dd3328058c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "tree-failure-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "tree_failure_sites=3:1578/1578",
+        "tree_measured=3:1578"
+      ],
+      "log_sha256": "784ac0b29d7ff0a3b184bb8b782b72cad004f47f0d5ebac72f28d52be8a62e7d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "tree-failure-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "tree_failure_sites=4:302/302",
+        "tree_measured=4:302"
+      ],
+      "log_sha256": "52398dc3df5ce9447d6c9c2d1b282796b3e14cd6df43dbc5da4a316550413f51"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=0:24/24 unchanged=1 retry=1",
+        "angle_measured=0:24"
+      ],
+      "log_sha256": "8dc0782ea343edddf1d4e2e8c905b4b423efeb5fb584b8f9c69b726f5d26e1aa"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=1:24/24 unchanged=1 retry=1",
+        "angle_measured=1:24"
+      ],
+      "log_sha256": "50c62a797a8573275262f663a17d62500e4ff5f466fc4b0aaf0cf487dfb257e7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=2:24/24 unchanged=1 retry=1",
+        "angle_measured=2:24"
+      ],
+      "log_sha256": "a3ea19b396b11469cf9b2c77fed1071b6890b355692e319a789f7bda4588b5b3"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=3:24/24 unchanged=1 retry=1",
+        "angle_measured=3:24"
+      ],
+      "log_sha256": "4f1b14567ee78dff9f943a3c7b2521f2db2a83b4f82ae15dc53adba224a3b151"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=4:24/24 unchanged=1 retry=1",
+        "angle_measured=4:24"
+      ],
+      "log_sha256": "d3721b1bffcc94ee02f016b18db952baa1db2c12ffae8eb440ec1ca9854940b4"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=5:27/27 unchanged=1 retry=1",
+        "angle_measured=5:27"
+      ],
+      "log_sha256": "ec33b6b230a9d03e8a911379674ba7c8cfc9eeff500ffc1f62201dd499be5fae"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=6:27/27 unchanged=1 retry=1",
+        "angle_measured=6:27"
+      ],
+      "log_sha256": "318acfe00d5b9af408acc736d7952157fb865d16f58ca840de307f3282733e2d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-7",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=7:27/27 unchanged=1 retry=1",
+        "angle_measured=7:27"
+      ],
+      "log_sha256": "dbb78d8462d9f3284e7fc730c4b176bc242dfd89d9813d4779b4acc063580dbb"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-8",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=8:27/27 unchanged=1 retry=1",
+        "angle_measured=8:27"
+      ],
+      "log_sha256": "95d6519f4c8a78c6aecc0e36b63b0cfca5aca2d6a83c748c53baa65b5054f80f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "angle-failure-9",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "angle_failure_sites=9:24/24 unchanged=1 retry=1",
+        "angle_measured=9:24"
+      ],
+      "log_sha256": "3a7e409a6cd0ad5192b8d011429c6b968dbb3c9a722502a22e44f9ed3809a2a1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=0:3",
+        "parametric_success=variant:0 x:0x1.413dab0000000p-2 y:0x0.0000000000000p+0 len:0x1.4000000000140p-2 null:0"
+      ],
+      "log_sha256": "46f84e4f2d4d8d2e93342bc18f944d351741fa339f6525072c55003b78519087"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=1:3",
+        "parametric_success=variant:1 x:0x1.b488700000000p-3 y:0x0.0000000000000p+0 len:0x1.60000000001dfp-1 null:0"
+      ],
+      "log_sha256": "61041346a18c0575317b87c81e8cebed9262c6e668bdbadc3e061cf2dd80258c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=2:3",
+        "parametric_success=variant:2 x:0x1.0000000000000p+0 y:0x1.413dab0000000p-2 len:0x1.4000000000140p-2 null:0"
+      ],
+      "log_sha256": "c751f1dd992aa7f24b4a9dbb65d59eff3e7fc3da562f0c564a47e1cd4d2f5450"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-3",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=3:3",
+        "parametric_success=variant:3 x:0x1.0000000000000p+0 y:0x1.b488700000000p-3 len:0x1.60000000001dfp-1 null:0"
+      ],
+      "log_sha256": "54012cfc372a6439f00d689a223a5e5f84047fb9e39e1f7a3b5b784c94960707"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-4",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=4:3",
+        "parametric_success=variant:4 x:0x1.92dde40000000p-1 y:0x1.0000000000000p+0 len:0x1.60000000001dfp-1 null:0"
+      ],
+      "log_sha256": "c9fdbe16b99c63e241cfff6f220d4a3805f369194b8c66eb4fea47643ee39ef9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-5",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=5:3",
+        "parametric_success=variant:5 x:0x1.5f612a8000000p-1 y:0x1.0000000000000p+0 len:0x1.4000000000140p-2 null:0"
+      ],
+      "log_sha256": "e78f64796c740caaa85f4a2cd9d35063c83ded49a1303e01fadd3219f62615c9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-6",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=6:3",
+        "parametric_success=variant:6 x:0x0.0000000000000p+0 y:0x1.92dde40000000p-1 len:0x1.60000000001dfp-1 null:0"
+      ],
+      "log_sha256": "7fdd5b6744e2a5a7d503565a93f87cbd6d44e9f612accbec9f791e098d6bb0a9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-7",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=7:3",
+        "parametric_success=variant:7 x:0x0.0000000000000p+0 y:0x1.5f612a8000000p-1 len:0x1.4000000000140p-2 null:0"
+      ],
+      "log_sha256": "6efded07ef644982d54e4f68ef6f3403cb5bc6a8b846d46171c0aabbd0960779"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-8",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=8:3",
+        "parametric_success=variant:8 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0"
+      ],
+      "log_sha256": "b0eb22cbb68eddc6d4d9c0a73c39db9d75d54a9231d27f8b278e0b278409cade"
+    },
+    {
+      "instrument": "crt",
+      "mode": "parametric-failure-9",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "parametric_measured=9:3",
+        "parametric_success=variant:9 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0"
+      ],
+      "log_sha256": "689c48080e8b7dec6e06036bcdd5bd5d55a0092371932ee2f5c34495bb056e1d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "curve-allocation-observation",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "curve_allocation_failure_coverage=unmeasured",
+        "curve_allocation_observation=arc:0",
+        "curve_allocation_observation=midpoint:0",
+        "curve_allocation_observation=point-gradient:0"
+      ],
+      "log_sha256": "97f59893e400b4a036298930684abb12dd20ffe1d3cf0453dcf45b0570ba73fa"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "4e4d9526bd3cd08ba2f1868cb20496b1e93b6a741743ffc4e28f968c5485cfa0"
+    },
+    {
+      "instrument": "asan",
+      "mode": "shared-delete",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "0dc4cae84f8f971476efca5dd3da26f42bb7f140a0eda5ed0141f56cd571b68a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "expected_diagnostic": "retained-blocks",
+      "passed": true,
+      "retained_blocks": 3,
+      "retained_bytes": 112,
+      "observations": [],
+      "log_sha256": "0e4deca70101b16e9688f6384f2a9b8cd501a7df4d0907059534b8d02c20d377"
+    }
+  ]
+}

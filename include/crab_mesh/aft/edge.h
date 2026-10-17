@@ -112,6 +112,8 @@ public:
    void setCurva(CurveAdaptiveParametric*, bool reversed = false);
    void setLen(double len);
    double getLen();
+   /// Allocation failure preserves the owned midpoint, normalized length and endpoint state.
+   /// Successful replacement invalidates old midpoint observers; curve scratch stays mutable.
    void makeParamMid();
 
    string getText() override;
