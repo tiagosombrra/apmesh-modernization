@@ -3,33 +3,40 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stages 0-2 are closed for measured scope; stage 3 slice 7
-(#26, PR #27) is qualified.
-Head `4781226726bd36d7ff64afb273ed53c37630b6f3` integrated through PR #27 as main
-`61dc86ecaeede57ec838a5bb754f237b2013085a`, preserving complete tree
-`ac04e95600a403e12952fb68f84a5e6c5a8abaa6` (889 blobs). Exact-head and
-implementation-main complete campaigns pass: CTest 17/17, zero skips, 74 Python
-controls, UV 81/81, node 7/7, six-unit lint, range formatting, inventory and
-strict repeated Eistute/Book regression. All nine states, acceptance/rejection,
-measured incidences, 189 CSV fields and 1,168/4,256 accepted triangles remain
-exact. The original fails ten replacement sweeps; all 30 measured denials now
-preserve cache/caller state and permit successful retry. Original/repaired
-normal traces and successful allocation counts match.
+Current status: stages 0-2 are closed for measured scope; stage 3 slice 8
+(#29, PR #30) is qualified.
+Head `2c7edff9070810ea8e27574e4449aeebf369824e` integrated through PR #30 as main
+`587c91923b48d7f55414df720d29bcb1d2dacc11`, preserving complete tree
+`914030fb831c060cfe980c912b3aa5eec0ecb776` (942 blobs). Full exact-head and
+implementation-main campaigns pass: CTest 18/18, zero skips, 74 Python controls,
+curve 19/19, UV 81/81, node 7/7, two-unit lint, range/probe formatting, inventory
+and strict repeated Eistute/Book regression. All nine attempted states, measured
+shared incidences, acceptance/rejection, 189 CSV fields and 1,168/4,256 final
+accepted triangles remain exact.
 
-The midpoint and normalized length prepare locally before commit. Old-cache
-destruction is deliberately delayed; old/new caches coexist briefly, without
-an address-reuse or peak-memory promise. Arithmetic, oriented intervals,
-integration/bisection tolerances/stopping and null/fallback policies remain.
-Curve evaluation scratch stays mutable. Three direct numerical operation
-scopes observe zero allocations, explicitly leaving their internal allocation-
-failure coverage unmeasured. This is an exceptional-exit defect repair, not a
-scientific change. See evidence/STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md and ADR-0008.
+The original partially overwrites live values in both populated-growth setter
+cases at denied ordinal 7. Each setter now swaps its prepared input, preserving
+live values/nodes and lvalue caller inputs on failure. Fourteen setter/copy
+sweeps deny 76 calibrated allocations with preserved state and successful retry. Original/repaired normal ordered traces match. Successful
+allocation counts and node reuse deliberately change: the second copy is removed
+and old nodes are destroyed after swap. Borrowed points/patches remain external
+owners' responsibility; old element observers are invalidated on success.
 
-Full stage 3 remains open with seven qualified slices. Next characterize other
-curve mutation/constructor/setter failures, then shared sample ownership,
-initialization and rollback. General observers, other helper/template/tree/mate
-paths, failed-tree observer consumption/retry and full-process/parallel/LSan/
-UBSan qualification remain open. Stages 0-2 stay closed; stages 4-11 stay pending.
+This exceptional-exit defect repair changes no scientific expression, ordering,
+input, tolerance or adaptation/acceptance/stopping policy. Three explicit local
+override annotations unblock unchanged lint rules; failed setup and lint logs
+remain retained. C07/ADR-0009 limit the two independent transactions; they do
+not form a joint point/parameter update. See evidence/STAGE3_CURVE_COLLECTIONS_CLOSURE.md.
+
+Full stage 3 remains open with eight qualified slices. Next characterize the
+remaining curve constructor/mutation contracts, including the pointer-taking
+parametric constructor's omitted parameter sequence, before shared sample
+ownership, initialization and rollback. Current constructor controls qualify
+unwind, borrowed collections and selected initialized scalar/coefficient state;
+full value-copy semantics are not claimed. General observers, joint updates,
+other helpers/templates/tree/mate paths, failed-tree observer consumption/retry
+and full-process/parallel/LSan/UBSan qualification remain open. Stages 0-2 stay
+closed; stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
 
 Earlier delivery histories and scope limits remain in PROJECT_STATE.md,
 WORKLOG.md and the unchanged evidence records. Architecture: see
@@ -114,31 +121,3 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
-
-## Active stage 3 slice 8 (#29): curve collection transactions
-
-The original SetPoints and UpdateParameters partially overwrite populated live
-lists when growth allocation fails (ordinal 7 in both measured fixtures).
-The other 17 original instrument cases behave as expected, including deliberate
-invalid controls. Each setter now swaps its already prepared by-value input.
-Allocation failure preserves live values/nodes and caller lvalue inputs;
-successful replacement invalidates old list-element observers. Borrowed objects
-remain caller-owned. Redundant copy allocations and successful node reuse
-intentionally change; old list nodes are destroyed after swap.
-
-Candidate CTest 18/18, zero skips, 74 Python controls, curve 19/19, previous UV
-81/81 and node 7/7 pass. Fourteen independently calibrated sweeps deny all 76
-measured ordinals; normal ordered value/pointer traces match the original.
-Two-unit selected lint, formatting, inventory and strict repeated Eistute/Book
-entry regression pass, preserving all nine states, measured incidences,
-acceptance/rejection, 189 CSV fields and 1,168/4,256 accepted triangles.
-Exact published-head and implementation-main campaigns remain required.
-
-This is an exceptional-exit defect repair. The two setters are independent,
-not a joint point/parameter transaction. Pointer-taking copy controls qualify
-unwind, observers and selected initialized scalar/coefficient state; the current
-parametric constructor omits the parameter sequence, which remains a separate
-semantic finding. Derived constructors, other mutation, shared sample ownership,
-initialization/rollback, general observers and full-process/parallel/LSan/UBSan
-remain open. Full stage 3 remains open. See evidence/STAGE3_CURVE_COLLECTIONS.md
-and ADR-0009. Doxygen undocumented-API debt remains stage 8.

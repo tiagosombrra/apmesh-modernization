@@ -56,11 +56,11 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with seven qualified ownership/lifecycle slices.
-The latest preserves midpoint/length cache state across 30 injected replacement
-allocation failures. CTest 17/17, UV 81/81, node 7/7 and strict Eistute/Book
-regressions pass before and after integration. See
-[the latest closure](docs/evidence/STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md).
+Stage 3 is in progress with eight qualified ownership/lifecycle slices.
+The latest preserves live curve collection values/nodes across 76 injected
+allocation failures. CTest 18/18, curve 19/19, UV 81/81, node 7/7 and strict
+Eistute/Book regressions pass before and after integration. See
+[the latest closure](docs/evidence/STAGE3_CURVE_COLLECTIONS_CLOSURE.md).
 Full-application memory and parallel qualification remain open.
 
 ## Repository policy

@@ -15,45 +15,22 @@ failures, hashes and limitations stay in the linked evidence records.
 | 2026-10-17, stage 3 slice 5 | #20, PR #21; head 4f0c9bed6d1d1a52b6cdab88a26a9323040614f9, main 83eefa8c6006cc39dcdc35d463b8611d6f038538; evidence/STAGE3_UV_TREE_CLOSURE.md | Root extents and midpoint construction guarded until adoption; 818-blob tree; head/main CTest 15/15, UV 56/56, node 7/7, 3,470 allocation failures and exact tree/scientific traces |
 | 2026-10-17, stage 3 slice 6 | #23, PR #24; head da684dd6a2a1fefe709fc8906cce837da4b2ea24, main 1d7d5992d90f09d8cf7747d9023d9b39ef3d089b; evidence/STAGE3_ANGLE_HELPER_CLOSURE.md | Angle-helper borrowed endpoints survive allocation failure; head/main CTest 16/16, UV 68/68, node 7/7, 252 allocation denials, unchanged angle traces/counts and exact article regression |
 | 2026-10-17, stage 3 slice 7 | #26, PR #27; head 4781226726bd36d7ff64afb273ed53c37630b6f3, main 61dc86ecaeede57ec838a5bb754f237b2013085a; evidence/STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md | Transactional midpoint/length replacement; head/main CTest 17/17, UV 81/81, node 7/7, 30 allocation denials, exact normal traces/counts and article regression; direct curve allocation failure remains unmeasured |
+| 2026-10-17, stage 3 slice 8 | #29, PR #30; head 2c7edff9070810ea8e27574e4449aeebf369824e, main 587c91923b48d7f55414df720d29bcb1d2dacc11; evidence/STAGE3_CURVE_COLLECTIONS_CLOSURE.md | Per-list prepared-input commit; head/main CTest 18/18, curve 19/19, UV 81/81, node 7/7, 76 allocation denials, exact ordered traces/article regression; paired update and full value-copy semantics remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with seven qualified
+Current status: stages 0-2 closed; stage 3 in progress with eight qualified
 slices; stages 4-11 pending.
 
-Full stage 3 remains open with seven qualified slices. Next characterize other
-curve mutation/constructor/setter failures, then shared sample ownership,
-initialization and rollback. General observers, other helper/template/tree/mate
-paths, failed-tree observer consumption/retry and full-process/parallel/LSan/
-UBSan qualification remain open. Stages 0-2 stay closed; stages 4-11 stay pending.
+Full stage 3 remains open with eight qualified slices. Next characterize the
+remaining curve constructor/mutation contracts, including the pointer-taking
+parametric constructor's omitted parameter sequence, before shared sample
+ownership, initialization and rollback. Current constructor controls qualify
+unwind, borrowed collections and selected initialized scalar/coefficient state;
+full value-copy semantics are not claimed. General observers, joint updates,
+other helpers/templates/tree/mate paths, failed-tree observer consumption/retry
+and full-process/parallel/LSan/UBSan qualification remain open. Stages 0-2 stay
+closed; stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
 
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 7 closure](evidence/STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md).
-
-## Active stage 3 slice 8 (#29): curve collection transactions
-
-The original SetPoints and UpdateParameters partially overwrite populated live
-lists when growth allocation fails (ordinal 7 in both measured fixtures).
-The other 17 original instrument cases behave as expected, including deliberate
-invalid controls. Each setter now swaps its already prepared by-value input.
-Allocation failure preserves live values/nodes and caller lvalue inputs;
-successful replacement invalidates old list-element observers. Borrowed objects
-remain caller-owned. Redundant copy allocations and successful node reuse
-intentionally change; old list nodes are destroyed after swap.
-
-Candidate CTest 18/18, zero skips, 74 Python controls, curve 19/19, previous UV
-81/81 and node 7/7 pass. Fourteen independently calibrated sweeps deny all 76
-measured ordinals; normal ordered value/pointer traces match the original.
-Two-unit selected lint, formatting, inventory and strict repeated Eistute/Book
-entry regression pass, preserving all nine states, measured incidences,
-acceptance/rejection, 189 CSV fields and 1,168/4,256 accepted triangles.
-Exact published-head and implementation-main campaigns remain required.
-
-This is an exceptional-exit defect repair. The two setters are independent,
-not a joint point/parameter transaction. Pointer-taking copy controls qualify
-unwind, observers and selected initialized scalar/coefficient state; the current
-parametric constructor omits the parameter sequence, which remains a separate
-semantic finding. Derived constructors, other mutation, shared sample ownership,
-initialization/rollback, general observers and full-process/parallel/LSan/UBSan
-remain open. Full stage 3 remains open. See evidence/STAGE3_CURVE_COLLECTIONS.md
-and ADR-0009. Doxygen undocumented-API debt remains stage 8.
+[slice 8 closure](evidence/STAGE3_CURVE_COLLECTIONS_CLOSURE.md).
