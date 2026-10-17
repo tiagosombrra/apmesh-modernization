@@ -17,7 +17,8 @@ def qualify(asan, crt, runtime, output):
     environment["ASAN_OPTIONS"] = "halt_on_error=1:abort_on_error=0:detect_leaks=0"
     valid = ["normal", "partial", "failure", "exception", "topology-failure", "pending-tree",
              "transfer-contract", "transfer-order", "midpoint-alias", "contracts",
-             "primitive-contracts", "face-alias-cache"]
+             "primitive-contracts", "face-alias-cache", "registration-contracts",
+             "unowned-edge-query", "unowned-face-query"]
     cases = [(kind, executable, mode, None) for kind, executable in [("asan", asan), ("crt", crt)]
              for mode in valid]
     cases += [("crt", crt, "teardown-allocation", None),
@@ -28,13 +29,19 @@ def qualify(asan, crt, runtime, output):
               ("crt", crt, "front-construction-failure", None),
               ("crt", crt, "edge-cache-failure", None),
               ("crt", crt, "face-cache-failure", None),
+              *[("crt", crt, mode, None) for mode in (
+                  "boundary-first-failure", "boundary-append-failure", "boundary-close-failure",
+                  "face-quality-failure", "outer-vertex-failure", "outer-edge-failure",
+                  "template-one-failure", "template-four-failure")],
               ("asan", asan, "use-after-free", "heap-use-after-free"),
               ("asan", asan, "shared-delete", "heap-use-after-free"),
               ("crt", crt, "leak", "retained-blocks")]
     results = []
     for kind, executable, mode, diagnostic in cases:
+        timeout = 180 if mode in {"outer-vertex-failure", "outer-edge-failure",
+                                  "template-one-failure", "template-four-failure"} else 30
         process = subprocess.run([str(executable.resolve()), mode], env=environment,
-                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=30)
+                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout)
         data = process.stdout
         (output / f"{kind}-{mode}.log").write_bytes(data)
         text = data.decode("utf-8", errors="replace")
@@ -61,6 +68,14 @@ def qualify(asan, crt, runtime, output):
                     int(injected) == int(total) > 0 for injected, total in sites)
                 if "cache" in mode:
                     passed = passed and "unchanged=1" in text
+            if mode in {"boundary-first-failure", "boundary-append-failure", "boundary-close-failure",
+                        "face-quality-failure", "outer-vertex-failure", "outer-edge-failure",
+                        "template-one-failure", "template-four-failure"}:
+                sites = re.findall(r"registration_failure_sites=[\w-]+:(\d+)/(\d+)", text)
+                passed = passed and len(sites) == 1 and all(
+                    int(injected) == int(total) > 0 for injected, total in sites)
+                if mode.startswith("boundary-"):
+                    passed = passed and "unchanged=1" in text
         result = {"instrument": kind, "mode": mode, "exit_code": process.returncode,
                   "expected_diagnostic": diagnostic, "passed": passed,
                   "retained_blocks": int(retained[1]) if retained else None,
@@ -68,7 +83,7 @@ def qualify(asan, crt, runtime, output):
                   "observations": sorted({line for line in text.splitlines() if line.startswith(
                       ("generated_faces=", "template_type_counts=", "templates_before_failure=",
                        "transfer_allocation_failures=", "allocation_hook_control=", "teardown_allocation_attempts=",
-                       "allocation_failure_sites="))}),
+                       "allocation_failure_sites=", "registration_failure_sites=", "registration_measured="))}),
                   "log_sha256": hashlib.sha256(data).hexdigest()}
         results.append(result)
         print(json.dumps({key: value for key, value in result.items() if key != "log_sha256"}), flush=True)

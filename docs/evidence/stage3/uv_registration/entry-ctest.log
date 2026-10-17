@@ -1,0 +1,41 @@
+Test project C:/Users/tiago/.codex/.chatgpt-projects/g-p-6a78da0b01848191b90be3c9c5708c4f/work/apmesh-modernization/build/local-serial
+      Start  1: application.uv_lifetime
+ 1/12 Test  #1: application.uv_lifetime ...................   Passed    0.05 sec
+      Start  2: application.uv_primitive_contracts
+ 2/12 Test  #2: application.uv_primitive_contracts ........   Passed    0.01 sec
+      Start  3: application.node_lifetime
+ 3/12 Test  #3: application.node_lifetime .................   Passed    0.01 sec
+      Start  4: tooling.controls
+ 4/12 Test  #4: tooling.controls ..........................   Passed    2.08 sec
+      Start  5: reference.archived_eistute_artifact
+ 5/12 Test  #5: reference.archived_eistute_artifact .......   Passed    0.07 sec
+      Start  6: application.invalid_inputs
+ 6/12 Test  #6: application.invalid_inputs ................   Passed    0.54 sec
+      Start  7: application.boundary_orientation
+ 7/12 Test  #7: application.boundary_orientation ..........   Passed    9.53 sec
+      Start  8: application.metric_schema
+ 8/12 Test  #8: application.metric_schema .................   Passed    0.22 sec
+      Start  9: application.curve_orientation_arclength
+ 9/12 Test  #9: application.curve_orientation_arclength ...   Passed    0.02 sec
+      Start 10: tooling.tidy_header_scope
+10/12 Test #10: tooling.tidy_header_scope .................   Passed    0.39 sec
+      Start 11: application.smoothing_adjacency_order
+11/12 Test #11: application.smoothing_adjacency_order .....   Passed    0.01 sec
+      Start 12: application.valid_input_grammar
+12/12 Test #12: application.valid_input_grammar ...........   Passed    0.02 sec
+
+100% tests passed out of 12
+
+Label Time Summary:
+application           =  10.41 sec*proc (9 tests)
+archived-artifact     =   0.07 sec*proc (1 test)
+boundary-incidence    =   9.54 sec*proc (2 tests)
+lifecycle             =   0.08 sec*proc (3 tests)
+metric-schema         =   0.22 sec*proc (1 test)
+negative-input        =   0.54 sec*proc (1 test)
+numerical-control     =   0.01 sec*proc (1 test)
+positive-input        =   0.02 sec*proc (1 test)
+required-gate         =  10.23 sec*proc (7 tests)
+tooling               =   2.47 sec*proc (2 tests)
+
+Total Test time (real) =  12.98 sec

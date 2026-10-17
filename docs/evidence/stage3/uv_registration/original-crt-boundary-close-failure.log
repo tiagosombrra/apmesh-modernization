@@ -1,0 +1,66 @@
+UV lifetime diagnostic
+Client hook allocation failure.
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+registration_failure_sites=boundary-2:10/10 unchanged=0
+CRT retained_blocks=21 retained_bytes=1032
+Dumping objects ->
+{1656} normal block at 0x000001B4A4CF7D70, 40 bytes long.
+ Data: <p}      p}      > 70 7D CF A4 B4 01 00 00 70 7D CF A4 B4 01 00 00 
+{1655} normal block at 0x000001B4A4CF5980, 16 bytes long.
+ Data: < a              > 10 61 CF A4 B4 01 00 00 00 00 00 00 00 00 00 00 
+{1654} normal block at 0x000001B4A4CF60F0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1653} normal block at 0x000001B4A4CF7D00, 40 bytes long.
+ Data: < }       }      > 00 7D CF A4 B4 01 00 00 00 7D CF A4 B4 01 00 00 
+{1652} normal block at 0x000001B4A4CF5480, 16 bytes long.
+ Data: < j              > 90 6A CF A4 B4 01 00 00 00 00 00 00 00 00 00 00 
+{1651} normal block at 0x000001B4A4CF6A70, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1650} normal block at 0x000001B4A4CF5D60, 120 bytes long.
+ Data: <  $x            > E8 E8 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1552} normal block at 0x000001B4A4CF70C0, 40 bytes long.
+ Data: < p       p      > C0 70 CF A4 B4 01 00 00 C0 70 CF A4 B4 01 00 00 
+{1551} normal block at 0x000001B4A4CF5C50, 16 bytes long.
+ Data: < b              > 90 62 CF A4 B4 01 00 00 00 00 00 00 00 00 00 00 
+{1550} normal block at 0x000001B4A4CF6270, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1549} normal block at 0x000001B4A4CF7AD0, 40 bytes long.
+ Data: < z       z      > D0 7A CF A4 B4 01 00 00 D0 7A CF A4 B4 01 00 00 
+{1548} normal block at 0x000001B4A4CF5660, 16 bytes long.
+ Data: < g              > 10 67 CF A4 B4 01 00 00 00 00 00 00 00 00 00 00 
+{1547} normal block at 0x000001B4A4CF66F0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1546} normal block at 0x000001B4A4CDF000, 120 bytes long.
+ Data: <  $x            > E8 E8 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1450} normal block at 0x000001B4A4CF7600, 40 bytes long.
+ Data: < v       v      > 00 76 CF A4 B4 01 00 00 00 76 CF A4 B4 01 00 00 
+{1449} normal block at 0x000001B4A4CF5110, 16 bytes long.
+ Data: < i              > 90 69 CF A4 B4 01 00 00 00 00 00 00 00 00 00 00 
+{1448} normal block at 0x000001B4A4CF6970, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1447} normal block at 0x000001B4A4CF6F70, 40 bytes long.
+ Data: <po      po      > 70 6F CF A4 B4 01 00 00 70 6F CF A4 B4 01 00 00 
+{1446} normal block at 0x000001B4A4CF50C0, 16 bytes long.
+ Data: < h              > 10 68 CF A4 B4 01 00 00 00 00 00 00 00 00 00 00 
+{1445} normal block at 0x000001B4A4CF67F0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1444} normal block at 0x000001B4A4CDE7B0, 120 bytes long.
+ Data: <  $x            > E8 E8 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+Object dump complete.

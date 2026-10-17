@@ -4,6 +4,9 @@
 #include <cfloat>
 #include <cmath>
 #include <vector>
+#include <stdexcept>
+
+#include "pending_template.h"
 
 extern double QUADTREE_FACE_QUALITY_THRESHOLD;
 extern double QUADTREE_LOW_QUALITY_H_FACTOR;
@@ -86,18 +89,18 @@ QuadtreeCell::QuadtreeCell(long int id,
   setParent(parent);
   setLevel(level);
 
-  children[QUAD_BOTTOM_LEFT] = children[QUAD_BOTTOM_RIGHT] =
-      children[QUAD_TOP_RIGHT] = children[QUAD_TOP_LEFT] = NULL;
+  children[QUAD_BOTTOM_LEFT] = children[QUAD_BOTTOM_RIGHT] = children[QUAD_TOP_RIGHT] =
+      children[QUAD_TOP_LEFT] = nullptr;
 
-  mids = NULL;
+  mids = nullptr;
   // #if USE_OPENGL
   //     setColor(tree->getR(), tree->getG(), tree->getB());
   //     highlighted = highlightedAsNeighbor = false;
   // #endif //#if USE_OPENGL
 
   for (int i = 0; i < 8; i++) {
-    v[i] = NULL;
-    e[i] = NULL;
+    v[i] = nullptr;
+    e[i] = nullptr;
   }
 }
 
@@ -128,7 +131,7 @@ QuadtreeCell::~QuadtreeCell() {
 }
 
 Vertex **QuadtreeCell::makeMids() {
-  Vertex **m = NULL;
+  Vertex** m = nullptr;
 
   if (min && max) {
     /*
@@ -335,14 +338,14 @@ Edge *QuadtreeCell::makeE(int i) {
 Edge *QuadtreeCell::makeE(int i, int j) { return makeE(v[i], v[j]); }
 
 Edge *QuadtreeCell::makeE(Vertex *v1, Vertex *v2) {
-  Edge *e = new Edge(v1, v2, tree->edgeId());
+  apmesh::memory::PendingEdge e(new Edge(v1, v2, tree->edgeId()));
 
-  v1->addAdjacentEdge(e);
-  v2->addAdjacentEdge(e);
+  v1->addAdjacentEdge(e.get());
+  v2->addAdjacentEdge(e.get());
 
   e->setFree(false);
 
-  return e;
+  return e.release();
 }
 
 void QuadtreeCell::makeMeshType1() {
@@ -412,9 +415,10 @@ void QuadtreeCell::makeMeshType1() {
     const int numFaces = 4;
     const int numVertices = 1;
 
-    Edge** edges = new Edge*[numEdges];
-    Face** faces = new Face*[numFaces];
-    Vertex** vertices = new Vertex*[numVertices];
+    apmesh::memory::TemplateStorage pending(numEdges, numFaces, numVertices);
+    Edge** edges = pending.edges();
+    Face** faces = pending.faces();
+    Vertex** vertices = pending.vertices();
 
     vertices[0] = new Vertex(best_x, best_y, tree->vertexId());
 
@@ -430,30 +434,31 @@ void QuadtreeCell::makeMeshType1() {
 
     for (int i = 0; i < numEdges; i++) {
       tree->add(edges[i]);
+      pending.AdoptedEdge();
       edges[i]->setCell(this);
     }
 
     for (int i = 0; i < numFaces; i++) {
       tree->add(faces[i]);
+      pending.AdoptedFace();
     }
 
     for (int i = 0; i < numVertices; i++) {
       tree->add(vertices[i]);
+      pending.AdoptedVertex();
     }
 
     tree->RecordTemplateChoice(1, TemplateQualityScoreFromFaces(faces, numFaces));
 
-    delete[] edges;
-    delete[] faces;
-    delete[] vertices;
     return;
   }
 
   int numEdges = 1;
   int numFaces = 2;
 
-  Edge **edges = new Edge *[numEdges];
-  Face **faces = new Face *[numFaces];
+  apmesh::memory::TemplateStorage pending(numEdges, numFaces);
+  Edge** edges = pending.edges();
+  Face** faces = pending.faces();
 
   edges[0] = makeE(2, 6);
 
@@ -462,18 +467,17 @@ void QuadtreeCell::makeMeshType1() {
 
   for (int i = 0; i < numEdges; i++) {
     tree->add(edges[i]);
+    pending.AdoptedEdge();
 
     edges[i]->setCell(this);
   }
 
   for (int i = 0; i < numFaces; i++) {
     tree->add(faces[i]);
+    pending.AdoptedFace();
   }
 
   tree->RecordTemplateChoice(1, TemplateQualityScoreFromFaces(faces, numFaces));
-
-  delete[] edges;
-  delete[] faces;
 }
 
 void QuadtreeCell::makeMeshType2(int c) {
@@ -498,8 +502,9 @@ void QuadtreeCell::makeMeshType2(int c) {
   int numEdges = 2;
   int numFaces = 3;
 
-  Edge **edges = new Edge *[numEdges];
-  Face **faces = new Face *[numFaces];
+  apmesh::memory::TemplateStorage pending(numEdges, numFaces);
+  Edge** edges = pending.edges();
+  Face** faces = pending.faces();
 
   int base = 0;
 
@@ -530,18 +535,17 @@ void QuadtreeCell::makeMeshType2(int c) {
 
   for (int i = 0; i < numEdges; i++) {
     tree->add(edges[i]);
+    pending.AdoptedEdge();
 
     edges[i]->setCell(this);
   }
 
   for (int i = 0; i < numFaces; i++) {
     tree->add(faces[i]);
+    pending.AdoptedFace();
   }
 
   tree->RecordTemplateChoice(2, TemplateQualityScoreFromFaces(faces, numFaces));
-
-  delete[] edges;
-  delete[] faces;
 }
 
 void QuadtreeCell::makeMeshType3(int c) {
@@ -569,9 +573,10 @@ void QuadtreeCell::makeMeshType3(int c) {
   int numFaces = 6;
   int numVertices = 1;
 
-  Edge **edges = new Edge *[numEdges];
-  Face **faces = new Face *[numFaces];
-  Vertex **vertices = new Vertex *[numVertices];
+  apmesh::memory::TemplateStorage pending(numEdges, numFaces, numVertices);
+  Edge** edges = pending.edges();
+  Face** faces = pending.faces();
+  Vertex** vertices = pending.vertices();
 
   int base = 0;
 
@@ -647,23 +652,22 @@ void QuadtreeCell::makeMeshType3(int c) {
 
   for (int i = 0; i < numEdges; i++) {
     tree->add(edges[i]);
+    pending.AdoptedEdge();
 
     edges[i]->setCell(this);
   }
 
   for (int i = 0; i < numFaces; i++) {
     tree->add(faces[i]);
+    pending.AdoptedFace();
   }
 
   for (int i = 0; i < numVertices; i++) {
     tree->add(vertices[i]);
+    pending.AdoptedVertex();
   }
 
   tree->RecordTemplateChoice(3, TemplateQualityScoreFromFaces(faces, numFaces));
-
-  delete[] edges;
-  delete[] faces;
-  delete[] vertices;
 }
 
 void QuadtreeCell::makeMeshType4(int c) {
@@ -689,9 +693,10 @@ void QuadtreeCell::makeMeshType4(int c) {
   int numFaces = 6;
   int numVertices = 1;
 
-  Edge **edges = new Edge *[numEdges];
-  Face **faces = new Face *[numFaces];
-  Vertex **vertices = new Vertex *[numVertices];
+  apmesh::memory::TemplateStorage pending(numEdges, numFaces, numVertices);
+  Edge** edges = pending.edges();
+  Face** faces = pending.faces();
+  Vertex** vertices = pending.vertices();
 
   int base = 0;
 
@@ -782,23 +787,22 @@ void QuadtreeCell::makeMeshType4(int c) {
 
   for (int i = 0; i < numEdges; i++) {
     tree->add(edges[i]);
+    pending.AdoptedEdge();
 
     edges[i]->setCell(this);
   }
 
   for (int i = 0; i < numFaces; i++) {
     tree->add(faces[i]);
+    pending.AdoptedFace();
   }
 
   for (int i = 0; i < numVertices; i++) {
     tree->add(vertices[i]);
+    pending.AdoptedVertex();
   }
 
   tree->RecordTemplateChoice(4, TemplateQualityScoreFromFaces(faces, numFaces));
-
-  delete[] edges;
-  delete[] faces;
-  delete[] vertices;
 }
 
 void QuadtreeCell::makeMeshType5(int c) {
@@ -823,8 +827,9 @@ void QuadtreeCell::makeMeshType5(int c) {
   int numEdges = 4;
   int numFaces = 5;
 
-  Edge **edges = new Edge *[numEdges];
-  Face **faces = new Face *[numFaces];
+  apmesh::memory::TemplateStorage pending(numEdges, numFaces);
+  Edge** edges = pending.edges();
+  Face** faces = pending.faces();
 
   int base = 0;
 
@@ -861,18 +866,17 @@ void QuadtreeCell::makeMeshType5(int c) {
 
   for (int i = 0; i < numEdges; i++) {
     tree->add(edges[i]);
+    pending.AdoptedEdge();
 
     edges[i]->setCell(this);
   }
 
   for (int i = 0; i < numFaces; i++) {
     tree->add(faces[i]);
+    pending.AdoptedFace();
   }
 
   tree->RecordTemplateChoice(5, TemplateQualityScoreFromFaces(faces, numFaces));
-
-  delete[] edges;
-  delete[] faces;
 }
 
 void QuadtreeCell::makeMeshType6() {
@@ -897,8 +901,9 @@ void QuadtreeCell::makeMeshType6() {
   int numEdges = 5;
   int numFaces = 6;
 
-  Edge **edges = new Edge *[numEdges];
-  Face **faces = new Face *[numFaces];
+  apmesh::memory::TemplateStorage pending(numEdges, numFaces);
+  Edge** edges = pending.edges();
+  Face** faces = pending.faces();
 
   const double q13 = TemplateTriangleQuality(v[1], v[3], v[7]) +
                      TemplateTriangleQuality(v[3], v[5], v[7]);
@@ -935,18 +940,17 @@ void QuadtreeCell::makeMeshType6() {
 
   for (int i = 0; i < numEdges; i++) {
     tree->add(edges[i]);
+    pending.AdoptedEdge();
 
     edges[i]->setCell(this);
   }
 
   for (int i = 0; i < numFaces; i++) {
     tree->add(faces[i]);
+    pending.AdoptedFace();
   }
 
   tree->RecordTemplateChoice(6, TemplateQualityScoreFromFaces(faces, numFaces));
-
-  delete[] edges;
-  delete[] faces;
 }
 
 void QuadtreeCell::setQuadtree(Quadtree *tree) { this->tree = tree; }
@@ -968,7 +972,7 @@ void QuadtreeCell::setChild(int position, QuadtreeCell *child) {
 }
 
 QuadtreeCell *QuadtreeCell::getChild(int position) {
-  return ((position >= 0) && (position <= 3)) ? children[position] : NULL;
+  return ((position >= 0) && (position <= 3)) ? children[position] : nullptr;
 }
 
 void QuadtreeCell::setBox(Vertex *min, Vertex *max) {
@@ -1050,6 +1054,8 @@ VertexList QuadtreeCell::getVertices() {
 EdgeList QuadtreeCell::getEdges() { return edges; }
 
 bool QuadtreeCell::shouldSubdivide(Edge *e) {
+  if (!tree)
+    throw std::logic_error("UV subdivision requires an attached quadtree");
   if (tree && tree->getMaxLevelCap() >= 0 &&
       static_cast<long int>(level) >= tree->getMaxLevelCap()) {
     return false;
@@ -1058,6 +1064,8 @@ bool QuadtreeCell::shouldSubdivide(Edge *e) {
 }
 
 bool QuadtreeCell::shouldSubdivide(Face *f) {
+  if (!tree)
+    throw std::logic_error("UV subdivision requires an attached quadtree");
   if (tree && tree->getMaxLevelCap() >= 0 &&
       static_cast<long int>(level) >= tree->getMaxLevelCap()) {
     return false;
@@ -1113,7 +1121,7 @@ void QuadtreeCell::clearEdges() { edges.clear(); }
 
 QuadtreeCell *QuadtreeCell::findCell(Edge *e) {
   if (out(e->getMid())) {
-    return NULL;
+    return nullptr;
   }
 
   if (subdivided()) {
@@ -1139,7 +1147,7 @@ QuadtreeCell *QuadtreeCell::findCell(Edge *e) {
 
 QuadtreeCell *QuadtreeCell::findCell(Face *f) {
   if (out(f->getMid())) {
-    return NULL;
+    return nullptr;
   }
 
   if (subdivided()) {
@@ -1435,7 +1443,9 @@ void QuadtreeCell::makeOuterVertices() {
   }
 
   if (!v[0]) {
-    v[0] = new Vertex(min->getX(), min->getY(), tree->vertexId());
+    auto pending_vertex = std::make_unique<Vertex>(min->getX(), min->getY(), tree->vertexId());
+    tree->add(pending_vertex.get());
+    v[0] = pending_vertex.release();
 
     if ((neighbors[QUAD_L].size() == 2) ||
         (neighbors[QUAD_L].back()->level == level) ||
@@ -1457,22 +1467,22 @@ void QuadtreeCell::makeOuterVertices() {
         neighbors[QUAD_L].back()->neighbors[QUAD_B].back()) {
       neighbors[QUAD_B].front()->neighbors[QUAD_L].front()->v[4] = v[0];
     }
-
-    tree->add(v[0]);
   }
 
   if ((!v[1]) && (neighbors[QUAD_B].size() > 1)) {
-    v[1] = new Vertex(0.5 * (min->getX() + max->getX()), min->getY(),
-                      tree->vertexId());
+    auto pending_vertex =
+        std::make_unique<Vertex>(0.5 * (min->getX() + max->getX()), min->getY(), tree->vertexId());
+    tree->add(pending_vertex.get());
+    v[1] = pending_vertex.release();
 
     neighbors[QUAD_B].front()->v[4] = v[1];
     neighbors[QUAD_B].back()->v[6] = v[1];
-
-    tree->add(v[1]);
   }
 
   if (!v[2]) {
-    v[2] = new Vertex(max->getX(), min->getY(), tree->vertexId());
+    auto pending_vertex = std::make_unique<Vertex>(max->getX(), min->getY(), tree->vertexId());
+    tree->add(pending_vertex.get());
+    v[2] = pending_vertex.release();
 
     if ((neighbors[QUAD_B].size() == 2) ||
         (neighbors[QUAD_B].back()->level == level) ||
@@ -1494,22 +1504,22 @@ void QuadtreeCell::makeOuterVertices() {
         neighbors[QUAD_B].back()->neighbors[QUAD_R].back()) {
       neighbors[QUAD_R].front()->neighbors[QUAD_B].front()->v[6] = v[2];
     }
-
-    tree->add(v[2]);
   }
 
   if ((!v[3]) && (neighbors[QUAD_R].size() > 1)) {
-    v[3] = new Vertex(max->getX(), 0.5 * (min->getY() + max->getY()),
-                      tree->vertexId());
+    auto pending_vertex =
+        std::make_unique<Vertex>(max->getX(), 0.5 * (min->getY() + max->getY()), tree->vertexId());
+    tree->add(pending_vertex.get());
+    v[3] = pending_vertex.release();
 
     neighbors[QUAD_R].front()->v[6] = v[3];
     neighbors[QUAD_R].back()->v[0] = v[3];
-
-    tree->add(v[3]);
   }
 
   if (!v[4]) {
-    v[4] = new Vertex(max->getX(), max->getY(), tree->vertexId());
+    auto pending_vertex = std::make_unique<Vertex>(max->getX(), max->getY(), tree->vertexId());
+    tree->add(pending_vertex.get());
+    v[4] = pending_vertex.release();
 
     if ((neighbors[QUAD_R].size() == 2) ||
         (neighbors[QUAD_R].back()->level == level) ||
@@ -1531,22 +1541,22 @@ void QuadtreeCell::makeOuterVertices() {
         neighbors[QUAD_R].back()->neighbors[QUAD_T].back()) {
       neighbors[QUAD_T].front()->neighbors[QUAD_R].front()->v[0] = v[4];
     }
-
-    tree->add(v[4]);
   }
 
   if ((!v[5]) && (neighbors[QUAD_T].size() > 1)) {
-    v[5] = new Vertex(0.5 * (min->getX() + max->getX()), max->getY(),
-                      tree->vertexId());
+    auto pending_vertex =
+        std::make_unique<Vertex>(0.5 * (min->getX() + max->getX()), max->getY(), tree->vertexId());
+    tree->add(pending_vertex.get());
+    v[5] = pending_vertex.release();
 
     neighbors[QUAD_T].front()->v[0] = v[5];
     neighbors[QUAD_T].back()->v[2] = v[5];
-
-    tree->add(v[5]);
   }
 
   if (!v[6]) {
-    v[6] = new Vertex(min->getX(), max->getY(), tree->vertexId());
+    auto pending_vertex = std::make_unique<Vertex>(min->getX(), max->getY(), tree->vertexId());
+    tree->add(pending_vertex.get());
+    v[6] = pending_vertex.release();
 
     if ((neighbors[QUAD_T].size() == 2) ||
         (neighbors[QUAD_T].back()->level == level) ||
@@ -1568,18 +1578,16 @@ void QuadtreeCell::makeOuterVertices() {
         neighbors[QUAD_T].back()->neighbors[QUAD_L].back()) {
       neighbors[QUAD_L].front()->neighbors[QUAD_T].front()->v[2] = v[6];
     }
-
-    tree->add(v[6]);
   }
 
   if ((!v[7]) && (neighbors[QUAD_L].size() > 1)) {
-    v[7] = new Vertex(min->getX(), 0.5 * (min->getY() + max->getY()),
-                      tree->vertexId());
+    auto pending_vertex =
+        std::make_unique<Vertex>(min->getX(), 0.5 * (min->getY() + max->getY()), tree->vertexId());
+    tree->add(pending_vertex.get());
+    v[7] = pending_vertex.release();
 
     neighbors[QUAD_L].front()->v[2] = v[7];
     neighbors[QUAD_L].back()->v[4] = v[7];
-
-    tree->add(v[7]);
   }
 }
 
@@ -1599,7 +1607,8 @@ void QuadtreeCell::makeOuterEdges() {
   ////cout << "criando arestas" << endl;
 
   if (!e[0]) {
-    e[0] = makeE(0);
+    apmesh::memory::PendingEdge pending_edge(makeE(0));
+    e[0] = pending_edge.get();
 
     if (neighbors[QUAD_B].front()->inBoundary()) {
       tree->addFront(e[0]);
@@ -1614,6 +1623,7 @@ void QuadtreeCell::makeOuterEdges() {
     }
 
     tree->add(e[0]);
+    pending_edge.release();
 
     // if (this->level > neighbors[QUAD_B].front()->level)
     if (this->level < neighbors[QUAD_B].front()->level) {
@@ -1626,7 +1636,8 @@ void QuadtreeCell::makeOuterEdges() {
   ////cout << "aresta 0" << endl;
 
   if ((!e[1]) && (neighbors[QUAD_B].size() == 2)) {
-    e[1] = makeE(1);
+    apmesh::memory::PendingEdge pending_edge(makeE(1));
+    e[1] = pending_edge.get();
 
     if (neighbors[QUAD_B].back()->inBoundary()) {
       tree->addFront(e[1]);
@@ -1635,6 +1646,7 @@ void QuadtreeCell::makeOuterEdges() {
     }
 
     tree->add(e[1]);
+    pending_edge.release();
 
     // e[1]->setCell(this);
     e[1]->setCell(neighbors[QUAD_B].back());
@@ -1643,7 +1655,8 @@ void QuadtreeCell::makeOuterEdges() {
   ////cout << "aresta 1" << endl;
 
   if (!e[2]) {
-    e[2] = makeE(2);
+    apmesh::memory::PendingEdge pending_edge(makeE(2));
+    e[2] = pending_edge.get();
 
     if (neighbors[QUAD_R].front()->inBoundary()) {
       tree->addFront(e[2]);
@@ -1658,6 +1671,7 @@ void QuadtreeCell::makeOuterEdges() {
     }
 
     tree->add(e[2]);
+    pending_edge.release();
 
     // if (this->level > neighbors[QUAD_R].front()->level)
     if (this->level < neighbors[QUAD_R].front()->level) {
@@ -1670,7 +1684,8 @@ void QuadtreeCell::makeOuterEdges() {
   ////cout << "aresta 2" << endl;
 
   if ((!e[3]) && (neighbors[QUAD_R].size() == 2)) {
-    e[3] = makeE(3);
+    apmesh::memory::PendingEdge pending_edge(makeE(3));
+    e[3] = pending_edge.get();
 
     if (neighbors[QUAD_R].back()->inBoundary()) {
       tree->addFront(e[3]);
@@ -1679,6 +1694,7 @@ void QuadtreeCell::makeOuterEdges() {
     }
 
     tree->add(e[3]);
+    pending_edge.release();
 
     // e[3]->setCell(this);
     e[3]->setCell(neighbors[QUAD_R].back());
@@ -1687,7 +1703,8 @@ void QuadtreeCell::makeOuterEdges() {
   ////cout << "aresta 3" << endl;
 
   if (!e[4]) {
-    e[4] = makeE(4);
+    apmesh::memory::PendingEdge pending_edge(makeE(4));
+    e[4] = pending_edge.get();
 
     if (neighbors[QUAD_T].front()->inBoundary()) {
       tree->addFront(e[4]);
@@ -1702,6 +1719,7 @@ void QuadtreeCell::makeOuterEdges() {
     }
 
     tree->add(e[4]);
+    pending_edge.release();
 
     // if (this->level > neighbors[QUAD_T].front()->level)
     if (this->level < neighbors[QUAD_T].front()->level) {
@@ -1714,7 +1732,8 @@ void QuadtreeCell::makeOuterEdges() {
   ////cout << "aresta 4" << endl;
 
   if ((!e[5]) && (neighbors[QUAD_T].size() == 2)) {
-    e[5] = makeE(5);
+    apmesh::memory::PendingEdge pending_edge(makeE(5));
+    e[5] = pending_edge.get();
 
     if (neighbors[QUAD_T].back()->inBoundary()) {
       tree->addFront(e[5]);
@@ -1723,6 +1742,7 @@ void QuadtreeCell::makeOuterEdges() {
     }
 
     tree->add(e[5]);
+    pending_edge.release();
 
     // e[5]->setCell(this);
     e[5]->setCell(neighbors[QUAD_T].back());
@@ -1731,7 +1751,8 @@ void QuadtreeCell::makeOuterEdges() {
   ////cout << "aresta 5" << endl;
 
   if (!e[6]) {
-    e[6] = makeE(6);
+    apmesh::memory::PendingEdge pending_edge(makeE(6));
+    e[6] = pending_edge.get();
 
     if (neighbors[QUAD_L].front()->inBoundary()) {
       tree->addFront(e[6]);
@@ -1746,6 +1767,7 @@ void QuadtreeCell::makeOuterEdges() {
     }
 
     tree->add(e[6]);
+    pending_edge.release();
 
     // if (this->level > neighbors[QUAD_L].front()->level)
     if (this->level < neighbors[QUAD_L].front()->level) {
@@ -1758,7 +1780,8 @@ void QuadtreeCell::makeOuterEdges() {
   ////cout << "aresta 6" << endl;
 
   if ((!e[7]) && (neighbors[QUAD_L].size() == 2)) {
-    e[7] = makeE(7);
+    apmesh::memory::PendingEdge pending_edge(makeE(7));
+    e[7] = pending_edge.get();
 
     if (neighbors[QUAD_L].back()->inBoundary()) {
       tree->addFront(e[7]);
@@ -1767,6 +1790,7 @@ void QuadtreeCell::makeOuterEdges() {
     }
 
     tree->add(e[7]);
+    pending_edge.release();
 
     // e[7]->setCell(this);
     e[7]->setCell(neighbors[QUAD_L].back());

@@ -221,28 +221,32 @@ double Face::gama() {
 double Face::quality() {
   /*static*/ double rInsc, rCirc, d;
   /*static*/ Edge e;
+  struct EndpointScope {
+    Edge& edge;
+    ~EndpointScope() { edge.DetachVertices(); }
+  } endpoints{e};
 
   rInsc = DBL_MAX;
   rCirc = DBL_MIN;
 
-  Vertex *insc = incenter();
-  Vertex *circ = circumcenter();
+  std::unique_ptr<Vertex> insc(incenter());
+  std::unique_ptr<Vertex> circ(circumcenter());
 
   e.setVertices(v[0], v[1]);
 
-  d = e.straightDistance(insc);
+  d = e.straightDistance(insc.get());
 
   rInsc = (d < rInsc) ? d : rInsc;
 
   e.setVertices(v[1], v[2]);
 
-  d = e.straightDistance(insc);
+  d = e.straightDistance(insc.get());
 
   rInsc = (d < rInsc) ? d : rInsc;
 
   e.setVertices(v[2], v[0]);
 
-  d = e.straightDistance(insc);
+  d = e.straightDistance(insc.get());
 
   rInsc = (d < rInsc) ? d : rInsc;
 
@@ -260,8 +264,8 @@ double Face::quality() {
 
   e.setVertices(nullptr, nullptr);
 
-  delete insc;
-  delete circ;
+  insc.reset();
+  circ.reset();
 
   return 2.0 * rInsc / rCirc;
 }

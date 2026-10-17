@@ -4,6 +4,12 @@ Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
 Current status: stages 0-2 are integrated and closed for their measured scope.
+Active item #17 covers pending Boundary/template registration, Face::quality
+unwind and demonstrated missing-cell-context access. Candidate CTest 14/14,
+UV 49/49, node 7/7, six-unit lint/formatting and exact scientific regression
+pass. Exact-head and main gates remain; see `evidence/STAGE3_UV_REGISTRATION.md`.
+The full stage 3 remains open; earlier tree construction, remaining helper/
+mutation/curve scopes and sample/rollback follow this bounded delivery.
 Stage 3 slice 3 (#14, PR #15) is qualified: primitive construction/cache
 replacement and default front construction pass exact-head and implementation-
 main CTest 12/12, UV 35/35, node 7/7, lint/formatting and strict article regression.

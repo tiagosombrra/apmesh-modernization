@@ -1,0 +1,102 @@
+[1/1] (1/3) Processing file C:/Users/tiago/.codex/.chatgpt-projects/g-p-6a78da0b01848191b90be3c9c5708c4f/work/apmesh-modernization/src/crab_mesh/aft/quadtree_cell.cpp.
+106 warnings generated.
+[1/1] (2/3) Processing file C:/Users/tiago/.codex/.chatgpt-projects/g-p-6a78da0b01848191b90be3c9c5708c4f/work/apmesh-modernization/src/crab_mesh/aft/quadtree_cell.cpp.
+125 warnings generated.
+[1/1] (3/3) Processing file C:/Users/tiago/.codex/.chatgpt-projects/g-p-6a78da0b01848191b90be3c9c5708c4f/work/apmesh-modernization/src/crab_mesh/aft/quadtree_cell.cpp.
+144 warnings generated.
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:92:60: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+   92 |       children[QUAD_TOP_RIGHT] = children[QUAD_TOP_LEFT] = NULL;
+      |                                                            ^~~~
+      |                                                            nullptr
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:94:10: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+   94 |   mids = NULL;
+      |          ^~~~
+      |          nullptr
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:101:12: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  101 |     v[i] = NULL;
+      |            ^~~~
+      |            nullptr
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:102:12: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  102 |     e[i] = NULL;
+      |            ^~~~
+      |            nullptr
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:133:16: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  133 |   Vertex **m = NULL;
+      |                ^~~~
+      |                nullptr
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:980:70: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+  980 |   return ((position >= 0) && (position <= 3)) ? children[position] : NULL;
+      |                                                                      ^~~~
+      |                                                                      nullptr
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1066:32: error: Called C++ object pointer is null [clang-analyzer-core.CallAndMessage,-warnings-as-errors]
+ 1066 |   return (size - e->getLen() * tree->getFactor() >= TOLERANCE_AFT);
+      |                                ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1208:7: note: Assuming the condition is false
+ 1208 |   if (out(e->getMid())) {
+      |       ^~~~~~~~~~~~~~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1208:3: note: Taking false branch
+ 1208 |   if (out(e->getMid())) {
+      |   ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1212:8: note: Calling 'QuadtreeCell::shouldSubdivide'
+ 1212 |   if (!shouldSubdivide(e)) {
+      |        ^~~~~~~~~~~~~~~~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1062:7: note: Assuming field 'tree' is null
+ 1062 |   if (tree && tree->getMaxLevelCap() >= 0 &&
+      |       ^~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1062:12: note: Left side of '&&' is false
+ 1062 |   if (tree && tree->getMaxLevelCap() >= 0 &&
+      |            ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1066:32: note: Called C++ object pointer is null
+ 1066 |   return (size - e->getLen() * tree->getFactor() >= TOLERANCE_AFT);
+      |                                ^~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1089:26: error: Called C++ object pointer is null [clang-analyzer-core.CallAndMessage,-warnings-as-errors]
+ 1089 |       (size - target_h * tree->getFactor() >= TOLERANCE_AFT);
+      |                          ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1270:7: note: Assuming the condition is false
+ 1270 |   if (f->getId() == 4) {
+      |       ^~~~~~~~~~~~~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1270:3: note: Taking false branch
+ 1270 |   if (f->getId() == 4) {
+      |   ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1274:7: note: Assuming the condition is false
+ 1274 |   if (out(f->getMid())) {
+      |       ^~~~~~~~~~~~~~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1274:3: note: Taking false branch
+ 1274 |   if (out(f->getMid())) {
+      |   ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1278:8: note: Calling 'QuadtreeCell::shouldSubdivide'
+ 1278 |   if (!shouldSubdivide(f)) {
+      |        ^~~~~~~~~~~~~~~~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1070:7: note: Assuming field 'tree' is null
+ 1070 |   if (tree && tree->getMaxLevelCap() >= 0 &&
+      |       ^~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1070:12: note: Left side of '&&' is false
+ 1070 |   if (tree && tree->getMaxLevelCap() >= 0 &&
+      |            ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1075:8: note: Assuming the condition is true
+ 1075 |   if ((f->getId() == 2) || (f->getId() == 4)) {
+      |        ^~~~~~~~~~~~~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1075:25: note: Left side of '||' is true
+ 1075 |   if ((f->getId() == 2) || (f->getId() == 4)) {
+      |                         ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1084:7: note: Assuming the condition is false
+ 1084 |   if (QUADTREE_FACE_QUALITY_THRESHOLD > 0.0 &&
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1084:45: note: Left side of '&&' is false
+ 1084 |   if (QUADTREE_FACE_QUALITY_THRESHOLD > 0.0 &&
+      |                                             ^
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1089:26: note: Called C++ object pointer is null
+ 1089 |       (size - target_h * tree->getFactor() >= TOLERANCE_AFT);
+      |                          ^~~~
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1125:12: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+ 1125 |     return NULL;
+      |            ^~~~
+      |            nullptr
+C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\src\crab_mesh\aft\quadtree_cell.cpp:1151:12: error: use nullptr [modernize-use-nullptr,-warnings-as-errors]
+ 1151 |     return NULL;
+      |            ^~~~
+      |            nullptr
+Suppressed 114 warnings (27 in non-user code, 87 with check filters).
+Use -header-filter=.* or leave it as default to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+10 warnings treated as errors
+Quality command failed: Command '['C:\\msys64\\ucrt64\\bin\\clang-tidy.EXE', '-p', 'C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\build\\local-serial', 'C:\\Users\\tiago\\.codex\\.chatgpt-projects\\g-p-6a78da0b01848191b90be3c9c5708c4f\\work\\apmesh-modernization\\src\\crab_mesh\\aft\\quadtree_cell.cpp']' returned non-zero exit status 1.

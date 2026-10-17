@@ -1,0 +1,23 @@
+UV lifetime diagnostic
+=================================================================
+==4252==ERROR: AddressSanitizer: access-violation on unknown address 0x000000000010 (pc 0x7ff6531e6423 bp 0x027142680000 sp 0x00bef1aff350 T0)
+==4252==The signal is caused by a READ memory access.
+==4252==Hint: address points to the zero page.
+    #0 0x7ff6531e6422 in Par2DJMesh::AFT::Quadtree::getFactor(void) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-registration-baseline-source\src\crab_mesh\aft\quadtree.cpp:211
+    #1 0x7ff6531dc3ff in Par2DJMesh::AFT::QuadtreeCell::shouldSubdivide(class Par2DJMesh::Basics::Edge *) C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-registration-baseline-source\src\crab_mesh\aft\quadtree_cell.cpp:1057
+    #2 0x7ff6531b694c in `anonymous namespace'::unowned_cell_query C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:259
+    #3 0x7ff6531b4d60 in `anonymous namespace'::scenario C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:658
+    #4 0x7ff6531b6e8b in main C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\tests\uv_memory\probe.cpp:783
+    #5 0x7ff653215353 in invoke_main D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    #6 0x7ff653215353 in __scrt_common_main_seh D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    #7 0x7ffaa853dda6  (C:\windows\System32\KERNEL32.DLL+0x18002dda6)
+    #8 0x7ffaa8edee4b  (C:\windows\SYSTEM32\ntdll.dll+0x18007ee4b)
+
+==4252==Register values:
+rax = 2  rbx = 10  rcx = 0  rdx = 27142680000  
+rdi = 1279426a0c10  rsi = bef1aff4c0  rbp = 27142680000  rsp = bef1aff350  
+r8  = 27142680000  r9  = 1279426a0dd8  r10 = 0  r11 = bef1aff2d0  
+r12 = 0  r13 = 0  r14 = bef1aff620  r15 = 0  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: access-violation C:\Users\tiago\.codex\.chatgpt-projects\g-p-6a78da0b01848191b90be3c9c5708c4f\work\apmesh-modernization\build\uv-registration-baseline-source\src\crab_mesh\aft\quadtree.cpp:211 in Par2DJMesh::AFT::Quadtree::getFactor(void)
+==4252==ABORTING

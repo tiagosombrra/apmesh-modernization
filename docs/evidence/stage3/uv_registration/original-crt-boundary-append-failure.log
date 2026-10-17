@@ -1,0 +1,144 @@
+UV lifetime diagnostic
+Client hook allocation failure.
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+Client hook allocation failure.
+Registration contract failed: failed boundary registration preserves owners, IDs and adjacency
+registration_failure_sites=boundary-1:14/14 unchanged=0
+CRT retained_blocks=56 retained_bytes=2344
+Dumping objects ->
+{1575} normal block at 0x0000022CEFD56BC0, 40 bytes long.
+ Data: < h  ,    h  ,   > B0 68 D5 EF 2C 02 00 00 B0 68 D5 EF 2C 02 00 00 
+{1566} normal block at 0x0000022CEFD568B0, 40 bytes long.
+ Data: < k  ,    k  ,   > C0 6B D5 EF 2C 02 00 00 C0 6B D5 EF 2C 02 00 00 
+{1565} normal block at 0x0000022CEFD54720, 16 bytes long.
+ Data: < \  ,           > 00 5C D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1564} normal block at 0x0000022CEFD55BE0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1503} normal block at 0x0000022CEFD56D80, 40 bytes long.
+ Data: <Pk  ,   Pk  ,   > 50 6B D5 EF 2C 02 00 00 50 6B D5 EF 2C 02 00 00 
+{1501} normal block at 0x0000022CEFD56C30, 40 bytes long.
+ Data: <0l  ,   0l  ,   > 30 6C D5 EF 2C 02 00 00 30 6C D5 EF 2C 02 00 00 
+{1500} normal block at 0x0000022CEFD54B80, 16 bytes long.
+ Data: < V  ,           > 00 56 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1499} normal block at 0x0000022CEFD555E0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1498} normal block at 0x0000022CEFD56140, 40 bytes long.
+ Data: <@a  ,   @a  ,   > 40 61 D5 EF 2C 02 00 00 40 61 D5 EF 2C 02 00 00 
+{1497} normal block at 0x0000022CEFD542C0, 16 bytes long.
+ Data: < S  ,           > 80 53 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1496} normal block at 0x0000022CEFD55360, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1495} normal block at 0x0000022CEFD48630, 120 bytes long.
+ Data: <  $x            > E8 E8 24 78 F6 7F 00 00 02 00 00 00 CD CD CD CD 
+{1494} normal block at 0x0000022CEFD56B50, 40 bytes long.
+ Data: < m  ,    m  ,   > 80 6D D5 EF 2C 02 00 00 80 6D D5 EF 2C 02 00 00 
+{1493} normal block at 0x0000022CEFD54360, 16 bytes long.
+ Data: < W  ,           > 00 57 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1492} normal block at 0x0000022CEFD556E0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1430} normal block at 0x0000022CEFD56D10, 40 bytes long.
+ Data: < m  ,    m  ,   > 10 6D D5 EF 2C 02 00 00 10 6D D5 EF 2C 02 00 00 
+{1429} normal block at 0x0000022CEFD545E0, 16 bytes long.
+ Data: < ^  ,           > 00 5E D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1428} normal block at 0x0000022CEFD55DE0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1427} normal block at 0x0000022CEFD56300, 40 bytes long.
+ Data: < c  ,    c  ,   > 00 63 D5 EF 2C 02 00 00 00 63 D5 EF 2C 02 00 00 
+{1426} normal block at 0x0000022CEFD54220, 16 bytes long.
+ Data: < X  ,           > 80 58 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1425} normal block at 0x0000022CEFD55860, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1424} normal block at 0x0000022CEFD3E7B0, 120 bytes long.
+ Data: <  $x            > E8 E8 24 78 F6 7F 00 00 02 00 00 00 CD CD CD CD 
+{1423} normal block at 0x0000022CEFD56530, 40 bytes long.
+ Data: <0e  ,   0e  ,   > 30 65 D5 EF 2C 02 00 00 30 65 D5 EF 2C 02 00 00 
+{1422} normal block at 0x0000022CEFD54810, 16 bytes long.
+ Data: < U  ,           > 80 55 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1421} normal block at 0x0000022CEFD55560, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1361} normal block at 0x0000022CEFD560D0, 40 bytes long.
+ Data: < `  ,    `  ,   > D0 60 D5 EF 2C 02 00 00 D0 60 D5 EF 2C 02 00 00 
+{1360} normal block at 0x0000022CEFD54400, 16 bytes long.
+ Data: < Z  ,           > 00 5A D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1359} normal block at 0x0000022CEFD559E0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1358} normal block at 0x0000022CEFD56060, 40 bytes long.
+ Data: <``  ,   ``  ,   > 60 60 D5 EF 2C 02 00 00 60 60 D5 EF 2C 02 00 00 
+{1357} normal block at 0x0000022CEFD54CC0, 16 bytes long.
+ Data: < R  ,           > 80 52 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1356} normal block at 0x0000022CEFD55260, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 00 00 00 00 CD CD CD CD 
+{1355} normal block at 0x0000022CEFD3F000, 120 bytes long.
+ Data: <  $x            > E8 E8 24 78 F6 7F 00 00 02 00 00 00 CD CD CD CD 
+{1354} normal block at 0x0000022CEFD566F0, 40 bytes long.
+ Data: < f  ,    f  ,   > F0 66 D5 EF 2C 02 00 00 F0 66 D5 EF 2C 02 00 00 
+{1353} normal block at 0x0000022CEFD54770, 16 bytes long.
+ Data: < ]  ,           > 80 5D D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1352} normal block at 0x0000022CEFD55D60, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1286} normal block at 0x0000022CEFD56AE0, 40 bytes long.
+ Data: < j  ,    j  ,   > E0 6A D5 EF 2C 02 00 00 E0 6A D5 EF 2C 02 00 00 
+{1285} normal block at 0x0000022CEFD540E0, 16 bytes long.
+ Data: < _  ,           > 00 5F D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1284} normal block at 0x0000022CEFD55EE0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1219} normal block at 0x0000022CEFD564C0, 40 bytes long.
+ Data: < d  ,    d  ,   > C0 64 D5 EF 2C 02 00 00 C0 64 D5 EF 2C 02 00 00 
+{1218} normal block at 0x0000022CEFD54DB0, 16 bytes long.
+ Data: < Y  ,           > 00 59 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1217} normal block at 0x0000022CEFD558E0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1153} normal block at 0x0000022CEFD56450, 40 bytes long.
+ Data: <Pd  ,   Pd  ,   > 50 64 D5 EF 2C 02 00 00 50 64 D5 EF 2C 02 00 00 
+{1152} normal block at 0x0000022CEFD546D0, 16 bytes long.
+ Data: < U  ,           > 00 55 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1151} normal block at 0x0000022CEFD554E0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1088} normal block at 0x0000022CEFD56A00, 40 bytes long.
+ Data: < j  ,    j  ,   > 00 6A D5 EF 2C 02 00 00 00 6A D5 EF 2C 02 00 00 
+{1087} normal block at 0x0000022CEFD54040, 16 bytes long.
+ Data: < \  ,           > 80 5C D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1086} normal block at 0x0000022CEFD55C60, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{1024} normal block at 0x0000022CEFD56A70, 40 bytes long.
+ Data: <pj  ,   pj  ,   > 70 6A D5 EF 2C 02 00 00 70 6A D5 EF 2C 02 00 00 
+{1023} normal block at 0x0000022CEFD54A40, 16 bytes long.
+ Data: < S  ,           > 00 53 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{1022} normal block at 0x0000022CEFD552E0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{961} normal block at 0x0000022CEFD56E60, 40 bytes long.
+ Data: <`n  ,   `n  ,   > 60 6E D5 EF 2C 02 00 00 60 6E D5 EF 2C 02 00 00 
+{960} normal block at 0x0000022CEFD54590, 16 bytes long.
+ Data: < T  ,           > 00 54 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{959} normal block at 0x0000022CEFD553E0, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+{899} normal block at 0x0000022CEFD563E0, 40 bytes long.
+ Data: < c  ,    c  ,   > E0 63 D5 EF 2C 02 00 00 E0 63 D5 EF 2C 02 00 00 
+{898} normal block at 0x0000022CEFD53F50, 16 bytes long.
+ Data: < T  ,           > 80 54 D5 EF 2C 02 00 00 00 00 00 00 00 00 00 00 
+{897} normal block at 0x0000022CEFD55460, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 03 00 00 00 CD CD CD CD 
+Object dump complete.

@@ -14,6 +14,14 @@ Boundary until Quadtree adoption. This prerequisite does not qualify template
 creation/registration, other setters or arbitrary front exceptions. See ADR-0004
 and `../evidence/STAGE3_UV_ALLOCATION.md`.
 
+Issue #17 extends the pending-resource boundary from entry main
+`c341ba7cb7b514b4073330e59ccef14d000e45de`: Boundary commits registration/IDs
+after allocation, while TemplateStorage guards unregistered suffixes and leaves
+registered prefixes at Quadtree. Face::quality owns temporary centers and
+detaches its borrowed edge on unwind. Prepared-tree failure means destruction
+only; partially published observer views are not a reusable failed mesh. See
+ADR-0005 and `../evidence/STAGE3_UV_REGISTRATION.md` for measured coverage.
+
 The current generator already has parametric patches, canonical shared boundary
 curves and CRABMesh reconstruction. Their responsibilities are mapped here so
 later ownership and library changes preserve the published execution sequence.

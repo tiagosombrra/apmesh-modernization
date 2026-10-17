@@ -1,0 +1,32 @@
+Excerpt only. Complete original log SHA-256: a7d64d21eb8aba1338eda72a4d36a9a7e3a9743d5bffff5936746722bbfd69a3; bytes: 27800
+UV lifetime diagnostic
+registration_measured=template-0:164
+registration_inject=template-0:0
+Client hook allocation failure.
+registration_inject=template-0:1
+Client hook allocation failure.
+registration_inject=template-0:2
+Client hook allocation failure.
+registration_inject=template-0:3
+Client hook allocation failure.
+registration_inject=template-0:4
+Client hook allocation failure.
+registration_inject=template-0:5
+Client hook allocation failure.
+registration_inject=template-0:6
+Client hook allocation failure.
+registration_inject=template-0:7
+Client hook allocation failure.
+[object dump omitted]
+ Data: <  x["     x["   > F0 DB 78 5B 22 02 00 00 F0 DB 78 5B 22 02 00 00 
+{17342} normal block at 0x000002225B769830, 16 bytes long.
+ Data: <` v["           > 60 B3 76 5B 22 02 00 00 00 00 00 00 00 00 00 00 
+{17341} normal block at 0x000002225B76B340, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 12 00 00 00 CD CD CD CD 
+{9973} normal block at 0x000002225B79DDF0, 40 bytes long.
+ Data: <  y["     y["   > F0 DD 79 5B 22 02 00 00 F0 DD 79 5B 22 02 00 00 
+{9972} normal block at 0x000002225B77C7D0, 16 bytes long.
+ Data: <  w["           > 80 EF 77 5B 22 02 00 00 00 00 00 00 00 00 00 00 
+{9971} normal block at 0x000002225B77EF60, 56 bytes long.
+ Data: <  $x            > 08 DA 24 78 F6 7F 00 00 11 00 00 00 CD CD CD CD 
+Object dump complete.

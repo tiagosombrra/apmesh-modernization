@@ -43,6 +43,7 @@ private:
   long int getLastVertexId();
   long int getLastEdgeId();
 
+  // Failed registration preserves existing owners, adjacency, IDs and contour start.
   Vertex* addVertex(double x, double y, CurveAdaptiveParametric* c, bool reversed = false);
   Vertex *addVertex(long int id, double x, double y);
   bool close(CurveAdaptiveParametric* c, bool reversed = false);

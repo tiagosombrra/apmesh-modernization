@@ -1,0 +1,42 @@
+UV lifetime diagnostic
+registration_measured=face-quality:36
+registration_inject=quality:0
+Client hook allocation failure.
+registration_inject=quality:1
+Client hook allocation failure.
+registration_inject=quality:2
+Client hook allocation failure.
+registration_inject=quality:3
+Client hook allocation failure.
+registration_inject=quality:4
+Client hook allocation failure.
+registration_inject=quality:5
+Client hook allocation failure.
+registration_inject=quality:6
+Client hook allocation failure.
+registration_inject=quality:7
+Client hook allocation failure.
+registration_inject=quality:8
+Client hook allocation failure.
+registration_inject=quality:9
+Client hook allocation failure.
+registration_inject=quality:10
+Client hook allocation failure.
+registration_inject=quality:11
+Client hook allocation failure.
+registration_inject=quality:12
+Client hook allocation failure.
+registration_inject=quality:13
+Client hook allocation failure.
+registration_inject=quality:14
+Client hook allocation failure.
+registration_inject=quality:15
+Client hook allocation failure.
+registration_inject=quality:16
+Client hook allocation failure.
+registration_inject=quality:17
+Client hook allocation failure.
+registration_inject=quality:18
+Client hook allocation failure.
+minkernel\crts\ucrt\src\appcrt\heap\debug_heap.cpp(904) : Assertion failed: _CrtIsValidHeapPointer(block)
+minkernel\crts\ucrt\src\appcrt\heap\debug_heap.cpp(908) : Assertion failed: is_block_type_valid(header->_block_use)

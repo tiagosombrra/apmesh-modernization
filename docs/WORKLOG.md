@@ -18,6 +18,11 @@ missing-header build failure remain recorded. The documentation-only closure
 preserves all qualified source/tool/test/build/input identities. Next:
 template arrays/object creation before registration and Boundary registration,
 then other setters/helper temporaries, curve samples/initialization and rollback.
+Active #17 candidate: pending Boundary/template registration, Face::quality
+unwind and null-owner query guards. CTest 14/14, UV 49/49, node 7/7, 1,361 new
+allocation failures, six-unit lint and exact article/UV trace regression pass.
+Published-head and post-merge gates remain before closure. Failed original and
+fixture/build/lint failures remain evidence; see STAGE3_UV_REGISTRATION.md.
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),

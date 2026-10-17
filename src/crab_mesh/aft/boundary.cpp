@@ -1,4 +1,5 @@
 #include "../../../include/crab_mesh/aft/boundary.h"
+#include "pending_template.h"
 
 Boundary::Boundary() : Shape() {
   lastVertexId = lastEdgeId = 0;
@@ -25,14 +26,12 @@ Boundary::~Boundary() {
 }
 
 Edge *Boundary::makeEdge(Vertex *v) {
-  Edge* e = nullptr;
+  apmesh::memory::PendingEdge e(new Edge(boundary.back(), v, lastEdgeId + 1));
 
-  e = new Edge(boundary.back(), v, ++lastEdgeId);
+  boundary.back()->addAdjacentEdge(e.get());
+  v->addAdjacentEdge(e.get());
 
-  boundary.back()->addAdjacentEdge(e);
-  v->addAdjacentEdge(e);
-
-  return e;
+  return e.release();
 }
 
 void Boundary::setBoundary(VertexList boundary) { this->boundary = boundary; }
@@ -58,9 +57,9 @@ long int Boundary::getLastVertexId() { return lastVertexId; }
 long int Boundary::getLastEdgeId() { return lastEdgeId; }
 
 Vertex* Boundary::addVertex(double x, double y, CurveAdaptiveParametric* c, bool reversed) {
-  Vertex* v = nullptr;
-
-  v = new Vertex(x, y, ++lastVertexId);
+  auto pending_vertex = std::make_unique<Vertex>(x, y, lastVertexId + 1);
+  Vertex* v = pending_vertex.get();
+  apmesh::memory::PendingEdge pending_edge;
 
   // #if USE_OPENGL
   //     //figura
@@ -70,10 +69,9 @@ Vertex* Boundary::addVertex(double x, double y, CurveAdaptiveParametric* c, bool
   //     //endfigura
   // #endif //#if USE_OPENGL
 
-  if (!first) {
-    first = v;
-  } else if (!boundary.empty()) {
-    Edge *e = makeEdge(v);
+  if (first && !boundary.empty()) {
+    pending_edge.reset(makeEdge(v));
+    Edge* e = pending_edge.get();
 
     // The completed edge belongs to the previous vertex's outgoing side.
     e->setCurva(outgoing_curve_, outgoing_reversed_);
@@ -95,9 +93,23 @@ Vertex* Boundary::addVertex(double x, double y, CurveAdaptiveParametric* c, bool
     // endfigura
   }
 
-  boundary.push_back(v);
+  try {
+    boundary.push_back(v);
+  } catch (...) {
+    // Undo the completed edge registration before its local owner unwinds.
+    if (pending_edge)
+      edges.pop_back();
+    throw;
+  }
+  if (!first)
+    first = v;
+  ++lastVertexId;
+  if (pending_edge)
+    ++lastEdgeId;
   outgoing_curve_ = c;
   outgoing_reversed_ = reversed;
+  pending_edge.release();
+  pending_vertex.release();
 
   return v;
 }
@@ -117,7 +129,8 @@ Vertex *Boundary::addVertex(long int id, double x, double y) {
 }
 
 bool Boundary::close(CurveAdaptiveParametric* c, bool reversed) {
-  Edge *e = new Edge(boundary.back(), first, ++lastEdgeId);
+  apmesh::memory::PendingEdge pending_edge(new Edge(boundary.back(), first, lastEdgeId + 1));
+  Edge* e = pending_edge.get();
 
   e->setCurva(c, reversed);
 
@@ -125,8 +138,6 @@ bool Boundary::close(CurveAdaptiveParametric* c, bool reversed) {
 
   boundary.back()->addAdjacentEdge(e);
   first->addAdjacentEdge(e);
-
-  first = nullptr;
 
   ////figura
   // #if USE_OPENGL
@@ -137,6 +148,11 @@ bool Boundary::close(CurveAdaptiveParametric* c, bool reversed) {
   e->setInBoundary(true);
 
   edges.push_back(e);
+
+  // Closing commits only after both adjacencies and the owner-list node exist.
+  first = nullptr;
+  ++lastEdgeId;
+  pending_edge.release();
 
   return true;
 }
