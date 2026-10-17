@@ -230,9 +230,10 @@ closed for measured scope; stages 4-11 remain pending.
 - Eigen remains; CRABMesh consolidation, complete English renaming, generated
   Doxygen review, C++23 qualification and performance work remain open.
 - The archived-artifact test is not a new accepted-mesh generation experiment.
-- Earlier local Git networking failed DNS; this delivery uses the GitHub
-  connector for remote operations. Local source validation excludes the two
-  binary publication artifacts; their remote import hashes are independently compared with source.
+- Earlier remote validation used the GitHub connector after Git DNS
+  failure; the local continuation now uses working Git and GitHub CLI access. Earlier source validation excluded the two
+  publication binaries; the current local continuation verifies the complete
+  checkout, including those artifacts, against indexed Git blobs.
 
 ## Continuation rule
 
@@ -241,31 +242,33 @@ executed checks, toolchain, failures and next step. Recheck remote authority
 before writing and after integration. Scientific algorithm changes wait for
 explicit advisor alignment.
 
-## Active stage 3 slice 6 (#23): angle-helper endpoint lifetime
+## Stage 3 slice 6 qualified (#23, PR #24)
 
-Entry main `e488c64eecacf1af3d8ac0e47043e85e216f8370` was reaudited with
-all 828 working files matching their Git blobs. Fresh entry UV 56/56 and node
-7/7 ASan/CRT controls pass; the serial baseline is the retained exact-main
-continuation campaign at that same revision.
+Head `da684dd6a2a1fefe709fc8906cce837da4b2ea24` integrated through PR #24 as main
+`1d7d5992d90f09d8cf7747d9023d9b39ef3d089b`, preserving complete tree
+`f3d634588529e0ff9dec3121ae2c1aa3d215bedc` (853 blobs). Full exact-head and
+implementation-main campaigns pass: CTest 16/16, zero skips, 74 Python controls,
+UV 68/68, node 7/7, six-unit lint, changed-range formatting, fresh inventory and
+strict repeated Eistute/Book regression. All nine attempted states, acceptance/
+rejection, measured incidence results, 189 CSV fields and 1,168/4,256 last
+accepted triangles remain exact.
 
-The pinned original destroys caller-owned endpoints when allocation fails in
-Edge::angle(Vertex*, Vertex*). All ten new sweeps fail while the prior 56 cases
-and both new successful geometry cases pass. A local detachment guard repairs
-this exceptional lifetime boundary without changing formulas, operation order
-or successful allocation counts/traces. This is a behavior-changing defect
-repair on exceptional exits, not a scientific change.
+Ten calibrated CRT sweeps deny 252 allocations through four endpoint matches
+and nonadjacency with empty/populated observers. The original fails all ten
+while its prior 56 and both new normal cases pass. A local guard detaches the
+temporary angle edge on unwind; caller ownership/state and successful helper
+reuse after failure are qualified. Original/candidate success traces and all
+allocation counts match. No scientific expression, ordering, policy, input,
+verifier, tolerance or vendor changes. This documentation-only follow-up
+preserves every qualified production/tool/test/build/input/contract identity.
+See evidence/STAGE3_ANGLE_HELPER_CLOSURE.md and ADR-0007.
 
-Candidate gates pass: CTest 16/16, zero skips, 74 Python controls, UV 68/68,
-node 7/7, six-unit selected lint, range formatting, inventory and strict repeated
-Eistute/Book entry comparison. Ten calibrated sweeps deny 252 allocations,
-preserving caller/receiver state and permitting a successful helper query after
-each failure. Article states, incidence coverage, 189 CSV fields and last
-accepted 1,168/4,256 triangles remain exact. Published-head and post-merge gates
-remain required before this slice closes. See evidence/STAGE3_ANGLE_HELPER.md
-and ADR-0007.
+The wider stage 3 remains open with six qualified slices. Next characterize
+remaining helper/mutation and curve-internal allocation failures, then
+parametric midpoint replacement and sample/initialization/rollback ownership.
+Other setters/templates/tree/mate paths, general copied observers, failed-tree
+observer consumption/retry, full-process and parallel/LSan/UBSan qualification
+remain open. Stages 0-2 stay closed; stages 4-11 remain pending.
 
-Doxygen 1.18.0 is installed; its submitted initial run fails on undocumented
-members. Comprehensive documentation remains pending in stage 8, with the
-strict warning gate retained. Other helpers/mutation, curve-internal failures,
-parametric midpoint replacement and sample/initialization/rollback ownership
-follow this bounded slice. Full stage 3 remains open.
+Doxygen 1.18.0 is installed; the submitted initial run fails on undocumented
+members. Comprehensive documentation remains stage 8 with strict warnings.

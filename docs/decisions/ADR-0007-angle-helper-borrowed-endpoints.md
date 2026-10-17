@@ -1,6 +1,7 @@
 # ADR-0007: preserve borrowed endpoints in the angle helper
 
-Status: candidate qualified; exact-head and post-merge gates required.
+Status: accepted; exact-head and implementation-main complete campaigns pass.
+Documentation-only closure gates remain required; see the closure evidence.
 Issue: #23. Classification: behavior-changing defect repair on allocation-failure
 exits; successful numerical behavior is preserved. No scientific proposal.
 

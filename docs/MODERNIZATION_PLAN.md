@@ -3,31 +3,33 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stages 0-2 are integrated and closed for their measured scope.
-Stage 3 slice 5 (#20, PR #21) is qualified.
-Head `4f0c9bed6d1d1a52b6cdab88a26a9323040614f9` integrated through PR #21 as main
-`83eefa8c6006cc39dcdc35d463b8611d6f038538`, preserving tree `fa76355260fad7184d236f5680dac3ea67e5b6b6`
-(818 blobs). Exact-head and implementation-main full campaigns pass: CTest
-15/15 with zero skips, 74 Python controls, UV 56/56, node 7/7, six-unit selected
-lint, changed-range formatting, fresh inventory and strict Eistute/Book
-regression. All nine attempted states, 189 CSV fields, acceptance/incidence
-results and 1,168/4,256 last-accepted triangles remain exact.
+Current status: stages 0-2 are integrated and closed for measured scope.
+Stage 3 slice 6 (#23, PR #24) is qualified.
+Head `da684dd6a2a1fefe709fc8906cce837da4b2ea24` integrated through PR #24 as main
+`1d7d5992d90f09d8cf7747d9023d9b39ef3d089b`, preserving complete tree
+`f3d634588529e0ff9dec3121ae2c1aa3d215bedc` (853 blobs). Full exact-head and
+implementation-main campaigns pass: CTest 16/16, zero skips, 74 Python controls,
+UV 68/68, node 7/7, six-unit lint, changed-range formatting, fresh inventory and
+strict repeated Eistute/Book regression. All nine attempted states, acceptance/
+rejection, measured incidence results, 189 CSV fields and 1,168/4,256 last
+accepted triangles remain exact.
 
-Five calibrated sweeps inject 3,470 allocation failures across initial root,
-uniform subdivision, boundary-edge/old-face generation and actual neighbor
-refinement. The original fails all five; its previous 49 cases and both new
-success traces pass. Candidate success traces and allocation counts match
-original; valid cases retain zero normal CRT blocks/bytes. Root bounds and
-midpoint construction are locally owned until complete adoption. Only two
-production implementation files change; no scientific expression or policy
-changes. See ADR-0006 and `evidence/STAGE3_UV_TREE_CLOSURE.md`.
+Ten calibrated CRT sweeps deny 252 allocations through four endpoint matches
+and nonadjacency with empty/populated observers. The original fails all ten
+while its prior 56 and both new normal cases pass. A local guard detaches the
+temporary angle edge on unwind; caller ownership/state and successful helper
+reuse after failure are qualified. Original/candidate success traces and all
+allocation counts match. No scientific expression, ordering, policy, input,
+verifier, tolerance or vendor changes. This documentation-only follow-up
+preserves every qualified production/tool/test/build/input/contract identity.
+See evidence/STAGE3_ANGLE_HELPER_CLOSURE.md and ADR-0007.
 
-The wider stage 3 remains open with five qualified slices. Next characterize
-remaining mutation/helper temporaries and curve-internal allocation failures,
-then sample/initialization/rollback ownership. Other tree/mate/setter paths,
-same-tree retry/observer consumption after failure, other templates and
-full-process/parallel/LSan/UBSan qualification remain open. Stages 0-2 are
-closed for measured scope; stages 4-11 remain pending.
+The wider stage 3 remains open with six qualified slices. Next characterize
+remaining helper/mutation and curve-internal allocation failures, then
+parametric midpoint replacement and sample/initialization/rollback ownership.
+Other setters/templates/tree/mate paths, general copied observers, failed-tree
+observer consumption/retry, full-process and parallel/LSan/UBSan qualification
+remain open. Stages 0-2 stay closed; stages 4-11 remain pending.
 
 Earlier delivery histories and scope limits remain in PROJECT_STATE.md,
 WORKLOG.md and the unchanged evidence records. Architecture: see
@@ -112,15 +114,3 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
-
-## Active stage 3 slice 6 (#23)
-
-Candidate angle-helper lifetime repair is qualified: CTest 16/16, 74 Python
-controls, UV 68/68, node 7/7, six-unit lint, formatting, inventory and exact
-repeated Eistute/Book regression against entry main e488c64. The original fails
-ten allocation sweeps; all 252 measured denials preserve caller ownership and
-permit a successful helper query after the repair. Successful angle traces and
-allocation counts match original. Exact published-head and post-merge gates
-remain required; this does not close full stage 3. See
-evidence/STAGE3_ANGLE_HELPER.md and ADR-0007. Continue remaining helper/mutation
-and curve-internal scopes before sample/initialization/rollback ownership.

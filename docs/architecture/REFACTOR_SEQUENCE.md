@@ -101,7 +101,7 @@ See ADR-0006 and `../evidence/STAGE3_UV_TREE.md`.
 
 ## Angle-query temporary boundary (#23)
 
-The angle helper's borrowed endpoint lifetime is the next bounded repair:
+The angle helper's borrowed endpoint lifetime is qualified in slice 6:
 original allocation failures delete caller vertices, while a local detach guard
 preserves them without changing successful computation/allocation order. Ten
 measured sweeps include copied adjacency and final cache reset. Continue other
