@@ -2,6 +2,7 @@
 
 #include <cfloat>
 #include <climits>
+#include <memory>
 
 extern double TEMPLATE_POOR_SCORE_THRESHOLD;
 
@@ -308,10 +309,13 @@ enum MethodStatus Quadtree::generate(const FaceList &oldmesh) {
       maxX = midX + spanY / 2.0;
     }
 
-    Vertex *min = new Vertex(minX, minY);
-    Vertex *max = new Vertex(maxX, maxY);
+    auto min = std::make_unique<Vertex>(minX, minY);
+    auto max = std::make_unique<Vertex>(maxX, maxY);
 
-    root = new QuadtreeCell(getCellId(), /*mainDrive, */ this, min, max);
+    root = new QuadtreeCell(getCellId(), /*mainDrive, */ this, min.get(), max.get());
+    // Root ownership starts only after the complete cell constructor succeeds.
+    min.release();
+    max.release();
   }
 
   leaves.push_back(root);

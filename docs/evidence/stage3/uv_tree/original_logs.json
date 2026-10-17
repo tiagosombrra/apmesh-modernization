@@ -1,0 +1,32 @@
+{
+  "crt-tree-failure-0.log": {
+    "original_sha256": "05b9d67c8a0ef2c972909a2821476d646de2f3fc37650f3b3186509c695ce957",
+    "original_bytes": 11095,
+    "retained_file": "original-crt-tree-failure-0.log",
+    "retained_sha256": "05b9d67c8a0ef2c972909a2821476d646de2f3fc37650f3b3186509c695ce957"
+  },
+  "crt-tree-failure-1.log": {
+    "original_sha256": "cbbbfdb35f11f5360be565a0ebbfd92d8c1d073ef4df07a34a26db84ba72e61a",
+    "original_bytes": 18110,
+    "retained_file": "original-crt-tree-failure-1-excerpt.log",
+    "retained_sha256": "2dd93bbfb2341bc84585a73fdc5cff514ec35bd8e6f67fbf2cfb3dc7ee206b13"
+  },
+  "crt-tree-failure-2.log": {
+    "original_sha256": "0bd9eb9d9ac2e43b93745f43b449960bc739a0c25482c9849b82e72a8fa9c63a",
+    "original_bytes": 327486,
+    "retained_file": "original-crt-tree-failure-2-excerpt.log",
+    "retained_sha256": "f43ab3db014e2d46f961abfb1b9a97f8f637a62832dccca3c5dce3d01c354f7a"
+  },
+  "crt-tree-failure-3.log": {
+    "original_sha256": "96b4acc1453d51b2307ca8e6bea624f8745c82b51edb8d63da7e2cf304e85d7d",
+    "original_bytes": 346342,
+    "retained_file": "original-crt-tree-failure-3-excerpt.log",
+    "retained_sha256": "02408d768e65ad9440606a04fd4cb86e626cbfafdc68fe4b5ec101f76c906deb"
+  },
+  "crt-tree-failure-4.log": {
+    "original_sha256": "948f59bb01bcdb195733ebd8fcaf6ab0bbd369ebed1be3c933c62f6b5f40d512",
+    "original_bytes": 43803,
+    "retained_file": "original-crt-tree-failure-4-excerpt.log",
+    "retained_sha256": "dc4c9c2691a4adb69eaab5792086ffac1c67c44eea50f5fd565b86ef79d12f6c"
+  }
+}

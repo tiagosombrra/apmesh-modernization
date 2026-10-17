@@ -231,3 +231,12 @@ potential cycles, missing/outside anchors, duplicate/empty contract IDs and the
 actual retained inventory. Whole-stage qualification is recorded separately in
 the stage 2 evidence report; lexical coverage does not replace scientific or
 dynamic memory regression.
+
+## Quadtree construction boundary (#20)
+
+Root extents and midpoint construction use local ownership until adoption.
+Five calibrated scopes cover generation, uniform subdivision, old-face and
+actual neighbor refinement; failed trees permit destruction only. Successful
+allocation, cell/neighbor/leaf order and scientific expressions are preserved.
+Mate/root sharing, retry and full-process/parallel qualification remain open.
+See ADR-0006 and `../evidence/STAGE3_UV_TREE.md`.

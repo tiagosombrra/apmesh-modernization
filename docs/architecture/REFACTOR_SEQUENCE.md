@@ -89,3 +89,12 @@ Do not import an alternative apmesh-core generator as an architectural cleanup.
 Do not change scientific error metrics, interpolation, adaptation budgets or
 acceptance thresholds under the label of removing duplication. Such proposals
 remain separate advisor-aligned scientific work.
+
+## Quadtree construction boundary (#20)
+
+Root extents and midpoint construction use local ownership until adoption.
+Five calibrated scopes cover generation, uniform subdivision, old-face and
+actual neighbor refinement; failed trees permit destruction only. Successful
+allocation, cell/neighbor/leaf order and scientific expressions are preserved.
+Mate/root sharing, retry and full-process/parallel qualification remain open.
+See ADR-0006 and `../evidence/STAGE3_UV_TREE.md`.

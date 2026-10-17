@@ -105,3 +105,12 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
+
+## Active stage 3 slice 5 (#20)
+
+Entry main `4bfb31d54cdfb566a564724851d28a0bc02a93a0` passed the full
+14-test, 49-UV, seven-node, six-unit lint and exact Eistute/Book entry campaign.
+Five measured tree generation/subdivision sweeps reproduce retained allocations
+in the pinned original. Root bounds and midpoint construction are guarded in
+the candidate; full candidate and publication gates remain before closure.
+No scientific expressions or refinement criteria are changed.

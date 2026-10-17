@@ -1,0 +1,4 @@
+{
+  "reason": "A short contour segment already produced a balanced tree; neighbor refinement did not subdivide. Final fixture refines one actual leaf two additional levels through the public API, then requires positive neighbor-driven subdivision. No assertion was relaxed.",
+  "initial_report_sha256": "5248ce973470303ffc9b01e443c1aea26c5041cc2826daa034f0c1f093b9da0a"
+}

@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 463,
+    "literal_include_directives": 464,
     "first_party_include_edges": 272
   },
   "cross_component_directives": [
@@ -349,7 +349,7 @@
     "list": 12,
     "locale": 1,
     "map": 6,
-    "memory": 14,
+    "memory": 15,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -383,7 +383,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "fa4c98356fa3f2014fb431e85e95a2e7a0a212015a1fa377ed7f36c0451889f2"
+      "sha256": "d762bf2ee831f44b3b221ae597909ea24bcc63aad4952a1f47f01e97ddd8dc9c"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -3199,8 +3199,8 @@
       "path": "src/crab_mesh/aft/quadtree.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "c9a4aa534c974dc0f5dd73e4967b0de54f9b256574e3564396eea4346ebd2c6f",
-      "bytes": 13076,
+      "sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "bytes": 13246,
       "includes": [
         {
           "line": 1,
@@ -3222,6 +3222,13 @@
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -3229,8 +3236,8 @@
       "path": "src/crab_mesh/aft/quadtree_cell.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "cd6a53c57d33902682134d7aac49494472ae356aaa8ee334caf7884c4d2937ce",
-      "bytes": 59367,
+      "sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "bytes": 59697,
       "includes": [
         {
           "line": 1,
@@ -4744,7 +4751,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 92,
+    "source_anchors": 94,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

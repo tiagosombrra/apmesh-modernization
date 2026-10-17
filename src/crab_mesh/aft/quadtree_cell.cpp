@@ -131,7 +131,7 @@ QuadtreeCell::~QuadtreeCell() {
 }
 
 Vertex **QuadtreeCell::makeMids() {
-  Vertex** m = nullptr;
+  std::unique_ptr<Vertex*[]> m;
 
   if (min && max) {
     /*
@@ -146,15 +146,19 @@ Vertex **QuadtreeCell::makeMids() {
     double x = (min->getX() + max->getX()) / 2.0;
     double y = (min->getY() + max->getY()) / 2.0;
 
-    m = new Vertex *[5];
-    m[QUAD_BOTTOM] = new Vertex(x, min->getY());
-    m[QUAD_RIGHT] = new Vertex(max->getX(), y);
-    m[QUAD_TOP] = new Vertex(x, max->getY());
-    m[QUAD_LEFT] = new Vertex(min->getX(), y);
-    m[QUAD_MID] = new Vertex(x, y);
+    m = std::make_unique<Vertex*[]>(5);
+    std::array<std::unique_ptr<Vertex>, 5> pending;
+    pending[QUAD_BOTTOM] = std::make_unique<Vertex>(x, min->getY());
+    pending[QUAD_RIGHT] = std::make_unique<Vertex>(max->getX(), y);
+    pending[QUAD_TOP] = std::make_unique<Vertex>(x, max->getY());
+    pending[QUAD_LEFT] = std::make_unique<Vertex>(min->getX(), y);
+    pending[QUAD_MID] = std::make_unique<Vertex>(x, y);
+    // Preserve allocation order; publish the complete midpoint set together.
+    for (int i = 0; i < 5; ++i)
+      m[i] = pending[i].release();
   }
 
-  return m;
+  return m.release();
 }
 
 void QuadtreeCell::subdivide(bool setChildrenEdges) {

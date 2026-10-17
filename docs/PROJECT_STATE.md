@@ -214,3 +214,12 @@ One work item at a time. Every delivery records scope, reviewed changes,
 executed checks, toolchain, failures and next step. Recheck remote authority
 before writing and after integration. Scientific algorithm changes wait for
 explicit advisor alignment.
+
+## Active stage 3 slice 5 (#20)
+
+Entry main `4bfb31d54cdfb566a564724851d28a0bc02a93a0` passed the full
+14-test, 49-UV, seven-node, six-unit lint and exact Eistute/Book entry campaign.
+Five measured tree generation/subdivision sweeps reproduce retained allocations
+in the pinned original. Root bounds and midpoint construction are guarded in
+the candidate; full candidate and publication gates remain before closure.
+No scientific expressions or refinement criteria are changed.

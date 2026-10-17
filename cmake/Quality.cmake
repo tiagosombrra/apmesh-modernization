@@ -16,6 +16,9 @@ if(BUILD_TESTING)
   add_test(NAME application.uv_unowned_cell COMMAND uv_lifetime_probe unowned-cell-contracts)
   set_tests_properties(application.uv_unowned_cell
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
+  add_test(NAME application.uv_tree_contracts COMMAND uv_lifetime_probe tree-contracts)
+  set_tests_properties(application.uv_tree_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_test(NAME application.node_lifetime COMMAND node_lifetime_probe contracts)
   set_tests_properties(application.node_lifetime
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)

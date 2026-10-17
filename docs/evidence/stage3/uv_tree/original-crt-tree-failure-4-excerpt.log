@@ -1,0 +1,23 @@
+Excerpt only. Full original SHA256 948f59bb01bcdb195733ebd8fcaf6ab0bbd369ebed1be3c933c62f6b5f40d512; 43803 bytes.
+UV lifetime diagnostic
+tree_measured=4:302
+tree_inject=4:0
+Client hook allocation failure.
+tree_inject=4:1
+Client hook allocation failure.
+tree_inject=4:2
+Client hook allocation failure.
+tree_inject=4:3
+Client hook allocation failure.
+tree_inject=4:4
+Client hook allocation failure.
+[intermediate injections and heap dump omitted]
+tree_measured=4:302
+tree_failure_sites=4:302/302
+CRT retained_blocks=210 retained_bytes=7920
+ Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
+{171452} normal block at 0x000001CE22761AE0, 40 bytes long.
+ Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
+{169081} normal block at 0x000001CE2276AF20, 40 bytes long.
+ Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
+Object dump complete.
