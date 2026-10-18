@@ -19,60 +19,23 @@ failures, hashes and limitations stay in the linked evidence records.
 | 2026-10-18, stage 3 slice 9 | #32, PR #33; head 6bda90b91406b0aed79ba6582bf820ea40559325, main d5abb5495b28e8ec5a2b6f779c3adf173929ed04; evidence/STAGE3_CURVE_COPY_CLOSURE.md | Initialized pointer-taking copies preserve parameter pairing; head/main CTest 19/19, copy 30/30, curve 19/19, UV 81/81, node 7/7, 123 denials, unchanged numeric/article traces; clone publication and implicit copying remain open |
 | 2026-10-18, stage 3 slice 10 | #35, PR #36; head 249c561ec10f5d3766b0d1be71ed52d09e6420ec, main 4e23bd00e457e68056ff956869732b1872f04822; evidence/STAGE3_GEOMETRY_ADOPTION_CLOSURE.md | Guard raw Geometry arguments before allocation; head/main CTest 20/20, adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7, 16 denials, unchanged normal traces/allocation counts and exact article regression; helper/policy integration remains open |
 | 2026-10-18, stage 3 slice 11 | #38, PR #39; head ce139f7d46b30daee365dfe5b1608183eb0d02c5, main 43e0309d6408601cd13e130cfa9668f35596ab67; evidence/STAGE3_CURVE_PUBLICATION_CLOSURE.md | Pending clone ownership and per-curve publication/retry; head/main CTest 21/21, sync 73/73, prior instruments pass, 484 denials and exact model regression; full CLI disabled-policy and adaptive rollback remain open |
+| 2026-10-18, stage 3 slice 12 | #41, PR #42; head 98528aeba68bb0b016b40eeeaff8d2bac6acc297, main 358107faff5d6d2cdcd63eba12114abf7f7dc5ec; evidence/STAGE3_CURVE_SNAPSHOTS_CLOSURE.md | Prepared complete sample graph before restoration; head/main CTest 22/22, snapshots 89/89, prior instruments pass, 536 denials and exact model regression; parameter/full adaptive rollback remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with eleven qualified
+Current status: stages 0-2 closed; stage 3 in progress with twelve qualified
 slices; stages 4-11 pending.
 
-Full stage 3 remains open with eleven qualified slices. Next characterize
-shared-sample initialization and adaptive snapshot/restore/failure handling,
-remaining constructors/mutations and explicit full CLI synchronization-disabled
-integration. The extracted clone/publication operation is directly qualified
-for the documented initialized graph fixtures; whole-operation atomicity and
-adaptive rollback are separate. Generic observers/custom subclasses, inconsistent
-sources, other helper/template/tree/mate paths, failed-tree observer consumption/
-retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed for
-measured scope; stages 4-11 stay pending. Doxygen API debt stays stage 8.
+Full stage 3 remains open with twelve qualified slices. Next characterize
+remaining sample construction/mutation and the full adaptive retry/rollback
+boundary, including parameter pairing, patch observers, mesh/error/history/budget
+state, then explicit full CLI synchronization-disabled integration. The point-graph
+restoration is directly qualified for initialized collectively owned samples;
+parameter and full mesh/acceptance rollback remain separate. Generic observers,
+custom subclasses, inconsistent sources, other helper/template/tree/mate paths,
+failed-tree observer consumption/retry and full-process/parallel/LSan/UBSan remain
+open. Stages 0-2 stay closed for measured scope; stages 4-11 stay pending.
+Doxygen undocumented-API debt stays stage 8.
 
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 11 closure](evidence/STAGE3_CURVE_PUBLICATION_CLOSURE.md).
-
-## Active stage 3 slice 12 (#41): transactional curve sample restoration
-
-The original restoration deletes current samples before allocating replacements.
-Twelve original sweeps stop at denied ordinal 6 because live samples were deleted;
-four stop at ordinal 18 because a live list was partially published. Later
-ordinals and CRT retention in those 16 aborted cases are unmeasured; the probe
-stops before unsafe observer consumption. Four empty-to-single sweeps complete
-with six retained blocks each. Other 69 of 89 outcomes are as expected.
-
-Capture/restoration now live in a narrow production unit used by the same
-Generator call sites. Pending unique NodeAdaptive owners and complete prepared
-lists precede direct nonallocating swaps, owner release and unique old-sample
-deletion. Allocation failure preserves the complete live point graph and list
-nodes; subsequent retry succeeds. Success preserves first-encounter ID/XYZ,
-order, sharing and zero node curvature/adjacency. Conflicting duplicate-ID input
-is a policy-preservation control, not approval of that identity convention.
-Parameter lists are not captured/restored. Current samples must be collectively
-exclusively owned/deletable through the curves. Successful restoration invalidates
-their observers. Independent accepted mesh copies remain unchanged in fixtures;
-full mesh, patch binding, budget, error/history and acceptance rollback remain open.
-
-Candidate gates pass: CTest 22/22, zero skips, 74 Python controls; snapshots
-89/89 with 536 denials across 28 calibrated sweeps. Prior synchronization
-73/73, adoption 53/53, copy 30/30, curve 19/19, UV 81/81 and node 7/7 pass.
-Full normal original/repaired traces match. Actual new-unit read-only lint,
-explicit formatting and inventory pass. Both article models repeat twice with
-all nine OBJ/acceptance/rejection/incidence states and 189 CSV fields exact;
-last-accepted triangles remain 1,168/4,256. Published-head/main gates remain.
-
-Original comparison uses 14 pinned production units plus hash-verified lambda
-bodies in an adapter, not the full old generator translation unit. Candidate
-instruments 15 actual units. Only the new Debug CRT target consistently disables
-iterator proxies; actual heap, failure and deliberate negative controls remain.
-Preparation changes allocation timing/counts/bytes and peak live storage, with
-no performance claim. Classification: ownership/exception-consistency defect
-repairs plus engineering extraction. No formula, floating-point order, tolerance,
-budget, verifier, synchronization or adaptation/acceptance/stopping policy change.
-Full stage 3 stays open. See evidence/STAGE3_CURVE_SNAPSHOTS.md and ADR-0013.
+[slice 12 closure](evidence/STAGE3_CURVE_SNAPSHOTS_CLOSURE.md).

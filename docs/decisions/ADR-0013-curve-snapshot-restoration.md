@@ -1,6 +1,6 @@
 # ADR-0013: prepare the full curve sample graph before restoration
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact published-head and implementation-main gates passed through PR #42.
 Issue #41. Classification: ownership/exception-consistency defect repairs and
 engineering extraction, preserving successful policy.
 
@@ -21,8 +21,9 @@ allocating operation for the initialized built-in curves and nonthrowing sample
 destructors in scope. Failure before commit preserves original object/list-node
 identities and allows retry. Success intentionally invalidates those observers.
 
-The curves collectively exclusively own/deletably reference the current samples;
-the existing successful raw sample ownership convention remains. Parameters are
+Curve lists remain observers. The caller must have exclusive lifetime authority
+for all current samples reached through those lists; restoration deletes their
+unique pointers. The existing successful raw sample ownership convention remains. Parameters are
 neither captured nor restored. Null geometry/count mismatch remain no-ops. Reuse
 by first ID preserves even conflicting-ID first-value behavior, without approving
 such input. Recreated nodes retain existing zero curvature/adjacency initialization.

@@ -2,7 +2,8 @@
 
 Updated 2026-10-18 (America/Fortaleza). Issue #41, one active work item.
 Entry main eda3411030e09492a895abde55f7cabbe5e52df4. Candidate qualification
-passes; exact published-head/main gates remain required. See ADR-0013 and
+passes; exact published-head/main gates subsequently passed through PR #42.
+See STAGE3_CURVE_SNAPSHOTS_CLOSURE.md. See ADR-0013 and
 stage3/curve_snapshots/ for executable/input/source identities, full commands,
 original extraction, negative evidence and passed/failed case observations.
 
