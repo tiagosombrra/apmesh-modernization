@@ -146,3 +146,14 @@ Next characterize ownership/publication around curve clones and remaining
 constructor/mutation paths, then shared samples, initialization and rollback.
 Implicit copy/assignment, source-object lifetime versus borrowed-object lifetime,
 general observers and full-process/parallel qualification remain distinct.
+
+## Geometry ownership adoption boundary (#35)
+
+Raw curve/patch adoption now guards the relinquished argument before vector
+allocation. C03 defines failed argument destruction, unchanged existing entries,
+fresh-argument retry and unchanged success/null behavior. Actual initialized
+parametric/Bezier/Hermite copies are exercised through Geometry; this does not
+execute CloneCurveForPatch or qualify the generator's policy or graph rollback.
+Continue that consumer/transaction boundary and remaining constructor/mutation
+paths before shared samples, initialization and rollback. No scientific policy
+is changed. See ADR-0011 and the measured slice evidence.

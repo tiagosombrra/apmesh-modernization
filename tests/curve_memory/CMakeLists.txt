@@ -14,7 +14,11 @@ add_executable(curve_collection_probe probe.cpp ${curve_sources})
 add_executable(curve_copy_probe copy_probe.cpp ${curve_sources}
   "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
   "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp")
-foreach(curve_probe IN ITEMS curve_collection_probe curve_copy_probe)
+add_executable(geometry_adoption_probe adoption_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/geometry.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp")
+foreach(curve_probe IN ITEMS curve_collection_probe curve_copy_probe geometry_adoption_probe)
   target_compile_features(${curve_probe} PRIVATE cxx_std_17)
   target_include_directories(${curve_probe} PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include")
   if(MSVC)

@@ -46,8 +46,8 @@
     {
       "id": "C03",
       "topic": "Geometry ownership",
-      "statement": "Geometry owns points, vectors, curves and patches with unique_ptr containers; raw InsertCurve/InsertPatch APIs adopt the argument.",
-      "limits": "Aliased adoption or observers surviving Geometry destruction remain caller obligations.",
+      "statement": "Geometry owns points, vectors, curves and patches with unique_ptr containers. InsertCurve/InsertPatch consume exclusive ownership on entry, including failed insertion; raw arguments are wrapped before container allocation. Failure preserves existing entries and destroys the relinquished argument. Successful insertion preserves pointer identity/order; null adds an empty slot.",
+      "limits": "Arguments must be uniquely owned and deletable through the base pointer; duplicate/aliased adoption is invalid. Scoped allocation-denial and fresh-argument retry cover initialized parametric/Bezier/Hermite copies and patches only. A failed argument is destroyed, not reusable. Generator clone-helper/policy integration, multi-object publication/graph rollback, other constructors/mutations and observers surviving Geometry destruction remain unqualified.",
       "evidence": [
         {
           "path": "include/data/geometry.h",
@@ -55,11 +55,15 @@
         },
         {
           "path": "src/data/geometry.cpp",
-          "anchor": "curves_.emplace_back(curve);"
+          "anchor": "InsertCurve(std::unique_ptr<CurveAdaptive>(curve));"
         },
         {
           "path": "src/data/geometry.cpp",
-          "anchor": "patches_.emplace_back(patch);"
+          "anchor": "InsertPatch(std::unique_ptr<Patch>(patch));"
+        },
+        {
+          "path": "include/data/geometry.h",
+          "anchor": "Consume exclusive ownership, including on failure."
         }
       ]
     },

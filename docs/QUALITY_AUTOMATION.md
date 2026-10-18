@@ -245,3 +245,16 @@ copy calibration now includes the newly preserved parameter nodes; fixed prior
 allocation counts are not acceptance constants. Read-only lint covers the actual
 changed parametric unit in its compiled configurations. See ADR-0010 and
 evidence/STAGE3_CURVE_COPY.md for reproduction, original failures and limits.
+
+## Geometry adoption (#35)
+
+Required application.geometry_adoption_contracts takes CTest to 20 entries
+with 74 Python controls. The ten-production-unit probe and
+tools/qualify_geometry_adoption.py require 53 ASan/Debug CRT outcomes: 32 normal
+type/destination/overload cases, two null-slot controls, 16 calibrated sweeps
+(16 measured allocation denials), and deliberate UAF/leak/hook controls.
+Previous copy 30, curve 19, UV 81 and node seven cases stay required. Selected
+lint analyzes the actual Geometry unit; explicit formatting is confined to the
+new probe and changed production/header ranges. Raw original failure dumps
+retain tool-produced bytes locally with hashes, without whitespace suppression.
+See ADR-0011 and evidence/STAGE3_GEOMETRY_ADOPTION.md for commands and limits.

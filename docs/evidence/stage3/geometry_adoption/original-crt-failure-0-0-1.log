@@ -1,0 +1,6 @@
+adoption_measured=kind:0 prefix:0 unique:1 allocations:1
+adoption_inject=ordinal:0
+Client hook allocation failure.
+adoption_failure_sites=kind:0 prefix:0 unique:1 denied:1/1 unchanged:1 retry:1
+CRT retained_blocks=0 retained_bytes=0
+PASS

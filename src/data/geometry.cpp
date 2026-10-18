@@ -20,9 +20,7 @@ void Geometry::InsertCurve(std::unique_ptr<CurveAdaptive> curve) {
 }
 
 void Geometry::InsertCurve(CurveAdaptive* curve) {
-  // Takes ownership of curve (must be allocated with new).
-  // (English comment)
-  curves_.emplace_back(curve);
+  InsertCurve(std::unique_ptr<CurveAdaptive>(curve));
 }
 
 unsigned int Geometry::GetNumberCurves() const noexcept {
@@ -41,11 +39,7 @@ void Geometry::InsertPatch(std::unique_ptr<Patch> patch) {
   patches_.push_back(std::move(patch));
 }
 
-void Geometry::InsertPatch(Patch* patch) {
-  // Takes ownership of patch (must be allocated with new).
-  // (English comment)
-  patches_.emplace_back(patch);
-}
+void Geometry::InsertPatch(Patch* patch) { InsertPatch(std::unique_ptr<Patch>(patch)); }
 
 unsigned int Geometry::GetNumberPatches() const noexcept {
   return static_cast<unsigned int>(patches_.size());
