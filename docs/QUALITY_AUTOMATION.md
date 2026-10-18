@@ -4,9 +4,10 @@
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-9 are integrated with qualified node, UV, curve collection
-and initialized curve copy targets.
-The integrated CTest passes 19/19 with zero skips and 74 Python controls,
+Stage 3 slices 1-12 are integrated with qualified node, UV, curve collection,
+initialized curve copy, Geometry adoption, clone publication and point-graph
+snapshot restoration targets.
+The integrated CTest passes 22/22 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
