@@ -151,7 +151,7 @@
       "id": "C07",
       "topic": "Shared curve identity and samples",
       "statement": "Geometry reuses matching four-control Bezier curves in direct or reverse direction. CurveAdaptive does not delete its sampled points; its point and patch lists are observers. SetPoints and UpdateParameters each commit their prepared by-value list by swap; allocation failure preserves that live list and its element nodes. Successful replacement preserves ordered pointer/value results and invalidates old list-element observers without deleting borrowed points or patches. Initialized non-null pointer-taking parametric, Bezier and Hermite copies preserve parameter values/order in independent list nodes alongside the same borrowed sampled points and patches. CloneCurveForPatch returns a pending unique owner through target-incidence insertion. The synchronization-disabled consumer prepares all clones per original curve before batch publication and nonallocating incidence commit; failure preserves the failing curve and any already committed prefix, and whole-operation retry is supported within the qualified graph fixtures.",
-      "limits": "Legacy proximity-based matching and sample ownership are not replaced by this inventory; snapshot/restore currently deletes and recreates sample nodes explicitly. The two setters are independent transactions, not a paired point/parameter transaction. Successful list-node reuse is not promised; redundant copy allocations are removed and old nodes are destroyed after swap. Pointer-taking copy qualification covers initialized scalar/matrix/control state, consistent empty/forward/reversed sampled sequences, independent containers and caller-owned objects; it does not repair inconsistent sources or qualify null/uninitialized sources, implicit copy/assignment, full CLI policy integration or full-process/parallel behavior. Dedicated graph qualification covers initialized base/parametric/Bezier/Hermite curves and real PatchBezier incidences, including repeated edges, null filtering, mixed/non-Coons incidents and committed prefixes. It preserves the pre-existing policy, including mixed-type quirks; it does not establish whole-operation atomicity, adaptive rollback, implicit copies, arbitrary custom subclasses or full-application execution with synchronization disabled.",
+      "limits": "Legacy proximity-based matching and sample ownership are not replaced by this inventory; snapshot restoration retains collective sample ownership and recreates nodes explicitly on success, preparing the complete point graph before committing; C12 defines the measured failure boundary. The two setters are independent transactions, not a paired point/parameter transaction. Successful list-node reuse is not promised; redundant copy allocations are removed and old nodes are destroyed after swap. Pointer-taking copy qualification covers initialized scalar/matrix/control state, consistent empty/forward/reversed sampled sequences, independent containers and caller-owned objects; it does not repair inconsistent sources or qualify null/uninitialized sources, implicit copy/assignment, full CLI policy integration or full-process/parallel behavior. Dedicated graph qualification covers initialized base/parametric/Bezier/Hermite curves and real PatchBezier incidences, including repeated edges, null filtering, mixed/non-Coons incidents and committed prefixes. It preserves the pre-existing policy, including mixed-type quirks; it does not establish whole-operation atomicity, adaptive rollback, implicit copies, arbitrary custom subclasses or full-application execution with synchronization disabled.",
       "evidence": [
         {
           "path": "src/data/geometry.cpp",
@@ -354,20 +354,24 @@
     {
       "id": "C12",
       "topic": "Retry and rollback state",
-      "statement": "Generator snapshots curve point id/XYZ, restores patch submesh observers, deletes unique sampled point pointers, then reconstructs shared samples by ID before retries and after rejection.",
-      "limits": "Raw pointer stability is not preserved; error/history/budget state and every inner attempt require explicit transaction/observer contracts.",
+      "statement": "Generator captures ordered curve point ID/XYZ and calls the extracted restoration before retries and after rejection. Restoration prepares unique NodeAdaptive owners by first-encounter ID and all point lists before nonallocating list swaps, owner release and deletion of each unique old sample. Allocation failure preserves live sample objects, list nodes and observers; a later retry is supported. Success preserves the existing first-ID values, order/sharing and zero-initialized node curvature/adjacency.",
+      "limits": "Current samples must be initialized, non-null, collectively exclusively owned and deletable through the curves, without competing owners or throwing custom destructors. Success invalidates old sample/list-element observers; raw pointer stability is not promised. Null geometry or snapshot-count mismatch is a no-op. Duplicate IDs retain the original first-encounter behavior, not an endorsement of conflicting coordinates. Parameters are neither captured nor restored. Independent accepted mesh copies remain unchanged in the qualified fixtures; patch binding, mesh/error/history/budget state and full adaptive rollback are separate and unqualified. Full-application/parallel behavior, arbitrary subclasses and inconsistent sources remain open.",
       "evidence": [
         {
-          "path": "src/generator/generator_adaptive.cpp",
+          "path": "include/generator/curve_snapshots.h",
           "anchor": "struct CurvePointSnapshot"
         },
         {
-          "path": "src/generator/generator_adaptive.cpp",
-          "anchor": "auto restore_curve_snapshots"
+          "path": "src/generator/curve_snapshots.cpp",
+          "anchor": "std::unordered_map<unsigned long, std::unique_ptr<NodeAdaptive>> point_by_id;"
+        },
+        {
+          "path": "src/generator/curve_snapshots.cpp",
+          "anchor": "geometry->GetCurve(i)->GetPoints().swap(restored_points[i]);"
         },
         {
           "path": "src/generator/generator_adaptive.cpp",
-          "anchor": "point_by_id[point.id] = restored;"
+          "anchor": "const auto restore_curve_snapshots = apmesh::generation::RestoreCurveSnapshots;"
         },
         {
           "path": "src/generator/generator_adaptive.cpp",

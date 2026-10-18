@@ -170,3 +170,13 @@ change; no performance claim. Whole-operation atomicity, complete CLI execution
 with synchronization disabled and adaptive snapshot/rollback are distinct open
 boundaries. Continue remaining construction/mutation and shared-sample
 initialization/rollback; full-process/parallel qualification remains open.
+
+## Qualified curve snapshot restoration boundary (#41)
+
+Capture and point-graph restoration are extracted without changing Generator
+retry/rejection call order. Prepare pending unique nodes and every list before
+committing direct swaps, releasing owners and deleting unique old samples.
+C07/C12 define collective source ownership, observer invalidation and unchanged
+first-ID success policy. Parameter and full mesh rollback are separate. Continue
+with remaining sample construction/mutation and full retry/rollback contracts;
+do not infer complete adaptive rollback from this narrow point-graph transaction.

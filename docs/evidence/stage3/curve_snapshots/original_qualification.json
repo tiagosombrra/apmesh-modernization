@@ -1,0 +1,1685 @@
+{
+  "status": "failed",
+  "scope": "Candidate: fifteen actual curve/Geometry/node/mesh/triangle/numerical/snapshot production units. Original: fourteen pinned actual units plus hash-verified original lambda bodies in an adapter, not the full historical generator translation unit. Collectively owned sample graph capture/ID-first restoration, shared/repeated references, duplicate-ID policy controls, empty guards, failure preservation/retry and independent accepted mesh copies. Parameters and full mesh/acceptance rollback are unchanged and unqualified. Debug CRT uses non-debug iterator metadata with actual heap checks; not full application, parallel, LSan or UBSan.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s12oa\\RelWithDebInfo\\curve_snapshot_probe.exe",
+      "sha256": "84ecd0e3339fb313cddd2d551b312ffc8a092fbadc67935429b8730bee55eeaa"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s12od\\Debug\\curve_snapshot_probe.exe",
+      "sha256": "9c92f51c3c88d33cd209cdd136cc07d09f7ddad126a234f2be64989dd23c493c"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:0 variant:0 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:0 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:0 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:0 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:0 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:0 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:0 variant:0 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:0 variant:0 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:0 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:0 variant:0 unique:4 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "d33a038ae225bad48086d1a6f9d5cb3299d35e1033ea788299313b69497addd3"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:0 variant:1 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:1 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:1 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:1 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:2 point:0 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:2 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_restore=kind:0 variant:1 unique:3 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "b144845bb43d297a10d01f8b870a3f7418b86431f0c4c037c5315ec1d4fae6d9"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_restore=kind:0 variant:2 unique:0 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "3af7f2eb4d6515a62f44576ad28eda876fb39b2c3c4c304a0675392db0e5ff37"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:0 variant:3 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:3 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:3 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:3 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:3 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:3 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:0 variant:3 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:0 variant:3 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:3 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:0 variant:3 unique:4 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "5f3a4d972145d9adc24511a5371802ab5c53060d1d9b88d2e68df86b7b0bc7e2"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:0 variant:4 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_restore=kind:0 variant:4 unique:1 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "40029a268f8ad761f8f83a3cb8db760eac2add2b2b997e78b15a46177d31f252"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:1 variant:0 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:0 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:0 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:0 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:0 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:0 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:1 variant:0 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:1 variant:0 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:0 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:1 variant:0 unique:4 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "e84abe2dbd2499915e155e99363be47104f38fba495c482dfe6220287afd45f8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:1 variant:1 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:1 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:1 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:1 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:2 point:0 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:2 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_restore=kind:1 variant:1 unique:3 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "c6d158c535af5bbb48f0b0a119669fc78986d6bcc44adb8b9507bcdf7919f883"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_restore=kind:1 variant:2 unique:0 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "272aad4812748d7cd9cd1ec3fe321be7ba8618e3e0308f0eca6d86fb26d35035"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:1 variant:3 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:3 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:3 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:3 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:3 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:3 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:1 variant:3 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:1 variant:3 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:3 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:1 variant:3 unique:4 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "e4bcc303fb29e58fb0b0ed68056a251bfcfbc87a2a1ed5a1d53e88c69533b0d2"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:1 variant:4 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_restore=kind:1 variant:4 unique:1 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "96446a972f6b4da434c764677d6a1ffa50857cc6554f6eaee84e7c7b8179af15"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:2 variant:0 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:0 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:0 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:0 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:0 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:0 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:2 variant:0 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:2 variant:0 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:0 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:2 variant:0 unique:4 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "9f774aaa836e1ba6e7704d72a937dd0977236f4b116d958f2416e7d2a1771631"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:2 variant:1 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:1 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:1 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:1 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:2 point:0 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:2 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_restore=kind:2 variant:1 unique:3 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "4ccd49b479355783d10756b4a1dfe854b68a6b6865257ac4e8f9ad6592517ba7"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_restore=kind:2 variant:2 unique:0 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "37f5ebb5346b154f7126792361b9c6e69aacd502b0290488a37f9eeaab602158"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:2 variant:3 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:3 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:3 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:3 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:3 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:3 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:2 variant:3 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:2 variant:3 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:3 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:2 variant:3 unique:4 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "f8fb64c915f3b6b75e433d71425aabee4202eb6f3066325a982c991ccc14e5cc"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:2 variant:4 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_restore=kind:2 variant:4 unique:1 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "3b67900ed4f8dcd86a7c5e1cb4f49341d376f1439cdf56db1980c7c91948717e"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:3 variant:0 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:0 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:0 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:0 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:0 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:0 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:3 variant:0 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:3 variant:0 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:0 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:3 variant:0 unique:4 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "dd07cd6a0507ed5ceb06ed32c3c5bd0891e46712f95e0059555980dfd5870660"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:3 variant:1 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:1 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:1 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:1 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:2 point:0 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:2 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_restore=kind:3 variant:1 unique:3 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "7702caba4ceada6d9eeaf234aafa588877fd350e2d600d6a72c79bf7c82f93b0"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_restore=kind:3 variant:2 unique:0 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "9c59ea638f1ecdfa2623402cb1afb0234c5cd68faba336cec2f580cfb35f2728"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:3 variant:3 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:3 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:3 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:3 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:3 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:3 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:3 variant:3 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:3 variant:3 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:3 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:3 variant:3 unique:4 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "01b1dd9e75e125989eb97218317d78a61c20071f9045cb927d3036cb8783de65"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_point=kind:3 variant:4 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_restore=kind:3 variant:4 unique:1 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "9efaf22107f5af27a9eb2618a99be6be174710ca82d43a4e72afa2f6c72d98ee"
+    },
+    {
+      "instrument": "asan",
+      "mode": "capture-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_capture=kind:0 variant:0 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "685c3a9f88e710ad2f824051d40e3989a350b3197b14398608b33b3c4d320952"
+    },
+    {
+      "instrument": "asan",
+      "mode": "capture-0-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_capture=kind:0 variant:1 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "db6ad2dbff45982268272ac4e46e9fd63316208c44f87a674bd7cd1572bdeb9a"
+    },
+    {
+      "instrument": "asan",
+      "mode": "capture-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_capture=kind:1 variant:0 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "047e3f42b14f46a8b34c68b9ac14d973fca45e3ca259b39a97893bf4130a1897"
+    },
+    {
+      "instrument": "asan",
+      "mode": "capture-1-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_capture=kind:1 variant:1 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "d7edd9e8fce359a3975514c26cbf13b304dce0d1e3a9e1d9fde1ac08b253a93f"
+    },
+    {
+      "instrument": "asan",
+      "mode": "capture-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_capture=kind:2 variant:0 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "91599643ae4f1a007eba25f9048bfda736925ef44ebeb886d8c87f94936f032b"
+    },
+    {
+      "instrument": "asan",
+      "mode": "capture-2-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_capture=kind:2 variant:1 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "49033fb01fefb26526e308cfbdf1437e1f67dead6836734acd5d653ed8b496fe"
+    },
+    {
+      "instrument": "asan",
+      "mode": "capture-3-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_capture=kind:3 variant:0 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "2be0951155e3a1a1d6015d87e304ba90ba8a13653d8c8860e304c895eb883ca2"
+    },
+    {
+      "instrument": "asan",
+      "mode": "capture-3-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_capture=kind:3 variant:1 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "f870d05456b0595602b20a43afe7a8e903c69b3bd63716aa1f3bc8b9e0131d4d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:0 variant:0 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:0 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:0 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:0 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:0 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:0 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:0 variant:0 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:0 variant:0 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:0 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:0 variant:0 unique:4 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "4805ee95472a58596aacb0f0d412f645013aa1e56401c3c75d2f844f383b5f18"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:0 variant:1 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:1 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:1 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:1 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:2 point:0 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:1 curve:2 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_restore=kind:0 variant:1 unique:3 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "9e5396d9a2d6676be7f29753cefe243f1def08eeea13673dcdb4663f17bffff4"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_restore=kind:0 variant:2 unique:0 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "f1651bef4be4d5ab70dd436f0b62ebef691abfacd58e541720538c523f5c8f57"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:0 variant:3 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:3 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:3 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:3 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:0 variant:3 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:0 variant:3 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:0 variant:3 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:0 variant:3 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:0 variant:3 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:0 variant:3 unique:4 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "d01cdb531ed5830bf9ace02ba09560ef130b69ab610db4ca5fa83cdaf0d043d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:0 variant:4 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_restore=kind:0 variant:4 unique:1 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "72c691474f52a76557c9a0d6512f8d9d944e08de7ac216870fec6f8f07835d9f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:1 variant:0 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:0 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:0 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:0 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:0 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:0 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:1 variant:0 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:1 variant:0 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:0 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:1 variant:0 unique:4 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "383b70bb652f98d7e05241abf588d21bd2fa2252cea9857dfb38bae0057a29d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:1 variant:1 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:1 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:1 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:1 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:2 point:0 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:1 curve:2 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_restore=kind:1 variant:1 unique:3 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "ea2b80e8db5c7c977f140a2ce54bd9f2c19f47808ffee2d29cbf52af8680fe07"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_restore=kind:1 variant:2 unique:0 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "17cc652a2974051d187417eac02d77e98bb4a3d13632065fd68d2b7e66a76bcf"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:1 variant:3 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:3 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:3 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:3 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:1 variant:3 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:1 variant:3 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:1 variant:3 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:1 variant:3 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:1 variant:3 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:1 variant:3 unique:4 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "748f5c7d0129b3f6620d0dffb79577ab9546411f9b8ea1ee5863eae99d7833e6"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:1 variant:4 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_restore=kind:1 variant:4 unique:1 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "b9f2de673dade0dca4c5c57097facd980d6bf56063446afa956e91ce15e29748"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:2 variant:0 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:0 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:0 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:0 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:0 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:0 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:2 variant:0 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:2 variant:0 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:0 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:2 variant:0 unique:4 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "6b8d41a57465f39c48192b4b40cdd4ba72ef1a594d2a3394b0fd26478924df33"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:2 variant:1 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:1 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:1 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:1 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:2 point:0 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:1 curve:2 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_restore=kind:2 variant:1 unique:3 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "192f2d1e5204771b03786e371e19f17d0bd017288475c70224a9021a717ec192"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_restore=kind:2 variant:2 unique:0 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "94275fb67140aee37256360b344c9d1e311dbc2b8235f8a6d73052ea2d463863"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:2 variant:3 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:3 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:3 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:3 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:2 variant:3 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:2 variant:3 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:2 variant:3 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:2 variant:3 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:2 variant:3 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:2 variant:3 unique:4 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "c63191adffa86336f40c5b7723284aada0697283611ba85fdb96b2502c4d05aa"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:2 variant:4 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_restore=kind:2 variant:4 unique:1 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "8861cf65c875720f853c9030e5666292bbb6b1daf04afbb6033ee1e41e53e48a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:3 variant:0 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:0 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:0 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:0 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:0 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:0 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:3 variant:0 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:3 variant:0 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:0 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:3 variant:0 unique:4 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "c4cf14b83e37dba22af380deb55de5759114aea4ff04187f5aac6166e6860a0c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:3 variant:1 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:1 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:1 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:1 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:2 point:0 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:1 curve:2 point:2 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_restore=kind:3 variant:1 unique:3 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "3a0e9234f6cc8ffebf2b2d954562fd45f9a03a05790119c8686c1defe8c3c91f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_restore=kind:3 variant:2 unique:0 old-destroyed:4 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "02c2b90412e47540005a6ac69c2208c3d24e22ec8c39c41ac0008b4b4fd55da2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:3 variant:3 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:3 curve:0 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:3 curve:0 point:2 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:3 curve:1 point:0 id:42 x:0x1.8000000000000p+0 y:-0x1.0000000000000p+1 z:0x1.0000000000000p+2",
+        "snapshot_point=kind:3 variant:3 curve:1 point:1 id:41 x:0x1.0000000000000p+0 y:-0x1.0000000000000p+0 z:0x1.0000000000000p+0",
+        "snapshot_point=kind:3 variant:3 curve:1 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:3 variant:3 curve:2 point:0 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_point=kind:3 variant:3 curve:2 point:1 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_point=kind:3 variant:3 curve:2 point:2 id:43 x:0x1.0000000000000p+1 y:-0x1.8000000000000p+1 z:0x1.2000000000000p+3",
+        "snapshot_restore=kind:3 variant:3 unique:4 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "ef1b610c0d60447121a60d4997a33d9960ac6c2c170af95b66830d5424e28860"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_point=kind:3 variant:4 curve:0 point:0 id:40 x:0x1.0000000000000p-1 y:-0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "snapshot_restore=kind:3 variant:4 unique:1 old-destroyed:0 mesh:1 parameters:unchanged"
+      ],
+      "log_sha256": "9f4df9dfa447cfaf921aea5697c78a80ecfe6e7d93a68612a207907520dc1849"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_capture=kind:0 variant:0 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "aadd39fa3cd4945336cba5609050c9654934ce08ec3b2b39357daced7c2fc550"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-0-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_capture=kind:0 variant:1 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "7498016c555de5abf83c13b5d62be24bdceae1a81dcc9628dd07e5ee3b5c52c4"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_capture=kind:1 variant:0 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "ff75bee5103ab04b31fdb26d076fc7d962a962b51d75f0eff4cee34a5dbfff5e"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-1-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_capture=kind:1 variant:1 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "70da4fec4c766f5360946932cacea438b161dd3135d73265fea1de82fc2d7856"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_capture=kind:2 variant:0 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "2f7a7842a37712377cce750aea1f8ea3a0b6850727af4098c0f036c5d9f87b1f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-2-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_capture=kind:2 variant:1 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "298380abbdb892756a64630324cbe7fdd4926be8476feee4f3a9531e96273f92"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-3-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_capture=kind:3 variant:0 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "932ac5265eb9c33301cfea9ff796c747ab3bdf81e33ac4905d8928bd9893b087"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-3-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_capture=kind:3 variant:1 curves:3 references:9 unchanged:1"
+      ],
+      "log_sha256": "6f0ec8f778ba47b0cd9b8825970fc22fbbb2690e665f9a80b5b7b1c3f5282ee0"
+    },
+    {
+      "instrument": "asan",
+      "mode": "guards",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_guards=null:1 empty:1 count-mismatch:1"
+      ],
+      "log_sha256": "75c358db6e59e3680a3245612e037af79a18b3fd48a0d61d755e1ff161dd7684"
+    },
+    {
+      "instrument": "crt",
+      "mode": "guards",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_guards=null:1 empty:1 count-mismatch:1"
+      ],
+      "log_sha256": "e765d0a4924d9420acbde177208832c3cfd0cd01846674e6970c759958368dda"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:0 variant:0 capture:0 allocations:35",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "41ccc3a90a917a41761474034b0e6d2d759385f10dcf132d079cb3143cd050d3"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:0 variant:1 capture:0 allocations:32",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "f7c639ab2f05fa40ba2e026bbe95a4847f5bb4422b499fa560497df0a2a864fc"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:0 variant:2 capture:0 allocations:14",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "f048589511c8a993cdfe61c0236c17a6328cfe41872fa16c3fc259f1f095bed8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-3",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:0 variant:3 capture:0 allocations:31",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_inject=ordinal:10",
+        "snapshot_inject=ordinal:11",
+        "snapshot_inject=ordinal:12",
+        "snapshot_inject=ordinal:13",
+        "snapshot_inject=ordinal:14",
+        "snapshot_inject=ordinal:15",
+        "snapshot_inject=ordinal:16",
+        "snapshot_inject=ordinal:17",
+        "snapshot_inject=ordinal:18"
+      ],
+      "log_sha256": "15810043dfd183c7ca926f99595215c389e8085282823f8095aa7dfd0116bfcf"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-4",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 6,
+      "retained_bytes": 336,
+      "observations": [
+        "snapshot_measured=kind:0 variant:4 capture:0 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:0 variant:4 capture:0 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "a0c66f049688b1b93feb3ca167d7cd1d04f6c4b9de0c0cb2c3d3bee828e98f94"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:1 variant:0 capture:0 allocations:35",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "08d00aacf0c37b5c31541a5ca4960445927915e37f4deeb41f85c478a7ba1de9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:1 variant:1 capture:0 allocations:32",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "88a0fe413256e7201649de97e70ef2551e8b99dff24afd5c49bad0419a23131a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:1 variant:2 capture:0 allocations:14",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "efe4149454f46e5ecc6807f9b86ae8dde525f9b9bc133e984fe7f3647ee202f5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-3",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:1 variant:3 capture:0 allocations:31",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_inject=ordinal:10",
+        "snapshot_inject=ordinal:11",
+        "snapshot_inject=ordinal:12",
+        "snapshot_inject=ordinal:13",
+        "snapshot_inject=ordinal:14",
+        "snapshot_inject=ordinal:15",
+        "snapshot_inject=ordinal:16",
+        "snapshot_inject=ordinal:17",
+        "snapshot_inject=ordinal:18"
+      ],
+      "log_sha256": "beefad68cc40ed4c22b020ea6a954985608d6fa7d27dd2ea6295b7347824cde9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-4",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 6,
+      "retained_bytes": 336,
+      "observations": [
+        "snapshot_measured=kind:1 variant:4 capture:0 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:1 variant:4 capture:0 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "b717d245bf150c3452084716ada1676999beabc434fab3295911b6e0b8005bcc"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:2 variant:0 capture:0 allocations:35",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "69a5219c5c96d5c4a304c8eb06bc8ac39f632fa8489369bbd915ce070012cf41"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:2 variant:1 capture:0 allocations:32",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "4bf8521a198566e9b21256dffcabc1defad524e1381eca28d8b9173296078877"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:2 variant:2 capture:0 allocations:14",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "ba6873aa646474bd2c6310b76fe24d832babfee7164fd5ce1e0b12e466d4d49f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-3",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:2 variant:3 capture:0 allocations:31",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_inject=ordinal:10",
+        "snapshot_inject=ordinal:11",
+        "snapshot_inject=ordinal:12",
+        "snapshot_inject=ordinal:13",
+        "snapshot_inject=ordinal:14",
+        "snapshot_inject=ordinal:15",
+        "snapshot_inject=ordinal:16",
+        "snapshot_inject=ordinal:17",
+        "snapshot_inject=ordinal:18"
+      ],
+      "log_sha256": "769c2751ae2ce02ba2acf7c5ae7b8e9a55786774db6e408abf2c765ab6327a4d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-4",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 6,
+      "retained_bytes": 336,
+      "observations": [
+        "snapshot_measured=kind:2 variant:4 capture:0 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:2 variant:4 capture:0 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "4e2b12ca109f24102d646a41a770069d98216a63ef1a7cdf167423f20e213c4f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:3 variant:0 capture:0 allocations:35",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "eb5d4f2dc0d33092d06984bad650ed73a9062176d8f1948e7302846be644f4d5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:3 variant:1 capture:0 allocations:32",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "5fa70139630ad7b09b0cdc16b758a13f9250e2fd78de0ae3ed17bd93a1af548f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:3 variant:2 capture:0 allocations:14",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6"
+      ],
+      "log_sha256": "706f24a54a10713175cc69176da445e59dc447f766f1bed8ac7f9e03b7c10062"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-3",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "snapshot_measured=kind:3 variant:3 capture:0 allocations:31",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_inject=ordinal:10",
+        "snapshot_inject=ordinal:11",
+        "snapshot_inject=ordinal:12",
+        "snapshot_inject=ordinal:13",
+        "snapshot_inject=ordinal:14",
+        "snapshot_inject=ordinal:15",
+        "snapshot_inject=ordinal:16",
+        "snapshot_inject=ordinal:17",
+        "snapshot_inject=ordinal:18"
+      ],
+      "log_sha256": "d13ac0b4ad44c19697799df7a8c83d048cb94d093bed119a95057bdd6a3d77d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-4",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 6,
+      "retained_bytes": 336,
+      "observations": [
+        "snapshot_measured=kind:3 variant:4 capture:0 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:3 variant:4 capture:0 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "32c649b9e4c047a98fffb2ba73e9969e3831953d7d36394e4d8e1133936b2f74"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-failure-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_measured=kind:0 variant:0 capture:1 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:0 variant:0 capture:1 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "42cd67ce9503a8134190bfd821cf8d2b30abf20e5c87f0c9404b0dd04a997cec"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-failure-0-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_measured=kind:0 variant:1 capture:1 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:0 variant:1 capture:1 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "a7f5ec09250ef3adb2bbe1bb04b0ce1d022104d9142c9ed242ccc363b2e85dd7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-failure-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_measured=kind:1 variant:0 capture:1 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:1 variant:0 capture:1 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "b46182ccf889c688fdd7fa10156a2d191cf3f4443b887531e0607527b7dbad20"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-failure-1-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_measured=kind:1 variant:1 capture:1 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:1 variant:1 capture:1 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "bbc83acfa4335bff0cf3610d5e4aee71d82575bc0f3ead6ed80f136935cf8e9a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-failure-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_measured=kind:2 variant:0 capture:1 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:2 variant:0 capture:1 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "749c1116572259fa0d1c630cf200a2e5ad63972abd0fafe95b374e988461d1e5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-failure-2-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_measured=kind:2 variant:1 capture:1 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:2 variant:1 capture:1 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "7d14e596998b76125789cd6eff7a252ac57bf2835fab0d93bcb4a6ede7ba7de9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-failure-3-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_measured=kind:3 variant:0 capture:1 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:3 variant:0 capture:1 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "192b9c3566467d4b6141fcb033a6311dbe43435e1a596ea7248e32fbe51941c7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "capture-failure-3-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "snapshot_measured=kind:3 variant:1 capture:1 allocations:10",
+        "snapshot_inject=ordinal:0",
+        "snapshot_inject=ordinal:1",
+        "snapshot_inject=ordinal:2",
+        "snapshot_inject=ordinal:3",
+        "snapshot_inject=ordinal:4",
+        "snapshot_inject=ordinal:5",
+        "snapshot_inject=ordinal:6",
+        "snapshot_inject=ordinal:7",
+        "snapshot_inject=ordinal:8",
+        "snapshot_inject=ordinal:9",
+        "snapshot_failure_sites=kind:3 variant:1 capture:1 denied:10/10 unchanged:1 retry:1"
+      ],
+      "log_sha256": "43f2f5a165b470e7d2afea351236bdf700b0877ad7e6b21325f8205f92a47a5b"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ],
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "cfe3f8bf0e2a2acba20d62c49df9d8b4882a5ad3787265c97c6e7e30b75acfcb"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "expected_diagnostic": "retained-blocks",
+      "passed": true,
+      "retained_blocks": 1,
+      "retained_bytes": 40,
+      "observations": [],
+      "log_sha256": "09b12ed7a34b38b77a6161bb3d2c0f8560a85682cb8f92103698e32c088e4c1e"
+    }
+  ]
+}
