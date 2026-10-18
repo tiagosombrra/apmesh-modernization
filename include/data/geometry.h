@@ -26,6 +26,9 @@ class Geometry {
   /// Raw arguments must be uniquely owned and deletable; null adds an empty slot.
   void InsertCurve(std::unique_ptr<CurveAdaptive> curve);
   void InsertCurve(CurveAdaptive* curve); // takes ownership
+  /// Consume a pending batch; storage failure preserves existing entries and destroys the batch.
+  /// After successful preparation, append in order without allocating or moving the objects.
+  void InsertCurves(std::vector<std::unique_ptr<CurveAdaptive>> curves);
 
   unsigned int GetNumberCurves() const noexcept;
 

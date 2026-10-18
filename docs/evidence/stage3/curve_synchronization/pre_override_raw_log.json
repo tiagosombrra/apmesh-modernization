@@ -1,0 +1,6 @@
+{
+  "local_path": "build/s11-pre-override/tidy.log",
+  "sha256": "42c25ec778518a953caa34bd5aa9e3c448e522d0fd16aa3f74867c272a95a28b",
+  "retained_in_tree": false,
+  "reason": "Raw analyzer caret diagnostics contain tool-generated trailing spaces; preserved byte-for-byte locally, not normalized or suppressed."
+}

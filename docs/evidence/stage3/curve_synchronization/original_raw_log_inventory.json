@@ -1,0 +1,370 @@
+{
+  "logs": [
+    {
+      "local_raw_log": "build/s11-original-sync/asan-guards.log",
+      "sha256": "ec4cb35a531c9c5b7c525e98295d8924c6643cb301c5347aec102f92ff3478b9",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-helper-0-0.log",
+      "sha256": "105afbd5528e176c62ef05412d274babaef3c79b97b022266bfcae1cfe09043a",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-helper-0-1.log",
+      "sha256": "20d8011e48b3edace47ae002292e16ffcfbf6afe7f7148d5ecc44e5f6c41f3e2",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-helper-1-0.log",
+      "sha256": "a74854f43aa64160d3d7b6134af49273cef4aba8d866a8159855a7102176b7bf",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-helper-1-1.log",
+      "sha256": "dafac65b2e5180b8edad49e409982368b3dfbdb3867977dcfeea4116e8a0bd98",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-helper-2-0.log",
+      "sha256": "aa8e7591725dd43f219db442ae0cce2d6efe789d109a03f7fa54d85906427999",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-helper-2-1.log",
+      "sha256": "efaffa12ccc29501964aa25ebdfb30927baf8e65bfafb541d6cc467f2be29b52",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-helper-3-0.log",
+      "sha256": "c262950874b932077d55348aa7cf55186cb56ca01d295b863b4ba3fce3f04fd8",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-helper-3-1.log",
+      "sha256": "9c45ee541eef9f2d5487cd3f7c5a582de39721ef00d88c6c45c2a9b015b667b5",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-0-0.log",
+      "sha256": "dbfb7d232aa2651c7cb310985abfb529aab4455f7f003de7a4b144d51530b3b5",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-0-1.log",
+      "sha256": "ed3a42cbd38cee746d62ae0ad7936e608a1acd3cd43edeb2b76c85771126332e",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-0-2.log",
+      "sha256": "84e149402a494213cc5328a07deb733fb81c6b26f1118969332648fe57322dd6",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-0-3.log",
+      "sha256": "f4e0370ee435fa01d9c5e69517ab1bb0b653fb5b630dc5dbda2de3318c5835b3",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-1-0.log",
+      "sha256": "6ab912be737c9b2af30757b4b2ab800bcc9b18fb6464d0ea7ae389baee931b38",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-1-1.log",
+      "sha256": "274706e3cbc660c44ba002bcebd892d503df23bb4e2db2134b6c510dfe10fc38",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-1-2.log",
+      "sha256": "cf3bfacfa7d0d6a1aa7046cd6f75f697becb718840a7b67d7258092159e47e56",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-1-3.log",
+      "sha256": "65c8e885859aa9fe762befef52b86b9ce13ec9be2a11eb55435c34d6f5d7b30e",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-2-0.log",
+      "sha256": "c4afc7c6168f2d90f44cdd631a01fa6a093a08fa4493da87edc8cfd63ce57263",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-2-1.log",
+      "sha256": "35f312b27786e1fdeca3395dfafc1568d52a22de7c64e9c6f9bf6f03ed7b1e3e",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-2-2.log",
+      "sha256": "ffcd0866cf2fb0b86f91b51105a42070481059f84589357c1880dabf4e5fc358",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-2-3.log",
+      "sha256": "376ee33efcc264480a056367b46ae4b2d634529c3b1d6da9c77e5fc2e5f89328",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-3-0.log",
+      "sha256": "1ccd34b90c9c173364ca07919795654cdb7680a18172d86a3df7c72c50a72daa",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-3-1.log",
+      "sha256": "33330b60cfcff524ff773845f7d38d691d6e1e4f2ee8b30410181380138f0048",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-3-2.log",
+      "sha256": "71eea51e1ef5e3876de91b882a53cad4a7a8a8c9af4399855f85ec6a1b10c665",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-normal-3-3.log",
+      "sha256": "b518d5bf3ade6029eccc0c211c9159c16af0dd21beea1153fb4be27d2579ed7b",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/asan-use-after-free.log",
+      "sha256": "3256eb86532fd36a99301836f07aaad612e2faf041dba12e3d6902eb345cc824",
+      "retained_in_tree": false
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-allocation-hook-control.log",
+      "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-0-0.log",
+      "sha256": "2e51de0a2bf5abeb1075a328620f14bd1e4ee2fa04fdaabd769b57cf2a54efd9",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-0-1.log",
+      "sha256": "4a1e39e71000c1900ff869cc9bfcfed85259b7fb9422ff745f575e77b4f56e47",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-0-2.log",
+      "sha256": "03e24eb2111e632165232ac2ca93c9b868fd575ed5e0116f30b8f5c1e35ae286",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-0-3.log",
+      "sha256": "636d864686bdb001805019ded836c6f3565002d68e3608370a41b41a00f5b203",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-1-0.log",
+      "sha256": "05e149e46e92802bb0df17056a30eacec6ad9110db1e1db492d7cdc667c11b19",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-1-1.log",
+      "sha256": "deb204cbe1fae821a41bc925e6d3ac0496aecf26affae410be2e2da5b685cca4",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-1-2.log",
+      "sha256": "bfbfaa6e20d050dc4fd6826043fec16539b5eaa9bec5f8f9502c1014ea49648b",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-1-3.log",
+      "sha256": "8b5ab64b24ed97a398b242641a1eaef90c2acbbd1b99df41ae1c554fb2c3d293",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-2-0.log",
+      "sha256": "175ac2aa578f1ed33a648b408ac5b0e147f4cbc215e29a41d9922571618a5560",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-2-1.log",
+      "sha256": "cc7d61453296eda151261f53aa250c26ca49ed81722c92b151ad12bbf4da2660",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-2-2.log",
+      "sha256": "b986ba7a9024cc05a431ce83ef11a70c1c4b4c3ea70077c4302681e26fef5f7b",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-2-3.log",
+      "sha256": "07d238110be6543f10e873feeb8a34b709efae39dfb12f00fe7beb4002afcc27",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-3-0.log",
+      "sha256": "7668e541acb1ca918475f6b0d10a0f5eb77d684ebcd68dc424984077dcff4ffd",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-3-1.log",
+      "sha256": "e42a65677691c27d3573834bff234587a3b1c0ffe723dde9ddeff9a949f4761d",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-3-2.log",
+      "sha256": "9f33c42151966a91b027ce7647915b31d6c1fc91ebeb01e3e12546e7a5565c6f",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-failure-3-3.log",
+      "sha256": "80c81e5c006d60460a7a51fc8f213f52608e254da004b824a7e0accaefe8df2c",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-guards.log",
+      "sha256": "c0bd0172c61f0420bef42634183d91bc9ca6d17fd0dc6d40fad7288ad9ecfc93",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-0-0.log",
+      "sha256": "1d3e5227dd093c6b2fde1f8940111c0e2f5a54795c821da306d070a8efe6e83c",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-0-1.log",
+      "sha256": "42a434d728c12f67bea749566bc2ef07752a9cc5b352ba18aea4ede78c34dfae",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-1-0.log",
+      "sha256": "08e594de50b8d98d8d1c029107e260fe911669336fb928a61ec957bba44d2c32",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-1-1.log",
+      "sha256": "6ef4afd0fd1dafe2a49919274656b7acad3466a9bc5d6a9f53123080d2876769",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-2-0.log",
+      "sha256": "03f1bbcc05c2fe16af50bcf25ac534cc705b9826e9d3cdb5ceb5e535fb72e677",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-2-1.log",
+      "sha256": "f8732a8026aeb2c69e41a2daf1d2ff76e6709d8596bca5928be83bf5bdbf3e18",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-3-0.log",
+      "sha256": "68bb0e07b7887ec7658782370f1782698303c99b25dea37e5aa0fd63ddb76451",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-3-1.log",
+      "sha256": "39a6f98cd22291ad08390c57dcc44ef7565f9ff517a773b6487507b4be8a04b6",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-failure-0-0.log",
+      "sha256": "fde356b40249eaaca2f362210041308badafe4b1876e838eeb83ec58aeaaab38",
+      "retained_in_tree": false
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-failure-1-0.log",
+      "sha256": "9cd96cc0979409559c9b91563003a02da2316ac6d2830a9b01004a387507f3af",
+      "retained_in_tree": false
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-failure-2-0.log",
+      "sha256": "2d045fba2bee4572ed393e36c9edf278d2301e02c3791a008799f97dff384c6b",
+      "retained_in_tree": false
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-helper-failure-3-0.log",
+      "sha256": "e9bf87ea6aa34483fd0d8eceec521b14fb4ffe5f4cfb598377c43d80724275e2",
+      "retained_in_tree": false
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-leak.log",
+      "sha256": "b0f22c674899a449161d6053cebbd7c5a695a7a22d0292ce21537b51702b5f55",
+      "retained_in_tree": false
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-0-0.log",
+      "sha256": "26af8814071668aeb243d444da56713a20bee02f703043772d92e8c2e2ff4366",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-0-1.log",
+      "sha256": "40b8d355444cb21ea24c3160af6b1cf350bf36752e4fa593cc191c28cb6c490c",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-0-2.log",
+      "sha256": "3d8df0e574439375ab6d1447afed85af311d904dfa8782aead983a902bbc8982",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-0-3.log",
+      "sha256": "7a6288940d682efbe41c4b9f20cb12bbffe8718016fbdbb5783cac4b25946b9b",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-1-0.log",
+      "sha256": "5f4526602343ac1b98508862b23496bb4b77d2de5e262a38afecd1e2e15d24d0",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-1-1.log",
+      "sha256": "a774968d60404d676a7afcf2a3d9c6a76c582f5d56e5027d2378dc767a98eb6a",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-1-2.log",
+      "sha256": "7d68db9e6cf7b58564067fa8ece276a5a8df8d4836c991ca2017bdc32e9193bb",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-1-3.log",
+      "sha256": "0b08c013473eeb053e2739efde306845d3bd0f3f12bcab4d53a3af581f9b7e95",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-2-0.log",
+      "sha256": "85cb4856c30688f172beac86fc446d4c8d601ee5c9c4bb65e383683cb727543c",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-2-1.log",
+      "sha256": "7540783b9a3bb0e225ccf56b720d0b9802f7f1dcabed581187210e6b4d50b917",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-2-2.log",
+      "sha256": "9a597f8a28a5fd244a608d9c182227020b729c794809825d37a013f8e1d3233d",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-2-3.log",
+      "sha256": "6dea4a828caa891621aaad4bfc202750c60b05db2737aa675b9e4475e9b71599",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-3-0.log",
+      "sha256": "1c11c8520d22f912057d9080ccc69dae5fa2d4a523eec63f9ea7c402ba950be3",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-3-1.log",
+      "sha256": "3ae54e50eadbcd23f5da1a89355af5debf26b579d0458b415077d6e6659610e9",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-3-2.log",
+      "sha256": "38b7bfe6ff4db65b25af4a1e29310176d03342ac7e91962ec03a673b119d89c2",
+      "retained_in_tree": true
+    },
+    {
+      "local_raw_log": "build/s11-original-sync/crt-normal-3-3.log",
+      "sha256": "3bffab2cfc854bd819db424e95db648353d81d8b275f93ad5e627e0319103246",
+      "retained_in_tree": true
+    }
+  ],
+  "policy": "Raw leak/UAF diagnostic dumps with tool-produced whitespace remain local, byte-for-byte, with hashes; no normalization."
+}

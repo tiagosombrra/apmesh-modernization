@@ -1,0 +1,7 @@
+sync_measured=kind:1 variant:2 direct:0 allocations:45
+sync_inject=ordinal:0
+Client hook allocation failure.
+sync_inject=ordinal:1
+Client hook allocation failure.
+Contract failed: each published clone has its sole target incidence
+CRT retained_blocks=0 retained_bytes=0

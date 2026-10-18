@@ -1,0 +1,1017 @@
+{
+  "records": [
+    {
+      "record": "s11-original-preliminary.json",
+      "sha256": "7ae6730edb2f2ca9e68522f74e37bce4f2a1370848869c1cb8bf99eb1353da73",
+      "raw_logs": [
+        {
+          "path": "build/s11-original-preliminary/asan-guards.log",
+          "sha256": "ec4cb35a531c9c5b7c525e98295d8924c6643cb301c5347aec102f92ff3478b9"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-helper-0-0.log",
+          "sha256": "105afbd5528e176c62ef05412d274babaef3c79b97b022266bfcae1cfe09043a"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-helper-0-1.log",
+          "sha256": "20d8011e48b3edace47ae002292e16ffcfbf6afe7f7148d5ecc44e5f6c41f3e2"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-helper-1-0.log",
+          "sha256": "a74854f43aa64160d3d7b6134af49273cef4aba8d866a8159855a7102176b7bf"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-helper-1-1.log",
+          "sha256": "dafac65b2e5180b8edad49e409982368b3dfbdb3867977dcfeea4116e8a0bd98"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-helper-2-0.log",
+          "sha256": "aa8e7591725dd43f219db442ae0cce2d6efe789d109a03f7fa54d85906427999"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-helper-2-1.log",
+          "sha256": "efaffa12ccc29501964aa25ebdfb30927baf8e65bfafb541d6cc467f2be29b52"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-helper-3-0.log",
+          "sha256": "c262950874b932077d55348aa7cf55186cb56ca01d295b863b4ba3fce3f04fd8"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-helper-3-1.log",
+          "sha256": "9c45ee541eef9f2d5487cd3f7c5a582de39721ef00d88c6c45c2a9b015b667b5"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-0-0.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-0-1.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-0-2.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-1-0.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-1-1.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-1-2.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-2-0.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-2-1.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-2-2.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-3-0.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-3-1.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-normal-3-2.log",
+          "sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+        },
+        {
+          "path": "build/s11-original-preliminary/asan-use-after-free.log",
+          "sha256": "109c1d76436afc6c7d4c0d8770a6a665dea4aca96b38d8866bf8bed620ed0c9b"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-allocation-hook-control.log",
+          "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-0-0.log",
+          "sha256": "dd1bfaa4561e6c132253b6c4a66e51fb640984aba33fada2766a55fdc1a6f107"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-0-1.log",
+          "sha256": "dade37e33b36a0d4fe8dedfa5bb370062ff11b44ebea0cac6972afb182250184"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-0-2.log",
+          "sha256": "68d60f8bbc36c2b6c726e7d5c9fc592446109a448143d0e39dd3eaf3af81a892"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-1-0.log",
+          "sha256": "e6edcbdc0e52448b86a2b0147bfe5ad28d684bb771fc951ff15233fe2ed0af0e"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-1-1.log",
+          "sha256": "c912f2866905ac014aa20c760fc3d9f06eb82c27c72252c4cb138d19787f47e8"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-1-2.log",
+          "sha256": "7eda96265bdddaf7a49692aa9575fd673577054bb49935a66e9509a2804d0622"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-2-0.log",
+          "sha256": "31515644abaa6e0be2b9794a6ff71cc4e78988898bc972227f6b210d1bcf7125"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-2-1.log",
+          "sha256": "eae0262997a3191b8ff88785b859cfc72eea511c730dd646f673b44fecc472ef"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-2-2.log",
+          "sha256": "d8f471fb2315e60d070f95703d51c41b405bcd5883e55165548f37d6539cd1f1"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-3-0.log",
+          "sha256": "02fac03ee68cec538ed2e0791ae126abe206ae4aedc5a345e726d9f94c59bda1"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-3-1.log",
+          "sha256": "7143209e3df6f73b1895258911809e6e02c185a8eb25eca0d3f3b5259e4c1531"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-failure-3-2.log",
+          "sha256": "1af721038ebf6e49933bc93b176feb52a6a94d5ffd564771cb6898a427c387a6"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-guards.log",
+          "sha256": "c0bd0172c61f0420bef42634183d91bc9ca6d17fd0dc6d40fad7288ad9ecfc93"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-0-0.log",
+          "sha256": "47f383350429ab118d81a1f1598aacbca3717c64e2258abd25ae9e00fe0228e4"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-0-1.log",
+          "sha256": "6300babb244a25d2ede32abc2200f6e558dceca6e1867949da765c0394d8b50b"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-1-0.log",
+          "sha256": "0c62ac5525db5dde131dd398ec55d97b1393191fd7edf382e8eefbf0898e43d2"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-1-1.log",
+          "sha256": "f6c887971b1310456d8f653ae644d3397e49e34394dc600604e4b303ae23d205"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-2-0.log",
+          "sha256": "c06f82430bcb82c62e7abd1b160ab33188aff4f5bdaa9dec3b972531501881f9"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-2-1.log",
+          "sha256": "6605936082ee2cfc29d0aea6810a49935176888acaee933f0fd4c03043082898"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-3-0.log",
+          "sha256": "568e654b912ee2ba3041508f37d9d7db6b06781cffb719e438fa163c28482e18"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-3-1.log",
+          "sha256": "c912e8bce8957b4f9a5e18708820f765c8cc2b63698e56394b04f76a70963e26"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-failure-0-0.log",
+          "sha256": "2ba9e53242ff1101680f68211007cdebc248e83856d28d683089e28ca36814dd"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-failure-1-0.log",
+          "sha256": "8255e0c1ad73247bdbe22ff8448abcd5aa04206b1d4825b7f2ddfb43a383c952"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-failure-2-0.log",
+          "sha256": "79ccc0ee18193c15a44ebf429e8afe0f2e1abadcc45824d5d651e9347a3c80d9"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-helper-failure-3-0.log",
+          "sha256": "0202faf8c9fd52db1fb62e877f376afaac14bb5210a1b7ff70aef56d6c89706f"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-leak.log",
+          "sha256": "d0456171f7abbad5f1fbf5bbc6c5940831b59606f5a6daae864a84914b4ada30"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-0-0.log",
+          "sha256": "e86c8d60dd105fde04c676f1a34067e632b5da538242e834c743d32630ee6bce"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-0-1.log",
+          "sha256": "e8c08459f69569edff5ba932445cc47d15d117813ba51b64a3822d82140a1584"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-0-2.log",
+          "sha256": "92ca48d505dc7ac474696c481ea97e82fed4c22fc80a974ba074f5a43fe32b06"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-1-0.log",
+          "sha256": "21434b668824422a0a8a39d61713866c872865bc72bc73928d304d22c7077849"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-1-1.log",
+          "sha256": "edadbb11d9d95b2bf8c708fefab56df4f9f9e653c6bcf3ac7418ddf6f7c15bf5"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-1-2.log",
+          "sha256": "cf294a84f2774b18efa6d44edd4d0c36c9fa4f14a5ba1f93dec83ef938158dac"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-2-0.log",
+          "sha256": "e4cc32a306690642e5ec650405ff42388a2d812a5aa9d10099e2be3c978ad559"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-2-1.log",
+          "sha256": "c13ee2a863ccd46ea71fa30fef353c6da76a4ff4678f6651dcf8b7e535a6cce5"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-2-2.log",
+          "sha256": "8dc719039cb68501bdaf7f6e5a19b2183d360220bc2845cffc6f4ec84710d1b4"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-3-0.log",
+          "sha256": "85f8b28a9f1dd455f59143ae51aee1fd21c8d9386bde281f463bcf1c9080f596"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-3-1.log",
+          "sha256": "52d495d52385a6b6840965f4a3ccc98278fe363a84846746628438b673bf1ee6"
+        },
+        {
+          "path": "build/s11-original-preliminary/crt-normal-3-2.log",
+          "sha256": "958e9cd5273717c42299e83344db71843f757ec77b27873d5c59199c9968bc4d"
+        }
+      ]
+    },
+    {
+      "record": "s11-original-debug-iterator.json",
+      "sha256": "19d77010a2f5dca8aa991363eaded65d00cc7a8d63a63f2ecc88a536f8cac33a",
+      "raw_logs": [
+        {
+          "path": "build/s11-original-debug-iterator/asan-guards.log",
+          "sha256": "ec4cb35a531c9c5b7c525e98295d8924c6643cb301c5347aec102f92ff3478b9"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-helper-0-0.log",
+          "sha256": "105afbd5528e176c62ef05412d274babaef3c79b97b022266bfcae1cfe09043a"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-helper-0-1.log",
+          "sha256": "20d8011e48b3edace47ae002292e16ffcfbf6afe7f7148d5ecc44e5f6c41f3e2"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-helper-1-0.log",
+          "sha256": "a74854f43aa64160d3d7b6134af49273cef4aba8d866a8159855a7102176b7bf"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-helper-1-1.log",
+          "sha256": "dafac65b2e5180b8edad49e409982368b3dfbdb3867977dcfeea4116e8a0bd98"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-helper-2-0.log",
+          "sha256": "aa8e7591725dd43f219db442ae0cce2d6efe789d109a03f7fa54d85906427999"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-helper-2-1.log",
+          "sha256": "efaffa12ccc29501964aa25ebdfb30927baf8e65bfafb541d6cc467f2be29b52"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-helper-3-0.log",
+          "sha256": "c262950874b932077d55348aa7cf55186cb56ca01d295b863b4ba3fce3f04fd8"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-helper-3-1.log",
+          "sha256": "9c45ee541eef9f2d5487cd3f7c5a582de39721ef00d88c6c45c2a9b015b667b5"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-0-0.log",
+          "sha256": "dbfb7d232aa2651c7cb310985abfb529aab4455f7f003de7a4b144d51530b3b5"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-0-1.log",
+          "sha256": "ed3a42cbd38cee746d62ae0ad7936e608a1acd3cd43edeb2b76c85771126332e"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-0-2.log",
+          "sha256": "84e149402a494213cc5328a07deb733fb81c6b26f1118969332648fe57322dd6"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-1-0.log",
+          "sha256": "6ab912be737c9b2af30757b4b2ab800bcc9b18fb6464d0ea7ae389baee931b38"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-1-1.log",
+          "sha256": "274706e3cbc660c44ba002bcebd892d503df23bb4e2db2134b6c510dfe10fc38"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-1-2.log",
+          "sha256": "cf3bfacfa7d0d6a1aa7046cd6f75f697becb718840a7b67d7258092159e47e56"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-2-0.log",
+          "sha256": "c4afc7c6168f2d90f44cdd631a01fa6a093a08fa4493da87edc8cfd63ce57263"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-2-1.log",
+          "sha256": "35f312b27786e1fdeca3395dfafc1568d52a22de7c64e9c6f9bf6f03ed7b1e3e"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-2-2.log",
+          "sha256": "ffcd0866cf2fb0b86f91b51105a42070481059f84589357c1880dabf4e5fc358"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-3-0.log",
+          "sha256": "1ccd34b90c9c173364ca07919795654cdb7680a18172d86a3df7c72c50a72daa"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-3-1.log",
+          "sha256": "33330b60cfcff524ff773845f7d38d691d6e1e4f2ee8b30410181380138f0048"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-normal-3-2.log",
+          "sha256": "71eea51e1ef5e3876de91b882a53cad4a7a8a8c9af4399855f85ec6a1b10c665"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/asan-use-after-free.log",
+          "sha256": "e742ce3a01dccc9f9a1fc4c97b05b44453038ed318f2130de593e0905a4d5c86"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-allocation-hook-control.log",
+          "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-0-0.log",
+          "sha256": "5c7e6703048d470ad8da0944ad3c7550766b2b3c97184a5f60658d6ff03ae323"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-0-1.log",
+          "sha256": "41320accf5ddf6326b5a145ea646a7c1766c55905bd9b322ac146da0558743af"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-0-2.log",
+          "sha256": "5cf7309782aceca535d345bc40bcbac8930977f2fc881c5a4964b2d189fe3660"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-1-0.log",
+          "sha256": "93da07656c18e2bb5a90fbb92740ae6108d8efa7114ab4d0528cb6c3200ce116"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-1-1.log",
+          "sha256": "5afb8184c96b2318b33261291a800d752819c41bcbf63588d1c88422ec22ee67"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-1-2.log",
+          "sha256": "0762feee0239c56b9b1f7cfb4b7ab5c9d14f6cd43ef2462b9b17e0c21189beab"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-2-0.log",
+          "sha256": "8bb409c292cfde599342be846f4d891609c39d9745bb91c97560b90c9e6b620c"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-2-1.log",
+          "sha256": "4184eded9bba2a5c6ed35768e24a8264192683050b5dc12118a6cf31af37e5fb"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-2-2.log",
+          "sha256": "f819e51920084062550d11718f88965c51798c5a6fab1e97005e93010a73ac8e"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-3-0.log",
+          "sha256": "9bab4f1e66e7ec83e958c878b959f8b6ed15ab1b9903917c442ed7f218019d1d"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-3-1.log",
+          "sha256": "a401a0e7c3ec0eacb2f61ae65b5f19fb7b578b4ba01ce35890d84e3aa146e446"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-failure-3-2.log",
+          "sha256": "d8404758e3f25e31b7b6e1a911a474b747ff0ce4221d194e9249b1dcc4270180"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-guards.log",
+          "sha256": "c0bd0172c61f0420bef42634183d91bc9ca6d17fd0dc6d40fad7288ad9ecfc93"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-0-0.log",
+          "sha256": "1d3e5227dd093c6b2fde1f8940111c0e2f5a54795c821da306d070a8efe6e83c"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-0-1.log",
+          "sha256": "42a434d728c12f67bea749566bc2ef07752a9cc5b352ba18aea4ede78c34dfae"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-1-0.log",
+          "sha256": "08e594de50b8d98d8d1c029107e260fe911669336fb928a61ec957bba44d2c32"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-1-1.log",
+          "sha256": "6ef4afd0fd1dafe2a49919274656b7acad3466a9bc5d6a9f53123080d2876769"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-2-0.log",
+          "sha256": "03f1bbcc05c2fe16af50bcf25ac534cc705b9826e9d3cdb5ceb5e535fb72e677"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-2-1.log",
+          "sha256": "f8732a8026aeb2c69e41a2daf1d2ff76e6709d8596bca5928be83bf5bdbf3e18"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-3-0.log",
+          "sha256": "68bb0e07b7887ec7658782370f1782698303c99b25dea37e5aa0fd63ddb76451"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-3-1.log",
+          "sha256": "39a6f98cd22291ad08390c57dcc44ef7565f9ff517a773b6487507b4be8a04b6"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-failure-0-0.log",
+          "sha256": "8b5a6da98ce651812027df664612574febc11c0a44ecc9416afd5fdf916f289e"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-failure-1-0.log",
+          "sha256": "8dd212fcba07cf545087046fb5344789ebe2e01d0b58fcb05e7bd164eb3891b5"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-failure-2-0.log",
+          "sha256": "5cc8aec7024a7c4e671915edd688ae0c0199a25ae9b36061c6d2ccb475154355"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-helper-failure-3-0.log",
+          "sha256": "c0b9672d13dae1ed6f57a7b58b2b11fa527268dcbfda26b9fc4527abaa39de4f"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-leak.log",
+          "sha256": "06f46fcc801a59bf3f875de179b256c98c787af63f02ac9bc5fa05a685dbaf48"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-0-0.log",
+          "sha256": "26af8814071668aeb243d444da56713a20bee02f703043772d92e8c2e2ff4366"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-0-1.log",
+          "sha256": "40b8d355444cb21ea24c3160af6b1cf350bf36752e4fa593cc191c28cb6c490c"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-0-2.log",
+          "sha256": "3d8df0e574439375ab6d1447afed85af311d904dfa8782aead983a902bbc8982"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-1-0.log",
+          "sha256": "5f4526602343ac1b98508862b23496bb4b77d2de5e262a38afecd1e2e15d24d0"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-1-1.log",
+          "sha256": "a774968d60404d676a7afcf2a3d9c6a76c582f5d56e5027d2378dc767a98eb6a"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-1-2.log",
+          "sha256": "7d68db9e6cf7b58564067fa8ece276a5a8df8d4836c991ca2017bdc32e9193bb"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-2-0.log",
+          "sha256": "85cb4856c30688f172beac86fc446d4c8d601ee5c9c4bb65e383683cb727543c"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-2-1.log",
+          "sha256": "7540783b9a3bb0e225ccf56b720d0b9802f7f1dcabed581187210e6b4d50b917"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-2-2.log",
+          "sha256": "9a597f8a28a5fd244a608d9c182227020b729c794809825d37a013f8e1d3233d"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-3-0.log",
+          "sha256": "1c11c8520d22f912057d9080ccc69dae5fa2d4a523eec63f9ea7c402ba950be3"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-3-1.log",
+          "sha256": "3ae54e50eadbcd23f5da1a89355af5debf26b579d0458b415077d6e6659610e9"
+        },
+        {
+          "path": "build/s11-original-debug-iterator/crt-normal-3-2.log",
+          "sha256": "38b7bfe6ff4db65b25af4a1e29310176d03342ac7e91962ec03a673b119d89c2"
+        }
+      ]
+    },
+    {
+      "record": "s11-original-61.json",
+      "sha256": "987725065cff3a56ed73bebfb5f82ec6c56b2387442c8adabab0f9ab9200572a",
+      "raw_logs": [
+        {
+          "path": "build/s11-original-61/asan-guards.log",
+          "sha256": "ec4cb35a531c9c5b7c525e98295d8924c6643cb301c5347aec102f92ff3478b9"
+        },
+        {
+          "path": "build/s11-original-61/asan-helper-0-0.log",
+          "sha256": "105afbd5528e176c62ef05412d274babaef3c79b97b022266bfcae1cfe09043a"
+        },
+        {
+          "path": "build/s11-original-61/asan-helper-0-1.log",
+          "sha256": "20d8011e48b3edace47ae002292e16ffcfbf6afe7f7148d5ecc44e5f6c41f3e2"
+        },
+        {
+          "path": "build/s11-original-61/asan-helper-1-0.log",
+          "sha256": "a74854f43aa64160d3d7b6134af49273cef4aba8d866a8159855a7102176b7bf"
+        },
+        {
+          "path": "build/s11-original-61/asan-helper-1-1.log",
+          "sha256": "dafac65b2e5180b8edad49e409982368b3dfbdb3867977dcfeea4116e8a0bd98"
+        },
+        {
+          "path": "build/s11-original-61/asan-helper-2-0.log",
+          "sha256": "aa8e7591725dd43f219db442ae0cce2d6efe789d109a03f7fa54d85906427999"
+        },
+        {
+          "path": "build/s11-original-61/asan-helper-2-1.log",
+          "sha256": "efaffa12ccc29501964aa25ebdfb30927baf8e65bfafb541d6cc467f2be29b52"
+        },
+        {
+          "path": "build/s11-original-61/asan-helper-3-0.log",
+          "sha256": "c262950874b932077d55348aa7cf55186cb56ca01d295b863b4ba3fce3f04fd8"
+        },
+        {
+          "path": "build/s11-original-61/asan-helper-3-1.log",
+          "sha256": "9c45ee541eef9f2d5487cd3f7c5a582de39721ef00d88c6c45c2a9b015b667b5"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-0-0.log",
+          "sha256": "dbfb7d232aa2651c7cb310985abfb529aab4455f7f003de7a4b144d51530b3b5"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-0-1.log",
+          "sha256": "ed3a42cbd38cee746d62ae0ad7936e608a1acd3cd43edeb2b76c85771126332e"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-0-2.log",
+          "sha256": "84e149402a494213cc5328a07deb733fb81c6b26f1118969332648fe57322dd6"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-1-0.log",
+          "sha256": "6ab912be737c9b2af30757b4b2ab800bcc9b18fb6464d0ea7ae389baee931b38"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-1-1.log",
+          "sha256": "274706e3cbc660c44ba002bcebd892d503df23bb4e2db2134b6c510dfe10fc38"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-1-2.log",
+          "sha256": "cf3bfacfa7d0d6a1aa7046cd6f75f697becb718840a7b67d7258092159e47e56"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-2-0.log",
+          "sha256": "c4afc7c6168f2d90f44cdd631a01fa6a093a08fa4493da87edc8cfd63ce57263"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-2-1.log",
+          "sha256": "35f312b27786e1fdeca3395dfafc1568d52a22de7c64e9c6f9bf6f03ed7b1e3e"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-2-2.log",
+          "sha256": "ffcd0866cf2fb0b86f91b51105a42070481059f84589357c1880dabf4e5fc358"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-3-0.log",
+          "sha256": "1ccd34b90c9c173364ca07919795654cdb7680a18172d86a3df7c72c50a72daa"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-3-1.log",
+          "sha256": "33330b60cfcff524ff773845f7d38d691d6e1e4f2ee8b30410181380138f0048"
+        },
+        {
+          "path": "build/s11-original-61/asan-normal-3-2.log",
+          "sha256": "71eea51e1ef5e3876de91b882a53cad4a7a8a8c9af4399855f85ec6a1b10c665"
+        },
+        {
+          "path": "build/s11-original-61/asan-use-after-free.log",
+          "sha256": "ede730e98fdb341403ff63823a9e28e7f638d832cd3329e9230995aa4e46d709"
+        },
+        {
+          "path": "build/s11-original-61/crt-allocation-hook-control.log",
+          "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-0-0.log",
+          "sha256": "2e51de0a2bf5abeb1075a328620f14bd1e4ee2fa04fdaabd769b57cf2a54efd9"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-0-1.log",
+          "sha256": "4a1e39e71000c1900ff869cc9bfcfed85259b7fb9422ff745f575e77b4f56e47"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-0-2.log",
+          "sha256": "03e24eb2111e632165232ac2ca93c9b868fd575ed5e0116f30b8f5c1e35ae286"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-1-0.log",
+          "sha256": "05e149e46e92802bb0df17056a30eacec6ad9110db1e1db492d7cdc667c11b19"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-1-1.log",
+          "sha256": "deb204cbe1fae821a41bc925e6d3ac0496aecf26affae410be2e2da5b685cca4"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-1-2.log",
+          "sha256": "bfbfaa6e20d050dc4fd6826043fec16539b5eaa9bec5f8f9502c1014ea49648b"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-2-0.log",
+          "sha256": "175ac2aa578f1ed33a648b408ac5b0e147f4cbc215e29a41d9922571618a5560"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-2-1.log",
+          "sha256": "cc7d61453296eda151261f53aa250c26ca49ed81722c92b151ad12bbf4da2660"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-2-2.log",
+          "sha256": "b986ba7a9024cc05a431ce83ef11a70c1c4b4c3ea70077c4302681e26fef5f7b"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-3-0.log",
+          "sha256": "7668e541acb1ca918475f6b0d10a0f5eb77d684ebcd68dc424984077dcff4ffd"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-3-1.log",
+          "sha256": "e42a65677691c27d3573834bff234587a3b1c0ffe723dde9ddeff9a949f4761d"
+        },
+        {
+          "path": "build/s11-original-61/crt-failure-3-2.log",
+          "sha256": "9f33c42151966a91b027ce7647915b31d6c1fc91ebeb01e3e12546e7a5565c6f"
+        },
+        {
+          "path": "build/s11-original-61/crt-guards.log",
+          "sha256": "c0bd0172c61f0420bef42634183d91bc9ca6d17fd0dc6d40fad7288ad9ecfc93"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-0-0.log",
+          "sha256": "1d3e5227dd093c6b2fde1f8940111c0e2f5a54795c821da306d070a8efe6e83c"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-0-1.log",
+          "sha256": "42a434d728c12f67bea749566bc2ef07752a9cc5b352ba18aea4ede78c34dfae"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-1-0.log",
+          "sha256": "08e594de50b8d98d8d1c029107e260fe911669336fb928a61ec957bba44d2c32"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-1-1.log",
+          "sha256": "6ef4afd0fd1dafe2a49919274656b7acad3466a9bc5d6a9f53123080d2876769"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-2-0.log",
+          "sha256": "03f1bbcc05c2fe16af50bcf25ac534cc705b9826e9d3cdb5ceb5e535fb72e677"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-2-1.log",
+          "sha256": "f8732a8026aeb2c69e41a2daf1d2ff76e6709d8596bca5928be83bf5bdbf3e18"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-3-0.log",
+          "sha256": "68bb0e07b7887ec7658782370f1782698303c99b25dea37e5aa0fd63ddb76451"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-3-1.log",
+          "sha256": "39a6f98cd22291ad08390c57dcc44ef7565f9ff517a773b6487507b4be8a04b6"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-failure-0-0.log",
+          "sha256": "94b51de911fb27a7c97d4463c09b659e005c69fe6258c5113733d219fdeec925"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-failure-1-0.log",
+          "sha256": "0a6f5edd22f54fa2d279ca033155f91fee46314e8ccd4db2e66328659ad51e65"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-failure-2-0.log",
+          "sha256": "2753219f19fdfa2610cb1fcd1ca9a16d746184e7958d3fb7261fbab0d7308aa6"
+        },
+        {
+          "path": "build/s11-original-61/crt-helper-failure-3-0.log",
+          "sha256": "1a1ed1585c32003fe53bd410060a6550651ea75d4513bba020c6f934b31dd48c"
+        },
+        {
+          "path": "build/s11-original-61/crt-leak.log",
+          "sha256": "f9258285f1ce6fe9beffed90b3e574f6853211b3d65186c4af849e670a0cab91"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-0-0.log",
+          "sha256": "26af8814071668aeb243d444da56713a20bee02f703043772d92e8c2e2ff4366"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-0-1.log",
+          "sha256": "40b8d355444cb21ea24c3160af6b1cf350bf36752e4fa593cc191c28cb6c490c"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-0-2.log",
+          "sha256": "3d8df0e574439375ab6d1447afed85af311d904dfa8782aead983a902bbc8982"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-1-0.log",
+          "sha256": "5f4526602343ac1b98508862b23496bb4b77d2de5e262a38afecd1e2e15d24d0"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-1-1.log",
+          "sha256": "a774968d60404d676a7afcf2a3d9c6a76c582f5d56e5027d2378dc767a98eb6a"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-1-2.log",
+          "sha256": "7d68db9e6cf7b58564067fa8ece276a5a8df8d4836c991ca2017bdc32e9193bb"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-2-0.log",
+          "sha256": "85cb4856c30688f172beac86fc446d4c8d601ee5c9c4bb65e383683cb727543c"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-2-1.log",
+          "sha256": "7540783b9a3bb0e225ccf56b720d0b9802f7f1dcabed581187210e6b4d50b917"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-2-2.log",
+          "sha256": "9a597f8a28a5fd244a608d9c182227020b729c794809825d37a013f8e1d3233d"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-3-0.log",
+          "sha256": "1c11c8520d22f912057d9080ccc69dae5fa2d4a523eec63f9ea7c402ba950be3"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-3-1.log",
+          "sha256": "3ae54e50eadbcd23f5da1a89355af5debf26b579d0458b415077d6e6659610e9"
+        },
+        {
+          "path": "build/s11-original-61/crt-normal-3-2.log",
+          "sha256": "38b7bfe6ff4db65b25af4a1e29310176d03342ac7e91962ec03a673b119d89c2"
+        }
+      ]
+    },
+    {
+      "record": "s11-candidate-61.json",
+      "sha256": "a88e7d7364d0b80427a2ef543766b5fcf0659004979f953b534fa5e1c65888eb",
+      "raw_logs": [
+        {
+          "path": "build/s11-candidate-61/asan-guards.log",
+          "sha256": "ec4cb35a531c9c5b7c525e98295d8924c6643cb301c5347aec102f92ff3478b9"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-helper-0-0.log",
+          "sha256": "105afbd5528e176c62ef05412d274babaef3c79b97b022266bfcae1cfe09043a"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-helper-0-1.log",
+          "sha256": "20d8011e48b3edace47ae002292e16ffcfbf6afe7f7148d5ecc44e5f6c41f3e2"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-helper-1-0.log",
+          "sha256": "a74854f43aa64160d3d7b6134af49273cef4aba8d866a8159855a7102176b7bf"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-helper-1-1.log",
+          "sha256": "dafac65b2e5180b8edad49e409982368b3dfbdb3867977dcfeea4116e8a0bd98"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-helper-2-0.log",
+          "sha256": "aa8e7591725dd43f219db442ae0cce2d6efe789d109a03f7fa54d85906427999"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-helper-2-1.log",
+          "sha256": "efaffa12ccc29501964aa25ebdfb30927baf8e65bfafb541d6cc467f2be29b52"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-helper-3-0.log",
+          "sha256": "c262950874b932077d55348aa7cf55186cb56ca01d295b863b4ba3fce3f04fd8"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-helper-3-1.log",
+          "sha256": "9c45ee541eef9f2d5487cd3f7c5a582de39721ef00d88c6c45c2a9b015b667b5"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-0-0.log",
+          "sha256": "dbfb7d232aa2651c7cb310985abfb529aab4455f7f003de7a4b144d51530b3b5"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-0-1.log",
+          "sha256": "ed3a42cbd38cee746d62ae0ad7936e608a1acd3cd43edeb2b76c85771126332e"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-0-2.log",
+          "sha256": "84e149402a494213cc5328a07deb733fb81c6b26f1118969332648fe57322dd6"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-1-0.log",
+          "sha256": "6ab912be737c9b2af30757b4b2ab800bcc9b18fb6464d0ea7ae389baee931b38"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-1-1.log",
+          "sha256": "274706e3cbc660c44ba002bcebd892d503df23bb4e2db2134b6c510dfe10fc38"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-1-2.log",
+          "sha256": "cf3bfacfa7d0d6a1aa7046cd6f75f697becb718840a7b67d7258092159e47e56"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-2-0.log",
+          "sha256": "c4afc7c6168f2d90f44cdd631a01fa6a093a08fa4493da87edc8cfd63ce57263"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-2-1.log",
+          "sha256": "35f312b27786e1fdeca3395dfafc1568d52a22de7c64e9c6f9bf6f03ed7b1e3e"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-2-2.log",
+          "sha256": "ffcd0866cf2fb0b86f91b51105a42070481059f84589357c1880dabf4e5fc358"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-3-0.log",
+          "sha256": "1ccd34b90c9c173364ca07919795654cdb7680a18172d86a3df7c72c50a72daa"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-3-1.log",
+          "sha256": "33330b60cfcff524ff773845f7d38d691d6e1e4f2ee8b30410181380138f0048"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-normal-3-2.log",
+          "sha256": "71eea51e1ef5e3876de91b882a53cad4a7a8a8c9af4399855f85ec6a1b10c665"
+        },
+        {
+          "path": "build/s11-candidate-61/asan-use-after-free.log",
+          "sha256": "1055e0d14a80ddf96d8ad92805d79a1e71be570ed56cbb0d03eb2fab92317d7f"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-allocation-hook-control.log",
+          "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-0-0.log",
+          "sha256": "a1681a13cf5063287ab8a1b181705cb3f1a7f4b09310c5b697041d2bb9815b66"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-0-1.log",
+          "sha256": "d5a561d7577257cae76954d142184b74dc79336834a6cf05747e386e3ef03487"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-0-2.log",
+          "sha256": "bc864f3c5d3c906716695d2516046e0478840634b91f194e24a80370a6aaef2b"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-1-0.log",
+          "sha256": "d131b2321217157b7ce8157468df38f276c5cc8a1c05b0b8aa780e971897ffae"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-1-1.log",
+          "sha256": "a1098af75496eae5bfcac19acf353696bb17ce15448d2e9db8692af6077a0f8a"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-1-2.log",
+          "sha256": "1ba871117c1e328e9f03b8af4ebbe0451fcfcf8fb5cc2be44119289cc32d7686"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-2-0.log",
+          "sha256": "b98d7af48f51327aad19ef7581146f4d9c2f2459906617ef03cfc6cbb01ec748"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-2-1.log",
+          "sha256": "25330aac7722f05f9f39cb98d3768d5302adc559650d37ed2130950159ae2465"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-2-2.log",
+          "sha256": "48b31fd0dcb426565fa9883c50cd9ededa579f32a79844dc8517a7e253a79df6"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-3-0.log",
+          "sha256": "4398edf717981aaca4d390d6863a2b61756eb98c13a7c79261b158b83a641347"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-3-1.log",
+          "sha256": "bee421be2d48f5e6061172cfcb99f686a8e2358f85e98790408ac708cc9d06ce"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-failure-3-2.log",
+          "sha256": "a5a6b2efa9d76ad60b8d2f84f96da9931ad301c2a367d7b7858c3247762c0336"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-guards.log",
+          "sha256": "c0bd0172c61f0420bef42634183d91bc9ca6d17fd0dc6d40fad7288ad9ecfc93"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-0-0.log",
+          "sha256": "1d3e5227dd093c6b2fde1f8940111c0e2f5a54795c821da306d070a8efe6e83c"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-0-1.log",
+          "sha256": "42a434d728c12f67bea749566bc2ef07752a9cc5b352ba18aea4ede78c34dfae"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-1-0.log",
+          "sha256": "08e594de50b8d98d8d1c029107e260fe911669336fb928a61ec957bba44d2c32"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-1-1.log",
+          "sha256": "6ef4afd0fd1dafe2a49919274656b7acad3466a9bc5d6a9f53123080d2876769"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-2-0.log",
+          "sha256": "03f1bbcc05c2fe16af50bcf25ac534cc705b9826e9d3cdb5ceb5e535fb72e677"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-2-1.log",
+          "sha256": "f8732a8026aeb2c69e41a2daf1d2ff76e6709d8596bca5928be83bf5bdbf3e18"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-3-0.log",
+          "sha256": "68bb0e07b7887ec7658782370f1782698303c99b25dea37e5aa0fd63ddb76451"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-3-1.log",
+          "sha256": "39a6f98cd22291ad08390c57dcc44ef7565f9ff517a773b6487507b4be8a04b6"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-failure-0-0.log",
+          "sha256": "540a28b87ba49b4b9fcd8302dad4251c33319bbdb8dc204521500a4cec82b350"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-failure-1-0.log",
+          "sha256": "de40ac9ee141f02d98977806e375edce855231c41f35b0309245267f31f6c1c7"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-failure-2-0.log",
+          "sha256": "c1b305729550fefb308e40cece8e622c86fee72959314c7d7a2d5732f92eb6f2"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-helper-failure-3-0.log",
+          "sha256": "97731708ee8bb87f1edb749fe8594a47522adc8b517544ca311485c55892ffc4"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-leak.log",
+          "sha256": "f0a52cb4ab83176218a6f8ce8158a433ed08d6f9806c261252671b5fbc5397bb"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-0-0.log",
+          "sha256": "26af8814071668aeb243d444da56713a20bee02f703043772d92e8c2e2ff4366"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-0-1.log",
+          "sha256": "40b8d355444cb21ea24c3160af6b1cf350bf36752e4fa593cc191c28cb6c490c"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-0-2.log",
+          "sha256": "3d8df0e574439375ab6d1447afed85af311d904dfa8782aead983a902bbc8982"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-1-0.log",
+          "sha256": "5f4526602343ac1b98508862b23496bb4b77d2de5e262a38afecd1e2e15d24d0"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-1-1.log",
+          "sha256": "a774968d60404d676a7afcf2a3d9c6a76c582f5d56e5027d2378dc767a98eb6a"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-1-2.log",
+          "sha256": "7d68db9e6cf7b58564067fa8ece276a5a8df8d4836c991ca2017bdc32e9193bb"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-2-0.log",
+          "sha256": "85cb4856c30688f172beac86fc446d4c8d601ee5c9c4bb65e383683cb727543c"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-2-1.log",
+          "sha256": "7540783b9a3bb0e225ccf56b720d0b9802f7f1dcabed581187210e6b4d50b917"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-2-2.log",
+          "sha256": "9a597f8a28a5fd244a608d9c182227020b729c794809825d37a013f8e1d3233d"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-3-0.log",
+          "sha256": "1c11c8520d22f912057d9080ccc69dae5fa2d4a523eec63f9ea7c402ba950be3"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-3-1.log",
+          "sha256": "3ae54e50eadbcd23f5da1a89355af5debf26b579d0458b415077d6e6659610e9"
+        },
+        {
+          "path": "build/s11-candidate-61/crt-normal-3-2.log",
+          "sha256": "38b7bfe6ff4db65b25af4a1e29310176d03342ac7e91962ec03a673b119d89c2"
+        }
+      ]
+    },
+    {
+      "path": "build/s11-original-standard-mode-failure.log",
+      "sha256": "0a9ca47853e53f1764dee4e7664bb0f01984729535eb53a04ebc5729f598883e",
+      "first_errors": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-original\\src\\data\\patch\\patch_bezier.cpp(417,38): error C2146: erro de sintaxe: ')' ausente antes do identificador 'and' [C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11oa\\curve_synchronization_probe.vcxproj]",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-original\\src\\data\\patch\\patch_bezier.cpp(417,38): error C3861: 'and': identificador n\u00e3o encontrado [C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11oa\\curve_synchronization_probe.vcxproj]",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-original\\src\\data\\patch\\patch_bezier.cpp(417,49): error C2059: erro de sintaxe: ')' [C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11oa\\curve_synchronization_probe.vcxproj]",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-original\\src\\data\\patch\\patch_bezier.cpp(418,10): error C2059: erro de sintaxe: ';' [C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11oa\\curve_synchronization_probe.vcxproj]",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-original\\src\\data\\patch\\patch_bezier.cpp(422,5): error C2065: 'matrix': identificador n\u00e3o declarado [C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11oa\\curve_synchronization_probe.vcxproj]",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-original\\src\\data\\patch\\patch_bezier.cpp(422,16): error C2065: 'k': identificador n\u00e3o declarado [C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11oa\\curve_synchronization_probe.vcxproj]"
+      ]
+    }
+  ],
+  "interpretation": "Preliminary fixture failures are invalid test setup, not production defects. Iterator-level-2 termination is an instrument limitation. The 61-case intermediate retained reports precede the four all-non-Coons success/control variants; the required final inventory is 73 cases."
+}

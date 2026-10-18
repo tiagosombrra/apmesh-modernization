@@ -8,6 +8,9 @@ if(BUILD_TESTING)
   add_test(NAME application.curve_collection_contracts COMMAND curve_collection_probe contracts)
   add_test(NAME application.curve_copy_contracts COMMAND curve_copy_probe contracts)
   add_test(NAME application.geometry_adoption_contracts COMMAND geometry_adoption_probe contracts)
+  add_test(NAME application.curve_synchronization_contracts COMMAND curve_synchronization_probe contracts)
+  set_tests_properties(application.curve_synchronization_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   set_tests_properties(application.geometry_adoption_contracts
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   set_tests_properties(application.curve_copy_contracts

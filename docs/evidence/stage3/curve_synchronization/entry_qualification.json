@@ -1,0 +1,3121 @@
+{
+  "revision": "45af645c230d9179bd0b8b03a7d28621d0b31cf0",
+  "tree": "493f321dfcb6f7ddb0480036c13fc66be527cbc3",
+  "qualified_inputs": "655549219b478af14e5faef61972af262467f77d490eb95de2548a74c9f7ddae",
+  "commands": [
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "tools/qualify_geometry_adoption.py",
+        "--asan",
+        "build/g10a/RelWithDebInfo/geometry_adoption_probe.exe",
+        "--crt",
+        "build/g10d/Debug/geometry_adoption_probe.exe",
+        "--runtime",
+        "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+        "--output",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-entry\\adoption"
+      ],
+      "sha256": "d931eeb67e7e515bc3e7c5b985cbdc0194c70f14eefb1f39c04ce8ee7c16f605"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "tools/qualify_curve_copy.py",
+        "--asan",
+        "build/c9a/RelWithDebInfo/curve_copy_probe.exe",
+        "--crt",
+        "build/c9d/Debug/curve_copy_probe.exe",
+        "--runtime",
+        "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+        "--output",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-entry\\copy"
+      ],
+      "sha256": "e6a3177ff67a4023421a228c7687f60d449e66f6b6a0d5a27e75a0e777e773c7"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "tools/qualify_curve_collections.py",
+        "--asan",
+        "build/c8a/RelWithDebInfo/curve_collection_probe.exe",
+        "--crt",
+        "build/c8d/Debug/curve_collection_probe.exe",
+        "--runtime",
+        "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+        "--output",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-entry\\curve"
+      ],
+      "sha256": "0bc155dd7a77a1fab5893c2277ed7cc118a627aad26852004a8cdb19e06ae307"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "tools/qualify_uv_lifetime.py",
+        "--asan",
+        "build/u7a/RelWithDebInfo/uv_lifetime_probe.exe",
+        "--crt",
+        "build/u7d/Debug/uv_lifetime_probe.exe",
+        "--runtime",
+        "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+        "--output",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-entry\\uv"
+      ],
+      "sha256": "aa0d1cba1f3f2b2e2359b56de7877a99b173e6028c931006e4063439b877a914"
+    },
+    {
+      "argv": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "tools/qualify_node_lifetime.py",
+        "--asan",
+        "build/n6a/RelWithDebInfo/node_lifetime_probe.exe",
+        "--crt",
+        "build/n6d/Debug/node_lifetime_probe.exe",
+        "--runtime",
+        "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+        "--output",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11-entry\\node"
+      ],
+      "sha256": "fbc7b5b7d1ac843e3680c7e97e1681262980462a6c01c121841c88c821f7752d"
+    }
+  ],
+  "adoption": {
+    "status": "passed",
+    "scope": "Ten actual Geometry/curve/point/patch/numerical production units. Raw/unique adoption of initialized parametric/Bezier/Hermite clones and patches into empty/nonempty owners, scoped ASan/Debug CRT and fresh-argument retry. Not generator clone-helper policy integration, graph transactions, alias adoption, full application, parallel, LSan or UBSan.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\g10a\\RelWithDebInfo\\geometry_adoption_probe.exe",
+        "sha256": "36ba644b4b27819c0af1921da3f5eb7cb0e09221a05ea7f2a42b8828a7b8d430"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\g10d\\Debug\\geometry_adoption_probe.exe",
+        "sha256": "eddcdafa72440cf57015e8eab7fa1bb3362856cbe75311becf34d4e4d829d9d8"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "normal-0-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:0 prefix:0 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "7e0ec8a312f57a44338f6276b45449bc27eb70c216c83a87998e178d36ef6190"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-0-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:0 prefix:0 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "88a2e72c8ba20f34af1f334aff421ff930e44f64e31276f1b6c5c185b2a5899c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-0-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:0 prefix:1 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "bd2007cf705d7b39dcf63d83fc934bd73b74cec54a59efb9bdc7b290ea59156d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-0-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:0 prefix:1 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "7b31e33f0a594db0871716036e3959247794f7b03424f8b16d2a8f38c0e65189"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-1-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:1 prefix:0 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "0eb4dc251d7b92c6562b40eaa4eb02d2699dea6f241e92ead27ccfd34854a3e8"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-1-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:1 prefix:0 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "bb91f77616f5001f3ac544e2e990ac4cda8461831f5988bf4f2957450fa784c1"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-1-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:1 prefix:1 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "d953824e24c999d4ab5e4e54fb94e79cb304c8a19af8dd66bfa01b3ba80ed63e"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-1-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:1 prefix:1 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "ec6985a5d64ae65d276e15ad571755d21b268fa481aba5e3ae8bfd0fc318eec2"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-2-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:2 prefix:0 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "cc1b5c81e36dd9a91acd1e2e3113b76ad2dec82b0702bd6ace2820774b0955b8"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-2-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:2 prefix:0 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "bcbe42d07f6b7cc5052c7835aa97a1e7a570fe78a72dea7fe33c8d010ecbd384"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-2-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:2 prefix:1 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "6943f7f04ac9863ca0db4759082398f896532519d33d5f261c0472ec915374e8"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-2-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:2 prefix:1 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "c3843134d74f4d0d855737585abc0f2b19a465c9ec611bd16f6b1b512c28899b"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-3-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:3 prefix:0 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "609ccd886a55444832148397c42ecee6acb54a6c03bb5fea18c7f6eb49570222"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-3-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:3 prefix:0 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "2b4bea9329a886f1ca5602700d8d87112d8dfc61bca4cbe340db9fef2b7eb935"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-3-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:3 prefix:1 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "d07317304c302b5fb190aa1c7fe9842d3b90d99f8ec304bdcc57985b669114a1"
+      },
+      {
+        "instrument": "asan",
+        "mode": "normal-3-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_normal=kind:3 prefix:1 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "4512547083d3b252487268b4d7691f98d7523878d8e0e5e076801b06ed5971a3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-0-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:0 prefix:0 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "a86f95b1051c7e1a78ec7cb722cc154989510111983db221dff72dcea812d8d7"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-0-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:0 prefix:0 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "0b385a747eb96f4f9dffb96dfd175b996c63cf43ff136ace9ed714b47107ab55"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-0-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:0 prefix:1 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "6322865404df6a8723a46c4ee0c72eb43c50e331fd1b36b936e2edf390bfd6e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-0-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:0 prefix:1 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "355437891161f901624a3d1a3cc1276b87e67d176b15ccc2f28871f395b4784e"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-1-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:1 prefix:0 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "4792ecc3462e93b553086e9023efa01828c036b2ffcb99899b1dc9d69421bf63"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-1-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:1 prefix:0 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "da67f7092cdf499fce28d4f1590e40946a109a24b415c1bf15dd821142015bc8"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-1-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:1 prefix:1 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "0ee650d7eaa7a470dfd2c39b30dd123a7af6c5f1a89ded87308279b91fd13327"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-1-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:1 prefix:1 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "000a5ef584fc53ee4e5f6a81d887975107864c979d60867b9e687052b339d079"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-2-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:2 prefix:0 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "1f6c97cddc0e34b670798fa314a72fa1ea8452d8f9f7c00eb7690dcb7e4af381"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-2-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:2 prefix:0 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "8928d5b1cf0a5dfbc6a01c096a99b2e6a04d507520b4be23ff34fe5dc4fbba69"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-2-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:2 prefix:1 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "ca12dd0615c8da6ef0f96adb3531db8394495cff747936d75e20d343fbcc9e1b"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-2-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:2 prefix:1 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "62a6b6db9b0f2ecfb0fcb7cf815bafabcb73027f074aaacf4a616fb26adc5d4b"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-3-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:3 prefix:0 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "c3ecef466d274fa82e1709e73517ff9a07bbc881eed6c1e193ba592f54654aab"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-3-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:3 prefix:0 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "755f25fe86f9e4c23f32375a5acc73ee035ab3cf9065ac9d7fcf23f338dfab69"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-3-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:3 prefix:1 unique:0 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "ed486c68cb4a9bc62b671caefa25a00c7776831c16359ff13fa3ef27874b8e30"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal-3-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_normal=kind:3 prefix:1 unique:1 order:1 identity:1 source:1 destroyed:1"
+        ],
+        "log_sha256": "ea0a43d9e2db11569ce8bd15fb39eb53ac4fbab63bf5f6ff267277a4cafd762a"
+      },
+      {
+        "instrument": "asan",
+        "mode": "null",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "adoption_null=raw:1 unique:1 slots:2"
+        ],
+        "log_sha256": "5554c4f5b4d137f376c5e9b0f359336a57fb8f2f0e79dca8b3c4759f35ddeae3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "null",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_null=raw:1 unique:1 slots:2"
+        ],
+        "log_sha256": "07c4dd092ed9e657b131786ae2a228a9c378138c1eca1c7961d79b020be70f63"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-0-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:0 prefix:0 unique:0 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:0 prefix:0 unique:0 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "6eef67c5395700f4b95aec4697cdb9b8564ac9a2dba5f70d32ef1aaf90ec1f51"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-0-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:0 prefix:0 unique:1 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:0 prefix:0 unique:1 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "389835fa6db1a85ba8444450702ef21c8b8651d12971f7b6b25200f52e2d3ba6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-0-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:0 prefix:1 unique:0 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:0 prefix:1 unique:0 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "f92b34375d2085dec84111509ce18f805cc57e2839c2f6f703d32c5ef89308bc"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-0-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:0 prefix:1 unique:1 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:0 prefix:1 unique:1 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "1dc3d6ff1b8705d81ed0b998e6f2449630eb28b5625de0204dc90ae9a4381f7f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-1-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:1 prefix:0 unique:0 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:1 prefix:0 unique:0 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "8d34684498ab3e4c6fd36617642b68ce096a09182c5094f78682c0e6243c1911"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-1-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:1 prefix:0 unique:1 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:1 prefix:0 unique:1 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "df1a0529bb8d461b4cd8ad1840649f3bc5399f6bf27acb4a7afcd70e7ea94420"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-1-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:1 prefix:1 unique:0 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:1 prefix:1 unique:0 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "a87118cf9aa07d7c2fbadf35ed8df139af455e497ad2026da70840bf21325cb0"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-1-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:1 prefix:1 unique:1 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:1 prefix:1 unique:1 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "0f22b89c7c178c43c32dd1aa7499b935698e8d24f9adc082c0500e5610da152e"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-2-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:2 prefix:0 unique:0 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:2 prefix:0 unique:0 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "13d0ed9a2a275c7ca7b0f8ba3d80cb3f8394d888bd7d479ff47168251d0461f0"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-2-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:2 prefix:0 unique:1 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:2 prefix:0 unique:1 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "f05d9fcb5c4755152babf5fa2061c58877b68070283ca9ec93efa017f01d5d33"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-2-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:2 prefix:1 unique:0 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:2 prefix:1 unique:0 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "ad783665ad2f9da58fe98e993e4021153bbd3407b0a7ef42ba7c66e3f9149720"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-2-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:2 prefix:1 unique:1 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:2 prefix:1 unique:1 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "44271aeedc99aeccf4d7bd3458d0ce7d8189246addc798415890cf933ee20f7b"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-3-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:3 prefix:0 unique:0 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:3 prefix:0 unique:0 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "adb899eda830e0a84980a82ce25ad5f9230933d200f92036d313b6827d11cd6f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-3-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:3 prefix:0 unique:1 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:3 prefix:0 unique:1 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "0e75f108f4fbcc54f357f0f2472b19cc24b881fb1416c9e195250c8604ea7f4b"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-3-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:3 prefix:1 unique:0 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:3 prefix:1 unique:0 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "9cacdfc58992f12d1ba4dd0c5f9d8ae2e2bb89233dec3882b5d51c233d6583df"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-3-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "adoption_measured=kind:3 prefix:1 unique:1 allocations:1",
+          "adoption_inject=ordinal:0",
+          "adoption_failure_sites=kind:3 prefix:1 unique:1 denied:1/1 unchanged:1 retry:1"
+        ],
+        "log_sha256": "0f272f1d0fd2e3a6616ab02a86053bcad9c8bd628de8d033587f4abe894fee65"
+      },
+      {
+        "instrument": "crt",
+        "mode": "allocation-hook-control",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_hook_control=detected"
+        ],
+        "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "f03692f2c385ba87d4e887c8aedd8c5d8030e6c4cc6214c9d95575fdcc517772"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "retained_blocks": 1,
+        "retained_bytes": 40,
+        "observations": [],
+        "log_sha256": "411e02c49e0a9f90a3f20fda4d4928cd4a204cc71b8068d678e363ce49adc531"
+      }
+    ]
+  },
+  "copy": {
+    "status": "passed",
+    "scope": "Nine actual curve/point/patch/numerical production units. Initialized non-null pointer-taking copies, independent containers and borrowed-object lifetimes; ASan invalid-access and Debug CRT scoped retention/allocation denial. Not implicit copy/assignment, clone publication, full application, parallel, LSan or UBSan.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c9a\\RelWithDebInfo\\curve_copy_probe.exe",
+        "sha256": "045778ac7e3d440cb88f3fb344a6e69aa538dfbc48fb24250b17be61636c3969"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c9d\\Debug\\curve_copy_probe.exe",
+        "sha256": "3016eb0a9be2fc556423ab2459fc3df107cb8bb81425389dfc4d954bd1edc3c9"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "copy-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:0 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:0 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+          "copy_geometry=kind:0 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+          "copy_geometry=kind:0 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:0 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:0 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:0 variant:0 parameters:0 pairs:0 independent:1",
+          "copy_lifetimes=kind:0 variant:0 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "3053b03292fb1c179a9f11a8070cf1d0097e4423acf421a305b89be392b156ae"
+      },
+      {
+        "instrument": "asan",
+        "mode": "copy-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:0 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:0 variant:1 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+          "copy_geometry=kind:0 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+          "copy_geometry=kind:0 variant:1 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:0 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:0 variant:1 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:0 variant:1 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:0 variant:1 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "1f4cbdaf0ccba2cf9b567d2e6ed7d5913f06f5775e9ddb227754ee9fc23bdad4"
+      },
+      {
+        "instrument": "asan",
+        "mode": "copy-0-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:0 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:0 variant:2 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+          "copy_geometry=kind:0 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+          "copy_geometry=kind:0 variant:2 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:0 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:0 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:0 variant:2 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:0 variant:2 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "e5dd5489c43f5c9ed8ccb383067c410c706d13ba3b6ecdb9bbadf8c786aa6cd9"
+      },
+      {
+        "instrument": "asan",
+        "mode": "copy-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:1 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+          "copy_geometry=kind:1 variant:0 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+          "copy_geometry=kind:1 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+          "copy_geometry=kind:1 variant:0 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:1 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+          "copy_arc=kind:1 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:1 variant:0 parameters:0 pairs:0 independent:1",
+          "copy_lifetimes=kind:1 variant:0 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "ecfb9ddad74e1504d6e973335423b9a809538d409aecb8d8c512447819f58859"
+      },
+      {
+        "instrument": "asan",
+        "mode": "copy-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:1 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+          "copy_geometry=kind:1 variant:1 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+          "copy_geometry=kind:1 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+          "copy_geometry=kind:1 variant:1 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:1 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+          "copy_arc=kind:1 variant:1 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:1 variant:1 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:1 variant:1 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "872c8937cacf4deb27f8ff9144ff45d016f6a6d86eda566902b32b883a928f90"
+      },
+      {
+        "instrument": "asan",
+        "mode": "copy-1-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:1 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+          "copy_geometry=kind:1 variant:2 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+          "copy_geometry=kind:1 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+          "copy_geometry=kind:1 variant:2 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:1 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+          "copy_arc=kind:1 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:1 variant:2 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:1 variant:2 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "81564a0a80f08021c3a22d08cc9a97f8c6a2d461bcfb35d2a84c95878bb2a07b"
+      },
+      {
+        "instrument": "asan",
+        "mode": "copy-2-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:2 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:2 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+          "copy_geometry=kind:2 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+          "copy_geometry=kind:2 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:2 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:2 variant:0 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:2 variant:0 parameters:0 pairs:0 independent:1",
+          "copy_lifetimes=kind:2 variant:0 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "43671bf1ac1580857fafc297c24eb81a54807035514a4a85416084aca438db81"
+      },
+      {
+        "instrument": "asan",
+        "mode": "copy-2-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:2 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:2 variant:1 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+          "copy_geometry=kind:2 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+          "copy_geometry=kind:2 variant:1 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:2 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:2 variant:1 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:2 variant:1 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:2 variant:1 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "9ae34826c5f143356d942f030b4f2b07146df971f7e1c5055c5d54a487fea0a4"
+      },
+      {
+        "instrument": "asan",
+        "mode": "copy-2-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "copy_geometry=kind:2 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:2 variant:2 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+          "copy_geometry=kind:2 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+          "copy_geometry=kind:2 variant:2 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:2 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:2 variant:2 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:2 variant:2 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:2 variant:2 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "31cdb84fffac70c895d6780f36ef17b0ca1eb6e678ec6ab2b0e5612a6afb3045"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:0 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:0 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+          "copy_geometry=kind:0 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+          "copy_geometry=kind:0 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:0 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:0 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:0 variant:0 parameters:0 pairs:0 independent:1",
+          "copy_lifetimes=kind:0 variant:0 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "b9d29a446183ad5768981cb394f868ac012c4874674379e40aee6defa3b7b84c"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:0 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:0 variant:1 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+          "copy_geometry=kind:0 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+          "copy_geometry=kind:0 variant:1 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:0 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:0 variant:1 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:0 variant:1 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:0 variant:1 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "2aadb72d218d59329fb2d72ebb000cee50a9f58ebd77a08761bee77991869304"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-0-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:0 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:0 variant:2 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+          "copy_geometry=kind:0 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+          "copy_geometry=kind:0 variant:2 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:0 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:0 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:0 variant:2 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:0 variant:2 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "68621c2edc30280c06cec165abe565f1ea3cc207d5c5d7b6fc9ff8521aa5dbdd"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:1 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+          "copy_geometry=kind:1 variant:0 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+          "copy_geometry=kind:1 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+          "copy_geometry=kind:1 variant:0 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:1 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+          "copy_arc=kind:1 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:1 variant:0 parameters:0 pairs:0 independent:1",
+          "copy_lifetimes=kind:1 variant:0 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "8035e24a3149c50f88cdcb0d2261cb87c24696a3973204be80fcbd37ea11de80"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:1 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+          "copy_geometry=kind:1 variant:1 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+          "copy_geometry=kind:1 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+          "copy_geometry=kind:1 variant:1 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:1 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+          "copy_arc=kind:1 variant:1 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:1 variant:1 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:1 variant:1 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "c8ef1223eaddd798864f52a4945e5e68e85f0cedadaa25fa58bd71832d6885e2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-1-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:1 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+          "copy_geometry=kind:1 variant:2 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+          "copy_geometry=kind:1 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+          "copy_geometry=kind:1 variant:2 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:1 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+          "copy_arc=kind:1 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:1 variant:2 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:1 variant:2 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "1d906e9799b64540521bd235a64c4b10deab82d06944f08369d3c53c2f42fd37"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-2-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:2 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:2 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+          "copy_geometry=kind:2 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+          "copy_geometry=kind:2 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:2 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:2 variant:0 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:2 variant:0 parameters:0 pairs:0 independent:1",
+          "copy_lifetimes=kind:2 variant:0 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "ef5e1f26e339a716fac85341c949e517e2e8a7589948a0160b4d2fe6b5026154"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-2-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:2 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:2 variant:1 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+          "copy_geometry=kind:2 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+          "copy_geometry=kind:2 variant:1 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:2 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:2 variant:1 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:2 variant:1 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:2 variant:1 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "3cfbc015864b9f828ac154a6057f9c42cc8a9ad02599cbe5455a03b61ca4b7d8"
+      },
+      {
+        "instrument": "crt",
+        "mode": "copy-2-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_geometry=kind:2 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "copy_geometry=kind:2 variant:2 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+          "copy_geometry=kind:2 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+          "copy_geometry=kind:2 variant:2 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "copy_geometry=kind:2 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "copy_arc=kind:2 variant:2 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1",
+          "copy_values=kind:2 variant:2 parameters:5 pairs:5 independent:1",
+          "copy_lifetimes=kind:2 variant:2 copy-first:1 source-first:1"
+        ],
+        "log_sha256": "920638cc3e3f7338a61775ebe7ec0fed7170a87b0fb457a11ef9b084f6369fc1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-0-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:0 variant:0 allocations:7",
+          "copy_inject=kind:0 variant:0 ordinal:0",
+          "copy_inject=kind:0 variant:0 ordinal:1",
+          "copy_inject=kind:0 variant:0 ordinal:2",
+          "copy_inject=kind:0 variant:0 ordinal:3",
+          "copy_inject=kind:0 variant:0 ordinal:4",
+          "copy_inject=kind:0 variant:0 ordinal:5",
+          "copy_inject=kind:0 variant:0 ordinal:6",
+          "copy_failure_sites=kind:0 variant:0 denied:7/7 unchanged=1 retry=1"
+        ],
+        "log_sha256": "2138bfe272d3a4c9c5ce301e8178d57450552a5d5462964407d02a38bc695f43"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-0-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:0 variant:1 allocations:17",
+          "copy_inject=kind:0 variant:1 ordinal:0",
+          "copy_inject=kind:0 variant:1 ordinal:1",
+          "copy_inject=kind:0 variant:1 ordinal:2",
+          "copy_inject=kind:0 variant:1 ordinal:3",
+          "copy_inject=kind:0 variant:1 ordinal:4",
+          "copy_inject=kind:0 variant:1 ordinal:5",
+          "copy_inject=kind:0 variant:1 ordinal:6",
+          "copy_inject=kind:0 variant:1 ordinal:7",
+          "copy_inject=kind:0 variant:1 ordinal:8",
+          "copy_inject=kind:0 variant:1 ordinal:9",
+          "copy_inject=kind:0 variant:1 ordinal:10",
+          "copy_inject=kind:0 variant:1 ordinal:11",
+          "copy_inject=kind:0 variant:1 ordinal:12",
+          "copy_inject=kind:0 variant:1 ordinal:13",
+          "copy_inject=kind:0 variant:1 ordinal:14",
+          "copy_inject=kind:0 variant:1 ordinal:15",
+          "copy_inject=kind:0 variant:1 ordinal:16",
+          "copy_failure_sites=kind:0 variant:1 denied:17/17 unchanged=1 retry=1"
+        ],
+        "log_sha256": "4c14393f100d633aadf63921f7c45f6104777b5c91fd547ba90217362a06e1c9"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-0-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:0 variant:2 allocations:17",
+          "copy_inject=kind:0 variant:2 ordinal:0",
+          "copy_inject=kind:0 variant:2 ordinal:1",
+          "copy_inject=kind:0 variant:2 ordinal:2",
+          "copy_inject=kind:0 variant:2 ordinal:3",
+          "copy_inject=kind:0 variant:2 ordinal:4",
+          "copy_inject=kind:0 variant:2 ordinal:5",
+          "copy_inject=kind:0 variant:2 ordinal:6",
+          "copy_inject=kind:0 variant:2 ordinal:7",
+          "copy_inject=kind:0 variant:2 ordinal:8",
+          "copy_inject=kind:0 variant:2 ordinal:9",
+          "copy_inject=kind:0 variant:2 ordinal:10",
+          "copy_inject=kind:0 variant:2 ordinal:11",
+          "copy_inject=kind:0 variant:2 ordinal:12",
+          "copy_inject=kind:0 variant:2 ordinal:13",
+          "copy_inject=kind:0 variant:2 ordinal:14",
+          "copy_inject=kind:0 variant:2 ordinal:15",
+          "copy_inject=kind:0 variant:2 ordinal:16",
+          "copy_failure_sites=kind:0 variant:2 denied:17/17 unchanged=1 retry=1"
+        ],
+        "log_sha256": "9b142efaa4e3f96729db176d5e9370294c87c2e1adbad9339c6d0bb94a27a6b6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-1-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:1 variant:0 allocations:7",
+          "copy_inject=kind:1 variant:0 ordinal:0",
+          "copy_inject=kind:1 variant:0 ordinal:1",
+          "copy_inject=kind:1 variant:0 ordinal:2",
+          "copy_inject=kind:1 variant:0 ordinal:3",
+          "copy_inject=kind:1 variant:0 ordinal:4",
+          "copy_inject=kind:1 variant:0 ordinal:5",
+          "copy_inject=kind:1 variant:0 ordinal:6",
+          "copy_failure_sites=kind:1 variant:0 denied:7/7 unchanged=1 retry=1"
+        ],
+        "log_sha256": "8764ed964514c092eda51930ea49b995ce9445da28da0ecb523a901450f03c8a"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-1-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:1 variant:1 allocations:17",
+          "copy_inject=kind:1 variant:1 ordinal:0",
+          "copy_inject=kind:1 variant:1 ordinal:1",
+          "copy_inject=kind:1 variant:1 ordinal:2",
+          "copy_inject=kind:1 variant:1 ordinal:3",
+          "copy_inject=kind:1 variant:1 ordinal:4",
+          "copy_inject=kind:1 variant:1 ordinal:5",
+          "copy_inject=kind:1 variant:1 ordinal:6",
+          "copy_inject=kind:1 variant:1 ordinal:7",
+          "copy_inject=kind:1 variant:1 ordinal:8",
+          "copy_inject=kind:1 variant:1 ordinal:9",
+          "copy_inject=kind:1 variant:1 ordinal:10",
+          "copy_inject=kind:1 variant:1 ordinal:11",
+          "copy_inject=kind:1 variant:1 ordinal:12",
+          "copy_inject=kind:1 variant:1 ordinal:13",
+          "copy_inject=kind:1 variant:1 ordinal:14",
+          "copy_inject=kind:1 variant:1 ordinal:15",
+          "copy_inject=kind:1 variant:1 ordinal:16",
+          "copy_failure_sites=kind:1 variant:1 denied:17/17 unchanged=1 retry=1"
+        ],
+        "log_sha256": "cb9bd60d8199e08bd3b6367af05711690bcdd856a0a97808371896f2f25d66a4"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-1-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:1 variant:2 allocations:17",
+          "copy_inject=kind:1 variant:2 ordinal:0",
+          "copy_inject=kind:1 variant:2 ordinal:1",
+          "copy_inject=kind:1 variant:2 ordinal:2",
+          "copy_inject=kind:1 variant:2 ordinal:3",
+          "copy_inject=kind:1 variant:2 ordinal:4",
+          "copy_inject=kind:1 variant:2 ordinal:5",
+          "copy_inject=kind:1 variant:2 ordinal:6",
+          "copy_inject=kind:1 variant:2 ordinal:7",
+          "copy_inject=kind:1 variant:2 ordinal:8",
+          "copy_inject=kind:1 variant:2 ordinal:9",
+          "copy_inject=kind:1 variant:2 ordinal:10",
+          "copy_inject=kind:1 variant:2 ordinal:11",
+          "copy_inject=kind:1 variant:2 ordinal:12",
+          "copy_inject=kind:1 variant:2 ordinal:13",
+          "copy_inject=kind:1 variant:2 ordinal:14",
+          "copy_inject=kind:1 variant:2 ordinal:15",
+          "copy_inject=kind:1 variant:2 ordinal:16",
+          "copy_failure_sites=kind:1 variant:2 denied:17/17 unchanged=1 retry=1"
+        ],
+        "log_sha256": "f3d954dc0069ddd4a5d894b5a7c062b32fdefa780db8458accebab2b37966439"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-2-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:2 variant:0 allocations:7",
+          "copy_inject=kind:2 variant:0 ordinal:0",
+          "copy_inject=kind:2 variant:0 ordinal:1",
+          "copy_inject=kind:2 variant:0 ordinal:2",
+          "copy_inject=kind:2 variant:0 ordinal:3",
+          "copy_inject=kind:2 variant:0 ordinal:4",
+          "copy_inject=kind:2 variant:0 ordinal:5",
+          "copy_inject=kind:2 variant:0 ordinal:6",
+          "copy_failure_sites=kind:2 variant:0 denied:7/7 unchanged=1 retry=1"
+        ],
+        "log_sha256": "1618958bde970a6937fbb405ddcf0d30a4976141c1ab29777333d59b95be5ce1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-2-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:2 variant:1 allocations:17",
+          "copy_inject=kind:2 variant:1 ordinal:0",
+          "copy_inject=kind:2 variant:1 ordinal:1",
+          "copy_inject=kind:2 variant:1 ordinal:2",
+          "copy_inject=kind:2 variant:1 ordinal:3",
+          "copy_inject=kind:2 variant:1 ordinal:4",
+          "copy_inject=kind:2 variant:1 ordinal:5",
+          "copy_inject=kind:2 variant:1 ordinal:6",
+          "copy_inject=kind:2 variant:1 ordinal:7",
+          "copy_inject=kind:2 variant:1 ordinal:8",
+          "copy_inject=kind:2 variant:1 ordinal:9",
+          "copy_inject=kind:2 variant:1 ordinal:10",
+          "copy_inject=kind:2 variant:1 ordinal:11",
+          "copy_inject=kind:2 variant:1 ordinal:12",
+          "copy_inject=kind:2 variant:1 ordinal:13",
+          "copy_inject=kind:2 variant:1 ordinal:14",
+          "copy_inject=kind:2 variant:1 ordinal:15",
+          "copy_inject=kind:2 variant:1 ordinal:16",
+          "copy_failure_sites=kind:2 variant:1 denied:17/17 unchanged=1 retry=1"
+        ],
+        "log_sha256": "9c056d45281fe899c6bae1a16078dc1ae7593dddc1574bcc621d026d889aa8e9"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure-2-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "copy_measured=kind:2 variant:2 allocations:17",
+          "copy_inject=kind:2 variant:2 ordinal:0",
+          "copy_inject=kind:2 variant:2 ordinal:1",
+          "copy_inject=kind:2 variant:2 ordinal:2",
+          "copy_inject=kind:2 variant:2 ordinal:3",
+          "copy_inject=kind:2 variant:2 ordinal:4",
+          "copy_inject=kind:2 variant:2 ordinal:5",
+          "copy_inject=kind:2 variant:2 ordinal:6",
+          "copy_inject=kind:2 variant:2 ordinal:7",
+          "copy_inject=kind:2 variant:2 ordinal:8",
+          "copy_inject=kind:2 variant:2 ordinal:9",
+          "copy_inject=kind:2 variant:2 ordinal:10",
+          "copy_inject=kind:2 variant:2 ordinal:11",
+          "copy_inject=kind:2 variant:2 ordinal:12",
+          "copy_inject=kind:2 variant:2 ordinal:13",
+          "copy_inject=kind:2 variant:2 ordinal:14",
+          "copy_inject=kind:2 variant:2 ordinal:15",
+          "copy_inject=kind:2 variant:2 ordinal:16",
+          "copy_failure_sites=kind:2 variant:2 denied:17/17 unchanged=1 retry=1"
+        ],
+        "log_sha256": "247b6020a47a5b9559ad3e3871784ac4684341c813ee2e9bbc4b96b47b405c20"
+      },
+      {
+        "instrument": "crt",
+        "mode": "allocation-hook-control",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_hook_control=detected"
+        ],
+        "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "46f31b555a0ee88915772b0e7e4fb4a81992ee7007eb1bb28f9ab86e3dab0903"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "retained_blocks": 1,
+        "retained_bytes": 40,
+        "observations": [],
+        "log_sha256": "cac3c1a88384fe0951310da8273be82c6db6d6c28d90438f1c57371a1ca1ebf2"
+      }
+    ]
+  },
+  "curve": {
+    "status": "passed",
+    "scope": "Seven actual curve/point/patch/numerical production units; observer collection replacement and two pointer-taking copy constructors. ASan invalid-access and Debug CRT scoped retention/allocation denial; not full application, derived curves, LSan, UBSan or arbitrary exception safety.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c8a\\RelWithDebInfo\\curve_collection_probe.exe",
+        "sha256": "fac3e2cf7fd77cd85e1c5f0bbf604672320cc8c847cbc46b2c7bf6db89cd5f1f"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c8d\\Debug\\curve_collection_probe.exe",
+        "sha256": "24d4d5197e03529c90def748b1e6b38e123a17f495ceba34c9c53ecc5bb5b362"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_success=kind:points variant:2 values:7,6,",
+          "collection_success=kind:points variant:3 values:7,6,-1,",
+          "collection_success=kind:points variant:4 values:",
+          "collection_success=kind:points variant:5 values:0,1,2,",
+          "collection_success=kind:points variant:6 values:7,6,-1,7,5,",
+          "collection_copy=kind:0 borrowed:1",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,",
+          "collection_success=kind:parameters variant:3 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,",
+          "collection_success=kind:parameters variant:4 values:",
+          "collection_success=kind:parameters variant:5 values:0x0.0000000000000p+0,0x1.0000000000000p-3,0x1.0000000000000p-2,",
+          "collection_success=kind:parameters variant:6 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_copy=kind:1 borrowed:1"
+        ],
+        "log_sha256": "3e917d8b2ddd9061ca66d10fc4fb85d9fee5e97d7af747186d0a20fd43c9041d"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_success=kind:points variant:2 values:7,6,",
+          "collection_success=kind:points variant:3 values:7,6,-1,",
+          "collection_success=kind:points variant:4 values:",
+          "collection_success=kind:points variant:5 values:0,1,2,",
+          "collection_success=kind:points variant:6 values:7,6,-1,7,5,",
+          "collection_copy=kind:0 borrowed:1",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,",
+          "collection_success=kind:parameters variant:3 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,",
+          "collection_success=kind:parameters variant:4 values:",
+          "collection_success=kind:parameters variant:5 values:0x0.0000000000000p+0,0x1.0000000000000p-3,0x1.0000000000000p-2,",
+          "collection_success=kind:parameters variant:6 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_copy=kind:1 borrowed:1"
+        ],
+        "log_sha256": "57448579b11860f3b65d1ffbfbc8e9b07f0727968dc1aef13364a2678d083116"
+      },
+      {
+        "instrument": "crt",
+        "mode": "points-failure-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:points variant:0 allocations:7",
+          "collection_inject=kind:points variant:0 ordinal:0",
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:0 ordinal:1",
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:0 ordinal:2",
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:0 ordinal:3",
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:0 ordinal:4",
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:0 ordinal:5",
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:0 ordinal:6",
+          "collection_success=kind:points variant:0 values:7,6,-1,7,5,",
+          "collection_failure_sites=kind:points variant:0 denied:7/7 unchanged=1 retry=1"
+        ],
+        "log_sha256": "f9fd34c644a86a93253617d2196c2455be8951d8b42a524271c7ffc4ff7f3183"
+      },
+      {
+        "instrument": "crt",
+        "mode": "points-failure-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:points variant:1 allocations:7",
+          "collection_inject=kind:points variant:1 ordinal:0",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:1 ordinal:1",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:1 ordinal:2",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:1 ordinal:3",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:1 ordinal:4",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:1 ordinal:5",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_inject=kind:points variant:1 ordinal:6",
+          "collection_success=kind:points variant:1 values:7,6,-1,7,5,",
+          "collection_failure_sites=kind:points variant:1 denied:7/7 unchanged=1 retry=1"
+        ],
+        "log_sha256": "00ea59cb44324880073ade35d85de4b1af435e6da87cc3f75d77edd714c347ec"
+      },
+      {
+        "instrument": "crt",
+        "mode": "points-failure-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:points variant:2 allocations:4",
+          "collection_inject=kind:points variant:2 ordinal:0",
+          "collection_success=kind:points variant:2 values:7,6,",
+          "collection_inject=kind:points variant:2 ordinal:1",
+          "collection_success=kind:points variant:2 values:7,6,",
+          "collection_inject=kind:points variant:2 ordinal:2",
+          "collection_success=kind:points variant:2 values:7,6,",
+          "collection_inject=kind:points variant:2 ordinal:3",
+          "collection_success=kind:points variant:2 values:7,6,",
+          "collection_failure_sites=kind:points variant:2 denied:4/4 unchanged=1 retry=1"
+        ],
+        "log_sha256": "473b56dbe0b35324a9ac5cff3cdba5788b33f335caee02cbf6ce7200ac50fd2e"
+      },
+      {
+        "instrument": "crt",
+        "mode": "points-failure-3",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:points variant:3 allocations:5",
+          "collection_inject=kind:points variant:3 ordinal:0",
+          "collection_success=kind:points variant:3 values:7,6,-1,",
+          "collection_inject=kind:points variant:3 ordinal:1",
+          "collection_success=kind:points variant:3 values:7,6,-1,",
+          "collection_inject=kind:points variant:3 ordinal:2",
+          "collection_success=kind:points variant:3 values:7,6,-1,",
+          "collection_inject=kind:points variant:3 ordinal:3",
+          "collection_success=kind:points variant:3 values:7,6,-1,",
+          "collection_inject=kind:points variant:3 ordinal:4",
+          "collection_success=kind:points variant:3 values:7,6,-1,",
+          "collection_failure_sites=kind:points variant:3 denied:5/5 unchanged=1 retry=1"
+        ],
+        "log_sha256": "c00493daa7e93c2acec88b909a0ca23cff732533987eb7336c38350239779806"
+      },
+      {
+        "instrument": "crt",
+        "mode": "points-failure-4",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:points variant:4 allocations:2",
+          "collection_inject=kind:points variant:4 ordinal:0",
+          "collection_success=kind:points variant:4 values:",
+          "collection_inject=kind:points variant:4 ordinal:1",
+          "collection_success=kind:points variant:4 values:",
+          "collection_failure_sites=kind:points variant:4 denied:2/2 unchanged=1 retry=1"
+        ],
+        "log_sha256": "b74763ce571aa4d56645d2f46ce355d13a5d4a70dacc02f9cb19789e9175f173"
+      },
+      {
+        "instrument": "crt",
+        "mode": "points-failure-5",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:points variant:5 allocations:5",
+          "collection_inject=kind:points variant:5 ordinal:0",
+          "collection_success=kind:points variant:5 values:0,1,2,",
+          "collection_inject=kind:points variant:5 ordinal:1",
+          "collection_success=kind:points variant:5 values:0,1,2,",
+          "collection_inject=kind:points variant:5 ordinal:2",
+          "collection_success=kind:points variant:5 values:0,1,2,",
+          "collection_inject=kind:points variant:5 ordinal:3",
+          "collection_success=kind:points variant:5 values:0,1,2,",
+          "collection_inject=kind:points variant:5 ordinal:4",
+          "collection_success=kind:points variant:5 values:0,1,2,",
+          "collection_failure_sites=kind:points variant:5 denied:5/5 unchanged=1 retry=1"
+        ],
+        "log_sha256": "dcdc5d15fe28d99eb777ee7996672dfebbbe0609a9a1e8d6a7c4cf8465720496"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parameters-failure-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:parameters variant:0 allocations:7",
+          "collection_inject=kind:parameters variant:0 ordinal:0",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:0 ordinal:1",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:0 ordinal:2",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:0 ordinal:3",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:0 ordinal:4",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:0 ordinal:5",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:0 ordinal:6",
+          "collection_success=kind:parameters variant:0 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_failure_sites=kind:parameters variant:0 denied:7/7 unchanged=1 retry=1"
+        ],
+        "log_sha256": "08ec33f9016794edb5ff7ddfaf74b2620ef622caeecdc9ff48c04ee4ef081548"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parameters-failure-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:parameters variant:1 allocations:7",
+          "collection_inject=kind:parameters variant:1 ordinal:0",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:1 ordinal:1",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:1 ordinal:2",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:1 ordinal:3",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:1 ordinal:4",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:1 ordinal:5",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:1 ordinal:6",
+          "collection_success=kind:parameters variant:1 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,0x1.0000000000000p-1,0x1.0000000000000p-2,",
+          "collection_failure_sites=kind:parameters variant:1 denied:7/7 unchanged=1 retry=1"
+        ],
+        "log_sha256": "c4114cf3bf5ca0673af5569efac44785af31e7da196be4c79e9c84ea8be53f41"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parameters-failure-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:parameters variant:2 allocations:4",
+          "collection_inject=kind:parameters variant:2 ordinal:0",
+          "collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,",
+          "collection_inject=kind:parameters variant:2 ordinal:1",
+          "collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,",
+          "collection_inject=kind:parameters variant:2 ordinal:2",
+          "collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,",
+          "collection_inject=kind:parameters variant:2 ordinal:3",
+          "collection_success=kind:parameters variant:2 values:0x1.c000000000000p-1,0x1.0000000000000p-3,",
+          "collection_failure_sites=kind:parameters variant:2 denied:4/4 unchanged=1 retry=1"
+        ],
+        "log_sha256": "0ad8e293eacf000838c8e8e1589ae22ee8f295b3c254dcaafa091a399d9438af"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parameters-failure-3",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:parameters variant:3 allocations:5",
+          "collection_inject=kind:parameters variant:3 ordinal:0",
+          "collection_success=kind:parameters variant:3 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,",
+          "collection_inject=kind:parameters variant:3 ordinal:1",
+          "collection_success=kind:parameters variant:3 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,",
+          "collection_inject=kind:parameters variant:3 ordinal:2",
+          "collection_success=kind:parameters variant:3 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,",
+          "collection_inject=kind:parameters variant:3 ordinal:3",
+          "collection_success=kind:parameters variant:3 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,",
+          "collection_inject=kind:parameters variant:3 ordinal:4",
+          "collection_success=kind:parameters variant:3 values:0x1.c000000000000p-1,0x1.0000000000000p-3,0x1.c000000000000p-1,",
+          "collection_failure_sites=kind:parameters variant:3 denied:5/5 unchanged=1 retry=1"
+        ],
+        "log_sha256": "1355c49c217d064e467f857f19243086cb6820fd74e5903dd496159180143015"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parameters-failure-4",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:parameters variant:4 allocations:2",
+          "collection_inject=kind:parameters variant:4 ordinal:0",
+          "collection_success=kind:parameters variant:4 values:",
+          "collection_inject=kind:parameters variant:4 ordinal:1",
+          "collection_success=kind:parameters variant:4 values:",
+          "collection_failure_sites=kind:parameters variant:4 denied:2/2 unchanged=1 retry=1"
+        ],
+        "log_sha256": "adea5e0582e73cfcb95b507efb41e01b8cd42b2f0c1acadd94ee057e89eca5b9"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parameters-failure-5",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:parameters variant:5 allocations:5",
+          "collection_inject=kind:parameters variant:5 ordinal:0",
+          "collection_success=kind:parameters variant:5 values:0x0.0000000000000p+0,0x1.0000000000000p-3,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:5 ordinal:1",
+          "collection_success=kind:parameters variant:5 values:0x0.0000000000000p+0,0x1.0000000000000p-3,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:5 ordinal:2",
+          "collection_success=kind:parameters variant:5 values:0x0.0000000000000p+0,0x1.0000000000000p-3,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:5 ordinal:3",
+          "collection_success=kind:parameters variant:5 values:0x0.0000000000000p+0,0x1.0000000000000p-3,0x1.0000000000000p-2,",
+          "collection_inject=kind:parameters variant:5 ordinal:4",
+          "collection_success=kind:parameters variant:5 values:0x0.0000000000000p+0,0x1.0000000000000p-3,0x1.0000000000000p-2,",
+          "collection_failure_sites=kind:parameters variant:5 denied:5/5 unchanged=1 retry=1"
+        ],
+        "log_sha256": "e71ac525cce0e12d48abebd70dc12091d631b85ac06d55b7d10ab2e12123a596"
+      },
+      {
+        "instrument": "crt",
+        "mode": "base-copy-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:base-copy variant:0 allocations:7",
+          "collection_inject=kind:base-copy variant:0 ordinal:0",
+          "collection_inject=kind:base-copy variant:0 ordinal:1",
+          "collection_inject=kind:base-copy variant:0 ordinal:2",
+          "collection_inject=kind:base-copy variant:0 ordinal:3",
+          "collection_inject=kind:base-copy variant:0 ordinal:4",
+          "collection_inject=kind:base-copy variant:0 ordinal:5",
+          "collection_inject=kind:base-copy variant:0 ordinal:6",
+          "collection_failure_sites=kind:base-copy variant:0 denied:7/7 unchanged=1 retry=1"
+        ],
+        "log_sha256": "bc91541a47012ecb39a9436164a7cbcd6ec6e2a35c3b4d68ecdf7516aa08569d"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-copy-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "collection_measured=kind:parametric-copy variant:0 allocations:11",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:0",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:1",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:2",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:3",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:4",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:5",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:6",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:7",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:8",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:9",
+          "collection_inject=kind:parametric-copy variant:0 ordinal:10",
+          "collection_failure_sites=kind:parametric-copy variant:0 denied:11/11 unchanged=1 retry=1"
+        ],
+        "log_sha256": "8974034a752ed2c9a33ebe95b37e52b5e7f7deb23318f00fec6ab9a42f7f9995"
+      },
+      {
+        "instrument": "crt",
+        "mode": "allocation-hook-control",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_hook_control=detected"
+        ],
+        "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "fdb926739f5d853c0416b8b7e3b0a01e35b2be729c792c090efd97c3efbb09af"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "retained_blocks": 1,
+        "retained_bytes": 40,
+        "observations": [],
+        "log_sha256": "25221dfe8343e35fdc348243b710fceaed5feab450844dfee9c6782f5277a73b"
+      }
+    ]
+  },
+  "uv": {
+    "status": "passed",
+    "scope": "14 actual UV/curve/numerical production units; isolated ASan invalid-access and Debug CRT retained-block/allocation-hook coverage. Not full application, LSan, UBSan or arbitrary exception safety.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\u7a\\RelWithDebInfo\\uv_lifetime_probe.exe",
+        "sha256": "167e611d3003121a48b0dc026b5b4de91e6dcba077e3c533a9902194f3b1d1ce"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\u7d\\Debug\\uv_lifetime_probe.exe",
+        "sha256": "30e4b2e7ea4430ce52727303b0d206ace9e7a6c7ce360090b2235d8a46bc6fc6"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "normal",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "partial",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "exception",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "1dc2dbcb8e2ac38719f7bd177981f81f8fc2abe78923d6b39789bc25b9c7c7bc"
+      },
+      {
+        "instrument": "asan",
+        "mode": "topology-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "b08fdcd7bb781dca225da3e919fce0cff37a7cd1bb1a25adf22a3fb2c06d093d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "pending-tree",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-contract",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "9679ea7fcd85d98629d7660fadd4fbc0dfa9dbe72f66f4e2523419274b6eb59c"
+      },
+      {
+        "instrument": "asan",
+        "mode": "transfer-order",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "midpoint-alias",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0",
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "990c0db89a4df29dfb5fa1b4eb3715170a8abeda6d97c98f60dc4c726c2a9e5d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "primitive-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "face-alias-cache",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "registration-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "7b47639bc8ef1b8ec7b2fcfc74f60c1bdc395b598346834057f25989a850a315"
+      },
+      {
+        "instrument": "asan",
+        "mode": "unowned-edge-query",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "unowned-face-query",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114"
+      },
+      {
+        "instrument": "asan",
+        "mode": "tree-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "8cca046ddc5000aa1ee4801481d3572837811bbb23b0f945a4ac3b4bbe044e70"
+      },
+      {
+        "instrument": "asan",
+        "mode": "angle-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "angle_success=branch:0 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:0 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:1 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:1 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:2 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:2 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:3 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:3 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:4 adjacency:0 value:-0x1.0000000000000p+0 preserved:4",
+          "angle_success=branch:4 adjacency:1 value:-0x1.0000000000000p+0 preserved:4"
+        ],
+        "log_sha256": "ecc97cc80496a6fc7dd7a455171601b219d8b4f9e39e28c4d3059781b325d7ea"
+      },
+      {
+        "instrument": "asan",
+        "mode": "parametric-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "curve_integral=0x1.7bccccccccb66p-1 midpoint:0x1.335e09e000000p-1",
+          "curve_success=sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "curve_success=sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+          "curve_success=sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+          "curve_success=sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "curve_success=sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "parametric_success=variant:0 x:0x1.413dab0000000p-2 y:0x0.0000000000000p+0 len:0x1.4000000000140p-2 null:0",
+          "parametric_success=variant:1 x:0x1.b488700000000p-3 y:0x0.0000000000000p+0 len:0x1.60000000001dfp-1 null:0",
+          "parametric_success=variant:10 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:0x1.8000000000000p-2 null:1",
+          "parametric_success=variant:2 x:0x1.0000000000000p+0 y:0x1.413dab0000000p-2 len:0x1.4000000000140p-2 null:0",
+          "parametric_success=variant:3 x:0x1.0000000000000p+0 y:0x1.b488700000000p-3 len:0x1.60000000001dfp-1 null:0",
+          "parametric_success=variant:4 x:0x1.92dde40000000p-1 y:0x1.0000000000000p+0 len:0x1.60000000001dfp-1 null:0",
+          "parametric_success=variant:5 x:0x1.5f612a8000000p-1 y:0x1.0000000000000p+0 len:0x1.4000000000140p-2 null:0",
+          "parametric_success=variant:6 x:0x0.0000000000000p+0 y:0x1.92dde40000000p-1 len:0x1.60000000001dfp-1 null:0",
+          "parametric_success=variant:7 x:0x0.0000000000000p+0 y:0x1.5f612a8000000p-1 len:0x1.4000000000140p-2 null:0",
+          "parametric_success=variant:8 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0",
+          "parametric_success=variant:9 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0"
+        ],
+        "log_sha256": "0ec4526662d39431c51a4fae5bdf07933498475b9d9643361c9c518fcc08e71c"
+      },
+      {
+        "instrument": "crt",
+        "mode": "normal",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "partial",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "exception",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "ea788692f9f97777ad252f7551aae078e2c21c81c1e28f84cf596e259e0a1427"
+      },
+      {
+        "instrument": "crt",
+        "mode": "topology-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "21d3dbd42d4f52983f6dbcd6dbcd45ff337d6cd6d18b17082eef999f0aea93a6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "pending-tree",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-contract",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0"
+        ],
+        "log_sha256": "baf73f93f90f421e5e872e418ad9476fc379aa5389ef2ed10b7e568c5a634ef2"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-order",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "midpoint-alias",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "generated_faces=104 templates=24",
+          "template_type_counts=20,0,0,4,0,0",
+          "templates_before_failure=64"
+        ],
+        "log_sha256": "641a31309ee2441e9eface31f7236d5a9c0fb7500f6b350a53964cff628ac2e0"
+      },
+      {
+        "instrument": "crt",
+        "mode": "primitive-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-alias-cache",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "registration-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "55a79f59685c4783d60c4a7a9f6a2148815c3ac1d1e684d1898a690725173f16"
+      },
+      {
+        "instrument": "crt",
+        "mode": "unowned-edge-query",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "unowned-face-query",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [],
+        "log_sha256": "21f4231724f0dbf7aa54474b8aa7b49e7c16f55da081719b541fe821886ee73c"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_success=branch:0 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:0 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:1 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:1 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:2 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:2 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:3 adjacency:0 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:3 adjacency:1 value:0x1.dac670561bb50p-1 preserved:4",
+          "angle_success=branch:4 adjacency:0 value:-0x1.0000000000000p+0 preserved:4",
+          "angle_success=branch:4 adjacency:1 value:-0x1.0000000000000p+0 preserved:4"
+        ],
+        "log_sha256": "9d5bee70c607859bd22b1fd5c9c6ef588d916a980e5160e9ce6ee1c915c11d3e"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "curve_integral=0x1.7bccccccccb66p-1 midpoint:0x1.335e09e000000p-1",
+          "curve_success=sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+          "curve_success=sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+          "curve_success=sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+          "curve_success=sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+          "curve_success=sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+          "parametric_success=variant:0 x:0x1.413dab0000000p-2 y:0x0.0000000000000p+0 len:0x1.4000000000140p-2 null:0",
+          "parametric_success=variant:1 x:0x1.b488700000000p-3 y:0x0.0000000000000p+0 len:0x1.60000000001dfp-1 null:0",
+          "parametric_success=variant:10 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:0x1.8000000000000p-2 null:1",
+          "parametric_success=variant:2 x:0x1.0000000000000p+0 y:0x1.413dab0000000p-2 len:0x1.4000000000140p-2 null:0",
+          "parametric_success=variant:3 x:0x1.0000000000000p+0 y:0x1.b488700000000p-3 len:0x1.60000000001dfp-1 null:0",
+          "parametric_success=variant:4 x:0x1.92dde40000000p-1 y:0x1.0000000000000p+0 len:0x1.60000000001dfp-1 null:0",
+          "parametric_success=variant:5 x:0x1.5f612a8000000p-1 y:0x1.0000000000000p+0 len:0x1.4000000000140p-2 null:0",
+          "parametric_success=variant:6 x:0x0.0000000000000p+0 y:0x1.92dde40000000p-1 len:0x1.60000000001dfp-1 null:0",
+          "parametric_success=variant:7 x:0x0.0000000000000p+0 y:0x1.5f612a8000000p-1 len:0x1.4000000000140p-2 null:0",
+          "parametric_success=variant:8 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0",
+          "parametric_success=variant:9 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0"
+        ],
+        "log_sha256": "06e1cfd861bf6de30f6cdafde4ae5492189e292b5298473a96d0825a38eb8255"
+      },
+      {
+        "instrument": "crt",
+        "mode": "teardown-allocation",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "teardown_allocation_attempts=0"
+        ],
+        "log_sha256": "3875b8bd074b85dc04e96e83ef494ee5799e74bd81e2aeaca02b03b8b776d7c5"
+      },
+      {
+        "instrument": "crt",
+        "mode": "allocation-hook-control",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_hook_control=detected"
+        ],
+        "log_sha256": "aa4d95fe8a89fefb071a9ad83d6d6e7f45caef2e314f6094e66c13033fa20f2f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "transfer-allocation-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "transfer_allocation_failures=3 measured_allocations=342"
+        ],
+        "log_sha256": "ffa573c9ec64b128bf72bbb302e948947dd1a387ddf8aaf75e059725880e33b5"
+      },
+      {
+        "instrument": "crt",
+        "mode": "edge-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=edge:6/6"
+        ],
+        "log_sha256": "7e51b6935fe2f0460d75dde14ea29e55a11c480425bb38094728f20016497fa3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=face-explicit:3/3",
+          "allocation_failure_sites=face:3/3"
+        ],
+        "log_sha256": "cf9464ddbc63ce35909f0285bb28f942433a62818bd0820112279ee218da8f8a"
+      },
+      {
+        "instrument": "crt",
+        "mode": "front-construction-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=front:32/32"
+        ],
+        "log_sha256": "0c852a11c3538f102771b5b5a3a24048bd1be6166fab8ccade0ecf171842e897"
+      },
+      {
+        "instrument": "crt",
+        "mode": "edge-cache-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=edge-cache:6/6 unchanged=1"
+        ],
+        "log_sha256": "b92f616542234d7110faffcc75f88a0d4c79f2c1dd054b954f9df63b8095e5b4"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-cache-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "allocation_failure_sites=face-cache:3/3 unchanged=1"
+        ],
+        "log_sha256": "5c306ebbc1ed1416d4b47bb05e01398c5dd84fca077e49376e52664595d2b9f1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "boundary-first-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=boundary-0:4/4 unchanged=1"
+        ],
+        "log_sha256": "3a3fe6c2bb5e26b48da26fc93274943454457da7735f6451bac7168de1c96c91"
+      },
+      {
+        "instrument": "crt",
+        "mode": "boundary-append-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=boundary-1:14/14 unchanged=1"
+        ],
+        "log_sha256": "736e1965b1c526f7c7c5da1fae15bf6149ae9a5e795308352599c9cb2a6cc5e3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "boundary-close-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=boundary-2:10/10 unchanged=1"
+        ],
+        "log_sha256": "253aa05c43ddbe2a5083fc960417b104ae138979b9e37cfc5497141a6e5deffe"
+      },
+      {
+        "instrument": "crt",
+        "mode": "face-quality-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=face-quality:36/36",
+          "registration_measured=face-quality:36"
+        ],
+        "log_sha256": "1ba202d02c9a0003aab56413dffab165dc82f447512b7944a76f60283604ab75"
+      },
+      {
+        "instrument": "crt",
+        "mode": "outer-vertex-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=template-0:164/164",
+          "registration_measured=template-0:164"
+        ],
+        "log_sha256": "051db91114bef724fac21f68a8351ab2e829f8ad8b4ed00dd8d852f986cd5579"
+      },
+      {
+        "instrument": "crt",
+        "mode": "outer-edge-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=template-1:664/664",
+          "registration_measured=template-1:664"
+        ],
+        "log_sha256": "06afecfa39ae4002603a5139ecc66860c474a5bbd39c375f8d36a2d7b4536749"
+      },
+      {
+        "instrument": "crt",
+        "mode": "template-one-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=template-2:134/134",
+          "registration_measured=template-2:134"
+        ],
+        "log_sha256": "be14b769815ac63b3e7efe20fb9d3e489286f6caa5c31713164ea1f50c89fa53"
+      },
+      {
+        "instrument": "crt",
+        "mode": "template-four-failure",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "registration_failure_sites=template-3:335/335",
+          "registration_measured=template-3:335"
+        ],
+        "log_sha256": "53b1c9fe99adcca641a297afb30bddcfb466e215e5fccc30034967963f1bc3ac"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=0:20/20",
+          "tree_measured=0:20"
+        ],
+        "log_sha256": "4de7c4227ec818afa97ab1ad9c982e57a0dcb7ae0b403285678540089dad4b7f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=1:80/80",
+          "tree_measured=1:80"
+        ],
+        "log_sha256": "cfe3ef4f0f443a2519235cddc27d7c27d79ae94215dba1ff78efa440a791f591"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=2:1490/1490",
+          "tree_measured=2:1490"
+        ],
+        "log_sha256": "01c4d171e6c749068ae5c6c681973b25863bad14532f4e5dea9108dd3328058c"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-3",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=3:1578/1578",
+          "tree_measured=3:1578"
+        ],
+        "log_sha256": "784ac0b29d7ff0a3b184bb8b782b72cad004f47f0d5ebac72f28d52be8a62e7d"
+      },
+      {
+        "instrument": "crt",
+        "mode": "tree-failure-4",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "tree_failure_sites=4:302/302",
+          "tree_measured=4:302"
+        ],
+        "log_sha256": "52398dc3df5ce9447d6c9c2d1b282796b3e14cd6df43dbc5da4a316550413f51"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=0:24/24 unchanged=1 retry=1",
+          "angle_measured=0:24"
+        ],
+        "log_sha256": "8dc0782ea343edddf1d4e2e8c905b4b423efeb5fb584b8f9c69b726f5d26e1aa"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=1:24/24 unchanged=1 retry=1",
+          "angle_measured=1:24"
+        ],
+        "log_sha256": "50c62a797a8573275262f663a17d62500e4ff5f466fc4b0aaf0cf487dfb257e7"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=2:24/24 unchanged=1 retry=1",
+          "angle_measured=2:24"
+        ],
+        "log_sha256": "a3ea19b396b11469cf9b2c77fed1071b6890b355692e319a789f7bda4588b5b3"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-3",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=3:24/24 unchanged=1 retry=1",
+          "angle_measured=3:24"
+        ],
+        "log_sha256": "4f1b14567ee78dff9f943a3c7b2521f2db2a83b4f82ae15dc53adba224a3b151"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-4",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=4:24/24 unchanged=1 retry=1",
+          "angle_measured=4:24"
+        ],
+        "log_sha256": "d3721b1bffcc94ee02f016b18db952baa1db2c12ffae8eb440ec1ca9854940b4"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-5",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=5:27/27 unchanged=1 retry=1",
+          "angle_measured=5:27"
+        ],
+        "log_sha256": "ec33b6b230a9d03e8a911379674ba7c8cfc9eeff500ffc1f62201dd499be5fae"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-6",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=6:27/27 unchanged=1 retry=1",
+          "angle_measured=6:27"
+        ],
+        "log_sha256": "318acfe00d5b9af408acc736d7952157fb865d16f58ca840de307f3282733e2d"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-7",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=7:27/27 unchanged=1 retry=1",
+          "angle_measured=7:27"
+        ],
+        "log_sha256": "dbb78d8462d9f3284e7fc730c4b176bc242dfd89d9813d4779b4acc063580dbb"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-8",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=8:27/27 unchanged=1 retry=1",
+          "angle_measured=8:27"
+        ],
+        "log_sha256": "95d6519f4c8a78c6aecc0e36b63b0cfca5aca2d6a83c748c53baa65b5054f80f"
+      },
+      {
+        "instrument": "crt",
+        "mode": "angle-failure-9",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "angle_failure_sites=9:24/24 unchanged=1 retry=1",
+          "angle_measured=9:24"
+        ],
+        "log_sha256": "3a7e409a6cd0ad5192b8d011429c6b968dbb3c9a722502a22e44f9ed3809a2a1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-0",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=0:3/3 unchanged=1 retry=1",
+          "parametric_measured=0:3",
+          "parametric_success=variant:0 x:0x1.413dab0000000p-2 y:0x0.0000000000000p+0 len:0x1.4000000000140p-2 null:0"
+        ],
+        "log_sha256": "558d51cc8b0fb5464a6b064b9539bce1075b3d9b10a1cfb88c333fdd4fe28c90"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-1",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=1:3/3 unchanged=1 retry=1",
+          "parametric_measured=1:3",
+          "parametric_success=variant:1 x:0x1.b488700000000p-3 y:0x0.0000000000000p+0 len:0x1.60000000001dfp-1 null:0"
+        ],
+        "log_sha256": "ee4becb79c85795a2c5a85ef2cacacbb3bcc8d942619b87785ce2045e32497c6"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-2",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=2:3/3 unchanged=1 retry=1",
+          "parametric_measured=2:3",
+          "parametric_success=variant:2 x:0x1.0000000000000p+0 y:0x1.413dab0000000p-2 len:0x1.4000000000140p-2 null:0"
+        ],
+        "log_sha256": "9ed5c526e15e7838e859e6cdc9987bb5d9834213fdcf3e10ff30938b035d5a38"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-3",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=3:3/3 unchanged=1 retry=1",
+          "parametric_measured=3:3",
+          "parametric_success=variant:3 x:0x1.0000000000000p+0 y:0x1.b488700000000p-3 len:0x1.60000000001dfp-1 null:0"
+        ],
+        "log_sha256": "a92ee1a488f431841ae383aa23c62a752a769c16217cf3a386f9392a45d68fdb"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-4",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=4:3/3 unchanged=1 retry=1",
+          "parametric_measured=4:3",
+          "parametric_success=variant:4 x:0x1.92dde40000000p-1 y:0x1.0000000000000p+0 len:0x1.60000000001dfp-1 null:0"
+        ],
+        "log_sha256": "16ee9e4169b1e008f6bff85ab168b5499d3c69b04654ca7bb5e02bf32e40c567"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-5",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=5:3/3 unchanged=1 retry=1",
+          "parametric_measured=5:3",
+          "parametric_success=variant:5 x:0x1.5f612a8000000p-1 y:0x1.0000000000000p+0 len:0x1.4000000000140p-2 null:0"
+        ],
+        "log_sha256": "cf53fb32b2fc98f27469c2430f9265c32fe5401133ac15189bd14780fc19305a"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-6",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=6:3/3 unchanged=1 retry=1",
+          "parametric_measured=6:3",
+          "parametric_success=variant:6 x:0x0.0000000000000p+0 y:0x1.92dde40000000p-1 len:0x1.60000000001dfp-1 null:0"
+        ],
+        "log_sha256": "b498eb6f3e37dd233238c760eee12f15dfd7390e7d4bc60cf96f163a420adc84"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-7",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=7:3/3 unchanged=1 retry=1",
+          "parametric_measured=7:3",
+          "parametric_success=variant:7 x:0x0.0000000000000p+0 y:0x1.5f612a8000000p-1 len:0x1.4000000000140p-2 null:0"
+        ],
+        "log_sha256": "804524e793b57535ccd52f16cd9c0694bb24204456e3762d0b041f9a79679304"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-8",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=8:3/3 unchanged=1 retry=1",
+          "parametric_measured=8:3",
+          "parametric_success=variant:8 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0"
+        ],
+        "log_sha256": "8418e3e87f6edec4e45c4f7c62c12427d0aa8042ead7fcdc3b142744f79f10e0"
+      },
+      {
+        "instrument": "crt",
+        "mode": "parametric-failure-9",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "parametric_failure_sites=9:3/3 unchanged=1 retry=1",
+          "parametric_measured=9:3",
+          "parametric_success=variant:9 x:0x1.0000000000000p-1 y:0x1.cccccccccccccp-2 len:-0x1.0000000000000p+0 null:0"
+        ],
+        "log_sha256": "b59fae226f94bd557df19653b2d7923592760960b1878da8095fed583fad22db"
+      },
+      {
+        "instrument": "crt",
+        "mode": "curve-allocation-observation",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "curve_allocation_failure_coverage=unmeasured",
+          "curve_allocation_observation=arc:0",
+          "curve_allocation_observation=midpoint:0",
+          "curve_allocation_observation=point-gradient:0"
+        ],
+        "log_sha256": "97f59893e400b4a036298930684abb12dd20ffe1d3cf0453dcf45b0570ba73fa"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "06cb60224c641c138928fa79bb5ad7845c7b7bc13955aefa0a244bbadffe350f"
+      },
+      {
+        "instrument": "asan",
+        "mode": "shared-delete",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [],
+        "log_sha256": "19994097b9bf18d83893d6feacb9dbeb9be843ea930845a4c60397a2f426bdb5"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "retained_blocks": 3,
+        "retained_bytes": 112,
+        "observations": [],
+        "log_sha256": "f718fa2c689db6b0c96528935550ce3851a88d1c7214e4bdd11120a540acbcf5"
+      }
+    ]
+  },
+  "node": {
+    "status": "passed",
+    "scope": "Isolated actual physical node/submesh/triangle production sources; no whole-application or UBSan/LSan qualification.",
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\n6a\\RelWithDebInfo\\node_lifetime_probe.exe",
+        "sha256": "7be3d864b3901606aa251e5135b8ef4fc257c52bfe576606cb824d0f2ca12c30"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\n6d\\Debug\\node_lifetime_probe.exe",
+        "sha256": "3251204e14dee1c78157073e87cc825cb9701887a1c7803d8da5c4a9b09e4c0d"
+      }
+    },
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "facefcd475b3532649225f5e39f796884ed6175276127239e4dfd84b0f6e9894"
+      },
+      {
+        "instrument": "asan",
+        "mode": "use-after-free",
+        "exit_code": 1,
+        "expected_diagnostic": "heap-use-after-free",
+        "passed": true,
+        "log_sha256": "77b6c64961a318830d06e84da06465ccc0a783146bace0f7f152ac2fffa56a1d"
+      },
+      {
+        "instrument": "asan",
+        "mode": "double-free",
+        "exit_code": 1,
+        "expected_diagnostic": "attempting double-free",
+        "passed": true,
+        "log_sha256": "f2b905b83fbf8e4084607cbb2a8a3745515cdda0332ddc2b5ebd7687b87a1ce9"
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "expired-copy",
+        "exit_code": 0,
+        "expected_diagnostic": null,
+        "passed": true,
+        "log_sha256": "e6ac16783b330b7c06829816ccf691378e9dc620a9bbe226bdbbee1e6e6fb8e1"
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak",
+        "exit_code": 1,
+        "expected_diagnostic": "retained-blocks",
+        "passed": true,
+        "log_sha256": "f18a3e968e1d6cfa506aed72bb0589a0ca89048560f3f9c47b0fea323d83486a"
+      }
+    ]
+  },
+  "serial_baseline": {
+    "reused": true,
+    "implementation_main": "4e23bd00e457e68056ff956869732b1872f04822",
+    "raw_report_sha256": "9abc5ecdca18dd53a8920843211741ebf907e60c2c892e5b01f62b3b92f69675",
+    "entry_documentation_main_inputs_unchanged": true,
+    "fresh_entry_serial_campaign": false
+  },
+  "status": "passed"
+}

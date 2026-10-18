@@ -1,5 +1,6 @@
 #include "data/geometry.h"
 
+#include <stdexcept>
 #include <unordered_set>
 
 #include "data/curve/curve_adaptive.h"
@@ -21,6 +22,14 @@ void Geometry::InsertCurve(std::unique_ptr<CurveAdaptive> curve) {
 
 void Geometry::InsertCurve(CurveAdaptive* curve) {
   InsertCurve(std::unique_ptr<CurveAdaptive>(curve));
+}
+
+void Geometry::InsertCurves(std::vector<std::unique_ptr<CurveAdaptive>> curves) {
+  if (curves.size() > curves_.max_size() - curves_.size())
+    throw std::length_error("Geometry curve batch exceeds container capacity");
+  curves_.reserve(curves_.size() + curves.size());
+  for (auto& curve : curves)
+    curves_.push_back(std::move(curve));
 }
 
 unsigned int Geometry::GetNumberCurves() const noexcept {
