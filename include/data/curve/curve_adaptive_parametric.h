@@ -20,6 +20,8 @@ class CurveAdaptiveParametric : public CurveAdaptive {
   // os valores indicados na observação do construtor default !!!
   CurveAdaptiveParametric(const PointAdaptive point0,
                           const PointAdaptive point1);
+  /// Copy an initialized, non-null source, including independent parameter-list values.
+  /// Sampled point and patch objects remain borrowed; source consistency is not repaired.
   explicit CurveAdaptiveParametric(CurveAdaptiveParametric*);
   ~CurveAdaptiveParametric() override;
 

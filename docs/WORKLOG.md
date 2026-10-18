@@ -34,3 +34,33 @@ No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
 [slice 8 closure](evidence/STAGE3_CURVE_COLLECTIONS_CLOSURE.md).
+
+## Active stage 3 slice 9 (#32): initialized curve copy parameters
+
+The original pointer-taking parametric constructor copies sample observers but
+omits their parameter sequence; Bezier and Hermite copies inherit the loss.
+Twelve populated normal cases fail in ASan/CRT, and six populated constructor
+sweeps stop at their normal calibration contract before denying allocations.
+The other 12 original outcomes are as expected, including invalid controls.
+A standard-list member initializer now copies the parameter values independently.
+Physical samples and patches remain borrowed; no source consistency repair,
+implicit copy/assignment or clone-publication guarantee is added.
+
+Candidate CTest 19/19, zero skips, 74 Python controls, new copy 30/30, previous
+curve 19/19, UV 81/81 and node 7/7 pass. Nine independently calibrated sweeps
+deny all 123 measured ordinals, preserving full initialized source state/nodes,
+caller objects and successful retry. All 18 original/repaired normal numeric
+traces match; empty-sequence full traces remain exact. Five analytic position/
+derivative samples and signed arcs, actual populated point/parameter traversal,
+independent lists and both destruction orders are checked. Selected one-unit
+lint, formatting, inventory and repeated strict Eistute/Book entry regression
+pass with all nine states, acceptance/rejection, measured incidences, 189 CSV
+fields and 1,168/4,256 accepted triangles exact. Populated copies deliberately
+allocate five additional parameter nodes in these fixtures; counts are not
+portable constants. Exact published-head and implementation-main gates remain.
+
+This is a behavior-changing copy-state defect repair, not a scientific proposal.
+Clone publication, other construction/mutation, implicit copying, shared sample
+ownership, initialization/rollback, general observers and full-process/parallel/
+LSan/UBSan remain open. Stage 3 stays open. See evidence/STAGE3_CURVE_COPY.md and
+ADR-0010. Doxygen undocumented-API debt remains stage 8.

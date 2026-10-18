@@ -1,0 +1,10 @@
+copy_geometry=kind:0 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2
+copy_geometry=kind:0 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2
+copy_geometry=kind:0 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1
+copy_geometry=kind:0 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0
+copy_geometry=kind:0 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0
+copy_arc=kind:0 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1
+copy_values=kind:0 variant:0 parameters:0 pairs:0 independent:1
+copy_lifetimes=kind:0 variant:0 copy-first:1 source-first:1
+CRT retained_blocks=0 retained_bytes=0
+PASS

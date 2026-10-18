@@ -1,0 +1,528 @@
+{
+  "status": "failed",
+  "scope": "Nine actual curve/point/patch/numerical production units. Initialized non-null pointer-taking copies, independent containers and borrowed-object lifetimes; ASan invalid-access and Debug CRT scoped retention/allocation denial. Not implicit copy/assignment, clone publication, full application, parallel, LSan or UBSan.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c9oa\\RelWithDebInfo\\curve_copy_probe.exe",
+      "sha256": "99167a0e6c4a321f61e5ee25d5af2959f4e4a2929967c6116fd2e82301b9743b"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c9od\\Debug\\curve_copy_probe.exe",
+      "sha256": "8d89f452d8e49b61074240ab43d9dfa7a4fc5202ae5bf7fea426976fffff1b5b"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "copy-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:0 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:0 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+        "copy_geometry=kind:0 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+        "copy_geometry=kind:0 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:0 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:0 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+        "copy_values=kind:0 variant:0 parameters:0 pairs:0 independent:1",
+        "copy_lifetimes=kind:0 variant:0 copy-first:1 source-first:1"
+      ],
+      "log_sha256": "3053b03292fb1c179a9f11a8070cf1d0097e4423acf421a305b89be392b156ae"
+    },
+    {
+      "instrument": "asan",
+      "mode": "copy-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:0 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:0 variant:1 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+        "copy_geometry=kind:0 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+        "copy_geometry=kind:0 variant:1 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:0 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:0 variant:1 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "b873e108dc39c03a251822536c547ff3ec08e3462932a2fbb6d4dc631305ff70"
+    },
+    {
+      "instrument": "asan",
+      "mode": "copy-0-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:0 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:0 variant:2 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+        "copy_geometry=kind:0 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+        "copy_geometry=kind:0 variant:2 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:0 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:0 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "7d48ba6df5a79da3d44afeabd69a9add9abfb8944d52f0e2f862f79f5afc29a0"
+    },
+    {
+      "instrument": "asan",
+      "mode": "copy-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:1 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+        "copy_geometry=kind:1 variant:0 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+        "copy_geometry=kind:1 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+        "copy_geometry=kind:1 variant:0 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:1 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+        "copy_arc=kind:1 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+        "copy_values=kind:1 variant:0 parameters:0 pairs:0 independent:1",
+        "copy_lifetimes=kind:1 variant:0 copy-first:1 source-first:1"
+      ],
+      "log_sha256": "ecfb9ddad74e1504d6e973335423b9a809538d409aecb8d8c512447819f58859"
+    },
+    {
+      "instrument": "asan",
+      "mode": "copy-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:1 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+        "copy_geometry=kind:1 variant:1 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+        "copy_geometry=kind:1 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+        "copy_geometry=kind:1 variant:1 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:1 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+        "copy_arc=kind:1 variant:1 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "4d441e3cc868c06fc8b615ed9909498a64d7938ba28dd26643c1f8f59de578be"
+    },
+    {
+      "instrument": "asan",
+      "mode": "copy-1-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:1 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+        "copy_geometry=kind:1 variant:2 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+        "copy_geometry=kind:1 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+        "copy_geometry=kind:1 variant:2 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:1 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+        "copy_arc=kind:1 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "e53241308ae9ffb0eaeea61d636dbf71d05f570325a4770329a6a219b6b59092"
+    },
+    {
+      "instrument": "asan",
+      "mode": "copy-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:2 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:2 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+        "copy_geometry=kind:2 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+        "copy_geometry=kind:2 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:2 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:2 variant:0 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1",
+        "copy_values=kind:2 variant:0 parameters:0 pairs:0 independent:1",
+        "copy_lifetimes=kind:2 variant:0 copy-first:1 source-first:1"
+      ],
+      "log_sha256": "43671bf1ac1580857fafc297c24eb81a54807035514a4a85416084aca438db81"
+    },
+    {
+      "instrument": "asan",
+      "mode": "copy-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:2 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:2 variant:1 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+        "copy_geometry=kind:2 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+        "copy_geometry=kind:2 variant:1 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:2 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:2 variant:1 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "6c89871985c5d8fbf06e1c1218a3e56da96aa35f181dc7053885161a80b0037c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "copy-2-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:2 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:2 variant:2 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+        "copy_geometry=kind:2 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+        "copy_geometry=kind:2 variant:2 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:2 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:2 variant:2 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "ef94b92b93c7205c916eb8d5b23f95c1fed5f9e4bb7ea054081d85531ab9cb5c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "copy_geometry=kind:0 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:0 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+        "copy_geometry=kind:0 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+        "copy_geometry=kind:0 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:0 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:0 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+        "copy_values=kind:0 variant:0 parameters:0 pairs:0 independent:1",
+        "copy_lifetimes=kind:0 variant:0 copy-first:1 source-first:1"
+      ],
+      "log_sha256": "b9d29a446183ad5768981cb394f868ac012c4874674379e40aee6defa3b7b84c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:0 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:0 variant:1 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+        "copy_geometry=kind:0 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+        "copy_geometry=kind:0 variant:1 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:0 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:0 variant:1 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "b873e108dc39c03a251822536c547ff3ec08e3462932a2fbb6d4dc631305ff70"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-0-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:0 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:0 variant:2 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d19999999999ap-2",
+        "copy_geometry=kind:0 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333333p-1",
+        "copy_geometry=kind:0 variant:2 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:0 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:0 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "7d48ba6df5a79da3d44afeabd69a9add9abfb8944d52f0e2f862f79f5afc29a0"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "copy_geometry=kind:1 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+        "copy_geometry=kind:1 variant:0 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+        "copy_geometry=kind:1 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+        "copy_geometry=kind:1 variant:0 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:1 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+        "copy_arc=kind:1 variant:0 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1",
+        "copy_values=kind:1 variant:0 parameters:0 pairs:0 independent:1",
+        "copy_lifetimes=kind:1 variant:0 copy-first:1 source-first:1"
+      ],
+      "log_sha256": "8035e24a3149c50f88cdcb0d2261cb87c24696a3973204be80fcbd37ea11de80"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:1 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+        "copy_geometry=kind:1 variant:1 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+        "copy_geometry=kind:1 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+        "copy_geometry=kind:1 variant:1 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:1 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+        "copy_arc=kind:1 variant:1 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "4d441e3cc868c06fc8b615ed9909498a64d7938ba28dd26643c1f8f59de578be"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-1-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:1 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2",
+        "copy_geometry=kind:1 variant:2 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2",
+        "copy_geometry=kind:1 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1",
+        "copy_geometry=kind:1 variant:2 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:1 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0",
+        "copy_arc=kind:1 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "e53241308ae9ffb0eaeea61d636dbf71d05f570325a4770329a6a219b6b59092"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "copy_geometry=kind:2 variant:0 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:2 variant:0 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+        "copy_geometry=kind:2 variant:0 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+        "copy_geometry=kind:2 variant:0 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:2 variant:0 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:2 variant:0 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1",
+        "copy_values=kind:2 variant:0 parameters:0 pairs:0 independent:1",
+        "copy_lifetimes=kind:2 variant:0 copy-first:1 source-first:1"
+      ],
+      "log_sha256": "ef5e1f26e339a716fac85341c949e517e2e8a7589948a0160b4d2fe6b5026154"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:2 variant:1 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:2 variant:1 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+        "copy_geometry=kind:2 variant:1 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+        "copy_geometry=kind:2 variant:1 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:2 variant:1 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:2 variant:1 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "6c89871985c5d8fbf06e1c1218a3e56da96aa35f181dc7053885161a80b0037c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "copy-2-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_geometry=kind:2 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333333p-2",
+        "copy_geometry=kind:2 variant:2 sample:1 x:0x1.819999999999ap-5 gradient:0x1.d199999999999p-2",
+        "copy_geometry=kind:2 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333332p-1",
+        "copy_geometry=kind:2 variant:2 sample:3 x:0x1.93e6666666666p-1 gradient:0x1.9466666666666p+0",
+        "copy_geometry=kind:2 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.ccccccccccccdp+0",
+        "copy_arc=kind:2 variant:2 value:0x1.7bccccccccb64p-1 reverse:-0x1.7bccccccccb66p-1"
+      ],
+      "log_sha256": "ef94b92b93c7205c916eb8d5b23f95c1fed5f9e4bb7ea054081d85531ab9cb5c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "copy_measured=kind:0 variant:0 allocations:7",
+        "copy_inject=kind:0 variant:0 ordinal:0",
+        "copy_inject=kind:0 variant:0 ordinal:1",
+        "copy_inject=kind:0 variant:0 ordinal:2",
+        "copy_inject=kind:0 variant:0 ordinal:3",
+        "copy_inject=kind:0 variant:0 ordinal:4",
+        "copy_inject=kind:0 variant:0 ordinal:5",
+        "copy_inject=kind:0 variant:0 ordinal:6",
+        "copy_failure_sites=kind:0 variant:0 denied:7/7 unchanged=1 retry=1"
+      ],
+      "log_sha256": "2138bfe272d3a4c9c5ce301e8178d57450552a5d5462964407d02a38bc695f43"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_measured=kind:0 variant:1 allocations:12"
+      ],
+      "log_sha256": "d3b5cd3d2e1dd9686881da1046f1172b46664f82c58f9760f1347664113bd100"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_measured=kind:0 variant:2 allocations:12"
+      ],
+      "log_sha256": "8e39b1fc3f0cf57ec520a1e68748b639e1588cf54406205a6189fe700f91a848"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "copy_measured=kind:1 variant:0 allocations:7",
+        "copy_inject=kind:1 variant:0 ordinal:0",
+        "copy_inject=kind:1 variant:0 ordinal:1",
+        "copy_inject=kind:1 variant:0 ordinal:2",
+        "copy_inject=kind:1 variant:0 ordinal:3",
+        "copy_inject=kind:1 variant:0 ordinal:4",
+        "copy_inject=kind:1 variant:0 ordinal:5",
+        "copy_inject=kind:1 variant:0 ordinal:6",
+        "copy_failure_sites=kind:1 variant:0 denied:7/7 unchanged=1 retry=1"
+      ],
+      "log_sha256": "8764ed964514c092eda51930ea49b995ce9445da28da0ecb523a901450f03c8a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_measured=kind:1 variant:1 allocations:12"
+      ],
+      "log_sha256": "c1954e26cc518b455d0a9375c451f506bd5673436f830fd8ac498a0fc46ca388"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_measured=kind:1 variant:2 allocations:12"
+      ],
+      "log_sha256": "18f9301c68b16014848d8ac91a569f4bc116e0ffe7bf34f57783e519dd42a307"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "copy_measured=kind:2 variant:0 allocations:7",
+        "copy_inject=kind:2 variant:0 ordinal:0",
+        "copy_inject=kind:2 variant:0 ordinal:1",
+        "copy_inject=kind:2 variant:0 ordinal:2",
+        "copy_inject=kind:2 variant:0 ordinal:3",
+        "copy_inject=kind:2 variant:0 ordinal:4",
+        "copy_inject=kind:2 variant:0 ordinal:5",
+        "copy_inject=kind:2 variant:0 ordinal:6",
+        "copy_failure_sites=kind:2 variant:0 denied:7/7 unchanged=1 retry=1"
+      ],
+      "log_sha256": "1618958bde970a6937fbb405ddcf0d30a4976141c1ab29777333d59b95be5ce1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_measured=kind:2 variant:1 allocations:12"
+      ],
+      "log_sha256": "f5d6a90008aa05f809f9e1fc9e5c382c7527ffbc712484f46f67f079d641c8ef"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "copy_measured=kind:2 variant:2 allocations:12"
+      ],
+      "log_sha256": "f4ef2d7eb72d495e31477fbf74a278fd5553a65e944c92e2eef769f37b6a4777"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ],
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "1c517de73326a82ca16bae29516884b134b73438ba5fe51be4fa090314807795"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "expected_diagnostic": "retained-blocks",
+      "passed": true,
+      "retained_blocks": 1,
+      "retained_bytes": 40,
+      "observations": [],
+      "log_sha256": "c4a0be9fc45d098aaa4cc4d37e8574cbbb418c70238c67c588e9f732eef6d9a5"
+    }
+  ]
+}

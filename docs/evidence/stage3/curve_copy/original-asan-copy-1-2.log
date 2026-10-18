@@ -1,0 +1,7 @@
+copy_geometry=kind:1 variant:2 sample:0 x:0x0.0000000000000p+0 gradient:0x1.3333333333334p-2
+copy_geometry=kind:1 variant:2 sample:1 x:0x1.819999999999bp-5 gradient:0x1.d19999999999bp-2
+copy_geometry=kind:1 variant:2 sample:2 x:0x1.4000000000000p-2 gradient:0x1.f333333333334p-1
+copy_geometry=kind:1 variant:2 sample:3 x:0x1.93e6666666667p-1 gradient:0x1.9466666666666p+0
+copy_geometry=kind:1 variant:2 sample:4 x:0x1.0000000000000p+0 gradient:0x1.cccccccccccccp+0
+copy_arc=kind:1 variant:2 value:0x1.7bccccccccb66p-1 reverse:-0x1.7bccccccccb66p-1
+Contract failed: copied parameter sequence preserves sampled-point pairing and order
