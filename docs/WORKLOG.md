@@ -16,51 +16,22 @@ failures, hashes and limitations stay in the linked evidence records.
 | 2026-10-17, stage 3 slice 6 | #23, PR #24; head da684dd6a2a1fefe709fc8906cce837da4b2ea24, main 1d7d5992d90f09d8cf7747d9023d9b39ef3d089b; evidence/STAGE3_ANGLE_HELPER_CLOSURE.md | Angle-helper borrowed endpoints survive allocation failure; head/main CTest 16/16, UV 68/68, node 7/7, 252 allocation denials, unchanged angle traces/counts and exact article regression |
 | 2026-10-17, stage 3 slice 7 | #26, PR #27; head 4781226726bd36d7ff64afb273ed53c37630b6f3, main 61dc86ecaeede57ec838a5bb754f237b2013085a; evidence/STAGE3_PARAMETRIC_MIDPOINT_CLOSURE.md | Transactional midpoint/length replacement; head/main CTest 17/17, UV 81/81, node 7/7, 30 allocation denials, exact normal traces/counts and article regression; direct curve allocation failure remains unmeasured |
 | 2026-10-17, stage 3 slice 8 | #29, PR #30; head 2c7edff9070810ea8e27574e4449aeebf369824e, main 587c91923b48d7f55414df720d29bcb1d2dacc11; evidence/STAGE3_CURVE_COLLECTIONS_CLOSURE.md | Per-list prepared-input commit; head/main CTest 18/18, curve 19/19, UV 81/81, node 7/7, 76 allocation denials, exact ordered traces/article regression; paired update and full value-copy semantics remain open |
+| 2026-10-18, stage 3 slice 9 | #32, PR #33; head 6bda90b91406b0aed79ba6582bf820ea40559325, main d5abb5495b28e8ec5a2b6f779c3adf173929ed04; evidence/STAGE3_CURVE_COPY_CLOSURE.md | Initialized pointer-taking copies preserve parameter pairing; head/main CTest 19/19, copy 30/30, curve 19/19, UV 81/81, node 7/7, 123 denials, unchanged numeric/article traces; clone publication and implicit copying remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with eight qualified
+Current status: stages 0-2 closed; stage 3 in progress with nine qualified
 slices; stages 4-11 pending.
 
-Full stage 3 remains open with eight qualified slices. Next characterize the
-remaining curve constructor/mutation contracts, including the pointer-taking
-parametric constructor's omitted parameter sequence, before shared sample
-ownership, initialization and rollback. Current constructor controls qualify
-unwind, borrowed collections and selected initialized scalar/coefficient state;
-full value-copy semantics are not claimed. General observers, joint updates,
-other helpers/templates/tree/mate paths, failed-tree observer consumption/retry
-and full-process/parallel/LSan/UBSan qualification remain open. Stages 0-2 stay
-closed; stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
+Full stage 3 remains open with nine qualified slices. Next characterize
+ownership/publication around curve clones and remaining constructor/mutation
+paths, then shared sample ownership, initialization and rollback. The
+CloneCurveForPatch/DisableSharedCurveSynchronization consumer is reviewed
+statically only; its policy integration and post-copy publication are unqualified.
+Implicit copy/assignment, inconsistent/null/uninitialized sources, general
+observers, other helper/template/tree/mate paths, failed-tree observer consumption/
+retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed;
+stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
 
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 8 closure](evidence/STAGE3_CURVE_COLLECTIONS_CLOSURE.md).
-
-## Active stage 3 slice 9 (#32): initialized curve copy parameters
-
-The original pointer-taking parametric constructor copies sample observers but
-omits their parameter sequence; Bezier and Hermite copies inherit the loss.
-Twelve populated normal cases fail in ASan/CRT, and six populated constructor
-sweeps stop at their normal calibration contract before denying allocations.
-The other 12 original outcomes are as expected, including invalid controls.
-A standard-list member initializer now copies the parameter values independently.
-Physical samples and patches remain borrowed; no source consistency repair,
-implicit copy/assignment or clone-publication guarantee is added.
-
-Candidate CTest 19/19, zero skips, 74 Python controls, new copy 30/30, previous
-curve 19/19, UV 81/81 and node 7/7 pass. Nine independently calibrated sweeps
-deny all 123 measured ordinals, preserving full initialized source state/nodes,
-caller objects and successful retry. All 18 original/repaired normal numeric
-traces match; empty-sequence full traces remain exact. Five analytic position/
-derivative samples and signed arcs, actual populated point/parameter traversal,
-independent lists and both destruction orders are checked. Selected one-unit
-lint, formatting, inventory and repeated strict Eistute/Book entry regression
-pass with all nine states, acceptance/rejection, measured incidences, 189 CSV
-fields and 1,168/4,256 accepted triangles exact. Populated copies deliberately
-allocate five additional parameter nodes in these fixtures; counts are not
-portable constants. Exact published-head and implementation-main gates remain.
-
-This is a behavior-changing copy-state defect repair, not a scientific proposal.
-Clone publication, other construction/mutation, implicit copying, shared sample
-ownership, initialization/rollback, general observers and full-process/parallel/
-LSan/UBSan remain open. Stage 3 stays open. See evidence/STAGE3_CURVE_COPY.md and
-ADR-0010. Doxygen undocumented-API debt remains stage 8.
+[slice 9 closure](evidence/STAGE3_CURVE_COPY_CLOSURE.md).

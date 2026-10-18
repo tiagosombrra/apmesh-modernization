@@ -128,8 +128,9 @@ successful element-observer invalidation and the intentional removal of the
 second copy. The two setter calls do not form a joint transaction. Reviewed
 serial adapter/generator callers use copied local lists or consume iterators
 outside replacement calls; generic external observer compatibility is not
-claimed. The pointer-taking parametric constructor currently omits parameters_;
-its full value-copy semantics and derived constructors remain open findings.
+claimed. The omitted parameter sequence identified here is addressed by the
+initialized pointer-copy boundary (#32) below. Implicit copy/assignment and
+publication of copied curves remain separate findings.
 Continue remaining curve constructor/mutation contracts before shared sample
 ownership, initialization and rollback. See ADR-0009 and the slice evidence.
 
