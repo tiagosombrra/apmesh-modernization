@@ -1,0 +1,139 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "cmake",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "cmake version 4.4.0\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n"
+    },
+    {
+      "argv": [
+        "g++",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "g++ (Rev5, Built by MSYS2 project) 16.1.0\r\nCopyright (C) 2026 Free Software Foundation, Inc.\r\nThis is free software; see the source for copying conditions.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\r\n\r\n"
+    },
+    {
+      "argv": [
+        "clang-format",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "clang-format version 22.1.8 (https://github.com/msys2/MINGW-packages 6e4e79c2f86eeb534e324e583f2057dc9fd5ecab)\n"
+    },
+    {
+      "argv": [
+        "clang-tidy",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "LLVM (http://llvm.org/):\n  LLVM version 22.1.8\n  Optimized build.\n"
+    },
+    {
+      "argv": [
+        "doxygen",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "1.18.0 (8e760943e5d9581a444cf327f43a0b4d20d29482)\r\n"
+    }
+  ],
+  "builds": {
+    "windows-gcc17": [
+      {
+        "path": "build/windows-gcc17/CMakeFiles/4.4.3/CMakeCXXCompiler.cmake",
+        "sha256": "4d7bff2062e2e91294a72310a74bfbfebffbc9bcf70ef3b864f25ec4cbcda5ba",
+        "compiler": [
+          "set(CMAKE_CXX_COMPILER \"C:/msys64/ucrt64/bin/c++.exe\")",
+          "set(CMAKE_CXX_COMPILER_ID \"GNU\")",
+          "set(CMAKE_CXX_COMPILER_VERSION \"16.1.0\")"
+        ]
+      }
+    ],
+    "s13a": [
+      {
+        "path": "build/s13a/CMakeFiles/4.4.0/CMakeCXXCompiler.cmake",
+        "sha256": "f7d5972c393f8fc8485c65c19369895103659c558f61764a75e67df0d2ce041f",
+        "compiler": [
+          "set(CMAKE_CXX_COMPILER \"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe\")",
+          "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+          "set(CMAKE_CXX_COMPILER_VERSION \"19.44.35229.0\")"
+        ]
+      }
+    ],
+    "s13d": [
+      {
+        "path": "build/s13d/CMakeFiles/4.4.0/CMakeCXXCompiler.cmake",
+        "sha256": "f7d5972c393f8fc8485c65c19369895103659c558f61764a75e67df0d2ce041f",
+        "compiler": [
+          "set(CMAKE_CXX_COMPILER \"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe\")",
+          "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+          "set(CMAKE_CXX_COMPILER_VERSION \"19.44.35229.0\")"
+        ]
+      }
+    ],
+    "s13oa": [
+      {
+        "path": "build/s13oa/CMakeFiles/4.4.0/CMakeCXXCompiler.cmake",
+        "sha256": "f7d5972c393f8fc8485c65c19369895103659c558f61764a75e67df0d2ce041f",
+        "compiler": [
+          "set(CMAKE_CXX_COMPILER \"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe\")",
+          "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+          "set(CMAKE_CXX_COMPILER_VERSION \"19.44.35229.0\")"
+        ]
+      }
+    ],
+    "s13od": [
+      {
+        "path": "build/s13od/CMakeFiles/4.4.0/CMakeCXXCompiler.cmake",
+        "sha256": "f7d5972c393f8fc8485c65c19369895103659c558f61764a75e67df0d2ce041f",
+        "compiler": [
+          "set(CMAKE_CXX_COMPILER \"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe\")",
+          "set(CMAKE_CXX_COMPILER_ID \"MSVC\")",
+          "set(CMAKE_CXX_COMPILER_VERSION \"19.44.35229.0\")"
+        ]
+      }
+    ]
+  },
+  "preset": {
+    "version": 3,
+    "configurePresets": [
+      {
+        "name": "windows-gcc17",
+        "displayName": "Windows GCC 16.1 serial C++17",
+        "inherits": "local-serial",
+        "binaryDir": "${sourceDir}/build/windows-gcc17",
+        "environment": {
+          "PATH": "C:/Program Files/CMake/bin;C:/msys64/ucrt64/bin;$penv{PATH}"
+        },
+        "cacheVariables": {
+          "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/c++.exe",
+          "CMAKE_MAKE_PROGRAM": "C:/msys64/ucrt64/bin/ninja.exe",
+          "CMAKE_CXX_STANDARD": "17",
+          "CMAKE_CXX_STANDARD_REQUIRED": true
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "windows-gcc17",
+        "configurePreset": "windows-gcc17"
+      }
+    ],
+    "testPresets": [
+      {
+        "name": "windows-gcc17",
+        "configurePreset": "windows-gcc17",
+        "output": {
+          "outputOnFailure": true
+        },
+        "execution": {
+          "noTestsAction": "error"
+        }
+      }
+    ]
+  }
+}

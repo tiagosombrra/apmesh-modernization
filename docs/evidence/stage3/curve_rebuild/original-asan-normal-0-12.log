@@ -1,0 +1,6 @@
+rebuild_point=kind:0 variant:12 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0
+rebuild_point=kind:0 variant:12 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0
+rebuild_point=kind:0 variant:12 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0
+rebuild_point=kind:0 variant:12 index:3 id:41 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0
+rebuild_normal=kind:0 variant:12 points:4 parameters:4 destroyed:0 manager:102
+PASS

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   project(apmesh_curve_collections LANGUAGES CXX)
 endif()
+
 get_filename_component(default_curve_root "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
 set(AP_MESH_CURVE_SOURCE_ROOT "${default_curve_root}" CACHE PATH "Production tree for curve collection qualification")
 option(AP_MESH_CURVE_ASAN "Instrument the narrow MSVC curve collection probe" OFF)
@@ -68,4 +69,25 @@ if(MSVC)
   endif()
 elseif(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
   target_link_options(curve_snapshot_probe PRIVATE -static -static-libgcc -static-libstdc++)
+endif()
+
+set(AP_MESH_REBUILD_IMPLEMENTATION "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_rebuild.cpp" CACHE FILEPATH "Curve target rebuild implementation")
+add_executable(curve_rebuild_probe rebuild_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/node_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/id_manager.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/ranged_id_manager.cpp"
+  "${AP_MESH_REBUILD_IMPLEMENTATION}")
+target_compile_features(curve_rebuild_probe PRIVATE cxx_std_17)
+target_include_directories(curve_rebuild_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include" "${default_curve_root}/include")
+if(MSVC)
+  target_compile_options(curve_rebuild_probe PRIVATE /utf-8 /W4 /EHsc /permissive-)
+  target_compile_definitions(curve_rebuild_probe PRIVATE $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(curve_rebuild_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(curve_rebuild_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+elseif(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+  target_link_options(curve_rebuild_probe PRIVATE -static -static-libgcc -static-libstdc++)
 endif()

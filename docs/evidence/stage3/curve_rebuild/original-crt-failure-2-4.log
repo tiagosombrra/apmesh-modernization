@@ -1,0 +1,9 @@
+rebuild_measured=kind:2 variant:4 allocations:2
+rebuild_inject=ordinal:0
+Client hook allocation failure.
+rebuild_inject=ordinal:1
+Client hook allocation failure.
+rebuild_consumed=kind:2 variant:4 failed_calls:0
+rebuild_failure_sites=kind:2 variant:4 denied:2/2 unchanged:1 retry:1 ids:consumed
+CRT retained_blocks=0 retained_bytes=0
+PASS

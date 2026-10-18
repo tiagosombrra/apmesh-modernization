@@ -1,0 +1,52 @@
+rebuild_measured=kind:1 variant:10 allocations:30
+rebuild_inject=ordinal:0
+Client hook allocation failure.
+rebuild_inject=ordinal:1
+Client hook allocation failure.
+rebuild_inject=ordinal:2
+Client hook allocation failure.
+rebuild_inject=ordinal:3
+Client hook allocation failure.
+rebuild_inject=ordinal:4
+Client hook allocation failure.
+rebuild_inject=ordinal:5
+Client hook allocation failure.
+rebuild_inject=ordinal:6
+Client hook allocation failure.
+rebuild_inject=ordinal:7
+Client hook allocation failure.
+rebuild_inject=ordinal:8
+Client hook allocation failure.
+rebuild_inject=ordinal:9
+Client hook allocation failure.
+rebuild_inject=ordinal:10
+Client hook allocation failure.
+rebuild_inject=ordinal:11
+Client hook allocation failure.
+rebuild_inject=ordinal:12
+Client hook allocation failure.
+rebuild_inject=ordinal:13
+Client hook allocation failure.
+rebuild_inject=ordinal:14
+Client hook allocation failure.
+rebuild_inject=ordinal:15
+Client hook allocation failure.
+rebuild_inject=ordinal:16
+Client hook allocation failure.
+rebuild_inject=ordinal:17
+Client hook allocation failure.
+rebuild_inject=ordinal:18
+Client hook allocation failure.
+rebuild_inject=ordinal:19
+Client hook allocation failure.
+rebuild_inject=ordinal:20
+Client hook allocation failure.
+rebuild_inject=ordinal:21
+Client hook allocation failure.
+rebuild_inject=ordinal:22
+Client hook allocation failure.
+rebuild_inject=ordinal:23
+Client hook allocation failure.
+rebuild_inject=ordinal:24
+Client hook allocation failure.
+Contract failed: failed rebuild deleted live samples

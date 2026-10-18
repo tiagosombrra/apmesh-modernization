@@ -180,3 +180,13 @@ C07/C12 define collective source ownership, observer invalidation and unchanged
 first-ID success policy. Parameter and full mesh rollback are separate. Continue
 with remaining sample construction/mutation and full retry/rollback contracts;
 do not infer complete adaptive rollback from this narrow point-graph transaction.
+
+## Paired target-count rebuild boundary (#44)
+
+The actual helper prepares new owned nodes and both supplied-point/curve-parameter
+lists before nonallocating swaps and old-interior deletion. The formulas, shrink
+selection and successful IDs are preserved. Failure leaves the paired lists and
+old samples intact; consumed IDs are not rolled back. Distinct removable interiors
+must be exclusively deletable and shared endpoints survive. C07/ADR-0014 delimit
+this transaction from curve point-observer publication, full AdaptCurve and full
+adaptive/mesh rollback. Those integration and owner-transfer paths come next.

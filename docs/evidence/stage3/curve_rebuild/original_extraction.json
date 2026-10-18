@@ -1,0 +1,13 @@
+{
+  "revision": "b7f7ebda4c206f4570f1d86fab6fac844587e188",
+  "source_blob": "75fdee901d35ea772baf1b704c27b1bef56dc39c",
+  "original_lambda_sha256": "2ff169051c265a00cee01ed4ee2712bdfab1c2702aaf7d8acc739eddd4124b44",
+  "original_body_sha256": "b1bf9df9ebde62a16cfd2fc5b177d2af2086dd71c308e2ba3fa4e41276b69c79",
+  "adapted_body_sha256": "5b270ce255bfc42d4bbbc48558c360794ebaa93cbcd7b04811b30ff83d3c6c72",
+  "adapter_sha256": "dc2bcce27a423f649be56f3ab46fd9e196611d34315efa926449a1c73154e05a",
+  "context_substitutions": {
+    "!this->id_managers_.empty() && this->id_managers_[0]": "id_manager != nullptr",
+    "this->id_managers_[0]->next()": "id_manager->next()"
+  },
+  "transformation": "Extract the actual original lambda; replace only its two member ID-manager expressions with the supplied nullable original manager. Preserve all numerical/ownership/control operations. Not full historical Generator-TU instrumentation."
+}

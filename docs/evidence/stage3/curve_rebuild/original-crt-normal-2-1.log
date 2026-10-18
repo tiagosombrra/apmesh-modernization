@@ -1,0 +1,7 @@
+rebuild_point=kind:2 variant:1 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0
+rebuild_point=kind:2 variant:1 index:1 id:42 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0
+rebuild_point=kind:2 variant:1 index:2 id:44 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0
+rebuild_point=kind:2 variant:1 index:3 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0
+rebuild_normal=kind:2 variant:1 points:4 parameters:4 destroyed:3 manager:100
+CRT retained_blocks=0 retained_bytes=0
+PASS
