@@ -1,6 +1,7 @@
 # ADR-0010: preserve parameter values in initialized curve copies
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact-head and implementation-main complete campaigns pass.
+Documentation-only closure gates remain required; see the closure evidence.
 Issue #32. Classification: behavior-changing copy-state defect repair.
 
 ## Reproduction and decision

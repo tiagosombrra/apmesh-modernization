@@ -4,9 +4,9 @@
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-8 are integrated with qualified node, UV and curve collection
-targets.
-The integrated CTest passes 18/18 with zero skips and 74 Python controls,
+Stage 3 slices 1-9 are integrated with qualified node, UV, curve collection
+and initialized curve copy targets.
+The integrated CTest passes 19/19 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
@@ -235,7 +235,7 @@ See evidence/STAGE3_CURVE_COLLECTIONS.md and ADR-0009 for commands and limits.
 
 ## Initialized pointer-taking curve copies (#32)
 
-The candidate adds application.curve_copy_contracts, taking CTest to 19 entries
+Slice 9 adds application.curve_copy_contracts, taking CTest to 19 entries
 with zero skips and 74 Python controls. The new nine-production-unit copy probe
 qualifies 30 ASan/CRT cases across parametric/Bezier/Hermite types and empty,
 forward/reversed sampled sequences. Nine positive-calibration sweeps deny 123

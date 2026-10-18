@@ -113,7 +113,8 @@ toolchains are retained in stage3/curve_copy/. Deliberate-negative raw diagnosti
 logs remain byte-for-byte local with hashes in original_raw_log_inventory.json;
 they are not normalized or described as current tracked raw files. Large current
 instrument and verbose CTest/JUnit logs remain local with hashes. Exact published-
-head and implementation-main complete campaigns remain required before closure.
+head and implementation-main complete campaigns subsequently passed; see
+STAGE3_CURVE_COPY_CLOSURE.md.
 No hosted checks or paid Actions are configured.
 
 CloneCurveForPatch/DisableSharedCurveSynchronization is reviewed statically,
