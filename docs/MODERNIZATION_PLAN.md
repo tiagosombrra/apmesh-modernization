@@ -3,43 +3,41 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stages 0-2 are closed for measured scope; stage 3 slice 9
-(#32, PR #33) is qualified.
-Head `6bda90b91406b0aed79ba6582bf820ea40559325` integrated through PR #33 as main
-`d5abb5495b28e8ec5a2b6f779c3adf173929ed04`, preserving complete tree
-`d43fd3a977b725dbe7776f7adb0c7ab979dde32f` (1004 blobs). Full exact-head and
-implementation-main campaigns pass: CTest 19/19, zero skips, 74 Python controls,
-copy 30/30, previous curve 19/19, UV 81/81, node 7/7, one-unit selected lint,
-probe/range formatting, inventory and strict repeated Eistute/Book regression.
-All nine attempted states, measured shared incidences, acceptance/rejection,
-189 CSV fields and 1,168/4,256 accepted triangles remain exact.
+Current status: stages 0-2 are closed for measured scope; stage 3 slice 10
+(#35, PR #36) is qualified.
+Head `249c561ec10f5d3766b0d1be71ed52d09e6420ec` integrated through PR #36 as main
+`4e23bd00e457e68056ff956869732b1872f04822`, preserving complete tree
+`4f6e71bf48933dfae637d6a200d9e2236734eb1e` (1083 blobs). Full exact-head and
+implementation-main campaigns pass: CTest 20/20, zero skips, 74 Python controls,
+adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7, one-unit Geometry
+lint, explicit probe/range formatting, inventory and strict repeated Eistute/Book
+regression. All nine attempted states, OBJ, acceptance/rejection, measured shared
+incidences, 189 CSV fields and 1,168/4,256 last-accepted triangles remain exact.
 
-The base pointer-taking constructor now copies parameter values in independent
-list nodes, preserving sampled-point correspondence in initialized parametric,
-Bezier and Hermite copies. The original has 12 populated normal failures and
-six populated calibration failures before denial; its other 12 control outcomes
-are as expected. Nine repaired sweeps deny all 123 calibrated allocations with
-unchanged source values/nodes/caller objects and complete successful retry.
-All 18 normal numeric traces and six empty-sequence full traces match original.
-Five populated parameter nodes are intentionally added per copy in these fixtures;
-allocation counts are observations, not portable constants or performance claims.
+Eight original raw-adoption failures retain their relinquished argument; the
+other 45 outcomes are as expected. Both raw curve/patch overloads now form a
+pending unique owner before container allocation. Sixteen calibrated sweeps
+deny all 16 observed allocations, preserving existing objects and source state,
+destroying the failed argument exactly once and requiring a fresh-object retry.
+All 34 normal original/repaired traces and successful allocation counts match;
+null-slot semantics remain. Counts are observations, not portable promises.
 
-Parameter values and observer containers are independent; physical sample/patch
-objects remain borrowed. Both curve destruction orders are qualified only while
-their actual external owners remain alive. No source consistency validation or
-repair, implicit copying or clone-publication guarantee is added. Scientific
-expressions, evaluation order and adaptation/acceptance/stopping policies remain
-unchanged. See evidence/STAGE3_CURVE_COPY_CLOSURE.md, C07 and ADR-0010.
+This is an ownership failure-path defect repair. No formula, operation order,
+policy, tolerance, budget, numerical verifier, vendor or historical source change.
+C03 and ADR-0011 distinguish Geometry adoption from helper/policy integration and
+multi-object transactions. Initial format-gate failures remain retained; explicit
+changed-function formatting passes without suppression. See
+evidence/STAGE3_GEOMETRY_ADOPTION_CLOSURE.md.
 
-Full stage 3 remains open with nine qualified slices. Next characterize
-ownership/publication around curve clones and remaining constructor/mutation
-paths, then shared sample ownership, initialization and rollback. The
-CloneCurveForPatch/DisableSharedCurveSynchronization consumer is reviewed
-statically only; its policy integration and post-copy publication are unqualified.
-Implicit copy/assignment, inconsistent/null/uninitialized sources, general
-observers, other helper/template/tree/mate paths, failed-tree observer consumption/
-retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed;
-stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
+Full stage 3 remains open with ten qualified slices. Next characterize the
+generator clone consumer/transaction boundary and remaining constructor/mutation
+paths, then shared sample ownership, initialization and rollback. Geometry
+adoption is directly qualified; CloneCurveForPatch and the synchronization-disabled
+policy remain statically reviewed only, without a graph-publication/rollback
+guarantee. Implicit copy/assignment, inconsistent/null/uninitialized clone sources,
+generic observers, other helper/template/tree/mate paths, failed-tree observer
+consumption/retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2
+stay closed; stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
 
 Earlier delivery histories and scope limits remain in PROJECT_STATE.md,
 WORKLOG.md and the unchanged evidence records. Architecture: see
@@ -124,32 +122,3 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
-
-## Active stage 3 slice 10 (#35): Geometry adoption under allocation failure
-
-Raw InsertCurve/InsertPatch previously constructed their unique owner after
-vector storage allocation. Eight original raw-adoption failure cases retain
-their relinquished argument; all 45 other control outcomes are as expected.
-Both raw overloads now create a pending unique_ptr and delegate to the existing
-unique-owner overload. Failure destroys the argument and preserves destination
-entries; retry requires a fresh object. Successful order, identity, allocation
-counts and null-slot semantics are unchanged.
-
-Candidate gates pass: CTest 20/20, zero skips, 74 Python controls, adoption 53/53,
-copy 30/30, curve 19/19, UV 81/81 and node 7/7. Sixteen independently calibrated
-sweeps deny 16 measured allocations. Initialized parametric/Bezier/Hermite
-copies and patches cover raw/unique overloads and empty/nonempty destinations.
-Full normal original/repaired traces and successful allocation counts match.
-Selected Geometry lint, explicit probe/range formatting, inventory and repeated
-strict Eistute/Book regression pass across nine attempted states, 189 named CSV
-fields, measured shared incidences and 1,168/4,256 last-accepted triangles.
-Exact published-head and post-merge implementation-main qualification remain.
-
-Classification: behavior-changing ownership failure-path defect repair.
-No formula, floating-point order, shared-curve synchronization or scientific
-acceptance/stopping policy changes. This qualifies the Geometry adoption
-boundary only. CloneCurveForPatch/DisableSharedCurveSynchronization integration,
-graph publication/rollback, earlier allocation failure, other constructors and
-mutations, shared samples/initialization, implicit copying, generic observers,
-full-process/parallel/LSan/UBSan and stage-8 undocumented APIs remain open.
-See evidence/STAGE3_GEOMETRY_ADOPTION.md and ADR-0011. Full stage 3 stays open.

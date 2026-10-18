@@ -65,7 +65,7 @@ twice and compare strictly against slice-9 implementation-main: all nine attempt
 states and OBJ/acceptance/rejection/incidence results match; positive measured
 shared incidence coverage with zero gaps, 189 named CSV fields, accepted steps
 0/1, rejected Eistute 2/3/4 and Book 2/3, final accepted triangles 1,168/4,256.
-Exact published-head and implementation-main gates remain required.
+Exact published-head and implementation-main gates subsequently passed through PR #36; see STAGE3_GEOMETRY_ADOPTION_CLOSURE.md.
 
 ## Explicit closure inventory
 
@@ -84,4 +84,10 @@ Exact published-head and implementation-main gates remain required.
   alias adoption, remaining constructors/mutations, shared sample initialization,
   generic observers, whole-process, parallel, LSan or UBSan qualification is claimed.
 
-Only this measured ownership boundary can close. Full stage 3 remains open.
+This measured ownership boundary is qualified on exact head and implementation-main. Full stage 3 remains open.
+
+Initial formatting checks failed because the changed short patch-adoption function
+requires one-line formatting. A first range-only correction did not resolve it.
+The failed reports and raw XML are retained in format_failure_inventory.json.
+Explicit formatting changed only the touched function; inventory was refreshed
+and the full campaign restarted on the final compiled bytes. No rule was suppressed.
