@@ -56,12 +56,12 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with ten qualified ownership/lifecycle slices.
-The latest guards raw curve/patch adoption before Geometry container allocation,
-with 16 measured allocation denials and fresh-argument retry. CTest 20/20,
-adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7 and strict
-Eistute/Book regressions pass before and after integration. See
-[the latest closure](docs/evidence/STAGE3_GEOMETRY_ADOPTION_CLOSURE.md).
+Stage 3 is in progress with eleven qualified ownership/lifecycle slices.
+The latest prepares owned curve clones and storage before per-curve incidence
+publication, with 484 measured allocation denials and coherent-prefix retry.
+CTest 21/21, synchronization 73/73, adoption 53/53, copy 30/30, curve 19/19,
+UV 81/81, node 7/7 and strict Eistute/Book regressions pass before and after
+integration. See [the latest closure](docs/evidence/STAGE3_CURVE_PUBLICATION_CLOSURE.md).
 Full-application memory and parallel qualification remain open.
 
 ## Repository policy
