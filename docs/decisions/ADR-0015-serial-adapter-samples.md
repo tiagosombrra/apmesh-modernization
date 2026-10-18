@@ -1,6 +1,6 @@
 # ADR-0015: prepare serial adapter samples before cache/parameter publication
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact published-head and implementation-main gates passed through PR #48.
 Issue #47. Classification: ownership/exception-consistency defect repairs plus
 engineering consolidation of two byte-identical serial construction tails.
 
@@ -62,3 +62,6 @@ Preparation changes allocation timing/counts/bytes/peak storage; no performance
 claim. No numerical formulas/order, sorting/selection, boundary synchronization,
 quadtree/templates/front, tolerance, budget, verifier or acceptance/stopping
 policy changes. Full stage 3 and stage-8 API documentation stay open.
+
+Closed/reversed endpoint and cache-overwrite fixtures exercise ownership and
+original policy; they do not certify geometrically consistent input.

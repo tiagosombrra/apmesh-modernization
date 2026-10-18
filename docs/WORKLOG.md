@@ -21,69 +21,23 @@ failures, hashes and limitations stay in the linked evidence records.
 | 2026-10-18, stage 3 slice 11 | #38, PR #39; head ce139f7d46b30daee365dfe5b1608183eb0d02c5, main 43e0309d6408601cd13e130cfa9668f35596ab67; evidence/STAGE3_CURVE_PUBLICATION_CLOSURE.md | Pending clone ownership and per-curve publication/retry; head/main CTest 21/21, sync 73/73, prior instruments pass, 484 denials and exact model regression; full CLI disabled-policy and adaptive rollback remain open |
 | 2026-10-18, stage 3 slice 12 | #41, PR #42; head 98528aeba68bb0b016b40eeeaff8d2bac6acc297, main 358107faff5d6d2cdcd63eba12114abf7f7dc5ec; evidence/STAGE3_CURVE_SNAPSHOTS_CLOSURE.md | Prepared complete sample graph before restoration; head/main CTest 22/22, snapshots 89/89, prior instruments pass, 536 denials and exact model regression; parameter/full adaptive rollback remain open |
 | 2026-10-18, stage 3 slice 13 | #44, PR #45; head ffdde7248564c8e072138d9673871baa4f13e217, main 3e628e6445b2638ff73a51fa8bb1a9aed440647c; evidence/STAGE3_CURVE_REBUILD_CLOSURE.md | Prepare paired target rebuild before swaps/deletion; head/main CTest 23/23, rebuild 117/117, prior instruments pass, 597 denials and exact model regression; consumed IDs, later curve observer publication/full rollback remain separate |
+| 2026-10-18, stage 3 slice 14 | #47, PR #48; head e61be31964558b2f3812d2d6341774ede96cc902, main 4cc921ddf0bc5e069118540c1dd278f704abdeb3; evidence/STAGE3_ADAPTER_SAMPLES_CLOSURE.md | Prepare serial Adapter samples/cache/parameters and commit after return construction; head/main CTest 24/24, samples 88/88, 702 denials, prior gates and model regression exact; upstream scratch/selection, Generator publication and full rollback remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with thirteen qualified
+Current status: stages 0-2 closed; stage 3 in progress with fourteen qualified
 slices; stages 4-11 pending.
 
-Full stage 3 remains open with thirteen qualified slices. Next characterize
-sample owner transfer and point-observer publication in Adapter/AdaptCurve,
-then full adaptive retry/rollback across parameters, patch/mesh observers and
-error/history/budget state, plus explicit full CLI disabled synchronization.
-Paired helper commit and snapshot point-graph restoration are qualified narrow
-boundaries; full AdaptCurve and whole-mesh/acceptance transactions are separate.
-Remaining constructors/mutations, generic/custom sources, other helper/template/
-tree/mate paths, failed-tree observer consumption/retry and full-process/parallel/
-LSan/UBSan remain open. Stages 0-2 stay closed for measured scope; stages 4-11
-stay pending. Doxygen undocumented-API debt stays stage 8.
+Full stage 3 remains open with fourteen qualified slices. Next characterize
+Generator point-observer publication and collective sample ownership across
+curve/surface refinement, then upstream/full adaptive retry/rollback over
+parameters, patch/mesh observers and error/history/budget state, plus explicit
+full CLI disabled synchronization. Construction-tail and paired-rebuild commits
+are qualified narrow boundaries, not full Adapter/AdaptCurve/mesh transactions.
+Evaluator scratch, remaining construction/mutation, generic/custom sources,
+other helper/template/tree/mate paths, failed-tree observer consumption/retry
+and full-process/parallel/LSan/UBSan stay open. Stages 0-2 remain closed for
+measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
 
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 13 closure](evidence/STAGE3_CURVE_REBUILD_CLOSURE.md).
-
-## Active stage 3 slice 14 (#47): serial adapter sample publication
-
-The two serial Adapter construction tails are byte-identical. Original strict
-sweeps stop at first parameter value/list-node mutation in 27 cases; later
-ordinals and their CRT retention are unmeasured. Three separate retention-only
-sweeps reclaim reachable partial original state and finish with 32 retained
-blocks each across their denied allocations, without a rollback/retry claim.
-Other 58 of 88 original outcomes are expected.
-
-Both methods now delegate their unchanged captured points and selected parameters
-to the same actual production helper. Pending unique nodes, parameters, cache
-changes and output lists are prepared first. A scope-success guard commits after
-return-list construction succeeds; failure during an allocating return move
-keeps parameters/cache unchanged. Prepared map nodes merge without allocation,
-existing cache entry nodes stay stable, parameters swap and owners release.
-Borrowed inputs/cache nodes stay alive. Endpoint scalar/adjacency copy, cached
-reuse, closed aliases, alias overwrites, sample values/order and successful ID
-requests remain exact. Consumed IDs and evaluator scratch are not rolled back.
-
-Candidate gates pass: CTest 24/24, zero skips, 74 Python controls; samples 88/88,
-702 denials across 30 positive sweeps, including an explicit actual MSVC
-list-move allocation control. Optional NRVO is disabled consistently only for
-the new target, alongside non-debug iterator metadata in Debug CRT; actual heap
-and negative controls remain. All 54 complete normal original/repaired logs match.
-Analytic curved geometry, source/cache borrowing, cache entry identity, endpoint
-adjacency/scalars, return-edge preservation and retry are checked. Prior rebuild
-117, snapshots 89, sync 73, adoption 53, copy 30, curve 19, UV 81 and node seven
-outcomes all pass. Actual new-unit read-only lint, explicit formatting/inventory
-and exact twice-repeated Eistute/Book regression pass across nine attempted
-states, 189 CSV fields and 1,168/4,256 accepted triangles. Head/main gates remain.
-
-Original comparison uses 14 pinned units and the unchanged verified tail from
-both serial methods, candidate 15 actual units; full old Adapter/Generator
-translation units are not instrumented. Valid 87-case preliminary reports remain
-retained; final 88-case coverage adds the explicit move-allocation control.
-The caller retains collective lifetime authority for newly created returned
-nodes; cache/source nodes are borrowed. Upstream sorting/parameter selection,
-evaluator scratch, later Generator point publication and full Adapter/AdaptCurve/
-mesh rollback stay outside this helper. Endpoint adjacency observers stay copied,
-without owning their elements. Full-process/parallel/LSan/UBSan stay open.
-
-Classification: ownership/exception-consistency defect repairs plus verified
-engineering consolidation. Preparation changes allocation timing/counts/bytes/
-peak storage, without a performance claim. No formula, numerical order, policy,
-budget, tolerance, verifier or acceptance/stopping change. Full stage 3 stays
-open. See evidence/STAGE3_ADAPTER_SAMPLES.md and ADR-0015.
+[slice 14 closure](evidence/STAGE3_ADAPTER_SAMPLES_CLOSURE.md).

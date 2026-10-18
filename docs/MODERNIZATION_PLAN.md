@@ -3,52 +3,52 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stages 0-2 closed for measured scope; stage 3 slice 13
-(#44, PR #45) is qualified.
-Head `ffdde7248564c8e072138d9673871baa4f13e217` integrated through PR #45 as main
-`3e628e6445b2638ff73a51fa8bb1a9aed440647c`, preserving complete tree
-`66f74c1b6d564e15a115db635a2b4856ee90a6aa` (1474 blobs). Full exact-head and
-implementation-main campaigns pass: CTest 23/23, zero skips, 74 Python controls;
-rebuild 117/117, snapshots 89/89, sync 73/73, adoption 53/53, copy 30/30,
-curve 19/19, UV 81/81, node 7/7; actual new-unit lint, explicit formatting/
-inventory and strict twice-repeated Eistute/Book regression. All nine attempted
-OBJ/acceptance/rejection/incidence states, 189 CSV fields and 1,168/4,256
-last-accepted triangles remain exact.
+Current status: stages 0-2 closed for measured scope; stage 3 slice 14
+(#47, PR #48) is qualified.
+Head `e61be31964558b2f3812d2d6341774ede96cc902` integrated through PR #48 as main
+`4cc921ddf0bc5e069118540c1dd278f704abdeb3`, preserving complete tree
+`93d7519b1c93222f78e95ba71f865bcb2d0e1cd0` (1597 blobs). Full exact-head and
+implementation-main campaigns pass: CTest 24/24, zero skips, 74 controls;
+samples 88/88, rebuild 117/117, snapshots 89/89, sync 73/73, adoption 53/53,
+copy 30/30, curve 19/19, UV 81/81, node 7/7; actual new-unit lint, explicit
+formatting/inventory and exact twice-repeated Eistute/Book regression. All nine
+attempted OBJ/acceptance/rejection/incidence states, 189 CSV fields and
+1,168/4,256 last-accepted triangles remain exact.
 
-Original: 24 sweeps stop at first deleted-live-sample failure (per-case ordinals
-11-28), with later ordinals/CRT retention unmeasured. Three two-endpoint sweeps
-finish with 48 retained blocks each across their denied allocations; other 90
-outcomes expected. Pending owned nodes and complete paired lists precede direct
-nonallocating swaps and old-interior deletion. Thirty-six calibrated sweeps
-deny 597 allocations, preserving both lists/nodes/samples and supporting
-retry. All 78 normal full logs match original. IDs consumed before failure stay
-consumed; retry uses subsequent IDs. Successful formulas, parameter/index order,
-endpoint reuse and ID requests remain. Preparation changes allocation resource
-behavior/peak storage explicitly, without a performance claim.
+Original: 27 strict sweeps stop at parameter value/list-node changes, with later
+ordinals/CRT retention unmeasured. Three retention-only sweeps reclaim reachable
+partial state and finish with 32 retained blocks each over their denials, without
+rollback/retry claims. Other 58 outcomes expected. Unique pending nodes, cache
+changes, parameters and output are prepared before commit after return-list
+construction. Thirty positive calibrated sweeps deny 702 allocations;
+explicit actual MSVC list-move denial and final return-edge preservation pass.
+All 54 normal complete traces match original. Existing cache entry nodes remain
+stable; endpoint scalar/adjacency copy, reuse, aliases, sample/ID order remain.
+Consumed IDs and evaluator scratch are not rolled back. Preparation changes
+resource behavior/peak storage explicitly; no performance claim.
 
-Original uses 12 pinned units plus verified lambda/two manager-context
-substitutions; candidate 13 actual units. Full old Generator-TU instrumentation
-is not claimed. New Debug CRT iterator metadata is consistently disabled with
-actual heap/negative controls retained; previous targets stay unchanged. Valid
-108-outcome and 117-outcome zero-start records are retained. Final fixtures
-explicitly initialize intended nonzero manager start and retain zero/null cases;
-no manager source change. C07/ADR-0014 require distinct exclusively deletable
-interiors and preserve shared endpoints. Removed-sample/list observers are
-invalidated on success. Curve observer publication, full AdaptCurve and full
-mesh/acceptance rollback remain outside this helper. No scientific formulas,
-floating-point order, policy, budgets, tolerance or verifier change. See
-evidence/STAGE3_CURVE_REBUILD_CLOSURE.md.
+Both serial tails are verified byte-identical; original uses 14 pinned units
+plus the unchanged tail adapter, candidate 15 actual units. Full old Adapter/
+Generator instrumentation is not claimed. Only the new target consistently
+disables optional NRVO and Debug iterator metadata, retaining actual heap and
+negative controls. Valid 87-case preliminary coverage remains. Input/cache
+nodes stay borrowed and caller collective result lifetime remains. C07/ADR-0015
+delimit upstream sorting/selection, scratch, later Generator publication and
+full Adapter/AdaptCurve/mesh rollback. Closed/reversed and overwrite fixtures
+are policy/ownership controls, not geometric consistency certification. No
+scientific formula/order, policy, tolerance, budget or verifier change. See
+evidence/STAGE3_ADAPTER_SAMPLES_CLOSURE.md.
 
-Full stage 3 remains open with thirteen qualified slices. Next characterize
-sample owner transfer and point-observer publication in Adapter/AdaptCurve,
-then full adaptive retry/rollback across parameters, patch/mesh observers and
-error/history/budget state, plus explicit full CLI disabled synchronization.
-Paired helper commit and snapshot point-graph restoration are qualified narrow
-boundaries; full AdaptCurve and whole-mesh/acceptance transactions are separate.
-Remaining constructors/mutations, generic/custom sources, other helper/template/
-tree/mate paths, failed-tree observer consumption/retry and full-process/parallel/
-LSan/UBSan remain open. Stages 0-2 stay closed for measured scope; stages 4-11
-stay pending. Doxygen undocumented-API debt stays stage 8.
+Full stage 3 remains open with fourteen qualified slices. Next characterize
+Generator point-observer publication and collective sample ownership across
+curve/surface refinement, then upstream/full adaptive retry/rollback over
+parameters, patch/mesh observers and error/history/budget state, plus explicit
+full CLI disabled synchronization. Construction-tail and paired-rebuild commits
+are qualified narrow boundaries, not full Adapter/AdaptCurve/mesh transactions.
+Evaluator scratch, remaining construction/mutation, generic/custom sources,
+other helper/template/tree/mate paths, failed-tree observer consumption/retry
+and full-process/parallel/LSan/UBSan stay open. Stages 0-2 remain closed for
+measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
 
 Earlier delivery histories and scope limits remain in PROJECT_STATE.md,
 WORKLOG.md and the unchanged evidence records. Architecture: see
@@ -133,50 +133,3 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
-
-## Active stage 3 slice 14 (#47): serial adapter sample publication
-
-The two serial Adapter construction tails are byte-identical. Original strict
-sweeps stop at first parameter value/list-node mutation in 27 cases; later
-ordinals and their CRT retention are unmeasured. Three separate retention-only
-sweeps reclaim reachable partial original state and finish with 32 retained
-blocks each across their denied allocations, without a rollback/retry claim.
-Other 58 of 88 original outcomes are expected.
-
-Both methods now delegate their unchanged captured points and selected parameters
-to the same actual production helper. Pending unique nodes, parameters, cache
-changes and output lists are prepared first. A scope-success guard commits after
-return-list construction succeeds; failure during an allocating return move
-keeps parameters/cache unchanged. Prepared map nodes merge without allocation,
-existing cache entry nodes stay stable, parameters swap and owners release.
-Borrowed inputs/cache nodes stay alive. Endpoint scalar/adjacency copy, cached
-reuse, closed aliases, alias overwrites, sample values/order and successful ID
-requests remain exact. Consumed IDs and evaluator scratch are not rolled back.
-
-Candidate gates pass: CTest 24/24, zero skips, 74 Python controls; samples 88/88,
-702 denials across 30 positive sweeps, including an explicit actual MSVC
-list-move allocation control. Optional NRVO is disabled consistently only for
-the new target, alongside non-debug iterator metadata in Debug CRT; actual heap
-and negative controls remain. All 54 complete normal original/repaired logs match.
-Analytic curved geometry, source/cache borrowing, cache entry identity, endpoint
-adjacency/scalars, return-edge preservation and retry are checked. Prior rebuild
-117, snapshots 89, sync 73, adoption 53, copy 30, curve 19, UV 81 and node seven
-outcomes all pass. Actual new-unit read-only lint, explicit formatting/inventory
-and exact twice-repeated Eistute/Book regression pass across nine attempted
-states, 189 CSV fields and 1,168/4,256 accepted triangles. Head/main gates remain.
-
-Original comparison uses 14 pinned units and the unchanged verified tail from
-both serial methods, candidate 15 actual units; full old Adapter/Generator
-translation units are not instrumented. Valid 87-case preliminary reports remain
-retained; final 88-case coverage adds the explicit move-allocation control.
-The caller retains collective lifetime authority for newly created returned
-nodes; cache/source nodes are borrowed. Upstream sorting/parameter selection,
-evaluator scratch, later Generator point publication and full Adapter/AdaptCurve/
-mesh rollback stay outside this helper. Endpoint adjacency observers stay copied,
-without owning their elements. Full-process/parallel/LSan/UBSan stay open.
-
-Classification: ownership/exception-consistency defect repairs plus verified
-engineering consolidation. Preparation changes allocation timing/counts/bytes/
-peak storage, without a performance claim. No formula, numerical order, policy,
-budget, tolerance, verifier or acceptance/stopping change. Full stage 3 stays
-open. See evidence/STAGE3_ADAPTER_SAMPLES.md and ADR-0015.

@@ -2,7 +2,8 @@
 
 Updated 2026-10-18 (America/Fortaleza). Issue #47; one active work item.
 Entry e5300550195147dafcc37a41dd2eb4f4c2cec433. Candidate passes; exact
-published-head/main gates remain required. ADR-0015 and stage3/adapter_samples/
+published-head/main gates subsequently passed through PR #48; see
+STAGE3_ADAPTER_SAMPLES_CLOSURE.md. ADR-0015 and stage3/adapter_samples/
 retain commands/hashes, identical-tail extraction, passed/failed observations,
 retention-only limits and preliminary 87-case records.
 

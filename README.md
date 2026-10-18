@@ -56,13 +56,13 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with thirteen qualified ownership/lifecycle slices.
-The latest prepares target-count sample/parameter lists together before commit,
-with 597 allocation denials, preserved live state on failure and consumed-ID retry.
-CTest 23/23, rebuild 117/117, snapshots 89/89, synchronization 73/73, adoption 53/53,
-copy 30/30, curve 19/19, UV 81/81, node 7/7 and exact repeated Eistute/Book
-regressions pass before and after integration. See
-[the latest closure](docs/evidence/STAGE3_CURVE_REBUILD_CLOSURE.md).
+Stage 3 is in progress with fourteen qualified ownership/lifecycle slices.
+The latest prepares serial adapter samples/cache/parameters and publishes after
+return construction, with 702 allocation denials and preserved live state on failure.
+CTest 24/24, samples 88/88, rebuild 117/117, snapshots 89/89, sync 73/73,
+adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7 and exact repeated
+Eistute/Book regressions pass before and after integration. See
+[the latest closure](docs/evidence/STAGE3_ADAPTER_SAMPLES_CLOSURE.md).
 Full-application memory and parallel qualification remain open.
 
 ## Repository policy
