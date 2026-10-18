@@ -1,0 +1,784 @@
+{
+  "status": "failed",
+  "scope": "Candidate: thirteen actual Geometry/curve/patch/numerical/synchronization production units. Original: twelve pinned actual units and a mechanically extracted, hash-verified adapter of the original generator functions, not the full historical generator translation unit. Actual PatchBezier orientation/control-net and repeated-edge incidences, per-original-curve publication, committed prefixes and whole-operation retry. Not adaptive rollback, full CLI synchronization-disabled campaign, full application, parallel, LSan or UBSan.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11oa\\RelWithDebInfo\\curve_synchronization_probe.exe",
+      "sha256": "c386f53dc55453bbdebdc121a46bad8576e4add2437978ae399c9d609cc9cf08"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11od\\Debug\\curve_synchronization_probe.exe",
+      "sha256": "68a3ff24666680bfbe1315adcf606f97d2ffd8726d903727e1db0eeeba5a0a5e"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "496922145b65b6d66d5cae3e963cafd4e1ae62725f3d733f8e8739b58d23e2ec"
+    },
+    {
+      "instrument": "asan",
+      "mode": "helper-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_helper=kind:0 null:0 values:1 lifetime:1"
+      ],
+      "log_sha256": "105afbd5528e176c62ef05412d274babaef3c79b97b022266bfcae1cfe09043a"
+    },
+    {
+      "instrument": "asan",
+      "mode": "helper-0-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_helper=kind:0 null:1 values:1 lifetime:1"
+      ],
+      "log_sha256": "20d8011e48b3edace47ae002292e16ffcfbf6afe7f7148d5ecc44e5f6c41f3e2"
+    },
+    {
+      "instrument": "asan",
+      "mode": "helper-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_helper=kind:1 null:0 values:1 lifetime:1"
+      ],
+      "log_sha256": "a74854f43aa64160d3d7b6134af49273cef4aba8d866a8159855a7102176b7bf"
+    },
+    {
+      "instrument": "asan",
+      "mode": "helper-1-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_helper=kind:1 null:1 values:1 lifetime:1"
+      ],
+      "log_sha256": "dafac65b2e5180b8edad49e409982368b3dfbdb3867977dcfeea4116e8a0bd98"
+    },
+    {
+      "instrument": "asan",
+      "mode": "helper-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_helper=kind:2 null:0 values:1 lifetime:1"
+      ],
+      "log_sha256": "aa8e7591725dd43f219db442ae0cce2d6efe789d109a03f7fa54d85906427999"
+    },
+    {
+      "instrument": "asan",
+      "mode": "helper-2-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_helper=kind:2 null:1 values:1 lifetime:1"
+      ],
+      "log_sha256": "efaffa12ccc29501964aa25ebdfb30927baf8e65bfafb541d6cc467f2be29b52"
+    },
+    {
+      "instrument": "asan",
+      "mode": "helper-3-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_helper=kind:3 null:0 values:1 lifetime:1"
+      ],
+      "log_sha256": "c262950874b932077d55348aa7cf55186cb56ca01d295b863b4ba3fce3f04fd8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "helper-3-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_helper=kind:3 null:1 values:1 lifetime:1"
+      ],
+      "log_sha256": "9c45ee541eef9f2d5487cd3f7c5a582de39721ef00d88c6c45c2a9b015b667b5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "e86c8d60dd105fde04c676f1a34067e632b5da538242e834c743d32630ee6bce"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 72,
+      "retained_bytes": 7488,
+      "observations": [],
+      "log_sha256": "e8c08459f69569edff5ba932445cc47d15d117813ba51b64a3822d82140a1584"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "92ca48d505dc7ac474696c481ea97e82fed4c22fc80a974ba074f5a43fe32b06"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "21434b668824422a0a8a39d61713866c872865bc72bc73928d304d22c7077849"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 72,
+      "retained_bytes": 7488,
+      "observations": [],
+      "log_sha256": "edadbb11d9d95b2bf8c708fefab56df4f9f9e653c6bcf3ac7418ddf6f7c15bf5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "cf294a84f2774b18efa6d44edd4d0c36c9fa4f14a5ba1f93dec83ef938158dac"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "e4cc32a306690642e5ec650405ff42388a2d812a5aa9d10099e2be3c978ad559"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 72,
+      "retained_bytes": 7488,
+      "observations": [],
+      "log_sha256": "c13ee2a863ccd46ea71fa30fef353c6da76a4ff4678f6651dcf8b7e535a6cce5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "8dc719039cb68501bdaf7f6e5a19b2183d360220bc2845cffc6f4ec84710d1b4"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "85f8b28a9f1dd455f59143ae51aee1fd21c8d9386bde281f463bcf1c9080f596"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 72,
+      "retained_bytes": 7488,
+      "observations": [],
+      "log_sha256": "52d495d52385a6b6840965f4a3ccc98278fe363a84846746628438b673bf1ee6"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "958e9cd5273717c42299e83344db71843f757ec77b27873d5c59199c9968bc4d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-0-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [
+        "sync_helper=kind:0 null:0 values:1 lifetime:1"
+      ],
+      "log_sha256": "47f383350429ab118d81a1f1598aacbca3717c64e2258abd25ae9e00fe0228e4"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [
+        "sync_helper=kind:0 null:1 values:1 lifetime:1"
+      ],
+      "log_sha256": "6300babb244a25d2ede32abc2200f6e558dceca6e1867949da765c0394d8b50b"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-1-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [
+        "sync_helper=kind:1 null:0 values:1 lifetime:1"
+      ],
+      "log_sha256": "0c62ac5525db5dde131dd398ec55d97b1393191fd7edf382e8eefbf0898e43d2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [
+        "sync_helper=kind:1 null:1 values:1 lifetime:1"
+      ],
+      "log_sha256": "f6c887971b1310456d8f653ae644d3397e49e34394dc600604e4b303ae23d205"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-2-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [
+        "sync_helper=kind:2 null:0 values:1 lifetime:1"
+      ],
+      "log_sha256": "c06f82430bcb82c62e7abd1b160ab33188aff4f5bdaa9dec3b972531501881f9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [
+        "sync_helper=kind:2 null:1 values:1 lifetime:1"
+      ],
+      "log_sha256": "6605936082ee2cfc29d0aea6810a49935176888acaee933f0fd4c03043082898"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-3-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [
+        "sync_helper=kind:3 null:0 values:1 lifetime:1"
+      ],
+      "log_sha256": "568e654b912ee2ba3041508f37d9d7db6b06781cffb719e438fa163c28482e18"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-3-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [
+        "sync_helper=kind:3 null:1 values:1 lifetime:1"
+      ],
+      "log_sha256": "c912e8bce8957b4f9a5e18708820f765c8cc2b63698e56394b04f76a70963e26"
+    },
+    {
+      "instrument": "asan",
+      "mode": "guards",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "sync_guards=null-source:1 null-geometry:1 filtered-singleton:1"
+      ],
+      "log_sha256": "ec4cb35a531c9c5b7c525e98295d8924c6643cb301c5347aec102f92ff3478b9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "guards",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "sync_guards=null-source:1 null-geometry:1 filtered-singleton:1"
+      ],
+      "log_sha256": "c0bd0172c61f0420bef42634183d91bc9ca6d17fd0dc6d40fad7288ad9ecfc93"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "dd1bfaa4561e6c132253b6c4a66e51fb640984aba33fada2766a55fdc1a6f107"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 72,
+      "retained_bytes": 7488,
+      "observations": [],
+      "log_sha256": "dade37e33b36a0d4fe8dedfa5bb370062ff11b44ebea0cac6972afb182250184"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "68d60f8bbc36c2b6c726e7d5c9fc592446109a448143d0e39dd3eaf3af81a892"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "e6edcbdc0e52448b86a2b0147bfe5ad28d684bb771fc951ff15233fe2ed0af0e"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 72,
+      "retained_bytes": 7488,
+      "observations": [],
+      "log_sha256": "c912f2866905ac014aa20c760fc3d9f06eb82c27c72252c4cb138d19787f47e8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "7eda96265bdddaf7a49692aa9575fd673577054bb49935a66e9509a2804d0622"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "31515644abaa6e0be2b9794a6ff71cc4e78988898bc972227f6b210d1bcf7125"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 72,
+      "retained_bytes": 7488,
+      "observations": [],
+      "log_sha256": "eae0262997a3191b8ff88785b859cfc72eea511c730dd646f673b44fecc472ef"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "d8f471fb2315e60d070f95703d51c41b405bcd5883e55165548f37d6539cd1f1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "02fac03ee68cec538ed2e0791ae126abe206ae4aedc5a345e726d9f94c59bda1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 72,
+      "retained_bytes": 7488,
+      "observations": [],
+      "log_sha256": "7143209e3df6f73b1895258911809e6e02c185a8eb25eca0d3f3b5259e4c1531"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 4992,
+      "observations": [],
+      "log_sha256": "1af721038ebf6e49933bc93b176feb52a6a94d5ffd564771cb6898a427c387a6"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-failure-0-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 439,
+      "retained_bytes": 45136,
+      "observations": [
+        "sync_measured=kind:0 variant:0 direct:1 allocations:8",
+        "sync_inject=ordinal:0",
+        "sync_inject=ordinal:1",
+        "sync_inject=ordinal:2",
+        "sync_inject=ordinal:3",
+        "sync_inject=ordinal:4",
+        "sync_inject=ordinal:5",
+        "sync_inject=ordinal:6",
+        "sync_inject=ordinal:7",
+        "sync_failure_sites=kind:0 variant:0 direct:1 denied:8/8 prefix:0 retry:1"
+      ],
+      "log_sha256": "2ba9e53242ff1101680f68211007cdebc248e83856d28d683089e28ca36814dd"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-failure-1-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 684,
+      "retained_bytes": 70576,
+      "observations": [
+        "sync_measured=kind:1 variant:0 direct:1 allocations:13",
+        "sync_inject=ordinal:0",
+        "sync_inject=ordinal:1",
+        "sync_inject=ordinal:2",
+        "sync_inject=ordinal:3",
+        "sync_inject=ordinal:4",
+        "sync_inject=ordinal:5",
+        "sync_inject=ordinal:6",
+        "sync_inject=ordinal:7",
+        "sync_inject=ordinal:8",
+        "sync_inject=ordinal:9",
+        "sync_inject=ordinal:10",
+        "sync_inject=ordinal:11",
+        "sync_inject=ordinal:12",
+        "sync_failure_sites=kind:1 variant:0 direct:1 denied:13/13 prefix:0 retry:1"
+      ],
+      "log_sha256": "8255e0c1ad73247bdbe22ff8448abcd5aa04206b1d4825b7f2ddfb43a383c952"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-failure-2-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 684,
+      "retained_bytes": 70656,
+      "observations": [
+        "sync_measured=kind:2 variant:0 direct:1 allocations:13",
+        "sync_inject=ordinal:0",
+        "sync_inject=ordinal:1",
+        "sync_inject=ordinal:2",
+        "sync_inject=ordinal:3",
+        "sync_inject=ordinal:4",
+        "sync_inject=ordinal:5",
+        "sync_inject=ordinal:6",
+        "sync_inject=ordinal:7",
+        "sync_inject=ordinal:8",
+        "sync_inject=ordinal:9",
+        "sync_inject=ordinal:10",
+        "sync_inject=ordinal:11",
+        "sync_inject=ordinal:12",
+        "sync_failure_sites=kind:2 variant:0 direct:1 denied:13/13 prefix:0 retry:1"
+      ],
+      "log_sha256": "79ccc0ee18193c15a44ebf429e8afe0f2e1abadcc45824d5d651e9347a3c80d9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "helper-failure-3-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 684,
+      "retained_bytes": 70624,
+      "observations": [
+        "sync_measured=kind:3 variant:0 direct:1 allocations:13",
+        "sync_inject=ordinal:0",
+        "sync_inject=ordinal:1",
+        "sync_inject=ordinal:2",
+        "sync_inject=ordinal:3",
+        "sync_inject=ordinal:4",
+        "sync_inject=ordinal:5",
+        "sync_inject=ordinal:6",
+        "sync_inject=ordinal:7",
+        "sync_inject=ordinal:8",
+        "sync_inject=ordinal:9",
+        "sync_inject=ordinal:10",
+        "sync_inject=ordinal:11",
+        "sync_inject=ordinal:12",
+        "sync_failure_sites=kind:3 variant:0 direct:1 denied:13/13 prefix:0 retry:1"
+      ],
+      "log_sha256": "0202faf8c9fd52db1fb62e877f376afaac14bb5210a1b7ff70aef56d6c89706f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ],
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "109c1d76436afc6c7d4c0d8770a6a665dea4aca96b38d8866bf8bed620ed0c9b"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "expected_diagnostic": "retained-blocks",
+      "passed": true,
+      "retained_blocks": 1,
+      "retained_bytes": 40,
+      "observations": [],
+      "log_sha256": "d0456171f7abbad5f1fbf5bbc6c5940831b59606f5a6daae864a84914b4ada30"
+    }
+  ]
+}

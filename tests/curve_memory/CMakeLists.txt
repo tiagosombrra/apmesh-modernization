@@ -18,7 +18,21 @@ add_executable(geometry_adoption_probe adoption_probe.cpp ${curve_sources}
   "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/geometry.cpp"
   "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
   "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp")
-foreach(curve_probe IN ITEMS curve_collection_probe curve_copy_probe geometry_adoption_probe)
+set(AP_MESH_SYNC_IMPLEMENTATION "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_synchronization.cpp" CACHE FILEPATH "Curve synchronization implementation")
+add_executable(curve_synchronization_probe synchronization_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/geometry.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_coons.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_bezier.cpp"
+  "${AP_MESH_SYNC_IMPLEMENTATION}")
+if(MSVC)
+  target_compile_options(curve_synchronization_probe PRIVATE /permissive-)
+  # Debug iterator proxies allocate inside noexcept constructors. Keep the CRT
+  # heap instrument while matching the serial/ASan container ABI for this target.
+  target_compile_definitions(curve_synchronization_probe PRIVATE $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+endif()
+foreach(curve_probe IN ITEMS curve_collection_probe curve_copy_probe geometry_adoption_probe curve_synchronization_probe)
   target_compile_features(${curve_probe} PRIVATE cxx_std_17)
   target_include_directories(${curve_probe} PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include")
   if(MSVC)
@@ -31,3 +45,4 @@ foreach(curve_probe IN ITEMS curve_collection_probe curve_copy_probe geometry_ad
     target_link_options(${curve_probe} PRIVATE -static -static-libgcc -static-libstdc++)
   endif()
 endforeach()
+target_include_directories(curve_synchronization_probe PRIVATE "${default_curve_root}/include")

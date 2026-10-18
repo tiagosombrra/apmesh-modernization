@@ -409,3 +409,46 @@ guarantee. Implicit copy/assignment, inconsistent/null/uninitialized clone sourc
 generic observers, other helper/template/tree/mate paths, failed-tree observer
 consumption/retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2
 stay closed; stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
+
+## Active stage 3 slice 11 (#38): clone publication and per-curve recovery
+
+The original synchronization-disabled operation trims source incidences before
+clone construction/publication can finish. Twelve original graph sweeps fail at
+denied ordinal 1, after the ordinal-0 control; their later ordinals are unmeasured.
+Four direct helper sweeps retain pending clones when target-incidence allocation
+fails. The other 57 of 73 original control outcomes are as expected.
+
+The helper and operation now live in a narrow actual production unit, called by
+the unchanged GeneratorAdaptive entry method. Pending unique owners protect
+helper construction. Each original curve prepares all clones, batch-prepares
+Geometry storage and appends owners before a nonallocating incidence commit.
+Failure preserves the failing curve; earlier committed curves remain committed.
+Whole-operation retry and repeated success are qualified for these graph fixtures.
+This is not whole-operation atomicity or adaptive rollback.
+
+Candidate gates pass: CTest 21/21, zero skips, 74 Python controls; synchronization
+73/73 with 484 denials over 20 calibrated sweeps; prior adoption 53/53, copy
+30/30, curve 19/19, UV 81/81, node 7/7. Normal observations match the original,
+with independent line/patch geometry, dynamic type, orientation, observer order,
+null filtering, repeated edges and mixed/non-Coons controls. Preparation buffers
+and batch storage deliberately change allocation timing/counts/bytes. Actual
+Geometry/new synchronization lint, formatting, inventory and strict repeated
+Eistute/Book regression pass across nine states and 189 CSV fields, retaining
+1,168/4,256 last-accepted triangles. Exact published-head/main gates remain.
+
+Original comparison uses twelve pinned production units plus mechanically
+extracted, hash-verified function bodies; the full original generator translation
+unit is not instrumented. The new target uses standard MSVC /permissive- and
+Debug CRT with iterator metadata disabled consistently across its units, matching
+serial/ASan container layout. CRT heap checks, denial assertions and negative
+controls remain; earlier targets keep their settings. Failed setup/iterator/lint
+reports are preserved and do not count as production defect evidence.
+
+Classification: behavior-changing ownership/exception-consistency defect repairs
+plus bounded extraction and an explicit Hermite destructor override. No formula,
+floating-point order, incidence policy, tolerance, verifier, adaptation/acceptance/
+stopping change. Full CLI synchronization-disabled qualification, adaptive
+snapshot/rollback, shared sample initialization, remaining constructors/mutations,
+generic observers, full-process/parallel/LSan/UBSan and stage-8 API documentation
+remain open. Full stage 3 stays open. See evidence/STAGE3_CURVE_PUBLICATION.md
+and ADR-0012.

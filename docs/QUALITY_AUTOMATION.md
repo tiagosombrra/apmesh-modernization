@@ -258,3 +258,24 @@ lint analyzes the actual Geometry unit; explicit formatting is confined to the
 new probe and changed production/header ranges. Raw original failure dumps
 retain tool-produced bytes locally with hashes, without whitespace suppression.
 See ADR-0011 and evidence/STAGE3_GEOMETRY_ADOPTION.md for commands and limits.
+
+## Curve clone publication (#38)
+
+application.curve_synchronization_contracts takes CTest to 21 entries with
+74 Python controls. tools/qualify_curve_synchronization.py requires 73 outcomes:
+50 normal/guard ASan/CRT cases, 20 calibrated sweeps (484 allocation denials)
+and three deliberate access/leak/hook controls. Existing adoption 53, copy 30,
+curve 19, UV 81 and node seven cases remain required. The candidate compiles
+13 actual production units, including real PatchBezier and the extracted
+operation; the original comparison compiles 12 pinned units and a verified
+function adapter. It is not full historical-generator instrumentation.
+
+Only this new MSVC target uses /permissive- and Debug _ITERATOR_DEBUG_LEVEL=0,
+consistently across all its units. MSVC level 2 allocates an iterator proxy in
+vector's noexcept default constructor and terminates at denied ordinal 0.
+That instrument failure is retained; iterator-metadata recovery is unqualified.
+CRT heap retention, all observed production allocation denials and deliberate
+controls remain required. ASan/serial Release use non-debug container layouts.
+No previous target, diagnostic filter or scientific gate is weakened. Selected
+lint required one explicit Hermite destructor override; the failed report is
+retained. See ADR-0012 and evidence/STAGE3_CURVE_PUBLICATION.md.

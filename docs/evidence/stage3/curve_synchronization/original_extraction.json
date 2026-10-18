@@ -1,0 +1,8 @@
+{
+  "revision": "45af645c230d9179bd0b8b03a7d28621d0b31cf0",
+  "source_blob": "ca9ca0c27094ca0ea8e75810bb0787c75822c0a3",
+  "clone_function_utf8_sha256": "e3dbd560ac0d26a93ab346ee41d12de2c978c7035728b0a46a9247f9ed914afc",
+  "operation_function_utf8_sha256": "882dd565e8efa039b6eb6d21ee6ad58c973338d003d8abcb3c271c2a29c17cc8",
+  "adapter_sha256": "7ad3831055b5bc5e4a6060c287d17346f2816857efe4058b3c8de071ea9c31b8",
+  "transformation": "Exact UTF-8 function bodies from Git-verified original; only class qualifier renamed for independent linkage. Public test wrappers adapt the raw clone return after successful completion; they cannot repair an exception inside the original helper. Full original generator translation unit is not instrumented."
+}

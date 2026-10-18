@@ -7,9 +7,9 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 123,
-    "translation_units": 57,
-    "headers": 66,
+    "files": 125,
+    "translation_units": 58,
+    "headers": 67,
     "directory_components": {
       "adapter": 2,
       "cli": 1,
@@ -23,13 +23,13 @@
       "data/patch": 8,
       "data/tree": 2,
       "estimate": 2,
-      "generator": 2,
+      "generator": 4,
       "input_output": 11,
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 464,
-    "first_party_include_edges": 272
+    "literal_include_directives": 473,
+    "first_party_include_edges": 278
   },
   "cross_component_directives": [
     {
@@ -245,12 +245,12 @@
     {
       "from": "generator",
       "to": "data",
-      "count": 4
+      "count": 5
     },
     {
       "from": "generator",
       "to": "data/curve",
-      "count": 3
+      "count": 5
     },
     {
       "from": "generator",
@@ -260,7 +260,7 @@
     {
       "from": "generator",
       "to": "data/patch",
-      "count": 2
+      "count": 3
     },
     {
       "from": "generator",
@@ -349,7 +349,7 @@
     "list": 12,
     "locale": 1,
     "map": 6,
-    "memory": 15,
+    "memory": 16,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -357,7 +357,7 @@
     "queue": 2,
     "set": 2,
     "sstream": 6,
-    "stdexcept": 6,
+    "stdexcept": 7,
     "stdio.h": 1,
     "string": 6,
     "sys/time.h": 2,
@@ -368,7 +368,7 @@
     "unordered_map": 5,
     "unordered_set": 4,
     "utility": 4,
-    "vector": 15,
+    "vector": 16,
     "windows.h": 1,
     "winsock2.h": 1
   },
@@ -383,11 +383,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "4596e57821e94dd3252ca83fd458b00d9f4ce268dbabee5a4913674e6a5f31d4"
+      "sha256": "b172609810761f3892d922b9f3f78cf3fdcef51a0fda088810e067744d96d481"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "860b3044ab2f62c3546c186bc3a5c0fe6fddbc4cbc5225a2983df36efc475562"
+      "sha256": "66ab58af57da092efe7acd9665b28e4d4a6608669d54269eb0ec258682047a1e"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1397,8 +1397,8 @@
       "path": "include/data/curve/curve_adaptive_parametric_hermite.h",
       "component_by_directory": "data/curve",
       "kind": "header",
-      "sha256": "215c1696e4e15dd82ce3c76b6c0e43fca2c40c53a5d62ec22f9da2b9296f0d2a",
-      "bytes": 1053,
+      "sha256": "2bd20ca76170e2aa68eca12f976c566b34616bee288a5af1a13463a9492da6d9",
+      "bytes": 1062,
       "includes": [
         {
           "line": 4,
@@ -1727,8 +1727,8 @@
       "path": "include/data/geometry.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "8614045b1992da8ca27a8351c58e3bd5ba72b56c0e52a14470bf1b67c666ad74",
-      "bytes": 2006,
+      "sha256": "66d776609c44e7c2dc942742cf3d776a324b66ce3933a145d40a8594c72fc5ad",
+      "bytes": 2271,
       "includes": [
         {
           "line": 4,
@@ -2162,6 +2162,22 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/timer/timer.h"
+        }
+      ]
+    },
+    {
+      "path": "include/generator/curve_synchronization.h",
+      "component_by_directory": "generator",
+      "kind": "header",
+      "sha256": "61e51edf3822c9cbe876868e2de694b86f90f7644bab3c452054a6f65083aff1",
+      "bytes": 783,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -3587,8 +3603,8 @@
       "path": "src/data/geometry.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "5d442c1c3338943e9125cd2266bed5319663866261cb1d758345cb66594a4dc4",
-      "bytes": 2700,
+      "sha256": "e561236b21dbcebe70f29bd8489453d31a313945ec7281562b7f575689844abd",
+      "bytes": 3066,
       "includes": [
         {
           "line": 1,
@@ -3599,41 +3615,48 @@
         },
         {
           "line": 3,
+          "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
           "spelling": "unordered_set",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 5,
+          "line": 6,
           "spelling": "data/curve/curve_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/curve/curve_adaptive.h"
         },
         {
-          "line": 6,
+          "line": 7,
           "spelling": "data/curve/curve_adaptive_parametric_bezier.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
         },
         {
-          "line": 7,
+          "line": 8,
           "spelling": "data/patch/patch.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch.h"
         },
         {
-          "line": 8,
+          "line": 9,
           "spelling": "data/point_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/point_adaptive.h"
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "data/vector_adaptive.h",
           "form": "quote",
           "scope": "first_party",
@@ -3985,11 +4008,62 @@
       ]
     },
     {
+      "path": "src/generator/curve_synchronization.cpp",
+      "component_by_directory": "generator",
+      "kind": "translation_unit",
+      "sha256": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3",
+      "bytes": 3018,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "generator/curve_synchronization.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/curve_synchronization.h"
+        },
+        {
+          "line": 3,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "data/curve/curve_adaptive_parametric_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
+        },
+        {
+          "line": 6,
+          "spelling": "data/curve/curve_adaptive_parametric_hermite.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric_hermite.h"
+        },
+        {
+          "line": 7,
+          "spelling": "data/geometry.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/geometry.h"
+        },
+        {
+          "line": 8,
+          "spelling": "data/patch/patch_coons.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_coons.h"
+        }
+      ]
+    },
+    {
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "e9695e5fc8af6ad0d913b54fbb758cf1a997c989e3b550d5cc85d7bbb48582e2",
-      "bytes": 349480,
+      "sha256": "005bf50410ecc92e52f3a26b8e8d836208907b8554b0d7c88c5d05da0a2dc746",
+      "bytes": 347180,
       "includes": [
         {
           "line": 1,
@@ -4028,90 +4102,97 @@
         },
         {
           "line": 7,
+          "spelling": "generator/curve_synchronization.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/curve_synchronization.h"
+        },
+        {
+          "line": 8,
           "spelling": "input_output/incidence_snapshot.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/incidence_snapshot.h"
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "array",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "ostream",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 11,
+          "line": 12,
           "spelling": "cstdio",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 12,
+          "line": 13,
           "spelling": "unordered_set",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 13,
+          "line": 14,
           "spelling": "unordered_map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 14,
+          "line": 15,
           "spelling": "algorithm",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 15,
+          "line": 16,
           "spelling": "cmath",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 16,
+          "line": 17,
           "spelling": "limits",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 17,
+          "line": 18,
           "spelling": "numeric",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 18,
+          "line": 19,
           "spelling": "map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 19,
+          "line": 20,
           "spelling": "filesystem",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 20,
+          "line": 21,
           "spelling": "system_error",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -4755,7 +4836,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 100,
+    "source_anchors": 103,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

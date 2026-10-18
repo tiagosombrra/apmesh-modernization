@@ -157,3 +157,16 @@ execute CloneCurveForPatch or qualify the generator's policy or graph rollback.
 Continue that consumer/transaction boundary and remaining constructor/mutation
 paths before shared samples, initialization and rollback. No scientific policy
 is changed. See ADR-0011 and the measured slice evidence.
+
+## Clone publication boundary (#38)
+
+The actual clone helper and synchronization-disabled operation are isolated in
+generator/curve_synchronization.cpp. C03/C07 and ADR-0012 define pending owners,
+ordered batch publication and per-original-curve commit. A failing curve stays
+unchanged; committed prefixes can remain and whole-operation retry completes.
+Successful incidence/filter/replacement/type/orientation policy is preserved,
+including mixed/non-Coons behavior. Allocation timing/counts/bytes intentionally
+change; no performance claim. Whole-operation atomicity, complete CLI execution
+with synchronization disabled and adaptive snapshot/rollback are distinct open
+boundaries. Continue remaining construction/mutation and shared-sample
+initialization/rollback; full-process/parallel qualification remains open.

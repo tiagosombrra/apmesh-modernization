@@ -1,0 +1,16 @@
+{
+  "configuration": "Only the new Debug CRT synchronization target uses _ITERATOR_DEBUG_LEVEL=0, consistently across all its actual production units; existing qualification targets remain unchanged. ASan Release and serial Release already use non-debug container layouts. Debug CRT heap instrumentation and all diagnostic/denial assertions remain enabled.",
+  "reason": "With level 2, allocation ordinal 0 is the vector debug iterator proxy allocated inside a standard noexcept default constructor, so the process terminates before the operation can catch bad_alloc. This is unqualified recovery of MSVC debug iterator metadata, not evidence of a source incidence defect. The level-2 failed reports remain retained.",
+  "sources": {
+    "vector": {
+      "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\include\\vector",
+      "sha256": "351604d91a2ceac79f9bd9448c0553cccc22711e22955b5938eaf41de98334a6"
+    },
+    "xmemory": {
+      "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\include\\xmemory",
+      "sha256": "76359d0893ef63b0baa617e3f2d8729c50a24d349b41af51ad8e00ad7be82d70"
+    }
+  },
+  "fixture_correction": "The initial fixture appended four observers after the PatchBezier control-net constructor had already created four raw curves. It now owns those four generated objects explicitly and replaces the existing four observers. Preliminary normal failures/retention are invalid fixture results, not production defect evidence.",
+  "standard_mode": "The new target uses /permissive-, as the serial root MSVC target already does, to accept standard alternative operator tokens in the actual patch implementation. Failed initial compilation is retained."
+}

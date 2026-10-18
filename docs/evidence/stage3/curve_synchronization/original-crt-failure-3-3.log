@@ -1,0 +1,8 @@
+sync_measured=kind:3 variant:3 direct:0 allocations:2
+sync_inject=ordinal:0
+Client hook allocation failure.
+sync_inject=ordinal:1
+Client hook allocation failure.
+sync_failure_sites=kind:3 variant:3 direct:0 denied:2/2 prefix:1 retry:1
+CRT retained_blocks=0 retained_bytes=0
+PASS
