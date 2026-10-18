@@ -1,0 +1,8 @@
+{
+  "revision": "e5300550195147dafcc37a41dd2eb4f4c2cec433",
+  "source_blob": "a971c8734ec40e6b216942e9e7454c57948d9505",
+  "tails_equal": true,
+  "tail_sha256": "993f0b6c862431090ebd65ffaa15ac97dcbbe49b918766006128ea225a49fa69",
+  "adapter_sha256": "9179be479ba4b93eee2cba5d506e1897f0affdd1a64234f577a7ed54ff8f5ac0",
+  "transformation": "Both serial tails are byte-identical. Extract either exact tail without changing its body, using the same captured points, selected parameters, cache and ID manager. Upstream sorting, parameter selection, numerical operations and full old translation units are not instrumented."
+}

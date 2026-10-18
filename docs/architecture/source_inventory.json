@@ -7,11 +7,11 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 129,
-    "translation_units": 60,
-    "headers": 69,
+    "files": 131,
+    "translation_units": 61,
+    "headers": 70,
     "directory_components": {
-      "adapter": 2,
+      "adapter": 4,
       "cli": 1,
       "crab_mesh/aft": 18,
       "crab_mesh/numerical": 7,
@@ -28,8 +28,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 494,
-    "first_party_include_edges": 288
+    "literal_include_directives": 504,
+    "first_party_include_edges": 293
   },
   "cross_component_directives": [
     {
@@ -40,7 +40,7 @@
     {
       "from": "adapter",
       "to": "crab_mesh/performer",
-      "count": 1
+      "count": 2
     },
     {
       "from": "adapter",
@@ -50,12 +50,12 @@
     {
       "from": "adapter",
       "to": "data",
-      "count": 1
+      "count": 2
     },
     {
       "from": "adapter",
       "to": "data/curve",
-      "count": 2
+      "count": 3
     },
     {
       "from": "adapter",
@@ -340,16 +340,17 @@
     "cstdlib": 5,
     "cstring": 1,
     "ctime": 3,
+    "exception": 1,
     "execinfo.h": 1,
     "filesystem": 1,
     "fstream": 9,
     "iomanip": 2,
     "iostream": 10,
     "limits": 5,
-    "list": 14,
+    "list": 15,
     "locale": 1,
-    "map": 6,
-    "memory": 18,
+    "map": 7,
+    "memory": 19,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -368,7 +369,7 @@
     "unordered_map": 6,
     "unordered_set": 6,
     "utility": 4,
-    "vector": 18,
+    "vector": 19,
     "windows.h": 1,
     "winsock2.h": 1
   },
@@ -383,11 +384,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "fdcdd826d52c6dfc4fc60579c47dec352df1bd2c8837dc0fd8ec274b91b9cd31"
+      "sha256": "e36be36467132c040176a146019eadc58521aaf68f6e18e4a9611a849d174a95"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "789c7a0c7a3f9855682d3d2a822e8445db66964e1b16ef637983fceaaac5e82e"
+      "sha256": "922cba9d70f0f3acd16bf22d9b9f2929f40ba661126f7cca3f293806b13b74e0"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -545,6 +546,29 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/parallel/TMCommunicator.h"
+        }
+      ]
+    },
+    {
+      "path": "include/adapter/curve_samples.h",
+      "component_by_directory": "adapter",
+      "kind": "header",
+      "sha256": "7a6e698663ee4d8244ffa0bc3c08d00937a0aefe4926b97c83dc6d313a2ab5c1",
+      "bytes": 1254,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -3029,8 +3053,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "d154744b8ac5207cd78d6bd10e464ee35034c7c66cc7c6a0bba954ffcef5ed9f",
-      "bytes": 72542,
+      "sha256": "eccbfb190cadac3b7a82907a82c62bae36f525fc0f4f4e824bd1f41e43083110",
+      "bytes": 69567,
       "includes": [
         {
           "line": 1,
@@ -3048,45 +3072,110 @@
         },
         {
           "line": 3,
+          "spelling": "adapter/curve_samples.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/adapter/curve_samples.h"
+        },
+        {
+          "line": 4,
           "spelling": "algorithm",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 4,
+          "line": 5,
           "spelling": "cmath",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 5,
+          "line": 6,
           "spelling": "memory",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 6,
+          "line": 7,
           "spelling": "queue",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 7,
+          "line": 8,
           "spelling": "unordered_map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 8,
+          "line": 9,
           "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/adapter/curve_samples.cpp",
+      "component_by_directory": "adapter",
+      "kind": "translation_unit",
+      "sha256": "2ce46dcb00d83b6baa996181ae35d60fec884ad2720607fee269c81bd4b45e55",
+      "bytes": 3728,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "adapter/curve_samples.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/adapter/curve_samples.h"
+        },
+        {
+          "line": 3,
+          "spelling": "exception",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "crab_mesh/performer/id_manager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/id_manager.h"
+        },
+        {
+          "line": 8,
+          "spelling": "data/curve/curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        },
+        {
+          "line": 9,
+          "spelling": "data/node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
         }
       ]
     },
@@ -5019,7 +5108,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 107,
+    "source_anchors": 110,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

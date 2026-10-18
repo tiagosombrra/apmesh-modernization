@@ -1,0 +1,10 @@
+sample_point=kind:1 variant:7 index:0 id:200 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0 ga:0x1.4000000000000p+4 adjacency:1
+sample_point=kind:1 variant:7 index:1 id:201 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0 ga:0x1.5000000000000p+4 adjacency:1
+sample_cache=key:B0 value:B0
+sample_cache=key:B1 value:B1
+sample_cache=key:B2 value:B3
+sample_cache=key:S0 value:B0
+sample_cache=key:S2 value:B1
+sample_normal=kind:1 variant:7 points:2 cache:5 manager:100
+CRT retained_blocks=0 retained_bytes=0
+PASS

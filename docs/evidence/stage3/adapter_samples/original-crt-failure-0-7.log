@@ -1,0 +1,10 @@
+sample_measured=kind:0 variant:7 retention:0 allocations:7
+sample_inject=ordinal:0
+Client hook allocation failure.
+sample_inject=ordinal:1
+Client hook allocation failure.
+sample_inject=ordinal:2
+Client hook allocation failure.
+sample_inject=ordinal:3
+Client hook allocation failure.
+Contract failed: failed sample construction preserves parameter values

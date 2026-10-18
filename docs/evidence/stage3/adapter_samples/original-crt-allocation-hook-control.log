@@ -1,0 +1,4 @@
+Client hook allocation failure.
+allocation_hook_control=detected
+CRT retained_blocks=0 retained_bytes=0
+PASS
