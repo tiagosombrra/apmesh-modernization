@@ -1,6 +1,6 @@
 # ADR-0011: guard Geometry arguments before container allocation
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact published-head and implementation-main gates passed through PR #36.
 Issue #35. Classification: behavior-changing ownership failure-path defect repair.
 
 ## Reproduction and decision

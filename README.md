@@ -27,8 +27,8 @@ ctest --preset local-serial
 python tools/quality.py doctor
 ```
 
-The local suite has nine required tooling, input, geometry, orientation and
-report-semantics tests. clang-tidy is required for its real header-scope controls;
+The local suite includes required tooling, input, geometry, orientation,
+report-semantics and lifecycle tests; current counts are recorded below. clang-tidy is required for its real header-scope controls;
 LLVM 22.1.8 is the qualified version. Commands fail on empty discovery or missing
 tools. Full memory safety, legacy lint cleanup, Doxygen, C++23 and Eigen removal
 remain later work.
@@ -56,12 +56,12 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with nine qualified ownership/lifecycle slices.
-The latest preserves sampled parameter sequences in initialized parametric,
-Bezier and Hermite copies, with 123 injected allocation failures. CTest 19/19,
-copy 30/30, curve 19/19, UV 81/81, node 7/7 and strict Eistute/Book regressions
-pass before and after integration. See
-[the latest closure](docs/evidence/STAGE3_CURVE_COPY_CLOSURE.md).
+Stage 3 is in progress with ten qualified ownership/lifecycle slices.
+The latest guards raw curve/patch adoption before Geometry container allocation,
+with 16 measured allocation denials and fresh-argument retry. CTest 20/20,
+adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7 and strict
+Eistute/Book regressions pass before and after integration. See
+[the latest closure](docs/evidence/STAGE3_GEOMETRY_ADOPTION_CLOSURE.md).
 Full-application memory and parallel qualification remain open.
 
 ## Repository policy
