@@ -1,0 +1,2367 @@
+{
+  "status": "failed",
+  "scope": "Candidate: thirteen actual curve/node/numerical/ID-manager/rebuild production units. Original: twelve Git-pinned units plus the verified original lambda with explicit nullable-ID-manager context substitution, not full historical Generator-TU instrumentation. Paired supplied-point/curve-parameter lists, initialized parametric/Bezier/Hermite curves, distinct deletable interiors and borrowed shared endpoints, allocation preservation/retry and consumed-ID behavior. Curve observer publication and full AdaptCurve/mesh rollback remain unqualified. Debug CRT has non-debug iterator metadata and actual heap checks; not full application, parallel, LSan or UBSan.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s13oa\\RelWithDebInfo\\curve_rebuild_probe.exe",
+      "sha256": "b7e5743393e87e5566a16b22175a86c2f358ae80a40a27b3b5dd2b213684e8ae"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s13od\\Debug\\curve_rebuild_probe.exe",
+      "sha256": "3e5d4abfeba0f0242630b6cf5f547db41b8f13d8de45bf848751c454f2619402"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:0 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:1 id:100 t:0x1.999999999999ap-3 x:0x1.999999999999ap-3 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:2 id:101 t:0x1.999999999999ap-2 x:0x1.999999999999ap-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:3 id:102 t:0x1.3333333333333p-1 x:0x1.3333333333333p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:4 id:103 t:0x1.999999999999ap-1 x:0x1.999999999999ap-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:5 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:0 points:6 parameters:6 destroyed:1 manager:104"
+      ],
+      "log_sha256": "7ad6b0c1535429af9de24dafcb7f074de76e388e6ae375e61246aa3e4ab6378a"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:1 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:1 index:1 id:42 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:1 index:2 id:44 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:1 index:3 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:1 points:4 parameters:4 destroyed:3 manager:100"
+      ],
+      "log_sha256": "28db38d2263501fc05d915db0c5c82973506f40c282ab4e46ccf7a894cd97c23"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:2 index:0 id:40 t:0x0.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:2 index:1 id:100 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:2 index:2 id:101 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:2 index:3 id:102 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:2 index:4 id:42 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:2 points:5 parameters:5 destroyed:1 manager:103"
+      ],
+      "log_sha256": "7c496b1c7ed1e94439bac06d2435af4156e210d7e6facc521cdeabb6296421b2"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:3 index:0 id:40 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:3 index:1 id:43 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:3 index:2 id:46 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:3 points:3 parameters:3 destroyed:4 manager:100"
+      ],
+      "log_sha256": "23bd441595b451c472ecb85a6941583bd42c664f0e0bbf54a53e319762f28901"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:0 variant:4 points:3 parameters:3 destroyed:0 manager:100"
+      ],
+      "log_sha256": "07f6141f1af39357b9fdcba8be41aad33dfebb1522bcf17d69b2d99c4b505efd"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:0 variant:5 points:1 parameters:1 destroyed:0 manager:100"
+      ],
+      "log_sha256": "3c1541fa0ca1c1608f8c7413229760682339a822bab06d83d377e3635b04dcf6"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:0 variant:6 points:3 parameters:2 destroyed:0 manager:100"
+      ],
+      "log_sha256": "e16ea81f738ecff5daa741858590f597dd0d1d1073f61f253c0a293acf1d00cb"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-7",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:7 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:7 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:7 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:7 index:3 id:40 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:7 points:4 parameters:4 destroyed:1 manager:102"
+      ],
+      "log_sha256": "9ce8cbcf994200f8ae978d0c8af9d09e10335f14a82ad1cbf616197578e5ec26"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-8",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:8 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:8 index:1 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:8 points:2 parameters:2 destroyed:5 manager:100"
+      ],
+      "log_sha256": "fbe7869a3e21dd039108a04ec6ba50ba5f3d242f414fc7de8bebabc120d721b2"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-9",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:9 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:9 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:9 index:2 id:1 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:9 index:3 id:2 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:9 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:9 points:5 parameters:5 destroyed:1 manager:3"
+      ],
+      "log_sha256": "09481829829ad9be4a1175635c88501f1d1c4d114508fff8c06349b1c8e8a1fd"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-10",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:10 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:10 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:10 index:2 id:0 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:10 index:3 id:0 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:10 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:10 points:5 parameters:5 destroyed:1 manager:100"
+      ],
+      "log_sha256": "2394d7cf88a1e59a5440d80498fd0f9848681903b08c60f224c6baeb03c1436f"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-11",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:0 variant:11 points:0 parameters:0 destroyed:0 manager:100"
+      ],
+      "log_sha256": "9e0cd72c6a6ff18dd36d04c9e3128fb05d4be206ffd0e12cbd6382833331ab8d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-12",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:0 variant:12 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:12 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:12 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:12 index:3 id:41 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:12 points:4 parameters:4 destroyed:0 manager:102"
+      ],
+      "log_sha256": "3a6d91031e0af1494cbff37e10e3cd82476d4acccadd182429267cd2bdd80396"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:0 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:1 id:100 t:0x1.999999999999ap-3 x:0x1.999999999999ap-3 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:2 id:101 t:0x1.999999999999ap-2 x:0x1.999999999999ap-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:3 id:102 t:0x1.3333333333333p-1 x:0x1.3333333333333p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:4 id:103 t:0x1.999999999999ap-1 x:0x1.999999999999ap-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:5 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:0 points:6 parameters:6 destroyed:1 manager:104"
+      ],
+      "log_sha256": "b076eb7e7eb33dd3e9e85cb6cbf188b203a3431930a59eac18a1a2b582a11642"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:1 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:1 index:1 id:42 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:1 index:2 id:44 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:1 index:3 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:1 points:4 parameters:4 destroyed:3 manager:100"
+      ],
+      "log_sha256": "cccc2033fa3f42a386e089960ee314679ea174847405bd7b0b3451cc633e2d72"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:2 index:0 id:40 t:0x0.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:2 index:1 id:100 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:2 index:2 id:101 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:2 index:3 id:102 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:2 index:4 id:42 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:2 points:5 parameters:5 destroyed:1 manager:103"
+      ],
+      "log_sha256": "8a964a1f24aa196d16d69e4de5a0a5bf4ef903b7f6a201943ef89f80bf7b0302"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:3 index:0 id:40 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:3 index:1 id:43 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:3 index:2 id:46 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:3 points:3 parameters:3 destroyed:4 manager:100"
+      ],
+      "log_sha256": "e0b6b1d901ca4b961a285bfae45b3f3dcc09b63eea2d4a521eb3ab1ad35882fb"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:1 variant:4 points:3 parameters:3 destroyed:0 manager:100"
+      ],
+      "log_sha256": "ae7a695f3976d597f55e54577bf3f74d865baf2735578311e67dfe7ef7fccc35"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:1 variant:5 points:1 parameters:1 destroyed:0 manager:100"
+      ],
+      "log_sha256": "1e2bc11fa0a83630582be74f1a20a9ec274659fe1a2442864f6936197278b422"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:1 variant:6 points:3 parameters:2 destroyed:0 manager:100"
+      ],
+      "log_sha256": "090065e6182904be0a40077db04f00b33502526627c3de28567e0538779e8b25"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-7",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:7 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:7 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:7 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:7 index:3 id:40 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:7 points:4 parameters:4 destroyed:1 manager:102"
+      ],
+      "log_sha256": "c6ddb2643b6a00bad860b1720d544f7ebce6f298ece0350863200ecc622afe54"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-8",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:8 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:8 index:1 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:8 points:2 parameters:2 destroyed:5 manager:100"
+      ],
+      "log_sha256": "4a8bbc30aef6195910c9318b5c2db64d2c54c77a70b4bc90ed5357c6aa5647b4"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-9",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:9 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:9 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:9 index:2 id:1 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:9 index:3 id:2 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:9 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:9 points:5 parameters:5 destroyed:1 manager:3"
+      ],
+      "log_sha256": "f58a589b15df4f6c0c0a5a63a1cf71f3975a799b2531313c6e9533a1e3fca4d2"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-10",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:10 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:10 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:10 index:2 id:0 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:10 index:3 id:0 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:10 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:10 points:5 parameters:5 destroyed:1 manager:100"
+      ],
+      "log_sha256": "e7a7058ca7867c40f1e9f7532082ea191e37ab6d288a69a178bac28e8d1b5374"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-11",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:1 variant:11 points:0 parameters:0 destroyed:0 manager:100"
+      ],
+      "log_sha256": "ca362a193235b28f79d38eee63799f49aaf1c6c2ee824398d41f65c84179c9db"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-12",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:1 variant:12 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:12 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:12 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:12 index:3 id:41 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:12 points:4 parameters:4 destroyed:0 manager:102"
+      ],
+      "log_sha256": "c46aa10b069fa7287a51ba846cf0536b94f61973f625c3716f35c32bb7a4f952"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:0 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:1 id:100 t:0x1.999999999999ap-3 x:0x1.999999999999ap-3 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:2 id:101 t:0x1.999999999999ap-2 x:0x1.999999999999ap-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:3 id:102 t:0x1.3333333333333p-1 x:0x1.3333333333333p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:4 id:103 t:0x1.999999999999ap-1 x:0x1.999999999999ap-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:5 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:0 points:6 parameters:6 destroyed:1 manager:104"
+      ],
+      "log_sha256": "88b1dc48ec1d4199390354f8639c76139aabf57a02fcfebdbac6a76def273adf"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:1 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:1 index:1 id:42 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:1 index:2 id:44 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:1 index:3 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:1 points:4 parameters:4 destroyed:3 manager:100"
+      ],
+      "log_sha256": "c862c1cc0466f6b8a6bc523b0d5e2c7e5fb21dc8c6ccd7144df9e3ce6410a080"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:2 index:0 id:40 t:0x0.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:2 index:1 id:100 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:2 index:2 id:101 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:2 index:3 id:102 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:2 index:4 id:42 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:2 points:5 parameters:5 destroyed:1 manager:103"
+      ],
+      "log_sha256": "aa8e22a61104ecfcb1dd36dd458d714c9c77ad3b36d9498e58bfdf40ca971422"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:3 index:0 id:40 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:3 index:1 id:43 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:3 index:2 id:46 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:3 points:3 parameters:3 destroyed:4 manager:100"
+      ],
+      "log_sha256": "b2fad3f69eb0b2a91e06ce34f1b77c0a530add88290e8e7d9e9131c4d4c7866c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:2 variant:4 points:3 parameters:3 destroyed:0 manager:100"
+      ],
+      "log_sha256": "69f7f16e30bff9b680b9c3e7f71464efb2986fc8b7bf2490f4c1f0f2e77a9e2c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:2 variant:5 points:1 parameters:1 destroyed:0 manager:100"
+      ],
+      "log_sha256": "d4751f37891086d7ff81a9c8af517d3b985e0394583b734a38d7dafbbaf554e6"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:2 variant:6 points:3 parameters:2 destroyed:0 manager:100"
+      ],
+      "log_sha256": "45af65a40594019276562f2935f7d57594b867408cd7355762cd54c73cc54c60"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-7",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:7 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:7 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:7 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:7 index:3 id:40 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:7 points:4 parameters:4 destroyed:1 manager:102"
+      ],
+      "log_sha256": "c657bc353ce3a1dca59e662403ae69a62839aa9abe5b1382ab20de21e16bf5b9"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-8",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:8 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:8 index:1 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:8 points:2 parameters:2 destroyed:5 manager:100"
+      ],
+      "log_sha256": "bd3a99af908b87e52e0447dd2d52b4ac1c7e8ac41c6f7cde2fdf9925675211a0"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-9",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:9 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:9 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:9 index:2 id:1 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:9 index:3 id:2 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:9 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:9 points:5 parameters:5 destroyed:1 manager:3"
+      ],
+      "log_sha256": "130589b6158f5e7db0376198d072f5edf4a7c49247a24b711b2fc7f7686b709f"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-10",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:10 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:10 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:10 index:2 id:0 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:10 index:3 id:0 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:10 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:10 points:5 parameters:5 destroyed:1 manager:100"
+      ],
+      "log_sha256": "72f187956076a5627ca422adec3831a951f54dc1553dcedd969c746a763c89f5"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-11",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_normal=kind:2 variant:11 points:0 parameters:0 destroyed:0 manager:100"
+      ],
+      "log_sha256": "19f827ba6c3b62b597444f6df4ad8fc455c31f605a7356e5cbecd280043458c4"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-12",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_point=kind:2 variant:12 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:12 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:12 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:12 index:3 id:41 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:12 points:4 parameters:4 destroyed:0 manager:102"
+      ],
+      "log_sha256": "9ca3fd6ab8fe672a4a12d2617ac1ea2f03be0c0f53dc32635bb372d3e5933224"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:0 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:1 id:100 t:0x1.999999999999ap-3 x:0x1.999999999999ap-3 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:2 id:101 t:0x1.999999999999ap-2 x:0x1.999999999999ap-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:3 id:102 t:0x1.3333333333333p-1 x:0x1.3333333333333p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:4 id:103 t:0x1.999999999999ap-1 x:0x1.999999999999ap-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:0 index:5 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:0 points:6 parameters:6 destroyed:1 manager:104"
+      ],
+      "log_sha256": "7e30cc9f63ebff32805a09bbf215639ef0a3128c27254f4ea41149558d2709e3"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:1 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:1 index:1 id:42 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:1 index:2 id:44 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:1 index:3 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:1 points:4 parameters:4 destroyed:3 manager:100"
+      ],
+      "log_sha256": "29ab81e615b0ce088c65082946629a45a1fa0a6458f35ae589242b407f127ae8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:2 index:0 id:40 t:0x0.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:2 index:1 id:100 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:2 index:2 id:101 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:2 index:3 id:102 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:2 index:4 id:42 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:2 points:5 parameters:5 destroyed:1 manager:103"
+      ],
+      "log_sha256": "f76f8af689523b10265f59dab7b018e1d98416026276f2ab029dd8acd1fe0fae"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:3 index:0 id:40 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:3 index:1 id:43 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:3 index:2 id:46 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:3 points:3 parameters:3 destroyed:4 manager:100"
+      ],
+      "log_sha256": "272202601b08149388a8c561d58a963b1e06b24b5ce03edef6e83bcefb5d51e9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:0 variant:4 points:3 parameters:3 destroyed:0 manager:100"
+      ],
+      "log_sha256": "b9df42dfc285b704376dfde3bada78340536c40c5f99483ed23d76ad62b73d92"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:0 variant:5 points:1 parameters:1 destroyed:0 manager:100"
+      ],
+      "log_sha256": "332001844151f6594d219345ba4df699bd51cfe23d4f333c55f911ede3a8d0b7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:0 variant:6 points:3 parameters:2 destroyed:0 manager:100"
+      ],
+      "log_sha256": "85e16a7c1ad757b24507613c89700086561b325085078448677f8eeca0fc41c1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-7",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:7 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:7 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:7 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:7 index:3 id:40 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:7 points:4 parameters:4 destroyed:1 manager:102"
+      ],
+      "log_sha256": "05b43b43b254fda5d4c2b0aeb4e262ef3fdc6fbc53f5c47f54887f36f5c4d451"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-8",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:8 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:8 index:1 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:8 points:2 parameters:2 destroyed:5 manager:100"
+      ],
+      "log_sha256": "7757e55b5accd9fb95862d7969712cd3f98fc3aaddd469ed088d573a7e5ac966"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-9",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:9 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:9 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:9 index:2 id:1 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:9 index:3 id:2 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:9 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:9 points:5 parameters:5 destroyed:1 manager:3"
+      ],
+      "log_sha256": "36f2cfec574b81093096bc681b76af25c1df7419f328be3b7ffe4ccd626e4c8b"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-10",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:10 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:10 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:10 index:2 id:0 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:10 index:3 id:0 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:10 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:10 points:5 parameters:5 destroyed:1 manager:100"
+      ],
+      "log_sha256": "4b53aee4afa9c9974e05faa0b54814d2851aac0d832fdd1f97751c4ff08cc7eb"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-11",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:0 variant:11 points:0 parameters:0 destroyed:0 manager:100"
+      ],
+      "log_sha256": "b965a983512d4ec212282acdc2e83d67a36ccc2caceb4a6e5b2bd97d070df3f7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-12",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:0 variant:12 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:12 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:12 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:0 variant:12 index:3 id:41 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:0 variant:12 points:4 parameters:4 destroyed:0 manager:102"
+      ],
+      "log_sha256": "8d82573128f3ec3d484bd2dc3e18f843b202b9cafe99710eddf97f5f838763b7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:0 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:1 id:100 t:0x1.999999999999ap-3 x:0x1.999999999999ap-3 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:2 id:101 t:0x1.999999999999ap-2 x:0x1.999999999999ap-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:3 id:102 t:0x1.3333333333333p-1 x:0x1.3333333333333p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:4 id:103 t:0x1.999999999999ap-1 x:0x1.999999999999ap-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:0 index:5 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:0 points:6 parameters:6 destroyed:1 manager:104"
+      ],
+      "log_sha256": "9f0a4babad8ba12bec4bbec0cd3b024ad8ae31a3b1c97c489eeb4d13a1818005"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:1 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:1 index:1 id:42 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:1 index:2 id:44 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:1 index:3 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:1 points:4 parameters:4 destroyed:3 manager:100"
+      ],
+      "log_sha256": "87bd1f39b21743b18a82703b39a617a705d8c57d98e84b7ce5e39f27fc24dd15"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:2 index:0 id:40 t:0x0.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:2 index:1 id:100 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:2 index:2 id:101 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:2 index:3 id:102 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:2 index:4 id:42 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:2 points:5 parameters:5 destroyed:1 manager:103"
+      ],
+      "log_sha256": "cf8de30b06e64a4327b4819ca57eb6814dedc9abd416fa8f3ec6c83ff4ad1828"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:3 index:0 id:40 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:3 index:1 id:43 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:3 index:2 id:46 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:3 points:3 parameters:3 destroyed:4 manager:100"
+      ],
+      "log_sha256": "f5defba1b2edc39e836607ae84e1b65501f873f02425ebeeef35bcbdd40bc5e5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:1 variant:4 points:3 parameters:3 destroyed:0 manager:100"
+      ],
+      "log_sha256": "f7e472b5312b4713ead3e498722de2aa74a0e9196d805e5278ba63d56fee0fbd"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:1 variant:5 points:1 parameters:1 destroyed:0 manager:100"
+      ],
+      "log_sha256": "46fda6c316a904ee2d4fa7146404d5a8fe4e5106566bc62c7cc1f6de0b9ecbdb"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:1 variant:6 points:3 parameters:2 destroyed:0 manager:100"
+      ],
+      "log_sha256": "d53e1fdde93d3a3cd635f6ec774d7eeab543619eaf0c81d06d91d6640f643266"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-7",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:7 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:7 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:7 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:7 index:3 id:40 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:7 points:4 parameters:4 destroyed:1 manager:102"
+      ],
+      "log_sha256": "4474792a7b38ad33d404ea32b86678f5d2e100086364cc58595cd6d43bd517b1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-8",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:8 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:8 index:1 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:8 points:2 parameters:2 destroyed:5 manager:100"
+      ],
+      "log_sha256": "2208d549f86f275c250e9e5d9b217c9b5d9c30968466cc3daa96f1b52dd8b26d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-9",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:9 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:9 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:9 index:2 id:1 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:9 index:3 id:2 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:9 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:9 points:5 parameters:5 destroyed:1 manager:3"
+      ],
+      "log_sha256": "fc6c10a1b9840ffa98a5dc5db254b1dc5cd306dcffd7ff71933e10df9ef38b3d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-10",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:10 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:10 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:10 index:2 id:0 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:10 index:3 id:0 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:10 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:10 points:5 parameters:5 destroyed:1 manager:100"
+      ],
+      "log_sha256": "e4795c0f969374942e4343caba88f9e58bbfade63b240a9c862c0f88d85df230"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-11",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:1 variant:11 points:0 parameters:0 destroyed:0 manager:100"
+      ],
+      "log_sha256": "400a17444f231b2375d7008db27170575468cd355f468d4bbcf7744950853d21"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-12",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:1 variant:12 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:12 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:12 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:1 variant:12 index:3 id:41 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:1 variant:12 points:4 parameters:4 destroyed:0 manager:102"
+      ],
+      "log_sha256": "7b1a8101acbcdac8aefcb4c841724c55e3f19804b537d15cbe716a0d6a8734bd"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:0 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:1 id:100 t:0x1.999999999999ap-3 x:0x1.999999999999ap-3 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:2 id:101 t:0x1.999999999999ap-2 x:0x1.999999999999ap-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:3 id:102 t:0x1.3333333333333p-1 x:0x1.3333333333333p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:4 id:103 t:0x1.999999999999ap-1 x:0x1.999999999999ap-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:0 index:5 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:0 points:6 parameters:6 destroyed:1 manager:104"
+      ],
+      "log_sha256": "777b5e31df445a67a4d047bb2dd64b95e6fe3be74d34ed87c1d92294a8051566"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:1 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:1 index:1 id:42 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:1 index:2 id:44 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:1 index:3 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:1 points:4 parameters:4 destroyed:3 manager:100"
+      ],
+      "log_sha256": "15cddd1f3640c8c11886e6bf1ecc870c7223d6844b6c1a01aa381a9dc214aebc"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-2",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:2 index:0 id:40 t:0x0.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:2 index:1 id:100 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:2 index:2 id:101 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:2 index:3 id:102 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:2 index:4 id:42 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:2 points:5 parameters:5 destroyed:1 manager:103"
+      ],
+      "log_sha256": "079dafd1e66e1531185c872fac6fadc536946dd368153f0b10b926e031bbddf8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-3",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:3 index:0 id:40 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:3 index:1 id:43 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:3 index:2 id:46 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:3 points:3 parameters:3 destroyed:4 manager:100"
+      ],
+      "log_sha256": "0725cf2ba1573353d2f4c6a2bc3d8e58ec862a1f446d619b7f0c3300969d5a92"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:2 variant:4 points:3 parameters:3 destroyed:0 manager:100"
+      ],
+      "log_sha256": "5153aaf6e5d1ca5dae3474c46da93d39b372bd924d1ab352a2405bc3d1f761e8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:2 variant:5 points:1 parameters:1 destroyed:0 manager:100"
+      ],
+      "log_sha256": "27e35917756a6000c075abd41279661873a03ec2b8db6d44e993d217cb57d594"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:2 variant:6 points:3 parameters:2 destroyed:0 manager:100"
+      ],
+      "log_sha256": "593b4e82f3659a36549e54313163477e18191b53816006cc6c06e2f32387a492"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-7",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:7 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:7 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:7 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:7 index:3 id:40 t:0x1.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:7 points:4 parameters:4 destroyed:1 manager:102"
+      ],
+      "log_sha256": "8c66aef633d56fe8ddce21b2ac0c2645145800e1ce242748f16f2609dbce84df"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-8",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:8 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:8 index:1 id:46 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:8 points:2 parameters:2 destroyed:5 manager:100"
+      ],
+      "log_sha256": "e4ccdf2f82514148a8bb8bd036faf706b1181942f66096fd5a670e5e670cc485"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-9",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:9 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:9 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:9 index:2 id:1 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:9 index:3 id:2 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:9 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:9 points:5 parameters:5 destroyed:1 manager:3"
+      ],
+      "log_sha256": "4a0f9085885f23bde8493779688ecf8f81643a8797af58669ac4104b3e7f174f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-10",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:10 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:10 index:1 id:0 t:0x1.0000000000000p-2 x:0x1.0000000000000p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:10 index:2 id:0 t:0x1.0000000000000p-1 x:0x1.0000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:10 index:3 id:0 t:0x1.8000000000000p-1 x:0x1.8000000000000p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:10 index:4 id:42 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:10 points:5 parameters:5 destroyed:1 manager:100"
+      ],
+      "log_sha256": "bacb2943e40f1fe7f59fc60259684a2fa13f5c100fd3d9fe31383daee320ab9c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-11",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_normal=kind:2 variant:11 points:0 parameters:0 destroyed:0 manager:100"
+      ],
+      "log_sha256": "713b90d71a1c93bbbbb368ac2bc56c82c61e505d4479764a6f8b5ec56f53169d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-12",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_point=kind:2 variant:12 index:0 id:40 t:0x0.0000000000000p+0 x:0x0.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:12 index:1 id:100 t:0x1.5555555555555p-2 x:0x1.5555555555555p-2 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:12 index:2 id:101 t:0x1.5555555555555p-1 x:0x1.5555555555555p-1 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_point=kind:2 variant:12 index:3 id:41 t:0x1.0000000000000p+0 x:0x1.0000000000000p+0 y:0x0.0000000000000p+0 z:0x0.0000000000000p+0",
+        "rebuild_normal=kind:2 variant:12 points:4 parameters:4 destroyed:0 manager:102"
+      ],
+      "log_sha256": "d4407b6cdc77cbc1dada0f466646ea8b04d5bb1c395d8a816b497623d28d1e3c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:0 variant:0 allocations:35",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24",
+        "rebuild_inject=ordinal:25",
+        "rebuild_inject=ordinal:26",
+        "rebuild_inject=ordinal:27",
+        "rebuild_inject=ordinal:28"
+      ],
+      "log_sha256": "a7a780b3820b8238b42c01b43e99c305c1b88d9937c6c8619a1ff79d4b79f1e9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:0 variant:1 allocations:24",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13"
+      ],
+      "log_sha256": "29a2f581d18fa2273e02a9767a46af2f9f39ec850389520fe791ab83d4c37367"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:0 variant:2 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "dea7c0cd58f67197e3ace21baba87a6d8e23b3709fc8932980c31c99e7e01ca1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-3",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:0 variant:3 allocations:20",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12"
+      ],
+      "log_sha256": "bb7685bf15c7b267d42696cbc46cf704fd41e50f4cb54bebf79a600f5497e90a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:0 variant:4 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:0 variant:4 failed_calls:0",
+        "rebuild_failure_sites=kind:0 variant:4 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "7de7421e6a73d4dce8f49302dd10e1e064abb5cce994965376b2534d7db0f4a8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:0 variant:5 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:0 variant:5 failed_calls:0",
+        "rebuild_failure_sites=kind:0 variant:5 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "1ca09bc108b51ba6735282e399cd27e65072b223ecee0d9bbafdd718575a9362"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:0 variant:6 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:0 variant:6 failed_calls:0",
+        "rebuild_failure_sites=kind:0 variant:6 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "a384a1f7a9f93fe82ccd3407bdb984eae4ea013987a7b82a079e08829c700155"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-7",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:0 variant:7 allocations:24",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19"
+      ],
+      "log_sha256": "f52a95723bf04b8879d73a8bf16dd6c05e2ee0afabede52fb3d7c8b9189be767"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-8",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:0 variant:8 allocations:16",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11"
+      ],
+      "log_sha256": "97f36411c71cf82c63a69f2c8b9df9b36f55aab9826db5df0a482c560de9e126"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-9",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:0 variant:9 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "bb7ac88396eb8cdd3e2a0ba6937737d75c4b4dc63ca156417b53a16b66a609b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-10",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:0 variant:10 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "f4340ea1b502de9d8c211d346c166d32d3090979940f9ab9c66531e2e6d8e92d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-12",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 2688,
+      "observations": [
+        "rebuild_measured=kind:0 variant:12 allocations:25",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24",
+        "rebuild_consumed=kind:0 variant:12 failed_calls:16",
+        "rebuild_failure_sites=kind:0 variant:12 denied:25/25 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "b06a1c1fcc528ebdbb8072b267db8b3710d2b58ada4d206b0550dc1f65182465"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:1 variant:0 allocations:35",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24",
+        "rebuild_inject=ordinal:25",
+        "rebuild_inject=ordinal:26",
+        "rebuild_inject=ordinal:27",
+        "rebuild_inject=ordinal:28"
+      ],
+      "log_sha256": "5ed66477e52bf2a8b3a2616a6bfcbdfdbc3aef34447ba8aab5cfa56a4afe1594"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:1 variant:1 allocations:24",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13"
+      ],
+      "log_sha256": "f77c42148a5c0171080a909c44b02da0345028294cb9a0eef0fcb326ece897b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:1 variant:2 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "3d0e0a0595650f0cee4e14aa9efb0a508a2dd2fe8e3f19aa0da604a612665494"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-3",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:1 variant:3 allocations:20",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12"
+      ],
+      "log_sha256": "6d3a97b9c084f862e5c7f4fe454e3ce2faf25ed19529ec081f0d459dd325ed44"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:1 variant:4 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:1 variant:4 failed_calls:0",
+        "rebuild_failure_sites=kind:1 variant:4 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "2e7c8fad0d99f66a532ab5816a073cadf1236e5bfa99e57c0bcd750af9a92195"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:1 variant:5 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:1 variant:5 failed_calls:0",
+        "rebuild_failure_sites=kind:1 variant:5 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "0affa02d2b4fc4b99b0a1fe1fd1d0d75f9f28d6b158b51ba1fab9cacf255a34a"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:1 variant:6 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:1 variant:6 failed_calls:0",
+        "rebuild_failure_sites=kind:1 variant:6 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "565b76e1fa6257ef6441101a4bc838bcf00f4e4dea5de2ba3bb8852c6bd46532"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-7",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:1 variant:7 allocations:24",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19"
+      ],
+      "log_sha256": "e0c222860500b599e750ba037f131b5f581f14e235d4031f8c946d22e88704dc"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-8",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:1 variant:8 allocations:16",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11"
+      ],
+      "log_sha256": "7561f83254d96dd71e1fe5aff26264fb72960e642a68aec004f077976f0cdcec"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-9",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:1 variant:9 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "7c291916073cbe2e6ea83226e74859c7902b6ff340d4939766ffe233746cb0b1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-10",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:1 variant:10 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "709edb7aa37c0cf7f0fa094c20b7428653396401f9a58980d4fe01c2c4edcfac"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-12",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 2688,
+      "observations": [
+        "rebuild_measured=kind:1 variant:12 allocations:25",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24",
+        "rebuild_consumed=kind:1 variant:12 failed_calls:16",
+        "rebuild_failure_sites=kind:1 variant:12 denied:25/25 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "f160fabe80c33b596c5f977e286878ca49e9997d85a22f9a820d54b197583fb5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-0",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:2 variant:0 allocations:35",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24",
+        "rebuild_inject=ordinal:25",
+        "rebuild_inject=ordinal:26",
+        "rebuild_inject=ordinal:27",
+        "rebuild_inject=ordinal:28"
+      ],
+      "log_sha256": "4b38a3644c8382515bcfd60260bb71a268870892fa3ed89155a509500ec30a45"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-1",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:2 variant:1 allocations:24",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13"
+      ],
+      "log_sha256": "68b2f6a6f6562f3a022711a02c9142df85310a22ab0061445f206c8812752855"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-2",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:2 variant:2 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "c3fb667034bf6905495aa08d1970b79c212fb58c9f4bd0b55861147165e5d8ab"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-3",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:2 variant:3 allocations:20",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12"
+      ],
+      "log_sha256": "b3a90c5dc64d10e2ed34f08bf8e8f001607c40cf0f2e0a0f3f2794409a15d569"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-4",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:2 variant:4 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:2 variant:4 failed_calls:0",
+        "rebuild_failure_sites=kind:2 variant:4 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "22cd12682e80d989923e6fdcedb780f64089be739861c85efb1f5423f7e0d355"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-5",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:2 variant:5 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:2 variant:5 failed_calls:0",
+        "rebuild_failure_sites=kind:2 variant:5 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "ef55346dd4e1c02c5acdbd51c38a7fc855271e9b974f91e127ed898ccd8dbdd1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-6",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "rebuild_measured=kind:2 variant:6 allocations:2",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_consumed=kind:2 variant:6 failed_calls:0",
+        "rebuild_failure_sites=kind:2 variant:6 denied:2/2 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "48fe6a27f5d466d0ef2fb40a3a01a413fde0c90c78c423d35b1de9ee30aa25c5"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-7",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:2 variant:7 allocations:24",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19"
+      ],
+      "log_sha256": "e527dd1b83964a27e66e8fe2985f162c3237a2383f3155e7e644f7c9bb75ab70"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-8",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:2 variant:8 allocations:16",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11"
+      ],
+      "log_sha256": "c02e8d15e17050a295516b96f8ddcf2d42c19e59618a45dc11e5e940b5034d07"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-9",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:2 variant:9 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "ae9add6cfe976d3bd3e766ca8c1533015694103f0fc786818a093b6e8d11ff19"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-10",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "rebuild_measured=kind:2 variant:10 allocations:30",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24"
+      ],
+      "log_sha256": "5db6727dd52e1f94cffb84160652c827bc1fe7e959c482e8b3b129122d6e6dec"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-12",
+      "exit_code": 1,
+      "expected_diagnostic": null,
+      "passed": false,
+      "retained_blocks": 48,
+      "retained_bytes": 2688,
+      "observations": [
+        "rebuild_measured=kind:2 variant:12 allocations:25",
+        "rebuild_inject=ordinal:0",
+        "rebuild_inject=ordinal:1",
+        "rebuild_inject=ordinal:2",
+        "rebuild_inject=ordinal:3",
+        "rebuild_inject=ordinal:4",
+        "rebuild_inject=ordinal:5",
+        "rebuild_inject=ordinal:6",
+        "rebuild_inject=ordinal:7",
+        "rebuild_inject=ordinal:8",
+        "rebuild_inject=ordinal:9",
+        "rebuild_inject=ordinal:10",
+        "rebuild_inject=ordinal:11",
+        "rebuild_inject=ordinal:12",
+        "rebuild_inject=ordinal:13",
+        "rebuild_inject=ordinal:14",
+        "rebuild_inject=ordinal:15",
+        "rebuild_inject=ordinal:16",
+        "rebuild_inject=ordinal:17",
+        "rebuild_inject=ordinal:18",
+        "rebuild_inject=ordinal:19",
+        "rebuild_inject=ordinal:20",
+        "rebuild_inject=ordinal:21",
+        "rebuild_inject=ordinal:22",
+        "rebuild_inject=ordinal:23",
+        "rebuild_inject=ordinal:24",
+        "rebuild_consumed=kind:2 variant:12 failed_calls:16",
+        "rebuild_failure_sites=kind:2 variant:12 denied:25/25 unchanged:1 retry:1 ids:consumed"
+      ],
+      "log_sha256": "c8738873a55d2efece6a5be772e8e92b521ed0496b05b97dace9c469a7df1b40"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "expected_diagnostic": null,
+      "passed": true,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ],
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "expected_diagnostic": "heap-use-after-free",
+      "passed": true,
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [],
+      "log_sha256": "5a083788879b734fca41828cbc45a81f223727fa3e55df0386ab23d5dc703274"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "expected_diagnostic": "retained-blocks",
+      "passed": true,
+      "retained_blocks": 1,
+      "retained_bytes": 40,
+      "observations": [],
+      "log_sha256": "81b2b43ea863199f58ae857e3d17bf25b65bbaf3b9b36b1cf7ad3346f4486a3b"
+    }
+  ]
+}

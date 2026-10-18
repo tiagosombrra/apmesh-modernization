@@ -1,0 +1,10 @@
+{
+  "revision": "b7f7ebda4c206f4570f1d86fab6fac844587e188",
+  "tree": "f1059910b32673e43db32ba5e62bcf417ce7582a",
+  "input_identity": "039584946812d2b0b87fc568383e89fa1503de852315598ae095b986669eb50f",
+  "files": 522,
+  "reused_qualified_implementation_main": "358107faff5d6d2cdcd63eba12114abf7f7dc5ec",
+  "raw_report_sha256": "6d35df11d68c158ea1d875181ef6e2a5c57f41fd8e43c3ecd08fc587e0820f72",
+  "fresh_entry_campaign": false,
+  "scope": "Verify unchanged input bytes and reuse the retained full campaign; candidate/head/main campaigns remain required."
+}

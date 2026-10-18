@@ -1,0 +1,1866 @@
+[
+  {
+    "phase": "original",
+    "report": "build/s13-original-108/report.json",
+    "sha256": "345c120ace5b85f34a047fdab48dbf199f1873562580dd88b5f90de90f0089db",
+    "status": "failed",
+    "outcomes": 108,
+    "input_files": {
+      "tests/curve_memory/rebuild_probe.cpp": "4636690a4b2b2c15b3fceae0d3da92ab976342fcf92a963cc627b37b538c8887",
+      "tools/qualify_curve_rebuild.py": "da015b7e3ed927b53bb03e00c8a4f5efc8edb56b6c31e03bf32f6c1c22c675c6",
+      "src/generator/curve_rebuild.cpp": "de5358b0a0a6b5a7713741bb14554de6e19d0ef182d9f5103c6d7033e9268fe0",
+      "include/generator/curve_rebuild.h": "ddf874a9415dbd3c873ae0c84641483e683044fd7808649e07681da8f06b4e38",
+      "tests/curve_memory/CMakeLists.txt": "789c7a0c7a3f9855682d3d2a822e8445db66964e1b16ef637983fceaaac5e82e"
+    },
+    "interpretation": "Valid preliminary coverage. Extend with a two-endpoint growth fixture to isolate pending-node retention; final inventory is 117 outcomes, not a retry of unchanged coverage.",
+    "raw_logs": [
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-0.log",
+        "sha256": "e9c3dd69a09cfcbc0d788955ba33bc043437be6f35d23b454d8dcc7269d07235"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-1.log",
+        "sha256": "abba5289c0c6e36c1e6d9591a719077586f4d23065581cf9397dbe39e8c96dfb"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-10.log",
+        "sha256": "ed51246e0d2bfefbee680c69368ac55a2ea62d8c1148f4d9d9c764ef7932dbda"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-11.log",
+        "sha256": "c707dd7a055c7cd140d1c6370b5cec5b067f3fa91ba351d24673ba2b5870b33f"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-2.log",
+        "sha256": "916f47aca388e927e7d0bcefad9ce57b855e6718c9d0bb8e13aecbb211656d86"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-3.log",
+        "sha256": "0edc7ad13fe7b81f7a97ac53df6aa4a3f352d5879b764c1d3e47c7aa97347e3d"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-4.log",
+        "sha256": "50b202ba8436daf9a205cf3aafd5e114142eef29bb0be21d3e9fac10a2e880de"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-5.log",
+        "sha256": "4862bb466c45822b5b480ee6d458c5846ad564af8ca67c00d448b78751eb5b42"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-6.log",
+        "sha256": "49ffec577ed6691a28296710e6eb80e508fcd2edc92f98310a69bc45101d5a9e"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-7.log",
+        "sha256": "afc63d0a932201e2f74ba2d2cd13f8ef07923b10cd8ef88b3f2525fe02b235b6"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-8.log",
+        "sha256": "e1675e624a23ec619bb7b5cedff0f483ce7600b57a66cc64374fe3114160e145"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-0-9.log",
+        "sha256": "09481829829ad9be4a1175635c88501f1d1c4d114508fff8c06349b1c8e8a1fd"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-0.log",
+        "sha256": "f9e3b5c63538403957caa5ee361d7a0c3be4a5c21d7b57c2399b3ebb94945e64"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-1.log",
+        "sha256": "c8e55412061af8780771d3f8c6d4275953743a8041c5abe1f406865a3ee6c20d"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-10.log",
+        "sha256": "58480afe40a3cb6cdec6e125a99ae633e8cdb42c02fefe64f8a2cb6975b406d5"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-11.log",
+        "sha256": "fa4aca1e54a796eba8c13ec138b3ecfaa8ceaa5cbf68b561a53a4523bec1414f"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-2.log",
+        "sha256": "ff30bfcc9fb9fcfb7d2c587d7c4a6142be6d12b6779b47822289a3c749947452"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-3.log",
+        "sha256": "cce3f0412632072f5ec97a550c0c6d0d792ce0e1017c83f9b58d0f72a543b004"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-4.log",
+        "sha256": "a7bb4948ddaca1a64afa5aba77a94055799bbf9f2133f15b6eaa790409f19bed"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-5.log",
+        "sha256": "21e20d2a9fb7086dc1d5d77cb9d44e02578518abcca2f1b2637e69525c0cb24a"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-6.log",
+        "sha256": "d3f04b65edac0aba3aafe28612635569f5411682e8f34804f50fb0ffa8fed0be"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-7.log",
+        "sha256": "ea0399288e079afdc9802bf42e05210d4d406407d3e5b1a82eb5b8d719544f19"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-8.log",
+        "sha256": "5514b807fd7ef16a822383caedea3c11725b354cd93c8a43eb19c96a392ac94d"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-1-9.log",
+        "sha256": "f58a589b15df4f6c0c0a5a63a1cf71f3975a799b2531313c6e9533a1e3fca4d2"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-0.log",
+        "sha256": "932ea91d410004eca1af45bfb5b05e462601934fd0596d872bae6956bd5590e8"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-1.log",
+        "sha256": "8df13df87392138fbe68133d6f1b7c44a113c8874706f47674ab6b741c5cbcba"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-10.log",
+        "sha256": "b3414c94294965144e9cc8bca18512e8d2181f81400ad0a936677d31ba4d81a9"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-11.log",
+        "sha256": "12b6ff6b6cd1305bcf70e3ab59a57426c61e9098014d6cae5ab05486c89e4d8d"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-2.log",
+        "sha256": "0a031e9e549436d6a06ac256809e5018465b0f8cdbd26df8b29573d95f686a39"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-3.log",
+        "sha256": "f27204770b300b55c9b2312db55c7b57dc83a49d8d1832bdba2f1f76bc15f83f"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-4.log",
+        "sha256": "3c9d1633aa509b631d3fcf4e283a5cd4381933699bebc4e90b50d03882e45c99"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-5.log",
+        "sha256": "96e0513b662f9719fe08c190bfc95909fe0f8c3fd487ff602d2a92ccaecc3664"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-6.log",
+        "sha256": "17806f3b5766967087eb6d02eb305de62d8294142f334505ba82a911f387558f"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-7.log",
+        "sha256": "70d2bf06c6cfdb4c41c40726d5a06389292e1f62054204cfc9f32077a96c4ffe"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-8.log",
+        "sha256": "020b64cdd3ba403fe56e1bf5f3c3b1cbba5ee58224cce4e1a5fd10961e8e3d50"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-normal-2-9.log",
+        "sha256": "130589b6158f5e7db0376198d072f5edf4a7c49247a24b711b2fc7f7686b709f"
+      },
+      {
+        "local_path": "build/s13-original-108/asan-use-after-free.log",
+        "sha256": "a332e4e2d4d6e2db55dd8010d18844c5535881c78255f5077c9439a2ae3a6bfb"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-allocation-hook-control.log",
+        "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-0.log",
+        "sha256": "a7a780b3820b8238b42c01b43e99c305c1b88d9937c6c8619a1ff79d4b79f1e9"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-1.log",
+        "sha256": "29a2f581d18fa2273e02a9767a46af2f9f39ec850389520fe791ab83d4c37367"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-10.log",
+        "sha256": "f4340ea1b502de9d8c211d346c166d32d3090979940f9ab9c66531e2e6d8e92d"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-2.log",
+        "sha256": "dea7c0cd58f67197e3ace21baba87a6d8e23b3709fc8932980c31c99e7e01ca1"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-3.log",
+        "sha256": "bb7685bf15c7b267d42696cbc46cf704fd41e50f4cb54bebf79a600f5497e90a"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-4.log",
+        "sha256": "8a84e21e92345d9f1786c8888c85dbe1d397b6e429f1101ba579a8cd8b9467b1"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-5.log",
+        "sha256": "8930d32f16c61462306ed26ad5ad34b0587692e7952024abacbb6f9090021f8d"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-6.log",
+        "sha256": "60361b022be9d3c003535bcaeebba20be56979b6832201115ca61177b8007ae2"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-7.log",
+        "sha256": "f52a95723bf04b8879d73a8bf16dd6c05e2ee0afabede52fb3d7c8b9189be767"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-8.log",
+        "sha256": "97f36411c71cf82c63a69f2c8b9df9b36f55aab9826db5df0a482c560de9e126"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-0-9.log",
+        "sha256": "bb7ac88396eb8cdd3e2a0ba6937737d75c4b4dc63ca156417b53a16b66a609b2"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-0.log",
+        "sha256": "5ed66477e52bf2a8b3a2616a6bfcbdfdbc3aef34447ba8aab5cfa56a4afe1594"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-1.log",
+        "sha256": "f77c42148a5c0171080a909c44b02da0345028294cb9a0eef0fcb326ece897b2"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-10.log",
+        "sha256": "709edb7aa37c0cf7f0fa094c20b7428653396401f9a58980d4fe01c2c4edcfac"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-2.log",
+        "sha256": "3d0e0a0595650f0cee4e14aa9efb0a508a2dd2fe8e3f19aa0da604a612665494"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-3.log",
+        "sha256": "6d3a97b9c084f862e5c7f4fe454e3ce2faf25ed19529ec081f0d459dd325ed44"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-4.log",
+        "sha256": "43c8b321a8721fefbabb69b3f790d2397e33ca4e9d88c0904115ca803a22f383"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-5.log",
+        "sha256": "97f2f29a45829c1dfe5006a12ad3915e965f44ed083db5eea548506ec589cb2c"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-6.log",
+        "sha256": "0056efad1fc61dc584bfac7c5f4cb86bde5d8702a2a9a54d6f56323df07c571b"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-7.log",
+        "sha256": "e0c222860500b599e750ba037f131b5f581f14e235d4031f8c946d22e88704dc"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-8.log",
+        "sha256": "7561f83254d96dd71e1fe5aff26264fb72960e642a68aec004f077976f0cdcec"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-1-9.log",
+        "sha256": "7c291916073cbe2e6ea83226e74859c7902b6ff340d4939766ffe233746cb0b1"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-0.log",
+        "sha256": "4b38a3644c8382515bcfd60260bb71a268870892fa3ed89155a509500ec30a45"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-1.log",
+        "sha256": "68b2f6a6f6562f3a022711a02c9142df85310a22ab0061445f206c8812752855"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-10.log",
+        "sha256": "5db6727dd52e1f94cffb84160652c827bc1fe7e959c482e8b3b129122d6e6dec"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-2.log",
+        "sha256": "c3fb667034bf6905495aa08d1970b79c212fb58c9f4bd0b55861147165e5d8ab"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-3.log",
+        "sha256": "b3a90c5dc64d10e2ed34f08bf8e8f001607c40cf0f2e0a0f3f2794409a15d569"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-4.log",
+        "sha256": "2c81f809d80a9e661d2afcdd0980991687595b0bc75f10e5f6c53ad2c4b6e19a"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-5.log",
+        "sha256": "369d27a8d637cb0b81a5cf685104f508bd96eed31a3ab00f0039e4ffa63b4cf6"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-6.log",
+        "sha256": "33e27185944eb71b6f74132f2aedc942efe0208d5d15a7a547118a784261a3e0"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-7.log",
+        "sha256": "e527dd1b83964a27e66e8fe2985f162c3237a2383f3155e7e644f7c9bb75ab70"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-8.log",
+        "sha256": "c02e8d15e17050a295516b96f8ddcf2d42c19e59618a45dc11e5e940b5034d07"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-failure-2-9.log",
+        "sha256": "ae9add6cfe976d3bd3e766ca8c1533015694103f0fc786818a093b6e8d11ff19"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-leak.log",
+        "sha256": "343280d807e4f601611e5097cdd48f7fba3142e0fbf49f84faf5b8ba9e6206cd"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-0.log",
+        "sha256": "d1a36fe566729c3d1acead26869edac572b7618eb8491f7245cc7e34e2b99d7b"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-1.log",
+        "sha256": "fcbbf95693cd40d56f4565f5f3d22b820a264f1a179172fcb916630888cb771c"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-10.log",
+        "sha256": "67a806950f1b7a5c4f2d5c53d087959302ad84e2a49ea40c15241c1e4065cd91"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-11.log",
+        "sha256": "447915ab834e63d643b06ea9e170cfc2b0a64f68625388db9180125edaec02c3"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-2.log",
+        "sha256": "c00ff18e6d13251c91f5ad4f0c19d2c2030333c2ddf9c1f5ef5bc2a504333f65"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-3.log",
+        "sha256": "38f4e9efaccb9b73176ef9600b06b131f7bf3068d17637825a0ba1b48e098e4e"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-4.log",
+        "sha256": "c54878f64b605e1363c003d68fade871f6a1c9b3abbae4bc202c49786f38601e"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-5.log",
+        "sha256": "2f723a9e7c58a018c3eece905fab6452d404f25d9867ed7a762f58470370f977"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-6.log",
+        "sha256": "f1a44a8a4bd3cda566e7cf8ef70ab6dbdc56232638dbccae259ab20a11e981b9"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-7.log",
+        "sha256": "77266d06948fc7868dae44b76f2d218fbad4f5bd1f0cf4d2ce47d063fb7557a1"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-8.log",
+        "sha256": "03f34a6706c2ad0c4cd0e409543caded8ef483f6aa7e9f0410249b8c8535d9f3"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-0-9.log",
+        "sha256": "36f2cfec574b81093096bc681b76af25c1df7419f328be3b7ffe4ccd626e4c8b"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-0.log",
+        "sha256": "2607b221daa280274ec42cbb42d927819e8c81c6c0858d389866c58e3bb7ca62"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-1.log",
+        "sha256": "789e61ab3f9142ccac5d0ecda448b94bd18057fc551590a9cf717b85ad1a1d9d"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-10.log",
+        "sha256": "fa1071baae5c7a666e39bc1faebecc6500abee5714e9d437ae4588a7392454bd"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-11.log",
+        "sha256": "ce7432ca872c6ec1ff9fb4d766fdc239d20f189dd3159127bb3c2c392bf0c126"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-2.log",
+        "sha256": "85890097f0f823b83266e3608b06adfdfb585c2be12bfea5d5751b3528b090ec"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-3.log",
+        "sha256": "61cabd3bbcf39ee6e869200c009e07fc1c836e824277b91c5db457e99305e275"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-4.log",
+        "sha256": "ae4bc76d29abf77be6e075c7a11a1b965126d574bd542f93877f17052d4059df"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-5.log",
+        "sha256": "f26ee01d63d62704d0c63a57d7c7b32a3cd7bff05ffd7cdbf1077eb160637607"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-6.log",
+        "sha256": "38221b4ed833e44e0d2c07d86d3afdc045f88fce43bc5075b36d8ee09b230f14"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-7.log",
+        "sha256": "d4dbd4aeddda72eaa17600bd657a10a819a47186c3c0bffa7c90d987d0bd014f"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-8.log",
+        "sha256": "1949a9a2893bc4c743ae6980720cdb607142526ca3c1870230655697f97520a0"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-1-9.log",
+        "sha256": "fc6c10a1b9840ffa98a5dc5db254b1dc5cd306dcffd7ff71933e10df9ef38b3d"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-0.log",
+        "sha256": "3b5efd0eea18f4b4c888ed9a2267f1abeb69ba6216066e90c9137827c79989d9"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-1.log",
+        "sha256": "89717245a68cd2af9644ba51e071950cf412a9e0a3cd0efd5285119ebb8ce8cd"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-10.log",
+        "sha256": "26509544af30646da76e04f0fd91de41ce12e5a0f2ee61e3a0730f5245c67a28"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-11.log",
+        "sha256": "d7d3477df417b2d3e249dcd908fb7c42146460bdb739eabd1eb3fee05e2d2edc"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-2.log",
+        "sha256": "fb163927e86136d518e3813ed903c26743b691aa095d4de0a1420daa21d4ecd3"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-3.log",
+        "sha256": "9a1a0f012ea6d39068111bd37d6dff2877acbda93e31139695cf155e1cc42fb9"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-4.log",
+        "sha256": "a67e9684af2a74b35d7333516793500e12ca8e61bbbef075d1b3a96ab4b9fadd"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-5.log",
+        "sha256": "f284c0aeb62f1ea5f0f6c93b64751c6318e4ef742b6bf6955e2de199b2af73c0"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-6.log",
+        "sha256": "cb6901dab54a7f9306115c1a9b1da5d2cae8f6a4e4e96280f8c52b7c3a024556"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-7.log",
+        "sha256": "2396c476aa919b69a6cb8dd1ee731674cc9b664f48de88336c4048861a257937"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-8.log",
+        "sha256": "00a262e01b33f7c20ce6e324fa318b306adb58c1b6e50071b9911cfe390b35ab"
+      },
+      {
+        "local_path": "build/s13-original-108/crt-normal-2-9.log",
+        "sha256": "4a0f9085885f23bde8493779688ecf8f81643a8797af58669ac4104b3e7f174f"
+      }
+    ]
+  },
+  {
+    "phase": "candidate",
+    "report": "build/s13-candidate-108/report.json",
+    "sha256": "8f7da06b365237f1251e3c8920c53b193a2eec43a07645efd90b9434b095867c",
+    "status": "passed",
+    "outcomes": 108,
+    "input_files": {
+      "tests/curve_memory/rebuild_probe.cpp": "4636690a4b2b2c15b3fceae0d3da92ab976342fcf92a963cc627b37b538c8887",
+      "tools/qualify_curve_rebuild.py": "da015b7e3ed927b53bb03e00c8a4f5efc8edb56b6c31e03bf32f6c1c22c675c6",
+      "src/generator/curve_rebuild.cpp": "de5358b0a0a6b5a7713741bb14554de6e19d0ef182d9f5103c6d7033e9268fe0",
+      "include/generator/curve_rebuild.h": "ddf874a9415dbd3c873ae0c84641483e683044fd7808649e07681da8f06b4e38",
+      "tests/curve_memory/CMakeLists.txt": "789c7a0c7a3f9855682d3d2a822e8445db66964e1b16ef637983fceaaac5e82e"
+    },
+    "interpretation": "Valid preliminary coverage. Extend with a two-endpoint growth fixture to isolate pending-node retention; final inventory is 117 outcomes, not a retry of unchanged coverage.",
+    "raw_logs": [
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-0.log",
+        "sha256": "e9c3dd69a09cfcbc0d788955ba33bc043437be6f35d23b454d8dcc7269d07235"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-1.log",
+        "sha256": "abba5289c0c6e36c1e6d9591a719077586f4d23065581cf9397dbe39e8c96dfb"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-10.log",
+        "sha256": "ed51246e0d2bfefbee680c69368ac55a2ea62d8c1148f4d9d9c764ef7932dbda"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-11.log",
+        "sha256": "c707dd7a055c7cd140d1c6370b5cec5b067f3fa91ba351d24673ba2b5870b33f"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-2.log",
+        "sha256": "916f47aca388e927e7d0bcefad9ce57b855e6718c9d0bb8e13aecbb211656d86"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-3.log",
+        "sha256": "0edc7ad13fe7b81f7a97ac53df6aa4a3f352d5879b764c1d3e47c7aa97347e3d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-4.log",
+        "sha256": "50b202ba8436daf9a205cf3aafd5e114142eef29bb0be21d3e9fac10a2e880de"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-5.log",
+        "sha256": "4862bb466c45822b5b480ee6d458c5846ad564af8ca67c00d448b78751eb5b42"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-6.log",
+        "sha256": "49ffec577ed6691a28296710e6eb80e508fcd2edc92f98310a69bc45101d5a9e"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-7.log",
+        "sha256": "afc63d0a932201e2f74ba2d2cd13f8ef07923b10cd8ef88b3f2525fe02b235b6"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-8.log",
+        "sha256": "e1675e624a23ec619bb7b5cedff0f483ce7600b57a66cc64374fe3114160e145"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-0-9.log",
+        "sha256": "09481829829ad9be4a1175635c88501f1d1c4d114508fff8c06349b1c8e8a1fd"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-0.log",
+        "sha256": "f9e3b5c63538403957caa5ee361d7a0c3be4a5c21d7b57c2399b3ebb94945e64"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-1.log",
+        "sha256": "c8e55412061af8780771d3f8c6d4275953743a8041c5abe1f406865a3ee6c20d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-10.log",
+        "sha256": "58480afe40a3cb6cdec6e125a99ae633e8cdb42c02fefe64f8a2cb6975b406d5"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-11.log",
+        "sha256": "fa4aca1e54a796eba8c13ec138b3ecfaa8ceaa5cbf68b561a53a4523bec1414f"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-2.log",
+        "sha256": "ff30bfcc9fb9fcfb7d2c587d7c4a6142be6d12b6779b47822289a3c749947452"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-3.log",
+        "sha256": "cce3f0412632072f5ec97a550c0c6d0d792ce0e1017c83f9b58d0f72a543b004"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-4.log",
+        "sha256": "a7bb4948ddaca1a64afa5aba77a94055799bbf9f2133f15b6eaa790409f19bed"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-5.log",
+        "sha256": "21e20d2a9fb7086dc1d5d77cb9d44e02578518abcca2f1b2637e69525c0cb24a"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-6.log",
+        "sha256": "d3f04b65edac0aba3aafe28612635569f5411682e8f34804f50fb0ffa8fed0be"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-7.log",
+        "sha256": "ea0399288e079afdc9802bf42e05210d4d406407d3e5b1a82eb5b8d719544f19"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-8.log",
+        "sha256": "5514b807fd7ef16a822383caedea3c11725b354cd93c8a43eb19c96a392ac94d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-1-9.log",
+        "sha256": "f58a589b15df4f6c0c0a5a63a1cf71f3975a799b2531313c6e9533a1e3fca4d2"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-0.log",
+        "sha256": "932ea91d410004eca1af45bfb5b05e462601934fd0596d872bae6956bd5590e8"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-1.log",
+        "sha256": "8df13df87392138fbe68133d6f1b7c44a113c8874706f47674ab6b741c5cbcba"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-10.log",
+        "sha256": "b3414c94294965144e9cc8bca18512e8d2181f81400ad0a936677d31ba4d81a9"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-11.log",
+        "sha256": "12b6ff6b6cd1305bcf70e3ab59a57426c61e9098014d6cae5ab05486c89e4d8d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-2.log",
+        "sha256": "0a031e9e549436d6a06ac256809e5018465b0f8cdbd26df8b29573d95f686a39"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-3.log",
+        "sha256": "f27204770b300b55c9b2312db55c7b57dc83a49d8d1832bdba2f1f76bc15f83f"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-4.log",
+        "sha256": "3c9d1633aa509b631d3fcf4e283a5cd4381933699bebc4e90b50d03882e45c99"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-5.log",
+        "sha256": "96e0513b662f9719fe08c190bfc95909fe0f8c3fd487ff602d2a92ccaecc3664"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-6.log",
+        "sha256": "17806f3b5766967087eb6d02eb305de62d8294142f334505ba82a911f387558f"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-7.log",
+        "sha256": "70d2bf06c6cfdb4c41c40726d5a06389292e1f62054204cfc9f32077a96c4ffe"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-8.log",
+        "sha256": "020b64cdd3ba403fe56e1bf5f3c3b1cbba5ee58224cce4e1a5fd10961e8e3d50"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-normal-2-9.log",
+        "sha256": "130589b6158f5e7db0376198d072f5edf4a7c49247a24b711b2fc7f7686b709f"
+      },
+      {
+        "local_path": "build/s13-candidate-108/asan-use-after-free.log",
+        "sha256": "82794fdb19319f5ddd6d9851fbe1c3e02f0d9efa1873ba876047a4153783db62"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-allocation-hook-control.log",
+        "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-0.log",
+        "sha256": "4952c1e9c7bced2f76d143e016859b7d339de600d1ec41083150949645e7a833"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-1.log",
+        "sha256": "f38fae8a477386ec6b1170331d5b58c5b2c493094cd728b915d6b360f932bffa"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-10.log",
+        "sha256": "1912e13ea9961157b0be490c44cb08d30c5f3484f3e9479875b5cad172701d33"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-2.log",
+        "sha256": "4f24dc356a8b92b623db4cbda80fb5100d13c1c3eebb67bc83e81e7626fa3be5"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-3.log",
+        "sha256": "40a998719ce53e2726f03b16542ffd34256dc65ca94459428b107c076164b961"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-4.log",
+        "sha256": "8a84e21e92345d9f1786c8888c85dbe1d397b6e429f1101ba579a8cd8b9467b1"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-5.log",
+        "sha256": "8930d32f16c61462306ed26ad5ad34b0587692e7952024abacbb6f9090021f8d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-6.log",
+        "sha256": "60361b022be9d3c003535bcaeebba20be56979b6832201115ca61177b8007ae2"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-7.log",
+        "sha256": "273e2aa0e65f219dbd44999eef12ecab601bd5936c31ef5ffc6d127f8c95692d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-8.log",
+        "sha256": "e0c895fab7e2c48b182431540d88d9492279f5a9d5aa38cb7af961b7bf0be102"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-0-9.log",
+        "sha256": "653e2b3395edc2027ba42c22317ad2c4941e6d0aaee5cea577754e19bd42bacf"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-0.log",
+        "sha256": "6d6dd7e2e705b0722a4cbbf2e323fc80c141cdbb91ec25550a07289795b0801d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-1.log",
+        "sha256": "77484c2683681495f9176bf438a8056f167d722b4408d80325f304b002374fea"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-10.log",
+        "sha256": "11cc4f81e2ce4199cb671e51b1261d5bf84bea4bb0da2e65e78d4ddd7963025f"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-2.log",
+        "sha256": "098f8912cee9bc2d4c7dedd381ffee575d996b84be54e820f7ee422facafee3f"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-3.log",
+        "sha256": "2dec93e8a0c6173f7b23f57ec706669a1bd6d1cf3b33ac5e11e15f0ae5748316"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-4.log",
+        "sha256": "43c8b321a8721fefbabb69b3f790d2397e33ca4e9d88c0904115ca803a22f383"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-5.log",
+        "sha256": "97f2f29a45829c1dfe5006a12ad3915e965f44ed083db5eea548506ec589cb2c"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-6.log",
+        "sha256": "0056efad1fc61dc584bfac7c5f4cb86bde5d8702a2a9a54d6f56323df07c571b"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-7.log",
+        "sha256": "fc0350d36eaeb2043b05367730f5a03bb96e6726b75278949597d4d988acd155"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-8.log",
+        "sha256": "06e8a7f9061356bdd227d32328c421f9663118251380e2ef9d4d00fc6e9fd85a"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-1-9.log",
+        "sha256": "9f3bf5cb248d17f9b19ea2c949c1eaedd14b9980eef813163971416f1998faf0"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-0.log",
+        "sha256": "e2acd52d3934b99a08632c46dfbf6563af88bbd279c0ebfa4d7d3bbecc0defb1"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-1.log",
+        "sha256": "1affb89b4a7b81aed6cb412ee4a4f7883cc1087ef7b626a63268389c04be47ac"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-10.log",
+        "sha256": "abf20b759346df105fcdbf12beddf54ca51b904ece5916bee7e1458ce60a5751"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-2.log",
+        "sha256": "f199c743dff9ccb4eab921e7ac0f8f184e15db51939d5d7531cebc19479035cc"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-3.log",
+        "sha256": "3380c0b1b0393dae6f0f3158fe569cd182b782e5d7bebf2b08d1ecc541d664d2"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-4.log",
+        "sha256": "2c81f809d80a9e661d2afcdd0980991687595b0bc75f10e5f6c53ad2c4b6e19a"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-5.log",
+        "sha256": "369d27a8d637cb0b81a5cf685104f508bd96eed31a3ab00f0039e4ffa63b4cf6"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-6.log",
+        "sha256": "33e27185944eb71b6f74132f2aedc942efe0208d5d15a7a547118a784261a3e0"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-7.log",
+        "sha256": "52a4f50f63ab05b192778784a9c1c2a2bd2ac564bd41c6e6e340676ddd978103"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-8.log",
+        "sha256": "201282d38c6324715c7cf003d5d62dd605aceb5d03c1d06e5afe456fe845f190"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-failure-2-9.log",
+        "sha256": "779410ac505a071ddab7b237e7d35b749593b74e0748d66be44f954efce9d773"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-leak.log",
+        "sha256": "e4f8e08b73bc497b7784a131d02f296b381d3b858db251ecd4e557822106e731"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-0.log",
+        "sha256": "d1a36fe566729c3d1acead26869edac572b7618eb8491f7245cc7e34e2b99d7b"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-1.log",
+        "sha256": "fcbbf95693cd40d56f4565f5f3d22b820a264f1a179172fcb916630888cb771c"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-10.log",
+        "sha256": "67a806950f1b7a5c4f2d5c53d087959302ad84e2a49ea40c15241c1e4065cd91"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-11.log",
+        "sha256": "447915ab834e63d643b06ea9e170cfc2b0a64f68625388db9180125edaec02c3"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-2.log",
+        "sha256": "c00ff18e6d13251c91f5ad4f0c19d2c2030333c2ddf9c1f5ef5bc2a504333f65"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-3.log",
+        "sha256": "38f4e9efaccb9b73176ef9600b06b131f7bf3068d17637825a0ba1b48e098e4e"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-4.log",
+        "sha256": "c54878f64b605e1363c003d68fade871f6a1c9b3abbae4bc202c49786f38601e"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-5.log",
+        "sha256": "2f723a9e7c58a018c3eece905fab6452d404f25d9867ed7a762f58470370f977"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-6.log",
+        "sha256": "f1a44a8a4bd3cda566e7cf8ef70ab6dbdc56232638dbccae259ab20a11e981b9"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-7.log",
+        "sha256": "77266d06948fc7868dae44b76f2d218fbad4f5bd1f0cf4d2ce47d063fb7557a1"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-8.log",
+        "sha256": "03f34a6706c2ad0c4cd0e409543caded8ef483f6aa7e9f0410249b8c8535d9f3"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-0-9.log",
+        "sha256": "36f2cfec574b81093096bc681b76af25c1df7419f328be3b7ffe4ccd626e4c8b"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-0.log",
+        "sha256": "2607b221daa280274ec42cbb42d927819e8c81c6c0858d389866c58e3bb7ca62"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-1.log",
+        "sha256": "789e61ab3f9142ccac5d0ecda448b94bd18057fc551590a9cf717b85ad1a1d9d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-10.log",
+        "sha256": "fa1071baae5c7a666e39bc1faebecc6500abee5714e9d437ae4588a7392454bd"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-11.log",
+        "sha256": "ce7432ca872c6ec1ff9fb4d766fdc239d20f189dd3159127bb3c2c392bf0c126"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-2.log",
+        "sha256": "85890097f0f823b83266e3608b06adfdfb585c2be12bfea5d5751b3528b090ec"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-3.log",
+        "sha256": "61cabd3bbcf39ee6e869200c009e07fc1c836e824277b91c5db457e99305e275"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-4.log",
+        "sha256": "ae4bc76d29abf77be6e075c7a11a1b965126d574bd542f93877f17052d4059df"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-5.log",
+        "sha256": "f26ee01d63d62704d0c63a57d7c7b32a3cd7bff05ffd7cdbf1077eb160637607"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-6.log",
+        "sha256": "38221b4ed833e44e0d2c07d86d3afdc045f88fce43bc5075b36d8ee09b230f14"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-7.log",
+        "sha256": "d4dbd4aeddda72eaa17600bd657a10a819a47186c3c0bffa7c90d987d0bd014f"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-8.log",
+        "sha256": "1949a9a2893bc4c743ae6980720cdb607142526ca3c1870230655697f97520a0"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-1-9.log",
+        "sha256": "fc6c10a1b9840ffa98a5dc5db254b1dc5cd306dcffd7ff71933e10df9ef38b3d"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-0.log",
+        "sha256": "3b5efd0eea18f4b4c888ed9a2267f1abeb69ba6216066e90c9137827c79989d9"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-1.log",
+        "sha256": "89717245a68cd2af9644ba51e071950cf412a9e0a3cd0efd5285119ebb8ce8cd"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-10.log",
+        "sha256": "26509544af30646da76e04f0fd91de41ce12e5a0f2ee61e3a0730f5245c67a28"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-11.log",
+        "sha256": "d7d3477df417b2d3e249dcd908fb7c42146460bdb739eabd1eb3fee05e2d2edc"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-2.log",
+        "sha256": "fb163927e86136d518e3813ed903c26743b691aa095d4de0a1420daa21d4ecd3"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-3.log",
+        "sha256": "9a1a0f012ea6d39068111bd37d6dff2877acbda93e31139695cf155e1cc42fb9"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-4.log",
+        "sha256": "a67e9684af2a74b35d7333516793500e12ca8e61bbbef075d1b3a96ab4b9fadd"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-5.log",
+        "sha256": "f284c0aeb62f1ea5f0f6c93b64751c6318e4ef742b6bf6955e2de199b2af73c0"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-6.log",
+        "sha256": "cb6901dab54a7f9306115c1a9b1da5d2cae8f6a4e4e96280f8c52b7c3a024556"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-7.log",
+        "sha256": "2396c476aa919b69a6cb8dd1ee731674cc9b664f48de88336c4048861a257937"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-8.log",
+        "sha256": "00a262e01b33f7c20ce6e324fa318b306adb58c1b6e50071b9911cfe390b35ab"
+      },
+      {
+        "local_path": "build/s13-candidate-108/crt-normal-2-9.log",
+        "sha256": "4a0f9085885f23bde8493779688ecf8f81643a8797af58669ac4104b3e7f174f"
+      }
+    ]
+  },
+  {
+    "phase": "original",
+    "report": "build/s13-original-117-zero-start/report.json",
+    "sha256": "87dfedc359ae303b2494c1ac1d29c76adffd13f4e42d8b8e67898a9db77fc0c8",
+    "status": "failed",
+    "outcomes": 117,
+    "input_files": {
+      "tests/curve_memory/rebuild_probe.cpp": "fc551b698b2b33ba81dcc624179b36d5fda30c039af96bc8acaa3cacdb12c16f",
+      "tools/qualify_curve_rebuild.py": "38c57387ffa008c543c5476626bc7c16a55598a1515a4f3e2138eb2d008e1ffe",
+      "src/generator/curve_rebuild.cpp": "de5358b0a0a6b5a7713741bb14554de6e19d0ef182d9f5103c6d7033e9268fe0"
+    },
+    "interpretation": "Valid zero-start coverage: the actual RangedIdManager constructor resets the requested start during adjustment. Explicitly set the intended nonzero start for final fixtures, preserving a separate zero-start and null-manager control. No manager implementation change is proposed.",
+    "raw_logs": [
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-0.log",
+        "sha256": "e9c3dd69a09cfcbc0d788955ba33bc043437be6f35d23b454d8dcc7269d07235"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-1.log",
+        "sha256": "abba5289c0c6e36c1e6d9591a719077586f4d23065581cf9397dbe39e8c96dfb"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-10.log",
+        "sha256": "ed51246e0d2bfefbee680c69368ac55a2ea62d8c1148f4d9d9c764ef7932dbda"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-11.log",
+        "sha256": "c707dd7a055c7cd140d1c6370b5cec5b067f3fa91ba351d24673ba2b5870b33f"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-12.log",
+        "sha256": "a9e6d7b3851b592f51ada7c1048da20b81f1b133cffae9d5d6b79c85f74d0956"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-2.log",
+        "sha256": "916f47aca388e927e7d0bcefad9ce57b855e6718c9d0bb8e13aecbb211656d86"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-3.log",
+        "sha256": "0edc7ad13fe7b81f7a97ac53df6aa4a3f352d5879b764c1d3e47c7aa97347e3d"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-4.log",
+        "sha256": "50b202ba8436daf9a205cf3aafd5e114142eef29bb0be21d3e9fac10a2e880de"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-5.log",
+        "sha256": "4862bb466c45822b5b480ee6d458c5846ad564af8ca67c00d448b78751eb5b42"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-6.log",
+        "sha256": "49ffec577ed6691a28296710e6eb80e508fcd2edc92f98310a69bc45101d5a9e"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-7.log",
+        "sha256": "afc63d0a932201e2f74ba2d2cd13f8ef07923b10cd8ef88b3f2525fe02b235b6"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-8.log",
+        "sha256": "e1675e624a23ec619bb7b5cedff0f483ce7600b57a66cc64374fe3114160e145"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-0-9.log",
+        "sha256": "09481829829ad9be4a1175635c88501f1d1c4d114508fff8c06349b1c8e8a1fd"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-0.log",
+        "sha256": "f9e3b5c63538403957caa5ee361d7a0c3be4a5c21d7b57c2399b3ebb94945e64"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-1.log",
+        "sha256": "c8e55412061af8780771d3f8c6d4275953743a8041c5abe1f406865a3ee6c20d"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-10.log",
+        "sha256": "58480afe40a3cb6cdec6e125a99ae633e8cdb42c02fefe64f8a2cb6975b406d5"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-11.log",
+        "sha256": "fa4aca1e54a796eba8c13ec138b3ecfaa8ceaa5cbf68b561a53a4523bec1414f"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-12.log",
+        "sha256": "d927e3064fb325883de311f112ae5368ac135e2efd831998c2e0b70c355da79f"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-2.log",
+        "sha256": "ff30bfcc9fb9fcfb7d2c587d7c4a6142be6d12b6779b47822289a3c749947452"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-3.log",
+        "sha256": "cce3f0412632072f5ec97a550c0c6d0d792ce0e1017c83f9b58d0f72a543b004"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-4.log",
+        "sha256": "a7bb4948ddaca1a64afa5aba77a94055799bbf9f2133f15b6eaa790409f19bed"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-5.log",
+        "sha256": "21e20d2a9fb7086dc1d5d77cb9d44e02578518abcca2f1b2637e69525c0cb24a"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-6.log",
+        "sha256": "d3f04b65edac0aba3aafe28612635569f5411682e8f34804f50fb0ffa8fed0be"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-7.log",
+        "sha256": "ea0399288e079afdc9802bf42e05210d4d406407d3e5b1a82eb5b8d719544f19"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-8.log",
+        "sha256": "5514b807fd7ef16a822383caedea3c11725b354cd93c8a43eb19c96a392ac94d"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-1-9.log",
+        "sha256": "f58a589b15df4f6c0c0a5a63a1cf71f3975a799b2531313c6e9533a1e3fca4d2"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-0.log",
+        "sha256": "932ea91d410004eca1af45bfb5b05e462601934fd0596d872bae6956bd5590e8"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-1.log",
+        "sha256": "8df13df87392138fbe68133d6f1b7c44a113c8874706f47674ab6b741c5cbcba"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-10.log",
+        "sha256": "b3414c94294965144e9cc8bca18512e8d2181f81400ad0a936677d31ba4d81a9"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-11.log",
+        "sha256": "12b6ff6b6cd1305bcf70e3ab59a57426c61e9098014d6cae5ab05486c89e4d8d"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-12.log",
+        "sha256": "6669392bf03155a248829d50b1cfef7af4009a277faf5399900ec3296f9a39c6"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-2.log",
+        "sha256": "0a031e9e549436d6a06ac256809e5018465b0f8cdbd26df8b29573d95f686a39"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-3.log",
+        "sha256": "f27204770b300b55c9b2312db55c7b57dc83a49d8d1832bdba2f1f76bc15f83f"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-4.log",
+        "sha256": "3c9d1633aa509b631d3fcf4e283a5cd4381933699bebc4e90b50d03882e45c99"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-5.log",
+        "sha256": "96e0513b662f9719fe08c190bfc95909fe0f8c3fd487ff602d2a92ccaecc3664"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-6.log",
+        "sha256": "17806f3b5766967087eb6d02eb305de62d8294142f334505ba82a911f387558f"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-7.log",
+        "sha256": "70d2bf06c6cfdb4c41c40726d5a06389292e1f62054204cfc9f32077a96c4ffe"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-8.log",
+        "sha256": "020b64cdd3ba403fe56e1bf5f3c3b1cbba5ee58224cce4e1a5fd10961e8e3d50"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-normal-2-9.log",
+        "sha256": "130589b6158f5e7db0376198d072f5edf4a7c49247a24b711b2fc7f7686b709f"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/asan-use-after-free.log",
+        "sha256": "8969a80a1ea6b061fea97c4bf12b88c03aeceac8d8b432de094be69ce3fbba34"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-allocation-hook-control.log",
+        "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-0.log",
+        "sha256": "a7a780b3820b8238b42c01b43e99c305c1b88d9937c6c8619a1ff79d4b79f1e9"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-1.log",
+        "sha256": "29a2f581d18fa2273e02a9767a46af2f9f39ec850389520fe791ab83d4c37367"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-10.log",
+        "sha256": "f4340ea1b502de9d8c211d346c166d32d3090979940f9ab9c66531e2e6d8e92d"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-12.log",
+        "sha256": "423d844151c4510381cf9f586fa0c972bde1c6d8cbe6afcaa5e8915a6d3684c2"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-2.log",
+        "sha256": "dea7c0cd58f67197e3ace21baba87a6d8e23b3709fc8932980c31c99e7e01ca1"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-3.log",
+        "sha256": "bb7685bf15c7b267d42696cbc46cf704fd41e50f4cb54bebf79a600f5497e90a"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-4.log",
+        "sha256": "8a84e21e92345d9f1786c8888c85dbe1d397b6e429f1101ba579a8cd8b9467b1"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-5.log",
+        "sha256": "8930d32f16c61462306ed26ad5ad34b0587692e7952024abacbb6f9090021f8d"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-6.log",
+        "sha256": "60361b022be9d3c003535bcaeebba20be56979b6832201115ca61177b8007ae2"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-7.log",
+        "sha256": "f52a95723bf04b8879d73a8bf16dd6c05e2ee0afabede52fb3d7c8b9189be767"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-8.log",
+        "sha256": "97f36411c71cf82c63a69f2c8b9df9b36f55aab9826db5df0a482c560de9e126"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-0-9.log",
+        "sha256": "bb7ac88396eb8cdd3e2a0ba6937737d75c4b4dc63ca156417b53a16b66a609b2"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-0.log",
+        "sha256": "5ed66477e52bf2a8b3a2616a6bfcbdfdbc3aef34447ba8aab5cfa56a4afe1594"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-1.log",
+        "sha256": "f77c42148a5c0171080a909c44b02da0345028294cb9a0eef0fcb326ece897b2"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-10.log",
+        "sha256": "709edb7aa37c0cf7f0fa094c20b7428653396401f9a58980d4fe01c2c4edcfac"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-12.log",
+        "sha256": "d157859f4770bf393f5cbd8b9ebe03208f80448eee9bb8d92bf1896714a825dd"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-2.log",
+        "sha256": "3d0e0a0595650f0cee4e14aa9efb0a508a2dd2fe8e3f19aa0da604a612665494"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-3.log",
+        "sha256": "6d3a97b9c084f862e5c7f4fe454e3ce2faf25ed19529ec081f0d459dd325ed44"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-4.log",
+        "sha256": "43c8b321a8721fefbabb69b3f790d2397e33ca4e9d88c0904115ca803a22f383"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-5.log",
+        "sha256": "97f2f29a45829c1dfe5006a12ad3915e965f44ed083db5eea548506ec589cb2c"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-6.log",
+        "sha256": "0056efad1fc61dc584bfac7c5f4cb86bde5d8702a2a9a54d6f56323df07c571b"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-7.log",
+        "sha256": "e0c222860500b599e750ba037f131b5f581f14e235d4031f8c946d22e88704dc"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-8.log",
+        "sha256": "7561f83254d96dd71e1fe5aff26264fb72960e642a68aec004f077976f0cdcec"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-1-9.log",
+        "sha256": "7c291916073cbe2e6ea83226e74859c7902b6ff340d4939766ffe233746cb0b1"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-0.log",
+        "sha256": "4b38a3644c8382515bcfd60260bb71a268870892fa3ed89155a509500ec30a45"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-1.log",
+        "sha256": "68b2f6a6f6562f3a022711a02c9142df85310a22ab0061445f206c8812752855"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-10.log",
+        "sha256": "5db6727dd52e1f94cffb84160652c827bc1fe7e959c482e8b3b129122d6e6dec"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-12.log",
+        "sha256": "2700aa88d0dac75400f2e2e9bcb186f2e0154a005bb95dd39e4532a1b3d45e47"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-2.log",
+        "sha256": "c3fb667034bf6905495aa08d1970b79c212fb58c9f4bd0b55861147165e5d8ab"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-3.log",
+        "sha256": "b3a90c5dc64d10e2ed34f08bf8e8f001607c40cf0f2e0a0f3f2794409a15d569"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-4.log",
+        "sha256": "2c81f809d80a9e661d2afcdd0980991687595b0bc75f10e5f6c53ad2c4b6e19a"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-5.log",
+        "sha256": "369d27a8d637cb0b81a5cf685104f508bd96eed31a3ab00f0039e4ffa63b4cf6"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-6.log",
+        "sha256": "33e27185944eb71b6f74132f2aedc942efe0208d5d15a7a547118a784261a3e0"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-7.log",
+        "sha256": "e527dd1b83964a27e66e8fe2985f162c3237a2383f3155e7e644f7c9bb75ab70"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-8.log",
+        "sha256": "c02e8d15e17050a295516b96f8ddcf2d42c19e59618a45dc11e5e940b5034d07"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-failure-2-9.log",
+        "sha256": "ae9add6cfe976d3bd3e766ca8c1533015694103f0fc786818a093b6e8d11ff19"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-leak.log",
+        "sha256": "dcf455991b850c2e5b4bee2a449f59ceddaf59a7fbba31a314ae8349f6ea08c2"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-0.log",
+        "sha256": "d1a36fe566729c3d1acead26869edac572b7618eb8491f7245cc7e34e2b99d7b"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-1.log",
+        "sha256": "fcbbf95693cd40d56f4565f5f3d22b820a264f1a179172fcb916630888cb771c"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-10.log",
+        "sha256": "67a806950f1b7a5c4f2d5c53d087959302ad84e2a49ea40c15241c1e4065cd91"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-11.log",
+        "sha256": "447915ab834e63d643b06ea9e170cfc2b0a64f68625388db9180125edaec02c3"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-12.log",
+        "sha256": "ce34d491d8eed65cc4445761262063c39184f1fdbbadffd3ac95fd912c470d60"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-2.log",
+        "sha256": "c00ff18e6d13251c91f5ad4f0c19d2c2030333c2ddf9c1f5ef5bc2a504333f65"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-3.log",
+        "sha256": "38f4e9efaccb9b73176ef9600b06b131f7bf3068d17637825a0ba1b48e098e4e"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-4.log",
+        "sha256": "c54878f64b605e1363c003d68fade871f6a1c9b3abbae4bc202c49786f38601e"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-5.log",
+        "sha256": "2f723a9e7c58a018c3eece905fab6452d404f25d9867ed7a762f58470370f977"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-6.log",
+        "sha256": "f1a44a8a4bd3cda566e7cf8ef70ab6dbdc56232638dbccae259ab20a11e981b9"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-7.log",
+        "sha256": "77266d06948fc7868dae44b76f2d218fbad4f5bd1f0cf4d2ce47d063fb7557a1"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-8.log",
+        "sha256": "03f34a6706c2ad0c4cd0e409543caded8ef483f6aa7e9f0410249b8c8535d9f3"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-0-9.log",
+        "sha256": "36f2cfec574b81093096bc681b76af25c1df7419f328be3b7ffe4ccd626e4c8b"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-0.log",
+        "sha256": "2607b221daa280274ec42cbb42d927819e8c81c6c0858d389866c58e3bb7ca62"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-1.log",
+        "sha256": "789e61ab3f9142ccac5d0ecda448b94bd18057fc551590a9cf717b85ad1a1d9d"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-10.log",
+        "sha256": "fa1071baae5c7a666e39bc1faebecc6500abee5714e9d437ae4588a7392454bd"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-11.log",
+        "sha256": "ce7432ca872c6ec1ff9fb4d766fdc239d20f189dd3159127bb3c2c392bf0c126"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-12.log",
+        "sha256": "61c87dc29028ac4ec608b0e97bac942f35c020511283e07d95c24a7f8392c535"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-2.log",
+        "sha256": "85890097f0f823b83266e3608b06adfdfb585c2be12bfea5d5751b3528b090ec"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-3.log",
+        "sha256": "61cabd3bbcf39ee6e869200c009e07fc1c836e824277b91c5db457e99305e275"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-4.log",
+        "sha256": "ae4bc76d29abf77be6e075c7a11a1b965126d574bd542f93877f17052d4059df"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-5.log",
+        "sha256": "f26ee01d63d62704d0c63a57d7c7b32a3cd7bff05ffd7cdbf1077eb160637607"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-6.log",
+        "sha256": "38221b4ed833e44e0d2c07d86d3afdc045f88fce43bc5075b36d8ee09b230f14"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-7.log",
+        "sha256": "d4dbd4aeddda72eaa17600bd657a10a819a47186c3c0bffa7c90d987d0bd014f"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-8.log",
+        "sha256": "1949a9a2893bc4c743ae6980720cdb607142526ca3c1870230655697f97520a0"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-1-9.log",
+        "sha256": "fc6c10a1b9840ffa98a5dc5db254b1dc5cd306dcffd7ff71933e10df9ef38b3d"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-0.log",
+        "sha256": "3b5efd0eea18f4b4c888ed9a2267f1abeb69ba6216066e90c9137827c79989d9"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-1.log",
+        "sha256": "89717245a68cd2af9644ba51e071950cf412a9e0a3cd0efd5285119ebb8ce8cd"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-10.log",
+        "sha256": "26509544af30646da76e04f0fd91de41ce12e5a0f2ee61e3a0730f5245c67a28"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-11.log",
+        "sha256": "d7d3477df417b2d3e249dcd908fb7c42146460bdb739eabd1eb3fee05e2d2edc"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-12.log",
+        "sha256": "d0cea1b83d14a0e77b5516ec86b6a5857f0655f895fb1770a2328da7ab1a5dd0"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-2.log",
+        "sha256": "fb163927e86136d518e3813ed903c26743b691aa095d4de0a1420daa21d4ecd3"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-3.log",
+        "sha256": "9a1a0f012ea6d39068111bd37d6dff2877acbda93e31139695cf155e1cc42fb9"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-4.log",
+        "sha256": "a67e9684af2a74b35d7333516793500e12ca8e61bbbef075d1b3a96ab4b9fadd"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-5.log",
+        "sha256": "f284c0aeb62f1ea5f0f6c93b64751c6318e4ef742b6bf6955e2de199b2af73c0"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-6.log",
+        "sha256": "cb6901dab54a7f9306115c1a9b1da5d2cae8f6a4e4e96280f8c52b7c3a024556"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-7.log",
+        "sha256": "2396c476aa919b69a6cb8dd1ee731674cc9b664f48de88336c4048861a257937"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-8.log",
+        "sha256": "00a262e01b33f7c20ce6e324fa318b306adb58c1b6e50071b9911cfe390b35ab"
+      },
+      {
+        "local_path": "build/s13-original-117-zero-start/crt-normal-2-9.log",
+        "sha256": "4a0f9085885f23bde8493779688ecf8f81643a8797af58669ac4104b3e7f174f"
+      }
+    ]
+  },
+  {
+    "phase": "candidate",
+    "report": "build/s13-candidate-117-zero-start/report.json",
+    "sha256": "46a3ec256dc27eebb99a8cddbb63c7f681cfaf03c051fd3b763d587e9fe6c376",
+    "status": "passed",
+    "outcomes": 117,
+    "input_files": {
+      "tests/curve_memory/rebuild_probe.cpp": "fc551b698b2b33ba81dcc624179b36d5fda30c039af96bc8acaa3cacdb12c16f",
+      "tools/qualify_curve_rebuild.py": "38c57387ffa008c543c5476626bc7c16a55598a1515a4f3e2138eb2d008e1ffe",
+      "src/generator/curve_rebuild.cpp": "de5358b0a0a6b5a7713741bb14554de6e19d0ef182d9f5103c6d7033e9268fe0"
+    },
+    "interpretation": "Valid zero-start coverage: the actual RangedIdManager constructor resets the requested start during adjustment. Explicitly set the intended nonzero start for final fixtures, preserving a separate zero-start and null-manager control. No manager implementation change is proposed.",
+    "raw_logs": [
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-0.log",
+        "sha256": "e9c3dd69a09cfcbc0d788955ba33bc043437be6f35d23b454d8dcc7269d07235"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-1.log",
+        "sha256": "abba5289c0c6e36c1e6d9591a719077586f4d23065581cf9397dbe39e8c96dfb"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-10.log",
+        "sha256": "ed51246e0d2bfefbee680c69368ac55a2ea62d8c1148f4d9d9c764ef7932dbda"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-11.log",
+        "sha256": "c707dd7a055c7cd140d1c6370b5cec5b067f3fa91ba351d24673ba2b5870b33f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-12.log",
+        "sha256": "a9e6d7b3851b592f51ada7c1048da20b81f1b133cffae9d5d6b79c85f74d0956"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-2.log",
+        "sha256": "916f47aca388e927e7d0bcefad9ce57b855e6718c9d0bb8e13aecbb211656d86"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-3.log",
+        "sha256": "0edc7ad13fe7b81f7a97ac53df6aa4a3f352d5879b764c1d3e47c7aa97347e3d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-4.log",
+        "sha256": "50b202ba8436daf9a205cf3aafd5e114142eef29bb0be21d3e9fac10a2e880de"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-5.log",
+        "sha256": "4862bb466c45822b5b480ee6d458c5846ad564af8ca67c00d448b78751eb5b42"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-6.log",
+        "sha256": "49ffec577ed6691a28296710e6eb80e508fcd2edc92f98310a69bc45101d5a9e"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-7.log",
+        "sha256": "afc63d0a932201e2f74ba2d2cd13f8ef07923b10cd8ef88b3f2525fe02b235b6"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-8.log",
+        "sha256": "e1675e624a23ec619bb7b5cedff0f483ce7600b57a66cc64374fe3114160e145"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-0-9.log",
+        "sha256": "09481829829ad9be4a1175635c88501f1d1c4d114508fff8c06349b1c8e8a1fd"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-0.log",
+        "sha256": "f9e3b5c63538403957caa5ee361d7a0c3be4a5c21d7b57c2399b3ebb94945e64"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-1.log",
+        "sha256": "c8e55412061af8780771d3f8c6d4275953743a8041c5abe1f406865a3ee6c20d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-10.log",
+        "sha256": "58480afe40a3cb6cdec6e125a99ae633e8cdb42c02fefe64f8a2cb6975b406d5"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-11.log",
+        "sha256": "fa4aca1e54a796eba8c13ec138b3ecfaa8ceaa5cbf68b561a53a4523bec1414f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-12.log",
+        "sha256": "d927e3064fb325883de311f112ae5368ac135e2efd831998c2e0b70c355da79f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-2.log",
+        "sha256": "ff30bfcc9fb9fcfb7d2c587d7c4a6142be6d12b6779b47822289a3c749947452"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-3.log",
+        "sha256": "cce3f0412632072f5ec97a550c0c6d0d792ce0e1017c83f9b58d0f72a543b004"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-4.log",
+        "sha256": "a7bb4948ddaca1a64afa5aba77a94055799bbf9f2133f15b6eaa790409f19bed"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-5.log",
+        "sha256": "21e20d2a9fb7086dc1d5d77cb9d44e02578518abcca2f1b2637e69525c0cb24a"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-6.log",
+        "sha256": "d3f04b65edac0aba3aafe28612635569f5411682e8f34804f50fb0ffa8fed0be"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-7.log",
+        "sha256": "ea0399288e079afdc9802bf42e05210d4d406407d3e5b1a82eb5b8d719544f19"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-8.log",
+        "sha256": "5514b807fd7ef16a822383caedea3c11725b354cd93c8a43eb19c96a392ac94d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-1-9.log",
+        "sha256": "f58a589b15df4f6c0c0a5a63a1cf71f3975a799b2531313c6e9533a1e3fca4d2"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-0.log",
+        "sha256": "932ea91d410004eca1af45bfb5b05e462601934fd0596d872bae6956bd5590e8"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-1.log",
+        "sha256": "8df13df87392138fbe68133d6f1b7c44a113c8874706f47674ab6b741c5cbcba"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-10.log",
+        "sha256": "b3414c94294965144e9cc8bca18512e8d2181f81400ad0a936677d31ba4d81a9"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-11.log",
+        "sha256": "12b6ff6b6cd1305bcf70e3ab59a57426c61e9098014d6cae5ab05486c89e4d8d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-12.log",
+        "sha256": "6669392bf03155a248829d50b1cfef7af4009a277faf5399900ec3296f9a39c6"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-2.log",
+        "sha256": "0a031e9e549436d6a06ac256809e5018465b0f8cdbd26df8b29573d95f686a39"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-3.log",
+        "sha256": "f27204770b300b55c9b2312db55c7b57dc83a49d8d1832bdba2f1f76bc15f83f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-4.log",
+        "sha256": "3c9d1633aa509b631d3fcf4e283a5cd4381933699bebc4e90b50d03882e45c99"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-5.log",
+        "sha256": "96e0513b662f9719fe08c190bfc95909fe0f8c3fd487ff602d2a92ccaecc3664"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-6.log",
+        "sha256": "17806f3b5766967087eb6d02eb305de62d8294142f334505ba82a911f387558f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-7.log",
+        "sha256": "70d2bf06c6cfdb4c41c40726d5a06389292e1f62054204cfc9f32077a96c4ffe"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-8.log",
+        "sha256": "020b64cdd3ba403fe56e1bf5f3c3b1cbba5ee58224cce4e1a5fd10961e8e3d50"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-normal-2-9.log",
+        "sha256": "130589b6158f5e7db0376198d072f5edf4a7c49247a24b711b2fc7f7686b709f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/asan-use-after-free.log",
+        "sha256": "80c7b8adbcc80a1ad91a17be0b56b60e49cbd875152a7bfc2a82701de2347d54"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-allocation-hook-control.log",
+        "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-0.log",
+        "sha256": "4952c1e9c7bced2f76d143e016859b7d339de600d1ec41083150949645e7a833"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-1.log",
+        "sha256": "f38fae8a477386ec6b1170331d5b58c5b2c493094cd728b915d6b360f932bffa"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-10.log",
+        "sha256": "1912e13ea9961157b0be490c44cb08d30c5f3484f3e9479875b5cad172701d33"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-12.log",
+        "sha256": "d64f016648211bfa6b5d653bde5642bcf77f992714dbbe70aabcd2568cdac16e"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-2.log",
+        "sha256": "4f24dc356a8b92b623db4cbda80fb5100d13c1c3eebb67bc83e81e7626fa3be5"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-3.log",
+        "sha256": "40a998719ce53e2726f03b16542ffd34256dc65ca94459428b107c076164b961"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-4.log",
+        "sha256": "8a84e21e92345d9f1786c8888c85dbe1d397b6e429f1101ba579a8cd8b9467b1"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-5.log",
+        "sha256": "8930d32f16c61462306ed26ad5ad34b0587692e7952024abacbb6f9090021f8d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-6.log",
+        "sha256": "60361b022be9d3c003535bcaeebba20be56979b6832201115ca61177b8007ae2"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-7.log",
+        "sha256": "273e2aa0e65f219dbd44999eef12ecab601bd5936c31ef5ffc6d127f8c95692d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-8.log",
+        "sha256": "e0c895fab7e2c48b182431540d88d9492279f5a9d5aa38cb7af961b7bf0be102"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-0-9.log",
+        "sha256": "653e2b3395edc2027ba42c22317ad2c4941e6d0aaee5cea577754e19bd42bacf"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-0.log",
+        "sha256": "6d6dd7e2e705b0722a4cbbf2e323fc80c141cdbb91ec25550a07289795b0801d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-1.log",
+        "sha256": "77484c2683681495f9176bf438a8056f167d722b4408d80325f304b002374fea"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-10.log",
+        "sha256": "11cc4f81e2ce4199cb671e51b1261d5bf84bea4bb0da2e65e78d4ddd7963025f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-12.log",
+        "sha256": "17c303f07819f6df9a0b0b6487d5f806d2229460415a47eb28900d3fc000797e"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-2.log",
+        "sha256": "098f8912cee9bc2d4c7dedd381ffee575d996b84be54e820f7ee422facafee3f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-3.log",
+        "sha256": "2dec93e8a0c6173f7b23f57ec706669a1bd6d1cf3b33ac5e11e15f0ae5748316"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-4.log",
+        "sha256": "43c8b321a8721fefbabb69b3f790d2397e33ca4e9d88c0904115ca803a22f383"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-5.log",
+        "sha256": "97f2f29a45829c1dfe5006a12ad3915e965f44ed083db5eea548506ec589cb2c"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-6.log",
+        "sha256": "0056efad1fc61dc584bfac7c5f4cb86bde5d8702a2a9a54d6f56323df07c571b"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-7.log",
+        "sha256": "fc0350d36eaeb2043b05367730f5a03bb96e6726b75278949597d4d988acd155"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-8.log",
+        "sha256": "06e8a7f9061356bdd227d32328c421f9663118251380e2ef9d4d00fc6e9fd85a"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-1-9.log",
+        "sha256": "9f3bf5cb248d17f9b19ea2c949c1eaedd14b9980eef813163971416f1998faf0"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-0.log",
+        "sha256": "e2acd52d3934b99a08632c46dfbf6563af88bbd279c0ebfa4d7d3bbecc0defb1"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-1.log",
+        "sha256": "1affb89b4a7b81aed6cb412ee4a4f7883cc1087ef7b626a63268389c04be47ac"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-10.log",
+        "sha256": "abf20b759346df105fcdbf12beddf54ca51b904ece5916bee7e1458ce60a5751"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-12.log",
+        "sha256": "52919ac7fec1fbe832b8d9eab27b47827c9d3baab73b331f1a47e9952beba085"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-2.log",
+        "sha256": "f199c743dff9ccb4eab921e7ac0f8f184e15db51939d5d7531cebc19479035cc"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-3.log",
+        "sha256": "3380c0b1b0393dae6f0f3158fe569cd182b782e5d7bebf2b08d1ecc541d664d2"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-4.log",
+        "sha256": "2c81f809d80a9e661d2afcdd0980991687595b0bc75f10e5f6c53ad2c4b6e19a"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-5.log",
+        "sha256": "369d27a8d637cb0b81a5cf685104f508bd96eed31a3ab00f0039e4ffa63b4cf6"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-6.log",
+        "sha256": "33e27185944eb71b6f74132f2aedc942efe0208d5d15a7a547118a784261a3e0"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-7.log",
+        "sha256": "52a4f50f63ab05b192778784a9c1c2a2bd2ac564bd41c6e6e340676ddd978103"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-8.log",
+        "sha256": "201282d38c6324715c7cf003d5d62dd605aceb5d03c1d06e5afe456fe845f190"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-failure-2-9.log",
+        "sha256": "779410ac505a071ddab7b237e7d35b749593b74e0748d66be44f954efce9d773"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-leak.log",
+        "sha256": "76f24da7c56a85041a68972001eaf57a542a0a2c6df0b1205ed29855a8330500"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-0.log",
+        "sha256": "d1a36fe566729c3d1acead26869edac572b7618eb8491f7245cc7e34e2b99d7b"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-1.log",
+        "sha256": "fcbbf95693cd40d56f4565f5f3d22b820a264f1a179172fcb916630888cb771c"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-10.log",
+        "sha256": "67a806950f1b7a5c4f2d5c53d087959302ad84e2a49ea40c15241c1e4065cd91"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-11.log",
+        "sha256": "447915ab834e63d643b06ea9e170cfc2b0a64f68625388db9180125edaec02c3"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-12.log",
+        "sha256": "ce34d491d8eed65cc4445761262063c39184f1fdbbadffd3ac95fd912c470d60"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-2.log",
+        "sha256": "c00ff18e6d13251c91f5ad4f0c19d2c2030333c2ddf9c1f5ef5bc2a504333f65"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-3.log",
+        "sha256": "38f4e9efaccb9b73176ef9600b06b131f7bf3068d17637825a0ba1b48e098e4e"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-4.log",
+        "sha256": "c54878f64b605e1363c003d68fade871f6a1c9b3abbae4bc202c49786f38601e"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-5.log",
+        "sha256": "2f723a9e7c58a018c3eece905fab6452d404f25d9867ed7a762f58470370f977"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-6.log",
+        "sha256": "f1a44a8a4bd3cda566e7cf8ef70ab6dbdc56232638dbccae259ab20a11e981b9"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-7.log",
+        "sha256": "77266d06948fc7868dae44b76f2d218fbad4f5bd1f0cf4d2ce47d063fb7557a1"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-8.log",
+        "sha256": "03f34a6706c2ad0c4cd0e409543caded8ef483f6aa7e9f0410249b8c8535d9f3"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-0-9.log",
+        "sha256": "36f2cfec574b81093096bc681b76af25c1df7419f328be3b7ffe4ccd626e4c8b"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-0.log",
+        "sha256": "2607b221daa280274ec42cbb42d927819e8c81c6c0858d389866c58e3bb7ca62"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-1.log",
+        "sha256": "789e61ab3f9142ccac5d0ecda448b94bd18057fc551590a9cf717b85ad1a1d9d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-10.log",
+        "sha256": "fa1071baae5c7a666e39bc1faebecc6500abee5714e9d437ae4588a7392454bd"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-11.log",
+        "sha256": "ce7432ca872c6ec1ff9fb4d766fdc239d20f189dd3159127bb3c2c392bf0c126"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-12.log",
+        "sha256": "61c87dc29028ac4ec608b0e97bac942f35c020511283e07d95c24a7f8392c535"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-2.log",
+        "sha256": "85890097f0f823b83266e3608b06adfdfb585c2be12bfea5d5751b3528b090ec"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-3.log",
+        "sha256": "61cabd3bbcf39ee6e869200c009e07fc1c836e824277b91c5db457e99305e275"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-4.log",
+        "sha256": "ae4bc76d29abf77be6e075c7a11a1b965126d574bd542f93877f17052d4059df"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-5.log",
+        "sha256": "f26ee01d63d62704d0c63a57d7c7b32a3cd7bff05ffd7cdbf1077eb160637607"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-6.log",
+        "sha256": "38221b4ed833e44e0d2c07d86d3afdc045f88fce43bc5075b36d8ee09b230f14"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-7.log",
+        "sha256": "d4dbd4aeddda72eaa17600bd657a10a819a47186c3c0bffa7c90d987d0bd014f"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-8.log",
+        "sha256": "1949a9a2893bc4c743ae6980720cdb607142526ca3c1870230655697f97520a0"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-1-9.log",
+        "sha256": "fc6c10a1b9840ffa98a5dc5db254b1dc5cd306dcffd7ff71933e10df9ef38b3d"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-0.log",
+        "sha256": "3b5efd0eea18f4b4c888ed9a2267f1abeb69ba6216066e90c9137827c79989d9"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-1.log",
+        "sha256": "89717245a68cd2af9644ba51e071950cf412a9e0a3cd0efd5285119ebb8ce8cd"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-10.log",
+        "sha256": "26509544af30646da76e04f0fd91de41ce12e5a0f2ee61e3a0730f5245c67a28"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-11.log",
+        "sha256": "d7d3477df417b2d3e249dcd908fb7c42146460bdb739eabd1eb3fee05e2d2edc"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-12.log",
+        "sha256": "d0cea1b83d14a0e77b5516ec86b6a5857f0655f895fb1770a2328da7ab1a5dd0"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-2.log",
+        "sha256": "fb163927e86136d518e3813ed903c26743b691aa095d4de0a1420daa21d4ecd3"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-3.log",
+        "sha256": "9a1a0f012ea6d39068111bd37d6dff2877acbda93e31139695cf155e1cc42fb9"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-4.log",
+        "sha256": "a67e9684af2a74b35d7333516793500e12ca8e61bbbef075d1b3a96ab4b9fadd"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-5.log",
+        "sha256": "f284c0aeb62f1ea5f0f6c93b64751c6318e4ef742b6bf6955e2de199b2af73c0"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-6.log",
+        "sha256": "cb6901dab54a7f9306115c1a9b1da5d2cae8f6a4e4e96280f8c52b7c3a024556"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-7.log",
+        "sha256": "2396c476aa919b69a6cb8dd1ee731674cc9b664f48de88336c4048861a257937"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-8.log",
+        "sha256": "00a262e01b33f7c20ce6e324fa318b306adb58c1b6e50071b9911cfe390b35ab"
+      },
+      {
+        "local_path": "build/s13-candidate-117-zero-start/crt-normal-2-9.log",
+        "sha256": "4a0f9085885f23bde8493779688ecf8f81643a8797af58669ac4104b3e7f174f"
+      }
+    ]
+  }
+]

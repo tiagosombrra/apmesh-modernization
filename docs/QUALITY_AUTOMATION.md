@@ -294,3 +294,19 @@ for the new target; CRT heap checks remain. Run the runner with --asan, --crt,
 --runtime and a new --output directory. Previous six instrument batteries remain
 required. Original evidence uses 14 pinned units and the verified lambda adapter;
 candidate uses 15 actual units. This is not full-process memory qualification.
+
+## Paired target-count curve rebuild (#44)
+
+application.curve_rebuild_contracts brings CTest to 23 required entries with
+74 Python controls. tools/qualify_curve_rebuild.py requires 117 outcomes:
+78 ASan/CRT normal cases, 36 positive calibrated sweeps (597 denials) and
+three deliberate UAF/leak/hook controls. Candidate target curve_rebuild_probe
+compiles 13 actual production units; original comparison uses 12 pinned units
+plus the verified lambda adapter with explicit ID-manager context substitutions.
+Configure tests/curve_memory in separate build directories using
+AP_MESH_CURVE_SOURCE_ROOT and AP_MESH_CURVE_ASAN; the original additionally sets
+AP_MESH_REBUILD_IMPLEMENTATION. Build RelWithDebInfo for ASan and Debug for CRT;
+run the runner with --asan, --crt, --runtime and a new --output. The new Debug
+target consistently disables iterator metadata and retains actual CRT heap
+checks. Previous seven batteries remain required; whole-process/parallel memory
+qualification remains open. No-op/empty controls are explicit guards.
