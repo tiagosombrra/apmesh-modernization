@@ -2,7 +2,8 @@
 
 Updated 2026-10-18 (America/Fortaleza). Issue #44; one active work item.
 Entry main b7f7ebda4c206f4570f1d86fab6fac844587e188. Candidate passes;
-exact published-head/main gates remain required. See ADR-0014 and
+exact published-head/main gates subsequently passed through PR #45; see
+STAGE3_CURVE_REBUILD_CLOSURE.md. See ADR-0014 and
 stage3/curve_rebuild/ for exact commands, identities, extraction/substitutions,
 original failures and retained preliminary coverage.
 

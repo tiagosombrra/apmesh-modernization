@@ -494,46 +494,49 @@ failed-tree observer consumption/retry and full-process/parallel/LSan/UBSan rema
 open. Stages 0-2 stay closed for measured scope; stages 4-11 stay pending.
 Doxygen undocumented-API debt stays stage 8.
 
-## Active stage 3 slice 13 (#44): paired target-count rebuild preparation
+## Stage 3 slice 13 qualified (#44, PR #45)
 
-The actual target-count lambda deletes existing interiors before the parameter
-copy/point-list preparation is complete. Twenty-four original sweeps stop at
-the first observed deleted-live-sample contract failure (ordinals 11-28, detailed
-per case in retained reports). Later ordinals and CRT retention in those aborted
-cases are unmeasured. Three two-endpoint sweeps isolate pending-node loss and
-complete with 48 retained blocks each across their denied allocations. Other
-90 of 117 original outcomes are expected.
+Head `ffdde7248564c8e072138d9673871baa4f13e217` integrated through PR #45 as main
+`3e628e6445b2638ff73a51fa8bb1a9aed440647c`, preserving complete tree
+`66f74c1b6d564e15a115db635a2b4856ee90a6aa` (1474 blobs). Full exact-head and
+implementation-main campaigns pass: CTest 23/23, zero skips, 74 Python controls;
+rebuild 117/117, snapshots 89/89, sync 73/73, adoption 53/53, copy 30/30,
+curve 19/19, UV 81/81, node 7/7; actual new-unit lint, explicit formatting/
+inventory and strict twice-repeated Eistute/Book regression. All nine attempted
+OBJ/acceptance/rejection/incidence states, 189 CSV fields and 1,168/4,256
+last-accepted triangles remain exact.
 
-The narrow actual production helper prepares unique new nodes and both lists
-before direct nonallocating swaps and old-interior deletion. Failure preserves
-supplied point and curve parameter objects/list nodes and permits retry. IDs
-consumed before failure stay consumed; retry uses the subsequent sequence.
-Success preserves the original uniform growth formulas, rounded shrink indices,
-parameter pairing, endpoint reuse, ID requests and short/mismatch/equal/empty
-guards. Removable interiors must be distinct and exclusively deletable here;
-shared endpoints survive. Success invalidates removed-sample/list observers.
-The curve point-observer list and later Generator publication remain separate;
-neither full AdaptCurve nor mesh/acceptance rollback is qualified by this helper.
+Original: 24 sweeps stop at first deleted-live-sample failure (per-case ordinals
+11-28), with later ordinals/CRT retention unmeasured. Three two-endpoint sweeps
+finish with 48 retained blocks each across their denied allocations; other 90
+outcomes expected. Pending owned nodes and complete paired lists precede direct
+nonallocating swaps and old-interior deletion. Thirty-six calibrated sweeps
+deny 597 allocations, preserving both lists/nodes/samples and supporting
+retry. All 78 normal full logs match original. IDs consumed before failure stay
+consumed; retry uses subsequent IDs. Successful formulas, parameter/index order,
+endpoint reuse and ID requests remain. Preparation changes allocation resource
+behavior/peak storage explicitly, without a performance claim.
 
-Candidate gates pass: CTest 23/23, zero skips, 74 Python controls; rebuild
-117/117 and 597 denials over 36 positive calibrated sweeps. Previous
-snapshots 89/89, synchronization 73/73, adoption 53/53, copy 30/30, curve 19/19,
-UV 81/81 and node 7/7 pass. All 78 complete normal original/repaired traces match.
-Actual new-unit lint, explicit formatting and 129-file inventory pass; strict
-twice-repeated Eistute/Book output compares exactly across nine attempted states,
-189 CSV fields and 1,168/4,256 accepted triangles. Published-head/main gates remain.
+Original uses 12 pinned units plus verified lambda/two manager-context
+substitutions; candidate 13 actual units. Full old Generator-TU instrumentation
+is not claimed. New Debug CRT iterator metadata is consistently disabled with
+actual heap/negative controls retained; previous targets stay unchanged. Valid
+108-outcome and 117-outcome zero-start records are retained. Final fixtures
+explicitly initialize intended nonzero manager start and retain zero/null cases;
+no manager source change. C07/ADR-0014 require distinct exclusively deletable
+interiors and preserve shared endpoints. Removed-sample/list observers are
+invalidated on success. Curve observer publication, full AdaptCurve and full
+mesh/acceptance rollback remain outside this helper. No scientific formulas,
+floating-point order, policy, budgets, tolerance or verifier change. See
+evidence/STAGE3_CURVE_REBUILD_CLOSURE.md.
 
-Original comparison uses 12 pinned units plus the verified lambda with two
-explicit nullable-manager context substitutions, not full old Generator-TU
-instrumentation. Candidate compiles 13 actual production units. The new Debug
-CRT target consistently disables iterator metadata while retaining actual heap
-and negative controls. Earlier targets stay unchanged. Valid 108-outcome and
-117-outcome zero-start runs remain retained. The final fixture explicitly sets
-the nonzero ID start after actual RangedIdManager constructor adjustment, retaining
-separate zero/null-manager controls; no manager implementation repair is proposed.
-
-Classification: ownership/exception-consistency defect repairs and engineering
-extraction. Preparation changes allocation timing/counts/bytes/peak storage; no
-performance claim. No formulas, numerical order, policy, tolerance, budgets,
-verifier or adaptation/acceptance/stopping change. Full stage 3 stays open.
-See evidence/STAGE3_CURVE_REBUILD.md and ADR-0014.
+Full stage 3 remains open with thirteen qualified slices. Next characterize
+sample owner transfer and point-observer publication in Adapter/AdaptCurve,
+then full adaptive retry/rollback across parameters, patch/mesh observers and
+error/history/budget state, plus explicit full CLI disabled synchronization.
+Paired helper commit and snapshot point-graph restoration are qualified narrow
+boundaries; full AdaptCurve and whole-mesh/acceptance transactions are separate.
+Remaining constructors/mutations, generic/custom sources, other helper/template/
+tree/mate paths, failed-tree observer consumption/retry and full-process/parallel/
+LSan/UBSan remain open. Stages 0-2 stay closed for measured scope; stages 4-11
+stay pending. Doxygen undocumented-API debt stays stage 8.
