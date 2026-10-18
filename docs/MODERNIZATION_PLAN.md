@@ -3,41 +3,46 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stages 0-2 are closed for measured scope; stage 3 slice 10
-(#35, PR #36) is qualified.
-Head `249c561ec10f5d3766b0d1be71ed52d09e6420ec` integrated through PR #36 as main
-`4e23bd00e457e68056ff956869732b1872f04822`, preserving complete tree
-`4f6e71bf48933dfae637d6a200d9e2236734eb1e` (1083 blobs). Full exact-head and
-implementation-main campaigns pass: CTest 20/20, zero skips, 74 Python controls,
-adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7, one-unit Geometry
-lint, explicit probe/range formatting, inventory and strict repeated Eistute/Book
-regression. All nine attempted states, OBJ, acceptance/rejection, measured shared
-incidences, 189 CSV fields and 1,168/4,256 last-accepted triangles remain exact.
+Current status: stages 0-2 closed for measured scope; stage 3 slice 11
+(#38, PR #39) is qualified.
+Head `ce139f7d46b30daee365dfe5b1608183eb0d02c5` integrated through PR #39 as main
+`43e0309d6408601cd13e130cfa9668f35596ab67`, preserving complete tree
+`7bb0b34a537202eef24b7b354d91823b84cd6c36` (1199 blobs). Full exact-head and
+implementation-main campaigns pass: CTest 21/21, zero skips, 74 Python controls;
+synchronization 73/73, adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node
+7/7; actual two-unit lint, explicit formatting/inventory and strict repeated
+Eistute/Book regression. All nine OBJ/acceptance/rejection/incidence states,
+189 CSV fields and 1,168/4,256 accepted triangles remain exact.
 
-Eight original raw-adoption failures retain their relinquished argument; the
-other 45 outcomes are as expected. Both raw curve/patch overloads now form a
-pending unique owner before container allocation. Sixteen calibrated sweeps
-deny all 16 observed allocations, preserving existing objects and source state,
-destroying the failed argument exactly once and requiring a fresh-object retry.
-All 34 normal original/repaired traces and successful allocation counts match;
-null-slot semantics remain. Counts are observations, not portable promises.
+Original evidence reproduces 12 partial graph failures at denied ordinal 1
+(further ordinals unmeasured) and four helper retention failures; 57 other control
+outcomes are as expected. Pending unique owners and ordered batch preparation
+permit per-original-curve commit, coherent prefixes and whole-operation retry.
+Twenty calibrated sweeps deny 484 observed allocations; full normal reported
+traces match. Preparation deliberately changes allocation timing/counts/bytes.
+Actual dynamic types, line/patch geometry, incidence orientation, repeated edges,
+null filtering, mixed/non-Coons behavior and external ownership are checked.
 
-This is an ownership failure-path defect repair. No formula, operation order,
-policy, tolerance, budget, numerical verifier, vendor or historical source change.
-C03 and ADR-0011 distinguish Geometry adoption from helper/policy integration and
-multi-object transactions. Initial format-gate failures remain retained; explicit
-changed-function formatting passes without suppression. See
-evidence/STAGE3_GEOMETRY_ADOPTION_CLOSURE.md.
+The serial entry delegates to the actual extracted production operation. Original
+comparison uses 12 pinned production units plus a hash-verified function adapter,
+not the full old generator translation unit. The new Debug CRT target consistently
+disables iterator proxies to avoid their allocation in noexcept construction,
+matching serial/ASan layouts; heap checks, negative controls and prior targets
+remain unchanged. Invalid first-fixture, standard-mode, iterator and lint failures
+are retained with explicit interpretation. One Hermite destructor override
+unblocks unchanged lint rules. No formula, ordering, incidence policy, tolerance,
+budget, verifier or adaptation/acceptance/stopping change. C03/C07 and ADR-0012
+record the measured boundary. See evidence/STAGE3_CURVE_PUBLICATION_CLOSURE.md.
 
-Full stage 3 remains open with ten qualified slices. Next characterize the
-generator clone consumer/transaction boundary and remaining constructor/mutation
-paths, then shared sample ownership, initialization and rollback. Geometry
-adoption is directly qualified; CloneCurveForPatch and the synchronization-disabled
-policy remain statically reviewed only, without a graph-publication/rollback
-guarantee. Implicit copy/assignment, inconsistent/null/uninitialized clone sources,
-generic observers, other helper/template/tree/mate paths, failed-tree observer
-consumption/retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2
-stay closed; stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
+Full stage 3 remains open with eleven qualified slices. Next characterize
+shared-sample initialization and adaptive snapshot/restore/failure handling,
+remaining constructors/mutations and explicit full CLI synchronization-disabled
+integration. The extracted clone/publication operation is directly qualified
+for the documented initialized graph fixtures; whole-operation atomicity and
+adaptive rollback are separate. Generic observers/custom subclasses, inconsistent
+sources, other helper/template/tree/mate paths, failed-tree observer consumption/
+retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed for
+measured scope; stages 4-11 stay pending. Doxygen API debt stays stage 8.
 
 Earlier delivery histories and scope limits remain in PROJECT_STATE.md,
 WORKLOG.md and the unchanged evidence records. Architecture: see
@@ -122,46 +127,3 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
-
-## Active stage 3 slice 11 (#38): clone publication and per-curve recovery
-
-The original synchronization-disabled operation trims source incidences before
-clone construction/publication can finish. Twelve original graph sweeps fail at
-denied ordinal 1, after the ordinal-0 control; their later ordinals are unmeasured.
-Four direct helper sweeps retain pending clones when target-incidence allocation
-fails. The other 57 of 73 original control outcomes are as expected.
-
-The helper and operation now live in a narrow actual production unit, called by
-the unchanged GeneratorAdaptive entry method. Pending unique owners protect
-helper construction. Each original curve prepares all clones, batch-prepares
-Geometry storage and appends owners before a nonallocating incidence commit.
-Failure preserves the failing curve; earlier committed curves remain committed.
-Whole-operation retry and repeated success are qualified for these graph fixtures.
-This is not whole-operation atomicity or adaptive rollback.
-
-Candidate gates pass: CTest 21/21, zero skips, 74 Python controls; synchronization
-73/73 with 484 denials over 20 calibrated sweeps; prior adoption 53/53, copy
-30/30, curve 19/19, UV 81/81, node 7/7. Normal observations match the original,
-with independent line/patch geometry, dynamic type, orientation, observer order,
-null filtering, repeated edges and mixed/non-Coons controls. Preparation buffers
-and batch storage deliberately change allocation timing/counts/bytes. Actual
-Geometry/new synchronization lint, formatting, inventory and strict repeated
-Eistute/Book regression pass across nine states and 189 CSV fields, retaining
-1,168/4,256 last-accepted triangles. Exact published-head/main gates remain.
-
-Original comparison uses twelve pinned production units plus mechanically
-extracted, hash-verified function bodies; the full original generator translation
-unit is not instrumented. The new target uses standard MSVC /permissive- and
-Debug CRT with iterator metadata disabled consistently across its units, matching
-serial/ASan container layout. CRT heap checks, denial assertions and negative
-controls remain; earlier targets keep their settings. Failed setup/iterator/lint
-reports are preserved and do not count as production defect evidence.
-
-Classification: behavior-changing ownership/exception-consistency defect repairs
-plus bounded extraction and an explicit Hermite destructor override. No formula,
-floating-point order, incidence policy, tolerance, verifier, adaptation/acceptance/
-stopping change. Full CLI synchronization-disabled qualification, adaptive
-snapshot/rollback, shared sample initialization, remaining constructors/mutations,
-generic observers, full-process/parallel/LSan/UBSan and stage-8 API documentation
-remain open. Full stage 3 stays open. See evidence/STAGE3_CURVE_PUBLICATION.md
-and ADR-0012.

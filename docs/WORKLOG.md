@@ -18,64 +18,22 @@ failures, hashes and limitations stay in the linked evidence records.
 | 2026-10-17, stage 3 slice 8 | #29, PR #30; head 2c7edff9070810ea8e27574e4449aeebf369824e, main 587c91923b48d7f55414df720d29bcb1d2dacc11; evidence/STAGE3_CURVE_COLLECTIONS_CLOSURE.md | Per-list prepared-input commit; head/main CTest 18/18, curve 19/19, UV 81/81, node 7/7, 76 allocation denials, exact ordered traces/article regression; paired update and full value-copy semantics remain open |
 | 2026-10-18, stage 3 slice 9 | #32, PR #33; head 6bda90b91406b0aed79ba6582bf820ea40559325, main d5abb5495b28e8ec5a2b6f779c3adf173929ed04; evidence/STAGE3_CURVE_COPY_CLOSURE.md | Initialized pointer-taking copies preserve parameter pairing; head/main CTest 19/19, copy 30/30, curve 19/19, UV 81/81, node 7/7, 123 denials, unchanged numeric/article traces; clone publication and implicit copying remain open |
 | 2026-10-18, stage 3 slice 10 | #35, PR #36; head 249c561ec10f5d3766b0d1be71ed52d09e6420ec, main 4e23bd00e457e68056ff956869732b1872f04822; evidence/STAGE3_GEOMETRY_ADOPTION_CLOSURE.md | Guard raw Geometry arguments before allocation; head/main CTest 20/20, adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7, 16 denials, unchanged normal traces/allocation counts and exact article regression; helper/policy integration remains open |
+| 2026-10-18, stage 3 slice 11 | #38, PR #39; head ce139f7d46b30daee365dfe5b1608183eb0d02c5, main 43e0309d6408601cd13e130cfa9668f35596ab67; evidence/STAGE3_CURVE_PUBLICATION_CLOSURE.md | Pending clone ownership and per-curve publication/retry; head/main CTest 21/21, sync 73/73, prior instruments pass, 484 denials and exact model regression; full CLI disabled-policy and adaptive rollback remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with ten qualified
+Current status: stages 0-2 closed; stage 3 in progress with eleven qualified
 slices; stages 4-11 pending.
 
-Full stage 3 remains open with ten qualified slices. Next characterize the
-generator clone consumer/transaction boundary and remaining constructor/mutation
-paths, then shared sample ownership, initialization and rollback. Geometry
-adoption is directly qualified; CloneCurveForPatch and the synchronization-disabled
-policy remain statically reviewed only, without a graph-publication/rollback
-guarantee. Implicit copy/assignment, inconsistent/null/uninitialized clone sources,
-generic observers, other helper/template/tree/mate paths, failed-tree observer
-consumption/retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2
-stay closed; stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
+Full stage 3 remains open with eleven qualified slices. Next characterize
+shared-sample initialization and adaptive snapshot/restore/failure handling,
+remaining constructors/mutations and explicit full CLI synchronization-disabled
+integration. The extracted clone/publication operation is directly qualified
+for the documented initialized graph fixtures; whole-operation atomicity and
+adaptive rollback are separate. Generic observers/custom subclasses, inconsistent
+sources, other helper/template/tree/mate paths, failed-tree observer consumption/
+retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed for
+measured scope; stages 4-11 stay pending. Doxygen API debt stays stage 8.
 
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 10 closure](evidence/STAGE3_GEOMETRY_ADOPTION_CLOSURE.md).
-
-## Active stage 3 slice 11 (#38): clone publication and per-curve recovery
-
-The original synchronization-disabled operation trims source incidences before
-clone construction/publication can finish. Twelve original graph sweeps fail at
-denied ordinal 1, after the ordinal-0 control; their later ordinals are unmeasured.
-Four direct helper sweeps retain pending clones when target-incidence allocation
-fails. The other 57 of 73 original control outcomes are as expected.
-
-The helper and operation now live in a narrow actual production unit, called by
-the unchanged GeneratorAdaptive entry method. Pending unique owners protect
-helper construction. Each original curve prepares all clones, batch-prepares
-Geometry storage and appends owners before a nonallocating incidence commit.
-Failure preserves the failing curve; earlier committed curves remain committed.
-Whole-operation retry and repeated success are qualified for these graph fixtures.
-This is not whole-operation atomicity or adaptive rollback.
-
-Candidate gates pass: CTest 21/21, zero skips, 74 Python controls; synchronization
-73/73 with 484 denials over 20 calibrated sweeps; prior adoption 53/53, copy
-30/30, curve 19/19, UV 81/81, node 7/7. Normal observations match the original,
-with independent line/patch geometry, dynamic type, orientation, observer order,
-null filtering, repeated edges and mixed/non-Coons controls. Preparation buffers
-and batch storage deliberately change allocation timing/counts/bytes. Actual
-Geometry/new synchronization lint, formatting, inventory and strict repeated
-Eistute/Book regression pass across nine states and 189 CSV fields, retaining
-1,168/4,256 last-accepted triangles. Exact published-head/main gates remain.
-
-Original comparison uses twelve pinned production units plus mechanically
-extracted, hash-verified function bodies; the full original generator translation
-unit is not instrumented. The new target uses standard MSVC /permissive- and
-Debug CRT with iterator metadata disabled consistently across its units, matching
-serial/ASan container layout. CRT heap checks, denial assertions and negative
-controls remain; earlier targets keep their settings. Failed setup/iterator/lint
-reports are preserved and do not count as production defect evidence.
-
-Classification: behavior-changing ownership/exception-consistency defect repairs
-plus bounded extraction and an explicit Hermite destructor override. No formula,
-floating-point order, incidence policy, tolerance, verifier, adaptation/acceptance/
-stopping change. Full CLI synchronization-disabled qualification, adaptive
-snapshot/rollback, shared sample initialization, remaining constructors/mutations,
-generic observers, full-process/parallel/LSan/UBSan and stage-8 API documentation
-remain open. Full stage 3 stays open. See evidence/STAGE3_CURVE_PUBLICATION.md
-and ADR-0012.
+[slice 11 closure](evidence/STAGE3_CURVE_PUBLICATION_CLOSURE.md).

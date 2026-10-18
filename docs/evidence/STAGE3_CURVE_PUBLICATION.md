@@ -100,7 +100,7 @@ nine attempted states, all OBJ/acceptance/rejection/incidences and 189 named CSV
 fields are exact; measured shared coverage is positive with zero gaps, accepted
 steps 0/1, rejected Eistute 2/3/4 and Book 2/3; final accepted triangles remain
 1,168/4,256. This default-policy regression does not run the full CLI option with
-synchronization disabled. Exact published-head/main gates remain required.
+synchronization disabled. Exact published-head/main gates subsequently passed through PR #39; see STAGE3_CURVE_PUBLICATION_CLOSURE.md.
 
 Scientific audit: formulas, floating-point order, incidence policy, quadtree/
 templates/front, budgets, verifiers, tolerances and adaptation/acceptance/stopping

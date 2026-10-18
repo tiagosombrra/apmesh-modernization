@@ -1,6 +1,6 @@
 # ADR-0012: prepare owned curve clones before publishing incidences
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact published-head and implementation-main gates passed through PR #39.
 Issue #38. Classification: ownership/exception-consistency defect repairs and
 engineering extraction, preserving successful policy.
 
@@ -55,3 +55,9 @@ rollback, arbitrary custom subclasses/inconsistent sources, duplicate adoption,
 other constructors/mutations, shared sample initialization, generic observers,
 parallel, LSan and UBSan remain unqualified. The size-overflow guard is reviewed
 but not dynamically exercised. Full stage 3 remains open.
+
+C03 retains conservative generator-integration and multi-object limits from the
+individual-adoption boundary. Its new batch sentence and C07 describe the directly
+qualified per-original-curve operation here. Full generator/CLI integration and
+general whole-graph publication/rollback remain outside that measured boundary.
+Non-debug iterator mode does not imply cross-compiler ABI compatibility.
