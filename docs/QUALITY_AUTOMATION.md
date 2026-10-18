@@ -279,3 +279,17 @@ controls remain required. ASan/serial Release use non-debug container layouts.
 No previous target, diagnostic filter or scientific gate is weakened. Selected
 lint required one explicit Hermite destructor override; the failed report is
 retained. See ADR-0012 and evidence/STAGE3_CURVE_PUBLICATION.md.
+
+## Curve snapshot restoration (#41)
+
+application.curve_snapshot_contracts brings CTest to 22 entries, retaining
+74 Python controls. tools/qualify_curve_snapshots.py requires 89 outcomes:
+56 normal capture/restore, two guard, 28 calibrated allocation sweeps (536
+denials) and three deliberate ASan/CRT/hook controls. Compile candidate target
+curve_snapshot_probe from tests/curve_memory with AP_MESH_CURVE_SOURCE_ROOT set to
+this checkout and AP_MESH_CURVE_ASAN enabled/disabled for separate ASan/Debug
+CRT build directories. Debug iterator metadata is consistently disabled only
+for the new target; CRT heap checks remain. Run the runner with --asan, --crt,
+--runtime and a new --output directory. Previous six instrument batteries remain
+required. Original evidence uses 14 pinned units and the verified lambda adapter;
+candidate uses 15 actual units. This is not full-process memory qualification.

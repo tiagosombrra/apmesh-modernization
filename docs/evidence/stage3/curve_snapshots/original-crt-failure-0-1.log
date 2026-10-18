@@ -1,0 +1,16 @@
+snapshot_measured=kind:0 variant:1 capture:0 allocations:32
+snapshot_inject=ordinal:0
+Client hook allocation failure.
+snapshot_inject=ordinal:1
+Client hook allocation failure.
+snapshot_inject=ordinal:2
+Client hook allocation failure.
+snapshot_inject=ordinal:3
+Client hook allocation failure.
+snapshot_inject=ordinal:4
+Client hook allocation failure.
+snapshot_inject=ordinal:5
+Client hook allocation failure.
+snapshot_inject=ordinal:6
+Client hook allocation failure.
+Contract failed: failed restoration destroyed live samples

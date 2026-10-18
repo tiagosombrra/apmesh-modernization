@@ -127,3 +127,42 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
+
+## Active stage 3 slice 12 (#41): transactional curve sample restoration
+
+The original restoration deletes current samples before allocating replacements.
+Twelve original sweeps stop at denied ordinal 6 because live samples were deleted;
+four stop at ordinal 18 because a live list was partially published. Later
+ordinals and CRT retention in those 16 aborted cases are unmeasured; the probe
+stops before unsafe observer consumption. Four empty-to-single sweeps complete
+with six retained blocks each. Other 69 of 89 outcomes are as expected.
+
+Capture/restoration now live in a narrow production unit used by the same
+Generator call sites. Pending unique NodeAdaptive owners and complete prepared
+lists precede direct nonallocating swaps, owner release and unique old-sample
+deletion. Allocation failure preserves the complete live point graph and list
+nodes; subsequent retry succeeds. Success preserves first-encounter ID/XYZ,
+order, sharing and zero node curvature/adjacency. Conflicting duplicate-ID input
+is a policy-preservation control, not approval of that identity convention.
+Parameter lists are not captured/restored. Current samples must be collectively
+exclusively owned/deletable through the curves. Successful restoration invalidates
+their observers. Independent accepted mesh copies remain unchanged in fixtures;
+full mesh, patch binding, budget, error/history and acceptance rollback remain open.
+
+Candidate gates pass: CTest 22/22, zero skips, 74 Python controls; snapshots
+89/89 with 536 denials across 28 calibrated sweeps. Prior synchronization
+73/73, adoption 53/53, copy 30/30, curve 19/19, UV 81/81 and node 7/7 pass.
+Full normal original/repaired traces match. Actual new-unit read-only lint,
+explicit formatting and inventory pass. Both article models repeat twice with
+all nine OBJ/acceptance/rejection/incidence states and 189 CSV fields exact;
+last-accepted triangles remain 1,168/4,256. Published-head/main gates remain.
+
+Original comparison uses 14 pinned production units plus hash-verified lambda
+bodies in an adapter, not the full old generator translation unit. Candidate
+instruments 15 actual units. Only the new Debug CRT target consistently disables
+iterator proxies; actual heap, failure and deliberate negative controls remain.
+Preparation changes allocation timing/counts/bytes and peak live storage, with
+no performance claim. Classification: ownership/exception-consistency defect
+repairs plus engineering extraction. No formula, floating-point order, tolerance,
+budget, verifier, synchronization or adaptation/acceptance/stopping policy change.
+Full stage 3 stays open. See evidence/STAGE3_CURVE_SNAPSHOTS.md and ADR-0013.

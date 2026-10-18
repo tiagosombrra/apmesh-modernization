@@ -1,0 +1,24 @@
+snapshot_measured=kind:2 variant:1 capture:1 allocations:10
+snapshot_inject=ordinal:0
+Client hook allocation failure.
+snapshot_inject=ordinal:1
+Client hook allocation failure.
+snapshot_inject=ordinal:2
+Client hook allocation failure.
+snapshot_inject=ordinal:3
+Client hook allocation failure.
+snapshot_inject=ordinal:4
+Client hook allocation failure.
+snapshot_inject=ordinal:5
+Client hook allocation failure.
+snapshot_inject=ordinal:6
+Client hook allocation failure.
+snapshot_inject=ordinal:7
+Client hook allocation failure.
+snapshot_inject=ordinal:8
+Client hook allocation failure.
+snapshot_inject=ordinal:9
+Client hook allocation failure.
+snapshot_failure_sites=kind:2 variant:1 capture:1 denied:10/10 unchanged:1 retry:1
+CRT retained_blocks=0 retained_bytes=0
+PASS

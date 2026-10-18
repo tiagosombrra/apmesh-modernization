@@ -1,0 +1,10 @@
+{
+  "revision": "eda3411030e09492a895abde55f7cabbe5e52df4",
+  "source_blob": "003b4bf1c20d07321c1aad87dd39e63f9cb24f6a",
+  "original_struct": "  struct CurvePointSnapshot {\n    unsigned long id;\n    double x;\n    double y;\n    double z;\n  };",
+  "struct_sha256": "9dceab59e567efba275b9abc91d37dc59b9690f20060989218cd9bd464902757",
+  "capture_body_sha256": "6a7afaccb5064ba5aa5b67c05b86d9bb72bcd2828c54b9d012ab6e4253ce19c7",
+  "restore_body_sha256": "129a0e96206312935da462ded4e1d52b46a3eb92716e5d8be4e862083cf919d2",
+  "adapter_sha256": "f01903f55424c65dca7de9a3bf84a1d444331c2eca89f578f89c7f3d2c2eb466",
+  "transformation": "Exact lambda bodies extracted from Git-verified original; replace declarations with named functions using an identical-layout snapshot struct in the shared header. No body or ownership behavior changes. Full original generator translation unit is not instrumented."
+}

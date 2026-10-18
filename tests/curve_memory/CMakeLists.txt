@@ -46,3 +46,26 @@ foreach(curve_probe IN ITEMS curve_collection_probe curve_copy_probe geometry_ad
   endif()
 endforeach()
 target_include_directories(curve_synchronization_probe PRIVATE "${default_curve_root}/include")
+
+set(AP_MESH_SNAPSHOT_IMPLEMENTATION "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_snapshots.cpp" CACHE FILEPATH "Curve sample snapshot implementation")
+add_executable(curve_snapshot_probe snapshot_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/geometry.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/node_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/mesh/sub_mesh.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/element_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/triangle_adaptive.cpp"
+  "${AP_MESH_SNAPSHOT_IMPLEMENTATION}")
+target_compile_features(curve_snapshot_probe PRIVATE cxx_std_17)
+target_include_directories(curve_snapshot_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include" "${default_curve_root}/include")
+if(MSVC)
+  target_compile_options(curve_snapshot_probe PRIVATE /utf-8 /W4 /EHsc /permissive-)
+  target_compile_definitions(curve_snapshot_probe PRIVATE $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(curve_snapshot_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(curve_snapshot_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+elseif(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+  target_link_options(curve_snapshot_probe PRIVATE -static -static-libgcc -static-libstdc++)
+endif()
