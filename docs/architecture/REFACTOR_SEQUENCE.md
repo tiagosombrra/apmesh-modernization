@@ -190,3 +190,14 @@ old samples intact; consumed IDs are not rolled back. Distinct removable interio
 must be exclusively deletable and shared endpoints survive. C07/ADR-0014 delimit
 this transaction from curve point-observer publication, full AdaptCurve and full
 adaptive/mesh rollback. Those integration and owner-transfer paths come next.
+
+## Serial adapter sample publication boundary (#47)
+
+The two byte-identical serial construction tails share one actual helper. Prepare
+unique new nodes, selected parameters, cache changes and return list before a
+scope-success guard commits. Return construction can allocate when optional NRVO
+is disabled. Nonallocating map-node transfer preserves existing cache entry nodes;
+parameter swap and owner release retain the prior caller lifetime convention.
+C07/ADR-0015 separate this boundary from upstream sorting/selection/scratch, later
+Generator curve publication and full Adapter/AdaptCurve/mesh rollback. Those
+observer-publication and owner-transfer integration paths follow next.

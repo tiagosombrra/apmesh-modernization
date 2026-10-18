@@ -310,3 +310,21 @@ run the runner with --asan, --crt, --runtime and a new --output. The new Debug
 target consistently disables iterator metadata and retains actual CRT heap
 checks. Previous seven batteries remain required; whole-process/parallel memory
 qualification remains open. No-op/empty controls are explicit guards.
+
+## Serial adapter sample construction (#47)
+
+application.curve_samples_contracts brings CTest to 24 entries with 74 Python
+controls. tools/qualify_curve_samples.py requires 88 outcomes: 54 normal ASan/CRT,
+27 strict allocation sweeps, three retention-only sweeps (702 denials over
+all 30 positive calibrations), three deliberate UAF/leak/hook controls and one
+explicit MSVC list-move allocation-denial control. The new curve_samples_probe
+target disables optional NRVO consistently (/Zc:nrvo- or -fno-elide-constructors)
+to test return construction before commit. Debug CRT uses non-debug iterator
+metadata and actual heap checks; all earlier targets retain their settings.
+Configure tests/curve_memory in separate directories with AP_MESH_CURVE_SOURCE_ROOT
+and AP_MESH_CURVE_ASAN; original additionally uses AP_MESH_SAMPLES_IMPLEMENTATION.
+Build RelWithDebInfo/Debug and run the runner with --asan, --crt, --runtime and
+a new --output directory. Original: 14 pinned units plus the verified identical
+serial tail; candidate: 15 actual units. Previous eight batteries remain required.
+Retention-only cases do not establish preservation/retry. Upstream whole-adapter,
+Generator publication and full-process memory qualification remain open.

@@ -133,3 +133,50 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
+
+## Active stage 3 slice 14 (#47): serial adapter sample publication
+
+The two serial Adapter construction tails are byte-identical. Original strict
+sweeps stop at first parameter value/list-node mutation in 27 cases; later
+ordinals and their CRT retention are unmeasured. Three separate retention-only
+sweeps reclaim reachable partial original state and finish with 32 retained
+blocks each across their denied allocations, without a rollback/retry claim.
+Other 58 of 88 original outcomes are expected.
+
+Both methods now delegate their unchanged captured points and selected parameters
+to the same actual production helper. Pending unique nodes, parameters, cache
+changes and output lists are prepared first. A scope-success guard commits after
+return-list construction succeeds; failure during an allocating return move
+keeps parameters/cache unchanged. Prepared map nodes merge without allocation,
+existing cache entry nodes stay stable, parameters swap and owners release.
+Borrowed inputs/cache nodes stay alive. Endpoint scalar/adjacency copy, cached
+reuse, closed aliases, alias overwrites, sample values/order and successful ID
+requests remain exact. Consumed IDs and evaluator scratch are not rolled back.
+
+Candidate gates pass: CTest 24/24, zero skips, 74 Python controls; samples 88/88,
+702 denials across 30 positive sweeps, including an explicit actual MSVC
+list-move allocation control. Optional NRVO is disabled consistently only for
+the new target, alongside non-debug iterator metadata in Debug CRT; actual heap
+and negative controls remain. All 54 complete normal original/repaired logs match.
+Analytic curved geometry, source/cache borrowing, cache entry identity, endpoint
+adjacency/scalars, return-edge preservation and retry are checked. Prior rebuild
+117, snapshots 89, sync 73, adoption 53, copy 30, curve 19, UV 81 and node seven
+outcomes all pass. Actual new-unit read-only lint, explicit formatting/inventory
+and exact twice-repeated Eistute/Book regression pass across nine attempted
+states, 189 CSV fields and 1,168/4,256 accepted triangles. Head/main gates remain.
+
+Original comparison uses 14 pinned units and the unchanged verified tail from
+both serial methods, candidate 15 actual units; full old Adapter/Generator
+translation units are not instrumented. Valid 87-case preliminary reports remain
+retained; final 88-case coverage adds the explicit move-allocation control.
+The caller retains collective lifetime authority for newly created returned
+nodes; cache/source nodes are borrowed. Upstream sorting/parameter selection,
+evaluator scratch, later Generator point publication and full Adapter/AdaptCurve/
+mesh rollback stay outside this helper. Endpoint adjacency observers stay copied,
+without owning their elements. Full-process/parallel/LSan/UBSan stay open.
+
+Classification: ownership/exception-consistency defect repairs plus verified
+engineering consolidation. Preparation changes allocation timing/counts/bytes/
+peak storage, without a performance claim. No formula, numerical order, policy,
+budget, tolerance, verifier or acceptance/stopping change. Full stage 3 stays
+open. See evidence/STAGE3_ADAPTER_SAMPLES.md and ADR-0015.

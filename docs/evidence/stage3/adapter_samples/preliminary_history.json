@@ -1,0 +1,730 @@
+[
+  {
+    "phase": "original",
+    "report": "build/s14-original-87/report.json",
+    "sha256": "191f74f358d14375e810f72587b73a1d22ca40979f7a7b324104485ccb92da3c",
+    "status": "failed",
+    "outcomes": 87,
+    "input_files": {
+      "src/adapter/curve_samples.cpp": "2ce46dcb00d83b6baa996181ae35d60fec884ad2720607fee269c81bd4b45e55",
+      "tests/curve_memory/samples_probe.cpp": "3e084dc7bec502f53cc3c946e27b9ba5c49168654ffd40cf14e81d4630837134",
+      "tools/qualify_curve_samples.py": "954aacdbc934fba087176b87cc6c9cb246b77b34a1dd2695ae2d6f454dd7e174",
+      "tests/curve_memory/CMakeLists.txt": "922cba9d70f0f3acd16bf22d9b9f2929f40ba661126f7cca3f293806b13b74e0"
+    },
+    "interpretation": "Valid preliminary coverage; add an explicit observed MSVC list-move allocation control and require all requested IDs consumed at the final denied return-allocation site. Final required inventory is 88 outcomes.",
+    "raw_logs": [
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-0.log",
+        "sha256": "c361d587b2eafb3b4bc668078fd9cbfb03d0bc2b9380ff5c19ff682d561a0d11"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-1.log",
+        "sha256": "04484ffcc51aadf5a71f88d8e7546d1c00acc23e6e0e6abec6d6e40010e5d978"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-2.log",
+        "sha256": "a0979ec10748ba2533d8a2905a155e149c4095e0a9167038b1c4ade9e9ed183a"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-3.log",
+        "sha256": "c0fef08e765a3ddafa3d66eb2aebe4feca3b1b4c895931d260b374aaccf175c3"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-4.log",
+        "sha256": "815ac8014145874ae91816bcfb248e69f4b76b60436358404c1c945c9a3d2399"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-5.log",
+        "sha256": "1bb6933c894399b5770bce774705b171a42290af0be052e93d2ef7c295753320"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-6.log",
+        "sha256": "89bc24850c6ea2531549b8a9887a2dedc92f4dc3c81ef1a4fcfb100d02a3f3da"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-7.log",
+        "sha256": "d027803abab674c81ff544a113347189e9fc2f25ae2296a2110950b1e28d4a6d"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-0-8.log",
+        "sha256": "324437cd5ebeb62e519224c6c6ffb8e37f44091edcd66fae8d201ec144bb9a15"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-0.log",
+        "sha256": "a357f11706c8f3c4590899a0145a55bc28997b0669a85494c4feeb721df6c867"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-1.log",
+        "sha256": "c3d93db6ba794ea9d5acf33e489e4d2517a1603d6408a17e90ef129aa8e95f4d"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-2.log",
+        "sha256": "b74a478c996d473011712dd4700a825f824dbad727c941ae8aa71c76ba8865c9"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-3.log",
+        "sha256": "db8c4e3224d0d1f30886564259e169f442e679bc9ad75aaa25576bb4f90b24b0"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-4.log",
+        "sha256": "792de347115b8968be729688100ee7070f746a75313953d4bea8f61a5147f65f"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-5.log",
+        "sha256": "2bcdf9db86d8247961e2f009e706ef297681f03f1bca4bbfd72c2364a03c2d03"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-6.log",
+        "sha256": "a259af8d4a255447c4d83a2ad161754c6458274109d8ae59e63414dfd4a3f810"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-7.log",
+        "sha256": "1451dd981ef57bec93f28effd22a99ac937144ad3f25838b356c938def6990e6"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-1-8.log",
+        "sha256": "7d91a2cb7601dccd336928b916075acdc227409838dcd31ec1dbe85512d5fc95"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-0.log",
+        "sha256": "9571484ab79ef026708617693a10238cab08965e038f2abb52067ab9ae852b7f"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-1.log",
+        "sha256": "c046ba524fb6d88b08e32a147de1fc213ece1cca006e1a85e0cac025eba90f83"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-2.log",
+        "sha256": "0f5c266c9fbedf1cdc1974087926cc0aa83dee14065c386103da1e09c21882bb"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-3.log",
+        "sha256": "9a323019a7ed98548ed95881f38b2c4cca26c5731cc1b6647bce0bb39943410b"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-4.log",
+        "sha256": "a06395f89f13ad2dac4cf758e8f5520778f726d06a45b5527eb66e1d044c2f85"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-5.log",
+        "sha256": "8742f35ce07f3577b520c7ce6838dcac5ea4179d0a26e7f185d68bfb72b29072"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-6.log",
+        "sha256": "54b8ec2707cd62a8bec05993662a919c900b0db7d1fa4d19e6b066eb60cabba1"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-7.log",
+        "sha256": "e10ad25d65cf0d4f2fbc5cfb75c01eeb757fb64d3c775b9e3976f86a2a8b6f0d"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-normal-2-8.log",
+        "sha256": "4a75da1202da317f5c4063dffb2a3930888beb7adbbba28c6e616ea144402dd4"
+      },
+      {
+        "local_path": "build/s14-original-87/asan-use-after-free.log",
+        "sha256": "92f374c1c4e9b1d628d5502f6f31d147d9e4798c6853fdcc6e73b99995dab448"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-allocation-hook-control.log",
+        "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-0.log",
+        "sha256": "29efae75680651354256e815fb52f5969868fb3ff183fb296e3f69e49732ea50"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-1.log",
+        "sha256": "143e7bde84d04485aa98f377c6dded7db80598f6fe37daf9591a3a7318e74d51"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-2.log",
+        "sha256": "d62680c238daa8079ad0f653ff1e880c562642707871a250702f4d64b6410425"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-3.log",
+        "sha256": "f95b52dcdb7bb888ecbb06da090f971084ad9620914576b66c7f445c353a514e"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-4.log",
+        "sha256": "d0e76217c33d53be8e313db3f5d5635cf49b55eef7057d6af9b078e0c5be17d7"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-5.log",
+        "sha256": "85cf6fe0661ae52f9eaf4200707d6dabe3586ad59de8de79a7519bcc1cfb4a95"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-6.log",
+        "sha256": "d8f93f935aa7a058cb33422f8cc5514b69d1ee4262ae43ea4fe69a1fe2815720"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-7.log",
+        "sha256": "f39bb871a80b53d765d51f0c3f2995f7f8a33188a0dc65875808fe2d32ed2518"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-0-8.log",
+        "sha256": "74bf4dbeacaf00f4870911efb0206de9bb1f200ab179a4d185d6c902c89379e1"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-0.log",
+        "sha256": "a78d4ad832af6157d850a7494c5c9495b0f1ceee0a66b4704b7bbb42b1add19c"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-1.log",
+        "sha256": "c53b690d42e3f8a370f3139765802068586d60d767492367eea933d029d7f730"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-2.log",
+        "sha256": "29cfae71573bc59db825a966a7911c2b1e7249b283a758a4ef7bb9d1b20427ea"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-3.log",
+        "sha256": "74646760c1ea00b5ce1de515a6ab181d26c9d89a625cee4e58eeec81196b1c75"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-4.log",
+        "sha256": "108804c357bbe837755c1a9e85874b59c1b125d2c2182b2f9069faf3b80cb474"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-5.log",
+        "sha256": "e80657c5626e06bbabb1b6e14434aad856b44ef7434358f4efb39cb4626d2f14"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-6.log",
+        "sha256": "964e85a32fd7cb3f4941ae9008da6f0f30a4bc985cb036c80586e61165a858ab"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-7.log",
+        "sha256": "77c3327233a73b5ef311f76c0fd1e6a69a611d5117472df5de388bdf2ab23e5e"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-1-8.log",
+        "sha256": "f4dabe87450a066808eb2ebb2c718b54398fae02744328380570ab450a13f4f3"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-0.log",
+        "sha256": "0814d4a255f1598a6e8be5d34ef250ccc32535b56a2d5e00475ec90bdd41a2b9"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-1.log",
+        "sha256": "f7904489e45ddabeba620284b57903675edf695d90754a9c001924e374531bb3"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-2.log",
+        "sha256": "a41c514fcf3ee92dda721086458c9ca84a62382e94a8e405ba770aee1fdea6b5"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-3.log",
+        "sha256": "0ee8a9f2fc6e182bbc81132012b4dbaa591b93426b4f1661db64558bbadb800b"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-4.log",
+        "sha256": "cdf2b26d763136fe3ff9738f65bb80fc5c8e206c6d4f465ef9fd9238f997c68c"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-5.log",
+        "sha256": "3e036fc9ec44d17722bf9d9e297deda7f91b592602aca546495c1d4ce4b9c791"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-6.log",
+        "sha256": "192c5e7824b022bb844d0376311ddf49ea67c283c4bd7afac736df885fa6159e"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-7.log",
+        "sha256": "afabff99c840d61392b7bbcefab0eb6eb2f7011b48b2335307da9671fb64ee15"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-failure-2-8.log",
+        "sha256": "b699e55d1d0fdae584ada93456508e3745a58709440d6f7e6e1ffcb75c684242"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-leak.log",
+        "sha256": "bc05eb9b50f095b05d6d329b5605f9e5b41851487fee17a119d906475a399ac8"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-0.log",
+        "sha256": "cbb70dd0fdd64f2f1ca3288eac8fecbd94c6f88cf05aa77182e682f7acc6fa94"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-1.log",
+        "sha256": "850372b89d47825c07e32fad0ad3f9d3588f861a079881e7987a1df7220f34e2"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-2.log",
+        "sha256": "350cdc02b5266db0f15640722f714c838912de89ee766a79db5eddf58dcfeefc"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-3.log",
+        "sha256": "a1737d62111d64f673ee8ef4d12cb2ceb32b3ec5c01df83b971f58f304c5e238"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-4.log",
+        "sha256": "c602ea7191afe56723d8886d948d72175ac163f9a287a2abe55cc6079e13be68"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-5.log",
+        "sha256": "9d6de89559aeebca94c98e1a9ad98e719c860edf8f56255383da6fd1923867da"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-6.log",
+        "sha256": "47f7b1fd3e0e2e46d2564b9d9a00430878ddbb99a67e0d7f61ce08d1a424f489"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-7.log",
+        "sha256": "0ec24cffe0e8e89eff121959b63487e44fcd5d9026ea42d5f7e15cfb4f37fdcf"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-0-8.log",
+        "sha256": "85164d7d0274551d39fc01ecb749145f1e28462167511534c58a37df13aa14a1"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-0.log",
+        "sha256": "04904525d712bce97738a47673775732a821eee2b6128337aa39036fc23998f8"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-1.log",
+        "sha256": "b27b3364000c4107a8a384122051c563bd9bfd7b95c08e47adc0799cd9f63943"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-2.log",
+        "sha256": "a47dfa4cd40aa4e191b4f9aae06fcda638dd2426a89064160e2adf5f3b2189c5"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-3.log",
+        "sha256": "156dfe66e30e4e4d2f91bd6882e343cf72a494d329b06244e0f6169dbb28cd8a"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-4.log",
+        "sha256": "a2df495aeb84f5db88a1930b83286684d041c692d96b53689034a4ba351835e9"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-5.log",
+        "sha256": "6fd0c99a89e75568bc4487b8204a9939a23ff3fad5c6ecb77b92e91e0dee2014"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-6.log",
+        "sha256": "1b58c001bb13fe0f6772ce23149e4e014f5e0b3acdbe62b8214072c707d52d5b"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-7.log",
+        "sha256": "b705883fec31f517500f49869534d6a237a66336717d1224b2111476c0b4e268"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-1-8.log",
+        "sha256": "ef945f3f6560063aecb80c523e907039e3392dcd6d2388726aa0ce545155ffaa"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-0.log",
+        "sha256": "25e90a818fc9369a0ffc8fc43cf6c7df359b4369fdb2d55564f9299d2759dd21"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-1.log",
+        "sha256": "c71861f9dfe1949620f5bbab76d8abd48cc1d44b6aa1ad44048b22c00a008320"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-2.log",
+        "sha256": "9d02f1af553ebc08d877c19c530407f088654fdd3c10b3a922050247d208b9cd"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-3.log",
+        "sha256": "3bbb1483a8bf78712c424e8602678ac6e9dacce3eaf90be506441dbc570e3088"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-4.log",
+        "sha256": "b02d88ee1b0074e52a21fea57556b4882cd6bd1e0a921e0220a148c1b2edbd8a"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-5.log",
+        "sha256": "92b34e13ed1ca7b730c0050e4cf7444bc9f5e29f6188c2600cd309aec0d3d455"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-6.log",
+        "sha256": "bb29b6a3f73fbc6357d56e6c75ad99b11932bfdbbbc4a1f3a6cdf596db4e60b5"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-7.log",
+        "sha256": "3c3d871d72d8d2f1d5a93d82c8fd7b51f9ed16bfc98c3f129da2dab8b70e281c"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-normal-2-8.log",
+        "sha256": "bba31c987c857b3fd697133402f2bd838f733b765074f689b4b6f23f6def80c1"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-retention-0-0.log",
+        "sha256": "68821de6c329f86c9cad83853e47a2108881e864a8e12e958919da0aec799824"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-retention-1-0.log",
+        "sha256": "eb226517841c03315526d8757a54338881b50325aa8fa76e1a4178d904616036"
+      },
+      {
+        "local_path": "build/s14-original-87/crt-retention-2-0.log",
+        "sha256": "9162ef9608a8513620cda4b845cc1a50f44f65ac417a8115b55d3d69ba9df50b"
+      }
+    ]
+  },
+  {
+    "phase": "candidate",
+    "report": "build/s14-candidate-87/report.json",
+    "sha256": "ac10dff92413fbf2832004cad0f596381182da332415fd21074336a008bd5cfe",
+    "status": "passed",
+    "outcomes": 87,
+    "input_files": {
+      "src/adapter/curve_samples.cpp": "2ce46dcb00d83b6baa996181ae35d60fec884ad2720607fee269c81bd4b45e55",
+      "tests/curve_memory/samples_probe.cpp": "3e084dc7bec502f53cc3c946e27b9ba5c49168654ffd40cf14e81d4630837134",
+      "tools/qualify_curve_samples.py": "954aacdbc934fba087176b87cc6c9cb246b77b34a1dd2695ae2d6f454dd7e174",
+      "tests/curve_memory/CMakeLists.txt": "922cba9d70f0f3acd16bf22d9b9f2929f40ba661126f7cca3f293806b13b74e0"
+    },
+    "interpretation": "Valid preliminary coverage; add an explicit observed MSVC list-move allocation control and require all requested IDs consumed at the final denied return-allocation site. Final required inventory is 88 outcomes.",
+    "raw_logs": [
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-0.log",
+        "sha256": "c361d587b2eafb3b4bc668078fd9cbfb03d0bc2b9380ff5c19ff682d561a0d11"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-1.log",
+        "sha256": "04484ffcc51aadf5a71f88d8e7546d1c00acc23e6e0e6abec6d6e40010e5d978"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-2.log",
+        "sha256": "a0979ec10748ba2533d8a2905a155e149c4095e0a9167038b1c4ade9e9ed183a"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-3.log",
+        "sha256": "c0fef08e765a3ddafa3d66eb2aebe4feca3b1b4c895931d260b374aaccf175c3"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-4.log",
+        "sha256": "815ac8014145874ae91816bcfb248e69f4b76b60436358404c1c945c9a3d2399"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-5.log",
+        "sha256": "1bb6933c894399b5770bce774705b171a42290af0be052e93d2ef7c295753320"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-6.log",
+        "sha256": "89bc24850c6ea2531549b8a9887a2dedc92f4dc3c81ef1a4fcfb100d02a3f3da"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-7.log",
+        "sha256": "d027803abab674c81ff544a113347189e9fc2f25ae2296a2110950b1e28d4a6d"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-0-8.log",
+        "sha256": "324437cd5ebeb62e519224c6c6ffb8e37f44091edcd66fae8d201ec144bb9a15"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-0.log",
+        "sha256": "a357f11706c8f3c4590899a0145a55bc28997b0669a85494c4feeb721df6c867"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-1.log",
+        "sha256": "c3d93db6ba794ea9d5acf33e489e4d2517a1603d6408a17e90ef129aa8e95f4d"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-2.log",
+        "sha256": "b74a478c996d473011712dd4700a825f824dbad727c941ae8aa71c76ba8865c9"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-3.log",
+        "sha256": "db8c4e3224d0d1f30886564259e169f442e679bc9ad75aaa25576bb4f90b24b0"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-4.log",
+        "sha256": "792de347115b8968be729688100ee7070f746a75313953d4bea8f61a5147f65f"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-5.log",
+        "sha256": "2bcdf9db86d8247961e2f009e706ef297681f03f1bca4bbfd72c2364a03c2d03"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-6.log",
+        "sha256": "a259af8d4a255447c4d83a2ad161754c6458274109d8ae59e63414dfd4a3f810"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-7.log",
+        "sha256": "1451dd981ef57bec93f28effd22a99ac937144ad3f25838b356c938def6990e6"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-1-8.log",
+        "sha256": "7d91a2cb7601dccd336928b916075acdc227409838dcd31ec1dbe85512d5fc95"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-0.log",
+        "sha256": "9571484ab79ef026708617693a10238cab08965e038f2abb52067ab9ae852b7f"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-1.log",
+        "sha256": "c046ba524fb6d88b08e32a147de1fc213ece1cca006e1a85e0cac025eba90f83"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-2.log",
+        "sha256": "0f5c266c9fbedf1cdc1974087926cc0aa83dee14065c386103da1e09c21882bb"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-3.log",
+        "sha256": "9a323019a7ed98548ed95881f38b2c4cca26c5731cc1b6647bce0bb39943410b"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-4.log",
+        "sha256": "a06395f89f13ad2dac4cf758e8f5520778f726d06a45b5527eb66e1d044c2f85"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-5.log",
+        "sha256": "8742f35ce07f3577b520c7ce6838dcac5ea4179d0a26e7f185d68bfb72b29072"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-6.log",
+        "sha256": "54b8ec2707cd62a8bec05993662a919c900b0db7d1fa4d19e6b066eb60cabba1"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-7.log",
+        "sha256": "e10ad25d65cf0d4f2fbc5cfb75c01eeb757fb64d3c775b9e3976f86a2a8b6f0d"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-normal-2-8.log",
+        "sha256": "4a75da1202da317f5c4063dffb2a3930888beb7adbbba28c6e616ea144402dd4"
+      },
+      {
+        "local_path": "build/s14-candidate-87/asan-use-after-free.log",
+        "sha256": "a1ee840b87341e6c13a51b8c55787f2aa257a0b0027497be2bdf4af182156b80"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-allocation-hook-control.log",
+        "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-0.log",
+        "sha256": "196ed74bb7c828b40dab7b84a68a3127c09c11ef980e5ec3ab7cdb2cad6a06ea"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-1.log",
+        "sha256": "2e19cbd03f39d1e3c939f5e5f869904cf36b365ddd5bd9a09062e776c2b922ec"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-2.log",
+        "sha256": "292b1260e1c567347b05fe86a3966f3f2b573d0802e8dd2268fcb26009b84571"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-3.log",
+        "sha256": "19648f79983dc866603a693615c648979d68a4849c3d3b1a5ddb72bb104ad7ac"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-4.log",
+        "sha256": "470b9db0662f13b6a1326ee8455ac704e1909e2c71648f5790797d4322010236"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-5.log",
+        "sha256": "cbd0cc1c83ddbbc0419145cf5a9cf5804944191c30744871b2d324f9a8478b42"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-6.log",
+        "sha256": "60976ebbb527ed625fe35043a3eb0ee6e50babfab6c25915646abbf8768f2c1a"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-7.log",
+        "sha256": "6b6b3cfed33d85aadc0cdd361b217ba1d30800d27e14fc25205ab3777ec1df34"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-0-8.log",
+        "sha256": "7b52a11f284328f2920af5e11ee94f60ddf95c3d5410e36990f5e3ef549052f5"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-0.log",
+        "sha256": "e2b591602cef77edbbf1d6c79fc0f7bc9b3c1fe470516e85289537766f8cf8f8"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-1.log",
+        "sha256": "b0167440fa4fcfca5c2b7115f02df56ade10168b3588e3deec818dbb1ae98d90"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-2.log",
+        "sha256": "41dfb09e588fcfa44911729d1384734c4733f8f89f96ba3c7d328726758e3b90"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-3.log",
+        "sha256": "af78f09ce9bccf698e6cae2102cf92c50c3e6e4a858add9e86b4f67ecf6bf688"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-4.log",
+        "sha256": "495a57491eba25dc1324a55c291ee63eeaba0306eca195eb13fe7c9fb46b4e38"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-5.log",
+        "sha256": "23964c0a30de73546838bb80df76a829482f7cb1afbfa252dfd00e96e5154b62"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-6.log",
+        "sha256": "35a069f1f107d9d63d03468f4223b999660d0257b70754c818b0b7ec791fd5fc"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-7.log",
+        "sha256": "707fcaaf7bc8c3dce64ccae4b5dd0d2b341fc7b9303bcd7594b5fbd811b91454"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-1-8.log",
+        "sha256": "7e1c766650e7a54d5b7ad47c467a79c0df13b0fa59e97a3a818eaa2eb80c4bd8"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-0.log",
+        "sha256": "cbad7950a2d07cd113ee21e67649483a3308f9302cd393fe0366c73344574a5d"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-1.log",
+        "sha256": "effa11911af433b230acb9c6403fdb501d2ae56d3b08acc39b5ab5a0533a5b26"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-2.log",
+        "sha256": "fadabfff7dd57180a1abd72a5c8cbc5a6f1cdc60c499e9edf736ba841eb98c71"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-3.log",
+        "sha256": "a3f2f7450688dee954001587cdfd2f663a2d0493397e431085ee90fb28f3856b"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-4.log",
+        "sha256": "1c60dc7b1894dd8785fbd1e308790834fc677bee8a9490534450e3403988e7a9"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-5.log",
+        "sha256": "9f552a9e871b607ef1939a3f626ff41b66ce7a736640ae83a6328de1dcf5d866"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-6.log",
+        "sha256": "e959b6d9236df07e18d8208ce8f81f94771293d06239b49cdcca1c7f829cf4fa"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-7.log",
+        "sha256": "ce91bababf79498038b7d1e28537254bb6acdeb8e3d504cab2952b1ec54289db"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-failure-2-8.log",
+        "sha256": "b651ae2d248683020b7b745d5eed2bc926af38b6468fdde532a9880951a4de72"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-leak.log",
+        "sha256": "7bced7a7da3efd7eb0b5c732c1c5b9f81e2454ddbae70c4f8c169b1963781231"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-0.log",
+        "sha256": "cbb70dd0fdd64f2f1ca3288eac8fecbd94c6f88cf05aa77182e682f7acc6fa94"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-1.log",
+        "sha256": "850372b89d47825c07e32fad0ad3f9d3588f861a079881e7987a1df7220f34e2"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-2.log",
+        "sha256": "350cdc02b5266db0f15640722f714c838912de89ee766a79db5eddf58dcfeefc"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-3.log",
+        "sha256": "a1737d62111d64f673ee8ef4d12cb2ceb32b3ec5c01df83b971f58f304c5e238"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-4.log",
+        "sha256": "c602ea7191afe56723d8886d948d72175ac163f9a287a2abe55cc6079e13be68"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-5.log",
+        "sha256": "9d6de89559aeebca94c98e1a9ad98e719c860edf8f56255383da6fd1923867da"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-6.log",
+        "sha256": "47f7b1fd3e0e2e46d2564b9d9a00430878ddbb99a67e0d7f61ce08d1a424f489"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-7.log",
+        "sha256": "0ec24cffe0e8e89eff121959b63487e44fcd5d9026ea42d5f7e15cfb4f37fdcf"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-0-8.log",
+        "sha256": "85164d7d0274551d39fc01ecb749145f1e28462167511534c58a37df13aa14a1"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-0.log",
+        "sha256": "04904525d712bce97738a47673775732a821eee2b6128337aa39036fc23998f8"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-1.log",
+        "sha256": "b27b3364000c4107a8a384122051c563bd9bfd7b95c08e47adc0799cd9f63943"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-2.log",
+        "sha256": "a47dfa4cd40aa4e191b4f9aae06fcda638dd2426a89064160e2adf5f3b2189c5"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-3.log",
+        "sha256": "156dfe66e30e4e4d2f91bd6882e343cf72a494d329b06244e0f6169dbb28cd8a"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-4.log",
+        "sha256": "a2df495aeb84f5db88a1930b83286684d041c692d96b53689034a4ba351835e9"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-5.log",
+        "sha256": "6fd0c99a89e75568bc4487b8204a9939a23ff3fad5c6ecb77b92e91e0dee2014"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-6.log",
+        "sha256": "1b58c001bb13fe0f6772ce23149e4e014f5e0b3acdbe62b8214072c707d52d5b"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-7.log",
+        "sha256": "b705883fec31f517500f49869534d6a237a66336717d1224b2111476c0b4e268"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-1-8.log",
+        "sha256": "ef945f3f6560063aecb80c523e907039e3392dcd6d2388726aa0ce545155ffaa"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-0.log",
+        "sha256": "25e90a818fc9369a0ffc8fc43cf6c7df359b4369fdb2d55564f9299d2759dd21"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-1.log",
+        "sha256": "c71861f9dfe1949620f5bbab76d8abd48cc1d44b6aa1ad44048b22c00a008320"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-2.log",
+        "sha256": "9d02f1af553ebc08d877c19c530407f088654fdd3c10b3a922050247d208b9cd"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-3.log",
+        "sha256": "3bbb1483a8bf78712c424e8602678ac6e9dacce3eaf90be506441dbc570e3088"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-4.log",
+        "sha256": "b02d88ee1b0074e52a21fea57556b4882cd6bd1e0a921e0220a148c1b2edbd8a"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-5.log",
+        "sha256": "92b34e13ed1ca7b730c0050e4cf7444bc9f5e29f6188c2600cd309aec0d3d455"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-6.log",
+        "sha256": "bb29b6a3f73fbc6357d56e6c75ad99b11932bfdbbbc4a1f3a6cdf596db4e60b5"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-7.log",
+        "sha256": "3c3d871d72d8d2f1d5a93d82c8fd7b51f9ed16bfc98c3f129da2dab8b70e281c"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-normal-2-8.log",
+        "sha256": "bba31c987c857b3fd697133402f2bd838f733b765074f689b4b6f23f6def80c1"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-retention-0-0.log",
+        "sha256": "1f49655a48246082733f171dfe0860511d24a78807c3a23a23f662e4bd7d541c"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-retention-1-0.log",
+        "sha256": "54cabc62a963600ae842b0322615230c2bb4022c96e275d24ef2294a78c666f1"
+      },
+      {
+        "local_path": "build/s14-candidate-87/crt-retention-2-0.log",
+        "sha256": "da5edc0b1264b7f0fc0bb78a144cb7b304cd325baaf0c9064c563be6efddd625"
+      }
+    ]
+  }
+]

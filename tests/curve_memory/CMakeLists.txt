@@ -91,3 +91,29 @@ if(MSVC)
 elseif(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
   target_link_options(curve_rebuild_probe PRIVATE -static -static-libgcc -static-libstdc++)
 endif()
+
+set(AP_MESH_SAMPLES_IMPLEMENTATION "${AP_MESH_CURVE_SOURCE_ROOT}/src/adapter/curve_samples.cpp" CACHE FILEPATH "Serial adapter sample construction implementation")
+add_executable(curve_samples_probe samples_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/node_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/element_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/triangle_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/id_manager.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/ranged_id_manager.cpp"
+  "${AP_MESH_SAMPLES_IMPLEMENTATION}")
+target_compile_features(curve_samples_probe PRIVATE cxx_std_17)
+target_include_directories(curve_samples_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include" "${default_curve_root}/include")
+if(MSVC)
+  target_compile_options(curve_samples_probe PRIVATE /utf-8 /W4 /EHsc /permissive- /Zc:nrvo-)
+  target_compile_definitions(curve_samples_probe PRIVATE $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(curve_samples_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(curve_samples_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+else()
+  target_compile_options(curve_samples_probe PRIVATE -fno-elide-constructors)
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(curve_samples_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endif()
