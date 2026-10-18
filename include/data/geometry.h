@@ -22,8 +22,10 @@ class Geometry {
   Geometry& operator=(Geometry&&) noexcept;
 
   // Curves
+  /// Consume exclusive ownership, including on failure. Failed insertion preserves existing entries.
+  /// Raw arguments must be uniquely owned and deletable; null adds an empty slot.
   void InsertCurve(std::unique_ptr<CurveAdaptive> curve);
-  void InsertCurve(CurveAdaptive* curve);  // takes ownership
+  void InsertCurve(CurveAdaptive* curve); // takes ownership
 
   unsigned int GetNumberCurves() const noexcept;
 
@@ -31,8 +33,10 @@ class Geometry {
   const CurveAdaptive* GetCurve(unsigned int position) const noexcept;
 
   // Patches
+  /// Consume exclusive ownership, including on failure. Failed insertion preserves existing entries.
+  /// Raw arguments must be uniquely owned and deletable; null adds an empty slot.
   void InsertPatch(std::unique_ptr<Patch> patch);
-  void InsertPatch(Patch* patch);  // takes ownership
+  void InsertPatch(Patch* patch); // takes ownership
 
   unsigned int GetNumberPatches() const noexcept;
 

@@ -383,11 +383,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "755d003dd48928d56359ac6e82c51e3a31d98d168813ddfeb5a5c854f03770ca"
+      "sha256": "4596e57821e94dd3252ca83fd458b00d9f4ce268dbabee5a4913674e6a5f31d4"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "8124969174cfd202b625eb78d3da6ebd22aa5bc99989418875ab219326435428"
+      "sha256": "860b3044ab2f62c3546c186bc3a5c0fe6fddbc4cbc5225a2983df36efc475562"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1727,8 +1727,8 @@
       "path": "include/data/geometry.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "642dd1ac34568906ccb9c7b4c28fa29d9eb85f2fdd8b3a3375007c89e74890f9",
-      "bytes": 1638,
+      "sha256": "8614045b1992da8ca27a8351c58e3bd5ba72b56c0e52a14470bf1b67c666ad74",
+      "bytes": 2006,
       "includes": [
         {
           "line": 4,
@@ -3587,8 +3587,8 @@
       "path": "src/data/geometry.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "96ea56152e98ebd6c37c52b5268efa3b46bb976438eddf819d98c2ffc39fb822",
-      "bytes": 2831,
+      "sha256": "5d442c1c3338943e9125cd2266bed5319663866261cb1d758345cb66594a4dc4",
+      "bytes": 2700,
       "includes": [
         {
           "line": 1,
@@ -4755,7 +4755,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 99,
+    "source_anchors": 100,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

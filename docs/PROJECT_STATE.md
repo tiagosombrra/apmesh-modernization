@@ -373,3 +373,32 @@ Implicit copy/assignment, inconsistent/null/uninitialized sources, general
 observers, other helper/template/tree/mate paths, failed-tree observer consumption/
 retry and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed;
 stages 4-11 stay pending. Doxygen undocumented-API debt stays stage 8.
+
+## Active stage 3 slice 10 (#35): Geometry adoption under allocation failure
+
+Raw InsertCurve/InsertPatch previously constructed their unique owner after
+vector storage allocation. Eight original raw-adoption failure cases retain
+their relinquished argument; all 45 other control outcomes are as expected.
+Both raw overloads now create a pending unique_ptr and delegate to the existing
+unique-owner overload. Failure destroys the argument and preserves destination
+entries; retry requires a fresh object. Successful order, identity, allocation
+counts and null-slot semantics are unchanged.
+
+Candidate gates pass: CTest 20/20, zero skips, 74 Python controls, adoption 53/53,
+copy 30/30, curve 19/19, UV 81/81 and node 7/7. Sixteen independently calibrated
+sweeps deny 16 measured allocations. Initialized parametric/Bezier/Hermite
+copies and patches cover raw/unique overloads and empty/nonempty destinations.
+Full normal original/repaired traces and successful allocation counts match.
+Selected Geometry lint, explicit probe/range formatting, inventory and repeated
+strict Eistute/Book regression pass across nine attempted states, 189 named CSV
+fields, measured shared incidences and 1,168/4,256 last-accepted triangles.
+Exact published-head and post-merge implementation-main qualification remain.
+
+Classification: behavior-changing ownership failure-path defect repair.
+No formula, floating-point order, shared-curve synchronization or scientific
+acceptance/stopping policy changes. This qualifies the Geometry adoption
+boundary only. CloneCurveForPatch/DisableSharedCurveSynchronization integration,
+graph publication/rollback, earlier allocation failure, other constructors and
+mutations, shared samples/initialization, implicit copying, generic observers,
+full-process/parallel/LSan/UBSan and stage-8 undocumented APIs remain open.
+See evidence/STAGE3_GEOMETRY_ADOPTION.md and ADR-0011. Full stage 3 stays open.

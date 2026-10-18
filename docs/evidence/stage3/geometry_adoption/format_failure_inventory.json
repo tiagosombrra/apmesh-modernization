@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "local_path": "build/s10-pre-format/initial_scope_failure.json",
+      "record": "pre-format-initial_scope_failure.json",
+      "sha256": "b81e21052619b91d19f5b457cd28ed0e703db2ac2b93ae41381864253ed1aa80"
+    },
+    {
+      "local_path": "build/s10-pre-format/report.json",
+      "record": "pre-format-report.json",
+      "sha256": "c75fbd1f85fa03fcd8aa1c9b590f5231008b4609fde8f413795d23c3099a5364"
+    },
+    {
+      "local_path": "build/s10-pre-format/patch-format.xml",
+      "record": "pre-format-patch-format.xml",
+      "sha256": "71152b85772f16af5565869752e9fbdeddd16c1023c81984431d7cf67a99e2a8"
+    },
+    {
+      "local_path": "build/s10-pre-format/patch-adoption-format.xml",
+      "record": "pre-format-patch-adoption-format.xml",
+      "sha256": "71152b85772f16af5565869752e9fbdeddd16c1023c81984431d7cf67a99e2a8"
+    }
+  ],
+  "finding": "Initial patch adoption formatting gates failed: clang-format requires the short changed function on one line. An initial range-only correction did not resolve it. Explicit changed-function formatting was then applied, inventory refreshed, and full qualification restarted with changed bytes. No diagnostic suppression or numerical change."
+}
