@@ -20,66 +20,23 @@ failures, hashes and limitations stay in the linked evidence records.
 | 2026-10-18, stage 3 slice 10 | #35, PR #36; head 249c561ec10f5d3766b0d1be71ed52d09e6420ec, main 4e23bd00e457e68056ff956869732b1872f04822; evidence/STAGE3_GEOMETRY_ADOPTION_CLOSURE.md | Guard raw Geometry arguments before allocation; head/main CTest 20/20, adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7, 16 denials, unchanged normal traces/allocation counts and exact article regression; helper/policy integration remains open |
 | 2026-10-18, stage 3 slice 11 | #38, PR #39; head ce139f7d46b30daee365dfe5b1608183eb0d02c5, main 43e0309d6408601cd13e130cfa9668f35596ab67; evidence/STAGE3_CURVE_PUBLICATION_CLOSURE.md | Pending clone ownership and per-curve publication/retry; head/main CTest 21/21, sync 73/73, prior instruments pass, 484 denials and exact model regression; full CLI disabled-policy and adaptive rollback remain open |
 | 2026-10-18, stage 3 slice 12 | #41, PR #42; head 98528aeba68bb0b016b40eeeaff8d2bac6acc297, main 358107faff5d6d2cdcd63eba12114abf7f7dc5ec; evidence/STAGE3_CURVE_SNAPSHOTS_CLOSURE.md | Prepared complete sample graph before restoration; head/main CTest 22/22, snapshots 89/89, prior instruments pass, 536 denials and exact model regression; parameter/full adaptive rollback remain open |
+| 2026-10-18, stage 3 slice 13 | #44, PR #45; head ffdde7248564c8e072138d9673871baa4f13e217, main 3e628e6445b2638ff73a51fa8bb1a9aed440647c; evidence/STAGE3_CURVE_REBUILD_CLOSURE.md | Prepare paired target rebuild before swaps/deletion; head/main CTest 23/23, rebuild 117/117, prior instruments pass, 597 denials and exact model regression; consumed IDs, later curve observer publication/full rollback remain separate |
 
-Current status: stages 0-2 closed; stage 3 in progress with twelve qualified
+Current status: stages 0-2 closed; stage 3 in progress with thirteen qualified
 slices; stages 4-11 pending.
 
-Full stage 3 remains open with twelve qualified slices. Next characterize
-remaining sample construction/mutation and the full adaptive retry/rollback
-boundary, including parameter pairing, patch observers, mesh/error/history/budget
-state, then explicit full CLI synchronization-disabled integration. The point-graph
-restoration is directly qualified for initialized collectively owned samples;
-parameter and full mesh/acceptance rollback remain separate. Generic observers,
-custom subclasses, inconsistent sources, other helper/template/tree/mate paths,
-failed-tree observer consumption/retry and full-process/parallel/LSan/UBSan remain
-open. Stages 0-2 stay closed for measured scope; stages 4-11 stay pending.
-Doxygen undocumented-API debt stays stage 8.
+Full stage 3 remains open with thirteen qualified slices. Next characterize
+sample owner transfer and point-observer publication in Adapter/AdaptCurve,
+then full adaptive retry/rollback across parameters, patch/mesh observers and
+error/history/budget state, plus explicit full CLI disabled synchronization.
+Paired helper commit and snapshot point-graph restoration are qualified narrow
+boundaries; full AdaptCurve and whole-mesh/acceptance transactions are separate.
+Remaining constructors/mutations, generic/custom sources, other helper/template/
+tree/mate paths, failed-tree observer consumption/retry and full-process/parallel/
+LSan/UBSan remain open. Stages 0-2 stay closed for measured scope; stages 4-11
+stay pending. Doxygen undocumented-API debt stays stage 8.
 
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 12 closure](evidence/STAGE3_CURVE_SNAPSHOTS_CLOSURE.md).
-
-## Active stage 3 slice 13 (#44): paired target-count rebuild preparation
-
-The actual target-count lambda deletes existing interiors before the parameter
-copy/point-list preparation is complete. Twenty-four original sweeps stop at
-the first observed deleted-live-sample contract failure (ordinals 11-28, detailed
-per case in retained reports). Later ordinals and CRT retention in those aborted
-cases are unmeasured. Three two-endpoint sweeps isolate pending-node loss and
-complete with 48 retained blocks each across their denied allocations. Other
-90 of 117 original outcomes are expected.
-
-The narrow actual production helper prepares unique new nodes and both lists
-before direct nonallocating swaps and old-interior deletion. Failure preserves
-supplied point and curve parameter objects/list nodes and permits retry. IDs
-consumed before failure stay consumed; retry uses the subsequent sequence.
-Success preserves the original uniform growth formulas, rounded shrink indices,
-parameter pairing, endpoint reuse, ID requests and short/mismatch/equal/empty
-guards. Removable interiors must be distinct and exclusively deletable here;
-shared endpoints survive. Success invalidates removed-sample/list observers.
-The curve point-observer list and later Generator publication remain separate;
-neither full AdaptCurve nor mesh/acceptance rollback is qualified by this helper.
-
-Candidate gates pass: CTest 23/23, zero skips, 74 Python controls; rebuild
-117/117 and 597 denials over 36 positive calibrated sweeps. Previous
-snapshots 89/89, synchronization 73/73, adoption 53/53, copy 30/30, curve 19/19,
-UV 81/81 and node 7/7 pass. All 78 complete normal original/repaired traces match.
-Actual new-unit lint, explicit formatting and 129-file inventory pass; strict
-twice-repeated Eistute/Book output compares exactly across nine attempted states,
-189 CSV fields and 1,168/4,256 accepted triangles. Published-head/main gates remain.
-
-Original comparison uses 12 pinned units plus the verified lambda with two
-explicit nullable-manager context substitutions, not full old Generator-TU
-instrumentation. Candidate compiles 13 actual production units. The new Debug
-CRT target consistently disables iterator metadata while retaining actual heap
-and negative controls. Earlier targets stay unchanged. Valid 108-outcome and
-117-outcome zero-start runs remain retained. The final fixture explicitly sets
-the nonzero ID start after actual RangedIdManager constructor adjustment, retaining
-separate zero/null-manager controls; no manager implementation repair is proposed.
-
-Classification: ownership/exception-consistency defect repairs and engineering
-extraction. Preparation changes allocation timing/counts/bytes/peak storage; no
-performance claim. No formulas, numerical order, policy, tolerance, budgets,
-verifier or adaptation/acceptance/stopping change. Full stage 3 stays open.
-See evidence/STAGE3_CURVE_REBUILD.md and ADR-0014.
+[slice 13 closure](evidence/STAGE3_CURVE_REBUILD_CLOSURE.md).

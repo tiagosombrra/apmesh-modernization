@@ -1,6 +1,6 @@
 # ADR-0014: prepare paired curve target rebuild state before commit
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact published-head and implementation-main gates passed through PR #45.
 Issue #44. Classification: ownership/exception-consistency defect repairs and
 engineering extraction, preserving successful numerical and ID policy.
 
