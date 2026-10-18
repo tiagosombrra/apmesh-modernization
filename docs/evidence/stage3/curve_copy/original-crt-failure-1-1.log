@@ -1,0 +1,2 @@
+copy_measured=kind:1 variant:1 allocations:12
+Contract failed: copied parameter sequence preserves sampled-point pairing and order

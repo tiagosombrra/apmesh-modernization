@@ -38,9 +38,9 @@ CurveAdaptiveParametric::CurveAdaptiveParametric(const PointAdaptive point0,
   mat_parameters_.setZero(1, 4);
 }
 
-CurveAdaptiveParametric::CurveAdaptiveParametric(
-    CurveAdaptiveParametric* curve_adaptive_parametric)
-    : CurveAdaptive(curve_adaptive_parametric) {
+CurveAdaptiveParametric::CurveAdaptiveParametric(CurveAdaptiveParametric* curve_adaptive_parametric)
+    : CurveAdaptive(curve_adaptive_parametric),
+      parameters_(curve_adaptive_parametric->parameters_) {
   this->point0_ = curve_adaptive_parametric->point0_;
   this->point1_ = curve_adaptive_parametric->point1_;
   this->mat_geo_gx_ = curve_adaptive_parametric->mat_geo_gx_;

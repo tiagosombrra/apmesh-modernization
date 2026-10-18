@@ -132,3 +132,16 @@ claimed. The pointer-taking parametric constructor currently omits parameters_;
 its full value-copy semantics and derived constructors remain open findings.
 Continue remaining curve constructor/mutation contracts before shared sample
 ownership, initialization and rollback. See ADR-0009 and the slice evidence.
+
+## Initialized curve copy boundary (#32)
+
+The omission identified in slice 8 is reproduced for base parametric, Bezier and
+Hermite pointer-taking copies. Their base constructor now copies parameters_
+under standard-list RAII. C07/ADR-0010 define independent container nodes,
+borrowed physical objects, initialized value/control state and non-null source
+preconditions. The fix preserves canonical polynomial evaluation and sequence
+direction; it does not choose a shared-curve policy or repair inconsistent input.
+Next characterize ownership/publication around curve clones and remaining
+constructor/mutation paths, then shared samples, initialization and rollback.
+Implicit copy/assignment, source-object lifetime versus borrowed-object lifetime,
+general observers and full-process/parallel qualification remain distinct.

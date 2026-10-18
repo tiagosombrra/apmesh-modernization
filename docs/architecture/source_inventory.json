@@ -383,11 +383,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "13d562c5aabd59f290e6bd30232865221baf6e189db4b7366aef1743bf3cd337"
+      "sha256": "755d003dd48928d56359ac6e82c51e3a31d98d168813ddfeb5a5c854f03770ca"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "4fc2b9dd9b13b6964abafed799497dbec8074d30ce6d3501b48ef8c348d8a7f1"
+      "sha256": "8124969174cfd202b625eb78d3da6ebd22aa5bc99989418875ab219326435428"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1316,8 +1316,8 @@
       "path": "include/data/curve/curve_adaptive_parametric.h",
       "component_by_directory": "data/curve",
       "kind": "header",
-      "sha256": "ff77c1675f67381b13a06ab9c1679cc141f16127717824445485b34a461a46c7",
-      "bytes": 4018,
+      "sha256": "d88f05a1e04cfe274d5aea8eca4aa08ec63aa05137349520d18ba4fe5b2a1463",
+      "bytes": 4198,
       "includes": [
         {
           "line": 4,
@@ -3458,8 +3458,8 @@
       "path": "src/data/curve/curve_adaptive_parametric.cpp",
       "component_by_directory": "data/curve",
       "kind": "translation_unit",
-      "sha256": "80af375c81d6ac72b95f89bd054e998cf433fddb0e81b697e8ae02d68d17e034",
-      "bytes": 19221,
+      "sha256": "1479ae7bba11b7625ba51c57d5578fbc1a136147fdff11990f1f2155a6ff7273",
+      "bytes": 19275,
       "includes": [
         {
           "line": 1,
@@ -4755,7 +4755,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 98,
+    "source_anchors": 99,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

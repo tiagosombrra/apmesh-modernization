@@ -232,3 +232,16 @@ Prior UV 81/81 and node 7/7 controls remain required. Selected lint covers the
 two actual curve implementation units with unchanged diagnostic rules.
 List-node invalidation and independent per-list transactions are explicit.
 See evidence/STAGE3_CURVE_COLLECTIONS.md and ADR-0009 for commands and limits.
+
+## Initialized pointer-taking curve copies (#32)
+
+The candidate adds application.curve_copy_contracts, taking CTest to 19 entries
+with zero skips and 74 Python controls. The new nine-production-unit copy probe
+qualifies 30 ASan/CRT cases across parametric/Bezier/Hermite types and empty,
+forward/reversed sampled sequences. Nine positive-calibration sweeps deny 123
+allocations, preserve source values/nodes/objects and require successful retry.
+The prior curve 19, UV 81 and node seven cases remain required. Earlier curve
+copy calibration now includes the newly preserved parameter nodes; fixed prior
+allocation counts are not acceptance constants. Read-only lint covers the actual
+changed parametric unit in its compiled configurations. See ADR-0010 and
+evidence/STAGE3_CURVE_COPY.md for reproduction, original failures and limits.
