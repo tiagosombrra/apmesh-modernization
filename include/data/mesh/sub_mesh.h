@@ -42,8 +42,8 @@ public:
   void SetNoh(NodeAdaptive* noh);
   // Consume exclusive ownership on entry, including allocation failure.
   // The argument must not already be owned; null appends an empty slot.
-  // Its nodes must outlive it. Failure does not undo constructor registration:
-  // terminal owners must unwind before node adjacency is consumed again.
+  // Its nodes must outlive it, including destruction after failed adoption.
+  // TriangleAdaptive destruction unregisters from its live current vertex nodes.
   void SetElement(ElementAdaptive* element);
 
   unsigned int GetNumberNos() const noexcept;

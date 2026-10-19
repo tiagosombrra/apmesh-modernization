@@ -3,7 +3,14 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Latest qualified work: stage 3 slice 23
+## Active work: stage 3 slice 24
+
+Candidate completed-triangle cleanup passes actual-unit and full candidate gates.
+Exact published-head/main qualification is pending. Destruction removes current-
+vertex observers; failed adoption restores the prior live graph. Borrowed nodes
+must outlive destruction. See [scope and audit](evidence/STAGE3_TRIANGLE_LIFETIME.md).
+
+## Stage 3 slice 23 qualified
 
 PR #68 integrates head `f29018fea3d3490358396381cea1dc7967aaf1ac` as main
 `4dd41510180ac0fa10e9a3f083552fe1f3c13a2c`, preserving complete tree `e40ff131629c0b791daf2f12db074e8cb3ec6499`

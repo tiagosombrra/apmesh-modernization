@@ -4,6 +4,9 @@ if(BUILD_TESTING)
   find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
   add_subdirectory(tests/memory)
   add_subdirectory(tests/mesh_memory)
+  add_test(NAME application.triangle_lifetime_contracts COMMAND triangle_lifetime_probe contracts)
+  set_tests_properties(application.triangle_lifetime_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_test(NAME application.triangle_observer_contracts COMMAND triangle_observer_probe contracts)
   set_tests_properties(application.triangle_observer_contracts
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)

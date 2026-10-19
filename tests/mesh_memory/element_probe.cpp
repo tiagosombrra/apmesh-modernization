@@ -110,12 +110,11 @@ struct Fixture {
     for (unsigned int i = 0; i < 3; ++i) {
       Require(mesh.GetNoh(i) == nodes[i] && nodes[i]->GetId() == i + 10,
               "existing node identity and ID");
-      Require(nodes[i]->GetNumberElements() ==
-                  static_cast<unsigned int>(prefix + (NonNull() ? 1 : 0)),
-              "constructor registration precedes adoption; no adjacency rollback is claimed");
+      Require(nodes[i]->GetNumberElements() == static_cast<unsigned int>(prefix),
+              "consumed argument destruction removes its observers before failure handling");
       for (int j = 0; j < prefix; ++j)
         Require(nodes[i]->GetElement(j) == prior[j], "existing adjacency prefix is preserved");
-      // Do not read/dereference the failed argument's last observer: it may be expired.
+      // The exact prefix contains only live owners and may be consumed safely.
     }
   }
   void Validate(SubMesh& current, bool trace) {
