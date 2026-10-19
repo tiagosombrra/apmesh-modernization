@@ -1,0 +1,8 @@
+{
+  "revision": "35e608162e17c04c21f1a8f3817aac885262bca5",
+  "source_sha256": "138716797e27ae8a08e5e87a9539c8e0872089908c5518f4390a0bcade348adc",
+  "body_sha256": "1fd377cb89133d6f40b6f7824ac8b64fba0090f64d4eaba637248512023e28e1",
+  "adapter_sha256": "4ea8891d6baa2e51823149181188bcaddcd427e4b47fbd9d9e49e5d11587caca",
+  "candidate_unit": "src/estimate/error_estimate.cpp",
+  "scope": "Original caller body verbatim; candidate complete actual caller unit. Actual unchanged generator constructor and serial ErrorGlobal bodies are separately extracted against the real class/header/dependency units. No complete generator/estimator MSVC translation-unit instrumentation claim."
+}

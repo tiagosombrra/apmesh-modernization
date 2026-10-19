@@ -7,8 +7,8 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 143,
-    "translation_units": 67,
+    "files": 144,
+    "translation_units": 68,
     "headers": 76,
     "directory_components": {
       "adapter": 4,
@@ -22,14 +22,14 @@
       "data/mesh": 4,
       "data/patch": 8,
       "data/tree": 2,
-      "estimate": 6,
+      "estimate": 7,
       "generator": 16,
       "input_output": 11,
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 558,
-    "first_party_include_edges": 326
+    "literal_include_directives": 560,
+    "first_party_include_edges": 327
   },
   "cross_component_directives": [
     {
@@ -352,7 +352,7 @@
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 22,
+    "memory": 23,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -387,11 +387,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "250e1fa1a1499fa7d22ba4cd7405c37147fb49450f24c1910953c8d70f141882"
+      "sha256": "85924273764a5a2655a9ce795ae394452a7b66ea6ed90e668a936b40b208c1ae"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "a3fd004a62d1dab9ffea7cc39775e107972baf581435be2a4116717184976fbc"
+      "sha256": "8620e0338d3361a2dbb239e77e11b51d19d4557fe6c7491840440a2519d51d74"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1119,8 +1119,8 @@
       "path": "include/crab_mesh/performer/ranged_id_manager.h",
       "component_by_directory": "crab_mesh/performer",
       "kind": "header",
-      "sha256": "12175a843270e92f5dad37a87bdb0aed0525c08390651709e89eb68e343c5a3c",
-      "bytes": 1003,
+      "sha256": "f845a3177934cba8769d59c52b01d5ce29f03bafab720a85cbcc04216e3278d0",
+      "bytes": 1007,
       "includes": [
         {
           "line": 4,
@@ -1948,8 +1948,8 @@
       "path": "include/data/patch/patch_hermite.h",
       "component_by_directory": "data/patch",
       "kind": "header",
-      "sha256": "b76313f5016ece3c438867897f05aed043e394f8e85741e3bd630b4900558e3b",
-      "bytes": 3697,
+      "sha256": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478",
+      "bytes": 3706,
       "includes": [
         {
           "line": 4,
@@ -2093,8 +2093,8 @@
       "path": "include/estimate/charge_estimate_process.h",
       "component_by_directory": "estimate",
       "kind": "header",
-      "sha256": "f6606f83747c983031052851ff5a94afa8bf0fd6a8e149d68c589c60b9c2c372",
-      "bytes": 2020,
+      "sha256": "c57e86c07332f71df77048a5a40dff61bd964bd0e1e95755774008058011585c",
+      "bytes": 2186,
       "includes": [
         {
           "line": 4,
@@ -2361,151 +2361,151 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "2c9e5e059e760db17f24e17f1dc2139625500982f0e1378c13c1613cc24af4df",
-      "bytes": 25754,
+      "sha256": "2431b7f61494009603210470725dbcd8a48a265056f40fde496120b58d0a9784",
+      "bytes": 25777,
       "includes": [
         {
           "line": 4,
-          "spelling": "omp.h",
-          "form": "angle",
-          "scope": "toolchain_or_unresolved",
-          "target": null
-        },
-        {
-          "line": 5,
-          "spelling": "list",
-          "form": "angle",
-          "scope": "toolchain_or_unresolved",
-          "target": null
-        },
-        {
-          "line": 6,
-          "spelling": "map",
-          "form": "angle",
-          "scope": "toolchain_or_unresolved",
-          "target": null
-        },
-        {
-          "line": 7,
-          "spelling": "memory",
-          "form": "angle",
-          "scope": "toolchain_or_unresolved",
-          "target": null
-        },
-        {
-          "line": 8,
-          "spelling": "string",
-          "form": "angle",
-          "scope": "toolchain_or_unresolved",
-          "target": null
-        },
-        {
-          "line": 9,
-          "spelling": "vector",
-          "form": "angle",
-          "scope": "toolchain_or_unresolved",
-          "target": null
-        },
-        {
-          "line": 11,
-          "spelling": "../adapter/adapter.h",
-          "form": "quote",
-          "scope": "first_party",
-          "target": "include/adapter/adapter.h"
-        },
-        {
-          "line": 12,
-          "spelling": "../crab_mesh/performer/ranged_id_manager.h",
-          "form": "quote",
-          "scope": "first_party",
-          "target": "include/crab_mesh/performer/ranged_id_manager.h"
-        },
-        {
-          "line": 13,
-          "spelling": "../curvature/curvature_analytical.h",
-          "form": "quote",
-          "scope": "first_party",
-          "target": "include/curvature/curvature_analytical.h"
-        },
-        {
-          "line": 14,
-          "spelling": "../curvature/curvature_discrete.h",
-          "form": "quote",
-          "scope": "first_party",
-          "target": "include/curvature/curvature_discrete.h"
-        },
-        {
-          "line": 15,
           "spelling": "../data/definitions.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/definitions.h"
         },
         {
+          "line": 7,
+          "spelling": "omp.h",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 11,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 12,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 13,
+          "spelling": "vector",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 15,
+          "spelling": "../adapter/adapter.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/adapter/adapter.h"
+        },
+        {
           "line": 16,
+          "spelling": "../crab_mesh/performer/ranged_id_manager.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/performer/ranged_id_manager.h"
+        },
+        {
+          "line": 17,
+          "spelling": "../curvature/curvature_analytical.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature_analytical.h"
+        },
+        {
+          "line": 18,
+          "spelling": "../curvature/curvature_discrete.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/curvature/curvature_discrete.h"
+        },
+        {
+          "line": 19,
           "spelling": "../data/node_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/node_adaptive.h"
         },
         {
-          "line": 17,
+          "line": 20,
           "spelling": "../data/patch/patch_bezier.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_bezier.h"
         },
         {
-          "line": 18,
+          "line": 21,
           "spelling": "../data/patch/patch_coons.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_coons.h"
         },
         {
-          "line": 19,
+          "line": 22,
           "spelling": "../data/triangle_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/triangle_adaptive.h"
         },
         {
-          "line": 20,
+          "line": 23,
           "spelling": "../data/mesh/mesh_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/mesh/mesh_adaptive.h"
         },
         {
-          "line": 21,
+          "line": 24,
           "spelling": "../estimate/charge_estimate_process.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/estimate/charge_estimate_process.h"
         },
         {
-          "line": 22,
+          "line": 25,
           "spelling": "../input_output/models_3d.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/models_3d.h"
         },
         {
-          "line": 23,
+          "line": 26,
           "spelling": "../input_output/patch_reader.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/patch_reader.h"
         },
         {
-          "line": 24,
+          "line": 27,
           "spelling": "../parallel/ApMeshCommunicator.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/parallel/ApMeshCommunicator.h"
         },
         {
-          "line": 25,
+          "line": 28,
           "spelling": "../timer/timer.h",
           "form": "quote",
           "scope": "first_party",
@@ -2853,8 +2853,8 @@
       "path": "include/parallel/ApMeshCommunicator.h",
       "component_by_directory": "parallel",
       "kind": "header",
-      "sha256": "713cc671fb7d87e162292e9c7fb96fa88d63afd27e9fe617e42d790b86226d29",
-      "bytes": 428,
+      "sha256": "b1dfc4f68b89ce2f73c85bd04101542aed6e558ae6748c7fcc0ba39ca477f942",
+      "bytes": 437,
       "includes": [
         {
           "line": 4,
@@ -2977,8 +2977,8 @@
       "path": "include/parallel/NoCommunicator.h",
       "component_by_directory": "parallel",
       "kind": "header",
-      "sha256": "dff4ba1363265c93b8b413d7740222e38c9df363147e079a39de8a85cb4423f6",
-      "bytes": 5919,
+      "sha256": "2efdedae18a9b2614e9ba729861d7fae4ba9c419b19f26baf25a2a7ec0c8fde8",
+      "bytes": 5966,
       "includes": [
         {
           "line": 4,
@@ -3000,8 +3000,8 @@
       "path": "include/parallel/NoThreadManager.h",
       "component_by_directory": "parallel",
       "kind": "header",
-      "sha256": "52ddc9ddb4b03aef12c79e881df62caa5ba961000932a4be7cde3bbe3c971a6b",
-      "bytes": 629,
+      "sha256": "41ca272157b6d4be8a5556692ebdf32c89c7763d254135f49163d4d34b65888e",
+      "bytes": 636,
       "includes": [
         {
           "line": 4,
@@ -3085,8 +3085,8 @@
       "path": "include/parallel/TMCommunicator.h",
       "component_by_directory": "parallel",
       "kind": "header",
-      "sha256": "11fbc6fdeea4408d9b73b0bdeddc31181906f2e9089369d03da0ecac4055583e",
-      "bytes": 1137,
+      "sha256": "7fc82dce2e650c75442c37db61420b0c4a037b4f850f8c27776316a41c11a9ba",
+      "bytes": 1140,
       "includes": [
         {
           "line": 4,
@@ -4252,8 +4252,8 @@
       "path": "src/estimate/charge_estimate_process.cpp",
       "component_by_directory": "estimate",
       "kind": "translation_unit",
-      "sha256": "138716797e27ae8a08e5e87a9539c8e0872089908c5518f4390a0bcade348adc",
-      "bytes": 27936,
+      "sha256": "ef9783e6026a145aa3501ec1fc087179a426a03b61e7ddec17e34b203b163f2f",
+      "bytes": 27222,
       "includes": [
         {
           "line": 1,
@@ -4275,10 +4275,33 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/estimate/charge_estimate_process.h"
+        }
+      ]
+    },
+    {
+      "path": "src/estimate/error_estimate.cpp",
+      "component_by_directory": "estimate",
+      "kind": "translation_unit",
+      "sha256": "e91666ea616891c4f3e455120b8f1f4bb6c1d23fad509bd1529dadd80cc1ba7f",
+      "bytes": 570,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "estimate/charge_estimate_process.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/charge_estimate_process.h"
         },
         {
-          "line": 6,
-          "spelling": "../../include/generator/generator_adaptive.h",
+          "line": 3,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "generator/generator_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/generator/generator_adaptive.h"
@@ -5599,7 +5622,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 141,
+    "source_anchors": 144,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

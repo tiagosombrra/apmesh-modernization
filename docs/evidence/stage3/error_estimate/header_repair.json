@@ -1,0 +1,83 @@
+{
+  "classification": "Engineering-only compiler-checked override declarations and serial dependency guard; no signature, vtable policy or algorithm change.",
+  "diagnostics": 63,
+  "files": {
+    "include/crab_mesh/performer/ranged_id_manager.h": {
+      "before_sha256": "12175a843270e92f5dad37a87bdb0aed0525c08390651709e89eb68e343c5a3c",
+      "after_sha256": "f845a3177934cba8769d59c52b01d5ce29f03bafab720a85cbcc04216e3278d0",
+      "explicit_replacements": 8
+    },
+    "include/data/patch/patch_hermite.h": {
+      "before_sha256": "b76313f5016ece3c438867897f05aed043e394f8e85741e3bd630b4900558e3b",
+      "after_sha256": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478",
+      "explicit_replacements": 1
+    },
+    "include/parallel/ApMeshCommunicator.h": {
+      "before_sha256": "713cc671fb7d87e162292e9c7fb96fa88d63afd27e9fe617e42d790b86226d29",
+      "after_sha256": "b1dfc4f68b89ce2f73c85bd04101542aed6e558ae6748c7fcc0ba39ca477f942",
+      "explicit_replacements": 1
+    },
+    "include/parallel/NoCommunicator.h": {
+      "before_sha256": "dff4ba1363265c93b8b413d7740222e38c9df363147e079a39de8a85cb4423f6",
+      "after_sha256": "2efdedae18a9b2614e9ba729861d7fae4ba9c419b19f26baf25a2a7ec0c8fde8",
+      "explicit_replacements": 94
+    },
+    "include/parallel/NoThreadManager.h": {
+      "before_sha256": "52ddc9ddb4b03aef12c79e881df62caa5ba961000932a4be7cde3bbe3c971a6b",
+      "after_sha256": "41ca272157b6d4be8a5556692ebdf32c89c7763d254135f49163d4d34b65888e",
+      "explicit_replacements": 14
+    },
+    "include/parallel/TMCommunicator.h": {
+      "before_sha256": "11fbc6fdeea4408d9b73b0bdeddc31181906f2e9089369d03da0ecac4055583e",
+      "after_sha256": "7fc82dce2e650c75442c37db61420b0c4a037b4f850f8c27776316a41c11a9ba",
+      "explicit_replacements": 6
+    }
+  },
+  "guard": "Generator header includes actual definitions before requesting omp.h only when USE_OPENMP is enabled. No serial OpenMP dependency; enabled-path runtime qualification remains pending.",
+  "failed_preflight": {
+    "status": "failed",
+    "commands": [
+      {
+        "argv": [
+          "git",
+          "add",
+          "-N",
+          "--",
+          "src/estimate/error_estimate.cpp",
+          "tests/curve_memory/error_estimate_probe.cpp",
+          "tools/extract_error_estimate_backend.py",
+          "tools/qualify_error_estimate.py"
+        ],
+        "exit_code": 0,
+        "log": "0.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "--preset",
+          "windows-gcc17",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "1.log",
+        "log_sha256": "508ded4ee658ddab08930cd1fb89fb34ff2d958d06ef1f48d9db0e662c34abbc"
+      },
+      {
+        "argv": [
+          "python",
+          "tools/quality.py",
+          "tidy",
+          "src/estimate/error_estimate.cpp",
+          "--build",
+          "build/windows-gcc17"
+        ],
+        "exit_code": 1,
+        "log": "2.log",
+        "log_sha256": "c61e7bc5e5f98076149478759443f53668a804b47266421e6d8d1b6d8f49b8f7"
+      }
+    ]
+  }
+}

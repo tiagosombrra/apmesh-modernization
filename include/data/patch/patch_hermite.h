@@ -21,7 +21,7 @@ class PatchHermite : public PatchCoons {
                VectorAdaptive tw11, bool signal_curve1 = true,
                bool signal_curve2 = true, bool signal_curve3 = true,
                bool signal_curve4 = true);
-  ~PatchHermite() = default;
+  ~PatchHermite() override = default;
 
   PointAdaptive CalculatePointUV();
   void PrintAllMatrixPatchHermite();

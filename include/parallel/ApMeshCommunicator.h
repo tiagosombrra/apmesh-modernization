@@ -6,7 +6,7 @@
 class ApMeshCommunicator : public Parallel::TMCommunicator {
  public:
   explicit ApMeshCommunicator(bool sharedParallelismEnabled);
-  ~ApMeshCommunicator();
+  ~ApMeshCommunicator() override;
   bool isMaster() const override;
   using Parallel::TMCommunicator::unpack;
   Parallel::Transferable *unpack(Parallel::Package &p) const override;

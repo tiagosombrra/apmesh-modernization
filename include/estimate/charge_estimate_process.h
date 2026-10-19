@@ -41,6 +41,8 @@ class ChargeEstimateProcess {
   // Transfers sole ownership to the caller; no hidden MeshAdaptive owns the result.
   // Rebind the patch observer before deletion and retain the collective sample owner.
   SubMesh *InitialMeshEstimate(PatchCoons *patch, int degree);
+  // The evaluator is privately owned; mesh/timer remain borrowed and may be mutated.
+  // Error thresholds and the historical minor_degree_ selection are unchanged.
   bool CalculateErroEstimative(MeshAdaptive *mesh, Timer *timer, int degree);
 
   double minor_error_;
