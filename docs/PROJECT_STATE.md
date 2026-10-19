@@ -588,7 +588,12 @@ other helper/template/tree/mate paths, failed-tree observer consumption/retry
 and full-process/parallel/LSan/UBSan stay open. Stages 0-2 remain closed for
 measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
 
-## Active stage 3 slice 15 (#50): Generator curve sample publication
+## Stage 3 slice 15 qualified (#50, PR #51)
+
+Head `7e9a36b80f6104bbe68724d462b71dc140149168` integrated as main `943ccf7b6d85397af6297b69ee97423d2a46311d` through PR #51,
+preserving complete tree `42cd9c3124691b5426b515f713a60fd7dad1386d` (1640 blobs).
+Full exact-head and implementation-main campaigns pass with the same 534
+qualified compiled/tool/test/build/input/contract identities.
 
 Per-curve publication now parks original point/parameter list nodes after all
 entry preparation, snapshots cache values and owns both returned lists before
@@ -642,5 +647,13 @@ change. Source/history/licenses are preserved. C07 and ADR-0016 delimit this
 boundary; evaluator scratch, previous successful curves, initial graph cleanup
 and full Adapter/AdaptCurve/patch/mesh/history/budget rollback remain unqualified.
 
-Exact published-head and implementation-main gates remain required. Full stage 3
-stays open; the next boundary is complete-loop ownership and adaptive rollback.
+Full stage 3 remains open with fifteen qualified slices. Next address collective
+sample ownership and cleanup across the complete AdaptCurve loop, including
+earlier committed curves and the initial graph when a later curve fails; then
+upstream/full adaptive retry and rollback across parameters, patch/mesh observers
+and error/history/budget/acceptance state, plus explicit full CLI disabled
+synchronization. Per-curve publication is a measured boundary, not a whole
+Adapter/AdaptCurve/mesh transaction. Evaluator scratch, other constructors,
+custom sources, helper/template/tree/mate paths, failed-tree observer reuse and
+full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed for measured
+scope; stages 4-11 pending. Doxygen undocumented-API debt remains stage 8.

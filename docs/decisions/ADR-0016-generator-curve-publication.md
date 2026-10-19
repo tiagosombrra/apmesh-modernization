@@ -1,6 +1,6 @@
 # ADR-0016: guard per-curve Generator sample publication
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact published-head and implementation-main gates passed through PR #51.
 Issue #50.
 
 Per-curve publication now parks original point/parameter list nodes after all
