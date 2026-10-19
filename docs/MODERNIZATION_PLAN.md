@@ -3,13 +3,14 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Active item: stage 3 slice 17, automatic serial sample lifetime. Repair the
-demonstrated terminal-exception leak and allocating final cleanup; preserve the
-existing fatal-exception policy and numerical rejection/retry behavior.
-The isolated 53-outcome instrument battery passes; delivery gates remain pending.
-See [scope and evidence](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 17
+(PR #56) is qualified at head `06f4bfd40cff9f09c527777169c5fcf8d053e0c7` and implementation main
+`9703536b21d8d3f02dbe7fbd9f83d3260f461aad`. All exact-head/main gates pass; stage 3 remains open.
+Next isolate InitialMesh temporary/pending ownership. Published-sample terminal
+release does not establish full-process memory or exceptional metadata recovery.
+See [scope and closure audit](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
 
-Current status: stages 0-2 closed for measured scope; stage 3 slice 16
+Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 16
 (#53, PR #54) is qualified.
 Head `8eaeb09fa8137ed32dea5549b4ac07b923d5bac2` integrated as main `186ef0251f460f3139baedae4ed77f30a2b9695b` through PR #54,
 preserving complete tree `0aef3cdf1d5fb1cb9075062cebfb74f68106dabf` (1678 blobs).

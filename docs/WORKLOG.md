@@ -3,10 +3,7 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Active item: stage 3 slice 17, serial curve-sample lifetime. Pinned original
-terminal-exception/cleanup failure reproduced; the scoped-owner battery passes
-53/53. This is not an integrated delivery; exact-head/main regression is pending.
-See [sample lifetime evidence](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
+Latest delivery: stage 3 slice 17 (PR #56); see the final row and linked audit.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -29,21 +26,10 @@ See [sample lifetime evidence](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
 | 2026-10-18, stage 3 slice 14 | #47, PR #48; head e61be31964558b2f3812d2d6341774ede96cc902, main 4cc921ddf0bc5e069118540c1dd278f704abdeb3; evidence/STAGE3_ADAPTER_SAMPLES_CLOSURE.md | Prepare serial Adapter samples/cache/parameters and commit after return construction; head/main CTest 24/24, samples 88/88, 702 denials, prior gates and model regression exact; upstream scratch/selection, Generator publication and full rollback remain open |
 | 2026-10-18, stage 3 slice 15 | #50, PR #51; head 7e9a36b80f6104bbe68724d462b71dc140149168, main 943ccf7b6d85397af6297b69ee97423d2a46311d; evidence/STAGE3_CURVE_PUBLICATION_HANDOFF_CLOSURE.md | Per-curve collective RAII publication, exact list/cache rollback and retry; head/main CTest 25/25, publication 139/139, 2403 denials, nine prior batteries and model traces exact; full-loop ownership and full rollback remain open |
 | 2026-10-19, stage 3 slice 16 | #53, PR #54; head 8eaeb09fa8137ed32dea5549b4ac07b923d5bac2, main 186ef0251f460f3139baedae4ed77f30a2b9695b; evidence/STAGE3_CURVE_SAMPLE_GRAPH_CLOSURE.md | Retain initial collective graph until complete-loop commit, exact point/parameter graph rollback and cleanup across prefixes; head/main CTest 26/26, graph 156/156, 8118 denials, ten prior batteries and exact model traces; orchestration/mesh rollback remains open |
+| 2026-10-19, stage 3 slice 17 | PR #56; head 06f4bfd40cff9f09c527777169c5fcf8d053e0c7, main 9703536b21d8d3f02dbe7fbd9f83d3260f461aad; evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md | Scoped published-sample ownership repairs terminal-exception leaks and allocating final cleanup; CTest 27/27, lifecycle 53/53, eleven prior batteries, exact model traces; full-process/unpublished constructors remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with sixteen qualified
-slices; stages 4-11 pending.
-
-Full stage 3 remains open with sixteen qualified slices. Next characterize
-the remaining orchestration rollback boundary: curve adaptation metadata and
-targets, evaluator scratch, patch/mesh observers, error/history/budget/acceptance
-state and whole adaptive retry/rejection, then explicit full CLI disabled
-synchronization. Complete point/parameter graph rollback is qualified for the
-measured serial operations; it is not full Adapter/AdaptCurve/mesh atomicity.
-Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
-observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
-closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
-
-No full-application memory-safety claim is made.
-
-[Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 16 closure](evidence/STAGE3_CURVE_SAMPLE_GRAPH_CLOSURE.md).
+Current status: stages 0-2 closed; stage 3 in progress with seventeen qualified
+slices; stages 4-11 pending. Next isolate InitialMesh temporary/pending ownership,
+including its central-node copy temporary. Full-process/parallel memory and
+logical candidate-rejection audit remain open. Terminal CLI resource release
+does not require or establish recovery of Generator metadata.

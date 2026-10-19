@@ -56,13 +56,13 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with sixteen qualified ownership/lifecycle slices.
-The latest retains the initial sample graph until the complete curve loop commits
-and restores all point/parameter lists/shared objects on failure without allocating.
-CTest 26/26, graph 156/156 with 8118 allocation denials, ten prior memory
-batteries and exact twice-repeated Eistute/Book regression pass before and after
-integration. See [the latest closure](docs/evidence/STAGE3_CURVE_SAMPLE_GRAPH_CLOSURE.md).
-Full-application memory and parallel qualification remain open.
+Stage 3 is in progress with seventeen qualified ownership/lifecycle slices.
+The latest gives published serial curve samples one automatic lifetime owner,
+repairing terminal-exception leaks and allocating final cleanup. CTest 27/27,
+the 53-outcome lifetime battery, eleven prior memory batteries and exact repeated
+Eistute/Book accepted/rejected traces pass on the exact head and implementation
+main. See [the latest closure audit](docs/evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
+Unpublished constructors, full-application memory and parallel qualification remain open.
 
 ## Repository policy
 
