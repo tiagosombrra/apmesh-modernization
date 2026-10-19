@@ -3,10 +3,7 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Active item: stage 3 slice 19, MeshAdaptive raw SubMesh adoption; original
-physical-graph leaks reproduced, exact delivery qualification pending.
-
-Latest delivery: stage 3 slice 18 (PR #58); see the final ledger row.
+Latest delivery: stage 3 slice 19 (PR #60); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -31,8 +28,9 @@ Latest delivery: stage 3 slice 18 (PR #58); see the final ledger row.
 | 2026-10-19, stage 3 slice 16 | #53, PR #54; head 8eaeb09fa8137ed32dea5549b4ac07b923d5bac2, main 186ef0251f460f3139baedae4ed77f30a2b9695b; evidence/STAGE3_CURVE_SAMPLE_GRAPH_CLOSURE.md | Retain initial collective graph until complete-loop commit, exact point/parameter graph rollback and cleanup across prefixes; head/main CTest 26/26, graph 156/156, 8118 denials, ten prior batteries and exact model traces; orchestration/mesh rollback remains open |
 | 2026-10-19, stage 3 slice 17 | PR #56; head 06f4bfd40cff9f09c527777169c5fcf8d053e0c7, main 9703536b21d8d3f02dbe7fbd9f83d3260f461aad; evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md | Scoped published-sample ownership repairs terminal-exception leaks and allocating final cleanup; CTest 27/27, lifecycle 53/53, eleven prior batteries, exact model traces; full-process/unpublished constructors remain open |
 | 2026-10-19, stage 3 slice 18 | PR #58; head 84e303da51a6ac4c6cf52dbbee7f5fb30c93696e, main e398854bba9f06045b71dd1b965505872106d746; evidence/STAGE3_INITIAL_MESH.md | Actual serial constructor owns pending resources and releases center copy source; CTest 28/28, constructor 27/27/400 denials, twelve prior batteries and exact model traces; general raw mesh adoption remains open |
+| 2026-10-19, stage 3 slice 19 | PR #60; head bebe4f5273719304fd00967bfaf7ae74de63f351, main e04a76a6103af5af5b116447c63c4de1ee047a0c; evidence/STAGE3_MESH_ADOPTION.md | Consume SubMesh ownership before growth/negative return; CTest 29/29, mesh 36/36 with six denials, thirteen prior batteries and exact model traces; raw element adoption remains open |
 
-Current status: stages 0-2 closed; stage 3 in progress with eighteen qualified
-slices; stages 4-11 pending. Next isolate general MeshAdaptive raw SubMesh
-adoption. OpenMP constructors, other unpublished resources, logical rejection
-audit and full-process/parallel memory remain open.
+Current status: stages 0-2 closed; stage 3 in progress with nineteen qualified
+slices; stages 4-11 pending. Next isolate SubMesh raw element adoption. OpenMP
+constructors, other unpublished resources, logical rejection audit and full-process/
+parallel memory remain open.

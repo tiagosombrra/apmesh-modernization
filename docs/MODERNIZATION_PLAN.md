@@ -3,12 +3,14 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Active item: stage 3 slice 19, general MeshAdaptive raw adoption. Reproduce and
-repair ownership before growth/negative return; qualify the actual production
-units and unchanged model traces before exact-head/main closure. Stage 3 stays
-open. See [scope and gates](evidence/STAGE3_MESH_ADOPTION.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 19
+(PR #60) is qualified at head `bebe4f5273719304fd00967bfaf7ae74de63f351` and main
+`e04a76a6103af5af5b116447c63c4de1ee047a0c`. All exact-head/main gates pass; stage 3 remains open.
+Next isolate SubMesh raw element adoption. MeshAdaptive insertion qualification
+does not cover element insertion, OpenMP constructors or whole-process memory.
+See [scope and closure audit](evidence/STAGE3_MESH_ADOPTION.md).
 
-Current status: stages 0-2 closed for measured scope; stage 3 slice 18
+Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 18
 (PR #58) is qualified at head `84e303da51a6ac4c6cf52dbbee7f5fb30c93696e` and main
 `e398854bba9f06045b71dd1b965505872106d746`. All exact-head/main gates pass; stage 3 remains open.
 Next isolate general MeshAdaptive raw adoption. The measured initial-mesh repair

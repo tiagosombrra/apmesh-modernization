@@ -1,0 +1,15 @@
+{
+  "classification": "static source finding, not dynamic memory qualification",
+  "entry_revision": "26d13456b60699786f5697c91b38f6734252fd61",
+  "path": "src/estimate/charge_estimate_process.cpp",
+  "git_blob": "7fce20cfc9ad7ec36b648b5246288085ef33f738",
+  "sha256": "179585756ad741bcad1dded027bd7ddcc87291d9a059f6d7e1a7ade3915ebe14",
+  "findings": [
+    "InitialMeshEstimate creates an unreachable raw MeshAdaptive, adopts sub, then returns sub without transferring that hidden owner.",
+    "CalculateAreaTriangleMedio adopts the returned sub into another MeshAdaptive, leaving duplicate ownership in the unreachable original owner. Its own raw mesh root also has no visible release.",
+    "CalculateNumbersTriangle returns only the element count from the same owning constructor without releasing its graph.",
+    "This audit establishes source structure only; actual estimator execution, leak totals and observer/exception behavior remain unmeasured."
+  ],
+  "reachability": "The visible Generator charge-estimation entry is USE_MPI-conditional; the two historical numeric wrapper methods have no production calls found by source search. This does not establish global dead-code elimination or arbitrary API safety.",
+  "scope": "Valid exclusive MeshAdaptive insertion is qualified separately. Do not silently remove/rewrite the estimator or classify its formulas/policies as validated."
+}

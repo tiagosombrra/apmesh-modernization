@@ -1,6 +1,8 @@
 # Stage 3 slice 19: MeshAdaptive raw SubMesh adoption
 
-Status: candidate; exact-head and implementation-main qualification pending.
+Status: qualified and integrated through PR #60.
+Head `bebe4f5273719304fd00967bfaf7ae74de63f351`; implementation main `e04a76a6103af5af5b116447c63c4de1ee047a0c`.
+Complete tree `ffdfa4677b419b8ef4fef30ad3312257f142dcd5` (1740 blobs); 549 protected inputs.
 Entry main: `26d13456b60699786f5697c91b38f6734252fd61`.
 
 ## Cause, contract and bounded repair
@@ -19,12 +21,21 @@ replacement and sparse/null slots. No shared ownership or metadata snapshots.
 Successful replacement/removal still invalidates foreign observers; callers must
 rebind them. A failed argument is destroyed and cannot be reused.
 
-The production call-site audit finds six positional generator calls (domain
-reconstruction and serial/OpenMP initialization) and four append calls in charge
-estimation. They pass freshly produced meshes with nonnegative loop indices;
-the qualified serial initial-mesh handoff uses an already sized valid slot.
-This audit does not qualify all callers for exceptional execution. Constructor
-failure before the method is entered remains a separate boundary.
+The production call-site audit finds six positional generator calls and four
+append calls in charge estimation. Generator indices are nonnegative; the
+qualified serial initialization uses a presized valid slot. This does not qualify
+all callers for exceptional execution or establish that all raw arguments are
+uniquely owned. In particular, InitialMeshEstimate allocates an unreachable raw
+MeshAdaptive, adopts sub and returns sub without transferring the hidden owner.
+CalculateAreaTriangleMedio adopts that result again; CalculateNumbersTriangle
+returns only its count without releasing the graph. These are static source
+findings, not measured leak totals. The Generator charge-estimation entry is
+USE_MPI-conditional; no production calls to those two historical numeric wrappers
+were found. Arbitrary API safety or dead-code elimination is not established.
+The unchanged source identity and findings are retained in
+stage3/mesh_adoption/caller_findings.json. Estimator root ownership requires a
+separate repair/qualification; constructor failure before insertion remains
+outside this boundary.
 
 Classification: behavior-changing resource-lifetime defect repair. No formula,
 floating-point order, boundary synchronization, quadtree/template/front,
@@ -97,29 +108,40 @@ the pinned Git source/include/libs snapshot and set AP_MESH_ADOPTION_SOURCE_ROOT
 to it in separate original ASan/CRT builds; compile the same probe.
 Windows ASan leak detection is disabled; leak measurements come from Debug CRT.
 
-## Delivery gates and remaining findings
+## Closure audit and remaining findings
 
-Candidate full campaign passes GCC build, CTest 29/29 (zero skips, 74 Python
-controls), all fourteen batteries/968 expected outcomes, selected mesh-unit
-lint/format/inventory and twice-repeated exact Eistute/Book accepted/rejected
-comparisons. The new battery passes 36/36 with six denials, five nonallocating
-paths and zero retained blocks/bytes in valid CRT cases. Exact published-head
-and post-merge main gates remain required before integration/closure.
-The new CTest is
-application.mesh_adoption_contracts, with all prior tests still required.
-Candidate/head/main reports, original outcomes, command and raw log SHA256,
-toolchain and frozen protected inputs are retained in stage3/mesh_adoption.
+Exact published-head and implementation-main full campaigns pass: GCC serial
+C++17 Release build, CTest 29/29 (zero skips, 74 Python controls), fourteen memory
+batteries/968 expected outcomes, selected mesh-unit lint, explicit formatting,
+architecture freshness and whitespace. The new actual-unit battery passes
+36/36, all six observed growth allocation denials and five nonallocating paths;
+all valid CRT cases retain zero blocks/bytes. Eighteen original/repaired normal
+successful observations match. The original ten failures remain negative evidence.
 
-| Audit scope | Current result |
+Both full campaigns repeat Eistute/Book twice, preserving all nine attempted
+accepted/rejected OBJ/incidence states, 189 CSV fields and 1,168/4,256 last-accepted
+triangles exactly. Inventory: 139 production files, 65 units, 74 headers, 22
+contracts/124 anchors; the existing six-header cycle is unchanged.
+
+Candidate/head/main compact reports retain every command, outcome identity and
+raw log SHA256. Documentation closure preserves all 549 compiled/tool/test/build/
+input/contract identities and retains full instrument/numerical evidence against
+those inputs; no fresh full numerical/memory campaign is claimed for documentation
+commits. Exact documentation head/main build, CTest and complete Git/working-byte
+checks are required. Zero configured remote checks means absence of hosted gates,
+not a green hosted test campaign.
+
+| Audit scope | Result |
 | --- | --- |
-| Code | Two entry owners before storage growth/negative return; only mesh insertion changed |
-| Tests | Actual physical graph, fault and nonallocating paths, positive/negative instruments; full exact delivery pending |
-| Contracts | C04 and ADR-0020 specify consumption, invalid alias adoption and observer limits |
-| Documentation | Root cause, original failures, harness failure, commands and coverage limits retained |
-| Scientific scope | Numerical formulas/order and selection/rejection/acceptance/stopping unchanged; full model regression required |
-| Known failures/coverage | Original defects retained; required unmeasured delivery gates block integration |
+| Code | Entry owners precede both growth and negative return; argument consumed on every valid path |
+| Tests | Actual graph identity/area/adjacency/destruction, all observed growth ordinals, nonallocating paths and real negative controls; full exact-head/main gates pass |
+| Contracts | C04 and ADR-0020 specify consumption, exclusive actual SubMesh arguments and foreign observer limits |
+| Documentation | Original defects, harness compile failure, final source identities/commands and coverage limits retained |
+| Scientific scope | No formula/order/selection change; exact full accepted/rejected article traces pass |
+| Known failures/coverage | Ten original failures retained; candidate required gates pass; whole stage 3 remains open with limits below |
 
-Stage 3 remains open. Next isolate SubMesh::SetElement raw element adoption:
+Stage 3 remains open. The estimator hidden root/duplicate adoption finding remains
+open and dynamically unqualified. Next isolate SubMesh::SetElement raw element adoption:
 its emplacement can allocate before constructing the owner. AddElement already
 accepts an owning unique_ptr and is a distinct, safe entry point; SetNoh copies a
 borrowed source and must not be reinterpreted as adoption. Other constructors,
