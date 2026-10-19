@@ -3,10 +3,12 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current active item: stage 3 slice 24, completed-triangle observer cleanup and
-failed-adoption live-graph restoration. Candidate measured; exact-head/main gates
-and integration pending. Next isolate estimator hidden/duplicate mesh ownership.
-See [scope and audit](evidence/STAGE3_TRIANGLE_LIFETIME.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 24
+(PR #70) is qualified at head `7d22766e562669db283bedbf09fab59663546d18` and main
+`78bc1ff045bcabebc3ac5536e53a1a87182ad365`. All exact-head/main gates pass; stage 3 remains open.
+Next isolate estimator hidden/duplicate mesh ownership. Borrowed-node lifetime,
+foreign observer copies, cache refresh and whole-process memory remain separate.
+See [audit](evidence/STAGE3_TRIANGLE_LIFETIME.md).
 
 Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 23
 (PR #68) is qualified at head `f29018fea3d3490358396381cea1dc7967aaf1ac` and main
