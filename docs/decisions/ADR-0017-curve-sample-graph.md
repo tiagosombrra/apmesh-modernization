@@ -1,6 +1,6 @@
 # ADR-0017: retain initial samples until complete curve-loop commit
 
-Status: candidate qualified; exact published-head and implementation-main gates required.
+Status: accepted; exact published-head and implementation-main gates passed through PR #54.
 Issue #53.
 
 CurveSampleGraphTransaction now spans serial AdaptCurve preparation/policy and

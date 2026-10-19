@@ -1,6 +1,6 @@
 # Project state
 
-Updated: 2026-10-18 (America/Fortaleza).
+Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
 ## Completed in stage 0
@@ -658,7 +658,12 @@ custom sources, helper/template/tree/mate paths, failed-tree observer reuse and
 full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed for measured
 scope; stages 4-11 pending. Doxygen undocumented-API debt remains stage 8.
 
-## Active stage 3 slice 16 (#53): complete curve sample graph ownership
+## Stage 3 slice 16 qualified (#53, PR #54)
+
+Head `8eaeb09fa8137ed32dea5549b4ac07b923d5bac2` integrated as main `186ef0251f460f3139baedae4ed77f30a2b9695b` through PR #54,
+preserving complete tree `0aef3cdf1d5fb1cb9075062cebfb74f68106dabf` (1678 blobs).
+Full exact-head and implementation-main campaigns pass with the same 538
+qualified compiled/tool/test/build/input/contract identities.
 
 CurveSampleGraphTransaction now spans serial AdaptCurve preparation/policy and
 the complete curve loop. All equivalent working point/parameter lists and the
@@ -718,5 +723,12 @@ competing geometry-control/physical mesh owners, qualified inner operations and
 nonthrowing destructors. Full metadata/error/history/budget and patch/mesh/
 acceptance rollback, evaluator scratch and full-process memory stay unqualified.
 
-Exact published-head and implementation-main gates remain required. Full stage 3
-stays open; orchestration metadata and whole adaptive rollback follow next.
+Full stage 3 remains open with sixteen qualified slices. Next characterize
+the remaining orchestration rollback boundary: curve adaptation metadata and
+targets, evaluator scratch, patch/mesh observers, error/history/budget/acceptance
+state and whole adaptive retry/rejection, then explicit full CLI disabled
+synchronization. Complete point/parameter graph rollback is qualified for the
+measured serial operations; it is not full Adapter/AdaptCurve/mesh atomicity.
+Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
+observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
+closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.

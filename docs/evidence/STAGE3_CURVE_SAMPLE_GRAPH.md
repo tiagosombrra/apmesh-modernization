@@ -62,7 +62,7 @@ competing geometry-control/physical mesh owners, qualified inner operations and
 nonthrowing destructors. Full metadata/error/history/budget and patch/mesh/
 acceptance rollback, evaluator scratch and full-process memory stay unqualified.
 
-Candidate passes; exact published-head/main gates remain required. Compact
+Candidate, exact published-head and implementation-main gates pass through PR #54; see STAGE3_CURVE_SAMPLE_GRAPH_CLOSURE.md. Compact
 reports, commands, source/executable identities, verified original extraction,
 all original outcome/retention inventories and raw-log hashes are under
 stage3/curve_sample_graph/. The 538 protected input identities are recorded
