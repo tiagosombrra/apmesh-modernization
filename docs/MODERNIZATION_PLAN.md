@@ -3,52 +3,75 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stages 0-2 closed for measured scope; stage 3 slice 14
-(#47, PR #48) is qualified.
-Head `e61be31964558b2f3812d2d6341774ede96cc902` integrated through PR #48 as main
-`4cc921ddf0bc5e069118540c1dd278f704abdeb3`, preserving complete tree
-`93d7519b1c93222f78e95ba71f865bcb2d0e1cd0` (1597 blobs). Full exact-head and
-implementation-main campaigns pass: CTest 24/24, zero skips, 74 controls;
-samples 88/88, rebuild 117/117, snapshots 89/89, sync 73/73, adoption 53/53,
-copy 30/30, curve 19/19, UV 81/81, node 7/7; actual new-unit lint, explicit
-formatting/inventory and exact twice-repeated Eistute/Book regression. All nine
-attempted OBJ/acceptance/rejection/incidence states, 189 CSV fields and
-1,168/4,256 last-accepted triangles remain exact.
+Current status: stages 0-2 closed for measured scope; stage 3 slice 15
+(#50, PR #51) is qualified.
+Head `7e9a36b80f6104bbe68724d462b71dc140149168` integrated as main `943ccf7b6d85397af6297b69ee97423d2a46311d` through PR #51,
+preserving complete tree `42cd9c3124691b5426b515f713a60fd7dad1386d` (1640 blobs).
+Full exact-head and implementation-main campaigns pass with the same 534
+qualified compiled/tool/test/build/input/contract identities.
 
-Original: 27 strict sweeps stop at parameter value/list-node changes, with later
-ordinals/CRT retention unmeasured. Three retention-only sweeps reclaim reachable
-partial state and finish with 32 retained blocks each over their denials, without
-rollback/retry claims. Other 58 outcomes expected. Unique pending nodes, cache
-changes, parameters and output are prepared before commit after return-list
-construction. Thirty positive calibrated sweeps deny 702 allocations;
-explicit actual MSVC list-move denial and final return-edge preservation pass.
-All 54 normal complete traces match original. Existing cache entry nodes remain
-stable; endpoint scalar/adjacency copy, reuse, aliases, sample/ID order remain.
-Consumed IDs and evaluator scratch are not rolled back. Preparation changes
-resource behavior/peak storage explicitly; no performance claim.
+Per-curve publication now parks original point/parameter list nodes after all
+entry preparation, snapshots cache values and owns both returned lists before
+allocating point-observer copies. The curve pass, surface pass and optional
+target rebuild retain their order and numerical inputs. Rollback erases only new
+cache keys, restores existing values in place, deduplicates/deletes new samples
+without allocation and restores original point/parameter nodes. Entry samples
+and preexisting cache values stay borrowed, including shared endpoints. Rebuild
+may already have deleted discarded surface interiors; rollback never consumes
+those stale curve observers. Commit deletes superseded first-pass samples and
+transfers final samples to the existing collective graph lifetime. The unused
+result-vector storage and late allocating keep-set are removed explicitly.
 
-Both serial tails are verified byte-identical; original uses 14 pinned units
-plus the unchanged tail adapter, candidate 15 actual units. Full old Adapter/
-Generator instrumentation is not claimed. Only the new target consistently
-disables optional NRVO and Debug iterator metadata, retaining actual heap and
-negative controls. Valid 87-case preliminary coverage remains. Input/cache
-nodes stay borrowed and caller collective result lifetime remains. C07/ADR-0015
-delimit upstream sorting/selection, scratch, later Generator publication and
-full Adapter/AdaptCurve/mesh rollback. Closed/reversed and overwrite fixtures
-are policy/ownership controls, not geometric consistency certification. No
-scientific formula/order, policy, tolerance, budget or verifier change. See
-evidence/STAGE3_ADAPTER_SAMPLES_CLOSURE.md.
+Publication 139/139: 54 normal ASan/CRT outcomes, 27 positive calibrated sweeps
+denying 2403 allocations, 54 controlled upstream abort/restore/retry outcomes,
+and four list-move/UAF/leak/hook controls. Every denied ordinal propagates once;
+attempts equal ordinal+1, requiring allocation-free rollback. Final denied
+publication follows all expected ID requests, including growth/shrink/equal/no
+rebuild, cached/closed/reversed/two-endpoint and alias-overwrite fixtures across
+three actual curve types. Independent interior polynomial geometry and borrowed
+scalar/adjacency state, point/parameter/cache entry identity and successful retry
+are required. Consumed IDs stay consumed; cached two-endpoint first passes
+correctly request zero. All 54 normal complete original/repaired traces match.
 
-Full stage 3 remains open with fourteen qualified slices. Next characterize
-Generator point-observer publication and collective sample ownership across
-curve/surface refinement, then upstream/full adaptive retry/rollback over
-parameters, patch/mesh observers and error/history/budget state, plus explicit
-full CLI disabled synchronization. Construction-tail and paired-rebuild commits
-are qualified narrow boundaries, not full Adapter/AdaptCurve/mesh transactions.
-Evaluator scratch, remaining construction/mutation, generic/custom sources,
-other helper/template/tree/mate paths, failed-tree observer consumption/retry
-and full-process/parallel/LSan/UBSan stay open. Stages 0-2 remain closed for
-measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
+Original: 27 allocation sweeps and 54 controlled upstream aborts stop at the
+first partial-publication assertion; later unsafe observer consumption, later
+ordinals and CRT retention in aborted cases are unmeasured. Other 58 outcomes
+are expected. Sixteen pinned production units plus a verified publication-block
+adapter are compared against seventeen actual candidate units plus the actual
+publication template. Callbacks use actual sample/rebuild units, controlled
+parameters and a controlled upstream point-list reversal; full historical
+Generator/Adapter TUs and upstream numerical selection are not instrumented.
+Original unused storage is rebound to a one-curve vector initialized within the
+fixture operation; allocation timing/counts/bytes/peak storage change explicitly,
+without a performance claim. Only the new target consistently disables optional
+NRVO and Debug iterator metadata, retaining actual CRT heap and negative controls.
+
+Required prior batteries: samples 88/88, rebuild 117/117, snapshots 89/89,
+sync 73/73, adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7.
+CTest 25/25, zero skips, 74 Python controls; new-unit read-only lint, explicit
+formatting and inventory pass (133 production files, 62 units, 71 headers;
+22 contracts/113 anchors; existing six-header cycle retained). Two repetitions
+per Eistute/Book preserve all nine attempted OBJ/acceptance/rejection/incidence
+states, 189 CSV fields and 1,168/4,256 last-accepted triangles exactly.
+
+Classification: behavior-changing ownership/exception-consistency defect repair
+on failure paths, with success-preserving engineering consolidation. No scientific
+formula, float order, numerical selection, synchronization, quadtree/templates,
+front reconstruction, tolerance, budget, verifier or adaptation/acceptance/stopping
+change. Source/history/licenses are preserved. C07 and ADR-0016 delimit this
+boundary; evaluator scratch, previous successful curves, initial graph cleanup
+and full Adapter/AdaptCurve/patch/mesh/history/budget rollback remain unqualified.
+
+Full stage 3 remains open with fifteen qualified slices. Next address collective
+sample ownership and cleanup across the complete AdaptCurve loop, including
+earlier committed curves and the initial graph when a later curve fails; then
+upstream/full adaptive retry and rollback across parameters, patch/mesh observers
+and error/history/budget/acceptance state, plus explicit full CLI disabled
+synchronization. Per-curve publication is a measured boundary, not a whole
+Adapter/AdaptCurve/mesh transaction. Evaluator scratch, other constructors,
+custom sources, helper/template/tree/mate paths, failed-tree observer reuse and
+full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed for measured
+scope; stages 4-11 pending. Doxygen undocumented-API debt remains stage 8.
 
 Earlier delivery histories and scope limits remain in PROJECT_STATE.md,
 WORKLOG.md and the unchanged evidence records. Architecture: see
@@ -133,60 +156,3 @@ rules on changed code in reviewed batches; inventory legacy debt without hiding
 it behind disabled checks. Never auto-apply semantic modernization fixes.
 No paid Actions, hosted workflows or dependency auto-updaters are configured.
 Details, commands and primary-source rationale: QUALITY_AUTOMATION.md.
-
-## Active stage 3 slice 15 (#50): Generator curve sample publication
-
-Per-curve publication now parks original point/parameter list nodes after all
-entry preparation, snapshots cache values and owns both returned lists before
-allocating point-observer copies. The curve pass, surface pass and optional
-target rebuild retain their order and numerical inputs. Rollback erases only new
-cache keys, restores existing values in place, deduplicates/deletes new samples
-without allocation and restores original point/parameter nodes. Entry samples
-and preexisting cache values stay borrowed, including shared endpoints. Rebuild
-may already have deleted discarded surface interiors; rollback never consumes
-those stale curve observers. Commit deletes superseded first-pass samples and
-transfers final samples to the existing collective graph lifetime. The unused
-result-vector storage and late allocating keep-set are removed explicitly.
-
-Publication 139/139: 54 normal ASan/CRT outcomes, 27 positive calibrated sweeps
-denying 2403 allocations, 54 controlled upstream abort/restore/retry outcomes,
-and four list-move/UAF/leak/hook controls. Every denied ordinal propagates once;
-attempts equal ordinal+1, requiring allocation-free rollback. Final denied
-publication follows all expected ID requests, including growth/shrink/equal/no
-rebuild, cached/closed/reversed/two-endpoint and alias-overwrite fixtures across
-three actual curve types. Independent interior polynomial geometry and borrowed
-scalar/adjacency state, point/parameter/cache entry identity and successful retry
-are required. Consumed IDs stay consumed; cached two-endpoint first passes
-correctly request zero. All 54 normal complete original/repaired traces match.
-
-Original: 27 allocation sweeps and 54 controlled upstream aborts stop at the
-first partial-publication assertion; later unsafe observer consumption, later
-ordinals and CRT retention in aborted cases are unmeasured. Other 58 outcomes
-are expected. Sixteen pinned production units plus a verified publication-block
-adapter are compared against seventeen actual candidate units plus the actual
-publication template. Callbacks use actual sample/rebuild units, controlled
-parameters and a controlled upstream point-list reversal; full historical
-Generator/Adapter TUs and upstream numerical selection are not instrumented.
-Original unused storage is rebound to a one-curve vector initialized within the
-fixture operation; allocation timing/counts/bytes/peak storage change explicitly,
-without a performance claim. Only the new target consistently disables optional
-NRVO and Debug iterator metadata, retaining actual CRT heap and negative controls.
-
-Required prior batteries: samples 88/88, rebuild 117/117, snapshots 89/89,
-sync 73/73, adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7.
-CTest 25/25, zero skips, 74 Python controls; new-unit read-only lint, explicit
-formatting and inventory pass (133 production files, 62 units, 71 headers;
-22 contracts/113 anchors; existing six-header cycle retained). Two repetitions
-per Eistute/Book preserve all nine attempted OBJ/acceptance/rejection/incidence
-states, 189 CSV fields and 1,168/4,256 last-accepted triangles exactly.
-
-Classification: behavior-changing ownership/exception-consistency defect repair
-on failure paths, with success-preserving engineering consolidation. No scientific
-formula, float order, numerical selection, synchronization, quadtree/templates,
-front reconstruction, tolerance, budget, verifier or adaptation/acceptance/stopping
-change. Source/history/licenses are preserved. C07 and ADR-0016 delimit this
-boundary; evaluator scratch, previous successful curves, initial graph cleanup
-and full Adapter/AdaptCurve/patch/mesh/history/budget rollback remain unqualified.
-
-Exact published-head and implementation-main gates remain required. Full stage 3
-stays open; the next boundary is complete-loop ownership and adaptive rollback.

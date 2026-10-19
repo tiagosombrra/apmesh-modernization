@@ -56,7 +56,7 @@ change. Source/history/licenses are preserved. C07 and ADR-0016 delimit this
 boundary; evaluator scratch, previous successful curves, initial graph cleanup
 and full Adapter/AdaptCurve/patch/mesh/history/budget rollback remain unqualified.
 
-Candidate qualification passes; exact published-head/main gates remain required.
+Candidate, exact published-head and implementation-main qualification pass through PR #51; see STAGE3_CURVE_PUBLICATION_HANDOFF_CLOSURE.md.
 Commands, executable/source/complete Git-tree identities, all original normal
 traces/partial-publication diagnostics and raw-log hashes are in
 stage3/curve_publication/. All 534 qualified input bytes are recorded once.

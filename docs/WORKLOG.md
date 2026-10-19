@@ -22,79 +22,23 @@ failures, hashes and limitations stay in the linked evidence records.
 | 2026-10-18, stage 3 slice 12 | #41, PR #42; head 98528aeba68bb0b016b40eeeaff8d2bac6acc297, main 358107faff5d6d2cdcd63eba12114abf7f7dc5ec; evidence/STAGE3_CURVE_SNAPSHOTS_CLOSURE.md | Prepared complete sample graph before restoration; head/main CTest 22/22, snapshots 89/89, prior instruments pass, 536 denials and exact model regression; parameter/full adaptive rollback remain open |
 | 2026-10-18, stage 3 slice 13 | #44, PR #45; head ffdde7248564c8e072138d9673871baa4f13e217, main 3e628e6445b2638ff73a51fa8bb1a9aed440647c; evidence/STAGE3_CURVE_REBUILD_CLOSURE.md | Prepare paired target rebuild before swaps/deletion; head/main CTest 23/23, rebuild 117/117, prior instruments pass, 597 denials and exact model regression; consumed IDs, later curve observer publication/full rollback remain separate |
 | 2026-10-18, stage 3 slice 14 | #47, PR #48; head e61be31964558b2f3812d2d6341774ede96cc902, main 4cc921ddf0bc5e069118540c1dd278f704abdeb3; evidence/STAGE3_ADAPTER_SAMPLES_CLOSURE.md | Prepare serial Adapter samples/cache/parameters and commit after return construction; head/main CTest 24/24, samples 88/88, 702 denials, prior gates and model regression exact; upstream scratch/selection, Generator publication and full rollback remain open |
+| 2026-10-18, stage 3 slice 15 | #50, PR #51; head 7e9a36b80f6104bbe68724d462b71dc140149168, main 943ccf7b6d85397af6297b69ee97423d2a46311d; evidence/STAGE3_CURVE_PUBLICATION_HANDOFF_CLOSURE.md | Per-curve collective RAII publication, exact list/cache rollback and retry; head/main CTest 25/25, publication 139/139, 2403 denials, nine prior batteries and model traces exact; full-loop ownership and full rollback remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with fourteen qualified
+Current status: stages 0-2 closed; stage 3 in progress with fifteen qualified
 slices; stages 4-11 pending.
 
-Full stage 3 remains open with fourteen qualified slices. Next characterize
-Generator point-observer publication and collective sample ownership across
-curve/surface refinement, then upstream/full adaptive retry/rollback over
-parameters, patch/mesh observers and error/history/budget state, plus explicit
-full CLI disabled synchronization. Construction-tail and paired-rebuild commits
-are qualified narrow boundaries, not full Adapter/AdaptCurve/mesh transactions.
-Evaluator scratch, remaining construction/mutation, generic/custom sources,
-other helper/template/tree/mate paths, failed-tree observer consumption/retry
-and full-process/parallel/LSan/UBSan stay open. Stages 0-2 remain closed for
-measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
+Full stage 3 remains open with fifteen qualified slices. Next address collective
+sample ownership and cleanup across the complete AdaptCurve loop, including
+earlier committed curves and the initial graph when a later curve fails; then
+upstream/full adaptive retry and rollback across parameters, patch/mesh observers
+and error/history/budget/acceptance state, plus explicit full CLI disabled
+synchronization. Per-curve publication is a measured boundary, not a whole
+Adapter/AdaptCurve/mesh transaction. Evaluator scratch, other constructors,
+custom sources, helper/template/tree/mate paths, failed-tree observer reuse and
+full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay closed for measured
+scope; stages 4-11 pending. Doxygen undocumented-API debt remains stage 8.
 
 No full-application memory-safety claim is made.
 
 [Current state](PROJECT_STATE.md), [plan](MODERNIZATION_PLAN.md),
-[slice 14 closure](evidence/STAGE3_ADAPTER_SAMPLES_CLOSURE.md).
-
-## Active stage 3 slice 15 (#50): Generator curve sample publication
-
-Per-curve publication now parks original point/parameter list nodes after all
-entry preparation, snapshots cache values and owns both returned lists before
-allocating point-observer copies. The curve pass, surface pass and optional
-target rebuild retain their order and numerical inputs. Rollback erases only new
-cache keys, restores existing values in place, deduplicates/deletes new samples
-without allocation and restores original point/parameter nodes. Entry samples
-and preexisting cache values stay borrowed, including shared endpoints. Rebuild
-may already have deleted discarded surface interiors; rollback never consumes
-those stale curve observers. Commit deletes superseded first-pass samples and
-transfers final samples to the existing collective graph lifetime. The unused
-result-vector storage and late allocating keep-set are removed explicitly.
-
-Publication 139/139: 54 normal ASan/CRT outcomes, 27 positive calibrated sweeps
-denying 2403 allocations, 54 controlled upstream abort/restore/retry outcomes,
-and four list-move/UAF/leak/hook controls. Every denied ordinal propagates once;
-attempts equal ordinal+1, requiring allocation-free rollback. Final denied
-publication follows all expected ID requests, including growth/shrink/equal/no
-rebuild, cached/closed/reversed/two-endpoint and alias-overwrite fixtures across
-three actual curve types. Independent interior polynomial geometry and borrowed
-scalar/adjacency state, point/parameter/cache entry identity and successful retry
-are required. Consumed IDs stay consumed; cached two-endpoint first passes
-correctly request zero. All 54 normal complete original/repaired traces match.
-
-Original: 27 allocation sweeps and 54 controlled upstream aborts stop at the
-first partial-publication assertion; later unsafe observer consumption, later
-ordinals and CRT retention in aborted cases are unmeasured. Other 58 outcomes
-are expected. Sixteen pinned production units plus a verified publication-block
-adapter are compared against seventeen actual candidate units plus the actual
-publication template. Callbacks use actual sample/rebuild units, controlled
-parameters and a controlled upstream point-list reversal; full historical
-Generator/Adapter TUs and upstream numerical selection are not instrumented.
-Original unused storage is rebound to a one-curve vector initialized within the
-fixture operation; allocation timing/counts/bytes/peak storage change explicitly,
-without a performance claim. Only the new target consistently disables optional
-NRVO and Debug iterator metadata, retaining actual CRT heap and negative controls.
-
-Required prior batteries: samples 88/88, rebuild 117/117, snapshots 89/89,
-sync 73/73, adoption 53/53, copy 30/30, curve 19/19, UV 81/81, node 7/7.
-CTest 25/25, zero skips, 74 Python controls; new-unit read-only lint, explicit
-formatting and inventory pass (133 production files, 62 units, 71 headers;
-22 contracts/113 anchors; existing six-header cycle retained). Two repetitions
-per Eistute/Book preserve all nine attempted OBJ/acceptance/rejection/incidence
-states, 189 CSV fields and 1,168/4,256 last-accepted triangles exactly.
-
-Classification: behavior-changing ownership/exception-consistency defect repair
-on failure paths, with success-preserving engineering consolidation. No scientific
-formula, float order, numerical selection, synchronization, quadtree/templates,
-front reconstruction, tolerance, budget, verifier or adaptation/acceptance/stopping
-change. Source/history/licenses are preserved. C07 and ADR-0016 delimit this
-boundary; evaluator scratch, previous successful curves, initial graph cleanup
-and full Adapter/AdaptCurve/patch/mesh/history/budget rollback remain unqualified.
-
-Exact published-head and implementation-main gates remain required. Full stage 3
-stays open; the next boundary is complete-loop ownership and adaptive rollback.
+[slice 15 closure](evidence/STAGE3_CURVE_PUBLICATION_HANDOFF_CLOSURE.md).
