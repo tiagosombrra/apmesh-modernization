@@ -1,0 +1,8 @@
+{
+  "revision": "db7f9010d88c14cb076830ae178d3efdaaa77945",
+  "source_blob": "83f33c0b516fc88e1b47087be2ef3063e9b6c4d1",
+  "capture_sha256": "7cd521fdee486145569b8f7b43bc3dbba053662669e5827320733651ea14eeab",
+  "retire_sha256": "7344572e00587d608e1b3d7d47ac9d5727047a21806fd32852e4b55af100e4d2",
+  "adapter_sha256": "3574f4ea49d23d30655d4a9e07c966b3716180c654258c28d61889a334aff2a7",
+  "scope": "Capture and retirement blocks are verbatim in an interface adapter holding the original local map/set. Controlled loop uses pinned actual per-curve publication/sample/rebuild units; not the full old Generator/Adapter TUs or upstream numerical selection. Capture lifetime moves into the wrapper constructor before the controlled loop; allocation behavior is measured, not asserted identical."
+}

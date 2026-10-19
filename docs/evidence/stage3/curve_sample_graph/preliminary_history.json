@@ -1,0 +1,12 @@
+[
+  {
+    "local_log": "build/s16-initial-probe-compile-failure.log",
+    "sha256": "58454142fbb91d6becdb9d63a6e14f0991c2310ae0a30016abe412b795d5637e",
+    "note": "Initial fixture compile failed on an incorrect legacy SubMesh method name and const use of a nonconst legacy getter. Corrected only in the probe; no production API or diagnostic suppression change."
+  },
+  {
+    "local_log": "build/s16-first-gcc-build.log",
+    "sha256": "38faae681f5470cb69e85f9e1d70610acb743e6d313acad35ccd696abdd82f1a",
+    "note": "Preliminary PowerShell capture wraps CMake GLOB mismatch/regeneration output as NativeCommandError. It records target links but is not accepted as native-exit gate evidence. Required campaigns use binary subprocess capture and native return-code checks."
+  }
+]

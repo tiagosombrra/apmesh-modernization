@@ -348,3 +348,22 @@ Seventeen actual candidate units plus the actual template; original sixteen
 pinned units plus a verified block adapter with parameter-controlled callbacks.
 This is not full old Generator/Adapter or full-process memory instrumentation.
 See evidence/STAGE3_CURVE_PUBLICATION_HANDOFF.md and ADR-0016.
+
+## Complete curve sample graph lifetime (#53)
+
+Required application.curve_sample_graph_contracts brings CTest to 26 entries and
+74 Python controls. Build curve_sample_graph_probe from tests/curve_memory in
+separate ASan RelWithDebInfo/Debug CRT directories, setting AP_MESH_CURVE_SOURCE_ROOT
+and AP_MESH_CURVE_ASAN. Original additionally sets AP_MESH_SAMPLE_GRAPH_HEADER to
+the retained verified capture/retirement adapter. Run
+tools/qualify_curve_sample_graph.py with --asan, --crt, --runtime and a new --output
+directory. Require 156 outcomes/8118 calibrated denials, exact restoration/
+retry, allocation-free rollback and separate retention-only measurements.
+Twenty actual candidate units plus probe; original nineteen pinned units plus
+probe and the verbatim original blocks. Optional NRVO/Debug iterator metadata
+are disabled consistently only for the new target; actual heap checks and all
+ten prior batteries stay required. Empty graph is an explicit guard. Complete
+point/parameter graph qualification does not establish full orchestration/mesh
+rollback. Compact retained reports include command/case inventory and raw hashes;
+complete raw local reports/logs retain all per-ordinal observations. See
+evidence/STAGE3_CURVE_SAMPLE_GRAPH.md and ADR-0017.
