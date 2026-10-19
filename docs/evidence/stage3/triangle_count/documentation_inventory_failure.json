@@ -1,0 +1,154 @@
+{
+  "failed_report": {
+    "status": "failed",
+    "phase": "head",
+    "revision": "604a8063efba9e696405a1d7a82ffc3f0849c97d",
+    "tree": "9bbae07dcb2e10a68a832fd87b977f5d1596456f",
+    "commands": [
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "build/audit_checkout.py"
+        ],
+        "exit_code": 0,
+        "log": "checkout.log",
+        "sha256": "15f8bd0cb81dd76b78e26dde7df917ce7a5d2b8d0f8785dff06d003aae37c659"
+      },
+      {
+        "argv": [
+          "git",
+          "diff",
+          "--exit-code",
+          "96ed6ae03906d1385135276b1781f67ea59d9363",
+          "HEAD",
+          "--",
+          "src",
+          "include",
+          "tools",
+          "tests",
+          "libs",
+          "configs",
+          "input_models",
+          "reference",
+          "cmake",
+          "CMakeLists.txt",
+          "CMakePresets.json",
+          "docs/architecture/contracts.json",
+          "docs/architecture/source_inventory.json"
+        ],
+        "exit_code": 0,
+        "log": "qualified-identities.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "--preset",
+          "windows-gcc17",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "build.log",
+        "sha256": "7716162f3cd3b99cf3b8a8dd6decf324e08c7e941aae7e730baba5e4fc8c075b"
+      },
+      {
+        "argv": [
+          "ctest",
+          "--preset",
+          "windows-gcc17",
+          "--verbose",
+          "--output-junit",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s26-doc-head\\ctest.xml"
+        ],
+        "exit_code": 0,
+        "log": "ctest.log",
+        "sha256": "763df4b7ca50e6fc69b7d66796ec769b6ed434a5f19c4969f5b320bcdc3418ad"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/inventory_architecture.py",
+          "--output",
+          "docs/architecture/source_inventory.json",
+          "--contracts",
+          "docs/architecture/contracts.json",
+          "--check"
+        ],
+        "exit_code": 0,
+        "log": "inventory.log",
+        "sha256": "ed16d12a0c4c01ddab14d53d77f7858e7e30d31cb717045be380932c44c8721b"
+      },
+      {
+        "argv": [
+          "git",
+          "-c",
+          "core.whitespace=cr-at-eol",
+          "diff",
+          "--check",
+          "96ed6ae03906d1385135276b1781f67ea59d9363",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "log": "diff-check.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "qualified_input_identity": "2daff84cf79479f829053c7218d8da91bce92c54e655462bc03e96d321ffcc0f",
+    "remote_blob_count": 1842,
+    "ctest": {
+      "passed": 36,
+      "failed": 0,
+      "skipped": 0,
+      "python_controls": 74,
+      "names": [
+        "application.triangle_count_contracts",
+        "application.estimate_mesh_contracts",
+        "application.triangle_lifetime_contracts",
+        "application.triangle_observer_contracts",
+        "application.submesh_lifetime_contracts",
+        "application.triangle_construction_contracts",
+        "application.element_adoption_contracts",
+        "application.mesh_adoption_contracts",
+        "application.curve_collection_contracts",
+        "application.curve_copy_contracts",
+        "application.geometry_adoption_contracts",
+        "application.curve_synchronization_contracts",
+        "application.curve_snapshot_contracts",
+        "application.curve_rebuild_contracts",
+        "application.curve_samples_contracts",
+        "application.curve_sample_graph_contracts",
+        "application.curve_sample_lifetime_contracts",
+        "application.initial_mesh_contracts",
+        "application.curve_publication_contracts",
+        "application.uv_lifetime",
+        "application.uv_primitive_contracts",
+        "application.uv_registration_contracts",
+        "application.uv_unowned_cell",
+        "application.uv_tree_contracts",
+        "application.uv_angle_contracts",
+        "application.uv_parametric_contracts",
+        "application.node_lifetime",
+        "tooling.controls",
+        "reference.archived_eistute_artifact",
+        "application.invalid_inputs",
+        "application.boundary_orientation",
+        "application.metric_schema",
+        "application.curve_orientation_arclength",
+        "tooling.tidy_header_scope",
+        "application.smoothing_adjacency_order",
+        "application.valid_input_grammar"
+      ]
+    },
+    "error": "Retained triangle observer qualification differs"
+  },
+  "raw_report_sha256": "ee9e5b0cabf47a8ca6bebd3844f41c23db29752b69a595dabf5eb2251d5838b0",
+  "checker_before_sha256": "fd2b41c1198de1e4823f713dc54c8761de208fd140a2dfb49f9d899b2ae57152",
+  "checker_after_sha256": "f20a4b7f74a0a4311273ebceea8063d6b4f8bc8f992f19d24460a8a1e1d3fd92",
+  "wrong_expected_observer_outcomes": 36,
+  "unchanged_actual_and_correct_observer_outcomes": 35,
+  "ctest_expected_and_actual": 36,
+  "cause": "The local closure checker adaptation incorrectly applied the new CTest count to the unchanged triangle observer battery. That component still has 35 actual expected outcomes. The failed check was retained and the single predicate corrected; no source, test, instrument case, acceptance rule, budget or timeout changed.",
+  "resolution": "Repeat exact documentation head/main build, CTest 36/36, inventory, complete frozen-input/Git/working-byte audit and all 21 explicit retained battery inventories. Full implementation head/main 1373 outcomes remain passed against unchanged 567 protected identities."
+}

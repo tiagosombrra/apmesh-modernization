@@ -133,8 +133,18 @@ calibration restoration, all live ordinals and terminal cleanup.
 The positive allocation-hook control denies one actual allocation. The deliberate
 CRT leak and ASan heap-use-after-free controls must fail with their actual measured
 diagnostics. Zero tests, skipped instrumentation or rejected candidates are never
-reported as successful coverage. No preliminary required-gate failure needed a
-source correction in this slice; the original negatives remain preserved.
+reported as successful coverage. Original negatives remain preserved.
+
+The first documentation closure audit stopped on a local verifier inventory error:
+the new CTest count of 36 had incorrectly replaced the unchanged triangle observer
+battery's required count of 35. Build/CTest 36/36 and the full implementation
+head/main reports were already passing; the retained observer battery contains
+all 35 required outcomes. The single checker predicate is restored to its exact
+existing component inventory. The failed revision/report, command/log hashes and
+before/after checker hashes are retained in documentation_inventory_failure.json.
+No test is removed, no production or protected input changes, and no gate is waived.
+Exact documentation head/main audits are repeated with all 21 explicit battery
+inventories and all 567 protected identities required unchanged.
 
 ## Closure audit and regression
 
