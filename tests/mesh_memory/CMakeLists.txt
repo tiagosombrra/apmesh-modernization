@@ -46,3 +46,22 @@ if(MSVC)
 elseif(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
   target_link_options(element_adoption_probe PRIVATE -static -static-libgcc -static-libstdc++)
 endif()
+
+add_executable(triangle_construction_probe triangle_probe.cpp
+  "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/node_adaptive.cpp"
+  "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/point_adaptive.cpp"
+  "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/element_adaptive.cpp"
+  "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/triangle_adaptive.cpp"
+  "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/vector_adaptive.cpp")
+target_compile_features(triangle_construction_probe PRIVATE cxx_std_17)
+target_include_directories(triangle_construction_probe PRIVATE "${AP_MESH_ADOPTION_SOURCE_ROOT}/include")
+if(MSVC)
+  target_compile_options(triangle_construction_probe PRIVATE /utf-8 /W4 /EHsc /permissive-)
+  target_compile_definitions(triangle_construction_probe PRIVATE $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  if(AP_MESH_MESH_ASAN)
+    target_compile_options(triangle_construction_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(triangle_construction_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+elseif(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+  target_link_options(triangle_construction_probe PRIVATE -static -static-libgcc -static-libstdc++)
+endif()

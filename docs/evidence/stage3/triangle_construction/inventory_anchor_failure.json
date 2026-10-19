@@ -1,0 +1,8 @@
+{
+  "status": "failed and corrected before the full campaign",
+  "diagnostic": "Missing source anchor for C05: include/data/node_adaptive.h",
+  "cause": "Explicit component formatting changed pointer spacing in the existing lexical anchor.",
+  "old_anchor": "std::list<ElementAdaptive *> elements_;",
+  "corrected_anchor": "std::list<ElementAdaptive*> elements_;",
+  "scope": "Update the literal source anchor; no diagnostic suppression or semantic change."
+}

@@ -75,7 +75,7 @@
       "id": "C04",
       "topic": "Physical mesh ownership and node copy",
       "statement": "MeshAdaptive owns SubMesh objects; SubMesh owns nodes/elements. SetNoh copies ID, position and curvature state into an independent node, clearing foreign element observers. AddNoh transfers unique ownership and preserves identity; SetElement consumes an exclusive raw argument before any vector allocation by delegating to the owning AddElement entry point. Success preserves ordered identity and null slots; failure destroys the argument and preserves existing owned slots. MeshAdaptive raw SubMesh insertions consume exclusive ownership on entry, before vector growth or position validation. Growth failure leaves existing slots unchanged and destroys the argument; negative positions leave the container unchanged and destroy the consumed argument. Success preserves identity/order and sparse null slots, replacing and destroying any old item.",
-      "limits": "The source of SetNoh remains caller-owned. Only this boundary and local reconstruction/move/replacement are instrumented; general NodeAdaptive value copies and full mesh lifecycles remain separate. MeshAdaptive adoption requires uniquely owned actual SubMesh objects, nonthrowing destructors and no duplicate/re-adopted aliases; SubMesh is not polymorphically deletable. Failure consumes the argument; no reuse of that pointer is valid. Existing graph identity, node adjacency and analytic triangle area, allocation-denied growth, negative/null/nonallocating paths and container move/removal are qualified by isolated actual-unit probes. Successful replacement/removal invalidates foreign observers; caller rebinding is not automatic. Other constructors, full-process/parallel memory and logical rejection remain separate. Element adoption qualification covers actual triangles with live exclusively owned nodes, empty/populated/null/spare-storage layouts, normal identity/area/coordinates/IDs/UV/adjacency and allocation-free terminal owner unwinding. Constructors have already registered adjacency before entry; deletion does not unregister or restore it. Failure requires terminal teardown without consuming the failed argument observer: there is no graph-reuse/retry/rollback guarantee. Constructor-before-entry failure, populated SubMesh move assignment and arbitrary element subclasses remain unqualified.",
+      "limits": "The source of SetNoh remains caller-owned. Only this boundary and local reconstruction/move/replacement are instrumented; general NodeAdaptive value copies and full mesh lifecycles remain separate. MeshAdaptive adoption requires uniquely owned actual SubMesh objects, nonthrowing destructors and no duplicate/re-adopted aliases; SubMesh is not polymorphically deletable. Failure consumes the argument; no reuse of that pointer is valid. Existing graph identity, node adjacency and analytic triangle area, allocation-denied growth, negative/null/nonallocating paths and container move/removal are qualified by isolated actual-unit probes. Successful replacement/removal invalidates foreign observers; caller rebinding is not automatic. Other constructors, full-process/parallel memory and logical rejection remain separate. Element adoption qualification covers actual triangles with live exclusively owned nodes, empty/populated/null/spare-storage layouts, normal identity/area/coordinates/IDs/UV/adjacency and allocation-free terminal owner unwinding. Constructors have already registered adjacency before entry; deletion does not unregister or restore it. Failure requires terminal teardown without consuming the failed argument observer: there is no graph-reuse/retry/rollback guarantee. Constructor-before-entry registration qualification is limited to C05; populated SubMesh move assignment and arbitrary element subclasses remain unqualified.",
       "evidence": [
         {
           "path": "include/data/mesh/mesh_adaptive.h",
@@ -118,8 +118,8 @@
     {
       "id": "C05",
       "topic": "Physical topology and caches",
-      "statement": "TriangleAdaptive borrows three NodeAdaptive pointers, registers itself in each adjacency and caches normal, area and angles. NodeAdaptive adjacency is an observer list.",
-      "limits": "General node copies retain observer lists; SubMesh::SetNoh explicitly clears them. Triangle removal, ReplaceNode, coordinate mutation, cache refresh and wider destruction paths remain unqualified. Raw/owning element-adoption failure can leave the constructor-registered final node observers expired; bounded terminal owner destruction clears those lists without dereferencing them. This does not qualify exceptional graph reuse or repair partial TriangleAdaptive constructor registration.",
+      "statement": "TriangleAdaptive borrows three NodeAdaptive pointers, registers itself in each adjacency and caches normal, area and angles. NodeAdaptive adjacency is an observer list. Parameterized TriangleAdaptive construction registers in original vertex order and removes every matching fresh-this observer on C++ construction failure before rethrowing. NodeAdaptive::RemoveElementObserver removes pointer entries without deleting elements or allocating. Existing list nodes, order, null markers and scalar state are preserved, including repeated vertex nodes.",
+      "limits": "General node copies retain observer lists; SubMesh::SetNoh explicitly clears them. Triangle removal, ReplaceNode, coordinate mutation, cache refresh and wider destruction paths remain unqualified. Raw/owning element-adoption failure can leave the constructor-registered final node observers expired; bounded terminal owner destruction clears those lists without dereferencing them. This does not qualify exceptional graph reuse after destruction of a successfully constructed triangle. Parameterized construction failure is separately qualified for valid existing lists, a fresh object address and three live non-null nodes; repeated-node layouts are lifecycle guards, not geometric validity. All observed constructor allocation ordinals preserve exact prior observer/list-node/scalar state, allowing safe prior-observer traversal and a fresh component construction in the probe. No production CLI retry policy is added. Ordinary triangle destruction still does not unregister; copy/move, ReplaceNode, populated SubMesh move assignment, null/uninitialized sources and full-process/parallel memory remain separate.",
       "evidence": [
         {
           "path": "src/data/triangle_adaptive.cpp",
@@ -131,11 +131,19 @@
         },
         {
           "path": "include/data/node_adaptive.h",
-          "anchor": "std::list<ElementAdaptive *> elements_;"
+          "anchor": "std::list<ElementAdaptive*> elements_;"
         },
         {
           "path": "src/data/node_adaptive.cpp",
           "anchor": "this->elements_.clear();"
+        },
+        {
+          "path": "src/data/node_adaptive.cpp",
+          "anchor": "elements_.remove(element);"
+        },
+        {
+          "path": "src/data/triangle_adaptive.cpp",
+          "anchor": "this->n1_->RemoveElementObserver(this);"
         }
       ]
     },

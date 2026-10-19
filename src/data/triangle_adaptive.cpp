@@ -7,31 +7,32 @@
 extern double TOLERANCE;
 
 TriangleAdaptive::TriangleAdaptive()
-    : ElementAdaptive(),
-      n1_(nullptr),
-      n2_(nullptr),
-      n3_(nullptr),
-      angle_n1_(0),
-      angle_n2_(0),
+    : ElementAdaptive(), n1_(nullptr), n2_(nullptr), n3_(nullptr), angle_n1_(0), angle_n2_(0),
       angle_n3_(0) {}
 
-TriangleAdaptive::TriangleAdaptive(NodeAdaptive* n1, NodeAdaptive* n2,
-                                   NodeAdaptive* n3)
+TriangleAdaptive::TriangleAdaptive(NodeAdaptive* n1, NodeAdaptive* n2, NodeAdaptive* n3)
     : ElementAdaptive() {
   this->n1_ = n1;
   this->n2_ = n2;
   this->n3_ = n3;
 
-  this->n1_->InsertElement(this);
-  this->n2_->InsertElement(this);
-  this->n3_->InsertElement(this);
+  try {
+    this->n1_->InsertElement(this);
+    this->n2_->InsertElement(this);
+    this->n3_->InsertElement(this);
 
-  this->angle_n1_ = CalculateAngleN1();
-  this->angle_n2_ = CalculateAngleN2();
-  this->angle_n3_ = CalculateAngleN3();
+    this->angle_n1_ = CalculateAngleN1();
+    this->angle_n2_ = CalculateAngleN2();
+    this->angle_n3_ = CalculateAngleN3();
 
-  TriangleAdaptive::CalculateNormal();
-  TriangleAdaptive::CalculateArea();
+    TriangleAdaptive::CalculateNormal();
+    TriangleAdaptive::CalculateArea();
+  } catch (...) {
+    this->n1_->RemoveElementObserver(this);
+    this->n2_->RemoveElementObserver(this);
+    this->n3_->RemoveElementObserver(this);
+    throw;
+  }
 }
 
 TriangleAdaptive::~TriangleAdaptive() {}
@@ -45,8 +46,7 @@ NodeAdaptive TriangleAdaptive::GetNoh(unsigned const int position) const {
   } else if (position == 3) {
     return *(this->n3_);
   } else {
-    std::cout << "Índice inválido para Noh Triangulo::GetNoh ( " << position
-              << " )!" << std::endl;
+    std::cout << "Índice inválido para Noh Triangulo::GetNoh ( " << position << " )!" << std::endl;
   }
 
   NodeAdaptive n;
@@ -92,7 +92,7 @@ double TriangleAdaptive::GetAngle(const NodeAdaptive& node) {
     return this->angle_n3_;
   }
 
-  return -1;  // erro
+  return -1; // erro
 }
 
 // calcula a área do triângulo
@@ -108,8 +108,7 @@ void TriangleAdaptive::CalculateNormal() {
   this->vector_normal_ = vector1 * vector2;
 }
 
-void TriangleAdaptive::ReplaceNode(const NodeAdaptive* old_node,
-                                   NodeAdaptive* new_node) {
+void TriangleAdaptive::ReplaceNode(const NodeAdaptive* old_node, NodeAdaptive* new_node) {
   if (this->n1_ == old_node) {
     this->n1_ = new_node;
   } else if (this->n2_ == old_node) {
@@ -137,8 +136,7 @@ const std::tuple<double, double>& TriangleAdaptive::GetParametersN1() const {
   return parameters_n1_;
 }
 
-void TriangleAdaptive::SetParametersN1(
-    const std::tuple<double, double>& parameters_n1) {
+void TriangleAdaptive::SetParametersN1(const std::tuple<double, double>& parameters_n1) {
   parameters_n1_ = parameters_n1;
 }
 
@@ -146,8 +144,7 @@ const std::tuple<double, double>& TriangleAdaptive::GetParametersN2() const {
   return parameters_n2_;
 }
 
-void TriangleAdaptive::SetParametersN2(
-    const std::tuple<double, double>& parameters_n2) {
+void TriangleAdaptive::SetParametersN2(const std::tuple<double, double>& parameters_n2) {
   parameters_n2_ = parameters_n2;
 }
 
@@ -155,7 +152,6 @@ const std::tuple<double, double>& TriangleAdaptive::GetParametersN3() const {
   return parameters_n3_;
 }
 
-void TriangleAdaptive::SetParametersN3(
-    const std::tuple<double, double>& parameters_n3) {
+void TriangleAdaptive::SetParametersN3(const std::tuple<double, double>& parameters_n3) {
   parameters_n3_ = parameters_n3;
 }

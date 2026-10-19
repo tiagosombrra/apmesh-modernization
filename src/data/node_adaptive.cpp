@@ -1,7 +1,6 @@
 #include "../../include/data/node_adaptive.h"
 
-NodeAdaptive::NodeAdaptive()
-    : PointAdaptive(), ga_(0), gd_(0), ha_(0), hd_(0) {}
+NodeAdaptive::NodeAdaptive() : PointAdaptive(), ga_(0), gd_(0), ha_(0), hd_(0) {}
 
 NodeAdaptive::NodeAdaptive(double x, double y, double z)
     : PointAdaptive(x, y, z), ga_(0), gd_(0), ha_(0), hd_(0) {}
@@ -9,8 +8,7 @@ NodeAdaptive::NodeAdaptive(double x, double y, double z)
 NodeAdaptive::NodeAdaptive(double x, double y, double z, unsigned long position)
     : PointAdaptive(x, y, z, position), ga_(0), gd_(0), ha_(0), hd_(0) {}
 
-NodeAdaptive::NodeAdaptive(const PointAdaptive &point)
-    : ga_(0), gd_(0), ha_(0), hd_(0) {
+NodeAdaptive::NodeAdaptive(const PointAdaptive& point) : ga_(0), gd_(0), ha_(0), hd_(0) {
   this->id_ = point.GetId();
   this->x_ = point.GetX();
   this->y_ = point.GetY();
@@ -22,16 +20,18 @@ NodeAdaptive::~NodeAdaptive() {
   this->elements_.clear();
 }
 
-void NodeAdaptive::InsertElement(ElementAdaptive *element) {
-  this->elements_.push_back(element);
+void NodeAdaptive::InsertElement(ElementAdaptive* element) { this->elements_.push_back(element); }
+
+void NodeAdaptive::RemoveElementObserver(ElementAdaptive* element) noexcept {
+  elements_.remove(element);
 }
 
 unsigned int NodeAdaptive::GetNumberElements() const {
   return static_cast<unsigned int>(elements_.size());
 }
 
-ElementAdaptive *NodeAdaptive::GetElement(const unsigned int position) {
-  std::list<ElementAdaptive *>::iterator it = this->elements_.begin();
+ElementAdaptive* NodeAdaptive::GetElement(const unsigned int position) {
+  std::list<ElementAdaptive*>::iterator it = this->elements_.begin();
   advance(it, position);
 
   return *it;
@@ -39,11 +39,9 @@ ElementAdaptive *NodeAdaptive::GetElement(const unsigned int position) {
 
 void NodeAdaptive::ClearElements() { elements_.clear(); }
 
-const std::list<ElementAdaptive *> &NodeAdaptive::GetElements() const {
-  return elements_;
-}
+const std::list<ElementAdaptive*>& NodeAdaptive::GetElements() const { return elements_; }
 
-void NodeAdaptive::setElements(const std::list<ElementAdaptive *> &elements) {
+void NodeAdaptive::setElements(const std::list<ElementAdaptive*>& elements) {
   elements_ = elements;
 }
 

@@ -1,5 +1,15 @@
 # Local quality automation
 
+## Active triangle construction boundary
+
+Stage 3 slice 21 adds application.triangle_construction_contracts and
+tools/qualify_triangle_construction.py. The actual-unit ASan/Debug CRT runner
+requires 39 outcomes, twelve complete sweeps/48 allocation denials, exact old
+list-node/scalar identity and live-observer/fresh-construction checks only after
+restoration. Repeated vertices are lifecycle guards, not geometric validity.
+Ordinary destruction/adoption failure and full CLI retry remain separate.
+Full delivery gates are pending. See [commands and limits](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
+
 ## Element adoption boundary (PR #62)
 
 Stage 3 slice 20 adds application.element_adoption_contracts and
