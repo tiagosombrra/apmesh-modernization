@@ -7,6 +7,7 @@
 #include "generator/curve_synchronization.h"
 #include "generator/curve_snapshots.h"
 #include "generator/curve_publication.h"
+#include "generator/curve_sample_graph.h"
 #include "input_output/incidence_snapshot.h"
 
 #include <array>
@@ -2644,8 +2645,8 @@ void GeneratorAdaptive::DisableSharedCurveSynchronization(Geometry* geometry) {
 }
 
 void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
-  std::map<PointAdaptive*, PointAdaptive*> map_points;
-  std::unordered_set<PointAdaptive*> old_points;
+  apmesh::generation::CurveSampleGraphTransaction samples(geometry);
+  auto& map_points = samples.Cache();
   const std::vector<double> patch_factors = ComputePatchAdaptationFactors(geometry);
   current_curve_adaptation_.clear();
   current_curve_target_points_.assign(geometry->GetNumberCurves(), 0.0);
@@ -2659,13 +2660,6 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     }
     return value;
   };
-
-  // Capture all current curve points to delete after we swap to new ones.
-  for (unsigned int i = 0; i < geometry->GetNumberCurves(); ++i) {
-    for (auto* p : geometry->GetCurve(i)->GetPoints()) {
-      old_points.insert(p);
-    }
-  }
 
   for (unsigned int i = 0; i < geometry->GetNumberCurves(); ++i) {
     CurveAdaptive* curve = geometry->GetCurve(i);
@@ -2892,10 +2886,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
             : 1.0;
   }
 
-  // Delete old discretization points (shared endpoints handled by set).
-  for (auto* p : old_points) {
-    delete p;
-  }
+  samples.Commit();
 }
 
 void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {

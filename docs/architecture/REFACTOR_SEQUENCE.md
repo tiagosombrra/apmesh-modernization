@@ -213,3 +213,14 @@ nodes and restore original lists without allocating. Preserve borrowed entry
 samples/cache values and consumed ID prefixes. C07/ADR-0016 delimit this from
 complete-loop ownership, upstream evaluator scratch and full adaptive rollback;
 those remaining paths follow next.
+
+## Complete serial curve sample graph (#53)
+
+Keep the initial collective sample graph alive until every curve completes.
+Prepare equivalent working point/parameter lists and the initial deduplicated
+sample inventory before parking original list nodes. After inner per-curve
+guards unwind, outer cleanup can consume current live graph lists, clear all
+new aliases before deleting once, and restore original nodes/sharing without
+allocation. Retire initial samples only on full commit. C07/ADR-0017 delimit
+fixed topology/actual inner operations from evaluator scratch and orchestration
+metadata/error/history/budget/patch/mesh/acceptance rollback, which follows next.

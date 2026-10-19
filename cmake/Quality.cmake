@@ -12,6 +12,9 @@ if(BUILD_TESTING)
   add_test(NAME application.curve_snapshot_contracts COMMAND curve_snapshot_probe contracts)
   add_test(NAME application.curve_rebuild_contracts COMMAND curve_rebuild_probe contracts)
   add_test(NAME application.curve_samples_contracts COMMAND curve_samples_probe contracts)
+  add_test(NAME application.curve_sample_graph_contracts COMMAND curve_sample_graph_probe contracts)
+  set_tests_properties(application.curve_sample_graph_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_test(NAME application.curve_publication_contracts COMMAND curve_publication_probe contracts)
   set_tests_properties(application.curve_publication_contracts
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
