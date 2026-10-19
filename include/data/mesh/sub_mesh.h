@@ -18,6 +18,9 @@ public:
   SubMesh& operator=(const SubMesh&) = delete;
 
   SubMesh(SubMesh&&) noexcept;
+  // Retire old elements before their nodes; self-move preserves this graph.
+  // Owned elements may borrow local nodes or independently live external nodes.
+  // Moving does not rebind foreign Patch observers of either SubMesh object.
   SubMesh& operator=(SubMesh&&) noexcept;
 
   Patch* GetPatch() const noexcept;

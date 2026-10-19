@@ -1,0 +1,21 @@
+{
+  "status": "failed",
+  "scope": "Initial full candidate campaign stopped at mandatory whitespace gate after 1066 expected instrument outcomes, before numerical generation. Not a qualified delivery.",
+  "archive": "build\\s22-candidate-whitespace-failure",
+  "report_sha256": "19248eac0d777fdfb4a00bfb90f0b5bdce811fc0d426902e4bfdac732d016f97",
+  "command": {
+    "argv": [
+      "git",
+      "-c",
+      "core.whitespace=cr-at-eol",
+      "diff",
+      "--check",
+      "3ad6cb28cd183fe1adc7604de6e92dd28fd0e50a"
+    ],
+    "exit_code": 2,
+    "log": "diff-check.log",
+    "sha256": "95161b85359f5b6b54ad62edb590a23294cf5aba4b79dedebb0c827682cf802b"
+  },
+  "diagnostic": "tests/mesh_memory/CMakeLists.txt:88: new blank line at EOF.\n",
+  "repair": "Run explicit documented whitespace normalization on the CMake target file, removing an extra final blank line. No test, numerical or diagnostic requirements change."
+}

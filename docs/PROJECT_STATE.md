@@ -3,7 +3,14 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Latest qualified work: stage 3 slice 21
+## Active work: stage 3 slice 22
+
+Candidate SubMesh lifetime ordering repair passes its bounded actual-unit battery
+and full candidate gates. Exact published-head/main qualification is pending;
+integration remains blocked until both pass. Old elements are retired before
+their node owners during move assignment. See [scope and audit](evidence/STAGE3_SUBMESH_LIFETIME.md).
+
+## Stage 3 slice 21 qualified
 
 PR #64 integrates head `a6da72630db2747194982e1a2b77cd3203536408` as main
 `6cf041333b83a01f1c081df82620d12f00995d4b`, preserving complete tree `49a170663fc68afa6525ee53bfc4768c4fa97e81`
