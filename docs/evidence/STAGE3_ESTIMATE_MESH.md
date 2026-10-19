@@ -1,6 +1,11 @@
 # Stage 3 slice 25: estimator construction ownership
 
-Candidate qualified; full exact published-head and post-merge main gates remain required.
+PR #72 integrates head `6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7` as main
+`fdf65970dfad6898c88438a1017fa4bd34239d27`, preserving complete tree `8c174ddb604eb0177ebf52253b814b368333c57e`
+(1825 blobs). Full exact-head/main gates pass against the same 563
+protected inputs: CTest 35/35, zero skips, 74 Python controls, twenty memory
+batteries/1214 expected outcomes, 1040 scalar sequence comparisons, selected lint,
+format/inventory and exact twice-repeated Eistute/Book accepted/rejected traces.
 
 Entry main: `c6b6a21aaf5bcc298256cd28c1b477cb4291841d`.
 Classification: behavior-changing resource-lifetime and invalid-input defect repair.
@@ -84,7 +89,9 @@ allocation sweeps, two invalid-degree guard cases and real ASan UAF/CRT leak/hoo
 controls. The original has 48 CRT retention failures (24 normal and 24 exceptional
 cleanup) plus two missing-zero-guard contract failures. Its 24 ASan normal runs
 and three deliberate controls pass their measured criteria; ASan leak detection
-is disabled, so those passes do not establish absence of leaks. Original guard
+is disabled, so those passes do not establish absence of leaks. Original sweeps
+stop at their first retention failure; later ordinals are unmeasured. Only the
+candidate is required to complete all 5128 denials. Original guard
 runs stop at the missing zero guard: negative-degree execution and final CRT
 retention in those two aborted cases are unmeasured, not successful validation.
 No original hidden-root double deletion/UAF is claimed.
