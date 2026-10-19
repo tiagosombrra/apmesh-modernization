@@ -1,0 +1,4889 @@
+{
+  "status": "failed",
+  "parameter_iteration": {
+    "status": "passed",
+    "degree_cases": 520,
+    "compared_nonempty_sequences": 1040,
+    "comparison": "Full vectors of IEEE double object bits, not digest-only equality; integer ceiling never reached.",
+    "scope": "Actual extracted original/candidate outer induction headers and actual candidate guard/ceiling prefix; inner headers independently checked identical under variable renaming. Scalar sampling only, not complete high-degree mesh construction.",
+    "source_sha256": "83aa9e2bfe1a04e7644c6191d8c0f2def60d26a506ea485d0d1b9cf8be6bb77b",
+    "reference_sha256": "179585756ad741bcad1dded027bd7ddcc87291d9a059f6d7e1a7ade3915ebe14",
+    "candidate_sha256": "46d4d8e243b551a2247bba54d0a11b64e92ba104055581cc1238ff20920438dd",
+    "compile_argv": [
+      "g++",
+      "-std=c++17",
+      "-O2",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25-original-estimate\\iteration_comparison.cpp",
+      "-o",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25-original-estimate\\iteration_comparison.exe",
+      "-static",
+      "-static-libgcc",
+      "-static-libstdc++"
+    ],
+    "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "executable_sha256": "2db066d54806830e46f2197c82e28a4466e7e7924193816158773950bc431ab5",
+    "log_sha256": "fc2e3ecf43dbac2821785d61622afdd0ac54a8c4ea5cf9b8c9a685127a1ab804",
+    "integer_recomputation_negative_control": "rejected",
+    "nonpositive_guards": 3,
+    "observed_center_count_different_from_degree": [
+      9,
+      11,
+      12,
+      17,
+      18,
+      20,
+      21,
+      25,
+      34,
+      35,
+      36,
+      39,
+      40,
+      41,
+      42,
+      43,
+      45,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      55,
+      56,
+      57,
+      58,
+      60,
+      61,
+      67,
+      73,
+      76,
+      77,
+      81,
+      82,
+      83,
+      86,
+      89,
+      92,
+      95,
+      98,
+      100,
+      101,
+      108,
+      111,
+      113,
+      114,
+      122,
+      123,
+      125,
+      129,
+      131,
+      133,
+      134,
+      135,
+      138,
+      141,
+      145,
+      146,
+      147,
+      148,
+      150,
+      151,
+      155,
+      158,
+      161,
+      162,
+      164,
+      165,
+      167,
+      169,
+      172,
+      173,
+      174,
+      176,
+      178,
+      179,
+      183,
+      184,
+      187,
+      188,
+      189,
+      190,
+      192,
+      193,
+      197,
+      198,
+      199,
+      200,
+      202,
+      205,
+      207,
+      209,
+      211,
+      212,
+      216,
+      223,
+      225,
+      226,
+      227,
+      228,
+      229,
+      235,
+      245,
+      247,
+      249,
+      250,
+      258,
+      261,
+      263,
+      266,
+      267,
+      269,
+      274,
+      275,
+      276,
+      277,
+      279,
+      283,
+      285,
+      286,
+      289,
+      290,
+      292,
+      293,
+      294,
+      296,
+      298,
+      301,
+      302,
+      303,
+      307,
+      308,
+      313,
+      316,
+      319,
+      320,
+      323,
+      324,
+      325,
+      327,
+      328,
+      330,
+      332,
+      333,
+      335,
+      338,
+      339,
+      344,
+      346,
+      347,
+      348,
+      350,
+      353,
+      354,
+      358,
+      362,
+      363,
+      366,
+      367,
+      369,
+      371,
+      373,
+      374,
+      375,
+      377,
+      378,
+      379,
+      380,
+      383,
+      385,
+      386,
+      389,
+      391,
+      395,
+      402,
+      403,
+      404,
+      406,
+      410,
+      413,
+      414,
+      419,
+      421,
+      423,
+      424,
+      426,
+      427,
+      428,
+      429,
+      430,
+      434,
+      435,
+      436,
+      440,
+      441,
+      446,
+      447,
+      448,
+      450,
+      453,
+      454,
+      459,
+      463,
+      464,
+      465,
+      466,
+      467,
+      469,
+      473,
+      477,
+      483,
+      484,
+      486,
+      490,
+      491,
+      492,
+      495,
+      496,
+      497,
+      498,
+      499,
+      500,
+      501,
+      503,
+      505,
+      507,
+      1000000
+    ],
+    "rows": [
+      {
+        "degree": 1,
+        "grid_count": 2,
+        "center_count": 1,
+        "grid_digest": "12448661886686949357",
+        "center_digest": "15979824039204075487"
+      },
+      {
+        "degree": 2,
+        "grid_count": 3,
+        "center_count": 2,
+        "grid_digest": "4385681508230180791",
+        "center_digest": "6186406604828274669"
+      },
+      {
+        "degree": 3,
+        "grid_count": 4,
+        "center_count": 3,
+        "grid_digest": "6816718037190087907",
+        "center_digest": "4936189564475297774"
+      },
+      {
+        "degree": 4,
+        "grid_count": 5,
+        "center_count": 4,
+        "grid_digest": "15417035218446182735",
+        "center_digest": "8283657380098348021"
+      },
+      {
+        "degree": 5,
+        "grid_count": 6,
+        "center_count": 5,
+        "grid_digest": "6588048016349445635",
+        "center_digest": "12384091126193216747"
+      },
+      {
+        "degree": 6,
+        "grid_count": 7,
+        "center_count": 6,
+        "grid_digest": "18046698270253600549",
+        "center_digest": "13691337615211480231"
+      },
+      {
+        "degree": 7,
+        "grid_count": 8,
+        "center_count": 7,
+        "grid_digest": "12885240407365775052",
+        "center_digest": "13492045399891410251"
+      },
+      {
+        "degree": 8,
+        "grid_count": 9,
+        "center_count": 8,
+        "grid_digest": "2478248881193757119",
+        "center_digest": "8602992607512639941"
+      },
+      {
+        "degree": 9,
+        "grid_count": 9,
+        "center_count": 8,
+        "grid_digest": "17448165133337526198",
+        "center_digest": "1928466994746672355"
+      },
+      {
+        "degree": 10,
+        "grid_count": 11,
+        "center_count": 10,
+        "grid_digest": "12895042826374042008",
+        "center_digest": "9781094652964119250"
+      },
+      {
+        "degree": 11,
+        "grid_count": 11,
+        "center_count": 10,
+        "grid_digest": "2453723159913585986",
+        "center_digest": "15744218918904129745"
+      },
+      {
+        "degree": 12,
+        "grid_count": 13,
+        "center_count": 11,
+        "grid_digest": "6992257589058597863",
+        "center_digest": "5655858085443205394"
+      },
+      {
+        "degree": 13,
+        "grid_count": 14,
+        "center_count": 13,
+        "grid_digest": "7800462488938999050",
+        "center_digest": "2942170273331145567"
+      },
+      {
+        "degree": 14,
+        "grid_count": 15,
+        "center_count": 14,
+        "grid_digest": "1512365933407731435",
+        "center_digest": "2686504497855548063"
+      },
+      {
+        "degree": 15,
+        "grid_count": 16,
+        "center_count": 15,
+        "grid_digest": "4458834131238212797",
+        "center_digest": "8535859537285678726"
+      },
+      {
+        "degree": 16,
+        "grid_count": 17,
+        "center_count": 16,
+        "grid_digest": "14239903733415122847",
+        "center_digest": "8343516140714026085"
+      },
+      {
+        "degree": 17,
+        "grid_count": 18,
+        "center_count": 16,
+        "grid_digest": "2084558075300087593",
+        "center_digest": "6135959977651457001"
+      },
+      {
+        "degree": 18,
+        "grid_count": 18,
+        "center_count": 17,
+        "grid_digest": "9366252170587969445",
+        "center_digest": "1774446005963442601"
+      },
+      {
+        "degree": 19,
+        "grid_count": 20,
+        "center_count": 19,
+        "grid_digest": "13993438202287302281",
+        "center_digest": "9067547920200863672"
+      },
+      {
+        "degree": 20,
+        "grid_count": 20,
+        "center_count": 19,
+        "grid_digest": "6125059680802006851",
+        "center_digest": "1302833326735185466"
+      },
+      {
+        "degree": 21,
+        "grid_count": 21,
+        "center_count": 20,
+        "grid_digest": "5806463963650780139",
+        "center_digest": "15406950570517322029"
+      },
+      {
+        "degree": 22,
+        "grid_count": 23,
+        "center_count": 22,
+        "grid_digest": "10815361080472471206",
+        "center_digest": "11399062913107818727"
+      },
+      {
+        "degree": 23,
+        "grid_count": 24,
+        "center_count": 23,
+        "grid_digest": "17229404728887730852",
+        "center_digest": "4599847897145126409"
+      },
+      {
+        "degree": 24,
+        "grid_count": 25,
+        "center_count": 24,
+        "grid_digest": "7847039276771933855",
+        "center_digest": "16813005104813712114"
+      },
+      {
+        "degree": 25,
+        "grid_count": 25,
+        "center_count": 24,
+        "grid_digest": "16042229520796516728",
+        "center_digest": "10550545423920094569"
+      },
+      {
+        "degree": 26,
+        "grid_count": 27,
+        "center_count": 26,
+        "grid_digest": "6565126569548945546",
+        "center_digest": "10918392540939380328"
+      },
+      {
+        "degree": 27,
+        "grid_count": 28,
+        "center_count": 27,
+        "grid_digest": "10793500411683400060",
+        "center_digest": "9529543183025795176"
+      },
+      {
+        "degree": 28,
+        "grid_count": 29,
+        "center_count": 28,
+        "grid_digest": "9465643647689298628",
+        "center_digest": "2623494729791171012"
+      },
+      {
+        "degree": 29,
+        "grid_count": 30,
+        "center_count": 29,
+        "grid_digest": "12476257043277216187",
+        "center_digest": "5165194185461508012"
+      },
+      {
+        "degree": 30,
+        "grid_count": 31,
+        "center_count": 30,
+        "grid_digest": "14124088963778956047",
+        "center_digest": "3614222803288032005"
+      },
+      {
+        "degree": 31,
+        "grid_count": 32,
+        "center_count": 31,
+        "grid_digest": "5776060241727244775",
+        "center_digest": "15205826583317023843"
+      },
+      {
+        "degree": 32,
+        "grid_count": 33,
+        "center_count": 32,
+        "grid_digest": "15462442379853653855",
+        "center_digest": "17631047700085142949"
+      },
+      {
+        "degree": 33,
+        "grid_count": 34,
+        "center_count": 33,
+        "grid_digest": "10490727015862479785",
+        "center_digest": "13273679513545857813"
+      },
+      {
+        "degree": 34,
+        "grid_count": 35,
+        "center_count": 33,
+        "grid_digest": "12260220434559486747",
+        "center_digest": "9191146123825514555"
+      },
+      {
+        "degree": 35,
+        "grid_count": 35,
+        "center_count": 34,
+        "grid_digest": "12178410586800369566",
+        "center_digest": "13793664909029023064"
+      },
+      {
+        "degree": 36,
+        "grid_count": 36,
+        "center_count": 35,
+        "grid_digest": "4175115803380424466",
+        "center_digest": "18033135832549190517"
+      },
+      {
+        "degree": 37,
+        "grid_count": 38,
+        "center_count": 37,
+        "grid_digest": "9712005860444588015",
+        "center_digest": "14460829109191106555"
+      },
+      {
+        "degree": 38,
+        "grid_count": 39,
+        "center_count": 38,
+        "grid_digest": "215319674252964469",
+        "center_digest": "1470590715372450857"
+      },
+      {
+        "degree": 39,
+        "grid_count": 39,
+        "center_count": 38,
+        "grid_digest": "6538978859622360626",
+        "center_digest": "9379804682473195034"
+      },
+      {
+        "degree": 40,
+        "grid_count": 40,
+        "center_count": 39,
+        "grid_digest": "4858174448437816963",
+        "center_digest": "18034103243548685027"
+      },
+      {
+        "degree": 41,
+        "grid_count": 41,
+        "center_count": 40,
+        "grid_digest": "2113162565373353098",
+        "center_digest": "9895672101814881181"
+      },
+      {
+        "degree": 42,
+        "grid_count": 42,
+        "center_count": 41,
+        "grid_digest": "18410717097524069455",
+        "center_digest": "10537779955328088397"
+      },
+      {
+        "degree": 43,
+        "grid_count": 43,
+        "center_count": 42,
+        "grid_digest": "15833394848478187390",
+        "center_digest": "2240486907789198525"
+      },
+      {
+        "degree": 44,
+        "grid_count": 45,
+        "center_count": 44,
+        "grid_digest": "3029985831960813002",
+        "center_digest": "11657370725591758941"
+      },
+      {
+        "degree": 45,
+        "grid_count": 45,
+        "center_count": 44,
+        "grid_digest": "11081222686066526240",
+        "center_digest": "13722632858032721625"
+      },
+      {
+        "degree": 46,
+        "grid_count": 47,
+        "center_count": 46,
+        "grid_digest": "17632298794392300730",
+        "center_digest": "15526680226707053826"
+      },
+      {
+        "degree": 47,
+        "grid_count": 47,
+        "center_count": 46,
+        "grid_digest": "5140426161593056923",
+        "center_digest": "17960838586765993779"
+      },
+      {
+        "degree": 48,
+        "grid_count": 48,
+        "center_count": 47,
+        "grid_digest": "7641510956677656075",
+        "center_digest": "4702445428679603623"
+      },
+      {
+        "degree": 49,
+        "grid_count": 49,
+        "center_count": 48,
+        "grid_digest": "13365028483481047337",
+        "center_digest": "1047746144364782595"
+      },
+      {
+        "degree": 50,
+        "grid_count": 50,
+        "center_count": 49,
+        "grid_digest": "7019581222868980995",
+        "center_digest": "3503872423910143866"
+      },
+      {
+        "degree": 51,
+        "grid_count": 51,
+        "center_count": 50,
+        "grid_digest": "11672500383450387053",
+        "center_digest": "2647423599875819856"
+      },
+      {
+        "degree": 52,
+        "grid_count": 52,
+        "center_count": 51,
+        "grid_digest": "1192970552300144999",
+        "center_digest": "14759979255725015550"
+      },
+      {
+        "degree": 53,
+        "grid_count": 54,
+        "center_count": 53,
+        "grid_digest": "6413384515462131027",
+        "center_digest": "10581579852858319654"
+      },
+      {
+        "degree": 54,
+        "grid_count": 55,
+        "center_count": 54,
+        "grid_digest": "8063221677843530697",
+        "center_digest": "8447339874217551155"
+      },
+      {
+        "degree": 55,
+        "grid_count": 55,
+        "center_count": 54,
+        "grid_digest": "3549568915974702011",
+        "center_digest": "11880521551784740803"
+      },
+      {
+        "degree": 56,
+        "grid_count": 56,
+        "center_count": 55,
+        "grid_digest": "3754072841093661414",
+        "center_digest": "8411066696479544752"
+      },
+      {
+        "degree": 57,
+        "grid_count": 57,
+        "center_count": 56,
+        "grid_digest": "11175794597707268324",
+        "center_digest": "570518161013987593"
+      },
+      {
+        "degree": 58,
+        "grid_count": 58,
+        "center_count": 57,
+        "grid_digest": "9142702052088770199",
+        "center_digest": "1801422359411565084"
+      },
+      {
+        "degree": 59,
+        "grid_count": 60,
+        "center_count": 59,
+        "grid_digest": "16665485878502870818",
+        "center_digest": "15987033831374847126"
+      },
+      {
+        "degree": 60,
+        "grid_count": 60,
+        "center_count": 59,
+        "grid_digest": "7532662506013268389",
+        "center_digest": "4887914590678643659"
+      },
+      {
+        "degree": 61,
+        "grid_count": 61,
+        "center_count": 60,
+        "grid_digest": "7827238257569139475",
+        "center_digest": "7505437424700839166"
+      },
+      {
+        "degree": 62,
+        "grid_count": 63,
+        "center_count": 62,
+        "grid_digest": "10256960451753085088",
+        "center_digest": "9081156151402371722"
+      },
+      {
+        "degree": 63,
+        "grid_count": 64,
+        "center_count": 63,
+        "grid_digest": "10340589921151706749",
+        "center_digest": "17594268060795278783"
+      },
+      {
+        "degree": 64,
+        "grid_count": 65,
+        "center_count": 64,
+        "grid_digest": "17027429621843678943",
+        "center_digest": "7945122949654972453"
+      },
+      {
+        "degree": 65,
+        "grid_count": 66,
+        "center_count": 65,
+        "grid_digest": "16780349683183077637",
+        "center_digest": "15685159420378376295"
+      },
+      {
+        "degree": 66,
+        "grid_count": 67,
+        "center_count": 66,
+        "grid_digest": "13614112299562147472",
+        "center_digest": "11454001823150333386"
+      },
+      {
+        "degree": 67,
+        "grid_count": 67,
+        "center_count": 66,
+        "grid_digest": "10052898719362771680",
+        "center_digest": "14960161609407975157"
+      },
+      {
+        "degree": 68,
+        "grid_count": 69,
+        "center_count": 68,
+        "grid_digest": "13046111623934211467",
+        "center_digest": "6437103319367414060"
+      },
+      {
+        "degree": 69,
+        "grid_count": 70,
+        "center_count": 69,
+        "grid_digest": "15212099496759019155",
+        "center_digest": "17243857294620433342"
+      },
+      {
+        "degree": 70,
+        "grid_count": 71,
+        "center_count": 70,
+        "grid_digest": "14079017144043422426",
+        "center_digest": "12649911816894020055"
+      },
+      {
+        "degree": 71,
+        "grid_count": 72,
+        "center_count": 71,
+        "grid_digest": "8053792852236311012",
+        "center_digest": "8056991052062732457"
+      },
+      {
+        "degree": 72,
+        "grid_count": 73,
+        "center_count": 72,
+        "grid_digest": "8184297548616544317",
+        "center_digest": "6273583878403939990"
+      },
+      {
+        "degree": 73,
+        "grid_count": 73,
+        "center_count": 72,
+        "grid_digest": "12904566065860415662",
+        "center_digest": "1073246187311700811"
+      },
+      {
+        "degree": 74,
+        "grid_count": 75,
+        "center_count": 74,
+        "grid_digest": "8257330132338177072",
+        "center_digest": "12104643695054257482"
+      },
+      {
+        "degree": 75,
+        "grid_count": 76,
+        "center_count": 75,
+        "grid_digest": "12622351091844463325",
+        "center_digest": "1679518210534698166"
+      },
+      {
+        "degree": 76,
+        "grid_count": 76,
+        "center_count": 75,
+        "grid_digest": "16787661009202239888",
+        "center_digest": "6038214754432402310"
+      },
+      {
+        "degree": 77,
+        "grid_count": 77,
+        "center_count": 76,
+        "grid_digest": "3423488883823929962",
+        "center_digest": "5945886219574775172"
+      },
+      {
+        "degree": 78,
+        "grid_count": 79,
+        "center_count": 78,
+        "grid_digest": "13818544303983154018",
+        "center_digest": "13304593422527389380"
+      },
+      {
+        "degree": 79,
+        "grid_count": 80,
+        "center_count": 79,
+        "grid_digest": "9504817612153533361",
+        "center_digest": "6707926780940949944"
+      },
+      {
+        "degree": 80,
+        "grid_count": 81,
+        "center_count": 80,
+        "grid_digest": "15185176682730366835",
+        "center_digest": "11392436097144980708"
+      },
+      {
+        "degree": 81,
+        "grid_count": 81,
+        "center_count": 80,
+        "grid_digest": "17010017136003574041",
+        "center_digest": "13867558717792202583"
+      },
+      {
+        "degree": 82,
+        "grid_count": 82,
+        "center_count": 81,
+        "grid_digest": "3577208986295440312",
+        "center_digest": "16894007422337076837"
+      },
+      {
+        "degree": 83,
+        "grid_count": 83,
+        "center_count": 82,
+        "grid_digest": "18254266959968155815",
+        "center_digest": "9077000225621755754"
+      },
+      {
+        "degree": 84,
+        "grid_count": 85,
+        "center_count": 84,
+        "grid_digest": "10463219189852320914",
+        "center_digest": "3821367795542850279"
+      },
+      {
+        "degree": 85,
+        "grid_count": 86,
+        "center_count": 85,
+        "grid_digest": "4608533142152422706",
+        "center_digest": "15536329331382650076"
+      },
+      {
+        "degree": 86,
+        "grid_count": 86,
+        "center_count": 85,
+        "grid_digest": "3298339832593404189",
+        "center_digest": "15632849489284689527"
+      },
+      {
+        "degree": 87,
+        "grid_count": 88,
+        "center_count": 87,
+        "grid_digest": "15472065100812307453",
+        "center_digest": "16027429756693962638"
+      },
+      {
+        "degree": 88,
+        "grid_count": 89,
+        "center_count": 88,
+        "grid_digest": "13934273565927155842",
+        "center_digest": "7607580972073230889"
+      },
+      {
+        "degree": 89,
+        "grid_count": 89,
+        "center_count": 88,
+        "grid_digest": "7162393163427386596",
+        "center_digest": "11558466929458592349"
+      },
+      {
+        "degree": 90,
+        "grid_count": 91,
+        "center_count": 90,
+        "grid_digest": "681056387172456196",
+        "center_digest": "12330964037249197527"
+      },
+      {
+        "degree": 91,
+        "grid_count": 92,
+        "center_count": 91,
+        "grid_digest": "7874005207249777824",
+        "center_digest": "2214382592430416855"
+      },
+      {
+        "degree": 92,
+        "grid_count": 92,
+        "center_count": 91,
+        "grid_digest": "2622007304950827667",
+        "center_digest": "6851702837925644673"
+      },
+      {
+        "degree": 93,
+        "grid_count": 94,
+        "center_count": 93,
+        "grid_digest": "6411805399593280967",
+        "center_digest": "16645084386276177571"
+      },
+      {
+        "degree": 94,
+        "grid_count": 95,
+        "center_count": 94,
+        "grid_digest": "2912742132793570011",
+        "center_digest": "5387809893949315712"
+      },
+      {
+        "degree": 95,
+        "grid_count": 95,
+        "center_count": 94,
+        "grid_digest": "5075266451032056616",
+        "center_digest": "14694807807266881472"
+      },
+      {
+        "degree": 96,
+        "grid_count": 97,
+        "center_count": 96,
+        "grid_digest": "3881633710364648856",
+        "center_digest": "11951481620199059826"
+      },
+      {
+        "degree": 97,
+        "grid_count": 98,
+        "center_count": 97,
+        "grid_digest": "4752737959538340833",
+        "center_digest": "6370475303787171599"
+      },
+      {
+        "degree": 98,
+        "grid_count": 98,
+        "center_count": 97,
+        "grid_digest": "12651988429661290334",
+        "center_digest": "3459907068928333955"
+      },
+      {
+        "degree": 99,
+        "grid_count": 100,
+        "center_count": 99,
+        "grid_digest": "6833170988067563271",
+        "center_digest": "12089664389595641173"
+      },
+      {
+        "degree": 100,
+        "grid_count": 100,
+        "center_count": 99,
+        "grid_digest": "11184012184677247621",
+        "center_digest": "15922607960155729376"
+      },
+      {
+        "degree": 101,
+        "grid_count": 101,
+        "center_count": 100,
+        "grid_digest": "9530146394213953160",
+        "center_digest": "9629943330107480845"
+      },
+      {
+        "degree": 102,
+        "grid_count": 103,
+        "center_count": 102,
+        "grid_digest": "6399446292283079569",
+        "center_digest": "11155913700491095457"
+      },
+      {
+        "degree": 103,
+        "grid_count": 104,
+        "center_count": 103,
+        "grid_digest": "18308471334055312197",
+        "center_digest": "3219391238830292783"
+      },
+      {
+        "degree": 104,
+        "grid_count": 105,
+        "center_count": 104,
+        "grid_digest": "8328849800757123241",
+        "center_digest": "8637541231118025551"
+      },
+      {
+        "degree": 105,
+        "grid_count": 106,
+        "center_count": 105,
+        "grid_digest": "2185123807763484643",
+        "center_digest": "10547442173554726462"
+      },
+      {
+        "degree": 106,
+        "grid_count": 107,
+        "center_count": 106,
+        "grid_digest": "18428819456851170488",
+        "center_digest": "13644810671841035181"
+      },
+      {
+        "degree": 107,
+        "grid_count": 108,
+        "center_count": 107,
+        "grid_digest": "11986857419272025210",
+        "center_digest": "2368877427371467097"
+      },
+      {
+        "degree": 108,
+        "grid_count": 108,
+        "center_count": 107,
+        "grid_digest": "9863472094495206296",
+        "center_digest": "4162155584910430123"
+      },
+      {
+        "degree": 109,
+        "grid_count": 110,
+        "center_count": 109,
+        "grid_digest": "7802027265871558934",
+        "center_digest": "4585424415726968799"
+      },
+      {
+        "degree": 110,
+        "grid_count": 111,
+        "center_count": 110,
+        "grid_digest": "15721995144275316395",
+        "center_digest": "1251401982584734071"
+      },
+      {
+        "degree": 111,
+        "grid_count": 111,
+        "center_count": 110,
+        "grid_digest": "6146953559121475802",
+        "center_digest": "7846984429410521722"
+      },
+      {
+        "degree": 112,
+        "grid_count": 113,
+        "center_count": 112,
+        "grid_digest": "3736578608656331497",
+        "center_digest": "11562266130744598456"
+      },
+      {
+        "degree": 113,
+        "grid_count": 113,
+        "center_count": 112,
+        "grid_digest": "7353639626484985786",
+        "center_digest": "10985774562055437235"
+      },
+      {
+        "degree": 114,
+        "grid_count": 114,
+        "center_count": 113,
+        "grid_digest": "787105112829992361",
+        "center_digest": "15343221116026799563"
+      },
+      {
+        "degree": 115,
+        "grid_count": 116,
+        "center_count": 115,
+        "grid_digest": "11060938647751778506",
+        "center_digest": "12228751467554773771"
+      },
+      {
+        "degree": 116,
+        "grid_count": 117,
+        "center_count": 116,
+        "grid_digest": "14263578413330510856",
+        "center_digest": "2099332368943457326"
+      },
+      {
+        "degree": 117,
+        "grid_count": 118,
+        "center_count": 117,
+        "grid_digest": "6728554896163945564",
+        "center_digest": "16790878782134423065"
+      },
+      {
+        "degree": 118,
+        "grid_count": 119,
+        "center_count": 118,
+        "grid_digest": "13802057448807659801",
+        "center_digest": "14704861700989849747"
+      },
+      {
+        "degree": 119,
+        "grid_count": 120,
+        "center_count": 119,
+        "grid_digest": "17272650581400662484",
+        "center_digest": "8963646792104765064"
+      },
+      {
+        "degree": 120,
+        "grid_count": 121,
+        "center_count": 120,
+        "grid_digest": "5469334007084528313",
+        "center_digest": "773647917965560234"
+      },
+      {
+        "degree": 121,
+        "grid_count": 122,
+        "center_count": 121,
+        "grid_digest": "8813314635452611250",
+        "center_digest": "15354354261570770383"
+      },
+      {
+        "degree": 122,
+        "grid_count": 122,
+        "center_count": 121,
+        "grid_digest": "10862739987960850736",
+        "center_digest": "18092440565615074112"
+      },
+      {
+        "degree": 123,
+        "grid_count": 123,
+        "center_count": 122,
+        "grid_digest": "16389454076643701915",
+        "center_digest": "5553391729292862519"
+      },
+      {
+        "degree": 124,
+        "grid_count": 125,
+        "center_count": 124,
+        "grid_digest": "12243102510804350420",
+        "center_digest": "10579124847932118076"
+      },
+      {
+        "degree": 125,
+        "grid_count": 125,
+        "center_count": 124,
+        "grid_digest": "5601699582752945220",
+        "center_digest": "18416473404857174620"
+      },
+      {
+        "degree": 126,
+        "grid_count": 127,
+        "center_count": 126,
+        "grid_digest": "3374781214056586231",
+        "center_digest": "11994616406340090677"
+      },
+      {
+        "degree": 127,
+        "grid_count": 128,
+        "center_count": 127,
+        "grid_digest": "5811519131570787745",
+        "center_digest": "16396835790277984229"
+      },
+      {
+        "degree": 128,
+        "grid_count": 129,
+        "center_count": 128,
+        "grid_digest": "1762858324418033119",
+        "center_digest": "8397926955571014949"
+      },
+      {
+        "degree": 129,
+        "grid_count": 129,
+        "center_count": 128,
+        "grid_digest": "11728459378263382555",
+        "center_digest": "7774311018692681981"
+      },
+      {
+        "degree": 130,
+        "grid_count": 131,
+        "center_count": 130,
+        "grid_digest": "6830569025911650743",
+        "center_digest": "17895632432680855701"
+      },
+      {
+        "degree": 131,
+        "grid_count": 131,
+        "center_count": 130,
+        "grid_digest": "6346328780660649473",
+        "center_digest": "13032049071630863280"
+      },
+      {
+        "degree": 132,
+        "grid_count": 133,
+        "center_count": 132,
+        "grid_digest": "12257082662126147896",
+        "center_digest": "9622545333917815016"
+      },
+      {
+        "degree": 133,
+        "grid_count": 133,
+        "center_count": 132,
+        "grid_digest": "192891410808374869",
+        "center_digest": "9104293125392560571"
+      },
+      {
+        "degree": 134,
+        "grid_count": 134,
+        "center_count": 133,
+        "grid_digest": "12550036513612138806",
+        "center_digest": "15276491067129265675"
+      },
+      {
+        "degree": 135,
+        "grid_count": 135,
+        "center_count": 134,
+        "grid_digest": "3041982972571803893",
+        "center_digest": "8580835777277146797"
+      },
+      {
+        "degree": 136,
+        "grid_count": 137,
+        "center_count": 136,
+        "grid_digest": "5241912159769049083",
+        "center_digest": "9065121996079674320"
+      },
+      {
+        "degree": 137,
+        "grid_count": 138,
+        "center_count": 137,
+        "grid_digest": "2171417530055949960",
+        "center_digest": "14621773264394414882"
+      },
+      {
+        "degree": 138,
+        "grid_count": 138,
+        "center_count": 137,
+        "grid_digest": "14577502357340161359",
+        "center_digest": "13105943685829013242"
+      },
+      {
+        "degree": 139,
+        "grid_count": 140,
+        "center_count": 139,
+        "grid_digest": "1013126006879149568",
+        "center_digest": "17283030970205794381"
+      },
+      {
+        "degree": 140,
+        "grid_count": 141,
+        "center_count": 140,
+        "grid_digest": "17387304479557701588",
+        "center_digest": "11455518298520101069"
+      },
+      {
+        "degree": 141,
+        "grid_count": 141,
+        "center_count": 140,
+        "grid_digest": "5575135791440690445",
+        "center_digest": "7715993970266812622"
+      },
+      {
+        "degree": 142,
+        "grid_count": 143,
+        "center_count": 142,
+        "grid_digest": "777010203619192272",
+        "center_digest": "707932960792182834"
+      },
+      {
+        "degree": 143,
+        "grid_count": 144,
+        "center_count": 143,
+        "grid_digest": "1460344296153436344",
+        "center_digest": "11771875172581325528"
+      },
+      {
+        "degree": 144,
+        "grid_count": 145,
+        "center_count": 144,
+        "grid_digest": "4593101056167549133",
+        "center_digest": "3489512027636036934"
+      },
+      {
+        "degree": 145,
+        "grid_count": 145,
+        "center_count": 144,
+        "grid_digest": "15706169652573092399",
+        "center_digest": "15170128588547906281"
+      },
+      {
+        "degree": 146,
+        "grid_count": 146,
+        "center_count": 145,
+        "grid_digest": "18333429915256725173",
+        "center_digest": "3210660961573833313"
+      },
+      {
+        "degree": 147,
+        "grid_count": 147,
+        "center_count": 146,
+        "grid_digest": "1922138929459136289",
+        "center_digest": "11337410353687688434"
+      },
+      {
+        "degree": 148,
+        "grid_count": 148,
+        "center_count": 147,
+        "grid_digest": "5770480698198343997",
+        "center_digest": "9891104534661129946"
+      },
+      {
+        "degree": 149,
+        "grid_count": 150,
+        "center_count": 149,
+        "grid_digest": "6796566573745856052",
+        "center_digest": "3336240850674835812"
+      },
+      {
+        "degree": 150,
+        "grid_count": 150,
+        "center_count": 149,
+        "grid_digest": "1404069755125805348",
+        "center_digest": "11334735149075008263"
+      },
+      {
+        "degree": 151,
+        "grid_count": 151,
+        "center_count": 150,
+        "grid_digest": "17119190250173900223",
+        "center_digest": "3627723201661452991"
+      },
+      {
+        "degree": 152,
+        "grid_count": 153,
+        "center_count": 152,
+        "grid_digest": "1700834354882392327",
+        "center_digest": "3173379541456575318"
+      },
+      {
+        "degree": 153,
+        "grid_count": 154,
+        "center_count": 153,
+        "grid_digest": "8205379788179190085",
+        "center_digest": "4132916463500207006"
+      },
+      {
+        "degree": 154,
+        "grid_count": 155,
+        "center_count": 154,
+        "grid_digest": "15652790499974144831",
+        "center_digest": "14245354162367179972"
+      },
+      {
+        "degree": 155,
+        "grid_count": 155,
+        "center_count": 154,
+        "grid_digest": "14248365901887682052",
+        "center_digest": "4031549747824772658"
+      },
+      {
+        "degree": 156,
+        "grid_count": 157,
+        "center_count": 156,
+        "grid_digest": "7982174742199332212",
+        "center_digest": "15076638640102782398"
+      },
+      {
+        "degree": 157,
+        "grid_count": 158,
+        "center_count": 157,
+        "grid_digest": "9493268137404377818",
+        "center_digest": "786142360234325305"
+      },
+      {
+        "degree": 158,
+        "grid_count": 158,
+        "center_count": 157,
+        "grid_digest": "4210173953251071065",
+        "center_digest": "10534048423928789732"
+      },
+      {
+        "degree": 159,
+        "grid_count": 160,
+        "center_count": 159,
+        "grid_digest": "386220956690037224",
+        "center_digest": "4283232050084914910"
+      },
+      {
+        "degree": 160,
+        "grid_count": 161,
+        "center_count": 160,
+        "grid_digest": "7970779591328659843",
+        "center_digest": "15609800358806949796"
+      },
+      {
+        "degree": 161,
+        "grid_count": 161,
+        "center_count": 160,
+        "grid_digest": "7284487250496569607",
+        "center_digest": "17709797439690685653"
+      },
+      {
+        "degree": 162,
+        "grid_count": 162,
+        "center_count": 161,
+        "grid_digest": "4222460940549730313",
+        "center_digest": "6130366930297028437"
+      },
+      {
+        "degree": 163,
+        "grid_count": 164,
+        "center_count": 163,
+        "grid_digest": "5818358688448131715",
+        "center_digest": "1079828347144262646"
+      },
+      {
+        "degree": 164,
+        "grid_count": 164,
+        "center_count": 163,
+        "grid_digest": "2461775960251087036",
+        "center_digest": "3852599962147944644"
+      },
+      {
+        "degree": 165,
+        "grid_count": 165,
+        "center_count": 164,
+        "grid_digest": "14508440259788528108",
+        "center_digest": "6015688954340316325"
+      },
+      {
+        "degree": 166,
+        "grid_count": 167,
+        "center_count": 166,
+        "grid_digest": "6917455814218219763",
+        "center_digest": "1023375925273141676"
+      },
+      {
+        "degree": 167,
+        "grid_count": 167,
+        "center_count": 166,
+        "grid_digest": "11819146579392690491",
+        "center_digest": "1821530049379664220"
+      },
+      {
+        "degree": 168,
+        "grid_count": 169,
+        "center_count": 168,
+        "grid_digest": "1223427299373492866",
+        "center_digest": "5689781546546923703"
+      },
+      {
+        "degree": 169,
+        "grid_count": 169,
+        "center_count": 168,
+        "grid_digest": "13184044734506842365",
+        "center_digest": "6207235864245313325"
+      },
+      {
+        "degree": 170,
+        "grid_count": 171,
+        "center_count": 170,
+        "grid_digest": "14986752033182463328",
+        "center_digest": "9942983107541756466"
+      },
+      {
+        "degree": 171,
+        "grid_count": 172,
+        "center_count": 171,
+        "grid_digest": "11495122754514487550",
+        "center_digest": "185948360716473866"
+      },
+      {
+        "degree": 172,
+        "grid_count": 172,
+        "center_count": 171,
+        "grid_digest": "11538379663430316791",
+        "center_digest": "11093680293707667829"
+      },
+      {
+        "degree": 173,
+        "grid_count": 173,
+        "center_count": 172,
+        "grid_digest": "11464640221365693021",
+        "center_digest": "6663421805423660354"
+      },
+      {
+        "degree": 174,
+        "grid_count": 174,
+        "center_count": 173,
+        "grid_digest": "16581573308500193869",
+        "center_digest": "2569311782901204040"
+      },
+      {
+        "degree": 175,
+        "grid_count": 176,
+        "center_count": 175,
+        "grid_digest": "3130003831430039150",
+        "center_digest": "5443656046411779362"
+      },
+      {
+        "degree": 176,
+        "grid_count": 176,
+        "center_count": 175,
+        "grid_digest": "11166776026204820835",
+        "center_digest": "15112918156118723198"
+      },
+      {
+        "degree": 177,
+        "grid_count": 178,
+        "center_count": 177,
+        "grid_digest": "10755376314241368359",
+        "center_digest": "9364314086939748296"
+      },
+      {
+        "degree": 178,
+        "grid_count": 178,
+        "center_count": 177,
+        "grid_digest": "981827837618434116",
+        "center_digest": "10701869823135435264"
+      },
+      {
+        "degree": 179,
+        "grid_count": 179,
+        "center_count": 178,
+        "grid_digest": "2495841581845904801",
+        "center_digest": "1531797072834864256"
+      },
+      {
+        "degree": 180,
+        "grid_count": 181,
+        "center_count": 180,
+        "grid_digest": "9773458562482006458",
+        "center_digest": "8376172800303606105"
+      },
+      {
+        "degree": 181,
+        "grid_count": 182,
+        "center_count": 181,
+        "grid_digest": "4981978963682716881",
+        "center_digest": "10659757967323345341"
+      },
+      {
+        "degree": 182,
+        "grid_count": 183,
+        "center_count": 182,
+        "grid_digest": "3413532372080891861",
+        "center_digest": "3292699209992097856"
+      },
+      {
+        "degree": 183,
+        "grid_count": 183,
+        "center_count": 182,
+        "grid_digest": "17798240444286386508",
+        "center_digest": "1399516898575697916"
+      },
+      {
+        "degree": 184,
+        "grid_count": 184,
+        "center_count": 183,
+        "grid_digest": "9111629209508515323",
+        "center_digest": "16481271380482727941"
+      },
+      {
+        "degree": 185,
+        "grid_count": 186,
+        "center_count": 185,
+        "grid_digest": "15239548328052804240",
+        "center_digest": "16739682279642675747"
+      },
+      {
+        "degree": 186,
+        "grid_count": 187,
+        "center_count": 186,
+        "grid_digest": "10454578406362574350",
+        "center_digest": "9503971885116398396"
+      },
+      {
+        "degree": 187,
+        "grid_count": 187,
+        "center_count": 186,
+        "grid_digest": "10362829652674955736",
+        "center_digest": "17286912494743510498"
+      },
+      {
+        "degree": 188,
+        "grid_count": 188,
+        "center_count": 187,
+        "grid_digest": "5193464997458897202",
+        "center_digest": "13423268549602841443"
+      },
+      {
+        "degree": 189,
+        "grid_count": 189,
+        "center_count": 188,
+        "grid_digest": "4594512463541576896",
+        "center_digest": "14872427889391604885"
+      },
+      {
+        "degree": 190,
+        "grid_count": 190,
+        "center_count": 189,
+        "grid_digest": "8554279436711154475",
+        "center_digest": "3550900212573740678"
+      },
+      {
+        "degree": 191,
+        "grid_count": 192,
+        "center_count": 191,
+        "grid_digest": "9958252120793351110",
+        "center_digest": "773794420878900448"
+      },
+      {
+        "degree": 192,
+        "grid_count": 192,
+        "center_count": 191,
+        "grid_digest": "3268295099646656625",
+        "center_digest": "709759598576872066"
+      },
+      {
+        "degree": 193,
+        "grid_count": 193,
+        "center_count": 192,
+        "grid_digest": "9830753924305084790",
+        "center_digest": "5518880449752654832"
+      },
+      {
+        "degree": 194,
+        "grid_count": 195,
+        "center_count": 194,
+        "grid_digest": "14716807459718760625",
+        "center_digest": "14148662902804504295"
+      },
+      {
+        "degree": 195,
+        "grid_count": 196,
+        "center_count": 195,
+        "grid_digest": "18396458051256863265",
+        "center_digest": "4978611161027867853"
+      },
+      {
+        "degree": 196,
+        "grid_count": 197,
+        "center_count": 196,
+        "grid_digest": "13778121285434524264",
+        "center_digest": "12824510615409130843"
+      },
+      {
+        "degree": 197,
+        "grid_count": 197,
+        "center_count": 196,
+        "grid_digest": "2861813610369337017",
+        "center_digest": "16278973176410057103"
+      },
+      {
+        "degree": 198,
+        "grid_count": 198,
+        "center_count": 197,
+        "grid_digest": "15873211807601067938",
+        "center_digest": "15672500308566994704"
+      },
+      {
+        "degree": 199,
+        "grid_count": 199,
+        "center_count": 198,
+        "grid_digest": "8704288149650901488",
+        "center_digest": "15687711403373454687"
+      },
+      {
+        "degree": 200,
+        "grid_count": 200,
+        "center_count": 199,
+        "grid_digest": "7364563132160834073",
+        "center_digest": "1002147593485208187"
+      },
+      {
+        "degree": 201,
+        "grid_count": 202,
+        "center_count": 201,
+        "grid_digest": "17079602674043784263",
+        "center_digest": "472265311946494651"
+      },
+      {
+        "degree": 202,
+        "grid_count": 202,
+        "center_count": 201,
+        "grid_digest": "15225659229533287597",
+        "center_digest": "278760314186183649"
+      },
+      {
+        "degree": 203,
+        "grid_count": 204,
+        "center_count": 203,
+        "grid_digest": "15374620636185960077",
+        "center_digest": "2068808355992085193"
+      },
+      {
+        "degree": 204,
+        "grid_count": 205,
+        "center_count": 204,
+        "grid_digest": "6042171178302850937",
+        "center_digest": "9266870783267189297"
+      },
+      {
+        "degree": 205,
+        "grid_count": 205,
+        "center_count": 204,
+        "grid_digest": "4932374801139791929",
+        "center_digest": "7830758714500578234"
+      },
+      {
+        "degree": 206,
+        "grid_count": 207,
+        "center_count": 206,
+        "grid_digest": "12821021477231960776",
+        "center_digest": "8725865483438202115"
+      },
+      {
+        "degree": 207,
+        "grid_count": 207,
+        "center_count": 206,
+        "grid_digest": "8015252919431321862",
+        "center_digest": "11924744198367585185"
+      },
+      {
+        "degree": 208,
+        "grid_count": 209,
+        "center_count": 208,
+        "grid_digest": "13950355312996151529",
+        "center_digest": "10748605251164541279"
+      },
+      {
+        "degree": 209,
+        "grid_count": 209,
+        "center_count": 208,
+        "grid_digest": "6716004308467997789",
+        "center_digest": "1511461391827054276"
+      },
+      {
+        "degree": 210,
+        "grid_count": 211,
+        "center_count": 210,
+        "grid_digest": "13382395408192427083",
+        "center_digest": "6937133422220399252"
+      },
+      {
+        "degree": 211,
+        "grid_count": 211,
+        "center_count": 210,
+        "grid_digest": "11893053625617429305",
+        "center_digest": "5275883792259263114"
+      },
+      {
+        "degree": 212,
+        "grid_count": 212,
+        "center_count": 211,
+        "grid_digest": "362884190140651963",
+        "center_digest": "1431284071599650255"
+      },
+      {
+        "degree": 213,
+        "grid_count": 214,
+        "center_count": 213,
+        "grid_digest": "2516256977536684240",
+        "center_digest": "13497970549608543804"
+      },
+      {
+        "degree": 214,
+        "grid_count": 215,
+        "center_count": 214,
+        "grid_digest": "15836820318270626950",
+        "center_digest": "15293355445937276935"
+      },
+      {
+        "degree": 215,
+        "grid_count": 216,
+        "center_count": 215,
+        "grid_digest": "100024301486711741",
+        "center_digest": "17027508068215589424"
+      },
+      {
+        "degree": 216,
+        "grid_count": 216,
+        "center_count": 215,
+        "grid_digest": "5783184186005570568",
+        "center_digest": "10814071365761841043"
+      },
+      {
+        "degree": 217,
+        "grid_count": 218,
+        "center_count": 217,
+        "grid_digest": "10406477829056911478",
+        "center_digest": "10131383674503072241"
+      },
+      {
+        "degree": 218,
+        "grid_count": 219,
+        "center_count": 218,
+        "grid_digest": "654644530541588170",
+        "center_digest": "318359334069740832"
+      },
+      {
+        "degree": 219,
+        "grid_count": 220,
+        "center_count": 219,
+        "grid_digest": "11829118524519865060",
+        "center_digest": "449083408512434976"
+      },
+      {
+        "degree": 220,
+        "grid_count": 221,
+        "center_count": 220,
+        "grid_digest": "17875051226237419072",
+        "center_digest": "4473380858080814712"
+      },
+      {
+        "degree": 221,
+        "grid_count": 222,
+        "center_count": 221,
+        "grid_digest": "917902068912401785",
+        "center_digest": "9071749929458505863"
+      },
+      {
+        "degree": 222,
+        "grid_count": 223,
+        "center_count": 222,
+        "grid_digest": "4682180972901907482",
+        "center_digest": "5219866689944384805"
+      },
+      {
+        "degree": 223,
+        "grid_count": 223,
+        "center_count": 222,
+        "grid_digest": "16065059793918408068",
+        "center_digest": "14033010743794154427"
+      },
+      {
+        "degree": 224,
+        "grid_count": 225,
+        "center_count": 224,
+        "grid_digest": "16364168516675657593",
+        "center_digest": "3153160762972033368"
+      },
+      {
+        "degree": 225,
+        "grid_count": 225,
+        "center_count": 224,
+        "grid_digest": "17741557814510869032",
+        "center_digest": "1012578537070121745"
+      },
+      {
+        "degree": 226,
+        "grid_count": 226,
+        "center_count": 225,
+        "grid_digest": "9307016289655291732",
+        "center_digest": "344477301565928034"
+      },
+      {
+        "degree": 227,
+        "grid_count": 227,
+        "center_count": 226,
+        "grid_digest": "1956701689482196988",
+        "center_digest": "227870984030242439"
+      },
+      {
+        "degree": 228,
+        "grid_count": 228,
+        "center_count": 227,
+        "grid_digest": "12684325995662936736",
+        "center_digest": "731828421576126839"
+      },
+      {
+        "degree": 229,
+        "grid_count": 229,
+        "center_count": 228,
+        "grid_digest": "4969938832828158173",
+        "center_digest": "3606894402687802613"
+      },
+      {
+        "degree": 230,
+        "grid_count": 231,
+        "center_count": 230,
+        "grid_digest": "16372989548546525434",
+        "center_digest": "2678026523632511306"
+      },
+      {
+        "degree": 231,
+        "grid_count": 232,
+        "center_count": 231,
+        "grid_digest": "11043193478342858333",
+        "center_digest": "8351132180320799205"
+      },
+      {
+        "degree": 232,
+        "grid_count": 233,
+        "center_count": 232,
+        "grid_digest": "6462137965443967304",
+        "center_digest": "321410920358610606"
+      },
+      {
+        "degree": 233,
+        "grid_count": 234,
+        "center_count": 233,
+        "grid_digest": "9447995164069898820",
+        "center_digest": "10625712085494793661"
+      },
+      {
+        "degree": 234,
+        "grid_count": 235,
+        "center_count": 234,
+        "grid_digest": "6214103272629242777",
+        "center_digest": "5458721566665337002"
+      },
+      {
+        "degree": 235,
+        "grid_count": 235,
+        "center_count": 234,
+        "grid_digest": "15683933482612743739",
+        "center_digest": "11595566736865068565"
+      },
+      {
+        "degree": 236,
+        "grid_count": 237,
+        "center_count": 236,
+        "grid_digest": "3203066185264244227",
+        "center_digest": "13285966903441324307"
+      },
+      {
+        "degree": 237,
+        "grid_count": 238,
+        "center_count": 237,
+        "grid_digest": "10434647654408698076",
+        "center_digest": "12684634984772964442"
+      },
+      {
+        "degree": 238,
+        "grid_count": 239,
+        "center_count": 238,
+        "grid_digest": "14980512119710681280",
+        "center_digest": "15895134324314642307"
+      },
+      {
+        "degree": 239,
+        "grid_count": 240,
+        "center_count": 239,
+        "grid_digest": "4014674777428153790",
+        "center_digest": "16489793187453439774"
+      },
+      {
+        "degree": 240,
+        "grid_count": 241,
+        "center_count": 240,
+        "grid_digest": "1722786615388258617",
+        "center_digest": "5444366077780147850"
+      },
+      {
+        "degree": 241,
+        "grid_count": 242,
+        "center_count": 241,
+        "grid_digest": "5865626818999384024",
+        "center_digest": "18424172627223583839"
+      },
+      {
+        "degree": 242,
+        "grid_count": 243,
+        "center_count": 242,
+        "grid_digest": "15897582173279482324",
+        "center_digest": "4121850151116222607"
+      },
+      {
+        "degree": 243,
+        "grid_count": 244,
+        "center_count": 243,
+        "grid_digest": "4413442554769248884",
+        "center_digest": "15736916495935437969"
+      },
+      {
+        "degree": 244,
+        "grid_count": 245,
+        "center_count": 244,
+        "grid_digest": "10885192836569360896",
+        "center_digest": "15003251176897973436"
+      },
+      {
+        "degree": 245,
+        "grid_count": 245,
+        "center_count": 244,
+        "grid_digest": "9875354094380996187",
+        "center_digest": "8578114415213046809"
+      },
+      {
+        "degree": 246,
+        "grid_count": 247,
+        "center_count": 246,
+        "grid_digest": "5886115525867622451",
+        "center_digest": "5015318422478841784"
+      },
+      {
+        "degree": 247,
+        "grid_count": 247,
+        "center_count": 246,
+        "grid_digest": "14657487903522212030",
+        "center_digest": "3417214341486851531"
+      },
+      {
+        "degree": 248,
+        "grid_count": 249,
+        "center_count": 248,
+        "grid_digest": "12729445560583882520",
+        "center_digest": "957843027209942544"
+      },
+      {
+        "degree": 249,
+        "grid_count": 249,
+        "center_count": 248,
+        "grid_digest": "7648906357824918333",
+        "center_digest": "6309565093093350372"
+      },
+      {
+        "degree": 250,
+        "grid_count": 250,
+        "center_count": 249,
+        "grid_digest": "12341596700692677289",
+        "center_digest": "7001526246256281897"
+      },
+      {
+        "degree": 251,
+        "grid_count": 252,
+        "center_count": 251,
+        "grid_digest": "11647808487697459819",
+        "center_digest": "8475218030305697567"
+      },
+      {
+        "degree": 252,
+        "grid_count": 253,
+        "center_count": 252,
+        "grid_digest": "12403911993493163823",
+        "center_digest": "14811744357656052277"
+      },
+      {
+        "degree": 253,
+        "grid_count": 254,
+        "center_count": 253,
+        "grid_digest": "227712018215874245",
+        "center_digest": "16836104570441408532"
+      },
+      {
+        "degree": 254,
+        "grid_count": 255,
+        "center_count": 254,
+        "grid_digest": "4459116397283887138",
+        "center_digest": "10733466457455762546"
+      },
+      {
+        "degree": 255,
+        "grid_count": 256,
+        "center_count": 255,
+        "grid_digest": "5174168025392393853",
+        "center_digest": "4246136103281299467"
+      },
+      {
+        "degree": 256,
+        "grid_count": 257,
+        "center_count": 256,
+        "grid_digest": "8736892344588579807",
+        "center_digest": "3200905227744818981"
+      },
+      {
+        "degree": 257,
+        "grid_count": 258,
+        "center_count": 257,
+        "grid_digest": "743656593550466153",
+        "center_digest": "9720956933579769583"
+      },
+      {
+        "degree": 258,
+        "grid_count": 258,
+        "center_count": 257,
+        "grid_digest": "130089696349602324",
+        "center_digest": "8382134791266477825"
+      },
+      {
+        "degree": 259,
+        "grid_count": 260,
+        "center_count": 259,
+        "grid_digest": "17465263356135720847",
+        "center_digest": "12878202000592201943"
+      },
+      {
+        "degree": 260,
+        "grid_count": 261,
+        "center_count": 260,
+        "grid_digest": "1216140574796763199",
+        "center_digest": "836646296075591989"
+      },
+      {
+        "degree": 261,
+        "grid_count": 261,
+        "center_count": 260,
+        "grid_digest": "16362071241193222142",
+        "center_digest": "2544250483101565629"
+      },
+      {
+        "degree": 262,
+        "grid_count": 263,
+        "center_count": 262,
+        "grid_digest": "8456104673692201617",
+        "center_digest": "16592282463107133015"
+      },
+      {
+        "degree": 263,
+        "grid_count": 263,
+        "center_count": 262,
+        "grid_digest": "9128331253110908659",
+        "center_digest": "1273065430959548995"
+      },
+      {
+        "degree": 264,
+        "grid_count": 265,
+        "center_count": 264,
+        "grid_digest": "4438484902570123532",
+        "center_digest": "15375035460575500444"
+      },
+      {
+        "degree": 265,
+        "grid_count": 266,
+        "center_count": 265,
+        "grid_digest": "3369965984725695876",
+        "center_digest": "16698604186696849298"
+      },
+      {
+        "degree": 266,
+        "grid_count": 266,
+        "center_count": 265,
+        "grid_digest": "15397132492141494647",
+        "center_digest": "6708660142542109931"
+      },
+      {
+        "degree": 267,
+        "grid_count": 267,
+        "center_count": 266,
+        "grid_digest": "16404558793408478488",
+        "center_digest": "9214680341717733186"
+      },
+      {
+        "degree": 268,
+        "grid_count": 269,
+        "center_count": 268,
+        "grid_digest": "4681754857738339232",
+        "center_digest": "11259815380653062858"
+      },
+      {
+        "degree": 269,
+        "grid_count": 269,
+        "center_count": 268,
+        "grid_digest": "988316837042586357",
+        "center_digest": "9575329519414653540"
+      },
+      {
+        "degree": 270,
+        "grid_count": 271,
+        "center_count": 270,
+        "grid_digest": "7536769178461823869",
+        "center_digest": "15110102182866070371"
+      },
+      {
+        "degree": 271,
+        "grid_count": 272,
+        "center_count": 271,
+        "grid_digest": "17010224719020952780",
+        "center_digest": "3905450313649377127"
+      },
+      {
+        "degree": 272,
+        "grid_count": 273,
+        "center_count": 272,
+        "grid_digest": "16563738253168030379",
+        "center_digest": "5943723866647059120"
+      },
+      {
+        "degree": 273,
+        "grid_count": 274,
+        "center_count": 273,
+        "grid_digest": "5670500128867089730",
+        "center_digest": "14333356853384546528"
+      },
+      {
+        "degree": 274,
+        "grid_count": 274,
+        "center_count": 273,
+        "grid_digest": "4170613315586593016",
+        "center_digest": "587933502793656634"
+      },
+      {
+        "degree": 275,
+        "grid_count": 275,
+        "center_count": 274,
+        "grid_digest": "11264663359590701724",
+        "center_digest": "6997939144546445639"
+      },
+      {
+        "degree": 276,
+        "grid_count": 276,
+        "center_count": 275,
+        "grid_digest": "2775746192804331001",
+        "center_digest": "1860821654058778636"
+      },
+      {
+        "degree": 277,
+        "grid_count": 277,
+        "center_count": 276,
+        "grid_digest": "16047852838463046133",
+        "center_digest": "2372198541973070464"
+      },
+      {
+        "degree": 278,
+        "grid_count": 279,
+        "center_count": 278,
+        "grid_digest": "5503578018787056385",
+        "center_digest": "11752738674742193969"
+      },
+      {
+        "degree": 279,
+        "grid_count": 279,
+        "center_count": 278,
+        "grid_digest": "9770631284394262296",
+        "center_digest": "683221131986397660"
+      },
+      {
+        "degree": 280,
+        "grid_count": 281,
+        "center_count": 280,
+        "grid_digest": "2309093252237108384",
+        "center_digest": "13024914880564545649"
+      },
+      {
+        "degree": 281,
+        "grid_count": 282,
+        "center_count": 281,
+        "grid_digest": "7504631091784654821",
+        "center_digest": "14694292828577736497"
+      },
+      {
+        "degree": 282,
+        "grid_count": 283,
+        "center_count": 282,
+        "grid_digest": "5945802910988681579",
+        "center_digest": "109991904166494207"
+      },
+      {
+        "degree": 283,
+        "grid_count": 283,
+        "center_count": 282,
+        "grid_digest": "1067966370543529624",
+        "center_digest": "12493417086123594726"
+      },
+      {
+        "degree": 284,
+        "grid_count": 285,
+        "center_count": 284,
+        "grid_digest": "16019866731996873033",
+        "center_digest": "11894496248036742363"
+      },
+      {
+        "degree": 285,
+        "grid_count": 285,
+        "center_count": 284,
+        "grid_digest": "15445469076774418957",
+        "center_digest": "16066858375470657775"
+      },
+      {
+        "degree": 286,
+        "grid_count": 286,
+        "center_count": 285,
+        "grid_digest": "10757439904236831102",
+        "center_digest": "13100905655994486268"
+      },
+      {
+        "degree": 287,
+        "grid_count": 288,
+        "center_count": 287,
+        "grid_digest": "17705692152443655018",
+        "center_digest": "15858422584205754143"
+      },
+      {
+        "degree": 288,
+        "grid_count": 289,
+        "center_count": 288,
+        "grid_digest": "3486974263177027309",
+        "center_digest": "15099620011130994742"
+      },
+      {
+        "degree": 289,
+        "grid_count": 289,
+        "center_count": 288,
+        "grid_digest": "6059844857960809177",
+        "center_digest": "18399657669464475334"
+      },
+      {
+        "degree": 290,
+        "grid_count": 290,
+        "center_count": 289,
+        "grid_digest": "11361759877799997624",
+        "center_digest": "5056084142783919069"
+      },
+      {
+        "degree": 291,
+        "grid_count": 292,
+        "center_count": 291,
+        "grid_digest": "15814818739512556563",
+        "center_digest": "8352132911571748326"
+      },
+      {
+        "degree": 292,
+        "grid_count": 292,
+        "center_count": 291,
+        "grid_digest": "13155504805029140802",
+        "center_digest": "9062820648553936845"
+      },
+      {
+        "degree": 293,
+        "grid_count": 293,
+        "center_count": 292,
+        "grid_digest": "14870926576364841619",
+        "center_digest": "2443920300200979855"
+      },
+      {
+        "degree": 294,
+        "grid_count": 294,
+        "center_count": 293,
+        "grid_digest": "156242527216467610",
+        "center_digest": "10045129843414469580"
+      },
+      {
+        "degree": 295,
+        "grid_count": 296,
+        "center_count": 295,
+        "grid_digest": "8880019872964238187",
+        "center_digest": "10891074316959688031"
+      },
+      {
+        "degree": 296,
+        "grid_count": 296,
+        "center_count": 295,
+        "grid_digest": "17570513582535496545",
+        "center_digest": "6313036985835201869"
+      },
+      {
+        "degree": 297,
+        "grid_count": 298,
+        "center_count": 297,
+        "grid_digest": "5520984859472347271",
+        "center_digest": "8023530931062224044"
+      },
+      {
+        "degree": 298,
+        "grid_count": 298,
+        "center_count": 297,
+        "grid_digest": "10056158273471014004",
+        "center_digest": "9786680691838445544"
+      },
+      {
+        "degree": 299,
+        "grid_count": 300,
+        "center_count": 299,
+        "grid_digest": "9777123750374148105",
+        "center_digest": "5169988479532359583"
+      },
+      {
+        "degree": 300,
+        "grid_count": 301,
+        "center_count": 300,
+        "grid_digest": "15533702537884204452",
+        "center_digest": "15631054107774551749"
+      },
+      {
+        "degree": 301,
+        "grid_count": 301,
+        "center_count": 300,
+        "grid_digest": "4423623567069478091",
+        "center_digest": "5138688597291990993"
+      },
+      {
+        "degree": 302,
+        "grid_count": 302,
+        "center_count": 301,
+        "grid_digest": "9189761588753847178",
+        "center_digest": "4080904522945060178"
+      },
+      {
+        "degree": 303,
+        "grid_count": 303,
+        "center_count": 302,
+        "grid_digest": "7861891068457314819",
+        "center_digest": "9026823599343949072"
+      },
+      {
+        "degree": 304,
+        "grid_count": 305,
+        "center_count": 304,
+        "grid_digest": "18327121483076516663",
+        "center_digest": "12474097448997596718"
+      },
+      {
+        "degree": 305,
+        "grid_count": 306,
+        "center_count": 305,
+        "grid_digest": "685979694042623439",
+        "center_digest": "5047860983641374508"
+      },
+      {
+        "degree": 306,
+        "grid_count": 307,
+        "center_count": 306,
+        "grid_digest": "13667442150681477416",
+        "center_digest": "16971409300072811665"
+      },
+      {
+        "degree": 307,
+        "grid_count": 307,
+        "center_count": 306,
+        "grid_digest": "6938485129531820911",
+        "center_digest": "16969057945884702799"
+      },
+      {
+        "degree": 308,
+        "grid_count": 308,
+        "center_count": 307,
+        "grid_digest": "4168430565419713431",
+        "center_digest": "7969652706113261804"
+      },
+      {
+        "degree": 309,
+        "grid_count": 310,
+        "center_count": 309,
+        "grid_digest": "16551973733200551140",
+        "center_digest": "13901874827184702934"
+      },
+      {
+        "degree": 310,
+        "grid_count": 311,
+        "center_count": 310,
+        "grid_digest": "1338086975231615012",
+        "center_digest": "609777845671645468"
+      },
+      {
+        "degree": 311,
+        "grid_count": 312,
+        "center_count": 311,
+        "grid_digest": "18220151981874374557",
+        "center_digest": "16633228425109290640"
+      },
+      {
+        "degree": 312,
+        "grid_count": 313,
+        "center_count": 312,
+        "grid_digest": "8303028849973268112",
+        "center_digest": "8731586740601596786"
+      },
+      {
+        "degree": 313,
+        "grid_count": 313,
+        "center_count": 312,
+        "grid_digest": "15363365770951946616",
+        "center_digest": "7009395934781682720"
+      },
+      {
+        "degree": 314,
+        "grid_count": 315,
+        "center_count": 314,
+        "grid_digest": "7886420707832480463",
+        "center_digest": "4799731369465566592"
+      },
+      {
+        "degree": 315,
+        "grid_count": 316,
+        "center_count": 315,
+        "grid_digest": "9637053404288906832",
+        "center_digest": "12079331818617345749"
+      },
+      {
+        "degree": 316,
+        "grid_count": 316,
+        "center_count": 315,
+        "grid_digest": "10544469790640007059",
+        "center_digest": "9784560281914269507"
+      },
+      {
+        "degree": 317,
+        "grid_count": 318,
+        "center_count": 317,
+        "grid_digest": "15433098419256505997",
+        "center_digest": "4430838035105729799"
+      },
+      {
+        "degree": 318,
+        "grid_count": 319,
+        "center_count": 318,
+        "grid_digest": "7707990247942301816",
+        "center_digest": "2097292172113303205"
+      },
+      {
+        "degree": 319,
+        "grid_count": 319,
+        "center_count": 318,
+        "grid_digest": "17036688449286905919",
+        "center_digest": "12687257947675956647"
+      },
+      {
+        "degree": 320,
+        "grid_count": 320,
+        "center_count": 319,
+        "grid_digest": "3403540967310613829",
+        "center_digest": "17849982534300530276"
+      },
+      {
+        "degree": 321,
+        "grid_count": 322,
+        "center_count": 321,
+        "grid_digest": "7877822410958315933",
+        "center_digest": "8875887675562707764"
+      },
+      {
+        "degree": 322,
+        "grid_count": 323,
+        "center_count": 322,
+        "grid_digest": "17757002047895241581",
+        "center_digest": "16601874152667712622"
+      },
+      {
+        "degree": 323,
+        "grid_count": 323,
+        "center_count": 322,
+        "grid_digest": "9724844783756354621",
+        "center_digest": "6278798262002664760"
+      },
+      {
+        "degree": 324,
+        "grid_count": 324,
+        "center_count": 323,
+        "grid_digest": "18413824457819792433",
+        "center_digest": "13434893634833744085"
+      },
+      {
+        "degree": 325,
+        "grid_count": 325,
+        "center_count": 324,
+        "grid_digest": "230874488681264454",
+        "center_digest": "17851557205029799857"
+      },
+      {
+        "degree": 326,
+        "grid_count": 327,
+        "center_count": 326,
+        "grid_digest": "6443506218056188726",
+        "center_digest": "11807957966996256143"
+      },
+      {
+        "degree": 327,
+        "grid_count": 327,
+        "center_count": 326,
+        "grid_digest": "3616553590128732782",
+        "center_digest": "9413997628871759704"
+      },
+      {
+        "degree": 328,
+        "grid_count": 328,
+        "center_count": 327,
+        "grid_digest": "6998504283263622980",
+        "center_digest": "2570891805454086945"
+      },
+      {
+        "degree": 329,
+        "grid_count": 330,
+        "center_count": 329,
+        "grid_digest": "1986354203184278371",
+        "center_digest": "7619677565036402710"
+      },
+      {
+        "degree": 330,
+        "grid_count": 330,
+        "center_count": 329,
+        "grid_digest": "12220224977169874804",
+        "center_digest": "663566479388349934"
+      },
+      {
+        "degree": 331,
+        "grid_count": 332,
+        "center_count": 331,
+        "grid_digest": "1301425889948973026",
+        "center_digest": "17489925884374650104"
+      },
+      {
+        "degree": 332,
+        "grid_count": 332,
+        "center_count": 331,
+        "grid_digest": "14659538834412788906",
+        "center_digest": "11545656536240378740"
+      },
+      {
+        "degree": 333,
+        "grid_count": 333,
+        "center_count": 332,
+        "grid_digest": "12690957258722488567",
+        "center_digest": "15396255495134399262"
+      },
+      {
+        "degree": 334,
+        "grid_count": 335,
+        "center_count": 334,
+        "grid_digest": "12453541217303913331",
+        "center_digest": "3396630975051787371"
+      },
+      {
+        "degree": 335,
+        "grid_count": 335,
+        "center_count": 334,
+        "grid_digest": "18200177555665198315",
+        "center_digest": "15780130496924299611"
+      },
+      {
+        "degree": 336,
+        "grid_count": 337,
+        "center_count": 336,
+        "grid_digest": "8327028169820527650",
+        "center_digest": "9851255014139229495"
+      },
+      {
+        "degree": 337,
+        "grid_count": 338,
+        "center_count": 337,
+        "grid_digest": "13496239770689647786",
+        "center_digest": "8280826357382206143"
+      },
+      {
+        "degree": 338,
+        "grid_count": 338,
+        "center_count": 337,
+        "grid_digest": "1627018432659925590",
+        "center_digest": "16592304060260759134"
+      },
+      {
+        "degree": 339,
+        "grid_count": 339,
+        "center_count": 338,
+        "grid_digest": "13900725250783246166",
+        "center_digest": "13599985861703606341"
+      },
+      {
+        "degree": 340,
+        "grid_count": 341,
+        "center_count": 340,
+        "grid_digest": "10116958396083760750",
+        "center_digest": "17640393955487998840"
+      },
+      {
+        "degree": 341,
+        "grid_count": 342,
+        "center_count": 341,
+        "grid_digest": "14232929288846551986",
+        "center_digest": "3878806978857505304"
+      },
+      {
+        "degree": 342,
+        "grid_count": 343,
+        "center_count": 342,
+        "grid_digest": "15428790769874229045",
+        "center_digest": "11023604173283787833"
+      },
+      {
+        "degree": 343,
+        "grid_count": 344,
+        "center_count": 343,
+        "grid_digest": "1140540041826944401",
+        "center_digest": "2315954879018606171"
+      },
+      {
+        "degree": 344,
+        "grid_count": 344,
+        "center_count": 343,
+        "grid_digest": "4547901878735400847",
+        "center_digest": "17713599546018173337"
+      },
+      {
+        "degree": 345,
+        "grid_count": 346,
+        "center_count": 345,
+        "grid_digest": "3052020856792007343",
+        "center_digest": "14141985031676481237"
+      },
+      {
+        "degree": 346,
+        "grid_count": 346,
+        "center_count": 345,
+        "grid_digest": "14550452032023759106",
+        "center_digest": "6718161554162755532"
+      },
+      {
+        "degree": 347,
+        "grid_count": 347,
+        "center_count": 346,
+        "grid_digest": "12806334446171202687",
+        "center_digest": "17365282124869699645"
+      },
+      {
+        "degree": 348,
+        "grid_count": 348,
+        "center_count": 347,
+        "grid_digest": "1472909049145883114",
+        "center_digest": "7401960330793298249"
+      },
+      {
+        "degree": 349,
+        "grid_count": 350,
+        "center_count": 349,
+        "grid_digest": "14624609735240851564",
+        "center_digest": "7245827973508705377"
+      },
+      {
+        "degree": 350,
+        "grid_count": 350,
+        "center_count": 349,
+        "grid_digest": "14459779777413727354",
+        "center_digest": "2689823794584373836"
+      },
+      {
+        "degree": 351,
+        "grid_count": 352,
+        "center_count": 351,
+        "grid_digest": "11823077137178630566",
+        "center_digest": "2775141887632643270"
+      },
+      {
+        "degree": 352,
+        "grid_count": 353,
+        "center_count": 352,
+        "grid_digest": "10327065539708054691",
+        "center_digest": "12886933836675348857"
+      },
+      {
+        "degree": 353,
+        "grid_count": 353,
+        "center_count": 352,
+        "grid_digest": "10540523349392775606",
+        "center_digest": "12705872073403980176"
+      },
+      {
+        "degree": 354,
+        "grid_count": 354,
+        "center_count": 353,
+        "grid_digest": "15032133605294420503",
+        "center_digest": "13441631528095909464"
+      },
+      {
+        "degree": 355,
+        "grid_count": 356,
+        "center_count": 355,
+        "grid_digest": "2862734066038117988",
+        "center_digest": "13209303252561946148"
+      },
+      {
+        "degree": 356,
+        "grid_count": 357,
+        "center_count": 356,
+        "grid_digest": "6243313085450813124",
+        "center_digest": "17582126186198283904"
+      },
+      {
+        "degree": 357,
+        "grid_count": 358,
+        "center_count": 357,
+        "grid_digest": "17260046963861774902",
+        "center_digest": "10699503172442413725"
+      },
+      {
+        "degree": 358,
+        "grid_count": 358,
+        "center_count": 357,
+        "grid_digest": "9694582530316701121",
+        "center_digest": "4784004040720836104"
+      },
+      {
+        "degree": 359,
+        "grid_count": 360,
+        "center_count": 359,
+        "grid_digest": "7969364354517701045",
+        "center_digest": "16583614152727383892"
+      },
+      {
+        "degree": 360,
+        "grid_count": 361,
+        "center_count": 360,
+        "grid_digest": "15001573393536880310",
+        "center_digest": "13618550785001062621"
+      },
+      {
+        "degree": 361,
+        "grid_count": 362,
+        "center_count": 361,
+        "grid_digest": "10425794039671862242",
+        "center_digest": "4607644517199112003"
+      },
+      {
+        "degree": 362,
+        "grid_count": 362,
+        "center_count": 361,
+        "grid_digest": "13272793384725295057",
+        "center_digest": "14788364338963629717"
+      },
+      {
+        "degree": 363,
+        "grid_count": 363,
+        "center_count": 362,
+        "grid_digest": "13657813800169320602",
+        "center_digest": "16676426904224903845"
+      },
+      {
+        "degree": 364,
+        "grid_count": 365,
+        "center_count": 364,
+        "grid_digest": "7349252959793842051",
+        "center_digest": "5511711345272911434"
+      },
+      {
+        "degree": 365,
+        "grid_count": 366,
+        "center_count": 365,
+        "grid_digest": "8822369068778560735",
+        "center_digest": "6178944983417479921"
+      },
+      {
+        "degree": 366,
+        "grid_count": 366,
+        "center_count": 365,
+        "grid_digest": "942926777418339237",
+        "center_digest": "9636357723469156715"
+      },
+      {
+        "degree": 367,
+        "grid_count": 367,
+        "center_count": 366,
+        "grid_digest": "5169698417110959580",
+        "center_digest": "3737371179044009249"
+      },
+      {
+        "degree": 368,
+        "grid_count": 369,
+        "center_count": 368,
+        "grid_digest": "8413784644379592471",
+        "center_digest": "5570961431676410178"
+      },
+      {
+        "degree": 369,
+        "grid_count": 369,
+        "center_count": 368,
+        "grid_digest": "8050603508860182854",
+        "center_digest": "14332591085817718964"
+      },
+      {
+        "degree": 370,
+        "grid_count": 371,
+        "center_count": 370,
+        "grid_digest": "11374523982018212353",
+        "center_digest": "5797820149500438891"
+      },
+      {
+        "degree": 371,
+        "grid_count": 371,
+        "center_count": 370,
+        "grid_digest": "7419638340650091168",
+        "center_digest": "17321778016664534579"
+      },
+      {
+        "degree": 372,
+        "grid_count": 373,
+        "center_count": 372,
+        "grid_digest": "12470009514985440298",
+        "center_digest": "15927081862741773670"
+      },
+      {
+        "degree": 373,
+        "grid_count": 373,
+        "center_count": 372,
+        "grid_digest": "9086658393285940133",
+        "center_digest": "5290209838207328741"
+      },
+      {
+        "degree": 374,
+        "grid_count": 374,
+        "center_count": 373,
+        "grid_digest": "3763843354832581622",
+        "center_digest": "2676385661501389875"
+      },
+      {
+        "degree": 375,
+        "grid_count": 375,
+        "center_count": 374,
+        "grid_digest": "11403839094603923551",
+        "center_digest": "4417028762638165485"
+      },
+      {
+        "degree": 376,
+        "grid_count": 377,
+        "center_count": 376,
+        "grid_digest": "3365208904937425047",
+        "center_digest": "11190005874169232555"
+      },
+      {
+        "degree": 377,
+        "grid_count": 377,
+        "center_count": 376,
+        "grid_digest": "12950422494081574529",
+        "center_digest": "6105340342065502650"
+      },
+      {
+        "degree": 378,
+        "grid_count": 378,
+        "center_count": 377,
+        "grid_digest": "3548494513886965873",
+        "center_digest": "17498008180161840717"
+      },
+      {
+        "degree": 379,
+        "grid_count": 379,
+        "center_count": 378,
+        "grid_digest": "12167533505050520988",
+        "center_digest": "17017886393623813712"
+      },
+      {
+        "degree": 380,
+        "grid_count": 380,
+        "center_count": 379,
+        "grid_digest": "16215864340341669588",
+        "center_digest": "6401322219556975118"
+      },
+      {
+        "degree": 381,
+        "grid_count": 382,
+        "center_count": 381,
+        "grid_digest": "3724817491159589785",
+        "center_digest": "3298904708613026525"
+      },
+      {
+        "degree": 382,
+        "grid_count": 383,
+        "center_count": 382,
+        "grid_digest": "18375314677326763343",
+        "center_digest": "12408380916994078423"
+      },
+      {
+        "degree": 383,
+        "grid_count": 383,
+        "center_count": 382,
+        "grid_digest": "17448051522410932580",
+        "center_digest": "11033999365400620100"
+      },
+      {
+        "degree": 384,
+        "grid_count": 385,
+        "center_count": 384,
+        "grid_digest": "10943351418470411239",
+        "center_digest": "12849541129626893234"
+      },
+      {
+        "degree": 385,
+        "grid_count": 385,
+        "center_count": 384,
+        "grid_digest": "3489425652153538986",
+        "center_digest": "13945654899479502458"
+      },
+      {
+        "degree": 386,
+        "grid_count": 386,
+        "center_count": 385,
+        "grid_digest": "158459928793743783",
+        "center_digest": "14095622621089294018"
+      },
+      {
+        "degree": 387,
+        "grid_count": 388,
+        "center_count": 387,
+        "grid_digest": "543801841040580022",
+        "center_digest": "16122324470682730639"
+      },
+      {
+        "degree": 388,
+        "grid_count": 389,
+        "center_count": 388,
+        "grid_digest": "8724449549908677379",
+        "center_digest": "9607366789337321585"
+      },
+      {
+        "degree": 389,
+        "grid_count": 389,
+        "center_count": 388,
+        "grid_digest": "1232700042062673300",
+        "center_digest": "2341518495530623038"
+      },
+      {
+        "degree": 390,
+        "grid_count": 391,
+        "center_count": 390,
+        "grid_digest": "9510175819614204762",
+        "center_digest": "9668887120824279054"
+      },
+      {
+        "degree": 391,
+        "grid_count": 391,
+        "center_count": 390,
+        "grid_digest": "4084850972268167447",
+        "center_digest": "8628782164584634834"
+      },
+      {
+        "degree": 392,
+        "grid_count": 393,
+        "center_count": 392,
+        "grid_digest": "2190180923782568332",
+        "center_digest": "17628490716399154327"
+      },
+      {
+        "degree": 393,
+        "grid_count": 394,
+        "center_count": 393,
+        "grid_digest": "10119211738457524981",
+        "center_digest": "5710452941529675378"
+      },
+      {
+        "degree": 394,
+        "grid_count": 395,
+        "center_count": 394,
+        "grid_digest": "10470416607652015364",
+        "center_digest": "9957267359690842273"
+      },
+      {
+        "degree": 395,
+        "grid_count": 395,
+        "center_count": 394,
+        "grid_digest": "15858713752952243934",
+        "center_digest": "719258363358520773"
+      },
+      {
+        "degree": 396,
+        "grid_count": 397,
+        "center_count": 396,
+        "grid_digest": "9197776028282265469",
+        "center_digest": "6000890893718777110"
+      },
+      {
+        "degree": 397,
+        "grid_count": 398,
+        "center_count": 397,
+        "grid_digest": "7395386844308473035",
+        "center_digest": "17402278053592692011"
+      },
+      {
+        "degree": 398,
+        "grid_count": 399,
+        "center_count": 398,
+        "grid_digest": "17908543945239664904",
+        "center_digest": "335897177347712322"
+      },
+      {
+        "degree": 399,
+        "grid_count": 400,
+        "center_count": 399,
+        "grid_digest": "13514909434899074727",
+        "center_digest": "9117071473797695117"
+      },
+      {
+        "degree": 400,
+        "grid_count": 401,
+        "center_count": 400,
+        "grid_digest": "13344732179153017654",
+        "center_digest": "10104605916192192371"
+      },
+      {
+        "degree": 401,
+        "grid_count": 402,
+        "center_count": 401,
+        "grid_digest": "4908025785441328218",
+        "center_digest": "6112595188430176623"
+      },
+      {
+        "degree": 402,
+        "grid_count": 402,
+        "center_count": 401,
+        "grid_digest": "992924263031867279",
+        "center_digest": "9611347825553976627"
+      },
+      {
+        "degree": 403,
+        "grid_count": 403,
+        "center_count": 402,
+        "grid_digest": "16970839922474225447",
+        "center_digest": "3514613689743104813"
+      },
+      {
+        "degree": 404,
+        "grid_count": 404,
+        "center_count": 403,
+        "grid_digest": "7708355892289260037",
+        "center_digest": "6009284670050466428"
+      },
+      {
+        "degree": 405,
+        "grid_count": 406,
+        "center_count": 405,
+        "grid_digest": "7900055868058505535",
+        "center_digest": "12063656209007718361"
+      },
+      {
+        "degree": 406,
+        "grid_count": 406,
+        "center_count": 405,
+        "grid_digest": "402453805252634771",
+        "center_digest": "11171512757779843119"
+      },
+      {
+        "degree": 407,
+        "grid_count": 408,
+        "center_count": 407,
+        "grid_digest": "2347200301522542238",
+        "center_digest": "11632070821987215326"
+      },
+      {
+        "degree": 408,
+        "grid_count": 409,
+        "center_count": 408,
+        "grid_digest": "2702288261019616589",
+        "center_digest": "595155224087594693"
+      },
+      {
+        "degree": 409,
+        "grid_count": 410,
+        "center_count": 409,
+        "grid_digest": "4269226544250944600",
+        "center_digest": "5920448222236715885"
+      },
+      {
+        "degree": 410,
+        "grid_count": 410,
+        "center_count": 409,
+        "grid_digest": "11324062455533432018",
+        "center_digest": "7335293503299627439"
+      },
+      {
+        "degree": 411,
+        "grid_count": 412,
+        "center_count": 411,
+        "grid_digest": "13234699002400735885",
+        "center_digest": "717450854987603876"
+      },
+      {
+        "degree": 412,
+        "grid_count": 413,
+        "center_count": 412,
+        "grid_digest": "12967522264051478635",
+        "center_digest": "13664490142177908264"
+      },
+      {
+        "degree": 413,
+        "grid_count": 413,
+        "center_count": 412,
+        "grid_digest": "8326801622609264076",
+        "center_digest": "4973666524448146524"
+      },
+      {
+        "degree": 414,
+        "grid_count": 414,
+        "center_count": 413,
+        "grid_digest": "15487074523540123200",
+        "center_digest": "8449672475065489663"
+      },
+      {
+        "degree": 415,
+        "grid_count": 416,
+        "center_count": 415,
+        "grid_digest": "6826848487765134643",
+        "center_digest": "3410597491199387784"
+      },
+      {
+        "degree": 416,
+        "grid_count": 417,
+        "center_count": 416,
+        "grid_digest": "10247152076509503753",
+        "center_digest": "12777997017777344879"
+      },
+      {
+        "degree": 417,
+        "grid_count": 418,
+        "center_count": 417,
+        "grid_digest": "7260613683638366687",
+        "center_digest": "11199448644259493862"
+      },
+      {
+        "degree": 418,
+        "grid_count": 419,
+        "center_count": 418,
+        "grid_digest": "10395826132631202364",
+        "center_digest": "11693814344561990796"
+      },
+      {
+        "degree": 419,
+        "grid_count": 419,
+        "center_count": 418,
+        "grid_digest": "8369163783145341620",
+        "center_digest": "1815233003568093650"
+      },
+      {
+        "degree": 420,
+        "grid_count": 421,
+        "center_count": 420,
+        "grid_digest": "9286093190271277477",
+        "center_digest": "10395427308008991826"
+      },
+      {
+        "degree": 421,
+        "grid_count": 421,
+        "center_count": 420,
+        "grid_digest": "14772572650195391885",
+        "center_digest": "17600464716970236305"
+      },
+      {
+        "degree": 422,
+        "grid_count": 423,
+        "center_count": 422,
+        "grid_digest": "15881525372168954593",
+        "center_digest": "4890983084883256657"
+      },
+      {
+        "degree": 423,
+        "grid_count": 423,
+        "center_count": 422,
+        "grid_digest": "9752561964247730426",
+        "center_digest": "17316618839156151966"
+      },
+      {
+        "degree": 424,
+        "grid_count": 424,
+        "center_count": 423,
+        "grid_digest": "15179567202954166659",
+        "center_digest": "8697413801530781548"
+      },
+      {
+        "degree": 425,
+        "grid_count": 426,
+        "center_count": 425,
+        "grid_digest": "10964600727003359788",
+        "center_digest": "17483505845985626432"
+      },
+      {
+        "degree": 426,
+        "grid_count": 426,
+        "center_count": 425,
+        "grid_digest": "2149623346642432176",
+        "center_digest": "11018681165230176968"
+      },
+      {
+        "degree": 427,
+        "grid_count": 427,
+        "center_count": 426,
+        "grid_digest": "9541162355741782166",
+        "center_digest": "14877818994799971873"
+      },
+      {
+        "degree": 428,
+        "grid_count": 428,
+        "center_count": 427,
+        "grid_digest": "15057182996531966816",
+        "center_digest": "16888155241094585031"
+      },
+      {
+        "degree": 429,
+        "grid_count": 429,
+        "center_count": 428,
+        "grid_digest": "11353828810246201472",
+        "center_digest": "1637431682627948957"
+      },
+      {
+        "degree": 430,
+        "grid_count": 430,
+        "center_count": 429,
+        "grid_digest": "17013112004428549627",
+        "center_digest": "8211740476064183360"
+      },
+      {
+        "degree": 431,
+        "grid_count": 432,
+        "center_count": 431,
+        "grid_digest": "8899695750638933944",
+        "center_digest": "16407718766866885068"
+      },
+      {
+        "degree": 432,
+        "grid_count": 433,
+        "center_count": 432,
+        "grid_digest": "13450095805774847815",
+        "center_digest": "13770014183870928669"
+      },
+      {
+        "degree": 433,
+        "grid_count": 434,
+        "center_count": 433,
+        "grid_digest": "16800910834177977843",
+        "center_digest": "2223158987862452471"
+      },
+      {
+        "degree": 434,
+        "grid_count": 434,
+        "center_count": 433,
+        "grid_digest": "5190741062610387358",
+        "center_digest": "14976076194123949857"
+      },
+      {
+        "degree": 435,
+        "grid_count": 435,
+        "center_count": 434,
+        "grid_digest": "4916337382702028815",
+        "center_digest": "8912998930939808884"
+      },
+      {
+        "degree": 436,
+        "grid_count": 436,
+        "center_count": 435,
+        "grid_digest": "14114251853856791905",
+        "center_digest": "15452802383389345870"
+      },
+      {
+        "degree": 437,
+        "grid_count": 438,
+        "center_count": 437,
+        "grid_digest": "13168498083371619228",
+        "center_digest": "12898772960964618358"
+      },
+      {
+        "degree": 438,
+        "grid_count": 439,
+        "center_count": 438,
+        "grid_digest": "518850047241777673",
+        "center_digest": "5060184664623741659"
+      },
+      {
+        "degree": 439,
+        "grid_count": 440,
+        "center_count": 439,
+        "grid_digest": "10424209985091974865",
+        "center_digest": "13913272949460726058"
+      },
+      {
+        "degree": 440,
+        "grid_count": 440,
+        "center_count": 439,
+        "grid_digest": "14964458572032270141",
+        "center_digest": "12256826180758028439"
+      },
+      {
+        "degree": 441,
+        "grid_count": 441,
+        "center_count": 440,
+        "grid_digest": "5390620222842556132",
+        "center_digest": "1689348154705275324"
+      },
+      {
+        "degree": 442,
+        "grid_count": 443,
+        "center_count": 442,
+        "grid_digest": "7638282726069373501",
+        "center_digest": "11989480045950780315"
+      },
+      {
+        "degree": 443,
+        "grid_count": 444,
+        "center_count": 443,
+        "grid_digest": "16499095718698204835",
+        "center_digest": "2485962794586125608"
+      },
+      {
+        "degree": 444,
+        "grid_count": 445,
+        "center_count": 444,
+        "grid_digest": "5525402046699310371",
+        "center_digest": "11450728376613233048"
+      },
+      {
+        "degree": 445,
+        "grid_count": 446,
+        "center_count": 445,
+        "grid_digest": "7147476870841482082",
+        "center_digest": "11201608726260737418"
+      },
+      {
+        "degree": 446,
+        "grid_count": 446,
+        "center_count": 445,
+        "grid_digest": "9739849137130887284",
+        "center_digest": "703695902657899565"
+      },
+      {
+        "degree": 447,
+        "grid_count": 447,
+        "center_count": 446,
+        "grid_digest": "6516103903464284880",
+        "center_digest": "15063177098618416345"
+      },
+      {
+        "degree": 448,
+        "grid_count": 448,
+        "center_count": 447,
+        "grid_digest": "6023073096526410166",
+        "center_digest": "9524943219254180363"
+      },
+      {
+        "degree": 449,
+        "grid_count": 450,
+        "center_count": 449,
+        "grid_digest": "7353120591876174356",
+        "center_digest": "17950633393296510018"
+      },
+      {
+        "degree": 450,
+        "grid_count": 450,
+        "center_count": 449,
+        "grid_digest": "1982943081950043968",
+        "center_digest": "14105588414636038745"
+      },
+      {
+        "degree": 451,
+        "grid_count": 452,
+        "center_count": 451,
+        "grid_digest": "4966562091270987356",
+        "center_digest": "2876026985701397500"
+      },
+      {
+        "degree": 452,
+        "grid_count": 453,
+        "center_count": 452,
+        "grid_digest": "2347242672224346635",
+        "center_digest": "9988540726063091736"
+      },
+      {
+        "degree": 453,
+        "grid_count": 453,
+        "center_count": 452,
+        "grid_digest": "2102063517137932611",
+        "center_digest": "12411668491581739298"
+      },
+      {
+        "degree": 454,
+        "grid_count": 454,
+        "center_count": 453,
+        "grid_digest": "5228234401616300488",
+        "center_digest": "11849656899529931681"
+      },
+      {
+        "degree": 455,
+        "grid_count": 456,
+        "center_count": 455,
+        "grid_digest": "8190233717839994641",
+        "center_digest": "4377763792314380147"
+      },
+      {
+        "degree": 456,
+        "grid_count": 457,
+        "center_count": 456,
+        "grid_digest": "14410762370204343732",
+        "center_digest": "10094562520661550526"
+      },
+      {
+        "degree": 457,
+        "grid_count": 458,
+        "center_count": 457,
+        "grid_digest": "12230579799885171896",
+        "center_digest": "8008105391921650627"
+      },
+      {
+        "degree": 458,
+        "grid_count": 459,
+        "center_count": 458,
+        "grid_digest": "13196070109077479325",
+        "center_digest": "5240665046346426239"
+      },
+      {
+        "degree": 459,
+        "grid_count": 459,
+        "center_count": 458,
+        "grid_digest": "6399946657935028711",
+        "center_digest": "17207255020794649857"
+      },
+      {
+        "degree": 460,
+        "grid_count": 461,
+        "center_count": 460,
+        "grid_digest": "17966361210400034645",
+        "center_digest": "17307869071172766565"
+      },
+      {
+        "degree": 461,
+        "grid_count": 462,
+        "center_count": 461,
+        "grid_digest": "7764544933052282297",
+        "center_digest": "8555810892571748529"
+      },
+      {
+        "degree": 462,
+        "grid_count": 463,
+        "center_count": 462,
+        "grid_digest": "4854878311113488789",
+        "center_digest": "9258120469576935771"
+      },
+      {
+        "degree": 463,
+        "grid_count": 463,
+        "center_count": 462,
+        "grid_digest": "13713469078156797870",
+        "center_digest": "7885326786875195628"
+      },
+      {
+        "degree": 464,
+        "grid_count": 464,
+        "center_count": 463,
+        "grid_digest": "11304943719312636234",
+        "center_digest": "132728176127555278"
+      },
+      {
+        "degree": 465,
+        "grid_count": 465,
+        "center_count": 464,
+        "grid_digest": "3600380551828213827",
+        "center_digest": "1213138416697522066"
+      },
+      {
+        "degree": 466,
+        "grid_count": 466,
+        "center_count": 465,
+        "grid_digest": "7306332328850361652",
+        "center_digest": "10722777861934687037"
+      },
+      {
+        "degree": 467,
+        "grid_count": 467,
+        "center_count": 466,
+        "grid_digest": "18008110829849168665",
+        "center_digest": "1535982242099108950"
+      },
+      {
+        "degree": 468,
+        "grid_count": 469,
+        "center_count": 468,
+        "grid_digest": "6890494413886518313",
+        "center_digest": "11742121706710798486"
+      },
+      {
+        "degree": 469,
+        "grid_count": 469,
+        "center_count": 468,
+        "grid_digest": "5034167279535526691",
+        "center_digest": "7412510779081233198"
+      },
+      {
+        "degree": 470,
+        "grid_count": 471,
+        "center_count": 470,
+        "grid_digest": "4530188760937979591",
+        "center_digest": "17046294509616478417"
+      },
+      {
+        "degree": 471,
+        "grid_count": 472,
+        "center_count": 471,
+        "grid_digest": "2684332368348299221",
+        "center_digest": "12070521151748433842"
+      },
+      {
+        "degree": 472,
+        "grid_count": 473,
+        "center_count": 472,
+        "grid_digest": "8197746717626897211",
+        "center_digest": "17831315263993024295"
+      },
+      {
+        "degree": 473,
+        "grid_count": 473,
+        "center_count": 472,
+        "grid_digest": "3337216697797369721",
+        "center_digest": "11331283271958408110"
+      },
+      {
+        "degree": 474,
+        "grid_count": 475,
+        "center_count": 474,
+        "grid_digest": "16496201505039164825",
+        "center_digest": "4024520052934029925"
+      },
+      {
+        "degree": 475,
+        "grid_count": 476,
+        "center_count": 475,
+        "grid_digest": "4624158144987098448",
+        "center_digest": "3457679890314050403"
+      },
+      {
+        "degree": 476,
+        "grid_count": 477,
+        "center_count": 476,
+        "grid_digest": "16960884736581764156",
+        "center_digest": "18077435709044152795"
+      },
+      {
+        "degree": 477,
+        "grid_count": 477,
+        "center_count": 476,
+        "grid_digest": "339288568677005050",
+        "center_digest": "4990339502463349171"
+      },
+      {
+        "degree": 478,
+        "grid_count": 479,
+        "center_count": 478,
+        "grid_digest": "17488123311993381542",
+        "center_digest": "16806886401957955134"
+      },
+      {
+        "degree": 479,
+        "grid_count": 480,
+        "center_count": 479,
+        "grid_digest": "14938400207460326684",
+        "center_digest": "12077937060484621114"
+      },
+      {
+        "degree": 480,
+        "grid_count": 481,
+        "center_count": 480,
+        "grid_digest": "15917780263676515401",
+        "center_digest": "12516749736129700186"
+      },
+      {
+        "degree": 481,
+        "grid_count": 482,
+        "center_count": 481,
+        "grid_digest": "3506943626728162825",
+        "center_digest": "11196336939972127991"
+      },
+      {
+        "degree": 482,
+        "grid_count": 483,
+        "center_count": 482,
+        "grid_digest": "14701696939574278138",
+        "center_digest": "10889994540525836291"
+      },
+      {
+        "degree": 483,
+        "grid_count": 483,
+        "center_count": 482,
+        "grid_digest": "7404208574997885738",
+        "center_digest": "6329331056145274169"
+      },
+      {
+        "degree": 484,
+        "grid_count": 484,
+        "center_count": 483,
+        "grid_digest": "16466944672690171772",
+        "center_digest": "15815576843337556103"
+      },
+      {
+        "degree": 485,
+        "grid_count": 486,
+        "center_count": 485,
+        "grid_digest": "4971718281642744307",
+        "center_digest": "16129251492804106120"
+      },
+      {
+        "degree": 486,
+        "grid_count": 486,
+        "center_count": 485,
+        "grid_digest": "4620132829255585617",
+        "center_digest": "8645267553617097232"
+      },
+      {
+        "degree": 487,
+        "grid_count": 488,
+        "center_count": 487,
+        "grid_digest": "17348212684374516",
+        "center_digest": "479336365670663722"
+      },
+      {
+        "degree": 488,
+        "grid_count": 489,
+        "center_count": 488,
+        "grid_digest": "14838968883732870688",
+        "center_digest": "5633583440820667900"
+      },
+      {
+        "degree": 489,
+        "grid_count": 490,
+        "center_count": 489,
+        "grid_digest": "10546437919092260966",
+        "center_digest": "696219006208844432"
+      },
+      {
+        "degree": 490,
+        "grid_count": 490,
+        "center_count": 489,
+        "grid_digest": "17779437554831135889",
+        "center_digest": "7015272470398403177"
+      },
+      {
+        "degree": 491,
+        "grid_count": 491,
+        "center_count": 490,
+        "grid_digest": "2100256927213589894",
+        "center_digest": "10172699712963668769"
+      },
+      {
+        "degree": 492,
+        "grid_count": 492,
+        "center_count": 491,
+        "grid_digest": "13923040182645547616",
+        "center_digest": "17533524248935938533"
+      },
+      {
+        "degree": 493,
+        "grid_count": 494,
+        "center_count": 493,
+        "grid_digest": "4685122585842994632",
+        "center_digest": "8761353613563277590"
+      },
+      {
+        "degree": 494,
+        "grid_count": 495,
+        "center_count": 494,
+        "grid_digest": "2488548645905953774",
+        "center_digest": "3410816358732165119"
+      },
+      {
+        "degree": 495,
+        "grid_count": 495,
+        "center_count": 494,
+        "grid_digest": "16860001656104607480",
+        "center_digest": "11413971819661112629"
+      },
+      {
+        "degree": 496,
+        "grid_count": 496,
+        "center_count": 495,
+        "grid_digest": "9999733485305830052",
+        "center_digest": "7796918756933407700"
+      },
+      {
+        "degree": 497,
+        "grid_count": 497,
+        "center_count": 496,
+        "grid_digest": "14749621975128132484",
+        "center_digest": "7052024613044156763"
+      },
+      {
+        "degree": 498,
+        "grid_count": 498,
+        "center_count": 497,
+        "grid_digest": "13924431716434306468",
+        "center_digest": "7137091805375440501"
+      },
+      {
+        "degree": 499,
+        "grid_count": 499,
+        "center_count": 498,
+        "grid_digest": "8016038354560927250",
+        "center_digest": "6487822486053945735"
+      },
+      {
+        "degree": 500,
+        "grid_count": 500,
+        "center_count": 499,
+        "grid_digest": "9512110517386241657",
+        "center_digest": "4333026647934924812"
+      },
+      {
+        "degree": 501,
+        "grid_count": 501,
+        "center_count": 500,
+        "grid_digest": "11390721647573185461",
+        "center_digest": "13749131814426849602"
+      },
+      {
+        "degree": 502,
+        "grid_count": 503,
+        "center_count": 502,
+        "grid_digest": "11463253039698382304",
+        "center_digest": "9204112813722585402"
+      },
+      {
+        "degree": 503,
+        "grid_count": 503,
+        "center_count": 502,
+        "grid_digest": "3323249247790942954",
+        "center_digest": "17480329420592065369"
+      },
+      {
+        "degree": 504,
+        "grid_count": 505,
+        "center_count": 504,
+        "grid_digest": "1480471467863424751",
+        "center_digest": "9865249059202735733"
+      },
+      {
+        "degree": 505,
+        "grid_count": 505,
+        "center_count": 504,
+        "grid_digest": "8961014078194175376",
+        "center_digest": "1366819883540126099"
+      },
+      {
+        "degree": 506,
+        "grid_count": 507,
+        "center_count": 506,
+        "grid_digest": "3819509401802868931",
+        "center_digest": "18349831936996523283"
+      },
+      {
+        "degree": 507,
+        "grid_count": 507,
+        "center_count": 506,
+        "grid_digest": "15944834534408554255",
+        "center_digest": "7911722697330112599"
+      },
+      {
+        "degree": 508,
+        "grid_count": 509,
+        "center_count": 508,
+        "grid_digest": "9621084521318368992",
+        "center_digest": "14286039129432291192"
+      },
+      {
+        "degree": 509,
+        "grid_count": 510,
+        "center_count": 509,
+        "grid_digest": "18216061878261212033",
+        "center_digest": "9546831718259431045"
+      },
+      {
+        "degree": 510,
+        "grid_count": 511,
+        "center_count": 510,
+        "grid_digest": "12038291151225903357",
+        "center_digest": "16328014548037675939"
+      },
+      {
+        "degree": 511,
+        "grid_count": 512,
+        "center_count": 511,
+        "grid_digest": "8397107620361348069",
+        "center_digest": "5478366350064434951"
+      },
+      {
+        "degree": 512,
+        "grid_count": 513,
+        "center_count": 512,
+        "grid_digest": "5992545283307646943",
+        "center_digest": "2267426869605649189"
+      },
+      {
+        "degree": 1023,
+        "grid_count": 1024,
+        "center_count": 1023,
+        "grid_digest": "14037060246427862343",
+        "center_digest": "719706853597260512"
+      },
+      {
+        "degree": 1024,
+        "grid_count": 1025,
+        "center_count": 1024,
+        "grid_digest": "8824815290416867295",
+        "center_digest": "7881904250541339429"
+      },
+      {
+        "degree": 4095,
+        "grid_count": 4096,
+        "center_count": 4095,
+        "grid_digest": "208814550663220093",
+        "center_digest": "13880662601022324494"
+      },
+      {
+        "degree": 4096,
+        "grid_count": 4097,
+        "center_count": 4096,
+        "grid_digest": "10298950558235064287",
+        "center_digest": "10261790966645744421"
+      },
+      {
+        "degree": 10000,
+        "grid_count": 10001,
+        "center_count": 10000,
+        "grid_digest": "13413027838496290822",
+        "center_digest": "16270468809906739107"
+      },
+      {
+        "degree": 65535,
+        "grid_count": 65536,
+        "center_count": 65535,
+        "grid_digest": "1602133465337387901",
+        "center_digest": "3526836561363315470"
+      },
+      {
+        "degree": 65536,
+        "grid_count": 65537,
+        "center_count": 65536,
+        "grid_digest": "16728753322395023327",
+        "center_digest": "13265824868134691621"
+      },
+      {
+        "degree": 1000000,
+        "grid_count": 1000000,
+        "center_count": 999999,
+        "grid_digest": "8127627058524807100",
+        "center_digest": "15940045243640935900"
+      }
+    ]
+  },
+  "scope": "Actual estimator construction unit with real Bezier, node, triangle, SubMesh and curve lifetime units. Original uses a Git-verified extracted InitialMeshEstimate body with a minimal owning-result adapter, not the full ChargeEstimateProcess or Generator TU. Planar/bilinear degree 1/2/4 fixtures, four curve initialization masks, exact ordered traces and complete observed CRT allocation sweeps. Published sample prefixes remain with the caller collective lifetime; patch publication only on success. Caller must rebind patch before mesh destruction. Fixture restores it explicitly. Nonpositive-degree guards cover 0/-1/INT_MIN; the original stops at its missing zero guard, so its negative-degree execution is unmeasured. Scalar iteration separately compares actual extracted headers at 520 positive degrees, including non-powers of two. No whole-process, caller-wrapper lifetime, extreme complete meshes, parallel or retry qualification.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25oa\\RelWithDebInfo\\estimate_mesh_probe.exe",
+      "sha256": "b2f1f99d107d6d2bfc20b1659856088a451f27542815deaa16875dee753096cb"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25od\\Debug\\estimate_mesh_probe.exe",
+      "sha256": "98c51ee3c85a396d24207e8183db6a6edd2db71bb140ec55a85b756c001592a6"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "c635d71908d6a212689680ad5d48762b659358c0b94f28357c8467c4f6fc2ad2",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 17,
+      "observations_sha256": "fdfa34c5e63dff7aaac035c6da041d1dfc20f1380f3bd937e00a887dc9b1e1e5",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "ac6493320cb14ec46479245302f37e4566e996d448a6c7b098786f09ccfccea4",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 41,
+      "observations_sha256": "105a5ba96af93e0e39bd9d41fdc96fb34513e44fa4bce7ddffc5977e8e2d40ca",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f86af19d05713aaa5662972db10dd8b3b541936fbd54df5f810d6f82897c55ec",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 125,
+      "observations_sha256": "9fdcf5c0218247e4c492acde8a19128871a8bd4f7ff1a9739e9f62a8cd394732",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "5bcda1f5d2f8d0d6b7d3e46d0ba3296a9faf7928f89c684e008553fffb4c3dc5",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 17,
+      "observations_sha256": "6bfb3a6bffca63d67a09641b4443fcd74afe54d37f47b9cbc938507942e668c9",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "2702bc9ab59c81c37cdc99d970d6191c67ceb453e160d339453c94640f19e478",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 39,
+      "observations_sha256": "f639c0201bcc02acdee52c0d06c26032005eefded81b36d6ee8aa49d291cca2f",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "1054471897716cda5245191730017cca6501f9c41193f02f68b8ad394d83ba7b",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 119,
+      "observations_sha256": "8b7f16a51fdbcf8935431876f505f90a77fad4f378d7d61c75bd1add40d3ba14",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-2-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "dc76fc3ba1775382c7c3077d9828f35a3d192d4acb9edfb0178b019fd592746b",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 17,
+      "observations_sha256": "7d1d0eacef06992b01ff3d39ccd3c64f0aa05495998eb117a6cf7e34ff67fddc",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-2-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "279110b01b962fbba5621b2d305e37f9f48ddbcde10279bbaeeccb38cb22247b",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 37,
+      "observations_sha256": "fe8e317b3a986807572e8fea1597d593a0d65b7ff9d8ab1863ca253753f14fad",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-2-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "62db270e5b14fb777beb83af6948e250d91854bcbc762e45b4d12dd69cd78d3d",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 113,
+      "observations_sha256": "33fbf055046fbf2a22144ac34a871bf25dbb4ea91e94d0c19b861781b77c1ece",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-3-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "79b98e0b65a536073db1b2984ab3b17c516a906b90cddd3ad8e13f9183ec1437",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 17,
+      "observations_sha256": "ff111ffedf7369ddaa8bb9341fafa03fb87f7781fe2696b7e879ed9a60e8f46e",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-3-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "2af0cbf9a64f4d5ba3e7cce33056a18ae5a1f552849c6cac2d9a651d233fbd90",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 39,
+      "observations_sha256": "0a548d5f01c511b93b495cb475d95b1bf36db8f6baa5ba89497ebf9041da7962",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-3-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "a524ae97b86890b65bf6008591d46dfba1e33482f84b1a101d81a17d7381a399",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 119,
+      "observations_sha256": "50e6852354d1588e0edb06de2666adfa44247fb2c1e2a7ced41fd5efcae714a0",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "67be285c6bbaa99488bc0375007143d7a6fa17bbeaeaec105846c77cd63e34f9",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 17,
+      "observations_sha256": "3be9c9d17b6753d3b5c1db50a3225432630128377a37a0c30d4ba6ad68006cf7",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d89c4aa5cc56d9562d416009f0411b942666981a42e357b974162c177549ff00",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 41,
+      "observations_sha256": "41c98e2312b4b636ad828a6730169dbfcca4569b4c5a2fbdd03c3f1983b8d7c7",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "2e05743bdf44557a2b2d50587d5594f39fb0c70958aace1cdba878fc45702867",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 125,
+      "observations_sha256": "a8981e8f8eaf80e52a8fa95001d1ca41498b6080ed57158d75ba83aed13348cd",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "46d57a179e9eebf1e63d69cd0eeaac8616d90b715874f420890a4f484183851e",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 17,
+      "observations_sha256": "74182d68c2557c13305be860eca0940f24011ce1d059485be5bf31a0339cb315",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f01652590cfa1a4ebbb0b54844b7d440992b82252fe14d62a24375344fec522e",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 39,
+      "observations_sha256": "6d40c4af1399a5fa3435965b49434298e631c983aa2f51b71d82ec2fc51002b2",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "30600340eedf9374109b5c7bfac2aa89895ba4bad863c220fd0bb7adfadef4d7",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 119,
+      "observations_sha256": "cbc641efe988064cb8fb4e248395b8461341ea89e2f8dbc669e040fd39ddc10b",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-2-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "b9aa9ff43735ac0f50080236a65a420aaf9be0e3424f840fcf678189b62cbcc5",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 17,
+      "observations_sha256": "ca5d018444d0707919d498471fe426b73891d3cdce202cbdf777c8154e812a6d",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-2-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "5c7f9a59839822fb1d7e9917b182290c254a1633dd472223d39c8e8698a9ac7f",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 37,
+      "observations_sha256": "4a0b49993b18e2347d9ec332cba597cfa0de3238f0c8f31a4988b904187d0538",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-2-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "589cc3aba8bedfd1c14b7a91e55789d2213bbc9f8dcaabf874404b3d03af0c00",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 113,
+      "observations_sha256": "d36da24905d4fa43ed9fae71dbf74b8fed7db42f8716f8dfb7ca3697c4522295",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-3-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "4d4ad13bc8e725038890fe655ffff9e0bc300bdc1f687ab16754c399ca1bd743",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 17,
+      "observations_sha256": "ffea960ceb54f03372e1489a4ee997f55218de1627b8d22f4ba9f0344f6924af",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-3-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f63bada23019a38fcb619d33a4268620a82817118defe9b801ea1953f67c1b73",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 39,
+      "observations_sha256": "45d86fb1c53b48621179bc8d29489817b7467c1bbeac24ab5c88467cf4fd7cb3",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-3-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d9801a06e1d2ee223c19a6fb1bdec58c3e6e6abb43f0398ad745c5bb277914e6",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 119,
+      "observations_sha256": "fae709a2645856f815f03ef04b8503f0c83fe9bd9e41b5c50e7f777649dcd907",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "8f04119fb0e4c9bfee28eba216bdfa22278dc8156de95e26e3386f567c5d882f",
+      "retained_blocks": 4,
+      "retained_bytes": 144,
+      "raw_observation_count": 17,
+      "observations_sha256": "fdfa34c5e63dff7aaac035c6da041d1dfc20f1380f3bd937e00a887dc9b1e1e5",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "8201f8135aae3efdc88d6afdfdac1fe7eed06455f91084aeb2ef01d8d426003e",
+      "retained_blocks": 12,
+      "retained_bytes": 592,
+      "raw_observation_count": 41,
+      "observations_sha256": "105a5ba96af93e0e39bd9d41fdc96fb34513e44fa4bce7ddffc5977e8e2d40ca",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "6f55469da269a558363b31c5421802c82fdeda64a8ce7fb79f35e2d7f941fd0a",
+      "retained_blocks": 52,
+      "retained_bytes": 2832,
+      "raw_observation_count": 125,
+      "observations_sha256": "9fdcf5c0218247e4c492acde8a19128871a8bd4f7ff1a9739e9f62a8cd394732",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "8b38ba54ac076ab2bbfae33d2f3f1f1111848c0f5cc7804bd8de44308b00187d",
+      "retained_blocks": 4,
+      "retained_bytes": 144,
+      "raw_observation_count": 17,
+      "observations_sha256": "6bfb3a6bffca63d67a09641b4443fcd74afe54d37f47b9cbc938507942e668c9",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "b1820d34d550ad81aca481dfeb60d858068140e74a9fc3e73e4d6718c217f14b",
+      "retained_blocks": 16,
+      "retained_bytes": 816,
+      "raw_observation_count": 39,
+      "observations_sha256": "f639c0201bcc02acdee52c0d06c26032005eefded81b36d6ee8aa49d291cca2f",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "c4273e00a7bbf5ba86fcef78ec3c836ec4dd6e32dae412e213f75cd55e1201fa",
+      "retained_blocks": 64,
+      "retained_bytes": 3504,
+      "raw_observation_count": 119,
+      "observations_sha256": "8b7f16a51fdbcf8935431876f505f90a77fad4f378d7d61c75bd1add40d3ba14",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "0984a18c4ceb2f2407dd03a1439d686256f4e40b85cf7dbfda1431ba0b9e336d",
+      "retained_blocks": 12,
+      "retained_bytes": 592,
+      "raw_observation_count": 17,
+      "observations_sha256": "7d1d0eacef06992b01ff3d39ccd3c64f0aa05495998eb117a6cf7e34ff67fddc",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-2-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "4c0ba7e8029f07a79cfa025de4e521cf231b1eaf739621a9b7333d85a516a647",
+      "retained_blocks": 28,
+      "retained_bytes": 1488,
+      "raw_observation_count": 37,
+      "observations_sha256": "fe8e317b3a986807572e8fea1597d593a0d65b7ff9d8ab1863ca253753f14fad",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-2-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "9bb84054d9de963c507598e5ba4905678d91c168b12d8e866a1379fcdf975ff0",
+      "retained_blocks": 84,
+      "retained_bytes": 4624,
+      "raw_observation_count": 113,
+      "observations_sha256": "33fbf055046fbf2a22144ac34a871bf25dbb4ea91e94d0c19b861781b77c1ece",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-3-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "2431258abe72d5fe718e0a6bc1288d29ef23bdaa0c5b938d02e21397e4fe9e31",
+      "retained_blocks": 4,
+      "retained_bytes": 144,
+      "raw_observation_count": 17,
+      "observations_sha256": "ff111ffedf7369ddaa8bb9341fafa03fb87f7781fe2696b7e879ed9a60e8f46e",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-3-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "303eaf930d015fae5e191afb672aa145659d75374a967d76819188cd70e99ba2",
+      "retained_blocks": 16,
+      "retained_bytes": 816,
+      "raw_observation_count": 39,
+      "observations_sha256": "0a548d5f01c511b93b495cb475d95b1bf36db8f6baa5ba89497ebf9041da7962",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-3-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "495402f7426ffc96e9dc71a8796b545d6fa6e12d35747d7416f9837980f3ba68",
+      "retained_blocks": 64,
+      "retained_bytes": 3504,
+      "raw_observation_count": 119,
+      "observations_sha256": "50e6852354d1588e0edb06de2666adfa44247fb2c1e2a7ced41fd5efcae714a0",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "0ba8eed1314ab2ff2540fa112ebaa48f7d6205e6507b533e50a94cd961c89a04",
+      "retained_blocks": 4,
+      "retained_bytes": 144,
+      "raw_observation_count": 17,
+      "observations_sha256": "3be9c9d17b6753d3b5c1db50a3225432630128377a37a0c30d4ba6ad68006cf7",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "ede2bec00f41a809f2acdf065aca26aa7c892e9a88d5784309cd1d205312f54c",
+      "retained_blocks": 12,
+      "retained_bytes": 592,
+      "raw_observation_count": 41,
+      "observations_sha256": "41c98e2312b4b636ad828a6730169dbfcca4569b4c5a2fbdd03c3f1983b8d7c7",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "6f03951e81ec73d269465ac07885f4a55a95e7a4fdfe85eba0825edd199de9c9",
+      "retained_blocks": 52,
+      "retained_bytes": 2832,
+      "raw_observation_count": 125,
+      "observations_sha256": "a8981e8f8eaf80e52a8fa95001d1ca41498b6080ed57158d75ba83aed13348cd",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "eded7443794f4d06d13c6ef57ec73d93dc153d6a5b8f381f5e58c9475df42928",
+      "retained_blocks": 4,
+      "retained_bytes": 144,
+      "raw_observation_count": 17,
+      "observations_sha256": "74182d68c2557c13305be860eca0940f24011ce1d059485be5bf31a0339cb315",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "d61f912768e107ae39857f2b4e47fa5cb69fed16ec1aa37be5645a3defc7e15c",
+      "retained_blocks": 16,
+      "retained_bytes": 816,
+      "raw_observation_count": 39,
+      "observations_sha256": "6d40c4af1399a5fa3435965b49434298e631c983aa2f51b71d82ec2fc51002b2",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "ef1ef8139fa86e32234ef5b2d5ffab723c42d6ca2ce5ce6fe02e65b73a7abacf",
+      "retained_blocks": 64,
+      "retained_bytes": 3504,
+      "raw_observation_count": 119,
+      "observations_sha256": "cbc641efe988064cb8fb4e248395b8461341ea89e2f8dbc669e040fd39ddc10b",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "cd0e39ddf83c530d2decbe96300e807b8645af282aa59ba19a3b9dac40f00293",
+      "retained_blocks": 12,
+      "retained_bytes": 592,
+      "raw_observation_count": 17,
+      "observations_sha256": "ca5d018444d0707919d498471fe426b73891d3cdce202cbdf777c8154e812a6d",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-2-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "8a4b7119f5597dbafef6a2805b31199e93af44ca2e1b0d3fecd32d3d4ecc9e27",
+      "retained_blocks": 28,
+      "retained_bytes": 1488,
+      "raw_observation_count": 37,
+      "observations_sha256": "4a0b49993b18e2347d9ec332cba597cfa0de3238f0c8f31a4988b904187d0538",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-2-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "81f80cbabc19e1641668eed7c9fb130259c53014498824601b4ba8d2189f598d",
+      "retained_blocks": 84,
+      "retained_bytes": 4624,
+      "raw_observation_count": 113,
+      "observations_sha256": "d36da24905d4fa43ed9fae71dbf74b8fed7db42f8716f8dfb7ca3697c4522295",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-3-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "6643f361c851e2769d32b45ffca7274a397a5f759a1541cd392e0281847ea88a",
+      "retained_blocks": 4,
+      "retained_bytes": 144,
+      "raw_observation_count": 17,
+      "observations_sha256": "ffea960ceb54f03372e1489a4ee997f55218de1627b8d22f4ba9f0344f6924af",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-3-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "6fbdb236c57aac13cd93acd7775fc2e939c911fe0a7336267d935c817b16509c",
+      "retained_blocks": 16,
+      "retained_bytes": 816,
+      "raw_observation_count": 39,
+      "observations_sha256": "45d86fb1c53b48621179bc8d29489817b7467c1bbeac24ab5c88467cf4fd7cb3",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-3-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "3e485bd71d423f45238fab99354c242417bdc5dece37b3c44918fa00899c6146",
+      "retained_blocks": 64,
+      "retained_bytes": 3504,
+      "raw_observation_count": 119,
+      "observations_sha256": "fae709a2645856f815f03ef04b8503f0c83fe9bd9e41b5c50e7f777649dcd907",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "89e607d547db876f48172e00fafa898298f2950ba597a8e3b2ff9099426e5fc2",
+      "retained_blocks": 5,
+      "retained_bytes": 200,
+      "raw_observation_count": 3,
+      "observations_sha256": "3b4eed15d1a5795724dea7c6a234b7015245eb54580f95d2c6df9ef2c5797f01",
+      "observations": [
+        "estimate_measured=shape:0 layout:0 degree:1 allocations:56"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "ffeba658829a4fd9076e55b6fefc84ba16b22aba3e8c2a3d53fbc63de6a33e43",
+      "retained_blocks": 13,
+      "retained_bytes": 648,
+      "raw_observation_count": 3,
+      "observations_sha256": "6a8943e1477cefe6116e9c2c11496bac2c61bdfcebcc073088b147116d278aed",
+      "observations": [
+        "estimate_measured=shape:0 layout:0 degree:2 allocations:146"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "784125457c508cf30d6290ef56e5e431b76075589a3e7a57ad3a0a81cd72b4a3",
+      "retained_blocks": 53,
+      "retained_bytes": 2888,
+      "raw_observation_count": 3,
+      "observations_sha256": "d456930c8658267f527b74ad30680d9a9cf00e67a1c1e89a6b5b22da7c9a3fd0",
+      "observations": [
+        "estimate_measured=shape:0 layout:0 degree:4 allocations:465"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "324c1b676bf1c488f09cd0938b220de9ac5946d312a73a8fea76a0052ec8b822",
+      "retained_blocks": 5,
+      "retained_bytes": 200,
+      "raw_observation_count": 3,
+      "observations_sha256": "1e7987d306eaf1a6c75389ae5f3b5958fad7f4c314d3ef0a935c8c72e9b5d5ca",
+      "observations": [
+        "estimate_measured=shape:0 layout:1 degree:1 allocations:52"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "b9debd54d82f387f5f35cd3eed3423375e843d080905eefcad57cdf764b56b08",
+      "retained_blocks": 17,
+      "retained_bytes": 872,
+      "raw_observation_count": 3,
+      "observations_sha256": "91cddcc9f82b9fb27eedca944cacb77f03b46b65bf8ed0d848effe03cf24e99f",
+      "observations": [
+        "estimate_measured=shape:0 layout:1 degree:2 allocations:140"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "8e589417cfc13510a109103932ae87c305a7de7be4ccd20ca7a21c48bacb83b7",
+      "retained_blocks": 65,
+      "retained_bytes": 3560,
+      "raw_observation_count": 3,
+      "observations_sha256": "929ed6267004b1dfb6a549a85eee80fc998f69f24d22fb8cb78934840247eab8",
+      "observations": [
+        "estimate_measured=shape:0 layout:1 degree:4 allocations:455"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "80adcca049cd6ff62e17d8477c78d3fe9433ba6ef5407665d71fec420be1c038",
+      "retained_blocks": 13,
+      "retained_bytes": 648,
+      "raw_observation_count": 3,
+      "observations_sha256": "6a930caa2726c8ed303f99312e09430c25e63c0c1cee3d7978b45578c44bca98",
+      "observations": [
+        "estimate_measured=shape:0 layout:2 degree:1 allocations:48"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-2-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "be9174e65e5d37492a23f103e456a29e03be6d675ca9e8a4371a66ce7e25864b",
+      "retained_blocks": 29,
+      "retained_bytes": 1544,
+      "raw_observation_count": 3,
+      "observations_sha256": "674fce1ac49dd6c0805f58dd3001ccc3eafa51cda4650ed3689a91ed02ec77e9",
+      "observations": [
+        "estimate_measured=shape:0 layout:2 degree:2 allocations:134"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-2-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "e7e7ce2f981062e0e67a384f0892a7cd1bf416fc9423612681b165675166016c",
+      "retained_blocks": 85,
+      "retained_bytes": 4680,
+      "raw_observation_count": 3,
+      "observations_sha256": "22c83db97658b9f4c5fbead6c94ae424f349f304e7c3e1b53c56e29edb1df2d9",
+      "observations": [
+        "estimate_measured=shape:0 layout:2 degree:4 allocations:445"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-3-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "1dfb13f76dbb002cdd3f742296f08ed074fabbbf149d6247666968ff4a1e43d8",
+      "retained_blocks": 5,
+      "retained_bytes": 200,
+      "raw_observation_count": 3,
+      "observations_sha256": "8b37910e2cf458e4dd387648ca5c8bb11df7714c4be40f58df716d27f5615299",
+      "observations": [
+        "estimate_measured=shape:0 layout:3 degree:1 allocations:52"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-3-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "0b15d080d8dd9abcf33b4af5c78c94e7c363cddf79fa04c57f92901ba3d0564e",
+      "retained_blocks": 17,
+      "retained_bytes": 872,
+      "raw_observation_count": 3,
+      "observations_sha256": "b7daab3705802100e5e0a9b4766b890813afbdd890347d76b3a086a664541055",
+      "observations": [
+        "estimate_measured=shape:0 layout:3 degree:2 allocations:140"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-3-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "6725b58524441ec4479c39eb39301c38698cd97a4ef486475969382e70b32933",
+      "retained_blocks": 65,
+      "retained_bytes": 3560,
+      "raw_observation_count": 3,
+      "observations_sha256": "f1e8fa82186de1aafe3d0f57ce0f04cd65326958ed904e45fb1479423329f1c3",
+      "observations": [
+        "estimate_measured=shape:0 layout:3 degree:4 allocations:455"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "a797b75e716b86bc013d7aa1302054b8d33a01054289545b160d0384f7af482e",
+      "retained_blocks": 5,
+      "retained_bytes": 200,
+      "raw_observation_count": 3,
+      "observations_sha256": "e30635a6b54167e6b79ed5fffe664748b0837b9a29ae2b8ab0472f82fe8d78a5",
+      "observations": [
+        "estimate_measured=shape:1 layout:0 degree:1 allocations:56"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "775e3e705a3d34a12285c7c2cdc82dd59864cb1e86190e4a587ae72b66e86e02",
+      "retained_blocks": 13,
+      "retained_bytes": 648,
+      "raw_observation_count": 3,
+      "observations_sha256": "095805ca21c595530ccfd364f9b4d6484374d2923e3ab6deb81a67f1f443a3c4",
+      "observations": [
+        "estimate_measured=shape:1 layout:0 degree:2 allocations:146"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "f891c1ae56a8326b65aeb2affd7de2a5fcefa1a692425b5576f72397a241e79b",
+      "retained_blocks": 53,
+      "retained_bytes": 2888,
+      "raw_observation_count": 3,
+      "observations_sha256": "3a62aefa63ec3f268e03a50f494c6ffbaa299e512850be1509c1d2aade073baa",
+      "observations": [
+        "estimate_measured=shape:1 layout:0 degree:4 allocations:465"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "1082d747a404371a2fa597d0ead69c8856804602d335a6b3b389d5522c045353",
+      "retained_blocks": 5,
+      "retained_bytes": 200,
+      "raw_observation_count": 3,
+      "observations_sha256": "b39034995f0b89214ba7fea1d15afb16ee5d8fac6862c6f83f79472b4d05c81d",
+      "observations": [
+        "estimate_measured=shape:1 layout:1 degree:1 allocations:52"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "4ad5121f6615512a04e372980b5f5b07fd7311f3d76af3792167b56532288f91",
+      "retained_blocks": 17,
+      "retained_bytes": 872,
+      "raw_observation_count": 3,
+      "observations_sha256": "a48f2b0735799ffb37f3ca32aac382e94c752ad730ad60914d1f5f1e521a5bba",
+      "observations": [
+        "estimate_measured=shape:1 layout:1 degree:2 allocations:140"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "03125ee7b282fa9604b1f887f670c3340c9ebaf832a076227e9456cdedb0225c",
+      "retained_blocks": 65,
+      "retained_bytes": 3560,
+      "raw_observation_count": 3,
+      "observations_sha256": "2eb1752a7b3c8e8e3ae29620e0e5856db7c1edd0b08cf7bfe6c32be135c78ff6",
+      "observations": [
+        "estimate_measured=shape:1 layout:1 degree:4 allocations:455"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "1dd9187d516b40bbf260a82a1687c4a7074d5180bd015673ac19703e5f1c6f67",
+      "retained_blocks": 13,
+      "retained_bytes": 648,
+      "raw_observation_count": 3,
+      "observations_sha256": "13fdc78a8dbb3dbe8e04aa95f6a4146ecb3dbc92eb7304bf0e549d8b5220f591",
+      "observations": [
+        "estimate_measured=shape:1 layout:2 degree:1 allocations:48"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-2-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "a5ef2029ca9fec1fb5b83fc21a5526f90fa95ee5874abacb52488a8a3f03aafc",
+      "retained_blocks": 29,
+      "retained_bytes": 1544,
+      "raw_observation_count": 3,
+      "observations_sha256": "c083ef74fcf5255a230d368e0d57d026ac3379b49a0ecfa44cd9c3dfeb1681d2",
+      "observations": [
+        "estimate_measured=shape:1 layout:2 degree:2 allocations:134"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-2-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "0b3d79054fe9b693fb6258eb3f2fee3b26c95c1af44b3931ca15f259c1d4ea03",
+      "retained_blocks": 85,
+      "retained_bytes": 4680,
+      "raw_observation_count": 3,
+      "observations_sha256": "1c30ae1d6c19cdec4578f88a61ac7f402e7c5265b0ccbdc96b1786de629c2402",
+      "observations": [
+        "estimate_measured=shape:1 layout:2 degree:4 allocations:445"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-3-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "31760cf87993134ef5eb13eb55917efa4c8eaa14a0e0f24e0f49f39ffd4365dd",
+      "retained_blocks": 5,
+      "retained_bytes": 200,
+      "raw_observation_count": 3,
+      "observations_sha256": "1e1e0c9e8c041c101bf263491a15b5242ae6d65a3049ef0370ce31b772988e70",
+      "observations": [
+        "estimate_measured=shape:1 layout:3 degree:1 allocations:52"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-3-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "9048b921c997854860c4a6327b1baa24fb035dd2e663e7c89e7309d7b25e0148",
+      "retained_blocks": 17,
+      "retained_bytes": 872,
+      "raw_observation_count": 3,
+      "observations_sha256": "6fc5f2325a160f204458e0cbac6eddab344711691eb09b8cdf8c00ff1ae0e7d1",
+      "observations": [
+        "estimate_measured=shape:1 layout:3 degree:2 allocations:140"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-3-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "5b396f512dfe5e940e5353e695b4ac0b24493c2d2f77266fab464319df6227e6",
+      "retained_blocks": 65,
+      "retained_bytes": 3560,
+      "raw_observation_count": 3,
+      "observations_sha256": "35823d69b7c0de068207fea31480ee56e1a205b1727fcab94e0100e60e1c16c3",
+      "observations": [
+        "estimate_measured=shape:1 layout:3 degree:4 allocations:455"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "invalid-degree",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "208c042dd48bcc78d6bc612c9c0e6b1750783dd31a9b64b09bf5504f139870f3",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "invalid-degree",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "208c042dd48bcc78d6bc612c9c0e6b1750783dd31a9b64b09bf5504f139870f3",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "577a8db2db7b0e1ed35ad48d84de08eae7b1c9b9b8febb83f9d30b4de0bd4403",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "raw_observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "bad5053ff4b7144170cc5f2ea58c7946b06a783b15de297e89d32f5e54bcfb14",
+      "retained_blocks": 1,
+      "retained_bytes": 40,
+      "raw_observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "raw_observation_count": 1,
+      "observations_sha256": "628980b9660c0353696dd645709676ee005ae555c261d189ca65da1af55e82bc",
+      "observations": [
+        "allocation_hook_control=detected"
+      ]
+    }
+  ],
+  "raw_report_sha256": "694548d04358751cf8016c3cd33e557b9464f96ea64157c1226f94e970b66f8c"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "path": "s25-original-estimate",
+    "report_sha256": "532c6428aea1311a51e4dcb48718b709a58bb7a07d99bdf58b2decf0b598887c",
+    "archived_path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25-original-estimate-observation-capture-failure",
+    "cause": "The estimator runner captured the inherited initial_ prefix rather than estimate_. The campaign correctly refused missing complete sweeps. Capture prefix repaired; normal differential comparison now also explicitly rejects an empty observation vector. No production code or acceptance rule changed."
+  },
+  {
+    "path": "s25-candidate",
+    "report_sha256": "372d34f65d2b5674d89edb7b9e47f91cff1190206f41e572267407ef48d68103",
+    "archived_path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25-candidate-observation-capture-failure",
+    "cause": "The estimator runner captured the inherited initial_ prefix rather than estimate_. The campaign correctly refused missing complete sweeps. Capture prefix repaired; normal differential comparison now also explicitly rejects an empty observation vector. No production code or acceptance rule changed."
+  }
+]

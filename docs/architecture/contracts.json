@@ -174,8 +174,8 @@
     {
       "id": "C06",
       "topic": "Patch/submesh observers",
-      "statement": "Patch stores a non-owning current SubMesh pointer and SubMesh stores a non-owning Patch pointer. PatchCoons borrows Geometry-owned curves.",
-      "limits": "Replacing a submesh invalidates old observers; rollback must rebind every patch before the next adaptation.",
+      "statement": "Patch stores a non-owning current SubMesh pointer and SubMesh stores a non-owning Patch pointer. PatchCoons borrows Geometry-owned curves. Estimator construction delegates to BuildInitialEstimateSubMesh and returns one exclusive physical mesh owner; the raw InitialMeshEstimate compatibility wrapper releases that owner to its caller without a hidden MeshAdaptive. Only completed construction publishes the patch observer. Unpublished copied source nodes and pending triangles have local owners; the first successful curve insertion transfers a sample to the existing collective lifetime. Positive degrees use a nonfloating iteration ceiling while preserving the original floating endpoint test and repeated additions. Nonpositive degrees are rejected before patch access.",
+      "limits": "Replacing a submesh invalidates old observers; rollback must rebind every patch before the next adaptation. Qualification covers planar/bilinear degree 1/2/4 and four initialization masks with unchanged grid loops, UV evaluation order and historical center IDs. Caller wrappers still leak raw Mesh/SubMesh/Generator roots and do not implement scoped sample or patch-observer cleanup; their execution and full-process/parallel memory remain unqualified. Published sample prefixes and evaluator scratch are not rolled back on terminal failure. Rebind patch before destroying the returned mesh; nonpositive degree guards cover 0/-1/INT_MIN; arbitrary patches and extreme complete meshes are unqualified. Scalar sampling compatibility covers 520 positive degrees independently of full mesh validity.",
       "evidence": [
         {
           "path": "include/data/patch/patch.h",
@@ -192,6 +192,26 @@
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "auto restore_geometry_submeshes"
+        },
+        {
+          "path": "src/estimate/initial_mesh_estimate.cpp",
+          "anchor": "auto sub = std::make_unique<SubMesh>();"
+        },
+        {
+          "path": "src/estimate/initial_mesh_estimate.cpp",
+          "anchor": "patch->SetSubMesh(sub.get());"
+        },
+        {
+          "path": "src/estimate/charge_estimate_process.cpp",
+          "anchor": "return apmesh::estimation::BuildInitialEstimateSubMesh(patch, degree).release();"
+        },
+        {
+          "path": "src/estimate/initial_mesh_estimate.cpp",
+          "anchor": "const auto iteration_limit = 2 * (static_cast<std::uint64_t>(degree) + 1);"
+        },
+        {
+          "path": "src/estimate/initial_mesh_estimate.cpp",
+          "anchor": "throw std::invalid_argument(\"Estimator degree must be positive\");"
         }
       ]
     },

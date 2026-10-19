@@ -7,9 +7,9 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 139,
-    "translation_units": 65,
-    "headers": 74,
+    "files": 141,
+    "translation_units": 66,
+    "headers": 75,
     "directory_components": {
       "adapter": 4,
       "cli": 1,
@@ -22,14 +22,14 @@
       "data/mesh": 4,
       "data/patch": 8,
       "data/tree": 2,
-      "estimate": 2,
+      "estimate": 4,
       "generator": 16,
       "input_output": 11,
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 538,
-    "first_party_include_edges": 313
+    "literal_include_directives": 550,
+    "first_party_include_edges": 320
   },
   "cross_component_directives": [
     {
@@ -195,22 +195,22 @@
     {
       "from": "estimate",
       "to": "data",
-      "count": 3
+      "count": 5
     },
     {
       "from": "estimate",
       "to": "data/curve",
-      "count": 2
+      "count": 3
     },
     {
       "from": "estimate",
       "to": "data/mesh",
-      "count": 1
+      "count": 2
     },
     {
       "from": "estimate",
       "to": "data/patch",
-      "count": 1
+      "count": 2
     },
     {
       "from": "estimate",
@@ -336,6 +336,7 @@
     "climits": 2,
     "cmath": 17,
     "cstddef": 1,
+    "cstdint": 1,
     "cstdio": 3,
     "cstdlib": 5,
     "cstring": 1,
@@ -347,11 +348,11 @@
     "initializer_list": 1,
     "iomanip": 2,
     "iostream": 10,
-    "limits": 5,
+    "limits": 6,
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 20,
+    "memory": 21,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -359,7 +360,7 @@
     "queue": 2,
     "set": 2,
     "sstream": 6,
-    "stdexcept": 8,
+    "stdexcept": 9,
     "stdio.h": 1,
     "string": 6,
     "sys/time.h": 2,
@@ -370,7 +371,7 @@
     "unistd.h": 1,
     "unordered_map": 6,
     "unordered_set": 7,
-    "utility": 5,
+    "utility": 6,
     "vector": 20,
     "windows.h": 1,
     "winsock2.h": 1
@@ -386,11 +387,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "72fa4c14c3e8b58d4b742cd0cf30252b13096555154004fa89d59f14d6721180"
+      "sha256": "e9f936e6f8c991b72a35df4914a301f37012f0295cc9d423089a78970b2b9fc9"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "c43d68aaf17484029307d37eae0306849828c0fcbc876bf28f19ff451caaa55e"
+      "sha256": "6c03225b7520ba6515e976efbf5b25151cce73cbe42b7ddc552c877dea16969b"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -2092,8 +2093,8 @@
       "path": "include/estimate/charge_estimate_process.h",
       "component_by_directory": "estimate",
       "kind": "header",
-      "sha256": "d931e5ba90bb5be5532a6dd7d6f26294dff7459b1f57b606f84ba5aa22c17dd3",
-      "bytes": 1764,
+      "sha256": "db297db47fcf4469e18ac2dca537cc4f4ddffcfdcac4597741d188ed7e883b51",
+      "bytes": 1936,
       "includes": [
         {
           "line": 4,
@@ -2192,6 +2193,22 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/timer/timer.h"
+        }
+      ]
+    },
+    {
+      "path": "include/estimate/initial_mesh_estimate.h",
+      "component_by_directory": "estimate",
+      "kind": "header",
+      "sha256": "dba1f88e09280311e46750db6829027634173559207e35ab9f98d0a29735100d",
+      "bytes": 813,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -4227,22 +4244,108 @@
       "path": "src/estimate/charge_estimate_process.cpp",
       "component_by_directory": "estimate",
       "kind": "translation_unit",
-      "sha256": "179585756ad741bcad1dded027bd7ddcc87291d9a059f6d7e1a7ade3915ebe14",
-      "bytes": 31929,
+      "sha256": "88efebb875ccc6a62b32145b11c503b5aaa707c813515c8d3f68c95f715c95a8",
+      "bytes": 27911,
       "includes": [
         {
           "line": 1,
+          "spelling": "estimate/initial_mesh_estimate.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/initial_mesh_estimate.h"
+        },
+        {
+          "line": 3,
           "spelling": "../../include/estimate/charge_estimate_process.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/estimate/charge_estimate_process.h"
         },
         {
-          "line": 3,
+          "line": 5,
           "spelling": "../../include/generator/generator_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/generator/generator_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/estimate/initial_mesh_estimate.cpp",
+      "component_by_directory": "estimate",
+      "kind": "translation_unit",
+      "sha256": "46d4d8e243b551a2247bba54d0a11b64e92ba104055581cc1238ff20920438dd",
+      "bytes": 4932,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "estimate/initial_mesh_estimate.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/initial_mesh_estimate.h"
+        },
+        {
+          "line": 3,
+          "spelling": "cstdint",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "limits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "data/curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
+        },
+        {
+          "line": 9,
+          "spelling": "data/mesh/sub_mesh.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/sub_mesh.h"
+        },
+        {
+          "line": 10,
+          "spelling": "data/node_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/node_adaptive.h"
+        },
+        {
+          "line": 11,
+          "spelling": "data/patch/patch_coons.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_coons.h"
+        },
+        {
+          "line": 12,
+          "spelling": "data/triangle_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/triangle_adaptive.h"
         }
       ]
     },
@@ -5423,7 +5526,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 133,
+    "source_anchors": 138,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }
