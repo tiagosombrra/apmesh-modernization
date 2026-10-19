@@ -56,13 +56,13 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with eighteen qualified ownership/lifecycle slices.
-The latest repairs serial InitialMesh center/pending-resource leaks using local
-exclusive owners and the existing collective sample lifetime. CTest 28/28,
-constructor 27/27 with 400 allocation denials, twelve prior batteries and exact
-repeated Eistute/Book accepted/rejected traces pass on the exact head and main.
-See [the latest closure audit](docs/evidence/STAGE3_INITIAL_MESH.md).
-General raw mesh adoption, OpenMP constructors and full-process memory remain open.
+Stage 3 is in progress with nineteen qualified ownership/lifecycle slices.
+The latest repairs raw SubMesh transfer into MeshAdaptive before allocation or
+negative-position return. CTest 29/29, mesh adoption 36/36 with six allocation
+denials, thirteen prior batteries and exact repeated Eistute/Book accepted/rejected
+traces pass on the exact head and main.
+See [the latest closure audit](docs/evidence/STAGE3_MESH_ADOPTION.md).
+Raw element adoption, OpenMP constructors and full-process memory remain open.
 
 ## Repository policy
 

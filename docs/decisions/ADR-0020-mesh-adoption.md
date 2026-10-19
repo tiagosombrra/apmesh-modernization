@@ -1,6 +1,6 @@
 # ADR-0020: consume pending SubMesh ownership before insertion
 
-Status: accepted design; exact delivery qualification pending.
+Status: accepted; exact published-head and implementation-main gates pass through PR #60.
 
 MeshAdaptive documents ownership transfer of raw SubMesh arguments. Wrapping the
 pointer only after vector growth leaves it ownerless if growth throws. Returning

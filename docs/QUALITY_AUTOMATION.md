@@ -1,6 +1,6 @@
 # Local quality automation
 
-## Active mesh adoption boundary
+## Mesh adoption boundary (PR #60)
 
 Stage 3 slice 19 adds application.mesh_adoption_contracts and
 tools/qualify_mesh_adoption.py. The runner requires 36 outcomes: actual graph
@@ -8,7 +8,7 @@ identity/adjacency/area/destruction checks, six full positive growth sweeps,
 five nonallocating paths and deliberate ASan UAF/CRT leak/hook controls.
 Configure tests/mesh_memory in separate MSVC ASan/Debug CRT directories; use
 AP_MESH_ADOPTION_SOURCE_ROOT for a Git-verified original source snapshot.
-Exact delivery gates are pending. See [commands and limits](evidence/STAGE3_MESH_ADOPTION.md).
+Full exact-head/main delivery gates pass; stage 3 remains open. See [commands and limits](evidence/STAGE3_MESH_ADOPTION.md).
 
 ## Initial-mesh ownership boundary (PR #58)
 
@@ -34,12 +34,12 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-18 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-19 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
-sample-lifetime and serial initial-construction targets.
-The integrated CTest passes 28/28 with zero skips and 74 Python controls,
+sample-lifetime, serial initial-construction and physical mesh adoption targets.
+The integrated CTest passes 29/29 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier

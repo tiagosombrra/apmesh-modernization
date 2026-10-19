@@ -3,15 +3,29 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work item: stage 3 slice 19
+## Latest qualified work: stage 3 slice 19
 
-Repair general MeshAdaptive raw SubMesh adoption at entry. Pinned actual units
-reproduce abandoned physical graphs on allocation failure and negative positions;
-local exclusive owners now cover those paths. The complete candidate and exact
-published-head/main gates are required before integration. One item is active;
-see [root cause and coverage](evidence/STAGE3_MESH_ADOPTION.md).
+PR #60 integrates head `bebe4f5273719304fd00967bfaf7ae74de63f351` as main
+`e04a76a6103af5af5b116447c63c4de1ee047a0c`, preserving complete tree `ffdfa4677b419b8ef4fef30ad3312257f142dcd5`
+(1740 blobs). Full exact-head/main campaigns pass with the same 549 protected
+inputs: CTest 29/29, zero skips, 74 Python controls, fourteen memory batteries/
+968 expected outcomes, mesh-unit lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
 
-## Latest qualified work: stage 3 slice 18
+MeshAdaptive now consumes raw SubMesh ownership before vector growth or a
+negative-position return. Actual pinned units reproduce thirteen retained blocks
+per pending graph; the repair passes 36 bounded outcomes, six complete growth
+allocation denials, five nonallocating paths and eighteen identical successful
+observations. Existing slots/graphs survive growth failure; the consumed argument
+is destroyed. No metadata rollback, exceptional reuse or retry is introduced.
+
+Stage 3 stays open with nineteen qualified slices. Next isolate SubMesh::SetElement
+raw element adoption, whose vector emplacement can still precede ownership.
+The owning AddElement entry point is already safe. OpenMP initialization, other
+constructors, estimator hidden/duplicate ownership, logical rejection audit and
+whole-process/parallel/LSan/UBSan remain open; stages 4-11 pending. See [scope and closure audit](evidence/STAGE3_MESH_ADOPTION.md).
+
+## Stage 3 slice 18 qualified
 
 PR #58 integrates head `84e303da51a6ac4c6cf52dbbee7f5fb30c93696e` as main
 `e398854bba9f06045b71dd1b965505872106d746`, preserving complete tree `490a5c448c277dffb5229e2d2b51ff86574768d5`
@@ -789,6 +803,6 @@ Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
 observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
 closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
 
-Current next work: general MeshAdaptive raw SubMesh adoption. InitialMesh
-construction is qualified for the bounded serial fixtures; see the latest slice
-above for the exact delivery and remaining failure/coverage inventory.
+Current next work: SubMesh::SetElement raw element adoption. MeshAdaptive
+ownership transfer is qualified for the bounded actual-unit fixtures above;
+full stage 3 and the remaining failure/coverage inventory stay open.
