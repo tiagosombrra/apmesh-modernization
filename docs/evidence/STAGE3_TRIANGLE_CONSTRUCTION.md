@@ -1,6 +1,8 @@
 # Stage 3 slice 21: triangle construction and observer registration
 
-Status: candidate; exact-head and implementation-main qualification pending.
+Status: qualified and integrated through PR #64.
+Head `a6da72630db2747194982e1a2b77cd3203536408`; implementation main `6cf041333b83a01f1c081df82620d12f00995d4b`.
+Complete tree `49a170663fc68afa6525ee53bfc4768c4fa97e81` (1766 blobs); 553 protected inputs.
 Entry main: `b4177dd031a16bc748099c7db9a6dbf562228908`.
 
 ## Root cause and repair
@@ -97,25 +99,35 @@ No source diagnostic, test requirement or numerical acceptance rule was relaxed.
 
 ## Delivery gates and closure audit
 
-Candidate full campaign passes GCC build, CTest 31/31 (zero skips, 74 Python
-controls), all sixteen batteries/1038 expected outcomes, selected node/triangle
-lint/format/inventory and twice-repeated exact Eistute/Book accepted/rejected
-comparisons. The new battery passes 39/39, all 48 observed allocation denials,
-exact old list-node/scalar restoration and safe live-observer/fresh-construction
-checks. Exact published-head and implementation-main gates remain required.
-New required CTest:
-application.triangle_construction_contracts. The fifteen previous batteries
-remain required. Compact reports, original outcomes, raw-log hashes, toolchain
-and frozen inputs are retained under stage3/triangle_construction.
+Exact published-head and implementation-main full campaigns pass: GCC serial
+C++17 Release build, CTest 31/31 (zero skips, 74 Python controls), sixteen memory
+batteries/1038 expected outcomes, selected node/triangle lint, explicit formatting,
+architecture freshness and whitespace. The new battery passes 39/39 and all
+48 observed allocation denials, preserving exact old list nodes and permitting
+safe prior-observer traversal/fresh component construction after each failure.
+Candidate live/final CRT increments are zero; 24 complete normal logs match.
+The twelve original failing sweeps and preparation findings remain retained.
 
-| Audit scope | Current result |
+Both full campaigns repeat Eistute/Book twice, preserving all nine attempted
+accepted/rejected OBJ/incidence states, 189 CSV fields and 1,168/4,256 last-accepted
+triangles exactly. Inventory: 139 production files, 65 units, 74 headers, 22
+contracts/127 anchors; the existing six-header cycle is unchanged.
+
+Compact candidate/head/main reports retain every command and case outcome/log
+SHA256. Documentation closure preserves all 553 compiled/tool/test/build/input/
+contract identities and retains full instrument/numerical evidence against those
+inputs; no fresh full campaign is claimed on documentation-only revisions.
+Exact documentation head/main build, CTest and complete Git/working-byte checks
+are required. Zero configured remote checks means absence of hosted gates.
+
+| Audit scope | Result |
 | --- | --- |
-| Code | Narrow nonallocating observer erasure and failed-constructor cleanup; original success order preserved |
-| Tests | Actual-unit 39/39, all 48 observed allocation denials; full/exact delivery pending |
-| Contracts | C04/C05 and ADR-0022 distinguish constructor restoration from ordinary destruction/adoption failure |
-| Documentation | Original partial publication, zero final leak limitation and preparation findings retained |
-| Scientific scope | No formula/order/policy change; full accepted/rejected model regression required |
-| Known failures/coverage | Original twelve failing sweeps retained; unmeasured required delivery gates block integration |
+| Code | Nonallocating removal of fresh-this observers on constructor exception; success evaluation/registration order preserved |
+| Tests | 39 actual-unit outcomes, all 48 observed denials, exact identity and live-observer checks, real negative controls; full exact-head/main gates pass |
+| Contracts | C04/C05 and ADR-0022 separate constructor rollback from ordinary destruction/failed adoption |
+| Documentation | Original partial publications, zero-final-leak limitation, commands/source identity and preparation findings retained |
+| Scientific scope | No formula/order/policy change; exact full accepted/rejected model traces pass |
+| Known failures/coverage | Original twelve failing sweeps retained; ordinary destruction/mesh owner ordering and whole stage 3 remain open |
 
 Stage 3 remains open. Next audit triangle destruction/observer lifetime together
 with SubMesh destruction/move ordering before adding automatic deregistration.

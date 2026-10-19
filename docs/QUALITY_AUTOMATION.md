@@ -1,6 +1,6 @@
 # Local quality automation
 
-## Active triangle construction boundary
+## Triangle construction boundary (PR #64)
 
 Stage 3 slice 21 adds application.triangle_construction_contracts and
 tools/qualify_triangle_construction.py. The actual-unit ASan/Debug CRT runner
@@ -8,7 +8,7 @@ requires 39 outcomes, twelve complete sweeps/48 allocation denials, exact old
 list-node/scalar identity and live-observer/fresh-construction checks only after
 restoration. Repeated vertices are lifecycle guards, not geometric validity.
 Ordinary destruction/adoption failure and full CLI retry remain separate.
-Full delivery gates are pending. See [commands and limits](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
+Full exact-head/main delivery gates pass; stage 3 remains open. See [commands and limits](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
 
 ## Element adoption boundary (PR #62)
 
@@ -54,12 +54,12 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-20 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-21 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
-sample-lifetime, serial initial-construction and physical mesh and terminal element adoption targets.
-The integrated CTest passes 30/30 with zero skips and 74 Python controls,
+sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration targets.
+The integrated CTest passes 31/31 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier

@@ -3,15 +3,32 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work item: stage 3 slice 21
+## Latest qualified work: stage 3 slice 21
 
-Repair partial TriangleAdaptive constructor observer publication. Actual pinned
-units reproduce expired entries after later list-allocation failures; a narrow
-nonallocating cleanup removes only this construction's entries. Normal math and
-registration order stay fixed. Full candidate/exact-head/main gates are required;
-see [root cause and limits](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
+PR #64 integrates head `a6da72630db2747194982e1a2b77cd3203536408` as main
+`6cf041333b83a01f1c081df82620d12f00995d4b`, preserving complete tree `49a170663fc68afa6525ee53bfc4768c4fa97e81`
+(1766 blobs). Full exact-head/main campaigns pass with the same 553 protected
+inputs: CTest 31/31, zero skips, 74 Python controls, sixteen memory batteries/
+1038 expected outcomes, node/triangle lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
 
-## Latest qualified work: stage 3 slice 20
+Failed TriangleAdaptive construction now removes only its own node observers
+without allocation before rethrowing. Existing pointer order, list-node identity,
+null markers and node fields survive all 48 observed allocation denials. The
+actual-unit battery passes 39 outcomes and 24 identical normal observation logs.
+Original: twelve failing sweeps/24 partial publications, one/two extra live list
+nodes despite zero final CRT retention. Preparation anchor/counter findings are
+retained; the complete corrected campaign passes without relaxed requirements.
+
+Stage 3 remains open with twenty-one qualified slices. Ordinary destruction of a
+successfully constructed triangle still does not unregister; slice 20's terminal
+adoption limit remains. Next audit triangle destruction/observer lifetime with
+SubMesh destruction/move ordering before adding automatic deregistration.
+ReplaceNode/copy/move, estimator hidden ownership, logical rejection and whole-
+process/parallel/LSan/UBSan remain open; stages 4-11 pending. See
+[scope and closure audit](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
+
+## Stage 3 slice 20 qualified
 
 PR #62 integrates head `dcf6941e944fcd3bf268e7f9a8ecef4f87735d75` as main
 `40106ede082614429639566c64ca3689a7d62c4b`, preserving complete tree `3f6f76298519082e93676da58a6750908b5dc387`
@@ -836,6 +853,6 @@ Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
 observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
 closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
 
-Current next work: TriangleAdaptive construction/adjacency registration under
-allocation failure. Terminal element adoption is qualified for the bounded
-actual-unit fixtures above; full stage 3 and observer reuse remain open.
+Current next work: triangle destruction/observer lifetime with SubMesh destruction/
+move ordering. Failed-constructor registration restoration is qualified for the
+bounded actual-unit fixtures; general destruction/graph reuse and stage 3 stay open.
