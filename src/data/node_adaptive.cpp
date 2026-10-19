@@ -26,6 +26,18 @@ void NodeAdaptive::RemoveElementObserver(ElementAdaptive* element) noexcept {
   elements_.remove(element);
 }
 
+bool NodeAdaptive::MoveElementObserverTo(ElementAdaptive* element,
+                                         NodeAdaptive& destination) noexcept {
+  for (auto entry = elements_.begin(); entry != elements_.end(); ++entry) {
+    if (*entry == element) {
+      if (this != &destination)
+        destination.elements_.splice(destination.elements_.end(), elements_, entry);
+      return true;
+    }
+  }
+  return false;
+}
+
 unsigned int NodeAdaptive::GetNumberElements() const {
   return static_cast<unsigned int>(elements_.size());
 }

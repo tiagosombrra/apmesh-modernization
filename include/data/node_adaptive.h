@@ -18,6 +18,9 @@ public:
   void InsertElement(ElementAdaptive* element);
   // Remove matching non-owning entries without deleting the element or allocating.
   void RemoveElementObserver(ElementAdaptive* element) noexcept;
+  // Transfer the first matching non-owning list node; preserve all other entries.
+  // Return false without mutation if absent. No allocation or element deletion.
+  bool MoveElementObserverTo(ElementAdaptive* element, NodeAdaptive& destination) noexcept;
   unsigned int GetNumberElements() const;
   ElementAdaptive* GetElement(const unsigned int position);
   void ClearElements();

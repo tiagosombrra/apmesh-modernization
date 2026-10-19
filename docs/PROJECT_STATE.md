@@ -3,7 +3,15 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Latest qualified work: stage 3 slice 22
+## Active work: stage 3 slice 23
+
+Candidate stable triangle identity/observer replacement passes actual-unit and
+full candidate gates. Exact published-head/main qualification is pending.
+Triangle value copy/move is disabled; first-match replacement transfers one list
+node without allocation. Destruction and geometry-cache refresh remain separate.
+See [scope and audit](evidence/STAGE3_TRIANGLE_OBSERVER.md).
+
+## Stage 3 slice 22 qualified
 
 PR #66 integrates head `88c285e5ac193e7c45fe688cec05867e5243dbdd` as main
 `79bad64023ab1ddd54eda76930df47ff2986f765`, preserving complete tree `46c42a52e11519471015e1b8ad385539366079e2`

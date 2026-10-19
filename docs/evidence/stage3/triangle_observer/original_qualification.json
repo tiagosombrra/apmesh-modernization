@@ -1,0 +1,441 @@
+{
+  "status": "failed",
+  "scope": "Five actual Node/Point/Element/Triangle/Vector units and the same probe against Git-pinned original and candidate. Stable noncopyable/nonmovable identity; first matching vertex replacement transfers one physical observer list node without allocating. Distinct/repeated/merged vertices, null parent markers, list-node/order identity, all cached fields and UV/ID/scalar state, no-op/missing/null/default guards, chained replacement and eight zero-allocation paths. Deliberate UAF/leak/hook controls required. Ordinary triangle destruction remains empty. Cached geometry is not recomputed; no geometric-validity claim after coordinate-changing replacement. Public API tightening does not constitute whole-process/parallel/LSan/UBSan safety.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s23oa\\RelWithDebInfo\\triangle_observer_probe.exe",
+      "sha256": "5b9a4db5c334c5e6ca355f5587c6310746fa4c87f6428972c6e2aded5633a5bd"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s23od\\Debug\\triangle_observer_probe.exe",
+      "sha256": "d5c53aa39c1407cc726832a56fb4a68e515cd2adca51ab7f36d99581dc122d00"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "433984e305b68ebb0ca9dd53221fda3d57551b43b78cb5897f334dd4d8360430",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:0 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "e7da21bd6a3552fa5030bedd74dbdbca6ea7bc210acda92e9911bb53c8a6c6f4",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:1 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "b7f5c7e1647f4a2b5d2bb33a0de99ce2d84898f7eb4ccabdc479bb803ec74ef9",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:2 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "12fa98861bd19c452c01f8a492e0ba182251a3e3435ba3603924a288a287a4f4",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:3 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "95940260c5771000303dc8db05e7fea3417bf8f03545b794141058cafe2828a2",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:4 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-5",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "70127bb42db01dc4c41d914b62923d31924a092cb8204349bed24e8e2d25b6ab",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:5 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "91d449914a80cc645054bea524b9ab363cda62c4e0fa40b72bedf6fba1dab49d",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:6 preserved:1 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f90f97a76981e1ab5f5ecb6186a0ccd717afd1ef4f9a8109a90cb141fdd428aa",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:7 preserved:1 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-8",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "2f1e8ea7f766ebb6cb0d30ebef69d2a7a387ea90168b6d05d6939f0b60ff8f87",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:8 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-9",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "a214107a4fc055659b64057f90c0dddb66d2d74303b2121b3ec33963098515f9",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_replacement=variant:9 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "30041f6ecb414dc093955bb91d85de4e26d9efbe391ce3641c1b76ca6e2f8e6d",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:0 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "526c5987e78c1ff6a8f12497f8d288a0adb19ef79026c253c3d50cc268d50b88",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:1 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "e2e8f5798ec5c73295a666237c9ffd4888cd3db24d2d86848536f57dc2bf2ca6",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:2 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "5236ae36b07f7ea9211bffaaac83a80e6e388a96bee7c3597db76aea5ff2308c",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:3 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "192c8f8a37a9ed21a89ccdfd1da516cd60a9dfff9e20c1579c710172fd449193",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:4 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-5",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "1902a47ea561ee3f076d3ea7e25d35ee56444cf9fb0b89dd7cd4658295a0eebb",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:5 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "7b29bc8ec06ebbcd13e823d984f859058839a88715a189583a16a7227aa9c1a9",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:6 preserved:1 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "4375bb4fa06d87855d9bd329f004076dca555018ecf1b04dc16eaaf0da7d186f",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:7 preserved:1 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-8",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "c32839a9bd9a4a5acb030dd228174dc9878c1324e283b420759d83881b756039",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:8 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-9",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "9925db1ccef00ef67a6811d35269cacc79bb288f29aa1c8435f613bc5f0d6db1",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:9 preserved:0 rejected:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "03a3c75803ae580dc8b4e1dd1c8de327970640e2c4ffbdb9700d35a17d1e6fd2",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:0 preserved:0 rejected:0",
+        "observer_allocation=attempts:0 denied:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "80a1357db8b49e47f5768ba026d91efd3e8dd04966a771f3dd14d17fdce1f955",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:1 preserved:0 rejected:0",
+        "observer_allocation=attempts:0 denied:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "b70264806e79dae0da54a8e76c29ff35590ddc0d2d9862e9e38d428c83866195",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:2 preserved:0 rejected:0",
+        "observer_allocation=attempts:0 denied:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-3",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "7c46334ddb1803c7ce25df36f6edb49a188fc01caf518ce742b35509d8d7518d",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:3 preserved:0 rejected:0",
+        "observer_allocation=attempts:0 denied:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-4",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "923a90f901231dcb0de954f2a2669604d7a40ff3a4217d9400714b8ef0162961",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:4 preserved:0 rejected:0",
+        "observer_allocation=attempts:0 denied:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-5",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "3b4c8693aef8eb5409efa4c90b0468bce789524acf39358abb393177889e9633",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:5 preserved:0 rejected:0",
+        "observer_allocation=attempts:0 denied:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "acf5fb1280cb537ce720a3f1a5b58f97b64b2e1185a21eb620d1a9dd8637563f",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:6 preserved:1 rejected:0",
+        "observer_allocation=attempts:0 denied:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "041c3d01c3363dc7070b5dd6d07a01960a7a504a8a333d46a891c88ea3f22378",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_replacement=variant:7 preserved:1 rejected:0",
+        "observer_allocation=attempts:0 denied:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "identity",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "5758af2d1218edfe1e2d3666e3dcb128f824236e3fb542ca0fa77a03dfaeac97",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_identity=copy:1 assign:1 move:1 move_assign:1 unregistered_copy:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "guards",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "662520dc39b25a8960dec2bf1f952531d2b7c235ac0273e17d3944f72ed60e88",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "observer_guards=preserved:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "identity",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "4eeaecbef3f08697bf17f33ce7702bf322aa131902e348b8e6cf90661f163474",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_identity=copy:1 assign:1 move:1 move_assign:1 unregistered_copy:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "guards",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "6d4a74886c38e1336c6dea73d5e80dba47869e43bcab04be54c549d661644498",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "observer_guards=preserved:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "3d7fac678c5ab752a38dae6f89ea7fd0538515beeb3a4bc7b5106b4c6be9f4eb",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "8b34677c2103bf65aa65fe98bd00c8708254bfb7569ebc86aa949aa03c5581ba",
+      "retained_blocks": 2,
+      "retained_bytes": 112,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ]
+    }
+  ],
+  "raw_report_sha256": "78cd10c50acfedd3c4ca78521dab675d00f2948b7ba0c9b3a33863833e6c1f13"
+}

@@ -3,7 +3,12 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stages 0-2 closed for measured scope; stage 3 slice 22
+Current active item: stage 3 slice 23, stable triangle identity and observer
+replacement. Candidate measured; exact-head/main gates and integration pending.
+Next qualify completed-triangle destruction and failed-adoption observer cleanup.
+See [scope and audit](evidence/STAGE3_TRIANGLE_OBSERVER.md).
+
+Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 22
 (PR #66) is qualified at head `88c285e5ac193e7c45fe688cec05867e5243dbdd` and main
 `79bad64023ab1ddd54eda76930df47ff2986f765`. All exact-head/main gates pass; stage 3 remains open.
 Next establish triangle special-member/replacement observer semantics, then
