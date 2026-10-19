@@ -1,6 +1,6 @@
 # ADR-0025: unregister completed triangles before borrowed vertices expire
 
-Status: candidate measured; exact-head/main gates pending.
+Status: accepted; full exact-head and implementation-main gates pass.
 
 Construction registers this in three node lists, but the completed destructor
 left those addresses behind. Actual-unit post-delete traversal reproduces ASan

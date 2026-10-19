@@ -3,12 +3,26 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work: stage 3 slice 24
+## Latest qualified work: stage 3 slice 24
 
-Candidate completed-triangle cleanup passes actual-unit and full candidate gates.
-Exact published-head/main qualification is pending. Destruction removes current-
-vertex observers; failed adoption restores the prior live graph. Borrowed nodes
-must outlive destruction. See [scope and audit](evidence/STAGE3_TRIANGLE_LIFETIME.md).
+PR #70 integrates head `7d22766e562669db283bedbf09fab59663546d18` as main
+`78bc1ff045bcabebc3ac5536e53a1a87182ad365`, preserving complete tree `fc0ea5c79c4a6a42a78ce70b8a1f199c6fc8c71c`
+(1805 blobs). Full exact-head/main campaigns pass with the same 559 protected
+inputs: CTest 34/34, zero skips, 74 Python controls, nineteen memory batteries/
+1137 expected outcomes, triangle lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
+
+Completed TriangleAdaptive destruction now removes its current-vertex observers
+without allocation. Borrowed nodes must remain alive through destruction.
+All 36 new outcomes pass: exact parent/list-node/scalar cleanup, eight zero-
+allocation paths, four positive adoption denials with safe fresh adoption and
+post-delete traversal. Original 31 cleanup failures/ASan UAF and zero final CRT
+retention are preserved. The prior 31-case adoption oracle is strengthened.
+
+Stage 3 remains open with twenty-four qualified slices. Next isolate estimator
+hidden/duplicate mesh roots. General foreign observer copies, arbitrary protected
+mutation/subclasses, cache refresh, logical rejection and whole-process/parallel/
+LSan/UBSan remain open; stages 4-11 pending. See [closure audit](evidence/STAGE3_TRIANGLE_LIFETIME.md).
 
 ## Stage 3 slice 23 qualified
 

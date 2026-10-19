@@ -1,6 +1,11 @@
 # Stage 3 slice 24: completed-triangle observer cleanup
 
-Candidate qualified; exact published-head and post-merge main qualification remain pending.
+PR #70 integrates head `7d22766e562669db283bedbf09fab59663546d18` as main
+`78bc1ff045bcabebc3ac5536e53a1a87182ad365`, preserving complete tree `fc0ea5c79c4a6a42a78ce70b8a1f199c6fc8c71c`
+(1805 blobs). Full exact-head/main campaigns pass with the same 559 protected
+inputs: CTest 34/34, zero skips, 74 Python controls, nineteen memory batteries/
+1137 expected outcomes, triangle lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
 
 Entry main: `1d3aeb55e2c0aaced170f206f07d2bee4661b92a`.
 Classification: behavior-changing observer-lifetime defect repair; no scientific proposal.
