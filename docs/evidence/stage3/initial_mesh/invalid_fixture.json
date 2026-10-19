@@ -1,0 +1,38 @@
+{
+  "status": "invalid qualification fixture",
+  "causes": [
+    "Fixture configured one ID channel but InitialMesh uses node channel 0 and element channel 1; production manager is configured with two channels.",
+    "Fixture transposed control-net coordinates relative to its analytic oracle."
+  ],
+  "files": {
+    "asan-normal-0-0.log": "3391fdfbee4b8089dae8f62f3e174cc7d9c514dd1e635043957efb10e0590f6e",
+    "asan-normal-0-1.log": "f53ccc37af0eba3169d6d5608bf39afb7e884d97826c3b1ce90da758a27571a9",
+    "asan-normal-0-2.log": "cdff98e36ff46658df5a820a94eb6c62fb0306922d3f1735b6273da290a697f3",
+    "asan-normal-1-0.log": "2eaed28f38d94436e77961259f5c9c9706b41970a8d06e16b3e1610ade372d93",
+    "asan-normal-1-1.log": "ea970d3e5e3d2d99442e0bebc71ea3f101e94572f83ef91ebb40985cc51181da",
+    "asan-normal-1-2.log": "2bacaa9c743409d164231f16e050c89b360dfc772e784796490a44f498591669",
+    "asan-use-after-free.log": "a2da28b685223f1388ef4256cdab52e10f94d28a235c5a5b34cccd01fd532c99",
+    "crt-allocation-hook-control.log": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+    "crt-failure-0-0.log": "ac3222cdbb88b65472dd6cd82caf32b050835f3c80d1509a06c7aec963ae1856",
+    "crt-failure-0-1.log": "521047b3c955367dee4eec7b634cfb9a35b4d2622f6e380a1db4c68e56c15bdc",
+    "crt-failure-0-2.log": "7a1a03809c78a6379bc7677cf6deaf3aaf7314c7596e09260f04aa377904028b",
+    "crt-failure-1-0.log": "57269203117e1ee38c4790b35354e94e5f498821966be630289917e0ef82a0fb",
+    "crt-failure-1-1.log": "1c41ea4c609c830fdbf355d211fae5be6312a936974099769db8486a57f752df",
+    "crt-failure-1-2.log": "9a95150bfaba1a99958a4e3aaf26c9e19c064ee0d24a129df8c41cb8a98af674",
+    "crt-leak.log": "c9ca9e170a9bdd818e6f85bb2a866a8d502cda72baa0de480a4fa18f72f4709e",
+    "crt-normal-0-0.log": "ee9587f10edbaff762298ec5a920dc9e36caf91e8f3bad70d0564908b32a7bb3",
+    "crt-normal-0-1.log": "ee9587f10edbaff762298ec5a920dc9e36caf91e8f3bad70d0564908b32a7bb3",
+    "crt-normal-0-2.log": "ee9587f10edbaff762298ec5a920dc9e36caf91e8f3bad70d0564908b32a7bb3",
+    "crt-normal-1-0.log": "ee9587f10edbaff762298ec5a920dc9e36caf91e8f3bad70d0564908b32a7bb3",
+    "crt-normal-1-1.log": "ee9587f10edbaff762298ec5a920dc9e36caf91e8f3bad70d0564908b32a7bb3",
+    "crt-normal-1-2.log": "ee9587f10edbaff762298ec5a920dc9e36caf91e8f3bad70d0564908b32a7bb3",
+    "report.json": "10729e430597a022424ebc3fa965c42d4d34ea5a769181068b47c387ce16e0c3",
+    "s18oa/RelWithDebInfo/initial_mesh_probe.exe": "d7cd27dac9c57c13f6a64e55ed875c19d6767beff3c7b87af97a59177a4b42ba",
+    "s18od/Debug/initial_mesh_probe.exe": "3f4cedcb7807bb8df78d4d7b6076ea5e65844257fc4f3e86a19456b9d6bb6623",
+    "s18-verified-s18oa-0.log": "be1edcd6bb3339e34fbb84d6797d383ae62369547951434a71ef8096bd8749a5",
+    "s18-verified-s18oa-1.log": "ae303df3fdd2a13637319e8ec1527d377b4cf8789b24d4d5ea2e6e401fcc761c",
+    "s18-verified-s18od-0.log": "70646bd2274e9132fac90d006799c3501b4274e23726b8d25d004210b194b5a9",
+    "s18-verified-s18od-1.log": "7691217ce7c21ecb6d60808d3e507ec2a5edcdb768f1c6796ce00af86d964d96"
+  },
+  "limitations": "These results are not evidence of a production ID-manager overflow or numerical failure. Failed raw artifacts and original probe executable identities are retained."
+}
