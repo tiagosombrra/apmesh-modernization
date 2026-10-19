@@ -1,6 +1,6 @@
 # ADR-0024: stable triangle identity and list-node observer replacement
 
-Status: candidate measured; exact-head/main gates pending.
+Status: accepted; full exact-head and implementation-main gates pass.
 
 Node adjacency identifies a triangle by address. Implicit value copying changes
 identity without publishing it; move expressions had used the copy operation.

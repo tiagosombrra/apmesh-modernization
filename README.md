@@ -56,13 +56,13 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with twenty-two qualified ownership/lifecycle slices.
-The latest fixes SubMesh move assignment to retire old elements before their
-node owners. CTest 32/32, lifetime 28/28 with eight zero-allocation paths,
-sixteen prior memory batteries and exact repeated Eistute/Book accepted/rejected
-traces pass on exact head and main. See [the latest closure audit](docs/evidence/STAGE3_SUBMESH_LIFETIME.md).
-Triangle deregistration/special members, estimator roots and full-process memory
-remain open.
+Stage 3 is in progress with twenty-three qualified ownership/lifecycle slices.
+The latest establishes stable triangle address identity and transfers one observer
+list node during first-matching vertex replacement. CTest 33/33, observer 35/35 with eight
+zero-allocation paths, seventeen prior memory batteries and exact repeated
+Eistute/Book accepted/rejected traces pass on exact head and main. See [the latest closure audit](docs/evidence/STAGE3_TRIANGLE_OBSERVER.md).
+Ordinary triangle deregistration, cache refresh, estimator roots and full-process
+memory remain open.
 
 ## Repository policy
 

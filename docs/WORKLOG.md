@@ -3,7 +3,7 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Latest delivery: stage 3 slice 22 (PR #66); see the final ledger row.
+Latest delivery: stage 3 slice 23 (PR #68); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -32,8 +32,9 @@ Latest delivery: stage 3 slice 22 (PR #66); see the final ledger row.
 | 2026-10-19, stage 3 slice 20 | PR #62; head dcf6941e944fcd3bf268e7f9a8ecef4f87735d75, main 40106ede082614429639566c64ca3689a7d62c4b; evidence/STAGE3_ELEMENT_ADOPTION.md | Consume raw elements before vector allocation through owning AddElement; CTest 30/30, element 31/31/eight denials, fourteen prior batteries and exact model traces; constructor adjacency and live-graph reuse remain open |
 | 2026-10-19, stage 3 slice 21 | PR #64; head a6da72630db2747194982e1a2b77cd3203536408, main 6cf041333b83a01f1c081df82620d12f00995d4b; evidence/STAGE3_TRIANGLE_CONSTRUCTION.md | Remove failed constructor observers without allocation; exact list-node restoration for 48 denials, triangle 39/39, CTest 31/31, fifteen prior batteries and exact model traces; ordinary destruction and mesh owner ordering remain open |
 | 2026-10-19, stage 3 slice 22 | PR #66; head 88c285e5ac193e7c45fe688cec05867e5243dbdd, main 79bad64023ab1ddd54eda76930df47ff2986f765; evidence/STAGE3_SUBMESH_LIFETIME.md | Retire elements before node replacement; twelve ordering failures/derived observer UAF reproduced, SubMesh 28/28 with eight zero-allocation paths, CTest 32/32, sixteen prior batteries and exact model traces; triangle deregistration remains open |
+| 2026-10-19, stage 3 slice 23 | PR #68; head f29018fea3d3490358396381cea1dc7967aaf1ac, main 4dd41510180ac0fa10e9a3f083552fe1f3c13a2c; evidence/STAGE3_TRIANGLE_OBSERVER.md | Stable triangle address identity and first-match list-node transfer; 26 original failures, observer 35/35/eight zero-allocation paths, CTest 33/33, seventeen prior batteries and exact model traces; ordinary destruction/cache refresh remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with twenty-two qualified
-slices; stages 4-11 pending. Next establish triangle special-member/replacement observer semantics, then
-qualify completed-triangle destruction. Estimator roots,
-logical rejection and whole-process/parallel memory remain open.
+Current status: stages 0-2 closed; stage 3 in progress with twenty-three qualified
+slices; stages 4-11 pending. Next qualify completed-triangle destruction and failed-
+adoption observer cleanup. Cache refresh, estimator roots, logical rejection and
+whole-process/parallel memory remain open.

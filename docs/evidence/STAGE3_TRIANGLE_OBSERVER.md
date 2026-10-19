@@ -1,6 +1,11 @@
 # Stage 3 slice 23: stable triangle identity and observer replacement
 
-Candidate qualified; exact published-head and post-merge main qualification remain pending.
+PR #68 integrates head `f29018fea3d3490358396381cea1dc7967aaf1ac` as main
+`4dd41510180ac0fa10e9a3f083552fe1f3c13a2c`, preserving complete tree `e40ff131629c0b791daf2f12db074e8cb3ec6499`
+(1793 blobs). Full exact-head/main campaigns pass with the same 557 protected
+inputs: CTest 33/33, zero skips, 74 Python controls, eighteen memory batteries/
+1101 expected outcomes, node/triangle lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
 
 Entry main: `83e6f5a591274602e1702b3d47d9e9736b511124`.
 Classification: behavior-changing observer-consistency defect repair and

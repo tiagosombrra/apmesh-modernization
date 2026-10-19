@@ -1,5 +1,15 @@
 # Local quality automation
 
+## Triangle identity and observer replacement (PR #68)
+
+Stage 3 slice 23 adds application.triangle_observer_contracts and
+tools/qualify_triangle_observer.py. The five-actual-unit ASan/Debug CRT runner
+requires 35 outcomes: first-match distinct/repeated/merged vertex transfers,
+unchanged cache/ID/UV/list-node state, identity/default/missing/null guards,
+eight measured zero-allocation operations and real UAF/leak/hook controls.
+Full exact-head/main gates pass. Destruction and geometry-cache refresh remain
+separate; see [commands and limits](evidence/STAGE3_TRIANGLE_OBSERVER.md).
+
 ## SubMesh lifetime ordering (PR #66)
 
 Stage 3 slice 22 adds application.submesh_lifetime_contracts and
@@ -63,12 +73,12 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-22 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-23 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
-sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration and SubMesh owner-ordering targets.
-The integrated CTest passes 32/32 with zero skips and 74 Python controls,
+sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration and SubMesh owner-ordering and triangle identity/observer-replacement targets.
+The integrated CTest passes 33/33 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
