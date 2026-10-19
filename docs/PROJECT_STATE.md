@@ -3,21 +3,28 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work item: stage 3 slice 17, serial sample lifetime
+## Latest qualified work: stage 3 slice 17
 
-Entry main: `4a504556f08b6abbe078236c1b6eb2136ef9c537`.
-The serial CLI terminates on exceptions; adaptive numerical rejection/retry is
-a different path. Reusable metadata rollback is not required by that CLI path.
-The demonstrated defect is missing automatic ownership of published curve
-samples: exceptions bypass the final cleanup, whose deduplication also allocates.
+PR #56 integrates head `06f4bfd40cff9f09c527777169c5fcf8d053e0c7` as main
+`9703536b21d8d3f02dbe7fbd9f83d3260f461aad`, preserving complete tree `7efe095ab635e3e8e1b42cab30403adddc4d295a`
+(1710 blobs). Full exact-head and implementation-main campaigns pass with the
+same 542 protected input identities. CTest 27/27, zero skips, 74 Python controls,
+all twelve memory batteries (905 expected outcomes), lint/format/inventory and
+exact twice-repeated Eistute/Book accepted/rejected traces pass.
 
-The pinned original fails 36/53 bounded outcomes; actual Debug CRT detects
-10/18 retained blocks for five/nine undestroyed sample objects. The scoped owner
-passes 53/53 with no teardown allocation and identical twelve normal observed
-logs. The complete candidate campaign passes GCC build, CTest 27/27 (74 Python
-controls, zero skips), all eleven prior batteries and exact repeated Eistute/Book
-regression. Exact-head/main qualification and integration remain pending. Stage 3 stays open with sixteen qualified integrated slices.
-See [sample lifetime evidence](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
+The root cause was late manual ownership release: terminal exceptions skipped
+sample deletion, and final deduplication could itself fail allocation. One serial
+scope owner now releases published samples automatically, after inner guards
+unwind, without allocation. Original: 36/53 bounded failures and 10/18 retained
+CRT blocks for five/nine undestroyed objects. Candidate: 53/53 expected outcomes,
+zero retained blocks in valid cases and twelve identical normal observed logs.
+Fatal exceptions still terminate the CLI; metadata rollback is not introduced.
+
+Stage 3 remains open with seventeen qualified slices. Next isolate and repair
+InitialMesh temporary/pending ownership, including the central-node temporary
+copied into SubMesh without visible release. Unpublished allocations, logical
+candidate-rejection audit, whole-process/parallel/LSan/UBSan remain open; stages
+4-11 are pending. See [scope and closure audit](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
 
 ## Completed in stage 0
 
@@ -748,3 +755,7 @@ measured serial operations; it is not full Adapter/AdaptCurve/mesh atomicity.
 Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
 observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
 closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
+
+Current next work: InitialMesh temporary/pending ownership; terminal resource
+release is qualified only for the measured published graph. See the latest
+qualified slice above for current scope and remaining findings.

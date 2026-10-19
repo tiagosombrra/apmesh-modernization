@@ -1,6 +1,8 @@
 # Stage 3 slice 17: serial curve-sample lifetime
 
-Status: active candidate; exact delivery qualification and integration pending.
+Status: qualified and integrated through PR #56.
+Head `06f4bfd40cff9f09c527777169c5fcf8d053e0c7`; implementation main `9703536b21d8d3f02dbe7fbd9f83d3260f461aad`.
+Complete tree `7efe095ab635e3e8e1b42cab30403adddc4d295a` (1710 blobs) and 542 protected inputs match.
 Entry main: `4a504556f08b6abbe078236c1b6eb2136ef9c537` (472 pinned source/header/
 vendor blobs). Earlier integrated qualification remains the baseline.
 
@@ -77,9 +79,9 @@ probe compile error (const observer accessor) is retained separately and is not
 counted as successful evidence. Only the new target disables optional NRVO and
 Debug iterator metadata consistently; actual heap instrumentation remains.
 
-## Remaining gates and known findings
+## Closure audit and known findings
 
-The working-tree campaign passes the full GCC serial build, CTest 27/27 with
+Exact-head and implementation-main campaigns pass the full GCC serial build, CTest 27/27 with
 zero skips and 74 Python controls, all eleven prior memory batteries (852
 outcomes) and the new 53-outcome battery. Read-only new-unit lint, explicit
 formatting, whitespace and architecture freshness pass: 137 production files,
@@ -88,8 +90,23 @@ six-header cycle unchanged. Twice-repeated Eistute/Book comparisons preserve all
 nine attempted accepted/rejected OBJ/incidence states, 189 CSV fields and
 1,168/4,256 last-accepted triangles exactly.
 
-Exact-head and post-merge main checks remain required before delivery.
-This candidate does not close stage 3.
+Full reports and raw command/case logs were hash-checked again before delivery.
+Compact candidate/head/main reports, complete case inventories/outcomes and raw
+SHA256 identities are retained in stage3/curve_sample_lifetime. The documentation
+closure preserves all 542 compiled/tool/test/build/input/contract identities;
+full instrument/numerical results remain tied to the unchanged implementation
+inputs, without claiming a fresh full campaign for documentation-only commits.
+
+| Audit scope | Result |
+| --- | --- |
+| Code and ownership | One serial published-sample owner; alias removal precedes deletion; allocation-free terminal release; inner graph guards unwind first |
+| Tests and instruments | Exact head/main CTest 27/27, zero skips, 74 Python controls, twelve batteries/905 expected outcomes, deliberate UAF/leak/hook controls |
+| Contracts | C07 and ADR-0018 specify geometry lifetime, collective exclusive sample ownership and independent physical mesh copies |
+| Documentation | Plan/state/worklog/quality, source inventory and raw-hash evidence describe the measured boundary and remaining failures |
+| Scientific scope | All nine accepted/rejected OBJ/incidence states, 189 CSV fields and last-accepted triangle counts remain exact; no formula/policy/tolerance/budget change |
+| Known failure/coverage inventory | InitialMesh temporary/pending ownership finding recorded below; unpublished allocations, whole-process/parallel/LSan/UBSan and logical rejection remain open |
+
+Stage 3 remains open; only this measured slice is qualified.
 
 Unpublished allocations, arbitrary constructor failures, other owners/custom
 destructors, whole-process/parallel/LSan/UBSan and full CLI exceptional execution

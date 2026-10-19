@@ -1,24 +1,25 @@
 # Local quality automation
 
-## Active serial sample lifetime boundary
+## Serial sample lifetime boundary (PR #56)
 
 Stage 3 slice 17 adds application.curve_sample_lifetime_contracts and
 tools/qualify_curve_sample_lifetime.py. The bounded ASan/Debug CRT runner requires
 53 outcomes, including actual heap denial, zero-allocation teardown on populated
 graphs, inner graph unwinding and deliberate UAF/leak/hook controls. The scoped
 owner supplies terminal resource cleanup, not metadata recovery. Full exact-head
-and post-merge qualification remain required before integration. See
+and implementation-main qualification pass; the whole stage remains open. See
 [scope and commands](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
 
 ## Purpose and current limits
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-16 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-17 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
-per-curve Generator sample-publication and complete sample-graph targets.
-The integrated CTest passes 26/26 with zero skips and 74 Python controls,
+per-curve Generator sample-publication, complete sample-graph and terminal
+sample-lifetime targets.
+The integrated CTest passes 27/27 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier

@@ -1,6 +1,6 @@
 # ADR-0018: explicit serial curve-sample lifetime
 
-Status: accepted design; delivery qualification pending.
+Status: accepted; exact published-head and implementation-main gates pass through PR #56.
 
 Curve lists observe collectively shared samples. Generator's late manual cleanup
 does not execute when generation/reporting throws, and its unordered_set can
