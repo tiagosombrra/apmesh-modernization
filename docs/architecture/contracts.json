@@ -174,8 +174,8 @@
     {
       "id": "C06",
       "topic": "Patch/submesh observers",
-      "statement": "Patch stores a non-owning current SubMesh pointer and SubMesh stores a non-owning Patch pointer. PatchCoons borrows Geometry-owned curves. Estimator construction delegates to BuildInitialEstimateSubMesh and returns one exclusive physical mesh owner; the raw InitialMeshEstimate compatibility wrapper releases that owner to its caller without a hidden MeshAdaptive. Only completed construction publishes the patch observer. Unpublished copied source nodes and pending triangles have local owners; the first successful curve insertion transfers a sample to the existing collective lifetime. Positive degrees use a nonfloating iteration ceiling while preserving the original floating endpoint test and repeated additions. Nonpositive degrees are rejected before patch access.",
-      "limits": "Replacing a submesh invalidates old observers; rollback must rebind every patch before the next adaptation. Qualification covers planar/bilinear degree 1/2/4 and four initialization masks with unchanged grid loops, UV evaluation order and historical center IDs. Caller wrappers still leak raw Mesh/SubMesh/Generator roots and do not implement scoped sample or patch-observer cleanup; their execution and full-process/parallel memory remain unqualified. Published sample prefixes and evaluator scratch are not rolled back on terminal failure. Rebind patch before destroying the returned mesh; nonpositive degree guards cover 0/-1/INT_MIN; arbitrary patches and extreme complete meshes are unqualified. Scalar sampling compatibility covers 520 positive degrees independently of full mesh validity.",
+      "statement": "Patch stores a non-owning current SubMesh pointer and SubMesh stores a non-owning Patch pointer. PatchCoons borrows Geometry-owned curves. Estimator construction delegates to BuildInitialEstimateSubMesh and returns one exclusive physical mesh owner; the raw InitialMeshEstimate compatibility wrapper releases that owner to its caller without a hidden MeshAdaptive. Only completed construction publishes the patch observer. Unpublished copied source nodes and pending triangles have local owners; the first successful curve insertion transfers a sample to the existing collective lifetime. Positive degrees use a nonfloating iteration ceiling while preserving the original floating endpoint test and repeated additions. Nonpositive degrees are rejected before patch access. CalculateNumbersTriangle delegates to CountEstimateTriangles. Its temporary SubMesh has one unique owner; a nonallocating scope restores the previous patch observer and deletes fresh samples published only into its four initially empty curve lists. Preexisting point and parameter list nodes, borrowed samples and their element observers survive. Shared corner/repeated-curve aliases are cleared before each owned sample is deleted once.",
+      "limits": "Replacing a submesh invalidates old observers; rollback must rebind every patch before the next adaptation. Qualification covers planar/bilinear degree 1/2/4 and four initialization masks with unchanged grid loops, UV evaluation order and historical center IDs. Area/error wrappers still leak raw Mesh/Generator roots and lack qualified scoped patch/sample cleanup; their execution and full-process/parallel memory remain unqualified. Published sample prefixes and evaluator scratch are not rolled back on terminal failure. Rebind patch before destroying the returned mesh; nonpositive degree guards cover 0/-1/INT_MIN; arbitrary patches and extreme complete meshes are unqualified. Scalar sampling compatibility covers 520 positive degrees independently of full mesh validity. Counting requires fixed topology, four live non-null curves and the actual factory publication semantics: initially nonempty lists are borrowed and unchanged; initially empty lists receive only fresh uniquely deletable samples. No concurrent access or arbitrary patch callback publication. Exact lifetime qualification covers plane/bilinear degree 1/2/4 with seven graph layouts and all observed allocation ordinals; repeated incidences and independent parameter-list fixtures are lifetime guards, not complete geometric validity. Evaluator scratch and CLI retry remain outside scope.",
       "evidence": [
         {
           "path": "include/data/patch/patch.h",
@@ -212,6 +212,18 @@
         {
           "path": "src/estimate/initial_mesh_estimate.cpp",
           "anchor": "throw std::invalid_argument(\"Estimator degree must be positive\");"
+        },
+        {
+          "path": "src/estimate/charge_estimate_process.cpp",
+          "anchor": "return apmesh::estimation::CountEstimateTriangles(patch, degree);"
+        },
+        {
+          "path": "src/estimate/triangle_count_estimate.cpp",
+          "anchor": "patch_.SetSubMesh(previous_mesh_);"
+        },
+        {
+          "path": "src/estimate/triangle_count_estimate.cpp",
+          "anchor": "owns_samples_[slot] = curves_[slot]->GetPoints().empty();"
         }
       ]
     },
