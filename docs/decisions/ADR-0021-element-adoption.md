@@ -1,6 +1,6 @@
 # ADR-0021: consume raw element ownership before storage allocation
 
-Status: accepted design; exact delivery qualification pending.
+Status: accepted; exact published-head and implementation-main gates pass through PR #62.
 
 SubMesh::SetElement promises adoption but previously constructed its unique_ptr
 inside vector emplacement, after a possible allocation failure. Actual pinned

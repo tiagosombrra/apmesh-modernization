@@ -1,6 +1,6 @@
 # Local quality automation
 
-## Active element adoption boundary
+## Element adoption boundary (PR #62)
 
 Stage 3 slice 20 adds application.element_adoption_contracts and
 tools/qualify_element_adoption.py. Separate actual-unit MSVC ASan/CRT builds
@@ -8,7 +8,7 @@ require 31 outcomes: raw/owning nonnull/null cases, eight complete positive
 allocation sweeps, four measured spare-storage paths and real UAF/leak/hook
 controls. Fixture owners unwind before terminal failure handling; no expired
 argument observer is consumed and no graph-reuse/rollback claim is made.
-Full delivery gates are pending. See [commands and limits](evidence/STAGE3_ELEMENT_ADOPTION.md).
+Full exact-head/main delivery gates pass; stage 3 stays open. See [commands and limits](evidence/STAGE3_ELEMENT_ADOPTION.md).
 
 ## Mesh adoption boundary (PR #60)
 
@@ -44,12 +44,12 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-19 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-20 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
-sample-lifetime, serial initial-construction and physical mesh adoption targets.
-The integrated CTest passes 29/29 with zero skips and 74 Python controls,
+sample-lifetime, serial initial-construction and physical mesh and terminal element adoption targets.
+The integrated CTest passes 30/30 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier

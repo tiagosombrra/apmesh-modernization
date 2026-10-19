@@ -3,12 +3,14 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Active item: stage 3 slice 20, raw SubMesh element adoption. Qualify ownership
-before storage allocation using actual production units, terminal teardown and
-unchanged full model traces. Constructor adjacency registration remains separate.
-See [scope and gates](evidence/STAGE3_ELEMENT_ADOPTION.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 20
+(PR #62) is qualified at head `dcf6941e944fcd3bf268e7f9a8ecef4f87735d75` and main
+`40106ede082614429639566c64ca3689a7d62c4b`. All exact-head/main gates pass; stage 3 remains open.
+Next isolate TriangleAdaptive construction/adjacency registration under allocation
+failure. Terminal element adoption does not qualify live-graph reuse or constructor
+failure before entry. See [scope and closure audit](evidence/STAGE3_ELEMENT_ADOPTION.md).
 
-Current status: stages 0-2 closed for measured scope; stage 3 slice 19
+Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 19
 (PR #60) is qualified at head `bebe4f5273719304fd00967bfaf7ae74de63f351` and main
 `e04a76a6103af5af5b116447c63c4de1ee047a0c`. All exact-head/main gates pass; stage 3 remains open.
 Next isolate SubMesh raw element adoption. MeshAdaptive insertion qualification

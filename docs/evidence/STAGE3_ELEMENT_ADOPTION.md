@@ -1,6 +1,8 @@
 # Stage 3 slice 20: SubMesh raw element adoption
 
-Status: candidate; exact-head and implementation-main qualification pending.
+Status: qualified and integrated through PR #62.
+Head `dcf6941e944fcd3bf268e7f9a8ecef4f87735d75`; implementation main `40106ede082614429639566c64ca3689a7d62c4b`.
+Complete tree `3f6f76298519082e93676da58a6750908b5dc387` (1753 blobs); 551 protected inputs.
 Entry main: `e3b6514d0dc9c8ce1b9c3544bbdb9771113957eb`.
 
 ## Cause and ownership repair
@@ -70,7 +72,8 @@ unwinding, with zero retained blocks/bytes in every valid candidate CRT case.
 Four nonallocating paths attempt zero allocations with denial armed.
 
 The original fails exactly two outcomes: raw nonnull growth in empty/populated
-meshes. Each retains one triangle block/160 bytes after terminal fixture teardown.
+meshes. Each retains one counted triangle block/160 bytes after terminal fixture teardown.
+The measured size includes the probe destructor counters.
 The other 29 outcomes are expected, including the already owning API. All sixteen
 complete normal observed sequences match; cleanup on raw insertion failure is
 the deliberate behavior change.
@@ -113,25 +116,35 @@ no source, diagnostics, budgets or acceptance requirements are relaxed.
 
 ## Delivery gates and closure audit
 
-Candidate full campaign passes GCC build, CTest 30/30 (zero skips, 74 Python
-controls), all fifteen batteries/999 expected outcomes, selected SubMesh-unit
-lint/format/inventory and twice-repeated exact Eistute/Book accepted/rejected
-comparisons. The new battery passes 31/31, eight complete growth denials and
-four measured spare-storage paths; valid CRT cases retain zero blocks/bytes.
-Exact published-head and post-merge main gates remain required before integration.
-The new required CTest is
-application.element_adoption_contracts; all fourteen prior batteries remain.
-Compact reports, outcomes, command/raw-log hashes, toolchain and frozen inputs
-are retained under stage3/element_adoption.
+Exact published-head and implementation-main full campaigns pass: GCC serial
+C++17 Release build, CTest 30/30 (zero skips, 74 Python controls), fifteen memory
+batteries/999 expected outcomes, selected SubMesh-unit lint, explicit formatting,
+architecture freshness and whitespace. The new actual-unit battery passes 31/31,
+all eight observed allocation denials and four measured spare-storage paths.
+All valid CRT cases retain zero blocks/bytes; sixteen complete original/repaired
+normal observations match. Original two leaks and the incomplete environment
+failure remain retained negative evidence.
 
-| Audit scope | Current result |
+Both full campaigns repeat Eistute/Book twice, preserving all nine attempted
+accepted/rejected OBJ/incidence states, 189 CSV fields and 1,168/4,256 last-accepted
+triangles exactly. Inventory: 139 production files, 65 units, 74 headers, 22
+contracts/125 anchors; the existing six-header cycle is unchanged.
+
+Compact candidate/head/main reports retain every command and case outcome/log
+SHA256. Documentation closure preserves all 551 compiled/tool/test/build/input/
+contract identities, retaining full instrument/numerical evidence against those
+inputs without claiming a fresh full campaign on documentation-only revisions.
+Exact documentation head/main build, CTest and complete Git/working-byte checks
+are required. Zero configured remote checks means absence of hosted gates.
+
+| Audit scope | Result |
 | --- | --- |
-| Code | Raw entry delegates through existing owning argument before allocation |
-| Tests | Actual-unit 31/31 outcomes; complete full/exact delivery pending |
-| Contracts | C04/C05 and ADR-0021 require exclusive arguments and terminal teardown, without graph reuse |
-| Documentation | Cause, original failures, constructor-observer limit and commands retained |
-| Scientific scope | No formula/order/policy change; full accepted/rejected regression required |
-| Known failures/coverage | Original two leaks retained; required unmeasured delivery gates block integration |
+| Code | One raw entry delegates through existing owning argument before allocation; node-copy semantics preserved |
+| Tests | 31 actual-unit outcomes, every measured growth ordinal, spare-storage and real negative controls; full exact-head/main gates pass |
+| Contracts | C04/C05 and ADR-0021 require exclusive elements/live nodes and terminal unwinding; no exceptional adjacency reuse |
+| Documentation | Root cause, original leaks, environment failure, commands/source identities and limits retained |
+| Scientific scope | No formula/order/policy change; exact full accepted/rejected model traces pass |
+| Known failures/coverage | Original two leaks retained; candidate gates pass; constructor observers and whole stage 3 remain open |
 
 Stage 3 remains open. Next isolate TriangleAdaptive construction/adjacency
 registration under allocation failure. Estimator hidden/duplicate ownership,
