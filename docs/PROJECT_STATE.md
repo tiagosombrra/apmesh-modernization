@@ -3,9 +3,14 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Current work (candidate; delivery gates pending): stage 3 slice 27
+## Latest qualified work: stage 3 slice 27
 
-Candidate full gates pass; exact published-head and post-merge main qualification remain required. Stage 3 retains twenty-six qualified slices until both pass.
+PR #76 integrates head `387cf4d94eebb06a3203727ae97bffdbb5e5f1eb` as main
+`c905baa3738db4059ecce4c4b896b8753de43daa`, preserving complete tree `57234a8ab46166169b792e98870d48904a7c7bdb`
+(1860 blobs). Full exact-head/main gates pass against the same 571
+protected inputs: CTest 37/37, zero skips, 74 Python controls, twenty-two memory
+batteries/1421 expected outcomes, 1040 retained scalar sequence comparisons,
+selected lint, explicit format/inventory and exact repeated Eistute/Book traces.
 
 The temporary error evaluator has one explicit owner; borrowed graph identity,
 270 original/repaired policy decisions, exact curvature observations and 48 new

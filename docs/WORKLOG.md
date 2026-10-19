@@ -3,7 +3,7 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Latest delivery: stage 3 slice 26 (PR #74); see the final ledger row.
+Latest delivery: stage 3 slice 27 (PR #76); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -41,3 +41,4 @@ Current status: stages 0-2 closed; stage 3 in progress with twenty-six qualified
 slices; stages 4-11 pending. Next repair estimator area/error roots and explicit
 patch/sample lifetime without changing numerical selection policy. General mesh/
 cache/foreign observer validity and full-process/parallel memory remain open.
+| 2026-10-19, stage 3 slice 27 | PR #76; head 387cf4d94eebb06a3203727ae97bffdbb5e5f1eb, main c905baa3738db4059ecce4c4b896b8753de43daa; evidence/STAGE3_ERROR_ESTIMATE.md | Temporary evaluator root/vector released; CTest 37/37, 1421 instrument outcomes, 156062 new allocation denials, 270 paired policy decisions, exact repeated article traces; original retention/tooling failures preserved; area orchestration next |

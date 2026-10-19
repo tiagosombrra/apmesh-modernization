@@ -1,5 +1,17 @@
 # Local quality automation
 
+## Temporary error evaluator (PR #76)
+
+Stage 3 slice 27 adds application.error_estimate_contracts and
+tools/qualify_error_estimate.py. Actual caller/class/dependency units plus exact
+constructor/serial ErrorGlobal extraction require 48 outcomes, fifteen complete
+allocation sweeps/156062 denials and 270 paired policy decisions with exact
+curvature-bit traces. All ordinal intervals retain the 30-second limit. Original
+30 CRT retention failures and preliminary compiler/lint/timeout findings remain
+recorded. Full exact-head/main gates pass for the bounded serial scope; area
+orchestration and full-process/parallel memory remain open. See
+[commands and limits](evidence/STAGE3_ERROR_ESTIMATE.md).
+
 ## Temporary triangle counting (PR #74)
 
 Stage 3 slice 26 adds application.triangle_count_contracts and
