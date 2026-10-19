@@ -3,7 +3,7 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Latest delivery: stage 3 slice 24 (PR #70); see the final ledger row.
+Latest delivery: stage 3 slice 25 (PR #72); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -34,8 +34,9 @@ Latest delivery: stage 3 slice 24 (PR #70); see the final ledger row.
 | 2026-10-19, stage 3 slice 22 | PR #66; head 88c285e5ac193e7c45fe688cec05867e5243dbdd, main 79bad64023ab1ddd54eda76930df47ff2986f765; evidence/STAGE3_SUBMESH_LIFETIME.md | Retire elements before node replacement; twelve ordering failures/derived observer UAF reproduced, SubMesh 28/28 with eight zero-allocation paths, CTest 32/32, sixteen prior batteries and exact model traces; triangle deregistration remains open |
 | 2026-10-19, stage 3 slice 23 | PR #68; head f29018fea3d3490358396381cea1dc7967aaf1ac, main 4dd41510180ac0fa10e9a3f083552fe1f3c13a2c; evidence/STAGE3_TRIANGLE_OBSERVER.md | Stable triangle address identity and first-match list-node transfer; 26 original failures, observer 35/35/eight zero-allocation paths, CTest 33/33, seventeen prior batteries and exact model traces; ordinary destruction/cache refresh remain open |
 | 2026-10-19, stage 3 slice 24 | PR #70; head 7d22766e562669db283bedbf09fab59663546d18, main 78bc1ff045bcabebc3ac5536e53a1a87182ad365; evidence/STAGE3_TRIANGLE_LIFETIME.md | Remove completed triangle observers while borrowed nodes live; original ASan UAF/31 cleanup failures, lifetime 36/36/eight zero-allocation paths/four adoption denials, stricter prior adoption oracle, CTest 34/34 and exact model traces; estimator roots/full-process memory remain open |
+| 2026-10-19, stage 3 slice 25 | PR #72; head 6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7, main fdf65970dfad6898c88438a1017fa4bd34239d27; evidence/STAGE3_ESTIMATE_MESH.md | One estimator construction owner; actual-unit 77/77 and 5128 denials, 1040 exact scalar sequences, nonpositive guards, repaired required floating-loop lint, CTest 35/35, 1214 instrument outcomes and exact model traces; caller roots/full-process memory remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with twenty-four qualified
-slices; stages 4-11 pending. Next isolate estimator hidden/duplicate mesh ownership.
-Foreign observer copies, protected mutation, cache refresh, logical rejection and
-whole-process/parallel memory remain open.
+Current status: stages 0-2 closed; stage 3 in progress with twenty-five qualified
+slices; stages 4-11 pending. Next repair estimator caller-owned roots and explicit
+patch/sample lifetime. Full non-power-of-two/extreme meshes, foreign observers,
+cache refresh, logical rejection and whole-process/parallel memory remain open.

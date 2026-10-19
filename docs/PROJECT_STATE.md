@@ -3,17 +3,28 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work: stage 3 slice 25
+## Latest qualified work: stage 3 slice 25
 
-Candidate estimator construction passes all measured gates: one explicit owner,
-pending-resource cleanup, positive-degree bounded induction and nonpositive guards.
-All 77 new outcomes/5128 denials and 1040 exact scalar sequence comparisons pass;
-CTest 35/35, twenty batteries/1214 outcomes and exact repeated model traces pass.
-The earlier four required lint errors are repaired without suppression. Full
-exact published-head and post-merge main gates remain required. Caller root and
-patch/sample lifetimes remain next; stage 3 stays open. See [audit](evidence/STAGE3_ESTIMATE_MESH.md).
+PR #72 integrates head `6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7` as main
+`fdf65970dfad6898c88438a1017fa4bd34239d27`, preserving complete tree `8c174ddb604eb0177ebf52253b814b368333c57e`
+(1825 blobs). Full exact-head/main gates pass against the same 563
+protected inputs: CTest 35/35, zero skips, 74 Python controls, twenty memory
+batteries/1214 expected outcomes, 1040 scalar sequence comparisons, selected lint,
+format/inventory and exact twice-repeated Eistute/Book accepted/rejected traces.
 
-## Latest qualified work: stage 3 slice 24
+Estimator construction returns one owner without an unreachable MeshAdaptive.
+Pending samples/triangles unwind under RAII; nonpositive degrees are rejected.
+Bounded integer induction retains exact floating additions/endpoints. All 77 new
+outcomes/5128 denials and 1040 scalar sequence comparisons pass. Original 48 CRT
+retention and two missing-zero-guard failures, preliminary failures and repaired
+four-error lint report are retained. Center IDs and scientific policies are unchanged.
+
+Stage 3 remains open with twenty-five qualified slices. Next repair estimator
+caller-owned roots with explicit patch/sample lifetime. Extreme/non-power-of-two
+complete meshes, foreign observers, cache refresh, logical rejection and full-
+process/parallel/LSan/UBSan remain open; stages 4-11 pending. See [closure audit](evidence/STAGE3_ESTIMATE_MESH.md).
+
+## Stage 3 slice 24 qualified
 
 PR #70 integrates head `7d22766e562669db283bedbf09fab59663546d18` as main
 `78bc1ff045bcabebc3ac5536e53a1a87182ad365`, preserving complete tree `fc0ea5c79c4a6a42a78ce70b8a1f199c6fc8c71c`

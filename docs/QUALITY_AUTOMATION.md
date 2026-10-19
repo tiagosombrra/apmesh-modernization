@@ -1,5 +1,17 @@
 # Local quality automation
 
+## Estimator construction (PR #72)
+
+Stage 3 slice 25 adds application.estimate_mesh_contracts and
+tools/qualify_estimate_mesh.py. Separate actual-helper ASan/CRT builds require
+77 outcomes, 24 complete allocation sweeps/5128 denials, 0/-1/INT_MIN guards
+and real memory/hook controls. A GCC scalar adapter extracts actual induction
+headers/guard prefix and requires 1040 bitwise-equal nonempty sequences at 520
+degrees, plus a rejected index/degree recomputation control. Caller root lifetime,
+complete non-power-of-two/extreme meshes and full-process memory remain outside
+scope. Earlier floating-loop lint errors are repaired without suppression;
+exact-head/main gates pass. See [commands and limits](evidence/STAGE3_ESTIMATE_MESH.md).
+
 ## Completed triangle lifetime (PR #70)
 
 Stage 3 slice 24 adds application.triangle_lifetime_contracts and
@@ -85,12 +97,12 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-24 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-25 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
-sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration and SubMesh owner-ordering and triangle identity/replacement/completed-lifetime targets.
-The integrated CTest passes 34/34 with zero skips and 74 Python controls,
+sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration and SubMesh owner-ordering and triangle identity/replacement/completed-lifetime and estimator-construction targets.
+The integrated CTest passes 35/35 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier

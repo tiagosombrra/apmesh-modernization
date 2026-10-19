@@ -3,10 +3,12 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current active item: stage 3 slice 25, estimator construction ownership and
-bounded parameter induction. Candidate gates pass; exact-head/main qualification
-and integration pending. Next repair caller roots and patch/sample lifetimes.
-See [scope and audit](evidence/STAGE3_ESTIMATE_MESH.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 25
+(PR #72) is qualified at head `6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7` and main
+`fdf65970dfad6898c88438a1017fa4bd34239d27`. All exact-head/main gates pass; stage 3 remains open.
+Next repair estimator caller-owned roots and patch/sample lifetime. Scalar
+sequence compatibility does not qualify complete extreme/non-power-of-two meshes.
+See [audit](evidence/STAGE3_ESTIMATE_MESH.md).
 
 Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 24
 (PR #70) is qualified at head `7d22766e562669db283bedbf09fab59663546d18` and main
