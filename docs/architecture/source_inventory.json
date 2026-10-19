@@ -7,9 +7,9 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 131,
-    "translation_units": 61,
-    "headers": 70,
+    "files": 133,
+    "translation_units": 62,
+    "headers": 71,
     "directory_components": {
       "adapter": 4,
       "cli": 1,
@@ -23,13 +23,13 @@
       "data/patch": 8,
       "data/tree": 2,
       "estimate": 2,
-      "generator": 8,
+      "generator": 10,
       "input_output": 11,
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 504,
-    "first_party_include_edges": 293
+    "literal_include_directives": 512,
+    "first_party_include_edges": 297
   },
   "cross_component_directives": [
     {
@@ -250,7 +250,7 @@
     {
       "from": "generator",
       "to": "data/curve",
-      "count": 7
+      "count": 9
     },
     {
       "from": "generator",
@@ -328,7 +328,7 @@
     "GL/gl.h": 1,
     "GL/glu.h": 1,
     "GL/glut.h": 1,
-    "algorithm": 9,
+    "algorithm": 10,
     "array": 4,
     "atomic": 3,
     "cctype": 1,
@@ -347,9 +347,9 @@
     "iomanip": 2,
     "iostream": 10,
     "limits": 5,
-    "list": 15,
+    "list": 16,
     "locale": 1,
-    "map": 7,
+    "map": 8,
     "memory": 19,
     "mpi.h": 2,
     "numeric": 1,
@@ -364,6 +364,7 @@
     "sys/time.h": 2,
     "system_error": 1,
     "tuple": 5,
+    "type_traits": 1,
     "typeinfo": 1,
     "unistd.h": 1,
     "unordered_map": 6,
@@ -384,11 +385,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "e36be36467132c040176a146019eadc58521aaf68f6e18e4a9611a849d174a95"
+      "sha256": "3ebc7e1b6c3fdea933ee6c9144fdc56033ed5d4fbc24b32f07d9f5fe255a483e"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "922cba9d70f0f3acd16bf22d9b9f2929f40ba661126f7cca3f293806b13b74e0"
+      "sha256": "8438c3e58743f35ac12a8e5aeecc16b3b8cc116c8fb84c7aaca86d1e6c586237"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -2186,6 +2187,50 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/timer/timer.h"
+        }
+      ]
+    },
+    {
+      "path": "include/generator/curve_publication.h",
+      "component_by_directory": "generator",
+      "kind": "header",
+      "sha256": "922eee4e35616b186a48c7586a6462e3c747dac1f3337f7b70f6f19bb36d5ae5",
+      "bytes": 2887,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "list",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "type_traits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "data/curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
+        },
+        {
+          "line": 9,
+          "spelling": "generator/curve_rebuild.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/curve_rebuild.h"
         }
       ]
     },
@@ -4129,6 +4174,36 @@
       ]
     },
     {
+      "path": "src/generator/curve_publication.cpp",
+      "component_by_directory": "generator",
+      "kind": "translation_unit",
+      "sha256": "dc35727e68d2303f57d710eae88b1962915393111fd08ae229aae93fdf8485ca",
+      "bytes": 2938,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "generator/curve_publication.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/curve_publication.h"
+        },
+        {
+          "line": 3,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "data/curve/curve_adaptive_parametric.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive_parametric.h"
+        }
+      ]
+    },
+    {
       "path": "src/generator/curve_rebuild.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
@@ -4320,8 +4395,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "3743b6c2f3f63a2266721120e52e9704022bec96ed07725a44211fa719dee8c9",
-      "bytes": 341359,
+      "sha256": "b99adcb3c8fbabe85e3d285da96623ee8acc027df0aa05383ffa6af6a254a9dc",
+      "bytes": 340656,
       "includes": [
         {
           "line": 1,
@@ -4374,10 +4449,10 @@
         },
         {
           "line": 9,
-          "spelling": "generator/curve_rebuild.h",
+          "spelling": "generator/curve_publication.h",
           "form": "quote",
           "scope": "first_party",
-          "target": "include/generator/curve_rebuild.h"
+          "target": "include/generator/curve_publication.h"
         },
         {
           "line": 10,
@@ -5108,7 +5183,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 110,
+    "source_anchors": 113,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

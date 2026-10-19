@@ -328,3 +328,22 @@ a new --output directory. Original: 14 pinned units plus the verified identical
 serial tail; candidate: 15 actual units. Previous eight batteries remain required.
 Retention-only cases do not establish preservation/retry. Upstream whole-adapter,
 Generator publication and full-process memory qualification remain open.
+
+## Generator per-curve publication (#50)
+
+Required application.curve_publication_contracts brings CTest to 25 entries with
+74 Python controls. Build curve_publication_probe from tests/curve_memory in
+separate ASan RelWithDebInfo and Debug CRT directories using
+AP_MESH_CURVE_SOURCE_ROOT and AP_MESH_CURVE_ASAN. The original additionally sets
+AP_MESH_PUBLICATION_HEADER to the retained verified publication-block adapter.
+Run tools/qualify_curve_publication.py with --asan, --crt, --runtime and a new
+--output directory. Require all 139 outcomes and 2403 denials across
+27 positive sweeps, including allocation-free rollback and post-rebuild final
+publication. Source/cache borrowing, exact entry point/parameter/cache nodes,
+consumed IDs, successful retry, analytic interiors and deliberate controls remain
+required. Optional NRVO and Debug iterator metadata are disabled consistently
+only for the new target; actual heap checks and nine prior batteries remain.
+Seventeen actual candidate units plus the actual template; original sixteen
+pinned units plus a verified block adapter with parameter-controlled callbacks.
+This is not full old Generator/Adapter or full-process memory instrumentation.
+See evidence/STAGE3_CURVE_PUBLICATION_HANDOFF.md and ADR-0016.

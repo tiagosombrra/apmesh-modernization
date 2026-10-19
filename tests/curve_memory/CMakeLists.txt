@@ -117,3 +117,36 @@ else()
     target_link_options(curve_samples_probe PRIVATE -static -static-libgcc -static-libstdc++)
   endif()
 endif()
+
+set(AP_MESH_PUBLICATION_IMPLEMENTATION "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_publication.cpp" CACHE FILEPATH "Curve publication transaction implementation")
+set(AP_MESH_PUBLICATION_HEADER "" CACHE FILEPATH "Original publication block adapter")
+add_executable(curve_publication_probe publication_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/node_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/element_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/triangle_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/id_manager.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/ranged_id_manager.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/adapter/curve_samples.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_rebuild.cpp")
+if(AP_MESH_PUBLICATION_HEADER)
+  target_compile_definitions(curve_publication_probe PRIVATE AP_MESH_PUBLICATION_HEADER="${AP_MESH_PUBLICATION_HEADER}")
+else()
+  target_sources(curve_publication_probe PRIVATE "${AP_MESH_PUBLICATION_IMPLEMENTATION}")
+endif()
+target_compile_features(curve_publication_probe PRIVATE cxx_std_17)
+target_include_directories(curve_publication_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include" "${default_curve_root}/include")
+if(MSVC)
+  target_compile_options(curve_publication_probe PRIVATE /utf-8 /W4 /EHsc /permissive- /Zc:nrvo-)
+  target_compile_definitions(curve_publication_probe PRIVATE $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(curve_publication_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(curve_publication_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+else()
+  target_compile_options(curve_publication_probe PRIVATE -fno-elide-constructors)
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(curve_publication_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endif()

@@ -1,0 +1,1368 @@
+[
+  {
+    "report": "build/s15-preliminary-publication/report.json",
+    "sha256": "6a2935e8895ea2d443240084e7e8075127d7773f1443b33df7874e3ff13c28a0",
+    "note": "Six of 139 outcomes fail a fixture assertion that incorrectly demanded consumed IDs in the fully cached/two-endpoint first pass. The actual zero-request policy is preserved.",
+    "raw_logs": [
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-0.log",
+        "sha256": "39076aeeb7d4e1ad0b1f79f8751ac77efb86ee151db97ff6f159c490bab08e5e"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-1.log",
+        "sha256": "a64001b27996090d4ffbaa9abb5a4591e06cd70926b5375ef6512ec62dc40666"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-2.log",
+        "sha256": "c2733e9ce186ebe522f6810b49d207978905144655ae920966fffaf1f5d24e73"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-3.log",
+        "sha256": "985555cb768e897c4b638ab911352711bf791da4241d8c3250f9ff5f029bc5de"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-4.log",
+        "sha256": "a3a31213c0cc235fa0179fc596393e88a9600bb4e69f523364dc69697d94b8b9"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-5.log",
+        "sha256": "98d5db6eab50744055a232f200f9c1c31f87c20a552577ec3ab23942df09b577"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-6.log",
+        "sha256": "d000e3424847746c8f22a20aa76f7580c4d268da12cc615eddae0d7f12ae96b7"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-7.log",
+        "sha256": "8e766c5a89b34b3fb1825bd5e4ce633c45a47a28f1fcd3cf2f6e41003c974501"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-0-8.log",
+        "sha256": "c3744020b36661451f194157a9dcdfb1ad728b2cc8bf66beb46b8b039bc770f9"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-0.log",
+        "sha256": "4d02aba87b95ba5803e1dd5f54fa798968c5e63057bd1b60d8b483b33f0268e6"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-1.log",
+        "sha256": "5649a26327990ebb2f436a5e0850fc09761482dc429657520a632c0bcd3d2bcd"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-2.log",
+        "sha256": "b1eaa265c778e13e99c4c072a750a41072b6b6209cfbd541a12c7a378d291fcc"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-3.log",
+        "sha256": "24e302b53d6d8aac345ab9d3ee855446a1f0816fb436517023ae8e3710e94be9"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-4.log",
+        "sha256": "24bcb6759f5f64b1d16bbe278eee98eccfb6aebed380a60ad82c77f8ae871103"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-5.log",
+        "sha256": "f02eaa91fba51bbe379cb4729da9cbd952aad339c2d72068f5254e4f82163ea0"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-6.log",
+        "sha256": "553f1084eefae79e4c90b121080c1e561d4af3fd76727443899cb383ac79cfd8"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-7.log",
+        "sha256": "8e766c5a89b34b3fb1825bd5e4ce633c45a47a28f1fcd3cf2f6e41003c974501"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-1-8.log",
+        "sha256": "e25750ee72b1aaa1da4f212b01cd797fb7fb2772a2c1d529c82bdce304deb859"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-0.log",
+        "sha256": "7b617d27f8f816fbb467f87b39e1694a2edb286f57d9c76adb6e953d25d1628c"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-1.log",
+        "sha256": "c6e03cb0ee1a6286f41139e272411f554967d63f422182722fb960e4221ec685"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-2.log",
+        "sha256": "b34e053a2d6d00131e9790693b298d773bf93148bf833f7f93112f173c1fcf17"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-3.log",
+        "sha256": "703884e5983847d9c55967b86c78ff0c3ff69b91248f96bcd0b1bbcf9d706115"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-4.log",
+        "sha256": "20a98c69325f806af32b5d2bd2654a15618fa89bb61a62a0f12789ebecfccd88"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-5.log",
+        "sha256": "ce1ceef8b6d287922ed3b69cc2237b6031eee38e4ac46eadbff135b024b3b99d"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-6.log",
+        "sha256": "0d311e6ca10ddedae51f940508b6a93831ab5bc13cd63607167e856595cfdc6d"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-7.log",
+        "sha256": "8e766c5a89b34b3fb1825bd5e4ce633c45a47a28f1fcd3cf2f6e41003c974501"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-abort-2-8.log",
+        "sha256": "5562264c3ef768ec0d63bcfcd0c38cb42d29b50651f48a6cb2d23e1a3b08a004"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-0.log",
+        "sha256": "da3c4b344e976b7f8b18fdb37fa106bfcc3344e17570b08039692aef750041fd"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-1.log",
+        "sha256": "17c9146a7f8606af64f538657fd01dc4bedf0df1e71b8c011d9c43ecc0c18119"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-2.log",
+        "sha256": "170bfdeb80e6de960219165505df775154315f5bd24faed3000fff8cd4e08d56"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-3.log",
+        "sha256": "6fd0edbd195ce7dbb28baba655a6fe9e3b306f273781ccc553751336a45f1c1f"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-4.log",
+        "sha256": "8baf81a8b200af34fad0c785a2b8a5ad5d2016e315c5947140db1214c626628b"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-5.log",
+        "sha256": "a58a13b47f6027542b915a55e2172e607a372e61dcefaf5295b7541ec8aac135"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-6.log",
+        "sha256": "b7bd21897f8caa2605611939a8c945a7f267efddd9a4cee13c5bd3b0a87342f9"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-7.log",
+        "sha256": "cba321fd9c74999dc1e4a693778acc93945746a5100e05539f13064ef6c4c757"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-0-8.log",
+        "sha256": "424e0224f47c4d574b03c6955b79066e9425c721b78a53038e7c0141b1f7c0ca"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-0.log",
+        "sha256": "925137d30550becb803e59690994942797680fefd13524c29ad17d9b212d7686"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-1.log",
+        "sha256": "3c2919447a989c8491f6ffd4e4c5edbc54cfb5cde03df3138ad7bf6be95c756c"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-2.log",
+        "sha256": "1950528198d7c158d8750bb84225f6322e45d3123947e64d9dcc083ea2b50e8a"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-3.log",
+        "sha256": "67278e13a5c42a468363028a239e8a183cfb5e9773a464fdaabaa9fa4d05c0c6"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-4.log",
+        "sha256": "5da4979029211a4bc4bb16c399cb0022d53bd6f30fe94bc97e33a679c6286c7b"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-5.log",
+        "sha256": "a969cfab05ecedb3c1fdde54be6924e9e877e23a391c3fa8eb0c2219c72bb24c"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-6.log",
+        "sha256": "8fae18406440a94b6bfe231ffd2582d673321037dc5d868455ce0a07aeec4446"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-7.log",
+        "sha256": "bd0c9292f6f5fc9debd25c97c3e102cac6969999dc6dea1d37b41cbad4074b78"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-1-8.log",
+        "sha256": "daa21111cd0812695e229a974dd72c6df0d0d3d1a2a9289a73e5f43deba16759"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-0.log",
+        "sha256": "52ae9ab2e364c8b2553e3851a5cf26405f98dcf2e68225c5efd5c97793e3b06c"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-1.log",
+        "sha256": "9e9ada59119159a989dba3cf003395feebf7e678aed983c5cb500760eed87ae2"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-2.log",
+        "sha256": "6eec30470d9ea6da08e68839747bd2d1f2a3b44ab9b30d7d08103f6b3b16b354"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-3.log",
+        "sha256": "c27c94d9e6b2cbed5912f7a87faf73b5545590e7dcde93c504d0c33357b375ac"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-4.log",
+        "sha256": "b71b9d236db4a0c49f9dccd77269282b70d3039512dd1b16de5bb25da9e1b07c"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-5.log",
+        "sha256": "f903166b1234a9eb7d09442156e8b4068fb095f5967e170fb0abef048a9cd55d"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-6.log",
+        "sha256": "19573bb4ebbc7812f9265dfcca9e15e5ea52d337824b637b80580d000ea8a427"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-7.log",
+        "sha256": "8cc6fddc8dac84e81264e7061a0fbd5955f64d232e51d3f880461b28c571b4f4"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-normal-2-8.log",
+        "sha256": "c12e9729a1d59f1c1f0bde7412ec69b6565c00faaeec47c42dc72d1ca757ab24"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/asan-use-after-free.log",
+        "sha256": "b76c5399af4737f81badd65f0eb454bf817f03b4fa56425bb742979908459db6"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-0.log",
+        "sha256": "51d1dbb820b6d0177cdff18118ba1f72ec610bcb03442c831d6448200df85898"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-1.log",
+        "sha256": "fe4272f268a6dddac35918a9a8981ceaf61406d8a5a10ef51c630b8548ae76ae"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-2.log",
+        "sha256": "6a4cca0f5c9fa494bd1181ed6022bf374974fafb855c2ed9e06a0b3ddb8679aa"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-3.log",
+        "sha256": "5943d3d1813e5743d2c9dfa7dfce8b29b3c19adda30a605d4836eacfea393c8e"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-4.log",
+        "sha256": "c52ef640fcf9eda437dec2f39618d0891295b3239c98e39da3118072a9147b52"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-5.log",
+        "sha256": "b94bd1fb4e002e2b3daba1a2bd5f04be4587d1fdb98e00126adc5147357e728a"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-6.log",
+        "sha256": "426685e78b0f2ef2ca4a6a3c9786ef5f22dea7660e77fde48e5b353aaa0a1e14"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-7.log",
+        "sha256": "8e766c5a89b34b3fb1825bd5e4ce633c45a47a28f1fcd3cf2f6e41003c974501"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-0-8.log",
+        "sha256": "9bcddd9794bca25c63a21402c5a6706defa1cd8a26ffacb101ddac6f9bde05c0"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-0.log",
+        "sha256": "50ce6998e4d957075e5e543d0a841b89a6ce1effcba855d6bd04d26d1c232ceb"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-1.log",
+        "sha256": "d271e94a0e93bd37c6b3a87901575c5fc6d566713409ece7b4b11fd38560f366"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-2.log",
+        "sha256": "8d755754f481d4ece782f61ef54655eea09e7b1ca2c9628ee93d509124fdab12"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-3.log",
+        "sha256": "f5ca3e34b22c7efe049b066f9549cefccbb9c2013d612c41e873e9deb7336db9"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-4.log",
+        "sha256": "46ec53deb8192df3ee675f4f1380c0f070c5fc620816c49494679292d8864892"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-5.log",
+        "sha256": "f994f974a21c31a6326d52bb970f0bfd02a18e04d63688d05066df300278f384"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-6.log",
+        "sha256": "4814e1014976c70acc190f65a0c7f788e8215fb7645c45106b07bced93e0a587"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-7.log",
+        "sha256": "8e766c5a89b34b3fb1825bd5e4ce633c45a47a28f1fcd3cf2f6e41003c974501"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-1-8.log",
+        "sha256": "15996b660e01774e112961e4e4418d5e3d792f62b27fa0b5630c82b7b4123e8b"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-0.log",
+        "sha256": "a859d5054b4d82ad4f1646afbc3defaa9c3cf5ad4edf964b095d7a45216f7140"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-1.log",
+        "sha256": "951773824d60968bb97371ca6163bc148b15e03cf89ee1dff6fdbcaa0bb0c3ed"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-2.log",
+        "sha256": "cc977b944559b7b8340a621d04b0d766066ba3af9c9cdf90c561487bdccad940"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-3.log",
+        "sha256": "f79e16575c07caeed42a2f4a78b6543cebde61c93bc039e49a32fcbce9c7a10d"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-4.log",
+        "sha256": "6bb995101ce9489821559254c0afa73971ee31ca05abe3308d46eac23029e9ca"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-5.log",
+        "sha256": "e611d0c0887f00f71effd05dd6865c0839ba5d1dc324fabf1ea5f15edf25e5f5"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-6.log",
+        "sha256": "b256211bd3ce9a93bb4d835728debca5e4c9275cfaf1c028b676dac1a8b9cad0"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-7.log",
+        "sha256": "8e766c5a89b34b3fb1825bd5e4ce633c45a47a28f1fcd3cf2f6e41003c974501"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-abort-2-8.log",
+        "sha256": "fa44352ba8b3cfe18382bfeddcba3ed45ad1df0183e61e3fd4fe615a14c436f4"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-allocation-hook-control.log",
+        "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-0.log",
+        "sha256": "61debae2c1db05bf271fbf9932a352fdc172e3e2c6ecb9c0e9cbdf2997a7100e"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-1.log",
+        "sha256": "1f7caad9d0a56fb99b8eaab627c9579e1001c0a8e37dc314ea011e095ce30195"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-2.log",
+        "sha256": "47ff18597a703a92bee6159499ba81da89499dbf1c4e457c8deba63374c305e6"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-3.log",
+        "sha256": "bacd03b81b95bb947e6df1c214e3a4de7232b80b905ee329525c6464e68f8eb1"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-4.log",
+        "sha256": "a97cbe56fe9c1b3c2f1293b599e13a95399fb70dc3cce3ec11de88f82467262f"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-5.log",
+        "sha256": "f55bf64bfca030c8221bb952b1994a524e1bcdc18c58696e74d20882145221ab"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-6.log",
+        "sha256": "dac7a1eb1d57fe37311f9e4afb664cba1f62915292795614391e67858aad4319"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-7.log",
+        "sha256": "5404295e1231ed2a84201b59d628432f9f199418b3765b4f1a711e39624b3ab6"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-0-8.log",
+        "sha256": "b6ccecc547e0a30bc7e98a1dd71137f4080067fcdb0a8e40d3d7a4fabf2d3f90"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-0.log",
+        "sha256": "9ce467ea57b9da8d5d07d8ed5a7d2fc6b6a1d0b3001b4700f30933a8d11c6ad8"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-1.log",
+        "sha256": "b61e5839f7bdae45cf11413b317947eac5daed61926ed497e2cc42a317898007"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-2.log",
+        "sha256": "778fe2b526a678a4644dd76e74e8b3111cbb4ca157fa2b590760f07c365e42b6"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-3.log",
+        "sha256": "d270846a036260cef3fe2a0398b2a856bef523431a3ddb1b8a71284896092678"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-4.log",
+        "sha256": "6f4e507c7eed397f9a2c2b96eefa0936b8db4ecf5737d990134d911953cab846"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-5.log",
+        "sha256": "6fd0c41f83022929058757d05ec9208bbe138a52fc7869d456fab8270f32bbd6"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-6.log",
+        "sha256": "d8563514c504405d4a6bbd7c753e4dc4c71941470125d1c3676dca8f942bb37d"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-7.log",
+        "sha256": "1573ba80247f306f20ce0ddbb5ba7625959ce96dff6ecbb1a509b026839a8108"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-1-8.log",
+        "sha256": "20d040e44a653bf26d3295643362e8d6c686b09fecc042871a4bee0d33fa9e44"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-0.log",
+        "sha256": "1d862a741dd8629ef36370bbd37e66abd565df5e2e49a0f157f56beeb26033aa"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-1.log",
+        "sha256": "86b5be4a207394aef443eaf193328a8df7f68859d0f1f3845d355fcfa1bb22ef"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-2.log",
+        "sha256": "3897d855c92c84be63c10ab4377b25ad6ab7e1b1d9642eac534710d7e4880aa0"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-3.log",
+        "sha256": "08ce9d37903938d648125e94cd1ac181198008fe88b4f77813f684f21605a21d"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-4.log",
+        "sha256": "24b90ffcc21f3d15ec51fea6be015c647ffdfe216e4f003a85018a4f8b8e4619"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-5.log",
+        "sha256": "1bc3f2f9ed213b4eaaba7cc161474e1be0362f604e31b5607f4c93c698d37ee5"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-6.log",
+        "sha256": "99fef3f42dfcd8234006cf06ca9df0e8135ab74d4b3ad4a67083e765146abd58"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-7.log",
+        "sha256": "9b960a6c01d47d5563fea55da891a20d54da7ab25521bbfd0b57f4f915e89a8b"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-failure-2-8.log",
+        "sha256": "09f29f0746f13e8de25578a6686b992b590eb90a685b7704ac3515f02491c2fa"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-leak.log",
+        "sha256": "b662678d3649ce583c4096c942088ad519ab21ef5159cec1685f722dbe61ff42"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-0.log",
+        "sha256": "31984620d43828697a091b8aea92f4873b8d9736fde99349620e3bec2d1dbec8"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-1.log",
+        "sha256": "a33b0b3c798a9b84835f80eb95538199c3f20a0a08d6127eaf040da9de669f82"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-2.log",
+        "sha256": "e62cd9da0742a14b1ac673a420bd1faf4b01209e870b574ae7050ace788be6a3"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-3.log",
+        "sha256": "d48c7efd0fac7f6b20d9a7a870386ecb2d4a849bc4b93a1d69075efa8c79f94c"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-4.log",
+        "sha256": "a9c0c86fb1e1b5d9b4ddca027184dcce377c4f92d51995cf836a90d5b1bdee1a"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-5.log",
+        "sha256": "47c77a1fdc27524b56fa662115d31587345be6c4ab37018bb6c8142638c430e4"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-6.log",
+        "sha256": "52f7d4a71ebe28433d310806abfd4a41b261440b4c6db4a29e39b0ef816e0877"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-7.log",
+        "sha256": "082e9ebe4b35b4cb3a4348f132312400a05c1815b17517dedd86fafbdabdc604"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-0-8.log",
+        "sha256": "66c550247add7dc25500e18f822390836900d1fb7bcf4a3533df0d828cba6465"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-0.log",
+        "sha256": "4ff77badb5fc289a52548b8f24c5857d1b35636a627d9a824f2414fd4476fbcb"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-1.log",
+        "sha256": "fccddc4c934f149777df1c55e8326131cebad2fb29284f318703378a246db008"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-2.log",
+        "sha256": "91e821438dc14d70c1da4da6d428c60764b1a8013617539b3cdbdd08adba66ac"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-3.log",
+        "sha256": "faddffbe0050a44b933492d4ceef3259fe959085013ebe8d3d8f22a15ac47cfd"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-4.log",
+        "sha256": "36cdcd7491eb767fcfd576038f485386a8dbbae299964b8d24acc322730cbfcb"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-5.log",
+        "sha256": "f2d9541fcf8eea631c1d4fc795915333987b4348998f9e62e1dbfab2c0225625"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-6.log",
+        "sha256": "c9019a6ff8e327c290051711650a90a96ce7442748682a6e8c54c83ceacecce0"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-7.log",
+        "sha256": "618a58a5cb63dcccd017987e489a1b66e34e8784e98b05ba1e41a48dcc996d1a"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-1-8.log",
+        "sha256": "d8eb3a713fdff31bdb1bc90deecabdb4adc192a3f55603830411c4344f72b40f"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-0.log",
+        "sha256": "6261e17ec38263360dd33c1a24232ecb89e086041fc1d2976c3ac01fe4fb6989"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-1.log",
+        "sha256": "6606d711fc4d3cd091395958f47f570089c82d203a997da2fc99f94c90432e05"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-2.log",
+        "sha256": "890012c0dc64de1e32fe4372a98593376f6226bca7f14bc8996c238b17d0874d"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-3.log",
+        "sha256": "9b39566f5ca8547414026d18ea3132677db210712a5e8cf0d34d29ea84fc3713"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-4.log",
+        "sha256": "78352ee7f2fbd5340aa6d3e3566399bce65e900ee22670d1351794de17cea6a3"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-5.log",
+        "sha256": "21aadcfa9919205234e5c79dfbb969633cf08d04b4eccc8ce0670bedc080b7ac"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-6.log",
+        "sha256": "83da53bb86d98d6d259a78315045e3a68dec747a7858ea2f008c7af2eaade77b"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-7.log",
+        "sha256": "851c9d54f6f06ca4f204af05363fa73fa3170116490ce9b138ecf8bc6acd7de2"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-normal-2-8.log",
+        "sha256": "91a717da15972199c84cfb7f0283f2adbabb36d3f002d5575e35c3883ed6f0de"
+      },
+      {
+        "local_path": "build/s15-preliminary-publication/crt-return-move-control.log",
+        "sha256": "6bfb1573b63416e9c2c2cc9708cf4bb4aa71856f9ccda995c0cbf1bba43102bd"
+      }
+    ]
+  },
+  {
+    "report": "build/s15-preliminary-zero-id-publication/report.json",
+    "sha256": "1f45e1ad7ad0d096d4fca26e81d2e59d76170f7fa627c66a80218ac1b9494290",
+    "note": "All 139 outcomes pass; final fixture additionally asserts no allocations during rollback after each denial.",
+    "raw_logs": [
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-0.log",
+        "sha256": "39076aeeb7d4e1ad0b1f79f8751ac77efb86ee151db97ff6f159c490bab08e5e"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-1.log",
+        "sha256": "a64001b27996090d4ffbaa9abb5a4591e06cd70926b5375ef6512ec62dc40666"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-2.log",
+        "sha256": "c2733e9ce186ebe522f6810b49d207978905144655ae920966fffaf1f5d24e73"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-3.log",
+        "sha256": "985555cb768e897c4b638ab911352711bf791da4241d8c3250f9ff5f029bc5de"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-4.log",
+        "sha256": "a3a31213c0cc235fa0179fc596393e88a9600bb4e69f523364dc69697d94b8b9"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-5.log",
+        "sha256": "98d5db6eab50744055a232f200f9c1c31f87c20a552577ec3ab23942df09b577"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-6.log",
+        "sha256": "d000e3424847746c8f22a20aa76f7580c4d268da12cc615eddae0d7f12ae96b7"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-7.log",
+        "sha256": "e0cd2ecc3ded3ed84bd195cba190fa7848ae0cc0012eba886d4848f29ba62cc1"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-0-8.log",
+        "sha256": "c3744020b36661451f194157a9dcdfb1ad728b2cc8bf66beb46b8b039bc770f9"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-0.log",
+        "sha256": "4d02aba87b95ba5803e1dd5f54fa798968c5e63057bd1b60d8b483b33f0268e6"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-1.log",
+        "sha256": "5649a26327990ebb2f436a5e0850fc09761482dc429657520a632c0bcd3d2bcd"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-2.log",
+        "sha256": "b1eaa265c778e13e99c4c072a750a41072b6b6209cfbd541a12c7a378d291fcc"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-3.log",
+        "sha256": "24e302b53d6d8aac345ab9d3ee855446a1f0816fb436517023ae8e3710e94be9"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-4.log",
+        "sha256": "24bcb6759f5f64b1d16bbe278eee98eccfb6aebed380a60ad82c77f8ae871103"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-5.log",
+        "sha256": "f02eaa91fba51bbe379cb4729da9cbd952aad339c2d72068f5254e4f82163ea0"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-6.log",
+        "sha256": "553f1084eefae79e4c90b121080c1e561d4af3fd76727443899cb383ac79cfd8"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-7.log",
+        "sha256": "b0e06695697056d9646e76f8553a1795f134e66a1ab8383a61d6b3fdeea67e44"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-1-8.log",
+        "sha256": "e25750ee72b1aaa1da4f212b01cd797fb7fb2772a2c1d529c82bdce304deb859"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-0.log",
+        "sha256": "7b617d27f8f816fbb467f87b39e1694a2edb286f57d9c76adb6e953d25d1628c"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-1.log",
+        "sha256": "c6e03cb0ee1a6286f41139e272411f554967d63f422182722fb960e4221ec685"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-2.log",
+        "sha256": "b34e053a2d6d00131e9790693b298d773bf93148bf833f7f93112f173c1fcf17"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-3.log",
+        "sha256": "703884e5983847d9c55967b86c78ff0c3ff69b91248f96bcd0b1bbcf9d706115"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-4.log",
+        "sha256": "20a98c69325f806af32b5d2bd2654a15618fa89bb61a62a0f12789ebecfccd88"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-5.log",
+        "sha256": "ce1ceef8b6d287922ed3b69cc2237b6031eee38e4ac46eadbff135b024b3b99d"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-6.log",
+        "sha256": "0d311e6ca10ddedae51f940508b6a93831ab5bc13cd63607167e856595cfdc6d"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-7.log",
+        "sha256": "b11051eb9aaf759a8b271e0707724c02c56f1e13f9b0321267a00755acbe8d7c"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-abort-2-8.log",
+        "sha256": "5562264c3ef768ec0d63bcfcd0c38cb42d29b50651f48a6cb2d23e1a3b08a004"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-0.log",
+        "sha256": "da3c4b344e976b7f8b18fdb37fa106bfcc3344e17570b08039692aef750041fd"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-1.log",
+        "sha256": "17c9146a7f8606af64f538657fd01dc4bedf0df1e71b8c011d9c43ecc0c18119"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-2.log",
+        "sha256": "170bfdeb80e6de960219165505df775154315f5bd24faed3000fff8cd4e08d56"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-3.log",
+        "sha256": "6fd0edbd195ce7dbb28baba655a6fe9e3b306f273781ccc553751336a45f1c1f"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-4.log",
+        "sha256": "8baf81a8b200af34fad0c785a2b8a5ad5d2016e315c5947140db1214c626628b"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-5.log",
+        "sha256": "a58a13b47f6027542b915a55e2172e607a372e61dcefaf5295b7541ec8aac135"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-6.log",
+        "sha256": "b7bd21897f8caa2605611939a8c945a7f267efddd9a4cee13c5bd3b0a87342f9"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-7.log",
+        "sha256": "cba321fd9c74999dc1e4a693778acc93945746a5100e05539f13064ef6c4c757"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-0-8.log",
+        "sha256": "424e0224f47c4d574b03c6955b79066e9425c721b78a53038e7c0141b1f7c0ca"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-0.log",
+        "sha256": "925137d30550becb803e59690994942797680fefd13524c29ad17d9b212d7686"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-1.log",
+        "sha256": "3c2919447a989c8491f6ffd4e4c5edbc54cfb5cde03df3138ad7bf6be95c756c"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-2.log",
+        "sha256": "1950528198d7c158d8750bb84225f6322e45d3123947e64d9dcc083ea2b50e8a"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-3.log",
+        "sha256": "67278e13a5c42a468363028a239e8a183cfb5e9773a464fdaabaa9fa4d05c0c6"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-4.log",
+        "sha256": "5da4979029211a4bc4bb16c399cb0022d53bd6f30fe94bc97e33a679c6286c7b"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-5.log",
+        "sha256": "a969cfab05ecedb3c1fdde54be6924e9e877e23a391c3fa8eb0c2219c72bb24c"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-6.log",
+        "sha256": "8fae18406440a94b6bfe231ffd2582d673321037dc5d868455ce0a07aeec4446"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-7.log",
+        "sha256": "bd0c9292f6f5fc9debd25c97c3e102cac6969999dc6dea1d37b41cbad4074b78"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-1-8.log",
+        "sha256": "daa21111cd0812695e229a974dd72c6df0d0d3d1a2a9289a73e5f43deba16759"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-0.log",
+        "sha256": "52ae9ab2e364c8b2553e3851a5cf26405f98dcf2e68225c5efd5c97793e3b06c"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-1.log",
+        "sha256": "9e9ada59119159a989dba3cf003395feebf7e678aed983c5cb500760eed87ae2"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-2.log",
+        "sha256": "6eec30470d9ea6da08e68839747bd2d1f2a3b44ab9b30d7d08103f6b3b16b354"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-3.log",
+        "sha256": "c27c94d9e6b2cbed5912f7a87faf73b5545590e7dcde93c504d0c33357b375ac"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-4.log",
+        "sha256": "b71b9d236db4a0c49f9dccd77269282b70d3039512dd1b16de5bb25da9e1b07c"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-5.log",
+        "sha256": "f903166b1234a9eb7d09442156e8b4068fb095f5967e170fb0abef048a9cd55d"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-6.log",
+        "sha256": "19573bb4ebbc7812f9265dfcca9e15e5ea52d337824b637b80580d000ea8a427"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-7.log",
+        "sha256": "8cc6fddc8dac84e81264e7061a0fbd5955f64d232e51d3f880461b28c571b4f4"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-normal-2-8.log",
+        "sha256": "c12e9729a1d59f1c1f0bde7412ec69b6565c00faaeec47c42dc72d1ca757ab24"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/asan-use-after-free.log",
+        "sha256": "29760e64fbcef4c1b096481cf379bc86c8928c968faaffc1f3be214f872604be"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-0.log",
+        "sha256": "51d1dbb820b6d0177cdff18118ba1f72ec610bcb03442c831d6448200df85898"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-1.log",
+        "sha256": "fe4272f268a6dddac35918a9a8981ceaf61406d8a5a10ef51c630b8548ae76ae"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-2.log",
+        "sha256": "6a4cca0f5c9fa494bd1181ed6022bf374974fafb855c2ed9e06a0b3ddb8679aa"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-3.log",
+        "sha256": "5943d3d1813e5743d2c9dfa7dfce8b29b3c19adda30a605d4836eacfea393c8e"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-4.log",
+        "sha256": "c52ef640fcf9eda437dec2f39618d0891295b3239c98e39da3118072a9147b52"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-5.log",
+        "sha256": "b94bd1fb4e002e2b3daba1a2bd5f04be4587d1fdb98e00126adc5147357e728a"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-6.log",
+        "sha256": "426685e78b0f2ef2ca4a6a3c9786ef5f22dea7660e77fde48e5b353aaa0a1e14"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-7.log",
+        "sha256": "bfbe7107bb54dee489d255355692451a25677412d0dec30018bcf3af8f742497"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-0-8.log",
+        "sha256": "9bcddd9794bca25c63a21402c5a6706defa1cd8a26ffacb101ddac6f9bde05c0"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-0.log",
+        "sha256": "50ce6998e4d957075e5e543d0a841b89a6ce1effcba855d6bd04d26d1c232ceb"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-1.log",
+        "sha256": "d271e94a0e93bd37c6b3a87901575c5fc6d566713409ece7b4b11fd38560f366"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-2.log",
+        "sha256": "8d755754f481d4ece782f61ef54655eea09e7b1ca2c9628ee93d509124fdab12"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-3.log",
+        "sha256": "f5ca3e34b22c7efe049b066f9549cefccbb9c2013d612c41e873e9deb7336db9"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-4.log",
+        "sha256": "46ec53deb8192df3ee675f4f1380c0f070c5fc620816c49494679292d8864892"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-5.log",
+        "sha256": "f994f974a21c31a6326d52bb970f0bfd02a18e04d63688d05066df300278f384"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-6.log",
+        "sha256": "4814e1014976c70acc190f65a0c7f788e8215fb7645c45106b07bced93e0a587"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-7.log",
+        "sha256": "4ab8f9f583839b5c0e334c82f7d9453b984c5f23d55df5dec9eec574b0bc61d6"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-1-8.log",
+        "sha256": "15996b660e01774e112961e4e4418d5e3d792f62b27fa0b5630c82b7b4123e8b"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-0.log",
+        "sha256": "a859d5054b4d82ad4f1646afbc3defaa9c3cf5ad4edf964b095d7a45216f7140"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-1.log",
+        "sha256": "951773824d60968bb97371ca6163bc148b15e03cf89ee1dff6fdbcaa0bb0c3ed"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-2.log",
+        "sha256": "cc977b944559b7b8340a621d04b0d766066ba3af9c9cdf90c561487bdccad940"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-3.log",
+        "sha256": "f79e16575c07caeed42a2f4a78b6543cebde61c93bc039e49a32fcbce9c7a10d"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-4.log",
+        "sha256": "6bb995101ce9489821559254c0afa73971ee31ca05abe3308d46eac23029e9ca"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-5.log",
+        "sha256": "e611d0c0887f00f71effd05dd6865c0839ba5d1dc324fabf1ea5f15edf25e5f5"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-6.log",
+        "sha256": "b256211bd3ce9a93bb4d835728debca5e4c9275cfaf1c028b676dac1a8b9cad0"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-7.log",
+        "sha256": "c409ad9931aed54bf54f5fd11136c594296f54f944ba8af01088a537321b6d71"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-abort-2-8.log",
+        "sha256": "fa44352ba8b3cfe18382bfeddcba3ed45ad1df0183e61e3fd4fe615a14c436f4"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-allocation-hook-control.log",
+        "sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-0.log",
+        "sha256": "61debae2c1db05bf271fbf9932a352fdc172e3e2c6ecb9c0e9cbdf2997a7100e"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-1.log",
+        "sha256": "1f7caad9d0a56fb99b8eaab627c9579e1001c0a8e37dc314ea011e095ce30195"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-2.log",
+        "sha256": "47ff18597a703a92bee6159499ba81da89499dbf1c4e457c8deba63374c305e6"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-3.log",
+        "sha256": "bacd03b81b95bb947e6df1c214e3a4de7232b80b905ee329525c6464e68f8eb1"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-4.log",
+        "sha256": "a97cbe56fe9c1b3c2f1293b599e13a95399fb70dc3cce3ec11de88f82467262f"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-5.log",
+        "sha256": "f55bf64bfca030c8221bb952b1994a524e1bcdc18c58696e74d20882145221ab"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-6.log",
+        "sha256": "dac7a1eb1d57fe37311f9e4afb664cba1f62915292795614391e67858aad4319"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-7.log",
+        "sha256": "5404295e1231ed2a84201b59d628432f9f199418b3765b4f1a711e39624b3ab6"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-0-8.log",
+        "sha256": "b6ccecc547e0a30bc7e98a1dd71137f4080067fcdb0a8e40d3d7a4fabf2d3f90"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-0.log",
+        "sha256": "9ce467ea57b9da8d5d07d8ed5a7d2fc6b6a1d0b3001b4700f30933a8d11c6ad8"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-1.log",
+        "sha256": "b61e5839f7bdae45cf11413b317947eac5daed61926ed497e2cc42a317898007"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-2.log",
+        "sha256": "778fe2b526a678a4644dd76e74e8b3111cbb4ca157fa2b590760f07c365e42b6"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-3.log",
+        "sha256": "d270846a036260cef3fe2a0398b2a856bef523431a3ddb1b8a71284896092678"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-4.log",
+        "sha256": "6f4e507c7eed397f9a2c2b96eefa0936b8db4ecf5737d990134d911953cab846"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-5.log",
+        "sha256": "6fd0c41f83022929058757d05ec9208bbe138a52fc7869d456fab8270f32bbd6"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-6.log",
+        "sha256": "d8563514c504405d4a6bbd7c753e4dc4c71941470125d1c3676dca8f942bb37d"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-7.log",
+        "sha256": "1573ba80247f306f20ce0ddbb5ba7625959ce96dff6ecbb1a509b026839a8108"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-1-8.log",
+        "sha256": "20d040e44a653bf26d3295643362e8d6c686b09fecc042871a4bee0d33fa9e44"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-0.log",
+        "sha256": "1d862a741dd8629ef36370bbd37e66abd565df5e2e49a0f157f56beeb26033aa"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-1.log",
+        "sha256": "86b5be4a207394aef443eaf193328a8df7f68859d0f1f3845d355fcfa1bb22ef"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-2.log",
+        "sha256": "3897d855c92c84be63c10ab4377b25ad6ab7e1b1d9642eac534710d7e4880aa0"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-3.log",
+        "sha256": "08ce9d37903938d648125e94cd1ac181198008fe88b4f77813f684f21605a21d"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-4.log",
+        "sha256": "24b90ffcc21f3d15ec51fea6be015c647ffdfe216e4f003a85018a4f8b8e4619"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-5.log",
+        "sha256": "1bc3f2f9ed213b4eaaba7cc161474e1be0362f604e31b5607f4c93c698d37ee5"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-6.log",
+        "sha256": "99fef3f42dfcd8234006cf06ca9df0e8135ab74d4b3ad4a67083e765146abd58"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-7.log",
+        "sha256": "9b960a6c01d47d5563fea55da891a20d54da7ab25521bbfd0b57f4f915e89a8b"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-failure-2-8.log",
+        "sha256": "09f29f0746f13e8de25578a6686b992b590eb90a685b7704ac3515f02491c2fa"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-leak.log",
+        "sha256": "d5e95cf725b7c2e2c0cfed658cfcece96ae50c05871161b367faa374e18c9ebf"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-0.log",
+        "sha256": "31984620d43828697a091b8aea92f4873b8d9736fde99349620e3bec2d1dbec8"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-1.log",
+        "sha256": "a33b0b3c798a9b84835f80eb95538199c3f20a0a08d6127eaf040da9de669f82"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-2.log",
+        "sha256": "e62cd9da0742a14b1ac673a420bd1faf4b01209e870b574ae7050ace788be6a3"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-3.log",
+        "sha256": "d48c7efd0fac7f6b20d9a7a870386ecb2d4a849bc4b93a1d69075efa8c79f94c"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-4.log",
+        "sha256": "a9c0c86fb1e1b5d9b4ddca027184dcce377c4f92d51995cf836a90d5b1bdee1a"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-5.log",
+        "sha256": "47c77a1fdc27524b56fa662115d31587345be6c4ab37018bb6c8142638c430e4"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-6.log",
+        "sha256": "52f7d4a71ebe28433d310806abfd4a41b261440b4c6db4a29e39b0ef816e0877"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-7.log",
+        "sha256": "082e9ebe4b35b4cb3a4348f132312400a05c1815b17517dedd86fafbdabdc604"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-0-8.log",
+        "sha256": "66c550247add7dc25500e18f822390836900d1fb7bcf4a3533df0d828cba6465"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-0.log",
+        "sha256": "4ff77badb5fc289a52548b8f24c5857d1b35636a627d9a824f2414fd4476fbcb"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-1.log",
+        "sha256": "fccddc4c934f149777df1c55e8326131cebad2fb29284f318703378a246db008"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-2.log",
+        "sha256": "91e821438dc14d70c1da4da6d428c60764b1a8013617539b3cdbdd08adba66ac"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-3.log",
+        "sha256": "faddffbe0050a44b933492d4ceef3259fe959085013ebe8d3d8f22a15ac47cfd"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-4.log",
+        "sha256": "36cdcd7491eb767fcfd576038f485386a8dbbae299964b8d24acc322730cbfcb"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-5.log",
+        "sha256": "f2d9541fcf8eea631c1d4fc795915333987b4348998f9e62e1dbfab2c0225625"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-6.log",
+        "sha256": "c9019a6ff8e327c290051711650a90a96ce7442748682a6e8c54c83ceacecce0"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-7.log",
+        "sha256": "618a58a5cb63dcccd017987e489a1b66e34e8784e98b05ba1e41a48dcc996d1a"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-1-8.log",
+        "sha256": "d8eb3a713fdff31bdb1bc90deecabdb4adc192a3f55603830411c4344f72b40f"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-0.log",
+        "sha256": "6261e17ec38263360dd33c1a24232ecb89e086041fc1d2976c3ac01fe4fb6989"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-1.log",
+        "sha256": "6606d711fc4d3cd091395958f47f570089c82d203a997da2fc99f94c90432e05"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-2.log",
+        "sha256": "890012c0dc64de1e32fe4372a98593376f6226bca7f14bc8996c238b17d0874d"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-3.log",
+        "sha256": "9b39566f5ca8547414026d18ea3132677db210712a5e8cf0d34d29ea84fc3713"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-4.log",
+        "sha256": "78352ee7f2fbd5340aa6d3e3566399bce65e900ee22670d1351794de17cea6a3"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-5.log",
+        "sha256": "21aadcfa9919205234e5c79dfbb969633cf08d04b4eccc8ce0670bedc080b7ac"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-6.log",
+        "sha256": "83da53bb86d98d6d259a78315045e3a68dec747a7858ea2f008c7af2eaade77b"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-7.log",
+        "sha256": "851c9d54f6f06ca4f204af05363fa73fa3170116490ce9b138ecf8bc6acd7de2"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-normal-2-8.log",
+        "sha256": "91a717da15972199c84cfb7f0283f2adbabb36d3f002d5575e35c3883ed6f0de"
+      },
+      {
+        "local_path": "build/s15-preliminary-zero-id-publication/crt-return-move-control.log",
+        "sha256": "6bfb1573b63416e9c2c2cc9708cf4bb4aa71856f9ccda995c0cbf1bba43102bd"
+      }
+    ]
+  },
+  {
+    "report": "build/s15-preliminary-inventory/report.json",
+    "sha256": "24b6c9b0ba93490625c1e246c13d0a5461c5cc3d0b9893f3585c6ccc5a194813",
+    "note": "Full candidate campaign stops at stale inventory after explicit Generator range formatting. Regenerate inventory; no numerical/instrument result was reached in this run.",
+    "raw_logs": [
+      {
+        "local_path": "build/s15-preliminary-inventory/adoption-asan-build.log",
+        "sha256": "e6727a2f41a47b6159e03223861278495290cf21d1147bb0b97fec488ada348e"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/adoption-crt-build.log",
+        "sha256": "98465bb6dda8c00576ddf4cc496a2c713220247bdc50cc7575bcec26a16598a3"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/asan-build.log",
+        "sha256": "47f4b764031ffaf07d85ea8022e647e7d3d50d3e66e0c1fa484de6ad342e80d7"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/build.log",
+        "sha256": "38cb13b9b2769b4288b13e27a8d1697efcd19f18dadf893e6ddb2552d0f18c6b"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/copy-asan-build.log",
+        "sha256": "aaab12e4ea9b59e7e7d88300ed74c4e3a4faff31408b008bb4ddaf20594d4af5"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/copy-crt-build.log",
+        "sha256": "9e1c436725ea8eef8dcb6d079707c497b094cc400cc84b7cd1d1fe5d111dd096"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/crt-build.log",
+        "sha256": "89464d991d49860bb6abb9ef531732d65591a7e7b947bfe1bb6b131b3e8c3e3a"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/curve-asan-build.log",
+        "sha256": "3951b70e0adbc35f4412012d6d6d933ee0e90abf7cc4ce843b5a1c4a93f59fa4"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/curve-crt-build.log",
+        "sha256": "62b0dc011b3c3a79e699da043ae348549c04ee4328623997ed50c1ff7a7fc089"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/inventory.log",
+        "sha256": "1928d9383229a511d6747247a0d2b5a8b2ca1bde9797c2bd89e6483372dc1499"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/publication-asan-build.log",
+        "sha256": "9a971a90e2b678ec7194bcf4ef437a6344b6bf8925ab5827793aa42cc297fa2a"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/publication-crt-build.log",
+        "sha256": "5c88b3e5bee2bfb17510e88d6ed3f12bd26de3858e24d80ddc60e7675c202a90"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/rebuild-asan-build.log",
+        "sha256": "046fe22399a41bdf238ceaa51d426bd73668c0f34a931d4571e847f10c111d37"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/rebuild-crt-build.log",
+        "sha256": "94ce41a4fc1ed58c83e332f4f9ab55c658fd69c5e0c05fec2f07cbe5d04db463"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/samples-asan-build.log",
+        "sha256": "73d01030b48d3bc39b6d4095f3c522329c9f126f4aa09a30b9bbc152cd9421c9"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/samples-crt-build.log",
+        "sha256": "f96d0b37430aa0ee1736b8794efd7a452a99f74a457de5ca4f763cbde224b3fc"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/snapshot-asan-build.log",
+        "sha256": "1962f5b107652c7a94e3e307ed5e22e7a01f10d889c8635881adcc199a24ef03"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/snapshot-crt-build.log",
+        "sha256": "1f4e63df6686adfa4222cb86d5313abd30092d343ebf93ec314e13f27d042c2c"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/sync-asan-build.log",
+        "sha256": "f0e31c887a6550ecab5c14dae8f9055d61c27d18a654fc297d32bf69d9fd98ec"
+      },
+      {
+        "local_path": "build/s15-preliminary-inventory/sync-crt-build.log",
+        "sha256": "d37c513fdccc8e2d6ea50780d89fd4904a6e2dc030405874f491c7619717a362"
+      }
+    ]
+  },
+  {
+    "report": "build/s15-preliminary-whitespace/report.json",
+    "sha256": "e1cc87e5abc018fe36d7380b92f6f623bfb7bd8484137fdb57118552096a0b5e",
+    "note": "CTest, all ten instrument batteries and lint/format pass, then whitespace gate rejects a new blank line at CMake EOF. Explicitly remove that line and regenerate inventory before repeating the candidate campaign; no model regression reached in this record.",
+    "raw_logs": [
+      {
+        "local_path": "build/s15-preliminary-whitespace/adoption-asan-build.log",
+        "sha256": "208326349998a8a4431bed59a3c173d8cebeecdfe6d06c5fef5449a3c1bb8ef7"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/adoption-crt-build.log",
+        "sha256": "9f7a9a04af52e7144ba27d203366abfcc952767de589762ab1a2866151ad1083"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/adoption.log",
+        "sha256": "b4c100bf6701d9943b4c1a2c29f1b20781825b96bdc13b6325116e28a1fc7f48"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/asan-build.log",
+        "sha256": "47f4b764031ffaf07d85ea8022e647e7d3d50d3e66e0c1fa484de6ad342e80d7"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/build.log",
+        "sha256": "7716162f3cd3b99cf3b8a8dd6decf324e08c7e941aae7e730baba5e4fc8c075b"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/copy-asan-build.log",
+        "sha256": "713cce4572ebc9440913df5bf34aaec0889c18acbec29a75e3f2d2af40a4cb89"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/copy-crt-build.log",
+        "sha256": "2e7a23f41224c2839653a8f6b8c9e7de7b79cf27de338148294550ed72c424f7"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/copy.log",
+        "sha256": "e6a3177ff67a4023421a228c7687f60d449e66f6b6a0d5a27e75a0e777e773c7"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/crt-build.log",
+        "sha256": "89464d991d49860bb6abb9ef531732d65591a7e7b947bfe1bb6b131b3e8c3e3a"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/ctest.log",
+        "sha256": "8f1511990004d81f8c8c8f5f2a8ad8c37a344ddd1ceeb53b0d6ee30013652feb"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/curve-asan-build.log",
+        "sha256": "4b613f5eaf2d6a51bf02ef6268ada242305b994aee8793f8f00fc86e47da1ee0"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/curve-crt-build.log",
+        "sha256": "5df23dbf8fe2ae1133c4cdd2ad8c57565aaa6e1ad0c919788c2b9808d69faca6"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/curve.log",
+        "sha256": "0bc155dd7a77a1fab5893c2277ed7cc118a627aad26852004a8cdb19e06ae307"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/diff-check.log",
+        "sha256": "a6aaec192b93bf6c066ed226aefd3f815651fc47eb5c378613f6a0f64d9fab40"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/inventory.log",
+        "sha256": "d15d359bb59769efe267c7b8fe0431ab2a6438148b93ea268472a94df664354e"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/node.log",
+        "sha256": "c013c82d48d2e98c79f67ac97bf556e897588d483d0285adc4b1a90b01cf8081"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/probe-format.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/publication-asan-build.log",
+        "sha256": "9a971a90e2b678ec7194bcf4ef437a6344b6bf8925ab5827793aa42cc297fa2a"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/publication-crt-build.log",
+        "sha256": "5c88b3e5bee2bfb17510e88d6ed3f12bd26de3858e24d80ddc60e7675c202a90"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/publication.log",
+        "sha256": "c48b27fb8ec4d43307395b783ef2267a727e13c55d7cd28a5d29372afd61e2ad"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/rebuild-asan-build.log",
+        "sha256": "b96f0971ec95939be52a708b0ac68d6ec82d0b0bfdeb94fa0a7844398a08d311"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/rebuild-crt-build.log",
+        "sha256": "9bdde9aa94b6b65a85e6e9a0c5923ff92df8e57a3ca5046a1e157934c43b1c9a"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/rebuild.log",
+        "sha256": "cff4bb10df9e635a58df8316b366b348431574ae95bdbab69616b65253af570f"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/samples-asan-build.log",
+        "sha256": "aaf5e4ab67a81b4e52f01731d871d24dd9c033a442904bd49f8f1beeaaebb438"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/samples-crt-build.log",
+        "sha256": "48001c9a8d685936043ad97e145d2d7aea5eb7903a9f5f90ae7110f9228e97cc"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/samples.log",
+        "sha256": "293cc536efdb51627548c75b4c1382d36d8e9bda78b3a7112f97038ca3abcd93"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/snapshot-asan-build.log",
+        "sha256": "2781471eccd18f9f729de41d9242ec90a32a534cd08966d60f96c12845b0d213"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/snapshot-crt-build.log",
+        "sha256": "ace94ba24f374eaffc9132220e9de8e4bc9ad614c42e5a00c9f768917a763fdf"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/snapshots.log",
+        "sha256": "19957ef4574b24ed05b79b7710a9b21f2bd1bf70a963e03186ec6a5d196b1749"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/sync-asan-build.log",
+        "sha256": "3b381655376a84ed9a6f14afe249ef0dde82512e98baf05bcc38e95f56633fc2"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/sync-crt-build.log",
+        "sha256": "7c878fee4e700f21b14dcf76f2982b12964715e963869b586153e6c14c77d175"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/sync.log",
+        "sha256": "b9f03437a912d9e85d31a3171dc5cb2b9845ad6bda29a5c6dc30a19f26664faa"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/tidy.log",
+        "sha256": "918ef81193dd1e683489cd4a8b873da7873d400a1216e09615559efa32175f23"
+      },
+      {
+        "local_path": "build/s15-preliminary-whitespace/uv.log",
+        "sha256": "aa0d1cba1f3f2b2e2359b56de7877a99b173e6028c931006e4063439b877a914"
+      }
+    ]
+  },
+  {
+    "local_log": "build/s15-initial-cmake-order-failure.log",
+    "sha256": "dc9c39841fbf2930bd5491d86770db030c730bcf993cd2ac5aa51afbfd4e323a",
+    "note": "Initial new-target configuration failed because the target block preceded root/source-list initialization, then retained its invalid cached implementation path. Block moved after initialization and explicit implementation path configured; failed logs preserved."
+  },
+  {
+    "local_log": "build/s15-initial-cmake-cached-path-failure.log",
+    "sha256": "88ec1ffb2d03b95191711e0c1889bfdd684c87c6034bf210cda1f934ab7ee647",
+    "note": "Initial new-target configuration failed because the target block preceded root/source-list initialization, then retained its invalid cached implementation path. Block moved after initialization and explicit implementation path configured; failed logs preserved."
+  }
+]
