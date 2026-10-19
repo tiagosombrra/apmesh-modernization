@@ -1,0 +1,11 @@
+{
+  "action": "Stop only the orchestration runner; allow its active CMake build to finish normally before a fresh campaign.",
+  "build_log": "build/s21-candidate/build.log",
+  "classification": "qualification preflight interruption before test execution",
+  "runner": 30284,
+  "cause": "The new CTest count 31 was accidentally copied into the unchanged 30-case prior curve-copy inventory. Restore the prior expected 30; no test or acceptance rule changes.",
+  "preserved_build_pid": 6760,
+  "preserved_build_log": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s21-candidate-preflight-interrupted\\build.log",
+  "build_log_sha256": "ca5693a493d34f7df0cf3d6e8977bd0a3689e200993fd3a1a4900472b53c00b1",
+  "qualification": "No tests were executed by the interrupted runner; fresh full campaign required."
+}

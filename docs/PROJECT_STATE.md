@@ -3,6 +3,14 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
+## Active work item: stage 3 slice 21
+
+Repair partial TriangleAdaptive constructor observer publication. Actual pinned
+units reproduce expired entries after later list-allocation failures; a narrow
+nonallocating cleanup removes only this construction's entries. Normal math and
+registration order stay fixed. Full candidate/exact-head/main gates are required;
+see [root cause and limits](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
+
 ## Latest qualified work: stage 3 slice 20
 
 PR #62 integrates head `dcf6941e944fcd3bf268e7f9a8ecef4f87735d75` as main

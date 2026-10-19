@@ -3,6 +3,9 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
+Active item: stage 3 slice 21, TriangleAdaptive constructor registration;
+original partial publication reproduced, exact delivery gates pending.
+
 Latest delivery: stage 3 slice 20 (PR #62); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |

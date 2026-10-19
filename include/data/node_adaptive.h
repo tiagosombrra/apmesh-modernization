@@ -8,20 +8,22 @@
 #include "point_adaptive.h"
 
 class NodeAdaptive : public PointAdaptive {
- public:
+public:
   NodeAdaptive();
   NodeAdaptive(double x, double y, double z);
   NodeAdaptive(double x, double y, double z, unsigned long position);
-  explicit NodeAdaptive(const PointAdaptive &point);
-  ~NodeAdaptive() override; 
+  explicit NodeAdaptive(const PointAdaptive& point);
+  ~NodeAdaptive() override;
 
-  void InsertElement(ElementAdaptive *element);
+  void InsertElement(ElementAdaptive* element);
+  // Remove matching non-owning entries without deleting the element or allocating.
+  void RemoveElementObserver(ElementAdaptive* element) noexcept;
   unsigned int GetNumberElements() const;
-  ElementAdaptive *GetElement(const unsigned int position);
+  ElementAdaptive* GetElement(const unsigned int position);
   void ClearElements();
 
-  const std::list<ElementAdaptive *> &GetElements() const;
-  void setElements(const std::list<ElementAdaptive *> &elements);
+  const std::list<ElementAdaptive*>& GetElements() const;
+  void setElements(const std::list<ElementAdaptive*>& elements);
 
   double GetGa() const;
   void SetGa(double ga);
@@ -35,15 +37,15 @@ class NodeAdaptive : public PointAdaptive {
   double GetHd() const;
   void SetHd(double hd);
 
- protected:
+protected:
   // lista de elementos no nó
-  std::list<ElementAdaptive *> elements_;
+  std::list<ElementAdaptive*> elements_;
 
-  double ga_;  // curvatura analítica gaussiana
-  double gd_;  // curvatura discreta gaussiana
-  double ha_;  // curvatura analítica média
-  double hd_;  // curvatura discreta média
+  double ga_; // curvatura analítica gaussiana
+  double gd_; // curvatura discreta gaussiana
+  double ha_; // curvatura analítica média
+  double hd_; // curvatura discreta média
   // friend class CurvaturaDiscreta;
 };
 
-#endif  // DATA_NODE_ADAPTIVE_H
+#endif // DATA_NODE_ADAPTIVE_H
