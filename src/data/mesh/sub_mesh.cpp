@@ -8,7 +8,16 @@ SubMesh::SubMesh() = default;
 SubMesh::~SubMesh() = default;
 
 SubMesh::SubMesh(SubMesh&&) noexcept = default;
-SubMesh& SubMesh::operator=(SubMesh&&) noexcept = default;
+SubMesh& SubMesh::operator=(SubMesh&& other) noexcept {
+  if (this != &other) {
+    // Elements borrow nodes, so retire them before replacing their node owners.
+    elements_.clear();
+    nos_ = std::move(other.nos_);
+    elements_ = std::move(other.elements_);
+    patch_ = other.patch_;
+  }
+  return *this;
+}
 
 Patch* SubMesh::GetPatch() const noexcept { return patch_; }
 

@@ -1,0 +1,13 @@
+{
+  "entry": "3ad6cb28cd183fe1adc7604de6e92dd28fd0e50a",
+  "classification": "Engineering lifetime defect repair; no formulas, floating-point order, numerical selection or acceptance-policy changes.",
+  "findings": [
+    "Default destructor reverses declared vectors: elements before nodes. Default move assignment assigns vectors in declaration order: nodes before elements.",
+    "Production searches found pointer construction/adoption of TriangleAdaptive and SubMesh, no direct value-copy/move uses. Static search is not compiler-level alias proof.",
+    "ReplaceNode occurs only in its declaration and definition in current tracked first-party sources/tests; it rewires pointers without updating adjacency. Implicit triangle copy/move and protected vertex mutation remain unaudited external API risks.",
+    "TriangleAdaptive ordinary destructor is empty. A completed triangle can leave expired node observers; automatic deregistration is deferred until triangle special-member and replacement semantics are designed and qualified.",
+    "Patch stores non-owning SubMesh observers; moving does not automatically rebind either object address.",
+    "Estimator hidden/duplicate root ownership and full-process/parallel memory remain open."
+  ],
+  "search_log_sha256": "bae8bc5da6824425f71b4967bd30f879539af2ef590059358504264c61a7494f"
+}

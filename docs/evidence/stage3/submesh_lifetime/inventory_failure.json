@@ -1,0 +1,23 @@
+{
+  "status": "failed",
+  "scope": "Required architecture freshness check stopped the next candidate before CTest/memory/numerical qualification.",
+  "archive": "build\\s22-candidate-stale-inventory",
+  "report_sha256": "dc0951f997ecde1ab30add2646e6f4b441500f585cac458bed8a2999a17279fc",
+  "command": {
+    "argv": [
+      "C:\\msys64\\ucrt64\\bin\\python.exe",
+      "tools/inventory_architecture.py",
+      "--output",
+      "docs/architecture/source_inventory.json",
+      "--contracts",
+      "docs/architecture/contracts.json",
+      "--check"
+    ],
+    "exit_code": 1,
+    "log": "inventory.log",
+    "sha256": "1928d9383229a511d6747247a0d2b5a8b2ca1bde9797c2bd89e6483372dc1499"
+  },
+  "diagnostic": "Architecture inventory failed: Retained architecture inventory is stale or incomplete\n",
+  "cause": "CMake whitespace normalization changed the retained build-file SHA256; the generated architecture inventory had not been refreshed.",
+  "repair": "Regenerate the derived inventory and preflight freshness, whitespace and explicit selected formatting before the next full run. No production or gate requirement changes."
+}
