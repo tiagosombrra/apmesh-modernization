@@ -1,0 +1,14 @@
+{
+  "revision": "4a69a037eef3f258675771c0cc03d9cb0373f745",
+  "source_blob": "8ddb5ec9b71e41d03a1509a7a4737c1645c707fa",
+  "block_sha256": "f0e008629a24d4f34546e00b548e324d8abd9efe5f6f953203057032423a30ba",
+  "adapter_sha256": "2021ce5e19a2f6035c5330f831081ffce8c00cbad1263d343baed9d26799361e",
+  "substitutions": {
+    "adapter_.AdaptCurveByCurve(\n        curve, map_points, this->id_managers_[0].get(), factor_disc_global)": "curve_pass()",
+    "adapter_.AdaptCurveBySurface(\n        curve, map_points, this->id_managers_[0].get(), factor_disc_global)": "surface_pass()",
+    "BUDGET_DRIVEN_ADAPTATION == 1 && CURVE_POINT_BUDGET_MODE == 1": "rebuild",
+    "rebuild_curve_with_target(curve, surface_refined, target_curve_points)": "RebuildCurveWithTarget(curve, surface_refined, target_count, id_manager)",
+    "new_points[i]": "new_points[0]"
+  },
+  "scope": "Only original publication block with two parameter-controlled callbacks using pinned actual sample tails. Rebind existing target lambda to actual rebuild helper and unused storage to one-curve vector; its construction occurs within the fixture operation. No full Generator/Adapter TU or upstream numerical selection instrumentation."
+}

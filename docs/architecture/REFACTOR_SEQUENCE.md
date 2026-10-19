@@ -201,3 +201,15 @@ parameter swap and owner release retain the prior caller lifetime convention.
 C07/ADR-0015 separate this boundary from upstream sorting/selection/scratch, later
 Generator curve publication and full Adapter/AdaptCurve/mesh rollback. Those
 observer-publication and owner-transfer integration paths follow next.
+
+## Generator per-curve sample handoff (#50)
+
+RefineCurveSamples owns the existing curve/surface/optional-rebuild sequence.
+Prepare entry working lists/cache snapshot, park original nodes and collectively
+guard returned samples before each allocating observer copy. Rebuild can remove
+surface interiors before final publication; cleanup must use current owned lists,
+never discarded live observers. Restore cache entries in place, deduplicate new
+nodes and restore original lists without allocating. Preserve borrowed entry
+samples/cache values and consumed ID prefixes. C07/ADR-0016 delimit this from
+complete-loop ownership, upstream evaluator scratch and full adaptive rollback;
+those remaining paths follow next.

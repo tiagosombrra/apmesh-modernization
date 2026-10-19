@@ -6,7 +6,7 @@
 #include "data/geometry.h"
 #include "generator/curve_synchronization.h"
 #include "generator/curve_snapshots.h"
-#include "generator/curve_rebuild.h"
+#include "generator/curve_publication.h"
 #include "input_output/incidence_snapshot.h"
 
 #include <array>
@@ -2644,8 +2644,6 @@ void GeneratorAdaptive::DisableSharedCurveSynchronization(Geometry* geometry) {
 }
 
 void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
-  // Use std::vector to avoid non-standard VLA.
-  std::vector<std::list<PointAdaptive*>> new_points(geometry->GetNumberCurves());
   std::map<PointAdaptive*, PointAdaptive*> map_points;
   std::unordered_set<PointAdaptive*> old_points;
   const std::vector<double> patch_factors = ComputePatchAdaptationFactors(geometry);
@@ -2661,13 +2659,6 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     }
     return value;
   };
-
-  const auto rebuild_curve_with_target =
-      [this](CurveAdaptive* curve, std::list<PointAdaptive*>& points, int target_count) {
-        Performer::IdManager* manager =
-            this->id_managers_.empty() ? nullptr : this->id_managers_[0].get();
-        apmesh::generation::RebuildCurveWithTarget(curve, points, target_count, manager);
-      };
 
   // Capture all current curve points to delete after we swap to new ones.
   for (unsigned int i = 0; i < geometry->GetNumberCurves(); ++i) {
@@ -2877,27 +2868,18 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     const int target_curve_points = clamp_curve_target(
         static_cast<int>(std::round(current_curve_target_points_[i])));
 
-    auto curve_refined = adapter_.AdaptCurveByCurve(
-        curve, map_points, this->id_managers_[0].get(), factor_disc_global);
-    curve->SetPoints(curve_refined);
-
-    auto surface_refined = adapter_.AdaptCurveBySurface(
-        curve, map_points, this->id_managers_[0].get(), factor_disc_global);
-    curve->SetPoints(surface_refined);
-    if (BUDGET_DRIVEN_ADAPTATION == 1 && CURVE_POINT_BUDGET_MODE == 1) {
-      rebuild_curve_with_target(curve, surface_refined, target_curve_points);
-      curve->SetPoints(surface_refined);
-    }
-
-    std::unordered_set<PointAdaptive*> keep(surface_refined.begin(),
-                                            surface_refined.end());
-    for (auto* p : curve_refined) {
-      if (keep.find(p) == keep.end()) {
-        delete p;
-      }
-    }
-
-    new_points[i] = std::move(surface_refined);
+    apmesh::generation::RefineCurveSamples(
+        curve, map_points,
+        [&] {
+          return adapter_.AdaptCurveByCurve(curve, map_points, this->id_managers_[0].get(),
+                                            factor_disc_global);
+        },
+        [&] {
+          return adapter_.AdaptCurveBySurface(curve, map_points, this->id_managers_[0].get(),
+                                              factor_disc_global);
+        },
+        BUDGET_DRIVEN_ADAPTATION == 1 && CURVE_POINT_BUDGET_MODE == 1, target_curve_points,
+        this->id_managers_.empty() ? nullptr : this->id_managers_[0].get());
     CurveAdaptationSnapshot& snapshot = current_curve_adaptation_[i];
     snapshot.factor = factor_disc_global;
     snapshot.num_points = curve->GetNumBerPoints();
