@@ -3,13 +3,26 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work: stage 3 slice 23
+## Latest qualified work: stage 3 slice 23
 
-Candidate stable triangle identity/observer replacement passes actual-unit and
-full candidate gates. Exact published-head/main qualification is pending.
-Triangle value copy/move is disabled; first-match replacement transfers one list
-node without allocation. Destruction and geometry-cache refresh remain separate.
-See [scope and audit](evidence/STAGE3_TRIANGLE_OBSERVER.md).
+PR #68 integrates head `f29018fea3d3490358396381cea1dc7967aaf1ac` as main
+`4dd41510180ac0fa10e9a3f083552fe1f3c13a2c`, preserving complete tree `e40ff131629c0b791daf2f12db074e8cb3ec6499`
+(1793 blobs). Full exact-head/main campaigns pass with the same 557 protected
+inputs: CTest 33/33, zero skips, 74 Python controls, eighteen memory batteries/
+1101 expected outcomes, node/triangle lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
+
+TriangleAdaptive now has explicit noncopyable/nonmovable address identity.
+ReplaceNode transfers one physical observer list node before committing the
+first matching vertex, preserving repeated multiplicity and unrelated entries.
+All 35 new outcomes pass, including eight zero-allocation paths. Original 26
+identity/topology/guard failures and zero final CRT retention are retained.
+Caches are unchanged; geometry validity after changed coordinates is unqualified.
+
+Stage 3 remains open with twenty-three qualified slices. Next qualify completed-
+triangle destruction and failed-adoption observer cleanup. Estimator roots,
+cache refresh, protected vertex mutation, logical rejection and full-process/
+parallel/LSan/UBSan remain open; stages 4-11 pending. See [closure audit](evidence/STAGE3_TRIANGLE_OBSERVER.md).
 
 ## Stage 3 slice 22 qualified
 
