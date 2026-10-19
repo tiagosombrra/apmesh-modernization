@@ -3,10 +3,12 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current active item: stage 3 slice 22, SubMesh owner ordering during move
-assignment. Candidate measured; exact-head/main gates and integration pending.
-Next establish triangle observer special-member/replacement semantics before
-automatic deregistration. See [audit](evidence/STAGE3_SUBMESH_LIFETIME.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 22
+(PR #66) is qualified at head `88c285e5ac193e7c45fe688cec05867e5243dbdd` and main
+`79bad64023ab1ddd54eda76930df47ff2986f765`. All exact-head/main gates pass; stage 3 remains open.
+Next establish triangle special-member/replacement observer semantics, then
+qualify completed-triangle destruction. Owner ordering does not itself repair
+triangle deregistration or full-process memory. See [audit](evidence/STAGE3_SUBMESH_LIFETIME.md).
 
 Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 21
 (PR #64) is qualified at head `a6da72630db2747194982e1a2b77cd3203536408` and main

@@ -3,12 +3,25 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work: stage 3 slice 22
+## Latest qualified work: stage 3 slice 22
 
-Candidate SubMesh lifetime ordering repair passes its bounded actual-unit battery
-and full candidate gates. Exact published-head/main qualification is pending;
-integration remains blocked until both pass. Old elements are retired before
-their node owners during move assignment. See [scope and audit](evidence/STAGE3_SUBMESH_LIFETIME.md).
+PR #66 integrates head `88c285e5ac193e7c45fe688cec05867e5243dbdd` as main
+`79bad64023ab1ddd54eda76930df47ff2986f765`, preserving complete tree `46c42a52e11519471015e1b8ad385539366079e2`
+(1781 blobs). Full exact-head/main campaigns pass with the same 555 protected
+inputs: CTest 32/32, zero skips, 74 Python controls, seventeen memory batteries/
+1066 expected outcomes, SubMesh lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
+
+SubMesh move assignment now retires old elements before replacing node owners.
+The original twelve ordering failures and derived-triangle borrowed-node ASan
+UAF are retained; candidate passes 28 actual-unit outcomes, including eight
+zero-allocation paths. Self-move preserves graph identity. Foreign Patch
+observers are not automatically rebound; triangle deregistration is unchanged.
+
+Stage 3 remains open with twenty-two qualified slices. Next establish triangle
+special-member/replacement observer semantics, then qualify completed-triangle
+destruction. Estimator roots, logical rejection and full-process/parallel/LSan/
+UBSan remain open; stages 4-11 pending. See [closure audit](evidence/STAGE3_SUBMESH_LIFETIME.md).
 
 ## Stage 3 slice 21 qualified
 
