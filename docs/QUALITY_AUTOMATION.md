@@ -1,14 +1,14 @@
 # Local quality automation
 
-## Active initial-mesh ownership boundary
+## Initial-mesh ownership boundary (PR #58)
 
 Stage 3 slice 18 adds application.initial_mesh_contracts and
 tools/qualify_initial_mesh.py. The runner requires 27 outcomes, including eight
 full observed allocation sweeps (400 denials), actual analytic/ordered mesh
 checks and deliberate ASan UAF/CRT leak/hook controls. The actual constructor
 unit and prior sample lifetime owner are instrumented together; full CLI failure
-injection and general mesh adoption remain outside scope. Full delivery gates
-are pending. See [scope and commands](evidence/STAGE3_INITIAL_MESH.md).
+injection and general mesh adoption remain outside scope. Full exact-head/main delivery gates
+pass; stage 3 remains open. See [scope and commands](evidence/STAGE3_INITIAL_MESH.md).
 
 ## Serial sample lifetime boundary (PR #56)
 
@@ -24,12 +24,12 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-17 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-18 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
-sample-lifetime targets.
-The integrated CTest passes 27/27 with zero skips and 74 Python controls,
+sample-lifetime and serial initial-construction targets.
+The integrated CTest passes 28/28 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier

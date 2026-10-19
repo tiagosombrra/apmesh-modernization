@@ -3,13 +3,7 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Active item: stage 3 slice 18, serial initial-mesh ownership. Original successful
-construction retains two CRT blocks; the first leaking denied allocation retains
-one pending SubMesh block. Candidate: 27 bounded outcomes and 400 allocation
-denials pass. Full delivery gates remain pending; this is not integrated yet.
-See [scope and negative evidence](evidence/STAGE3_INITIAL_MESH.md).
-
-Latest delivery: stage 3 slice 17 (PR #56); see the final row and linked audit.
+Latest delivery: stage 3 slice 18 (PR #58); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -33,9 +27,9 @@ Latest delivery: stage 3 slice 17 (PR #56); see the final row and linked audit.
 | 2026-10-18, stage 3 slice 15 | #50, PR #51; head 7e9a36b80f6104bbe68724d462b71dc140149168, main 943ccf7b6d85397af6297b69ee97423d2a46311d; evidence/STAGE3_CURVE_PUBLICATION_HANDOFF_CLOSURE.md | Per-curve collective RAII publication, exact list/cache rollback and retry; head/main CTest 25/25, publication 139/139, 2403 denials, nine prior batteries and model traces exact; full-loop ownership and full rollback remain open |
 | 2026-10-19, stage 3 slice 16 | #53, PR #54; head 8eaeb09fa8137ed32dea5549b4ac07b923d5bac2, main 186ef0251f460f3139baedae4ed77f30a2b9695b; evidence/STAGE3_CURVE_SAMPLE_GRAPH_CLOSURE.md | Retain initial collective graph until complete-loop commit, exact point/parameter graph rollback and cleanup across prefixes; head/main CTest 26/26, graph 156/156, 8118 denials, ten prior batteries and exact model traces; orchestration/mesh rollback remains open |
 | 2026-10-19, stage 3 slice 17 | PR #56; head 06f4bfd40cff9f09c527777169c5fcf8d053e0c7, main 9703536b21d8d3f02dbe7fbd9f83d3260f461aad; evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md | Scoped published-sample ownership repairs terminal-exception leaks and allocating final cleanup; CTest 27/27, lifecycle 53/53, eleven prior batteries, exact model traces; full-process/unpublished constructors remain open |
+| 2026-10-19, stage 3 slice 18 | PR #58; head 84e303da51a6ac4c6cf52dbbee7f5fb30c93696e, main e398854bba9f06045b71dd1b965505872106d746; evidence/STAGE3_INITIAL_MESH.md | Actual serial constructor owns pending resources and releases center copy source; CTest 28/28, constructor 27/27/400 denials, twelve prior batteries and exact model traces; general raw mesh adoption remains open |
 
-Current status: stages 0-2 closed; stage 3 in progress with seventeen qualified
-slices; stages 4-11 pending. Next isolate InitialMesh temporary/pending ownership,
-including its central-node copy temporary. Full-process/parallel memory and
-logical candidate-rejection audit remain open. Terminal CLI resource release
-does not require or establish recovery of Generator metadata.
+Current status: stages 0-2 closed; stage 3 in progress with eighteen qualified
+slices; stages 4-11 pending. Next isolate general MeshAdaptive raw SubMesh
+adoption. OpenMP constructors, other unpublished resources, logical rejection
+audit and full-process/parallel memory remain open.

@@ -1,6 +1,6 @@
 # ADR-0019: explicit ownership during serial coarse-mesh construction
 
-Status: accepted design; exact delivery qualification pending.
+Status: accepted; exact published-head and implementation-main gates pass through PR #58.
 
 The central source node is copied by SubMesh::SetNoh, so its original allocation
 needs a local owner. The pending mesh and triangles also need owners while later

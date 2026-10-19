@@ -3,13 +3,14 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Active item: stage 3 slice 18, serial InitialMesh temporary/pending ownership.
-The central temporary leak and early unowned-mesh failure are reproduced in the
-pinned original. The actual helper passes 27 bounded outcomes/400 allocation
-denials; full delivery regression and exact-head/main gates remain pending.
-See [scope and evidence](evidence/STAGE3_INITIAL_MESH.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 18
+(PR #58) is qualified at head `84e303da51a6ac4c6cf52dbbee7f5fb30c93696e` and main
+`e398854bba9f06045b71dd1b965505872106d746`. All exact-head/main gates pass; stage 3 remains open.
+Next isolate general MeshAdaptive raw adoption. The measured initial-mesh repair
+does not qualify OpenMP constructors, raw adoption or whole-process memory.
+See [scope and closure audit](evidence/STAGE3_INITIAL_MESH.md).
 
-Current status: stages 0-2 closed for measured scope; stage 3 slice 17
+Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 17
 (PR #56) is qualified at head `06f4bfd40cff9f09c527777169c5fcf8d053e0c7` and implementation main
 `9703536b21d8d3f02dbe7fbd9f83d3260f461aad`. All exact-head/main gates pass; stage 3 remains open.
 Next isolate InitialMesh temporary/pending ownership. Published-sample terminal

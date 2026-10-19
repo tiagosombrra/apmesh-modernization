@@ -3,22 +3,32 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work item: stage 3 slice 18, initial-mesh ownership
+## Latest qualified work: stage 3 slice 18
 
-Entry main `d4fa37d8a77281027335bc70470f2dc1b0331d52` is clean and synchronized;
-remote audit found no open PRs/issues or configured checks. The pinned original
-leaks the central-node temporary on successful serial InitialMesh construction
-and leaves the pending SubMesh unowned on an early allocation failure.
+PR #58 integrates head `84e303da51a6ac4c6cf52dbbee7f5fb30c93696e` as main
+`e398854bba9f06045b71dd1b965505872106d746`, preserving complete tree `490a5c448c277dffb5229e2d2b51ff86574768d5`
+(1727 blobs). Full exact-head/main campaigns pass with the same 546 protected
+inputs: CTest 28/28, zero skips, 74 Python controls, thirteen memory batteries/
+932 expected outcomes, new-unit lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
 
-The extracted actual construction helper uses exclusive local owners for the
-pending mesh, center and triangles; a corner sample transfers to the existing
-collective owner on its first successful curve insertion. It preserves numerical
-and publication order, existing-curve reuse and reversal. The bounded ASan/CRT
-battery passes 27/27 with 400 observed allocation denials. Full regression and
-exact-head/main delivery gates remain pending; stage 3 stays open.
-See [initial-mesh evidence](evidence/STAGE3_INITIAL_MESH.md).
+Serial InitialMesh now owns pending physical mesh, triangles and unpublished
+sample/center temporaries. The central source is released after its physical
+copy; a sample transfers to collective ownership at its first curve insertion.
+The pinned original leaks two blocks on ordinary success and an extra pending
+mesh block at allocation ordinal one. The repaired actual unit passes 27 bounded
+outcomes, all 400 observed allocation denials and sixteen identical numerical
+observation sequences. The inherited float-counter lint gate was fixed using
+the same exact finite corner values/order; failed evidence is preserved.
 
-## Latest qualified work: stage 3 slice 17
+Stage 3 stays open with eighteen qualified slices. Next isolate general
+MeshAdaptive raw SubMesh adoption, which can grow storage before taking ownership
+or ignore a negative position. The actual initial-mesh caller uses a presized
+valid slot. OpenMP initialization, other constructors, logical rejection audit
+and whole-process/parallel/LSan/UBSan remain open; stages 4-11 pending.
+See [scope and closure audit](evidence/STAGE3_INITIAL_MESH.md).
+
+## Stage 3 slice 17 qualified
 
 PR #56 integrates head `06f4bfd40cff9f09c527777169c5fcf8d053e0c7` as main
 `9703536b21d8d3f02dbe7fbd9f83d3260f461aad`, preserving complete tree `7efe095ab635e3e8e1b42cab30403adddc4d295a`
@@ -771,6 +781,6 @@ Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
 observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
 closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
 
-Current next work: InitialMesh temporary/pending ownership; terminal resource
-release is qualified only for the measured published graph. See the latest
-qualified slice above for current scope and remaining findings.
+Current next work: general MeshAdaptive raw SubMesh adoption. InitialMesh
+construction is qualified for the bounded serial fixtures; see the latest slice
+above for the exact delivery and remaining failure/coverage inventory.
