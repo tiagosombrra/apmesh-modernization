@@ -3,15 +3,32 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work item: stage 3 slice 20
+## Latest qualified work: stage 3 slice 20
 
-Repair raw element adoption through SubMesh::SetElement. Actual pinned units
-reproduce a leaked triangle after vector allocation denial; delegate through
-the existing owning AddElement entry point. Qualification covers terminal owner
-teardown, not live adjacency rollback. Full candidate/exact-head/main gates
-remain required. See [root cause and limits](evidence/STAGE3_ELEMENT_ADOPTION.md).
+PR #62 integrates head `dcf6941e944fcd3bf268e7f9a8ecef4f87735d75` as main
+`40106ede082614429639566c64ca3689a7d62c4b`, preserving complete tree `3f6f76298519082e93676da58a6750908b5dc387`
+(1753 blobs). Full exact-head/main campaigns pass with the same 551 protected
+inputs: CTest 30/30, zero skips, 74 Python controls, fifteen memory batteries/
+999 expected outcomes, SubMesh-unit lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
 
-## Latest qualified work: stage 3 slice 19
+SetElement now consumes raw ownership before vector allocation by delegating
+through AddElement's owning argument. Pinned actual units reproduce two leaked
+pending triangles (one block/160 bytes each); the repair passes 31 bounded
+outcomes, eight complete growth denials, four measured spare-storage paths and
+sixteen identical normal observations. Every valid CRT case retains zero blocks.
+An initial missing-PATH lint failure is preserved; the corrected full campaign
+passes with unchanged sources and requirements.
+
+Qualification covers terminal owner unwinding, not graph reuse: constructor
+registration precedes insertion and triangle destruction does not unregister
+node observers. Stage 3 remains open with twenty qualified slices. Next isolate
+TriangleAdaptive construction/adjacency registration under allocation failure.
+Estimator hidden/duplicate ownership, populated SubMesh move assignment, other
+constructors, logical rejection audit and whole-process/parallel/LSan/UBSan remain
+open; stages 4-11 pending. See [scope and closure audit](evidence/STAGE3_ELEMENT_ADOPTION.md).
+
+## Stage 3 slice 19 qualified
 
 PR #60 integrates head `bebe4f5273719304fd00967bfaf7ae74de63f351` as main
 `e04a76a6103af5af5b116447c63c4de1ee047a0c`, preserving complete tree `ffdfa4677b419b8ef4fef30ad3312257f142dcd5`
@@ -811,6 +828,6 @@ Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
 observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
 closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
 
-Current next work: SubMesh::SetElement raw element adoption. MeshAdaptive
-ownership transfer is qualified for the bounded actual-unit fixtures above;
-full stage 3 and the remaining failure/coverage inventory stay open.
+Current next work: TriangleAdaptive construction/adjacency registration under
+allocation failure. Terminal element adoption is qualified for the bounded
+actual-unit fixtures above; full stage 3 and observer reuse remain open.
