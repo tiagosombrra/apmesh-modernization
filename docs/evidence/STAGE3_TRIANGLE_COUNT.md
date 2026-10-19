@@ -1,6 +1,11 @@
 # Stage 3 slice 26: temporary triangle-count ownership
 
-Candidate qualified; full exact published-head and post-merge main gates remain required.
+PR #74 integrates head `82261a7e305bcde0920ecca0dcb9d7a50893ecc9` as main
+`96ed6ae03906d1385135276b1781f67ea59d9363`, preserving complete tree `51b0e00ec92c84d832ac83a08f65261ccba4d5df`
+(1840 blobs). Full exact-head/main gates pass against the same 567
+protected inputs: CTest 36/36, zero skips, 74 Python controls, twenty-one memory
+batteries/1373 expected outcomes, the retained 1040 scalar sequence comparisons,
+count/factory lint, format/inventory and exact twice-repeated Eistute/Book traces.
 
 Entry main: `3834d59bd03229c5cf70c4ddad073f5e2f4c74ac`.
 Classification: behavior-changing resource-lifetime defect repair, no scientific proposal.
@@ -128,8 +133,18 @@ calibration restoration, all live ordinals and terminal cleanup.
 The positive allocation-hook control denies one actual allocation. The deliberate
 CRT leak and ASan heap-use-after-free controls must fail with their actual measured
 diagnostics. Zero tests, skipped instrumentation or rejected candidates are never
-reported as successful coverage. No preliminary required-gate failure needed a
-source correction in this slice; the original negatives remain preserved.
+reported as successful coverage. Original negatives remain preserved.
+
+The first documentation closure audit stopped on a local verifier inventory error:
+the new CTest count of 36 had incorrectly replaced the unchanged triangle observer
+battery's required count of 35. Build/CTest 36/36 and the full implementation
+head/main reports were already passing; the retained observer battery contains
+all 35 required outcomes. The single checker predicate is restored to its exact
+existing component inventory. The failed revision/report, command/log hashes and
+before/after checker hashes are retained in documentation_inventory_failure.json.
+No test is removed, no production or protected input changes, and no gate is waived.
+Exact documentation head/main audits are repeated with all 21 explicit battery
+inventories and all 567 protected identities required unchanged.
 
 ## Closure audit and regression
 

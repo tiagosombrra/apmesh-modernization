@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Temporary triangle counting (PR #74)
+
+Stage 3 slice 26 adds application.triangle_count_contracts and
+tools/qualify_triangle_count.py. The actual-helper ASan/CRT runner requires 159
+outcomes, 42 full allocation sweeps/9014 denials, exact borrowed point/parameter/
+adjacency list-node restoration, preceding physical graph traversal, repeated
+calls and existing invalid-degree guards. The original calibrations themselves
+leak; per-denial live deltas independently measure exceptional cleanup. Thirty
+original sweeps stop at a live mismatch; twelve complete exception sweeps still
+retain their successful calibration mesh. No original limit is relabeled green.
+Full exact-head/main gates pass; area/error wrappers and full-process memory
+remain separate. See [commands and limits](evidence/STAGE3_TRIANGLE_COUNT.md).
+
 ## Estimator construction (PR #72)
 
 Stage 3 slice 25 adds application.estimate_mesh_contracts and
@@ -97,12 +110,12 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-25 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-26 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
-sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration and SubMesh owner-ordering and triangle identity/replacement/completed-lifetime and estimator-construction targets.
-The integrated CTest passes 35/35 with zero skips and 74 Python controls,
+sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration and SubMesh owner-ordering and triangle identity/replacement/completed-lifetime and estimator-construction and scoped triangle-count targets.
+The integrated CTest passes 36/36 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier

@@ -3,10 +3,12 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current active item: stage 3 slice 26, temporary triangle-count ownership and
-selective patch/sample lifetime. Candidate gates pass; exact-head/main qualification
-and integration pending. Next repair area/error caller roots and lifetimes.
-See [scope and audit](evidence/STAGE3_TRIANGLE_COUNT.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 26
+(PR #74) is qualified at head `82261a7e305bcde0920ecca0dcb9d7a50893ecc9` and main
+`96ed6ae03906d1385135276b1781f67ea59d9363`. All exact-head/main gates pass; stage 3 remains open.
+Next repair estimator area/error roots with explicit patch/sample lifetime;
+their error/degree selection and full-process memory remain unqualified.
+See [audit](evidence/STAGE3_TRIANGLE_COUNT.md).
 
 Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 25
 (PR #72) is qualified at head `6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7` and main

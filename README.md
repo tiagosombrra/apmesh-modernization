@@ -56,14 +56,14 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with twenty-five qualified ownership/lifecycle slices.
-The latest establishes one estimator construction owner and bounded parameter
-induction while preserving the original floating sequence. Estimator 77/77,
-5128 allocation denials, 1040 scalar comparisons, CTest 35/35 and nineteen prior
-batteries pass on exact head and main, with exact repeated model traces.
-See [the latest closure audit](docs/evidence/STAGE3_ESTIMATE_MESH.md).
-Estimator caller roots, patch/sample lifetime, general mesh/cache validity and
-full-process memory remain open.
+Stage 3 is in progress with twenty-six qualified ownership/lifecycle slices.
+The latest owns temporary triangle-count meshes/fresh samples and restores the
+preceding borrowed graph. Count 159/159, 9014 allocation denials, 168 paired
+results, CTest 36/36 and twenty prior batteries pass on exact head and main,
+with the retained 1040 scalar comparisons and exact repeated model traces.
+See [the latest closure audit](docs/evidence/STAGE3_TRIANGLE_COUNT.md).
+Estimator area/error callers, general geometry/cache validity and full-process
+memory remain open.
 
 ## Repository policy
 

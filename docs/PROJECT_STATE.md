@@ -3,17 +3,28 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Active work: stage 3 slice 26
+## Latest qualified work: stage 3 slice 26
 
-Candidate triangle counting owns its temporary physical mesh, restores the prior
-patch observer and reclaims only freshly published samples. Existing point,
-parameter and adjacency list-node identity survives. All 159 new outcomes,
-9014 denials and 168 paired returned counts pass; CTest 36/36, 1373 expected
-instrument outcomes and exact model traces pass. Full exact published-head/main
-qualification remains required. Area/error caller roots remain next; stage 3
-stays open. See [scope and audit](evidence/STAGE3_TRIANGLE_COUNT.md).
+PR #74 integrates head `82261a7e305bcde0920ecca0dcb9d7a50893ecc9` as main
+`96ed6ae03906d1385135276b1781f67ea59d9363`, preserving complete tree `51b0e00ec92c84d832ac83a08f65261ccba4d5df`
+(1840 blobs). Full exact-head/main gates pass against the same 567
+protected inputs: CTest 36/36, zero skips, 74 Python controls, twenty-one memory
+batteries/1373 expected outcomes, the retained 1040 scalar sequence comparisons,
+count/factory lint, format/inventory and exact twice-repeated Eistute/Book traces.
 
-## Latest qualified work: stage 3 slice 25
+Counting now releases its private physical graph and fresh sample prefixes,
+restores the preceding patch observer and preserves borrowed point/parameter/
+adjacency list-node identity. All 159 new outcomes/9014 denials and 168 original/
+repaired returned counts pass. Original 154 lifetime/retention failures and the
+calibration/per-denial measurement distinction are preserved.
+
+Stage 3 remains open with twenty-six qualified slices. Next repair area/error
+estimator roots and patch/sample lifetime, preserving their numerical selection
+policy. Arbitrary callbacks, evaluator scratch, complete extreme/non-power-of-two
+meshes, cache/foreign observers, logical rejection and full-process/parallel/
+LSan/UBSan remain open; stages 4-11 pending. See [closure audit](evidence/STAGE3_TRIANGLE_COUNT.md).
+
+## Stage 3 slice 25 qualified
 
 PR #72 integrates head `6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7` as main
 `fdf65970dfad6898c88438a1017fa4bd34239d27`, preserving complete tree `8c174ddb604eb0177ebf52253b814b368333c57e`
