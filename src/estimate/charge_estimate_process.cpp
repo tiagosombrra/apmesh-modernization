@@ -1,4 +1,5 @@
 #include "estimate/initial_mesh_estimate.h"
+#include "estimate/triangle_count_estimate.h"
 
 #include "../../include/estimate/charge_estimate_process.h"
 
@@ -773,9 +774,7 @@ double ChargeEstimateProcess::CalculateAreaTriangleMedio(PatchBezier* patch,
 
 long ChargeEstimateProcess::CalculateNumbersTriangle(PatchBezier* patch,
                                                      int degree) {
-  SubMesh* sub = InitialMeshEstimate(patch, degree);
-
-  return sub->GetNumberElements();
+  return apmesh::estimation::CountEstimateTriangles(patch, degree);
 }
 
 // grau tem que ser multiplo de grau == 2^n

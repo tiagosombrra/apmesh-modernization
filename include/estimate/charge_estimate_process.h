@@ -36,6 +36,7 @@ class ChargeEstimateProcess {
   double CalculateAreaTriangleMedioRad(PatchBezier *patch);
   double CalculateAreaTriangleMedio(PatchBezier *patch, Timer *timer,
                                     int degree);
+  // Temporary counting preserves the previous patch observer and borrowed samples.
   long int CalculateNumbersTriangle(PatchBezier *patch, int degree);
   // Transfers sole ownership to the caller; no hidden MeshAdaptive owns the result.
   // Rebind the patch observer before deletion and retain the collective sample owner.

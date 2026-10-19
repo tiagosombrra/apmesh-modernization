@@ -7,9 +7,9 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 141,
-    "translation_units": 66,
-    "headers": 75,
+    "files": 143,
+    "translation_units": 67,
+    "headers": 76,
     "directory_components": {
       "adapter": 4,
       "cli": 1,
@@ -22,14 +22,14 @@
       "data/mesh": 4,
       "data/patch": 8,
       "data/tree": 2,
-      "estimate": 4,
+      "estimate": 6,
       "generator": 16,
       "input_output": 11,
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 550,
-    "first_party_include_edges": 320
+    "literal_include_directives": 558,
+    "first_party_include_edges": 326
   },
   "cross_component_directives": [
     {
@@ -200,17 +200,17 @@
     {
       "from": "estimate",
       "to": "data/curve",
-      "count": 3
+      "count": 4
     },
     {
       "from": "estimate",
       "to": "data/mesh",
-      "count": 2
+      "count": 3
     },
     {
       "from": "estimate",
       "to": "data/patch",
-      "count": 2
+      "count": 3
     },
     {
       "from": "estimate",
@@ -329,7 +329,7 @@
     "GL/glu.h": 1,
     "GL/glut.h": 1,
     "algorithm": 10,
-    "array": 5,
+    "array": 6,
     "atomic": 3,
     "cctype": 1,
     "cfloat": 5,
@@ -352,7 +352,7 @@
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 21,
+    "memory": 22,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -387,11 +387,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "e9f936e6f8c991b72a35df4914a301f37012f0295cc9d423089a78970b2b9fc9"
+      "sha256": "250e1fa1a1499fa7d22ba4cd7405c37147fb49450f24c1910953c8d70f141882"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "6c03225b7520ba6515e976efbf5b25151cce73cbe42b7ddc552c877dea16969b"
+      "sha256": "a3fd004a62d1dab9ffea7cc39775e107972baf581435be2a4116717184976fbc"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -2093,8 +2093,8 @@
       "path": "include/estimate/charge_estimate_process.h",
       "component_by_directory": "estimate",
       "kind": "header",
-      "sha256": "db297db47fcf4469e18ac2dca537cc4f4ddffcfdcac4597741d188ed7e883b51",
-      "bytes": 1936,
+      "sha256": "f6606f83747c983031052851ff5a94afa8bf0fd6a8e149d68c589c60b9c2c372",
+      "bytes": 2020,
       "includes": [
         {
           "line": 4,
@@ -2211,6 +2211,14 @@
           "target": null
         }
       ]
+    },
+    {
+      "path": "include/estimate/triangle_count_estimate.h",
+      "component_by_directory": "estimate",
+      "kind": "header",
+      "sha256": "8bfc9405b764f172c88000d3b0bf99c197d35ffb43c624beee892dded725c084",
+      "bytes": 700,
+      "includes": []
     },
     {
       "path": "include/generator/curve_publication.h",
@@ -4244,8 +4252,8 @@
       "path": "src/estimate/charge_estimate_process.cpp",
       "component_by_directory": "estimate",
       "kind": "translation_unit",
-      "sha256": "88efebb875ccc6a62b32145b11c503b5aaa707c813515c8d3f68c95f715c95a8",
-      "bytes": 27911,
+      "sha256": "138716797e27ae8a08e5e87a9539c8e0872089908c5518f4390a0bcade348adc",
+      "bytes": 27936,
       "includes": [
         {
           "line": 1,
@@ -4255,14 +4263,21 @@
           "target": "include/estimate/initial_mesh_estimate.h"
         },
         {
-          "line": 3,
+          "line": 2,
+          "spelling": "estimate/triangle_count_estimate.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/triangle_count_estimate.h"
+        },
+        {
+          "line": 4,
           "spelling": "../../include/estimate/charge_estimate_process.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/estimate/charge_estimate_process.h"
         },
         {
-          "line": 5,
+          "line": 6,
           "spelling": "../../include/generator/generator_adaptive.h",
           "form": "quote",
           "scope": "first_party",
@@ -4346,6 +4361,64 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/triangle_adaptive.h"
+        }
+      ]
+    },
+    {
+      "path": "src/estimate/triangle_count_estimate.cpp",
+      "component_by_directory": "estimate",
+      "kind": "translation_unit",
+      "sha256": "0ba37a9a6d5fbdb6ca93ff72ba54b5ce52ddcefacc295664d07025d989e1282b",
+      "bytes": 2269,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "estimate/triangle_count_estimate.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/triangle_count_estimate.h"
+        },
+        {
+          "line": 3,
+          "spelling": "array",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "data/curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
+        },
+        {
+          "line": 7,
+          "spelling": "data/mesh/sub_mesh.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/sub_mesh.h"
+        },
+        {
+          "line": 8,
+          "spelling": "data/patch/patch_bezier.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_bezier.h"
+        },
+        {
+          "line": 9,
+          "spelling": "estimate/initial_mesh_estimate.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/initial_mesh_estimate.h"
         }
       ]
     },
@@ -5526,7 +5599,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 138,
+    "source_anchors": 141,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

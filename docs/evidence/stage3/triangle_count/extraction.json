@@ -1,0 +1,14 @@
+{
+  "revision": "3834d59bd03229c5cf70c4ddad073f5e2f4c74ac",
+  "source": "src/estimate/charge_estimate_process.cpp",
+  "source_git_blob": "faf0b65c293c4b14a6cb3527804324fb80e33655",
+  "source_sha256": "88efebb875ccc6a62b32145b11c503b5aaa707c813515c8d3f68c95f715c95a8",
+  "function_sha256": "87091eba649cd707c5be847f929c43de949e173e8dcecf809a284d3b9949c65b",
+  "adapter_sha256": "1e26f7b8ade98413d7f70107f37212f16bca2f0aca3ab7fd492c1944cf26d867",
+  "changes": [
+    "Verbatim CalculateNumbersTriangle function except the minimal interface class qualifier.",
+    "Minimal InitialMeshEstimate interface uses the exact owned-builder release of the original compatibility method.",
+    "The helper interface delegates to that minimal class; no original result or sample is reclaimed."
+  ],
+  "scope": "Actual extracted caller body and actual construction/dependency units, not the complete ChargeEstimateProcess or its constructor/other wrappers."
+}

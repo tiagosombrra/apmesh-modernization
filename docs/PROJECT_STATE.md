@@ -3,6 +3,16 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
+## Active work: stage 3 slice 26
+
+Candidate triangle counting owns its temporary physical mesh, restores the prior
+patch observer and reclaims only freshly published samples. Existing point,
+parameter and adjacency list-node identity survives. All 159 new outcomes,
+9014 denials and 168 paired returned counts pass; CTest 36/36, 1373 expected
+instrument outcomes and exact model traces pass. Full exact published-head/main
+qualification remains required. Area/error caller roots remain next; stage 3
+stays open. See [scope and audit](evidence/STAGE3_TRIANGLE_COUNT.md).
+
 ## Latest qualified work: stage 3 slice 25
 
 PR #72 integrates head `6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7` as main
