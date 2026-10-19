@@ -1,0 +1,15 @@
+{
+  "entry": "1d3aeb55e2c0aaced170f206f07d2bee4661b92a",
+  "classification": "Behavior-changing observer-lifetime defect repair; no formulas, evaluation order, cache update, numerical acceptance or CLI retry changes.",
+  "callers_log_sha256": "35f27f25d3cf37d97f3a2c9cd6ecc60152aa6208a56dabd23810606b75699933",
+  "original_terminal_probe_git_blob": "0b9e88f74d1ba4bf03b0b24fd0c8463900efc1fc",
+  "original_terminal_probe_sha256": "362d703d7468fdd295ed275d48bb23b8d6fec5ecfd144d7f750bda9444f48826",
+  "findings": [
+    "Production registration calls exist only in TriangleAdaptive construction. SubMesh owns physical vertices and elements and destroys elements first, including populated move assignment. Adapter and both initial/estimator constructors pass SubMesh-owned physical node pointers.",
+    "Serial Model deletes complete meshes; curve sample owners release different node objects from the copied physical vertices. General foreign NodeAdaptive observer copies are not globally repaired.",
+    "Current fixtures declare actual vertex owners before triangle owners or use qualified SubMesh ownership. Controlled parent/sample foreign observer entries remain non-owning and are not consumed after their triangle dies.",
+    "Slice 23 prohibits synthetic triangle copy/move and maintains current vertex registration during ReplaceNode. Arbitrary protected mutation and expired borrowed-node clients remain invalid.",
+    "The historical 31-case element probe permitted an expired final observer after failed adoption. Its oracle is strengthened to require the exact live prefix; older negative reports retain their original probe scope/hashes.",
+    "Estimator hidden/duplicate root ownership remains a static open finding requiring a separate repair. Logical rejection, cache refresh and full-process/parallel/LSan/UBSan remain open."
+  ]
+}

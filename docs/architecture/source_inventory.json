@@ -386,7 +386,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "5631509ce8aa0803096e66b3ddb5786e2b35497d69ee3ba3ed52cb53103eae2e"
+      "sha256": "72fa4c14c3e8b58d4b742cd0cf30252b13096555154004fa89d59f14d6721180"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -398,7 +398,7 @@
     },
     {
       "path": "tests/mesh_memory/CMakeLists.txt",
-      "sha256": "bef0edd0167119fde13774ec56337ed452e0be7a2e8c88db18f85519cd6b68c5"
+      "sha256": "85962c88900bb666620e07c78cea1eb074fc932eb62d5d30feea17eff0e17bf8"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",
@@ -1803,8 +1803,8 @@
       "path": "include/data/mesh/sub_mesh.h",
       "component_by_directory": "data/mesh",
       "kind": "header",
-      "sha256": "454ade132f8b2b0b7f5ea0731701ab85c31bde21c27059d2ceee459204fa6cd0",
-      "bytes": 2135,
+      "sha256": "273d6f9aec08da7b17a6a5db7cd5f4e6d44c6aef41da353042123c7426de72b3",
+      "bytes": 2140,
       "includes": [
         {
           "line": 4,
@@ -2016,8 +2016,8 @@
       "path": "include/data/triangle_adaptive.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "10cd01a74ce0a474f5a14930aafab510bef70e2977425fe04ec892d6d971493d",
-      "bytes": 2562,
+      "sha256": "0d7edd8593c868f4accad6b7bc4bb79c237fc3d0b8fbf853615234bd298de0fe",
+      "bytes": 2726,
       "includes": [
         {
           "line": 4,
@@ -4165,8 +4165,8 @@
       "path": "src/data/triangle_adaptive.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "0006f94cdfd95dc908fbe45309246ea1bffc6b1de4aa2ea3914978d178a95a60",
-      "bytes": 4750,
+      "sha256": "11ecc31b79ce8a826ea4f53cd1f3e597fe61fee46299c698c7b344192061011e",
+      "bytes": 4898,
       "includes": [
         {
           "line": 3,
@@ -5423,7 +5423,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 132,
+    "source_anchors": 133,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

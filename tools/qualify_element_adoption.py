@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Qualify terminal element adoption by the actual SubMesh source unit."""
+"""Qualify element adoption and strict failure cleanup by the actual SubMesh units."""
 
 import argparse
 import hashlib
@@ -71,15 +71,18 @@ def qualify(asan, crt, runtime, output):
                           if key != "observations"}), flush=True)
     report = {
         "status": "passed" if all(case["passed"] for case in results) else "failed",
-        "scope": "Six actual SubMesh/node/triangle production units and the same probe, original "
-                 "Git-pinned without an implementation adapter. Raw SetElement and owning AddElement, "
+        "scope": "Six actual SubMesh/node/triangle production units and the current probe. "
+                 "Slice 24 strengthens the failure oracle to require an exact live observer prefix; "
+                 "historical slice-20 original reports retain their own probe/source scope and hashes. "
+                 "Raw SetElement and owning AddElement, "
                  "empty/populated/null/spare-storage insertion; analytic coordinates/area, IDs/UV, "
                  "ordered slot and successful adjacency identity, move construction, exact single "
                  "destruction and element-before-node terminal teardown. Every measured growth "
                  "ordinal denied once; full fixture owner unwinds before caller handles failure. "
-                 "Existing owned prefix is checked without consuming the failed argument observer. "
-                 "Triangle constructor registration is unchanged and failure does not restore "
-                 "adjacency: no graph reuse/retry/rollback claim. Constructor-before-entry failures, "
+                 "Existing owned prefix and exact observer cleanup are required before rethrow; "
+                 "the failed argument is consumed, not reusable. This terminal driver does not "
+                 "perform fresh adoption; the paired slice-24 actual-unit probe separately does. "
+                 "Constructor-before-entry failures, "
                  "arbitrary subclasses, full-process/parallel memory and estimator root owners remain "
                  "unqualified. Actual ASan UAF/CRT leak/hook controls are required.",
         "executables": {name: {"path": str(path.resolve()),

@@ -13,6 +13,8 @@ public:
   // Construct in n1 -> n2 -> n3 order with three live non-null nodes.
   // Failure removes this construction's registrations; repeated nodes are allowed.
   TriangleAdaptive(NodeAdaptive* n1, NodeAdaptive* n2, NodeAdaptive* n3);
+  // Borrowed vertices must outlive this object, including virtual destruction.
+  // Remove this address from current vertex lists; default null vertices are safe.
   ~TriangleAdaptive() override;
 
   // Node observers identify this object by address; value transfer cannot preserve them.

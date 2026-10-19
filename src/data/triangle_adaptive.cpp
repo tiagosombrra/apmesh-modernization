@@ -36,7 +36,14 @@ TriangleAdaptive::TriangleAdaptive(NodeAdaptive* n1, NodeAdaptive* n2, NodeAdapt
   }
 }
 
-TriangleAdaptive::~TriangleAdaptive() {}
+TriangleAdaptive::~TriangleAdaptive() {
+  if (n1_)
+    n1_->RemoveElementObserver(this);
+  if (n2_)
+    n2_->RemoveElementObserver(this);
+  if (n3_)
+    n3_->RemoveElementObserver(this);
+}
 
 // retorna o i-ésimo nó
 NodeAdaptive TriangleAdaptive::GetNoh(unsigned const int position) const {
