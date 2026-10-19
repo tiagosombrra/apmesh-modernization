@@ -1,6 +1,11 @@
 # Stage 3 slice 26: temporary triangle-count ownership
 
-Candidate qualified; full exact published-head and post-merge main gates remain required.
+PR #74 integrates head `82261a7e305bcde0920ecca0dcb9d7a50893ecc9` as main
+`96ed6ae03906d1385135276b1781f67ea59d9363`, preserving complete tree `51b0e00ec92c84d832ac83a08f65261ccba4d5df`
+(1840 blobs). Full exact-head/main gates pass against the same 567
+protected inputs: CTest 36/36, zero skips, 74 Python controls, twenty-one memory
+batteries/1373 expected outcomes, the retained 1040 scalar sequence comparisons,
+count/factory lint, format/inventory and exact twice-repeated Eistute/Book traces.
 
 Entry main: `3834d59bd03229c5cf70c4ddad073f5e2f4c74ac`.
 Classification: behavior-changing resource-lifetime defect repair, no scientific proposal.
