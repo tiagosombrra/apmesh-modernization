@@ -74,8 +74,8 @@
     {
       "id": "C04",
       "topic": "Physical mesh ownership and node copy",
-      "statement": "MeshAdaptive owns SubMesh objects; SubMesh owns nodes/elements. SetNoh copies ID, position and curvature state into an independent node, clearing foreign element observers. AddNoh transfers unique ownership and preserves identity; SetElement adopts its pointer.",
-      "limits": "The source of SetNoh remains caller-owned. Only this boundary and local reconstruction/move/replacement are instrumented; general NodeAdaptive value copies and full mesh lifecycles remain separate.",
+      "statement": "MeshAdaptive owns SubMesh objects; SubMesh owns nodes/elements. SetNoh copies ID, position and curvature state into an independent node, clearing foreign element observers. AddNoh transfers unique ownership and preserves identity; SetElement adopts its pointer. MeshAdaptive raw SubMesh insertions consume exclusive ownership on entry, before vector growth or position validation. Growth failure leaves existing slots unchanged and destroys the argument; negative positions leave the container unchanged and destroy the consumed argument. Success preserves identity/order and sparse null slots, replacing and destroying any old item.",
+      "limits": "The source of SetNoh remains caller-owned. Only this boundary and local reconstruction/move/replacement are instrumented; general NodeAdaptive value copies and full mesh lifecycles remain separate. MeshAdaptive adoption requires uniquely owned actual SubMesh objects, nonthrowing destructors and no duplicate/re-adopted aliases; SubMesh is not polymorphically deletable. Failure consumes the argument; no reuse of that pointer is valid. Existing graph identity, node adjacency and analytic triangle area, allocation-denied growth, negative/null/nonallocating paths and container move/removal are qualified by isolated actual-unit probes. Successful replacement/removal invalidates foreign observers; caller rebinding is not automatic. SubMesh::SetElement raw adoption, other constructors, full-process/parallel memory and logical rejection remain separate.",
       "evidence": [
         {
           "path": "include/data/mesh/mesh_adaptive.h",
@@ -96,6 +96,18 @@
         {
           "path": "src/data/mesh/sub_mesh.cpp",
           "anchor": "copy->ClearElements();"
+        },
+        {
+          "path": "src/data/mesh/mesh_adaptive.cpp",
+          "anchor": "std::unique_ptr<SubMesh> pending(sub_mesh_adaptive);"
+        },
+        {
+          "path": "src/data/mesh/mesh_adaptive.cpp",
+          "anchor": "sub_meshes_[idx] = std::move(pending);"
+        },
+        {
+          "path": "include/data/mesh/mesh_adaptive.h",
+          "anchor": "Consume exclusive ownership on entry, including allocation failure or a"
         }
       ]
     },

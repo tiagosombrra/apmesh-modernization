@@ -1,5 +1,15 @@
 # Local quality automation
 
+## Active mesh adoption boundary
+
+Stage 3 slice 19 adds application.mesh_adoption_contracts and
+tools/qualify_mesh_adoption.py. The runner requires 36 outcomes: actual graph
+identity/adjacency/area/destruction checks, six full positive growth sweeps,
+five nonallocating paths and deliberate ASan UAF/CRT leak/hook controls.
+Configure tests/mesh_memory in separate MSVC ASan/Debug CRT directories; use
+AP_MESH_ADOPTION_SOURCE_ROOT for a Git-verified original source snapshot.
+Exact delivery gates are pending. See [commands and limits](evidence/STAGE3_MESH_ADOPTION.md).
+
 ## Initial-mesh ownership boundary (PR #58)
 
 Stage 3 slice 18 adds application.initial_mesh_contracts and

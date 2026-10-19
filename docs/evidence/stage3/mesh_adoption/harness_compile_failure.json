@@ -1,0 +1,23 @@
+{
+  "classification": "probe compile failure, not production defect evidence",
+  "cause": "CRT-only hook used Windows TRUE/FALSE macros without a Windows header; use integer 1/0 required by hook interface",
+  "logs_retained": true,
+  "qualification": "incomplete; CRT executable not built",
+  "raw_logs": {
+    "build\\s19-harness-compile-failure\\s19-expanded-s19oa-0.log": "66b1e2250d97402b3a3700b15232218691de036b6577a3738e5bcc993f1ac8f1",
+    "build\\s19-harness-compile-failure\\s19-expanded-s19oa-1.log": "7047b528b041e28e56a446842501e987354e868dd331c5a245f8621693d7d957",
+    "build\\s19-harness-compile-failure\\s19-expanded-s19od-0.log": "aa709a4ca6787c9c3292206c0c3719e283ba9e43fa6988e280884aa471937c58",
+    "build\\s19-harness-compile-failure\\s19-expanded-s19od-1.log": "bc75f0c3249fb55c2880da273afd9440d77bfe68d0f00f3ac9a4e629fb996c57",
+    "build\\s19-harness-compile-failure\\s19-original-mesh.log": "e045303c016e025a05245dd248796190532f2c215bc0d3517a4ccb31e9152882",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-0.log": "f41f8e51cf82819fd23bd758efc04572a7a1c4e0c221d56c607e7a690f12906d",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-1.log": "fb339712eae96fb21dbb84a3f1980f8fa2b56e340d1efaaac263e3604f80cfb4",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-2.log": "b6c2b137b5de024846073a9de791bf6acff67047fbf1f5fcab5088b12fb6ef00",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-3.log": "b16f65c8c21f1f567af97642d02a1f75c94dc9cbf96e10f404285ba5dc80a04b",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-4.log": "e4633d0f4eb7ab8cf8ae9552439bb41bf7c35457a40ce0ba36647378650ba50d",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-5.log": "122571b41adfd5b4e4636c99134b6bf536dbb55418188cd5e89ba7f0da95a3ea",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-6.log": "765489fd1b16cabfd78a744ff35dbeccd0d050fb1bff907dca6e1eafa8d44938",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-7.log": "765489fd1b16cabfd78a744ff35dbeccd0d050fb1bff907dca6e1eafa8d44938",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-8.log": "60ef3154f90df2e3ed4af2bb4c45753dd45cfc164248ca4f1b3bffd661697786",
+    "build\\s19-harness-compile-failure\\s19-original-mesh\\asan-normal-9.log": "62f3448945103c8da0eafc9c2d11b1b1e25a42d9d7069543cc082b465a5366b7"
+  }
+}

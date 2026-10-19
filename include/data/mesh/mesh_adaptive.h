@@ -9,9 +9,9 @@
 class SubMesh;
 
 class MeshAdaptive {
- public:
+public:
   MeshAdaptive();
-  ~MeshAdaptive();  // Defined in .cpp (SubMesh complete type there)
+  ~MeshAdaptive(); // Defined in .cpp (SubMesh complete type there)
 
   // Non-copyable because we own resources.
   // (English comment)
@@ -21,10 +21,11 @@ class MeshAdaptive {
   MeshAdaptive(MeshAdaptive&&) noexcept;
   MeshAdaptive& operator=(MeshAdaptive&&) noexcept;
 
-  // Ownership: this class takes ownership of the raw pointer.
-  // (English comment)
-  void InsertSubMeshAdaptiveByPosition(SubMesh* sub_mesh_adaptive,
-                                       const signed int position);
+  // Consume exclusive ownership on entry, including allocation failure or a
+  // negative position. Arguments must not already belong to another owner.
+  // A negative position leaves the container unchanged and destroys the argument.
+  // Successful replacement destroys the previous item; null publishes an empty slot.
+  void InsertSubMeshAdaptiveByPosition(SubMesh* sub_mesh_adaptive, const signed int position);
   void InsertSubMeshAdaptive(SubMesh* sub_mesh_adaptive);
 
   void RemoveSubMeshAdaptive();
@@ -32,13 +33,12 @@ class MeshAdaptive {
   unsigned int GetNumberSubMeshesAdaptive() const noexcept;
 
   SubMesh* GetSubMeshAdaptiveByPosition(const unsigned int position) noexcept;
-  const SubMesh* GetSubMeshAdaptiveByPosition(
-      const unsigned int position) const noexcept;
+  const SubMesh* GetSubMeshAdaptiveByPosition(const unsigned int position) const noexcept;
 
   void ResizeSubMeshAdaptiveByPosition(const signed int new_size);
 
- protected:
+protected:
   std::vector<std::unique_ptr<SubMesh>> sub_meshes_;
 };
 
-#endif  // DATA_MESH_MESH_ADAPTIVE_H
+#endif // DATA_MESH_MESH_ADAPTIVE_H

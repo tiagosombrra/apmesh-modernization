@@ -3,6 +3,11 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
+Active item: stage 3 slice 19, general MeshAdaptive raw adoption. Reproduce and
+repair ownership before growth/negative return; qualify the actual production
+units and unchanged model traces before exact-head/main closure. Stage 3 stays
+open. See [scope and gates](evidence/STAGE3_MESH_ADOPTION.md).
+
 Current status: stages 0-2 closed for measured scope; stage 3 slice 18
 (PR #58) is qualified at head `84e303da51a6ac4c6cf52dbbee7f5fb30c93696e` and main
 `e398854bba9f06045b71dd1b965505872106d746`. All exact-head/main gates pass; stage 3 remains open.

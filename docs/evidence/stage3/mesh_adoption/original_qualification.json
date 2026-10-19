@@ -1,0 +1,445 @@
+{
+  "status": "failed",
+  "scope": "Actual MeshAdaptive/SubMesh/node/triangle units; unique raw adoption into empty/full/sparse/presized/replacement slots, negative positions, null slots, move/removal and independent area/adjacency/destruction-order checks. All observed growth allocations denied once, nonallocating paths and actual ASan UAF/CRT leak/allocation-hook controls. Original uses Git-pinned actual units without an implementation adapter. Invalid duplicate/base-subclass deletion, foreign observer rebinding, SubMesh raw element adoption, other constructors, parallel/full-process memory and numerical rejection remain outside scope.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s19oa\\RelWithDebInfo\\mesh_adoption_probe.exe",
+      "sha256": "702a4b637c834cb52393d4947a20f7046c8199b8867fe1af332a32f2e855adce"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s19od\\Debug\\mesh_adoption_probe.exe",
+      "sha256": "07aebe934f36731f0a4b3fbeef8af14d686c7f92ab66763e71c81782987fb1e1"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f41f8e51cf82819fd23bd758efc04572a7a1c4e0c221d56c607e7a690f12906d",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:0 size:1 index:0 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "fb339712eae96fb21dbb84a3f1980f8fa2b56e340d1efaaac263e3604f80cfb4",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:1 size:4 index:3 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "b6c2b137b5de024846073a9de791bf6acff67047fbf1f5fcab5088b12fb6ef00",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:2 size:5 index:4 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "b16f65c8c21f1f567af97642d02a1f75c94dc9cbf96e10f404285ba5dc80a04b",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:3 size:7 index:6 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "e4633d0f4eb7ab8cf8ae9552439bb41bf7c35457a40ce0ba36647378650ba50d",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:4 size:3 index:0 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "122571b41adfd5b4e4636c99134b6bf536dbb55418188cd5e89ba7f0da95a3ea",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:5 size:3 index:1 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-6",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "765489fd1b16cabfd78a744ff35dbeccd0d050fb1bff907dca6e1eafa8d44938",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-7",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "765489fd1b16cabfd78a744ff35dbeccd0d050fb1bff907dca6e1eafa8d44938",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": []
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-8",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "60ef3154f90df2e3ed4af2bb4c45753dd45cfc164248ca4f1b3bffd661697786",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:8 size:4 index:3 graph:0 area:0.0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-9",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "62f3448945103c8da0eafc9c2d11b1b1e25a42d9d7069543cc082b465a5366b7",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:9 size:7 index:6 graph:0 area:0.0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-10",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "66b97017fe8bd93d574f262588c4d632561112eeb1aec0bc9d7017ef24b22959",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "mesh_observed=variant:10 size:3 index:0 graph:0 area:0.0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "23dccea2700b7a0a5ebeda57f2b6f73409dff100d39641d4bc4688c23880263c",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:0 size:1 index:0 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "9bc8380cac8053477dca99e4741b69865775dea987a9af80f6a105cab2915665",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:1 size:4 index:3 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "6cc3b4396e30d7bc9f4e72bac5bbc118e1647c9da2b67b1fd6ecd44328150813",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:2 size:5 index:4 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "c4f6bf1e01f28d031fd326a80dfb1d3987d9c391f106873999f2f294c6bb57e1",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:3 size:7 index:6 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "23eb48c337ca362b7668210b51927947d2e45d632f196665b81953bbe4db8815",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:4 size:3 index:0 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "5712d5a6da8306e8059e07d711c1c10e28675838cb62b963315436e62df9b402",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:5 size:3 index:1 graph:1 area:0.5"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-6",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "364c7c01a65408ea45a4778c223bc3ec155c788a1bed5e91e8c8f704e22454a1",
+      "retained_blocks": 13,
+      "retained_bytes": 672,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-7",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "364c7c01a65408ea45a4778c223bc3ec155c788a1bed5e91e8c8f704e22454a1",
+      "retained_blocks": 13,
+      "retained_bytes": 672,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-8",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "c355d628236e7946ff840df9b6da9291ccc021bc0e4ba8003a12cc00d8ea8a34",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:8 size:4 index:3 graph:0 area:0.0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-9",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "4c1805c57ff30f7e7aa0137f0a88d316763ead494ecd3edf4eab475bad2916ee",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:9 size:7 index:6 graph:0 area:0.0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-10",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "e82e03ba8ab801797e01ec53f394533ab4ad160b26bf3d2060d24d672d209f9f",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_observed=variant:10 size:3 index:0 graph:0 area:0.0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "ff00db720c1aa13ce27817afd79892bdd934a7881f3a2787053b2b14cef11dae",
+      "retained_blocks": 13,
+      "retained_bytes": 672,
+      "observations": [
+        "mesh_measured=variant:0 allocations:1",
+        "mesh_denied=variant:0 ordinal:0 attempts:1 released:0 retained:13 bytes:672"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "6b07a979b7aba385ae0f97cda43628aaa73d7a9248479d562ffc504644ab57b2",
+      "retained_blocks": 13,
+      "retained_bytes": 672,
+      "observations": [
+        "mesh_measured=variant:1 allocations:1",
+        "mesh_denied=variant:1 ordinal:0 attempts:1 released:0 retained:13 bytes:672"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "dd2fa72d357198e7eedafd46c340165346db52272221620b8e5fefc9aa87bf7d",
+      "retained_blocks": 13,
+      "retained_bytes": 672,
+      "observations": [
+        "mesh_measured=variant:2 allocations:1",
+        "mesh_denied=variant:2 ordinal:0 attempts:1 released:0 retained:13 bytes:672"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "7472e3a057d74efb5c9d99219bb4daa372366e062abca3f071427b984bff0306",
+      "retained_blocks": 13,
+      "retained_bytes": 672,
+      "observations": [
+        "mesh_measured=variant:3 allocations:1",
+        "mesh_denied=variant:3 ordinal:0 attempts:1 released:0 retained:13 bytes:672"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-8",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "bf03161b82acf0be00bd5bd03acbb87683ff580b866fa95b74b61c16f6b0bc3d",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_measured=variant:8 allocations:1",
+        "mesh_denied=variant:8 ordinal:0 attempts:1 released:1 retained:0 bytes:0",
+        "mesh_failure_sites=variant:8 denied:1/1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-9",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d0c2afe5c40517d914aa86ba4805c9f9f1e3ebc2460d5ac57b8e9460278c8c92",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_measured=variant:9 allocations:1",
+        "mesh_denied=variant:9 ordinal:0 attempts:1 released:1 retained:0 bytes:0",
+        "mesh_failure_sites=variant:9 denied:1/1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "fe16e7af173c4e37d895c07d784faf5dad57c64d7bb3205d85674f55c7524fca",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_noalloc=variant:4 attempts:0 released:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "bb2b81cfe9992b5f389bc6bb3c561c394a94c3d18b09da3e5f671327d203cd96",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_noalloc=variant:5 attempts:0 released:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-6",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "bd5f784a010b68b643a2589d544d3f1cb45cb87b32372709a8c1ad784469b7e2",
+      "retained_blocks": 13,
+      "retained_bytes": 672,
+      "observations": [
+        "mesh_noalloc=variant:6 attempts:0 released:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-7",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "f0c0f64cf1fd0f4883bea630e75912dcdf52dc94ac1f11bb8a71b8462a5102e4",
+      "retained_blocks": 13,
+      "retained_bytes": 672,
+      "observations": [
+        "mesh_noalloc=variant:7 attempts:0 released:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-10",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "172841bcad3a87f6512580eb28bb638af6f1919e062f5c9d01a1292d23846aec",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "mesh_noalloc=variant:10 attempts:0 released:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "ab9a05c154b3e75037d6bae4be3884a5a51e6b26f9805d2d94ee5a0444b51121",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "637d8be7ea8cfd2c37e943c4d52829bae45fafc2793f2b5d4ee3f0f89634a01c",
+      "retained_blocks": 2,
+      "retained_bytes": 112,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ]
+    }
+  ],
+  "raw_report_sha256": "7b5d56416d0e2ecda16342dadab65d6aa3db217a1d8830e1e85d40010b56b861"
+}
