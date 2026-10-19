@@ -1,0 +1,61 @@
+{
+  "classification": "required local environment gate failure; not a production diagnostic",
+  "status": "failed and retained",
+  "cause": "The campaign was started without dot-sourcing build/local-env.ps1; clang-tidy was not on PATH.",
+  "correction": "Load the qualified local tool directories and run a new complete candidate campaign. No source, diagnostic, tolerance, budget or test requirement changed.",
+  "raw_report_sha256": "1e65686d64c6ae9b415d9b62b8a48d161720f156c583bb34de6018488bb04cb8",
+  "failed_command": {
+    "argv": [
+      "C:\\Users\\tiago\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+      "tools/quality.py",
+      "tidy",
+      "src/data/mesh/sub_mesh.cpp",
+      "--build",
+      "build/windows-gcc17"
+    ],
+    "exit_code": 1,
+    "log": "tidy.log",
+    "sha256": "e9b5c798f846920cd2d3c4b693958c69e1cd763f21f02b4d6079dbe64f668e09"
+  },
+  "failed_log": "Quality command failed: Required tool is unavailable: clang-tidy\n",
+  "preceding_ctest": {
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0,
+    "python_controls": 74,
+    "names": [
+      "application.element_adoption_contracts",
+      "application.mesh_adoption_contracts",
+      "application.curve_collection_contracts",
+      "application.curve_copy_contracts",
+      "application.geometry_adoption_contracts",
+      "application.curve_synchronization_contracts",
+      "application.curve_snapshot_contracts",
+      "application.curve_rebuild_contracts",
+      "application.curve_samples_contracts",
+      "application.curve_sample_graph_contracts",
+      "application.curve_sample_lifetime_contracts",
+      "application.initial_mesh_contracts",
+      "application.curve_publication_contracts",
+      "application.uv_lifetime",
+      "application.uv_primitive_contracts",
+      "application.uv_registration_contracts",
+      "application.uv_unowned_cell",
+      "application.uv_tree_contracts",
+      "application.uv_angle_contracts",
+      "application.uv_parametric_contracts",
+      "application.node_lifetime",
+      "tooling.controls",
+      "reference.archived_eistute_artifact",
+      "application.invalid_inputs",
+      "application.boundary_orientation",
+      "application.metric_schema",
+      "application.curve_orientation_arclength",
+      "tooling.tidy_header_scope",
+      "application.smoothing_adjacency_order",
+      "application.valid_input_grammar"
+    ]
+  },
+  "memory_outcomes_before_failure": 999,
+  "model_regression": "not run; the failed campaign is not qualification"
+}

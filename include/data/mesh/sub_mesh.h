@@ -37,7 +37,10 @@ public:
   // retains the source. Foreign element observers are excluded; local triangles
   // register their adjacency after construction. A null source is ignored.
   void SetNoh(NodeAdaptive* noh);
-  // Adopt an element allocated with new. Its nodes must outlive the element.
+  // Consume exclusive ownership on entry, including allocation failure.
+  // The argument must not already be owned; null appends an empty slot.
+  // Its nodes must outlive it. Failure does not undo constructor registration:
+  // terminal owners must unwind before node adjacency is consumed again.
   void SetElement(ElementAdaptive* element);
 
   unsigned int GetNumberNos() const noexcept;

@@ -3,6 +3,9 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
+Active item: stage 3 slice 20, SubMesh raw element adoption. Original pending
+triangle leak reproduced; exact delivery qualification pending.
+
 Latest delivery: stage 3 slice 19 (PR #60); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |

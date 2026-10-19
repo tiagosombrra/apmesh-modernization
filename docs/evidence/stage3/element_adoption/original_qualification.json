@@ -1,0 +1,463 @@
+{
+  "status": "failed",
+  "scope": "Six actual SubMesh/node/triangle production units and the same probe, original Git-pinned without an implementation adapter. Raw SetElement and owning AddElement, empty/populated/null/spare-storage insertion; analytic coordinates/area, IDs/UV, ordered slot and successful adjacency identity, move construction, exact single destruction and element-before-node terminal teardown. Every measured growth ordinal denied once; full fixture owner unwinds before caller handles failure. Existing owned prefix is checked without consuming the failed argument observer. Triangle constructor registration is unchanged and failure does not restore adjacency: no graph reuse/retry/rollback claim. Constructor-before-entry failures, arbitrary subclasses, full-process/parallel memory and estimator root owners remain unqualified. Actual ASan UAF/CRT leak/hook controls are required.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s20oa\\RelWithDebInfo\\element_adoption_probe.exe",
+      "sha256": "bb880ba90d08cff00f3a6134a045c07a2c967ab9b59e844ec4501163e7f6b32d"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s20od\\Debug\\element_adoption_probe.exe",
+      "sha256": "9bfbac39f0d95d5da007723c2ae5083ab79847c283f691477096a62dd154b712"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "5ee49ebc2e8c3df07b6d3b019e88662a85347458e9c5af735c987eb46b3c2716",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "element_triangle=slot:0 id:900 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:1",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:1",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:1",
+        "element_observed=variant:0 prefix:0 slots:1 nonnull:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "df8e0c3b0171a5345db1db938c9311c57bda99849c10f0f547e59b834dfbc3a7",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "element_triangle=slot:0 id:100 area:0.5",
+        "element_triangle=slot:1 id:900 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:2",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:2",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:2",
+        "element_observed=variant:1 prefix:1 slots:2 nonnull:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "895725af45e67dfdb7da4f72c54ef3a273fc535fdde9c0e6b795485ee59693f4",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:0",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:0",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:0",
+        "element_observed=variant:2 prefix:0 slots:1 nonnull:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "c8427c1220d84fbd7a4f7f22a7db8d9e196e827c4d027c6cce734d2abd71166d",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "element_triangle=slot:0 id:100 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:1",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:1",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:1",
+        "element_observed=variant:3 prefix:1 slots:2 nonnull:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "9a0e9a088a0deccd6102ce0d0fe305c7e926306d851a78238985d8fa058647e8",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "element_triangle=slot:0 id:900 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:1",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:1",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:1",
+        "element_observed=variant:4 prefix:0 slots:1 nonnull:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "9b9c1e669c0a9ba78cc11fa3de5dabae8ae776fbdd3a9c65a4cb64d528c1d97a",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "element_triangle=slot:0 id:100 area:0.5",
+        "element_triangle=slot:1 id:900 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:2",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:2",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:2",
+        "element_observed=variant:5 prefix:1 slots:2 nonnull:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f5ac1ecec4fdaa0d5912c3509b81d40e9ed02657b30a64d84abc7f16c39bc313",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:0",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:0",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:0",
+        "element_observed=variant:6 prefix:0 slots:1 nonnull:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d33fefe88d8177fc61088ebd89f018c8c1d0b512be560b965d658536c3e44d6d",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "element_triangle=slot:0 id:100 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:1",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:1",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:1",
+        "element_observed=variant:7 prefix:1 slots:2 nonnull:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "6913c9194d6e1ed487a196a73cad98dd5b8a8c3d8bd2b309e75a7daaecf3ffde",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_triangle=slot:0 id:900 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:1",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:1",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:1",
+        "element_observed=variant:0 prefix:0 slots:1 nonnull:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "ca5cb16a2f57dbf9d655accb82d83b44ea1e3fcf281abc0b27316232d3a5efc4",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_triangle=slot:0 id:100 area:0.5",
+        "element_triangle=slot:1 id:900 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:2",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:2",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:2",
+        "element_observed=variant:1 prefix:1 slots:2 nonnull:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "02e5e5f29c90a0b142800df62189fa322e3053755b6dcc000317273d98b2a3be",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:0",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:0",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:0",
+        "element_observed=variant:2 prefix:0 slots:1 nonnull:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "4deba9636e0bb1dd8f14f55189dcce35fc97cc935f312b57fd37934cdaa47b8f",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_triangle=slot:0 id:100 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:1",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:1",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:1",
+        "element_observed=variant:3 prefix:1 slots:2 nonnull:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "568885016f6f914dc54ab302f8d32d53c28c4bf3b6bd7eca9617b428f585abfd",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_triangle=slot:0 id:900 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:1",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:1",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:1",
+        "element_observed=variant:4 prefix:0 slots:1 nonnull:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "cd556bfa951c0d718bb4d10768b0d136b49ab1d33f06b23c0e06b28b20ac56fc",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_triangle=slot:0 id:100 area:0.5",
+        "element_triangle=slot:1 id:900 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:2",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:2",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:2",
+        "element_observed=variant:5 prefix:1 slots:2 nonnull:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "679bbcb1b80b45f512fd59b26e9c81ede8cf64299615ad496771953c7cd9aaf3",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:0",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:0",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:0",
+        "element_observed=variant:6 prefix:0 slots:1 nonnull:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "80d9092ef6e387b8eec1344791127add352edfc1b2d9a0f565c7c0e13c8ce77d",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_triangle=slot:0 id:100 area:0.5",
+        "element_node=index:0 id:10 xyz:0.0,0.0,0.0 adjacency:1",
+        "element_node=index:1 id:11 xyz:1.0,0.0,0.0 adjacency:1",
+        "element_node=index:2 id:12 xyz:0.0,1.0,0.0 adjacency:1",
+        "element_observed=variant:7 prefix:1 slots:2 nonnull:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "9ffd015ed84fdd5e28cbd715be545f88526e60a2e71b9798a19589c492c104b7",
+      "retained_blocks": 1,
+      "retained_bytes": 160,
+      "observations": [
+        "element_measured=variant:0 prefix:0 allocations:1",
+        "element_denied=variant:0 ordinal:0 attempts:1 complete:0 retained:1 bytes:160"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "1926c0a279abdae1b3edb715b3eadf04bd44a14282291321237c57e535ba0bc5",
+      "retained_blocks": 1,
+      "retained_bytes": 160,
+      "observations": [
+        "element_measured=variant:1 prefix:1 allocations:1",
+        "element_denied=variant:1 ordinal:0 attempts:1 complete:0 retained:1 bytes:160"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "c3119064c4786c92e580fd230fb86768d8955665dba108589dfe9bbbbd8a1ced",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_measured=variant:2 prefix:0 allocations:1",
+        "element_denied=variant:2 ordinal:0 attempts:1 complete:1 retained:0 bytes:0",
+        "element_failure_sites=variant:2 denied:1/1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "141385b9c31a7de470dd21d508c94d6a027b8c565984b5128f0a6760dc614750",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_measured=variant:3 prefix:1 allocations:1",
+        "element_denied=variant:3 ordinal:0 attempts:1 complete:1 retained:0 bytes:0",
+        "element_failure_sites=variant:3 denied:1/1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "9e314c670cdaa0b8ea85d46986ea1eaac704dd2eb3a099eb76b21854dbeb22bf",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_measured=variant:4 prefix:0 allocations:1",
+        "element_denied=variant:4 ordinal:0 attempts:1 complete:1 retained:0 bytes:0",
+        "element_failure_sites=variant:4 denied:1/1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "55377e53c45501098ba399793d35a639695be8269df29ad957c12b18eba4ba70",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_measured=variant:5 prefix:1 allocations:1",
+        "element_denied=variant:5 ordinal:0 attempts:1 complete:1 retained:0 bytes:0",
+        "element_failure_sites=variant:5 denied:1/1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "e950af4e72943a622eb54ffbadae46df0aec80c44151b649535dadd777cd6395",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_measured=variant:6 prefix:0 allocations:1",
+        "element_denied=variant:6 ordinal:0 attempts:1 complete:1 retained:0 bytes:0",
+        "element_failure_sites=variant:6 denied:1/1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "1e07edec99a207ea164be1ef4cd8278b8f0363d7fbc6d04102d6193711c5b5f1",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_measured=variant:7 prefix:1 allocations:1",
+        "element_denied=variant:7 ordinal:0 attempts:1 complete:1 retained:0 bytes:0",
+        "element_failure_sites=variant:7 denied:1/1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d3aea2e9d1000aeeebffa5ff555eee799bf484acbd34a5697fa62d8490d824f6",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_noalloc=variant:1 prefix:5 attempts:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "84643dc9512a34b807e482d0e5f90d05b0c7405698c6ff06165841624885b766",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_noalloc=variant:3 prefix:5 attempts:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "99271431a01fc955f2b885849b12e042926bc1b3fb271cd28db1baa036667073",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_noalloc=variant:5 prefix:5 attempts:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "4f6bcc0f7a5d3d6beb82057eea483b6fdac8c5d3a4259325a882423c4f1ca038",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "element_noalloc=variant:7 prefix:5 attempts:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "67cb87a7a1e24fb40fdd6e92c533065a1859620ef3296a65f3a33eb361ac9e5e",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "d961369fdc030d6325a6f4caa27dac8eaeb76dc698840f46401c645cf4096a9b",
+      "retained_blocks": 2,
+      "retained_bytes": 112,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ]
+    }
+  ],
+  "raw_report_sha256": "a37f309581a27a190da67790a4aa0248fe0e9727e22d17f478163b72db3b7338"
+}

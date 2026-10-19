@@ -3,6 +3,14 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
+## Active work item: stage 3 slice 20
+
+Repair raw element adoption through SubMesh::SetElement. Actual pinned units
+reproduce a leaked triangle after vector allocation denial; delegate through
+the existing owning AddElement entry point. Qualification covers terminal owner
+teardown, not live adjacency rollback. Full candidate/exact-head/main gates
+remain required. See [root cause and limits](evidence/STAGE3_ELEMENT_ADOPTION.md).
+
 ## Latest qualified work: stage 3 slice 19
 
 PR #60 integrates head `bebe4f5273719304fd00967bfaf7ae74de63f351` as main

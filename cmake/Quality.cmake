@@ -4,6 +4,9 @@ if(BUILD_TESTING)
   find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
   add_subdirectory(tests/memory)
   add_subdirectory(tests/mesh_memory)
+  add_test(NAME application.element_adoption_contracts COMMAND element_adoption_probe contracts)
+  set_tests_properties(application.element_adoption_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_test(NAME application.mesh_adoption_contracts COMMAND mesh_adoption_probe contracts)
   set_tests_properties(application.mesh_adoption_contracts
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)

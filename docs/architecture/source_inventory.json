@@ -386,7 +386,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "cbd0a09e3035927486a0563d43dac2f90f8e6a9be88e5170c82229669ad30e0d"
+      "sha256": "1cc474d05613701c2b64d45d64591cdc1d6d53257429d3f319626c4f0e559ebb"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -398,7 +398,7 @@
     },
     {
       "path": "tests/mesh_memory/CMakeLists.txt",
-      "sha256": "30e46c973eebbf0df42f2db4bf46bdbf142c0a26070801b6e2d9eacd60db410f"
+      "sha256": "0f6058eaf23f0ff892505a1f25c2a5aa046eff9ec22d73f8535919ad5aa60509"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",
@@ -1803,8 +1803,8 @@
       "path": "include/data/mesh/sub_mesh.h",
       "component_by_directory": "data/mesh",
       "kind": "header",
-      "sha256": "1a7b256cdef2866906456b1dadcc0e52d772554131d06798f161e654dfd6321c",
-      "bytes": 1677,
+      "sha256": "b06ed7d2fdfc63aebb30dd20459e1f667f46e349eebcf135082bf5cc2c533b7b",
+      "bytes": 1899,
       "includes": [
         {
           "line": 4,
@@ -3937,8 +3937,8 @@
       "path": "src/data/mesh/sub_mesh.cpp",
       "component_by_directory": "data/mesh",
       "kind": "translation_unit",
-      "sha256": "df513cd28d8a635ba50ab14bea34b337df6f9f6676f3c3bbfab9d5aa57fd3a6f",
-      "bytes": 1877,
+      "sha256": "d2763424d2c8a78c8add556cb6b37a9dd0992061deacfa38f867922543960d4e",
+      "bytes": 1837,
       "includes": [
         {
           "line": 1,
@@ -5416,7 +5416,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 124,
+    "source_anchors": 125,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }
