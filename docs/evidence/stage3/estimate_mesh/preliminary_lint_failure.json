@@ -1,0 +1,181 @@
+{
+  "status": "failed",
+  "report_sha256": "78d793fbd65b44fe268e41a079208035151540f329e12d098e83dcb8e51ea240",
+  "required_gate_failures": [
+    {
+      "gate": "estimator-lint",
+      "diagnostic": "clang-analyzer-security.FloatLoopCounter",
+      "count": 4,
+      "interpretation": "Inherited floating induction loops were preserved. Required lint remains failing; no suppression, loop rewrite, stage closure or merge is allowed by this report."
+    }
+  ],
+  "ctest": {
+    "passed": 35,
+    "failed": 0,
+    "skipped": 0,
+    "python_controls": 74,
+    "names": [
+      "application.estimate_mesh_contracts",
+      "application.triangle_lifetime_contracts",
+      "application.triangle_observer_contracts",
+      "application.submesh_lifetime_contracts",
+      "application.triangle_construction_contracts",
+      "application.element_adoption_contracts",
+      "application.mesh_adoption_contracts",
+      "application.curve_collection_contracts",
+      "application.curve_copy_contracts",
+      "application.geometry_adoption_contracts",
+      "application.curve_synchronization_contracts",
+      "application.curve_snapshot_contracts",
+      "application.curve_rebuild_contracts",
+      "application.curve_samples_contracts",
+      "application.curve_sample_graph_contracts",
+      "application.curve_sample_lifetime_contracts",
+      "application.initial_mesh_contracts",
+      "application.curve_publication_contracts",
+      "application.uv_lifetime",
+      "application.uv_primitive_contracts",
+      "application.uv_registration_contracts",
+      "application.uv_unowned_cell",
+      "application.uv_tree_contracts",
+      "application.uv_angle_contracts",
+      "application.uv_parametric_contracts",
+      "application.node_lifetime",
+      "tooling.controls",
+      "reference.archived_eistute_artifact",
+      "application.invalid_inputs",
+      "application.boundary_orientation",
+      "application.metric_schema",
+      "application.curve_orientation_arclength",
+      "tooling.tidy_header_scope",
+      "application.smoothing_adjacency_order",
+      "application.valid_input_grammar"
+    ]
+  },
+  "memory_outcomes": 1212,
+  "new_outcomes": 75,
+  "normal_trace_comparisons": 48,
+  "allocation_denials": 5128,
+  "models": {
+    "eistute": {
+      "repeatability": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "ee325a4f923433748b2e6ac26d2d8bd5866de3e2ca9f00927829e63e69b02012",
+        "configuration_sha256": "7f8d20f4e0bf956266920e209ffafc886b73343c2f23824bf4e834254688be39"
+      },
+      "entry_comparison": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 5,
+        "compared_fields": 105,
+        "differences": []
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3,
+        4
+      ],
+      "run_identity": {
+        "model": "eistute",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 24.89585019997321,
+        "executable_sha256": "ee325a4f923433748b2e6ac26d2d8bd5866de3e2ca9f00927829e63e69b02012",
+        "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+        "input_model": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\input_models\\eistute2.fixed.bp",
+        "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25-candidate\\eistute\\working\\article.conf"
+        ]
+      }
+    },
+    "book": {
+      "repeatability": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "ee325a4f923433748b2e6ac26d2d8bd5866de3e2ca9f00927829e63e69b02012",
+        "configuration_sha256": "2924eb114b2c7982fbfa78c2b5222ab5f41375a359aa60e8438a3b7cb185dfe6"
+      },
+      "entry_comparison": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "csv_audit": {
+        "status": "passed",
+        "rows": 4,
+        "compared_fields": 84,
+        "differences": []
+      },
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3
+      ],
+      "run_identity": {
+        "model": "book",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 6.876530900015496,
+        "executable_sha256": "ee325a4f923433748b2e6ac26d2d8bd5866de3e2ca9f00927829e63e69b02012",
+        "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+        "input_model": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\input_models\\book_v7a.bp",
+        "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25-candidate\\book\\working\\article.conf"
+        ]
+      }
+    }
+  },
+  "repair": "Bound each parameter loop with an integer ceiling, preserve the original floating endpoint predicate and repeated additions, and reject nonpositive degrees. Retain this genuine required-gate failure; no suppression or waived gate."
+}

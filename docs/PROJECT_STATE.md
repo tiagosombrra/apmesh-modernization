@@ -3,6 +3,16 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
+## Active work: stage 3 slice 25
+
+Candidate estimator construction passes all measured gates: one explicit owner,
+pending-resource cleanup, positive-degree bounded induction and nonpositive guards.
+All 77 new outcomes/5128 denials and 1040 exact scalar sequence comparisons pass;
+CTest 35/35, twenty batteries/1214 outcomes and exact repeated model traces pass.
+The earlier four required lint errors are repaired without suppression. Full
+exact published-head and post-merge main gates remain required. Caller root and
+patch/sample lifetimes remain next; stage 3 stays open. See [audit](evidence/STAGE3_ESTIMATE_MESH.md).
+
 ## Latest qualified work: stage 3 slice 24
 
 PR #70 integrates head `7d22766e562669db283bedbf09fab59663546d18` as main

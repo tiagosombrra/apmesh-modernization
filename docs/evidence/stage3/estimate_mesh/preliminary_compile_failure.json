@@ -1,0 +1,5 @@
+{
+  "command": "cmake --build build/s25oa --config RelWithDebInfo --target estimate_mesh_probe --parallel 2",
+  "log_sha256": "b8add049aba55a24b9fa640b2e67e105b14c7d6e070d01157b58d28037f705db",
+  "diagnostic": "Probe tried to take the address of the copying GetNoh result (C2102). Corrected to ordered vertex values plus exact registration identity; no production change or weakened criterion."
+}

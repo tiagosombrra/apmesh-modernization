@@ -37,6 +37,8 @@ class ChargeEstimateProcess {
   double CalculateAreaTriangleMedio(PatchBezier *patch, Timer *timer,
                                     int degree);
   long int CalculateNumbersTriangle(PatchBezier *patch, int degree);
+  // Transfers sole ownership to the caller; no hidden MeshAdaptive owns the result.
+  // Rebind the patch observer before deletion and retain the collective sample owner.
   SubMesh *InitialMeshEstimate(PatchCoons *patch, int degree);
   bool CalculateErroEstimative(MeshAdaptive *mesh, Timer *timer, int degree);
 

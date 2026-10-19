@@ -1,0 +1,7 @@
+{
+  "command": "python build/qual_s25.py candidate",
+  "status": "not executed",
+  "reason": "Refused to overwrite existing 75-case ownership-only output directory. The historical directory was archived under its checked build path; no case was run or discarded by the failed invocation.",
+  "previous_report_sha256": "5a3ce3505c593232c0e00e85172b5436b5aa86392755b6dd45d3b1340753f193",
+  "archived_path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25-candidate-estimate-ownership-only"
+}

@@ -1,0 +1,15 @@
+{
+  "revision": "c6b6a21aaf5bcc298256cd28c1b477cb4291841d",
+  "source": "src/estimate/charge_estimate_process.cpp",
+  "source_git_blob": "7fce20cfc9ad7ec36b648b5246288085ef33f738",
+  "source_sha256": "179585756ad741bcad1dded027bd7ddcc87291d9a059f6d7e1a7ade3915ebe14",
+  "function_sha256": "211135cc2ca40fdac90eb1cab567f6769fb279308ae892d48b201463e78559c3",
+  "original_body_sha256": "93954f8d0fa1e1ff83a1e4b98f443a1e463e3bbb0164c9f00df93815c907d4e9",
+  "adapter_sha256": "c30a95e46acea59ef508cef93413302919f92194a84e986cb3645c4d20876219",
+  "changes": [
+    "Minimal namespace/function signature and includes replace the class interface.",
+    "Verbatim function body except return sub -> return std::unique_ptr<SubMesh>(sub), supplying the caller owner in both experiments.",
+    "No hidden Mesh root or leaked original sample is reclaimed by the adapter."
+  ],
+  "scope": "Actual extracted InitialMeshEstimate function plus actual dependency units; not the complete ChargeEstimateProcess/Generator TU."
+}
