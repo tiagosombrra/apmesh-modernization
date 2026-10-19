@@ -56,14 +56,14 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with twenty qualified ownership/lifecycle slices.
-The latest repairs raw element transfer into SubMesh before vector allocation,
-using the existing owning AddElement entry. CTest 30/30, element adoption 31/31
-with eight allocation denials, fourteen prior batteries and exact repeated
-Eistute/Book accepted/rejected traces pass on the exact head and main.
-See [the latest closure audit](docs/evidence/STAGE3_ELEMENT_ADOPTION.md).
-Constructor adjacency, live-graph reuse, estimator roots and full-process memory
-remain open.
+Stage 3 is in progress with twenty-one qualified ownership/lifecycle slices.
+The latest removes partial node observers when TriangleAdaptive construction
+fails, preserving old list-node identity and successful geometry order. CTest
+31/31, constructor 39/39 with 48 allocation denials, fifteen prior batteries and
+exact repeated Eistute/Book accepted/rejected traces pass on exact head and main.
+See [the latest closure audit](docs/evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
+Ordinary triangle destruction/mesh owner ordering, estimator roots and full-process
+memory remain open.
 
 ## Repository policy
 

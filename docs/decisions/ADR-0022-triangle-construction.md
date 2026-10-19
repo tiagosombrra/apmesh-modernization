@@ -1,6 +1,6 @@
 # ADR-0022: remove partial observer publication on triangle construction failure
 
-Status: accepted design; exact delivery qualification pending.
+Status: accepted; exact published-head and implementation-main gates pass through PR #64.
 
 The parameterized TriangleAdaptive constructor publishes this in three node
 lists before construction completes. If a later list allocation throws, the

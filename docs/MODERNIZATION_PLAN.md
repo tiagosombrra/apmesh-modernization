@@ -3,12 +3,14 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Active item: stage 3 slice 21, TriangleAdaptive constructor registration.
-Qualify exact prior observer/list-node/scalar restoration after allocation failure,
-unchanged successful math and full model traces. Ordinary destruction/mesh move
-ordering remain separate. See [gates](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
+Current status: stages 0-2 closed for measured scope; stage 3 slice 21
+(PR #64) is qualified at head `a6da72630db2747194982e1a2b77cd3203536408` and main
+`6cf041333b83a01f1c081df82620d12f00995d4b`. All exact-head/main gates pass; stage 3 remains open.
+Next audit triangle destruction/observer lifetime with SubMesh owner ordering.
+Constructor restoration does not qualify ordinary destruction, failed adoption
+of completed triangles or full CLI retry. See [audit](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
 
-Current status: stages 0-2 closed for measured scope; stage 3 slice 20
+Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 20
 (PR #62) is qualified at head `dcf6941e944fcd3bf268e7f9a8ecef4f87735d75` and main
 `40106ede082614429639566c64ca3689a7d62c4b`. All exact-head/main gates pass; stage 3 remains open.
 Next isolate TriangleAdaptive construction/adjacency registration under allocation

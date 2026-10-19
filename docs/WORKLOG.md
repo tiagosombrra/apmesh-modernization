@@ -3,10 +3,7 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Active item: stage 3 slice 21, TriangleAdaptive constructor registration;
-original partial publication reproduced, exact delivery gates pending.
-
-Latest delivery: stage 3 slice 20 (PR #62); see the final ledger row.
+Latest delivery: stage 3 slice 21 (PR #64); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -33,9 +30,9 @@ Latest delivery: stage 3 slice 20 (PR #62); see the final ledger row.
 | 2026-10-19, stage 3 slice 18 | PR #58; head 84e303da51a6ac4c6cf52dbbee7f5fb30c93696e, main e398854bba9f06045b71dd1b965505872106d746; evidence/STAGE3_INITIAL_MESH.md | Actual serial constructor owns pending resources and releases center copy source; CTest 28/28, constructor 27/27/400 denials, twelve prior batteries and exact model traces; general raw mesh adoption remains open |
 | 2026-10-19, stage 3 slice 19 | PR #60; head bebe4f5273719304fd00967bfaf7ae74de63f351, main e04a76a6103af5af5b116447c63c4de1ee047a0c; evidence/STAGE3_MESH_ADOPTION.md | Consume SubMesh ownership before growth/negative return; CTest 29/29, mesh 36/36 with six denials, thirteen prior batteries and exact model traces; raw element adoption remains open |
 | 2026-10-19, stage 3 slice 20 | PR #62; head dcf6941e944fcd3bf268e7f9a8ecef4f87735d75, main 40106ede082614429639566c64ca3689a7d62c4b; evidence/STAGE3_ELEMENT_ADOPTION.md | Consume raw elements before vector allocation through owning AddElement; CTest 30/30, element 31/31/eight denials, fourteen prior batteries and exact model traces; constructor adjacency and live-graph reuse remain open |
+| 2026-10-19, stage 3 slice 21 | PR #64; head a6da72630db2747194982e1a2b77cd3203536408, main 6cf041333b83a01f1c081df82620d12f00995d4b; evidence/STAGE3_TRIANGLE_CONSTRUCTION.md | Remove failed constructor observers without allocation; exact list-node restoration for 48 denials, triangle 39/39, CTest 31/31, fifteen prior batteries and exact model traces; ordinary destruction and mesh owner ordering remain open |
 
-Current status: stages 0-2 closed; stage 3 in progress with twenty qualified
-slices; stages 4-11 pending. Next isolate TriangleAdaptive construction/adjacency
-registration under allocation failure. Estimator roots, other constructors,
-populated SubMesh move assignment, logical rejection and full-process/parallel
-memory remain open.
+Current status: stages 0-2 closed; stage 3 in progress with twenty-one qualified
+slices; stages 4-11 pending. Next audit triangle destruction/observer lifetime
+with SubMesh destruction/move ordering. ReplaceNode/copies, estimator roots,
+logical rejection and whole-process/parallel memory remain open.
