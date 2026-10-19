@@ -76,3 +76,7 @@ compact evidence is retained in Git. Read AGENTS.md before making changes.
 The original license, citation and third-party notices are retained. Historical
 artifacts, failed runs and unmeasured coverage must remain distinguishable from
 successful validation. Existing source and experimental repositories are separate.
+
+Stage 3 slice 27 qualifies temporary error evaluator ownership (PR #76);
+see [the bounded ownership and regression audit](docs/evidence/STAGE3_ERROR_ESTIMATE.md).
+Stage 3 remains open; area estimation roots and full-process memory are pending.
