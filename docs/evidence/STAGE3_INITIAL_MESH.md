@@ -1,6 +1,8 @@
 # Stage 3 slice 18: serial InitialMesh ownership
 
-Status: active candidate; exact-head/main delivery qualification pending.
+Status: qualified and integrated through PR #58.
+Head `84e303da51a6ac4c6cf52dbbee7f5fb30c93696e`; implementation main `e398854bba9f06045b71dd1b965505872106d746`.
+Complete tree `490a5c448c277dffb5229e2d2b51ff86574768d5` (1727 blobs), 546 protected inputs.
 Entry main `d4fa37d8a77281027335bc70470f2dc1b0331d52`; 474 original source/header/
 vendor blobs are Git-pinned. Historical source is unchanged.
 
@@ -101,13 +103,33 @@ formulas and acceptance rules are unchanged. No analyzer filter or warning
 suppression was added. Full instrument/numerical regression is rerun after this
 source change.
 
-## Delivery gates and remaining findings
+## Closure audit and remaining findings
 
-The complete working-tree campaign passes GCC build, CTest 28/28 (zero skips,
-74 Python controls), all thirteen memory batteries/932 expected outcomes, lint,
-format/inventory/whitespace and exact repeated Eistute/Book accepted/rejected
-traces. Exact-head and post-merge main validation remain required before
-delivery. Stage 3 is not closed.
+Exact-head and implementation-main campaigns pass full GCC build, CTest 28/28,
+zero skips, 74 Python controls, twelve prior memory batteries (905 expected
+outcomes) and the new 27-outcome/400-denial constructor battery. New-unit lint,
+explicit formatting, inventory and whitespace pass: 139 production files, 65
+units, 74 headers, 22 contracts/121 anchors; the existing six-header cycle stays.
+Twice-repeated Eistute/Book comparisons preserve all nine accepted/rejected OBJ/
+incidence states, 189 CSV fields and 1,168/4,256 last-accepted triangles exactly.
+Every full command/case raw log hash was rechecked before delivery.
+
+Compact candidate/head/main reports, all case identities/outcomes and raw SHA256
+are retained in stage3/initial_mesh. Documentation closure keeps all 546 compiled/
+tool/test/build/input/contract identities unchanged, retaining full instrument/
+numerical evidence against those inputs without claiming a fresh full campaign
+for documentation-only commits.
+
+| Audit scope | Result |
+| --- | --- |
+| Code and ownership | Exclusive pending mesh/element/temporary owners; first successful sample publication transfers to collective owner; completed patch observer only |
+| Tests/instruments | Exact head/main CTest 28/28, 74 Python controls, thirteen batteries/932 expected outcomes; all 400 constructor allocation denials and deliberate controls |
+| Contracts | C07/ADR-0019 specify valid patch/four curves, two ID channels, collective sample ownership, pending-node adjacency teardown and presized raw handoff |
+| Documentation | Plan/state/worklog/quality, source inventory, negative evidence and exact-head/main records agree on measured scope |
+| Scientific scope | Same four exact corner inputs/order, formulas, vertex/UV/ID order and acceptance/stopping rules; sixteen numeric traces and full model regression exact |
+| Failure/coverage inventory | General raw mesh adoption, OpenMP initialization, other constructors, logical rejection and whole-process/parallel/LSan/UBSan remain open |
+
+Only this measured slice is qualified; stage 3 remains open.
 
 Fixture construction, arbitrary/custom patches, other constructors, general
 MeshAdaptive raw adoption, parallel/OpenMP initialization and whole-process/
