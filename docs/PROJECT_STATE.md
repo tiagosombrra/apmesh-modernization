@@ -3,7 +3,22 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Latest qualified work: stage 3 slice 26
+## Current work (candidate; delivery gates pending): stage 3 slice 27
+
+Candidate full gates pass; exact published-head and post-merge main qualification remain required. Stage 3 retains twenty-six qualified slices until both pass.
+
+The temporary error evaluator has one explicit owner; borrowed graph identity,
+270 original/repaired policy decisions, exact curvature observations and 48 new
+instrument outcomes/156062 allocation denials pass for the measured serial scope.
+Compiler header diagnostics and the initial sweep timeout are repaired and retained.
+See [root cause, receipts and closure audit](evidence/STAGE3_ERROR_ESTIMATE.md).
+
+Stage 3 remains open. Next repair area estimation mesh/patch/sample roots while
+preserving error/degree selection. Area orchestration, arbitrary callbacks,
+partial metadata rollback and full-process/parallel/LSan/UBSan remain unqualified.
+Stages 4-11 remain pending.
+
+## Stage 3 slice 26 qualified
 
 PR #74 integrates head `82261a7e305bcde0920ecca0dcb9d7a50893ecc9` as main
 `96ed6ae03906d1385135276b1781f67ea59d9363`, preserving complete tree `51b0e00ec92c84d832ac83a08f65261ccba4d5df`

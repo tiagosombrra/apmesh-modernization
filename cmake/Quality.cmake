@@ -4,6 +4,9 @@ if(BUILD_TESTING)
   find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
   add_subdirectory(tests/memory)
   add_subdirectory(tests/mesh_memory)
+  add_test(NAME application.error_estimate_contracts COMMAND error_estimate_probe contracts)
+  set_tests_properties(application.error_estimate_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_test(NAME application.triangle_count_contracts COMMAND triangle_count_probe contracts)
   set_tests_properties(application.triangle_count_contracts
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)

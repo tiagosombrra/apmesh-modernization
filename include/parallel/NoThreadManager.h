@@ -8,18 +8,18 @@ namespace Parallel {
 class NoThreadManager : public ThreadManager {
  public:
   NoThreadManager(bool sharedParallelismEnabled = true);
-  virtual ~NoThreadManager();
+  ~NoThreadManager() override;
 
-  virtual bool isSharedParallelismEnabled() const;
+  bool isSharedParallelismEnabled() const override;
 
-  virtual void setMaxThreads(Int maxThreads);
-  virtual Int getMaxThreads() const;
+  void setMaxThreads(Int maxThreads) override;
+  Int getMaxThreads() const override;
 
-  virtual bool isInParallel() const;
+  bool isInParallel() const override;
 
-  virtual Int numThreads() const;
+  Int numThreads() const override;
 
-  virtual Int threadId() const;
+  Int threadId() const override;
 
  protected:
 };

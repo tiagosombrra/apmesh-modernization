@@ -23,9 +23,9 @@ class TMCommunicator :
 {
  public:
   TMCommunicator(bool sharedParallelismEnabled = true);
-  virtual ~TMCommunicator();
+  ~TMCommunicator() override;
 
-  virtual Data::IntVector ranks(Int process = -1) const;
+  Data::IntVector ranks(Int process = -1) const override;
 
 #if USE_OPENMP
   using OMPThreadManager::numThreads;
@@ -37,7 +37,7 @@ class TMCommunicator :
   ///  the maxThreads() of the given process.
   virtual Int numThreads(Int process) const;
 
-  virtual Int numWorkers() const;
+  Int numWorkers() const override;
 
   virtual void initThreadCount();
 

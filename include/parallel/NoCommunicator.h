@@ -8,137 +8,137 @@ namespace Parallel {
 class NoCommunicator : public Communicator {
  public:
   NoCommunicator();
-  virtual ~NoCommunicator();
+  ~NoCommunicator() override;
 
-  virtual Int root() const;
+  Int root() const override;
 
-  virtual Int rank() const;
+  Int rank() const override;
 
-  virtual Int numProcesses() const;
+  Int numProcesses() const override;
 
-  virtual std::string processorName() const;
+  std::string processorName() const override;
 
-  virtual bool isMaster() const;
-  virtual bool isSlave() const;
+  bool isMaster() const override;
+  bool isSlave() const override;
 
-  virtual bool isParallel() const;
-  virtual bool isSerial() const;
+  bool isParallel() const override;
+  bool isSerial() const override;
 
-  virtual Int numWorkers() const;
+  Int numWorkers() const override;
 
-  virtual void init() const;
-  virtual void init(Int &argc, char **&argv) const;
-  virtual void finalize() const;
-  virtual void abort(Int error) const;
+  void init() const override;
+  void init(Int &argc, char **&argv) const override;
+  void finalize() const override;
+  void abort(Int error) const override;
 
-  virtual bool isInitialized() const;
-  virtual bool isFinalized() const;
+  bool isInitialized() const override;
+  bool isFinalized() const override;
 
-  virtual void barrier() const;
+  void barrier() const override;
 
   using Parallel::Communicator::packSize;
-  virtual Int packSize(UInt num, enum Type type) const;
+  Int packSize(UInt num, enum Type type) const override;
 
   using Parallel::Communicator::pack;
-  virtual void pack(const void *val, Int size, void *buffer, Int bufferSize,
-                    Int &position, enum Type type) const;
+  void pack(const void *val, Int size, void *buffer, Int bufferSize,
+                    Int &position, enum Type type) const override;
 
   using Parallel::Communicator::unpack;
-  virtual void unpack(void *val, Int size, const void *buffer, Int bufferSize,
-                      Int &position, enum Type type) const;
+  void unpack(void *val, Int size, const void *buffer, Int bufferSize,
+                      Int &position, enum Type type) const override;
 
-  virtual void deleteRequest(UInt id) const;
-  virtual void removeRequest(UInt id, bool posponeDeletion = false) const;
-  virtual Transferable *testRequest(UInt id) const;
-  virtual Transferable *waitRequest(UInt id) const;
+  void deleteRequest(UInt id) const override;
+  void removeRequest(UInt id, bool posponeDeletion = false) const override;
+  Transferable *testRequest(UInt id) const override;
+  Transferable *waitRequest(UInt id) const override;
 
   using Parallel::Communicator::broadcast;
-  virtual void broadcast(void *val, Int size, enum Type type, Int root) const;
+  void broadcast(void *val, Int size, enum Type type, Int root) const override;
 
   using Parallel::Communicator::scatter;
-  virtual void scatter(const void *sendBuffer, Int sendCount,
+  void scatter(const void *sendBuffer, Int sendCount,
                        void *receiveBuffer, Int receiveCount, enum Type type,
-                       Int root) const;
+                       Int root) const override;
   using Parallel::Communicator::scatterv;
-  virtual void scatterv(const void *sendBuffer, const Int sendCounts[],
+  void scatterv(const void *sendBuffer, const Int sendCounts[],
                         const Int displacements[], void *receiveBuffer,
-                        Int receiveCount, enum Type type, Int root) const;
+                        Int receiveCount, enum Type type, Int root) const override;
 
   using Parallel::Communicator::gather;
-  virtual void gather(const void *sendBuffer, Int sendCount,
+  void gather(const void *sendBuffer, Int sendCount,
                       void *receiveBuffer, Int receiveCount, enum Type type,
-                      Int root) const;
+                      Int root) const override;
   using Parallel::Communicator::gatherv;
-  virtual void gatherv(const void *sendBuffer, Int sendCount,
+  void gatherv(const void *sendBuffer, Int sendCount,
                        void *receiveBuffer, const Int receiveCounts[],
                        const Int displacements[], enum Type type,
-                       Int root) const;
+                       Int root) const override;
 
   using Parallel::Communicator::allGather;
-  virtual void allGather(const void *sendBuffer, void *receiveBuffer, Int count,
-                         enum Type type) const;
+  void allGather(const void *sendBuffer, void *receiveBuffer, Int count,
+                         enum Type type) const override;
   using Parallel::Communicator::allGatherv;
-  virtual void allGatherv(const void *sendBuffer, Int sendCount,
+  void allGatherv(const void *sendBuffer, Int sendCount,
                           void *receiveBuffer, const Int receiveCounts[],
-                          const Int displacements[], enum Type type) const;
+                          const Int displacements[], enum Type type) const override;
 
   using Parallel::Communicator::allToAll;
-  virtual void allToAll(const void *sendBuffer, void *receiveBuffer, Int count,
-                        enum Type type) const;
+  void allToAll(const void *sendBuffer, void *receiveBuffer, Int count,
+                        enum Type type) const override;
   using Parallel::Communicator::allToAllv;
-  virtual void allToAllv(const void *sendBuffer, const Int sendCounts[],
+  void allToAllv(const void *sendBuffer, const Int sendCounts[],
                          const Int sendDisplacements[], void *receiveBuffer,
                          const Int receiveCounts[],
                          const Int receiveDisplacements[],
-                         enum Type type) const;
+                         enum Type type) const override;
 
   using Parallel::Communicator::send;
-  virtual void send(const void *buffer, Int size, enum Type type, Int process,
-                    Int tag) const;
+  void send(const void *buffer, Int size, enum Type type, Int process,
+                    Int tag) const override;
   using Parallel::Communicator::ssend;
-  virtual void ssend(const void *buffer, Int size, enum Type type, Int process,
-                     Int tag) const;
+  void ssend(const void *buffer, Int size, enum Type type, Int process,
+                     Int tag) const override;
   using Parallel::Communicator::bsend;
-  virtual void bsend(const void *buffer, Int size, enum Type type, Int process,
-                     Int tag) const;
+  void bsend(const void *buffer, Int size, enum Type type, Int process,
+                     Int tag) const override;
   using Parallel::Communicator::rsend;
-  virtual void rsend(const void *buffer, Int size, enum Type type, Int process,
-                     Int tag) const;
+  void rsend(const void *buffer, Int size, enum Type type, Int process,
+                     Int tag) const override;
 
   using Parallel::Communicator::isend;
-  virtual UInt isend(const void *buffer, Int size, enum Type type, Int process,
-                     Int tag) const;
+  UInt isend(const void *buffer, Int size, enum Type type, Int process,
+                     Int tag) const override;
   using Parallel::Communicator::issend;
-  virtual UInt issend(const void *buffer, Int size, enum Type type, Int process,
-                      Int tag) const;
+  UInt issend(const void *buffer, Int size, enum Type type, Int process,
+                      Int tag) const override;
   using Parallel::Communicator::ibsend;
-  virtual UInt ibsend(const void *buffer, Int size, enum Type type, Int process,
-                      Int tag) const;
+  UInt ibsend(const void *buffer, Int size, enum Type type, Int process,
+                      Int tag) const override;
   using Parallel::Communicator::irsend;
-  virtual UInt irsend(const void *buffer, Int size, enum Type type, Int process,
-                      Int tag) const;
+  UInt irsend(const void *buffer, Int size, enum Type type, Int process,
+                      Int tag) const override;
 
   using Parallel::Communicator::receive;
-  virtual void receive(void *buffer, Int size, enum Type type, Int process,
-                       Int tag) const;
+  void receive(void *buffer, Int size, enum Type type, Int process,
+                       Int tag) const override;
   using Parallel::Communicator::ireceive;
-  virtual UInt ireceive(void *buffer, Int size, enum Type type, Int process,
-                        Int tag) const;
+  UInt ireceive(void *buffer, Int size, enum Type type, Int process,
+                        Int tag) const override;
 
   using Parallel::Communicator::reduce;
-  virtual void reduce(const void *sendBuffer, void *receiveBuffer, Int size,
-                      enum Type type, enum Operation operation, Int root) const;
+  void reduce(const void *sendBuffer, void *receiveBuffer, Int size,
+                      enum Type type, enum Operation operation, Int root) const override;
 
   using Parallel::Communicator::allReduce;
-  virtual void allReduce(const void *sendBuffer, void *receiveBuffer, Int size,
-                         enum Type type, enum Operation operation) const;
+  void allReduce(const void *sendBuffer, void *receiveBuffer, Int size,
+                         enum Type type, enum Operation operation) const override;
 
   using Parallel::Communicator::reduceScatter;
-  virtual void reduceScatter(const void *sendBuffer, void *receiveBuffer,
+  void reduceScatter(const void *sendBuffer, void *receiveBuffer,
                              Int receiveCounts[], enum Type type,
-                             enum Operation operation) const;
+                             enum Operation operation) const override;
 
-  virtual Transferable *unpack(Package &p) const;
+  Transferable *unpack(Package &p) const override;
 
  protected:
 };

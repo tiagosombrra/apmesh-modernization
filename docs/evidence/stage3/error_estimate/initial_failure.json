@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "kind": "MSVC probe compilation",
+  "log": "build\\s27-expanded-s27a-1.log",
+  "log_sha256": "eaf2ffb3225d8d777e7fbbd3b36a079638ea11538938da347ec23b81efee9201",
+  "finding": "Existing CurvatureDiscrete uses M_PI; MSVC requires _USE_MATH_DEFINES before cmath. The dedicated error probe now requests this documented CRT constant exposure. No numerical implementation, diagnostic suppression or acceptance criterion changed.",
+  "measured": "Compilation failed before execution; no test success inferred."
+}

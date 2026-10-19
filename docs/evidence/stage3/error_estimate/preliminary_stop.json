@@ -1,0 +1,42 @@
+{
+  "qualification_pid_excluded": 3812,
+  "children": [
+    {
+      "ProcessId": 9716,
+      "ExecutablePath": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s27d\\Debug\\error_estimate_probe.exe",
+      "CommandLine": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s27d\\Debug\\error_estimate_probe.exe failure-4-4-46688"
+    }
+  ],
+  "harness": {
+    "command": "python tools/qualify_error_estimate.py --asan build/s27a/RelWithDebInfo/error_estimate_probe.exe --crt build/s27d/Debug/error_estimate_probe.exe --runtime \"C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64\" --output build/s27-candidate-error",
+    "pid": 28076
+  },
+  "interpretation": "Incomplete exploratory allocation coverage is unqualified; no 48-outcome success is inferred.",
+  "reason": "The full frozen-input candidate campaign independently repeats the complete battery with the repaired headers. Stop the superseded exploratory run; preserve all partial logs. No formal required gate is stopped or retried.",
+  "status": "interrupted-preliminary-not-qualification",
+  "retained_logs": {
+    "count": 4792,
+    "inventory": "build/s27-preliminary-logs.json",
+    "inventory_sha256": "abfa07ad113cecb00f52c1ee8985f84182dbe0d561437984761529daab29c1ba"
+  },
+  "binaries": {
+    "build/s27a/RelWithDebInfo/error_estimate_probe.exe": "9dbfca98507e62e487f0db221bcb53048c8af191a0b4f0cdac7c207df45c62d7",
+    "build/s27d/Debug/error_estimate_probe.exe": "8021c1f7229832041fd72edc3a865783b70cd4e884f3e8b1826fbe94c7322200"
+  },
+  "complete_group_logs": [
+    "crt-failure-0-1.log",
+    "crt-failure-0-2.log",
+    "crt-failure-0-4.log",
+    "crt-failure-1-1.log",
+    "crt-failure-1-2.log",
+    "crt-failure-1-4.log",
+    "crt-failure-2-1.log",
+    "crt-failure-2-2.log",
+    "crt-failure-2-4.log",
+    "crt-failure-3-1.log",
+    "crt-failure-3-2.log",
+    "crt-failure-3-4.log",
+    "crt-failure-4-1.log",
+    "crt-failure-4-2.log"
+  ]
+}

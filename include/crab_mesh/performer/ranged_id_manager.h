@@ -9,10 +9,10 @@ class RangedIdManager : public Performer::IdManager {
  public:
   RangedIdManager(ULInt id = 1, ULInt min = 1, ULInt offset = 1,
                   ULInt range = 1, UInt size = 1);
-  virtual ~RangedIdManager();
+  ~RangedIdManager() override;
 
   using Performer::IdManager::setId;
-  virtual void setId(UInt i, ULInt id);
+  void setId(UInt i, ULInt id) override;
 
   virtual void setMin(UInt i, ULInt min);
   virtual void setMin(ULInt min);
@@ -25,8 +25,8 @@ class RangedIdManager : public Performer::IdManager {
   virtual void setRange(ULInt range);
   virtual ULInt getRange() const;
 
-  virtual ULInt next(UInt i);
-  virtual ULInt next();
+  ULInt next(UInt i) override;
+  ULInt next() override;
 
  protected:
   virtual void adjust(UInt i);

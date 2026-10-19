@@ -316,3 +316,51 @@ else()
     target_link_options(triangle_count_probe PRIVATE -static -static-libgcc -static-libstdc++)
   endif()
 endif()
+
+find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
+set(error_backend "${CMAKE_CURRENT_BINARY_DIR}/error_estimate_backend.cpp")
+add_custom_command(OUTPUT "${error_backend}"
+  COMMAND "${Python3_EXECUTABLE}" "${default_curve_root}/tools/extract_error_estimate_backend.py"
+          --root "${AP_MESH_CURVE_SOURCE_ROOT}" --output "${error_backend}"
+  DEPENDS "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/generator_adaptive.cpp"
+          "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/charge_estimate_process.cpp"
+          "${default_curve_root}/tools/extract_error_estimate_backend.py"
+  VERBATIM)
+set(AP_MESH_ERROR_ESTIMATE_IMPLEMENTATION "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/error_estimate.cpp" CACHE FILEPATH "Error evaluator caller implementation")
+add_executable(error_estimate_probe error_estimate_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_coons.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/node_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/element_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/triangle_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/mesh/sub_mesh.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/mesh/mesh_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/geometry.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/id_manager.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/ranged_id_manager.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_sample_lifetime.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/initial_mesh_estimate.cpp"
+  "${AP_MESH_ERROR_ESTIMATE_IMPLEMENTATION}"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/input_output/write_obj_file.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/curvature/curvature_analytical.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/curvature/curvature_discrete.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/curvature/adjacent.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/timer/timer.cpp"
+  "${CMAKE_CURRENT_BINARY_DIR}/error_estimate_backend.cpp")
+target_compile_features(error_estimate_probe PRIVATE cxx_std_17)
+target_include_directories(error_estimate_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include" "${default_curve_root}/include")
+if(MSVC)
+  target_compile_options(error_estimate_probe PRIVATE /utf-8 /W4 /EHsc /permissive- /Zc:nrvo-)
+  target_compile_definitions(error_estimate_probe PRIVATE _USE_MATH_DEFINES)
+  target_compile_definitions(error_estimate_probe PRIVATE $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(error_estimate_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(error_estimate_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+else()
+  target_compile_options(error_estimate_probe PRIVATE -fno-elide-constructors)
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(error_estimate_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endif()

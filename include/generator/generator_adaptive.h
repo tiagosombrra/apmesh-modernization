@@ -1,7 +1,11 @@
 #ifndef GENERATOR_GENERATOR_ADAPTIVE_H
 #define GENERATOR_GENERATOR_ADAPTIVE_H
 
+#include "../data/definitions.h"
+
+#if USE_OPENMP
 #include <omp.h>
+#endif
 #include <list>
 #include <map>
 #include <memory>
@@ -12,7 +16,6 @@
 #include "../crab_mesh/performer/ranged_id_manager.h"
 #include "../curvature/curvature_analytical.h"
 #include "../curvature/curvature_discrete.h"
-#include "../data/definitions.h"
 #include "../data/node_adaptive.h"
 #include "../data/patch/patch_bezier.h"
 #include "../data/patch/patch_coons.h"
