@@ -47,8 +47,7 @@ void SubMesh::SetNoh(NodeAdaptive* noh) {
 }
 
 void SubMesh::SetElement(ElementAdaptive* element) {
-  // Takes ownership of element (must be allocated with new).
-  elements_.emplace_back(element);
+  AddElement(std::unique_ptr<ElementAdaptive>(element));
 }
 
 unsigned int SubMesh::GetNumberNos() const noexcept {

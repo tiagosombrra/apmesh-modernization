@@ -74,8 +74,8 @@
     {
       "id": "C04",
       "topic": "Physical mesh ownership and node copy",
-      "statement": "MeshAdaptive owns SubMesh objects; SubMesh owns nodes/elements. SetNoh copies ID, position and curvature state into an independent node, clearing foreign element observers. AddNoh transfers unique ownership and preserves identity; SetElement adopts its pointer. MeshAdaptive raw SubMesh insertions consume exclusive ownership on entry, before vector growth or position validation. Growth failure leaves existing slots unchanged and destroys the argument; negative positions leave the container unchanged and destroy the consumed argument. Success preserves identity/order and sparse null slots, replacing and destroying any old item.",
-      "limits": "The source of SetNoh remains caller-owned. Only this boundary and local reconstruction/move/replacement are instrumented; general NodeAdaptive value copies and full mesh lifecycles remain separate. MeshAdaptive adoption requires uniquely owned actual SubMesh objects, nonthrowing destructors and no duplicate/re-adopted aliases; SubMesh is not polymorphically deletable. Failure consumes the argument; no reuse of that pointer is valid. Existing graph identity, node adjacency and analytic triangle area, allocation-denied growth, negative/null/nonallocating paths and container move/removal are qualified by isolated actual-unit probes. Successful replacement/removal invalidates foreign observers; caller rebinding is not automatic. SubMesh::SetElement raw adoption, other constructors, full-process/parallel memory and logical rejection remain separate.",
+      "statement": "MeshAdaptive owns SubMesh objects; SubMesh owns nodes/elements. SetNoh copies ID, position and curvature state into an independent node, clearing foreign element observers. AddNoh transfers unique ownership and preserves identity; SetElement consumes an exclusive raw argument before any vector allocation by delegating to the owning AddElement entry point. Success preserves ordered identity and null slots; failure destroys the argument and preserves existing owned slots. MeshAdaptive raw SubMesh insertions consume exclusive ownership on entry, before vector growth or position validation. Growth failure leaves existing slots unchanged and destroys the argument; negative positions leave the container unchanged and destroy the consumed argument. Success preserves identity/order and sparse null slots, replacing and destroying any old item.",
+      "limits": "The source of SetNoh remains caller-owned. Only this boundary and local reconstruction/move/replacement are instrumented; general NodeAdaptive value copies and full mesh lifecycles remain separate. MeshAdaptive adoption requires uniquely owned actual SubMesh objects, nonthrowing destructors and no duplicate/re-adopted aliases; SubMesh is not polymorphically deletable. Failure consumes the argument; no reuse of that pointer is valid. Existing graph identity, node adjacency and analytic triangle area, allocation-denied growth, negative/null/nonallocating paths and container move/removal are qualified by isolated actual-unit probes. Successful replacement/removal invalidates foreign observers; caller rebinding is not automatic. Other constructors, full-process/parallel memory and logical rejection remain separate. Element adoption qualification covers actual triangles with live exclusively owned nodes, empty/populated/null/spare-storage layouts, normal identity/area/coordinates/IDs/UV/adjacency and allocation-free terminal owner unwinding. Constructors have already registered adjacency before entry; deletion does not unregister or restore it. Failure requires terminal teardown without consuming the failed argument observer: there is no graph-reuse/retry/rollback guarantee. Constructor-before-entry failure, populated SubMesh move assignment and arbitrary element subclasses remain unqualified.",
       "evidence": [
         {
           "path": "include/data/mesh/mesh_adaptive.h",
@@ -91,7 +91,7 @@
         },
         {
           "path": "src/data/mesh/sub_mesh.cpp",
-          "anchor": "elements_.emplace_back(element);"
+          "anchor": "AddElement(std::unique_ptr<ElementAdaptive>(element));"
         },
         {
           "path": "src/data/mesh/sub_mesh.cpp",
@@ -108,6 +108,10 @@
         {
           "path": "include/data/mesh/mesh_adaptive.h",
           "anchor": "Consume exclusive ownership on entry, including allocation failure or a"
+        },
+        {
+          "path": "include/data/mesh/sub_mesh.h",
+          "anchor": "terminal owners must unwind before node adjacency is consumed again."
         }
       ]
     },
@@ -115,7 +119,7 @@
       "id": "C05",
       "topic": "Physical topology and caches",
       "statement": "TriangleAdaptive borrows three NodeAdaptive pointers, registers itself in each adjacency and caches normal, area and angles. NodeAdaptive adjacency is an observer list.",
-      "limits": "General node copies retain observer lists; SubMesh::SetNoh explicitly clears them. Triangle removal, ReplaceNode, coordinate mutation, cache refresh and wider destruction paths remain unqualified.",
+      "limits": "General node copies retain observer lists; SubMesh::SetNoh explicitly clears them. Triangle removal, ReplaceNode, coordinate mutation, cache refresh and wider destruction paths remain unqualified. Raw/owning element-adoption failure can leave the constructor-registered final node observers expired; bounded terminal owner destruction clears those lists without dereferencing them. This does not qualify exceptional graph reuse or repair partial TriangleAdaptive constructor registration.",
       "evidence": [
         {
           "path": "src/data/triangle_adaptive.cpp",

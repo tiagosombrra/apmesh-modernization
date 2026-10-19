@@ -1,5 +1,15 @@
 # Local quality automation
 
+## Active element adoption boundary
+
+Stage 3 slice 20 adds application.element_adoption_contracts and
+tools/qualify_element_adoption.py. Separate actual-unit MSVC ASan/CRT builds
+require 31 outcomes: raw/owning nonnull/null cases, eight complete positive
+allocation sweeps, four measured spare-storage paths and real UAF/leak/hook
+controls. Fixture owners unwind before terminal failure handling; no expired
+argument observer is consumed and no graph-reuse/rollback claim is made.
+Full delivery gates are pending. See [commands and limits](evidence/STAGE3_ELEMENT_ADOPTION.md).
+
 ## Mesh adoption boundary (PR #60)
 
 Stage 3 slice 19 adds application.mesh_adoption_contracts and
