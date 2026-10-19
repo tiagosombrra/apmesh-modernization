@@ -15,12 +15,22 @@ public:
   TriangleAdaptive(NodeAdaptive* n1, NodeAdaptive* n2, NodeAdaptive* n3);
   ~TriangleAdaptive() override;
 
+  // Node observers identify this object by address; value transfer cannot preserve them.
+  TriangleAdaptive(const TriangleAdaptive&) = delete;
+  TriangleAdaptive& operator=(const TriangleAdaptive&) = delete;
+  TriangleAdaptive(TriangleAdaptive&&) = delete;
+  TriangleAdaptive& operator=(TriangleAdaptive&&) = delete;
+
   void CalculateArea() override;   // OBS: Não normalizar a normal!!!!
   void CalculateNormal() override; // OBS: Não normalizar a normal!
 
   NodeAdaptive GetNoh(unsigned const int position) const override;
   double GetAngle(const NodeAdaptive& n) override;
 
+  // Replace the first matching vertex and transfer one existing observer list node.
+  // Same/absent vertices are no-ops. A matched vertex requires live non-null nodes
+  // and an existing registration; invalid arguments throw before mutation.
+  // Geometry caches and UVs are unchanged; this operation does not refresh geometry.
   void ReplaceNode(const NodeAdaptive* old_node, NodeAdaptive* new_node);
   double CalculateQualityTriangle();
 

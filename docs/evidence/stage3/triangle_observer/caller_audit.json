@@ -1,0 +1,25 @@
+{
+  "entry": "83e6f5a591274602e1702b3d47d9e9736b511124",
+  "classification": "Behavior-changing observer-consistency defect repair and explicit identity API tightening; no formula, evaluation order or numerical-policy changes.",
+  "search_argv": [
+    "rg",
+    "-n",
+    "ReplaceNode|TriangleAdaptive\\s+[A-Za-z_]|(n1_|n2_|n3_)\\s*=",
+    "src",
+    "include",
+    "tests",
+    "--glob",
+    "*.cpp",
+    "--glob",
+    "*.h"
+  ],
+  "search_log_sha256": "2f79d2dfa238264784c449e2d50c87a3c0e993ab17f7e98026e8825961db6dce",
+  "findings": [
+    "First-party production matches of ReplaceNode are declaration/definition only; no direct TriangleAdaptive value-copy/move consumers found. Static lexical search is not alias, external-client or preprocessor/compiler proof.",
+    "Implicit value copies publish no fresh object identity in node observer lists. Moving had been accepted through copying because the user-declared destructor suppresses an implicit move member.",
+    "ReplaceNode rewrites only the first raw vertex pointer and leaves original/destination adjacency inconsistent. A list-node splice repairs this without copying lists or allocating.",
+    "Ordinary destruction is unchanged and empty. Constructor-failure rollback remains valid; completed-triangle destruction/adoption failure requires separate qualification.",
+    "Geometry caches are intentionally unchanged by replacement. Their refresh policy for different coordinates, general NodeAdaptive value copying, protected vertex mutation and arbitrary subclasses remain open.",
+    "SubMesh owner ordering from slice 22 remains qualified. Estimator root ownership, logical rejection and whole-process/parallel/LSan/UBSan remain open."
+  ]
+}

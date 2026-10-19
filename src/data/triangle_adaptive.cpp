@@ -3,6 +3,7 @@
 #include "../../include/data/triangle_adaptive.h"
 
 #include <iostream>
+#include <stdexcept>
 
 extern double TOLERANCE;
 
@@ -109,13 +110,25 @@ void TriangleAdaptive::CalculateNormal() {
 }
 
 void TriangleAdaptive::ReplaceNode(const NodeAdaptive* old_node, NodeAdaptive* new_node) {
+  if (old_node == new_node)
+    return;
+
+  NodeAdaptive** vertex = nullptr;
   if (this->n1_ == old_node) {
-    this->n1_ = new_node;
+    vertex = &n1_;
   } else if (this->n2_ == old_node) {
-    this->n2_ = new_node;
+    vertex = &n2_;
   } else if (this->n3_ == old_node) {
-    this->n3_ = new_node;
+    vertex = &n3_;
   }
+  if (!vertex)
+    return;
+  if (!new_node)
+    throw std::invalid_argument("Triangle replacement requires a non-null destination node");
+  if (!*vertex || !(*vertex)->MoveElementObserverTo(this, *new_node))
+    throw std::logic_error("Triangle replacement requires an existing vertex registration");
+
+  *vertex = new_node;
 }
 
 double TriangleAdaptive::CalculateQualityTriangle() {

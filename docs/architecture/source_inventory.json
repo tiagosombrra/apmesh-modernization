@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 537,
+    "literal_include_directives": 538,
     "first_party_include_edges": 313
   },
   "cross_component_directives": [
@@ -359,7 +359,7 @@
     "queue": 2,
     "set": 2,
     "sstream": 6,
-    "stdexcept": 7,
+    "stdexcept": 8,
     "stdio.h": 1,
     "string": 6,
     "sys/time.h": 2,
@@ -386,7 +386,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "81c6ddd71b74140ae8a4cb13a3c0779929dcdd79ab5f15bd03584a51b41d7fff"
+      "sha256": "5631509ce8aa0803096e66b3ddb5786e2b35497d69ee3ba3ed52cb53103eae2e"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -398,7 +398,7 @@
     },
     {
       "path": "tests/mesh_memory/CMakeLists.txt",
-      "sha256": "98e56ca7c7d6098c535b55efd23cedb5bc8eb62999adbd5be7bf33271e9ae498"
+      "sha256": "bef0edd0167119fde13774ec56337ed452e0be7a2e8c88db18f85519cd6b68c5"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",
@@ -1856,8 +1856,8 @@
       "path": "include/data/node_adaptive.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "fa03492282359da0cce394ec9a6109db532c4e58c014511a203a3d0268970643",
-      "bytes": 1390,
+      "sha256": "cfeddd179bddc2a6c6237e96b94391a8d923a0f1282098f64d394321eb4bbc65",
+      "bytes": 1646,
       "includes": [
         {
           "line": 5,
@@ -2016,8 +2016,8 @@
       "path": "include/data/triangle_adaptive.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "78df2f1379f58738e0097a83cd2caf4ee6ccf954d8d61e4d893ede39b9ba1b84",
-      "bytes": 1912,
+      "sha256": "10cd01a74ce0a474f5a14930aafab510bef70e2977425fe04ec892d6d971493d",
+      "bytes": 2562,
       "includes": [
         {
           "line": 4,
@@ -3990,8 +3990,8 @@
       "path": "src/data/node_adaptive.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "eb670346a82046665ff6d3606d9486304d660a7710f9f5c0639173771063c7ad",
-      "bytes": 1883,
+      "sha256": "f94fbb328001b8a5690999135b332161210145a71313d036c578017e378f4a9b",
+      "bytes": 2299,
       "includes": [
         {
           "line": 1,
@@ -4165,8 +4165,8 @@
       "path": "src/data/triangle_adaptive.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "7b8bfaec43cee001bea87c41af934438fb8b69153f04578e5c1566d4244974f2",
-      "bytes": 4350,
+      "sha256": "0006f94cdfd95dc908fbe45309246ea1bffc6b1de4aa2ea3914978d178a95a60",
+      "bytes": 4750,
       "includes": [
         {
           "line": 3,
@@ -4178,6 +4178,13 @@
         {
           "line": 5,
           "spelling": "iostream",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "stdexcept",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -5416,7 +5423,7 @@
   ],
   "contract_traceability": {
     "contracts": 22,
-    "source_anchors": 129,
+    "source_anchors": 132,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

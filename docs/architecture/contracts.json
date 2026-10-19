@@ -126,8 +126,8 @@
     {
       "id": "C05",
       "topic": "Physical topology and caches",
-      "statement": "TriangleAdaptive borrows three NodeAdaptive pointers, registers itself in each adjacency and caches normal, area and angles. NodeAdaptive adjacency is an observer list. Parameterized TriangleAdaptive construction registers in original vertex order and removes every matching fresh-this observer on C++ construction failure before rethrowing. NodeAdaptive::RemoveElementObserver removes pointer entries without deleting elements or allocating. Existing list nodes, order, null markers and scalar state are preserved, including repeated vertex nodes.",
-      "limits": "General node copies retain observer lists; SubMesh::SetNoh explicitly clears them. Triangle removal, ReplaceNode, coordinate mutation, cache refresh and wider destruction paths remain unqualified. Raw/owning element-adoption failure can leave the constructor-registered final node observers expired; bounded terminal owner destruction clears those lists without dereferencing them. This does not qualify exceptional graph reuse after destruction of a successfully constructed triangle. Parameterized construction failure is separately qualified for valid existing lists, a fresh object address and three live non-null nodes; repeated-node layouts are lifecycle guards, not geometric validity. All observed constructor allocation ordinals preserve exact prior observer/list-node/scalar state, allowing safe prior-observer traversal and a fresh component construction in the probe. No production CLI retry policy is added. Ordinary triangle destruction still does not unregister; copy/move, ReplaceNode, null/uninitialized sources and full-process/parallel memory remain separate. The bounded SubMesh owner ordering repair is recorded in C04; it does not establish triangle deregistration or observer reuse.",
+      "statement": "TriangleAdaptive borrows three NodeAdaptive pointers, registers itself in each adjacency and caches normal, area and angles. NodeAdaptive adjacency is an observer list. Parameterized TriangleAdaptive construction registers in original vertex order and removes every matching fresh-this observer on C++ construction failure before rethrowing. NodeAdaptive::RemoveElementObserver removes pointer entries without deleting elements or allocating. Existing list nodes, order, null markers and scalar state are preserved, including repeated vertex nodes. TriangleAdaptive has stable address identity: copy/move construction and assignment are explicitly deleted. ReplaceNode selects the first matching vertex in n1/n2/n3 order. Same/absent vertices are no-ops; a matched replacement requires live non-null nodes and an existing registration. MoveElementObserverTo transfers the first matching physical list node to the destination tail using splice, without allocation or element deletion; only then is the vertex pointer committed. Other entries, list-node identities, null markers, node state, triangle ID/UV and cached geometry are unchanged.",
+      "limits": "General node copies retain observer lists; SubMesh::SetNoh explicitly clears them. Triangle removal, coordinate mutation, cache refresh and wider destruction paths remain unqualified. Raw/owning element-adoption failure can leave the constructor-registered final node observers expired; bounded terminal owner destruction clears those lists without dereferencing them. This does not qualify exceptional graph reuse after destruction of a successfully constructed triangle. Parameterized construction failure is separately qualified for valid existing lists, a fresh object address and three live non-null nodes; repeated-node layouts are lifecycle guards, not geometric validity. All observed constructor allocation ordinals preserve exact prior observer/list-node/scalar state, allowing safe prior-observer traversal and a fresh component construction in the probe. No production CLI retry policy is added. Ordinary triangle destruction still does not unregister; general null/uninitialized sources and full-process/parallel memory remain separate. The bounded SubMesh owner ordering repair is recorded in C04; it does not establish triangle deregistration or observer reuse. Current first-party static searches find no production direct value-copy/move or ReplaceNode consumers; API tightening may affect unobserved external/conditional callers. Eight valid/no-op replacement paths are measured allocation-free; null destination/missing registration/default-empty matched replacement reject before mutation, with exception allocation outside that claim. No geometry-cache refresh is introduced: after coordinate-changing replacement, cached geometry is not asserted valid. Repeated vertices are lifecycle guards. Arbitrary protected vertex mutation and subclasses can violate the registration precondition.",
       "evidence": [
         {
           "path": "src/data/triangle_adaptive.cpp",
@@ -152,6 +152,18 @@
         {
           "path": "src/data/triangle_adaptive.cpp",
           "anchor": "this->n1_->RemoveElementObserver(this);"
+        },
+        {
+          "path": "include/data/triangle_adaptive.h",
+          "anchor": "TriangleAdaptive(const TriangleAdaptive&) = delete;"
+        },
+        {
+          "path": "src/data/node_adaptive.cpp",
+          "anchor": "destination.elements_.splice(destination.elements_.end(), elements_, entry);"
+        },
+        {
+          "path": "src/data/triangle_adaptive.cpp",
+          "anchor": "*vertex = new_node;"
         }
       ]
     },
