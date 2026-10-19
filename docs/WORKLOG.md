@@ -3,6 +3,11 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
+Active item: stage 3 slice 17, serial curve-sample lifetime. Pinned original
+terminal-exception/cleanup failure reproduced; the scoped-owner battery passes
+53/53. This is not an integrated delivery; exact-head/main regression is pending.
+See [sample lifetime evidence](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
+
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
 | Stage 0 | PR #1; PROVENANCE.md and evidence/BOOTSTRAP_VALIDATION.md | Separate immutable publication import, local quality infrastructure and plan |

@@ -1,5 +1,15 @@
 # Local quality automation
 
+## Active serial sample lifetime boundary
+
+Stage 3 slice 17 adds application.curve_sample_lifetime_contracts and
+tools/qualify_curve_sample_lifetime.py. The bounded ASan/Debug CRT runner requires
+53 outcomes, including actual heap denial, zero-allocation teardown on populated
+graphs, inner graph unwinding and deliberate UAF/leak/hook controls. The scoped
+owner supplies terminal resource cleanup, not metadata recovery. Full exact-head
+and post-merge qualification remain required before integration. See
+[scope and commands](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
+
 ## Purpose and current limits
 
 These commands automate repeatable checks; they do not certify the full

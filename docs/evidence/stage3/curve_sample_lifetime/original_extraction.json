@@ -1,0 +1,6 @@
+{
+  "source": "build\\s17-original\\src\\generator\\generator_adaptive.cpp",
+  "source_sha256": "5206cccdcae0e6215958bfdcb37f31d0ab4bd5c4019191b807e52fa80eb8eae4",
+  "verbatim_block": "  std::unordered_set<PointAdaptive*> unique_points;\n  for (unsigned int i = 0; i < geometry->GetNumberCurves(); ++i) {\n    auto* curve = geometry->GetCurve(i);\n    for (auto* p : curve->GetPoints()) {\n      unique_points.insert(p);\n    }\n    curve->GetPoints().clear();\n  }\n  for (auto* p : unique_points) {\n    delete p;\n  }\n",
+  "block_sha256": "da2334629210866e2c8a87193b9acd10868cf7ff94ffc960660035d082421323"
+}
