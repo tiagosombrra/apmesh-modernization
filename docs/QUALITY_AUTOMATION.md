@@ -1,5 +1,14 @@
 # Local quality automation
 
+## SubMesh lifetime ordering (PR #66)
+
+Stage 3 slice 22 adds application.submesh_lifetime_contracts and
+tools/qualify_submesh_lifetime.py. The six-actual-unit ASan/Debug CRT runner
+requires 28 outcomes: eight graph layouts, eight measured zero-allocation
+operations, a borrowed-node destructor read and real UAF/leak/hook controls.
+Full exact-head/main gates pass. Ordinary triangle deregistration and full-
+process memory remain separate; see [commands and limits](evidence/STAGE3_SUBMESH_LIFETIME.md).
+
 ## Triangle construction boundary (PR #64)
 
 Stage 3 slice 21 adds application.triangle_construction_contracts and
@@ -54,12 +63,12 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-21 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-22 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
-sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration targets.
-The integrated CTest passes 31/31 with zero skips and 74 Python controls,
+sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration and SubMesh owner-ordering targets.
+The integrated CTest passes 32/32 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier

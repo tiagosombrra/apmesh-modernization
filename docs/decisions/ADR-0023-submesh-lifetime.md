@@ -1,6 +1,6 @@
 # ADR-0023: retire physical elements before replacing their node owners
 
-Status: candidate measured; exact-head/main integration gates pending.
+Status: accepted; full exact-head and implementation-main gates pass.
 
 SubMesh normal destruction releases elements before nodes, but defaulted move
 assignment destroys destination nodes before elements. A counted actual triangle

@@ -1,6 +1,11 @@
 # Stage 3 slice 22: preserve SubMesh element-before-node lifetime
 
-Candidate qualified; exact published-head and post-merge main gates remain pending.
+PR #66 integrates head `88c285e5ac193e7c45fe688cec05867e5243dbdd` as main
+`79bad64023ab1ddd54eda76930df47ff2986f765`, preserving complete tree `46c42a52e11519471015e1b8ad385539366079e2`
+(1781 blobs). Full exact-head/main campaigns pass with the same 555 protected
+inputs: CTest 32/32, zero skips, 74 Python controls, seventeen memory batteries/
+1066 expected outcomes, SubMesh lint/format/inventory and exact twice-repeated
+Eistute/Book accepted/rejected traces.
 
 Entry main: `3ad6cb28cd183fe1adc7604de6e92dd28fd0e50a`.
 Classification: behavior-changing engineering lifetime defect repair.
@@ -116,7 +121,8 @@ Required selected production-unit lint passes independently.
   production files, 65 units, 74 headers, 22 contracts/129 anchors and the same
   pre-existing include cycle.
 - Numerical/scientific scope: twice-repeated Eistute/Book compares every accepted
-  and rejected OBJ/incidence state and 189 CSV fields against qualified entry.
+  and rejected OBJ/incidence state against qualified entry. Independent CSV
+  schema audits compare 189 fields against the raw logs, with zero differences.
   Accepted steps 0/1; Eistute rejects 2/3/4, Book 2/3; final triangle counts
   1168/4256. No scientific proposal or expanded acceptance claim.
 - Caller audit: static current first-party searches find pointer construction/
