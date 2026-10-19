@@ -14,6 +14,9 @@ if(BUILD_TESTING)
   add_test(NAME application.curve_samples_contracts COMMAND curve_samples_probe contracts)
   add_test(NAME application.curve_sample_graph_contracts COMMAND curve_sample_graph_probe contracts)
   add_test(NAME application.curve_sample_lifetime_contracts COMMAND curve_sample_lifetime_probe contracts)
+  add_test(NAME application.initial_mesh_contracts COMMAND initial_mesh_probe contracts)
+  set_tests_properties(application.initial_mesh_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   set_tests_properties(application.curve_sample_lifetime_contracts
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   set_tests_properties(application.curve_sample_graph_contracts

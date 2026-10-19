@@ -234,3 +234,12 @@ clears shared aliases before deletion and does not allocate. C07/ADR-0018 delimi
 this from metadata recovery, logical rejection and unpublished constructor
 allocations. Isolate InitialMesh temporary/pending ownership next; keep full
 process, parallel and arbitrary-constructor qualification open.
+
+## Serial initial-mesh pending resources
+
+Extract the actual coarse constructor with exclusive pending mesh/element/source
+owners. Release a sample only after its first successful curve insertion, then
+use the existing collective scope owner for terminal cleanup. Preserve the five
+physical nodes, four triangle templates, both ID channels, reversal and observer
+publication order. C07/ADR-0019 delimit this from general raw mesh adoption and
+OpenMP construction; those unqualified ownership transfers follow next.

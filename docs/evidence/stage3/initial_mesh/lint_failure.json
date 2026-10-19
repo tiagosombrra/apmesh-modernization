@@ -1,0 +1,11 @@
+{
+  "status": "failed required gate",
+  "directory": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s18-candidate-float-loop-failure",
+  "report_sha256": "b82a4908ed026c8910ec175c313dc0fdd41d4101a8cdeaf26e0715bf471af577",
+  "tidy_log_sha256": "0b8b0eeaef5441b5efe506d9275f21dc7af8dc270cdcc79df768463e7688e05c",
+  "diagnostics": [
+    "clang-analyzer-security.FloatLoopCounter: v",
+    "clang-analyzer-security.FloatLoopCounter: u"
+  ],
+  "repair": "Enumerate the exact finite double values {0.0,1.0} in the same nested order; no numeric formula, analysis rule or acceptance criterion change."
+}

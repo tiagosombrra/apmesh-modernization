@@ -1,5 +1,15 @@
 # Local quality automation
 
+## Active initial-mesh ownership boundary
+
+Stage 3 slice 18 adds application.initial_mesh_contracts and
+tools/qualify_initial_mesh.py. The runner requires 27 outcomes, including eight
+full observed allocation sweeps (400 denials), actual analytic/ordered mesh
+checks and deliberate ASan UAF/CRT leak/hook controls. The actual constructor
+unit and prior sample lifetime owner are instrumented together; full CLI failure
+injection and general mesh adoption remain outside scope. Full delivery gates
+are pending. See [scope and commands](evidence/STAGE3_INITIAL_MESH.md).
+
 ## Serial sample lifetime boundary (PR #56)
 
 Stage 3 slice 17 adds application.curve_sample_lifetime_contracts and

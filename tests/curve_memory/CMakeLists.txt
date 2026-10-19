@@ -222,3 +222,34 @@ else()
     target_link_options(curve_sample_lifetime_probe PRIVATE -static -static-libgcc -static-libstdc++)
   endif()
 endif()
+
+set(AP_MESH_INITIAL_MESH_IMPLEMENTATION "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/initial_mesh.cpp" CACHE FILEPATH "Serial initial mesh implementation")
+add_executable(initial_mesh_probe initial_mesh_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_coons.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/node_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/element_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/triangle_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/mesh/sub_mesh.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/mesh/mesh_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/geometry.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/id_manager.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/crab_mesh/performer/ranged_id_manager.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_sample_lifetime.cpp"
+  "${AP_MESH_INITIAL_MESH_IMPLEMENTATION}")
+target_compile_features(initial_mesh_probe PRIVATE cxx_std_17)
+target_include_directories(initial_mesh_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include" "${default_curve_root}/include")
+if(MSVC)
+  target_compile_options(initial_mesh_probe PRIVATE /utf-8 /W4 /EHsc /permissive- /Zc:nrvo-)
+  target_compile_definitions(initial_mesh_probe PRIVATE $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(initial_mesh_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(initial_mesh_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+else()
+  target_compile_options(initial_mesh_probe PRIVATE -fno-elide-constructors)
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(initial_mesh_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endif()

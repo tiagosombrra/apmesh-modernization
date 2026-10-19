@@ -3,6 +3,21 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
+## Active work item: stage 3 slice 18, initial-mesh ownership
+
+Entry main `d4fa37d8a77281027335bc70470f2dc1b0331d52` is clean and synchronized;
+remote audit found no open PRs/issues or configured checks. The pinned original
+leaks the central-node temporary on successful serial InitialMesh construction
+and leaves the pending SubMesh unowned on an early allocation failure.
+
+The extracted actual construction helper uses exclusive local owners for the
+pending mesh, center and triangles; a corner sample transfers to the existing
+collective owner on its first successful curve insertion. It preserves numerical
+and publication order, existing-curve reuse and reversal. The bounded ASan/CRT
+battery passes 27/27 with 400 observed allocation denials. Full regression and
+exact-head/main delivery gates remain pending; stage 3 stays open.
+See [initial-mesh evidence](evidence/STAGE3_INITIAL_MESH.md).
+
 ## Latest qualified work: stage 3 slice 17
 
 PR #56 integrates head `06f4bfd40cff9f09c527777169c5fcf8d053e0c7` as main

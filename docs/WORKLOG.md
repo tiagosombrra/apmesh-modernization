@@ -3,6 +3,12 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
+Active item: stage 3 slice 18, serial initial-mesh ownership. Original successful
+construction retains two CRT blocks; the first leaking denied allocation retains
+one pending SubMesh block. Candidate: 27 bounded outcomes and 400 allocation
+denials pass. Full delivery gates remain pending; this is not integrated yet.
+See [scope and negative evidence](evidence/STAGE3_INITIAL_MESH.md).
+
 Latest delivery: stage 3 slice 17 (PR #56); see the final row and linked audit.
 
 | Delivery | Integrated record | Result and continuity |
