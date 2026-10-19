@@ -3,6 +3,9 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
+Active item: stage 3 slice 19, MeshAdaptive raw SubMesh adoption; original
+physical-graph leaks reproduced, exact delivery qualification pending.
+
 Latest delivery: stage 3 slice 18 (PR #58); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |

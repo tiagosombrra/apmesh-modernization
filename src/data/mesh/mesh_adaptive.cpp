@@ -13,27 +13,23 @@ MeshAdaptive& MeshAdaptive::operator=(MeshAdaptive&&) noexcept = default;
 
 void MeshAdaptive::InsertSubMeshAdaptiveByPosition(SubMesh* sub_mesh_adaptive,
                                                    const signed int position) {
+  std::unique_ptr<SubMesh> pending(sub_mesh_adaptive);
   if (position < 0) {
-    // Invalid index; ignore to keep behavior safe.
-    // (English comment)
     return;
   }
 
   const std::size_t idx = static_cast<std::size_t>(position);
 
   if (idx >= sub_meshes_.size()) {
-    sub_meshes_.resize(idx + 1);  // new slots become nullptr unique_ptr
+    sub_meshes_.resize(idx + 1); // new slots become nullptr unique_ptr
   }
 
-  // Takes ownership. Replaces existing item (old one is deleted automatically).
-  // (English comment)
-  sub_meshes_[idx].reset(sub_mesh_adaptive);
+  sub_meshes_[idx] = std::move(pending);
 }
 
 void MeshAdaptive::InsertSubMeshAdaptive(SubMesh* sub_mesh_adaptive) {
-  // Takes ownership.
-  // (English comment)
-  sub_meshes_.emplace_back(sub_mesh_adaptive);
+  std::unique_ptr<SubMesh> pending(sub_mesh_adaptive);
+  sub_meshes_.push_back(std::move(pending));
 }
 
 void MeshAdaptive::RemoveSubMeshAdaptive() {
@@ -48,16 +44,13 @@ unsigned int MeshAdaptive::GetNumberSubMeshesAdaptive() const noexcept {
   return static_cast<unsigned int>(sub_meshes_.size());
 }
 
-SubMesh* MeshAdaptive::GetSubMeshAdaptiveByPosition(
-    const unsigned int position) noexcept {
-  return (position < sub_meshes_.size()) ? sub_meshes_[position].get()
-                                         : nullptr;
+SubMesh* MeshAdaptive::GetSubMeshAdaptiveByPosition(const unsigned int position) noexcept {
+  return (position < sub_meshes_.size()) ? sub_meshes_[position].get() : nullptr;
 }
 
-const SubMesh* MeshAdaptive::GetSubMeshAdaptiveByPosition(
-    const unsigned int position) const noexcept {
-  return (position < sub_meshes_.size()) ? sub_meshes_[position].get()
-                                         : nullptr;
+const SubMesh*
+MeshAdaptive::GetSubMeshAdaptiveByPosition(const unsigned int position) const noexcept {
+  return (position < sub_meshes_.size()) ? sub_meshes_[position].get() : nullptr;
 }
 
 void MeshAdaptive::ResizeSubMeshAdaptiveByPosition(const signed int new_size) {

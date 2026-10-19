@@ -3,6 +3,14 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
+## Active work item: stage 3 slice 19
+
+Repair general MeshAdaptive raw SubMesh adoption at entry. Pinned actual units
+reproduce abandoned physical graphs on allocation failure and negative positions;
+local exclusive owners now cover those paths. The complete candidate and exact
+published-head/main gates are required before integration. One item is active;
+see [root cause and coverage](evidence/STAGE3_MESH_ADOPTION.md).
+
 ## Latest qualified work: stage 3 slice 18
 
 PR #58 integrates head `84e303da51a6ac4c6cf52dbbee7f5fb30c93696e` as main
