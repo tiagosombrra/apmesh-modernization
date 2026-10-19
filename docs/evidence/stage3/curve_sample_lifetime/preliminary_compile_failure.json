@@ -1,0 +1,6 @@
+{
+  "log": "build\\s17-preliminary-compile-failure.log",
+  "sha256": "a7099c9bd94bd7ce5bd8ce70e00caeb5b133c2e3cef1e4e165c4a4400572e8f5",
+  "result": "failed",
+  "cause": "Probe incorrectly used a const Geometry to call the existing non-const GetPoints observer accessor; fixed probe const qualifier before qualification."
+}

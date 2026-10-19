@@ -3,6 +3,22 @@
 Updated: 2026-10-19 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
+## Active work item: stage 3 slice 17, serial sample lifetime
+
+Entry main: `4a504556f08b6abbe078236c1b6eb2136ef9c537`.
+The serial CLI terminates on exceptions; adaptive numerical rejection/retry is
+a different path. Reusable metadata rollback is not required by that CLI path.
+The demonstrated defect is missing automatic ownership of published curve
+samples: exceptions bypass the final cleanup, whose deduplication also allocates.
+
+The pinned original fails 36/53 bounded outcomes; actual Debug CRT detects
+10/18 retained blocks for five/nine undestroyed sample objects. The scoped owner
+passes 53/53 with no teardown allocation and identical twelve normal observed
+logs. The complete candidate campaign passes GCC build, CTest 27/27 (74 Python
+controls, zero skips), all eleven prior batteries and exact repeated Eistute/Book
+regression. Exact-head/main qualification and integration remain pending. Stage 3 stays open with sixteen qualified integrated slices.
+See [sample lifetime evidence](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
+
 ## Completed in stage 0
 
 - Private separate repository; canonical name is `tiagosombrra/apmesh-modernization`.

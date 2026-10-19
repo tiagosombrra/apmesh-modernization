@@ -1,0 +1,841 @@
+{
+  "status": "failed",
+  "scope": "Actual scoped sample owner and existing graph/publication/sample/rebuild units; three initialized actual curve types with shared non-manifold or distinct endpoints, controlled terminal exceptions, inner graph unwinding after committed prefixes, actual heap denial before teardown and allocation-denied explicit teardown. Physical mesh copies remain independent. Pinned original uses the verbatim Generator final cleanup block in an interface adapter, not the full Generator TU. No metadata recovery, full CLI failure injection, arbitrary constructor failure, unpublished allocations, parallel, full-process, LSan or UBSan qualification.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s17oa\\RelWithDebInfo\\curve_sample_lifetime_probe.exe",
+      "sha256": "86ccd4437be9b8d111fbe0e06d7c07aad136fe0603cd330ea770427c5ab1b6cf"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s17od\\Debug\\curve_sample_lifetime_probe.exe",
+      "sha256": "aadc006aebbb30a02058deb9e93f2a4682c11d0cc043e05081f8a91351756138"
+    }
+  },
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "c3fe13c57d769c21fb954f0d8d8e53cb94711b9b53d0b0704981fc46da31e86c",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:111 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:112 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:113 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:117 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:118 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:119 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:101 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:0 variant:0 created:5 destroyed:5 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "94a44243a96d676b2923fd43daa77ca70806bce197381711d6cf80eeddfdc7da",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:108 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:113 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:114 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:115 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:109 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:116 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:121 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:122 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:123 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:117 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:0 variant:1 created:9 destroyed:9 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d5432fcd3d4debb8bcddf453cadab201460d6b2cc56adddb3079dd63759b5d69",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:111 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:112 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:113 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:117 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:118 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:119 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:101 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:1 variant:0 created:5 destroyed:5 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "9bdb71870bb4f7304422f822018c47c478217d7841f967c1fded01161c7062d8",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:108 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:113 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:114 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:115 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:109 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:116 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:121 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:122 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:123 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:117 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:1 variant:1 created:9 destroyed:9 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "b3a097ffb621da13f44c9993b52ad8cf69245efbb316b10141a447382f810a77",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:111 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:112 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:113 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:117 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:118 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:119 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:101 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:2 variant:0 created:5 destroyed:5 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "ed37ab25bea627fd93df7967db411c1b47f54298977fa4e97e7c3996e202d021",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:108 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:113 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:114 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:115 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:109 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:116 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:121 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:122 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:123 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:117 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:2 variant:1 created:9 destroyed:9 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "abort-0-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "10bbb16ff22fcfe7f7a89ffe179052c2c883eb54cd5e1d6306b15293b9eb91b8",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:abort kind:0 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "abort-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "bde8eea31b233bc569251f84b2e70f6780acbb3167cb8589bc6e16d8d1671ffc",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:abort kind:0 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "abort-1-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "91944a5d3ff4f2262dc748366da6a5beaf9eb215ced2a5a1fbe8e66e077b7d00",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:abort kind:1 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "abort-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "124187c5905dca39086fddfc0318c0c033e2dfb168b59ecaaa09945ff00d9d5b",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:abort kind:1 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "abort-2-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "b84ca129a745bad82b048529f5de96d00ac683208966c08f0d9b0d2646212e40",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:abort kind:2 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "abort-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "25d1caaf60bb3e6017ff3dbe1866cfb3be900d68c28783e4533c903a90133d2a",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:abort kind:2 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "inner-0-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "9ec8608a7d8ca22ec98ac68c55dd7cfec6dcedc0dcc3cd184119fdb0cc558a8e",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:inner kind:0 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "inner-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "598323cb8a6ab4026d8e12f1f9e61a2cae6e37f62cd19c962d69dc1d0ec4bf46",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:inner kind:0 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "inner-1-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "fa2baa5208117fc0725ba28a9a4d791229a573931de46baff0451432a52b7e56",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:inner kind:1 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "inner-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "825878cd8698d943a60144a07cb452be9699d5148237b96d6bc9b7b9adbcb2bd",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:inner kind:1 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "inner-2-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "0402fc4c8760671ba1c60a1a01bf5246e73a0008c932d86be45cf9fe3b86d030",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:inner kind:2 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "inner-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "f973936a4bb4642e49aeceb89366f4d43796afb60bb6e9ecc8319592a54a63d6",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_result=mode:inner kind:2 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "31427852daa751d4c4e942bed26c5c825aa8aadd30689caeccb0528c7c2cc883",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:111 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:112 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:113 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:117 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:118 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:119 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:101 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:0 variant:0 created:5 destroyed:5 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "9c648d2f86bd741bf045d9f2172691647071d6d8cfff9033ba10807de6806105",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:108 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:113 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:114 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:115 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:109 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:116 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:121 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:122 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:123 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:117 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:0 variant:1 created:9 destroyed:9 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "29088cbf75ad592074fe861ae2f91bb154be4d8ebc0f0b138e57b3efc320dd56",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:111 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:112 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:113 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:117 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:118 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:119 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:101 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:1 variant:0 created:5 destroyed:5 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "e23ed42f86a516da169d69277a94815d161767bb7723a89bf87a4475b342b07f",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:108 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:113 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:114 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:115 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:109 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:116 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:121 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:122 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:123 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:117 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:1 variant:1 created:9 destroyed:9 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "cd8e693f0f33113c47a957c706fbd8fbb311e1c9a0fe2c4d2f45d052d0d2a580",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:111 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:112 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:113 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:117 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:118 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:119 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:101 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:2 variant:0 created:5 destroyed:5 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "4be8bc3111e1df4a920512b3a744ee104dcdc2daf0697ea8ee3c0df79fae65ef",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "lifetime_point=curve:0 id:100 t:0 xyz:0,0,0",
+        "lifetime_point=curve:0 id:105 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:0 id:106 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:0 id:107 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:0 id:101 t:1 xyz:1,0,0",
+        "lifetime_point=curve:1 id:108 t:0 xyz:0,0,0",
+        "lifetime_point=curve:1 id:113 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:1 id:114 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:1 id:115 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:1 id:109 t:1 xyz:1,0,0",
+        "lifetime_point=curve:2 id:116 t:0 xyz:0,0,0",
+        "lifetime_point=curve:2 id:121 t:0.25 xyz:0.25,0.1875,0",
+        "lifetime_point=curve:2 id:122 t:0.5 xyz:0.5,0.25,0",
+        "lifetime_point=curve:2 id:123 t:0.75 xyz:0.75,0.1875,0",
+        "lifetime_point=curve:2 id:117 t:1 xyz:1,0,0",
+        "lifetime_result=mode:normal kind:2 variant:1 created:9 destroyed:9 empty:1 aliases_cleared:1 caught:0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "abort-0-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "835917acb62ae82ce2035e3197c93e95537dfef7391fd61753d89f2884c576d6",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_result=mode:abort kind:0 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "abort-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "1b3cea01131c0b093d2a0d201fae763e7100155ac2fbd3df90d2b64be7a3973b",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_result=mode:abort kind:0 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "abort-1-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "c155e76ba90b8d5619ac1c2d53902c58c9b998f71daad9a2ae3016b9bd72d411",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_result=mode:abort kind:1 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "abort-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "1a1cbb8c500cdbcce0eb9fdefe35ba4405c5f94ca559a3d4b89d7e95412ea52e",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_result=mode:abort kind:1 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "abort-2-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "d5c2ebf190de4f3db1bbf897a39f7a089eb36331386cb7005b39507dedadb22f",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_result=mode:abort kind:2 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "abort-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "7cb5bd5fe5d93608f826b9e046be0d0312e4969c3d37b6f17826481a731b0fff",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_result=mode:abort kind:2 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "inner-0-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "fd282b75841f1f08047cd219522c8642ec4d7275ee6f1675336cee4560677895",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_result=mode:inner kind:0 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "inner-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "e81ed809ff78df81aa9e6749b149c574fea7674722f04eb5bc57157a6a8bed17",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_result=mode:inner kind:0 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "inner-1-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "2496cf6c5446c072167a093ac6702250a84a2d0bbf2262c4f1af9af5e286b594",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_result=mode:inner kind:1 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "inner-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "72339f3c710bbfbec912681436a9c4dee519c79a33117f65ea7addf8edd48b8c",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_result=mode:inner kind:1 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "inner-2-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "8df2246eb28fff01e754c0feb70dd0f5ee81bc6e1eff57fe1de3ae0fe8daf92d",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_result=mode:inner kind:2 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "inner-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "9c6e11b7c9a7611561128fbdc3f7746e59ab1a25eddd51f491d0996ff30c87ed",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_result=mode:inner kind:2 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "release-0-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "2f58d0a5e64f28de9679cdc7d543ee525aed34a74e4149ed8dd69e97ed2ff89b",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_allocations=mode:release attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:release kind:0 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "release-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "8cf50ff9592718925ad74a45683dc019393207302363b40d3f18aede78e887c7",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_allocations=mode:release attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:release kind:0 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "release-1-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "ca140971e6a0c59c09bf68aea2231f0aba0bdd38ece18f16141e16fcaafb7860",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_allocations=mode:release attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:release kind:1 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "release-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "331b0fd1681e2b8e12c195adb97f5244d717c2d3e4d926445e51c1c92de4d110",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_allocations=mode:release attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:release kind:1 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "release-2-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "68dd58fec966913984dbce6a32e6b88f8d04b3f796a5ebddcbaa18f02d8e509e",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_allocations=mode:release attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:release kind:2 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "release-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "a57f2d413454df9982fbb2ca4ec0b3c5f4d092437682fb4ba11fb73bb779ac68",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_allocations=mode:release attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:release kind:2 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "fault-0-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "0b1a53bc5f1b5b8045c505127f4aeb90c5edc8a6a9c7344a71d4afacdf2d223f",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_allocations=mode:fault attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:fault kind:0 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "fault-0-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "3c8a7f7be3cee250e41f2ea0e64ef68685876b7be9dc57d219e325bc24e549a8",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_allocations=mode:fault attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:fault kind:0 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "fault-1-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "152657b708cf9f8c9ba58610b89b98b55187438cf725731099c4cfcd0a58a728",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_allocations=mode:fault attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:fault kind:1 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "fault-1-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "9bafceca5a86be3105fbf52577dfca896280fbfd67f3f53e18ba0a92016ec012",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_allocations=mode:fault attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:fault kind:1 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "fault-2-0",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "67743c338b2b5fbef14a1054c0edb69a838c3a35745d6c1cd2ecab9f6c5bfd05",
+      "retained_blocks": 10,
+      "retained_bytes": 640,
+      "observations": [
+        "lifetime_allocations=mode:fault attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:fault kind:2 variant:0 created:5 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "fault-2-1",
+      "exit_code": 1,
+      "passed": false,
+      "log_sha256": "ca432c24671f006847fc325a457ad753cc660f9b220313a293b4818c6806d7e4",
+      "retained_blocks": 18,
+      "retained_bytes": 1152,
+      "observations": [
+        "lifetime_allocations=mode:fault attempts:1 denied:1 caught:1",
+        "lifetime_result=mode:fault kind:2 variant:1 created:9 destroyed:0 empty:0 aliases_cleared:1 caught:1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "guards",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "1275ece09b7512099efcd1c2ef447c9756ddaf4e845b6826261db50e95e4bd7f",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": [
+        "lifetime_guard=empty_and_repeat:no_positive_coverage"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "guards",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "c5c88eabb3db9e9720b71ab29ca0e34c69a5743c2a3cf9ecad0a6eb479c527b7",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "lifetime_guard=empty_and_repeat:no_positive_coverage"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "302aa21dc08082cb77653780bd2dd9e3e52724ea5f3696351be2076af6f7a6ac",
+      "retained_blocks": null,
+      "retained_bytes": null,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "3d66c0d87190fbf2d4699dd70d745c42a6586c89a0e9bbfeb81effb877c4e6ff",
+      "retained_blocks": 1,
+      "retained_bytes": 40,
+      "observations": []
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "observations": [
+        "allocation_hook_control=detected"
+      ]
+    }
+  ],
+  "raw_report_sha256": "415f4b32057a238d3772bc8d62d73534cbf356f2c1df16c9b6ff78bf7abed93f"
+}

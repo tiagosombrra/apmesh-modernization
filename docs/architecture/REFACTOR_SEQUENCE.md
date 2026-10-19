@@ -224,3 +224,13 @@ new aliases before deleting once, and restore original nodes/sharing without
 allocation. Retire initial samples only on full commit. C07/ADR-0017 delimit
 fixed topology/actual inner operations from evaluator scratch and orchestration
 metadata/error/history/budget/patch/mesh/acceptance rollback, which follows next.
+
+## Serial published-sample lifetime
+
+The fatal CLI exception boundary needs automatic resource release. A scoped
+collective owner releases current reachable samples after inner graph guards
+unwind; explicit normal release stays at the existing cleanup point. Teardown
+clears shared aliases before deletion and does not allocate. C07/ADR-0018 delimit
+this from metadata recovery, logical rejection and unpublished constructor
+allocations. Isolate InitialMesh temporary/pending ownership next; keep full
+process, parallel and arbitrary-constructor qualification open.

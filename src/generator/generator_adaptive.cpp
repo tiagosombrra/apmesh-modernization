@@ -4,6 +4,7 @@
 #include "data/curve/curve_adaptive_parametric_bezier.h"
 #include "data/curve/curve_adaptive_parametric_hermite.h"
 #include "data/geometry.h"
+#include "generator/curve_sample_lifetime.h"
 #include "generator/curve_synchronization.h"
 #include "generator/curve_snapshots.h"
 #include "generator/curve_publication.h"
@@ -1090,6 +1091,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range,
 #else
   this->communicator_ = std::make_unique<Parallel::TMCommunicator>(false);
   Geometry* geometry = model.GetGeometry();
+  apmesh::generation::CurveSampleLifetime curve_samples(*geometry);
 #endif
 
   if (ENABLE_SHARED_CURVE_SYNC == 0) {
@@ -2624,6 +2626,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
   WriteCompatibilitySummary(geometry);
   WriteRuntimeSummary(timer);
 
+#if USE_OPENMP
   // Após terminar, libere os pontos de discretização das curvas.
   // Usa set para não deletar duas vezes pontos compartilhados entre curvas.
   std::unordered_set<PointAdaptive*> unique_points;
@@ -2637,6 +2640,9 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
   for (auto* p : unique_points) {
     delete p;
   }
+#else
+  curve_samples.Release();
+#endif
 #endif  // USE_MPI
 }
 
