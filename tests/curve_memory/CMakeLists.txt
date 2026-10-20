@@ -474,3 +474,43 @@ if(NOT MSVC)
     target_link_options(charge_input_real_probe PRIVATE -static -static-libgcc -static-libstdc++)
   endif()
 endif()
+
+# Curvature samples use actual patch/curvature units and an explicit original adapter.
+set(sample_backend "${CMAKE_CURRENT_BINARY_DIR}/curvature_sample_backend.cpp")
+set(sample_adapter_flags)
+if(MSVC)
+  list(APPEND sample_adapter_flags --fixed-extent)
+endif()
+add_custom_command(OUTPUT "${sample_backend}"
+  COMMAND "${Python3_EXECUTABLE}" "${default_curve_root}/tools/extract_curvature_sample_backend.py"
+          --root "${AP_MESH_CURVE_SOURCE_ROOT}" --output "${sample_backend}" ${sample_adapter_flags}
+  DEPENDS "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/charge_estimate_process.cpp"
+          "${default_curve_root}/tools/extract_curvature_sample_backend.py"
+  VERBATIM)
+set(sample_sources ${charge_sources})
+list(REMOVE_ITEM sample_sources "${charge_input}" "${control_reader}")
+add_executable(curvature_sample_probe curvature_sample_probe.cpp ${sample_sources} "${sample_backend}"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/curvature/curvature_analytical.cpp")
+if(EXISTS "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/curvature_sample_estimate.cpp")
+  target_sources(curvature_sample_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/curvature_sample_estimate.cpp")
+  if(TARGET charge_input_real_probe)
+    target_sources(charge_input_real_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/curvature_sample_estimate.cpp")
+  endif()
+endif()
+target_compile_features(curvature_sample_probe PRIVATE cxx_std_17)
+target_include_directories(curvature_sample_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include")
+if(MSVC)
+  target_compile_options(curvature_sample_probe PRIVATE /utf-8 /W4 /EHsc /permissive- /Zc:nrvo-)
+  target_compile_definitions(curvature_sample_probe PRIVATE _USE_MATH_DEFINES $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  set_property(TARGET curvature_sample_probe PROPERTY MSVC_RUNTIME_LIBRARY
+    "$<IF:$<CONFIG:Debug>,MultiThreadedDebug,MultiThreadedDLL>")
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(curvature_sample_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(curvature_sample_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+else()
+  target_compile_options(curvature_sample_probe PRIVATE -fno-elide-constructors -fno-strict-aliasing)
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(curvature_sample_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endif()

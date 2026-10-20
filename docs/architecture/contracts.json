@@ -794,6 +794,26 @@
           "anchor": "void CurveAdaptive::TruncatePatchObservers"
         }
       ]
+    },
+    {
+      "id": "C24",
+      "topic": "Automatic curvature sample lifetime",
+      "statement": "CalculateKaMedioPatch borrows its live PatchBezier. Up to 25 PointAdaptive sample values and the bounded scratch array have automatic lifetime; no heap sample is allocated or cast to a nonexistent NodeAdaptive. Existing parameterization, curvature construction/evaluation, fallback threshold, populated-prefix accumulation and final division by the requested points are preserved.",
+      "limits": "Historical sample thresholds and unusual between-level denominator semantics remain. Only actual valid plane/saddle/convex fixtures and sampled forward/inverse exception boundaries are qualified; arbitrary callbacks, internal solver faults, other helpers, scientific correctness and full-process/parallel/LSan/UBSan are separate. Removing the original points-sized VLA avoids unbounded stack reservation for out-of-range requests; original INT_MAX execution is unmeasured. Allocation counts/timing and the translated early diagnostic change.",
+      "evidence": [
+        {
+          "path": "src/estimate/curvature_sample_estimate.cpp",
+          "anchor": "std::array<double, 25> curvatures;"
+        },
+        {
+          "path": "src/estimate/curvature_sample_estimate.cpp",
+          "anchor": "PointAdaptive sample_a = patch->Parameterize(0.25, 0.25);"
+        },
+        {
+          "path": "src/estimate/curvature_sample_estimate.cpp",
+          "anchor": "return result / points;"
+        }
+      ]
     }
   ]
 }

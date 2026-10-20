@@ -199,3 +199,7 @@ message(STATUS "Static MinGW runtime: ${AP_MESH_STATIC_MINGW_RUNTIME}")
 
 # Register local quality controls separately from scientific regression.
 include(cmake/Quality.cmake)
+
+if(BUILD_TESTING AND TARGET curvature_sample_probe)
+  add_test(NAME application.curvature_sample_contracts COMMAND curvature_sample_probe contracts)
+endif()

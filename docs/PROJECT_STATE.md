@@ -1,5 +1,12 @@
 # Project state
 
+Active bounded item: stage 3 slice 30, numerical curvature-sample lifetime.
+Root cause: overwritten heap samples leak and invalid PointAdaptive-to-NodeAdaptive
+casts precede a PointAdaptive-only curvature API. Automatic values and a bounded
+25-entry scratch array are implemented; complete qualification and delivery are
+pending. Existing numerical sample thresholds, order, formulas and denominator
+must remain unchanged. Slice 29 remains the latest qualified baseline.
+
 Updated: 2026-10-20 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 

@@ -1,0 +1,1546 @@
+{
+  "status": "passed",
+  "paired_traces": 90,
+  "preservation": {
+    "status": "passed",
+    "sample_positions": 25,
+    "rejected_mutations": 4,
+    "original_sha256": "bcb6bd61a7edaf85e25c724f2de5d8744d7e0d2c7e5a9b66e1f37946f30d2739",
+    "candidate_sha256": "20712efb10a607399735d199145a98e4d564f286c7de7a748127686e0897f55d",
+    "preserved_tokens_sha256": "c1fb8e7c3b0721ca3a11a8e9c8735b786a903af190ba673e0454acb67093b636",
+    "scope": "Only overwritten allocations/aliases, invalid derived casts, bounded scratch extent, local spelling, comments and the early diagnostic are normalized. Actual numerical traces are separately required."
+  },
+  "scope": "GCC C++17 actual original VLA sampler versus actual repaired unit; 90 paired traces on 3 surfaces, all threshold regions, repeats and bounded out-of-range counts. Exact scalar bits and forward/inverse sample arguments. Original INT_MAX stack allocation is deliberately unmeasured. The original contains invalid downcasts; observed agreement is not original defined-behavior qualification.",
+  "cases": [
+    {
+      "mode": "normal-0--1-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0--1-1.log",
+          "exit_code": 0,
+          "sha256": "fe64f953fcb212c31ca122f5cb08159ebe1e3e51c4b84e547109b9bf6d551c01"
+        },
+        "candidate": {
+          "log": "candidate-normal-0--1-1.log",
+          "exit_code": 0,
+          "sha256": "31b84b4ecdb0ed5e8cce241fd28c13f1d77831c274bbff46faa0d0ef5bd9a900"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "650579895ddfbfddf0206085cb8c7b4801fe03686cebfa043a4ebfe0886359bf"
+    },
+    {
+      "mode": "normal-0--1-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0--1-3.log",
+          "exit_code": 0,
+          "sha256": "5e3995823d9d00be1ecc365d16998b79972ee9d3bd623f4f0f0694684e4bcdcb"
+        },
+        "candidate": {
+          "log": "candidate-normal-0--1-3.log",
+          "exit_code": 0,
+          "sha256": "4115b6df9c6a988a9f944e666f25b939eee2bb4c1651e7fd87bf9bbd21f4e419"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "44c3a8384e0e5b4369ab198f546ab22c7403c5b0cd2e1491e3f247a8aa13b63c"
+    },
+    {
+      "mode": "normal-0-0-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-0-1.log",
+          "exit_code": 0,
+          "sha256": "a4fee8aa279aba8b20011c8e1ebff4cd35f3d732521e97e1a4453022f1a4c9e6"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-0-1.log",
+          "exit_code": 0,
+          "sha256": "576fe05c8eb51948b58647f65eba571c3e8b8dc1f296d09752fcfccd85453d56"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "a2268e6b0ab57f12abe4f03abd353516c3d653d56eb91cac9e33740e76a3aca7"
+    },
+    {
+      "mode": "normal-0-0-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-0-3.log",
+          "exit_code": 0,
+          "sha256": "d24e40a63263074063f5f2d6f69c15829ca6d1393988108e811ebde1dd69f56d"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-0-3.log",
+          "exit_code": 0,
+          "sha256": "3a38939560fdb33a89b45154038ba1a9e2805f5797cf146ab79c54add45ff153"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "49e261c4218faf2f03f7a79f41c20bcfd322911ab3be6ef09864d3764f284f09"
+    },
+    {
+      "mode": "normal-0-3-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-3-1.log",
+          "exit_code": 0,
+          "sha256": "6c2b7dbcbf2c58fe90642bdef97eb1909e04dff78cc5e9cbde7e9a8ea76b0c58"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-3-1.log",
+          "exit_code": 0,
+          "sha256": "a8c85d8d1f3bb433a3c194f619582596bc19ca8a2baa36e9ba2f91445bec6168"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "782e4eb8e5b22103e740bc9f743bf60a202331e4a2dbac742cca8cfd13846566"
+    },
+    {
+      "mode": "normal-0-3-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-3-3.log",
+          "exit_code": 0,
+          "sha256": "d37d68c3a287a3ff495aacc0463e0a4139d0b327e9453f5dcfea4b77a4c872b8"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-3-3.log",
+          "exit_code": 0,
+          "sha256": "6b6a4c9565da39d586e01752d46ecd8d6257cca87f2d7cee39171ddc5d373d51"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "0787bc2327236740b56fdf3828e2e955fd77f53f3030f7db71b2cad64f561dab"
+    },
+    {
+      "mode": "normal-0-4-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-4-1.log",
+          "exit_code": 0,
+          "sha256": "4fa36eb9650a0c0a30f72a74d85f0a2beb694c66ad54412a16b0a610e544e57d"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-4-1.log",
+          "exit_code": 0,
+          "sha256": "54be73ddde07a3c702e9c3c23f1a23615109ab2906cd753001c9e4344a592de3"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "54e8deeb8e41cb5d4477b07d47543810dc437e6889115ac8449d55f0d2bbb020"
+    },
+    {
+      "mode": "normal-0-4-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-4-3.log",
+          "exit_code": 0,
+          "sha256": "f07cf46c1b0743e24e27da51649e6a6930e465623bdc820dbc2c7ddcfb81addc"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-4-3.log",
+          "exit_code": 0,
+          "sha256": "2f548fe952b7ed62b6a6e16bbc134b07c4bc554b80dc5d11a0aec3f1d37b15d8"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "44987d433e1e674a443ec5dec46d96e99ac88ae7d1b6c1ea38e5b97ce7f67f91"
+    },
+    {
+      "mode": "normal-0-5-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-5-1.log",
+          "exit_code": 0,
+          "sha256": "cdb5a1161c5c71fc64a06f07f727dd1ebc3d7bde40846bdf593989d382d9a1d2"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-5-1.log",
+          "exit_code": 0,
+          "sha256": "4d1931dbe374b6caa04165baa7422b3a5f13c55018b0fd61c84042138c919dca"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "66bf28a0caddf92cfb8b38ac555c3429ed980d2278b5891ca83fda33c2e83d39"
+    },
+    {
+      "mode": "normal-0-5-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-5-3.log",
+          "exit_code": 0,
+          "sha256": "557d67cb25ff8a04fba67fe821a5851e32d726d291bbc5f00987c767fc512b77"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-5-3.log",
+          "exit_code": 0,
+          "sha256": "124c9b94135b4f140e208c640c1d54125b594520ee32665b2a1af12fdfec53cc"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "03f3f5280d42ce473d2b1920cbbf36cf4b72c26a095ec77db4f40bef962f6fe9"
+    },
+    {
+      "mode": "normal-0-8-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-8-1.log",
+          "exit_code": 0,
+          "sha256": "f95bac53dfae76b8a8200cc0de55fa887d1293ed6ad884b4ab57806119a8b2be"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-8-1.log",
+          "exit_code": 0,
+          "sha256": "204f4bcfd1b22365f105b0e0604742dd88b3c861f3889829e0ba40b0f15202b5"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "d2af5a3dd9e7fb66bac54b6483ffc7cde7bb39bf1d7acb3103fd35be3650dd5d"
+    },
+    {
+      "mode": "normal-0-8-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-8-3.log",
+          "exit_code": 0,
+          "sha256": "5a5b641972792ecaf4713413221b205759f6fcf3763764354ea9ca03ff1ce0eb"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-8-3.log",
+          "exit_code": 0,
+          "sha256": "e135f3eb340a449799dfef6d3cc216bbbd94e2a5bd30b46308376b2baebe56d1"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "d11782f241dd095556b0e255e802d18d4de5139b148317182f987d88b5d5e7f4"
+    },
+    {
+      "mode": "normal-0-9-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-9-1.log",
+          "exit_code": 0,
+          "sha256": "9d8ef0bcb9a6e44e7371c5482f72b5a5fa9ea8f828e3bfbe933125a8ae2d7884"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-9-1.log",
+          "exit_code": 0,
+          "sha256": "5d92a4c24b9a78d0d0a639a054c910d7c82d00e6040cddfdc5621dca2aee28ce"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "4a5983705271bbe9f80a9913415a37b9f2873cbe7ecfe118e0f1591a2ea65658"
+    },
+    {
+      "mode": "normal-0-9-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-9-3.log",
+          "exit_code": 0,
+          "sha256": "35d45095eb37dcfc594226294217b780606eb201fc82b51761600ba1fd47d1aa"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-9-3.log",
+          "exit_code": 0,
+          "sha256": "1f1de7defe5018642ccb5cb61f32a1ee709de175e1d533790176ab61e4121abd"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "29d42c70d13261b6b05fc07d1e031f85274c624ca5e41d5f98ede496e7817780"
+    },
+    {
+      "mode": "normal-0-10-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-10-1.log",
+          "exit_code": 0,
+          "sha256": "9183cfb6a1fa9eeebc331c845426950581782612c18f3d90f343dbe558406b22"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-10-1.log",
+          "exit_code": 0,
+          "sha256": "4f14d1ee9dc89eb7437601d380fc35ca14b8f404084578f187a6fd510e9d4694"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "a31ee066360492f5817ab0dbdfa6be74292185c9ed8a864e57a523f9fec35886"
+    },
+    {
+      "mode": "normal-0-10-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-10-3.log",
+          "exit_code": 0,
+          "sha256": "bb9a11e28211c91438231fcdffaff433232dfb84baa90b513e9db84198caa7ee"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-10-3.log",
+          "exit_code": 0,
+          "sha256": "1d76e03c4d7789f3be12b0ac575ba782a84e84063bcb136dd4c38bb872e1fe0d"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "6db1b396fd15ef077b5b35288e1c1f0ac73a2498b17abc1c880519f9d63a5c5f"
+    },
+    {
+      "mode": "normal-0-16-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-16-1.log",
+          "exit_code": 0,
+          "sha256": "53bbb48d1b46da4ecfb34ff16e4f1587da62f61414454120b9f255ce2ce94c29"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-16-1.log",
+          "exit_code": 0,
+          "sha256": "577cf019952c6e1b682430ec3687dedbdac2d44d4a95ef70a9543c923fc2040a"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "d28182a97469af45f6373381a0dc514c59a73638d5ad706b6af6d7dfac264fa0"
+    },
+    {
+      "mode": "normal-0-16-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-16-3.log",
+          "exit_code": 0,
+          "sha256": "3ddb76f2e8e66415e927d0044a54b75c87672382533fc77df663232107f4df54"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-16-3.log",
+          "exit_code": 0,
+          "sha256": "653549e115d9b0a59e7cfe2530e8e9ad25d61cb6fd9a23a3a10f96a1a4b1ee93"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "1174ff0f609a56e76daefbad3e4beb5bad6cb9e23b0526acedc7072680063f5e"
+    },
+    {
+      "mode": "normal-0-17-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-17-1.log",
+          "exit_code": 0,
+          "sha256": "19f024c4212567983d25f52b06915a831a3ecf7e3794df05b4814d7a8f2ac403"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-17-1.log",
+          "exit_code": 0,
+          "sha256": "3985d23ac5110cb4d13058b468046c83e0be839312f44eb87c9ce9de7a7f0092"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "f9d9e37a296dea833d6de933a32f8b30c1a198ff3f2cc9249d1492fd59d23f63"
+    },
+    {
+      "mode": "normal-0-17-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-17-3.log",
+          "exit_code": 0,
+          "sha256": "a76febea7ff94c56f111ef4f403ed0febffd3f0606d519a26cd77839028d83d3"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-17-3.log",
+          "exit_code": 0,
+          "sha256": "3f98fc6e11c1bfd74c96c2ef44457f0298e62089cdd77bda87c7119424eb8117"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "bd30fc8bf230fba912b94d1de033016c8a3acaa9b7c1fce84596da5494a640fd"
+    },
+    {
+      "mode": "normal-0-18-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-18-1.log",
+          "exit_code": 0,
+          "sha256": "bc11ea69529d4bc38c5c936e72871b07a4dfd64e05d515f565c87e919366d9a1"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-18-1.log",
+          "exit_code": 0,
+          "sha256": "9b485e9d48c25371ddd28588fa48f3b9e9027ef3ee10ffb867d3e71d587fa06d"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "f31ad4fbd72668cfbaf4bff9e5e46e1059e14b971d76ce6d6c0376e5e2af2469"
+    },
+    {
+      "mode": "normal-0-18-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-18-3.log",
+          "exit_code": 0,
+          "sha256": "e97df2037929c5691c00dddd52418c324c1ed3114d12e6b325ba5fda5841ed43"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-18-3.log",
+          "exit_code": 0,
+          "sha256": "49008fea40f37b8354082e842071d68e5565cae216ec3f8d0e71cc0ef1d256c5"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "26b0371931ad24995d23887783e7044b4d28d910488ea9873abf82c074e52914"
+    },
+    {
+      "mode": "normal-0-24-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-24-1.log",
+          "exit_code": 0,
+          "sha256": "e794ddb422b0d7e781ca9b2d8beaf05b685cfca3ba2ae25b163cd164019bb49c"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-24-1.log",
+          "exit_code": 0,
+          "sha256": "a1e64a2784512c85cb3983ece0dab48c9867ec844d8b096d66e7d3feed58a97b"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "06caff4d3c11387425f221723887c3d934fd4e6860bc783e30fce2a334e8108e"
+    },
+    {
+      "mode": "normal-0-24-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-24-3.log",
+          "exit_code": 0,
+          "sha256": "185482848e3951d0c7638c682dbcbe309c0a4b5f27aa704f7a88e0db887f2f8f"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-24-3.log",
+          "exit_code": 0,
+          "sha256": "8e9482a2eb0b8c249ec4f91cc020567f7de4dfe715e6a36dfb18d42d615c273b"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "de3b8afffb8b86db3f0718bcdb2bba8657987b922bb1234482e0de439f18a2d6"
+    },
+    {
+      "mode": "normal-0-25-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-25-1.log",
+          "exit_code": 0,
+          "sha256": "3f84f86330aa6923925c1c721c1484a17bc077cac560ef26f35967660ad17256"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-25-1.log",
+          "exit_code": 0,
+          "sha256": "c77d080546e7441c96257c6b3a3e99f0193abb17f16d6014b82f7582ce846f54"
+        }
+      },
+      "observation_count": 51,
+      "observations_sha256": "6b0f6b7b617b4b44a60aa4540fa0132b8da4924b2dbd233e9f1e543df1191a75"
+    },
+    {
+      "mode": "normal-0-25-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-25-3.log",
+          "exit_code": 0,
+          "sha256": "79d9e0c9fc1fdaf00b0226a59b24c2575c688f1d72d1740064fe66f339a4cc31"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-25-3.log",
+          "exit_code": 0,
+          "sha256": "0f887061e7151b08c6071a5fb4fe638bd6e5218e04453d2180e3ffea0015897d"
+        }
+      },
+      "observation_count": 153,
+      "observations_sha256": "0e114b3556bfbd9584cc2fe3eb6410e376d780d037ff55be5b95a94194f96eff"
+    },
+    {
+      "mode": "normal-0-26-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-26-1.log",
+          "exit_code": 0,
+          "sha256": "3acd634e4c838b5cbd25d26c3f552ee76a949890d6e3e45dbcebd19bf0f3aa75"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-26-1.log",
+          "exit_code": 0,
+          "sha256": "d3d352687d7d4f6037b6817a922982a214647089c3a2f911e6037dd7fc5994ac"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "92acb42ac314cb8c88db3be61fbf90a67a3c51c16fe48d0bc4e3ee41e94255d4"
+    },
+    {
+      "mode": "normal-0-26-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-26-3.log",
+          "exit_code": 0,
+          "sha256": "1738a3daa2c5216f56c3a08f6ff868a9eec0d7411f6588007aacec7091500064"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-26-3.log",
+          "exit_code": 0,
+          "sha256": "dd56bb00197c684d04920946f9d1920236adf5bc72c8831ee38c3b8632c4ab73"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "76d164079496b331b83b80f115d235cc709f170c0d0cdd83da252d4837487f2f"
+    },
+    {
+      "mode": "normal-0-100-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-100-1.log",
+          "exit_code": 0,
+          "sha256": "58b67825fe7a7378ce4edb51ec308e28a8bb596a43f20ab282fd29fa68e892da"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-100-1.log",
+          "exit_code": 0,
+          "sha256": "fd8f8d8a158fa6c5e50ac860c3ed225d74fa62ba6221a5603e41df3d4496eaed"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "8392a56a866f017a323a5fc6627181492a00ab4646e6d369ef99785d31cade3e"
+    },
+    {
+      "mode": "normal-0-100-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-100-3.log",
+          "exit_code": 0,
+          "sha256": "4e3cab6ce2475582477b6bf362dfcbd4a721950da182d31772ad52d18615271e"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-100-3.log",
+          "exit_code": 0,
+          "sha256": "ca5fdc5716db9d4694010e00e9afdb7837c37e1f8b10c388cff50c3b7c65dee7"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "870c61ce2946f8d118bdb45c9b5bd4641dd30273be0f1b20d794d4caf9c4e41f"
+    },
+    {
+      "mode": "normal-1--1-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1--1-1.log",
+          "exit_code": 0,
+          "sha256": "fe64f953fcb212c31ca122f5cb08159ebe1e3e51c4b84e547109b9bf6d551c01"
+        },
+        "candidate": {
+          "log": "candidate-normal-1--1-1.log",
+          "exit_code": 0,
+          "sha256": "31b84b4ecdb0ed5e8cce241fd28c13f1d77831c274bbff46faa0d0ef5bd9a900"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "650579895ddfbfddf0206085cb8c7b4801fe03686cebfa043a4ebfe0886359bf"
+    },
+    {
+      "mode": "normal-1--1-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1--1-3.log",
+          "exit_code": 0,
+          "sha256": "5e3995823d9d00be1ecc365d16998b79972ee9d3bd623f4f0f0694684e4bcdcb"
+        },
+        "candidate": {
+          "log": "candidate-normal-1--1-3.log",
+          "exit_code": 0,
+          "sha256": "4115b6df9c6a988a9f944e666f25b939eee2bb4c1651e7fd87bf9bbd21f4e419"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "44c3a8384e0e5b4369ab198f546ab22c7403c5b0cd2e1491e3f247a8aa13b63c"
+    },
+    {
+      "mode": "normal-1-0-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-0-1.log",
+          "exit_code": 0,
+          "sha256": "a4fee8aa279aba8b20011c8e1ebff4cd35f3d732521e97e1a4453022f1a4c9e6"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-0-1.log",
+          "exit_code": 0,
+          "sha256": "576fe05c8eb51948b58647f65eba571c3e8b8dc1f296d09752fcfccd85453d56"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "a2268e6b0ab57f12abe4f03abd353516c3d653d56eb91cac9e33740e76a3aca7"
+    },
+    {
+      "mode": "normal-1-0-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-0-3.log",
+          "exit_code": 0,
+          "sha256": "d24e40a63263074063f5f2d6f69c15829ca6d1393988108e811ebde1dd69f56d"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-0-3.log",
+          "exit_code": 0,
+          "sha256": "3a38939560fdb33a89b45154038ba1a9e2805f5797cf146ab79c54add45ff153"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "49e261c4218faf2f03f7a79f41c20bcfd322911ab3be6ef09864d3764f284f09"
+    },
+    {
+      "mode": "normal-1-3-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-3-1.log",
+          "exit_code": 0,
+          "sha256": "6c2b7dbcbf2c58fe90642bdef97eb1909e04dff78cc5e9cbde7e9a8ea76b0c58"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-3-1.log",
+          "exit_code": 0,
+          "sha256": "a8c85d8d1f3bb433a3c194f619582596bc19ca8a2baa36e9ba2f91445bec6168"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "782e4eb8e5b22103e740bc9f743bf60a202331e4a2dbac742cca8cfd13846566"
+    },
+    {
+      "mode": "normal-1-3-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-3-3.log",
+          "exit_code": 0,
+          "sha256": "d37d68c3a287a3ff495aacc0463e0a4139d0b327e9453f5dcfea4b77a4c872b8"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-3-3.log",
+          "exit_code": 0,
+          "sha256": "6b6a4c9565da39d586e01752d46ecd8d6257cca87f2d7cee39171ddc5d373d51"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "0787bc2327236740b56fdf3828e2e955fd77f53f3030f7db71b2cad64f561dab"
+    },
+    {
+      "mode": "normal-1-4-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-4-1.log",
+          "exit_code": 0,
+          "sha256": "e0a25691a8354c25ddbf93bb07dbb25c335cdb3ccdc0318edeabce47aad1f40d"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-4-1.log",
+          "exit_code": 0,
+          "sha256": "0debd8527078d5896c5445372abfbf7ee4a780e7601f4200c07fd0a30e4ae612"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "aa569fd5cdf91376c9b2acea828bd45a59729b884ca8f6e5a51dfbeada073307"
+    },
+    {
+      "mode": "normal-1-4-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-4-3.log",
+          "exit_code": 0,
+          "sha256": "ca10eeeca2c57949edf183d563e3ad9c9912b03168851e03a303f9353f3017a8"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-4-3.log",
+          "exit_code": 0,
+          "sha256": "8415dc077dab98342da8127406fcd20f57d8c419c66cda06e9c609bef99db2dd"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "344401ce36d7f1317c16b5c4696cb4dcb7f59e6c86b3ba947fabdb29a23f15b5"
+    },
+    {
+      "mode": "normal-1-5-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-5-1.log",
+          "exit_code": 0,
+          "sha256": "e642736f2ba5e5fe47ef15c6c184888fef19ff874373290db5c12a88f893beb8"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-5-1.log",
+          "exit_code": 0,
+          "sha256": "2bdb08fe64a5d8e452e60d48d4b5d6f3a89318efb1b379350dbea000db534d9b"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "29a6b342f745c4a968fa78ae01aa3e8aa3cb811805e5057b4e459371dad97b3a"
+    },
+    {
+      "mode": "normal-1-5-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-5-3.log",
+          "exit_code": 0,
+          "sha256": "50c80c04ddbcb74d21d08e87d0e3624add34f525c0298a048d260f9e51ae8630"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-5-3.log",
+          "exit_code": 0,
+          "sha256": "5de2454d2725779d6c6f2ee8fe06482ce7e97b28345b1f4d58bae7c28a64dd40"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "2f783a9434233667e49dabdd3d0f338bf23737743f60642c26b5ae1543460840"
+    },
+    {
+      "mode": "normal-1-8-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-8-1.log",
+          "exit_code": 0,
+          "sha256": "0ca803988bf5baa1b69c97cd2baf3d1704a7889df418fd323f84da89ed507430"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-8-1.log",
+          "exit_code": 0,
+          "sha256": "bb18f6a93be334c789e9308363104146eff433164ff3376b263ebd2604adb734"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "f09c65f2cc2f2a972109b254e3c66c33954611421e16f01510a522df3151ffad"
+    },
+    {
+      "mode": "normal-1-8-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-8-3.log",
+          "exit_code": 0,
+          "sha256": "710ce6febf3f5f9c4cebd94b417539d9b9cfb3c7b95787efc3f72d40cc7528a1"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-8-3.log",
+          "exit_code": 0,
+          "sha256": "7dfc9e85c1c1de9dcf684904197d387b50da72c270e42db605bdddbf1bad4ea5"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "11ab4e0dfe4881efd2e9f2d66741b2bc7c85876a33134bc9f68252405caf0a5b"
+    },
+    {
+      "mode": "normal-1-9-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-9-1.log",
+          "exit_code": 0,
+          "sha256": "ed821cb84053dd3ac558f778aeb0175e3fb7e410fd3336e4368b04b7206f2baa"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-9-1.log",
+          "exit_code": 0,
+          "sha256": "09a28d2468c666aedf5491b8163390bd90496aa4e6c352d866533162bbd735b6"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "7c582debeddc2efa989b1d5afb10f40b41681abc354de99b3ebd16367955f06d"
+    },
+    {
+      "mode": "normal-1-9-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-9-3.log",
+          "exit_code": 0,
+          "sha256": "8ea03b1b6988fbff0a5587b3a16862e8f6d0d893bb0866eecd9e4e494bee42c5"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-9-3.log",
+          "exit_code": 0,
+          "sha256": "7d600d9599765440d7aabd93b188b09633aa25da03a9344cd501efddb8bc9fd7"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "d5eef43c57aee0f50b55ca23ed49eac1b95734dcfcdceac807975aa141ef4dfc"
+    },
+    {
+      "mode": "normal-1-10-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-10-1.log",
+          "exit_code": 0,
+          "sha256": "ca5e1abf0821cd12b815b18d42b7631913b73149da5bfc610e138eb912eb01fa"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-10-1.log",
+          "exit_code": 0,
+          "sha256": "1076412cc4d9bd18790de34efc7cb72fe14f4763c39748abe674adff349bc09e"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "5bd0ee993acb4c489b7b37b23477ec44f442267231c8c7beb14734885fb98e4e"
+    },
+    {
+      "mode": "normal-1-10-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-10-3.log",
+          "exit_code": 0,
+          "sha256": "bf0c0d0b94b480e41f628862d709c1da5e839d96e8019799f4364115107bd347"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-10-3.log",
+          "exit_code": 0,
+          "sha256": "7ce1ea21867f59d3f1fec28b4039bed926aec41aeb22839ad9e334f20f3908cc"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "45d505f01e38a072f6fb028d7c656a2cde932cd50e53205626d7a92c9b822578"
+    },
+    {
+      "mode": "normal-1-16-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-16-1.log",
+          "exit_code": 0,
+          "sha256": "2147fda1b99d9fda61072192e36b2c54b2bc817eb20ea88624817a18dd70d30d"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-16-1.log",
+          "exit_code": 0,
+          "sha256": "50655cc9fc5482ba1cc9b8b17993f9333280af4cea9903bcf71d343a79e782d0"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "93e0781afe946e1b99455191a4b4404700ca1b418700543e5b4979fa60c65344"
+    },
+    {
+      "mode": "normal-1-16-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-16-3.log",
+          "exit_code": 0,
+          "sha256": "ad663e8498f0497d211fe5ffde1fb635cb74495eee1363c8b188596541098875"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-16-3.log",
+          "exit_code": 0,
+          "sha256": "4fe01ba0083952116bf6bf762f3421e0775a7dbad4e1b110482785e075606332"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "1b59652a22e1600094b879c513135118f12ffdde2051f8d82b4562b0215a5fe1"
+    },
+    {
+      "mode": "normal-1-17-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-17-1.log",
+          "exit_code": 0,
+          "sha256": "36e8712e1b0e2658b5f0d847db310a8db176d03a847df0c3eb866e4833d8ff2b"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-17-1.log",
+          "exit_code": 0,
+          "sha256": "fcb9d2e0a31f36171b026111ba6daae467531453688d5188d0a18b0dd9a7a612"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "6e756862f1e6389d9756d17f25bb05b4164c369e437e8409e97ace81ba123c97"
+    },
+    {
+      "mode": "normal-1-17-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-17-3.log",
+          "exit_code": 0,
+          "sha256": "e9451c48499d0064f8e30e232294f4140e8d4dbf287b353048d2c702641a639b"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-17-3.log",
+          "exit_code": 0,
+          "sha256": "cd0ee6a0bfd4e480683bea87c850b6036c92e1c4c0a971dea2c8bc53e84754e4"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "132c68c4181c80d59a3b51816512b4177cb4588e761ca5fdc48bdf06b4b30ff7"
+    },
+    {
+      "mode": "normal-1-18-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-18-1.log",
+          "exit_code": 0,
+          "sha256": "647f421216053d849c20022e1e26e7a411c9c0138bf9fe426cb603b98fb20a00"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-18-1.log",
+          "exit_code": 0,
+          "sha256": "95e59c174bb11a695f7b9bcad8bba554ba91fce86c0aa9361a3c3d469a18c197"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "aa58d7a9cea2900ce094ecabc624110a0ff8e09d93984cd1cb62a46ee02d650e"
+    },
+    {
+      "mode": "normal-1-18-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-18-3.log",
+          "exit_code": 0,
+          "sha256": "6a559254445c8c0cb523924f91151b6c24b2c9598e3f51a4213c9b345c9ae75e"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-18-3.log",
+          "exit_code": 0,
+          "sha256": "2721de6fc758ba223047c81211e9f6e49382c4a647b618930ddf1807a1661d46"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "77ed05364acbcce575e1bae8304c953552620c331d0767d313ef170b53a953ab"
+    },
+    {
+      "mode": "normal-1-24-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-24-1.log",
+          "exit_code": 0,
+          "sha256": "90e46783eaaf764f541c9707d9c8905a30a3fc453135b920a95f9ec0f2e51292"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-24-1.log",
+          "exit_code": 0,
+          "sha256": "1f540c6fc115f3fa80c615c06da11840abed60b268fa6a7b61b58c1d70d4bfef"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "8d5169118168d1c77ac20beee064d9277d7425f4f52d04379826b88cd48f3653"
+    },
+    {
+      "mode": "normal-1-24-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-24-3.log",
+          "exit_code": 0,
+          "sha256": "471c9f8b27ed9c0eef61531b271d37d12b75b9d6d7f6046ae15f55247fa48809"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-24-3.log",
+          "exit_code": 0,
+          "sha256": "df97ddb9784b63afb85873ae13ac1f6643d88f93ee28cbc56bece9fc3a8f30c7"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "945733ad319c5f87dbd48e53f118916edaf03e80495e1134e2b87ed49c7d62c6"
+    },
+    {
+      "mode": "normal-1-25-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-25-1.log",
+          "exit_code": 0,
+          "sha256": "fa8ccc50cdc02916c3ff381c91493a1fb122f54b35519a79c51d3f754f831d72"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-25-1.log",
+          "exit_code": 0,
+          "sha256": "b83b4cedd329c9a2003112a8b90cfaf8c4c97b639f211b3445714c6e48fdf9a0"
+        }
+      },
+      "observation_count": 51,
+      "observations_sha256": "d7b059f8d5bb4a54e915601d4db482e83ed1fa5b86aa1752c7f6bf70dfb81bf0"
+    },
+    {
+      "mode": "normal-1-25-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-25-3.log",
+          "exit_code": 0,
+          "sha256": "bbcbd7f2227a53b82e49db54994cfc91019da3b293faae72a522e9e78b2c42fd"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-25-3.log",
+          "exit_code": 0,
+          "sha256": "708f251465a26f9c1dc912a41f1d1fdd97e87f82c875b90bfcb3a902fcc4baf7"
+        }
+      },
+      "observation_count": 153,
+      "observations_sha256": "41a509471107428651d2315925df448f882ec350a294336e6176c5d123a30c29"
+    },
+    {
+      "mode": "normal-1-26-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-26-1.log",
+          "exit_code": 0,
+          "sha256": "3acd634e4c838b5cbd25d26c3f552ee76a949890d6e3e45dbcebd19bf0f3aa75"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-26-1.log",
+          "exit_code": 0,
+          "sha256": "d3d352687d7d4f6037b6817a922982a214647089c3a2f911e6037dd7fc5994ac"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "92acb42ac314cb8c88db3be61fbf90a67a3c51c16fe48d0bc4e3ee41e94255d4"
+    },
+    {
+      "mode": "normal-1-26-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-26-3.log",
+          "exit_code": 0,
+          "sha256": "1738a3daa2c5216f56c3a08f6ff868a9eec0d7411f6588007aacec7091500064"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-26-3.log",
+          "exit_code": 0,
+          "sha256": "dd56bb00197c684d04920946f9d1920236adf5bc72c8831ee38c3b8632c4ab73"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "76d164079496b331b83b80f115d235cc709f170c0d0cdd83da252d4837487f2f"
+    },
+    {
+      "mode": "normal-1-100-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-100-1.log",
+          "exit_code": 0,
+          "sha256": "58b67825fe7a7378ce4edb51ec308e28a8bb596a43f20ab282fd29fa68e892da"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-100-1.log",
+          "exit_code": 0,
+          "sha256": "fd8f8d8a158fa6c5e50ac860c3ed225d74fa62ba6221a5603e41df3d4496eaed"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "8392a56a866f017a323a5fc6627181492a00ab4646e6d369ef99785d31cade3e"
+    },
+    {
+      "mode": "normal-1-100-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-100-3.log",
+          "exit_code": 0,
+          "sha256": "4e3cab6ce2475582477b6bf362dfcbd4a721950da182d31772ad52d18615271e"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-100-3.log",
+          "exit_code": 0,
+          "sha256": "ca5fdc5716db9d4694010e00e9afdb7837c37e1f8b10c388cff50c3b7c65dee7"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "870c61ce2946f8d118bdb45c9b5bd4641dd30273be0f1b20d794d4caf9c4e41f"
+    },
+    {
+      "mode": "normal-2--1-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2--1-1.log",
+          "exit_code": 0,
+          "sha256": "fe64f953fcb212c31ca122f5cb08159ebe1e3e51c4b84e547109b9bf6d551c01"
+        },
+        "candidate": {
+          "log": "candidate-normal-2--1-1.log",
+          "exit_code": 0,
+          "sha256": "31b84b4ecdb0ed5e8cce241fd28c13f1d77831c274bbff46faa0d0ef5bd9a900"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "650579895ddfbfddf0206085cb8c7b4801fe03686cebfa043a4ebfe0886359bf"
+    },
+    {
+      "mode": "normal-2--1-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2--1-3.log",
+          "exit_code": 0,
+          "sha256": "5e3995823d9d00be1ecc365d16998b79972ee9d3bd623f4f0f0694684e4bcdcb"
+        },
+        "candidate": {
+          "log": "candidate-normal-2--1-3.log",
+          "exit_code": 0,
+          "sha256": "4115b6df9c6a988a9f944e666f25b939eee2bb4c1651e7fd87bf9bbd21f4e419"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "44c3a8384e0e5b4369ab198f546ab22c7403c5b0cd2e1491e3f247a8aa13b63c"
+    },
+    {
+      "mode": "normal-2-0-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-0-1.log",
+          "exit_code": 0,
+          "sha256": "a4fee8aa279aba8b20011c8e1ebff4cd35f3d732521e97e1a4453022f1a4c9e6"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-0-1.log",
+          "exit_code": 0,
+          "sha256": "576fe05c8eb51948b58647f65eba571c3e8b8dc1f296d09752fcfccd85453d56"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "a2268e6b0ab57f12abe4f03abd353516c3d653d56eb91cac9e33740e76a3aca7"
+    },
+    {
+      "mode": "normal-2-0-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-0-3.log",
+          "exit_code": 0,
+          "sha256": "d24e40a63263074063f5f2d6f69c15829ca6d1393988108e811ebde1dd69f56d"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-0-3.log",
+          "exit_code": 0,
+          "sha256": "3a38939560fdb33a89b45154038ba1a9e2805f5797cf146ab79c54add45ff153"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "49e261c4218faf2f03f7a79f41c20bcfd322911ab3be6ef09864d3764f284f09"
+    },
+    {
+      "mode": "normal-2-3-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-3-1.log",
+          "exit_code": 0,
+          "sha256": "6c2b7dbcbf2c58fe90642bdef97eb1909e04dff78cc5e9cbde7e9a8ea76b0c58"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-3-1.log",
+          "exit_code": 0,
+          "sha256": "a8c85d8d1f3bb433a3c194f619582596bc19ca8a2baa36e9ba2f91445bec6168"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "782e4eb8e5b22103e740bc9f743bf60a202331e4a2dbac742cca8cfd13846566"
+    },
+    {
+      "mode": "normal-2-3-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-3-3.log",
+          "exit_code": 0,
+          "sha256": "d37d68c3a287a3ff495aacc0463e0a4139d0b327e9453f5dcfea4b77a4c872b8"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-3-3.log",
+          "exit_code": 0,
+          "sha256": "6b6a4c9565da39d586e01752d46ecd8d6257cca87f2d7cee39171ddc5d373d51"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "0787bc2327236740b56fdf3828e2e955fd77f53f3030f7db71b2cad64f561dab"
+    },
+    {
+      "mode": "normal-2-4-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-4-1.log",
+          "exit_code": 0,
+          "sha256": "a572d058494c39298d68ae6aa8a581db334d5aea4225b193b5dbb15aad51a262"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-4-1.log",
+          "exit_code": 0,
+          "sha256": "82eef5fbe771af955f937c6668f01960875c863ac1ff52d8d82a4f0584b1b5de"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "25e8d570380f958770bcd0fa3b7566fa6dc4a9fc0b0b89335d6d0f062138564f"
+    },
+    {
+      "mode": "normal-2-4-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-4-3.log",
+          "exit_code": 0,
+          "sha256": "00ba1319adf37ae0930172935c565fefae91f8ca2c406dccbbf09112d93e03d7"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-4-3.log",
+          "exit_code": 0,
+          "sha256": "9eefc1c05ff11111d316bab3a66ac76ce8a6d3d612fb3e9be449154326be3416"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "310751215ce8e9abde1e4bb4c7dd15c7e50a359fc42f8cdebca517fd7487a7da"
+    },
+    {
+      "mode": "normal-2-5-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-5-1.log",
+          "exit_code": 0,
+          "sha256": "3acb5af663128d575490937e6f8828036538853ed393ac522d9c945e3e185fbb"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-5-1.log",
+          "exit_code": 0,
+          "sha256": "91df09e244cdac92a5650b756ac24a561532a54d7ae9d9a03613411e6d630c67"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "fcc3c3d647c6a4c80bcb9390db7fbb4ae9bc8af79400e75de205a8ca404860e0"
+    },
+    {
+      "mode": "normal-2-5-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-5-3.log",
+          "exit_code": 0,
+          "sha256": "86b052550913e1e1fe6774a2eb649528337750cfcb226d767836fc8db8061cab"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-5-3.log",
+          "exit_code": 0,
+          "sha256": "8aeafbfa95829110c1f6118140beb6dad0c9fae6ac7f5bf2334bd9a6d8562e53"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "df3be5e32f687ea3f411cde91f77ef2f8a652dc0b903a25f42f49239788a0723"
+    },
+    {
+      "mode": "normal-2-8-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-8-1.log",
+          "exit_code": 0,
+          "sha256": "c3adc8db38e4731e50486ec2c5c6a30a954db14e641608d5812e88cb7a7220d0"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-8-1.log",
+          "exit_code": 0,
+          "sha256": "e0bf1679b23358e4e1705dd701e3a188f4ea12002a3b08d607d48f9b56f4f27b"
+        }
+      },
+      "observation_count": 9,
+      "observations_sha256": "745f253c0e1565b8d31f57ba47a8179b22c14f18e36ac7c1eebc41e87b8d7249"
+    },
+    {
+      "mode": "normal-2-8-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-8-3.log",
+          "exit_code": 0,
+          "sha256": "5a7a404be63efce905143c7a3145733a598962679034ad2b6a664d99485034f8"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-8-3.log",
+          "exit_code": 0,
+          "sha256": "d50b6ea875453ce1cc920b345fefff307234d8a1eaee1aed2b2139e904ba0bd1"
+        }
+      },
+      "observation_count": 27,
+      "observations_sha256": "ca626ba7bd5a62a6593740f560090a127e5d1d42e968c7f9df893e603e658642"
+    },
+    {
+      "mode": "normal-2-9-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-9-1.log",
+          "exit_code": 0,
+          "sha256": "4f6615cc4716b79798fa765fc96a74548d1bc884644d129a25d8f0b7a43322f6"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-9-1.log",
+          "exit_code": 0,
+          "sha256": "e45e258bf0729cf6af4f924936aea61fbaed1847bf15e0a761b3f2c14ea880c0"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "00896654ed6d1864525401116fff7606e06ff1aa19e7992d76c52ac3a9fbe7ba"
+    },
+    {
+      "mode": "normal-2-9-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-9-3.log",
+          "exit_code": 0,
+          "sha256": "b184fdd3a1d8b0553b8943121477a079c91b74c1822d28ca0059217a1b37a78f"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-9-3.log",
+          "exit_code": 0,
+          "sha256": "9382498f525e39bd6658c0ebe717f1e12ad003709f1df1738e4d90e4e7531ed9"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "60feca442f9f93f8dc2a08b45e208fced65369e5f1b99273ec5e992d6de579c0"
+    },
+    {
+      "mode": "normal-2-10-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-10-1.log",
+          "exit_code": 0,
+          "sha256": "c5b346ddbe446469624bcc335ee842a8a9ee3f5266d7a525e1a0989a5aa59205"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-10-1.log",
+          "exit_code": 0,
+          "sha256": "3809b61548f283fd1ef8001a8debeda54310229c804b499249d93b4cba74c588"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "41141a9449e3d693f002363c78b2c388438e0f6c681c597c3dbdad20ac3ed10a"
+    },
+    {
+      "mode": "normal-2-10-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-10-3.log",
+          "exit_code": 0,
+          "sha256": "aff293455fc6c67156eaa3140b8f931034bd2f8d60d6d75705ae467fa5e94c8f"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-10-3.log",
+          "exit_code": 0,
+          "sha256": "8895d9cbce2331968b6a8eb9e136d090a4156959ebeeab02b0a2bad492bf0b58"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "bd1ca91f580e459dac7eca6f0e0ede918621285730e862eb6d536dd1d009f348"
+    },
+    {
+      "mode": "normal-2-16-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-16-1.log",
+          "exit_code": 0,
+          "sha256": "540cc415b7da21de1b1b400b84014ef9f6c6875608f51a6d0da69aa369e4201e"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-16-1.log",
+          "exit_code": 0,
+          "sha256": "984c162a62d3ba323a31dd8b4008c674834d1dde802a952a7f956788f961a2d1"
+        }
+      },
+      "observation_count": 19,
+      "observations_sha256": "0ee0f775325f3a2612102a3dd4e8e668adf56fcf278b1f4761f62b690ecea6f7"
+    },
+    {
+      "mode": "normal-2-16-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-16-3.log",
+          "exit_code": 0,
+          "sha256": "338b2ae4e0c8887a5f72ae9ad4547e082455ebb7e6e227fe7366460c9250f4f9"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-16-3.log",
+          "exit_code": 0,
+          "sha256": "2c759e7ca6c47a24d751a50f639aa83a6f50efb187449ed9e058c353d8efc342"
+        }
+      },
+      "observation_count": 57,
+      "observations_sha256": "db0bbfc16249661629159b8a0b02eda767b266191a6ab8d8883ed5779e9a083d"
+    },
+    {
+      "mode": "normal-2-17-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-17-1.log",
+          "exit_code": 0,
+          "sha256": "f822fda8da8ace4f0d3af023520574480e21f5fed0ab13f9a22920292e264922"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-17-1.log",
+          "exit_code": 0,
+          "sha256": "1c53d10661180190fa3212d51aa4cac711935176edb6a297d46c96efd8dad308"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "24590c7f8e997de0a5fcfd291305a7e13e6a6c610db13c1fc012d22a61ce72ba"
+    },
+    {
+      "mode": "normal-2-17-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-17-3.log",
+          "exit_code": 0,
+          "sha256": "1666f6e38fea6e6b76e1e9ce9879b597bec5f94de2d7410c8e25f43f63f918e2"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-17-3.log",
+          "exit_code": 0,
+          "sha256": "8a6d93651c9459f05d695e21306d0bb73538a37a74c1cb71a1cb65ceb7746777"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "35013edb7feefade5c75decbe1661b001f5c65bb1be698be0eb216b8934df935"
+    },
+    {
+      "mode": "normal-2-18-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-18-1.log",
+          "exit_code": 0,
+          "sha256": "c2416a72213394829baaa7f8dc93cbe8c79835ac672c0c08ed7e1a685c6b32a4"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-18-1.log",
+          "exit_code": 0,
+          "sha256": "bb19f28025c16d9c0af0ce25d9c27962059227f18a93852a6ae12acdb2ab9f81"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "51327f84a553d87f50d3c4d12c42aef18e4b2f0edda7e4a04b780e4f35cb219b"
+    },
+    {
+      "mode": "normal-2-18-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-18-3.log",
+          "exit_code": 0,
+          "sha256": "6732ea698b7bdda9703f54609b654658e0088382e5b421dee6d7cd999e47ec6c"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-18-3.log",
+          "exit_code": 0,
+          "sha256": "28d5e5577a378f450c72accde76e1c22e253658289d1eba1ef4abedf1c358cc2"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "8d9bc91dc33ed3f1300201d8f9659567af98dc69ce6301b12adbbafb06b37ace"
+    },
+    {
+      "mode": "normal-2-24-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-24-1.log",
+          "exit_code": 0,
+          "sha256": "a71c9ebf492b28adbe7693d45fb54990231c308ce4acae88b5de5d0c990eb911"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-24-1.log",
+          "exit_code": 0,
+          "sha256": "45113704ee9501e4222bb5b0d02d8f1c8cff8aa0c42fefc162d769b708ef37fb"
+        }
+      },
+      "observation_count": 35,
+      "observations_sha256": "dabc390149c3a86ec5e6fc7a2b31c2427383a9897745a56d2ce8e53db9eba279"
+    },
+    {
+      "mode": "normal-2-24-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-24-3.log",
+          "exit_code": 0,
+          "sha256": "7153251f396a9b368e17323a1b95fc73055ae23c3a9d81e018418a86b70b810c"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-24-3.log",
+          "exit_code": 0,
+          "sha256": "8e20b3143723f6641ebb89c7dee1dd052761f7ad94a17f60049c55ee6d76d84f"
+        }
+      },
+      "observation_count": 105,
+      "observations_sha256": "7e697b79b9197f51bdbb49a961c45622e43d2538564a17431e231372e3803f4e"
+    },
+    {
+      "mode": "normal-2-25-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-25-1.log",
+          "exit_code": 0,
+          "sha256": "b8deb1675e54086879883fca7a380dfe64e5dc2c4910c1b9a69869d315f4fa15"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-25-1.log",
+          "exit_code": 0,
+          "sha256": "f2621da9f4fc34ddb1888277ed8387651b70520138de0de706bd7c0a5e8449c4"
+        }
+      },
+      "observation_count": 51,
+      "observations_sha256": "58b7dabde2b052aee14ea25cc8376fe52614becabfad90befae7bdc8386f0d9a"
+    },
+    {
+      "mode": "normal-2-25-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-25-3.log",
+          "exit_code": 0,
+          "sha256": "77f0311515513e75cbc7e2e8cdb7a4410821106472cc8621b8d6f383f9ed813a"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-25-3.log",
+          "exit_code": 0,
+          "sha256": "283d1d55d7e00b4e17162fff9cefb2024d6bccbc55a56c20e02501f21b8e78e5"
+        }
+      },
+      "observation_count": 153,
+      "observations_sha256": "28cc23cd56ebafc1c71c7fb7989958a8643adc5492010f1d7ef83a3b2dfa72b0"
+    },
+    {
+      "mode": "normal-2-26-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-26-1.log",
+          "exit_code": 0,
+          "sha256": "3acd634e4c838b5cbd25d26c3f552ee76a949890d6e3e45dbcebd19bf0f3aa75"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-26-1.log",
+          "exit_code": 0,
+          "sha256": "d3d352687d7d4f6037b6817a922982a214647089c3a2f911e6037dd7fc5994ac"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "92acb42ac314cb8c88db3be61fbf90a67a3c51c16fe48d0bc4e3ee41e94255d4"
+    },
+    {
+      "mode": "normal-2-26-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-26-3.log",
+          "exit_code": 0,
+          "sha256": "1738a3daa2c5216f56c3a08f6ff868a9eec0d7411f6588007aacec7091500064"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-26-3.log",
+          "exit_code": 0,
+          "sha256": "dd56bb00197c684d04920946f9d1920236adf5bc72c8831ee38c3b8632c4ab73"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "76d164079496b331b83b80f115d235cc709f170c0d0cdd83da252d4837487f2f"
+    },
+    {
+      "mode": "normal-2-100-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-100-1.log",
+          "exit_code": 0,
+          "sha256": "58b67825fe7a7378ce4edb51ec308e28a8bb596a43f20ab282fd29fa68e892da"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-100-1.log",
+          "exit_code": 0,
+          "sha256": "fd8f8d8a158fa6c5e50ac860c3ed225d74fa62ba6221a5603e41df3d4496eaed"
+        }
+      },
+      "observation_count": 1,
+      "observations_sha256": "8392a56a866f017a323a5fc6627181492a00ab4646e6d369ef99785d31cade3e"
+    },
+    {
+      "mode": "normal-2-100-3",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-100-3.log",
+          "exit_code": 0,
+          "sha256": "4e3cab6ce2475582477b6bf362dfcbd4a721950da182d31772ad52d18615271e"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-100-3.log",
+          "exit_code": 0,
+          "sha256": "ca5fdc5716db9d4694010e00e9afdb7837c37e1f8b10c388cff50c3b7c65dee7"
+        }
+      },
+      "observation_count": 3,
+      "observations_sha256": "870c61ce2946f8d118bdb45c9b5bd4641dd30273be0f1b20d794d4caf9c4e41f"
+    }
+  ]
+}
