@@ -1,6 +1,11 @@
 # Stage 3 slice 28: temporary area mesh ownership
 
-Candidate full gates pass; exact published-head and post-merge main qualification remain required. Stage 3 retains twenty-seven qualified slices until both pass.
+PR #78 integrates head `d36f71c19278547ec897d5c96a7cc37e2884c6bc` as main
+`4ea63f2118c9cccf8968676125bb3794d7a79bd0`, preserving complete tree `c318ae629d18cef976f7e555dd61ac36670e75b6`
+(1878 blobs). Full exact-head/main gates pass against the same 576
+protected inputs: CTest 39/39, zero skips, 74 Python controls, twenty-four memory
+batteries/1763 expected outcomes, 1040 retained scalar sequence comparisons,
+selected lint, explicit format/inventory and exact repeated Eistute/Book traces.
 
 Entry main: `7f3d925f818ff3e26f24e5135898d4178289bea1` (implementation #76, closure #77).
 Classification: behavior-changing resource-lifetime defect repair with an

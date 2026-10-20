@@ -3,9 +3,14 @@
 Updated: 2026-10-20 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Current work (candidate; delivery gates pending): stage 3 slice 28
+## Latest qualified work: stage 3 slice 28
 
-Candidate full gates pass; exact published-head and post-merge main qualification remain required. Stage 3 retains twenty-seven qualified slices until both pass.
+PR #78 integrates head `d36f71c19278547ec897d5c96a7cc37e2884c6bc` as main
+`4ea63f2118c9cccf8968676125bb3794d7a79bd0`, preserving complete tree `c318ae629d18cef976f7e555dd61ac36670e75b6`
+(1878 blobs). Full exact-head/main gates pass against the same 576
+protected inputs: CTest 39/39, zero skips, 74 Python controls, twenty-four memory
+batteries/1763 expected outcomes, 1040 retained scalar sequence comparisons,
+selected lint, explicit format/inventory and exact repeated Eistute/Book traces.
 
 Temporary area meshes/fresh samples have explicit owners and restore the previous
 patch observer. The 342 new outcomes/30942 denials, 280 controlled paired results/

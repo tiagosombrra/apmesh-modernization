@@ -56,14 +56,17 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 is in progress with twenty-six qualified ownership/lifecycle slices.
-The latest owns temporary triangle-count meshes/fresh samples and restores the
-preceding borrowed graph. Count 159/159, 9014 allocation denials, 168 paired
-results, CTest 36/36 and twenty prior batteries pass on exact head and main,
-with the retained 1040 scalar comparisons and exact repeated model traces.
-See [the latest closure audit](docs/evidence/STAGE3_TRIANGLE_COUNT.md).
-Estimator area/error callers, general geometry/cache validity and full-process
-memory remain open.
+Stage 3 remains open with twenty-eight qualified ownership/lifecycle slices.
+The latest owns temporary area meshes/fresh samples and restores the preceding
+patch observer (PR #78). Full exact-head/main gates pass: CTest 39/39,
+74 Python controls, twenty-four batteries/1763 expected outcomes, 1040 retained
+scalar comparisons and exact repeated Eistute/Book accepted/rejected traces.
+The 342 new outcomes cover 30942 allocation denials, 280 paired controlled
+results/448 evaluation steps and 84 paired actual-error results. Independent
+analytic area checks and original retention/restoration failures are retained.
+See [the latest closure audit](docs/evidence/STAGE3_TRIANGLE_AREA.md).
+Input/control-point roots, general geometry/cache validity and full-process/
+parallel memory remain open; stages 4-11 pending.
 
 ## Repository policy
 
@@ -76,7 +79,3 @@ compact evidence is retained in Git. Read AGENTS.md before making changes.
 The original license, citation and third-party notices are retained. Historical
 artifacts, failed runs and unmeasured coverage must remain distinguishable from
 successful validation. Existing source and experimental repositories are separate.
-
-Stage 3 slice 27 qualifies temporary error evaluator ownership (PR #76);
-see [the bounded ownership and regression audit](docs/evidence/STAGE3_ERROR_ESTIMATE.md).
-Stage 3 remains open; area estimation roots and full-process memory are pending.

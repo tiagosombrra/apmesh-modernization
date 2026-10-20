@@ -1,5 +1,16 @@
 # Local quality automation
 
+## Temporary area mesh ownership (PR #78)
+
+Stage 3 slice 28 adds application.triangle_area_contracts and
+application.triangle_area_real_error with tools/qualify_triangle_area.py. Separate
+controlled/actual-error targets require 311/31 outcomes, 56 complete allocation
+sweeps/30942 denials, 280 exact paired results/448 evaluation steps, 84 actual-
+error paired results and independent analytic areas. Negative controls and all
+original failures remain preserved. Use --kind real for actual-error integration.
+Full exact-head/main qualification passes for bounded serial lifetime; stage 3
+and full-process/parallel memory remain open. See [commands and limits](evidence/STAGE3_TRIANGLE_AREA.md).
+
 ## Temporary error evaluator (PR #76)
 
 Stage 3 slice 27 adds application.error_estimate_contracts and
