@@ -3,160 +3,36 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stage 3 slice 27 error evaluator ownership. PR #76 integrates head `387cf4d94eebb06a3203727ae97bffdbb5e5f1eb` as main
-`c905baa3738db4059ecce4c4b896b8753de43daa`, preserving complete tree `57234a8ab46166169b792e98870d48904a7c7bdb`
-(1860 blobs). Full exact-head/main gates pass against the same 571
-protected inputs: CTest 37/37, zero skips, 74 Python controls, twenty-two memory
-batteries/1421 expected outcomes, 1040 retained scalar sequence comparisons,
-selected lint, explicit format/inventory and exact repeated Eistute/Book traces.
-Next repair area estimation mesh/patch/sample roots, preserving error/degree
-selection. Stage 3 is open; stages 4-11 pending. See [audit](evidence/STAGE3_ERROR_ESTIMATE.md).
+Current status: stage 3 slice 28 temporary area mesh ownership. Candidate full gates pass; exact published-head and post-merge main qualification remain required. Stage 3 retains twenty-seven qualified slices until both pass.
+Next audit charge-estimation input/control-point roots. Stage 3 is open; stages
+4-11 pending. See [bounded ownership audit](evidence/STAGE3_TRIANGLE_AREA.md).
 
-Previous qualified baseline: stage 3 slice 26, implementation PR #74 and closure #75,
-final main `35e608162e17c04c21f1a8f3817aac885262bca5`;
-see [count audit](evidence/STAGE3_TRIANGLE_COUNT.md).
+Previous qualified baseline: stage 3 slice 27, implementation PR #76 and closure #77,
+final main `7f3d925f818ff3e26f24e5135898d4178289bea1`; see [error evaluator audit](evidence/STAGE3_ERROR_ESTIMATE.md).
 
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 25
-(PR #72) is qualified at head `6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7` and main
-`fdf65970dfad6898c88438a1017fa4bd34239d27`. All exact-head/main gates pass; stage 3 remains open.
-Next repair estimator caller-owned roots and patch/sample lifetime. Scalar
-sequence compatibility does not qualify complete extreme/non-power-of-two meshes.
-See [audit](evidence/STAGE3_ESTIMATE_MESH.md).
+Stages 0-2 remain closed for their measured scope. Stage 3 remains open; stages
+4-11 are pending. This repair preserves formulas, floating-point order, numerical
+selection, synchronization, templates/front reconstruction, tolerances, budgets
+and adaptation/acceptance/stopping policies. Allocation timing/counts can change
+when ownership defects are repaired; no unchanged-allocation or performance
+claim follows from memory qualification.
 
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 24
-(PR #70) is qualified at head `7d22766e562669db283bedbf09fab59663546d18` and main
-`78bc1ff045bcabebc3ac5536e53a1a87182ad365`. All exact-head/main gates pass; stage 3 remains open.
-Next isolate estimator hidden/duplicate mesh ownership. Borrowed-node lifetime,
-foreign observer copies, cache refresh and whole-process memory remain separate.
-See [audit](evidence/STAGE3_TRIANGLE_LIFETIME.md).
+Qualified inner operations do not establish whole adaptive atomicity. Remaining
+work includes other construction/caller roots, custom sources, helper/template/
+tree/mate paths, foreign and failed-tree observers, geometry/cache validity,
+logical rejection and full metadata/error/history/budget/patch/mesh/acceptance
+rollback or CLI retry. Consumed IDs are not rewound. Full-process, parallel,
+LSan and UBSan remain unqualified; complete extreme/non-power-of-two meshes and
+arbitrary callback publications are outside the bounded fixtures. C06/C07 and
+their linked decisions retain fixed-topology, exclusive ownership, borrowing,
+inner-operation and nonthrowing-destruction preconditions. Doxygen API debt stays
+in stage 8; full historical MSVC translation units still have VLA blockers.
 
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 23
-(PR #68) is qualified at head `f29018fea3d3490358396381cea1dc7967aaf1ac` and main
-`4dd41510180ac0fa10e9a3f083552fe1f3c13a2c`. All exact-head/main gates pass; stage 3 remains open.
-Next qualify completed-triangle destruction and failed-adoption observer cleanup
-under stable triangle identity/replacement. Cache refresh and whole-process memory
-remain separate. See [audit](evidence/STAGE3_TRIANGLE_OBSERVER.md).
-
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 22
-(PR #66) is qualified at head `88c285e5ac193e7c45fe688cec05867e5243dbdd` and main
-`79bad64023ab1ddd54eda76930df47ff2986f765`. All exact-head/main gates pass; stage 3 remains open.
-Next establish triangle special-member/replacement observer semantics, then
-qualify completed-triangle destruction. Owner ordering does not itself repair
-triangle deregistration or full-process memory. See [audit](evidence/STAGE3_SUBMESH_LIFETIME.md).
-
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 21
-(PR #64) is qualified at head `a6da72630db2747194982e1a2b77cd3203536408` and main
-`6cf041333b83a01f1c081df82620d12f00995d4b`. All exact-head/main gates pass; stage 3 remains open.
-Next audit triangle destruction/observer lifetime with SubMesh owner ordering.
-Constructor restoration does not qualify ordinary destruction, failed adoption
-of completed triangles or full CLI retry. See [audit](evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
-
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 20
-(PR #62) is qualified at head `dcf6941e944fcd3bf268e7f9a8ecef4f87735d75` and main
-`40106ede082614429639566c64ca3689a7d62c4b`. All exact-head/main gates pass; stage 3 remains open.
-Next isolate TriangleAdaptive construction/adjacency registration under allocation
-failure. Terminal element adoption does not qualify live-graph reuse or constructor
-failure before entry. See [scope and closure audit](evidence/STAGE3_ELEMENT_ADOPTION.md).
-
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 19
-(PR #60) is qualified at head `bebe4f5273719304fd00967bfaf7ae74de63f351` and main
-`e04a76a6103af5af5b116447c63c4de1ee047a0c`. All exact-head/main gates pass; stage 3 remains open.
-Next isolate SubMesh raw element adoption. MeshAdaptive insertion qualification
-does not cover element insertion, OpenMP constructors or whole-process memory.
-See [scope and closure audit](evidence/STAGE3_MESH_ADOPTION.md).
-
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 18
-(PR #58) is qualified at head `84e303da51a6ac4c6cf52dbbee7f5fb30c93696e` and main
-`e398854bba9f06045b71dd1b965505872106d746`. All exact-head/main gates pass; stage 3 remains open.
-Next isolate general MeshAdaptive raw adoption. The measured initial-mesh repair
-does not qualify OpenMP constructors, raw adoption or whole-process memory.
-See [scope and closure audit](evidence/STAGE3_INITIAL_MESH.md).
-
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 17
-(PR #56) is qualified at head `06f4bfd40cff9f09c527777169c5fcf8d053e0c7` and implementation main
-`9703536b21d8d3f02dbe7fbd9f83d3260f461aad`. All exact-head/main gates pass; stage 3 remains open.
-Next isolate InitialMesh temporary/pending ownership. Published-sample terminal
-release does not establish full-process memory or exceptional metadata recovery.
-See [scope and closure audit](evidence/STAGE3_CURVE_SAMPLE_LIFETIME.md).
-
-Previous qualified baseline: stages 0-2 closed for measured scope; stage 3 slice 16
-(#53, PR #54) is qualified.
-Head `8eaeb09fa8137ed32dea5549b4ac07b923d5bac2` integrated as main `186ef0251f460f3139baedae4ed77f30a2b9695b` through PR #54,
-preserving complete tree `0aef3cdf1d5fb1cb9075062cebfb74f68106dabf` (1678 blobs).
-Full exact-head and implementation-main campaigns pass with the same 538
-qualified compiled/tool/test/build/input/contract identities.
-
-CurveSampleGraphTransaction now spans serial AdaptCurve preparation/policy and
-the complete curve loop. All equivalent working point/parameter lists and the
-deduplicated initial sample inventory are prepared before original nodes are
-parked. Initial sample objects remain alive across successful per-curve prefixes.
-After inner guards unwind, failure clears the operation-local cache, clears every
-new shared graph alias before deletion, reclaims each new sample once without
-allocating and restores every original point/parameter list node and shared
-object. Success retires initial samples once after the complete loop, in the
-existing unordered-set capture/iteration convention, and leaves final graph
-lifetime with the caller. Per-curve sampling/publication/rebuild code is unchanged.
-
-Graph qualification passes 156/156 outcomes: 36 complete normal ASan/CRT traces
-(two visible operations each), 18 positive allocation sweeps/8118 denials,
-78 controlled abort/restore/retry outcomes, 18 retention-only cases, two explicit
-empty-graph guards and four actual list-move/UAF/leak/hook controls. Every denied
-allocation propagates once; attempts equal ordinal+1, requiring no rollback
-allocation. Final denial follows three committed curves and all expected ID
-requests. Four-curve fixtures cover three initialized actual curve types and
-mixed graphs, shared non-manifold/closed/reversed/distinct/two-endpoint layouts,
-prefix lengths one through four, inner surface failure, early failure, actual
-analytic interior samples, independent physical mesh copies/adjacency and a
-later operation whose initial samples were generated by actual production code.
-Original point/parameter list nodes, all sample fields/sharing and successful
-retry are checked. Consumed IDs stay consumed; evaluator scratch and orchestration
-metadata are not rolled back. Empty geometry is guard-only, not positive coverage.
-
-Original: 18 strict allocation sweeps and 60 controlled aborts stop at partial
-graph-restoration assertions. Later ordinals/unsafe observer consumption and CRT
-retention in those aborted cases are unmeasured. Eighteen separate retention-only
-experiments reclaim current reachable graph samples only and leave 1-6 orphaned
-entry samples, with 3-12 retained CRT blocks each. They make no restoration/retry
-claim. Other 60 original outcomes are expected. All 36 normal full observed logs
-match repaired logs. Verbatim original capture/retirement blocks wrap the original
-map/set storage with 19 Git-pinned production units; candidate uses 20 actual
-units. The controlled driver calls actual per-curve publication/sample/rebuild
-operations, not full historical Generator/Adapter TUs or upstream selection.
-
-CTest 26/26, zero skips and 74 Python controls; all ten prior batteries pass:
-publication 139, samples 88, rebuild 117, snapshots 89, synchronization 73,
-adoption 53, copy 30, curve 19, UV 81, node seven. Read-only new-unit lint,
-explicit formatting and inventory pass: 135 production files, 63 units, 72 headers,
-22 contracts/117 anchors; existing six-header cycle retained. Twice-repeated
-Eistute/Book comparisons preserve all nine attempted OBJ/acceptance/rejection/
-incidence states, 189 CSV fields and 1,168/4,256 last-accepted triangles exactly.
-Only the new target consistently disables optional NRVO/Debug iterator metadata;
-actual heap checks/negative controls and prior target settings remain unchanged.
-
-Classification: behavior-changing lifecycle/exception-consistency defect repair,
-with success-preserving engineering consolidation. Preparation/capture lifetime
-and cache cleanup intentionally change allocation timing/counts/bytes/peak storage;
-no unchanged-allocation or performance claim. No scientific formula/float order,
-numerical selection, synchronization, templates/front, tolerance, budgets, verifier
-or adaptation/acceptance/stopping change. C07/ADR-0017 require fixed topology,
-initialized parametric curves, collectively exclusively deletable samples without
-competing geometry-control/physical mesh owners, qualified inner operations and
-nonthrowing destructors. Full metadata/error/history/budget and patch/mesh/
-acceptance rollback, evaluator scratch and full-process memory stay unqualified.
-
-Full stage 3 remains open with sixteen qualified slices. Next characterize
-the remaining orchestration rollback boundary: curve adaptation metadata and
-targets, evaluator scratch, patch/mesh observers, error/history/budget/acceptance
-state and whole adaptive retry/rejection, then explicit full CLI disabled
-synchronization. Complete point/parameter graph rollback is qualified for the
-measured serial operations; it is not full Adapter/AdaptCurve/mesh atomicity.
-Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
-observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
-closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
-
-Earlier delivery histories and scope limits remain in PROJECT_STATE.md,
-WORKLOG.md and the unchanged evidence records. Architecture: see
-`architecture/MESH_ARCHITECTURE.md` and `architecture/REFACTOR_SEQUENCE.md`.
+Detailed delivery history, commands, negative evidence and scope limits remain
+in [PROJECT_STATE.md](PROJECT_STATE.md), [WORKLOG.md](WORKLOG.md) and their unchanged
+evidence records. Architecture and repair ordering remain in
+[MESH_ARCHITECTURE.md](architecture/MESH_ARCHITECTURE.md) and
+[REFACTOR_SEQUENCE.md](architecture/REFACTOR_SEQUENCE.md).
 
 | Stage | Scope | Completion evidence |
 |---|---|---|

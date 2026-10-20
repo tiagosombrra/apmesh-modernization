@@ -34,6 +34,8 @@ class ChargeEstimateProcess {
   double CalculateKaMedioPatch(PatchBezier *patch, int points);
   double CalculateAreaPatch(PatchBezier *patch, int pointsGaussLegandre);
   double CalculateAreaTriangleMedioRad(PatchBezier *patch);
+  // Owns temporary meshes/fresh samples and restores the preceding patch observer.
+  // Preserves evaluation order, degree selection and the selected triangle area.
   double CalculateAreaTriangleMedio(PatchBezier *patch, Timer *timer,
                                     int degree);
   // Temporary counting preserves the previous patch observer and borrowed samples.
