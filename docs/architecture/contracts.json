@@ -174,8 +174,8 @@
     {
       "id": "C06",
       "topic": "Patch/submesh observers",
-      "statement": "Patch stores a non-owning current SubMesh pointer and SubMesh stores a non-owning Patch pointer. PatchCoons borrows Geometry-owned curves. Estimator construction delegates to BuildInitialEstimateSubMesh and returns one exclusive physical mesh owner; the raw InitialMeshEstimate compatibility wrapper releases that owner to its caller without a hidden MeshAdaptive. Only completed construction publishes the patch observer. Unpublished copied source nodes and pending triangles have local owners; the first successful curve insertion transfers a sample to the existing collective lifetime. Positive degrees use a nonfloating iteration ceiling while preserving the original floating endpoint test and repeated additions. Nonpositive degrees are rejected before patch access. CalculateNumbersTriangle delegates to CountEstimateTriangles. Its temporary SubMesh has one unique owner; a nonallocating scope restores the previous patch observer and deletes fresh samples published only into its four initially empty curve lists. Preexisting point and parameter list nodes, borrowed samples and their element observers survive. Shared corner/repeated-curve aliases are cleared before each owned sample is deleted once. CalculateErroEstimative privately owns its temporary GeneratorAdaptive with unique_ptr through normal return and exception propagation; the mesh and timer remain borrowed. The historical strict minor_degree_ update and inclusive error stopping threshold are preserved; minor_error_ is not updated.",
-      "limits": "Replacing a submesh invalidates old observers; rollback must rebind every patch before the next adaptation. Qualification covers planar/bilinear degree 1/2/4 and four initialization masks with unchanged grid loops, UV evaluation order and historical center IDs. The area wrapper still leaks its raw Mesh root and lacks qualified scoped patch/sample cleanup. The bounded serial error-evaluator caller qualification uses actual class/dependency units with exact extracted generator constructor/ErrorGlobal bodies; full historical generator/estimator translation units, area orchestration, parallel and full-process memory remain unqualified. Timer and partially written node curvatures are not rolled back on exceptions. Published sample prefixes and evaluator scratch are not rolled back on terminal failure. Rebind patch before destroying the returned mesh; nonpositive degree guards cover 0/-1/INT_MIN; arbitrary patches and extreme complete meshes are unqualified. Scalar sampling compatibility covers 520 positive degrees independently of full mesh validity. Counting requires fixed topology, four live non-null curves and the actual factory publication semantics: initially nonempty lists are borrowed and unchanged; initially empty lists receive only fresh uniquely deletable samples. No concurrent access or arbitrary patch callback publication. Exact lifetime qualification covers plane/bilinear degree 1/2/4 with seven graph layouts and all observed allocation ordinals; repeated incidences and independent parameter-list fixtures are lifetime guards, not complete geometric validity. Evaluator scratch and CLI retry remain outside scope.",
+      "statement": "Patch stores a non-owning current SubMesh pointer and SubMesh stores a non-owning Patch pointer. PatchCoons borrows Geometry-owned curves. Estimator construction delegates to BuildInitialEstimateSubMesh and returns one exclusive physical mesh owner; the raw InitialMeshEstimate compatibility wrapper releases that owner to its caller without a hidden MeshAdaptive. Only completed construction publishes the patch observer. Unpublished copied source nodes and pending triangles have local owners; the first successful curve insertion transfers a sample to the existing collective lifetime. Positive degrees use a nonfloating iteration ceiling while preserving the original floating endpoint test and repeated additions. Nonpositive degrees are rejected before patch access. CalculateNumbersTriangle delegates to CountEstimateTriangles. Its temporary SubMesh has one unique owner; a nonallocating scope restores the previous patch observer and deletes fresh samples published only into its four initially empty curve lists. Preexisting point and parameter list nodes, borrowed samples and their element observers survive. Shared corner/repeated-curve aliases are cleared before each owned sample is deleted once. CalculateErroEstimative privately owns its temporary GeneratorAdaptive with unique_ptr through normal return and exception propagation; the mesh and timer remain borrowed. The historical strict minor_degree_ update and inclusive error stopping threshold are preserved; minor_error_ is not updated. CalculateAreaTriangleMedio gives its temporary MeshAdaptive automatic lifetime and uses the same selective EstimateMeshScope as counting. Each construction remains owned until insertion consumes it; restoration and fresh-sample cleanup run before physical mesh destruction. Error evaluation precedes the degree cap, replacement construction precedes removal, and the final selected-degree reconstruction and first-triangle area publication remain in their original order.",
+      "limits": "Replacing a submesh invalidates old observers; rollback must rebind every patch before the next adaptation. Qualification covers planar/bilinear degree 1/2/4 and four initialization masks with unchanged grid loops, UV evaluation order and historical center IDs. The bounded serial error-evaluator caller qualification uses actual class/dependency units with exact extracted generator constructor/ErrorGlobal bodies; full historical generator/estimator translation units, parallel and full-process memory remain unqualified. Timer and partially written node curvatures are not rolled back on exceptions. Published sample prefixes and evaluator scratch are not rolled back on terminal failure. Rebind patch before destroying the returned mesh; nonpositive degree guards cover 0/-1/INT_MIN; arbitrary patches and extreme complete meshes are unqualified. Scalar sampling compatibility covers 520 positive degrees independently of full mesh validity. Counting requires fixed topology, four live non-null curves and the actual factory publication semantics: initially nonempty lists are borrowed and unchanged; initially empty lists receive only fresh uniquely deletable samples. No concurrent access or arbitrary patch callback publication. Exact lifetime qualification covers plane/bilinear degree 1/2/4 with seven graph layouts and all observed allocation ordinals; repeated incidences and independent parameter-list fixtures are lifetime guards, not complete geometric validity. Evaluator scratch and CLI retry remain outside scope. Required area lifetime qualification separates controlled orchestration from actual-error integration. The controlled error-member test executable is separate from actual-error integration; no production callback abstraction is introduced. Selected-zero rejection and exception-visible minor_degree_ updates remain unchanged. Degree-5 execution only exercises the historical cap/lifetime path, not general non-power-of-two geometric validity. Mesh, sample and patch observers require the fixed topology and publication rules above.",
       "evidence": [
         {
           "path": "include/data/patch/patch.h",
@@ -218,11 +218,11 @@
           "anchor": "return apmesh::estimation::CountEstimateTriangles(patch, degree);"
         },
         {
-          "path": "src/estimate/triangle_count_estimate.cpp",
+          "path": "src/estimate/estimate_mesh_scope.cpp",
           "anchor": "patch_.SetSubMesh(previous_mesh_);"
         },
         {
-          "path": "src/estimate/triangle_count_estimate.cpp",
+          "path": "src/estimate/estimate_mesh_scope.cpp",
           "anchor": "owns_samples_[slot] = curves_[slot]->GetPoints().empty();"
         },
         {
@@ -236,6 +236,18 @@
         {
           "path": "include/estimate/charge_estimate_process.h",
           "anchor": "The evaluator is privately owned; mesh/timer remain borrowed and may be mutated."
+        },
+        {
+          "path": "src/estimate/triangle_area_estimate.cpp",
+          "anchor": "MeshAdaptive mesh;"
+        },
+        {
+          "path": "src/estimate/triangle_area_estimate.cpp",
+          "anchor": "while (CalculateErroEstimative(&mesh, timer, degree) && degree < 5)"
+        },
+        {
+          "path": "include/estimate/estimate_mesh_scope.h",
+          "anchor": "Keep the physical mesh owner alive until after this scope is destroyed."
         }
       ]
     },

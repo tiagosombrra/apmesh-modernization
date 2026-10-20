@@ -1,0 +1,180 @@
+{
+  "scope": "Initial repaired controlled/actual-error smoke checks and 39/39 CTest pass. The final original smoke case intentionally returns failure on missing restoration. PowerShell rendered inherited tidy stderr as NativeCommandError, so its shell exit is inconclusive; required binary-captured campaign lint is authoritative. No diagnostic is suppressed or hidden retry used.",
+  "smoke": [
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-0-0-0",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\0-triangle_area_probe-normal-0-0-0.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-0-0-1",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\1-triangle_area_probe-normal-0-0-1.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-0-0-2",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\2-triangle_area_probe-normal-0-0-2.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-0-0-3",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\3-triangle_area_probe-normal-0-0-3.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-0-0-4",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\4-triangle_area_probe-normal-0-0-4.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-0-0-5",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\5-triangle_area_probe-normal-0-0-5.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-0-0-6",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\6-triangle_area_probe-normal-0-0-6.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-1-0-0",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\7-triangle_area_probe-normal-1-0-0.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-1-0-1",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\8-triangle_area_probe-normal-1-0-1.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-1-0-2",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\9-triangle_area_probe-normal-1-0-2.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-1-0-3",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\10-triangle_area_probe-normal-1-0-3.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-1-0-4",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\11-triangle_area_probe-normal-1-0-4.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-1-0-5",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\12-triangle_area_probe-normal-1-0-5.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-1-0-6",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\13-triangle_area_probe-normal-1-0-6.log"
+    },
+    {
+      "directory": "s28qa/RelWithDebInfo",
+      "target": "triangle_area_real_probe",
+      "mode": "normal-1-4-0",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\14-triangle_area_real_probe-normal-1-4-0.log"
+    },
+    {
+      "directory": "s28qd/Debug",
+      "target": "triangle_area_probe",
+      "mode": "contracts",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\15-triangle_area_probe-contracts.log"
+    },
+    {
+      "directory": "s28qd/Debug",
+      "target": "triangle_area_real_probe",
+      "mode": "contracts",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\16-triangle_area_real_probe-contracts.log"
+    },
+    {
+      "directory": "s28qd/Debug",
+      "target": "triangle_area_probe",
+      "mode": "failure-0-0-0-0",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\17-triangle_area_probe-failure-0-0-0-0.log"
+    },
+    {
+      "directory": "s28qd/Debug",
+      "target": "triangle_area_probe",
+      "mode": "failure-1-4-3-0",
+      "code": 0,
+      "log": "build\\s28-smoke-initial\\18-triangle_area_probe-failure-1-4-3-0.log"
+    },
+    {
+      "directory": "s28oa/RelWithDebInfo",
+      "target": "triangle_area_probe",
+      "mode": "normal-1-0-3",
+      "code": 1,
+      "log": "build\\s28-smoke-initial\\19-triangle_area_probe-normal-1-0-3.log"
+    }
+  ],
+  "logs": {
+    "build/s28-initial-s28oa-0.log": "5a097803957f0ad2189998bafd09a871448d92659a2af1f43977c955d4d8d5af",
+    "build/s28-initial-s28oa-1.log": "70246c6d42a842b653e56ff3eeb6c257a89b55ce51c7a6629d372a37b52a0ea7",
+    "build/s28-initial-s28od-0.log": "051260e494ca1bb23d8e20b3791d140759fc4b229c5d1a6cd4ee50754cc0e55f",
+    "build/s28-initial-s28od-1.log": "42e654f38d247a26a63741de28b120e69cc1becafeb945e1a885ffc39433fb0b",
+    "build/s28-initial-s28qa-0.log": "3ce6adf8715de9ddaf470494a91ca25e66efd81d662186f8086b2aa46045541e",
+    "build/s28-initial-s28qa-1.log": "1ea306d4f13ef0630f27a2fee97321978e90cda22e7f527fc70add2b9010658f",
+    "build/s28-initial-s28qd-0.log": "e1575aa131394d6387dc501b83954d3148eb425e24475106f5f4f8dea04e97e7",
+    "build/s28-initial-s28qd-1.log": "be7081d6ea50bf1ddad0f62e28054a9a96c041e419374ac0b9fc50558fed23d4",
+    "build/s28-preflight-build.log": "68b4df88bb4a513007c0f519b4318d0c9b269270557f3ceed0158fe92b60a1ac",
+    "build/s28-preflight-configure.log": "0837b8590d2ae17c9c9d950aab270f24d629f586ce9ff13ac3d2bf81b26231d6",
+    "build/s28-preflight-ctest.log": "ca77a5ddd1fface99a0ef3d3ee3b3a0ddc62916092f0b7a79b2a6ec425e5d81e",
+    "build/s28-preflight-tidy.log": "63f27d4d96ab2c12f6eedb86bbeea0a615b2c2dc5beb382e58ee125927f9e362",
+    "build/s28-smoke-initial/0-triangle_area_probe-normal-0-0-0.log": "b8f1cfed0351d90db556d3bd9338930489280c3180b77ab9da3059dbf46ea93d",
+    "build/s28-smoke-initial/1-triangle_area_probe-normal-0-0-1.log": "9d2698aaf8c022026b0ab4f934019469a08e5cf36fb86d1b6900a634837fe99a",
+    "build/s28-smoke-initial/10-triangle_area_probe-normal-1-0-3.log": "d2350c054832cbeb529f3d6d6fc110e1726f46a948970e4159f0f42e67a0f56e",
+    "build/s28-smoke-initial/11-triangle_area_probe-normal-1-0-4.log": "c7a1076a094b1ed446573391a71ea6987132c62ee3538850173ee66e26308ad1",
+    "build/s28-smoke-initial/12-triangle_area_probe-normal-1-0-5.log": "fa9efcfd75767d0c682d31aa062c92fe67b287a96a1f11aa2cb256468c26d4bb",
+    "build/s28-smoke-initial/13-triangle_area_probe-normal-1-0-6.log": "1d28dad3ecb4616de74c1642ebc2320aa7a85aab02968cf170d30ab09971b211",
+    "build/s28-smoke-initial/14-triangle_area_real_probe-normal-1-4-0.log": "2a405e4613418e1716058a027e7bb7c221dfe52da0c6ecd8e631a7f9ebdb152f",
+    "build/s28-smoke-initial/15-triangle_area_probe-contracts.log": "eb9d5bb461cd8200f0df0246c5adbb4eefdad344d4a9aae17c28ff7a19efc371",
+    "build/s28-smoke-initial/16-triangle_area_real_probe-contracts.log": "64f9743bf21149ecfd305e1d3c214a9e7451fde4a4f092d6b44fbc996c5f1e5b",
+    "build/s28-smoke-initial/17-triangle_area_probe-failure-0-0-0-0.log": "8a587adfbcb61ee97530133082cf0f7538f6a77110cfdc92e3e5fb3d88135d3c",
+    "build/s28-smoke-initial/18-triangle_area_probe-failure-1-4-3-0.log": "dcec355034ba4618ab145a5ab42e9ea5fed19026344c86422c7ba84400eaf011",
+    "build/s28-smoke-initial/19-triangle_area_probe-normal-1-0-3.log": "e5d2217b7599140c23b9715d47a40477dd9aa279d3f27c4c241f8455a4db653c",
+    "build/s28-smoke-initial/2-triangle_area_probe-normal-0-0-2.log": "1c047b245167fe90e092ecb51414b0f1aec8cb200aaa9914c6a7b37ca154ca70",
+    "build/s28-smoke-initial/3-triangle_area_probe-normal-0-0-3.log": "cb65f7867263a0943860c6ee37851c34f31bc43e33278d7fd0c28dba8608cce4",
+    "build/s28-smoke-initial/4-triangle_area_probe-normal-0-0-4.log": "4214f491d595c6440f23b92bc98bb66c509bceee5faaee95ba277c4aae3c1aaf",
+    "build/s28-smoke-initial/5-triangle_area_probe-normal-0-0-5.log": "720f15109769fd90c593e5324c2744b8e5cb29519650f1d4ace9104b0a672674",
+    "build/s28-smoke-initial/6-triangle_area_probe-normal-0-0-6.log": "bae34267c10464491c50aa07fd035053559cea41de3e58e36a9f3000f4958068",
+    "build/s28-smoke-initial/7-triangle_area_probe-normal-1-0-0.log": "a74fc6d1749c1ef6b838a051f10565bc9bec7063834818d58353284e5a4c1bed",
+    "build/s28-smoke-initial/8-triangle_area_probe-normal-1-0-1.log": "7589db1c148892e78e6c32bc0b8f2d211c57c68e5bf570f6485391629ff67167",
+    "build/s28-smoke-initial/9-triangle_area_probe-normal-1-0-2.log": "d10c46b8c06eaee88c14059f4b178c22fa28859780f5a6ffa7e3f37ae03051ce",
+    "build/windows-gcc17/build/s28-preflight-ctest.xml": "efd352079844b5d0c11013f669db26e283f80ebed25ff2470f85e76aa4bc1086"
+  }
+}

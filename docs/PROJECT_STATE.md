@@ -1,9 +1,24 @@
 # Project state
 
-Updated: 2026-10-19 (America/Fortaleza).
+Updated: 2026-10-20 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Latest qualified work: stage 3 slice 27
+## Current work (candidate; delivery gates pending): stage 3 slice 28
+
+Candidate full gates pass; exact published-head and post-merge main qualification remain required. Stage 3 retains twenty-seven qualified slices until both pass.
+
+Temporary area meshes/fresh samples have explicit owners and restore the previous
+patch observer. The 342 new outcomes/30942 denials, 280 controlled paired results/
+448 steps and 84 actual-error paired results pass for the measured scope. Original
+294 controlled and 28 actual-error failures remain preserved. No selection policy
+or numerical formula changes. See [root cause and closure audit](evidence/STAGE3_TRIANGLE_AREA.md).
+
+Stage 3 remains open. Next audit charge-estimation input/control-point roots as one
+bounded item. Arbitrary/foreign publications, partial metadata rollback, complete
+extreme/non-power-of-two meshes and full-process/parallel/LSan/UBSan remain open.
+Stages 4-11 remain pending.
+
+## Stage 3 slice 27 qualified
 
 PR #76 integrates head `387cf4d94eebb06a3203727ae97bffdbb5e5f1eb` as main
 `c905baa3738db4059ecce4c4b896b8753de43daa`, preserving complete tree `57234a8ab46166169b792e98870d48904a7c7bdb`
