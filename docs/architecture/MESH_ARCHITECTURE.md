@@ -1,47 +1,35 @@
 # Mesh architecture and lifecycle inventory
 
 Initial inventory base: `d4561c9421226503cb4a478faad71ed5ad012381` (stage 2, #5).
-Node-copy contract reviewed against `6c56e307b1e932399c88ba961a9de40bf87ecbca`
-in stage 3, issue #8. Classification: engineering inventory and lifecycle repair.
-UV registered-template ownership and allocation-free detachment are reviewed
-against `0f2473622800907e2d15e1d5ab6216caedb36797` in issue #11.
+Current production counts and contracts below follow the deterministic inventory.
+Detailed earlier boundary sections are historical; PROJECT_STATE.md records the
+current qualified scope and queue. This is engineering/lifecycle documentation,
+not a new generator or scientific technique.
 
-Issue #14 reviews primitive construction/cache replacement against main
-`0146fbd4925721a53a9b52717b82c5af8c4e0115`. Edge/Face prepare owned caches
-before committing endpoints, preserving live state on allocation failure and
-retaining a Face midpoint alias as borrowed. Default front construction guards
-Boundary until Quadtree adoption. This prerequisite does not qualify template
-creation/registration, other setters or arbitrary front exceptions. See ADR-0004
-and `../evidence/STAGE3_UV_ALLOCATION.md`.
+The generator retains distinct parametric patches, canonical boundary curves,
+physical meshes and CRABMesh UV reconstruction. C01-C22 retain the established
+domain, identity, ownership and ordered reconstruction contracts. Bounded stage 3
+repairs do not establish whole adaptive rollback or whole-process memory safety.
 
-Issue #17 extends the pending-resource boundary from entry main
-`c341ba7cb7b514b4073330e59ccef14d000e45de`: Boundary commits registration/IDs
-after allocation, while TemplateStorage guards unregistered suffixes and leaves
-registered prefixes at Quadtree. Face::quality owns temporary centers and
-detaches its borrowed edge on unwind. Prepared-tree failure means destruction
-only; partially published observer views are not a reusable failed mesh. See
-ADR-0005 and `../evidence/STAGE3_UV_REGISTRATION.md` for measured coverage.
-
-The current generator already has parametric patches, canonical shared boundary
-curves and CRABMesh reconstruction. Their responsibilities are mapped here so
-later ownership and library changes preserve the published execution sequence.
-Stage 2 changed tooling/documentation only. Stage 3 repairs the SetNoh copy
-boundary by dropping foreign element observers; scalar state and scientific
-policy remain preserved. See [node lifetime evidence](../evidence/STAGE3_NODE_LIFETIME.md).
-The next slice owns untransferred templates in Quadtree, prepares front observer
-views before ordered owner transfer, and detaches shared endpoints without new
-allocations. See [UV evidence](../evidence/STAGE3_UV_LIFETIME.md).
+C23 maps the charge input boundary: input_output/control_patch_reader.cpp returns
+unique control-only patch owners; estimate/charge_input_estimate.cpp reconstructs
+Geometry-owned patches from automatic coordinate-only controls. Geometry owns
+committed curves/patches; returned patch lists and curve incidence entries borrow.
+Failed pending construction retires only exclusively appended observer suffixes.
+The serial ReaderFilePatches interning/orientation path remains distinct from
+this legacy workload-estimation path. Their matching conventions are preserved,
+not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 
 ## Evidence and coverage
 
 [source_inventory.json](source_inventory.json) deterministically covers all
-122 first-party C++ files: 57 translation units and 65 headers, plus hashes for
-the five CMake inputs (including both isolated memory probes). It records 454 potential literal include directives and
-268 distinct directed first-party include edges. Conditional branches are kept;
+149 first-party C++ files: 72 translation units and 77 headers, plus hashes for
+the 7 CMake inputs (including isolated memory probes). It records 574 potential literal include directives and
+335 distinct directed first-party include edges. Conditional branches are kept;
 this is not the active preprocessed graph. The 16 directory groups below are
 source organization, not automatically inferred architectural layers.
 
-[contracts.json](contracts.json) contains 22 reviewed contracts with 83 exact
+[contracts.json](contracts.json) contains 23 reviewed contracts with 152 exact
 source anchors. The checker rejects stale files, missing anchors and empty
 coverage. Matching anchors establishes traceability; it does not prove the
 semantic statements or all runtime paths. The statements below come from
@@ -50,26 +38,26 @@ focused source review, with uncertainty and deferred qualification stated.
 | Directory family | Files | Responsibility and relevant boundary |
 | --- | ---: | --- |
 | cli | 1 | RuntimeConfig, validation, process globals, thin-entry candidate; currently src/main.cpp also supplies legacy runtime definitions |
-| generator | 2 | Initial mesh, adaptive policy/budgets/history, retries, rollback, acceptance, saving and quality/report aggregation |
-| adapter | 2 | Curve discretization and physical/UV mesh conversion around each CRABMesh reconstruction attempt |
+| generator | 16 | Initial mesh, adaptive policy/budgets/history, retries, rollback, acceptance, saving and quality/report aggregation |
+| adapter | 4 | Curve discretization and physical/UV mesh conversion around each CRABMesh reconstruction attempt |
 | data | 18 | Physical point/vector/node/triangle/model/geometry concepts and broad shared definitions |
 | data/curve | 9 | Parametric Bezier/Hermite curves, canonical samples and orientation mapping |
 | data/patch | 8 | Surface control nets, evaluation, derivatives, inverse mapping and current-submesh observers |
 | data/mesh | 4 | Owned physical mesh/submesh/node/element containers |
 | data/tree | 2 | One-dimensional curve refinement tree; distinct from the two-dimensional domain quadtree |
-| crab_mesh/aft | 17 | UV vertices/edges/faces, boundary, quadtree/templates, front reconstruction and improvement |
+| crab_mesh/aft | 18 | UV vertices/edges/faces, boundary, quadtree/templates, front reconstruction and improvement |
 | crab_mesh/numerical | 7 | Equation/root functions and bisection variants used by numerical geometry helpers |
 | crab_mesh/performer | 5 | ID allocation and ranges; local front IDs remain a separate context |
 | curvature | 7 | Analytical surface curvature, discrete physical-mesh curvature and adjacency ordering |
-| estimate | 2 | Legacy patch workload estimation and alternative loading path, principally parallel distribution support |
-| input_output | 11 | BP/model readers, input validation, independent incidence observation and historical writers |
+| estimate | 11 | Legacy patch workload estimation and alternative loading path, principally parallel distribution support |
+| input_output | 12 | BP/model readers, input validation, independent incidence observation and historical writers |
 | parallel | 25 | Communicator/thread abstractions and MPI/OpenMP-specific implementations; effective execution unqualified here |
 | timer | 2 | Interval accumulation and reporting; performance qualification deferred |
 
-The fresh compilation database contains all 57 production translation units.
+The fresh compilation database contains all 72 production translation units.
 Compilation of a file with inactive branches does not qualify those branches.
 Development Python tools/tests, vendored Eigen and publication artifacts have
-different roles and are outside the 122-file production count.
+different roles and are outside the 149-file production count.
 
 ## Scientific sequence and actual component boundaries
 
@@ -127,7 +115,8 @@ physical ID and source-curve identity cannot be interchanged (C07-C09, C21).
 
 | Boundary | Actual source operation | Preservation obligation |
 | --- | --- | --- |
-| BP to geometry | PatchReader interns controls, reuses complete curves and passes incidence direction to PatchBezier | Input control net, complete curve identity and all incident sheets |
+| Serial BP to geometry | ReaderFilePatches interns controls, reuses complete curves and passes incidence direction to PatchBezier | Input control net, complete curve identity and all incident sheets |
+| Estimator BP input | LoaderBPFile returns unique control-only patches; ChargeEstimate retains them through automatic control construction and consuming Geometry adoption | Historical control IDs/order and curve matching; this path does not adopt the serial interning policy (C23) |
 | Canonical samples to local boundary | Adapter traverses ordered curve points and maps local side UV; reverse incidences complement parameters | Same partition and XYZ for every sheet, independent of patch traversal |
 | Old physical triangles to old UV faces | Adapter reads GetParametersN1/N2/N3 and allocates temporary Vertex/Face objects | UV belongs to the same patch; h normalization still uses physical area fractions |
 | CRABMesh UV result to physical mesh | Parameterize for interior nodes; boundary node copies preserve IDs; map<Vertex*,NodeAdaptive*> resolves generated triangle corners | New owners, coherent adjacency, UV tuples and global IDs survive temporary-front destruction |
@@ -142,10 +131,10 @@ physical ID and source-curve identity cannot be interchanged (C07-C09, C21).
 | Model | Destructor deletes meshes_ raw pointers | geometry_ is borrowed; the serial root uses stack Geometry. Implicit Model copy semantics need review |
 | GeneratorAdaptive | mesh_ and save_mesh_ own physical meshes; Adapter is a member | Current accepted mesh may come from mesh_ or the last saved state; the broader legacy Model collection is a different ownership route |
 | MeshAdaptive | unique_ptr submeshes; positional reset deletes replaced owner | A Patch current-submesh observer must be rebound after replacement/rollback |
-| SubMesh | unique_ptr nodes/elements; AddNoh moves, SetElement adopts | SetNoh copies scalar state and clears foreign adjacency; caller retains the source. The header now distinguishes copy from adoption |
-| TriangleAdaptive | SubMesh owns the element | Node pointers borrow; construction registers adjacency; destruction does not unregister; cached values need invalidation policy |
+| SubMesh | unique_ptr nodes/elements; AddNoh moves, SetElement adopts; destruction clears elements before nodes | SetNoh copies scalar state and clears foreign adjacency; caller retains the source. The header now distinguishes copy from adoption |
+| TriangleAdaptive | SubMesh owns the element | Node pointers borrow and must outlive the element; construction registers and destruction unregisters current incidences. Replacement transfers the matched observer; geometry-cache refresh remains separate |
 | NodeAdaptive | SubMesh owns physical node copies | Adjacent elements are borrowed; general implicit copies retain adjacency. SetNoh clears it at the new mesh boundary. GetNoh on TriangleAdaptive still returns a value copy |
-| Curve sample lists | CurveAdaptive explicitly does not own them | Orchestration creates/deletes/restores samples; complete terminal/exception ownership needs stage 3 qualification |
+| Curve sample lists | CurveAdaptive explicitly does not own them | Qualified serial graph/sample scopes own reachable fresh samples and release shared aliases under fixed publication rules (C07). Arbitrary foreign publications and full orchestration rollback remain unqualified |
 | Default AdvancingFront | Allocates boundary/quadtree; deletes its owned faces, inner edges/vertices, then quadtree | Front receives template owner lists only after allocating observer preparation; setters/external constructors remain unqualified |
 | Boundary | Detaches endpoints without allocation, deletes edges, then vertices | Completed-edge curve belongs to the previous outgoing side; borrowed source curve outlives the attempt |
 | Edge / Face | Legacy destructors retain endpoint ownership outside shared containers; own distinct midpoint/vector caches | Containers call DetachVertices without allocating; Face releases a midpoint alias to an endpoint. Generic raw adoption still requires unique ownership |

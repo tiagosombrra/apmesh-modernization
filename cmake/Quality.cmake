@@ -37,6 +37,16 @@ if(BUILD_TESTING)
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_subdirectory(tests/uv_memory)
   add_subdirectory(tests/curve_memory)
+  add_test(NAME application.charge_input_contracts COMMAND charge_input_probe contracts
+    "${PROJECT_SOURCE_DIR}/tests/curve_memory/data/charge_input.bp")
+  set_tests_properties(application.charge_input_contracts
+    PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
+  if(TARGET charge_input_real_probe)
+    add_test(NAME application.charge_input_real_numbers COMMAND charge_input_real_probe repeat-3-1
+      "${PROJECT_SOURCE_DIR}/tests/curve_memory/data/charge_input.bp")
+    set_tests_properties(application.charge_input_real_numbers
+      PROPERTIES LABELS "application;numerical;required-gate" TIMEOUT 30)
+  endif()
   add_test(NAME application.curve_collection_contracts COMMAND curve_collection_probe contracts)
   add_test(NAME application.curve_copy_contracts COMMAND curve_copy_probe contracts)
   add_test(NAME application.geometry_adoption_contracts COMMAND geometry_adoption_probe contracts)

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <list>
+#include <memory>
 #include <sstream>
 
 #include "../data/model.h"
@@ -21,7 +22,9 @@ class PatchReader {
 
   std::list<PatchBezier *> ParsePatchesBezier();
   std::list<PatchBezier *> LoaderRibFile();
-  std::list<PatchBezier *> LoaderBPFile(string filename);
+  // Each call transfers its control-only patches to one owning result.
+  // Partial reads and exceptions release every unpublished patch.
+  std::list<std::unique_ptr<PatchBezier>> LoaderBPFile(string filename);
   std::list<PatchHermite *> LoaderBPFileHermite();
   std::list<PatchBezier *> LoaderOBJFile();
   std::list<PatchBezier *> OrderVectorToListBezierPatches(std::vector<double>);

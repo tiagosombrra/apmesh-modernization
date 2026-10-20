@@ -24,8 +24,9 @@ def extract(root, output):
     charge_path = root / "src/estimate/charge_estimate_process.cpp"
     charge_source = charge_path.read_text(encoding="utf-8")
     charge_start = charge_source.index("ChargeEstimateProcess::ChargeEstimateProcess()")
-    charge_end = charge_source.index("static bool SortByNt(", charge_start)
-    charge_lifetime = charge_source[charge_start:charge_end]
+    destructor = "ChargeEstimateProcess::~ChargeEstimateProcess() {}"
+    charge_end = charge_source.index(destructor, charge_start) + len(destructor)
+    charge_lifetime = charge_source[charge_start:charge_end].rstrip() + "\n\n"
     assert charge_lifetime.count("{}") == 2, "Estimator construction changed; review adapter scope"
     text = ('#include "generator/generator_adaptive.h"\n\n' + constructor + "\n\n" +
             charge_lifetime + evaluator)

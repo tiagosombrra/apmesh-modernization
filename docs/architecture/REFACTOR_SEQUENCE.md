@@ -4,6 +4,25 @@ This is an implementation sequence within the approved stages, not a production
 change in stage 2. Evidence IDs refer to [contracts.json](contracts.json).
 Only one work item is active at a time; required regression gates remain exact.
 
+## Current bounded boundary and next audit
+
+C23 records charge input/control/pending ownership, badbit resource propagation
+and exclusive appended observer-suffix cleanup. Preserve the legacy estimator's
+matching/control order and keep it distinct from serial ReaderFilePatches
+interning/orientation. Candidate/exact-head/main status is authoritative in
+PROJECT_STATE.md and the charge-input evidence, not inferred from this map.
+
+The next single audit is numerical estimator helper scratch/control-node
+lifetime, particularly overwritten PointAdaptive allocations in curvature
+sampling. Keep the existing formulas and 25-sample argument, distinguish actual
+numerical correspondence from memory qualification, and preserve original
+failures. Other loaders, Model/copy/cache/helper roots, arbitrary publications,
+metadata/acceptance rollback and full-process/parallel memory remain open.
+
+The ordering and earlier boundary sections below retain their historical context;
+PROJECT_STATE.md is the current queue. They do not reopen completed bounded work
+or establish stage 3 closure.
+
 ## First stage 3 slice: establish and qualify lifecycle boundaries
 
 Issue #8 implements the narrow SetNoh copy boundary: a reproduced expired
