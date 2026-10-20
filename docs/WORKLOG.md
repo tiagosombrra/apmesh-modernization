@@ -3,7 +3,7 @@
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Latest delivery: stage 3 slice 28 (PR #78); see the final ledger row.
+Latest delivery: stage 3 slice 29 (PR #80); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -43,3 +43,4 @@ patch/sample lifetime without changing numerical selection policy. General mesh/
 cache/foreign observer validity and full-process/parallel memory remain open.
 | 2026-10-19, stage 3 slice 27 | PR #76; head 387cf4d94eebb06a3203727ae97bffdbb5e5f1eb, main c905baa3738db4059ecce4c4b896b8753de43daa; evidence/STAGE3_ERROR_ESTIMATE.md | Temporary evaluator root/vector released; CTest 37/37, 1421 instrument outcomes, 156062 new allocation denials, 270 paired policy decisions, exact repeated article traces; original retention/tooling failures preserved; area orchestration next |
 | 2026-10-20, stage 3 slice 28 | PR #78; head d36f71c19278547ec897d5c96a7cc37e2884c6bc, main 4ea63f2118c9cccf8968676125bb3794d7a79bd0; evidence/STAGE3_TRIANGLE_AREA.md | Temporary area Mesh/fresh sample owners and previous patch restoration; CTest 39/39, 1763 outcomes, 30942 new denials, exact paired area/degree/exception traces and repeated article runs; original failures preserved; input/control-point roots next |
+| 2026-10-20, stage 3 slice 29 | PR #80; head 86e5555b2d2590c9ab382842e4a0b0cb3005b0e5, main 42f8e62eee04e99a566f499651c477bd2cb47345; evidence/STAGE3_CHARGE_INPUT.md | Unique reader/pending owners, automatic controls, exclusive observer-suffix cleanup and reader badbit propagation; head/main 41 CTest, 74 Python controls, 1952 expected instrument outcomes, 2787 new allocation denials, 48 exact paired traces and article regression; original 155 failures and DLL CRT/reader/link preflights retained; helper scratch/full-process remain open |

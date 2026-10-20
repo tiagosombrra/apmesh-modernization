@@ -56,17 +56,18 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 remains open with twenty-eight qualified ownership/lifecycle slices.
-The latest owns temporary area meshes/fresh samples and restores the preceding
-patch observer (PR #78). Full exact-head/main gates pass: CTest 39/39,
-74 Python controls, twenty-four batteries/1763 expected outcomes, 1040 retained
-scalar comparisons and exact repeated Eistute/Book accepted/rejected traces.
-The 342 new outcomes cover 30942 allocation denials, 280 paired controlled
-results/448 evaluation steps and 84 paired actual-error results. Independent
-analytic area checks and original retention/restoration failures are retained.
-See [the latest closure audit](docs/evidence/STAGE3_TRIANGLE_AREA.md).
-Input/control-point roots, general geometry/cache validity and full-process/
-parallel memory remain open; stages 4-11 pending.
+Stage 3 remains open with twenty-nine qualified ownership/lifecycle slices.
+The latest owns charge input/control/pending patches and restores exclusively
+appended curve observers (PR #80). Full exact-head/main gates pass:
+CTest 41/41, 74 Python controls, twenty-five batteries/1952 expected outcomes,
+1040 retained scalar comparisons and exact repeated Eistute/Book accepted/rejected
+traces. The new 189 outcomes cover 2787 allocation denials; 24 actual and
+24 controlled original/repaired traces preserve numerical bits, control points,
+incidence, stable order and normal writer bytes. Original/preliminary failures
+and the explicit static Debug CRT qualification remain retained. See [the latest
+closure audit](docs/evidence/STAGE3_CHARGE_INPUT.md).
+Numerical helper scratch, parser/output-error behavior, geometry/cache validity
+and full-process/parallel memory remain open; stages 4-11 pending.
 
 ## Repository policy
 

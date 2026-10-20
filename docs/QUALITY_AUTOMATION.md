@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Charge input ownership (PR #80)
+
+Stage 3 slice 29 adds application.charge_input_contracts and
+application.charge_input_real_numbers. tools/qualify_charge_input.py requires
+189 expected outcomes, twenty complete sweeps/2787 allocation denials,
+live owned observer prefixes and real UAF/leak/hook controls. The Debug target
+explicitly uses the independently challenged static CRT; failed DLL/reader/link
+preflights remain retained. tools/compare_charge_input.py requires 24 controlled
+and 24 actual-helper nonempty paired traces with exact controls/IDs, scalar bits,
+incidence, stable order and normal writer bytes. Full exact-head/main CTest is
+41/41 with 74 Python controls, zero skips and all 1952 memory outcomes. This is
+bounded ownership, not helper scratch, malformed-input, partial-output or whole-
+process qualification. See [commands and limits](evidence/STAGE3_CHARGE_INPUT.md).
+
 ## Temporary area mesh ownership (PR #78)
 
 Stage 3 slice 28 adds application.triangle_area_contracts and
