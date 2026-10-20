@@ -1,6 +1,6 @@
 # ADR 0030: charge input ownership
 
-Status: accepted for the bounded resource-lifetime repair; candidate only, exact-head/main qualification pending.
+Status: accepted for the bounded resource-lifetime repair; exact-head/main qualification complete.
 
 Return independent unique control-patch owners from the valid legacy BP loader,
 use automatic coordinate-only controls and own each pending reconstructed patch
