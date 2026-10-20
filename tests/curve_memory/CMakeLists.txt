@@ -46,6 +46,62 @@ foreach(curve_probe IN ITEMS curve_collection_probe curve_copy_probe geometry_ad
     target_link_options(${curve_probe} PRIVATE -static -static-libgcc -static-libstdc++)
   endif()
 endforeach()
+
+# Own the reader result and pending charge patch while retaining committed Geometry.
+find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
+set(charge_backend "${CMAKE_CURRENT_BINARY_DIR}/charge_input_backend")
+set(charge_input "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/charge_input_estimate.cpp")
+set(control_reader "${AP_MESH_CURVE_SOURCE_ROOT}/src/input_output/control_patch_reader.cpp")
+set(charge_outputs "${charge_backend}/lifetime.cpp")
+if(NOT EXISTS "${charge_input}")
+  set(charge_input "${charge_backend}/caller.cpp")
+  set(control_reader "${charge_backend}/reader.cpp")
+  list(APPEND charge_outputs "${charge_input}" "${control_reader}")
+endif()
+add_custom_command(OUTPUT ${charge_outputs}
+  BYPRODUCTS "${charge_backend}/extraction.json"
+  COMMAND "${Python3_EXECUTABLE}" "${default_curve_root}/tools/extract_charge_input_backend.py"
+          --root "${AP_MESH_CURVE_SOURCE_ROOT}" --output "${charge_backend}"
+  DEPENDS "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/charge_estimate_process.cpp"
+          "${AP_MESH_CURVE_SOURCE_ROOT}/src/input_output/patch_reader.cpp"
+          "${default_curve_root}/tools/extract_charge_input_backend.py"
+  VERBATIM)
+set(charge_sources ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_coons.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/geometry.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/vertex_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/node_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/element_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/triangle_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/mesh/mesh_adaptive.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/mesh/sub_mesh.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/input_output/write_obj_file.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/timer/timer.cpp"
+  "${charge_input}" "${control_reader}")
+add_executable(charge_input_probe charge_input_probe.cpp ${charge_sources} "${charge_backend}/lifetime.cpp")
+target_compile_features(charge_input_probe PRIVATE cxx_std_17)
+target_include_directories(charge_input_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include")
+if(MSVC)
+  target_compile_options(charge_input_probe PRIVATE /utf-8 /W4 /EHsc /permissive- /Zc:nrvo-)
+  target_compile_definitions(charge_input_probe PRIVATE _USE_MATH_DEFINES $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  # The DLL Debug STL's precompiled numeric output aborts on an allocation
+  # denial inside its debug machinery. The independent stream control reproduces
+  # this without application code. Keep the CRT heap probe and instantiate the
+  # matching non-debug-iterator STL in this executable with the static Debug CRT.
+  set_property(TARGET charge_input_probe PROPERTY MSVC_RUNTIME_LIBRARY
+    "$<IF:$<CONFIG:Debug>,MultiThreadedDebug,MultiThreadedDLL>")
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(charge_input_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(charge_input_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+else()
+  target_compile_options(charge_input_probe PRIVATE -fno-elide-constructors)
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(charge_input_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endif()
 target_include_directories(curve_synchronization_probe PRIVATE "${default_curve_root}/include")
 
 set(AP_MESH_SNAPSHOT_IMPLEMENTATION "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_snapshots.cpp" CACHE FILEPATH "Curve sample snapshot implementation")
@@ -398,3 +454,23 @@ foreach(area_target IN ITEMS triangle_area_probe triangle_area_real_probe)
     endif()
   endif()
 endforeach()
+
+if(NOT MSVC)
+  get_target_property(charge_real_sources error_estimate_probe SOURCES)
+  list(REMOVE_ITEM charge_real_sources error_estimate_probe.cpp "${AP_MESH_ERROR_ESTIMATE_IMPLEMENTATION}" "${error_backend}")
+  add_executable(charge_input_real_probe charge_input_probe.cpp ${charge_real_sources}
+    "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/charge_estimate_process.cpp"
+    "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/triangle_count_estimate.cpp"
+    "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/estimate_mesh_scope.cpp"
+    "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/vertex_adaptive.cpp" "${control_reader}")
+  if(EXISTS "${AP_MESH_CURVE_SOURCE_ROOT}/src/estimate/charge_input_estimate.cpp")
+    target_sources(charge_input_real_probe PRIVATE "${charge_input}")
+  endif()
+  target_compile_features(charge_input_real_probe PRIVATE cxx_std_17)
+  target_compile_definitions(charge_input_real_probe PRIVATE AP_MESH_CHARGE_REAL=1 _USE_MATH_DEFINES)
+  target_include_directories(charge_input_real_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include")
+  target_compile_options(charge_input_real_probe PRIVATE -fno-elide-constructors -fno-strict-aliasing)
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(charge_input_real_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endif()

@@ -1,0 +1,40 @@
+{
+  "dll": {
+    "calibration": 4,
+    "cases": [
+      {
+        "ordinal": 0,
+        "exit_code": 3,
+        "output": "Client hook allocation failure.\nabort() has been called"
+      },
+      {
+        "ordinal": 1,
+        "exit_code": 0,
+        "output": "Client hook allocation failure.\nallocations=2 denied=1 caught=0\r\n"
+      },
+      {
+        "ordinal": 2,
+        "exit_code": 0,
+        "output": "Client hook allocation failure.\nallocations=3 denied=1 caught=0\r\n"
+      },
+      {
+        "ordinal": 3,
+        "exit_code": 0,
+        "output": "Client hook allocation failure.\nallocations=4 denied=1 caught=0\r\n"
+      }
+    ]
+  },
+  "static": {
+    "calibration": 1,
+    "cases": [
+      {
+        "ordinal": 0,
+        "exit_code": 0,
+        "output": "Client hook allocation failure.\nallocations=1 denied=1 caught=0\r\n"
+      }
+    ]
+  },
+  "source": "#include <crtdbg.h>\n#include <windows.h>\n#include <cstdio>\n#include <cstdlib>\n#include <fstream>\n#include <new>\nint attempts=0,denied=0,remaining=-1;\nint __cdecl hook(int kind,void*,std::size_t,int block,long,const unsigned char*,int) {\n  if(kind==_HOOK_ALLOC && block==_NORMAL_BLOCK) {\n    ++attempts;\n    if(remaining--==0) {++denied;return FALSE;}\n  }\n  return TRUE;\n}\nint main(int argc,char**argv) {\n  SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);\n  for(int report:{_CRT_WARN,_CRT_ERROR,_CRT_ASSERT}) {\n    _CrtSetReportMode(report,_CRTDBG_MODE_FILE);_CrtSetReportFile(report,_CRTDBG_FILE_STDERR);\n  }\n  remaining=argc==2?std::atoi(argv[1]):-1;\n  bool caught=false;\n  auto previous=_CrtSetAllocHook(hook);\n  try {std::ofstream file(\"stream.txt\");file<<0.5<<std::endl;file.close();}\n  catch(const std::bad_alloc&){caught=true;}\n  _CrtSetAllocHook(previous);\n  std::printf(\"allocations=%d denied=%d caught=%d\\n\",attempts,denied,caught);\n  return 0;\n}\n",
+  "cmake": "cmake_minimum_required(VERSION 3.20)\nproject(stream_denial_control LANGUAGES CXX)\noption(STATIC_CRT \"Compare the static Debug CRT with the DLL Debug CRT\" OFF)\nadd_executable(stream_control stream_control.cpp)\ntarget_compile_features(stream_control PRIVATE cxx_std_17)\ntarget_compile_definitions(stream_control PRIVATE _ITERATOR_DEBUG_LEVEL=0)\nif(STATIC_CRT)\n  set_property(TARGET stream_control PROPERTY MSVC_RUNTIME_LIBRARY MultiThreadedDebug)\nendif()\n",
+  "interpretation": "DLL Debug CRT: the independent standard-stream operation has four measured normal-block allocations; ordinal zero aborts. Static Debug CRT: one allocation and no abort. The static denial is internally absorbed by the stream (caught=0), not propagated to this control caller. This target/toolchain correction leaves production writer source/format unchanged; partial writer output/error reporting is unqualified."
+}

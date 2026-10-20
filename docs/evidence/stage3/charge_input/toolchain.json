@@ -1,0 +1,98 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "cmake",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "cmake version 4.4.0\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n"
+    },
+    {
+      "argv": [
+        "clang-tidy",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "LLVM (http://llvm.org/):\n  LLVM version 22.1.8\n  Optimized build.\n"
+    },
+    {
+      "argv": [
+        "clang-format",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "clang-format version 22.1.8 (https://github.com/msys2/MINGW-packages 6e4e79c2f86eeb534e324e583f2057dc9fd5ecab)\n"
+    },
+    {
+      "argv": [
+        "doxygen",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "1.18.0 (8e760943e5d9581a444cf327f43a0b4d20d29482)\r\n"
+    },
+    {
+      "argv": [
+        "g++",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "g++ (Rev5, Built by MSYS2 project) 16.1.0\r\nCopyright (C) 2026 Free Software Foundation, Inc.\r\nThis is free software; see the source for copying conditions.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\r\n\r\n"
+    },
+    {
+      "argv": [
+        "python",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "Python 3.14.6\r\n"
+    },
+    {
+      "argv": [
+        "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe"
+      ],
+      "exit_code": 0,
+      "output": "uso: cl [ option... ] filename... [ /link linkoption... ]\r\nMicrosoft (R) C/C++ Optimizing Compiler Vers\ufffdo 19.44.35229 para x64\r\nCopyright (C) Microsoft Corporation. Todos os direitos reservados.\r\n\r\n"
+    }
+  ],
+  "preset": {
+    "version": 3,
+    "configurePresets": [
+      {
+        "name": "windows-gcc17",
+        "displayName": "Windows GCC 16.1 serial C++17",
+        "inherits": "local-serial",
+        "binaryDir": "${sourceDir}/build/windows-gcc17",
+        "environment": {
+          "PATH": "C:/Program Files/CMake/bin;C:/msys64/ucrt64/bin;$penv{PATH}"
+        },
+        "cacheVariables": {
+          "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/c++.exe",
+          "CMAKE_MAKE_PROGRAM": "C:/msys64/ucrt64/bin/ninja.exe",
+          "CMAKE_CXX_STANDARD": "17",
+          "CMAKE_CXX_STANDARD_REQUIRED": true
+        }
+      }
+    ],
+    "buildPresets": [
+      {
+        "name": "windows-gcc17",
+        "configurePreset": "windows-gcc17"
+      }
+    ],
+    "testPresets": [
+      {
+        "name": "windows-gcc17",
+        "configurePreset": "windows-gcc17",
+        "output": {
+          "outputOnFailure": true
+        },
+        "execution": {
+          "noTestsAction": "error"
+        }
+      }
+    ]
+  },
+  "charge_runtime": "MSVC RelWithDebInfo ASan /MD; Debug CRT /MTd; matching iterator level zero in all Debug probe units. Actual numerical helper unit remains GCC C++17. Static/DLL controls and import inventories are retained separately."
+}

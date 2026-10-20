@@ -1,0 +1,114 @@
+{
+  "status": "passed",
+  "scope": "Mechanical source-preservation review, not an additional runtime test or independent human review. Whitespace and line comments are removed only within these known bodies, which contain no // string literals. Ownership transfer and the explicit badbit/diagnostic changes are normalized as listed. Runtime/negative qualifications remain separate and required.",
+  "control_constructions": [
+    {
+      "slot": "00",
+      "arguments_sha256": "e722fb6b95f843ac6510799cf2b9d10a597e2b99c8d8fbb50559204c2dd532b0"
+    },
+    {
+      "slot": "10",
+      "arguments_sha256": "8844820b80586005100f5134518edd7c7000b1d59aeaf5de32f7ee403511bcb9"
+    },
+    {
+      "slot": "20",
+      "arguments_sha256": "dafc34576f3a864ecac53a6b3eec9b31780b53a53d797462f07a2afcfa6700b4"
+    },
+    {
+      "slot": "30",
+      "arguments_sha256": "76c79591299a0c9918f4de584820cf771bf5ac6baf57880d2745ac48db40cb8a"
+    },
+    {
+      "slot": "01",
+      "arguments_sha256": "b2ee51068fafbb69b7486a956156353969697f246eeb3ed1e7db421211137200"
+    },
+    {
+      "slot": "11",
+      "arguments_sha256": "e40288ce89e95170ad288de069e7ab466f727fcf9dd8d770c3f4d404c8b4d0b8"
+    },
+    {
+      "slot": "21",
+      "arguments_sha256": "a68c36f5d7039ed33accce83003d966633315991b2ba350d79832e8dd74f61da"
+    },
+    {
+      "slot": "31",
+      "arguments_sha256": "5f4dd98c76a149cac9257ee121df1d97cf9627eb0777287436fd798323a05a3d"
+    },
+    {
+      "slot": "02",
+      "arguments_sha256": "106d11a628bb0adfe787e7aa56a157fef4c2a0dd1b4443d4027c49b9636def1d"
+    },
+    {
+      "slot": "12",
+      "arguments_sha256": "7fc27fdb25ff84f8c5708a5db3583ffa43b0c68bac810e751ad5ddada22af4ee"
+    },
+    {
+      "slot": "22",
+      "arguments_sha256": "a327967612ebb50726e840ab9a231db8ea592c38bae79128e4ba77b72b27621e"
+    },
+    {
+      "slot": "32",
+      "arguments_sha256": "4b5ef3e6f378be1f90dced222a94d8b7cf180709d8f4922ccde8b66ece8605f9"
+    },
+    {
+      "slot": "03",
+      "arguments_sha256": "14eb08427a91c8ed4a5cc388e88b2bbf6e5d9c3a1a130ab49c7748f3e9f548bf"
+    },
+    {
+      "slot": "13",
+      "arguments_sha256": "1be1c6896479bf75458a23e24c9446f05dcadfe2fad60d1e0dbd0c888ed59fcd"
+    },
+    {
+      "slot": "23",
+      "arguments_sha256": "84821cd36e8ee0c83e435247f4ee9717da3b7bfbbe42e56cefd9974c8faa2bb7"
+    },
+    {
+      "slot": "33",
+      "arguments_sha256": "453561c42ead20d54ff656428efd357f589c4022a6fdb5fcf78aa43c4a1328e6"
+    }
+  ],
+  "curve_matching_and_insertion_sha256": "c933a88be0f941cde7d06c3ce5c47e9837cfd0ad134b11c911d6bf2e7527e954",
+  "caller_numerical_and_order_tail_sha256": "4182ec386c731ea3b4c6e7459199f9ad8a4ef74f6de11feaa24e29d036eeb4d7",
+  "timer_sequence": [
+    [
+      "EndTimerParallel",
+      "0, 0, 10"
+    ],
+    [
+      "InitTimerParallel",
+      "0, 0, 5"
+    ],
+    [
+      "EndTimerParallel",
+      "0, 0, 5"
+    ],
+    [
+      "InitTimerParallel",
+      "0, 0, 5"
+    ],
+    [
+      "InitTimerParallel",
+      "0, 0, 1"
+    ],
+    [
+      "EndTimerParallel",
+      "0, 0, 1"
+    ]
+  ],
+  "exact_remaining_estimator_members_sha256": "b0012f1d7a334e80b27f40bc58740cab456a96f4d10407e89c2d2e8553704743",
+  "control_lookup_operations_sha256": "2378e02c1abd70fdf6177b4a3d169f8645d5b3c8df0ace7ea6ed0fc704e38c5d",
+  "ordinary_parser_operations_sha256": "e677aefb537a05f16e2211d6e4005aaa4a9c2690dea0fd37a25c21cec8744b85",
+  "normalized_changes": [
+    "unique reader/pending owner transfers",
+    "automatic coordinate-only controls",
+    "exclusive suffix guard commit",
+    "reader badbit propagation",
+    "English no-name diagnostic"
+  ],
+  "source_sha256": {
+    "src\\estimate\\charge_input_estimate.cpp": "5aca83bdbdba04f926694efaeb59e892a0d4301d9b311a1fb3cbfa88429fe642",
+    "src\\input_output\\control_patch_reader.cpp": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe",
+    "build\\s29-original\\src\\estimate\\charge_estimate_process.cpp": "e135a6d6ad6db894eaf8bb7bd2d28dde0369e179ce4aaa78d5d6ff05bd9ec459",
+    "build\\s29-original\\src\\input_output\\patch_reader.cpp": "6611aec35c7fc9feb6f9e0b3d79f3461aa4e000c571d557fd637438e8b27836a"
+  }
+}

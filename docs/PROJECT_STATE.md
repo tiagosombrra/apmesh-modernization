@@ -3,7 +3,24 @@
 Updated: 2026-10-20 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Latest qualified work: stage 3 slice 28
+## Active candidate: stage 3 slice 29
+
+Candidate full gates pass. Exact published-head and post-merge main qualification remain required; stage 3 retains twenty-eight qualified slices until both pass.
+
+Input/control/pending patch ownership and exclusive curve observer-suffix cleanup
+now pass 189 expected outcomes/2787 allocation denials. Twenty-four actual
+and twenty-four controlled original/repaired traces preserve scalar bits, control
+coordinates/IDs, incidence, stable order and normal writer bytes. Reader resource
+failures propagate before incomplete-row indexing. Original 155 failures and all
+preliminary reader/runtime/link findings remain retained. See [root cause and
+bounded closure audit](evidence/STAGE3_CHARGE_INPUT.md).
+
+Stage 3 remains open. Next audit numerical estimator helper scratch/control-node
+lifetime. Malformed legacy parser records, partial writer output/error reporting,
+arbitrary/foreign publications, full metadata/acceptance rollback and full-process/
+parallel/LSan/UBSan remain unqualified. Stages 4-11 remain pending.
+
+## Stage 3 slice 28 qualified
 
 PR #78 integrates head `d36f71c19278547ec897d5c96a7cc37e2884c6bc` as main
 `4ea63f2118c9cccf8968676125bb3794d7a79bd0`, preserving complete tree `c318ae629d18cef976f7e555dd61ac36670e75b6`

@@ -7,8 +7,8 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 147,
-    "translation_units": 70,
+    "files": 149,
+    "translation_units": 72,
     "headers": 77,
     "directory_components": {
       "adapter": 4,
@@ -22,14 +22,14 @@
       "data/mesh": 4,
       "data/patch": 8,
       "data/tree": 2,
-      "estimate": 10,
+      "estimate": 11,
       "generator": 16,
-      "input_output": 11,
+      "input_output": 12,
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 566,
-    "first_party_include_edges": 333
+    "literal_include_directives": 574,
+    "first_party_include_edges": 335
   },
   "cross_component_directives": [
     {
@@ -329,7 +329,7 @@
     "GL/glu.h": 1,
     "GL/glut.h": 1,
     "algorithm": 10,
-    "array": 6,
+    "array": 7,
     "atomic": 3,
     "cctype": 1,
     "cfloat": 5,
@@ -352,7 +352,7 @@
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 23,
+    "memory": 26,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -371,7 +371,7 @@
     "unistd.h": 1,
     "unordered_map": 6,
     "unordered_set": 7,
-    "utility": 6,
+    "utility": 8,
     "vector": 20,
     "windows.h": 1,
     "winsock2.h": 1
@@ -387,11 +387,11 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "6978ba8349fb0a515327004ee3f56d14ccf26b8333ac6014a34c8bc53225707d"
+      "sha256": "0468c708824385710ef3178ede6f35651e3e11c082a8c1d64d46a84d68c35116"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "3e0ce79d9ff37c7ee2e79b7878c1787b30a35f660a8c94f56ac376df8f767582"
+      "sha256": "09cc69f9e441e091d1bb521cd15de17ceb09fa16c35052ec927d298d52472d01"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1303,8 +1303,8 @@
       "path": "include/data/curve/curve_adaptive.h",
       "component_by_directory": "data/curve",
       "kind": "header",
-      "sha256": "0c710a895c1432b5bdc40794bb65f4e84ee88d7645e0ae96896351aa153f7aa6",
-      "bytes": 1841,
+      "sha256": "fcf4841f82b9d872ccfabc976ddae198ae70d6577705470285a6e5ce65e362cc",
+      "bytes": 2083,
       "includes": [
         {
           "line": 4,
@@ -2093,8 +2093,8 @@
       "path": "include/estimate/charge_estimate_process.h",
       "component_by_directory": "estimate",
       "kind": "header",
-      "sha256": "4389b1fbcbf9cf87b70d0b2761d6e0c219f9664c51f20d4d38f5bcd866ab7287",
-      "bytes": 2352,
+      "sha256": "83ea7484f7a237a8465ef3f913dc40be6d698729dc888e495300dea6d122caaf",
+      "bytes": 2519,
       "includes": [
         {
           "line": 4,
@@ -2753,8 +2753,8 @@
       "path": "include/input_output/patch_reader.h",
       "component_by_directory": "input_output",
       "kind": "header",
-      "sha256": "d333b5d2329cae360f43f3290b205511dbcf19d17a41d193942648cfb5cbbf65",
-      "bytes": 1199,
+      "sha256": "121cad85e5adad6996149a1ab47ebcf5a177d1d35ab7ee407dce6ce473d6fa23",
+      "bytes": 1371,
       "includes": [
         {
           "line": 4,
@@ -2779,34 +2779,41 @@
         },
         {
           "line": 7,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
           "spelling": "sstream",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "../data/model.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/model.h"
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "../data/patch/patch_bezier.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_bezier.h"
         },
         {
-          "line": 11,
+          "line": 12,
           "spelling": "../data/patch/patch_hermite.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_hermite.h"
         },
         {
-          "line": 12,
+          "line": 13,
           "spelling": "../data/point_adaptive.h",
           "form": "quote",
           "scope": "first_party",
@@ -3731,8 +3738,8 @@
       "path": "src/data/curve/curve_adaptive.cpp",
       "component_by_directory": "data/curve",
       "kind": "translation_unit",
-      "sha256": "b23e530a413cf177ddfaf8a2a4724cbe18aaa6d6fcfbc6641834cb367ef651d9",
-      "bytes": 2199,
+      "sha256": "fba3b3104699501268471b0cdc53f2bef1092924155c998949ea6cace3978b7a",
+      "bytes": 2396,
       "includes": [
         {
           "line": 1,
@@ -4268,8 +4275,8 @@
       "path": "src/estimate/charge_estimate_process.cpp",
       "component_by_directory": "estimate",
       "kind": "translation_unit",
-      "sha256": "e135a6d6ad6db894eaf8bb7bd2d28dde0369e179ce4aaa78d5d6ff05bd9ec459",
-      "bytes": 26163,
+      "sha256": "a54a7ae1425c8b2734cae863c01ac5ce204ed2ed20e39b5e35ebd949b9d732fc",
+      "bytes": 19936,
       "includes": [
         {
           "line": 1,
@@ -4291,6 +4298,43 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/estimate/charge_estimate_process.h"
+        }
+      ]
+    },
+    {
+      "path": "src/estimate/charge_input_estimate.cpp",
+      "component_by_directory": "estimate",
+      "kind": "translation_unit",
+      "sha256": "5aca83bdbdba04f926694efaeb59e892a0d4301d9b311a1fb3cbfa88429fe642",
+      "bytes": 7660,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "estimate/charge_estimate_process.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/charge_estimate_process.h"
+        },
+        {
+          "line": 3,
+          "spelling": "array",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -5056,6 +5100,36 @@
       ]
     },
     {
+      "path": "src/input_output/control_patch_reader.cpp",
+      "component_by_directory": "input_output",
+      "kind": "translation_unit",
+      "sha256": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe",
+      "bytes": 4385,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "input_output/patch_reader.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/input_output/patch_reader.h"
+        },
+        {
+          "line": 3,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 4,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
       "path": "src/input_output/file.cpp",
       "component_by_directory": "input_output",
       "kind": "translation_unit",
@@ -5212,8 +5286,8 @@
       "path": "src/input_output/patch_reader.cpp",
       "component_by_directory": "input_output",
       "kind": "translation_unit",
-      "sha256": "6611aec35c7fc9feb6f9e0b3d79f3461aa4e000c571d557fd637438e8b27836a",
-      "bytes": 29312,
+      "sha256": "cc5a766886adb596bbc468efb49404522decebfb828bcbffba362ef4fe908c88",
+      "bytes": 24961,
       "includes": [
         {
           "line": 1,
@@ -5690,8 +5764,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 22,
-    "source_anchors": 147,
+    "contracts": 23,
+    "source_anchors": 152,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

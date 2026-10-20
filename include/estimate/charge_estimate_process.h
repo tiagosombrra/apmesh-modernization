@@ -27,6 +27,8 @@ class ChargeEstimateProcess {
   ChargeEstimateProcess();
   ~ChargeEstimateProcess();
 
+  // Owns input/control/pending patches; Geometry owns committed curves and patches.
+  // Failure preserves the committed prefix, not metadata/timer transactionality.
   std::list<PatchBezier *> ChargeEstimate(Geometry *geometry, Timer *timer);
   std::vector<PointAdaptive> InterpolateControlPointsCurve(
       const PointAdaptive p0, const PointAdaptive p1, const PointAdaptive p2,

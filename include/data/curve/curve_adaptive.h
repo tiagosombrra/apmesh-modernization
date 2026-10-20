@@ -27,6 +27,9 @@ class CurveAdaptive {
   std::list<PointAdaptive*>& GetPoints();
   void InsertPatch(Patch* patch);
   void ClearPatches();
+  // Remove an exclusively appended observer suffix without deleting patches or allocating.
+  // Existing prefix entries retain their identities; larger counts are a no-op.
+  void TruncatePatchObservers(unsigned int retained_count) noexcept;
   unsigned int GetNumBerPatches() const;
   // retorna o i-ésimo patch
   Patch* GetPatch(const unsigned int position);

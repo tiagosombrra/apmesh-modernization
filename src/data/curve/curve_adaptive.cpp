@@ -43,6 +43,11 @@ void CurveAdaptive::InsertPatch(Patch* patch) {
 
 void CurveAdaptive::ClearPatches() { this->patches_.clear(); }
 
+void CurveAdaptive::TruncatePatchObservers(unsigned int retained_count) noexcept {
+  if (retained_count < patches_.size())
+    patches_.erase(patches_.begin() + retained_count, patches_.end());
+}
+
 void CurveAdaptive::SetPoints(std::list<PointAdaptive*> new_points) {
   this->points_.swap(new_points);
 }
