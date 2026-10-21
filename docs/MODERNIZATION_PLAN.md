@@ -3,14 +3,27 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current work: stage 3 slice 32, completed Bezier observer retirement and dependent
-Geometry ordering. Bounded prepublication qualification passes: 45 CTest, 74
-Python controls, 28 memory batteries/2874 expected outcomes and exact repeated
-article traces on 598 protected inputs. Required published-head confirmation is
-recorded in the review PR; integration/main qualification remain pending. Slice
-31 below remains the last integrated baseline. The [stage 3 closure inventory](architecture/STAGE3_CLOSURE_INVENTORY.md)
-maps the finite remaining obligations and their required evidence without reopening
-qualified slices or treating future portability/numerical work as completed.
+Current work: stage 3 slice 32 post-merge closure.
+
+PR #86 integrates the exact qualified head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa`
+as main `cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`, preserving complete tree
+`b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5` (1951 blobs). Published-head
+qualification passed all 107 commands. The post-merge campaign completed 106
+local commands successfully: 45/45 CTest, zero failures/skips, 74 Python controls,
+28 memory batteries/2874 expected outcomes, 1040 retained scalar sequences and
+exact twice-repeated Eistute/Book accepted/rejected/incidence/CSV traces on the
+same 598 protected inputs. Independent command/case/child-log/artifact/source
+and 56 memory executable identities pass; terminal environment and exact checkout
+audits also pass.
+
+The post-merge campaign remains failed/incomplete: its final GitHub API complete-
+tree query timed out. Git transport confirms the expected remote main, but the
+required current remote PR/check audit remains pending. The failed report and
+logs are retained unchanged. Do not close slice 32 or start the next item until
+that gate completes. See [post-merge evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
+The last fully qualified integrated slice remains 31; full stage 3 and stages
+4-11 remain open. Next queued audit: successful fresh-curve caller adoption and
+remaining loader/Model/copy roots.
 
 Stage 3 slice 31 is qualified. PR #84 integrates head `c94ed17373abc04c9bbb5359a4ea686a44b886f3`
 as main `1bc4038ad55a6b5fce7ec99db3fc5b200016ea69`, preserving complete tree `d950dbb0a49e4a4ec8109a6d4feefa360d5c10a2`

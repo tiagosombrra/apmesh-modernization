@@ -6,8 +6,9 @@ Only one work item is active at a time; required regression gates remain exact.
 
 ## Current bounded boundary and next audit
 
-Active slice 32 addresses completed Bezier observers and dependent Geometry
-destruction/move ordering (C26). Exact delivery status is in PROJECT_STATE.md and
+Active slice 32 is integrated by PR #86; final post-merge remote audit remains
+blocked after local regression passed. It addresses completed Bezier observers
+and dependent Geometry destruction/move ordering (C26). Exact delivery status is in PROJECT_STATE.md and
 STAGE3_BEZIER_OBSERVERS.md. After that boundary, audit successful fresh-curve
 caller adoption and remaining loader/Model/copy roots. The finite
 [stage 3 closure inventory](STAGE3_CLOSURE_INVENTORY.md) governs remaining

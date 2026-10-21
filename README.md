@@ -71,9 +71,10 @@ The new 71 outcomes cover 32 complete sweeps/348 allocation denials; 16 GCC and
 Original 32 failed partial sweeps and preliminary findings remain retained.
 See [the bounded closure audit](docs/evidence/STAGE3_BEZIER_CONSTRUCTION.md).
 Completed observer retirement and dependent Geometry move/destruction ordering
-are the active slice 32; see [the bounded evidence](docs/evidence/STAGE3_BEZIER_OBSERVERS.md).
-Integration status remains authoritative in PROJECT_STATE.md. Successful caller
-adoption, other construction roots, complete cache/metadata rollback and
+are integrated by PR #86 as active slice 32. Post-merge local regression passes;
+the final remote API audit is blocked and closure remains pending. See
+[the bounded evidence](docs/evidence/STAGE3_BEZIER_OBSERVERS.md) and PROJECT_STATE.md.
+Successful caller adoption, other construction roots, complete cache/metadata rollback and
 full-process/parallel memory remain open; stages 4-11 are pending.
 
 ## Repository policy

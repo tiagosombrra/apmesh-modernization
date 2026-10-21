@@ -14,8 +14,10 @@ audit still rejects its four mutations, allowing only the exact separately
 checked retirement destructor. No required gate is relaxed. The full prepublication
 campaign passes with 45 CTest, 74 Python controls, 28 batteries/2874 expected
 outcomes and exact repeated article traces on 598 protected inputs. Exact
-published-head confirmation belongs to the review PR; integration/main
-qualification remain pending. Commands, classification and limits are in
+published-head confirmation passed in PR #86 before integration. Post-merge
+main passes the local numerical/instrument gates but remains incomplete at its
+final remote API audit; the failed report is retained unchanged. Commands,
+classification and limits are in
 [the observer evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
 
 ## Bezier construction lifetime (PR #84)

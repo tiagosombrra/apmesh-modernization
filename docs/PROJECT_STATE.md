@@ -1,23 +1,26 @@
 # Project state
 
-## Active work: stage 3 slice 32
+## Active work: stage 3 slice 32 post-merge closure
 
-Completed Bezier observer retirement and dependent Geometry move/destruction
-ordering are the single active item. The implementation candidate adds required
-observer contracts and an independent preservation gate. The full prepublication
-campaign passes on 598 frozen protected inputs: 45/45 CTest, zero skips, 74 Python
-controls, 28 memory batteries/2874 expected outcomes and exact repeated
-Eistute/Book accepted/rejected/incidence/CSV traces. All 106 command results and
-case/child-log identities were independently checked. Published-head confirmation
-is recorded in the review PR; integration and post-merge qualification remain
-pending. The last integrated qualification remains slice 31.
-See [bounded evidence](evidence/STAGE3_BEZIER_OBSERVERS.md) and the
-[finite closure inventory](architecture/STAGE3_CLOSURE_INVENTORY.md).
+PR #86 integrates the exact qualified head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa`
+as main `cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`, preserving complete tree
+`b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5` (1951 blobs). Published-head
+qualification passed all 107 commands. The post-merge campaign completed 106
+local commands successfully: 45/45 CTest, zero failures/skips, 74 Python controls,
+28 memory batteries/2874 expected outcomes, 1040 retained scalar sequences and
+exact twice-repeated Eistute/Book accepted/rejected/incidence/CSV traces on the
+same 598 protected inputs. Independent command/case/child-log/artifact/source
+and 56 memory executable identities pass; terminal environment and exact checkout
+audits also pass.
 
-The full stage 3 and stages 4-11 remain open. Historical "next" paragraphs below
-record earlier checkpoints; they do not override this active item. After this
-bounded delivery, audit successful fresh-curve caller adoption and remaining
-loader/Model/copy roots before claiming broader lifecycle closure.
+The post-merge campaign remains failed/incomplete: its final GitHub API complete-
+tree query timed out. Git transport confirms the expected remote main, but the
+required current remote PR/check audit remains pending. The failed report and
+logs are retained unchanged. Do not close slice 32 or start the next item until
+that gate completes. See [post-merge evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
+The last fully qualified integrated slice remains 31; full stage 3 and stages
+4-11 remain open. Next queued audit: successful fresh-curve caller adoption and
+remaining loader/Model/copy roots.
 
 ## Latest qualified work: stage 3 slice 31
 

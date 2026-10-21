@@ -1,19 +1,26 @@
 # Modernization work log
 
-## 2026-10-21: stage 3 slice 32 audit and regression
+## 2026-10-21: stage 3 slice 32 post-merge regression
 
-Active candidate: completed Bezier observer retirement and dependent Geometry
-move/destruction ordering. Added the missing required CTest registrations and
-Geometry scenarios in ordinary contracts, independent preservation/mutation and
-paired-trace tooling, C26/ADR-0033 and a finite stage 3 closure inventory.
-Corrected stale current-status/next-work summaries while preserving historical
-failures and scope. The full 106-command prepublication campaign passes on 598
-protected inputs: 45/45 CTest, 74 Python controls, 28 memory batteries/2874 expected
-outcomes, 1040 retained scalar sequences and exact repeated article traces. All
-command/case/child identities are independently checked; the original retains
-103 failed outcomes and two actual observer/dependent-order ASan UAFs. Published-
-head confirmation is recorded in the review PR; integration/main qualification
-remain pending. See [the bounded audit](evidence/STAGE3_BEZIER_OBSERVERS.md).
+PR #86 integrates the exact qualified head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa`
+as main `cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`, preserving complete tree
+`b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5` (1951 blobs). Published-head
+qualification passed all 107 commands. The post-merge campaign completed 106
+local commands successfully: 45/45 CTest, zero failures/skips, 74 Python controls,
+28 memory batteries/2874 expected outcomes, 1040 retained scalar sequences and
+exact twice-repeated Eistute/Book accepted/rejected/incidence/CSV traces on the
+same 598 protected inputs. Independent command/case/child-log/artifact/source
+and 56 memory executable identities pass; terminal environment and exact checkout
+audits also pass.
+
+The post-merge campaign remains failed/incomplete: its final GitHub API complete-
+tree query timed out. Git transport confirms the expected remote main, but the
+required current remote PR/check audit remains pending. The failed report and
+logs are retained unchanged. Do not close slice 32 or start the next item until
+that gate completes. See [post-merge evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
+The last fully qualified integrated slice remains 31; full stage 3 and stages
+4-11 remain open. Next queued audit: successful fresh-curve caller adoption and
+remaining loader/Model/copy roots.
 
 ## 2026-10-21: stage 3 slice 31 qualified
 
