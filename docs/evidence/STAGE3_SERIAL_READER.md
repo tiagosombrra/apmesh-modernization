@@ -1,6 +1,9 @@
 # Stage 3 slice 33: serial-reader control ownership
 
-Status: candidate repair; exact published-head and post-merge qualification pending.
+Status: bounded exact-head/main qualification complete (PR #89).
+Head `29c5b883b1bdebc0627c611da868f16361d476e4`; implementation main
+`bd1e6920dc1792ce6a0e802ac8cdfc3216284518`; complete tree
+`b6b45dd550dd201d22505be58b473d3fa0f907a5` (1973 blobs).
 Entry main: `f9c7d22c0028e8864da4de5a05bdc19489da52bf` (caller-root audit, PR #88).
 Classification: behavior-changing lifetime/resource-propagation defect repair.
 No scientific policy change. Stage 3 remains open; stages 4-11 remain pending.
@@ -81,6 +84,26 @@ python build/s33-original/docs/evidence/stage3/caller_roots/reproduce.py --execu
 The snapshot is extracted directly from the immutable entry commit's src/include/
 libs and original evidence. Keep Windows/GCC/MSVC configurations separate. The
 quality guide documents the equivalent explicit Windows GNU configuration.
+
+## Observed exact-head and post-merge results
+
+Both full implementation campaigns pass every required command on the same
+603 protected inputs: 47 CTest, zero skips/failures, 74 Python controls, all prior
+28 memory batteries plus 131 new outcomes (29/3005), sixteen complete sweeps/2731
+actual denials, eight GCC/sixteen MSVC live pairs, six preservation mutations,
+all retained scalar/analytic gates, read-only selected lint, explicit changed-
+range/new-probe formatting and exact twice-repeated accepted/rejected article
+regression. Independent command/case/child-log/artifact/source identity checks
+pass. [Delivery qualification](stage3/serial_reader/delivery_qualification.json)
+retains exact revisions, source manifest, command/log identities and battery
+inventories. Raw failed originals and earlier focused records remain separate.
+Zero configured hosted checks is absence of hosted validation.
+
+The closure delivery changes documentation and evidence only. Its exact head and
+merged main must retain all 603 protected input hashes and repeat the 47 CTest
+entries, 74 Python controls, architecture, whitespace, checkout, environment and
+remote tree/branch/PR/check audits. These checks establish source equivalence to
+the fully qualified implementation; they do not replace either full campaign.
 
 ## Full delivery gates and closure limits
 

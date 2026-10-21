@@ -1,6 +1,6 @@
 # ADR-0034: serial control-result and pending-patch ownership
 
-Status: implemented candidate; full exact-head/main qualification remains required.
+Status: accepted for bounded repair; full exact-head/main qualification complete.
 
 LoaderBezierPatchFile returns a new list of unique control-only patch owners on
 each call. It retains a local unique pending patch through parsing/publication,

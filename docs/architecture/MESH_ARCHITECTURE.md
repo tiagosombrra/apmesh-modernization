@@ -22,6 +22,13 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 
 ## Evidence and coverage
 
+C27/ADR-0034 makes serial parsed-control results and pending reconstructed patches
+explicit unique owners. The owning-result API is a bounded source migration;
+committed Geometry prefixes can remain after later failure. Parser/validation,
+interning tolerance, curve sharing/directions and numerical expressions remain
+unchanged. Other loaders, Model/copy and MPI/Hermite remain separate obligations.
+See STAGE3_SERIAL_READER.md for exact qualification and failure inventory.
+
 Completed Bezier observer retirement and dependent Geometry assignment are
 specified separately in C26/ADR-0033. Current borrowed curves must outlive the
 patch destructor. Geometry member declaration order already retires patches
@@ -31,12 +38,12 @@ The finite remaining lifecycle obligations are in STAGE3_CLOSURE_INVENTORY.md.
 
 [source_inventory.json](source_inventory.json) deterministically covers all
 151 first-party C++ files: 73 translation units and 78 headers, plus hashes for
-the 7 CMake inputs (including isolated memory probes). It records 585 potential literal include directives and
+the 7 CMake inputs (including isolated memory probes). It records 586 potential literal include directives and
 339 distinct directed first-party include edges. Conditional branches are kept;
 this is not the active preprocessed graph. The 16 directory groups below are
 source organization, not automatically inferred architectural layers.
 
-[contracts.json](contracts.json) contains 26 reviewed contracts with 164 exact
+[contracts.json](contracts.json) contains 27 reviewed contracts with 169 exact
 source anchors. The checker rejects stale files, missing anchors and empty
 coverage. Matching anchors establishes traceability; it does not prove the
 semantic statements or all runtime paths. The statements below come from

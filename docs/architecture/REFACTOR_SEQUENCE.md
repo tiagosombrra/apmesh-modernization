@@ -10,11 +10,11 @@ Qualified slice 32 addresses completed Bezier observers and dependent Geometry
 destruction/move ordering (C26, PR #86 exact head and completed main continuation).
 Exact delivery status is in PROJECT_STATE.md and STAGE3_BEZIER_OBSERVERS.md.
 The [caller-root audit](../evidence/STAGE3_CALLER_ROOT_AUDIT.md) now maps those
-callers and reproduces serial parsed-control/pending-patch retention. The next
-single implementation is slice 33 serial-reader control ownership. Its candidate
-passes focused owner/failure/preservation gates, while full exact-head/main
-qualification remains pending; see STAGE3_SERIAL_READER.md and C27. Model/copy, MPI/Hermite and other loaders retain
-separate pending dispositions. The finite
+callers and reproduces serial parsed-control/pending-patch retention. Slice 33
+qualifies serial-reader control ownership (C27/ADR-0034, PR #89 exact head/main).
+The next single audit is Model mesh adoption/copy ownership and actual callers.
+See STAGE3_SERIAL_READER.md. MPI/Hermite and other loaders retain separate
+pending dispositions. The finite
 [stage 3 closure inventory](STAGE3_CLOSURE_INVENTORY.md) governs remaining
 obligations; earlier next-work statements below are historical checkpoints.
 
