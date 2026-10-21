@@ -5,6 +5,7 @@
 #include <cmath>
 #include <memory>
 #include <stdexcept>
+#include <utility>
 #include <vector>
 
 #include "../../include/data/vertex_adaptive.h"
@@ -517,12 +518,15 @@ std::list<PatchBezier*> PatchReader::LoaderRibFile() {
   return patches_;
 }
 
-std::list<PatchBezier*> PatchReader::LoaderBezierPatchFile(string fileName) {
+std::list<std::unique_ptr<PatchBezier>> PatchReader::LoaderBezierPatchFile(string fileName) {
   apmesh::io::ValidateBezierPatchInput(fileName);
-  patch_ = new PatchBezier();
+  std::list<std::unique_ptr<PatchBezier>> patches;
+  auto patch = std::make_unique<PatchBezier>();
 
   if (!fileName.empty()) {
     std::ifstream fin(fileName);
+    // Propagate resource failures before consuming a partial record.
+    fin.exceptions(std::ios::badbit);
 
     if (fin) {
       while (fin) {
@@ -536,6 +540,7 @@ std::list<PatchBezier*> PatchReader::LoaderBezierPatchFile(string fileName) {
           if (line[0] == 'v') {
             line = line.erase(0, 1);
             std::istringstream iss(line);
+            iss.exceptions(std::ios::badbit);
             // int id_ponto;
             // iss >> id_ponto;
 
@@ -554,6 +559,7 @@ std::list<PatchBezier*> PatchReader::LoaderBezierPatchFile(string fileName) {
           if (line[0] == 'p') {
             line = line.erase(0, 1);
             std::istringstream iss(line);
+            iss.exceptions(std::ios::badbit);
             long n;
             while (iss >> n) {
               p.push_back(n);
@@ -561,59 +567,43 @@ std::list<PatchBezier*> PatchReader::LoaderBezierPatchFile(string fileName) {
 
             for (unsigned int i = 0; i < p.size(); i++) {
               if (i == 0) {
-                patch_->SetPt00(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt00(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 1) {
-                patch_->SetPt10(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt10(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 2) {
-                patch_->SetPt20(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt20(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 3) {
-                patch_->SetPt30(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt30(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 4) {
-                patch_->SetPt01(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt01(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 5) {
-                patch_->SetPt11(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt11(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 6) {
-                patch_->SetPt21(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt21(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 7) {
-                patch_->SetPt31(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt31(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 8) {
-                patch_->SetPt02(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt02(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 9) {
-                patch_->SetPt12(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt12(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 10) {
-                patch_->SetPt22(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt22(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 11) {
-                patch_->SetPt32(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt32(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 12) {
-                patch_->SetPt03(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt03(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 13) {
-                patch_->SetPt13(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt13(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 14) {
-                patch_->SetPt23(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt23(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               } else if (i == 15) {
-                patch_->SetPt33(
-                    GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt33(GetPointVectorControlPoints(vectorControlPoints, p[i]));
               }
             }
 
             p.erase(p.begin(), p.end());
-            patches_.push_back(patch_);
-            patch_ = new PatchBezier();
+            patches.push_back(std::move(patch));
+            patch = std::make_unique<PatchBezier>();
           }
         }
       }
@@ -627,14 +617,13 @@ std::list<PatchBezier*> PatchReader::LoaderBezierPatchFile(string fileName) {
     std::cout << "Erro ao abrir o arquivo .bp" << std::endl;
   }
 
-  return patches_;
+  return patches;
 }
 
 Geometry* PatchReader::ReaderFilePatches(Geometry* geometry, string file_name) {
   // Validation failures must unwind this reader without leaking its allocation.
   PatchReader patch_reader;
-  std::list<PatchBezier*> patches =
-      patch_reader.LoaderBezierPatchFile(file_name);
+  auto patches = patch_reader.LoaderBezierPatchFile(file_name);
 
   PointAdaptive* p00;
   PointAdaptive* p01;
@@ -661,8 +650,7 @@ Geometry* PatchReader::ReaderFilePatches(Geometry* geometry, string file_name) {
   std::vector<VertexAdaptive*> intern_registry;
   intern_registry.reserve(1024);
 
-  for (std::list<PatchBezier*>::iterator it = patches.begin();
-       it != patches.end(); it++) {
+  for (auto it = patches.begin(); it != patches.end(); it++) {
     p00 = InternControlPoint((*it)->GetPt00(), interned_vertices, intern_registry);
     p10 = InternControlPoint((*it)->GetPt10(), interned_vertices, intern_registry);
     p20 = InternControlPoint((*it)->GetPt20(), interned_vertices, intern_registry);
@@ -707,13 +695,14 @@ Geometry* PatchReader::ReaderFilePatches(Geometry* geometry, string file_name) {
       geometry->InsertCurve(patch_c4);
     }
 
-    (*it) = new PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11, *p21, *p12, *p22,
-                            UsesForwardControls(patch_c1, *p00, *p10, *p20, *p30),
-                            UsesForwardControls(patch_c2, *p30, *p31, *p32, *p33),
-                            UsesForwardControls(patch_c3, *p03, *p13, *p23, *p33),
-                            UsesForwardControls(patch_c4, *p00, *p01, *p02, *p03));
+    auto pending_patch =
+        std::make_unique<PatchBezier>(patch_c1, patch_c2, patch_c3, patch_c4, *p11, *p21, *p12,
+                                      *p22, UsesForwardControls(patch_c1, *p00, *p10, *p20, *p30),
+                                      UsesForwardControls(patch_c2, *p30, *p31, *p32, *p33),
+                                      UsesForwardControls(patch_c3, *p03, *p13, *p23, *p33),
+                                      UsesForwardControls(patch_c4, *p00, *p01, *p02, *p03));
 
-    geometry->InsertPatch((*it));
+    geometry->InsertPatch(std::move(pending_patch));
   }
 
   return geometry;

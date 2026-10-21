@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Serial-reader control ownership (active slice 33)
+
+The new required application.serial_reader_contracts and
+tooling.serial_reader_preservation complement the existing 45 tests. The actual
+full-reader probe requires 131 ASan/static CRT outcomes and sixteen complete
+allocation-denial sweeps, with actual UAF/leak/hook/prefix controls and eight
+rejected input classes. tools/audit_serial_reader.py rejects six independent
+mutations and preserves all other parser/header/validation tokens. Eight GCC and
+sixteen MSVC nonempty live pairs preserve controls, IDs, incidence/directions and
+evaluated scalar bits. Full exact-head/main gates remain required: 47 CTest,
+74 Python controls, 29 memory batteries/3005 expected outcomes and exact repeated
+article traces. No whole-reader rollback/retry or full-process claim follows.
+See [commands and original failures](evidence/STAGE3_SERIAL_READER.md).
+
 ## Original caller-root reproduction
 
 [The caller-root audit](evidence/STAGE3_CALLER_ROOT_AUDIT.md) includes a standalone

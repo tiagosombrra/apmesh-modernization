@@ -209,6 +209,15 @@ if(BUILD_TESTING AND TARGET bezier_construction_probe)
   set_tests_properties(application.bezier_construction_contracts PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 300)
 endif()
 
+if(BUILD_TESTING AND TARGET serial_reader_probe)
+  add_test(NAME application.serial_reader_contracts COMMAND serial_reader_probe contracts "${CMAKE_SOURCE_DIR}/tests/curve_memory/serial_reader.bp")
+  set_tests_properties(application.serial_reader_contracts PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 30)
+  add_test(NAME tooling.serial_reader_preservation
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tools/audit_serial_reader.py"
+            --candidate-root "${CMAKE_SOURCE_DIR}")
+  set_tests_properties(tooling.serial_reader_preservation PROPERTIES LABELS "tooling;required-gate" TIMEOUT 30)
+endif()
+
 if(BUILD_TESTING AND TARGET bezier_observer_probe)
   add_test(NAME application.bezier_observer_contracts COMMAND bezier_observer_probe contracts)
   set_tests_properties(application.bezier_observer_contracts PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 30)

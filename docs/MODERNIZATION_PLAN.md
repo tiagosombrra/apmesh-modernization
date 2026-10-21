@@ -4,12 +4,27 @@ Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
 Current bounded work: stage 3 slice 33, serial-reader control ownership.
-The [caller-root audit](evidence/STAGE3_CALLER_ROOT_AUDIT.md) identifies actual
-serial, factory, charge, MPI and Model/copy boundaries. Isolated static Debug CRT
-reproduces 1328-byte pending-control and 2656-byte reconstruction retention with
-working clean/leak controls. No production repair or new qualified slice follows
-from this original-defect audit. Required normal/failure/repeated-use, numerical
-preservation and exact-head/main gates remain pending for the repair.
+
+The candidate migrates LoaderBezierPatchFile to independent unique control
+results and local pending ownership. ReaderFilePatches retains parsed controls
+and consumes a separate unique reconstructed patch through Geometry. Three
+badbit masks propagate resource failures before partial record indexing. This
+is a behavior-changing lifetime/failure defect repair with no scientific policy
+change or consolidation with the distinct charge parser.
+
+Focused qualification passes 131 expected outcomes, sixteen complete CRT sweeps/
+2731 actual allocation denials, eight nonempty GCC live pairs and six rejected
+preservation mutations. The original retains 72 failed/59 other expected outcomes,
+all sixteen partial sweeps and 240 observed denials; later original ordinals remain
+unmeasured. No complete-reader rollback/retry or full-process safety is claimed.
+See [the bounded evidence](evidence/STAGE3_SERIAL_READER.md), C27 and ADR-0034.
+
+Full exact published-head and post-merge gates remain pending: 47 CTest entries,
+74 Python controls, all 29 memory batteries/3005 expected outcomes, preserved
+analytic/scalar/model traces and local/remote quality/identity checks. Slice 33
+is not qualified. The full stage 3 and stages 4-11 remain open; Model/copy,
+MPI/Hermite and other finite rows retain their separate pending dispositions.
+Earlier "next" paragraphs below are historical checkpoints.
 
 Stage 3 slice 32 is qualified within its measured boundary. PR #86 integrates
 head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa` as main

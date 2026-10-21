@@ -866,6 +866,34 @@
           "anchor": "Reverse member destruction retires patches before their borrowed curves."
         }
       ]
+    },
+    {
+      "id": "C27",
+      "topic": "Serial parsed-control and reconstructed-patch ownership",
+      "statement": "LoaderBezierPatchFile returns independent unique control-only owners per call and retains a local pending owner during parsing/publication. ReaderFilePatches retains parsed controls and consumes a separate unique reconstructed patch through Geometry. Three badbit masks propagate resource failures before partial record indexing. Existing validation, EOF/failbit behavior, control/index/ID order, interning tolerance, shared-curve selection, directions and numerical expressions are preserved.",
+      "limits": "Intentional owning-result source API migration at the audited serial caller; no external/raw ABI compatibility. Committed Geometry prefixes may remain on failure and consumed IDs remain consumed; no complete-reader rollback/retry. Borrowed curves outlive patch destruction under C25/C26. Other raw loaders, Model/copy, MPI/Hermite, broader inputs, cache/metadata/acceptance rollback and complete-process/parallel/LSan/UBSan remain separate. Exact-head/main qualification is required in STAGE3_SERIAL_READER.md.",
+      "evidence": [
+        {
+          "path": "include/input_output/patch_reader.h",
+          "anchor": "std::list<std::unique_ptr<PatchBezier>> LoaderBezierPatchFile"
+        },
+        {
+          "path": "src/input_output/patch_reader.cpp",
+          "anchor": "auto patches = patch_reader.LoaderBezierPatchFile(file_name);"
+        },
+        {
+          "path": "src/input_output/patch_reader.cpp",
+          "anchor": "auto pending_patch ="
+        },
+        {
+          "path": "src/input_output/patch_reader.cpp",
+          "anchor": "geometry->InsertPatch(std::move(pending_patch));"
+        },
+        {
+          "path": "src/input_output/patch_reader.cpp",
+          "anchor": "fin.exceptions(std::ios::badbit);"
+        }
+      ]
     }
   ]
 }

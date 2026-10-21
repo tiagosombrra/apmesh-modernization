@@ -30,7 +30,8 @@ class PatchReader {
   std::list<PatchBezier *> OrderVectorToListBezierPatches(std::vector<double>);
   PointAdaptive GetPointVectorControlPoints(std::vector<PointAdaptive>,
                                             unsigned long);
-  std::list<PatchBezier *> LoaderBezierPatchFile(string fileName);
+  // Each call transfers independent control-only owners; partial reads release them.
+  std::list<std::unique_ptr<PatchBezier>> LoaderBezierPatchFile(string fileName);
   Geometry *ReaderFilePatches(Geometry *geometry, string fileName);
 
  protected:

@@ -73,6 +73,11 @@ The next single audit covers successful caller adoption and remaining loader/
 Model/copy roots. Other lifecycle roots, cache/metadata/acceptance rollback and
 full-process/parallel memory remain open; stages 4-11 are pending.
 
+The caller audit has since reproduced serial control-object retention. Active
+slice 33 repairs pending/control-result ownership; focused gates pass while full
+exact-head/main delivery qualification remains pending. See
+[the serial-reader evidence](docs/evidence/STAGE3_SERIAL_READER.md).
+
 ## Repository policy
 
 All new first-party code and documentation are English. Historical names and

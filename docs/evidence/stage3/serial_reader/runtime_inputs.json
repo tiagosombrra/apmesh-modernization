@@ -1,0 +1,113 @@
+{
+  "status": "actual full-reader build inputs and instrument identities verified",
+  "entry_main": "f9c7d22c0028e8864da4de5a05bdc19489da52bf",
+  "candidate_provenance": "Focused modified working tree before publication; not exact-head/main delivery evidence.",
+  "roles": {
+    "candidate-crt": {
+      "sources": {
+        "tests/curve_memory/serial_reader_probe.cpp": "68c5c123decca75e3fd51bd0dd0fdde8718cd1539613b2e3aa360c3694604775",
+        "src/data/curve/curve_adaptive.cpp": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029",
+        "src/data/curve/curve_adaptive_parametric.cpp": "1479ae7bba11b7625ba51c57d5578fbc1a136147fdff11990f1f2155a6ff7273",
+        "src/data/point_adaptive.cpp": "9e6837ec53f69bd23a602433aa5455668a6bb62605616c8059c0f7b42349b2ec",
+        "src/data/vector_adaptive.cpp": "c910b1091f4907b54725a6184c00c7a006e26ea63231b4d9182c4e829817f960",
+        "src/data/patch/patch.cpp": "c67345bb8c4640a4e23bac62e0897013ed7d6b3425af6c6fc56681990c134e9a",
+        "src/crab_mesh/numerical/function.cpp": "f58ca8b76b46d498374fe0b0b6fe0aee6e36c6b6ca657f12f69250d022ad2f95",
+        "src/crab_mesh/numerical/bisection_equation_root.cpp": "795d40b137ff31970997ffc8beb2fa2f49b491371f54fd9a484e179eb83126d7",
+        "src/data/curve/curve_adaptive_parametric_bezier.cpp": "43c6abbb8f46dbf7b3028b3d3583ee7c886772522ce7cdadd42258457c33c5aa",
+        "src/data/curve/curve_adaptive_parametric_hermite.cpp": "b082fa6c0d21717bc109bfef2ed863bca8455916dc6495ce77f9aedba244807d",
+        "src/data/patch/patch_coons.cpp": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+        "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+        "src/data/patch/patch_hermite.cpp": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+        "src/data/geometry.cpp": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5",
+        "src/data/vertex_adaptive.cpp": "1ea11fe39adf711a9dc8df763ff2e11fba2a408a7d17e55429f732bb3172c4e5",
+        "src/input_output/patch_reader.cpp": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+        "src/input_output/control_patch_reader.cpp": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe"
+      },
+      "translation_units": 17,
+      "cxx_standard": 17,
+      "runtime": "static Debug CRT",
+      "dynamic_debug_crt_imports": false
+    },
+    "candidate-asan": {
+      "sources": {
+        "tests/curve_memory/serial_reader_probe.cpp": "68c5c123decca75e3fd51bd0dd0fdde8718cd1539613b2e3aa360c3694604775",
+        "src/data/curve/curve_adaptive.cpp": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029",
+        "src/data/curve/curve_adaptive_parametric.cpp": "1479ae7bba11b7625ba51c57d5578fbc1a136147fdff11990f1f2155a6ff7273",
+        "src/data/point_adaptive.cpp": "9e6837ec53f69bd23a602433aa5455668a6bb62605616c8059c0f7b42349b2ec",
+        "src/data/vector_adaptive.cpp": "c910b1091f4907b54725a6184c00c7a006e26ea63231b4d9182c4e829817f960",
+        "src/data/patch/patch.cpp": "c67345bb8c4640a4e23bac62e0897013ed7d6b3425af6c6fc56681990c134e9a",
+        "src/crab_mesh/numerical/function.cpp": "f58ca8b76b46d498374fe0b0b6fe0aee6e36c6b6ca657f12f69250d022ad2f95",
+        "src/crab_mesh/numerical/bisection_equation_root.cpp": "795d40b137ff31970997ffc8beb2fa2f49b491371f54fd9a484e179eb83126d7",
+        "src/data/curve/curve_adaptive_parametric_bezier.cpp": "43c6abbb8f46dbf7b3028b3d3583ee7c886772522ce7cdadd42258457c33c5aa",
+        "src/data/curve/curve_adaptive_parametric_hermite.cpp": "b082fa6c0d21717bc109bfef2ed863bca8455916dc6495ce77f9aedba244807d",
+        "src/data/patch/patch_coons.cpp": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+        "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+        "src/data/patch/patch_hermite.cpp": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+        "src/data/geometry.cpp": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5",
+        "src/data/vertex_adaptive.cpp": "1ea11fe39adf711a9dc8df763ff2e11fba2a408a7d17e55429f732bb3172c4e5",
+        "src/input_output/patch_reader.cpp": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+        "src/input_output/control_patch_reader.cpp": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe"
+      },
+      "translation_units": 17,
+      "cxx_standard": 17,
+      "runtime": "ASan with leak detection disabled"
+    },
+    "original-crt": {
+      "sources": {
+        "tests/curve_memory/serial_reader_probe.cpp": "68c5c123decca75e3fd51bd0dd0fdde8718cd1539613b2e3aa360c3694604775",
+        "src/data/curve/curve_adaptive.cpp": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029",
+        "src/data/curve/curve_adaptive_parametric.cpp": "1479ae7bba11b7625ba51c57d5578fbc1a136147fdff11990f1f2155a6ff7273",
+        "src/data/point_adaptive.cpp": "9e6837ec53f69bd23a602433aa5455668a6bb62605616c8059c0f7b42349b2ec",
+        "src/data/vector_adaptive.cpp": "c910b1091f4907b54725a6184c00c7a006e26ea63231b4d9182c4e829817f960",
+        "src/data/patch/patch.cpp": "c67345bb8c4640a4e23bac62e0897013ed7d6b3425af6c6fc56681990c134e9a",
+        "src/crab_mesh/numerical/function.cpp": "f58ca8b76b46d498374fe0b0b6fe0aee6e36c6b6ca657f12f69250d022ad2f95",
+        "src/crab_mesh/numerical/bisection_equation_root.cpp": "795d40b137ff31970997ffc8beb2fa2f49b491371f54fd9a484e179eb83126d7",
+        "src/data/curve/curve_adaptive_parametric_bezier.cpp": "43c6abbb8f46dbf7b3028b3d3583ee7c886772522ce7cdadd42258457c33c5aa",
+        "src/data/curve/curve_adaptive_parametric_hermite.cpp": "b082fa6c0d21717bc109bfef2ed863bca8455916dc6495ce77f9aedba244807d",
+        "src/data/patch/patch_coons.cpp": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+        "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+        "src/data/patch/patch_hermite.cpp": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+        "src/data/geometry.cpp": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5",
+        "src/data/vertex_adaptive.cpp": "1ea11fe39adf711a9dc8df763ff2e11fba2a408a7d17e55429f732bb3172c4e5",
+        "src/input_output/patch_reader.cpp": "cc5a766886adb596bbc468efb49404522decebfb828bcbffba362ef4fe908c88",
+        "src/input_output/control_patch_reader.cpp": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe"
+      },
+      "translation_units": 17,
+      "cxx_standard": 17,
+      "runtime": "static Debug CRT",
+      "dynamic_debug_crt_imports": false
+    },
+    "original-asan": {
+      "sources": {
+        "tests/curve_memory/serial_reader_probe.cpp": "68c5c123decca75e3fd51bd0dd0fdde8718cd1539613b2e3aa360c3694604775",
+        "src/data/curve/curve_adaptive.cpp": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029",
+        "src/data/curve/curve_adaptive_parametric.cpp": "1479ae7bba11b7625ba51c57d5578fbc1a136147fdff11990f1f2155a6ff7273",
+        "src/data/point_adaptive.cpp": "9e6837ec53f69bd23a602433aa5455668a6bb62605616c8059c0f7b42349b2ec",
+        "src/data/vector_adaptive.cpp": "c910b1091f4907b54725a6184c00c7a006e26ea63231b4d9182c4e829817f960",
+        "src/data/patch/patch.cpp": "c67345bb8c4640a4e23bac62e0897013ed7d6b3425af6c6fc56681990c134e9a",
+        "src/crab_mesh/numerical/function.cpp": "f58ca8b76b46d498374fe0b0b6fe0aee6e36c6b6ca657f12f69250d022ad2f95",
+        "src/crab_mesh/numerical/bisection_equation_root.cpp": "795d40b137ff31970997ffc8beb2fa2f49b491371f54fd9a484e179eb83126d7",
+        "src/data/curve/curve_adaptive_parametric_bezier.cpp": "43c6abbb8f46dbf7b3028b3d3583ee7c886772522ce7cdadd42258457c33c5aa",
+        "src/data/curve/curve_adaptive_parametric_hermite.cpp": "b082fa6c0d21717bc109bfef2ed863bca8455916dc6495ce77f9aedba244807d",
+        "src/data/patch/patch_coons.cpp": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+        "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+        "src/data/patch/patch_hermite.cpp": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+        "src/data/geometry.cpp": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5",
+        "src/data/vertex_adaptive.cpp": "1ea11fe39adf711a9dc8df763ff2e11fba2a408a7d17e55429f732bb3172c4e5",
+        "src/input_output/patch_reader.cpp": "cc5a766886adb596bbc468efb49404522decebfb828bcbffba362ef4fe908c88",
+        "src/input_output/control_patch_reader.cpp": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe"
+      },
+      "translation_units": 17,
+      "cxx_standard": 17,
+      "runtime": "ASan with leak detection disabled"
+    },
+    "s33qg": {
+      "actual_cxx17_compile_commands": 17,
+      "commands_sha256": "08c4f1a78d9906812c21c731e135c3a52eb9cf9162ba38e14c68bf535b1567d1"
+    },
+    "s33og": {
+      "actual_cxx17_compile_commands": 17,
+      "commands_sha256": "b63cf71604642831eab798445d970441ec14d8050bfd71b3c029f059cbe273a4"
+    }
+  }
+}
