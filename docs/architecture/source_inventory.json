@@ -7,9 +7,9 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 150,
+    "files": 151,
     "translation_units": 73,
-    "headers": 77,
+    "headers": 78,
     "directory_components": {
       "adapter": 4,
       "cli": 1,
@@ -20,7 +20,7 @@
       "data": 18,
       "data/curve": 9,
       "data/mesh": 4,
-      "data/patch": 8,
+      "data/patch": 9,
       "data/tree": 2,
       "estimate": 12,
       "generator": 16,
@@ -28,8 +28,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 576,
-    "first_party_include_edges": 336
+    "literal_include_directives": 583,
+    "first_party_include_edges": 339
   },
   "cross_component_directives": [
     {
@@ -180,7 +180,7 @@
     {
       "from": "data/patch",
       "to": "data/curve",
-      "count": 2
+      "count": 3
     },
     {
       "from": "data/tree",
@@ -210,7 +210,7 @@
     {
       "from": "estimate",
       "to": "data/patch",
-      "count": 4
+      "count": 5
     },
     {
       "from": "estimate",
@@ -329,13 +329,13 @@
     "GL/glu.h": 1,
     "GL/glut.h": 1,
     "algorithm": 10,
-    "array": 8,
+    "array": 10,
     "atomic": 3,
     "cctype": 1,
     "cfloat": 5,
     "climits": 2,
     "cmath": 17,
-    "cstddef": 1,
+    "cstddef": 2,
     "cstdint": 1,
     "cstdio": 3,
     "cstdlib": 5,
@@ -352,7 +352,7 @@
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 26,
+    "memory": 27,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -379,7 +379,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "1ea688ca1e47d64618f24500698ce5e2e85b7d49c94b8017d255ff4081b5d9b6"
+      "sha256": "89f02bf1884c84eb62b4c8c2f0e28c4a23523bdb98df8f3f99ee05943f9f710c"
     },
     {
       "path": "CMakePresets.json",
@@ -391,7 +391,7 @@
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "dd6fc0d2bdd8f90424986c64cdffd5189a60f20be166918aababffdcb0e366e7"
+      "sha256": "f63e515f6814aac6d020b4d5ab6281815845b15fa5234a89eaeb7a846ec01b2b"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1895,8 +1895,8 @@
       "path": "include/data/patch/patch_bezier.h",
       "component_by_directory": "data/patch",
       "kind": "header",
-      "sha256": "4162d1fc48b2def2162f5bd5eb365c92befaafc47be54e60e3591d6791e38e59",
-      "bytes": 5731,
+      "sha256": "ca32ac2ffb1bc00d4f20355ec55f68962a1035d956035e26a176b0e6a6e98122",
+      "bytes": 6045,
       "includes": [
         {
           "line": 4,
@@ -1971,6 +1971,36 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_coons.h"
+        }
+      ]
+    },
+    {
+      "path": "include/data/patch/patch_observer_scope.h",
+      "component_by_directory": "data/patch",
+      "kind": "header",
+      "sha256": "e3a6718750a5c34fbedb895f4106b123022991636b112dcfdfb7b42f17b8591a",
+      "bytes": 1213,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "array",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "cstddef",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "../curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
         }
       ]
     },
@@ -4070,8 +4100,8 @@
       "path": "src/data/patch/patch_bezier.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "4bc29e28aee79ca4f9a61b769296d3d6c3d04593e9592e992e0c7dbb8b55f7bd",
-      "bytes": 26975,
+      "sha256": "3eedc70a71ec45f57a08131a477461d0c44ba05f560fe20649bee10937cce360",
+      "bytes": 27621,
       "includes": [
         {
           "line": 1,
@@ -4089,24 +4119,45 @@
         },
         {
           "line": 4,
-          "spelling": "atomic",
+          "spelling": "array",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 5,
-          "spelling": "cmath",
+          "spelling": "atomic",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 6,
+          "spelling": "cmath",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
           "spelling": "iostream",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
+          "spelling": "data/patch/patch_observer_scope.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_observer_scope.h"
         }
       ]
     },
@@ -4305,8 +4356,8 @@
       "path": "src/estimate/charge_input_estimate.cpp",
       "component_by_directory": "estimate",
       "kind": "translation_unit",
-      "sha256": "5aca83bdbdba04f926694efaeb59e892a0d4301d9b311a1fb3cbfa88429fe642",
-      "bytes": 7660,
+      "sha256": "070d8a444fcbb3011afc2d4548f61e9b081fd1f9a85efc136474b042869d2ff8",
+      "bytes": 6738,
       "includes": [
         {
           "line": 1,
@@ -4317,20 +4368,27 @@
         },
         {
           "line": 3,
+          "spelling": "data/patch/patch_observer_scope.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_observer_scope.h"
+        },
+        {
+          "line": 5,
           "spelling": "array",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 4,
+          "line": 6,
           "spelling": "memory",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 5,
+          "line": 7,
           "spelling": "utility",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -5787,8 +5845,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 24,
-    "source_anchors": 155,
+    "contracts": 25,
+    "source_anchors": 160,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

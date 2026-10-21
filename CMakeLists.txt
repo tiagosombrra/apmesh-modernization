@@ -203,3 +203,8 @@ include(cmake/Quality.cmake)
 if(BUILD_TESTING AND TARGET curvature_sample_probe)
   add_test(NAME application.curvature_sample_contracts COMMAND curvature_sample_probe contracts)
 endif()
+
+if(BUILD_TESTING AND TARGET bezier_construction_probe)
+  add_test(NAME application.bezier_construction_contracts COMMAND bezier_construction_probe contracts)
+  set_tests_properties(application.bezier_construction_contracts PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 300)
+endif()

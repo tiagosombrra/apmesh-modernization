@@ -1,0 +1,301 @@
+{
+  "status": "passed",
+  "paired_traces": 16,
+  "constructor_calls_per_executable": 512,
+  "scalar_observations": 13824,
+  "control_observations": 8192,
+  "preservation": {
+    "status": "passed",
+    "rejected_mutations": 4,
+    "original_sha256": "4bc29e28aee79ca4f9a61b769296d3d6c3d04593e9592e992e0c7dbb8b55f7bd",
+    "candidate_sha256": "3eedc70a71ec45f57a08131a477461d0c44ba05f560fe20649bee10937cce360",
+    "preserved_tokens_sha256": "9f3e404c75b208f13dd1268bf4d34c4041e6c23b4824f4bde69f70382043de0e",
+    "shared_scope_tokens_sha256": "090d78063f210dd0c4ffe4b21dec2245d4d7367f7c30a17e4cebd51a1cdc6f0f",
+    "scope": "Exact public API/layout, shared scope and caller semantics. All original Bezier unit tokens match after normalizing only includes/comments/spacing, owning factory/storage/publication and scope declarations/commits. Commit/release positions are separately required to cover the entire constructors; four independent control/matrix/direction/early-commit mutations are rejected. Actual traces and instrument outcomes remain separately required."
+  },
+  "cases": [
+    {
+      "mode": "normal-0-0-0",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-0-0.log",
+          "exit_code": 0,
+          "sha256": "c729ed4d1eab982c77e38f6be46557d6f919c187d02bc9cdd279f46a5b9aae2e"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-0-0.log",
+          "exit_code": 0,
+          "sha256": "c729ed4d1eab982c77e38f6be46557d6f919c187d02bc9cdd279f46a5b9aae2e"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "0967b35b9033b439fe9205232c4edbbaf6286bbd741dbd5a77d2080e8098fd3e"
+    },
+    {
+      "mode": "normal-0-0-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-0-1.log",
+          "exit_code": 0,
+          "sha256": "c729ed4d1eab982c77e38f6be46557d6f919c187d02bc9cdd279f46a5b9aae2e"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-0-1.log",
+          "exit_code": 0,
+          "sha256": "c729ed4d1eab982c77e38f6be46557d6f919c187d02bc9cdd279f46a5b9aae2e"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "0967b35b9033b439fe9205232c4edbbaf6286bbd741dbd5a77d2080e8098fd3e"
+    },
+    {
+      "mode": "normal-0-1-0",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-1-0.log",
+          "exit_code": 0,
+          "sha256": "09b13246dcd636b504484d9ec9ca434edaeb585942e726c1b6f8633bacc0f984"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-1-0.log",
+          "exit_code": 0,
+          "sha256": "09b13246dcd636b504484d9ec9ca434edaeb585942e726c1b6f8633bacc0f984"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "1eea2eaabcca730c275947b0f4eeade2ff67912ab85dd67e1d674d7bf67177a3"
+    },
+    {
+      "mode": "normal-0-1-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-0-1-1.log",
+          "exit_code": 0,
+          "sha256": "09b13246dcd636b504484d9ec9ca434edaeb585942e726c1b6f8633bacc0f984"
+        },
+        "candidate": {
+          "log": "candidate-normal-0-1-1.log",
+          "exit_code": 0,
+          "sha256": "09b13246dcd636b504484d9ec9ca434edaeb585942e726c1b6f8633bacc0f984"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "1eea2eaabcca730c275947b0f4eeade2ff67912ab85dd67e1d674d7bf67177a3"
+    },
+    {
+      "mode": "normal-1-0-0",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-0-0.log",
+          "exit_code": 0,
+          "sha256": "94967a91bdb67333efb2d1e70b6d180f5b06699ab826dbd661396678e40ba76f"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-0-0.log",
+          "exit_code": 0,
+          "sha256": "94967a91bdb67333efb2d1e70b6d180f5b06699ab826dbd661396678e40ba76f"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "6e9cb75f42cffe356f2a3df88ba57e454df3bbc67248efb81b232d2a5d40b44f"
+    },
+    {
+      "mode": "normal-1-0-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-0-1.log",
+          "exit_code": 0,
+          "sha256": "94967a91bdb67333efb2d1e70b6d180f5b06699ab826dbd661396678e40ba76f"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-0-1.log",
+          "exit_code": 0,
+          "sha256": "94967a91bdb67333efb2d1e70b6d180f5b06699ab826dbd661396678e40ba76f"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "6e9cb75f42cffe356f2a3df88ba57e454df3bbc67248efb81b232d2a5d40b44f"
+    },
+    {
+      "mode": "normal-1-1-0",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-1-0.log",
+          "exit_code": 0,
+          "sha256": "6443f50c6da7c2e056aa8ad5a706f4a0f3dd66e366865bf5bdb51cafad75f655"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-1-0.log",
+          "exit_code": 0,
+          "sha256": "6443f50c6da7c2e056aa8ad5a706f4a0f3dd66e366865bf5bdb51cafad75f655"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "f3e0a1421dd681d18a7afe86263289d43c011d3f5b58302fd62abc6aea2f7549"
+    },
+    {
+      "mode": "normal-1-1-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-1-1-1.log",
+          "exit_code": 0,
+          "sha256": "6443f50c6da7c2e056aa8ad5a706f4a0f3dd66e366865bf5bdb51cafad75f655"
+        },
+        "candidate": {
+          "log": "candidate-normal-1-1-1.log",
+          "exit_code": 0,
+          "sha256": "6443f50c6da7c2e056aa8ad5a706f4a0f3dd66e366865bf5bdb51cafad75f655"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "f3e0a1421dd681d18a7afe86263289d43c011d3f5b58302fd62abc6aea2f7549"
+    },
+    {
+      "mode": "normal-2-0-0",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-0-0.log",
+          "exit_code": 0,
+          "sha256": "d85620cde1b8ffdc2d01dbb30778e56db004f1a68b59a4f16f1cdce90210d9d8"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-0-0.log",
+          "exit_code": 0,
+          "sha256": "d85620cde1b8ffdc2d01dbb30778e56db004f1a68b59a4f16f1cdce90210d9d8"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "dc221eb989322fa41027fd75d56e2e8d73b208ca305579ec382b50133b9856a0"
+    },
+    {
+      "mode": "normal-2-0-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-0-1.log",
+          "exit_code": 0,
+          "sha256": "d85620cde1b8ffdc2d01dbb30778e56db004f1a68b59a4f16f1cdce90210d9d8"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-0-1.log",
+          "exit_code": 0,
+          "sha256": "d85620cde1b8ffdc2d01dbb30778e56db004f1a68b59a4f16f1cdce90210d9d8"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "dc221eb989322fa41027fd75d56e2e8d73b208ca305579ec382b50133b9856a0"
+    },
+    {
+      "mode": "normal-2-1-0",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-1-0.log",
+          "exit_code": 0,
+          "sha256": "2de49394331877cb0eca5e85aada287aecc4c566f3c7bf6d2494f89dc7dcbfca"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-1-0.log",
+          "exit_code": 0,
+          "sha256": "2de49394331877cb0eca5e85aada287aecc4c566f3c7bf6d2494f89dc7dcbfca"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "20a1ec18d8e76ecac20bd4d32c6cff6a3154c2b50dbdeafa809811e5e88c4252"
+    },
+    {
+      "mode": "normal-2-1-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-2-1-1.log",
+          "exit_code": 0,
+          "sha256": "2de49394331877cb0eca5e85aada287aecc4c566f3c7bf6d2494f89dc7dcbfca"
+        },
+        "candidate": {
+          "log": "candidate-normal-2-1-1.log",
+          "exit_code": 0,
+          "sha256": "2de49394331877cb0eca5e85aada287aecc4c566f3c7bf6d2494f89dc7dcbfca"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "20a1ec18d8e76ecac20bd4d32c6cff6a3154c2b50dbdeafa809811e5e88c4252"
+    },
+    {
+      "mode": "normal-3-0-0",
+      "invocations": {
+        "original": {
+          "log": "original-normal-3-0-0.log",
+          "exit_code": 0,
+          "sha256": "55e83958d20ee0f888a4f92f73cb1a7eeab48ad79fbffb55678010d11b55bcc3"
+        },
+        "candidate": {
+          "log": "candidate-normal-3-0-0.log",
+          "exit_code": 0,
+          "sha256": "55e83958d20ee0f888a4f92f73cb1a7eeab48ad79fbffb55678010d11b55bcc3"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "c4196615396e625d4441855e1ff129e22830d55ec26925c601834289e8cc3e0c"
+    },
+    {
+      "mode": "normal-3-0-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-3-0-1.log",
+          "exit_code": 0,
+          "sha256": "55e83958d20ee0f888a4f92f73cb1a7eeab48ad79fbffb55678010d11b55bcc3"
+        },
+        "candidate": {
+          "log": "candidate-normal-3-0-1.log",
+          "exit_code": 0,
+          "sha256": "55e83958d20ee0f888a4f92f73cb1a7eeab48ad79fbffb55678010d11b55bcc3"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "c4196615396e625d4441855e1ff129e22830d55ec26925c601834289e8cc3e0c"
+    },
+    {
+      "mode": "normal-3-1-0",
+      "invocations": {
+        "original": {
+          "log": "original-normal-3-1-0.log",
+          "exit_code": 0,
+          "sha256": "d6480399bcfd0a0f0a9bf1843441eb1bd4921cfc1c4ae6c4a26865eefad218fd"
+        },
+        "candidate": {
+          "log": "candidate-normal-3-1-0.log",
+          "exit_code": 0,
+          "sha256": "d6480399bcfd0a0f0a9bf1843441eb1bd4921cfc1c4ae6c4a26865eefad218fd"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "36a1f8d8ecd19e7a309ac7251f378f1ee0ed41a2effcac39ddb06719418a6b37"
+    },
+    {
+      "mode": "normal-3-1-1",
+      "invocations": {
+        "original": {
+          "log": "original-normal-3-1-1.log",
+          "exit_code": 0,
+          "sha256": "d6480399bcfd0a0f0a9bf1843441eb1bd4921cfc1c4ae6c4a26865eefad218fd"
+        },
+        "candidate": {
+          "log": "candidate-normal-3-1-1.log",
+          "exit_code": 0,
+          "sha256": "d6480399bcfd0a0f0a9bf1843441eb1bd4921cfc1c4ae6c4a26865eefad218fd"
+        }
+      },
+      "observation_count": 1536,
+      "observations_sha256": "36a1f8d8ecd19e7a309ac7251f378f1ee0ed41a2effcac39ddb06719418a6b37"
+    }
+  ],
+  "executables": {
+    "original": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s31og\\bezier_construction_probe.exe",
+      "sha256": "b3651b6f3eba14355676f4e25b3b4c28ea0c550dfb71ddc91f80d14caa351499"
+    },
+    "candidate": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s31qg\\bezier_construction_probe.exe",
+      "sha256": "6df5b9bac250012cc17af9304d003729bf4d5f4ad2511feb1b560658df119275"
+    }
+  },
+  "scope": "Actual GCC C++17 constructors/dependencies, 16 paired scenarios each containing all16 direction masks and two successive constructions. Exact curve control coordinates/IDs, direction flags, live observer checks, Parameterize/Qu/Qv scalar bits. Repeated slots are lifetime guards, not geometric validity; no analytic validity, performance, ordinary destruction/deregistration or whole-process qualification follows."
+}

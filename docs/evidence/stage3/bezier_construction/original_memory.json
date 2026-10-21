@@ -1,0 +1,1131 @@
+{
+  "status": "failed",
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+      "retained": [],
+      "observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "instrument": "asan",
+      "mode": "prefix-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "11842f0347712620a1d16eea0f19b6c15657882478206d6f3098ceac8e2c3b25",
+      "retained": [],
+      "observation_count": 1,
+      "observations_sha256": "2072194126a0ee8b1e56f2600bf245493cd406ae497e2bc9404b06c3823701df"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "c729ed4d1eab982c77e38f6be46557d6f919c187d02bc9cdd279f46a5b9aae2e",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "0967b35b9033b439fe9205232c4edbbaf6286bbd741dbd5a77d2080e8098fd3e"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "c729ed4d1eab982c77e38f6be46557d6f919c187d02bc9cdd279f46a5b9aae2e",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "0967b35b9033b439fe9205232c4edbbaf6286bbd741dbd5a77d2080e8098fd3e"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "09b13246dcd636b504484d9ec9ca434edaeb585942e726c1b6f8633bacc0f984",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "1eea2eaabcca730c275947b0f4eeade2ff67912ab85dd67e1d674d7bf67177a3"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "09b13246dcd636b504484d9ec9ca434edaeb585942e726c1b6f8633bacc0f984",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "1eea2eaabcca730c275947b0f4eeade2ff67912ab85dd67e1d674d7bf67177a3"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "94967a91bdb67333efb2d1e70b6d180f5b06699ab826dbd661396678e40ba76f",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "6e9cb75f42cffe356f2a3df88ba57e454df3bbc67248efb81b232d2a5d40b44f"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "94967a91bdb67333efb2d1e70b6d180f5b06699ab826dbd661396678e40ba76f",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "6e9cb75f42cffe356f2a3df88ba57e454df3bbc67248efb81b232d2a5d40b44f"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6443f50c6da7c2e056aa8ad5a706f4a0f3dd66e366865bf5bdb51cafad75f655",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "f3e0a1421dd681d18a7afe86263289d43c011d3f5b58302fd62abc6aea2f7549"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6443f50c6da7c2e056aa8ad5a706f4a0f3dd66e366865bf5bdb51cafad75f655",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "f3e0a1421dd681d18a7afe86263289d43c011d3f5b58302fd62abc6aea2f7549"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "d85620cde1b8ffdc2d01dbb30778e56db004f1a68b59a4f16f1cdce90210d9d8",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "dc221eb989322fa41027fd75d56e2e8d73b208ca305579ec382b50133b9856a0"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "d85620cde1b8ffdc2d01dbb30778e56db004f1a68b59a4f16f1cdce90210d9d8",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "dc221eb989322fa41027fd75d56e2e8d73b208ca305579ec382b50133b9856a0"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "2de49394331877cb0eca5e85aada287aecc4c566f3c7bf6d2494f89dc7dcbfca",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "20a1ec18d8e76ecac20bd4d32c6cff6a3154c2b50dbdeafa809811e5e88c4252"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "2de49394331877cb0eca5e85aada287aecc4c566f3c7bf6d2494f89dc7dcbfca",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "20a1ec18d8e76ecac20bd4d32c6cff6a3154c2b50dbdeafa809811e5e88c4252"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "55e83958d20ee0f888a4f92f73cb1a7eeab48ad79fbffb55678010d11b55bcc3",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "c4196615396e625d4441855e1ff129e22830d55ec26925c601834289e8cc3e0c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "55e83958d20ee0f888a4f92f73cb1a7eeab48ad79fbffb55678010d11b55bcc3",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "c4196615396e625d4441855e1ff129e22830d55ec26925c601834289e8cc3e0c"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "d6480399bcfd0a0f0a9bf1843441eb1bd4921cfc1c4ae6c4a26865eefad218fd",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "36a1f8d8ecd19e7a309ac7251f378f1ee0ed41a2effcac39ddb06719418a6b37"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-3-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "d6480399bcfd0a0f0a9bf1843441eb1bd4921cfc1c4ae6c4a26865eefad218fd",
+      "retained": [],
+      "observation_count": 1536,
+      "observations_sha256": "36a1f8d8ecd19e7a309ac7251f378f1ee0ed41a2effcac39ddb06719418a6b37"
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "instrument": "crt",
+      "mode": "prefix-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "b7faa3091fdef4ad70266e2268955f0d893b8d056fae15be4b2912c66afd2c67",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1,
+      "observations_sha256": "2072194126a0ee8b1e56f2600bf245493cd406ae497e2bc9404b06c3823701df"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6db7ca301fbe88e269ca77680fa6aad206d2568984933f5f936942c15c346aa3",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "0967b35b9033b439fe9205232c4edbbaf6286bbd741dbd5a77d2080e8098fd3e"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6db7ca301fbe88e269ca77680fa6aad206d2568984933f5f936942c15c346aa3",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "0967b35b9033b439fe9205232c4edbbaf6286bbd741dbd5a77d2080e8098fd3e"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "a0f2d47919fcf3371e4fbb883efdbfed8eb78b55e4080537a8a916b9d22ed9d4",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "1eea2eaabcca730c275947b0f4eeade2ff67912ab85dd67e1d674d7bf67177a3"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "a0f2d47919fcf3371e4fbb883efdbfed8eb78b55e4080537a8a916b9d22ed9d4",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "1eea2eaabcca730c275947b0f4eeade2ff67912ab85dd67e1d674d7bf67177a3"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5e7725227323ee1cd4be5ada7a7ad65e9cda87e6fa105784327feb1e37e40e2c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "6e9cb75f42cffe356f2a3df88ba57e454df3bbc67248efb81b232d2a5d40b44f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5e7725227323ee1cd4be5ada7a7ad65e9cda87e6fa105784327feb1e37e40e2c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "6e9cb75f42cffe356f2a3df88ba57e454df3bbc67248efb81b232d2a5d40b44f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5bc219cd19c81ed8807cf881dffca55c294b9b403671e7546c1d9e6f7a183964",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "f3e0a1421dd681d18a7afe86263289d43c011d3f5b58302fd62abc6aea2f7549"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5bc219cd19c81ed8807cf881dffca55c294b9b403671e7546c1d9e6f7a183964",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "f3e0a1421dd681d18a7afe86263289d43c011d3f5b58302fd62abc6aea2f7549"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "63cb9bff9037aedfc1b49607b015ea847226971b0e984b11b18926d5d8f027dd",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "dc221eb989322fa41027fd75d56e2e8d73b208ca305579ec382b50133b9856a0"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "63cb9bff9037aedfc1b49607b015ea847226971b0e984b11b18926d5d8f027dd",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "dc221eb989322fa41027fd75d56e2e8d73b208ca305579ec382b50133b9856a0"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "03f8b679a1fa5796a51d450e5723ff882c2b4ab5c5e367715f65c8fdf0355aee",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "20a1ec18d8e76ecac20bd4d32c6cff6a3154c2b50dbdeafa809811e5e88c4252"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "03f8b679a1fa5796a51d450e5723ff882c2b4ab5c5e367715f65c8fdf0355aee",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "20a1ec18d8e76ecac20bd4d32c6cff6a3154c2b50dbdeafa809811e5e88c4252"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "ec2dfece66d9b653d79813fa40f4b8a1d84d520612f3e3395503fc78f7a580b6",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "c4196615396e625d4441855e1ff129e22830d55ec26925c601834289e8cc3e0c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "ec2dfece66d9b653d79813fa40f4b8a1d84d520612f3e3395503fc78f7a580b6",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "c4196615396e625d4441855e1ff129e22830d55ec26925c601834289e8cc3e0c"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "b9065b6df87a4b7a35143f96b3fa0dfad1038a91c36164603b1f9f2a4c548418",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "36a1f8d8ecd19e7a309ac7251f378f1ee0ed41a2effcac39ddb06719418a6b37"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-3-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "b9065b6df87a4b7a35143f96b3fa0dfad1038a91c36164603b1f9f2a4c548418",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 1536,
+      "observations_sha256": "36a1f8d8ecd19e7a309ac7251f378f1ee0ed41a2effcac39ddb06719418a6b37"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+      "retained": [
+        [
+          "3",
+          "544"
+        ]
+      ],
+      "observation_count": 6,
+      "observations_sha256": "66ef1d28e9466231b919964eb54b408a15d22b27ed9aa4ced1e35a31ff0bd2b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+      "retained": [
+        [
+          "3",
+          "544"
+        ]
+      ],
+      "observation_count": 6,
+      "observations_sha256": "66ef1d28e9466231b919964eb54b408a15d22b27ed9aa4ced1e35a31ff0bd2b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0-15-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+      "retained": [
+        [
+          "3",
+          "544"
+        ]
+      ],
+      "observation_count": 6,
+      "observations_sha256": "66ef1d28e9466231b919964eb54b408a15d22b27ed9aa4ced1e35a31ff0bd2b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-0-15-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+      "retained": [
+        [
+          "3",
+          "544"
+        ]
+      ],
+      "observation_count": 6,
+      "observations_sha256": "66ef1d28e9466231b919964eb54b408a15d22b27ed9aa4ced1e35a31ff0bd2b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+      "retained": [
+        [
+          "3",
+          "544"
+        ]
+      ],
+      "observation_count": 6,
+      "observations_sha256": "66ef1d28e9466231b919964eb54b408a15d22b27ed9aa4ced1e35a31ff0bd2b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+      "retained": [
+        [
+          "3",
+          "544"
+        ]
+      ],
+      "observation_count": 6,
+      "observations_sha256": "66ef1d28e9466231b919964eb54b408a15d22b27ed9aa4ced1e35a31ff0bd2b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1-15-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+      "retained": [
+        [
+          "3",
+          "544"
+        ]
+      ],
+      "observation_count": 6,
+      "observations_sha256": "66ef1d28e9466231b919964eb54b408a15d22b27ed9aa4ced1e35a31ff0bd2b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0-1-15-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+      "retained": [
+        [
+          "3",
+          "544"
+        ]
+      ],
+      "observation_count": 6,
+      "observations_sha256": "66ef1d28e9466231b919964eb54b408a15d22b27ed9aa4ced1e35a31ff0bd2b2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0-15-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-0-15-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1-15-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1-1-15-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-0-15-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-0-15-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-1-15-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2-1-15-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "77a19b3be66b15a947d55d046b57059873aac4e2cdf3afeac0db23f2116f83df",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "2bbab305c676cd26961541e3c22f636ab077231b44d26434b489149b20560bf7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-0-15-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-0-15-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "77a19b3be66b15a947d55d046b57059873aac4e2cdf3afeac0db23f2116f83df",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "2bbab305c676cd26961541e3c22f636ab077231b44d26434b489149b20560bf7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "77a19b3be66b15a947d55d046b57059873aac4e2cdf3afeac0db23f2116f83df",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "2bbab305c676cd26961541e3c22f636ab077231b44d26434b489149b20560bf7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-1-15-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "109360df56958b3e7b9252a7d23db97bfa3c81845d4a4bad92741861e6335327"
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3-1-15-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "77a19b3be66b15a947d55d046b57059873aac4e2cdf3afeac0db23f2116f83df",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 8,
+      "observations_sha256": "2bbab305c676cd26961541e3c22f636ab077231b44d26434b489149b20560bf7"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": "heap-use-after-free",
+      "log_sha256": "7b4c942d6185c8a716a43405ba0e429b44e74fb41ff5034f80e036efccb5ddf6",
+      "retained": [],
+      "observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": "retained-blocks",
+      "log_sha256": "923247bbb79f5afc3b0fd8058c4c254b5fa2a8ab6ca85cf3abcd2863df887db0",
+      "retained": [
+        [
+          "1",
+          "40"
+        ]
+      ],
+      "observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observation_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  ],
+  "expected_outcomes": 71,
+  "complete_sweeps": 0,
+  "allocation_denials": 208,
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s31oa\\RelWithDebInfo\\bezier_construction_probe.exe",
+      "sha256": "446e60683203b3ad68d8f092fa0534977d5fa7dd7b00678c4db1a8b0b1dec8c0"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s31od\\Debug\\bezier_construction_probe.exe",
+      "sha256": "33e6b4376289eed3429f72fa8c1ad602dccd8b2d887dba0c5c7406ef177e7e3e"
+    }
+  },
+  "scope": "Actual constructors/dependencies; fresh and borrowed curves, distinct/paired/all-slot aliases, plane/curved controls, empty/populated borrowed prefixes, all 16 direction masks and repeated successful calls. Thirty-two complete constructor allocation sweeps require actual denial, immediate propagation without allocation during unwinding, restored pointer-value prefixes and zero terminal retention after fixture destruction. Observer vector capacity is not rolled back. Aliases are lifecycle guards, not geometric validity. Successful constructor ownership is unchanged; the harness owns fresh curves and retires successful registrations while patches are alive. Ordinary destruction/deregistration, caller adoption failures, arbitrary/foreign publications, custom allocators, full-process/parallel/LSan/UBSan remain separate. ASan leaks are disabled; independent Debug CRT supplies retention and actual leak/hook controls."
+}

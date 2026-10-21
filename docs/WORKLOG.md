@@ -1,5 +1,15 @@
 # Modernization work log
 
+## 2026-10-20: stage 3 slice 31 candidate
+
+Repair fresh-curve ownership and borrowed observer publication at the Bezier
+constructor boundary, sharing the unchanged charge scope. Candidate 71outcomes
+pass with 32complete sweeps/348 denials. Original 32 failures/208 partial denials remain
+retained. 32 MSVC pairs and 16 GCC pairs preserve complete normal control/direction/
+scalar traces; four numerical/lifetime mutations are rejected. 43 CTest/74 Python
+and selected lint/format pass. Full exact-head/main delivery remains pending;
+stage 3 stays open. See [construction audit](evidence/STAGE3_BEZIER_CONSTRUCTION.md).
+
 ## 2026-10-20: stage 3 slice 30 qualified
 
 Stage 3 slice 30 is qualified. PR #82 integrates head `45ad4f7fc50bc6dcf8b730be69443801aea7ac43`

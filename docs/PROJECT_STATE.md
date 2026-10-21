@@ -1,5 +1,11 @@
 # Project state
 
+Active bounded item: stage 3 slice 31, Bezier construction lifetime.
+Repair both fresh-curve ownership on construction failure and borrowed-curve
+observer suffix restoration, sharing the already qualified scope with charge
+estimation. Candidate memory and token checks pass; full delivery qualification
+and integration remain pending. Slice 30 is the latest qualified baseline.
+
 ## Latest qualified work: stage 3 slice 30
 
 Stage 3 slice 30 is qualified. PR #82 integrates head `45ad4f7fc50bc6dcf8b730be69443801aea7ac43`

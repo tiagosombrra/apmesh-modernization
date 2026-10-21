@@ -1,9 +1,13 @@
 #include "../../../include/data/patch/patch_bezier.h"
 
 #include <algorithm>
+#include <array>
 #include <atomic>
 #include <cmath>
 #include <iostream>
+#include <memory>
+
+#include "data/patch/patch_observer_scope.h"
 
 extern double TOLERANCE;  // distância máxima entre dois pontos
 extern unsigned int I_MAX;
@@ -31,11 +35,11 @@ PointAdaptive OrientedControl(CurveAdaptive* curve, unsigned int index, bool for
   }
 }
 
-CurveAdaptiveParametricBezier* CreateOrientedCurve(const PointAdaptive& p0, const PointAdaptive& p1,
-                                                   const PointAdaptive& p2, const PointAdaptive& p3,
-                                                   bool forward) {
-  return forward ? new CurveAdaptiveParametricBezier(p0, p1, p2, p3)
-                 : new CurveAdaptiveParametricBezier(p3, p2, p1, p0);
+std::unique_ptr<CurveAdaptiveParametricBezier>
+CreateOrientedCurve(const PointAdaptive& p0, const PointAdaptive& p1, const PointAdaptive& p2,
+                    const PointAdaptive& p3, bool forward) {
+  return forward ? std::make_unique<CurveAdaptiveParametricBezier>(p0, p1, p2, p3)
+                 : std::make_unique<CurveAdaptiveParametricBezier>(p3, p2, p1, p0);
 }
 }  // namespace
 
@@ -93,6 +97,7 @@ PatchBezier::PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,
                          bool signal_curve1, bool signal_curve2,
                          bool signal_curve3, bool signal_curve4)
     : PatchCoons() {
+  apmesh::detail::PatchObserverScope observer_scope({curve1, curve2, curve3, curve4});
   this->signal_curve1_ = signal_curve1;
   this->signal_curve2_ = signal_curve2;
   this->signal_curve3_ = signal_curve3;
@@ -223,6 +228,7 @@ PatchBezier::PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,
   this->mat_geo_gx_ = this->GetB() * this->GetGx() * this->GetB();
   this->mat_geo_gy_ = this->GetB() * this->GetGy() * this->GetB();
   this->mat_geo_gz_ = this->GetB() * this->GetGz() * this->GetB();
+  observer_scope.Commit();
 }
 
 // Esse patch acha que é isolado! As curvas que apontam para ele devem ser
@@ -261,10 +267,16 @@ PatchBezier ::PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,
 
   // 1. Inclui as curvas na lista de curvas de CoonsPatch
   //
-  this->curves_.push_back(CreateOrientedCurve(pt00_, pt10_, pt20_, pt30_, signal_curve1));
-  this->curves_.push_back(CreateOrientedCurve(pt30_, pt31_, pt32_, pt33_, signal_curve2));
-  this->curves_.push_back(CreateOrientedCurve(pt03_, pt13_, pt23_, pt33_, signal_curve3));
-  this->curves_.push_back(CreateOrientedCurve(pt00_, pt01_, pt02_, pt03_, signal_curve4));
+  // Fresh curves stay owned until every constructor operation succeeds.
+  std::array<std::unique_ptr<CurveAdaptiveParametricBezier>, 4> pending_curves{};
+  pending_curves[0] = CreateOrientedCurve(pt00_, pt10_, pt20_, pt30_, signal_curve1);
+  this->curves_.push_back(pending_curves[0].get());
+  pending_curves[1] = CreateOrientedCurve(pt30_, pt31_, pt32_, pt33_, signal_curve2);
+  this->curves_.push_back(pending_curves[1].get());
+  pending_curves[2] = CreateOrientedCurve(pt03_, pt13_, pt23_, pt33_, signal_curve3);
+  this->curves_.push_back(pending_curves[2].get());
+  pending_curves[3] = CreateOrientedCurve(pt00_, pt01_, pt02_, pt03_, signal_curve4);
+  this->curves_.push_back(pending_curves[3].get());
   //
   // 2. Aloca espaço para as matrizes
   //
@@ -350,6 +362,9 @@ PatchBezier ::PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,
   this->mat_geo_gx_ = this->GetB() * this->GetGx() * this->GetB();
   this->mat_geo_gy_ = this->GetB() * this->GetGy() * this->GetB();
   this->mat_geo_gz_ = this->GetB() * this->GetGz() * this->GetB();
+  // Successful construction retains the established external curve-ownership contract.
+  for (auto& curve : pending_curves)
+    curve.release();
 }
 
 PatchBezier::~PatchBezier() {
