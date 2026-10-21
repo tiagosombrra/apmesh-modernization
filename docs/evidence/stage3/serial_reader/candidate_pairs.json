@@ -1,0 +1,251 @@
+{
+  "status": "passed",
+  "paired_traces": 8,
+  "patch_records": 24,
+  "control_records": 384,
+  "incidence_records": 96,
+  "scalar_records": 3456,
+  "cases": [
+    {
+      "shape": 0,
+      "seed": 0,
+      "invocations": {
+        "original": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33og\\serial_reader_probe.exe",
+            "trace-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "log": "0-0-original.log",
+          "sha256": "a2134404b73eec07017570d77d39616a7719df90ba1bc56284c7dc51507c86b6"
+        },
+        "candidate": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qg\\serial_reader_probe.exe",
+            "trace-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "log": "0-0-candidate.log",
+          "sha256": "a2134404b73eec07017570d77d39616a7719df90ba1bc56284c7dc51507c86b6"
+        }
+      },
+      "observations_sha256": "3e86193713c00e4e7e4ba6e9576cd04e9a26179d36c62782364a34837737ec3a"
+    },
+    {
+      "shape": 0,
+      "seed": 1,
+      "invocations": {
+        "original": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33og\\serial_reader_probe.exe",
+            "trace-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "log": "0-1-original.log",
+          "sha256": "b26640b9f4a4383cc859201f26d04b4d75eaf89c68efec9386845a2ac4ac0db5"
+        },
+        "candidate": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qg\\serial_reader_probe.exe",
+            "trace-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "log": "0-1-candidate.log",
+          "sha256": "b26640b9f4a4383cc859201f26d04b4d75eaf89c68efec9386845a2ac4ac0db5"
+        }
+      },
+      "observations_sha256": "4a3012885c486b33a3dda3ea3ca9de0b32b632d34bea4bfc5c0c2adac3b7aa83"
+    },
+    {
+      "shape": 1,
+      "seed": 0,
+      "invocations": {
+        "original": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33og\\serial_reader_probe.exe",
+            "trace-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "log": "1-0-original.log",
+          "sha256": "2f523e1a84ff4394b6b6d2a03d331baa3bee245b9601ba9191261c8bdc3b6fe8"
+        },
+        "candidate": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qg\\serial_reader_probe.exe",
+            "trace-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "log": "1-0-candidate.log",
+          "sha256": "2f523e1a84ff4394b6b6d2a03d331baa3bee245b9601ba9191261c8bdc3b6fe8"
+        }
+      },
+      "observations_sha256": "4328cdc09d86f5cb5e1c785fad55574e1df3ae07e8e89c37774e2a7ab85f8fb6"
+    },
+    {
+      "shape": 1,
+      "seed": 1,
+      "invocations": {
+        "original": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33og\\serial_reader_probe.exe",
+            "trace-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "log": "1-1-original.log",
+          "sha256": "d01b72eeba6fe044b9d19eeb31faf5070507a4bff4db4efcfdec5bc311f4db0c"
+        },
+        "candidate": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qg\\serial_reader_probe.exe",
+            "trace-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "log": "1-1-candidate.log",
+          "sha256": "d01b72eeba6fe044b9d19eeb31faf5070507a4bff4db4efcfdec5bc311f4db0c"
+        }
+      },
+      "observations_sha256": "b42e89005e0331895ffb43d892070c98c3c5b4b2117763184154f7f9aba394c6"
+    },
+    {
+      "shape": 2,
+      "seed": 0,
+      "invocations": {
+        "original": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33og\\serial_reader_probe.exe",
+            "trace-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "log": "2-0-original.log",
+          "sha256": "366e18265c3a857611af11bd260eb208c7d536fad3be114fb8010af18dda26dc"
+        },
+        "candidate": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qg\\serial_reader_probe.exe",
+            "trace-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "log": "2-0-candidate.log",
+          "sha256": "366e18265c3a857611af11bd260eb208c7d536fad3be114fb8010af18dda26dc"
+        }
+      },
+      "observations_sha256": "e23026c386c67b5c9ac8e2629e1ea57c6f749cd07a40fec35a8d58f9ecb3e8eb"
+    },
+    {
+      "shape": 2,
+      "seed": 1,
+      "invocations": {
+        "original": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33og\\serial_reader_probe.exe",
+            "trace-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "log": "2-1-original.log",
+          "sha256": "9c3f97973c0ee593328b7ad5564c8e4456b7b3a5b66fa8a04bdb1df7539a162a"
+        },
+        "candidate": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qg\\serial_reader_probe.exe",
+            "trace-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "log": "2-1-candidate.log",
+          "sha256": "9c3f97973c0ee593328b7ad5564c8e4456b7b3a5b66fa8a04bdb1df7539a162a"
+        }
+      },
+      "observations_sha256": "6ec3247c6002d6731dedb5a58d82a77d101e83a79a18672a92939b6d58ec3566"
+    },
+    {
+      "shape": 3,
+      "seed": 0,
+      "invocations": {
+        "original": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33og\\serial_reader_probe.exe",
+            "trace-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "log": "3-0-original.log",
+          "sha256": "f04244285f1e26f084915e4380d6321f707323290476a49316128b12186f0eb5"
+        },
+        "candidate": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qg\\serial_reader_probe.exe",
+            "trace-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "log": "3-0-candidate.log",
+          "sha256": "f04244285f1e26f084915e4380d6321f707323290476a49316128b12186f0eb5"
+        }
+      },
+      "observations_sha256": "196e0f5db823736abda4a6832d7811c78c4ba5450cc525918aed89871938f201"
+    },
+    {
+      "shape": 3,
+      "seed": 1,
+      "invocations": {
+        "original": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33og\\serial_reader_probe.exe",
+            "trace-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "log": "3-1-original.log",
+          "sha256": "7fee75daa6b169f6bc1ed976e3754d4fe1a6e6fd95ba33c829e9cb88a1fcde56"
+        },
+        "candidate": {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qg\\serial_reader_probe.exe",
+            "trace-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-pairs\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "log": "3-1-candidate.log",
+          "sha256": "7fee75daa6b169f6bc1ed976e3754d4fe1a6e6fd95ba33c829e9cb88a1fcde56"
+        }
+      },
+      "observations_sha256": "4b095b66fffd01d572e715941f0af664e7f759675f0f901e1ea687226815cb8d"
+    }
+  ],
+  "preservation": {
+    "status": "passed",
+    "original_revision": "f9c7d22c0028e8864da4de5a05bdc19489da52bf",
+    "rejected_mutations": 6,
+    "preserved_tokens_sha256": {
+      "include/input_output/patch_reader.h": "308a36851e4cd919cc155e14488ec73ece73f6da7601c9317f35fe19e4711628",
+      "src/input_output/patch_reader.cpp": "48fbe6dc5983529f22e9f920cc232314b3fe37deaf4012a24a679a4643eddcc3",
+      "include/input_output/input_validation.h": "72091c5b681461f731a7c6db6049e921c96cd942c79b9a7ccd737cfed37a349c"
+    },
+    "source_identities": {
+      "original": {
+        "include/input_output/patch_reader.h": "121cad85e5adad6996149a1ab47ebcf5a177d1d35ab7ee407dce6ce473d6fa23",
+        "src/input_output/patch_reader.cpp": "cc5a766886adb596bbc468efb49404522decebfb828bcbffba362ef4fe908c88",
+        "include/input_output/input_validation.h": "8f78718f470366a0747ece2c7a335d1acb6732e15c23462a4c98ca01266fa120"
+      },
+      "candidate": {
+        "include/input_output/patch_reader.h": "4be8ac02df2632373981dd6b6bc02ef325445be5c10735285cc242fec64657fa",
+        "src/input_output/patch_reader.cpp": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+        "include/input_output/input_validation.h": "8f78718f470366a0747ece2c7a335d1acb6732e15c23462a4c98ca01266fa120"
+      }
+    },
+    "scope": "Three actual files. Exact owning return/local result/pending handoff and three badbit masks only. Every other parser, validation, interning, orientation, public layout and numerical token matches immutable main. Normal paired traces and full fault instruments remain separate."
+  },
+  "scope": "Eight actual C++17 trace pairs, four bounded shapes, empty/seeded Geometry; exact control coordinates/IDs, ordered curve incidence/directions and Parameterize/Qu/Qv bits. Not a broader model or whole-process qualification.",
+  "raw_report_sha256": "e06493a623b0da34914df3f00dd446e3c8969d682c5b0c951ad51981b41cfb6a"
+}

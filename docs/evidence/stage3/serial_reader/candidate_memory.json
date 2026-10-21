@@ -1,0 +1,2485 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "read-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "c6277864da4fb7a68b7396d8c2d745ca04555425d7067dd6130cd7efa68e307b",
+      "instrument": "asan",
+      "mode": "reuse-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "284f050e9eec8962187397c1a560884175640e48dad345de749d77869ac783a5"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "c6277864da4fb7a68b7396d8c2d745ca04555425d7067dd6130cd7efa68e307b",
+      "instrument": "asan",
+      "mode": "contracts-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "284f050e9eec8962187397c1a560884175640e48dad345de749d77869ac783a5"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "673d0304ceffcb81d15db7b19cc51d84cfb98482548897a8c90eb5742f3e486c",
+      "instrument": "asan",
+      "mode": "prefix-negative-control-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ab2a06ebe05d9fd1f15b9a5303f1ea9617bf4e27c63fed78af02b9d6fcd08ca9"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 165,
+      "observations_sha256": "3e86193713c00e4e7e4ba6e9576cd04e9a26179d36c62782364a34837737ec3a",
+      "instrument": "asan",
+      "mode": "trace-1-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "a2134404b73eec07017570d77d39616a7719df90ba1bc56284c7dc51507c86b6"
+    },
+    {
+      "observations_count": 329,
+      "observations_sha256": "4a3012885c486b33a3dda3ea3ca9de0b32b632d34bea4bfc5c0c2adac3b7aa83",
+      "instrument": "asan",
+      "mode": "trace-1-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "b26640b9f4a4383cc859201f26d04b4d75eaf89c68efec9386845a2ac4ac0db5"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "read-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "c6277864da4fb7a68b7396d8c2d745ca04555425d7067dd6130cd7efa68e307b",
+      "instrument": "asan",
+      "mode": "reuse-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "284f050e9eec8962187397c1a560884175640e48dad345de749d77869ac783a5"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "c6277864da4fb7a68b7396d8c2d745ca04555425d7067dd6130cd7efa68e307b",
+      "instrument": "asan",
+      "mode": "contracts-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "284f050e9eec8962187397c1a560884175640e48dad345de749d77869ac783a5"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "673d0304ceffcb81d15db7b19cc51d84cfb98482548897a8c90eb5742f3e486c",
+      "instrument": "asan",
+      "mode": "prefix-negative-control-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ab2a06ebe05d9fd1f15b9a5303f1ea9617bf4e27c63fed78af02b9d6fcd08ca9"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 165,
+      "observations_sha256": "4328cdc09d86f5cb5e1c785fad55574e1df3ae07e8e89c37774e2a7ab85f8fb6",
+      "instrument": "asan",
+      "mode": "trace-1-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "2f523e1a84ff4394b6b6d2a03d331baa3bee245b9601ba9191261c8bdc3b6fe8"
+    },
+    {
+      "observations_count": 329,
+      "observations_sha256": "b42e89005e0331895ffb43d892070c98c3c5b4b2117763184154f7f9aba394c6",
+      "instrument": "asan",
+      "mode": "trace-1-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d01b72eeba6fe044b9d19eeb31faf5070507a4bff4db4efcfdec5bc311f4db0c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "read-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "97b01901a7fd7dafa953a47433445e0342aa17eae7f4e5b07dfa955ed48f7735",
+      "instrument": "asan",
+      "mode": "reuse-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ea4438fce7ab9a3e65800d916d8a17a73b0e483b463435287103e24ba24729ca"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "97b01901a7fd7dafa953a47433445e0342aa17eae7f4e5b07dfa955ed48f7735",
+      "instrument": "asan",
+      "mode": "contracts-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ea4438fce7ab9a3e65800d916d8a17a73b0e483b463435287103e24ba24729ca"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "673d0304ceffcb81d15db7b19cc51d84cfb98482548897a8c90eb5742f3e486c",
+      "instrument": "asan",
+      "mode": "prefix-negative-control-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ab2a06ebe05d9fd1f15b9a5303f1ea9617bf4e27c63fed78af02b9d6fcd08ca9"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 493,
+      "observations_sha256": "e23026c386c67b5c9ac8e2629e1ea57c6f749cd07a40fec35a8d58f9ecb3e8eb",
+      "instrument": "asan",
+      "mode": "trace-1-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "366e18265c3a857611af11bd260eb208c7d536fad3be114fb8010af18dda26dc"
+    },
+    {
+      "observations_count": 985,
+      "observations_sha256": "6ec3247c6002d6731dedb5a58d82a77d101e83a79a18672a92939b6d58ec3566",
+      "instrument": "asan",
+      "mode": "trace-1-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9c3f97973c0ee593328b7ad5564c8e4456b7b3a5b66fa8a04bdb1df7539a162a"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "read-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "97b01901a7fd7dafa953a47433445e0342aa17eae7f4e5b07dfa955ed48f7735",
+      "instrument": "asan",
+      "mode": "reuse-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ea4438fce7ab9a3e65800d916d8a17a73b0e483b463435287103e24ba24729ca"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "97b01901a7fd7dafa953a47433445e0342aa17eae7f4e5b07dfa955ed48f7735",
+      "instrument": "asan",
+      "mode": "contracts-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ea4438fce7ab9a3e65800d916d8a17a73b0e483b463435287103e24ba24729ca"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "673d0304ceffcb81d15db7b19cc51d84cfb98482548897a8c90eb5742f3e486c",
+      "instrument": "asan",
+      "mode": "prefix-negative-control-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ab2a06ebe05d9fd1f15b9a5303f1ea9617bf4e27c63fed78af02b9d6fcd08ca9"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 493,
+      "observations_sha256": "196e0f5db823736abda4a6832d7811c78c4ba5450cc525918aed89871938f201",
+      "instrument": "asan",
+      "mode": "trace-1-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "f04244285f1e26f084915e4380d6321f707323290476a49316128b12186f0eb5"
+    },
+    {
+      "observations_count": 985,
+      "observations_sha256": "4b095b66fffd01d572e715941f0af664e7f759675f0f901e1ea687226815cb8d",
+      "instrument": "asan",
+      "mode": "trace-1-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "7fee75daa6b169f6bc1ed976e3754d4fe1a6e6fd95ba33c829e9cb88a1fcde56"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-4",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-4",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-5",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-5",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-6",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-6",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-7",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-7",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "read-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "a4c2080ac618fd2ecd3d32ce93ee22b23487f67a04fdf08bf405a42b79694cab",
+      "instrument": "crt",
+      "mode": "reuse-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "331ede942e0ee1f5cb201367a0b2d0e2de4d24514ef96ea540169267807e19d8"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "a4c2080ac618fd2ecd3d32ce93ee22b23487f67a04fdf08bf405a42b79694cab",
+      "instrument": "crt",
+      "mode": "contracts-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "331ede942e0ee1f5cb201367a0b2d0e2de4d24514ef96ea540169267807e19d8"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "55b44b31de37a7c7eeb9fdd277c54f9398fe3ac7add262f6b497a294fa54d52b",
+      "instrument": "crt",
+      "mode": "prefix-negative-control-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "28f866be3833d14ffce63f0914d17f30c730b33d95950693aa81251d853856db"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-0-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-0-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-1-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-1-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 166,
+      "observations_sha256": "7862ef74d553936cdf3339a772504bbdffa38dd20aba788c860297bd8b7ec8ab",
+      "instrument": "crt",
+      "mode": "trace-1-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "24e17446622a1b655906e1078295004d3e55daa5eba69fb1777377f6dfc4bec5"
+    },
+    {
+      "observations_count": 330,
+      "observations_sha256": "8218e1b48e5cd1604f5293d1570a0843f0b71a687dbb8f49e1f40582c08d8b4e",
+      "instrument": "crt",
+      "mode": "trace-1-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "fdde7ca05865e18127da3e1d12bc9813e12f83938aeee1b7a84ab641865b88a1"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "read-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "a4c2080ac618fd2ecd3d32ce93ee22b23487f67a04fdf08bf405a42b79694cab",
+      "instrument": "crt",
+      "mode": "reuse-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "331ede942e0ee1f5cb201367a0b2d0e2de4d24514ef96ea540169267807e19d8"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "a4c2080ac618fd2ecd3d32ce93ee22b23487f67a04fdf08bf405a42b79694cab",
+      "instrument": "crt",
+      "mode": "contracts-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "331ede942e0ee1f5cb201367a0b2d0e2de4d24514ef96ea540169267807e19d8"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "55b44b31de37a7c7eeb9fdd277c54f9398fe3ac7add262f6b497a294fa54d52b",
+      "instrument": "crt",
+      "mode": "prefix-negative-control-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "28f866be3833d14ffce63f0914d17f30c730b33d95950693aa81251d853856db"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-0-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-0-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-1-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-1-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 166,
+      "observations_sha256": "7b77cac7cbed1700785d08fdd188553d6e97fde1b860b4bc37c99ed0fe7c2c8f",
+      "instrument": "crt",
+      "mode": "trace-1-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "5f5fe9aad596b5afcdfffc15483430b19d540225cbe25fb81f93eed3ad40dda6"
+    },
+    {
+      "observations_count": 330,
+      "observations_sha256": "6f8b50130001f39f724cb253fb038c7b2e8bf8c7523a853974ee19fc3f3837e0",
+      "instrument": "crt",
+      "mode": "trace-1-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "a3e35be33d4a1750f6fa617f422dc950e070d73e87623bfed4bdfe625f916826"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "read-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "48c68f5641eb42decc0857961240277efd3d3dfa7ecfaaab25e951df9df790df",
+      "instrument": "crt",
+      "mode": "reuse-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "eba537a7c3e300968dc465fef202668e7e0eecc23f4d751788c6c8caeb344453"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "48c68f5641eb42decc0857961240277efd3d3dfa7ecfaaab25e951df9df790df",
+      "instrument": "crt",
+      "mode": "contracts-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "eba537a7c3e300968dc465fef202668e7e0eecc23f4d751788c6c8caeb344453"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "55b44b31de37a7c7eeb9fdd277c54f9398fe3ac7add262f6b497a294fa54d52b",
+      "instrument": "crt",
+      "mode": "prefix-negative-control-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "28f866be3833d14ffce63f0914d17f30c730b33d95950693aa81251d853856db"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-0-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-0-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-1-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-1-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 494,
+      "observations_sha256": "2925eadddbea207ee24b19dca76f97f7f76ae2ccf8c23ffa7f9e98c06dea899e",
+      "instrument": "crt",
+      "mode": "trace-1-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "065faaf5f738f72088f8427cc2f4bf5f3630b7b5e7e32574025cdd493dddcd41"
+    },
+    {
+      "observations_count": 986,
+      "observations_sha256": "b6bfda442daea4a2cace1c51ff9d8d07d1e5465af81fb40d92e22cb3b2fbb21d",
+      "instrument": "crt",
+      "mode": "trace-1-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "1c08042a45274f78c01ffdea9c2fca5f160e9062d78a04f84abc448bf1464eb4"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "read-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "48c68f5641eb42decc0857961240277efd3d3dfa7ecfaaab25e951df9df790df",
+      "instrument": "crt",
+      "mode": "reuse-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "eba537a7c3e300968dc465fef202668e7e0eecc23f4d751788c6c8caeb344453"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "48c68f5641eb42decc0857961240277efd3d3dfa7ecfaaab25e951df9df790df",
+      "instrument": "crt",
+      "mode": "contracts-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "eba537a7c3e300968dc465fef202668e7e0eecc23f4d751788c6c8caeb344453"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "55b44b31de37a7c7eeb9fdd277c54f9398fe3ac7add262f6b497a294fa54d52b",
+      "instrument": "crt",
+      "mode": "prefix-negative-control-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "28f866be3833d14ffce63f0914d17f30c730b33d95950693aa81251d853856db"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-0-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-0-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-1-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "normal-1-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a"
+    },
+    {
+      "observations_count": 494,
+      "observations_sha256": "d3516fbbeb76b8313fd0e3868fdc1d37bb66a540dbb5faa3054603494c43062d",
+      "instrument": "crt",
+      "mode": "trace-1-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8fdf0aa12b7b8be37dae1a059e53864ffcdbf306b60e435643a20961dda02a32"
+    },
+    {
+      "observations_count": 986,
+      "observations_sha256": "a1be404c9d3612a6154cdc824f0358c0049f20fd54d9c9d5ae03fc3311f88fd0",
+      "instrument": "crt",
+      "mode": "trace-1-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "2982385e1acffad7965206c73d98878b300c1d3cb598d7a931ef52fe8c85d55c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-seeded-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-seeded-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-seeded-2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-seeded-3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-4",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-seeded-4",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-5",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-seeded-5",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-6",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-seeded-6",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-7",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-seeded-7",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "passed": true,
+      "exit_code": 1,
+      "log_sha256": "04f0485776ec15474d8f978bf38f7c04e2bb63663ec0079bf3ed41db6ca0e912"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "leak",
+      "passed": true,
+      "exit_code": 1,
+      "log_sha256": "05eefe05084348dc32741cb5bbe193cb05587c13e283850aa13c45063599828e"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+    },
+    {
+      "observations_count": 177,
+      "observations_sha256": "fd1cd29a5b6e75a52cbbd1050591c04fcff8ce0a8899add14d6c9f0790c96d93",
+      "instrument": "crt",
+      "mode": "failure-0-0-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "5ffea061b915def52b159c9670646c42fc29ff3393ecf5083bccfc7e005a8176",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-0-0-calibration.log",
+          "log_sha256": "c3256da23c66c27e29e5f127f5d1ab3dbdd11e6d9a48ca2c634871ff9cbb41ce"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-0-0-0.log",
+          "log_sha256": "119ffdab71bac605ba3e144faee7c2ac4267faaab6c7a3372f82d6275676d43c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-0-0-32.log",
+          "log_sha256": "d8a8b393df6124d2ac8dc1a606e22da3bc091dc669847c10edf53fe0ebd9ee57"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-0-0-64.log",
+          "log_sha256": "673f66dbc9ce87da3165937f73558f054e5d22dc003b46236b3ba9c5c7c9b415"
+        }
+      ],
+      "calibrated_allocations": 81,
+      "measured_denials": 81,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 177,
+      "observations_sha256": "fd1cd29a5b6e75a52cbbd1050591c04fcff8ce0a8899add14d6c9f0790c96d93",
+      "instrument": "crt",
+      "mode": "failure-0-0-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "5ffea061b915def52b159c9670646c42fc29ff3393ecf5083bccfc7e005a8176",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-0-1-calibration.log",
+          "log_sha256": "c3256da23c66c27e29e5f127f5d1ab3dbdd11e6d9a48ca2c634871ff9cbb41ce"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-0-1-0.log",
+          "log_sha256": "119ffdab71bac605ba3e144faee7c2ac4267faaab6c7a3372f82d6275676d43c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-0-1-32.log",
+          "log_sha256": "d8a8b393df6124d2ac8dc1a606e22da3bc091dc669847c10edf53fe0ebd9ee57"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-0-1-64.log",
+          "log_sha256": "673f66dbc9ce87da3165937f73558f054e5d22dc003b46236b3ba9c5c7c9b415"
+        }
+      ],
+      "calibrated_allocations": 81,
+      "measured_denials": 81,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 293,
+      "observations_sha256": "cd2ac36b4e052bf01da3922771bb9275f965308fbead665c3e798ff05318409b",
+      "instrument": "crt",
+      "mode": "failure-0-1-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "8ac75112bfb159beb499d503565499d3e1afba57914d4b7d2f0e39585d0be65d",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-0-calibration.log",
+          "log_sha256": "88a091044ecba431abd64bc87358c6cf52e682510ed0d27f0370bd30e2114370"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-0-0.log",
+          "log_sha256": "8b7e3170cf47b0e7953346df3317ca7c5738a34055ae479c28dc9eee3fe43e5d"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-0-32.log",
+          "log_sha256": "1046748f263642ad046eacf0ef3083a532998c5dcc3d96a3347061f8602cc8ea"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-0-64.log",
+          "log_sha256": "6a9730b796f211ff53ee8543a0fd9d6cb1271a3520b5eff12509beb57c735bb0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-0-96.log",
+          "log_sha256": "0bebe0133b28617b9b10e1951aea165dd51e88774078e7e128ccdfa5dbd18b10"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-0-128.log",
+          "log_sha256": "7dc16f47b0b61a689334a507ab7f07d38aa5baba0e96df3df0806a45676e26e5"
+        }
+      ],
+      "calibrated_allocations": 135,
+      "measured_denials": 135,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 257,
+      "observations_sha256": "0135ca77cde9319aea0e5feaf5627564373905ce41926345e31f1adad95f1232",
+      "instrument": "crt",
+      "mode": "failure-0-1-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "5f82859376f9e813978bba4eea589bd352e8f8cc6ff9b7cb82c1e0bb72ee2fc4",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-1-calibration.log",
+          "log_sha256": "fb26400e2dfe8f068aa458def4189d4431b16ee7654ad69565fff9c839565530"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-1-0.log",
+          "log_sha256": "852f54141744674e845f7990a6ed33d6be26781816b204bd3d171f6f38538106"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-1-32.log",
+          "log_sha256": "5c4fa98302f9b76da014516fb49ce54c21fa1cd7e96433af74fddc8945cde7cd"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-1-64.log",
+          "log_sha256": "d87d1da2163a7c1705f5c7ecfbeab79206cdcea798f218087f35ad4b9d587499"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-0-1-1-96.log",
+          "log_sha256": "4adc5cf373f72b0b40444e11b82e731af07de6ae0ef939d01fc3b8ec44d37294"
+        }
+      ],
+      "calibrated_allocations": 119,
+      "measured_denials": 119,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 181,
+      "observations_sha256": "7ba696afd2441f336a4698a29e84d06483b06a37cfee4cda0db50bcd8f98c02f",
+      "instrument": "crt",
+      "mode": "failure-1-0-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "dcd467cedbca4ee4df38d462cac4a08bdca7b9e6574161fbe2244cac1c27246d",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-0-0-calibration.log",
+          "log_sha256": "ca646e77fbff201caa42eb5104c53d141eed87261255242e00e0171f18f2d57e"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-0-0-0.log",
+          "log_sha256": "df0dd5fa37a52df7c014e882ccd31ce12b18252c67c9adb567b277a3fa02e7df"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-0-0-32.log",
+          "log_sha256": "db333b6e196527cc6d696092b8420cd1ce32da8f7b23aebe98c081d42688fa44"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-0-0-64.log",
+          "log_sha256": "5956baf36e8a18e15857af5fe806f1f722439950a79c01b26f6aa4ddb24341d5"
+        }
+      ],
+      "calibrated_allocations": 83,
+      "measured_denials": 83,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 181,
+      "observations_sha256": "7ba696afd2441f336a4698a29e84d06483b06a37cfee4cda0db50bcd8f98c02f",
+      "instrument": "crt",
+      "mode": "failure-1-0-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "dcd467cedbca4ee4df38d462cac4a08bdca7b9e6574161fbe2244cac1c27246d",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-0-1-calibration.log",
+          "log_sha256": "ca646e77fbff201caa42eb5104c53d141eed87261255242e00e0171f18f2d57e"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-0-1-0.log",
+          "log_sha256": "df0dd5fa37a52df7c014e882ccd31ce12b18252c67c9adb567b277a3fa02e7df"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-0-1-32.log",
+          "log_sha256": "db333b6e196527cc6d696092b8420cd1ce32da8f7b23aebe98c081d42688fa44"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-0-1-64.log",
+          "log_sha256": "5956baf36e8a18e15857af5fe806f1f722439950a79c01b26f6aa4ddb24341d5"
+        }
+      ],
+      "calibrated_allocations": 83,
+      "measured_denials": 83,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 297,
+      "observations_sha256": "4bfb68d61416b37217c7efb34c1360853355d491a36dfa10aad736c05e2038da",
+      "instrument": "crt",
+      "mode": "failure-1-1-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "eb7f460f7da17aa9a6960fd951cb061ee8ab298649cf1fdd0b0edb988ca99cb2",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-0-calibration.log",
+          "log_sha256": "cafcc303d082dee1c3b9f1397eefb8d028702714204a823ffc281be356539c06"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-0-0.log",
+          "log_sha256": "a298f72d6a98234d75e72ad367bf1bdb2514d1735177345fecbf1f9aab890271"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-0-32.log",
+          "log_sha256": "ff02fb1341cf17088da712ac2a75e9d7b3a54cd4c38aa87385c5477a71273737"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-0-64.log",
+          "log_sha256": "412b2111a61ddcb606cc80024ac42b217fa6375b1afd0fb716690b0fbb965b73"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-0-96.log",
+          "log_sha256": "b5c2f2dd31823b662015cf254a8c8c44456b913d862f6915acd736f9c8376b1f"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-0-128.log",
+          "log_sha256": "c928cb8451b035958ef212f1c59cb1e64e2a0a117aa6ba98a569248a7485c05d"
+        }
+      ],
+      "calibrated_allocations": 137,
+      "measured_denials": 137,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 261,
+      "observations_sha256": "18d41ef924555fb849f0d2c66084c0a38b1d8ebfab1fe910c1c247b6dee8a0e3",
+      "instrument": "crt",
+      "mode": "failure-1-1-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "1a9124bba8b5890138be3576e2007a5f86187e31f3791b949749b9fd5f87401b",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-1-calibration.log",
+          "log_sha256": "dcd943479c4c3618c59e48cf7f0db62aaa40a95f5bae9d97af55b6ad0b7e04e6"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-1-0.log",
+          "log_sha256": "0f7777c8669d4f3e6929499f541978d9e6b30341743041386b8e783fe5d15700"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-1-32.log",
+          "log_sha256": "320c6e466d29d8f396c3e5654bba4974389444dd4640af1155a02f58d8146fbb"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-1-64.log",
+          "log_sha256": "c1545da3a19507ea8430cb6125ac96d455d2b22d0e7602b26d246e7c116e52fa"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-1-1-1-96.log",
+          "log_sha256": "ece63b41227b6518b2ca14270b240005e4df91cc77681caa2a05b7ce060aca04"
+        }
+      ],
+      "calibrated_allocations": 121,
+      "measured_denials": 121,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 407,
+      "observations_sha256": "ba234507d2fdebd537124ead02ebe6d83d7d28afcbb07a0be6f7a0505a7eb74a",
+      "instrument": "crt",
+      "mode": "failure-2-0-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "4c135362d69a4cd441a05ddeea969c1483d2bd1bd2f87d2c9e3c2b33a5fdaee1",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-calibration.log",
+          "log_sha256": "dd48503a54e354103e6b8f7e47211cf0471218856712a6251d140cfcb6f914dc"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-0.log",
+          "log_sha256": "4426ca626b06669d334e38ff323942d2ad43293c00885605e64172188d81edc2"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-32.log",
+          "log_sha256": "a5600abfd5a5621da972fec99bd075eb78f8c7f0670c5fac63ec421fea41c28c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-64.log",
+          "log_sha256": "ff796923e347ca017fdf087c84e819f76d1683b856d79a3672a9b90e30a73044"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-96.log",
+          "log_sha256": "933f952e17c5d160d40b8f4a89528577f31f056f65fe3d0757bdbfcd78d40826"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-128.log",
+          "log_sha256": "3e4eeb2bab019e91d41d049c0f11ebe7f01dcdde83e6e34226bb90ffdbdcffcf"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-160",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-160.log",
+          "log_sha256": "c3b525dcb02cc131693ce42ca2570e5d1c2af25f7d24117145fba0a3ead66a13"
+        }
+      ],
+      "calibrated_allocations": 190,
+      "measured_denials": 190,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 407,
+      "observations_sha256": "ba234507d2fdebd537124ead02ebe6d83d7d28afcbb07a0be6f7a0505a7eb74a",
+      "instrument": "crt",
+      "mode": "failure-2-0-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "4c135362d69a4cd441a05ddeea969c1483d2bd1bd2f87d2c9e3c2b33a5fdaee1",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-calibration.log",
+          "log_sha256": "dd48503a54e354103e6b8f7e47211cf0471218856712a6251d140cfcb6f914dc"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-0.log",
+          "log_sha256": "4426ca626b06669d334e38ff323942d2ad43293c00885605e64172188d81edc2"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-32.log",
+          "log_sha256": "a5600abfd5a5621da972fec99bd075eb78f8c7f0670c5fac63ec421fea41c28c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-64.log",
+          "log_sha256": "ff796923e347ca017fdf087c84e819f76d1683b856d79a3672a9b90e30a73044"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-96.log",
+          "log_sha256": "933f952e17c5d160d40b8f4a89528577f31f056f65fe3d0757bdbfcd78d40826"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-128.log",
+          "log_sha256": "3e4eeb2bab019e91d41d049c0f11ebe7f01dcdde83e6e34226bb90ffdbdcffcf"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-160",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-160.log",
+          "log_sha256": "c3b525dcb02cc131693ce42ca2570e5d1c2af25f7d24117145fba0a3ead66a13"
+        }
+      ],
+      "calibrated_allocations": 190,
+      "measured_denials": 190,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 665,
+      "observations_sha256": "6b0b3020c0d57c80c7ef8f3fc93f99bf8ee48c0df2f6eb3cdcb0a389eace02ef",
+      "instrument": "crt",
+      "mode": "failure-2-1-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "35aa418e18779a0c6cf8c8400374d1bf8f0af7511b3670880873442e143c2ce6",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-calibration.log",
+          "log_sha256": "db6e47aa24c01fcc18ba3154539e70f261453e1ff817faa7a1b2ade9d838e84c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-0.log",
+          "log_sha256": "88d1864107ab8409cce0a66786f9d3a987d06bf0e104dcae6229b2e65998be31"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-32.log",
+          "log_sha256": "58ba9bbbfc15c3097500d50deafaa209d67bdb03b760a6dea2d7c0d073e49e8c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-64.log",
+          "log_sha256": "d89ab51a524e0dcf239cbdec0eeae0a0d3c4faa623df7297811ffe1764a5f8bf"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-96.log",
+          "log_sha256": "c75e542644661e2cf1d8a1d362730aa6ac3c0df82f8f89744caf1379d4e91dcb"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-128.log",
+          "log_sha256": "fd12dd56cdab416ea7d08000b158da98a47dc1453e032558d14d38a7361dc29a"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-160",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-160.log",
+          "log_sha256": "07dfd15a5e4a688eee1f8fbe1740e2d8e5f2536e831fc4588bd64d8c3bb61416"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-192",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-192.log",
+          "log_sha256": "a79f4f7ae85bd15570cec366e7e143e24397cc61da8eed4288ee6100d459d738"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-224",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-224.log",
+          "log_sha256": "2c056c00f664b0c847d8a8a20c4ef993a526f482879324e0bafcbc1b1b657088"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-256",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-256.log",
+          "log_sha256": "e0b7e915b4e0ebdf35037d3e611e19f62e2b07597d152fd31c3a58b1f2292c2e"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-288",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-288.log",
+          "log_sha256": "a3401136186bd8066836bdf4aebca637cb6f5171258e512649dbc8f3ecb98906"
+        }
+      ],
+      "calibrated_allocations": 311,
+      "measured_denials": 311,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 585,
+      "observations_sha256": "4a1b7456430987482b90710b961755541885e8b8762c99920accd7925be6411a",
+      "instrument": "crt",
+      "mode": "failure-2-1-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "da0b0c70d76a76a1f1a199f4296daac89fbe1044d51f6358b3bfc182f5cfaff5",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-calibration.log",
+          "log_sha256": "1b01a5ba96634fa5ee4af2f3b96c53a200f98e4d26910ee5d16c395c425663d9"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-0.log",
+          "log_sha256": "41313903b3f1ca370b236b60d5e20aa1b426644d8ee443ea1e6fb12d1560b2f4"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-32.log",
+          "log_sha256": "91e3922134deea69d3d1f529d11546607f4bd67ac6105f6eed41f1adda1e77e0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-64.log",
+          "log_sha256": "0440f05c7d2946864f87481d09fa7ba356f9ea7bdf7cfc7e8ac7e4557502613d"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-96.log",
+          "log_sha256": "53d21f85e020110b203e90d00205fa0aed4541f1086725009de6520e19a92667"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-128.log",
+          "log_sha256": "8c080db3b42069b0886a3fd72c6991e75964d434955d7a23ab0fd251519ada2c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-160",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-160.log",
+          "log_sha256": "196dbd11d41f3669d9972b01f6e77d75542c85937b2b71d957e9ac669bd14804"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-192",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-192.log",
+          "log_sha256": "ca0909a75d0d571c17375712aad8d2b89787a6cf51a30d02544248a5776f4355"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-224",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-224.log",
+          "log_sha256": "9c99b6b83e139add652599c47d33abd03373a7209c6205ba61012b6bcbe02b27"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-256",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-256.log",
+          "log_sha256": "a067e880b72bc5d6cdf1e6d325347e792831270a4023710e2bddbee206fb3044"
+        }
+      ],
+      "calibrated_allocations": 273,
+      "measured_denials": 273,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 407,
+      "observations_sha256": "ba234507d2fdebd537124ead02ebe6d83d7d28afcbb07a0be6f7a0505a7eb74a",
+      "instrument": "crt",
+      "mode": "failure-3-0-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "4c135362d69a4cd441a05ddeea969c1483d2bd1bd2f87d2c9e3c2b33a5fdaee1",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-calibration.log",
+          "log_sha256": "dd48503a54e354103e6b8f7e47211cf0471218856712a6251d140cfcb6f914dc"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-0.log",
+          "log_sha256": "4426ca626b06669d334e38ff323942d2ad43293c00885605e64172188d81edc2"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-32.log",
+          "log_sha256": "a5600abfd5a5621da972fec99bd075eb78f8c7f0670c5fac63ec421fea41c28c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-64.log",
+          "log_sha256": "ff796923e347ca017fdf087c84e819f76d1683b856d79a3672a9b90e30a73044"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-96.log",
+          "log_sha256": "933f952e17c5d160d40b8f4a89528577f31f056f65fe3d0757bdbfcd78d40826"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-128.log",
+          "log_sha256": "3e4eeb2bab019e91d41d049c0f11ebe7f01dcdde83e6e34226bb90ffdbdcffcf"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-160",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-160.log",
+          "log_sha256": "c3b525dcb02cc131693ce42ca2570e5d1c2af25f7d24117145fba0a3ead66a13"
+        }
+      ],
+      "calibrated_allocations": 190,
+      "measured_denials": 190,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 407,
+      "observations_sha256": "ba234507d2fdebd537124ead02ebe6d83d7d28afcbb07a0be6f7a0505a7eb74a",
+      "instrument": "crt",
+      "mode": "failure-3-0-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "4c135362d69a4cd441a05ddeea969c1483d2bd1bd2f87d2c9e3c2b33a5fdaee1",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-calibration.log",
+          "log_sha256": "dd48503a54e354103e6b8f7e47211cf0471218856712a6251d140cfcb6f914dc"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-0.log",
+          "log_sha256": "4426ca626b06669d334e38ff323942d2ad43293c00885605e64172188d81edc2"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-32.log",
+          "log_sha256": "a5600abfd5a5621da972fec99bd075eb78f8c7f0670c5fac63ec421fea41c28c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-64.log",
+          "log_sha256": "ff796923e347ca017fdf087c84e819f76d1683b856d79a3672a9b90e30a73044"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-96.log",
+          "log_sha256": "933f952e17c5d160d40b8f4a89528577f31f056f65fe3d0757bdbfcd78d40826"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-128.log",
+          "log_sha256": "3e4eeb2bab019e91d41d049c0f11ebe7f01dcdde83e6e34226bb90ffdbdcffcf"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-160",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-160.log",
+          "log_sha256": "c3b525dcb02cc131693ce42ca2570e5d1c2af25f7d24117145fba0a3ead66a13"
+        }
+      ],
+      "calibrated_allocations": 190,
+      "measured_denials": 190,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 615,
+      "observations_sha256": "39a70d46460c4afd27bbc66271dfa10e465d7d2f64b4cedfcd7f78fc33554cb8",
+      "instrument": "crt",
+      "mode": "failure-3-1-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "fbfc0311c783cb9020719aa357fa90c4ee0fa310003e5f58ea41ec257b1e56f6",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-calibration.log",
+          "log_sha256": "ab1bfae12f694a97ed68100d6f58248077613c1b9ebfbe9a734839ea03144642"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-0.log",
+          "log_sha256": "92dc33fa78bac0717772194f91af1246d235127f379a6dafd8c01a4e75105f98"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-32.log",
+          "log_sha256": "2a07b5bc9e1c7bb1dfc9d3224924a6432430094c24f3cf54bac736c205a115e5"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-64.log",
+          "log_sha256": "2ca3fc47e5ad252b7761e5c4e4bcfd04bab6e0c8339bd29672c12d5a444e6678"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-96.log",
+          "log_sha256": "3eb602a2383efe760af5e7fbb80b1914609c0fecbe608e292a2b48bc104875b2"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-128.log",
+          "log_sha256": "eadb40b2ad4b172cecc66afe6bb2e5d2907cec36c2245a215bcbda44f5b92ce0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-160",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-160.log",
+          "log_sha256": "989044eed5fc7b385ca38301d01ff1d4dc9e18272057a62efa4de78c47bb9c54"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-192",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-192.log",
+          "log_sha256": "46911001b79a62f80a1b58263c765a44942138608f264cd091f8ead1c46a7ddd"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-224",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-224.log",
+          "log_sha256": "9a8a37ed3b58a986f44c1584a29b3d219aa920d4186c5c0153d6f69d37e48be1"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-256",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-256.log",
+          "log_sha256": "f6469e6135d7323bf21dca690d5b9385b3ad83efd66cc3bf523f86633320e572"
+        }
+      ],
+      "calibrated_allocations": 288,
+      "measured_denials": 288,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    },
+    {
+      "observations_count": 557,
+      "observations_sha256": "fac1b1fe25b5c21968db0d42d8752dae744f0cb7f5d8a0d1ad24746aa33fb8db",
+      "instrument": "crt",
+      "mode": "failure-3-1-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "fe71ff6bfbdad340d5dfba6aeae3b512cc3a8a064ef215ba1a2f072423026a2f",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-calibration.log",
+          "log_sha256": "4179685585039f08d2ff8f6030a43fe85e5b30b550596ce8c729bb925997d394"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-0.log",
+          "log_sha256": "4f03979af62b5939163c050f121af77f894a55cf3a065424878b838bc2bbd575"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-32",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-32.log",
+          "log_sha256": "cde16015c853091353f1ea482dc65c75245121c993cf1425489ca3727a37d645"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-64",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-64.log",
+          "log_sha256": "2e4dab370bc86f6f90ccd1bff83d7cc6bc926a31652353feba4f60be024668a5"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-96",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-96.log",
+          "log_sha256": "d4106d0f47fdb8d2350a3fd4fe7c25df4d1e6187a6ce68946e0a8d3e39b411db"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-128",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-128.log",
+          "log_sha256": "f804364b9e4c48ec2faf939c886966f5a1aa14b2ec90670198fb26cab4ca094f"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-160",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-160.log",
+          "log_sha256": "42b23a7f4b9d18f023db3b47fd3f496c5b91fc10fb46f03356e4d107587e1a7c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-192",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-192.log",
+          "log_sha256": "3a87ced6018c58dc5332eae47c93c03b80dca94e782b334c69b0e0f847e1ad07"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-224",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-224.log",
+          "log_sha256": "f4d5668043bc4d976dd892e3f29c8710c8a921a003901d2f9514c9dc75b67240"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-256",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-focused-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-256.log",
+          "log_sha256": "0a4a63089f5f8cd273c308e4a8e310d5a9424c1f14a8b5176bbc05b4cd8d16a3"
+        }
+      ],
+      "calibrated_allocations": 259,
+      "measured_denials": 259,
+      "complete_sweep": true,
+      "later_ordinals_unmeasured": 0
+    }
+  ],
+  "complete_sweeps": 16,
+  "allocation_denials": 2731,
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qa\\RelWithDebInfo\\serial_reader_probe.exe",
+      "sha256": "5d0373beba90248f5885bfec392efbe1604ebf9dfff87e09ce8de627c98a67be"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33qd\\Debug\\serial_reader_probe.exe",
+      "sha256": "eb4f6e5655a3ae3b1979af7a8fd768c6866c2816a010d98a47a43ebeb3eaa9b9"
+    }
+  },
+  "fixtures": {
+    "fixtures\\0.bp": "558d5e1f55b7b08e9c2b2db25947df0e31ed219dc10635c8cfc9250e7c094e2f",
+    "fixtures\\1.bp": "b113b2f9d8c477af6fef241fad094d6ab32787d1c85649bf128998cc09791522",
+    "fixtures\\2.bp": "ad7657a0241dc991ef9f185405bf005dcf5e0918e39825142aab2e3dc4bac1d6",
+    "fixtures\\3.bp": "e93ca4e3be12c9be02bfc441403e6cfea5193f255f31900044b3f4c2e659ed59",
+    "fixtures\\empty.bp": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixtures\\indent.bp": "1cb7c8940ef3e2c61094e6f12143e9168edfbbcd80f861589f55b1cb1dac2dd3",
+    "fixtures\\nonfinite.bp": "832239fb3b7d287a32babfebbda002960734e8d354b4074abb786f09fbfb9dfb",
+    "fixtures\\index.bp": "f6d781c5c3aad197ce939c53f08ecd3f2a679a4edb177aa799a18d86c2b356de",
+    "fixtures\\arity.bp": "8e78690af27e30c95e16d4ec34c63636fe7a0fc2df58324e1021df1f54156a70",
+    "fixtures\\tail.bp": "d0c7a28a8045f45fab1587faf223574cc31ad3dd2188a3f44ae8661c79fcb23f",
+    "fixtures\\unknown.bp": "bb59b3fbee12dbf9b61dd811164424df86a26daaaaaa44b80b0cc5e2ca192d62"
+  },
+  "original_recording": false,
+  "scope": "Full serial reader TU; bounded four surfaces, live committed prefixes, independent owning results, eight rejected input classes and complete CRT sweeps. Partial Geometry commit is permitted; no whole-reader rollback, retry, complete CLI/parallel/LSan/UBSan or other loaders are qualified. ASan leak detection disabled; static Debug CRT measures retention. Original failed sweeps stop at first failed chunk; later ordinals remain unmeasured.",
+  "raw_report_sha256": "7098f9b3e5a8c088b8676b33b85c08b4e7ce8dce32e66359789e80831d3a5445"
+}

@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 585,
+    "literal_include_directives": 586,
     "first_party_include_edges": 339
   },
   "cross_component_directives": [
@@ -371,7 +371,7 @@
     "unistd.h": 1,
     "unordered_map": 6,
     "unordered_set": 7,
-    "utility": 9,
+    "utility": 10,
     "vector": 20,
     "windows.h": 1,
     "winsock2.h": 1
@@ -379,7 +379,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "4b4e2aa976211abda7f233b6c5e9ffc2024a2adfb3545d90e2ad74b7eb85fa82"
+      "sha256": "54167970c341d8c1261ac73389cb35e813b791d28f5d5e19931c1fdac3b4d421"
     },
     {
       "path": "CMakePresets.json",
@@ -391,7 +391,7 @@
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "c0a642059636f00e61b88a44117d55595d257a3df8c145a7dc0beac68898612e"
+      "sha256": "483af56ff42b3cc35195b9ad469bbe84588c58868799e98d375a6b9f9c36d1b5"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -2783,8 +2783,8 @@
       "path": "include/input_output/patch_reader.h",
       "component_by_directory": "input_output",
       "kind": "header",
-      "sha256": "121cad85e5adad6996149a1ab47ebcf5a177d1d35ab7ee407dce6ce473d6fa23",
-      "bytes": 1371,
+      "sha256": "4be8ac02df2632373981dd6b6bc02ef325445be5c10735285cc242fec64657fa",
+      "bytes": 1472,
       "includes": [
         {
           "line": 4,
@@ -5381,8 +5381,8 @@
       "path": "src/input_output/patch_reader.cpp",
       "component_by_directory": "input_output",
       "kind": "translation_unit",
-      "sha256": "cc5a766886adb596bbc468efb49404522decebfb828bcbffba362ef4fe908c88",
-      "bytes": 24961,
+      "sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "bytes": 24967,
       "includes": [
         {
           "line": 1,
@@ -5428,13 +5428,20 @@
         },
         {
           "line": 8,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
           "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "../../include/data/vertex_adaptive.h",
           "form": "quote",
           "scope": "first_party",
@@ -5859,8 +5866,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 26,
-    "source_anchors": 164,
+    "contracts": 27,
+    "source_anchors": 169,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

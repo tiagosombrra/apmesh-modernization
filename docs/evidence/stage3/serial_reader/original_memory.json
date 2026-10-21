@@ -1,0 +1,1660 @@
+{
+  "status": "failed",
+  "cases": [
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "read-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "8cb353ea0240582e65e76ef14d61a71ab4ca1664d89a7051c254f5cfb45dc3e3",
+      "instrument": "asan",
+      "mode": "reuse-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "e060783e5794f61397b400cc8c2710725cd60f3c57528f3e25f760825776bdf5"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "8cb353ea0240582e65e76ef14d61a71ab4ca1664d89a7051c254f5cfb45dc3e3",
+      "instrument": "asan",
+      "mode": "contracts-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "e060783e5794f61397b400cc8c2710725cd60f3c57528f3e25f760825776bdf5"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "673d0304ceffcb81d15db7b19cc51d84cfb98482548897a8c90eb5742f3e486c",
+      "instrument": "asan",
+      "mode": "prefix-negative-control-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ab2a06ebe05d9fd1f15b9a5303f1ea9617bf4e27c63fed78af02b9d6fcd08ca9"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 165,
+      "observations_sha256": "3e86193713c00e4e7e4ba6e9576cd04e9a26179d36c62782364a34837737ec3a",
+      "instrument": "asan",
+      "mode": "trace-1-0-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "a2134404b73eec07017570d77d39616a7719df90ba1bc56284c7dc51507c86b6"
+    },
+    {
+      "observations_count": 329,
+      "observations_sha256": "4a3012885c486b33a3dda3ea3ca9de0b32b632d34bea4bfc5c0c2adac3b7aa83",
+      "instrument": "asan",
+      "mode": "trace-1-1-shape0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "b26640b9f4a4383cc859201f26d04b4d75eaf89c68efec9386845a2ac4ac0db5"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "read-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "8cb353ea0240582e65e76ef14d61a71ab4ca1664d89a7051c254f5cfb45dc3e3",
+      "instrument": "asan",
+      "mode": "reuse-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "e060783e5794f61397b400cc8c2710725cd60f3c57528f3e25f760825776bdf5"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "8cb353ea0240582e65e76ef14d61a71ab4ca1664d89a7051c254f5cfb45dc3e3",
+      "instrument": "asan",
+      "mode": "contracts-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "e060783e5794f61397b400cc8c2710725cd60f3c57528f3e25f760825776bdf5"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "673d0304ceffcb81d15db7b19cc51d84cfb98482548897a8c90eb5742f3e486c",
+      "instrument": "asan",
+      "mode": "prefix-negative-control-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ab2a06ebe05d9fd1f15b9a5303f1ea9617bf4e27c63fed78af02b9d6fcd08ca9"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 165,
+      "observations_sha256": "4328cdc09d86f5cb5e1c785fad55574e1df3ae07e8e89c37774e2a7ab85f8fb6",
+      "instrument": "asan",
+      "mode": "trace-1-0-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "2f523e1a84ff4394b6b6d2a03d331baa3bee245b9601ba9191261c8bdc3b6fe8"
+    },
+    {
+      "observations_count": 329,
+      "observations_sha256": "b42e89005e0331895ffb43d892070c98c3c5b4b2117763184154f7f9aba394c6",
+      "instrument": "asan",
+      "mode": "trace-1-1-shape1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d01b72eeba6fe044b9d19eeb31faf5070507a4bff4db4efcfdec5bc311f4db0c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "read-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "9af20effd26475084dae4e9d0080cdc880d17cf2c02bfec25a5278a15325c182",
+      "instrument": "asan",
+      "mode": "reuse-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "5cadfc9fdacd3ed541fb88bf26fef7e179ceae5ec95c18ef21a6abf3a3a8ea43"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "9af20effd26475084dae4e9d0080cdc880d17cf2c02bfec25a5278a15325c182",
+      "instrument": "asan",
+      "mode": "contracts-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "5cadfc9fdacd3ed541fb88bf26fef7e179ceae5ec95c18ef21a6abf3a3a8ea43"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "673d0304ceffcb81d15db7b19cc51d84cfb98482548897a8c90eb5742f3e486c",
+      "instrument": "asan",
+      "mode": "prefix-negative-control-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ab2a06ebe05d9fd1f15b9a5303f1ea9617bf4e27c63fed78af02b9d6fcd08ca9"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 493,
+      "observations_sha256": "e23026c386c67b5c9ac8e2629e1ea57c6f749cd07a40fec35a8d58f9ecb3e8eb",
+      "instrument": "asan",
+      "mode": "trace-1-0-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "366e18265c3a857611af11bd260eb208c7d536fad3be114fb8010af18dda26dc"
+    },
+    {
+      "observations_count": 985,
+      "observations_sha256": "6ec3247c6002d6731dedb5a58d82a77d101e83a79a18672a92939b6d58ec3566",
+      "instrument": "asan",
+      "mode": "trace-1-1-shape2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9c3f97973c0ee593328b7ad5564c8e4456b7b3a5b66fa8a04bdb1df7539a162a"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "read-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "9af20effd26475084dae4e9d0080cdc880d17cf2c02bfec25a5278a15325c182",
+      "instrument": "asan",
+      "mode": "reuse-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "5cadfc9fdacd3ed541fb88bf26fef7e179ceae5ec95c18ef21a6abf3a3a8ea43"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "9af20effd26475084dae4e9d0080cdc880d17cf2c02bfec25a5278a15325c182",
+      "instrument": "asan",
+      "mode": "contracts-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "5cadfc9fdacd3ed541fb88bf26fef7e179ceae5ec95c18ef21a6abf3a3a8ea43"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "673d0304ceffcb81d15db7b19cc51d84cfb98482548897a8c90eb5742f3e486c",
+      "instrument": "asan",
+      "mode": "prefix-negative-control-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "ab2a06ebe05d9fd1f15b9a5303f1ea9617bf4e27c63fed78af02b9d6fcd08ca9"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-0-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "normal-1-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c"
+    },
+    {
+      "observations_count": 493,
+      "observations_sha256": "196e0f5db823736abda4a6832d7811c78c4ba5450cc525918aed89871938f201",
+      "instrument": "asan",
+      "mode": "trace-1-0-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "f04244285f1e26f084915e4380d6321f707323290476a49316128b12186f0eb5"
+    },
+    {
+      "observations_count": 985,
+      "observations_sha256": "4b095b66fffd01d572e715941f0af664e7f759675f0f901e1ea687226815cb8d",
+      "instrument": "asan",
+      "mode": "trace-1-1-shape3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "7fee75daa6b169f6bc1ed976e3754d4fe1a6e6fd95ba33c829e9cb88a1fcde56"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-4",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-4",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-5",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-5",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-6",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-6",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-7",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "bf8ed0e76772e817e4aaf9b5820edaad245b0723bd0fdc5baaa7f0f1124d18eb",
+      "instrument": "asan",
+      "mode": "reject-seeded-7",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "95ccf631a0e01bf45044ee36e793295a5c9ba564f46492dccd4deb5db8671b2a"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "read-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8136b0e2d8f0a882fbb92362c9c0380bc3af4314c29d811d6c2710a29343571c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "614f12bcecfffdfacbcb14d2a2a2c480a25523c070c55b3e02d3f0e4091c8484",
+      "instrument": "crt",
+      "mode": "reuse-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "fbfb550232fee4cedebb19d0ceaba02829cc5d753cb9626121d20a48c5242e12"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "3405351101944178ed1b7d54e837900d6b7da327c39d6628cedf9d21b62d366f",
+      "instrument": "crt",
+      "mode": "contracts-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "499536c29ae2a4383052afc34ab617d282b72e7df089846c65d8efc2cc6aab99"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "6e667d9cc742785d7ed992e920a3140ccad189a233debc692c25b466c43bf818",
+      "instrument": "crt",
+      "mode": "prefix-negative-control-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "db46727e1a0843037f7b60b75718a9988a9c6a4acc6f647933c5210b54189de4"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "normal-0-0-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8136b0e2d8f0a882fbb92362c9c0380bc3af4314c29d811d6c2710a29343571c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "9619c22915265c5a340bbef427aa053a9dc7f74e5650f7d9cf90a5e1c8467776",
+      "instrument": "crt",
+      "mode": "normal-0-1-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "f490effc745c9726d8789a2ff204a746fa03928e0b48eb052aeea641622ccc5c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "97ad2fd2562e30bd63ca71d614fa7f0be85cad8d3fd8088a8e67ad224df31c37",
+      "instrument": "crt",
+      "mode": "normal-1-0-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "d41317a8c6ce30122b4d96d68ba289c8bff0885fe1ddf6b419050463892317fa"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "03b41d0763993492258b7ba0aadd42ddba28b2effded21e13ff0281cf326fb7b",
+      "instrument": "crt",
+      "mode": "normal-1-1-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "800fd499178313289fab23bb316c5928c24ffafc406ff67e2818beafbbe98ce4"
+    },
+    {
+      "observations_count": 166,
+      "observations_sha256": "030e0be1704a95a425c85fdbb1e9e14426beaba842c81f7d8a0f2568e98e05d1",
+      "instrument": "crt",
+      "mode": "trace-1-0-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "7b0ff0dd1aa5ea88d072db8e5bed32f93cf74d5690d14dbedeb71acc3391441b"
+    },
+    {
+      "observations_count": 330,
+      "observations_sha256": "ad8826da0264d1ef3469b9d8b7fce1cd8066c86e765364572a5267c76fd51452",
+      "instrument": "crt",
+      "mode": "trace-1-1-shape0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "0837aab73ed397775578e48c0782119dff20c1d395bb85d9c773b0933e2585b1"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "read-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8136b0e2d8f0a882fbb92362c9c0380bc3af4314c29d811d6c2710a29343571c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "614f12bcecfffdfacbcb14d2a2a2c480a25523c070c55b3e02d3f0e4091c8484",
+      "instrument": "crt",
+      "mode": "reuse-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "fbfb550232fee4cedebb19d0ceaba02829cc5d753cb9626121d20a48c5242e12"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "3405351101944178ed1b7d54e837900d6b7da327c39d6628cedf9d21b62d366f",
+      "instrument": "crt",
+      "mode": "contracts-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "499536c29ae2a4383052afc34ab617d282b72e7df089846c65d8efc2cc6aab99"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "6e667d9cc742785d7ed992e920a3140ccad189a233debc692c25b466c43bf818",
+      "instrument": "crt",
+      "mode": "prefix-negative-control-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "db46727e1a0843037f7b60b75718a9988a9c6a4acc6f647933c5210b54189de4"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "normal-0-0-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8136b0e2d8f0a882fbb92362c9c0380bc3af4314c29d811d6c2710a29343571c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "9619c22915265c5a340bbef427aa053a9dc7f74e5650f7d9cf90a5e1c8467776",
+      "instrument": "crt",
+      "mode": "normal-0-1-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "f490effc745c9726d8789a2ff204a746fa03928e0b48eb052aeea641622ccc5c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "97ad2fd2562e30bd63ca71d614fa7f0be85cad8d3fd8088a8e67ad224df31c37",
+      "instrument": "crt",
+      "mode": "normal-1-0-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "d41317a8c6ce30122b4d96d68ba289c8bff0885fe1ddf6b419050463892317fa"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "03b41d0763993492258b7ba0aadd42ddba28b2effded21e13ff0281cf326fb7b",
+      "instrument": "crt",
+      "mode": "normal-1-1-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "800fd499178313289fab23bb316c5928c24ffafc406ff67e2818beafbbe98ce4"
+    },
+    {
+      "observations_count": 166,
+      "observations_sha256": "e2d8535ee26a380e4390ab4d36e8d3705c900df3e57f19e78e0dcd81f5ea2c17",
+      "instrument": "crt",
+      "mode": "trace-1-0-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "f50dccf2d5b49d1d38e8aa58c4e6063de5fb792bdf1de3a93df9f81646fcdfdf"
+    },
+    {
+      "observations_count": 330,
+      "observations_sha256": "48574e3bf06b6038b787c79b9664be76d63ad990d6a8e9dedfa5bebe313d6e32",
+      "instrument": "crt",
+      "mode": "trace-1-1-shape1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "838ed3e9e4ca222600e9344b598e198133811f8d6fe0ca1824b0a3f0e9aef8c1"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "read-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8136b0e2d8f0a882fbb92362c9c0380bc3af4314c29d811d6c2710a29343571c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b2e1a2897c68c999464740dd3c749c0ab137dada8d97f1cf5e8355b5692cc5e4",
+      "instrument": "crt",
+      "mode": "reuse-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "01d1890386a7df9ad1e50a6d94c53922f48ff5ea473ce37b04ef531f76b85347"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "635febde6799cb08e920c1b9b8de9f4193622e0a4c377cb3b25bc7c8328dd6ec",
+      "instrument": "crt",
+      "mode": "contracts-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "a1697c66ec8dc5cee9d5258f72e7e434dac2c84cab536e44b6924d5b35c75128"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "50938e8029647c75f998a91e52a942e51fdde2ac99cc1ec08b8ad573a9cb5b80",
+      "instrument": "crt",
+      "mode": "prefix-negative-control-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8529c389b36bd91de508a38f857b6131f02e00d54f78b607875afed37af0e7e2"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "normal-0-0-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8136b0e2d8f0a882fbb92362c9c0380bc3af4314c29d811d6c2710a29343571c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "e2d9e84097586b3bc27d8f5e03ef4a0088911fb444356f55133a46fc7f258a56",
+      "instrument": "crt",
+      "mode": "normal-0-1-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "05ccd241bc6e8bcb92a140e02201a9e4808275d8c4944cd0bd78fc49a4c54640"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "03b41d0763993492258b7ba0aadd42ddba28b2effded21e13ff0281cf326fb7b",
+      "instrument": "crt",
+      "mode": "normal-1-0-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "800fd499178313289fab23bb316c5928c24ffafc406ff67e2818beafbbe98ce4"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "8ac32dfa5d2106e2335d476cf382ff86bdf04ed7a2115eb1351dcd3c061f3e36",
+      "instrument": "crt",
+      "mode": "normal-1-1-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "d4d2525fa765d9a4e4e1f6f8a068087f8ce34d4a543999139ad1eb264cbf2ad1"
+    },
+    {
+      "observations_count": 494,
+      "observations_sha256": "b2e2704f43e51f78344f9e16b78625554c10c5ee11a7443f590abd382a793aff",
+      "instrument": "crt",
+      "mode": "trace-1-0-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8eb67261a110164d25b3ed4e776721379bf0e8954830592446f063521d3842ba"
+    },
+    {
+      "observations_count": 986,
+      "observations_sha256": "642a82e954d3bf04646eeac361e55f264d5e8f2396c18fa1b475c393b66b53ce",
+      "instrument": "crt",
+      "mode": "trace-1-1-shape2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "4219c68f607dc1706bbe6fb3c6bf753f9d9bb35f0e6737f82d96181f89de78cd"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "read-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8136b0e2d8f0a882fbb92362c9c0380bc3af4314c29d811d6c2710a29343571c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b2e1a2897c68c999464740dd3c749c0ab137dada8d97f1cf5e8355b5692cc5e4",
+      "instrument": "crt",
+      "mode": "reuse-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "01d1890386a7df9ad1e50a6d94c53922f48ff5ea473ce37b04ef531f76b85347"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "635febde6799cb08e920c1b9b8de9f4193622e0a4c377cb3b25bc7c8328dd6ec",
+      "instrument": "crt",
+      "mode": "contracts-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "a1697c66ec8dc5cee9d5258f72e7e434dac2c84cab536e44b6924d5b35c75128"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "50938e8029647c75f998a91e52a942e51fdde2ac99cc1ec08b8ad573a9cb5b80",
+      "instrument": "crt",
+      "mode": "prefix-negative-control-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8529c389b36bd91de508a38f857b6131f02e00d54f78b607875afed37af0e7e2"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "normal-0-0-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "8136b0e2d8f0a882fbb92362c9c0380bc3af4314c29d811d6c2710a29343571c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "e2d9e84097586b3bc27d8f5e03ef4a0088911fb444356f55133a46fc7f258a56",
+      "instrument": "crt",
+      "mode": "normal-0-1-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "05ccd241bc6e8bcb92a140e02201a9e4808275d8c4944cd0bd78fc49a4c54640"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "03b41d0763993492258b7ba0aadd42ddba28b2effded21e13ff0281cf326fb7b",
+      "instrument": "crt",
+      "mode": "normal-1-0-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "800fd499178313289fab23bb316c5928c24ffafc406ff67e2818beafbbe98ce4"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "8ac32dfa5d2106e2335d476cf382ff86bdf04ed7a2115eb1351dcd3c061f3e36",
+      "instrument": "crt",
+      "mode": "normal-1-1-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "d4d2525fa765d9a4e4e1f6f8a068087f8ce34d4a543999139ad1eb264cbf2ad1"
+    },
+    {
+      "observations_count": 494,
+      "observations_sha256": "a1a52e9acf3a4cc03eb108c756da80e74a80b8a026e40f45ccaf6bac7476af3c",
+      "instrument": "crt",
+      "mode": "trace-1-0-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "3cacd8c84706ce3f2ce5dbb9a8b6e83c914ec275a9cdc55481aa5727808c09a7"
+    },
+    {
+      "observations_count": 986,
+      "observations_sha256": "035aa402c44962cb7258e59be674bf401f4d6af5075f1bc7458305e0cdc6e4f0",
+      "instrument": "crt",
+      "mode": "trace-1-1-shape3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "bc1b6711df5ff9419e0fbdf8aea1754c232180939b7970cfc1a7c798036ff8a5"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-0",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b141f7bda70905ec3d293a300b5a89d90caac5a045ac9fc720f81b7ed6e7caee",
+      "instrument": "crt",
+      "mode": "reject-seeded-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "83e566a4e6358a8d05537c71b0d6ed011bfad703dbd7c773bf8e3607c6c0de66"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-1",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b141f7bda70905ec3d293a300b5a89d90caac5a045ac9fc720f81b7ed6e7caee",
+      "instrument": "crt",
+      "mode": "reject-seeded-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "83e566a4e6358a8d05537c71b0d6ed011bfad703dbd7c773bf8e3607c6c0de66"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-2",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b141f7bda70905ec3d293a300b5a89d90caac5a045ac9fc720f81b7ed6e7caee",
+      "instrument": "crt",
+      "mode": "reject-seeded-2",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "83e566a4e6358a8d05537c71b0d6ed011bfad703dbd7c773bf8e3607c6c0de66"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-3",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b141f7bda70905ec3d293a300b5a89d90caac5a045ac9fc720f81b7ed6e7caee",
+      "instrument": "crt",
+      "mode": "reject-seeded-3",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "83e566a4e6358a8d05537c71b0d6ed011bfad703dbd7c773bf8e3607c6c0de66"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-4",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b141f7bda70905ec3d293a300b5a89d90caac5a045ac9fc720f81b7ed6e7caee",
+      "instrument": "crt",
+      "mode": "reject-seeded-4",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "83e566a4e6358a8d05537c71b0d6ed011bfad703dbd7c773bf8e3607c6c0de66"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-5",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b141f7bda70905ec3d293a300b5a89d90caac5a045ac9fc720f81b7ed6e7caee",
+      "instrument": "crt",
+      "mode": "reject-seeded-5",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "83e566a4e6358a8d05537c71b0d6ed011bfad703dbd7c773bf8e3607c6c0de66"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-6",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b141f7bda70905ec3d293a300b5a89d90caac5a045ac9fc720f81b7ed6e7caee",
+      "instrument": "crt",
+      "mode": "reject-seeded-6",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "83e566a4e6358a8d05537c71b0d6ed011bfad703dbd7c773bf8e3607c6c0de66"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "708d2bca5f0f29ef31c310a853ca4a6d693372223a360ae75f1b27e1836aa9a6",
+      "instrument": "crt",
+      "mode": "reject-7",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "9229b27385c97d639be3688b88bd9fb917572fbf9afea31e336edf164084a42c"
+    },
+    {
+      "observations_count": 2,
+      "observations_sha256": "b141f7bda70905ec3d293a300b5a89d90caac5a045ac9fc720f81b7ed6e7caee",
+      "instrument": "crt",
+      "mode": "reject-seeded-7",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "83e566a4e6358a8d05537c71b0d6ed011bfad703dbd7c773bf8e3607c6c0de66"
+    },
+    {
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "passed": true,
+      "exit_code": 1,
+      "log_sha256": "fbc7fdcabebecc7c88048bfb3b0e2c6a213ad6233eb9455599c61677def835b1"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "2d4ec0ed426ca08d68890b0575c1b5a33b275b157ddf5f642cbd860acbc96a11",
+      "instrument": "crt",
+      "mode": "leak",
+      "passed": true,
+      "exit_code": 1,
+      "log_sha256": "ccedcfa9ed760b491c399972eec21fbeeae56472a8e13530fb08ef4f9519f15c"
+    },
+    {
+      "observations_count": 1,
+      "observations_sha256": "4697bfe003cb155fa5d728f560f26f432e828f3492ba6b34fcfca3ecaa4bfe19",
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "passed": true,
+      "exit_code": 0,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b"
+    },
+    {
+      "observations_count": 54,
+      "observations_sha256": "f9ff9b453a31134be5ae3a0e855394e7f08672f685b8fc49335ea382d4f93b06",
+      "instrument": "crt",
+      "mode": "failure-0-0-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "b420bfb034897af0d2b1fa5ab26666a56801637b3c2a9c167d9cdfcfeae7149c",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-0-0-0-calibration.log",
+          "log_sha256": "be3e2541dd59eaf04ec7a0c9a0989added4e7b89140f3f81a255f5ab741e0bac"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-0-0-0-0.log",
+          "log_sha256": "43eb7b2a6ca4f1ec3234d4d9c0a30f7f57809352c251c8af9cbd4732fedce289"
+        }
+      ],
+      "calibrated_allocations": 81,
+      "measured_denials": 24,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 57
+    },
+    {
+      "observations_count": 8,
+      "observations_sha256": "59ed841b04ce6a917ae4252ec0b5cf93a409e2697ff7193e99e73ba1cf9782fb",
+      "instrument": "crt",
+      "mode": "failure-0-0-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "130c408fb76c7fc475062c1a5a4dca2a3461cbe4352e01c06c897819bd01dbb3",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-0-0-1-calibration.log",
+          "log_sha256": "3f5d3d9919dfec815e8a28529271470285e3db26f3f5e83e22077682a9885d4f"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-0-0-1-0.log",
+          "log_sha256": "ef1df0ff93094d7ff78ee2365d9ecfac5a9ea9ba212ace8216bc5dd573925ecb"
+        }
+      ],
+      "calibrated_allocations": 81,
+      "measured_denials": 1,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 80
+    },
+    {
+      "observations_count": 60,
+      "observations_sha256": "7f9a2cfdbe3cab4e7b14629d8c094ed9511f0f0813721e9292b9320c00f2349b",
+      "instrument": "crt",
+      "mode": "failure-0-1-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "3c728477e6ea2156d0c65388b43880a0cc41509a8c33caad41fe1fd4a165c941",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-0-1-0-calibration.log",
+          "log_sha256": "33857a5bb6c29da0ef0bcbf2cb48a394a9862dc079e9427b1b49783c6c6fc0d4"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-0-1-0-0.log",
+          "log_sha256": "a842b297458b80141ea9fde9342117630e8161b3b38bc50abf82834cafb2399f"
+        }
+      ],
+      "calibrated_allocations": 135,
+      "measured_denials": 27,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 108
+    },
+    {
+      "observations_count": 8,
+      "observations_sha256": "8da184f65a0b374359520725e312524e45d0e01cb10a03ce8599a4e09a1e4d42",
+      "instrument": "crt",
+      "mode": "failure-0-1-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "acd7a10255ef0fd5c0c336b2e9512f4d84e588f296b907070664655821bda7a0",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-0-1-1-calibration.log",
+          "log_sha256": "bb22b811f4ca96aabae9abec86b8fdabfeb4789eae702e0a1c8e3a0cbd04fea8"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\0.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-0-1-1-0.log",
+          "log_sha256": "83f930392e87eac6c8bde5c598df6a4c4744a80d1e1e30a24864319e7e62bc67"
+        }
+      ],
+      "calibrated_allocations": 119,
+      "measured_denials": 1,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 118
+    },
+    {
+      "observations_count": 56,
+      "observations_sha256": "9e76a725420e29dee6207f60585b6d3deefc833dd6202e9af32b512aa0a5943b",
+      "instrument": "crt",
+      "mode": "failure-1-0-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "6d21142ef9495a39c7de79d4564ffe26b937593d73fdb14e5230109fd8e1419a",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-1-0-0-calibration.log",
+          "log_sha256": "e33251d735ed2f5b4758480e9280c665b651b0cfdbd619e9d17caa60f6a9ccaf"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-1-0-0-0.log",
+          "log_sha256": "5fb58c68721765f19c3c92b6183dae07751492643bec3fe22498a3b5fcbfb2f7"
+        }
+      ],
+      "calibrated_allocations": 83,
+      "measured_denials": 25,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 58
+    },
+    {
+      "observations_count": 8,
+      "observations_sha256": "2436f9e29d4a553f31c050d3557a23b1f05de6ff38c3232a322c864426c5ba03",
+      "instrument": "crt",
+      "mode": "failure-1-0-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "11fcf1cff2c818df058da6fe751faba41c4f1bad81c73e05ab434c5c528cae05",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-1-0-1-calibration.log",
+          "log_sha256": "232f79a0188e398710a585caa31b46f5c81beb19d64b1c6db05d6b51ef0b34fc"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-1-0-1-0.log",
+          "log_sha256": "9d603ac72fa843921e07de1e356ec83eb3397f4fba00bb6c0232f064b3a3a143"
+        }
+      ],
+      "calibrated_allocations": 83,
+      "measured_denials": 1,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 82
+    },
+    {
+      "observations_count": 62,
+      "observations_sha256": "acae1e2b55b77e6ecfb50f1530561a6d01110dc829a2a74878df23c317a73bbf",
+      "instrument": "crt",
+      "mode": "failure-1-1-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "0f2b65aee302a2c6acc73876b2da747ca4bdc1841896aa9399d2a0d29550d79b",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-1-1-0-calibration.log",
+          "log_sha256": "3e03f0ab010441c3d64c5287802dd70159bdef6171679c7423cadceefb7f8e46"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-1-1-0-0.log",
+          "log_sha256": "ffa32cb6ef3f7f48c00b151efb38809d52c9d09909c906101c5752900d1f9894"
+        }
+      ],
+      "calibrated_allocations": 137,
+      "measured_denials": 28,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 109
+    },
+    {
+      "observations_count": 8,
+      "observations_sha256": "fc34a5bb0593ef34548c944e0851ac1dcc4af310f9db53217c4cd0fd2fb9ac7c",
+      "instrument": "crt",
+      "mode": "failure-1-1-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "f3cec0f4ab22b65ce7c1af53b8de7f9e0c45dca8656975745cbf86a96c1f55a1",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-1-1-1-calibration.log",
+          "log_sha256": "d6e257de8fe2dd9ffb85d7b03692c81ee0e2507fdecdc4b7e1f0f1f05b94f4bf"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\1.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-1-1-1-0.log",
+          "log_sha256": "f6819ddaadead2dcb99d80ca6ea0ff34948fd2a63c3c34d01e8e1fd11668e09f"
+        }
+      ],
+      "calibrated_allocations": 121,
+      "measured_denials": 1,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 120
+    },
+    {
+      "observations_count": 71,
+      "observations_sha256": "dbc7a522c6d4c44b4cf0cd78b72cb7ba8cee46f2fe6bbdf8c7c3bd42ccbddfad",
+      "instrument": "crt",
+      "mode": "failure-2-0-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "d797f9a12e5bbaa6bef0c06927ffb0bcc88f7d99248d7d862cdb643280dcf416",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-calibration.log",
+          "log_sha256": "c630ff05e2058a86c82109bf7ce0a695a7262d625d4ef32df2bdb772cfaa7b88"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-2-0-0-0.log",
+          "log_sha256": "3519c9f08b3b1869308f84c9bd805ecccaf56f5e9564ebc5e4bd37af31d04b17"
+        }
+      ],
+      "calibrated_allocations": 192,
+      "measured_denials": 32,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 160
+    },
+    {
+      "observations_count": 8,
+      "observations_sha256": "02bba7cf03406816790528401d34320e61deb0d21c29415140641fb89c815749",
+      "instrument": "crt",
+      "mode": "failure-2-0-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "198975302b1460e5c31a094c12eacc5d3a6eab86ce48cbe9c3f796165b78a457",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-calibration.log",
+          "log_sha256": "53543b0c118cce8f974938c3f83300334f9b23493cc38ba76a1d8cb8d2ed96d6"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-2-0-1-0.log",
+          "log_sha256": "2164ed8b5cc6187d3d0a87f87c10be74f52405e6720ea5d172f8e79b446f6cff"
+        }
+      ],
+      "calibrated_allocations": 192,
+      "measured_denials": 1,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 191
+    },
+    {
+      "observations_count": 71,
+      "observations_sha256": "acf31d5ed0e9af38edd1d7658fdd8efa1285c2287d201ce4fd67aecdce473268",
+      "instrument": "crt",
+      "mode": "failure-2-1-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "2dd88b85b9d0ff64693484d84e55d306f917240e074ee25f59abbc0406fbf80e",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-calibration.log",
+          "log_sha256": "8ad38e811a4f24d76cc3d969de5ac42837951b4e54c352a3cb2675d75e226e42"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-2-1-0-0.log",
+          "log_sha256": "a2190780ea0d5f62c1bba56e5a9fc43031eb3e757c78d0d8185caa3c9c694208"
+        }
+      ],
+      "calibrated_allocations": 313,
+      "measured_denials": 32,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 281
+    },
+    {
+      "observations_count": 8,
+      "observations_sha256": "3c3f22e055889c1890985d8cf94a96867c6036abc9c12f5a4a87c413acfd30c8",
+      "instrument": "crt",
+      "mode": "failure-2-1-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "224bfe62184177ccecc7bd785d0c61ce5ab2d2b20868b2c78cdbc9531befffca",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-calibration.log",
+          "log_sha256": "5cbaf1e598c3ec1de261fd58f2991c65ac76696813f58f24e44e4696263dd5bd"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\2.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-2-1-1-0.log",
+          "log_sha256": "1df665e9ca34a5ae06af65f6586bd71bab35d9d4b4f295be3127ab35f594d363"
+        }
+      ],
+      "calibrated_allocations": 275,
+      "measured_denials": 1,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 274
+    },
+    {
+      "observations_count": 71,
+      "observations_sha256": "dbc7a522c6d4c44b4cf0cd78b72cb7ba8cee46f2fe6bbdf8c7c3bd42ccbddfad",
+      "instrument": "crt",
+      "mode": "failure-3-0-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "d797f9a12e5bbaa6bef0c06927ffb0bcc88f7d99248d7d862cdb643280dcf416",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-calibration.log",
+          "log_sha256": "c630ff05e2058a86c82109bf7ce0a695a7262d625d4ef32df2bdb772cfaa7b88"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-0-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-3-0-0-0.log",
+          "log_sha256": "3519c9f08b3b1869308f84c9bd805ecccaf56f5e9564ebc5e4bd37af31d04b17"
+        }
+      ],
+      "calibrated_allocations": 192,
+      "measured_denials": 32,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 160
+    },
+    {
+      "observations_count": 8,
+      "observations_sha256": "02bba7cf03406816790528401d34320e61deb0d21c29415140641fb89c815749",
+      "instrument": "crt",
+      "mode": "failure-3-0-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "198975302b1460e5c31a094c12eacc5d3a6eab86ce48cbe9c3f796165b78a457",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-0-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-calibration.log",
+          "log_sha256": "53543b0c118cce8f974938c3f83300334f9b23493cc38ba76a1d8cb8d2ed96d6"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-0-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-3-0-1-0.log",
+          "log_sha256": "2164ed8b5cc6187d3d0a87f87c10be74f52405e6720ea5d172f8e79b446f6cff"
+        }
+      ],
+      "calibrated_allocations": 192,
+      "measured_denials": 1,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 191
+    },
+    {
+      "observations_count": 71,
+      "observations_sha256": "80b7a1f3ad332df09b139b60c550349a777ca49ed61d428fcb2f266c181e7f34",
+      "instrument": "crt",
+      "mode": "failure-3-1-0",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "b024ae51fb1c150ac59c70ac2fd79d273d4590d272ac0e8e09e502066d0c63fa",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-calibration.log",
+          "log_sha256": "6e2862c3e66a97934cfb493859bdf7121e460bf06d2d2ffc9f5e4a18df9e25b6"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-1-0-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-3-1-0-0.log",
+          "log_sha256": "9d4ba40fbfdc0048e916ff71cf12a32ff2665272b67006d8177d91d6de624773"
+        }
+      ],
+      "calibrated_allocations": 290,
+      "measured_denials": 32,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 258
+    },
+    {
+      "observations_count": 8,
+      "observations_sha256": "f6680af89cbf12d2c6d872f8230464a04554d2db69621279352dba69091dc05f",
+      "instrument": "crt",
+      "mode": "failure-3-1-1",
+      "passed": false,
+      "exit_code": 1,
+      "log_sha256": "191f4b214338373e59e6a9196eb0d9b83e3cd24f8b4ddeda3bc4b0993cf494f3",
+      "invocations": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "calibrate-1-1",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-calibration.log",
+          "log_sha256": "b6739a7c78f053a8321cc7629047b662cc8df121e7ab1b4b92420fdcb47ca16c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+            "failure-1-1-0",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-original-memory\\fixtures\\3.bp"
+          ],
+          "exit_code": 1,
+          "timed_out": false,
+          "log": "crt-failure-3-1-1-0.log",
+          "log_sha256": "caed13996b76b1031a14f2bba2bd0d2012ad64c4a74aa9f273d828bee2b795b7"
+        }
+      ],
+      "calibrated_allocations": 261,
+      "measured_denials": 1,
+      "complete_sweep": false,
+      "later_ordinals_unmeasured": 260
+    }
+  ],
+  "complete_sweeps": 0,
+  "allocation_denials": 240,
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33oa\\RelWithDebInfo\\serial_reader_probe.exe",
+      "sha256": "439267fe1c194d6ee7229b1fa79f03ca654075583810f8e42d85620bc38ab28f"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33od\\Debug\\serial_reader_probe.exe",
+      "sha256": "b7be93ed38abb6475da775d609d464162a6c9a421cb0a7ef33de9b6797990bd9"
+    }
+  },
+  "fixtures": {
+    "fixtures\\0.bp": "558d5e1f55b7b08e9c2b2db25947df0e31ed219dc10635c8cfc9250e7c094e2f",
+    "fixtures\\1.bp": "b113b2f9d8c477af6fef241fad094d6ab32787d1c85649bf128998cc09791522",
+    "fixtures\\2.bp": "ad7657a0241dc991ef9f185405bf005dcf5e0918e39825142aab2e3dc4bac1d6",
+    "fixtures\\3.bp": "e93ca4e3be12c9be02bfc441403e6cfea5193f255f31900044b3f4c2e659ed59",
+    "fixtures\\empty.bp": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixtures\\indent.bp": "1cb7c8940ef3e2c61094e6f12143e9168edfbbcd80f861589f55b1cb1dac2dd3",
+    "fixtures\\nonfinite.bp": "832239fb3b7d287a32babfebbda002960734e8d354b4074abb786f09fbfb9dfb",
+    "fixtures\\index.bp": "f6d781c5c3aad197ce939c53f08ecd3f2a679a4edb177aa799a18d86c2b356de",
+    "fixtures\\arity.bp": "8e78690af27e30c95e16d4ec34c63636fe7a0fc2df58324e1021df1f54156a70",
+    "fixtures\\tail.bp": "d0c7a28a8045f45fab1587faf223574cc31ad3dd2188a3f44ae8661c79fcb23f",
+    "fixtures\\unknown.bp": "bb59b3fbee12dbf9b61dd811164424df86a26daaaaaa44b80b0cc5e2ca192d62"
+  },
+  "original_recording": true,
+  "scope": "Full serial reader TU; bounded four surfaces, live committed prefixes, independent owning results, eight rejected input classes and complete CRT sweeps. Partial Geometry commit is permitted; no whole-reader rollback, retry, complete CLI/parallel/LSan/UBSan or other loaders are qualified. ASan leak detection disabled; static Debug CRT measures retention. Original failed sweeps stop at first failed chunk; later ordinals remain unmeasured.",
+  "raw_report_sha256": "2682b4c87d8eb227d61a4dc00a09c2399ca5a1ca293cb23dc4e2e8560af10db1"
+}

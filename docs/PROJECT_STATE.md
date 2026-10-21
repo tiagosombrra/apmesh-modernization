@@ -2,23 +2,26 @@
 
 ## Active work: stage 3 slice 33, serial-reader control ownership
 
-The caller-root audit at slice 32 closure main
-`9a853348755e0a9125a844278a2bf6d59a82bfba` is complete within its documented
-source/instrument scope. A literal production inventory finds 56 Bezier creation
-sites and no discovered sixteen-point fresh-curve caller. Actual full serial-
-reader Debug CRT reproduction finds an unused pending control patch (1328 bytes)
-and an overwritten parsed control patch plus pending patch (2656 bytes). Clean
-and existing unique-result controls retain zero bytes; a deliberate leak is
-detected. Repeated raw-loader use returns accumulated aliases and leaks two
-pending patches. See [the source-backed audit and reproduction](evidence/STAGE3_CALLER_ROOT_AUDIT.md).
+The candidate migrates LoaderBezierPatchFile to independent unique control
+results and local pending ownership. ReaderFilePatches retains parsed controls
+and consumes a separate unique reconstructed patch through Geometry. Three
+badbit masks propagate resource failures before partial record indexing. This
+is a behavior-changing lifetime/failure defect repair with no scientific policy
+change or consolidation with the distinct charge parser.
 
-The next bounded implementation is explicit ownership of serial control-only
-results and the pending parser patch. No repaired candidate exists yet; slice
-33 is not qualified. Allocation failure, rejected/malformed input, broader
-models and whole-process/parallel instruments remain unmeasured at this boundary.
-Model/copy, MPI/Hermite and other loaders retain separate pending dispositions.
-The full stage 3 and stages 4-11 remain open. Earlier "next" paragraphs below
-record historical checkpoints; this active item takes precedence.
+Focused qualification passes 131 expected outcomes, sixteen complete CRT sweeps/
+2731 actual allocation denials, eight nonempty GCC live pairs and six rejected
+preservation mutations. The original retains 72 failed/59 other expected outcomes,
+all sixteen partial sweeps and 240 observed denials; later original ordinals remain
+unmeasured. No complete-reader rollback/retry or full-process safety is claimed.
+See [the bounded evidence](evidence/STAGE3_SERIAL_READER.md), C27 and ADR-0034.
+
+Full exact published-head and post-merge gates remain pending: 47 CTest entries,
+74 Python controls, all 29 memory batteries/3005 expected outcomes, preserved
+analytic/scalar/model traces and local/remote quality/identity checks. Slice 33
+is not qualified. The full stage 3 and stages 4-11 remain open; Model/copy,
+MPI/Hermite and other finite rows retain their separate pending dispositions.
+Earlier "next" paragraphs below are historical checkpoints.
 
 ## Latest qualified work: stage 3 slice 32
 

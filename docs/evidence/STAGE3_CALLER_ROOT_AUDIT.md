@@ -1,5 +1,11 @@
 # Stage 3 caller-root audit and next serial-reader boundary
 
+Historical original-source checkpoint. The subsequent slice 33 candidate is
+tracked in [serial-reader evidence](STAGE3_SERIAL_READER.md). Preserve all
+original failure reports below. Reproduce its raw-result API using the explicit
+immutable original snapshot recipe in that evidence; the candidate uses an
+owning-result API and is not the original reproduction target.
+
 Source base: `9a853348755e0a9125a844278a2bf6d59a82bfba` (slice 32 closure, PR #87).
 Classification: engineering-only source audit and original defect reproduction.
 No production repair, new scientific policy or additional qualified slice is
