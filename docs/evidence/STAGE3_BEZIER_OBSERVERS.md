@@ -1,7 +1,9 @@
 # Stage 3 slice 32: completed Bezier observer retirement
 
-Status: bounded prepublication qualification complete. Required published-head
-confirmation is recorded in the review PR; integration/post-merge gates pending.
+Status: bounded implementation head/main qualification complete (PR #86).
+Head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa`; implementation main
+`cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`; tree
+`b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5` (1951 blobs).
 Entry main: `061223689ad6d2caa15243dbcfa6a4e45ba7ce96` (PR #85).
 Classification: behavior-changing lifecycle/observer defect repair, with no
 scientific proposal. Stage 3 remains open; stages 4-11 remain pending.
@@ -95,9 +97,20 @@ Compact reports are in [bezier_observers](stage3/bezier_observers/), including
 [the complete prepublication gate inventory](stage3/bezier_observers/prepublication_qualification.json).
 The report explicitly identifies a modified prepublication working tree and its
 source manifest, rather than claiming the entry commit contains the repair.
-Raw reports/logs remain local and hash-linked. Published-head confirmation must
-pass before integration and is recorded in the review PR; post-merge validation
-and full stage 3 closure remain separate.
+Raw reports/logs remain local and hash-linked. Exact published head passed all
+107 commands before integration. Post-merge main completed all 106 local commands
+before the terminal remote API tree query timed out. The failed report and
+[pending checkpoint](stage3/bezier_observers/post_merge_pending.json) remain
+unchanged as historical negative evidence. A separate explicit continuation now
+passes the complete remote tree/branch/PR/check audit, environment and exact
+checkout checks on the same implementation main. Every one of 1951 remote blob
+identities matches local Git; all 598 protected inputs and 56 current memory
+executables match. All prior command/case/child-log/artifact checks were repeated
+independently, without repeating the completed numerical/instrument campaign.
+[Delivery completion](stage3/bezier_observers/delivery_qualification.json) records
+both implementation phases and the continuation, hashes and commands. No timeout,
+budget, tolerance or gate changed. Zero hosted checks is absence of hosted
+validation. Full stage 3 remains open.
 
 ## Closure audit and remaining scope
 

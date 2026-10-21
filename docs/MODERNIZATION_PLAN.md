@@ -3,41 +3,34 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current work: stage 3 slice 32, completed Bezier observer retirement and dependent
-Geometry ordering. Bounded prepublication qualification passes: 45 CTest, 74
-Python controls, 28 memory batteries/2874 expected outcomes and exact repeated
-article traces on 598 protected inputs. Required published-head confirmation is
-recorded in the review PR; integration/main qualification remain pending. Slice
-31 below remains the last integrated baseline. The [stage 3 closure inventory](architecture/STAGE3_CLOSURE_INVENTORY.md)
-maps the finite remaining obligations and their required evidence without reopening
-qualified slices or treating future portability/numerical work as completed.
+Stage 3 slice 32 is qualified within its measured boundary. PR #86 integrates
+head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa` as main
+`cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`, preserving complete tree
+`b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5` (1951 blobs). Exact-head gates pass
+all 107 commands. Post-merge main completed 106 local commands before a final
+remote API connection timeout; a separately recorded terminal continuation now
+passes the complete remote tree/branch/PR/check audit, environment and exact
+checkout checks. The original failed report remains unchanged and hash-linked.
 
-Stage 3 slice 31 is qualified. PR #84 integrates head `c94ed17373abc04c9bbb5359a4ea686a44b886f3`
-as main `1bc4038ad55a6b5fce7ec99db3fc5b200016ea69`, preserving complete tree `d950dbb0a49e4a4ec8109a6d4feefa360d5c10a2`
-(1933 blobs). Exact-head/main full gates pass on the same 594
-protected inputs: CTest 43/43, zero skips, 74 Python controls, 27 memory batteries/
-2748 expected outcomes, 1040 retained scalar sequences, selected lint/format/
-inventory and exact repeated Eistute/Book accepted/rejected traces.
+Both implementation revisions retain the same 598 protected inputs: 45/45 CTest,
+zero failures/skips, 74 Python controls, 28 memory batteries/2874 expected outcomes,
+1040 retained scalar sequences and exact twice-repeated Eistute/Book accepted/
+rejected/incidence/CSV traces. Independent command/case/child-log/artifact/source
+checks pass; all 56 current memory executable identities match main evidence.
+The new battery passes 126 outcomes and 19 no-allocation operations, with six
+GCC and twelve MSVC live pairs and six rejected preservation mutations. Original
+103 failed outcomes, 23 other expected outcomes and two actual ASan UAF
+reproductions remain retained. See [bounded closure evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
 
-Fresh Bezier curves now have local unique owners until construction succeeds;
-failed borrowed-curve construction restores exclusively appended observer suffixes.
-The unchanged scope is shared with charge estimation. The new 71 outcomes cover
-32 complete sweeps/348 allocation denials; 16 actual GCC and 32 MSVC trace pairs
-preserve scalar bits, controls, directions and live incidence. Four independent
-mutations are rejected. Original 32 failed partial sweeps/208 observed denials and
-39 other expected outcomes, including a zero-retention observer defect, remain
-retained. See [root cause and bounded closure](evidence/STAGE3_BEZIER_CONSTRUCTION.md).
+Stage 3 remains open. Next single item: audit successful fresh-curve caller
+adoption and remaining loader/Model/copy roots. Hermite retirement, arbitrary
+replacement/copied observers, cache/metadata/acceptance rollback and complete-
+process/parallel/LSan/UBSan remain unqualified. Stages 4-11 remain pending.
+The [finite closure inventory](architecture/STAGE3_CLOSURE_INVENTORY.md) retains
+each obligation and its required evidence. No scientific policy changes.
 
-Stage 3 remains open. Next audit completed patch observer lifetime and caller
-curve/patch destruction ordering. Successful fresh-curve caller adoption,
-ordinary deregistration, arbitrary publications, cache/metadata/acceptance
-rollback and full-process/parallel/LSan/UBSan remain unqualified. Remaining
-estimator quadrature VLA/domain and interpolation singularity findings are retained
-without new numerical policies or a demonstrated current serial failure.
-Stages 4-11 remain pending.
-
-Previous qualified baseline: slice 30, implementation #82 and closure #83,
-final main `b908ecd384dea4877186fb8cb167444da5c2173d`; see [curvature sample audit](evidence/STAGE3_CURVATURE_SAMPLE.md).
+Previous qualified baseline: slice 31, implementation #84 and closure #85;
+see [construction evidence](evidence/STAGE3_BEZIER_CONSTRUCTION.md).
 
 Stages 0-2 remain closed for their measured scope. Stage 3 remains open; stages
 4-11 are pending. This repair preserves formulas, floating-point order, numerical

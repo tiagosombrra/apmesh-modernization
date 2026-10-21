@@ -61,19 +61,16 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 remains open with thirty-one qualified ownership/lifecycle slices.
-The latest protects fresh Bezier curves and restores borrowed observer suffixes
-when construction fails (PR #84). Exact-head/main gates pass: CTest 43/43,
-74 Python controls, 27 memory batteries/2748 expected outcomes, 1040 retained
-scalar sequences and exact repeated Eistute/Book accepted/rejected traces.
-The new 71 outcomes cover 32 complete sweeps/348 allocation denials; 16 GCC and
-32 MSVC constructor pairs preserve numerical bits, controls and directions.
-Original 32 failed partial sweeps and preliminary findings remain retained.
-See [the bounded closure audit](docs/evidence/STAGE3_BEZIER_CONSTRUCTION.md).
-Completed observer retirement and dependent Geometry move/destruction ordering
-are the active slice 32; see [the bounded evidence](docs/evidence/STAGE3_BEZIER_OBSERVERS.md).
-Integration status remains authoritative in PROJECT_STATE.md. Successful caller
-adoption, other construction roots, complete cache/metadata rollback and
+Stage 3 remains open with thirty-two qualified ownership/lifecycle slices.
+The latest retires completed Bezier observers and preserves dependent Geometry
+teardown/move order (PR #86). Exact-head and completed post-merge qualification
+retain CTest 45/45, 74 Python controls, 28 memory batteries/2874 expected outcomes,
+1040 scalar sequences and exact repeated Eistute/Book accepted/rejected traces on
+the same 598 protected inputs. A terminal main API timeout is retained; a separate
+explicit continuation completes the remote audit without repeating local tests.
+See [the bounded closure audit](docs/evidence/STAGE3_BEZIER_OBSERVERS.md).
+The next single audit covers successful caller adoption and remaining loader/
+Model/copy roots. Other lifecycle roots, cache/metadata/acceptance rollback and
 full-process/parallel memory remain open; stages 4-11 are pending.
 
 ## Repository policy

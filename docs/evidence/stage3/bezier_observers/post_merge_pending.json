@@ -1,0 +1,2312 @@
+{
+  "status": "incomplete: final remote API audit blocked",
+  "implementation_pr": 86,
+  "head": {
+    "status": "passed",
+    "head": "7307bdab7c7f4c835218fd3c80d8ad8b458538aa",
+    "tree": "b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5",
+    "remote_blobs": 1951,
+    "commands": 107,
+    "source_manifest_sha256": "c026da42f919ccbe4646ec7511c3e2520c53954025f6ef0fdc2960054380977a",
+    "protected_inputs": 598,
+    "ctest": {
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "python_controls": 74
+    },
+    "memory_batteries": 28,
+    "memory_expected_outcomes": 2874,
+    "raw_report_sha256": "887b98f0c562d45dbe92debb2553bb2d21ef51364e4797e0630b47d3fbd4dd8f",
+    "junit_sha256": "525768b416ec1f451067b96f6eb38150798a3ca09a9b5b9160cc68bd48a85577",
+    "independent_check_log_sha256": "82fb8c9b80b30e3bd5317d63fe3b16a8abeebe0500b81ab62cad49f1426faf6a",
+    "remote_audit_sha256": "0b30c0cd336405593107347443d968d9633acd3eab34264c0090fbb7f2b64553",
+    "main_integration": "not performed",
+    "full_stage3": "open"
+  },
+  "implementation_main": "cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf",
+  "tree": "b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5",
+  "source_manifest_sha256": "c026da42f919ccbe4646ec7511c3e2520c53954025f6ef0fdc2960054380977a",
+  "protected_inputs": 598,
+  "source_manifest": "prepublication_qualification.json:source_identity",
+  "post_merge": {
+    "campaign_status": "failed at final remote API query",
+    "error": "Command '['gh', 'api', 'repos/tiagosombrra/apmesh-modernization/git/trees/b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5?recursive=1']' returned non-zero exit status 1.",
+    "raw_failed_report_sha256": "2d07d9b7ca248967e46161809cecd705c3929d69fc68bba748a0ae8be405592c",
+    "driver_log_sha256": "0a15fc631075758faf5f011fab8fbafaa927e5b846b6be6a430f899ba7561749",
+    "completed_local_commands": [
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "build/check_s31_handoff.py",
+          "--environment"
+        ],
+        "exit_code": 0,
+        "log": "qualification-environment-entry.log",
+        "sha256": "f155bf733f283e60f2c15d6135f5beba9b3ba67f6b17d34a7cc97a11703b4d52"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "--preset",
+          "windows-gcc17",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "build.log",
+        "sha256": "cbf82d86b33037f99f6f982074576fe9a196d36bc46619ed254d9ab2f8a4c7d6"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/n6a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "node_lifetime_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "node-a-build.log",
+        "sha256": "4dc6c163c200d90b0b350899c5db9f3802711c7d70890f7ae4fb7ccd2bec61e9"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/n6d",
+          "--config",
+          "Debug",
+          "--target",
+          "node_lifetime_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "node-d-build.log",
+        "sha256": "671d3f631ba625da7af5d85d1c1cf9ae85c7cf5fdf92d72abf8023638cd94ac2"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/u7a",
+          "--config",
+          "RelWithDebInfo",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "asan-build.log",
+        "sha256": "8d68ae0af3fb5eedf3aba247b190399dd52124d8ee77a016cecb5f6baa73a74b"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/u7d",
+          "--config",
+          "Debug",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "crt-build.log",
+        "sha256": "ac677b5f1bd22fb2c753eff31237d31bba7fc5d8e0e3288559764c80eb28d34c"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/c8a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_collection_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "curve-asan-build.log",
+        "sha256": "4cd97a124f495c899d9a395de8993d5896e834731bfbe1b1b452217805da5d54"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/c8d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_collection_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "curve-crt-build.log",
+        "sha256": "86e74e08473ed163a99ae398dbb347ec3e77bc6eafa670ea5843516c43fa36a1"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/c9a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_copy_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "copy-asan-build.log",
+        "sha256": "d47132944c2420229159567787a553b8c8bb527f3c3c49633fd882d3ccda5643"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/c9d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_copy_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "copy-crt-build.log",
+        "sha256": "904fffaaec1804092b76c9feccee7ac16ea50b7809c882662f141a1b10c048b0"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/g10a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "geometry_adoption_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "adoption-asan-build.log",
+        "sha256": "99c0386e72d9067294a6edc863b6be50328cd5454725359da6520c396aed04d5"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/g10d",
+          "--config",
+          "Debug",
+          "--target",
+          "geometry_adoption_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "adoption-crt-build.log",
+        "sha256": "01240ab1283c25193cf0c37fbc5f728f62b3718e3f4f495feca0b07094372076"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s11a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_synchronization_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "sync-asan-build.log",
+        "sha256": "8efe8133b049ebce5557d674f76e1757a069884d992c7fcf079542e5e7d8f219"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s11d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_synchronization_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "sync-crt-build.log",
+        "sha256": "0cb166c20a1780f9761d5c541fb2c9dfed0132f9936f583f81b3f9fb1bee4698"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s12a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_snapshot_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "snapshot-asan-build.log",
+        "sha256": "9cd2197c01e0c071308e37ea0bd1a5fdfd6e70ac0b45900ccea6cb711a650c06"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s12d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_snapshot_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "snapshot-crt-build.log",
+        "sha256": "56fcf765050a918b10caf89f3d76c5c0c67aebde155cdf45d3ece69349c3f15e"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s13a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_rebuild_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "rebuild-asan-build.log",
+        "sha256": "a1fcb8bfd7e35a774bddae62bbfd940b148c3a5d2c3955bd7b5548ae346aee46"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s13d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_rebuild_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "rebuild-crt-build.log",
+        "sha256": "5f42ad2e879f9b7e1ea2ccd38dee70209553bf6231adc41798586776f0ce2ece"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s14a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_samples_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "samples-asan-build.log",
+        "sha256": "323d2fef53f924d2f94cf340c426dca6bb11dee2c5cca944e2e9bdc7ff0c5559"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s14d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_samples_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "samples-crt-build.log",
+        "sha256": "b84fa5455d72be08d3fa4b5a7a40982376db7fa0e67a403a737540820e08d5aa"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s15a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_publication_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "publication-asan-build.log",
+        "sha256": "0913d06c38e081d27cc97dc43a1412c9f7e3766f17cfcd8bddddb04dedf6387e"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s15d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_publication_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "publication-crt-build.log",
+        "sha256": "97f4b9ef89c3e52a46e34be2e5d254ff6ec52d7851c40cd6851c8b70dae8d547"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s16a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_sample_graph_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "graph-asan-build.log",
+        "sha256": "a7e76223db33d2f035d3536cbaa9e1dfd6971768ad58fca9c9a36dba15bfcfed"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s16d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_sample_graph_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "graph-crt-build.log",
+        "sha256": "a4fc18d06132363ce2126a83ad7fd450eaec2bfac4440c8e8b4d2f8c13baa95b"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/inventory_architecture.py",
+          "--output",
+          "docs/architecture/source_inventory.json",
+          "--contracts",
+          "docs/architecture/contracts.json",
+          "--check"
+        ],
+        "exit_code": 0,
+        "log": "inventory.log",
+        "sha256": "621665e784806af4f4ce0f08c7bcda8c7630bdb6c4b29ef21443fbd294126222"
+      },
+      {
+        "argv": [
+          "ctest",
+          "--preset",
+          "windows-gcc17",
+          "--verbose",
+          "--output-junit",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\ctest.xml"
+        ],
+        "exit_code": 0,
+        "log": "ctest.log",
+        "sha256": "5db270dadd97c9e85a260f82f160ba5826a343ada20eecf495370c87284cadc9"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s32qa",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "bezier_observer_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "retirement-a-build.log",
+        "sha256": "2fa023ea877a96a2ae0e36227eb07761132cd7702a249bc22ca897e2c843cb00"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s32qd",
+          "--config",
+          "Debug",
+          "--target",
+          "bezier_observer_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "retirement-d-build.log",
+        "sha256": "92549c28540dc501308f42026f7c3b3e27cbc8488311b6e75634c275a7081f3a"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/audit_bezier_observers.py",
+          "--candidate-root",
+          ".",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\preservation.json"
+        ],
+        "exit_code": 0,
+        "log": "preservation.log",
+        "sha256": "1b7dfe84f03ad8e6aef85c74477285dd5c88799ccdbbe57f0b8e5bc2199aa244"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_bezier_observers.py",
+          "--asan",
+          "build/s32qa/RelWithDebInfo/bezier_observer_probe.exe",
+          "--crt",
+          "build/s32qd/Debug/bezier_observer_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\retirement"
+        ],
+        "exit_code": 0,
+        "log": "retirement.log",
+        "sha256": "baf8bd92b19b60a1b943ec68b81310356adda01ff257197bff3df4173c2ff9ab"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s32og",
+          "--target",
+          "bezier_observer_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "s32og-build.log",
+        "sha256": "130a1556a9edac569bbe57ebd0e9fdf41ca6114b53de59e9ef3f3551ede9e6b6"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s32qg",
+          "--target",
+          "bezier_observer_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "s32qg-build.log",
+        "sha256": "c822d30d49ec63bf74d6aabc54da9f00051986b3d39b3b4a3296c06dd7721f2c"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/compare_bezier_observers.py",
+          "--original",
+          "build/s32og/bezier_observer_probe.exe",
+          "--candidate",
+          "build/s32qg/bezier_observer_probe.exe",
+          "--original-root",
+          "build/s32-original",
+          "--candidate-root",
+          ".",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\retirement-pairs"
+        ],
+        "exit_code": 0,
+        "log": "retirement-pairs.log",
+        "sha256": "f44ab2d9a0e787efbb0e6ddcf2bed941e7f08148bd62aa7c441e6b546e8833c4"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s30qa",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curvature_sample_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "sampler-a-build.log",
+        "sha256": "5d1a35b1254024d5be059061c952589af26343768dfa41c6432e1c75f770dbcf"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s30qd",
+          "--config",
+          "Debug",
+          "--target",
+          "curvature_sample_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "sampler-d-build.log",
+        "sha256": "b60822f34e9506dfc6167fe364f4421ad92b0b6a89f963bacb69221a59290b8b"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curvature_sample.py",
+          "--asan",
+          "build/s30qa/RelWithDebInfo/curvature_sample_probe.exe",
+          "--crt",
+          "build/s30qd/Debug/curvature_sample_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\sampler"
+        ],
+        "exit_code": 0,
+        "log": "sampler.log",
+        "sha256": "8df9d6dfc2d6e44218a17f4e0a6a17d2a8120d0d79a0c7d94c88c762b3a4ede5"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s30qg",
+          "--target",
+          "curvature_sample_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "sampler-gcc-build.log",
+        "sha256": "be184963522befb711b1716e60602804729688b47a71b338a193e50c4facabae"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/compare_curvature_sample.py",
+          "--original",
+          "build/s30og/curvature_sample_probe.exe",
+          "--candidate",
+          "build/s30qg/curvature_sample_probe.exe",
+          "--original-root",
+          "build/s30-original",
+          "--candidate-root",
+          ".",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\sampler-pairs"
+        ],
+        "exit_code": 0,
+        "log": "sampler-pairs.log",
+        "sha256": "4e52aeb89b3a1d0ebfac842fd67b6f85974c04f2d3541dd5902615d2cda9034a"
+      },
+      {
+        "argv": [
+          "objdump",
+          "-p",
+          "build/s30qd/Debug/curvature_sample_probe.exe"
+        ],
+        "exit_code": 0,
+        "log": "sampler-static-crt-imports.log",
+        "sha256": "a2d9a0b588c98494ad3ba81c327131c410f82dd8c256c910330a344558cc2701"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s31qa",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "bezier_construction_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "bezier-a-build.log",
+        "sha256": "a2b2b9c3a216773e649ccefdba30bf88968078a0d46d19f49f0c8f0c29062ceb"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s31qd",
+          "--config",
+          "Debug",
+          "--target",
+          "bezier_construction_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "bezier-d-build.log",
+        "sha256": "7c977b5a52e760146a0c5a1609b3f23551f9895f26bf514e4677a5541cde34d5"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_bezier_construction.py",
+          "--asan",
+          "build/s31qa/RelWithDebInfo/bezier_construction_probe.exe",
+          "--crt",
+          "build/s31qd/Debug/bezier_construction_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\bezier"
+        ],
+        "exit_code": 0,
+        "log": "bezier.log",
+        "sha256": "8f947a9ff382dc27057c7e881256d4d6d977ac9660e7f83eb8ed5cadc965064c"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s31qg",
+          "--target",
+          "bezier_construction_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "bezier-gcc-build.log",
+        "sha256": "15cae2c925c47ad6c500d78096ad94db3d23184f6e08613d0264e9754b19cc06"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/compare_bezier_construction.py",
+          "--original",
+          "build/s31og/bezier_construction_probe.exe",
+          "--candidate",
+          "build/s31qg/bezier_construction_probe.exe",
+          "--original-root",
+          "build/s31-original",
+          "--candidate-root",
+          ".",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\bezier-pairs"
+        ],
+        "exit_code": 0,
+        "log": "bezier-pairs.log",
+        "sha256": "aaf6b18efa630eaf2338406c6ebfe08d007dd8406a95ef85ac0b5ef86250b5ab"
+      },
+      {
+        "argv": [
+          "objdump",
+          "-p",
+          "build/s31qd/Debug/bezier_construction_probe.exe"
+        ],
+        "exit_code": 0,
+        "log": "bezier-static-crt-imports.log",
+        "sha256": "33934478218946c5e9015309fdbbe95e81c434f0c9f5da47da1291d07609f66f"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_uv_lifetime.py",
+          "--asan",
+          "build/u7a/RelWithDebInfo/uv_lifetime_probe.exe",
+          "--crt",
+          "build/u7d/Debug/uv_lifetime_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\uv"
+        ],
+        "exit_code": 0,
+        "log": "uv.log",
+        "sha256": "aa0d1cba1f3f2b2e2359b56de7877a99b173e6028c931006e4063439b877a914"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_node_lifetime.py",
+          "--asan",
+          "build/n6a/RelWithDebInfo/node_lifetime_probe.exe",
+          "--crt",
+          "build/n6d/Debug/node_lifetime_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\node"
+        ],
+        "exit_code": 0,
+        "log": "node.log",
+        "sha256": "37c36b0de8e0758a097bcf9735f4d18c230589d7bff8d6696ac768897cfa55ce"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_collections.py",
+          "--asan",
+          "build/c8a/RelWithDebInfo/curve_collection_probe.exe",
+          "--crt",
+          "build/c8d/Debug/curve_collection_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\curve"
+        ],
+        "exit_code": 0,
+        "log": "curve.log",
+        "sha256": "0bc155dd7a77a1fab5893c2277ed7cc118a627aad26852004a8cdb19e06ae307"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_copy.py",
+          "--asan",
+          "build/c9a/RelWithDebInfo/curve_copy_probe.exe",
+          "--crt",
+          "build/c9d/Debug/curve_copy_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\copy"
+        ],
+        "exit_code": 0,
+        "log": "copy.log",
+        "sha256": "e6a3177ff67a4023421a228c7687f60d449e66f6b6a0d5a27e75a0e777e773c7"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_geometry_adoption.py",
+          "--asan",
+          "build/g10a/RelWithDebInfo/geometry_adoption_probe.exe",
+          "--crt",
+          "build/g10d/Debug/geometry_adoption_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\adoption"
+        ],
+        "exit_code": 0,
+        "log": "adoption.log",
+        "sha256": "6fe2a73635aa76da3a709c6b084f8319661fe897ccaee539b9421b072ee1354f"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_synchronization.py",
+          "--asan",
+          "build/s11a/RelWithDebInfo/curve_synchronization_probe.exe",
+          "--crt",
+          "build/s11d/Debug/curve_synchronization_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\sync"
+        ],
+        "exit_code": 0,
+        "log": "sync.log",
+        "sha256": "1fd1548479afb71faf26b7bb6953387747de09f31c1d99d1484976c2ced5fcda"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_snapshots.py",
+          "--asan",
+          "build/s12a/RelWithDebInfo/curve_snapshot_probe.exe",
+          "--crt",
+          "build/s12d/Debug/curve_snapshot_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\snapshots"
+        ],
+        "exit_code": 0,
+        "log": "snapshots.log",
+        "sha256": "530ca356026e4d3602eac49905ea7af123935ac0511f1647a14d8fb566f6d814"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_rebuild.py",
+          "--asan",
+          "build/s13a/RelWithDebInfo/curve_rebuild_probe.exe",
+          "--crt",
+          "build/s13d/Debug/curve_rebuild_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\rebuild"
+        ],
+        "exit_code": 0,
+        "log": "rebuild.log",
+        "sha256": "60e153228e52bd87d807f475cc8ad0bf47fa11a363a92e31c7da55b3add75e7f"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_samples.py",
+          "--asan",
+          "build/s14a/RelWithDebInfo/curve_samples_probe.exe",
+          "--crt",
+          "build/s14d/Debug/curve_samples_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\samples"
+        ],
+        "exit_code": 0,
+        "log": "samples.log",
+        "sha256": "4e82284dc6e79b80ad137d8d99715a44201c096c6986804c7b0216972b30612a"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_publication.py",
+          "--asan",
+          "build/s15a/RelWithDebInfo/curve_publication_probe.exe",
+          "--crt",
+          "build/s15d/Debug/curve_publication_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\publication"
+        ],
+        "exit_code": 0,
+        "log": "publication.log",
+        "sha256": "df6173765bc46ca3e6308b00329e9ab4a42591c1d81b6d8f70969bc40d88c970"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_sample_graph.py",
+          "--asan",
+          "build/s16a/RelWithDebInfo/curve_sample_graph_probe.exe",
+          "--crt",
+          "build/s16d/Debug/curve_sample_graph_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\graph"
+        ],
+        "exit_code": 0,
+        "log": "graph.log",
+        "sha256": "07079e89bf8e80c630b4b48f398087e435df6068842594e7326f5c0a7f287a6e"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s17a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "curve_sample_lifetime_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "lifetime-a-build.log",
+        "sha256": "df66e74609c36c82d67fd5d4bab69e423dbe8921bf50fa0c864228ba6e096aa5"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s17d",
+          "--config",
+          "Debug",
+          "--target",
+          "curve_sample_lifetime_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "lifetime-d-build.log",
+        "sha256": "dc6036282d662e631e40c52bf77e789ea8bf3686626e62f326d1d11e2b4a7f42"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_curve_sample_lifetime.py",
+          "--asan",
+          "build/s17a/RelWithDebInfo/curve_sample_lifetime_probe.exe",
+          "--crt",
+          "build/s17d/Debug/curve_sample_lifetime_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\lifetime"
+        ],
+        "exit_code": 0,
+        "log": "lifetime.log",
+        "sha256": "1bcdaf215fcb7c5a2b1e5ae0886dd0bfd56eb0da63c88fa77935224921bf8a06"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s18a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "initial_mesh_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "initial-a-build.log",
+        "sha256": "0aeae2b83e10a2b20de31f8cad3784df2c97de98743619788ece384b8d243ae6"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s18d",
+          "--config",
+          "Debug",
+          "--target",
+          "initial_mesh_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "initial-d-build.log",
+        "sha256": "fd802a60bbeb346ed55668cec733d75c73a2140f2245d7e883e9f92edd0ea11e"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_initial_mesh.py",
+          "--asan",
+          "build/s18a/RelWithDebInfo/initial_mesh_probe.exe",
+          "--crt",
+          "build/s18d/Debug/initial_mesh_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\initial"
+        ],
+        "exit_code": 0,
+        "log": "initial.log",
+        "sha256": "7de703434ce7a8e8f4348001436248cbad4c62be542fbfdd30eb0cd2896a30a1"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s19a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "mesh_adoption_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "mesh-a-build.log",
+        "sha256": "60a9f80f401a862befd84b38775e483b2e84295a357d68ba1fe8756695a48fd1"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s19d",
+          "--config",
+          "Debug",
+          "--target",
+          "mesh_adoption_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "mesh-d-build.log",
+        "sha256": "f12c3d23de6365f10893f8e41d3468a9dd9ac64cd7823d68c143e188b25a5319"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_mesh_adoption.py",
+          "--asan",
+          "build/s19a/RelWithDebInfo/mesh_adoption_probe.exe",
+          "--crt",
+          "build/s19d/Debug/mesh_adoption_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\mesh"
+        ],
+        "exit_code": 0,
+        "log": "mesh.log",
+        "sha256": "a040477049ca6d0d3892ebcfee29663bee60b828c182cce1763b3605116c9a42"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s20a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "element_adoption_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "element-a-build.log",
+        "sha256": "200de70ca0cb8e5e13f19305f64241eac37d49b4dcc4de5f0ec54d9d6b2ea768"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s20d",
+          "--config",
+          "Debug",
+          "--target",
+          "element_adoption_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "element-d-build.log",
+        "sha256": "f15b77294dd97d4f548085c119abacf2dec69d85f53e55c3b9236f12a363635a"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_element_adoption.py",
+          "--asan",
+          "build/s20a/RelWithDebInfo/element_adoption_probe.exe",
+          "--crt",
+          "build/s20d/Debug/element_adoption_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\element"
+        ],
+        "exit_code": 0,
+        "log": "element.log",
+        "sha256": "0f71290a359709740e1a6ca1ad8088eba0794362b73285cbffa4b5d42c6ec3c2"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s21a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "triangle_construction_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "triangle-a-build.log",
+        "sha256": "3eaef8182549608021b85658c45499d49873251d1b3cc502b5c2f2798c408fcb"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s21d",
+          "--config",
+          "Debug",
+          "--target",
+          "triangle_construction_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "triangle-d-build.log",
+        "sha256": "7190b159157231b011b21e8f688c5432381ec549f04e978a28d75fe86499876f"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_triangle_construction.py",
+          "--asan",
+          "build/s21a/RelWithDebInfo/triangle_construction_probe.exe",
+          "--crt",
+          "build/s21d/Debug/triangle_construction_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\triangle"
+        ],
+        "exit_code": 0,
+        "log": "triangle.log",
+        "sha256": "38184095f514aa4ad7f5d9800ba3feb10a7af2ab855fb9bf5ab68c63f7d34fbd"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s22a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "submesh_lifetime_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "submesh-a-build.log",
+        "sha256": "03f3f122fbdfd2820a75a0dcb9e7dd33c508350c7094e236d477cf9f0a143673"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s22d",
+          "--config",
+          "Debug",
+          "--target",
+          "submesh_lifetime_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "submesh-d-build.log",
+        "sha256": "0a1402981f4f5cffbc12e9093e2d9c1034073d0c43f5edeb6b84ac271a049a6b"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_submesh_lifetime.py",
+          "--asan",
+          "build/s22a/RelWithDebInfo/submesh_lifetime_probe.exe",
+          "--crt",
+          "build/s22d/Debug/submesh_lifetime_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\submesh"
+        ],
+        "exit_code": 0,
+        "log": "submesh.log",
+        "sha256": "04bcb1be68b4c07bab2beaad9a8a54ee2e124080fb84032accc93469e22d0bd7"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s23a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "triangle_observer_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "observer-a-build.log",
+        "sha256": "0b637f3301421bf83c689ea5100a30bf05988c104241a9942d40291c84f98cf0"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s23d",
+          "--config",
+          "Debug",
+          "--target",
+          "triangle_observer_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "observer-d-build.log",
+        "sha256": "1647c514d9fbcba9567e03a734d059b5f5b9d375d093d3c827165657dc949021"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_triangle_observer.py",
+          "--asan",
+          "build/s23a/RelWithDebInfo/triangle_observer_probe.exe",
+          "--crt",
+          "build/s23d/Debug/triangle_observer_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\observer"
+        ],
+        "exit_code": 0,
+        "log": "observer.log",
+        "sha256": "79cba67779bddadb3ec926eac0e8105a75034f300dbbbf04e6b8c77d2e3b39a0"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s24a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "triangle_lifetime_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "triangle-lifetime-a-build.log",
+        "sha256": "338151754756db6844203f77f9219ea803d9b5f7add4a12a66bcbc45f97b9f02"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s24d",
+          "--config",
+          "Debug",
+          "--target",
+          "triangle_lifetime_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "triangle-lifetime-d-build.log",
+        "sha256": "656bc65d5b77a61baca0765aaa02abfeea8c732729ef5c50cb09d332f12c89ea"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_triangle_lifetime.py",
+          "--asan",
+          "build/s24a/RelWithDebInfo/triangle_lifetime_probe.exe",
+          "--crt",
+          "build/s24d/Debug/triangle_lifetime_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\triangle-lifetime"
+        ],
+        "exit_code": 0,
+        "log": "triangle-lifetime.log",
+        "sha256": "cac5abc41bb24ebcb976edbee74067337a40bbf525ed21208f799d9367740fc5"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s25a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "estimate_mesh_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "estimate-a-build.log",
+        "sha256": "ad014a7a210e197d5d8e79ec88c95e4aa24abbb205d04f60a6422187857fb289"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s25d",
+          "--config",
+          "Debug",
+          "--target",
+          "estimate_mesh_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "estimate-d-build.log",
+        "sha256": "08b6d0bd7a154ef216629be17305365d600610898fe4818d1a0d4d9a6543f2b5"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_estimate_mesh.py",
+          "--asan",
+          "build/s25a/RelWithDebInfo/estimate_mesh_probe.exe",
+          "--crt",
+          "build/s25d/Debug/estimate_mesh_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\estimate",
+          "--iteration-reference",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25-original\\src\\estimate\\charge_estimate_process.cpp"
+        ],
+        "exit_code": 0,
+        "log": "estimate.log",
+        "sha256": "8d5d78ff8a228ca81ae10f429d772a78d62aba02f4aaa2e1e525bd9e33e6f67c"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s26a",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "triangle_count_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "count-a-build.log",
+        "sha256": "3d00ffd1084abb939684172b0e9c32e5b307dc4f44e8da6d980b05ff11b8616d"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s26d",
+          "--config",
+          "Debug",
+          "--target",
+          "triangle_count_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "count-d-build.log",
+        "sha256": "e0c0ffd9e517cab3107ae8f20b9efc69e94f7a5b24d139b815ef703e44256f29"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_triangle_count.py",
+          "--asan",
+          "build/s26a/RelWithDebInfo/triangle_count_probe.exe",
+          "--crt",
+          "build/s26d/Debug/triangle_count_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\count"
+        ],
+        "exit_code": 0,
+        "log": "count.log",
+        "sha256": "006dcf81b663862116f903f1d5dbe72b06257ba6c6487e542362e5f904d86acd"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s27qa",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "error_estimate_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "error-a-build.log",
+        "sha256": "344757529a510f2abd96c067531409f9f8c9b9539dd6a784106525ab43e6df1f"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s27qd",
+          "--config",
+          "Debug",
+          "--target",
+          "error_estimate_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "error-d-build.log",
+        "sha256": "52559cb84f3cda6326cc108542107bf38722d662e09eab3ae00ecae08ada2e8c"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_error_estimate.py",
+          "--asan",
+          "build/s27qa/RelWithDebInfo/error_estimate_probe.exe",
+          "--crt",
+          "build/s27qd/Debug/error_estimate_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\error"
+        ],
+        "exit_code": 0,
+        "log": "error.log",
+        "sha256": "42704e210790a03091cb737910ea68cdbc1aa7dd4663cc7c170b2e8f2f34c622"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s28qa",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "triangle_area_probe",
+          "triangle_area_real_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "area-a-build.log",
+        "sha256": "6ba25dbbb32dabfce21ec789da310f364f66c4ecc61900c4ad6312a3a7de3a75"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s28qd",
+          "--config",
+          "Debug",
+          "--target",
+          "triangle_area_probe",
+          "triangle_area_real_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "area-d-build.log",
+        "sha256": "ea99fe9ce74e2237ab7b66d7a23d067670e441d4619dd0c157d970d5960421e0"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_triangle_area.py",
+          "--kind",
+          "controlled",
+          "--asan",
+          "build/s28qa/RelWithDebInfo/triangle_area_probe.exe",
+          "--crt",
+          "build/s28qd/Debug/triangle_area_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\area"
+        ],
+        "exit_code": 0,
+        "log": "area.log",
+        "sha256": "bd6fabd6d5988abc34fae54c9ae607ca4c0446dbefbad94c16a4030badd21834"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_triangle_area.py",
+          "--kind",
+          "real",
+          "--asan",
+          "build/s28qa/RelWithDebInfo/triangle_area_real_probe.exe",
+          "--crt",
+          "build/s28qd/Debug/triangle_area_real_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\area-real"
+        ],
+        "exit_code": 0,
+        "log": "area-real.log",
+        "sha256": "3270fad33528d9d52af547d1fc4769c2bd4d670473074c5e353f30ab1fb3ee02"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s29qa",
+          "--config",
+          "RelWithDebInfo",
+          "--target",
+          "charge_input_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "charge-a-build.log",
+        "sha256": "ea4d74ab9338b332d8d701b1a2ee076db21502138a447369f7fa4fe02e2d604d"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s29qd",
+          "--config",
+          "Debug",
+          "--target",
+          "charge_input_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "charge-d-build.log",
+        "sha256": "3c7e55cff587e045b3e7362357285d99cfec1d44279c686f77b56f9443386c08"
+      },
+      {
+        "argv": [
+          "cmake",
+          "--build",
+          "build/s29qg",
+          "--target",
+          "charge_input_probe",
+          "charge_input_real_probe",
+          "--parallel",
+          "2"
+        ],
+        "exit_code": 0,
+        "log": "charge-gcc-build.log",
+        "sha256": "e3bb3d580e1639e24526c0920a1b5af0a6aee1022016c23678169a6296996151"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/qualify_charge_input.py",
+          "--asan",
+          "build/s29qa/RelWithDebInfo/charge_input_probe.exe",
+          "--crt",
+          "build/s29qd/Debug/charge_input_probe.exe",
+          "--runtime",
+          "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\charge"
+        ],
+        "exit_code": 0,
+        "log": "charge.log",
+        "sha256": "382460cf3fca2140b6c7295f774e63dc8dae85b1bddd1cfe6fd207944f048914"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/compare_charge_input.py",
+          "--original",
+          "build/s29og/charge_input_probe.exe",
+          "--candidate",
+          "build/s29qg/charge_input_probe.exe",
+          "--original-root",
+          "build/s29-original",
+          "--candidate-root",
+          ".",
+          "--kind",
+          "controlled",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\charge-pairs-controlled"
+        ],
+        "exit_code": 0,
+        "log": "charge-pairs-controlled.log",
+        "sha256": "4a5ebd2fda5dd2a16d31a3f42aedecdc90ac8f1a0436038f5302845c5ddd3164"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/compare_charge_input.py",
+          "--original",
+          "build/s29og/charge_input_real_probe.exe",
+          "--candidate",
+          "build/s29qg/charge_input_real_probe.exe",
+          "--original-root",
+          "build/s29-original",
+          "--candidate-root",
+          ".",
+          "--kind",
+          "actual",
+          "--output",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32-main\\charge-pairs-actual"
+        ],
+        "exit_code": 0,
+        "log": "charge-pairs-actual.log",
+        "sha256": "99b3138ee8c322ee372556a5da27afd0395de8a93232b7df49ae2a5aef693845"
+      },
+      {
+        "argv": [
+          "objdump",
+          "-p",
+          "build/s29qd/Debug/charge_input_probe.exe"
+        ],
+        "exit_code": 0,
+        "log": "charge-s29qd-imports.log",
+        "sha256": "034487d7b4b5d1159be140ad819850fae9f7c8e23a97e520a27a6d131c9678b3"
+      },
+      {
+        "argv": [
+          "objdump",
+          "-p",
+          "build/s29od/Debug/charge_input_probe.exe"
+        ],
+        "exit_code": 0,
+        "log": "charge-s29od-imports.log",
+        "sha256": "fec59940aa3d298c6f0a833bbc6389664c8e9c0d22167233586db52b7ea54f0d"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "tools/quality.py",
+          "tidy",
+          "src/data/geometry.cpp",
+          "src/estimate/initial_mesh_estimate.cpp",
+          "src/estimate/triangle_count_estimate.cpp",
+          "src/estimate/error_estimate.cpp",
+          "src/estimate/estimate_mesh_scope.cpp",
+          "src/estimate/triangle_area_estimate.cpp",
+          "src/estimate/charge_input_estimate.cpp",
+          "src/input_output/control_patch_reader.cpp",
+          "src/data/curve/curve_adaptive.cpp",
+          "src/estimate/curvature_sample_estimate.cpp",
+          "src/data/patch/patch_bezier.cpp",
+          "--build",
+          "build/windows-gcc17"
+        ],
+        "exit_code": 0,
+        "log": "tidy.log",
+        "sha256": "eb98a25317a43dde79db68b84d5cd081d2b276791c2789505153c423b22a7c54"
+      },
+      {
+        "argv": [
+          "clang-format",
+          "--dry-run",
+          "--Werror",
+          "tests/curve_memory/bezier_observer_probe.cpp",
+          "tests/curve_memory/error_estimate_probe.cpp",
+          "src/estimate/error_estimate.cpp",
+          "tests/curve_memory/triangle_count_probe.cpp",
+          "src/estimate/triangle_count_estimate.cpp",
+          "include/estimate/triangle_count_estimate.h",
+          "include/estimate/estimate_mesh_scope.h",
+          "src/estimate/estimate_mesh_scope.cpp",
+          "src/estimate/triangle_area_estimate.cpp",
+          "tests/curve_memory/triangle_area_probe.cpp",
+          "src/estimate/charge_input_estimate.cpp",
+          "src/input_output/control_patch_reader.cpp",
+          "tests/curve_memory/charge_input_probe.cpp",
+          "src/estimate/curvature_sample_estimate.cpp",
+          "tests/curve_memory/curvature_sample_probe.cpp",
+          "include/data/patch/patch_observer_scope.h",
+          "tests/curve_memory/bezier_construction_probe.cpp"
+        ],
+        "exit_code": 0,
+        "log": "probe-format.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "argv": [
+          "git",
+          "clang-format",
+          "--diff",
+          "--binary",
+          "clang-format",
+          "061223689ad6d2caa15243dbcfa6a4e45ba7ce96",
+          "--",
+          "include/data/curve/curve_adaptive.h",
+          "include/data/geometry.h",
+          "src/data/curve/curve_adaptive.cpp",
+          "src/data/geometry.cpp",
+          "src/data/patch/patch_bezier.cpp",
+          "src/estimate/charge_input_estimate.cpp",
+          "include/data/patch/patch_bezier.h"
+        ],
+        "exit_code": 0,
+        "log": "bezier-changed-format.log",
+        "sha256": "0ba6c60c9a2e6e5db19d9a12d442668ee5e4e4adc9039a60fae7c520a89da300"
+      },
+      {
+        "argv": [
+          "git",
+          "-c",
+          "core.whitespace=cr-at-eol",
+          "diff",
+          "--check",
+          "b908ecd384dea4877186fb8cb167444da5c2173d"
+        ],
+        "exit_code": 0,
+        "log": "diff-check.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "build/audit_checkout.py"
+        ],
+        "exit_code": 0,
+        "log": "checkout.log",
+        "sha256": "da627b628bb03a936cb20f0084709823429832d3ca78c73c55cb09737073c88b"
+      }
+    ],
+    "ctest": {
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "python_controls": 74,
+      "names": [
+        "application.triangle_area_contracts",
+        "application.triangle_area_real_error",
+        "application.error_estimate_contracts",
+        "application.triangle_count_contracts",
+        "application.estimate_mesh_contracts",
+        "application.triangle_lifetime_contracts",
+        "application.triangle_observer_contracts",
+        "application.submesh_lifetime_contracts",
+        "application.triangle_construction_contracts",
+        "application.element_adoption_contracts",
+        "application.mesh_adoption_contracts",
+        "application.charge_input_contracts",
+        "application.charge_input_real_numbers",
+        "application.curve_collection_contracts",
+        "application.curve_copy_contracts",
+        "application.geometry_adoption_contracts",
+        "application.curve_synchronization_contracts",
+        "application.curve_snapshot_contracts",
+        "application.curve_rebuild_contracts",
+        "application.curve_samples_contracts",
+        "application.curve_sample_graph_contracts",
+        "application.curve_sample_lifetime_contracts",
+        "application.initial_mesh_contracts",
+        "application.curve_publication_contracts",
+        "application.uv_lifetime",
+        "application.uv_primitive_contracts",
+        "application.uv_registration_contracts",
+        "application.uv_unowned_cell",
+        "application.uv_tree_contracts",
+        "application.uv_angle_contracts",
+        "application.uv_parametric_contracts",
+        "application.node_lifetime",
+        "tooling.controls",
+        "reference.archived_eistute_artifact",
+        "application.invalid_inputs",
+        "application.boundary_orientation",
+        "application.metric_schema",
+        "application.curve_orientation_arclength",
+        "tooling.tidy_header_scope",
+        "application.smoothing_adjacency_order",
+        "application.valid_input_grammar",
+        "application.curvature_sample_contracts",
+        "application.bezier_construction_contracts",
+        "application.bezier_observer_contracts",
+        "tooling.bezier_observer_preservation"
+      ]
+    },
+    "independent_local_check_log_sha256": "45443df9e5cd0b70cf22bd59e1ec5d1fc29ae385d7bac2d71554a15e415368cb",
+    "terminal_local_audit": {
+      "status": "blocked on remote API audit",
+      "revision": "cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf",
+      "original_failed_report_sha256": "2d07d9b7ca248967e46161809cecd705c3929d69fc68bba748a0ae8be405592c",
+      "commands": [
+        {
+          "argv": [
+            "C:\\msys64\\ucrt64\\bin\\python.exe",
+            "build/check_s31_handoff.py",
+            "--environment"
+          ],
+          "exit_code": 0,
+          "log": "0.log",
+          "sha256": "f155bf733f283e60f2c15d6135f5beba9b3ba67f6b17d34a7cc97a11703b4d52"
+        },
+        {
+          "argv": [
+            "C:\\msys64\\ucrt64\\bin\\python.exe",
+            "build/audit_checkout.py"
+          ],
+          "exit_code": 0,
+          "log": "1.log",
+          "sha256": "da627b628bb03a936cb20f0084709823429832d3ca78c73c55cb09737073c88b"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-remote",
+            "--heads",
+            "origin",
+            "main"
+          ],
+          "exit_code": 0,
+          "log": "2.log",
+          "sha256": "09098bc993a41bebe04cf44be75ef6ed24772c6b9279fbbc71f19eb02f0d2437"
+        }
+      ]
+    },
+    "memory_batteries": 28,
+    "memory_expected_outcomes": 2874,
+    "memory": {
+      "bezier_observer_memory": {
+        "status": "passed",
+        "outcomes": 126,
+        "case_manifest_sha256": "d51cf174133547a723b4c07acdf1b47a5e52a876146d970c2f37cc9386eab0ed",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32qa\\RelWithDebInfo\\bezier_observer_probe.exe",
+            "sha256": "eba0f21fd2019ead24f06a5fafe3ca2662b9280e4a9f01f50950909a1af6e8d6"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32qd\\Debug\\bezier_observer_probe.exe",
+            "sha256": "b81b233351de2310e919ee38651d5a79492bdabffa006bae697ecbf54405f97b"
+          }
+        }
+      },
+      "curvature_sample_memory": {
+        "status": "passed",
+        "outcomes": 725,
+        "case_manifest_sha256": "0b40183dd604396fd7ff84098ab80c6cc8bd12b1babe45ef623a2b84549bb9ea",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s30qa\\RelWithDebInfo\\curvature_sample_probe.exe",
+            "sha256": "b09c7dd03fa99a81506cd1e1fa4c899f8abbeca19b971a14e80912225ffa2bea"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s30qd\\Debug\\curvature_sample_probe.exe",
+            "sha256": "65145e711421cfaf7021ab2d3f95ea0ea904ecd257dcd8284e1489f9d957bd0e"
+          }
+        }
+      },
+      "bezier_construction_memory": {
+        "status": "passed",
+        "outcomes": 71,
+        "case_manifest_sha256": "96fa1be70c4a2c7f8b8aad00036bc77782991a4345a3c275f011f4882db1d424",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s31qa\\RelWithDebInfo\\bezier_construction_probe.exe",
+            "sha256": "e02cfefabadcc9a9ccb421469ab719d23b9cdfa2101e8a1de2475cda3dd7f23f"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s31qd\\Debug\\bezier_construction_probe.exe",
+            "sha256": "7de33f3637999c17bbd10bee9e4d3d808f4f2ac9bc33e8dd70ebe5e0297ffb0c"
+          }
+        }
+      },
+      "uv_memory": {
+        "status": "passed",
+        "outcomes": 81,
+        "case_manifest_sha256": "9ea49ee02940459b33a7e66b221f39a6d29543817e51a564d3fb7a79406d6201",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\u7a\\RelWithDebInfo\\uv_lifetime_probe.exe",
+            "sha256": "6e4f19699c0acb059106d0655acf24942f76741f27eca25a329489cbd96b83b4"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\u7d\\Debug\\uv_lifetime_probe.exe",
+            "sha256": "236028fa30f9ee20f2ec4c18ce888573127e9ca1164b6a6f252a81916f8e06ca"
+          }
+        }
+      },
+      "previous_node_boundary": {
+        "status": "passed",
+        "outcomes": 7,
+        "case_manifest_sha256": "8a60ad06703246069cd2575b517e46fd12a1021d1907480195ce43fe1e7150a3",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\n6a\\RelWithDebInfo\\node_lifetime_probe.exe",
+            "sha256": "a8e231f19d164efdc76a1ce062809b7e62d63ad920bbc3ca018041e9ec3443bf"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\n6d\\Debug\\node_lifetime_probe.exe",
+            "sha256": "8fb741077a6b45c23c4e9f4fc6113698efd128873f6d4782be859457475ddde5"
+          }
+        }
+      },
+      "curve_memory": {
+        "status": "passed",
+        "outcomes": 19,
+        "case_manifest_sha256": "0f53f5607b0b0efa364543d9e8003be7b5c4180703c85e853b85c074ab52d451",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c8a\\RelWithDebInfo\\curve_collection_probe.exe",
+            "sha256": "46cc9c942c3821f6f6b5f005135cada890f1599ea97358955c443dbf9bd6d773"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c8d\\Debug\\curve_collection_probe.exe",
+            "sha256": "432a0cb61c399890d58cf2e55524a39d8bd163668f827b454a485198459d0d84"
+          }
+        }
+      },
+      "copy_memory": {
+        "status": "passed",
+        "outcomes": 30,
+        "case_manifest_sha256": "c16e318035368470acf2593c75014902b60925f9dff626b167cca0ca47fd65c1",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c9a\\RelWithDebInfo\\curve_copy_probe.exe",
+            "sha256": "60a58ca89e4bd42a8e9eef0d0578771ee1479011c5eac8b6ffa57af95009d0d7"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\c9d\\Debug\\curve_copy_probe.exe",
+            "sha256": "b359d018feb64eb09ac0127aac9e77a74dab0e1525a2dfdaabace6b2bb3681f0"
+          }
+        }
+      },
+      "adoption_memory": {
+        "status": "passed",
+        "outcomes": 53,
+        "case_manifest_sha256": "d0b07b3c9129f92355987e55083d7a50fef534d4e196c52f385c6f0a0c395f66",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\g10a\\RelWithDebInfo\\geometry_adoption_probe.exe",
+            "sha256": "1f486b31696a4c708bee6297721ce5704889cfbfcc6741443b8307cbf7eaf529"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\g10d\\Debug\\geometry_adoption_probe.exe",
+            "sha256": "7ca3eb2abecad527536b9e464659e28360ad569a10474f59bd16671200971857"
+          }
+        }
+      },
+      "sync_memory": {
+        "status": "passed",
+        "outcomes": 73,
+        "case_manifest_sha256": "bd00d763b40fe45d927df54493ef4f8c6db9109454bd9b53b3c7371de5acd90c",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11a\\RelWithDebInfo\\curve_synchronization_probe.exe",
+            "sha256": "7e8c985173653645bce87ac1027b74b462fda747f1c96af3150b48317f717596"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s11d\\Debug\\curve_synchronization_probe.exe",
+            "sha256": "7230e713178829a06bab4f696e679c7ffce7a4c624e38bd45f44a4d518bf42c3"
+          }
+        }
+      },
+      "snapshot_memory": {
+        "status": "passed",
+        "outcomes": 89,
+        "case_manifest_sha256": "86b447875dca6a3b63ab38f28910f32dddfd45673006cddd155eb164d93ee94a",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s12a\\RelWithDebInfo\\curve_snapshot_probe.exe",
+            "sha256": "c647819e321abf5853f8effeec2c1dc1fe453e80380cce31290cb88fedbd1f2e"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s12d\\Debug\\curve_snapshot_probe.exe",
+            "sha256": "7463cd110045483f7d2d818c73a70dcbf0b2daa1c2a5f9ee8d10f6d6fb2dd776"
+          }
+        }
+      },
+      "rebuild_memory": {
+        "status": "passed",
+        "outcomes": 117,
+        "case_manifest_sha256": "87200462af31cbad561378fac7e7488fd9552b011acc5251d9611fde7256d815",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s13a\\RelWithDebInfo\\curve_rebuild_probe.exe",
+            "sha256": "7525c64a468f502351a03c962aec575b3402f842bfe198c7e73d9de130082665"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s13d\\Debug\\curve_rebuild_probe.exe",
+            "sha256": "174947729e3270681b187bd216e6d7d721a74d0590c8d400447987d3032f5f41"
+          }
+        }
+      },
+      "samples_memory": {
+        "status": "passed",
+        "outcomes": 88,
+        "case_manifest_sha256": "5a9abc5235000d0c913d80acae4aefe9c091322ed2da554dee454c73ce3396b4",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s14a\\RelWithDebInfo\\curve_samples_probe.exe",
+            "sha256": "5a73d6c2ebd4d2b930907fcb497c8ce2a3d1560eb1ece6cca09a2acc71e63902"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s14d\\Debug\\curve_samples_probe.exe",
+            "sha256": "a797554ad8e86315f3421b8def38534963eef68431659907e0527f54b4a743ed"
+          }
+        }
+      },
+      "publication_memory": {
+        "status": "passed",
+        "outcomes": 139,
+        "case_manifest_sha256": "8b33d9408b3f235c2ce8834c0a9181e8dc23eccacdecea43752ac4a25372c1d9",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s15a\\RelWithDebInfo\\curve_publication_probe.exe",
+            "sha256": "1518e62653ce0515374a6c66e453fdc726739c3f060337f73a2ae8f6ed3db05b"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s15d\\Debug\\curve_publication_probe.exe",
+            "sha256": "0c7b16fe0915bd457df2e2c37d1c13f7e59ee0d7eda06cc0db15affaef3d0c80"
+          }
+        }
+      },
+      "graph_memory": {
+        "status": "passed",
+        "outcomes": 156,
+        "case_manifest_sha256": "5412243a82efb944888ae345173c62873d36a12ade58fc7403a09c1a8603cdb1",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s16a\\RelWithDebInfo\\curve_sample_graph_probe.exe",
+            "sha256": "74bc5111145d38bc1b0d44e5d8895940508794db86cc25af3b7d395cb1bddb8b"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s16d\\Debug\\curve_sample_graph_probe.exe",
+            "sha256": "64726f84728b63c959b83e04d75c2afe1059367d53b4d7809a2e27e7f4e8dd84"
+          }
+        }
+      },
+      "lifetime_memory": {
+        "status": "passed",
+        "outcomes": 53,
+        "case_manifest_sha256": "e7780a383f41453e7e58ef4e982aa459c3b09fdb53d058ac70d03a575c78b073",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s17a\\RelWithDebInfo\\curve_sample_lifetime_probe.exe",
+            "sha256": "2c2bb533c444c184927d95e1d4406acf4715c823fe40c0d0ad46aad01ccbd6a0"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s17d\\Debug\\curve_sample_lifetime_probe.exe",
+            "sha256": "0c1300c760796c183ce09c83f3d381b1af6354693fc14356a185a00bd41e2144"
+          }
+        }
+      },
+      "initial_mesh_memory": {
+        "status": "passed",
+        "outcomes": 27,
+        "case_manifest_sha256": "4fc64ae7d28868246f3380ebb42e2872381d479ef0d3170fdf27fa58b812fa3d",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s18a\\RelWithDebInfo\\initial_mesh_probe.exe",
+            "sha256": "52c96ffa54824a770714400b7f031c514a72bc4e47fd280f963c4a3ebf57db90"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s18d\\Debug\\initial_mesh_probe.exe",
+            "sha256": "717920d10d676e22829b1f330d3a6e950a8127578d682f6d5a84e79a3fe772ad"
+          }
+        }
+      },
+      "mesh_adoption_memory": {
+        "status": "passed",
+        "outcomes": 36,
+        "case_manifest_sha256": "7292d785b7301f5f48d1b406757e88b8d6803c3e58f4739d2f09431a36b9d997",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s19a\\RelWithDebInfo\\mesh_adoption_probe.exe",
+            "sha256": "7c0d0846acfac9a8b62f25816ab91d6f839ace558efb15f5c3015bc420e33fde"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s19d\\Debug\\mesh_adoption_probe.exe",
+            "sha256": "07b88dc2afb647c35771245812c8721c836e256ef054f6c04c22213153f43b2f"
+          }
+        }
+      },
+      "element_adoption_memory": {
+        "status": "passed",
+        "outcomes": 31,
+        "case_manifest_sha256": "ed6683b5a1db136dc469351d2eb3370aa04a0c11f6492099eb1b9bbcdd4e47cc",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s20a\\RelWithDebInfo\\element_adoption_probe.exe",
+            "sha256": "2ff85ccd85e798029ebe91ed0cf3b4ff6bf5a8265525780f4543a936ecf9801a"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s20d\\Debug\\element_adoption_probe.exe",
+            "sha256": "3c69197afe385f4e3a39c79fe757954cec9c78b4419656498ad5d35948df7d3b"
+          }
+        }
+      },
+      "triangle_construction_memory": {
+        "status": "passed",
+        "outcomes": 39,
+        "case_manifest_sha256": "8485857a0e0489dddf4204cbf03714d178c10d227de719d46a24494d8937b0ae",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s21a\\RelWithDebInfo\\triangle_construction_probe.exe",
+            "sha256": "e6ccf7eded6975c94b202bac982792ea9097f45b9a12675e153f000f116b888b"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s21d\\Debug\\triangle_construction_probe.exe",
+            "sha256": "5d6bf4f0714ab3e601d439c558f9dbfdcbd8fbef393f74437699b1b6fd0f06ae"
+          }
+        }
+      },
+      "submesh_lifetime_memory": {
+        "status": "passed",
+        "outcomes": 28,
+        "case_manifest_sha256": "7f6dc46e1c8f7d853b917184c93d05219cf9dffac6aae1102c632604c8458078",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s22a\\RelWithDebInfo\\submesh_lifetime_probe.exe",
+            "sha256": "8a7487408a3214c3b615d788c49bc6b96c8d60d13d64b4bd4f96bdea71bc807a"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s22d\\Debug\\submesh_lifetime_probe.exe",
+            "sha256": "9b10b1b72c0e51634dc7ffd901276edb9b93e3642738a74c598c1ff79d0ddba3"
+          }
+        }
+      },
+      "triangle_observer_memory": {
+        "status": "passed",
+        "outcomes": 35,
+        "case_manifest_sha256": "b0d06768bb0d57b446b90ec6c1c8ffb6de4f3620611df132fa0928b382b71849",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s23a\\RelWithDebInfo\\triangle_observer_probe.exe",
+            "sha256": "9fefef9b1c7fbaa0e29375459592b49abe3fd4343587011a9e245f173e840f1d"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s23d\\Debug\\triangle_observer_probe.exe",
+            "sha256": "63c3f12f38ad2bf7892e9ec26a6c779be34f27588c1f09e25579bb90b9019193"
+          }
+        }
+      },
+      "triangle_lifetime_memory": {
+        "status": "passed",
+        "outcomes": 36,
+        "case_manifest_sha256": "19a03ac5306b24dbe7316be1be7aa4ac879fa8e9f318fc609c1c9085cca0b72e",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s24a\\RelWithDebInfo\\triangle_lifetime_probe.exe",
+            "sha256": "be343a10115ce3be537aa64a47db417585c08d49274729635a7b2ab4614fa0c4"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s24d\\Debug\\triangle_lifetime_probe.exe",
+            "sha256": "4e4ef5701e5b3b49e9f7f30e5ff941c9336f82fbea9f0f6df33b55653a251c1c"
+          }
+        }
+      },
+      "estimate_mesh_memory": {
+        "status": "passed",
+        "outcomes": 77,
+        "case_manifest_sha256": "7aee92d9b2d9641cf09abefa0edb9171b89a214a76c4a11f327de9d1b0a41534",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25a\\RelWithDebInfo\\estimate_mesh_probe.exe",
+            "sha256": "0cb7b718b90f6c0e35e5b9fb8b912fc910c0290167d6af3d9a0989f64c72dee4"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s25d\\Debug\\estimate_mesh_probe.exe",
+            "sha256": "63aca1d2ccb51c2aa742ca5abbf1915d56ae73fc2b162cc2188a75944448e53f"
+          }
+        }
+      },
+      "triangle_count_memory": {
+        "status": "passed",
+        "outcomes": 159,
+        "case_manifest_sha256": "ad5e8f8d442e56068e67d7f5d127bb705cf01c58d6d905e48cdebd9113545304",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s26a\\RelWithDebInfo\\triangle_count_probe.exe",
+            "sha256": "e751771c9a58717be281a8d60ffc64f45786b2d508271db0eff54c70cabc83d2"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s26d\\Debug\\triangle_count_probe.exe",
+            "sha256": "ac7557053a673cd5b72c5c316c264db6e8fae45003007d073a474b1ca3c90b21"
+          }
+        }
+      },
+      "error_estimate_memory": {
+        "status": "passed",
+        "outcomes": 48,
+        "case_manifest_sha256": "25640a2644e3b9b9e192f9fa632b4b2b6e11718049e5309031c568c092423419",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s27qa\\RelWithDebInfo\\error_estimate_probe.exe",
+            "sha256": "d3a9c6c2af7d410dca9d458734e8d40a95e220164eccbcc32ee74b41bad5fc44"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s27qd\\Debug\\error_estimate_probe.exe",
+            "sha256": "a5cb5bbe456bec5dd7665a1fffe0193f73a4cc27015ece3a09575f0319e3a0f6"
+          }
+        }
+      },
+      "triangle_area_memory": {
+        "status": "passed",
+        "outcomes": 311,
+        "case_manifest_sha256": "d375762274fa02d1b9be7e9caf1f968660395afb5936da67cbd65a8b77831345",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s28qa\\RelWithDebInfo\\triangle_area_probe.exe",
+            "sha256": "420d29622140b0568843ca64946599f09ce2e7e33a93b8e9dc0d981ce5ba97b6"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s28qd\\Debug\\triangle_area_probe.exe",
+            "sha256": "471e12f0df488cf4db3416eea66db5fa036467858999e92a944169b0db7459bf"
+          }
+        }
+      },
+      "triangle_area_real_memory": {
+        "status": "passed",
+        "outcomes": 31,
+        "case_manifest_sha256": "f3cb2d68357bdb3252df6bc9eb1823362113adc4dc0559a835bc27505cbf0aaf",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s28qa\\RelWithDebInfo\\triangle_area_real_probe.exe",
+            "sha256": "91deb59c121151480ae473ab3b20de5332665f2e63c33fa6e5855d6b6449c431"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s28qd\\Debug\\triangle_area_real_probe.exe",
+            "sha256": "20681ae14ff6a6baf8ed2eb2565cb242b537cc2c4d1190428b6387605c833bcb"
+          }
+        }
+      },
+      "charge_input_memory": {
+        "status": "passed",
+        "outcomes": 189,
+        "case_manifest_sha256": "f9d3eb54040d9fdd7463cdc188941883fe68d8e14072bc2073ebfa9d6e5b3f19",
+        "executables": {
+          "asan": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s29qa\\RelWithDebInfo\\charge_input_probe.exe",
+            "sha256": "210ac87a82c0476caa20db5477e4cb3eeea91d5236f84dbbc6c81c33e9d3056a"
+          },
+          "crt": {
+            "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s29qd\\Debug\\charge_input_probe.exe",
+            "sha256": "bb2ff26b34df97bb67c10643988680da9a277e5357aa34d6501732948b9ef059"
+          }
+        }
+      }
+    },
+    "models": {
+      "eistute": {
+        "accepted_steps": [
+          0,
+          1
+        ],
+        "rejected_steps": [
+          2,
+          3,
+          4
+        ],
+        "head_comparison": {
+          "model": "eistute",
+          "compared_meshes": 5,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 1168,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        }
+      },
+      "book": {
+        "accepted_steps": [
+          0,
+          1
+        ],
+        "rejected_steps": [
+          2,
+          3
+        ],
+        "head_comparison": {
+          "model": "book",
+          "compared_meshes": 4,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 4256,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        }
+      }
+    },
+    "application_sha256": "39dde24a7dd3152c6e136f6cbb67abd9412209356f02cb19c198639683df122d"
+  },
+  "disposition": "Do not close slice 32 or start the next item until the final remote audit completes. Preserve the failed campaign unchanged; no required gate or numerical policy is relaxed.",
+  "browser_inventory": "No enabled browser surfaces were available for remote UI verification."
+}

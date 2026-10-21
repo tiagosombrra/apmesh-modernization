@@ -1,8 +1,8 @@
 # Local quality automation
 
-## Completed Bezier observer retirement (active slice 32)
+## Completed Bezier observer retirement (PR #86)
 
-The candidate adds required application.bezier_observer_contracts and
+The repair adds required application.bezier_observer_contracts and
 tooling.bezier_observer_preservation. Normal contracts include 576 retirement
 observations and five Geometry destruction/move/self-move scenarios. The isolated
 tools/qualify_bezier_observers.py requires 126 expected outcomes, 19 measured
@@ -14,8 +14,12 @@ audit still rejects its four mutations, allowing only the exact separately
 checked retirement destructor. No required gate is relaxed. The full prepublication
 campaign passes with 45 CTest, 74 Python controls, 28 batteries/2874 expected
 outcomes and exact repeated article traces on 598 protected inputs. Exact
-published-head confirmation belongs to the review PR; integration/main
-qualification remain pending. Commands, classification and limits are in
+published-head qualification passes all 107 commands. Implementation main passed
+106 local commands before a retained terminal API timeout; a separate explicit
+continuation completes the remote tree/branch/PR/check, environment and exact
+checkout gates. All 598 protected inputs remain unchanged. The original failed
+report remains failed and hash-linked; no completed numerical/instrument battery
+was rerun to recover the network-only failure. Commands and scope are in
 [the observer evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
 
 ## Bezier construction lifetime (PR #84)
