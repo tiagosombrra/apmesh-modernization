@@ -1,12 +1,32 @@
 # Project state
 
-Active bounded item: stage 3 slice 31, Bezier construction lifetime.
-Repair both fresh-curve ownership on construction failure and borrowed-curve
-observer suffix restoration, sharing the already qualified scope with charge
-estimation. Candidate memory and token checks pass; full delivery qualification
-and integration remain pending. Slice 30 is the latest qualified baseline.
+## Latest qualified work: stage 3 slice 31
 
-## Latest qualified work: stage 3 slice 30
+Stage 3 slice 31 is qualified. PR #84 integrates head `c94ed17373abc04c9bbb5359a4ea686a44b886f3`
+as main `1bc4038ad55a6b5fce7ec99db3fc5b200016ea69`, preserving complete tree `d950dbb0a49e4a4ec8109a6d4feefa360d5c10a2`
+(1933 blobs). Exact-head/main full gates pass on the same 594
+protected inputs: CTest 43/43, zero skips, 74 Python controls, 27 memory batteries/
+2748 expected outcomes, 1040 retained scalar sequences, selected lint/format/
+inventory and exact repeated Eistute/Book accepted/rejected traces.
+
+Fresh Bezier curves now have local unique owners until construction succeeds;
+failed borrowed-curve construction restores exclusively appended observer suffixes.
+The unchanged scope is shared with charge estimation. The new 71 outcomes cover
+32 complete sweeps/348 allocation denials; 16 actual GCC and 32 MSVC trace pairs
+preserve scalar bits, controls, directions and live incidence. Four independent
+mutations are rejected. Original 32 failed partial sweeps/208 observed denials and
+39 other expected outcomes, including a zero-retention observer defect, remain
+retained. See [root cause and bounded closure](evidence/STAGE3_BEZIER_CONSTRUCTION.md).
+
+Stage 3 remains open. Next audit completed patch observer lifetime and caller
+curve/patch destruction ordering. Successful fresh-curve caller adoption,
+ordinary deregistration, arbitrary publications, cache/metadata/acceptance
+rollback and full-process/parallel/LSan/UBSan remain unqualified. Remaining
+estimator quadrature VLA/domain and interpolation singularity findings are retained
+without new numerical policies or a demonstrated current serial failure.
+Stages 4-11 remain pending.
+
+## Stage 3 slice 30 qualified
 
 Stage 3 slice 30 is qualified. PR #82 integrates head `45ad4f7fc50bc6dcf8b730be69443801aea7ac43`
 as main `181e2acc70746d7abb5f64a924fce6aed51313e8`, preserving complete tree `17fc7f2eae0f6d87a0ccb1a3df581cab32c62eb9`
@@ -27,7 +47,7 @@ lifetime. Arbitrary callbacks, internal solver exceptions, complete cache/metada
 rollback, malformed input/partial output and full-process/parallel/LSan/UBSan remain
 unqualified. Stages 4-11 remain pending.
 
-Updated: 2026-10-20 (America/Fortaleza).
+Updated: 2026-10-21 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
 ## Stage 3 slice 29 qualified

@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Bezier construction lifetime (PR #84)
+
+Stage 3 slice 31 adds application.bezier_construction_contracts.
+tools/qualify_bezier_construction.py requires 71 expected outcomes, 32 complete
+allocation sweeps/348 actual denials and actual UAF/leak/denial/prefix controls.
+tools/compare_bezier_construction.py requires 16 actual GCC pairs (512 constructors
+per executable, 13824 scalar and 8192 control-coordinate/ID observations);
+32 MSVC normal trace pairs also agree. tools/audit_bezier_construction.py preserves
+public layout, complete numerical tokens, scope and charge caller semantics and
+rejects four independent mutations. Original 32 failed partial sweeps/208 denials
+and 39 other expected outcomes remain retained. Exact-head/main gates pass:
+43 CTest, 74 Python controls, zero skips and 27 batteries/2748 expected outcomes.
+Normal construction keeps external curve ownership; borrowed live curves and
+exclusive suffix publication are preconditions. Successful caller adoption,
+ordinary deregistration and full-process/parallel qualification remain open.
+See [commands and scope](evidence/STAGE3_BEZIER_CONSTRUCTION.md).
+
 ## Automatic curvature samples (PR #82)
 
 Stage 3 slice 30 adds application.curvature_sample_contracts.
