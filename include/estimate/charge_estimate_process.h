@@ -33,6 +33,8 @@ class ChargeEstimateProcess {
   std::vector<PointAdaptive> InterpolateControlPointsCurve(
       const PointAdaptive p0, const PointAdaptive p1, const PointAdaptive p2,
       const PointAdaptive p3, const double u, const double v);
+  // Borrows the patch; samples and the fixed 25-entry scratch buffer are automatic.
+  // Historical sample thresholds, order and division by points are preserved.
   double CalculateKaMedioPatch(PatchBezier *patch, int points);
   double CalculateAreaPatch(PatchBezier *patch, int pointsGaussLegandre);
   double CalculateAreaTriangleMedioRad(PatchBezier *patch);

@@ -7,8 +7,8 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 149,
-    "translation_units": 72,
+    "files": 150,
+    "translation_units": 73,
     "headers": 77,
     "directory_components": {
       "adapter": 4,
@@ -22,14 +22,14 @@
       "data/mesh": 4,
       "data/patch": 8,
       "data/tree": 2,
-      "estimate": 11,
+      "estimate": 12,
       "generator": 16,
       "input_output": 12,
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 574,
-    "first_party_include_edges": 335
+    "literal_include_directives": 576,
+    "first_party_include_edges": 336
   },
   "cross_component_directives": [
     {
@@ -329,7 +329,7 @@
     "GL/glu.h": 1,
     "GL/glut.h": 1,
     "algorithm": 10,
-    "array": 7,
+    "array": 8,
     "atomic": 3,
     "cctype": 1,
     "cfloat": 5,
@@ -379,7 +379,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "1ba622112219d46cf1adc1922a3b9cfbbae3e03cd1f8f641099493f880bc95f2"
+      "sha256": "1ea688ca1e47d64618f24500698ce5e2e85b7d49c94b8017d255ff4081b5d9b6"
     },
     {
       "path": "CMakePresets.json",
@@ -391,7 +391,7 @@
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "09cc69f9e441e091d1bb521cd15de17ceb09fa16c35052ec927d298d52472d01"
+      "sha256": "dd6fc0d2bdd8f90424986c64cdffd5189a60f20be166918aababffdcb0e366e7"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -2093,8 +2093,8 @@
       "path": "include/estimate/charge_estimate_process.h",
       "component_by_directory": "estimate",
       "kind": "header",
-      "sha256": "83ea7484f7a237a8465ef3f913dc40be6d698729dc888e495300dea6d122caaf",
-      "bytes": 2519,
+      "sha256": "cafe924cac35c532bb121998fa68a3cecc13c47cdfca06c90b2aa7915f9a0c9c",
+      "bytes": 2683,
       "includes": [
         {
           "line": 4,
@@ -4275,8 +4275,8 @@
       "path": "src/estimate/charge_estimate_process.cpp",
       "component_by_directory": "estimate",
       "kind": "translation_unit",
-      "sha256": "a54a7ae1425c8b2734cae863c01ac5ce204ed2ed20e39b5e35ebd949b9d732fc",
-      "bytes": 19936,
+      "sha256": "e91eb3d6d22474ca6e85cd92b6de3296c2115f28e57ebfa2ee993c52bbcee534",
+      "bytes": 4951,
       "includes": [
         {
           "line": 1,
@@ -4332,6 +4332,29 @@
         {
           "line": 5,
           "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "src/estimate/curvature_sample_estimate.cpp",
+      "component_by_directory": "estimate",
+      "kind": "translation_unit",
+      "sha256": "508586d5243219c14a2aa702d69dafc685c36f6bfcae3987e34995d418360d3c",
+      "bytes": 10282,
+      "includes": [
+        {
+          "line": 1,
+          "spelling": "estimate/charge_estimate_process.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/estimate/charge_estimate_process.h"
+        },
+        {
+          "line": 3,
+          "spelling": "array",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -5764,8 +5787,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 23,
-    "source_anchors": 152,
+    "contracts": 24,
+    "source_anchors": 155,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

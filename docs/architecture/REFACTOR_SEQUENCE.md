@@ -12,9 +12,9 @@ matching/control order and keep it distinct from serial ReaderFilePatches
 interning/orientation. Candidate/exact-head/main status is authoritative in
 PROJECT_STATE.md and the charge-input evidence, not inferred from this map.
 
-The next single audit is numerical estimator helper scratch/control-node
-lifetime, particularly overwritten PointAdaptive allocations in curvature
-sampling. Keep the existing formulas and 25-sample argument, distinguish actual
+The active slice 30 repairs overwritten PointAdaptive allocations and invalid
+derived sample casts in curvature sampling (C24). Automatic values and bounded
+scratch storage are implemented; full exact-head/main qualification is pending. Keep the existing formulas and 25-sample argument, distinguish actual
 numerical correspondence from memory qualification, and preserve original
 failures. Other loaders, Model/copy/cache/helper roots, arbitrary publications,
 metadata/acceptance rollback and full-process/parallel memory remain open.

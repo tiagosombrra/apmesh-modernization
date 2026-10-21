@@ -1,5 +1,16 @@
 # Modernization work log
 
+## 2026-10-20: stage 3 slice 30 candidate
+
+Remove the actual overwritten sample allocations and invalid derived casts in
+CalculateKaMedioPatch; compile the bounded sampler as a small actual unit. The
+725-case candidate battery passes (330 sampled exception positions, 342 measured
+zero-allocation operations); the original retains 367 failures. Ninety actual GCC
+paired traces preserve ordered sample/inverse arguments and scalar bits. Four
+numerical token mutations are rejected. Exact-head/main full regression and
+integration remain pending; stage 3 remains open. See
+[scope and retained negatives](evidence/STAGE3_CURVATURE_SAMPLE.md).
+
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 

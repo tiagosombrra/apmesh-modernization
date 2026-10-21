@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare nonempty charge traces and unchanged actual numerical helper bodies."""
+"""Compare charge traces, unchanged area helpers and audited sampler tokens."""
 
 import argparse
 import hashlib
@@ -8,14 +8,14 @@ from pathlib import Path
 import subprocess
 
 from qualify_charge_input import fixtures
+from audit_curvature_sample import audit as audit_sampler
 
 
 def compare(original, candidate, original_root, candidate_root, output, kind):
     output = output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     paths, _ = fixtures(output)
-    source_names = ["double ChargeEstimateProcess::CalculateKaMedioPatch(",
-                    "double ChargeEstimateProcess::CalculateAreaPatch(",
+    source_names = ["double ChargeEstimateProcess::CalculateAreaPatch(",
                     "double ChargeEstimateProcess::CalculateAreaTriangleMedioRad("]
     helper_bodies = {}
     for label, root in [("original", original_root), ("candidate", candidate_root)]:
@@ -24,6 +24,7 @@ def compare(original, candidate, original_root, candidate_root, output, kind):
         helper_bodies[label] = hashlib.sha256(source.encode()).hexdigest()
     if helper_bodies["original"] != helper_bodies["candidate"]:
         raise ValueError("Numerical helper bodies changed; review the comparison scope")
+    sampler = audit_sampler(original_root, candidate_root)
     records = []
     for shape, path in enumerate(paths):
         for seed in range(2):
@@ -61,7 +62,8 @@ def compare(original, candidate, original_root, candidate_root, output, kind):
         raise ValueError("Incomplete nonempty paired trace inventory")
     report = {"status": "passed", "kind": kind, "paired_traces": len(records),
               "numerical_helper_sha256": helper_bodies,
-              "scope": "24 original/repaired normal/repeated/writer invocations, four valid positive BP fixtures and two initial Geometry layouts. Exact control coordinates/IDs, curve incidence, stable returned order, scalar IEEE bits, retained curvatures count and actual writer bytes. The actual kind compiles the full unchanged numerical estimator unit with GCC; this is numerical correspondence, not helper scratch memory or undefined-behavior qualification. The controlled kind forces existing member results only in its test target. No scientific policy change or malformed-input qualification.",
+              "sampler_token_audit": sampler,
+              "scope": "24 original/repaired normal/repeated/writer invocations, four valid positive BP fixtures and two initial Geometry layouts. Exact control coordinates/IDs, curve incidence, stable returned order, scalar IEEE bits, retained curvatures count and actual writer bytes. The actual kind compiles the actual numerical estimator units with GCC. Area helper bodies must be identical; the sampler has an independent storage/cast-only token audit with rejected numerical mutations. This is numerical correspondence, not memory or undefined-behavior qualification. The controlled kind forces existing member results only in its test target. No scientific policy change or malformed-input qualification.",
               "executables": {label: {"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
                               for label, path in [("original", original), ("candidate", candidate)]},
               "cases": records}

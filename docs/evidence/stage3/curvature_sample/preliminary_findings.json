@@ -1,0 +1,64 @@
+{
+  "initial_link": "Probe omitted actual WriteOBJFile constructor/destructor dependencies; corrected by linking actual caller dependency units, without stubs.",
+  "initial_trace": "The observer initially counted solver-internal Parameterize calls as caller samples, exceeding its bound. A test-only inverse scope now counts only the caller-level forward/inverse boundaries, while delegating the solver unchanged. The initial failing trace is retained.",
+  "files": {
+    "build/s30-preflight/report.json": "c361f37a7fb2c33df738a9bded6acb5d871c3c4259f1492fbe5b8c3bcc336fcd",
+    "build/s30-preflight/1.log": "3818071d32e00624659ab8ce6371495ad066397aab3c5bb18b9e4fe5a23d49e2",
+    "build/s30-smoke/asan-contracts.log": "6ecf1e1bd9a1eb098bede51f692697983f9512bec3355b73d51b3804f32c1fe8",
+    "build/s30-link-repair/report.json": "3a950b957233a622d160ac8466f7c7b23a2f5c7acd622e447758cf26e43f7332",
+    "build/s30-trace-repair/asan-contracts.log": "9ef5a88f1691291eac282b1a510f155828aeb8d512183e352d7ba94ed0249544",
+    "build/s30-trace-repair/crt-contracts.log": "9a50865528d7c54054ab0b774742b134da9ef15fa5c558ec590ec95a86fa53b2",
+    "build/s30-local-quality/0.log": "196ceb71b1a14b23d65747c4afd886a69fbcfe311d2aa496a174856121981e7d"
+  },
+  "runtime": "MSVC 19.44, separate ASan RelWithDebInfo /MD and static Debug CRT /MTd, matching iterator ABI; GCC 16.1 C++17 actual numerical comparison. ASan detect_leaks=0, Debug CRT independently checks retention. Original MSVC adapter fixes only VLA extent at 25; GCC original retains VLA.",
+  "sampler_adapters": {
+    "s30qa": {
+      "source_sha256": "e91eb3d6d22474ca6e85cd92b6de3296c2115f28e57ebfa2ee993c52bbcee534",
+      "original": false,
+      "fixed_extent_adapter": false,
+      "sampler_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adapter_sha256": "ce242b8677147c708dbcf24d7d1d0a9de23d7b4dcf5730a53c26a7896f1c9f03",
+      "scope": "Exact lifetime; original sampler with only the explicitly selected VLA extent adaptation. Current sampler is compiled from its actual unit."
+    },
+    "s30qd": {
+      "source_sha256": "e91eb3d6d22474ca6e85cd92b6de3296c2115f28e57ebfa2ee993c52bbcee534",
+      "original": false,
+      "fixed_extent_adapter": false,
+      "sampler_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adapter_sha256": "ce242b8677147c708dbcf24d7d1d0a9de23d7b4dcf5730a53c26a7896f1c9f03",
+      "scope": "Exact lifetime; original sampler with only the explicitly selected VLA extent adaptation. Current sampler is compiled from its actual unit."
+    },
+    "s30oa": {
+      "source_sha256": "a54a7ae1425c8b2734cae863c01ac5ce204ed2ed20e39b5e35ebd949b9d732fc",
+      "original": true,
+      "fixed_extent_adapter": true,
+      "sampler_sha256": "1ad86a96481e97e2a2cb3caf28bafef68c1355ea8cb24a5a7324309b48462b9a",
+      "adapter_sha256": "37bf7149ded7c7b751714093c7ba131adf8c711f545f2a7829c90f0e5727f825",
+      "scope": "Exact lifetime; original sampler with only the explicitly selected VLA extent adaptation. Current sampler is compiled from its actual unit."
+    },
+    "s30od": {
+      "source_sha256": "a54a7ae1425c8b2734cae863c01ac5ce204ed2ed20e39b5e35ebd949b9d732fc",
+      "original": true,
+      "fixed_extent_adapter": true,
+      "sampler_sha256": "1ad86a96481e97e2a2cb3caf28bafef68c1355ea8cb24a5a7324309b48462b9a",
+      "adapter_sha256": "37bf7149ded7c7b751714093c7ba131adf8c711f545f2a7829c90f0e5727f825",
+      "scope": "Exact lifetime; original sampler with only the explicitly selected VLA extent adaptation. Current sampler is compiled from its actual unit."
+    },
+    "s30qg": {
+      "source_sha256": "e91eb3d6d22474ca6e85cd92b6de3296c2115f28e57ebfa2ee993c52bbcee534",
+      "original": false,
+      "fixed_extent_adapter": false,
+      "sampler_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adapter_sha256": "ce242b8677147c708dbcf24d7d1d0a9de23d7b4dcf5730a53c26a7896f1c9f03",
+      "scope": "Exact lifetime; original sampler with only the explicitly selected VLA extent adaptation. Current sampler is compiled from its actual unit."
+    },
+    "s30og": {
+      "source_sha256": "a54a7ae1425c8b2734cae863c01ac5ce204ed2ed20e39b5e35ebd949b9d732fc",
+      "original": true,
+      "fixed_extent_adapter": false,
+      "sampler_sha256": "bcb6bd61a7edaf85e25c724f2de5d8744d7e0d2c7e5a9b66e1f37946f30d2739",
+      "adapter_sha256": "2a5fe5ef5e12577be8bc80611b2894e770a28f3503a2a1add02ceedef8f234de",
+      "scope": "Exact lifetime; original sampler with only the explicitly selected VLA extent adaptation. Current sampler is compiled from its actual unit."
+    }
+  }
+}

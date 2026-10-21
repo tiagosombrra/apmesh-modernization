@@ -23,13 +23,13 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 ## Evidence and coverage
 
 [source_inventory.json](source_inventory.json) deterministically covers all
-149 first-party C++ files: 72 translation units and 77 headers, plus hashes for
-the 7 CMake inputs (including isolated memory probes). It records 574 potential literal include directives and
-335 distinct directed first-party include edges. Conditional branches are kept;
+150 first-party C++ files: 73 translation units and 77 headers, plus hashes for
+the 7 CMake inputs (including isolated memory probes). It records 576 potential literal include directives and
+336 distinct directed first-party include edges. Conditional branches are kept;
 this is not the active preprocessed graph. The 16 directory groups below are
 source organization, not automatically inferred architectural layers.
 
-[contracts.json](contracts.json) contains 23 reviewed contracts with 152 exact
+[contracts.json](contracts.json) contains 24 reviewed contracts with 155 exact
 source anchors. The checker rejects stale files, missing anchors and empty
 coverage. Matching anchors establishes traceability; it does not prove the
 semantic statements or all runtime paths. The statements below come from
@@ -57,7 +57,7 @@ focused source review, with uncertainty and deferred qualification stated.
 The fresh compilation database contains all 72 production translation units.
 Compilation of a file with inactive branches does not qualify those branches.
 Development Python tools/tests, vendored Eigen and publication artifacts have
-different roles and are outside the 149-file production count.
+different roles and are outside the 150-file production count.
 
 ## Scientific sequence and actual component boundaries
 
