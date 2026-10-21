@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "records": {
+    "s32og": {
+      "compiler": "C:/msys64/ucrt64/bin/c++.exe",
+      "language": "GNU C++17",
+      "actual_compile_commands": 14,
+      "commands_sha256": "949b0a5aee1d97bbd8c9a8c8947e89275defa5f08a4b9db003eb1b31cd7a39ea",
+      "cache_sha256": "4be178236cc1d47d91454701bc17f432afd2c17e0c931e0f795d9c2a7d2dcf40",
+      "executable_sha256": "3b374893de8c90c65f7a2785ed354654a3d81db672a748e8340a331064eac3c0",
+      "compiler_version": "c++.exe (Rev5, Built by MSYS2 project) 16.1.0",
+      "compiler_executable_sha256": "798a6eb495b30cf771dc759b5508d269ecb0dddac739719e8b30fe0ac0744b69"
+    },
+    "s32qg": {
+      "compiler": "C:/msys64/ucrt64/bin/c++.exe",
+      "language": "GNU C++17",
+      "actual_compile_commands": 14,
+      "commands_sha256": "45d20180ccb2003696395d84e55e96c7ce53acc6f638edd31c1eff96fc638c24",
+      "cache_sha256": "7bcb84c8a9836d98e4d5c3dc94cbfcdc0b151d7c4fc4f02ff4c13f064e0f90f1",
+      "executable_sha256": "fccfe664a48947867ac900963cbba2589aecea9a82e16f09e9676cef7346eb17",
+      "compiler_version": "c++.exe (Rev5, Built by MSYS2 project) 16.1.0",
+      "compiler_executable_sha256": "798a6eb495b30cf771dc759b5508d269ecb0dddac739719e8b30fe0ac0744b69"
+    },
+    "s32qa": {
+      "configuration": "RelWithDebInfo",
+      "imports": [
+        "KERNEL32.dll",
+        "MSVCP140.dll",
+        "clang_rt.asan_dynamic-x86_64.dll",
+        "VCRUNTIME140.dll",
+        "VCRUNTIME140_1.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll"
+      ],
+      "imports_sha256": "6bfc10482c73f067672b6d04056746a7a69996b2ab5c382255cb1372e507c547",
+      "executable_sha256": "19bbd7880a7aaaf3b41a3b1fb41e4b6a1a468ace852c2d5903378b2b19232a4c"
+    },
+    "s32qd": {
+      "configuration": "Debug",
+      "imports": [
+        "KERNEL32.dll"
+      ],
+      "imports_sha256": "d7e6bee40765966be9adb8ae46cb30a7d215054541ccfc784a897d21d44ee4f0",
+      "executable_sha256": "65937b86517ea3167275c22ea1c3ce9fe9fedf73cb29d0cfe3f451b30fd2c271"
+    }
+  },
+  "raw_report_sha256": "11e05570dd2e1a9e3fc88217153476434d5a680cdc08faa296fc9137c3614f10"
+}

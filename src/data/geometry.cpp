@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 #include <unordered_set>
+#include <utility>
 
 #include "data/curve/curve_adaptive.h"
 #include "data/curve/curve_adaptive_parametric_bezier.h"
@@ -14,7 +15,17 @@ Geometry::Geometry() = default;
 Geometry::~Geometry() = default;
 
 Geometry::Geometry(Geometry&&) noexcept = default;
-Geometry& Geometry::operator=(Geometry&&) noexcept = default;
+Geometry& Geometry::operator=(Geometry&& other) noexcept {
+  if (this == &other)
+    return *this;
+  Geometry incoming(std::move(other));
+  points_.swap(incoming.points_);
+  vectors_.swap(incoming.vectors_);
+  curves_.swap(incoming.curves_);
+  patches_.swap(incoming.patches_);
+  // The retired graph now has the same patch-before-curve order as destruction.
+  return *this;
+}
 
 void Geometry::InsertCurve(std::unique_ptr<CurveAdaptive> curve) {
   curves_.push_back(std::move(curve));

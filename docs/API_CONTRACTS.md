@@ -10,6 +10,20 @@ Document the unique owner, borrowed references, invalidation on replacement,
 copying versus transfer, rollback and error-path cleanup for each API.
 Shared geometry does not imply shared ownership.
 
+Completed Bezier retirement (C26/ADR-0033) requires current borrowed curves to
+outlive the entire patch destructor. Destruction removes every observer equal
+to the patch address from those curves, preserving other pointer values in
+order without allocating or deleting patches. Vector capacity and iterators
+are not preserved contracts. Arbitrary curve replacement, copied observer lists
+and foreign publications remain outside this boundary.
+
+Geometry owns its curves and patches exclusively. Destruction and populated
+move assignment retire old patches before their borrowed curves; incoming
+objects keep their addresses and self move preserves the graph. Borrowing from
+another Geometry's retiring destination owners is invalid; foreign observers
+are not automatically rebound. Actual qualification status and remaining scope
+are in [the observer evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
+
 ## Numerical contracts
 
 State domain, coordinate system, units, orientation, degeneracy, finite-value

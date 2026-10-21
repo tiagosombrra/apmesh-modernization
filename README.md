@@ -11,6 +11,7 @@ Scientific extensions require separate proposals aligned with the advisors.
 - [Full modernization plan](docs/MODERNIZATION_PLAN.md): stages 0–11 and gates.
 - [Source provenance](docs/PROVENANCE.md): exact published baseline and import.
 - [Local quality commands](docs/QUALITY_AUTOMATION.md): formatting, lint and tests.
+- [Stage 3 closure inventory](docs/architecture/STAGE3_CLOSURE_INVENTORY.md): finite remaining lifecycle obligations and required observations.
 - [Initial audit](docs/audit/INITIAL_AUDIT.md): observed defects and limitations.
 - [Published package README](docs/PUBLISHED_README.md): unchanged historical usage.
 
@@ -19,6 +20,8 @@ Scientific extensions require separate proposals aligned with the advisors.
 Use Python >=3.10, CMake >=3.21, Ninja and a C++17-capable compiler. Put the
 intended toolchain on PATH. GCC/MinGW is qualified for this bootstrap; MSVC
 still has historical variable-length-array blockers. See the evidence report.
+The quality guide also gives an explicit Windows configuration equivalent to
+the qualified local preset, without requiring ignored machine-specific files.
 
 ```sh
 cmake --preset local-serial
@@ -28,7 +31,9 @@ python tools/quality.py doctor
 ```
 
 The local suite includes required tooling, input, geometry, orientation,
-report-semantics and lifecycle tests; current counts are recorded below. clang-tidy is required for its real header-scope controls;
+report-semantics and lifecycle tests; integrated baseline counts are recorded
+below and active qualification is recorded in PROJECT_STATE.md.
+clang-tidy is required for its real header-scope controls;
 LLVM 22.1.8 is the qualified version. Commands fail on empty discovery or missing
 tools. Full memory safety, legacy lint cleanup, Doxygen, C++23 and Eigen removal
 remain later work.
@@ -65,9 +70,11 @@ The new 71 outcomes cover 32 complete sweeps/348 allocation denials; 16 GCC and
 32 MSVC constructor pairs preserve numerical bits, controls and directions.
 Original 32 failed partial sweeps and preliminary findings remain retained.
 See [the bounded closure audit](docs/evidence/STAGE3_BEZIER_CONSTRUCTION.md).
-Successful caller adoption, ordinary observer deregistration, other construction
-roots, complete cache/metadata rollback and full-process/parallel memory remain
-open; stages 4-11 are pending.
+Completed observer retirement and dependent Geometry move/destruction ordering
+are the active slice 32; see [the bounded evidence](docs/evidence/STAGE3_BEZIER_OBSERVERS.md).
+Integration status remains authoritative in PROJECT_STATE.md. Successful caller
+adoption, other construction roots, complete cache/metadata rollback and
+full-process/parallel memory remain open; stages 4-11 are pending.
 
 ## Repository policy
 

@@ -515,6 +515,32 @@ else()
   endif()
 endif()
 
+# Exercise completed Bezier observer lifetime and dependent Geometry retirement.
+add_executable(bezier_observer_probe bezier_observer_probe.cpp ${curve_sources}
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_hermite.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_coons.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/patch/patch_bezier.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/geometry.cpp"
+  "${AP_MESH_CURVE_SOURCE_ROOT}/src/generator/curve_synchronization.cpp")
+target_compile_features(bezier_observer_probe PRIVATE cxx_std_17)
+target_include_directories(bezier_observer_probe PRIVATE "${AP_MESH_CURVE_SOURCE_ROOT}/include")
+if(MSVC)
+  target_compile_options(bezier_observer_probe PRIVATE /utf-8 /W4 /EHsc /permissive- /Zc:nrvo-)
+  target_compile_definitions(bezier_observer_probe PRIVATE _USE_MATH_DEFINES $<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=0>)
+  set_property(TARGET bezier_observer_probe PROPERTY MSVC_RUNTIME_LIBRARY
+    "$<IF:$<CONFIG:Debug>,MultiThreadedDebug,MultiThreadedDLL>")
+  if(AP_MESH_CURVE_ASAN)
+    target_compile_options(bezier_observer_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(bezier_observer_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+else()
+  target_compile_options(bezier_observer_probe PRIVATE -fno-elide-constructors)
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(bezier_observer_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endif()
+
 # Exercise actual Bezier constructors and their curve-publication boundary.
 add_executable(bezier_construction_probe bezier_construction_probe.cpp ${curve_sources}
   "${AP_MESH_CURVE_SOURCE_ROOT}/src/data/curve/curve_adaptive_parametric_bezier.cpp"

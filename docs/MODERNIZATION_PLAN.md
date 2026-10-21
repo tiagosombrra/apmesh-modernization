@@ -3,6 +3,15 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
+Current work: stage 3 slice 32, completed Bezier observer retirement and dependent
+Geometry ordering. Bounded prepublication qualification passes: 45 CTest, 74
+Python controls, 28 memory batteries/2874 expected outcomes and exact repeated
+article traces on 598 protected inputs. Required published-head confirmation is
+recorded in the review PR; integration/main qualification remain pending. Slice
+31 below remains the last integrated baseline. The [stage 3 closure inventory](architecture/STAGE3_CLOSURE_INVENTORY.md)
+maps the finite remaining obligations and their required evidence without reopening
+qualified slices or treating future portability/numerical work as completed.
+
 Stage 3 slice 31 is qualified. PR #84 integrates head `c94ed17373abc04c9bbb5359a4ea686a44b886f3`
 as main `1bc4038ad55a6b5fce7ec99db3fc5b200016ea69`, preserving complete tree `d950dbb0a49e4a4ec8109a6d4feefa360d5c10a2`
 (1933 blobs). Exact-head/main full gates pass on the same 594

@@ -1,5 +1,24 @@
 # Project state
 
+## Active work: stage 3 slice 32
+
+Completed Bezier observer retirement and dependent Geometry move/destruction
+ordering are the single active item. The implementation candidate adds required
+observer contracts and an independent preservation gate. The full prepublication
+campaign passes on 598 frozen protected inputs: 45/45 CTest, zero skips, 74 Python
+controls, 28 memory batteries/2874 expected outcomes and exact repeated
+Eistute/Book accepted/rejected/incidence/CSV traces. All 106 command results and
+case/child-log identities were independently checked. Published-head confirmation
+is recorded in the review PR; integration and post-merge qualification remain
+pending. The last integrated qualification remains slice 31.
+See [bounded evidence](evidence/STAGE3_BEZIER_OBSERVERS.md) and the
+[finite closure inventory](architecture/STAGE3_CLOSURE_INVENTORY.md).
+
+The full stage 3 and stages 4-11 remain open. Historical "next" paragraphs below
+record earlier checkpoints; they do not override this active item. After this
+bounded delivery, audit successful fresh-curve caller adoption and remaining
+loader/Model/copy roots before claiming broader lifecycle closure.
+
 ## Latest qualified work: stage 3 slice 31
 
 Stage 3 slice 31 is qualified. PR #84 integrates head `c94ed17373abc04c9bbb5359a4ea686a44b886f3`
@@ -1066,6 +1085,7 @@ Other constructors, custom sources, helper/template/tree/mate paths, failed-tree
 observer reuse and full-process/parallel/LSan/UBSan remain open. Stages 0-2 stay
 closed for measured scope; stages 4-11 pending. Doxygen API debt stays stage 8.
 
-Current next work: triangle destruction/observer lifetime with SubMesh destruction/
-move ordering. Failed-constructor registration restoration is qualified for the
-bounded actual-unit fixtures; general destruction/graph reuse and stage 3 stay open.
+Historical next-work checkpoint (slice 21): triangle destruction/observer lifetime
+and SubMesh ordering were subsequently addressed by slices 22-24. Their measured
+scope does not establish general graph reuse or stage 3 closure. The active item
+and finite remaining inventory are linked at the top of this document.

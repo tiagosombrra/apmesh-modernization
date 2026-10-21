@@ -1,0 +1,1896 @@
+{
+  "status": "passed",
+  "expected_outcomes": 126,
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "71e15a6545bfe4addb74fc7aad36cc94c7b837967094d8eebf7480641ebb3455",
+      "retained": [],
+      "observations_count": 583,
+      "observations_sha256": "5ddedb5f39ebb54ff7796db248a14804ad55c1891fed10f2ca01c33a1f6baef9"
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-destroy",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "3736adbbacbc21d01d9aebeb46a0b1a17e2a40ba97627595726f4bbf5af435df",
+      "retained": [],
+      "observations_count": 1,
+      "observations_sha256": "f1a6198e71d976dc8a49a4c50b006fb271b492b41c1cfe6cfd1fd2b5bb69c787"
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-construct",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "aecf22475230cc9d06bf91602affd8e8b7d25176554699650ae7a859f8386792",
+      "retained": [],
+      "observations_count": 1,
+      "observations_sha256": "0e623aec269b1e07c5078877d199b55c308f91349371b1cb446e384eaefe5edf"
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-assign",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "8dbbf386b0753f5132474b784af512673994b7b6db6a25fd7534dfff96f14ff9",
+      "retained": [],
+      "observations_count": 1,
+      "observations_sha256": "186d7d86beee68eca1f6f44b23133c9ea0f9eeb7be29ef9d495a408340fa7509"
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-self-move",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "3b0bd9d58334dcd2559d4507abf8b3c45d662a0311077ef2e3fc44ec1a4e1d6a",
+      "retained": [],
+      "observations_count": 1,
+      "observations_sha256": "16c88362815264f483e359f6aa71e9ec89fcebc943b7d50a082a683a6289d32f"
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-consume",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "b940d6a6898d50665993eaa16b388ff77a77c2a5524b3974f7d44ccbb29772c1",
+      "retained": [],
+      "observations_count": 3,
+      "observations_sha256": "d5ccce8c559fd90b475d81924f4ca6debb7fdcbb2254e526be13379a04c7df25"
+    },
+    {
+      "instrument": "asan",
+      "mode": "sync-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1047d385ce83f582231c99f662a48135d00069b2ff0af1cc5316e4f923f3a11e",
+      "retained": [],
+      "observations_count": 1,
+      "observations_sha256": "f3fbf44a6809ca8f2d2e1e21bd6a200ab0ad9149473aa4c3ff508a358662ab08"
+    },
+    {
+      "instrument": "asan",
+      "mode": "sync-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1047d385ce83f582231c99f662a48135d00069b2ff0af1cc5316e4f923f3a11e",
+      "retained": [],
+      "observations_count": 1,
+      "observations_sha256": "f3fbf44a6809ca8f2d2e1e21bd6a200ab0ad9149473aa4c3ff508a358662ab08"
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-expired",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e66daacbc9658c9481a0607b0e3c4f1b84ac2338fa9247c99e1539d853f59a3c",
+      "retained": [],
+      "observations_count": 2,
+      "observations_sha256": "14eca6d4bc38a4b9ebd5ef0e27f79c874f3fc0f105f82e7bb15d16430ebd55f2"
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "178ad95a65f1ede6db0aec4e0fb5cf4cc1483e09e2c3fd1cac8daf02d3c5d527",
+      "retained": [],
+      "observations_count": 3072,
+      "observations_sha256": "39716287342bb381a0d1beabf7443488fe5de72084a3c76a0fe03990a14a9fab"
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "06ab0e96e7b9a85fe64aaf68f3ed13a48a5b552d1bc9d11bd497a618e7e98a98",
+      "retained": [],
+      "observations_count": 3072,
+      "observations_sha256": "2cc5ad1ae65f47a253cf8b3d24004b2593eecc10af8bd955e4705f8ad6a177aa"
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "7ac33f83b523eb86e0e3108f43ab4b2ac9a30cea55a8a22bb5d45963175ce490",
+      "retained": [],
+      "observations_count": 3072,
+      "observations_sha256": "79922710791329e6132cda388fef0e7141cb9f3c19d34d95677fe7a0d11b3cfa"
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "b8490c4ae8445bad73c6d4512df4bc35cc5882cc4829d4f5b7d62952042d3264",
+      "retained": [],
+      "observations_count": 3072,
+      "observations_sha256": "2edf4d459edddbe2fb1b40d3b6f5ccbc326b829643091ebc111d6e2bc4f0bd68"
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5b6002679ba09df9d56a67c2fd7cac3ef598e2e9d95686ae515185343cdddd89",
+      "retained": [],
+      "observations_count": 3072,
+      "observations_sha256": "44dc9cd38966fc6d46c257e75d7c74ef3f3c63c20555b4aa7abae2212bd0844d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fff4de232e3b1e792eed0bd6d4180018d67c20c4350a5b71655cc566ef2d10d2",
+      "retained": [],
+      "observations_count": 3072,
+      "observations_sha256": "d6edef2ec00369dda9cc8e382187d83a9ba79be2bb8a2e5f845fb0a7d6f007d7"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "0e195f66e6b915105f3f831baa62a4b866e0d2edeb256bafb6717f2b3d627d39",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 583,
+      "observations_sha256": "5ddedb5f39ebb54ff7796db248a14804ad55c1891fed10f2ca01c33a1f6baef9"
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-destroy",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "b331ffb8fd99abac1ba5e9c8ab9e1606876b408ed70ba9698fb4467229fe2d39",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "f1a6198e71d976dc8a49a4c50b006fb271b492b41c1cfe6cfd1fd2b5bb69c787"
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-construct",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "7a831c75a22eae654561cf65ca37be135eb572b48a5eb6de41789035e13b3d8c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "0e623aec269b1e07c5078877d199b55c308f91349371b1cb446e384eaefe5edf"
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-assign",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "c41780d1b317caf4dfc46d1d1e027a93e6ecdb1268101cd5d37542bd016e0ae4",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "186d7d86beee68eca1f6f44b23133c9ea0f9eeb7be29ef9d495a408340fa7509"
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-self-move",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "211d589fd6737e59d22e65d13347a13f67ebd6ef94045e7d379297d86eae95bf",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "16c88362815264f483e359f6aa71e9ec89fcebc943b7d50a082a683a6289d32f"
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-consume",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "dcd15354b59de7c89f38328804bf09c9a73058174bdb8399f3aab93ccc4e292c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 3,
+      "observations_sha256": "d5ccce8c559fd90b475d81924f4ca6debb7fdcbb2254e526be13379a04c7df25"
+    },
+    {
+      "instrument": "crt",
+      "mode": "sync-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "7ec1bbdec3ee59386ba557314f2c12f5fffba9b0a1011d74a7f9e1f08bec3bd3",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "f3fbf44a6809ca8f2d2e1e21bd6a200ab0ad9149473aa4c3ff508a358662ab08"
+    },
+    {
+      "instrument": "crt",
+      "mode": "sync-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "7ec1bbdec3ee59386ba557314f2c12f5fffba9b0a1011d74a7f9e1f08bec3bd3",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "f3fbf44a6809ca8f2d2e1e21bd6a200ab0ad9149473aa4c3ff508a358662ab08"
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-expired",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "bc34e1715f1a9d7a4d191934a83fc0d46494dab60996532805d343aa643f318b",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 2,
+      "observations_sha256": "14eca6d4bc38a4b9ebd5ef0e27f79c874f3fc0f105f82e7bb15d16430ebd55f2"
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "f846d5063089df06690675491d324ab923a1a63d8d6a5e8ec874a9fc0f772f1c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 3072,
+      "observations_sha256": "39716287342bb381a0d1beabf7443488fe5de72084a3c76a0fe03990a14a9fab"
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1ffa709ce464ae881016fa69709e7ea98f04fd9b83d89a0ffb80592650a381da",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 3072,
+      "observations_sha256": "2cc5ad1ae65f47a253cf8b3d24004b2593eecc10af8bd955e4705f8ad6a177aa"
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "a23082c9141af01570e0b0f79702fa39026cd7816f8e2b508ae9df847d8a4068",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 3072,
+      "observations_sha256": "79922710791329e6132cda388fef0e7141cb9f3c19d34d95677fe7a0d11b3cfa"
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "15e90503699472f52f611dd065d43f767b10ee29b9940f235ef60a4339bd2fae",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 3072,
+      "observations_sha256": "2edf4d459edddbe2fb1b40d3b6f5ccbc326b829643091ebc111d6e2bc4f0bd68"
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "3b27f6afcef650799123b5bf7eb2399f2d120d8a14acbec9afc56c80a8043542",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 3072,
+      "observations_sha256": "44dc9cd38966fc6d46c257e75d7c74ef3f3c63c20555b4aa7abae2212bd0844d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "22b7531900240e0b0d606a5585b3097aa5b89b0bac13bafd2ab5a49e64e8807c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 3072,
+      "observations_sha256": "d6edef2ec00369dda9cc8e382187d83a9ba79be2bb8a2e5f845fb0a7d6f007d7"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "c92f3475ad2b74c9dae46065dc2a86d609508627b0bdcd38cb629b6ee32de655"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "97534adf663266620f63ecfae43c58727846df53332830bbd9a2bd73a4eb49d8"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 16,
+      "observations_sha256": "f75791643debf3c8a3f010e95cafc345c57d30d5041cf9861086f18bbb5b346d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-move",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "53910f77b5a7e87e5f29da965d246ed6c49cffbddbe31d9b95cd1fa7ba7e273d"
+    },
+    {
+      "instrument": "asan",
+      "mode": "prefix-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1a9803064a02a72b1f6874336ef28bf4222c2b74cc73a09b9d23928238f63bc6",
+      "retained": [],
+      "observations_count": 1,
+      "observations_sha256": "06e530e361370d2710b08edb955e974f7c7b3c93705f820396ef9a95805e1de1"
+    },
+    {
+      "instrument": "crt",
+      "mode": "prefix-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5bc4a4d5d7967caad6f64a515edc7636455534244192b369567f539411973e3c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 1,
+      "observations_sha256": "06e530e361370d2710b08edb955e974f7c7b3c93705f820396ef9a95805e1de1"
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": "heap-use-after-free",
+      "log_sha256": "5f66aa91f6bf6c43cce64ffce59b88695445b8ce79757e215d2240a7c87dd1d1",
+      "retained": [],
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": "retained-blocks",
+      "log_sha256": "4fb868046d90c29da7cf7eabb5f7e2772560cd5eb0dc4a3fb162f7be98fb0374",
+      "retained": [
+        [
+          "1",
+          "40"
+        ]
+      ],
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "observations_count": 0,
+      "observations_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  ],
+  "zero_allocation_operations": 19,
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32qa\\RelWithDebInfo\\bezier_observer_probe.exe",
+      "sha256": "19bbd7880a7aaaf3b41a3b1fb41e4b6a1a468ace852c2d5903378b2b19232a4c"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32qd\\Debug\\bezier_observer_probe.exe",
+      "sha256": "65937b86517ea3167275c22ea1c3ce9fe9fedf73cb29d0cfe3f451b30fd2c271"
+    }
+  },
+  "scope": "Actual Bezier, curve, Geometry and synchronization units. Three incidence layouts, two surfaces, all 16 directions, three retirement positions, empty/populated prefixes and repeated/null observers. Require stable removal of every matching current-incidence observer, preserved foreign entries and Geometry dependent retirement before curves during destruction, move construction, populated move assignment and self move. Nineteen denial-enabled operations must allocate nothing; actual hook/UAF/leak and independent prefix controls remain mandatory. Live numerical traces are separate and retire registrations while patches are alive for the original comparison. Curves must outlive patches; manual curve-first deletion, arbitrary ReplaceCurve/publications, copied curve observers, Hermite patch retirement, SubMesh observer lifetime, cache/metadata/acceptance rollback and full-process/parallel/LSan/UBSan remain unqualified. Repeated slots and degenerate order fixtures are lifetime guards, not geometric validity. ASan leaks are disabled; static Debug CRT independently supplies terminal retention.",
+  "raw_report_sha256": "d0345aaa89c1a7ef6c0df7f702e7b5d14cfa9ccf6d95a6caa11de86997490824"
+}

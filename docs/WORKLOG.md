@@ -1,5 +1,20 @@
 # Modernization work log
 
+## 2026-10-21: stage 3 slice 32 audit and regression
+
+Active candidate: completed Bezier observer retirement and dependent Geometry
+move/destruction ordering. Added the missing required CTest registrations and
+Geometry scenarios in ordinary contracts, independent preservation/mutation and
+paired-trace tooling, C26/ADR-0033 and a finite stage 3 closure inventory.
+Corrected stale current-status/next-work summaries while preserving historical
+failures and scope. The full 106-command prepublication campaign passes on 598
+protected inputs: 45/45 CTest, 74 Python controls, 28 memory batteries/2874 expected
+outcomes, 1040 retained scalar sequences and exact repeated article traces. All
+command/case/child identities are independently checked; the original retains
+103 failed outcomes and two actual observer/dependent-order ASan UAFs. Published-
+head confirmation is recorded in the review PR; integration/main qualification
+remain pending. See [the bounded audit](evidence/STAGE3_BEZIER_OBSERVERS.md).
+
 ## 2026-10-21: stage 3 slice 31 qualified
 
 Stage 3 slice 31 is qualified. PR #84 integrates head `c94ed17373abc04c9bbb5359a4ea686a44b886f3`
@@ -29,7 +44,8 @@ Stages 4-11 remain pending.
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Latest delivery: stage 3 slice 31 (PR #84); see the final ledger row.
+Latest integrated delivery: stage 3 slice 31 (implementation PR #84, closure PR #85);
+see the final integrated ledger row. Slice 32 remains the active review item.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -62,13 +78,13 @@ Latest delivery: stage 3 slice 31 (PR #84); see the final ledger row.
 | 2026-10-19, stage 3 slice 24 | PR #70; head 7d22766e562669db283bedbf09fab59663546d18, main 78bc1ff045bcabebc3ac5536e53a1a87182ad365; evidence/STAGE3_TRIANGLE_LIFETIME.md | Remove completed triangle observers while borrowed nodes live; original ASan UAF/31 cleanup failures, lifetime 36/36/eight zero-allocation paths/four adoption denials, stricter prior adoption oracle, CTest 34/34 and exact model traces; estimator roots/full-process memory remain open |
 | 2026-10-19, stage 3 slice 25 | PR #72; head 6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7, main fdf65970dfad6898c88438a1017fa4bd34239d27; evidence/STAGE3_ESTIMATE_MESH.md | One estimator construction owner; actual-unit 77/77 and 5128 denials, 1040 exact scalar sequences, nonpositive guards, repaired required floating-loop lint, CTest 35/35, 1214 instrument outcomes and exact model traces; caller roots/full-process memory remain open |
 | 2026-10-19, stage 3 slice 26 | PR #74; head 82261a7e305bcde0920ecca0dcb9d7a50893ecc9, main 96ed6ae03906d1385135276b1781f67ea59d9363; evidence/STAGE3_TRIANGLE_COUNT.md | Own temporary triangle-count mesh and fresh samples, restore prior patch observer and exact borrowed list nodes; 159/159, 9014 denials, 168 paired counts, CTest 36/36, 1373 outcomes and exact model traces; area/error callers and full-process memory remain open |
-
-Current status: stages 0-2 closed; stage 3 in progress with twenty-six qualified
-slices; stages 4-11 pending. Next repair estimator area/error roots and explicit
-patch/sample lifetime without changing numerical selection policy. General mesh/
-cache/foreign observer validity and full-process/parallel memory remain open.
 | 2026-10-19, stage 3 slice 27 | PR #76; head 387cf4d94eebb06a3203727ae97bffdbb5e5f1eb, main c905baa3738db4059ecce4c4b896b8753de43daa; evidence/STAGE3_ERROR_ESTIMATE.md | Temporary evaluator root/vector released; CTest 37/37, 1421 instrument outcomes, 156062 new allocation denials, 270 paired policy decisions, exact repeated article traces; original retention/tooling failures preserved; area orchestration next |
 | 2026-10-20, stage 3 slice 28 | PR #78; head d36f71c19278547ec897d5c96a7cc37e2884c6bc, main 4ea63f2118c9cccf8968676125bb3794d7a79bd0; evidence/STAGE3_TRIANGLE_AREA.md | Temporary area Mesh/fresh sample owners and previous patch restoration; CTest 39/39, 1763 outcomes, 30942 new denials, exact paired area/degree/exception traces and repeated article runs; original failures preserved; input/control-point roots next |
 | 2026-10-20, stage 3 slice 29 | PR #80; head 86e5555b2d2590c9ab382842e4a0b0cb3005b0e5, main 42f8e62eee04e99a566f499651c477bd2cb47345; evidence/STAGE3_CHARGE_INPUT.md | Unique reader/pending owners, automatic controls, exclusive observer-suffix cleanup and reader badbit propagation; head/main 41 CTest, 74 Python controls, 1952 expected instrument outcomes, 2787 new allocation denials, 48 exact paired traces and article regression; original 155 failures and DLL CRT/reader/link preflights retained; helper scratch/full-process remain open |
 | 2026-10-20, stage 3 slice 30 | PR #82; head 45ad4f7fc50bc6dcf8b730be69443801aea7ac43, main 181e2acc70746d7abb5f64a924fce6aed51313e8; evidence/STAGE3_CURVATURE_SAMPLE.md | Automatic curvature samples, no nonexistent derived casts, bounded scratch; 42 CTest, 74 Python controls, 2677 memory outcomes, 342 zero-allocation operations, 90 exact sample pairs and article regression. Original 367 failures retained; stage 3 and full-process scope remain open |
 | 2026-10-21, stage 3 slice 31 | PR #84; head c94ed17373abc04c9bbb5359a4ea686a44b886f3, main 1bc4038ad55a6b5fce7ec99db3fc5b200016ea69; evidence/STAGE3_BEZIER_CONSTRUCTION.md | Bezier constructor fresh ownership and borrowed observer suffix restoration; shared charge scope; 43 CTest, 74 Python controls, 2748 memory outcomes, 348 new allocation denials, 16 GCC/32 MSVC constructor pairs and article regression. Original 32 failed partial sweeps retained; successful caller adoption and ordinary deregistration remain open |
+
+Historical slice-26 checkpoint: stages 0-2 closed; stage 3 had twenty-six qualified
+slices; stages 4-11 pending. Its next item was estimator area/error roots and explicit
+patch/sample lifetime without changing numerical selection policy. General mesh/
+cache/foreign observer validity and full-process/parallel memory remain open.

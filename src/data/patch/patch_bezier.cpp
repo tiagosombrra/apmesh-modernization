@@ -368,8 +368,9 @@ PatchBezier ::PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,
 }
 
 PatchBezier::~PatchBezier() {
-  // delete &mat_base_v_;
-  // delete &mat_base_u_;
+  for (auto* curve : curves_)
+    if (curve != nullptr)
+      curve->RemovePatchObservers(this);
 }
 
 PointAdaptive PatchBezier::CalculatePointUV() {

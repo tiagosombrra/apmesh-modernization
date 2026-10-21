@@ -7,6 +7,8 @@ import json
 from pathlib import Path
 import re
 
+from audit_bezier_observers import restore_patch_destructor
+
 
 def code(text):
     text = re.sub(r"//[^\n]*|/\*.*?\*/", "", text, flags=re.S)
@@ -44,7 +46,9 @@ def verify_patch(original, candidate):
                             "CurveAdaptiveParametricBezier*CreateOrientedCurve")
     source = source.replace("std::make_unique<CurveAdaptiveParametricBezier>(",
                             "newCurveAdaptiveParametricBezier(")
-    if source != code(original):
+    # Ordinary retirement is independently checked by the observer gate. Retain
+    # every constructor assertion and normalize only its exact destructor body.
+    if restore_patch_destructor(source) != code(original):
         raise ValueError("Bezier numerical/control/remaining-unit tokens changed")
     return hashlib.sha256(source.encode()).hexdigest()
 
@@ -96,7 +100,7 @@ def audit(original_root, candidate_root):
             "candidate_sha256": hashlib.sha256(candidate.encode()).hexdigest(),
             "preserved_tokens_sha256": preserved,
             "shared_scope_tokens_sha256": hashlib.sha256(scope_body(guard).encode()).hexdigest(),
-            "scope": "Exact public API/layout, shared scope and caller semantics. All original Bezier unit tokens match after normalizing only includes/comments/spacing, owning factory/storage/publication and scope declarations/commits. Commit/release positions are separately required to cover the entire constructors; four independent control/matrix/direction/early-commit mutations are rejected. Actual traces and instrument outcomes remain separately required."}
+            "scope": "Exact public API/layout, shared scope and caller semantics. All original Bezier unit tokens match after normalizing only includes/comments/spacing, owning factory/storage/publication, scope declarations/commits and the exact separately qualified ordinary retirement destructor. Commit/release positions are separately required to cover the entire constructors; four independent control/matrix/direction/early-commit mutations are rejected. The observer gate must separately reject its six lifetime/numerical mutations. Actual traces and instrument outcomes remain separately required."}
 
 
 if __name__ == "__main__":

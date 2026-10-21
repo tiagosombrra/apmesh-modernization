@@ -6,6 +6,13 @@ Only one work item is active at a time; required regression gates remain exact.
 
 ## Current bounded boundary and next audit
 
+Active slice 32 addresses completed Bezier observers and dependent Geometry
+destruction/move ordering (C26). Exact delivery status is in PROJECT_STATE.md and
+STAGE3_BEZIER_OBSERVERS.md. After that boundary, audit successful fresh-curve
+caller adoption and remaining loader/Model/copy roots. The finite
+[stage 3 closure inventory](STAGE3_CLOSURE_INVENTORY.md) governs remaining
+obligations; earlier next-work statements below are historical checkpoints.
+
 C23 records charge input/control/pending ownership, badbit resource propagation
 and exclusive appended observer-suffix cleanup. Preserve the legacy estimator's
 matching/control order and keep it distinct from serial ReaderFilePatches
@@ -16,7 +23,7 @@ Slice 30 qualifies automatic curvature samples and bounded scratch storage (C24)
 Slice 31 qualifies fresh curve ownership and borrowed observer restoration
 at the Bezier constructor boundary (C25), reusing the unchanged charge scope.
 Its exact-head/main status is authoritative in PROJECT_STATE.md and the linked
-construction audit. The next single audit is completed patch observer
+construction audit. Its next single audit was completed patch observer
 lifetime and caller curve/patch destruction ordering. Remaining estimator helpers
 have no newly established heap-lifetime defect; quadrature VLA/domain and unused
 interpolation singularity findings remain explicit portability/numerical work.

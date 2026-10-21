@@ -26,6 +26,9 @@ class CurveAdaptive {
   void SetPoints(std::list<PointAdaptive*> new_points);
   std::list<PointAdaptive*>& GetPoints();
   void InsertPatch(Patch* patch);
+  // Remove every matching borrowed observer, preserving all other entries in order.
+  // Never dereferences/deletes patches or allocates; nullptr matches null entries.
+  void RemovePatchObservers(const Patch* patch) noexcept;
   void ClearPatches();
   // Remove an exclusively appended observer suffix without deleting patches or allocating.
   // Existing prefix entries retain their identities; larger counts are a no-op.

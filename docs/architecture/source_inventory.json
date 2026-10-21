@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 583,
+    "literal_include_directives": 585,
     "first_party_include_edges": 339
   },
   "cross_component_directives": [
@@ -328,7 +328,7 @@
     "GL/gl.h": 1,
     "GL/glu.h": 1,
     "GL/glut.h": 1,
-    "algorithm": 10,
+    "algorithm": 11,
     "array": 10,
     "atomic": 3,
     "cctype": 1,
@@ -371,7 +371,7 @@
     "unistd.h": 1,
     "unordered_map": 6,
     "unordered_set": 7,
-    "utility": 8,
+    "utility": 9,
     "vector": 20,
     "windows.h": 1,
     "winsock2.h": 1
@@ -379,7 +379,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "89f02bf1884c84eb62b4c8c2f0e28c4a23523bdb98df8f3f99ee05943f9f710c"
+      "sha256": "4b4e2aa976211abda7f233b6c5e9ffc2024a2adfb3545d90e2ad74b7eb85fa82"
     },
     {
       "path": "CMakePresets.json",
@@ -391,7 +391,7 @@
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
-      "sha256": "f63e515f6814aac6d020b4d5ab6281815845b15fa5234a89eaeb7a846ec01b2b"
+      "sha256": "c0a642059636f00e61b88a44117d55595d257a3df8c145a7dc0beac68898612e"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1303,8 +1303,8 @@
       "path": "include/data/curve/curve_adaptive.h",
       "component_by_directory": "data/curve",
       "kind": "header",
-      "sha256": "fcf4841f82b9d872ccfabc976ddae198ae70d6577705470285a6e5ce65e362cc",
-      "bytes": 2083,
+      "sha256": "f86da2e344ad878308fb42cb9adfe141bab5676d67b10d086df6731ce947b017",
+      "bytes": 2310,
       "includes": [
         {
           "line": 4,
@@ -1758,8 +1758,8 @@
       "path": "include/data/geometry.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "66d776609c44e7c2dc942742cf3d776a324b66ce3933a145d40a8594c72fc5ad",
-      "bytes": 2271,
+      "sha256": "cdd8a4c447e086dbebacd3418580eab5a9adf800d008d2bb4b558c771017dd77",
+      "bytes": 2349,
       "includes": [
         {
           "line": 4,
@@ -1895,8 +1895,8 @@
       "path": "include/data/patch/patch_bezier.h",
       "component_by_directory": "data/patch",
       "kind": "header",
-      "sha256": "ca32ac2ffb1bc00d4f20355ec55f68962a1035d956035e26a176b0e6a6e98122",
-      "bytes": 6045,
+      "sha256": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+      "bytes": 6125,
       "includes": [
         {
           "line": 4,
@@ -3768,8 +3768,8 @@
       "path": "src/data/curve/curve_adaptive.cpp",
       "component_by_directory": "data/curve",
       "kind": "translation_unit",
-      "sha256": "fba3b3104699501268471b0cdc53f2bef1092924155c998949ea6cace3978b7a",
-      "bytes": 2396,
+      "sha256": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029",
+      "bytes": 2581,
       "includes": [
         {
           "line": 1,
@@ -3777,6 +3777,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/curve/curve_adaptive.h"
+        },
+        {
+          "line": 3,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -3913,8 +3920,8 @@
       "path": "src/data/geometry.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "e561236b21dbcebe70f29bd8489453d31a313945ec7281562b7f575689844abd",
-      "bytes": 3066,
+      "sha256": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5",
+      "bytes": 3400,
       "includes": [
         {
           "line": 1,
@@ -3938,35 +3945,42 @@
           "target": null
         },
         {
-          "line": 6,
+          "line": 5,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
           "spelling": "data/curve/curve_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/curve/curve_adaptive.h"
         },
         {
-          "line": 7,
+          "line": 8,
           "spelling": "data/curve/curve_adaptive_parametric_bezier.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
         },
         {
-          "line": 8,
+          "line": 9,
           "spelling": "data/patch/patch.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch.h"
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "data/point_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/point_adaptive.h"
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "data/vector_adaptive.h",
           "form": "quote",
           "scope": "first_party",
@@ -4100,8 +4114,8 @@
       "path": "src/data/patch/patch_bezier.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "3eedc70a71ec45f57a08131a477461d0c44ba05f560fe20649bee10937cce360",
-      "bytes": 27621,
+      "sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "bytes": 27666,
       "includes": [
         {
           "line": 1,
@@ -5845,8 +5859,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 25,
-    "source_anchors": 160,
+    "contracts": 26,
+    "source_anchors": 164,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }
