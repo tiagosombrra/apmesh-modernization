@@ -1,0 +1,29 @@
+{
+  "application_findings": {
+    "fresh_curves": "Original failure ordinal4 retains3normal blocks/544bytes; repaired complete sweep17/17 has zero terminal retention.",
+    "borrowed_observers": "Original selected failure ordinal6 leaves an extra expired-this observer although terminal heap retention is zero. Repaired complete sweep9/9 restores the exact preceding prefix.",
+    "original_limits": "All32 original sweeps stop at their first leak or observer mismatch; only208 actual denials are observed. Later original ordinals remain unmeasured; the repaired32complete sweeps cover348denials.",
+    "candidate_scope": "71expected outcomes; all16 direction masks bundled into normal scenarios; 32MSVC normal trace pairs and16GCC pairs agree. Ordinary destruction/caller-adoption paths remain separate."
+  },
+  "operational_findings": {
+    "file_access": "An initial direct write returned EINVAL while baseline analysis was active. Git diff showed the Bezier unit remained unchanged. The actual edits were applied after that analysis completed.",
+    "format": "Changed-line formatting initially refused unstaged inputs; staging the known edits allowed the explicit formatting operation. No stash or reset was used.",
+    "junit_location": {
+      "cause": "The preflight passed a relative JUnit destination to preset CTest, which resolved it under the binary directory. Publication stopped at the expected-path audit.",
+      "actual": "build\\windows-gcc17\\build\\s31-review\\ctest.xml",
+      "copy": "build\\s31-review\\ctest.xml",
+      "sha256": "50946f28dbc981c0fb9f5d78fb052764b48df912fd07994a79a3dc705096996d",
+      "observations": "Verified all43 exact test outcomes and74Python controls; copied identical XML bytes to the retained report directory without rerunning or changing any test. Full delivery commands use absolute JUnit paths."
+    }
+  },
+  "logs": {
+    "build\\s31-smoke\\oa-contracts.log": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+    "build\\s31-smoke\\od-contracts.log": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a",
+    "build\\s31-smoke\\od-failure-0-0-0-0.log": "50cb031b0199138ffd9c0623590850abffbe70f4e7c9a48b6fb9f77ccef0572e",
+    "build\\s31-smoke\\od-failure-1-1-15-0.log": "66e5b3ce3083111146c07b2d55b5287ec9e881d10e5d4e089dbd12ce31c35a6f",
+    "build\\s31-smoke\\qa-contracts.log": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+    "build\\s31-smoke\\qd-contracts.log": "8b8737e3ad2e4814f647fa4c5e0d9ac6a9e5543a64d9c699f3b439b44070469a",
+    "build\\s31-smoke\\qd-failure-0-0-0-0.log": "7dad2998824b88a80d86bf01d301525c3c23c61d4d3ef45119cbb57853bbd6dd",
+    "build\\s31-smoke\\qd-failure-1-1-15-0.log": "59a5eec7a20d38e7e09b8abe3a26946b4403c60a5382f5dee9f44661c3e3ec76"
+  }
+}

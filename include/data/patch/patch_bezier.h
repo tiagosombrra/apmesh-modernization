@@ -15,12 +15,16 @@ class PatchBezier : public PatchCoons {
   //		C3
   //	C4		C2
   //		C1
+  // Borrows live curves; failed construction restores exclusively appended observers.
+  // Existing curve prefixes must not be modified concurrently.
   PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,
               CurveAdaptive* curve3, CurveAdaptive* curve4, PointAdaptive pt11,
               PointAdaptive pt21, PointAdaptive pt12, PointAdaptive pt22,
               bool signal_curve1 = true, bool signal_curve2 = true,
               bool signal_curve3 = true, bool signal_curve4 = true);
 
+  // Owns fresh curves during construction; success retains the existing external
+  // ownership contract. The caller must adopt all four returned curve pointers.
   PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,
               const PointAdaptive pt02, const PointAdaptive pt03,
               const PointAdaptive pt10, const PointAdaptive pt11,

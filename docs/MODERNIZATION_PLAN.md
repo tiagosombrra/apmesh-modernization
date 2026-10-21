@@ -1,5 +1,11 @@
 # Technique-preserving modernization plan
 
+Active bounded item: stage 3 slice 31, Bezier construction lifetime.
+Repair both fresh-curve ownership on construction failure and borrowed-curve
+observer suffix restoration, sharing the already qualified scope with charge
+estimation. Candidate memory and token checks pass; full delivery qualification
+and integration remain pending. Slice 30 is the latest qualified baseline.
+
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 

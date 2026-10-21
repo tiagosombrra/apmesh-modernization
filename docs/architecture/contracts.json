@@ -814,6 +814,34 @@
           "anchor": "return result / points;"
         }
       ]
+    },
+    {
+      "id": "C25",
+      "topic": "Bezier construction failure lifetime",
+      "statement": "The sixteen-point PatchBezier constructor owns each fresh oriented curve before publishing its raw observer into curves_. All four local owners survive the entire original matrix construction and release only at successful completion, retaining the existing external curve-ownership contract. The borrowed-curve constructor checkpoints the four existing patch-observer prefixes before any publication and restores exclusively appended suffixes on C++ constructor failure; successful registrations are retained. The shared scope has the same semantics as the already qualified charge-input scope. Public class layout/API, control/curve order, direction flags, matrix expressions and charge caller behavior remain unchanged.",
+      "limits": "Borrowed curves must be live actual Bezier curves and outlive the construction/scope. No concurrent/foreign suffix publication or intermediate pending-patch consumption. Restoration preserves pointer-value prefixes, not vector capacity/iterators. Successful point-based callers still must adopt four fresh curves; subsequent caller adoption failures and ordinary patch destruction/deregistration are separate. Repeated curve slots qualify lifecycle guards, not geometric validity. No cache/scalar/metadata rollback, arbitrary allocator/callback or full-process/parallel/LSan/UBSan claim.",
+      "evidence": [
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "apmesh::detail::PatchObserverScope observer_scope"
+        },
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "pending_curves[0] = CreateOrientedCurve"
+        },
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "observer_scope.Commit();"
+        },
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "curve.release();"
+        },
+        {
+          "path": "include/data/patch/patch_observer_scope.h",
+          "anchor": "class PatchObserverScope"
+        }
+      ]
     }
   ]
 }

@@ -1,36 +1,12 @@
 #include "estimate/charge_estimate_process.h"
 
+#include "data/patch/patch_observer_scope.h"
+
 #include <array>
 #include <memory>
 #include <utility>
 
 extern std::string INPUT_MODEL;
-
-namespace {
-// The constructor appends observers before it can finish. Restore only that
-// suffix if construction, evaluation or consuming Geometry adoption fails.
-// Curves remain live and their pre-existing observer prefix is borrowed.
-class PatchObserverScope {
-public:
-  explicit PatchObserverScope(std::array<CurveAdaptive*, 4> curves) noexcept : curves_(curves) {
-    for (std::size_t index = 0; index < curves_.size(); ++index)
-      counts_[index] = curves_[index]->GetNumBerPatches();
-  }
-  ~PatchObserverScope() {
-    if (active_)
-      for (std::size_t index = 0; index < curves_.size(); ++index)
-        curves_[index]->TruncatePatchObservers(counts_[index]);
-  }
-  PatchObserverScope(const PatchObserverScope&) = delete;
-  PatchObserverScope& operator=(const PatchObserverScope&) = delete;
-  void Commit() noexcept { active_ = false; }
-
-private:
-  std::array<CurveAdaptive*, 4> curves_;
-  std::array<unsigned int, 4> counts_{};
-  bool active_ = true;
-};
-} // namespace
 
 static bool SortByNt(const PatchBezier* lhs, const PatchBezier* rhs) {
   return lhs->GetKaMedio() > rhs->GetKaMedio();
@@ -146,7 +122,7 @@ std::list<PatchBezier*> ChargeEstimateProcess::ChargeEstimate(Geometry* geometry
       patch_c4 = geometry->VerifyCurveGeometry(p00, p01, p02, p03);
     }
 
-    PatchObserverScope observer_scope({patch_c1, patch_c2, patch_c3, patch_c4});
+    apmesh::detail::PatchObserverScope observer_scope({patch_c1, patch_c2, patch_c3, patch_c4});
     auto pending_patch = std::make_unique<PatchBezier>(patch_c1, patch_c2, patch_c3, patch_c4, *p11,
                                                        *p21, *p12, *p22);
     auto* patch = pending_patch.get();
