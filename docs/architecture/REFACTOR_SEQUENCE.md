@@ -9,8 +9,11 @@ Only one work item is active at a time; required regression gates remain exact.
 Qualified slice 32 addresses completed Bezier observers and dependent Geometry
 destruction/move ordering (C26, PR #86 exact head and completed main continuation).
 Exact delivery status is in PROJECT_STATE.md and STAGE3_BEZIER_OBSERVERS.md.
-The next single audit covers successful fresh-curve
-caller adoption and remaining loader/Model/copy roots. The finite
+The [caller-root audit](../evidence/STAGE3_CALLER_ROOT_AUDIT.md) now maps those
+callers and reproduces serial parsed-control/pending-patch retention. The next
+single implementation is slice 33 serial-reader control ownership; no repaired
+candidate is qualified yet. Model/copy, MPI/Hermite and other loaders retain
+separate pending dispositions. The finite
 [stage 3 closure inventory](STAGE3_CLOSURE_INVENTORY.md) governs remaining
 obligations; earlier next-work statements below are historical checkpoints.
 

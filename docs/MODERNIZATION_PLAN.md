@@ -3,6 +3,14 @@
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
+Current bounded work: stage 3 slice 33, serial-reader control ownership.
+The [caller-root audit](evidence/STAGE3_CALLER_ROOT_AUDIT.md) identifies actual
+serial, factory, charge, MPI and Model/copy boundaries. Isolated static Debug CRT
+reproduces 1328-byte pending-control and 2656-byte reconstruction retention with
+working clean/leak controls. No production repair or new qualified slice follows
+from this original-defect audit. Required normal/failure/repeated-use, numerical
+preservation and exact-head/main gates remain pending for the repair.
+
 Stage 3 slice 32 is qualified within its measured boundary. PR #86 integrates
 head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa` as main
 `cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`, preserving complete tree

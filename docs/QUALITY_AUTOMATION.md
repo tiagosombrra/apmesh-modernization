@@ -1,5 +1,16 @@
 # Local quality automation
 
+## Original caller-root reproduction
+
+[The caller-root audit](evidence/STAGE3_CALLER_ROOT_AUDIT.md) includes a standalone
+Debug CRT recipe compiling the actual complete serial reader and fifteen other
+production units. Its six original scenarios require two zero-retention controls,
+one detected deliberate leak and three nonzero original reader defect outcomes.
+The driver verifies reproduction, not a repaired loader. It is not part of the
+28 qualified repair batteries and does not establish allocation-failure, malformed
+input, ASan, whole-process or parallel safety. Existing 45 CTest/74 Python controls
+and all prior exact-head/main gates remain required for future repairs.
+
 ## Completed Bezier observer retirement (PR #86)
 
 The repair adds required application.bezier_observer_contracts and

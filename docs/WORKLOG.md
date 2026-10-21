@@ -1,5 +1,20 @@
 # Modernization work log
 
+## 2026-10-21: caller-root audit and original serial retention
+
+After PR #87 main qualification, audited 56 literal production Bezier creation
+sites and actual ownership/caller context. The supported serial reader loses
+control-only patch objects; an isolated probe compiles the full production reader
+and fifteen other units. Six CRT scenarios include two zero-retention positive
+controls, one detected deliberate leak and three failing original production
+scenarios: 1328-byte trailing pending retention, 2656-byte reconstruction
+retention and 2656-byte repeated-call retention with accumulated aliases. These
+failures are retained, not counted as a qualified repair battery. No production
+source or scientific policy changed. See [the bounded audit](evidence/STAGE3_CALLER_ROOT_AUDIT.md).
+Active slice 33 is the serial control-result/pending-patch ownership repair;
+there is no repaired candidate yet. Model/copy, other loaders and MPI/Hermite
+remain separate. Slice 32 is the latest qualified implementation.
+
 ## 2026-10-21: stage 3 slice 32 qualified
 
 Stage 3 slice 32 is qualified within its measured boundary. PR #86 integrates

@@ -1,5 +1,25 @@
 # Project state
 
+## Active work: stage 3 slice 33, serial-reader control ownership
+
+The caller-root audit at slice 32 closure main
+`9a853348755e0a9125a844278a2bf6d59a82bfba` is complete within its documented
+source/instrument scope. A literal production inventory finds 56 Bezier creation
+sites and no discovered sixteen-point fresh-curve caller. Actual full serial-
+reader Debug CRT reproduction finds an unused pending control patch (1328 bytes)
+and an overwritten parsed control patch plus pending patch (2656 bytes). Clean
+and existing unique-result controls retain zero bytes; a deliberate leak is
+detected. Repeated raw-loader use returns accumulated aliases and leaks two
+pending patches. See [the source-backed audit and reproduction](evidence/STAGE3_CALLER_ROOT_AUDIT.md).
+
+The next bounded implementation is explicit ownership of serial control-only
+results and the pending parser patch. No repaired candidate exists yet; slice
+33 is not qualified. Allocation failure, rejected/malformed input, broader
+models and whole-process/parallel instruments remain unmeasured at this boundary.
+Model/copy, MPI/Hermite and other loaders retain separate pending dispositions.
+The full stage 3 and stages 4-11 remain open. Earlier "next" paragraphs below
+record historical checkpoints; this active item takes precedence.
+
 ## Latest qualified work: stage 3 slice 32
 
 Stage 3 slice 32 is qualified within its measured boundary. PR #86 integrates
