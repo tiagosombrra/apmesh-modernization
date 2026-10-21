@@ -1,0 +1,114 @@
+{
+  "status": "original retention defects reproduced; no repaired candidate qualified",
+  "classification": "original defect reproduction only",
+  "observed_revision": "9a853348755e0a9125a844278a2bf6d59a82bfba",
+  "executable_sha256": "12cfecb4260cfbeada09de2e7d37019bbf4b1463e0527a16e4204b59e470f8a8",
+  "fixture_sha256": "8083574b7269d3438a6c672654e2f4a14f7d6c50010af0484b64f55fcb1ca6b4",
+  "probe_source_sha256": "86f040087742e262c02e842364368ae89475ec47acc29470a64b004d4f5791cd",
+  "cmake_sha256": "45fa27179baf5e81bc6e970befc3fd46495c98ec3d2a01b26f5950f74b1ce760",
+  "cases": [
+    {
+      "mode": "clean",
+      "argv": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-reproduction\\Debug\\serial_reader_root_probe.exe",
+        "clean",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\docs\\evidence\\stage3\\caller_roots\\one_patch.bp"
+      ],
+      "exit_code": 0,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "log_sha256": "59eb0f7c092d3564085377a213369f41471ecd405c984f701c20f6714a3a8abf",
+      "observations": [
+        "reader_root_audit=begin",
+        "clean_patch_curves=0",
+        "CRT retained_blocks=0 retained_bytes=0"
+      ]
+    },
+    {
+      "mode": "leak-control",
+      "argv": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-reproduction\\Debug\\serial_reader_root_probe.exe",
+        "leak-control",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\docs\\evidence\\stage3\\caller_roots\\one_patch.bp"
+      ],
+      "exit_code": 1,
+      "retained_blocks": 1,
+      "retained_bytes": 1328,
+      "log_sha256": "9947b1009e7b4e1bda5bfdb06665e05ff2112e3fb1b7b1870b50dfc1ff0a59a3",
+      "observations": [
+        "reader_root_audit=begin",
+        "deliberate_leak=00000219D86593D0",
+        "CRT retained_blocks=1 retained_bytes=1328"
+      ]
+    },
+    {
+      "mode": "unique-loader",
+      "argv": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-reproduction\\Debug\\serial_reader_root_probe.exe",
+        "unique-loader",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\docs\\evidence\\stage3\\caller_roots\\one_patch.bp"
+      ],
+      "exit_code": 0,
+      "retained_blocks": 0,
+      "retained_bytes": 0,
+      "log_sha256": "e7ca5e62ca00a5944de25581e3a99e084d5e674f98b1f5e016cfc6694a497b6a",
+      "observations": [
+        "reader_root_audit=begin",
+        "unique_returned_patches=1",
+        "CRT retained_blocks=0 retained_bytes=0"
+      ]
+    },
+    {
+      "mode": "direct",
+      "argv": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-reproduction\\Debug\\serial_reader_root_probe.exe",
+        "direct",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\docs\\evidence\\stage3\\caller_roots\\one_patch.bp"
+      ],
+      "exit_code": 1,
+      "retained_blocks": 1,
+      "retained_bytes": 1328,
+      "log_sha256": "198b6005bcd334814b38e4b92a92c9952ba0b4dbb11f72e441d070162cb3fffd",
+      "observations": [
+        "reader_root_audit=begin",
+        "returned_patches=1",
+        "CRT retained_blocks=1 retained_bytes=1328"
+      ]
+    },
+    {
+      "mode": "geometry",
+      "argv": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-reproduction\\Debug\\serial_reader_root_probe.exe",
+        "geometry",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\docs\\evidence\\stage3\\caller_roots\\one_patch.bp"
+      ],
+      "exit_code": 1,
+      "retained_blocks": 2,
+      "retained_bytes": 2656,
+      "log_sha256": "961de2c7eca8e3a62b615cf6d43d8e94d42d3e0f8f133a187ac56a00e64b6e19",
+      "observations": [
+        "reader_root_audit=begin",
+        "geometry_patches=1 curves=4",
+        "CRT retained_blocks=2 retained_bytes=2656"
+      ]
+    },
+    {
+      "mode": "repeat",
+      "argv": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s33-reproduction\\Debug\\serial_reader_root_probe.exe",
+        "repeat",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\docs\\evidence\\stage3\\caller_roots\\one_patch.bp"
+      ],
+      "exit_code": 1,
+      "retained_blocks": 2,
+      "retained_bytes": 2656,
+      "log_sha256": "78b1b4d515d1198b95fc71473eae8b9613ac48c32fe84d7bc23250fac4a6dca0",
+      "observations": [
+        "reader_root_audit=begin",
+        "first=1 second=2 same_first=1",
+        "CRT retained_blocks=2 retained_bytes=2656"
+      ]
+    }
+  ],
+  "scope": "One valid patch, actual full production reader TU and isolated static Debug CRT. No allocation-failure, malformed/rejected, broader-model, ASan, whole-process, parallel, LSan or UBSan qualification."
+}

@@ -1,0 +1,355 @@
+{
+  "status": "literal source inventory complete; runtime qualification not inferred",
+  "revision": "9a853348755e0a9125a844278a2bf6d59a82bfba",
+  "calls": [
+    {
+      "path": "src/estimate/charge_input_estimate.cpp",
+      "line": 126,
+      "syntax": "std::make_unique<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 1064,
+      "syntax": "new PatchBezier(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/control_patch_reader.cpp",
+      "line": 11,
+      "syntax": "std::make_unique<PatchBezier>(",
+      "constructor_arguments": 0
+    },
+    {
+      "path": "src/input_output/control_patch_reader.cpp",
+      "line": 90,
+      "syntax": "std::make_unique<PatchBezier>(",
+      "constructor_arguments": 0
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 40,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 74,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 109,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 144,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 180,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 224,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 257,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 292,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 338,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 371,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 417,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 452,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 495,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1449,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1489,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1530,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1566,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1604,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1649,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1689,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1734,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1774,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1815,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1856,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1897,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1935,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1978,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2017,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2060,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2098,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2141,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2180,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2223,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2261,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2300,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2337,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2375,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2412,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2449,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2486,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2524,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2563,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2599,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2636,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2672,
+      "syntax": "MakePatch<PatchBezier>(",
+      "constructor_arguments": 8
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 201,
+      "syntax": "new PatchBezier(",
+      "constructor_arguments": 0
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 277,
+      "syntax": "new PatchBezier(",
+      "constructor_arguments": 0
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 297,
+      "syntax": "new PatchBezier(",
+      "constructor_arguments": 0
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 454,
+      "syntax": "new PatchBezier(",
+      "constructor_arguments": 0
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 522,
+      "syntax": "new PatchBezier(",
+      "constructor_arguments": 0
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 616,
+      "syntax": "new PatchBezier(",
+      "constructor_arguments": 0
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 710,
+      "syntax": "new PatchBezier(",
+      "constructor_arguments": 12
+    }
+  ],
+  "source_identities": {
+    "src/estimate/charge_input_estimate.cpp": "070d8a444fcbb3011afc2d4548f61e9b081fd1f9a85efc136474b042869d2ff8",
+    "src/generator/generator_adaptive.cpp": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f",
+    "src/input_output/control_patch_reader.cpp": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe",
+    "src/input_output/models_3d.cpp": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+    "src/input_output/patch_reader.cpp": "cc5a766886adb596bbc468efb49404522decebfb828bcbffba362ef4fe908c88"
+  },
+  "argument_count_inventory": {
+    "0": 8,
+    "8": 47,
+    "12": 1
+  },
+  "scope": "Literal new/make_unique/MakePatch production syntax after comment removal. Constructor definitions and implicit/type-erased/copied uses are not runtime coverage. Source review separately checks serial and MPI preprocessor context."
+}
