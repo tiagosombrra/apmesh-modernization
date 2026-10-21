@@ -1,5 +1,7 @@
 #include "../../../include/data/curve/curve_adaptive.h"
 
+#include <algorithm>
+
 CurveAdaptive::CurveAdaptive()
     : id_(0), length_(0), points_({}), patches_({}) {}
 
@@ -39,6 +41,10 @@ PointAdaptive* CurveAdaptive::GetPoint(const unsigned int position) {
 
 void CurveAdaptive::InsertPatch(Patch* patch) {
   this->patches_.push_back(patch);
+}
+
+void CurveAdaptive::RemovePatchObservers(const Patch* patch) noexcept {
+  patches_.erase(std::remove(patches_.begin(), patches_.end(), patch), patches_.end());
 }
 
 void CurveAdaptive::ClearPatches() { this->patches_.clear(); }

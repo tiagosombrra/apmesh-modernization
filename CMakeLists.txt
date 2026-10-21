@@ -208,3 +208,12 @@ if(BUILD_TESTING AND TARGET bezier_construction_probe)
   add_test(NAME application.bezier_construction_contracts COMMAND bezier_construction_probe contracts)
   set_tests_properties(application.bezier_construction_contracts PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 300)
 endif()
+
+if(BUILD_TESTING AND TARGET bezier_observer_probe)
+  add_test(NAME application.bezier_observer_contracts COMMAND bezier_observer_probe contracts)
+  set_tests_properties(application.bezier_observer_contracts PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 30)
+  add_test(NAME tooling.bezier_observer_preservation
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tools/audit_bezier_observers.py"
+      --candidate-root "${CMAKE_SOURCE_DIR}")
+  set_tests_properties(tooling.bezier_observer_preservation PROPERTIES LABELS "tooling;required-gate" TIMEOUT 30)
+endif()

@@ -22,14 +22,21 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 
 ## Evidence and coverage
 
+Completed Bezier observer retirement and dependent Geometry assignment are
+specified separately in C26/ADR-0033. Current borrowed curves must outlive the
+patch destructor. Geometry member declaration order already retires patches
+first; populated move assignment needs the same dependency order explicitly.
+Qualification status remains in PROJECT_STATE.md and STAGE3_BEZIER_OBSERVERS.md.
+The finite remaining lifecycle obligations are in STAGE3_CLOSURE_INVENTORY.md.
+
 [source_inventory.json](source_inventory.json) deterministically covers all
 151 first-party C++ files: 73 translation units and 78 headers, plus hashes for
-the 7 CMake inputs (including isolated memory probes). It records 583 potential literal include directives and
+the 7 CMake inputs (including isolated memory probes). It records 585 potential literal include directives and
 339 distinct directed first-party include edges. Conditional branches are kept;
 this is not the active preprocessed graph. The 16 directory groups below are
 source organization, not automatically inferred architectural layers.
 
-[contracts.json](contracts.json) contains 25 reviewed contracts with 160 exact
+[contracts.json](contracts.json) contains 26 reviewed contracts with 164 exact
 source anchors. The checker rejects stale files, missing anchors and empty
 coverage. Matching anchors establishes traceability; it does not prove the
 semantic statements or all runtime paths. The statements below come from
@@ -54,7 +61,7 @@ focused source review, with uncertainty and deferred qualification stated.
 | parallel | 25 | Communicator/thread abstractions and MPI/OpenMP-specific implementations; effective execution unqualified here |
 | timer | 2 | Interval accumulation and reporting; performance qualification deferred |
 
-The fresh compilation database contains all 72 production translation units.
+The fresh compilation database contains all 73 production translation units.
 Compilation of a file with inactive branches does not qualify those branches.
 Development Python tools/tests, vendored Eigen and publication artifacts have
 different roles and are outside the 151-file production count.

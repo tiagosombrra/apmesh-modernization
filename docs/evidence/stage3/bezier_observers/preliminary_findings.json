@@ -1,0 +1,44 @@
+{
+  "status": "retained",
+  "initial_audit": {
+    "ctest": {
+      "passed": 42,
+      "failed": 1,
+      "skipped": 0
+    },
+    "failure": "tooling.controls retained architecture inventory freshness",
+    "junit_sha256": "0c260616b90c8f5bcd36baa7d3b2926260e17c7de4619251cc2ba242e28a5d04",
+    "selected_whitespace": {
+      "files": 9,
+      "differences": 0
+    },
+    "whole_header_format": {
+      "remote_main_diagnostics": 4,
+      "working_tree_diagnostics": 4,
+      "disposition": "Inherited debt retained; explicit new-probe and changed-range formatting are required."
+    }
+  },
+  "preceding_original_probe": {
+    "report_sha256": "9ceeef3431ec9afde4a907a4e8bdd7c0b6a93f39a1da864873e8235373b5c751",
+    "outcomes": 126,
+    "failed": 103,
+    "other_expected": 23,
+    "scope": "Earlier probe version lacks Geometry scenarios in bundled contracts. Raw results remain separate."
+  },
+  "initial_candidate_probe": {
+    "report_sha256": "76ee1c02de4df3d5bf9d4aba69256d82a5ac52453d847f398e8ec23c60d953c8",
+    "outcomes": 126,
+    "status": "passed",
+    "scope": "Before adding the ordinary Geometry and preservation gates; not full delivery qualification."
+  },
+  "original_reproductions": {
+    "consume-expired": {
+      "actual_diagnostic": "AddressSanitizer heap-use-after-free",
+      "log_sha256": "292df405501bc864dcd8062cc2ec962c518c1b08b012ae55bc0faccf8d973115"
+    },
+    "geometry-move-consume": {
+      "actual_diagnostic": "AddressSanitizer heap-use-after-free",
+      "log_sha256": "40ec6685494d3050a2daef1300321406636075a61f7efdb7c8420c7b1ba639f0"
+    }
+  }
+}

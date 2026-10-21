@@ -842,6 +842,30 @@
           "anchor": "class PatchObserverScope"
         }
       ]
+    },
+    {
+      "id": "C26",
+      "topic": "Completed Bezier observers and Geometry dependent retirement",
+      "statement": "Completed PatchBezier destruction removes every observer equal to its own address from each current nonnull borrowed curve without allocation. All other pointer values remain in order, including null and duplicate foreign observers. Geometry destruction retires patches before curves; move assignment uses a temporary owner graph and nonallocating swaps to retire the old graph in that same order. Self move preserves the complete graph and incoming objects retain their addresses.",
+      "limits": "Current borrowed curves must outlive the patch including destruction. No arbitrary ReplaceCurve/foreign publication or copied observer-list guarantee; vector capacity and iterator validity are not restored. Cross-Geometry borrowing from the retiring destination is invalid. Hermite, SubMesh foreign observers, successful fresh-curve caller adoption, cache/metadata/acceptance rollback and full-process/parallel/LSan/UBSan remain separate. Repeated slots and degenerate tracked fixtures are lifetime guards, not geometry validity. Exact delivery qualification is recorded in STAGE3_BEZIER_OBSERVERS.md.",
+      "evidence": [
+        {
+          "path": "src/data/curve/curve_adaptive.cpp",
+          "anchor": "void CurveAdaptive::RemovePatchObservers"
+        },
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "curve->RemovePatchObservers(this);"
+        },
+        {
+          "path": "src/data/geometry.cpp",
+          "anchor": "Geometry incoming(std::move(other));"
+        },
+        {
+          "path": "include/data/geometry.h",
+          "anchor": "Reverse member destruction retires patches before their borrowed curves."
+        }
+      ]
     }
   ]
 }

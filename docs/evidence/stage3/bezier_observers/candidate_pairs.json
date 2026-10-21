@@ -1,0 +1,155 @@
+{
+  "status": "passed",
+  "paired_traces": 6,
+  "live_patches": 576,
+  "incidence_observations": 2304,
+  "scalar_observations": 15552,
+  "preservation": {
+    "status": "passed",
+    "original_revision": null,
+    "rejected_mutations": 6,
+    "preserved_tokens_sha256": {
+      "include/data/curve/curve_adaptive.h": "18d3c47e9e06d2df998c5e070234f72fbd9080f49d5ca2d7efef1ada1c6d1c1c",
+      "include/data/geometry.h": "6dcaf572d540e0f78b5df8e6df674772e01d631cc511d47ccef841f01124af41",
+      "include/data/patch/patch_bezier.h": "0bae75e01f52c2868fff77c7702fe894601effa66b7b40ad12fd71c4147a7539",
+      "src/data/curve/curve_adaptive.cpp": "0e7ee7731caac4ca18420b242e97e987d5ace1e8b88ca45b7bead6449287a290",
+      "src/data/geometry.cpp": "d89dd082ed34d91883a9689c3d510550cd3336bc16f5ea1c24a207dae62394fa",
+      "src/data/patch/patch_bezier.cpp": "d892df08faa20414d3754ea8a520de2e510ab6c0051d460912ec486ebb7acf9d"
+    },
+    "source_identities": {
+      "original": {
+        "include/data/curve/curve_adaptive.h": "fcf4841f82b9d872ccfabc976ddae198ae70d6577705470285a6e5ce65e362cc",
+        "include/data/geometry.h": "66d776609c44e7c2dc942742cf3d776a324b66ce3933a145d40a8594c72fc5ad",
+        "include/data/patch/patch_bezier.h": "ca32ac2ffb1bc00d4f20355ec55f68962a1035d956035e26a176b0e6a6e98122",
+        "src/data/curve/curve_adaptive.cpp": "fba3b3104699501268471b0cdc53f2bef1092924155c998949ea6cace3978b7a",
+        "src/data/geometry.cpp": "e561236b21dbcebe70f29bd8489453d31a313945ec7281562b7f575689844abd",
+        "src/data/patch/patch_bezier.cpp": "3eedc70a71ec45f57a08131a477461d0c44ba05f560fe20649bee10937cce360"
+      },
+      "candidate": {
+        "include/data/curve/curve_adaptive.h": "f86da2e344ad878308fb42cb9adfe141bab5676d67b10d086df6731ce947b017",
+        "include/data/geometry.h": "cdd8a4c447e086dbebacd3418580eab5a9adf800d008d2bb4b558c771017dd77",
+        "include/data/patch/patch_bezier.h": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+        "src/data/curve/curve_adaptive.cpp": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029",
+        "src/data/geometry.cpp": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5",
+        "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5"
+      }
+    },
+    "scope": "Six actual production files. Only the exact observer-removal declaration/body, completed Bezier destructor and Geometry dependent retirement assignment are normalized. All other numerical, constructor, API/layout and method tokens must match immutable main. Six independent lifetime/numerical mutations must be rejected. Dynamic safety, normal traces and allocation-free teardown remain separate required gates."
+  },
+  "cases": [
+    {
+      "mode": "trace-0-0",
+      "observations_count": 3072,
+      "observations_sha256": "39716287342bb381a0d1beabf7443488fe5de72084a3c76a0fe03990a14a9fab",
+      "invocations": {
+        "original": {
+          "log": "original-trace-0-0.log",
+          "exit_code": 0,
+          "sha256": "178ad95a65f1ede6db0aec4e0fb5cf4cc1483e09e2c3fd1cac8daf02d3c5d527"
+        },
+        "candidate": {
+          "log": "candidate-trace-0-0.log",
+          "exit_code": 0,
+          "sha256": "178ad95a65f1ede6db0aec4e0fb5cf4cc1483e09e2c3fd1cac8daf02d3c5d527"
+        }
+      }
+    },
+    {
+      "mode": "trace-0-1",
+      "observations_count": 3072,
+      "observations_sha256": "2cc5ad1ae65f47a253cf8b3d24004b2593eecc10af8bd955e4705f8ad6a177aa",
+      "invocations": {
+        "original": {
+          "log": "original-trace-0-1.log",
+          "exit_code": 0,
+          "sha256": "06ab0e96e7b9a85fe64aaf68f3ed13a48a5b552d1bc9d11bd497a618e7e98a98"
+        },
+        "candidate": {
+          "log": "candidate-trace-0-1.log",
+          "exit_code": 0,
+          "sha256": "06ab0e96e7b9a85fe64aaf68f3ed13a48a5b552d1bc9d11bd497a618e7e98a98"
+        }
+      }
+    },
+    {
+      "mode": "trace-1-0",
+      "observations_count": 3072,
+      "observations_sha256": "79922710791329e6132cda388fef0e7141cb9f3c19d34d95677fe7a0d11b3cfa",
+      "invocations": {
+        "original": {
+          "log": "original-trace-1-0.log",
+          "exit_code": 0,
+          "sha256": "7ac33f83b523eb86e0e3108f43ab4b2ac9a30cea55a8a22bb5d45963175ce490"
+        },
+        "candidate": {
+          "log": "candidate-trace-1-0.log",
+          "exit_code": 0,
+          "sha256": "7ac33f83b523eb86e0e3108f43ab4b2ac9a30cea55a8a22bb5d45963175ce490"
+        }
+      }
+    },
+    {
+      "mode": "trace-1-1",
+      "observations_count": 3072,
+      "observations_sha256": "2edf4d459edddbe2fb1b40d3b6f5ccbc326b829643091ebc111d6e2bc4f0bd68",
+      "invocations": {
+        "original": {
+          "log": "original-trace-1-1.log",
+          "exit_code": 0,
+          "sha256": "b8490c4ae8445bad73c6d4512df4bc35cc5882cc4829d4f5b7d62952042d3264"
+        },
+        "candidate": {
+          "log": "candidate-trace-1-1.log",
+          "exit_code": 0,
+          "sha256": "b8490c4ae8445bad73c6d4512df4bc35cc5882cc4829d4f5b7d62952042d3264"
+        }
+      }
+    },
+    {
+      "mode": "trace-2-0",
+      "observations_count": 3072,
+      "observations_sha256": "44dc9cd38966fc6d46c257e75d7c74ef3f3c63c20555b4aa7abae2212bd0844d",
+      "invocations": {
+        "original": {
+          "log": "original-trace-2-0.log",
+          "exit_code": 0,
+          "sha256": "5b6002679ba09df9d56a67c2fd7cac3ef598e2e9d95686ae515185343cdddd89"
+        },
+        "candidate": {
+          "log": "candidate-trace-2-0.log",
+          "exit_code": 0,
+          "sha256": "5b6002679ba09df9d56a67c2fd7cac3ef598e2e9d95686ae515185343cdddd89"
+        }
+      }
+    },
+    {
+      "mode": "trace-2-1",
+      "observations_count": 3072,
+      "observations_sha256": "d6edef2ec00369dda9cc8e382187d83a9ba79be2bb8a2e5f845fb0a7d6f007d7",
+      "invocations": {
+        "original": {
+          "log": "original-trace-2-1.log",
+          "exit_code": 0,
+          "sha256": "fff4de232e3b1e792eed0bd6d4180018d67c20c4350a5b71655cc566ef2d10d2"
+        },
+        "candidate": {
+          "log": "candidate-trace-2-1.log",
+          "exit_code": 0,
+          "sha256": "fff4de232e3b1e792eed0bd6d4180018d67c20c4350a5b71655cc566ef2d10d2"
+        }
+      }
+    }
+  ],
+  "executables": {
+    "original": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32og\\bezier_observer_probe.exe",
+      "sha256": "3b374893de8c90c65f7a2785ed354654a3d81db672a748e8340a331064eac3c0"
+    },
+    "candidate": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s32qg\\bezier_observer_probe.exe",
+      "sha256": "fccfe664a48947867ac900963cbba2589aecea9a82e16f09e9676cef7346eb17"
+    }
+  },
+  "scope": "Actual C++17 production units: three incidence layouts, two surfaces, all direction masks and empty/populated prefixes. Parameterize/Qu/Qv scalar bits, patch IDs and live incidence must match. Registrations are cleared while patches are alive for the original comparison; destruction and Geometry order require the separate memory campaign. Repeated curve slots are lifetime guards, not geometric validity or scientific adequacy evidence.",
+  "raw_report_sha256": "db151e8eb16c93a2f87bac1d0899ec9120673867c4837bdd76ba174c44d17d39"
+}

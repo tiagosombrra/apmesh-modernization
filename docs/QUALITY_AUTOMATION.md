@@ -1,5 +1,23 @@
 # Local quality automation
 
+## Completed Bezier observer retirement (active slice 32)
+
+The candidate adds required application.bezier_observer_contracts and
+tooling.bezier_observer_preservation. Normal contracts include 576 retirement
+observations and five Geometry destruction/move/self-move scenarios. The isolated
+tools/qualify_bezier_observers.py requires 126 expected outcomes, 19 measured
+zero-allocation operations and real UAF/leak/hook and prefix-corruption controls.
+tools/compare_bezier_observers.py requires six nonempty actual trace pairs per
+compiler/instrument; tools/audit_bezier_observers.py rejects six independent
+mutations and protects every other production token. The previous constructor
+audit still rejects its four mutations, allowing only the exact separately
+checked retirement destructor. No required gate is relaxed. The full prepublication
+campaign passes with 45 CTest, 74 Python controls, 28 batteries/2874 expected
+outcomes and exact repeated article traces on 598 protected inputs. Exact
+published-head confirmation belongs to the review PR; integration/main
+qualification remain pending. Commands, classification and limits are in
+[the observer evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
+
 ## Bezier construction lifetime (PR #84)
 
 Stage 3 slice 31 adds application.bezier_construction_contracts.
@@ -179,12 +197,14 @@ and implementation-main qualification pass; the whole stage remains open. See
 
 These commands automate repeatable checks; they do not certify the full
 application. Stages 1 and 2 are integrated and closed for their measured scope.
-Stage 3 slices 1-26 are integrated with qualified node, UV, curve collection,
+Stage 3 slices 1-31 are integrated with qualified node, UV, curve collection,
 initialized curve copy, Geometry adoption, clone publication and point-graph
 snapshot restoration, paired target rebuild, serial adapter construction and
 per-curve Generator sample-publication, complete sample-graph and terminal
 sample-lifetime, serial initial-construction and physical mesh and terminal element adoption and failed-constructor registration and SubMesh owner-ordering and triangle identity/replacement/completed-lifetime and estimator-construction and scoped triangle-count targets.
-The integrated CTest passes 36/36 with zero skips and 74 Python controls,
+Later slices add temporary error/area mesh ownership, charge inputs, automatic
+curvature samples and Bezier construction failure lifetime. The last integrated
+CTest passes 43/43 with zero skips and 74 Python controls,
 including real invalid inputs, orientation, metric schema, independent verifier
 negative controls, architecture freshness and actual analyzer scope controls.
 Exact Eistute/Book repetition and shared-incidence regression pass. Earlier
@@ -211,6 +231,33 @@ python tools/quality.py test
 Use a terminal with the intended compiler, Ninja and LLVM tools on PATH.
 On Windows, an MSYS2 UCRT64 GCC terminal is one qualified bootstrap path; do
 not silently switch compilers in an existing build directory.
+
+## Reproduce the qualified Windows C++17 configuration
+
+The delivery convenience preset `windows-gcc17` and `build/local-env.ps1` are
+local ignored files. The equivalent explicit configuration below does not depend
+on either file. Use a separate build directory if another compiler already owns
+the cache. The recorded toolchain is native Windows UCRT64 GCC 16.1.0,
+CMake/CTest 4.4.3, Ninja 1.13.2 and LLVM format/tidy 22.1.8. This retains the
+historical GNU C++17 extensions; it is not complete stage 4 qualification.
+
+```powershell
+$env:PATH = 'C:\Program Files\CMake\bin;C:\msys64\ucrt64\bin;' + $env:PATH
+cmake -S . -B build/windows-gcc17 -G Ninja `
+  -DCMAKE_CXX_COMPILER=C:/msys64/ucrt64/bin/c++.exe `
+  -DCMAKE_MAKE_PROGRAM=C:/msys64/ucrt64/bin/ninja.exe `
+  -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON `
+  -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_STANDARD_REQUIRED=ON `
+  -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF `
+  -DAP_MESH_ENABLE_WARNINGS=ON -DAP_MESH_DISABLE_STRICT_ALIASING=ON `
+  -DAP_MESH_STATIC_MINGW_RUNTIME=ON -DBUILD_TESTING=ON
+cmake --build build/windows-gcc17 --parallel 2
+ctest --test-dir build/windows-gcc17 --output-on-failure --no-tests=error
+```
+
+MSVC ASan/Debug CRT probes use separate Visual Studio build directories as
+documented in the bounded evidence. Do not configure their caches with GCC or
+treat the production Release contracts as an instrumented memory campaign.
 
 ## Whitespace and formatting
 

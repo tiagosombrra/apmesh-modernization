@@ -56,6 +56,7 @@ class Geometry {
  private:
   std::vector<std::unique_ptr<PointAdaptive>> points_;
   std::vector<std::unique_ptr<VectorAdaptive>> vectors_;
+  // Reverse member destruction retires patches before their borrowed curves.
   std::vector<std::unique_ptr<CurveAdaptive>> curves_;
   std::vector<std::unique_ptr<Patch>> patches_;
 };
