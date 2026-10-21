@@ -1,26 +1,32 @@
 # Modernization work log
 
-## 2026-10-21: stage 3 slice 32 post-merge regression
+## 2026-10-21: stage 3 slice 32 qualified
 
-PR #86 integrates the exact qualified head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa`
-as main `cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`, preserving complete tree
-`b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5` (1951 blobs). Published-head
-qualification passed all 107 commands. The post-merge campaign completed 106
-local commands successfully: 45/45 CTest, zero failures/skips, 74 Python controls,
-28 memory batteries/2874 expected outcomes, 1040 retained scalar sequences and
-exact twice-repeated Eistute/Book accepted/rejected/incidence/CSV traces on the
-same 598 protected inputs. Independent command/case/child-log/artifact/source
-and 56 memory executable identities pass; terminal environment and exact checkout
-audits also pass.
+Stage 3 slice 32 is qualified within its measured boundary. PR #86 integrates
+head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa` as main
+`cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`, preserving complete tree
+`b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5` (1951 blobs). Exact-head gates pass
+all 107 commands. Post-merge main completed 106 local commands before a final
+remote API connection timeout; a separately recorded terminal continuation now
+passes the complete remote tree/branch/PR/check audit, environment and exact
+checkout checks. The original failed report remains unchanged and hash-linked.
 
-The post-merge campaign remains failed/incomplete: its final GitHub API complete-
-tree query timed out. Git transport confirms the expected remote main, but the
-required current remote PR/check audit remains pending. The failed report and
-logs are retained unchanged. Do not close slice 32 or start the next item until
-that gate completes. See [post-merge evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
-The last fully qualified integrated slice remains 31; full stage 3 and stages
-4-11 remain open. Next queued audit: successful fresh-curve caller adoption and
-remaining loader/Model/copy roots.
+Both implementation revisions retain the same 598 protected inputs: 45/45 CTest,
+zero failures/skips, 74 Python controls, 28 memory batteries/2874 expected outcomes,
+1040 retained scalar sequences and exact twice-repeated Eistute/Book accepted/
+rejected/incidence/CSV traces. Independent command/case/child-log/artifact/source
+checks pass; all 56 current memory executable identities match main evidence.
+The new battery passes 126 outcomes and 19 no-allocation operations, with six
+GCC and twelve MSVC live pairs and six rejected preservation mutations. Original
+103 failed outcomes, 23 other expected outcomes and two actual ASan UAF
+reproductions remain retained. See [bounded closure evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
+
+Stage 3 remains open. Next single item: audit successful fresh-curve caller
+adoption and remaining loader/Model/copy roots. Hermite retirement, arbitrary
+replacement/copied observers, cache/metadata/acceptance rollback and complete-
+process/parallel/LSan/UBSan remain unqualified. Stages 4-11 remain pending.
+The [finite closure inventory](architecture/STAGE3_CLOSURE_INVENTORY.md) retains
+each obligation and its required evidence. No scientific policy changes.
 
 ## 2026-10-21: stage 3 slice 31 qualified
 
@@ -90,6 +96,7 @@ see the final integrated ledger row. Slice 32 remains the active review item.
 | 2026-10-20, stage 3 slice 29 | PR #80; head 86e5555b2d2590c9ab382842e4a0b0cb3005b0e5, main 42f8e62eee04e99a566f499651c477bd2cb47345; evidence/STAGE3_CHARGE_INPUT.md | Unique reader/pending owners, automatic controls, exclusive observer-suffix cleanup and reader badbit propagation; head/main 41 CTest, 74 Python controls, 1952 expected instrument outcomes, 2787 new allocation denials, 48 exact paired traces and article regression; original 155 failures and DLL CRT/reader/link preflights retained; helper scratch/full-process remain open |
 | 2026-10-20, stage 3 slice 30 | PR #82; head 45ad4f7fc50bc6dcf8b730be69443801aea7ac43, main 181e2acc70746d7abb5f64a924fce6aed51313e8; evidence/STAGE3_CURVATURE_SAMPLE.md | Automatic curvature samples, no nonexistent derived casts, bounded scratch; 42 CTest, 74 Python controls, 2677 memory outcomes, 342 zero-allocation operations, 90 exact sample pairs and article regression. Original 367 failures retained; stage 3 and full-process scope remain open |
 | 2026-10-21, stage 3 slice 31 | PR #84; head c94ed17373abc04c9bbb5359a4ea686a44b886f3, main 1bc4038ad55a6b5fce7ec99db3fc5b200016ea69; evidence/STAGE3_BEZIER_CONSTRUCTION.md | Bezier constructor fresh ownership and borrowed observer suffix restoration; shared charge scope; 43 CTest, 74 Python controls, 2748 memory outcomes, 348 new allocation denials, 16 GCC/32 MSVC constructor pairs and article regression. Original 32 failed partial sweeps retained; successful caller adoption and ordinary deregistration remain open |
+| 2026-10-21, stage 3 slice 32 | PR #86; head 7307bdab7c7f4c835218fd3c80d8ad8b458538aa, main cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf; evidence/STAGE3_BEZIER_OBSERVERS.md | Stable current-incidence Bezier retirement and dependent Geometry teardown/move. Exact head and completed main continuation: 45 CTest, 74 Python controls, 28 batteries/2874 outcomes and article traces; 126 new outcomes/19 no-allocation operations, six GCC/twelve MSVC pairs and six rejected mutations. Original 103 failed outcomes and main API timeout retained. Caller roots and full-process scope remain open |
 
 Historical slice-26 checkpoint: stages 0-2 closed; stage 3 had twenty-six qualified
 slices; stages 4-11 pending. Its next item was estimator area/error roots and explicit

@@ -1,8 +1,8 @@
 # Stage 3 slice 32: completed Bezier observer retirement
 
-Status: implementation integrated by PR #86; final post-merge remote audit blocked.
-Qualified head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa`; implementation main
-`cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`; complete tree
+Status: bounded implementation head/main qualification complete (PR #86).
+Head `7307bdab7c7f4c835218fd3c80d8ad8b458538aa`; implementation main
+`cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf`; tree
 `b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5` (1951 blobs).
 Entry main: `061223689ad6d2caa15243dbcfa6a4e45ba7ce96` (PR #85).
 Classification: behavior-changing lifecycle/observer defect repair, with no
@@ -98,17 +98,19 @@ Compact reports are in [bezier_observers](stage3/bezier_observers/), including
 The report explicitly identifies a modified prepublication working tree and its
 source manifest, rather than claiming the entry commit contains the repair.
 Raw reports/logs remain local and hash-linked. Exact published head passed all
-107 commands before integration. Post-merge main completed 106 local commands,
-including all 45 CTest entries, 74 Python controls, 28 memory batteries/2874
-expected outcomes and repeated article comparisons, but the final GitHub API
-complete-tree query timed out. Independent local checks and separately recorded
-terminal environment/1951-blob checkout audits pass; all 598 protected inputs
-and 56 current memory executable identities match. Git transport confirms main.
-The failed full campaign is preserved unchanged and is not reported as a pass.
-The required current remote PR/check audit remains unmeasured; no browser surface
-was available for UI verification. [Post-merge pending evidence](stage3/bezier_observers/post_merge_pending.json)
-retains exact hashes and inventories. No timeout, budget, tolerance or gate is
-relaxed. Slice 32 and full stage 3 closure remain open until required gates pass.
+107 commands before integration. Post-merge main completed all 106 local commands
+before the terminal remote API tree query timed out. The failed report and
+[pending checkpoint](stage3/bezier_observers/post_merge_pending.json) remain
+unchanged as historical negative evidence. A separate explicit continuation now
+passes the complete remote tree/branch/PR/check audit, environment and exact
+checkout checks on the same implementation main. Every one of 1951 remote blob
+identities matches local Git; all 598 protected inputs and 56 current memory
+executables match. All prior command/case/child-log/artifact checks were repeated
+independently, without repeating the completed numerical/instrument campaign.
+[Delivery completion](stage3/bezier_observers/delivery_qualification.json) records
+both implementation phases and the continuation, hashes and commands. No timeout,
+budget, tolerance or gate changed. Zero hosted checks is absence of hosted
+validation. Full stage 3 remains open.
 
 ## Closure audit and remaining scope
 

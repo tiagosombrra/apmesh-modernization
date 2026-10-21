@@ -1,0 +1,249 @@
+{
+  "status": "passed via explicit terminal continuation",
+  "implementation_pr": 86,
+  "head": {
+    "status": "passed",
+    "head": "7307bdab7c7f4c835218fd3c80d8ad8b458538aa",
+    "tree": "b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5",
+    "remote_blobs": 1951,
+    "commands": 107,
+    "source_manifest_sha256": "c026da42f919ccbe4646ec7511c3e2520c53954025f6ef0fdc2960054380977a",
+    "protected_inputs": 598,
+    "ctest": {
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "python_controls": 74
+    },
+    "memory_batteries": 28,
+    "memory_expected_outcomes": 2874,
+    "raw_report_sha256": "887b98f0c562d45dbe92debb2553bb2d21ef51364e4797e0630b47d3fbd4dd8f",
+    "junit_sha256": "525768b416ec1f451067b96f6eb38150798a3ca09a9b5b9160cc68bd48a85577",
+    "independent_check_log_sha256": "82fb8c9b80b30e3bd5317d63fe3b16a8abeebe0500b81ab62cad49f1426faf6a",
+    "remote_audit_sha256": "0b30c0cd336405593107347443d968d9633acd3eab34264c0090fbb7f2b64553",
+    "main_integration": "not performed",
+    "full_stage3": "open"
+  },
+  "post_merge_completion": {
+    "status": "passed",
+    "revision": "cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf",
+    "tree": "b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5",
+    "scope": "Explicit continuation of terminal remote/environment gates after retained connection timeout; no instrument or numerical campaign repeated.",
+    "failed_campaign_sha256": "2d07d9b7ca248967e46161809cecd705c3929d69fc68bba748a0ae8be405592c",
+    "protected_inputs": 598,
+    "source_manifest_sha256": "c026da42f919ccbe4646ec7511c3e2520c53954025f6ef0fdc2960054380977a",
+    "commands": [
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "build/check_s32_partial.py",
+          "main"
+        ],
+        "exit_code": 0,
+        "log": "0.log",
+        "sha256": "aae2db3d3877fcbabf4a4ebcfa729c7a1cb87cec89449e416e67522712ffd5cd"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "build/check_s31_handoff.py",
+          "--environment"
+        ],
+        "exit_code": 0,
+        "log": "1.log",
+        "sha256": "f155bf733f283e60f2c15d6135f5beba9b3ba67f6b17d34a7cc97a11703b4d52"
+      },
+      {
+        "argv": [
+          "C:\\msys64\\ucrt64\\bin\\python.exe",
+          "build/audit_checkout.py"
+        ],
+        "exit_code": 0,
+        "log": "2.log",
+        "sha256": "da627b628bb03a936cb20f0084709823429832d3ca78c73c55cb09737073c88b"
+      },
+      {
+        "argv": [
+          "git",
+          "ls-remote",
+          "--heads",
+          "origin"
+        ],
+        "exit_code": 0,
+        "log": "3.log",
+        "sha256": "be6755a77df58933b9f6c5025ba543c217247299216b1df187618ba003272ceb"
+      }
+    ],
+    "remote_inputs": {
+      "main": {
+        "url": "https://api.github.com/repos/tiagosombrra/apmesh-modernization/branches/main",
+        "response_sha256": "4284cd73121d1b3895d1c5b3c79d520a1e1ff7e9fd9c06baacae3833b9b52d6e"
+      },
+      "branches": {
+        "url": "https://api.github.com/repos/tiagosombrra/apmesh-modernization/branches?per_page=100",
+        "response_sha256": "82da642be5dbf842486cda1e03b8065762feec82429c8156c5386ca81939eb3d"
+      },
+      "tree": {
+        "url": "https://api.github.com/repos/tiagosombrra/apmesh-modernization/git/trees/b1d1fd64c7f4924c5ba3180cb5623eb6aac9dcf5?recursive=1",
+        "response_sha256": "33c4dc4a36067c19cde1e634ea2db0c49af8c03bcf6ab4f4789e235256258b1a"
+      },
+      "pulls": {
+        "url": "https://api.github.com/repos/tiagosombrra/apmesh-modernization/pulls?state=open&per_page=100",
+        "response_sha256": "2088e80bcafa7436de7dfc1fb10e14583369fc951827b2b952406e6bc259fee0"
+      },
+      "issues": {
+        "url": "https://api.github.com/repos/tiagosombrra/apmesh-modernization/issues?state=open&per_page=100",
+        "response_sha256": "b5ea61583a261b789a712085aa03c78357d445df2b8d831e9ffd24fbe1a42f76"
+      },
+      "status": {
+        "url": "https://api.github.com/repos/tiagosombrra/apmesh-modernization/commits/cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf/status",
+        "response_sha256": "8e5c36e4214cbcd7e013aeae53a2ee2ed52fbadc858aaf43bbf56911ba10a68f"
+      },
+      "checks": {
+        "url": "https://api.github.com/repos/tiagosombrra/apmesh-modernization/commits/cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf/check-runs",
+        "response_sha256": "9507a7c43c25efcc305ed84ea7d851df21d64ebab65797f2cce267b06969d690"
+      },
+      "runs": {
+        "url": "https://api.github.com/repos/tiagosombrra/apmesh-modernization/actions/runs?head_sha=cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf&per_page=100",
+        "response_sha256": "d07e52cabd96b4c1801eb5c3ad7d9f12d778a4e04799952e98a04831f8672f29"
+      }
+    },
+    "remote_branches": {
+      "bootstrap/published-baseline-quality-tools": "a7390188474876c147a7220b219ffbf041546d6e",
+      "main": "cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf",
+      "stage1/closure-record": "2b685e365b1a45cf0d64da999e97d04699dac366",
+      "stage1/input-validation-accepted-state-regression": "fd59206497b12e3352fc8bea634702d7fe9eb8a9",
+      "stage2/architecture-inventory": "3544c99501ceb5883795c4211215df8a5d01b23f",
+      "stage2/closure-record": "735e410e603b3e91061fb54bc4b5e5b704ad6ecd",
+      "stage3/adapter-sample-publication": "e61be31964558b2f3812d2d6341774ede96cc902",
+      "stage3/adapter-sample-publication-closure": "666837392e18a7ab85562333c9455e7ec40492a6",
+      "stage3/angle-helper-closure": "7101b97f7003ab0695a58c7641d770b1b13444d8",
+      "stage3/angle-helper-lifetime": "da684dd6a2a1fefe709fc8906cce837da4b2ea24",
+      "stage3/area-estimate": "d36f71c19278547ec897d5c96a7cc37e2884c6bc",
+      "stage3/area-estimate-closure": "f00acc5802441c58b92abdc38f53d25f0f6ad15d",
+      "stage3/bezier-construction-lifetime": "c94ed17373abc04c9bbb5359a4ea686a44b886f3",
+      "stage3/bezier-construction-lifetime-closure": "656efbe9e9028a45538ae7cad1a95d56cbd6a9d6",
+      "stage3/bezier-observer-retirement": "7307bdab7c7f4c835218fd3c80d8ad8b458538aa",
+      "stage3/bezier-observer-retirement-closure": "b411bea38936c4f550aff92ff701ab99c6811044",
+      "stage3/charge-input-ownership": "86e5555b2d2590c9ab382842e4a0b0cb3005b0e5",
+      "stage3/charge-input-ownership-closure": "f69f69ec7e4a42853a41e5378b181c19d3916350",
+      "stage3/curvature-sample-lifetime": "45ad4f7fc50bc6dcf8b730be69443801aea7ac43",
+      "stage3/curvature-sample-lifetime-closure": "8200a87316caa489ebf33400219e37e50ecd04ab",
+      "stage3/curve-clone-publication": "ce139f7d46b30daee365dfe5b1608183eb0d02c5",
+      "stage3/curve-clone-publication-closure": "cbc8c53d024fcd4eb3efbc387b1fbab0b6ba13a5",
+      "stage3/curve-collection-closure": "74bd1cee6587f04155ddc909d688390464e034e3",
+      "stage3/curve-collection-transaction": "2c7edff9070810ea8e27574e4449aeebf369824e",
+      "stage3/curve-copy-closure": "dcf52d8e38e194e8af22bd066e628223f292237b",
+      "stage3/curve-copy-parameters": "6bda90b91406b0aed79ba6582bf820ea40559325",
+      "stage3/curve-sample-graph": "8eaeb09fa8137ed32dea5549b4ac07b923d5bac2",
+      "stage3/curve-sample-graph-closure": "bb681f5fbe68ab0d8be6449111c511b6df5e2911",
+      "stage3/curve-sample-lifetime": "06f4bfd40cff9f09c527777169c5fcf8d053e0c7",
+      "stage3/curve-sample-lifetime-closure": "ae740d68d44e837198f776084a7981ca1e754803",
+      "stage3/curve-sample-publication": "7e9a36b80f6104bbe68724d462b71dc140149168",
+      "stage3/curve-sample-publication-closure": "782081c2a5a7b88d695ff2feb349d96c2e02b232",
+      "stage3/curve-snapshot-restoration": "98528aeba68bb0b016b40eeeaff8d2bac6acc297",
+      "stage3/curve-snapshot-restoration-closure": "49fbcdbf59f70f4d0140111d2a0445ef456aa927",
+      "stage3/curve-target-rebuild": "ffdde7248564c8e072138d9673871baa4f13e217",
+      "stage3/curve-target-rebuild-closure": "f3b27fa59ed28e75088b7dc81b8cbe5babf31f4e",
+      "stage3/element-adoption": "dcf6941e944fcd3bf268e7f9a8ecef4f87735d75",
+      "stage3/element-adoption-closure": "bc6f4dfb5f583071447c0d356b2ce0ce2973783f",
+      "stage3/error-evaluator": "387cf4d94eebb06a3203727ae97bffdbb5e5f1eb",
+      "stage3/error-evaluator-closure": "f457acc722df849fd9761b8adc10f91205bf04e5",
+      "stage3/estimate-mesh": "6ba8ec1c95d783e0dc6c0c7c8fc33575bc90bdd7",
+      "stage3/estimate-mesh-closure": "a1073bb78b26440c2dbfce63be8c9fa237f53c6d",
+      "stage3/geometry-adoption": "249c561ec10f5d3766b0d1be71ed52d09e6420ec",
+      "stage3/geometry-adoption-closure": "01fe2bc34fa776768f7c8c17b2d3333b10757229",
+      "stage3/initial-mesh-ownership": "84e303da51a6ac4c6cf52dbbee7f5fb30c93696e",
+      "stage3/initial-mesh-ownership-closure": "eb28e5120feec7bc9e42b0d4c57524f8d5ba37f4",
+      "stage3/mesh-adoption": "bebe4f5273719304fd00967bfaf7ae74de63f351",
+      "stage3/mesh-adoption-closure": "f42bb49e754e69c96747bce9839cd3cfa9136f4a",
+      "stage3/node-copy-lifetime": "6c6c2f2d50f5870fd92e4edbc91fc5d901a1cd22",
+      "stage3/node-lifetime-closure": "c87d6366dba1d231947fcbd2c74764455896d108",
+      "stage3/parametric-midpoint-closure": "9f1ecf096083dcad75921543c0b9507cd3f2bba9",
+      "stage3/parametric-midpoint-lifetime": "4781226726bd36d7ff64afb273ed53c37630b6f3",
+      "stage3/quadtree-construction": "4f0c9bed6d1d1a52b6cdab88a26a9323040614f9",
+      "stage3/quadtree-construction-closure": "2b13f9a8d9b4622133ec8da2760c272d37672bed",
+      "stage3/submesh-lifetime": "88c285e5ac193e7c45fe688cec05867e5243dbdd",
+      "stage3/submesh-lifetime-closure": "d174949b80cd081890b58b711fc0686921d893e6",
+      "stage3/triangle-construction": "a6da72630db2747194982e1a2b77cd3203536408",
+      "stage3/triangle-construction-closure": "7f725aa97c4276c23925b2aae8b43f3aca176d6f",
+      "stage3/triangle-count": "82261a7e305bcde0920ecca0dcb9d7a50893ecc9",
+      "stage3/triangle-count-closure": "84fb84ca40b4f0fc1b06daf0a00ca87a075857ea",
+      "stage3/triangle-lifetime": "7d22766e562669db283bedbf09fab59663546d18",
+      "stage3/triangle-lifetime-closure": "45931c712cc8894942883aaeca7f5e7d64ce533e",
+      "stage3/triangle-observer": "f29018fea3d3490358396381cea1dc7967aaf1ac",
+      "stage3/triangle-observer-closure": "66cdb26ff2a59de09ec48ee82c0b9b871e98088f",
+      "stage3/uv-allocation-closure": "d1b635906f4cf2ffdfac56b9314112f3c0c646cc",
+      "stage3/uv-lifetime-closure": "8238f525f2c2db16d6351507dad27bc0f690d18a",
+      "stage3/uv-pending-registration": "ef89fd9d3305a9ed4c88548df086540d00bbadd3",
+      "stage3/uv-primitive-allocation": "fce74915755d1535b89dbd280cbc1ba3813f9b91",
+      "stage3/uv-registration-closure": "1090e094c70f1528d152e4454f69a96dad232a35",
+      "stage3/uv-template-lifetime": "a5fb2cd0d7ebbe6dc10f98689f4d6caa60419c0c"
+    },
+    "remote_blobs": 1951,
+    "exact_remote_blob_identities": 1951,
+    "ctest": {
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "python_controls": 74,
+      "names": [
+        "application.triangle_area_contracts",
+        "application.triangle_area_real_error",
+        "application.error_estimate_contracts",
+        "application.triangle_count_contracts",
+        "application.estimate_mesh_contracts",
+        "application.triangle_lifetime_contracts",
+        "application.triangle_observer_contracts",
+        "application.submesh_lifetime_contracts",
+        "application.triangle_construction_contracts",
+        "application.element_adoption_contracts",
+        "application.mesh_adoption_contracts",
+        "application.charge_input_contracts",
+        "application.charge_input_real_numbers",
+        "application.curve_collection_contracts",
+        "application.curve_copy_contracts",
+        "application.geometry_adoption_contracts",
+        "application.curve_synchronization_contracts",
+        "application.curve_snapshot_contracts",
+        "application.curve_rebuild_contracts",
+        "application.curve_samples_contracts",
+        "application.curve_sample_graph_contracts",
+        "application.curve_sample_lifetime_contracts",
+        "application.initial_mesh_contracts",
+        "application.curve_publication_contracts",
+        "application.uv_lifetime",
+        "application.uv_primitive_contracts",
+        "application.uv_registration_contracts",
+        "application.uv_unowned_cell",
+        "application.uv_tree_contracts",
+        "application.uv_angle_contracts",
+        "application.uv_parametric_contracts",
+        "application.node_lifetime",
+        "tooling.controls",
+        "reference.archived_eistute_artifact",
+        "application.invalid_inputs",
+        "application.boundary_orientation",
+        "application.metric_schema",
+        "application.curve_orientation_arclength",
+        "tooling.tidy_header_scope",
+        "application.smoothing_adjacency_order",
+        "application.valid_input_grammar",
+        "application.curvature_sample_contracts",
+        "application.bezier_construction_contracts",
+        "application.bezier_observer_contracts",
+        "tooling.bezier_observer_preservation"
+      ]
+    },
+    "memory_batteries": 28,
+    "memory_expected_outcomes": 2874,
+    "current_memory_executables": 56,
+    "application_sha256": "39dde24a7dd3152c6e136f6cbb67abd9412209356f02cb19c198639683df122d",
+    "remote_interpretation": "Zero status contexts/check runs is absence of hosted validation. No tracked hosted workflows; no workflow runs for this revision.",
+    "disposition": "All required implementation head/main obligations are satisfied by the retained exact-head report plus unchanged local main campaign and this explicit terminal continuation. Original failed report remains failed and unchanged. Full stage 3 remains open."
+  },
+  "completion_raw_report_sha256": "0f62f8e417ef4d5c7235954543fef229d5451b9b69f3e5c852f4656ec0641e4e",
+  "historical_pending_evidence": "post_merge_pending.json",
+  "historical_pending_evidence_sha256": "c3bb8a1e39b8870380b7b9c4c68db54c7fdbc8403a36ba83b02605e2c0c63fea",
+  "limits": "Only the bounded C26 current-incidence/Geometry lifetime boundary is qualified. Full stage 3 and stages 4-11 remain open."
+}
