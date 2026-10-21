@@ -1,16 +1,30 @@
 # Project state
 
-Active bounded item: stage 3 slice 30, numerical curvature-sample lifetime.
-Root cause: overwritten heap samples leak and invalid PointAdaptive-to-NodeAdaptive
-casts precede a PointAdaptive-only curvature API. Automatic values and a bounded
-25-entry scratch array are implemented; complete qualification and delivery are
-pending. Existing numerical sample thresholds, order, formulas and denominator
-must remain unchanged. Slice 29 remains the latest qualified baseline.
+## Latest qualified work: stage 3 slice 30
+
+Stage 3 slice 30 is qualified. PR #82 integrates head `45ad4f7fc50bc6dcf8b730be69443801aea7ac43`
+as main `181e2acc70746d7abb5f64a924fce6aed51313e8`, preserving complete tree `17fc7f2eae0f6d87a0ccb1a3df581cab32c62eb9`
+(1916 blobs). Exact-head/main full gates pass on the same 589
+protected inputs: CTest 42/42, zero skips, 74 Python controls, 26 memory batteries/
+2677 expected outcomes, 1040 retained scalar sequences, selected lint/format/
+inventory and exact repeated Eistute/Book accepted/rejected traces.
+
+The sampler now has automatic points and bounded scratch, without nonexistent
+derived casts. The new 725 outcomes include 330 sampled exception positions and
+342 zero-allocation operations; 90 actual GCC pairs preserve scalar bits and
+sample/inverse arguments. Four numerical mutations are rejected. Original 367
+failures/358 expected outcomes and preliminary failures remain retained. See
+[root cause and bounded closure](evidence/STAGE3_CURVATURE_SAMPLE.md).
+
+Stage 3 remains open. Next audit remaining estimator helper/control-construction
+lifetime. Arbitrary callbacks, internal solver exceptions, complete cache/metadata
+rollback, malformed input/partial output and full-process/parallel/LSan/UBSan remain
+unqualified. Stages 4-11 remain pending.
 
 Updated: 2026-10-20 (America/Fortaleza).
 Scope: implementation modernization preserving the published technique.
 
-## Latest qualified work: stage 3 slice 29
+## Stage 3 slice 29 qualified
 
 PR #80 integrates head `86e5555b2d2590c9ab382842e4a0b0cb3005b0e5` as main
 `42f8e62eee04e99a566f499651c477bd2cb47345`, preserving complete tree `9cb4a6ae1daf1308df4ccd5f2c55eb3e8261f509`

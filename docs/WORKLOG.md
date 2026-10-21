@@ -1,20 +1,30 @@
 # Modernization work log
 
-## 2026-10-20: stage 3 slice 30 candidate
+## 2026-10-20: stage 3 slice 30 qualified
 
-Remove the actual overwritten sample allocations and invalid derived casts in
-CalculateKaMedioPatch; compile the bounded sampler as a small actual unit. The
-725-case candidate battery passes (330 sampled exception positions, 342 measured
-zero-allocation operations); the original retains 367 failures. Ninety actual GCC
-paired traces preserve ordered sample/inverse arguments and scalar bits. Four
-numerical token mutations are rejected. Exact-head/main full regression and
-integration remain pending; stage 3 remains open. See
-[scope and retained negatives](evidence/STAGE3_CURVATURE_SAMPLE.md).
+Stage 3 slice 30 is qualified. PR #82 integrates head `45ad4f7fc50bc6dcf8b730be69443801aea7ac43`
+as main `181e2acc70746d7abb5f64a924fce6aed51313e8`, preserving complete tree `17fc7f2eae0f6d87a0ccb1a3df581cab32c62eb9`
+(1916 blobs). Exact-head/main full gates pass on the same 589
+protected inputs: CTest 42/42, zero skips, 74 Python controls, 26 memory batteries/
+2677 expected outcomes, 1040 retained scalar sequences, selected lint/format/
+inventory and exact repeated Eistute/Book accepted/rejected traces.
+
+The sampler now has automatic points and bounded scratch, without nonexistent
+derived casts. The new 725 outcomes include 330 sampled exception positions and
+342 zero-allocation operations; 90 actual GCC pairs preserve scalar bits and
+sample/inverse arguments. Four numerical mutations are rejected. Original 367
+failures/358 expected outcomes and preliminary failures remain retained. See
+[root cause and bounded closure](evidence/STAGE3_CURVATURE_SAMPLE.md).
+
+Stage 3 remains open. Next audit remaining estimator helper/control-construction
+lifetime. Arbitrary callbacks, internal solver exceptions, complete cache/metadata
+rollback, malformed input/partial output and full-process/parallel/LSan/UBSan remain
+unqualified. Stages 4-11 remain pending.
 
 This ledger summarizes integrated engineering deliveries; detailed commands,
 failures, hashes and limitations stay in the linked evidence records.
 
-Latest delivery: stage 3 slice 29 (PR #80); see the final ledger row.
+Latest delivery: stage 3 slice 30 (PR #82); see the final ledger row.
 
 | Delivery | Integrated record | Result and continuity |
 | --- | --- | --- |
@@ -55,3 +65,4 @@ cache/foreign observer validity and full-process/parallel memory remain open.
 | 2026-10-19, stage 3 slice 27 | PR #76; head 387cf4d94eebb06a3203727ae97bffdbb5e5f1eb, main c905baa3738db4059ecce4c4b896b8753de43daa; evidence/STAGE3_ERROR_ESTIMATE.md | Temporary evaluator root/vector released; CTest 37/37, 1421 instrument outcomes, 156062 new allocation denials, 270 paired policy decisions, exact repeated article traces; original retention/tooling failures preserved; area orchestration next |
 | 2026-10-20, stage 3 slice 28 | PR #78; head d36f71c19278547ec897d5c96a7cc37e2884c6bc, main 4ea63f2118c9cccf8968676125bb3794d7a79bd0; evidence/STAGE3_TRIANGLE_AREA.md | Temporary area Mesh/fresh sample owners and previous patch restoration; CTest 39/39, 1763 outcomes, 30942 new denials, exact paired area/degree/exception traces and repeated article runs; original failures preserved; input/control-point roots next |
 | 2026-10-20, stage 3 slice 29 | PR #80; head 86e5555b2d2590c9ab382842e4a0b0cb3005b0e5, main 42f8e62eee04e99a566f499651c477bd2cb47345; evidence/STAGE3_CHARGE_INPUT.md | Unique reader/pending owners, automatic controls, exclusive observer-suffix cleanup and reader badbit propagation; head/main 41 CTest, 74 Python controls, 1952 expected instrument outcomes, 2787 new allocation denials, 48 exact paired traces and article regression; original 155 failures and DLL CRT/reader/link preflights retained; helper scratch/full-process remain open |
+| 2026-10-20, stage 3 slice 30 | PR #82; head 45ad4f7fc50bc6dcf8b730be69443801aea7ac43, main 181e2acc70746d7abb5f64a924fce6aed51313e8; evidence/STAGE3_CURVATURE_SAMPLE.md | Automatic curvature samples, no nonexistent derived casts, bounded scratch; 42 CTest, 74 Python controls, 2677 memory outcomes, 342 zero-allocation operations, 90 exact sample pairs and article regression. Original 367 failures retained; stage 3 and full-process scope remain open |

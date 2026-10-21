@@ -1,29 +1,29 @@
 # Technique-preserving modernization plan
 
-Active bounded item: stage 3 slice 30, numerical curvature-sample lifetime.
-Root cause: overwritten heap samples leak and invalid PointAdaptive-to-NodeAdaptive
-casts precede a PointAdaptive-only curvature API. Automatic values and a bounded
-25-entry scratch array are implemented; complete qualification and delivery are
-pending. Existing numerical sample thresholds, order, formulas and denominator
-must remain unchanged. Slice 29 remains the latest qualified baseline.
-
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Current status: stage 3 slice 29 charge input ownership.
-PR #80 integrates head `86e5555b2d2590c9ab382842e4a0b0cb3005b0e5` as main
-`42f8e62eee04e99a566f499651c477bd2cb47345`, preserving complete tree `9cb4a6ae1daf1308df4ccd5f2c55eb3e8261f509`
-(1900 blobs). Full exact-head/main gates pass against the same 583
-protected inputs: CTest 41/41, zero skips, 74 Python controls, twenty-five memory
-batteries/1952 expected outcomes, 1040 retained scalar sequence comparisons,
-selected lint, explicit format/inventory and exact repeated Eistute/Book traces.
-The new 189 outcomes/2787 denials and 48 original/repaired nonempty paired
-traces pass for the bounded ownership scope. Stage 3 remains open; next audit
-numerical estimator helper scratch/control-node lifetime. See [root cause and
-closure audit](evidence/STAGE3_CHARGE_INPUT.md).
+Stage 3 slice 30 is qualified. PR #82 integrates head `45ad4f7fc50bc6dcf8b730be69443801aea7ac43`
+as main `181e2acc70746d7abb5f64a924fce6aed51313e8`, preserving complete tree `17fc7f2eae0f6d87a0ccb1a3df581cab32c62eb9`
+(1916 blobs). Exact-head/main full gates pass on the same 589
+protected inputs: CTest 42/42, zero skips, 74 Python controls, 26 memory batteries/
+2677 expected outcomes, 1040 retained scalar sequences, selected lint/format/
+inventory and exact repeated Eistute/Book accepted/rejected traces.
 
-Previous qualified baseline: slice 28, implementation #78 and closure #79,
-final main `11d721a693ada96de959abd0f455d6b2ea1460a3`; see [temporary area audit](evidence/STAGE3_TRIANGLE_AREA.md).
+The sampler now has automatic points and bounded scratch, without nonexistent
+derived casts. The new 725 outcomes include 330 sampled exception positions and
+342 zero-allocation operations; 90 actual GCC pairs preserve scalar bits and
+sample/inverse arguments. Four numerical mutations are rejected. Original 367
+failures/358 expected outcomes and preliminary failures remain retained. See
+[root cause and bounded closure](evidence/STAGE3_CURVATURE_SAMPLE.md).
+
+Stage 3 remains open. Next audit remaining estimator helper/control-construction
+lifetime. Arbitrary callbacks, internal solver exceptions, complete cache/metadata
+rollback, malformed input/partial output and full-process/parallel/LSan/UBSan remain
+unqualified. Stages 4-11 remain pending.
+
+Previous qualified baseline: slice 29, implementation #80 and closure #81,
+final main `50ba13492de0bae355a158a254be8621d24a5518`; see [charge input audit](evidence/STAGE3_CHARGE_INPUT.md).
 
 Stages 0-2 remain closed for their measured scope. Stage 3 remains open; stages
 4-11 are pending. This repair preserves formulas, floating-point order, numerical
