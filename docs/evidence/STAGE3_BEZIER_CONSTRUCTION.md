@@ -1,6 +1,8 @@
 # Stage 3 slice 31: Bezier construction lifetime
 
-Status: candidate checks pass; exact published-head/main gates pending.
+Status: bounded exact-head/main qualification complete (PR #84).
+Head `c94ed17373abc04c9bbb5359a4ea686a44b886f3`; implementation main `1bc4038ad55a6b5fce7ec99db3fc5b200016ea69`.
+Complete tree `d950dbb0a49e4a4ec8109a6d4feefa360d5c10a2` (1933 blobs); all 594 protected inputs unchanged.
 Entry main: `b908ecd384dea4877186fb8cb167444da5c2173d` (implementation #82, closure #83).
 Classification: resource-lifetime and failed-constructor observer defect repairs,
 with engineering-only sharing of the existing scope. No scientific proposal.
@@ -53,7 +55,7 @@ All 32 original sweeps fail and stop at their first leak or observer mismatch;
 39 other expected outcomes pass. Only 208 original denials are observed, so later
 ordinals are unmeasured. Full raw logs and executable/source identities remain
 local; compact case/log hashes are retained in
-[bezier_construction](stage 3/bezier_construction/). Actual ASan UAF, independent
+[bezier_construction](stage3/bezier_construction/). Actual ASan UAF, independent
 Debug CRT leak/denial and an extra-observer negative oracle are required. ASan
 leaks are disabled; Debug CRT supplies retention. Separate ASan /MD and Debug
 /MTd targets use matching units and the previously qualified iterator ABI.
@@ -79,16 +81,16 @@ static findings, not a demonstrated current serial failure or successful test.
 
 ## Required delivery and closure inventory
 
-Exact published head and implementation main must each pass 43 CTest/74 Python,
+Exact published head and implementation main each pass 43 CTest/74 Python,
 zero skips, all prior 26 batteries plus this one (27 batteries/2748 expected outcomes),
 1040 retained scalar sequences, 90 sampler pairs, 48 charge pairs, 16 GCC constructor
 pairs, 32 MSVC constructor pairs, selected lint, explicit changed-line formatting,
 fresh architecture inventory and exact repeated Eistute/Book accepted/rejected
 OBJ/incidence/boundary/acceptance and independent CSV comparisons. All protected
 production/tool/test/build/input/contract identities and complete command/case/
-raw-child log hashes must match. No required gate is removed or relaxed. Full
+raw-child log hashes match. No required gate is removed or relaxed. Full
 numerical regression is scheduled before the long allocation sweeps for earlier
-feedback, using the same commands and limits. Main is requalified after merge.
+feedback, using the same commands and limits. Implementation main passed the same complete qualification after merge.
 
 ```powershell
 . ./build/local-env.ps1

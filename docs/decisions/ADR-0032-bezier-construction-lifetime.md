@@ -1,6 +1,6 @@
 # ADR 0032: Bezier construction lifetime
 
-Status: implemented; exact-head/main qualification pending.
+Status: accepted for bounded repair; exact-head/main qualification complete.
 
 Keep fresh curves in four local unique owners until the complete sixteen-point
 PatchBezier constructor succeeds. Publish raw curve observers in the original
@@ -17,4 +17,4 @@ Require actual constructor allocation denials, preserved prefixes, terminal
 cleanup, numerical/control/direction trace pairs and full exact-head/main gates.
 Ordinary patch destruction, subsequent caller adoption failures, arbitrary foreign
 publications and full-process/parallel qualification remain separate. See
-[the construction audit](../evidence/STAGE 3_BEZIER_CONSTRUCTION.md).
+[the construction audit](../evidence/STAGE3_BEZIER_CONSTRUCTION.md).

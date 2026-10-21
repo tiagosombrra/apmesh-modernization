@@ -1,35 +1,34 @@
 # Technique-preserving modernization plan
 
-Active bounded item: stage 3 slice 31, Bezier construction lifetime.
-Repair both fresh-curve ownership on construction failure and borrowed-curve
-observer suffix restoration, sharing the already qualified scope with charge
-estimation. Candidate memory and token checks pass; full delivery qualification
-and integration remain pending. Slice 30 is the latest qualified baseline.
-
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 
-Stage 3 slice 30 is qualified. PR #82 integrates head `45ad4f7fc50bc6dcf8b730be69443801aea7ac43`
-as main `181e2acc70746d7abb5f64a924fce6aed51313e8`, preserving complete tree `17fc7f2eae0f6d87a0ccb1a3df581cab32c62eb9`
-(1916 blobs). Exact-head/main full gates pass on the same 589
-protected inputs: CTest 42/42, zero skips, 74 Python controls, 26 memory batteries/
-2677 expected outcomes, 1040 retained scalar sequences, selected lint/format/
+Stage 3 slice 31 is qualified. PR #84 integrates head `c94ed17373abc04c9bbb5359a4ea686a44b886f3`
+as main `1bc4038ad55a6b5fce7ec99db3fc5b200016ea69`, preserving complete tree `d950dbb0a49e4a4ec8109a6d4feefa360d5c10a2`
+(1933 blobs). Exact-head/main full gates pass on the same 594
+protected inputs: CTest 43/43, zero skips, 74 Python controls, 27 memory batteries/
+2748 expected outcomes, 1040 retained scalar sequences, selected lint/format/
 inventory and exact repeated Eistute/Book accepted/rejected traces.
 
-The sampler now has automatic points and bounded scratch, without nonexistent
-derived casts. The new 725 outcomes include 330 sampled exception positions and
-342 zero-allocation operations; 90 actual GCC pairs preserve scalar bits and
-sample/inverse arguments. Four numerical mutations are rejected. Original 367
-failures/358 expected outcomes and preliminary failures remain retained. See
-[root cause and bounded closure](evidence/STAGE3_CURVATURE_SAMPLE.md).
+Fresh Bezier curves now have local unique owners until construction succeeds;
+failed borrowed-curve construction restores exclusively appended observer suffixes.
+The unchanged scope is shared with charge estimation. The new 71 outcomes cover
+32 complete sweeps/348 allocation denials; 16 actual GCC and 32 MSVC trace pairs
+preserve scalar bits, controls, directions and live incidence. Four independent
+mutations are rejected. Original 32 failed partial sweeps/208 observed denials and
+39 other expected outcomes, including a zero-retention observer defect, remain
+retained. See [root cause and bounded closure](evidence/STAGE3_BEZIER_CONSTRUCTION.md).
 
-Stage 3 remains open. Next audit remaining estimator helper/control-construction
-lifetime. Arbitrary callbacks, internal solver exceptions, complete cache/metadata
-rollback, malformed input/partial output and full-process/parallel/LSan/UBSan remain
-unqualified. Stages 4-11 remain pending.
+Stage 3 remains open. Next audit completed patch observer lifetime and caller
+curve/patch destruction ordering. Successful fresh-curve caller adoption,
+ordinary deregistration, arbitrary publications, cache/metadata/acceptance
+rollback and full-process/parallel/LSan/UBSan remain unqualified. Remaining
+estimator quadrature VLA/domain and interpolation singularity findings are retained
+without new numerical policies or a demonstrated current serial failure.
+Stages 4-11 remain pending.
 
-Previous qualified baseline: slice 29, implementation #80 and closure #81,
-final main `50ba13492de0bae355a158a254be8621d24a5518`; see [charge input audit](evidence/STAGE3_CHARGE_INPUT.md).
+Previous qualified baseline: slice 30, implementation #82 and closure #83,
+final main `b908ecd384dea4877186fb8cb167444da5c2173d`; see [curvature sample audit](evidence/STAGE3_CURVATURE_SAMPLE.md).
 
 Stages 0-2 remain closed for their measured scope. Stage 3 remains open; stages
 4-11 are pending. This repair preserves formulas, floating-point order, numerical

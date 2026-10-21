@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "phase": "head",
+  "original_revision": "b908ecd384dea4877186fb8cb167444da5c2173d",
+  "verified_original_blobs": 487,
+  "gcc_executables": {
+    "original": {
+      "path": "build\\s31og\\bezier_construction_probe.exe",
+      "sha256": "b3651b6f3eba14355676f4e25b3b4c28ea0c550dfb71ddc91f80d14caa351499",
+      "observed_pair_logs": 16
+    },
+    "candidate": {
+      "path": "build\\s31qg\\bezier_construction_probe.exe",
+      "sha256": "6df5b9bac250012cc17af9304d003729bf4d5f4ad2511feb1b560658df119275",
+      "observed_pair_logs": 16
+    }
+  },
+  "scope": "Executable identities captured at closure against unchanged compiled inputs. Binary modification times precede every retained paired log. Original source bytes independently match the Git-verified snapshot manifest. This supplements, and does not alter, completed test reports."
+}

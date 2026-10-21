@@ -56,16 +56,18 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 remains open with thirty qualified ownership/lifecycle slices.
-The latest removes overwritten curvature-sample allocations and invalid derived
-casts (PR #82). Exact-head/main gates pass: CTest 42/42, 74 Python controls,
-26 memory batteries/2677 expected outcomes, 1040 retained scalar sequences and
-exact repeated Eistute/Book accepted/rejected traces. The new 725 outcomes include
-342 zero-allocation operations and 330 sampled exception positions; 90 actual GCC
-pairs preserve numerical bits and sample arguments. Original 367 failures and
-preliminary failures remain retained. See [the bounded closure audit](docs/evidence/STAGE3_CURVATURE_SAMPLE.md).
-Other helper/constructor roots, parser/output handling, complete cache/metadata
-rollback and full-process/parallel memory remain open; stages 4-11 pending.
+Stage 3 remains open with thirty-one qualified ownership/lifecycle slices.
+The latest protects fresh Bezier curves and restores borrowed observer suffixes
+when construction fails (PR #84). Exact-head/main gates pass: CTest 43/43,
+74 Python controls, 27 memory batteries/2748 expected outcomes, 1040 retained
+scalar sequences and exact repeated Eistute/Book accepted/rejected traces.
+The new 71 outcomes cover 32 complete sweeps/348 allocation denials; 16 GCC and
+32 MSVC constructor pairs preserve numerical bits, controls and directions.
+Original 32 failed partial sweeps and preliminary findings remain retained.
+See [the bounded closure audit](docs/evidence/STAGE3_BEZIER_CONSTRUCTION.md).
+Successful caller adoption, ordinary observer deregistration, other construction
+roots, complete cache/metadata rollback and full-process/parallel memory remain
+open; stages 4-11 are pending.
 
 ## Repository policy
 

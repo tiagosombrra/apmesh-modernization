@@ -13,10 +13,10 @@ interning/orientation. Candidate/exact-head/main status is authoritative in
 PROJECT_STATE.md and the charge-input evidence, not inferred from this map.
 
 Slice 30 qualifies automatic curvature samples and bounded scratch storage (C24).
-The active slice 31 repairs fresh curve ownership and borrowed observer restoration
+Slice 31 qualifies fresh curve ownership and borrowed observer restoration
 at the Bezier constructor boundary (C25), reusing the unchanged charge scope.
 Its exact-head/main status is authoritative in PROJECT_STATE.md and the linked
-construction audit. The next audit after closure is completed patch observer
+construction audit. The next single audit is completed patch observer
 lifetime and caller curve/patch destruction ordering. Remaining estimator helpers
 have no newly established heap-lifetime defect; quadrature VLA/domain and unused
 interpolation singularity findings remain explicit portability/numerical work.
