@@ -1,6 +1,8 @@
 # Stage 3 slice 30: automatic curvature sample lifetime
 
-Status: candidate checks pass; exact published-head and post-merge full gates pending.
+Status: bounded exact-head/main qualification complete (PR #82).
+Head `45ad4f7fc50bc6dcf8b730be69443801aea7ac43`; implementation main `181e2acc70746d7abb5f64a924fce6aed51313e8`.
+Complete tree `17fc7f2eae0f6d87a0ccb1a3df581cab32c62eb9` (1916 blobs); all 589 inputs unchanged.
 Entry main: `50ba13492de0bae355a158a254be8621d24a5518`.
 Classification: resource-lifetime/invalid-cast defect repair, with engineering-only
 extraction, fixed bounded scratch storage and local spelling/diagnostic migration.
@@ -60,9 +62,9 @@ be zero. Observed correspondence does not make the original invalid cast defined
 Compact case/log identities and negative findings are retained in
 [curvature_sample](stage3/curvature_sample/). Full raw local logs remain under build.
 
-## Required delivery gates
+## Passed exact-head/main delivery gates
 
-Exact published-head and implementation-main must each pass build, CTest 42/42
+Exact published-head and implementation-main each pass build, CTest 42/42
 with zero skips and 74 Python controls, all prior 25 memory batteries plus this
 new battery (26 batteries/2677 expected outcomes), all 1040 retained scalar
 sequences, 90 paired sampler traces and 48 actual/controlled charge traces,

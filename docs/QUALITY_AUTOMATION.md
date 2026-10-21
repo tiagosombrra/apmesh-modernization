@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Automatic curvature samples (PR #82)
+
+Stage 3 slice 30 adds application.curvature_sample_contracts.
+tools/qualify_curvature_sample.py requires 725 outcomes, 330 sampled forward/inverse
+exception positions, 342 zero-allocation operations and actual UAF/leak/denial
+controls. tools/compare_curvature_sample.py requires 90 actual GCC paired traces;
+tools/audit_curvature_sample.py preserves all numerical tokens and rejects four
+mutations. The original MSVC VLA-extent adapter is explicit; GCC retains the old
+VLA. Original 367 failures and initial probe findings remain retained. Exact-head/
+main full gates pass: 42 CTest, 74 Python controls, zero skips and all previous
+batteries plus the new one (26/2677 outcomes). Caller-level boundaries, valid
+fixtures and bounded lifetime only; other helper/callback/internal-solver paths
+and full-process/parallel/LSan/UBSan remain open. See
+[commands and scope](evidence/STAGE3_CURVATURE_SAMPLE.md).
+
 ## Charge input ownership (PR #80)
 
 Stage 3 slice 29 adds application.charge_input_contracts and

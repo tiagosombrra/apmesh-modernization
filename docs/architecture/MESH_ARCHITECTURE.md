@@ -49,7 +49,7 @@ focused source review, with uncertainty and deferred qualification stated.
 | crab_mesh/numerical | 7 | Equation/root functions and bisection variants used by numerical geometry helpers |
 | crab_mesh/performer | 5 | ID allocation and ranges; local front IDs remain a separate context |
 | curvature | 7 | Analytical surface curvature, discrete physical-mesh curvature and adjacency ordering |
-| estimate | 11 | Legacy patch workload estimation and alternative loading path, principally parallel distribution support |
+| estimate | 12 | Legacy patch workload estimation and alternative loading path, principally parallel distribution support |
 | input_output | 12 | BP/model readers, input validation, independent incidence observation and historical writers |
 | parallel | 25 | Communicator/thread abstractions and MPI/OpenMP-specific implementations; effective execution unqualified here |
 | timer | 2 | Interval accumulation and reporting; performance qualification deferred |

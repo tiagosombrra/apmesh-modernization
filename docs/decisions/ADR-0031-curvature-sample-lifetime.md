@@ -1,6 +1,6 @@
 # ADR 0031: automatic curvature samples
 
-Status: implemented; exact-head/main qualification pending.
+Status: accepted for bounded repair; exact-head/main qualification complete.
 
 Replace overwritten heap allocations with automatic PointAdaptive values and
 pass them directly to the actual PointAdaptive curvature API. Use a fixed

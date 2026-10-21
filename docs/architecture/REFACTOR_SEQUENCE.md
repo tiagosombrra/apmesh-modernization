@@ -12,9 +12,9 @@ matching/control order and keep it distinct from serial ReaderFilePatches
 interning/orientation. Candidate/exact-head/main status is authoritative in
 PROJECT_STATE.md and the charge-input evidence, not inferred from this map.
 
-The active slice 30 repairs overwritten PointAdaptive allocations and invalid
-derived sample casts in curvature sampling (C24). Automatic values and bounded
-scratch storage are implemented; full exact-head/main qualification is pending. Keep the existing formulas and 25-sample argument, distinguish actual
+Slice 30 qualifies automatic curvature samples and bounded scratch storage (C24).
+The next single audit is remaining estimator helper/control-construction lifetime;
+exact-head/main evidence and outstanding scope are recorded in PROJECT_STATE.md. Keep the existing formulas and 25-sample argument, distinguish actual
 numerical correspondence from memory qualification, and preserve original
 failures. Other loaders, Model/copy/cache/helper roots, arbitrary publications,
 metadata/acceptance rollback and full-process/parallel memory remain open.

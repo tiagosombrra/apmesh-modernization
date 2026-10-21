@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "phase": "head",
+  "original_revision": "50ba13492de0bae355a158a254be8621d24a5518",
+  "verified_original_blobs": 486,
+  "gcc_executables": {
+    "original": {
+      "path": "build\\s30og\\curvature_sample_probe.exe",
+      "sha256": "553ffaf0d092eebd16a6dd754c9332130656a35a3eadb989b962b6c5a810c1b8",
+      "observed_pair_logs": 90
+    },
+    "candidate": {
+      "path": "build\\s30qg\\curvature_sample_probe.exe",
+      "sha256": "b7e353473858b62a32c8470ccc9f1eaaab34f98eac52f7609a84823c0e919f7b",
+      "observed_pair_logs": 90
+    }
+  },
+  "scope": "Executable identities captured at closure against unchanged compiled inputs. Binary modification times precede every retained paired log. Original source bytes independently match the Git-verified snapshot manifest. This supplements, and does not alter, completed test reports."
+}
