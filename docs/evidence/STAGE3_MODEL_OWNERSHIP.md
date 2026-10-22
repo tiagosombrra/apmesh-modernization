@@ -1,6 +1,6 @@
 # Stage 3 slice 34: Model mesh ownership
 
-Status: focused candidate passes; full exact-published-head/main qualification PENDING.
+Status: bounded exact-head/main qualification complete (PR #92).
 Entry main: cd3dd8c7e269d4384f62109ef28334184c64ce89 (PR #91).
 Classification: behavior-changing lifetime defect repair; no scientific change.
 Stage 3 remains open; stages 4-11 remain pending.
@@ -43,9 +43,10 @@ calibrated growth allocations are denied exactly once; each failure preserves th
 live prefix, releases its argument and permits a new independent append, ending
 with zero retained blocks/bytes. Moves have runtime evidence as well as traits.
 
-Fifteen nonempty original/candidate live pairs (five each GCC C++17, MSVC ASan and
-MSVC CRT) agree on actual XYZ coordinates, node/element IDs, analytic area 0.5,
-local triangle adjacency, null/order/count and geometry borrowing/reverse lifetime.
+The focused record contains fifteen nonempty original/candidate live pairs (five
+each default GCC C++20, MSVC ASan and MSVC CRT). They agree on actual XYZ
+coordinates, node/element IDs, analytic area 0.5, local triangle adjacency,
+null/order/count and geometry borrowing/reverse lifetime.
 The original pairs exercise its raw API; candidate owning/move paths have separate
 runtime tests. The two-file preservation guard permits only the exact owner,
 copy/move, constructor-initialization and getter access delta; six independent
@@ -87,3 +88,50 @@ acceptance rollback, other loaders/MPI/Hermite, complete extreme meshes or broad
 models. No formula, floating-point order, synchronization, tolerance, template/
 front reconstruction, budget or acceptance/stopping policy changes. Allocation
 counts/timing can change; no performance claim.
+
+## Explicit C++17 reference correction
+
+The initial isolated GCC configurations requested a minimum C++17 feature level,
+so GCC 16 used its default C++20. Those five original/candidate observations remain
+unchanged as additional evidence; they are not the C++17 reference. The application
+preset and MSVC instruments already explicitly use C++17. Separate original and
+candidate configurations now require CMAKE_CXX_STANDARD=17 and
+CMAKE_CXX_STANDARD_REQUIRED=ON; their actual compile flags are checked for
+-std=gnu++17. Five additional nonempty exact-head and five post-merge main pairs
+pass. Required fifteen-pair qualification uses these five explicit GCC C++17
+pairs plus the ten MSVC ASan/CRT pairs. No production source or scientific budget
+changes, and no completed instrument campaign is repeated for this correction.
+
+```powershell
+cmake -S tests/model_memory -B build/s34qg17 -G Ninja -DCMAKE_CXX_COMPILER=C:/msys64/ucrt64/bin/c++.exe -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_STANDARD_REQUIRED=ON -DAP_MESH_STATIC_MINGW_RUNTIME=ON
+cmake --build build/s34qg17 --parallel 2
+cmake -S tests/model_memory -B build/s34og17 -G Ninja -DCMAKE_CXX_COMPILER=C:/msys64/ucrt64/bin/c++.exe -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_STANDARD_REQUIRED=ON -DAP_MESH_MODEL_ORIGINAL=ON -DAP_MESH_MODEL_SOURCE_ROOT="<absolute immutable original root>" -DAP_MESH_STATIC_MINGW_RUNTIME=ON
+cmake --build build/s34og17 --parallel 2
+```
+
+## Exact delivery closure
+
+Head `a8e032c0450db2e64942e8ea4c5eed4c70642e07` and main
+`cbd5ddc0031deef9983f448bb2560463a387c260` preserve tree
+`52c4fcc2e57c9c136c297eef25f44d59180d7235` with 1988 blobs. Both full campaigns pass
+all 122/122 recorded commands and their independent checks,
+49/49 CTest with no failures/skips, 74 Python controls, all 30 memory batteries/
+3062 expected outcomes, 1040 scalar sequences and exact repeated Eistute/Book
+accepted/rejected/OBJ/incidence/CSV observations. All 608 protected source/test/
+tool/build/input/contract hashes remain fixed. Every other one of the original
+488 production files remains unchanged except the two audited Model files.
+
+Full raw records remain local under build/s34-head and build/s34-main. The
+[compact delivery record](stage3/model_ownership/delivery.json) retains revision,
+report/independent-check/remote-audit hashes and inventories. Original failed
+outcomes, deliberate negative controls and unmeasured scope remain distinct.
+Remote audits reconcile all 75 branches and the complete fetched Git object tree;
+connected PR/status/workflow-run observations are retained separately. No workflow
+source files are present. Zero hosted observations is absence of hosted validation,
+not a successful hosted test. The unavailable local API route is not relied on.
+
+The documentation closure changes no protected input. Its published head and
+post-merge main must repeat applicable build/CTest/new focused instrument and
+live-pair, whitespace/format, architecture, checkout/environment and remote gates.
+Pointer-taking patch-copy semantics and actual callers under C22 are the next
+single audit; full stage 3 closure remains blocked by its remaining inventory.

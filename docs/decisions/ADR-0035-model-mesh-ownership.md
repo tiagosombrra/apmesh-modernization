@@ -1,6 +1,6 @@
 # ADR-0035: exclusive Model mesh adoption and explicit transfer
 
-Status: bounded engineering defect repair; full qualification pending.
+Status: accepted for bounded lifetime defect repair; exact-head/main qualification complete.
 
 ## Context
 

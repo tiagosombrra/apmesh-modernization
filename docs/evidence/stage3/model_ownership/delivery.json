@@ -1,0 +1,81 @@
+{
+  "status": "bounded implementation exact-head/main passed",
+  "implementation_pr": 92,
+  "gcc_reference_configuration": {
+    "classification": "explicit C++17 reference configuration correction; no production changes or replay of completed instruments",
+    "configurations": {
+      "s34og": {
+        "explicit_cxx17": false,
+        "default_cxx_standard": 20,
+        "cache_sha256": "adc35e89056f8857a7ea8aab3fe092bd19b046cb16a947e2710244287cabd4c0",
+        "ninja_sha256": "ab2bf319663b2f1ef54fe83307197ce9d8ce10a3a627a45c5dc4d37a97141295",
+        "executable_sha256": "70d6a487923d34f6c13a2ddfda7cafb38e1ea06f310cd6197f2b41969e2d9067"
+      },
+      "s34qg": {
+        "explicit_cxx17": false,
+        "default_cxx_standard": 20,
+        "cache_sha256": "5c9f0c84f9d04df3ff08b2e9afdc79c7d710242e40d361b5d7c993922d4461ea",
+        "ninja_sha256": "b53015e6136d7486fa40c22249c4abef955734b157b52cdf728203699e66e71d",
+        "executable_sha256": "7fce796aa94a45778180154b64f0f1f11e246cc71202201e4ba90d0613cf9d02"
+      },
+      "s34og17": {
+        "explicit_cxx17": true,
+        "default_cxx_standard": 20,
+        "cache_sha256": "26ce92bff9b8dc15861e2204e77055f17edfafe6973a2417e800169f9ef8764b",
+        "ninja_sha256": "479a704d9b4a85cf78d4326d82dd38cb307f5424ea5d3d310c53f3ec03f24dff",
+        "executable_sha256": "020847845e46ed6c444c4bbf04bcf1de219e38b7bb71caa4475c9beca6e96982"
+      },
+      "s34qg17": {
+        "explicit_cxx17": true,
+        "default_cxx_standard": 20,
+        "cache_sha256": "6ad66f4d7739f7da32fb695521853a24f0f24978b0647fc5cff8197912f904ea",
+        "ninja_sha256": "dac683704314fc80f4fdad00041199742ee9186963e352717ba388661f502726",
+        "executable_sha256": "48a5b9dddc256311a598721e1a8d09758824b02e8bc18d43a8a5af10f93d5f52"
+      }
+    },
+    "head_reference_report_sha256": "fa12c9d756d832021191608282b1d1959968447fae2239741796a24a34e0942b"
+  },
+  "head": {
+    "status": "passed",
+    "revision": "a8e032c0450db2e64942e8ea4c5eed4c70642e07",
+    "tree": "52c4fcc2e57c9c136c297eef25f44d59180d7235",
+    "phase": "head",
+    "ctest": 49,
+    "python_controls": 74,
+    "memory_batteries": 30,
+    "expected_memory_outcomes": 3062,
+    "protected_inputs": 608,
+    "full_report_sha256": "1a8fb072dc02cafe677549291c92423c26250ba6c1e4441b787e5317f448091a",
+    "independent_log_sha256": "be912aacd56ff4d58b130328bad3ed3a070ba7f5917f3f781fd26e923f3b1cd2",
+    "remote_git_sha256": "fdd6801c587a0cb03b3895c54bcbb3d097f13eeb126e6b436722251fc2e31b94",
+    "remote_connected_sha256": "45ba97fc7088238946eb2095a686c1a940b298118cd5984b8b730d7c9b480bba",
+    "command_count": 122,
+    "gcc17_reference_pairs": 5,
+    "gcc17_reference_report_sha256": "fa12c9d756d832021191608282b1d1959968447fae2239741796a24a34e0942b",
+    "configuration_note": "Initial isolated GCC pairs inherited the compiler default C++20; retained unchanged as additional observations. An explicit C++17 original/candidate five-pair reference is separately required on this exact head. Application CTest and MSVC instruments already explicitly use C++17."
+  },
+  "main": {
+    "status": "passed",
+    "revision": "cbd5ddc0031deef9983f448bb2560463a387c260",
+    "tree": "52c4fcc2e57c9c136c297eef25f44d59180d7235",
+    "phase": "main",
+    "ctest": 49,
+    "python_controls": 74,
+    "memory_batteries": 30,
+    "expected_memory_outcomes": 3062,
+    "protected_inputs": 608,
+    "full_report_sha256": "1163ca659eb0a63182a12064149918803dd924fa994b563a3149e6fb4d3faf85",
+    "independent_log_sha256": "b2efacbc2de94500a750bafd4db612b0ee21231bd4aa2ec4a8f7a8f2e8e3f891",
+    "remote_git_sha256": "0f08f47864692d08fa56277baf64770ce45711646b8f84b55b41764339e0d9a8",
+    "remote_connected_sha256": "5242750d196e19c83db1e95db14b5f1d27cb5d0621e91ec3a1bde1812105fdc6",
+    "command_count": 122,
+    "gcc17_reference_pairs": 5,
+    "gcc17_reference_report_sha256": "699760acc41bdd227fb0d6e44a4a09f1e2168c8ff744dcad666fe42a0a6e1625",
+    "configuration_note": "Initial isolated GCC pairs inherited the compiler default C++20; retained unchanged as additional observations. An explicit C++17 original/candidate five-pair reference is separately required on this exact head. Application CTest and MSVC instruments already explicitly use C++17."
+  },
+  "full_head_qualified_sha256": "a6a793610c42bdb331d2b7e8ec4118fe49ac44b09b5e7db35466145af11b5c49",
+  "full_main_qualified_sha256": "f29e59c3b6cdba761796e47041ab22282f026e1341269113ffa9d1f685e9ef17",
+  "next_single_audit": "pointer-taking patch-copy semantics and actual callers (C22)",
+  "stage3": "open",
+  "limits": "No complete-process, parallel, LSan/UBSan, caller preparation, foreign/current-patch rebinding, complete clone or scientific-policy qualification."
+}
