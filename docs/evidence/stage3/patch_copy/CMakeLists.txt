@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.21)
+project(patch_copy_audit LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+option(PATCH_COPY_AUDIT_ASAN "Instrument the original patch-copy audit with MSVC ASan" OFF)
+if(PATCH_COPY_AUDIT_ASAN AND NOT MSVC)
+  message(FATAL_ERROR "The ASan audit recipe requires the qualified MSVC instrument")
+endif()
+if(MSVC)
+  if(PATCH_COPY_AUDIT_ASAN)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
+  else()
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+  endif()
+endif()
+get_filename_component(root "${CMAKE_CURRENT_LIST_DIR}/../../../.." ABSOLUTE)
+set(sources data/mesh/sub_mesh.cpp data/node_adaptive.cpp data/element_adaptive.cpp
+  data/triangle_adaptive.cpp data/point_adaptive.cpp data/vector_adaptive.cpp
+  data/patch/patch.cpp data/patch/patch_coons.cpp data/patch/patch_bezier.cpp
+  data/patch/patch_hermite.cpp data/curve/curve_adaptive.cpp
+  data/curve/curve_adaptive_parametric.cpp data/curve/curve_adaptive_parametric_bezier.cpp
+  data/curve/curve_adaptive_parametric_hermite.cpp
+  crab_mesh/numerical/function.cpp crab_mesh/numerical/bisection_equation_root.cpp)
+list(TRANSFORM sources PREPEND "${root}/src/")
+add_executable(patch_copy_probe probe.cpp ${sources})
+target_include_directories(patch_copy_probe PRIVATE "${root}/include")
+if(MSVC)
+  target_compile_definitions(patch_copy_probe PRIVATE _USE_MATH_DEFINES _ITERATOR_DEBUG_LEVEL=0)
+  target_compile_options(patch_copy_probe PRIVATE /utf-8 /W4 /EHsc /permissive- /Zc:nrvo-)
+  if(PATCH_COPY_AUDIT_ASAN)
+    target_compile_options(patch_copy_probe PRIVATE /fsanitize=address /Zi)
+    target_link_options(patch_copy_probe PRIVATE /INCREMENTAL:NO)
+  endif()
+elseif(MINGW)
+  target_link_options(patch_copy_probe PRIVATE -static -static-libgcc -static-libstdc++)
+endif()

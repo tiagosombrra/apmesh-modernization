@@ -1,5 +1,31 @@
 # Project state
 
+## C22 pointer-taking patch-copy audit
+
+Classification: engineering-only source audit and original observations.
+At source main `b48070fa733e09b3b5974f00616dc7da968b881d`, the literal
+inventory records 81 production constructions and no single-pointer call outside
+constructor base chains. This is bounded negative evidence, not external-client
+or whole-program proof. Pointer-taking copies retain the ID and initialized
+numeric payload but leave curves empty and SubMesh null. Bezier basis/load
+metadata and Hermite direction initialization omissions remain explicit; omitted
+fields are not evaluated by the probe. No complete clone or production repair
+is claimed.
+
+Focused GCC/MSVC ASan/static CRT C++17 observations meet 110 expectations:
+108 defined cases and two working independent broken instrument controls.
+17,850 paired XYZ vectors/53,550 scalar bits and 2,550 analytic points are
+nonempty. All 608 protected implementation inputs and the existing 49 CTest/
+74 Python inventory remain unchanged. Exact audit head/main must repeat applicable
+local/remote gates; the delivery PR records those revisions and report hashes.
+See [source, observations and limits](evidence/STAGE3_PATCH_COPY_AUDIT.md).
+
+Next single repair: slice 35, explicit initialized detached patch-copy intent
+(C22). Preserve defined values and detached topology; define source initialization
+preconditions without copying indeterminate metadata. Complete cloning and
+Hermite ordinary observer retirement remain separate. Stage 3 remains open;
+stages 4-11 remain pending. Earlier next-work statements below are historical.
+
 ## Stage 3 slice 34 qualified
 
 Classification: behavior-changing lifetime defect repair; no scientific change.

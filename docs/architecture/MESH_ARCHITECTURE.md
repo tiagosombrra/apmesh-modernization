@@ -22,6 +22,12 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 
 ## Evidence and coverage
 
+C22's [pointer-taking patch-copy audit](../evidence/STAGE3_PATCH_COPY_AUDIT.md)
+records ID/defined numeric payload transfer with empty curves and null SubMesh.
+No complete geometry clone is qualified. Bezier basis/load metadata and Hermite
+direction initialization omissions require the next bounded slice 35 contract;
+indeterminate fields are not evaluated in the audit.
+
 C02/ADR-0035 defines explicit Model adoption and noncopyable/nonthrowing transfer.
 The bounded qualified repair and its exact-head/main gate evidence are recorded in
 [the repair evidence](../evidence/STAGE3_MODEL_OWNERSHIP.md);

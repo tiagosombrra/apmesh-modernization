@@ -1,0 +1,1065 @@
+{
+  "source_base": "b48070fa733e09b3b5974f00616dc7da968b881d",
+  "classification": "engineering-only literal source audit",
+  "construction_count": 81,
+  "single_argument_constructions": 0,
+  "construction_counts": {
+    "src/estimate/charge_input_estimate.cpp": 1,
+    "src/generator/generator_adaptive.cpp": 1,
+    "src/input_output/control_patch_reader.cpp": 2,
+    "src/input_output/models_3d.cpp": 68,
+    "src/input_output/patch_reader.cpp": 9
+  },
+  "constructions": [
+    {
+      "path": "src/estimate/charge_input_estimate.cpp",
+      "line": 126,
+      "source": "auto pending_patch = std::make_unique<PatchBezier>(patch_c1, patch_c2, patch_c3, patch_c4, *p11,",
+      "file_sha256": "070d8a444fcbb3011afc2d4548f61e9b081fd1f9a85efc136474b042869d2ff8",
+      "arity": 8,
+      "expression": "std::make_unique<PatchBezier>(patch_c1, patch_c2, patch_c3, patch_c4, *p11,\n                                                       *p21, *p12, *p22)"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 1064,
+      "source": "patch_bezier = new PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11,",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f",
+      "arity": 8,
+      "expression": "new PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11,\n                                   *p21, *p12, *p22)"
+    },
+    {
+      "path": "src/input_output/control_patch_reader.cpp",
+      "line": 11,
+      "source": "auto patch = std::make_unique<PatchBezier>();",
+      "file_sha256": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe",
+      "arity": 0,
+      "expression": "std::make_unique<PatchBezier>()"
+    },
+    {
+      "path": "src/input_output/control_patch_reader.cpp",
+      "line": 90,
+      "source": "patch = std::make_unique<PatchBezier>();",
+      "file_sha256": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe",
+      "arity": 0,
+      "expression": "std::make_unique<PatchBezier>()"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 40,
+      "source": "Patch* patch1 = MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,\n                                  *p111, *p121, *p112, *p122)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 74,
+      "source": "Patch* patch2 = MakePatch<PatchBezier>(geometry, patch1_c1, patch2_c2, patch2_c3, patch2_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch2_c2, patch2_c3, patch2_c4,\n                                  *p211, *p221, *p212, *p222)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 109,
+      "source": "Patch* patch3 = MakePatch<PatchBezier>(geometry, patch1_c1, patch3_c2, patch3_c3, patch3_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch3_c2, patch3_c3, patch3_c4,\n                                  *p311, *p321, *p312, *p322)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 144,
+      "source": "Patch* patch4 = MakePatch<PatchBezier>(geometry, patch1_c1, patch4_c2, patch4_c3, patch4_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch4_c2, patch4_c3, patch4_c4,\n                                  *p411, *p421, *p412, *p422)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 180,
+      "source": "Patch* patch5 = MakePatch<PatchBezier>(geometry, patch1_c1, patch5_c2, patch5_c3, patch5_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch5_c2, patch5_c3, patch5_c4,\n                                  *p511, *p521, *p512, *p522)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 224,
+      "source": "Patch* patch1 = MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,\n                                  *p111, *p121, *p112, *p122)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 257,
+      "source": "Patch* patch2 = MakePatch<PatchBezier>(geometry, patch1_c3, patch2_c2, patch2_c3, patch2_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c3, patch2_c2, patch2_c3, patch2_c4,\n                                  *p211, *p221, *p212, *p222)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 292,
+      "source": "Patch* patch3 = MakePatch<PatchBezier>(geometry, patch1_c3, patch3_c2, patch3_c3, patch3_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c3, patch3_c2, patch3_c3, patch3_c4,\n                                  *p311, *p321, *p312, *p322)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 338,
+      "source": "Patch* patch1 = MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,\n                                  *p111, *p121, *p112, *p122)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 371,
+      "source": "Patch* patch2 = MakePatch<PatchBezier>(geometry, patch1_c3, patch2_c2, patch2_c3, patch2_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c3, patch2_c2, patch2_c3, patch2_c4,\n                                  *p211, *p221, *p212, *p222)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 417,
+      "source": "Patch* patch1 = MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,\n                                  *p111, *p121, *p112, *p122)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 452,
+      "source": "Patch* patch2 = MakePatch<PatchBezier>(geometry, patch2_c1, patch2_c2, patch2_c3, patch2_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch2_c1, patch2_c2, patch2_c3, patch2_c4,\n                                  *p211, *p221, *p212, *p222)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 495,
+      "source": "Patch* patch1 = MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,\n                                  *p11, *p21, *p12, *p22)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 544,
+      "source": "MakePatch<PatchHermite>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4, *patch1_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4, *patch1_tw00,\n                       *patch1_tw10, *patch1_tw01, *patch1_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 598,
+      "source": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, tw00, tw10, tw01, tw11);",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, tw00, tw10, tw01, tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 600,
+      "source": "MakePatch<PatchHermite>(geometry, c5, c4, c6, c2, tw_00, tw_10, tw_01, tw_11);",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, c5, c4, c6, c2, tw_00, tw_10, tw_01, tw_11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 640,
+      "source": "Patch* patch1 = MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11);",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 682,
+      "source": "Patch* patch1 = MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11);",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 723,
+      "source": "Patch* patch1 = MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11);",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 764,
+      "source": "Patch* patch1 = MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11);",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 824,
+      "source": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw100, *tw110, *tw101, *tw111);",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw100, *tw110, *tw101, *tw111)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 826,
+      "source": "MakePatch<PatchHermite>(geometry, c5, c6, c7, c2, *tw200, *tw210, *tw201, *tw211);",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, c5, c6, c7, c2, *tw200, *tw210, *tw201, *tw211)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 872,
+      "source": "MakePatch<PatchHermite>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4, *patch1_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4, *patch1_tw00,\n                       *patch1_tw10, *patch1_tw01, *patch1_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 913,
+      "source": "MakePatch<PatchHermite>(geometry, patch2_c1, patch2_c2, patch2_c3, patch2_c4, *patch2_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch2_c1, patch2_c2, patch2_c3, patch2_c4, *patch2_tw00,\n                       *patch2_tw10, *patch2_tw01, *patch2_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 963,
+      "source": "MakePatch<PatchHermite>(geometry, patch3_c1, patch3_c2, patch3_c3, patch3_c4, *patch3_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch3_c1, patch3_c2, patch3_c3, patch3_c4, *patch3_tw00,\n                       *patch3_tw10, *patch3_tw01, *patch3_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1000,
+      "source": "MakePatch<PatchHermite>(geometry, patch4_c1, patch4_c2, patch4_c3, patch4_c4, *patch4_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch4_c1, patch4_c2, patch4_c3, patch4_c4, *patch4_tw00,\n                       *patch4_tw10, *patch4_tw01, *patch4_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1043,
+      "source": "MakePatch<PatchHermite>(geometry, patch5_c1, patch5_c2, patch5_c3, patch5_c4, *patch5_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch5_c1, patch5_c2, patch5_c3, patch5_c4, *patch5_tw00,\n                       *patch5_tw10, *patch5_tw01, *patch5_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1088,
+      "source": "MakePatch<PatchHermite>(geometry, patch6_c1, patch6_c2, patch6_c3, patch6_c4, *patch6_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch6_c1, patch6_c2, patch6_c3, patch6_c4, *patch6_tw00,\n                       *patch6_tw10, *patch6_tw01, *patch6_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1128,
+      "source": "MakePatch<PatchHermite>(geometry, patch8_c1, patch8_c2, patch8_c3, patch8_c4, *patch8_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch8_c1, patch8_c2, patch8_c3, patch8_c4, *patch8_tw00,\n                       *patch8_tw10, *patch8_tw01, *patch8_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1166,
+      "source": "Patch* patch10 = MakePatch<PatchHermite>(geometry, patch10_c1, patch10_c2, patch10_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch10_c1, patch10_c2, patch10_c3,\n                                    patch10_c4, *patch10_tw00, *patch10_tw10,\n                                    *patch10_tw01, *patch10_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1203,
+      "source": "MakePatch<PatchHermite>(geometry, patch7_c1, patch7_c2, patch7_c3, patch7_c4, *patch7_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch7_c1, patch7_c2, patch7_c3, patch7_c4, *patch7_tw00,\n                       *patch7_tw10, *patch7_tw01, *patch7_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1243,
+      "source": "MakePatch<PatchHermite>(geometry, patch9_c1, patch9_c2, patch9_c3, patch9_c4, *patch9_tw00,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch9_c1, patch9_c2, patch9_c3, patch9_c4, *patch9_tw00,\n                       *patch9_tw10, *patch9_tw01, *patch9_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1282,
+      "source": "Patch* patch11 = MakePatch<PatchHermite>(geometry, patch11_c1, patch11_c2, patch11_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch11_c1, patch11_c2, patch11_c3,\n                                    patch11_c4, *patch11_tw00, *patch11_tw10,\n                                    *patch11_tw01, *patch11_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1322,
+      "source": "Patch* patch12 = MakePatch<PatchHermite>(geometry, patch12_c1, patch12_c2, patch12_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch12_c1, patch12_c2, patch12_c3,\n                                    patch12_c4, *patch12_tw00, *patch12_tw10,\n                                    *patch12_tw01, *patch12_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1361,
+      "source": "Patch* patch13 = MakePatch<PatchHermite>(geometry, patch13_c1, patch13_c2, patch13_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch13_c1, patch13_c2, patch13_c3,\n                                    patch13_c4, *patch13_tw00, *patch13_tw10,\n                                    *patch13_tw01, *patch13_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1401,
+      "source": "Patch* patch14 = MakePatch<PatchHermite>(geometry, patch14_c1, patch14_c2, patch14_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchHermite>(geometry, patch14_c1, patch14_c2, patch14_c3,\n                                    patch14_c4, *patch14_tw00, *patch14_tw10,\n                                    *patch14_tw01, *patch14_tw11)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1449,
+      "source": "Patch* patch1 = MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4,\n                                  *p111, *p121, *p112, *p122)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1489,
+      "source": "Patch* patch2 = MakePatch<PatchBezier>(geometry, patch2_c1, patch2_c2, patch2_c3, patch1_c2,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch2_c1, patch2_c2, patch2_c3, patch1_c2,\n                                  *p211, *p221, *p212, *p222)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1530,
+      "source": "Patch* patch3 = MakePatch<PatchBezier>(geometry, patch3_c1, patch3_c2, patch3_c3, patch2_c2,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch3_c1, patch3_c2, patch3_c3, patch2_c2,\n                                  *p311, *p321, *p312, *p322)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1566,
+      "source": "Patch* patch4 = MakePatch<PatchBezier>(geometry, patch4_c1, patch1_c4, patch4_c3, patch3_c2,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch4_c1, patch1_c4, patch4_c3, patch3_c2,\n                                  *p411, *p421, *p412, *p422)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1604,
+      "source": "Patch* patch5 = MakePatch<PatchBezier>(geometry, patch1_c3, patch5_c2, patch5_c3, patch5_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch1_c3, patch5_c2, patch5_c3, patch5_c4,\n                                  *p511, *p521, *p512, *p522)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1649,
+      "source": "Patch* patch6 = MakePatch<PatchBezier>(geometry, patch2_c3, patch6_c2, patch6_c3, patch5_c2,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch2_c3, patch6_c2, patch6_c3, patch5_c2,\n                                  *p611, *p621, *p612, *p622)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1689,
+      "source": "Patch* patch7 = MakePatch<PatchBezier>(geometry, patch3_c3, patch7_c2, patch7_c3, patch6_c2,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch3_c3, patch7_c2, patch7_c3, patch6_c2,\n                                  *p711, *p721, *p712, *p722)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1734,
+      "source": "Patch* patch8 = MakePatch<PatchBezier>(geometry, patch4_c3, patch5_c4, patch8_c3, patch7_c2,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch4_c3, patch5_c4, patch8_c3, patch7_c2,\n                                  *p811, *p821, *p812, *p822)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1774,
+      "source": "Patch* patch9 = MakePatch<PatchBezier>(geometry, patch5_c3, patch9_c2, patch9_c3, patch9_c4,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch5_c3, patch9_c2, patch9_c3, patch9_c4,\n                                  *p911, *p921, *p912, *p922)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1815,
+      "source": "Patch* patch10 = MakePatch<PatchBezier>(geometry, patch6_c3, patch10_c2, patch10_c3, patch9_c2,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch6_c3, patch10_c2, patch10_c3, patch9_c2,\n                                   *p1011, *p1021, *p1012, *p1022)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1856,
+      "source": "Patch* patch11 = MakePatch<PatchBezier>(geometry, patch7_c3, patch11_c2, patch11_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch7_c3, patch11_c2, patch11_c3,\n                                   patch10_c2, *p1111, *p1121, *p1112, *p1122)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1897,
+      "source": "Patch* patch12 = MakePatch<PatchBezier>(geometry, patch8_c3, patch9_c4, patch12_c3, patch11_c2,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch8_c3, patch9_c4, patch12_c3, patch11_c2,\n                                   *p1211, *p1221, *p1212, *p1222)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1935,
+      "source": "Patch* patch13 = MakePatch<PatchBezier>(geometry, patch13_c1, patch13_c2, patch13_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch13_c1, patch13_c2, patch13_c3,\n                                   patch13_c4, *p1311, *p1321, *p1312, *p1322)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1978,
+      "source": "Patch* patch14 = MakePatch<PatchBezier>(geometry, patch14_c1, patch13_c4, patch14_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch14_c1, patch13_c4, patch14_c3,\n                                   patch13_c2, *p1411, *p1421, *p1412, *p1422)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2017,
+      "source": "Patch* patch15 = MakePatch<PatchBezier>(geometry, patch13_c3, patch15_c2, patch15_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch13_c3, patch15_c2, patch15_c3,\n                                   patch15_c4, *p1511, *p1521, *p1512, *p1522)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2060,
+      "source": "Patch* patch16 = MakePatch<PatchBezier>(geometry, patch14_c3, patch15_c4, patch16_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch14_c3, patch15_c4, patch16_c3,\n                                   patch15_c2, *p1611, *p1621, *p1612, *p1622)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2098,
+      "source": "Patch* patch17 = MakePatch<PatchBezier>(geometry, patch17_c1, patch17_c2, patch17_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch17_c1, patch17_c2, patch17_c3,\n                                   patch17_c4, *p1711, *p1721, *p1712, *p1722)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2141,
+      "source": "Patch* patch18 = MakePatch<PatchBezier>(geometry, patch18_c1, patch17_c4, patch18_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch18_c1, patch17_c4, patch18_c3,\n                                   patch17_c2, *p1811, *p1821, *p1812, *p1822)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2180,
+      "source": "Patch* patch19 = MakePatch<PatchBezier>(geometry, patch17_c3, patch19_c2, patch19_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch17_c3, patch19_c2, patch19_c3,\n                                   patch19_c4, *p1911, *p1921, *p1912, *p1922)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2223,
+      "source": "Patch* patch20 = MakePatch<PatchBezier>(geometry, patch20_c1, patch19_c4, patch20_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch20_c1, patch19_c4, patch20_c3,\n                                   patch19_c2, *p2011, *p2021, *p2012, *p2022)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2261,
+      "source": "Patch* patch21 = MakePatch<PatchBezier>(geometry, patch21_c1, patch21_c2, patch21_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch21_c1, patch21_c2, patch21_c3,\n                                   patch21_c4, *p2111, *p2121, *p2102, *p2102)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2300,
+      "source": "Patch* patch22 = MakePatch<PatchBezier>(geometry, patch22_c1, patch22_c2, patch22_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch22_c1, patch22_c2, patch22_c3,\n                                   patch21_c2, *p2211, *p2221, *p2102, *p2102)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2337,
+      "source": "Patch* patch23 = MakePatch<PatchBezier>(geometry, patch23_c1, patch23_c2, patch23_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch23_c1, patch23_c2, patch23_c3,\n                                   patch22_c2, *p2311, *p2321, *p2102, *p2102)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2375,
+      "source": "Patch* patch24 = MakePatch<PatchBezier>(geometry, patch24_c1, patch24_c2, patch24_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch24_c1, patch24_c2, patch24_c3,\n                                   patch23_c2, *p2411, *p2421, *p2102, *p2102)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2412,
+      "source": "Patch* patch25 = MakePatch<PatchBezier>(geometry, patch21_c3, patch25_c2, patch25_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch21_c3, patch25_c2, patch25_c3,\n                                   patch25_c4, *p2511, *p2521, *p2512, *p2522)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2449,
+      "source": "Patch* patch26 = MakePatch<PatchBezier>(geometry, patch22_c3, patch26_c2, patch26_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch22_c3, patch26_c2, patch26_c3,\n                                   patch25_c2, *p2611, *p2621, *p2612, *p2622)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2486,
+      "source": "Patch* patch27 = MakePatch<PatchBezier>(geometry, patch23_c3, patch27_c2, patch27_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch23_c3, patch27_c2, patch27_c3,\n                                   patch26_c2, *p2711, *p2721, *p2712, *p2722)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2524,
+      "source": "Patch* patch28 = MakePatch<PatchBezier>(geometry, patch24_c3, patch25_c4, patch28_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch24_c3, patch25_c4, patch28_c3,\n                                   patch27_c2, *p2811, *p2821, *p2812, *p2822)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2563,
+      "source": "Patch* patch29 = MakePatch<PatchBezier>(geometry, patch29_c1, patch29_c2, patch29_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch29_c1, patch29_c2, patch29_c3,\n                                   patch29_c4, *p2911, *p2921, *p2912, *p2922)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2599,
+      "source": "Patch* patch30 = MakePatch<PatchBezier>(geometry, patch30_c1, patch30_c2, patch30_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch30_c1, patch30_c2, patch30_c3,\n                                   patch29_c2, *p3011, *p3021, *p3012, *p3022)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2636,
+      "source": "Patch* patch31 = MakePatch<PatchBezier>(geometry, patch31_c1, patch31_c2, patch31_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch31_c1, patch31_c2, patch31_c3,\n                                   patch30_c2, *p3111, *p3121, *p3112, *p3122)"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 2672,
+      "source": "Patch* patch32 = MakePatch<PatchBezier>(geometry, patch32_c1, patch29_c4, patch32_c3,",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "arity": 9,
+      "expression": "MakePatch<PatchBezier>(geometry, patch32_c1, patch29_c4, patch32_c3,\n                                   patch31_c2, *p3211, *p3221, *p3212, *p3222)"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 82,
+      "source": "patch_hermite_ = new PatchHermite();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "new PatchHermite()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 176,
+      "source": "patch_hermite_ = new PatchHermite();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "new PatchHermite()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 202,
+      "source": "patch_ = new PatchBezier();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "new PatchBezier()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 278,
+      "source": "patch_ = new PatchBezier();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "new PatchBezier()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 298,
+      "source": "patch_ = new PatchBezier();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "new PatchBezier()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 455,
+      "source": "patch_ = new PatchBezier();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "new PatchBezier()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 524,
+      "source": "auto patch = std::make_unique<PatchBezier>();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "std::make_unique<PatchBezier>()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 606,
+      "source": "patch = std::make_unique<PatchBezier>();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "std::make_unique<PatchBezier>()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 699,
+      "source": "std::make_unique<PatchBezier>(patch_c1, patch_c2, patch_c3, patch_c4, *p11, *p21, *p12,",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 12,
+      "expression": "std::make_unique<PatchBezier>(patch_c1, patch_c2, patch_c3, patch_c4, *p11, *p21, *p12,\n                                      *p22, UsesForwardControls(patch_c1, *p00, *p10, *p20, *p30),\n                                      UsesForwardControls(patch_c2, *p30, *p31, *p32, *p33),\n                                      UsesForwardControls(patch_c3, *p03, *p13, *p23, *p33),\n                                      UsesForwardControls(patch_c4, *p00, *p01, *p02, *p03))"
+    }
+  ],
+  "direct_constructor_spelling": [
+    {
+      "path": "include/data/patch/patch_bezier.h",
+      "line": 12,
+      "source": "PatchBezier();",
+      "file_sha256": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+      "arity": 0,
+      "expression": "PatchBezier()"
+    },
+    {
+      "path": "include/data/patch/patch_bezier.h",
+      "line": 13,
+      "source": "explicit PatchBezier(PatchBezier* patch_bezier);",
+      "file_sha256": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+      "arity": 1,
+      "expression": "PatchBezier(PatchBezier* patch_bezier)"
+    },
+    {
+      "path": "include/data/patch/patch_bezier.h",
+      "line": 20,
+      "source": "PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,",
+      "file_sha256": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+      "arity": 12,
+      "expression": "PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,\n              CurveAdaptive* curve3, CurveAdaptive* curve4, PointAdaptive pt11,\n              PointAdaptive pt21, PointAdaptive pt12, PointAdaptive pt22,\n              bool signal_curve1 = true, bool signal_curve2 = true,\n              bool signal_curve3 = true, bool signal_curve4 = true)"
+    },
+    {
+      "path": "include/data/patch/patch_bezier.h",
+      "line": 28,
+      "source": "PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,",
+      "file_sha256": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+      "arity": 20,
+      "expression": "PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,\n              const PointAdaptive pt02, const PointAdaptive pt03,\n              const PointAdaptive pt10, const PointAdaptive pt11,\n              const PointAdaptive pt12, const PointAdaptive pt13,\n              const PointAdaptive pt20, const PointAdaptive pt21,\n              const PointAdaptive pt22, const PointAdaptive pt23,\n              const PointAdaptive pt30, const PointAdaptive pt31,\n              const PointAdaptive pt32, const PointAdaptive pt33,\n              bool signal_curve1 = true, bool signal_curve2 = true,\n              bool signal_curve3 = true, bool signal_curve4 = true)"
+    },
+    {
+      "path": "include/data/patch/patch_bezier.h",
+      "line": 39,
+      "source": "~PatchBezier() override;",
+      "file_sha256": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+      "arity": 0,
+      "expression": "PatchBezier()"
+    },
+    {
+      "path": "include/data/patch/patch_coons.h",
+      "line": 15,
+      "source": "PatchCoons();",
+      "file_sha256": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "include/data/patch/patch_coons.h",
+      "line": 16,
+      "source": "explicit PatchCoons(PatchCoons* patch_coons);",
+      "file_sha256": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c",
+      "arity": 1,
+      "expression": "PatchCoons(PatchCoons* patch_coons)"
+    },
+    {
+      "path": "include/data/patch/patch_coons.h",
+      "line": 17,
+      "source": "explicit PatchCoons(const std::vector<CurveAdaptive*>& curves);",
+      "file_sha256": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c",
+      "arity": 1,
+      "expression": "PatchCoons(const std::vector<CurveAdaptive*>& curves)"
+    },
+    {
+      "path": "include/data/patch/patch_coons.h",
+      "line": 18,
+      "source": "~PatchCoons() override;",
+      "file_sha256": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "include/data/patch/patch_hermite.h",
+      "line": 12,
+      "source": "PatchHermite();",
+      "file_sha256": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478",
+      "arity": 0,
+      "expression": "PatchHermite()"
+    },
+    {
+      "path": "include/data/patch/patch_hermite.h",
+      "line": 13,
+      "source": "explicit PatchHermite(PatchHermite* patch_hermite);",
+      "file_sha256": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478",
+      "arity": 1,
+      "expression": "PatchHermite(PatchHermite* patch_hermite)"
+    },
+    {
+      "path": "include/data/patch/patch_hermite.h",
+      "line": 18,
+      "source": "PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2,",
+      "file_sha256": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478",
+      "arity": 12,
+      "expression": "PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2,\n               CurveAdaptive* curve3, CurveAdaptive* curve4,\n               VectorAdaptive tw00, VectorAdaptive tw10, VectorAdaptive tw01,\n               VectorAdaptive tw11, bool signal_curve1 = true,\n               bool signal_curve2 = true, bool signal_curve3 = true,\n               bool signal_curve4 = true)"
+    },
+    {
+      "path": "include/data/patch/patch_hermite.h",
+      "line": 24,
+      "source": "~PatchHermite() override = default;",
+      "file_sha256": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478",
+      "arity": 0,
+      "expression": "PatchHermite()"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 46,
+      "source": "PatchBezier::PatchBezier()",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 0,
+      "expression": "PatchBezier()"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 47,
+      "source": ": PatchCoons(),",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 60,
+      "source": "PatchBezier::PatchBezier(PatchBezier* patch_bezier) : PatchCoons(patch_bezier) {",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 1,
+      "expression": "PatchBezier(PatchBezier* patch_bezier)"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 60,
+      "source": "PatchBezier::PatchBezier(PatchBezier* patch_bezier) : PatchCoons(patch_bezier) {",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 1,
+      "expression": "PatchCoons(patch_bezier)"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 93,
+      "source": "PatchBezier::PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 12,
+      "expression": "PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,\n                         CurveAdaptive* curve3, CurveAdaptive* curve4,\n                         PointAdaptive pt11, PointAdaptive pt21,\n                         PointAdaptive pt12, PointAdaptive pt22,\n                         bool signal_curve1, bool signal_curve2,\n                         bool signal_curve3, bool signal_curve4)"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 99,
+      "source": ": PatchCoons() {",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 236,
+      "source": "PatchBezier ::PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 20,
+      "expression": "PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,\n                          const PointAdaptive pt02, const PointAdaptive pt03,\n                          const PointAdaptive pt10, const PointAdaptive pt11,\n                          const PointAdaptive pt12, const PointAdaptive pt13,\n                          const PointAdaptive pt20, const PointAdaptive pt21,\n                          const PointAdaptive pt22, const PointAdaptive pt23,\n                          const PointAdaptive pt30, const PointAdaptive pt31,\n                          const PointAdaptive pt32, const PointAdaptive pt33,\n                          bool signal_curve1, bool signal_curve2,\n                          bool signal_curve3, bool signal_curve4)"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 246,
+      "source": ": PatchCoons(),",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 370,
+      "source": "PatchBezier::~PatchBezier() {",
+      "file_sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+      "arity": 0,
+      "expression": "PatchBezier()"
+    },
+    {
+      "path": "src/data/patch/patch_coons.cpp",
+      "line": 3,
+      "source": "PatchCoons::PatchCoons() = default;",
+      "file_sha256": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "src/data/patch/patch_coons.cpp",
+      "line": 5,
+      "source": "PatchCoons::PatchCoons(PatchCoons* patch_coons) : Patch(patch_coons) {}",
+      "file_sha256": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+      "arity": 1,
+      "expression": "PatchCoons(PatchCoons* patch_coons)"
+    },
+    {
+      "path": "src/data/patch/patch_coons.cpp",
+      "line": 7,
+      "source": "PatchCoons::PatchCoons(const std::vector<CurveAdaptive*>& curves)",
+      "file_sha256": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+      "arity": 1,
+      "expression": "PatchCoons(const std::vector<CurveAdaptive*>& curves)"
+    },
+    {
+      "path": "src/data/patch/patch_coons.cpp",
+      "line": 10,
+      "source": "PatchCoons::~PatchCoons() = default;",
+      "file_sha256": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 19,
+      "source": "PatchHermite::PatchHermite() : PatchCoons() {}",
+      "file_sha256": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+      "arity": 0,
+      "expression": "PatchHermite()"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 19,
+      "source": "PatchHermite::PatchHermite() : PatchCoons() {}",
+      "file_sha256": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 21,
+      "source": "PatchHermite::PatchHermite(PatchHermite* patch_hermite)",
+      "file_sha256": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+      "arity": 1,
+      "expression": "PatchHermite(PatchHermite* patch_hermite)"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 22,
+      "source": ": PatchCoons(patch_hermite) {",
+      "file_sha256": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+      "arity": 1,
+      "expression": "PatchCoons(patch_hermite)"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 53,
+      "source": "PatchHermite::PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2,",
+      "file_sha256": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+      "arity": 12,
+      "expression": "PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2,\n                           CurveAdaptive* curve3, CurveAdaptive* curve4,\n                           VectorAdaptive tw00, VectorAdaptive tw10,\n                           VectorAdaptive tw01, VectorAdaptive tw11,\n                           bool signal_curve1, bool signal_curve2,\n                           bool signal_curve3, bool signal_curve4)"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 59,
+      "source": ": PatchCoons() {",
+      "file_sha256": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+      "arity": 0,
+      "expression": "PatchCoons()"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 1064,
+      "source": "patch_bezier = new PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11,",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f",
+      "arity": 8,
+      "expression": "PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11,\n                                   *p21, *p12, *p22)"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 82,
+      "source": "patch_hermite_ = new PatchHermite();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "PatchHermite()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 176,
+      "source": "patch_hermite_ = new PatchHermite();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "PatchHermite()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 202,
+      "source": "patch_ = new PatchBezier();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "PatchBezier()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 278,
+      "source": "patch_ = new PatchBezier();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "PatchBezier()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 298,
+      "source": "patch_ = new PatchBezier();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "PatchBezier()"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 455,
+      "source": "patch_ = new PatchBezier();",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "arity": 0,
+      "expression": "PatchBezier()"
+    }
+  ],
+  "named_object_constructions": [],
+  "copy_body_assigned_members": {
+    "PatchBezier": [
+      "mat_base_u_",
+      "mat_base_v_",
+      "mat_geo_gx_",
+      "mat_geo_gy_",
+      "mat_geo_gz_",
+      "pt00_",
+      "pt01_",
+      "pt02_",
+      "pt03_",
+      "pt10_",
+      "pt11_",
+      "pt12_",
+      "pt13_",
+      "pt20_",
+      "pt21_",
+      "pt22_",
+      "pt23_",
+      "pt30_",
+      "pt31_",
+      "pt32_",
+      "pt33_",
+      "signal_curve1_",
+      "signal_curve2_",
+      "signal_curve3_",
+      "signal_curve4_"
+    ],
+    "PatchHermite": [
+      "mat_base_",
+      "mat_base_u_",
+      "mat_base_v_",
+      "mat_geo_gx_",
+      "mat_geo_gy_",
+      "mat_geo_gz_",
+      "pt00_",
+      "pt01_",
+      "pt10_",
+      "pt11_",
+      "qu00_",
+      "qu01_",
+      "qu10_",
+      "qu11_",
+      "qv00_",
+      "qv01_",
+      "qv10_",
+      "qv11_",
+      "tw00_",
+      "tw01_",
+      "tw10_",
+      "tw11_"
+    ]
+  },
+  "input_files": {
+    "include/adapter/adapter.h": "e982c49965e82ec36a7209950fe5e309fd4d14b9cd17d35bd9a55584df249ba2",
+    "include/curvature/curvature_analytical.h": "7564e80b8f0cbe185e67c04fd6f7501c142b457ca6f45b7743c55bd7259edd95",
+    "include/data/patch/patch_bezier.h": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+    "include/data/patch/patch_coons.h": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c",
+    "include/data/patch/patch_hermite.h": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478",
+    "include/estimate/charge_estimate_process.h": "cafe924cac35c532bb121998fa68a3cecc13c47cdfca06c90b2aa7915f9a0c9c",
+    "include/estimate/estimate_mesh_scope.h": "ce428566a513343d11800b9ec816c9c8c6a48865d75c2bbc354930ecf12ee1c0",
+    "include/estimate/initial_mesh_estimate.h": "dba1f88e09280311e46750db6829027634173559207e35ab9f98d0a29735100d",
+    "include/estimate/triangle_count_estimate.h": "8bfc9405b764f172c88000d3b0bf99c197d35ffb43c624beee892dded725c084",
+    "include/generator/generator_adaptive.h": "2431b7f61494009603210470725dbcd8a48a265056f40fde496120b58d0a9784",
+    "include/generator/initial_mesh.h": "138cc9321b5aee00cca590f148bb66cd44d621350c9fab0709e0a66feb3a2c1c",
+    "include/input_output/patch_reader.h": "4be8ac02df2632373981dd6b6bc02ef325445be5c10735285cc242fec64657fa",
+    "src/adapter/adapter.cpp": "eccbfb190cadac3b7a82907a82c62bae36f525fc0f4f4e824bd1f41e43083110",
+    "src/curvature/curvature_analytical.cpp": "f5e9c5c29f8d56d58ea2b1637e95818aa57a1d1d4bbb38d76a0acd358c254666",
+    "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+    "src/data/patch/patch_coons.cpp": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+    "src/data/patch/patch_hermite.cpp": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+    "src/estimate/charge_estimate_process.cpp": "e91eb3d6d22474ca6e85cd92b6de3296c2115f28e57ebfa2ee993c52bbcee534",
+    "src/estimate/charge_input_estimate.cpp": "070d8a444fcbb3011afc2d4548f61e9b081fd1f9a85efc136474b042869d2ff8",
+    "src/estimate/curvature_sample_estimate.cpp": "508586d5243219c14a2aa702d69dafc685c36f6bfcae3987e34995d418360d3c",
+    "src/estimate/estimate_mesh_scope.cpp": "77018f52c1d7d39a88471a3c0dedd5e285321acae61c83d0a3fcf32f373f039c",
+    "src/estimate/initial_mesh_estimate.cpp": "46d4d8e243b551a2247bba54d0a11b64e92ba104055581cc1238ff20920438dd",
+    "src/estimate/triangle_area_estimate.cpp": "d7a6f331037cb34d75df36f387df45636a1f7fc88b526200b6fac3fad4d0b29c",
+    "src/estimate/triangle_count_estimate.cpp": "173140c82d29a1752da6166a39aeef111b181cffa991424ba1218547ce63f410",
+    "src/generator/curve_synchronization.cpp": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3",
+    "src/generator/generator_adaptive.cpp": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f",
+    "src/generator/initial_mesh.cpp": "7578ba9de9b41bc4243829e2fd756e7614f71edf614d257779183ffc7dbb853a",
+    "src/input_output/control_patch_reader.cpp": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe",
+    "src/input_output/incidence_snapshot.cpp": "00181029b23c95caddc977570a14fd613be24eec4cd912a85f19cd6045c8175f",
+    "src/input_output/models_3d.cpp": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+    "src/input_output/patch_reader.cpp": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b"
+  },
+  "limits": "Comments and quoted literals are masked. Balanced argument lists and concrete MakePatch calls are counted. Declarations, definitions and base-constructor calls are retained separately for manual review. No complete alias, macro-expansion, template-instantiation, external-client or dynamic caller proof."
+}
