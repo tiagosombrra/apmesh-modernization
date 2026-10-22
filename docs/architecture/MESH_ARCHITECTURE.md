@@ -23,8 +23,9 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 ## Evidence and coverage
 
 C02/ADR-0035 defines explicit Model adoption and noncopyable/nonthrowing transfer.
-The bounded candidate and its exact-head/main gate status are recorded in
-STAGE3_MODEL_OWNERSHIP.md; the original Model audit remains historical evidence.
+The bounded qualified repair and its exact-head/main gate evidence are recorded in
+[the repair evidence](../evidence/STAGE3_MODEL_OWNERSHIP.md);
+the original Model audit remains historical evidence.
 No alternate caller preparation or patch observer rebinding qualification follows.
 
 C27/ADR-0034 makes serial parsed-control results and pending reconstructed patches

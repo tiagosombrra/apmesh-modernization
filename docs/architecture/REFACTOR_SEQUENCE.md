@@ -1,16 +1,16 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
-Current single item: slice 34, explicit Model mesh adoption and copy/move repair.
-Focused qualification passes; exact published head and main gates remain pending.
-See ../evidence/STAGE3_MODEL_OWNERSHIP.md. Earlier queue statements below are
-historical. Pointer-taking patch-copy semantics (C22) remain a separate audit
-after this repair is qualified; no numerical or complete-clone policy is assumed.
+Current single audit: pointer-taking patch-copy semantics and actual callers (C22).
+Slice 34 Model ownership is qualified by full exact-head/main gates; see
+[the repair evidence](../evidence/STAGE3_MODEL_OWNERSHIP.md).
+Earlier queue statements below are historical.
+Do not assume complete clone semantics or change numerical policy.
 
 This is an implementation sequence within the approved stages, not a production
 change in stage 2. Evidence IDs refer to [contracts.json](contracts.json).
 Only one work item is active at a time; required regression gates remain exact.
 
-## Current bounded boundary and next audit
+## Historical bounded boundaries and queue
 
 Qualified slice 32 addresses completed Bezier observers and dependent Geometry
 destruction/move ordering (C26, PR #86 exact head and completed main continuation).

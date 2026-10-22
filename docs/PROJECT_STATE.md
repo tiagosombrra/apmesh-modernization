@@ -1,33 +1,40 @@
 # Project state
 
-## Stage 3 slice 34: Model ownership candidate
+## Stage 3 slice 34 qualified
 
-The bounded repair gives Model exclusive mesh owners, prohibits copy aliasing and
-provides explicit nonthrowing transfer. Raw and owning appends consume on entry,
-including failure; committed entries, order, identity, null slots and geometry
-borrowing remain unchanged. Move transfers the borrow, leaves the source
-empty/null, retires prior destination meshes in reverse insertion order and
-preserves self-move. This is a behavior-changing lifetime defect repair, not a
-scientific change or an external ABI compatibility claim.
+Classification: behavior-changing lifetime defect repair; no scientific change.
 
-Focused actual-unit qualification passes 57 ASan/static Debug CRT expected
-outcomes, eight complete growth-allocation sweeps/eight actual denials, twelve
-zero-allocation operations and fifteen nonempty original/candidate live pairs
-(five each with GCC, MSVC ASan and MSVC CRT). Six independent preservation
-mutations are rejected. Original copy/rvalue UAF and append retention evidence
-remains retained; successful reproduction is not repaired-code validation.
+Slice 34 is qualified within its bounded Model ownership boundary. PR #92
+integrates head `a8e032c0450db2e64942e8ea4c5eed4c70642e07` as main
+`cbd5ddc0031deef9983f448bb2560463a387c260`, preserving complete tree
+`52c4fcc2e57c9c136c297eef25f44d59180d7235` (1988 blobs). Exact-head and post-merge main
+full campaigns pass on the same 608 protected inputs: 49/49 CTest, zero failures/
+skips, 74 Python controls, 30 memory batteries/3062 expected outcomes, 1040
+retained scalar sequences and exact twice-repeated Eistute/Book accepted/rejected/
+OBJ/incidence/CSV traces. Command/case/child-log/executable/input identities and
+local quality, checkout/environment and remote Git/PR/status audits pass.
 
-Full exact-published-head and post-merge main gates remain PENDING. Slice 34 is
-the single active item and is not yet qualified or integrated. Stage 3 remains
-open; stages 4-11 remain pending. No formula, floating-point order, boundary
-synchronization, quadtree/template/front reconstruction, tolerance, budget or
-adaptation/acceptance/stopping policy changes.
+Model now exclusively owns its ordered meshes. Raw/owning append consumes on
+entry, including failure; copying is prohibited. Explicit nonthrowing moves
+transfer mesh identities/order and the geometry borrow, leave the source empty/
+null, retire the prior destination in reverse order and preserve self-move.
+The new battery passes 57 expected outcomes, eight complete sweeps/eight actual
+denials and twelve nonallocating operations. Fifteen original/candidate live
+pairs agree; six independent preservation mutations are rejected. Original four
+copy/rvalue UAFs, two append retentions and independent controls remain retained.
+See [bounded repair and closure evidence](evidence/STAGE3_MODEL_OWNERSHIP.md).
 
-Other caller preparation failures, pointer-taking patch copies, foreign/current
-patch observer rebinding, cache/metadata rollback, other loaders, MPI/Hermite,
-parallel/full-process/LSan/UBSan and broader models remain separate obligations.
-See [repair contract and focused evidence](evidence/STAGE3_MODEL_OWNERSHIP.md).
-Earlier next-work statements below are historical checkpoints.
+This is an intentional ownership/layout/copy source contract migration, not
+external ABI compatibility. No formula, floating-point order, synchronization,
+quadtree/template/front reconstruction, tolerance, budget or adaptation/acceptance/
+stopping policy changes. No full-process/parallel/LSan/UBSan safety claim follows.
+
+Next single audit: pointer-taking patch-copy semantics and actual callers (C22).
+Do not assume a complete clone or change numerical policy. Other loader/MPI/
+Hermite, preceding alternate caller preparation, foreign/current-patch rebinding,
+UV/tree/mate, cache/metadata rollback and broader-model obligations remain open.
+Stage 3 remains open; stages 4-11 remain pending. Earlier next-work statements
+below are historical checkpoints.
 
 ## Model root audit and next bounded repair
 
