@@ -22,6 +22,11 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 
 ## Evidence and coverage
 
+C02/ADR-0035 defines explicit Model adoption and noncopyable/nonthrowing transfer.
+The bounded candidate and its exact-head/main gate status are recorded in
+STAGE3_MODEL_OWNERSHIP.md; the original Model audit remains historical evidence.
+No alternate caller preparation or patch observer rebinding qualification follows.
+
 C27/ADR-0034 makes serial parsed-control results and pending reconstructed patches
 explicit unique owners. The owning-result API is a bounded source migration;
 committed Geometry prefixes can remain after later failure. Parser/validation,
@@ -142,7 +147,7 @@ physical ID and source-curve identity cannot be interchanged (C07-C09, C21).
 | Object/container | Owner/adoption evidenced by source | Observers, copy behavior and teardown |
 | --- | --- | --- |
 | Geometry | unique_ptr points/vectors/curves/patches; raw Insert APIs adopt | PatchCoons curve lists and CurveAdaptive incident patch lists borrow |
-| Model | Destructor deletes meshes_ raw pointers | geometry_ is borrowed; the serial root uses stack Geometry. Implicit Model copy semantics need review |
+| Model | Exclusive mesh owners retire in reverse insertion order; copy is prohibited and move transfers ownership | geometry_ is borrowed; source becomes empty/null after move; no foreign patch rebinding |
 | GeneratorAdaptive | mesh_ and save_mesh_ own physical meshes; Adapter is a member | Current accepted mesh may come from mesh_ or the last saved state; the broader legacy Model collection is a different ownership route |
 | MeshAdaptive | unique_ptr submeshes; positional reset deletes replaced owner | A Patch current-submesh observer must be rebound after replacement/rollback |
 | SubMesh | unique_ptr nodes/elements; AddNoh moves, SetElement adopts; destruction clears elements before nodes | SetNoh copies scalar state and clears foreign adjacency; caller retains the source. The header now distinguishes copy from adoption |

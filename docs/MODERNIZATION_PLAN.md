@@ -1,5 +1,34 @@
 # Technique-preserving modernization plan
 
+## Stage 3 slice 34: Model ownership candidate
+
+The bounded repair gives Model exclusive mesh owners, prohibits copy aliasing and
+provides explicit nonthrowing transfer. Raw and owning appends consume on entry,
+including failure; committed entries, order, identity, null slots and geometry
+borrowing remain unchanged. Move transfers the borrow, leaves the source
+empty/null, retires prior destination meshes in reverse insertion order and
+preserves self-move. This is a behavior-changing lifetime defect repair, not a
+scientific change or an external ABI compatibility claim.
+
+Focused actual-unit qualification passes 57 ASan/static Debug CRT expected
+outcomes, eight complete growth-allocation sweeps/eight actual denials, twelve
+zero-allocation operations and fifteen nonempty original/candidate live pairs
+(five each with GCC, MSVC ASan and MSVC CRT). Six independent preservation
+mutations are rejected. Original copy/rvalue UAF and append retention evidence
+remains retained; successful reproduction is not repaired-code validation.
+
+Full exact-published-head and post-merge main gates remain PENDING. Slice 34 is
+the single active item and is not yet qualified or integrated. Stage 3 remains
+open; stages 4-11 remain pending. No formula, floating-point order, boundary
+synchronization, quadtree/template/front reconstruction, tolerance, budget or
+adaptation/acceptance/stopping policy changes.
+
+Other caller preparation failures, pointer-taking patch copies, foreign/current
+patch observer rebinding, cache/metadata rollback, other loaders, MPI/Hermite,
+parallel/full-process/LSan/UBSan and broader models remain separate obligations.
+See [repair contract and focused evidence](evidence/STAGE3_MODEL_OWNERSHIP.md).
+Earlier next-work statements below are historical checkpoints.
+
 Source and immutable import: see PROVENANCE.md. This repository is the working
 authority; PROJECT_STATE.md records the current work item and verified results.
 

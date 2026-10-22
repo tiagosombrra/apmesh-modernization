@@ -1,0 +1,942 @@
+{
+  "status": "passed",
+  "scope": "Actual Model and fourteen dependency units; raw/owning, empty/seeded/null append, all calibrated growth allocations, live committed prefixes and subsequent reuse, borrowed Geometry, reverse retirement, supported move/self-move and real instrument/oracle controls. Duplicate/foreign ownership, derived-base deletion, caller preparation, patch rebinding, parallel/full-process/LSan/UBSan remain outside scope.",
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s34qa\\RelWithDebInfo\\model_ownership_probe.exe",
+      "sha256": "7d1588d5f4df0a4e663ae2fd0a39f16dc7d9b95769fa287f1892323604482a64"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s34qd\\Debug\\model_ownership_probe.exe",
+      "sha256": "4dee1bbfd1de49f4b7089c24d6bd9802e63ea8e857448398589f861bf26a731b"
+    }
+  },
+  "complete_sweeps": 8,
+  "allocation_denials": 8,
+  "zero_allocation_operations": 12,
+  "classification": "prepublication focused qualification only; exact-head/main pending",
+  "cases": [
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "03af9c5c8dc0923f77bee72a7cc8db8a490fcb6a5bb01ed286e71f34d7690e12",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "lifetime",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "4ff72dcdec72efba3099dd7d389c4342252af7eb3fd16b88ace82e4626e60b51",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d88809fdb4845a04474466259e2a5030f3ec6cc22dd4d520c78e48f4a6d090f1",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "539765215f5b0039e75c6b238a69514be626b91e5adc999ec9e295622452da1b",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "a8577ed2477e0214973c425dac7e8f2f2c6ea80e0971c7df80ba7e7b4c62d452",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "75085b7f71513df5726cec00edf40ebb97cb311bdffaad94aaef4e4b0a39040f",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "7cfd460d9d05edb1bf2fb326ffb2680a2f3a7e28aa1d65b4ebdddb72a09fd68d",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "7a9eac2e70e299f92c0aa67ec81838c8fb6ef198873168a5a9d91ba636d1c6d0",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "839c17c42227f60971202108ab3335aff4c611ed3beac2e936a265d239877c5f",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "b38dd4055e8f69c37d19d640b48c5e513a327945f7cd1f265b7e62781f6027df",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "move-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "aee316a90bf20d5c3a2c4568eb09c348c97075f1c84ef94b9a52fa32b82d9e6c",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "move-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "91b37ed4e9842616e45f74664bc61b40c339d7860ae6f53c2ffdf5944cc97d9e",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "move-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "ba72d4b16d294907876c1180527eed3d893777ce917fdb0bbec9cca246f919da",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "move-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "6d24ae9f17399fd54635436343c00aa5dba626a8c1635ef9b134e1d544580c71",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "move-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d7490f53a3735d3003d6e107f08873d892334127dca8507ddccc1c2833264e68",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "989648a1145dcf6e0c642be316e540ffe9f16f97a98fa25e52a8cf7421de55df",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "lifetime",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "b72783141e09717efb54503d876766f7c0a4ef2ef88153d5e132df8d64a2ea7a",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "eba44fbd497e713b0ad7e75b3b028a5e2065d0f3a9697396d83b04a29f1305a1",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "9a8375062885972d83869836fc303e3482baf6ec7c81fde6750b44147190e4f3",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "ad3968780bb165279261b11e5791747c761d3ebb607805312385ccc9f92595c1",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "3f13aeae2b9f18a8c36f4fd8163645c2e1fe580cec9319817af8c9a092557368",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "e74f5f3caabae306909680014348289822e63fd1a858a356fa43880f4da99a51",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "361847200ee2bd0468a31ee0b495d37f65a7658a7e50adf3c2484cdc2f3b3711",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "175b659bc4d23799fbb8a61d0b355a1ae21b63993d49e272921c6fa1918405dc",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "fec15f411f3227ca79d9f014e4c7e393af6ea6b2f8be2841ad1790826f9dc792",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "move-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "7436594023565701661cd4dd8fa329639c36d4e396d542ef9dbfbcbe05f6c392",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "move-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "ba8ba9a401ce480c246bd17db7ebf8e49dd7d63bf98beb2ba556cdbd47391d0e",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "move-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "79a41d762966ef00c127efdcea3183183a75b2c14af2f89cdcebc62aba7e1469",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "move-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f479bf6e2a6dced4b469b6289f5aaefc02315689604feb04c5e41b4f6bbac7aa",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "move-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "0b4853e763c727670dc6d183bfde0b64d5c25d9850491f2db8663097186cf496",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "33b037cd254d4e4217f74048732aef4e3a0d4f4e7cb78e99a96d9b5e396f9884",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "b53d81cb6e3d524892b4606be55d29c34d51b15100685bcb7b1b7c8892a8e468",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d8e5521568472bd319a23c7abe0f347e2f070ce3821745529cdc4f43a92e97dc",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "edd76fbfc510b123058b67cfc55301c4e46959db0cb46b5b899127ed67855edd",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "e259c24c9b33448f321c75d8c7d9b2994358fd90443adf38842a8a69029a0ddc",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "545b843a9ef083c537394de094cc69d771647f3d7ed85e4a4e239ff57a5133f3",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "18927758dddf62da868068e2b46559361276aff1bb1afb7e1e94f7411264ee7e",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "failure-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "162fcdfa1e1d9cb3b61208594d01dad307f4fc109479783725e8b07e938cbd7b",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "57b92e1ab9d2102ed65849ae2b165463791f83027da885ba57d3d67b64e58b06",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "2dcd58473cd79c09b73f7307be5439ef9e3cbb6212ce1b54df88a979b61ac289",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f897798204b3ec37b76c955e1fea3f0fb21a57d5d808d342806e649b79433c23",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-3",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "cb760b0e63b1b3d45b0f583d6758dfe007fdc02d5f35b1b4dd4259162cc090b1",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-4",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "acab34ebeafb80c591a8bfed3927a330d8c0641cdf996f33b8ddce6e9922b9a8",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-5",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "f82ebe41d3c63f2f557940fa2e6769b905d898f922bc379c5ed4a50b6fac59fc",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-6",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d6abef5ce4a5bb513dd80a70df537a2204e3e71bc11a9ad4f5935d12cb687309",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-7",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "0db2fc4b0aa62ff2df8e5c19db8b48f67445eb701e0ecf8de31006e32963f620",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-8",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "7a5fdbc247ff822ba588dbfb65964909bf379ae9922be1f348e4f1ca4352c451",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-9",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "d1137c28112a667925559f828fbf69d8ccc8ec997ea05f0bc75e43bf1044e9f5",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-10",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "e96d1b95046f848f26b2ff08c6ec2ffe6d7542882ce21704a7bdb34da97081d5",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-11",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "3beac439ba07c8688b82b1cd3096f3d75e4e2cf1f037fd40614b803bc6a82234",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "asan",
+      "mode": "uaf-control",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "6014310501c435f2b027cfdfa8a3a549d8444922df009f139dc95865e022c34d",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak-control",
+      "exit_code": 1,
+      "passed": true,
+      "log_sha256": "dc35b3beaedeb25d328ff65a96e7d72d47a81c3fbb3a1cbb9329de59154e876d",
+      "retained_blocks": 2,
+      "retained_bytes": 112
+    },
+    {
+      "instrument": "crt",
+      "mode": "hook-control",
+      "exit_code": 0,
+      "passed": true,
+      "log_sha256": "7562eb430e593adabcb288b675b20d8aeaa59a893893737a97ca073e75264000",
+      "retained_blocks": 0,
+      "retained_bytes": 0
+    },
+    {
+      "instrument": "asan",
+      "mode": "order-control",
+      "exit_code": 2,
+      "passed": true,
+      "log_sha256": "d48b1675ffdae284d71108a970650f5b17283499a2622e857a13d7b5bf3e05d4",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "asan",
+      "mode": "adjacency-control",
+      "exit_code": 2,
+      "passed": true,
+      "log_sha256": "d8ef6ac785027021057b906c6c411a007eeb0fa22c4df358224ea23a7b1a4fc3",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "crt",
+      "mode": "order-control",
+      "exit_code": 2,
+      "passed": true,
+      "log_sha256": "d48b1675ffdae284d71108a970650f5b17283499a2622e857a13d7b5bf3e05d4",
+      "retained_blocks": null,
+      "retained_bytes": null
+    },
+    {
+      "instrument": "crt",
+      "mode": "adjacency-control",
+      "exit_code": 2,
+      "passed": true,
+      "log_sha256": "d8ef6ac785027021057b906c6c411a007eeb0fa22c4df358224ea23a7b1a4fc3",
+      "retained_blocks": null,
+      "retained_bytes": null
+    }
+  ],
+  "live_pairs": {
+    "gcc": {
+      "status": "passed",
+      "paired_traces": 5,
+      "cases": [
+        {
+          "mode": "lifetime",
+          "invocations": {
+            "original": {
+              "log": "original-lifetime.log",
+              "exit_code": 0,
+              "sha256": "4ff72dcdec72efba3099dd7d389c4342252af7eb3fd16b88ace82e4626e60b51"
+            },
+            "candidate": {
+              "log": "candidate-lifetime.log",
+              "exit_code": 0,
+              "sha256": "4ff72dcdec72efba3099dd7d389c4342252af7eb3fd16b88ace82e4626e60b51"
+            }
+          },
+          "observations": [
+            "model_lifetime=reverse:1,0,nodes:6,triangles:2,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-0",
+          "invocations": {
+            "original": {
+              "log": "original-trace-0.log",
+              "exit_code": 0,
+              "sha256": "1856661864a27d79e7c546c6a11a157730af29fd1d225b5b4b0305e9dc4d5b4a"
+            },
+            "candidate": {
+              "log": "candidate-trace-0.log",
+              "exit_code": 0,
+              "sha256": "1856661864a27d79e7c546c6a11a157730af29fd1d225b5b4b0305e9dc4d5b4a"
+            }
+          },
+          "observations": [
+            "model_node=0,10,0x0p+0,0x0p+0,0x0p+0,adjacency:1",
+            "model_node=1,11,0x1p+0,0x0p+0,0x0p+0,adjacency:1",
+            "model_node=2,12,0x0p+0,0x1p+0,0x0p+0,adjacency:1",
+            "model_payload=0,1,area:0x1p-1,nodes:3,elements:1",
+            "model_append=0,count:1,null:0,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-1",
+          "invocations": {
+            "original": {
+              "log": "original-trace-1.log",
+              "exit_code": 0,
+              "sha256": "898e67105ff7b41e2fa752fff73d6b037a4d60b0e2d52f7c56295064570ba321"
+            },
+            "candidate": {
+              "log": "candidate-trace-1.log",
+              "exit_code": 0,
+              "sha256": "898e67105ff7b41e2fa752fff73d6b037a4d60b0e2d52f7c56295064570ba321"
+            }
+          },
+          "observations": [
+            "model_node=0,10,0x0p+0,0x0p+0,0x0p+0,adjacency:1",
+            "model_node=1,11,0x1p+0,0x0p+0,0x0p+0,adjacency:1",
+            "model_node=2,12,0x0p+0,0x1p+0,0x0p+0,adjacency:1",
+            "model_payload=1,1,area:0x1p-1,nodes:3,elements:1",
+            "model_append=1,count:2,null:0,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-2",
+          "invocations": {
+            "original": {
+              "log": "original-trace-2.log",
+              "exit_code": 0,
+              "sha256": "a8577ed2477e0214973c425dac7e8f2f2c6ea80e0971c7df80ba7e7b4c62d452"
+            },
+            "candidate": {
+              "log": "candidate-trace-2.log",
+              "exit_code": 0,
+              "sha256": "a8577ed2477e0214973c425dac7e8f2f2c6ea80e0971c7df80ba7e7b4c62d452"
+            }
+          },
+          "observations": [
+            "model_append=2,count:1,null:1,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-3",
+          "invocations": {
+            "original": {
+              "log": "original-trace-3.log",
+              "exit_code": 0,
+              "sha256": "75085b7f71513df5726cec00edf40ebb97cb311bdffaad94aaef4e4b0a39040f"
+            },
+            "candidate": {
+              "log": "candidate-trace-3.log",
+              "exit_code": 0,
+              "sha256": "75085b7f71513df5726cec00edf40ebb97cb311bdffaad94aaef4e4b0a39040f"
+            }
+          },
+          "observations": [
+            "model_append=3,count:2,null:1,borrow:1"
+          ]
+        }
+      ],
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s34og\\model_ownership_probe.exe",
+          "sha256": "70d6a487923d34f6c13a2ddfda7cafb38e1ea06f310cd6197f2b41969e2d9067"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s34qg\\model_ownership_probe.exe",
+          "sha256": "7fce796aa94a45778180154b64f0f1f11e246cc71202201e4ba90d0613cf9d02"
+        }
+      },
+      "preservation": {
+        "status": "passed",
+        "original_revision": "cd3dd8c7e269d4384f62109ef28334184c64ce89",
+        "rejected_mutations": 6,
+        "preserved_tokens_sha256": {
+          "include/data/model.h": "166bc251ca8fe1b289688839713af2c13420f15d17af54288d3aaae67a9fc003",
+          "src/data/model.cpp": "5bb62d7cc554e4b83d0344cb8f03cdd86394ccfde4f6d4bb9594cd726fe34c5e"
+        },
+        "source_identities": {
+          "original": {
+            "include/data/model.h": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146",
+            "src/data/model.cpp": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+          },
+          "candidate": {
+            "include/data/model.h": "a4db0160604c0525d18a636adf324212c24baa9bd09f7507113bf52a3205d6fc",
+            "src/data/model.cpp": "6b883b857191755f81beff2847020f24b3fea8ee4f7ed5a39db7ca387d034891"
+          }
+        },
+        "scope": "Two actual Model files. Exact exclusive storage, owning/raw handoff, copy prohibition, nonthrowing moves and reverse retirement only. All other getter, borrowing and ordering tokens preserved; runtime fault and live comparison gates are separate."
+      },
+      "scope": "Original raw API and candidate raw API with empty/seeded/nonempty/null inputs, actual coordinates/IDs, analytic area, live local adjacency, borrowed geometry and reverse lifetime. Candidate owning handoffs and moves are separately instrumented. No whole-application or parallel claim."
+    },
+    "asan": {
+      "status": "passed",
+      "paired_traces": 5,
+      "cases": [
+        {
+          "mode": "lifetime",
+          "invocations": {
+            "original": {
+              "log": "original-lifetime.log",
+              "exit_code": 0,
+              "sha256": "4ff72dcdec72efba3099dd7d389c4342252af7eb3fd16b88ace82e4626e60b51"
+            },
+            "candidate": {
+              "log": "candidate-lifetime.log",
+              "exit_code": 0,
+              "sha256": "4ff72dcdec72efba3099dd7d389c4342252af7eb3fd16b88ace82e4626e60b51"
+            }
+          },
+          "observations": [
+            "model_lifetime=reverse:1,0,nodes:6,triangles:2,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-0",
+          "invocations": {
+            "original": {
+              "log": "original-trace-0.log",
+              "exit_code": 0,
+              "sha256": "d88809fdb4845a04474466259e2a5030f3ec6cc22dd4d520c78e48f4a6d090f1"
+            },
+            "candidate": {
+              "log": "candidate-trace-0.log",
+              "exit_code": 0,
+              "sha256": "d88809fdb4845a04474466259e2a5030f3ec6cc22dd4d520c78e48f4a6d090f1"
+            }
+          },
+          "observations": [
+            "model_node=0,10,0x0.0000000000000p+0,0x0.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_node=1,11,0x1.0000000000000p+0,0x0.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_node=2,12,0x0.0000000000000p+0,0x1.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_payload=0,1,area:0x1.0000000000000p-1,nodes:3,elements:1",
+            "model_append=0,count:1,null:0,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-1",
+          "invocations": {
+            "original": {
+              "log": "original-trace-1.log",
+              "exit_code": 0,
+              "sha256": "539765215f5b0039e75c6b238a69514be626b91e5adc999ec9e295622452da1b"
+            },
+            "candidate": {
+              "log": "candidate-trace-1.log",
+              "exit_code": 0,
+              "sha256": "539765215f5b0039e75c6b238a69514be626b91e5adc999ec9e295622452da1b"
+            }
+          },
+          "observations": [
+            "model_node=0,10,0x0.0000000000000p+0,0x0.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_node=1,11,0x1.0000000000000p+0,0x0.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_node=2,12,0x0.0000000000000p+0,0x1.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_payload=1,1,area:0x1.0000000000000p-1,nodes:3,elements:1",
+            "model_append=1,count:2,null:0,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-2",
+          "invocations": {
+            "original": {
+              "log": "original-trace-2.log",
+              "exit_code": 0,
+              "sha256": "a8577ed2477e0214973c425dac7e8f2f2c6ea80e0971c7df80ba7e7b4c62d452"
+            },
+            "candidate": {
+              "log": "candidate-trace-2.log",
+              "exit_code": 0,
+              "sha256": "a8577ed2477e0214973c425dac7e8f2f2c6ea80e0971c7df80ba7e7b4c62d452"
+            }
+          },
+          "observations": [
+            "model_append=2,count:1,null:1,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-3",
+          "invocations": {
+            "original": {
+              "log": "original-trace-3.log",
+              "exit_code": 0,
+              "sha256": "75085b7f71513df5726cec00edf40ebb97cb311bdffaad94aaef4e4b0a39040f"
+            },
+            "candidate": {
+              "log": "candidate-trace-3.log",
+              "exit_code": 0,
+              "sha256": "75085b7f71513df5726cec00edf40ebb97cb311bdffaad94aaef4e4b0a39040f"
+            }
+          },
+          "observations": [
+            "model_append=3,count:2,null:1,borrow:1"
+          ]
+        }
+      ],
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s34oa\\RelWithDebInfo\\model_ownership_probe.exe",
+          "sha256": "adea59a2189bf8d55e2916b8947b29fdbbd0306be58a723b31a7480cc0640c44"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s34qa\\RelWithDebInfo\\model_ownership_probe.exe",
+          "sha256": "7d1588d5f4df0a4e663ae2fd0a39f16dc7d9b95769fa287f1892323604482a64"
+        }
+      },
+      "preservation": {
+        "status": "passed",
+        "original_revision": "cd3dd8c7e269d4384f62109ef28334184c64ce89",
+        "rejected_mutations": 6,
+        "preserved_tokens_sha256": {
+          "include/data/model.h": "166bc251ca8fe1b289688839713af2c13420f15d17af54288d3aaae67a9fc003",
+          "src/data/model.cpp": "5bb62d7cc554e4b83d0344cb8f03cdd86394ccfde4f6d4bb9594cd726fe34c5e"
+        },
+        "source_identities": {
+          "original": {
+            "include/data/model.h": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146",
+            "src/data/model.cpp": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+          },
+          "candidate": {
+            "include/data/model.h": "a4db0160604c0525d18a636adf324212c24baa9bd09f7507113bf52a3205d6fc",
+            "src/data/model.cpp": "6b883b857191755f81beff2847020f24b3fea8ee4f7ed5a39db7ca387d034891"
+          }
+        },
+        "scope": "Two actual Model files. Exact exclusive storage, owning/raw handoff, copy prohibition, nonthrowing moves and reverse retirement only. All other getter, borrowing and ordering tokens preserved; runtime fault and live comparison gates are separate."
+      },
+      "scope": "Original raw API and candidate raw API with empty/seeded/nonempty/null inputs, actual coordinates/IDs, analytic area, live local adjacency, borrowed geometry and reverse lifetime. Candidate owning handoffs and moves are separately instrumented. No whole-application or parallel claim."
+    },
+    "crt": {
+      "status": "passed",
+      "paired_traces": 5,
+      "cases": [
+        {
+          "mode": "lifetime",
+          "invocations": {
+            "original": {
+              "log": "original-lifetime.log",
+              "exit_code": 0,
+              "sha256": "b72783141e09717efb54503d876766f7c0a4ef2ef88153d5e132df8d64a2ea7a"
+            },
+            "candidate": {
+              "log": "candidate-lifetime.log",
+              "exit_code": 0,
+              "sha256": "b72783141e09717efb54503d876766f7c0a4ef2ef88153d5e132df8d64a2ea7a"
+            }
+          },
+          "observations": [
+            "model_lifetime=reverse:1,0,nodes:6,triangles:2,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-0",
+          "invocations": {
+            "original": {
+              "log": "original-trace-0.log",
+              "exit_code": 0,
+              "sha256": "eba44fbd497e713b0ad7e75b3b028a5e2065d0f3a9697396d83b04a29f1305a1"
+            },
+            "candidate": {
+              "log": "candidate-trace-0.log",
+              "exit_code": 0,
+              "sha256": "eba44fbd497e713b0ad7e75b3b028a5e2065d0f3a9697396d83b04a29f1305a1"
+            }
+          },
+          "observations": [
+            "model_node=0,10,0x0.0000000000000p+0,0x0.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_node=1,11,0x1.0000000000000p+0,0x0.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_node=2,12,0x0.0000000000000p+0,0x1.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_payload=0,1,area:0x1.0000000000000p-1,nodes:3,elements:1",
+            "model_append=0,count:1,null:0,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-1",
+          "invocations": {
+            "original": {
+              "log": "original-trace-1.log",
+              "exit_code": 0,
+              "sha256": "9a8375062885972d83869836fc303e3482baf6ec7c81fde6750b44147190e4f3"
+            },
+            "candidate": {
+              "log": "candidate-trace-1.log",
+              "exit_code": 0,
+              "sha256": "9a8375062885972d83869836fc303e3482baf6ec7c81fde6750b44147190e4f3"
+            }
+          },
+          "observations": [
+            "model_node=0,10,0x0.0000000000000p+0,0x0.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_node=1,11,0x1.0000000000000p+0,0x0.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_node=2,12,0x0.0000000000000p+0,0x1.0000000000000p+0,0x0.0000000000000p+0,adjacency:1",
+            "model_payload=1,1,area:0x1.0000000000000p-1,nodes:3,elements:1",
+            "model_append=1,count:2,null:0,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-2",
+          "invocations": {
+            "original": {
+              "log": "original-trace-2.log",
+              "exit_code": 0,
+              "sha256": "ad3968780bb165279261b11e5791747c761d3ebb607805312385ccc9f92595c1"
+            },
+            "candidate": {
+              "log": "candidate-trace-2.log",
+              "exit_code": 0,
+              "sha256": "ad3968780bb165279261b11e5791747c761d3ebb607805312385ccc9f92595c1"
+            }
+          },
+          "observations": [
+            "model_append=2,count:1,null:1,borrow:1"
+          ]
+        },
+        {
+          "mode": "trace-3",
+          "invocations": {
+            "original": {
+              "log": "original-trace-3.log",
+              "exit_code": 0,
+              "sha256": "3f13aeae2b9f18a8c36f4fd8163645c2e1fe580cec9319817af8c9a092557368"
+            },
+            "candidate": {
+              "log": "candidate-trace-3.log",
+              "exit_code": 0,
+              "sha256": "3f13aeae2b9f18a8c36f4fd8163645c2e1fe580cec9319817af8c9a092557368"
+            }
+          },
+          "observations": [
+            "model_append=3,count:2,null:1,borrow:1"
+          ]
+        }
+      ],
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s34od\\Debug\\model_ownership_probe.exe",
+          "sha256": "bec968f2c066ace0a1cc1e302424281566c33b93065e565201e670aabf0b0b32"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s34qd\\Debug\\model_ownership_probe.exe",
+          "sha256": "4dee1bbfd1de49f4b7089c24d6bd9802e63ea8e857448398589f861bf26a731b"
+        }
+      },
+      "preservation": {
+        "status": "passed",
+        "original_revision": "cd3dd8c7e269d4384f62109ef28334184c64ce89",
+        "rejected_mutations": 6,
+        "preserved_tokens_sha256": {
+          "include/data/model.h": "166bc251ca8fe1b289688839713af2c13420f15d17af54288d3aaae67a9fc003",
+          "src/data/model.cpp": "5bb62d7cc554e4b83d0344cb8f03cdd86394ccfde4f6d4bb9594cd726fe34c5e"
+        },
+        "source_identities": {
+          "original": {
+            "include/data/model.h": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146",
+            "src/data/model.cpp": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+          },
+          "candidate": {
+            "include/data/model.h": "a4db0160604c0525d18a636adf324212c24baa9bd09f7507113bf52a3205d6fc",
+            "src/data/model.cpp": "6b883b857191755f81beff2847020f24b3fea8ee4f7ed5a39db7ca387d034891"
+          }
+        },
+        "scope": "Two actual Model files. Exact exclusive storage, owning/raw handoff, copy prohibition, nonthrowing moves and reverse retirement only. All other getter, borrowing and ordering tokens preserved; runtime fault and live comparison gates are separate."
+      },
+      "scope": "Original raw API and candidate raw API with empty/seeded/nonempty/null inputs, actual coordinates/IDs, analytic area, live local adjacency, borrowed geometry and reverse lifetime. Candidate owning handoffs and moves are separately instrumented. No whole-application or parallel claim."
+    }
+  },
+  "full_report_sha256": "43bb0eaf8d9ae58a111980818a3fbab0c9aeb494b8c30381bf829cc2bf560cc6",
+  "original_source_manifest_sha256": "1bd6eeed002e037543c851a206d341456051a848837ff37b1ba0b5a97706fd40"
+}

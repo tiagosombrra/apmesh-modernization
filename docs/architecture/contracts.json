@@ -26,16 +26,28 @@
     {
       "id": "C02",
       "topic": "Root ownership",
-      "statement": "In serial Execute, Geometry and Model are stack objects; Model borrows geometry_ and its destructor deletes pointers stored in meshes_.",
-      "limits": "Model copy safety and all alternative MPI/model-loader lifetime routes are not qualified.",
+      "statement": "In serial Execute, Geometry and Model are stack objects. Model borrows Geometry and exclusively owns its mesh collection. Raw and owning append consume on entry, including failure; existing slots remain unchanged on failure. Destruction retires meshes in reverse insertion order. Copies are prohibited. Nonthrowing moves preserve mesh identities and slot order, transfer the geometry borrow and leave the source empty/null; assignment retires the prior destination in reverse order and self-move preserves state.",
+      "limits": "Intentional source ownership/layout and copy/move contract migration, not external ABI compatibility. Arguments must have exclusive ownership and be deletable through MeshAdaptive; duplicate/foreign ownership and derived-base deletion are invalid. Geometry and foreign observers must obey their existing lifetime contracts. Isolated focused qualification does not execute preceding alternate OpenMP preparation or establish foreign/current-patch observer rebinding, full-process, parallel, LSan or UBSan safety. Exact-head/main gates remain required in STAGE3_MODEL_OWNERSHIP.md.",
       "evidence": [
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "Model model;"
         },
         {
+          "path": "include/data/model.h",
+          "anchor": "std::vector<std::unique_ptr<MeshAdaptive>> meshes_;"
+        },
+        {
           "path": "src/data/model.cpp",
-          "anchor": "delete mesh;"
+          "anchor": "meshes_.pop_back();"
+        },
+        {
+          "path": "src/data/model.cpp",
+          "anchor": "Model incoming(std::move(other));"
+        },
+        {
+          "path": "include/data/model.h",
+          "anchor": "Model(const Model&) = delete;"
         },
         {
           "path": "include/data/model.h",
