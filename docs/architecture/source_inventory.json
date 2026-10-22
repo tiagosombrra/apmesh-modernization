@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 586,
+    "literal_include_directives": 588,
     "first_party_include_edges": 339
   },
   "cross_component_directives": [
@@ -352,7 +352,7 @@
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 27,
+    "memory": 28,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -371,7 +371,7 @@
     "unistd.h": 1,
     "unordered_map": 6,
     "unordered_set": 7,
-    "utility": 10,
+    "utility": 11,
     "vector": 20,
     "windows.h": 1,
     "winsock2.h": 1
@@ -387,7 +387,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "0468c708824385710ef3178ede6f35651e3e11c082a8c1d64d46a84d68c35116"
+      "sha256": "e055ddcff24e8dbdb7a2799440e1e4f6cfe0fedc3cb0a3249ac9e9a159b114bf"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -400,6 +400,10 @@
     {
       "path": "tests/mesh_memory/CMakeLists.txt",
       "sha256": "85962c88900bb666620e07c78cea1eb074fc932eb62d5d30feea17eff0e17bf8"
+    },
+    {
+      "path": "tests/model_memory/CMakeLists.txt",
+      "sha256": "020aa25ef85ab1e91f117a020c7c34ffede79aeaa1dc25758ffbb2cf56d3746a"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",
@@ -1827,25 +1831,32 @@
       "path": "include/data/model.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146",
-      "bytes": 537,
+      "sha256": "a4db0160604c0525d18a636adf324212c24baa9bd09f7507113bf52a3205d6fc",
+      "bytes": 1221,
       "includes": [
         {
           "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
           "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 6,
+          "line": 7,
           "spelling": "../data/mesh/mesh_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/mesh/mesh_adaptive.h"
         },
         {
-          "line": 7,
+          "line": 8,
           "spelling": "geometry.h",
           "form": "quote",
           "scope": "first_party",
@@ -4066,8 +4077,8 @@
       "path": "src/data/model.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d",
-      "bytes": 825,
+      "sha256": "6b883b857191755f81beff2847020f24b3fea8ee4f7ed5a39db7ca387d034891",
+      "bytes": 1292,
       "includes": [
         {
           "line": 1,
@@ -4075,6 +4086,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/model.h"
+        },
+        {
+          "line": 3,
+          "spelling": "utility",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -5867,7 +5885,7 @@
   ],
   "contract_traceability": {
     "contracts": 27,
-    "source_anchors": 169,
+    "source_anchors": 172,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

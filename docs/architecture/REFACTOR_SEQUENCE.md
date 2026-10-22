@@ -1,5 +1,11 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+Current single item: slice 34, explicit Model mesh adoption and copy/move repair.
+Focused qualification passes; exact published head and main gates remain pending.
+See ../evidence/STAGE3_MODEL_OWNERSHIP.md. Earlier queue statements below are
+historical. Pointer-taking patch-copy semantics (C22) remain a separate audit
+after this repair is qualified; no numerical or complete-clone policy is assumed.
+
 This is an implementation sequence within the approved stages, not a production
 change in stage 2. Evidence IDs refer to [contracts.json](contracts.json).
 Only one work item is active at a time; required regression gates remain exact.

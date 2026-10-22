@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Model ownership repair
+
+Required application.model_ownership_contracts and tooling.model_ownership_preservation
+add two gates to the previous 47-test inventory. tests/model_memory compiles
+Model and fourteen actual dependency units. tools/qualify_model_ownership.py
+requires 57 expected ASan/static Debug CRT outcomes, eight complete allocation
+sweeps, twelve nonallocating operations and real UAF/leak/hook/order/adjacency
+controls. tools/compare_model_ownership.py requires five nonempty live pairs per
+compiler/instrument against a Git-verified original. The preservation guard
+rejects six independent mutations. Full exact-head/main prior regression,
+accepted/rejected traces and remote audits remain required; see
+[evidence and commands](evidence/STAGE3_MODEL_OWNERSHIP.md).
+
 ## Original Model ownership reproduction
 
 The standalone [Model audit](evidence/STAGE3_MODEL_ROOT_AUDIT.md) compiles fifteen
