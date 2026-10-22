@@ -1,10 +1,12 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
-Current single audit: pointer-taking patch-copy semantics and actual callers (C22).
-Slice 34 Model ownership is qualified by full exact-head/main gates; see
-[the repair evidence](../evidence/STAGE3_MODEL_OWNERSHIP.md).
-Earlier queue statements below are historical.
-Do not assume complete clone semantics or change numerical policy.
+Current single repair: slice 35, explicit initialized detached patch-copy intent
+(C22). The [original audit](../evidence/STAGE3_PATCH_COPY_AUDIT.md) records
+81 literal production constructions without a pointer-copy call, partial numeric
+copy observations and source-only initialization omissions. Preserve detached
+curves/SubMesh and defined numeric values; do not assume complete clone semantics
+or read indeterminate metadata. Slice 34 remains qualified. Earlier queue
+statements below are historical.
 
 This is an implementation sequence within the approved stages, not a production
 change in stage 2. Evidence IDs refer to [contracts.json](contracts.json).

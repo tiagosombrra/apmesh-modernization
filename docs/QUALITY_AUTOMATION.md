@@ -1,5 +1,14 @@
 # Local quality automation
 
+## Pointer-taking patch-copy audit (C22)
+
+The standalone [C22 recipe and runner](evidence/STAGE3_PATCH_COPY_AUDIT.md)
+compile sixteen actual production units in explicit GCC/MSVC C++17 builds.
+Require 110 original observations: 108 defined cases, an actual ASan UAF control
+and a positive CRT leak control; retain all failures and indeterminate-field
+limits. This adds no repaired battery or CTest. The 49 CTest/74 Python inventory,
+608 protected inputs and exact audit head/main local/remote gates remain required.
+
 ## Model ownership repair
 
 Required application.model_ownership_contracts and tooling.model_ownership_preservation
