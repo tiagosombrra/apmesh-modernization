@@ -1,27 +1,36 @@
 # Modernization work log
 
-## 2026-10-21: stage 3 slice 33 candidate repair
+## 2026-10-21: stage 3 slice 33 qualified
 
-The candidate migrates LoaderBezierPatchFile to independent unique control
-results and local pending ownership. ReaderFilePatches retains parsed controls
-and consumes a separate unique reconstructed patch through Geometry. Three
-badbit masks propagate resource failures before partial record indexing. This
-is a behavior-changing lifetime/failure defect repair with no scientific policy
-change or consolidation with the distinct charge parser.
+Stage 3 slice 33 is qualified within its measured serial-reader boundary.
+PR #89 integrates head `29c5b883b1bdebc0627c611da868f16361d476e4` as main
+`bd1e6920dc1792ce6a0e802ac8cdfc3216284518`, preserving complete tree
+`b6b45dd550dd201d22505be58b473d3fa0f907a5` (1973 blobs). Exact-head
+and post-merge full campaigns pass on the same 603 protected inputs: 47/47 CTest,
+zero failures/skips, 74 Python controls, 29 memory batteries/3005 expected outcomes,
+1040 retained scalar sequences and exact twice-repeated Eistute/Book accepted/
+rejected/OBJ/incidence/CSV traces. All command/case/child-log/artifact/source
+identities are independently checked; remote tree/branches/PRs/checks are audited.
 
-Focused qualification passes 131 expected outcomes, sixteen complete CRT sweeps/
-2731 actual allocation denials, eight nonempty GCC live pairs and six rejected
-preservation mutations. The original retains 72 failed/59 other expected outcomes,
-all sixteen partial sweeps and 240 observed denials; later original ordinals remain
-unmeasured. No complete-reader rollback/retry or full-process safety is claimed.
-See [the bounded evidence](evidence/STAGE3_SERIAL_READER.md), C27 and ADR-0034.
+Serial control results and pending parse/reconstructed patches now have explicit
+unique owners. Three badbit masks propagate resource failures before consuming
+partial rows. The 131 new outcomes pass sixteen complete CRT sweeps/2731 actual
+denials, eight GCC and sixteen MSVC live pairs and six rejected preservation
+mutations. The original retains 72 failed/59 other expected outcomes, sixteen
+partial sweeps and 240 observed denials; later original ordinals remain unmeasured.
+See [the bounded closure evidence](evidence/STAGE3_SERIAL_READER.md).
 
-Full exact published-head and post-merge gates remain pending: 47 CTest entries,
-74 Python controls, all 29 memory batteries/3005 expected outcomes, preserved
-analytic/scalar/model traces and local/remote quality/identity checks. Slice 33
-is not qualified. The full stage 3 and stages 4-11 remain open; Model/copy,
-MPI/Hermite and other finite rows retain their separate pending dispositions.
-Earlier "next" paragraphs below are historical checkpoints.
+The owning-result return is an intentional audited source API migration; no
+external raw/binary compatibility is claimed. Geometry may retain a valid
+committed prefix on later failure; consumed IDs remain consumed. No complete-
+reader rollback/retry or other-loader/whole-process safety follows. No scientific
+formula, numerical order, interning tolerance or adaptive/acceptance/stopping
+policy changes. Stage 3 remains open; stages 4-11 remain pending.
+
+The next single item is Model mesh adoption/copy ownership and its actual callers.
+MPI/Hermite/other loaders, remaining UV/tree/mate paths, cache/metadata rollback,
+broader models and complete-process/parallel/LSan/UBSan retain their separate
+pending rows in the [finite closure inventory](architecture/STAGE3_CLOSURE_INVENTORY.md).
 
 ## 2026-10-21: caller-root audit and original serial retention
 
@@ -135,6 +144,7 @@ see the final integrated ledger row. Slice 32 remains the active review item.
 | 2026-10-20, stage 3 slice 30 | PR #82; head 45ad4f7fc50bc6dcf8b730be69443801aea7ac43, main 181e2acc70746d7abb5f64a924fce6aed51313e8; evidence/STAGE3_CURVATURE_SAMPLE.md | Automatic curvature samples, no nonexistent derived casts, bounded scratch; 42 CTest, 74 Python controls, 2677 memory outcomes, 342 zero-allocation operations, 90 exact sample pairs and article regression. Original 367 failures retained; stage 3 and full-process scope remain open |
 | 2026-10-21, stage 3 slice 31 | PR #84; head c94ed17373abc04c9bbb5359a4ea686a44b886f3, main 1bc4038ad55a6b5fce7ec99db3fc5b200016ea69; evidence/STAGE3_BEZIER_CONSTRUCTION.md | Bezier constructor fresh ownership and borrowed observer suffix restoration; shared charge scope; 43 CTest, 74 Python controls, 2748 memory outcomes, 348 new allocation denials, 16 GCC/32 MSVC constructor pairs and article regression. Original 32 failed partial sweeps retained; successful caller adoption and ordinary deregistration remain open |
 | 2026-10-21, stage 3 slice 32 | PR #86; head 7307bdab7c7f4c835218fd3c80d8ad8b458538aa, main cce8927dd2a69edbbddfb4b51c7a6f8ecf201edf; evidence/STAGE3_BEZIER_OBSERVERS.md | Stable current-incidence Bezier retirement and dependent Geometry teardown/move. Exact head and completed main continuation: 45 CTest, 74 Python controls, 28 batteries/2874 outcomes and article traces; 126 new outcomes/19 no-allocation operations, six GCC/twelve MSVC pairs and six rejected mutations. Original 103 failed outcomes and main API timeout retained. Caller roots and full-process scope remain open |
+| 2026-10-21, stage 3 slice 33 | PR #89; head 29c5b883b1bdebc0627c611da868f16361d476e4, main bd1e6920dc1792ce6a0e802ac8cdfc3216284518; evidence/STAGE3_SERIAL_READER.md | Independent unique serial control results and pending parse/reconstruction ownership; badbit propagation. Exact head/main 47 CTest, 74 Python controls, 29 batteries/3005 outcomes and exact article traces; sixteen sweeps/2731 denials, eight GCC/sixteen MSVC pairs, six rejected mutations. Original 72 failed outcomes/sixteen partial sweeps retained. Model/copy and full-process scope remain open |
 
 Historical slice-26 checkpoint: stages 0-2 closed; stage 3 had twenty-six qualified
 slices; stages 4-11 pending. Its next item was estimator area/error roots and explicit

@@ -61,22 +61,18 @@ physical/UV meshes distinct and prioritizes qualified ownership work before
 consolidation. The candidate adds development tooling and eight controls;
 production sources and scientific outputs remain exact. PR #6 is integrated,
 and exact-head/post-merge checks pass. See [the closure record](docs/evidence/STAGE2_CLOSURE.md).
-Stage 3 remains open with thirty-two qualified ownership/lifecycle slices.
-The latest retires completed Bezier observers and preserves dependent Geometry
-teardown/move order (PR #86). Exact-head and completed post-merge qualification
-retain CTest 45/45, 74 Python controls, 28 memory batteries/2874 expected outcomes,
-1040 scalar sequences and exact repeated Eistute/Book accepted/rejected traces on
-the same 598 protected inputs. A terminal main API timeout is retained; a separate
-explicit continuation completes the remote audit without repeating local tests.
-See [the bounded closure audit](docs/evidence/STAGE3_BEZIER_OBSERVERS.md).
-The next single audit covers successful caller adoption and remaining loader/
-Model/copy roots. Other lifecycle roots, cache/metadata/acceptance rollback and
-full-process/parallel memory remain open; stages 4-11 are pending.
-
-The caller audit has since reproduced serial control-object retention. Active
-slice 33 repairs pending/control-result ownership; focused gates pass while full
-exact-head/main delivery qualification remains pending. See
-[the serial-reader evidence](docs/evidence/STAGE3_SERIAL_READER.md).
+Stage 3 remains open with thirty-three qualified ownership/lifecycle slices.
+The latest owns serial parsed-control results and pending parse/reconstructed
+patches and propagates resource failures before consuming partial rows (PR #89).
+Exact implementation head/main gates pass: 47/47 CTest, 74 Python controls,
+29 memory batteries/3005 expected outcomes, 1040 retained scalar sequences and
+exact twice-repeated Eistute/Book accepted/rejected traces on the same 603 inputs.
+The new 131 outcomes cover sixteen complete sweeps/2731 actual denials and eight
+GCC/sixteen MSVC live pairs; original 72 failed outcomes and partial sweeps remain
+retained. See [the bounded closure audit](docs/evidence/STAGE3_SERIAL_READER.md).
+The next single audit is Model mesh adoption/copy ownership and actual callers.
+Other loaders, cache/metadata/acceptance rollback and full-process/parallel memory
+remain open; stages 4-11 are pending.
 
 ## Repository policy
 
