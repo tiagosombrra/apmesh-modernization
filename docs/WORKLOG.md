@@ -1,5 +1,32 @@
 # Modernization work log
 
+## 2026-10-21: Model root audit and original hazards
+
+The Model ownership/copy audit at source main
+`d69f77a868380136153edf6a3274e661fad59d6a` reproduces original hazards without
+changing production inputs. Model borrows Geometry and deletes its raw mesh list
+in reverse insertion order. Copy construction/assignment and rvalue construction/
+assignment alias that owning list; all four reproduce actual ASan use-after-free.
+Two first-growth append denials retain the pending populated mesh (15 normal CRT
+blocks/696 bytes), while explicit caller-cleanup controls retain zero. Independent
+normal, actual leak and actual UAF controls execute. All 13 reproduction
+expectations are observed; this is not a qualified repaired memory battery.
+
+The serial Generator owns its mesh separately through mesh_. Both discovered
+Model insertion calls are in the alternate USE_OPENMP GeneratorOmp; no production
+invocation of that method or explicit Model copy expression was found in the
+inspected sources. MPI has a separate Model member. These are bounded source
+observations, not parallel, indirect or external-client qualification.
+
+Next single item: slice 34, explicit Model mesh adoption and copy/move intent.
+Preserve borrowing, reverse retirement, identity/order/null/getter semantics and
+all scientific policies. Define ownership on failed append, prohibit accidental
+copy aliasing, qualify supported transfer semantics, and preserve committed
+prefixes. Full repair exact-head/main instrument, numerical and prior regression
+gates remain required. Other caller and full-process obligations remain open.
+See [source inventory and original reproductions](evidence/STAGE3_MODEL_ROOT_AUDIT.md).
+Stage 3 remains open; stages 4-11 remain pending.
+
 ## 2026-10-21: stage 3 slice 33 qualified
 
 Stage 3 slice 33 is qualified within its measured serial-reader boundary.

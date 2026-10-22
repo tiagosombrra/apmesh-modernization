@@ -1,5 +1,17 @@
 # Local quality automation
 
+## Original Model ownership reproduction
+
+The standalone [Model audit](evidence/STAGE3_MODEL_ROOT_AUDIT.md) compiles fifteen
+actual production units plus the probe in separate MSVC ASan/static Debug CRT
+builds. Its driver requires thirteen original reproduction outcomes, including
+working normal/leak/UAF/hook controls, four copy/rvalue errors, two failed-append
+retention cases with independent caller-cleanup controls, and unsupported duplicate
+adoption. Driver success is reproduction evidence, not repaired-model validation.
+No production input or existing test inventory changes. The 47 CTest/74 Python
+controls and source-equivalence/local/remote gates remain required on exact
+audit head and main. See the audit for commands and explicit limits.
+
 ## Serial-reader control ownership (PR #89)
 
 The new required application.serial_reader_contracts and

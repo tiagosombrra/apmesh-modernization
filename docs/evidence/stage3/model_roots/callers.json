@@ -1,0 +1,147 @@
+{
+  "source_base": "d69f77a868380136153edf6a3274e661fad59d6a",
+  "classification": "literal source inventory with separately reviewed conditional context",
+  "rows": [
+    {
+      "path": "src/data/model.cpp",
+      "line": 3,
+      "source": "Model::Model() : geometry_(nullptr) {}",
+      "file_sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+    },
+    {
+      "path": "src/data/model.cpp",
+      "line": 5,
+      "source": "Model::Model(Geometry* geometry) { this->geometry_ = geometry; }",
+      "file_sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+    },
+    {
+      "path": "src/data/model.cpp",
+      "line": 7,
+      "source": "Model::~Model() {",
+      "file_sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+    },
+    {
+      "path": "src/data/model.cpp",
+      "line": 16,
+      "source": "void Model::SetGeometry(Geometry* geometry) { this->geometry_ = geometry; }",
+      "file_sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+    },
+    {
+      "path": "src/data/model.cpp",
+      "line": 18,
+      "source": "Geometry* Model::GetGeometry() { return this->geometry_; }",
+      "file_sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+    },
+    {
+      "path": "src/data/model.cpp",
+      "line": 20,
+      "source": "void Model::InsertMeshAdaptive(MeshAdaptive* mesh_adaptive) {",
+      "file_sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+    },
+    {
+      "path": "src/data/model.cpp",
+      "line": 24,
+      "source": "unsigned int Model::GetNumberMeshes() const {",
+      "file_sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+    },
+    {
+      "path": "src/data/model.cpp",
+      "line": 28,
+      "source": "MeshAdaptive* Model::GetMeshAdaptive(const unsigned int position) {",
+      "file_sha256": "5c0accf5d70a59e7b0bd2c857ebafb3d4560a1ccccb73df1a2129dee494d755d"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 806,
+      "source": "Model model;",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 1082,
+      "source": "void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range,",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5514,
+      "source": "int GeneratorAdaptive::GeneratorOmp(Model& model, Timer* timer, int id_range,",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5571,
+      "source": "model.InsertMeshAdaptive(malha);",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5677,
+      "source": "model.InsertMeshAdaptive(malha);",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "include/data/model.h",
+      "line": 9,
+      "source": "class Model {",
+      "file_sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146"
+    },
+    {
+      "path": "include/data/model.h",
+      "line": 11,
+      "source": "Model();",
+      "file_sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146"
+    },
+    {
+      "path": "include/data/model.h",
+      "line": 12,
+      "source": "explicit Model(Geometry* geometry);",
+      "file_sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146"
+    },
+    {
+      "path": "include/data/model.h",
+      "line": 13,
+      "source": "~Model();",
+      "file_sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146"
+    },
+    {
+      "path": "include/data/model.h",
+      "line": 17,
+      "source": "void InsertMeshAdaptive(MeshAdaptive* mesh_adaptive);",
+      "file_sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146"
+    },
+    {
+      "path": "include/data/model.h",
+      "line": 18,
+      "source": "unsigned int GetNumberMeshes() const;",
+      "file_sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146"
+    },
+    {
+      "path": "include/data/model.h",
+      "line": 19,
+      "source": "MeshAdaptive* GetMeshAdaptive(const unsigned int position);",
+      "file_sha256": "767d7a3cca1c021d6f3756dfa137a2c2b0fbbdb50aa71d7ee9b8756953fee146"
+    },
+    {
+      "path": "include/generator/generator_adaptive.h",
+      "line": 388,
+      "source": "void Generator(Model& model, Timer* timer, int id_range = 1024, int size_rank = 1, int size_thread = 1);",
+      "file_sha256": "2431b7f61494009603210470725dbcd8a48a265056f40fde496120b58d0a9784"
+    },
+    {
+      "path": "include/generator/generator_adaptive.h",
+      "line": 435,
+      "source": "int GeneratorOmp(Model& model, Timer* timer, int id_range = 0, int sizeRank = 1, int sizeThread = 1);",
+      "file_sha256": "2431b7f61494009603210470725dbcd8a48a265056f40fde496120b58d0a9784"
+    },
+    {
+      "path": "include/generator/generator_adaptive.h",
+      "line": 441,
+      "source": "Model model_;",
+      "file_sha256": "2431b7f61494009603210470725dbcd8a48a265056f40fde496120b58d0a9784"
+    }
+  ],
+  "insert_call_expressions": 2,
+  "GeneratorOmp_declarations_and_definitions": 2,
+  "limits": "Comments and quoted literals excluded. This is not whole-program alias, macro expansion, indirect-call or external-client analysis."
+}

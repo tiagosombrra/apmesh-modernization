@@ -12,7 +12,9 @@ Exact delivery status is in PROJECT_STATE.md and STAGE3_BEZIER_OBSERVERS.md.
 The [caller-root audit](../evidence/STAGE3_CALLER_ROOT_AUDIT.md) now maps those
 callers and reproduces serial parsed-control/pending-patch retention. Slice 33
 qualifies serial-reader control ownership (C27/ADR-0034, PR #89 exact head/main).
-The next single audit is Model mesh adoption/copy ownership and actual callers.
+The Model audit now reproduces implicit-copy/rvalue aliasing and first-growth
+append retention; see [the original evidence](../evidence/STAGE3_MODEL_ROOT_AUDIT.md).
+The next single repair is slice 34, Model adoption and copy/move intent.
 See STAGE3_SERIAL_READER.md. MPI/Hermite and other loaders retain separate
 pending dispositions. The finite
 [stage 3 closure inventory](STAGE3_CLOSURE_INVENTORY.md) governs remaining

@@ -35,6 +35,16 @@ normal validation, EOF/failbit, control/ID order, interning tolerance and direct
 are preserved. Other loaders retain separate contracts and pending coverage.
 See [the serial boundary evidence](evidence/STAGE3_SERIAL_READER.md).
 
+Model remains an unqualified raw mesh owner under C02. It borrows Geometry and
+deletes stored meshes in reverse insertion order. Original implicit copy and
+rvalue operations duplicate owning pointers; failed vector growth does not adopt
+or destroy the pending mesh. The alternate OpenMP callers have no pending RAII
+owner, while the supported serial Generator owns its mesh separately. The
+[root audit](evidence/STAGE3_MODEL_ROOT_AUDIT.md) reproduces these risks without
+changing the API. Duplicate adoption is an unsupported ownership arrangement.
+No safe Model copy, transfer, append-failure or parallel contract is established;
+slice 34 must define and qualify it before a production repair is integrated.
+
 ## Numerical contracts
 
 State domain, coordinate system, units, orientation, degeneracy, finite-value
