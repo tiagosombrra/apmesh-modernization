@@ -1,5 +1,16 @@
 # Local quality automation
 
+## Initialized detached patch-copy repair
+
+The new application.detached_patch_copy_contracts and
+tooling.detached_patch_copy_preservation retain all prior 49 tests (51 total).
+The actual sixteen-unit probe requires 95 ASan/static CRT outcomes, twelve
+nonallocation observations, working instrument/oracle controls and 105 live
+C++17 original/candidate pairs. Eight preservation mutations are rejected.
+Earlier constructor/observer guards retain their four/six controls and normalize
+only the exact separately checked copy prefix. Full exact-head/main gates remain
+required; see [evidence and limits](evidence/STAGE3_DETACHED_PATCH_COPY.md).
+
 ## Pointer-taking patch-copy audit (C22)
 
 The standalone [C22 recipe and runner](evidence/STAGE3_PATCH_COPY_AUDIT.md)

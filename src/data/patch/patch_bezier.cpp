@@ -57,7 +57,10 @@ PatchBezier::PatchBezier()
       id_process_(0),
       id_patch_bezier_(0) {}
 
-PatchBezier::PatchBezier(PatchBezier* patch_bezier) : PatchCoons(patch_bezier) {
+PatchBezier::PatchBezier(PatchBezier* patch_bezier)
+    : PatchCoons(patch_bezier), mat_base_(StartBezierMatrix()), area_(0), ka_medio_(0),
+      segment_medio_(0), area_triangle_(0), number_triangle_(0), id_process_(0),
+      id_patch_bezier_(0) {
   signal_curve1_ = patch_bezier->signal_curve1_;
   signal_curve2_ = patch_bezier->signal_curve2_;
   signal_curve3_ = patch_bezier->signal_curve3_;

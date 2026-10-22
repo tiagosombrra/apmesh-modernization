@@ -387,7 +387,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "e055ddcff24e8dbdb7a2799440e1e4f6cfe0fedc3cb0a3249ac9e9a159b114bf"
+      "sha256": "68844c1719575c5feee7f5733ac55d99176cd66e9abe42ef83d597d6912adca7"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -404,6 +404,10 @@
     {
       "path": "tests/model_memory/CMakeLists.txt",
       "sha256": "020aa25ef85ab1e91f117a020c7c34ffede79aeaa1dc25758ffbb2cf56d3746a"
+    },
+    {
+      "path": "tests/patch_copy_memory/CMakeLists.txt",
+      "sha256": "ac5180dc8feb8593c53aa8dcadb43b1360db2165b10b887afac16cd2e922e27d"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",
@@ -1906,8 +1910,8 @@
       "path": "include/data/patch/patch_bezier.h",
       "component_by_directory": "data/patch",
       "kind": "header",
-      "sha256": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
-      "bytes": 6125,
+      "sha256": "e779cfb65ff88768910c7a3199b045cb9be38e2b6a2655ca9bad5375abf79779",
+      "bytes": 6447,
       "includes": [
         {
           "line": 4,
@@ -1959,8 +1963,8 @@
       "path": "include/data/patch/patch_hermite.h",
       "component_by_directory": "data/patch",
       "kind": "header",
-      "sha256": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478",
-      "bytes": 3706,
+      "sha256": "fe24b83a82cd04528810d809603aaed83a8fda0f620f683cf98bdb99782fe656",
+      "bytes": 4018,
       "includes": [
         {
           "line": 4,
@@ -4132,8 +4136,8 @@
       "path": "src/data/patch/patch_bezier.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
-      "bytes": 27666,
+      "sha256": "f7d807b5040140a0689f042eaeea598d69a5ef54479e8b1ec3a0ab578ffb29c8",
+      "bytes": 27834,
       "includes": [
         {
           "line": 1,
@@ -4213,8 +4217,8 @@
       "path": "src/data/patch/patch_hermite.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
-      "bytes": 20624,
+      "sha256": "384d2088b06e49a7e2641d3711102816d4187bbbde4b085a86358213746f888a",
+      "bytes": 20718,
       "includes": [
         {
           "line": 1,
@@ -5885,7 +5889,7 @@
   ],
   "contract_traceability": {
     "contracts": 27,
-    "source_anchors": 172,
+    "source_anchors": 174,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

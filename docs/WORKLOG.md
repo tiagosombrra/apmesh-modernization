@@ -1,5 +1,35 @@
 # Modernization work log
 
+## 2026-10-22: initialized detached patch-copy candidate
+
+Classification: behavior-changing initialization defect repair; no scientific change.
+Pointer-taking Bezier/Hermite copies preserve ID, defined numeric payload and
+detached topology (empty curves/null SubMesh). Bezier constructs the existing
+basis and resets seven load/process fields without reading source metadata.
+Hermite initializes internal direction flags true without reading source flags;
+its inherited public orientation fallback remains false. Sources must be live,
+non-null and numerically initialized, including Bezier directions.
+
+Focused actual-unit qualification passes 95 ASan/static CRT expected outcomes,
+twelve measured nonallocating operations with a working denial hook, 105 nonempty
+GCC/MSVC C++17 original/candidate pairs and eight rejected preservation mutations.
+Original indeterminate fields are not evaluated; original audit records remain
+unchanged. Source/copy/repeated lifetime, defined controls/matrices/scalars and
+source incidence are measured. See [contract and focused evidence](evidence/STAGE3_DETACHED_PATCH_COPY.md).
+
+Full exact-published-head and post-merge main qualification remain PENDING.
+Slice 35 is the single active repair; it is not yet qualified or integrated.
+Required inventory: 51 CTest/74 Python controls, all prior 30 batteries plus
+the new battery (31/3157 outcomes), 1040 scalar sequences and exact repeated
+accepted/rejected article traces. No formula, numerical order, synchronization,
+template/front, tolerance, budget or adaptation/acceptance/stopping policy changes.
+
+No complete clone, default/control-only/null geometric source, ordinary Hermite
+retirement, foreign/current-patch rebinding, external-client/full-process/parallel
+or LSan/UBSan qualification. After this repair qualifies, the next single audit
+is ordinary Hermite observer retirement and actual callers. Stage 3 remains open;
+stages 4-11 remain pending. Earlier next-work statements below are historical.
+
 ## 2026-10-22: C22 pointer-taking patch-copy audit
 
 Classification: engineering-only source audit and original observations.

@@ -1,11 +1,11 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
-Current single repair: slice 35, explicit initialized detached patch-copy intent
-(C22). The [original audit](../evidence/STAGE3_PATCH_COPY_AUDIT.md) records
-81 literal production constructions without a pointer-copy call, partial numeric
-copy observations and source-only initialization omissions. Preserve detached
-curves/SubMesh and defined numeric values; do not assume complete clone semantics
-or read indeterminate metadata. Slice 34 remains qualified. Earlier queue
+Current single repair: slice 35, initialized detached patch-copy intent (C22).
+Focused qualification passes; exact published-head/main gates remain pending.
+See [the bounded candidate](../evidence/STAGE3_DETACHED_PATCH_COPY.md).
+Preserve defined numeric values and detached topology; do not read indeterminate
+source metadata or claim a complete clone. Ordinary Hermite observer retirement
+and actual callers are the next audit after qualification. Earlier queue
 statements below are historical.
 
 This is an implementation sequence within the approved stages, not a production

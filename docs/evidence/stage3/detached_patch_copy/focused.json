@@ -1,0 +1,3382 @@
+{
+  "status": "focused prepublication candidate only; full delivery pending",
+  "classification": "behavior-changing initialization defect repair; no scientific change",
+  "source_base": "ace7abf0ce1b559d20b5c94f8e9120013c093f81",
+  "candidate": {
+    "status": "passed",
+    "cases": [
+      {
+        "instrument": "asan",
+        "mode": "contracts",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-contracts.log",
+        "log_sha256": "bd3f528aa05c5c25cbbb7da75332f5eb0cc5015a2bf8ac397883affe207b8b74",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "base_id_only=1 null_source=1 submesh_detached=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=0 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=1 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=2 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=3 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=4 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=5 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=6 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=7 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=8 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=9 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=10 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=11 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=12 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=13 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=14 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=15 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=0 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=1 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=2 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=3 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=4 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=5 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=6 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=7 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=8 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=9 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=10 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=11 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=12 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=13 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=14 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=15 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "hermite shape=0 curves=0 submesh=0 incidence_unchanged=1 explicit_source_cleanup=1",
+          "evaluated_vectors=175",
+          "hermite shape=1 curves=0 submesh=0 incidence_unchanged=1 explicit_source_cleanup=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "base",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-base.log",
+        "log_sha256": "e8b6ba60a720046e1bd6522ded04d79d22568b7039467e67ac8366f4fb2b4a23",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "base_id_only=1 null_source=1 submesh_detached=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-0",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-0.log",
+        "log_sha256": "d01e9c29a2e5b70f649ed771b2836d1323417e17da35c5ecf3bf01180ca4cf8e",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=0 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-1",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-1.log",
+        "log_sha256": "909ef49949335fb4487aa2417f40a5300534de830e76f32fb456528b80847d32",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=1 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-2",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-2.log",
+        "log_sha256": "ea29db08a242d697df8b9eefce36d067423006b30cedca436ef6c55073fc1a0e",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=2 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-3",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-3.log",
+        "log_sha256": "598e8d8bb25c250f2315e739c93a49a569390885d2152b37a678fd04e70c5fb8",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=3 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-4",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-4.log",
+        "log_sha256": "bfe150a611029415234ba739c85f978322090679d9b019aa75b67dd33105fb3b",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=4 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-5",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-5.log",
+        "log_sha256": "5b8937262605a1c08850e041631b8c0f153854d9720d7d01913248bf1093acb8",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=5 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-6",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-6.log",
+        "log_sha256": "5826fa787064aa94e03f8b14180ad3fa2802cd9059072ce2acdcd5df995ba8cc",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=6 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-7",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-7.log",
+        "log_sha256": "df87f20311291d6676d1234c3de1ab6cdf5bc2c6b4d8850a0c6c07aa82e58aac",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=7 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-8",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-8.log",
+        "log_sha256": "1900f81fd5fd00e33d212ea38a079fb9fc9545de6b882d5d82f0b2d7788d462b",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=8 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-9",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-9.log",
+        "log_sha256": "a8f7482498336657ba61aab4bcc1802cf2e1d94bfeba5ae2919e243c4f3cca6f",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=9 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-10",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-10.log",
+        "log_sha256": "f43553498ea0c4fe222f655956dc9843e7426f83fa29bb1a610fdb853a12140e",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=10 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-11",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-11.log",
+        "log_sha256": "47766284932b4dce063d64f20002eb579c566d103417a547517051b431fb7201",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=11 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-12",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-12.log",
+        "log_sha256": "f8ed7786c1a3a4e0972bb5bdfd7c26e7419537123884c41135ceceff624eca56",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=12 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-13",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-13.log",
+        "log_sha256": "3b9a8e76700551eae3b36bcd74a8aef539a37306b11d87e43cb44a978da348d1",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=13 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-14",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-14.log",
+        "log_sha256": "951a60a6be0972f0d1d4e6a057f5984e66952495ddb1a83b5998cd750f22cd6d",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=14 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-0-15",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-0-15.log",
+        "log_sha256": "b5bc6e1f3337081c50f31a3702fa398f376cd13eddbd6094cc4786877bc96656",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=15 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-0",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-0.log",
+        "log_sha256": "0af0a4421d0f2c8954cb868a5988b9d4d5dbb4e9abde980251dbe9f3091e8bb2",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=0 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-1",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-1.log",
+        "log_sha256": "a94db8df92436b80572ab29061c1d364013f5bcdcb14bd2ef49ef6cb220156dc",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=1 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-2",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-2.log",
+        "log_sha256": "f8ac50a9bbc9087dd3a59e284fae6353a7958cc58ea30de1a6de571a908e2c28",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=2 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-3",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-3.log",
+        "log_sha256": "105f628d90ff97ffcf5f429e3b817a6c5720769da16deab26c30abb1e617f5af",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=3 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-4",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-4.log",
+        "log_sha256": "c18c2a19de805295b1379b79b530cfa336c2a9d997758f012a9d9d6ecc323a02",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=4 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-5",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-5.log",
+        "log_sha256": "89222e89ba49048ac9bcd17306be67fb22481cc177c6e698582a86fc5276bb4c",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=5 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-6",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-6.log",
+        "log_sha256": "ea2d3e5c04503c9cb70baf96bff289df2beda07d391994fd424c688df47da52b",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=6 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-7",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-7.log",
+        "log_sha256": "258a05febd5a45d9697f0dbbfe081e9e98da7d00cafbf73642cf77856d47461a",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=7 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-8",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-8.log",
+        "log_sha256": "92275079d38fcaf848f6a0d61865723e3ea41fc77120eb1eeeb8f05967af3a68",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=8 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-9",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-9.log",
+        "log_sha256": "dd03199812051f83289ce15e9ee43ba7969c1c40e1798ba31ecc72a375167c0a",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=9 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-10",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-10.log",
+        "log_sha256": "4ef89e205eb01def572bdd8ac2deaefd7619ce36ef432700ea0248026faa1028",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=10 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-11",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-11.log",
+        "log_sha256": "5d54cfe0e8e2b5e5683e803d37e17688069f2c8eb7c746f51398c97260c93727",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=11 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-12",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-12.log",
+        "log_sha256": "49f0ce64c352aee7932965b4a46f2df48317d62516c0be604ceb64ee442c0ce5",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=12 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-13",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-13.log",
+        "log_sha256": "75214867fab0e7047be1b5f3ab12f7d5dad093ba7735b2bdc14e6d439c578216",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=13 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-14",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-14.log",
+        "log_sha256": "eeaa7b0031f24594124774d7b408b8cb9891fa4368f47dc9a09eba66d09b75b0",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=14 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "bezier-1-15",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-bezier-1-15.log",
+        "log_sha256": "13518bf5e32c82ae611c471173eaa472dbb6c1e10d3118643eb3f8808485f395",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=15 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "hermite-0",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-hermite-0.log",
+        "log_sha256": "a6ae3516cd0f489e11e04e9689d2322a08320181da3dde267d6afd8a327a9c21",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "hermite shape=0 curves=0 submesh=0 incidence_unchanged=1 explicit_source_cleanup=1"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "hermite-1",
+        "exit_code": 0,
+        "passed": true,
+        "log": "asan-hermite-1.log",
+        "log_sha256": "fbdc248d2e987abdcdbe7df9426f34831237332e6cdc6b58b2371d193838dcfb",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": [
+          "evaluated_vectors=175",
+          "hermite shape=1 curves=0 submesh=0 incidence_unchanged=1 explicit_source_cleanup=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "contracts",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-contracts.log",
+        "log_sha256": "68f841355a1ab5e0624fecda2c69fe8a829b79c5de28a34d6bfd6364393f21e2",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "base_id_only=1 null_source=1 submesh_detached=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=0 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=1 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=2 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=3 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=4 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=5 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=6 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=7 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=8 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=9 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=10 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=11 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=12 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=13 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=14 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=15 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=0 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=1 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=2 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=3 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=4 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=5 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=6 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=7 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=8 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=9 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=10 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=11 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=12 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=13 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=14 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=15 controls=16 curves=0 submesh=0 incidence_unchanged=1",
+          "evaluated_vectors=175",
+          "hermite shape=0 curves=0 submesh=0 incidence_unchanged=1 explicit_source_cleanup=1",
+          "evaluated_vectors=175",
+          "hermite shape=1 curves=0 submesh=0 incidence_unchanged=1 explicit_source_cleanup=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "base",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-base.log",
+        "log_sha256": "1d4c74ccdb1d7da8fba9b815fa6011559868e014935823f47eab65764faf40ed",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "base_id_only=1 null_source=1 submesh_detached=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-0",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-0.log",
+        "log_sha256": "dba6d448d210fe8bfeefd92697abe63ce35aed259dc4c113fdfa7a9812422ffa",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=0 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-1",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-1.log",
+        "log_sha256": "f8fa2a5f4fecadc1a614db6dabe742fa5da9acd40e5e9822b8ff2226f51b9c38",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=1 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-2",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-2.log",
+        "log_sha256": "42e9ced4bed985f4ce9f5c2f065219dc22198a15fed4306b970ef622b6bf275d",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=2 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-3",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-3.log",
+        "log_sha256": "3600312edf6d6bba068f76b0f068f73e505baea464a21f4f68824193dd9f7a4c",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=3 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-4",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-4.log",
+        "log_sha256": "56ae72f053639816f8058c724bb7e7b98626171778c01f8da3dec9a2f04bf82e",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=4 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-5",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-5.log",
+        "log_sha256": "2abad715c402b92593c5c95123361cbf55c236337cd4db9b380f381db908c12b",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=5 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-6",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-6.log",
+        "log_sha256": "f3f3a6925e626d839a248ee2437eafafa0e3816d4e505501583e25f0cae8ae4f",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=6 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-7",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-7.log",
+        "log_sha256": "f3863ccd864f1dc8e7e768642fc29e54d03c88edba8cd4b4d271fc07c27e135f",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=7 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-8",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-8.log",
+        "log_sha256": "247f766ccd9f23216e7289a58fff5f0feee3ced39ce22e8edbef7489746f7cea",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=8 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-9",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-9.log",
+        "log_sha256": "f06612bf57a8b781bcc2cd00f711bbcfadf8ef03466e4e975119cb311b796bce",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=9 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-10",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-10.log",
+        "log_sha256": "3d91f6c6dea929e113ab84206ca8f88fcf0eedc84d14e13cfc11242f5bb4dfca",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=10 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-11",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-11.log",
+        "log_sha256": "7c03ec68d21811df9028dca67d65bca1b248e1cb481ed95ecb2298482e4b3dd5",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=11 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-12",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-12.log",
+        "log_sha256": "1832613cf1291abad8b58b66f75fd382e1c9b8a8f97f98aff9e3e48652f8f6ff",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=12 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-13",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-13.log",
+        "log_sha256": "3e7690a2266ebb5a19e981d04e417b1fb27222d995f7fc7df2d6d7e857d0fb51",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=13 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-14",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-14.log",
+        "log_sha256": "7f6523295696041f71cab4e5f49010cd3ce7fbef598168b72662387a7253674a",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=14 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-0-15",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-0-15.log",
+        "log_sha256": "7a91d6d7c2f9dfdefb2f5340f2607a2a484f1387b51a48b2096a64f4ea4aed8c",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=0 mask=15 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-0",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-0.log",
+        "log_sha256": "15c41aed72ce6d8f5ab96f21a11dfff3d67a158935ecf7473f0e185ef3049618",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=0 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-1",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-1.log",
+        "log_sha256": "dd5bbc5079edadc0eaaa25e34dafc83a87293e6c2b9f9c22cf17bb5b664dec3b",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=1 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-2",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-2.log",
+        "log_sha256": "98ad8076c2d910b9b64abffc87b5a142e28231c3aabbae0e4fd4344fc6b547da",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=2 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-3",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-3.log",
+        "log_sha256": "621564992afbb22d7b65f334b1014795d8a6a26487a31a5596de48178cc71149",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=3 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-4",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-4.log",
+        "log_sha256": "547cc793318339de6828b0c617604132c04cda898a1dcf64c56ad19adfbbe3cd",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=4 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-5",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-5.log",
+        "log_sha256": "2b69c6320476aded6f4dfe7405f8fb9313dfa7508c9f794aa426c3834af23381",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=5 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-6",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-6.log",
+        "log_sha256": "7b6caea06cc6dbbbbf62610496360fcc3c7c374b7b417ab1687c8b3ded1d575c",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=6 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-7",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-7.log",
+        "log_sha256": "c13aac74da4c89a91fb8d8f51df1bfab003c08d9317ea89b07982c930c90cc09",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=7 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-8",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-8.log",
+        "log_sha256": "e28166dd9bf56e0657669a9bff1645193a98c4a5168ddfb92bdde66313926c6a",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=8 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-9",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-9.log",
+        "log_sha256": "bbf01dfaf50c18fc9ee258030fdd4c6e03ccfff97c8d95f5ba87778343887e03",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=9 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-10",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-10.log",
+        "log_sha256": "11f0115d42da8f7a123a35acc793cc8f467383d80a9f91ed23db6b838e5ac4a3",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=10 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-11",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-11.log",
+        "log_sha256": "a26c2c719ee3b790dcee2762f337f485c9967c58ba9b45bafa61daa57c1a5794",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=11 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-12",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-12.log",
+        "log_sha256": "b05395a005d41a167ed71a104d1d27b17cbe26cbe4faa7b2257ca7320c9690bf",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=12 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-13",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-13.log",
+        "log_sha256": "ec76cc1eb241752d8832098eefe1b5536d98e458f9a8f75bbeaec00cac82f5db",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=13 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-14",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-14.log",
+        "log_sha256": "282655cd27208d8a40e140c042f5ca498e75e3e08d8abe75806d2ee6570428ac",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=14 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "bezier-1-15",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-bezier-1-15.log",
+        "log_sha256": "9b83e26fae8869d266db07a3f70b225422c9bf38b538bd737df31c9d1db3362f",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "bezier shape=1 mask=15 controls=16 curves=0 submesh=0 incidence_unchanged=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "hermite-0",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-hermite-0.log",
+        "log_sha256": "4d1a64cc505164af761fd617a66825bc0bf2e5d3de27ba17c5ea0bf217968db5",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "hermite shape=0 curves=0 submesh=0 incidence_unchanged=1 explicit_source_cleanup=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "hermite-1",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-hermite-1.log",
+        "log_sha256": "caf38849335575dcfed4b71c26329a7ca6bdaa232b22aad38edecfd525cbc59b",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "evaluated_vectors=175",
+          "hermite shape=1 curves=0 submesh=0 incidence_unchanged=1 explicit_source_cleanup=1"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-0",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-0.log",
+        "log_sha256": "be77a768b17ba90906b1a665233ca826a58bc706610bc841ad2367460cb48883",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=0,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-1",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-1.log",
+        "log_sha256": "7c80a23d3276cc31e399f2dec3ba07f46d0c208c4e11d34464dad7771617aa19",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=1,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-2",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-2.log",
+        "log_sha256": "728afb8860ef6afeae02b21a448a7b6ece8a72602299c2e1ef95bfb95f113ff4",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=2,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-3",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-3.log",
+        "log_sha256": "3024051023bb572ec9377b2d58312763385e060fe792b6028d634c8686d90393",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=3,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-4",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-4.log",
+        "log_sha256": "6378983a27f6b4696d3a628eec4f3166cf8d22ce34d16922e4cbae4ed152a020",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=4,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-5",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-5.log",
+        "log_sha256": "20088242c33ee67c04270456ad726e775360c49ebd4e172a71dcc53fe0d0f21b",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=5,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-6",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-6.log",
+        "log_sha256": "be5b8f5025caf5b2dfb72c81484b9d59e6f2ede9619800428fa882e94b14efed",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=6,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-7",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-7.log",
+        "log_sha256": "eb5ae06be9f90def2a82b9cbca12a64ea94760030316743ddd620c3a907d8e8b",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=7,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-8",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-8.log",
+        "log_sha256": "0e6914515842a07e61ce3e7373b82bd160a5eabcf8bdb16a6d605a09f4cf3c07",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=8,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-9",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-9.log",
+        "log_sha256": "30e1e1c2a79f8340528dc10d1329737cc4014157088f2d0031e4d2eb855d8a78",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=9,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-10",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-10.log",
+        "log_sha256": "ada2da6ff7d9195c42282fd580548e15727624b79d35404eab512fb8e5ab9298",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=10,attempts:0"
+        ]
+      },
+      {
+        "instrument": "crt",
+        "mode": "noalloc-11",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-noalloc-11.log",
+        "log_sha256": "c0e057871b426c10fe094181a30c4a3650dfc43d77799df67c74c4a560bcf502",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_noalloc=11,attempts:0"
+        ]
+      },
+      {
+        "instrument": "asan",
+        "mode": "basis-control",
+        "exit_code": 2,
+        "passed": true,
+        "log": "asan-basis-control.log",
+        "log_sha256": "107908c6e08be29eeb0607774ec65996f913441220a308364e9f6f84c2a0607c",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "asan",
+        "mode": "metadata-control",
+        "exit_code": 2,
+        "passed": true,
+        "log": "asan-metadata-control.log",
+        "log_sha256": "7189582766610ca540fc37bef23a3ae3a7be4ca54826fec5f09be7221b1029be",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "asan",
+        "mode": "topology-control",
+        "exit_code": 2,
+        "passed": true,
+        "log": "asan-topology-control.log",
+        "log_sha256": "344b5b0abc0b10ccf10a2f74afed100c6bf4957013ec56923bf9cebd6dd13fd0",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "asan",
+        "mode": "direction-control",
+        "exit_code": 2,
+        "passed": true,
+        "log": "asan-direction-control.log",
+        "log_sha256": "80b1d53f6f6524830523f1e80a7642835614300c31548163afecbc64bb3c1f2d",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "crt",
+        "mode": "basis-control",
+        "exit_code": 2,
+        "passed": true,
+        "log": "crt-basis-control.log",
+        "log_sha256": "107908c6e08be29eeb0607774ec65996f913441220a308364e9f6f84c2a0607c",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "crt",
+        "mode": "metadata-control",
+        "exit_code": 2,
+        "passed": true,
+        "log": "crt-metadata-control.log",
+        "log_sha256": "7189582766610ca540fc37bef23a3ae3a7be4ca54826fec5f09be7221b1029be",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "crt",
+        "mode": "topology-control",
+        "exit_code": 2,
+        "passed": true,
+        "log": "crt-topology-control.log",
+        "log_sha256": "344b5b0abc0b10ccf10a2f74afed100c6bf4957013ec56923bf9cebd6dd13fd0",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "crt",
+        "mode": "direction-control",
+        "exit_code": 2,
+        "passed": true,
+        "log": "crt-direction-control.log",
+        "log_sha256": "80b1d53f6f6524830523f1e80a7642835614300c31548163afecbc64bb3c1f2d",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "asan",
+        "mode": "uaf-control",
+        "exit_code": 1,
+        "passed": true,
+        "log": "asan-uaf-control.log",
+        "log_sha256": "406306701deabe7f0e1492b287d024c21d0bde13d70be13b377588e561e11fcc",
+        "retained_blocks": null,
+        "retained_bytes": null,
+        "observations": []
+      },
+      {
+        "instrument": "crt",
+        "mode": "leak-control",
+        "exit_code": 1,
+        "passed": true,
+        "log": "crt-leak-control.log",
+        "log_sha256": "37c2b140ef78c29a60aaab40de1c9c0a66612f02759768b8dfc22f375ea19028",
+        "retained_blocks": 1,
+        "retained_bytes": 40,
+        "observations": []
+      },
+      {
+        "instrument": "crt",
+        "mode": "hook-control",
+        "exit_code": 0,
+        "passed": true,
+        "log": "crt-hook-control.log",
+        "log_sha256": "25de1729d52b458745546d875bf8f24aff834edfc3eedcb477bd8e8fd4ba4ace",
+        "retained_blocks": 0,
+        "retained_bytes": 0,
+        "observations": [
+          "patch_copy_hook=detected"
+        ]
+      }
+    ],
+    "executables": {
+      "asan": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s35qa\\RelWithDebInfo\\detached_patch_copy_probe.exe",
+        "sha256": "0bb9b59745ad3a81a8113266171bc505e61f4f8d74836e880d294f38d2078472"
+      },
+      "crt": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s35qd\\Debug\\detached_patch_copy_probe.exe",
+        "sha256": "5b8bba50184ce1ddea1173409770fd123e7bac7e3cef04928a0b5dbb4551ed35"
+      }
+    },
+    "zero_allocation_operations": 12,
+    "rejected_runtime_corruptions": 8,
+    "positive_instrument_controls": 3,
+    "scope": "Sixteen actual production units. Initialized Bezier basis, zero detached metadata without source metadata reads, true internal Hermite flags, preserved defined numeric payload and detached topology, repeated copies and source/copy retirement. Twelve actual nonallocating copy/retirement observations and working denial/UAF/leak/oracle controls. Live initialized sources only; no complete clone, default/control-only/null source, caller preparation, ordinary Hermite retirement, external/parallel/full-process or LSan/UBSan qualification."
+  },
+  "live_pairs": {
+    "gcc": {
+      "status": "passed",
+      "preservation": {
+        "status": "passed",
+        "original_revision": "ace7abf0ce1b559d20b5c94f8e9120013c093f81",
+        "rejected_mutations": 8,
+        "preserved_tokens_sha256": {
+          "src/data/patch/patch_bezier.cpp": "c3cefbc3c13e4b903da1f0e42933a8fcc7c47874c2ef46a6c702b5c7b23411d4",
+          "src/data/patch/patch_hermite.cpp": "a4f8bb4c84c874c1c757d3dbe3d05984b2148d913008d3835b16cab3c31306ce",
+          "include/data/patch/patch_bezier.h": "7a2e96fcadfccea6b624450db2dfe09f25941ca8afe0fca1b1861c12749f7724",
+          "include/data/patch/patch_hermite.h": "e7c749b124b31460f622fc52b134b1bdcd4df985637dbcb3321c14d8f860543a"
+        },
+        "source_identities": {
+          "original": {
+            "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+            "src/data/patch/patch_hermite.cpp": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+            "include/data/patch/patch_bezier.h": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+            "include/data/patch/patch_hermite.h": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478"
+          },
+          "candidate": {
+            "src/data/patch/patch_bezier.cpp": "7fc031d9a34e961a4f947a21958f851295965cd3a90e78d68b63edcc58625ab1",
+            "src/data/patch/patch_hermite.cpp": "662559e908304dbe9f7155140295719de6ba4dac0998de884eafca772501fb3d",
+            "include/data/patch/patch_bezier.h": "e779cfb65ff88768910c7a3199b045cb9be38e2b6a2655ca9bad5375abf79779",
+            "include/data/patch/patch_hermite.h": "fe24b83a82cd04528810d809603aaed83a8fda0f620f683cf98bdb99782fe656"
+          }
+        },
+        "scope": "Only the exact Bezier copy basis/zero-metadata and Hermite copy true-direction initializers change. Header code and all other complete-unit tokens, numerical order, source-field reads, detached topology, signatures and layouts match immutable main. Eight independent basis, metadata-read, direction, ID, control, topology, orientation and numerical mutations are rejected. Actual initialized-value, incidence, nonallocation and original/candidate traces remain required."
+      },
+      "cases": [
+        {
+          "mode": "base",
+          "invocations": {
+            "original": {
+              "log": "original-base.log",
+              "exit_code": 0,
+              "sha256": "e8b6ba60a720046e1bd6522ded04d79d22568b7039467e67ac8366f4fb2b4a23"
+            },
+            "candidate": {
+              "log": "candidate-base.log",
+              "exit_code": 0,
+              "sha256": "e8b6ba60a720046e1bd6522ded04d79d22568b7039467e67ac8366f4fb2b4a23"
+            }
+          },
+          "observation_count": 1,
+          "observations_sha256": "82cfe91bde2ba0cb54287076e4436917441c068b1d26e2dceb0ee514fbb51727"
+        },
+        {
+          "mode": "bezier-0-0",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-0.log",
+              "exit_code": 0,
+              "sha256": "d01e9c29a2e5b70f649ed771b2836d1323417e17da35c5ecf3bf01180ca4cf8e"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-0.log",
+              "exit_code": 0,
+              "sha256": "d01e9c29a2e5b70f649ed771b2836d1323417e17da35c5ecf3bf01180ca4cf8e"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "225883b1b6a82399919f6d377cc331b2f709fe757d5a4f69b9370678fd1a0376"
+        },
+        {
+          "mode": "bezier-0-1",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-1.log",
+              "exit_code": 0,
+              "sha256": "909ef49949335fb4487aa2417f40a5300534de830e76f32fb456528b80847d32"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-1.log",
+              "exit_code": 0,
+              "sha256": "909ef49949335fb4487aa2417f40a5300534de830e76f32fb456528b80847d32"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "b822bca19a7943ea4535e0279b9c9ba3a00f529cc2a28b65d2d8f323d8b36396"
+        },
+        {
+          "mode": "bezier-0-2",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-2.log",
+              "exit_code": 0,
+              "sha256": "ea29db08a242d697df8b9eefce36d067423006b30cedca436ef6c55073fc1a0e"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-2.log",
+              "exit_code": 0,
+              "sha256": "ea29db08a242d697df8b9eefce36d067423006b30cedca436ef6c55073fc1a0e"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "c71ffb09255d02277aa10dc34d1c0a4f7239cfa3a0453020f5a44015c8cb5dac"
+        },
+        {
+          "mode": "bezier-0-3",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-3.log",
+              "exit_code": 0,
+              "sha256": "598e8d8bb25c250f2315e739c93a49a569390885d2152b37a678fd04e70c5fb8"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-3.log",
+              "exit_code": 0,
+              "sha256": "598e8d8bb25c250f2315e739c93a49a569390885d2152b37a678fd04e70c5fb8"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "4966afbb2fcd0dca2cf196c640466d29ff4dae4027e731cc30ecb221830e622c"
+        },
+        {
+          "mode": "bezier-0-4",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-4.log",
+              "exit_code": 0,
+              "sha256": "bfe150a611029415234ba739c85f978322090679d9b019aa75b67dd33105fb3b"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-4.log",
+              "exit_code": 0,
+              "sha256": "bfe150a611029415234ba739c85f978322090679d9b019aa75b67dd33105fb3b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "01b7e38365739e7566de014621ce70b6ac26ebbc946ebdace33b9380511d5108"
+        },
+        {
+          "mode": "bezier-0-5",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-5.log",
+              "exit_code": 0,
+              "sha256": "5b8937262605a1c08850e041631b8c0f153854d9720d7d01913248bf1093acb8"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-5.log",
+              "exit_code": 0,
+              "sha256": "5b8937262605a1c08850e041631b8c0f153854d9720d7d01913248bf1093acb8"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "ac370df516c6a8ad7e5898b061ae51b722acbf31cff8358e732166b2e95869f5"
+        },
+        {
+          "mode": "bezier-0-6",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-6.log",
+              "exit_code": 0,
+              "sha256": "5826fa787064aa94e03f8b14180ad3fa2802cd9059072ce2acdcd5df995ba8cc"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-6.log",
+              "exit_code": 0,
+              "sha256": "5826fa787064aa94e03f8b14180ad3fa2802cd9059072ce2acdcd5df995ba8cc"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "2b48fa0bd15531f83cdfecf7f47872e3d2e6e203c9cdb0e61ff6d29f2fea22a0"
+        },
+        {
+          "mode": "bezier-0-7",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-7.log",
+              "exit_code": 0,
+              "sha256": "df87f20311291d6676d1234c3de1ab6cdf5bc2c6b4d8850a0c6c07aa82e58aac"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-7.log",
+              "exit_code": 0,
+              "sha256": "df87f20311291d6676d1234c3de1ab6cdf5bc2c6b4d8850a0c6c07aa82e58aac"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "2bc94612e1bcee71cfab4d4e049d45718e5c09376df494f406af3cd141c8ce5f"
+        },
+        {
+          "mode": "bezier-0-8",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-8.log",
+              "exit_code": 0,
+              "sha256": "1900f81fd5fd00e33d212ea38a079fb9fc9545de6b882d5d82f0b2d7788d462b"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-8.log",
+              "exit_code": 0,
+              "sha256": "1900f81fd5fd00e33d212ea38a079fb9fc9545de6b882d5d82f0b2d7788d462b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "cee166576c73fea559d991a821ed8dfc050a66407ea9cb865ddab3680141e90c"
+        },
+        {
+          "mode": "bezier-0-9",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-9.log",
+              "exit_code": 0,
+              "sha256": "a8f7482498336657ba61aab4bcc1802cf2e1d94bfeba5ae2919e243c4f3cca6f"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-9.log",
+              "exit_code": 0,
+              "sha256": "a8f7482498336657ba61aab4bcc1802cf2e1d94bfeba5ae2919e243c4f3cca6f"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "bc11ed64e53aa03754d4ba647a90d19dd97f3991c009c5ed37cd5d1443a0a6fa"
+        },
+        {
+          "mode": "bezier-0-10",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-10.log",
+              "exit_code": 0,
+              "sha256": "f43553498ea0c4fe222f655956dc9843e7426f83fa29bb1a610fdb853a12140e"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-10.log",
+              "exit_code": 0,
+              "sha256": "f43553498ea0c4fe222f655956dc9843e7426f83fa29bb1a610fdb853a12140e"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "a6c251db50be0c836c6b25cdb581cf263f4c9fcc1e4ae846ea9105f52a1ac8c2"
+        },
+        {
+          "mode": "bezier-0-11",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-11.log",
+              "exit_code": 0,
+              "sha256": "47766284932b4dce063d64f20002eb579c566d103417a547517051b431fb7201"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-11.log",
+              "exit_code": 0,
+              "sha256": "47766284932b4dce063d64f20002eb579c566d103417a547517051b431fb7201"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "7dc495c94e129285a8dc632c6cdc7bc2ebb1b338a2c7e3adb6aaf1cee0583ae8"
+        },
+        {
+          "mode": "bezier-0-12",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-12.log",
+              "exit_code": 0,
+              "sha256": "f8ed7786c1a3a4e0972bb5bdfd7c26e7419537123884c41135ceceff624eca56"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-12.log",
+              "exit_code": 0,
+              "sha256": "f8ed7786c1a3a4e0972bb5bdfd7c26e7419537123884c41135ceceff624eca56"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "4f93c8ad24b5af131a24272e33629c84570054c522af9ec7b58fdd44c4bf3ac5"
+        },
+        {
+          "mode": "bezier-0-13",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-13.log",
+              "exit_code": 0,
+              "sha256": "3b9a8e76700551eae3b36bcd74a8aef539a37306b11d87e43cb44a978da348d1"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-13.log",
+              "exit_code": 0,
+              "sha256": "3b9a8e76700551eae3b36bcd74a8aef539a37306b11d87e43cb44a978da348d1"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "47cce052232a91460b07a9201398cf256f5496ce57031f7eeb0a3abf1428777c"
+        },
+        {
+          "mode": "bezier-0-14",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-14.log",
+              "exit_code": 0,
+              "sha256": "951a60a6be0972f0d1d4e6a057f5984e66952495ddb1a83b5998cd750f22cd6d"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-14.log",
+              "exit_code": 0,
+              "sha256": "951a60a6be0972f0d1d4e6a057f5984e66952495ddb1a83b5998cd750f22cd6d"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "a1ace54783bd9dd45e8d14cf3d01349de461507526b3e24cdce95a9a150e162f"
+        },
+        {
+          "mode": "bezier-0-15",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-15.log",
+              "exit_code": 0,
+              "sha256": "b5bc6e1f3337081c50f31a3702fa398f376cd13eddbd6094cc4786877bc96656"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-15.log",
+              "exit_code": 0,
+              "sha256": "b5bc6e1f3337081c50f31a3702fa398f376cd13eddbd6094cc4786877bc96656"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "8215b1f467af90aa7882972723efa84d0fb492ac102fbf493efd3bd8b568dd0b"
+        },
+        {
+          "mode": "bezier-1-0",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-0.log",
+              "exit_code": 0,
+              "sha256": "0af0a4421d0f2c8954cb868a5988b9d4d5dbb4e9abde980251dbe9f3091e8bb2"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-0.log",
+              "exit_code": 0,
+              "sha256": "0af0a4421d0f2c8954cb868a5988b9d4d5dbb4e9abde980251dbe9f3091e8bb2"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "044ed30e0e713b4c0cfa5d69cb430af1e4099c856727e01b440c24f5ab235969"
+        },
+        {
+          "mode": "bezier-1-1",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-1.log",
+              "exit_code": 0,
+              "sha256": "a94db8df92436b80572ab29061c1d364013f5bcdcb14bd2ef49ef6cb220156dc"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-1.log",
+              "exit_code": 0,
+              "sha256": "a94db8df92436b80572ab29061c1d364013f5bcdcb14bd2ef49ef6cb220156dc"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e756cafea922b0af9dd57921a153456881eb1e122b383cc40a0f7675dce8176f"
+        },
+        {
+          "mode": "bezier-1-2",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-2.log",
+              "exit_code": 0,
+              "sha256": "f8ac50a9bbc9087dd3a59e284fae6353a7958cc58ea30de1a6de571a908e2c28"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-2.log",
+              "exit_code": 0,
+              "sha256": "f8ac50a9bbc9087dd3a59e284fae6353a7958cc58ea30de1a6de571a908e2c28"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "1fcee311409158af1ccabd788cdf701bd8e4625a0dabcea88d71d30b4d13738f"
+        },
+        {
+          "mode": "bezier-1-3",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-3.log",
+              "exit_code": 0,
+              "sha256": "105f628d90ff97ffcf5f429e3b817a6c5720769da16deab26c30abb1e617f5af"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-3.log",
+              "exit_code": 0,
+              "sha256": "105f628d90ff97ffcf5f429e3b817a6c5720769da16deab26c30abb1e617f5af"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "84947ba2d5e907907908a856d0f9b590507189051f346a2771c5760833cf46a5"
+        },
+        {
+          "mode": "bezier-1-4",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-4.log",
+              "exit_code": 0,
+              "sha256": "c18c2a19de805295b1379b79b530cfa336c2a9d997758f012a9d9d6ecc323a02"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-4.log",
+              "exit_code": 0,
+              "sha256": "c18c2a19de805295b1379b79b530cfa336c2a9d997758f012a9d9d6ecc323a02"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "13f22cfae33f9f1ce73d42c0bcb52cb1f9fd59f6391be9b09e6eec322f1cfcc8"
+        },
+        {
+          "mode": "bezier-1-5",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-5.log",
+              "exit_code": 0,
+              "sha256": "89222e89ba49048ac9bcd17306be67fb22481cc177c6e698582a86fc5276bb4c"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-5.log",
+              "exit_code": 0,
+              "sha256": "89222e89ba49048ac9bcd17306be67fb22481cc177c6e698582a86fc5276bb4c"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "6f10f6a87d6fff7633157aab182fb59c55df5139c0bc4a1a101552f4c1160339"
+        },
+        {
+          "mode": "bezier-1-6",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-6.log",
+              "exit_code": 0,
+              "sha256": "ea2d3e5c04503c9cb70baf96bff289df2beda07d391994fd424c688df47da52b"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-6.log",
+              "exit_code": 0,
+              "sha256": "ea2d3e5c04503c9cb70baf96bff289df2beda07d391994fd424c688df47da52b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "3b6c78ffbb8daa61bc89793f48cfe69ef1bf57dd9be6b5dbf047f6266b90d3c5"
+        },
+        {
+          "mode": "bezier-1-7",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-7.log",
+              "exit_code": 0,
+              "sha256": "258a05febd5a45d9697f0dbbfe081e9e98da7d00cafbf73642cf77856d47461a"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-7.log",
+              "exit_code": 0,
+              "sha256": "258a05febd5a45d9697f0dbbfe081e9e98da7d00cafbf73642cf77856d47461a"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e77f9ce6b321d6a5a1a3b7a1e9f49a79d1e65f4bb78afb287b54e1571bb8b1fd"
+        },
+        {
+          "mode": "bezier-1-8",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-8.log",
+              "exit_code": 0,
+              "sha256": "92275079d38fcaf848f6a0d61865723e3ea41fc77120eb1eeeb8f05967af3a68"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-8.log",
+              "exit_code": 0,
+              "sha256": "92275079d38fcaf848f6a0d61865723e3ea41fc77120eb1eeeb8f05967af3a68"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "06b91d3257d4bb84805dea4e4791fa749ac4afbc284460129fad9041c2e6e5f6"
+        },
+        {
+          "mode": "bezier-1-9",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-9.log",
+              "exit_code": 0,
+              "sha256": "dd03199812051f83289ce15e9ee43ba7969c1c40e1798ba31ecc72a375167c0a"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-9.log",
+              "exit_code": 0,
+              "sha256": "dd03199812051f83289ce15e9ee43ba7969c1c40e1798ba31ecc72a375167c0a"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "ac04a514afa1eef5d9bad60f678bd084e8c9dc04950fde04bc80f6fed3dd8eec"
+        },
+        {
+          "mode": "bezier-1-10",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-10.log",
+              "exit_code": 0,
+              "sha256": "4ef89e205eb01def572bdd8ac2deaefd7619ce36ef432700ea0248026faa1028"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-10.log",
+              "exit_code": 0,
+              "sha256": "4ef89e205eb01def572bdd8ac2deaefd7619ce36ef432700ea0248026faa1028"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e62a4e87dd0c2f3d656e65ab3bf0de4b9fefc56835757050b21f0324f3ad5598"
+        },
+        {
+          "mode": "bezier-1-11",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-11.log",
+              "exit_code": 0,
+              "sha256": "5d54cfe0e8e2b5e5683e803d37e17688069f2c8eb7c746f51398c97260c93727"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-11.log",
+              "exit_code": 0,
+              "sha256": "5d54cfe0e8e2b5e5683e803d37e17688069f2c8eb7c746f51398c97260c93727"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "9416815dea287df94d67e3042a629dc16ffeeedaf7510d26532266dd752a9ff1"
+        },
+        {
+          "mode": "bezier-1-12",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-12.log",
+              "exit_code": 0,
+              "sha256": "49f0ce64c352aee7932965b4a46f2df48317d62516c0be604ceb64ee442c0ce5"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-12.log",
+              "exit_code": 0,
+              "sha256": "49f0ce64c352aee7932965b4a46f2df48317d62516c0be604ceb64ee442c0ce5"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "1f8ab85d50d645b453e083dbc43552a8f6522bf14602172a6b3022b919e7a2b5"
+        },
+        {
+          "mode": "bezier-1-13",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-13.log",
+              "exit_code": 0,
+              "sha256": "75214867fab0e7047be1b5f3ab12f7d5dad093ba7735b2bdc14e6d439c578216"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-13.log",
+              "exit_code": 0,
+              "sha256": "75214867fab0e7047be1b5f3ab12f7d5dad093ba7735b2bdc14e6d439c578216"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "d3db4a8724147402e01eea650ef12642f66dc6e407535632e4b1761a1686c8d9"
+        },
+        {
+          "mode": "bezier-1-14",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-14.log",
+              "exit_code": 0,
+              "sha256": "eeaa7b0031f24594124774d7b408b8cb9891fa4368f47dc9a09eba66d09b75b0"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-14.log",
+              "exit_code": 0,
+              "sha256": "eeaa7b0031f24594124774d7b408b8cb9891fa4368f47dc9a09eba66d09b75b0"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "b418fec80f94c3ab9338c7b138180701390edb8bc57436f8e2c667fff3cccf2e"
+        },
+        {
+          "mode": "bezier-1-15",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-15.log",
+              "exit_code": 0,
+              "sha256": "13518bf5e32c82ae611c471173eaa472dbb6c1e10d3118643eb3f8808485f395"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-15.log",
+              "exit_code": 0,
+              "sha256": "13518bf5e32c82ae611c471173eaa472dbb6c1e10d3118643eb3f8808485f395"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "454e0bc8a903b91d21c7224960a4842536a4a5be307b7f0edc2c2daf2da1dedd"
+        },
+        {
+          "mode": "hermite-0",
+          "invocations": {
+            "original": {
+              "log": "original-hermite-0.log",
+              "exit_code": 0,
+              "sha256": "a6ae3516cd0f489e11e04e9689d2322a08320181da3dde267d6afd8a327a9c21"
+            },
+            "candidate": {
+              "log": "candidate-hermite-0.log",
+              "exit_code": 0,
+              "sha256": "a6ae3516cd0f489e11e04e9689d2322a08320181da3dde267d6afd8a327a9c21"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "22c4f1f114418e13cb4e763cae097c22d7a0085d678600c29fc41d3669b8a4a4"
+        },
+        {
+          "mode": "hermite-1",
+          "invocations": {
+            "original": {
+              "log": "original-hermite-1.log",
+              "exit_code": 0,
+              "sha256": "fbdc248d2e987abdcdbe7df9426f34831237332e6cdc6b58b2371d193838dcfb"
+            },
+            "candidate": {
+              "log": "candidate-hermite-1.log",
+              "exit_code": 0,
+              "sha256": "fbdc248d2e987abdcdbe7df9426f34831237332e6cdc6b58b2371d193838dcfb"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "6d9835b5eab66b02892cbbef9b2ed2ab7a2dc4ea951be052e5f0f0863aab041b"
+        }
+      ],
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s35og\\detached_patch_copy_probe.exe",
+          "sha256": "08a80f54bc3881fc68e16b79653eda44592d7d5444d13f0d9fa1e1aa905238f9"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s35qg\\detached_patch_copy_probe.exe",
+          "sha256": "6c84c2c29491d136a882a9af5bdc7ddafa3cbfa0a25a30fe8de2cace1141c6ee"
+        }
+      },
+      "paired_traces": 35,
+      "paired_xyz_vectors": 5950,
+      "paired_scalar_values": 17850,
+      "analytic_points_per_executable": 850,
+      "scope": "Defined original/candidate detached ID/control/transformed-matrix/scratch, numeric XYZ/derivative and incidence observations. Original omitted basis/metadata/direction fields are never evaluated. Same-build pairs; no cross-compiler equality or complete clone."
+    },
+    "asan": {
+      "status": "passed",
+      "preservation": {
+        "status": "passed",
+        "original_revision": "ace7abf0ce1b559d20b5c94f8e9120013c093f81",
+        "rejected_mutations": 8,
+        "preserved_tokens_sha256": {
+          "src/data/patch/patch_bezier.cpp": "c3cefbc3c13e4b903da1f0e42933a8fcc7c47874c2ef46a6c702b5c7b23411d4",
+          "src/data/patch/patch_hermite.cpp": "a4f8bb4c84c874c1c757d3dbe3d05984b2148d913008d3835b16cab3c31306ce",
+          "include/data/patch/patch_bezier.h": "7a2e96fcadfccea6b624450db2dfe09f25941ca8afe0fca1b1861c12749f7724",
+          "include/data/patch/patch_hermite.h": "e7c749b124b31460f622fc52b134b1bdcd4df985637dbcb3321c14d8f860543a"
+        },
+        "source_identities": {
+          "original": {
+            "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+            "src/data/patch/patch_hermite.cpp": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+            "include/data/patch/patch_bezier.h": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+            "include/data/patch/patch_hermite.h": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478"
+          },
+          "candidate": {
+            "src/data/patch/patch_bezier.cpp": "7fc031d9a34e961a4f947a21958f851295965cd3a90e78d68b63edcc58625ab1",
+            "src/data/patch/patch_hermite.cpp": "662559e908304dbe9f7155140295719de6ba4dac0998de884eafca772501fb3d",
+            "include/data/patch/patch_bezier.h": "e779cfb65ff88768910c7a3199b045cb9be38e2b6a2655ca9bad5375abf79779",
+            "include/data/patch/patch_hermite.h": "fe24b83a82cd04528810d809603aaed83a8fda0f620f683cf98bdb99782fe656"
+          }
+        },
+        "scope": "Only the exact Bezier copy basis/zero-metadata and Hermite copy true-direction initializers change. Header code and all other complete-unit tokens, numerical order, source-field reads, detached topology, signatures and layouts match immutable main. Eight independent basis, metadata-read, direction, ID, control, topology, orientation and numerical mutations are rejected. Actual initialized-value, incidence, nonallocation and original/candidate traces remain required."
+      },
+      "cases": [
+        {
+          "mode": "base",
+          "invocations": {
+            "original": {
+              "log": "original-base.log",
+              "exit_code": 0,
+              "sha256": "e8b6ba60a720046e1bd6522ded04d79d22568b7039467e67ac8366f4fb2b4a23"
+            },
+            "candidate": {
+              "log": "candidate-base.log",
+              "exit_code": 0,
+              "sha256": "e8b6ba60a720046e1bd6522ded04d79d22568b7039467e67ac8366f4fb2b4a23"
+            }
+          },
+          "observation_count": 1,
+          "observations_sha256": "82cfe91bde2ba0cb54287076e4436917441c068b1d26e2dceb0ee514fbb51727"
+        },
+        {
+          "mode": "bezier-0-0",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-0.log",
+              "exit_code": 0,
+              "sha256": "d01e9c29a2e5b70f649ed771b2836d1323417e17da35c5ecf3bf01180ca4cf8e"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-0.log",
+              "exit_code": 0,
+              "sha256": "d01e9c29a2e5b70f649ed771b2836d1323417e17da35c5ecf3bf01180ca4cf8e"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "225883b1b6a82399919f6d377cc331b2f709fe757d5a4f69b9370678fd1a0376"
+        },
+        {
+          "mode": "bezier-0-1",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-1.log",
+              "exit_code": 0,
+              "sha256": "909ef49949335fb4487aa2417f40a5300534de830e76f32fb456528b80847d32"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-1.log",
+              "exit_code": 0,
+              "sha256": "909ef49949335fb4487aa2417f40a5300534de830e76f32fb456528b80847d32"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "b822bca19a7943ea4535e0279b9c9ba3a00f529cc2a28b65d2d8f323d8b36396"
+        },
+        {
+          "mode": "bezier-0-2",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-2.log",
+              "exit_code": 0,
+              "sha256": "ea29db08a242d697df8b9eefce36d067423006b30cedca436ef6c55073fc1a0e"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-2.log",
+              "exit_code": 0,
+              "sha256": "ea29db08a242d697df8b9eefce36d067423006b30cedca436ef6c55073fc1a0e"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "c71ffb09255d02277aa10dc34d1c0a4f7239cfa3a0453020f5a44015c8cb5dac"
+        },
+        {
+          "mode": "bezier-0-3",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-3.log",
+              "exit_code": 0,
+              "sha256": "598e8d8bb25c250f2315e739c93a49a569390885d2152b37a678fd04e70c5fb8"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-3.log",
+              "exit_code": 0,
+              "sha256": "598e8d8bb25c250f2315e739c93a49a569390885d2152b37a678fd04e70c5fb8"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "4966afbb2fcd0dca2cf196c640466d29ff4dae4027e731cc30ecb221830e622c"
+        },
+        {
+          "mode": "bezier-0-4",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-4.log",
+              "exit_code": 0,
+              "sha256": "bfe150a611029415234ba739c85f978322090679d9b019aa75b67dd33105fb3b"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-4.log",
+              "exit_code": 0,
+              "sha256": "bfe150a611029415234ba739c85f978322090679d9b019aa75b67dd33105fb3b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "01b7e38365739e7566de014621ce70b6ac26ebbc946ebdace33b9380511d5108"
+        },
+        {
+          "mode": "bezier-0-5",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-5.log",
+              "exit_code": 0,
+              "sha256": "5b8937262605a1c08850e041631b8c0f153854d9720d7d01913248bf1093acb8"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-5.log",
+              "exit_code": 0,
+              "sha256": "5b8937262605a1c08850e041631b8c0f153854d9720d7d01913248bf1093acb8"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "ac370df516c6a8ad7e5898b061ae51b722acbf31cff8358e732166b2e95869f5"
+        },
+        {
+          "mode": "bezier-0-6",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-6.log",
+              "exit_code": 0,
+              "sha256": "5826fa787064aa94e03f8b14180ad3fa2802cd9059072ce2acdcd5df995ba8cc"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-6.log",
+              "exit_code": 0,
+              "sha256": "5826fa787064aa94e03f8b14180ad3fa2802cd9059072ce2acdcd5df995ba8cc"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "2b48fa0bd15531f83cdfecf7f47872e3d2e6e203c9cdb0e61ff6d29f2fea22a0"
+        },
+        {
+          "mode": "bezier-0-7",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-7.log",
+              "exit_code": 0,
+              "sha256": "df87f20311291d6676d1234c3de1ab6cdf5bc2c6b4d8850a0c6c07aa82e58aac"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-7.log",
+              "exit_code": 0,
+              "sha256": "df87f20311291d6676d1234c3de1ab6cdf5bc2c6b4d8850a0c6c07aa82e58aac"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "2bc94612e1bcee71cfab4d4e049d45718e5c09376df494f406af3cd141c8ce5f"
+        },
+        {
+          "mode": "bezier-0-8",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-8.log",
+              "exit_code": 0,
+              "sha256": "1900f81fd5fd00e33d212ea38a079fb9fc9545de6b882d5d82f0b2d7788d462b"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-8.log",
+              "exit_code": 0,
+              "sha256": "1900f81fd5fd00e33d212ea38a079fb9fc9545de6b882d5d82f0b2d7788d462b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "cee166576c73fea559d991a821ed8dfc050a66407ea9cb865ddab3680141e90c"
+        },
+        {
+          "mode": "bezier-0-9",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-9.log",
+              "exit_code": 0,
+              "sha256": "a8f7482498336657ba61aab4bcc1802cf2e1d94bfeba5ae2919e243c4f3cca6f"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-9.log",
+              "exit_code": 0,
+              "sha256": "a8f7482498336657ba61aab4bcc1802cf2e1d94bfeba5ae2919e243c4f3cca6f"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "bc11ed64e53aa03754d4ba647a90d19dd97f3991c009c5ed37cd5d1443a0a6fa"
+        },
+        {
+          "mode": "bezier-0-10",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-10.log",
+              "exit_code": 0,
+              "sha256": "f43553498ea0c4fe222f655956dc9843e7426f83fa29bb1a610fdb853a12140e"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-10.log",
+              "exit_code": 0,
+              "sha256": "f43553498ea0c4fe222f655956dc9843e7426f83fa29bb1a610fdb853a12140e"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "a6c251db50be0c836c6b25cdb581cf263f4c9fcc1e4ae846ea9105f52a1ac8c2"
+        },
+        {
+          "mode": "bezier-0-11",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-11.log",
+              "exit_code": 0,
+              "sha256": "47766284932b4dce063d64f20002eb579c566d103417a547517051b431fb7201"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-11.log",
+              "exit_code": 0,
+              "sha256": "47766284932b4dce063d64f20002eb579c566d103417a547517051b431fb7201"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "7dc495c94e129285a8dc632c6cdc7bc2ebb1b338a2c7e3adb6aaf1cee0583ae8"
+        },
+        {
+          "mode": "bezier-0-12",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-12.log",
+              "exit_code": 0,
+              "sha256": "f8ed7786c1a3a4e0972bb5bdfd7c26e7419537123884c41135ceceff624eca56"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-12.log",
+              "exit_code": 0,
+              "sha256": "f8ed7786c1a3a4e0972bb5bdfd7c26e7419537123884c41135ceceff624eca56"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "4f93c8ad24b5af131a24272e33629c84570054c522af9ec7b58fdd44c4bf3ac5"
+        },
+        {
+          "mode": "bezier-0-13",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-13.log",
+              "exit_code": 0,
+              "sha256": "3b9a8e76700551eae3b36bcd74a8aef539a37306b11d87e43cb44a978da348d1"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-13.log",
+              "exit_code": 0,
+              "sha256": "3b9a8e76700551eae3b36bcd74a8aef539a37306b11d87e43cb44a978da348d1"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "47cce052232a91460b07a9201398cf256f5496ce57031f7eeb0a3abf1428777c"
+        },
+        {
+          "mode": "bezier-0-14",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-14.log",
+              "exit_code": 0,
+              "sha256": "951a60a6be0972f0d1d4e6a057f5984e66952495ddb1a83b5998cd750f22cd6d"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-14.log",
+              "exit_code": 0,
+              "sha256": "951a60a6be0972f0d1d4e6a057f5984e66952495ddb1a83b5998cd750f22cd6d"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "a1ace54783bd9dd45e8d14cf3d01349de461507526b3e24cdce95a9a150e162f"
+        },
+        {
+          "mode": "bezier-0-15",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-15.log",
+              "exit_code": 0,
+              "sha256": "b5bc6e1f3337081c50f31a3702fa398f376cd13eddbd6094cc4786877bc96656"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-15.log",
+              "exit_code": 0,
+              "sha256": "b5bc6e1f3337081c50f31a3702fa398f376cd13eddbd6094cc4786877bc96656"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "8215b1f467af90aa7882972723efa84d0fb492ac102fbf493efd3bd8b568dd0b"
+        },
+        {
+          "mode": "bezier-1-0",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-0.log",
+              "exit_code": 0,
+              "sha256": "0af0a4421d0f2c8954cb868a5988b9d4d5dbb4e9abde980251dbe9f3091e8bb2"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-0.log",
+              "exit_code": 0,
+              "sha256": "0af0a4421d0f2c8954cb868a5988b9d4d5dbb4e9abde980251dbe9f3091e8bb2"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "044ed30e0e713b4c0cfa5d69cb430af1e4099c856727e01b440c24f5ab235969"
+        },
+        {
+          "mode": "bezier-1-1",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-1.log",
+              "exit_code": 0,
+              "sha256": "a94db8df92436b80572ab29061c1d364013f5bcdcb14bd2ef49ef6cb220156dc"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-1.log",
+              "exit_code": 0,
+              "sha256": "a94db8df92436b80572ab29061c1d364013f5bcdcb14bd2ef49ef6cb220156dc"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e756cafea922b0af9dd57921a153456881eb1e122b383cc40a0f7675dce8176f"
+        },
+        {
+          "mode": "bezier-1-2",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-2.log",
+              "exit_code": 0,
+              "sha256": "f8ac50a9bbc9087dd3a59e284fae6353a7958cc58ea30de1a6de571a908e2c28"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-2.log",
+              "exit_code": 0,
+              "sha256": "f8ac50a9bbc9087dd3a59e284fae6353a7958cc58ea30de1a6de571a908e2c28"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "1fcee311409158af1ccabd788cdf701bd8e4625a0dabcea88d71d30b4d13738f"
+        },
+        {
+          "mode": "bezier-1-3",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-3.log",
+              "exit_code": 0,
+              "sha256": "105f628d90ff97ffcf5f429e3b817a6c5720769da16deab26c30abb1e617f5af"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-3.log",
+              "exit_code": 0,
+              "sha256": "105f628d90ff97ffcf5f429e3b817a6c5720769da16deab26c30abb1e617f5af"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "84947ba2d5e907907908a856d0f9b590507189051f346a2771c5760833cf46a5"
+        },
+        {
+          "mode": "bezier-1-4",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-4.log",
+              "exit_code": 0,
+              "sha256": "c18c2a19de805295b1379b79b530cfa336c2a9d997758f012a9d9d6ecc323a02"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-4.log",
+              "exit_code": 0,
+              "sha256": "c18c2a19de805295b1379b79b530cfa336c2a9d997758f012a9d9d6ecc323a02"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "13f22cfae33f9f1ce73d42c0bcb52cb1f9fd59f6391be9b09e6eec322f1cfcc8"
+        },
+        {
+          "mode": "bezier-1-5",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-5.log",
+              "exit_code": 0,
+              "sha256": "89222e89ba49048ac9bcd17306be67fb22481cc177c6e698582a86fc5276bb4c"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-5.log",
+              "exit_code": 0,
+              "sha256": "89222e89ba49048ac9bcd17306be67fb22481cc177c6e698582a86fc5276bb4c"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "6f10f6a87d6fff7633157aab182fb59c55df5139c0bc4a1a101552f4c1160339"
+        },
+        {
+          "mode": "bezier-1-6",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-6.log",
+              "exit_code": 0,
+              "sha256": "ea2d3e5c04503c9cb70baf96bff289df2beda07d391994fd424c688df47da52b"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-6.log",
+              "exit_code": 0,
+              "sha256": "ea2d3e5c04503c9cb70baf96bff289df2beda07d391994fd424c688df47da52b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "3b6c78ffbb8daa61bc89793f48cfe69ef1bf57dd9be6b5dbf047f6266b90d3c5"
+        },
+        {
+          "mode": "bezier-1-7",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-7.log",
+              "exit_code": 0,
+              "sha256": "258a05febd5a45d9697f0dbbfe081e9e98da7d00cafbf73642cf77856d47461a"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-7.log",
+              "exit_code": 0,
+              "sha256": "258a05febd5a45d9697f0dbbfe081e9e98da7d00cafbf73642cf77856d47461a"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e77f9ce6b321d6a5a1a3b7a1e9f49a79d1e65f4bb78afb287b54e1571bb8b1fd"
+        },
+        {
+          "mode": "bezier-1-8",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-8.log",
+              "exit_code": 0,
+              "sha256": "92275079d38fcaf848f6a0d61865723e3ea41fc77120eb1eeeb8f05967af3a68"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-8.log",
+              "exit_code": 0,
+              "sha256": "92275079d38fcaf848f6a0d61865723e3ea41fc77120eb1eeeb8f05967af3a68"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "06b91d3257d4bb84805dea4e4791fa749ac4afbc284460129fad9041c2e6e5f6"
+        },
+        {
+          "mode": "bezier-1-9",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-9.log",
+              "exit_code": 0,
+              "sha256": "dd03199812051f83289ce15e9ee43ba7969c1c40e1798ba31ecc72a375167c0a"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-9.log",
+              "exit_code": 0,
+              "sha256": "dd03199812051f83289ce15e9ee43ba7969c1c40e1798ba31ecc72a375167c0a"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "ac04a514afa1eef5d9bad60f678bd084e8c9dc04950fde04bc80f6fed3dd8eec"
+        },
+        {
+          "mode": "bezier-1-10",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-10.log",
+              "exit_code": 0,
+              "sha256": "4ef89e205eb01def572bdd8ac2deaefd7619ce36ef432700ea0248026faa1028"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-10.log",
+              "exit_code": 0,
+              "sha256": "4ef89e205eb01def572bdd8ac2deaefd7619ce36ef432700ea0248026faa1028"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e62a4e87dd0c2f3d656e65ab3bf0de4b9fefc56835757050b21f0324f3ad5598"
+        },
+        {
+          "mode": "bezier-1-11",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-11.log",
+              "exit_code": 0,
+              "sha256": "5d54cfe0e8e2b5e5683e803d37e17688069f2c8eb7c746f51398c97260c93727"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-11.log",
+              "exit_code": 0,
+              "sha256": "5d54cfe0e8e2b5e5683e803d37e17688069f2c8eb7c746f51398c97260c93727"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "9416815dea287df94d67e3042a629dc16ffeeedaf7510d26532266dd752a9ff1"
+        },
+        {
+          "mode": "bezier-1-12",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-12.log",
+              "exit_code": 0,
+              "sha256": "49f0ce64c352aee7932965b4a46f2df48317d62516c0be604ceb64ee442c0ce5"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-12.log",
+              "exit_code": 0,
+              "sha256": "49f0ce64c352aee7932965b4a46f2df48317d62516c0be604ceb64ee442c0ce5"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "1f8ab85d50d645b453e083dbc43552a8f6522bf14602172a6b3022b919e7a2b5"
+        },
+        {
+          "mode": "bezier-1-13",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-13.log",
+              "exit_code": 0,
+              "sha256": "75214867fab0e7047be1b5f3ab12f7d5dad093ba7735b2bdc14e6d439c578216"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-13.log",
+              "exit_code": 0,
+              "sha256": "75214867fab0e7047be1b5f3ab12f7d5dad093ba7735b2bdc14e6d439c578216"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "d3db4a8724147402e01eea650ef12642f66dc6e407535632e4b1761a1686c8d9"
+        },
+        {
+          "mode": "bezier-1-14",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-14.log",
+              "exit_code": 0,
+              "sha256": "eeaa7b0031f24594124774d7b408b8cb9891fa4368f47dc9a09eba66d09b75b0"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-14.log",
+              "exit_code": 0,
+              "sha256": "eeaa7b0031f24594124774d7b408b8cb9891fa4368f47dc9a09eba66d09b75b0"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "b418fec80f94c3ab9338c7b138180701390edb8bc57436f8e2c667fff3cccf2e"
+        },
+        {
+          "mode": "bezier-1-15",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-15.log",
+              "exit_code": 0,
+              "sha256": "13518bf5e32c82ae611c471173eaa472dbb6c1e10d3118643eb3f8808485f395"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-15.log",
+              "exit_code": 0,
+              "sha256": "13518bf5e32c82ae611c471173eaa472dbb6c1e10d3118643eb3f8808485f395"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "454e0bc8a903b91d21c7224960a4842536a4a5be307b7f0edc2c2daf2da1dedd"
+        },
+        {
+          "mode": "hermite-0",
+          "invocations": {
+            "original": {
+              "log": "original-hermite-0.log",
+              "exit_code": 0,
+              "sha256": "a6ae3516cd0f489e11e04e9689d2322a08320181da3dde267d6afd8a327a9c21"
+            },
+            "candidate": {
+              "log": "candidate-hermite-0.log",
+              "exit_code": 0,
+              "sha256": "a6ae3516cd0f489e11e04e9689d2322a08320181da3dde267d6afd8a327a9c21"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "22c4f1f114418e13cb4e763cae097c22d7a0085d678600c29fc41d3669b8a4a4"
+        },
+        {
+          "mode": "hermite-1",
+          "invocations": {
+            "original": {
+              "log": "original-hermite-1.log",
+              "exit_code": 0,
+              "sha256": "fbdc248d2e987abdcdbe7df9426f34831237332e6cdc6b58b2371d193838dcfb"
+            },
+            "candidate": {
+              "log": "candidate-hermite-1.log",
+              "exit_code": 0,
+              "sha256": "fbdc248d2e987abdcdbe7df9426f34831237332e6cdc6b58b2371d193838dcfb"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "6d9835b5eab66b02892cbbef9b2ed2ab7a2dc4ea951be052e5f0f0863aab041b"
+        }
+      ],
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s35oa\\RelWithDebInfo\\detached_patch_copy_probe.exe",
+          "sha256": "b6ccb3d8172c01f1127b7988db784dde30a9fca73f888c5eaba3824d39e1a6b7"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s35qa\\RelWithDebInfo\\detached_patch_copy_probe.exe",
+          "sha256": "0bb9b59745ad3a81a8113266171bc505e61f4f8d74836e880d294f38d2078472"
+        }
+      },
+      "paired_traces": 35,
+      "paired_xyz_vectors": 5950,
+      "paired_scalar_values": 17850,
+      "analytic_points_per_executable": 850,
+      "scope": "Defined original/candidate detached ID/control/transformed-matrix/scratch, numeric XYZ/derivative and incidence observations. Original omitted basis/metadata/direction fields are never evaluated. Same-build pairs; no cross-compiler equality or complete clone."
+    },
+    "crt": {
+      "status": "passed",
+      "preservation": {
+        "status": "passed",
+        "original_revision": "ace7abf0ce1b559d20b5c94f8e9120013c093f81",
+        "rejected_mutations": 8,
+        "preserved_tokens_sha256": {
+          "src/data/patch/patch_bezier.cpp": "c3cefbc3c13e4b903da1f0e42933a8fcc7c47874c2ef46a6c702b5c7b23411d4",
+          "src/data/patch/patch_hermite.cpp": "a4f8bb4c84c874c1c757d3dbe3d05984b2148d913008d3835b16cab3c31306ce",
+          "include/data/patch/patch_bezier.h": "7a2e96fcadfccea6b624450db2dfe09f25941ca8afe0fca1b1861c12749f7724",
+          "include/data/patch/patch_hermite.h": "e7c749b124b31460f622fc52b134b1bdcd4df985637dbcb3321c14d8f860543a"
+        },
+        "source_identities": {
+          "original": {
+            "src/data/patch/patch_bezier.cpp": "48ffb24cd858ca5e90fafc90dfd9e6519241deb58be8d72f350e9ea352a62ec5",
+            "src/data/patch/patch_hermite.cpp": "3a9d3b5fa3d6660396ecc0f29e2fc7a88240ee41481e6caf78fc8f00003b0e59",
+            "include/data/patch/patch_bezier.h": "2605715e3e62c963a055631a6c592736d377addcaf46a098df4cfffdc2f3439f",
+            "include/data/patch/patch_hermite.h": "7393ab9f8953cf1a1f6edf3f54981aa47110b951e0093116276c04bb0c564478"
+          },
+          "candidate": {
+            "src/data/patch/patch_bezier.cpp": "7fc031d9a34e961a4f947a21958f851295965cd3a90e78d68b63edcc58625ab1",
+            "src/data/patch/patch_hermite.cpp": "662559e908304dbe9f7155140295719de6ba4dac0998de884eafca772501fb3d",
+            "include/data/patch/patch_bezier.h": "e779cfb65ff88768910c7a3199b045cb9be38e2b6a2655ca9bad5375abf79779",
+            "include/data/patch/patch_hermite.h": "fe24b83a82cd04528810d809603aaed83a8fda0f620f683cf98bdb99782fe656"
+          }
+        },
+        "scope": "Only the exact Bezier copy basis/zero-metadata and Hermite copy true-direction initializers change. Header code and all other complete-unit tokens, numerical order, source-field reads, detached topology, signatures and layouts match immutable main. Eight independent basis, metadata-read, direction, ID, control, topology, orientation and numerical mutations are rejected. Actual initialized-value, incidence, nonallocation and original/candidate traces remain required."
+      },
+      "cases": [
+        {
+          "mode": "base",
+          "invocations": {
+            "original": {
+              "log": "original-base.log",
+              "exit_code": 0,
+              "sha256": "1d4c74ccdb1d7da8fba9b815fa6011559868e014935823f47eab65764faf40ed"
+            },
+            "candidate": {
+              "log": "candidate-base.log",
+              "exit_code": 0,
+              "sha256": "1d4c74ccdb1d7da8fba9b815fa6011559868e014935823f47eab65764faf40ed"
+            }
+          },
+          "observation_count": 1,
+          "observations_sha256": "82cfe91bde2ba0cb54287076e4436917441c068b1d26e2dceb0ee514fbb51727"
+        },
+        {
+          "mode": "bezier-0-0",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-0.log",
+              "exit_code": 0,
+              "sha256": "dba6d448d210fe8bfeefd92697abe63ce35aed259dc4c113fdfa7a9812422ffa"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-0.log",
+              "exit_code": 0,
+              "sha256": "dba6d448d210fe8bfeefd92697abe63ce35aed259dc4c113fdfa7a9812422ffa"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "225883b1b6a82399919f6d377cc331b2f709fe757d5a4f69b9370678fd1a0376"
+        },
+        {
+          "mode": "bezier-0-1",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-1.log",
+              "exit_code": 0,
+              "sha256": "f8fa2a5f4fecadc1a614db6dabe742fa5da9acd40e5e9822b8ff2226f51b9c38"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-1.log",
+              "exit_code": 0,
+              "sha256": "f8fa2a5f4fecadc1a614db6dabe742fa5da9acd40e5e9822b8ff2226f51b9c38"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "b822bca19a7943ea4535e0279b9c9ba3a00f529cc2a28b65d2d8f323d8b36396"
+        },
+        {
+          "mode": "bezier-0-2",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-2.log",
+              "exit_code": 0,
+              "sha256": "42e9ced4bed985f4ce9f5c2f065219dc22198a15fed4306b970ef622b6bf275d"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-2.log",
+              "exit_code": 0,
+              "sha256": "42e9ced4bed985f4ce9f5c2f065219dc22198a15fed4306b970ef622b6bf275d"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "c71ffb09255d02277aa10dc34d1c0a4f7239cfa3a0453020f5a44015c8cb5dac"
+        },
+        {
+          "mode": "bezier-0-3",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-3.log",
+              "exit_code": 0,
+              "sha256": "3600312edf6d6bba068f76b0f068f73e505baea464a21f4f68824193dd9f7a4c"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-3.log",
+              "exit_code": 0,
+              "sha256": "3600312edf6d6bba068f76b0f068f73e505baea464a21f4f68824193dd9f7a4c"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "4966afbb2fcd0dca2cf196c640466d29ff4dae4027e731cc30ecb221830e622c"
+        },
+        {
+          "mode": "bezier-0-4",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-4.log",
+              "exit_code": 0,
+              "sha256": "56ae72f053639816f8058c724bb7e7b98626171778c01f8da3dec9a2f04bf82e"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-4.log",
+              "exit_code": 0,
+              "sha256": "56ae72f053639816f8058c724bb7e7b98626171778c01f8da3dec9a2f04bf82e"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "01b7e38365739e7566de014621ce70b6ac26ebbc946ebdace33b9380511d5108"
+        },
+        {
+          "mode": "bezier-0-5",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-5.log",
+              "exit_code": 0,
+              "sha256": "2abad715c402b92593c5c95123361cbf55c236337cd4db9b380f381db908c12b"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-5.log",
+              "exit_code": 0,
+              "sha256": "2abad715c402b92593c5c95123361cbf55c236337cd4db9b380f381db908c12b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "ac370df516c6a8ad7e5898b061ae51b722acbf31cff8358e732166b2e95869f5"
+        },
+        {
+          "mode": "bezier-0-6",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-6.log",
+              "exit_code": 0,
+              "sha256": "f3f3a6925e626d839a248ee2437eafafa0e3816d4e505501583e25f0cae8ae4f"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-6.log",
+              "exit_code": 0,
+              "sha256": "f3f3a6925e626d839a248ee2437eafafa0e3816d4e505501583e25f0cae8ae4f"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "2b48fa0bd15531f83cdfecf7f47872e3d2e6e203c9cdb0e61ff6d29f2fea22a0"
+        },
+        {
+          "mode": "bezier-0-7",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-7.log",
+              "exit_code": 0,
+              "sha256": "f3863ccd864f1dc8e7e768642fc29e54d03c88edba8cd4b4d271fc07c27e135f"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-7.log",
+              "exit_code": 0,
+              "sha256": "f3863ccd864f1dc8e7e768642fc29e54d03c88edba8cd4b4d271fc07c27e135f"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "2bc94612e1bcee71cfab4d4e049d45718e5c09376df494f406af3cd141c8ce5f"
+        },
+        {
+          "mode": "bezier-0-8",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-8.log",
+              "exit_code": 0,
+              "sha256": "247f766ccd9f23216e7289a58fff5f0feee3ced39ce22e8edbef7489746f7cea"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-8.log",
+              "exit_code": 0,
+              "sha256": "247f766ccd9f23216e7289a58fff5f0feee3ced39ce22e8edbef7489746f7cea"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "cee166576c73fea559d991a821ed8dfc050a66407ea9cb865ddab3680141e90c"
+        },
+        {
+          "mode": "bezier-0-9",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-9.log",
+              "exit_code": 0,
+              "sha256": "f06612bf57a8b781bcc2cd00f711bbcfadf8ef03466e4e975119cb311b796bce"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-9.log",
+              "exit_code": 0,
+              "sha256": "f06612bf57a8b781bcc2cd00f711bbcfadf8ef03466e4e975119cb311b796bce"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "bc11ed64e53aa03754d4ba647a90d19dd97f3991c009c5ed37cd5d1443a0a6fa"
+        },
+        {
+          "mode": "bezier-0-10",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-10.log",
+              "exit_code": 0,
+              "sha256": "3d91f6c6dea929e113ab84206ca8f88fcf0eedc84d14e13cfc11242f5bb4dfca"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-10.log",
+              "exit_code": 0,
+              "sha256": "3d91f6c6dea929e113ab84206ca8f88fcf0eedc84d14e13cfc11242f5bb4dfca"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "a6c251db50be0c836c6b25cdb581cf263f4c9fcc1e4ae846ea9105f52a1ac8c2"
+        },
+        {
+          "mode": "bezier-0-11",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-11.log",
+              "exit_code": 0,
+              "sha256": "7c03ec68d21811df9028dca67d65bca1b248e1cb481ed95ecb2298482e4b3dd5"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-11.log",
+              "exit_code": 0,
+              "sha256": "7c03ec68d21811df9028dca67d65bca1b248e1cb481ed95ecb2298482e4b3dd5"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "7dc495c94e129285a8dc632c6cdc7bc2ebb1b338a2c7e3adb6aaf1cee0583ae8"
+        },
+        {
+          "mode": "bezier-0-12",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-12.log",
+              "exit_code": 0,
+              "sha256": "1832613cf1291abad8b58b66f75fd382e1c9b8a8f97f98aff9e3e48652f8f6ff"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-12.log",
+              "exit_code": 0,
+              "sha256": "1832613cf1291abad8b58b66f75fd382e1c9b8a8f97f98aff9e3e48652f8f6ff"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "4f93c8ad24b5af131a24272e33629c84570054c522af9ec7b58fdd44c4bf3ac5"
+        },
+        {
+          "mode": "bezier-0-13",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-13.log",
+              "exit_code": 0,
+              "sha256": "3e7690a2266ebb5a19e981d04e417b1fb27222d995f7fc7df2d6d7e857d0fb51"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-13.log",
+              "exit_code": 0,
+              "sha256": "3e7690a2266ebb5a19e981d04e417b1fb27222d995f7fc7df2d6d7e857d0fb51"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "47cce052232a91460b07a9201398cf256f5496ce57031f7eeb0a3abf1428777c"
+        },
+        {
+          "mode": "bezier-0-14",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-14.log",
+              "exit_code": 0,
+              "sha256": "7f6523295696041f71cab4e5f49010cd3ce7fbef598168b72662387a7253674a"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-14.log",
+              "exit_code": 0,
+              "sha256": "7f6523295696041f71cab4e5f49010cd3ce7fbef598168b72662387a7253674a"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "a1ace54783bd9dd45e8d14cf3d01349de461507526b3e24cdce95a9a150e162f"
+        },
+        {
+          "mode": "bezier-0-15",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-0-15.log",
+              "exit_code": 0,
+              "sha256": "7a91d6d7c2f9dfdefb2f5340f2607a2a484f1387b51a48b2096a64f4ea4aed8c"
+            },
+            "candidate": {
+              "log": "candidate-bezier-0-15.log",
+              "exit_code": 0,
+              "sha256": "7a91d6d7c2f9dfdefb2f5340f2607a2a484f1387b51a48b2096a64f4ea4aed8c"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "8215b1f467af90aa7882972723efa84d0fb492ac102fbf493efd3bd8b568dd0b"
+        },
+        {
+          "mode": "bezier-1-0",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-0.log",
+              "exit_code": 0,
+              "sha256": "15c41aed72ce6d8f5ab96f21a11dfff3d67a158935ecf7473f0e185ef3049618"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-0.log",
+              "exit_code": 0,
+              "sha256": "15c41aed72ce6d8f5ab96f21a11dfff3d67a158935ecf7473f0e185ef3049618"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "044ed30e0e713b4c0cfa5d69cb430af1e4099c856727e01b440c24f5ab235969"
+        },
+        {
+          "mode": "bezier-1-1",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-1.log",
+              "exit_code": 0,
+              "sha256": "dd5bbc5079edadc0eaaa25e34dafc83a87293e6c2b9f9c22cf17bb5b664dec3b"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-1.log",
+              "exit_code": 0,
+              "sha256": "dd5bbc5079edadc0eaaa25e34dafc83a87293e6c2b9f9c22cf17bb5b664dec3b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e756cafea922b0af9dd57921a153456881eb1e122b383cc40a0f7675dce8176f"
+        },
+        {
+          "mode": "bezier-1-2",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-2.log",
+              "exit_code": 0,
+              "sha256": "98ad8076c2d910b9b64abffc87b5a142e28231c3aabbae0e4fd4344fc6b547da"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-2.log",
+              "exit_code": 0,
+              "sha256": "98ad8076c2d910b9b64abffc87b5a142e28231c3aabbae0e4fd4344fc6b547da"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "1fcee311409158af1ccabd788cdf701bd8e4625a0dabcea88d71d30b4d13738f"
+        },
+        {
+          "mode": "bezier-1-3",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-3.log",
+              "exit_code": 0,
+              "sha256": "621564992afbb22d7b65f334b1014795d8a6a26487a31a5596de48178cc71149"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-3.log",
+              "exit_code": 0,
+              "sha256": "621564992afbb22d7b65f334b1014795d8a6a26487a31a5596de48178cc71149"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "84947ba2d5e907907908a856d0f9b590507189051f346a2771c5760833cf46a5"
+        },
+        {
+          "mode": "bezier-1-4",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-4.log",
+              "exit_code": 0,
+              "sha256": "547cc793318339de6828b0c617604132c04cda898a1dcf64c56ad19adfbbe3cd"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-4.log",
+              "exit_code": 0,
+              "sha256": "547cc793318339de6828b0c617604132c04cda898a1dcf64c56ad19adfbbe3cd"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "13f22cfae33f9f1ce73d42c0bcb52cb1f9fd59f6391be9b09e6eec322f1cfcc8"
+        },
+        {
+          "mode": "bezier-1-5",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-5.log",
+              "exit_code": 0,
+              "sha256": "2b69c6320476aded6f4dfe7405f8fb9313dfa7508c9f794aa426c3834af23381"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-5.log",
+              "exit_code": 0,
+              "sha256": "2b69c6320476aded6f4dfe7405f8fb9313dfa7508c9f794aa426c3834af23381"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "6f10f6a87d6fff7633157aab182fb59c55df5139c0bc4a1a101552f4c1160339"
+        },
+        {
+          "mode": "bezier-1-6",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-6.log",
+              "exit_code": 0,
+              "sha256": "7b6caea06cc6dbbbbf62610496360fcc3c7c374b7b417ab1687c8b3ded1d575c"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-6.log",
+              "exit_code": 0,
+              "sha256": "7b6caea06cc6dbbbbf62610496360fcc3c7c374b7b417ab1687c8b3ded1d575c"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "3b6c78ffbb8daa61bc89793f48cfe69ef1bf57dd9be6b5dbf047f6266b90d3c5"
+        },
+        {
+          "mode": "bezier-1-7",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-7.log",
+              "exit_code": 0,
+              "sha256": "c13aac74da4c89a91fb8d8f51df1bfab003c08d9317ea89b07982c930c90cc09"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-7.log",
+              "exit_code": 0,
+              "sha256": "c13aac74da4c89a91fb8d8f51df1bfab003c08d9317ea89b07982c930c90cc09"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e77f9ce6b321d6a5a1a3b7a1e9f49a79d1e65f4bb78afb287b54e1571bb8b1fd"
+        },
+        {
+          "mode": "bezier-1-8",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-8.log",
+              "exit_code": 0,
+              "sha256": "e28166dd9bf56e0657669a9bff1645193a98c4a5168ddfb92bdde66313926c6a"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-8.log",
+              "exit_code": 0,
+              "sha256": "e28166dd9bf56e0657669a9bff1645193a98c4a5168ddfb92bdde66313926c6a"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "06b91d3257d4bb84805dea4e4791fa749ac4afbc284460129fad9041c2e6e5f6"
+        },
+        {
+          "mode": "bezier-1-9",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-9.log",
+              "exit_code": 0,
+              "sha256": "bbf01dfaf50c18fc9ee258030fdd4c6e03ccfff97c8d95f5ba87778343887e03"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-9.log",
+              "exit_code": 0,
+              "sha256": "bbf01dfaf50c18fc9ee258030fdd4c6e03ccfff97c8d95f5ba87778343887e03"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "ac04a514afa1eef5d9bad60f678bd084e8c9dc04950fde04bc80f6fed3dd8eec"
+        },
+        {
+          "mode": "bezier-1-10",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-10.log",
+              "exit_code": 0,
+              "sha256": "11f0115d42da8f7a123a35acc793cc8f467383d80a9f91ed23db6b838e5ac4a3"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-10.log",
+              "exit_code": 0,
+              "sha256": "11f0115d42da8f7a123a35acc793cc8f467383d80a9f91ed23db6b838e5ac4a3"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "e62a4e87dd0c2f3d656e65ab3bf0de4b9fefc56835757050b21f0324f3ad5598"
+        },
+        {
+          "mode": "bezier-1-11",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-11.log",
+              "exit_code": 0,
+              "sha256": "a26c2c719ee3b790dcee2762f337f485c9967c58ba9b45bafa61daa57c1a5794"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-11.log",
+              "exit_code": 0,
+              "sha256": "a26c2c719ee3b790dcee2762f337f485c9967c58ba9b45bafa61daa57c1a5794"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "9416815dea287df94d67e3042a629dc16ffeeedaf7510d26532266dd752a9ff1"
+        },
+        {
+          "mode": "bezier-1-12",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-12.log",
+              "exit_code": 0,
+              "sha256": "b05395a005d41a167ed71a104d1d27b17cbe26cbe4faa7b2257ca7320c9690bf"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-12.log",
+              "exit_code": 0,
+              "sha256": "b05395a005d41a167ed71a104d1d27b17cbe26cbe4faa7b2257ca7320c9690bf"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "1f8ab85d50d645b453e083dbc43552a8f6522bf14602172a6b3022b919e7a2b5"
+        },
+        {
+          "mode": "bezier-1-13",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-13.log",
+              "exit_code": 0,
+              "sha256": "ec76cc1eb241752d8832098eefe1b5536d98e458f9a8f75bbeaec00cac82f5db"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-13.log",
+              "exit_code": 0,
+              "sha256": "ec76cc1eb241752d8832098eefe1b5536d98e458f9a8f75bbeaec00cac82f5db"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "d3db4a8724147402e01eea650ef12642f66dc6e407535632e4b1761a1686c8d9"
+        },
+        {
+          "mode": "bezier-1-14",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-14.log",
+              "exit_code": 0,
+              "sha256": "282655cd27208d8a40e140c042f5ca498e75e3e08d8abe75806d2ee6570428ac"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-14.log",
+              "exit_code": 0,
+              "sha256": "282655cd27208d8a40e140c042f5ca498e75e3e08d8abe75806d2ee6570428ac"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "b418fec80f94c3ab9338c7b138180701390edb8bc57436f8e2c667fff3cccf2e"
+        },
+        {
+          "mode": "bezier-1-15",
+          "invocations": {
+            "original": {
+              "log": "original-bezier-1-15.log",
+              "exit_code": 0,
+              "sha256": "9b83e26fae8869d266db07a3f70b225422c9bf38b538bd737df31c9d1db3362f"
+            },
+            "candidate": {
+              "log": "candidate-bezier-1-15.log",
+              "exit_code": 0,
+              "sha256": "9b83e26fae8869d266db07a3f70b225422c9bf38b538bd737df31c9d1db3362f"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "454e0bc8a903b91d21c7224960a4842536a4a5be307b7f0edc2c2daf2da1dedd"
+        },
+        {
+          "mode": "hermite-0",
+          "invocations": {
+            "original": {
+              "log": "original-hermite-0.log",
+              "exit_code": 0,
+              "sha256": "4d1a64cc505164af761fd617a66825bc0bf2e5d3de27ba17c5ea0bf217968db5"
+            },
+            "candidate": {
+              "log": "candidate-hermite-0.log",
+              "exit_code": 0,
+              "sha256": "4d1a64cc505164af761fd617a66825bc0bf2e5d3de27ba17c5ea0bf217968db5"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "22c4f1f114418e13cb4e763cae097c22d7a0085d678600c29fc41d3669b8a4a4"
+        },
+        {
+          "mode": "hermite-1",
+          "invocations": {
+            "original": {
+              "log": "original-hermite-1.log",
+              "exit_code": 0,
+              "sha256": "caf38849335575dcfed4b71c26329a7ca6bdaa232b22aad38edecfd525cbc59b"
+            },
+            "candidate": {
+              "log": "candidate-hermite-1.log",
+              "exit_code": 0,
+              "sha256": "caf38849335575dcfed4b71c26329a7ca6bdaa232b22aad38edecfd525cbc59b"
+            }
+          },
+          "observation_count": 177,
+          "observations_sha256": "6d9835b5eab66b02892cbbef9b2ed2ab7a2dc4ea951be052e5f0f0863aab041b"
+        }
+      ],
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s35od\\Debug\\detached_patch_copy_probe.exe",
+          "sha256": "0eeba1b12038cc626330cc53982cbbfd543c44627b5b733fccd04700bef18aa6"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s35qd\\Debug\\detached_patch_copy_probe.exe",
+          "sha256": "5b8bba50184ce1ddea1173409770fd123e7bac7e3cef04928a0b5dbb4551ed35"
+        }
+      },
+      "paired_traces": 35,
+      "paired_xyz_vectors": 5950,
+      "paired_scalar_values": 17850,
+      "analytic_points_per_executable": 850,
+      "scope": "Defined original/candidate detached ID/control/transformed-matrix/scratch, numeric XYZ/derivative and incidence observations. Original omitted basis/metadata/direction fields are never evaluated. Same-build pairs; no cross-compiler equality or complete clone."
+    }
+  },
+  "production_original_manifest_sha256": "0aa55f657fa9ee85339e9d1fd2fa18cbba4f50547da188a20e5a8505066ac168",
+  "preparation_findings": [
+    "Ambiguous replacement assertion stopped before writing the probe; context patch also rejected without changes.",
+    "Architecture validator rejected tools/audit_patch_copy.py as a source anchor. Corrected to production anchors; validator unchanged.",
+    "Changed-line formatter refused unstaged edits. The reviewed four-file delta was staged, then formatting applied explicitly without force; earlier patch and refusal log retained."
+  ],
+  "limits": "Live non-null initialized numeric sources only; no original indeterminate fields evaluated, complete clone, ordinary Hermite observer retirement, external caller, full-process/parallel/LSan/UBSan claim.",
+  "formatting": {
+    "build\\s35-pre-format.patch": "d24bc90be3a566aeae83302e51a965b628254b8281f111b1ea2bcad7141a4d6e",
+    "build\\s35-applied-format.log": "1295cd1a1a683d1d2a5331f4c660d493e4807a4f3ea53b6280139961d7342976",
+    "build\\s35-applied-format-after-stage.log": "187a3eb39e05c2dd3a950ffc09968c8b50c91868309a3a3e679f64ad762b2a4b",
+    "build\\s35-final-format-check.log": "dda5a4173c9a2ae610a0aeae37886e860e29086834fe095bc97398676d9b51b6"
+  },
+  "observation_note": "Focused binaries/reports precede the explicit changed-line formatting operation. Full exact-head/main rebuilds and qualification remain mandatory."
+}
