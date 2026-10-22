@@ -10,6 +10,10 @@
 class PatchHermite : public PatchCoons {
  public:
   PatchHermite();
+  // Requires a live non-null source with initialized corners, tangents, twists
+  // and geometric/scratch matrices. Copy its ID/defined payload without curves
+  // or SubMesh. Construct the Hermite basis and initialize internal flags true;
+  // source flags are not read. This is not a complete geometry clone.
   explicit PatchHermite(PatchHermite* patch_hermite);
   // Ordem das curvas:
   //		C3

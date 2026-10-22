@@ -5,6 +5,13 @@ if(BUILD_TESTING)
   add_subdirectory(tests/memory)
   add_subdirectory(tests/mesh_memory)
   add_subdirectory(tests/model_memory)
+  add_subdirectory(tests/patch_copy_memory)
+  add_test(NAME application.detached_patch_copy_contracts COMMAND detached_patch_copy_probe contracts)
+  add_test(NAME tooling.detached_patch_copy_preservation
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tools/audit_patch_copy.py"
+      --candidate-root "${CMAKE_SOURCE_DIR}")
+  set_tests_properties(application.detached_patch_copy_contracts tooling.detached_patch_copy_preservation
+    PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 30)
   add_test(NAME application.model_ownership_contracts COMMAND model_ownership_probe contracts)
   add_test(NAME tooling.model_ownership_preservation
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tools/audit_model_ownership.py"

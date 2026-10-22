@@ -10,6 +10,10 @@
 class PatchBezier : public PatchCoons {
  public:
   PatchBezier();
+  // Requires a live non-null source with initialized controls, geometric/scratch
+  // matrices and directions. Copy its ID/defined payload into detached topology:
+  // no curves or SubMesh; initialize the Bezier basis and reset load metadata.
+  // Source load metadata is not read. This is not a complete geometry clone.
   explicit PatchBezier(PatchBezier* patch_bezier);
   // Ordem das curvas:
   //		C3

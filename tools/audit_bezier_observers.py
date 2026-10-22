@@ -8,6 +8,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from audit_patch_copy import restore_bezier_copy_initialization
+
 
 BASE = "061223689ad6d2caa15243dbcfa6a4e45ba7ce96"
 FILES = ["include/data/curve/curve_adaptive.h", "include/data/geometry.h",
@@ -49,6 +51,8 @@ def verify(originals, candidates):
     hashes = {}
     for name in FILES:
         original, candidate = code(originals[name]), code(candidates[name])
+        if name == FILES[5]:
+            candidate = restore_bezier_copy_initialization(candidate)
         if name in allowed:
             new, old = allowed[name]
             if candidate.count(new) != 1:
@@ -91,7 +95,8 @@ def audit(candidate_root, original_root=None):
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
             "scope": "Six actual production files. Only the exact observer-removal declaration/body, "
-                     "completed Bezier destructor and Geometry dependent retirement assignment are normalized. "
+                     "completed Bezier destructor, Geometry dependent retirement assignment and exact separately "
+                     "checked detached-copy initialization prefix are normalized. "
                      "All other numerical, constructor, API/layout and method tokens must match immutable main. "
                      "Six independent lifetime/numerical mutations must be rejected. Dynamic safety, normal "
                      "traces and allocation-free teardown remain separate required gates."}

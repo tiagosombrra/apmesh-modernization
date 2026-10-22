@@ -762,8 +762,8 @@
     {
       "id": "C22",
       "topic": "Pointer-copy constructor contract",
-      "statement": "PatchCoons(PatchCoons*) invokes only its Patch base copy path and leaves its curve vector default-constructed; the pointer-taking Bezier copy separately copies control/matrix/direction fields.",
-      "limits": "These paths are not a qualified complete geometry clone; no current serial CLI failure is inferred. Copy/observer semantics need separate tests before reuse or ownership consolidation.",
+      "statement": "Pointer-taking Patch/Coons constructors copy the ID and leave SubMesh null and curve incidence empty. Bezier detached copies preserve initialized controls, transformed geometric and scratch matrices and four direction flags, construct the existing Bezier basis and reset all load/process metadata to zero without reading source metadata. Hermite detached copies preserve initialized corners, tangents, twists and transformed geometric/scratch matrices, construct the existing Hermite basis and initialize internal direction flags true without reading source flags. Coons orientation fallback remains false. Ordinary derived copy/move remains unavailable; these pointer constructors are not complete geometry clones.",
+      "limits": "Requires a live non-null derived source with initialized numeric payload/scratch and, for Bezier, directions. Default/control-only sources are not geometric sources merely because control setters were used. Source Bezier load metadata and Hermite flags need not be initialized because neither is read. No curve registration, SubMesh copy/rebinding, complete clone, ordinary Hermite observer retirement, external caller, whole-process or parallel safety follows. Production signatures/layout and all existing numerical policy/order remain unchanged.",
       "evidence": [
         {
           "path": "src/data/patch/patch_coons.cpp",
@@ -771,11 +771,19 @@
         },
         {
           "path": "src/data/patch/patch_bezier.cpp",
-          "anchor": "PatchBezier::PatchBezier(PatchBezier* patch_bezier) : PatchCoons(patch_bezier)"
+          "anchor": "PatchBezier::PatchBezier(PatchBezier* patch_bezier)"
         },
         {
           "path": "include/data/patch/patch_coons.h",
           "anchor": "std::vector<CurveAdaptive*> curves_;"
+        },
+        {
+          "path": "src/data/patch/patch_bezier.cpp",
+          "anchor": "mat_base_(StartBezierMatrix())"
+        },
+        {
+          "path": "src/data/patch/patch_hermite.cpp",
+          "anchor": "PatchHermite::PatchHermite(PatchHermite* patch_hermite)"
         }
       ]
     },

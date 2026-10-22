@@ -19,7 +19,8 @@ constexpr double kFindUvSpatialFactor = 50.0;
 PatchHermite::PatchHermite() : PatchCoons() {}
 
 PatchHermite::PatchHermite(PatchHermite* patch_hermite)
-    : PatchCoons(patch_hermite) {
+    : PatchCoons(patch_hermite), signal_curve1_(true), signal_curve2_(true), signal_curve3_(true),
+      signal_curve4_(true) {
   this->pt00_ = patch_hermite->pt00_;
   this->pt01_ = patch_hermite->pt01_;
   this->qv00_ = patch_hermite->qv00_;

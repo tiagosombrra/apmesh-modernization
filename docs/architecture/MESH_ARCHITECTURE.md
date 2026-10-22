@@ -22,6 +22,12 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 
 ## Evidence and coverage
 
+C22/ADR-0036 defines initialized detached numeric copies, not full geometry clones.
+The [slice 35 candidate](../evidence/STAGE3_DETACHED_PATCH_COPY.md) initializes
+Bezier basis/zero metadata and Hermite internal flags while preserving detached
+curves/SubMesh and every defined numeric read/order. Exact-head/main gates remain
+pending; ordinary Hermite retirement and foreign/current-patch rebinding stay open.
+
 C22's [pointer-taking patch-copy audit](../evidence/STAGE3_PATCH_COPY_AUDIT.md)
 records ID/defined numeric payload transfer with empty curves and null SubMesh.
 No complete geometry clone is qualified. Bezier basis/load metadata and Hermite
