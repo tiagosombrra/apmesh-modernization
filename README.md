@@ -70,7 +70,9 @@ exact twice-repeated Eistute/Book accepted/rejected traces on the same 603 input
 The new 131 outcomes cover sixteen complete sweeps/2731 actual denials and eight
 GCC/sixteen MSVC live pairs; original 72 failed outcomes and partial sweeps remain
 retained. See [the bounded closure audit](docs/evidence/STAGE3_SERIAL_READER.md).
-The next single audit is Model mesh adoption/copy ownership and actual callers.
+The Model audit reproduces original copy/rvalue ownership aliases and failed-append
+retention; see [the evidence](docs/evidence/STAGE3_MODEL_ROOT_AUDIT.md).
+The next single repair is slice 34, Model mesh adoption and copy/move intent.
 Other loaders, cache/metadata/acceptance rollback and full-process/parallel memory
 remain open; stages 4-11 are pending.
 
