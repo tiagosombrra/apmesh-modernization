@@ -1,5 +1,15 @@
 # Local quality automation
 
+## Original Hermite observer retirement audit
+
+The standalone [recipe and runner](evidence/STAGE3_HERMITE_OBSERVER_AUDIT.md)
+compile seventeen actual production units in explicit GCC/MSVC C++17 builds.
+Require all 83 original expectations, including nine actual expired-observer
+ASan failures, independent UAF/leak/oracle controls, stable cleanup reference
+observations and the 25-construction literal inventory. This is reproduction,
+not a new qualified memory battery. Preserve all 613 protected inputs and
+51 CTest/74 Python controls; repeat applicable exact audit head/main gates.
+
 ## Initialized detached patch-copy repair
 
 The new application.detached_patch_copy_contracts and

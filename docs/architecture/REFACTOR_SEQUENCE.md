@@ -1,6 +1,9 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
-Current single audit: ordinary Hermite observer retirement and actual callers.
+Current single repair: slice 36, completed Hermite observer retirement.
+The [original audit](../evidence/STAGE3_HERMITE_OBSERVER_AUDIT.md) reproduces nine
+ASan failures without changing production. Constructor rollback, failed adoption
+and foreign/copied/rebound observers remain separate obligations.
 Slice 35 initialized detached copies are qualified by full exact-head/main gates;
 see [the bounded evidence](../evidence/STAGE3_DETACHED_PATCH_COPY.md).
 Preserve initialized-source preconditions and detached topology. No complete
