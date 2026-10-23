@@ -1,34 +1,40 @@
 # Modernization work log
 
-## 2026-10-22: initialized detached patch-copy candidate
+## 2026-10-22: detached patch-copy qualification complete
 
 Classification: behavior-changing initialization defect repair; no scientific change.
-Pointer-taking Bezier/Hermite copies preserve ID, defined numeric payload and
-detached topology (empty curves/null SubMesh). Bezier constructs the existing
-basis and resets seven load/process fields without reading source metadata.
-Hermite initializes internal direction flags true without reading source flags;
-its inherited public orientation fallback remains false. Sources must be live,
-non-null and numerically initialized, including Bezier directions.
+Slice 35 qualifies initialized detached Bezier/Hermite copies within their live
+initialized-source boundary. PR #95 integrates head `0bb6675c49ae192a379edd0d416710fa4b781e03`
+as main `e20fddfd1bb90024cd972080b0a420b1c8a60e12`, preserving complete tree
+`78491269e4b5b1b3e103846f8e50ea2a3caf6654` (2004 blobs). Exact-head and post-merge
+main full campaigns pass on the same 613 protected inputs: 51/51 CTest, zero
+failures/skips, 74 Python controls, 31 memory batteries/3157 expected outcomes,
+1040 scalar sequences and exact twice-repeated Eistute/Book accepted/rejected/
+OBJ/incidence/CSV traces. Independent command/case/child-log/executable/input
+identities and local quality, checkout/environment and remote audits pass.
 
-Focused actual-unit qualification passes 95 ASan/static CRT expected outcomes,
-twelve measured nonallocating operations with a working denial hook, 105 nonempty
-GCC/MSVC C++17 original/candidate pairs and eight rejected preservation mutations.
-Original indeterminate fields are not evaluated; original audit records remain
-unchanged. Source/copy/repeated lifetime, defined controls/matrices/scalars and
-source incidence are measured. See [contract and focused evidence](evidence/STAGE3_DETACHED_PATCH_COPY.md).
+Copies retain ID, defined controls/transformed/scratch matrices and detached
+topology (empty curves/null SubMesh). Bezier constructs the existing basis and
+resets seven load/process fields without reading source metadata. Hermite
+initializes internal flags true without reading source flags; its inherited
+public orientation fallback stays false. Pointer signatures/layout and ordinary
+derived copy/move availability remain unchanged. Sources must be live/non-null
+and numerically initialized, including Bezier directions.
 
-Full exact-published-head and post-merge main qualification remain PENDING.
-Slice 35 is the single active repair; it is not yet qualified or integrated.
-Required inventory: 51 CTest/74 Python controls, all prior 30 batteries plus
-the new battery (31/3157 outcomes), 1040 scalar sequences and exact repeated
-accepted/rejected article traces. No formula, numerical order, synchronization,
-template/front, tolerance, budget or adaptation/acceptance/stopping policy changes.
+The new battery passes 95 outcomes, twelve measured nonallocating operations,
+working UAF/leak/denial/oracle controls and 105 explicit C++17 original/candidate
+pairs (17,850 XYZ vectors/53,550 scalar bits). Eight new preservation mutations
+and the earlier four/six constructor/observer mutations are rejected. Original
+source-only omissions and all preparation failures remain retained; no original
+indeterminate field is evaluated. See [bounded repair and delivery evidence](evidence/STAGE3_DETACHED_PATCH_COPY.md).
 
-No complete clone, default/control-only/null geometric source, ordinary Hermite
-retirement, foreign/current-patch rebinding, external-client/full-process/parallel
-or LSan/UBSan qualification. After this repair qualifies, the next single audit
-is ordinary Hermite observer retirement and actual callers. Stage 3 remains open;
-stages 4-11 remain pending. Earlier next-work statements below are historical.
+No formula, floating-point order, synchronization, template/front, tolerance,
+budget or adaptation/acceptance/stopping policy changes. No complete clone,
+default/control-only/null geometric source, ordinary Hermite retirement,
+foreign/current-patch rebinding, external/full-process/parallel or LSan/UBSan
+qualification follows. Next single audit: ordinary Hermite observer retirement
+and actual callers. Stage 3 remains open; stages 4-11 remain pending. Earlier
+next-work statements below are historical checkpoints.
 
 ## 2026-10-22: C22 pointer-taking patch-copy audit
 

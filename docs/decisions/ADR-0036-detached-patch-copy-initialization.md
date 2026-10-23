@@ -1,6 +1,6 @@
 # ADR-0036: initialized detached patch copies
 
-Status: bounded initialization defect repair candidate; full exact-head/main gates required.
+Status: accepted for bounded initialization defect repair; full exact-head/main qualification complete.
 
 ## Context
 

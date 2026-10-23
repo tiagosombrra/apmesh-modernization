@@ -1,6 +1,6 @@
 # Stage 3 slice 35: initialized detached patch copies
 
-Status: focused candidate passes; full exact-published-head/main qualification PENDING.
+Status: bounded full exact-head/main qualification complete (PR #95).
 Entry main: `ace7abf0ce1b559d20b5c94f8e9120013c093f81` (C22 audit, PR #94).
 Classification: behavior-changing initialization defect repair; no scientific change.
 Stage 3 remains open; stages 4-11 remain pending.
@@ -126,3 +126,34 @@ cache/metadata rollback, complete extreme meshes and whole-process/parallel/
 LSan/UBSan remain outside scope. No numerical policy changes or performance claim.
 After bounded qualification, the next single audit is ordinary Hermite observer
 retirement and actual callers. Full stage 3 closure remains blocked by its inventory.
+
+## Exact delivery closure
+
+Published head `0bb6675c49ae192a379edd0d416710fa4b781e03` and implementation main
+`e20fddfd1bb90024cd972080b0a420b1c8a60e12` preserve tree
+`78491269e4b5b1b3e103846f8e50ea2a3caf6654` with 2004 blobs. Both full campaigns pass
+all 137/137 recorded commands and independent checks,
+51 CTest with zero failures/skips, 74 Python controls, all 31 batteries/3157
+expected outcomes, 1040 scalar sequences and exact repeated accepted/rejected
+article/OBJ/incidence/CSV traces. All 613 protected source/test/tool/build/input/
+contract hashes remain fixed. The other 484 original production files are unchanged.
+
+The [compact delivery record](stage3/detached_patch_copy/delivery.json) retains
+full report, independent-check and remote audit identities and inventories.
+Raw records remain local under build/s35-head and build/s35-main. Required
+Model live reference pairs now use the explicit GCC C++17 configurations within
+both campaigns; the historical default-C++20 observations remain additional,
+separate records. New detached-copy targets explicitly use C++17 in all builds.
+
+Remote audits reconcile the complete fetched Git tree and all reported branches,
+PRs, statuses, workflow runs and check-runs. No workflow source is introduced.
+Absence of hosted observations is not successful hosted validation. Local
+qualification, original source-only omissions, deliberate failed controls and
+unmeasured scope remain distinct. Preparation/formatting findings remain retained.
+
+The documentation closure changes none of the 613 protected inputs. Its exact
+published head/main must repeat applicable build/51 CTest/74 Python, new 95-outcome
+instrument/105 live-pair, architecture, whitespace/format, checkout/environment
+and full remote gates. The full implementation campaigns remain hash-linked.
+Next single audit: ordinary Hermite observer retirement and actual callers.
+Full stage 3 closure remains blocked by the remaining coverage inventory.
