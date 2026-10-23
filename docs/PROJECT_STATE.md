@@ -1,5 +1,30 @@
 # Project state
 
+## Hermite observer retirement audit
+
+Classification: engineering-only source audit and original hazard reproduction.
+At source main `21542d8e739d98604b68fa92414332c694f4642d` (PR #96), 25 literal
+Hermite constructions are inventoried: 23 model calls and two legacy defaults.
+Ordinary completed Hermite destruction leaves its reciprocal curve observers
+unchanged. Nine actual ASan consumptions reproduce heap-use-after-free. All 83
+reproduction expectations hold, including stable inventory/reference cleanup,
+675 live point observations, independent oracle/UAF/leak controls and zero CRT
+retention in defined cases. Zero retention does not establish valid observers.
+All 488 production files and 613 protected inputs remain unchanged; the 51 CTest/
+74 Python inventory is retained. See [source, failures and limits](evidence/STAGE3_HERMITE_OBSERVER_AUDIT.md).
+
+The current config CLI always supplies argv[3]; the serial source fallback to
+ModelBaseQuadrada and generic curve consumers are source observations, not
+executed CLI failure evidence. Constructor publication rollback, failed consuming
+adoption, foreign/copied observer lists and arbitrary rebinding remain unmeasured.
+No repaired candidate or additional qualified memory slice is claimed.
+
+Next single repair: slice 36, completed Hermite observer retirement, preserving
+live borrowed-curve preconditions, stable all-match removal and numerical policy.
+Failed construction and other caller roots require separate explicit dispositions.
+Stage 3 remains open; stages 4-11 remain pending. Earlier next-work statements
+below are historical checkpoints.
+
 ## Stage 3 slice 35 qualified
 
 Classification: behavior-changing initialization defect repair; no scientific change.

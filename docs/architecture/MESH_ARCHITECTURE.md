@@ -22,6 +22,12 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 
 ## Evidence and coverage
 
+The [ordinary Hermite observer audit](../evidence/STAGE3_HERMITE_OBSERVER_AUDIT.md)
+records 25 literal construction roots and nine actual expired-observer ASan
+failures. Default retirement does not deregister completed Hermite patches.
+This is original reproduction, not a repair qualification. Completed retirement
+is the next bounded slice 36; constructor/caller/foreign-rebinding roots stay open.
+
 C22/ADR-0036 defines qualified initialized detached numeric copies, not complete
 geometry clones. The [slice 35 evidence](../evidence/STAGE3_DETACHED_PATCH_COPY.md)
 records full exact-head/main qualification of basis/zero metadata/internal flags,
