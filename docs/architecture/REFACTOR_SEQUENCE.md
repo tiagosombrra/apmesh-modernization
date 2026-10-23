@@ -1,12 +1,11 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
-Current single repair: slice 35, initialized detached patch-copy intent (C22).
-Focused qualification passes; exact published-head/main gates remain pending.
-See [the bounded candidate](../evidence/STAGE3_DETACHED_PATCH_COPY.md).
-Preserve defined numeric values and detached topology; do not read indeterminate
-source metadata or claim a complete clone. Ordinary Hermite observer retirement
-and actual callers are the next audit after qualification. Earlier queue
-statements below are historical.
+Current single audit: ordinary Hermite observer retirement and actual callers.
+Slice 35 initialized detached copies are qualified by full exact-head/main gates;
+see [the bounded evidence](../evidence/STAGE3_DETACHED_PATCH_COPY.md).
+Preserve initialized-source preconditions and detached topology. No complete
+clone, ordinary Hermite retirement or foreign/current-patch rebinding follows.
+Earlier queue statements below are historical.
 
 This is an implementation sequence within the approved stages, not a production
 change in stage 2. Evidence IDs refer to [contracts.json](contracts.json).
