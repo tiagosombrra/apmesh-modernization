@@ -914,6 +914,26 @@
           "anchor": "fin.exceptions(std::ios::badbit);"
         }
       ]
+    },
+    {
+      "id": "C29",
+      "topic": "Completed Hermite observer retirement",
+      "statement": "Completed PatchHermite destruction removes every observer equal to its own address from every current nonnull borrowed curve without allocation. Other observer values, including nulls and duplicates, keep their order. Repeated current curve slots are supported. Existing Geometry dependent destruction and move ordering are reused. Constructors, initialization, numerical expressions and scientific policies remain unchanged.",
+      "limits": "Current borrowed curves must remain live through patch destruction. This completed-object boundary does not repair constructor publication failure, failed consuming adoption, foreign or copied curve lists, arbitrary current-curve replacement, external clients, SubMesh observers, whole-process, parallel, LSan or UBSan paths. Repeated slots are lifetime guards, not proof of geometric validity. Exact-head and post-merge qualification remain required in STAGE3_HERMITE_OBSERVERS.md.",
+      "evidence": [
+        {
+          "path": "src/data/patch/patch_hermite.cpp",
+          "anchor": "PatchHermite::~PatchHermite()"
+        },
+        {
+          "path": "src/data/curve/curve_adaptive.cpp",
+          "anchor": "void CurveAdaptive::RemovePatchObservers"
+        },
+        {
+          "path": "include/data/patch/patch_hermite.h",
+          "anchor": "Current borrowed curves must remain live through destruction."
+        }
+      ]
     }
   ]
 }

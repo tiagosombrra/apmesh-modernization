@@ -25,7 +25,9 @@ class PatchHermite : public PatchCoons {
                VectorAdaptive tw11, bool signal_curve1 = true,
                bool signal_curve2 = true, bool signal_curve3 = true,
                bool signal_curve4 = true);
-  ~PatchHermite() override = default;
+  // Current borrowed curves must remain live through destruction. Remove every
+  // matching observer without allocation; all other entries retain their order.
+  ~PatchHermite() override;
 
   PointAdaptive CalculatePointUV();
   void PrintAllMatrixPatchHermite();

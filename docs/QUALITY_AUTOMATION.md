@@ -1,5 +1,16 @@
 # Local quality automation
 
+## Completed Hermite observer retirement candidate
+
+The required application.hermite_observer_contracts and
+tooling.hermite_observer_preservation add two gates, retaining the earlier 51.
+The isolated actual-production C++17 probe requires 153 ASan/static CRT outcomes,
+22 denial-enabled nonallocating operations, working UAF/leak/hook and independent
+prefix/order corruption controls. Eight source mutations must be rejected.
+Six nonempty original/candidate live trace pairs per GCC/MSVC instrument compare
+all seven point/derivative vectors and incidence. Prior batteries and exact-head/
+main regression remain required. See [scope and commands](evidence/STAGE3_HERMITE_OBSERVERS.md).
+
 ## Original Hermite observer retirement audit
 
 The standalone [recipe and runner](evidence/STAGE3_HERMITE_OBSERVER_AUDIT.md)
