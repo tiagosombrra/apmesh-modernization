@@ -387,11 +387,15 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "68844c1719575c5feee7f5733ac55d99176cd66e9abe42ef83d597d6912adca7"
+      "sha256": "0c51d8045d159f4c187923f6951ec7c63b234f12d0612b93566ef0dde4c7a390"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
       "sha256": "483af56ff42b3cc35195b9ad469bbe84588c58868799e98d375a6b9f9c36d1b5"
+    },
+    {
+      "path": "tests/hermite_observer_memory/CMakeLists.txt",
+      "sha256": "35d514e6fdfc541e0a6f020ae38bcb61988c36dc166168bfde1805f74da8d087"
     },
     {
       "path": "tests/memory/CMakeLists.txt",
@@ -1963,8 +1967,8 @@
       "path": "include/data/patch/patch_hermite.h",
       "component_by_directory": "data/patch",
       "kind": "header",
-      "sha256": "fe24b83a82cd04528810d809603aaed83a8fda0f620f683cf98bdb99782fe656",
-      "bytes": 4018,
+      "sha256": "c592a97bd91c876cfc45f356e59e36c1216e3c11be73526d3f699cda22d53c4c",
+      "bytes": 4169,
       "includes": [
         {
           "line": 4,
@@ -4217,8 +4221,8 @@
       "path": "src/data/patch/patch_hermite.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "384d2088b06e49a7e2641d3711102816d4187bbbde4b085a86358213746f888a",
-      "bytes": 20718,
+      "sha256": "42803b961891b75659646ff7c95f19c85ccd2894002faa182f3949beb0b0cfea",
+      "bytes": 20850,
       "includes": [
         {
           "line": 1,
@@ -5888,8 +5892,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 27,
-    "source_anchors": 174,
+    "contracts": 28,
+    "source_anchors": 177,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

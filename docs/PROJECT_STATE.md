@@ -1,5 +1,21 @@
 # Project state
 
+## Stage 3 slice 36 candidate
+
+Classification: behavior-changing lifetime defect repair; no scientific change.
+The current candidate adds completed Hermite observer retirement under C29 and
+ADR-0037. All current nonnull borrowed curves must outlive patch destruction.
+Removal is stable, complete and nonallocating. Constructors, numerical expressions,
+ordering and adaptation/acceptance/stopping policies are unchanged.
+
+Qualification is pending. The new focused battery and original/candidate C++17
+traces, all prior regression, exact published-head and post-merge main gates must
+pass before this slice is qualified. Original Hermite audit failures are retained.
+Failed construction/adoption, copied/foreign observers and arbitrary rebinding
+remain separate obligations. See [scope and evidence](evidence/STAGE3_HERMITE_OBSERVERS.md).
+Stage 3 remains open. The single active item is completion of slice 36;
+earlier next-work paragraphs below are historical checkpoints.
+
 ## Hermite observer retirement audit
 
 Classification: engineering-only source audit and original hazard reproduction.

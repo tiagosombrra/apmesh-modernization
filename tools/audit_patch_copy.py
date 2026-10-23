@@ -7,6 +7,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from audit_hermite_observers import restore_hermite_retirement
+
 BASE = "ace7abf0ce1b559d20b5c94f8e9120013c093f81"
 FILES = ["src/data/patch/patch_bezier.cpp", "src/data/patch/patch_hermite.cpp",
          "include/data/patch/patch_bezier.h", "include/data/patch/patch_hermite.h"]
@@ -39,6 +41,8 @@ def verify(originals, candidates):
     hashes = {}
     for name in FILES:
         source = code(candidates[name])
+        if name in [FILES[1], FILES[3]]:
+            source = restore_hermite_retirement(source)
         if name == FILES[0]:
             if source.count(code(NEW_BEZIER)) != 1:
                 raise ValueError("Detached Bezier initialization contract changed")
@@ -91,7 +95,8 @@ def audit(candidate_root, original_root=None):
             "source_identities": {label: {name: hashlib.sha256(text.encode()).hexdigest()
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
-            "scope": "Only the exact Bezier copy basis/zero-metadata and Hermite copy true-direction initializers change. "
+            "scope": "Only the exact Bezier copy basis/zero-metadata and Hermite copy true-direction initializers change; "
+                     "the exact independently guarded completed Hermite retirement declaration/body is normalized. "
                      "Header code and all other complete-unit tokens, numerical order, source-field reads, detached "
                      "topology, signatures and layouts match immutable main. Eight independent basis, metadata-read, "
                      "direction, ID, control, topology, orientation and numerical mutations are rejected. "

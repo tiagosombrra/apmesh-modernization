@@ -1,0 +1,5237 @@
+{
+  "status": "focused-preformat-passed",
+  "source_base": "6669a29e03e868ecaa781e6da2a5299a19ddeae5",
+  "candidate_outcomes": 153,
+  "candidate_noallocation_operations": 22,
+  "original_qualification_status": "failed",
+  "original_failed_outcomes": 125,
+  "original_other_expected_outcomes": 28,
+  "original_asan_expired_consumptions": 9,
+  "original_cases": [
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "2c163b82812ff5b19b1043aabb5020e94224412c8d3e92c23365faa5a691a98a",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "contracts"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-destroy",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "e07d6b3b35a7464ab070fab2ba3039e7de185b53ec1a172b82a5a0ecb32998f4",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-destroy"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-construct",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "19403f6d3a6f50a6be8438e0ede5f6f21419e2bb510233efcd33def204c8e386",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-move-construct"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-assign",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ddd94231c5eb7e9b893930d35b107ad5eb76df072163e12936c82dcb09ee7a2",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-move-assign"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-self-move",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "78c957cf4974c3b8fcc15c0ba9688417af3001391e5d66cf0c99f97773a93f13",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-self-move"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-consume",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "df4ec02ea49636a10d195a1dad225ef23b38cb62943f4863d587f664c3318760",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-move-consume"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "sync-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "7cb0dc24dedd9ebf37233eb61e5f6f2f6fa543fd8a344a36a8a6b9ddca9818fc",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "sync-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "sync-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "7cb0dc24dedd9ebf37233eb61e5f6f2f6fa543fd8a344a36a8a6b9ddca9818fc",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "sync-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "empty-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5abd4c69a1bc32de3f4f4912a81e536fee276a2be8e758743a65cdd21723ae0e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "empty-default"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "empty-detached",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "4c12913e88504ccd17113204075fc20591963391c5658d8d15056eae4b449d70",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "empty-detached"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "null-current",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "89ce9a2f808880277f4754b9eee4c289b8b742812110e194c2d9061d92d264b8",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "null-current"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "99cbe602cb39d1ec14db8117a480ab8a5bfd1263e2023f6ac64c3c9b1cca1962",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "e2ebcc875c5f69f9861faf893303bfc31eeb1f2bdce07ea673ae89efe51a85df",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-0-2",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ae20d7779dcee8700c1d7978bb4600d3f8b6fb930ae699172b5a23576cb8330",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-0-2"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6c95766e858ad7d8e5ca059aef21696221c653c8b9826d7ad76379a50fac0a23",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "4689a5b9168520d5e471ff56e1de1baac9255da7760fe59f59d5bd2f21b198c7",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-1-2",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "cd2037380130decb1be4d7809b50098527f288e3128c2ef043f59ad6c30a4efa",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-1-2"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "72e72ec2b249dc408af5faa7b8b992e53d54b921f8bf8b70d2bbbfb286da1fb4",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "13881730a60bf42d0238986d53171f92e315c3e6657af2fb07156075aab5a4d8",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-2-2",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5da31f0c2c19953e04d3285ff78f6f828b8f90cd6025f81c9d61a4733f47c985",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-2-2"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "f8c873784712d0087b8faccbfe74d8aabb1607863988e9a2a38501c139003acf",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "49c7b89e0dc072da8418d81588d772edb6de1ae56d3985cc2c5b051a0098b75a",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "d514b91593d0b6abcaf25580d526dccd3e4112f9ac9bb166b0be30673fd2527b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "0f40f1d7cfb27cb98c946365979d183cdf3d9f32f6c96438b91dfbd659b0963a",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "61bb32446ffc296f7e2f469c08bf7668876d9b56c78079a65ca8e12c96e9bbf0",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e790f1b67b1cf31e84eb7c1ae1e05143243b0245b82adde77ddde1a67f3733ad",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "6ef289c48eb1b2408f97cd0121a4aa7d59ae4159ffa9d0e0cdc87bc14b83aeab",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5ba65ca1f775bdf4a629dbdf74df720caf8dc4f7541cf1e977bd88c656f4f73e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "9ed8342016cf1081b40a63d19845167266a5ec5305e377791922f9ae27789c99",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "388aaedebef1f1ba85b0a38eaea9bb18c34cae94ed047f5acb4a6f611ac4058f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "contracts"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-destroy",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d7fd2bea8dd0dafb8328fa4939b452e959c2f7c7036129ad01281646545870e8",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "geometry-destroy"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-construct",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5b98650c2d0faf7135e2def6189dcc929ba1e6fe53cf83ba3ddbdfbdbc511ad2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "geometry-move-construct"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-assign",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "a4fd9c764a2a5d8eb9f116bb6805cae74aa8b21de64be3400f32b136fa7c8788",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "geometry-move-assign"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-self-move",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "a58386c0ceaf2868c72ffee0f31fcb678438dda51519094ace0f1dc924f702ff",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "geometry-self-move"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-consume",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "8368c04ff1c71743242ce4e5fdc82186d0ee74563bfaae13fffd329c7ac94b98",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "geometry-move-consume"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "sync-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "b33928120f1747b9a0cf3a8006cb729763fa45229e7b971d69ff021094ef3f0d",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "sync-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "sync-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "b33928120f1747b9a0cf3a8006cb729763fa45229e7b971d69ff021094ef3f0d",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "sync-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "empty-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "26e3ee13a240bf08a333bff5c50bb5c88cd84ecf062e4c28973d582707b0b5bc",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "empty-default"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "empty-detached",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5f085c13e39d7a3c028e775a01ab43e372b939e449b39ccc612138d6f2df9b9c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "empty-detached"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "null-current",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "0d830cfb6b5a8dca5383cccc6691cca6fe061398c1da214eaf7591a2f596eacc",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "null-current"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d368f02868b07462e6dd1e267d1e83b080b2109b10dd3181ea87bcc28a41469c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "315fd96b181229751b315c651349185846055e592e2728a3f985ca64e33249ea",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-0-2",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "c5f7550637718ec139fe7ad2e1c0d585f1429f7b1e0e4e0fefa07e23b7ab29b6",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-0-2"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "08f31dac6c8d9f7b4ec04344e7e93ae2a5d645bcf7550fdddc19c7b95a44ee34",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "8c87012e0d24f0f184864483fcdfd8156e440f923e29f2f01ab349eb627705f5",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-1-2",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "e2afdf209583923309306ac5fe3786da61c2a61176c72fd7f5d3242dbe680ce7",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-1-2"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "e5ef67714f0f2ff1902b9a667bf6f72d92246d54e8d1885bfbae2f32d3cee1be",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5d7193170512bf4502427b941eac11dd1e7f092f2a893a702c4a1f8f7134f227",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-2-2",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "864bf878598590e61840290171303195ec8c774d5d554aab084a0e5a5e63575f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "consume-2-2"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "de877929599b56c3ef93aa288c1e0dd4bcb355b1f6f4cc6dd45fa26d5dac829c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "trace-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "9d0f27d7949a2cac42ae4ef247b0cc936473a740db29802665dea3caf1ad8aa2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "trace-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e8a283bdc2369a12ac8181fd511867c5653cf7bd87f428a63c1ef97995bfe5d6",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "trace-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "13dfd4b9445075ab03f327112af4484864f5483bb869afba5a855c9e32059d7f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "trace-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "0949d78617f3444d6746bd9738c5724e43a53d53969e9ddb8a715f0a1411ab51",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "trace-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "228c3e35cd6ecdd6de8636ff2b13dd31e68b809f4d58a378bb6f1600d6560a90",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "trace-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "ccb5c7f9332b830f2cf5cd433c846284af12b5aa5f6a1c05325074e04846ac91",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "1ecd2fd18b66b518f58833d4b08210cc68ec87a8cec63c590a067b66d49f16bb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "d4e423753cba9446c25dfb23d4a8aee8e74c16f567fb5e2c2b3a5fa40cf1cf7c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-0-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-0-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-1-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-1-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-2-0",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-2-1",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-move",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": false,
+      "expected_diagnostic": null,
+      "log_sha256": "5789e6dbbe561b5e340488c6093c8513834def966086c61ba263f183628148ce",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-move"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-empty-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "8e47d7e62cd78429ed2d6ba3c8240e3f3d83f15b7f0840b2fcddf1ba973c5feb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-empty-default"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-empty-detached",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e436e7ac588ec47ed99d6176d54de6b01b46f8d3dd55c4b1bd8c077c4019e87a",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-empty-detached"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-null-current",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5debd5b292bfd99551b60b21f1e065258e5f60da785949d26b9f70a61f1153e0",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "noalloc-null-current"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "prefix-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1a9803064a02a72b1f6874336ef28bf4222c2b74cc73a09b9d23928238f63bc6",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "prefix-negative-control"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "prefix-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5bc4a4d5d7967caad6f64a515edc7636455534244192b369567f539411973e3c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "prefix-negative-control"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "order-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e7dc5c3dafb54667f163b7657936659e249b0b7e7ab13cb3689c99053934a194",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "order-negative-control"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "order-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa894ac62fc9b60cf96232e0cc5cda43ebb03ac046ebe889775cbc45dd4754",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "order-negative-control"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": "heap-use-after-free",
+      "log_sha256": "fa69fcb10524f6bc1e8118679bb5fd7abd0c05d8366786cf5c70546a02429d82",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "use-after-free"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": "retained-blocks",
+      "log_sha256": "560b62f7823ac76cee1560542b9b30b2fb3437406b67769bad6f729441b022a6",
+      "retained": [
+        [
+          "1",
+          "40"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "leak"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+        "allocation-hook-control"
+      ]
+    }
+  ],
+  "candidate_cases": [
+    {
+      "instrument": "asan",
+      "mode": "contracts",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "2afdfa04b97ad695533c2559233fab534ef24827bef8b91e21c0ec264850e682",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "contracts"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-destroy",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "3736adbbacbc21d01d9aebeb46a0b1a17e2a40ba97627595726f4bbf5af435df",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-destroy"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-construct",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "aecf22475230cc9d06bf91602affd8e8b7d25176554699650ae7a859f8386792",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-move-construct"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-assign",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "8dbbf386b0753f5132474b784af512673994b7b6db6a25fd7534dfff96f14ff9",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-move-assign"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-self-move",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "3b0bd9d58334dcd2559d4507abf8b3c45d662a0311077ef2e3fc44ec1a4e1d6a",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-self-move"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "geometry-move-consume",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "b940d6a6898d50665993eaa16b388ff77a77c2a5524b3974f7d44ccbb29772c1",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "geometry-move-consume"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "sync-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1047d385ce83f582231c99f662a48135d00069b2ff0af1cc5316e4f923f3a11e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "sync-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "sync-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1047d385ce83f582231c99f662a48135d00069b2ff0af1cc5316e4f923f3a11e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "sync-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "empty-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5abd4c69a1bc32de3f4f4912a81e536fee276a2be8e758743a65cdd21723ae0e",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "empty-default"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "empty-detached",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "4c12913e88504ccd17113204075fc20591963391c5658d8d15056eae4b449d70",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "empty-detached"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "null-current",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "89ce9a2f808880277f4754b9eee4c289b8b742812110e194c2d9061d92d264b8",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "null-current"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "2a2ce3a81cd899b5cedbf1257e54abf6b367d5917efe137632f4783b76a2de56",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e66daacbc9658c9481a0607b0e3c4f1b84ac2338fa9247c99e1539d853f59a3c",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-0-2",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "a7239f67591d4ad0212722c16dfb942a8b5022d7a2d4d6c6e10ac443a30a78f9",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-0-2"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "2a2ce3a81cd899b5cedbf1257e54abf6b367d5917efe137632f4783b76a2de56",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e66daacbc9658c9481a0607b0e3c4f1b84ac2338fa9247c99e1539d853f59a3c",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-1-2",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "a7239f67591d4ad0212722c16dfb942a8b5022d7a2d4d6c6e10ac443a30a78f9",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-1-2"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "2a2ce3a81cd899b5cedbf1257e54abf6b367d5917efe137632f4783b76a2de56",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e66daacbc9658c9481a0607b0e3c4f1b84ac2338fa9247c99e1539d853f59a3c",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "consume-2-2",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "a7239f67591d4ad0212722c16dfb942a8b5022d7a2d4d6c6e10ac443a30a78f9",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "consume-2-2"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "f8c873784712d0087b8faccbfe74d8aabb1607863988e9a2a38501c139003acf",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "49c7b89e0dc072da8418d81588d772edb6de1ae56d3985cc2c5b051a0098b75a",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "d514b91593d0b6abcaf25580d526dccd3e4112f9ac9bb166b0be30673fd2527b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "0f40f1d7cfb27cb98c946365979d183cdf3d9f32f6c96438b91dfbd659b0963a",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "61bb32446ffc296f7e2f469c08bf7668876d9b56c78079a65ca8e12c96e9bbf0",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "trace-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e790f1b67b1cf31e84eb7c1ae1e05143243b0245b82adde77ddde1a67f3733ad",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "trace-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-0-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-0-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-0-1-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-0-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-1-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-1-1-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-0-2-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-0-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "764976c645616ae36212e562d191ed6f6b44c01957d3c3c9888c4eb43e8cd847",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-0-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-1-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "07ebf21c6eb182f0f0f445cc3d8712685a0d7bd740e24e76155c460d914b9f4f",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-1-1"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-2-0"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "normal-2-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "48de000dd93a4f89112cd086f7655786a5c0b1377319aae7c8299e35e67c310b",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "normal-2-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "contracts",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "2c0c69f084f72ff68a0a6f09bf64aa26cdc093833d72c900087e1c802d94e115",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "contracts"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-destroy",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "b331ffb8fd99abac1ba5e9c8ab9e1606876b408ed70ba9698fb4467229fe2d39",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "geometry-destroy"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-construct",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "7a831c75a22eae654561cf65ca37be135eb572b48a5eb6de41789035e13b3d8c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "geometry-move-construct"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-assign",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "c41780d1b317caf4dfc46d1d1e027a93e6ecdb1268101cd5d37542bd016e0ae4",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "geometry-move-assign"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-self-move",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "211d589fd6737e59d22e65d13347a13f67ebd6ef94045e7d379297d86eae95bf",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "geometry-self-move"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "geometry-move-consume",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "dcd15354b59de7c89f38328804bf09c9a73058174bdb8399f3aab93ccc4e292c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "geometry-move-consume"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "sync-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "7ec1bbdec3ee59386ba557314f2c12f5fffba9b0a1011d74a7f9e1f08bec3bd3",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "sync-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "sync-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "7ec1bbdec3ee59386ba557314f2c12f5fffba9b0a1011d74a7f9e1f08bec3bd3",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "sync-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "empty-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "26e3ee13a240bf08a333bff5c50bb5c88cd84ecf062e4c28973d582707b0b5bc",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "empty-default"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "empty-detached",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5f085c13e39d7a3c028e775a01ab43e372b939e449b39ccc612138d6f2df9b9c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "empty-detached"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "null-current",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "0d830cfb6b5a8dca5383cccc6691cca6fe061398c1da214eaf7591a2f596eacc",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "null-current"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "9d8ddc9d87a0a7414bf4074083fc6401adfd6f4268212d870603fb733729d78e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "bc34e1715f1a9d7a4d191934a83fc0d46494dab60996532805d343aa643f318b",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-0-2",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6a6ae71290a90c216cac000c726b35d732863a55fd691cf07266907e4f34489e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-0-2"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "9d8ddc9d87a0a7414bf4074083fc6401adfd6f4268212d870603fb733729d78e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "bc34e1715f1a9d7a4d191934a83fc0d46494dab60996532805d343aa643f318b",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-1-2",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6a6ae71290a90c216cac000c726b35d732863a55fd691cf07266907e4f34489e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-1-2"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "9d8ddc9d87a0a7414bf4074083fc6401adfd6f4268212d870603fb733729d78e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "bc34e1715f1a9d7a4d191934a83fc0d46494dab60996532805d343aa643f318b",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "consume-2-2",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6a6ae71290a90c216cac000c726b35d732863a55fd691cf07266907e4f34489e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "consume-2-2"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "de877929599b56c3ef93aa288c1e0dd4bcb355b1f6f4cc6dd45fa26d5dac829c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "trace-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "9d0f27d7949a2cac42ae4ef247b0cc936473a740db29802665dea3caf1ad8aa2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "trace-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e8a283bdc2369a12ac8181fd511867c5653cf7bd87f428a63c1ef97995bfe5d6",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "trace-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "13dfd4b9445075ab03f327112af4484864f5483bb869afba5a855c9e32059d7f",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "trace-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "0949d78617f3444d6746bd9738c5724e43a53d53969e9ddb8a715f0a1411ab51",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "trace-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "trace-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "228c3e35cd6ecdd6de8636ff2b13dd31e68b809f4d58a378bb6f1600d6560a90",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "trace-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-0-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-0-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-0-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-0-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-1-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-1-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-0-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "fa3349e9f0fb3f128bc1a1046c7979c3589e390b74b3470f5e8a922ef0c8d235",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1fbf935ffab690b7113335ba157384ea60cacba9474218c3ad083c7348a3273e",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "normal-2-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa82eb79aba9643a93f665504d8f87610c4b7733359811b39c482e532ee278",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "normal-2-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-0-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-0-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-1-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-1-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-0-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-0-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-0-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-0-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-1-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-1-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-1-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-1-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-2-0",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-2-0"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-2-2-1",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-2-2-1"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-move",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "6f30101e2b6c3910b21ed00379e77a81150ff09817710896c845d7abc3f550b2",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-move"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-empty-default",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "8e47d7e62cd78429ed2d6ba3c8240e3f3d83f15b7f0840b2fcddf1ba973c5feb",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-empty-default"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-empty-detached",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e436e7ac588ec47ed99d6176d54de6b01b46f8d3dd55c4b1bd8c077c4019e87a",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-empty-detached"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "noalloc-null-current",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5debd5b292bfd99551b60b21f1e065258e5f60da785949d26b9f70a61f1153e0",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "noalloc-null-current"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "prefix-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "1a9803064a02a72b1f6874336ef28bf4222c2b74cc73a09b9d23928238f63bc6",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "prefix-negative-control"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "prefix-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "5bc4a4d5d7967caad6f64a515edc7636455534244192b369567f539411973e3c",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "prefix-negative-control"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "order-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "e7dc5c3dafb54667f163b7657936659e249b0b7e7ab13cb3689c99053934a194",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "order-negative-control"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "order-negative-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "73fa894ac62fc9b60cf96232e0cc5cda43ebb03ac046ebe889775cbc45dd4754",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "order-negative-control"
+      ]
+    },
+    {
+      "instrument": "asan",
+      "mode": "use-after-free",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": "heap-use-after-free",
+      "log_sha256": "7a190dd1a012ced6e5883ff85e6d208db7eb1015ac2a0c1419c8d2d1843baca0",
+      "retained": [],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+        "use-after-free"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "leak",
+      "exit_code": 1,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": "retained-blocks",
+      "log_sha256": "9d82109dec2df2830651c6039797700f3fb17391c757d0c589d1d5a51a33d285",
+      "retained": [
+        [
+          "1",
+          "40"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "leak"
+      ]
+    },
+    {
+      "instrument": "crt",
+      "mode": "allocation-hook-control",
+      "exit_code": 0,
+      "timed_out": false,
+      "passed": true,
+      "expected_diagnostic": null,
+      "log_sha256": "f1448f8e36e5f1f33eb7762bf331cd7a0bd602df228eb718d53d7e542500644b",
+      "retained": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+        "allocation-hook-control"
+      ]
+    }
+  ],
+  "pairs": {
+    "gcc": {
+      "paired_traces": 6,
+      "scalar_observations": 36288,
+      "report_sha256": "7774afc2df2bf51b9cebfb69038f23c16c1cda2c777ff33d3ad30acd778d712a",
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36og\\hermite_observer_probe.exe",
+          "sha256": "b924e5d02262a36196d8bffb36e606fac7628d223078879d1acae54473acee15"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qg\\hermite_observer_probe.exe",
+          "sha256": "8f91ec56542e664f84176dee96c084d3c0455aabf4abb1d8c636199085d1dd5c"
+        }
+      }
+    },
+    "asan": {
+      "paired_traces": 6,
+      "scalar_observations": 36288,
+      "report_sha256": "e3781f2b018395a57bc1a046902d236c35c3559679d2d7de7fbb1585eb222c54",
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36oa\\RelWithDebInfo\\hermite_observer_probe.exe",
+          "sha256": "48b4540c19a54c8da05277c328f42b4012b71fb27bb6abc6827f7031bc597da4"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qa\\RelWithDebInfo\\hermite_observer_probe.exe",
+          "sha256": "d61e7a25c85b54d2306af8bae91aa5be7bb7d7f331f19cd094070f275210042e"
+        }
+      }
+    },
+    "crt": {
+      "paired_traces": 6,
+      "scalar_observations": 36288,
+      "report_sha256": "e667d824e014e7f775106948ed853c4e5dea196cb1a88774fcbd431e5c150419",
+      "executables": {
+        "original": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36od\\Debug\\hermite_observer_probe.exe",
+          "sha256": "3429cf7015d9a9245c4163ff4b066482bf04eb327e1607ff73b0796f40a48289"
+        },
+        "candidate": {
+          "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s36qd\\Debug\\hermite_observer_probe.exe",
+          "sha256": "820772c34c7a6bbd2db084c6c412bec84eea69f38e7107440c7fa4e8dbe66e51"
+        }
+      }
+    }
+  },
+  "production_inputs": 488,
+  "unchanged_production_inputs": 486,
+  "original_manifest_sha256": "a4cdb767f37a30c955d670588937e11a9d70420c2d26c22fc7579125f4e28804",
+  "preparation_failure": {
+    "status": "failed",
+    "instrument": "asan",
+    "mode": "original-trace-0-0",
+    "log": "build/s36-focused-pairs-asan/original-trace-0-0.log",
+    "observation": "No process output; runner omitted explicit ASan runtime PATH. Qualification cases and GCC pairs already passed. Corrected runner now accepts required runtime and records failed exits. Only uncompleted MSVC pairs are continued."
+  },
+  "formatting": "Focused probes precede explicit whitespace-only formatting of the new probe. Exact published-head and main campaigns must rebuild all six probes and remeasure the full battery and comparisons. No binary equality across builds is assumed.",
+  "limits": "Actual Hermite, curve, Geometry and synchronization units. Three incidence layouts, two surfaces, all 16 constructor flag combinations, three retirement positions, empty/populated prefixes and repeated/null observers. Require stable removal of every matching current-incidence observer, preserved foreign entries and Geometry dependent retirement before curves during destruction, move construction, populated move assignment and self move. Twenty-two denial-enabled operations must allocate nothing; actual hook/UAF/leak and independent prefix/order controls remain mandatory. Live numerical traces are separate and retire registrations while patches are alive for the original comparison. Curves must outlive patches; manual curve-first deletion, arbitrary ReplaceCurve/publications, copied curve observers, failed construction/adoption, SubMesh observer lifetime, cache/metadata/acceptance rollback and full-process/parallel/LSan/UBSan remain unqualified. Repeated slots and degenerate order fixtures are lifetime guards, not geometric validity. ASan leaks are disabled; static Debug CRT independently supplies terminal retention."
+}
