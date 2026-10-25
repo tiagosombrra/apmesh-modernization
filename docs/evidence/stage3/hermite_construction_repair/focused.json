@@ -1,0 +1,31 @@
+{
+  "status": "focused candidate qualification passed; full delivery pending",
+  "source_base": "8eff0d6c4d69bb413674b003a22e49c3c6faca46",
+  "production_delta": [
+    "src/data/patch/patch_hermite.cpp"
+  ],
+  "expected_outcomes": 82,
+  "constructor_sweeps_including_contract_repetitions": 768,
+  "constructor_denials_including_contract_repetitions": 5888,
+  "model_denials_including_contract_repetitions": 212,
+  "focused_report_sha256": "80f86e703fd0859782ff3312237cd0f967f9fd8607234ba2f200795910a566e8",
+  "original_crt_stronger_contract_exit": 2,
+  "original_gcc_release_negative_control": "did not detect the defect; only four allocations observed in the chosen sweep; not accepted as failure coverage",
+  "preserved_original_audit_files": {
+    "docs\\evidence\\stage3\\hermite_construction\\callers.json": "a0e67abc5b3e79f4f3b644ffcc339589f766574762f69d29098085c36ccc7ce9",
+    "docs\\evidence\\stage3\\hermite_construction\\CMakeLists.txt": "1cc616bdbde09cd8fbf34325278c12324868216b1918b3202c5c5330414bb450",
+    "docs\\evidence\\stage3\\hermite_construction\\inventory.py": "8058ac1110faf77db5a13ca8fe10263cc18a56222e998a1375455f59a720f2c4",
+    "docs\\evidence\\stage3\\hermite_construction\\probe.cpp": "cad0ed94b66b2a82f8b4079f6cf352a68dcc5102c8e78daf5124b10c525847f9"
+  },
+  "executables": {
+    "asan": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s37qa\\RelWithDebInfo\\hermite_construction_probe.exe",
+      "sha256": "67bc7359f1311844f8daade26f4ed02d7d6dd0a37ab76c1d264ff1bdb6b9935d"
+    },
+    "crt": {
+      "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\s37qd\\Debug\\hermite_construction_probe.exe",
+      "sha256": "85abc4e17efdb9896f8cec871d640e90041e9cc7c163b0f364054146420616e5"
+    }
+  },
+  "limits": "Live nonnull borrowed Hermite curves; exclusive append-only constructor publication. Three incidence layouts, four foreign/null prefixes and all sixteen flags. Each actual denial must propagate without additional allocation, restore the exact prefix and allow successful construction and retirement on retry. ModelBaseQuadrada is swept independently. No complete loader/adaptive/parallel/LSan/UBSan qualification follows."
+}

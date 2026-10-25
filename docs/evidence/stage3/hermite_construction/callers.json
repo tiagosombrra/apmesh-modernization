@@ -1,0 +1,834 @@
+{
+  "source_base": "8eff0d6c4d69bb413674b003a22e49c3c6faca46",
+  "classification": "engineering-only literal source audit",
+  "construction_count": 25,
+  "construction_counts": {
+    "src/input_output/models_3d.cpp": 23,
+    "src/input_output/patch_reader.cpp": 2
+  },
+  "model_construction_counts": {
+    "ModelBaseCircular": 1,
+    "ModelBaseQuadrada": 1,
+    "ModelBordaCurva": 1,
+    "ModelDoisPatches": 2,
+    "ModelLadoDescendente": 1,
+    "ModelNariz": 14,
+    "ModelParaboloide": 1,
+    "ModelPneu": 2
+  },
+  "constructions": [
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 544,
+      "source": "MakePatch<PatchHermite>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4, *patch1_tw00,",
+      "arguments": "geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4, *patch1_tw00,\n                       *patch1_tw10, *patch1_tw01, *patch1_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelParaboloide"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 598,
+      "source": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, tw00, tw10, tw01, tw11);",
+      "arguments": "geometry, c1, c2, c3, c4, tw00, tw10, tw01, tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelPneu"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 600,
+      "source": "MakePatch<PatchHermite>(geometry, c5, c4, c6, c2, tw_00, tw_10, tw_01, tw_11);",
+      "arguments": "geometry, c5, c4, c6, c2, tw_00, tw_10, tw_01, tw_11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelPneu"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 640,
+      "source": "Patch* patch1 = MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11);",
+      "arguments": "geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelLadoDescendente"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 682,
+      "source": "Patch* patch1 = MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11);",
+      "arguments": "geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelBaseCircular"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 723,
+      "source": "Patch* patch1 = MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11);",
+      "arguments": "geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelBaseQuadrada"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 764,
+      "source": "Patch* patch1 = MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11);",
+      "arguments": "geometry, c1, c2, c3, c4, *tw00, *tw10, *tw01, *tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelBordaCurva"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 824,
+      "source": "MakePatch<PatchHermite>(geometry, c1, c2, c3, c4, *tw100, *tw110, *tw101, *tw111);",
+      "arguments": "geometry, c1, c2, c3, c4, *tw100, *tw110, *tw101, *tw111",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelDoisPatches"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 826,
+      "source": "MakePatch<PatchHermite>(geometry, c5, c6, c7, c2, *tw200, *tw210, *tw201, *tw211);",
+      "arguments": "geometry, c5, c6, c7, c2, *tw200, *tw210, *tw201, *tw211",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelDoisPatches"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 872,
+      "source": "MakePatch<PatchHermite>(geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4, *patch1_tw00,",
+      "arguments": "geometry, patch1_c1, patch1_c2, patch1_c3, patch1_c4, *patch1_tw00,\n                       *patch1_tw10, *patch1_tw01, *patch1_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 913,
+      "source": "MakePatch<PatchHermite>(geometry, patch2_c1, patch2_c2, patch2_c3, patch2_c4, *patch2_tw00,",
+      "arguments": "geometry, patch2_c1, patch2_c2, patch2_c3, patch2_c4, *patch2_tw00,\n                       *patch2_tw10, *patch2_tw01, *patch2_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 963,
+      "source": "MakePatch<PatchHermite>(geometry, patch3_c1, patch3_c2, patch3_c3, patch3_c4, *patch3_tw00,",
+      "arguments": "geometry, patch3_c1, patch3_c2, patch3_c3, patch3_c4, *patch3_tw00,\n                       *patch3_tw10, *patch3_tw01, *patch3_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1000,
+      "source": "MakePatch<PatchHermite>(geometry, patch4_c1, patch4_c2, patch4_c3, patch4_c4, *patch4_tw00,",
+      "arguments": "geometry, patch4_c1, patch4_c2, patch4_c3, patch4_c4, *patch4_tw00,\n                       *patch4_tw10, *patch4_tw01, *patch4_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1043,
+      "source": "MakePatch<PatchHermite>(geometry, patch5_c1, patch5_c2, patch5_c3, patch5_c4, *patch5_tw00,",
+      "arguments": "geometry, patch5_c1, patch5_c2, patch5_c3, patch5_c4, *patch5_tw00,\n                       *patch5_tw10, *patch5_tw01, *patch5_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1088,
+      "source": "MakePatch<PatchHermite>(geometry, patch6_c1, patch6_c2, patch6_c3, patch6_c4, *patch6_tw00,",
+      "arguments": "geometry, patch6_c1, patch6_c2, patch6_c3, patch6_c4, *patch6_tw00,\n                       *patch6_tw10, *patch6_tw01, *patch6_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1128,
+      "source": "MakePatch<PatchHermite>(geometry, patch8_c1, patch8_c2, patch8_c3, patch8_c4, *patch8_tw00,",
+      "arguments": "geometry, patch8_c1, patch8_c2, patch8_c3, patch8_c4, *patch8_tw00,\n                       *patch8_tw10, *patch8_tw01, *patch8_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1166,
+      "source": "Patch* patch10 = MakePatch<PatchHermite>(geometry, patch10_c1, patch10_c2, patch10_c3,",
+      "arguments": "geometry, patch10_c1, patch10_c2, patch10_c3,\n                                    patch10_c4, *patch10_tw00, *patch10_tw10,\n                                    *patch10_tw01, *patch10_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1203,
+      "source": "MakePatch<PatchHermite>(geometry, patch7_c1, patch7_c2, patch7_c3, patch7_c4, *patch7_tw00,",
+      "arguments": "geometry, patch7_c1, patch7_c2, patch7_c3, patch7_c4, *patch7_tw00,\n                       *patch7_tw10, *patch7_tw01, *patch7_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1243,
+      "source": "MakePatch<PatchHermite>(geometry, patch9_c1, patch9_c2, patch9_c3, patch9_c4, *patch9_tw00,",
+      "arguments": "geometry, patch9_c1, patch9_c2, patch9_c3, patch9_c4, *patch9_tw00,\n                       *patch9_tw10, *patch9_tw01, *patch9_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1282,
+      "source": "Patch* patch11 = MakePatch<PatchHermite>(geometry, patch11_c1, patch11_c2, patch11_c3,",
+      "arguments": "geometry, patch11_c1, patch11_c2, patch11_c3,\n                                    patch11_c4, *patch11_tw00, *patch11_tw10,\n                                    *patch11_tw01, *patch11_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1322,
+      "source": "Patch* patch12 = MakePatch<PatchHermite>(geometry, patch12_c1, patch12_c2, patch12_c3,",
+      "arguments": "geometry, patch12_c1, patch12_c2, patch12_c3,\n                                    patch12_c4, *patch12_tw00, *patch12_tw10,\n                                    *patch12_tw01, *patch12_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1361,
+      "source": "Patch* patch13 = MakePatch<PatchHermite>(geometry, patch13_c1, patch13_c2, patch13_c3,",
+      "arguments": "geometry, patch13_c1, patch13_c2, patch13_c3,\n                                    patch13_c4, *patch13_tw00, *patch13_tw10,\n                                    *patch13_tw01, *patch13_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 1401,
+      "source": "Patch* patch14 = MakePatch<PatchHermite>(geometry, patch14_c1, patch14_c2, patch14_c3,",
+      "arguments": "geometry, patch14_c1, patch14_c2, patch14_c3,\n                                    patch14_c4, *patch14_tw00, *patch14_tw10,\n                                    *patch14_tw01, *patch14_tw11",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+      "enclosing_model": "ModelNariz"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 82,
+      "source": "patch_hermite_ = new PatchHermite();",
+      "arguments": "",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "enclosing_model": null
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 176,
+      "source": "patch_hermite_ = new PatchHermite();",
+      "arguments": "",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+      "enclosing_model": null
+    }
+  ],
+  "patch_getter_spellings": [
+    {
+      "path": "include/data/curve/curve_adaptive.h",
+      "line": 38,
+      "source": "Patch* GetPatch(const unsigned int position);",
+      "arguments": "const unsigned int position",
+      "file_sha256": "f86da2e344ad878308fb42cb9adfe141bab5676d67b10d086df6731ce947b017"
+    },
+    {
+      "path": "include/data/geometry.h",
+      "line": 46,
+      "source": "Patch* GetPatch(unsigned int position) noexcept;",
+      "arguments": "unsigned int position",
+      "file_sha256": "cdd8a4c447e086dbebacd3418580eab5a9adf800d008d2bb4b558c771017dd77"
+    },
+    {
+      "path": "include/data/geometry.h",
+      "line": 47,
+      "source": "const Patch* GetPatch(unsigned int position) const noexcept;",
+      "arguments": "unsigned int position",
+      "file_sha256": "cdd8a4c447e086dbebacd3418580eab5a9adf800d008d2bb4b558c771017dd77"
+    },
+    {
+      "path": "include/data/mesh/sub_mesh.h",
+      "line": 26,
+      "source": "Patch* GetPatch() const noexcept;",
+      "arguments": "",
+      "file_sha256": "273d6f9aec08da7b17a6a5db7cd5f4e6d44c6aef41da353042123c7426de72b3"
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 830,
+      "source": "midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(i))));",
+      "arguments": "i",
+      "file_sha256": "eccbfb190cadac3b7a82907a82c62bae36f525fc0f4f4e824bd1f41e43083110"
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 847,
+      "source": "midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(0))));",
+      "arguments": "0",
+      "file_sha256": "eccbfb190cadac3b7a82907a82c62bae36f525fc0f4f4e824bd1f41e43083110"
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1259,
+      "source": "midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(i))));",
+      "arguments": "i",
+      "file_sha256": "eccbfb190cadac3b7a82907a82c62bae36f525fc0f4f4e824bd1f41e43083110"
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1276,
+      "source": "midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(0))));",
+      "arguments": "0",
+      "file_sha256": "eccbfb190cadac3b7a82907a82c62bae36f525fc0f4f4e824bd1f41e43083110"
+    },
+    {
+      "path": "src/data/curve/curve_adaptive.cpp",
+      "line": 67,
+      "source": "Patch* CurveAdaptive::GetPatch(const unsigned int position) {",
+      "arguments": "const unsigned int position",
+      "file_sha256": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029"
+    },
+    {
+      "path": "src/data/geometry.cpp",
+      "line": 68,
+      "source": "Patch* Geometry::GetPatch(unsigned int position) noexcept {",
+      "arguments": "unsigned int position",
+      "file_sha256": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5"
+    },
+    {
+      "path": "src/data/geometry.cpp",
+      "line": 72,
+      "source": "const Patch* Geometry::GetPatch(unsigned int position) const noexcept {",
+      "arguments": "unsigned int position",
+      "file_sha256": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5"
+    },
+    {
+      "path": "src/data/mesh/sub_mesh.cpp",
+      "line": 22,
+      "source": "Patch* SubMesh::GetPatch() const noexcept { return patch_; }",
+      "arguments": "",
+      "file_sha256": "27a405b08c9bca17397cf1c86cf2c487dd0e96db5a366f9ed306a24ccb060b37"
+    },
+    {
+      "path": "src/generator/curve_synchronization.cpp",
+      "line": 43,
+      "source": "if (Patch* patch = curve->GetPatch(i))",
+      "arguments": "i",
+      "file_sha256": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 47,
+      "source": "static_cast<PatchCoons*>(geometry->GetPatch(patch_index));",
+      "arguments": "patch_index",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 584,
+      "source": "if (geometry->GetPatch(i) == patch) {",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 590,
+      "source": "geometry->GetPatch(patch_id) == patch) {",
+      "arguments": "patch_id",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 1448,
+      "source": "geometry->GetPatch(patch_index)->SetSubMesh(",
+      "arguments": "patch_index",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 2685,
+      "source": "Patch* patch = curve->GetPatch(patch_index);",
+      "arguments": "patch_index",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 2790,
+      "source": "Patch* patch = curve->GetPatch(patch_index);",
+      "arguments": "patch_index",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 2914,
+      "source": "PatchCoons* p = static_cast<PatchCoons*>(geometry->GetPatch(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 3535,
+      "source": "geometry->GetPatch(i)->SetSubMesh(mesh->GetSubMeshAdaptiveByPosition(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 3684,
+      "source": "const Patch* patch = geometry->GetPatch(i);",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4132,
+      "source": "const Patch* patch = geometry->GetPatch(i);",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4335,
+      "source": "const Patch* patch = geometry->GetPatch(i);",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4382,
+      "source": "const Patch* patch = geometry->GetPatch(current);",
+      "arguments": "current",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4390,
+      "source": "Patch* neighbor_patch = curve->GetPatch(p);",
+      "arguments": "p",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4585,
+      "source": "ResolvePatchIndex(geometry, curve->GetPatch(p));",
+      "arguments": "p",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4669,
+      "source": "static_cast<const PatchCoons*>(geometry->GetPatch(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4677,
+      "source": "const Patch* neighbor = curve->GetPatch(p);",
+      "arguments": "p",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4763,
+      "source": "Patch* patch = curve->GetPatch(i);",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4808,
+      "source": "Patch* patch = curve->GetPatch(i);",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5435,
+      "source": "Patch* p = sub->GetPatch();",
+      "arguments": "",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5561,
+      "source": "PatchCoons* patch = static_cast<PatchCoons*>(geo->GetPatch(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5659,
+      "source": "PatchCoons* p = static_cast<PatchCoons*>(geo->GetPatch(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5663,
+      "source": "geo->GetPatch(i)->SetSubMesh(malha->GetSubMeshAdaptiveByPosition(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5721,
+      "source": "PatchCoons* p = static_cast<PatchCoons*>(geo->GetPatch(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6063,
+      "source": "geo->GetPatch(i)->SetSubMesh(malha->GetSubMeshAdaptiveByPosition(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6159,
+      "source": "Patch* p = sub->GetPatch();",
+      "arguments": "",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6382,
+      "source": "Patch* p = sub->GetPatch();",
+      "arguments": "",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 7767,
+      "source": "PatchCoons* patch = static_cast<PatchCoons*>(geometry->GetPatch(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 7785,
+      "source": "PatchCoons* patch = static_cast<PatchCoons*>(geometry->GetPatch(i));",
+      "arguments": "i",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/input_output/incidence_snapshot.cpp",
+      "line": 48,
+      "source": "const auto* patch = dynamic_cast<const PatchBezier*>(submesh->GetPatch());",
+      "arguments": "",
+      "file_sha256": "00181029b23c95caddc977570a14fd613be24eec4cd912a85f19cd6045c8175f"
+    }
+  ],
+  "observer_api_spellings": [
+    {
+      "path": "include/data/curve/curve_adaptive.h",
+      "line": 28,
+      "source": "void InsertPatch(Patch* patch);",
+      "arguments": "Patch* patch",
+      "file_sha256": "f86da2e344ad878308fb42cb9adfe141bab5676d67b10d086df6731ce947b017"
+    },
+    {
+      "path": "include/data/curve/curve_adaptive.h",
+      "line": 31,
+      "source": "void RemovePatchObservers(const Patch* patch) noexcept;",
+      "arguments": "const Patch* patch",
+      "file_sha256": "f86da2e344ad878308fb42cb9adfe141bab5676d67b10d086df6731ce947b017"
+    },
+    {
+      "path": "include/data/curve/curve_adaptive.h",
+      "line": 32,
+      "source": "void ClearPatches();",
+      "arguments": "",
+      "file_sha256": "f86da2e344ad878308fb42cb9adfe141bab5676d67b10d086df6731ce947b017"
+    },
+    {
+      "path": "include/data/curve/curve_adaptive.h",
+      "line": 35,
+      "source": "void TruncatePatchObservers(unsigned int retained_count) noexcept;",
+      "arguments": "unsigned int retained_count",
+      "file_sha256": "f86da2e344ad878308fb42cb9adfe141bab5676d67b10d086df6731ce947b017"
+    },
+    {
+      "path": "include/data/geometry.h",
+      "line": 41,
+      "source": "void InsertPatch(std::unique_ptr<Patch> patch);",
+      "arguments": "std::unique_ptr<Patch> patch",
+      "file_sha256": "cdd8a4c447e086dbebacd3418580eab5a9adf800d008d2bb4b558c771017dd77"
+    },
+    {
+      "path": "include/data/geometry.h",
+      "line": 42,
+      "source": "void InsertPatch(Patch* patch); // takes ownership",
+      "arguments": "Patch* patch",
+      "file_sha256": "cdd8a4c447e086dbebacd3418580eab5a9adf800d008d2bb4b558c771017dd77"
+    },
+    {
+      "path": "include/data/patch/patch_coons.h",
+      "line": 21,
+      "source": "void ReplaceCurve(unsigned int position, CurveAdaptive* curve);",
+      "arguments": "unsigned int position, CurveAdaptive* curve",
+      "file_sha256": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c"
+    },
+    {
+      "path": "include/data/patch/patch_observer_scope.h",
+      "line": 22,
+      "source": "curves_[index]->TruncatePatchObservers(counts_[index]);",
+      "arguments": "counts_[index]",
+      "file_sha256": "e3a6718750a5c34fbedb895f4106b123022991636b112dcfdfb7b42f17b8591a"
+    },
+    {
+      "path": "include/input_output/models_3d.h",
+      "line": 57,
+      "source": "geometry->InsertPatch(std::move(patch));",
+      "arguments": "std::move(patch)",
+      "file_sha256": "6ba1d18ea73c26a5eb5ec239eb5210a66129c0e4ff11e99885de1944b142f05b"
+    },
+    {
+      "path": "src/data/curve/curve_adaptive.cpp",
+      "line": 42,
+      "source": "void CurveAdaptive::InsertPatch(Patch* patch) {",
+      "arguments": "Patch* patch",
+      "file_sha256": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029"
+    },
+    {
+      "path": "src/data/curve/curve_adaptive.cpp",
+      "line": 46,
+      "source": "void CurveAdaptive::RemovePatchObservers(const Patch* patch) noexcept {",
+      "arguments": "const Patch* patch",
+      "file_sha256": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029"
+    },
+    {
+      "path": "src/data/curve/curve_adaptive.cpp",
+      "line": 50,
+      "source": "void CurveAdaptive::ClearPatches() { this->patches_.clear(); }",
+      "arguments": "",
+      "file_sha256": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029"
+    },
+    {
+      "path": "src/data/curve/curve_adaptive.cpp",
+      "line": 52,
+      "source": "void CurveAdaptive::TruncatePatchObservers(unsigned int retained_count) noexcept {",
+      "arguments": "unsigned int retained_count",
+      "file_sha256": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029"
+    },
+    {
+      "path": "src/data/geometry.cpp",
+      "line": 58,
+      "source": "void Geometry::InsertPatch(std::unique_ptr<Patch> patch) {",
+      "arguments": "std::unique_ptr<Patch> patch",
+      "file_sha256": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5"
+    },
+    {
+      "path": "src/data/geometry.cpp",
+      "line": 62,
+      "source": "void Geometry::InsertPatch(Patch* patch) { InsertPatch(std::unique_ptr<Patch>(patch)); }",
+      "arguments": "Patch* patch",
+      "file_sha256": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5"
+    },
+    {
+      "path": "src/data/geometry.cpp",
+      "line": 62,
+      "source": "void Geometry::InsertPatch(Patch* patch) { InsertPatch(std::unique_ptr<Patch>(patch)); }",
+      "arguments": "std::unique_ptr<Patch>(patch)",
+      "file_sha256": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 123,
+      "source": "static_cast<CurveAdaptiveParametricBezier*>(curve1)->InsertPatch(this);",
+      "arguments": "this",
+      "file_sha256": "f7d807b5040140a0689f042eaeea598d69a5ef54479e8b1ec3a0ab578ffb29c8"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 124,
+      "source": "static_cast<CurveAdaptiveParametricBezier*>(curve2)->InsertPatch(this);",
+      "arguments": "this",
+      "file_sha256": "f7d807b5040140a0689f042eaeea598d69a5ef54479e8b1ec3a0ab578ffb29c8"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 125,
+      "source": "static_cast<CurveAdaptiveParametricBezier*>(curve3)->InsertPatch(this);",
+      "arguments": "this",
+      "file_sha256": "f7d807b5040140a0689f042eaeea598d69a5ef54479e8b1ec3a0ab578ffb29c8"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 126,
+      "source": "static_cast<CurveAdaptiveParametricBezier*>(curve4)->InsertPatch(this);",
+      "arguments": "this",
+      "file_sha256": "f7d807b5040140a0689f042eaeea598d69a5ef54479e8b1ec3a0ab578ffb29c8"
+    },
+    {
+      "path": "src/data/patch/patch_bezier.cpp",
+      "line": 376,
+      "source": "curve->RemovePatchObservers(this);",
+      "arguments": "this",
+      "file_sha256": "f7d807b5040140a0689f042eaeea598d69a5ef54479e8b1ec3a0ab578ffb29c8"
+    },
+    {
+      "path": "src/data/patch/patch_coons.cpp",
+      "line": 16,
+      "source": "void PatchCoons::ReplaceCurve(unsigned int position, CurveAdaptive* curve) {",
+      "arguments": "unsigned int position, CurveAdaptive* curve",
+      "file_sha256": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 24,
+      "source": "curve->RemovePatchObservers(this);",
+      "arguments": "this",
+      "file_sha256": "42803b961891b75659646ff7c95f19c85ccd2894002faa182f3949beb0b0cfea"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 86,
+      "source": "static_cast<CurveAdaptiveParametricHermite*>(curve1)->InsertPatch(this);",
+      "arguments": "this",
+      "file_sha256": "42803b961891b75659646ff7c95f19c85ccd2894002faa182f3949beb0b0cfea"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 87,
+      "source": "static_cast<CurveAdaptiveParametricHermite*>(curve2)->InsertPatch(this);",
+      "arguments": "this",
+      "file_sha256": "42803b961891b75659646ff7c95f19c85ccd2894002faa182f3949beb0b0cfea"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 88,
+      "source": "static_cast<CurveAdaptiveParametricHermite*>(curve3)->InsertPatch(this);",
+      "arguments": "this",
+      "file_sha256": "42803b961891b75659646ff7c95f19c85ccd2894002faa182f3949beb0b0cfea"
+    },
+    {
+      "path": "src/data/patch/patch_hermite.cpp",
+      "line": 89,
+      "source": "static_cast<CurveAdaptiveParametricHermite*>(curve4)->InsertPatch(this);",
+      "arguments": "this",
+      "file_sha256": "42803b961891b75659646ff7c95f19c85ccd2894002faa182f3949beb0b0cfea"
+    },
+    {
+      "path": "src/estimate/charge_input_estimate.cpp",
+      "line": 153,
+      "source": "geometry->InsertPatch(std::move(pending_patch));",
+      "arguments": "std::move(pending_patch)",
+      "file_sha256": "070d8a444fcbb3011afc2d4548f61e9b081fd1f9a85efc136474b042869d2ff8"
+    },
+    {
+      "path": "src/generator/curve_synchronization.cpp",
+      "line": 26,
+      "source": "clone->ClearPatches();",
+      "arguments": "",
+      "file_sha256": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3"
+    },
+    {
+      "path": "src/generator/curve_synchronization.cpp",
+      "line": 28,
+      "source": "clone->InsertPatch(patch);",
+      "arguments": "patch",
+      "file_sha256": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3"
+    },
+    {
+      "path": "src/generator/curve_synchronization.cpp",
+      "line": 58,
+      "source": "curve->ClearPatches();",
+      "arguments": "",
+      "file_sha256": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3"
+    },
+    {
+      "path": "src/generator/curve_synchronization.cpp",
+      "line": 59,
+      "source": "curve->InsertPatch(incident_patches.front());",
+      "arguments": "incident_patches.front()",
+      "file_sha256": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3"
+    },
+    {
+      "path": "src/generator/curve_synchronization.cpp",
+      "line": 67,
+      "source": "patch->ReplaceCurve(e, replacement);",
+      "arguments": "e, replacement",
+      "file_sha256": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 1068,
+      "source": "geometry->InsertPatch(patch_bezier);",
+      "arguments": "patch_bezier",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 705,
+      "source": "geometry->InsertPatch(std::move(pending_patch));",
+      "arguments": "std::move(pending_patch)",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b"
+    }
+  ],
+  "hermite_loader_spellings": [
+    {
+      "path": "include/input_output/patch_reader.h",
+      "line": 28,
+      "source": "std::list<PatchHermite *> LoaderBPFileHermite();",
+      "arguments": "",
+      "file_sha256": "4be8ac02df2632373981dd6b6bc02ef325445be5c10735285cc242fec64657fa"
+    },
+    {
+      "path": "src/input_output/patch_reader.cpp",
+      "line": 73,
+      "source": "std::list<PatchHermite*> PatchReader::LoaderBPFileHermite() {",
+      "arguments": "",
+      "file_sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b"
+    }
+  ],
+  "base_square_model_spellings": [
+    {
+      "path": "include/input_output/models_3d.h",
+      "line": 26,
+      "source": "Geometry *ModelBaseQuadrada(Geometry *geometry);",
+      "arguments": "Geometry *geometry",
+      "file_sha256": "6ba1d18ea73c26a5eb5ec239eb5210a66129c0e4ff11e99885de1944b142f05b"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 819,
+      "source": "model.SetGeometry(models3d.ModelBaseQuadrada(&geometry));",
+      "arguments": "&geometry",
+      "file_sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f"
+    },
+    {
+      "path": "src/input_output/models_3d.cpp",
+      "line": 690,
+      "source": "Geometry* Models3d::ModelBaseQuadrada(Geometry* geometry) {",
+      "arguments": "Geometry* geometry",
+      "file_sha256": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf"
+    }
+  ],
+  "input_files": {
+    "include/data/curve/curve_adaptive.h": "f86da2e344ad878308fb42cb9adfe141bab5676d67b10d086df6731ce947b017",
+    "include/data/geometry.h": "cdd8a4c447e086dbebacd3418580eab5a9adf800d008d2bb4b558c771017dd77",
+    "include/data/mesh/sub_mesh.h": "273d6f9aec08da7b17a6a5db7cd5f4e6d44c6aef41da353042123c7426de72b3",
+    "include/data/patch/patch_coons.h": "8f90f7bb3c338ff4407186db8742f7db117b908200293746722130dd92914d7c",
+    "include/data/patch/patch_hermite.h": "c592a97bd91c876cfc45f356e59e36c1216e3c11be73526d3f699cda22d53c4c",
+    "include/data/patch/patch_observer_scope.h": "e3a6718750a5c34fbedb895f4106b123022991636b112dcfdfb7b42f17b8591a",
+    "include/input_output/models_3d.h": "6ba1d18ea73c26a5eb5ec239eb5210a66129c0e4ff11e99885de1944b142f05b",
+    "include/input_output/patch_reader.h": "4be8ac02df2632373981dd6b6bc02ef325445be5c10735285cc242fec64657fa",
+    "src/adapter/adapter.cpp": "eccbfb190cadac3b7a82907a82c62bae36f525fc0f4f4e824bd1f41e43083110",
+    "src/data/curve/curve_adaptive.cpp": "0c6f0191b5aa1c22257c70220ea64dc3ca430f03ed179d29526535de4069c029",
+    "src/data/geometry.cpp": "53cca8c4dfaba96f55bee45998e8d6bcf17a25fdb7926245d59e60e29fc5bdf5",
+    "src/data/mesh/sub_mesh.cpp": "27a405b08c9bca17397cf1c86cf2c487dd0e96db5a366f9ed306a24ccb060b37",
+    "src/data/patch/patch_bezier.cpp": "f7d807b5040140a0689f042eaeea598d69a5ef54479e8b1ec3a0ab578ffb29c8",
+    "src/data/patch/patch_coons.cpp": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
+    "src/data/patch/patch_hermite.cpp": "42803b961891b75659646ff7c95f19c85ccd2894002faa182f3949beb0b0cfea",
+    "src/estimate/charge_input_estimate.cpp": "070d8a444fcbb3011afc2d4548f61e9b081fd1f9a85efc136474b042869d2ff8",
+    "src/generator/curve_synchronization.cpp": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3",
+    "src/generator/generator_adaptive.cpp": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f",
+    "src/input_output/incidence_snapshot.cpp": "00181029b23c95caddc977570a14fd613be24eec4cd912a85f19cd6045c8175f",
+    "src/input_output/models_3d.cpp": "4d8257e908cfeac23050e3719149ee7ceacf746bf82723fe136e0056015ae9bf",
+    "src/input_output/patch_reader.cpp": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b"
+  },
+  "source_observations": [
+    "Four ordered reciprocal constructor publications; the completed destructor now deregisters current curves but is not invoked for failed construction.",
+    "No Hermite constructor observer rollback scope is present; failed construction is the current isolated audit boundary.",
+    "Models3d MakePatch owns the pending result and consumes it through Geometry adoption.",
+    "Geometry has no individual patch erasure API; complete destruction retires patches before curves.",
+    "GetPatch spellings include geometry, mesh and curve APIs, declarations and definitions; manual context is required."
+  ],
+  "limits": "Comments and quoted literals are masked while preserving line offsets. This is a literal inventory, not a C++ parser, alias/macro/template-instantiation proof or executed caller coverage. Generic GetPatch spellings are potential review roots, not all Hermite consumers. No serial CLI failure is inferred."
+}

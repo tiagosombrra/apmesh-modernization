@@ -28,8 +28,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 588,
-    "first_party_include_edges": 339
+    "literal_include_directives": 589,
+    "first_party_include_edges": 340
   },
   "cross_component_directives": [
     {
@@ -387,11 +387,15 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "0c51d8045d159f4c187923f6951ec7c63b234f12d0612b93566ef0dde4c7a390"
+      "sha256": "ab5c0badad16d703d3999402737aa78b3186646cddd9025f60e8d7a957917c62"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
       "sha256": "483af56ff42b3cc35195b9ad469bbe84588c58868799e98d375a6b9f9c36d1b5"
+    },
+    {
+      "path": "tests/hermite_construction_memory/CMakeLists.txt",
+      "sha256": "7799115a141732cdfe150b9b74f3abd99cffcec8992c469e5811de8b0aeab903"
     },
     {
       "path": "tests/hermite_observer_memory/CMakeLists.txt",
@@ -4221,8 +4225,8 @@
       "path": "src/data/patch/patch_hermite.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "42803b961891b75659646ff7c95f19c85ccd2894002faa182f3949beb0b0cfea",
-      "bytes": 20850,
+      "sha256": "3147cc16174c58131e115f9baf2e040c5b1fe27c53fb814e6c143376448103ac",
+      "bytes": 21010,
       "includes": [
         {
           "line": 1,
@@ -4258,6 +4262,13 @@
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "data/patch/patch_observer_scope.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch_observer_scope.h"
         }
       ]
     },
@@ -5892,8 +5903,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 28,
-    "source_anchors": 177,
+    "contracts": 29,
+    "source_anchors": 180,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

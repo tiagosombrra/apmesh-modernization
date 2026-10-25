@@ -96,7 +96,8 @@ def audit(candidate_root, original_root=None):
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
             "scope": "Only the exact Bezier copy basis/zero-metadata and Hermite copy true-direction initializers change; "
-                     "the exact independently guarded completed Hermite retirement declaration/body is normalized. "
+                     "the exact independently guarded completed Hermite retirement declaration/body and "
+                     "constructor rollback scope are normalized. "
                      "Header code and all other complete-unit tokens, numerical order, source-field reads, detached "
                      "topology, signatures and layouts match immutable main. Eight independent basis, metadata-read, "
                      "direction, ID, control, topology, orientation and numerical mutations are rejected. "

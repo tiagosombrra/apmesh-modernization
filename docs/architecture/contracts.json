@@ -934,6 +934,26 @@
           "anchor": "Current borrowed curves must remain live through destruction."
         }
       ]
+    },
+    {
+      "id": "C30",
+      "topic": "Hermite constructor observer rollback",
+      "statement": "The four-curve PatchHermite constructor uses PatchObserverScope before its first body statement and commits only after the existing numerical initialization completes. On an allocation exception it restores the exact prior observer prefixes, including null and repeated foreign entries, without additional allocation. Successful publication order and numerical expressions remain unchanged. Completed-object retirement remains C29.",
+      "limits": "All four arguments must be live nonnull Hermite curves. Only exclusive append-only publication is supported during construction: no foreign append or intermediate consumption of a pending patch. Repeated slots are lifetime fixtures, not proof of valid geometry. No complete model/loader/adaptive rollback, curve replacement, copied/foreign observer graphs, parallel, whole-process, LSan or UBSan qualification follows. Exact-head delivery and integration gates are recorded separately.",
+      "evidence": [
+        {
+          "path": "src/data/patch/patch_hermite.cpp",
+          "anchor": "apmesh::detail::PatchObserverScope observer_scope({curve1, curve2, curve3, curve4});"
+        },
+        {
+          "path": "src/data/patch/patch_hermite.cpp",
+          "anchor": "observer_scope.Commit();"
+        },
+        {
+          "path": "include/data/patch/patch_observer_scope.h",
+          "anchor": "curves_[index]->TruncatePatchObservers(counts_[index]);"
+        }
+      ]
     }
   ]
 }

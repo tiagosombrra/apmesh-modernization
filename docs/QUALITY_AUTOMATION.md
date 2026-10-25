@@ -1,5 +1,17 @@
 # Local quality automation
 
+## Hermite constructor rollback
+
+application.hermite_construction_contracts and tooling.hermite_construction_preservation
+retain the prior 53 CTest entries (55 total). tests/hermite_construction_memory
+builds actual production with AP_MESH_HERMITE_CONSTRUCTION_SOURCE_ROOT and optional
+AP_MESH_HERMITE_CONSTRUCTION_ASAN. tools/qualify_hermite_construction.py requires
+--asan, --crt, --runtime and a fresh --output directory. Require all 82 expected
+outcomes, original CRT rejection, eight constructor preservation mutations and
+the existing retirement/copy mutations. Live numerical pairs and prior regression
+remain required for delivery. See evidence/STAGE3_HERMITE_CONSTRUCTION.md.
+
+
 ## Completed Hermite observer retirement (PR #98)
 
 The required application.hermite_observer_contracts and
