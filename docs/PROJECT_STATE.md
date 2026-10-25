@@ -1,15 +1,32 @@
 # Project state
 
-## Hermite constructor rollback: implementation awaiting integration
+## Stage 3 slice 37 qualified
 
-The current single work item repairs failed four-curve Hermite construction (C30).
-It reuses PatchObserverScope, preserving publication and numerical order. Focused
-ASan/static CRT qualification passes 82 expected outcomes; the stronger contract
-rejects immutable original production under CRT. Full exact-head delivery gates
-are required before integration; their revision-bound reports are recorded in the
-delivery PR. Slice 36 is still the latest integrated qualified delivery.
-See [implementation, original failures and limits](evidence/STAGE3_HERMITE_CONSTRUCTION.md).
+Classification: behavior-changing exception-safety defect repair; no scientific change.
+PR #100 integrates head `c4bbe0354935243bee8ea84e8ff5454e4215825c` as main
+`e81eb804eb67599e47c1068069f602c7dd231da9`, preserving tree
+`df1bd7111abaddec0840522b130b381f06ca21be` (2031 blobs). Both full campaigns pass
+156 recorded commands with expected exits: 55/55 CTest, zero failures/skips,
+74 Python controls, 33 memory batteries/3392 expected outcomes, 1040 scalar
+sequences, 18 Hermite live C++17 pairs and exact repeated Eistute/Book accepted/
+rejected/OBJ/incidence/CSV traces. All 622 protected inputs and independent
+command/case/log/executable/environment/checkout identities pass. Validation is
+local; absent hosted observations are not a hosted validation result.
 
+The four-curve Hermite constructor restores exclusively appended observer
+suffixes on failure without additional allocation, preserving the exact prior
+foreign/null prefix and allowing measured retry. The stronger original CRT
+contract fails as expected; the inconclusive GCC Release negative attempt and
+all original/preparation failures remain retained. Live nonnull borrowed curves
+and exclusive append-only publication are required. Formulas, numerical order and scientific policies are unchanged. Complete
+model/loader/adaptive rollback and full-process/parallel/LSan/UBSan remain
+unqualified. See [delivery evidence and limits](evidence/STAGE3_HERMITE_CONSTRUCTION.md).
+
+Next single work: diagnose mesh quality and rejected transitions using the
+retained Eistute/Book results, to select the next functional defect repair.
+Remaining lifecycle obligations stay in the [finite inventory](architecture/STAGE3_CLOSURE_INVENTORY.md).
+Stage 3 remains open; stages 4-11 remain pending. Earlier next-work statements
+below are historical checkpoints.
 
 ## Stage 3 slice 36 qualified
 

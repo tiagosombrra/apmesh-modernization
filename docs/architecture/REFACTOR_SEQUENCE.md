@@ -1,6 +1,7 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
-Current single audit: Hermite constructor publication failure and actual callers.
+Latest qualified delivery: bounded Hermite constructor publication rollback, slice 37 (C30/PR #100).
+Next single work: diagnose retained Eistute/Book mesh quality and rejected transitions before selecting a functional repair.
 Completed Hermite retirement is qualified by full exact-head/main gates under
 C29/ADR-0037; see [bounded evidence](../evidence/STAGE3_HERMITE_OBSERVERS.md).
 The completed-object repair requires live current borrowed curves; constructor

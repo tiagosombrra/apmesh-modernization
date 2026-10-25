@@ -2,8 +2,8 @@
 
 Classification: behavior-changing exception-safety defect repair; no scientific change.
 Source base: `8eff0d6c4d69bb413674b003a22e49c3c6faca46` (PR #99).
-Status: focused candidate observations passed; integration pending.
-Exact-head delivery reports and revision hashes are recorded in the delivery PR.
+Status: bounded full exact-head and post-merge main qualification complete (PR #100).
+The focused record below preserves the earlier preparation checkpoint.
 
 ## Defect and repair
 
@@ -92,3 +92,37 @@ replacement, copied/foreign observer graph, SubMesh observer, broader-model,
 whole-process, parallel, LSan or UBSan qualification follows. Stage 3 stays open;
 the next root must be chosen from the finite closure inventory after this bounded
 repair is qualified and integrated.
+
+
+## Exact delivery qualification
+
+Head `c4bbe0354935243bee8ea84e8ff5454e4215825c` and main
+`e81eb804eb67599e47c1068069f602c7dd231da9` share tree
+`df1bd7111abaddec0840522b130b381f06ca21be` (2031 blobs). Each full campaign passes
+156 recorded commands with their expected exits, 55/55 CTest without failures/
+skips, 74 Python controls, 33 memory batteries/3392 outcomes, 1040 retained scalar
+sequences, 18 Hermite live C++17 pairs and exact repeated article traces. All 622
+protected input identities and independent checks pass. Fresh remote audits
+retain complete branch/tree identity; absent hosted checks do not validate code.
+
+Head full report SHA-256: `5e133ff0d3a37097e9590906ef29cb5a8fcc5c19ddacec9a468e37786989c6ed`.
+Main full report SHA-256: `3899238fe3b66bc930780a17b158562b67403b7f05ce993cbd995278927eda74`.
+The [compact delivery record](stage3/hermite_construction_repair/delivery.json)
+binds the revisions, report/check hashes, original audit files and scope. Raw
+reports and logs remain in build/s37-head and build/s37-main. Each invocation
+binds its actual executable; no cross-build executable-byte equality is claimed.
+Only src/data/patch/patch_hermite.cpp changes in production; all other 487 archived
+production files remain byte-identical. The original CRT rejection, GCC Release
+negative limitation and all earlier failures/preparation findings remain retained.
+
+Documentation closure changes only six declared documentation paths. Applicable
+head/main gates repeat builds, 55 CTest/74 Python controls, 82 construction and
+153 retirement outcomes, 18 live pairs, source/architecture/format/whitespace,
+checkout/environment and remote audits. The complete implementation campaigns
+are hash-linked without repeating them for prose. The same 622 protected inputs
+must remain fixed. Closure delivery revisions and reports are recorded in its PR.
+
+Slice 37 is qualified only within C30's exclusive-publication/live-curve boundary.
+No stage closure or wider rollback/observer/parallel qualification follows.
+Next work diagnoses retained mesh quality and rejected transitions before any
+new algorithmic repair; scientific policy changes still require advisor alignment.
