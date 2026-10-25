@@ -10,6 +10,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from audit_metric_schema import audit
+from audit_attempt_metrics import audit as audit_attempts
 from boundary_orientation_case import run_control
 
 
@@ -22,9 +23,11 @@ if __name__ == "__main__":
     workspace = Path(tempfile.mkdtemp(prefix="run-", dir=args.workspace)).resolve()
     control = run_control(args.exe.resolve(), workspace, "aligned", False, 2)
     report = audit(workspace / "aligned")
+    report["attempt_metrics"] = audit_attempts(workspace / "aligned")
     report["geometry_control"] = control["status"]
     report_path = workspace / "metric_schema_report.json"
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"status": report["status"], "geometry_control": control["status"],
                       "differences": len(report["differences"]), "report": str(report_path)}))
-    raise SystemExit(0 if report["status"] == "passed" and control["status"] == "passed" else 1)
+    raise SystemExit(0 if report["status"] == "passed" and control["status"] == "passed"
+                     and report["attempt_metrics"]["status"] == "passed" else 1)

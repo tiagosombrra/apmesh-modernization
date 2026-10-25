@@ -165,6 +165,21 @@ if(BUILD_TESTING)
   add_test(NAME application.curve_orientation_arclength COMMAND curve_orientation_probe)
   set_tests_properties(application.curve_orientation_arclength
     PROPERTIES LABELS "application;boundary-incidence;required-gate" TIMEOUT 30)
+  add_executable(attempt_metrics_probe
+    "${CMAKE_SOURCE_DIR}/tests/attempt_metrics_probe.cpp" ${orientation_probe_sources})
+  target_compile_features(attempt_metrics_probe PRIVATE cxx_std_17)
+  target_include_directories(attempt_metrics_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(attempt_metrics_probe PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+  if(AP_MESH_DISABLE_STRICT_ALIASING AND NOT MSVC)
+    target_compile_options(attempt_metrics_probe PRIVATE -fno-strict-aliasing)
+  endif()
+  add_test(NAME application.attempt_metrics
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/attempt_metrics_case.py"
+      --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/attempt-metrics-controls")
+  set_tests_properties(application.attempt_metrics
+    PROPERTIES LABELS "application;metric-schema;required-gate" TIMEOUT 60)
   add_test(NAME tooling.tidy_header_scope
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/tidy_scope_case.py")
   set_tests_properties(tooling.tidy_header_scope

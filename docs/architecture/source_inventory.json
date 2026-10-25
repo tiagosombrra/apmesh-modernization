@@ -387,7 +387,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "ab5c0badad16d703d3999402737aa78b3186646cddd9025f60e8d7a957917c62"
+      "sha256": "334d16f81e4ff6f4b3cb6dfee302f064e022a037aaccc61f14c8ae2de171c517"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -2430,8 +2430,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "2431b7f61494009603210470725dbcd8a48a265056f40fde496120b58d0a9784",
-      "bytes": 25777,
+      "sha256": "9da322a0821df8b3cc0a577875c7b2c52e0c0e5b1ae96b79e18b3f16314cbcc5",
+      "bytes": 26344,
       "includes": [
         {
           "line": 4,
@@ -4972,8 +4972,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "700993339f559041347e82ffb19c2d98ceb97d97d686f7e24f6ac5a6e1ed421f",
-      "bytes": 336807,
+      "sha256": "5849856f493aaf1909652660a274fa122ff52ef8846e6a4c67bde36a16674642",
+      "bytes": 336664,
       "includes": [
         {
           "line": 1,

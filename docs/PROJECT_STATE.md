@@ -1,5 +1,24 @@
 # Project state
 
+## Attempt metric export candidate: integration blocked
+
+The active item corrects candidate report values that previously indexed accepted
+history by attempted step. Explicit per-attempt error/reference, growth, score,
+curvature counts, retry and applied-rate values now reach the exporter. Rejected
+attempts are not appended to algorithm history. This is an engineering-only
+output correction; no mesh-quality improvement or scientific-policy change is
+claimed. The prior nine Eistute/Book mesh, incidence and decision states are
+preserved in the prepublication comparison.
+
+Functional controls pass, but full generator clang-tidy fails with the same eight
+diagnostics measured at base main `a936323569875cce070879d367d6e7ec123eb868`.
+This candidate is not integrated or qualified as another completed slice. Resolve
+the static-analysis gate before integration; do not suppress diagnostics or treat
+baseline equality as a passing gate. See [scope, results and limits](evidence/STAGE3_ATTEMPT_METRICS.md).
+After integration, the next investigation is Book's boundary/interior transition
+between retained steps 1 and 2. Stage 3 remains open. Earlier next-work statements
+below are historical checkpoints.
+
 ## Stage 3 slice 37 qualified
 
 Classification: behavior-changing exception-safety defect repair; no scientific change.

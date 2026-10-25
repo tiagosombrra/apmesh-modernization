@@ -208,6 +208,22 @@ extern std::vector<CurveAdaptiveParametric*> ptr_aux;
 
 class GeneratorAdaptive {
  public:
+   // Values for one exported candidate, independent of accepted-history indices.
+   struct MeshAttemptMetrics {
+     double error;
+     double previous_error;
+     double initial_error;
+     unsigned long long previous_elements;
+     double error_drop_per_element;
+     double element_growth_factor;
+     double acceptance_score;
+     unsigned long long gauss_nodes;
+     unsigned long long mean_nodes;
+     unsigned int retry_attempt;
+     double applied_relaxation;
+     double applied_max_delta;
+   };
+
   struct PatchAdaptationSnapshot {
     unsigned int patch_id = 0U;
     double local_error = 0.0;
@@ -390,16 +406,17 @@ class GeneratorAdaptive {
 
   SubMesh* InitialMesh(PatchCoons* patch, Performer::IdManager* id_manager);
   double ErrorGlobal(MeshAdaptive* mesh, Timer* timer, int rank = 0, int size_thread = 0);
-  
+
   std::unique_ptr<Performer::IdManager> MakeIdManager(const Parallel::TMCommunicator* comm, Int id) const;
   std::unique_ptr<Performer::IdManager> MakeIdManagerOmp(const Parallel::TMCommunicator* comm, Int id) const;
   std::unique_ptr<Performer::IdManager> MakeIdManagerElementOmp(const Parallel::TMCommunicator* comm, Int id) const;
 
   void WriteMesh(MeshAdaptive* mesh, int step);
   void WriteMesh(MeshAdaptive* mesh, int step, std::vector<double> error_step, int rank = -1);
-  void WriteQualityMesh(MeshAdaptive* mesh, int step, std::vector<double> error_step, int rank = -1);
+  void WriteQualityMesh(MeshAdaptive* mesh, int step, const MeshAttemptMetrics& attempt,
+                        int rank = -1);
   void SaveErrorMesh(MeshAdaptive* mesh);
-  void SaveMesh(std::unique_ptr<MeshAdaptive> mesh, int step);
+  void SaveMesh(std::unique_ptr<MeshAdaptive> mesh, int step, const MeshAttemptMetrics& attempt);
   void SaveErrorMesh(MeshAdaptive* mesh, int step);
   void AdaptCurve(Geometry* geometry);
   void AdaptDomain(Geometry* geometry, MeshAdaptive* mesh);
