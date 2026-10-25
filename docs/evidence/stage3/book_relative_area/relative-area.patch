@@ -1,0 +1,135 @@
+--- a/src/crab_mesh/aft/advancing_front.cpp
++++ b/src/crab_mesh/aft/advancing_front.cpp
+@@ -0,0 +1 @@
++#include "area_policy.h"
+@@ -1120 +1121 @@
+-      if ((*iter2)->orientedSurface() <= TOLERANCE_AFT) {
++      if (apmesh_experiment::Reject(*iter2, run_stats.adaptive_step, run_stats.patch_index, 0)) {
+@@ -1139,0 +1141 @@
++      apmesh_experiment::AcceptedMove(run_stats.adaptive_step, run_stats.patch_index, 0);
+@@ -1282 +1284 @@
+-        if ((*faceIter)->orientedSurface() <= TOLERANCE_AFT) {
++        if (apmesh_experiment::Reject(*faceIter, run_stats.adaptive_step, run_stats.patch_index, 1)) {
+@@ -1292,0 +1295 @@
++          apmesh_experiment::AcceptedMove(run_stats.adaptive_step, run_stats.patch_index, 1);
+@@ -1600,0 +1604 @@
++  apmesh_experiment::Dump(mesh, run_stats.adaptive_step, run_stats.patch_index);
+@@ -1703 +1707 @@
+-        if ((*faceIter)->orientedSurface() <= TOLERANCE_AFT) {
++        if (apmesh_experiment::Reject(*faceIter, run_stats.adaptive_step, run_stats.patch_index, 2)) {
+@@ -1713,0 +1718 @@
++          apmesh_experiment::AcceptedMove(run_stats.adaptive_step, run_stats.patch_index, 2);
+--- /dev/null
++++ b/src/crab_mesh/aft/area_policy.h
+@@ -0,0 +1,111 @@
++#pragma once
++
++#include <algorithm>
++#include <array>
++#include <cmath>
++#include <cstdint>
++#include <fstream>
++#include <iomanip>
++#include <limits>
++
++#include "crab_mesh/aft/face.h"
++
++extern double TOLERANCE_AFT;
++extern std::string NAME_MODEL;
++
++#ifndef APMESH_RELATIVE_AREA_MODE
++#error "The isolated experiment must select an explicit mode"
++#endif
++
++namespace apmesh_experiment {
++using MeshFace = Par2DJMesh::Basics::Face;
++using MeshVertex = Par2DJMesh::Basics::Vertex;
++
++struct Evaluation {
++  double area;
++  double max_edge_squared;
++  bool absolute_reject;
++  bool relative_reject;
++};
++
++inline Evaluation Evaluate(MeshFace* face) {
++  const double area = face->orientedSurface();
++  const std::array<MeshVertex*, 3> vertices{face->getV1(), face->getV2(), face->getV3()};
++  double max_edge_squared = 0.0;
++  bool finite = std::isfinite(area);
++  for (unsigned index = 0; index < 3; ++index) {
++    const double dx = vertices[index]->getX() - vertices[(index + 1) % 3]->getX();
++    const double dy = vertices[index]->getY() - vertices[(index + 1) % 3]->getY();
++    const double squared = dx * dx + dy * dy;
++    finite = finite && std::isfinite(squared);
++    max_edge_squared = std::max(max_edge_squared, squared);
++  }
++  return {area, max_edge_squared, area <= TOLERANCE_AFT,
++          !finite || max_edge_squared <= 0.0 || area <= TOLERANCE_AFT * max_edge_squared};
++}
++
++struct Counts {
++  std::uint64_t checked = 0;
++  std::uint64_t absolute_reject = 0;
++  std::uint64_t relative_reject = 0;
++  std::uint64_t absolute_only_reject = 0;
++  std::uint64_t relative_only_reject = 0;
++  std::uint64_t accepted_move_events = 0;
++};
++inline std::array<Counts, 3> counts{};
++inline unsigned dump_count = 0;
++
++inline bool InScope(int step, int patch) { return step == 2 && patch == 0; }
++
++inline bool Reject(MeshFace* face, int step, int patch, unsigned method) {
++  if (!InScope(step, patch))
++    return face->orientedSurface() <= TOLERANCE_AFT;
++  const Evaluation result = Evaluate(face);
++  Counts& counter = counts[method];
++  ++counter.checked;
++  counter.absolute_reject += result.absolute_reject;
++  counter.relative_reject += result.relative_reject;
++  counter.absolute_only_reject += result.absolute_reject && !result.relative_reject;
++  counter.relative_only_reject += result.relative_reject && !result.absolute_reject;
++  return APMESH_RELATIVE_AREA_MODE ? result.relative_reject : result.absolute_reject;
++}
++
++inline void AcceptedMove(int step, int patch, unsigned method) {
++  if (InScope(step, patch))
++    ++counts[method].accepted_move_events;
++}
++
++template <typename Faces>
++void Dump(const Faces& faces, int step, int patch) {
++  if (!InScope(step, patch))
++    return;
++  ++dump_count;
++  std::uint64_t small_area = 0, nonpositive = 0;
++  double min_area = std::numeric_limits<double>::infinity();
++  for (auto* face : faces) {
++    const double area = face->orientedSurface();
++    min_area = std::min(min_area, area);
++    small_area += area <= TOLERANCE_AFT;
++    nonpositive += !std::isfinite(area) || area <= 0;
++  }
++  std::ofstream stream(NAME_MODEL + "_relative_area_trace.json");
++  stream << std::setprecision(17) << "{\"mode\":" << APMESH_RELATIVE_AREA_MODE
++         << ",\"step\":" << step << ",\"patch\":" << patch
++         << ",\"dump_count\":" << dump_count << ",\"tolerance\":" << TOLERANCE_AFT
++         << ",\"minimum_signed_area\":" << min_area
++         << ",\"native_small_area_faces\":" << small_area
++         << ",\"nonpositive_or_nonfinite_faces\":" << nonpositive << ",\"methods\":[";
++  for (unsigned index = 0; index < counts.size(); ++index) {
++    if (index)
++      stream << ',';
++    const Counts& counter = counts[index];
++    stream << "{\"method\":" << index << ",\"checked\":" << counter.checked
++           << ",\"absolute_reject\":" << counter.absolute_reject
++           << ",\"relative_reject\":" << counter.relative_reject
++           << ",\"absolute_only_reject\":" << counter.absolute_only_reject
++           << ",\"relative_only_reject\":" << counter.relative_only_reject
++           << ",\"accepted_move_events\":" << counter.accepted_move_events << '}';
++  }
++  stream << "]}\n";
++}
++} // namespace apmesh_experiment

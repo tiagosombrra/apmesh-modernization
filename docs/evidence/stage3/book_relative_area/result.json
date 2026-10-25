@@ -1,0 +1,180 @@
+{
+  "classification": "authorized isolated scientific experiment; negative outcome; default algorithm unchanged",
+  "source_revision": "e6001d3d4dfbbeec1546f16d49438f9041caf577",
+  "authorized_scope": {
+    "model": "Book",
+    "patch": 0,
+    "step": 2,
+    "changed_factor": "local smoothing signed-area acceptance predicate"
+  },
+  "repetitions_per_condition": 2,
+  "supplementary_same_policy_repetitions": 2,
+  "predicate_controls": {
+    "status": "passed",
+    "geometric_cases": 24,
+    "scope_checks": 96,
+    "positive_scale_quality_checks": 4
+  },
+  "scope_valid": true,
+  "conditions": {
+    "control": {
+      "patch0_step2": {
+        "elements": 708,
+        "nodes": 486,
+        "poor_xyz": 70,
+        "quality_xyz_min": 0.10704946310659187,
+        "quality_xyz_p05": 0.2515254062661449,
+        "quality_xyz_mean": 0.6220672386524075,
+        "quality_uv_min": 0.18100189187880003,
+        "quality_uv_p05": 0.34162021399298664,
+        "quality_uv_mean": 0.7111669465670009,
+        "quality_uv_good_ge_0_6": 547,
+        "minimum_signed_area": 0.00010605003370843604,
+        "nonpositive_uv_faces": 0,
+        "native_area_floor_faces": 0
+      },
+      "native_domain": {
+        "quadtree_leaves": "253",
+        "template_count": "193",
+        "quality_pre_aft_min": "0.828427",
+        "quality_post_aft_min": "0.181191",
+        "quality_post_smoothing_min": "0.181002",
+        "degenerate_post_aft_count": "0",
+        "degenerate_post_smoothing_count": "0",
+        "generation_status": "degenerate_needs_retry",
+        "generated_poor_ratio": "0.0536723"
+      },
+      "global_error_step2": 168.932,
+      "global_quality_min_step2": 0.0951287,
+      "global_poor_ratio_pct_step2": 10.1042,
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3
+      ],
+      "boundary_comparisons_per_step": {
+        "0": 27,
+        "1": 27,
+        "2": 27,
+        "3": 27
+      }
+    },
+    "relative": {
+      "patch0_step2": {
+        "elements": 708,
+        "nodes": 486,
+        "poor_xyz": 70,
+        "quality_xyz_min": 0.10704946310659187,
+        "quality_xyz_p05": 0.2515254062661449,
+        "quality_xyz_mean": 0.6220672386524075,
+        "quality_uv_min": 0.18100189187880003,
+        "quality_uv_p05": 0.34162021399298664,
+        "quality_uv_mean": 0.7111669465670009,
+        "quality_uv_good_ge_0_6": 547,
+        "minimum_signed_area": 0.00010605003370843604,
+        "nonpositive_uv_faces": 0,
+        "native_area_floor_faces": 0
+      },
+      "native_domain": {
+        "quadtree_leaves": "253",
+        "template_count": "193",
+        "quality_pre_aft_min": "0.828427",
+        "quality_post_aft_min": "0.181191",
+        "quality_post_smoothing_min": "0.181002",
+        "degenerate_post_aft_count": "0",
+        "degenerate_post_smoothing_count": "0",
+        "generation_status": "degenerate_needs_retry",
+        "generated_poor_ratio": "0.0536723"
+      },
+      "global_error_step2": 168.932,
+      "global_quality_min_step2": 0.0951287,
+      "global_poor_ratio_pct_step2": 10.1042,
+      "accepted_steps": [
+        0,
+        1
+      ],
+      "rejected_steps": [
+        2,
+        3
+      ],
+      "boundary_comparisons_per_step": {
+        "0": 27,
+        "1": 27,
+        "2": 27,
+        "3": 27
+      }
+    }
+  },
+  "boundaries": {
+    "boundary_nodes_compared_patch0": 262,
+    "boundary_uv_xyz_and_ids_equal": true,
+    "topology_equal": true,
+    "interior_nodes_with_changed_final_positions": 0
+  },
+  "criteria": {
+    "fewer_physical_poor_triangles": false,
+    "no_minimum_physical_quality_degradation": true,
+    "local_geometric_success": false,
+    "no_nonpositive_faces": true,
+    "native_absolute_area_conflict": false,
+    "step2_accepted_by_unchanged_global_policy": false
+  },
+  "scientific_status": "local_geometric_criterion_failed",
+  "outside_target_patch_differences": {
+    "2": [],
+    "3": []
+  },
+  "supplementary_observation": {
+    "status": "same_policy_same_output_supplementary_observation",
+    "trace": {
+      "method": "qualityShapeSmoothing",
+      "trials": 4464,
+      "evaluated": 4464,
+      "newly_evaluated_after_relaxation": 104,
+      "newly_improving": 0,
+      "best_new_score_delta": -0.0007397355236266612,
+      "worst_new_score_delta": -0.040457990942154076
+    },
+    "repetitions": 2,
+    "all_meshes_metrics_and_decisions_equal_to_original_relative_variant": true,
+    "old_predicate_counter_trace_unchanged": true
+  },
+  "executable_sha256": {
+    "reference": "37743e6c1c3ea7d3d926bb7f6515b82f28116b6b5ce5773be49eb93d22afbf16",
+    "control": "506b1ebbb9f188af44bc7392914855b7e03c0fa2c200b934946751f419f95c02",
+    "relative": "1d21bb3268697d7dcb540c5236a4efd78a18b1aa072e9ea04539f9a9ec455675",
+    "score_trace": "7707970458fb7c4c9514ca546aa81747ccc696e1ca0a0805519e1a8e746a9fa5"
+  },
+  "local_artifact_sha256": {
+    "build.json": "dcb4d367e93f779aa65432af514d79b5f85d2276dfdff4459aedc263ae9080f8",
+    "run.json": "18d7abaa979f89211f5d1f184196a03570dfd1406f21d6d6dd87afa3e73499b8",
+    "assessment.json": "cc6452be6d032c88e877e3c5f0e608c636b33e5cdcee082f8481d41bcda0b760",
+    "score-trace-build.json": "4a84ef763cbf5790cb1966b984cc2340aeae8d945eed255fc81350ec86164a16",
+    "score-trace-assessment.json": "d338ffae5a6cc26e3eac8306251d5bb9e0e6e7e65c45913d6de449e4e7153a7f",
+    "control-repeat.json": "6eb721883fbd1fc445abbfd27dbcec32100f8f6277ff5922cca4c0aa73258ca5",
+    "relative-repeat.json": "b8e588e25ed1eea3611970041fff35b2b6b3628cf5d57b16369e812df09ced28",
+    "score-trace-repeat.json": "f949f27f601881804004846109ed0081f401110c6f1a26213e1dee3a5cbebcf1",
+    "run-initial-failed.json": "96815c71825c0d98c5fb0da6dbba34cfffd30d9127787eee97e90bb921d64302",
+    "full-control-candidate-comparison.json": "fcd16025410ca6df05d6d7be8b4c0693bfa7b440d86fe6e92bbbdc5060d9eaac"
+  },
+  "limitations": [
+    "Approval covered this isolated experiment, not default-policy integration.",
+    "Native absolute-area degeneracy counts remain unchanged in meaning and are not overridden.",
+    "A rejected step is not a qualified accepted-mesh outcome.",
+    "Face-check and movement-event counters include repeated trials, not independent vertices."
+  ],
+  "strict_control_candidate_comparison": {
+    "model": "book",
+    "compared_meshes": 4,
+    "all_obj_byte_identical": true,
+    "all_acceptance_fields_equal": true,
+    "last_accepted_step": 1,
+    "last_accepted_triangles": 4256,
+    "boundary_incidence_coverage": "verified",
+    "boundary_regression": "exact"
+  },
+  "exact_control_candidate_artifact_files": 20
+}
