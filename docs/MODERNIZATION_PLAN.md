@@ -8,13 +8,15 @@ boundary incidences and acceptance/rejection decisions. Directed controls cover
 consecutive rejections, acceptance after a gap, retry metadata and rejection
 before curvature evaluation. Classification: engineering-only output correction.
 
-The full generator clang-tidy gate fails with eight unchanged baseline
-diagnostics. Integration and further slice qualification remain blocked; retain
-both failing logs. Resolve this gate without weakening diagnostics or changing
-scientific policy. [Evidence and validation scope](evidence/STAGE3_ATTEMPT_METRICS.md)
-record the functional candidate and remaining limits. Following integration,
-investigate Book's boundary/interior transition with fixed configuration before
-selecting a meshing repair. Stage 3 remains open.
+The first candidate's eight full-generator clang-tidy diagnostics are resolved
+through explicit null-input rejection, four removed dead stores, two `nullptr`
+initializers and export of the existing normalized submesh error. Preserve the
+original failing logs, null-input access violations and missing-summary controls.
+Exact-head and post-merge gates remain required; no suppression or scientific
+policy change is included. [Evidence and validation scope](evidence/STAGE3_ATTEMPT_METRICS.md)
+record the repair and remaining limits. Once those gates pass, investigate Book's
+boundary/interior transition with fixed configuration before selecting a meshing
+repair. Stage 3 remains open; this does not add a qualified memory slice.
 
 ## Stage 3 slice 37 qualified
 

@@ -24,6 +24,7 @@
 #include <map>
 #include <filesystem>
 #include <system_error>
+#include <stdexcept>
 
 namespace {
 
@@ -2928,6 +2929,9 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
 }
 
 void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
+  if (geometry == nullptr || mesh == nullptr) {
+    throw std::invalid_argument("Domain adaptation requires a geometry and mesh");
+  }
   const std::vector<double> patch_factors = ComputePatchAdaptationFactors(geometry);
   const bool few_patch_low_error =
       current_policy_.stable_mode && geometry != nullptr &&
@@ -3375,8 +3379,6 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       if (keep_aggressive && aggressive_mesh != nullptr) {
         delete sub_mesh;
         sub_mesh = aggressive_mesh;
-        gen_factor = aggressive_factor;
-        gen_h = aggressive_h;
         patch_generation_mode = "curve_transition_recovered";
         structural_first = structural_aggressive;
       } else if (aggressive_mesh != nullptr) {
@@ -3492,8 +3494,6 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
             delete sub_mesh;
           }
           sub_mesh = repaired_mesh;
-          domain_factor = rebalance_factor;
-          target_patch_h = rebalance_h;
           patch_generation_mode = "curve_transition_repaired";
         } else if (repaired_mesh != nullptr) {
           delete repaired_mesh;
@@ -6119,7 +6119,7 @@ double GeneratorAdaptive::ErrorGlobal(MeshAdaptive* malha, Timer* timer,
   double Njs = 0;       // erro global da submalha
   double curvPower = 0.0;
   double Nj = 0;  // erro global da malha
-  SubMesh* sub = 0;
+  SubMesh* sub = nullptr;
 
   Ns = malha->GetNumberSubMeshesAdaptive();
   std::vector<double> sub_errors(Ns, 0.0);
@@ -6382,7 +6382,7 @@ void GeneratorAdaptive::SaveErrorMesh(MeshAdaptive* malha) {
   double Njs = 0;       // erro global da submalha
   double curvPower = 0.0;
   // double Nj = 0; // erro global da malha
-  SubMesh* sub = 0;
+  SubMesh* sub = nullptr;
 
   // Escreve arquivo com as curvaturas
   stringstream nome;
@@ -6472,6 +6472,7 @@ void GeneratorAdaptive::SaveErrorMesh(MeshAdaptive* malha) {
     if (Njs > 0.0 && curvPower > 0.0) {
       Njs = (double)sqrt(Njs / curvPower) / Nv;
     }
+    arquivo << "submesh_curvature_error[" << i << "]=" << Njs << endl;
   }
 
   arquivo.close();

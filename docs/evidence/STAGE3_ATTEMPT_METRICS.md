@@ -1,9 +1,10 @@
-# Attempt metric export correction candidate
+# Attempt metric export and domain input repair
 
 Classification: engineering-only output correction. Base main is
-`a936323569875cce070879d367d6e7ec123eb868`. Integration is blocked by the full
-generator static-analysis gate; this is not another qualified memory slice or
-stage closure. Prior slice-37 qualification remains bounded by its own evidence.
+`a936323569875cce070879d367d6e7ec123eb868`. The first candidate was blocked by full
+generator static analysis; the measured resolution is recorded below. This is
+not another qualified memory slice or stage closure. Prior slice-37 qualification
+remains bounded by its own evidence.
 
 ## Defect and implementation
 
@@ -62,15 +63,14 @@ Local evidence is under `build/s38-attempt-metrics/`. Complete exact-head checks
 and hashes belong to the PR validation record and `head/report.json`; the
 prepublication observations above do not claim an exact-head full gate pass.
 
-## Failing gate and retained preparation failures
+## Historical failing gate and retained preparation failures
 
 Full generator clang-tidy exits 1 on both original and candidate: one possible
 null geometry dereference, five dead stores and two `nullptr` modernization
 diagnostics. The diagnostic messages, checks, source lines and multiplicities
 match. Both raw logs and `lint-comparison.json` remain preserved. Equal baseline
-debt does not make this gate pass. No diagnostic suppression or unrelated
-scientific/algorithm repair is included. Integration remains blocked under the
-repository working agreement.
+debt did not make this gate pass; the first candidate remained blocked under the
+repository working agreement. The resolution does not suppress diagnostics.
 
 The first 56-entry CTest run failed the retained-inventory comparison because
 source/build hashes had changed. The inventory was refreshed without changing
@@ -80,13 +80,54 @@ labels were initially treated as duplicate metric keys, and the quality log's
 combined step/rank line was initially parsed as one number. They were corrected
 by selecting the intended named fields. None counts as production validation.
 
-## Required next checks
+## Resolution of the eight diagnostics
 
-Run on the exact review revision: C++17 build; 56-entry CTest with zero failures/
+`AdaptDomain` now throws `std::invalid_argument` for null geometry or mesh before
+changing state. Four final assignments to unused factor/size locals are removed;
+their values were not subsequently consumed. Two pointer initializers use
+`nullptr`. The one-argument legacy `SaveErrorMesh` writes
+`submesh_curvature_error[index]` after its existing normalization, making the
+previously discarded result observable. No arithmetic expression or evaluation
+order is removed or changed. Classification: behavior-changing invalid-input
+repair plus engineering-only output/cleanup. All other generator source is
+preserved by an exact, enumerated delta comparison against `a7786ab`.
+
+Actual production controls reject null geometry, null mesh and both null without
+changing a populated mesh. Curved and planar Hermite controls generate five nodes
+and four triangles each, then call the initialized legacy writer. Independent
+closed-form Gaussian curvature and angle-deficit/area calculations verify the
+new normalized summary: approximately 0.200671 and exactly zero respectively.
+Three deliberately corrupted reports (wrong zero, nonfinite and missing summary)
+are rejected. Original generator objects linked with the same fixture reproduce
+two null-geometry access violations, the missing null-mesh exception, and both
+missing-summary failures. Legacy node logs and fixture values match exactly after
+removing only the newly added summary line.
+
+An initial exact-physical-point analytic assertion failed and remains retained.
+The unchanged Hermite inverse recovers approximate corner parameters under the
+default tolerance: the curved control's maximum spatial residual is about
+0.00200319, and corner Gaussian curvature is about -395.536 rather than the exact
+corner value -400. The final oracle evaluates the independent closed form at the
+actual recovered parameters, explicitly limiting its claim to the writer's
+existing input semantics. No inverse/tolerance repair or exact-point curvature
+qualification is claimed. The flat control remains analytic zero.
+
+Full generator and fixture clang-tidy now pass with the existing checks and
+warnings-as-errors. Local evidence is under `build/s38-lint-resolution/`;
+`source-review.json`, `original-link.json`, `original-controls/report.json` and
+the positive diagnostic reports retain identities and limits. Complete exact
+review-head and post-merge commands, results and report hashes are recorded in
+the PR #102 validation record and `head/report.json` / `main/report.json`.
+
+## Required delivery checks
+
+Run on the exact review revision: C++17 build; 57-entry CTest with zero failures/
 skips; whitespace, explicit changed-line formatting, inventory and full generator
-lint; twice-repeated unmodified article configurations for Eistute and Book;
+lint of the generator and its fixture; actual diagnostic controls and their
+negative controls; twice-repeated unmodified article configurations for Eistute and Book;
 independent attempt/schema audits, strict artifact comparison and an explicit
-fourteen-field rejected-row change list. Audit remote main/branches/open PRs and
+fourteen-field rejected-row change list. Require all CSV metrics to match the
+previous functional candidate `a7786ab`. Audit remote main/branches/open PRs and
 checks before publication. Do not merge while a required gate fails. A further
 complete memory campaign is not justified by this reporting-only delta.
 

@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 589,
+    "literal_include_directives": 590,
     "first_party_include_edges": 340
   },
   "cross_component_directives": [
@@ -360,7 +360,7 @@
     "queue": 2,
     "set": 2,
     "sstream": 6,
-    "stdexcept": 9,
+    "stdexcept": 10,
     "stdio.h": 1,
     "string": 6,
     "sys/time.h": 2,
@@ -387,7 +387,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "334d16f81e4ff6f4b3cb6dfee302f064e022a037aaccc61f14c8ae2de171c517"
+      "sha256": "9c50b34624fabb7f3203dfcd795ed5fa4dffd3db8873f4eac31022f6f439d41e"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -2430,8 +2430,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "9da322a0821df8b3cc0a577875c7b2c52e0c0e5b1ae96b79e18b3f16314cbcc5",
-      "bytes": 26344,
+      "sha256": "18003ffb8eddd2c7ed43c529d99bea13a6ac71e732e19f68dd2852f58e1ce671",
+      "bytes": 26412,
       "includes": [
         {
           "line": 4,
@@ -4972,8 +4972,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "5849856f493aaf1909652660a274fa122ff52ef8846e6a4c67bde36a16674642",
-      "bytes": 336664,
+      "sha256": "6d4519a11f64280534de1e64f4e56064ca34a0ad8ff8237d2a3258fb879a4e4b",
+      "bytes": 336749,
       "includes": [
         {
           "line": 1,
@@ -5139,6 +5139,13 @@
         {
           "line": 26,
           "spelling": "system_error",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 27,
+          "spelling": "stdexcept",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null

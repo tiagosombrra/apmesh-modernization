@@ -180,6 +180,11 @@ if(BUILD_TESTING)
       --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/attempt-metrics-controls")
   set_tests_properties(application.attempt_metrics
     PROPERTIES LABELS "application;metric-schema;required-gate" TIMEOUT 60)
+  add_test(NAME application.generator_diagnostics
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/generator_diagnostics_case.py"
+      --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/generator-diagnostics-controls")
+  set_tests_properties(application.generator_diagnostics
+    PROPERTIES LABELS "application;metric-schema;negative-input;required-gate" TIMEOUT 90)
   add_test(NAME tooling.tidy_header_scope
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/tidy_scope_case.py")
   set_tests_properties(tooling.tidy_header_scope

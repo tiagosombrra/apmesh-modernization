@@ -419,6 +419,7 @@ class GeneratorAdaptive {
   void SaveMesh(std::unique_ptr<MeshAdaptive> mesh, int step, const MeshAttemptMetrics& attempt);
   void SaveErrorMesh(MeshAdaptive* mesh, int step);
   void AdaptCurve(Geometry* geometry);
+  // Reject null geometry or mesh before changing adaptation state.
   void AdaptDomain(Geometry* geometry, MeshAdaptive* mesh);
   std::vector<double> ComputePatchAdaptationFactors(
       const Geometry* geometry);

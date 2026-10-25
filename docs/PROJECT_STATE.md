@@ -1,6 +1,6 @@
 # Project state
 
-## Attempt metric export candidate: integration blocked
+## Attempt metrics and domain input repair
 
 The active item corrects candidate report values that previously indexed accepted
 history by attempted step. Explicit per-attempt error/reference, growth, score,
@@ -10,14 +10,21 @@ output correction; no mesh-quality improvement or scientific-policy change is
 claimed. The prior nine Eistute/Book mesh, incidence and decision states are
 preserved in the prepublication comparison.
 
-Functional controls pass, but full generator clang-tidy fails with the same eight
-diagnostics measured at base main `a936323569875cce070879d367d6e7ec123eb868`.
-This candidate is not integrated or qualified as another completed slice. Resolve
-the static-analysis gate before integration; do not suppress diagnostics or treat
-baseline equality as a passing gate. See [scope, results and limits](evidence/STAGE3_ATTEMPT_METRICS.md).
-After integration, the next investigation is Book's boundary/interior transition
-between retained steps 1 and 2. Stage 3 remains open. Earlier next-work statements
-below are historical checkpoints.
+The eight static-analysis diagnostics that blocked the first PR #102 candidate
+are resolved without suppression: null domain inputs throw before mutation,
+four unused assignments are removed, two pointer initializers use `nullptr`, and
+the legacy curvature writer exports its previously discarded submesh error.
+The normalization formula and evaluation order remain unchanged. Null rejection
+is a behavior-changing invalid-input defect repair; the other changes are
+engineering-only. Five actual diagnostic controls and three corrupted-report
+controls pass; original access violations and missing summaries remain retained.
+
+Exact review-head and post-merge qualification results belong to PR #102 and the
+[delivery evidence](evidence/STAGE3_ATTEMPT_METRICS.md). A failing gate still blocks
+integration. No additional memory slice or stage closure is claimed. After these
+gates pass, the next single work is Book's boundary/interior transition between
+retained steps 1 and 2, with fixed configuration. Stage 3 remains open. Earlier
+next-work statements below are historical checkpoints.
 
 ## Stage 3 slice 37 qualified
 
