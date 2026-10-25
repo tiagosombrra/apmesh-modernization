@@ -1,15 +1,17 @@
 # Technique-preserving modernization plan
 
-## Hermite constructor rollback: implementation awaiting integration
+## Stage 3 slice 37 qualified
 
-The current single work item repairs failed four-curve Hermite construction (C30).
-It reuses PatchObserverScope, preserving publication and numerical order. Focused
-ASan/static CRT qualification passes 82 expected outcomes; the stronger contract
-rejects immutable original production under CRT. Full exact-head delivery gates
-are required before integration; their revision-bound reports are recorded in the
-delivery PR. Slice 36 is still the latest integrated qualified delivery.
-See [implementation, original failures and limits](evidence/STAGE3_HERMITE_CONSTRUCTION.md).
+C30 qualifies bounded Hermite constructor publication rollback through PR #100
+and full exact-head/post-merge main gates. Numerical expressions, ordering and
+scientific policies are preserved. Current revisions, results and remaining
+limits are recorded in [PROJECT_STATE.md](PROJECT_STATE.md) and
+[the delivery evidence](evidence/STAGE3_HERMITE_CONSTRUCTION.md).
 
+Next single work: diagnose mesh quality and rejected transitions from retained
+Eistute/Book results before selecting a functional repair. Other lifecycle
+obligations remain in the finite closure inventory. Stage 3 remains open;
+stages 4-11 remain pending. Earlier checkpoints below are historical.
 
 ## Stage 3 slice 36 qualified
 
