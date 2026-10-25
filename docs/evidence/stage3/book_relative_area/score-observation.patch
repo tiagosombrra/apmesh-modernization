@@ -1,0 +1,58 @@
+--- a/src/crab_mesh/aft/advancing_front.cpp
++++ b/src/crab_mesh/aft/advancing_front.cpp
+@@ -0,0 +1 @@
++#include "score_trace.h"
+@@ -1275,0 +1277 @@
++      score_trace::Begin(run_stats.adaptive_step, run_stats.patch_index);
+@@ -1284 +1286 @@
+-        if (apmesh_experiment::Reject(*faceIter, run_stats.adaptive_step, run_stats.patch_index, 1)) {
++        if (score_trace::Reject(*faceIter, run_stats.adaptive_step, run_stats.patch_index, 1)) {
+@@ -1291,0 +1294 @@
++        score_trace::Observe(run_stats.adaptive_step, run_stats.patch_index, oldScore, newScore, qualityTolerance);
+@@ -1604,0 +1608 @@
++  score_trace::Dump(run_stats.adaptive_step, run_stats.patch_index);
+--- /dev/null
++++ b/src/crab_mesh/aft/score_trace.h
+@@ -0,0 +1,42 @@
++#pragma once
++#include "area_policy.h"
++
++namespace score_trace {
++inline bool current_absolute_veto = false;
++inline std::uint64_t trials = 0, evaluated = 0, newly_evaluated = 0, newly_improving = 0;
++inline double best_new_delta = -std::numeric_limits<double>::infinity();
++inline double worst_new_delta = std::numeric_limits<double>::infinity();
++
++inline void Begin(int step, int patch) {
++  if (apmesh_experiment::InScope(step, patch)) {
++    current_absolute_veto = false;
++    ++trials;
++  }
++}
++inline bool Reject(apmesh_experiment::MeshFace* face, int step, int patch, unsigned method) {
++  if (apmesh_experiment::InScope(step, patch))
++    current_absolute_veto = current_absolute_veto || face->orientedSurface() <= TOLERANCE_AFT;
++  return apmesh_experiment::Reject(face, step, patch, method);
++}
++inline void Observe(int step, int patch, double old_score, double new_score, double quality_tolerance) {
++  if (!apmesh_experiment::InScope(step, patch))
++    return;
++  ++evaluated;
++  if (current_absolute_veto) {
++    ++newly_evaluated;
++    newly_improving += new_score > old_score + quality_tolerance;
++    best_new_delta = std::max(best_new_delta, new_score - old_score);
++    worst_new_delta = std::min(worst_new_delta, new_score - old_score);
++  }
++}
++inline void Dump(int step, int patch) {
++  if (!apmesh_experiment::InScope(step, patch))
++    return;
++  std::ofstream stream(NAME_MODEL + "_relative_area_score_trace.json");
++  stream << std::setprecision(17) << "{\"method\":\"qualityShapeSmoothing\",\"trials\":" << trials
++         << ",\"evaluated\":" << evaluated << ",\"newly_evaluated_after_relaxation\":" << newly_evaluated
++         << ",\"newly_improving\":" << newly_improving
++         << ",\"best_new_score_delta\":" << best_new_delta
++         << ",\"worst_new_score_delta\":" << worst_new_delta << "}\n";
++}
++} // namespace score_trace

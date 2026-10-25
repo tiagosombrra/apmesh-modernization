@@ -1,5 +1,23 @@
 # Project state
 
+## Book relative-area experiment: negative result
+
+An advisor-aligned isolated experiment changes only the local smoothing area
+predicate at Book patch 0, step 2. Two control and two candidate repetitions
+preserve all geometry, metrics and decisions: 70 poor physical triangles in
+the target patch and global error 168.932; steps 2-3 remain rejected. A repeated
+same-policy observer shows that none of the 104 newly score-evaluated trials
+improves the existing local score. The geometric improvement criterion fails.
+The candidate is not promoted and production defaults remain unchanged.
+
+Source/input/executable identities, unchanged boundaries/other patches, negative
+controls and limits are retained in the [experiment result](evidence/BOOK_RELATIVE_AREA_EXPERIMENT.md).
+Next single work: characterize candidate displacement directions and score
+response on the frozen Book state, preserving the current criteria before
+selecting another scientific experiment. Stage 3 remains open; no qualified
+memory slice or stage closure is added. Earlier active-item statements below
+are historical checkpoints.
+
 ## Attempt metrics and domain input repair
 
 The active item corrects candidate report values that previously indexed accepted
