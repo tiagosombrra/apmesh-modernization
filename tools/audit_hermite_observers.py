@@ -7,6 +7,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from audit_hermite_construction import restore_hermite_construction
+
 BASE = "6669a29e03e868ecaa781e6da2a5299a19ddeae5"
 FILES = ["src/data/patch/patch_hermite.cpp", "include/data/patch/patch_hermite.h"]
 DESTRUCTOR = ("PatchHermite::~PatchHermite(){for(auto*curve:curves_)"
@@ -21,6 +23,7 @@ def code(text):
 
 def restore_hermite_retirement(source):
     """Older guards normalize only the exact independently checked implementation."""
+    source = restore_hermite_construction(source)
     for before, after in [(DESTRUCTOR, ""), (DECLARATION, ORIGINAL_DECLARATION)]:
         if before in source:
             if source.count(before) != 1:
@@ -73,7 +76,8 @@ def audit(candidate_root, original_root=None):
             "source_identities": {label: {name: hashlib.sha256(text.encode()).hexdigest()
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
-            "scope": "Only the exact completed Hermite destructor declaration/body changes. Every constructor, "
+            "scope": "Only the exact completed Hermite destructor declaration/body changes after normalizing "
+                     "the separately guarded constructor rollback scope. Every other constructor, "
                      "numeric read/formula/order, public signature/layout, direction default and detached-copy "
                      "token otherwise matches immutable main. Eight independent lifetime, allocation, numeric, "
                      "control and direction mutations are rejected. Actual retirement/noallocation and "

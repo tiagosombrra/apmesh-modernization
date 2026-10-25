@@ -7,6 +7,13 @@ if(BUILD_TESTING)
   add_subdirectory(tests/model_memory)
   add_subdirectory(tests/patch_copy_memory)
   add_subdirectory(tests/hermite_observer_memory)
+  add_subdirectory(tests/hermite_construction_memory)
+  add_test(NAME application.hermite_construction_contracts COMMAND hermite_construction_probe contracts)
+  add_test(NAME tooling.hermite_construction_preservation
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tools/audit_hermite_construction.py"
+      --candidate-root "${CMAKE_SOURCE_DIR}")
+  set_tests_properties(application.hermite_construction_contracts tooling.hermite_construction_preservation
+    PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 30)
   add_test(NAME application.hermite_observer_contracts COMMAND hermite_observer_probe contracts)
   add_test(NAME tooling.hermite_observer_preservation
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tools/audit_hermite_observers.py"

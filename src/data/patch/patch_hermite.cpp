@@ -5,6 +5,8 @@
 #include <cmath>
 #include <iostream>
 
+#include "data/patch/patch_observer_scope.h"
+
 extern double TOLERANCE;  // distância máxima entre dois pontos
 extern unsigned int I_MAX;
 extern std::atomic<unsigned long long> FINDUV_TOTAL_CALLS;
@@ -64,6 +66,7 @@ PatchHermite::PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2,
                            bool signal_curve1, bool signal_curve2,
                            bool signal_curve3, bool signal_curve4)
     : PatchCoons() {
+  apmesh::detail::PatchObserverScope observer_scope({curve1, curve2, curve3, curve4});
   this->signal_curve1_ = signal_curve1;
   this->signal_curve2_ = signal_curve2;
   this->signal_curve3_ = signal_curve3;
@@ -208,6 +211,7 @@ PatchHermite::PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2,
   this->mat_geo_gx_ = this->GetH() * this->GetGx() * this->GetH().transpose();
   this->mat_geo_gy_ = this->GetH() * this->GetGy() * this->GetH().transpose();
   this->mat_geo_gz_ = this->GetH() * this->GetGz() * this->GetH().transpose();
+  observer_scope.Commit();
 }
 
 // faz as multiplicações necessárias para 'Parameterize ( u, v )' e para as
