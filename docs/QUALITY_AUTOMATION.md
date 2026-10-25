@@ -1,6 +1,6 @@
 # Local quality automation
 
-## Completed Hermite observer retirement candidate
+## Completed Hermite observer retirement (PR #98)
 
 The required application.hermite_observer_contracts and
 tooling.hermite_observer_preservation add two gates, retaining the earlier 51.
@@ -9,7 +9,12 @@ The isolated actual-production C++17 probe requires 153 ASan/static CRT outcomes
 prefix/order corruption controls. Eight source mutations must be rejected.
 Six nonempty original/candidate live trace pairs per GCC/MSVC instrument compare
 all seven point/derivative vectors and incidence. Prior batteries and exact-head/
-main regression remain required. See [scope and commands](evidence/STAGE3_HERMITE_OBSERVERS.md).
+main regression remain required. Exact implementation head/main pass all 150
+commands, 53/53 CTest, 74 Python controls, 32 batteries/3310 expected outcomes,
+1040 scalar sequences and exact repeated article traces on the same 618 inputs.
+The documentation closure repeats applicable exact-head/main gates without
+changing those inputs; no cross-build binary equality is assumed. See
+[scope and commands](evidence/STAGE3_HERMITE_OBSERVERS.md).
 
 ## Original Hermite observer retirement audit
 
