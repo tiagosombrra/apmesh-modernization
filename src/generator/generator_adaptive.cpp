@@ -24,6 +24,7 @@
 #include <map>
 #include <filesystem>
 #include <system_error>
+#include <stdexcept>
 
 namespace {
 
@@ -1429,7 +1430,19 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
   timer->InitTimerParallel(0, 0, 11);
   if (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
       WRITE_MESH == std::string("h")) {
-    SaveMesh(std::move(mesh_), step_);
+    const MeshAttemptMetrics initial_attempt{error_local_process_,
+                                             error_local_process_,
+                                             error_step_.front(),
+                                             elements_step_.back(),
+                                             0.0,
+                                             1.0,
+                                             0.0,
+                                             current_gauss_nodes_,
+                                             current_mean_nodes_,
+                                             0U,
+                                             current_adaptation_relaxation_,
+                                             current_adaptation_max_delta_};
+    SaveMesh(std::move(mesh_), step_, initial_attempt);
   }
   WriteAcceptanceLog(step_, 0.0, initial_quality, 0.0, 1.0, true);
   timer->EndTimerParallel(0, 0, 11);
@@ -1671,6 +1684,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
             : ((PATCH_GENERATION_CONTROL_MODE == 1) ? "micro_refinement"
                                                     : "normal");
 
+    unsigned long long report_gauss_nodes = 0ULL;
+    unsigned long long report_mean_nodes = 0ULL;
     auto compute_current_error = [&]() {
 #if USE_OPENMP
       if (size_patch > 1) {
@@ -1693,6 +1708,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       timer->EndTimerParallel(0, 0, 7);
 #endif
 #endif
+      report_gauss_nodes = current_gauss_nodes_;
+      report_mean_nodes = current_mean_nodes_;
     };
 
     const bool stable_small_mesh_step1_retry =
@@ -1708,6 +1725,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
             ? ClampValue(std::min(ADAPTIVE_RETRY_SHRINK, 0.70), 0.40, 0.95)
             : ADAPTIVE_RETRY_SHRINK;
     for (int retry = 0; retry <= effective_retry_limit; ++retry) {
+      report_gauss_nodes = 0ULL;
+      report_mean_nodes = 0ULL;
       ADAPTIVE_CURRENT_STEP = this->step_;
       ADAPTIVE_CURRENT_RETRY = retry;
       current_budget_retry_count_ = static_cast<unsigned int>(retry);
@@ -2289,6 +2308,19 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       }
     }
 
+    const MeshAttemptMetrics attempt{error_local_process_,
+                                     prev_error,
+                                     error_step_.front(),
+                                     previous_elements,
+                                     error_drop_per_element,
+                                     element_growth_factor,
+                                     acceptance_score,
+                                     report_gauss_nodes,
+                                     report_mean_nodes,
+                                     current_budget_retry_count_,
+                                     current_adaptation_relaxation_,
+                                     current_adaptation_max_delta_};
+
     if (!accepted_step) {
       if (current_policy_.stable_mode) {
         ++stable_consecutive_reject_count_;
@@ -2329,7 +2361,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       if (mesh_ && (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
                     WRITE_MESH == std::string("h"))) {
         timer->InitTimerParallel(0, 0, 11);
-        SaveMesh(std::move(mesh_), step_);
+        SaveMesh(std::move(mesh_), step_, attempt);
         timer->EndTimerParallel(0, 0, 11);
       }
       timer->InitTimerParallel(0, 0, 11);
@@ -2511,7 +2543,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     timer->InitTimerParallel(0, 0, 11);
     if (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
         WRITE_MESH == std::string("h")) {
-      SaveMesh(std::move(mesh_), step_);
+      SaveMesh(std::move(mesh_), step_, attempt);
     }
     WritePatchAdaptationLog(step_, true);
     WriteCurveAdaptationLog(step_, true);
@@ -2897,6 +2929,9 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
 }
 
 void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
+  if (geometry == nullptr || mesh == nullptr) {
+    throw std::invalid_argument("Domain adaptation requires a geometry and mesh");
+  }
   const std::vector<double> patch_factors = ComputePatchAdaptationFactors(geometry);
   const bool few_patch_low_error =
       current_policy_.stable_mode && geometry != nullptr &&
@@ -3344,8 +3379,6 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       if (keep_aggressive && aggressive_mesh != nullptr) {
         delete sub_mesh;
         sub_mesh = aggressive_mesh;
-        gen_factor = aggressive_factor;
-        gen_h = aggressive_h;
         patch_generation_mode = "curve_transition_recovered";
         structural_first = structural_aggressive;
       } else if (aggressive_mesh != nullptr) {
@@ -3461,8 +3494,6 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
             delete sub_mesh;
           }
           sub_mesh = repaired_mesh;
-          domain_factor = rebalance_factor;
-          target_patch_h = rebalance_h;
           patch_generation_mode = "curve_transition_repaired";
         } else if (repaired_mesh != nullptr) {
           delete repaired_mesh;
@@ -6088,7 +6119,7 @@ double GeneratorAdaptive::ErrorGlobal(MeshAdaptive* malha, Timer* timer,
   double Njs = 0;       // erro global da submalha
   double curvPower = 0.0;
   double Nj = 0;  // erro global da malha
-  SubMesh* sub = 0;
+  SubMesh* sub = nullptr;
 
   Ns = malha->GetNumberSubMeshesAdaptive();
   std::vector<double> sub_errors(Ns, 0.0);
@@ -6351,7 +6382,7 @@ void GeneratorAdaptive::SaveErrorMesh(MeshAdaptive* malha) {
   double Njs = 0;       // erro global da submalha
   double curvPower = 0.0;
   // double Nj = 0; // erro global da malha
-  SubMesh* sub = 0;
+  SubMesh* sub = nullptr;
 
   // Escreve arquivo com as curvaturas
   stringstream nome;
@@ -6441,6 +6472,7 @@ void GeneratorAdaptive::SaveErrorMesh(MeshAdaptive* malha) {
     if (Njs > 0.0 && curvPower > 0.0) {
       Njs = (double)sqrt(Njs / curvPower) / Nv;
     }
+    arquivo << "submesh_curvature_error[" << i << "]=" << Njs << endl;
   }
 
   arquivo.close();
@@ -6766,8 +6798,7 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
 }
 
 void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
-                                         vector<double> step_error,
-                                         int rank) {
+                                         const MeshAttemptMetrics& attempt, int rank) {
   stringstream nameFile;
   nameFile << NAME_MODEL;
   nameFile << "_n.process_";
@@ -6940,14 +6971,8 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
     if (e.second > 2) nonmanifold_edges++;
   }
 
-  const double error_current =
-      (step_ >= 0 && step_ < static_cast<int>(step_error.size()))
-          ? step_error[static_cast<size_t>(step_)]
-          : this->error_local_process_;
-  const double error_prev =
-      (step_ > 0 && (step_ - 1) < static_cast<int>(step_error.size()))
-          ? step_error[static_cast<size_t>(step_ - 1)]
-          : (!step_error.empty() ? step_error.back() : -1.0);
+  const double error_current = attempt.error;
+  const double error_prev = attempt.previous_error;
   const double error_delta_abs =
       (error_current >= 0.0 && error_prev >= 0.0) ? (error_prev - error_current)
                                                   : 0.0;
@@ -6955,49 +6980,22 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
       (error_current >= 0.0 && error_prev > 0.0)
           ? (error_delta_abs / error_prev) * 100.0
           : 0.0;
-  const unsigned long long elements_prev =
-      (step_ > 0 && (step_ - 1) < static_cast<int>(elements_step_.size()))
-          ? elements_step_[static_cast<size_t>(step_ - 1)]
-          : total_elements;
+  const unsigned long long elements_prev = attempt.previous_elements;
   const unsigned long long elements_delta =
       total_elements > elements_prev ? total_elements - elements_prev : 0ULL;
-  const double error_drop_per_element =
-      (step_ >= 0 && step_ < static_cast<int>(error_drop_per_element_step_.size()))
-          ? error_drop_per_element_step_[static_cast<size_t>(step_)]
-          : 0.0;
-  const double element_growth_factor =
-      (step_ >= 0 && step_ < static_cast<int>(element_growth_factor_step_.size()))
-          ? element_growth_factor_step_[static_cast<size_t>(step_)]
-          : 1.0;
+  const double error_drop_per_element = attempt.error_drop_per_element;
+  const double element_growth_factor = attempt.element_growth_factor;
   const double error_normalized =
-      (step_ >= 0 && step_ < static_cast<int>(error_normalized_step_.size()))
-          ? error_normalized_step_[static_cast<size_t>(step_)]
-          : ((!step_error.empty() && step_error.front() > 0.0)
-                 ? (error_current / step_error.front())
-                 : 0.0);
+      step_ == 0 ? 1.0
+                 : (attempt.initial_error > 0.0 ? error_current / attempt.initial_error : 0.0);
   const double error_total_reduction_pct =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(error_total_reduction_pct_step_.size()))
-          ? error_total_reduction_pct_step_[static_cast<size_t>(step_)]
-          : ((!step_error.empty() && step_error.front() > 0.0)
-                 ? ((step_error.front() - error_current) / step_error.front()) * 100.0
-                 : 0.0);
-  const double acceptance_score =
-      (step_ >= 0 && step_ < static_cast<int>(acceptance_score_step_.size()))
-          ? acceptance_score_step_[static_cast<size_t>(step_)]
+      attempt.initial_error > 0.0
+          ? ((attempt.initial_error - error_current) / attempt.initial_error) * 100.0
           : 0.0;
-  const unsigned long long gauss_nodes =
-      (step_ >= 0 && step_ < static_cast<int>(gauss_nodes_step_.size()))
-          ? gauss_nodes_step_[static_cast<size_t>(step_)]
-          : 0ULL;
-  const unsigned long long mean_nodes =
-      (step_ >= 0 && step_ < static_cast<int>(mean_nodes_step_.size()))
-          ? mean_nodes_step_[static_cast<size_t>(step_)]
-          : 0ULL;
-  const unsigned int retry_attempt =
-      (step_ >= 0 && step_ < static_cast<int>(retry_attempt_step_.size()))
-          ? retry_attempt_step_[static_cast<size_t>(step_)]
-          : 0U;
+  const double acceptance_score = attempt.acceptance_score;
+  const unsigned long long gauss_nodes = attempt.gauss_nodes;
+  const unsigned long long mean_nodes = attempt.mean_nodes;
+  const unsigned int retry_attempt = attempt.retry_attempt;
   const double element_budget_abs =
       (step_ >= 0 && step_ < static_cast<int>(element_budget_abs_step_.size()))
           ? element_budget_abs_step_[static_cast<size_t>(step_)]
@@ -7056,14 +7054,8 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
        step_ < static_cast<int>(eligible_patch_mean_h_scale_step_.size()))
           ? eligible_patch_mean_h_scale_step_[static_cast<size_t>(step_)]
           : current_eligible_patch_mean_h_scale_;
-  const double applied_relaxation =
-      (step_ >= 0 && step_ < static_cast<int>(applied_relaxation_step_.size()))
-          ? applied_relaxation_step_[static_cast<size_t>(step_)]
-          : ADAPTATION_RELAXATION;
-  const double applied_max_delta =
-      (step_ >= 0 && step_ < static_cast<int>(applied_max_delta_step_.size()))
-          ? applied_max_delta_step_[static_cast<size_t>(step_)]
-          : ADAPTATION_MAX_DELTA;
+  const double applied_relaxation = attempt.applied_relaxation;
+  const double applied_max_delta = attempt.applied_max_delta;
   const int retry_enabled =
       (step_ >= 0 && step_ < static_cast<int>(retry_enabled_step_.size()))
           ? retry_enabled_step_[static_cast<size_t>(step_)]
@@ -7650,7 +7642,8 @@ void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
   }
 }
 
-void GeneratorAdaptive::SaveMesh(std::unique_ptr<MeshAdaptive> malha, int step_) {
+void GeneratorAdaptive::SaveMesh(std::unique_ptr<MeshAdaptive> malha, int step_,
+                                 const MeshAttemptMetrics& attempt) {
   save_mesh_.emplace_back(step_, std::move(malha));
   MeshAdaptive* saved_mesh = save_mesh_.back().second.get();
   if (!saved_mesh) {
@@ -7667,26 +7660,26 @@ void GeneratorAdaptive::SaveMesh(std::unique_ptr<MeshAdaptive> malha, int step_)
 #if USE_MPI
   if (WRITE_MESH == std::string("q")) {
     PrintElments(saved_mesh, step_, this->error_step_, RANK_MPI);
-    WriteQualityMesh(saved_mesh, step_, this->error_step_, RANK_MPI);
+    WriteQualityMesh(saved_mesh, step_, attempt, RANK_MPI);
   } else if (WRITE_MESH == std::string("m")) {
     PrintElments(saved_mesh, step_, this->error_step_, RANK_MPI);
     WriteMesh(saved_mesh, step_, this->error_step_, RANK_MPI);
   } else if (WRITE_MESH == std::string("h")) {
     PrintElments(saved_mesh, step_, this->error_step_, RANK_MPI);
     WriteMesh(saved_mesh, step_, this->error_step_, RANK_MPI);
-    WriteQualityMesh(saved_mesh, step_, this->error_step_, RANK_MPI);
+    WriteQualityMesh(saved_mesh, step_, attempt, RANK_MPI);
   }
 #else
   if (WRITE_MESH == std::string("q")) {
     PrintElments(saved_mesh, step_, this->error_step_);
-    WriteQualityMesh(saved_mesh, step_, this->error_step_);
+    WriteQualityMesh(saved_mesh, step_, attempt);
   } else if (WRITE_MESH == std::string("m")) {
     PrintElments(saved_mesh, step_, this->error_step_);
     WriteMesh(saved_mesh, step_, this->error_step_);
   } else if (WRITE_MESH == std::string("h")) {
     PrintElments(saved_mesh, step_, this->error_step_);
     WriteMesh(saved_mesh, step_, this->error_step_);
-    WriteQualityMesh(saved_mesh, step_, this->error_step_);
+    WriteQualityMesh(saved_mesh, step_, attempt);
   }
 #endif
 }

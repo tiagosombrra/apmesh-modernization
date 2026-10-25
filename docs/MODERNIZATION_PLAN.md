@@ -1,5 +1,23 @@
 # Technique-preserving modernization plan
 
+## Active item: attempt metric export correction
+
+Use explicit candidate report values instead of indexing accepted history by
+attempted step. Preserve algorithm history, all nine retained Eistute/Book meshes,
+boundary incidences and acceptance/rejection decisions. Directed controls cover
+consecutive rejections, acceptance after a gap, retry metadata and rejection
+before curvature evaluation. Classification: engineering-only output correction.
+
+The first candidate's eight full-generator clang-tidy diagnostics are resolved
+through explicit null-input rejection, four removed dead stores, two `nullptr`
+initializers and export of the existing normalized submesh error. Preserve the
+original failing logs, null-input access violations and missing-summary controls.
+Exact-head and post-merge gates remain required; no suppression or scientific
+policy change is included. [Evidence and validation scope](evidence/STAGE3_ATTEMPT_METRICS.md)
+record the repair and remaining limits. Once those gates pass, investigate Book's
+boundary/interior transition with fixed configuration before selecting a meshing
+repair. Stage 3 remains open; this does not add a qualified memory slice.
+
 ## Stage 3 slice 37 qualified
 
 C30 qualifies bounded Hermite constructor publication rollback through PR #100
