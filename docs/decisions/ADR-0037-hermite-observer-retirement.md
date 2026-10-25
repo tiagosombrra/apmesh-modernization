@@ -1,6 +1,6 @@
 # ADR-0037: Retire completed Hermite patch observers
 
-Status: candidate; exact-head and post-merge qualification pending.
+Status: accepted for bounded completed-object retirement; exact-head/main qualification complete.
 
 Classification: behavior-changing lifetime defect repair; no scientific change.
 

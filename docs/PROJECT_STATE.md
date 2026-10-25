@@ -1,20 +1,38 @@
 # Project state
 
-## Stage 3 slice 36 candidate
+## Stage 3 slice 36 qualified
 
 Classification: behavior-changing lifetime defect repair; no scientific change.
-The current candidate adds completed Hermite observer retirement under C29 and
-ADR-0037. All current nonnull borrowed curves must outlive patch destruction.
-Removal is stable, complete and nonallocating. Constructors, numerical expressions,
-ordering and adaptation/acceptance/stopping policies are unchanged.
+Slice 36 qualifies completed Hermite observer retirement with live current
+borrowed curves. PR #98 integrates head `4bf270675eac826206cbe5fcc1aa1b1fafc60bfe`
+as main `b908646f7cea92e2a9bb5981f70febdc41cdbd0e`, preserving complete tree
+`2f5ba0f7dbbcf8b4ee0e4e161e46b57cd2e19382` (2020 blobs). Both full campaigns
+pass all 150/150 recorded commands: 53/53 CTest, zero failures/skips,
+74 Python controls, 32 memory batteries/3310 expected outcomes, 1040 retained
+scalar sequences and exact twice-repeated Eistute/Book accepted/rejected/OBJ/
+incidence/CSV traces. All 618 protected inputs and command/case/child-log/
+executable/environment/checkout identities are independently checked; complete
+remote audits pass. No hosted validation is claimed where no checks exist.
 
-Qualification is pending. The new focused battery and original/candidate C++17
-traces, all prior regression, exact published-head and post-merge main gates must
-pass before this slice is qualified. Original Hermite audit failures are retained.
-Failed construction/adoption, copied/foreign observers and arbitrary rebinding
-remain separate obligations. See [scope and evidence](evidence/STAGE3_HERMITE_OBSERVERS.md).
-Stage 3 remains open. The single active item is completion of slice 36;
-earlier next-work paragraphs below are historical checkpoints.
+Completed Hermite destruction removes every matching observer from each current
+nonnull borrowed curve without allocation, preserving all other values and their
+order. Repeated current slots, empty/default/initialized detached topology and
+Geometry dependent destruction/moves are measured. Current curves must remain
+live through patch destruction. The new battery passes 153 outcomes, 22 measured
+nonallocating operations, working UAF/leak/denial/prefix/order controls and eight
+rejected source mutations. Eighteen explicit C++17 original/candidate live pairs
+agree on 108864 scalar-bit observations plus incidence. Original 125 failed
+qualification outcomes, nine actual ASan consumptions and preparation findings
+remain retained. The other 486 production files match the immutable 488-file
+archive. See [bounded repair and delivery evidence](evidence/STAGE3_HERMITE_OBSERVERS.md).
+
+No constructor, formula, floating-point order, synchronization, template/front,
+tolerance, budget or adaptation/acceptance/stopping policy changes. Failed
+construction/adoption, copied/foreign observers, arbitrary rebinding, SubMesh,
+broader callers and complete-process/parallel/LSan/UBSan remain unqualified.
+Next single audit: Hermite constructor publication failure and actual callers.
+Stage 3 remains open; stages 4-11 remain pending. Earlier next-work statements
+below are historical checkpoints.
 
 ## Hermite observer retirement audit
 

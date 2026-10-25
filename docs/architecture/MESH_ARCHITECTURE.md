@@ -23,16 +23,19 @@ not consolidated. See [the bounded audit](../evidence/STAGE3_CHARGE_INPUT.md).
 ## Evidence and coverage
 
 The [ordinary Hermite observer audit](../evidence/STAGE3_HERMITE_OBSERVER_AUDIT.md)
-records 25 literal construction roots and nine actual expired-observer ASan
-failures. Default retirement does not deregister completed Hermite patches.
-This is original reproduction, not a repair qualification. Completed retirement
-is the next bounded slice 36; constructor/caller/foreign-rebinding roots stay open.
+retains 25 literal roots and nine original expired-observer ASan failures.
+C29/ADR-0037 now qualifies completed Hermite retirement through full exact-head/
+main gates (PR #98); see [the bounded repair](../evidence/STAGE3_HERMITE_OBSERVERS.md).
+Current curves must remain live through stable, all-match, nonallocating removal.
+Constructor publication failure is the next single audit; failed adoption,
+foreign/copied/current-curve rebinding and complete-process roots remain open.
 
 C22/ADR-0036 defines qualified initialized detached numeric copies, not complete
 geometry clones. The [slice 35 evidence](../evidence/STAGE3_DETACHED_PATCH_COPY.md)
 records full exact-head/main qualification of basis/zero metadata/internal flags,
-defined numeric reads/order and detached curves/SubMesh. Ordinary Hermite
-retirement and foreign/current-patch rebinding remain open.
+defined numeric reads/order and detached curves/SubMesh. Completed Hermite
+retirement is separately qualified by slice 36; foreign/current-patch rebinding
+remains open.
 
 C22's [pointer-taking patch-copy audit](../evidence/STAGE3_PATCH_COPY_AUDIT.md)
 records historical ID/defined numeric payload transfer with empty curves and
@@ -62,7 +65,7 @@ The finite remaining lifecycle obligations are in STAGE3_CLOSURE_INVENTORY.md.
 
 [source_inventory.json](source_inventory.json) deterministically covers all
 151 first-party C++ files: 73 translation units and 78 headers, plus hashes for
-the 7 CMake inputs (including isolated memory probes). It records 586 potential literal include directives and
+the 10 CMake inputs (including isolated memory probes). It records 588 potential literal include directives and
 339 distinct directed first-party include edges. Conditional branches are kept;
 this is not the active preprocessed graph. The 16 directory groups below are
 source organization, not automatically inferred architectural layers.

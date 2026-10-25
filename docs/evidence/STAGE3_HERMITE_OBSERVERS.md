@@ -1,7 +1,9 @@
 # Stage 3 slice 36: completed Hermite observer retirement
 
 Classification: behavior-changing lifetime defect repair; no scientific change.
-Status: candidate, full exact published-head and post-merge qualification pending.
+Status: bounded full exact-head/main qualification complete (PR #98).
+Earlier candidate/preflight language records preparation; exact delivery status
+is recorded in the final closure section.
 Preflight: 53/53 CTest, zero failures/skips, including 74 Python controls.
 Source base: `6669a29e03e868ecaa781e6da2a5299a19ddeae5` (PR #97 audit).
 
@@ -117,3 +119,49 @@ parallel/LSan/UBSan remain open. Configured article traces do not execute every
 Hermite source root or demonstrate a current CLI failure. Next work must select
 one root from the finite closure inventory after this candidate is qualified.
 Stage 3 remains open; stages 4-11 remain pending.
+
+## Exact delivery closure
+
+Published head `4bf270675eac826206cbe5fcc1aa1b1fafc60bfe` and implementation main
+`b908646f7cea92e2a9bb5981f70febdc41cdbd0e` preserve complete tree
+`2f5ba0f7dbbcf8b4ee0e4e161e46b57cd2e19382` (2020 blobs). Both full campaigns
+pass 150/150 recorded commands and independent checks: 53/53 CTest, zero
+failures/skips, 74 Python controls, all 32 batteries/3310 expected outcomes,
+1040 retained scalar sequences and exact twice-repeated Eistute/Book accepted/
+rejected/OBJ/incidence/CSV traces. The new 153-outcome battery, 22 actual
+nonallocating operations and 18 C++17 live pairs pass on the formatted delivery
+sources. All 618 source/test/tool/build/input/contract identities remain fixed.
+The original 125 failed outcomes and nine actual ASan consumptions stay failed.
+All earlier negative controls, original failures and preparation findings remain.
+
+The direct-subprocess delivery gate successfully completes configured static
+analysis on 14 units; the preflight PowerShell wrapper result remains preserved.
+No diagnostic configuration, scientific policy or required gate was weakened.
+The [compact delivery record](stage3/hermite_retirement/delivery.json) retains
+the exact revisions, report/check/remote hashes, counts and scope. Raw reports
+and child logs remain local in build/s36-head and build/s36-main. Per-invocation
+executable identities are checked; equality of binary bytes across builds is
+not required or claimed. Complete remote trees/branches/PRs/statuses/workflow
+runs/check-runs are audited; absent hosted observations are not hosted validation.
+
+The documentation closure changes only ten declared documentation paths and
+none of the 618 protected implementation inputs. Exact published documentation
+head/main must repeat applicable builds, all 53 CTest/74 Python controls, the focused
+153-outcome/18-pair battery, source preservation, architecture, format/whitespace,
+environment/checkout and full remote audits. The earlier complete implementation
+campaigns remain hash-linked; no full campaign is repeated for prose alone.
+Defined observations are compared against implementation main, with actual
+executable/log identities recorded for each new invocation.
+
+Next single audit: Hermite constructor publication failure and actual callers.
+Failed construction is separate because a derived destructor does not execute when construction throws. Consuming adoption,
+fresh-curve preparation, foreign/copied/rebound lists and all other stated limits
+remain separate. Stage 3 closure remains blocked by the finite remaining
+obligation inventory; stages 4-11 remain pending.
+
+The first documentation generator completed its ten file writes but reported a
+failed final path assertion: stripping the leading porcelain-status space
+truncated the first path in that audit. The failed log is retained. A separate
+raw NUL-terminated status read confirms the exact original ten-path allowlist and
+all 618 fixed inputs; the generator and completed campaigns were not repeated.
+This preparation finding does not alter numerical or instrument expectations.

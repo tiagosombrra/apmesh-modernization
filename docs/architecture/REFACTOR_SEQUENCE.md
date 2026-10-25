@@ -1,13 +1,12 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
-Current single repair: slice 36, completed Hermite observer retirement.
-The [original audit](../evidence/STAGE3_HERMITE_OBSERVER_AUDIT.md) reproduces nine
-ASan failures without changing production. Constructor rollback, failed adoption
-and foreign/copied/rebound observers remain separate obligations.
-Slice 35 initialized detached copies are qualified by full exact-head/main gates;
-see [the bounded evidence](../evidence/STAGE3_DETACHED_PATCH_COPY.md).
-Preserve initialized-source preconditions and detached topology. No complete
-clone, ordinary Hermite retirement or foreign/current-patch rebinding follows.
+Current single audit: Hermite constructor publication failure and actual callers.
+Completed Hermite retirement is qualified by full exact-head/main gates under
+C29/ADR-0037; see [bounded evidence](../evidence/STAGE3_HERMITE_OBSERVERS.md).
+The completed-object repair requires live current borrowed curves; constructor
+rollback, consuming adoption and foreign/copied/rebound lists remain separate.
+Slice 35 initialized detached copies remain qualified within their source
+preconditions; neither result is a complete clone or whole-process guarantee.
 Earlier queue statements below are historical.
 
 This is an implementation sequence within the approved stages, not a production
