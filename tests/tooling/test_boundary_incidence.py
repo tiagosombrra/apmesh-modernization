@@ -214,6 +214,11 @@ class BoundaryIncidenceTests(unittest.TestCase):
                "quality_mean": format(mean, ".6g"),
                "poor_ratio_lt_0_30": 0, "q_ge_0_60": 100,
                "excellent_ratio_ge_0_80": format(100 * excellent / stats["triangles"], ".6g")}
+        # Every UV fan triangle is right isosceles, regardless of XYZ stretching.
+        row.update({"quality_uv_" + field: format(right_quality, ".6g")
+                    for field in ("min", "p05", "p50", "p95", "max", "mean")})
+        row.update(quality_uv_std=0, quality_uv_poor_ratio_lt_0_30=0,
+                   quality_uv_q_ge_0_60=100, quality_uv_excellent_ratio_ge_0_80=100)
         with (self.root / "control_metrics.csv").open("w", newline="") as stream:
             writer = csv.DictWriter(stream, fieldnames=list(row))
             writer.writeheader()
@@ -227,6 +232,21 @@ class BoundaryIncidenceTests(unittest.TestCase):
         self.assertEqual(report["boundary_incidence_coverage"], "verified")
         self.assertEqual(report["physical_quality_coverage"], "full_precision_snapshot")
         self.assertEqual(report["physical_quality"][0]["csv_fields_compared"], 5)
+        self.assertEqual(report["parametric_quality_coverage"], "full_precision_snapshot")
+        self.assertEqual(report["parametric_quality"][0]["csv_fields_compared"], 10)
+
+    def test_wrong_uv_csv_fails_even_with_correct_physical_quality(self):
+        self.prepare_run()
+        path = self.root / "control_metrics.csv"
+        with path.open(newline="") as stream:
+            row, = csv.DictReader(stream)
+        row["quality_uv_p50"] = "1"
+        with path.open("w", newline="") as stream:
+            writer = csv.DictWriter(stream, fieldnames=list(row))
+            writer.writeheader()
+            writer.writerow(row)
+        with self.assertRaisesRegex(ValueError, "quality_uv_p50"):
+            verify_run(self.root, require_boundary=True)
 
     def test_wrong_quality_csv_fails_even_with_correct_geometry_and_logs(self):
         self.prepare_run()
