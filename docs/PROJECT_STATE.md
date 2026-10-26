@@ -1,23 +1,24 @@
 # Project state
 
-## UV-quality report verification
+## Serial terminal domain-failure status
 
 The Book direction diagnosis is complete as a frozen-state observation; the
 reverse-direction experiment remains unapproved and unexecuted. Production
 criteria and the negative relative-area result remain unchanged.
 
-PR #104 qualifies five physical-quality CSV checks on exact head/main. The active
-engineering extension independently checks all ten UV-quality CSV fields from
-full-precision parameter coordinates, including interpolated percentiles and
-sample standard deviation. A deliberately corrupted Book UV report passes the
-previous verifier and is rejected by the extension. Nine retained states cover
-90 UV fields and preserve all 45 prior physical-field checks. Book patch 0,
-step 2 has 28 UV-poor and 70 physical-poor triangles; these meanings stay distinct.
-See [scope, controls and limits](evidence/PHYSICAL_QUALITY_ORACLE.md#uv-quality-extension).
-Exact-head/main observations belong to the delivery PR; no mesh improvement or
-stage closure is claimed. Next single engineering audit: terminal AdaptDomain
-generation failure, cleanup and process status under the existing meshing policy.
-Stage 3 stays open. Earlier active-item/next-work statements below are historical.
+PRs #104/#105 qualify independent physical/UV report checks on exact head/main.
+The terminal-domain audit reproduces success exit status after controlled AFT
+failure, skipped outer cleanup and cached UV storage retained on exceptions.
+The active bounded repair changes only serial fatal status/diagnostics and
+removes two overwritten serial assignments required by static analysis. It exits
+with status 1 and step/patch/retry/status context after existing attempts fail.
+GNU serial controls cover Book and Eistute; lifetime cleanup is not repaired.
+See [observations, checks and remaining limits](evidence/DOMAIN_FAILURE_STATUS.md).
+Exact-head/main observations belong to the delivery PR. Stage 3 stays open; no
+new qualified memory slice or mesh improvement is claimed. Next single work:
+temporary UV cache ownership during construction and exception unwinding, before
+replacing terminal process exit with exception propagation. Earlier active-item/
+next-work statements below are historical checkpoints.
 
 ## Book relative-area experiment: negative result
 

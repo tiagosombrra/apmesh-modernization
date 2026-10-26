@@ -3,6 +3,8 @@
 #include "adapter/curve_samples.h"
 #include <algorithm>
 #include <cmath>
+#include <cstdlib>
+#include <iostream>
 #include <memory>
 #include <queue>
 #include <unordered_map>
@@ -54,7 +56,7 @@ double ClampValue(const double value, const double lower, const double upper) {
 }
 
 // Profundidade efetiva na quadtree do AFT: valores < 0 do gerador significam
-// "não definido"; opcionalmente mapeamos para PATCH_QUADTREE_DEPTH_* (config).
+// "nÃ£o definido"; opcionalmente mapeamos para PATCH_QUADTREE_DEPTH_* (config).
 int ResolveQuadtreeDepthCap(int max_quadtree_depth, int adaptive_step) {
   if (max_quadtree_depth >= 0) {
     return max_quadtree_depth;
@@ -62,8 +64,7 @@ int ResolveQuadtreeDepthCap(int max_quadtree_depth, int adaptive_step) {
   if (ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH == 0) {
     return -1;
   }
-  const int d = (adaptive_step <= 1) ? PATCH_QUADTREE_DEPTH_STEP1
-                                     : PATCH_QUADTREE_DEPTH_STEPN;
+  const int d = (adaptive_step <= 1) ? PATCH_QUADTREE_DEPTH_STEP1 : PATCH_QUADTREE_DEPTH_STEPN;
   return std::max(0, std::min(32, d));
 }
 
@@ -101,9 +102,7 @@ struct ParamVertexKey {
   long long x;
   long long y;
 
-  bool operator==(const ParamVertexKey& other) const {
-    return x == other.x && y == other.y;
-  }
+  bool operator==(const ParamVertexKey& other) const { return x == other.x && y == other.y; }
 };
 
 struct ParamVertexKeyHasher {
@@ -116,9 +115,7 @@ struct EdgeKey {
   ParamVertexKey a;
   ParamVertexKey b;
 
-  bool operator==(const EdgeKey& other) const {
-    return a == other.a && b == other.b;
-  }
+  bool operator==(const EdgeKey& other) const { return a == other.a && b == other.b; }
 };
 
 struct EdgeKeyHasher {
@@ -144,12 +141,8 @@ EdgeKey MakeEdgeKey(Vertex* v1, Vertex* v2) {
 }
 
 double FaceBoundaryDistance(Face* face) {
-  const double cx =
-      (face->getV1()->getX() + face->getV2()->getX() + face->getV3()->getX()) /
-      3.0;
-  const double cy =
-      (face->getV1()->getY() + face->getV2()->getY() + face->getV3()->getY()) /
-      3.0;
+  const double cx = (face->getV1()->getX() + face->getV2()->getX() + face->getV3()->getX()) / 3.0;
+  const double cy = (face->getV1()->getY() + face->getV2()->getY() + face->getV3()->getY()) / 3.0;
   return std::min(std::min(cx, 1.0 - cx), std::min(cy, 1.0 - cy));
 }
 
@@ -192,16 +185,14 @@ void AccumulateRegionStats(RegionQualityStatsLocal& stats, Face* face) {
   if (quality >= 0.60) {
     stats.good_ratio_ge_0_60 += 1.0;
   }
-  stats.area_min =
-      (stats.element_count == 0ULL) ? area : std::min(stats.area_min, area);
+  stats.area_min = (stats.element_count == 0ULL) ? area : std::min(stats.area_min, area);
   stats.area_mean += area;
   stats.area_max = std::max(stats.area_max, area);
   stats.aspect_ratio_mean += aspect;
   ++stats.element_count;
 }
 
-RegionalPatchStats ComputeRegionalPatchStats(const FaceList& faces,
-                                             const double target_patch_h) {
+RegionalPatchStats ComputeRegionalPatchStats(const FaceList& faces, const double target_patch_h) {
   RegionalPatchStats stats;
   if (faces.empty()) {
     return stats;
@@ -216,8 +207,8 @@ RegionalPatchStats ComputeRegionalPatchStats(const FaceList& faces,
     }
   }
 
-  const double transition_band_width = std::max(0.08, std::min(
-      0.32, (target_patch_h > 0.0) ? target_patch_h * 1.75 : 0.14));
+  const double transition_band_width =
+      std::max(0.08, std::min(0.32, (target_patch_h > 0.0) ? target_patch_h * 1.75 : 0.14));
   for (FaceList::const_iterator iter = faces.begin(); iter != faces.end(); ++iter) {
     Face* face = *iter;
     Vertex* verts[3] = {face->getV1(), face->getV2(), face->getV3()};
@@ -235,8 +226,7 @@ RegionalPatchStats ComputeRegionalPatchStats(const FaceList& faces,
 
     const double boundary_distance = FaceBoundaryDistance(face);
     const double aspect = FaceAspectRatio(face);
-    const bool transition_band_face =
-        boundary_distance <= transition_band_width || aspect > 1.8;
+    const bool transition_band_face = boundary_distance <= transition_band_width || aspect > 1.8;
     if (transition_band_face) {
       AccumulateRegionStats(stats.transition, face);
     } else {
@@ -248,9 +238,8 @@ RegionalPatchStats ComputeRegionalPatchStats(const FaceList& faces,
   FinalizeRegionStats(stats.transition);
   FinalizeRegionStats(stats.interior);
 
-  const double total =
-      static_cast<double>(stats.boundary.element_count + stats.transition.element_count +
-                          stats.interior.element_count);
+  const double total = static_cast<double>(
+      stats.boundary.element_count + stats.transition.element_count + stats.interior.element_count);
   if (total > 0.0) {
     const double good_count =
         stats.boundary.good_ratio_ge_0_60 * static_cast<double>(stats.boundary.element_count) +
@@ -261,12 +250,11 @@ RegionalPatchStats ComputeRegionalPatchStats(const FaceList& faces,
 
   const double transition_quality = stats.transition.good_ratio_ge_0_60;
   const double interior_quality = stats.interior.good_ratio_ge_0_60;
-  const double transition_aspect_penalty = ClampValue(
-      std::max(0.0, stats.transition.aspect_ratio_mean - 1.8) / 2.0, 0.0, 1.0);
-  stats.curve_interior_coupling = ClampValue(
-      0.50 * transition_quality + 0.35 * interior_quality +
-          0.15 * (1.0 - transition_aspect_penalty),
-      0.0, 1.0);
+  const double transition_aspect_penalty =
+      ClampValue(std::max(0.0, stats.transition.aspect_ratio_mean - 1.8) / 2.0, 0.0, 1.0);
+  stats.curve_interior_coupling = ClampValue(0.50 * transition_quality + 0.35 * interior_quality +
+                                                 0.15 * (1.0 - transition_aspect_penalty),
+                                             0.0, 1.0);
   return stats;
 }
 
@@ -307,16 +295,13 @@ FaceMetricStats ComputeFaceMetricStats(const FaceList& faces) {
 }
 
 void AppendDomainDebugLog(int adaptive_step, int retry_index, int patch_index,
-                          double factor_disc_global,
-                          const FaceMetricStats& raw_stats,
+                          double factor_disc_global, const FaceMetricStats& raw_stats,
                           const FaceMetricStats& smoothed_stats,
                           const FaceMetricStats& generated_stats,
                           const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
-                          const RegionalPatchStats& regional_stats,
-                          int local_regen_attempt = 0,
+                          const RegionalPatchStats& regional_stats, int local_regen_attempt = 0,
                           const std::string& generation_status = "ok",
-                          double degeneracy_score = 0.0,
-                          double transition_floor = 0.0,
+                          double degeneracy_score = 0.0, double transition_floor = 0.0,
                           int transition_underresolved = 0,
                           double interior_transition_imbalance = 0.0,
                           double curve_domain_balance = 1.0) {
@@ -334,8 +319,10 @@ void AppendDomainDebugLog(int adaptive_step, int retry_index, int patch_index,
             "smoothed_h_max,smoothed_quality_min,smoothed_quality_mean,smoothed_poor_ratio,"
             "generated_faces,generated_quality_min,generated_quality_mean,generated_poor_ratio,"
             "quadtree_leaves,template_count,template_low_score_count,template_score_min,"
-            "template_score_mean,low_quality_subdivide_hits,quality_pre_aft_min,quality_pre_aft_mean,"
-            "quality_post_aft_min,quality_post_aft_mean,quality_post_smoothing_min,quality_post_smoothing_mean,"
+            "template_score_mean,low_quality_subdivide_hits,quality_pre_aft_min,quality_pre_aft_"
+            "mean,"
+            "quality_post_aft_min,quality_post_aft_mean,quality_post_smoothing_min,quality_post_"
+            "smoothing_mean,"
             "poor_ratio_pre_aft,poor_ratio_post_aft,poor_ratio_post_smoothing,"
             "degenerate_pre_aft_count,degenerate_post_aft_count,degenerate_post_smoothing_count,"
             "boundary_element_ratio,transition_element_ratio,internal_element_ratio,"
@@ -343,60 +330,51 @@ void AppendDomainDebugLog(int adaptive_step, int retry_index, int patch_index,
             "local_regen_attempt,generation_status,degeneracy_score,"
             "transition_floor,transition_underresolved,interior_transition_imbalance,"
             "curve_domain_balance,curve_interior_coupling,good_ratio_ge_0_60,"
-            "boundary_elements,boundary_quality_min,boundary_quality_mean,boundary_q_ge_0_60,boundary_area_mean,boundary_aspect_mean,"
-            "transition_elements,transition_quality_min,transition_quality_mean,transition_q_ge_0_60,transition_area_mean,transition_aspect_mean,"
-            "interior_elements,interior_quality_min,interior_quality_mean,interior_q_ge_0_60,interior_area_mean,interior_aspect_mean"
+            "boundary_elements,boundary_quality_min,boundary_quality_mean,boundary_q_ge_0_60,"
+            "boundary_area_mean,boundary_aspect_mean,"
+            "transition_elements,transition_quality_min,transition_quality_mean,transition_q_ge_0_"
+            "60,transition_area_mean,transition_aspect_mean,"
+            "interior_elements,interior_quality_min,interior_quality_mean,interior_q_ge_0_60,"
+            "interior_area_mean,interior_aspect_mean"
          << std::endl;
   }
 
-  file << adaptive_step << "," << retry_index << "," << patch_index << ","
-       << factor_disc_global << "," << raw_stats.count << "," << raw_stats.h_min << ","
-       << raw_stats.h_mean << "," << raw_stats.h_max << "," << raw_stats.quality_min << ","
-       << raw_stats.quality_mean << "," << raw_stats.poor_ratio << ","
-       << smoothed_stats.h_min << "," << smoothed_stats.h_mean << ","
+  file << adaptive_step << "," << retry_index << "," << patch_index << "," << factor_disc_global
+       << "," << raw_stats.count << "," << raw_stats.h_min << "," << raw_stats.h_mean << ","
+       << raw_stats.h_max << "," << raw_stats.quality_min << "," << raw_stats.quality_mean << ","
+       << raw_stats.poor_ratio << "," << smoothed_stats.h_min << "," << smoothed_stats.h_mean << ","
        << smoothed_stats.h_max << "," << smoothed_stats.quality_min << ","
        << smoothed_stats.quality_mean << "," << smoothed_stats.poor_ratio << ","
        << generated_stats.count << "," << generated_stats.quality_min << ","
        << generated_stats.quality_mean << "," << generated_stats.poor_ratio << ","
        << aft_stats.quadtree_leaf_count << "," << aft_stats.quadtree_template_count << ","
-       << aft_stats.quadtree_low_score_count << "," << aft_stats.quadtree_template_score_min
-       << "," << aft_stats.quadtree_template_score_mean << ","
-       << aft_stats.quadtree_low_quality_subdivide_hits << ","
-       << aft_stats.quality_pre_aft_min << "," << aft_stats.quality_pre_aft_mean << ","
-       << aft_stats.quality_post_aft_min << "," << aft_stats.quality_post_aft_mean << ","
-       << aft_stats.quality_post_smoothing_min << "," << aft_stats.quality_post_smoothing_mean << ","
-       << aft_stats.poor_ratio_pre_aft << "," << aft_stats.poor_ratio_post_aft << ","
-       << aft_stats.poor_ratio_post_smoothing << ","
-       << aft_stats.degenerate_pre_aft_count << "," << aft_stats.degenerate_post_aft_count
-       << "," << aft_stats.degenerate_post_smoothing_count << ","
-       << aft_stats.boundary_element_ratio << "," << aft_stats.transition_element_ratio
-       << "," << aft_stats.internal_element_ratio << ","
-       << aft_stats.postprocess_vertices_considered << ","
-       << aft_stats.postprocess_vertices_moved << ","
-       << local_regen_attempt << "," << generation_status << ","
-       << degeneracy_score << "," << transition_floor << ","
+       << aft_stats.quadtree_low_score_count << "," << aft_stats.quadtree_template_score_min << ","
+       << aft_stats.quadtree_template_score_mean << ","
+       << aft_stats.quadtree_low_quality_subdivide_hits << "," << aft_stats.quality_pre_aft_min
+       << "," << aft_stats.quality_pre_aft_mean << "," << aft_stats.quality_post_aft_min << ","
+       << aft_stats.quality_post_aft_mean << "," << aft_stats.quality_post_smoothing_min << ","
+       << aft_stats.quality_post_smoothing_mean << "," << aft_stats.poor_ratio_pre_aft << ","
+       << aft_stats.poor_ratio_post_aft << "," << aft_stats.poor_ratio_post_smoothing << ","
+       << aft_stats.degenerate_pre_aft_count << "," << aft_stats.degenerate_post_aft_count << ","
+       << aft_stats.degenerate_post_smoothing_count << "," << aft_stats.boundary_element_ratio
+       << "," << aft_stats.transition_element_ratio << "," << aft_stats.internal_element_ratio
+       << "," << aft_stats.postprocess_vertices_considered << ","
+       << aft_stats.postprocess_vertices_moved << "," << local_regen_attempt << ","
+       << generation_status << "," << degeneracy_score << "," << transition_floor << ","
        << transition_underresolved << "," << interior_transition_imbalance << ","
        << curve_domain_balance << "," << regional_stats.curve_interior_coupling << ","
-       << regional_stats.good_ratio_ge_0_60 << ","
-       << regional_stats.boundary.element_count << ","
-       << regional_stats.boundary.quality_min << ","
-       << regional_stats.boundary.quality_mean << ","
-       << regional_stats.boundary.good_ratio_ge_0_60 << ","
-       << regional_stats.boundary.area_mean << ","
-       << regional_stats.boundary.aspect_ratio_mean << ","
-       << regional_stats.transition.element_count << ","
-       << regional_stats.transition.quality_min << ","
-       << regional_stats.transition.quality_mean << ","
-       << regional_stats.transition.good_ratio_ge_0_60 << ","
-       << regional_stats.transition.area_mean << ","
-       << regional_stats.transition.aspect_ratio_mean << ","
-       << regional_stats.interior.element_count << ","
-       << regional_stats.interior.quality_min << ","
-       << regional_stats.interior.quality_mean << ","
-       << regional_stats.interior.good_ratio_ge_0_60 << ","
-       << regional_stats.interior.area_mean << ","
-       << regional_stats.interior.aspect_ratio_mean
-       << std::endl;
+       << regional_stats.good_ratio_ge_0_60 << "," << regional_stats.boundary.element_count << ","
+       << regional_stats.boundary.quality_min << "," << regional_stats.boundary.quality_mean << ","
+       << regional_stats.boundary.good_ratio_ge_0_60 << "," << regional_stats.boundary.area_mean
+       << "," << regional_stats.boundary.aspect_ratio_mean << ","
+       << regional_stats.transition.element_count << "," << regional_stats.transition.quality_min
+       << "," << regional_stats.transition.quality_mean << ","
+       << regional_stats.transition.good_ratio_ge_0_60 << "," << regional_stats.transition.area_mean
+       << "," << regional_stats.transition.aspect_ratio_mean << ","
+       << regional_stats.interior.element_count << "," << regional_stats.interior.quality_min << ","
+       << regional_stats.interior.quality_mean << "," << regional_stats.interior.good_ratio_ge_0_60
+       << "," << regional_stats.interior.area_mean << ","
+       << regional_stats.interior.aspect_ratio_mean << std::endl;
 }
 
 bool IsAdaptiveStableMode() { return ADAPTIVE_MODE == "adaptive_stable"; }
@@ -413,16 +391,14 @@ double StablePatchPoorRatioMax() {
   return ClampValue(0.45 - 0.25 * ADAPTIVE_QUALITY_PRIORITY, 0.15, 0.45);
 }
 
-double EstimateExpectedFaceCount(const double patch_area,
-                                 const double target_patch_h) {
+double EstimateExpectedFaceCount(const double patch_area, const double target_patch_h) {
   if (patch_area <= 0.0 || target_patch_h <= 0.0) {
     return 0.0;
   }
   return patch_area / std::max(1.0e-9, target_patch_h * target_patch_h);
 }
 
-double ComputeTransitionFloor(const double target_patch_h,
-                              const double internal_ratio) {
+double ComputeTransitionFloor(const double target_patch_h, const double internal_ratio) {
   if (target_patch_h <= 0.0) {
     return 0.10;
   }
@@ -431,18 +407,15 @@ double ComputeTransitionFloor(const double target_patch_h,
   return ClampValue(0.08 + 0.08 * h_term + 0.07 * interior_term, 0.08, 0.24);
 }
 
-double ComputeInteriorTransitionImbalance(
-    const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
-    const double transition_floor) {
+double ComputeInteriorTransitionImbalance(const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
+                                          const double transition_floor) {
   const double transition_gap =
       std::max(0.0, transition_floor - aft_stats.transition_element_ratio);
-  const double internal_excess =
-      std::max(0.0, aft_stats.internal_element_ratio - 0.65);
+  const double internal_excess = std::max(0.0, aft_stats.internal_element_ratio - 0.65);
   return transition_gap + 0.5 * internal_excess;
 }
 
-double ComputeCurveBalanceFloor(const double target_patch_h,
-                                const double internal_ratio) {
+double ComputeCurveBalanceFloor(const double target_patch_h, const double internal_ratio) {
   if (target_patch_h <= 0.0) {
     return 0.70;
   }
@@ -452,8 +425,7 @@ double ComputeCurveBalanceFloor(const double target_patch_h,
 }
 
 double ComputeCurveDomainBalance(PatchCoons* coons_patch, const double target_patch_h) {
-  if (coons_patch == nullptr || target_patch_h <= 0.0 ||
-      coons_patch->GetNumBerCurves() == 0U) {
+  if (coons_patch == nullptr || target_patch_h <= 0.0 || coons_patch->GetNumBerCurves() == 0U) {
     return 1.0;
   }
 
@@ -468,8 +440,7 @@ double ComputeCurveDomainBalance(PatchCoons* coons_patch, const double target_pa
     const double desired_spacing = std::max(1.0e-6, target_patch_h * 1.35);
     const int needed_points =
         std::max(2, static_cast<int>(std::ceil(curve_length / desired_spacing)) + 1);
-    const double ratio =
-        static_cast<double>(actual_points) / static_cast<double>(needed_points);
+    const double ratio = static_cast<double>(actual_points) / static_cast<double>(needed_points);
     min_ratio = std::min(min_ratio, ratio);
   }
 
@@ -479,24 +450,21 @@ double ComputeCurveDomainBalance(PatchCoons* coons_patch, const double target_pa
   return ClampValue(min_ratio, 0.0, 2.0);
 }
 
-bool IsTransitionUnderresolved(
-    const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
-    const double transition_floor) {
+bool IsTransitionUnderresolved(const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
+                               const double transition_floor) {
   const bool interior_dominant = aft_stats.internal_element_ratio > 0.66;
-  return interior_dominant &&
-         (aft_stats.transition_element_ratio + 1.0e-9 < transition_floor);
+  return interior_dominant && (aft_stats.transition_element_ratio + 1.0e-9 < transition_floor);
 }
 
-double ComputePatchDegeneracyScore(
-    const FaceMetricStats& generated_stats,
-    const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
-    const double patch_area = 0.0, const double target_patch_h = -1.0,
-    const double transition_floor = 0.0, const double curve_domain_balance = 1.0,
-    const double curve_balance_floor = 0.0) {
+double ComputePatchDegeneracyScore(const FaceMetricStats& generated_stats,
+                                   const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
+                                   const double patch_area = 0.0,
+                                   const double target_patch_h = -1.0,
+                                   const double transition_floor = 0.0,
+                                   const double curve_domain_balance = 1.0,
+                                   const double curve_balance_floor = 0.0) {
   const double min_elements_score =
-      generated_stats.count < static_cast<unsigned long long>(StablePatchMinElements())
-          ? 1.0
-          : 0.0;
+      generated_stats.count < static_cast<unsigned long long>(StablePatchMinElements()) ? 1.0 : 0.0;
   const double quality_score =
       std::max(0.0, StablePatchQualityMin() - aft_stats.quality_post_aft_min);
   const double poor_ratio_score =
@@ -509,38 +477,32 @@ double ComputePatchDegeneracyScore(
   const double expected_faces = EstimateExpectedFaceCount(patch_area, target_patch_h);
   const double underresolved_score =
       (expected_faces >= static_cast<double>(StablePatchMinElements()) * 1.5 &&
-       generated_stats.count <
-           static_cast<unsigned long long>(std::floor(expected_faces * 0.45)))
+       generated_stats.count < static_cast<unsigned long long>(std::floor(expected_faces * 0.45)))
           ? 1.0
           : 0.0;
   const double transition_score =
       IsTransitionUnderresolved(aft_stats, transition_floor) ? 1.0 : 0.0;
   const double transition_imbalance_score =
       std::max(0.0, ComputeInteriorTransitionImbalance(aft_stats, transition_floor));
-  const double curve_balance_score =
-      std::max(0.0, curve_balance_floor - curve_domain_balance);
-  return min_elements_score + 2.0 * quality_score + poor_ratio_score +
-         template_score + underresolved_score + transition_score +
-         transition_imbalance_score + 1.2 * curve_balance_score;
+  const double curve_balance_score = std::max(0.0, curve_balance_floor - curve_domain_balance);
+  return min_elements_score + 2.0 * quality_score + poor_ratio_score + template_score +
+         underresolved_score + transition_score + transition_imbalance_score +
+         1.2 * curve_balance_score;
 }
 
 bool PatchNeedsFallback(const FaceMetricStats& generated_stats,
                         const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
-                        const double patch_area = 0.0,
-                        const double target_patch_h = -1.0,
+                        const double patch_area = 0.0, const double target_patch_h = -1.0,
                         const double transition_floor = 0.0,
                         const double curve_domain_balance = 1.0,
                         const double curve_balance_floor = 0.0) {
   const double expected_faces = EstimateExpectedFaceCount(patch_area, target_patch_h);
   const bool underresolved =
       expected_faces >= static_cast<double>(StablePatchMinElements()) * 1.5 &&
-      generated_stats.count <
-          static_cast<unsigned long long>(std::floor(expected_faces * 0.45));
-  return generated_stats.count <
-             static_cast<unsigned long long>(StablePatchMinElements()) ||
+      generated_stats.count < static_cast<unsigned long long>(std::floor(expected_faces * 0.45));
+  return generated_stats.count < static_cast<unsigned long long>(StablePatchMinElements()) ||
          aft_stats.quality_post_aft_min < StablePatchQualityMin() ||
-         aft_stats.poor_ratio_post_aft > StablePatchPoorRatioMax() ||
-         underresolved ||
+         aft_stats.poor_ratio_post_aft > StablePatchPoorRatioMax() || underresolved ||
          (curve_domain_balance + 1.0e-9 < curve_balance_floor &&
           aft_stats.internal_element_ratio > 0.60) ||
          IsTransitionUnderresolved(aft_stats, transition_floor) ||
@@ -559,12 +521,9 @@ void SmoothDomainTargetSizes(FaceList& mesh_old) {
 
   for (std::size_t i = 0; i < faces.size(); ++i) {
     Face* face = faces[i];
-    edge_to_faces[MakeEdgeKey(face->getV1(), face->getV2())].push_back(
-        static_cast<int>(i));
-    edge_to_faces[MakeEdgeKey(face->getV2(), face->getV3())].push_back(
-        static_cast<int>(i));
-    edge_to_faces[MakeEdgeKey(face->getV3(), face->getV1())].push_back(
-        static_cast<int>(i));
+    edge_to_faces[MakeEdgeKey(face->getV1(), face->getV2())].push_back(static_cast<int>(i));
+    edge_to_faces[MakeEdgeKey(face->getV2(), face->getV3())].push_back(static_cast<int>(i));
+    edge_to_faces[MakeEdgeKey(face->getV3(), face->getV1())].push_back(static_cast<int>(i));
   }
 
   std::vector<std::vector<int>> neighbors(faces.size());
@@ -586,8 +545,7 @@ void SmoothDomainTargetSizes(FaceList& mesh_old) {
 
   for (std::size_t i = 0; i < neighbors.size(); ++i) {
     std::sort(neighbors[i].begin(), neighbors[i].end());
-    neighbors[i].erase(std::unique(neighbors[i].begin(), neighbors[i].end()),
-                       neighbors[i].end());
+    neighbors[i].erase(std::unique(neighbors[i].begin(), neighbors[i].end()), neighbors[i].end());
   }
 
   std::vector<double> values(faces.size(), 0.0);
@@ -611,8 +569,7 @@ void SmoothDomainTargetSizes(FaceList& mesh_old) {
         neighbor_min = std::min(neighbor_min, values[neighbor]);
       }
 
-      const double neighbor_avg =
-          neighbor_sum / static_cast<double>(neighbors[i].size());
+      const double neighbor_avg = neighbor_sum / static_cast<double>(neighbors[i].size());
       const double boundary_distance = FaceBoundaryDistance(faces[i]);
       const bool near_boundary = boundary_degree[i] > 0 || boundary_distance < 0.14;
       const double blend = near_boundary ? 0.18 : 0.42;
@@ -691,13 +648,13 @@ void SmoothDomainTargetSizes(FaceList& mesh_old) {
     faces[i]->h = values[i];
   }
 }
-}  // namespace
+} // namespace
 
 #if USE_OPENMP
 
-list<PointAdaptive*> Adapter::AdaptCurveByCurveOmp(
-    CurveAdaptive* curve, Performer::IdManager* id_manager,
-    double factor_disc_global) {
+list<PointAdaptive*> Adapter::AdaptCurveByCurveOmp(CurveAdaptive* curve,
+                                                   Performer::IdManager* id_manager,
+                                                   double factor_disc_global) {
   // Parameters generated by rediscretization.
   list<double> parameters;
 
@@ -717,30 +674,25 @@ list<PointAdaptive*> Adapter::AdaptCurveByCurveOmp(
 
   // For each curve segment.
   while (point_next != points.end()) {
-    const double length_old =
-        curve->CalculateLengthPoints(*(*point_current), *(*point_next));
+    const double length_old = curve->CalculateLengthPoints(*(*point_current), *(*point_next));
 
-    midpoint =
-        static_cast<CurveAdaptiveParametric*>(curve)->CalculateMidpointByPoints(
-            *(*point_current), *(*point_next));
+    midpoint = static_cast<CurveAdaptiveParametric*>(curve)->CalculateMidpointByPoints(
+        *(*point_current), *(*point_next));
 
     // IMPORTANT: Midpoint is temporary; do not assign persistent IDs here.
     // midpoint.SetId(id_manager->next(0));  // Removed
 
     const double midpoint_segment =
-        static_cast<CurveAdaptiveParametric*>(curve)->FindParameterByPoint(
-            midpoint);
+        static_cast<CurveAdaptiveParametric*>(curve)->FindParameterByPoint(midpoint);
 
     const double ka_midpoint = curve->CalculateCurvature(midpoint_segment);
 
     // NOTE: Original code used CalculateCurvature(0/1); keep behavior.
-    const double kd_average =
-        (curve->CalculateCurvature(0) + curve->CalculateCurvature(1)) / 2.0;
+    const double kd_average = (curve->CalculateCurvature(0) + curve->CalculateCurvature(1)) / 2.0;
 
     const double factor_disc = DISCRETIZATION_CURVE_FACTOR;
 
-    const double lenght_new =
-        CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
+    const double lenght_new = CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
 
     const double lenght_par = lenght_new / curve->GetLength();
 
@@ -771,8 +723,8 @@ list<PointAdaptive*> Adapter::AdaptCurveByCurveOmp(
   list_new_points.push_front(point_front);
 
   for (auto it = ++parameters.begin(); it != --parameters.end(); ++it) {
-    NodeAdaptive* p = new NodeAdaptive(
-        static_cast<CurveAdaptiveParametric*>(curve)->FindPointByParameter(*it));
+    NodeAdaptive* p =
+        new NodeAdaptive(static_cast<CurveAdaptiveParametric*>(curve)->FindPointByParameter(*it));
     p->SetId(id_manager->next(0));
     list_new_points.push_back(p);
   }
@@ -782,9 +734,9 @@ list<PointAdaptive*> Adapter::AdaptCurveByCurveOmp(
   return list_new_points;
 }
 
-list<PointAdaptive*> Adapter::AdaptCurveBySurfaceOmp(
-    CurveAdaptive* curve, Performer::IdManager* id_manager,
-    double factor_disc_global) {
+list<PointAdaptive*> Adapter::AdaptCurveBySurfaceOmp(CurveAdaptive* curve,
+                                                     Performer::IdManager* id_manager,
+                                                     double factor_disc_global) {
   // Parameters generated by rediscretization.
   list<double> parameters;
 
@@ -804,12 +756,10 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurfaceOmp(
 
   // For each curve segment.
   while (point_next != points.end()) {
-    const double length_old =
-        curve->CalculateLengthPoints(*(*point_current), *(*point_next));
+    const double length_old = curve->CalculateLengthPoints(*(*point_current), *(*point_next));
 
-    midpoint =
-        static_cast<CurveAdaptiveParametric*>(curve)->CalculateMidpointByPoints(
-            *(*point_current), *(*point_next));
+    midpoint = static_cast<CurveAdaptiveParametric*>(curve)->CalculateMidpointByPoints(
+        *(*point_current), *(*point_next));
 
     // Compute analytical curvature over surface patches.
     // For shared curves, use the most curved adjacent patch (max |curvature|)
@@ -826,8 +776,7 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurfaceOmp(
       bool found = false;
 
       for (unsigned int i = 0; i < num_patches; ++i) {
-        CurvatureAnalytical ka(
-            midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(i))));
+        CurvatureAnalytical ka(midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(i))));
         const double ga = ka.CalculateGaussCurvature();
         const double me = ka.CalculateMeanCurvature();
         const bool local_use_mean = fabs(ga) < TOLERANCE;
@@ -843,51 +792,44 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurfaceOmp(
       ka_midpoint = best_curvature;
       use_mean = best_uses_mean;
     } else {
-      CurvatureAnalytical ka(
-          midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(0))));
+      CurvatureAnalytical ka(midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(0))));
       const double ga = ka.CalculateGaussCurvature();
 
       if (fabs(ga) < TOLERANCE) {
         ka_midpoint = ka.CalculateMeanCurvature();
         use_mean = true;
-        kd_average =
-            (static_cast<NodeAdaptive*>((*point_current))->GetHd() +
-             static_cast<NodeAdaptive*>((*point_next))->GetHd()) /
-            2.0;
+        kd_average = (static_cast<NodeAdaptive*>((*point_current))->GetHd() +
+                      static_cast<NodeAdaptive*>((*point_next))->GetHd()) /
+                     2.0;
       } else {
         ka_midpoint = ga;
         use_mean = false;
-        kd_average =
-            (static_cast<NodeAdaptive*>((*point_current))->GetGd() +
-             static_cast<NodeAdaptive*>((*point_next))->GetGd()) /
-            2.0;
+        kd_average = (static_cast<NodeAdaptive*>((*point_current))->GetGd() +
+                      static_cast<NodeAdaptive*>((*point_next))->GetGd()) /
+                     2.0;
       }
     }
 
     // Match kd_average with the curvature type.
     if (use_mean) {
-      kd_average =
-          (static_cast<NodeAdaptive*>((*point_current))->GetHd() +
-           static_cast<NodeAdaptive*>((*point_next))->GetHd()) /
-          2.0;
+      kd_average = (static_cast<NodeAdaptive*>((*point_current))->GetHd() +
+                    static_cast<NodeAdaptive*>((*point_next))->GetHd()) /
+                   2.0;
     } else {
-      kd_average =
-          (static_cast<NodeAdaptive*>((*point_current))->GetGd() +
-           static_cast<NodeAdaptive*>((*point_next))->GetGd()) /
-          2.0;
+      kd_average = (static_cast<NodeAdaptive*>((*point_current))->GetGd() +
+                    static_cast<NodeAdaptive*>((*point_next))->GetGd()) /
+                   2.0;
     }
 
     const double factor_disc = CalculateCurvatureDrivenFactor(
         ka_midpoint, kd_average, DISCRETIZATION_CURVE_FACTOR, num_patches);
 
-    const double lenght_new =
-        CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
+    const double lenght_new = CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
 
     const double lenght_par = lenght_new / curve->GetLength();
 
     const double midpoint_segment =
-        static_cast<CurveAdaptiveParametric*>(curve)->FindParameterByPoint(
-            midpoint);
+        static_cast<CurveAdaptiveParametric*>(curve)->FindParameterByPoint(midpoint);
 
     bin_tree.Subdivide(midpoint_segment, lenght_par * factor_disc_global,
                        static_cast<CurveAdaptiveParametric*>(curve));
@@ -916,8 +858,8 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurfaceOmp(
   list_new_points.push_back(point_front);
 
   for (auto it = ++parameters.begin(); it != --parameters.end(); ++it) {
-    NodeAdaptive* p = new NodeAdaptive(
-        static_cast<CurveAdaptiveParametric*>(curve)->FindPointByParameter(*it));
+    NodeAdaptive* p =
+        new NodeAdaptive(static_cast<CurveAdaptiveParametric*>(curve)->FindPointByParameter(*it));
     p->SetId(id_manager->next(0));
     list_new_points.push_back(p);
   }
@@ -927,12 +869,10 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurfaceOmp(
   return list_new_points;
 }
 
-SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
-                                 Performer::IdManager* id_manager,
-                                 double factor_disc_global,
-                                 double target_patch_h,
-                                 int max_quadtree_depth, int adaptive_step,
-                                 int patch_index, int retry_index) {
+SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* id_manager,
+                                 double factor_disc_global, double target_patch_h,
+                                 int max_quadtree_depth, int adaptive_step, int patch_index,
+                                 int retry_index) {
   SubMesh* sub_mesh_new = new SubMesh;
 
   const double factor_disc = DISCRETIZATION_CURVE_FACTOR_INTERNAL;
@@ -941,8 +881,7 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
   AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,
                         SMOOTHING_LAPLACIAN_FACTOR);
   avanco.SetAdaptiveContext(adaptive_step, patch_index);
-  const int resolved_depth_omp =
-      ResolveQuadtreeDepthCap(max_quadtree_depth, adaptive_step);
+  const int resolved_depth_omp = ResolveQuadtreeDepthCap(max_quadtree_depth, adaptive_step);
   if (avanco.getQuadtree()) {
     avanco.getQuadtree()->setMaxLevelCap(resolved_depth_omp);
   }
@@ -958,27 +897,24 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
     }
 
     if (i == 0 || i == 1) {
-      auto last_parameter =
-          static_cast<CurveAdaptiveParametric*>(curve)->parameters_.end();
+      auto last_parameter = static_cast<CurveAdaptiveParametric*>(curve)->parameters_.end();
       --last_parameter;
 
       int parameter_index = 0;
 
-      for (auto it =
-               static_cast<CurveAdaptiveParametric*>(curve)->parameters_.begin();
+      for (auto it = static_cast<CurveAdaptiveParametric*>(curve)->parameters_.begin();
            it != last_parameter; ++it) {
         Vertex* vertex = nullptr;
 
         if (i == 0) {
-          vertex = avanco.getBoundary()->addVertex(
-              *it, 0.0, static_cast<CurveAdaptiveParametric*>(curve));
+          vertex = avanco.getBoundary()->addVertex(*it, 0.0,
+                                                   static_cast<CurveAdaptiveParametric*>(curve));
         } else {
-          vertex = avanco.getBoundary()->addVertex(
-              1.0, *it, static_cast<CurveAdaptiveParametric*>(curve));
+          vertex = avanco.getBoundary()->addVertex(1.0, *it,
+                                                   static_cast<CurveAdaptiveParametric*>(curve));
         }
 
-        NodeAdaptive* node_original =
-            static_cast<NodeAdaptive*>(curve->GetPoint(parameter_index));
+        NodeAdaptive* node_original = static_cast<NodeAdaptive*>(curve->GetPoint(parameter_index));
         auto node_copy = std::make_unique<NodeAdaptive>(*node_original);
         node_copy->SetId(node_original->GetId());
 
@@ -989,28 +925,24 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
         ++parameter_index;
       }
     } else if (i == 2 || i == 3) {
-      auto last_parameter =
-          static_cast<CurveAdaptiveParametric*>(curve)->parameters_.rend();
+      auto last_parameter = static_cast<CurveAdaptiveParametric*>(curve)->parameters_.rend();
       --last_parameter;
 
-      int parameter_index =
-          static_cast<CurveAdaptiveParametric*>(curve)->GetNumBerPoints() - 1;
+      int parameter_index = static_cast<CurveAdaptiveParametric*>(curve)->GetNumBerPoints() - 1;
 
-      for (auto it =
-               static_cast<CurveAdaptiveParametric*>(curve)->parameters_.rbegin();
+      for (auto it = static_cast<CurveAdaptiveParametric*>(curve)->parameters_.rbegin();
            it != last_parameter; ++it) {
         Vertex* vertex = nullptr;
 
         if (i == 2) {
-          vertex = avanco.getBoundary()->addVertex(
-              *it, 1.0, static_cast<CurveAdaptiveParametric*>(curve));
+          vertex = avanco.getBoundary()->addVertex(*it, 1.0,
+                                                   static_cast<CurveAdaptiveParametric*>(curve));
         } else {
-          vertex = avanco.getBoundary()->addVertex(
-              0.0, *it, static_cast<CurveAdaptiveParametric*>(curve));
+          vertex = avanco.getBoundary()->addVertex(0.0, *it,
+                                                   static_cast<CurveAdaptiveParametric*>(curve));
         }
 
-        NodeAdaptive* node_original =
-            static_cast<NodeAdaptive*>(curve->GetPoint(parameter_index));
+        NodeAdaptive* node_original = static_cast<NodeAdaptive*>(curve->GetPoint(parameter_index));
         auto node_copy = std::make_unique<NodeAdaptive>(*node_original);
         node_copy->SetId(node_original->GetId());
 
@@ -1033,15 +965,11 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
   double area_total = 0.0;
 
   for (unsigned int i = 0; i < sub_mesh_old->GetNumberElements(); ++i) {
-    TriangleAdaptive* tri =
-        static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
+    TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
 
-    Vertex* v1 = new Vertex(get<0>(tri->GetParametersN1()),
-                            get<1>(tri->GetParametersN1()));
-    Vertex* v2 = new Vertex(get<0>(tri->GetParametersN2()),
-                            get<1>(tri->GetParametersN2()));
-    Vertex* v3 = new Vertex(get<0>(tri->GetParametersN3()),
-                            get<1>(tri->GetParametersN3()));
+    Vertex* v1 = new Vertex(get<0>(tri->GetParametersN1()), get<1>(tri->GetParametersN1()));
+    Vertex* v2 = new Vertex(get<0>(tri->GetParametersN2()), get<1>(tri->GetParametersN2()));
+    Vertex* v3 = new Vertex(get<0>(tri->GetParametersN3()), get<1>(tri->GetParametersN3()));
 
     Face* face = new Face(v1, v2, v3, tri->GetId());
     area_total += tri->GetArea();
@@ -1051,8 +979,7 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
   auto face_it = mesh_old.begin();
 
   for (unsigned int i = 0; i < sub_mesh_old->GetNumberElements(); ++i) {
-    TriangleAdaptive* tri =
-        static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
+    TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
     Face* face = *face_it;
 
     const double length_old = sqrt(tri->GetArea() / area_total);
@@ -1060,28 +987,17 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
     double ka = 0.0;
     double kd = 0.0;
 
-    if (fabs(tri->GetNoh(1).GetGa()) >= TOLERANCE &&
-        fabs(tri->GetNoh(2).GetGa()) >= TOLERANCE &&
+    if (fabs(tri->GetNoh(1).GetGa()) >= TOLERANCE && fabs(tri->GetNoh(2).GetGa()) >= TOLERANCE &&
         fabs(tri->GetNoh(3).GetGa()) >= TOLERANCE) {
-      ka = (tri->GetNoh(1).GetGa() + tri->GetNoh(2).GetGa() +
-            tri->GetNoh(3).GetGa()) /
-           3.0;
-      kd = (tri->GetNoh(1).GetGd() + tri->GetNoh(2).GetGd() +
-            tri->GetNoh(3).GetGd()) /
-           3.0;
+      ka = (tri->GetNoh(1).GetGa() + tri->GetNoh(2).GetGa() + tri->GetNoh(3).GetGa()) / 3.0;
+      kd = (tri->GetNoh(1).GetGd() + tri->GetNoh(2).GetGd() + tri->GetNoh(3).GetGd()) / 3.0;
     } else {
-      ka = (tri->GetNoh(1).GetHa() + tri->GetNoh(2).GetHa() +
-            tri->GetNoh(3).GetHa()) /
-           3.0;
-      kd = (tri->GetNoh(1).GetHd() + tri->GetNoh(2).GetHd() +
-            tri->GetNoh(3).GetHd()) /
-           3.0;
+      ka = (tri->GetNoh(1).GetHa() + tri->GetNoh(2).GetHa() + tri->GetNoh(3).GetHa()) / 3.0;
+      kd = (tri->GetNoh(1).GetHd() + tri->GetNoh(2).GetHd() + tri->GetNoh(3).GetHd()) / 3.0;
     }
 
-    const double effective_factor_disc =
-        CalculateCurvatureDrivenFactor(ka, kd, factor_disc, 1);
-    const double lenght_new =
-        CalculateNewSize(ka, kd, effective_factor_disc, length_old);
+    const double effective_factor_disc = CalculateCurvatureDrivenFactor(ka, kd, factor_disc, 1);
+    const double lenght_new = CalculateNewSize(ka, kd, effective_factor_disc, length_old);
 
     face->h = lenght_new * factor_disc_global;
     if (target_patch_h > 0.0) {
@@ -1099,30 +1015,32 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
   if (!avanco.execute(mesh_old)) {
     // Cleanup on failure (keep original behavior).
     VertexList vertices = avanco.getVertices();
-    while (!vertices.empty()) vertices.pop_front();
+    while (!vertices.empty())
+      vertices.pop_front();
 
     EdgeList edges = avanco.getEdges();
-    while (!edges.empty()) edges.pop_front();
+    while (!edges.empty())
+      edges.pop_front();
 
     FaceList faces = avanco.getMesh();
-    while (!faces.empty()) faces.pop_front();
+    while (!faces.empty())
+      faces.pop_front();
 
     exit(0);
   }
 
   FaceList new_mesh = avanco.getMesh();
   const FaceMetricStats generated_stats = ComputeFaceMetricStats(new_mesh);
-  AppendDomainDebugLog(adaptive_step, retry_index, patch_index,
-                       factor_disc_global, raw_stats, smoothed_stats,
-                       generated_stats, avanco.GetRunStats());
+  AppendDomainDebugLog(adaptive_step, retry_index, patch_index, factor_disc_global, raw_stats,
+                       smoothed_stats, generated_stats, avanco.GetRunStats());
   VertexList new_vertices = avanco.getInnerVertices();
 
   while (!new_vertices.empty()) {
     Vertex* vertex = new_vertices.front();
     new_vertices.pop_front();
 
-    auto node = std::make_unique<NodeAdaptive>(
-        coons_patch->Parameterize(vertex->getX(), vertex->getY()));
+    auto node =
+        std::make_unique<NodeAdaptive>(coons_patch->Parameterize(vertex->getX(), vertex->getY()));
     node->SetId(id_manager->next(0));
 
     NodeAdaptive* node_ptr = node.get();
@@ -1135,10 +1053,10 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
     new_mesh.pop_front();
 
     // Triangles reference the nodes owned by sub_mesh_new.
-    ElementAdaptive* element = new TriangleAdaptive(
-        static_cast<NodeAdaptive*>(vertex_to_node[face->getV1()]),
-        static_cast<NodeAdaptive*>(vertex_to_node[face->getV2()]),
-        static_cast<NodeAdaptive*>(vertex_to_node[face->getV3()]));
+    ElementAdaptive* element =
+        new TriangleAdaptive(static_cast<NodeAdaptive*>(vertex_to_node[face->getV1()]),
+                             static_cast<NodeAdaptive*>(vertex_to_node[face->getV2()]),
+                             static_cast<NodeAdaptive*>(vertex_to_node[face->getV3()]));
 
     element->SetId(id_manager->next(1));
 
@@ -1162,11 +1080,12 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch,
   return sub_mesh_new;
 }
 
-#endif  // USE_OPENMP
+#endif // USE_OPENMP
 
-list<PointAdaptive*> Adapter::AdaptCurveByCurve(
-    CurveAdaptive* curve, map<PointAdaptive*, PointAdaptive*>& map_points,
-    Performer::IdManager* id_manager, double factor_disc_global) {
+list<PointAdaptive*> Adapter::AdaptCurveByCurve(CurveAdaptive* curve,
+                                                map<PointAdaptive*, PointAdaptive*>& map_points,
+                                                Performer::IdManager* id_manager,
+                                                double factor_disc_global) {
   list<double> parameters;
 
   list<PointAdaptive*> points = curve->GetPoints();
@@ -1181,27 +1100,22 @@ list<PointAdaptive*> Adapter::AdaptCurveByCurve(
   BinTree bin_tree;
 
   while (point_next != points.end()) {
-    const double length_old =
-        curve->CalculateLengthPoints(*(*point_current), *(*point_next));
+    const double length_old = curve->CalculateLengthPoints(*(*point_current), *(*point_next));
 
-    midpoint =
-        static_cast<CurveAdaptiveParametric*>(curve)->CalculateMidpointByPoints(
-            *(*point_current), *(*point_next));
+    midpoint = static_cast<CurveAdaptiveParametric*>(curve)->CalculateMidpointByPoints(
+        *(*point_current), *(*point_next));
 
     const double midpoint_segment =
-        static_cast<CurveAdaptiveParametric*>(curve)->FindParameterByPoint(
-            midpoint);
+        static_cast<CurveAdaptiveParametric*>(curve)->FindParameterByPoint(midpoint);
 
     const double ka_midpoint = curve->CalculateCurvature(midpoint_segment);
 
     // NOTE: Keep original behavior (CalculateCurvature(0/1)).
-    const double kd_average =
-        (curve->CalculateCurvature(0) + curve->CalculateCurvature(1)) / 2.0;
+    const double kd_average = (curve->CalculateCurvature(0) + curve->CalculateCurvature(1)) / 2.0;
 
     const double factor_disc = DISCRETIZATION_CURVE_FACTOR;
 
-    const double lenght_new =
-        CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
+    const double lenght_new = CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
 
     const double lenght_par = lenght_new / curve->GetLength();
 
@@ -1219,9 +1133,10 @@ list<PointAdaptive*> Adapter::AdaptCurveByCurve(
   return apmesh::adaptation::BuildCurveSamples(curve, points, parameters, map_points, id_manager);
 }
 
-list<PointAdaptive*> Adapter::AdaptCurveBySurface(
-    CurveAdaptive* curve, map<PointAdaptive*, PointAdaptive*>& map_points,
-    Performer::IdManager* id_manager, double factor_disc_global) {
+list<PointAdaptive*> Adapter::AdaptCurveBySurface(CurveAdaptive* curve,
+                                                  map<PointAdaptive*, PointAdaptive*>& map_points,
+                                                  Performer::IdManager* id_manager,
+                                                  double factor_disc_global) {
   list<double> parameters;
 
   list<PointAdaptive*> points = curve->GetPoints();
@@ -1236,12 +1151,10 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurface(
   BinTree bin_tree;
 
   while (point_next != points.end()) {
-    const double length_old =
-        curve->CalculateLengthPoints(*(*point_current), *(*point_next));
+    const double length_old = curve->CalculateLengthPoints(*(*point_current), *(*point_next));
 
-    midpoint =
-        static_cast<CurveAdaptiveParametric*>(curve)->CalculateMidpointByPoints(
-            *(*point_current), *(*point_next));
+    midpoint = static_cast<CurveAdaptiveParametric*>(curve)->CalculateMidpointByPoints(
+        *(*point_current), *(*point_next));
 
     const unsigned int num_patches = curve->GetNumBerPatches();
 
@@ -1255,8 +1168,7 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurface(
       bool found = false;
 
       for (unsigned int i = 0; i < num_patches; ++i) {
-        CurvatureAnalytical ka(
-            midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(i))));
+        CurvatureAnalytical ka(midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(i))));
         const double ga = ka.CalculateGaussCurvature();
         const double me = ka.CalculateMeanCurvature();
         const bool local_use_mean = fabs(ga) < TOLERANCE;
@@ -1272,51 +1184,38 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurface(
       ka_midpoint = best_curvature;
       use_mean = best_uses_mean;
     } else {
-      CurvatureAnalytical ka(
-          midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(0))));
+      CurvatureAnalytical ka(midpoint, *(static_cast<PatchCoons*>(curve->GetPatch(0))));
       const double ga = ka.CalculateGaussCurvature();
 
       if (fabs(ga) < TOLERANCE) {
         ka_midpoint = ka.CalculateMeanCurvature();
         use_mean = true;
-        kd_average =
-            (static_cast<NodeAdaptive*>((*point_current))->GetHd() +
-             static_cast<NodeAdaptive*>((*point_next))->GetHd()) /
-            2.0;
       } else {
         ka_midpoint = ga;
         use_mean = false;
-        kd_average =
-            (static_cast<NodeAdaptive*>((*point_current))->GetGd() +
-             static_cast<NodeAdaptive*>((*point_next))->GetGd()) /
-            2.0;
       }
     }
 
     // Match kd_average with curvature type.
     if (use_mean) {
-      kd_average =
-          (static_cast<NodeAdaptive*>((*point_current))->GetHd() +
-           static_cast<NodeAdaptive*>((*point_next))->GetHd()) /
-          2.0;
+      kd_average = (static_cast<NodeAdaptive*>((*point_current))->GetHd() +
+                    static_cast<NodeAdaptive*>((*point_next))->GetHd()) /
+                   2.0;
     } else {
-      kd_average =
-          (static_cast<NodeAdaptive*>((*point_current))->GetGd() +
-           static_cast<NodeAdaptive*>((*point_next))->GetGd()) /
-          2.0;
+      kd_average = (static_cast<NodeAdaptive*>((*point_current))->GetGd() +
+                    static_cast<NodeAdaptive*>((*point_next))->GetGd()) /
+                   2.0;
     }
 
     const double factor_disc = CalculateCurvatureDrivenFactor(
         ka_midpoint, kd_average, DISCRETIZATION_CURVE_FACTOR, num_patches);
 
-    const double lenght_new =
-        CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
+    const double lenght_new = CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
 
     const double lenght_par = lenght_new / curve->GetLength();
 
     const double midpoint_segment =
-        static_cast<CurveAdaptiveParametric*>(curve)->FindParameterByPoint(
-            midpoint);
+        static_cast<CurveAdaptiveParametric*>(curve)->FindParameterByPoint(midpoint);
 
     bin_tree.Subdivide(midpoint_segment, lenght_par * factor_disc_global,
                        static_cast<CurveAdaptiveParametric*>(curve));
@@ -1332,15 +1231,12 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurface(
   return apmesh::adaptation::BuildCurveSamples(curve, points, parameters, map_points, id_manager);
 }
 
-SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
-                              Performer::IdManager* id_manager,
-                              double factor_disc_global,
-                              double target_patch_h,
-                              int max_quadtree_depth, int adaptive_step,
-                              int patch_index, int retry_index) {
+SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_manager,
+                              double factor_disc_global, double target_patch_h,
+                              int max_quadtree_depth, int adaptive_step, int patch_index,
+                              int retry_index) {
   PrepareStructuralStatsContext(adaptive_step, retry_index);
-  const int resolved_quadtree_depth =
-      ResolveQuadtreeDepthCap(max_quadtree_depth, adaptive_step);
+  const int resolved_quadtree_depth = ResolveQuadtreeDepthCap(max_quadtree_depth, adaptive_step);
   struct AttemptResult {
     std::unique_ptr<SubMesh> sub_mesh;
     FaceMetricStats raw_stats;
@@ -1359,8 +1255,8 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
     bool success = false;
   };
 
-  auto run_attempt = [&](double local_factor, double local_target_h,
-                         int local_depth, int local_attempt) -> AttemptResult {
+  auto run_attempt = [&](double local_factor, double local_target_h, int local_depth,
+                         int local_attempt) -> AttemptResult {
     AttemptResult result;
     result.sub_mesh = std::make_unique<SubMesh>();
     const double factor_disc = DISCRETIZATION_CURVE_FACTOR_INTERNAL;
@@ -1380,19 +1276,15 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
         continue;
       }
       if (i == 0 || i == 1) {
-        auto last_parameter =
-            static_cast<CurveAdaptiveParametric*>(curve)->parameters_.end();
+        auto last_parameter = static_cast<CurveAdaptiveParametric*>(curve)->parameters_.end();
         --last_parameter;
         int parameter_index = 0;
-        for (auto it =
-                 static_cast<CurveAdaptiveParametric*>(curve)->parameters_.begin();
+        for (auto it = static_cast<CurveAdaptiveParametric*>(curve)->parameters_.begin();
              it != last_parameter; ++it) {
-          Vertex* vertex =
-              (i == 0)
-                  ? avanco.getBoundary()->addVertex(
-                        *it, 0.0, static_cast<CurveAdaptiveParametric*>(curve))
-                  : avanco.getBoundary()->addVertex(
-                        1.0, *it, static_cast<CurveAdaptiveParametric*>(curve));
+          Vertex* vertex = (i == 0) ? avanco.getBoundary()->addVertex(
+                                          *it, 0.0, static_cast<CurveAdaptiveParametric*>(curve))
+                                    : avanco.getBoundary()->addVertex(
+                                          1.0, *it, static_cast<CurveAdaptiveParametric*>(curve));
           NodeAdaptive* node_original =
               static_cast<NodeAdaptive*>(curve->GetPoint(parameter_index));
           auto node_copy = std::make_unique<NodeAdaptive>(*node_original);
@@ -1403,20 +1295,15 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
           ++parameter_index;
         }
       } else if (i == 2 || i == 3) {
-        auto last_parameter =
-            static_cast<CurveAdaptiveParametric*>(curve)->parameters_.rend();
+        auto last_parameter = static_cast<CurveAdaptiveParametric*>(curve)->parameters_.rend();
         --last_parameter;
-        int parameter_index =
-            static_cast<CurveAdaptiveParametric*>(curve)->GetNumBerPoints() - 1;
-        for (auto it =
-                 static_cast<CurveAdaptiveParametric*>(curve)->parameters_.rbegin();
+        int parameter_index = static_cast<CurveAdaptiveParametric*>(curve)->GetNumBerPoints() - 1;
+        for (auto it = static_cast<CurveAdaptiveParametric*>(curve)->parameters_.rbegin();
              it != last_parameter; ++it) {
-          Vertex* vertex =
-              (i == 2)
-                  ? avanco.getBoundary()->addVertex(
-                        *it, 1.0, static_cast<CurveAdaptiveParametric*>(curve))
-                  : avanco.getBoundary()->addVertex(
-                        0.0, *it, static_cast<CurveAdaptiveParametric*>(curve));
+          Vertex* vertex = (i == 2) ? avanco.getBoundary()->addVertex(
+                                          *it, 1.0, static_cast<CurveAdaptiveParametric*>(curve))
+                                    : avanco.getBoundary()->addVertex(
+                                          0.0, *it, static_cast<CurveAdaptiveParametric*>(curve));
           NodeAdaptive* node_original =
               static_cast<NodeAdaptive*>(curve->GetPoint(parameter_index));
           auto node_copy = std::make_unique<NodeAdaptive>(*node_original);
@@ -1437,14 +1324,10 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
     FaceList mesh_old;
     double area_total = 0.0;
     for (unsigned int i = 0; i < sub_mesh_old->GetNumberElements(); ++i) {
-      TriangleAdaptive* tri =
-          static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
-      Vertex* v1 =
-          new Vertex(get<0>(tri->GetParametersN1()), get<1>(tri->GetParametersN1()));
-      Vertex* v2 =
-          new Vertex(get<0>(tri->GetParametersN2()), get<1>(tri->GetParametersN2()));
-      Vertex* v3 =
-          new Vertex(get<0>(tri->GetParametersN3()), get<1>(tri->GetParametersN3()));
+      TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
+      Vertex* v1 = new Vertex(get<0>(tri->GetParametersN1()), get<1>(tri->GetParametersN1()));
+      Vertex* v2 = new Vertex(get<0>(tri->GetParametersN2()), get<1>(tri->GetParametersN2()));
+      Vertex* v3 = new Vertex(get<0>(tri->GetParametersN3()), get<1>(tri->GetParametersN3()));
       Face* face = new Face(v1, v2, v3, tri->GetId());
       area_total += tri->GetArea();
       mesh_old.push_back(face);
@@ -1453,33 +1336,21 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
 
     auto face_it = mesh_old.begin();
     for (unsigned int i = 0; i < sub_mesh_old->GetNumberElements(); ++i) {
-      TriangleAdaptive* tri =
-          static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
+      TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
       Face* face = *face_it;
       const double length_old = sqrt(tri->GetArea() / area_total);
       double ka = 0.0;
       double kd = 0.0;
-      if (fabs(tri->GetNoh(1).GetGa()) >= TOLERANCE &&
-          fabs(tri->GetNoh(2).GetGa()) >= TOLERANCE &&
+      if (fabs(tri->GetNoh(1).GetGa()) >= TOLERANCE && fabs(tri->GetNoh(2).GetGa()) >= TOLERANCE &&
           fabs(tri->GetNoh(3).GetGa()) >= TOLERANCE) {
-        ka = (tri->GetNoh(1).GetGa() + tri->GetNoh(2).GetGa() +
-              tri->GetNoh(3).GetGa()) /
-             3.0;
-        kd = (tri->GetNoh(1).GetGd() + tri->GetNoh(2).GetGd() +
-              tri->GetNoh(3).GetGd()) /
-             3.0;
+        ka = (tri->GetNoh(1).GetGa() + tri->GetNoh(2).GetGa() + tri->GetNoh(3).GetGa()) / 3.0;
+        kd = (tri->GetNoh(1).GetGd() + tri->GetNoh(2).GetGd() + tri->GetNoh(3).GetGd()) / 3.0;
       } else {
-        ka = (tri->GetNoh(1).GetHa() + tri->GetNoh(2).GetHa() +
-              tri->GetNoh(3).GetHa()) /
-             3.0;
-        kd = (tri->GetNoh(1).GetHd() + tri->GetNoh(2).GetHd() +
-              tri->GetNoh(3).GetHd()) /
-             3.0;
+        ka = (tri->GetNoh(1).GetHa() + tri->GetNoh(2).GetHa() + tri->GetNoh(3).GetHa()) / 3.0;
+        kd = (tri->GetNoh(1).GetHd() + tri->GetNoh(2).GetHd() + tri->GetNoh(3).GetHd()) / 3.0;
       }
-      const double effective_factor_disc =
-          CalculateCurvatureDrivenFactor(ka, kd, factor_disc, 1);
-      const double lenght_new =
-          CalculateNewSize(ka, kd, effective_factor_disc, length_old);
+      const double effective_factor_disc = CalculateCurvatureDrivenFactor(ka, kd, factor_disc, 1);
+      const double lenght_new = CalculateNewSize(ka, kd, effective_factor_disc, length_old);
       face->h = lenght_new * local_factor;
       if (local_target_h > 0.0) {
         face->h = std::max(face->h, local_target_h);
@@ -1505,62 +1376,53 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
     result.generated_stats = ComputeFaceMetricStats(new_mesh);
     result.regional_stats = ComputeRegionalPatchStats(new_mesh, local_target_h);
     result.aft_stats = avanco.GetRunStats();
-    result.curve_domain_balance =
-        ComputeCurveDomainBalance(coons_patch, local_target_h);
-    result.transition_floor = ComputeTransitionFloor(
-        local_target_h, result.aft_stats.internal_element_ratio);
-    result.curve_balance_floor = ComputeCurveBalanceFloor(
-        local_target_h, result.aft_stats.internal_element_ratio);
+    result.curve_domain_balance = ComputeCurveDomainBalance(coons_patch, local_target_h);
+    result.transition_floor =
+        ComputeTransitionFloor(local_target_h, result.aft_stats.internal_element_ratio);
+    result.curve_balance_floor =
+        ComputeCurveBalanceFloor(local_target_h, result.aft_stats.internal_element_ratio);
     result.transition_underresolved =
         IsTransitionUnderresolved(result.aft_stats, result.transition_floor) ? 1 : 0;
-    result.interior_transition_imbalance = ComputeInteriorTransitionImbalance(
-        result.aft_stats, result.transition_floor);
+    result.interior_transition_imbalance =
+        ComputeInteriorTransitionImbalance(result.aft_stats, result.transition_floor);
     result.degeneracy_score = ComputePatchDegeneracyScore(
         result.generated_stats, result.aft_stats, result.patch_area, local_target_h,
-        result.transition_floor, result.curve_domain_balance,
-        result.curve_balance_floor);
-    result.status = PatchNeedsFallback(result.generated_stats, result.aft_stats,
-                                       result.patch_area, local_target_h,
-                                       result.transition_floor,
-                                       result.curve_domain_balance,
-                                       result.curve_balance_floor)
-                        ? (result.transition_underresolved == 1
-                               || result.curve_domain_balance + 1.0e-9 <
-                                      result.curve_balance_floor
+        result.transition_floor, result.curve_domain_balance, result.curve_balance_floor);
+    result.status = PatchNeedsFallback(result.generated_stats, result.aft_stats, result.patch_area,
+                                       local_target_h, result.transition_floor,
+                                       result.curve_domain_balance, result.curve_balance_floor)
+                        ? (result.transition_underresolved == 1 ||
+                                   result.curve_domain_balance + 1.0e-9 < result.curve_balance_floor
                                ? "curve_transition_needs_retry"
                                : "degenerate_needs_retry")
                         : "ok";
 
-    const double expected_faces =
-        EstimateExpectedFaceCount(result.patch_area, local_target_h);
+    const double expected_faces = EstimateExpectedFaceCount(result.patch_area, local_target_h);
     if (IsAdaptiveStableMode() && adaptive_step >= 2 && expected_faces > 0.0) {
-      const bool transition_sensitive = (result.transition_underresolved == 1) ||
-                                        (result.curve_domain_balance + 1.0e-9 <
-                                         result.curve_balance_floor);
+      const bool transition_sensitive =
+          (result.transition_underresolved == 1) ||
+          (result.curve_domain_balance + 1.0e-9 < result.curve_balance_floor);
       const double cap_local_retry = transition_sensitive ? 1.15 : 1.35;
       const bool overshoot_local =
-          static_cast<double>(result.generated_stats.count) >
-          (expected_faces * cap_local_retry);
+          static_cast<double>(result.generated_stats.count) > (expected_faces * cap_local_retry);
       if (overshoot_local && transition_sensitive) {
         result.status = "curve_transition_needs_retry";
       }
     }
 
-    AppendDomainDebugLog(adaptive_step, retry_index, patch_index, local_factor,
-                         result.raw_stats, result.smoothed_stats,
-                         result.generated_stats, result.aft_stats,
-                         result.regional_stats,
-                         local_attempt, result.status, result.degeneracy_score,
-                         result.transition_floor, result.transition_underresolved,
-                         result.interior_transition_imbalance,
+    AppendDomainDebugLog(adaptive_step, retry_index, patch_index, local_factor, result.raw_stats,
+                         result.smoothed_stats, result.generated_stats, result.aft_stats,
+                         result.regional_stats, local_attempt, result.status,
+                         result.degeneracy_score, result.transition_floor,
+                         result.transition_underresolved, result.interior_transition_imbalance,
                          result.curve_domain_balance);
 
     VertexList new_vertices = avanco.getInnerVertices();
     while (!new_vertices.empty()) {
       Vertex* vertex = new_vertices.front();
       new_vertices.pop_front();
-      auto node = std::make_unique<NodeAdaptive>(
-          coons_patch->Parameterize(vertex->getX(), vertex->getY()));
+      auto node =
+          std::make_unique<NodeAdaptive>(coons_patch->Parameterize(vertex->getX(), vertex->getY()));
       node->SetId(id_manager->next(0));
       NodeAdaptive* node_ptr = node.get();
       vertex_to_node[vertex] = node_ptr;
@@ -1570,10 +1432,10 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
     while (!new_mesh.empty()) {
       Face* face = new_mesh.front();
       new_mesh.pop_front();
-      ElementAdaptive* element = new TriangleAdaptive(
-          static_cast<NodeAdaptive*>(vertex_to_node[face->getV1()]),
-          static_cast<NodeAdaptive*>(vertex_to_node[face->getV2()]),
-          static_cast<NodeAdaptive*>(vertex_to_node[face->getV3()]));
+      ElementAdaptive* element =
+          new TriangleAdaptive(static_cast<NodeAdaptive*>(vertex_to_node[face->getV1()]),
+                               static_cast<NodeAdaptive*>(vertex_to_node[face->getV2()]),
+                               static_cast<NodeAdaptive*>(vertex_to_node[face->getV3()]));
       element->SetId(id_manager->next(1));
       static_cast<TriangleAdaptive*>(element)->SetParametersN1(
           make_tuple(face->getV1()->getX(), face->getV1()->getY()));
@@ -1593,19 +1455,15 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
     return result;
   };
 
-  AttemptResult best =
-      run_attempt(factor_disc_global, target_patch_h, resolved_quadtree_depth, 0);
+  AttemptResult best = run_attempt(factor_disc_global, target_patch_h, resolved_quadtree_depth, 0);
   // Em adaptive_stable, permitir fallback estrutural tambem em passos tardios.
   // Isso ajuda patches curvos que entram em "degenerate_needs_retry" no step 4/5.
   if (IsAdaptiveStableMode() && adaptive_step >= 1 &&
-      (!best.success || PatchNeedsFallback(best.generated_stats, best.aft_stats,
-                                           best.patch_area, target_patch_h,
-                                           best.transition_floor,
-                                           best.curve_domain_balance,
-                                           best.curve_balance_floor))) {
+      (!best.success || PatchNeedsFallback(best.generated_stats, best.aft_stats, best.patch_area,
+                                           target_patch_h, best.transition_floor,
+                                           best.curve_domain_balance, best.curve_balance_floor))) {
     const bool early_step = adaptive_step <= 1;
-    const bool transition_retry_initial =
-        (best.status == "curve_transition_needs_retry");
+    const bool transition_retry_initial = (best.status == "curve_transition_needs_retry");
     int max_structural_attempts = transition_retry_initial ? 2 : 1;
     if (adaptive_step >= 4) {
       max_structural_attempts = std::max(max_structural_attempts, 3);
@@ -1615,28 +1473,23 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
       const double fallback_factor =
           transition_retry
               ? factor_disc_global *
-                    (early_step ? (1.10 + 0.06 * (attempt - 1))
-                                : (1.22 + 0.08 * (attempt - 1)))
-              : factor_disc_global *
-                    (early_step ? (0.90 - 0.05 * ADAPTIVE_QUALITY_PRIORITY)
-                                : (0.94 - 0.04 * ADAPTIVE_QUALITY_PRIORITY));
+                    (early_step ? (1.10 + 0.06 * (attempt - 1)) : (1.22 + 0.08 * (attempt - 1)))
+              : factor_disc_global * (early_step ? (0.90 - 0.05 * ADAPTIVE_QUALITY_PRIORITY)
+                                                 : (0.94 - 0.04 * ADAPTIVE_QUALITY_PRIORITY));
       const double fallback_target_h =
           target_patch_h > 0.0
-              ? target_patch_h *
-                    (transition_retry
-                         ? (early_step ? (0.82 - 0.04 * (attempt - 1))
-                                       : (0.72 - 0.05 * (attempt - 1)))
-                         : (early_step ? (0.82 - 0.05 * ADAPTIVE_INTENSITY)
-                                       : (0.90 - 0.04 * ADAPTIVE_INTENSITY)))
+              ? target_patch_h * (transition_retry
+                                      ? (early_step ? (0.82 - 0.04 * (attempt - 1))
+                                                    : (0.72 - 0.05 * (attempt - 1)))
+                                      : (early_step ? (0.82 - 0.05 * ADAPTIVE_INTENSITY)
+                                                    : (0.90 - 0.04 * ADAPTIVE_INTENSITY)))
               : target_patch_h;
       int fallback_depth;
       if (resolved_quadtree_depth < 0) {
-        fallback_depth =
-            transition_retry ? (early_step ? 5 : 6) : (early_step ? 5 : 4);
+        fallback_depth = transition_retry ? (early_step ? 5 : 6) : (early_step ? 5 : 4);
       } else {
-        fallback_depth =
-            resolved_quadtree_depth +
-            (transition_retry ? (early_step ? 2 : 3) : (early_step ? 2 : 1));
+        fallback_depth = resolved_quadtree_depth +
+                         (transition_retry ? (early_step ? 2 : 3) : (early_step ? 2 : 1));
         fallback_depth = std::max(0, std::min(32, fallback_depth));
       }
       AttemptResult fallback =
@@ -1649,21 +1502,17 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
           (fallback.curve_domain_balance + 1.0e-9 < fallback.curve_balance_floor);
       const bool prefer_fallback_structural =
           fallback.success &&
-          (!best.success ||
-           (best_underresolved && !fallback_underresolved) ||
+          (!best.success || (best_underresolved && !fallback_underresolved) ||
            (best_underresolved == fallback_underresolved &&
-            (fallback.interior_transition_imbalance + 1.0e-9 <
-                 best.interior_transition_imbalance ||
+            (fallback.interior_transition_imbalance + 1.0e-9 < best.interior_transition_imbalance ||
              fallback.generated_stats.count + 1ULL < best.generated_stats.count)));
       if (prefer_fallback_structural ||
           (fallback.success &&
-           (!best.success ||
-            fallback.degeneracy_score < best.degeneracy_score ||
+           (!best.success || fallback.degeneracy_score < best.degeneracy_score ||
             fallback.generated_stats.quality_min > best.generated_stats.quality_min))) {
         best = std::move(fallback);
       }
-      if (best.success &&
-          best.transition_underresolved == 0 &&
+      if (best.success && best.transition_underresolved == 0 &&
           !(best.curve_domain_balance + 1.0e-9 < best.curve_balance_floor)) {
         break;
       }
@@ -1671,7 +1520,10 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
   }
 
   if (!best.success) {
-    exit(0);
+    std::cerr << "Error: domain generation failed (step=" << adaptive_step
+              << ", patch=" << patch_index << ", retry=" << retry_index
+              << ", status=" << best.status << ")\n";
+    std::exit(EXIT_FAILURE);
   }
   if (patch_index >= 0) {
     if (static_cast<size_t>(patch_index) >= latest_patch_structural_stats_.size()) {
@@ -1686,34 +1538,26 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch,
     stats.good_ratio_ge_0_60 = best.regional_stats.good_ratio_ge_0_60;
     stats.generated_faces = best.generated_stats.count;
     stats.boundary_region = Adapter::RegionQualityStats{
-        best.regional_stats.boundary.element_count,
-        best.regional_stats.boundary.quality_min,
-        best.regional_stats.boundary.quality_mean,
-        best.regional_stats.boundary.poor_ratio,
-        best.regional_stats.boundary.good_ratio_ge_0_60,
-        best.regional_stats.boundary.area_min,
-        best.regional_stats.boundary.area_mean,
-        best.regional_stats.boundary.area_max,
+        best.regional_stats.boundary.element_count,      best.regional_stats.boundary.quality_min,
+        best.regional_stats.boundary.quality_mean,       best.regional_stats.boundary.poor_ratio,
+        best.regional_stats.boundary.good_ratio_ge_0_60, best.regional_stats.boundary.area_min,
+        best.regional_stats.boundary.area_mean,          best.regional_stats.boundary.area_max,
         best.regional_stats.boundary.aspect_ratio_mean};
-    stats.transition_region = Adapter::RegionQualityStats{
-        best.regional_stats.transition.element_count,
-        best.regional_stats.transition.quality_min,
-        best.regional_stats.transition.quality_mean,
-        best.regional_stats.transition.poor_ratio,
-        best.regional_stats.transition.good_ratio_ge_0_60,
-        best.regional_stats.transition.area_min,
-        best.regional_stats.transition.area_mean,
-        best.regional_stats.transition.area_max,
-        best.regional_stats.transition.aspect_ratio_mean};
+    stats.transition_region =
+        Adapter::RegionQualityStats{best.regional_stats.transition.element_count,
+                                    best.regional_stats.transition.quality_min,
+                                    best.regional_stats.transition.quality_mean,
+                                    best.regional_stats.transition.poor_ratio,
+                                    best.regional_stats.transition.good_ratio_ge_0_60,
+                                    best.regional_stats.transition.area_min,
+                                    best.regional_stats.transition.area_mean,
+                                    best.regional_stats.transition.area_max,
+                                    best.regional_stats.transition.aspect_ratio_mean};
     stats.interior_region = Adapter::RegionQualityStats{
-        best.regional_stats.interior.element_count,
-        best.regional_stats.interior.quality_min,
-        best.regional_stats.interior.quality_mean,
-        best.regional_stats.interior.poor_ratio,
-        best.regional_stats.interior.good_ratio_ge_0_60,
-        best.regional_stats.interior.area_min,
-        best.regional_stats.interior.area_mean,
-        best.regional_stats.interior.area_max,
+        best.regional_stats.interior.element_count,      best.regional_stats.interior.quality_min,
+        best.regional_stats.interior.quality_mean,       best.regional_stats.interior.poor_ratio,
+        best.regional_stats.interior.good_ratio_ge_0_60, best.regional_stats.interior.area_min,
+        best.regional_stats.interior.area_mean,          best.regional_stats.interior.area_max,
         best.regional_stats.interior.aspect_ratio_mean};
     stats.generation_status = best.status;
     latest_patch_structural_stats_[static_cast<size_t>(patch_index)] = stats;
@@ -1729,8 +1573,7 @@ void Adapter::PrepareStructuralStatsContext(int adaptive_step, int retry_index) 
   }
 }
 
-const Adapter::DomainStructuralStats* Adapter::GetPatchStructuralStats(
-    int patch_index) const {
+const Adapter::DomainStructuralStats* Adapter::GetPatchStructuralStats(int patch_index) const {
   if (patch_index < 0 ||
       static_cast<size_t>(patch_index) >= latest_patch_structural_stats_.size()) {
     return nullptr;
@@ -1738,8 +1581,7 @@ const Adapter::DomainStructuralStats* Adapter::GetPatchStructuralStats(
   return &latest_patch_structural_stats_[static_cast<size_t>(patch_index)];
 }
 
-double Adapter::CalculateNewSize(const double ka, const double kd,
-                                 const double factor_disc,
+double Adapter::CalculateNewSize(const double ka, const double kd, const double factor_disc,
                                  const double length_old) {
   // Scenario 1: ka is very close to kd.
   if (((ka - TOLERANCE_CURVATURE) < kd) && (kd < (ka + TOLERANCE_CURVATURE))) {
@@ -1759,16 +1601,13 @@ double Adapter::CalculateCurvatureDrivenFactor(const double ka, const double kd,
                                                const double base_factor,
                                                const unsigned int num_patches) {
   const double mismatch = fabs(ka - kd);
-  const double reference =
-      std::max(std::max(fabs(ka), fabs(kd)), TOLERANCE_CURVATURE);
+  const double reference = std::max(std::max(fabs(ka), fabs(kd)), TOLERANCE_CURVATURE);
   const double mismatch_ratio = mismatch / reference;
 
   // Shared curves should feel the most curved adjacent patch more strongly,
   // otherwise a straight common edge tends to stop at only one bisection.
   const double mismatch_scale = 1.0 + ClampValue(mismatch_ratio, 0.0, 2.5);
-  const double adjacency_scale =
-      1.0 + 0.35 * std::max(0, static_cast<int>(num_patches) - 1);
+  const double adjacency_scale = 1.0 + 0.35 * std::max(0, static_cast<int>(num_patches) - 1);
 
-  return ClampValue(base_factor * mismatch_scale * adjacency_scale,
-                    base_factor, base_factor * 4.0);
+  return ClampValue(base_factor * mismatch_scale * adjacency_scale, base_factor, base_factor * 4.0);
 }

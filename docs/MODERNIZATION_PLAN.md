@@ -1,22 +1,24 @@
 # Technique-preserving modernization plan
 
-## Active item: UV-quality report verification
+## Active item: serial terminal domain-failure status
 
 The completed Book direction diagnosis is a frozen-state observation. Reverse
 trial directions remain a separate unapproved experiment; preserve the default
 algorithm and the negative [relative-area result](evidence/BOOK_RELATIVE_AREA_EXPERIMENT.md).
 
-Extend the qualified PR #104 verifier to check all ten UV-quality CSV fields
-from full-precision UV parameters for every accepted/rejected attempt. Preserve
-the physical checks and distinguish physical/UV counts, sample deviation and
-interpolated percentiles. Threshold ambiguity and the native zero-sentinel guard
-domain remain unqualified, not falsely successful observations. No generator,
-tolerance or scientific acceptance/stopping change is included. Require analytic/
-corrupted controls, retained Eistute/Book audits and exact-head/main local gates.
-See [the functional evidence](evidence/PHYSICAL_QUALITY_ORACLE.md#uv-quality-extension).
+Repair the reproduced false-success terminal status after the serial Adapter's
+existing generation/fallback attempts fail. Emit step/patch/retry/status context
+and exit 1; retain current termination and meshing policies. Resolve the two
+overwritten serial assignments reported by full adapter static analysis without
+suppression. Require actual GNU fault controls, original rejection, status-oracle
+corruptions, exact-head/main regression and unchanged normal Eistute/Book traces.
+The audit separately retains skipped outer cleanup and exception-time UV cache
+retention; status correction does not qualify resource lifetime or safe retry.
+See [evidence and limitations](evidence/DOMAIN_FAILURE_STATUS.md).
 
-After those gates, next audit terminal AdaptDomain generation failure, cleanup
-and process status under the existing meshing policy. Stage 3 stays open;
+Next qualify temporary UV cache ownership during construction and exception
+unwinding before changing terminal exit to propagated exceptions. Caller pending
+candidates and orchestration state need separate coverage. Stage 3 stays open;
 earlier active items below are historical.
 
 ## Active item: attempt metric export correction

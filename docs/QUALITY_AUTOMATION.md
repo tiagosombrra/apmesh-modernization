@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Serial terminal domain-failure status
+
+GNU serial builds add `application.domain_failure_status` (58 CTest entries).
+The existing actual-production `attempt_metrics_probe` links an AFT wrapper;
+only its new explicit failure mode forces step 2, patch 0 to return false.
+`tests/domain_failure_case.py` retains Book's one call and Eistute's existing
+two attempts, requires exact status 1 and terminal context, and rejects success,
+crashes or unrelated errors. Four status-oracle controls bring Python tooling
+to 110 tests. This test-only GNU ABI mechanism is not enabled for other compilers,
+MPI or OpenMP; no corresponding qualification is claimed. Required delivery
+checks include full adapter/fixture tidy, changed-line format, fresh exact-head/
+main article comparisons and existing local gates. Original cleanup failures
+remain unqualified in [the evidence](evidence/DOMAIN_FAILURE_STATUS.md).
+
 ## Physical and UV-quality report verification
 
 `tools/verify_generation.py <run> --require-boundary-coverage --report <report>`

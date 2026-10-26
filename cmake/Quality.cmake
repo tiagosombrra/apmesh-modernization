@@ -185,6 +185,17 @@ if(BUILD_TESTING)
       --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/generator-diagnostics-controls")
   set_tests_properties(application.generator_diagnostics
     PROPERTIES LABELS "application;metric-schema;negative-input;required-gate" TIMEOUT 90)
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
+    set_property(SOURCE "${CMAKE_SOURCE_DIR}/tests/attempt_metrics_probe.cpp" APPEND
+      PROPERTY COMPILE_DEFINITIONS AP_MESH_DOMAIN_FAILURE_WRAP=1)
+    target_link_options(attempt_metrics_probe PRIVATE
+      "-Wl,--wrap=_ZN10Par2DJMesh3AFT14AdvancingFront7executeERKNSt7__cxx114listIPNS_6Basics4FaceESaIS6_EEE")
+    add_test(NAME application.domain_failure_status
+      COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/domain_failure_case.py"
+        --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/domain-failure-controls")
+    set_tests_properties(application.domain_failure_status
+      PROPERTIES LABELS "application;negative-input;required-gate" TIMEOUT 90)
+  endif()
   add_test(NAME tooling.tidy_header_scope
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/tidy_scope_case.py")
   set_tests_properties(tooling.tidy_header_scope
