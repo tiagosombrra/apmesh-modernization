@@ -1,5 +1,22 @@
 # Project state
 
+## Physical-quality report verification
+
+The Book direction diagnosis is complete as a frozen-state observation; the
+reverse-direction experiment remains unapproved and unexecuted. Production
+criteria and the negative relative-area result remain unchanged.
+
+The active engineering repair makes the generation verifier independently check
+five physical-quality CSV fields against full-precision incidence geometry.
+The original verifier accepts a deliberately corrupted Book quality report; the
+repair rejects it and checks 45 fields across nine retained Eistute/Book states.
+It reports per-patch poor-triangle counts, retaining Book patch 0's count of 70.
+See [scope, controls and limits](evidence/PHYSICAL_QUALITY_ORACLE.md).
+Exact-head and post-merge local gates remain required; no mesh improvement or
+stage closure is claimed. After those checks, the next single engineering audit
+is UV-quality report consistency on the same retained snapshots. Stage 3 stays
+open. Earlier active-item/next-work statements below are historical checkpoints.
+
 ## Book relative-area experiment: negative result
 
 An advisor-aligned isolated experiment changes only the local smoothing area

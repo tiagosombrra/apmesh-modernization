@@ -13,12 +13,14 @@ from pathlib import Path
 import re
 
 from check_compatibility import validate as validate_compatibility
-from check_boundary_incidence import inspect_snapshot
+from check_boundary_incidence import inspect_snapshot, reject_constant, unique_object
 
 MESH = re.compile(r"(.+)_passo_(\d+)_malha_(\d+)\.obj$")
 LOG = re.compile(r"(.+)_passo_(\d+)_acceptance_(accepted|rejected)\.log$")
 # The historical OBJ and log writers round to six significant digits.
 EXPORTED_QUALITY_ABS_TOLERANCE = 2e-4
+# Independent arithmetic comparison budget, not a scientific quality threshold.
+SNAPSHOT_QUALITY_ABS_TOLERANCE = 1e-10
 
 
 class RegressionMismatch(ValueError):
@@ -54,6 +56,61 @@ def read_acceptance(path: Path) -> dict[str, str]:
     return values
 
 
+def triangle_quality(points) -> float:
+    """Compute 2r/R with scaled stable Heron arithmetic, independently of C++."""
+    a, b, c = points
+    lengths = sorted([math.dist(a, b), math.dist(b, c), math.dist(c, a)], reverse=True)
+    scale = lengths[0]
+    if scale == 0 or not math.isfinite(scale):
+        raise ValueError("Invalid triangle edge lengths")
+    x, y, z = (length / scale for length in lengths)
+    product = (x + (y + z)) * (z - (x - y)) * (z + (x - y)) * (x + (y - z))
+    if product <= 0 or z == 0 or not math.isfinite(product):
+        raise ValueError("Degenerate exported triangle")
+    return product / ((x + y + z) * x * y * z)
+
+
+def inspect_physical_quality(snapshot: Path, row: dict) -> dict:
+    """Audit CSV quality after the snapshot passes geometry/incidence validation."""
+    document = json.loads(snapshot.read_text(encoding="utf-8"),
+                          object_pairs_hook=unique_object, parse_constant=reject_constant)
+    qualities, patches = [], []
+    for patch in document["patches"]:
+        values = [triangle_quality([corner[3:6] for corner in face[1:]])
+                  for face in patch["faces"]]
+        if not values:
+            raise ValueError("Physical quality snapshot has an empty patch")
+        qualities.extend(values)
+        patches.append({"patch": patch["index"], "triangles": len(values),
+                        "poor_triangles_lt_0_30": sum(q < 0.3 for q in values)})
+    if not qualities:
+        raise ValueError("Physical quality snapshot contains no triangles")
+    distance = min(abs(q - threshold) for q in qualities for threshold in (0.3, 0.6, 0.8))
+    if distance <= SNAPSHOT_QUALITY_ABS_TOLERANCE:
+        raise ValueError("Physical quality threshold is numerically unresolved; counts are unqualified")
+    counts = {"poor_triangles_lt_0_30": sum(q < 0.3 for q in qualities),
+              "good_triangles_ge_0_60": sum(q >= 0.6 for q in qualities),
+              "excellent_triangles_ge_0_80": sum(q >= 0.8 for q in qualities)}
+    expected = {"quality_min": min(qualities), "quality_mean": math.fsum(qualities) / len(qualities),
+                "poor_ratio_lt_0_30": 100.0 * counts["poor_triangles_lt_0_30"] / len(qualities),
+                "q_ge_0_60": 100.0 * counts["good_triangles_ge_0_60"] / len(qualities),
+                "excellent_ratio_ge_0_80": 100.0 * counts["excellent_triangles_ge_0_80"] / len(qualities)}
+    for field, value in expected.items():
+        actual = float(row[field])
+        # The native CSV uses six significant digits. Include arithmetic roundoff
+        # before rounding, including values close to a decimal rounding boundary.
+        low, high = value - SNAPSHOT_QUALITY_ABS_TOLERANCE, value + SNAPSHOT_QUALITY_ABS_TOLERANCE
+        low = min(low, float(format(low, ".6g")))
+        high = max(high, float(format(high, ".6g")))
+        maximum = 1.0 if field in ("quality_min", "quality_mean") else 100.0
+        if not math.isfinite(actual) or not 0 <= actual <= maximum or not low <= actual <= high:
+            raise ValueError(f"Independent physical quality disagrees with CSV {field}")
+    return {"triangles": len(qualities), "quality_min": expected["quality_min"],
+            "quality_mean": expected["quality_mean"], "counts": counts, "patches": patches,
+            "csv_fields_compared": len(expected), "minimum_threshold_distance": distance,
+            "arithmetic_abs_tolerance": SNAPSHOT_QUALITY_ABS_TOLERANCE}
+
+
 def inspect_mesh(path: Path) -> dict:
     """Recompute finite coordinates, connectivity and 2r/R from exported geometry."""
     vertices, faces = [], []
@@ -86,16 +143,7 @@ def inspect_mesh(path: Path) -> dict:
         if max(face) > len(vertices):
             raise ValueError("OBJ face index is out of bounds")
         a, b, c = (vertices[index - 1] for index in face)
-        lengths = sorted([math.dist(a, b), math.dist(b, c), math.dist(c, a)], reverse=True)
-        scale = lengths[0]
-        if scale == 0 or not math.isfinite(scale):
-            raise ValueError("Invalid triangle edge lengths")
-        x, y, z = (length / scale for length in lengths)
-        # Stable Heron formula is independent of the generator's cross-product path.
-        product = (x + (y + z)) * (z - (x - y)) * (z + (x - y)) * (x + (y - z))
-        if product <= 0 or z == 0:
-            raise ValueError("Degenerate exported triangle")
-        quality.append(product / ((x + y + z) * x * y * z))
+        quality.append(triangle_quality((a, b, c)))
         for i, j in [(face[0], face[1]), (face[1], face[2]), (face[2], face[0])]:
             edges[tuple(sorted((i, j)))] += 1
     return {"vertices": len(vertices), "triangles": len(faces),
@@ -157,7 +205,10 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
     if len(metrics_paths) != 1:
         raise ValueError("Expected one serial accepted-state metrics file")
     with metrics_paths[0].open(encoding="utf-8", newline="") as stream:
-        rows = list(csv.DictReader(stream))
+        reader = csv.DictReader(stream)
+        if not reader.fieldnames or len(set(reader.fieldnames)) != len(reader.fieldnames):
+            raise ValueError("Missing or duplicate metrics header")
+        rows = list(reader)
     metrics = {int(row["step"]): row for row in rows}
     if len(metrics) != len(rows) or set(metrics) != set(decisions):
         raise ValueError("Metrics must cover exactly the attempted states")
@@ -197,6 +248,7 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
         raise ValueError("Boundary compatibility report is missing or ambiguous")
     snapshots = list(root.glob("*_incidences.json"))
     incidence_reports = {}
+    physical_quality = {}
     coverage = "not_available_in_legacy_export"
     if snapshots:
         expected_paths = {root / f"{prefix}_passo_{step}_incidences.json" for step in meshes}
@@ -216,6 +268,9 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
         if any(item["status"] != "passed" for item in incidence_reports.values()):
             raise BoundaryCoverageMismatch({"status": "failed", "model": process["model"],
                                             "boundary_incidences": incidence_reports})
+        for step in sorted(meshes):
+            physical_quality[step] = inspect_physical_quality(
+                root / f"{prefix}_passo_{step}_incidences.json", metrics[step])
         coverage = ("verified" if all(item["compared_incidences"] > 0 for item in incidence_reports.values())
                     else "no_shared_boundary_comparisons")
     if require_boundary and coverage != "verified":
@@ -230,6 +285,8 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
             "boundary_compatibility": compatibility,
             "boundary_incidence_coverage": coverage, "boundary_incidences": incidence_reports,
             "input_model_sha256": process.get("input_model_sha256"),
+            "physical_quality_coverage": "full_precision_snapshot" if physical_quality else "unavailable_without_snapshot",
+            "physical_quality": physical_quality,
             "quality_comparison_abs_tolerance": EXPORTED_QUALITY_ABS_TOLERANCE}
 
 

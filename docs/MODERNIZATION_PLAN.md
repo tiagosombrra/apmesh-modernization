@@ -1,19 +1,21 @@
 # Technique-preserving modernization plan
 
-## Active item: Book smoothing candidate-direction diagnosis
+## Active item: physical-quality report verification
 
-The authorized patch-0/step-2 relative-area experiment produced no geometric or
-error improvement. None of the 104 trials newly admitted to score evaluation
-improves the existing score. Preserve this negative outcome and the unmodified
-default algorithm; do not promote the experimental predicate. The completed
-[experiment and reproduction record](evidence/BOOK_RELATIVE_AREA_EXPERIMENT.md)
-retains two repetitions per condition and repeated supplementary observations.
+The completed Book direction diagnosis is a frozen-state observation. Reverse
+trial directions remain a separate unapproved experiment; preserve the default
+algorithm and the negative [relative-area result](evidence/BOOK_RELATIVE_AREA_EXPERIMENT.md).
 
-Next diagnose existing displacement directions and incident-face score response
-on frozen inputs with the current criteria. Define a further scientific proposal
-only after that evidence; changed algorithm/policy experiments need explicit
-scope and advisor alignment. Stage 3 remains open. Earlier active items below
-are historical.
+Repair the independent report verifier: check physical minimum/mean quality and
+three quality percentages against full-precision XYZ incidence geometry for all
+accepted/rejected attempts. Reject numerical ambiguity at classification
+thresholds rather than qualifying uncertain counts. No generator, tolerance or
+scientific acceptance/stopping change is included. Require analytic/corrupted
+controls, retained Eistute/Book audits and applicable exact-head/main local gates.
+See [the functional evidence](evidence/PHYSICAL_QUALITY_ORACLE.md).
+
+After those gates, next audit UV-quality report consistency using the same
+retained snapshots. Stage 3 stays open; earlier active items below are historical.
 
 ## Active item: attempt metric export correction
 
