@@ -37,6 +37,7 @@ class GenerationVerifierTests(unittest.TestCase):
         self.assertEqual(result["last_accepted_step"], 0)
         self.assertEqual(result["rejected_steps"], [1])
         self.assertEqual(result["boundary_compatibility"], "unmeasured")
+        self.assertEqual(result["physical_quality_coverage"], "unavailable_without_snapshot")
 
     def test_rejected_target_is_not_a_valid_accepted_artifact(self):
         with self.assertRaises(ValueError):
@@ -63,6 +64,13 @@ class GenerationVerifierTests(unittest.TestCase):
     def test_missing_metrics_fails(self):
         (self.root / "control_metrics.csv").unlink()
         with self.assertRaises(ValueError):
+            verify_run(self.root)
+
+    def test_duplicate_metrics_header_fails(self):
+        path = self.root / "control_metrics.csv"
+        text = path.read_text().replace("stop_reason", "elements", 1)
+        path.write_text(text)
+        with self.assertRaisesRegex(ValueError, "duplicate metrics header"):
             verify_run(self.root)
 
     def test_wrong_mesh_count_fails(self):

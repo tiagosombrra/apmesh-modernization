@@ -1,8 +1,10 @@
 """Analytic non-manifold/reversal fixtures and deliberate boundary corruption."""
 
 import copy
+import csv
 import hashlib
 import json
+import math
 from pathlib import Path
 import sys
 import tempfile
@@ -199,14 +201,45 @@ class BoundaryIncidenceTests(unittest.TestCase):
             "input_model_sha256": hashlib.sha256(self.model.read_bytes()).hexdigest()}))
         (self.root / "control_passo_0_acceptance_accepted.log").write_text(
             "step=0\naccepted=1\n" + "".join(f"{key}={stats[key]}\n" for key in ["quality_min_3d", "quality_mean_3d"]))
-        (self.root / "control_metrics.csv").write_text(
-            f"step,nodes,elements,stop_reason\n0,{sum(len(p['nodes']) for p in self.document['patches'])},{stats['triangles']},control\n")
+        # Planar fan triangles are right isosceles except on the stretched sheet:
+        # its eight right triangles have q=2*(sqrt(2)+1-sqrt(3))/sqrt(3)<0.8.
+        excellent = stats["triangles"] - (8 if len(self.document["patches"]) > 1 else 0)
+        right_quality = 2 * (math.sqrt(2) - 1)
+        stretched_quality = 2 * (math.sqrt(2) + 1 - math.sqrt(3)) / math.sqrt(3)
+        minimum = stretched_quality if len(self.document["patches"]) > 1 else right_quality
+        mean = (excellent * right_quality + (stats["triangles"] - excellent) * stretched_quality) / stats["triangles"]
+        row = {"step": 0, "nodes": sum(len(p["nodes"]) for p in self.document["patches"]),
+               "elements": stats["triangles"], "stop_reason": "control",
+               "quality_min": format(minimum, ".6g"),
+               "quality_mean": format(mean, ".6g"),
+               "poor_ratio_lt_0_30": 0, "q_ge_0_60": 100,
+               "excellent_ratio_ge_0_80": format(100 * excellent / stats["triangles"], ".6g")}
+        with (self.root / "control_metrics.csv").open("w", newline="") as stream:
+            writer = csv.DictWriter(stream, fieldnames=list(row))
+            writer.writeheader()
+            writer.writerow(row)
         (self.root / "control_compatibility_summary.csv").write_text(
             "compared_groups,desynchronized_groups,compat_error_mean,compat_error_max\n0,0,0,0\n")
 
     def test_strict_integration_uses_real_incidence_evidence(self):
         self.prepare_run()
-        self.assertEqual(verify_run(self.root, require_boundary=True)["boundary_incidence_coverage"], "verified")
+        report = verify_run(self.root, require_boundary=True)
+        self.assertEqual(report["boundary_incidence_coverage"], "verified")
+        self.assertEqual(report["physical_quality_coverage"], "full_precision_snapshot")
+        self.assertEqual(report["physical_quality"][0]["csv_fields_compared"], 5)
+
+    def test_wrong_quality_csv_fails_even_with_correct_geometry_and_logs(self):
+        self.prepare_run()
+        path = self.root / "control_metrics.csv"
+        with path.open(newline="") as stream:
+            row, = csv.DictReader(stream)
+        row["poor_ratio_lt_0_30"] = "100"
+        with path.open("w", newline="") as stream:
+            writer = csv.DictWriter(stream, fieldnames=list(row))
+            writer.writeheader()
+            writer.writerow(row)
+        with self.assertRaisesRegex(ValueError, "poor_ratio_lt_0_30"):
+            verify_run(self.root, require_boundary=True)
 
     def test_changed_input_model_identity_fails(self):
         self.prepare_run()

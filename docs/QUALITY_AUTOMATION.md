@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Physical-quality report verification
+
+`tools/verify_generation.py <run> --require-boundary-coverage --report <report>`
+checks five physical-quality CSV fields against validated, full-precision XYZ
+incidence snapshots: minimum/mean 2r/R and percentages below 0.30, at least 0.60
+and at least 0.80. Reports include exact triangle counts per threshold and poor
+counts per patch. The CSV uses percentages, not fractions. Six-significant-digit
+serialization is accounted for separately from the 1e-10 arithmetic comparison
+budget. A triangle within that arithmetic budget of a threshold leaves its count
+unqualified and fails verification; this does not change mesh acceptance.
+Without snapshots, legacy OBJ/log checks remain available but full-precision
+physical-quality coverage is explicitly unavailable. Required strict boundary
+verification requires snapshots and therefore includes the new quality checks.
+`tests/tooling/test_physical_quality.py` adds ten analytic/corruption controls;
+boundary integration and duplicate-header controls bring the tooling total to 93.
+See [evidence and limits](evidence/PHYSICAL_QUALITY_ORACLE.md).
+
 ## Hermite constructor rollback
 
 application.hermite_construction_contracts and tooling.hermite_construction_preservation
