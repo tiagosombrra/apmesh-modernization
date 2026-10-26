@@ -1,21 +1,23 @@
 # Technique-preserving modernization plan
 
-## Active item: physical-quality report verification
+## Active item: UV-quality report verification
 
 The completed Book direction diagnosis is a frozen-state observation. Reverse
 trial directions remain a separate unapproved experiment; preserve the default
 algorithm and the negative [relative-area result](evidence/BOOK_RELATIVE_AREA_EXPERIMENT.md).
 
-Repair the independent report verifier: check physical minimum/mean quality and
-three quality percentages against full-precision XYZ incidence geometry for all
-accepted/rejected attempts. Reject numerical ambiguity at classification
-thresholds rather than qualifying uncertain counts. No generator, tolerance or
-scientific acceptance/stopping change is included. Require analytic/corrupted
-controls, retained Eistute/Book audits and applicable exact-head/main local gates.
-See [the functional evidence](evidence/PHYSICAL_QUALITY_ORACLE.md).
+Extend the qualified PR #104 verifier to check all ten UV-quality CSV fields
+from full-precision UV parameters for every accepted/rejected attempt. Preserve
+the physical checks and distinguish physical/UV counts, sample deviation and
+interpolated percentiles. Threshold ambiguity and the native zero-sentinel guard
+domain remain unqualified, not falsely successful observations. No generator,
+tolerance or scientific acceptance/stopping change is included. Require analytic/
+corrupted controls, retained Eistute/Book audits and exact-head/main local gates.
+See [the functional evidence](evidence/PHYSICAL_QUALITY_ORACLE.md#uv-quality-extension).
 
-After those gates, next audit UV-quality report consistency using the same
-retained snapshots. Stage 3 stays open; earlier active items below are historical.
+After those gates, next audit terminal AdaptDomain generation failure, cleanup
+and process status under the existing meshing policy. Stage 3 stays open;
+earlier active items below are historical.
 
 ## Active item: attempt metric export correction
 

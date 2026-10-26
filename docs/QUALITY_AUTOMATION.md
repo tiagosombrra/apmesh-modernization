@@ -1,20 +1,27 @@
 # Local quality automation
 
-## Physical-quality report verification
+## Physical and UV-quality report verification
 
 `tools/verify_generation.py <run> --require-boundary-coverage --report <report>`
 checks five physical-quality CSV fields against validated, full-precision XYZ
 incidence snapshots: minimum/mean 2r/R and percentages below 0.30, at least 0.60
-and at least 0.80. Reports include exact triangle counts per threshold and poor
+and at least 0.80. It also checks all ten UV-quality fields: minimum, 5th/50th/
+95th percentiles, maximum, mean, sample standard deviation and the same three
+percentages. UV percentiles use linear positions p*(n-1); single-sample deviation
+is zero. Native binary64-epsilon zero-sentinel guards are outside the independent
+nondegenerate UV metric qualification and fail verification without modifying
+the mesh. Reports include exact triangle counts per threshold and poor
 counts per patch. The CSV uses percentages, not fractions. Six-significant-digit
 serialization is accounted for separately from the 1e-10 arithmetic comparison
 budget. A triangle within that arithmetic budget of a threshold leaves its count
 unqualified and fails verification; this does not change mesh acceptance.
 Without snapshots, legacy OBJ/log checks remain available but full-precision
-physical-quality coverage is explicitly unavailable. Required strict boundary
-verification requires snapshots and therefore includes the new quality checks.
-`tests/tooling/test_physical_quality.py` adds ten analytic/corruption controls;
-boundary integration and duplicate-header controls bring the tooling total to 93.
+physical/UV quality coverage is explicitly unavailable. Required strict boundary
+verification requires snapshots and includes both quality checks.
+Physical controls and twelve UV analytic/corruption controls plus integration
+bring the tooling total to 106 tests. The UV distributions distinguish sample
+from population deviation, interpolated from nearest-rank percentiles, and UV
+from XYZ shape. Reuse retained article output for verifier-only changes.
 See [evidence and limits](evidence/PHYSICAL_QUALITY_ORACLE.md).
 
 ## Hermite constructor rollback

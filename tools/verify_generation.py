@@ -11,6 +11,8 @@ import json
 import math
 from pathlib import Path
 import re
+import statistics
+import sys
 
 from check_compatibility import validate as validate_compatibility
 from check_boundary_incidence import inspect_snapshot, reject_constant, unique_object
@@ -70,6 +72,18 @@ def triangle_quality(points) -> float:
     return product / ((x + y + z) * x * y * z)
 
 
+def check_quality_fields(expected: dict, row: dict, percentages: set, space: str) -> None:
+    """Compare dimensionless statistics and percentages with native CSV rounding."""
+    for field, value in expected.items():
+        actual = float(row[field])
+        low, high = value - SNAPSHOT_QUALITY_ABS_TOLERANCE, value + SNAPSHOT_QUALITY_ABS_TOLERANCE
+        low = min(low, float(format(low, ".6g")))
+        high = max(high, float(format(high, ".6g")))
+        maximum = 100.0 if field in percentages else 1.0
+        if not math.isfinite(actual) or not 0 <= actual <= maximum or not low <= actual <= high:
+            raise ValueError(f"Independent {space} quality disagrees with CSV {field}")
+
+
 def inspect_physical_quality(snapshot: Path, row: dict) -> dict:
     """Audit CSV quality after the snapshot passes geometry/incidence validation."""
     document = json.loads(snapshot.read_text(encoding="utf-8"),
@@ -95,18 +109,67 @@ def inspect_physical_quality(snapshot: Path, row: dict) -> dict:
                 "poor_ratio_lt_0_30": 100.0 * counts["poor_triangles_lt_0_30"] / len(qualities),
                 "q_ge_0_60": 100.0 * counts["good_triangles_ge_0_60"] / len(qualities),
                 "excellent_ratio_ge_0_80": 100.0 * counts["excellent_triangles_ge_0_80"] / len(qualities)}
-    for field, value in expected.items():
-        actual = float(row[field])
-        # The native CSV uses six significant digits. Include arithmetic roundoff
-        # before rounding, including values close to a decimal rounding boundary.
-        low, high = value - SNAPSHOT_QUALITY_ABS_TOLERANCE, value + SNAPSHOT_QUALITY_ABS_TOLERANCE
-        low = min(low, float(format(low, ".6g")))
-        high = max(high, float(format(high, ".6g")))
-        maximum = 1.0 if field in ("quality_min", "quality_mean") else 100.0
-        if not math.isfinite(actual) or not 0 <= actual <= maximum or not low <= actual <= high:
-            raise ValueError(f"Independent physical quality disagrees with CSV {field}")
+    check_quality_fields(expected, row, {"poor_ratio_lt_0_30", "q_ge_0_60", "excellent_ratio_ge_0_80"}, "physical")
     return {"triangles": len(qualities), "quality_min": expected["quality_min"],
             "quality_mean": expected["quality_mean"], "counts": counts, "patches": patches,
+            "csv_fields_compared": len(expected), "minimum_threshold_distance": distance,
+            "arithmetic_abs_tolerance": SNAPSHOT_QUALITY_ABS_TOLERANCE}
+
+
+def parametric_triangle_quality(points) -> float:
+    """Independently audit the nondegenerate domain of the native UV metric."""
+    a, b, c = points
+    lengths = [math.dist(a, b), math.dist(b, c), math.dist(c, a)]
+    perimeter = sum(lengths)
+    area = abs((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])) / 2
+    # The native writer returns a zero sentinel at these binary64-epsilon guards.
+    # Such samples are outside this independent nondegenerate 2r/R qualification.
+    if perimeter <= sys.float_info.epsilon or area <= sys.float_info.epsilon:
+        raise ValueError("UV quality is outside the qualified nondegenerate metric domain")
+    radius = math.prod(lengths) / (4 * area)
+    if radius <= sys.float_info.epsilon:
+        raise ValueError("UV quality is outside the qualified nondegenerate metric domain")
+    return triangle_quality(points)
+
+
+def inspect_parametric_quality(snapshot: Path, row: dict) -> dict:
+    """Audit all ten UV fields after full snapshot geometry/incidence validation."""
+    document = json.loads(snapshot.read_text(encoding="utf-8"),
+                          object_pairs_hook=unique_object, parse_constant=reject_constant)
+    qualities, patches = [], []
+    for patch in document["patches"]:
+        values = [parametric_triangle_quality([corner[1:3] for corner in face[1:]])
+                  for face in patch["faces"]]
+        if not values:
+            raise ValueError("UV quality snapshot has an empty patch")
+        qualities.extend(values)
+        patches.append({"patch": patch["index"], "triangles": len(values),
+                        "quality_min": min(values), "quality_mean": statistics.mean(values),
+                        "poor_triangles_lt_0_30": sum(q < 0.3 for q in values)})
+    if not qualities:
+        raise ValueError("UV quality snapshot contains no triangles")
+    distance = min(abs(q - threshold) for q in qualities for threshold in (0.3, 0.6, 0.8))
+    if distance <= SNAPSHOT_QUALITY_ABS_TOLERANCE:
+        raise ValueError("UV quality threshold is numerically unresolved; counts are unqualified")
+    ordered = sorted(qualities)
+
+    def percentile(fraction):
+        position = fraction * (len(ordered) - 1)
+        lo, hi = math.floor(position), math.ceil(position)
+        return ordered[lo] + (position - lo) * (ordered[hi] - ordered[lo])
+
+    stats = {"min": ordered[0], "p05": percentile(0.05), "p50": percentile(0.5),
+             "p95": percentile(0.95), "max": ordered[-1], "mean": statistics.mean(qualities),
+             "std": statistics.stdev(qualities) if len(qualities) > 1 else 0.0}
+    counts = {"poor_triangles_lt_0_30": sum(q < 0.3 for q in qualities),
+              "good_triangles_ge_0_60": sum(q >= 0.6 for q in qualities),
+              "excellent_triangles_ge_0_80": sum(q >= 0.8 for q in qualities)}
+    percentages = {"quality_uv_poor_ratio_lt_0_30": 100.0 * counts["poor_triangles_lt_0_30"] / len(qualities),
+                   "quality_uv_q_ge_0_60": 100.0 * counts["good_triangles_ge_0_60"] / len(qualities),
+                   "quality_uv_excellent_ratio_ge_0_80": 100.0 * counts["excellent_triangles_ge_0_80"] / len(qualities)}
+    expected = {**{"quality_uv_" + key: value for key, value in stats.items()}, **percentages}
+    check_quality_fields(expected, row, set(percentages), "UV")
+    return {"triangles": len(qualities), "statistics": stats, "counts": counts, "patches": patches,
             "csv_fields_compared": len(expected), "minimum_threshold_distance": distance,
             "arithmetic_abs_tolerance": SNAPSHOT_QUALITY_ABS_TOLERANCE}
 
@@ -249,6 +312,7 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
     snapshots = list(root.glob("*_incidences.json"))
     incidence_reports = {}
     physical_quality = {}
+    parametric_quality = {}
     coverage = "not_available_in_legacy_export"
     if snapshots:
         expected_paths = {root / f"{prefix}_passo_{step}_incidences.json" for step in meshes}
@@ -271,6 +335,8 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
         for step in sorted(meshes):
             physical_quality[step] = inspect_physical_quality(
                 root / f"{prefix}_passo_{step}_incidences.json", metrics[step])
+            parametric_quality[step] = inspect_parametric_quality(
+                root / f"{prefix}_passo_{step}_incidences.json", metrics[step])
         coverage = ("verified" if all(item["compared_incidences"] > 0 for item in incidence_reports.values())
                     else "no_shared_boundary_comparisons")
     if require_boundary and coverage != "verified":
@@ -287,6 +353,8 @@ def verify_run(root: Path, *, required_step: int | None = None, require_boundary
             "input_model_sha256": process.get("input_model_sha256"),
             "physical_quality_coverage": "full_precision_snapshot" if physical_quality else "unavailable_without_snapshot",
             "physical_quality": physical_quality,
+            "parametric_quality_coverage": "full_precision_snapshot" if parametric_quality else "unavailable_without_snapshot",
+            "parametric_quality": parametric_quality,
             "quality_comparison_abs_tolerance": EXPORTED_QUALITY_ABS_TOLERANCE}
 
 

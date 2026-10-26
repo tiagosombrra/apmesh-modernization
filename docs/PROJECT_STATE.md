@@ -1,21 +1,23 @@
 # Project state
 
-## Physical-quality report verification
+## UV-quality report verification
 
 The Book direction diagnosis is complete as a frozen-state observation; the
 reverse-direction experiment remains unapproved and unexecuted. Production
 criteria and the negative relative-area result remain unchanged.
 
-The active engineering repair makes the generation verifier independently check
-five physical-quality CSV fields against full-precision incidence geometry.
-The original verifier accepts a deliberately corrupted Book quality report; the
-repair rejects it and checks 45 fields across nine retained Eistute/Book states.
-It reports per-patch poor-triangle counts, retaining Book patch 0's count of 70.
-See [scope, controls and limits](evidence/PHYSICAL_QUALITY_ORACLE.md).
-Exact-head and post-merge local gates remain required; no mesh improvement or
-stage closure is claimed. After those checks, the next single engineering audit
-is UV-quality report consistency on the same retained snapshots. Stage 3 stays
-open. Earlier active-item/next-work statements below are historical checkpoints.
+PR #104 qualifies five physical-quality CSV checks on exact head/main. The active
+engineering extension independently checks all ten UV-quality CSV fields from
+full-precision parameter coordinates, including interpolated percentiles and
+sample standard deviation. A deliberately corrupted Book UV report passes the
+previous verifier and is rejected by the extension. Nine retained states cover
+90 UV fields and preserve all 45 prior physical-field checks. Book patch 0,
+step 2 has 28 UV-poor and 70 physical-poor triangles; these meanings stay distinct.
+See [scope, controls and limits](evidence/PHYSICAL_QUALITY_ORACLE.md#uv-quality-extension).
+Exact-head/main observations belong to the delivery PR; no mesh improvement or
+stage closure is claimed. Next single engineering audit: terminal AdaptDomain
+generation failure, cleanup and process status under the existing meshing policy.
+Stage 3 stays open. Earlier active-item/next-work statements below are historical.
 
 ## Book relative-area experiment: negative result
 

@@ -38,6 +38,7 @@ class GenerationVerifierTests(unittest.TestCase):
         self.assertEqual(result["rejected_steps"], [1])
         self.assertEqual(result["boundary_compatibility"], "unmeasured")
         self.assertEqual(result["physical_quality_coverage"], "unavailable_without_snapshot")
+        self.assertEqual(result["parametric_quality_coverage"], "unavailable_without_snapshot")
 
     def test_rejected_target_is_not_a_valid_accepted_artifact(self):
         with self.assertRaises(ValueError):
