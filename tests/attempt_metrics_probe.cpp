@@ -100,7 +100,35 @@ void WriteCurvatureControl(const std::filesystem::path& output, bool curved) {
 }
 } // namespace
 
+#if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
+namespace {
+bool inject_domain_failure = false;
+}
+extern "C" bool RealDomainExecute(AdvancingFront*, const FaceList&) asm(
+    "__real__ZN10Par2DJMesh3AFT14AdvancingFront7executeERKNSt7__"
+    "cxx114listIPNS_6Basics4FaceESaIS6_EEE");
+extern "C" bool WrappedDomainExecute(AdvancingFront*, const FaceList&) asm(
+    "__wrap__ZN10Par2DJMesh3AFT14AdvancingFront7executeERKNSt7__cxx114listIPNS_6Basics4FaceESaIS6_"
+    "EEE");
+extern "C" bool WrappedDomainExecute(AdvancingFront* front, const FaceList& previous) {
+  const auto context = front->GetRunStats();
+  if (inject_domain_failure && context.adaptive_step == 2 && context.patch_index == 0) {
+    std::cerr << "Domain failure control: step=2 patch=0\n";
+    return false;
+  }
+  return RealDomainExecute(front, previous);
+}
+#endif
+
 int main(int argc, char* argv[]) {
+#if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
+  if (argc == 3 && std::string(argv[1]) == "--domain-failure-config") {
+    inject_domain_failure = true;
+    char config_flag[] = "--config";
+    char* forwarded[] = {argv[0], config_flag, argv[2]};
+    return apmesh_uninvoked_cli_main(3, forwarded);
+  }
+#endif
   if (argc == 3) {
 #if defined(_WIN32)
     SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX);

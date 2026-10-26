@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 590,
+    "literal_include_directives": 592,
     "first_party_include_edges": 340
   },
   "cross_component_directives": [
@@ -338,7 +338,7 @@
     "cstddef": 2,
     "cstdint": 1,
     "cstdio": 3,
-    "cstdlib": 5,
+    "cstdlib": 6,
     "cstring": 1,
     "ctime": 3,
     "exception": 1,
@@ -347,7 +347,7 @@
     "fstream": 9,
     "initializer_list": 1,
     "iomanip": 2,
-    "iostream": 10,
+    "iostream": 11,
     "limits": 6,
     "list": 17,
     "locale": 1,
@@ -387,7 +387,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "9c50b34624fabb7f3203dfcd795ed5fa4dffd3db8873f4eac31022f6f439d41e"
+      "sha256": "5e29ca7f649ed16b831d9d9ba4760b69768a87bb8220b304f077b70f1b4168d0"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -3265,8 +3265,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "eccbfb190cadac3b7a82907a82c62bae36f525fc0f4f4e824bd1f41e43083110",
-      "bytes": 69567,
+      "sha256": "dfc59860cd08fc4438b9641451d488289b3c510cca4f103e6958397e5bba0b36",
+      "bytes": 68819,
       "includes": [
         {
           "line": 1,
@@ -3305,27 +3305,41 @@
         },
         {
           "line": 6,
-          "spelling": "memory",
+          "spelling": "cstdlib",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 7,
-          "spelling": "queue",
+          "spelling": "iostream",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 8,
-          "spelling": "unordered_map",
+          "spelling": "memory",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 9,
+          "spelling": "queue",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 11,
           "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",

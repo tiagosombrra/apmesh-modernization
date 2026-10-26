@@ -28,6 +28,12 @@ the supported interface promises them; they do not establish runtime safety
 outside the measured scope. Prose alone cannot turn an unmeasured required gate
 green. A scientific policy choice requires explicit advisor alignment.
 
+The [terminal domain audit/status repair](../evidence/DOMAIN_FAILURE_STATUS.md)
+measures controlled false/exception paths on the serial CLI. Correct fatal
+status does not close adaptive orchestration or ownership: outer stack cleanup
+is skipped by process exit, temporary UV cache storage is retained on injected
+exceptions, and caller pending candidates/retry state remain separate work.
+
 The [Model root audit](../evidence/STAGE3_MODEL_ROOT_AUDIT.md) records original
 copy/rvalue and failed-append reproductions. It is retained historical evidence;
 bounded Model repair qualification is recorded separately in
