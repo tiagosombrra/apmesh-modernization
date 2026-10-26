@@ -1,5 +1,21 @@
 # Local quality automation
 
+## Serial temporary UV cache ownership
+
+`application.domain_uv_cache_contracts` adds one gate (59 total GNU serial CTest
+entries). `tests/domain_cache_memory` compiles fourteen actual native units with
+C++17; use `AP_MESH_CACHE_SOURCE_ROOT` and optional `AP_MESH_CACHE_ASAN` for isolated
+MSVC builds. Debug uses CRT heap checkpoints with `_ITERATOR_DEBUG_LEVEL=0`;
+ASan and CRT independently calibrate their real allocation counts.
+`tools/qualify_domain_uv_cache.py --asan <exe> --crt <exe> --runtime <directory>
+--output <fresh-directory>` requires twelve expected outcomes: contracts, live/
+original-live and hook controls per instrument, actual ASan UAF, actual CRT leak
+and two original retention failures. Ten checker corruption tests bring Python
+tooling to 120 tests. Require full adapter/fixture tidy and format, inventory,
+unchanged scientific inputs, actual Book exception release observations and
+fresh exact-head/main article regression. This is bounded cache qualification;
+see [remaining lifecycle limits](evidence/DOMAIN_UV_CACHE.md).
+
 ## Serial terminal domain-failure status
 
 GNU serial builds add `application.domain_failure_status` (58 CTest entries).

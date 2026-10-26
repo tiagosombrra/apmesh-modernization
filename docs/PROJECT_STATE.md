@@ -1,24 +1,23 @@
 # Project state
 
-## Serial terminal domain-failure status
+## Serial temporary UV cache ownership
 
 The Book direction diagnosis is complete as a frozen-state observation; the
 reverse-direction experiment remains unapproved and unexecuted. Production
 criteria and the negative relative-area result remain unchanged.
 
-PRs #104/#105 qualify independent physical/UV report checks on exact head/main.
-The terminal-domain audit reproduces success exit status after controlled AFT
-failure, skipped outer cleanup and cached UV storage retained on exceptions.
-The active bounded repair changes only serial fatal status/diagnostics and
-removes two overwritten serial assignments required by static analysis. It exits
-with status 1 and step/patch/retry/status context after existing attempts fail.
-GNU serial controls cover Book and Eistute; lifetime cleanup is not repaired.
-See [observations, checks and remaining limits](evidence/DOMAIN_FAILURE_STATUS.md).
-Exact-head/main observations belong to the delivery PR. Stage 3 stays open; no
-new qualified memory slice or mesh improvement is claimed. Next single work:
-temporary UV cache ownership during construction and exception unwinding, before
-replacing terminal process exit with exception propagation. Earlier active-item/
-next-work statements below are historical checkpoints.
+PRs #104/#105 qualify independent physical/UV report checks; PR #106 corrects
+serial terminal failure status. The next bounded repair owns fresh temporary UV
+faces and their copied vertices through construction, list adoption and exception
+unwinding. The owner precedes the AFT consumer and preserves explicit cleanup
+points and numerical ordering. Initial ASan/CRT controls pass; real Book injected
+exceptions release 152/152 cached faces versus the retained original 0/152.
+See [contract, observations and delivery gates](evidence/DOMAIN_UV_CACHE.md).
+Exact-head/main results belong to the delivery PR; initial checks alone do not
+authorize integration. Stage 3 remains open, without a new qualified memory-slice
+count or mesh-quality claim. Next single work after delivery: measure caller
+regeneration-candidate ownership before replacing terminal exit with propagated
+exceptions. Earlier active-item/next-work statements below are historical.
 
 ## Book relative-area experiment: negative result
 

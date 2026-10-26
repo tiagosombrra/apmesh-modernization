@@ -1,6 +1,7 @@
 #include "../../include/adapter/adapter.h"
 #include "data/curve/curve_orientation.h"
 #include "adapter/curve_samples.h"
+#include "adapter/domain_uv_cache.h"
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
@@ -1260,6 +1261,7 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     AttemptResult result;
     result.sub_mesh = std::make_unique<SubMesh>();
     const double factor_disc = DISCRETIZATION_CURVE_FACTOR_INTERNAL;
+    apmesh::adaptation::DomainUvCache cache;
     AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,
                           SMOOTHING_LAPLACIAN_FACTOR);
     avanco.SetAdaptiveContext(adaptive_step, patch_index);
@@ -1321,16 +1323,14 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
                                 coons_patch->IsCurveReversed(coons_patch->GetNumBerCurves() - 1));
 
     SubMesh* sub_mesh_old = coons_patch->GetSubMesh();
-    FaceList mesh_old;
+    FaceList& mesh_old = cache.BorrowFaces();
     double area_total = 0.0;
     for (unsigned int i = 0; i < sub_mesh_old->GetNumberElements(); ++i) {
       TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));
-      Vertex* v1 = new Vertex(get<0>(tri->GetParametersN1()), get<1>(tri->GetParametersN1()));
-      Vertex* v2 = new Vertex(get<0>(tri->GetParametersN2()), get<1>(tri->GetParametersN2()));
-      Vertex* v3 = new Vertex(get<0>(tri->GetParametersN3()), get<1>(tri->GetParametersN3()));
-      Face* face = new Face(v1, v2, v3, tri->GetId());
+      auto face = apmesh::adaptation::DomainUvCache::MakeFace(
+          tri->GetParametersN1(), tri->GetParametersN2(), tri->GetParametersN3(), tri->GetId());
       area_total += tri->GetArea();
-      mesh_old.push_back(face);
+      cache.Append(std::move(face));
     }
     result.patch_area = area_total;
 
@@ -1363,11 +1363,7 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     result.smoothed_stats = ComputeFaceMetricStats(mesh_old);
 
     if (!avanco.execute(mesh_old)) {
-      while (!mesh_old.empty()) {
-        Face* face = mesh_old.front();
-        mesh_old.pop_front();
-        delete face;
-      }
+      cache.Clear();
       result.status = "generation_failed";
       return result;
     }
@@ -1446,11 +1442,7 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
       result.sub_mesh->SetElement(element);
     }
 
-    while (!mesh_old.empty()) {
-      Face* face = mesh_old.front();
-      mesh_old.pop_front();
-      delete face;
-    }
+    cache.Clear();
     result.success = true;
     return result;
   };
