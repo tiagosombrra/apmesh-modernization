@@ -7,11 +7,11 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 151,
+    "files": 152,
     "translation_units": 73,
-    "headers": 78,
+    "headers": 79,
     "directory_components": {
-      "adapter": 4,
+      "adapter": 5,
       "cli": 1,
       "crab_mesh/aft": 18,
       "crab_mesh/numerical": 7,
@@ -28,14 +28,14 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 592,
-    "first_party_include_edges": 340
+    "literal_include_directives": 596,
+    "first_party_include_edges": 342
   },
   "cross_component_directives": [
     {
       "from": "adapter",
       "to": "crab_mesh/aft",
-      "count": 5
+      "count": 6
     },
     {
       "from": "adapter",
@@ -352,7 +352,7 @@
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 28,
+    "memory": 29,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -365,7 +365,7 @@
     "string": 6,
     "sys/time.h": 2,
     "system_error": 1,
-    "tuple": 6,
+    "tuple": 7,
     "type_traits": 1,
     "typeinfo": 1,
     "unistd.h": 1,
@@ -387,11 +387,15 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "5e29ca7f649ed16b831d9d9ba4760b69768a87bb8220b304f077b70f1b4168d0"
+      "sha256": "598e36c35cb0b78ecf939f4c12bb35d0dc55ace6df225bb19290e0e8997ba8ee"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
       "sha256": "483af56ff42b3cc35195b9ad469bbe84588c58868799e98d375a6b9f9c36d1b5"
+    },
+    {
+      "path": "tests/domain_cache_memory/CMakeLists.txt",
+      "sha256": "c6c0d0ca4eb9ac168424190158c4bf5aa850482ac7607e955282507a5c29a69d"
     },
     {
       "path": "tests/hermite_construction_memory/CMakeLists.txt",
@@ -589,6 +593,36 @@
         {
           "line": 5,
           "spelling": "map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/adapter/domain_uv_cache.h",
+      "component_by_directory": "adapter",
+      "kind": "header",
+      "sha256": "819ffa3cfaa1b822c4762901ba3d4d041965782d21026f128965e382cb03b81b",
+      "bytes": 2195,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "../crab_mesh/aft/face.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/face.h"
+        },
+        {
+          "line": 6,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "tuple",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -3265,8 +3299,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "dfc59860cd08fc4438b9641451d488289b3c510cca4f103e6958397e5bba0b36",
-      "bytes": 68819,
+      "sha256": "9e4acd8e5ce6ac50236e865abed5716ced0bf0521319b00938f59af5594c103c",
+      "bytes": 68535,
       "includes": [
         {
           "line": 1,
@@ -3291,55 +3325,62 @@
         },
         {
           "line": 4,
+          "spelling": "adapter/domain_uv_cache.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/adapter/domain_uv_cache.h"
+        },
+        {
+          "line": 5,
           "spelling": "algorithm",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 5,
+          "line": 6,
           "spelling": "cmath",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 6,
+          "line": 7,
           "spelling": "cstdlib",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 7,
+          "line": 8,
           "spelling": "iostream",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 8,
+          "line": 9,
           "spelling": "memory",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "queue",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "unordered_map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 11,
+          "line": 12,
           "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
