@@ -7,9 +7,9 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 154,
+    "files": 155,
     "translation_units": 73,
-    "headers": 81,
+    "headers": 82,
     "directory_components": {
       "adapter": 6,
       "cli": 1,
@@ -23,13 +23,13 @@
       "data/patch": 9,
       "data/tree": 2,
       "estimate": 12,
-      "generator": 17,
+      "generator": 18,
       "input_output": 12,
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 609,
-    "first_party_include_edges": 347
+    "literal_include_directives": 613,
+    "first_party_include_edges": 349
   },
   "cross_component_directives": [
     {
@@ -346,7 +346,7 @@
     "cstdlib": 7,
     "cstring": 1,
     "ctime": 3,
-    "exception": 2,
+    "exception": 3,
     "execinfo.h": 1,
     "filesystem": 1,
     "fstream": 9,
@@ -357,7 +357,7 @@
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 30,
+    "memory": 31,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -393,7 +393,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "537b38372f584d57a705b541d8e35fbc550f5e7f462c79329983a0f559defbea"
+      "sha256": "81dd7e6e47ce17384f6d217697f75db1ac895abd94ba23b75fc81095322ceb88"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -2358,6 +2358,36 @@
       "sha256": "8bfc9405b764f172c88000d3b0bf99c197d35ffb43c624beee892dded725c084",
       "bytes": 700,
       "includes": []
+    },
+    {
+      "path": "include/generator/accepted_mesh_scope.h",
+      "component_by_directory": "generator",
+      "kind": "header",
+      "sha256": "2ca0c7e4d4fe159de9054c43840989a0ba2776cc5b1f2aaa82e38432b30a9f94",
+      "bytes": 1619,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "generator/domain_observer_cleanup.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/domain_observer_cleanup.h"
+        },
+        {
+          "line": 6,
+          "spelling": "exception",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
     },
     {
       "path": "include/generator/curve_publication.h",
@@ -5114,8 +5144,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "92daeaef9f1ac5c0bcf8e17345aec74d9fadb2cd211689ea57a1f22427823e91",
-      "bytes": 332359,
+      "sha256": "db6996b39f4eed7567e188f034b0dad2547366aa7112de4d554bf31dabe51ad8",
+      "bytes": 332778,
       "includes": [
         {
           "line": 1,
@@ -5203,104 +5233,111 @@
         },
         {
           "line": 14,
+          "spelling": "generator/accepted_mesh_scope.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/generator/accepted_mesh_scope.h"
+        },
+        {
+          "line": 15,
           "spelling": "input_output/incidence_snapshot.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/incidence_snapshot.h"
         },
         {
-          "line": 16,
+          "line": 17,
           "spelling": "array",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 17,
+          "line": 18,
           "spelling": "ostream",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 18,
+          "line": 19,
           "spelling": "cstdio",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 19,
+          "line": 20,
           "spelling": "unordered_set",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 20,
+          "line": 21,
           "spelling": "unordered_map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 21,
+          "line": 22,
           "spelling": "algorithm",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 22,
+          "line": 23,
           "spelling": "cmath",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 23,
+          "line": 24,
           "spelling": "limits",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 24,
+          "line": 25,
           "spelling": "numeric",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 25,
+          "line": 26,
           "spelling": "optional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 26,
+          "line": 27,
           "spelling": "map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 27,
+          "line": 28,
           "spelling": "filesystem",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 28,
+          "line": 29,
           "spelling": "system_error",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 29,
+          "line": 30,
           "spelling": "stdexcept",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -6081,7 +6118,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 180,
+    "source_anchors": 185,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

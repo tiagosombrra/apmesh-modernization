@@ -1,5 +1,25 @@
 # Technique-preserving modernization plan
 
+## Active item: explicit accepted mesh root
+
+Repair accepted identity/lifetime independently of the last saved report entry.
+Advance the serial root only through the existing acceptance branch; keep the
+unarchived owner alive during trials and return it on rejection. Preserve all
+rejected output and intentional last-candidate memory, formulas/order, attempts,
+scientific criteria and parallel branches. Classification: behavior-changing
+accepted-state identity/ownership defect repair.
+
+Require component and complete-caller identity/lifetime controls, archived and
+unarchived execution, original/mutation rejection and real terminal cleanup.
+Separate controlled branch-flow cases from production scientific results. Preserve
+frozen states before rejected archive reuse; explicitly measure later error,
+physical/UV quality, boundary and decision changes. Retain mixed/negative quality
+evidence and original strict failures. [Scope and gates](evidence/ACCEPTED_MESH_ROOT.md)
+require exact-head/main qualification before integration. Next audit after this
+delivery: stopping guards after rejection using accepted versus attempted error;
+do not fold that separate boundary into this repair. Stage 3 stays open. Earlier
+active items are historical; reverse directions remain unapproved/unexecuted.
+
 ## Active item: selected candidate structural snapshots
 
 Bind the owned mesh and optional value snapshot immediately after each domain

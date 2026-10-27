@@ -1,5 +1,27 @@
 # Project state
 
+## Explicit accepted mesh root
+
+PR #111 is integrated as main `802eab2a2a77e15867b9398612eadf8a01089133`.
+The next audit reproduced rejected archive entries used as accepted roots in
+Eistute steps 3/4 and Book step 3, affecting five inner trials. The current serial
+repair advances an explicit root only on acceptance. AcceptedMeshScope holds an
+unarchived accepted owner across trials, returns it on rejection and detaches its
+owned observations without allocation on exceptional unwinding. Rejected reports
+and intentional last-candidate memory remain intact; parallel behavior is unchanged.
+
+Initial component/caller controls pass, including unarchived library execution,
+controlled acceptance after rejection, original/mutation rejection and actual
+terminal cleanup. Article accept/reject outcomes stay unchanged. Later rejected
+meshes differ: Eistute's final error decreases but some physical quality measures
+worsen; Book's final error increases slightly. No global quality gain is claimed.
+The initial accepted states remain exact. See [scope and delivery gates](evidence/ACCEPTED_MESH_ROOT.md).
+Exact-head/main results belong to the delivery PR; initial results are not
+integration qualification. Stage 3 stays open without a new memory-slice count.
+Next single audit: stopping guards after outer rejection, distinguishing accepted
+and attempted global/local error without changing tolerances. Earlier active
+items below are historical. Reverse-direction trials remain unapproved/unexecuted.
+
 ## Selected candidate structural snapshots
 
 PR #110 is integrated as main `bd7f6705bbf5c14396541b84085a04211a696abe`.

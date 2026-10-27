@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Explicit accepted mesh root
+
+GNU serial adds `application.accepted_mesh_root` (64 CTest entries).
+Twenty-two scope cases cover archived/unarchived owners, normal rejection/commit,
+failure before/during/after construction, foreign/null observers, allocation
+denial, consecutive rejections, retries and acceptance after rejection. Require
+native release-control detection. Eight checker controls bring Python tooling to
+164. Complete caller checks separately cover CLI h/m/q, an unarchived library
+entry, controlled accept/reject sequences, original accepted-root rejection and
+real unarchived terminal cleanup. Empty/unsupported CLI modes remain invalid;
+those preparation failures are not numerical validation. Require full source/
+header tooling and exact-head/main scientific/identity gates described in
+[the repair evidence](evidence/ACCEPTED_MESH_ROOT.md); later rejected candidates
+change and original strict equality must not be reported as passing.
+
 ## Selected candidate structural snapshots
 
 GNU serial adds `application.candidate_snapshots` (63 CTest entries).

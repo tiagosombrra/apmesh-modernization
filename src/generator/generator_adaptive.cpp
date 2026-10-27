@@ -11,6 +11,7 @@
 #include "generator/curve_publication.h"
 #include "generator/curve_sample_graph.h"
 #include "generator/domain_observer_cleanup.h"
+#include "generator/accepted_mesh_scope.h"
 #include "input_output/incidence_snapshot.h"
 
 #include <array>
@@ -1419,6 +1420,11 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   unsigned long long provisional_previous_elements = 0ULL;
   double provisional_prev_error = 0.0;
 
+#if !USE_MPI && !USE_OPENMP
+  MeshAdaptive* accepted_mesh =
+      mesh_ ? mesh_.get() : (!save_mesh_.empty() ? save_mesh_.back().second.get() : nullptr);
+#endif
+
   // Gerar malha enquanto o erro global for acima do erro desejado
   while (this->step_ < current_policy_.max_steps) {
     if (this->error_local_process_ <= EPSYLON) {
@@ -1448,8 +1454,12 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 
     this->step_++;
 
+#if USE_MPI || USE_OPENMP
     MeshAdaptive* accepted_mesh =
         mesh_ ? mesh_.get() : (!save_mesh_.empty() ? save_mesh_.back().second.get() : nullptr);
+#else
+    apmesh::generation::AcceptedMeshScope accepted_scope(*geometry, mesh_, accepted_mesh);
+#endif
 
     const std::vector<double> accepted_submesh_error = last_submesh_error_;
     const std::vector<double> accepted_patch_factors = previous_patch_factors_;
@@ -2151,6 +2161,9 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 
       if (score_ok || small_mesh_progress_override) {
         accepted_step = true;
+#if !USE_MPI && !USE_OPENMP
+        accepted_mesh = accepted_scope.Commit();
+#endif
         accepted_retry_attempt = static_cast<unsigned int>(retry);
         current_budget_final_status_ =
             (this->step_ > 1 && STEP_ELEMENT_BUDGET_MODE == 1)
