@@ -102,6 +102,7 @@ void WriteCurvatureControl(const std::filesystem::path& output, bool curved) {
 
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
 #include "domain_candidate_fixture.h"
+#include "domain_observer_fixture.h"
 namespace {
 bool inject_domain_failure = false;
 }
@@ -113,6 +114,7 @@ extern "C" bool WrappedDomainExecute(AdvancingFront*, const FaceList&) asm(
     "EEE");
 extern "C" bool WrappedDomainExecute(AdvancingFront* front, const FaceList& previous) {
   const auto context = front->GetRunStats();
+  domain_observer_test::BeforeExecute(context.adaptive_step, context.patch_index);
   if (inject_domain_failure && context.adaptive_step == 2 && context.patch_index == 0) {
     std::cerr << "Domain failure control: step=2 patch=0\n";
     return false;
@@ -123,6 +125,10 @@ extern "C" bool WrappedDomainExecute(AdvancingFront* front, const FaceList& prev
 
 int main(int argc, char* argv[]) {
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
+  if (argc == 2 && std::string(argv[1]) == "--domain-observer-contracts")
+    return domain_observer_test::RunHelpers();
+  if (argc == 4 && std::string(argv[1]) == "--domain-observer-config")
+    return domain_observer_test::RunFailure(argv[2], std::stoi(argv[3]));
   if (argc == 2 && std::string(argv[1]) == "--domain-candidate-contracts")
     return DomainCandidateFixture::Run(false);
   if (argc == 2 && std::string(argv[1]) == "--domain-candidate-release-control")

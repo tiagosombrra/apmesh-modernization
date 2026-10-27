@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Serial domain failure observers
+
+GNU serial builds add `application.domain_observer_cleanup` (61 CTest entries).
+`tests/domain_observer_case.py` requires twelve nonempty active/retained/mixed
+owner layouts, both traversal orders, duplicate/null/foreign observations,
+repeated cleanup and identical rethrow under operator-new denial, plus a working
+native allocation hook. Actual Book patch-0 and Eistute patch-1 AFT failures
+require all owned links null at the external catch and after owner destruction,
+empty curve lists, identical exception object and zero additional C++ allocation
+attempts. Inactive test modes delegate to production. Eight checker controls
+bring Python tooling to 140. Require rejection of the original Generator, the
+immutable terminal-audit observer, full caller/consumer and test-header tidy,
+format/inventory/staged gates and fresh exact-head/main article comparisons.
+Scope is GNU serial; see [remaining limits](evidence/DOMAIN_FAILURE_OBSERVERS.md).
+
 ## Serial domain candidate ownership
 
 GNU serial builds add `application.domain_candidate_contracts` (60 CTest entries).

@@ -1,25 +1,26 @@
 # Project state
 
-## Serial domain candidate ownership
+## Serial domain failure observers
 
 The Book direction diagnosis is complete as a frozen-state observation; the
 reverse-direction experiment remains unapproved and unexecuted. Production
 criteria and the negative relative-area result remain unchanged.
 
-PR #107 qualifies bounded temporary UV cache ownership on exact head/main.
-The next bounded repair owns serial caller candidates until consuming insertion,
-including denser, aggressive and structural regeneration. An original Eistute
-step-4 allocation denial retains a predecessor with 937 nodes / 1796 triangles;
-the initial repaired observation releases all of them. Thirty-two directed
-native cases cover selection, discard, exceptions, failed insertion and preserved
-structural-stat aliasing, with a working deliberate release control.
-See [contract, evidence and delivery gates](evidence/DOMAIN_CANDIDATE_OWNERSHIP.md).
-Exact-head/main results belong to the delivery PR. Initial observations alone do
-not authorize integration. Stage 3 remains open, without a new qualified
-memory-slice count or mesh-quality claim. Next single work after delivery:
-characterize terminal exception propagation and outer observer/state cleanup;
-do not replace process exit until its broader guarantees are measured. Earlier
-active-item/next-work statements below are historical.
+PRs #107/#108 qualify bounded UV cache and pending caller ownership. The terminal
+audit shows that current propagated domain errors can leave partially published
+Patch-to-SubMesh observations in a surviving external Geometry. The next bounded
+repair detaches only observations into this generator's live active/retained
+owners and rethrows the same exception. Initial Book/Eistute controls now leave
+zero such links; twelve nonempty helper cases preserve null/foreign prefixes,
+native owners and exception identity without additional allocation. The original
+caller fails the stronger contract. See [evidence and delivery gates](evidence/DOMAIN_FAILURE_OBSERVERS.md).
+Exact-head/main results belong to the delivery PR; initial observations alone do
+not authorize integration. Stage 3 remains open, without a new qualified memory
+slice or mesh-quality claim. Next single work after delivery: define a typed
+terminal domain failure and real CLI handling that preserves status 1 and
+step/patch/retry/status context. Process exit remains unchanged here; rollback,
+resume and broader caller recovery remain unqualified. Earlier active-item/
+next-work statements below are historical.
 
 ## Book relative-area experiment: negative result
 

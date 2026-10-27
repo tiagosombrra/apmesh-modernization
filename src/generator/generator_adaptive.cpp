@@ -10,6 +10,7 @@
 #include "generator/curve_snapshots.h"
 #include "generator/curve_publication.h"
 #include "generator/curve_sample_graph.h"
+#include "generator/domain_observer_cleanup.h"
 #include "input_output/incidence_snapshot.h"
 
 #include <array>
@@ -1722,7 +1723,16 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 #else
       timer->InitTimerParallel(0, 0, 4);
 #endif
+#if USE_MPI
       AdaptDomain(geometry, mesh_.get());
+#else
+      try {
+        AdaptDomain(geometry, mesh_.get());
+      } catch (...) {
+        apmesh::generation::DetachOwnedDomainObservers(*geometry, mesh_.get(), save_mesh_);
+        throw;
+      }
+#endif
 #if USE_MPI
       timer->EndTimerParallel(RANK_MPI, 0, 4);
 #else

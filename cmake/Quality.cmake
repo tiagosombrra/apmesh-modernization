@@ -203,6 +203,11 @@ if(BUILD_TESTING)
         --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/domain-candidate-controls")
     set_tests_properties(application.domain_candidate_contracts
       PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 90)
+    add_test(NAME application.domain_observer_cleanup
+      COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/domain_observer_case.py"
+        --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/domain-observer-controls")
+    set_tests_properties(application.domain_observer_cleanup
+      PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 150)
     add_test(NAME application.domain_failure_status
       COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/domain_failure_case.py"
         --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/domain-failure-controls")
