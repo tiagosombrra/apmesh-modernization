@@ -28,7 +28,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 608,
+    "literal_include_directives": 609,
     "first_party_include_edges": 347
   },
   "cross_component_directives": [
@@ -361,6 +361,7 @@
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
+    "optional": 1,
     "ostream": 1,
     "queue": 2,
     "set": 2,
@@ -392,7 +393,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "11fd04afa79eb568207eeb2ec48b1fb387c74f1677ebadabb705bc25cde95a24"
+      "sha256": "537b38372f584d57a705b541d8e35fbc550f5e7f462c79329983a0f559defbea"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -5113,8 +5114,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "31c56320708343ff98238f045cb4992f319a3a4522413d5eb2b36c453dbd2623",
-      "bytes": 331630,
+      "sha256": "92daeaef9f1ac5c0bcf8e17345aec74d9fadb2cd211689ea57a1f22427823e91",
+      "bytes": 332359,
       "includes": [
         {
           "line": 1,
@@ -5272,27 +5273,34 @@
         },
         {
           "line": 25,
-          "spelling": "map",
+          "spelling": "optional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 26,
-          "spelling": "filesystem",
+          "spelling": "map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 27,
-          "spelling": "system_error",
+          "spelling": "filesystem",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 28,
+          "spelling": "system_error",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 29,
           "spelling": "stdexcept",
           "form": "angle",
           "scope": "toolchain_or_unresolved",

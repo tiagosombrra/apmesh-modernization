@@ -17,10 +17,16 @@ struct State {
   int remaining = -1, attempts = 0, denied = 0, suppressed = 0;
   bool deny_unwinding = false;
   int unwind_attempts = 0;
+  bool snapshots = false;
+  int copy_deny_call = 0;
+  int null_stat_call = 0;
+  std::vector<Adapter::DomainStructuralStats> snapshot_stats;
+  std::vector<unsigned> face_counts;
+  std::vector<int> retries;
   Mode mode = Mode::Normal;
   std::array<Record, 128> records{};
   unsigned size = 0;
-  std::array<SubMesh*, 2> meshes{};
+  std::array<SubMesh*, 4> meshes{};
   Adapter::DomainStructuralStats first, second;
 } state;
 void Require(bool condition, const char* message) {
@@ -72,6 +78,8 @@ std::unique_ptr<SubMesh> MakeMesh(unsigned count, bool observe) {
   return mesh;
 }
 struct Failure {};
+SubMesh* GenerateSnapshotCandidate(int step, int index, int retry);
+const Adapter::DomainStructuralStats* SnapshotStats();
 } // namespace domain_candidate_test
 
 extern "C" SubMesh* RealCandidateAdapt(
@@ -86,6 +94,8 @@ extern "C" SubMesh* WrappedCandidateAdapt(Adapter* adapter, PatchCoons* patch,
   using namespace domain_candidate_test;
   if (!state.active)
     return RealCandidateAdapt(adapter, patch, manager, factor, h, depth, step, index, retry);
+  if (state.snapshots)
+    return GenerateSnapshotCandidate(step, index, retry);
   ++state.calls;
   Require(state.calls <= 2 && step == 4 && index == 0, "unexpected caller generation context");
   const int expected_retry = state.branch == 0 ? 2 : state.branch == 1 ? 3 : 1;
@@ -109,6 +119,8 @@ extern "C" const Adapter::DomainStructuralStats* WrappedCandidateStats(const Ada
   using namespace domain_candidate_test;
   if (!state.active)
     return RealCandidateStats(adapter, patch);
+  if (state.snapshots)
+    return SnapshotStats();
   if (state.calls == 2 && state.mode == Mode::After)
     throw Failure{};
   if (state.branch == 0)
@@ -125,6 +137,13 @@ extern "C" void WrappedCandidateInsert(MeshAdaptive* parent, SubMesh* mesh, int 
     ++state.insertions;
     Require(position == 0, "candidate insertion position changed");
     state.selected = mesh == state.meshes[0] ? 0 : mesh == state.meshes[1] ? 1 : -1;
+    if (state.snapshots) {
+      // Reclaimed earlier candidates may share an address with a later generation.
+      state.selected = -1;
+      for (int i = 0; i < state.calls; ++i)
+        if (state.meshes[static_cast<std::size_t>(i)] == mesh)
+          state.selected = i;
+    }
     Require(state.selected >= 0, "candidate insertion lost exclusive identity");
     if (state.mode == Mode::Adoption)
       state.remaining = 0;
@@ -214,7 +233,7 @@ class DomainCandidateFixture {
       Require(state.insertions == (mode == Mode::Normal || mode == Mode::Adoption ? 1 : 0),
               "caller insertion count changed");
       if (mode == Mode::Normal) {
-        Require(state.selected == (select && !alias ? 1 : 0), "caller selected identity changed");
+        Require(state.selected == (select ? 1 : 0), "caller selected identity changed");
         Require(patch->GetSubMesh() == destination.GetSubMeshAdaptiveByPosition(0),
                 "successful insertion did not publish the selected mesh");
       } else {
@@ -235,6 +254,7 @@ class DomainCandidateFixture {
   }
 
 public:
+  static int RunSnapshots();
   static int Run(bool release_control) {
     try {
       for (int branch = 0; branch < 3; ++branch)

@@ -1,5 +1,25 @@
 # Technique-preserving modernization plan
 
+## Active item: selected candidate structural snapshots
+
+Bind the owned mesh and optional value snapshot immediately after each domain
+generation. Keep/discard both together in all three replacement branches; use
+independent first/repair data and export the selected snapshot. Classification:
+behavior-changing data-association defect repair, preserving formulas/order,
+criteria, attempt directions, budgets and synchronization.
+
+Require actual caller selection/export/copy-failure cases, original and mutation
+rejection, whole caller/test-header analysis and exact-head/main gates. Article
+validation must preserve all nine mesh/boundary/decision states and explain only
+the measured selected-statistic/derived-score changes. Retain the failing original
+strict comparison; do not update historical references or call it a strict pass.
+[Scope, evidence and gates](evidence/CANDIDATE_STRUCTURAL_SNAPSHOTS.md) distinguish
+initial observations from integration qualification. Next single audit after
+delivery: structural metadata restoration after an outer candidate is rejected,
+with the accepted mesh and current criteria preserved. Stage 3 stays open.
+Earlier active items below are historical. Reverse trial directions remain
+unapproved and unexecuted.
+
 ## Active item: typed serial terminal domain failure
 
 The completed Book direction diagnosis is a frozen-state observation. Reverse

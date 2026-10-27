@@ -1,5 +1,27 @@
 # Project state
 
+## Selected candidate structural snapshots
+
+PR #110 is integrated as main `bd7f6705bbf5c14396541b84085a04211a696abe`.
+The next audit confirmed twelve overwritten Eistute comparisons and twelve local
+exports describing discarded candidates; eight final CSV rows are affected.
+The current behavior-changing data-association repair binds an owning optional
+structural snapshot to each owned initial/denser/aggressive/repaired mesh.
+Unchanged comparisons use independent snapshots and export the selected values.
+
+Initial checks pass forty actual caller cases, the existing thirty-two ownership
+cases and original/alias/export negative controls. Frozen article geometry,
+boundaries and nine accepted/rejected states remain unchanged. Eistute has four
+explained changed artifacts and six strict comparison differences at step 4:
+corrected imbalance, coherence penalty and acceptance score. The original strict
+comparison remains a retained negative, not a preservation pass. Independent
+selected-mesh observations and unchanged formulas explain these differences;
+no quality improvement is claimed. See [delivery gates and limits](evidence/CANDIDATE_STRUCTURAL_SNAPSHOTS.md).
+Exact-head/main qualification belongs to the delivery PR. Stage 3 remains open.
+After delivery, audit structural metadata restoration for the retained accepted
+mesh after a rejected outer adaptation attempt. Earlier active items below are
+historical; the reverse-direction experiment remains unapproved and unexecuted.
+
 ## Typed serial terminal domain failure
 
 The Book direction diagnosis is complete as a frozen-state observation; the
