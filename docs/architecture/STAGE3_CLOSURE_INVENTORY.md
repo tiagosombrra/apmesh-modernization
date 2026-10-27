@@ -37,6 +37,12 @@ pending serial regeneration results until consuming insertion. Neither closes
 adaptive orchestration: terminal process exit still skips outer stack cleanup;
 outer observers, metadata/history and full rollback/retry remain separate work.
 
+The bounded [domain-failure observer repair](../evidence/DOMAIN_FAILURE_OBSERVERS.md)
+detaches Patch observations into the generator's live owned meshes at the serial
+domain exception boundary, preserving foreign/null links and normal publication.
+It does not restore accepted state, repair unmatched expired observations,
+change terminal exit or qualify loader/curve/SaveMesh failure boundaries and retry.
+
 The [Model root audit](../evidence/STAGE3_MODEL_ROOT_AUDIT.md) records original
 copy/rvalue and failed-append reproductions. It is retained historical evidence;
 bounded Model repair qualification is recorded separately in

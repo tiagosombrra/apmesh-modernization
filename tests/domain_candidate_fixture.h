@@ -14,7 +14,7 @@ struct Record {
 struct State {
   bool active = false, select = false, alias = false, suppress = false;
   int branch = 0, calls = 0, insertions = 0, selected = -1;
-  int remaining = -1, denied = 0, suppressed = 0;
+  int remaining = -1, attempts = 0, denied = 0, suppressed = 0;
   Mode mode = Mode::Normal;
   std::array<Record, 128> records{};
   unsigned size = 0;
@@ -133,9 +133,12 @@ extern "C" void* RealCandidateNew(std::size_t) asm("__real__Znwy");
 extern "C" void* WrappedCandidateNew(std::size_t) asm("__wrap__Znwy");
 extern "C" void* WrappedCandidateNew(std::size_t size) {
   using namespace domain_candidate_test;
-  if (state.active && state.remaining >= 0 && state.remaining-- == 0) {
-    ++state.denied;
-    throw std::bad_alloc();
+  if (state.active && state.remaining >= 0) {
+    ++state.attempts;
+    if (state.remaining-- == 0) {
+      ++state.denied;
+      throw std::bad_alloc();
+    }
   }
   return RealCandidateNew(size);
 }

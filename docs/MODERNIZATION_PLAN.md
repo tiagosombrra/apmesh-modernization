@@ -1,24 +1,24 @@
 # Technique-preserving modernization plan
 
-## Active item: serial domain candidate ownership
+## Active item: serial domain failure observers
 
 The completed Book direction diagnosis is a frozen-state observation. Reverse
 trial directions remain a separate unapproved experiment; preserve the default
 algorithm and the negative [relative-area result](evidence/BOOK_RELATIVE_AREA_EXPERIMENT.md).
 
-PR #107 qualifies bounded temporary-cache ownership. Repair the separately
-reproduced caller predecessor retention during regeneration. Own each fresh
-SubMesh until consuming MeshAdaptive insertion, preserving selection/discard
-points, all formulas/conditions, structural-stat lookups/aliasing and publication
-order. Require directed coverage of all three optional regeneration branches,
-failed insertion, independent release/oracle controls, actual Eistute predecessor
-release and exact-head/main scientific regression. See [evidence and remaining
-limits](evidence/DOMAIN_CANDIDATE_OWNERSHIP.md).
+PRs #107/#108 qualify bounded temporary-cache and pending caller ownership. At
+the serial domain adaptation call boundary, detach forward Patch observations
+into the generator's live active and retained SubMesh owners on exception, then
+rethrow the original object. Preserve null/foreign links, owners, metadata/IDs,
+all numerical expressions and normal publication. Require nonempty no-allocation
+alias/prefix controls, original-contract rejection, actual Book/Eistute failures
+and exact-head/main regression. See [evidence and limits](evidence/DOMAIN_FAILURE_OBSERVERS.md).
 
-Next characterize terminal exception propagation and outer observer/state cleanup
-before replacing process exit. This repair does not establish orchestration
-rollback, retry safety or whole-process qualification. Stage 3 stays open;
-earlier active items below are historical.
+After delivery, define typed terminal domain failure propagation and real CLI
+handling with existing status 1 and exact context, after unchanged attempts.
+Keep exit unchanged in this repair. Do not imply rollback, resumed execution,
+broader recovery or full-process qualification. Stage 3 stays open; earlier
+active items below are historical.
 
 ## Active item: attempt metric export correction
 
