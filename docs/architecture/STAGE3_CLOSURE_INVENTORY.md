@@ -1,5 +1,10 @@
 # Stage 3 closure inventory
 
+The explicit serial accepted-root repair separates report retention from the
+root used for retries and rejection restoration. Scope and exact delivery gates
+are in [the repair evidence](../evidence/ACCEPTED_MESH_ROOT.md). Attempted-error
+stopping guards and broader rollback/resume remain unqualified; Stage 3 is open.
+
 Selected candidate snapshots pair local mesh ownership with structural values;
 comparison/export and copy-failure gates are recorded in
 [the bounded repair evidence](../evidence/CANDIDATE_STRUCTURAL_SNAPSHOTS.md).

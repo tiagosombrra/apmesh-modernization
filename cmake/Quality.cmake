@@ -208,6 +208,11 @@ if(BUILD_TESTING)
         --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/candidate-snapshot-controls")
     set_tests_properties(application.candidate_snapshots
       PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 90)
+    add_test(NAME application.accepted_mesh_root
+      COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/accepted_root_case.py"
+        --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/accepted-root-controls")
+    set_tests_properties(application.accepted_mesh_root
+      PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 90)
     add_test(NAME application.domain_observer_cleanup
       COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/domain_observer_case.py"
         --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/domain-observer-controls")
