@@ -31,9 +31,11 @@ green. A scientific policy choice requires explicit advisor alignment.
 The [terminal domain audit/status repair](../evidence/DOMAIN_FAILURE_STATUS.md)
 retains original controlled false/exception observations. The bounded
 [serial UV cache repair](../evidence/DOMAIN_UV_CACHE.md) adds exclusive temporary
-face/vertex ownership through construction, adoption and exceptions. It does
-not close adaptive orchestration: terminal process exit still skips outer stack
-cleanup, and caller pending candidates/retry state remain separate work.
+face/vertex ownership through construction, adoption and exceptions (PR #107).
+The [caller candidate repair](../evidence/DOMAIN_CANDIDATE_OWNERSHIP.md) owns
+pending serial regeneration results until consuming insertion. Neither closes
+adaptive orchestration: terminal process exit still skips outer stack cleanup;
+outer observers, metadata/history and full rollback/retry remain separate work.
 
 The [Model root audit](../evidence/STAGE3_MODEL_ROOT_AUDIT.md) records original
 copy/rvalue and failed-append reproductions. It is retained historical evidence;

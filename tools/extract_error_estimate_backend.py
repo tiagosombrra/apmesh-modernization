@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 
 
 def extract(root, output):
@@ -18,7 +19,11 @@ def extract(root, output):
     constructor = "GeneratorAdaptive::GeneratorAdaptive() {}"
     assert source.count(constructor) == 1, "Constructor changed; review adapter scope"
     start = source.index("double GeneratorAdaptive::ErrorGlobal(")
-    end = source.index("std::unique_ptr<Performer::IdManager> GeneratorAdaptive::MakeIdManager(", start)
+    boundaries = list(re.finditer(
+        r"^std::unique_ptr<Performer::IdManager>\s+GeneratorAdaptive::MakeIdManager\(",
+        source, re.M))
+    assert len(boundaries) == 1 and boundaries[0].start() > start, "Evaluator boundary changed"
+    end = boundaries[0].start()
     evaluator = source[start:end].rstrip() + "\n"
     assert evaluator.endswith("return Nj;\n}\n"), "Evaluator boundary changed"
     charge_path = root / "src/estimate/charge_estimate_process.cpp"

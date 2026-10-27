@@ -1,5 +1,24 @@
 # Local quality automation
 
+## Serial domain candidate ownership
+
+GNU serial builds add `application.domain_candidate_contracts` (60 CTest entries).
+`attempt_metrics_probe` links explicit Adapter/stat/insertion/allocation/release
+wrappers; inactive modes delegate to production. `DomainCandidateFixture` is a
+friend fixture that seeds private state without a public runtime control API.
+The actual caller and native SubMesh/nodes/triangles execute 32 cases: three
+branches, keep/discard, normal/before/during/after/failed-adoption paths, plus two
+native-style aliased-stat cases. `tests/domain_candidate_case.py` requires the
+complete ordered matrix and an actual suppressed-release detection. Eight
+corruption tests plus four extraction controls bring Python tooling to 132. The
+serial evaluator extractor accepts the exact original or wrapped return-type
+signature and rejects missing/ambiguous boundaries. Require actual Eistute step-4
+937-node/1796-triangle release observations and fresh exact-head/main article
+comparison, full caller/fixture tidy, explicit full-file format with lexical
+preservation, whitespace, inventory and staged gates. Qualification is GNU
+serial exact-address observation; no new ASan/CRT or memory-slice claim follows.
+See [scope and limits](evidence/DOMAIN_CANDIDATE_OWNERSHIP.md).
+
 ## Serial temporary UV cache ownership
 
 `application.domain_uv_cache_contracts` adds one gate (59 total GNU serial CTest

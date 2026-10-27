@@ -193,7 +193,16 @@ if(BUILD_TESTING)
     set_property(SOURCE "${CMAKE_SOURCE_DIR}/tests/attempt_metrics_probe.cpp" APPEND
       PROPERTY COMPILE_DEFINITIONS AP_MESH_DOMAIN_FAILURE_WRAP=1)
     target_link_options(attempt_metrics_probe PRIVATE
-      "-Wl,--wrap=_ZN10Par2DJMesh3AFT14AdvancingFront7executeERKNSt7__cxx114listIPNS_6Basics4FaceESaIS6_EEE")
+      "-Wl,--wrap=_ZN10Par2DJMesh3AFT14AdvancingFront7executeERKNSt7__cxx114listIPNS_6Basics4FaceESaIS6_EEE"
+      "-Wl,--wrap=_ZN7Adapter11AdaptDomainEP10PatchCoonsPN9Performer9IdManagerEddiiii"
+      "-Wl,--wrap=_ZNK7Adapter23GetPatchStructuralStatsEi"
+      "-Wl,--wrap=_ZN12MeshAdaptive31InsertSubMeshAdaptiveByPositionEP7SubMeshi"
+      "-Wl,--wrap=_Znwy" "-Wl,--wrap=_ZdlPv" "-Wl,--wrap=_ZdlPvy")
+    add_test(NAME application.domain_candidate_contracts
+      COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/domain_candidate_case.py"
+        --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/domain-candidate-controls")
+    set_tests_properties(application.domain_candidate_contracts
+      PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 90)
     add_test(NAME application.domain_failure_status
       COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/domain_failure_case.py"
         --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/domain-failure-controls")

@@ -44,9 +44,9 @@ void EnsureOutputParentDirectories(const std::string& file_path) {
 // into their SubMesh. Order must be deterministic; prefer patches with more
 // true boundary edges (curve shared by a single patch) before interior caps.
 int CountTrueBoundaryEdges(Geometry* geometry, int patch_index) {
-  PatchCoons* patch =
-      static_cast<PatchCoons*>(geometry->GetPatch(patch_index));
-  if (patch == nullptr) return 0;
+  PatchCoons* patch = static_cast<PatchCoons*>(geometry->GetPatch(patch_index));
+  if (patch == nullptr)
+    return 0;
   int count = 0;
   for (unsigned int e = 0; e < 4; ++e) {
     CurveAdaptive* c = patch->GetCurve(e);
@@ -63,14 +63,14 @@ std::vector<int> InitialMeshPatchProcessOrder(Geometry* geom, int size_patch) {
   std::stable_sort(order.begin(), order.end(), [geom](int a, int b) {
     const int ba = CountTrueBoundaryEdges(geom, a);
     const int bb = CountTrueBoundaryEdges(geom, b);
-    if (ba != bb) return ba > bb;
+    if (ba != bb)
+      return ba > bb;
     return a < b;
   });
   return order;
 }
 
-double ComputeCompatibilityErrorForCurveGroup(
-    const std::vector<const CurveAdaptive*>& group) {
+double ComputeCompatibilityErrorForCurveGroup(const std::vector<const CurveAdaptive*>& group) {
   if (group.size() <= 1U) {
     return 0.0;
   }
@@ -87,22 +87,18 @@ double ComputeCompatibilityErrorForCurveGroup(
       }
       const unsigned int samples = std::max(na, nb);
       for (unsigned int k = 0; k < samples; ++k) {
-        const unsigned int ia =
-            (samples <= 1U || na <= 1U)
-                ? 0U
-                : static_cast<unsigned int>(std::llround(
-                      static_cast<double>(k) * static_cast<double>(na - 1U) /
-                      static_cast<double>(samples - 1U)));
-        const unsigned int ib =
-            (samples <= 1U || nb <= 1U)
-                ? 0U
-                : static_cast<unsigned int>(std::llround(
-                      static_cast<double>(k) * static_cast<double>(nb - 1U) /
-                      static_cast<double>(samples - 1U)));
-        const PointAdaptive* pa =
-            const_cast<CurveAdaptive*>(a)->GetPoint(std::min(ia, na - 1U));
-        const PointAdaptive* pb =
-            const_cast<CurveAdaptive*>(b)->GetPoint(std::min(ib, nb - 1U));
+        const unsigned int ia = (samples <= 1U || na <= 1U)
+                                    ? 0U
+                                    : static_cast<unsigned int>(std::llround(
+                                          static_cast<double>(k) * static_cast<double>(na - 1U) /
+                                          static_cast<double>(samples - 1U)));
+        const unsigned int ib = (samples <= 1U || nb <= 1U)
+                                    ? 0U
+                                    : static_cast<unsigned int>(std::llround(
+                                          static_cast<double>(k) * static_cast<double>(nb - 1U) /
+                                          static_cast<double>(samples - 1U)));
+        const PointAdaptive* pa = const_cast<CurveAdaptive*>(a)->GetPoint(std::min(ia, na - 1U));
+        const PointAdaptive* pb = const_cast<CurveAdaptive*>(b)->GetPoint(std::min(ib, nb - 1U));
         if (pa == nullptr || pb == nullptr) {
           continue;
         }
@@ -114,43 +110,41 @@ double ComputeCompatibilityErrorForCurveGroup(
       }
     }
   }
-  return (comparisons > 0ULL)
-             ? (accumulated / static_cast<double>(comparisons))
-             : 0.0;
+  return (comparisons > 0ULL) ? (accumulated / static_cast<double>(comparisons)) : 0.0;
 }
 
 const char* TimerTypeName(int type) {
   switch (type) {
-    case 0:
-      return "initialization";
-    case 1:
-      return "load_estimate";
-    case 2:
-      return "initial_mesh";
-    case 3:
-      return "curve_update";
-    case 4:
-      return "patch_reconstruction";
-    case 5:
-      return "input_read";
-    case 6:
-      return "curvature_aux";
-    case 7:
-      return "error_evaluation";
-    case 8:
-      return "overhead";
-    case 9:
-      return "mpi_transfer";
-    case 10:
-      return "full_without_io";
-    case 11:
-      return "save_output";
-    default:
-      return "unknown";
+  case 0:
+    return "initialization";
+  case 1:
+    return "load_estimate";
+  case 2:
+    return "initial_mesh";
+  case 3:
+    return "curve_update";
+  case 4:
+    return "patch_reconstruction";
+  case 5:
+    return "input_read";
+  case 6:
+    return "curvature_aux";
+  case 7:
+    return "error_evaluation";
+  case 8:
+    return "overhead";
+  case 9:
+    return "mpi_transfer";
+  case 10:
+    return "full_without_io";
+  case 11:
+    return "save_output";
+  default:
+    return "unknown";
   }
 }
 
-}  // namespace
+} // namespace
 
 extern int MAX_THREADS;
 extern double SMOOTHING_LAPLACIAN_NUMBER;
@@ -323,9 +317,7 @@ extern int ADAPTIVE_CURRENT_STEP;
 extern int ADAPTIVE_CURRENT_RETRY;
 
 namespace {
-double Clamp01(double value) {
-  return std::max(0.0, std::min(1.0, value));
-}
+double Clamp01(double value) { return std::max(0.0, std::min(1.0, value)); }
 
 double ClampValue(double value, double low, double high) {
   return std::max(low, std::min(high, value));
@@ -387,8 +379,7 @@ double TriangleQualityFromParameters(const std::tuple<double, double>& a,
   }
 
   const double twice_area =
-      std::fabs(abx * (std::get<1>(c) - std::get<1>(a)) -
-                aby * (std::get<0>(c) - std::get<0>(a)));
+      std::fabs(abx * (std::get<1>(c) - std::get<1>(a)) - aby * (std::get<0>(c) - std::get<0>(a)));
   const double area = 0.5 * twice_area;
   if (area <= std::numeric_limits<double>::epsilon()) {
     return 0.0;
@@ -403,9 +394,8 @@ double TriangleQualityFromParameters(const std::tuple<double, double>& a,
   return Clamp01((2.0 * r) / R);
 }
 
-void AccumulateQualitySample(const double quality, const bool first_sample,
-                             double& quality_min, double& quality_sum,
-                             double& poor_count, double& good_count) {
+void AccumulateQualitySample(const double quality, const bool first_sample, double& quality_min,
+                             double& quality_sum, double& poor_count, double& good_count) {
   quality_sum += quality;
   quality_min = first_sample ? quality : std::min(quality_min, quality);
   if (quality < 0.30) {
@@ -423,8 +413,7 @@ struct TriangleShapeMetrics {
   double edge_ratio = 0.0;
 };
 
-TriangleShapeMetrics ComputeTriangleShapeMetrics3D(const NodeAdaptive& a,
-                                                   const NodeAdaptive& b,
+TriangleShapeMetrics ComputeTriangleShapeMetrics3D(const NodeAdaptive& a, const NodeAdaptive& b,
                                                    const NodeAdaptive& c) {
   const double abx = b.GetX() - a.GetX();
   const double aby = b.GetY() - a.GetY();
@@ -448,8 +437,8 @@ TriangleShapeMetrics ComputeTriangleShapeMetrics3D(const NodeAdaptive& a,
     return metrics;
   }
 
-  auto safe_angle_deg = [](const double ux, const double uy, const double uz,
-                           const double vx, const double vy, const double vz) {
+  auto safe_angle_deg = [](const double ux, const double uy, const double uz, const double vx,
+                           const double vy, const double vz) {
     const double nu = std::sqrt(ux * ux + uy * uy + uz * uz);
     const double nv = std::sqrt(vx * vx + vy * vy + vz * vz);
     if (nu <= std::numeric_limits<double>::epsilon() ||
@@ -470,21 +459,16 @@ TriangleShapeMetrics ComputeTriangleShapeMetrics3D(const NodeAdaptive& a,
   metrics.max_angle_deg = std::max({angle_a, angle_b, angle_c});
   metrics.edge_ratio = Clamp01(min_edge / max_edge);
   metrics.angle_quality =
-      Clamp01(std::min(metrics.min_angle_deg / 60.0,
-                       (180.0 - metrics.max_angle_deg) / 120.0));
+      Clamp01(std::min(metrics.min_angle_deg / 60.0, (180.0 - metrics.max_angle_deg) / 120.0));
   return metrics;
 }
 
-double ComputeGrowthPenalty(const double element_growth_factor,
-                            const int current_step) {
+double ComputeGrowthPenalty(const double element_growth_factor, const int current_step) {
   const double growth_weight =
-      (current_step <= 1) ? ACCEPTANCE_STEP1_GROWTH_WEIGHT
-                          : ACCEPTANCE_STEPN_GROWTH_WEIGHT;
+      (current_step <= 1) ? ACCEPTANCE_STEP1_GROWTH_WEIGHT : ACCEPTANCE_STEPN_GROWTH_WEIGHT;
   const double soft_limit =
-      (current_step <= 1) ? ACCEPTANCE_STEP1_MAX_GROWTH_SOFT
-                          : ACCEPTANCE_STEPN_MAX_GROWTH_SOFT;
-  const double growth_excess =
-      std::max(0.0, element_growth_factor - std::max(1.0, soft_limit));
+      (current_step <= 1) ? ACCEPTANCE_STEP1_MAX_GROWTH_SOFT : ACCEPTANCE_STEPN_MAX_GROWTH_SOFT;
+  const double growth_excess = std::max(0.0, element_growth_factor - std::max(1.0, soft_limit));
   if (ACCEPTANCE_GROWTH_PENALTY_MODE == 1) {
     return growth_weight * growth_excess * growth_excess;
   }
@@ -513,14 +497,12 @@ int EstimateQuadtreeDepthCap(const double target_patch_h, const int step) {
   if (PATCH_QUADTREE_CAP_MODE != 1 || target_patch_h <= 0.0) {
     return -1;
   }
-  double effective_h =
-      std::max(1.0e-6, target_patch_h * PATCH_QUADTREE_MIN_H_SCALE);
+  double effective_h = std::max(1.0e-6, target_patch_h * PATCH_QUADTREE_MIN_H_SCALE);
   if (effective_h > 0.55) {
     effective_h = 0.42;
   }
   const double raw_depth = std::ceil(std::log2(1.0 / effective_h));
-  const int structural_cap =
-      (step <= 1) ? PATCH_QUADTREE_DEPTH_STEP1 : PATCH_QUADTREE_DEPTH_STEPN;
+  const int structural_cap = (step <= 1) ? PATCH_QUADTREE_DEPTH_STEP1 : PATCH_QUADTREE_DEPTH_STEPN;
   return std::max(0, std::min(structural_cap, static_cast<int>(raw_depth)));
 }
 
@@ -535,8 +517,7 @@ double ComputePatchArea(const Patch* patch) {
     return 0.0;
   }
   double area = 0.0;
-  for (unsigned int elem_idx = 0; elem_idx < sub_mesh->GetNumberElements();
-       ++elem_idx) {
+  for (unsigned int elem_idx = 0; elem_idx < sub_mesh->GetNumberElements(); ++elem_idx) {
     const TriangleAdaptive* tri =
         static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));
     if (tri) {
@@ -572,8 +553,7 @@ double ComputeNormalizedDispersion(const std::vector<double>& values) {
   return std::max(0.0, (*minmax.second - *minmax.first) / vmax);
 }
 
-template <typename T>
-std::vector<T> ListToVector(const std::list<T>& values) {
+template <typename T> std::vector<T> ListToVector(const std::list<T>& values) {
   return std::vector<T>(values.begin(), values.end());
 }
 
@@ -587,18 +567,16 @@ unsigned int ResolvePatchIndex(const Geometry* geometry, Patch* patch) {
     }
   }
   const unsigned int patch_id = patch->GetId();
-  if (patch_id < geometry->GetNumberPatches() &&
-      geometry->GetPatch(patch_id) == patch) {
+  if (patch_id < geometry->GetNumberPatches() && geometry->GetPatch(patch_id) == patch) {
     return patch_id;
   }
   return std::numeric_limits<unsigned int>::max();
 }
-}  // namespace
+} // namespace
 
 GeneratorAdaptive::GeneratorAdaptive() {}
 
-GeneratorAdaptive::AdaptivePolicyRuntime
-GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
+GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   AdaptivePolicyRuntime policy;
   policy.mode = ADAPTIVE_MODE.empty() ? "legacy" : ADAPTIVE_MODE;
   policy.stable_mode = (policy.mode == "adaptive_stable");
@@ -619,7 +597,7 @@ GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
 int GeneratorAdaptive::Execute(char* argv[], Timer* timer, MPI_Status status)
 #else
 int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
-#endif  // USE_MPI
+#endif // USE_MPI
 {
   for (char** arg = argv; *arg != nullptr; ++arg) {
     std::cout << "argv[]:" << *arg << std::endl;
@@ -639,7 +617,7 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
 #if USE_PRINT_ESTIMATE
     // mostra a distribuição de patches para cada processo
     calculateEstimateProcessElements(SIZE_MPI, listBezierPt);
-#endif  // USE_PRINT_ESTIMATE
+#endif // USE_PRINT_ESTIMATE
 
     double patches_process0[patches.size() * 48];
     double patches_process[patches.size() * 48];
@@ -649,8 +627,7 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
     for (int j = 0; j < SIZE_MPI; j++) {
       i = 0;
 
-      for (std::list<PatchBezier*>::iterator it = patches.begin();
-           it != patches.end(); it++) {
+      for (std::list<PatchBezier*>::iterator it = patches.begin(); it != patches.end(); it++) {
         if (j == (*it)->GetIdProcess()) {
           patches_process[i] = (*it)->GetPt00().GetX();
           i++;
@@ -762,38 +739,33 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
         }
 
       } else {
-        timer->InitTimerParallel(RANK_MPI, 0, 0);  // Send
+        timer->InitTimerParallel(RANK_MPI, 0, 0); // Send
         MPI_Send(&TIME_READ_FILE, 1, MPI_DOUBLE, j, TAG_TIME, MPI_COMM_WORLD);
         MPI_Send(&i, 1, MPI_INT, j, TAG_SIZE_OF_DOUBLE, MPI_COMM_WORLD);
-        MPI_Send(&patches_process, i, MPI_DOUBLE, j, TAG_DOUBLE,
-                 MPI_COMM_WORLD);
-        timer->EndTimerParallel(RANK_MPI, 0, 0);  // Send
+        MPI_Send(&patches_process, i, MPI_DOUBLE, j, TAG_DOUBLE, MPI_COMM_WORLD);
+        timer->EndTimerParallel(RANK_MPI, 0, 0); // Send
       }
     }
 
     // gerador de malha para o processo root
 #if USE_OPENMP
-    Generator(patches_process0, izero, timer, 1024, atoi(argv[1]),
-              atoi(argv[2]));
+    Generator(patches_process0, izero, timer, 1024, atoi(argv[1]), atoi(argv[2]));
 #else
     Generator(patches_process0, izero, timer, 1024, atoi(argv[1]));
 #endif
 
   } else {
-    timer->InitTimerParallel(RANK_MPI, 0, 9);  // Recv
+    timer->InitTimerParallel(RANK_MPI, 0, 9); // Recv
 
-    MPI_Recv(&TIME_READ_FILE, 1, MPI_DOUBLE, 0, TAG_TIME, MPI_COMM_WORLD,
-             &status);
+    MPI_Recv(&TIME_READ_FILE, 1, MPI_DOUBLE, 0, TAG_TIME, MPI_COMM_WORLD, &status);
 
     int size_patches = 0;
-    MPI_Recv(&size_patches, 1, MPI_INT, 0, TAG_SIZE_OF_DOUBLE, MPI_COMM_WORLD,
-             &status);
+    MPI_Recv(&size_patches, 1, MPI_INT, 0, TAG_SIZE_OF_DOUBLE, MPI_COMM_WORLD, &status);
 
     double patches[size_patches];
-    MPI_Recv(&patches, size_patches, MPI_DOUBLE, 0, TAG_DOUBLE, MPI_COMM_WORLD,
-             &status);
+    MPI_Recv(&patches, size_patches, MPI_DOUBLE, 0, TAG_DOUBLE, MPI_COMM_WORLD, &status);
 
-    timer->EndTimerParallel(RANK_MPI, 0, 9);  // Recv
+    timer->EndTimerParallel(RANK_MPI, 0, 9); // Recv
 
     // gerador de malha para o processo (n)
 #if USE_OPENMP
@@ -812,9 +784,9 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
   // model.SetGeometry(models3d.ModelPneu(geometry));
 
   if (argv[3]) {
-    timer->InitTimerParallel(0, 0, 5);  // Leitura arquivo
+    timer->InitTimerParallel(0, 0, 5); // Leitura arquivo
     model.SetGeometry(patch_reader.ReaderFilePatches(&geometry, argv[3]));
-    timer->EndTimerParallel(0, 0, 5);  // Leitura arquivo
+    timer->EndTimerParallel(0, 0, 5); // Leitura arquivo
   } else {
     Models3d models3d;
     model.SetGeometry(models3d.ModelBaseQuadrada(&geometry));
@@ -824,75 +796,65 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
   Generator(model, timer, 1024, atoi(argv[1]), atoi(argv[2]));
 #else
   Generator(model, timer, 1024);
-#endif  // USE_OPENMP
+#endif // USE_OPENMP
 
-#endif  // USE_MPI
+#endif // USE_MPI
   return 0;
 }
 
 #if USE_MPI
-std::list<PatchBezier*> GeneratorAdaptive::EstimateChargeofPatches(
-    Geometry* geometry, Timer* timer) {
+std::list<PatchBezier*> GeneratorAdaptive::EstimateChargeofPatches(Geometry* geometry,
+                                                                   Timer* timer) {
   ChargeEstimateProcess* charge_estimate_process = new ChargeEstimateProcess();
-  std::list<PatchBezier*> patches =
-      charge_estimate_process->ChargeEstimate(geometry, timer);
+  std::list<PatchBezier*> patches = charge_estimate_process->ChargeEstimate(geometry, timer);
   delete charge_estimate_process;
 
   return patches;
 }
 
-std::vector<CurveAdaptive*> GeneratorAdaptive::CreateVectorOfCurves(
-    std::list<PatchBezier*> patches) {
+std::vector<CurveAdaptive*>
+GeneratorAdaptive::CreateVectorOfCurves(std::list<PatchBezier*> patches) {
   CurveAdaptive* curve;
   std::vector<CurveAdaptive*> curves;
 
-  for (std::list<PatchBezier*>::iterator it = patches.begin();
-       it != patches.end(); it++) {
+  for (std::list<PatchBezier*>::iterator it = patches.begin(); it != patches.end(); it++) {
     if (curves.size() > 0) {
-      if (VerifyCurve((*it)->GetPt00(), (*it)->GetPt10(), (*it)->GetPt20(),
-                      (*it)->GetPt30(), curves)) {
-        curve = new CurveAdaptiveParametricBezier(
-            (*it)->GetPt00(), (*it)->GetPt10(), (*it)->GetPt20(),
-            (*it)->GetPt30());
+      if (VerifyCurve((*it)->GetPt00(), (*it)->GetPt10(), (*it)->GetPt20(), (*it)->GetPt30(),
+                      curves)) {
+        curve = new CurveAdaptiveParametricBezier((*it)->GetPt00(), (*it)->GetPt10(),
+                                                  (*it)->GetPt20(), (*it)->GetPt30());
         curves.push_back(curve);
       }
-      if (VerifyCurve((*it)->GetPt30(), (*it)->GetPt31(), (*it)->GetPt32(),
-                      (*it)->GetPt33(), curves)) {
-        curve = new CurveAdaptiveParametricBezier(
-            (*it)->GetPt30(), (*it)->GetPt31(), (*it)->GetPt32(),
-            (*it)->GetPt33());
+      if (VerifyCurve((*it)->GetPt30(), (*it)->GetPt31(), (*it)->GetPt32(), (*it)->GetPt33(),
+                      curves)) {
+        curve = new CurveAdaptiveParametricBezier((*it)->GetPt30(), (*it)->GetPt31(),
+                                                  (*it)->GetPt32(), (*it)->GetPt33());
         curves.push_back(curve);
       }
-      if (VerifyCurve((*it)->GetPt03(), (*it)->GetPt13(), (*it)->GetPt23(),
-                      (*it)->GetPt33(), curves)) {
-        curve = new CurveAdaptiveParametricBezier(
-            (*it)->GetPt03(), (*it)->GetPt13(), (*it)->GetPt23(),
-            (*it)->GetPt33());
+      if (VerifyCurve((*it)->GetPt03(), (*it)->GetPt13(), (*it)->GetPt23(), (*it)->GetPt33(),
+                      curves)) {
+        curve = new CurveAdaptiveParametricBezier((*it)->GetPt03(), (*it)->GetPt13(),
+                                                  (*it)->GetPt23(), (*it)->GetPt33());
         curves.push_back(curve);
       }
-      if (VerifyCurve((*it)->GetPt00(), (*it)->GetPt01(), (*it)->GetPt02(),
-                      (*it)->GetPt03(), curves)) {
-        curve = new CurveAdaptiveParametricBezier(
-            (*it)->GetPt00(), (*it)->GetPt01(), (*it)->GetPt02(),
-            (*it)->GetPt03());
+      if (VerifyCurve((*it)->GetPt00(), (*it)->GetPt01(), (*it)->GetPt02(), (*it)->GetPt03(),
+                      curves)) {
+        curve = new CurveAdaptiveParametricBezier((*it)->GetPt00(), (*it)->GetPt01(),
+                                                  (*it)->GetPt02(), (*it)->GetPt03());
         curves.push_back(curve);
       }
     } else if (curves.size() == 0) {
-      curve =
-          new CurveAdaptiveParametricBezier((*it)->GetPt00(), (*it)->GetPt10(),
-                                            (*it)->GetPt20(), (*it)->GetPt30());
+      curve = new CurveAdaptiveParametricBezier((*it)->GetPt00(), (*it)->GetPt10(),
+                                                (*it)->GetPt20(), (*it)->GetPt30());
       curves.push_back(curve);
-      curve =
-          new CurveAdaptiveParametricBezier((*it)->GetPt30(), (*it)->GetPt31(),
-                                            (*it)->GetPt32(), (*it)->GetPt33());
+      curve = new CurveAdaptiveParametricBezier((*it)->GetPt30(), (*it)->GetPt31(),
+                                                (*it)->GetPt32(), (*it)->GetPt33());
       curves.push_back(curve);
-      curve =
-          new CurveAdaptiveParametricBezier((*it)->GetPt03(), (*it)->GetPt13(),
-                                            (*it)->GetPt23(), (*it)->GetPt33());
+      curve = new CurveAdaptiveParametricBezier((*it)->GetPt03(), (*it)->GetPt13(),
+                                                (*it)->GetPt23(), (*it)->GetPt33());
       curves.push_back(curve);
-      curve =
-          new CurveAdaptiveParametricBezier((*it)->GetPt00(), (*it)->GetPt01(),
-                                            (*it)->GetPt02(), (*it)->GetPt03());
+      curve = new CurveAdaptiveParametricBezier((*it)->GetPt00(), (*it)->GetPt01(),
+                                                (*it)->GetPt02(), (*it)->GetPt03());
       curves.push_back(curve);
     }
   }
@@ -900,9 +862,9 @@ std::vector<CurveAdaptive*> GeneratorAdaptive::CreateVectorOfCurves(
   return curves;
 }
 
-std::list<PatchBezier*> GeneratorAdaptive::OrderPatchesDistribProcess(
-    std::list<PatchBezier*> patches) {
-  std::vector<std::pair<double, int> > process_pairs;
+std::list<PatchBezier*>
+GeneratorAdaptive::OrderPatchesDistribProcess(std::list<PatchBezier*> patches) {
+  std::vector<std::pair<double, int>> process_pairs;
   std::list<PatchBezier*> patches_order;
 
   if (SIZE_MPI > 1) {
@@ -910,8 +872,7 @@ std::list<PatchBezier*> GeneratorAdaptive::OrderPatchesDistribProcess(
       process_pairs.push_back(std::make_pair(0.0, i));
     }
 
-    for (std::list<PatchBezier*>::iterator it = patches.begin();
-         it != patches.end(); it++) {
+    for (std::list<PatchBezier*>::iterator it = patches.begin(); it != patches.end(); it++) {
       std::sort(process_pairs.begin(), process_pairs.end());
 
       (*it)->SetIdProcess(process_pairs.front().second);
@@ -920,8 +881,7 @@ std::list<PatchBezier*> GeneratorAdaptive::OrderPatchesDistribProcess(
     }
 
     for (int i = 0; i < SIZE_MPI; i++) {
-      for (std::list<PatchBezier*>::iterator it = patches.begin();
-           it != patches.end(); it++) {
+      for (std::list<PatchBezier*>::iterator it = patches.begin(); it != patches.end(); it++) {
         if ((*it)->GetIdProcess() == i) {
           patches_order.push_back((*it));
         }
@@ -931,8 +891,7 @@ std::list<PatchBezier*> GeneratorAdaptive::OrderPatchesDistribProcess(
     return patches_order;
 
   } else {
-    for (std::list<PatchBezier*>::iterator it = patches.begin();
-         it != patches.end(); it++) {
+    for (std::list<PatchBezier*>::iterator it = patches.begin(); it != patches.end(); it++) {
       (*it)->SetIdProcess(0);
     }
 
@@ -940,19 +899,13 @@ std::list<PatchBezier*> GeneratorAdaptive::OrderPatchesDistribProcess(
   }
 }
 
-bool GeneratorAdaptive::VerifyCurve(PointAdaptive p0, PointAdaptive p1,
-                                    PointAdaptive p2, PointAdaptive p3,
-                                    std::vector<CurveAdaptive*> curves) {
-  for (vector<CurveAdaptive*>::iterator it = curves.begin(); it != curves.end();
-       it++) {
-    if (static_cast<CurveAdaptiveParametricBezier*>(*it)->GetPoint0().
-        operator==(p0) &&
-        static_cast<CurveAdaptiveParametricBezier*>(*it)->GetPoint1().
-        operator==(p1) &&
-        static_cast<CurveAdaptiveParametricBezier*>(*it)->GetPoint2().
-        operator==(p2) &&
-        static_cast<CurveAdaptiveParametricBezier*>(*it)->GetPoint3().
-        operator==(p3)) {
+bool GeneratorAdaptive::VerifyCurve(PointAdaptive p0, PointAdaptive p1, PointAdaptive p2,
+                                    PointAdaptive p3, std::vector<CurveAdaptive*> curves) {
+  for (vector<CurveAdaptive*>::iterator it = curves.begin(); it != curves.end(); it++) {
+    if (static_cast<CurveAdaptiveParametricBezier*>(*it)->GetPoint0().operator==(p0) &&
+        static_cast<CurveAdaptiveParametricBezier*>(*it)->GetPoint1().operator==(p1) &&
+        static_cast<CurveAdaptiveParametricBezier*>(*it)->GetPoint2().operator==(p2) &&
+        static_cast<CurveAdaptiveParametricBezier*>(*it)->GetPoint3().operator==(p3)) {
       return false;
     }
   }
@@ -960,12 +913,11 @@ bool GeneratorAdaptive::VerifyCurve(PointAdaptive p0, PointAdaptive p1,
   return true;
 }
 
-void GeneratorAdaptive::CalculateEstimateProcessElements(
-    int size_process, std::list<PatchBezier*> patches) {
+void GeneratorAdaptive::CalculateEstimateProcessElements(int size_process,
+                                                         std::list<PatchBezier*> patches) {
   double estimate[size_process];
 
-  for (std::list<PatchBezier*>::iterator it = patches.begin();
-       it != patches.end(); it++) {
+  for (std::list<PatchBezier*>::iterator it = patches.begin(); it != patches.end(); it++) {
     estimate[(*it)->GetIdProcess()] += (*it)->GetNumberTriangle();
   }
 
@@ -974,8 +926,8 @@ void GeneratorAdaptive::CalculateEstimateProcessElements(
   }
 }
 
-std::list<PatchBezier*>::iterator GeneratorAdaptive::GetIteratorListPatches(
-    int size_patches, std::list<PatchBezier*> patches) {
+std::list<PatchBezier*>::iterator
+GeneratorAdaptive::GetIteratorListPatches(int size_patches, std::list<PatchBezier*> patches) {
   std::list<PatchBezier*>::iterator it = patches.begin();
   advance(it, size_patches);
   return it;
@@ -1062,8 +1014,7 @@ Geometry* GeneratorAdaptive::UnpakGeometry(double patches[], int size_patches) {
       patch_c4 = geometry->VerifyCurveGeometry(p00, p01, p02, p03);
     }
 
-    patch_bezier = new PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11,
-                                   *p21, *p12, *p22);
+    patch_bezier = new PatchBezier(patch_c1, patch_c2, patch_c3, patch_c4, *p11, *p21, *p12, *p22);
     patch_bezier->SetId(i / 48);
 
     geometry->InsertPatch(patch_bezier);
@@ -1075,13 +1026,11 @@ Geometry* GeneratorAdaptive::UnpakGeometry(double patches[], int size_patches) {
 #endif
 
 #if USE_MPI
-void GeneratorAdaptive::Generator(double patches[], int size_patches,
-                                  Timer* timer, int id_range,
-                                  [[maybe_unused]] int size_rank,
-                                  int size_thread)
+void GeneratorAdaptive::Generator(double patches[], int size_patches, Timer* timer, int id_range,
+                                  [[maybe_unused]] int size_rank, int size_thread)
 #else
-void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range,
-                                  int size_rank, int size_thread)
+void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int size_rank,
+                                  int size_thread)
 #endif
 {
 #if USE_MPI
@@ -1112,7 +1061,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range,
   this->step_ = 0;
   this->stable_consecutive_reject_count_ = 0U;
   current_policy_ = BuildAdaptivePolicyRuntime();
- if (current_policy_.stable_mode) {
+  if (current_policy_.stable_mode) {
     BUDGET_DRIVEN_ADAPTATION = 1;
     STEP_ELEMENT_TARGET_MODE = 1;
     STEP_TARGET_ELEMENT_GROWTH_MODE = 1;
@@ -1151,20 +1100,19 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range,
     QUADTREE_LOW_QUALITY_H_FACTOR = 0.85;
     TEMPLATE_POOR_SCORE_THRESHOLD = 0.45;
     AFT_LOCAL_POSTPROCESS_PASSES = 2;
-}
+  }
 
   MAX_THREADS = size_thread =
-      size_thread > static_cast<Parallel::TMCommunicator*>(this->communicator_.get())
-                        ->getMaxThreads()
-          ? static_cast<Parallel::TMCommunicator*>(this->communicator_.get())
-                ->getMaxThreads()
+      size_thread >
+              static_cast<Parallel::TMCommunicator*>(this->communicator_.get())->getMaxThreads()
+          ? static_cast<Parallel::TMCommunicator*>(this->communicator_.get())->getMaxThreads()
           : size_thread;
 
   ptr_aux.resize(size_thread, nullptr);
 
-if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
-  this->id_managers_.resize(size_thread);
-}
+  if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
+    this->id_managers_.resize(size_thread);
+  }
 
   stop_reason_ = "max_steps_reached";
   error_step_.clear();
@@ -1295,43 +1243,41 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
 #else
   this->id_managers_[0] = this->MakeIdManager(communicator_.get(), 0);
 #if USE_MPI
-  timer->InitTimerParallel(RANK_MPI, 0, 2);  // Malha inicial
+  timer->InitTimerParallel(RANK_MPI, 0, 2); // Malha inicial
 #else
-  timer->InitTimerParallel(0, 0, 2);    // Malha inicial
-#endif  // USE_MPI
+  timer->InitTimerParallel(0, 0, 2); // Malha inicial
+#endif // USE_MPI
 
   GeneratorInitialMesh(geometry, mesh_.get(), timer, size_thread, size_patch);
 
 #if USE_MPI
-  timer->EndTimerParallel(RANK_MPI, 0, 2);   // Malha inicial
+  timer->EndTimerParallel(RANK_MPI, 0, 2); // Malha inicial
 #else
-  timer->EndTimerParallel(0, 0, 2);     // Malha inicial
-#endif  // USE_MPI
-#endif  // USE_OPENMP
+  timer->EndTimerParallel(0, 0, 2); // Malha inicial
+#endif // USE_MPI
+#endif // USE_OPENMP
 
   // Calcula o erro global para a malha inicial
 #if USE_OPENMP
   if (size_patch > 1) {
-    this->error_local_process_ =
-        this->CalculateErrorGlobalOmp(mesh_.get(), timer, 0, size_thread);
+    this->error_local_process_ = this->CalculateErrorGlobalOmp(mesh_.get(), timer, 0, size_thread);
 
   } else {
-    this->error_local_process_ =
-        this->ErrorGlobal(mesh_.get(), timer, 0, size_thread);
+    this->error_local_process_ = this->ErrorGlobal(mesh_.get(), timer, 0, size_thread);
   }
 #else
 #if USE_MPI
-  timer->InitTimerParallel(RANK_MPI, 0, 7);  // Calculo do erro Global
+  timer->InitTimerParallel(RANK_MPI, 0, 7); // Calculo do erro Global
 #else
-  timer->InitTimerParallel(0, 0, 7);    // Calculo do erro Global
-#endif  // USE_MPI
+  timer->InitTimerParallel(0, 0, 7); // Calculo do erro Global
+#endif // USE_MPI
   this->error_local_process_ = this->ErrorGlobal(mesh_.get(), timer);
 #if USE_MPI
-  timer->EndTimerParallel(RANK_MPI, 0, 7);  // Calculo do erro Global
+  timer->EndTimerParallel(RANK_MPI, 0, 7); // Calculo do erro Global
 #else
-  timer->EndTimerParallel(0, 0, 7);     // Calculo do erro Global
-#endif  // USE_MPI
-#endif  // USE_OPENMP
+  timer->EndTimerParallel(0, 0, 7); // Calculo do erro Global
+#endif // USE_MPI
+#endif // USE_OPENMP
 
   this->error_step_.push_back(this->error_local_process_);
   this->elements_step_.push_back(count_elements(mesh_.get()));
@@ -1395,38 +1341,34 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
 
 #if USE_SAVE_ERRO_MESH
   SaveErrorMesh(malha, step_);
-#endif  // USE_SAVE_ERRO_MESH
+#endif // USE_SAVE_ERRO_MESH
 
   double max_sub_error = 0.0;
   if (!last_submesh_error_.empty()) {
-    max_sub_error = *std::max_element(last_submesh_error_.begin(),
-                                      last_submesh_error_.end());
+    max_sub_error = *std::max_element(last_submesh_error_.begin(), last_submesh_error_.end());
   }
 
 #if USE_MPI
 #if USE_PRINT_RESULTS
-  cout << "*************** ERRO " << this->step_ << " rank " << RANK_MPI
-       << " = " << this->error_local_process_ << endl;
-#endif  // #if USE_PRINT_RESULTS
+  cout << "*************** ERRO " << this->step_ << " rank " << RANK_MPI << " = "
+       << this->error_local_process_ << endl;
+#endif // #if USE_PRINT_RESULTS
 #else
 #if USE_PRINT_RESULTS
-  cout << "*************** ERRO " << this->step_ << " = "
-       << this->error_local_process_ << endl;
-  cout << "Resumo step " << this->step_ << ": elementos="
-       << this->elements_step_.back() << ", erro_global="
-       << this->error_local_process_ << ", erro_local_max=" << max_sub_error
+  cout << "*************** ERRO " << this->step_ << " = " << this->error_local_process_ << endl;
+  cout << "Resumo step " << this->step_ << ": elementos=" << this->elements_step_.back()
+       << ", erro_global=" << this->error_local_process_ << ", erro_local_max=" << max_sub_error
        << ", quality_min=" << initial_quality.quality_min
        << ", quality_mean=" << initial_quality.quality_mean
        << ", poor_ratio=" << initial_quality.poor_ratio
        << ", nos_gauss=" << this->gauss_nodes_step_.back()
-       << ", nos_mean=" << this->mean_nodes_step_.back()
-       << endl;
-#endif  // #if USE_PRINT_RESULTS
-#endif  // USE_MPI
+       << ", nos_mean=" << this->mean_nodes_step_.back() << endl;
+#endif // #if USE_PRINT_RESULTS
+#endif // USE_MPI
 
   UpdatePatchHistory(geometry, mesh_.get(),
-                     std::vector<double>(static_cast<size_t>(size_patch), 1.0),
-                     last_submesh_error_, true);
+                     std::vector<double>(static_cast<size_t>(size_patch), 1.0), last_submesh_error_,
+                     true);
   timer->InitTimerParallel(0, 0, 11);
   if (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
       WRITE_MESH == std::string("h")) {
@@ -1451,15 +1393,14 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
   double prev_error = this->error_local_process_;
   int stagnant = 0;
 
-  auto restore_geometry_submeshes = [this](Geometry* geometry,
-                                           MeshAdaptive* source_mesh) {
+  auto restore_geometry_submeshes = [this](Geometry* geometry, MeshAdaptive* source_mesh) {
     if (!geometry || !source_mesh) {
       return;
     }
     const unsigned int patch_count = geometry->GetNumberPatches();
     for (unsigned int patch_index = 0; patch_index < patch_count; ++patch_index) {
-      geometry->GetPatch(patch_index)->SetSubMesh(
-          source_mesh->GetSubMeshAdaptiveByPosition(patch_index));
+      geometry->GetPatch(patch_index)
+          ->SetSubMesh(source_mesh->GetSubMeshAdaptiveByPosition(patch_index));
     }
   };
 
@@ -1481,17 +1422,16 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     if (this->error_local_process_ <= EPSYLON) {
       stop_reason_ = "target_error_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: erro global <= EPSYLON (" << EPSYLON << ") no step "
-           << this->step_ << " valor " << this->error_local_process_ << endl;
+      cout << "Parando: erro global <= EPSYLON (" << EPSYLON << ") no step " << this->step_
+           << " valor " << this->error_local_process_ << endl;
 #endif
       break;
     }
     if (max_sub_error <= TOL_LOCAL) {
       stop_reason_ = "local_error_threshold_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: erro local máximo (" << max_sub_error
-           << ") <= TOL_LOCAL (" << TOL_LOCAL << ") no step " << this->step_
-           << endl;
+      cout << "Parando: erro local máximo (" << max_sub_error << ") <= TOL_LOCAL (" << TOL_LOCAL
+           << ") no step " << this->step_ << endl;
 #endif
       break;
     }
@@ -1507,8 +1447,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     this->step_++;
 
     MeshAdaptive* accepted_mesh =
-        mesh_ ? mesh_.get()
-              : (!save_mesh_.empty() ? save_mesh_.back().second.get() : nullptr);
+        mesh_ ? mesh_.get() : (!save_mesh_.empty() ? save_mesh_.back().second.get() : nullptr);
 
     const std::vector<double> accepted_submesh_error = last_submesh_error_;
     const std::vector<double> accepted_patch_factors = previous_patch_factors_;
@@ -1520,8 +1459,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     unsigned int accepted_retry_attempt = 0U;
     double improvement = 0.0;
     double error_drop_abs = 0.0;
-    unsigned long long previous_elements =
-        elements_step_.empty() ? 0ULL : elements_step_.back();
+    unsigned long long previous_elements = elements_step_.empty() ? 0ULL : elements_step_.back();
     if (has_provisional_progress_state) {
       previous_elements = provisional_previous_elements;
       prev_error = provisional_prev_error;
@@ -1532,12 +1470,10 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     double element_growth_factor = 1.0;
     double acceptance_score = -std::numeric_limits<double>::infinity();
     MeshQualityStats candidate_quality;
-    const double previous_quality_min =
-        quality_min_step_.empty() ? 0.0 : quality_min_step_.back();
-      const double previous_poor_ratio =
-          poor_ratio_step_.empty() ? 0.0 : poor_ratio_step_.back();
-      const double previous_good_ratio =
-          good_ratio_ge_0_60_step_.empty() ? 0.0 : good_ratio_ge_0_60_step_.back();
+    const double previous_quality_min = quality_min_step_.empty() ? 0.0 : quality_min_step_.back();
+    const double previous_poor_ratio = poor_ratio_step_.empty() ? 0.0 : poor_ratio_step_.back();
+    const double previous_good_ratio =
+        good_ratio_ge_0_60_step_.empty() ? 0.0 : good_ratio_ge_0_60_step_.back();
     std::vector<double> accepted_candidate_patch_factors = accepted_patch_factors;
     current_budget_exceeded_ = false;
     current_budget_retry_count_ = 0U;
@@ -1547,29 +1483,25 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     current_element_budget_abs_ = 0.0;
     current_element_budget_growth_factor_limit_ = 0.0;
     current_element_budget_soft_limit_ = 0.0;
-    current_step_mode_ =
-        current_policy_.stable_mode ? "iterating"
-                                    : ((this->step_ <= 1) ? "normal"
-                                                          : "micro_refinement");
+    current_step_mode_ = current_policy_.stable_mode
+                             ? "iterating"
+                             : ((this->step_ <= 1) ? "normal" : "micro_refinement");
     current_budget_pressure_ = 0.0;
     current_eligible_patch_count_ = 0U;
     current_eligible_patch_elements_sum_ = 0ULL;
     current_eligible_patch_mean_factor_ = 0.0;
     current_eligible_patch_mean_h_scale_ = 0.0;
     double stable_step1_budget_growth = current_policy_.step1_target_growth;
-      if (current_policy_.stable_mode && this->step_ == 1 &&
-          previous_elements > 0ULL && previous_elements <= 32ULL) {
-        if (prev_error > 0.0 && prev_error < 0.35) {
-          stable_step1_budget_growth =
-              1.008 + 0.18 * current_policy_.intensity;
-        } else if (prev_error > 0.0 && prev_error < 0.55) {
-          stable_step1_budget_growth =
-              1.03 + 0.45 * current_policy_.intensity;
-        } else {
-          stable_step1_budget_growth =
-              1.10 + 0.90 * current_policy_.intensity;
-        }
+    if (current_policy_.stable_mode && this->step_ == 1 && previous_elements > 0ULL &&
+        previous_elements <= 32ULL) {
+      if (prev_error > 0.0 && prev_error < 0.35) {
+        stable_step1_budget_growth = 1.008 + 0.18 * current_policy_.intensity;
+      } else if (prev_error > 0.0 && prev_error < 0.55) {
+        stable_step1_budget_growth = 1.03 + 0.45 * current_policy_.intensity;
+      } else {
+        stable_step1_budget_growth = 1.10 + 0.90 * current_policy_.intensity;
       }
+    }
     current_target_element_growth_ =
         (current_policy_.stable_mode && previous_elements > 0ULL)
             ? ((this->step_ == 1) ? stable_step1_budget_growth
@@ -1584,12 +1516,11 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
           current_policy_.stable_mode
               ? ((this->step_ == 1) ? stable_step1_budget_growth
                                     : current_policy_.stepn_target_growth)
-              : ((this->step_ == 1)
-                     ? STEP1_TARGET_ELEMENT_GROWTH
-                     : ((this->step_ == 2) ? STEP2_TARGET_ELEMENT_GROWTH
-                                           : STEP3PLUS_TARGET_ELEMENT_GROWTH));
-      current_target_elements_step_ = ClampTargetElements(
-          static_cast<double>(previous_elements) * current_target_element_growth_);
+              : ((this->step_ == 1) ? STEP1_TARGET_ELEMENT_GROWTH
+                                    : ((this->step_ == 2) ? STEP2_TARGET_ELEMENT_GROWTH
+                                                          : STEP3PLUS_TARGET_ELEMENT_GROWTH));
+      current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
+                                                          current_target_element_growth_);
       current_budget_driver_mode_ = "budget_driven";
     } else {
       current_target_elements_step_ =
@@ -1598,13 +1529,13 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     }
     // Congela crescimento só em passos iniciais; queremos permitir que step_ >= 4
     // volte a refinar para gerar malhas adicionais (maha_4/maha_5).
-    if (current_policy_.stable_mode && this->step_ >= 2 && this->step_ <= 3 &&
-        prev_error > 0.0 && prev_error < 0.12 && previous_elements > 0ULL &&
-        geometry != nullptr && geometry->GetNumberPatches() <= 4U) {
+    if (current_policy_.stable_mode && this->step_ >= 2 && this->step_ <= 3 && prev_error > 0.0 &&
+        prev_error < 0.12 && previous_elements > 0ULL && geometry != nullptr &&
+        geometry->GetNumberPatches() <= 4U) {
       current_target_element_growth_ = 1.0;
       if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1) {
-        current_target_elements_step_ = ClampTargetElements(
-            static_cast<double>(previous_elements) * current_target_element_growth_);
+        current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
+                                                            current_target_element_growth_);
       }
     }
     if (current_policy_.stable_mode && this->step_ >= 5 && previous_elements > 0ULL) {
@@ -1612,51 +1543,41 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       current_target_element_growth_ =
           std::min(current_target_element_growth_, kStableLateTargetGrowthCap);
       if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1) {
-        current_target_elements_step_ = ClampTargetElements(
-            static_cast<double>(previous_elements) * current_target_element_growth_);
+        current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
+                                                            current_target_element_growth_);
       }
     }
     if (current_policy_.stable_mode && this->step_ >= 3 && previous_elements > 0ULL &&
         stable_consecutive_reject_count_ > 0U) {
-      const unsigned int r =
-          std::min(10U, stable_consecutive_reject_count_);
-      const double growth_damp =
-          std::pow(0.87, static_cast<double>(r));
+      const unsigned int r = std::min(10U, stable_consecutive_reject_count_);
+      const double growth_damp = std::pow(0.87, static_cast<double>(r));
       const double step_tail =
-          this->step_ > 3
-              ? std::pow(0.93, static_cast<double>(this->step_ - 3))
-              : 1.0;
-      current_target_element_growth_ = std::max(
-          1.0, current_target_element_growth_ * growth_damp * step_tail);
+          this->step_ > 3 ? std::pow(0.93, static_cast<double>(this->step_ - 3)) : 1.0;
+      current_target_element_growth_ =
+          std::max(1.0, current_target_element_growth_ * growth_damp * step_tail);
       if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1) {
-        current_target_elements_step_ = ClampTargetElements(
-            static_cast<double>(previous_elements) * current_target_element_growth_);
+        current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
+                                                            current_target_element_growth_);
       }
     }
     if (current_policy_.stable_mode && previous_elements > 0ULL &&
         !good_ratio_ge_0_60_step_.empty()) {
       const double prev_good_ratio = good_ratio_ge_0_60_step_.back();
-      const double prev_underresolved =
-          underresolved_transition_fraction_step_.empty()
-              ? 0.0
-              : underresolved_transition_fraction_step_.back();
+      const double prev_underresolved = underresolved_transition_fraction_step_.empty()
+                                            ? 0.0
+                                            : underresolved_transition_fraction_step_.back();
       const double prev_transition_imbalance =
-          transition_imbalance_max_step_.empty()
-              ? 0.0
-              : transition_imbalance_max_step_.back();
-      const double quality_gap =
-          Clamp01((0.70 - prev_good_ratio) / 0.70);
+          transition_imbalance_max_step_.empty() ? 0.0 : transition_imbalance_max_step_.back();
+      const double quality_gap = Clamp01((0.70 - prev_good_ratio) / 0.70);
       const double transition_pressure =
-          std::max(prev_underresolved,
-                   Clamp01(prev_transition_imbalance / 0.18));
+          std::max(prev_underresolved, Clamp01(prev_transition_imbalance / 0.18));
       const double quality_growth_scale =
-          ClampValue(1.0 - 0.28 * quality_gap - 0.22 * transition_pressure,
-                     0.72, 1.0);
+          ClampValue(1.0 - 0.28 * quality_gap - 0.22 * transition_pressure, 0.72, 1.0);
       current_target_element_growth_ =
           std::max(1.02, current_target_element_growth_ * quality_growth_scale);
       if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1) {
-        current_target_elements_step_ = ClampTargetElements(
-            static_cast<double>(previous_elements) * current_target_element_growth_);
+        current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
+                                                            current_target_element_growth_);
       }
       if (prev_underresolved > 0.20 || prev_transition_imbalance > 0.14) {
         current_step_purpose_ = "transition_catch_up";
@@ -1679,10 +1600,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     current_improved_top_patches_ = 0U;
     current_top_patch_candidate_count_ = 0U;
     current_generation_control_mode_ =
-        (this->step_ <= 1)
-            ? "normal"
-            : ((PATCH_GENERATION_CONTROL_MODE == 1) ? "micro_refinement"
-                                                    : "normal");
+        (this->step_ <= 1) ? "normal"
+                           : ((PATCH_GENERATION_CONTROL_MODE == 1) ? "micro_refinement" : "normal");
 
     unsigned long long report_gauss_nodes = 0ULL;
     unsigned long long report_mean_nodes = 0ULL;
@@ -1692,8 +1611,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
         this->error_local_process_ =
             this->CalculateErrorGlobalOmp(mesh_.get(), timer, 0, size_thread);
       } else {
-        this->error_local_process_ =
-            this->ErrorGlobal(mesh_.get(), timer, 0, size_thread);
+        this->error_local_process_ = this->ErrorGlobal(mesh_.get(), timer, 0, size_thread);
       }
 #else
 #if USE_MPI
@@ -1731,8 +1649,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       ADAPTIVE_CURRENT_RETRY = retry;
       current_budget_retry_count_ = static_cast<unsigned int>(retry);
       current_budget_limited_ = (retry > 0);
-      const bool micro_refinement_active =
-          (this->step_ > 1 && STEP2_MICRO_REFINEMENT_MODE == 1);
+      const bool micro_refinement_active = (this->step_ > 1 && STEP2_MICRO_REFINEMENT_MODE == 1);
       if (current_policy_.stable_mode) {
         current_step_mode_ = "iterating";
         current_generation_control_mode_ = "adaptive_stable";
@@ -1742,8 +1659,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
             (this->step_ <= 1)
                 ? "normal"
                 : ((PATCH_GENERATION_CONTROL_MODE == 1)
-                       ? (micro_refinement_active ? "micro_refinement"
-                                                  : "budget_constrained")
+                       ? (micro_refinement_active ? "micro_refinement" : "budget_constrained")
                        : "normal");
       }
       if (current_step_purpose_ == "transition_catch_up") {
@@ -1778,8 +1694,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
 
 #if USE_PRINT_RESULTS
       if (retry > 0) {
-        cout << "Retry adaptativo step " << this->step_ << " tentativa "
-             << retry << ": relaxation=" << current_adaptation_relaxation_
+        cout << "Retry adaptativo step " << this->step_ << " tentativa " << retry
+             << ": relaxation=" << current_adaptation_relaxation_
              << ", max_delta=" << current_adaptation_max_delta_ << endl;
       }
 #endif
@@ -1816,16 +1732,12 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
 
       current_elements = count_elements(mesh_.get());
       delta_elements =
-          current_elements > previous_elements ? current_elements - previous_elements
-                                               : 0ULL;
-      element_growth_factor =
-          previous_elements > 0ULL
-              ? static_cast<double>(current_elements) /
-                    static_cast<double>(previous_elements)
-              : 1.0;
+          current_elements > previous_elements ? current_elements - previous_elements : 0ULL;
+      element_growth_factor = previous_elements > 0ULL ? static_cast<double>(current_elements) /
+                                                             static_cast<double>(previous_elements)
+                                                       : 1.0;
       const bool budget_active =
-          (STEP_ELEMENT_BUDGET_MODE == 1 && this->step_ > 1 &&
-           previous_elements > 0ULL &&
+          (STEP_ELEMENT_BUDGET_MODE == 1 && this->step_ > 1 && previous_elements > 0ULL &&
            (STEP_ELEMENT_BUDGET_ABS > 0.0 || STEP_ELEMENT_BUDGET_GROWTH_FACTOR > 0.0));
       current_element_budget_abs_ = budget_active ? STEP_ELEMENT_BUDGET_ABS : 0.0;
       current_element_budget_growth_factor_limit_ =
@@ -1838,8 +1750,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
         const double growth_budget =
             static_cast<double>(previous_elements) * STEP_ELEMENT_BUDGET_GROWTH_FACTOR;
         hard_budget_limit =
-            (hard_budget_limit > 0.0) ? std::min(hard_budget_limit, growth_budget)
-                                      : growth_budget;
+            (hard_budget_limit > 0.0) ? std::min(hard_budget_limit, growth_budget) : growth_budget;
       }
       current_element_budget_soft_limit_ =
           (hard_budget_limit > 0.0)
@@ -1847,25 +1758,21 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
               : 0.0;
       current_budget_pressure_ =
           (current_element_budget_soft_limit_ > 0.0)
-              ? (static_cast<double>(current_elements) /
-                 current_element_budget_soft_limit_)
+              ? (static_cast<double>(current_elements) / current_element_budget_soft_limit_)
               : 0.0;
       if (retry == 0) {
         current_candidate_elements_before_budget_retry_ = current_elements;
       }
-      for (unsigned int patch_index = 0;
-           patch_index < geometry->GetNumberPatches() &&
-           patch_index < current_patch_adaptation_.size();
+      for (unsigned int patch_index = 0; patch_index < geometry->GetNumberPatches() &&
+                                         patch_index < current_patch_adaptation_.size();
            ++patch_index) {
-        const SubMesh* current_submesh =
-            mesh_->GetSubMeshAdaptiveByPosition(patch_index);
+        const SubMesh* current_submesh = mesh_->GetSubMeshAdaptiveByPosition(patch_index);
         const unsigned long long patch_elements =
             current_submesh ? current_submesh->GetNumberElements() : 0ULL;
         current_patch_adaptation_[patch_index].elements_current = patch_elements;
         current_patch_adaptation_[patch_index].elements_delta =
             patch_elements > current_patch_adaptation_[patch_index].elements_prev
-                ? patch_elements -
-                      current_patch_adaptation_[patch_index].elements_prev
+                ? patch_elements - current_patch_adaptation_[patch_index].elements_prev
                 : 0ULL;
       }
       {
@@ -1879,20 +1786,16 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
         }
         for (const auto& entry : grouped_actuals) {
           if (entry.second.size() >= 2) {
-            actual_elements_by_group.push_back(
-                ComputeNormalizedDispersion(entry.second));
+            actual_elements_by_group.push_back(ComputeNormalizedDispersion(entry.second));
           }
         }
         current_actual_patch_element_dispersion_ =
             ComputeNormalizedDispersion(actual_elements_by_group);
-        current_patch_consistency_penalty_ +=
-            0.15 * current_actual_patch_element_dispersion_;
+        current_patch_consistency_penalty_ += 0.15 * current_actual_patch_element_dispersion_;
       }
       if (current_eligible_patch_count_ > 0U) {
-        current_eligible_patch_mean_factor_ /=
-            static_cast<double>(current_eligible_patch_count_);
-        current_eligible_patch_mean_h_scale_ /=
-            static_cast<double>(current_eligible_patch_count_);
+        current_eligible_patch_mean_factor_ /= static_cast<double>(current_eligible_patch_count_);
+        current_eligible_patch_mean_h_scale_ /= static_cast<double>(current_eligible_patch_count_);
       }
 
       bool budget_exceeded = false;
@@ -1914,48 +1817,38 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
         compute_current_error();
         max_sub_error = 0.0;
         if (!last_submesh_error_.empty()) {
-          max_sub_error = *std::max_element(last_submesh_error_.begin(),
-                                            last_submesh_error_.end());
+          max_sub_error = *std::max_element(last_submesh_error_.begin(), last_submesh_error_.end());
         }
         candidate_quality = ComputeMeshQualityStats(mesh_.get());
-        improvement =
-            (prev_error - this->error_local_process_) / std::max(prev_error, 1e-12);
+        improvement = (prev_error - this->error_local_process_) / std::max(prev_error, 1e-12);
         error_drop_abs = prev_error - this->error_local_process_;
-        error_drop_per_element =
-            delta_elements > 0ULL
-                ? error_drop_abs / static_cast<double>(delta_elements)
-                : error_drop_abs;
-        const double quality_min_delta =
-            candidate_quality.quality_min - previous_quality_min;
-        const double poor_ratio_delta =
-            previous_poor_ratio - candidate_quality.poor_ratio;
-        acceptance_score =
-            ACCEPTANCE_WEIGHT_ERROR * improvement +
-            ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
-            ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta -
-            ComputeGrowthPenalty(element_growth_factor, this->step_);
+        error_drop_per_element = delta_elements > 0ULL
+                                     ? error_drop_abs / static_cast<double>(delta_elements)
+                                     : error_drop_abs;
+        const double quality_min_delta = candidate_quality.quality_min - previous_quality_min;
+        const double poor_ratio_delta = previous_poor_ratio - candidate_quality.poor_ratio;
+        acceptance_score = ACCEPTANCE_WEIGHT_ERROR * improvement +
+                           ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
+                           ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta -
+                           ComputeGrowthPenalty(element_growth_factor, this->step_);
         continue;
       }
 
       bool rejected_by_growth = false;
-      const bool allow_growth_reject =
-          (effective_retry_limit > 0 && this->step_ > 1);
+      const bool allow_growth_reject = (effective_retry_limit > 0 && this->step_ > 1);
       if (allow_growth_reject && previous_elements > 0ULL &&
           MAX_RETRY_ELEMENT_GROWTH_FACTOR > 0.0) {
         if (element_growth_factor > MAX_RETRY_ELEMENT_GROWTH_FACTOR) {
           rejected_by_growth = true;
 #if USE_PRINT_RESULTS
           cout << "Tentativa rejeitada no step " << this->step_
-               << " por crescimento de elementos: fator="
-               << element_growth_factor
+               << " por crescimento de elementos: fator=" << element_growth_factor
                << " > limite=" << MAX_RETRY_ELEMENT_GROWTH_FACTOR << endl;
 #endif
         }
       }
-      if (allow_growth_reject && !rejected_by_growth &&
-          MAX_RETRY_ELEMENT_GROWTH_ABS > 0.0 &&
-          delta_elements >
-              static_cast<unsigned long long>(MAX_RETRY_ELEMENT_GROWTH_ABS)) {
+      if (allow_growth_reject && !rejected_by_growth && MAX_RETRY_ELEMENT_GROWTH_ABS > 0.0 &&
+          delta_elements > static_cast<unsigned long long>(MAX_RETRY_ELEMENT_GROWTH_ABS)) {
         rejected_by_growth = true;
 #if USE_PRINT_RESULTS
         cout << "Tentativa rejeitada no step " << this->step_
@@ -1969,19 +1862,15 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
         this->error_local_process_ = prev_error + 1.0;
         improvement = -1.0;
         error_drop_abs = prev_error - this->error_local_process_;
-        error_drop_per_element =
-            delta_elements > 0ULL
-                ? error_drop_abs / static_cast<double>(delta_elements)
-                : error_drop_abs;
-        const double quality_min_delta =
-            candidate_quality.quality_min - previous_quality_min;
-        const double poor_ratio_delta =
-            previous_poor_ratio - candidate_quality.poor_ratio;
-        acceptance_score =
-            ACCEPTANCE_WEIGHT_ERROR * improvement +
-            ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
-            ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta -
-            ComputeGrowthPenalty(element_growth_factor, this->step_);
+        error_drop_per_element = delta_elements > 0ULL
+                                     ? error_drop_abs / static_cast<double>(delta_elements)
+                                     : error_drop_abs;
+        const double quality_min_delta = candidate_quality.quality_min - previous_quality_min;
+        const double poor_ratio_delta = previous_poor_ratio - candidate_quality.poor_ratio;
+        acceptance_score = ACCEPTANCE_WEIGHT_ERROR * improvement +
+                           ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
+                           ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta -
+                           ComputeGrowthPenalty(element_growth_factor, this->step_);
         continue;
       }
 
@@ -1993,19 +1882,15 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       if (this->step_ > 1) {
         for (size_t patch_index = 0;
              patch_index < current_patch_adaptation_.size() &&
-             patch_index < patch_history_.size() &&
-             patch_index < last_submesh_error_.size();
+             patch_index < patch_history_.size() && patch_index < last_submesh_error_.size();
              ++patch_index) {
-          const PatchAdaptationSnapshot& snapshot =
-              current_patch_adaptation_[patch_index];
+          const PatchAdaptationSnapshot& snapshot = current_patch_adaptation_[patch_index];
           if (snapshot.refinement_rank <= 0 ||
-              snapshot.refinement_rank >
-                  static_cast<int>(std::max(1U, current_top_patch_count_))) {
+              snapshot.refinement_rank > static_cast<int>(std::max(1U, current_top_patch_count_))) {
             continue;
           }
           ++current_top_patch_candidate_count_;
-          if (patch_history_[patch_index].prev_patch_error >
-              last_submesh_error_[patch_index]) {
+          if (patch_history_[patch_index].prev_patch_error > last_submesh_error_[patch_index]) {
             ++current_improved_top_patches_;
           }
         }
@@ -2018,25 +1903,19 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
 
       max_sub_error = 0.0;
       if (!last_submesh_error_.empty()) {
-        max_sub_error = *std::max_element(last_submesh_error_.begin(),
-                                          last_submesh_error_.end());
+        max_sub_error = *std::max_element(last_submesh_error_.begin(), last_submesh_error_.end());
       }
 
-      improvement =
-          (prev_error - this->error_local_process_) / std::max(prev_error, 1e-12);
+      improvement = (prev_error - this->error_local_process_) / std::max(prev_error, 1e-12);
       error_drop_abs = prev_error - this->error_local_process_;
-      error_drop_per_element =
-          delta_elements > 0ULL
-              ? error_drop_abs / static_cast<double>(delta_elements)
-              : error_drop_abs;
+      error_drop_per_element = delta_elements > 0ULL
+                                   ? error_drop_abs / static_cast<double>(delta_elements)
+                                   : error_drop_abs;
       current_step_efficiency_ = error_drop_per_element;
       candidate_quality = ComputeMeshQualityStats(mesh_.get());
-      const double quality_min_delta =
-          candidate_quality.quality_min - previous_quality_min;
-      const double poor_ratio_delta =
-          previous_poor_ratio - candidate_quality.poor_ratio;
-      const double good_ratio_delta =
-          candidate_quality.good_ratio_ge_0_60 - previous_good_ratio;
+      const double quality_min_delta = candidate_quality.quality_min - previous_quality_min;
+      const double poor_ratio_delta = previous_poor_ratio - candidate_quality.poor_ratio;
+      const double good_ratio_delta = candidate_quality.good_ratio_ge_0_60 - previous_good_ratio;
       const double previous_angle_quality =
           angle_quality_mean_3d_step_.empty() ? 0.0 : angle_quality_mean_3d_step_.back();
       const double previous_edge_ratio =
@@ -2046,11 +1925,9 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       const double previous_max_angle_p95 =
           max_angle_p95_3d_step_.empty() ? 180.0 : max_angle_p95_3d_step_.back();
       const double acceptance_growth_weight =
-          (this->step_ > 1 && STEP2_ACCEPT_SMALL_GAINS_MODE == 1)
-              ? STEP2_ACCEPTANCE_GROWTH_WEIGHT
-              : ACCEPTANCE_WEIGHT_GROWTH;
-      const double growth_penalty =
-          ComputeGrowthPenalty(element_growth_factor, this->step_);
+          (this->step_ > 1 && STEP2_ACCEPT_SMALL_GAINS_MODE == 1) ? STEP2_ACCEPTANCE_GROWTH_WEIGHT
+                                                                  : ACCEPTANCE_WEIGHT_GROWTH;
+      const double growth_penalty = ComputeGrowthPenalty(element_growth_factor, this->step_);
       const double target_growth_miss =
           (BUDGET_DRIVEN_ADAPTATION == 1 && current_target_element_growth_ > 0.0)
               ? std::fabs(element_growth_factor - current_target_element_growth_)
@@ -2071,50 +1948,42 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
           const double deficit =
               static_cast<double>(curve_snapshot.geometric_target_points -
                                   curve_snapshot.actual_points) /
-              static_cast<double>(
-                  std::max(1, curve_snapshot.geometric_target_points));
+              static_cast<double>(std::max(1, curve_snapshot.geometric_target_points));
           current_curve_domain_penalty_ +=
               deficit * (curve_snapshot.sensitive_curve == 1 ? 1.5 : 1.0);
         }
       }
       if (!current_curve_adaptation_.empty()) {
-        current_curve_domain_penalty_ /=
-            static_cast<double>(current_curve_adaptation_.size());
+        current_curve_domain_penalty_ /= static_cast<double>(current_curve_adaptation_.size());
       }
       const double overshoot_excess = std::max(0.0, current_overshoot_ratio_ - 1.0);
-      const double underresolved_real =
-          Clamp01(current_underresolved_transition_fraction_real_);
-      const double imbalance_mean_real =
-          Clamp01(current_transition_imbalance_mean_real_ / 0.35);
+      const double underresolved_real = Clamp01(current_underresolved_transition_fraction_real_);
+      const double imbalance_mean_real = Clamp01(current_transition_imbalance_mean_real_ / 0.35);
       const double curve_aux_penalty = Clamp01(current_curve_domain_penalty_);
-      current_transition_coherence_penalty_ =
-          0.55 * underresolved_real + 0.30 * imbalance_mean_real +
-          0.25 * overshoot_excess + 0.10 * curve_aux_penalty;
-      acceptance_score = ACCEPTANCE_WEIGHT_ERROR * improvement +
-                         ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
-                         ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta +
-                         0.40 * good_ratio_delta -
-                         (growth_penalty *
-                          (ACCEPTANCE_WEIGHT_GROWTH > 0.0
-                               ? (acceptance_growth_weight /
-                                  ACCEPTANCE_WEIGHT_GROWTH)
-                               : acceptance_growth_weight)) -
-                         ((BUDGET_DRIVEN_ADAPTATION == 1)
-                              ? (STEP_ACCEPT_BUDGET_MISS_PENALTY *
-                                 std::max(0.0, target_growth_miss -
-                                                   STEP_ACCEPT_TARGET_GROWTH_TOLERANCE))
-                              : 0.0);
+      current_transition_coherence_penalty_ = 0.55 * underresolved_real +
+                                              0.30 * imbalance_mean_real + 0.25 * overshoot_excess +
+                                              0.10 * curve_aux_penalty;
+      acceptance_score =
+          ACCEPTANCE_WEIGHT_ERROR * improvement +
+          ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
+          ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta + 0.40 * good_ratio_delta -
+          (growth_penalty * (ACCEPTANCE_WEIGHT_GROWTH > 0.0
+                                 ? (acceptance_growth_weight / ACCEPTANCE_WEIGHT_GROWTH)
+                                 : acceptance_growth_weight)) -
+          ((BUDGET_DRIVEN_ADAPTATION == 1)
+               ? (STEP_ACCEPT_BUDGET_MISS_PENALTY *
+                  std::max(0.0, target_growth_miss - STEP_ACCEPT_TARGET_GROWTH_TOLERANCE))
+               : 0.0);
       if (overshoot_excess > 0.0 && good_ratio_delta <= 0.0) {
         acceptance_score -= 0.35 * overshoot_excess;
       }
       if (current_policy_.stable_mode && this->step_ >= 2) {
-        const double coherence_w =
-            (this->step_ >= 4) ? 0.14 : 0.30;
+        const double coherence_w = (this->step_ >= 4) ? 0.14 : 0.30;
         acceptance_score -= coherence_w * current_transition_coherence_penalty_;
       }
       if (STEP_ACCEPT_CONSISTENCY_MODE == 1 && this->step_ > 1) {
-        acceptance_score -= STEP_ACCEPT_CONSISTENCY_PENALTY_WEIGHT *
-                            current_patch_consistency_penalty_;
+        acceptance_score -=
+            STEP_ACCEPT_CONSISTENCY_PENALTY_WEIGHT * current_patch_consistency_penalty_;
       }
       const bool error_within_tolerance =
           improvement >= (-ACCEPTANCE_MAX_ERROR_INCREASE_PCT / 100.0);
@@ -2152,12 +2021,10 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       const bool step2_quality_stable =
           (this->step_ != 2 || BUDGET_DRIVEN_ADAPTATION == 0)
               ? true
-              : (candidate_quality.quality_min >=
-                     (current_policy_.stable_mode
-                          ? current_policy_.step2_accept_quality_min
-                          : 0.20) &&
-                 candidate_quality.poor_ratio <=
-                     std::max(0.30, previous_poor_ratio + 0.08) &&
+              : (candidate_quality.quality_min >= (current_policy_.stable_mode
+                                                       ? current_policy_.step2_accept_quality_min
+                                                       : 0.20) &&
+                 candidate_quality.poor_ratio <= std::max(0.30, previous_poor_ratio + 0.08) &&
                  current_eligible_patch_count_ >=
                      std::min(2U, std::max(1U, current_top_patch_count_)));
       const bool stable_step2_error_ok =
@@ -2166,26 +2033,21 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
               : ((this->error_local_process_ - prev_error) <=
                  current_policy_.step2_accept_max_error_increase_abs);
       const bool step2_overshoot_ok =
-          (!current_policy_.stable_mode || this->step_ != 2 ||
-           current_target_elements_step_ <= 0.0)
+          (!current_policy_.stable_mode || this->step_ != 2 || current_target_elements_step_ <= 0.0)
               ? true
               : (current_overshoot_ratio_ <= 1.22 ||
-                 (improvement > 0.15 &&
-                  current_underresolved_transition_fraction_real_ <= 0.05 &&
+                 (improvement > 0.15 && current_underresolved_transition_fraction_real_ <= 0.05 &&
                   current_transition_imbalance_max_real_ <= 0.12));
       const bool stable_progressive_overshoot_ok =
-          (!current_policy_.stable_mode || this->step_ <= 2 ||
-           current_target_elements_step_ <= 0.0)
+          (!current_policy_.stable_mode || this->step_ <= 2 || current_target_elements_step_ <= 0.0)
               ? true
               : (current_overshoot_ratio_ <= 1.28 ||
-                 (improvement > 0.20 &&
-                  current_underresolved_transition_fraction_real_ <= 0.03 &&
+                 (improvement > 0.20 && current_underresolved_transition_fraction_real_ <= 0.03 &&
                   current_transition_imbalance_max_real_ <= 0.10));
       const double transition_penalty_cap =
           (!current_policy_.stable_mode || this->step_ <= 1)
               ? 1.0
-              : ((this->step_ >= 4 && current_policy_.stable_mode) ? 0.42
-                                                                     : 0.25);
+              : ((this->step_ >= 4 && current_policy_.stable_mode) ? 0.42 : 0.25);
       const bool transition_coherence_ok =
           (!current_policy_.stable_mode || this->step_ <= 1)
               ? true
@@ -2198,71 +2060,60 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
           (STEP_ACCEPT_CONSISTENCY_MODE == 0 || this->step_ <= 1)
               ? true
               : ((this->step_ != 2) ||
-                 (current_patch_budget_dispersion_ <=
-                  STEP_ACCEPT_MAX_GROUP_DISPERSION_STEP2));
+                 (current_patch_budget_dispersion_ <= STEP_ACCEPT_MAX_GROUP_DISPERSION_STEP2));
       if (this->step_ >= 3 && BUDGET_DRIVEN_ADAPTATION == 1) {
         acceptance_score += 0.30 * (current_local_progress_coverage_ - 0.5);
       }
       const bool local_progress_ok =
-          (this->step_ <= 2 || BUDGET_DRIVEN_ADAPTATION == 0)
-              ? true
-              : (current_policy_.stable_mode && this->step_ >= 4)
-                    ? (current_local_progress_coverage_ >= 0.20 ||
-                       current_improved_top_patches_ >= 1U ||
-                       improvement > -0.05)
-                    : (current_local_progress_coverage_ >= 0.35 ||
-                       current_improved_top_patches_ >= 2U);
+          (this->step_ <= 2 || BUDGET_DRIVEN_ADAPTATION == 0) ? true
+          : (current_policy_.stable_mode && this->step_ >= 4)
+              ? (current_local_progress_coverage_ >= 0.20 || current_improved_top_patches_ >= 1U ||
+                 improvement > -0.05)
+              : (current_local_progress_coverage_ >= 0.35 || current_improved_top_patches_ >= 2U);
       // Modo 0 exige improvement>=0; em passos intermediarios (ex.: ribbed com muitas
       // patches) o candidato pode subir ~20% o indicador ao refinar sem "melhoria" >= 0,
       // deixando a malha aceite estagnada no passo 0 ate explore no passo 4.
       const bool stable_mid_explore_accept =
-          (ACCEPTANCE_MODE == 0) && current_policy_.stable_mode &&
-          this->step_ >= 2 && this->step_ <= 3 && prev_error > 1.0e-30 &&
+          (ACCEPTANCE_MODE == 0) && current_policy_.stable_mode && this->step_ >= 2 &&
+          this->step_ <= 3 && prev_error > 1.0e-30 &&
           this->error_local_process_ <= prev_error * 1.24 &&
           candidate_quality.quality_min + 1.0e-9 >= previous_quality_min * 0.68 &&
-          candidate_quality.poor_ratio <=
-              std::max(0.70, previous_poor_ratio + 0.28) &&
+          candidate_quality.poor_ratio <= std::max(0.70, previous_poor_ratio + 0.28) &&
           element_growth_factor <= 3.55 && element_growth_factor >= 1.02;
       // Modo 0 exige improvement>=0; em passos tardios do adaptive_stable o refinamento
       // pode subir ligeiramente o indicador de erro enquanto a malha ganha elementos.
       const bool stable_late_explore_accept =
-          (ACCEPTANCE_MODE == 0) && current_policy_.stable_mode &&
-          this->step_ >= 4 && prev_error > 1.0e-30 &&
-          this->error_local_process_ <= prev_error * 1.28 &&
+          (ACCEPTANCE_MODE == 0) && current_policy_.stable_mode && this->step_ >= 4 &&
+          prev_error > 1.0e-30 && this->error_local_process_ <= prev_error * 1.28 &&
           candidate_quality.quality_min + 1.0e-9 >= previous_quality_min * 0.75 &&
-          candidate_quality.poor_ratio <=
-              std::max(0.65, previous_poor_ratio + 0.22);
+          candidate_quality.poor_ratio <= std::max(0.65, previous_poor_ratio + 0.22);
       const bool stable_transition_ready =
           (!current_policy_.stable_mode || this->step_ <= 1)
               ? true
               : (current_underresolved_transition_fraction_real_ <=
                      ((this->step_ >= 4) ? 0.25 : 0.10) &&
-                 current_transition_imbalance_max_real_ <=
-                     ((this->step_ >= 4) ? 0.18 : 0.12));
-      const bool quality_target_hit =
-          candidate_quality.good_ratio_ge_0_60 >= 0.70;
+                 current_transition_imbalance_max_real_ <= ((this->step_ >= 4) ? 0.18 : 0.12));
+      const bool quality_target_hit = candidate_quality.good_ratio_ge_0_60 >= 0.70;
       const bool quality_trending_ok =
           candidate_quality.good_ratio_ge_0_60 >= previous_good_ratio + 0.04 &&
           current_underresolved_transition_fraction_real_ <=
               std::max(0.20, underresolved_transition_fraction_step_.empty()
                                  ? 0.20
                                  : underresolved_transition_fraction_step_.back());
-      const bool shape_target_hit =
-          candidate_quality.angle_quality_mean_3d >= 0.46 &&
-          candidate_quality.edge_ratio_mean_3d >= 0.46 &&
-          candidate_quality.min_angle_p05_3d >= 15.0 &&
-          candidate_quality.max_angle_p95_3d <= 128.0;
+      const bool shape_target_hit = candidate_quality.angle_quality_mean_3d >= 0.46 &&
+                                    candidate_quality.edge_ratio_mean_3d >= 0.46 &&
+                                    candidate_quality.min_angle_p05_3d >= 15.0 &&
+                                    candidate_quality.max_angle_p95_3d <= 128.0;
       const bool shape_trending_ok =
           candidate_quality.angle_quality_mean_3d >= previous_angle_quality - 0.05 &&
           candidate_quality.edge_ratio_mean_3d >= previous_edge_ratio - 0.05 &&
           candidate_quality.min_angle_p05_3d >= previous_min_angle_p05 - 3.0 &&
           candidate_quality.max_angle_p95_3d <= previous_max_angle_p95 + 7.0;
-      const bool hybrid_shape_gate_ok =
-          (this->step_ <= 1)
-              ? true
-              : ((shape_target_hit || shape_trending_ok) &&
-                 candidate_quality.min_angle_p05_3d >= 13.0 &&
-                 candidate_quality.max_angle_p95_3d <= 132.0);
+      const bool hybrid_shape_gate_ok = (this->step_ <= 1)
+                                            ? true
+                                            : ((shape_target_hit || shape_trending_ok) &&
+                                               candidate_quality.min_angle_p05_3d >= 13.0 &&
+                                               candidate_quality.max_angle_p95_3d <= 132.0);
       const bool quality_gate_ok =
           (!current_policy_.stable_mode || this->step_ <= 1)
               ? true
@@ -2270,24 +2121,20 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
                  hybrid_shape_gate_ok);
       const bool score_ok =
           (ACCEPTANCE_MODE == 0)
-              ? ((improvement >= 0.0 || stable_mid_explore_accept ||
-                  stable_late_explore_accept) &&
+              ? ((improvement >= 0.0 || stable_mid_explore_accept || stable_late_explore_accept) &&
                  transition_coherence_ok && local_progress_ok && consistency_ok &&
                  stable_transition_ready && quality_gate_ok)
               : ((error_within_tolerance && small_step_drop_ok &&
                   error_drop_abs >= STEP_ACCEPT_ERROR_DROP_MIN &&
-                  acceptance_score >= ACCEPTANCE_MIN_SCORE && efficiency_ok &&
-                  target_growth_ok && local_progress_ok && step2_quality_stable &&
-                  consistency_ok && stable_step2_error_ok &&
-                  step2_overshoot_ok && stable_progressive_overshoot_ok &&
+                  acceptance_score >= ACCEPTANCE_MIN_SCORE && efficiency_ok && target_growth_ok &&
+                  local_progress_ok && step2_quality_stable && consistency_ok &&
+                  stable_step2_error_ok && step2_overshoot_ok && stable_progressive_overshoot_ok &&
                   transition_coherence_ok && quality_gate_ok) ||
                  step1_override || budget_driven_step1_ok);
       const bool small_mesh_progress_override =
           (!current_policy_.stable_mode) && previous_elements > 0ULL &&
-          previous_elements <= 32ULL && this->step_ <= 3 &&
-          element_growth_factor <= 3.1 &&
-          this->error_local_process_ <= prev_error * 2.0 &&
-          candidate_quality.quality_min >= 0.04 &&
+          previous_elements <= 32ULL && this->step_ <= 3 && element_growth_factor <= 3.1 &&
+          this->error_local_process_ <= prev_error * 2.0 && candidate_quality.quality_min >= 0.04 &&
           candidate_quality.poor_ratio <= 0.35 &&
           current_underresolved_transition_fraction_real_ <= 0.35;
 
@@ -2338,24 +2185,20 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       }
 #if USE_PRINT_RESULTS
       if (this->error_local_process_ < prev_error) {
-        cout << "Parando: candidato do step " << this->step_
-             << " reduziu o erro global de " << prev_error << " para "
-             << this->error_local_process_
+        cout << "Parando: candidato do step " << this->step_ << " reduziu o erro global de "
+             << prev_error << " para " << this->error_local_process_
              << ", mas foi rejeitado pelo criterio hibrido"
              << " (score=" << acceptance_score
-             << ", crescimento_elementos=" << element_growth_factor << ")"
-             << endl;
+             << ", crescimento_elementos=" << element_growth_factor << ")" << endl;
       } else {
         cout << "Parando: erro global aumentou de " << prev_error << " para "
              << this->error_local_process_ << " no step " << this->step_
              << " (score=" << acceptance_score
-             << ", crescimento_elementos=" << element_growth_factor << ")"
-             << endl;
+             << ", crescimento_elementos=" << element_growth_factor << ")" << endl;
       }
       if (mesh_ && (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
                     WRITE_MESH == std::string("h"))) {
-        cout << "Salvando malha candidata rejeitada para analise no step "
-             << this->step_ << endl;
+        cout << "Salvando malha candidata rejeitada para analise no step " << this->step_ << endl;
       }
 #endif
       if (mesh_ && (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
@@ -2384,8 +2227,10 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
         if (last_candidate_elements_current_.size() != current_patch_adaptation_.size()) {
           last_candidate_elements_current_.assign(current_patch_adaptation_.size(), 0ULL);
         }
-        for (size_t patch_index = 0; patch_index < current_patch_adaptation_.size(); ++patch_index) {
-          last_candidate_patch_h_[patch_index] = current_patch_adaptation_[patch_index].applied_patch_h;
+        for (size_t patch_index = 0; patch_index < current_patch_adaptation_.size();
+             ++patch_index) {
+          last_candidate_patch_h_[patch_index] =
+              current_patch_adaptation_[patch_index].applied_patch_h;
           last_candidate_elements_current_[patch_index] =
               current_patch_adaptation_[patch_index].elements_current;
         }
@@ -2395,24 +2240,22 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
       restore_geometry_submeshes(geometry, accepted_mesh);
       restore_curve_snapshots(geometry, accepted_curve_snapshots);
       if (force_min_steps_for_logging && this->step_ < min_steps_for_logging) {
-        if (current_policy_.stable_mode && previous_elements > 0ULL &&
-            previous_elements <= 64ULL && current_elements > 0ULL) {
+        if (current_policy_.stable_mode && previous_elements > 0ULL && previous_elements <= 64ULL &&
+            current_elements > 0ULL) {
           has_provisional_progress_state = true;
           provisional_previous_elements = previous_elements;
           provisional_prev_error = prev_error;
         }
 #if USE_PRINT_RESULTS
         cout << "Continuando apos rejeicao para registrar passos intermediarios "
-             << "(step " << this->step_ << " de " << min_steps_for_logging << ")"
-             << endl;
+             << "(step " << this->step_ << " de " << min_steps_for_logging << ")" << endl;
 #endif
         continue;
       }
       if (this->step_ < current_policy_.max_steps) {
 #if USE_PRINT_RESULTS
-        cout << "Continuando apos rejeicao: step " << this->step_
-             << " < max_steps " << current_policy_.max_steps
-             << " (tentar refinamento seguinte)" << endl;
+        cout << "Continuando apos rejeicao: step " << this->step_ << " < max_steps "
+             << current_policy_.max_steps << " (tentar refinamento seguinte)" << endl;
 #endif
         continue;
       }
@@ -2444,10 +2287,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
         initial_error > 0.0 ? this->error_local_process_ / initial_error : 0.0;
     this->error_normalized_step_.push_back(normalized_error);
     this->error_total_reduction_pct_step_.push_back(
-        initial_error > 0.0
-            ? ((initial_error - this->error_local_process_) / initial_error) *
-                  100.0
-            : 0.0);
+        initial_error > 0.0 ? ((initial_error - this->error_local_process_) / initial_error) * 100.0
+                            : 0.0);
     quality_min_step_.push_back(candidate_quality.quality_min);
     quality_mean_step_.push_back(candidate_quality.quality_mean);
     poor_ratio_step_.push_back(candidate_quality.poor_ratio);
@@ -2464,8 +2305,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     eligible_patch_mean_factor_step_.push_back(current_eligible_patch_mean_factor_);
     eligible_patch_mean_h_scale_step_.push_back(current_eligible_patch_mean_h_scale_);
     element_budget_abs_step_.push_back(current_element_budget_abs_);
-    element_budget_growth_factor_limit_step_.push_back(
-        current_element_budget_growth_factor_limit_);
+    element_budget_growth_factor_limit_step_.push_back(current_element_budget_growth_factor_limit_);
     element_budget_soft_limit_step_.push_back(current_element_budget_soft_limit_);
     candidate_elements_before_budget_retry_step_.push_back(
         current_candidate_elements_before_budget_retry_);
@@ -2485,60 +2325,51 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     budget_driver_mode_step_.push_back(current_budget_driver_mode_);
     patch_budget_dispersion_step_.push_back(current_patch_budget_dispersion_);
     patch_h_dispersion_step_.push_back(current_patch_h_dispersion_);
-    actual_patch_element_dispersion_step_.push_back(
-        current_actual_patch_element_dispersion_);
+    actual_patch_element_dispersion_step_.push_back(current_actual_patch_element_dispersion_);
     curve_balance_dispersion_step_.push_back(current_curve_balance_dispersion_);
     underresolved_transition_fraction_step_.push_back(
         current_underresolved_transition_fraction_real_);
     transition_imbalance_max_step_.push_back(current_transition_imbalance_max_real_);
     patch_consistency_penalty_step_.push_back(current_patch_consistency_penalty_);
-    consistency_regularization_active_step_.push_back(
-        current_consistency_regularization_active_);
+    consistency_regularization_active_step_.push_back(current_consistency_regularization_active_);
     local_progress_coverage_step_.push_back(current_local_progress_coverage_);
     improved_top_patches_step_.push_back(current_improved_top_patches_);
     top_patch_candidate_count_step_.push_back(current_top_patch_candidate_count_);
     step_purpose_step_.push_back(current_step_purpose_);
     UpdatePatchHistory(geometry, mesh_.get(),
-                       last_domain_patch_factors_.empty()
-                           ? accepted_candidate_patch_factors
-                           : last_domain_patch_factors_,
+                       last_domain_patch_factors_.empty() ? accepted_candidate_patch_factors
+                                                          : last_domain_patch_factors_,
                        last_submesh_error_, true);
     prev_error = this->error_local_process_;
     has_provisional_progress_state = false;
 
 #if USE_SAVE_ERRO_MESH
     SaveErrorMesh(malha, step_);
-#endif  // USE_SAVE_ERRO_MESH
+#endif // USE_SAVE_ERRO_MESH
 
 #if USE_MPI
 #if USE_PRINT_RESULTS
-    cout << "*************** ERRO " << this->step_ << " rank " << RANK_MPI
-         << " = " << this->error_local_process_ << endl;
-#endif  // #if USE_PRINT_RESULTS
+    cout << "*************** ERRO " << this->step_ << " rank " << RANK_MPI << " = "
+         << this->error_local_process_ << endl;
+#endif // #if USE_PRINT_RESULTS
 #else
 #if USE_PRINT_RESULTS
-    cout << "*************** ERRO " << this->step_ << " = "
-         << this->error_local_process_ << endl;
-    cout << "Resumo step " << this->step_ << ": elementos="
-         << current_elements << ", delta_elementos=" << delta_elements
-         << ", erro_global=" << this->error_local_process_
-         << ", queda_abs=" << error_drop_abs
-         << ", queda_pct=" << (improvement * 100.0)
+    cout << "*************** ERRO " << this->step_ << " = " << this->error_local_process_ << endl;
+    cout << "Resumo step " << this->step_ << ": elementos=" << current_elements
+         << ", delta_elementos=" << delta_elements << ", erro_global=" << this->error_local_process_
+         << ", queda_abs=" << error_drop_abs << ", queda_pct=" << (improvement * 100.0)
          << ", queda_por_elemento=" << error_drop_per_element
          << ", fator_crescimento_elementos=" << element_growth_factor
          << ", erro_normalizado=" << normalized_error
          << ", quality_min=" << candidate_quality.quality_min
          << ", quality_mean=" << candidate_quality.quality_mean
          << ", poor_ratio=" << candidate_quality.poor_ratio
-         << ", acceptance_score=" << acceptance_score
-         << ", retry=" << accepted_retry_attempt
+         << ", acceptance_score=" << acceptance_score << ", retry=" << accepted_retry_attempt
          << ", relaxation=" << current_adaptation_relaxation_
-         << ", max_delta=" << current_adaptation_max_delta_
-         << ", erro_local_max=" << max_sub_error
-         << ", nos_gauss=" << current_gauss_nodes_
-         << ", nos_mean=" << current_mean_nodes_ << endl;
-#endif  // #if USE_PRINT_RESULTS
-#endif  // USE_MPI
+         << ", max_delta=" << current_adaptation_max_delta_ << ", erro_local_max=" << max_sub_error
+         << ", nos_gauss=" << current_gauss_nodes_ << ", nos_mean=" << current_mean_nodes_ << endl;
+#endif // #if USE_PRINT_RESULTS
+#endif // USE_MPI
 
     timer->InitTimerParallel(0, 0, 11);
     if (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
@@ -2554,9 +2385,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     if (this->error_local_process_ <= EPSYLON) {
       stop_reason_ = "target_error_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: erro global <= EPSYLON (" << EPSYLON
-           << ") no step " << this->step_ << " valor "
-           << this->error_local_process_ << endl;
+      cout << "Parando: erro global <= EPSYLON (" << EPSYLON << ") no step " << this->step_
+           << " valor " << this->error_local_process_ << endl;
 #endif
       break;
     }
@@ -2564,9 +2394,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     if (ERROR_FLOOR > 0.0 && this->error_local_process_ <= ERROR_FLOOR) {
       stop_reason_ = "error_floor_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: erro global <= ERROR_FLOOR (" << ERROR_FLOOR
-           << ") no step " << this->step_ << " valor "
-           << this->error_local_process_ << endl;
+      cout << "Parando: erro global <= ERROR_FLOOR (" << ERROR_FLOOR << ") no step " << this->step_
+           << " valor " << this->error_local_process_ << endl;
 #endif
       break;
     }
@@ -2574,9 +2403,8 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     if (MIN_ERROR_DROP_ABS > 0.0 && error_drop_abs <= MIN_ERROR_DROP_ABS) {
       stop_reason_ = "saturation_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: queda absoluta do erro (" << error_drop_abs
-           << ") <= MIN_ERROR_DROP_ABS (" << MIN_ERROR_DROP_ABS
-           << ") no step " << this->step_ << endl;
+      cout << "Parando: queda absoluta do erro (" << error_drop_abs << ") <= MIN_ERROR_DROP_ABS ("
+           << MIN_ERROR_DROP_ABS << ") no step " << this->step_ << endl;
 #endif
       break;
     }
@@ -2585,9 +2413,9 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
         error_drop_per_element <= MIN_ERROR_DROP_PER_ELEMENT) {
       stop_reason_ = "saturation_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: eficiencia de queda do erro por elemento ("
-           << error_drop_per_element << ") <= MIN_ERROR_DROP_PER_ELEMENT ("
-           << MIN_ERROR_DROP_PER_ELEMENT << ") no step " << this->step_ << endl;
+      cout << "Parando: eficiencia de queda do erro por elemento (" << error_drop_per_element
+           << ") <= MIN_ERROR_DROP_PER_ELEMENT (" << MIN_ERROR_DROP_PER_ELEMENT << ") no step "
+           << this->step_ << endl;
 #endif
       break;
     }
@@ -2595,54 +2423,47 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
     if (stagnant >= PATIENCE) {
       stop_reason_ = "saturation_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: melhoria relativa < " << MIN_IMPROVEMENT
-           << " por " << PATIENCE << " iterações consecutivas no step "
-           << this->step_ << " (última melhoria " << improvement << ")"
-           << endl;
+      cout << "Parando: melhoria relativa < " << MIN_IMPROVEMENT << " por " << PATIENCE
+           << " iterações consecutivas no step " << this->step_ << " (última melhoria "
+           << improvement << ")" << endl;
 #endif
       break;
     }
 
     // Early-stop só para cenários curtos (max_steps baixo). Para requests que querem
     // malhas adicionais (passos 4 e 5), não interromper quando max_steps > 3.
-    if (current_policy_.stable_mode && current_policy_.max_steps <= 3 &&
-        this->step_ == 1 && geometry != nullptr &&
-        geometry->GetNumberPatches() <= 4U && !error_step_.empty() &&
+    if (current_policy_.stable_mode && current_policy_.max_steps <= 3 && this->step_ == 1 &&
+        geometry != nullptr && geometry->GetNumberPatches() <= 4U && !error_step_.empty() &&
         error_step_.back() < 0.12) {
       stop_reason_ = "stable_few_patch_low_error";
 #if USE_PRINT_RESULTS
       cout << "Parando: malha com poucos patches e erro global ja baixo; "
-           << "evitando passo extra cuja remalha tende a aumentar o erro."
-           << endl;
+           << "evitando passo extra cuja remalha tende a aumentar o erro." << endl;
 #endif
       break;
     }
   }
 
 #if USE_MPI
-  timer->EndTimerParallel(RANK_MPI, 0, 10);  // Full
+  timer->EndTimerParallel(RANK_MPI, 0, 10); // Full
   timer->PrintTime(RANK_MPI);
-#endif  // USE_MPI
+#endif // USE_MPI
 
   // Escreve o(s) arquivo(s) com suas respectivas malhas em cada step_
 #if USE_MPI
   for (unsigned int i = 0; i < error_step_.size(); ++i) {
-    cout << "Erro do processo " << RANK_MPI << " no step_ " << i << " = "
-         << error_step_[i] << endl;
+    cout << "Erro do processo " << RANK_MPI << " no step_ " << i << " = " << error_step_[i] << endl;
   }
 #else
 
-  timer->EndTimerParallel(0, 0, 10);  // Full
+  timer->EndTimerParallel(0, 0, 10); // Full
   timer->PrintTime();
 
   for (unsigned int i = 0; i < error_step_.size(); ++i) {
     cout << "Erro no step_ " << i << " = " << error_step_[i]
-         << ", elementos = " << elements_step_[i]
-         << ", nos_gauss = " << gauss_nodes_step_[i]
-         << ", nos_mean = " << mean_nodes_step_[i]
-         << ", quality_min = " << quality_min_step_[i]
-         << ", quality_mean = " << quality_mean_step_[i]
-         << ", poor_ratio = " << poor_ratio_step_[i]
+         << ", elementos = " << elements_step_[i] << ", nos_gauss = " << gauss_nodes_step_[i]
+         << ", nos_mean = " << mean_nodes_step_[i] << ", quality_min = " << quality_min_step_[i]
+         << ", quality_mean = " << quality_mean_step_[i] << ", poor_ratio = " << poor_ratio_step_[i]
          << ", acceptance_score = " << acceptance_score_step_[i]
          << ", retry = " << retry_attempt_step_[i]
          << ", relaxation = " << applied_relaxation_step_[i]
@@ -2651,8 +2472,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
          << ", queda_pct = " << error_drop_pct_step_[i]
          << ", queda_por_elemento = " << error_drop_per_element_step_[i]
          << ", fator_crescimento_elementos = " << element_growth_factor_step_[i]
-         << ", erro_normalizado = " << error_normalized_step_[i]
-         << endl;
+         << ", erro_normalizado = " << error_normalized_step_[i] << endl;
   }
 
   cout << "Motivo da parada: " << stop_reason_ << endl;
@@ -2676,7 +2496,7 @@ if (this->id_managers_.size() < static_cast<size_t>(size_thread)) {
 #else
   curve_samples.Release();
 #endif
-#endif  // USE_MPI
+#endif // USE_MPI
 }
 
 void GeneratorAdaptive::DisableSharedCurveSynchronization(Geometry* geometry) {
@@ -2689,8 +2509,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
   const std::vector<double> patch_factors = ComputePatchAdaptationFactors(geometry);
   current_curve_adaptation_.clear();
   current_curve_target_points_.assign(geometry->GetNumberCurves(), 0.0);
-  current_curve_adaptation_.assign(geometry->GetNumberCurves(),
-                                   CurveAdaptationSnapshot{});
+  current_curve_adaptation_.assign(geometry->GetNumberCurves(), CurveAdaptationSnapshot{});
 
   auto clamp_curve_target = [](int value) {
     value = std::max(value, std::max(2, CURVE_POINT_MIN));
@@ -2712,8 +2531,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
       double max_patch_growth = 1.0;
       double max_patch_budget = 0.0;
       bool touches_priority_patch = false;
-      for (unsigned int patch_index = 0; patch_index < curve->GetNumBerPatches();
-           ++patch_index) {
+      for (unsigned int patch_index = 0; patch_index < curve->GetNumBerPatches(); ++patch_index) {
         Patch* patch = curve->GetPatch(patch_index);
         if (!patch) {
           continue;
@@ -2723,13 +2541,10 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
           continue;
         }
         source_patch_ids.push_back(patch_id);
-        if (patch_id < current_patch_target_elements_.size() &&
-            patch_id < patch_history_.size()) {
-          max_patch_budget =
-              std::max(max_patch_budget, current_patch_target_elements_[patch_id]);
+        if (patch_id < current_patch_target_elements_.size() && patch_id < patch_history_.size()) {
+          max_patch_budget = std::max(max_patch_budget, current_patch_target_elements_[patch_id]);
           max_adjacent_target_elements =
-              std::max(max_adjacent_target_elements,
-                       current_patch_target_elements_[patch_id]);
+              std::max(max_adjacent_target_elements, current_patch_target_elements_[patch_id]);
           if (patch_id < current_patch_target_h_.size() &&
               current_patch_target_h_[patch_id] > 0.0) {
             min_adjacent_target_h =
@@ -2738,11 +2553,10 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
               sensitive_curve = true;
             }
           }
-          const double prev_patch_elements = std::max(
-              1.0, static_cast<double>(patch_history_[patch_id].prev_patch_elements));
-          max_patch_growth =
-              std::max(max_patch_growth, current_patch_target_elements_[patch_id] /
-                                             prev_patch_elements);
+          const double prev_patch_elements =
+              std::max(1.0, static_cast<double>(patch_history_[patch_id].prev_patch_elements));
+          max_patch_growth = std::max(max_patch_growth, current_patch_target_elements_[patch_id] /
+                                                            prev_patch_elements);
           if (patch_id < current_patch_adaptation_.size() &&
               current_patch_adaptation_[patch_id].refinement_rank > 0 &&
               current_patch_adaptation_[patch_id].refinement_rank <=
@@ -2754,11 +2568,10 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
       const double curve_growth_cap =
           (step_ <= 1) ? CURVE_POINT_GROWTH_STEP1 : CURVE_POINT_GROWTH_STEPN;
       const double blended_growth =
-          CURVE_POINT_BUDGET_BLEND * max_patch_growth +
-          (1.0 - CURVE_POINT_BUDGET_BLEND) * 1.0;
-      target_curve_points = clamp_curve_target(static_cast<int>(std::round(
-          static_cast<double>(previous_points) *
-          std::min(curve_growth_cap, std::max(1.0, blended_growth)))));
+          CURVE_POINT_BUDGET_BLEND * max_patch_growth + (1.0 - CURVE_POINT_BUDGET_BLEND) * 1.0;
+      target_curve_points = clamp_curve_target(
+          static_cast<int>(std::round(static_cast<double>(previous_points) *
+                                      std::min(curve_growth_cap, std::max(1.0, blended_growth)))));
       if (step_ >= 2 && touches_priority_patch) {
         target_curve_points =
             std::max(target_curve_points, clamp_curve_target(previous_points + 4));
@@ -2768,9 +2581,8 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
             std::max(target_curve_points, clamp_curve_target(previous_points + 6));
       }
       if (sensitive_curve) {
-        target_curve_points =
-            std::max(target_curve_points,
-                     clamp_curve_target(previous_points + ((step_ <= 1) ? 5 : 7)));
+        target_curve_points = std::max(
+            target_curve_points, clamp_curve_target(previous_points + ((step_ <= 1) ? 5 : 7)));
       }
       if (current_policy_.stable_mode && step_ >= 2 &&
           min_adjacent_target_h < std::numeric_limits<double>::max()) {
@@ -2784,21 +2596,21 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
         } else if (current_step_purpose_ == "transition_catch_up") {
           spacing_scale = std::min(spacing_scale, 0.72);
         }
-        const double desired_spacing =
-            std::max(1.0e-6, min_adjacent_target_h * spacing_scale);
-        int geometric_target =
-            static_cast<int>(std::ceil(curve_length / desired_spacing)) + 1;
-        if (max_adjacent_target_elements > 250.0) geometric_target += 1;
-        if (max_adjacent_target_elements > 450.0) geometric_target += 1;
-        if (sensitive_curve) geometric_target += 4;
-        if (touches_priority_patch) geometric_target += 2;
-        target_curve_points =
-            std::max(target_curve_points, clamp_curve_target(geometric_target));
+        const double desired_spacing = std::max(1.0e-6, min_adjacent_target_h * spacing_scale);
+        int geometric_target = static_cast<int>(std::ceil(curve_length / desired_spacing)) + 1;
+        if (max_adjacent_target_elements > 250.0)
+          geometric_target += 1;
+        if (max_adjacent_target_elements > 450.0)
+          geometric_target += 1;
+        if (sensitive_curve)
+          geometric_target += 4;
+        if (touches_priority_patch)
+          geometric_target += 2;
+        target_curve_points = std::max(target_curve_points, clamp_curve_target(geometric_target));
       }
     }
     CurveAdaptationSnapshot snapshot;
-    snapshot.curve_id = curve->GetId() != 0UL ? curve->GetId()
-                                              : static_cast<unsigned long>(i);
+    snapshot.curve_id = curve->GetId() != 0UL ? curve->GetId() : static_cast<unsigned long>(i);
     snapshot.factor = ComputeCurveAdaptationFactor(curve, patch_factors);
     snapshot.num_points = curve->GetNumBerPoints();
     snapshot.policy = CURVE_ADAPTATION_POLICY;
@@ -2806,9 +2618,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     snapshot.actual_points = previous_points;
     snapshot.geometric_target_points = target_curve_points;
     snapshot.min_adjacent_target_h =
-        (min_adjacent_target_h < std::numeric_limits<double>::max())
-            ? min_adjacent_target_h
-            : 0.0;
+        (min_adjacent_target_h < std::numeric_limits<double>::max()) ? min_adjacent_target_h : 0.0;
     snapshot.max_adjacent_target_elements = max_adjacent_target_elements;
     snapshot.sensitive_curve = sensitive_curve ? 1 : 0;
     snapshot.target_points_before_consistency = target_curve_points;
@@ -2817,8 +2627,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     std::ostringstream adjacent_ids;
     std::ostringstream adjacent_weights;
     bool first_adjacent = true;
-    for (unsigned int patch_index = 0;
-         patch_index < curve->GetNumBerPatches(); ++patch_index) {
+    for (unsigned int patch_index = 0; patch_index < curve->GetNumBerPatches(); ++patch_index) {
       Patch* patch = curve->GetPatch(patch_index);
       if (!patch) {
         continue;
@@ -2846,7 +2655,8 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     {
       std::ostringstream source_patches;
       for (size_t idx = 0; idx < source_patch_ids.size(); ++idx) {
-        if (idx > 0) source_patches << "|";
+        if (idx > 0)
+          source_patches << "|";
         source_patches << source_patch_ids[idx];
       }
       snapshot.curve_budget_source_patches = source_patches.str();
@@ -2855,8 +2665,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     current_curve_adaptation_[i] = snapshot;
   }
 
-  if (PATCH_CONSISTENCY_MODE == 1 && CURVE_CONSISTENCY_MODE == 1 &&
-      BUDGET_DRIVEN_ADAPTATION == 1) {
+  if (PATCH_CONSISTENCY_MODE == 1 && CURVE_CONSISTENCY_MODE == 1 && BUDGET_DRIVEN_ADAPTATION == 1) {
     RegularizeCurveTargetsFromPatchConsistency(geometry);
   }
 
@@ -2864,29 +2673,26 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     for (unsigned int i = 0; i < geometry->GetNumberCurves(); ++i) {
       CurveAdaptive* curve = geometry->GetCurve(i);
       CurveAdaptationSnapshot& snapshot = current_curve_adaptation_[i];
-      const int previous_points =
-          std::max(2, static_cast<int>(curve->GetNumBerPoints()));
+      const int previous_points = std::max(2, static_cast<int>(curve->GetNumBerPoints()));
       const double growth_cap_factor = (step_ == 2) ? 1.55 : 1.75;
-      const int growth_cap_points = clamp_curve_target(static_cast<int>(std::ceil(
-          static_cast<double>(previous_points) * growth_cap_factor)));
+      const int growth_cap_points = clamp_curve_target(
+          static_cast<int>(std::ceil(static_cast<double>(previous_points) * growth_cap_factor)));
       int elements_cap_points = growth_cap_points;
       if (snapshot.max_adjacent_target_elements > 0.0) {
         elements_cap_points = clamp_curve_target(
-            static_cast<int>(std::ceil(
-                1.8 * std::sqrt(snapshot.max_adjacent_target_elements))) +
+            static_cast<int>(std::ceil(1.8 * std::sqrt(snapshot.max_adjacent_target_elements))) +
             6);
       }
       const int structural_cap =
-          std::max(previous_points + 1,
-                   std::min(growth_cap_points, elements_cap_points));
-      const int before_cap = clamp_curve_target(
-          static_cast<int>(std::round(current_curve_target_points_[i])));
+          std::max(previous_points + 1, std::min(growth_cap_points, elements_cap_points));
+      const int before_cap =
+          clamp_curve_target(static_cast<int>(std::round(current_curve_target_points_[i])));
       if (before_cap > structural_cap) {
         current_curve_target_points_[i] = static_cast<double>(structural_cap);
         snapshot.curve_consistency_clamped = 1;
       }
-      snapshot.target_points_after_consistency = clamp_curve_target(
-          static_cast<int>(std::round(current_curve_target_points_[i])));
+      snapshot.target_points_after_consistency =
+          clamp_curve_target(static_cast<int>(std::round(current_curve_target_points_[i])));
       snapshot.target_points = snapshot.target_points_after_consistency;
       snapshot.geometric_target_points = snapshot.target_points_after_consistency;
     }
@@ -2895,11 +2701,10 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
   // In sequential, ensure id_managers_[0] exists.
   for (unsigned int i = 0; i < geometry->GetNumberCurves(); ++i) {
     CurveAdaptive* curve = geometry->GetCurve(i);
-    const double factor_disc_global =
-        ComputeCurveAdaptationFactor(curve, patch_factors);
+    const double factor_disc_global = ComputeCurveAdaptationFactor(curve, patch_factors);
     const int previous_points = std::max(2, static_cast<int>(curve->GetNumBerPoints()));
-    const int target_curve_points = clamp_curve_target(
-        static_cast<int>(std::round(current_curve_target_points_[i])));
+    const int target_curve_points =
+        clamp_curve_target(static_cast<int>(std::round(current_curve_target_points_[i])));
 
     apmesh::generation::RefineCurveSamples(
         curve, map_points,
@@ -2920,8 +2725,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     snapshot.actual_points = static_cast<int>(curve->GetNumBerPoints());
     snapshot.point_growth_factor =
         previous_points > 0
-            ? static_cast<double>(snapshot.actual_points) /
-                  static_cast<double>(previous_points)
+            ? static_cast<double>(snapshot.actual_points) / static_cast<double>(previous_points)
             : 1.0;
   }
 
@@ -2933,10 +2737,9 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     throw std::invalid_argument("Domain adaptation requires a geometry and mesh");
   }
   const std::vector<double> patch_factors = ComputePatchAdaptationFactors(geometry);
-  const bool few_patch_low_error =
-      current_policy_.stable_mode && geometry != nullptr &&
-      geometry->GetNumberPatches() <= 4U && !error_step_.empty() &&
-      error_step_.back() < 0.12 && step_ <= 3;
+  const bool few_patch_low_error = current_policy_.stable_mode && geometry != nullptr &&
+                                   geometry->GetNumberPatches() <= 4U && !error_step_.empty() &&
+                                   error_step_.back() < 0.12 && step_ <= 3;
   last_domain_patch_factors_.assign(patch_factors.begin(), patch_factors.end());
   current_underresolved_transition_patch_count_real_ = 0U;
   current_underresolved_transition_fraction_real_ = 0.0;
@@ -2953,45 +2756,35 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     bool hard_saturated = false;
     if (QUADTREE_SATURATION_MODE == 1 && step_ > 1 && i < patch_history_.size()) {
       const PatchHistoryState& history = patch_history_[i];
-      if (history.prev_patch_generated_faces >
-              static_cast<unsigned long long>(
-                  std::max(1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
-          history.prev_patch_efficiency <=
-              QUADTREE_SATURATION_EFFICIENCY_THRESHOLD) {
+      if (history.prev_patch_generated_faces > static_cast<unsigned long long>(std::max(
+                                                   1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
+          history.prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD) {
         soft_saturated = true;
-        domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE,
-                                   PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE, PATCH_FACTOR_MIN,
+                                   PATCH_FACTOR_MAX);
       }
       if (QUADTREE_HARD_SATURATION_MODE == 1 &&
           history.consecutive_inefficient_steps >=
               static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS)) {
         hard_saturated = true;
-        domain_factor =
-            std::max(domain_factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
+        domain_factor = std::max(domain_factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
       }
     }
-    if (STEP_ELEMENT_BUDGET_MODE == 1 && step_ > 1 &&
-        current_budget_retry_count_ > 0U) {
-      domain_factor = ClampValue(
-          domain_factor *
-              std::pow(STEP_ELEMENT_BUDGET_RETRY_H_SCALE,
-                       static_cast<int>(current_budget_retry_count_)),
-          PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+    if (STEP_ELEMENT_BUDGET_MODE == 1 && step_ > 1 && current_budget_retry_count_ > 0U) {
+      domain_factor =
+          ClampValue(domain_factor * std::pow(STEP_ELEMENT_BUDGET_RETRY_H_SCALE,
+                                              static_cast<int>(current_budget_retry_count_)),
+                     PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
     }
     const int refinement_rank =
-        (i < current_patch_adaptation_.size())
-            ? current_patch_adaptation_[i].refinement_rank
-            : -1;
-    const bool step2_quality_critical =
-        (step_ == 2 && i < current_patch_adaptation_.size() &&
-         (current_patch_adaptation_[i].quality_min < 0.25 ||
-          current_patch_adaptation_[i].poor_ratio > 0.18));
+        (i < current_patch_adaptation_.size()) ? current_patch_adaptation_[i].refinement_rank : -1;
+    const bool step2_quality_critical = (step_ == 2 && i < current_patch_adaptation_.size() &&
+                                         (current_patch_adaptation_[i].quality_min < 0.25 ||
+                                          current_patch_adaptation_[i].poor_ratio > 0.18));
     if (step_ > 1 && PATCH_GENERATION_CONTROL_MODE == 1) {
-      patch_generation_mode =
-          (STEP2_MICRO_REFINEMENT_MODE == 1) ? "micro_refinement" : "normal";
+      patch_generation_mode = (STEP2_MICRO_REFINEMENT_MODE == 1) ? "micro_refinement" : "normal";
       if (PATCH_GENERATION_TOP_RANK_ONLY_MODE == 1 &&
-          (i >= current_patch_eligible_mask_.size() ||
-           current_patch_eligible_mask_[i] == 0)) {
+          (i >= current_patch_eligible_mask_.size() || current_patch_eligible_mask_[i] == 0)) {
         patch_generation_mode = "budget_constrained";
         domain_factor = std::max(domain_factor, STEP2_NONELIGIBLE_FACTOR_MIN);
       }
@@ -3005,8 +2798,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       }
       if (static_cast<size_t>(i) < patch_history_.size() &&
           patch_history_[i].prev_patch_elements >=
-              static_cast<unsigned long long>(
-                  std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
+              static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
         eligible_h_scale *= 1.05;
       }
       if (STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
@@ -3016,8 +2808,8 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       if (PATCH_GENERATION_CONTROL_MODE == 1) {
         eligible_h_scale *= PATCH_GENERATION_MICRO_H_SCALE;
       }
-      domain_factor = ClampValue(domain_factor * eligible_h_scale, PATCH_FACTOR_MIN,
-                                 PATCH_FACTOR_MAX);
+      domain_factor =
+          ClampValue(domain_factor * eligible_h_scale, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
       if (i < current_patch_adaptation_.size()) {
         current_patch_adaptation_[i].eligible_h_scale_applied = eligible_h_scale;
       }
@@ -3028,8 +2820,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     if (step_ == 2 && refinement_rank > 0 &&
         refinement_rank <= static_cast<int>(current_top_patch_count_ + 1U)) {
       if (!few_patch_low_error) {
-        domain_factor =
-            std::min(domain_factor, step2_quality_critical ? 0.96 : 1.0);
+        domain_factor = std::min(domain_factor, step2_quality_critical ? 0.96 : 1.0);
         if (step2_quality_critical) {
           patch_generation_mode = "quality_stabilized";
         }
@@ -3044,8 +2835,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     if (step_ > 1 && i < patch_history_.size() && i < current_patch_adaptation_.size()) {
       const PatchHistoryState& history = patch_history_[i];
       const double efficiency_norm =
-          Clamp01(history.prev_patch_efficiency /
-                  std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+          Clamp01(history.prev_patch_efficiency / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
       const double rank_weight =
           (refinement_rank > 0)
               ? std::max(0.35,
@@ -3060,14 +2850,12 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
           1.0 + PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_EFFICIENCY * efficiency_norm;
       const double local_patch_budget =
           std::min(PATCH_LOCAL_BUDGET_HARD_CAP,
-                   PATCH_LOCAL_ELEMENT_BUDGET_BASE * rank_weight *
-                       efficiency_weight);
+                   PATCH_LOCAL_ELEMENT_BUDGET_BASE * rank_weight * efficiency_weight);
       current_patch_adaptation_[i].local_patch_budget = local_patch_budget;
       if (!few_patch_low_error) {
         current_patch_adaptation_[i].target_patch_elements = local_patch_budget;
       } else if (i < current_patch_target_elements_.size()) {
-        current_patch_adaptation_[i].target_patch_elements =
-            current_patch_target_elements_[i];
+        current_patch_adaptation_[i].target_patch_elements = current_patch_target_elements_[i];
       }
       current_patch_adaptation_[i].actual_patch_elements =
           static_cast<double>(history.prev_patch_generated_faces);
@@ -3075,20 +2863,17 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
           PATCH_LOCAL_ELEMENT_BUDGET_MODE == 1 &&
           history.prev_patch_generated_faces >
               static_cast<unsigned long long>(std::max(1.0, local_patch_budget));
-      current_patch_adaptation_[i].patch_budget_exceeded =
-          patch_budget_exceeded ? 1 : 0;
+      current_patch_adaptation_[i].patch_budget_exceeded = patch_budget_exceeded ? 1 : 0;
       if (patch_budget_exceeded) {
         patch_generation_mode = "budget_constrained";
-        domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE,
-                                   PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE, PATCH_FACTOR_MIN,
+                                   PATCH_FACTOR_MAX);
       }
       if (!few_patch_low_error && PATCH_GENERATION_CONTROL_MODE == 1 &&
-          current_target_element_growth_ > 0.0 &&
-          history.prev_patch_elements > 0ULL &&
+          current_target_element_growth_ > 0.0 && history.prev_patch_elements > 0ULL &&
           current_target_element_growth_ <= 1.0) {
-        domain_factor =
-            ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE,
-                       PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE, PATCH_FACTOR_MIN,
+                                   PATCH_FACTOR_MAX);
         // Em adaptive_stable, evitar mudar para 'budget_constrained' após
         // rejeições consecutivas (isso costuma gerar "complementos" errados
         // em patches curvos). Mantemos o clamp no fator, mas não mudamos o
@@ -3099,31 +2884,27 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       }
       if (!few_patch_low_error && STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
           current_budget_pressure_ >= PATCH_GENERATION_BUDGET_PRESSURE_START) {
-        domain_factor =
-            ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
-                       PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
+                                   PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
         patch_generation_mode = "budget_constrained";
       }
-        current_patch_adaptation_[i].patch_generation_mode = patch_generation_mode;
-      }
+      current_patch_adaptation_[i].patch_generation_mode = patch_generation_mode;
+    }
     last_domain_patch_factors_[i] = domain_factor;
     double target_patch_h =
         (i < current_patch_target_h_.size()) ? current_patch_target_h_[i] : -1.0;
     const int quadtree_depth_cap =
-        (i < current_patch_quadtree_depth_cap_.size())
-            ? current_patch_quadtree_depth_cap_[i]
-            : -1;
+        (i < current_patch_quadtree_depth_cap_.size()) ? current_patch_quadtree_depth_cap_[i] : -1;
     // adaptive_stable guard: if we are generating a new (rejected) step after
     // having rejected the previous one, avoid increasing target_patch_h
     // (which would coarsen / "desrefinar" the domain compared to the last
     // rejected attempt).
-    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
-        this->step_ >= 4 && i < last_candidate_patch_h_.size()) {
+    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U && this->step_ >= 4 &&
+        i < last_candidate_patch_h_.size()) {
       const double prev_h = last_candidate_patch_h_[i];
-      const bool top_priority_curve_patch =
-          (i < current_patch_adaptation_.size() &&
-           current_patch_adaptation_[i].refinement_rank > 0 &&
-           current_patch_adaptation_[i].refinement_rank <= 2);
+      const bool top_priority_curve_patch = (i < current_patch_adaptation_.size() &&
+                                             current_patch_adaptation_[i].refinement_rank > 0 &&
+                                             current_patch_adaptation_[i].refinement_rank <= 2);
       if (prev_h > 0.0 && top_priority_curve_patch) {
         // Em steps tardios após rejeição, forçamos discretização progressiva
         // (h menor) nos patches curvos prioritários.
@@ -3146,9 +2927,8 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
           }
         }
         if (patch_area_est > 0.0) {
-          const double h_ref =
-              std::sqrt(patch_area_est /
-                        static_cast<double>(previous_sub_mesh->GetNumberElements()));
+          const double h_ref = std::sqrt(
+              patch_area_est / static_cast<double>(previous_sub_mesh->GetNumberElements()));
           const double stable_scale = 0.78;
           target_patch_h = std::max(1.0e-4, h_ref * stable_scale);
         }
@@ -3162,8 +2942,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       }
       patch_generation_mode = "step2_global_stabilization";
     }
-    if (current_policy_.stable_mode && step_ >= 2 && target_patch_h > 0.0 &&
-        !few_patch_low_error) {
+    if (current_policy_.stable_mode && step_ >= 2 && target_patch_h > 0.0 && !few_patch_low_error) {
       patch_curve_support_ratio = 1.0;
       double patch_curve_spacing_min = std::numeric_limits<double>::max();
       for (unsigned int c = 0; c < p->GetNumBerCurves(); ++c) {
@@ -3185,37 +2964,28 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         if (snapshot.geometric_target_points <= 0) {
           continue;
         }
-        patch_curve_density_points =
-            std::max(patch_curve_density_points, snapshot.actual_points);
+        patch_curve_density_points = std::max(patch_curve_density_points, snapshot.actual_points);
         if (snapshot.actual_points >= 2) {
-          const double curve_spacing =
-              std::max(1.0e-6, curve->GetLength()) /
-              static_cast<double>(snapshot.actual_points - 1);
-          patch_curve_spacing_min =
-              std::min(patch_curve_spacing_min, curve_spacing);
+          const double curve_spacing = std::max(1.0e-6, curve->GetLength()) /
+                                       static_cast<double>(snapshot.actual_points - 1);
+          patch_curve_spacing_min = std::min(patch_curve_spacing_min, curve_spacing);
         }
-        const double ratio =
-            static_cast<double>(snapshot.actual_points) /
-            static_cast<double>(std::max(1, snapshot.geometric_target_points));
-        patch_curve_support_ratio =
-            std::min(patch_curve_support_ratio, ratio);
+        const double ratio = static_cast<double>(snapshot.actual_points) /
+                             static_cast<double>(std::max(1, snapshot.geometric_target_points));
+        patch_curve_support_ratio = std::min(patch_curve_support_ratio, ratio);
       }
       if (patch_curve_support_ratio < 0.85) {
         const double h_boost =
-            ClampValue(1.0 + (0.85 - patch_curve_support_ratio) * 0.80, 1.0,
-                       1.35);
-        domain_factor = ClampValue(domain_factor * h_boost, PATCH_FACTOR_MIN,
-                                   PATCH_FACTOR_MAX);
+            ClampValue(1.0 + (0.85 - patch_curve_support_ratio) * 0.80, 1.0, 1.35);
+        domain_factor = ClampValue(domain_factor * h_boost, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
         target_patch_h *= h_boost;
         patch_generation_mode = "curve_transition_balanced";
       }
       if (patch_curve_density_points >= 5) {
-        const double density_norm = Clamp01(
-            static_cast<double>(patch_curve_density_points - 4) / 12.0);
-        const double h_follow =
-            ClampValue(1.0 - 0.18 * density_norm, 0.82, 1.0);
-        domain_factor = ClampValue(domain_factor * h_follow, PATCH_FACTOR_MIN,
-                                   PATCH_FACTOR_MAX);
+        const double density_norm =
+            Clamp01(static_cast<double>(patch_curve_density_points - 4) / 12.0);
+        const double h_follow = ClampValue(1.0 - 0.18 * density_norm, 0.82, 1.0);
+        domain_factor = ClampValue(domain_factor * h_follow, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
         target_patch_h *= h_follow;
         patch_generation_mode = "curve_density_follow";
       }
@@ -3252,24 +3022,20 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     const bool stable_curve_allows_reject_coarsen =
         patch_curve_support_ratio >= kStableRejectCoarsenCurveRatioFloor &&
         curve_domain_balance >= 0.90 && transition_underresolved == 0;
-    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
-        this->step_ >= 4 && quadtree_depth_cap >= 0 &&
-        stable_curve_allows_reject_coarsen) {
-      const int reduce =
-          std::min(quadtree_depth_cap, static_cast<int>(this->step_ - 3));
+    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U && this->step_ >= 4 &&
+        quadtree_depth_cap >= 0 && stable_curve_allows_reject_coarsen) {
+      const int reduce = std::min(quadtree_depth_cap, static_cast<int>(this->step_ - 3));
       gen_depth_cap = std::max(0, quadtree_depth_cap - reduce);
     }
-    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
-        this->step_ >= 4 && i < current_patch_adaptation_.size() &&
-        current_patch_adaptation_[i].refinement_rank > 0 &&
+    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U && this->step_ >= 4 &&
+        i < current_patch_adaptation_.size() && current_patch_adaptation_[i].refinement_rank > 0 &&
         current_patch_adaptation_[i].refinement_rank <= 2) {
       gen_depth_cap = (gen_depth_cap >= 0) ? std::max(gen_depth_cap, 4) : 4;
     }
     if (current_policy_.stable_mode && patch_curve_density_points >= 8) {
       const int density_depth_cap = (patch_curve_density_points >= 12) ? 6 : 5;
       gen_depth_cap =
-          (gen_depth_cap >= 0) ? std::max(gen_depth_cap, density_depth_cap)
-                               : density_depth_cap;
+          (gen_depth_cap >= 0) ? std::max(gen_depth_cap, density_depth_cap) : density_depth_cap;
     }
     if (current_step_purpose_ == "transition_catch_up") {
       gen_depth_cap = (gen_depth_cap >= 0) ? std::max(gen_depth_cap, 6) : 6;
@@ -3279,27 +3045,25 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     if (i < current_patch_adaptation_.size()) {
       current_patch_adaptation_[i].applied_patch_h = target_patch_h;
     }
-    auto generate_patch_mesh = [&](double local_factor, double local_h,
-                                   int local_depth, int local_retry) {
-      return adapter_.AdaptDomain(p, this->id_managers_[0].get(), local_factor, local_h,
-                                  local_depth, ADAPTIVE_CURRENT_STEP,
-                                  static_cast<int>(i), local_retry);
+    auto generate_patch_mesh = [&](double local_factor, double local_h, int local_depth,
+                                   int local_retry) {
+      return std::unique_ptr<SubMesh>(
+          adapter_.AdaptDomain(p, this->id_managers_[0].get(), local_factor, local_h, local_depth,
+                               ADAPTIVE_CURRENT_STEP, static_cast<int>(i), local_retry));
     };
     double gen_factor = domain_factor;
     double gen_h = target_patch_h;
     const bool stable_mesh_damp =
         current_policy_.stable_mode && stable_curve_allows_reject_coarsen &&
-        (this->step_ >= 5 ||
-         (this->step_ >= 3 && stable_consecutive_reject_count_ > 0U));
+        (this->step_ >= 5 || (this->step_ >= 3 && stable_consecutive_reject_count_ > 0U));
     if (stable_mesh_damp) {
       constexpr double kStableLateFactorMul = 0.92;
       constexpr double kStableLateFactorFloor = 0.72;
       double mul = kStableLateFactorMul;
       double floor_v = kStableLateFactorFloor;
       if (stable_consecutive_reject_count_ > 0U && this->step_ >= 3) {
-        const double ex = std::pow(
-            0.972, static_cast<double>(
-                       std::min(9U, stable_consecutive_reject_count_)));
+        const double ex =
+            std::pow(0.972, static_cast<double>(std::min(9U, stable_consecutive_reject_count_)));
         mul *= ex;
         floor_v = std::max(0.66, floor_v * ex);
       }
@@ -3312,77 +3076,68 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       gen_factor = ClampValue(gen_factor, floor_v, PATCH_FACTOR_MAX);
       if (gen_h > 0.0) {
         gen_h *= (stable_consecutive_reject_count_ > 0U && this->step_ >= 3)
-                     ? (0.88 * std::pow(0.985, static_cast<double>(std::min(
-                                                    9U, stable_consecutive_reject_count_))))
+                     ? (0.88 * std::pow(0.985, static_cast<double>(
+                                                   std::min(9U, stable_consecutive_reject_count_))))
                      : 0.88;
       }
     }
-    SubMesh* sub_mesh = generate_patch_mesh(gen_factor, gen_h, gen_depth_cap,
-                                            ADAPTIVE_CURRENT_RETRY);
+    auto sub_mesh = generate_patch_mesh(gen_factor, gen_h, gen_depth_cap, ADAPTIVE_CURRENT_RETRY);
     // Guard extra para patch curvo prioritário em stable tardio:
     // evita queda brusca de elementos entre candidatos rejeitados
     // (ex.: 40 -> 22), forçando uma nova tentativa mais refinada.
     const bool top_priority_curve_patch =
-        (i < current_patch_adaptation_.size() &&
-         current_patch_adaptation_[i].refinement_rank > 0 &&
+        (i < current_patch_adaptation_.size() && current_patch_adaptation_[i].refinement_rank > 0 &&
          current_patch_adaptation_[i].refinement_rank <= 2);
-    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
-        this->step_ >= 4 && top_priority_curve_patch && sub_mesh != nullptr &&
-        i < last_candidate_elements_current_.size() &&
-        last_candidate_elements_current_[i] > 0ULL) {
-      const unsigned long long prev_candidate_faces =
-          last_candidate_elements_current_[i];
+    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U && this->step_ >= 4 &&
+        top_priority_curve_patch && sub_mesh != nullptr &&
+        i < last_candidate_elements_current_.size() && last_candidate_elements_current_[i] > 0ULL) {
+      const unsigned long long prev_candidate_faces = last_candidate_elements_current_[i];
       const unsigned long long curr_faces =
           static_cast<unsigned long long>(sub_mesh->GetNumberElements());
       if (curr_faces > 0ULL && curr_faces < prev_candidate_faces) {
-        const double face_ratio =
-            static_cast<double>(prev_candidate_faces) /
-            static_cast<double>(std::max(1ULL, curr_faces));
+        const double face_ratio = static_cast<double>(prev_candidate_faces) /
+                                  static_cast<double>(std::max(1ULL, curr_faces));
         const double densify_scale =
             ClampValue(std::sqrt(std::max(1.0, face_ratio)) * 0.95, 1.05, 2.40);
-        const double densify_h =
-            (gen_h > 0.0) ? std::max(1.0e-6, gen_h / densify_scale) : gen_h;
-        SubMesh* denser_mesh =
-            generate_patch_mesh(gen_factor, densify_h, gen_depth_cap, 2);
+        const double densify_h = (gen_h > 0.0) ? std::max(1.0e-6, gen_h / densify_scale) : gen_h;
+        auto denser_mesh = generate_patch_mesh(gen_factor, densify_h, gen_depth_cap, 2);
         if (denser_mesh != nullptr &&
             denser_mesh->GetNumberElements() >= sub_mesh->GetNumberElements()) {
-          delete sub_mesh;
-          sub_mesh = denser_mesh;
+          sub_mesh.reset();
+          sub_mesh = std::move(denser_mesh);
           gen_h = densify_h;
         } else if (denser_mesh != nullptr) {
-          delete denser_mesh;
+          denser_mesh.reset();
         }
       }
     }
     const Adapter::DomainStructuralStats* structural_first =
         adapter_.GetPatchStructuralStats(static_cast<int>(i));
-    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
-        this->step_ >= 4 && top_priority_curve_patch && structural_first != nullptr &&
+    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U && this->step_ >= 4 &&
+        top_priority_curve_patch && structural_first != nullptr &&
         structural_first->generation_status == "degenerate_needs_retry") {
       const double aggressive_factor =
           ClampValue(gen_factor * 1.35, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
-      const double aggressive_h =
-          (gen_h > 0.0) ? std::max(1.0e-6, gen_h * 0.58) : gen_h;
+      const double aggressive_h = (gen_h > 0.0) ? std::max(1.0e-6, gen_h * 0.58) : gen_h;
       const int aggressive_depth =
           (gen_depth_cap >= 0) ? std::max(0, gen_depth_cap - 1) : gen_depth_cap;
-      SubMesh* aggressive_mesh =
+      auto aggressive_mesh =
           generate_patch_mesh(aggressive_factor, aggressive_h, aggressive_depth, 3);
       const Adapter::DomainStructuralStats* structural_aggressive =
           adapter_.GetPatchStructuralStats(static_cast<int>(i));
-      bool keep_aggressive =
-          (aggressive_mesh != nullptr &&
-           aggressive_mesh->GetNumberElements() >= sub_mesh->GetNumberElements());
+      bool keep_aggressive = (aggressive_mesh != nullptr && aggressive_mesh->GetNumberElements() >=
+                                                                sub_mesh->GetNumberElements());
       if (structural_aggressive != nullptr &&
           structural_aggressive->generation_status != "degenerate_needs_retry") {
         keep_aggressive = true;
       }
       if (keep_aggressive && aggressive_mesh != nullptr) {
-        delete sub_mesh;
-        sub_mesh = aggressive_mesh;
+        sub_mesh.reset();
+        sub_mesh = std::move(aggressive_mesh);
         patch_generation_mode = "curve_transition_recovered";
         structural_first = structural_aggressive;
       } else if (aggressive_mesh != nullptr) {
-        delete aggressive_mesh;
+        aggressive_mesh.reset();
       }
     }
     const bool stable_small_mesh_step1 =
@@ -3391,20 +3146,17 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     if (current_policy_.stable_mode && (step_ >= 2 || stable_small_mesh_step1) &&
         structural_first != nullptr && !few_patch_low_error) {
       double expected_faces = 1.0;
-      if (i < current_patch_target_elements_.size() &&
-          current_patch_target_elements_[i] > 1.0e-9) {
+      if (i < current_patch_target_elements_.size() && current_patch_target_elements_[i] > 1.0e-9) {
         expected_faces = std::max(1.0, current_patch_target_elements_[i]);
       } else {
         // BUDGET_DRIVEN=0 deixa targets por patch a zero; max(1,target) forçava
         // expected_faces=1 e local_face_cap~1.35, disparando reparo agressivo
         // (refino ~1.18–1.25x) em quase todo patch a partir do step 2.
-        expected_faces = std::max(
-            1.0, static_cast<double>(structural_first->generated_faces));
+        expected_faces = std::max(1.0, static_cast<double>(structural_first->generated_faces));
       }
       const double local_face_cap_ratio = (step_ == 2) ? 1.25 : 1.35;
       const double local_face_cap = expected_faces * local_face_cap_ratio;
-      const bool local_faces_overshoot =
-          (structural_first->generated_faces > local_face_cap);
+      const bool local_faces_overshoot = (structural_first->generated_faces > local_face_cap);
       const double structural_imbalance_th =
           (current_policy_.stable_mode && step_ >= 5) ? 0.17 : 0.11;
       const double structural_balance_th =
@@ -3413,43 +3165,34 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
           (current_policy_.stable_mode && step_ >= 4) ? 0.62 : 0.58;
       const bool structural_bad =
           stable_small_mesh_step1
-              ? (local_faces_overshoot ||
-                 (structural_first->transition_underresolved != 0))
+              ? (local_faces_overshoot || (structural_first->transition_underresolved != 0))
               : ((structural_first->transition_underresolved != 0) ||
-                 (structural_first->interior_transition_imbalance >
-                  structural_imbalance_th) ||
+                 (structural_first->interior_transition_imbalance > structural_imbalance_th) ||
                  (structural_first->curve_domain_balance < structural_balance_th) ||
                  (structural_first->transition_region.good_ratio_ge_0_60 <
                   transition_quality_floor) ||
-                 (structural_first->curve_interior_coupling < 0.68) ||
-                 local_faces_overshoot);
+                 (structural_first->curve_interior_coupling < 0.68) || local_faces_overshoot);
       if (structural_bad) {
         const bool transition_bad = (structural_first->transition_underresolved != 0);
         const bool dense_curved_patch =
-            patch_curve_density_points >= 8 ||
-            patch_curve_support_ratio < 0.95 ||
+            patch_curve_density_points >= 8 || patch_curve_support_ratio < 0.95 ||
             structural_first->curve_domain_balance < structural_balance_th;
-        const double rebalance_factor = ClampValue(
-            domain_factor *
-                (dense_curved_patch ? (transition_bad ? 1.28 : 1.22)
-                                    : (transition_bad ? 1.22 : 1.18)),
-            PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        const double rebalance_factor =
+            ClampValue(domain_factor * (dense_curved_patch ? (transition_bad ? 1.28 : 1.22)
+                                                           : (transition_bad ? 1.22 : 1.18)),
+                       PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
         const double rebalance_h =
             (target_patch_h > 0.0)
-                ? target_patch_h *
-                      (dense_curved_patch
-                           ? (transition_bad ? 0.72 : 0.82)
-                           : (transition_bad ? 1.25 : 1.20))
+                ? target_patch_h * (dense_curved_patch ? (transition_bad ? 0.72 : 0.82)
+                                                       : (transition_bad ? 1.25 : 1.20))
                 : target_patch_h;
         const int rebalance_depth =
             dense_curved_patch
                 ? ((gen_depth_cap >= 0) ? std::min(32, gen_depth_cap + (transition_bad ? 2 : 1))
                                         : (transition_bad ? 6 : 5))
-                : ((gen_depth_cap >= 0)
-                       ? std::max(0, gen_depth_cap - (transition_bad ? 1 : 0))
-                       : (transition_bad ? 3 : 4));
-        SubMesh* repaired_mesh =
-            generate_patch_mesh(rebalance_factor, rebalance_h, rebalance_depth, 1);
+                : ((gen_depth_cap >= 0) ? std::max(0, gen_depth_cap - (transition_bad ? 1 : 0))
+                                        : (transition_bad ? 3 : 4));
+        auto repaired_mesh = generate_patch_mesh(rebalance_factor, rebalance_h, rebalance_depth, 1);
         const Adapter::DomainStructuralStats* structural_repaired =
             adapter_.GetPatchStructuralStats(static_cast<int>(i));
         bool keep_repaired = false;
@@ -3458,32 +3201,27 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
               (structural_first->transition_underresolved ? 1.0 : 0.0) +
               structural_first->interior_transition_imbalance +
               std::max(0.0, 0.90 - structural_first->curve_domain_balance) +
-              Clamp01((static_cast<double>(structural_first->generated_faces) -
-                       local_face_cap) /
+              Clamp01((static_cast<double>(structural_first->generated_faces) - local_face_cap) /
                       std::max(1.0, local_face_cap));
           const double repaired_score =
               (structural_repaired->transition_underresolved ? 1.0 : 0.0) +
               structural_repaired->interior_transition_imbalance +
               std::max(0.0, 0.90 - structural_repaired->curve_domain_balance) +
-              Clamp01((static_cast<double>(structural_repaired->generated_faces) -
-                       local_face_cap) /
+              Clamp01((static_cast<double>(structural_repaired->generated_faces) - local_face_cap) /
                       std::max(1.0, local_face_cap));
           keep_repaired = repaired_score + 1.0e-9 < first_score;
           if (!keep_repaired && dense_curved_patch && repaired_mesh != nullptr &&
               sub_mesh != nullptr) {
             const double first_balance_gap =
-                std::max(0.0, structural_balance_th -
-                                  structural_first->curve_domain_balance);
+                std::max(0.0, structural_balance_th - structural_first->curve_domain_balance);
             const double repaired_balance_gap =
-                std::max(0.0, structural_balance_th -
-                                  structural_repaired->curve_domain_balance);
+                std::max(0.0, structural_balance_th - structural_repaired->curve_domain_balance);
             const bool materially_better_curve_follow =
                 repaired_balance_gap + 1.0e-6 < first_balance_gap &&
                 structural_repaired->interior_transition_imbalance <=
                     structural_first->interior_transition_imbalance + 0.03;
             const bool materially_denser =
-                repaired_mesh->GetNumberElements() >
-                sub_mesh->GetNumberElements();
+                repaired_mesh->GetNumberElements() > sub_mesh->GetNumberElements();
             keep_repaired =
                 materially_better_curve_follow &&
                 (materially_denser || structural_repaired->transition_underresolved == 0);
@@ -3491,12 +3229,12 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         }
         if (keep_repaired) {
           if (sub_mesh != nullptr) {
-            delete sub_mesh;
+            sub_mesh.reset();
           }
-          sub_mesh = repaired_mesh;
+          sub_mesh = std::move(repaired_mesh);
           patch_generation_mode = "curve_transition_repaired";
         } else if (repaired_mesh != nullptr) {
-          delete repaired_mesh;
+          repaired_mesh.reset();
         }
       }
     }
@@ -3512,16 +3250,12 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
             structural->transition_underresolved;
         current_patch_adaptation_[i].interior_transition_imbalance =
             structural->interior_transition_imbalance;
-        current_patch_adaptation_[i].curve_domain_balance =
-            structural->curve_domain_balance;
-        current_patch_adaptation_[i].curve_interior_coupling =
-            structural->curve_interior_coupling;
-        current_patch_adaptation_[i].good_ratio_ge_0_60 =
-            structural->good_ratio_ge_0_60;
+        current_patch_adaptation_[i].curve_domain_balance = structural->curve_domain_balance;
+        current_patch_adaptation_[i].curve_interior_coupling = structural->curve_interior_coupling;
+        current_patch_adaptation_[i].good_ratio_ge_0_60 = structural->good_ratio_ge_0_60;
         current_patch_adaptation_[i].boundary_element_count =
             structural->boundary_region.element_count;
-        current_patch_adaptation_[i].boundary_quality_min =
-            structural->boundary_region.quality_min;
+        current_patch_adaptation_[i].boundary_quality_min = structural->boundary_region.quality_min;
         current_patch_adaptation_[i].boundary_quality_mean =
             structural->boundary_region.quality_mean;
         current_patch_adaptation_[i].boundary_good_ratio_ge_0_60 =
@@ -3542,16 +3276,13 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
             structural->interior_region.quality_mean;
         current_patch_adaptation_[i].interior_core_q_ge_0_60 =
             structural->interior_region.good_ratio_ge_0_60;
-        current_patch_adaptation_[i].generated_faces_structural =
-            structural->generated_faces;
-        current_patch_adaptation_[i].generation_status_structural =
-            structural->generation_status;
+        current_patch_adaptation_[i].generated_faces_structural = structural->generated_faces;
+        current_patch_adaptation_[i].generation_status_structural = structural->generation_status;
         if (structural->transition_underresolved != 0) {
           ++current_underresolved_transition_patch_count_real_;
         }
-        current_transition_imbalance_max_real_ =
-            std::max(current_transition_imbalance_max_real_,
-                     structural->interior_transition_imbalance);
+        current_transition_imbalance_max_real_ = std::max(
+            current_transition_imbalance_max_real_, structural->interior_transition_imbalance);
         structural_imbalance_sum += structural->interior_transition_imbalance;
         ++structural_count;
       }
@@ -3562,7 +3293,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
             ? static_cast<unsigned long long>(sub_mesh->GetNumberElements())
             : 0ULL;
     sub_mesh->SetPatch(p);
-    mesh->InsertSubMeshAdaptiveByPosition(sub_mesh, i);
+    mesh->InsertSubMeshAdaptiveByPosition(sub_mesh.release(), i);
     geometry->GetPatch(i)->SetSubMesh(mesh->GetSubMeshAdaptiveByPosition(i));
   }
   if (structural_count > 0U) {
@@ -3576,8 +3307,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
   }
 }
 
-std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
-    const Geometry* geometry) {
+std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geometry* geometry) {
   const unsigned int patch_count = geometry->GetNumberPatches();
   std::vector<double> patch_factors(patch_count, 1.0);
   current_patch_adaptation_.assign(patch_count, PatchAdaptationSnapshot{});
@@ -3610,10 +3340,9 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
   std::vector<int> refinement_rank(patch_count, -1);
   const bool step2_phase = (BUDGET_DRIVEN_ADAPTATION == 1 && step_ == 2);
   const bool step3plus_phase = (BUDGET_DRIVEN_ADAPTATION == 1 && step_ >= 3);
-  const bool few_patch_low_error_budget =
-      current_policy_.stable_mode && geometry != nullptr &&
-      patch_count <= 4U && !error_step_.empty() &&
-      error_step_.back() < 0.12 && step_ <= 3;
+  const bool few_patch_low_error_budget = current_policy_.stable_mode && geometry != nullptr &&
+                                          patch_count <= 4U && !error_step_.empty() &&
+                                          error_step_.back() < 0.12 && step_ <= 3;
   for (unsigned int rank = 0; rank < patch_count; ++rank) {
     sorted_errors.push_back(last_submesh_error_[sorted_patch_ids[rank]]);
     refinement_rank[sorted_patch_ids[rank]] = static_cast<int>(rank + 1U);
@@ -3621,88 +3350,66 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
   const double top_fraction =
       current_policy_.stable_mode
           ? 1.0
-          : ((step_ <= 1)
-          ? PATCH_TOP_ERROR_FRACTION
-          : ClampValue(PATCH_TOP_ERROR_FRACTION * STEP2_TOP_ERROR_FRACTION_SCALE,
-                       1.0 / std::max(1U, patch_count), 1.0));
+          : ((step_ <= 1) ? PATCH_TOP_ERROR_FRACTION
+                          : ClampValue(PATCH_TOP_ERROR_FRACTION * STEP2_TOP_ERROR_FRACTION_SCALE,
+                                       1.0 / std::max(1U, patch_count), 1.0));
   const unsigned int nominal_top_count = std::max(
-      1U, static_cast<unsigned int>(std::ceil(top_fraction *
-                                              static_cast<double>(patch_count))));
+      1U, static_cast<unsigned int>(std::ceil(top_fraction * static_cast<double>(patch_count))));
   unsigned int top_count = nominal_top_count;
-  if (!current_policy_.stable_mode && step_ > 1 &&
-      STEP2_HARD_SPATIAL_FILTER_MODE == 1) {
-    const double shrink_scale =
-        std::pow(STEP_ELEMENT_BUDGET_RETRY_SHRINK_TOPK,
-                 static_cast<int>(current_budget_retry_count_));
-    top_count = std::max(
-        static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MIN),
-        static_cast<unsigned int>(std::ceil(static_cast<double>(nominal_top_count) *
-                                            shrink_scale)));
-    top_count = std::min(
-        top_count,
-        static_cast<unsigned int>(std::max(STEP2_TOP_PATCH_COUNT_MIN,
-                                           STEP2_TOP_PATCH_COUNT_MAX)));
+  if (!current_policy_.stable_mode && step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1) {
+    const double shrink_scale = std::pow(STEP_ELEMENT_BUDGET_RETRY_SHRINK_TOPK,
+                                         static_cast<int>(current_budget_retry_count_));
+    top_count = std::max(static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MIN),
+                         static_cast<unsigned int>(
+                             std::ceil(static_cast<double>(nominal_top_count) * shrink_scale)));
+    top_count = std::min(top_count, static_cast<unsigned int>(std::max(STEP2_TOP_PATCH_COUNT_MIN,
+                                                                       STEP2_TOP_PATCH_COUNT_MAX)));
     top_count = std::min(top_count, patch_count);
     if (BUDGET_DRIVEN_ADAPTATION == 1 && current_target_element_growth_ > 1.0) {
-      const unsigned int expanded_top_count =
-          std::min(patch_count,
-                   std::max(top_count,
-                            static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MAX)));
+      const unsigned int expanded_top_count = std::min(
+          patch_count, std::max(top_count, static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MAX)));
       top_count = std::max(top_count, expanded_top_count);
     }
     if (step3plus_phase) {
       top_count = std::max(
           top_count,
-          std::min(patch_count,
-                   std::max(static_cast<unsigned int>(4U),
-                            static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MAX))));
+          std::min(patch_count, std::max(static_cast<unsigned int>(4U),
+                                         static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MAX))));
     }
     if (step2_phase) {
-      top_count = std::max(
-          top_count,
-          std::min(patch_count, static_cast<unsigned int>(4U)));
+      top_count = std::max(top_count, std::min(patch_count, static_cast<unsigned int>(4U)));
     }
   }
   current_top_patch_count_ = top_count;
-  const bool stable_small_mesh_step1 =
-      (current_policy_.stable_mode && step_ == 1 && !elements_step_.empty() &&
-       elements_step_.back() <= 32ULL);
+  const bool stable_small_mesh_step1 = (current_policy_.stable_mode && step_ == 1 &&
+                                        !elements_step_.empty() && elements_step_.back() <= 32ULL);
   const double refine_cutoff =
-      sorted_errors[std::min(static_cast<size_t>(top_count - 1U),
-                             sorted_errors.size() - 1U)];
+      sorted_errors[std::min(static_cast<size_t>(top_count - 1U), sorted_errors.size() - 1U)];
   const double refinement_scale =
       (step_ <= 1) ? 1.0 : STEP2_REFINEMENT_ATTENUATION * PATCH_STEP2_REFINEMENT_SCALE;
   const double refinement_scale_effective =
       refinement_scale * (stable_small_mesh_step1 ? 0.55 : 1.0);
   const double factor_mid = 1.0;
-  const bool micro_refinement_active =
-      (step_ > 1 && STEP2_MICRO_REFINEMENT_MODE == 1);
+  const bool micro_refinement_active = (step_ > 1 && STEP2_MICRO_REFINEMENT_MODE == 1);
   const double micro_patch_scale =
       micro_refinement_active ? STEP2_MICRO_PATCH_REFINEMENT_SCALE : 1.0;
-  const double budget_range_scale =
-      (step_ > 1 && current_budget_retry_count_ > 0U)
-          ? std::pow(STEP_ELEMENT_BUDGET_RETRY_FACTOR_RANGE_SCALE,
-                     static_cast<int>(current_budget_retry_count_))
-          : 1.0;
+  const double budget_range_scale = (step_ > 1 && current_budget_retry_count_ > 0U)
+                                        ? std::pow(STEP_ELEMENT_BUDGET_RETRY_FACTOR_RANGE_SCALE,
+                                                   static_cast<int>(current_budget_retry_count_))
+                                        : 1.0;
   const double pressure_range_scale =
       (step_ > 1 && STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
        current_budget_pressure_ > STEP_ELEMENT_BUDGET_PRESSURE_START)
           ? STEP_ELEMENT_BUDGET_PRESSURE_FACTOR_SHRINK
           : 1.0;
-  const double effective_range_shrink =
-      ClampValue(((step_ <= 1) ? 1.0
-                               : (STEP2_FACTOR_RANGE_SHRINK *
-                                  (micro_refinement_active
-                                       ? STEP2_MICRO_FACTOR_RANGE_SCALE
-                                       : 1.0))) *
-                     budget_range_scale * pressure_range_scale,
-                 0.05, 1.0);
-  const double shrunk_min =
-      factor_mid - (factor_mid - PATCH_FACTOR_MIN) *
-                       effective_range_shrink;
-  const double shrunk_max =
-      factor_mid + (PATCH_FACTOR_MAX - factor_mid) *
-                       effective_range_shrink;
+  const double effective_range_shrink = ClampValue(
+      ((step_ <= 1) ? 1.0
+                    : (STEP2_FACTOR_RANGE_SHRINK *
+                       (micro_refinement_active ? STEP2_MICRO_FACTOR_RANGE_SCALE : 1.0))) *
+          budget_range_scale * pressure_range_scale,
+      0.05, 1.0);
+  const double shrunk_min = factor_mid - (factor_mid - PATCH_FACTOR_MIN) * effective_range_shrink;
+  const double shrunk_max = factor_mid + (PATCH_FACTOR_MAX - factor_mid) * effective_range_shrink;
 
   for (unsigned int i = 0; i < patch_count; ++i) {
     const double local_error = last_submesh_error_[i];
@@ -3716,27 +3423,22 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
     const SubMesh* sub_mesh = patch ? patch->GetSubMesh() : nullptr;
     if (sub_mesh) {
       MeshQualityStats patch_quality;
-      for (unsigned int elem_idx = 0; elem_idx < sub_mesh->GetNumberElements();
-           ++elem_idx) {
+      for (unsigned int elem_idx = 0; elem_idx < sub_mesh->GetNumberElements(); ++elem_idx) {
         const TriangleAdaptive* tri =
             static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));
         if (!tri) {
           continue;
         }
         const bool first_sample = (patch_quality.total_elements == 0ULL);
-        const double quality_3d = TriangleQualityFromNodes(
-            tri->GetNoh(1), tri->GetNoh(2), tri->GetNoh(3));
+        const double quality_3d =
+            TriangleQualityFromNodes(tri->GetNoh(1), tri->GetNoh(2), tri->GetNoh(3));
         const double quality_uv = TriangleQualityFromParameters(
             tri->GetParametersN1(), tri->GetParametersN2(), tri->GetParametersN3());
-        AccumulateQualitySample(quality_3d, first_sample,
-                                patch_quality.quality_min_3d,
-                                patch_quality.quality_mean_3d,
-                                patch_quality.poor_ratio_3d,
+        AccumulateQualitySample(quality_3d, first_sample, patch_quality.quality_min_3d,
+                                patch_quality.quality_mean_3d, patch_quality.poor_ratio_3d,
                                 patch_quality.good_ratio_ge_0_60_3d);
-        AccumulateQualitySample(quality_uv, first_sample,
-                                patch_quality.quality_min_uv,
-                                patch_quality.quality_mean_uv,
-                                patch_quality.poor_ratio_uv,
+        AccumulateQualitySample(quality_uv, first_sample, patch_quality.quality_min_uv,
+                                patch_quality.quality_mean_uv, patch_quality.poor_ratio_uv,
                                 patch_quality.good_ratio_ge_0_60_uv);
         ++patch_quality.total_elements;
       }
@@ -3768,36 +3470,29 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
       snapshot.local_error_drop_abs = patch_history_[i].prev_patch_error_drop_abs;
       if (patch_history_[i].prev_patch_error > 0.0) {
         snapshot.local_error_drop_pct =
-            (patch_history_[i].prev_patch_error_drop_abs /
-             patch_history_[i].prev_patch_error) *
+            (patch_history_[i].prev_patch_error_drop_abs / patch_history_[i].prev_patch_error) *
             100.0;
       }
-      snapshot.local_error_drop_per_element =
-          patch_history_[i].prev_patch_error_drop_per_element;
+      snapshot.local_error_drop_per_element = patch_history_[i].prev_patch_error_drop_per_element;
       snapshot.efficiency_score = patch_history_[i].prev_patch_efficiency;
-      snapshot.consecutive_inefficient_steps =
-          patch_history_[i].consecutive_inefficient_steps;
+      snapshot.consecutive_inefficient_steps = patch_history_[i].consecutive_inefficient_steps;
     }
 
     const bool is_top_error_patch = local_error >= refine_cutoff;
     const bool efficiency_ok =
         (i < patch_history_.size())
-            ? (patch_history_[i].prev_patch_efficiency >=
-               std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9))
+            ? (patch_history_[i].prev_patch_efficiency >= std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9))
             : true;
     const bool history_improved =
-        (i < patch_history_.size()) ? (patch_history_[i].prev_patch_improved == 1)
-                                    : false;
+        (i < patch_history_.size()) ? (patch_history_[i].prev_patch_improved == 1) : false;
     const bool saturated_soft =
         (step_ > 1 && i < patch_history_.size() &&
          patch_history_[i].prev_patch_generated_faces >=
              static_cast<unsigned long long>(
                  std::max(1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
-         patch_history_[i].prev_patch_efficiency <=
-             QUADTREE_SATURATION_EFFICIENCY_THRESHOLD);
+         patch_history_[i].prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD);
     const bool saturated_hard =
-        (step_ > 1 && QUADTREE_HARD_SATURATION_MODE == 1 &&
-         i < patch_history_.size() &&
+        (step_ > 1 && QUADTREE_HARD_SATURATION_MODE == 1 && i < patch_history_.size() &&
          patch_history_[i].consecutive_inefficient_steps >=
              static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS));
     current_patch_saturated_soft_mask_[i] = saturated_soft ? 1 : 0;
@@ -3806,10 +3501,8 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
         current_policy_.stable_mode
             ? !saturated_hard
             : (!(step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1) ||
-               (refinement_rank[i] > 0 &&
-                refinement_rank[i] <= static_cast<int>(top_count) &&
-                (efficiency_ok || history_improved || step2_phase ||
-                 step3plus_phase) &&
+               (refinement_rank[i] > 0 && refinement_rank[i] <= static_cast<int>(top_count) &&
+                (efficiency_ok || history_improved || step2_phase || step3plus_phase) &&
                 !saturated_soft && !saturated_hard));
     current_patch_eligible_mask_[i] = eligible_for_refinement ? 1 : 0;
     snapshot.eligible_for_refinement = eligible_for_refinement ? 1 : 0;
@@ -3817,8 +3510,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
     snapshot.saturated_hard = saturated_hard ? 1 : 0;
     snapshot.refinement_rank = refinement_rank[i];
     snapshot.budget_blocked =
-        (step_ > 1 && current_budget_retry_count_ > 0U &&
-         refinement_rank[i] > 0 &&
+        (step_ > 1 && current_budget_retry_count_ > 0U && refinement_rank[i] > 0 &&
          refinement_rank[i] <= static_cast<int>(nominal_top_count) &&
          refinement_rank[i] > static_cast<int>(top_count))
             ? 1
@@ -3838,24 +3530,20 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
         factor = 1.05;
       }
     } else {
-      const double error_signal =
-          std::pow(Clamp01(normalized_error), PATCH_ERROR_EXPONENT);
+      const double error_signal = std::pow(Clamp01(normalized_error), PATCH_ERROR_EXPONENT);
       const double mean_quality_deficit =
-          PATCH_QUALITY_TARGET > 0.0
-              ? Clamp01((PATCH_QUALITY_TARGET - snapshot.quality_mean) /
-                        std::max(PATCH_QUALITY_TARGET, 1.0e-12))
-              : 0.0;
+          PATCH_QUALITY_TARGET > 0.0 ? Clamp01((PATCH_QUALITY_TARGET - snapshot.quality_mean) /
+                                               std::max(PATCH_QUALITY_TARGET, 1.0e-12))
+                                     : 0.0;
       const double min_quality_deficit =
           PATCH_QUALITY_MIN_TARGET > 0.0
               ? Clamp01((PATCH_QUALITY_MIN_TARGET - snapshot.quality_min) /
                         std::max(PATCH_QUALITY_MIN_TARGET, 1.0e-12))
               : 0.0;
-      const double good_quality_deficit =
-          Clamp01((0.70 - snapshot.good_ratio_ge_0_60) / 0.70);
+      const double good_quality_deficit = Clamp01((0.70 - snapshot.good_ratio_ge_0_60) / 0.70);
       const double quality_signal = Clamp01(
           0.50 * mean_quality_deficit + 0.25 * min_quality_deficit +
-          0.15 * Clamp01(snapshot.poor_ratio /
-                         std::max(ACCEPTANCE_POOR_RATIO_TARGET, 1.0e-6)) +
+          0.15 * Clamp01(snapshot.poor_ratio / std::max(ACCEPTANCE_POOR_RATIO_TARGET, 1.0e-6)) +
           0.10 * good_quality_deficit);
       const bool needs_quality_repair =
           (snapshot.quality_min > 0.0 && snapshot.quality_min < 0.25) ||
@@ -3865,48 +3553,35 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
             snapshot.poor_ratio > 0.08));
       const double refinement_gate =
           current_policy_.stable_mode
-              ? (eligible_for_refinement
-                     ? (0.55 + 0.45 * Clamp01(normalized_error))
-                     : 0.35)
-              : (eligible_for_refinement
-                     ? 1.0
-                     : ((step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1)
-                            ? 0.0
-                            : (is_top_error_patch ? 1.0 : 0.15)));
-      double refine_signal =
-          Clamp01(((1.0 - PATCH_QUALITY_WEIGHT) * error_signal +
-                   PATCH_QUALITY_WEIGHT * quality_signal) *
-                  refinement_gate);
-      const double low_error_signal =
-          Clamp01(1.0 - normalized_error);
+              ? (eligible_for_refinement ? (0.55 + 0.45 * Clamp01(normalized_error)) : 0.35)
+              : (eligible_for_refinement ? 1.0
+                                         : ((step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1)
+                                                ? 0.0
+                                                : (is_top_error_patch ? 1.0 : 0.15)));
+      double refine_signal = Clamp01(
+          ((1.0 - PATCH_QUALITY_WEIGHT) * error_signal + PATCH_QUALITY_WEIGHT * quality_signal) *
+          refinement_gate);
+      const double low_error_signal = Clamp01(1.0 - normalized_error);
       double coarsen_signal =
           (local_error <= TOL_LOCAL)
-              ? Clamp01(low_error_signal *
-                        (1.0 - Clamp01(snapshot.poor_ratio)) *
-                        Clamp01(snapshot.quality_mean /
-                                std::max(PATCH_QUALITY_TARGET, 1.0e-12)))
+              ? Clamp01(low_error_signal * (1.0 - Clamp01(snapshot.poor_ratio)) *
+                        Clamp01(snapshot.quality_mean / std::max(PATCH_QUALITY_TARGET, 1.0e-12)))
               : 0.0;
       if (PATCH_STEPWISE_MODE == 1 && i < patch_history_.size()) {
         const PatchHistoryState& history = patch_history_[i];
         const double efficiency_norm =
-            Clamp01(history.prev_patch_efficiency /
-                    std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+            Clamp01(history.prev_patch_efficiency / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
         const double history_error_drop_signal =
-            history.prev_patch_error > 0.0
-                ? Clamp01(history.prev_patch_error_drop_abs /
-                          std::max(history.prev_patch_error, 1.0e-9))
-                : 0.0;
-        const double history_quality_signal =
-            Clamp01((history.prev_patch_quality_mean +
-                     (1.0 - history.prev_patch_poor_ratio)) /
-                    2.0);
+            history.prev_patch_error > 0.0 ? Clamp01(history.prev_patch_error_drop_abs /
+                                                     std::max(history.prev_patch_error, 1.0e-9))
+                                           : 0.0;
+        const double history_quality_signal = Clamp01(
+            (history.prev_patch_quality_mean + (1.0 - history.prev_patch_poor_ratio)) / 2.0);
         const double history_signal =
-            PATCH_HISTORY_BLEND *
-                (0.60 * efficiency_norm + 0.25 * history_error_drop_signal +
-                 0.15 * history_quality_signal) +
+            PATCH_HISTORY_BLEND * (0.60 * efficiency_norm + 0.25 * history_error_drop_signal +
+                                   0.15 * history_quality_signal) +
             (1.0 - PATCH_HISTORY_BLEND) * refine_signal;
-        refine_signal *= (1.0 - PATCH_EFFICIENCY_WEIGHT) +
-                         PATCH_EFFICIENCY_WEIGHT * history_signal;
+        refine_signal *= (1.0 - PATCH_EFFICIENCY_WEIGHT) + PATCH_EFFICIENCY_WEIGHT * history_signal;
         if (step3plus_phase && history.prev_patch_improved == 1 &&
             history.prev_patch_decision_class == "refine") {
           refine_signal = std::max(refine_signal, 0.35);
@@ -3921,11 +3596,9 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
           refine_signal = std::max(refine_signal, 0.25);
         }
         const bool inefficient_patch =
-            history.prev_patch_efficiency <
-                std::max(1.0e-9, PATCH_EFFICIENCY_TARGET) &&
-            history.prev_patch_elements >
-                static_cast<unsigned long long>(
-                    std::max(1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD));
+            history.prev_patch_efficiency < std::max(1.0e-9, PATCH_EFFICIENCY_TARGET) &&
+            history.prev_patch_elements > static_cast<unsigned long long>(std::max(
+                                              1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD));
         if (inefficient_patch && !eligible_for_refinement) {
           refine_signal *= 0.35;
           coarsen_signal = std::max(coarsen_signal, 0.25);
@@ -3939,8 +3612,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
           eligible_damp *= STEP2_ELIGIBLE_REFINEMENT_DAMP_ON_RETRY;
         }
         if (snapshot.elements_prev >=
-            static_cast<unsigned long long>(
-                std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
+            static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
           eligible_damp *= 0.75;
         }
         if (STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
@@ -3954,47 +3626,40 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
         refine_signal *= ClampValue(eligible_damp, 0.0, 1.0);
         snapshot.intra_patch_damped = 1;
       }
-      if (!current_policy_.stable_mode && step_ > 1 &&
-          STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
+      if (!current_policy_.stable_mode && step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
           !eligible_for_refinement) {
         refine_signal = 0.0;
         coarsen_signal =
             (step3plus_phase || BUDGET_DRIVEN_ADAPTATION == 1)
                 ? 0.0
-                : (STEP2_NONELIGIBLE_FORCE_COARSEN == 1
-                       ? std::max(coarsen_signal, 0.20)
-                       : coarsen_signal);
+                : (STEP2_NONELIGIBLE_FORCE_COARSEN == 1 ? std::max(coarsen_signal, 0.20)
+                                                        : coarsen_signal);
       }
-      if (step2_phase && needs_quality_repair &&
-          refinement_rank[i] > 0 &&
+      if (step2_phase && needs_quality_repair && refinement_rank[i] > 0 &&
           refinement_rank[i] <= static_cast<int>(top_count + 1U)) {
         refine_signal = std::max(refine_signal, 0.28);
         coarsen_signal *= 0.25;
       }
       factor = 1.0 - (PATCH_REFINEMENT_STRENGTH * micro_patch_scale) * refine_signal +
                PATCH_COARSENING_STRENGTH * coarsen_signal;
-      if (!current_policy_.stable_mode &&
-          (step_ <= 1 || STEP2_HARD_SPATIAL_FILTER_MODE == 0) &&
+      if (!current_policy_.stable_mode && (step_ <= 1 || STEP2_HARD_SPATIAL_FILTER_MODE == 0) &&
           !is_top_error_patch && local_error > TOL_LOCAL) {
-        factor = std::max(1.0 + 0.5 * PATCH_COARSENING_STRENGTH,
-                          factor + PATCH_COARSENING_STRENGTH);
+        factor =
+            std::max(1.0 + 0.5 * PATCH_COARSENING_STRENGTH, factor + PATCH_COARSENING_STRENGTH);
       }
       factor = 1.0 - refinement_scale_effective * (1.0 - factor);
       if (PATCH_STEPWISE_MODE == 1 && i < patch_history_.size() &&
-          patch_history_[i].prev_patch_efficiency <
-              std::max(1.0e-9, PATCH_EFFICIENCY_TARGET)) {
+          patch_history_[i].prev_patch_efficiency < std::max(1.0e-9, PATCH_EFFICIENCY_TARGET)) {
         factor = std::max(factor, PATCH_INEFFICIENT_CAP);
       }
-      if (!current_policy_.stable_mode && step_ > 1 &&
-          STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
+      if (!current_policy_.stable_mode && step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
           !eligible_for_refinement) {
         factor = std::max(factor, STEP2_NONELIGIBLE_FACTOR_MIN);
       }
       if (saturated_hard) {
         factor = std::max(factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
       }
-      if (!current_policy_.stable_mode &&
-          BUDGET_DRIVEN_ADAPTATION == 1 && step_ > 1 &&
+      if (!current_policy_.stable_mode && BUDGET_DRIVEN_ADAPTATION == 1 && step_ > 1 &&
           current_target_element_growth_ > 1.0 && !eligible_for_refinement) {
         factor = 1.0;
       }
@@ -4009,8 +3674,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
       factor = std::min(factor, 1.0);
     }
     if (current_policy_.stable_mode && step_ >= 2 && geometry != nullptr &&
-        geometry->GetNumberPatches() <= 6U && !error_step_.empty() &&
-        error_step_.back() < 0.12) {
+        geometry->GetNumberPatches() <= 6U && !error_step_.empty() && error_step_.back() < 0.12) {
       factor = std::max(factor, 0.985);
       factor = std::min(factor, 1.0);
     }
@@ -4021,19 +3685,16 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
       snapshot.budget_pressure_local = current_budget_pressure_;
     }
     const bool patch_needs_repair =
-        (snapshot.quality_min > 0.0 && snapshot.quality_min < 0.25) ||
-        snapshot.poor_ratio > 0.18;
+        (snapshot.quality_min > 0.0 && snapshot.quality_min < 0.25) || snapshot.poor_ratio > 0.18;
     snapshot.final_refinement_class =
         patch_needs_repair
             ? "repair"
-            : ((factor < 0.999) ? "refine"
-                                : ((factor > 1.001) ? "coarsen" : "freeze"));
+            : ((factor < 0.999) ? "refine" : ((factor > 1.001) ? "coarsen" : "freeze"));
     // Em adaptive_stable tardio com rejeições consecutivas, evitar que os
     // patches prioritários curvos migrem para "repair" no candidato rejeitado
     // (isso tende a gerar malhas complementares fora do padrão esperado).
-    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
-        this->step_ >= 4 && snapshot.refinement_rank > 0 &&
-        snapshot.refinement_rank <= 2 &&
+    if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U && this->step_ >= 4 &&
+        snapshot.refinement_rank > 0 && snapshot.refinement_rank <= 2 &&
         snapshot.final_refinement_class == "repair") {
       snapshot.final_refinement_class = "refine";
     }
@@ -4058,19 +3719,14 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
     // evitar que um ou mais patches com poor quality no candidato rejeitado
     // troquem o modo global para "repair" (isso costuma gerar malhas
     // complementares que não correspondem ao comportamento esperado).
-    const bool ignore_repair_for_mode =
-        (stable_consecutive_reject_count_ > 0U && this->step_ >= 4);
-    current_step_mode_ = ignore_repair_for_mode
-                              ? ((refine_count > 0U)
-                                     ? "refine"
-                                     : ((coarsen_count > 0U) ? "coarsen"
-                                                               : "freeze"))
-                              : ((repair_count > 0U)
-                                     ? "repair"
-                                     : ((refine_count > 0U) ? "refine"
-                                                             : ((coarsen_count > 0U)
-                                                                    ? "coarsen"
-                                                                    : "freeze")));
+    const bool ignore_repair_for_mode = (stable_consecutive_reject_count_ > 0U && this->step_ >= 4);
+    current_step_mode_ =
+        ignore_repair_for_mode
+            ? ((refine_count > 0U) ? "refine" : ((coarsen_count > 0U) ? "coarsen" : "freeze"))
+            : ((repair_count > 0U)
+                   ? "repair"
+                   : ((refine_count > 0U) ? "refine"
+                                          : ((coarsen_count > 0U) ? "coarsen" : "freeze")));
     current_generation_control_mode_ = current_step_mode_;
   }
 
@@ -4092,56 +3748,48 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
       } else {
         const PatchHistoryState* history =
             (i < patch_history_.size()) ? &patch_history_[i] : nullptr;
-        const double error_budget_share =
-            std::pow(std::max(0.0, snapshot.normalized_error), 1.35);
+        const double error_budget_share = std::pow(std::max(0.0, snapshot.normalized_error), 1.35);
         const double quality_repair_budget_share =
             Clamp01((0.6 * std::max(0.0, PATCH_QUALITY_TARGET - snapshot.quality_mean) +
                      0.4 * std::max(0.0, PATCH_QUALITY_MIN_TARGET - snapshot.quality_min)) /
                     std::max(PATCH_QUALITY_TARGET, 1.0e-9)) +
             Clamp01(snapshot.poor_ratio / 0.25);
-        const double error_term =
-            PATCH_BUDGET_ERROR_WEIGHT * error_budget_share;
+        const double error_term = PATCH_BUDGET_ERROR_WEIGHT * error_budget_share;
         const double efficiency_term =
             PATCH_BUDGET_EFFICIENCY_WEIGHT *
-            Clamp01(snapshot.efficiency_score /
-                    std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
-        const double quality_term =
-            PATCH_BUDGET_QUALITY_WEIGHT * quality_repair_budget_share;
+            Clamp01(snapshot.efficiency_score / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+        const double quality_term = PATCH_BUDGET_QUALITY_WEIGHT * quality_repair_budget_share;
         const double rank_term =
             current_policy_.stable_mode
                 ? 1.0
                 : ((snapshot.refinement_rank > 0)
-                ? (1.0 +
-                   std::max(0.0,
-                            static_cast<double>(current_top_patch_count_ -
-                                                static_cast<unsigned int>(
-                                                    std::min<int>(
-                                                        snapshot.refinement_rank - 1,
-                                                        static_cast<int>(current_top_patch_count_)))) /
-                                std::max(1.0, static_cast<double>(current_top_patch_count_))))
-                : 1.0);
+                       ? (1.0 +
+                          std::max(0.0, static_cast<double>(
+                                            current_top_patch_count_ -
+                                            static_cast<unsigned int>(std::min<int>(
+                                                snapshot.refinement_rank - 1,
+                                                static_cast<int>(current_top_patch_count_)))) /
+                                            std::max(1.0, static_cast<double>(
+                                                              current_top_patch_count_))))
+                       : 1.0);
         double score = (error_term * rank_term) + quality_term;
         score *= (0.20 + 0.80 * std::max(0.1, efficiency_term));
         if (step3plus_phase && history) {
           if (history->prev_patch_improved == 1) {
             score *= 1.20;
           }
-          if (history->prev_patch_decision_class == "refine" &&
-              history->prev_patch_improved == 0) {
+          if (history->prev_patch_decision_class == "refine" && history->prev_patch_improved == 0) {
             score *= 0.70;
           }
-          if (history->prev_patch_decision_class == "coarsen" &&
-              snapshot.normalized_error > 0.50) {
+          if (history->prev_patch_decision_class == "coarsen" && snapshot.normalized_error > 0.50) {
             score *= 1.10;
           }
         }
         if (snapshot.saturated_hard || snapshot.saturated_soft) {
           score *= 0.25;
         }
-        if (!current_policy_.stable_mode &&
-            BUDGET_DRIVEN_ADAPTATION == 1 && step_ > 1 &&
-            snapshot.refinement_rank > 0 &&
-            snapshot.refinement_rank <= 2) {
+        if (!current_policy_.stable_mode && BUDGET_DRIVEN_ADAPTATION == 1 && step_ > 1 &&
+            snapshot.refinement_rank > 0 && snapshot.refinement_rank <= 2) {
           score *= 1.35;
         }
         if (!current_policy_.stable_mode && step2_phase && snapshot.refinement_rank > 0 &&
@@ -4150,8 +3798,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
         }
         allocation_score[i] = std::max(PATCH_BUDGET_MIN_SHARE, score);
         current_patch_adaptation_[i].error_budget_share = error_budget_share;
-        current_patch_adaptation_[i].quality_repair_budget_share =
-            quality_repair_budget_share;
+        current_patch_adaptation_[i].quality_repair_budget_share = quality_repair_budget_share;
       }
       score_sum += allocation_score[i];
     }
@@ -4164,8 +3811,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
       const SubMesh* sub_mesh = patch ? patch->GetSubMesh() : nullptr;
       double patch_area = 0.0;
       if (sub_mesh) {
-        for (unsigned int elem_idx = 0; elem_idx < sub_mesh->GetNumberElements();
-             ++elem_idx) {
+        for (unsigned int elem_idx = 0; elem_idx < sub_mesh->GetNumberElements(); ++elem_idx) {
           const TriangleAdaptive* tri =
               static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));
           if (tri) {
@@ -4174,8 +3820,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
         }
       }
       const double share = allocation_score[i] / score_sum;
-      double target_patch_elements =
-          std::max(1.0, current_target_elements_step_ * share);
+      double target_patch_elements = std::max(1.0, current_target_elements_step_ * share);
       if (!few_patch_low_error_budget && (step2_phase || step3plus_phase) &&
           current_patch_adaptation_[i].refinement_rank > 0 &&
           current_patch_adaptation_[i].refinement_rank <=
@@ -4185,23 +3830,18 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
         // cause desrefino/malhas complementares erradas (especialmente em
         // patch curvo), usamos como referência o último candidato rejeitado
         // quando disponível.
-        unsigned long long prev_patch_elements_ll =
-            current_patch_adaptation_[i].elements_prev;
-        if (current_policy_.stable_mode &&
-            stable_consecutive_reject_count_ > 0U && this->step_ >= 4 &&
-            static_cast<size_t>(i) < last_candidate_elements_current_.size() &&
+        unsigned long long prev_patch_elements_ll = current_patch_adaptation_[i].elements_prev;
+        if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
+            this->step_ >= 4 && static_cast<size_t>(i) < last_candidate_elements_current_.size() &&
             last_candidate_elements_current_[static_cast<size_t>(i)] > 0ULL) {
-          prev_patch_elements_ll =
-              last_candidate_elements_current_[static_cast<size_t>(i)];
+          prev_patch_elements_ll = last_candidate_elements_current_[static_cast<size_t>(i)];
         }
         const double prev_patch_elements =
             std::max(1.0, static_cast<double>(prev_patch_elements_ll));
         double minimum_growth = step3plus_phase ? 1.10 : 1.20;
-        if (current_policy_.stable_mode && step_ >= 3 &&
-            stable_consecutive_reject_count_ > 0U) {
-          const double rz = std::pow(
-              0.92, static_cast<double>(
-                        std::min(10U, stable_consecutive_reject_count_)));
+        if (current_policy_.stable_mode && step_ >= 3 && stable_consecutive_reject_count_ > 0U) {
+          const double rz =
+              std::pow(0.92, static_cast<double>(std::min(10U, stable_consecutive_reject_count_)));
           minimum_growth = 1.0 + (minimum_growth - 1.0) * rz;
         }
         target_patch_elements =
@@ -4213,15 +3853,13 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
               static_cast<int>(current_top_patch_count_ + 1U) &&
           (current_patch_adaptation_[i].quality_min < 0.25 ||
            current_patch_adaptation_[i].poor_ratio > 0.18)) {
-        const double prev_patch_elements = std::max(
-            1.0, static_cast<double>(current_patch_adaptation_[i].elements_prev));
-        target_patch_elements =
-            std::max(target_patch_elements, prev_patch_elements * 1.10);
+        const double prev_patch_elements =
+            std::max(1.0, static_cast<double>(current_patch_adaptation_[i].elements_prev));
+        target_patch_elements = std::max(target_patch_elements, prev_patch_elements * 1.10);
       }
       if (few_patch_low_error_budget && step_ > 1) {
         target_patch_elements =
-            std::max(1.0, static_cast<double>(
-                               current_patch_adaptation_[i].elements_prev));
+            std::max(1.0, static_cast<double>(current_patch_adaptation_[i].elements_prev));
       }
       current_patch_target_elements_[i] = target_patch_elements;
       current_patch_adaptation_[i].patch_budget_share = share;
@@ -4238,15 +3876,14 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
       // Para "maha_4/maha_5": desbloquear profundidade de quadtree.
       // Se target_h permanecer alto, EstimateQuadtreeDepthCap fixa o depth em ~2,
       // e o número de elementos fica "travado" (ex.: 28 por patch).
-      if (current_policy_.stable_mode && patch_count <= 4U && step_ >= 4 &&
-          !error_step_.empty() && error_step_.back() < 0.12 && target_h > 0.25) {
+      if (current_policy_.stable_mode && patch_count <= 4U && step_ >= 4 && !error_step_.empty() &&
+          error_step_.back() < 0.12 && target_h > 0.25) {
         // Para depth >= 4, precisamos de target_h pequeno (raw_depth = ceil(log2(1/h))).
         target_h = 0.10;
       }
       current_patch_target_h_[i] = target_h;
       current_patch_adaptation_[i].target_patch_h = target_h;
-      current_patch_quadtree_depth_cap_[i] =
-          EstimateQuadtreeDepthCap(target_h, step_);
+      current_patch_quadtree_depth_cap_[i] = EstimateQuadtreeDepthCap(target_h, step_);
       current_patch_adaptation_[i].max_quadtree_depth_applied =
           current_patch_quadtree_depth_cap_[i];
       current_patch_adaptation_[i].quadtree_cap_applied =
@@ -4255,12 +3892,11 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
   }
 
   if (BUDGET_DRIVEN_ADAPTATION == 1 && PATCH_CONSISTENCY_MODE == 1 &&
-      (step_ > 1 || (current_policy_.stable_mode && step_ == 1)) &&
-      !few_patch_low_error_budget) {
+      (step_ > 1 || (current_policy_.stable_mode && step_ == 1)) && !few_patch_low_error_budget) {
     RegularizeEquivalentPatchBudgets(geometry);
   }
-  if (current_policy_.stable_mode && step_ == 1 && geometry != nullptr &&
-      !elements_step_.empty() && elements_step_.back() <= 32ULL) {
+  if (current_policy_.stable_mode && step_ == 1 && geometry != nullptr && !elements_step_.empty() &&
+      elements_step_.back() <= 32ULL) {
     const unsigned int pc = geometry->GetNumberPatches();
     for (unsigned int i = 0; i < pc && i < current_patch_target_h_.size(); ++i) {
       if (current_patch_target_h_[i] > 1.02) {
@@ -4269,8 +3905,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
         if (i < current_patch_adaptation_.size()) {
           current_patch_adaptation_[i].target_patch_h = clamped;
         }
-        current_patch_quadtree_depth_cap_[i] =
-            EstimateQuadtreeDepthCap(clamped, step_);
+        current_patch_quadtree_depth_cap_[i] = EstimateQuadtreeDepthCap(clamped, step_);
         if (i < current_patch_adaptation_.size()) {
           current_patch_adaptation_[i].max_quadtree_depth_applied =
               current_patch_quadtree_depth_cap_[i];
@@ -4281,8 +3916,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
 
   patch_factors = SmoothPatchAdaptationFactors(geometry, patch_factors);
   const std::vector<double> limited = ApplyAdaptationRateLimit(patch_factors);
-  if (current_policy_.stable_mode && PATCH_CONSISTENCY_MODE == 1 &&
-      step_ >= 1) {
+  if (current_policy_.stable_mode && PATCH_CONSISTENCY_MODE == 1 && step_ >= 1) {
     std::map<int, std::vector<unsigned int>> grouped;
     for (unsigned int i = 0; i < current_patch_adaptation_.size(); ++i) {
       const int group = current_patch_adaptation_[i].similar_patch_group;
@@ -4320,20 +3954,17 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
   }
   const bool stable_low_error_small_mesh =
       current_policy_.stable_mode && step_ >= 2 && geometry != nullptr &&
-      geometry->GetNumberPatches() <= 6U && !error_step_.empty() &&
-      error_step_.back() < 0.12;
+      geometry->GetNumberPatches() <= 6U && !error_step_.empty() && error_step_.back() < 0.12;
   for (unsigned int i = 0; i < current_patch_adaptation_.size(); ++i) {
     double limited_factor = patch_factors[i];
     if (step2_phase && !stable_low_error_small_mesh &&
         current_patch_adaptation_[i].refinement_rank > 0 &&
         current_patch_adaptation_[i].refinement_rank <=
             static_cast<int>(current_top_patch_count_ + 1U)) {
-      limited_factor = std::min(
-          limited_factor,
-          (current_patch_adaptation_[i].quality_min < 0.25 ||
-           current_patch_adaptation_[i].poor_ratio > 0.18)
-              ? 0.97
-              : 1.0);
+      limited_factor = std::min(limited_factor, (current_patch_adaptation_[i].quality_min < 0.25 ||
+                                                 current_patch_adaptation_[i].poor_ratio > 0.18)
+                                                    ? 0.97
+                                                    : 1.0);
     }
     current_patch_adaptation_[i].limited_factor = limited_factor;
     patch_factors[i] = limited_factor;
@@ -4347,8 +3978,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(
   return patch_factors;
 }
 
-void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
-    const Geometry* geometry) {
+void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometry) {
   const unsigned int patch_count = geometry ? geometry->GetNumberPatches() : 0U;
   if (PATCH_CONSISTENCY_MODE != 1 || patch_count == 0 ||
       current_patch_target_elements_.size() != patch_count ||
@@ -4373,24 +4003,20 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
     const PatchAdaptationSnapshot& b = current_patch_adaptation_[rhs];
     const bool step1_mode = current_policy_.stable_mode && step_ == 1;
     const bool boundary_ok = patch_boundary_curves[lhs] == patch_boundary_curves[rhs];
-    const bool area_geom_ok =
-        RelativeDifference(std::max(1.0e-9, patch_areas[lhs]),
-                           std::max(1.0e-9, patch_areas[rhs])) <=
-        (step1_mode ? std::max(0.40, PATCH_CONSISTENCY_AREA_TOL * 2.0)
-                    : PATCH_CONSISTENCY_AREA_TOL);
-    const bool area_ok =
-        RelativeDifference(std::max(1.0, static_cast<double>(a.elements_prev)),
-                           std::max(1.0, static_cast<double>(b.elements_prev))) <=
-        (step1_mode ? std::max(0.55, PATCH_CONSISTENCY_AREA_TOL * 2.5)
-                    : PATCH_CONSISTENCY_AREA_TOL);
+    const bool area_geom_ok = RelativeDifference(std::max(1.0e-9, patch_areas[lhs]),
+                                                 std::max(1.0e-9, patch_areas[rhs])) <=
+                              (step1_mode ? std::max(0.40, PATCH_CONSISTENCY_AREA_TOL * 2.0)
+                                          : PATCH_CONSISTENCY_AREA_TOL);
+    const bool area_ok = RelativeDifference(std::max(1.0, static_cast<double>(a.elements_prev)),
+                                            std::max(1.0, static_cast<double>(b.elements_prev))) <=
+                         (step1_mode ? std::max(0.55, PATCH_CONSISTENCY_AREA_TOL * 2.5)
+                                     : PATCH_CONSISTENCY_AREA_TOL);
     const bool error_ok =
-        RelativeDifference(a.normalized_error, b.normalized_error) <=
-        PATCH_CONSISTENCY_ERROR_TOL;
+        RelativeDifference(a.normalized_error, b.normalized_error) <= PATCH_CONSISTENCY_ERROR_TOL;
     const double curvature_proxy_a = std::fabs(a.raw_factor - 1.0);
     const double curvature_proxy_b = std::fabs(b.raw_factor - 1.0);
     const bool curvature_ok =
-        RelativeDifference(curvature_proxy_a, curvature_proxy_b) <=
-        PATCH_CONSISTENCY_CURVATURE_TOL;
+        RelativeDifference(curvature_proxy_a, curvature_proxy_b) <= PATCH_CONSISTENCY_CURVATURE_TOL;
     const bool quality_ok =
         RelativeDifference(std::max(0.05, a.quality_mean + (1.0 - a.poor_ratio)),
                            std::max(0.05, b.quality_mean + (1.0 - b.poor_ratio))) <=
@@ -4420,8 +4046,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
         for (unsigned int p = 0; p < curve->GetNumBerPatches(); ++p) {
           Patch* neighbor_patch = curve->GetPatch(p);
           const unsigned int neighbor = ResolvePatchIndex(geometry, neighbor_patch);
-          if (neighbor == std::numeric_limits<unsigned int>::max() ||
-              neighbor == current) {
+          if (neighbor == std::numeric_limits<unsigned int>::max() || neighbor == current) {
             continue;
           }
           if (PATCH_CONSISTENCY_NEIGHBOR_ONLY == 1 && groups[neighbor] >= 0 &&
@@ -4440,9 +4065,8 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
     }
   }
 
-  const double max_ratio =
-      (step_ == 2) ? PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEP2
-                   : PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEPN;
+  const double max_ratio = (step_ == 2) ? PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEP2
+                                        : PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEPN;
   std::map<int, std::vector<unsigned int>> grouped;
   for (unsigned int i = 0; i < patch_count; ++i) {
     grouped[groups[i]].push_back(i);
@@ -4471,14 +4095,12 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
       snapshot.target_h_before_consistency = current_patch_target_h_[idx];
       if (current_policy_.stable_mode && step_ == 1) {
         const double area_similarity =
-            1.0 - Clamp01(RelativeDifference(
-                      std::max(1.0e-9, patch_areas[idx]),
-                      std::max(1.0e-9, patch_areas[anchor])));
+            1.0 - Clamp01(RelativeDifference(std::max(1.0e-9, patch_areas[idx]),
+                                             std::max(1.0e-9, patch_areas[anchor])));
         snapshot.similarity_score = area_similarity;
       } else {
         snapshot.similarity_score =
-            1.0 - std::min(1.0, 0.5 * snapshot.normalized_error +
-                                    0.5 * snapshot.poor_ratio);
+            1.0 - std::min(1.0, 0.5 * snapshot.normalized_error + 0.5 * snapshot.poor_ratio);
       }
       snapshot.similarity_score_to_neighbors = snapshot.similarity_score;
       if (snapshot.local_error > anchor_error) {
@@ -4493,11 +4115,9 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
     std::sort(budgets.begin(), budgets.end());
     const double median_budget = budgets[budgets.size() / 2];
     const double anchor_budget = std::max(1.0, current_patch_target_elements_[anchor]);
-    const double budget_floor =
-        std::max(median_budget * PATCH_CONSISTENCY_MIN_GROUP_SHARE,
-                 anchor_budget / std::max(1.0, max_ratio));
-    const double budget_ceil =
-        std::max(budget_floor, anchor_budget * std::max(1.0, max_ratio));
+    const double budget_floor = std::max(median_budget * PATCH_CONSISTENCY_MIN_GROUP_SHARE,
+                                         anchor_budget / std::max(1.0, max_ratio));
+    const double budget_ceil = std::max(budget_floor, anchor_budget * std::max(1.0, max_ratio));
     std::sort(hs.begin(), hs.end());
     const double median_h = hs.empty() ? -1.0 : hs[hs.size() / 2];
     double anchor_h = current_patch_target_h_[anchor];
@@ -4512,9 +4132,9 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
       stable_group_h = std::min(median_h, anchor_h * 1.10);
     }
 
-    const bool skip_depth_clamp_small_step1 =
-        current_policy_.stable_mode && step_ == 1 && !elements_step_.empty() &&
-        elements_step_.back() <= 32ULL;
+    const bool skip_depth_clamp_small_step1 = current_policy_.stable_mode && step_ == 1 &&
+                                              !elements_step_.empty() &&
+                                              elements_step_.back() <= 32ULL;
     for (unsigned int idx : members) {
       PatchAdaptationSnapshot& snapshot = current_patch_adaptation_[idx];
       snapshot.group_anchor_patch = static_cast<int>(anchor);
@@ -4523,21 +4143,17 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
       const double before_h = current_patch_target_h_[idx];
       double after_budget = ClampValue(before_budget, budget_floor, budget_ceil);
       if (current_policy_.stable_mode && step_ >= 1) {
-        after_budget = std::max(
-            after_budget,
-            current_patch_target_elements_[anchor] *
-                current_policy_.equivalent_patch_min_ratio);
+        after_budget = std::max(after_budget, current_patch_target_elements_[anchor] *
+                                                  current_policy_.equivalent_patch_min_ratio);
       }
       if (current_policy_.stable_mode && step_ == 1 && !elements_step_.empty() &&
           elements_step_.back() <= 32ULL) {
-        const double prev_el =
-            std::max(1.0, static_cast<double>(snapshot.elements_prev));
+        const double prev_el = std::max(1.0, static_cast<double>(snapshot.elements_prev));
         after_budget = std::max(after_budget, prev_el * 1.08);
       }
       if (STEP2_GROUP_NEIGHBOR_PROTECTION == 1 &&
           current_patch_adaptation_[anchor].refinement_rank > 0 &&
-          snapshot.refinement_rank > static_cast<int>(current_top_patch_count_) &&
-          step_ == 2) {
+          snapshot.refinement_rank > static_cast<int>(current_top_patch_count_) && step_ == 2) {
         after_budget = std::max(after_budget, budget_floor);
       }
       current_patch_target_elements_[idx] = after_budget;
@@ -4548,8 +4164,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
 
       double after_h = before_h;
       if (before_h > 0.0) {
-        after_h = ClampValue(before_h,
-                             anchor_h / std::max(1.0, PATCH_CONSISTENCY_H_CLAMP_RATIO),
+        after_h = ClampValue(before_h, anchor_h / std::max(1.0, PATCH_CONSISTENCY_H_CLAMP_RATIO),
                              anchor_h * std::max(1.0, PATCH_CONSISTENCY_H_CLAMP_RATIO));
         if (current_policy_.stable_mode && step_ >= 1 && stable_group_h > 0.0) {
           after_h = std::min(after_h, stable_group_h);
@@ -4563,22 +4178,19 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
           idx < current_patch_quadtree_depth_cap_.size() &&
           current_patch_quadtree_depth_cap_[anchor] >= 0 &&
           current_patch_quadtree_depth_cap_[idx] >= 0) {
-        current_patch_quadtree_depth_cap_[idx] = std::max(
-            current_patch_quadtree_depth_cap_[anchor] - 1,
-            std::min(current_patch_quadtree_depth_cap_[anchor] + 1,
-                     current_patch_quadtree_depth_cap_[idx]));
-        snapshot.max_quadtree_depth_applied =
-            current_patch_quadtree_depth_cap_[idx];
+        current_patch_quadtree_depth_cap_[idx] =
+            std::max(current_patch_quadtree_depth_cap_[anchor] - 1,
+                     std::min(current_patch_quadtree_depth_cap_[anchor] + 1,
+                              current_patch_quadtree_depth_cap_[idx]));
+        snapshot.max_quadtree_depth_applied = current_patch_quadtree_depth_cap_[idx];
       }
       snapshot.consistency_clamped =
           (std::fabs(after_budget - before_budget) > 1.0e-9 ||
-           ((before_h > 0.0 || after_h > 0.0) &&
-            std::fabs(after_h - before_h) > 1.0e-9))
+           ((before_h > 0.0 || after_h > 0.0) && std::fabs(after_h - before_h) > 1.0e-9))
               ? 1
               : 0;
       current_consistency_regularization_active_ =
-          std::max(current_consistency_regularization_active_,
-                   snapshot.consistency_clamped);
+          std::max(current_consistency_regularization_active_, snapshot.consistency_clamped);
     }
 
     std::vector<double> group_budgets;
@@ -4601,8 +4213,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(
       0.65 * current_patch_budget_dispersion_ + 0.35 * current_patch_h_dispersion_;
 }
 
-void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(
-    const Geometry* geometry) {
+void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(const Geometry* geometry) {
   if (CURVE_CONSISTENCY_MODE != 1 || !geometry ||
       current_curve_target_points_.size() != geometry->GetNumberCurves()) {
     return;
@@ -4612,8 +4223,7 @@ void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(
     CurveAdaptive* curve = const_cast<CurveAdaptive*>(geometry->GetCurve(i));
     std::vector<unsigned int> patch_ids;
     for (unsigned int p = 0; p < curve->GetNumBerPatches(); ++p) {
-      const unsigned int patch_id =
-          ResolvePatchIndex(geometry, curve->GetPatch(p));
+      const unsigned int patch_id = ResolvePatchIndex(geometry, curve->GetPatch(p));
       if (patch_id != std::numeric_limits<unsigned int>::max() &&
           patch_id < current_patch_adaptation_.size()) {
         patch_ids.push_back(patch_id);
@@ -4622,8 +4232,7 @@ void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(
     CurveAdaptationSnapshot& snapshot = current_curve_adaptation_[i];
     snapshot.target_points_before_consistency =
         static_cast<int>(std::round(current_curve_target_points_[i]));
-    snapshot.target_points_after_consistency =
-        snapshot.target_points_before_consistency;
+    snapshot.target_points_after_consistency = snapshot.target_points_before_consistency;
     if (patch_ids.size() < 2) {
       snapshot.curve_patch_balance_ratio = 1.0;
       continue;
@@ -4638,37 +4247,31 @@ void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(
     for (unsigned int patch_id : patch_ids) {
       min_budget = std::min(min_budget, current_patch_target_elements_[patch_id]);
       max_budget = std::max(max_budget, current_patch_target_elements_[patch_id]);
-      if (patch_id < current_patch_target_h_.size() &&
-          current_patch_target_h_[patch_id] > 0.0) {
+      if (patch_id < current_patch_target_h_.size() && current_patch_target_h_[patch_id] > 0.0) {
         min_target_h = std::min(min_target_h, current_patch_target_h_[patch_id]);
       }
       same_group = same_group &&
-                   (current_patch_adaptation_[patch_id].similar_patch_group == group) &&
-                   group >= 0;
+                   (current_patch_adaptation_[patch_id].similar_patch_group == group) && group >= 0;
       if (current_patch_adaptation_[patch_id].refinement_rank > 0 &&
           current_patch_adaptation_[patch_id].refinement_rank <=
               static_cast<int>(current_top_patch_count_)) {
         touches_priority_patch = true;
       }
     }
-    snapshot.curve_patch_balance_ratio =
-        max_budget / std::max(1.0, min_budget);
-    double max_ratio =
-        (step_ == 2) ? CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2
-                     : (CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2 + 0.5);
+    snapshot.curve_patch_balance_ratio = max_budget / std::max(1.0, min_budget);
+    double max_ratio = (step_ == 2) ? CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2
+                                    : (CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2 + 0.5);
     const int before = static_cast<int>(std::round(current_curve_target_points_[i]));
     const bool low_h_sensitive =
         min_target_h < std::numeric_limits<double>::max() && min_target_h <= 0.14;
     const bool force_curve_alignment =
-        current_policy_.stable_mode && step_ >= 2 &&
-        (before < snapshot.geometric_target_points) &&
+        current_policy_.stable_mode && step_ >= 2 && (before < snapshot.geometric_target_points) &&
         (touches_priority_patch || snapshot.sensitive_curve == 1 || low_h_sensitive);
-    if ((same_group && snapshot.curve_patch_balance_ratio > max_ratio) ||
-        force_curve_alignment) {
-      const int elevated = static_cast<int>(std::round(
-          CURVE_CONSISTENCY_GROUP_BLEND * static_cast<double>(before) +
-          (1.0 - CURVE_CONSISTENCY_GROUP_BLEND) *
-              static_cast<double>(before) * std::min(max_ratio, snapshot.curve_patch_balance_ratio)));
+    if ((same_group && snapshot.curve_patch_balance_ratio > max_ratio) || force_curve_alignment) {
+      const int elevated = static_cast<int>(
+          std::round(CURVE_CONSISTENCY_GROUP_BLEND * static_cast<double>(before) +
+                     (1.0 - CURVE_CONSISTENCY_GROUP_BLEND) * static_cast<double>(before) *
+                         std::min(max_ratio, snapshot.curve_patch_balance_ratio)));
       int after = std::max(before, elevated);
       if (current_policy_.stable_mode && step_ >= 2) {
         after = std::max(after, snapshot.geometric_target_points);
@@ -4687,8 +4290,9 @@ void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(
   current_patch_consistency_penalty_ += 0.20 * current_curve_balance_dispersion_;
 }
 
-std::vector<double> GeneratorAdaptive::SmoothPatchAdaptationFactors(
-    const Geometry* geometry, const std::vector<double>& raw_factors) {
+std::vector<double>
+GeneratorAdaptive::SmoothPatchAdaptationFactors(const Geometry* geometry,
+                                                const std::vector<double>& raw_factors) {
   std::vector<double> smoothed_factors = raw_factors;
 
   if (raw_factors.size() != geometry->GetNumberPatches()) {
@@ -4696,8 +4300,7 @@ std::vector<double> GeneratorAdaptive::SmoothPatchAdaptationFactors(
   }
 
   for (unsigned int i = 0; i < geometry->GetNumberPatches(); ++i) {
-    const PatchCoons* patch =
-        static_cast<const PatchCoons*>(geometry->GetPatch(i));
+    const PatchCoons* patch = static_cast<const PatchCoons*>(geometry->GetPatch(i));
     double neighbor_sum = 0.0;
     int neighbor_count = 0;
 
@@ -4717,8 +4320,7 @@ std::vector<double> GeneratorAdaptive::SmoothPatchAdaptationFactors(
         if (step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
             static_cast<size_t>(i) < current_patch_eligible_mask_.size() &&
             static_cast<size_t>(neighbor_id) < current_patch_eligible_mask_.size() &&
-            current_patch_eligible_mask_[neighbor_id] !=
-                current_patch_eligible_mask_[i]) {
+            current_patch_eligible_mask_[neighbor_id] != current_patch_eligible_mask_[i]) {
           continue;
         }
 
@@ -4728,24 +4330,18 @@ std::vector<double> GeneratorAdaptive::SmoothPatchAdaptationFactors(
     }
 
     if (neighbor_count > 0) {
-      const double neighbor_mean =
-          neighbor_sum / static_cast<double>(neighbor_count);
-      const bool hard_spatial =
-          (step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1);
-      const double neighbor_weight =
-          hard_spatial ? STEP2_SMOOTHING_NEIGHBOR_WEIGHT : 0.10;
+      const double neighbor_mean = neighbor_sum / static_cast<double>(neighbor_count);
+      const bool hard_spatial = (step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1);
+      const double neighbor_weight = hard_spatial ? STEP2_SMOOTHING_NEIGHBOR_WEIGHT : 0.10;
       smoothed_factors[i] =
-          (1.0 - neighbor_weight) * raw_factors[i] +
-          neighbor_weight * neighbor_mean;
+          (1.0 - neighbor_weight) * raw_factors[i] + neighbor_weight * neighbor_mean;
     }
 
-    smoothed_factors[i] =
-        ClampValue(smoothed_factors[i], PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+    smoothed_factors[i] = ClampValue(smoothed_factors[i], PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
     if (step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
         static_cast<size_t>(i) < current_patch_eligible_mask_.size() &&
         current_patch_eligible_mask_[i] == 0) {
-      smoothed_factors[i] =
-          std::max(smoothed_factors[i], STEP2_NONELIGIBLE_FACTOR_MIN);
+      smoothed_factors[i] = std::max(smoothed_factors[i], STEP2_NONELIGIBLE_FACTOR_MIN);
     }
     if (i < current_patch_adaptation_.size()) {
       current_patch_adaptation_[i].smoothed_factor = smoothed_factors[i];
@@ -4755,8 +4351,8 @@ std::vector<double> GeneratorAdaptive::SmoothPatchAdaptationFactors(
   return smoothed_factors;
 }
 
-std::vector<double> GeneratorAdaptive::ApplyAdaptationRateLimit(
-    const std::vector<double>& target_factors) {
+std::vector<double>
+GeneratorAdaptive::ApplyAdaptationRateLimit(const std::vector<double>& target_factors) {
   std::vector<double> limited_factors = target_factors;
 
   if (limited_factors.empty()) {
@@ -4774,16 +4370,16 @@ std::vector<double> GeneratorAdaptive::ApplyAdaptationRateLimit(
     const double lower = previous - current_adaptation_max_delta_;
     const double upper = previous + current_adaptation_max_delta_;
     limited_factors[i] = std::max(lower, std::min(upper, relaxed));
-    limited_factors[i] =
-        ClampValue(limited_factors[i], PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+    limited_factors[i] = ClampValue(limited_factors[i], PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
   }
 
   previous_patch_factors_ = limited_factors;
   return limited_factors;
 }
 
-double GeneratorAdaptive::ComputeCurveAdaptationFactor(
-    CurveAdaptive* curve, const std::vector<double>& patch_factors) const {
+double
+GeneratorAdaptive::ComputeCurveAdaptationFactor(CurveAdaptive* curve,
+                                                const std::vector<double>& patch_factors) const {
   double factor = 1.0;
   bool found_patch = false;
   double factor_sum = 0.0;
@@ -4801,18 +4397,16 @@ double GeneratorAdaptive::ComputeCurveAdaptationFactor(
       continue;
     }
 
-    factor = found_patch ? std::min(factor, patch_factors[patch_id])
-                         : patch_factors[patch_id];
+    factor = found_patch ? std::min(factor, patch_factors[patch_id]) : patch_factors[patch_id];
     factor_sum += patch_factors[patch_id];
     double weight = 1.0;
     if (CURVE_ADAPTATION_POLICY == 3 && patch_id < patch_history_.size()) {
-      const double error_weight =
-          (patch_id < last_submesh_error_.size())
-              ? std::max(last_submesh_error_[patch_id], 1.0e-12)
-              : 1.0;
+      const double error_weight = (patch_id < last_submesh_error_.size())
+                                      ? std::max(last_submesh_error_[patch_id], 1.0e-12)
+                                      : 1.0;
       const double efficiency_weight =
           std::max(1.0e-12, patch_history_[patch_id].prev_patch_efficiency /
-                                  std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+                                std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
       weight = (1.0 - CURVE_EFFICIENCY_WEIGHT) * error_weight +
                CURVE_EFFICIENCY_WEIGHT * efficiency_weight;
     } else if (patch_id < last_submesh_error_.size()) {
@@ -4828,12 +4422,9 @@ double GeneratorAdaptive::ComputeCurveAdaptationFactor(
   }
 
   const double mean_factor =
-      contributing_patches > 0U
-          ? factor_sum / static_cast<double>(contributing_patches)
-          : factor;
+      contributing_patches > 0U ? factor_sum / static_cast<double>(contributing_patches) : factor;
   double weighted_factor = factor;
-  if ((CURVE_ADAPTATION_POLICY == 2 || CURVE_ADAPTATION_POLICY == 3) &&
-      weight_sum > 0.0) {
+  if ((CURVE_ADAPTATION_POLICY == 2 || CURVE_ADAPTATION_POLICY == 3) && weight_sum > 0.0) {
     weighted_factor = 0.0;
     for (unsigned int i = 0; i < curve->GetNumBerPatches(); ++i) {
       Patch* patch = curve->GetPatch(i);
@@ -4846,13 +4437,12 @@ double GeneratorAdaptive::ComputeCurveAdaptationFactor(
       }
       double weight = 1.0;
       if (CURVE_ADAPTATION_POLICY == 3 && patch_id < patch_history_.size()) {
-        const double error_weight =
-            (patch_id < last_submesh_error_.size())
-                ? std::max(last_submesh_error_[patch_id], 1.0e-12)
-                : 1.0;
+        const double error_weight = (patch_id < last_submesh_error_.size())
+                                        ? std::max(last_submesh_error_[patch_id], 1.0e-12)
+                                        : 1.0;
         const double efficiency_weight =
             std::max(1.0e-12, patch_history_[patch_id].prev_patch_efficiency /
-                                    std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+                                  std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
         weight = (1.0 - CURVE_EFFICIENCY_WEIGHT) * error_weight +
                  CURVE_EFFICIENCY_WEIGHT * efficiency_weight;
       } else {
@@ -4866,22 +4456,20 @@ double GeneratorAdaptive::ComputeCurveAdaptationFactor(
 
   double base_factor = factor;
   if (CURVE_ADAPTATION_POLICY == 1) {
-    base_factor = CURVE_ADAPTATION_BLEND * factor +
-                  (1.0 - CURVE_ADAPTATION_BLEND) * mean_factor;
+    base_factor = CURVE_ADAPTATION_BLEND * factor + (1.0 - CURVE_ADAPTATION_BLEND) * mean_factor;
   } else if (CURVE_ADAPTATION_POLICY == 2 || CURVE_ADAPTATION_POLICY == 3) {
-    base_factor = CURVE_ADAPTATION_BLEND * factor +
-                  (1.0 - CURVE_ADAPTATION_BLEND) * weighted_factor;
+    base_factor =
+        CURVE_ADAPTATION_BLEND * factor + (1.0 - CURVE_ADAPTATION_BLEND) * weighted_factor;
   }
 
-  const double sensitivity_scale =
-      (step_ <= 1) ? 1.0 : STEP2_CURVE_SENSITIVITY_SCALE;
+  const double sensitivity_scale = (step_ <= 1) ? 1.0 : STEP2_CURVE_SENSITIVITY_SCALE;
   const double attenuated_factor =
       1.0 + (CURVE_FACTOR_SENSITIVITY * sensitivity_scale) * (base_factor - 1.0);
   return ClampValue(attenuated_factor, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
 }
 
-GeneratorAdaptive::MeshQualityStats GeneratorAdaptive::ComputeMeshQualityStats(
-    const MeshAdaptive* mesh) const {
+GeneratorAdaptive::MeshQualityStats
+GeneratorAdaptive::ComputeMeshQualityStats(const MeshAdaptive* mesh) const {
   MeshQualityStats stats;
   if (!mesh) {
     return stats;
@@ -4890,32 +4478,27 @@ GeneratorAdaptive::MeshQualityStats GeneratorAdaptive::ComputeMeshQualityStats(
   std::vector<double> min_angles_3d;
   std::vector<double> max_angles_3d;
 
-  for (unsigned int sub_idx = 0; sub_idx < mesh->GetNumberSubMeshesAdaptive();
-       ++sub_idx) {
+  for (unsigned int sub_idx = 0; sub_idx < mesh->GetNumberSubMeshesAdaptive(); ++sub_idx) {
     const SubMesh* sub = mesh->GetSubMeshAdaptiveByPosition(sub_idx);
     if (!sub) {
       continue;
     }
-    for (unsigned int elem_idx = 0; elem_idx < sub->GetNumberElements();
-         ++elem_idx) {
-      const TriangleAdaptive* tri =
-          static_cast<const TriangleAdaptive*>(sub->GetElement(elem_idx));
+    for (unsigned int elem_idx = 0; elem_idx < sub->GetNumberElements(); ++elem_idx) {
+      const TriangleAdaptive* tri = static_cast<const TriangleAdaptive*>(sub->GetElement(elem_idx));
       if (!tri) {
         continue;
       }
       const bool first_sample = (stats.total_elements == 0ULL);
-      const double quality_3d = TriangleQualityFromNodes(
-          tri->GetNoh(1), tri->GetNoh(2), tri->GetNoh(3));
+      const double quality_3d =
+          TriangleQualityFromNodes(tri->GetNoh(1), tri->GetNoh(2), tri->GetNoh(3));
       const double quality_uv = TriangleQualityFromParameters(
           tri->GetParametersN1(), tri->GetParametersN2(), tri->GetParametersN3());
-      const TriangleShapeMetrics shape_3d = ComputeTriangleShapeMetrics3D(
-          tri->GetNoh(1), tri->GetNoh(2), tri->GetNoh(3));
-      AccumulateQualitySample(quality_3d, first_sample, stats.quality_min_3d,
-                              stats.quality_mean_3d, stats.poor_ratio_3d,
-                              stats.good_ratio_ge_0_60_3d);
-      AccumulateQualitySample(quality_uv, first_sample, stats.quality_min_uv,
-                              stats.quality_mean_uv, stats.poor_ratio_uv,
-                              stats.good_ratio_ge_0_60_uv);
+      const TriangleShapeMetrics shape_3d =
+          ComputeTriangleShapeMetrics3D(tri->GetNoh(1), tri->GetNoh(2), tri->GetNoh(3));
+      AccumulateQualitySample(quality_3d, first_sample, stats.quality_min_3d, stats.quality_mean_3d,
+                              stats.poor_ratio_3d, stats.good_ratio_ge_0_60_3d);
+      AccumulateQualitySample(quality_uv, first_sample, stats.quality_min_uv, stats.quality_mean_uv,
+                              stats.poor_ratio_uv, stats.good_ratio_ge_0_60_uv);
       stats.angle_quality_mean_3d += shape_3d.angle_quality;
       stats.edge_ratio_mean_3d += shape_3d.edge_ratio;
       stats.min_angle_mean_3d += shape_3d.min_angle_deg;
@@ -4981,88 +4564,65 @@ void GeneratorAdaptive::WritePatchAdaptationLog(int step, bool accepted) const {
           "refinement_rank,final_refinement_class,eligible_h_scale_applied,"
           "micro_refinement_active,budget_pressure_local,intra_patch_damped,"
           "local_patch_budget,patch_budget_exceeded,patch_generation_mode,"
-          "target_patch_elements,actual_patch_elements,patch_budget_share,error_budget_share,quality_repair_budget_share,"
-          "similar_patch_group,similarity_score,similarity_score_to_neighbors,is_consistency_anchor,consistency_clamped,"
-          "budget_before_consistency,budget_after_consistency,target_h_before_consistency,target_h_after_consistency,"
+          "target_patch_elements,actual_patch_elements,patch_budget_share,error_budget_share,"
+          "quality_repair_budget_share,"
+          "similar_patch_group,similarity_score,similarity_score_to_neighbors,is_consistency_"
+          "anchor,consistency_clamped,"
+          "budget_before_consistency,budget_after_consistency,target_h_before_consistency,target_h_"
+          "after_consistency,"
           "group_anchor_patch,group_budget_ratio,"
           "target_patch_growth,target_patch_h,applied_patch_h,quadtree_cap_applied,"
           "max_quadtree_depth_applied,transition_floor,transition_underresolved,"
           "interior_transition_imbalance,curve_domain_balance,curve_interior_coupling,"
-          "boundary_element_count,boundary_quality_min_uv,boundary_quality_mean_uv,boundary_good_ratio_ge_0_60_uv,"
-          "transition_band_elements,transition_band_quality_min_uv,transition_band_quality_mean_uv,transition_band_q_ge_0_60_uv,"
-          "interior_core_elements,interior_core_quality_min_uv,interior_core_quality_mean_uv,interior_core_q_ge_0_60_uv,"
+          "boundary_element_count,boundary_quality_min_uv,boundary_quality_mean_uv,boundary_good_"
+          "ratio_ge_0_60_uv,"
+          "transition_band_elements,transition_band_quality_min_uv,transition_band_quality_mean_uv,"
+          "transition_band_q_ge_0_60_uv,"
+          "interior_core_elements,interior_core_quality_min_uv,interior_core_quality_mean_uv,"
+          "interior_core_q_ge_0_60_uv,"
           "generated_faces_structural,"
           "generation_status_structural"
        << std::endl;
   for (const auto& snapshot : current_patch_adaptation_) {
-    file << snapshot.patch_id << "," << snapshot.local_error << ","
-         << snapshot.normalized_error << "," << snapshot.quality_min << ","
-         << snapshot.quality_mean << "," << snapshot.good_ratio_ge_0_60 << ","
-         << snapshot.poor_ratio << ","
+    file << snapshot.patch_id << "," << snapshot.local_error << "," << snapshot.normalized_error
+         << "," << snapshot.quality_min << "," << snapshot.quality_mean << ","
+         << snapshot.good_ratio_ge_0_60 << "," << snapshot.poor_ratio << ","
          << snapshot.quality_min_3d << "," << snapshot.quality_mean_3d << ","
          << snapshot.good_ratio_ge_0_60_3d << "," << snapshot.poor_ratio_3d << ","
          << snapshot.quality_min_uv << "," << snapshot.quality_mean_uv << ","
          << snapshot.good_ratio_ge_0_60_uv << "," << snapshot.poor_ratio_uv << ","
-         << snapshot.raw_factor << "," << snapshot.smoothed_factor << ","
-         << snapshot.limited_factor << "," << snapshot.elements_prev << ","
-         << snapshot.elements_current << "," << snapshot.elements_delta << ","
-         << snapshot.local_error_drop_abs << "," << snapshot.local_error_drop_pct << ","
-         << snapshot.local_error_drop_per_element << ","
-         << snapshot.efficiency_score << ","
-         << snapshot.eligible_for_refinement << ","
-         << snapshot.saturated_soft << ","
-         << snapshot.saturated_hard << ","
-         << snapshot.consecutive_inefficient_steps << ","
-         << snapshot.budget_blocked << ","
-         << snapshot.refinement_rank << ","
-         << snapshot.final_refinement_class << ","
-         << snapshot.eligible_h_scale_applied << ","
-         << snapshot.micro_refinement_active << ","
-         << snapshot.budget_pressure_local << ","
-         << snapshot.intra_patch_damped << ","
-         << snapshot.local_patch_budget << ","
-         << snapshot.patch_budget_exceeded << ","
-         << snapshot.patch_generation_mode << ","
-         << snapshot.target_patch_elements << ","
-         << snapshot.actual_patch_elements << ","
-         << snapshot.patch_budget_share << ","
-         << snapshot.error_budget_share << ","
-         << snapshot.quality_repair_budget_share << ","
-         << snapshot.similar_patch_group << ","
-         << snapshot.similarity_score << ","
-         << snapshot.similarity_score_to_neighbors << ","
-         << snapshot.is_consistency_anchor << ","
-         << snapshot.consistency_clamped << ","
-         << snapshot.budget_before_consistency << ","
-         << snapshot.budget_after_consistency << ","
-         << snapshot.target_h_before_consistency << ","
-         << snapshot.target_h_after_consistency << ","
-         << snapshot.group_anchor_patch << ","
-         << snapshot.group_budget_ratio << ","
-         << snapshot.target_patch_growth << ","
-         << snapshot.target_patch_h << ","
-         << snapshot.applied_patch_h << ","
-         << snapshot.quadtree_cap_applied << ","
-         << snapshot.max_quadtree_depth_applied << ","
-         << snapshot.transition_floor << ","
-         << snapshot.transition_underresolved << ","
-         << snapshot.interior_transition_imbalance << ","
-         << snapshot.curve_domain_balance << ","
-         << snapshot.curve_interior_coupling << ","
-         << snapshot.boundary_element_count << ","
-         << snapshot.boundary_quality_min << ","
-         << snapshot.boundary_quality_mean << ","
-         << snapshot.boundary_good_ratio_ge_0_60 << ","
-         << snapshot.transition_band_elements << ","
-         << snapshot.transition_band_quality_min << ","
-         << snapshot.transition_band_quality_mean << ","
-         << snapshot.transition_band_q_ge_0_60 << ","
-         << snapshot.interior_core_elements << ","
-         << snapshot.interior_core_quality_min << ","
-         << snapshot.interior_core_quality_mean << ","
-         << snapshot.interior_core_q_ge_0_60 << ","
-         << snapshot.generated_faces_structural << ","
-         << snapshot.generation_status_structural << std::endl;
+         << snapshot.raw_factor << "," << snapshot.smoothed_factor << "," << snapshot.limited_factor
+         << "," << snapshot.elements_prev << "," << snapshot.elements_current << ","
+         << snapshot.elements_delta << "," << snapshot.local_error_drop_abs << ","
+         << snapshot.local_error_drop_pct << "," << snapshot.local_error_drop_per_element << ","
+         << snapshot.efficiency_score << "," << snapshot.eligible_for_refinement << ","
+         << snapshot.saturated_soft << "," << snapshot.saturated_hard << ","
+         << snapshot.consecutive_inefficient_steps << "," << snapshot.budget_blocked << ","
+         << snapshot.refinement_rank << "," << snapshot.final_refinement_class << ","
+         << snapshot.eligible_h_scale_applied << "," << snapshot.micro_refinement_active << ","
+         << snapshot.budget_pressure_local << "," << snapshot.intra_patch_damped << ","
+         << snapshot.local_patch_budget << "," << snapshot.patch_budget_exceeded << ","
+         << snapshot.patch_generation_mode << "," << snapshot.target_patch_elements << ","
+         << snapshot.actual_patch_elements << "," << snapshot.patch_budget_share << ","
+         << snapshot.error_budget_share << "," << snapshot.quality_repair_budget_share << ","
+         << snapshot.similar_patch_group << "," << snapshot.similarity_score << ","
+         << snapshot.similarity_score_to_neighbors << "," << snapshot.is_consistency_anchor << ","
+         << snapshot.consistency_clamped << "," << snapshot.budget_before_consistency << ","
+         << snapshot.budget_after_consistency << "," << snapshot.target_h_before_consistency << ","
+         << snapshot.target_h_after_consistency << "," << snapshot.group_anchor_patch << ","
+         << snapshot.group_budget_ratio << "," << snapshot.target_patch_growth << ","
+         << snapshot.target_patch_h << "," << snapshot.applied_patch_h << ","
+         << snapshot.quadtree_cap_applied << "," << snapshot.max_quadtree_depth_applied << ","
+         << snapshot.transition_floor << "," << snapshot.transition_underresolved << ","
+         << snapshot.interior_transition_imbalance << "," << snapshot.curve_domain_balance << ","
+         << snapshot.curve_interior_coupling << "," << snapshot.boundary_element_count << ","
+         << snapshot.boundary_quality_min << "," << snapshot.boundary_quality_mean << ","
+         << snapshot.boundary_good_ratio_ge_0_60 << "," << snapshot.transition_band_elements << ","
+         << snapshot.transition_band_quality_min << "," << snapshot.transition_band_quality_mean
+         << "," << snapshot.transition_band_q_ge_0_60 << "," << snapshot.interior_core_elements
+         << "," << snapshot.interior_core_quality_min << "," << snapshot.interior_core_quality_mean
+         << "," << snapshot.interior_core_q_ge_0_60 << "," << snapshot.generated_faces_structural
+         << "," << snapshot.generation_status_structural << std::endl;
   }
 }
 
@@ -5084,39 +4644,32 @@ void GeneratorAdaptive::WriteCurveAdaptationLog(int step, bool accepted) const {
           "target_curve_points,actual_curve_points,curve_point_growth_factor,"
           "curve_budget_source_patches,geometric_target_points,min_adjacent_target_h,"
           "max_adjacent_target_elements,sensitive_curve,curve_patch_balance_ratio,"
-          "curve_consistency_clamped,target_points_before_consistency,target_points_after_consistency"
+          "curve_consistency_clamped,target_points_before_consistency,target_points_after_"
+          "consistency"
        << std::endl;
   for (const auto& snapshot : current_curve_adaptation_) {
-    file << snapshot.curve_id << "," << snapshot.factor << ","
-         << snapshot.num_points << "," << snapshot.policy << ","
-         << snapshot.adjacent_patch_ids << ","
-         << snapshot.adjacent_patch_weights << ","
-         << snapshot.target_points << "," << snapshot.actual_points << ","
-         << snapshot.point_growth_factor << ","
-         << snapshot.curve_budget_source_patches << ","
-         << snapshot.geometric_target_points << ","
-         << snapshot.min_adjacent_target_h << ","
-         << snapshot.max_adjacent_target_elements << ","
-         << snapshot.sensitive_curve << ","
-         << snapshot.curve_patch_balance_ratio << ","
-         << snapshot.curve_consistency_clamped << ","
-         << snapshot.target_points_before_consistency << ","
-         << snapshot.target_points_after_consistency << std::endl;
+    file << snapshot.curve_id << "," << snapshot.factor << "," << snapshot.num_points << ","
+         << snapshot.policy << "," << snapshot.adjacent_patch_ids << ","
+         << snapshot.adjacent_patch_weights << "," << snapshot.target_points << ","
+         << snapshot.actual_points << "," << snapshot.point_growth_factor << ","
+         << snapshot.curve_budget_source_patches << "," << snapshot.geometric_target_points << ","
+         << snapshot.min_adjacent_target_h << "," << snapshot.max_adjacent_target_elements << ","
+         << snapshot.sensitive_curve << "," << snapshot.curve_patch_balance_ratio << ","
+         << snapshot.curve_consistency_clamped << "," << snapshot.target_points_before_consistency
+         << "," << snapshot.target_points_after_consistency << std::endl;
   }
 }
 
-void GeneratorAdaptive::WriteAcceptanceLog(int step, double score,
-                                           const MeshQualityStats& stats,
-                                           double error_improvement,
-                                           double element_growth_factor,
+void GeneratorAdaptive::WriteAcceptanceLog(int step, double score, const MeshQualityStats& stats,
+                                           double error_improvement, double element_growth_factor,
                                            bool accepted) const {
   if (!WRITE_ADAPTATION_DEBUG) {
     return;
   }
 
   std::ostringstream name;
-  name << NAME_MODEL << "_passo_" << step << "_acceptance_"
-       << (accepted ? "accepted" : "rejected") << ".log";
+  name << NAME_MODEL << "_passo_" << step << "_acceptance_" << (accepted ? "accepted" : "rejected")
+       << ".log";
   EnsureOutputParentDirectories(name.str());
   std::ofstream file(name.str().c_str());
   if (!file.good()) {
@@ -5149,8 +4702,7 @@ void GeneratorAdaptive::WriteAcceptanceLog(int step, double score,
   file << "error_global_definition=surface_curvature_3d_relative" << std::endl;
   file << "element_growth_factor=" << element_growth_factor << std::endl;
   file << "budget_exceeded=" << (current_budget_exceeded_ ? 1 : 0) << std::endl;
-  file << "budget_policy="
-       << ((ADAPTIVE_RETRY_COUNT > 0) ? "retry_with_shrink" : "direct_control")
+  file << "budget_policy=" << ((ADAPTIVE_RETRY_COUNT > 0) ? "retry_with_shrink" : "direct_control")
        << std::endl;
   file << "budget_retry_count=" << current_budget_retry_count_ << std::endl;
   file << "budget_limited=" << (current_budget_limited_ ? 1 : 0) << std::endl;
@@ -5158,72 +4710,57 @@ void GeneratorAdaptive::WriteAcceptanceLog(int step, double score,
   file << "element_budget_abs=" << current_element_budget_abs_ << std::endl;
   file << "element_budget_growth_factor=" << current_element_budget_growth_factor_limit_
        << std::endl;
-  file << "element_budget_soft_limit=" << current_element_budget_soft_limit_
-       << std::endl;
+  file << "element_budget_soft_limit=" << current_element_budget_soft_limit_ << std::endl;
   file << "candidate_elements_before_budget_retry="
        << current_candidate_elements_before_budget_retry_ << std::endl;
   file << "top_patch_count_applied=" << current_top_patch_count_ << std::endl;
   file << "step_mode=" << current_step_mode_ << std::endl;
   file << "budget_pressure=" << current_budget_pressure_ << std::endl;
   file << "eligible_patch_count=" << current_eligible_patch_count_ << std::endl;
-  file << "eligible_patch_elements_sum=" << current_eligible_patch_elements_sum_
-       << std::endl;
-  file << "eligible_patch_mean_factor=" << current_eligible_patch_mean_factor_
-       << std::endl;
-  file << "eligible_patch_mean_h_scale=" << current_eligible_patch_mean_h_scale_
-       << std::endl;
+  file << "eligible_patch_elements_sum=" << current_eligible_patch_elements_sum_ << std::endl;
+  file << "eligible_patch_mean_factor=" << current_eligible_patch_mean_factor_ << std::endl;
+  file << "eligible_patch_mean_h_scale=" << current_eligible_patch_mean_h_scale_ << std::endl;
   file << "retry_enabled=" << (ADAPTIVE_RETRY_COUNT > 0 ? 1 : 0) << std::endl;
   file << "local_budget_mode=" << PATCH_LOCAL_ELEMENT_BUDGET_MODE << std::endl;
   file << "target_element_growth=" << current_target_element_growth_ << std::endl;
   file << "target_elements_step=" << current_target_elements_step_ << std::endl;
-  file << "actual_elements_step="
-       << current_candidate_elements_before_budget_retry_ << std::endl;
+  file << "actual_elements_step=" << current_candidate_elements_before_budget_retry_ << std::endl;
   file << "overshoot_ratio=" << current_overshoot_ratio_ << std::endl;
   file << "actual_element_growth=" << element_growth_factor << std::endl;
   file << "step_efficiency=" << current_step_efficiency_ << std::endl;
-  file << "local_progress_coverage=" << current_local_progress_coverage_
-       << std::endl;
+  file << "local_progress_coverage=" << current_local_progress_coverage_ << std::endl;
   file << "improved_top_patches=" << current_improved_top_patches_ << std::endl;
-  file << "top_patch_candidate_count=" << current_top_patch_candidate_count_
-       << std::endl;
-  file << "generation_control_mode=" << current_generation_control_mode_
-       << std::endl;
+  file << "top_patch_candidate_count=" << current_top_patch_candidate_count_ << std::endl;
+  file << "generation_control_mode=" << current_generation_control_mode_ << std::endl;
   file << "step_purpose=" << current_step_purpose_ << std::endl;
-  file << "consistency_regularization_active="
-       << current_consistency_regularization_active_ << std::endl;
-  file << "patch_budget_dispersion=" << current_patch_budget_dispersion_
+  file << "consistency_regularization_active=" << current_consistency_regularization_active_
        << std::endl;
+  file << "patch_budget_dispersion=" << current_patch_budget_dispersion_ << std::endl;
   file << "patch_h_dispersion=" << current_patch_h_dispersion_ << std::endl;
-  file << "actual_patch_element_dispersion="
-       << current_actual_patch_element_dispersion_ << std::endl;
-  file << "curve_balance_dispersion=" << current_curve_balance_dispersion_
+  file << "actual_patch_element_dispersion=" << current_actual_patch_element_dispersion_
        << std::endl;
+  file << "curve_balance_dispersion=" << current_curve_balance_dispersion_ << std::endl;
   file << "curve_domain_penalty=" << current_curve_domain_penalty_ << std::endl;
-  file << "transition_coherence_penalty="
-       << current_transition_coherence_penalty_ << std::endl;
-  file << "underresolved_transition_patch_count="
-       << current_underresolved_transition_patch_count_ << std::endl;
+  file << "transition_coherence_penalty=" << current_transition_coherence_penalty_ << std::endl;
+  file << "underresolved_transition_patch_count=" << current_underresolved_transition_patch_count_
+       << std::endl;
   file << "underresolved_transition_patch_count_real="
        << current_underresolved_transition_patch_count_real_ << std::endl;
   file << "underresolved_transition_fraction_real="
        << current_underresolved_transition_fraction_real_ << std::endl;
-  file << "transition_imbalance_mean_real="
-       << current_transition_imbalance_mean_real_ << std::endl;
-  file << "transition_imbalance_max_real="
-       << current_transition_imbalance_max_real_ << std::endl;
-  file << "consistency_penalty=" << current_patch_consistency_penalty_
-       << std::endl;
+  file << "transition_imbalance_mean_real=" << current_transition_imbalance_mean_real_ << std::endl;
+  file << "transition_imbalance_max_real=" << current_transition_imbalance_max_real_ << std::endl;
+  file << "consistency_penalty=" << current_patch_consistency_penalty_ << std::endl;
   file << "budget_driver_mode=" << current_budget_driver_mode_ << std::endl;
-  file << "weights[error/quality_min/poor_ratio/growth]="
-       << ACCEPTANCE_WEIGHT_ERROR << "/" << ACCEPTANCE_WEIGHT_QUALITY_MIN << "/"
-       << ACCEPTANCE_WEIGHT_POOR_RATIO << "/" << ACCEPTANCE_WEIGHT_GROWTH
-       << std::endl;
+  file << "weights[error/quality_min/poor_ratio/growth]=" << ACCEPTANCE_WEIGHT_ERROR << "/"
+       << ACCEPTANCE_WEIGHT_QUALITY_MIN << "/" << ACCEPTANCE_WEIGHT_POOR_RATIO << "/"
+       << ACCEPTANCE_WEIGHT_GROWTH << std::endl;
 }
 
-void GeneratorAdaptive::UpdatePatchHistory(
-    const Geometry* geometry, const MeshAdaptive* mesh,
-    const std::vector<double>& patch_factors,
-    const std::vector<double>& current_errors, bool accepted_step) {
+void GeneratorAdaptive::UpdatePatchHistory(const Geometry* geometry, const MeshAdaptive* mesh,
+                                           const std::vector<double>& patch_factors,
+                                           const std::vector<double>& current_errors,
+                                           bool accepted_step) {
   if (!accepted_step || !geometry || !mesh) {
     return;
   }
@@ -5236,16 +4773,14 @@ void GeneratorAdaptive::UpdatePatchHistory(
   for (unsigned int patch_index = 0; patch_index < patch_count; ++patch_index) {
     const SubMesh* sub_mesh = mesh->GetSubMeshAdaptiveByPosition(patch_index);
     const unsigned long long current_elements =
-        sub_mesh ? static_cast<unsigned long long>(sub_mesh->GetNumberElements())
-                 : 0ULL;
+        sub_mesh ? static_cast<unsigned long long>(sub_mesh->GetNumberElements()) : 0ULL;
 
     double quality_min = 0.0;
     double quality_mean = 0.0;
     double poor_ratio = 0.0;
     if (sub_mesh && sub_mesh->GetNumberElements() > 0) {
       unsigned long long poor_count = 0ULL;
-      for (unsigned int elem_idx = 0; elem_idx < sub_mesh->GetNumberElements();
-           ++elem_idx) {
+      for (unsigned int elem_idx = 0; elem_idx < sub_mesh->GetNumberElements(); ++elem_idx) {
         const TriangleAdaptive* tri =
             static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));
         if (!tri) {
@@ -5254,16 +4789,14 @@ void GeneratorAdaptive::UpdatePatchHistory(
         const double quality =
             TriangleQualityFromNodes(tri->GetNoh(1), tri->GetNoh(2), tri->GetNoh(3));
         quality_mean += quality;
-        quality_min =
-            (elem_idx == 0) ? quality : std::min(quality_min, quality);
+        quality_min = (elem_idx == 0) ? quality : std::min(quality_min, quality);
         if (quality < 0.30) {
           ++poor_count;
         }
       }
       quality_mean /= static_cast<double>(sub_mesh->GetNumberElements());
       poor_ratio =
-          static_cast<double>(poor_count) /
-          static_cast<double>(sub_mesh->GetNumberElements());
+          static_cast<double>(poor_count) / static_cast<double>(sub_mesh->GetNumberElements());
     }
 
     PatchHistoryState& history = patch_history_[patch_index];
@@ -5271,15 +4804,12 @@ void GeneratorAdaptive::UpdatePatchHistory(
     const unsigned long long previous_elements = history.prev_patch_elements;
     const double current_error =
         patch_index < current_errors.size() ? current_errors[patch_index] : 0.0;
-    const double error_drop_abs =
-        previous_error > 0.0 ? (previous_error - current_error) : 0.0;
+    const double error_drop_abs = previous_error > 0.0 ? (previous_error - current_error) : 0.0;
     const unsigned long long elements_delta =
-        current_elements > previous_elements ? current_elements - previous_elements
-                                             : 0ULL;
-    const double error_drop_per_element =
-        elements_delta > 0ULL
-            ? error_drop_abs / static_cast<double>(elements_delta)
-            : error_drop_abs;
+        current_elements > previous_elements ? current_elements - previous_elements : 0ULL;
+    const double error_drop_per_element = elements_delta > 0ULL
+                                              ? error_drop_abs / static_cast<double>(elements_delta)
+                                              : error_drop_abs;
 
     history.prev_patch_error = current_error;
     history.prev_patch_elements = current_elements;
@@ -5290,8 +4820,7 @@ void GeneratorAdaptive::UpdatePatchHistory(
         patch_index < patch_factors.size() ? patch_factors[patch_index] : 1.0;
     history.prev_patch_error_drop_abs = error_drop_abs;
     history.prev_patch_error_drop_per_element = error_drop_per_element;
-    history.prev_patch_efficiency =
-        std::max(0.0, error_drop_per_element);
+    history.prev_patch_efficiency = std::max(0.0, error_drop_per_element);
     history.prev_patch_generated_faces = current_elements;
     history.prev_patch_template_score_mean = 0.0;
     history.prev_patch_budget_share =
@@ -5308,23 +4837,20 @@ void GeneratorAdaptive::UpdatePatchHistory(
             ? current_patch_adaptation_[patch_index].final_refinement_class
             : "freeze";
     const bool inefficient_now =
-        history.prev_patch_generated_faces >=
-            static_cast<unsigned long long>(
-                std::max(1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
-        history.prev_patch_efficiency <=
-            QUADTREE_SATURATION_EFFICIENCY_THRESHOLD;
+        history.prev_patch_generated_faces >= static_cast<unsigned long long>(std::max(
+                                                  1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
+        history.prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD;
     history.consecutive_inefficient_steps =
         inefficient_now ? (history.consecutive_inefficient_steps + 1U) : 0U;
     history.saturated_last_step =
-        inefficient_now &&
-        history.consecutive_inefficient_steps >=
-            static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS);
+        inefficient_now && history.consecutive_inefficient_steps >=
+                               static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS);
   }
 }
 
 #if USE_OPENMP
-SubMesh* GeneratorAdaptive::GeneratorInitialMeshOmp(
-    PatchCoons* patch, Performer::IdManager* id_manager) {
+SubMesh* GeneratorAdaptive::GeneratorInitialMeshOmp(PatchCoons* patch,
+                                                    Performer::IdManager* id_manager) {
   CurveAdaptive* c1 = patch->GetCurve(0);
   CurveAdaptive* c2 = patch->GetCurve(1);
   CurveAdaptive* c3 = patch->GetCurve(2);
@@ -5332,13 +4858,13 @@ SubMesh* GeneratorAdaptive::GeneratorInitialMeshOmp(
 
   // 1. verifica quais curvas ainda não foram discretizadas
   if (c1->GetNumBerPoints())
-    c1 = nullptr;  // c1 já foi trabalhada no patch vizinho
+    c1 = nullptr; // c1 já foi trabalhada no patch vizinho
   if (c2->GetNumBerPoints())
-    c2 = nullptr;  // c2 já foi trabalhada no patch vizinho
+    c2 = nullptr; // c2 já foi trabalhada no patch vizinho
   if (c3->GetNumBerPoints())
-    c3 = nullptr;  // c3 já foi trabalhada no patch vizinho
+    c3 = nullptr; // c3 já foi trabalhada no patch vizinho
   if (c4->GetNumBerPoints())
-    c4 = nullptr;  // c4 já foi trabalhada no patch vizinho
+    c4 = nullptr; // c4 já foi trabalhada no patch vizinho
 
   SubMesh* sub_mesh = new SubMesh;
 
@@ -5352,18 +4878,19 @@ SubMesh* GeneratorAdaptive::GeneratorInitialMeshOmp(
       point->SetId(id_manager->next(0));
       bool inserted = false;
 
-      if (v == 0 && c1)  // p está na curva 1 (c1 = nullptr)
+      if (v == 0 && c1) // p está na curva 1 (c1 = nullptr)
         c1->InsertPoint(point), inserted = true;
-      else if (v == 1 && c3)  // p está na curva 3
+      else if (v == 1 && c3) // p está na curva 3
         c3->InsertPoint(point), inserted = true;
 
-      if (u == 0 && c4)  // p está na curva 4
+      if (u == 0 && c4) // p está na curva 4
         c4->InsertPoint(point), inserted = true;
-      else if (u == 1 && c2)  // p está na curva 2
+      else if (u == 1 && c2) // p está na curva 2
         c2->InsertPoint(point), inserted = true;
 
       sub_mesh->SetNoh(static_cast<NodeAdaptive*>(point));
-      if (!inserted) delete point;  // only submesh needs the data copy
+      if (!inserted)
+        delete point; // only submesh needs the data copy
     }
   }
 
@@ -5379,32 +4906,32 @@ SubMesh* GeneratorAdaptive::GeneratorInitialMeshOmp(
   center_point->SetId(id_manager->next(0));
   sub_mesh->SetNoh(static_cast<NodeAdaptive*>(center_point));
 
-  ElementAdaptive* e1 = new TriangleAdaptive(
-      sub_mesh->GetNoh(0), sub_mesh->GetNoh(1), sub_mesh->GetNoh(4));
+  ElementAdaptive* e1 =
+      new TriangleAdaptive(sub_mesh->GetNoh(0), sub_mesh->GetNoh(1), sub_mesh->GetNoh(4));
   (static_cast<TriangleAdaptive*>(e1))->SetParametersN1(make_tuple(0, 0));
   (static_cast<TriangleAdaptive*>(e1))->SetParametersN2(make_tuple(1, 0));
   (static_cast<TriangleAdaptive*>(e1))->SetParametersN3(make_tuple(0.5, 0.5));
   e1->SetId(id_manager->next(1));
   sub_mesh->SetElement(e1);
 
-  ElementAdaptive* e2 = new TriangleAdaptive(
-      sub_mesh->GetNoh(1), sub_mesh->GetNoh(3), sub_mesh->GetNoh(4));
+  ElementAdaptive* e2 =
+      new TriangleAdaptive(sub_mesh->GetNoh(1), sub_mesh->GetNoh(3), sub_mesh->GetNoh(4));
   (static_cast<TriangleAdaptive*>(e2))->SetParametersN1(make_tuple(1, 0));
   (static_cast<TriangleAdaptive*>(e2))->SetParametersN2(make_tuple(1, 1));
   (static_cast<TriangleAdaptive*>(e2))->SetParametersN3(make_tuple(0.5, 0.5));
   e2->SetId(id_manager->next(1));
   sub_mesh->SetElement(e2);
 
-  ElementAdaptive* e3 = new TriangleAdaptive(
-      sub_mesh->GetNoh(3), sub_mesh->GetNoh(2), sub_mesh->GetNoh(4));
+  ElementAdaptive* e3 =
+      new TriangleAdaptive(sub_mesh->GetNoh(3), sub_mesh->GetNoh(2), sub_mesh->GetNoh(4));
   (static_cast<TriangleAdaptive*>(e3))->SetParametersN1(make_tuple(1, 1));
   (static_cast<TriangleAdaptive*>(e3))->SetParametersN2(make_tuple(0, 1));
   (static_cast<TriangleAdaptive*>(e3))->SetParametersN3(make_tuple(0.5, 0.5));
   e3->SetId(id_manager->next(1));
   sub_mesh->SetElement(e3);
 
-  ElementAdaptive* e4 = new TriangleAdaptive(
-      sub_mesh->GetNoh(2), sub_mesh->GetNoh(0), sub_mesh->GetNoh(4));
+  ElementAdaptive* e4 =
+      new TriangleAdaptive(sub_mesh->GetNoh(2), sub_mesh->GetNoh(0), sub_mesh->GetNoh(4));
   (static_cast<TriangleAdaptive*>(e4))->SetParametersN1(make_tuple(0, 1));
   (static_cast<TriangleAdaptive*>(e4))->SetParametersN2(make_tuple(0, 0));
   (static_cast<TriangleAdaptive*>(e4))->SetParametersN3(make_tuple(0.5, 0.5));
@@ -5419,27 +4946,26 @@ SubMesh* GeneratorAdaptive::GeneratorInitialMeshOmp(
   return sub_mesh;
 }
 
-double GeneratorAdaptive::CalculateErrorGlobalOmp(MeshAdaptive* mesh,
-                                                  Timer* timer,
-                                                  [[maybe_unused]] int rank,
-                                                  int size_thread) {
-  unsigned int Ns = 0;  // número de submalhas
-  double Nj = 0.0;      // erro global da malha
+double GeneratorAdaptive::CalculateErrorGlobalOmp(MeshAdaptive* mesh, Timer* timer,
+                                                  [[maybe_unused]] int rank, int size_thread) {
+  unsigned int Ns = 0; // número de submalhas
+  double Nj = 0.0;     // erro global da malha
 
   Ns = mesh->GetNumberSubMeshesAdaptive();
   std::vector<double> sub_errors(Ns, 0.0);
   unsigned long long gauss_nodes_total = 0ULL;
   unsigned long long mean_nodes_total = 0ULL;
   // Calcula o erro global de cada submalha (OMP)
-#pragma omp parallel num_threads(size_thread) firstprivate(Ns) reduction(+ : Nj, gauss_nodes_total, mean_nodes_total)
+#pragma omp parallel num_threads(size_thread) firstprivate(Ns)                                     \
+    reduction(+ : Nj, gauss_nodes_total, mean_nodes_total)
   {
 #if USE_MPI
     timer->InitTimerParallel(RANK_MPI, omp_get_thread_num(),
-                             7);  // calculo do erro global
+                             7); // calculo do erro global
 #else
     timer->InitTimerParallel(0, omp_get_thread_num(),
-                             7);  // calculo do erro global
-#endif  // USE_MPI
+                             7); // calculo do erro global
+#endif // USE_MPI
 #pragma omp for
     for (unsigned int i = 0; i < Ns; ++i) {
       SubMesh* sub = mesh->GetSubMeshAdaptiveByPosition(i);
@@ -5453,19 +4979,18 @@ double GeneratorAdaptive::CalculateErrorGlobalOmp(MeshAdaptive* mesh,
       for (unsigned int j = 0; j < Nv; ++j) {
 #if USE_MPI
         timer->EndTimerParallel(RANK_MPI, omp_get_thread_num(),
-                                7);  // calculo do erro global
+                                7); // calculo do erro global
         timer->InitTimerParallel(RANK_MPI, omp_get_thread_num(),
-                                 6);  // MediaGauss
+                                 6); // MediaGauss
 #else
         timer->EndTimerParallel(0, omp_get_thread_num(),
-                                7);  // calculo do erro global
-        timer->InitTimerParallel(0, omp_get_thread_num(), 6);  // MediaGauss
-#endif  // USE_MPI
+                                7);                           // calculo do erro global
+        timer->InitTimerParallel(0, omp_get_thread_num(), 6); // MediaGauss
+#endif // USE_MPI
 
         PointAdaptive* n = sub->GetNoh(j);
         Patch* p = sub->GetPatch();
-        CurvatureAnalytical ka(*(static_cast<NodeAdaptive*>(n)),
-                               *(static_cast<PatchCoons*>(p)));
+        CurvatureAnalytical ka(*(static_cast<NodeAdaptive*>(n)), *(static_cast<PatchCoons*>(p)));
         CurvatureDiscrete kd(*(static_cast<NodeAdaptive*>(n)));
         double Ga = ka.CalculateGaussCurvature();
         double Gd = kd.CalculateGaussCurvature();
@@ -5487,14 +5012,14 @@ double GeneratorAdaptive::CalculateErrorGlobalOmp(MeshAdaptive* mesh,
         ((NodeAdaptive*)n)->SetHd(Hd);
 #if USE_MPI
         timer->EndTimerParallel(RANK_MPI, omp_get_thread_num(),
-                                6);  // MediaGauss
+                                6); // MediaGauss
         timer->InitTimerParallel(RANK_MPI, omp_get_thread_num(),
-                                 7);  // calculo do erro global
+                                 7); // calculo do erro global
 #else
-        timer->EndTimerParallel(0, omp_get_thread_num(), 6);   // MediaGauss
+        timer->EndTimerParallel(0, omp_get_thread_num(), 6); // MediaGauss
         timer->InitTimerParallel(0, omp_get_thread_num(),
-                                 7);  // calculo do erro global
-#endif  // USE_MPI
+                                 7); // calculo do erro global
+#endif // USE_MPI
 
         double power = 0.0;
         double diff = 0.0;
@@ -5523,15 +5048,15 @@ double GeneratorAdaptive::CalculateErrorGlobalOmp(MeshAdaptive* mesh,
       } else
         cout << "Njs -nan" << endl;
 
-    }  // Parallel for
+    } // Parallel for
 
 #if USE_MPI
     timer->EndTimerParallel(RANK_MPI, omp_get_thread_num(),
-                            7);  // calculo do erro global
+                            7); // calculo do erro global
 #else
     timer->EndTimerParallel(0, omp_get_thread_num(),
-                            7);          // calculo do erro global
-#endif  // USE_MPI
+                            7); // calculo do erro global
+#endif // USE_MPI
   }
 
   if (Ns > 0) {
@@ -5543,8 +5068,7 @@ double GeneratorAdaptive::CalculateErrorGlobalOmp(MeshAdaptive* mesh,
 }
 
 int GeneratorAdaptive::GeneratorOmp(Model& model, Timer* timer, int id_range,
-                                    [[maybe_unused]] int size_rank,
-                                    int size_thread)
+                                    [[maybe_unused]] int size_rank, int size_thread)
 
 {
   this->id_manager_ = nullptr;
@@ -5557,7 +5081,7 @@ int GeneratorAdaptive::GeneratorOmp(Model& model, Timer* timer, int id_range,
   [[maybe_unused]] Int rank = 0;
   nProcesses = this->communicator_->numProcesses();
   rank = this->communicator_->rank();
-#endif  // #if USE_MPI
+#endif // #if USE_MPI
 
   Geometry* geo = model.GetGeometry();
   int sizePatch = geo->GetNumberPatches();
@@ -5584,35 +5108,33 @@ int GeneratorAdaptive::GeneratorOmp(Model& model, Timer* timer, int id_range,
       this->id_managers_[id] = this->MakeIdManagerOmp(communicator_, id);
     }
 
-    timer->InitTimerParallel(0, id, 2);  // Malha inicial
+    timer->InitTimerParallel(0, id, 2); // Malha inicial
 
     // 1. Gera a malha inicial
 #pragma omp for
     for (int i = 0; i < sizePatch; ++i) {
       PatchCoons* patch = static_cast<PatchCoons*>(geo->GetPatch(i));
-      SubMesh* sub = this->GeneratorInitialMeshOmp(
-          static_cast<PatchCoons*>(patch), this->id_managers_[id]);
+      SubMesh* sub =
+          this->GeneratorInitialMeshOmp(static_cast<PatchCoons*>(patch), this->id_managers_[id]);
       malha->InsertSubMeshAdaptiveByPosition(sub, i);
     }
 
-    timer->EndTimerParallel(0, id, 2);  // Malha inicial
+    timer->EndTimerParallel(0, id, 2); // Malha inicial
   }
 
   // 2. Insere a malha inicial no modelo ( que guarda todas as malhas geradas )
   model.InsertMeshAdaptive(malha);
 
   // 3. Calcula o erro global para a malha inicial
-  this->error_local_process_ =
-      this->CalculateErrorGlobalOmp(malha, timer, 0, size_thread);
+  this->error_local_process_ = this->CalculateErrorGlobalOmp(malha, timer, 0, size_thread);
 
 #if USE_PRINT_ERRO
-  cout << "ERRO  " << this->step_ << " = " << this->error_local_process_
-       << endl;
-#endif  // #if USE_PRINT_ERRO
+  cout << "ERRO  " << this->step_ << " = " << this->error_local_process_ << endl;
+#endif // #if USE_PRINT_ERRO
 
 #if USE_SAVE_MESH
   WriteMesh(malha, step_);
-#endif  // #USE_SAVE_MESH
+#endif // #USE_SAVE_MESH
 
   this->error_local_process_ = 1.0;
 
@@ -5663,26 +5185,26 @@ int GeneratorAdaptive::GeneratorOmp(Model& model, Timer* timer, int id_range,
     // 4.2. Adapta as curvas pela curvatura da curva / 4.3. Atualiza a
     // discretização das curvas
     map<PointAdaptive*, PointAdaptive*> mapaPontos;
-    timer->InitTimerParallel(0, 0, 3);  // adpt. das curvas
+    timer->InitTimerParallel(0, 0, 3); // adpt. das curvas
 
     for (int i = 0; i < sizeCurvas; ++i) {
-      novosPontos[i] = adapter_.AdaptCurveByCurve(geo->GetCurve(i), mapaPontos,
-                                                  this->id_managers_[0], 1);
+      novosPontos[i] =
+          adapter_.AdaptCurveByCurve(geo->GetCurve(i), mapaPontos, this->id_managers_[0], 1);
       geo->GetCurve(i)->SetPoints(novosPontos[i]);
-      novosPontos[i] = adapter_.AdaptCurveBySurface(
-          geo->GetCurve(i), mapaPontos, this->id_managers_[0], 1);
+      novosPontos[i] =
+          adapter_.AdaptCurveBySurface(geo->GetCurve(i), mapaPontos, this->id_managers_[0], 1);
       geo->GetCurve(i)->SetPoints(novosPontos[i]);
       // ((CurvaParametrica*)geo->getCurva(i))->ordenaLista ( );
     }
 
-    timer->EndTimerParallel(0, 0, 3);  // adpt. das cruvas
+    timer->EndTimerParallel(0, 0, 3); // adpt. das cruvas
 
 #pragma omp parallel num_threads(size_thread) shared(geo, sizePatch, malha)
     {
       Int id = communicator_->threadId();
       //((Performer::RangedIdManager *)this->idManagers[id])->setMin(1,0) ;
 
-      timer->InitTimerParallel(0, id, 4);  // adpt. do domínio
+      timer->InitTimerParallel(0, id, 4); // adpt. do domínio
 
       // 4.3. Adapta as patches
 #pragma omp for
@@ -5694,7 +5216,7 @@ int GeneratorAdaptive::GeneratorOmp(Model& model, Timer* timer, int id_range,
         geo->GetPatch(i)->SetSubMesh(malha->GetSubMeshAdaptiveByPosition(i));
       }
 
-      timer->EndTimerParallel(0, id, 4);  // adpt. do domínio
+      timer->EndTimerParallel(0, id, 4); // adpt. do domínio
     }
 
     //        // 4.5. Atualiza os patches
@@ -5711,29 +5233,25 @@ int GeneratorAdaptive::GeneratorOmp(Model& model, Timer* timer, int id_range,
 
 #if USE_SAVE_MESH
     WriteMesh(malha, step_);
-#endif  // #USE_SAVE_MESH
+#endif // #USE_SAVE_MESH
 
     // 4.7. Calcula o erro global para a malha
-    this->error_local_process_ =
-        this->CalculateErrorGlobalOmp(malha, timer, 0, size_thread);
+    this->error_local_process_ = this->CalculateErrorGlobalOmp(malha, timer, 0, size_thread);
 
 #if USE_PRINT_ERRO
-    cout << "ERRO  " << this->step_ << " = " << this->error_local_process_
-         << endl;
-#endif  // #if USE_PRINT_COMENT
+    cout << "ERRO  " << this->step_ << " = " << this->error_local_process_ << endl;
+#endif // #if USE_PRINT_COMENT
   }
 
   return 0;
 }
 
-void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
-                                       Timer* timer, int sizeThread,
-                                       int sizePatch) {
+void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer* timer,
+                                       int sizeThread, int sizePatch) {
   const std::vector<double> patch_factors = ComputePatchAdaptationFactors(geo);
-  const bool few_patch_low_error =
-      current_policy_.stable_mode && geo != nullptr &&
-      geo->GetNumberPatches() <= 4U && !error_step_.empty() &&
-      error_step_.back() < 0.12 && step_ <= 3;
+  const bool few_patch_low_error = current_policy_.stable_mode && geo != nullptr &&
+                                   geo->GetNumberPatches() <= 4U && !error_step_.empty() &&
+                                   error_step_.back() < 0.12 && step_ <= 3;
   last_domain_patch_factors_.assign(patch_factors.begin(), patch_factors.end());
 
 #pragma omp parallel num_threads(sizeThread) shared(geo, sizePatch, malha)
@@ -5741,10 +5259,10 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
     Int id = communicator_->threadId();
 
 #if USE_MPI
-    timer->InitTimerParallel(RANK_MPI, id, 4);  // Adaptação do domínio
+    timer->InitTimerParallel(RANK_MPI, id, 4); // Adaptação do domínio
 #else
-    timer->InitTimerParallel(0, id, 4);  // Adaptação do domínio
-#endif  // USE_MPI
+    timer->InitTimerParallel(0, id, 4); // Adaptação do domínio
+#endif // USE_MPI
 
     // 4.3. Adapta as patches
 #pragma omp for
@@ -5760,27 +5278,23 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
         if (history.prev_patch_generated_faces >
                 static_cast<unsigned long long>(
                     std::max(1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
-            history.prev_patch_efficiency <=
-                QUADTREE_SATURATION_EFFICIENCY_THRESHOLD) {
+            history.prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD) {
           soft_saturated = true;
-          domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE,
-                                     PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+          domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE, PATCH_FACTOR_MIN,
+                                     PATCH_FACTOR_MAX);
         }
         if (QUADTREE_HARD_SATURATION_MODE == 1 &&
             history.consecutive_inefficient_steps >=
                 static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS)) {
           hard_saturated = true;
-          domain_factor =
-              std::max(domain_factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
+          domain_factor = std::max(domain_factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
         }
       }
-      if (STEP_ELEMENT_BUDGET_MODE == 1 && step_ > 1 &&
-          current_budget_retry_count_ > 0U) {
-        domain_factor = ClampValue(
-            domain_factor *
-                std::pow(STEP_ELEMENT_BUDGET_RETRY_H_SCALE,
-                         static_cast<int>(current_budget_retry_count_)),
-            PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+      if (STEP_ELEMENT_BUDGET_MODE == 1 && step_ > 1 && current_budget_retry_count_ > 0U) {
+        domain_factor =
+            ClampValue(domain_factor * std::pow(STEP_ELEMENT_BUDGET_RETRY_H_SCALE,
+                                                static_cast<int>(current_budget_retry_count_)),
+                       PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
       }
       const int refinement_rank =
           (static_cast<size_t>(i) < current_patch_adaptation_.size())
@@ -5791,8 +5305,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
            (current_patch_adaptation_[static_cast<size_t>(i)].quality_min < 0.25 ||
             current_patch_adaptation_[static_cast<size_t>(i)].poor_ratio > 0.18));
       if (step_ > 1 && PATCH_GENERATION_CONTROL_MODE == 1) {
-        patch_generation_mode =
-            (STEP2_MICRO_REFINEMENT_MODE == 1) ? "micro_refinement" : "normal";
+        patch_generation_mode = (STEP2_MICRO_REFINEMENT_MODE == 1) ? "micro_refinement" : "normal";
         if (PATCH_GENERATION_TOP_RANK_ONLY_MODE == 1 &&
             (static_cast<size_t>(i) >= current_patch_eligible_mask_.size() ||
              current_patch_eligible_mask_[static_cast<size_t>(i)] == 0)) {
@@ -5809,8 +5322,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
         }
         if (static_cast<size_t>(i) < patch_history_.size() &&
             patch_history_[static_cast<size_t>(i)].prev_patch_elements >=
-                static_cast<unsigned long long>(
-                    std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
+                static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
           eligible_h_scale *= 1.05;
         }
         if (STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
@@ -5820,8 +5332,8 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
         if (PATCH_GENERATION_CONTROL_MODE == 1) {
           eligible_h_scale *= PATCH_GENERATION_MICRO_H_SCALE;
         }
-        domain_factor = ClampValue(domain_factor * eligible_h_scale, PATCH_FACTOR_MIN,
-                                   PATCH_FACTOR_MAX);
+        domain_factor =
+            ClampValue(domain_factor * eligible_h_scale, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
         if (static_cast<size_t>(i) < current_patch_adaptation_.size()) {
           current_patch_adaptation_[static_cast<size_t>(i)].eligible_h_scale_applied =
               eligible_h_scale;
@@ -5830,46 +5342,39 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
       if (step_ == 2 && refinement_rank > 0 &&
           refinement_rank <= static_cast<int>(current_top_patch_count_ + 1U)) {
         if (!few_patch_low_error) {
-          domain_factor =
-              std::min(domain_factor, step2_quality_critical ? 0.96 : 1.0);
+          domain_factor = std::min(domain_factor, step2_quality_critical ? 0.96 : 1.0);
           if (step2_quality_critical) {
             patch_generation_mode = "quality_stabilized";
           }
         }
       }
       if (static_cast<size_t>(i) < current_patch_saturated_soft_mask_.size()) {
-        current_patch_saturated_soft_mask_[static_cast<size_t>(i)] =
-            soft_saturated ? 1 : 0;
+        current_patch_saturated_soft_mask_[static_cast<size_t>(i)] = soft_saturated ? 1 : 0;
       }
       if (static_cast<size_t>(i) < current_patch_saturated_hard_mask_.size()) {
-        current_patch_saturated_hard_mask_[static_cast<size_t>(i)] =
-            hard_saturated ? 1 : 0;
+        current_patch_saturated_hard_mask_[static_cast<size_t>(i)] = hard_saturated ? 1 : 0;
       }
       if (step_ > 1 && static_cast<size_t>(i) < patch_history_.size() &&
           static_cast<size_t>(i) < current_patch_adaptation_.size()) {
         const PatchHistoryState& history = patch_history_[static_cast<size_t>(i)];
         const double efficiency_norm =
-            Clamp01(history.prev_patch_efficiency /
-                    std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+            Clamp01(history.prev_patch_efficiency / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
         const double rank_weight =
             (refinement_rank > 0)
-                ? std::max(
-                      0.35,
-                      1.0 + PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_RANK *
-                                (1.0 - (static_cast<double>(refinement_rank - 1) /
-                                        std::max(1.0, static_cast<double>(
-                                                          current_top_patch_count_ > 1
-                                                              ? current_top_patch_count_ - 1
-                                                              : 1U)))))
+                ? std::max(0.35,
+                           1.0 + PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_RANK *
+                                     (1.0 - (static_cast<double>(refinement_rank - 1) /
+                                             std::max(1.0, static_cast<double>(
+                                                               current_top_patch_count_ > 1
+                                                                   ? current_top_patch_count_ - 1
+                                                                   : 1U)))))
                 : 0.5;
         const double efficiency_weight =
             1.0 + PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_EFFICIENCY * efficiency_norm;
         const double local_patch_budget =
             std::min(PATCH_LOCAL_BUDGET_HARD_CAP,
-                     PATCH_LOCAL_ELEMENT_BUDGET_BASE * rank_weight *
-                         efficiency_weight);
-        current_patch_adaptation_[static_cast<size_t>(i)].local_patch_budget =
-            local_patch_budget;
+                     PATCH_LOCAL_ELEMENT_BUDGET_BASE * rank_weight * efficiency_weight);
+        current_patch_adaptation_[static_cast<size_t>(i)].local_patch_budget = local_patch_budget;
         if (!few_patch_low_error) {
           current_patch_adaptation_[static_cast<size_t>(i)].target_patch_elements =
               local_patch_budget;
@@ -5887,16 +5392,14 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
             patch_budget_exceeded ? 1 : 0;
         if (patch_budget_exceeded) {
           patch_generation_mode = "budget_constrained";
-          domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE,
-                                     PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+          domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE, PATCH_FACTOR_MIN,
+                                     PATCH_FACTOR_MAX);
         }
         if (!few_patch_low_error && PATCH_GENERATION_CONTROL_MODE == 1 &&
-            current_target_element_growth_ > 0.0 &&
-            history.prev_patch_elements > 0ULL &&
+            current_target_element_growth_ > 0.0 && history.prev_patch_elements > 0ULL &&
             current_target_element_growth_ <= 1.0) {
-          domain_factor =
-              ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE,
-                         PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+          domain_factor = ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE, PATCH_FACTOR_MIN,
+                                     PATCH_FACTOR_MAX);
           // Em adaptive_stable, evitar trocar o modo para 'budget_constrained'
           // após rejeições consecutivas (isso tem correlação com malhas
           // complementares erradas em patches curvos).
@@ -5906,9 +5409,8 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
         }
         if (!few_patch_low_error && STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
             current_budget_pressure_ >= PATCH_GENERATION_BUDGET_PRESSURE_START) {
-          domain_factor =
-              ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
-                         PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+          domain_factor = ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
+                                     PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
           patch_generation_mode = "budget_constrained";
         }
         current_patch_adaptation_[static_cast<size_t>(i)].patch_generation_mode =
@@ -5920,10 +5422,9 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
               ? current_patch_quadtree_depth_cap_[static_cast<size_t>(i)]
               : -1;
       double patch_curve_support_ratio = 1.0;
-      double target_patch_h =
-          (static_cast<size_t>(i) < current_patch_target_h_.size())
-              ? current_patch_target_h_[static_cast<size_t>(i)]
-              : -1.0;
+      double target_patch_h = (static_cast<size_t>(i) < current_patch_target_h_.size())
+                                  ? current_patch_target_h_[static_cast<size_t>(i)]
+                                  : -1.0;
       // adaptive_stable guard (OpenMP): não permitir coarsen visível após
       // uma rejeição anterior (ver versão sequencial do mesmo bloco).
       if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
@@ -5941,8 +5442,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
       }
       if (current_policy_.stable_mode && step_ >= 2 && target_patch_h <= 0.0) {
         SubMesh* previous_sub_mesh = p->GetSubMesh();
-        if (previous_sub_mesh != nullptr &&
-            previous_sub_mesh->GetNumberElements() > 0U) {
+        if (previous_sub_mesh != nullptr && previous_sub_mesh->GetNumberElements() > 0U) {
           double patch_area_est = 0.0;
           for (unsigned int e = 0; e < previous_sub_mesh->GetNumberElements(); ++e) {
             ElementAdaptive* element = previous_sub_mesh->GetElement(e);
@@ -5951,17 +5451,15 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
             }
           }
           if (patch_area_est > 0.0) {
-            const double h_ref =
-                std::sqrt(patch_area_est /
-                          static_cast<double>(previous_sub_mesh->GetNumberElements()));
+            const double h_ref = std::sqrt(
+                patch_area_est / static_cast<double>(previous_sub_mesh->GetNumberElements()));
             const double stable_scale = 0.78;
             target_patch_h = std::max(1.0e-4, h_ref * stable_scale);
           }
         }
       }
       if (current_policy_.stable_mode && step_ == 2 && !few_patch_low_error) {
-        domain_factor =
-            ClampValue(domain_factor * 1.10, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * 1.10, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
         if (target_patch_h > 0.0) {
           target_patch_h *= 1.18;
         }
@@ -5985,23 +5483,18 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
           if (curve_idx >= current_curve_adaptation_.size()) {
             continue;
           }
-          const CurveAdaptationSnapshot& snapshot =
-              current_curve_adaptation_[curve_idx];
+          const CurveAdaptationSnapshot& snapshot = current_curve_adaptation_[curve_idx];
           if (snapshot.geometric_target_points <= 0) {
             continue;
           }
-          const double ratio =
-              static_cast<double>(snapshot.actual_points) /
-              static_cast<double>(std::max(1, snapshot.geometric_target_points));
-          patch_curve_support_ratio =
-              std::min(patch_curve_support_ratio, ratio);
+          const double ratio = static_cast<double>(snapshot.actual_points) /
+                               static_cast<double>(std::max(1, snapshot.geometric_target_points));
+          patch_curve_support_ratio = std::min(patch_curve_support_ratio, ratio);
         }
         if (patch_curve_support_ratio < 0.85) {
           const double h_boost =
-              ClampValue(1.0 + (0.85 - patch_curve_support_ratio) * 0.80, 1.0,
-                         1.35);
-          domain_factor =
-              ClampValue(domain_factor * h_boost, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+              ClampValue(1.0 + (0.85 - patch_curve_support_ratio) * 0.80, 1.0, 1.35);
+          domain_factor = ClampValue(domain_factor * h_boost, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
           target_patch_h *= h_boost;
           patch_generation_mode = "curve_transition_balanced";
         }
@@ -6020,10 +5513,8 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
           curve_domain_balance_omp >= 0.90 && transition_underresolved_omp == 0;
       int gen_depth_cap = quadtree_depth_cap;
       if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
-          this->step_ >= 4 && quadtree_depth_cap >= 0 &&
-          stable_curve_allows_reject_coarsen_omp) {
-        const int reduce =
-            std::min(quadtree_depth_cap, static_cast<int>(this->step_ - 3));
+          this->step_ >= 4 && quadtree_depth_cap >= 0 && stable_curve_allows_reject_coarsen_omp) {
+        const int reduce = std::min(quadtree_depth_cap, static_cast<int>(this->step_ - 3));
         gen_depth_cap = std::max(0, quadtree_depth_cap - reduce);
       }
       if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U &&
@@ -6036,17 +5527,15 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
       double gen_h = target_patch_h;
       const bool stable_mesh_damp_omp =
           current_policy_.stable_mode && stable_curve_allows_reject_coarsen_omp &&
-          (this->step_ >= 5 ||
-           (this->step_ >= 3 && stable_consecutive_reject_count_ > 0U));
+          (this->step_ >= 5 || (this->step_ >= 3 && stable_consecutive_reject_count_ > 0U));
       if (stable_mesh_damp_omp) {
         constexpr double kStableLateFactorMul = 0.92;
         constexpr double kStableLateFactorFloor = 0.72;
         double mul = kStableLateFactorMul;
         double floor_v = kStableLateFactorFloor;
         if (stable_consecutive_reject_count_ > 0U && this->step_ >= 3) {
-          const double ex = std::pow(
-              0.972, static_cast<double>(
-                         std::min(9U, stable_consecutive_reject_count_)));
+          const double ex =
+              std::pow(0.972, static_cast<double>(std::min(9U, stable_consecutive_reject_count_)));
           mul *= ex;
           floor_v = std::max(0.66, floor_v * ex);
         }
@@ -6060,16 +5549,16 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
         if (gen_h > 0.0) {
           gen_h *= (stable_consecutive_reject_count_ > 0U && this->step_ >= 3)
                        ? (0.88 * std::pow(0.985, static_cast<double>(std::min(
-                                                      9U, stable_consecutive_reject_count_))))
+                                                     9U, stable_consecutive_reject_count_))))
                        : 0.88;
         }
       }
       if (static_cast<size_t>(i) < current_patch_adaptation_.size()) {
         current_patch_adaptation_[static_cast<size_t>(i)].applied_patch_h = gen_h;
       }
-      SubMesh* sub = adapter_.AdaptDomainOmp(
-          p, this->id_managers_[id], gen_factor, gen_h, gen_depth_cap,
-          ADAPTIVE_CURRENT_STEP, i, ADAPTIVE_CURRENT_RETRY);
+      SubMesh* sub =
+          adapter_.AdaptDomainOmp(p, this->id_managers_[id], gen_factor, gen_h, gen_depth_cap,
+                                  ADAPTIVE_CURRENT_STEP, i, ADAPTIVE_CURRENT_RETRY);
       if (static_cast<size_t>(i) < current_patch_adaptation_.size()) {
         current_patch_adaptation_[static_cast<size_t>(i)].actual_patch_elements =
             sub ? static_cast<double>(sub->GetNumberElements()) : 0.0;
@@ -6094,14 +5583,14 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha,
       geo->GetPatch(i)->SetSubMesh(malha->GetSubMeshAdaptiveByPosition(i));
     }
 #if USE_MPI
-    timer->EndTimerParallel(RANK_MPI, id, 4);  // Adaptação do domínio
+    timer->EndTimerParallel(RANK_MPI, id, 4); // Adaptação do domínio
 #else
-    timer->EndTimerParallel(0, id, 4);   // Adaptação do domínio
-#endif  // USE_MPI
+    timer->EndTimerParallel(0, id, 4); // Adaptação do domínio
+#endif // USE_MPI
   }
 }
 
-#endif  // USE_OPENMP
+#endif // USE_OPENMP
 
 SubMesh* GeneratorAdaptive::InitialMesh(PatchCoons* patch, Performer::IdManager* id_manager) {
   return apmesh::generation::BuildInitialSubMesh(patch, id_manager).release();
@@ -6111,14 +5600,13 @@ SubMesh* GeneratorAdaptive::InitialMesh(PatchCoons* patch, Performer::IdManager*
 // a lista de pontos da curva é preenchida durante a geração da malha inicial
 
 // calcula o erro global da malha
-double GeneratorAdaptive::ErrorGlobal(MeshAdaptive* malha, Timer* timer,
-                                      [[maybe_unused]] int rank,
+double GeneratorAdaptive::ErrorGlobal(MeshAdaptive* malha, Timer* timer, [[maybe_unused]] int rank,
                                       [[maybe_unused]] int sizeThread) {
-  unsigned int Ns = 0;  // número de submalhas
-  unsigned int Nv = 0;  // número de vértices
-  double Njs = 0;       // erro global da submalha
+  unsigned int Ns = 0; // número de submalhas
+  unsigned int Nv = 0; // número de vértices
+  double Njs = 0;      // erro global da submalha
   double curvPower = 0.0;
-  double Nj = 0;  // erro global da malha
+  double Nj = 0; // erro global da malha
   SubMesh* sub = nullptr;
 
   Ns = malha->GetNumberSubMeshesAdaptive();
@@ -6289,8 +5777,8 @@ double GeneratorAdaptive::ErrorGlobal(MeshAdaptive* malha, Timer* timer,
   return Nj;
 }
 
-std::unique_ptr<Performer::IdManager> GeneratorAdaptive::MakeIdManager(
-    const Parallel::TMCommunicator* comm, Int id) const {
+std::unique_ptr<Performer::IdManager>
+GeneratorAdaptive::MakeIdManager(const Parallel::TMCommunicator* comm, Int id) const {
   UInt numProcs = comm->numProcesses();
   UInt rank = comm->rank();
 
@@ -6313,8 +5801,8 @@ std::unique_ptr<Performer::IdManager> GeneratorAdaptive::MakeIdManager(
   return manager;
 }
 
-std::unique_ptr<Performer::IdManager> GeneratorAdaptive::MakeIdManagerOmp(
-    const Parallel::TMCommunicator* comm, Int id) const {
+std::unique_ptr<Performer::IdManager>
+GeneratorAdaptive::MakeIdManagerOmp(const Parallel::TMCommunicator* comm, Int id) const {
   Int iNoh, iElemet;
   if (this->id_managers_[id]) {
     iNoh = this->id_managers_[id]->getId(0);
@@ -6344,8 +5832,8 @@ std::unique_ptr<Performer::IdManager> GeneratorAdaptive::MakeIdManagerOmp(
   return manager;
 }
 
-std::unique_ptr<Performer::IdManager> GeneratorAdaptive::MakeIdManagerElementOmp(
-    const Parallel::TMCommunicator* comm, Int id) const {
+std::unique_ptr<Performer::IdManager>
+GeneratorAdaptive::MakeIdManagerElementOmp(const Parallel::TMCommunicator* comm, Int id) const {
   Int iNoh;
   if (this->id_managers_[id]) {
     iNoh = this->id_managers_[id]->getId(0);
@@ -6374,12 +5862,11 @@ std::unique_ptr<Performer::IdManager> GeneratorAdaptive::MakeIdManagerElementOmp
 }
 
 void GeneratorAdaptive::SaveErrorMesh(MeshAdaptive* malha) {
-  cout << "Salvando a Malha com " << malha->GetNumberSubMeshesAdaptive()
-       << " subMalhas" << endl;
+  cout << "Salvando a Malha com " << malha->GetNumberSubMeshesAdaptive() << " subMalhas" << endl;
 
-  unsigned int Ns = 0;  // número de submalhas
-  unsigned int Nv = 0;  // número de vértices
-  double Njs = 0;       // erro global da submalha
+  unsigned int Ns = 0; // número de submalhas
+  unsigned int Nv = 0; // número de vértices
+  double Njs = 0;      // erro global da submalha
   double curvPower = 0.0;
   // double Nj = 0; // erro global da malha
   SubMesh* sub = nullptr;
@@ -6411,8 +5898,7 @@ void GeneratorAdaptive::SaveErrorMesh(MeshAdaptive* malha) {
     for (unsigned int j = 0; j < Nv; ++j) {
       PointAdaptive* n = sub->GetNoh(j);
       Patch* p = sub->GetPatch();
-      CurvatureAnalytical ka(*(static_cast<NodeAdaptive*>(n)),
-                             *(static_cast<PatchCoons*>(p)));
+      CurvatureAnalytical ka(*(static_cast<NodeAdaptive*>(n)), *(static_cast<PatchCoons*>(p)));
       CurvatureDiscrete kd(*(static_cast<NodeAdaptive*>(n)));
       double Ga = ka.CalculateGaussCurvature();
       double Gd = kd.CalculateGaussCurvature();
@@ -6425,8 +5911,8 @@ void GeneratorAdaptive::SaveErrorMesh(MeshAdaptive* malha) {
       ((NodeAdaptive*)n)->SetHa(Ha);
       ((NodeAdaptive*)n)->SetHd(Hd);
 
-      arquivo << "P " << n->GetId() << ": ( " << n->GetX() << ", " << n->GetY()
-              << ", " << n->GetZ() << ")" << endl;
+      arquivo << "P " << n->GetId() << ": ( " << n->GetX() << ", " << n->GetY() << ", " << n->GetZ()
+              << ")" << endl;
       tuple<double, double> t_n = ((PatchHermite*)p)->FindUV(*n);
       arquivo << "\tu = " << get<0>(t_n) << " v = " << get<1>(t_n) << endl;
       unsigned int num = ((NodeAdaptive*)n)->GetNumberElements();
@@ -6436,10 +5922,10 @@ void GeneratorAdaptive::SaveErrorMesh(MeshAdaptive* malha) {
         arquivo << " T-" << elem->GetId();
       }
       arquivo << endl;
-      arquivo << "\tGd = " << ((NodeAdaptive*)n)->GetGd()
-              << " Ga = " << ((NodeAdaptive*)n)->GetGa() << endl;
-      arquivo << "\tHd = " << ((NodeAdaptive*)n)->GetHd()
-              << " Ha = " << ((NodeAdaptive*)n)->GetHa() << endl;
+      arquivo << "\tGd = " << ((NodeAdaptive*)n)->GetGd() << " Ga = " << ((NodeAdaptive*)n)->GetGa()
+              << endl;
+      arquivo << "\tHd = " << ((NodeAdaptive*)n)->GetHd() << " Ha = " << ((NodeAdaptive*)n)->GetHa()
+              << endl;
 
       double power = 0.0;
       double diff = 0.0;
@@ -6501,8 +5987,7 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_) {
       auto it = node_index.find(n->GetId());
       if (it == node_index.end()) {
         node_index[n->GetId()] = next_index++;
-        obj << "v " << n->GetX() << " " << n->GetY() << " " << n->GetZ()
-            << endl;
+        obj << "v " << n->GetX() << " " << n->GetY() << " " << n->GetZ() << endl;
       }
     }
   }
@@ -6511,9 +5996,8 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_) {
     SubMesh* sub = malha->GetSubMeshAdaptiveByPosition(i);
     for (unsigned int j = 0; j < sub->GetNumberElements(); j++) {
       TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);
-      obj << "f " << node_index[t->GetNoh(1).GetId()] << " "
-          << node_index[t->GetNoh(2).GetId()] << " "
-          << node_index[t->GetNoh(3).GetId()] << endl;
+      obj << "f " << node_index[t->GetNoh(1).GetId()] << " " << node_index[t->GetNoh(2).GetId()]
+          << " " << node_index[t->GetNoh(3).GetId()] << endl;
     }
   }
 
@@ -6523,8 +6007,8 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_) {
   //  cout << "escreveu o arquivo para o step_ " << step_ << endl;
 }
 
-void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
-                                  vector<double> step_error, int rank) {
+void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_, vector<double> step_error,
+                                  int rank) {
   stringstream nome;
   stringstream nome_obj;
   if (rank == -1) {
@@ -6568,8 +6052,7 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
   EnsureOutputParentDirectories(nome.str());
   ofstream arq(nome.str().c_str());
 
-  arq << "%HEADER" << endl
-      << "Arquivo gerado pelo gerador de malhas de superficie" << endl;
+  arq << "%HEADER" << endl << "Arquivo gerado pelo gerador de malhas de superficie" << endl;
 
   unsigned long int Nv, Nt;
   Nv = Nt = 0;
@@ -6590,8 +6073,7 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
 
   arq << "erro global em cada step_" << endl;
   int n_pas = 0;
-  for (vector<double>::iterator it = step_error.begin(); it != step_error.end();
-       it++) {
+  for (vector<double>::iterator it = step_error.begin(); it != step_error.end(); it++) {
     arq << "step_: " << n_pas << " erro:" << (*it) << endl;
     n_pas++;
   }
@@ -6607,8 +6089,7 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
     for (unsigned int j = 0; j < sub->GetNumberNos(); j++) {
       NodeAdaptive* n = sub->GetNoh(j);
 
-      arq << n->GetId() << " " << n->GetX() << " " << n->GetY() << " "
-          << n->GetZ() << endl;
+      arq << n->GetId() << " " << n->GetX() << " " << n->GetY() << " " << n->GetZ() << endl;
     }
   }
 
@@ -6645,8 +6126,8 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
       TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);
 
       arq << t->GetId() << " "
-          << "1 1 1 " << t->GetNoh(1).GetId() << " " << t->GetNoh(2).GetId()
-          << " " << t->GetNoh(3).GetId() << endl;
+          << "1 1 1 " << t->GetNoh(1).GetId() << " " << t->GetNoh(2).GetId() << " "
+          << t->GetNoh(3).GetId() << endl;
     }
   }
 
@@ -6674,8 +6155,7 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
       auto it = node_index.find(n->GetId());
       if (it == node_index.end()) {
         node_index[n->GetId()] = next_index++;
-        obj << "v " << n->GetX() << " " << n->GetY() << " " << n->GetZ()
-            << endl;
+        obj << "v " << n->GetX() << " " << n->GetY() << " " << n->GetZ() << endl;
       }
     }
   }
@@ -6685,9 +6165,8 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
 
     for (unsigned int j = 0; j < sub->GetNumberElements(); j++) {
       TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);
-      obj << "f " << node_index[t->GetNoh(1).GetId()] << " "
-          << node_index[t->GetNoh(2).GetId()] << " "
-          << node_index[t->GetNoh(3).GetId()] << endl;
+      obj << "f " << node_index[t->GetNoh(1).GetId()] << " " << node_index[t->GetNoh(2).GetId()]
+          << " " << node_index[t->GetNoh(3).GetId()] << endl;
     }
   }
 
@@ -6774,10 +6253,9 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,
 
   file << "Porcetagem elementos em cada caso de 0 a 1" << endl;
 
-  long porc = vec_0_10.size() + vec_10_20.size() + vec_20_30.size() +
-              vec_30_40.size() + vec_40_50.size() + vec_50_60.size() +
-              vec_60_70.size() + vec_70_80.size() + vec_80_90.size() +
-              vec_90_100.size();
+  long porc = vec_0_10.size() + vec_10_20.size() + vec_20_30.size() + vec_30_40.size() +
+              vec_40_50.size() + vec_50_60.size() + vec_60_70.size() + vec_70_80.size() +
+              vec_80_90.size() + vec_90_100.size();
 
   file << vec_0_10.size() * 100 / (double)porc << endl;
   file << vec_10_20.size() * 100 / (double)porc << endl;
@@ -6836,7 +6314,8 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   std::map<std::pair<ULInt, ULInt>, unsigned int> edge_use_count;
 
   auto add_edge = [&edge_use_count](ULInt a, ULInt b) {
-    if (a > b) std::swap(a, b);
+    if (a > b)
+      std::swap(a, b);
     edge_use_count[std::make_pair(a, b)]++;
   };
 
@@ -6856,8 +6335,8 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
       const double quality_3d = t->CalculateQualityTriangle();
       const double quality_uv = TriangleQualityFromParameters(
           t->GetParametersN1(), t->GetParametersN2(), t->GetParametersN3());
-      const TriangleShapeMetrics shape_3d = ComputeTriangleShapeMetrics3D(
-          t->GetNoh(1), t->GetNoh(2), t->GetNoh(3));
+      const TriangleShapeMetrics shape_3d =
+          ComputeTriangleShapeMetrics3D(t->GetNoh(1), t->GetNoh(2), t->GetNoh(3));
       qualities_3d.push_back(quality_3d);
       qualities_uv.push_back(quality_uv);
       min_angles_3d.push_back(shape_3d.min_angle_deg);
@@ -6867,13 +6346,17 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
       areas.push_back(t->GetArea());
 
       int bin_3d = static_cast<int>(quality_3d * 10.0);
-      if (bin_3d < 0) bin_3d = 0;
-      if (bin_3d > 9) bin_3d = 9;
+      if (bin_3d < 0)
+        bin_3d = 0;
+      if (bin_3d > 9)
+        bin_3d = 9;
       histogram_3d[static_cast<size_t>(bin_3d)]++;
 
       int bin_uv = static_cast<int>(quality_uv * 10.0);
-      if (bin_uv < 0) bin_uv = 0;
-      if (bin_uv > 9) bin_uv = 9;
+      if (bin_uv < 0)
+        bin_uv = 0;
+      if (bin_uv > 9)
+        bin_uv = 9;
       histogram_uv[static_cast<size_t>(bin_uv)]++;
 
       const ULInt id1 = t->GetNoh(1).GetId();
@@ -6886,13 +6369,14 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   }
 
   auto get_mean = [](const std::vector<double>& v) {
-    if (v.empty()) return 0.0;
-    return std::accumulate(v.begin(), v.end(), 0.0) /
-           static_cast<double>(v.size());
+    if (v.empty())
+      return 0.0;
+    return std::accumulate(v.begin(), v.end(), 0.0) / static_cast<double>(v.size());
   };
 
   auto get_stddev = [](const std::vector<double>& v, double mean) {
-    if (v.size() < 2) return 0.0;
+    if (v.size() < 2)
+      return 0.0;
     double acc = 0.0;
     for (double x : v) {
       const double d = x - mean;
@@ -6902,18 +6386,19 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   };
 
   auto get_percentile = [](std::vector<double> v, double p) {
-    if (v.empty()) return 0.0;
+    if (v.empty())
+      return 0.0;
     std::sort(v.begin(), v.end());
     const double pos = p * static_cast<double>(v.size() - 1);
     const size_t lo = static_cast<size_t>(std::floor(pos));
     const size_t hi = static_cast<size_t>(std::ceil(pos));
-    if (lo == hi) return v[lo];
+    if (lo == hi)
+      return v[lo];
     const double w = pos - static_cast<double>(lo);
     return v[lo] * (1.0 - w) + v[hi] * w;
   };
 
-  auto minmax_quality_3d =
-      std::minmax_element(qualities_3d.begin(), qualities_3d.end());
+  auto minmax_quality_3d = std::minmax_element(qualities_3d.begin(), qualities_3d.end());
   const double quality_min = qualities_3d.empty() ? 0.0 : *(minmax_quality_3d.first);
   const double quality_max = qualities_3d.empty() ? 0.0 : *(minmax_quality_3d.second);
   const double quality_mean = get_mean(qualities_3d);
@@ -6922,12 +6407,9 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   const double quality_p50 = get_percentile(qualities_3d, 0.50);
   const double quality_p95 = get_percentile(qualities_3d, 0.95);
 
-  auto minmax_quality_uv =
-      std::minmax_element(qualities_uv.begin(), qualities_uv.end());
-  const double quality_min_uv =
-      qualities_uv.empty() ? 0.0 : *(minmax_quality_uv.first);
-  const double quality_max_uv =
-      qualities_uv.empty() ? 0.0 : *(minmax_quality_uv.second);
+  auto minmax_quality_uv = std::minmax_element(qualities_uv.begin(), qualities_uv.end());
+  const double quality_min_uv = qualities_uv.empty() ? 0.0 : *(minmax_quality_uv.first);
+  const double quality_max_uv = qualities_uv.empty() ? 0.0 : *(minmax_quality_uv.second);
   const double quality_mean_uv = get_mean(qualities_uv);
   const double quality_std_uv = get_stddev(qualities_uv, quality_mean_uv);
   const double quality_p05_uv = get_percentile(qualities_uv, 0.05);
@@ -6950,36 +6432,41 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   unsigned long long good_quality_ge_0_60 = 0;
   unsigned long long excellent_quality = 0;
   for (double q : qualities_3d) {
-    if (q < 0.3) poor_quality++;
-    if (q >= 0.6) good_quality_ge_0_60++;
-    if (q >= 0.8) excellent_quality++;
+    if (q < 0.3)
+      poor_quality++;
+    if (q >= 0.6)
+      good_quality_ge_0_60++;
+    if (q >= 0.8)
+      excellent_quality++;
   }
 
   unsigned long long poor_quality_uv = 0;
   unsigned long long good_quality_ge_0_60_uv = 0;
   unsigned long long excellent_quality_uv = 0;
   for (double q : qualities_uv) {
-    if (q < 0.3) poor_quality_uv++;
-    if (q >= 0.6) good_quality_ge_0_60_uv++;
-    if (q >= 0.8) excellent_quality_uv++;
+    if (q < 0.3)
+      poor_quality_uv++;
+    if (q >= 0.6)
+      good_quality_ge_0_60_uv++;
+    if (q >= 0.8)
+      excellent_quality_uv++;
   }
 
   unsigned long long boundary_edges = 0;
   unsigned long long nonmanifold_edges = 0;
   for (const auto& e : edge_use_count) {
-    if (e.second == 1) boundary_edges++;
-    if (e.second > 2) nonmanifold_edges++;
+    if (e.second == 1)
+      boundary_edges++;
+    if (e.second > 2)
+      nonmanifold_edges++;
   }
 
   const double error_current = attempt.error;
   const double error_prev = attempt.previous_error;
   const double error_delta_abs =
-      (error_current >= 0.0 && error_prev >= 0.0) ? (error_prev - error_current)
-                                                  : 0.0;
+      (error_current >= 0.0 && error_prev >= 0.0) ? (error_prev - error_current) : 0.0;
   const double error_delta_pct =
-      (error_current >= 0.0 && error_prev > 0.0)
-          ? (error_delta_abs / error_prev) * 100.0
-          : 0.0;
+      (error_current >= 0.0 && error_prev > 0.0) ? (error_delta_abs / error_prev) * 100.0 : 0.0;
   const unsigned long long elements_prev = attempt.previous_elements;
   const unsigned long long elements_delta =
       total_elements > elements_prev ? total_elements - elements_prev : 0ULL;
@@ -7001,8 +6488,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
           ? element_budget_abs_step_[static_cast<size_t>(step_)]
           : current_element_budget_abs_;
   const double element_budget_growth_factor_limit =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(element_budget_growth_factor_limit_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(element_budget_growth_factor_limit_step_.size()))
           ? element_budget_growth_factor_limit_step_[static_cast<size_t>(step_)]
           : current_element_budget_growth_factor_limit_;
   const double element_budget_soft_limit =
@@ -7010,27 +6496,23 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
           ? element_budget_soft_limit_step_[static_cast<size_t>(step_)]
           : current_element_budget_soft_limit_;
   const unsigned long long candidate_elements_before_budget_retry =
-      (step_ >= 0 &&
-       step_ <
-           static_cast<int>(candidate_elements_before_budget_retry_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(candidate_elements_before_budget_retry_step_.size()))
           ? candidate_elements_before_budget_retry_step_[static_cast<size_t>(step_)]
           : current_candidate_elements_before_budget_retry_;
   const unsigned int budget_retry_count =
       (step_ >= 0 && step_ < static_cast<int>(budget_retry_count_step_.size()))
           ? budget_retry_count_step_[static_cast<size_t>(step_)]
           : current_budget_retry_count_;
-  const int budget_limited =
-      (step_ >= 0 && step_ < static_cast<int>(budget_limited_step_.size()))
-          ? budget_limited_step_[static_cast<size_t>(step_)]
-          : (current_budget_limited_ ? 1 : 0);
+  const int budget_limited = (step_ >= 0 && step_ < static_cast<int>(budget_limited_step_.size()))
+                                 ? budget_limited_step_[static_cast<size_t>(step_)]
+                                 : (current_budget_limited_ ? 1 : 0);
   const std::string budget_final_status =
       (step_ >= 0 && step_ < static_cast<int>(budget_final_status_step_.size()))
           ? budget_final_status_step_[static_cast<size_t>(step_)]
           : current_budget_final_status_;
-  const std::string step_mode =
-      (step_ >= 0 && step_ < static_cast<int>(step_mode_step_.size()))
-          ? step_mode_step_[static_cast<size_t>(step_)]
-          : current_step_mode_;
+  const std::string step_mode = (step_ >= 0 && step_ < static_cast<int>(step_mode_step_.size()))
+                                    ? step_mode_step_[static_cast<size_t>(step_)]
+                                    : current_step_mode_;
   const double budget_pressure =
       (step_ >= 0 && step_ < static_cast<int>(budget_pressure_step_.size()))
           ? budget_pressure_step_[static_cast<size_t>(step_)]
@@ -7040,26 +6522,22 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
           ? eligible_patch_count_step_[static_cast<size_t>(step_)]
           : current_eligible_patch_count_;
   const unsigned long long eligible_patch_elements_sum =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(eligible_patch_elements_sum_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(eligible_patch_elements_sum_step_.size()))
           ? eligible_patch_elements_sum_step_[static_cast<size_t>(step_)]
           : current_eligible_patch_elements_sum_;
   const double eligible_patch_mean_factor =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(eligible_patch_mean_factor_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(eligible_patch_mean_factor_step_.size()))
           ? eligible_patch_mean_factor_step_[static_cast<size_t>(step_)]
           : current_eligible_patch_mean_factor_;
   const double eligible_patch_mean_h_scale =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(eligible_patch_mean_h_scale_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(eligible_patch_mean_h_scale_step_.size()))
           ? eligible_patch_mean_h_scale_step_[static_cast<size_t>(step_)]
           : current_eligible_patch_mean_h_scale_;
   const double applied_relaxation = attempt.applied_relaxation;
   const double applied_max_delta = attempt.applied_max_delta;
-  const int retry_enabled =
-      (step_ >= 0 && step_ < static_cast<int>(retry_enabled_step_.size()))
-          ? retry_enabled_step_[static_cast<size_t>(step_)]
-          : (ADAPTIVE_RETRY_COUNT > 0 ? 1 : 0);
+  const int retry_enabled = (step_ >= 0 && step_ < static_cast<int>(retry_enabled_step_.size()))
+                                ? retry_enabled_step_[static_cast<size_t>(step_)]
+                                : (ADAPTIVE_RETRY_COUNT > 0 ? 1 : 0);
   const int local_budget_mode =
       (step_ >= 0 && step_ < static_cast<int>(local_budget_mode_step_.size()))
           ? local_budget_mode_step_[static_cast<size_t>(step_)]
@@ -7077,8 +6555,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
           ? step_efficiency_step_[static_cast<size_t>(step_)]
           : current_step_efficiency_;
   const std::string generation_control_mode =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(generation_control_mode_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(generation_control_mode_step_.size()))
           ? generation_control_mode_step_[static_cast<size_t>(step_)]
           : current_generation_control_mode_;
   const double target_elements_step =
@@ -7114,8 +6591,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
           ? top_patch_candidate_count_step_[static_cast<size_t>(step_)]
           : current_top_patch_candidate_count_;
   const double patch_budget_dispersion =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(patch_budget_dispersion_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(patch_budget_dispersion_step_.size()))
           ? patch_budget_dispersion_step_[static_cast<size_t>(step_)]
           : current_patch_budget_dispersion_;
   const double patch_h_dispersion =
@@ -7123,23 +6599,19 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
           ? patch_h_dispersion_step_[static_cast<size_t>(step_)]
           : current_patch_h_dispersion_;
   const double actual_patch_element_dispersion =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(actual_patch_element_dispersion_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(actual_patch_element_dispersion_step_.size()))
           ? actual_patch_element_dispersion_step_[static_cast<size_t>(step_)]
           : current_actual_patch_element_dispersion_;
   const double curve_balance_dispersion =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(curve_balance_dispersion_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(curve_balance_dispersion_step_.size()))
           ? curve_balance_dispersion_step_[static_cast<size_t>(step_)]
           : current_curve_balance_dispersion_;
   const double patch_consistency_penalty =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(patch_consistency_penalty_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(patch_consistency_penalty_step_.size()))
           ? patch_consistency_penalty_step_[static_cast<size_t>(step_)]
           : current_patch_consistency_penalty_;
   const int consistency_regularization_active =
-      (step_ >= 0 &&
-       step_ < static_cast<int>(consistency_regularization_active_step_.size()))
+      (step_ >= 0 && step_ < static_cast<int>(consistency_regularization_active_step_.size()))
           ? consistency_regularization_active_step_[static_cast<size_t>(step_)]
           : current_consistency_regularization_active_;
 
@@ -7154,32 +6626,30 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   const auto min_elem_sub =
       elements_per_submesh.empty()
           ? 0ULL
-          : *std::min_element(elements_per_submesh.begin(),
-                              elements_per_submesh.end());
+          : *std::min_element(elements_per_submesh.begin(), elements_per_submesh.end());
   const auto max_elem_sub =
       elements_per_submesh.empty()
           ? 0ULL
-          : *std::max_element(elements_per_submesh.begin(),
-                              elements_per_submesh.end());
+          : *std::max_element(elements_per_submesh.begin(), elements_per_submesh.end());
 
-  const double mean_nodes_sub = nodes_per_submesh.empty()
-                                    ? 0.0
-                                    : static_cast<double>(total_nodes) /
-                                          static_cast<double>(nodes_per_submesh.size());
-  const double mean_elem_sub = elements_per_submesh.empty()
-                                   ? 0.0
-                                   : static_cast<double>(total_elements) /
-                                         static_cast<double>(elements_per_submesh.size());
+  const double mean_nodes_sub =
+      nodes_per_submesh.empty()
+          ? 0.0
+          : static_cast<double>(total_nodes) / static_cast<double>(nodes_per_submesh.size());
+  const double mean_elem_sub =
+      elements_per_submesh.empty()
+          ? 0.0
+          : static_cast<double>(total_elements) / static_cast<double>(elements_per_submesh.size());
 
   file << "Analise da malha por rodada" << endl << endl;
   file << "step=" << step_ << ", rank=" << rank << endl;
   file << "nodes_total=" << total_nodes << endl;
   file << "elements_total=" << total_elements << endl;
   file << "submeshes_total=" << num_submeshes << endl;
-  file << "nodes_per_submesh[min/mean/max]=" << min_nodes_sub << "/"
-       << mean_nodes_sub << "/" << max_nodes_sub << endl;
-  file << "elements_per_submesh[min/mean/max]=" << min_elem_sub << "/"
-       << mean_elem_sub << "/" << max_elem_sub << endl;
+  file << "nodes_per_submesh[min/mean/max]=" << min_nodes_sub << "/" << mean_nodes_sub << "/"
+       << max_nodes_sub << endl;
+  file << "elements_per_submesh[min/mean/max]=" << min_elem_sub << "/" << mean_elem_sub << "/"
+       << max_elem_sub << endl;
   file << "error_global_current=" << error_current << endl;
   file << "error_global_previous=" << error_prev << endl;
   file << "error_global_surface_curvature_current=" << error_current << endl;
@@ -7198,14 +6668,12 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   file << "curvature_mode_mean_nodes=" << mean_nodes << endl;
   file << "curvature_mode_gauss_ratio="
        << ((gauss_nodes + mean_nodes) > 0ULL
-               ? static_cast<double>(gauss_nodes) /
-                     static_cast<double>(gauss_nodes + mean_nodes)
+               ? static_cast<double>(gauss_nodes) / static_cast<double>(gauss_nodes + mean_nodes)
                : 0.0)
        << endl;
   file << "curvature_mode_mean_ratio="
        << ((gauss_nodes + mean_nodes) > 0ULL
-               ? static_cast<double>(mean_nodes) /
-                     static_cast<double>(gauss_nodes + mean_nodes)
+               ? static_cast<double>(mean_nodes) / static_cast<double>(gauss_nodes + mean_nodes)
                : 0.0)
        << endl;
   file << "error_floor=" << ERROR_FLOOR << endl;
@@ -7225,12 +6693,10 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   file << "improved_top_patches=" << improved_top_patches << endl;
   file << "top_patch_candidate_count=" << top_patch_candidate_count << endl;
   file << "generation_control_mode=" << generation_control_mode << endl;
-  file << "consistency_regularization_active="
-       << consistency_regularization_active << endl;
+  file << "consistency_regularization_active=" << consistency_regularization_active << endl;
   file << "patch_budget_dispersion=" << patch_budget_dispersion << endl;
   file << "patch_h_dispersion=" << patch_h_dispersion << endl;
-  file << "actual_patch_element_dispersion="
-       << actual_patch_element_dispersion << endl;
+  file << "actual_patch_element_dispersion=" << actual_patch_element_dispersion << endl;
   file << "curve_balance_dispersion=" << curve_balance_dispersion << endl;
   file << "patch_consistency_penalty=" << patch_consistency_penalty << endl;
   file << "budget_driver_mode=" << budget_driver_mode << endl;
@@ -7238,38 +6704,32 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   file << "adaptation_max_delta=" << applied_max_delta << endl;
   file << "adaptive_retry_count=" << ADAPTIVE_RETRY_COUNT << endl;
   file << "adaptive_retry_shrink=" << ADAPTIVE_RETRY_SHRINK << endl;
-  file << "max_retry_element_growth_factor="
-       << MAX_RETRY_ELEMENT_GROWTH_FACTOR << endl;
-  file << "max_retry_element_growth_abs=" << MAX_RETRY_ELEMENT_GROWTH_ABS
-       << endl;
+  file << "max_retry_element_growth_factor=" << MAX_RETRY_ELEMENT_GROWTH_FACTOR << endl;
+  file << "max_retry_element_growth_abs=" << MAX_RETRY_ELEMENT_GROWTH_ABS << endl;
   file << "stop_reason=" << stop_reason_ << endl;
-  file << "laplacian_smoothing_iterations="
-       << static_cast<unsigned int>(SMOOTHING_LAPLACIAN_NUMBER) << endl;
+  file << "laplacian_smoothing_iterations=" << static_cast<unsigned int>(SMOOTHING_LAPLACIAN_NUMBER)
+       << endl;
   file << "laplacian_smoothing_factor=" << SMOOTHING_LAPLACIAN_FACTOR << endl;
   file << endl;
 
-  file << "quality[min/p05/p50/p95/max]=" << quality_min << "/" << quality_p05
-       << "/" << quality_p50 << "/" << quality_p95 << "/" << quality_max
-       << endl;
+  file << "quality[min/p05/p50/p95/max]=" << quality_min << "/" << quality_p05 << "/" << quality_p50
+       << "/" << quality_p95 << "/" << quality_max << endl;
   file << "quality_mean=" << quality_mean << endl;
   file << "quality_stddev=" << quality_std << endl;
   file << "quality_poor_ratio_lt_0.30="
        << (total_elements > 0
-               ? (100.0 * static_cast<double>(poor_quality) /
-                  static_cast<double>(total_elements))
+               ? (100.0 * static_cast<double>(poor_quality) / static_cast<double>(total_elements))
                : 0.0)
        << endl;
   file << "quality_good_ratio_ge_0.60="
-       << (total_elements > 0
-               ? (100.0 * static_cast<double>(good_quality_ge_0_60) /
-                  static_cast<double>(total_elements))
-               : 0.0)
+       << (total_elements > 0 ? (100.0 * static_cast<double>(good_quality_ge_0_60) /
+                                 static_cast<double>(total_elements))
+                              : 0.0)
        << endl;
   file << "quality_excellent_ratio_ge_0.80="
-       << (total_elements > 0
-               ? (100.0 * static_cast<double>(excellent_quality) /
-                  static_cast<double>(total_elements))
-               : 0.0)
+       << (total_elements > 0 ? (100.0 * static_cast<double>(excellent_quality) /
+                                 static_cast<double>(total_elements))
+                              : 0.0)
        << endl;
   file << "angle_quality_mean_3d=" << angle_quality_mean_3d << endl;
   file << "edge_ratio_mean_3d=" << edge_ratio_mean_3d << endl;
@@ -7279,39 +6739,33 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   file << "max_angle_p95_3d=" << max_angle_p95_3d << endl;
   file << endl;
 
-  file << "quality_uv[min/p05/p50/p95/max]=" << quality_min_uv << "/"
-       << quality_p05_uv << "/" << quality_p50_uv << "/" << quality_p95_uv
-       << "/" << quality_max_uv << endl;
+  file << "quality_uv[min/p05/p50/p95/max]=" << quality_min_uv << "/" << quality_p05_uv << "/"
+       << quality_p50_uv << "/" << quality_p95_uv << "/" << quality_max_uv << endl;
   file << "quality_uv_mean=" << quality_mean_uv << endl;
   file << "quality_uv_stddev=" << quality_std_uv << endl;
   file << "quality_uv_poor_ratio_lt_0.30="
-       << (total_elements > 0
-               ? (100.0 * static_cast<double>(poor_quality_uv) /
-                  static_cast<double>(total_elements))
-               : 0.0)
+       << (total_elements > 0 ? (100.0 * static_cast<double>(poor_quality_uv) /
+                                 static_cast<double>(total_elements))
+                              : 0.0)
        << endl;
   file << "quality_uv_good_ratio_ge_0.60="
-       << (total_elements > 0
-               ? (100.0 * static_cast<double>(good_quality_ge_0_60_uv) /
-                  static_cast<double>(total_elements))
-               : 0.0)
+       << (total_elements > 0 ? (100.0 * static_cast<double>(good_quality_ge_0_60_uv) /
+                                 static_cast<double>(total_elements))
+                              : 0.0)
        << endl;
   file << "quality_uv_excellent_ratio_ge_0.80="
-       << (total_elements > 0
-               ? (100.0 * static_cast<double>(excellent_quality_uv) /
-                  static_cast<double>(total_elements))
-               : 0.0)
+       << (total_elements > 0 ? (100.0 * static_cast<double>(excellent_quality_uv) /
+                                 static_cast<double>(total_elements))
+                              : 0.0)
        << endl;
   file << endl;
 
-  file << "area[min/mean/max]=" << area_min << "/" << area_mean << "/"
-       << area_max << endl;
+  file << "area[min/mean/max]=" << area_min << "/" << area_mean << "/" << area_max << endl;
   file << "area_stddev=" << area_std << endl;
   file << endl;
 
-  file << "topology[unique_edges/boundary_edges/nonmanifold_edges]="
-       << edge_use_count.size() << "/" << boundary_edges << "/"
-       << nonmanifold_edges << endl;
+  file << "topology[unique_edges/boundary_edges/nonmanifold_edges]=" << edge_use_count.size() << "/"
+       << boundary_edges << "/" << nonmanifold_edges << endl;
   file << endl;
 
   file << "quality_histogram_counts_3d" << endl;
@@ -7328,8 +6782,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
     const double b = static_cast<double>(i + 1) / 10.0;
     const double pct =
         total_elements > 0
-            ? (100.0 * static_cast<double>(histogram_3d[i]) /
-               static_cast<double>(total_elements))
+            ? (100.0 * static_cast<double>(histogram_3d[i]) / static_cast<double>(total_elements))
             : 0.0;
     file << "[" << a << "," << b << "]=" << pct << endl;
   }
@@ -7349,8 +6802,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
     const double b = static_cast<double>(i + 1) / 10.0;
     const double pct =
         total_elements > 0
-            ? (100.0 * static_cast<double>(histogram_uv[i]) /
-               static_cast<double>(total_elements))
+            ? (100.0 * static_cast<double>(histogram_uv[i]) / static_cast<double>(total_elements))
             : 0.0;
     file << "[" << a << "," << b << "]=" << pct << endl;
   }
@@ -7383,9 +6835,8 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   }
 
   const bool rewrite_csv = csv_exists && !csv_has_current_header;
-  std::ofstream csv(
-      csvName.str().c_str(),
-      rewrite_csv ? std::ios::out : (std::ios::out | std::ios::app));
+  std::ofstream csv(csvName.str().c_str(),
+                    rewrite_csv ? std::ios::out : (std::ios::out | std::ios::app));
   if (!csv_exists || rewrite_csv) {
     csv << "step,rank,nodes,elements,error,error_prev,error_global_surface_curvature,error_global_"
            "surface_curvature_prev,error_improvement_abs,"
@@ -7420,105 +6871,80 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
            "laplacian_factor"
         << endl;
   }
-  csv << step_ << "," << rank << "," << total_nodes << "," << total_elements
-      << "," << error_current << "," << error_prev << "," << error_current << ","
-      << error_prev << "," << error_delta_abs
-      << "," << error_delta_pct << "," << error_normalized << ","
-      << error_total_reduction_pct << "," << elements_prev << ","
-      << elements_delta << "," << element_growth_factor << ","
-      << error_drop_per_element << "," << acceptance_score << ","
-      << gauss_nodes << "," << mean_nodes << ","
+  csv << step_ << "," << rank << "," << total_nodes << "," << total_elements << "," << error_current
+      << "," << error_prev << "," << error_current << "," << error_prev << "," << error_delta_abs
+      << "," << error_delta_pct << "," << error_normalized << "," << error_total_reduction_pct
+      << "," << elements_prev << "," << elements_delta << "," << element_growth_factor << ","
+      << error_drop_per_element << "," << acceptance_score << "," << gauss_nodes << ","
+      << mean_nodes << ","
       << ((gauss_nodes + mean_nodes) > 0ULL
-              ? static_cast<double>(gauss_nodes) /
-                    static_cast<double>(gauss_nodes + mean_nodes)
+              ? static_cast<double>(gauss_nodes) / static_cast<double>(gauss_nodes + mean_nodes)
               : 0.0)
       << ","
       << ((gauss_nodes + mean_nodes) > 0ULL
-              ? static_cast<double>(mean_nodes) /
-                    static_cast<double>(gauss_nodes + mean_nodes)
+              ? static_cast<double>(mean_nodes) / static_cast<double>(gauss_nodes + mean_nodes)
               : 0.0)
-      << ","
-      << ERROR_FLOOR << "," << MIN_ERROR_DROP_ABS << ","
-      << MIN_ERROR_DROP_PER_ELEMENT << "," << retry_attempt << ","
-      << retry_enabled << "," << local_budget_mode << ","
-      << target_element_growth << "," << target_elements_step << ","
-      << actual_elements_step << "," << target_growth_step << ","
-      << actual_growth_step << "," << actual_element_growth << ","
-      << step_efficiency << "," << local_progress_coverage << ","
-      << improved_top_patches << "," << top_patch_candidate_count << ","
-      << generation_control_mode << ","
-      << consistency_regularization_active << ","
-      << patch_budget_dispersion << ","
-      << patch_h_dispersion << ","
-      << actual_patch_element_dispersion << ","
-      << curve_balance_dispersion << ","
-      << patch_consistency_penalty << ","
-      << budget_driver_mode << ","
-      << applied_relaxation << "," << applied_max_delta << ","
-      << ADAPTIVE_RETRY_COUNT << "," << ADAPTIVE_RETRY_SHRINK << ","
-      << MAX_RETRY_ELEMENT_GROWTH_FACTOR << ","
-      << MAX_RETRY_ELEMENT_GROWTH_ABS << ","
-      << element_budget_abs << "," << element_budget_growth_factor_limit << ","
-      << element_budget_soft_limit << ","
-      << candidate_elements_before_budget_retry << "," << budget_retry_count
-      << "," << budget_limited << "," << budget_final_status << ","
-      << step_mode << "," << budget_pressure << "," << eligible_patch_count
-      << "," << eligible_patch_elements_sum << ","
+      << "," << ERROR_FLOOR << "," << MIN_ERROR_DROP_ABS << "," << MIN_ERROR_DROP_PER_ELEMENT << ","
+      << retry_attempt << "," << retry_enabled << "," << local_budget_mode << ","
+      << target_element_growth << "," << target_elements_step << "," << actual_elements_step << ","
+      << target_growth_step << "," << actual_growth_step << "," << actual_element_growth << ","
+      << step_efficiency << "," << local_progress_coverage << "," << improved_top_patches << ","
+      << top_patch_candidate_count << "," << generation_control_mode << ","
+      << consistency_regularization_active << "," << patch_budget_dispersion << ","
+      << patch_h_dispersion << "," << actual_patch_element_dispersion << ","
+      << curve_balance_dispersion << "," << patch_consistency_penalty << "," << budget_driver_mode
+      << "," << applied_relaxation << "," << applied_max_delta << "," << ADAPTIVE_RETRY_COUNT << ","
+      << ADAPTIVE_RETRY_SHRINK << "," << MAX_RETRY_ELEMENT_GROWTH_FACTOR << ","
+      << MAX_RETRY_ELEMENT_GROWTH_ABS << "," << element_budget_abs << ","
+      << element_budget_growth_factor_limit << "," << element_budget_soft_limit << ","
+      << candidate_elements_before_budget_retry << "," << budget_retry_count << ","
+      << budget_limited << "," << budget_final_status << "," << step_mode << "," << budget_pressure
+      << "," << eligible_patch_count << "," << eligible_patch_elements_sum << ","
       << eligible_patch_mean_factor << "," << eligible_patch_mean_h_scale << ","
       << (step_ >= 0 && step_ < static_cast<int>(step_purpose_step_.size())
               ? step_purpose_step_[static_cast<size_t>(step_)]
               : current_step_purpose_)
       << ","
-      << (step_ >= 0 &&
-                  step_ < static_cast<int>(underresolved_transition_fraction_step_.size())
+      << (step_ >= 0 && step_ < static_cast<int>(underresolved_transition_fraction_step_.size())
               ? underresolved_transition_fraction_step_[static_cast<size_t>(step_)]
               : current_underresolved_transition_fraction_real_)
       << ","
       << (step_ >= 0 && step_ < static_cast<int>(transition_imbalance_max_step_.size())
               ? transition_imbalance_max_step_[static_cast<size_t>(step_)]
               : current_transition_imbalance_max_real_)
-      << "," << stop_reason_ << "," << quality_min << "," << quality_p05
-      << "," << quality_p50 << "," << quality_p95 << "," << quality_max << ","
-      << quality_mean << "," << quality_std << ","
-      << (total_elements > 0
-              ? (100.0 * static_cast<double>(poor_quality) /
-                 static_cast<double>(total_elements))
-              : 0.0)
+      << "," << stop_reason_ << "," << quality_min << "," << quality_p05 << "," << quality_p50
+      << "," << quality_p95 << "," << quality_max << "," << quality_mean << "," << quality_std
       << ","
       << (total_elements > 0
-              ? (100.0 * static_cast<double>(good_quality_ge_0_60) /
-                 static_cast<double>(total_elements))
+              ? (100.0 * static_cast<double>(poor_quality) / static_cast<double>(total_elements))
               : 0.0)
       << ","
+      << (total_elements > 0 ? (100.0 * static_cast<double>(good_quality_ge_0_60) /
+                                static_cast<double>(total_elements))
+                             : 0.0)
+      << ","
+      << (total_elements > 0 ? (100.0 * static_cast<double>(excellent_quality) /
+                                static_cast<double>(total_elements))
+                             : 0.0)
+      << "," << angle_quality_mean_3d << "," << edge_ratio_mean_3d << "," << min_angle_mean_3d
+      << "," << min_angle_p05_3d << "," << max_angle_mean_3d << "," << max_angle_p95_3d << ","
+      << quality_min_uv << "," << quality_p05_uv << "," << quality_p50_uv << "," << quality_p95_uv
+      << "," << quality_max_uv << "," << quality_mean_uv << "," << quality_std_uv << ","
       << (total_elements > 0
-              ? (100.0 * static_cast<double>(excellent_quality) /
-                 static_cast<double>(total_elements))
-              : 0.0)
-      << "," << angle_quality_mean_3d << "," << edge_ratio_mean_3d << ","
-      << min_angle_mean_3d << "," << min_angle_p05_3d << ","
-      << max_angle_mean_3d << "," << max_angle_p95_3d
-      << "," << quality_min_uv << "," << quality_p05_uv << ","
-      << quality_p50_uv << "," << quality_p95_uv << "," << quality_max_uv
-      << "," << quality_mean_uv << "," << quality_std_uv << ","
-      << (total_elements > 0
-              ? (100.0 * static_cast<double>(poor_quality_uv) /
-                 static_cast<double>(total_elements))
+              ? (100.0 * static_cast<double>(poor_quality_uv) / static_cast<double>(total_elements))
               : 0.0)
       << ","
-      << (total_elements > 0
-              ? (100.0 * static_cast<double>(good_quality_ge_0_60_uv) /
-                 static_cast<double>(total_elements))
-              : 0.0)
+      << (total_elements > 0 ? (100.0 * static_cast<double>(good_quality_ge_0_60_uv) /
+                                static_cast<double>(total_elements))
+                             : 0.0)
       << ","
-      << (total_elements > 0
-              ? (100.0 * static_cast<double>(excellent_quality_uv) /
-                 static_cast<double>(total_elements))
-              : 0.0)
-      << "," << area_min << "," << area_mean << "," << area_max << ","
-      << area_std << "," << edge_use_count.size() << "," << boundary_edges
-      << "," << nonmanifold_edges << ","
-      << static_cast<unsigned int>(SMOOTHING_LAPLACIAN_NUMBER) << ","
-      << SMOOTHING_LAPLACIAN_FACTOR << endl;
+      << (total_elements > 0 ? (100.0 * static_cast<double>(excellent_quality_uv) /
+                                static_cast<double>(total_elements))
+                             : 0.0)
+      << "," << area_min << "," << area_mean << "," << area_max << "," << area_std << ","
+      << edge_use_count.size() << "," << boundary_edges << "," << nonmanifold_edges << ","
+      << static_cast<unsigned int>(SMOOTHING_LAPLACIAN_NUMBER) << "," << SMOOTHING_LAPLACIAN_FACTOR
+      << endl;
   csv.flush();
   csv.close();
 }
@@ -7530,8 +6956,7 @@ void GeneratorAdaptive::WriteCompatibilitySummary(const Geometry* geometry) cons
 
   std::unordered_map<unsigned long, std::vector<const CurveAdaptive*>> groups;
   unsigned int multi_incident_features = 0U;
-  for (unsigned int curve_index = 0; curve_index < geometry->GetNumberCurves();
-       ++curve_index) {
+  for (unsigned int curve_index = 0; curve_index < geometry->GetNumberCurves(); ++curve_index) {
     const CurveAdaptive* curve = geometry->GetCurve(curve_index);
     if (curve == nullptr) {
       continue;
@@ -7575,12 +7000,10 @@ void GeneratorAdaptive::WriteCompatibilitySummary(const Geometry* geometry) cons
             "desynchronized_groups,compat_error_mean,compat_error_max"
          << std::endl;
   }
-  file << NAME_MODEL << "," << ENABLE_SHARED_CURVE_SYNC << ","
-       << ENABLE_HYBRID_RECONSTRUCTION << "," << error_step_.size() << ","
-       << geometry->GetNumberCurves() << "," << groups.size() << ","
-       << multi_incident_features << "," << compared_groups << ","
-       << desynchronized_groups << "," << compatibility_error_mean << ","
-       << compatibility_error_max << std::endl;
+  file << NAME_MODEL << "," << ENABLE_SHARED_CURVE_SYNC << "," << ENABLE_HYBRID_RECONSTRUCTION
+       << "," << error_step_.size() << "," << geometry->GetNumberCurves() << "," << groups.size()
+       << "," << multi_incident_features << "," << compared_groups << "," << desynchronized_groups
+       << "," << compatibility_error_mean << "," << compatibility_error_max << std::endl;
 }
 
 void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
@@ -7590,8 +7013,7 @@ void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
 
   const auto all_times = timer->GetTimerParallel();
   const unsigned int measured_steps =
-      error_step_.size() > 1U ? static_cast<unsigned int>(error_step_.size() - 1U)
-                              : 0U;
+      error_step_.size() > 1U ? static_cast<unsigned int>(error_step_.size() - 1U) : 0U;
 
   std::ostringstream name;
   name << NAME_MODEL << "_runtime_summary.csv";
@@ -7619,26 +7041,20 @@ void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
       for (const auto& rank_times : all_times) {
         for (const auto& thread_times : rank_times) {
           if (5 < static_cast<int>(thread_times.size())) {
-            input_read_seconds =
-                std::max(input_read_seconds, thread_times[5]);
+            input_read_seconds = std::max(input_read_seconds, thread_times[5]);
           }
           if (11 < static_cast<int>(thread_times.size())) {
-            save_output_seconds =
-                std::max(save_output_seconds, thread_times[11]);
+            save_output_seconds = std::max(save_output_seconds, thread_times[11]);
           }
         }
       }
-      total_seconds =
-          std::max(0.0, total_seconds - input_read_seconds - save_output_seconds);
+      total_seconds = std::max(0.0, total_seconds - input_read_seconds - save_output_seconds);
     }
     const double per_iteration_ms =
-        measured_steps > 0U
-            ? (1000.0 * total_seconds / static_cast<double>(measured_steps))
-            : 0.0;
-    file << NAME_MODEL << "," << ENABLE_SHARED_CURVE_SYNC << ","
-         << ENABLE_HYBRID_RECONSTRUCTION << "," << measured_steps << ","
-         << type << "," << TimerTypeName(type) << "," << total_seconds << ","
-         << per_iteration_ms << std::endl;
+        measured_steps > 0U ? (1000.0 * total_seconds / static_cast<double>(measured_steps)) : 0.0;
+    file << NAME_MODEL << "," << ENABLE_SHARED_CURVE_SYNC << "," << ENABLE_HYBRID_RECONSTRUCTION
+         << "," << measured_steps << "," << type << "," << TimerTypeName(type) << ","
+         << total_seconds << "," << per_iteration_ms << std::endl;
   }
 }
 
@@ -7710,9 +7126,8 @@ void escreveElementos(int step_, SubMesh* sub, int i) {
 
     arq << "T-" << elem->GetId() << ":\n\t"
         << "área = " << elem->GetArea() << ";\n\t"
-        << "normal = " << elem->GetVectorNormal().GetX() << ", "
-        << elem->GetVectorNormal().GetY() << ", "
-        << elem->GetVectorNormal().GetZ() << "\n\t"
+        << "normal = " << elem->GetVectorNormal().GetX() << ", " << elem->GetVectorNormal().GetY()
+        << ", " << elem->GetVectorNormal().GetZ() << "\n\t"
         << "n-" << n1.GetId() << "( " << get<0>(t1) << " , " << get<1>(t1)
         << ") ângulo = " << elem->GetAngle(n1) << ";\n\t"
         << "n-" << n2.GetId() << "( " << get<0>(t2) << " , " << get<1>(t2)
@@ -7725,12 +7140,11 @@ void escreveElementos(int step_, SubMesh* sub, int i) {
 
   arq.close();
 
-  cout << "escreveu o arquivo com os elementos da submalha " << i
-       << " para o step_ " << step_ << endl;
+  cout << "escreveu o arquivo com os elementos da submalha " << i << " para o step_ " << step_
+       << endl;
 }
 
-void GeneratorAdaptive::GeneratorInitialMesh(Geometry* geometry,
-                                             MeshAdaptive* mesh, Timer* timer,
+void GeneratorAdaptive::GeneratorInitialMesh(Geometry* geometry, MeshAdaptive* mesh, Timer* timer,
                                              int size_thread, int size_patch) {
   (void)timer;
   (void)size_thread;
@@ -7743,17 +7157,16 @@ void GeneratorAdaptive::GeneratorInitialMesh(Geometry* geometry,
       this->id_managers_[id] = this->MakeIdManagerOmp(communicator_, id);
     }
 #if USE_MPI
-    timer->InitTimerParallel(RANK_MPI, id, 2);  // Malha inicial
+    timer->InitTimerParallel(RANK_MPI, id, 2); // Malha inicial
 #else
-    timer->InitTimerParallel(0, id, 2);  // Malha inicial
-#endif  // USE_MPI
+    timer->InitTimerParallel(0, id, 2); // Malha inicial
+#endif // USE_MPI
 
     // 1. Gera a mesh inicial (ordem estável por fronteira; um único executor
     //    evita corrida em curvas partilhadas quando NUM_THREADS > 1).
 #pragma omp single
     {
-      std::vector<int> patch_order =
-          InitialMeshPatchProcessOrder(geometry, size_patch);
+      std::vector<int> patch_order = InitialMeshPatchProcessOrder(geometry, size_patch);
       Performer::IdManager* id_mgr = this->id_managers_[id].get();
       for (int k = 0; k < size_patch; ++k) {
         const int i = patch_order[static_cast<size_t>(k)];
@@ -7764,29 +7177,27 @@ void GeneratorAdaptive::GeneratorInitialMesh(Geometry* geometry,
     }
 
 #if USE_MPI
-    timer->EndTimerParallel(RANK_MPI, id, 2);  // Malha inicial
+    timer->EndTimerParallel(RANK_MPI, id, 2); // Malha inicial
 #else
-    timer->EndTimerParallel(0, id, 2);   // Malha inicial
-#endif  // USE_MPI
+    timer->EndTimerParallel(0, id, 2); // Malha inicial
+#endif // USE_MPI
   }
 #else
   {
-    std::vector<int> patch_order =
-        InitialMeshPatchProcessOrder(geometry, size_patch);
+    std::vector<int> patch_order = InitialMeshPatchProcessOrder(geometry, size_patch);
     for (int k = 0; k < size_patch; ++k) {
       const int i = patch_order[static_cast<size_t>(k)];
       PatchCoons* patch = static_cast<PatchCoons*>(geometry->GetPatch(i));
-      SubMesh* sub_mesh = this->InitialMesh(static_cast<PatchCoons*>(patch),
-                                            this->id_managers_[0].get());
+      SubMesh* sub_mesh =
+          this->InitialMesh(static_cast<PatchCoons*>(patch), this->id_managers_[0].get());
       mesh->InsertSubMeshAdaptiveByPosition(sub_mesh, i);
     }
   }
-#endif  // USE_OPENMP
+#endif // USE_OPENMP
 }
 
 void GeneratorAdaptive::PrintElments(MeshAdaptive* malha, int step_,
-                                     [[maybe_unused]] vector<double> step_error,
-                                     int rank) {
+                                     [[maybe_unused]] vector<double> step_error, int rank) {
   [[maybe_unused]] unsigned long int Nv = 0, Nt = 0;
 
   for (unsigned int i = 0; i < malha->GetNumberSubMeshesAdaptive(); i++) {
@@ -7796,6 +7207,6 @@ void GeneratorAdaptive::PrintElments(MeshAdaptive* malha, int step_,
     Nt += sub->GetNumberElements();
   }
 
-  cout << "#elementos_" << NAME_MODEL << "_n.process_" << NUMBER_PROCESS
-       << "_passo_" << step_ << "_rank_" << rank << " = " << Nt << endl;
+  cout << "#elementos_" << NAME_MODEL << "_n.process_" << NUMBER_PROCESS << "_passo_" << step_
+       << "_rank_" << rank << " = " << Nt << endl;
 }

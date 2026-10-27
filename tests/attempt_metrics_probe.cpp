@@ -101,6 +101,7 @@ void WriteCurvatureControl(const std::filesystem::path& output, bool curved) {
 } // namespace
 
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
+#include "domain_candidate_fixture.h"
 namespace {
 bool inject_domain_failure = false;
 }
@@ -122,6 +123,10 @@ extern "C" bool WrappedDomainExecute(AdvancingFront* front, const FaceList& prev
 
 int main(int argc, char* argv[]) {
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
+  if (argc == 2 && std::string(argv[1]) == "--domain-candidate-contracts")
+    return DomainCandidateFixture::Run(false);
+  if (argc == 2 && std::string(argv[1]) == "--domain-candidate-release-control")
+    return DomainCandidateFixture::Run(true);
   if (argc == 3 && std::string(argv[1]) == "--domain-failure-config") {
     inject_domain_failure = true;
     char config_flag[] = "--config";

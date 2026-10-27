@@ -1,25 +1,24 @@
 # Technique-preserving modernization plan
 
-## Active item: serial temporary UV cache ownership
+## Active item: serial domain candidate ownership
 
 The completed Book direction diagnosis is a frozen-state observation. Reverse
 trial directions remain a separate unapproved experiment; preserve the default
 algorithm and the negative [relative-area result](evidence/BOOK_RELATIVE_AREA_EXPERIMENT.md).
 
-PR #106 corrects terminal status while preserving termination and meshing policy.
-Repair the separately reproduced temporary-cache retention using exclusive
-ownership for fresh serial UV faces/endpoints. Preserve native constructors,
-copied UV/ID order, area accumulation, mutable target sizes and explicit normal/
-false-result cleanup points; keep the cache alive through AFT unwinding.
-Require complete measured allocation-denial sweeps, unchanged adopted prefixes,
-nonempty allocation-free teardown, actual AFT borrowing, original CRT retention,
-working instrument/oracle controls and exact-head/main Eistute/Book regression.
-See [evidence and limits](evidence/DOMAIN_UV_CACHE.md). No scientific-policy
-change, caller rollback or complete-process qualification follows.
+PR #107 qualifies bounded temporary-cache ownership. Repair the separately
+reproduced caller predecessor retention during regeneration. Own each fresh
+SubMesh until consuming MeshAdaptive insertion, preserving selection/discard
+points, all formulas/conditions, structural-stat lookups/aliasing and publication
+order. Require directed coverage of all three optional regeneration branches,
+failed insertion, independent release/oracle controls, actual Eistute predecessor
+release and exact-head/main scientific regression. See [evidence and remaining
+limits](evidence/DOMAIN_CANDIDATE_OWNERSHIP.md).
 
-Next measure caller regeneration-candidate ownership before replacing terminal
-exit with propagated exceptions. Stage 3 stays open; earlier active items below
-are historical.
+Next characterize terminal exception propagation and outer observer/state cleanup
+before replacing process exit. This repair does not establish orchestration
+rollback, retry safety or whole-process qualification. Stage 3 stays open;
+earlier active items below are historical.
 
 ## Active item: attempt metric export correction
 

@@ -619,7 +619,7 @@
         },
         {
           "path": "src/generator/generator_adaptive.cpp",
-          "anchor": "GeneratorAdaptive::MeshQualityStats GeneratorAdaptive::ComputeMeshQualityStats("
+            "anchor": "GeneratorAdaptive::MeshQualityStats\nGeneratorAdaptive::ComputeMeshQualityStats("
         }
       ]
     },
