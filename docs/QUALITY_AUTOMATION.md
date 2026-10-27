@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Selected candidate structural snapshots
+
+GNU serial adds `application.candidate_snapshots` (63 CTest entries).
+Forty actual caller cases require independent/reused-cache selection, paired
+scalar/region exports, sequential replacement, epsilon/dense-curve fallback,
+missing statistics and native owner cleanup when long-status copying fails.
+Eight checker controls bring Python tooling to 156. Existing thirty-two ownership
+cases now require improved repair selection even with a reused slot; original
+alias rejection is retained as negative evidence. Require original, alias-first
+and export-cache mutation rejection, full caller/fixture/header analysis and
+source-preservation checks. Article gates preserve meshes/boundaries/decisions
+while independently explaining the four changed artifacts and six derived-value
+differences; the original strict comparison still fails and is not relabeled.
+See [delivery scope](evidence/CANDIDATE_STRUCTURAL_SNAPSHOTS.md).
+
 ## Typed serial terminal domain failure
 
 GNU serial builds add `application.typed_domain_failure` (62 CTest entries).

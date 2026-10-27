@@ -22,6 +22,7 @@
 #include <cmath>
 #include <limits>
 #include <numeric>
+#include <optional>
 #include <map>
 #include <filesystem>
 #include <system_error>
@@ -3055,11 +3056,20 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     if (i < current_patch_adaptation_.size()) {
       current_patch_adaptation_[i].applied_patch_h = target_patch_h;
     }
+    struct DomainCandidate {
+      std::unique_ptr<SubMesh> mesh;
+      std::optional<Adapter::DomainStructuralStats> structural;
+    };
     auto generate_patch_mesh = [&](double local_factor, double local_h, int local_depth,
                                    int local_retry) {
-      return std::unique_ptr<SubMesh>(
-          adapter_.AdaptDomain(p, this->id_managers_[0].get(), local_factor, local_h, local_depth,
-                               ADAPTIVE_CURRENT_STEP, static_cast<int>(i), local_retry));
+      DomainCandidate candidate;
+      candidate.mesh.reset(adapter_.AdaptDomain(p, this->id_managers_[0].get(), local_factor,
+                                                local_h, local_depth, ADAPTIVE_CURRENT_STEP,
+                                                static_cast<int>(i), local_retry));
+      if (const auto* structural = adapter_.GetPatchStructuralStats(static_cast<int>(i))) {
+        candidate.structural = *structural;
+      }
+      return candidate;
     };
     double gen_factor = domain_factor;
     double gen_h = target_patch_h;
@@ -3091,7 +3101,8 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
                      : 0.88;
       }
     }
-    auto sub_mesh = generate_patch_mesh(gen_factor, gen_h, gen_depth_cap, ADAPTIVE_CURRENT_RETRY);
+    auto candidate = generate_patch_mesh(gen_factor, gen_h, gen_depth_cap, ADAPTIVE_CURRENT_RETRY);
+    auto& sub_mesh = candidate.mesh;
     // Guard extra para patch curvo prioritário em stable tardio:
     // evita queda brusca de elementos entre candidatos rejeitados
     // (ex.: 40 -> 22), forçando uma nova tentativa mais refinada.
@@ -3110,11 +3121,12 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         const double densify_scale =
             ClampValue(std::sqrt(std::max(1.0, face_ratio)) * 0.95, 1.05, 2.40);
         const double densify_h = (gen_h > 0.0) ? std::max(1.0e-6, gen_h / densify_scale) : gen_h;
-        auto denser_mesh = generate_patch_mesh(gen_factor, densify_h, gen_depth_cap, 2);
+        auto denser_candidate = generate_patch_mesh(gen_factor, densify_h, gen_depth_cap, 2);
+        auto& denser_mesh = denser_candidate.mesh;
         if (denser_mesh != nullptr &&
             denser_mesh->GetNumberElements() >= sub_mesh->GetNumberElements()) {
           sub_mesh.reset();
-          sub_mesh = std::move(denser_mesh);
+          candidate = std::move(denser_candidate);
           gen_h = densify_h;
         } else if (denser_mesh != nullptr) {
           denser_mesh.reset();
@@ -3122,7 +3134,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       }
     }
     const Adapter::DomainStructuralStats* structural_first =
-        adapter_.GetPatchStructuralStats(static_cast<int>(i));
+        candidate.structural ? &*candidate.structural : nullptr;
     if (current_policy_.stable_mode && stable_consecutive_reject_count_ > 0U && this->step_ >= 4 &&
         top_priority_curve_patch && structural_first != nullptr &&
         structural_first->generation_status == "degenerate_needs_retry") {
@@ -3131,10 +3143,11 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       const double aggressive_h = (gen_h > 0.0) ? std::max(1.0e-6, gen_h * 0.58) : gen_h;
       const int aggressive_depth =
           (gen_depth_cap >= 0) ? std::max(0, gen_depth_cap - 1) : gen_depth_cap;
-      auto aggressive_mesh =
+      auto aggressive_candidate =
           generate_patch_mesh(aggressive_factor, aggressive_h, aggressive_depth, 3);
+      auto& aggressive_mesh = aggressive_candidate.mesh;
       const Adapter::DomainStructuralStats* structural_aggressive =
-          adapter_.GetPatchStructuralStats(static_cast<int>(i));
+          aggressive_candidate.structural ? &*aggressive_candidate.structural : nullptr;
       bool keep_aggressive = (aggressive_mesh != nullptr && aggressive_mesh->GetNumberElements() >=
                                                                 sub_mesh->GetNumberElements());
       if (structural_aggressive != nullptr &&
@@ -3143,9 +3156,9 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       }
       if (keep_aggressive && aggressive_mesh != nullptr) {
         sub_mesh.reset();
-        sub_mesh = std::move(aggressive_mesh);
+        candidate = std::move(aggressive_candidate);
         patch_generation_mode = "curve_transition_recovered";
-        structural_first = structural_aggressive;
+        structural_first = candidate.structural ? &*candidate.structural : nullptr;
       } else if (aggressive_mesh != nullptr) {
         aggressive_mesh.reset();
       }
@@ -3202,9 +3215,11 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
                                         : (transition_bad ? 6 : 5))
                 : ((gen_depth_cap >= 0) ? std::max(0, gen_depth_cap - (transition_bad ? 1 : 0))
                                         : (transition_bad ? 3 : 4));
-        auto repaired_mesh = generate_patch_mesh(rebalance_factor, rebalance_h, rebalance_depth, 1);
+        auto repaired_candidate =
+            generate_patch_mesh(rebalance_factor, rebalance_h, rebalance_depth, 1);
+        auto& repaired_mesh = repaired_candidate.mesh;
         const Adapter::DomainStructuralStats* structural_repaired =
-            adapter_.GetPatchStructuralStats(static_cast<int>(i));
+            repaired_candidate.structural ? &*repaired_candidate.structural : nullptr;
         bool keep_repaired = false;
         if (structural_repaired != nullptr) {
           const double first_score =
@@ -3241,7 +3256,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
           if (sub_mesh != nullptr) {
             sub_mesh.reset();
           }
-          sub_mesh = std::move(repaired_mesh);
+          candidate = std::move(repaired_candidate);
           patch_generation_mode = "curve_transition_repaired";
         } else if (repaired_mesh != nullptr) {
           repaired_mesh.reset();
@@ -3253,7 +3268,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
           sub_mesh ? static_cast<double>(sub_mesh->GetNumberElements()) : 0.0;
       current_patch_adaptation_[i].patch_generation_mode = patch_generation_mode;
       const Adapter::DomainStructuralStats* structural =
-          adapter_.GetPatchStructuralStats(static_cast<int>(i));
+          candidate.structural ? &*candidate.structural : nullptr;
       if (structural != nullptr) {
         current_patch_adaptation_[i].transition_floor = structural->transition_floor;
         current_patch_adaptation_[i].transition_underresolved =

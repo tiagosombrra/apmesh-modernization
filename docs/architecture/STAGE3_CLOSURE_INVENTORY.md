@@ -1,5 +1,10 @@
 # Stage 3 closure inventory
 
+Selected candidate snapshots pair local mesh ownership with structural values;
+comparison/export and copy-failure gates are recorded in
+[the bounded repair evidence](../evidence/CANDIDATE_STRUCTURAL_SNAPSHOTS.md).
+Outer rejection metadata restoration remains unqualified; Stage 3 stays open.
+
 This is the finite audit queue for lifecycle closure, not a claim that every
 static hazard is a reproduced runtime defect. PROJECT_STATE.md names the single
 active item. Qualified slices retain their measured scope and are not reopened

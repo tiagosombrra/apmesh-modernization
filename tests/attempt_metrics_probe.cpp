@@ -102,6 +102,7 @@ void WriteCurvatureControl(const std::filesystem::path& output, bool curved) {
 
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
 #include "domain_candidate_fixture.h"
+#include "candidate_snapshot_fixture.h"
 #include "domain_observer_fixture.h"
 #include "typed_domain_failure_fixture.h"
 namespace {
@@ -128,6 +129,8 @@ extern "C" bool WrappedDomainExecute(AdvancingFront* front, const FaceList& prev
 
 int main(int argc, char* argv[]) {
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
+  if (argc == 2 && std::string(argv[1]) == "--candidate-snapshot-contracts")
+    return DomainCandidateFixture::RunSnapshots();
   if (argc == 2 && std::string(argv[1]) == "--typed-domain-contracts")
     return typed_domain_test::RunTypes();
   if (argc == 4 && std::string(argv[1]) == "--typed-domain-library-config")
