@@ -43,6 +43,12 @@ domain exception boundary, preserving foreign/null links and normal publication.
 It does not restore accepted state, repair unmatched expired observations,
 change terminal exit or qualify loader/curve/SaveMesh failure boundaries and retry.
 
+The [typed serial terminal failure repair](../evidence/TYPED_DOMAIN_FAILURE.md)
+propagates an owning domain error after unchanged attempts and handles it in the
+CLI with the existing status 1/context. It activates the previously qualified
+bounded cleanup for this false-result path. Generic error status/classification,
+MPI/OpenMP, unmatched expired observations and broader recovery remain separate.
+
 The [Model root audit](../evidence/STAGE3_MODEL_ROOT_AUDIT.md) records original
 copy/rvalue and failed-append reproductions. It is retained historical evidence;
 bounded Model repair qualification is recorded separately in

@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Typed serial terminal domain failure
+
+GNU serial builds add `application.typed_domain_failure` (62 CTest entries).
+`tests/typed_domain_failure_case.py` requires nine payload/identity/move-lifetime
+cases, a working allocation-during-unwind denial control, two real library
+false-result paths and three actual CLI paths (Book patch 0, Eistute patches
+0/1). Require unchanged attempt counts, context, one diagnostic, status 1,
+cleared owned links/samples and no additional global operator-new attempt during
+unwinding. Failed CLI prefixes must be rejected by the generation verifier.
+Eight checker controls bring Python tooling to 148. Original exit must fail all
+five integration cases; the prior generic catch must be rejected independently
+with the real CLI observer. Require full Adapter/main/fixture and test-header
+tidy, explicit canonical formatting with source preservation, inventory/staged
+gates and fresh exact-head/main article comparison. See [scope and limitations](evidence/TYPED_DOMAIN_FAILURE.md).
+
 ## Serial domain failure observers
 
 GNU serial builds add `application.domain_observer_cleanup` (61 CTest entries).
