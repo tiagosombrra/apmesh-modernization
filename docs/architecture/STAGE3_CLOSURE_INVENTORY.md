@@ -1,5 +1,11 @@
 # Stage 3 closure inventory
 
+The serial stopping repair binds only loop-entry guards to committed global
+history and restored accepted local errors. [Delivery gates and limits](../evidence/ACCEPTED_ERROR_STOPPING.md)
+separate rejected-error controls from accepted-error controls and frozen science.
+Final attempted-error/metadata reporting, broader rollback/provisional progress,
+resume and process-wide/parallel instruments remain separate; Stage 3 stays open.
+
 The explicit serial accepted-root repair separates report retention from the
 root used for retries and rejection restoration. Scope and exact delivery gates
 are in [the repair evidence](../evidence/ACCEPTED_MESH_ROOT.md). Attempted-error
