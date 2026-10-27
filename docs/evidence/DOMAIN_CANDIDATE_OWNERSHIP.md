@@ -67,6 +67,13 @@ successful gates. Formatting wraps the C15 source signature; its literal anchor
 is updated to the exact newline-bearing signature without changing its contract.
 Compilation and numerical regression supply independent checks.
 
+The first exact-head full build rejects a line-sensitive evaluator-extraction
+boundary after return-type wrapping. The extractor now requires one exact typed
+signature with whitespace allowed between return type and method name, retaining
+the existing evaluator-end check. Four controls verify identical original/
+wrapped extraction and reject missing, ambiguous, misplaced or damaged bounds.
+The failed head report/build log is retained; it is not an integration result.
+
 The initial actual Eistute allocation-denial observation now releases the
 predecessor object, all 937 nodes and all 1796 triangles. The immutable original
 observer is reused with current production objects. Reports remain under
@@ -75,7 +82,7 @@ observer is reused with current production objects. Reports remain under
 ## Exact delivery gates and remaining work
 
 Require exact-head/main C++17 builds, 60/60 CTest with zero failures/skips and
-128 Python controls; all 32 directed native cases plus working release control;
+132 Python controls; all 32 directed native cases plus working release control;
 actual Eistute exception and allocation-denial predecessor release; full caller/
 fixture tidy/format and lexical, whitespace, inventory and staged gates. Fresh
 Eistute/Book comparisons must preserve all nine accepted/rejected states,
@@ -85,7 +92,7 @@ revision/tree/executable/input/log identities and remote refs/open PR/checks in
 the delivery PR. Initial observations alone do not authorize integration.
 
 Qualification is GNU serial exact-address observation. Prior isolated component
-batteries retain their unchanged production inputs; no new full ASan/CRT,
+qualification remains bounded to its recorded inputs/revisions; no new full ASan/CRT,
 whole-process, parallel, LSan or UBSan qualification is claimed. Stage 3 remains
 open and the qualified memory-slice count is unchanged. The reverse-direction
 experiment remains unapproved and unexecuted. Next single work: characterize
