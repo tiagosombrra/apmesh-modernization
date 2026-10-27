@@ -1,24 +1,25 @@
 # Technique-preserving modernization plan
 
-## Active item: serial domain failure observers
+## Active item: typed serial terminal domain failure
 
 The completed Book direction diagnosis is a frozen-state observation. Reverse
 trial directions remain a separate unapproved experiment; preserve the default
 algorithm and the negative [relative-area result](evidence/BOOK_RELATIVE_AREA_EXPERIMENT.md).
 
-PRs #107/#108 qualify bounded temporary-cache and pending caller ownership. At
-the serial domain adaptation call boundary, detach forward Patch observations
-into the generator's live active and retained SubMesh owners on exception, then
-rethrow the original object. Preserve null/foreign links, owners, metadata/IDs,
-all numerical expressions and normal publication. Require nonempty no-allocation
-alias/prefix controls, original-contract rejection, actual Book/Eistute failures
-and exact-head/main regression. See [evidence and limits](evidence/DOMAIN_FAILURE_OBSERVERS.md).
+PRs #107-#109 qualify bounded temporary-cache, pending caller and forward-observer
+cleanup. Replace terminal exit in the serial Adapter with an owning typed error,
+after the existing attempts. Preserve status 1 and step/patch/retry/status context
+in a dedicated real CLI catch. Require owned payload lifetime, nonallocating
+move/propagation, real false-result cleanup, original-exit and generic-catch
+rejection, failed-prefix rejection and exact-head/main scientific regression.
+See [evidence and limits](evidence/TYPED_DOMAIN_FAILURE.md). MPI/OpenMP terminal
+paths and unrelated CLI error handling remain unchanged.
 
-After delivery, define typed terminal domain failure propagation and real CLI
-handling with existing status 1 and exact context, after unchanged attempts.
-Keep exit unchanged in this repair. Do not imply rollback, resumed execution,
-broader recovery or full-process qualification. Stage 3 stays open; earlier
-active items below are historical.
+After delivery, audit structural-statistic snapshot independence in original/
+regenerated candidate comparisons with frozen inputs and current criteria.
+Do not alter selection or claim quality improvement before a separate measured
+repair/proposal. No rollback, resume, broader recovery or whole-process claim
+follows. Stage 3 stays open; earlier active items below are historical.
 
 ## Active item: attempt metric export correction
 

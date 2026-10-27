@@ -1,6 +1,8 @@
 #include <algorithm>
+#include "adapter/domain_generation_error.h"
 #include <atomic>
 #include <cctype>
+#include <cstdlib>
 #include <fstream>
 #include <iomanip>
 #include <stdexcept>
@@ -39,19 +41,19 @@ double RATIO_AFT = 1.0;
 double SMOOTHING_LAPLACIAN_NUMBER = 7;
 // fator usado na suavização laplaciana
 double SMOOTHING_LAPLACIAN_FACTOR = 0.5;
-double EPSYLON = 0.0000001;  // trashrold
-double MIN_IMPROVEMENT = 0.01;  // 1% de ganho mínimo por iteração
-int PATIENCE = 2;               // iterações consecutivas sem ganho mínimo
-double TOL_LOCAL = 0.0000001;   // limiar local para refinamento por submalha
-double ADAPTATION_RELAXATION = 1.0;  // 1.0 = sem amortecimento
-double ADAPTATION_MAX_DELTA = 0.20;  // variacao maxima do fator por passo
-int ADAPTIVE_RETRY_COUNT = 0;  // retry desabilitado
-double ADAPTIVE_RETRY_SHRINK = 1.0;  // sem efeito com retry desabilitado
-double MAX_RETRY_ELEMENT_GROWTH_FACTOR = 0.0;  // 0 desabilita
-double MAX_RETRY_ELEMENT_GROWTH_ABS = 0.0;  // 0 desabilita
-double ERROR_FLOOR = 0.0;  // piso assintotico opcional do erro global
-double MIN_ERROR_DROP_ABS = 0.0;  // queda absoluta minima aceitavel
-double MIN_ERROR_DROP_PER_ELEMENT = 0.0;  // eficiencia minima de queda por elemento
+double EPSYLON = 0.0000001;                   // trashrold
+double MIN_IMPROVEMENT = 0.01;                // 1% de ganho mínimo por iteração
+int PATIENCE = 2;                             // iterações consecutivas sem ganho mínimo
+double TOL_LOCAL = 0.0000001;                 // limiar local para refinamento por submalha
+double ADAPTATION_RELAXATION = 1.0;           // 1.0 = sem amortecimento
+double ADAPTATION_MAX_DELTA = 0.20;           // variacao maxima do fator por passo
+int ADAPTIVE_RETRY_COUNT = 0;                 // retry desabilitado
+double ADAPTIVE_RETRY_SHRINK = 1.0;           // sem efeito com retry desabilitado
+double MAX_RETRY_ELEMENT_GROWTH_FACTOR = 0.0; // 0 desabilita
+double MAX_RETRY_ELEMENT_GROWTH_ABS = 0.0;    // 0 desabilita
+double ERROR_FLOOR = 0.0;                     // piso assintotico opcional do erro global
+double MIN_ERROR_DROP_ABS = 0.0;              // queda absoluta minima aceitavel
+double MIN_ERROR_DROP_PER_ELEMENT = 0.0;      // eficiencia minima de queda por elemento
 int PATCH_ADAPTATION_MODE = 0;
 double PATCH_FACTOR_MIN = 0.80;
 double PATCH_FACTOR_MAX = 1.12;
@@ -228,8 +230,8 @@ std::atomic<unsigned long long> FINDUV_TOTAL_CALLS{0};
 std::atomic<unsigned long long> FINDUV_IMAX_EXITS{0};
 double MAX_TIME = 999999999;
 int MAX_THREADS = 1;
-std::set<PointAdaptive *> LIST_ALL_POINTS_MODEL;
-std::set<SubMesh *> LIST_ALL_SUB_MESH_MODEL;
+std::set<PointAdaptive*> LIST_ALL_POINTS_MODEL;
+std::set<SubMesh*> LIST_ALL_SUB_MESH_MODEL;
 std::string NAME_MODEL;
 std::string INPUT_MODEL;
 std::string NUMBER_PROCESS;
@@ -275,8 +277,7 @@ struct RuntimeConfig {
   double quadtree_face_quality_threshold = QUADTREE_FACE_QUALITY_THRESHOLD;
   double quadtree_low_quality_h_factor = QUADTREE_LOW_QUALITY_H_FACTOR;
   int aft_local_postprocess_passes = AFT_LOCAL_POSTPROCESS_PASSES;
-  double aft_local_postprocess_quality_threshold =
-      AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD;
+  double aft_local_postprocess_quality_threshold = AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD;
   double aft_local_postprocess_blend = AFT_LOCAL_POSTPROCESS_BLEND;
   double step2_eligible_refinement_damp = 0.65;
   int patch_quadtree_depth_step1 = 5;
@@ -290,20 +291,17 @@ struct RuntimeConfig {
 
 std::string Trim(const std::string& value) {
   size_t start = 0;
-  while (start < value.size() &&
-         std::isspace(static_cast<unsigned char>(value[start])) != 0) {
+  while (start < value.size() && std::isspace(static_cast<unsigned char>(value[start])) != 0) {
     ++start;
   }
   size_t end = value.size();
-  while (end > start &&
-         std::isspace(static_cast<unsigned char>(value[end - 1])) != 0) {
+  while (end > start && std::isspace(static_cast<unsigned char>(value[end - 1])) != 0) {
     --end;
   }
   return value.substr(start, end - start);
 }
 
-std::unordered_map<std::string, std::string> ReadConfigFile(
-    const std::string& path) {
+std::unordered_map<std::string, std::string> ReadConfigFile(const std::string& path) {
   std::ifstream file(path.c_str());
   std::unordered_map<std::string, std::string> values;
   if (!file.is_open()) {
@@ -332,9 +330,8 @@ std::unordered_map<std::string, std::string> ReadConfigFile(
   return values;
 }
 
-std::string GetConfigValue(
-    const std::unordered_map<std::string, std::string>& values,
-    const std::string& key, const std::string& fallback = "") {
+std::string GetConfigValue(const std::unordered_map<std::string, std::string>& values,
+                           const std::string& key, const std::string& fallback = "") {
   const auto it = values.find(key);
   return (it != values.end()) ? it->second : fallback;
 }
@@ -342,138 +339,108 @@ std::string GetConfigValue(
 RuntimeConfig LoadRuntimeConfig(const std::string& path) {
   const auto values = ReadConfigFile(path);
   RuntimeConfig config;
-  config.num_processes = std::max(
-      1, atoi(GetConfigValue(values, "NUM_PROCESSES", "1").c_str()));
-  config.num_threads =
-      std::max(1, atoi(GetConfigValue(values, "NUM_THREADS", "1").c_str()));
+  config.num_processes = std::max(1, atoi(GetConfigValue(values, "NUM_PROCESSES", "1").c_str()));
+  config.num_threads = std::max(1, atoi(GetConfigValue(values, "NUM_THREADS", "1").c_str()));
   config.input_model = GetConfigValue(values, "INPUT_MODEL");
   config.write_mode = GetConfigValue(values, "WRITE_MODE", "h");
   config.output_prefix = GetConfigValue(values, "OUTPUT_PREFIX");
   config.use_template = GetConfigValue(values, "USE_TEMPLATE", "y");
-  config.adaptive_mode = GetConfigValue(
-      values, "ADAPTIVE_MODE", "adaptive_stable");
-  config.adaptive_intensity = atof(
-      GetConfigValue(values, "ADAPTIVE_INTENSITY", "0.45").c_str());
-  config.adaptive_quality_priority = atof(
-      GetConfigValue(values, "ADAPTIVE_QUALITY_PRIORITY", "0.75").c_str());
+  config.adaptive_mode = GetConfigValue(values, "ADAPTIVE_MODE", "adaptive_stable");
+  config.adaptive_intensity = atof(GetConfigValue(values, "ADAPTIVE_INTENSITY", "0.45").c_str());
+  config.adaptive_quality_priority =
+      atof(GetConfigValue(values, "ADAPTIVE_QUALITY_PRIORITY", "0.75").c_str());
   const std::string max_iterations = GetConfigValue(
-      values, "ADAPTIVE_MAX_ITERATIONS",
-      GetConfigValue(values, "ADAPTIVE_MAX_STEPS", "6"));
+      values, "ADAPTIVE_MAX_ITERATIONS", GetConfigValue(values, "ADAPTIVE_MAX_STEPS", "6"));
   config.adaptive_max_iterations = std::max(2, atoi(max_iterations.c_str()));
-  config.adaptive_target_growth = atof(
-      GetConfigValue(values, "ADAPTIVE_TARGET_GROWTH", "1.6").c_str());
+  config.adaptive_target_growth =
+      atof(GetConfigValue(values, "ADAPTIVE_TARGET_GROWTH", "1.6").c_str());
   config.epsylon = atof(GetConfigValue(values, "EPSYLON", "0.0000001").c_str());
-  config.min_improvement =
-      atof(GetConfigValue(values, "MIN_IMPROVEMENT", "0.01").c_str());
-  config.patience =
-      std::max(1, atoi(GetConfigValue(values, "PATIENCE", "2").c_str()));
+  config.min_improvement = atof(GetConfigValue(values, "MIN_IMPROVEMENT", "0.01").c_str());
+  config.patience = std::max(1, atoi(GetConfigValue(values, "PATIENCE", "2").c_str()));
   config.tol_local = atof(GetConfigValue(values, "TOL_LOCAL", "0.0000001").c_str());
   config.smoothing_laplacian_number =
       atof(GetConfigValue(values, "SMOOTHING_LAPLACIAN_NUMBER", "7").c_str());
   config.smoothing_laplacian_factor =
       atof(GetConfigValue(values, "SMOOTHING_LAPLACIAN_FACTOR", "0.5").c_str());
-  config.adaptation_relaxation = atof(
-      GetConfigValue(values, "ADAPTATION_RELAXATION", "1.0").c_str());
-  config.adaptation_max_delta = atof(
-      GetConfigValue(values, "ADAPTATION_MAX_DELTA", "0.10").c_str());
-  config.adaptive_retry_count = std::max(
-      0, atoi(GetConfigValue(values, "ADAPTIVE_RETRY_COUNT", "0").c_str()));
-  config.adaptive_retry_shrink = atof(
-      GetConfigValue(values, "ADAPTIVE_RETRY_SHRINK", "1.0").c_str());
-  config.patch_factor_min = atof(
-      GetConfigValue(values, "PATCH_FACTOR_MIN", "0.80").c_str());
-  config.patch_factor_max = atof(
-      GetConfigValue(values, "PATCH_FACTOR_MAX", "1.12").c_str());
-  config.patch_refinement_strength = atof(
-      GetConfigValue(values, "PATCH_REFINEMENT_STRENGTH", "0.22").c_str());
-  config.patch_coarsening_strength = atof(
-      GetConfigValue(values, "PATCH_COARSENING_STRENGTH", "0.10").c_str());
-  config.curve_adaptation_policy = atoi(
-      GetConfigValue(values, "CURVE_ADAPTATION_POLICY", "0").c_str());
-  config.curve_adaptation_blend = atof(
-      GetConfigValue(values, "CURVE_ADAPTATION_BLEND", "0.75").c_str());
-  config.curve_factor_sensitivity = atof(
-      GetConfigValue(values, "CURVE_FACTOR_SENSITIVITY", "1.0").c_str());
-  config.curve_point_budget_mode = atoi(
-      GetConfigValue(values, "CURVE_POINT_BUDGET_MODE", "0").c_str());
-  config.curve_point_growth_step1 = atof(
-      GetConfigValue(values, "CURVE_POINT_GROWTH_STEP1", "2.5").c_str());
-  config.curve_point_growth_stepn = atof(
-      GetConfigValue(values, "CURVE_POINT_GROWTH_STEPN", "1.4").c_str());
-  config.curve_point_budget_blend = atof(
-      GetConfigValue(values, "CURVE_POINT_BUDGET_BLEND", "0.7").c_str());
-  config.curve_point_min = std::max(
-      2, atoi(GetConfigValue(values, "CURVE_POINT_MIN", "2").c_str()));
-  config.curve_point_max = std::max(
-      config.curve_point_min,
-      atoi(GetConfigValue(values, "CURVE_POINT_MAX", "128").c_str()));
-  config.quadtree_face_quality_threshold = atof(
-      GetConfigValue(values, "QUADTREE_FACE_QUALITY_THRESHOLD", "0.0").c_str());
-  config.quadtree_low_quality_h_factor = atof(
-      GetConfigValue(values, "QUADTREE_LOW_QUALITY_H_FACTOR", "1.0").c_str());
-  config.aft_local_postprocess_passes = std::max(
-      0, atoi(GetConfigValue(values, "AFT_LOCAL_POSTPROCESS_PASSES", "0").c_str()));
-  config.aft_local_postprocess_quality_threshold = atof(
-      GetConfigValue(values, "AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD", "0.35").c_str());
-  config.aft_local_postprocess_blend = atof(
-      GetConfigValue(values, "AFT_LOCAL_POSTPROCESS_BLEND", "0.35").c_str());
-  config.step2_eligible_refinement_damp = atof(
-      GetConfigValue(values, "STEP2_ELIGIBLE_REFINEMENT_DAMP", "0.65").c_str());
+  config.adaptation_relaxation =
+      atof(GetConfigValue(values, "ADAPTATION_RELAXATION", "1.0").c_str());
+  config.adaptation_max_delta =
+      atof(GetConfigValue(values, "ADAPTATION_MAX_DELTA", "0.10").c_str());
+  config.adaptive_retry_count =
+      std::max(0, atoi(GetConfigValue(values, "ADAPTIVE_RETRY_COUNT", "0").c_str()));
+  config.adaptive_retry_shrink =
+      atof(GetConfigValue(values, "ADAPTIVE_RETRY_SHRINK", "1.0").c_str());
+  config.patch_factor_min = atof(GetConfigValue(values, "PATCH_FACTOR_MIN", "0.80").c_str());
+  config.patch_factor_max = atof(GetConfigValue(values, "PATCH_FACTOR_MAX", "1.12").c_str());
+  config.patch_refinement_strength =
+      atof(GetConfigValue(values, "PATCH_REFINEMENT_STRENGTH", "0.22").c_str());
+  config.patch_coarsening_strength =
+      atof(GetConfigValue(values, "PATCH_COARSENING_STRENGTH", "0.10").c_str());
+  config.curve_adaptation_policy =
+      atoi(GetConfigValue(values, "CURVE_ADAPTATION_POLICY", "0").c_str());
+  config.curve_adaptation_blend =
+      atof(GetConfigValue(values, "CURVE_ADAPTATION_BLEND", "0.75").c_str());
+  config.curve_factor_sensitivity =
+      atof(GetConfigValue(values, "CURVE_FACTOR_SENSITIVITY", "1.0").c_str());
+  config.curve_point_budget_mode =
+      atoi(GetConfigValue(values, "CURVE_POINT_BUDGET_MODE", "0").c_str());
+  config.curve_point_growth_step1 =
+      atof(GetConfigValue(values, "CURVE_POINT_GROWTH_STEP1", "2.5").c_str());
+  config.curve_point_growth_stepn =
+      atof(GetConfigValue(values, "CURVE_POINT_GROWTH_STEPN", "1.4").c_str());
+  config.curve_point_budget_blend =
+      atof(GetConfigValue(values, "CURVE_POINT_BUDGET_BLEND", "0.7").c_str());
+  config.curve_point_min =
+      std::max(2, atoi(GetConfigValue(values, "CURVE_POINT_MIN", "2").c_str()));
+  config.curve_point_max = std::max(config.curve_point_min,
+                                    atoi(GetConfigValue(values, "CURVE_POINT_MAX", "128").c_str()));
+  config.quadtree_face_quality_threshold =
+      atof(GetConfigValue(values, "QUADTREE_FACE_QUALITY_THRESHOLD", "0.0").c_str());
+  config.quadtree_low_quality_h_factor =
+      atof(GetConfigValue(values, "QUADTREE_LOW_QUALITY_H_FACTOR", "1.0").c_str());
+  config.aft_local_postprocess_passes =
+      std::max(0, atoi(GetConfigValue(values, "AFT_LOCAL_POSTPROCESS_PASSES", "0").c_str()));
+  config.aft_local_postprocess_quality_threshold =
+      atof(GetConfigValue(values, "AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD", "0.35").c_str());
+  config.aft_local_postprocess_blend =
+      atof(GetConfigValue(values, "AFT_LOCAL_POSTPROCESS_BLEND", "0.35").c_str());
+  config.step2_eligible_refinement_damp =
+      atof(GetConfigValue(values, "STEP2_ELIGIBLE_REFINEMENT_DAMP", "0.65").c_str());
   config.patch_quadtree_depth_step1 = std::max(
-      0, std::min(32, atoi(
-              GetConfigValue(values, "PATCH_QUADTREE_DEPTH_STEP1", "5").c_str())));
+      0, std::min(32, atoi(GetConfigValue(values, "PATCH_QUADTREE_DEPTH_STEP1", "5").c_str())));
   config.patch_quadtree_depth_stepn = std::max(
-      0, std::min(32, atoi(
-              GetConfigValue(values, "PATCH_QUADTREE_DEPTH_STEPN", "4").c_str())));
-  config.patch_quadtree_min_h_scale = atof(
-      GetConfigValue(values, "PATCH_QUADTREE_MIN_H_SCALE", "1.0").c_str());
+      0, std::min(32, atoi(GetConfigValue(values, "PATCH_QUADTREE_DEPTH_STEPN", "4").c_str())));
+  config.patch_quadtree_min_h_scale =
+      atof(GetConfigValue(values, "PATCH_QUADTREE_MIN_H_SCALE", "1.0").c_str());
   config.adapter_resolve_negative_quadtree_depth =
-      atoi(GetConfigValue(values, "ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH", "1")
-               .c_str()) != 0
-          ? 1
-          : 0;
+      atoi(GetConfigValue(values, "ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH", "1").c_str()) != 0 ? 1
+                                                                                                : 0;
   config.enable_shared_curve_sync =
-      atoi(GetConfigValue(values, "ENABLE_SHARED_CURVE_SYNC", "1").c_str()) != 0
-          ? 1
-          : 0;
+      atoi(GetConfigValue(values, "ENABLE_SHARED_CURVE_SYNC", "1").c_str()) != 0 ? 1 : 0;
   config.enable_hybrid_reconstruction =
-      atoi(GetConfigValue(values, "ENABLE_HYBRID_RECONSTRUCTION", "1").c_str()) != 0
-          ? 1
-          : 0;
+      atoi(GetConfigValue(values, "ENABLE_HYBRID_RECONSTRUCTION", "1").c_str()) != 0 ? 1 : 0;
   config.write_runtime_summary =
-      atoi(GetConfigValue(values, "WRITE_RUNTIME_SUMMARY", "1").c_str()) != 0
-          ? 1
-          : 0;
+      atoi(GetConfigValue(values, "WRITE_RUNTIME_SUMMARY", "1").c_str()) != 0 ? 1 : 0;
 
   if (config.input_model.empty() || config.output_prefix.empty()) {
-    throw std::runtime_error(
-        "INPUT_MODEL and OUTPUT_PREFIX are required");
+    throw std::runtime_error("INPUT_MODEL and OUTPUT_PREFIX are required");
   }
 
-  config.adaptive_intensity =
-      std::max(0.0, std::min(1.0, config.adaptive_intensity));
-  config.adaptive_quality_priority =
-      std::max(0.0, std::min(1.0, config.adaptive_quality_priority));
+  config.adaptive_intensity = std::max(0.0, std::min(1.0, config.adaptive_intensity));
+  config.adaptive_quality_priority = std::max(0.0, std::min(1.0, config.adaptive_quality_priority));
   config.adaptive_target_growth = std::max(1.0, config.adaptive_target_growth);
-  config.adaptation_relaxation =
-      std::max(0.0, std::min(1.0, config.adaptation_relaxation));
+  config.adaptation_relaxation = std::max(0.0, std::min(1.0, config.adaptation_relaxation));
   config.adaptation_max_delta = std::max(0.0, config.adaptation_max_delta);
-  config.adaptive_retry_shrink =
-      std::max(0.05, std::min(1.0, config.adaptive_retry_shrink));
+  config.adaptive_retry_shrink = std::max(0.05, std::min(1.0, config.adaptive_retry_shrink));
   config.patch_factor_min = std::max(0.1, config.patch_factor_min);
-  config.patch_factor_max =
-      std::max(config.patch_factor_min, config.patch_factor_max);
-  config.patch_refinement_strength =
-      std::max(0.0, std::min(1.0, config.patch_refinement_strength));
-  config.patch_coarsening_strength =
-      std::max(0.0, std::min(1.0, config.patch_coarsening_strength));
-  config.curve_adaptation_blend =
-      std::max(0.0, std::min(1.0, config.curve_adaptation_blend));
+  config.patch_factor_max = std::max(config.patch_factor_min, config.patch_factor_max);
+  config.patch_refinement_strength = std::max(0.0, std::min(1.0, config.patch_refinement_strength));
+  config.patch_coarsening_strength = std::max(0.0, std::min(1.0, config.patch_coarsening_strength));
+  config.curve_adaptation_blend = std::max(0.0, std::min(1.0, config.curve_adaptation_blend));
   config.curve_factor_sensitivity = std::max(0.0, config.curve_factor_sensitivity);
   config.curve_point_growth_step1 = std::max(1.0, config.curve_point_growth_step1);
   config.curve_point_growth_stepn = std::max(1.0, config.curve_point_growth_stepn);
-  config.curve_point_budget_blend =
-      std::max(0.0, std::min(1.0, config.curve_point_budget_blend));
+  config.curve_point_budget_blend = std::max(0.0, std::min(1.0, config.curve_point_budget_blend));
   config.quadtree_face_quality_threshold =
       std::max(0.0, std::min(1.0, config.quadtree_face_quality_threshold));
   config.quadtree_low_quality_h_factor =
@@ -498,8 +465,7 @@ void ApplyRuntimeConfig(const RuntimeConfig& config) {
   MIN_IMPROVEMENT = config.min_improvement;
   PATIENCE = config.patience;
   TOL_LOCAL = config.tol_local;
-  SMOOTHING_LAPLACIAN_NUMBER =
-      std::max(5.0, std::min(7.0, config.smoothing_laplacian_number));
+  SMOOTHING_LAPLACIAN_NUMBER = std::max(5.0, std::min(7.0, config.smoothing_laplacian_number));
   SMOOTHING_LAPLACIAN_FACTOR = config.smoothing_laplacian_factor;
   ADAPTATION_RELAXATION = config.adaptation_relaxation;
   ADAPTATION_MAX_DELTA = config.adaptation_max_delta;
@@ -526,15 +492,13 @@ void ApplyRuntimeConfig(const RuntimeConfig& config) {
   QUADTREE_FACE_QUALITY_THRESHOLD = config.quadtree_face_quality_threshold;
   QUADTREE_LOW_QUALITY_H_FACTOR = config.quadtree_low_quality_h_factor;
   AFT_LOCAL_POSTPROCESS_PASSES = config.aft_local_postprocess_passes;
-  AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD =
-      config.aft_local_postprocess_quality_threshold;
+  AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD = config.aft_local_postprocess_quality_threshold;
   AFT_LOCAL_POSTPROCESS_BLEND = config.aft_local_postprocess_blend;
   STEP2_ELIGIBLE_REFINEMENT_DAMP = config.step2_eligible_refinement_damp;
   PATCH_QUADTREE_DEPTH_STEP1 = config.patch_quadtree_depth_step1;
   PATCH_QUADTREE_DEPTH_STEPN = config.patch_quadtree_depth_stepn;
   PATCH_QUADTREE_MIN_H_SCALE = config.patch_quadtree_min_h_scale;
-  ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH =
-      config.adapter_resolve_negative_quadtree_depth;
+  ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH = config.adapter_resolve_negative_quadtree_depth;
   ENABLE_SHARED_CURVE_SYNC = config.enable_shared_curve_sync;
   ENABLE_HYBRID_RECONSTRUCTION = config.enable_hybrid_reconstruction;
   WRITE_RUNTIME_SUMMARY = config.write_runtime_summary;
@@ -542,7 +506,7 @@ void ApplyRuntimeConfig(const RuntimeConfig& config) {
     USE_TEMPLATE = "n";
   }
 }
-}  // namespace
+} // namespace
 
 // argv[0] = "executavel: ./apmesh",
 // argv[1] = "n° de process"
@@ -553,7 +517,7 @@ void ApplyRuntimeConfig(const RuntimeConfig& config) {
 // argv[5] = "NAME_MODEL"
 // argv[6] = "USE_TEMPLATE" -> y or n
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
 #if USE_MPI
   MPI_Init(&argc, &argv);
   MPI_Comm_size(MPI_COMM_WORLD, &SIZE_MPI);
@@ -562,8 +526,7 @@ int main(int argc, char **argv) {
 
 #endif
 
-  const bool config_mode =
-      (argc == 3 && std::string(argv[1]) == "--config");
+  const bool config_mode = (argc == 3 && std::string(argv[1]) == "--config");
   if (config_mode) {
     try {
       const RuntimeConfig config = LoadRuntimeConfig(argv[2]);
@@ -576,14 +539,13 @@ int main(int argc, char **argv) {
 #endif
 
       Timer timer(config.num_processes, config.num_threads, 12);
-      std::vector<std::string> synthetic_args_storage = {
-          argv[0],
-          std::to_string(config.num_processes),
-          std::to_string(config.num_threads),
-          config.input_model,
-          config.write_mode,
-          config.output_prefix,
-          config.use_template};
+      std::vector<std::string> synthetic_args_storage = {argv[0],
+                                                         std::to_string(config.num_processes),
+                                                         std::to_string(config.num_threads),
+                                                         config.input_model,
+                                                         config.write_mode,
+                                                         config.output_prefix,
+                                                         config.use_template};
       std::vector<char*> synthetic_args;
       synthetic_args.reserve(synthetic_args_storage.size() + 1);
       for (std::string& arg : synthetic_args_storage) {
@@ -592,10 +554,8 @@ int main(int argc, char **argv) {
       synthetic_args.push_back(nullptr);
 
       if (RANK_MPI == 0) {
-        cout << "Metodo por config: mode=" << ADAPTIVE_MODE
-             << ", input=" << INPUT_MODEL
-             << ", output=" << NAME_MODEL
-             << ", threads=" << config.num_threads << endl;
+        cout << "Metodo por config: mode=" << ADAPTIVE_MODE << ", input=" << INPUT_MODEL
+             << ", output=" << NAME_MODEL << ", threads=" << config.num_threads << endl;
       }
 
       GeneratorAdaptive generator;
@@ -609,14 +569,19 @@ int main(int argc, char **argv) {
         const unsigned long long fc = FINDUV_TOTAL_CALLS.load();
         const unsigned long long ix = FINDUV_IMAX_EXITS.load();
         if (fc > 0ULL) {
-          const double pct = 100.0 * static_cast<double>(ix) /
-                             static_cast<double>(fc);
-          std::cout << "[FindUV] chamadas=" << fc
-                    << " saidas_por_I_MAX=" << ix << " (" << std::fixed
-                    << std::setprecision(2) << pct << "%)" << std::endl;
+          const double pct = 100.0 * static_cast<double>(ix) / static_cast<double>(fc);
+          std::cout << "[FindUV] chamadas=" << fc << " saidas_por_I_MAX=" << ix << " ("
+                    << std::fixed << std::setprecision(2) << pct << "%)" << std::endl;
         }
       }
       return run_rc;
+#if !USE_MPI && !USE_OPENMP
+    } catch (const apmesh::adaptation::DomainGenerationError& error) {
+      std::cerr << "Error: " << error.what() << " (step=" << error.Step()
+                << ", patch=" << error.PatchIndex() << ", retry=" << error.RetryIndex()
+                << ", status=" << error.Status() << ")\n";
+      return EXIT_FAILURE;
+#endif
     } catch (const std::exception& ex) {
       std::cerr << "Error: input or configuration failure: " << ex.what() << std::endl;
       return -1;

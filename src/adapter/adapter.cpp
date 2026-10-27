@@ -2,6 +2,7 @@
 #include "data/curve/curve_orientation.h"
 #include "adapter/curve_samples.h"
 #include "adapter/domain_uv_cache.h"
+#include "adapter/domain_generation_error.h"
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
@@ -1512,10 +1513,15 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
   }
 
   if (!best.success) {
+#if USE_MPI || USE_OPENMP
     std::cerr << "Error: domain generation failed (step=" << adaptive_step
               << ", patch=" << patch_index << ", retry=" << retry_index
               << ", status=" << best.status << ")\n";
     std::exit(EXIT_FAILURE);
+#else
+    throw apmesh::adaptation::DomainGenerationError(adaptive_step, patch_index, retry_index,
+                                                    std::move(best.status));
+#endif
   }
   if (patch_index >= 0) {
     if (static_cast<size_t>(patch_index) >= latest_patch_structural_stats_.size()) {
