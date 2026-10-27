@@ -1,23 +1,25 @@
 # Project state
 
-## Serial temporary UV cache ownership
+## Serial domain candidate ownership
 
 The Book direction diagnosis is complete as a frozen-state observation; the
 reverse-direction experiment remains unapproved and unexecuted. Production
 criteria and the negative relative-area result remain unchanged.
 
-PRs #104/#105 qualify independent physical/UV report checks; PR #106 corrects
-serial terminal failure status. The next bounded repair owns fresh temporary UV
-faces and their copied vertices through construction, list adoption and exception
-unwinding. The owner precedes the AFT consumer and preserves explicit cleanup
-points and numerical ordering. Initial ASan/CRT controls pass; real Book injected
-exceptions release 152/152 cached faces versus the retained original 0/152.
-See [contract, observations and delivery gates](evidence/DOMAIN_UV_CACHE.md).
-Exact-head/main results belong to the delivery PR; initial checks alone do not
-authorize integration. Stage 3 remains open, without a new qualified memory-slice
-count or mesh-quality claim. Next single work after delivery: measure caller
-regeneration-candidate ownership before replacing terminal exit with propagated
-exceptions. Earlier active-item/next-work statements below are historical.
+PR #107 qualifies bounded temporary UV cache ownership on exact head/main.
+The next bounded repair owns serial caller candidates until consuming insertion,
+including denser, aggressive and structural regeneration. An original Eistute
+step-4 allocation denial retains a predecessor with 937 nodes / 1796 triangles;
+the initial repaired observation releases all of them. Thirty-two directed
+native cases cover selection, discard, exceptions, failed insertion and preserved
+structural-stat aliasing, with a working deliberate release control.
+See [contract, evidence and delivery gates](evidence/DOMAIN_CANDIDATE_OWNERSHIP.md).
+Exact-head/main results belong to the delivery PR. Initial observations alone do
+not authorize integration. Stage 3 remains open, without a new qualified
+memory-slice count or mesh-quality claim. Next single work after delivery:
+characterize terminal exception propagation and outer observer/state cleanup;
+do not replace process exit until its broader guarantees are measured. Earlier
+active-item/next-work statements below are historical.
 
 ## Book relative-area experiment: negative result
 
