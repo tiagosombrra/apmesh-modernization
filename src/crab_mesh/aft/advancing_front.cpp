@@ -363,6 +363,10 @@ bool AdvancingFront::interceptionTest(Edge* e, Vertex* candidate, bool inFaceTes
   if (inFaceTest && !intercepts) {
     // static Face f;
     Face f;
+    struct EndpointScope {
+      Face& face;
+      ~EndpointScope() noexcept { face.DetachVertices(); }
+    } endpoints{f};
     // cout << "inte teste" << endl;
 
     f.setVertices(e->getV1(), e->getV2(), candidate);

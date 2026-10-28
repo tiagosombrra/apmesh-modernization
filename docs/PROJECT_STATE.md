@@ -1,5 +1,21 @@
 # Project state
 
+## Interception Face borrower lifetime
+
+PR #115 is integrated and revalidated as main
+`f70f755a6aa466b6fe17d9e3bae7da7a5ef34f4b`: 65 CTest contracts, 194 Python
+tests, 137 native outcomes and nine frozen states/45 artifacts. The following
+diagnosis reproduced twenty cases where a failed local Face reset destroyed
+three caller-owned vertices, including eight actual ASan expired reads.
+
+The current local detach scope protects those borrowed vertices during normal
+return and unwinding while retaining the original setters and numerical code.
+[Scope and exact delivery gates](evidence/FRONT_FACE_BORROWERS.md) require live
+caller/adjacency checks at every denial, original failures and frozen science.
+Integration and main qualification remain pending. Stage 3 stays open without
+a quality gain or new full-stage claim. Next, after delivery, diagnose pending
+Face adoption in makeMesh. Earlier active items below are historical.
+
 ## Angular selection temporary ownership
 
 PR #114 is integrated and revalidated as main
