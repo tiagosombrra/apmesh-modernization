@@ -1,5 +1,14 @@
 # Local quality automation
 
+## Pending Face publication gate
+
+`application.face_adoption_ownership` checks actual native selection/publication,
+live endpoint owners/adjacency, committed prefixes and failed allocation timing.
+The delivery requires 67 CTest entries and 218 Python tests. Original retention,
+invalid-deleter and instrument controls remain separate from repaired behavior.
+[Scope and exact-head/main gates](evidence/PENDING_FRONT_FACES.md) define supported
+topology/prepared geometry and preserve the initial executor expectation failure.
+
 ## Interception Face borrower gate
 
 `application.front_face_borrowers` adds the native local borrower contract.

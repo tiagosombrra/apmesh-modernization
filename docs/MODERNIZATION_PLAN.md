@@ -1,5 +1,17 @@
 # Technique-preserving modernization plan
 
+## Active item: pending front Face ownership
+
+Own the result of the original Face new expression until mesh publication
+succeeds. Cleanup must detach borrowed endpoints before deleting the pending
+payload, without allocating or changing ID/queue/prefix timing. Classification:
+behavior-changing exception-safety/pending-ownership defect repair. Require actual
+native selection/publication in both topology queues and prepared rejected-queue
+geometry, complete denials, original failures and an invalid-deleter control.
+[Exact delivery gates](evidence/PENDING_FRONT_FACES.md) include frozen science,
+local regression/tooling and main revalidation. Stage 3 remains open. Next diagnose
+the geometry-phase front marker after integration; earlier active items are historical.
+
 ## Active item: interception Face borrower lifetime
 
 Give the temporary Face in interceptionTest a local nonallocating detach scope
