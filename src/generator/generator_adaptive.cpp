@@ -1117,6 +1117,9 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     this->id_managers_.resize(size_thread);
   }
 
+#if !USE_MPI && !USE_OPENMP
+  std::vector<int> accepted_step_ids;
+#endif
   stop_reason_ = "max_steps_reached";
   error_step_.clear();
   elements_step_.clear();
@@ -1283,6 +1286,9 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 #endif // USE_OPENMP
 
   this->error_step_.push_back(this->error_local_process_);
+#if !USE_MPI && !USE_OPENMP
+  accepted_step_ids.push_back(this->step_);
+#endif
   this->elements_step_.push_back(count_elements(mesh_.get()));
   this->gauss_nodes_step_.push_back(current_gauss_nodes_);
   this->mean_nodes_step_.push_back(current_mean_nodes_);
@@ -2306,6 +2312,9 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     }
 
     this->error_step_.push_back(this->error_local_process_);
+#if !USE_MPI && !USE_OPENMP
+    accepted_step_ids.push_back(this->step_);
+#endif
     this->elements_step_.push_back(current_elements);
     this->gauss_nodes_step_.push_back(current_gauss_nodes_);
     this->mean_nodes_step_.push_back(current_mean_nodes_);
@@ -2495,7 +2504,12 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   timer->PrintTime();
 
   for (unsigned int i = 0; i < error_step_.size(); ++i) {
-    cout << "Erro no step_ " << i << " = " << error_step_[i]
+#if USE_OPENMP
+    const auto reported_step = i;
+#else
+    const int reported_step = accepted_step_ids.at(i);
+#endif
+    cout << "Erro no step_ " << reported_step << " = " << error_step_[i]
          << ", elementos = " << elements_step_[i] << ", nos_gauss = " << gauss_nodes_step_[i]
          << ", nos_mean = " << mean_nodes_step_[i] << ", quality_min = " << quality_min_step_[i]
          << ", quality_mean = " << quality_mean_step_[i] << ", poor_ratio = " << poor_ratio_step_[i]

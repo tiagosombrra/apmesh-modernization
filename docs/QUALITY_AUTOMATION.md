@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Actual accepted steps in final serial reports
+
+The report-identity repair keeps 64 CTest entries and adds ten checker tests
+(182 Python tests). `tests/final_report_case.py` requires actual accepted IDs,
+nonempty exact field coverage, finite values and unchanged serialized scalars.
+Challenge original ordinal labels, missing/duplicate/unordered ledgers and rows,
+scalar drift and CRLF/LF input. Actual caller gates separately cover production
+articles, archived/unarchived gaps and consecutive acceptance, an uninjected
+initial plane, and two corrupt-ledger copies. The missing ledger must fail rather
+than print a fabricated ID; duplicate IDs must be detected by the report checker.
+See [delivery gates](evidence/ACCEPTED_STEP_REPORTING.md). Controlled acceptance
+and corruption cases are separate from scientific results and memory guarantees.
+
 ## Accepted errors at serial stopping guards
 
 The serial loop-entry repair keeps the existing 64 CTest entries and adds eight

@@ -5144,8 +5144,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "8d4f623ab3a30e0294716f46edd124761e495dc8be00d71ac4d77fb515792323",
-      "bytes": 333275,
+      "sha256": "737ea8e9d84f6719fd21e544c86c9995525e9428d4ba80de7b1884de292d766a",
+      "bytes": 333637,
       "includes": [
         {
           "line": 1,
@@ -6118,7 +6118,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 186,
+    "source_anchors": 187,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

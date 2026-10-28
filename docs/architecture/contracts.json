@@ -566,8 +566,8 @@
     {
       "id": "C13",
       "topic": "Attempt vs accepted ownership",
-      "statement": "Generator retains saved accepted and rejected meshes via unique_ptr; SaveMesh observes the candidate before later rollback. The serial accepted root advances only on acceptance. AcceptedMeshScope keeps an unarchived root alive across trials, returns it to the active owner on rejection and detaches owned observations without allocation during exceptional unwinding. Serial loop-entry stopping checks read committed global history and restored accepted local errors, retaining attempted scalars for existing diagnostics. Adapter returns the selected attempt via release().",
-      "limits": "Saving a rejected candidate does not accept it; holding more meshes changes retention/peak-memory behavior and is not permission to prune the scientific trace. Accepted-state repairs do not restore all current metadata or overwrite attempted global/local error, change thresholds/comparison priority or qualify final reporting, provisional-progress policy, resume/complete rollback or parallel behavior.",
+      "statement": "Generator retains saved accepted and rejected meshes via unique_ptr; SaveMesh observes the candidate before later rollback. The serial accepted root advances only on acceptance. AcceptedMeshScope keeps an unarchived root alive across trials, returns it to the active owner on rejection and detaches owned observations without allocation during exceptional unwinding. Serial loop-entry stopping checks read committed global history and restored accepted local errors, retaining attempted scalars for existing diagnostics. Function-local serial accepted-step IDs label final history rows independently of rejected archive entries. Adapter returns the selected attempt via release().",
+      "limits": "Saving a rejected candidate does not accept it; holding more meshes changes retention/peak-memory behavior and is not permission to prune the scientific trace. Accepted-state repairs do not restore all current metadata or overwrite attempted global/local error, change thresholds/comparison priority or qualify runtime normalization, all final metadata, provisional-progress policy, resume/complete rollback or parallel behavior. The local ID ledger may change allocation timing/counts; no complete history rollback is established.",
       "evidence": [
         {
           "path": "src/generator/generator_adaptive.cpp",
@@ -592,6 +592,10 @@
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "const double stopping_global_error = error_step_.back();"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "const int reported_step = accepted_step_ids.at(i);"
         },
         {
           "path": "include/generator/accepted_mesh_scope.h",
