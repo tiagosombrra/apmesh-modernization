@@ -945,9 +945,17 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) 
 
     removeFromFront(e->getV1(), e->getV2(), best);
 
-    Face* f = new Face(e->getV1(), e->getV2(), best, ++lastFaceId);
+    struct PendingFaceDelete {
+      void operator()(Face* face) const noexcept {
+        face->DetachVertices();
+        delete face;
+      }
+    };
+    std::unique_ptr<Face, PendingFaceDelete> f(
+        new Face(e->getV1(), e->getV2(), best, ++lastFaceId));
 
-    mesh.push_back(f);
+    mesh.push_back(f.get());
+    f.release();
   }
 
   return geometryPhase ? ADVF_GEOMETRY_MESH_DONE : ADVF_TOPOLOGY_MESH_DONE;

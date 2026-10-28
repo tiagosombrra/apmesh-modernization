@@ -1,5 +1,11 @@
 # Stage 3 closure inventory
 
+Pending Face publication now uses an exclusive temporary owner with endpoint
+detachment on cleanup, releasing only after mesh-list insertion. [Scope and gates](../evidence/PENDING_FRONT_FACES.md)
+retain failed originals and actual invalid-deleter detection. Geometry marker,
+new-edge adoption, full recovery and process-wide lifetime remain separate;
+Stage 3 stays open.
+
 The interception Face borrower repair adds a nonallocating detach scope around
 the original local construction/setters/containment. [Scope and required gates](../evidence/FRONT_FACE_BORROWERS.md)
 retain twenty original failed contracts and require live caller/adjacency checks

@@ -1,5 +1,21 @@
 # Project state
 
+## Pending front Face ownership
+
+PR #116 is integrated and revalidated as main
+`f7df88a67a4db0fba0e57d685de83d91aba0cff2`: 66 CTest contracts, 206 Python
+tests, 171 native outcomes and nine frozen states/45 artifacts. The following
+diagnosis reproduced orphaned Face/cache storage after failed mesh-list insertion.
+The current repair holds one pending owner with detach-before-delete cleanup and
+releases it only after publication, preserving original ID/mutation timing.
+
+[Scope and required gates](evidence/PENDING_FRONT_FACES.md) require actual native
+selection/publication, committed prefixes, topology/prepared geometry, original
+failures and invalid-deleter controls. Exact-head integration and main validation
+remain pending. Stage 3 stays open without a quality or whole-process claim.
+Next after delivery: diagnose geometry-phase front marker lifetime in makeMesh.
+Earlier active items below are historical.
+
 ## Interception Face borrower lifetime
 
 PR #115 is integrated and revalidated as main
