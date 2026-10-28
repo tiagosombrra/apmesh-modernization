@@ -1,5 +1,14 @@
 # Local quality automation
 
+## Interception Face borrower gate
+
+`application.front_face_borrowers` adds the native local borrower contract.
+The delivery requires 66 CTest entries and 206 Python tests. Require every
+calibrated denial, actual adjacency and consuming live callers, original failed
+contracts, exact normal cache/release traces and independent instruments.
+[Scope and exact-head/main gates](evidence/FRONT_FACE_BORROWERS.md) preserve the
+deliberately invalid control and distinguish guard-only cases from coverage.
+
 ## Angular selection ownership gate
 
 `application.front_angle_ownership` calls actual native angular selection in five

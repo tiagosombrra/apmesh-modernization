@@ -1,5 +1,18 @@
 # Technique-preserving modernization plan
 
+## Active item: interception Face borrower lifetime
+
+Give the temporary Face in interceptionTest a local nonallocating detach scope
+after successful default construction. Preserve both setters, containment,
+normal allocations/release order and every scientific criterion. Classification:
+behavior-changing exception-safety/borrower-ownership defect repair. Require
+complete calibrated denial sweeps with live IDs/coordinates/actual adjacency,
+consuming callers, preserved original failures, native ASan/CRT controls and
+exact successful comparisons. [Required gates](evidence/FRONT_FACE_BORROWERS.md)
+include exact-head regression/science/tooling and main revalidation. Stage 3 stays
+open. Next diagnose pending Face adoption in makeMesh after this delivery is
+integrated; earlier active items are historical.
+
 ## Active item: angular selection temporary ownership
 
 Repair the reproduced second-temporary construction leak in findBestVertex with

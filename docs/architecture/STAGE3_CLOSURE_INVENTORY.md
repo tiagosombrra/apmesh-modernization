@@ -1,5 +1,11 @@
 # Stage 3 closure inventory
 
+The interception Face borrower repair adds a nonallocating detach scope around
+the original local construction/setters/containment. [Scope and required gates](../evidence/FRONT_FACE_BORROWERS.md)
+retain twenty original failed contracts and require live caller/adjacency checks
+at every denied allocation. Other pending adoption, outer retry and full-process
+memory remain separate; Stage 3 is open.
+
 The bounded angular temporary repair covers second-object construction failure
 in findBestVertex, successful numerical selection and explicit deletion order.
 [Scope and required gates](../evidence/FRONT_ANGLE_TEMPORARIES.md) retain native
