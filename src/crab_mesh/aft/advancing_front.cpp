@@ -11,7 +11,7 @@ extern double AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD;
 extern double AFT_LOCAL_POSTPROCESS_BLEND;
 
 namespace {
-double ComputeLocalQualityScore(const FaceList &faces) {
+double ComputeLocalQualityScore(const FaceList& faces) {
   if (faces.empty()) {
     return 0.0;
   }
@@ -19,8 +19,7 @@ double ComputeLocalQualityScore(const FaceList &faces) {
   double averageQuality = 0.0;
   double minQuality = DBL_MAX;
 
-  for (FaceList::const_iterator iter = faces.begin(); iter != faces.end();
-       ++iter) {
+  for (FaceList::const_iterator iter = faces.begin(); iter != faces.end(); ++iter) {
     const double quality = (*iter)->quality();
     averageQuality += quality;
     minQuality = std::min(minQuality, quality);
@@ -30,7 +29,7 @@ double ComputeLocalQualityScore(const FaceList &faces) {
   return 0.6 * averageQuality + 0.4 * minQuality;
 }
 
-bool FaceOppositeEdge(Face *face, Vertex *vertex, Vertex *&a, Vertex *&b) {
+bool FaceOppositeEdge(Face* face, Vertex* vertex, Vertex*& a, Vertex*& b) {
   if (face->getV1() == vertex) {
     a = face->getV2();
     b = face->getV3();
@@ -141,38 +140,23 @@ StageFaceStats ComputeStageFaceStats(const FaceList& faces) {
   }
   return stats;
 }
-}  // namespace
+} // namespace
 
 namespace Par2DJMesh {
 namespace AFT {
 AdvancingFrontRunStats::AdvancingFrontRunStats()
-    : postprocess_vertices_moved(0),
-      postprocess_vertices_considered(0),
-      quadtree_leaf_count(0),
-      quadtree_template_count(0),
-      quadtree_low_score_count(0),
-      quadtree_low_quality_subdivide_hits(0),
-      degenerate_pre_aft_count(0),
-      degenerate_post_aft_count(0),
-      degenerate_post_smoothing_count(0),
-      quadtree_template_score_min(0.0),
-      quadtree_template_score_mean(0.0),
-      quality_pre_aft_min(0.0),
-      quality_pre_aft_mean(0.0),
-      quality_post_aft_min(0.0),
-      quality_post_aft_mean(0.0),
-      quality_post_smoothing_min(0.0),
-      quality_post_smoothing_mean(0.0),
-      poor_ratio_pre_aft(0.0),
-      poor_ratio_post_aft(0.0),
-      poor_ratio_post_smoothing(0.0),
-      boundary_element_ratio(0.0),
-      transition_element_ratio(0.0),
-      internal_element_ratio(0.0),
-      adaptive_step(-1),
+    : postprocess_vertices_moved(0), postprocess_vertices_considered(0), quadtree_leaf_count(0),
+      quadtree_template_count(0), quadtree_low_score_count(0),
+      quadtree_low_quality_subdivide_hits(0), degenerate_pre_aft_count(0),
+      degenerate_post_aft_count(0), degenerate_post_smoothing_count(0),
+      quadtree_template_score_min(0.0), quadtree_template_score_mean(0.0), quality_pre_aft_min(0.0),
+      quality_pre_aft_mean(0.0), quality_post_aft_min(0.0), quality_post_aft_mean(0.0),
+      quality_post_smoothing_min(0.0), quality_post_smoothing_mean(0.0), poor_ratio_pre_aft(0.0),
+      poor_ratio_post_aft(0.0), poor_ratio_post_smoothing(0.0), boundary_element_ratio(0.0),
+      transition_element_ratio(0.0), internal_element_ratio(0.0), adaptive_step(-1),
       patch_index(-1) {}
-}  // namespace AFT
-}  // namespace Par2DJMesh
+} // namespace AFT
+} // namespace Par2DJMesh
 
 AdvancingFront::AdvancingFront(double factor, [[maybe_unused]] double tolerance,
                                unsigned int numImproves, double phi)
@@ -192,9 +176,8 @@ AdvancingFront::AdvancingFront(double factor, [[maybe_unused]] double tolerance,
   lastVertexId = lastEdgeId = lastFaceId = 0;
 }
 
-AdvancingFront::AdvancingFront(Boundary *boundary, Quadtree *quadtree,
-                               [[maybe_unused]] double tolerance,
-                               unsigned int numImproves)
+AdvancingFront::AdvancingFront(Boundary* boundary, Quadtree* quadtree,
+                               [[maybe_unused]] double tolerance, unsigned int numImproves)
     : Shape() {
   setBoundary(boundary);
   setQuadtree(quadtree);
@@ -211,7 +194,7 @@ AdvancingFront::AdvancingFront(Boundary *boundary, Quadtree *quadtree,
 
 AdvancingFront::~AdvancingFront() {
   while (!mesh.empty()) {
-    Face *f = mesh.front();
+    Face* f = mesh.front();
     mesh.pop_front();
 
     f->DetachVertices();
@@ -220,7 +203,7 @@ AdvancingFront::~AdvancingFront() {
   }
 
   while (!innerEdges.empty()) {
-    Edge *e = innerEdges.front();
+    Edge* e = innerEdges.front();
     innerEdges.pop_front();
 
     e->DetachVertices();
@@ -229,7 +212,7 @@ AdvancingFront::~AdvancingFront() {
   }
 
   while (!innerVertices.empty()) {
-    Vertex *v = innerVertices.front();
+    Vertex* v = innerVertices.front();
     innerVertices.pop_front();
 
     delete v;
@@ -273,15 +256,14 @@ void AdvancingFront::makeInitialFront() {
   EdgeList quadtreeFront = quadtree->getFront();
 
   while (!quadtreeFront.empty()) {
-    Edge *e = quadtreeFront.front();
+    Edge* e = quadtreeFront.front();
     quadtreeFront.pop_front();
 
     front.push_back(e);
 
     bool found = false;
 
-    for (VertexList::iterator iter = vertices.begin(); iter != vertices.end();
-         iter++) {
+    for (VertexList::iterator iter = vertices.begin(); iter != vertices.end(); iter++) {
       if ((*iter) == e->getV1()) {
         found = true;
 
@@ -313,7 +295,7 @@ void AdvancingFront::sortFront() {
   EdgeList sorted, inBoundary;
 
   while (!front.empty()) {
-    Edge *least = front.front();
+    Edge* least = front.front();
 
     if (least->isInBoundary()) {
       front.pop_front();
@@ -325,8 +307,7 @@ void AdvancingFront::sortFront() {
 
     EdgeList::iterator leastIter = front.begin();
 
-    for (EdgeList::iterator iter = ++front.begin(); iter != front.end();
-         iter++) {
+    for (EdgeList::iterator iter = ++front.begin(); iter != front.end(); iter++) {
       if ((*iter)->length() < least->length()) {
         least = (*iter);
         leastIter = iter;
@@ -341,11 +322,10 @@ void AdvancingFront::sortFront() {
   front.swap(sorted);
 
   while (!inBoundary.empty()) {
-    Edge *least = inBoundary.front();
+    Edge* least = inBoundary.front();
     EdgeList::iterator leastIter = inBoundary.begin();
 
-    for (EdgeList::iterator iter = ++inBoundary.begin();
-         iter != inBoundary.end(); iter++) {
+    for (EdgeList::iterator iter = ++inBoundary.begin(); iter != inBoundary.end(); iter++) {
       if ((*iter)->length() < least->length()) {
         least = (*iter);
         leastIter = iter;
@@ -360,21 +340,19 @@ void AdvancingFront::sortFront() {
   front.insert(front.begin(), sorted.begin(), sorted.end());
 }
 
-bool AdvancingFront::interceptionTest(Edge *e, Vertex *candidate,
-                                      bool inFaceTest, bool onlyFrontEdges) {
+bool AdvancingFront::interceptionTest(Edge* e, Vertex* candidate, bool inFaceTest,
+                                      bool onlyFrontEdges) {
   bool intercepts = false;
 
-  EdgeList *testEdges = &edges;
+  EdgeList* testEdges = &edges;
 
   if (onlyFrontEdges) {
     testEdges = &front;
   }
 
-  for (EdgeList::iterator iter = testEdges->begin(); iter != testEdges->end();
-       iter++) {
+  for (EdgeList::iterator iter = testEdges->begin(); iter != testEdges->end(); iter++) {
     if (((*iter)->intercept(e->getV1(), candidate)) ||
-        ((*iter)->intercept(candidate, e->getV2())) ||
-        false)  //((*iter)->intercept(candidate)))
+        ((*iter)->intercept(candidate, e->getV2())) || false) //((*iter)->intercept(candidate)))
     {
       intercepts = true;
 
@@ -389,8 +367,7 @@ bool AdvancingFront::interceptionTest(Edge *e, Vertex *candidate,
 
     f.setVertices(e->getV1(), e->getV2(), candidate);
 
-    for (VertexList::iterator iter = frontVertices.begin();
-         iter != frontVertices.end(); iter++) {
+    for (VertexList::iterator iter = frontVertices.begin(); iter != frontVertices.end(); iter++) {
       // #pragma omp critical
       //             {
 
@@ -400,8 +377,7 @@ bool AdvancingFront::interceptionTest(Edge *e, Vertex *candidate,
       //            }
       //            }
 
-      if (((*iter) == e->getV1()) || ((*iter) == e->getV2()) ||
-          ((*iter) == candidate)) {
+      if (((*iter) == e->getV1()) || ((*iter) == e->getV2()) || ((*iter) == candidate)) {
         continue;
       }
 
@@ -426,7 +402,7 @@ bool AdvancingFront::interceptionTest(Edge *e, Vertex *candidate,
   return intercepts;
 }
 
-bool AdvancingFront::interceptionTest(Edge *e) {
+bool AdvancingFront::interceptionTest(Edge* e) {
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
     if ((*iter) == e) {
       continue;
@@ -444,8 +420,8 @@ bool AdvancingFront::interceptionTest(Edge *e) {
   return false;
 }
 
-Vertex *AdvancingFront::makeIdealVertex(Edge *e, double &h) {
-  Vertex *v = e->normal();
+Vertex* AdvancingFront::makeIdealVertex(Edge* e, double& h) {
+  Vertex* v = e->normal();
 
   h *= e->getCell()->height();
 
@@ -459,8 +435,7 @@ Vertex *AdvancingFront::makeIdealVertex(Edge *e, double &h) {
   return v;
 }
 
-bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
-                                    bool geometryPhase) {
+bool AdvancingFront::findBestVertex(Edge* e, Vertex*& best, bool geometryPhase) {
   bool vertexExistedBefore = true;
 
   double h = 1.0;
@@ -474,9 +449,8 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
   // frontVertices.size() = " << frontVertices.size() << "; "; int matches = 0,
   // outbox = 0, outdistance = 0, outnormal = 0, intercepted = 0; endebug markos
 
-  for (VertexList::iterator iter = frontVertices.begin();
-       iter != frontVertices.end(); iter++) {
-    Vertex *candidate = (*iter);
+  for (VertexList::iterator iter = frontVertices.begin(); iter != frontVertices.end(); iter++) {
+    Vertex* candidate = (*iter);
 
     if ((candidate == e->getV1()) || (candidate == e->getV2()) ||
         (candidate->matches(e->getV1())) || (candidate->matches(e->getV2()))) {
@@ -485,10 +459,8 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
     }
 
     if (geometryPhase) {
-      if ((candidate->getX() < best->getX() - h) ||
-          (candidate->getX() > best->getX() + h) ||
-          (candidate->getY() < best->getY() - h) ||
-          (candidate->getY() > best->getY() + h)) {
+      if ((candidate->getX() < best->getX() - h) || (candidate->getX() > best->getX() + h) ||
+          (candidate->getY() < best->getY() - h) || (candidate->getY() > best->getY() + h)) {
         // outbox++;
         continue;
       }
@@ -575,8 +547,7 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
 
       // testa se best estah perto demais de alguma outra edge da fronteira
 
-      for (EdgeList::iterator iter = edges.begin(); iter != edges.end();
-           iter++) {
+      for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
         if ((*iter)->intercept(best)) {
           tooClose = true;
 
@@ -613,15 +584,15 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
     best = bestVertices.front();
     bestVertices.pop_front();
 
-    Vertex *v1 = new Vertex(e->getV1()->getX() - best->getX(),
-                            e->getV1()->getY() - best->getY());
-    Vertex *v2 = new Vertex(e->getV2()->getX() - best->getX(),
-                            e->getV2()->getY() - best->getY());
+    std::unique_ptr<Vertex> v1(
+        new Vertex(e->getV1()->getX() - best->getX(), e->getV1()->getY() - best->getY()));
+    std::unique_ptr<Vertex> v2(
+        new Vertex(e->getV2()->getX() - best->getX(), e->getV2()->getY() - best->getY()));
 
-    double maxAngle = v1->angle(v2);
+    double maxAngle = v1->angle(v2.get());
 
     while (!bestVertices.empty()) {
-      Vertex *candidate = bestVertices.front();
+      Vertex* candidate = bestVertices.front();
       bestVertices.pop_front();
 
       v1->setPosition(e->getV1()->getX() - candidate->getX(),
@@ -629,7 +600,7 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
       v2->setPosition(e->getV2()->getX() - candidate->getX(),
                       e->getV2()->getY() - candidate->getY());
 
-      double angle = v1->angle(v2);
+      double angle = v1->angle(v2.get());
 
       if (angle > maxAngle) {
         maxAngle = angle;
@@ -640,9 +611,8 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
         Edge *candidateEdge1, *candidateEdge2;
         candidateEdge1 = candidateEdge2 = nullptr;
 
-        for (EdgeList::iterator iter = front.begin(); iter != front.end();
-             iter++) {
-          Edge *eAux = (*iter);
+        for (EdgeList::iterator iter = front.begin(); iter != front.end(); iter++) {
+          Edge* eAux = (*iter);
 
           if (eAux->getV2() == candidate) {
             candidateEdge1 = eAux;
@@ -668,8 +638,8 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
       }
     }
 
-    delete v1;
-    delete v2;
+    v1.reset();
+    v2.reset();
 
     // std::cerr << "true, NOTNULL; reason = existing vertex" << std::endl;
   } else {
@@ -681,13 +651,12 @@ bool AdvancingFront::findBestVertex(Edge *e, Vertex *&best,
   return vertexExistedBefore;
 }
 
-void AdvancingFront::insertInFront(Edge *last, Edge *e) {
+void AdvancingFront::insertInFront(Edge* last, Edge* e) {
   if (boundarySorted) {
     if (last) {
       bool inserted = false;
 
-      for (EdgeList::iterator iter = front.begin(); iter != front.end();
-           iter++) {
+      for (EdgeList::iterator iter = front.begin(); iter != front.end(); iter++) {
         if ((*iter) == last) {
           for (iter++; iter != front.end(); iter++) {
             if ((*iter)->length() > e->length()) {
@@ -709,8 +678,7 @@ void AdvancingFront::insertInFront(Edge *last, Edge *e) {
     } else {
       bool inserted = false;
 
-      for (EdgeList::iterator iter = front.begin(); iter != front.end();
-           iter++) {
+      for (EdgeList::iterator iter = front.begin(); iter != front.end(); iter++) {
         if ((*iter)->length() > e->length()) {
           front.insert(iter, e);
 
@@ -729,7 +697,7 @@ void AdvancingFront::insertInFront(Edge *last, Edge *e) {
   }
 }
 
-Edge *AdvancingFront::findEdge(Vertex *v1, Vertex *v2) {
+Edge* AdvancingFront::findEdge(Vertex* v1, Vertex* v2) {
   Edge* e = nullptr;
 
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
@@ -742,17 +710,15 @@ Edge *AdvancingFront::findEdge(Vertex *v1, Vertex *v2) {
   return e;
 }
 
-EdgeList AdvancingFront::findAdjacentEdges(Vertex *v) {
+EdgeList AdvancingFront::findAdjacentEdges(Vertex* v) {
   return orderedSmoothingAdjacency(v->getAdjacentEdges());
 }
 
-FaceList AdvancingFront::findAdjacentFaces(const FaceList &faces, Vertex *v) {
+FaceList AdvancingFront::findAdjacentFaces(const FaceList& faces, Vertex* v) {
   FaceList adjacency;
 
-  for (FaceList::const_iterator iter = faces.begin(); iter != faces.end();
-       iter++) {
-    if (((*iter)->getV1() == v) || ((*iter)->getV2() == v) ||
-        ((*iter)->getV3() == v)) {
+  for (FaceList::const_iterator iter = faces.begin(); iter != faces.end(); iter++) {
+    if (((*iter)->getV1() == v) || ((*iter)->getV2() == v) || ((*iter)->getV3() == v)) {
       adjacency.push_back((*iter));
     }
   }
@@ -760,7 +726,7 @@ FaceList AdvancingFront::findAdjacentFaces(const FaceList &faces, Vertex *v) {
   return adjacency;
 }
 
-void AdvancingFront::removeFromFront(Vertex *v1, Vertex *v2, Vertex *v3) {
+void AdvancingFront::removeFromFront(Vertex* v1, Vertex* v2, Vertex* v3) {
   // verifica se v1 eh adjacente a alguma aresta livre, ou seja,
   // da fronteira corrente. se for adjacente, nao remove. se nao for
   // adjacente, remove
@@ -768,8 +734,7 @@ void AdvancingFront::removeFromFront(Vertex *v1, Vertex *v2, Vertex *v3) {
 
   bool remove = true;
 
-  for (EdgeSet::iterator iter = adjacentEdges.begin();
-       iter != adjacentEdges.end(); iter++) {
+  for (EdgeSet::iterator iter = adjacentEdges.begin(); iter != adjacentEdges.end(); iter++) {
     if ((*iter)->isFree()) {
       remove = false;
 
@@ -788,8 +753,7 @@ void AdvancingFront::removeFromFront(Vertex *v1, Vertex *v2, Vertex *v3) {
 
   remove = true;
 
-  for (EdgeSet::iterator iter = adjacentEdges.begin();
-       iter != adjacentEdges.end(); iter++) {
+  for (EdgeSet::iterator iter = adjacentEdges.begin(); iter != adjacentEdges.end(); iter++) {
     if ((*iter)->isFree()) {
       remove = false;
 
@@ -808,8 +772,7 @@ void AdvancingFront::removeFromFront(Vertex *v1, Vertex *v2, Vertex *v3) {
 
   remove = true;
 
-  for (EdgeSet::iterator iter = adjacentEdges.begin();
-       iter != adjacentEdges.end(); iter++) {
+  for (EdgeSet::iterator iter = adjacentEdges.begin(); iter != adjacentEdges.end(); iter++) {
     if ((*iter)->isFree()) {
       remove = false;
 
@@ -822,8 +785,7 @@ void AdvancingFront::removeFromFront(Vertex *v1, Vertex *v2, Vertex *v3) {
   }
 }
 
-enum MethodStatus AdvancingFront::makeMesh(bool frontBased,
-                                           bool geometryPhase) {
+enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) {
   // cout << "AdvancingFront::makeMesh(frontBased = " << frontBased << ",
   // geometryPhase = " << geometryPhase << ")" << endl;
 
@@ -979,7 +941,7 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased,
 
     removeFromFront(e->getV1(), e->getV2(), best);
 
-    Face *f = new Face(e->getV1(), e->getV2(), best, ++lastFaceId);
+    Face* f = new Face(e->getV1(), e->getV2(), best, ++lastFaceId);
 
     mesh.push_back(f);
   }
@@ -1004,13 +966,12 @@ void AdvancingFront::fillMesh() {
   VertexList quadVertices = quadtree->getVertices();
 
   while (!quadVertices.empty()) {
-    Vertex *v = quadVertices.front();
+    Vertex* v = quadVertices.front();
     quadVertices.pop_front();
 
     bool found = false;
 
-    for (VertexList::iterator iter = vertices.begin(); iter != vertices.end();
-         iter++) {
+    for (VertexList::iterator iter = vertices.begin(); iter != vertices.end(); iter++) {
       if ((*iter) == v) {
         found = true;
 
@@ -1026,7 +987,7 @@ void AdvancingFront::fillMesh() {
   EdgeList quadEdges = quadtree->getEdges();
 
   while (!quadEdges.empty()) {
-    Edge *e = quadEdges.front();
+    Edge* e = quadEdges.front();
     quadEdges.pop_front();
 
     bool found = false;
@@ -1049,14 +1010,13 @@ void AdvancingFront::fillMesh() {
   quadtree->TransferTemplateMesh(innerVertices, innerEdges, mesh);
 }
 
-bool AdvancingFront::laplacianSmoothing(bool &changed) {
+bool AdvancingFront::laplacianSmoothing(bool& changed) {
   changed = false;
 
   static const double qualityTolerance = 1.0e-8;
 
-  for (VertexList::iterator iter = innerVertices.begin();
-       iter != innerVertices.end(); iter++) {
-    Vertex *v = (*iter);
+  for (VertexList::iterator iter = innerVertices.begin(); iter != innerVertices.end(); iter++) {
+    Vertex* v = (*iter);
 
     double weight = 1.0;
 
@@ -1077,8 +1037,7 @@ bool AdvancingFront::laplacianSmoothing(bool &changed) {
     double oldMinQuality = DBL_MAX;
     unsigned int faceCount = 0;
 
-    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end();
-         ++faceIter) {
+    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
       const double quality = (*faceIter)->quality();
       oldAverageQuality += quality;
       oldMinQuality = std::min(oldMinQuality, quality);
@@ -1089,11 +1048,11 @@ bool AdvancingFront::laplacianSmoothing(bool &changed) {
     const double oldScore = 0.6 * oldAverageQuality + 0.4 * oldMinQuality;
 
     while (!adjacency.empty()) {
-      Edge *e = adjacency.front();
+      Edge* e = adjacency.front();
 
       adjacency.pop_front();
 
-      Vertex *v2 = (e->getV1() == v) ? e->getV2() : e->getV1();
+      Vertex* v2 = (e->getV1() == v) ? e->getV2() : e->getV1();
 
       numx += weight * (v2->getX() - oldx);
       numy += weight * (v2->getY() - oldy);
@@ -1115,8 +1074,7 @@ bool AdvancingFront::laplacianSmoothing(bool &changed) {
     double newAverageQuality = 0.0;
     double newMinQuality = DBL_MAX;
 
-    for (FaceList::iterator iter2 = faces.begin(); iter2 != faces.end();
-         iter2++) {
+    for (FaceList::iterator iter2 = faces.begin(); iter2 != faces.end(); iter2++) {
       if ((*iter2)->orientedSurface() <= TOLERANCE_AFT) {
         negativeSurface = true;
         break;
@@ -1143,8 +1101,7 @@ bool AdvancingFront::laplacianSmoothing(bool &changed) {
   }
 
   // para ajeitar o mid e o vector das innerEdges
-  for (EdgeList::iterator iter = innerEdges.begin(); iter != innerEdges.end();
-       iter++) {
+  for (EdgeList::iterator iter = innerEdges.begin(); iter != innerEdges.end(); iter++) {
     (*iter)->setVertices((*iter)->getV1(), (*iter)->getV2());
   }
 
@@ -1153,8 +1110,7 @@ bool AdvancingFront::laplacianSmoothing(bool &changed) {
 
 void AdvancingFront::ResetRunStats() { run_stats = AdvancingFrontRunStats(); }
 
-void AdvancingFront::SetAdaptiveContext(int adaptive_step_value,
-                                        int patch_index_value) {
+void AdvancingFront::SetAdaptiveContext(int adaptive_step_value, int patch_index_value) {
   run_stats.adaptive_step = adaptive_step_value;
   run_stats.patch_index = patch_index_value;
 }
@@ -1163,19 +1119,16 @@ void AdvancingFront::UpdateRunStatsFromQuadtree() {
   if (!quadtree) {
     return;
   }
-  run_stats.quadtree_leaf_count =
-      static_cast<unsigned long long>(quadtree->getLeaves().size());
+  run_stats.quadtree_leaf_count = static_cast<unsigned long long>(quadtree->getLeaves().size());
   const QuadtreeTemplateStats& template_stats = quadtree->GetTemplateStats();
   run_stats.quadtree_template_count = template_stats.total_templates;
   run_stats.quadtree_low_score_count = template_stats.low_score_templates;
-  run_stats.quadtree_low_quality_subdivide_hits =
-      template_stats.low_quality_subdivide_hits;
+  run_stats.quadtree_low_quality_subdivide_hits = template_stats.low_quality_subdivide_hits;
   run_stats.quadtree_template_score_min =
       template_stats.total_templates > 0 ? template_stats.overall_score_min : 0.0;
   run_stats.quadtree_template_score_mean =
       template_stats.total_templates > 0
-          ? template_stats.overall_score_sum /
-                static_cast<double>(template_stats.total_templates)
+          ? template_stats.overall_score_sum / static_cast<double>(template_stats.total_templates)
           : 0.0;
 }
 
@@ -1202,15 +1155,14 @@ void AdvancingFront::CaptureStageStats(const FaceList& faces, int stage) {
   }
 }
 
-bool AdvancingFront::qualityShapeSmoothing(bool &changed) {
+bool AdvancingFront::qualityShapeSmoothing(bool& changed) {
   changed = false;
 
   static const double qualityTolerance = 1.0e-8;
   static const double sqrt3Half = 0.8660254037844386;
 
-  for (VertexList::iterator iter = innerVertices.begin();
-       iter != innerVertices.end(); ++iter) {
-    Vertex *v = (*iter);
+  for (VertexList::iterator iter = innerVertices.begin(); iter != innerVertices.end(); ++iter) {
+    Vertex* v = (*iter);
     FaceList faces = findAdjacentFaces(mesh, v);
 
     if (faces.empty()) {
@@ -1225,9 +1177,8 @@ bool AdvancingFront::qualityShapeSmoothing(bool &changed) {
     double targetY = 0.0;
     double totalWeight = 0.0;
 
-    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end();
-         ++faceIter) {
-      Face *face = (*faceIter);
+    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
+      Face* face = (*faceIter);
       Vertex* a = nullptr;
       Vertex* b = nullptr;
 
@@ -1277,8 +1228,7 @@ bool AdvancingFront::qualityShapeSmoothing(bool &changed) {
       v->setPosition(candidateX, candidateY);
 
       bool negativeSurface = false;
-      for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end();
-           ++faceIter) {
+      for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
         if ((*faceIter)->orientedSurface() <= TOLERANCE_AFT) {
           negativeSurface = true;
           break;
@@ -1303,8 +1253,7 @@ bool AdvancingFront::qualityShapeSmoothing(bool &changed) {
     }
   }
 
-  for (EdgeList::iterator iter = innerEdges.begin(); iter != innerEdges.end();
-       ++iter) {
+  for (EdgeList::iterator iter = innerEdges.begin(); iter != innerEdges.end(); ++iter) {
     (*iter)->setVertices((*iter)->getV1(), (*iter)->getV2());
   }
 
@@ -1315,9 +1264,7 @@ void AdvancingFront::setBoundarySorted(bool boundarySorted) {
   this->boundarySorted = boundarySorted;
 }
 
-void AdvancingFront::setNumImproves(unsigned int numImproves) {
-  this->numImproves = numImproves;
-}
+void AdvancingFront::setNumImproves(unsigned int numImproves) { this->numImproves = numImproves; }
 
 unsigned int AdvancingFront::getNumImproves() { return numImproves; }
 
@@ -1328,17 +1275,13 @@ bool AdvancingFront::isBoundarySorted() { return boundarySorted; }
 //    return Shape::tolerance;
 //}
 
-void AdvancingFront::setBoundary(Boundary *boundary) {
-  this->boundary = boundary;
-}
+void AdvancingFront::setBoundary(Boundary* boundary) { this->boundary = boundary; }
 
-Boundary *AdvancingFront::getBoundary() { return boundary; }
+Boundary* AdvancingFront::getBoundary() { return boundary; }
 
-void AdvancingFront::setQuadtree(Quadtree *quadtree) {
-  this->quadtree = quadtree;
-}
+void AdvancingFront::setQuadtree(Quadtree* quadtree) { this->quadtree = quadtree; }
 
-Quadtree *AdvancingFront::getQuadtree() { return quadtree; }
+Quadtree* AdvancingFront::getQuadtree() { return quadtree; }
 
 VertexList AdvancingFront::getVertices() { return vertices; }
 
@@ -1356,7 +1299,7 @@ void AdvancingFront::addVertices(VertexList vertices) {
   }
 
   while (!vertices.empty()) {
-    Vertex *v = vertices.front();
+    Vertex* v = vertices.front();
     vertices.pop_front();
 
     v->setId(++lastVertexId);
@@ -1373,7 +1316,7 @@ void AdvancingFront::addEdges(EdgeList edges) {
   }
 
   while (!edges.empty()) {
-    Edge *e = edges.front();
+    Edge* e = edges.front();
     edges.pop_front();
 
     e->setId(++lastEdgeId);
@@ -1385,7 +1328,7 @@ void AdvancingFront::addEdges(EdgeList edges) {
 
 void AdvancingFront::addMesh(FaceList mesh) {
   while (!mesh.empty()) {
-    Face *f = mesh.front();
+    Face* f = mesh.front();
     mesh.pop_front();
 
     f->setId(++lastFaceId);
@@ -1394,7 +1337,7 @@ void AdvancingFront::addMesh(FaceList mesh) {
   }
 }
 
-bool AdvancingFront::belongsToAdvFront(Edge *e) {
+bool AdvancingFront::belongsToAdvFront(Edge* e) {
   for (EdgeList::iterator iter = front.begin(); iter != front.end(); iter++) {
     if ((*iter) == e) {
       return true;
@@ -1410,9 +1353,8 @@ enum MethodStatus AdvancingFront::makeGeometryBasedMesh() {
   }
 
   if (front.size() == 3) {
-    Vertex *v = (*(++front.begin()))->getV1();
-    Face *f = new Face(front.front()->getV1(), v, front.back()->getV1(),
-                       ++lastFaceId);
+    Vertex* v = (*(++front.begin()))->getV1();
+    Face* f = new Face(front.front()->getV1(), v, front.back()->getV1(), ++lastFaceId);
     mesh.push_back(f);
 
     return ADVF_GEOMETRY_MESH_DONE;
@@ -1439,7 +1381,7 @@ enum MethodStatus AdvancingFront::makeTopologyBasedMesh() {
   }
 
   while (!rejected.empty()) {
-    Edge *e = rejected.front();
+    Edge* e = rejected.front();
     rejected.pop_front();
 
     // #if USE_OPENGL
@@ -1496,10 +1438,8 @@ enum MethodStatus AdvancingFront::improveMesh() {
   }
 
   if (run_stats.adaptive_step == 2 &&
-      (run_stats.quality_post_aft_min < 0.22 ||
-       run_stats.poor_ratio_post_aft > 0.20)) {
-    for (int pass = 0; pass < std::max(2, AFT_LOCAL_POSTPROCESS_PASSES + 1);
-         ++pass) {
+      (run_stats.quality_post_aft_min < 0.22 || run_stats.poor_ratio_post_aft > 0.20)) {
+    for (int pass = 0; pass < std::max(2, AFT_LOCAL_POSTPROCESS_PASSES + 1); ++pass) {
       bool passChanged = false;
       poorRegionShapeSmoothing(passChanged);
       if (!passChanged) {
@@ -1511,7 +1451,7 @@ enum MethodStatus AdvancingFront::improveMesh() {
   return IMPR_IMPROVEMENT_DONE;
 }
 
-bool AdvancingFront::execute(const FaceList &oldmesh) {
+bool AdvancingFront::execute(const FaceList& oldmesh) {
   enum MethodStatus status;
   const int adaptive_step_value = run_stats.adaptive_step;
   const int patch_index_value = run_stats.patch_index;
@@ -1531,7 +1471,7 @@ bool AdvancingFront::execute(const FaceList &oldmesh) {
 
 #if USE_PRINT_COMENT
   cout << "gerou a quadtree" << endl;
-#endif  // #if USE_PRINT_COMENT
+#endif // #if USE_PRINT_COMENT
 
   /*if (quadtree->refineToLevel() != QUAD_REFINE_TO_LEVEL_DONE)
   {
@@ -1548,7 +1488,7 @@ bool AdvancingFront::execute(const FaceList &oldmesh) {
 
 #if USE_PRINT_COMENT
   cout << "refinou a quadtree" << endl;
-#endif  // #if USE_PRINT_COMENT
+#endif // #if USE_PRINT_COMENT
 
   if (USE_TEMPLATE == std::string("y")) {
     status = quadtree->makeTemplateBasedMesh();
@@ -1561,7 +1501,7 @@ bool AdvancingFront::execute(const FaceList &oldmesh) {
 
 #if USE_PRINT_COMENT
   cout << "gerou malha por templates" << endl;
-#endif  // #if USE_PRINT_COMENT
+#endif // #if USE_PRINT_COMENT
 
   makeInitialFront();
 
@@ -1569,10 +1509,9 @@ bool AdvancingFront::execute(const FaceList &oldmesh) {
 
 #if USE_PRINT_COMENT
   cout << "gerou malha por avanco de fronteira - geometria" << endl;
-#endif  // #if USE_PRINT_COMENT
+#endif // #if USE_PRINT_COMENT
 
-  if ((status != ADVF_GEOMETRY_MESH_DONE) &&
-      (status != ADVF_GEOMETRY_EDGE_REJECTED_TWICE)) {
+  if ((status != ADVF_GEOMETRY_MESH_DONE) && (status != ADVF_GEOMETRY_EDGE_REJECTED_TWICE)) {
     return false;
   }
 
@@ -1586,7 +1525,7 @@ bool AdvancingFront::execute(const FaceList &oldmesh) {
 
 #if USE_PRINT_COMENT
   cout << "gerou malha por avanco de fronteira - topologia" << endl;
-#endif  // #if USE_PRINT_COMENT
+#endif // #if USE_PRINT_COMENT
 
   fillMesh();
   UpdateRunStatsFromQuadtree();
@@ -1601,33 +1540,30 @@ bool AdvancingFront::execute(const FaceList &oldmesh) {
 
 #if USE_PRINT_COMENT
   cout << "melhorou a malha" << endl;
-#endif  // #if USE_PRINT_COMENT
+#endif // #if USE_PRINT_COMENT
 
   return true;
 }
 
-bool AdvancingFront::poorRegionShapeSmoothing(bool &changed) {
+bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
   changed = false;
 
-  if (AFT_LOCAL_POSTPROCESS_PASSES <= 0 ||
-      AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD <= 0.0) {
+  if (AFT_LOCAL_POSTPROCESS_PASSES <= 0 || AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD <= 0.0) {
     return true;
   }
 
   static const double qualityTolerance = 1.0e-8;
   static const double sqrt3Half = 0.8660254037844386;
 
-  for (VertexList::iterator iter = innerVertices.begin();
-       iter != innerVertices.end(); ++iter) {
-    Vertex *v = (*iter);
+  for (VertexList::iterator iter = innerVertices.begin(); iter != innerVertices.end(); ++iter) {
+    Vertex* v = (*iter);
     FaceList faces = findAdjacentFaces(mesh, v);
     if (faces.empty()) {
       continue;
     }
 
     bool touchesPoorFace = false;
-    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end();
-         ++faceIter) {
+    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
       if ((*faceIter)->quality() < AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD) {
         touchesPoorFace = true;
         break;
@@ -1646,9 +1582,8 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool &changed) {
     double targetY = 0.0;
     double totalWeight = 0.0;
 
-    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end();
-         ++faceIter) {
-      Face *face = (*faceIter);
+    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
+      Face* face = (*faceIter);
       Vertex* a = nullptr;
       Vertex* b = nullptr;
 
@@ -1676,8 +1611,7 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool &changed) {
       const double sign = (orientation >= 0.0) ? 1.0 : -1.0;
       const double idealX = midx + sign * sqrt3Half * edgeLen * nx;
       const double idealY = midy + sign * sqrt3Half * edgeLen * ny;
-      const double deficit =
-          std::max(0.0, AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD - quality);
+      const double deficit = std::max(0.0, AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD - quality);
       const double weight = std::max(0.05, deficit * deficit);
       targetX += weight * idealX;
       targetY += weight * idealY;
@@ -1694,12 +1628,10 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool &changed) {
     double blend = AFT_LOCAL_POSTPROCESS_BLEND;
     bool accepted = false;
     for (int trial = 0; trial < 4; ++trial) {
-      v->setPosition(oldx + blend * (targetX - oldx),
-                     oldy + blend * (targetY - oldy));
+      v->setPosition(oldx + blend * (targetX - oldx), oldy + blend * (targetY - oldy));
 
       bool negativeSurface = false;
-      for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end();
-           ++faceIter) {
+      for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
         if ((*faceIter)->orientedSurface() <= TOLERANCE_AFT) {
           negativeSurface = true;
           break;
@@ -1725,17 +1657,14 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool &changed) {
     }
   }
 
-  for (EdgeList::iterator iter = innerEdges.begin(); iter != innerEdges.end();
-       ++iter) {
+  for (EdgeList::iterator iter = innerEdges.begin(); iter != innerEdges.end(); ++iter) {
     (*iter)->setVertices((*iter)->getV1(), (*iter)->getV2());
   }
 
   return true;
 }
 
-const AdvancingFrontRunStats& AdvancingFront::GetRunStats() const {
-  return run_stats;
-}
+const AdvancingFrontRunStats& AdvancingFront::GetRunStats() const { return run_stats; }
 
 string AdvancingFront::getText() {
   string s;

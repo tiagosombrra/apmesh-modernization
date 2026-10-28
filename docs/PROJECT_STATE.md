@@ -1,5 +1,21 @@
 # Project state
 
+## Angular selection temporary ownership
+
+PR #114 is integrated and revalidated as main
+`f37ea32f00e223c725b81a7c0eba6852aee0701b`: 64 CTest contracts, 182 Python
+tests and nine frozen states/45 artifacts. The next bounded audit reproduced
+retention of the first angular temporary when construction of the second fails.
+The current repair gives both temporaries local exclusive owners and preserves
+normal construction, numerical evaluation and explicit deletion order.
+
+Initial five-layout GCC/ASan/CRT controls pass. Exact-head scientific, tooling and
+instrument gates remain required before integration; [scope and validation](evidence/FRONT_ANGLE_TEMPORARIES.md)
+preserve the original failed contracts and qualification limits. Stage 3 remains
+open, without a mesh-quality or whole-process claim. After integration/main
+qualification, diagnose borrowed-endpoint Face lifetime in interceptionTest.
+Earlier active items below are historical; inverse directions remain unapproved.
+
 ## Actual accepted steps in final serial reports
 
 PR #113 is integrated as main `103a81c7491674035a9487e48a16295a9214b271`.

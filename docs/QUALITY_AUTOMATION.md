@@ -1,5 +1,15 @@
 # Local quality automation
 
+## Angular selection ownership gate
+
+`application.front_angle_ownership` calls actual native angular selection in five
+nonempty layouts and denies every calibrated temporary allocation. Original and
+repaired instrument campaigns, numerical/order comparison, negative controls,
+exact-head scientific requirements and coverage limits are defined in
+[the bounded evidence](evidence/FRONT_ANGLE_TEMPORARIES.md). Preserve each CTest
+invocation in its own evidence subdirectory; never replace earlier failures.
+Stage 3 remains open.
+
 ## Actual accepted steps in final serial reports
 
 The report-identity repair keeps 64 CTest entries and adds ten checker tests
