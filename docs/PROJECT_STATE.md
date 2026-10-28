@@ -1,5 +1,24 @@
 # Project state
 
+## Actual accepted steps in final serial reports
+
+PR #113 is integrated as main `103a81c7491674035a9487e48a16295a9214b271`.
+The following audit found accepted scalar values correctly retained, but final
+console labels used history ordinals: accepted steps 0/1/4 appeared as 0/1/2 in
+both archived and unarchived controlled callers. The serial repair records actual
+accepted IDs locally to each Generator call and uses them only for final labels.
+It preserves scalar histories, decisions, attempt diagnostics and runtime formulas.
+
+Initial actual-caller checks pass the 0/1/4 gap with unchanged scalar output and
+archived scientific artifacts, and the uninjected plane stops at initial step 0.
+Ten checker tests pass. Exact-head caller/scientific/tooling gates remain required
+before integration; see [scope and gates](evidence/ACCEPTED_STEP_REPORTING.md).
+The preserved initial executor failure wrongly expected a zero-step stable config;
+the existing loader clamps that value. No production policy was changed to make
+the test pass. Stage 3 remains open without a new memory-slice count. Complete
+integration and main qualification before selecting another closure obligation.
+Earlier active items below are historical; reverse directions remain unapproved.
+
 ## Accepted errors at serial stopping guards
 
 PR #112 is integrated as main `ab64af7c25c06090ab76b618de099f27549fe117`.

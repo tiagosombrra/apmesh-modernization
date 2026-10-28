@@ -1,5 +1,21 @@
 # Technique-preserving modernization plan
 
+## Active item: actual accepted steps in final serial reports
+
+Record actual accepted step IDs in function-local serial storage, initialize it
+with step 0, append only on acceptance and use it for final console labels.
+Classification: engineering-only report identity repair. Preserve all scalar
+histories, floating-point order, scientific policies, attempted diagnostics,
+runtime counters/formulas and nonserial report inputs. The public class layout
+and helper signatures remain unchanged; allocation timing/counts can change.
+Require archived/unarchived acceptance gaps, consecutive acceptance, uninjected
+initial-plane convergence, missing/duplicate-ledger detection and original failure.
+Preserve all nine frozen mesh states and 45 artifacts, with independent physical/
+UV quality and boundary checks. Require exact scalar output preservation and
+applicable exact-head/main gates in [the evidence](evidence/ACCEPTED_STEP_REPORTING.md).
+Stage 3 remains open. Complete integration/main qualification before opening a
+different item in the closure inventory. Earlier active items are historical.
+
 ## Active item: accepted errors at serial stopping guards
 
 Bind loop-entry convergence checks to committed global history and the restored

@@ -1,5 +1,12 @@
 # Stage 3 closure inventory
 
+The bounded serial report repair records actual accepted IDs for final console
+labels, independently of report archives. [Scope and gates](../evidence/ACCEPTED_STEP_REPORTING.md)
+require archived/unarchived gaps, unchanged scalar/scientific output and corrupt-
+ledger detection. It does not change runtime normalization, qualify full metadata
+rollback/resume or close Stage 3. Added local storage has normal RAII lifetime;
+no unchanged-allocation or new whole-process/parallel claim follows.
+
 The serial stopping repair binds only loop-entry guards to committed global
 history and restored accepted local errors. [Delivery gates and limits](../evidence/ACCEPTED_ERROR_STOPPING.md)
 separate rejected-error controls from accepted-error controls and frozen science.
