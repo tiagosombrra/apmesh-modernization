@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Accepted errors at serial stopping guards
+
+The serial loop-entry repair keeps the existing 64 CTest entries and adds eight
+trace-checker controls (172 Python tests). `tests/stopping_error_case.py` checks
+actual caller accepted-history/local-error provenance, continuation or convergence,
+global-first equality, terminal labels and complete nonempty observations.
+Complete-caller qualification separately exercises rejected scalar boundary
+controls, accepted-error controls, initial empty data, archived/unarchived later
+acceptance and growth rejection. Synthetic branch/state controls are not solver-
+produced convergence or scientific quality results. Require original failures,
+exact frozen science, source preservation, caller analysis and exact-head/main
+gates in [the repair evidence](evidence/ACCEPTED_ERROR_STOPPING.md).
+
 ## Explicit accepted mesh root
 
 GNU serial adds `application.accepted_mesh_root` (64 CTest entries).

@@ -1,5 +1,21 @@
 # Technique-preserving modernization plan
 
+## Active item: accepted errors at serial stopping guards
+
+Bind loop-entry convergence checks to committed global history and the restored
+accepted local vector, keeping attempted scalar diagnostics and every threshold,
+comparison, global-first priority, retry/acceptance decision and nonserial input.
+Classification: behavior-changing accepted-state data-association defect repair.
+Require actual caller rejected-error boundary controls, accepted convergence,
+initialization/empty local data, later acceptance after consecutive rejection,
+archived/unarchived ownership, growth-rejection continuation and original failure.
+Preserve all nine frozen mesh states, 45 artifacts, physical/UV quality, boundaries
+and acceptance fields. Require checker negatives, applicable analysis and exact-
+head/main delivery gates in [the evidence](evidence/ACCEPTED_ERROR_STOPPING.md).
+Stage 3 remains open. Next audit after delivery: final error/metadata reporting
+after outer rejection; broader rollback, provisional-progress policy, resume and
+parallel qualification remain separate. Earlier active items are historical.
+
 ## Active item: explicit accepted mesh root
 
 Repair accepted identity/lifetime independently of the last saved report entry.

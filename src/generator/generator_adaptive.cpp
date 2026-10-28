@@ -1427,19 +1427,30 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 
   // Gerar malha enquanto o erro global for acima do erro desejado
   while (this->step_ < current_policy_.max_steps) {
-    if (this->error_local_process_ <= EPSYLON) {
+#if USE_MPI || USE_OPENMP
+    const double stopping_global_error = this->error_local_process_;
+    const double stopping_local_error = max_sub_error;
+#else
+    // Initial and subsequently committed errors describe the retained accepted mesh.
+    const double stopping_global_error = error_step_.back();
+    const double stopping_local_error =
+        last_submesh_error_.empty()
+            ? 0.0
+            : *std::max_element(last_submesh_error_.begin(), last_submesh_error_.end());
+#endif
+    if (stopping_global_error <= EPSYLON) {
       stop_reason_ = "target_error_reached";
 #if USE_PRINT_RESULTS
       cout << "Parando: erro global <= EPSYLON (" << EPSYLON << ") no step " << this->step_
-           << " valor " << this->error_local_process_ << endl;
+           << " valor " << stopping_global_error << endl;
 #endif
       break;
     }
-    if (max_sub_error <= TOL_LOCAL) {
+    if (stopping_local_error <= TOL_LOCAL) {
       stop_reason_ = "local_error_threshold_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: erro local máximo (" << max_sub_error << ") <= TOL_LOCAL (" << TOL_LOCAL
-           << ") no step " << this->step_ << endl;
+      cout << "Parando: erro local máximo (" << stopping_local_error << ") <= TOL_LOCAL ("
+           << TOL_LOCAL << ") no step " << this->step_ << endl;
 #endif
       break;
     }

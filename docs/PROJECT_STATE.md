@@ -1,5 +1,24 @@
 # Project state
 
+## Accepted errors at serial stopping guards
+
+PR #112 is integrated as main `ab64af7c25c06090ab76b618de099f27549fe117`.
+The following audit measured three loop entries using attempted global/local
+errors after rejection restoration, without natural premature convergence in
+the frozen articles. Six synthetic rejected-error controls exposed false stop
+labels; two above-limit controls continued. The serial repair now reads committed
+global history and the restored local vector at loop entry, preserving attempted
+scalars, comparisons, priority, thresholds and nonserial scalar selection.
+
+Initial real-caller checks pass rejected-global continuation, accepted global/local
+equality and empty local data; the original fails six stronger trace contracts.
+Eight checker tests pass. Exact-head scientific, caller and local tooling gates
+remain required before integration; see [scope and gates](evidence/ACCEPTED_ERROR_STOPPING.md).
+Stage 3 stays open without a new memory-slice count or quality-improvement claim.
+After delivery, the next single audit is error/metadata identity at final reporting
+after outer rejection, without broad rollback or a new stopping policy. Earlier
+active items below are historical; reverse-direction trials remain unapproved.
+
 ## Explicit accepted mesh root
 
 PR #111 is integrated as main `802eab2a2a77e15867b9398612eadf8a01089133`.
