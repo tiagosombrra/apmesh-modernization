@@ -1,5 +1,20 @@
 # Technique-preserving modernization plan
 
+## Active item: angular selection temporary ownership
+
+Repair the reproduced second-temporary construction leak in findBestVertex with
+two exclusive local owners. Preserve the two construction expressions, floating
+order, candidate/tie decisions and normal first/second deletion order. This is a
+behavior-changing exception-safety repair with unchanged successful science.
+Require five actual native selection layouts, per-profile complete allocation
+denial sweeps, exact successful original/candidate observations, independent
+numeric expectations, ASan/CRT instrument controls and checker negatives.
+[Delivery gates](evidence/FRONT_ANGLE_TEMPORARIES.md) require exact-head regression,
+all nine states/45 artifacts, independent quality/boundary checks and revalidation
+on main. No full-stage or new scientific result follows. Next diagnose the
+adjacent borrowed-endpoint Face lifetime only after this delivery is integrated.
+Earlier active items below are historical.
+
 ## Active item: actual accepted steps in final serial reports
 
 Record actual accepted step IDs in function-local serial storage, initialize it

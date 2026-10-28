@@ -1,5 +1,12 @@
 # Stage 3 closure inventory
 
+The bounded angular temporary repair covers second-object construction failure
+in findBestVertex, successful numerical selection and explicit deletion order.
+[Scope and required gates](../evidence/FRONT_ANGLE_TEMPORARIES.md) retain native
+original failures and isolated ASan/CRT controls. Adjacent borrowed-endpoint Face
+construction, other pending adoption, failed-tree reuse and whole-process memory
+remain separate; Stage 3 is open.
+
 The bounded serial report repair records actual accepted IDs for final console
 labels, independently of report archives. [Scope and gates](../evidence/ACCEPTED_STEP_REPORTING.md)
 require archived/unarchived gaps, unchanged scalar/scientific output and corrupt-
