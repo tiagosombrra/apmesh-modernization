@@ -1,5 +1,31 @@
 # Technique-preserving modernization plan
 
+## Active item: second new Edge ownership in makeMesh
+
+The source-preserving diagnosis at qualified main
+`4c6f80fd5a8f23ed3e8ccfd172987392a96abfa3` completed 1831 native matrix
+processes and reproduced 288 pending second-Edge/cache retentions, including
+144 with a freshly adopted first Edge. It is diagnosis, not a qualified repair.
+[Evidence and required gates](evidence/SECOND_EDGE_ADOPTION_AUDIT.md) retain
+actual cleanup/invalid controls, exact normal comparisons and first-edge/Face
+prefix preservation.
+
+Next single repair: hold the original second new Edge expression in an exclusive
+pending owner until innerEdges.push_back succeeds. On failure remove its
+observations from both live endpoints before detaching borrowed vertices and
+deleting the Edge/caches. Release immediately after owning-list publication.
+Classification of that future implementation: behavior-changing exception-
+safety/ownership defect repair, with unchanged successful scientific behavior.
+
+Preserve the first existing/adopted edge, committed Face prefix, original new-
+expression ID timing, endpoint/selector order, allocations and later already-owned
+observer/queue/cell partial states. Require complete native denial sweeps,
+nonallocating production cleanup, live borrowers/adjacency, original and actual
+invalid-cleanup controls, exact normal comparisons and exact-head/main regression,
+scientific and tooling gates before repair integration. Do not introduce general
+retry/rollback or change scientific policy. Stage 3 stays open with 37 numbered
+qualified slices; earlier active items below are historical.
+
 ## Active item: first new Edge ownership in makeMesh
 
 The bounded repair now holds the original first new Edge expression in an

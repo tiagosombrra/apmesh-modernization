@@ -1,5 +1,15 @@
 # Stage 3 closure inventory
 
+The [second new-edge adoption diagnosis](../evidence/SECOND_EDGE_ADOPTION_AUDIT.md)
+reproduces 288 original pending Edge/cache retentions, including 144 after a
+first new Edge is already adopted. Actual native owner/adjacency/cache and Face
+prefix observations survive; normal instrumented/unobserved calls agree in 96
+comparisons. The next single repair must own the second pending Edge and remove
+endpoint observations before failed-adoption deletion, releasing after successful
+owning-list publication. This record includes no production repair or numbered
+slice. Later already-owned partial states, general retry/rollback and process-
+wide lifetime retain separate obligations; Stage 3 stays open.
+
 The first new Edge now has an exclusive pending owner through endpoint observer
 publication and owning-list insertion. Failed-adoption cleanup removes endpoint
 observations before detaching/deleting the payload; release follows successful

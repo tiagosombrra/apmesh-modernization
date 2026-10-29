@@ -1,5 +1,30 @@
 # Project state
 
+## Second new-edge adoption diagnosis
+
+PR #121 is integrated and revalidated as main
+`4c6f80fd5a8f23ed3e8ccfd172987392a96abfa3`: 70 CTest contracts, 286 Python
+tests, 1335 native outcomes, nine scientific states/45 artifacts and 123 boundary
+comparisons. Its initial preparation/build failures and original controls remain
+preserved separately from the completed integration.
+
+The next source-preserving diagnosis completed a matrix of 1831 native processes
+and reproduced 288 second-Edge/cache retentions before innerEdges adoption.
+Half occur after a first new Edge is already adopted. Both that first-edge owner
+and zero/one committed Face prefix remain intact. The diagnosis includes 96 exact
+normal comparisons, 288 explicit caller-cleanup controls, 288 actual wrong-deleter
+detections, 64 actual stale-adjacency ASan reads, 189 rejected observation
+corruptions and 14 rejected source-anchor corruptions.
+
+No second-edge production repair is included. The single next item is exclusive
+pending ownership through second-edge adoption, removing both endpoint
+observations before detaching/deleting an unadopted payload. [Evidence and
+required repair gates](evidence/SECOND_EDGE_ADOPTION_AUDIT.md) retain original
+failures, ID/publication timing and already-owned partial states. Stage 3 stays
+open with 37 numbered qualified slices; this diagnosis adds none. Stages 0-2
+remain closed for measured scope; stages 4-11 remain pending. Earlier active
+items below are historical.
+
 ## First new-edge pending ownership
 
 PR #120 integrated the source-preserving diagnosis as main

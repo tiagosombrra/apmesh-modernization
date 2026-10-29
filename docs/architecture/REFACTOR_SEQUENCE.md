@@ -1,5 +1,14 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+Current single item: repair second new-edge pending ownership in makeMesh after
+the completed [source-preserving diagnosis](../evidence/SECOND_EDGE_ADOPTION_AUDIT.md)
+at PR #121's qualified main. This diagnostic delivery changes documentation only.
+Require actual endpoint observation removal, nonallocating pending deletion,
+first-edge/Face-prefix and original ID/order preservation, complete native
+controls and exact-head/main gates. General retry/rollback and broader lifetime
+remain separate. Stage 3 stays open with 37 numbered qualified slices; earlier
+queue statements are historical.
+
 Current bounded delivery: first new-edge pending ownership in makeMesh after
 PR #120's diagnostic main qualification. [Required gates](../evidence/FIRST_EDGE_OWNERSHIP.md)
 cover actual endpoint observation removal, nonallocating pending cleanup,
