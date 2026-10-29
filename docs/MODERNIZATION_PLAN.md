@@ -1,5 +1,19 @@
 # Technique-preserving modernization plan
 
+## Active item: geometry-phase front marker ownership
+
+Keep the result of the original default Edge expression in an exclusive local
+owner. Its nonallocating deleter removes matching marker observations from front
+before deleting the payload. Preserve the raw marker identity, initial queue
+publication, all other edge order and explicit normal retirement point.
+Classification: behavior-changing exception-safety/marker-ownership defect repair.
+Require complete marker/Face allocation denials, the first native selector denial,
+zero/one committed prefix and actual cleanup/invalid-observer controls. [Exact
+delivery gates](evidence/FRONT_MARKER_OWNERSHIP.md) require frozen science,
+local regression/tooling and main revalidation. Stage 3 remains open. Next diagnose
+the three-edge geometry wrapper Face publication after integration; earlier active
+items are historical.
+
 ## Active item: pending front Face ownership
 
 Own the result of the original Face new expression until mesh publication
