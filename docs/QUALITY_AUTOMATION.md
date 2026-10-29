@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Second new-edge pending-owner gate
+
+`application.second_edge_ownership` calls native makeMesh/selection across 32
+contexts with an existing or freshly adopted first edge. Complete second-edge
+denials require live borrower/adjacency, first-edge/Face-prefix preservation,
+actual cache release and zero production-cleanup allocation attempts. Delivery
+requires 71 CTest entries and 322 Python tests, including 36 new checker/source-
+preparation controls. The three-profile matrix requires 2663 native outcomes,
+preserving 288 original failures, 96 exact normal and 992 denial comparisons.
+Require actual plain-deleter/stale-adjacency controls and separate invalid UAF/
+leak analyzer detections. [Scope and exact-head/main gates](evidence/SECOND_EDGE_OWNERSHIP.md)
+keep earlier vertex creation/adoption, broader topology and retry unqualified.
+
 ## First new-edge pending-owner gate
 
 `application.first_edge_ownership` checks native selection, complete first-edge

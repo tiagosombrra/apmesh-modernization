@@ -2,6 +2,15 @@
 
 ## Active item: second new Edge ownership in makeMesh
 
+The bounded repair now holds the original second Edge expression in an exclusive
+pending owner. Its deleter removes both endpoint observations before detachment
+and deletion on failure; release follows successful innerEdges publication.
+Initial controls pass 2663 native outcomes, including 288 production cleanups
+without allocation. [Exact delivery gates](evidence/SECOND_EDGE_OWNERSHIP.md)
+require full regression/science/tooling on the exact repair head and merged main.
+After delivery, the next separate diagnosis is geometry-phase ideal Vertex
+ownership in findBestVertex. Stage 3 stays open without a numbered-slice increment.
+
 The source-preserving diagnosis at qualified main
 `4c6f80fd5a8f23ed3e8ccfd172987392a96abfa3` completed 1831 native matrix
 processes and reproduced 288 pending second-Edge/cache retentions, including
@@ -10,7 +19,7 @@ processes and reproduced 288 pending second-Edge/cache retentions, including
 actual cleanup/invalid controls, exact normal comparisons and first-edge/Face
 prefix preservation.
 
-Next single repair: hold the original second new Edge expression in an exclusive
+Repair contract: hold the original second new Edge expression in an exclusive
 pending owner until innerEdges.push_back succeeds. On failure remove its
 observations from both live endpoints before detaching borrowed vertices and
 deleting the Edge/caches. Release immediately after owning-list publication.

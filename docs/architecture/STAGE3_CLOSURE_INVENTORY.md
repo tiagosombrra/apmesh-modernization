@@ -1,5 +1,14 @@
 # Stage 3 closure inventory
 
+The second missing Edge now has an exclusive pending owner through adjacency
+and innerEdges publication. Failed-adoption deletion removes both endpoint
+observations before detachment; release follows owning-list insertion.
+[Scope and required gates](../evidence/SECOND_EDGE_OWNERSHIP.md) retain 288
+original pending failures and require actual nonallocating cleanup, live first-
+edge/Face-prefix controls and full exact-head/main validation. Earlier geometric
+Vertex creation/adoption, broader topology, later owned partial states, general
+retry/rollback and full-process lifetime remain separate; Stage 3 stays open.
+
 The [second new-edge adoption diagnosis](../evidence/SECOND_EDGE_ADOPTION_AUDIT.md)
 reproduces 288 original pending Edge/cache retentions, including 144 after a
 first new Edge is already adopted. Actual native owner/adjacency/cache and Face
