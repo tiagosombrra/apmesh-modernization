@@ -1,5 +1,19 @@
 # Technique-preserving modernization plan
 
+## Active item: three-edge geometry shortcut Face ownership
+
+Keep the result of the original public shortcut Face expression in an exclusive
+pending owner; detach borrowed endpoints before deleting it on failure, and
+release only after the original mesh-list publication. Classification:
+behavior-changing exception-safety/pending-ownership defect repair. Preserve
+the less-than-three guard, sorting bypass, first/second/last endpoint selection,
+allocation order, return status and new-expression ID timing. Require all native
+Face/cache/publication denials across cyclic fronts, sorting flags and zero/one
+committed prefix. [Required gates](evidence/THREE_EDGE_FACE_OWNERSHIP.md) include
+actual cleanup/wrong-deleter controls, frozen science and exact-head/main checks.
+Stage 3 remains open. After delivery, diagnose first new-edge adoption in makeMesh;
+earlier active items are historical.
+
 ## Active item: geometry-phase front marker ownership
 
 Keep the result of the original default Edge expression in an exclusive local

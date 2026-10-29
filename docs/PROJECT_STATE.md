@@ -1,5 +1,22 @@
 # Project state
 
+## Three-edge geometry shortcut Face ownership
+
+PR #118 is integrated and revalidated as main
+`2162dc87064b08f2bae3224ae1c96749eaa8fbbd`: 68 CTest contracts, 232 Python
+tests, 181 native outcomes and nine scientific states/45 artifacts. The following
+public-wrapper diagnosis reproduced 36 original pending-Face retentions across
+292 processes, with unchanged normal native results and live borrower controls.
+
+The current repair owns the original shortcut Face expression until mesh-list
+publication succeeds. Its deleter detaches borrowed vertices before deleting the
+pending Face/cache, preserving endpoint order, return/guard behavior and original
+ID timing. [Scope and required gates](evidence/THREE_EDGE_FACE_OWNERSHIP.md) retain
+the original failures and actual wrong-deleter controls. Exact-head integration
+and main revalidation remain required. Stage 3 stays open without a new numbered
+memory slice or quality/whole-process claim. Next after delivery: diagnose the
+first new-edge adoption path in makeMesh. Earlier active items are historical.
+
 ## Geometry-phase front marker ownership
 
 PR #117 is integrated and revalidated as main

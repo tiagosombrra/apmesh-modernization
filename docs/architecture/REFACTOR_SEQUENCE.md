@@ -1,5 +1,12 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+Current bounded delivery: public three-edge geometry shortcut Face ownership
+after PR #118 main qualification. Exact source/native/scientific gates and current
+integration status are authoritative in PROJECT_STATE.md and [the shortcut
+evidence](../evidence/THREE_EDGE_FACE_OWNERSHIP.md). After delivery, diagnose the
+first new-edge adoption in makeMesh. Earlier queue statements are historical;
+the last numbered qualified memory slice remains 37 and Stage 3 stays open.
+
 Current bounded delivery: geometry-front marker ownership after PR #117 main
 qualification. Exact source/native/scientific gates and integration status are
 authoritative in PROJECT_STATE.md and [the marker evidence](../evidence/FRONT_MARKER_OWNERSHIP.md).
