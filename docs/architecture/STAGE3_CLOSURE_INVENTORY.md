@@ -1,5 +1,14 @@
 # Stage 3 closure inventory
 
+The [first new-edge adoption diagnosis](../evidence/FIRST_EDGE_ADOPTION_AUDIT.md)
+reproduces 144 original pending Edge/cache retentions before innerEdges adoption,
+with unchanged native successful results and actual invalid-cleanup controls.
+No production repair is included. The single next repair must own that pending
+Edge, remove endpoint observations before failed-adoption deletion and release
+only after successful owning-list publication. The second new edge, later owned
+observer publication, general retry/rollback and process-wide lifetime retain
+their separate obligations. Stage 3 remains open; no numbered slice is added.
+
 The public exact-three geometry shortcut now holds a pending Face owner until
 mesh-list publication. [Scope and gates](../evidence/THREE_EDGE_FACE_OWNERSHIP.md)
 retain 36 original failed contracts and require actual borrowed-endpoint cleanup,

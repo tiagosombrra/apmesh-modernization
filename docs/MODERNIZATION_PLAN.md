@@ -1,5 +1,30 @@
 # Technique-preserving modernization plan
 
+## Active item: first new Edge ownership in makeMesh
+
+The source-preserving diagnosis at qualified main
+`649f87759af7a0c749283727598113662464451e` completed 903 native processes,
+reproducing 144 original pending-ownership failures. It is diagnosis, not a
+qualified repaired memory slice. [Evidence and required gates](evidence/FIRST_EDGE_ADOPTION_AUDIT.md)
+retain rejected preparation, instrument controls and later already-owned states.
+
+Next single repair: hold the original first new Edge expression in an exclusive
+pending owner until innerEdges.push_back succeeds. On exceptional cleanup,
+remove its endpoint adjacency before detaching borrowed vertices and deleting
+the payload/caches. Release immediately after successful owner-list adoption;
+preserve later observer/queue/cell publications and their partial failure states.
+Classification of that proposed implementation: behavior-changing exception-
+safety/ownership defect repair, with unchanged successful scientific behavior.
+
+Preserve the original new-expression ID timing, selector, endpoint order,
+allocations, formulas and acceptance/stopping policy. Require complete native
+denial sweeps, nonallocating production cleanup, live borrower/adjacency/prefix
+checks, original and actually invalid cleanup controls, exact normal comparisons
+and exact-head/main regression/scientific/tooling gates before repair integration.
+The second new-edge path and full retry/rollback remain separate. Stage 3 stays
+open; the last numbered qualified slice remains 37. Earlier active items below
+are historical.
+
 ## Active item: three-edge geometry shortcut Face ownership
 
 Keep the result of the original public shortcut Face expression in an exclusive
