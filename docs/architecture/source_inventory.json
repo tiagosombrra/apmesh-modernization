@@ -445,7 +445,7 @@
     },
     {
       "path": "tests/shortcut_face_memory/CMakeLists.txt",
-      "sha256": "da9c00c9718a69b8caeb89b37f62ccff3cb75b236be5aeb82e87841dab86b7a6"
+      "sha256": "38332d3e27e64a5ef4dad1a3bd289dcdd4455754ef6dbbd52086e769dbcb7f5c"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",
