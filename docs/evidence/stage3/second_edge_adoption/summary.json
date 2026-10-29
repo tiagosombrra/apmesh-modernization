@@ -1,0 +1,147 @@
+{
+  "status": "diagnosis_verified",
+  "revision": "4c6f80fd5a8f23ed3e8ccfd172987392a96abfa3",
+  "tree": "35e4b68e6058ea66ba014ba659d84bd4bbe3c6aa",
+  "processes": 1831,
+  "original_failed_pending_ownership_contracts": 288,
+  "failures_with_fresh_first_edge_already_adopted": 144,
+  "normal_native_comparisons": 96,
+  "construction_unwinds": 416,
+  "owned_partial_publications": 288,
+  "explicit_caller_cleanup_controls": 288,
+  "actual_wrong_deleter_detections": 288,
+  "actual_asan_stale_adjacency_detections": 64,
+  "independent_instrument_controls": 7,
+  "observation_corruptions_rejected": 189,
+  "source_anchor_corruptions_rejected": 14,
+  "source_sha256": "c43c18bfeb99e6d98fc46907fa065c9ecdac121ff649e8e59813cd8d2be31274",
+  "matrix_report_sha256": "375c6c5deb33aa069d3348b90e9cd5507e81df3fe41e7731f480abf392e43ae3",
+  "prior_integration_sha256": "93616f07c33941381b954613208786572435f43bc875c920c3e3f4b97231fc79",
+  "prior_main_verification_sha256": "de02be437fe18defd3ebb1780907afd408a390e8eb08b5a91290d33d19eedd1b",
+  "tracked_files_preserved": 2136,
+  "raw_article_files_preserved": 66,
+  "production_source": "unchanged",
+  "candidate_qualification": "none",
+  "stage3": "open",
+  "next": "Own the original second new Edge until innerEdges adoption; remove both endpoint observations before detaching/deleting an unadopted payload while preserving the first-edge/Face prefix and original ID/publication order.",
+  "scope": "Native second e2 path, fixed closed quadrilateral/pentagon, existing or freshly adopted first edge, both queues, topology/prepared geometry, sorting flags and zero/one committed Face prefix. No arbitrary topology/aliases, public-wrapper sorting, retry/rollback, whole-process/parallel, LSan/UBSan or quality/performance claim.",
+  "verified_utc": "2026-10-29T20:14:14Z",
+  "classification": "source-preserving diagnosis; documentation-only delivery",
+  "verification_sha256": "688cdd732cd2040e3f5d18a575446eff568e6431854f1ef66c69f150883609e3",
+  "context_fields": [
+    "front_based",
+    "geometry_phase",
+    "boundary_sorted",
+    "face_prefix",
+    "fresh_first_edge"
+  ],
+  "contexts": 32,
+  "retained_local_directory": "build\\second-edge-adoption-audit",
+  "executables": {
+    "gcc": {
+      "second_edge_probe": {
+        "path": "gcc\\second_edge_probe.exe",
+        "sha256": "b20dd54efb123e7b37424b9aef60b8f5f717255e87df64e24b3ec1fb6b91a5a9"
+      },
+      "second_edge_unobserved": {
+        "path": "gcc\\second_edge_unobserved.exe",
+        "sha256": "d0a73d03065b9a1b688206e831bc8c156b0b25b08f42d40cf6a3e76865f20238"
+      }
+    },
+    "asan": {
+      "second_edge_probe": {
+        "path": "asan\\RelWithDebInfo\\second_edge_probe.exe",
+        "sha256": "2a1c7e0c8a430d0b461a55bbde05aee82c33e444d8553d2ec8a998a775fcb46c"
+      },
+      "second_edge_unobserved": {
+        "path": "asan\\RelWithDebInfo\\second_edge_unobserved.exe",
+        "sha256": "b8d8ea88224daa17dcd06e245fbb35bacda0f4b956a238937aaddf2d260d33b6"
+      }
+    },
+    "crt": {
+      "second_edge_probe": {
+        "path": "crt\\Debug\\second_edge_probe.exe",
+        "sha256": "9c98cd4849ab7051905c748e448cfa1b52c6d719572e40879fda99ff4e8314d6"
+      },
+      "second_edge_unobserved": {
+        "path": "crt\\Debug\\second_edge_unobserved.exe",
+        "sha256": "33bb19dc0187650b064a08181f52fbc89cf0c9609750a1e564d07d0ec60a5984"
+      }
+    }
+  },
+  "fixed_coordinates": {
+    "committed_prefix": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0.5,
+        1
+      ]
+    ],
+    "existing_first_side": [
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        3,
+        1
+      ]
+    ],
+    "fresh_first_diagonal": [
+      [
+        3,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        2,
+        2
+      ]
+    ]
+  },
+  "reproduction_files_sha256": {
+    "assemble.py": "f0b2f2d2eb5cb3beedbf0b67e89db23a3daace8673c80a0c8c0de36c982f04f0",
+    "prefix.inc": "13283e210300c618cbafe87bc09e72a1f58d835723f447846f939ec9f9f3b8b6",
+    "fixture.inc": "08e744b5f6a80dfb8b80e506915c5f0f11d24a67d55ad8fab66b9ba21e5269ff",
+    "main.inc": "144c5886541c9db1df58571939769d8ae62f4ac7d10da420883325a00b599c4f",
+    "probe.cpp": "a6e43726bdef1c632eea7271969444a04915fd30f5a5daa9fe4c207d61b8bdf2",
+    "CMakeLists.txt": "6bbcae06c40554b61dbad49d4d086233f63247edc40279e4c00943db7915b71b",
+    "observed_front.cpp": "c31aa504ebf161c340a5c2f97baba09a74e284f0e72748f227b4c2f4acd0af2b",
+    "original_front.cpp": "c43c18bfeb99e6d98fc46907fa065c9ecdac121ff649e8e59813cd8d2be31274",
+    "second_edge_hooks.h": "f0c7f1691d5655c08d5b2d4dfa507864bd31edd7599fe3f2e1402fa4f06c059b",
+    "uaf_control.cpp": "21c103aa5242a92e1bee218f8f05db91bbcd1a24762ca4b6859d2408fd821c8a",
+    "leak_control.cpp": "77bfc6c7d9778de93a6f913f8b387a2b24cd5ba7c78243095e05e6e85c238dec",
+    "analyze.py": "51282b0618b36a9a06c6735a969b9e4156314ab4278611a4a1f6a79911009594",
+    "build_profiles.py": "e75bbd58cacaa1c258ec61f5809f3c65aaf0f66ca082444d8835afda55790049",
+    "run.py": "37d1ec3b9b71fe686a91248ec151ab2e41a51621f8c3d56f904b12288a667c4e",
+    "verify.py": "5b887d2ebb75e7ba5b2d137bf3b6c33238932bc0aa47fc98f29c2585470e95a2",
+    "preparation.json": "b7d108017ede01b3976e8ada13a55832ac010da271fee43373fc7fd76a9b60be",
+    "checker-negatives.json": "2d7a66c7a9d672790463b5014eb50f7e791211f82399c92ad178877db240d428"
+  }
+}
