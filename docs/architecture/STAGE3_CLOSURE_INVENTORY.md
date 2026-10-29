@@ -1,5 +1,12 @@
 # Stage 3 closure inventory
 
+The public exact-three geometry shortcut now holds a pending Face owner until
+mesh-list publication. [Scope and gates](../evidence/THREE_EDGE_FACE_OWNERSHIP.md)
+retain 36 original failed contracts and require actual borrowed-endpoint cleanup,
+wrong-deleter controls and distinct guard-only coverage. General front creation,
+new-edge adoption, arbitrary topology/aliases and complete recovery/process-wide
+lifetime remain separate. Stage 3 stays open.
+
 Geometry-front marker cleanup now uses an exclusive local owner that removes its
 queue observation before deleting its own payload. [Scope and gates](../evidence/FRONT_MARKER_OWNERSHIP.md)
 retain 34 original retentions and require actual invalid-observer/premature-delete

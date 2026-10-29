@@ -1375,8 +1375,17 @@ enum MethodStatus AdvancingFront::makeGeometryBasedMesh() {
 
   if (front.size() == 3) {
     Vertex* v = (*(++front.begin()))->getV1();
-    Face* f = new Face(front.front()->getV1(), v, front.back()->getV1(), ++lastFaceId);
-    mesh.push_back(f);
+    struct ShortcutFaceDelete {
+      void operator()(Face* face) const noexcept {
+        face->DetachVertices();
+        delete face;
+      }
+    };
+    std::unique_ptr<Face, ShortcutFaceDelete> pending_face(
+        new Face(front.front()->getV1(), v, front.back()->getV1(), ++lastFaceId));
+
+    mesh.push_back(pending_face.get());
+    pending_face.release();
 
     return ADVF_GEOMETRY_MESH_DONE;
   }
