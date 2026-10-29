@@ -1,5 +1,28 @@
 # Project state
 
+## First new-edge adoption diagnosis
+
+PR #119 is integrated and revalidated as main
+`649f87759af7a0c749283727598113662464451e`: 69 CTest contracts, 252 Python
+tests, 397 native outcomes and nine scientific states/45 artifacts. Its original
+failures and qualification limits remain retained separately.
+
+The next source-preserving diagnosis completed 903 native processes and
+reproduced 144 original pending Edge/cache retentions before innerEdges adoption.
+It includes 48 exact normal comparisons, 144 explicit caller-cleanup controls,
+144 actual wrong-deleter detections, 16 actual stale-adjacency ASan detections
+and 51 rejected checker corruptions. Rejected fixture calibration and the
+interrupted, incorrectly predicted MSVC byte count remain preserved.
+
+No production repair is included in this diagnostic record. The single active
+item is to own the first new Edge until innerEdges publication succeeds, removing
+its endpoint observations before detaching/deleting an unadopted payload.
+[Evidence and required repair gates](evidence/FIRST_EDGE_ADOPTION_AUDIT.md)
+preserve original ID/publication timing and distinguish later owned failures.
+Stage 3 remains open with 37 numbered qualified slices; this diagnosis adds none.
+Stages 0-2 remain closed for their measured scope; stages 4-11 remain pending.
+Earlier active-item statements below are historical.
+
 ## Three-edge geometry shortcut Face ownership
 
 PR #118 is integrated and revalidated as main

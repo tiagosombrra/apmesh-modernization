@@ -1,5 +1,13 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+Current single item: repair first new-edge pending ownership in makeMesh after
+the completed [native diagnosis](../evidence/FIRST_EDGE_ADOPTION_AUDIT.md) at
+PR #119's qualified main. This diagnostic delivery changes documentation only.
+Require endpoint-observer removal before pending deletion, release after owning
+list publication, unchanged later partial states and exact-head/main gates.
+The second new-edge boundary remains separate; Stage 3 stays open and the last
+numbered qualified memory slice remains 37. Earlier queue statements are historical.
+
 Current bounded delivery: public three-edge geometry shortcut Face ownership
 after PR #118 main qualification. Exact source/native/scientific gates and current
 integration status are authoritative in PROJECT_STATE.md and [the shortcut

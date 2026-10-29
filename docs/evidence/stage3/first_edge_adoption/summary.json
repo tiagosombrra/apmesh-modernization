@@ -1,0 +1,123 @@
+{
+  "status": "diagnosis_verified",
+  "revision": "649f87759af7a0c749283727598113662464451e",
+  "tree": "52f733837dfd5e3c114c1da664074c5986ee1c8b",
+  "matrix_report_sha256": "632405b060f8c071cca9ca3a38e97abca720acf5a4963a15a4d67742f747e528",
+  "prior_main_verification_sha256": "8324e91fb5dd003c6e1b3a3376496b00b184fe805c35124b93b87e44bfcb10c7",
+  "processes": 903,
+  "reused_interrupted_cases": 281,
+  "new_matrix_processes": 622,
+  "contract_counts": {
+    "normal": 48,
+    "construction unwind": 208,
+    "original pending owner failed": 144,
+    "owned partial publication": 144,
+    "unchanged normal native caller": 48,
+    "caller cleanup control": 144,
+    "actual borrowed endpoint destruction detected": 144,
+    "independent invalid instrument detected": 7,
+    "actual stale-adjacency access detected": 16
+  },
+  "checker_corruptions_rejected": 51,
+  "tracked_files_preserved": 2125,
+  "production_source": "unchanged",
+  "scientific_policy": "unchanged",
+  "stage3": "open",
+  "candidate_qualification": "none",
+  "next": "Own the first new Edge until innerEdges publication; remove endpoint adjacency before detaching and deleting an unadopted Edge/cache.",
+  "limits": "First e1 path in native makeMesh only; fixed nondegenerate closed quadrilateral, topology/prepared geometry, both queues, sorting flags, zero/one committed Face prefix. No second new edge, arbitrary topology/aliases, wrapper sorting, retry/rollback, whole-process/parallel, LSan/UBSan, or quality/performance claim.",
+  "verified_utc": "2026-10-29T17:53:21Z",
+  "classification": "source-preserving diagnosis; documentation-only delivery",
+  "verification_sha256": "161ff84b6171886e73e75af54b08e93139ca7d57e8536085f69fdf0037d80aac",
+  "source_sha256": "c86ab634a2bed1926f6c8150a6e0c2e81cf50f3caab09d0eb153271eef9f2c92",
+  "executables": {
+    "gcc": {
+      "edge_probe": {
+        "path": "gcc\\edge_probe.exe",
+        "sha256": "32eb0eac8ce06947000791a81f37d3ae49f6baabd89f291569c7e1117f8ac7d6"
+      },
+      "edge_unobserved": {
+        "path": "gcc\\edge_unobserved.exe",
+        "sha256": "39ec55f95bbca581ee0929d144f8da8ff185d0799c0b62713257963d2074d0bb"
+      }
+    },
+    "asan": {
+      "edge_probe": {
+        "path": "asan\\RelWithDebInfo\\edge_probe.exe",
+        "sha256": "4ecef577ff04e996533133c0e71270728f81b5558abfd8e17b316bec8b1f9e96"
+      },
+      "edge_unobserved": {
+        "path": "asan\\RelWithDebInfo\\edge_unobserved.exe",
+        "sha256": "0d4a9abf452d78d0c9b1d416b70c598adcde6ac74e122f0d08f3731d507aac43"
+      }
+    },
+    "crt": {
+      "edge_probe": {
+        "path": "crt\\Debug\\edge_probe.exe",
+        "sha256": "9e24e8233797755f05de5a238c23b06f7c124065eedb84e068b2c2c816949910"
+      },
+      "edge_unobserved": {
+        "path": "crt\\Debug\\edge_unobserved.exe",
+        "sha256": "249b4e6bb0aefb9ad54ea91dbdb75404e5e8db88d1315c974875db560d5a360a"
+      }
+    }
+  },
+  "abi": {
+    "gcc": {
+      "requested_sizes": [
+        112,
+        80,
+        80
+      ],
+      "retention": [
+        3,
+        272
+      ],
+      "source": "abi-calibration\\gcc-abi.log",
+      "sha256": "69b46239ecf395d77dd0ef5ef928561740143e2a94380fac3318e1c2d864dec7"
+    },
+    "asan": {
+      "requested_sizes": [
+        120,
+        48,
+        40,
+        48,
+        40
+      ],
+      "retention": [
+        5,
+        296
+      ],
+      "source": "abi-calibration\\asan-abi-runtime-configured.log",
+      "sha256": "a46445963c8e52260222b84c69c03897e1adda8667c99ad92496e3006fcd731d"
+    },
+    "crt": {
+      "requested_sizes": [
+        120,
+        48,
+        40,
+        48,
+        40
+      ],
+      "retention": [
+        5,
+        296
+      ],
+      "source": "abi-calibration\\asan-abi-runtime-configured.log",
+      "sha256": "a46445963c8e52260222b84c69c03897e1adda8667c99ad92496e3006fcd731d"
+    }
+  },
+  "retained_local_directory": "build\\first-edge-adoption-audit-corrected",
+  "reproduction_files_sha256": {
+    "prepare.py": "ab7584bb6bb4901ceb6113c3d9d417821c8902b363e639d3e63f73389d9247a5",
+    "assemble.py": "858c9e6c04c29c91673a19799962ab8917e25c2da4212da06701bda3f510bc10",
+    "CMakeLists.txt": "2fda90889ffdca6e2ab07decae2466170301895ffce8edd9f4996efa6cae1625",
+    "probe.cpp": "29877a023afd04a105a1f8c075ce9bd04d03ac5df39fed4967561749a35235e7",
+    "observed_front.cpp": "46c63bf68f74e5ad60a0973f92fa75bd85970d463b3110fb050d3b8a4f616340",
+    "original_front.cpp": "c86ab634a2bed1926f6c8150a6e0c2e81cf50f3caab09d0eb153271eef9f2c92",
+    "analyze_measured.py": "40bfa33eece1663ba231d444d6e54e1b7a97d5ba9eac67bbf526d0106b5a66a5",
+    "resume.py": "d31c46fe87bc460e311541298bb9ffa576dfbe2308030a65b91b5346b8c20a9f",
+    "verify.py": "5cab8c36158b2fdbb3e18de806ad8fee38889e2bc55cdb9e7b37b065d9c1e629",
+    "interrupted-matrix-seal.json": "2520efb4887bcf8a78a14ab272cad47fa2616c9d4d84faf126eb914cde3d825a"
+  }
+}
