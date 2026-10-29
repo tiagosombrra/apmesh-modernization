@@ -2,13 +2,21 @@
 
 ## Active item: first new Edge ownership in makeMesh
 
+The bounded repair now holds the original first new Edge expression in an
+exclusive pending owner and releases after owning-list publication. On failure,
+its deleter removes both endpoint observations before detachment and deletion.
+Initial native controls pass 1335 outcomes; [exact delivery gates and limits](evidence/FIRST_EDGE_OWNERSHIP.md)
+require full regression/science/tooling on the repair head and merged main.
+The second new-edge adoption is the next separate diagnosis after delivery.
+Stage 3 stays open; no new numbered memory slice is claimed.
+
 The source-preserving diagnosis at qualified main
 `649f87759af7a0c749283727598113662464451e` completed 903 native processes,
 reproducing 144 original pending-ownership failures. It is diagnosis, not a
 qualified repaired memory slice. [Evidence and required gates](evidence/FIRST_EDGE_ADOPTION_AUDIT.md)
 retain rejected preparation, instrument controls and later already-owned states.
 
-Next single repair: hold the original first new Edge expression in an exclusive
+Repair contract: hold the original first new Edge expression in an exclusive
 pending owner until innerEdges.push_back succeeds. On exceptional cleanup,
 remove its endpoint adjacency before detaching borrowed vertices and deleting
 the payload/caches. Release immediately after successful owner-list adoption;

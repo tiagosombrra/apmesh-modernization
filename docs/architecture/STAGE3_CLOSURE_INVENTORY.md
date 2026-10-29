@@ -1,5 +1,14 @@
 # Stage 3 closure inventory
 
+The first new Edge now has an exclusive pending owner through endpoint observer
+publication and owning-list insertion. Failed-adoption cleanup removes endpoint
+observations before detaching/deleting the payload; release follows successful
+innerEdges adoption. [Scope and required gates](../evidence/FIRST_EDGE_OWNERSHIP.md)
+retain 144 original pending failures and require actual plain-deleter/stale-link
+controls, full exact-head regression and main revalidation. The second new edge,
+later owned partial states, whole-operation retry/rollback and full-process
+lifetime remain separate; Stage 3 stays open without a numbered-slice increment.
+
 The [first new-edge adoption diagnosis](../evidence/FIRST_EDGE_ADOPTION_AUDIT.md)
 reproduces 144 original pending Edge/cache retentions before innerEdges adoption,
 with unchanged native successful results and actual invalid-cleanup controls.

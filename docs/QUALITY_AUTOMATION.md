@@ -1,5 +1,19 @@
 # Local quality automation
 
+## First new-edge pending-owner gate
+
+`application.first_edge_ownership` checks native selection, complete first-edge
+allocation denials, actual nonallocating cleanup, live endpoint/adjacency/prefix
+state and original publication timing. Delivery requires 70 CTest entries and
+283 Python tests, including 31 checker/preparation controls. The three-profile
+matrix requires 1335 native outcomes and preserves 144 original failed contracts.
+Actual plain-deleter and detach-only controls remain separate from repaired
+behavior; ASan invalid reads are required for the latter in its measured profile.
+[Scope and exact-head/main gates](evidence/FIRST_EDGE_OWNERSHIP.md) retain the
+initial observer-span preparation failure and the second-edge/retry limitations.
+Isolated retained-storage and expired-access units require actual analyzer
+detections; neither belongs to the positive-fixture analysis gate.
+
 ## Three-edge shortcut Face gate
 
 `application.shortcut_face_ownership` checks the actual public exact-three branch,

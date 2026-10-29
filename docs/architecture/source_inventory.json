@@ -393,7 +393,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "743a28caa8bbb3a5adf9c087bb49cb148343cc81ca534f4fd9608fcd5e2ed3bb"
+      "sha256": "24ea462d9b8e4acc6404a64fe87477e0eab7e1e4ddf0f703153ce24abe8a55da"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -406,6 +406,10 @@
     {
       "path": "tests/face_adoption_memory/CMakeLists.txt",
       "sha256": "24dc1943edca2b942b6d6ecf09007036b7fbc57294b48ab365e0a1a868bae46b"
+    },
+    {
+      "path": "tests/first_edge_memory/CMakeLists.txt",
+      "sha256": "39a505dd331c9e45b5f324c75caaa0277798af3141ca5dc3a745599a551b658f"
     },
     {
       "path": "tests/front_angle_memory/CMakeLists.txt",
@@ -3587,8 +3591,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "c86ab634a2bed1926f6c8150a6e0c2e81cf50f3caab09d0eb153271eef9f2c92",
-      "bytes": 46640,
+      "sha256": "c43c18bfeb99e6d98fc46907fa065c9ecdac121ff649e8e59813cd8d2be31274",
+      "bytes": 47026,
       "includes": [
         {
           "line": 1,
@@ -6138,7 +6142,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 195,
+    "source_anchors": 198,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }
