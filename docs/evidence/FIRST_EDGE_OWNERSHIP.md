@@ -73,12 +73,22 @@ logs remain preserved under build/first-edge-repair/preparation-failure/. The
 corrected span includes only the actual deleter; no production assertion or
 native expected result is weakened.
 
+The first exact-head campaign stopped during build because the existing marker
+observer selected its cleanup function by a global deleter-signature substring.
+The first-edge deleter made that anchor ambiguous. That rejected head, source
+and logs remain sealed under build/first-edge-repair/failed-head/. Marker hooks
+now require the unique MarkerDelete scope, retaining both exact reversals and
+all original hooks. Three regression controls cover a neighboring matching
+deleter, duplicate marker scopes and a missing marker delete that must not be
+silently replaced by a neighboring delete. Production behavior is unchanged by
+this observation-tool correction.
+
 ## Exact delivery gates and limits
 
 Retain commands, source/executable/log hashes, prior diagnosis, rejected
 preparation and complete matrices under build/first-edge-repair/. Initial
 observations do not qualify integration. Require 70 CTest contracts with zero
-failures/skips, 283 Python tests, the full native matrix and original-observation
+failures/skips, 286 Python tests, the full native matrix and original-observation
 preservation on the exact repair head. Require source reversal, scoped production/
 positive-fixture/header analysis, actual analyzer detections for isolated invalid
 UAF/leak units, canonical formatting, whitespace, contract/inventory and staged

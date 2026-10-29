@@ -5,7 +5,8 @@
 `application.first_edge_ownership` checks native selection, complete first-edge
 allocation denials, actual nonallocating cleanup, live endpoint/adjacency/prefix
 state and original publication timing. Delivery requires 70 CTest entries and
-283 Python tests, including 31 checker/preparation controls. The three-profile
+286 Python tests, including 31 first-edge checker/preparation controls and three
+marker-scope regression controls. The three-profile
 matrix requires 1335 native outcomes and preserves 144 original failed contracts.
 Actual plain-deleter and detach-only controls remain separate from repaired
 behavior; ASan invalid reads are required for the latter in its measured profile.
