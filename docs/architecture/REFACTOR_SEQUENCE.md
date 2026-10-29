@@ -1,5 +1,14 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+Current bounded delivery: second new-edge pending ownership in makeMesh after
+PR #122's diagnostic main qualification. [Required gates](../evidence/SECOND_EDGE_OWNERSHIP.md)
+cover complete native denials, nonallocating production cleanup, first-edge/Face
+prefix preservation, original/invalid controls, frozen science and exact-head/
+main validation. Next after delivery: diagnose geometry-phase ideal Vertex
+ownership in findBestVertex through temporary creation and existing publication/
+retirement. Stage 3 stays open with 37 numbered qualified slices; earlier queue
+statements are historical.
+
 Current single item: repair second new-edge pending ownership in makeMesh after
 the completed [source-preserving diagnosis](../evidence/SECOND_EDGE_ADOPTION_AUDIT.md)
 at PR #121's qualified main. This diagnostic delivery changes documentation only.

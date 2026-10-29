@@ -1,5 +1,28 @@
 # Project state
 
+## Second new-edge pending ownership
+
+PR #122 integrated the source-preserving second-edge diagnosis as main
+`9555063e87868b885b4fc3403026d031cea022c3`, revalidated with 70 CTest
+contracts and 286 Python tests. Its 1831 native observations and all original
+failure/control evidence remain preserved.
+
+The current repair owns the original second Edge expression until innerEdges
+publication succeeds. Failed-adoption cleanup removes both endpoint observations
+before detaching borrowed vertices and deleting the pending Edge/caches. The
+first existing/adopted edge, committed Face prefix and original new-expression
+ID/allocation/publication order are preserved; later already-owned partial states
+remain unchanged. Initial three-profile checks pass 2663 native outcomes,
+including 288 nonallocating production cleanups, 144 with a freshly adopted first
+edge, and all 288 original pending failures.
+
+[Scope and delivery gates](evidence/SECOND_EDGE_OWNERSHIP.md) require exact-head
+qualification and merged-main revalidation before delivery is qualified. Stage 3
+stays open with 37 numbered qualified slices and no whole-process or quality
+claim. Next after delivery: diagnose geometry-phase ideal Vertex ownership in
+findBestVertex, from temporary creation through existing publication/retirement.
+Earlier active items below are historical.
+
 ## Second new-edge adoption diagnosis
 
 PR #121 is integrated and revalidated as main
