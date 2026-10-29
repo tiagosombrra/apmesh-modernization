@@ -7,5 +7,6 @@ void Built(Par2DJMesh::Basics::Face* face) noexcept;
 void Adopted(std::size_t count) noexcept;
 void BeginCleanup() noexcept;
 void EndCleanup() noexcept;
+void RetainedStorageControl();
 int ExpiredAccess();
 } // namespace shortcut_test

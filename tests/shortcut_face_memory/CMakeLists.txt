@@ -37,7 +37,7 @@ function(add_face_probe target source)
       --root "${AP_MESH_SHORTCUT_ROOT}" --source "${source}" --output "${backend}"
       --metadata "${CMAKE_CURRENT_BINARY_DIR}/${target}_observer.json"
     DEPENDS "${source}" "${AP_MESH_SHORTCUT_ROOT}/tools/prepare_shortcut_probe.py" VERBATIM)
-  add_executable(${target} probe.cpp uaf_control.cpp "${backend}")
+  add_executable(${target} probe.cpp uaf_control.cpp leak_control.cpp "${backend}")
   configure_face_target(${target})
   target_link_libraries(${target} PRIVATE shortcut_native)
 endfunction()

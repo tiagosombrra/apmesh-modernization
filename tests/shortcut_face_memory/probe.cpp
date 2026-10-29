@@ -293,7 +293,7 @@ int main(int argc, char* argv[]) {
     shortcut_test::target = std::strcmp(mode, "denial-control") == 0 ? 1 : 0;
     try {
       shortcut_test::Begin(0, 0);
-      (void)new Vertex(0.25, 0.75);
+      shortcut_test::RetainedStorageControl();
       shortcut_test::active = false;
     } catch (const std::bad_alloc&) {
       shortcut_test::active = false;

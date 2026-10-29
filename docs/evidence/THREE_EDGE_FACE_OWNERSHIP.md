@@ -71,6 +71,12 @@ contracts with zero skips, 252 Python tests, the full native matrix, source
 reversal, production/positive-fixture analysis and expected detection of the
 separate intentionally invalid UAF unit. Require canonical format, whitespace,
 staged-byte and source/contract inventory gates on the exact delivery revision.
+Also require the isolated retained-storage unit's expected analyzer leak detection.
+The first revision's positive-fixture analysis detected that deliberately leaked
+control inline. Its failed campaign, binaries and source remain immutable under
+`build/three-edge-face-repair/`; the separated-control revision and final campaigns
+use `build/three-edge-face-repair-corrected/`. No diagnostic is suppressed and no
+production or native case expectation changes to resolve that finding.
 Fresh Eistute/Book must preserve nine states and 45 artifacts with independent
 physical/UV quality, accepted/rejected decisions and positive boundary comparisons.
 Preserve protected inputs and the original diagnosis. Audit remote main, all

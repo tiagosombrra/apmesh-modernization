@@ -8,6 +8,8 @@ pending cleanup. The delivery requires 69 CTest entries and 252 Python tests.
 Keep fewer-than-three guards separate from Face publication coverage and retain
 the original failures and actual wrong-deleter detections. [Scope and gates](evidence/THREE_EDGE_FACE_OWNERSHIP.md)
 require exact-head qualification and fresh main validation after merge.
+The deliberately invalid retained-storage and expired-access units require their
+own analyzer detections; neither belongs to the positive-fixture analysis gate.
 
 ## Geometry-phase marker ownership gate
 
