@@ -1,5 +1,14 @@
 # Local quality automation
 
+## Geometry-phase marker ownership gate
+
+`application.front_marker_lifetime` checks actual native geometry-front marker
+creation, publication, retirement and measured downstream failures. The delivery
+requires 68 CTest entries and 232 Python tests. Require original failed contracts,
+nonallocating cleanup, live owner/adjacency/prefix checks and actual invalid
+observer/premature-deletion detections. [Scope and exact-head/main gates](evidence/FRONT_MARKER_OWNERSHIP.md)
+keep public-wrapper, later-selector and full recovery limits explicit.
+
 ## Pending Face publication gate
 
 `application.face_adoption_ownership` checks actual native selection/publication,

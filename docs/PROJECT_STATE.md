@@ -1,5 +1,23 @@
 # Project state
 
+## Geometry-phase front marker ownership
+
+PR #117 is integrated and revalidated as main
+`0c0a4d5a65eeb0b0989b361c38d58bc126d53065`: 67 CTest contracts, 218 Python
+tests, 193 native outcomes and nine scientific states/45 artifacts. The initial
+missing-runtime build failure and its independent environment diagnosis remain
+retained separately from the completed main campaign.
+
+The next diagnosis reproduced 34 original marker retentions in 91 native
+processes. The current local owner removes its marker observation from the front
+before deleting the marker/cache, including failed queue publication and measured
+downstream exceptions. Normal marker identity and retirement timing are preserved.
+[Scope and required gates](evidence/FRONT_MARKER_OWNERSHIP.md) retain original
+failures and actual expired-observer/premature-deletion controls. Exact-head
+integration and main revalidation remain required. Stage 3 stays open without a
+quality or whole-process claim. Next after delivery: diagnose Face ownership in
+the three-edge makeGeometryBasedMesh shortcut. Earlier active items are historical.
+
 ## Pending front Face ownership
 
 PR #116 is integrated and revalidated as main

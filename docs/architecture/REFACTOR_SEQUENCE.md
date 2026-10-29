@@ -1,5 +1,12 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+Current bounded delivery: geometry-front marker ownership after PR #117 main
+qualification. Exact source/native/scientific gates and integration status are
+authoritative in PROJECT_STATE.md and [the marker evidence](../evidence/FRONT_MARKER_OWNERSHIP.md).
+After this delivery, diagnose the three-edge makeGeometryBasedMesh shortcut's
+pending Face ownership. Earlier queue statements below are historical; the last
+numbered qualified memory slice remains 37 and Stage 3 stays open.
+
 Latest qualified delivery: bounded Hermite constructor publication rollback, slice 37 (C30/PR #100).
 Next single work: diagnose retained Eistute/Book mesh quality and rejected transitions before selecting a functional repair.
 Completed Hermite retirement is qualified by full exact-head/main gates under

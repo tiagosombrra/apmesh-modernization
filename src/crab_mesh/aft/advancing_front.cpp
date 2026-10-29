@@ -799,10 +799,19 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) 
     frontVertices.push_back((*iter)->getV1());
   }
 
+  struct MarkerDelete {
+    EdgeList& front;
+    void operator()(Edge* edge) const noexcept {
+      front.remove(edge);
+      delete edge;
+    }
+  };
+  std::unique_ptr<Edge, MarkerDelete> marker(nullptr, MarkerDelete{front});
   Edge* last = nullptr;
 
   if (frontBased && geometryPhase) {
-    last = new Edge();
+    marker.reset(new Edge());
+    last = marker.get();
     front.push_back(last);
   }
 
@@ -826,7 +835,7 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) 
     }
 
     if (frontBased && (e == last)) {
-      delete last;
+      marker.reset();
       last = nullptr;
 
       continue;

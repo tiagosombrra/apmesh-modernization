@@ -1,5 +1,12 @@
 # Stage 3 closure inventory
 
+Geometry-front marker cleanup now uses an exclusive local owner that removes its
+queue observation before deleting its own payload. [Scope and gates](../evidence/FRONT_MARKER_OWNERSHIP.md)
+retain 34 original retentions and require actual invalid-observer/premature-delete
+controls. Public geometry wrapper shortcuts, new-edge adoption, later selector
+scratch failure, complete recovery and process-wide lifetime remain separate;
+Stage 3 stays open.
+
 Pending Face publication now uses an exclusive temporary owner with endpoint
 detachment on cleanup, releasing only after mesh-list insertion. [Scope and gates](../evidence/PENDING_FRONT_FACES.md)
 retain failed originals and actual invalid-deleter detection. Geometry marker,
