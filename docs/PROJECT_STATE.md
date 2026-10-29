@@ -1,5 +1,26 @@
 # Project state
 
+## First new-edge pending ownership
+
+PR #120 integrated the source-preserving diagnosis as main
+`240a62682244339743cfb8e108603afcdfb5c52f`, revalidated with 69 CTest
+contracts and 252 Python tests. The 903-process diagnosis and its original
+failures/preparation findings remain preserved.
+
+The current repair holds the first new Edge in a pending unique owner until
+innerEdges publication succeeds. Failed-adoption cleanup removes both endpoint
+observations before detaching/deleting the Edge and caches. Successful ID,
+allocation/publication order and later already-owned partial states are retained.
+Initial three-profile controls pass 1335 native outcomes, including 144 actual
+nonallocating cleanups, all 144 original pending failures and both actual invalid
+cleanup variants. The initial observer-span preparation failure is retained.
+
+[Scope and delivery gates](evidence/FIRST_EDGE_OWNERSHIP.md) require exact-head
+integration and fresh main validation before delivery is qualified. Stage 3 stays
+open with no new numbered memory slice, whole-process or quality claim. Next
+after delivery: diagnose the second new-edge adoption path in makeMesh.
+Earlier active items below are historical.
+
 ## First new-edge adoption diagnosis
 
 PR #119 is integrated and revalidated as main

@@ -1,5 +1,13 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+Current bounded delivery: first new-edge pending ownership in makeMesh after
+PR #120's diagnostic main qualification. [Required gates](../evidence/FIRST_EDGE_OWNERSHIP.md)
+cover actual endpoint observation removal, nonallocating pending cleanup,
+original/invalid controls, frozen science and exact-head/main validation. Next
+after delivery: diagnose the second new-edge adoption in makeMesh. Earlier
+queue statements are historical; Stage 3 stays open with 37 numbered qualified
+slices and no whole-process or quality claim.
+
 Current single item: repair first new-edge pending ownership in makeMesh after
 the completed [native diagnosis](../evidence/FIRST_EDGE_ADOPTION_AUDIT.md) at
 PR #119's qualified main. This diagnostic delivery changes documentation only.

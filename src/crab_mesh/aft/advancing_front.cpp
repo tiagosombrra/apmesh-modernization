@@ -899,7 +899,17 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) 
 
       e1->setFree(false);
     } else {
-      e1 = new Edge(e->getV1(), best, ++lastEdgeId);
+      struct PendingEdgeDelete {
+        void operator()(Edge* edge) const noexcept {
+          edge->getV1()->removeAdjacentEdge(edge);
+          edge->getV2()->removeAdjacentEdge(edge);
+          edge->DetachVertices();
+          delete edge;
+        }
+      };
+      std::unique_ptr<Edge, PendingEdgeDelete> pending_edge(
+          new Edge(e->getV1(), best, ++lastEdgeId));
+      e1 = pending_edge.get();
 
       e->getV1()->addAdjacentEdge(e1);
       best->addAdjacentEdge(e1);
@@ -909,6 +919,7 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) 
       // #endif //#if USE_OPENGL
 
       innerEdges.push_back(e1);
+      pending_edge.release();
       edges.push_back(e1);
 
       if (frontBased) {

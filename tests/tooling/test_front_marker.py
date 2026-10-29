@@ -82,3 +82,33 @@ class FrontMarkerTests(unittest.TestCase):
                 source.write_text(text)
                 with self.assertRaises(ValueError):prepare(ROOT,folder/'observed.cpp',folder/'report.json',source)
                 self.assertFalse((folder/'observed.cpp').exists())
+
+    def test_neighboring_deleter_is_not_instrumented(self):
+        original=(ROOT/'src/crab_mesh/aft/advancing_front.cpp').read_text()
+        sibling='  struct NeighborDelete {\n    void operator()(Edge* edge) const noexcept {\n      delete edge;\n    }\n  };\n'
+        with tempfile.TemporaryDirectory() as folder:
+            folder=Path(folder);source=folder/'source.cpp';source.write_text(original+'\n'+sibling)
+            r=prepare(ROOT,folder/'observed.cpp',folder/'report.json',source)
+            observed=(folder/'observed.cpp').read_text()
+            self.assertEqual(r['reversible_edits'],9)
+            self.assertIn(sibling,observed)
+            self.assertEqual(observed.count('marker_test::BeginCleanup();'),1)
+            self.assertEqual(observed.count('marker_test::EndCleanup();'),1)
+
+    def test_duplicate_marker_scope_rejected(self):
+        original=(ROOT/'src/crab_mesh/aft/advancing_front.cpp').read_text()
+        start=original.index('  struct MarkerDelete {\n')
+        end=original.index('\n  };',start)+len('\n  };')
+        with tempfile.TemporaryDirectory() as folder:
+            folder=Path(folder);source=folder/'source.cpp'
+            source.write_text(original+'\n'+original[start:end])
+            with self.assertRaises(ValueError):prepare(ROOT,folder/'observed.cpp',folder/'report.json',source)
+            self.assertFalse((folder/'observed.cpp').exists())
+
+    def test_missing_marker_delete_not_replaced_by_neighbor(self):
+        original=(ROOT/'src/crab_mesh/aft/advancing_front.cpp').read_text()
+        original=original.replace('      front.remove(edge);\n      delete edge;', '      front.remove(edge);')
+        with tempfile.TemporaryDirectory() as folder:
+            folder=Path(folder);source=folder/'source.cpp';source.write_text(original)
+            with self.assertRaises(ValueError):prepare(ROOT,folder/'observed.cpp',folder/'report.json',source)
+            self.assertFalse((folder/'observed.cpp').exists())

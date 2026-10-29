@@ -39,10 +39,21 @@ def prepare(root, output, metadata, source=None):
     change('    mesh.push_back(f.get());\n    f.release();',
            '    mesh.push_back(f.get());\n    f.release();\n    marker_test::EndWindow();')
     if owned:
-        change('    void operator()(Edge* edge) const noexcept {',
-               '    void operator()(Edge* edge) const noexcept {\n      marker_test::BeginCleanup();')
-        change('      delete edge;\n    }\n  };',
-               '      delete edge;\n      marker_test::EndCleanup();\n    }\n  };')
+        def change_marker(old, new):
+            anchor = '  struct MarkerDelete {\n'
+            if text.count(anchor) != 1:
+                raise ValueError('Missing or ambiguous marker cleanup scope')
+            start = text.index(anchor)
+            end = text.index('\n  };', start) + len('\n  };')
+            block = text[start:end]
+            if block.count(old) != 1:
+                raise ValueError('Missing or ambiguous marker cleanup observation')
+            change(block, block.replace(old, new))
+
+        change_marker('    void operator()(Edge* edge) const noexcept {',
+                      '    void operator()(Edge* edge) const noexcept {\n      marker_test::BeginCleanup();')
+        change_marker('      delete edge;\n    }\n  };',
+                      '      delete edge;\n      marker_test::EndCleanup();\n    }\n  };')
     restored = text
     for old, new in reversed(edits):
         if restored.count(new) != 1:
