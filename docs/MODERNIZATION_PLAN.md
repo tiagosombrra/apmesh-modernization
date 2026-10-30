@@ -1,5 +1,29 @@
 # Technique-preserving modernization plan
 
+## Active item: outside-root retirement fixture preconditions
+
+PR #126's documentation diagnosis is integrated at exact-main-qualified
+`0124b0f1880a550c1faf01835123ee22aa11e934`. The subsequent
+[outside-root source audit](evidence/OUTSIDE_IDEAL_VERTEX_RETIREMENT_AUDIT.md)
+preserves a failed calibration without qualifying the target path. The native
+template prefix fails a checked-container precondition before geometric entry;
+616 GCC/ASan events from that preparation are excluded from qualification.
+No production or scientific change is included. Classification: engineering-only
+source diagnosis/documentation with rejected preparation retained.
+
+Next, analyze the real caller's Boundary/root-domain/template-neighbor
+preconditions and distinguish a missing fixture obligation from a supported-
+caller defect. Establish a valid prefix before reopening retirement measurements.
+Preserve selection, domain predicates, templates, ID/publication order, formulas
+and scientific policies. Do not suppress checks, force selector results, enlarge
+the supported scientific domain or repair retirement from unqualified events.
+Any broader domain or template-policy decision requires explicit advisor alignment.
+
+The caller's existing ideal is already owned before queue publication and normal
+removal; source ordering does not establish exception/retry guarantees. Full
+retirement-path qualification remains blocked. Stage 3 stays open with 37
+numbered qualified slices; earlier active items below are historical.
+
 ## Active item: public geometry-front ideal Vertex lifetime diagnosis
 
 PR #125's ideal owner is integrated at qualified main

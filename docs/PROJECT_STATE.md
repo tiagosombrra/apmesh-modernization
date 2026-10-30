@@ -1,5 +1,33 @@
 # Project state
 
+## Outside-root ideal retirement: source audit and rejected calibration
+
+PR #126 is integrated at main `0124b0f1880a550c1faf01835123ee22aa11e934`,
+with 72 CTest contracts and 356 Python tests revalidated on exact head/main.
+Its prepared public-front diagnosis and PR #125 repair qualification remain
+preserved within their existing scope.
+
+The next source audit confirms that an ideal reaching the caller's domain check
+is already owned by innerVertices. The check excludes the root boundary as well
+as exterior points. Queue publication precedes removal from all three vertex
+lists and deletion. These are source findings, not new exception-path validation.
+
+The [retirement calibration](evidence/OUTSIDE_IDEAL_VERTEX_RETIREMENT_AUDIT.md)
+is rejected preparation. A first pilot skipped template initialization; adding
+the native template prefix produced 616 apparent retirement events in GCC/ASan,
+but checked CRT then exposed an empty-list assertion before geometric entry.
+Those events do not qualify retirement. All partial records, the timeout and
+captured assertion remain sealed. No production repair, new lifetime guarantee,
+scientific result or numbered slice is claimed.
+
+The single next item is source/caller analysis of the Boundary, root-domain and
+template-neighbor preconditions needed for a valid retirement fixture. Preserve
+selection, templates, formulas, tolerances and policy; do not bypass the prefix
+assertion or disable iterator checks to obtain coverage. Retirement qualification
+remains blocked. Stage 3 stays open with 37 numbered qualified slices; stages
+0-2 remain closed for measured scope and stages 4-11 remain pending. Earlier
+active items below are historical.
+
 ## Public geometry-front ideal Vertex lifetime diagnosis
 
 PR #125 is integrated and revalidated as main

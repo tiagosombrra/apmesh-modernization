@@ -1,5 +1,16 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+## Outside-root ideal retirement preparation boundary
+
+The [source audit and rejected calibration](../evidence/OUTSIDE_IDEAL_VERTEX_RETIREMENT_AUDIT.md)
+retain the native ownership/retirement ordering and a checked template-prefix
+failure before geometric entry. Apparent retirement events from GCC/ASan are
+excluded from qualification. First analyze the Boundary/root-domain/template-
+neighbor preconditions of the real caller; no selector substitution, iterator-
+check suppression, template-policy change or retirement repair is justified by
+this preparation. Stage 3 remains open with 37 numbered qualified slices.
+Earlier active-item statements below are historical.
+
 ## Public geometry-front ideal Vertex diagnosis
 
 PR #125's pending ideal owner is integrated at qualified main
