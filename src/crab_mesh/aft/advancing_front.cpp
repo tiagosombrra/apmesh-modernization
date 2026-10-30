@@ -444,7 +444,16 @@ bool AdvancingFront::findBestVertex(Edge* e, Vertex*& best, bool geometryPhase) 
 
   double h = 1.0;
 
-  best = (geometryPhase) ? makeIdealVertex(e, h) : nullptr;
+  struct PendingIdealVertexDelete {
+    VertexList* front_vertices;
+    void operator()(Vertex* vertex) const noexcept {
+      front_vertices->remove(vertex);
+      delete vertex;
+    }
+  };
+  std::unique_ptr<Vertex, PendingIdealVertexDelete> pending_ideal(
+      (geometryPhase) ? makeIdealVertex(e, h) : nullptr, PendingIdealVertexDelete{&frontVertices});
+  best = pending_ideal.get();
 
   VertexList bestVertices;
 
@@ -480,7 +489,7 @@ bool AdvancingFront::findBestVertex(Edge* e, Vertex*& best, bool geometryPhase) 
       if (dist < 0.0) {
         // cout << "debug " << e->getId() << endl;
 
-        delete best;
+        pending_ideal.reset();
 
         best = nullptr;
 
@@ -503,7 +512,7 @@ bool AdvancingFront::findBestVertex(Edge* e, Vertex*& best, bool geometryPhase) 
 
         bestVertices.clear();
 
-        delete best;
+        pending_ideal.reset();
 
         best = nullptr;
 
@@ -539,7 +548,7 @@ bool AdvancingFront::findBestVertex(Edge* e, Vertex*& best, bool geometryPhase) 
     bool intercept = interceptionTest(e, best);
 
     if (intercept) {
-      delete best;
+      pending_ideal.reset();
 
       best = nullptr;
 
@@ -560,7 +569,7 @@ bool AdvancingFront::findBestVertex(Edge* e, Vertex*& best, bool geometryPhase) 
       }
 
       if (tooClose) {
-        delete best;
+        pending_ideal.reset();
 
         best = nullptr;
 
@@ -572,6 +581,7 @@ bool AdvancingFront::findBestVertex(Edge* e, Vertex*& best, bool geometryPhase) 
 
         frontVertices.push_back(best);
         innerVertices.push_back(best);
+        pending_ideal.release();
         vertices.push_back(best);
       }
     }
@@ -582,7 +592,7 @@ bool AdvancingFront::findBestVertex(Edge* e, Vertex*& best, bool geometryPhase) 
     vertexExistedBefore = false;
   } else if (!bestVertices.empty()) {
     if (geometryPhase) {
-      delete best;
+      pending_ideal.reset();
     }
 
     best = bestVertices.front();

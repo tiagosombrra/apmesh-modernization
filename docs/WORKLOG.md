@@ -1,5 +1,30 @@
 # Modernization work log
 
+## 2026-10-30: geometric ideal Vertex pending owner
+
+Classification: behavior-changing exception-safety/ownership defect repair;
+successful scientific formulas, order and policy remain unchanged. Baseline is
+PR #124 main `cb84989849c969c7ed58b0737f5bf1ff84359be0`. A dedicated pending
+owner now distinguishes the geometric ideal from borrowed best, removes pending
+front observations before deletion and releases immediately after innerVertices
+adoption. Five original guard/selection retirement points remain explicit.
+
+Initial GCC, MSVC/ASan and Debug CRT qualification passes 6223 native outcomes,
+1832 nonallocating production cleanups, all 1832 original failures, 84 paired
+normal and 84 unobserved normal comparisons, 40 actual borrowed-best destruction
+controls, 12 stale-observer controls (four actual ASan reads) and seven independent
+instruments. All 3040 original observations match the sealed diagnosis exactly.
+Preliminary regression passes 72 CTest contracts and 356 Python tests; exact-head/
+main qualification, frozen science and delivery audits remain required in
+[evidence and gates](evidence/IDEAL_VERTEX_OWNERSHIP.md). Initial line-wrap
+formatting rejection and historical failed preparation remain preserved.
+
+Stage 3 stays open with 37 numbered qualified slices; this repair adds none.
+Public/full geometric failure paths, sparse-front interpretation, the unreached
+negative-distance guard, arbitrary aliases/ties, retry and full-process/parallel/
+LSan/UBSan remain limited. Next after delivery: diagnose ideal Vertex lifetime
+through the public geometry-front caller with unchanged native criteria.
+
 ## 2026-10-24: completed Hermite observer retirement qualified
 
 Classification: behavior-changing lifetime defect repair; no scientific change.

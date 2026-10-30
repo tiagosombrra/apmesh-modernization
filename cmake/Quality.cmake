@@ -72,6 +72,7 @@ if(BUILD_TESTING)
   add_subdirectory(tests/shortcut_face_memory)
   add_subdirectory(tests/first_edge_memory)
   add_subdirectory(tests/second_edge_memory)
+  add_subdirectory(tests/ideal_vertex_memory)
   add_test(NAME application.domain_uv_cache_contracts COMMAND domain_cache_probe contracts)
   set_tests_properties(application.domain_uv_cache_contracts
     PROPERTIES LABELS "application;memory;required-gate" TIMEOUT 90)

@@ -1,5 +1,28 @@
 # Project state
 
+## Geometry-phase ideal Vertex pending ownership
+
+PR #124 integrated the source-preserving diagnosis as main
+`cb84989849c969c7ed58b0737f5bf1ff84359be0`, revalidated with 71 CTest
+contracts and 322 Python tests. Its 5007 native outcomes, original retentions,
+invalid controls and rejected preparation remain preserved.
+
+The bounded repair keeps the original ideal expression in a dedicated pending
+owner independent of borrowed best. Pending cleanup removes frontVertices
+observations before deletion; release immediately follows innerVertices adoption.
+Original normal retirement/selection, ID timing and later owned partial states
+are retained. Initial three-profile checks pass 6223 native outcomes, including
+1832 nonallocating production cleanups and all 1832 original retained-ideal
+failures. All 3040 original observations exactly match the sealed diagnosis.
+
+[Scope and delivery gates](evidence/IDEAL_VERTEX_OWNERSHIP.md) require 72 CTest
+contracts, 356 Python tests, complete native controls, frozen science and scoped
+tooling on exact head and merged main before integration is qualified. Stage 3
+stays open with 37 numbered qualified slices and no full-process or quality claim.
+Next after delivery: diagnose ideal Vertex lifetime through the public geometry-
+front caller without changing native selection or policy. Earlier items below
+are historical.
+
 ## Geometry-phase ideal Vertex ownership diagnosis
 
 PR #123 integrated the second new-edge repair as main
