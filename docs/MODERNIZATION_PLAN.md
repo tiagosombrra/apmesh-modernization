@@ -1,5 +1,25 @@
 # Technique-preserving modernization plan
 
+## Active item: pending geometric ideal Vertex ownership
+
+The repair holds the original geometric ideal in an exclusive local owner
+independent of best. Its nonallocating deleter removes unadopted front observers
+before deletion; the five existing retirement points reset it, and successful
+innerVertices insertion immediately releases it. Original allocation/ID/order,
+selection and later already-owned partial states remain unchanged. Classification:
+behavior-changing exception-safety/ownership defect repair with unchanged
+successful scientific behavior.
+
+Initial three-profile controls pass 6223 native outcomes, including 1832 actual
+production cleanups without allocation and 1832 preserved original failures.
+[Exact delivery gates and limitations](evidence/IDEAL_VERTEX_OWNERSHIP.md) require
+72 CTest contracts, 356 Python tests, full native/raw replay, frozen science and
+scoped tooling on the exact repair head and merged main before qualification.
+Direct-selector fixtures do not establish full public geometric failure-path
+coverage. After delivery, the next single item is a source-preserving diagnosis
+of ideal Vertex lifetime through the public geometry-front caller. Stage 3 stays
+open with 37 numbered qualified slices; earlier active items are historical.
+
 ## Active item: ideal Vertex ownership in findBestVertex
 
 PR #123's second new-edge repair is integrated and revalidated as main

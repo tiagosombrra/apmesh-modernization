@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Geometry-phase ideal Vertex pending-owner gate
+
+`application.ideal_vertex_ownership` calls the inherited native selector in seven
+modes, two candidate orders and zero/one committed Face prefix. Complete denial
+sweeps require zero pending retention, actual nonallocating production cleanup,
+live borrowed vertices/adjacency/prefixes and original ID/publication timing.
+Delivery requires 72 CTest entries and 356 Python tests (34 new checker/source
+controls), the 6223-outcome three-profile matrix and exact head/main scientific
+and tooling gates. Require 1832 original failures and matching production
+cleanups, 3040 unchanged original observations, actual borrowed-best destruction,
+production stale-observer omission and independent denial/leak/UAF controls.
+[Scope and gates](evidence/IDEAL_VERTEX_OWNERSHIP.md) preserve sparse-front and
+unreached-guard limits. Separate deliberately invalid UAF/leak units require
+their own analyzer detections; neither belongs to positive-fixture analysis.
+
 ## Second new-edge pending-owner gate
 
 `application.second_edge_ownership` calls native makeMesh/selection across 32
