@@ -1,5 +1,17 @@
 # Local quality automation
 
+## Analytic native template-prefix gate
+
+`application.analytic_template_prefix` exercises eight analytic configurations
+and one missing-curve control. Four contexts create a nonempty prefix and match
+the unobserved native source; two are guard-only and three are explicit refusals.
+Require 73 CTest entries and 380 Python tests, including 24 new checker/source-
+preparation controls, plus the same 15-process inventory in actual checked CRT
+with iterator level 2. [Scope and delivery gates](evidence/ANALYTIC_TEMPLATE_PREFIX.md)
+require topology/area/ID/observer checks, actual preflight refusal, source reversal,
+scoped fixture/header analysis, unchanged production/science and exact-head/main
+regression. The public geometry-entry cut performs no selection or retirement.
+
 ## Geometry-phase ideal Vertex pending-owner gate
 
 `application.ideal_vertex_ownership` calls the inherited native selector in seven

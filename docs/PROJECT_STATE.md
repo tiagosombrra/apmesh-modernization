@@ -1,5 +1,33 @@
 # Project state
 
+## Checked analytic UV template-prefix fixture
+
+PR #128's source audit is integrated at main
+`13943888bd609f5bbb987e79b0cf89af23b75c08`. The next engineering-only
+fixture uses live analytic Bezier curves, native normalized boundary sizes and
+the actual AdvancingFront::execute prefix. It checks the graph before native
+sorting and again afterward, and guards applicable chained neighbor reads in
+reversible diagnostic copies. It stops explicitly at geometric entry, before
+any selector or retirement measurement.
+
+[Measured scope](evidence/ANALYTIC_TEMPLATE_PREFIX.md) records four nonempty
+prefix contexts per GCC/checked-CRT profile: four subdivisions per side, direct/
+reversed incidences and empty/two-face old UV input. Each has eight template faces
+and area 0.25, with exact unobserved-prefix comparison. Two coarser empty-old
+contexts have no template coverage. Two coarser seeded contexts are safely
+refused at a chained neighbor read; a missing-curve control is refused before
+native execution. None of these five excluded contexts qualifies template creation.
+
+The 30 initial native outcomes, 24 checker/preparation controls and reversible
+source evidence remain separate from exact delivery. Require 73 CTest entries,
+380 Python tests and the same GCC/CRT inventories on exact head and merged main.
+Production, prior negative evidence and all protected article inputs are unchanged.
+Stage 3 stays open with 37 numbered qualified slices; no repair or scientific
+quality claim is made. After delivery, the next single item is source-preserving
+public-geometry observation using only the four qualified prefix contexts; first
+measure reachability, without allocation-denial sweeps or selector substitution.
+Earlier active items below are historical.
+
 ## Template-prefix caller preconditions audited
 
 PR #127 is integrated at exact-main-qualified

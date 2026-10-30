@@ -1,0 +1,178 @@
+{
+  "status": "analytic_prefix_preparation_verified",
+  "base": "13943888bd609f5bbb987e79b0cf89af23b75c08",
+  "profiles": {
+    "gcc": {
+      "native_outcomes": 15,
+      "nonempty_prefix_contexts": [
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          1,
+          0
+        ],
+        [
+          4,
+          15,
+          0,
+          0
+        ],
+        [
+          4,
+          15,
+          1,
+          0
+        ]
+      ],
+      "guard_only_contexts": [
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          15,
+          0,
+          0
+        ]
+      ],
+      "refused_contexts": [
+        [
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          15,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          1
+        ]
+      ],
+      "positive_primary_reads": 428,
+      "positive_chained_reads": 108,
+      "iterator_level": -1,
+      "retirement_measurements": 0,
+      "report_sha256": "8aab0cfd407a06f2b483ce002830d75ef4ae4cdc99ac8c1866f46d4af8b7a76d"
+    },
+    "crt": {
+      "native_outcomes": 15,
+      "nonempty_prefix_contexts": [
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          1,
+          0
+        ],
+        [
+          4,
+          15,
+          0,
+          0
+        ],
+        [
+          4,
+          15,
+          1,
+          0
+        ]
+      ],
+      "guard_only_contexts": [
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          15,
+          0,
+          0
+        ]
+      ],
+      "refused_contexts": [
+        [
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          15,
+          1,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          1
+        ]
+      ],
+      "positive_primary_reads": 428,
+      "positive_chained_reads": 108,
+      "iterator_level": 2,
+      "retirement_measurements": 0,
+      "report_sha256": "eb6c6ff985c0a08e872e98792ce0b016b6359ede1862e94f8e44b26af6653e29"
+    }
+  },
+  "source_preparation": {
+    "gcc": {
+      "metadata_sha256": "82135dbc98e27e41e32d6d52d5abeaa02a6e7ee58207672f1fb0a83853d73ba8",
+      "literal_neighbor_expressions": 98,
+      "source_files": {
+        "quadtree.cpp": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+        "quadtree_cell.cpp": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb"
+      }
+    },
+    "crt": {
+      "metadata_sha256": "82135dbc98e27e41e32d6d52d5abeaa02a6e7ee58207672f1fb0a83853d73ba8",
+      "literal_neighbor_expressions": 98,
+      "source_files": {
+        "quadtree.cpp": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+        "quadtree_cell.cpp": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb"
+      }
+    }
+  },
+  "application_sha256": "0c1f12893e4c26d72c45ff75e818f4586d0153fbd970c99668e3b11cf03f7202",
+  "prior_integration_sha256": "d522e5687eb03df2cea94fb6ebb39a3fcf909ad2b67145c9c3d9fd0e0f8bdfbf",
+  "raw_article_files_preserved": 66,
+  "nonempty_prefix_contexts_per_profile": 4,
+  "guard_only_contexts_per_profile": 2,
+  "refused_contexts_per_profile": 3,
+  "native_outcomes": 30,
+  "checker_tests_added": 24,
+  "required_ctest": 73,
+  "required_python_tests": 380,
+  "retirement_measurements": 0,
+  "retirement_qualification": "not measured",
+  "new_production_repair": false,
+  "stage3": "open",
+  "numbered_qualified_slices": 37,
+  "verified_utc": "2026-10-30T21:04:11Z",
+  "verification_sha256": "c1276a9a956b30e7c55e856622a092c655bf80bc2e224ab10f7deafd95f31cd6",
+  "local_evidence_directory": "build/analytic-template-prefix"
+}
