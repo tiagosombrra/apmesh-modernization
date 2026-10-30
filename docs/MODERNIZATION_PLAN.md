@@ -1,5 +1,31 @@
 # Technique-preserving modernization plan
 
+## Active item: caller-faithful template-prefix fixture preparation
+
+PR #127 is integrated at qualified main
+`f35eb16d46c8478876292ae1efb7f2cfe2946913`. Its retirement calibration
+remains rejected. The subsequent [precondition source audit](evidence/TEMPLATE_PREFIX_PRECONDITIONS_AUDIT.md)
+maps the serial UV-square caller, normalized curve sizes, fresh-root generation,
+template ID/order dependencies and cardinal/chained-neighbor obligations.
+It runs no new retirement calibration and establishes no supported-caller defect.
+Classification: engineering-only source/caller diagnosis and documentation.
+
+Next, build only a prefix fixture faithful to the serial caller: four oriented
+UV-square sides, live analytic curves, normalized sizes, recorded existing depth/
+template settings and explicit old-UV inputs. Inspect boundary/root consistency,
+cardinal overlap/reciprocity/order/balance and the applicable chained accesses
+before native template creation. Refuse missing prerequisites without rewriting
+the graph or changing production. Use the AdvancingFront prefix; standalone
+Quadtree::execute adds refineToLevel and cannot be used as a passing fallback.
+
+Require checked-CRT prefix completion and coherent owner/ID/observer state before
+considering retirement measurement as a separate next step. Preserve original
+failed calibration, templates, numerical ordering, domain predicates and policy.
+Do not disable iterator checks or broaden the scientific domain. Any template/
+domain-policy proposal requires explicit advisor alignment. Retirement remains
+unqualified; Stage 3 stays open with 37 numbered qualified slices. Earlier active
+items below are historical.
+
 ## Active item: outside-root retirement fixture preconditions
 
 PR #126's documentation diagnosis is integrated at exact-main-qualified

@@ -1,0 +1,23 @@
+{
+  "status": "source_preconditions_audited",
+  "base": "f35eb16d46c8478876292ae1efb7f2cfe2946913",
+  "prior_integration_sha256": "b4572485f0575cfa45cf0d7960a0f7d6032dd13fe1d965496bf621a1da648504",
+  "prior_failed_calibration_seal_sha256": "27deb2e42f9f51f88280d1905bb22a5462d7ec2c64918157a5ab1afd5fad4611",
+  "prior_target_qualification": "blocked",
+  "retirement_measurements_started": false,
+  "native_calibration_runs": 0,
+  "new_production_repair": false,
+  "supported_application_defect_established": false,
+  "source_findings": "Serial caller uses local UV-square side traces with normalized curve-derived sizes. Native template topology and chained-neighbor access require separate preflight; source inspection does not resolve the prior exact assertion call site.",
+  "application_sha256": "0c1f12893e4c26d72c45ff75e818f4586d0153fbd970c99668e3b11cf03f7202",
+  "raw_article_files_preserved": 66,
+  "stage3": "open",
+  "numbered_qualified_slices": 37,
+  "verified_utc": "2026-10-30T20:08:18Z",
+  "source_fact_count": 44,
+  "source_file_count": 11,
+  "source_audit_sha256": "c9738e2ea2c8b22144c74695d9f9038f3efe508fb2a36602b99ab7b590c5efd1",
+  "local_evidence_directory": "build/template-prefix-preconditions-audit",
+  "document_delivery_required_ctest": 72,
+  "document_delivery_required_python_tests": 356
+}
