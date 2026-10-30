@@ -1,5 +1,19 @@
 # Stage 3 closure inventory
 
+The [public geometry-front ideal Vertex diagnosis](../evidence/PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md)
+extends observation to the inherited makeGeometryBasedMesh caller on prepared
+four-edge fronts. Its 27129 native outcomes preserve 8652 original pending ideal
+retentions; all 13234 candidate allocation denials retain live owner/observer
+graphs, borrowed inputs and committed Face prefixes with zero scoped retention.
+Actual invalid observer and borrower controls remain separate. PR #125's repair
+is already integrated and qualified at main `8e2af01406892babfd830d02060fb0e214ad9eb2`.
+This documentation adds no production change or numbered slice. Boundary/tree
+preparation, nonempty second-pass failures, selected ideals outside the quadtree,
+arbitrary aliases/ties, recovery and full-process/parallel lifetime remain open.
+After this delivery, the single next diagnosis addresses outside-quadtree ideal
+retirement without changing selection or domain policy. Stage 3 remains open
+with 37 numbered qualified slices. Earlier queue statements below are historical.
+
 The [geometry-phase ideal Vertex diagnosis](../evidence/IDEAL_VERTEX_OWNERSHIP_AUDIT.md)
 preserves 1832 original pre-adoption retentions across 5007 verified native
 outcomes. Explicit caller cleanup is nonallocating; 40 actual borrowed-vertex
