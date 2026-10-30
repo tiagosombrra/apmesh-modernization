@@ -1,0 +1,44 @@
+{
+  "status": "diagnosis_verified",
+  "base": "cf7ab68e5e7a9d2b3467c861bf967f86bb393023",
+  "source_sha256": "3ff81c2cbace49c73de8e0eca1e35bac07c5a5aeb4f5d75e33f636d443b816bc",
+  "processes": 5007,
+  "matrix_processes": 4839,
+  "normal_comparisons": 84,
+  "counts": {
+    "ideal constructor unwind": 100,
+    "original unowned ideal retained": 1832,
+    "nonallocating explicit caller cleanup": 1832,
+    "already-owned view-publication failure": 12,
+    "beyond-window normal control": 84,
+    "borrowed selection after ideal retirement": 40,
+    "actual borrowed best destruction detected": 40,
+    "topology without ideal": 848,
+    "topology borrowed selection": 40,
+    "independent invalid instrument detected": 7,
+    "actual stale frontVertices observer read detected": 4
+  },
+  "rejected_observation_corruptions": 31592,
+  "rejected_source_anchor_corruptions": 32,
+  "rejected_pilots": [
+    "rejected-pilot-1/report.json"
+  ],
+  "initial_failures": [
+    "gcc-configure.log",
+    "gcc-build.log",
+    "matrix/report.json"
+  ],
+  "raw_article_files_preserved": 66,
+  "prior_main_verification_sha256": "d534dd3d02511f9049a55794b0b27349b98f27be917e2ccbf7fc2e44ed234bff",
+  "production_source": "unchanged",
+  "candidate_qualification": "none",
+  "stage3": "open",
+  "numbered_qualified_slices": 37,
+  "verified_utc": "2026-10-30T00:24:52Z",
+  "verification_sha256": "5de7d0e6e54fc4cbc994727e72e290abf20ec0abcddca764bb6e9d27cdf1672b",
+  "local_evidence_directory": "build/ideal-vertex-ownership-audit",
+  "original_allocation_denials": 2872,
+  "explicit_cleanup_is_production": false,
+  "document_delivery_required_ctest": 71,
+  "document_delivery_required_python_tests": 322
+}

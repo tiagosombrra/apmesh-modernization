@@ -1,5 +1,30 @@
 # Project state
 
+## Geometry-phase ideal Vertex ownership diagnosis
+
+PR #123 integrated the second new-edge repair as main
+`cf7ab68e5e7a9d2b3467c861bf967f86bb393023`, revalidated with 71 CTest
+contracts, 322 Python tests, 2663 native outcomes, nine scientific states/45
+artifacts and 123 boundary comparisons. Its original and invalid-control
+evidence remains preserved.
+
+The next source-preserving diagnosis verified 5007 native outcomes across GCC,
+MSVC/ASan and CRT Debug. It reproduces 1832 unowned ideal-Vertex retentions in
+findBestVertex, including failure after frontVertices publication and before
+innerVertices adoption. The ideal must also retire before best becomes a
+borrowed existing vertex: 40 actual wrong-deletion controls detect destruction
+of that borrower. Four actual ASan reads detect stale frontVertices observers.
+Twelve later view-publication failures already have an owner and remain separate.
+
+This delivery changes documentation only. [Evidence and repair gates](evidence/IDEAL_VERTEX_OWNERSHIP_AUDIT.md)
+retain rejected preparation, complete allocation sweeps, nonallocating explicit
+cleanup controls and zero/one committed Face prefix. The single next item is a
+pending ideal-Vertex owner, removing any unadopted front observer before deletion
+and releasing only after owning-list insertion. No production repair is qualified.
+Stage 3 stays open with 37 numbered qualified slices; stages 0-2 remain closed
+for their measured scope and stages 4-11 remain pending. Earlier active items
+below are historical.
+
 ## Second new-edge pending ownership
 
 PR #122 integrated the source-preserving second-edge diagnosis as main
