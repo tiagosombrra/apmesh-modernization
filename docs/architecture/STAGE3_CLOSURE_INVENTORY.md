@@ -1,5 +1,22 @@
 # Stage 3 closure inventory
 
+The [geometry-phase ideal Vertex diagnosis](../evidence/IDEAL_VERTEX_OWNERSHIP_AUDIT.md)
+preserves 1832 original pre-adoption retentions across 5007 verified native
+outcomes. Explicit caller cleanup is nonallocating; 40 actual borrowed-vertex
+deletions and four actual stale frontVertices ASan reads are detected. Twelve
+later failures occur after owner adoption. Native zero/one Face prefixes, live
+borrowers and adjacency survive the measured positive/denied calls. No production
+repair or numbered slice is included. The next owner must retire the temporary
+before borrowed selection, remove any unadopted front observer before deletion,
+and release after innerVertices publication. Public/full geometric meshing,
+arbitrary aliases, general rollback/retry and process-wide lifetime retain
+separate obligations; Stage 3 stays open with 37 numbered qualified slices.
+
+PR #123's preceding second new-edge repair is integrated at qualified main
+`cf7ab68e5e7a9d2b3467c861bf967f86bb393023`; its exact-head/main regression,
+2663 native outcomes and frozen scientific evidence remain preserved. Earlier
+delivery/queue statements below are historical.
+
 The second missing Edge now has an exclusive pending owner through adjacency
 and innerEdges publication. Failed-adoption deletion removes both endpoint
 observations before detachment; release follows owning-list insertion.

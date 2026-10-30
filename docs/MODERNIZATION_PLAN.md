@@ -1,5 +1,33 @@
 # Technique-preserving modernization plan
 
+## Active item: ideal Vertex ownership in findBestVertex
+
+PR #123's second new-edge repair is integrated and revalidated as main
+`cf7ab68e5e7a9d2b3467c861bf967f86bb393023`: 71 CTest contracts, 322 Python
+tests, 2663 native outcomes and the frozen scientific comparisons passed.
+The subsequent [source-preserving ideal-Vertex diagnosis](evidence/IDEAL_VERTEX_OWNERSHIP_AUDIT.md)
+verified 5007 native outcomes, preserving 1832 original retentions and all
+negative controls. This delivery is documentation only; no repaired candidate
+or additional numbered slice is claimed.
+
+The next single repair must distinguish the temporary ideal owner from the raw
+best output/borrower. Retain exclusive ownership through pre-adoption operations,
+remove a published frontVertices observer before failed-adoption deletion and
+release immediately after innerVertices insertion. Retire the ideal at the
+existing selection/guard points without deleting a borrowed best. Preserve the
+original ID consumption, allocation/publication order, successful selection and
+later already-owned partial states. Classification of that future implementation:
+behavior-changing exception-safety/ownership defect repair, with unchanged
+successful scientific behavior.
+
+Require complete native denial sweeps, actual nonallocating production cleanup,
+live borrower/adjacency/Face-prefix controls, original and actual invalid controls,
+exact normal comparisons, and full exact-head/main regression, scientific and
+tooling gates before repair integration. The current direct-selector fixtures
+do not qualify public/full makeMesh geometric paths, arbitrary aliases or retry.
+Stage 3 stays open with 37 numbered qualified slices; earlier active items below
+are historical.
+
 ## Active item: second new Edge ownership in makeMesh
 
 The bounded repair now holds the original second Edge expression in an exclusive

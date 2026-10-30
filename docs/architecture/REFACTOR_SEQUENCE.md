@@ -1,5 +1,17 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+Current single item: repair geometry-phase ideal Vertex ownership in
+findBestVertex after the completed [source-preserving diagnosis](../evidence/IDEAL_VERTEX_OWNERSHIP_AUDIT.md).
+Its 5007 verified native outcomes preserve 1832 original retentions, explicit
+nonallocating cleanup, actual wrong-deletion/stale-observer controls and later
+already-owned failures. This diagnostic delivery changes documentation only.
+Require an independent temporary owner, observer removal before failed-adoption
+deletion, retirement before borrowed selection, original ID/order/Face-prefix
+preservation and complete exact-head/main repair gates. PR #123's second-edge
+repair is integrated and revalidated as main
+`cf7ab68e5e7a9d2b3467c861bf967f86bb393023`. Stage 3 stays open with 37
+numbered qualified slices; earlier queue statements below are historical.
+
 Current bounded delivery: second new-edge pending ownership in makeMesh after
 PR #122's diagnostic main qualification. [Required gates](../evidence/SECOND_EDGE_OWNERSHIP.md)
 cover complete native denials, nonallocating production cleanup, first-edge/Face
