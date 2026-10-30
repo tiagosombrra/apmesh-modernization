@@ -1,5 +1,16 @@
 # Stage 3 closure inventory
 
+The [checked analytic UV prefix fixture](../evidence/ANALYTIC_TEMPLATE_PREFIX.md)
+adds four measured nonempty native prefixes per GCC/CRT profile, with live curves,
+native normalized sizes, pre/post-sort topology checks and actual chained-read
+guards. Checked CRT retains iterator level 2. Two guard-only contexts and three
+refusals per profile remain explicitly excluded. The prefix stops at geometric
+entry and qualifies no selection, retirement, exception retry, process-wide leak
+or new scientific result. Require exact-head/main fixture/regression gates; then
+observe public geometry only from the four admitted contexts, measuring target
+reachability before any further campaign. Production and prior rejected evidence
+are unchanged; Stage 3 stays open with 37 numbered qualified slices.
+
 The [template-prefix source/caller precondition audit](../evidence/TEMPLATE_PREFIX_PRECONDITIONS_AUDIT.md)
 distinguishes the serial four-sided UV-square/curve contract from the rejected
 arbitrary-polygon preparation. Root-exterior neighbor tests are not geometric

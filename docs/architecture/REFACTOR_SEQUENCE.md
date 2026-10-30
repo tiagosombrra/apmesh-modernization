@@ -1,5 +1,15 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+## Checked analytic prefix before geometry observation
+
+The [analytic UV fixture](../evidence/ANALYTIC_TEMPLATE_PREFIX.md) admits four
+nonempty front-prefix contexts per GCC/checked-CRT profile, preserving native
+curve evaluation and prefix order. Guard-only and refused contexts do not qualify
+template creation. Complete exact-head/main gates, then observe inherited public
+geometry from only those four prefixes before any separate failure-path work.
+No selector, retirement, scientific policy or production change is included;
+Stage 3 stays open with 37 numbered qualified slices.
+
 ## Caller-faithful template-prefix preparation
 
 The [source precondition audit](../evidence/TEMPLATE_PREFIX_PRECONDITIONS_AUDIT.md)

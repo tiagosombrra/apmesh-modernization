@@ -1,5 +1,31 @@
 # Technique-preserving modernization plan
 
+## Active item: checked analytic UV template-prefix fixture
+
+The engineering-only fixture now executes the native front prefix with live
+analytic curves and records existing CLI-default ratio/tolerance, template use,
+explicit depth input and old UV seeds. Reversible copies check root/cardinal
+readiness before sorting, order afterward and each applicable chained read.
+The original prefix reaches an explicit geometric-entry cut without running
+selection. [Scope and exact delivery gates](evidence/ANALYTIC_TEMPLATE_PREFIX.md)
+require 73 CTest entries, 380 Python tests and the full 30-outcome GCC/checked-CRT
+inventory on exact head and merged main. Production is unchanged.
+
+Only four nonempty prefix contexts per profile are qualified by the initial
+measurement: four subdivisions per side, masks 0/15, empty/two-face old UV input.
+Two coarser contexts are guard-only; two seeded coarse prefixes and one invalid
+curve control are refusals, not qualified template creation. Retain every refusal,
+prior failed calibration and its 616 excluded events. No source repair, new
+numbered lifetime slice or scientific domain extension is included.
+
+After delivery, observe the inherited public geometry caller from only those
+four qualified prefixes, preserving native selection/policy. Record actual target
+reachability before considering any separate failure-path campaign; an unreached
+retirement remains unqualified. Do not use refused contexts without their own
+precondition disposition, force selector results, add uniform refinement, disable
+iterator checks or alter numerical/template policy. Stage 3 remains open with
+37 numbered qualified slices; earlier active items below are historical.
+
 ## Active item: caller-faithful template-prefix fixture preparation
 
 PR #127 is integrated at qualified main

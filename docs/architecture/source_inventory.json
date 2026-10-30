@@ -393,7 +393,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "9772beb26c15d2a36589c1e0ba639f658382729505e94413a4d0fff633ad6740"
+      "sha256": "fa0ffa242396aceee5b3a936ebe4459dbaf68bdaebc071f605fa4cd734be177f"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -458,6 +458,10 @@
     {
       "path": "tests/shortcut_face_memory/CMakeLists.txt",
       "sha256": "38332d3e27e64a5ef4dad1a3bd289dcdd4455754ef6dbbd52086e769dbcb7f5c"
+    },
+    {
+      "path": "tests/template_prefix/CMakeLists.txt",
+      "sha256": "7232c079ba1ce2d904bf13079da9b702af2cbc444125666a628691fb06f2c54d"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",
