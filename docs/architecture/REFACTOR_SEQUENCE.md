@@ -1,5 +1,17 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+## Public geometry-front ideal Vertex diagnosis
+
+PR #125's pending ideal owner is integrated at qualified main
+`8e2af01406892babfd830d02060fb0e214ad9eb2`. The subsequent
+[prepared public-caller diagnosis](../evidence/PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md)
+replays 27129 native outcomes and preserves native allocation/selection traces,
+8652 original retentions, live graphs and normal topology/area/boundary checks.
+It changes documentation only and adds no numbered slice. Complete its exact-
+head/main delivery gates, then separately diagnose outside-quadtree selected
+ideal retirement. Broader preparation, nonempty second-pass failures, recovery
+and full-process lifetime remain unqualified; Stage 3 stays open.
+
 Current single item: repair geometry-phase ideal Vertex ownership in
 findBestVertex after the completed [source-preserving diagnosis](../evidence/IDEAL_VERTEX_OWNERSHIP_AUDIT.md).
 Its 5007 verified native outcomes preserve 1832 original retentions, explicit

@@ -1,0 +1,78 @@
+{
+  "status": "public_diagnosis_verified",
+  "base": "8e2af01406892babfd830d02060fb0e214ad9eb2",
+  "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+  "native_outcomes": 27129,
+  "counts": {
+    "normal": 96,
+    "exact unobserved normal comparison": 48,
+    "public-wrapper denial preserved": 17816,
+    "original pending ideal retained": 8652,
+    "actual stale public observer detected": 18,
+    "borrowed nonoriginal vertex control not applicable": 180,
+    "beyond-window normal control": 96,
+    "actual borrowed vertex destruction detected": 216,
+    "independent instrument detected": 7
+  },
+  "rejected_observation_corruptions": 132340,
+  "rejected_public_source_anchor_corruptions": 78,
+  "raw_article_files_preserved": 66,
+  "prior_main_verification_sha256": "706a474b0e6fc71d4636f960662566e3cfb4cff101e632af8ac3b7df273c0575",
+  "application_sha256": "0c1f12893e4c26d72c45ff75e818f4586d0153fbd970c99668e3b11cf03f7202",
+  "production_source": "unchanged",
+  "new_production_repair": false,
+  "stage3": "open",
+  "numbered_qualified_slices": 37,
+  "verified_utc": "2026-10-30T14:49:48Z",
+  "profiles": {
+    "gcc": {
+      "native_outcomes": 3184,
+      "candidate_allocation_denials": 1510,
+      "counts": {
+        "normal": 32,
+        "exact unobserved normal comparison": 16,
+        "public-wrapper denial preserved": 2756,
+        "original pending ideal retained": 264,
+        "actual stale public observer detected": 6,
+        "borrowed nonoriginal vertex control not applicable": 36,
+        "beyond-window normal control": 32,
+        "actual borrowed vertex destruction detected": 40,
+        "independent instrument detected": 2
+      }
+    },
+    "asan": {
+      "native_outcomes": 11973,
+      "candidate_allocation_denials": 5862,
+      "counts": {
+        "normal": 32,
+        "exact unobserved normal comparison": 16,
+        "public-wrapper denial preserved": 7530,
+        "original pending ideal retained": 4194,
+        "actual stale public observer detected": 6,
+        "borrowed nonoriginal vertex control not applicable": 72,
+        "beyond-window normal control": 32,
+        "actual borrowed vertex destruction detected": 88,
+        "independent instrument detected": 3
+      }
+    },
+    "crt": {
+      "native_outcomes": 11972,
+      "candidate_allocation_denials": 5862,
+      "counts": {
+        "normal": 32,
+        "exact unobserved normal comparison": 16,
+        "public-wrapper denial preserved": 7530,
+        "original pending ideal retained": 4194,
+        "actual stale public observer detected": 6,
+        "borrowed nonoriginal vertex control not applicable": 72,
+        "beyond-window normal control": 32,
+        "actual borrowed vertex destruction detected": 88,
+        "independent instrument detected": 2
+      }
+    }
+  },
+  "verification_sha256": "0e3af2cb959a364b71aab654a04f79291bedfdf119982ddbfb23a1367794ac94",
+  "local_evidence_directory": "build/public-ideal-vertex-audit",
+  "document_delivery_required_ctest": 72,
+  "document_delivery_required_python_tests": 356
+}

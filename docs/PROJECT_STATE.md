@@ -1,5 +1,30 @@
 # Project state
 
+## Public geometry-front ideal Vertex lifetime diagnosis
+
+PR #125 is integrated and revalidated as main
+`8e2af01406892babfd830d02060fb0e214ad9eb2`: 72 CTest contracts, 356 Python
+tests, 6223 native outcomes, nine scientific states/45 artifacts and 123 boundary
+comparisons. Its exact-head/main qualification and original failures remain sealed.
+
+The subsequent public-caller diagnosis replays 27129 native outcomes across GCC,
+MSVC/ASan and Debug CRT in 16 prepared-front contexts per profile. All 13234
+candidate allocation denials preserve live ownership graphs and Face prefixes
+with zero scoped retained storage. The 8652 original pending ideal retentions
+remain preserved; each matching repaired ideal receives one nonallocating
+production cleanup. Forty-eight paired normal comparisons and 48 unobserved
+comparisons preserve native selection, IDs, topology, area and boundary incidence.
+
+This delivery changes documentation only. [Evidence and limitations](evidence/PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md)
+distinguish prepared public-wrapper coverage from full boundary/quadtree creation,
+nonempty second-pass failures, outside-quadtree retirement and general recovery.
+Exact-head/main documentation gates remain required before integration. After
+delivery, the next single item is a source-preserving diagnosis of selected ideal
+retirement outside the quadtree in the public geometry caller. No repair or
+scientific change is authorized by an unmeasured path. Stage 3 stays open with
+37 numbered qualified slices; stages 0-2 remain closed for measured scope and
+stages 4-11 remain pending. Earlier active items below are historical.
+
 ## Geometry-phase ideal Vertex pending ownership
 
 PR #124 integrated the source-preserving diagnosis as main

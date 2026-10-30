@@ -1,5 +1,28 @@
 # Technique-preserving modernization plan
 
+## Active item: public geometry-front ideal Vertex lifetime diagnosis
+
+PR #125's ideal owner is integrated at qualified main
+`8e2af01406892babfd830d02060fb0e214ad9eb2`. Its exact-head/main 72 CTest,
+356 Python, native and frozen-science evidence remains preserved. The subsequent
+[public-wrapper diagnosis](evidence/PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md)
+replays 27129 native outcomes, including 13234 candidate allocation denials,
+8652 preserved original retentions and 48 observed/unobserved normal comparisons
+per comparison category. Production source, selection and policy are unchanged.
+Classification: engineering-only diagnosis/documentation; no new repair or
+numbered qualified slice.
+
+Complete the exact-head/main documentation delivery gates before the next item.
+Then diagnose selected ideal retirement when the public geometry caller detects
+an ideal outside the quadtree. Preserve native selection, domain checks, queue/ID
+timing, formulas and scientific policy. Begin with source/caller analysis and
+calibration; do not substitute a selector or treat an unreached path as validated.
+Any reproduced defect requires its own bounded repair contract and qualification.
+Prepared boundary/quadtree construction, a nonempty second geometry pass,
+arbitrary aliases/ties, retry/rollback and full-process/parallel lifetime remain
+separate obligations. Stage 3 remains open with 37 numbered qualified slices;
+earlier active items are historical.
+
 ## Active item: pending geometric ideal Vertex ownership
 
 The repair holds the original geometric ideal in an exclusive local owner
