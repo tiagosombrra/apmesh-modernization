@@ -1,5 +1,18 @@
 # Stage 3 closure inventory
 
+The [outside-root ideal retirement source audit](../evidence/OUTSIDE_IDEAL_VERTEX_RETIREMENT_AUDIT.md)
+identifies an already-adopted ideal at the caller's strict root-interior check.
+Queue publication precedes three-list removal and deletion. Its calibration is
+rejected: checked CRT fails a template-prefix precondition before geometric entry.
+The 616 apparent GCC/ASan retirement events, incomplete earlier pilot, timeout
+and assertion remain negative/preparation evidence, not lifetime qualification.
+The single next obligation is source/caller analysis of the Boundary/root-domain/
+template-neighbor preconditions before further target measurement. No retirement
+repair, new numbered slice, global scientific result or stage closure follows.
+PR #126 remains integrated at qualified main `0124b0f1880a550c1faf01835123ee22aa11e934`.
+Stage 3 remains open with 37 numbered qualified slices. Earlier queue statements
+below are historical.
+
 The [public geometry-front ideal Vertex diagnosis](../evidence/PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md)
 extends observation to the inherited makeGeometryBasedMesh caller on prepared
 four-edge fronts. Its 27129 native outcomes preserve 8652 original pending ideal

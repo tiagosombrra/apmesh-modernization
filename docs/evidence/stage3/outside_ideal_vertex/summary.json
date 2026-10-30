@@ -1,0 +1,57 @@
+{
+  "status": "failed_calibration_preserved",
+  "base": "0124b0f1880a550c1faf01835123ee22aa11e934",
+  "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+  "application_sha256": "0c1f12893e4c26d72c45ff75e818f4586d0153fbd970c99668e3b11cf03f7202",
+  "target_retirement_qualification": "blocked by invalid template-prefix preparation",
+  "candidate_qualification": "none",
+  "new_production_repair": false,
+  "profiles": {
+    "gcc": {
+      "recorded_outcomes": 64,
+      "paired_observations": 32,
+      "retirement_entries_in_rejected_preparation": 308,
+      "status_counts": {
+        "5": 8,
+        "8": 24
+      },
+      "classification": "rejected preparation; no target qualification"
+    },
+    "asan": {
+      "recorded_outcomes": 64,
+      "paired_observations": 32,
+      "retirement_entries_in_rejected_preparation": 308,
+      "status_counts": {
+        "5": 8,
+        "8": 24
+      },
+      "classification": "rejected preparation; no target qualification"
+    },
+    "crt": {
+      "recorded_outcomes": 8,
+      "paired_observations": 4,
+      "retirement_entries_in_rejected_preparation": 0,
+      "status_counts": {
+        "5": 4
+      },
+      "classification": "rejected preparation; no target qualification"
+    }
+  },
+  "completed_template_records_replayed": 136,
+  "retirement_events_in_rejected_preparation": 616,
+  "rejected_observation_corruptions": 340,
+  "rejected_public_source_anchor_corruptions": 12,
+  "reversible_source_edits": 24,
+  "raw_article_files_preserved": 66,
+  "initial_incomplete_prefix_outcomes": 64,
+  "crt_diagnostic_exit": 3221226505,
+  "crt_diagnostic_before_public_geometry": true,
+  "prior_integration_sha256": "6881d31649b80aec6c7103d42f51b8856cfbda53dec9b3c2566842b3642881b4",
+  "stage3": "open",
+  "numbered_qualified_slices": 37,
+  "verified_utc": "2026-10-30T16:28:16Z",
+  "local_evidence_directory": "build/outside-ideal-vertex-audit",
+  "failed_calibration_seal_sha256": "27deb2e42f9f51f88280d1905bb22a5462d7ec2c64918157a5ab1afd5fad4611",
+  "document_delivery_required_ctest": 72,
+  "document_delivery_required_python_tests": 356
+}
