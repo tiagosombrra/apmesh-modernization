@@ -1,5 +1,18 @@
 # Stage 3 closure inventory
 
+The [template-prefix source/caller precondition audit](../evidence/TEMPLATE_PREFIX_PRECONDITIONS_AUDIT.md)
+distinguishes the serial four-sided UV-square/curve contract from the rejected
+arbitrary-polygon preparation. Root-exterior neighbor tests are not geometric
+contour clipping; cardinal balancing does not inspect all chained template
+accesses. The standalone tree execute path includes additional uniform refinement
+and is not the same prefix as AdvancingFront::execute. These source obligations
+do not resolve the earlier exact assertion site, establish a supported-application
+defect or qualify retirement. Next prepare/preflight a caller-faithful prefix and
+validate it with checked CRT before measurement. PR #127's failed calibration
+and 616 excluded events remain intact. Stage 3 stays open with 37 numbered
+qualified slices; no production or scientific change is included. Earlier queue
+statements below are historical.
+
 The [outside-root ideal retirement source audit](../evidence/OUTSIDE_IDEAL_VERTEX_RETIREMENT_AUDIT.md)
 identifies an already-adopted ideal at the caller's strict root-interior check.
 Queue publication precedes three-list removal and deletion. Its calibration is

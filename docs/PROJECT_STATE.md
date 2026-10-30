@@ -1,5 +1,35 @@
 # Project state
 
+## Template-prefix caller preconditions audited
+
+PR #127 is integrated at exact-main-qualified
+`f35eb16d46c8478876292ae1efb7f2cfe2946913`: 72 CTest contracts and
+356 Python tests. Its rejected retirement calibration, timeout/assertion and
+616 excluded events remain immutable; retirement qualification stays blocked.
+
+The [source/caller precondition audit](evidence/TEMPLATE_PREFIX_PRECONDITIONS_AUDIT.md)
+identifies the serial caller's four UV-square side traces, live curve/orientation
+bindings and normalized arc-size inputs. Arbitrary null-curve polygons do not
+represent that caller. Fresh root construction expands the boundary box to a
+square; inBoundary tests cardinal-neighbor absence, not contour containment.
+Cardinal balance does not verify every chained neighbor access in the templates.
+The standalone Quadtree::execute also includes refineToLevel, unlike the active
+AdvancingFront::execute prefix; it cannot be substituted silently.
+
+This is source/documentation evidence only. No native retirement calibration,
+template repair, new supported-domain claim or scientific result is included.
+The exact earlier assertion site and supported-application defect remain
+unestablished. Source findings do not qualify a new lifetime slice.
+
+Next single item: prepare a caller-faithful UV-square prefix fixture with live
+analytic curves and recorded existing configuration/old-UV inputs. Preflight
+root, cardinal/reciprocal and applicable chained-neighbor obligations before
+template entry, retaining refusal as failure evidence. Validate that prefix
+under checked CRT before any retirement measurement; do not change production
+or add uniform refinement to bypass a missing obligation. Stage 3 remains open
+with 37 numbered qualified slices; stages 0-2 remain closed for measured scope
+and stages 4-11 remain pending. Earlier active items below are historical.
+
 ## Outside-root ideal retirement: source audit and rejected calibration
 
 PR #126 is integrated at main `0124b0f1880a550c1faf01835123ee22aa11e934`,

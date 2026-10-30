@@ -1,5 +1,17 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+## Caller-faithful template-prefix preparation
+
+The [source precondition audit](../evidence/TEMPLATE_PREFIX_PRECONDITIONS_AUDIT.md)
+requires the serial caller's UV-square sides, live curve/orientation bindings,
+normalized size inputs and original front-prefix order. Cardinal/root-exterior
+tests do not replace chained-neighbor readiness. Do not substitute the standalone
+tree path's extra refineToLevel pass. Prepare and preflight a faithful prefix;
+checked-CRT completion must precede any reopened retirement measurement.
+PR #127's rejected calibration remains excluded, no supported-caller defect is
+established and Stage 3 remains open with 37 numbered qualified slices. Earlier
+active-item statements below are historical.
+
 ## Outside-root ideal retirement preparation boundary
 
 The [source audit and rejected calibration](../evidence/OUTSIDE_IDEAL_VERTEX_RETIREMENT_AUDIT.md)
