@@ -1,5 +1,29 @@
 # Technique-preserving modernization plan
 
+## Active item: front-edge provenance source audit complete
+
+The [bounded audit](evidence/FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md) maps all
+eight outer-template slot directions/front tests/cell rules, generic midpoint
+cache lineage, generated-edge publication/lookup and later selector eligibility.
+It records 85 anchors across six files without changing fixtures or policy.
+Under coherent exact dyadic unit-root geometry, template-front raw ideals stay
+in the closed root; border points remain in the original !root.in target.
+Generated midpoint lookup alone gives no next-ideal root-clearance guarantee.
+No admitted retirement witness or universal floating-point impossibility result
+is established; the existing four-context observation remains borrowed-only.
+
+Require 73 CTest entries and 380 Python tests on exact head and merged main,
+source/slot/order replay, unchanged production/fixtures/application/raw inputs
+and immutable prior evidence. Repeat no custom native campaign for this source-
+only delivery. This adds no repair, scientific proposal or numbered lifetime
+slice. Stage 3 stays open with 37 numbered qualified slices; stages 0-2 retain
+measured closure and 4-11 remain pending.
+
+Next single item: audit the root-border point-to-edge proximity veto in source,
+including endpoint and tolerance cases. Preserve numerical order, thresholds,
+fixtures and scientific policy before considering further retirement measurement.
+Earlier active-item statements below are historical.
+
 ## Active item: selected-ideal source-condition audit complete
 
 The [bounded audit](evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md) maps the

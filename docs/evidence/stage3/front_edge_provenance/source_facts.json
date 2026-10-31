@@ -1,0 +1,996 @@
+{
+  "base": "0ed10cfaa6d346af1185ad61837baf08e83d2862",
+  "source_files_sha256": {
+    "include/crab_mesh/aft/quadtree_cell.h": "37a055b077c70402e5b1827be0f0cf93e008ab877e16db70f840dee889a52c2d",
+    "src/crab_mesh/aft/advancing_front.cpp": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+    "src/crab_mesh/aft/boundary.cpp": "6b5f1b60b64ad9301dd0f77103f3f92cdb93ec6b3e327b0dcabc1ef83fe8167b",
+    "src/crab_mesh/aft/edge.cpp": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+    "src/crab_mesh/aft/quadtree.cpp": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+    "src/crab_mesh/aft/quadtree_cell.cpp": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb"
+  },
+  "source_facts": [
+    {
+      "name": "outer_skip_boundary",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1607,
+      "anchor": "  if (inBoundary()) {\n    return;",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Outer templates are created by non-boundary leaf cells; coherent cardinal geometry is an explicit assumption."
+    },
+    {
+      "name": "boundary_topology",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1432,
+      "anchor": "return (neighbors[QUAD_B].empty() || neighbors[QUAD_R].empty() ||\n          neighbors[QUAD_T].empty() || neighbors[QUAD_L].empty());",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "inBoundary is absence of a cardinal neighbor; root-perimeter interpretation requires a coherent complete graph."
+    },
+    {
+      "name": "vertex_slot_0",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1450,
+      "anchor": "std::make_unique<Vertex>(min->getX(), min->getY(), tree->vertexId())",
+      "scope_start": "void QuadtreeCell::makeOuterVertices()",
+      "scope_end": "void QuadtreeCell::makeOuterEdges()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native outer vertex slot 0 is a cell corner or side midpoint; shared slots require coherent neighbor identity."
+    },
+    {
+      "name": "vertex_slot_1",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1478,
+      "anchor": "std::make_unique<Vertex>(0.5 * (min->getX() + max->getX()), min->getY(), tree->vertexId())",
+      "scope_start": "void QuadtreeCell::makeOuterVertices()",
+      "scope_end": "void QuadtreeCell::makeOuterEdges()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native outer vertex slot 1 is a cell corner or side midpoint; shared slots require coherent neighbor identity."
+    },
+    {
+      "name": "vertex_slot_2",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1487,
+      "anchor": "std::make_unique<Vertex>(max->getX(), min->getY(), tree->vertexId())",
+      "scope_start": "void QuadtreeCell::makeOuterVertices()",
+      "scope_end": "void QuadtreeCell::makeOuterEdges()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native outer vertex slot 2 is a cell corner or side midpoint; shared slots require coherent neighbor identity."
+    },
+    {
+      "name": "vertex_slot_3",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1515,
+      "anchor": "std::make_unique<Vertex>(max->getX(), 0.5 * (min->getY() + max->getY()), tree->vertexId())",
+      "scope_start": "void QuadtreeCell::makeOuterVertices()",
+      "scope_end": "void QuadtreeCell::makeOuterEdges()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native outer vertex slot 3 is a cell corner or side midpoint; shared slots require coherent neighbor identity."
+    },
+    {
+      "name": "vertex_slot_4",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1524,
+      "anchor": "std::make_unique<Vertex>(max->getX(), max->getY(), tree->vertexId())",
+      "scope_start": "void QuadtreeCell::makeOuterVertices()",
+      "scope_end": "void QuadtreeCell::makeOuterEdges()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native outer vertex slot 4 is a cell corner or side midpoint; shared slots require coherent neighbor identity."
+    },
+    {
+      "name": "vertex_slot_5",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1552,
+      "anchor": "std::make_unique<Vertex>(0.5 * (min->getX() + max->getX()), max->getY(), tree->vertexId())",
+      "scope_start": "void QuadtreeCell::makeOuterVertices()",
+      "scope_end": "void QuadtreeCell::makeOuterEdges()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native outer vertex slot 5 is a cell corner or side midpoint; shared slots require coherent neighbor identity."
+    },
+    {
+      "name": "vertex_slot_6",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1561,
+      "anchor": "std::make_unique<Vertex>(min->getX(), max->getY(), tree->vertexId())",
+      "scope_start": "void QuadtreeCell::makeOuterVertices()",
+      "scope_end": "void QuadtreeCell::makeOuterEdges()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native outer vertex slot 6 is a cell corner or side midpoint; shared slots require coherent neighbor identity."
+    },
+    {
+      "name": "vertex_slot_7",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1589,
+      "anchor": "std::make_unique<Vertex>(min->getX(), 0.5 * (min->getY() + max->getY()), tree->vertexId())",
+      "scope_start": "void QuadtreeCell::makeOuterVertices()",
+      "scope_end": "void QuadtreeCell::makeOuterEdges()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native outer vertex slot 7 is a cell corner or side midpoint; shared slots require coherent neighbor identity."
+    },
+    {
+      "name": "directed_slot_0",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 305,
+      "anchor": "    case 0:\n      v1 = v[1] ? 1 : 2;\n      v2 = 0;\n      break;",
+      "scope_start": "Edge *QuadtreeCell::makeE(int i) {",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i, int j)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 0 has outward left normal [0, -1] relative to the creating cell."
+    },
+    {
+      "name": "front_slot_0",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1617,
+      "anchor": "if (neighbors[QUAD_B].front()->inBoundary()) {\n      tree->addFront(e[0]);",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 0 enters the template front only when its corresponding neighbor is boundary-topological."
+    },
+    {
+      "name": "cell_slot_0",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1633,
+      "anchor": "if (this->level < neighbors[QUAD_B].front()->level) {\n      e[0]->setCell(this);\n    } else {\n      e[0]->setCell(neighbors[QUAD_B].front());",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 0 cell attachment is coarser of creating cell and front neighbor; equal levels choose neighbor."
+    },
+    {
+      "name": "directed_slot_1",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 309,
+      "anchor": "    case 1:\n      v1 = 2;\n      v2 = 1;\n      break;",
+      "scope_start": "Edge *QuadtreeCell::makeE(int i) {",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i, int j)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 1 has outward left normal [0, -1] relative to the creating cell."
+    },
+    {
+      "name": "front_slot_1",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1646,
+      "anchor": "if (neighbors[QUAD_B].back()->inBoundary()) {\n      tree->addFront(e[1]);",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 1 enters the template front only when its corresponding neighbor is boundary-topological."
+    },
+    {
+      "name": "cell_slot_1",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1656,
+      "anchor": "    e[1]->setCell(neighbors[QUAD_B].back());",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 1 cell attachment is back neighbor; slot exists only for a two-neighbor side."
+    },
+    {
+      "name": "directed_slot_2",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 313,
+      "anchor": "    case 2:\n      v1 = v[3] ? 3 : 4;\n      v2 = 2;\n      break;",
+      "scope_start": "Edge *QuadtreeCell::makeE(int i) {",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i, int j)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 2 has outward left normal [1, 0] relative to the creating cell."
+    },
+    {
+      "name": "front_slot_2",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1665,
+      "anchor": "if (neighbors[QUAD_R].front()->inBoundary()) {\n      tree->addFront(e[2]);",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 2 enters the template front only when its corresponding neighbor is boundary-topological."
+    },
+    {
+      "name": "cell_slot_2",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1681,
+      "anchor": "if (this->level < neighbors[QUAD_R].front()->level) {\n      e[2]->setCell(this);\n    } else {\n      e[2]->setCell(neighbors[QUAD_R].front());",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 2 cell attachment is coarser of creating cell and front neighbor; equal levels choose neighbor."
+    },
+    {
+      "name": "directed_slot_3",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 317,
+      "anchor": "    case 3:\n      v1 = 4;\n      v2 = 3;\n      break;",
+      "scope_start": "Edge *QuadtreeCell::makeE(int i) {",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i, int j)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 3 has outward left normal [1, 0] relative to the creating cell."
+    },
+    {
+      "name": "front_slot_3",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1694,
+      "anchor": "if (neighbors[QUAD_R].back()->inBoundary()) {\n      tree->addFront(e[3]);",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 3 enters the template front only when its corresponding neighbor is boundary-topological."
+    },
+    {
+      "name": "cell_slot_3",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1704,
+      "anchor": "    e[3]->setCell(neighbors[QUAD_R].back());",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 3 cell attachment is back neighbor; slot exists only for a two-neighbor side."
+    },
+    {
+      "name": "directed_slot_4",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 321,
+      "anchor": "    case 4:\n      v1 = v[5] ? 5 : 6;\n      v2 = 4;\n      break;",
+      "scope_start": "Edge *QuadtreeCell::makeE(int i) {",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i, int j)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 4 has outward left normal [0, 1] relative to the creating cell."
+    },
+    {
+      "name": "front_slot_4",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1713,
+      "anchor": "if (neighbors[QUAD_T].front()->inBoundary()) {\n      tree->addFront(e[4]);",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 4 enters the template front only when its corresponding neighbor is boundary-topological."
+    },
+    {
+      "name": "cell_slot_4",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1729,
+      "anchor": "if (this->level < neighbors[QUAD_T].front()->level) {\n      e[4]->setCell(this);\n    } else {\n      e[4]->setCell(neighbors[QUAD_T].front());",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 4 cell attachment is coarser of creating cell and front neighbor; equal levels choose neighbor."
+    },
+    {
+      "name": "directed_slot_5",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 325,
+      "anchor": "    case 5:\n      v1 = 6;\n      v2 = 5;\n      break;",
+      "scope_start": "Edge *QuadtreeCell::makeE(int i) {",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i, int j)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 5 has outward left normal [0, 1] relative to the creating cell."
+    },
+    {
+      "name": "front_slot_5",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1742,
+      "anchor": "if (neighbors[QUAD_T].back()->inBoundary()) {\n      tree->addFront(e[5]);",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 5 enters the template front only when its corresponding neighbor is boundary-topological."
+    },
+    {
+      "name": "cell_slot_5",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1752,
+      "anchor": "    e[5]->setCell(neighbors[QUAD_T].back());",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 5 cell attachment is back neighbor; slot exists only for a two-neighbor side."
+    },
+    {
+      "name": "directed_slot_6",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 329,
+      "anchor": "    case 6:\n      v1 = v[7] ? 7 : 0;\n      v2 = 6;\n      break;",
+      "scope_start": "Edge *QuadtreeCell::makeE(int i) {",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i, int j)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 6 has outward left normal [-1, 0] relative to the creating cell."
+    },
+    {
+      "name": "front_slot_6",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1761,
+      "anchor": "if (neighbors[QUAD_L].front()->inBoundary()) {\n      tree->addFront(e[6]);",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 6 enters the template front only when its corresponding neighbor is boundary-topological."
+    },
+    {
+      "name": "cell_slot_6",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1777,
+      "anchor": "if (this->level < neighbors[QUAD_L].front()->level) {\n      e[6]->setCell(this);\n    } else {\n      e[6]->setCell(neighbors[QUAD_L].front());",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 6 cell attachment is coarser of creating cell and front neighbor; equal levels choose neighbor."
+    },
+    {
+      "name": "directed_slot_7",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 333,
+      "anchor": "    case 7:\n      v1 = 0;\n      v2 = 7;\n      break;",
+      "scope_start": "Edge *QuadtreeCell::makeE(int i) {",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i, int j)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 7 has outward left normal [-1, 0] relative to the creating cell."
+    },
+    {
+      "name": "front_slot_7",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1790,
+      "anchor": "if (neighbors[QUAD_L].back()->inBoundary()) {\n      tree->addFront(e[7]);",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 7 enters the template front only when its corresponding neighbor is boundary-topological."
+    },
+    {
+      "name": "cell_slot_7",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1800,
+      "anchor": "    e[7]->setCell(neighbors[QUAD_L].back());",
+      "scope_start": "void QuadtreeCell::makeOuterEdges()",
+      "scope_end": "void QuadtreeCell::makeTemplateBasedMesh()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Slot 7 cell attachment is back neighbor; slot exists only for a two-neighbor side."
+    },
+    {
+      "name": "template_constructor",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 345,
+      "anchor": "apmesh::memory::PendingEdge e(new Edge(v1, v2, tree->edgeId()));",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Template helpers use the native Edge constructor and preserve endpoint order."
+    },
+    {
+      "name": "template_free_initial",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 350,
+      "anchor": "  e->setFree(false);",
+      "scope_start": "Edge *QuadtreeCell::makeE(Vertex *v1, Vertex *v2)",
+      "scope_end": "void QuadtreeCell::makeMeshType1()",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Template helper edges start nonfree; addFront explicitly activates selected outer edges."
+    },
+    {
+      "name": "front_flags",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 429,
+      "anchor": "  front.push_back(e);\n\n  e->setFree(true);",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "addFront queues the same Edge object and activates it; it does not recompute midpoint or cell."
+    },
+    {
+      "name": "template_order",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 471,
+      "anchor": "  root->makeOuterVertices();",
+      "scope_start": "enum MethodStatus Quadtree::makeTemplateBasedMesh()",
+      "scope_end": "string Quadtree::getText()",
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "Template creation first establishes shared outer vertices."
+    },
+    {
+      "name": "outer_edges_order",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 475,
+      "anchor": "  root->makeOuterEdges();",
+      "scope_start": "enum MethodStatus Quadtree::makeTemplateBasedMesh()",
+      "scope_end": "string Quadtree::getText()",
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "Outer-edge cell attachment completes before internal template mesh creation."
+    },
+    {
+      "name": "internal_template_order",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 479,
+      "anchor": "  root->makeTemplateBasedMesh();",
+      "scope_start": "enum MethodStatus Quadtree::makeTemplateBasedMesh()",
+      "scope_end": "string Quadtree::getText()",
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "Internal template edges are separate from addFront outer slots."
+    },
+    {
+      "name": "subdivision_default",
+      "path": "include/crab_mesh/aft/quadtree_cell.h",
+      "line": 47,
+      "anchor": "void subdivide(bool setChildrenEdges = true);",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "37a055b077c70402e5b1827be0f0cf93e008ab877e16db70f840dee889a52c2d",
+      "finding": "Native balancing subdivision refreshes registered edges by default."
+    },
+    {
+      "name": "dyadic_children",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 176,
+      "anchor": "children[QUAD_BOTTOM_LEFT] =\n      new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree, min,\n                       mids[QUAD_MID], this, level + 1);",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native child boxes use parent corners/midpoints with level increment; coherent children have dyadic size."
+    },
+    {
+      "name": "midpoint_split",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 146,
+      "anchor": "double x = (min->getX() + max->getX()) / 2.0;\n    double y = (min->getY() + max->getY()) / 2.0;",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Cell subdivision computes the two axis midpoints."
+    },
+    {
+      "name": "refresh_registered_edges",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 297,
+      "anchor": "    tree->findCell(e);",
+      "scope_start": "void QuadtreeCell::setChildrenEdges()",
+      "scope_end": "Edge *QuadtreeCell::makeE(int i)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "setChildrenEdges reassigns registered edges during prefix subdivision."
+    },
+    {
+      "name": "native_prefix_balance",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1543,
+      "anchor": "  status = quadtree->refineAccordingToNeighbors();",
+      "scope_start": "bool AdvancingFront::execute(",
+      "scope_end": "bool AdvancingFront::poorRegionShapeSmoothing(",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Neighbor refinement occurs before template construction."
+    },
+    {
+      "name": "native_prefix_templates",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1556,
+      "anchor": "    status = quadtree->makeTemplateBasedMesh();",
+      "scope_start": "bool AdvancingFront::execute(",
+      "scope_end": "bool AdvancingFront::poorRegionShapeSmoothing(",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Native template creation follows balancing."
+    },
+    {
+      "name": "initial_template_view",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 256,
+      "anchor": "  EdgeList quadtreeFront = quadtree->getFront();",
+      "scope_start": "void AdvancingFront::makeInitialFront()",
+      "scope_end": "void AdvancingFront::sortFront()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Only template-front edges join the boundary front; internal template owner edges are not automatically selector bases."
+    },
+    {
+      "name": "edge_cache_constructor",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 14,
+      "anchor": "  setVertices(v1, v2);\n  setCell(nullptr);",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "A new native Edge builds its caches and starts with null cell."
+    },
+    {
+      "name": "edge_null_curve",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 18,
+      "anchor": "  setCurva(nullptr);",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "Template/generated edges start with no curve binding; their native construction does not call makeParamMid."
+    },
+    {
+      "name": "edge_midpoint",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 45,
+      "anchor": "v->setPosition((first->getX() + second->getX()) / 2.0, (first->getY() + second->getY()) / 2.0);",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "For live finite endpoints, generic M is the arithmetic chord midpoint."
+    },
+    {
+      "name": "cache_prepare",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 69,
+      "anchor": "  std::unique_ptr<Vertex> next_mid(makeMid(v1, v2));\n  std::unique_ptr<Vertex> next_vector(makeVector(v1, v2));",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "setVertices prepares midpoint/vector caches before changing endpoints."
+    },
+    {
+      "name": "cache_commit",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 105,
+      "anchor": "  mid = next_mid.release();\n  vector = next_vector.release();",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "The same setVertices call commits midpoint and vector caches together."
+    },
+    {
+      "name": "cell_setter",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 128,
+      "anchor": "void Edge::setCell(QuadtreeCell *cell) { this->cell = cell; }",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "Cell attachment is an observer assignment and does not recompute M."
+    },
+    {
+      "name": "boundary_curve_midpoint",
+      "path": "src/crab_mesh/aft/boundary.cpp",
+      "line": 79,
+      "anchor": "    e->makeParamMid();",
+      "scope_start": "Vertex* Boundary::addVertex(double",
+      "scope_end": "Vertex *Boundary::addVertex(long",
+      "source_sha256": "6b5f1b60b64ad9301dd0f77103f3f92cdb93ec6b3e327b0dcabc1ef83fe8167b",
+      "finding": "Boundary append is a separate curve-parametric midpoint path."
+    },
+    {
+      "name": "prior_domain_guard",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 879,
+      "anchor": "    if (geometryPhase && !existed && !quadtree->in(best)) {",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The adopted fresh best is checked against strict root interior before constructing either generated Edge."
+    },
+    {
+      "name": "reuse_first",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 899,
+      "anchor": "      e1 = findEdge(e->getV1(), best);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "An existing matching Edge is reused with its original cache and cell."
+    },
+    {
+      "name": "new_first",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 921,
+      "anchor": "          new Edge(e->getV1(), best, ++lastEdgeId));",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "First generated Edge direction is base V1 to best; generic M is the arithmetic midpoint."
+    },
+    {
+      "name": "publish_first",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 931,
+      "anchor": "      innerEdges.push_back(e1);\n      pending_edge.release();\n      edges.push_back(e1);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The first generated Edge is adopted and observed before queue/cell registration."
+    },
+    {
+      "name": "lookup_first",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 941,
+      "anchor": "      quadtree->findCell(e1);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "First generated Edge receives midpoint-based cell registration before later selector use."
+    },
+    {
+      "name": "new_second",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 962,
+      "anchor": "          new Edge(best, e->getV2(), ++lastEdgeId));",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Second generated Edge direction is best to base V2."
+    },
+    {
+      "name": "publish_second",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 972,
+      "anchor": "      innerEdges.push_back(e2);\n      pending_second_edge.release();\n      edges.push_back(e2);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The second generated Edge has its separate original adoption order."
+    },
+    {
+      "name": "lookup_second",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 982,
+      "anchor": "      quadtree->findCell(e2);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Second generated Edge uses the same midpoint lookup."
+    },
+    {
+      "name": "queue_first",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 936,
+      "anchor": "        insertInFront(last, e1);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Generated edges may be queued but are not guaranteed to become selector bases."
+    },
+    {
+      "name": "queue_second",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 977,
+      "anchor": "        insertInFront(last, e2);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Second generated Edge also follows the original queue policy."
+    },
+    {
+      "name": "consume_matching_first",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 905,
+      "anchor": "        front.remove(e1);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A later borrowed selection may consume a queued matching Edge before it is popped as a base."
+    },
+    {
+      "name": "selector_base",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 855,
+      "anchor": "    bool existed = findBestVertex(e, best, geometryPhase);",
+      "scope_start": "enum MethodStatus AdvancingFront::makeMesh(",
+      "scope_end": "void AdvancingFront::fillMesh()",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Only the popped non-marker base e invokes the selector; creation/queueing alone is not that coverage."
+    },
+    {
+      "name": "lookup_midpoint_only",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1127,
+      "anchor": "  if (out(e->getMid())) {",
+      "scope_start": "QuadtreeCell *QuadtreeCell::findCell(Edge *e)",
+      "scope_end": "QuadtreeCell *QuadtreeCell::findCell(Face *f)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Lookup tests M only, not endpoint inclusion or an entire-edge containment condition."
+    },
+    {
+      "name": "lookup_bottom_left",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1132,
+      "anchor": "children[QUAD_BOTTOM_LEFT]->findCell(e);",
+      "scope_start": "QuadtreeCell *QuadtreeCell::findCell(Edge *e)",
+      "scope_end": "QuadtreeCell *QuadtreeCell::findCell(Face *f)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Lookup child order includes bottom_left at its original position."
+    },
+    {
+      "name": "lookup_bottom_right",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1135,
+      "anchor": "children[QUAD_BOTTOM_RIGHT]->findCell(e);",
+      "scope_start": "QuadtreeCell *QuadtreeCell::findCell(Edge *e)",
+      "scope_end": "QuadtreeCell *QuadtreeCell::findCell(Face *f)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Lookup child order includes bottom_right at its original position."
+    },
+    {
+      "name": "lookup_top_right",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1139,
+      "anchor": "children[QUAD_TOP_RIGHT]->findCell(e);",
+      "scope_start": "QuadtreeCell *QuadtreeCell::findCell(Edge *e)",
+      "scope_end": "QuadtreeCell *QuadtreeCell::findCell(Face *f)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Lookup child order includes top_right at its original position."
+    },
+    {
+      "name": "lookup_top_left",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1143,
+      "anchor": "children[QUAD_TOP_LEFT]->findCell(e);",
+      "scope_start": "QuadtreeCell *QuadtreeCell::findCell(Edge *e)",
+      "scope_end": "QuadtreeCell *QuadtreeCell::findCell(Face *f)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Lookup child order includes top_left at its original position."
+    },
+    {
+      "name": "lookup_leaf",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1149,
+      "anchor": "  return this;",
+      "scope_start": "QuadtreeCell *QuadtreeCell::findCell(Edge *e)",
+      "scope_end": "QuadtreeCell *QuadtreeCell::findCell(Face *f)",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "The first accepting leaf is returned, without a nearest/smallest-cell optimization."
+    },
+    {
+      "name": "expanded_cell_test",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1190,
+      "anchor": "return ((v->getX() <= min->getX() - TOLERANCE_AFT) ||",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native out accepts a tolerance halo around a cell; M need not be strictly inside the returned cell."
+    },
+    {
+      "name": "lookup_no_match",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 272,
+      "anchor": "  if (!q) {\n    return;",
+      "scope_start": "void Quadtree::findCell(Edge *e)",
+      "scope_end": "bool Quadtree::in(Vertex *v)",
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "No match leaves the previous cell unchanged; a new Edge would remain null. This is a precondition issue, not a valid retirement witness."
+    },
+    {
+      "name": "lookup_attach",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 276,
+      "anchor": "  e->setCell(q);",
+      "scope_start": "void Quadtree::findCell(Edge *e)",
+      "scope_end": "bool Quadtree::in(Vertex *v)",
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "The returned leaf becomes the Edge cell before ancestor edge registration."
+    },
+    {
+      "name": "lookup_registration",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 279,
+      "anchor": "    q->addEdge(e);",
+      "scope_start": "void Quadtree::findCell(Edge *e)",
+      "scope_end": "bool Quadtree::in(Vertex *v)",
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "Registration observes the same Edge along the selected leaf-to-root ancestry."
+    },
+    {
+      "name": "ideal_height",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 430,
+      "anchor": "  h *= e->getCell()->height();",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The next ideal uses the attached cell size, not the generated-edge chord length."
+    },
+    {
+      "name": "ideal_midpoint",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 432,
+      "anchor": "  v->scalarMultiplication(h);\n  v->sum(e->getMid());",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Native raw ideal uses I=M+hN without root clipping."
+    },
+    {
+      "name": "height_value",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1201,
+      "anchor": "  return size;  //(max->getX() - min->getX());",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Cell height is stored box size."
+    },
+    {
+      "name": "size_value",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 991,
+      "anchor": "  size = (spanX > spanY) ? spanX : spanY;",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Native cell size is maximum span."
+    },
+    {
+      "name": "general_normal",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 507,
+      "anchor": "normal->setPosition(v[0]->getY() - v[1]->getY(),\n                        v[1]->getX() - v[0]->getX());",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "The non-axis case rotates the directed chord counterclockwise and is normalized by its norm."
+    },
+    {
+      "name": "strict_root",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1179,
+      "anchor": "return (v->getX() > min->getX() && v->getX() < max->getX() &&\n          v->getY() > min->getY() && v->getY() < max->getY());",
+      "scope_start": null,
+      "scope_end": null,
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Failure of strict root interior includes its border; it is not equivalent to strictly exterior."
+    },
+    {
+      "name": "geometry_before_transfer",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1570,
+      "anchor": "  status = makeGeometryBasedMesh();",
+      "scope_start": "bool AdvancingFront::execute(",
+      "scope_end": "bool AdvancingFront::poorRegionShapeSmoothing(",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Native geometry runs before fillMesh and improveMesh."
+    },
+    {
+      "name": "transfer_before_smoothing",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1592,
+      "anchor": "  fillMesh();",
+      "scope_start": "bool AdvancingFront::execute(",
+      "scope_end": "bool AdvancingFront::poorRegionShapeSmoothing(",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Template ownership transfer and subsequent smoothing are later than this geometry provenance scope."
+    },
+    {
+      "name": "later_improvement",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1596,
+      "anchor": "  status = improveMesh();",
+      "scope_start": "bool AdvancingFront::execute(",
+      "scope_end": "bool AdvancingFront::poorRegionShapeSmoothing(",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Later coordinate/cache refresh behavior is not covered by the pre-improvement provenance inference."
+    }
+  ],
+  "slot_matrix": [
+    {
+      "slot": 0,
+      "direction": "B",
+      "endpoint_v1_expression": "v[1] ? 1 : 2",
+      "endpoint_v2_expression": "0",
+      "left_normal": [
+        0,
+        -1
+      ],
+      "front_neighbor": "front",
+      "cell_rule": "coarser of creating cell and front neighbor; equal levels choose neighbor"
+    },
+    {
+      "slot": 1,
+      "direction": "B",
+      "endpoint_v1_expression": "2",
+      "endpoint_v2_expression": "1",
+      "left_normal": [
+        0,
+        -1
+      ],
+      "front_neighbor": "back",
+      "cell_rule": "back neighbor; slot exists only for a two-neighbor side"
+    },
+    {
+      "slot": 2,
+      "direction": "R",
+      "endpoint_v1_expression": "v[3] ? 3 : 4",
+      "endpoint_v2_expression": "2",
+      "left_normal": [
+        1,
+        0
+      ],
+      "front_neighbor": "front",
+      "cell_rule": "coarser of creating cell and front neighbor; equal levels choose neighbor"
+    },
+    {
+      "slot": 3,
+      "direction": "R",
+      "endpoint_v1_expression": "4",
+      "endpoint_v2_expression": "3",
+      "left_normal": [
+        1,
+        0
+      ],
+      "front_neighbor": "back",
+      "cell_rule": "back neighbor; slot exists only for a two-neighbor side"
+    },
+    {
+      "slot": 4,
+      "direction": "T",
+      "endpoint_v1_expression": "v[5] ? 5 : 6",
+      "endpoint_v2_expression": "4",
+      "left_normal": [
+        0,
+        1
+      ],
+      "front_neighbor": "front",
+      "cell_rule": "coarser of creating cell and front neighbor; equal levels choose neighbor"
+    },
+    {
+      "slot": 5,
+      "direction": "T",
+      "endpoint_v1_expression": "6",
+      "endpoint_v2_expression": "5",
+      "left_normal": [
+        0,
+        1
+      ],
+      "front_neighbor": "back",
+      "cell_rule": "back neighbor; slot exists only for a two-neighbor side"
+    },
+    {
+      "slot": 6,
+      "direction": "L",
+      "endpoint_v1_expression": "v[7] ? 7 : 0",
+      "endpoint_v2_expression": "6",
+      "left_normal": [
+        -1,
+        0
+      ],
+      "front_neighbor": "front",
+      "cell_rule": "coarser of creating cell and front neighbor; equal levels choose neighbor"
+    },
+    {
+      "slot": 7,
+      "direction": "L",
+      "endpoint_v1_expression": "0",
+      "endpoint_v2_expression": "7",
+      "left_normal": [
+        -1,
+        0
+      ],
+      "front_neighbor": "back",
+      "cell_rule": "back neighbor; slot exists only for a two-neighbor side"
+    }
+  ],
+  "source_order_constraints": [
+    [
+      "template_order",
+      "outer_edges_order",
+      "internal_template_order"
+    ],
+    [
+      "new_first",
+      "publish_first",
+      "queue_first",
+      "lookup_first",
+      "new_second",
+      "publish_second",
+      "queue_second",
+      "lookup_second"
+    ],
+    [
+      "lookup_bottom_left",
+      "lookup_bottom_right",
+      "lookup_top_right",
+      "lookup_top_left",
+      "lookup_leaf"
+    ],
+    [
+      "native_prefix_balance",
+      "native_prefix_templates",
+      "geometry_before_transfer",
+      "transfer_before_smoothing",
+      "later_improvement"
+    ],
+    [
+      "cache_prepare",
+      "cache_commit"
+    ]
+  ]
+}

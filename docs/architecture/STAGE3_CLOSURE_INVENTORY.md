@@ -1,5 +1,19 @@
 # Stage 3 closure inventory
 
+The [front-edge provenance audit](../evidence/FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md)
+maps 85 anchors across six files, all eight outer slots and five source-order
+groups. Template-front cells come from neighbor rules; generated cells come from
+tolerant midpoint lookup. A coherent exact dyadic unit-root deduction keeps the
+former raw ideals in the closed root, with border still possible; it supplies
+no universal floating-point or selected-retirement guarantee. Generated edges
+still need a root-clearance and actual selector-base history. No fixture, code,
+contract or scientific policy changes. Prior refused/excluded and zero-retirement
+records remain immutable. Require 73 CTest entries and 380 Python tests on exact
+head/main, source replay and preservation gates. Stage 3 remains open with 37
+numbered qualified slices. Next audit the root-border point-to-edge proximity
+veto in source without new fixtures or policy changes. Earlier entries below
+are historical.
+
 The [selected-ideal source-condition audit](../evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md)
 maps 71 anchors across ten files, with zero new native diagnostic contexts and
 no production/fixture/policy change. A new ideal needs a normally completed empty

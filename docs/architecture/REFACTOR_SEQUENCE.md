@@ -1,5 +1,18 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+## Front-edge provenance narrows, but does not qualify, retirement
+
+The [provenance source audit](../evidence/FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md)
+distinguishes the eight outer-template neighbor rules from generated midpoint
+lookup and queue eligibility. The conditional exact-geometry template bound is
+closed-root containment, leaving the original border guard case open. Generated
+lookup alone supplies no next-ideal clearance bound or actual selector witness.
+Preserve existing observations and fixtures; no new code, policy or numbered
+slice is included. Stage 3 stays open with 37 numbered qualified slices. After
+exact-head/main documentation gates, audit the root-border point-to-edge proximity
+veto, including endpoints/tolerance, before any further measurement. Earlier
+active-item statements below are historical.
+
 ## Source conditions do not yet supply an admitted retirement witness
 
 The [selected-ideal audit](../evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md)
