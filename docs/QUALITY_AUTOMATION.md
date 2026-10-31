@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Normal geometry observation after the admitted prefix
+
+The [bounded geometry observation](evidence/ANALYTIC_GEOMETRY_OBSERVATION.md)
+is documentation evidence, with no new production/test target or contract.
+Require the existing 73 CTest entries and 380 Python tests on exact head/main,
+the 15-outcome checked-CRT prefix inventory and 16 separate normal GCC/CRT
+geometry outcomes. All eight observed/unobserved pairs must agree on geometry
+status, ordered views, endpoint IDs, positions, Faces and remaining queues.
+Require unchanged admitted-prefix observations, reversible source insertions,
+raw/executable/source hashes and scoped diagnostic-fixture/header analysis.
+Fourteen report-corruption controls challenge the reader without injecting any
+native failure. Zero selected new ideals and zero retirements remain a coverage
+limit; empty second-pass entry does not qualify rejected-edge selection.
+Preserve production, prior evidence, protected inputs and scientific policy.
+
 ## Analytic native template-prefix gate
 
 `application.analytic_template_prefix` exercises eight analytic configurations

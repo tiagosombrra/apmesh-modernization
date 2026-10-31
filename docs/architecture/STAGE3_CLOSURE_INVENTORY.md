@@ -1,5 +1,19 @@
 # Stage 3 closure inventory
 
+The [normal geometry observation](../evidence/ANALYTIC_GEOMETRY_OBSERVATION.md)
+continues only four admitted analytic prefixes per GCC/checked-CRT profile.
+Eight exact observed/unobserved pairs return native geometry success; every
+observed context selects 24 borrowed vertices and no new ideal. Retirement is
+unreached and unqualified. The second pass has empty queues and no selection.
+Geometry contributes 24 Faces of area 0.75 while eight template Faces of area
+0.25 remain tree-owned; transfer, topology and smoothing are beyond the cut.
+This documentation-only engineering diagnosis changes no code, tests, contracts
+or scientific policy. Exact-head/main gates retain 73 CTest entries, 380 Python
+tests, checked-prefix controls and the 16 normal geometry outcomes. Prior
+rejected/refused evidence is unchanged. Stage 3 stays open with 37 numbered
+qualified slices. Next audit selector/domain source conditions without expanding
+fixtures or changing policy; earlier queue statements below are historical.
+
 The [checked analytic UV prefix fixture](../evidence/ANALYTIC_TEMPLATE_PREFIX.md)
 adds four measured nonempty native prefixes per GCC/CRT profile, with live curves,
 native normalized sizes, pre/post-sort topology checks and actual chained-read

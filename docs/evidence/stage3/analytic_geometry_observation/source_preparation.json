@@ -1,0 +1,89 @@
+{
+  "status": "reversible_geometry_prepared",
+  "base": "6374619bb88b7f7c2bb96cb49c2d457585a96c3a",
+  "contexts": [
+    [
+      4,
+      0,
+      0,
+      0
+    ],
+    [
+      4,
+      0,
+      1,
+      0
+    ],
+    [
+      4,
+      15,
+      0,
+      0
+    ],
+    [
+      4,
+      15,
+      1,
+      0
+    ]
+  ],
+  "files": {
+    "probe.cpp": {
+      "source": "tests\\template_prefix\\probe.cpp",
+      "source_sha256": "dacd624ef4831d0ca6368e4bcea34416d40f4ae607feb90485697e36720695b7",
+      "generated_sha256": "62eef03f530ac8140ac9b2a7494c4afb0ea4a24530151fdc948f9cfb8f2b0b05",
+      "edits": [
+        [
+          "    // The public method is an explicit prefix cut; no selector or geometry mesh is run.",
+          "    // Capture the admitted prefix, then call the inherited native geometry method."
+        ],
+        [
+          "    throw PrefixReached{};",
+          "\n    const auto result = AdvancingFront::makeGeometryBasedMesh();\n    std::printf(\"{\\\"geometry_result\\\":{\\\"status\\\":%d,\\\"done\\\":%d,\\\"ids\\\":[%ld,%ld,%ld],\\\"vertices\\\":[\",\n                static_cast<int>(result), result == ADVF_GEOMETRY_MESH_DONE,\n                lastVertexId, lastEdgeId, lastFaceId);\n    bool first = true;\n    for (auto* vertex : vertices) {\n      std::printf(\"%s[%ld,%.17g,%.17g]\", first ? \"\" : \",\", vertex->getId(), vertex->getX(), vertex->getY());\n      first = false;\n    }\n    std::printf(\"],\\\"edges\\\":[\");\n    first = true;\n    for (auto* edge : edges) {\n      std::printf(\"%s[%ld,%ld,%ld,%d]\", first ? \"\" : \",\", edge->getId(), edge->getV1()->getId(), edge->getV2()->getId(), edge->isFree());\n      first = false;\n    }\n    std::printf(\"],\\\"faces\\\":[\");\n    first = true;\n    for (auto* face : mesh) {\n      std::printf(\"%s[%ld,%ld,%ld,%ld,%.17g]\", first ? \"\" : \",\", face->getId(), face->getV1()->getId(), face->getV2()->getId(), face->getV3()->getId(), face->orientedSurface());\n      first = false;\n    }\n    std::printf(\"],\\\"front\\\":[\");\n    first = true;\n    for (auto* edge : front) {\n      std::printf(\"%s%ld\", first ? \"\" : \",\", edge->getId());\n      first = false;\n    }\n    std::printf(\"],\\\"rejected\\\":[\");\n    first = true;\n    for (auto* edge : rejected) {\n      std::printf(\"%s%ld\", first ? \"\" : \",\", edge->getId());\n      first = false;\n    }\n    std::printf(\"],\\\"inner\\\":[%zu,%zu,%zu],\\\"tree_owners\\\":[%zu,%zu,%zu]}}\\n\",\n                innerVertices.size(), innerEdges.size(), mesh.size(), quadtree->getVertices().size(),\n                quadtree->getEdges().size(), quadtree->getMesh().size());\n    throw PrefixReached{};"
+        ],
+        [
+          "if ((divisions != 2 && divisions != 4)",
+          "if ((divisions != 4)"
+        ],
+        [
+          "(control != 0 && control != 1)",
+          "(control != 0)"
+        ]
+      ],
+      "reversal_exact": true
+    },
+    "advancing_front.cpp": {
+      "source": "src\\crab_mesh\\aft\\advancing_front.cpp",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "generated_sha256": "08adf7b817639a295566a94c739219b1b0c246eb85c11c42d7f5b3d1aea81c07",
+      "edits": [
+        [
+          "#include <memory>",
+          "#include <memory>\n#include <cstdio>"
+        ],
+        [
+          "enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) {",
+          "enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) {\n  std::printf(\"{\\\"geometry_event\\\":\\\"pass_entry\\\",\\\"pass\\\":%d,\\\"geometry\\\":%d,\\\"queues\\\":[%zu,%zu]}\\n\", frontBased, geometryPhase, front.size(), rejected.size());"
+        ],
+        [
+          "    bool existed = findBestVertex(e, best, geometryPhase);",
+          "    bool existed = findBestVertex(e, best, geometryPhase);\n    std::printf(\"{\\\"geometry_event\\\":\\\"selection\\\",\\\"pass\\\":%d,\\\"edge\\\":%ld,\\\"existed\\\":%d,\\\"best\\\":%ld,\\\"xy\\\":[%.17g,%.17g],\\\"membership\\\":[%lld,%lld,%lld],\\\"queues\\\":[%zu,%zu]}\\n\",\n                frontBased, e->getId(), existed, best ? best->getId() : -1L,\n                best ? best->getX() : 0, best ? best->getY() : 0,\n                static_cast<long long>(std::count(vertices.begin(), vertices.end(), best)),\n                static_cast<long long>(std::count(innerVertices.begin(), innerVertices.end(), best)),\n                static_cast<long long>(std::count(frontVertices.begin(), frontVertices.end(), best)),\n                front.size(), rejected.size());"
+        ],
+        [
+          "    if (geometryPhase && !existed && !quadtree->in(best)) {",
+          "    if (geometryPhase && !existed && !quadtree->in(best)) {\n      std::printf(\"{\\\"geometry_event\\\":\\\"retirement_enter\\\",\\\"pass\\\":%d,\\\"edge\\\":%ld,\\\"queues\\\":[%zu,%zu],\\\"views\\\":[%zu,%zu,%zu]}\\n\", frontBased, e->getId(), front.size(), rejected.size(), vertices.size(), innerVertices.size(), frontVertices.size());"
+        ],
+        [
+          "      vertices.remove(best);\n      innerVertices.remove(best);\n      frontVertices.remove(best);\n\n      delete best;",
+          "\n      std::printf(\"{\\\"geometry_event\\\":\\\"retirement_queued\\\",\\\"pass\\\":%d,\\\"edge\\\":%ld,\\\"queues\\\":[%zu,%zu],\\\"views\\\":[%zu,%zu,%zu]}\\n\", frontBased, e->getId(), front.size(), rejected.size(), vertices.size(), innerVertices.size(), frontVertices.size());\n      vertices.remove(best);\n      innerVertices.remove(best);\n      frontVertices.remove(best);\n\n\n      std::printf(\"{\\\"geometry_event\\\":\\\"retirement_detached\\\",\\\"pass\\\":%d,\\\"edge\\\":%ld,\\\"queues\\\":[%zu,%zu],\\\"views\\\":[%zu,%zu,%zu]}\\n\", frontBased, e->getId(), front.size(), rejected.size(), vertices.size(), innerVertices.size(), frontVertices.size());\n      delete best;\n      std::printf(\"{\\\"geometry_event\\\":\\\"retirement_deleted\\\",\\\"pass\\\":%d,\\\"edge\\\":%ld,\\\"queues\\\":[%zu,%zu],\\\"views\\\":[%zu,%zu,%zu]}\\n\", frontBased, e->getId(), front.size(), rejected.size(), vertices.size(), innerVertices.size(), frontVertices.size());"
+        ]
+      ],
+      "reversal_exact": true
+    },
+    "CMakeLists.txt": {
+      "generated_sha256": "dc28d2673f6788c957cd4d02aeff47a2317fa652289d0cc3501092dbf35dd9f6"
+    }
+  },
+  "fault_injection": false,
+  "selector_override": false
+}
