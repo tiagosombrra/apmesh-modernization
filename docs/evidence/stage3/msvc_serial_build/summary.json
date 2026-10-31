@@ -1,0 +1,66 @@
+{
+  "classification": "engineering-only serial C++17 portability and scratch ownership",
+  "entry_main": "57d4cac866cf6a8677d33370e2367fc60045ee01",
+  "work_package": "P1",
+  "stage3_status": "open",
+  "implementation": {
+    "production_files": 3,
+    "pi": "reuse existing definitions.h fallback; expressions unchanged",
+    "quadrature_scratch_arrays": 2,
+    "communicator_runtime_array_sites": 35,
+    "communicator_scratch_arrays": 42,
+    "storage": "default-initialized unique_ptr arrays with original extents and raw call types",
+    "source_scope": "recorded include/storage edits reverse to original bytes; all other production files unchanged",
+    "raw_article_files_unchanged": 66
+  },
+  "artifact": {
+    "configure": "cmake --preset windows-msvc-serial",
+    "build": "cmake --build --preset windows-msvc-serial",
+    "path": "build/windows-msvc-serial/bin/Debug/ap_mesh.exe",
+    "toolchain": "Visual Studio 17 2022 x64; MSVC 14.44.35207",
+    "language": "C++17",
+    "configuration": "Debug; iterator level 2; MPI/OpenMP/LTO off",
+    "native_translation_units": 73,
+    "excluded_source_units": 0
+  },
+  "observed_pre_delivery": {
+    "complete_native_msvc_build": "passed",
+    "invalid_cli_controls": 23,
+    "real_aligned_two_surface_generation": "passed independent geometry and boundary verification",
+    "defined_quadrature_orders": [3, 4],
+    "analytic_areas": ["6", "sqrt(61)"],
+    "pi_double_bits": "0x400921fb54442d18",
+    "typed_buffer_forwarding_calls": 4,
+    "profiles": ["MSVC Debug", "GCC C++17"]
+  },
+  "required_exact_delivery_head_and_main": {
+    "actual_canonical_msvc_build": true,
+    "ctest_entries": 74,
+    "failures_and_skips": 0,
+    "nested_python_controls": 380,
+    "msvc_real_cli_and_focused_controls": true,
+    "gcc_reference_scientific_states": 9,
+    "exact_scientific_artifacts": 45,
+    "boundary_incidence_comparisons": 123,
+    "scoped_analysis_format_whitespace_inventory_contracts": true,
+    "source_input_staged_and_remote_identity": true,
+    "revision_and_outcomes": "PR and local integration seal bind exact revisions, logs and binary hashes"
+  },
+  "preserved_evidence": {
+    "original_msvc_failure": "build/stage3-consolidation-audit/msvc-observation",
+    "prior_integration_seal_sha256": "9c1496f31ec9a8db686d477fe80ffdf4f39bc80bdf269e92e35d1be83f711814",
+    "original_gcc_executable_sha256": "0c1f12893e4c26d72c45ff75e818f4586d0153fbd970c99668e3b11cf03f7202",
+    "local_records": "build/msvc-serial-build-repair",
+    "rejected_preparation": "wrong site-count assumption and locale comment drift; originals restored before compilation",
+    "rejected_focused_build": "recording fixture lacked ranks override and matching conformance mode; corrected explicitly"
+  },
+  "limitations": [
+    "Heap allocation replaces stack VLAs; failure/performance characteristics change",
+    "Existing undefined/uninitialized quadrature order 5 remains unqualified",
+    "Recording transport is not MPI execution qualification",
+    "No complete-process sanitizer, Release distribution or C++23 qualification",
+    "Scoped analyzer pass is not whole-program cleanliness",
+    "P1 does not close Stage 3 or S3-09"
+  ],
+  "next_work_package": "P2 supported-process and terminal/retry ledger"
+}

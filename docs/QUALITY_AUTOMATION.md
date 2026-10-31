@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Complete serial MSVC C++17 build prerequisite
+
+`windows-msvc-serial` configures/builds the real complete Debug ap_mesh target.
+The [bounded build evidence](evidence/MSVC_SERIAL_CPP17_BUILD.md) requires actual
+C++17/checked-iterator native observations, the existing real CLI invalid/analytic
+controls, exact source reversal and GCC Eistute/Book preservation (nine states,
+45 exact artifacts and 123 boundary comparisons) on delivery head and main.
+`application.serial_cpp17_portability` reuses curve_orientation_probe and adds
+one focused entry for the unchanged pi value, defined quadrature orders 3/4 and
+typed scratch count/payload forwarding. Require 74 CTest entries with zero
+failures/skips and the existing 380 nested Python controls. No production mode,
+extra duplicate native target or new allocation-denial matrix is introduced.
+Changed-line/new-header analysis, explicit scoped formatting, whitespace,
+inventory/contracts, raw-input/source and staged/remote identity remain gates.
+Original compiler/preparation failures stay retained. No MPI/OpenMP runtime,
+unsupported quadrature, whole-process sanitizer or C++23 qualification follows.
+
 ## Consolidated execution policy
 
 The current [stage audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) controls task
@@ -18,7 +35,7 @@ qualification scope. Existing detailed gates below still apply to their changes.
 - Admit a work item with closure row, concrete output, affected gates and stop
   decision. After refusal/zero reach, classify the gap before another experiment;
   do not automatically create a successor source-audit PR.
-- Report 73 CTest entries with 380 Python controls nested in tooling.controls.
+- Report 74 CTest entries with 380 Python controls nested in tooling.controls.
   Test counts and anchor counts are inventories, not modernization progress.
 
 For this consolidation, observe the unchanged current regression once, preserve

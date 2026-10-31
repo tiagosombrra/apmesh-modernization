@@ -2,56 +2,57 @@
 
 ## Current checkpoint and active work
 
-Entry main: `e8ecdd1a1ac29bd636ef4662c71d201aa62d371d` (PR #132).
-The current consolidated audit/regression replaces the automatic sequence of
-root-border microaudits. Its [findings and execution rules](evidence/STAGE3_CONSOLIDATION_AUDIT.md)
-are the active continuity source together with the finite closure ledger below.
+Entry main: `57d4cac866cf6a8677d33370e2367fc60045ee01` (PR #133).
+The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
+automatic sequence of root-border microaudits with five finite work packages.
 
 | Stage | Current disposition |
 | --- | --- |
 | 0-2 | Closed for their measured scope |
 | 3: memory and lifecycle | Open; 37 historical numbered slices, with later bounded repairs recorded separately |
-| 4-11 | Pending; a bounded stage 4 prerequisite may unblock required stage 3 instruments |
+| 4-11 | Pending; P1 supplies a bounded stage 4 compiler prerequisite for stage 3 instruments |
 
-Current-state regression: 73/73 CTest entries, zero failures/skips, with 380
-Python controls inside tooling.controls. These are nested counts, not 453
-independent test entries. The baseline suite took about 33 seconds. Exact
-delivery-head/main results remain separate from this entry measurement.
+P1 now implements the demonstrated complete serial MSVC build repair. The actual
+full ap_mesh target builds with C++17 and Debug iterator checks, without excluded
+source units. The existing pi definition and automatically owned replacements
+for runtime-sized scratch arrays resolve the observed blockers in three source
+files. Formulas, expression order, inputs and scientific policies are preserved.
+Stack scratch becomes dynamically allocated storage; no unchanged-allocation or
+MPI exception guarantee is claimed. The original compiler failure remains intact.
 
-Since slice 37, 32 integrations include 18 touching production. The last seven
-touch no production; one adds the admitted prefix fixture. Recent audits supply
-scope/negative evidence, not new production repairs or stage closure.
+Build the executable with `cmake --preset windows-msvc-serial` followed by
+`cmake --build --preset windows-msvc-serial`. The output is
+`build/windows-msvc-serial/bin/Debug/ap_mesh.exe`. This is a development artifact;
+whole-process sanitizer, Release distribution, MPI/OpenMP and C++23 qualification
+remain outside this delivery. [Build scope and evidence](evidence/MSVC_SERIAL_CPP17_BUILD.md)
+record the commands and limitations.
 
-The [closure ledger](architecture/STAGE3_CLOSURE_INVENTORY.md) has ten inherited
-obligations: three have bounded qualification and seven remain partial/open.
-No required observation is waived or converted into a documentation-only pass.
-The [five work packages](architecture/REFACTOR_SEQUENCE.md) define outputs,
-acceptance and stop rules. Completion is measured by resolved obligations or
-repaired reproduced defects, not test/anchor/PR counts.
+Exact delivery head/main gates require 74 CTest entries without failures/skips,
+with the existing 380 Python controls nested in tooling.controls. The focused
+portability check and real MSVC CLI controls accompany the GCC reference
+comparison: nine Eistute/Book states, 45 exact scientific artifacts and 123
+boundary comparisons. The PR and local integration seal identify their exact
+revisions and outcomes; implementation alone is not integration qualification.
 
-The single complete serial MSVC build observation configured successfully but
-failed in curvature_discrete.cpp (M_PI), charge_estimate_process.cpp (VLAs) and
-parallel/Communicator.cpp (compiled even with MPI/OpenMP disabled). The compiler
-error limit was reached, so these are observed blockers, not an exhaustive list.
-This is failed build evidence, not sanitizer qualification or a green stage gate.
+The [closure ledger](architecture/STAGE3_CLOSURE_INVENTORY.md) still has ten
+inherited obligations: three have bounded qualification and seven remain
+partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
+memory obligation. No required observation is waived and no stage is closed.
 
-## Next single adjustment
+## Next single adjustment after P1 delivery
 
-P1: make the complete existing serial executable buildable with the selected
-memory-instrumentation toolchain. Correct only demonstrated compiler blockers,
-starting with the observed compiler failures; retain C++17 comparison,
-arithmetic/order, inputs and scientific policy. A working full target is the
-output, not another standalone source-audit PR. Preserve the first compiler
-failure and keep a specific blocker if its repair would require scientific policy.
-This is a bounded stage 4 prerequisite; it does not close stage 3 or qualify
-whole-process memory by itself.
+P2: establish the supported serial executable/input/caller and terminal-versus-
+retry ledger from existing controls, then freeze the finite P3 complete-process
+instrument inventory. Follow the outputs, acceptance and stop decisions in the
+[five work packages](architecture/REFACTOR_SEQUENCE.md). Completion is measured
+by resolved obligations or repaired reproduced defects, not test or PR counts.
 
 The outside-root ideal retirement remains unreached/unqualified under S3-06.
-Its automatic next microaudit is superseded, while all refusals, excluded events
+Its automatic successor microaudit is superseded; all refusals, excluded events
 and prior records remain intact. Reopen measurement only with an admissible
 history or a named required closure experiment and a finite decision/stop rule.
 
-Production, fixtures, baselines, MPI/OpenMP and scientific criteria are unchanged
-by this consolidation. Complete prior checkpoints remain verbatim in
+Fixtures, baselines, MPI/OpenMP routing and scientific criteria are unchanged.
+Complete prior checkpoints remain verbatim in
 [PROJECT_STATE_HISTORY.md](PROJECT_STATE_HISTORY.md); their historical next-work
 paragraphs are not an active queue.

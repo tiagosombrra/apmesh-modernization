@@ -47,6 +47,9 @@ admissible native history or a named required closure observation with a fixed
 question, finite case inventory, output and stop decision. Source predicates,
 zero reach and excluded events cannot qualify this path. Preserve all records.
 
-Next single implementation is P1 in [REFACTOR_SEQUENCE.md](REFACTOR_SEQUENCE.md),
-the complete serial build prerequisite for S3-09. All other packages remain
-pending; the ledger does not authorize concurrent or unlimited campaigns.
+P1 implements the [complete serial MSVC build prerequisite](../evidence/MSVC_SERIAL_CPP17_BUILD.md)
+for S3-09. Its exact-head/main build/reference gates do not close the complete-
+process instrument row. Next single implementation is P2 in
+[REFACTOR_SEQUENCE.md](REFACTOR_SEQUENCE.md), the supported execution/caller
+ledger before P3 instrumentation. Other packages remain pending; the ledger
+does not authorize concurrent or unlimited campaigns.

@@ -28,8 +28,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 613,
-    "first_party_include_edges": 349
+    "literal_include_directives": 616,
+    "first_party_include_edges": 350
   },
   "cross_component_directives": [
     {
@@ -135,7 +135,7 @@
     {
       "from": "curvature",
       "to": "data",
-      "count": 6
+      "count": 7
     },
     {
       "from": "curvature",
@@ -357,7 +357,7 @@
     "list": 17,
     "locale": 1,
     "map": 9,
-    "memory": 31,
+    "memory": 33,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -389,11 +389,11 @@
     },
     {
       "path": "CMakePresets.json",
-      "sha256": "1490377d69b8c9bdd2bccd95f0c10fd2fae0e37baf518ddff34d4155e9691d5e"
+      "sha256": "79f0a2bdcb7d5e6d03b2ae2b4517ebfdcb211a31a3d503e9edaf9b7f97498c21"
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "fa0ffa242396aceee5b3a936ebe4459dbaf68bdaebc071f605fa4cd734be177f"
+      "sha256": "bcbbc76ec2b4eb1d5df0f8117962a8b9faa1e27055e03f793a82c1a7b52a46d5"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -3983,8 +3983,8 @@
       "path": "src/curvature/curvature_discrete.cpp",
       "component_by_directory": "curvature",
       "kind": "translation_unit",
-      "sha256": "1f784b4f8fa894df444f1d4f82d41c60dabd20980444ffd6d8529c1f2fd2d4a3",
-      "bytes": 4853,
+      "sha256": "1be331b3a0b702f3902bbdddb8c1f3dc43e8a021e99a409f9ce2d9ffcbf7fc23",
+      "bytes": 4883,
       "includes": [
         {
           "line": 1,
@@ -3992,6 +3992,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/curvature_discrete.h"
+        },
+        {
+          "line": 2,
+          "spelling": "data/definitions.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/definitions.h"
         }
       ]
     },
@@ -4585,8 +4592,8 @@
       "path": "src/estimate/charge_estimate_process.cpp",
       "component_by_directory": "estimate",
       "kind": "translation_unit",
-      "sha256": "e91eb3d6d22474ca6e85cd92b6de3296c2115f28e57ebfa2ee993c52bbcee534",
-      "bytes": 4951,
+      "sha256": "b1f1a1bf0ad3fb4bea7aa31f3cf722e1795ebc7c95593330a2820072f3e5f1ce",
+      "bytes": 5031,
       "includes": [
         {
           "line": 1,
@@ -4603,7 +4610,14 @@
           "target": "include/estimate/triangle_count_estimate.h"
         },
         {
-          "line": 4,
+          "line": 3,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
           "spelling": "../../include/estimate/charge_estimate_process.h",
           "form": "quote",
           "scope": "first_party",
@@ -5935,8 +5949,8 @@
       "path": "src/parallel/Communicator.cpp",
       "component_by_directory": "parallel",
       "kind": "translation_unit",
-      "sha256": "436005342cc0453b7852ffb7ec4a700158830b6bd748300532191cdf2daadabf",
-      "bytes": 104929,
+      "sha256": "44ce2f883a3ce2e267f014d8050f6fd4d57e63b5c024a870d04fe56a06af0b1d",
+      "bytes": 108187,
       "includes": [
         {
           "line": 1,
@@ -5951,6 +5965,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/parallel/Transferable.h"
+        },
+        {
+          "line": 4,
+          "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
