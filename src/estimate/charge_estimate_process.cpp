@@ -1,5 +1,6 @@
 #include "estimate/initial_mesh_estimate.h"
 #include "estimate/triangle_count_estimate.h"
+#include <memory>
 
 #include "../../include/estimate/charge_estimate_process.h"
 
@@ -77,8 +78,8 @@ double ChargeEstimateProcess::CalculateAreaPatch(PatchBezier* patch,
                                                  int pointsGaussLegandre) {
   VectorAdaptive V;
   double I = 0.0;
-  double beta[pointsGaussLegandre];
-  double peso[pointsGaussLegandre];
+  std::unique_ptr<double[]> beta(new double[pointsGaussLegandre]);
+  std::unique_ptr<double[]> peso(new double[pointsGaussLegandre]);
   double u = 0.0, v = 0.0;
 
   switch (pointsGaussLegandre) {

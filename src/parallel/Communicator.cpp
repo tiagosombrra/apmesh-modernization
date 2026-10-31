@@ -1,6 +1,7 @@
 #include "../../include/parallel/Communicator.h"
 
 #include "../../include/parallel/Transferable.h"
+#include <memory>
 
 using namespace Parallel;
 
@@ -346,7 +347,8 @@ Transferable *Parallel::Communicator::broadcast(Int root) const {
 void Parallel::Communicator::broadcastv(Transferable **const t,
                                         Int size) const {
   Package p = std::make_pair(0, static_cast<char *>(NULL));
-  Int sizes[size];
+  std::unique_ptr<Int[]> sizes_storage(new Int[size]);
+  Int* sizes = sizes_storage.get();
 
   // how many transferables and their sizes
   p.first += this->packSize(size + 1, INT);
@@ -391,7 +393,8 @@ Transferable **Parallel::Communicator::broadcastv(Int &size, Int root) const {
 
   this->unpack(size, p.second, p.first, position);
 
-  Int sizes[size];
+  std::unique_ptr<Int[]> sizes_storage(new Int[size]);
+  Int* sizes = sizes_storage.get();
 
   for (Int i = 0; i < size; i++) {
     this->unpack(sizes[i], p.second, p.first, position);
@@ -705,7 +708,10 @@ void Parallel::Communicator::scatter(LReal *val, Int size, Int root) const {
 void Parallel::Communicator::scatter(Transferable **const t) const {
   Int numProcesses = this->numProcesses();
 
-  Int sizes[numProcesses], displacements[numProcesses];
+  std::unique_ptr<Int[]> sizes_storage(new Int[numProcesses]);
+  Int* sizes = sizes_storage.get();
+  std::unique_ptr<Int[]> displacements_storage(new Int[numProcesses]);
+  Int* displacements = displacements_storage.get();
 
   Package p;
 
@@ -766,7 +772,10 @@ void Parallel::Communicator::scatterv(Transferable **const t,
                                       Int sizes[]) const {
   Int numProcesses = this->numProcesses();
 
-  Int tpsizes[numProcesses], displacements[numProcesses];
+  std::unique_ptr<Int[]> tpsizes_storage(new Int[numProcesses]);
+  Int* tpsizes = tpsizes_storage.get();
+  std::unique_ptr<Int[]> displacements_storage(new Int[numProcesses]);
+  Int* displacements = displacements_storage.get();
 
   Int numTransfs = 0;
 
@@ -774,7 +783,8 @@ void Parallel::Communicator::scatterv(Transferable **const t,
     numTransfs += sizes[i];
   }
 
-  Int psizes[numTransfs];
+  std::unique_ptr<Int[]> psizes_storage(new Int[numTransfs]);
+  Int* psizes = psizes_storage.get();
 
   Package p;
 
@@ -851,7 +861,8 @@ Transferable **Parallel::Communicator::scatterv(Int &size, Int root) const {
 
   this->unpack(size, p.second, p.first, position);
 
-  Int sizes[size];
+  std::unique_ptr<Int[]> sizes_storage(new Int[size]);
+  Int* sizes = sizes_storage.get();
 
   for (Int i = 0; i < size; i++) {
     this->unpack(sizes[i], p.second, p.first, position);
@@ -1116,7 +1127,10 @@ Transferable **Parallel::Communicator::gather() const {
   Int numProcesses = this->numProcesses();
   Int rank = this->rank();
 
-  Int sizes[numProcesses], displacements[numProcesses];
+  std::unique_ptr<Int[]> sizes_storage(new Int[numProcesses]);
+  Int* sizes = sizes_storage.get();
+  std::unique_ptr<Int[]> displacements_storage(new Int[numProcesses]);
+  Int* displacements = displacements_storage.get();
 
   Int iignore = 0;
 
@@ -1175,7 +1189,10 @@ Transferable **Parallel::Communicator::gatherv(Int sizes[]) const {
   Int numProcesses = this->numProcesses();
   Int rank = this->rank();
 
-  Int tpsizes[numProcesses], displacements[numProcesses];
+  std::unique_ptr<Int[]> tpsizes_storage(new Int[numProcesses]);
+  Int* tpsizes = tpsizes_storage.get();
+  std::unique_ptr<Int[]> displacements_storage(new Int[numProcesses]);
+  Int* displacements = displacements_storage.get();
 
   Int iignore = 0;
 
@@ -1224,7 +1241,8 @@ Transferable **Parallel::Communicator::gatherv(Int sizes[]) const {
 
     this->unpack(ignore, p.second, p.first, position);
 
-    Int psizes[sizes[j]];
+    std::unique_ptr<Int[]> psizes_storage(new Int[sizes[j]]);
+    Int* psizes = psizes_storage.get();
 
     for (Int l = 0; l < sizes[j]; l++) {
       this->unpack(psizes[l], p.second, p.first, position);
@@ -1254,7 +1272,8 @@ void Parallel::Communicator::gatherv(Transferable **const t, Int size,
   p.first = 0;
   p.second = NULL;
 
-  Int sizes[size];
+  std::unique_ptr<Int[]> sizes_storage(new Int[size]);
+  Int* sizes = sizes_storage.get();
 
   p.first += this->packSize(size + 1, INT);
 
@@ -1453,7 +1472,10 @@ Transferable **Parallel::Communicator::allGather(const Transferable *t) const {
   Int numProcesses = this->numProcesses();
   Int rank = this->rank();
 
-  Int sizes[numProcesses], displacements[numProcesses];
+  std::unique_ptr<Int[]> sizes_storage(new Int[numProcesses]);
+  Int* sizes = sizes_storage.get();
+  std::unique_ptr<Int[]> displacements_storage(new Int[numProcesses]);
+  Int* displacements = displacements_storage.get();
 
   this->allGather(&p.first, sizes, 1, INT);
 
@@ -1662,8 +1684,14 @@ Transferable **Parallel::Communicator::allToAll(Transferable **const t) const {
   Int rank = this->rank();
 
   Package p, rp;
-  Int sizes[numProcesses], displacements[numProcesses];
-  Int rsizes[numProcesses], rdisplacements[numProcesses];
+  std::unique_ptr<Int[]> sizes_storage(new Int[numProcesses]);
+  Int* sizes = sizes_storage.get();
+  std::unique_ptr<Int[]> displacements_storage(new Int[numProcesses]);
+  Int* displacements = displacements_storage.get();
+  std::unique_ptr<Int[]> rsizes_storage(new Int[numProcesses]);
+  Int* rsizes = rsizes_storage.get();
+  std::unique_ptr<Int[]> rdisplacements_storage(new Int[numProcesses]);
+  Int* rdisplacements = rdisplacements_storage.get();
 
   p.first = 0;
 
@@ -3339,7 +3367,8 @@ char *Parallel::Communicator::reduceScatter(const char *val,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3356,7 +3385,8 @@ unsigned char *Parallel::Communicator::reduceScatter(
     const unsigned char *val, enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3373,7 +3403,8 @@ bool *Parallel::Communicator::reduceScatter(const bool *val,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3390,7 +3421,8 @@ short *Parallel::Communicator::reduceScatter(const short *val,
                                              enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3407,7 +3439,8 @@ unsigned short *Parallel::Communicator::reduceScatter(
     const unsigned short *val, enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3424,7 +3457,8 @@ Int *Parallel::Communicator::reduceScatter(const Int *val,
                                            enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3441,7 +3475,8 @@ UInt *Parallel::Communicator::reduceScatter(const UInt *val,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3458,7 +3493,8 @@ LInt *Parallel::Communicator::reduceScatter(const LInt *val,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3475,7 +3511,8 @@ ULInt *Parallel::Communicator::reduceScatter(const ULInt *val,
                                              enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3492,7 +3529,8 @@ Real *Parallel::Communicator::reduceScatter(const Real *val,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3509,7 +3547,8 @@ LReal *Parallel::Communicator::reduceScatter(const LReal *val,
                                              enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = 1;
@@ -3526,7 +3565,8 @@ char *Parallel::Communicator::reduceScatter(const char *val, Int size,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3545,7 +3585,8 @@ unsigned char *Parallel::Communicator::reduceScatter(
     const unsigned char *val, Int size, enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3564,7 +3605,8 @@ bool *Parallel::Communicator::reduceScatter(const bool *val, Int size,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3583,7 +3625,8 @@ short *Parallel::Communicator::reduceScatter(const short *val, Int size,
                                              enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3602,7 +3645,8 @@ unsigned short *Parallel::Communicator::reduceScatter(
     const unsigned short *val, Int size, enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3621,7 +3665,8 @@ Int *Parallel::Communicator::reduceScatter(const Int *val, Int size,
                                            enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3640,7 +3685,8 @@ UInt *Parallel::Communicator::reduceScatter(const UInt *val, Int size,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3659,7 +3705,8 @@ LInt *Parallel::Communicator::reduceScatter(const LInt *val, Int size,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3678,7 +3725,8 @@ ULInt *Parallel::Communicator::reduceScatter(const ULInt *val, Int size,
                                              enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3697,7 +3745,8 @@ Real *Parallel::Communicator::reduceScatter(const Real *val, Int size,
                                             enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;
@@ -3716,7 +3765,8 @@ LReal *Parallel::Communicator::reduceScatter(const LReal *val, Int size,
                                              enum Operation operation) const {
   Int count = this->numProcesses();
 
-  Int counts[count];
+  std::unique_ptr<Int[]> counts_storage(new Int[count]);
+  Int* counts = counts_storage.get();
 
   for (Int i = 0; i < count; i++) {
     counts[i] = size;

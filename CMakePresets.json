@@ -15,9 +15,35 @@
         "AP_MESH_ENABLE_LTO": false,
         "BUILD_TESTING": true
       }
+    },
+    {
+      "name": "windows-msvc-serial",
+      "displayName": "Complete serial C++17 executable with MSVC Debug checks",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/windows-msvc-serial",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" },
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "17",
+        "CMAKE_CXX_STANDARD_REQUIRED": true,
+        "BUILD_TESTING": false,
+        "AP_MESH_ENABLE_WARNINGS": true,
+        "AP_MESH_USE_MPI": false,
+        "AP_MESH_USE_OPENMP": false,
+        "AP_MESH_ENABLE_LTO": false
+      }
     }
   ],
-  "buildPresets": [{ "name": "local-serial", "configurePreset": "local-serial" }],
+  "buildPresets": [
+    { "name": "local-serial", "configurePreset": "local-serial" },
+    {
+      "name": "windows-msvc-serial",
+      "configurePreset": "windows-msvc-serial",
+      "configuration": "Debug",
+      "targets": ["ap_mesh"],
+      "jobs": 2
+    }
+  ],
   "testPresets": [{
     "name": "local-serial", "configurePreset": "local-serial",
     "output": { "outputOnFailure": true }, "execution": { "noTestsAction": "error" }

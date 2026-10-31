@@ -168,6 +168,9 @@ if(BUILD_TESTING)
   add_executable(curve_orientation_probe
     "${CMAKE_SOURCE_DIR}/tests/curve_orientation_probe.cpp" ${orientation_probe_sources})
   target_compile_features(curve_orientation_probe PRIVATE cxx_std_17)
+  if(MSVC)
+    target_compile_options(curve_orientation_probe PRIVATE /permissive-)
+  endif()
   target_include_directories(curve_orientation_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
   if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
     target_link_options(curve_orientation_probe PRIVATE -static -static-libgcc -static-libstdc++)
@@ -178,6 +181,10 @@ if(BUILD_TESTING)
   add_test(NAME application.curve_orientation_arclength COMMAND curve_orientation_probe)
   set_tests_properties(application.curve_orientation_arclength
     PROPERTIES LABELS "application;boundary-incidence;required-gate" TIMEOUT 30)
+  add_test(NAME application.serial_cpp17_portability
+    COMMAND curve_orientation_probe --serial-portability)
+  set_tests_properties(application.serial_cpp17_portability
+    PROPERTIES LABELS "application;portability;required-gate" TIMEOUT 30)
   add_executable(attempt_metrics_probe
     "${CMAKE_SOURCE_DIR}/tests/attempt_metrics_probe.cpp" ${orientation_probe_sources})
   target_compile_features(attempt_metrics_probe PRIVATE cxx_std_17)

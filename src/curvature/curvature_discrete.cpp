@@ -1,4 +1,5 @@
 #include "../../include/curvature/curvature_discrete.h"
+#include "data/definitions.h"
 
 // Kim, S. J., Jeong, W. K. e Kim, C. H. LOD generation with discrete curva-
 // ture error metric. Em Proceedings of 2nd Korea Israel Bi-National Conference

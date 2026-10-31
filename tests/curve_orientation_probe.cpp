@@ -12,6 +12,7 @@
 
 #include "crab_mesh/aft/boundary.h"
 #include "data/curve/curve_orientation.h"
+#include "serial_portability_checks.h"
 
 namespace {
 void RequireOrientation(bool condition, const char* message) {
@@ -118,8 +119,12 @@ void CheckEdges() {
 }
 } // namespace
 
-int main() {
+int main(int argc, char** argv) {
   try {
+    if (argc == 2 && std::string(argv[1]) == "--serial-portability")
+      return apmesh::test::RunSerialPortabilityChecks();
+    if (argc != 1)
+      throw std::runtime_error("Unexpected probe arguments");
     // Isolated test context: the production tolerance remains unchanged.
     TOLERANCE = 1e-10;
     CheckConstructors();

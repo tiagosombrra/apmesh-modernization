@@ -14,12 +14,16 @@ Three ledger rows have bounded qualification; seven remain partial/open.
 There is no stage closure until every required disposition and applicable gate
 is measured on the delivery revision and main. Historical limits are preserved.
 
-Next single implementation: P1, unblock compilation of the complete serial
-executable for memory instrumentation through demonstrated compiler-blocker
-repairs. This is the already permitted bounded stage 4 prerequisite, preserving
-C++17 reference and scientific formulas/order/policies. Follow with the supported
-execution ledger, actual whole-process evidence, remaining supported-caller
-repairs and final closure audit. No new model or scientific policy is authorized.
+P1 implements the [complete serial MSVC C++17 build](evidence/MSVC_SERIAL_CPP17_BUILD.md)
+through the existing pi definition and standard RAII scratch buffers. Require
+its exact-head/main canonical builds, focused native/real CLI checks and frozen
+GCC scientific reference. This is the permitted bounded stage 4 prerequisite;
+full-process memory and complete Stage 4 remain unqualified.
+
+Next single implementation: P2, the supported executable/input/caller and terminal-
+versus-retry ledger, reusing existing executable controls before freezing P3's
+whole-process instrument inventory. Follow with remaining supported-caller repairs
+and final closure audit. No new model or scientific policy is authorized.
 
 Every task must name a closure row, concrete output, minimal affected gates and
 stop decision before work. A source-only investigation with no admissible witness
