@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "source": "docs/architecture/STAGE3_CLOSURE_HISTORY.md",
+  "rows": [
+    {
+      "id": "S3-01",
+      "title": "Physical node/triangle/SubMesh ownership",
+      "status": "partial-open",
+      "contracts": [
+        "C04",
+        "C05"
+      ],
+      "evidence": [
+        "STAGE3_SUBMESH_LIFETIME.md",
+        "STAGE3_TRIANGLE_CONSTRUCTION.md"
+      ],
+      "gap": "Complete supported serial caller, repeated rebuild/rejection and foreign-owner preconditions remain incomplete.",
+      "package": "P2/P3/P4",
+      "exit": "Supported caller/rebuild/rejection and teardown observations preserve ownership/adjacency, with actual negative instruments and explicit invalid arrangements."
+    },
+    {
+      "id": "S3-02",
+      "title": "Hermite constructor publication failure",
+      "status": "bounded-qualified",
+      "contracts": [
+        "C30"
+      ],
+      "evidence": [
+        "STAGE3_HERMITE_CONSTRUCTION.md"
+      ],
+      "gap": "Qualification remains exclusive publication/live curves; broader caller/foreign graphs belong to S3-05.",
+      "package": "P5",
+      "exit": "Preserve exact qualified prefix rollback/retry, working controls and evidence; rerun only required invalidated or delivery gates."
+    },
+    {
+      "id": "S3-03",
+      "title": "Completed Hermite retirement",
+      "status": "bounded-qualified",
+      "contracts": [
+        "C29"
+      ],
+      "evidence": [
+        "STAGE3_HERMITE_OBSERVERS.md"
+      ],
+      "gap": "Current live borrowed curves and supported graph only; constructor/foreign observations retain their separate rows.",
+      "package": "P5",
+      "exit": "Preserve qualified all-match removal, dependent teardown and controls; do not infer full-process safety."
+    },
+    {
+      "id": "S3-04",
+      "title": "Completed Bezier/Geometry retirement",
+      "status": "bounded-qualified",
+      "contracts": [
+        "C26"
+      ],
+      "evidence": [
+        "STAGE3_BEZIER_OBSERVERS.md"
+      ],
+      "gap": "Measured current-curve/Geometry scope only; other caller/mutation contracts remain open.",
+      "package": "P5",
+      "exit": "Retain qualified identity/order/removal/move and negative evidence; satisfy applicable exact-delivery gates."
+    },
+    {
+      "id": "S3-05",
+      "title": "Remaining caller and constructor roots",
+      "status": "partial-open",
+      "contracts": [
+        "C02",
+        "C22",
+        "C25",
+        "C27"
+      ],
+      "evidence": [
+        "STAGE3_CALLER_ROOT_AUDIT.md",
+        "STAGE3_MODEL_OWNERSHIP.md",
+        "STAGE3_DETACHED_PATCH_COPY.md"
+      ],
+      "gap": "Broader loaders/callers, complete cloning and foreign/copied/rebound observers remain unqualified despite bounded repairs.",
+      "package": "P2/P4",
+      "exit": "Explicit supported/unsupported caller ledger, normal/failure/repeated observations and repair of reproduced supported defects; no blanket caller-safety claim."
+    },
+    {
+      "id": "S3-06",
+      "title": "UV helper/template/tree/mate ownership",
+      "status": "partial-open",
+      "contracts": [
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "evidence": [
+        "IDEAL_VERTEX_OWNERSHIP.md",
+        "PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md",
+        "FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md"
+      ],
+      "gap": "Other setters, selected-result adoption, failed-tree reuse/logical rejection and outside-root ideal retirement remain incomplete. Current four prefixes have zero retirement.",
+      "package": "P4",
+      "exit": "A named admitted history and required observation for each supported gap; refusal/zero reach remains unqualified. No source-audit successor chain without an exit decision."
+    },
+    {
+      "id": "S3-07",
+      "title": "Observer/cache validity",
+      "status": "partial-open",
+      "contracts": [
+        "C06",
+        "C17"
+      ],
+      "evidence": [
+        "DOMAIN_FAILURE_OBSERVERS.md",
+        "STAGE3_PATCH_COPY_AUDIT.md"
+      ],
+      "gap": "Bounded current-observer cleanup exists; public mutation/cache and foreign-observer contracts remain partial.",
+      "package": "P2/P4",
+      "exit": "Define supported immutability/invalidation/rebinding and enforce it where promised; positive lifetime/mutation and independent recomputation evidence where supported."
+    },
+    {
+      "id": "S3-08",
+      "title": "Adaptive orchestration",
+      "status": "partial-open",
+      "contracts": [
+        "C06",
+        "C07",
+        "C12",
+        "C13"
+      ],
+      "evidence": [
+        "TYPED_DOMAIN_FAILURE.md",
+        "ACCEPTED_MESH_ROOT.md",
+        "ACCEPTED_ERROR_STOPPING.md",
+        "ACCEPTED_STEP_REPORTING.md"
+      ],
+      "gap": "Terminal cleanup, accepted-root/error/reporting repairs do not establish full adaptive metadata/history/budget rollback, retry or synchronization-disabled CLI lifetime.",
+      "package": "P2/P3/P4",
+      "exit": "Explicit terminal-versus-retry contract and measured supported metadata/error/history/budget/patch/mesh/acceptance and logical-rejection states; consumed IDs remain consumed."
+    },
+    {
+      "id": "S3-09",
+      "title": "Complete-process instruments",
+      "status": "partial-open",
+      "contracts": [
+        "C18"
+      ],
+      "evidence": [
+        "STAGE3_ERROR_ESTIMATE.md",
+        "STAGE3_CHARGE_INPUT.md"
+      ],
+      "gap": "Isolated ASan/CRT batteries do not instrument the whole supported serial process; full-process/parallel/LSan/UBSan coverage and justified equivalence remain open.",
+      "package": "P1/P3",
+      "exit": "Complete supported serial process, teardown and repeated execution under qualified positive/negative instruments, with explicit platform/equivalence/applicability dispositions."
+    },
+    {
+      "id": "S3-10",
+      "title": "Supported input/configuration domain",
+      "status": "partial-open",
+      "contracts": [
+        "C01",
+        "C08",
+        "C20"
+      ],
+      "evidence": [
+        "ANALYTIC_TEMPLATE_PREFIX.md",
+        "ANALYTIC_GEOMETRY_OBSERVATION.md"
+      ],
+      "gap": "Eistute/Book and bounded analytic cases do not qualify malformed loaders, extreme/non-power-of-two complete meshes or all models.",
+      "package": "P2/P5",
+      "exit": "Named supported-domain/coverage ledger; explicit stage assignment for broader models/parallel cases without silently dropping a required stage 3 gate or altering scientific policy."
+    }
+  ]
+}

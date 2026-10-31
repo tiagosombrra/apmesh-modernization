@@ -1,5 +1,33 @@
 # Local quality automation
 
+## Consolidated execution policy
+
+The current [stage audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) controls task
+selection through the ten-row closure ledger and five delivery packages. This
+policy changes no test inventory, assertion, scientific criterion or required
+qualification scope. Existing detailed gates below still apply to their changes.
+
+- During edits, run checks affected by the actual change. A completed identical
+  revision/check is reused unless a changed dependency or unresolved failure
+  justifies repetition.
+- Before integration, run the required full regression on the exact delivery
+  head, then on merged main. This remains required by the working agreement.
+- Run a large memory/science campaign only for an invalidated dependency, a named
+  required missing observation or a justified controlled response to a failure.
+  Preserve original positive/negative controls and every failed attempt.
+- Admit a work item with closure row, concrete output, affected gates and stop
+  decision. After refusal/zero reach, classify the gap before another experiment;
+  do not automatically create a successor source-audit PR.
+- Report 73 CTest entries with 380 Python controls nested in tooling.controls.
+  Test counts and anchor counts are inventories, not modernization progress.
+
+For this consolidation, observe the unchanged current regression once, preserve
+prior instrument/scientific reports by identity, and perform the required exact
+delivery-head/main regression and documentation/inventory checks. A single full
+serial MSVC compiler observation identifies actual blockers; it is not sanitizer
+qualification, and failure remains a blocker for S3-09. No new native allocation
+campaign, scientific model run, fixture, test target or assertion is added.
+
 ## Front-edge provenance source audit
 
 The [cell/midpoint audit](evidence/FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md)
