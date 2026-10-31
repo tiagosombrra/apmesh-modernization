@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Selected-ideal domain source audit
+
+The [source-only audit](evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md) adds
+documentation and hashed source facts, with no production, fixture, test-target
+or contract change. Its exact-head/main gates retain 73 CTest entries and 380
+Python tests, including existing negative controls. Require all 71 scoped source
+anchors and their native ordering to replay, all non-documentation tracked files,
+application identity and 66 raw inputs to remain unchanged, and the prior native
+geometry/prefix seals and raw reports to remain immutable. Replay the existing
+records without repeating a custom geometry campaign. Whitespace, inventory/
+contracts, staged bytes/metadata and remote main/branches/PR/checks remain gates.
+Source predicates and passing documentation gates qualify no retirement witness,
+exception path, broader caller domain or scientific result.
+
 ## Normal geometry observation after the admitted prefix
 
 The [bounded geometry observation](evidence/ANALYTIC_GEOMETRY_OBSERVATION.md)

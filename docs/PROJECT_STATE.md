@@ -1,5 +1,32 @@
 # Project state
 
+## Selected-ideal domain source conditions audited
+
+PR #130 is integrated at main `5da04f14c60384d42b2444c9e8cac90245835d7b`.
+The [source-condition audit](evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md)
+records 71 scoped anchors across ten files, without expanding fixtures or
+running a new native diagnostic. A computed exterior ideal is insufficient:
+the candidate scan must return normally with no survivors, both ideal vetoes
+must pass, adoption must complete and the caller must receive nonnull best
+with existed=false before its strict root-interior guard can run.
+
+The existing distance abort is unsigned under finite nondegenerate arithmetic;
+it is not a geometry half-plane filter. Segment crossings are strict, with
+separate point/Face and proximity vetoes. These findings establish neither an
+admissible retirement witness nor universal unreachability or a supported defect.
+Selection, tolerances, templates, ownership order and scientific policy remain
+unchanged. The existing four-context observation stays borrowed-only, with
+zero selected new ideals and zero retirements; its evidence is preserved.
+
+Require 73 CTest entries and 380 Python tests on exact head and merged main,
+source identity/order replay and unchanged prior evidence/application/raw inputs.
+No custom geometry campaign is repeated for this source-only delivery. Retirement
+remains unreached and unqualified; Stage 3 stays open with 37 numbered qualified
+slices. The next single item is source-only analysis of template-front/generated
+edge cell/midpoint provenance and exterior-crossing obligations before considering
+any new measurement. Do not expand fixtures or change policy. Earlier active
+items below are historical.
+
 ## Native geometry observation from admitted analytic prefixes
 
 PR #129 is integrated at main `6374619bb88b7f7c2bb96cb49c2d457585a96c3a`.

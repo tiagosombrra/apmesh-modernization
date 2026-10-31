@@ -1,5 +1,18 @@
 # Stage 3 closure inventory
 
+The [selected-ideal source-condition audit](../evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md)
+maps 71 anchors across ten files, with zero new native diagnostic contexts and
+no production/fixture/policy change. A new ideal needs a normally completed empty
+survivor scan, both ideal vetoes to pass, completed adoption and a nonnull fresh
+return before the caller's strict root-interior guard. Unsigned distance and
+strict crossing semantics neither establish an admissible witness nor prove
+universal unreachability. Existing zero-retirement/borrowed-only observations and
+rejected/refused evidence remain immutable. Exact-head/main regression retains
+73 CTest entries and 380 Python tests. No new repair, contract or numbered slice
+is qualified; Stage 3 stays open with 37 numbered qualified slices. Next audit
+template-front/generated-edge cell/midpoint and crossing obligations in source,
+without fixture expansion or policy change. Earlier queue entries are historical.
+
 The [normal geometry observation](../evidence/ANALYTIC_GEOMETRY_OBSERVATION.md)
 continues only four admitted analytic prefixes per GCC/checked-CRT profile.
 Eight exact observed/unobserved pairs return native geometry success; every

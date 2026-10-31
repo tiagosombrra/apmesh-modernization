@@ -1,5 +1,30 @@
 # Technique-preserving modernization plan
 
+## Active item: selected-ideal source-condition audit complete
+
+The [bounded audit](evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md) maps the
+native I=M+hN construction, candidate-scan abort/survivor rules, ideal interception
+and proximity vetoes, adoption order and final strict root-interior guard. Its
+71 source anchors across ten files add no fixture, native context or policy.
+Unsigned straightDistance is not a signed-normal test; strict segment crossings
+are not a complete closed-contour clipping proof. All existing branches and
+thresholds are preserved. No admissible retirement witness or impossibility
+theorem is established, and the preserved four-context observation stays at zero
+new selected ideals/retirements.
+
+Require 73 CTest entries and 380 Python tests on exact head/main, source replay,
+prior sealed/raw/application preservation and documentation/remote gates.
+Verify the immutable geometry records rather than repeat their custom campaign.
+This engineering-only source diagnosis adds no repair or numbered lifetime slice.
+Retirement remains unqualified; Stage 3 stays open with 37 numbered qualified
+slices, stages 0-2 retain measured closure and 4-11 remain pending.
+
+Next single item: audit template-front and generated-edge cell/midpoint provenance
+and exterior-crossing obligations in source before considering a new measurement.
+Do not broaden fixtures, substitute selection, alter tolerances/templates or
+change scientific policy. A domain/policy proposal requires separate advisor
+alignment. Earlier active-item statements below are historical.
+
 ## Active item: normal native geometry reachability recorded
 
 The [normal-only observation](evidence/ANALYTIC_GEOMETRY_OBSERVATION.md) starts

@@ -1,5 +1,18 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+## Source conditions do not yet supply an admitted retirement witness
+
+The [selected-ideal audit](../evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md)
+records construction, candidate rejection/selection, ideal vetoes, adoption and
+the caller domain guard without changing their behavior. Its source facts give
+no admitted retirement witness or universal impossibility result. The earlier
+borrowed-only observations and all excluded/refused evidence retain their scope.
+Stage 3 remains open with 37 numbered qualified slices. After exact-head/main
+source/documentation gates, audit template-front and generated-edge cell/midpoint
+provenance and exterior-crossing obligations in source, before any new measurement.
+Keep fixtures, selection, tolerances, templates and scientific policy unchanged.
+Earlier active-item statements below are historical.
+
 ## Native geometry reaches only borrowed selections in the admitted contexts
 
 The [normal geometry observation](../evidence/ANALYTIC_GEOMETRY_OBSERVATION.md)
