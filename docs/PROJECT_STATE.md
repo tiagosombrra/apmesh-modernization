@@ -1,5 +1,33 @@
 # Project state
 
+## Native geometry observation from admitted analytic prefixes
+
+PR #129 is integrated at main `6374619bb88b7f7c2bb96cb49c2d457585a96c3a`.
+The [normal geometry observation](evidence/ANALYTIC_GEOMETRY_OBSERVATION.md)
+continues only its four admitted nonempty prefixes through the inherited native
+public geometry method. Sixteen GCC/checked-CRT outcomes provide eight exact
+observed/unobserved pairs. Each observed context performs 24 selections, all
+borrowed; no newly selected ideal, outside-root candidate or retirement occurs.
+The second pass enters with empty queues and performs no selection.
+
+Each native geometry return is ADVF_GEOMETRY_MESH_DONE, with 24 positive Faces
+of total UV area 0.75 and empty front/rejected queues. The tree still owns its
+eight template Faces of area 0.25. The explicit cut follows geometry return,
+before topology, transfer and smoothing; this is not full mesh qualification.
+Selection, production, configuration and scientific policy are unchanged.
+
+Require 73 CTest entries, 380 Python tests, the existing checked-CRT prefix
+inventory and the same 16 normal geometry outcomes on exact head and merged
+main. Fourteen report-corruption controls are separate from native executions;
+no allocation denial or forced selector result is used. Retirement remains
+unreached and unqualified. Preserve all earlier refusals and excluded events.
+
+Stage 3 stays open with 37 numbered qualified slices. The single next item is
+a source-only audit of the conditions needed for a caller-admissible input to
+select a new ideal outside the strict root interior. Do not expand fixtures or
+change template/domain policy to obtain coverage. Any scientific proposal needs
+separate advisor alignment. Earlier active items below are historical.
+
 ## Checked analytic UV template-prefix fixture
 
 PR #128's source audit is integrated at main

@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "classification": "engineering-only diagnosis/documentation",
+  "base": "6374619bb88b7f7c2bb96cb49c2d457585a96c3a",
+  "verification_status": "normal_geometry_preparation_verified",
+  "verification_sha256": "93d3b4230435e9ad81c76396a259b2d61eef7ddbf9438d11d2e6463667d06469",
+  "initial_report_sha256": "612c84d352d23a1ce696f71c2536be970cfa5289ebbd45453b8ee8a70384f545",
+  "source_preparation_sha256": "aa6eb99e85397759c1594224a3f27814b5da0160ec352c31cb1ecc23e8cb5a77",
+  "contexts": [
+    [
+      4,
+      0,
+      0,
+      0
+    ],
+    [
+      4,
+      0,
+      1,
+      0
+    ],
+    [
+      4,
+      15,
+      0,
+      0
+    ],
+    [
+      4,
+      15,
+      1,
+      0
+    ]
+  ],
+  "profiles": [
+    "gcc",
+    "checked-msvc-debug-crt"
+  ],
+  "checked_crt_iterator_level": 2,
+  "initial_native_outcomes": 16,
+  "exact_native_pairs": 8,
+  "observed_selector_results": 192,
+  "per_observed_context": {
+    "selections": 24,
+    "borrowed": 24,
+    "new_adopted": 0,
+    "no_best": 0,
+    "retirements": 0,
+    "passes": [
+      1,
+      0
+    ],
+    "second_pass_selections": 0,
+    "geometry_status": "ADVF_GEOMETRY_MESH_DONE",
+    "geometry_faces": 24,
+    "geometry_area": 0.75,
+    "remaining_front": 0,
+    "remaining_rejected": 0,
+    "tree_template_faces": 8,
+    "tree_template_area": 0.25
+  },
+  "prefix_equal_to_qualified_main": true,
+  "source_reversal_exact": true,
+  "fault_injection": false,
+  "selector_substitution": false,
+  "production_changed": false,
+  "retirement_qualification": "unreached",
+  "cut": "after inherited native geometry return; before topology, fillMesh and smoothing",
+  "report_corruption_controls": [
+    "refused context",
+    "unchecked CRT",
+    "missing teardown",
+    "wrong geometry status",
+    "nonempty rejected queue",
+    "missing geometry Face",
+    "wrong Face area",
+    "foreign endpoint",
+    "premature template transfer",
+    "missing second pass",
+    "new adopted candidate claim",
+    "retirement reachability claim",
+    "drifted candidate position",
+    "unknown native diagnostic"
+  ],
+  "executable_sha256": {
+    "gcc/observed": "f2ba46ec77a5259ccd5e3c0b04d4c9a53a2913e9afb6a4e63ae6afc47cc1d203",
+    "gcc/unobserved": "a62b89d276229d72dedc38e7526fe19cd4217cd7c50a77e65d65eba8462c433e",
+    "crt/observed": "7546b27d0c899130615f302f6a4199155b61d41d9714bbe94a020dd2896ed114",
+    "crt/unobserved": "2a2143a8f12799fb0a38d80029cb46e9f9a08f9d7bace188e1fd0342e219d49f"
+  },
+  "application_sha256": "0c1f12893e4c26d72c45ff75e818f4586d0153fbd970c99668e3b11cf03f7202",
+  "protected_raw_inputs": 66,
+  "ctest_required_each_revision": 73,
+  "python_tests_required_each_revision": 380,
+  "geometry_outcomes_required_each_revision": 16,
+  "checked_prefix_outcomes_required_each_revision": 15,
+  "stage3": "open",
+  "numbered_qualified_slices": 37,
+  "next_item": "Source-only audit of selector/domain conditions for a caller-admissible selected new ideal outside the strict root interior; no fixture expansion or policy change."
+}

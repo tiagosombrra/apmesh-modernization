@@ -1,5 +1,18 @@
 # Dependency-ordered follow-up from the stage 2 inventory
 
+## Native geometry reaches only borrowed selections in the admitted contexts
+
+The [normal geometry observation](../evidence/ANALYTIC_GEOMETRY_OBSERVATION.md)
+records eight exact GCC/checked-CRT observed/unobserved pairs from the four
+admitted prefixes. All 24 selections per observed context are borrowed; no new
+ideal or retirement is reached. Geometry returns successfully before a cut that
+retains template owners and excludes topology/transfer/smoothing. Zero reach
+does not qualify retirement or justify allocation-denial sweeps. Preserve the
+existing negative evidence and 37 numbered qualified slices; Stage 3 stays open.
+The next single item is a source-only selector/domain precondition audit for a
+caller-admissible selected ideal outside the strict root interior, with no fixture
+expansion or policy change. Earlier active-item statements below are historical.
+
 ## Checked analytic prefix before geometry observation
 
 The [analytic UV fixture](../evidence/ANALYTIC_TEMPLATE_PREFIX.md) admits four

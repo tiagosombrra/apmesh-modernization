@@ -1,5 +1,29 @@
 # Technique-preserving modernization plan
 
+## Active item: normal native geometry reachability recorded
+
+The [normal-only observation](evidence/ANALYTIC_GEOMETRY_OBSERVATION.md) starts
+from only PR #129's four admitted analytic prefixes. Eight observed/unobserved
+GCC/checked-CRT pairs agree exactly on native geometry terminal state. All 24
+selections per observed context choose existing borrowed vertices. No new ideal
+is selected or retired; the second pass is entered with empty queues. Geometry
+returns successfully before the explicit cut, leaving template owners in the
+tree. This bounded engineering-only diagnosis changes no production or science.
+
+Delivery requires 73 CTest entries, 380 Python tests, the existing checked-CRT
+prefix inventory and 16 normal geometry outcomes on exact head and merged main.
+Retirement reachability is zero and its lifetime contract remains unqualified;
+this observation does not justify a failure campaign or a new numbered slice.
+Retain prior rejected calibration, refused prefixes and all negative evidence.
+
+Next single item: audit selector/domain source conditions for a caller-admissible
+input to select a new ideal outside the strict root interior. Keep this audit
+source-only; do not broaden the fixture, substitute selection, add refinement,
+disable iterator checks or alter scientific policy. A proposed domain/policy
+change requires separate advisor alignment. Stage 3 remains open with 37 numbered
+qualified slices; stages 0-2 retain their measured closure and 4-11 are pending.
+Earlier active items below are historical.
+
 ## Active item: checked analytic UV template-prefix fixture
 
 The engineering-only fixture now executes the native front prefix with live
