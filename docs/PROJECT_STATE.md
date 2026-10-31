@@ -1,5 +1,34 @@
 # Project state
 
+## Front-edge cell and midpoint provenance audited
+
+PR #131 is integrated at main `0ed10cfaa6d346af1185ad61837baf08e83d2862`.
+The [provenance audit](evidence/FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md) records
+85 source anchors across six files and all eight outer-template slot rules.
+Template-front edges use native shared-slot/neighbor cell assignment; generated
+edges use arithmetic midpoints and the first accepting native lookup leaf.
+Midpoint lookup includes a tolerance halo and establishes no whole-edge or
+next-ideal root-clearance bound.
+
+A conditional exact-geometry deduction for a coherent dyadic unit-root prefix
+keeps initial template-front raw ideals in the closed root, possibly on its
+border. It does not prove all floating-point cases or settle !root.in. Generated
+edges need separate displacement and actual selector-base obligations; creation
+or queueing alone does not demonstrate selection. No admissible retirement
+witness, universal unreachability or supported defect is established.
+
+This engineering-only source/documentation audit changes no production, fixture,
+ordering, tolerance, template or scientific policy. Preserve all prior refusals,
+excluded events and borrowed-only zero-retirement observations. Require 73 CTest
+entries and 380 Python tests on exact head/main, scoped source/slot/order replay,
+prior sealed evidence and unchanged application/raw identities. No custom native
+campaign is repeated. Stage 3 stays open with 37 numbered qualified slices.
+
+Next single item: source-only audit of the root-border point-to-edge proximity
+veto, including endpoint/tolerance cases, before any further measurement. Keep
+fixtures, numerical order, thresholds and policy unchanged. Earlier active items
+below are historical.
+
 ## Selected-ideal domain source conditions audited
 
 PR #130 is integrated at main `5da04f14c60384d42b2444c9e8cac90245835d7b`.

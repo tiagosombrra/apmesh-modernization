@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Front-edge provenance source audit
+
+The [cell/midpoint audit](evidence/FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md)
+changes only documentation and source-fact artifacts. Require 73 existing CTest
+entries and 380 Python tests on exact head/main, all 85 scoped anchors across six
+files, the eight-slot map and five native order groups to replay. Verify unchanged
+non-documentation tracked files, all fixtures, application identity, 66 protected
+raw inputs and prior sealed source/native records. Do not repeat a custom native
+campaign. Whitespace, inventory/contracts, staged-byte/metadata and fresh remote
+main/branches/PR/check audits remain gates. Conditional exact-geometry bounds and
+source registration alone qualify no selected-exterior witness, border retirement,
+generated-base execution, exception/retry or broader scientific result.
+
 ## Selected-ideal domain source audit
 
 The [source-only audit](evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md) adds
