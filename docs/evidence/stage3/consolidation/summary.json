@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "status": "consolidated_audit_verified",
+  "classification": "engineering-only process/documentation adjustment",
+  "base": "e8ecdd1a1ac29bd636ef4662c71d201aa62d371d",
+  "since_slice37_integrations": 32,
+  "production_touching_integrations": 18,
+  "last_seven_integrations": {
+    "count": 7,
+    "production_touching": 0,
+    "test_tool_build_touching": 1
+  },
+  "production_unchanged_since_pr125": true,
+  "current_regression": {
+    "ctest": 73,
+    "python_tests": 380,
+    "python_nested_in": "tooling.controls",
+    "suite_seconds": 32.85,
+    "report_sha256": "c8e19f556ee1aecf8650267e95a402feb6087f8d75d2c3ef3b892c125649001b"
+  },
+  "msvc_full_serial_build": {
+    "status": "full_serial_build_blocked",
+    "qualified": false,
+    "configure_exit": 0,
+    "build_exit": 1,
+    "attempts": 1,
+    "diagnostics": 60,
+    "affected_translation_units": [
+      "src/curvature/curvature_discrete.cpp",
+      "src/estimate/charge_estimate_process.cpp",
+      "src/parallel/Communicator.cpp"
+    ],
+    "error_limit_reached": true,
+    "not_exhaustive": true,
+    "report_sha256": "8061bfef5ae48f6b2f21b470cc2d86e49170cf9b78d594ac323617edc88deb5e",
+    "build_log_sha256": "16626caf18356125283ffd76e340cc9a5d77f220279ca5de6407d63cd6d3f50a"
+  },
+  "closure_rows": 10,
+  "bounded_qualified_rows": 3,
+  "partial_open_rows": 7,
+  "packages": 5,
+  "next_package": "P1: complete serial compiler-blocker repair",
+  "historical_files_sha256": {
+    "docs/PROJECT_STATE_HISTORY.md": "4c465155f6d45a8a56f21d1b80c6db9584750f1850371b707d11d3089c8917e8",
+    "docs/MODERNIZATION_PLAN_HISTORY.md": "a6d6b5a65ad7974677cfe8ee8b6ac1a808cfc9a3355e64a50777258e4bf7d1c4",
+    "docs/architecture/STAGE3_CLOSURE_HISTORY.md": "c6668d978480da75d1fa4b48727082ad940c90affd6444ab8573e665c4e5f08e",
+    "docs/architecture/REFACTOR_SEQUENCE_HISTORY.md": "3f84f859db12a4dd8459473eee61398116b4c5a5a6595747c24f6ad37015aca7"
+  },
+  "closure_ledger_sha256": "01c56c669b37486c690d9534d5729be1f8f00c71817285510cfd56263e9bf0d9",
+  "source_history_inventory_sha256": "aedae9f03ba9589b039494992058adf251dd79c400f34b83dad164fb35fd7e3d",
+  "compiler_diagnostics_sha256": "8a99cdbc3683e97aa195f3ff7d912039dc96951e11fd197d98991c2c8902143c",
+  "production_changed": false,
+  "fixtures_changed": false,
+  "assertions_changed": false,
+  "scientific_policy_changed": false,
+  "application_sha256": "0c1f12893e4c26d72c45ff75e818f4586d0153fbd970c99668e3b11cf03f7202",
+  "protected_raw_inputs": 66,
+  "prior_integration_sha256": "99769214e6128949ca3b6ac917628c8434578ac18049e1a646de58165de9f426",
+  "ctest_required_each_delivery_revision": 73,
+  "python_tests_required_each_delivery_revision": 380,
+  "outside_root_retirement": "unreached/unqualified; automatic source-audit successor superseded, S3-06 remains open",
+  "stage3": "open",
+  "numbered_qualified_slices": 37,
+  "audited_utc": "2026-10-31T14:34:11Z",
+  "verification_sha256": "87e054e3d1a234906d0d36c3fa03be1175b1ddd9f3ac080b49a545c73a17058a"
+}

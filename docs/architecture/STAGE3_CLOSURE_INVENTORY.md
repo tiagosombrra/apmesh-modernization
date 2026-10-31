@@ -1,265 +1,52 @@
 # Stage 3 closure inventory
 
-The [front-edge provenance audit](../evidence/FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md)
-maps 85 anchors across six files, all eight outer slots and five source-order
-groups. Template-front cells come from neighbor rules; generated cells come from
-tolerant midpoint lookup. A coherent exact dyadic unit-root deduction keeps the
-former raw ideals in the closed root, with border still possible; it supplies
-no universal floating-point or selected-retirement guarantee. Generated edges
-still need a root-clearance and actual selector-base history. No fixture, code,
-contract or scientific policy changes. Prior refused/excluded and zero-retirement
-records remain immutable. Require 73 CTest entries and 380 Python tests on exact
-head/main, source replay and preservation gates. Stage 3 remains open with 37
-numbered qualified slices. Next audit the root-border point-to-edge proximity
-veto in source without new fixtures or policy changes. Earlier entries below
-are historical.
+This is the current finite ledger. All ten original obligations are retained;
+three have bounded qualification and seven remain partial/open. The original
+wording and complete evidence history are preserved verbatim in
+[STAGE3_CLOSURE_HISTORY.md](STAGE3_CLOSURE_HISTORY.md). Detailed contract limits
+in contracts.json and linked qualification reports remain authoritative.
+No open row is closed by this audit or by the latest green CTest run.
 
-The [selected-ideal source-condition audit](../evidence/SELECTED_IDEAL_DOMAIN_CONDITIONS.md)
-maps 71 anchors across ten files, with zero new native diagnostic contexts and
-no production/fixture/policy change. A new ideal needs a normally completed empty
-survivor scan, both ideal vetoes to pass, completed adoption and a nonnull fresh
-return before the caller's strict root-interior guard. Unsigned distance and
-strict crossing semantics neither establish an admissible witness nor prove
-universal unreachability. Existing zero-retirement/borrowed-only observations and
-rejected/refused evidence remain immutable. Exact-head/main regression retains
-73 CTest entries and 380 Python tests. No new repair, contract or numbered slice
-is qualified; Stage 3 stays open with 37 numbered qualified slices. Next audit
-template-front/generated-edge cell/midpoint and crossing obligations in source,
-without fixture expansion or policy change. Earlier queue entries are historical.
+| ID | Obligation | Status | Concrete remaining work / preserved scope | Package |
+| --- | --- | --- | --- | --- |
+| S3-01 | Physical node/triangle/SubMesh ownership | partial-open | Complete supported serial caller, repeated rebuild/rejection and foreign-owner preconditions remain incomplete. | P2/P3/P4 |
+| S3-02 | Hermite constructor publication failure | bounded-qualified | Qualification remains exclusive publication/live curves; broader caller/foreign graphs belong to S3-05. | P5 |
+| S3-03 | Completed Hermite retirement | bounded-qualified | Current live borrowed curves and supported graph only; constructor/foreign observations retain their separate rows. | P5 |
+| S3-04 | Completed Bezier/Geometry retirement | bounded-qualified | Measured current-curve/Geometry scope only; other caller/mutation contracts remain open. | P5 |
+| S3-05 | Remaining caller and constructor roots | partial-open | Broader loaders/callers, complete cloning and foreign/copied/rebound observers remain unqualified despite bounded repairs. | P2/P4 |
+| S3-06 | UV helper/template/tree/mate ownership | partial-open | Other setters, selected-result adoption, failed-tree reuse/logical rejection and outside-root ideal retirement remain incomplete. Current four prefixes have zero retirement. | P4 |
+| S3-07 | Observer/cache validity | partial-open | Bounded current-observer cleanup exists; public mutation/cache and foreign-observer contracts remain partial. | P2/P4 |
+| S3-08 | Adaptive orchestration | partial-open | Terminal cleanup, accepted-root/error/reporting repairs do not establish full adaptive metadata/history/budget rollback, retry or synchronization-disabled CLI lifetime. | P2/P3/P4 |
+| S3-09 | Complete-process instruments | partial-open | Isolated ASan/CRT batteries do not instrument the whole supported serial process; full-process/parallel/LSan/UBSan coverage and justified equivalence remain open. | P1/P3 |
+| S3-10 | Supported input/configuration domain | partial-open | Eistute/Book and bounded analytic cases do not qualify malformed loaders, extreme/non-power-of-two complete meshes or all models. | P2/P5 |
 
-The [normal geometry observation](../evidence/ANALYTIC_GEOMETRY_OBSERVATION.md)
-continues only four admitted analytic prefixes per GCC/checked-CRT profile.
-Eight exact observed/unobserved pairs return native geometry success; every
-observed context selects 24 borrowed vertices and no new ideal. Retirement is
-unreached and unqualified. The second pass has empty queues and no selection.
-Geometry contributes 24 Faces of area 0.75 while eight template Faces of area
-0.25 remain tree-owned; transfer, topology and smoothing are beyond the cut.
-This documentation-only engineering diagnosis changes no code, tests, contracts
-or scientific policy. Exact-head/main gates retain 73 CTest entries, 380 Python
-tests, checked-prefix controls and the 16 normal geometry outcomes. Prior
-rejected/refused evidence is unchanged. Stage 3 stays open with 37 numbered
-qualified slices. Next audit selector/domain source conditions without expanding
-fixtures or changing policy; earlier queue statements below are historical.
+## Required exit observations
 
-The [checked analytic UV prefix fixture](../evidence/ANALYTIC_TEMPLATE_PREFIX.md)
-adds four measured nonempty native prefixes per GCC/CRT profile, with live curves,
-native normalized sizes, pre/post-sort topology checks and actual chained-read
-guards. Checked CRT retains iterator level 2. Two guard-only contexts and three
-refusals per profile remain explicitly excluded. The prefix stops at geometric
-entry and qualifies no selection, retirement, exception retry, process-wide leak
-or new scientific result. Require exact-head/main fixture/regression gates; then
-observe public geometry only from the four admitted contexts, measuring target
-reachability before any further campaign. Production and prior rejected evidence
-are unchanged; Stage 3 stays open with 37 numbered qualified slices.
+- **S3-01** (C04, C05): Supported caller/rebuild/rejection and teardown observations preserve ownership/adjacency, with actual negative instruments and explicit invalid arrangements. Evidence: [STAGE3_SUBMESH_LIFETIME.md](../evidence/STAGE3_SUBMESH_LIFETIME.md), [STAGE3_TRIANGLE_CONSTRUCTION.md](../evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
+- **S3-02** (C30): Preserve exact qualified prefix rollback/retry, working controls and evidence; rerun only required invalidated or delivery gates. Evidence: [STAGE3_HERMITE_CONSTRUCTION.md](../evidence/STAGE3_HERMITE_CONSTRUCTION.md).
+- **S3-03** (C29): Preserve qualified all-match removal, dependent teardown and controls; do not infer full-process safety. Evidence: [STAGE3_HERMITE_OBSERVERS.md](../evidence/STAGE3_HERMITE_OBSERVERS.md).
+- **S3-04** (C26): Retain qualified identity/order/removal/move and negative evidence; satisfy applicable exact-delivery gates. Evidence: [STAGE3_BEZIER_OBSERVERS.md](../evidence/STAGE3_BEZIER_OBSERVERS.md).
+- **S3-05** (C02, C22, C25, C27): Explicit supported/unsupported caller ledger, normal/failure/repeated observations and repair of reproduced supported defects; no blanket caller-safety claim. Evidence: [STAGE3_CALLER_ROOT_AUDIT.md](../evidence/STAGE3_CALLER_ROOT_AUDIT.md), [STAGE3_MODEL_OWNERSHIP.md](../evidence/STAGE3_MODEL_OWNERSHIP.md), [STAGE3_DETACHED_PATCH_COPY.md](../evidence/STAGE3_DETACHED_PATCH_COPY.md).
+- **S3-06** (C09, C10, C11, C12, C13): A named admitted history and required observation for each supported gap; refusal/zero reach remains unqualified. No source-audit successor chain without an exit decision. Evidence: [IDEAL_VERTEX_OWNERSHIP.md](../evidence/IDEAL_VERTEX_OWNERSHIP.md), [PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md](../evidence/PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md), [FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md](../evidence/FRONT_EDGE_CELL_MIDPOINT_PROVENANCE.md).
+- **S3-07** (C06, C17): Define supported immutability/invalidation/rebinding and enforce it where promised; positive lifetime/mutation and independent recomputation evidence where supported. Evidence: [DOMAIN_FAILURE_OBSERVERS.md](../evidence/DOMAIN_FAILURE_OBSERVERS.md), [STAGE3_PATCH_COPY_AUDIT.md](../evidence/STAGE3_PATCH_COPY_AUDIT.md).
+- **S3-08** (C06, C07, C12, C13): Explicit terminal-versus-retry contract and measured supported metadata/error/history/budget/patch/mesh/acceptance and logical-rejection states; consumed IDs remain consumed. Evidence: [TYPED_DOMAIN_FAILURE.md](../evidence/TYPED_DOMAIN_FAILURE.md), [ACCEPTED_MESH_ROOT.md](../evidence/ACCEPTED_MESH_ROOT.md), [ACCEPTED_ERROR_STOPPING.md](../evidence/ACCEPTED_ERROR_STOPPING.md), [ACCEPTED_STEP_REPORTING.md](../evidence/ACCEPTED_STEP_REPORTING.md).
+- **S3-09** (C18): Complete supported serial process, teardown and repeated execution under qualified positive/negative instruments, with explicit platform/equivalence/applicability dispositions. Evidence: [STAGE3_ERROR_ESTIMATE.md](../evidence/STAGE3_ERROR_ESTIMATE.md), [STAGE3_CHARGE_INPUT.md](../evidence/STAGE3_CHARGE_INPUT.md).
+- **S3-10** (C01, C08, C20): Named supported-domain/coverage ledger; explicit stage assignment for broader models/parallel cases without silently dropping a required stage 3 gate or altering scientific policy. Evidence: [ANALYTIC_TEMPLATE_PREFIX.md](../evidence/ANALYTIC_TEMPLATE_PREFIX.md), [ANALYTIC_GEOMETRY_OBSERVATION.md](../evidence/ANALYTIC_GEOMETRY_OBSERVATION.md).
 
-The [template-prefix source/caller precondition audit](../evidence/TEMPLATE_PREFIX_PRECONDITIONS_AUDIT.md)
-distinguishes the serial four-sided UV-square/curve contract from the rejected
-arbitrary-polygon preparation. Root-exterior neighbor tests are not geometric
-contour clipping; cardinal balancing does not inspect all chained template
-accesses. The standalone tree execute path includes additional uniform refinement
-and is not the same prefix as AdvancingFront::execute. These source obligations
-do not resolve the earlier exact assertion site, establish a supported-application
-defect or qualify retirement. Next prepare/preflight a caller-faithful prefix and
-validate it with checked CRT before measurement. PR #127's failed calibration
-and 616 excluded events remain intact. Stage 3 stays open with 37 numbered
-qualified slices; no production or scientific change is included. Earlier queue
-statements below are historical.
+## Closure rule and deferred investigation
 
-The [outside-root ideal retirement source audit](../evidence/OUTSIDE_IDEAL_VERTEX_RETIREMENT_AUDIT.md)
-identifies an already-adopted ideal at the caller's strict root-interior check.
-Queue publication precedes three-list removal and deletion. Its calibration is
-rejected: checked CRT fails a template-prefix precondition before geometric entry.
-The 616 apparent GCC/ASan retirement events, incomplete earlier pilot, timeout
-and assertion remain negative/preparation evidence, not lifetime qualification.
-The single next obligation is source/caller analysis of the Boundary/root-domain/
-template-neighbor preconditions before further target measurement. No retirement
-repair, new numbered slice, global scientific result or stage closure follows.
-PR #126 remains integrated at qualified main `0124b0f1880a550c1faf01835123ee22aa11e934`.
-Stage 3 remains open with 37 numbered qualified slices. Earlier queue statements
-below are historical.
+Retain source/caller boundaries, commands, revisions, executable/input/report
+identities, original failures and independent positive/negative controls. Missing
+required observations block closure. Unsupported interfaces require an explicit
+contract/domain disposition and guards where the interface promises rejection.
+No scientific rule or acceptance threshold changes through this ledger.
 
-The [public geometry-front ideal Vertex diagnosis](../evidence/PUBLIC_IDEAL_VERTEX_LIFETIME_AUDIT.md)
-extends observation to the inherited makeGeometryBasedMesh caller on prepared
-four-edge fronts. Its 27129 native outcomes preserve 8652 original pending ideal
-retentions; all 13234 candidate allocation denials retain live owner/observer
-graphs, borrowed inputs and committed Face prefixes with zero scoped retention.
-Actual invalid observer and borrower controls remain separate. PR #125's repair
-is already integrated and qualified at main `8e2af01406892babfd830d02060fb0e214ad9eb2`.
-This documentation adds no production change or numbered slice. Boundary/tree
-preparation, nonempty second-pass failures, selected ideals outside the quadtree,
-arbitrary aliases/ties, recovery and full-process/parallel lifetime remain open.
-After this delivery, the single next diagnosis addresses outside-quadtree ideal
-retirement without changing selection or domain policy. Stage 3 remains open
-with 37 numbered qualified slices. Earlier queue statements below are historical.
+Outside-root retirement remains an open S3-06 gap. The next automatic root-border
+source audit is superseded by the consolidated queue. Reopening requires an
+admissible native history or a named required closure observation with a fixed
+question, finite case inventory, output and stop decision. Source predicates,
+zero reach and excluded events cannot qualify this path. Preserve all records.
 
-The [geometry-phase ideal Vertex diagnosis](../evidence/IDEAL_VERTEX_OWNERSHIP_AUDIT.md)
-preserves 1832 original pre-adoption retentions across 5007 verified native
-outcomes. Explicit caller cleanup is nonallocating; 40 actual borrowed-vertex
-deletions and four actual stale frontVertices ASan reads are detected. Twelve
-later failures occur after owner adoption. Native zero/one Face prefixes, live
-borrowers and adjacency survive the measured positive/denied calls. No production
-repair or numbered slice is included. The next owner must retire the temporary
-before borrowed selection, remove any unadopted front observer before deletion,
-and release after innerVertices publication. Public/full geometric meshing,
-arbitrary aliases, general rollback/retry and process-wide lifetime retain
-separate obligations; Stage 3 stays open with 37 numbered qualified slices.
-
-PR #123's preceding second new-edge repair is integrated at qualified main
-`cf7ab68e5e7a9d2b3467c861bf967f86bb393023`; its exact-head/main regression,
-2663 native outcomes and frozen scientific evidence remain preserved. Earlier
-delivery/queue statements below are historical.
-
-The second missing Edge now has an exclusive pending owner through adjacency
-and innerEdges publication. Failed-adoption deletion removes both endpoint
-observations before detachment; release follows owning-list insertion.
-[Scope and required gates](../evidence/SECOND_EDGE_OWNERSHIP.md) retain 288
-original pending failures and require actual nonallocating cleanup, live first-
-edge/Face-prefix controls and full exact-head/main validation. Earlier geometric
-Vertex creation/adoption, broader topology, later owned partial states, general
-retry/rollback and full-process lifetime remain separate; Stage 3 stays open.
-
-The [second new-edge adoption diagnosis](../evidence/SECOND_EDGE_ADOPTION_AUDIT.md)
-reproduces 288 original pending Edge/cache retentions, including 144 after a
-first new Edge is already adopted. Actual native owner/adjacency/cache and Face
-prefix observations survive; normal instrumented/unobserved calls agree in 96
-comparisons. The next single repair must own the second pending Edge and remove
-endpoint observations before failed-adoption deletion, releasing after successful
-owning-list publication. This record includes no production repair or numbered
-slice. Later already-owned partial states, general retry/rollback and process-
-wide lifetime retain separate obligations; Stage 3 stays open.
-
-The first new Edge now has an exclusive pending owner through endpoint observer
-publication and owning-list insertion. Failed-adoption cleanup removes endpoint
-observations before detaching/deleting the payload; release follows successful
-innerEdges adoption. [Scope and required gates](../evidence/FIRST_EDGE_OWNERSHIP.md)
-retain 144 original pending failures and require actual plain-deleter/stale-link
-controls, full exact-head regression and main revalidation. The second new edge,
-later owned partial states, whole-operation retry/rollback and full-process
-lifetime remain separate; Stage 3 stays open without a numbered-slice increment.
-
-The [first new-edge adoption diagnosis](../evidence/FIRST_EDGE_ADOPTION_AUDIT.md)
-reproduces 144 original pending Edge/cache retentions before innerEdges adoption,
-with unchanged native successful results and actual invalid-cleanup controls.
-No production repair is included. The single next repair must own that pending
-Edge, remove endpoint observations before failed-adoption deletion and release
-only after successful owning-list publication. The second new edge, later owned
-observer publication, general retry/rollback and process-wide lifetime retain
-their separate obligations. Stage 3 remains open; no numbered slice is added.
-
-The public exact-three geometry shortcut now holds a pending Face owner until
-mesh-list publication. [Scope and gates](../evidence/THREE_EDGE_FACE_OWNERSHIP.md)
-retain 36 original failed contracts and require actual borrowed-endpoint cleanup,
-wrong-deleter controls and distinct guard-only coverage. General front creation,
-new-edge adoption, arbitrary topology/aliases and complete recovery/process-wide
-lifetime remain separate. Stage 3 stays open.
-
-Geometry-front marker cleanup now uses an exclusive local owner that removes its
-queue observation before deleting its own payload. [Scope and gates](../evidence/FRONT_MARKER_OWNERSHIP.md)
-retain 34 original retentions and require actual invalid-observer/premature-delete
-controls. Public geometry wrapper shortcuts, new-edge adoption, later selector
-scratch failure, complete recovery and process-wide lifetime remain separate;
-Stage 3 stays open.
-
-Pending Face publication now uses an exclusive temporary owner with endpoint
-detachment on cleanup, releasing only after mesh-list insertion. [Scope and gates](../evidence/PENDING_FRONT_FACES.md)
-retain failed originals and actual invalid-deleter detection. Geometry marker,
-new-edge adoption, full recovery and process-wide lifetime remain separate;
-Stage 3 stays open.
-
-The interception Face borrower repair adds a nonallocating detach scope around
-the original local construction/setters/containment. [Scope and required gates](../evidence/FRONT_FACE_BORROWERS.md)
-retain twenty original failed contracts and require live caller/adjacency checks
-at every denied allocation. Other pending adoption, outer retry and full-process
-memory remain separate; Stage 3 is open.
-
-The bounded angular temporary repair covers second-object construction failure
-in findBestVertex, successful numerical selection and explicit deletion order.
-[Scope and required gates](../evidence/FRONT_ANGLE_TEMPORARIES.md) retain native
-original failures and isolated ASan/CRT controls. Adjacent borrowed-endpoint Face
-construction, other pending adoption, failed-tree reuse and whole-process memory
-remain separate; Stage 3 is open.
-
-The bounded serial report repair records actual accepted IDs for final console
-labels, independently of report archives. [Scope and gates](../evidence/ACCEPTED_STEP_REPORTING.md)
-require archived/unarchived gaps, unchanged scalar/scientific output and corrupt-
-ledger detection. It does not change runtime normalization, qualify full metadata
-rollback/resume or close Stage 3. Added local storage has normal RAII lifetime;
-no unchanged-allocation or new whole-process/parallel claim follows.
-
-The serial stopping repair binds only loop-entry guards to committed global
-history and restored accepted local errors. [Delivery gates and limits](../evidence/ACCEPTED_ERROR_STOPPING.md)
-separate rejected-error controls from accepted-error controls and frozen science.
-Final attempted-error/metadata reporting, broader rollback/provisional progress,
-resume and process-wide/parallel instruments remain separate; Stage 3 stays open.
-
-The explicit serial accepted-root repair separates report retention from the
-root used for retries and rejection restoration. Scope and exact delivery gates
-are in [the repair evidence](../evidence/ACCEPTED_MESH_ROOT.md). Attempted-error
-stopping guards and broader rollback/resume remain unqualified; Stage 3 is open.
-
-Selected candidate snapshots pair local mesh ownership with structural values;
-comparison/export and copy-failure gates are recorded in
-[the bounded repair evidence](../evidence/CANDIDATE_STRUCTURAL_SNAPSHOTS.md).
-Outer rejection metadata restoration remains unqualified; Stage 3 stays open.
-
-This is the finite audit queue for lifecycle closure, not a claim that every
-static hazard is a reproduced runtime defect. PROJECT_STATE.md names the single
-active item. Qualified slices retain their measured scope and are not reopened
-by historical "next" paragraphs. The full stage remains open until each required
-row has an explicit disposition and its applicable gates pass on the delivery
-revision and main.
-
-| Obligation | Current disposition and evidence | Required closure observation |
-| --- | --- | --- |
-| Physical node/triangle/SubMesh ownership | Bounded copy/adoption, failed construction, replacement, destruction and move slices qualified; C04/C05 | Complete process callers, repeated rebuild/rejection and unsupported foreign-owner arrangements explicitly inventoried |
-| Hermite constructor publication failure | Qualified bounded slice 37, C30/PR #100, full exact-head/main gates. Original failures and GCC Release negative limitation retained; see STAGE3_HERMITE_CONSTRUCTION.md. | Exact prefix rollback/retry across three layouts, four prefixes and sixteen flags; 82 expected outcomes, working controls, model/adoption fixtures and prior regression. Live nonnull curves and exclusive publication required; broader callers/observer graphs and full-process/parallel remain separate. |
-| Completed Hermite retirement | Qualified bounded slice 36, PR #98 exact head/main; C29/ADR-0037 and STAGE3_HERMITE_OBSERVERS.md. Original 125 failed outcomes and nine ASan consumptions retained. | Stable all-match removal, live current curves, dependent Geometry moves/destruction, 22 measured nonallocations, working negative controls and 18 live C++17 pairs; full exact-head/main regression passed. Failed construction/adoption and foreign/copied/rebound observers remain separate. |
-| Completed Bezier/Geometry retirement | Qualified bounded slice 32; PR #86 exact head and completed main continuation; C26, ADR-0033 and STAGE3_BEZIER_OBSERVERS.md | Stable all-match removal, current-curve lifetime, dependent destruction/populated move/self-move, no-allocation paths, original failures and live numerical pairs |
-| Remaining caller and constructor roots | Caller-root audit maps 56 literal Bezier sites; isolated original serial-reader retention is reproduced. Qualified bounded slice 33 implements parsed-control/pending ownership (PR #89 exact head/main); no complete-reader rollback/retry claim. Model/copy audit reproduces four copy/rvalue ASan errors and two append-retention cases; slice 34 now qualifies bounded exclusive adoption and explicit move/copy intent through full exact-head/main gates (PR #92). See STAGE3_MODEL_OWNERSHIP.md. C22 now has a source/caller audit and defined detached numeric-copy observations; slice 35 qualifies initialized detached-copy intent through full exact-head/main gates (PR #95, C22/ADR-0036); see STAGE3_DETACHED_PATCH_COPY.md. Complete cloning and other source/observer obligations stay open. The ordinary Hermite audit records 25 construction roots and nine original expired-observer ASan failures without production changes (STAGE3_HERMITE_OBSERVER_AUDIT.md). Slice 36 now qualifies bounded completed Hermite retirement (C29/ADR-0037, PR #98). Slice 37 now qualifies bounded exclusive Hermite constructor rollback and measured consuming-adoption fixtures (C30/PR #100). Broader caller preparation and foreign/copied/rebound observers remain separate. See STAGE3_PATCH_COPY_AUDIT.md. Fresh-curve external callers, other loaders and MPI/Hermite remain unqualified; C02/C22/C25 | See STAGE3_CALLER_ROOT_AUDIT.md; qualify normal/failure/repeated use, numerical preservation and exact-head/main gates before repair integration; retain unsupported/public caller limits |
-| UV helper/template/tree/mate ownership | Existing registration/primitive/root slices remain qualified only for their fixtures; C09-C13 | Remaining setters, selected-result adoption, failed-tree reuse and logical rejection paths measured with independent invalid controls |
-| Observer/cache validity | Current-mesh observers, foreign/copy lists, arbitrary curve replacement/publication and mutable geometry caches remain partial | Explicit immutability, invalidation or rebinding contract; positive lifetime/mutation tests and independent recomputation where supported |
-| Adaptive orchestration | Inner sample graph restoration/terminal release qualified; C06/C07 do not establish full adaptive atomicity | Define and measure terminal failure versus retry guarantees for metadata/error/history/budget/patch/mesh/acceptance, logical rejection and full CLI synchronization-disabled execution; consumed IDs stay consumed |
-| Complete-process instruments | Isolated MSVC ASan and Debug CRT batteries qualified; process-wide, parallel, LSan and UBSan remain unqualified | Whole supported serial process, teardown and repeated execution with positive/negative instruments; justified platform equivalence or a bounded stage 4 portability prerequisite |
-| Supported input/configuration domain | Eistute/Book serial traces and bounded analytic fixtures are measured; malformed loader records, extreme/non-power-of-two complete meshes and broader model coverage remain limited | Explicit supported-domain/coverage ledger; assign broader models such as Decor Shelf to stage 3 or integrated stage 10 before closure, without silently changing scientific policies |
-
-For each remaining row, retain the source boundary, contract, commands, revision,
-executable/input identities, positive/negative observations, failures and limits.
-Required measured gates remain open until observed. Unsupported input/API
-preconditions need explicit caller/domain analysis and rejection guards where
-the supported interface promises them; they do not establish runtime safety
-outside the measured scope. Prose alone cannot turn an unmeasured required gate
-green. A scientific policy choice requires explicit advisor alignment.
-
-The [terminal domain audit/status repair](../evidence/DOMAIN_FAILURE_STATUS.md)
-retains original controlled false/exception observations. The bounded
-[serial UV cache repair](../evidence/DOMAIN_UV_CACHE.md) adds exclusive temporary
-face/vertex ownership through construction, adoption and exceptions (PR #107).
-The [caller candidate repair](../evidence/DOMAIN_CANDIDATE_OWNERSHIP.md) owns
-pending serial regeneration results until consuming insertion. Neither closes
-adaptive orchestration: terminal process exit still skips outer stack cleanup;
-outer observers, metadata/history and full rollback/retry remain separate work.
-
-The bounded [domain-failure observer repair](../evidence/DOMAIN_FAILURE_OBSERVERS.md)
-detaches Patch observations into the generator's live owned meshes at the serial
-domain exception boundary, preserving foreign/null links and normal publication.
-It does not restore accepted state, repair unmatched expired observations,
-change terminal exit or qualify loader/curve/SaveMesh failure boundaries and retry.
-
-The [typed serial terminal failure repair](../evidence/TYPED_DOMAIN_FAILURE.md)
-propagates an owning domain error after unchanged attempts and handles it in the
-CLI with the existing status 1/context. It activates the previously qualified
-bounded cleanup for this false-result path. Generic error status/classification,
-MPI/OpenMP, unmatched expired observations and broader recovery remain separate.
-
-The [Model root audit](../evidence/STAGE3_MODEL_ROOT_AUDIT.md) records original
-copy/rvalue and failed-append reproductions. It is retained historical evidence;
-bounded Model repair qualification is recorded separately in
-[the repair evidence](../evidence/STAGE3_MODEL_OWNERSHIP.md).
-Neither executes alternate parallel callers.
-
-Stages 4-11 keep their existing gates in MODERNIZATION_PLAN.md. Portable builds
-may alternate with stage 3 only as a single bounded prerequisite. Eigen removal
-still requires independent analytic/differential tests; architecture integration,
-English/API documentation, measured efficiency, integrated qualification and
-reproducible freeze remain future work. Neither a stage count nor a PR count is
-an effort estimate.
+Next single implementation is P1 in [REFACTOR_SEQUENCE.md](REFACTOR_SEQUENCE.md),
+the complete serial build prerequisite for S3-09. All other packages remain
+pending; the ledger does not authorize concurrent or unlimited campaigns.
