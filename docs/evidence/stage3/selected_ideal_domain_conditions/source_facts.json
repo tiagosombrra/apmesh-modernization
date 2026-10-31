@@ -1,0 +1,623 @@
+{
+  "base": "5da04f14c60384d42b2444c9e8cac90245835d7b",
+  "source_files_sha256": {
+    "include/crab_mesh/aft/advancing_front.h": "378cab0f786357202a5f8836a3fd8848ab95feb380321123a3ab9eabe11f73b9",
+    "src/adapter/adapter.cpp": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+    "src/crab_mesh/aft/advancing_front.cpp": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+    "src/crab_mesh/aft/boundary.cpp": "6b5f1b60b64ad9301dd0f77103f3f92cdb93ec6b3e327b0dcabc1ef83fe8167b",
+    "src/crab_mesh/aft/edge.cpp": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+    "src/crab_mesh/aft/face.cpp": "5affe37a06f0d44ed584f1950da6f51901fa65e67521fd9f1fab0c684e8973d4",
+    "src/crab_mesh/aft/quadtree.cpp": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+    "src/crab_mesh/aft/quadtree_cell.cpp": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+    "src/crab_mesh/aft/vertex.cpp": "930551af2d3c0deaa4de3126b9ae27c7ef86b17f6455482ad8ae2d752ad6034b",
+    "tests/template_prefix/probe.cpp": "dacd624ef4831d0ca6368e4bcea34416d40f4ae607feb90485697e36720695b7"
+  },
+  "source_facts": [
+    {
+      "name": "serial_front",
+      "path": "src/adapter/adapter.cpp",
+      "line": 1266,
+      "anchor": "AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,",
+      "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+      "finding": "The real serial attempt creates the native front with existing configuration."
+    },
+    {
+      "name": "serial_bottom",
+      "path": "src/adapter/adapter.cpp",
+      "line": 1288,
+      "anchor": "*it, 0.0, static_cast<CurveAdaptiveParametric*>(curve)",
+      "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+      "finding": "The serial bottom side is a UV-square trace borrowing its live analytic curve."
+    },
+    {
+      "name": "serial_right",
+      "path": "src/adapter/adapter.cpp",
+      "line": 1290,
+      "anchor": "1.0, *it, static_cast<CurveAdaptiveParametric*>(curve)",
+      "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+      "finding": "The serial right side is a UV-square trace borrowing its live analytic curve."
+    },
+    {
+      "name": "serial_top",
+      "path": "src/adapter/adapter.cpp",
+      "line": 1307,
+      "anchor": "*it, 1.0, static_cast<CurveAdaptiveParametric*>(curve)",
+      "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+      "finding": "The serial top side is a UV-square trace borrowing its live analytic curve."
+    },
+    {
+      "name": "serial_left",
+      "path": "src/adapter/adapter.cpp",
+      "line": 1309,
+      "anchor": "0.0, *it, static_cast<CurveAdaptiveParametric*>(curve)",
+      "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+      "finding": "The serial left side is a UV-square trace borrowing its live analytic curve."
+    },
+    {
+      "name": "serial_old_uv",
+      "path": "src/adapter/adapter.cpp",
+      "line": 1332,
+      "anchor": "tri->GetParametersN1(), tri->GetParametersN2(), tri->GetParametersN3(), tri->GetId());",
+      "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+      "finding": "Old-face geometry comes from triangle UV parameters; synthetic fixture seeds are a narrower contract."
+    },
+    {
+      "name": "serial_old_size",
+      "path": "src/adapter/adapter.cpp",
+      "line": 1355,
+      "anchor": "face->h = lenght_new * local_factor;",
+      "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+      "finding": "Existing area/curvature-derived sizing feeds subdivision; it is not a free coverage parameter."
+    },
+    {
+      "name": "serial_execute",
+      "path": "src/adapter/adapter.cpp",
+      "line": 1366,
+      "anchor": "if (!avanco.execute(mesh_old)) {",
+      "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+      "finding": "The caller uses the native front execute path and preserves generation failure."
+    },
+    {
+      "name": "native_prefix",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1526,
+      "anchor": "status = quadtree->generate(oldmesh);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Prefix generation must complete before geometry."
+    },
+    {
+      "name": "prefix_initial_front",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1568,
+      "anchor": "  makeInitialFront();",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The native prefix establishes front/IDs before geometry."
+    },
+    {
+      "name": "native_geometry_entry",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1570,
+      "anchor": "  status = makeGeometryBasedMesh();",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Public geometry runs after the original prefix, without standalone-tree uniform refinement."
+    },
+    {
+      "name": "small_front",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1404,
+      "anchor": "if (front.size() < 3) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A short front returns without selection."
+    },
+    {
+      "name": "three_edge_shortcut",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1408,
+      "anchor": "if (front.size() == 3) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The exact-three shortcut publishes a Face without findBestVertex."
+    },
+    {
+      "name": "first_pass",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1429,
+      "anchor": "enum MethodStatus status = makeMesh(true);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A larger admitted front enters the geometry front pass."
+    },
+    {
+      "name": "second_pass",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 1432,
+      "anchor": "status = makeMesh(false);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The rejected-edge pass runs only after geometry-done from the first pass; empty entry is not selection coverage."
+    },
+    {
+      "name": "geometry_default",
+      "path": "include/crab_mesh/aft/advancing_front.h",
+      "line": 102,
+      "anchor": "bool geometryPhase = true);",
+      "source_sha256": "378cab0f786357202a5f8836a3fd8848ab95feb380321123a3ab9eabe11f73b9",
+      "finding": "Both unqualified makeMesh calls use the geometryPhase default."
+    },
+    {
+      "name": "boundary_front",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 234,
+      "anchor": "front = boundary->getEdges();",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The initial front starts with native boundary edges."
+    },
+    {
+      "name": "template_front",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 256,
+      "anchor": "EdgeList quadtreeFront = quadtree->getFront();",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The initial front additionally receives template-front edges."
+    },
+    {
+      "name": "candidate_view",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 806,
+      "anchor": "  frontVertices.clear();\n\n  for (EdgeList::iterator iter = front.begin(); iter != front.end(); iter++) {\n    frontVertices.push_back((*iter)->getV1());",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Each pass rebuilds its initial candidate view from front V1 pointers, not every owned vertex."
+    },
+    {
+      "name": "native_selector",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 855,
+      "anchor": "bool existed = findBestVertex(e, best, geometryPhase);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A non-marker edge invokes the inherited selector before caller domain classification."
+    },
+    {
+      "name": "null_result",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 857,
+      "anchor": "    if (!best) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Null best follows queue rejection and cannot enter ideal retirement."
+    },
+    {
+      "name": "normal",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 428,
+      "anchor": "Vertex* v = e->normal();",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Ideal construction begins with the directed edge left normal."
+    },
+    {
+      "name": "height",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 430,
+      "anchor": "h *= e->getCell()->height();",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The offset and candidate-search radius use the attached cell height."
+    },
+    {
+      "name": "offset",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 432,
+      "anchor": "v->scalarMultiplication(h);\n  v->sum(e->getMid());",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "For a finite nondegenerate edge, ideal I equals native midpoint M plus cell height h times left unit normal N."
+    },
+    {
+      "name": "degenerate_normal",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 492,
+      "anchor": "if (v[0]->matches(v[1])) {",
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "Coincident endpoints yield zero normal; they are outside the nondegenerate caller prerequisites."
+    },
+    {
+      "name": "general_left_normal",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 507,
+      "anchor": "normal->setPosition(v[0]->getY() - v[1]->getY(),\n                        v[1]->getX() - v[0]->getX());",
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "The general branch rotates the directed chord counterclockwise before normalization."
+    },
+    {
+      "name": "normal_normalization",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 512,
+      "anchor": "normal->setPosition(normal->getX() / n, normal->getY() / n);",
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "Finite nonzero norm is required for the unit-normal interpretation."
+    },
+    {
+      "name": "arithmetic_midpoint",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 45,
+      "anchor": "v->setPosition((first->getX() + second->getX()) / 2.0, (first->getY() + second->getY()) / 2.0);",
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "Generic edges cache the UV chord midpoint."
+    },
+    {
+      "name": "curve_midpoint",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 568,
+      "anchor": "next_mid.reset(new Vertex(t, 0.0));",
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "Boundary edges may cache a curve-parametric midpoint instead of the arithmetic chord midpoint."
+    },
+    {
+      "name": "boundary_midpoint_call",
+      "path": "src/crab_mesh/aft/boundary.cpp",
+      "line": 79,
+      "anchor": "    e->makeParamMid();",
+      "source_sha256": "6b5f1b60b64ad9301dd0f77103f3f92cdb93ec6b3e327b0dcabc1ef83fe8167b",
+      "finding": "Native boundary append computes its oriented curve midpoint."
+    },
+    {
+      "name": "initial_radius",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 445,
+      "anchor": "  double h = 1.0;",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The selector initializes the scale to one before makeIdealVertex multiplies by cell height."
+    },
+    {
+      "name": "pending_ideal",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 456,
+      "anchor": "  best = pending_ideal.get();",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A separate owner holds the fresh ideal while best is initially its observer."
+    },
+    {
+      "name": "candidate_identity",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 469,
+      "anchor": "(candidate->matches(e->getV1())) || (candidate->matches(e->getV2()))",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Endpoint identity and exact coordinate matches are skipped before geometric filters."
+    },
+    {
+      "name": "candidate_box",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 475,
+      "anchor": "if ((candidate->getX() < best->getX() - h) || (candidate->getX() > best->getX() + h) ||",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Candidates outside the ideal-centered axis box are skipped."
+    },
+    {
+      "name": "candidate_radius",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 481,
+      "anchor": "if (candidate->distance(best) > h) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Candidates beyond the closed Euclidean radius are skipped."
+    },
+    {
+      "name": "candidate_distance",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 487,
+      "anchor": "double dist = e->straightDistance(candidate);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Only candidates surviving both spatial filters undergo the base-edge distance aborts."
+    },
+    {
+      "name": "negative_distance_abort",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 489,
+      "anchor": "if (dist < 0.0) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The literal negative-distance branch aborts; it is not an active signed-normal test for finite nondegenerate arithmetic."
+    },
+    {
+      "name": "close_candidate_abort",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 503,
+      "anchor": "} else if (dist <= h * 0.1) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A close candidate aborts the entire scan with null best, even if earlier candidates were accepted."
+    },
+    {
+      "name": "topology_only_normal",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 522,
+      "anchor": "if (!(e->accordingToNormal(candidate))) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The explicit accordingToNormal filter belongs to the non-geometry else branch."
+    },
+    {
+      "name": "candidate_interception",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 531,
+      "anchor": "bool intercept = interceptionTest(e, candidate, true, false);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A candidate survives only if all-edge and live-front point/Face interception checks return false."
+    },
+    {
+      "name": "candidate_publication",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 534,
+      "anchor": "bestVertices.push_back(candidate);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Any surviving candidate makes the completed list nonempty and selects the borrowed path."
+    },
+    {
+      "name": "fresh_branch",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 547,
+      "anchor": "if (geometryPhase && bestVertices.empty()) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A fresh ideal can be selected only after the full candidate scan returns normally with an empty survivor list."
+    },
+    {
+      "name": "ideal_interception",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 548,
+      "anchor": "bool intercept = interceptionTest(e, best);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The fresh ideal must also pass default all-edge and point/Face interception."
+    },
+    {
+      "name": "ideal_proximity",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 564,
+      "anchor": "if ((*iter)->intercept(best)) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The ideal must avoid native point-to-edge proximity on every edge in the edges view."
+    },
+    {
+      "name": "ideal_adoption",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 582,
+      "anchor": "frontVertices.push_back(best);\n        innerVertices.push_back(best);\n        pending_ideal.release();\n        vertices.push_back(best);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Successful publication adopts the new ideal before returning existed=false; all publications must complete."
+    },
+    {
+      "name": "borrowed_branch",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 593,
+      "anchor": "} else if (!bestVertices.empty()) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A nonempty survivor list retires the pending temporary and selects an existing vertex."
+    },
+    {
+      "name": "fresh_return",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 592,
+      "anchor": "    vertexExistedBefore = false;\n  } else if (!bestVertices.empty()) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The successful fresh geometry branch returns existed=false; this alone does not imply outside-root coordinates."
+    },
+    {
+      "name": "all_edges",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 347,
+      "anchor": "EdgeList* testEdges = &edges;",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The active onlyFrontEdges=false path checks all edges in the front observer view, not only the currently queued edges."
+    },
+    {
+      "name": "two_candidate_segments",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 354,
+      "anchor": "if (((*iter)->intercept(e->getV1(), candidate)) ||\n        ((*iter)->intercept(candidate, e->getV2())) || false)",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Both proposed triangle sides are checked against the existing edge view."
+    },
+    {
+      "name": "live_front_point",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 374,
+      "anchor": "for (VertexList::iterator iter = frontVertices.begin(); iter != frontVertices.end(); iter++) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The additional triangle-containment check visits the live front-vertex view."
+    },
+    {
+      "name": "face_point_veto",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 394,
+      "anchor": "if (!f.out((*iter))) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A nonmatching live front vertex not outside the tentative triangle vetoes the candidate."
+    },
+    {
+      "name": "proper_intersection",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 200,
+      "anchor": "return ((ab.cross(&ac) * ab.cross(&ad) < 0) &&\n          (cd.cross(&ca) * cd.cross(&cb) < 0));",
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "The segment predicate uses strict cross-product signs: endpoint/collinear contact is not a proper crossing."
+    },
+    {
+      "name": "point_proximity",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 205,
+      "anchor": "return (distance(v) < TOLERANCE_AFT);",
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "Point-to-edge veto uses a strict native distance threshold; equality is not below it."
+    },
+    {
+      "name": "distance_unsigned",
+      "path": "src/crab_mesh/aft/edge.cpp",
+      "line": 235,
+      "anchor": "return 2.0 * v->surface(this->v[0], this->v[1]) / length();",
+      "source_sha256": "3d1cdec911787d57baaa2d1c6dcd2b82b0ccdcf305cfb9db80ac740963890439",
+      "finding": "The active straightDistance is unsigned because Vertex::surface takes absolute area."
+    },
+    {
+      "name": "absolute_area",
+      "path": "src/crab_mesh/aft/vertex.cpp",
+      "line": 120,
+      "anchor": "return fabs(orientedSurface(v1, v2));",
+      "source_sha256": "930551af2d3c0deaa4de3126b9ae27c7ef86b17f6455482ad8ae2d752ad6034b",
+      "finding": "Finite triangle surface is nonnegative; dist<0 is not a half-plane classifier."
+    },
+    {
+      "name": "exact_match",
+      "path": "src/crab_mesh/aft/vertex.cpp",
+      "line": 157,
+      "anchor": "bool Vertex::matches(Vertex *v) { return ((x == v->x) && (y == v->y)); }",
+      "source_sha256": "930551af2d3c0deaa4de3126b9ae27c7ef86b17f6455482ad8ae2d752ad6034b",
+      "finding": "The candidate-match filter uses exact coordinates, not tolerance-based equals."
+    },
+    {
+      "name": "face_out",
+      "path": "src/crab_mesh/aft/face.cpp",
+      "line": 188,
+      "anchor": "return ((l1 < -TOLERANCE_AFT) || (l2 < -TOLERANCE_AFT) ||\n          (l3 < -TOLERANCE_AFT));",
+      "source_sha256": "5affe37a06f0d44ed584f1950da6f51901fa65e67521fd9f1fab0c684e8973d4",
+      "finding": "Face::out uses barycentric tolerance; !out includes the tolerated triangle boundary."
+    },
+    {
+      "name": "barycentric_denominator",
+      "path": "src/crab_mesh/aft/face.cpp",
+      "line": 204,
+      "anchor": "s = this->v[0]->orientedSurface(this->v[1], this->v[2]);",
+      "source_sha256": "5affe37a06f0d44ed584f1950da6f51901fa65e67521fd9f1fab0c684e8973d4",
+      "finding": "Nondegenerate triangle arithmetic is a prerequisite for the geometric interpretation of the point/Face veto."
+    },
+    {
+      "name": "root_delegate",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 285,
+      "anchor": "bool Quadtree::in(Vertex *v) { return root->in(v); }",
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "The caller tests the root, not the selected edge cell or physical patch contour."
+    },
+    {
+      "name": "strict_interior",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1179,
+      "anchor": "return (v->getX() > min->getX() && v->getX() < max->getX() &&\n          v->getY() > min->getY() && v->getY() < max->getY());",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "For finite points !in includes root boundary and exterior; it is not synonymous with tolerance-expanded out."
+    },
+    {
+      "name": "expanded_out",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1190,
+      "anchor": "return ((v->getX() <= min->getX() - TOLERANCE_AFT) ||",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "The out predicate expands the root by tolerance and must not replace the original !in guard."
+    },
+    {
+      "name": "root_box",
+      "path": "src/crab_mesh/aft/quadtree.cpp",
+      "line": 296,
+      "anchor": "boundary->getBox(&minX, &minY, &maxX, &maxY);",
+      "source_sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
+      "finding": "A complete normal UV-square boundary yields a fresh unit-square root."
+    },
+    {
+      "name": "cell_height",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1201,
+      "anchor": "  return size;  //(max->getX() - min->getX());",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "The native ideal offset uses cell size; no edge-length/equilateral factor is introduced."
+    },
+    {
+      "name": "cell_size",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 991,
+      "anchor": "size = (spanX > spanY) ? spanX : spanY;",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "A coherent dyadic cell size is its maximum box span."
+    },
+    {
+      "name": "midpoint_cell_lookup",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1127,
+      "anchor": "if (out(e->getMid())) {",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "Boundary/generated edge lookup uses the cached midpoint and expanded out test."
+    },
+    {
+      "name": "template_front_cell",
+      "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+      "line": 1633,
+      "anchor": "if (this->level < neighbors[QUAD_B].front()->level) {\n      e[0]->setCell(this);\n    } else {\n      e[0]->setCell(neighbors[QUAD_B].front());",
+      "source_sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
+      "finding": "A template-side edge can use the coarser incident cell; its offset cannot be inferred from the edge chord alone."
+    },
+    {
+      "name": "new_edge_cell",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 941,
+      "anchor": "quadtree->findCell(e1);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "A generated edge receives native midpoint-based cell registration before later selection."
+    },
+    {
+      "name": "domain_guard",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 879,
+      "anchor": "if (geometryPhase && !existed && !quadtree->in(best)) {",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "After nonnull selector return, retirement additionally requires geometryPhase, a new selection and failure of strict root interior."
+    },
+    {
+      "name": "retirement_queue",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 879,
+      "anchor": "if (geometryPhase && !existed && !quadtree->in(best)) {\n      if (frontBased) {\n        rejected.push_back(e);\n      } else {\n        front.push_back(e);",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "The caller republishes the edge before removing/deleting the adopted ideal."
+    },
+    {
+      "name": "retirement_removal",
+      "path": "src/crab_mesh/aft/advancing_front.cpp",
+      "line": 886,
+      "anchor": "vertices.remove(best);\n      innerVertices.remove(best);\n      frontVertices.remove(best);\n\n      delete best;",
+      "source_sha256": "8549f65b04795f78a8c7b3deee4f244bea3e9af0528e9f4ddbc3d7759798252e",
+      "finding": "Retirement removes all three observations/ownership entries before deleting; pending-owner cleanup is a different phase."
+    },
+    {
+      "name": "fixture_cut",
+      "path": "tests/template_prefix/probe.cpp",
+      "line": 298,
+      "anchor": "    throw PrefixReached{};",
+      "source_sha256": "dacd624ef4831d0ca6368e4bcea34416d40f4ae607feb90485697e36720695b7",
+      "finding": "The qualified tracked fixture cuts before native selection; this source audit does not expand that fixture."
+    }
+  ],
+  "order_constraints": [
+    [
+      "initial_radius",
+      "pending_ideal",
+      "candidate_identity",
+      "candidate_box",
+      "candidate_radius",
+      "candidate_distance",
+      "negative_distance_abort",
+      "close_candidate_abort",
+      "topology_only_normal",
+      "candidate_interception",
+      "candidate_publication",
+      "fresh_branch",
+      "ideal_interception",
+      "ideal_proximity",
+      "ideal_adoption",
+      "fresh_return",
+      "borrowed_branch"
+    ],
+    [
+      "native_selector",
+      "null_result",
+      "domain_guard",
+      "retirement_removal"
+    ],
+    [
+      "native_prefix",
+      "prefix_initial_front",
+      "native_geometry_entry"
+    ],
+    [
+      "small_front",
+      "three_edge_shortcut",
+      "first_pass",
+      "second_pass"
+    ]
+  ]
+}
