@@ -20,6 +20,12 @@ No open row is closed by this audit or by the latest green CTest run.
 | S3-09 | Complete-process instruments | partial-open | Isolated ASan/CRT batteries do not instrument the whole supported serial process; full-process/parallel/LSan/UBSan coverage and justified equivalence remain open. | P1/P3 |
 | S3-10 | Supported input/configuration domain | partial-open | Eistute/Book and bounded analytic cases do not qualify malformed loaders, extreme/non-power-of-two complete meshes or all models. | P2/P5 |
 
+The [SP-06..08 ASan checkpoint](../evidence/SERIAL_ASAN_REMAINING.md) adds two
+complete Eistute and two Book subprocesses with exact repetition, plus one normal
+no-sync CLI teardown. It contributes bounded observations to S3-01/08/09. It does
+not establish same-Generator reuse, full observer safety or leak/UB accounting;
+all ten rows retain their current dispositions.
+
 ## Required exit observations
 
 - **S3-01** (C04, C05): Supported caller/rebuild/rejection and teardown observations preserve ownership/adjacency, with actual negative instruments and explicit invalid arrangements. Evidence: [STAGE3_SUBMESH_LIFETIME.md](../evidence/STAGE3_SUBMESH_LIFETIME.md), [STAGE3_TRIANGLE_CONSTRUCTION.md](../evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).

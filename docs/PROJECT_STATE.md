@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `31862ed72020038605bd677cb2b3e05c0ebf4050` (PR #136).
+Entry main: `00f93c3f3cdbdabaacdead1fa9d9bb9011b3427e` (PR #137).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -67,24 +67,34 @@ Candidate SP-05 then completes once in 13.0484 seconds under the same 60-second
 cap: accepted 0/1, rejected 2/3, retry 1, eight positive boundary comparisons and
 no ASan diagnostic. The original three-state prefix retains 16 exact artifacts
 and three exact metrics rows. Original failed processes remain failed evidence.
-No other ASan production case is added. The next delivery requires 75 CTest/380
-nested Python controls and the frozen nine-state GCC scientific regression on
-head/main, plus scoped analysis, resource, source/input and remote identity gates.
+No other ASan production case was added in that correction. PR #137 passed its
+exact-head/main 75 CTest/380 nested controls and frozen nine-state GCC regression
+(45 exact artifacts, 123 boundary comparisons), plus scoped source/resource gates.
+
+The [remaining fixed ASan production observations](evidence/SERIAL_ASAN_REMAINING.md)
+now pass SP-06..08 with that same rebuilt artifact, without further compilation.
+Exactly five processes complete below their unchanged 300-second caps, all with
+empty stderr. Eistute and Book each repeat twice with exact OBJ/acceptance/boundary
+comparisons, the prescribed accepted/rejected steps and 246 positive boundary
+comparisons total. The existing no-sync configuration returns zero through normal
+CLI teardown; it does not qualify synchronized boundaries. Other instrument and
+caller obligations remain open.
 
 The [closure ledger](architecture/STAGE3_CLOSURE_INVENTORY.md) still has ten
 inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Next single adjustment after the quality correction delivery
+## Next single adjustment after the remaining ASan production delivery
 
-P3: continue only the finite remaining/invalidation-relevant production inventory
-after the quality correction's exact delivery gates. SP-06..08 remain unrun;
-earlier observations retain their measured artifact identities. Preserve/classify
-the first unexpected failure and stop expansion. Do not create another source-
-only successor audit or repeat identical qualified observations without a changed
-dependency. Other instruments, SP-09/10 observer portability and all remaining
-cases stay unqualified until measured or explicitly justified.
+P3: prepare a portable complete-caller observer for the existing SP-09/10 cases,
+qualify it with actual controls, then measure only the fixed directed contexts.
+SP-06..08 now pass; earlier observations retain their measured artifact identities.
+Preserve/classify the first unexpected failure and stop expansion. Do not create
+another source-only successor audit or repeat identical qualified observations
+without a changed dependency. Other instruments, same-Generator reuse, caller
+contracts and all remaining closure obligations stay unqualified until measured
+or explicitly justified.
 Follow the [five work packages](architecture/REFACTOR_SEQUENCE.md). Completion is
 measured by resolved obligations or repaired defects, not test or PR counts.
 

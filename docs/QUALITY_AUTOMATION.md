@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Remaining fixed serial ASan production cases
+
+The [SP-06..08 checkpoint](evidence/SERIAL_ASAN_REMAINING.md) reuses the qualified
+73-unit artifact for exactly five fixed processes with unchanged 300-second caps.
+Require source/input/runtime/application/prior-seal identity, both positive
+repeatability/boundary reports, normal no-sync return and every process/log hash.
+Documentation head/main must pass the existing 75 CTest entries and 380 nested
+Python controls, whitespace, inventory/contracts and staged/remote checks. Reuse
+the unchanged prior nine-state/45-artifact/123-boundary GCC scientific report by
+identity. Do not rebuild, recalibrate instruments or repeat native production
+observations for this documentation delivery. SP-09/10 portability, other
+instruments and Stage 3 closure remain open.
+
 ## Allocation-free face quality
 
 The [quality scratch correction](evidence/FACE_QUALITY_SCRATCH.md) requires paired
