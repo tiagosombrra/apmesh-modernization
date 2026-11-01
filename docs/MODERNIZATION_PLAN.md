@@ -1,5 +1,20 @@
 # Technique-preserving modernization plan
 
+## Current production priority
+
+Prioritize cohesive production deliveries with a completed capability or removed
+technical debt. Validation is finite and attached to that delivery; reuse unchanged
+evidence. Additional instrument qualification is scheduled for a demonstrated
+production blocker or mandatory closure, rather than forming the primary queue.
+Scientific boundaries and exact-head/main closure gates remain mandatory.
+
+The bounded 2026 milestone is the [serial engine/configuration/CLI boundary](evidence/SERIAL_ENGINE.md):
+APMesh::Engine is linkable within the build, runtime parsing/state are outside
+main.cpp, existing consumers link the engine, and C++17 scientific behavior is
+preserved. This is a bounded stage 6 prerequisite for caller-root work. It neither
+closes Stage 3 nor promises the complete roadmap in 2026. The next production
+package must define execution-context ownership and a finite caller contract.
+
 ## Current stage and completion route
 
 Stages 0-2 retain measured closure. Stage 3 remains open; stages 4-11 remain
@@ -53,8 +68,8 @@ allocation denial and the original terminal oracles pass, then the five fixed
 SP-09/10 contexts pass once with no unexpected ASan diagnostic. Preserve both
 failed qualifications and all earlier artifact scopes. Require exact-head/main
 75 CTest/385 nested controls and identity/quality/remote gates; reuse unchanged
-scientific and native observations. Next: qualify complete-process CRT checkpoints
-with actual release/retained-storage/hook controls before fixed cases.
+scientific and native observations. CRT/UB/leak qualification remains required
+for closure; the immediate priority is the production engine package above.
 Stop at the first unexpected failure. Other instruments and caller obligations
 remain open; this does not close the entire W-ASAN profile or Stage 3.
 Follow with remaining supported-caller repairs and final closure. No new model

@@ -1,0 +1,22 @@
+{
+  "classification": "engineering-only production engine/runtime extraction",
+  "entry_main": "68c0402cf0232d688c713504b1863a959a0e0557",
+  "delivered_capability": "APMesh::Engine static target, separate runtime configuration/state and five-line CLI; three existing consumers use library interfaces instead of including main.cpp",
+  "production_units": 76,
+  "global_initializers_preserved": 203,
+  "source_proof_sha256": "a416cde6e47d9639c5cca1a6147146b67eaf7ef2a3ddd4d77c29a9b72d1bb345",
+  "extracted_bodies": "configuration defaults, parser/conversions/clamps/application order and CLI body match original token sequences",
+  "compile_groups_three_targets_before": 219,
+  "compile_groups_three_targets_after": 78,
+  "compile_groups": {
+    "ap_mesh_engine": 75,
+    "ap_mesh": 1,
+    "curve_orientation_probe": 1,
+    "attempt_metrics_probe": 1
+  },
+  "gcc_build_exit": 0,
+  "msvc_cpp17_debug_build_exit": 0,
+  "scoped_analysis_exit": 0,
+  "required_delivery": "Exact-head/main 75 CTest and 385 nested controls, real MSVC invalid/analytic CLI checks, nine Eistute/Book states against 45 frozen artifacts and 123 boundary comparisons, source/format/inventory/remote checks",
+  "limits": "Process-wide state remains serialized; no reentrant/thread-safe engine, C++23, Eigen removal, parallel or Stage 3/6 closure claim"
+}

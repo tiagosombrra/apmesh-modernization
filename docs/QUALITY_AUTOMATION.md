@@ -1,5 +1,16 @@
 # Local quality automation
 
+## Serial engine production package
+
+The [engine/runtime extraction](evidence/SERIAL_ENGINE.md) uses existing validation:
+C++17 GCC/MSVC canonical builds, 75 CTest entries/385 nested controls, affected
+real MSVC invalid/analytic CLI checks and the frozen nine-state Eistute/Book
+reference (45 exact artifacts/123 boundary comparisons) on delivery head/main.
+Require token/order preservation for extracted defaults/parser/application/CLI,
+scoped analysis, format, inventory/contracts and source/input/remote identity.
+No new test matrix or standalone instrument is required for this package. Reuse
+unchanged native tests and keep historical instrument limitations explicit.
+
 ## Portable terminal observer requalification
 
 The [qualified terminal observer](evidence/SERIAL_ASAN_TERMINAL_REQUALIFICATION.md)

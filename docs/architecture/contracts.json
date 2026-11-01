@@ -6,15 +6,15 @@
     {
       "id": "C01",
       "topic": "CLI runtime context",
-      "statement": "The configuration entry point validates input and copies RuntimeConfig values into process globals before invoking GeneratorAdaptive through synthetic legacy arguments.",
-      "limits": "Re-entrant independent configurations are not established; extracting a context is stage 6 work.",
+      "statement": "The thin CLI delegates to the linkable engine RunApplication entry. The runtime module validates configuration and copies RuntimeConfig values into process globals before invoking GeneratorAdaptive through the unchanged synthetic legacy arguments.",
+      "limits": "The library boundary does not remove legacy process-wide state. Independent re-entrant or concurrent configurations remain unqualified; calls must be serialized.",
       "evidence": [
         {
-          "path": "src/main.cpp",
+          "path": "src/application/runtime_config.cpp",
           "anchor": "void ApplyRuntimeConfig(const RuntimeConfig& config)"
         },
         {
-          "path": "src/main.cpp",
+          "path": "src/application/run_application.cpp",
           "anchor": "std::vector<std::string> synthetic_args_storage"
         },
         {

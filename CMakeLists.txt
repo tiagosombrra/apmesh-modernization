@@ -29,12 +29,17 @@ set(INC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 file(GLOB_RECURSE AP_MESH_SOURCES CONFIGURE_DEPENDS "${SRC_DIR}/*.cpp")
 
-add_executable(ap_mesh)
+set(AP_MESH_ENGINE_SOURCES ${AP_MESH_SOURCES})
+list(REMOVE_ITEM AP_MESH_ENGINE_SOURCES "${SRC_DIR}/main.cpp")
+add_library(ap_mesh_engine STATIC ${AP_MESH_ENGINE_SOURCES})
+add_library(APMesh::Engine ALIAS ap_mesh_engine)
+target_compile_features(ap_mesh_engine PUBLIC cxx_std_17)
+target_include_directories(ap_mesh_engine PUBLIC "${INC_DIR}")
+add_executable(ap_mesh "${SRC_DIR}/main.cpp")
+target_link_libraries(ap_mesh PRIVATE ap_mesh_engine)
 
 # English comment: keep the standard on the target (modern CMake)
 target_compile_features(ap_mesh PRIVATE cxx_std_17)
-
-target_sources(ap_mesh PRIVATE ${AP_MESH_SOURCES})
 
 target_include_directories(ap_mesh PRIVATE "${INC_DIR}")
 
@@ -127,26 +132,31 @@ add_custom_target(run_book_v5_fix_strict
 # -----------------------------
 # Warnings / flags
 # -----------------------------
-if(AP_MESH_ENABLE_WARNINGS)
+foreach(ap_mesh_target IN ITEMS ap_mesh ap_mesh_engine)
   if(MSVC)
-    target_compile_options(ap_mesh PRIVATE /W4 /permissive- /FS)
-  else()
-    target_compile_options(ap_mesh PRIVATE -Wall -Wextra -Wpedantic -Wshadow -Wconversion)
-    # English comment: keep this only if needed; it may hide real issues.
-    target_compile_options(ap_mesh PRIVATE -Wno-cast-function-type)
+    target_compile_options(${ap_mesh_target} PRIVATE /EHsc /we4530)
   endif()
-endif()
+  if(AP_MESH_ENABLE_WARNINGS)
+    if(MSVC)
+      target_compile_options(${ap_mesh_target} PRIVATE /W4 /permissive- /FS)
+    else()
+      target_compile_options(${ap_mesh_target} PRIVATE -Wall -Wextra -Wpedantic -Wshadow -Wconversion)
+      # English comment: keep this only if needed; it may hide real issues.
+      target_compile_options(${ap_mesh_target} PRIVATE -Wno-cast-function-type)
+    endif()
+  endif()
 
-# Build-type specific optimizations
-if(MSVC)
-  target_compile_options(ap_mesh PRIVATE $<$<CONFIG:Release>:/O2>)
-else()
-  target_compile_options(ap_mesh PRIVATE $<$<CONFIG:Release>:-O3>)
-endif()
+  # Build-type specific optimizations
+  if(MSVC)
+    target_compile_options(${ap_mesh_target} PRIVATE $<$<CONFIG:Release>:/O2>)
+  else()
+    target_compile_options(${ap_mesh_target} PRIVATE $<$<CONFIG:Release>:-O3>)
+  endif()
 
-if(AP_MESH_DISABLE_STRICT_ALIASING AND NOT MSVC)
-  target_compile_options(ap_mesh PRIVATE -fno-strict-aliasing)
-endif()
+  if(AP_MESH_DISABLE_STRICT_ALIASING AND NOT MSVC)
+    target_compile_options(${ap_mesh_target} PRIVATE -fno-strict-aliasing)
+  endif()
+endforeach()
 
 # -----------------------------
 # OpenMP
@@ -155,7 +165,9 @@ if(AP_MESH_USE_OPENMP)
   find_package(OpenMP QUIET)
   if(OpenMP_CXX_FOUND)
     target_link_libraries(ap_mesh PRIVATE OpenMP::OpenMP_CXX)
+    target_link_libraries(ap_mesh_engine PUBLIC OpenMP::OpenMP_CXX)
     target_compile_definitions(ap_mesh PRIVATE AP_MESH_HAS_OPENMP=1)
+    target_compile_definitions(ap_mesh_engine PRIVATE AP_MESH_HAS_OPENMP=1)
   else()
     message(WARNING "OpenMP requested but not found. Building without OpenMP.")
   endif()
@@ -170,7 +182,9 @@ if(AP_MESH_USE_MPI)
   #   cmake -S . -B build-mpi -DAP_MESH_USE_MPI=ON -DCMAKE_CXX_COMPILER=mpicxx -DCMAKE_C_COMPILER=mpicc
   find_package(MPI REQUIRED)
   target_link_libraries(ap_mesh PRIVATE MPI::MPI_CXX)
+  target_link_libraries(ap_mesh_engine PUBLIC MPI::MPI_CXX)
   target_compile_definitions(ap_mesh PRIVATE AP_MESH_HAS_MPI=1)
+  target_compile_definitions(ap_mesh_engine PRIVATE AP_MESH_HAS_MPI=1)
 endif()
 
 # -----------------------------
@@ -181,6 +195,7 @@ if(AP_MESH_ENABLE_LTO AND (CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TY
   check_ipo_supported(RESULT ipo_supported OUTPUT ipo_error)
   if(ipo_supported)
     set_property(TARGET ap_mesh PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+    set_property(TARGET ap_mesh_engine PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
   else()
     message(WARNING "IPO/LTO requested but not supported: ${ipo_error}")
   endif()

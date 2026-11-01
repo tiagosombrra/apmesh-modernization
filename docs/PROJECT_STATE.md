@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `4cdeb15393487871542909bef065074bbad158b4` (PR #138).
+Entry main: `68c0402cf0232d688c713504b1863a959a0e0557` (PR #139).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,11 +97,30 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Next single adjustment after terminal observer delivery
+## Active production delivery: serial engine and thin CLI
 
-P3: qualify the complete-process CRT observer/checkpoints with actual clean
-release, deliberate retained-storage and allocation-hook controls before any
-fixed-context campaign. SP-09/10 now have their five bounded MSVC/ASan terminal
+The [serial engine package](evidence/SERIAL_ENGINE.md) replaces the automatic
+CRT-instrument successor. It delivers APMesh::Engine, an independently linkable
+internal static target; a separate configuration/state module; and a five-line
+CLI. Existing consumers stop including main.cpp and share the production engine.
+The three principal targets compile 78 source units instead of 219; this is a
+build-graph count, not a timing benchmark. The 203 global initializers and the
+configuration/CLI bodies retain their exact tokens and order. Legacy global state
+still requires serialized calls. Require the existing exact-head/main regression
+and scientific reference; do not add a separate instrument campaign.
+
+The bounded 2026 milestone is this reusable serial engine/configuration/CLI
+boundary with preserved C++17 behavior. It is a stage 6 prerequisite supporting
+S3-05 caller work, not closure of Stage 3 or the whole modernization roadmap.
+The next production package must define execution-context ownership and its
+caller contract before implementation.
+
+## Retained instrument obligations for closure
+
+Complete-process CRT checkpoints still require actual clean release, deliberate
+retained-storage and allocation-hook controls. Schedule instrument work when it
+blocks a named production delivery or mandatory closure, not as an automatic
+successor to every passing observation. SP-09/10 now have their five bounded MSVC/ASan terminal
 observations; complete-process retained-storage/UB and remaining caller obligations
 are still open. Do not repeat the unchanged terminal contexts for delivery.
 SP-06..08 now pass; earlier observations retain their measured artifact identities.

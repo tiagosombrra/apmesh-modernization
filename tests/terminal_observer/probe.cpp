@@ -1,6 +1,32 @@
-#define main apmesh_uninvoked_cli_main
-#include "../../src/main.cpp"
-#undef main
+#include <algorithm>
+#include "adapter/domain_generation_error.h"
+#include <atomic>
+#include <cctype>
+#include <cstdlib>
+#include <fstream>
+#include <iomanip>
+#include <stdexcept>
+#include <string>
+#include <unordered_map>
+#include <vector>
+#include "data/curve/curve_adaptive_parametric_bezier.h"
+#include "data/curve/curve_adaptive_parametric_hermite.h"
+#include "data/definitions.h"
+#include "data/model.h"
+#include "data/patch/patch_bezier.h"
+#include "data/patch/patch_hermite.h"
+#include "data/vector_adaptive.h"
+#include "data/vertex_adaptive.h"
+#include "generator/generator_adaptive.h"
+#include "input_output/models_3d.h"
+#include "input_output/input_validation.h"
+#include "input_output/patch_reader.h"
+#include "timer/timer.h"
+#include "application/runtime_config.h"
+#include "application/run_application.h"
+
+using apmesh::application::ApplyRuntimeConfig;
+using apmesh::application::LoadRuntimeConfig;
 
 #include <array>
 #include <cstdio>
@@ -87,7 +113,7 @@ int main(int argc, char* argv[]) {
     typed_domain_test::Prepare(std::stoi(argv[3]));
     char config_flag[] = "--config";
     char* forwarded[] = {argv[0], config_flag, argv[2]};
-    const int code = apmesh_uninvoked_cli_main(3, forwarded);
+    const int code = apmesh::application::RunApplication(3, forwarded);
     std::fprintf(stderr, "Typed CLI unwind allocations=%d\n",
                  domain_candidate_test::state.unwind_attempts);
     return code;
