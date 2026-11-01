@@ -54,7 +54,10 @@ exceptions do not promise Generator recovery; logical rejection retains existing
 bounded retry. The fixed subprocess inventory does not cover same-process reuse,
 public mutation or foreign owners, which remain explicit P4 obligations.
 
-Next is P3: qualify full MSVC/ASan and its actual controls, observe natural SP-02
-once and stop expansion at the first failure. Full-entry CRT/UB/leak applicability,
-terminal observer portability and all missing runtime observations remain open.
+P3 now has [one bounded complete-process ASan witness](../evidence/SERIAL_ASAN_SP02.md):
+all 73 native units compiled, actual release/UAF controls worked and natural
+initial-only SP-02 passed once with positive independent boundary coverage.
+The ten statuses stay unchanged. Next are fixed production SP-01 and SP-03..08;
+stop expansion at the first unexpected failure. Full-entry CRT/UB/leak,
+terminal observer portability and missing runtime observations remain open.
 Other packages remain pending; no stage closure or unlimited campaign follows.
