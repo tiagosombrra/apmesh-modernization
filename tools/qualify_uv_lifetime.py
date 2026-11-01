@@ -88,13 +88,16 @@ def qualify(asan, crt, runtime, output):
                 if "cache" in mode:
                     passed = passed and "unchanged=1" in text
             if mode in {"boundary-first-failure", "boundary-append-failure", "boundary-close-failure",
-                        "face-quality-failure", "outer-vertex-failure", "outer-edge-failure",
+                        "outer-vertex-failure", "outer-edge-failure",
                         "template-one-failure", "template-four-failure"}:
                 sites = re.findall(r"registration_failure_sites=[\w-]+:(\d+)/(\d+)", text)
                 passed = passed and len(sites) == 1 and all(
                     int(injected) == int(total) > 0 for injected, total in sites)
                 if mode.startswith("boundary-"):
                     passed = passed and "unchanged=1" in text
+            if mode == "face-quality-failure":
+                passed = passed and "face_quality_nonallocating calls=2 allocations=0 hook_detected=1 unchanged=1" in text
+                passed = passed and "allocation_hook_control=detected" in text
             if mode.startswith("tree-failure-"):
                 sites = re.findall(r"tree_failure_sites=\d+:(\d+)/(\d+)", text)
                 passed = passed and len(sites) == 1 and all(

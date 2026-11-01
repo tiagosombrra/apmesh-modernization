@@ -2,6 +2,74 @@
 
 #include <memory>
 
+namespace {
+// Numerical scratch has no topology, cached owners or observer lifetime.
+struct CoordinatePair {
+  double x;
+  double y;
+};
+
+CoordinatePair CircumcenterCoordinates(Vertex* first, Vertex* second, Vertex* third) {
+  /*static*/ double x1, y1, x2, y2, x3, y3, x, y;
+  /*static*/ double x12PlusY12, x22PlusY22, x32PlusY32;
+  /*static*/ double detNum1, detNum2, detDen, den;
+
+  x1 = first->getX();
+  y1 = first->getY();
+  x2 = second->getX();
+  y2 = second->getY();
+  x3 = third->getX();
+  y3 = third->getY();
+
+  x12PlusY12 = x1 * x1 + y1 * y1;
+  x22PlusY22 = x2 * x2 + y2 * y2;
+  x32PlusY32 = x3 * x3 + y3 * y3;
+
+  detNum1 = x12PlusY12 * y2 + x22PlusY22 * y3 + x32PlusY32 * y1 - x32PlusY32 * y2 -
+            x22PlusY22 * y1 - x12PlusY12 * y3;
+  detNum2 = x12PlusY12 * x3 + x22PlusY22 * x1 + x32PlusY32 * x2 - x32PlusY32 * x1 -
+            x22PlusY22 * x3 - x12PlusY12 * x2;
+  detDen = x1 * y2 + x2 * y3 + x3 * y1 - x3 * y2 - x1 * y3 - x2 * y1;
+  den = 2.0 * detDen;
+
+  x = detNum1 / den;
+  y = detNum2 / den;
+
+  return {x, y};
+}
+
+CoordinatePair IncenterCoordinates(Vertex* first, Vertex* second, Vertex* third) {
+  /*static*/ double a, b, c, sum, x, y;
+
+  a = first->distance(second);
+  b = second->distance(third);
+  c = third->distance(first);
+
+  sum = a + b + c;
+
+  x = (a * third->getX() + b * first->getX() + c * second->getX()) / sum;
+  y = (a * third->getY() + b * first->getY() + c * second->getY()) / sum;
+
+  return {x, y};
+}
+
+double CoordinateDistance(const CoordinatePair& origin, Vertex* vertex) {
+  return sqrt(((vertex->getX()) - origin.x) * ((vertex->getX()) - origin.x) +
+              ((vertex->getY()) - origin.y) * ((vertex->getY()) - origin.y));
+}
+
+double StraightCoordinateDistance(const CoordinatePair& point, Vertex* first, Vertex* second) {
+  const double vector_x = second->getX() - first->getX();
+  const double vector_y = second->getY() - first->getY();
+  return 2.0 *
+         fabs((point.x * first->getY() - first->getX() * point.y + first->getX() * second->getY() -
+               second->getX() * first->getY() + second->getX() * point.y -
+               point.x * second->getY()) /
+              2.0) /
+         sqrt(vector_x * vector_x + vector_y * vector_y);
+}
+} // namespace
+
 Face::Face(Vertex *v1, Vertex *v2, Vertex *v3, long int id) : Shape(id) {
   mid = nullptr;
 
@@ -94,51 +162,13 @@ Vertex *Face::getV3() { return v[2]; }
 Vertex *Face::getMid() { return mid; }
 
 Vertex *Face::circumcenter() {
-  /*static*/ double x1, y1, x2, y2, x3, y3, x, y;
-  /*static*/ double x12PlusY12, x22PlusY22, x32PlusY32;
-  /*static*/ double detNum1, detNum2, detDen, den;
-
-  x1 = v[0]->getX();
-  y1 = v[0]->getY();
-  x2 = v[1]->getX();
-  y2 = v[1]->getY();
-  x3 = v[2]->getX();
-  y3 = v[2]->getY();
-
-  x12PlusY12 = x1 * x1 + y1 * y1;
-  x22PlusY22 = x2 * x2 + y2 * y2;
-  x32PlusY32 = x3 * x3 + y3 * y3;
-
-  detNum1 = x12PlusY12 * y2 + x22PlusY22 * y3 + x32PlusY32 * y1 -
-            x32PlusY32 * y2 - x22PlusY22 * y1 - x12PlusY12 * y3;
-  detNum2 = x12PlusY12 * x3 + x22PlusY22 * x1 + x32PlusY32 * x2 -
-            x32PlusY32 * x1 - x22PlusY22 * x3 - x12PlusY12 * x2;
-  detDen = x1 * y2 + x2 * y3 + x3 * y1 - x3 * y2 - x1 * y3 - x2 * y1;
-  den = 2.0 * detDen;
-
-  x = detNum1 / den;
-  y = detNum2 / den;
-
-  Vertex *center = new Vertex(x, y);
-
-  return center;
+  const auto center = CircumcenterCoordinates(v[0], v[1], v[2]);
+  return new Vertex(center.x, center.y);
 }
 
 Vertex *Face::incenter() {
-  /*static*/ double a, b, c, sum, x, y;
-
-  a = v[0]->distance(v[1]);
-  b = v[1]->distance(v[2]);
-  c = v[2]->distance(v[0]);
-
-  sum = a + b + c;
-
-  x = (a * v[2]->getX() + b * v[0]->getX() + c * v[1]->getX()) / sum;
-  y = (a * v[2]->getY() + b * v[0]->getY() + c * v[1]->getY()) / sum;
-
-  Vertex *center = new Vertex(x, y);
-
-  return center;
+  const auto center = IncenterCoordinates(v[0], v[1], v[2]);
+  return new Vertex(center.x, center.y);
 }
 
 double Face::surface() { return v[0]->surface(v[1], v[2]); }
@@ -220,52 +250,35 @@ double Face::gama() {
 
 double Face::quality() {
   /*static*/ double rInsc, rCirc, d;
-  /*static*/ Edge e;
-  struct EndpointScope {
-    Edge& edge;
-    ~EndpointScope() { edge.DetachVertices(); }
-  } endpoints{e};
-
   rInsc = DBL_MAX;
   rCirc = DBL_MIN;
 
-  std::unique_ptr<Vertex> insc(incenter());
-  std::unique_ptr<Vertex> circ(circumcenter());
+  const auto insc = IncenterCoordinates(v[0], v[1], v[2]);
+  const auto circ = CircumcenterCoordinates(v[0], v[1], v[2]);
 
-  e.setVertices(v[0], v[1]);
-
-  d = e.straightDistance(insc.get());
+  d = StraightCoordinateDistance(insc, v[0], v[1]);
 
   rInsc = (d < rInsc) ? d : rInsc;
 
-  e.setVertices(v[1], v[2]);
-
-  d = e.straightDistance(insc.get());
+  d = StraightCoordinateDistance(insc, v[1], v[2]);
 
   rInsc = (d < rInsc) ? d : rInsc;
 
-  e.setVertices(v[2], v[0]);
-
-  d = e.straightDistance(insc.get());
+  d = StraightCoordinateDistance(insc, v[2], v[0]);
 
   rInsc = (d < rInsc) ? d : rInsc;
 
-  d = circ->distance(v[0]);
+  d = CoordinateDistance(circ, v[0]);
 
   rCirc = (d > rCirc) ? d : rCirc;
 
-  d = circ->distance(v[1]);
+  d = CoordinateDistance(circ, v[1]);
 
   rCirc = (d > rCirc) ? d : rCirc;
 
-  d = circ->distance(v[2]);
+  d = CoordinateDistance(circ, v[2]);
 
   rCirc = (d > rCirc) ? d : rCirc;
-
-  e.setVertices(nullptr, nullptr);
-
-  insc.reset();
-  circ.reset();
 
   return 2.0 * rInsc / rCirc;
 }

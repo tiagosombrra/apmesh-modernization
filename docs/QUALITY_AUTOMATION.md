@@ -1,5 +1,24 @@
 # Local quality automation
 
+## Allocation-free face quality
+
+The [quality scratch correction](evidence/FACE_QUALITY_SCRATCH.md) requires paired
+original/candidate GCC, MSVC/ASan and checked Debug values: 846 rows and 4,230
+exact quality/public-center scalar bits per profile, preserved caller graph,
+actual zero-allocation/denial calls and independent real hook detections. The
+original must fail the zero-allocation contract. The legacy CRT quality scenario
+requires two real calls plus its independent hook marker and zero retention;
+zero-of-zero failure sweeps are not qualification. Other denial gates stay fixed.
+
+Require exact-head/main 75 CTest entries (zero failures/skips) with 380 nested
+Python controls, frozen GCC Eistute/Book nine states/45 exact artifacts/123
+boundary comparisons, scoped analysis/formatting, source/input/contracts/inventory,
+whitespace and staged/remote checks. Retain original timeout, diagnosis and failed
+reference-path preparation. Reuse the single successful 60-second-capped ASan
+SP-05 by source/tool/artifact identity; do not expand the ASan campaign or repeat
+that witness for unchanged documentation. Allocation counts/timing change; no
+scientific criterion, public center ownership or stage closure changes.
+
 ## First complete serial ASan witness
 
 The [bounded P3 checkpoint](evidence/SERIAL_ASAN_SP02.md) records the actual

@@ -1,0 +1,260 @@
+{
+  "schema": 1,
+  "classification": "engineering-only allocation/performance correction",
+  "base": "31862ed72020038605bd677cb2b3e05c0ebf4050",
+  "production_scope": "one file: src/crab_mesh/aft/face.cpp; public ABI and owning center APIs unchanged",
+  "source_proof": {
+    "status": "bounded_production_source_and_arithmetic_preserved",
+    "production_files": 1,
+    "center_arithmetic_token_sequences_equal": true,
+    "unrelated_face_tokens_equal_after_reversing_reviewed_changes": true,
+    "other_production_and_66_raw_files_unchanged": true,
+    "reference_allocations_per_quality": {
+      "gcc": [
+        12
+      ],
+      "asan": [
+        24
+      ],
+      "debug": [
+        36
+      ]
+    },
+    "candidate_allocations_per_quality": 0,
+    "profiles": 3,
+    "rows_compared_each": 846,
+    "scalar_bits_compared_each": 4230,
+    "source_sha256": "6614261ef9a5b8d77e01570c4bb439d97fc6ae81128857064355f4c4e77897ad",
+    "reference_source_sha256": "5affe37a06f0d44ed584f1950da6f51901fa65e67521fd9f1fab0c684e8973d4"
+  },
+  "profiles": {
+    "gcc": {
+      "status": "exact_bits_and_nonallocating_quality_passed",
+      "profile": "gcc",
+      "triangles": 141,
+      "permutations": 6,
+      "rows_compared": 846,
+      "compared_scalars": 4230,
+      "quality_and_public_center_bits_equal": true,
+      "candidate_quality_allocations": 0,
+      "denial_calls": 846,
+      "independent_hook_denial": 1,
+      "original_nonallocation_contract_rejected": true,
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\gcc\\face_quality_reference.exe",
+            "reference"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "seconds": 0.1683666999451816
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\gcc\\face_quality_probe.exe",
+            "snapshot"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "seconds": 0.12266890006139874
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\gcc\\face_quality_reference.exe",
+            "snapshot"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "seconds": 0.014118900056928396
+        }
+      ]
+    },
+    "asan": {
+      "status": "exact_bits_and_nonallocating_quality_passed",
+      "profile": "asan",
+      "triangles": 141,
+      "permutations": 6,
+      "rows_compared": 846,
+      "compared_scalars": 4230,
+      "quality_and_public_center_bits_equal": true,
+      "candidate_quality_allocations": 0,
+      "denial_calls": 846,
+      "independent_hook_denial": 1,
+      "original_nonallocation_contract_rejected": true,
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\asan\\RelWithDebInfo\\face_quality_reference.exe",
+            "reference"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "seconds": 0.23277080012485385
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\asan\\RelWithDebInfo\\face_quality_probe.exe",
+            "snapshot"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "seconds": 0.13548730011098087
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\asan\\RelWithDebInfo\\face_quality_reference.exe",
+            "snapshot"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "seconds": 0.059630899922922254
+        }
+      ]
+    },
+    "debug": {
+      "status": "exact_bits_and_nonallocating_quality_passed",
+      "profile": "debug",
+      "triangles": 141,
+      "permutations": 6,
+      "rows_compared": 846,
+      "compared_scalars": 4230,
+      "quality_and_public_center_bits_equal": true,
+      "candidate_quality_allocations": 0,
+      "denial_calls": 846,
+      "independent_hook_denial": 1,
+      "original_nonallocation_contract_rejected": true,
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\debug\\Debug\\face_quality_reference.exe",
+            "reference"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "seconds": 0.15885819983668625
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\debug\\Debug\\face_quality_probe.exe",
+            "snapshot"
+          ],
+          "exit": 0,
+          "expected_exit": 0,
+          "seconds": 0.06924390001222491
+        },
+        {
+          "argv": [
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\debug\\Debug\\face_quality_reference.exe",
+            "snapshot"
+          ],
+          "exit": 1,
+          "expected_exit": 1,
+          "seconds": 0.010743999853730202
+        }
+      ]
+    }
+  },
+  "legacy_crt_gate": "two actual zero-allocation quality calls, independent hook detection and zero retained blocks/bytes; retained again in exact delivery logs",
+  "scientific_policy": "center/distance formulas, ordered comparisons, final ratio, selection/front/template/boundary/adaptation/acceptance/stopping policies unchanged",
+  "allocation_semantics": "quality no longer constructs heap Vertex/Edge scratch or throws from those removed allocations; timing/counts change; no new noexcept/guard/clamp",
+  "candidate_sp05": {
+    "status": "passed",
+    "command": [
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\application\\bin\\RelWithDebInfo\\ap_mesh.exe",
+      "--config",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\sp05\\article.conf"
+    ],
+    "application_sha256": "c8a33d26d8f9766a7f68a97bcbeb740974ca919c31841cf57e3bbbedd94a1bc5",
+    "input_model_sha256": "c65a0a45f5f67b90e43183965e63d0e3b193bac862dab7ec15d53f37206983ec",
+    "config_sha256": "9f2a0c303b34b788f39cf78bcbe0fce07baa257e705295eae4f432ff9f822dec",
+    "case": "SP-05",
+    "launches": 1,
+    "cap_seconds": 60,
+    "asan_options": "halt_on_error=1",
+    "native_units": 73,
+    "started_utc": "2026-11-01T13:58:55Z",
+    "exit_code": 0,
+    "wall_seconds": 13.048433100106195,
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3
+    ],
+    "max_retry": 1,
+    "boundary_comparisons": 8,
+    "stderr_bytes": 0,
+    "finished_utc": "2026-11-01T13:59:08Z"
+  },
+  "original_prefix_comparison": {
+    "status": "original_three_state_prefix_preserved",
+    "exact_artifacts": 16,
+    "files": [
+      "control_n.process__passo_0_qualite_0_rank_-1.log",
+      "control_n.process__passo_1_qualite_1_rank_-1.log",
+      "control_n.process__passo_2_qualite_2_rank_-1.log",
+      "control_passo_0_acceptance_accepted.log",
+      "control_passo_0_incidences.json",
+      "control_passo_0_malha_0.obj",
+      "control_passo_1_acceptance_accepted.log",
+      "control_passo_1_curve_adaptation_accepted.csv",
+      "control_passo_1_incidences.json",
+      "control_passo_1_malha_1.obj",
+      "control_passo_1_patch_adaptation_accepted.csv",
+      "control_passo_2_acceptance_rejected.log",
+      "control_passo_2_curve_adaptation_rejected.csv",
+      "control_passo_2_incidences.json",
+      "control_passo_2_malha_2.obj",
+      "control_passo_2_patch_adaptation_rejected.csv"
+    ],
+    "metrics_rows": 3
+  },
+  "preserved_timeout_and_sampling": {
+    "original_application_sha256": "cc1b16974c5ecf334afe61f3a4aba144a7faab09544b4d3696facdbda49c827a",
+    "diagnosis_seal_sha256": "1005f81dc9c7f65864348ea91770ea7a1d3c93e6e110fc24c1efe8b834e50ffe",
+    "failed_campaign_seal_sha256": "7bae768d675ca0971487d0a255c32c902f8ccd93a75d619cd1ac8443b850c4bc",
+    "original_timeout_seconds": 60,
+    "sampled_cpu_seconds": 59.09375,
+    "quality_in_stacks": "5 of 6; sparse observation, not a precise CPU percentage"
+  },
+  "scoped_analysis": {
+    "argv": [
+      "C:/msys64/ucrt64/bin/clang-tidy.exe",
+      "-p",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17",
+      "-line-filter=[{\"name\": \"C:/Users/tiago/Documents/dev/research/apmesh-modernization/src/crab_mesh/aft/face.cpp\", \"lines\": [[5, 72], [165, 166], [170, 171], [256, 257], [259, 259], [263, 263], [267, 267], [271, 271], [275, 275], [279, 279]]}, {\"name\": \"C:/Users/tiago/Documents/dev/research/apmesh-modernization/tests/uv_memory/probe.cpp\", \"lines\": [[993, 1002], [1004, 1005]]}, {\"name\": \"C:/Users/tiago/Documents/dev/research/apmesh-modernization/tests/face_quality/allocation_control.cpp\", \"lines\": [[1, 1000]]}, {\"name\": \"C:/Users/tiago/Documents/dev/research/apmesh-modernization/tests/face_quality/probe.cpp\", \"lines\": [[1, 1000]]}]",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\src\\crab_mesh\\aft\\face.cpp",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\tests\\uv_memory\\probe.cpp",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\tests\\face_quality\\allocation_control.cpp",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\tests\\face_quality\\probe.cpp"
+    ],
+    "exit": 0,
+    "scope": "changed production/legacy fixture lines and full new focused test sources; not whole-program cleanliness"
+  },
+  "reference_preparation_refusal": {
+    "status": "reference_preparation_build_refused",
+    "cause": "The immutable archived face.cpp keeps its original relative include. Its relocated directory did not resolve that header.",
+    "correction": "Add the original source directory to the focused target include search. The archived source bytes and resolved production header remain unchanged.",
+    "preserved_log": "gcc/build.log",
+    "native_equivalence_or_SP05_launches_before_correction": 0
+  },
+  "required_exact_delivery": {
+    "ctest": 75,
+    "nested_python_controls": 380,
+    "failures_skips": 0,
+    "scientific_states": 9,
+    "exact_scientific_artifacts": 45,
+    "boundary_comparisons": 123,
+    "source_input_contract_inventory_format_analysis_remote_and_staged_gates": true,
+    "sp05_reused_by_exact_production_identity": true
+  },
+  "raw_article_files_preserved": 66,
+  "asan_campaign_expansion": false,
+  "stage3": "open",
+  "remaining": "SP-06..08 remain unrun; directed observer portability, invalidated caller observations and CRT/LSan/UBSan/parallel gates retain their own obligations",
+  "local_records": "build/face-quality-scratch",
+  "delivery": "exact head/main outcomes and identities are bound by PR and local integration seal"
+}

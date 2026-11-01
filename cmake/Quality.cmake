@@ -64,6 +64,10 @@ if(BUILD_TESTING)
   set_tests_properties(application.mesh_adoption_contracts
     PROPERTIES LABELS "application;lifecycle;required-gate" TIMEOUT 30)
   add_subdirectory(tests/uv_memory)
+  add_subdirectory(tests/face_quality)
+  add_test(NAME application.face_quality_scratch COMMAND face_quality_probe snapshot)
+  set_tests_properties(application.face_quality_scratch
+    PROPERTIES LABELS "application;portability;required-gate" TIMEOUT 30)
   add_subdirectory(tests/domain_cache_memory)
   add_subdirectory(tests/front_angle_memory)
   add_subdirectory(tests/front_face_memory)

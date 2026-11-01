@@ -990,19 +990,19 @@ void boundary_registration_failures(int mode) {
 void face_quality_failures() {
   Vertex a(0, 0), b(1, 0), c(0, 1);
   Face face(&a, &b, &c);
-  const int total = measure_allocations([&] { face.quality(); });
-  require(total > 0, "quality sweep has positive temporary allocation coverage");
-  std::printf("registration_measured=face-quality:%d\n", total);
-  for (int ordinal = 0; ordinal < total; ++ordinal) {
-    std::printf("registration_inject=quality:%d\n", ordinal);
-    require(inject_allocation_failure(ordinal, [&] { face.quality(); }),
-            "quality allocation failure reaches caller");
-    registration_check(face.getV1() == &a && face.getV2() == &b && face.getV3() == &c &&
-                           a.getX() == 0 && b.getX() == 1 && c.getY() == 1,
-                       "quality failure retains caller endpoint geometry");
-  }
+  double quality = 0.0;
+  const int total = measure_allocations([&] { quality = face.quality(); });
+  require(total == 0, "quality uses no temporary heap allocation");
+  double denied_quality = 0.0;
+  require(!inject_allocation_failure(0, [&] { denied_quality = face.quality(); }) &&
+              allocation_attempts == 0 && denied_allocations == 0,
+          "quality completes with the next allocation denied");
+  registration_check(quality == denied_quality && face.getV1() == &a && face.getV2() == &b &&
+                         face.getV3() == &c && a.getX() == 0 && b.getX() == 1 && c.getY() == 1,
+                     "nonallocating quality retains value and caller endpoint geometry");
   face.DetachVertices();
-  std::printf("registration_failure_sites=face-quality:%d/%d\n", total, total);
+  allocation_hook_control();
+  std::puts("face_quality_nonallocating calls=2 allocations=0 hook_detected=1 unchanged=1");
 }
 
 std::unique_ptr<TransferFront> prepare_registration_stage(int stage) {

@@ -57,7 +57,10 @@ public mutation or foreign owners, which remain explicit P4 obligations.
 P3 now has [one bounded complete-process ASan witness](../evidence/SERIAL_ASAN_SP02.md):
 all 73 native units compiled, actual release/UAF controls worked and natural
 initial-only SP-02 passed once with positive independent boundary coverage.
-The ten statuses stay unchanged. Next are fixed production SP-01 and SP-03..08;
-stop expansion at the first unexpected failure. Full-entry CRT/UB/leak,
+The ten statuses stay unchanged. The following SP-05 timeout was diagnosed and
+its [quality scratch hot path corrected](../evidence/FACE_QUALITY_SCRATCH.md),
+with exact paired scalar bits and one completed rejection/retry witness under
+the same cap. Require its exact delivery gates before remaining/invalidation-
+relevant cases; SP-06..08 remain unrun. Stop at first unexpected failure. CRT/UB/leak,
 terminal observer portability and missing runtime observations remain open.
 Other packages remain pending; no stage closure or unlimited campaign follows.

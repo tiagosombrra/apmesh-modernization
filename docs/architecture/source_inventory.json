@@ -393,7 +393,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "bcbbc76ec2b4eb1d5df0f8117962a8b9faa1e27055e03f793a82c1a7b52a46d5"
+      "sha256": "b4d72ea109a85cee8b6366e9d8594750ec7203993b63abc3b379cc73bbb7d407"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
@@ -406,6 +406,10 @@
     {
       "path": "tests/face_adoption_memory/CMakeLists.txt",
       "sha256": "24dc1943edca2b942b6d6ecf09007036b7fbc57294b48ab365e0a1a868bae46b"
+    },
+    {
+      "path": "tests/face_quality/CMakeLists.txt",
+      "sha256": "bd6f8538fccba339dcb8bd974b985ce6f1cfa4cfa566c0694961f40b7fa2f2e3"
     },
     {
       "path": "tests/first_edge_memory/CMakeLists.txt",
@@ -3707,8 +3711,8 @@
       "path": "src/crab_mesh/aft/face.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "5affe37a06f0d44ed584f1950da6f51901fa65e67521fd9f1fab0c684e8973d4",
-      "bytes": 10174,
+      "sha256": "6614261ef9a5b8d77e01570c4bb439d97fc6ae81128857064355f4c4e77897ad",
+      "bytes": 11233,
       "includes": [
         {
           "line": 1,
