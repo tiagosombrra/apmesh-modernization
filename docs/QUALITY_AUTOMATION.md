@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Fixed serial execution ledger
+
+P2's [execution ledger](architecture/SERIAL_EXECUTION_LEDGER.md) and machine case
+inventory require unchanged non-documentation bytes, inputs, application hashes,
+P1 scientific/instrument seals, case/recipe/source replay, whitespace,
+architecture/contracts and staged/remote identity. Require the existing 74 CTest
+entries with zero failures/skips and 380 nested Python controls on exact head and
+main. Do not rebuild unchanged applications, rerun article/instrument campaigns,
+add native targets or treat planned observations as measured for this specification.
+
+P3 starts with complete MSVC/ASan/control qualification and one natural SP-02
+case, then a first-failure stop/classification. The fixed ten groups and three
+instrument profiles are not a Cartesian-product run authorization before tool
+qualification. Preserve every missing full-entry/terminal-observer/UB/leak gate;
+Debug success and repeated subprocesses establish neither leak accounting nor
+same-Generator reuse. The finite remaining assignments do not waive Stage 3 gates.
+
 ## Complete serial MSVC C++17 build prerequisite
 
 `windows-msvc-serial` configures/builds the real complete Debug ap_mesh target.

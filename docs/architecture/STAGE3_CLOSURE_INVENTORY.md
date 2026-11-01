@@ -47,9 +47,14 @@ admissible native history or a named required closure observation with a fixed
 question, finite case inventory, output and stop decision. Source predicates,
 zero reach and excluded events cannot qualify this path. Preserve all records.
 
-P1 implements the [complete serial MSVC build prerequisite](../evidence/MSVC_SERIAL_CPP17_BUILD.md)
-for S3-09. Its exact-head/main build/reference gates do not close the complete-
-process instrument row. Next single implementation is P2 in
-[REFACTOR_SEQUENCE.md](REFACTOR_SEQUENCE.md), the supported execution/caller
-ledger before P3 instrumentation. Other packages remain pending; the ledger
-does not authorize concurrent or unlimited campaigns.
+P1 delivered the [complete serial MSVC build prerequisite](../evidence/MSVC_SERIAL_CPP17_BUILD.md)
+for S3-09. P2 fixes the [serial execution/caller ledger](SERIAL_EXECUTION_LEDGER.md)
+and every remaining assignment without changing the ten statuses. Terminal
+exceptions do not promise Generator recovery; logical rejection retains existing
+bounded retry. The fixed subprocess inventory does not cover same-process reuse,
+public mutation or foreign owners, which remain explicit P4 obligations.
+
+Next is P3: qualify full MSVC/ASan and its actual controls, observe natural SP-02
+once and stop expansion at the first failure. Full-entry CRT/UB/leak applicability,
+terminal observer portability and all missing runtime observations remain open.
+Other packages remain pending; no stage closure or unlimited campaign follows.
