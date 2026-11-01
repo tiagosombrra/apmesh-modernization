@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Portable terminal observer requalification
+
+The [qualified terminal observer](evidence/SERIAL_ASAN_TERMINAL_REQUALIFICATION.md)
+requires actual external SubMesh allocation, one uncaught exception/attempt/denial,
+the unchanged payload/CLI/library oracles and all five fixed contexts. Verify
+/fsanitize=address, /EHsc and /we4530 on all 74 actual compiler groups. Preserve
+both failed qualifications and original source/fixture/control identities.
+Require exact-head/main 75 CTest entries with zero failures/skips and 385 nested
+Python controls, scoped read-only analysis, formatting/whitespace, contracts/
+inventory, source/input/runtime/prior-seal and remote/staged checks. Reuse the
+single successful five-context measurement and unchanged nine-state GCC report
+(45 exact artifacts, 123 boundary comparisons); do not rebuild or repeat native
+campaigns for delivery. Earlier natural-process flags do not qualify exception
+unwinding. Other instruments and Stage 3 closure remain open.
+
 ## Remaining fixed serial ASan production cases
 
 The [SP-06..08 checkpoint](evidence/SERIAL_ASAN_REMAINING.md) reuses the qualified

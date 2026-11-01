@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.20)
+project(apmesh_terminal_observer LANGUAGES CXX)
+find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
+get_filename_component(terminal_root "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+set(terminal_generated "${CMAKE_CURRENT_BINARY_DIR}/generated")
+execute_process(COMMAND "${Python3_EXECUTABLE}" "${terminal_root}/tools/prepare_terminal_observer.py"
+  --root "${terminal_root}" --output "${terminal_generated}"
+  RESULT_VARIABLE terminal_preparation)
+if(NOT terminal_preparation EQUAL 0)
+  message(FATAL_ERROR "Terminal observer preparation failed")
+endif()
+file(GLOB_RECURSE terminal_sources CONFIGURE_DEPENDS "${terminal_root}/src/*.cpp")
+list(REMOVE_ITEM terminal_sources "${terminal_root}/src/main.cpp" "${terminal_root}/src/adapter/adapter.cpp")
+add_executable(terminal_observer_probe probe.cpp allocation_observer.cpp
+  "${terminal_generated}/adapter.cpp" ${terminal_sources})
+target_compile_features(terminal_observer_probe PRIVATE cxx_std_17)
+target_include_directories(terminal_observer_probe PRIVATE "${terminal_generated}"
+  "${CMAKE_CURRENT_SOURCE_DIR}" "${terminal_root}/include" "${terminal_root}/src/adapter")
+if(MSVC)
+  target_compile_options(terminal_observer_probe PRIVATE /W4 /permissive- /FS /EHsc /we4530)
+endif()
+if(MINGW)
+  target_compile_options(terminal_observer_probe PRIVATE -fno-strict-aliasing)
+  target_link_options(terminal_observer_probe PRIVATE -static -static-libgcc -static-libstdc++)
+endif()
