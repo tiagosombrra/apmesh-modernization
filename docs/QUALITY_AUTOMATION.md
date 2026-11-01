@@ -1,5 +1,21 @@
 # Local quality automation
 
+## First complete serial ASan witness
+
+The [bounded P3 checkpoint](evidence/SERIAL_ASAN_SP02.md) records the actual
+73-unit MSVC/ASan build, working release/expired-access controls and one natural
+initial-only SP-02 process with positive independent boundary comparisons.
+Documentation head/main must preserve non-documentation/source/input/runtime/
+application/control identities and the prior P1/P2 seals, replay actual compiler
+commands and controls/results, and pass whitespace, inventory/contracts, staged/
+remote checks and existing 74 CTest/380 nested Python controls without skips.
+Reuse the single native ASan observation by identity; do not rebuild the unchanged
+target or repeat SP-02 for documentation. Control source snapshots are data in
+the compact JSON evidence, not a new central target or application mode.
+Remaining production cases, directed observer portability, CRT/LSan/UBSan and
+parallel coverage stay open. An expected UAF control is detection evidence;
+only an unexpected failure stops expansion. No full-process leak claim follows.
+
 ## Fixed serial execution ledger
 
 P2's [execution ledger](architecture/SERIAL_EXECUTION_LEDGER.md) and machine case

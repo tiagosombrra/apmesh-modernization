@@ -1,0 +1,263 @@
+{
+  "schema": 1,
+  "classification": "engineering-only bounded complete serial ASan observation",
+  "observed_revision": "c44f1860916ac10f914a3a179354535b4dc55ce6",
+  "observed_tree": "a2dc3d3b79d446ed84c416a94070ee61938943c3",
+  "status": "full target and instrument controls passed; one natural SP-02 passed; Stage 3 open",
+  "profile": {
+    "name": "W-ASAN",
+    "compiler": "MSVC 14.44.35207 x64",
+    "language": "C++17",
+    "configuration": "RelWithDebInfo",
+    "iterator_level": 0,
+    "asan_options": "halt_on_error=1",
+    "native_translation_units": 73,
+    "actual_instrumented_compiler_command_groups": 73,
+    "source_units_excluded": 0,
+    "mpi": false,
+    "openmp": false,
+    "lto": false,
+    "production_changes": false,
+    "fixture_changes": false,
+    "runtime": {
+      "path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\clang_rt.asan_dynamic-x86_64.dll",
+      "sha256": "3aa742521e8cbd23252f0545aa51d5a15624a3e4430fbe2f81567afaeb3fc59b"
+    },
+    "tool_files_sha256": {
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe": "fe251ef50a1545b1b0835ee17b1e785459712b38d79e45b5c1d3d28970a36619",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\c2.dll": "b057a18570f712ffb535e227825a291706620f3337e5b13d896d6586fb6b3cec",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\clang_rt.asan_dynamic-x86_64.dll": "3aa742521e8cbd23252f0545aa51d5a15624a3e4430fbe2f81567afaeb3fc59b",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\clang_rt.asan_dynamic-x86_64.pdb": "3546875a78318e588d51210b86a93341c9dce9548bbd31ff7699387c69c7cfa6",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\asan_ignorelist.txt": "c4b3504af4ea3a3ba93e5cb8ec6ae52bba11beca1ea784dc0a977425d79760b3"
+    },
+    "linker_note": "LNK4300 disables incremental linking for ASan metadata; no compiler/linker failure"
+  },
+  "artifacts": {
+    "application": "build/p3-msvc-asan-sp02/application/bin/RelWithDebInfo/ap_mesh.exe",
+    "application_sha256": "cc1b16974c5ecf334afe61f3a4aba144a7faab09544b4d3696facdbda49c827a",
+    "control_sha256": "53bb1eafac19f20601ded4599ab09403cfb1041b4ddff2bce86e6923c6ba1483",
+    "actual_compile_commands_sha256": "45b558071f6408b95c1d60ed97a6af4fd6a9116df3f096717a07d91a1583bee8",
+    "tracked_source_manifest_sha256": "1dba0240c1a5ef1fae34e863659f222210bb01db2382ec81a4ecb7dcb2bc566c",
+    "local_raw_report_sha256": "ed50ed6612225d05723fd47895ced9496dbf1b2379943ea3c225154242a609d0"
+  },
+  "controls": {
+    "positive": {
+      "exit": 0,
+      "live_shadow_unpoisoned": true,
+      "post_delete_shadow_poisoned": true,
+      "release_complete": true,
+      "log_sha256": "f293228fc46509b5e80867a180542afc69efd3974ea5546ab263a0df3e1c2d1f"
+    },
+    "negative": {
+      "exit": 1,
+      "expected": "actual heap-use-after-free read in ReadCell after delete[]",
+      "detected": true,
+      "allocation_free_and_read_stacks_present": true,
+      "log_sha256": "527c497710b833a4b9c3854168509c84404325381780eba2a807d7b166ad647b"
+    },
+    "source_snapshots": {
+      "CMakeLists.txt": {
+        "sha256": "9faf00feccbef42557503c6d4c9fbd171b70a766374f56e7084bdec140486b6d",
+        "content": "cmake_minimum_required(VERSION 3.21)\nproject(serial_asan_instrument_controls LANGUAGES CXX)\nadd_executable(asan_instrument_control control.cpp read_cell.cpp)\nset_target_properties(asan_instrument_control PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS OFF)\ntarget_compile_options(asan_instrument_control PRIVATE /W4 /permissive-)\n"
+      },
+      "control.cpp": {
+        "sha256": "90b93f62cb934e544d55e80b791048b73ff3bfc65ef3269328f9e4156efb8fd7",
+        "content": "#include <sanitizer/asan_interface.h>\n#include <cstddef>\n#include <cstdio>\n#include <memory>\n#include <string>\n\nint ReadCell(const int*, std::size_t);\n\nint main(int argc, char** argv) {\n  static_assert(_MSVC_LANG == 201703L);\n  if (argc != 2)\n    return 2;\n  const std::string mode = argv[1];\n  if (mode != \"release\" && mode != \"expired-access\")\n    return 2;\n  auto cells = std::unique_ptr<int[]>(new int[4]);\n  cells[1] = 47;\n  int* observer = cells.get();\n  if (__asan_address_is_poisoned(observer) != 0 || ReadCell(observer, 1) != 47)\n    return 3;\n  cells.reset();\n  if (__asan_address_is_poisoned(observer) == 0)\n    return 4;\n  std::printf(\"asan_control mode=%s language=%ld iterator=%d live=1 retired=1\\n\",\n              mode.c_str(), static_cast<long>(_MSVC_LANG), _ITERATOR_DEBUG_LEVEL);\n  std::fflush(stdout);\n  if (mode == \"expired-access\") {\n    // Deliberately invalid: the matching instrument must report this actual read.\n    volatile int expired = ReadCell(observer, 1);\n    return expired == 47 ? 5 : 6;\n  }\n  std::puts(\"asan_control release_complete=1\");\n  return 0;\n}\n"
+      },
+      "read_cell.cpp": {
+        "sha256": "035f3d65001e7c7b8c2a8e44f3179ac0caaa5a07241fcfeaebcde8b7b865ffcc",
+        "content": "#include <cstddef>\n__declspec(noinline) int ReadCell(const int* cells, std::size_t position) {\n  return cells[position];\n}\n"
+      }
+    },
+    "source_snapshots_note": "Exact compiled control sources as data; restore these files into a standalone source directory to reproduce. These are instrument controls, not scientific fixtures or new production modes."
+  },
+  "sp02": {
+    "case": "SP-02",
+    "launches": 1,
+    "failure_injection": false,
+    "native_selection": true,
+    "input_model_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444",
+    "function": "tests/boundary_orientation_case.py:run_control",
+    "arguments": {
+      "name": "aligned",
+      "reverse": false,
+      "sheets": 2
+    },
+    "command": [
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\application\\bin\\RelWithDebInfo\\ap_mesh.exe",
+      "--config",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\aligned\\article.conf"
+    ],
+    "exit": 0,
+    "stdout_sha256": "fe99f497ceb1892c27e50c0fb3a830a440662ad20ab0b4409c14dd0dd5a6b2eb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "status": "passed",
+    "accepted_steps": [
+      0
+    ],
+    "rejected_steps": [],
+    "boundary": {
+      "status": "passed",
+      "step": 0,
+      "patches": 2,
+      "incidences": 8,
+      "curve_groups": 7,
+      "shared_groups": 1,
+      "shared_incidences": 2,
+      "compared_incidences": 1,
+      "nonmanifold_groups": 0,
+      "max_curve_incidence": 2,
+      "reversed_incidences": 2,
+      "boundary_segments": 8,
+      "reversed_shared_incidences": 0,
+      "mixed_orientation_groups": 0,
+      "node_incidences": 10,
+      "triangles": 8,
+      "max_curve_error": 0.0,
+      "max_shared_gap": 0.0,
+      "parameter_roundtrip_budget": 8.881784197001252e-16,
+      "evaluation_roundoff_factor": 1.1368683772161603e-13,
+      "issues": {},
+      "examples": [],
+      "snapshot_sha256": "6a7175d570caf33a75c2e342361ec9ac9b0d21a770f29b8f907b48331b7254ac",
+      "input_model_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444"
+    },
+    "coverage": "initial accepted step 0 only; no adaptive rejection/retry witness; no ASan diagnostic on this process",
+    "independent_verifier": "verify_run(require_boundary=True): physical/parametric metrics, analytic mapping and positive shared-boundary comparison"
+  },
+  "observed_commands": [
+    {
+      "argv": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\application",
+        "-G",
+        "Visual Studio 17 2022",
+        "-A",
+        "x64",
+        "-DCMAKE_CXX_STANDARD=17",
+        "-DBUILD_TESTING=OFF",
+        "-DAP_MESH_USE_MPI=OFF",
+        "-DAP_MESH_USE_OPENMP=OFF",
+        "-DAP_MESH_ENABLE_LTO=OFF",
+        "-DCMAKE_CXX_FLAGS=/fsanitize=address"
+      ],
+      "exit": 0,
+      "log": "configure-application.log",
+      "sha256": "948a7aab10cb12447d9e0dc13a14b6c829cc0e64454b9362ec675e066dc02941",
+      "seconds": 3.797201600158587
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\application",
+        "--target",
+        "ap_mesh",
+        "--config",
+        "RelWithDebInfo",
+        "--parallel",
+        "2"
+      ],
+      "exit": 0,
+      "log": "build-application.log",
+      "sha256": "c585e0b2b946c67428e37ca0af8f4e05a708eb69abfae78ff3e38b52bfd2fe51",
+      "seconds": 114.20288610015996
+    },
+    {
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\dumpbin.exe",
+        "/dependents",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\application\\bin\\RelWithDebInfo\\ap_mesh.exe"
+      ],
+      "exit": 0,
+      "log": "application-dependencies.log",
+      "sha256": "685512b3c3c209b8dcc03f7465b71ec40a42c0e19a5dc165102a5e6e8a23cf32",
+      "seconds": 0.041117999935522676
+    },
+    {
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\controls",
+        "-B",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\control-build",
+        "-G",
+        "Visual Studio 17 2022",
+        "-A",
+        "x64",
+        "-DCMAKE_CXX_FLAGS=/fsanitize=address"
+      ],
+      "exit": 0,
+      "log": "configure-controls.log",
+      "sha256": "1e711a5af5dbc608cdc9db246694df07a214e19cc505b83b341557cb6567c80f",
+      "seconds": 2.328092100098729
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\control-build",
+        "--target",
+        "asan_instrument_control",
+        "--config",
+        "RelWithDebInfo",
+        "--parallel",
+        "2"
+      ],
+      "exit": 0,
+      "log": "build-controls.log",
+      "sha256": "ff3324ee7027a70f7c915ad15bb43ed8129b650eb16c7d11efeffc739a37e0c1",
+      "seconds": 1.5289062999654561
+    },
+    {
+      "argv": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\dumpbin.exe",
+        "/dependents",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\control-build\\RelWithDebInfo\\asan_instrument_control.exe"
+      ],
+      "exit": 0,
+      "log": "control-dependencies.log",
+      "sha256": "78c38659e79dd9cf61257c2defd5adcbfd33d767d519cf5f293f224b29c90459",
+      "seconds": 0.05461920006200671
+    },
+    {
+      "argv": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\control-build\\RelWithDebInfo\\asan_instrument_control.exe",
+        "release"
+      ],
+      "exit": 0,
+      "log": "control-release.log",
+      "sha256": "f293228fc46509b5e80867a180542afc69efd3974ea5546ab263a0df3e1c2d1f",
+      "seconds": 0.15370139991864562
+    },
+    {
+      "argv": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-sp02\\control-build\\RelWithDebInfo\\asan_instrument_control.exe",
+        "expired-access"
+      ],
+      "exit": 1,
+      "log": "control-expired-access.log",
+      "sha256": "527c497710b833a4b9c3854168509c84404325381780eba2a807d7b166ad647b",
+      "seconds": 0.20125739998184144,
+      "expected_invalid_access_detected": true
+    }
+  ],
+  "prior_p2_seal_sha256": "b162ceeb0dae1ec45e0cc9d49437d268ad10ddfc37d82a7b4a21e2ed4b504e97",
+  "prior_application_sha256": {
+    "gcc": "dd68bc1ce903149e0336ea00c2c2e8df66847d09282fe50758eba3c16a46353c",
+    "msvc": "487a35e2de3e5de5056edc34ca99ebdb5b8d1981068bd65b1e66088dcd81a935"
+  },
+  "source_inputs_policies": "all tracked entry bytes and 66 protected raw article inputs preserved; no formula/order/selection/acceptance/stopping changes",
+  "delivery": "reuse this single ASan observation by exact source/tool/artifact identity; run existing 74 CTest/380 nested Python controls on documentation head/main; no second SP-02",
+  "limitations": [
+    "one initial-only analytic process is not complete W-ASAN inventory qualification",
+    "no leak/CRT/LSan/UBSan or equivalence qualification",
+    "no MPI/OpenMP, same-process reuse, terminal observer or other SP cases qualified",
+    "Stage 3 stays open; three bounded/seven partial-open obligations unchanged"
+  ],
+  "next": "P3 remaining fixed production cases SP-01 and SP-03..08 with the same qualified ASan artifact; stop expansion at first unexpected failure"
+}

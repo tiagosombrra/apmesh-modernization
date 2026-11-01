@@ -27,10 +27,17 @@ production, fixtures, input domain policy or qualification status. Preserve P1's
 scientific/instrument evidence by identity and require the existing exact-head/
 main regression; no fresh model campaign is needed for this specification.
 
-Next single implementation: P3's complete MSVC/ASan build, real positive/negative
-instrument controls and one natural SP-02 analytic execution. Stop expansion at
-the first failure, classify it and repair a reproduced supported defect in a
-bounded item. Remaining cases, instruments and observer portability stay open.
+P3's [first bounded observation](evidence/SERIAL_ASAN_SP02.md) now passes the
+complete 73-unit MSVC/ASan C++17 build, actual release/expired-access controls
+and one natural initial-only SP-02 process with positive independent boundary
+coverage. It does not close the full instrument/case inventory or Stage 3.
+Preserve that single execution and its exact identities during documentation
+delivery; existing head/main regression does not require another ASan witness.
+
+Next single implementation: P3's remaining fixed production cases SP-01 and
+SP-03..08 with the same qualified ASan artifact. Stop expansion at the first
+unexpected failure, classify it and repair a demonstrated supported defect in a
+bounded item. Other instruments and terminal observer portability remain open.
 Follow with remaining supported-caller repairs and final closure. No new model
 or scientific policy is authorized.
 

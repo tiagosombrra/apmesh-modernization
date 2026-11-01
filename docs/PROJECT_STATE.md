@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `98f99ff84858932eb7b86ea3f4ce028acf04bf1b` (PR #134).
+Entry main: `c44f1860916ac10f914a3a179354535b4dc55ce6` (PR #135).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -42,24 +42,36 @@ variants, no-sync lifetime, same-process reuse and external Geometry remain
 distinct. Debug compilation is not leak accounting. The ledger retains every
 open closure assignment and stops expansion at the first instrument/caller failure.
 
-P2 exact delivery head/main requires the existing 74 CTest entries and 380 nested
-Python controls, source/input/application/prior-evidence identity, recipe replay,
-architecture/contracts, whitespace and staged/remote checks. No production,
-fixture, test, scientific input or numerical criterion changes in P2.
+P2 exact head/main passed 74 CTest entries and 380 nested Python controls, source/
+input/application/prior-evidence identity, recipe replay, architecture/contracts,
+whitespace and staged/remote checks. PR #135 retains its exact identities.
+
+P3's [first complete MSVC/ASan observation](evidence/SERIAL_ASAN_SP02.md) passed
+at this entry main. All 73 native units compiled with ASan in C++17 RelWithDebInfo.
+The actual release control passed and the actual expired read was detected.
+Natural SP-02 ran once, returned zero and passed independent physical/UV/analytic
+and boundary checks: accepted initial step 0, two patches, eight triangles and
+one positive shared-boundary comparison, without an ASan diagnostic. There was
+no rejected/adaptive retry state. This is bounded complete-process evidence,
+not whole inventory, leak, CRT/LSan/UBSan or parallel qualification.
+
+Documentation delivery reuses this single ASan observation by source/tool/artifact
+identity, with the existing 74 CTest/380 nested Python controls on head/main.
+Production, fixtures, tests, scientific inputs and numerical criteria remain fixed.
 
 The [closure ledger](architecture/STAGE3_CLOSURE_INVENTORY.md) still has ten
 inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Next single adjustment after P2 delivery
+## Next single adjustment after the first P3 witness
 
-P3: qualify the complete MSVC/ASan C++17 target and actual positive/negative
-instrument controls, then observe SP-02 once with native selection and no fault
-injection. Preserve and classify the first failure before expanding the fixed
-inventory. Repair a reproduced supported defect in a bounded item; do not create
-another source-only successor audit. Other instruments/observer portability and
-all remaining cases stay unqualified until measured or explicitly justified.
+P3: continue the fixed remaining production cases SP-01 and SP-03..08 with the
+qualified unchanged MSVC/ASan artifact. Preserve/classify the first unexpected
+failure and stop expansion. Repair a reproduced supported defect in a bounded
+item; do not create another source-only successor audit. SP-02 is not repeated
+without an invalidated dependency. Other instruments, SP-09/10 observer
+portability and all remaining cases stay unqualified until measured or justified.
 Follow the [five work packages](architecture/REFACTOR_SEQUENCE.md). Completion is
 measured by resolved obligations or repaired defects, not test or PR counts.
 
