@@ -42,10 +42,14 @@ under the same cap, with actual rejection/retry and positive independent checks.
 Require exact delivery 75 CTest/380 nested controls, the frozen nine-state GCC
 reference and all scoped source/resource/tool gates; no scientific policy changes.
 
-Next implementation after delivery: P3's remaining/invalidation-relevant fixed
-production cases; SP-06..08 remain unrun. Stop at the first unexpected failure,
-classify it and repair a demonstrated supported defect in a bounded item. Other
-instruments and terminal observer portability remain open.
+P3's [remaining fixed ASan production cases](evidence/SERIAL_ASAN_REMAINING.md)
+now pass: two Eistute and two Book executions preserve exact repeatability and
+246 positive boundary comparisons; the no-sync process returns zero. All five
+use the existing artifact and unchanged 300-second caps, with no ASan diagnostic.
+Next implementation after delivery: a portable full-caller observer for the
+existing SP-09/10 contexts, qualified by actual controls before measurement.
+Stop at the first unexpected failure. Other instruments and caller obligations
+remain open; this does not close the entire W-ASAN profile or Stage 3.
 Follow with remaining supported-caller repairs and final closure. No new model
 or scientific policy is authorized.
 

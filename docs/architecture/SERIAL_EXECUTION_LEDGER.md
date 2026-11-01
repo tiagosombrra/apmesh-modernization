@@ -13,6 +13,14 @@ The ten closure obligations and their three bounded/seven open dispositions stay
 intact. No valid configuration or public interface becomes unsupported merely
 because it is absent from this first measurement inventory.
 
+The [SP-06..08 observation checkpoint](../evidence/SERIAL_ASAN_REMAINING.md)
+records the five previously unrun natural MSVC/ASan production processes. They
+pass with the qualified quality-corrected artifact, exact Eistute/Book repetition
+and ordinary no-sync teardown. The fixed machine ledger below remains the P2
+entry specification; its planned/unqualified fields are historical entry status,
+not a replacement for the linked measured artifact-specific reports. SP-09/10,
+other instruments and remaining closure obligations are still open.
+
 ## Entry domain and roots
 
 The measured production entry is `ap_mesh --config <file>`, serial, one process,

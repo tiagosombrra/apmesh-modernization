@@ -1,0 +1,213 @@
+{
+  "status": "remaining_fixed_asan_production_cases_passed",
+  "revision": "00f93c3f3cdbdabaacdead1fa9d9bb9011b3427e",
+  "application_sha256": "c8a33d26d8f9766a7f68a97bcbeb740974ca919c31841cf57e3bbbedd94a1bc5",
+  "command": [
+    "python",
+    "build/p3-msvc-asan-remaining/run.py"
+  ],
+  "planned_groups": [
+    "SP-06",
+    "SP-07",
+    "SP-08"
+  ],
+  "groups": [
+    {
+      "id": "SP-06",
+      "status": "passed",
+      "outcome": {
+        "repetitions": 2,
+        "accepted_steps": [
+          0,
+          1
+        ],
+        "rejected_steps": [
+          2,
+          3,
+          4
+        ],
+        "boundary_comparisons": 30,
+        "repeat": {
+          "status": "passed",
+          "model": "eistute",
+          "compared_meshes": 5,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 1168,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact",
+          "same_executable_same_configuration_same_command": true,
+          "executable_sha256": "c8a33d26d8f9766a7f68a97bcbeb740974ca919c31841cf57e3bbbedd94a1bc5",
+          "configuration_sha256": "dc2d2260544b0f67b1e131d0d917d91b7796250a6671ec2c5bd0b8365f4cf798"
+        }
+      }
+    },
+    {
+      "id": "SP-07",
+      "status": "passed",
+      "outcome": {
+        "repetitions": 2,
+        "accepted_steps": [
+          0,
+          1
+        ],
+        "rejected_steps": [
+          2,
+          3
+        ],
+        "boundary_comparisons": 216,
+        "repeat": {
+          "status": "passed",
+          "model": "book",
+          "compared_meshes": 4,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 4256,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact",
+          "same_executable_same_configuration_same_command": true,
+          "executable_sha256": "c8a33d26d8f9766a7f68a97bcbeb740974ca919c31841cf57e3bbbedd94a1bc5",
+          "configuration_sha256": "05b8d2b66b901ddb77632fb97b50390065b0bd3f0835991b3691cf386c935bfe"
+        }
+      }
+    },
+    {
+      "id": "SP-08",
+      "status": "passed",
+      "outcome": {
+        "exit_code": 0,
+        "synchronized_boundary_qualification": false,
+        "scope": "natural no-sync process and ordinary owned-clone teardown; zero synchronized comparisons is not a boundary pass"
+      }
+    }
+  ],
+  "launches": [
+    {
+      "group": "SP-06",
+      "ordinal": 1,
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\application\\bin\\RelWithDebInfo\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-remaining\\SP-06\\working\\article.conf"
+      ],
+      "configuration_sha256": "dc2d2260544b0f67b1e131d0d917d91b7796250a6671ec2c5bd0b8365f4cf798",
+      "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "directory": "launches\\01-SP-06",
+      "cap_seconds": 300,
+      "asan_options": "halt_on_error=1",
+      "started_utc": "2026-11-01T14:36:24Z",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 202.4684353999328,
+      "stderr_bytes": 0
+    },
+    {
+      "group": "SP-06",
+      "ordinal": 2,
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\application\\bin\\RelWithDebInfo\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-remaining\\SP-06\\working\\article.conf"
+      ],
+      "configuration_sha256": "dc2d2260544b0f67b1e131d0d917d91b7796250a6671ec2c5bd0b8365f4cf798",
+      "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "directory": "launches\\02-SP-06",
+      "cap_seconds": 300,
+      "asan_options": "halt_on_error=1",
+      "started_utc": "2026-11-01T14:39:47Z",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 218.13073319988325,
+      "stderr_bytes": 0
+    },
+    {
+      "group": "SP-07",
+      "ordinal": 1,
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\application\\bin\\RelWithDebInfo\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-remaining\\SP-07\\working\\article.conf"
+      ],
+      "configuration_sha256": "05b8d2b66b901ddb77632fb97b50390065b0bd3f0835991b3691cf386c935bfe",
+      "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+      "directory": "launches\\03-SP-07",
+      "cap_seconds": 300,
+      "asan_options": "halt_on_error=1",
+      "started_utc": "2026-11-01T14:43:28Z",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 130.0867504000198,
+      "stderr_bytes": 0
+    },
+    {
+      "group": "SP-07",
+      "ordinal": 2,
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\application\\bin\\RelWithDebInfo\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-remaining\\SP-07\\working\\article.conf"
+      ],
+      "configuration_sha256": "05b8d2b66b901ddb77632fb97b50390065b0bd3f0835991b3691cf386c935bfe",
+      "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+      "directory": "launches\\04-SP-07",
+      "cap_seconds": 300,
+      "asan_options": "halt_on_error=1",
+      "started_utc": "2026-11-01T14:45:40Z",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 134.90036180010065,
+      "stderr_bytes": 0
+    },
+    {
+      "group": "SP-08",
+      "ordinal": 1,
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\face-quality-scratch\\application\\bin\\RelWithDebInfo\\ap_mesh.exe",
+        "--config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-remaining\\SP-08\\article.conf"
+      ],
+      "configuration_sha256": "cc30b32cd7614df8f58033b86b13b19c8c19c251f05988b030fd70f69f0521b7",
+      "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "directory": "launches\\05-SP-08",
+      "cap_seconds": 300,
+      "asan_options": "halt_on_error=1",
+      "started_utc": "2026-11-01T14:47:57Z",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 32.53661850001663,
+      "stderr_bytes": 0
+    }
+  ],
+  "unrun_groups": [],
+  "started_utc": "2026-11-01T14:36:24Z",
+  "finished_utc": "2026-11-01T14:48:30Z",
+  "prior_quality_seal_sha256": "f55372a2dd37322a41d2c08da25fb4c83f80fbbfff718f5ee0cc8e355b4aa7f0",
+  "changed_production_files": 0,
+  "rebuilds": 0,
+  "additional_campaigns": 0,
+  "scientific_policies_unchanged": true,
+  "instrument_scope": "MSVC/ASan C++17 serial complete application only; no leak, CRT/LSan/UBSan or parallel qualification",
+  "stage3": "open; three bounded and seven partial/open closure rows retained",
+  "raw_article_files_preserved": 66,
+  "prior_observations": "SP-01..05 retain measured artifact/source identities; no reruns on the new artifact except the already qualified SP-05",
+  "schema": 1,
+  "classification": "engineering-only complete-process observations; no production changes",
+  "native_verification_sha256": "967cc766af1bb5a386d1a7efaa4e818b0bd290100f922c6dbcc66274638202bd",
+  "local_records": {
+    "entry.json": "bbba7fa9db8f72f591e8a539693385196fe165f2da146075a8cda5ce755ccedd",
+    "report.json": "62bd50da3e7a04f339f81aab67f86a3583e39a97c8a7f9f26465c45907a0731a",
+    "run.py": "53de04660c2b5cfee05bda22ae7d9db6735344055aaa1ebd449e230d81e8be64",
+    "seal.py": "7741a39bdd8911b1542f60d0b92e0c7d2e7e0106883c01fede5cf985f81cfcec",
+    "remote-entry.json": "92cf5d08f4de3e4c22b5559767c08d5b6214159ced39357aca1b0d2447def2cd"
+  },
+  "prior_scientific_report": {
+    "path": "build/face-quality-scratch/main/report.json",
+    "sha256": "b001d3ca207a1d1c6444f497a8967ab1219e3826d9c24ca049c67ef7207cdc45",
+    "states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123
+  },
+  "required_delivery": "75 CTest/380 nested controls on exact head/main; identities, whitespace, inventory/contracts, staged/remote checks; reuse unchanged native/scientific evidence"
+}
