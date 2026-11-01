@@ -26,6 +26,11 @@ no-sync CLI teardown. It contributes bounded observations to S3-01/08/09. It doe
 not establish same-Generator reuse, full observer safety or leak/UB accounting;
 all ten rows retain their current dispositions.
 
+The [portable terminal observer candidate](../evidence/SERIAL_ASAN_TERMINAL_OBSERVER.md)
+is unqualified: its unwind-allocation prerequisite fails before any SP-09/10
+context. This is a retained instrument limitation, not a supported production
+defect or qualified caller. Integration and stage closure stay blocked.
+
 ## Required exit observations
 
 - **S3-01** (C04, C05): Supported caller/rebuild/rejection and teardown observations preserve ownership/adjacency, with actual negative instruments and explicit invalid arrangements. Evidence: [STAGE3_SUBMESH_LIFETIME.md](../evidence/STAGE3_SUBMESH_LIFETIME.md), [STAGE3_TRIANGLE_CONSTRUCTION.md](../evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).

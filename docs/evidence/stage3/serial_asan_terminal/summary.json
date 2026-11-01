@@ -1,0 +1,128 @@
+{
+  "status": "terminal_observer_qualification_failed_and_campaign_stopped",
+  "revision": "4cdeb15393487871542909bef065074bbad158b4",
+  "classification": "engineering-only test observer candidate; production unchanged; not qualified or integrated",
+  "application_sha256": "20b7132e2deb53969593de69558fea3638095b388395f1aa605ca4f137cf5218",
+  "build_commands": [
+    {
+      "argv": [
+        "cmake",
+        "-S",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\tests\\terminal_observer",
+        "-B",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal\\application",
+        "-G",
+        "Visual Studio 17 2022",
+        "-A",
+        "x64",
+        "-DCMAKE_CXX_STANDARD=17",
+        "-DCMAKE_CXX_STANDARD_REQUIRED=ON",
+        "-DCMAKE_CXX_FLAGS=/fsanitize=address"
+      ],
+      "exit": 0,
+      "seconds": 3.4208394000306726,
+      "log": "configure.log",
+      "sha256": "881d1544f3b18fae9d0f233d9a05b98f901352e63a0b4d88d0f7dbdb267f15f2"
+    },
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal\\application",
+        "--target",
+        "terminal_observer_probe",
+        "--config",
+        "RelWithDebInfo",
+        "--parallel",
+        "2"
+      ],
+      "exit": 0,
+      "seconds": 114.47705399990082,
+      "log": "build.log",
+      "sha256": "7c63943653ae4479ab1d4fb8269ee15a4cd593afe6141f99cdaa20d157c64698"
+    }
+  ],
+  "compiled_groups": 74,
+  "production_units_represented": 73,
+  "preparation": {
+    "status": "passed",
+    "files": [
+      {
+        "source": "src/adapter/adapter.cpp",
+        "generated": "adapter.cpp",
+        "replacements": 2,
+        "source_sha256": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+        "generated_sha256": "31da62160173461a37ca02dbdae369750678efca3919ab68fb8a5ed501b00c06",
+        "exact_byte_reversal": true
+      },
+      {
+        "source": "tests/typed_domain_failure_fixture.h",
+        "generated": "typed_domain_failure_fixture.h",
+        "replacements": 1,
+        "source_sha256": "e009b3901f548444590b7ace5758128c8bd9ff7224156e04f03fb851e0495a3c",
+        "generated_sha256": "5496b71e8f3724d2df3dee7fe9f4f4f818343573489938a4f1d21852dcff12b9",
+        "exact_byte_reversal": true
+      }
+    ],
+    "scope": "Test-only AFT call interception and allocation observer dependency; all remaining source bytes exact"
+  },
+  "control_processes": 4,
+  "directed_contexts_executed": 0,
+  "unrun_contexts": [
+    "SP-09-book-p0",
+    "SP-09-eistute-p0",
+    "SP-09-eistute-p1",
+    "SP-10-book-p0",
+    "SP-10-eistute-p1"
+  ],
+  "passed_controls": [
+    "actual release",
+    "actual ASan heap-use-after-free detection",
+    "live AFT selected/excluded/disabled observer and actual independent allocation denial"
+  ],
+  "typed_payload_rows_passed": 9,
+  "failed_control": "native allocation denial during exception unwinding",
+  "failed_control_exit": 1,
+  "failure": "Typed domain failure: native allocation during unwinding was not denied",
+  "diagnosis_limit": "The assertion combines detection/catch and allocation counters. Their individual values were not emitted. Allocation elision, runtime unwinding semantics or another cause is not established; no production defect is demonstrated.",
+  "stop_rule_observed": true,
+  "rebuilds_after_failure": 0,
+  "native_launches_after_failure": 0,
+  "production_changes": 0,
+  "raw_article_files_preserved": 66,
+  "prior_seal_sha256": "33115baf75cc3e447a155e42768e2d5efc7640b66d300a845390713bdf7e9abf",
+  "original_preparation_refusals": [
+    "entry-refusal.json",
+    "log-path-refusal.json"
+  ],
+  "required_gates": "Observer qualification is failing; SP-09/10 and exact-delivery regression remain unrun. Draft review only; integration and Stage 3 closure blocked.",
+  "next": "Repair only the demonstrated unwind-allocation control in a bounded follow-up, preserving an actual independent allocation and the existing oracles; requalify before the five fixed contexts.",
+  "schema": 1,
+  "local_verification_sha256": "8a560a75fad6f9348e1d2d6f757ea006b81453a11b2168c34ab4f602ef7d756d",
+  "observer_files_sha256": {
+    "tests/terminal_observer/allocation_observer.cpp": "d2e0433fff49d35139f17cb43a5fa0cb5127cbd064ea606aefcc04c3a39163cf",
+    "tests/terminal_observer/allocation_observer.h": "46675368db24e9d9d51a0d8aee85072e76f216b28f0a471ba4f68db83f039a95",
+    "tests/terminal_observer/CMakeLists.txt": "0994e3343d739ccefe370d28838dd8e528f0c35337de05abe6669627cd2dda65",
+    "tests/terminal_observer/execute_observer.h": "24c479ab5ceeea78a7b870e6e11a3177cccaaa8e20dc27b8fec3338e999cb744",
+    "tests/terminal_observer/probe.cpp": "556163815d1ca126694c95cf1bbb0a583c3fb078744961b98cd41ee4aaaa5e76",
+    "tools/prepare_terminal_observer.py": "4a1b799c1c5ff8a5b7f579548be3bd216f6aa490aeee0e416d19e87ee144ced6",
+    "tests/tooling/test_terminal_observer.py": "6850dd5fcf9eca467f10090ca884743106db475e2fa81e9394c9328e9f52de64"
+  },
+  "preparer_tests": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/tooling",
+      "-p",
+      "test_terminal_observer.py",
+      "-v"
+    ],
+    "tests": 4,
+    "status": "passed_before_native_qualification"
+  },
+  "draft_only": true,
+  "integration_allowed": false
+}

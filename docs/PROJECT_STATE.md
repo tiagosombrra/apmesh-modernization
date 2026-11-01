@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `00f93c3f3cdbdabaacdead1fa9d9bb9011b3427e` (PR #137).
+Entry main: `4cdeb15393487871542909bef065074bbad158b4` (PR #138).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -80,15 +80,26 @@ comparisons total. The existing no-sync configuration returns zero through norma
 CLI teardown; it does not qualify synchronized boundaries. Other instrument and
 caller obligations remain open.
 
+The [portable terminal observer candidate](evidence/SERIAL_ASAN_TERMINAL_OBSERVER.md)
+builds with all production units under MSVC/ASan. Release, actual expired-read
+detection and selected/excluded/disabled observer/allocation controls pass. Its
+typed prerequisite passes nine payload rows but fails the unchanged allocation-
+during-unwinding control. The campaign stops before every SP-09/10 context.
+The candidate remains unqualified and draft-only; integration is blocked.
+Production and prior evidence are unchanged; no repeated campaign substitutes
+for the missing qualification.
+
 The [closure ledger](architecture/STAGE3_CLOSURE_INVENTORY.md) still has ten
 inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Next single adjustment after the remaining ASan production delivery
+## Next single adjustment after the stopped terminal observer qualification
 
-P3: prepare a portable complete-caller observer for the existing SP-09/10 cases,
-qualify it with actual controls, then measure only the fixed directed contexts.
+P3: repair and requalify the demonstrated unwind-allocation control in the portable
+complete-caller observer, preserving an actual allocation and the existing terminal
+oracles. Only after all prerequisites pass may the five fixed SP-09/10 contexts
+run; no context has been measured by the candidate yet.
 SP-06..08 now pass; earlier observations retain their measured artifact identities.
 Preserve/classify the first unexpected failure and stop expansion. Do not create
 another source-only successor audit or repeat identical qualified observations

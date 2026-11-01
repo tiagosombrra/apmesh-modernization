@@ -1,5 +1,17 @@
 # Local quality automation
 
+## Portable terminal observer candidate
+
+The [terminal observer candidate](evidence/SERIAL_ASAN_TERMINAL_OBSERVER.md) uses
+reversible test copies and unchanged terminal fixture bodies. Its complete-target
+MSVC/ASan build and three controls pass, but the unwind-allocation prerequisite
+fails after nine payload rows. Preserve that exact binary/source/log evidence;
+stop before all five directed contexts. No further native run or large regression
+is authorized as a substitute for failed calibration. Keep the candidate draft-
+only and do not integrate. After a bounded repair, require actual independent
+unwind allocation detection, all prerequisite controls and the fixed contexts,
+then exact-head/main regression and source/input/remote gates.
+
 ## Remaining fixed serial ASan production cases
 
 The [SP-06..08 checkpoint](evidence/SERIAL_ASAN_REMAINING.md) reuses the qualified

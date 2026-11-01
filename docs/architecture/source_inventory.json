@@ -468,6 +468,10 @@
       "sha256": "7232c079ba1ce2d904bf13079da9b702af2cbc444125666a628691fb06f2c54d"
     },
     {
+      "path": "tests/terminal_observer/CMakeLists.txt",
+      "sha256": "0994e3343d739ccefe370d28838dd8e528f0c35337de05abe6669627cd2dda65"
+    },
+    {
       "path": "tests/uv_memory/CMakeLists.txt",
       "sha256": "aa4e2b0267ad5445fb2defbb341ca87b57383ade3ffd6d658eb754b465a8f343"
     }
