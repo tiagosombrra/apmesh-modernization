@@ -20,10 +20,19 @@ its exact-head/main canonical builds, focused native/real CLI checks and frozen
 GCC scientific reference. This is the permitted bounded stage 4 prerequisite;
 full-process memory and complete Stage 4 remain unqualified.
 
-Next single implementation: P2, the supported executable/input/caller and terminal-
-versus-retry ledger, reusing existing executable controls before freezing P3's
-whole-process instrument inventory. Follow with remaining supported-caller repairs
-and final closure audit. No new model or scientific policy is authorized.
+P2 fixes the [serial execution/caller ledger](architecture/SERIAL_EXECUTION_LEDGER.md):
+ten existing case groups, explicit roots and terminal/retry limits, a finite
+instrument inventory and every remaining closure assignment. It changes no
+production, fixtures, input domain policy or qualification status. Preserve P1's
+scientific/instrument evidence by identity and require the existing exact-head/
+main regression; no fresh model campaign is needed for this specification.
+
+Next single implementation: P3's complete MSVC/ASan build, real positive/negative
+instrument controls and one natural SP-02 analytic execution. Stop expansion at
+the first failure, classify it and repair a reproduced supported defect in a
+bounded item. Remaining cases, instruments and observer portability stay open.
+Follow with remaining supported-caller repairs and final closure. No new model
+or scientific policy is authorized.
 
 Every task must name a closure row, concrete output, minimal affected gates and
 stop decision before work. A source-only investigation with no admissible witness

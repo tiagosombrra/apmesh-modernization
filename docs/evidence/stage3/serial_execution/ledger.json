@@ -1,0 +1,566 @@
+{
+  "schema": 1,
+  "classification": "engineering-only serial execution/coverage specification",
+  "entry_main": "98f99ff84858932eb7b86ea3f4ce028acf04bf1b",
+  "status": "P2 inventory fixed; P3 complete-process instruments unqualified; Stage 3 open",
+  "production_entry": [
+    "<exe>",
+    "--config",
+    "<configuration>"
+  ],
+  "working_directory": "repository root",
+  "substitutions": {
+    "<exe>": "qualified complete production artifact for this ABI/profile",
+    "<probe>": "separate qualified controlled full-caller artifact; no helper substitute",
+    "<out>": "new owned absolute output directory"
+  },
+  "domain": {
+    "language": "C++17",
+    "processes": 1,
+    "threads": 1,
+    "loader": "existing serial Bezier BP caller",
+    "scope": "finite initial qualification set, not an exhaustive product support promise or new rejection policy",
+    "allowed_changes": "path relocation; SP-03/04 only add existing m/q output variants; SP-05 uses existing unchanged retry-control settings"
+  },
+  "cases": [
+    {
+      "id": "SP-01",
+      "kind": "unmodified-production",
+      "nominal_executions": 23,
+      "recipe": "tests/cli_failures.py:verify_failures",
+      "command": [
+        "python",
+        "tests/cli_failures.py",
+        "--exe",
+        "<exe>",
+        "--workspace",
+        "<out>",
+        "--report",
+        "<out>/report.json"
+      ],
+      "root": "CLI -> config/reader -> complete unwind",
+      "expected": "nonzero result, Error diagnostic, no generated artifacts",
+      "oracle": "existing verify_failures plus instrument diagnostics/accounting",
+      "measurement": "complete-process instruments unqualified",
+      "names": [
+        "missing_model",
+        "empty_model",
+        "unknown_record",
+        "short_vertex",
+        "extra_coordinate",
+        "nan_coordinate",
+        "short_patch",
+        "out_of_bounds_patch",
+        "negative_patch_index",
+        "no_patches",
+        "indented_record",
+        "bad_config_syntax",
+        "unknown_key",
+        "invalid_integer",
+        "zero_threads",
+        "invalid_float",
+        "nan_float",
+        "infinite_float",
+        "invalid_mode",
+        "duplicate_key",
+        "missing_config",
+        "missing_arguments",
+        "extra_arguments"
+      ],
+      "timeout_seconds_each": 10
+    },
+    {
+      "id": "SP-02",
+      "kind": "unmodified-production",
+      "nominal_executions": 1,
+      "recipe": "tests/boundary_orientation_case.py:run_control",
+      "command": [
+        "<exe>",
+        "--config",
+        "<out>/article.conf"
+      ],
+      "root": "CLI -> Execute-local Geometry -> outer Generator teardown",
+      "expected": "status 0; actual accepted initial state, positive mesh/UV/boundary coverage",
+      "oracle": "run_control and verify_run(require_boundary=True)",
+      "measurement": "complete-process instruments unqualified",
+      "function_arguments": {
+        "name": "aligned",
+        "reverse": false,
+        "sheets": 2
+      },
+      "input_model_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444",
+      "timeout_seconds_each": 60
+    },
+    {
+      "id": "SP-03",
+      "kind": "unmodified-production",
+      "nominal_executions": 1,
+      "recipe": "SP-02 analytic input/config; WRITE_MODE=m; paths relocated",
+      "command": [
+        "<exe>",
+        "--config",
+        "<out>/article.conf"
+      ],
+      "root": "CLI archived mesh and mesh-output path",
+      "expected": "status 0, nonempty OBJ/incidence output; no required quality-only files",
+      "oracle": "existing analytic incidence/geometry checker; output inventory by mode",
+      "measurement": "complete-process instruments unqualified",
+      "config_changes": {
+        "WRITE_MODE": "m"
+      },
+      "timeout_seconds_each": 60
+    },
+    {
+      "id": "SP-04",
+      "kind": "unmodified-production",
+      "nominal_executions": 1,
+      "recipe": "SP-02 analytic input/config; WRITE_MODE=q; paths relocated",
+      "command": [
+        "<exe>",
+        "--config",
+        "<out>/article.conf"
+      ],
+      "root": "CLI archived mesh and quality-output path",
+      "expected": "status 0, nonempty quality/incidence reports; OBJ not required",
+      "oracle": "independent quality/report identity; no full geometry qualification from q alone",
+      "measurement": "complete-process instruments unqualified",
+      "config_changes": {
+        "WRITE_MODE": "q"
+      },
+      "timeout_seconds_each": 60
+    },
+    {
+      "id": "SP-05",
+      "kind": "unmodified-production",
+      "nominal_executions": 1,
+      "recipe": "tests/boundary_orientation_case.py:run_control",
+      "command": [
+        "<exe>",
+        "--config",
+        "<out>/article.conf"
+      ],
+      "root": "CLI shared reversed curves -> rebuild -> candidate rejection/retry -> teardown",
+      "expected": "status 0; refined positive boundary coverage; retry >=1; nonempty rejected states",
+      "oracle": "existing run_control adaptive/force_retry checks",
+      "measurement": "complete-process instruments unqualified",
+      "function_arguments": {
+        "name": "curved_reversed_3_side_2",
+        "reverse": true,
+        "sheets": 3,
+        "curved": true,
+        "slot": 2,
+        "adaptive": true,
+        "force_retry": true
+      },
+      "input_model_sha256": "c65a0a45f5f67b90e43183965e63d0e3b193bac862dab7ec15d53f37206983ec",
+      "reference_accepted": [
+        0,
+        1
+      ],
+      "reference_rejected": [
+        2,
+        3
+      ],
+      "timeout_seconds_each": 60
+    },
+    {
+      "id": "SP-06",
+      "kind": "unmodified-production",
+      "nominal_executions": 2,
+      "recipe": "tools/repeat_generation.py:repeat",
+      "command": [
+        "python",
+        "tools/repeat_generation.py",
+        "--exe",
+        "<exe>",
+        "--model",
+        "eistute",
+        "--output",
+        "<out>",
+        "--report",
+        "<out>/report.json",
+        "--timeout",
+        "300"
+      ],
+      "root": "fresh CLI process twice; each complete accepted/trial/archive and teardown",
+      "expected": "status 0 twice; preserved accepted/rejected states in qualified GCC reference",
+      "oracle": "repeat comparison plus verify_generation.py on each repetition with --require-boundary-coverage",
+      "measurement": "complete-process instruments unqualified",
+      "config": "configs/eistute/article.conf",
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ],
+      "timeout_seconds_each": 300,
+      "required_additional_verification": [
+        "python",
+        "tools/verify_generation.py",
+        "<out>/repetition-<1|2>",
+        "--require-boundary-coverage"
+      ]
+    },
+    {
+      "id": "SP-07",
+      "kind": "unmodified-production",
+      "nominal_executions": 2,
+      "recipe": "tools/repeat_generation.py:repeat",
+      "command": [
+        "python",
+        "tools/repeat_generation.py",
+        "--exe",
+        "<exe>",
+        "--model",
+        "book",
+        "--output",
+        "<out>",
+        "--report",
+        "<out>/report.json",
+        "--timeout",
+        "300"
+      ],
+      "root": "fresh CLI process twice; each complete accepted/trial/archive and teardown",
+      "expected": "status 0 twice; preserved accepted/rejected states in qualified GCC reference",
+      "oracle": "repeat comparison plus verify_generation.py on each repetition with --require-boundary-coverage",
+      "measurement": "complete-process instruments unqualified",
+      "config": "configs/book/article.conf",
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ],
+      "timeout_seconds_each": 300,
+      "required_additional_verification": [
+        "python",
+        "tools/verify_generation.py",
+        "<out>/repetition-<1|2>",
+        "--require-boundary-coverage"
+      ]
+    },
+    {
+      "id": "SP-08",
+      "kind": "unmodified-production",
+      "nominal_executions": 1,
+      "recipe": "configs/eistute/ablation_no_sync.conf; relocate input/output only",
+      "command": [
+        "<exe>",
+        "--config",
+        "<out>/article.conf"
+      ],
+      "root": "CLI DisableSharedCurveSynchronization -> owned clones -> ordinary complete teardown",
+      "expected": "normal status 0 expected; an abort blocks this case; scientific behavior not newly qualified",
+      "oracle": "process/instrument/clone-owner evidence; zero synchronized comparisons is not a boundary pass",
+      "measurement": "complete-process instruments unqualified",
+      "config": "configs/eistute/ablation_no_sync.conf",
+      "allowed_config_changes": [
+        "INPUT_MODEL",
+        "OUTPUT_PREFIX"
+      ],
+      "timeout_seconds_each": 300
+    },
+    {
+      "id": "SP-09",
+      "kind": "controlled-full-caller",
+      "nominal_executions": 3,
+      "recipe": "existing typed_domain_failure_case CLI matrix",
+      "command": [
+        "<probe>",
+        "--typed-domain-cli-config",
+        "<out>/article.conf",
+        "<patch>"
+      ],
+      "root": "actual Adapter/Generator and CLI catch/unwind, with test-only false AFT result",
+      "expected": "status 1; exact typed diagnostic once; no generic classification; original attempt counts",
+      "oracle": "tests/typed_domain_failure_case.py:validate_cli and retained immutable terminal observer",
+      "measurement": "complete-process instruments unqualified",
+      "contexts": [
+        {
+          "model": "book",
+          "step": 2,
+          "patch": 0,
+          "calls": 1
+        },
+        {
+          "model": "eistute",
+          "step": 2,
+          "patch": 0,
+          "calls": 2
+        },
+        {
+          "model": "eistute",
+          "step": 2,
+          "patch": 1,
+          "calls": 2
+        }
+      ],
+      "prerequisite": "GNU wrapping currently; qualify reversible full-caller MSVC observer before instrument claim",
+      "timeout_seconds_each": 300
+    },
+    {
+      "id": "SP-10",
+      "kind": "controlled-full-caller",
+      "nominal_executions": 2,
+      "recipe": "existing typed_domain_failure_case library matrix",
+      "command": [
+        "<probe>",
+        "--typed-domain-library-config",
+        "<out>/article.conf",
+        "<patch>"
+      ],
+      "root": "external Geometry kept live through Generator owner teardown; Model borrows Geometry",
+      "expected": "harness status 0 after catching typed payload; owner/sample/own-observer checks pass; no recovery claim",
+      "oracle": "tests/typed_domain_failure_case.py:validate_library",
+      "measurement": "complete-process instruments unqualified",
+      "contexts": [
+        {
+          "model": "book",
+          "step": 2,
+          "patch": 0,
+          "calls": 1
+        },
+        {
+          "model": "eistute",
+          "step": 2,
+          "patch": 1,
+          "calls": 2
+        }
+      ],
+      "prerequisite": "same full-caller observer qualification as SP-09",
+      "timeout_seconds_each": 300
+    }
+  ],
+  "nominal_production_launches": 32,
+  "directed_full_caller_cases": 5,
+  "isolated_type_cases_are_not_complete_process_observations": true,
+  "profiles": [
+    {
+      "id": "W-ASAN",
+      "toolchain": "MSVC x64 C++17 RelWithDebInfo",
+      "purpose": "expired-access diagnostics on complete target",
+      "build_command": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "<build>",
+        "-G",
+        "Visual Studio 17 2022",
+        "-A",
+        "x64",
+        "-DCMAKE_CXX_STANDARD=17",
+        "-DBUILD_TESTING=OFF",
+        "-DAP_MESH_USE_MPI=OFF",
+        "-DAP_MESH_USE_OPENMP=OFF",
+        "-DAP_MESH_ENABLE_LTO=OFF",
+        "-DCMAKE_CXX_FLAGS=/fsanitize=address"
+      ],
+      "compile_command": [
+        "cmake",
+        "--build",
+        "<build>",
+        "--target",
+        "ap_mesh",
+        "--config",
+        "RelWithDebInfo",
+        "--parallel",
+        "2"
+      ],
+      "preparation": "verify flags for every one of 73 TUs, runtime and clean-release/real-UAF controls; preserve scientific/ABI reference",
+      "cases": [
+        "SP-01",
+        "SP-02",
+        "SP-03",
+        "SP-04",
+        "SP-05",
+        "SP-06",
+        "SP-07",
+        "SP-08",
+        "SP-09",
+        "SP-10"
+      ],
+      "unqualified": "full-target build/control observations and terminal observer portability"
+    },
+    {
+      "id": "W-CRT",
+      "toolchain": "MSVC x64 C++17 Debug, iterator level 2",
+      "purpose": "complete-entry retained-storage accounting",
+      "preparation": "explicit full-entry observer/checkpoints spanning actual teardown; clean release, deliberate real leak and hook controls; qualify runtime accounting without unexplained exclusions",
+      "cases": [
+        "SP-01",
+        "SP-02",
+        "SP-03",
+        "SP-04",
+        "SP-05",
+        "SP-06",
+        "SP-07",
+        "SP-08",
+        "SP-09",
+        "SP-10"
+      ],
+      "unqualified": "Debug executable alone has no checkpoint/leak qualification"
+    },
+    {
+      "id": "L-UB/LEAK",
+      "toolchain": "WSL Ubuntu-24.04 x86_64 Clang C++17",
+      "purpose": "actual undefined-behavior and leak diagnostics",
+      "preparation": "tools discovered only; qualify compiler/C++17 reference, full-target instrumentation, positive/negative UB/leak controls and case observer compatibility first",
+      "cases": [
+        "SP-01",
+        "SP-02",
+        "SP-03",
+        "SP-04",
+        "SP-05",
+        "SP-06",
+        "SP-07",
+        "SP-08",
+        "SP-09",
+        "SP-10"
+      ],
+      "unqualified": "no whole-process LSan/UBSan or equivalence evidence; Windows ASan/CRT is not a substitute"
+    }
+  ],
+  "first_action": {
+    "profile": "W-ASAN",
+    "controls": "actual positive release and negative expired-access controls",
+    "case": "SP-02",
+    "native_selection": true,
+    "failure_injection": false,
+    "stop": "First compiler/control/application failure stops expansion; retain and classify, repair reproduced supported defect in a bounded item. No parameter/fixture search or silent retry."
+  },
+  "same_process_repetition": "Fresh subprocesses do not measure same-process fresh roots or reused Generator; keep S3-01/08 P4 requirement open.",
+  "terminal": "DomainGenerationError and other exceptions terminate; no whole-Generator resume, failed-tree reuse or consumed-ID rollback promise.",
+  "root_order": "CLI Execute-local Geometry retires before the outer Generator; external-Geometry library order is distinct. No post-expiry observer consumption or actual UAF is inferred from source order alone.",
+  "source_files_sha256": {
+    "src/main.cpp": "c1b7c0a8e3590025ff54cbb554bd04ce2d55f134b7f486c6d5f3fe3e869c0130",
+    "src/generator/generator_adaptive.cpp": "737ea8e9d84f6719fd21e544c86c9995525e9428d4ba80de7b1884de292d766a",
+    "include/generator/generator_adaptive.h": "d3edb8699b462c80295dd0e1dfb68905c9008ac67d134d9df4b86dc4c8391a17",
+    "include/generator/accepted_mesh_scope.h": "2ca0c7e4d4fe159de9054c43840989a0ba2776cc5b1f2aaa82e38432b30a9f94",
+    "include/generator/curve_sample_lifetime.h": "9a797ae69502d2b344a88ab4e643eabdbb9b5f72aac08e2fb51a75ed196ef16b",
+    "src/generator/curve_sample_lifetime.cpp": "d3f16ef06c1d4fd0fa8ecc3e7858288a959d1545bedc1c1d832430fd1a23a76e",
+    "include/generator/domain_observer_cleanup.h": "666259d0b687814fcc5cc7784dc5127045f722646c44af2658dbe85b64a411ae",
+    "src/data/model.cpp": "6b883b857191755f81beff2847020f24b3fea8ee4f7ed5a39db7ca387d034891",
+    "include/data/model.h": "a4db0160604c0525d18a636adf324212c24baa9bd09f7507113bf52a3205d6fc",
+    "include/data/geometry.h": "cdd8a4c447e086dbebacd3418580eab5a9adf800d008d2bb4b558c771017dd77",
+    "src/input_output/patch_reader.cpp": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
+    "src/adapter/adapter.cpp": "0e435708b3208614e9ac93fab8e9f518e25c44f4d3dd95d2dbd61eb26859599d",
+    "include/adapter/domain_generation_error.h": "8ed594787ce32c4d3338dfa954a13f8369608e288bf33408e60e9d9807603f8b",
+    "tests/cli_failures.py": "9888d25c803a5dfd35f4c64a3e1e58a0646294def36e7325bf3f6d72aa88131e",
+    "tests/boundary_orientation_case.py": "8d1bb10445469a68985d0efc8c3ae928c3952c150d93ab4e44f0223096388cad",
+    "tests/tooling/test_boundary_incidence.py": "f27072ffc886e4771b00a30f0edf072811add55ff39089921bbbb0e8009f4a5a",
+    "tests/typed_domain_failure_case.py": "a6a459854167604241d7ff9fe63b573d205a467449c709c63a496da2592970ca",
+    "tests/typed_domain_failure_fixture.h": "e009b3901f548444590b7ace5758128c8bd9ff7224156e04f03fb851e0495a3c",
+    "tools/run_generation_case.py": "3c23e500044185b525716e80c8e9ad56a6f2d8275b30fd47f4fecb48ef70a30d",
+    "tools/repeat_generation.py": "d2eb5522a2bdd51122c446e592f23fe851f6333162c416b37e188a6e0c449290",
+    "tools/verify_generation.py": "1b3cf1ac925d5b3c92dbb58640c5dfa1b7791fdea85ccd2708dee082294d5c8e",
+    "tools/check_boundary_incidence.py": "b450124248a535a58c69722ccace36d4ebd90804a29d720f27b6b190f07d3781"
+  },
+  "configs_sha256": {
+    "configs/eistute/article.conf": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+    "configs/book/article.conf": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+    "configs/eistute/ablation_no_sync.conf": "f69ed31afcab4af664299a54bf49f2332ac2ad4675a02e177b932f1b2c886da5"
+  },
+  "preserved_p1": {
+    "pr": 134,
+    "main": "98f99ff84858932eb7b86ea3f4ce028acf04bf1b",
+    "local_seal_sha256": "76c3e5e74abae6bc972808a1cd856dac6ffde1490f4d9d227160e1f45eaf50ed",
+    "gcc_sha256": "dd68bc1ce903149e0336ea00c2c2e8df66847d09282fe50758eba3c16a46353c",
+    "msvc_sha256": "487a35e2de3e5de5056edc34ca99ebdb5b8d1981068bd65b1e66088dcd81a935",
+    "states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "raw_article_files": 66
+  },
+  "existing_analytic_reference": {
+    "aligned_model_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444",
+    "aligned_config_sha256": "4e8eae91b6613d69608285d904ebb0ed698b2184879879952bde7df95ab39e11",
+    "retry_model_sha256": "c65a0a45f5f67b90e43183965e63d0e3b193bac862dab7ec15d53f37206983ec",
+    "retry_config_sha256": "b4d875b60ef4fc6b12674c077a8c5407c231653a0755fdc2daf2f0a9a6d58e64",
+    "retry_model": "build/windows-gcc17/orientation-controls/run-vu0vjggy/curved_reversed_3_side_2/control.bp",
+    "retry_config": "build/windows-gcc17/orientation-controls/run-vu0vjggy/curved_reversed_3_side_2/article.conf",
+    "accepted_steps": [
+      0,
+      1
+    ],
+    "rejected_steps": [
+      2,
+      3
+    ],
+    "max_retry": 1
+  },
+  "existing_orientation_report_sha256": "b474fb1a07d477a611235447b9656e6f65687b19ba6ac60e1cd3748d2f9cb800",
+  "closure_assignments": [
+    {
+      "id": "S3-01",
+      "package": "P3/P4",
+      "required": "SP-02..10 complete teardown/reconstruction; foreign-owner and same-process fresh-root/reuse contracts remain required P4 work."
+    },
+    {
+      "id": "S3-02",
+      "package": "P5",
+      "required": "Preserve bounded C30 qualification; no broader constructor/root inference."
+    },
+    {
+      "id": "S3-03",
+      "package": "P5",
+      "required": "Preserve bounded C29 qualified live borrowed curves/retirement."
+    },
+    {
+      "id": "S3-04",
+      "package": "P5",
+      "required": "Preserve bounded C26 Geometry/current-curve scope."
+    },
+    {
+      "id": "S3-05",
+      "package": "P3/P4",
+      "required": "SP-01/SP-09/SP-10 named reader/caller roots; other loaders, factories, cloning/copies/rebound/foreign observers remain open."
+    },
+    {
+      "id": "S3-06",
+      "package": "P4",
+      "required": "Failed tree is destruction-only; setters/adoption/mates/logical reuse and zero-reach outside-root retirement stay open; no automatic source audit."
+    },
+    {
+      "id": "S3-07",
+      "package": "P3/P4",
+      "required": "SP-05/SP-08 fixed live topology and owned cloning; supported public mutation/invalidation/cache/foreign contracts require explicit disposition and enforcement where promised."
+    },
+    {
+      "id": "S3-08",
+      "package": "P3/P4",
+      "required": "SP-05..10 logical retry versus terminal unwind; full metadata/history/budget/exception rollback and same-process execution remain incomplete."
+    },
+    {
+      "id": "S3-09",
+      "package": "P3; stages 4/10 also retain parallel qualification",
+      "required": "Complete-process instruments and equivalence remain open; serial case set does not discharge parallel/LSan/UBSan obligations."
+    },
+    {
+      "id": "S3-10",
+      "package": "P3/P4/P5",
+      "required": "Named input entry set is not exhaustive support. Other malformed classes, extremes, non-power-of-two complete meshes and other models remain required dispositions; no scientific widening."
+    }
+  ],
+  "exclusions_do_not_close_obligations": [
+    "same-Generator reuse/recovery",
+    "public mutation and foreign owners",
+    "broader raw loaders/Hermite/factories/copies",
+    "unmeasured malformed/extreme/non-power-of-two/model domains",
+    "MPI/OpenMP preprocessing and runtime",
+    "full metadata/history/budget/exception rollback",
+    "outside-root zero-reach retirement"
+  ],
+  "delivery": {
+    "ctest_each_exact_head_main": 74,
+    "nested_python_controls": 380,
+    "no_new_native_campaign_or_science_run": true,
+    "unchanged_non_documentation_and_prior_evidence_identity": true,
+    "zero_failures_skips_required": true
+  }
+}
