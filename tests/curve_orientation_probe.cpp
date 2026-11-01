@@ -1,8 +1,32 @@
-// Reuse the legacy runtime definitions without exposing a test mode in the CLI.
-// Stage 6 will replace this test adapter with an independently linkable library.
-#define main apmesh_uninvoked_cli_main
-#include "../src/main.cpp"
-#undef main
+#include <algorithm>
+#include "adapter/domain_generation_error.h"
+#include <atomic>
+#include <cctype>
+#include <cstdlib>
+#include <fstream>
+#include <iomanip>
+#include <stdexcept>
+#include <string>
+#include <unordered_map>
+#include <vector>
+#include "data/curve/curve_adaptive_parametric_bezier.h"
+#include "data/curve/curve_adaptive_parametric_hermite.h"
+#include "data/definitions.h"
+#include "data/model.h"
+#include "data/patch/patch_bezier.h"
+#include "data/patch/patch_hermite.h"
+#include "data/vector_adaptive.h"
+#include "data/vertex_adaptive.h"
+#include "generator/generator_adaptive.h"
+#include "input_output/models_3d.h"
+#include "input_output/input_validation.h"
+#include "input_output/patch_reader.h"
+#include "timer/timer.h"
+#include "application/runtime_config.h"
+#include "application/run_application.h"
+
+using apmesh::application::ApplyRuntimeConfig;
+using apmesh::application::LoadRuntimeConfig;
 
 #include <array>
 #include <cmath>

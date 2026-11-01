@@ -167,10 +167,9 @@ if(BUILD_TESTING)
       --exe "$<TARGET_FILE:ap_mesh>" --workspace "${CMAKE_BINARY_DIR}/metric-schema-controls")
   set_tests_properties(application.metric_schema
     PROPERTIES LABELS "application;metric-schema;required-gate" TIMEOUT 90)
-  set(orientation_probe_sources ${AP_MESH_SOURCES})
-  list(REMOVE_ITEM orientation_probe_sources "${CMAKE_SOURCE_DIR}/src/main.cpp")
   add_executable(curve_orientation_probe
-    "${CMAKE_SOURCE_DIR}/tests/curve_orientation_probe.cpp" ${orientation_probe_sources})
+    "${CMAKE_SOURCE_DIR}/tests/curve_orientation_probe.cpp")
+  target_link_libraries(curve_orientation_probe PRIVATE ap_mesh_engine)
   target_compile_features(curve_orientation_probe PRIVATE cxx_std_17)
   if(MSVC)
     target_compile_options(curve_orientation_probe PRIVATE /permissive-)
@@ -190,7 +189,8 @@ if(BUILD_TESTING)
   set_tests_properties(application.serial_cpp17_portability
     PROPERTIES LABELS "application;portability;required-gate" TIMEOUT 30)
   add_executable(attempt_metrics_probe
-    "${CMAKE_SOURCE_DIR}/tests/attempt_metrics_probe.cpp" ${orientation_probe_sources})
+    "${CMAKE_SOURCE_DIR}/tests/attempt_metrics_probe.cpp")
+  target_link_libraries(attempt_metrics_probe PRIVATE ap_mesh_engine)
   target_compile_features(attempt_metrics_probe PRIVATE cxx_std_17)
   target_include_directories(attempt_metrics_probe PRIVATE "${CMAKE_SOURCE_DIR}/include")
   if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
