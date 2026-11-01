@@ -67,6 +67,54 @@ struct Attempt {
   GeneratorAdaptive::MeshAttemptMetrics metrics;
 };
 
+void CheckGenerationContexts(const std::filesystem::path& output) {
+  const std::string saved_name = NAME_MODEL, saved_process = NUMBER_PROCESS,
+                    saved_mode = WRITE_MESH;
+  const std::string first_prefix = (output / "context-first" / "owned").generic_string();
+  const std::string second_prefix = (output / "context-second" / "owned").generic_string();
+  std::unique_ptr<GeneratorAdaptive> first;
+  {
+    apmesh::application::GenerationContext source{"first.bp", first_prefix, "h", "a"};
+    first = std::make_unique<GeneratorAdaptive>(source);
+    source = {"changed.bp", "changed-output", "m", "changed-process"};
+  }
+  GeneratorAdaptive second({"second.bp", second_prefix, "q", "b"});
+  NAME_MODEL = (output / "foreign").generic_string();
+  NUMBER_PROCESS = "foreign";
+  WRITE_MESH = "m";
+  const auto* context = first->GetGenerationContext();
+  if (context == nullptr || context->input_model != "first.bp" ||
+      context->output_prefix != first_prefix || context->write_mode != "h" ||
+      context->process_suffix != "a" ||
+      second.GetGenerationContext()->output_prefix != second_prefix)
+    throw std::runtime_error("Generation identity did not retain independent owned values");
+
+  auto mesh = MakeMesh(1);
+  const GeneratorAdaptive::MeshAttemptMetrics metric{1, 1, 1, 1, 0, 1, 0, 0, 0, 0, .5, .1};
+  first->WriteQualityMesh(mesh.get(), 0, metric);
+  second.WriteQualityMesh(mesh.get(), 0, metric);
+  first->WriteQualityMesh(mesh.get(), 1, metric);
+  const auto rows = [](const std::string& path) {
+    std::ifstream file(path);
+    std::string line;
+    unsigned count = 0;
+    while (std::getline(file, line))
+      ++count;
+    return count;
+  };
+  if (rows(first_prefix + "_n.process_a_metrics_rank_-1.csv") != 3 ||
+      rows(second_prefix + "_n.process_b_metrics_rank_-1.csv") != 2 ||
+      std::filesystem::exists(NAME_MODEL + "_n.process_foreign_metrics_rank_-1.csv"))
+    throw std::runtime_error("Interleaved generation outputs used another identity");
+  GeneratorAdaptive legacy;
+  if (legacy.GetGenerationContext() != nullptr)
+    throw std::runtime_error("Legacy generator unexpectedly captured process state");
+  NAME_MODEL = saved_name;
+  NUMBER_PROCESS = saved_process;
+  WRITE_MESH = saved_mode;
+  std::cout << "generation_context owned=2 source_retired=1 interleaved_writes=3 legacy=1\n";
+}
+
 void CheckDomainInputs(const std::string& mode) {
   GeneratorAdaptive generator;
   Geometry geometry;
@@ -211,6 +259,7 @@ int main(int argc, char* argv[]) {
   const std::filesystem::path output(argv[1]);
   if (!std::filesystem::create_directories(output))
     throw std::runtime_error("Output directory already exists");
+  CheckGenerationContexts(output);
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();
   GeneratorAdaptive generator;

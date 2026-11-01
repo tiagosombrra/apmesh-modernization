@@ -6,8 +6,8 @@
     {
       "id": "C01",
       "topic": "CLI runtime context",
-      "statement": "The thin CLI delegates to the linkable engine RunApplication entry. The runtime module validates configuration and copies RuntimeConfig values into process globals before invoking GeneratorAdaptive through the unchanged synthetic legacy arguments.",
-      "limits": "The library boundary does not remove legacy process-wide state. Independent re-entrant or concurrent configurations remain unqualified; calls must be serialized.",
+      "statement": "The thin CLI delegates to RunApplication. Validated configuration still initializes numerical/compatibility globals, while MakeGenerationContext supplies value-owned input/output identity to the explicit GeneratorAdaptive constructor. The serial reader and generator report/format decisions consume these owned strings. Its Adapter observes the stationary context for domain-log naming and retires before it. The default constructor preserves live legacy identity reads.",
+      "limits": "Only input path/output prefix/write mode/literal process suffix are isolated. Other numerical/runtime globals and alternate estimate/loader/output helpers remain shared. No reentrant/concurrent generation, same-Generator recovery or external ABI claim; calls remain serialized. Context views expire with the owner; independent Adapter observers require a live stationary context.",
       "evidence": [
         {
           "path": "src/application/runtime_config.cpp",
@@ -20,6 +20,10 @@
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "Geometry geometry;"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "generation_context_(std::move(context))"
         }
       ]
     },

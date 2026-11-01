@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `68c0402cf0232d688c713504b1863a959a0e0557` (PR #139).
+Entry main: `06afd96f60f06d4abdbe420d6223fc57b29b65c0` (PR #140).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,21 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: serial engine and thin CLI
+## Active production delivery: owned generation identity/output
+
+The [generation context lot](evidence/GENERATION_CONTEXT.md) owns input identity,
+output prefix, write mode and literal process suffix in each explicit generator.
+The CLI uses this path; the serial reader and generator outputs consume owned
+strings, while the Adapter observes the same context for domain logs. The owner
+is immovable and outlives that borrow. The existing metrics probe checks two
+identities after their source is changed/retired and interleaves three real report
+writes against conflicting globals. The default constructor preserves live legacy
+reads. Numerical policies and unmigrated globals still require serialization.
+Use the existing delivery regression and scientific reference; no new instrument
+campaign is introduced. The next production lot must bound a cohesive group of
+numerical/runtime state and its caller contract before migration.
+
+## Delivered production boundary: serial engine and thin CLI
 
 The [serial engine package](evidence/SERIAL_ENGINE.md) replaces the automatic
 CRT-instrument successor. It delivers APMesh::Engine, an independently linkable
@@ -112,8 +126,8 @@ and scientific reference; do not add a separate instrument campaign.
 The bounded 2026 milestone is this reusable serial engine/configuration/CLI
 boundary with preserved C++17 behavior. It is a stage 6 prerequisite supporting
 S3-05 caller work, not closure of Stage 3 or the whole modernization roadmap.
-The next production package must define execution-context ownership and its
-caller contract before implementation.
+Identity/output ownership is introduced by the active lot above. Numerical-state
+migration still requires a separate bounded caller contract.
 
 ## Retained instrument obligations for closure
 

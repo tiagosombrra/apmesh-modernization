@@ -1,3 +1,4 @@
+#include "application/generation_context.h"
 #include "../../include/adapter/adapter.h"
 #include "data/curve/curve_orientation.h"
 #include "adapter/curve_samples.h"
@@ -296,9 +297,9 @@ FaceMetricStats ComputeFaceMetricStats(const FaceList& faces) {
   return stats;
 }
 
-void AppendDomainDebugLog(int adaptive_step, int retry_index, int patch_index,
-                          double factor_disc_global, const FaceMetricStats& raw_stats,
-                          const FaceMetricStats& smoothed_stats,
+void AppendDomainDebugLog(const std::string& output_prefix, int adaptive_step, int retry_index,
+                          int patch_index, double factor_disc_global,
+                          const FaceMetricStats& raw_stats, const FaceMetricStats& smoothed_stats,
                           const FaceMetricStats& generated_stats,
                           const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
                           const RegionalPatchStats& regional_stats, int local_regen_attempt = 0,
@@ -307,12 +308,12 @@ void AppendDomainDebugLog(int adaptive_step, int retry_index, int patch_index,
                           int transition_underresolved = 0,
                           double interior_transition_imbalance = 0.0,
                           double curve_domain_balance = 1.0) {
-  if (!WRITE_ADAPTATION_DEBUG || NAME_MODEL.empty()) {
+  if (!WRITE_ADAPTATION_DEBUG || output_prefix.empty()) {
     return;
   }
 
   std::ostringstream name;
-  name << NAME_MODEL << "_domain_adaptation.csv";
+  name << output_prefix << "_domain_adaptation.csv";
   const bool exists = std::ifstream(name.str().c_str()).good();
   std::ofstream file(name.str().c_str(), std::ios::app);
   if (!exists) {
@@ -1033,8 +1034,8 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
 
   FaceList new_mesh = avanco.getMesh();
   const FaceMetricStats generated_stats = ComputeFaceMetricStats(new_mesh);
-  AppendDomainDebugLog(adaptive_step, retry_index, patch_index, factor_disc_global, raw_stats,
-                       smoothed_stats, generated_stats, avanco.GetRunStats());
+  AppendDomainDebugLog(OutputPrefix(), adaptive_step, retry_index, patch_index, factor_disc_global,
+                       raw_stats, smoothed_stats, generated_stats, avanco.GetRunStats());
   VertexList new_vertices = avanco.getInnerVertices();
 
   while (!new_vertices.empty()) {
@@ -1407,9 +1408,9 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
       }
     }
 
-    AppendDomainDebugLog(adaptive_step, retry_index, patch_index, local_factor, result.raw_stats,
-                         result.smoothed_stats, result.generated_stats, result.aft_stats,
-                         result.regional_stats, local_attempt, result.status,
+    AppendDomainDebugLog(OutputPrefix(), adaptive_step, retry_index, patch_index, local_factor,
+                         result.raw_stats, result.smoothed_stats, result.generated_stats,
+                         result.aft_stats, result.regional_stats, local_attempt, result.status,
                          result.degeneracy_score, result.transition_floor,
                          result.transition_underresolved, result.interior_transition_imbalance,
                          result.curve_domain_balance);
@@ -1608,4 +1609,11 @@ double Adapter::CalculateCurvatureDrivenFactor(const double ka, const double kd,
   const double adjacency_scale = 1.0 + 0.35 * std::max(0, static_cast<int>(num_patches) - 1);
 
   return ClampValue(base_factor * mismatch_scale * adjacency_scale, base_factor, base_factor * 4.0);
+}
+
+Adapter::Adapter(const apmesh::application::GenerationContext* context) noexcept
+    : generation_context_(context) {}
+
+const std::string& Adapter::OutputPrefix() const noexcept {
+  return generation_context_ ? generation_context_->output_prefix : NAME_MODEL;
 }

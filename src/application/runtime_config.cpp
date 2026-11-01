@@ -7,6 +7,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <unordered_map>
+#include <utility>
 
 namespace apmesh::application {
 namespace {
@@ -228,5 +229,8 @@ void ApplyRuntimeConfig(const RuntimeConfig& config) {
   if (ENABLE_HYBRID_RECONSTRUCTION == 0) {
     USE_TEMPLATE = "n";
   }
+}
+GenerationContext MakeGenerationContext(const RuntimeConfig& config, std::string process_suffix) {
+  return {config.input_model, config.output_prefix, config.write_mode, std::move(process_suffix)};
 }
 } // namespace apmesh::application
