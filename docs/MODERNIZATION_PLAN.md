@@ -34,10 +34,18 @@ coverage. It does not close the full instrument/case inventory or Stage 3.
 Preserve that single execution and its exact identities during documentation
 delivery; existing head/main regression does not require another ASan witness.
 
-Next single implementation: P3's remaining fixed production cases SP-01 and
-SP-03..08 with the same qualified ASan artifact. Stop expansion at the first
-unexpected failure, classify it and repair a demonstrated supported defect in a
-bounded item. Other instruments and terminal observer portability remain open.
+The next fixed campaign stopped at SP-05's 60-second cap. CPU/stack sampling
+identified allocation work in Face::quality. The [bounded scratch correction](evidence/FACE_QUALITY_SCRATCH.md)
+keeps formulas/comparison order and exact same-ABI quality/center bits while
+removing temporary heap topology. Its one candidate SP-05 completes in 13.0484s
+under the same cap, with actual rejection/retry and positive independent checks.
+Require exact delivery 75 CTest/380 nested controls, the frozen nine-state GCC
+reference and all scoped source/resource/tool gates; no scientific policy changes.
+
+Next implementation after delivery: P3's remaining/invalidation-relevant fixed
+production cases; SP-06..08 remain unrun. Stop at the first unexpected failure,
+classify it and repair a demonstrated supported defect in a bounded item. Other
+instruments and terminal observer portability remain open.
 Follow with remaining supported-caller repairs and final closure. No new model
 or scientific policy is authorized.
 

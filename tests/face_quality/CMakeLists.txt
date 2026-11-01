@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 3.20)
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  project(apmesh_face_quality LANGUAGES CXX)
+endif()
+get_filename_component(face_quality_root "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+set(AP_MESH_FACE_QUALITY_REFERENCE_SOURCE "" CACHE FILEPATH "Immutable reference face.cpp")
+set(face_quality_sources
+  crab_mesh/aft/shape.cpp crab_mesh/aft/vertex.cpp crab_mesh/aft/edge.cpp
+  crab_mesh/aft/boundary.cpp crab_mesh/aft/quadtree_cell.cpp crab_mesh/aft/quadtree.cpp
+  data/curve/curve_adaptive.cpp data/curve/curve_adaptive_parametric.cpp
+  data/point_adaptive.cpp data/vector_adaptive.cpp
+  crab_mesh/numerical/function.cpp crab_mesh/numerical/bisection_equation_root.cpp)
+list(TRANSFORM face_quality_sources PREPEND "${face_quality_root}/src/")
+add_library(face_quality_native STATIC ${face_quality_sources})
+target_include_directories(face_quality_native PRIVATE "${face_quality_root}/include")
+target_compile_features(face_quality_native PRIVATE cxx_std_17)
+if(MSVC)
+  target_compile_options(face_quality_native PRIVATE /W4 /permissive- /FS)
+endif()
+function(add_face_quality_probe target source)
+  add_executable(${target} probe.cpp allocation_control.cpp "${source}")
+  target_compile_features(${target} PRIVATE cxx_std_17)
+  target_include_directories(${target} PRIVATE "${face_quality_root}/include"
+    "${face_quality_root}/src/crab_mesh/aft")
+  target_link_libraries(${target} PRIVATE face_quality_native)
+  if(MSVC)
+    target_compile_options(${target} PRIVATE /W4 /permissive- /FS)
+  endif()
+  if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
+    target_link_options(${target} PRIVATE -static -static-libgcc -static-libstdc++)
+  endif()
+endfunction()
+add_face_quality_probe(face_quality_probe "${face_quality_root}/src/crab_mesh/aft/face.cpp")
+if(AP_MESH_FACE_QUALITY_REFERENCE_SOURCE)
+  add_face_quality_probe(face_quality_reference "${AP_MESH_FACE_QUALITY_REFERENCE_SOURCE}")
+endif()

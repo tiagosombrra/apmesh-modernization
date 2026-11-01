@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `c44f1860916ac10f914a3a179354535b4dc55ce6` (PR #135).
+Entry main: `31862ed72020038605bd677cb2b3e05c0ebf4050` (PR #136).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -47,7 +47,7 @@ input/application/prior-evidence identity, recipe replay, architecture/contracts
 whitespace and staged/remote checks. PR #135 retains its exact identities.
 
 P3's [first complete MSVC/ASan observation](evidence/SERIAL_ASAN_SP02.md) passed
-at this entry main. All 73 native units compiled with ASan in C++17 RelWithDebInfo.
+at PR #135 main. All 73 native units compiled with ASan in C++17 RelWithDebInfo.
 The actual release control passed and the actual expired read was detected.
 Natural SP-02 ran once, returned zero and passed independent physical/UV/analytic
 and boundary checks: accepted initial step 0, two patches, eight triangles and
@@ -55,23 +55,36 @@ one positive shared-boundary comparison, without an ASan diagnostic. There was
 no rejected/adaptive retry state. This is bounded complete-process evidence,
 not whole inventory, leak, CRT/LSan/UBSan or parallel qualification.
 
-Documentation delivery reuses this single ASan observation by source/tool/artifact
-identity, with the existing 74 CTest/380 nested Python controls on head/main.
-Production, fixtures, tests, scientific inputs and numerical criteria remain fixed.
+The next fixed campaign passed SP-01/03/04 but stopped at SP-05's 60-second cap.
+One bounded CPU/stack observation localized an allocation hot path in Face::quality.
+The [scratch correction](evidence/FACE_QUALITY_SCRATCH.md) changes one production
+file to coordinate-only temporaries, retaining arithmetic and comparison order.
+GCC, MSVC/ASan and checked Debug each preserve 4,230 scalar bits over 846 paired
+rows, while quality allocations fall from 12/24/36 to zero. Actual denial controls
+remain required. Public owning center APIs and all scientific policies are fixed.
+
+Candidate SP-05 then completes once in 13.0484 seconds under the same 60-second
+cap: accepted 0/1, rejected 2/3, retry 1, eight positive boundary comparisons and
+no ASan diagnostic. The original three-state prefix retains 16 exact artifacts
+and three exact metrics rows. Original failed processes remain failed evidence.
+No other ASan production case is added. The next delivery requires 75 CTest/380
+nested Python controls and the frozen nine-state GCC scientific regression on
+head/main, plus scoped analysis, resource, source/input and remote identity gates.
 
 The [closure ledger](architecture/STAGE3_CLOSURE_INVENTORY.md) still has ten
 inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Next single adjustment after the first P3 witness
+## Next single adjustment after the quality correction delivery
 
-P3: continue the fixed remaining production cases SP-01 and SP-03..08 with the
-qualified unchanged MSVC/ASan artifact. Preserve/classify the first unexpected
-failure and stop expansion. Repair a reproduced supported defect in a bounded
-item; do not create another source-only successor audit. SP-02 is not repeated
-without an invalidated dependency. Other instruments, SP-09/10 observer
-portability and all remaining cases stay unqualified until measured or justified.
+P3: continue only the finite remaining/invalidation-relevant production inventory
+after the quality correction's exact delivery gates. SP-06..08 remain unrun;
+earlier observations retain their measured artifact identities. Preserve/classify
+the first unexpected failure and stop expansion. Do not create another source-
+only successor audit or repeat identical qualified observations without a changed
+dependency. Other instruments, SP-09/10 observer portability and all remaining
+cases stay unqualified until measured or explicitly justified.
 Follow the [five work packages](architecture/REFACTOR_SEQUENCE.md). Completion is
 measured by resolved obligations or repaired defects, not test or PR counts.
 
