@@ -27,9 +27,19 @@ def prepare(root: Path, output: Path) -> dict:
         restored = generated[len(prefix):].replace(new, old)
         if restored.encode("utf-8") != original:
             raise ValueError(f"Terminal observer does not reverse exactly: {source}")
+        extra_replacements = 0
+        if name == "typed_domain_failure_fixture.h":
+            allocation = "std::make_unique<SubMesh>()"
+            external = "std::unique_ptr<SubMesh>(TerminalControlAllocateSubMesh())"
+            if generated.count(allocation) != 1 or external in generated:
+                raise ValueError("Unexpected native unwind allocation control")
+            generated = generated.replace(allocation, external)
+            if generated.replace(external, allocation)[len(prefix):].replace(new, old).encode("utf-8") != original:
+                raise ValueError("Native unwind allocation control does not reverse exactly")
+            extra_replacements = 1
         data = generated.encode("utf-8")
         (output / name).write_bytes(data)
-        records.append({"source": source, "generated": name, "replacements": count,
+        records.append({"source": source, "generated": name, "replacements": count + extra_replacements,
                         "source_sha256": hashlib.sha256(original).hexdigest(),
                         "generated_sha256": hashlib.sha256(data).hexdigest(),
                         "exact_byte_reversal": True})

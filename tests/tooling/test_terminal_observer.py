@@ -16,13 +16,26 @@ class TerminalObserverPreparationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
             result = prepare(ROOT, output)
-            self.assertEqual([row["replacements"] for row in result["files"]], [2, 1])
+            self.assertEqual([row["replacements"] for row in result["files"]], [2, 2])
             self.assertTrue(all(row["exact_byte_reversal"] for row in result["files"]))
             self.assertEqual(json.loads((output / "preparation.json").read_text()), result)
             generated = (output / "typed_domain_failure_fixture.h").read_bytes()
             original = (ROOT / "tests/typed_domain_failure_fixture.h").read_bytes()
             self.assertEqual(generated.replace(b'allocation_observer.h',
-                                               b'domain_candidate_fixture.h'), original)
+                                               b'domain_candidate_fixture.h').replace(
+                b'std::unique_ptr<SubMesh>(TerminalControlAllocateSubMesh())',
+                b'std::make_unique<SubMesh>()'), original)
+
+    def test_unwind_allocation_drift_is_refused(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "src/adapter").mkdir(parents=True)
+            (root / "src/adapter/adapter.cpp").write_text("avanco.execute(mesh_old)\n" * 2)
+            (root / "tests").mkdir()
+            (root / "tests/typed_domain_failure_fixture.h").write_text(
+                '#include "domain_candidate_fixture.h"\n' + 'std::make_unique<SubMesh>()\n' * 2)
+            with self.assertRaises(ValueError):
+                prepare(root, root / "generated")
 
     def test_missing_or_extra_call_is_refused(self):
         for count in (1, 3):

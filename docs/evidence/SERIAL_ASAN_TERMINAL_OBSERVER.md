@@ -1,5 +1,9 @@
 # Portable terminal observer candidate: qualification stopped
 
+Historical failed candidate record. The later bounded
+[repair and requalification](SERIAL_ASAN_TERMINAL_REQUALIFICATION.md) preserves
+this failure and measures the five contexts only after corrected controls pass.
+
 Classification: engineering-only test instrumentation candidate. Entry main is
 `4cdeb15393487871542909bef065074bbad158b4` (PR #138). Production sources, public
 interfaces, fixtures, configurations and scientific policies remain unchanged.

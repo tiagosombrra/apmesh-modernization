@@ -1,0 +1,241 @@
+{
+  "status": "portable_terminal_observer_requalified_and_fixed_contexts_passed",
+  "revision": "b35ef8fc17e1cb68a45686423bdf75eae2f74ee8",
+  "main_at_entry": "4cdeb15393487871542909bef065074bbad158b4",
+  "application_sha256": "a6fe1fa2f933261ebe5ba21e0a011d8bc58edcbb575e4668e8185c6b612e1455",
+  "compiled_groups": 74,
+  "production_units_represented": 73,
+  "required_flags": [
+    "/fsanitize=address",
+    "/EHsc",
+    "/we4530"
+  ],
+  "production_changes": 0,
+  "scientific_policies_unchanged": true,
+  "original_fixture_and_python_oracles_unchanged": true,
+  "controls": [
+    {
+      "name": "instrument-release",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--instrument-release"
+      ],
+      "cap_seconds": 10,
+      "started_utc": "2026-11-01T18:07:01Z",
+      "status": "passed",
+      "exit_code": 0,
+      "wall_seconds": 0.09646280016750097
+    },
+    {
+      "name": "instrument-uaf",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--instrument-uaf"
+      ],
+      "cap_seconds": 10,
+      "started_utc": "2026-11-01T18:07:01Z",
+      "status": "qualified_expected_detection",
+      "exit_code": 1,
+      "wall_seconds": 0.15177330002188683
+    },
+    {
+      "name": "observer-contracts",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--observer-contracts"
+      ],
+      "cap_seconds": 10,
+      "started_utc": "2026-11-01T18:07:01Z",
+      "status": "passed",
+      "exit_code": 0,
+      "wall_seconds": 0.06273950007744133
+    },
+    {
+      "name": "typed-contracts",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--typed-domain-contracts"
+      ],
+      "cap_seconds": 10,
+      "started_utc": "2026-11-01T18:07:02Z",
+      "status": "passed",
+      "exit_code": 0,
+      "wall_seconds": 0.036406700033694506,
+      "actual_unwind_allocation": {
+        "calls": 1,
+        "uncaught": 1,
+        "attempts": 1,
+        "denied": 1
+      }
+    }
+  ],
+  "cases": [
+    {
+      "name": "SP-09-book-p0",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--typed-domain-cli-config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\configurations\\SP-09-book-p0.conf",
+        "0"
+      ],
+      "cap_seconds": 300,
+      "started_utc": "2026-11-01T18:07:02Z",
+      "status": "passed",
+      "exit_code": 1,
+      "wall_seconds": 13.292992000002414,
+      "group": "SP-09",
+      "context": {
+        "model": "book",
+        "step": 2,
+        "patch": 0,
+        "calls": 1
+      },
+      "configuration_sha256": "34e83b6ebb9a052c76d483d1bde8926157a1f3b2d2027ffd730ac61dcb41ceee",
+      "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+      "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+      "failed_prefix_rejected": true
+    },
+    {
+      "name": "SP-09-eistute-p0",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--typed-domain-cli-config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\configurations\\SP-09-eistute-p0.conf",
+        "0"
+      ],
+      "cap_seconds": 300,
+      "started_utc": "2026-11-01T18:07:16Z",
+      "status": "passed",
+      "exit_code": 1,
+      "wall_seconds": 11.71860420005396,
+      "group": "SP-09",
+      "context": {
+        "model": "eistute",
+        "step": 2,
+        "patch": 0,
+        "calls": 2
+      },
+      "configuration_sha256": "fae2479baa5efb88b25875fba5225e75c60ab61f9f302698579b1bc112ed4000",
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "failed_prefix_rejected": true
+    },
+    {
+      "name": "SP-09-eistute-p1",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--typed-domain-cli-config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\configurations\\SP-09-eistute-p1.conf",
+        "1"
+      ],
+      "cap_seconds": 300,
+      "started_utc": "2026-11-01T18:07:29Z",
+      "status": "passed",
+      "exit_code": 1,
+      "wall_seconds": 11.88978029997088,
+      "group": "SP-09",
+      "context": {
+        "model": "eistute",
+        "step": 2,
+        "patch": 1,
+        "calls": 2
+      },
+      "configuration_sha256": "e7d3c91a69091aa22a204b9c71dc66fa88b24a35e83596dcd181a893b9a5d6a3",
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "failed_prefix_rejected": true
+    },
+    {
+      "name": "SP-10-book-p0",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--typed-domain-library-config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\configurations\\SP-10-book-p0.conf",
+        "0"
+      ],
+      "cap_seconds": 300,
+      "started_utc": "2026-11-01T18:07:41Z",
+      "status": "passed",
+      "exit_code": 0,
+      "wall_seconds": 13.143750100163743,
+      "group": "SP-10",
+      "context": {
+        "model": "book",
+        "step": 2,
+        "patch": 0,
+        "calls": 1
+      },
+      "configuration_sha256": "180e7e90e8d48e4078e6fc0a77950c3d9c1ace5f5649d97835876350320c9032",
+      "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+      "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d"
+    },
+    {
+      "name": "SP-10-eistute-p1",
+      "command": [
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\application\\RelWithDebInfo\\terminal_observer_probe.exe",
+        "--typed-domain-library-config",
+        "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\p3-msvc-asan-terminal-ehsc\\configurations\\SP-10-eistute-p1.conf",
+        "1"
+      ],
+      "cap_seconds": 300,
+      "started_utc": "2026-11-01T18:07:55Z",
+      "status": "passed",
+      "exit_code": 0,
+      "wall_seconds": 11.554001699900255,
+      "group": "SP-10",
+      "context": {
+        "model": "eistute",
+        "step": 2,
+        "patch": 1,
+        "calls": 2
+      },
+      "configuration_sha256": "fa2068e5a4801af9ebf2206132ff70303e9947af5f164981b04715a08c7f6fc7",
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f"
+    }
+  ],
+  "unrun_contexts": [],
+  "started_utc": "2026-11-01T18:07:00Z",
+  "finished_utc": "2026-11-01T18:08:08Z",
+  "unwind_control": {
+    "native_calls": 1,
+    "uncaught_exceptions": 1,
+    "attempts": 1,
+    "denied": 1
+  },
+  "failed_control_phase": {
+    "path": "build/p3-msvc-asan-terminal-unwind/verification.json",
+    "sha256": "1c4ff7d8c4a87e00901023546db8de763261747f738a00f65d5b005aab07749b",
+    "factory_calls": 0,
+    "exception_semantics_flag": false,
+    "diagnostic": "C4530"
+  },
+  "original_failed_candidate_seal_sha256": "51f412c50ebe0067cec49e28924cb930b7df93be8a2d02ef9c5e0c68a3073c2a",
+  "raw_article_files_preserved": 66,
+  "scope": "Five prescribed terminal CLI/external-Geometry contexts only; no recovery, full leak/UB/parallel or stage closure. Earlier natural application records retain their actual flags and do not qualify exception unwinding.",
+  "required_delivery": "75 CTest/385 nested Python controls on exact head and main; analysis, formatting, identities, inventory/contracts and remote gates; reuse unchanged prior nine-state scientific evidence",
+  "schema": 1,
+  "classification": "engineering-only test instrumentation/exception configuration correction",
+  "local_verification_sha256": "062714802f60ccb62ceb02c697b7dfcd5eba9f38ac30ccd3730faa31df5c5720",
+  "observer_files_sha256": {
+    "tests/terminal_observer/allocation_observer.cpp": "58fb0deb5b3549e1ff8c8a6fdeb1dab40ca508da7c388ac369906b224ab3ab73",
+    "tests/terminal_observer/allocation_observer.h": "b239ddd4b676808f2cf6b6143831c936cf575c09bc5ee78a858e7c8ad6b4d442",
+    "tests/terminal_observer/CMakeLists.txt": "8b46d1b37592c143f0647150d0781d3714c4c377bda751e815afb124a0844e6d",
+    "tests/terminal_observer/execute_observer.h": "24c479ab5ceeea78a7b870e6e11a3177cccaaa8e20dc27b8fec3338e999cb744",
+    "tests/terminal_observer/probe.cpp": "5aa4eb5d4bc0879a4d3258851df3810f0018c71de180e186eb0b86526e1df8eb",
+    "tools/prepare_terminal_observer.py": "4bea2178677d8a77f845b359c719fe4ff82e53e1103a75fbe282aaf80682a55b",
+    "tests/tooling/test_terminal_observer.py": "168fe54485c1d2160820c7e62af5f163085743e5e384b908705980168100b2ad"
+  },
+  "prior_scientific_report": {
+    "path": "build/face-quality-scratch/main/report.json",
+    "sha256": "b001d3ca207a1d1c6444f497a8967ab1219e3826d9c24ca049c67ef7207cdc45",
+    "states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123
+  },
+  "preparer_tests": {
+    "tests": 5,
+    "path": "build/p3-msvc-asan-terminal-unwind/preparer-tests.json",
+    "sha256": "b7e937e63320ba7ad27cfc1190d752c2cfe3fab4798b63ba346f8fcd169dea72"
+  }
+}

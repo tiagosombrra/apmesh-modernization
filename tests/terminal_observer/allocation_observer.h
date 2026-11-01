@@ -10,6 +10,7 @@ struct State {
   int remaining = -1, attempts = 0, denied = 0;
   bool deny_unwinding = false;
   int unwind_attempts = 0;
+  int native_control_calls = 0, native_control_uncaught = -1;
 };
 extern State state;
 inline void Require(bool condition, const char* message) {
@@ -21,5 +22,7 @@ inline void Require(bool condition, const char* message) {
 void* TerminalControlAllocate();
 void TerminalControlRelease(void* pointer);
 int TerminalControlRead(void* pointer);
+class SubMesh;
+SubMesh* TerminalControlAllocateSubMesh();
 
 #endif

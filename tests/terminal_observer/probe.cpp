@@ -38,6 +38,15 @@ int main(int argc, char* argv[]) {
     Require(!typed_domain_test::BeforeExecute(2, 1) && typed_domain_test::calls == 1,
             "Disabled observer still intercepted a context");
     domain_candidate_test::state = domain_candidate_test::State{};
+    {
+      std::unique_ptr<SubMesh> mesh(TerminalControlAllocateSubMesh());
+      Require(mesh->GetNumberNos() == 0 && mesh->GetNumberElements() == 0 &&
+                  domain_candidate_test::state.native_control_calls == 1 &&
+                  domain_candidate_test::state.native_control_uncaught == 0,
+              "Independent native SubMesh allocation was not live outside unwinding");
+    }
+    std::puts("terminal_native_submesh allocation=1 release=1 uncaught=0");
+    domain_candidate_test::state = domain_candidate_test::State{};
     domain_candidate_test::state.active = true;
     domain_candidate_test::state.remaining = 0;
     bool denied = false;
@@ -64,8 +73,14 @@ int main(int argc, char* argv[]) {
     std::puts("terminal_instrument release=1");
     return 0;
   }
-  if (argc == 2 && std::strcmp(argv[1], "--typed-domain-contracts") == 0)
-    return typed_domain_test::RunTypes();
+  if (argc == 2 && std::strcmp(argv[1], "--typed-domain-contracts") == 0) {
+    const int code = typed_domain_test::RunTypes();
+    const auto& state = domain_candidate_test::state;
+    std::printf("terminal_unwind_allocation calls=%d uncaught=%d attempts=%d denied=%d\n",
+                state.native_control_calls, state.native_control_uncaught, state.unwind_attempts,
+                state.denied);
+    return code;
+  }
   if (argc == 4 && std::strcmp(argv[1], "--typed-domain-library-config") == 0)
     return typed_domain_test::RunLibrary(argv[2], std::stoi(argv[3]));
   if (argc == 4 && std::strcmp(argv[1], "--typed-domain-cli-config") == 0) {

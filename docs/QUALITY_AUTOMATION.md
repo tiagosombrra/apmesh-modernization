@@ -1,16 +1,19 @@
 # Local quality automation
 
-## Portable terminal observer candidate
+## Portable terminal observer requalification
 
-The [terminal observer candidate](evidence/SERIAL_ASAN_TERMINAL_OBSERVER.md) uses
-reversible test copies and unchanged terminal fixture bodies. Its complete-target
-MSVC/ASan build and three controls pass, but the unwind-allocation prerequisite
-fails after nine payload rows. Preserve that exact binary/source/log evidence;
-stop before all five directed contexts. No further native run or large regression
-is authorized as a substitute for failed calibration. Keep the candidate draft-
-only and do not integrate. After a bounded repair, require actual independent
-unwind allocation detection, all prerequisite controls and the fixed contexts,
-then exact-head/main regression and source/input/remote gates.
+The [qualified terminal observer](evidence/SERIAL_ASAN_TERMINAL_REQUALIFICATION.md)
+requires actual external SubMesh allocation, one uncaught exception/attempt/denial,
+the unchanged payload/CLI/library oracles and all five fixed contexts. Verify
+/fsanitize=address, /EHsc and /we4530 on all 74 actual compiler groups. Preserve
+both failed qualifications and original source/fixture/control identities.
+Require exact-head/main 75 CTest entries with zero failures/skips and 385 nested
+Python controls, scoped read-only analysis, formatting/whitespace, contracts/
+inventory, source/input/runtime/prior-seal and remote/staged checks. Reuse the
+single successful five-context measurement and unchanged nine-state GCC report
+(45 exact artifacts, 123 boundary comparisons); do not rebuild or repeat native
+campaigns for delivery. Earlier natural-process flags do not qualify exception
+unwinding. Other instruments and Stage 3 closure remain open.
 
 ## Remaining fixed serial ASan production cases
 

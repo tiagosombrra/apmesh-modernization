@@ -469,7 +469,7 @@
     },
     {
       "path": "tests/terminal_observer/CMakeLists.txt",
-      "sha256": "0994e3343d739ccefe370d28838dd8e528f0c35337de05abe6669627cd2dda65"
+      "sha256": "8b46d1b37592c143f0647150d0781d3714c4c377bda751e815afb124a0844e6d"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",

@@ -4,6 +4,8 @@
 #include <exception>
 #include <new>
 
+#include "data/mesh/sub_mesh.h"
+
 namespace domain_candidate_test {
 State state;
 }
@@ -41,3 +43,16 @@ void operator delete[](void* value, std::size_t) noexcept { std::free(value); }
 void* TerminalControlAllocate() { return new int(73); }
 void TerminalControlRelease(void* pointer) { delete static_cast<int*>(pointer); }
 int TerminalControlRead(void* pointer) { return *static_cast<volatile int*>(pointer); }
+
+SubMesh* TerminalControlAllocateSubMesh() {
+  ++domain_candidate_test::state.native_control_calls;
+  domain_candidate_test::state.native_control_uncaught = std::uncaught_exceptions();
+  // An explicit allocation-function call is observable even if a new-expression could be elided.
+  void* storage = ::operator new(sizeof(SubMesh));
+  try {
+    return ::new (storage) SubMesh();
+  } catch (...) {
+    ::operator delete(storage);
+    throw;
+  }
+}

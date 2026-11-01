@@ -46,12 +46,15 @@ P3's [remaining fixed ASan production cases](evidence/SERIAL_ASAN_REMAINING.md)
 now pass: two Eistute and two Book executions preserve exact repeatability and
 246 positive boundary comparisons; the no-sync process returns zero. All five
 use the existing artifact and unchanged 300-second caps, with no ASan diagnostic.
-The [portable full-caller observer candidate](evidence/SERIAL_ASAN_TERMINAL_OBSERVER.md)
-compiles, but its unchanged unwind-allocation prerequisite fails after nine valid
-payload rows. Stop is observed with zero directed SP-09/10 launches. Draft review
-only: qualification/integration remains blocked and no production defect is
-inferred. Next: repair and requalify that actual allocation control, retaining
-the terminal oracles, before the five fixed contexts.
+The [portable terminal observer requalification](evidence/SERIAL_ASAN_TERMINAL_REQUALIFICATION.md)
+repairs the test allocation control and demonstrated missing exception semantics.
+All 74 instrumented groups now require /EHsc; C4530 is an error. Actual unwind
+allocation denial and the original terminal oracles pass, then the five fixed
+SP-09/10 contexts pass once with no unexpected ASan diagnostic. Preserve both
+failed qualifications and all earlier artifact scopes. Require exact-head/main
+75 CTest/385 nested controls and identity/quality/remote gates; reuse unchanged
+scientific and native observations. Next: qualify complete-process CRT checkpoints
+with actual release/retained-storage/hook controls before fixed cases.
 Stop at the first unexpected failure. Other instruments and caller obligations
 remain open; this does not close the entire W-ASAN profile or Stage 3.
 Follow with remaining supported-caller repairs and final closure. No new model

@@ -26,10 +26,12 @@ no-sync CLI teardown. It contributes bounded observations to S3-01/08/09. It doe
 not establish same-Generator reuse, full observer safety or leak/UB accounting;
 all ten rows retain their current dispositions.
 
-The [portable terminal observer candidate](../evidence/SERIAL_ASAN_TERMINAL_OBSERVER.md)
-is unqualified: its unwind-allocation prerequisite fails before any SP-09/10
-context. This is a retained instrument limitation, not a supported production
-defect or qualified caller. Integration and stage closure stay blocked.
+The [terminal observer requalification](../evidence/SERIAL_ASAN_TERMINAL_REQUALIFICATION.md)
+retains the failed prerequisite artifacts and repairs the demonstrated test-target
+exception configuration. All five SP-09/10 contexts now pass their unchanged
+terminal/owner/sample oracles under the qualified MSVC/ASan observer. These are
+bounded S3-01/05/08/09 observations; no same-Generator recovery, full leak/UB/
+parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 

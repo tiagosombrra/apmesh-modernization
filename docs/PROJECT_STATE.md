@@ -80,26 +80,30 @@ comparisons total. The existing no-sync configuration returns zero through norma
 CLI teardown; it does not qualify synchronized boundaries. Other instrument and
 caller obligations remain open.
 
-The [portable terminal observer candidate](evidence/SERIAL_ASAN_TERMINAL_OBSERVER.md)
-builds with all production units under MSVC/ASan. Release, actual expired-read
-detection and selected/excluded/disabled observer/allocation controls pass. Its
-typed prerequisite passes nine payload rows but fails the unchanged allocation-
-during-unwinding control. The campaign stops before every SP-09/10 context.
-The candidate remains unqualified and draft-only; integration is blocked.
-Production and prior evidence are unchanged; no repeated campaign substitutes
-for the missing qualification.
+The [terminal observer requalification](evidence/SERIAL_ASAN_TERMINAL_REQUALIFICATION.md)
+now passes. An external actual SubMesh allocation and explicit counters exposed
+the missing /EHsc exception semantics (C4530). The standalone test target now
+requires /EHsc and treats C4530 as an error; all 74 instrumented groups are checked.
+Four prerequisites pass, including nine typed payload rows and one actual
+unwind allocation denied with one uncaught exception. Only then do all five
+fixed SP-09/10 contexts pass their exact CLI/library oracles, without unexpected
+ASan diagnostics. Original failed artifacts remain failed and intact.
+Production, scientific policies and original fixture/oracle files are unchanged.
+Earlier natural ASan records retain their actual flags; they do not establish
+exception unwinding. No canonical application campaign is repeated.
 
 The [closure ledger](architecture/STAGE3_CLOSURE_INVENTORY.md) still has ten
 inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Next single adjustment after the stopped terminal observer qualification
+## Next single adjustment after terminal observer delivery
 
-P3: repair and requalify the demonstrated unwind-allocation control in the portable
-complete-caller observer, preserving an actual allocation and the existing terminal
-oracles. Only after all prerequisites pass may the five fixed SP-09/10 contexts
-run; no context has been measured by the candidate yet.
+P3: qualify the complete-process CRT observer/checkpoints with actual clean
+release, deliberate retained-storage and allocation-hook controls before any
+fixed-context campaign. SP-09/10 now have their five bounded MSVC/ASan terminal
+observations; complete-process retained-storage/UB and remaining caller obligations
+are still open. Do not repeat the unchanged terminal contexts for delivery.
 SP-06..08 now pass; earlier observations retain their measured artifact identities.
 Preserve/classify the first unexpected failure and stop expansion. Do not create
 another source-only successor audit or repeat identical qualified observations

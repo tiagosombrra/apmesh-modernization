@@ -17,7 +17,7 @@ target_compile_features(terminal_observer_probe PRIVATE cxx_std_17)
 target_include_directories(terminal_observer_probe PRIVATE "${terminal_generated}"
   "${CMAKE_CURRENT_SOURCE_DIR}" "${terminal_root}/include" "${terminal_root}/src/adapter")
 if(MSVC)
-  target_compile_options(terminal_observer_probe PRIVATE /W4 /permissive- /FS)
+  target_compile_options(terminal_observer_probe PRIVATE /W4 /permissive- /FS /EHsc /we4530)
 endif()
 if(MINGW)
   target_compile_options(terminal_observer_probe PRIVATE -fno-strict-aliasing)
