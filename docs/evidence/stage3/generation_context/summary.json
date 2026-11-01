@@ -1,0 +1,27 @@
+{
+  "classification": "engineering-only owned generation identity/output context",
+  "entry_main": "06afd96f60f06d4abdbe420d6223fc57b29b65c0",
+  "fields": [
+    "input_model",
+    "output_prefix",
+    "write_mode",
+    "process_suffix"
+  ],
+  "owner": "GeneratorAdaptive optional value; immovable owner",
+  "observer": "Adapter const pointer; retired before owned value",
+  "cli": "MakeGenerationContext from validated RuntimeConfig; serial reader and all generator output naming/format access use owned fields",
+  "compatibility": "Default constructor retains live legacy identity reads; compatibility globals and numerical policies remain",
+  "generator_reads_migrated": {
+    "NAME_MODEL": 18,
+    "WRITE_MESH": 18,
+    "NUMBER_PROCESS": 6
+  },
+  "adapter_debug_calls": 2,
+  "existing_native_contract": "application.attempt_metrics adds two owned identities, source mutation/retirement and three interleaved output writes; existing metric expectations unchanged",
+  "source_proof_sha256": "c985abc45fe7c17e3a4c25754de27cc62c8382a30745efea774b0a18f6c0b861",
+  "gcc_build_exit": 0,
+  "msvc_build_exit": 0,
+  "scoped_analysis_exit": 0,
+  "required_delivery": "Existing 75 CTest/385 Python controls, nine-state/45-exact-artifact/123-boundary scientific regression, MSVC CLI negatives and analytic case, source/format/inventory/contracts and exact-head/main/remote gates",
+  "limits": "Metadata ownership only; no independent numerical contexts, reentrant/concurrent generation, recovery, parallel or Stage 3/6 closure"
+}

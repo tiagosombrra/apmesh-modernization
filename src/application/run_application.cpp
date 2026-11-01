@@ -63,11 +63,11 @@ int RunApplication(int argc, char** argv) {
       synthetic_args.push_back(nullptr);
 
       if (RANK_MPI == 0) {
-        cout << "Metodo por config: mode=" << ADAPTIVE_MODE << ", input=" << INPUT_MODEL
-             << ", output=" << NAME_MODEL << ", threads=" << config.num_threads << endl;
+        cout << "Metodo por config: mode=" << ADAPTIVE_MODE << ", input=" << config.input_model
+             << ", output=" << config.output_prefix << ", threads=" << config.num_threads << endl;
       }
 
-      GeneratorAdaptive generator;
+      GeneratorAdaptive generator(MakeGenerationContext(config, NUMBER_PROCESS));
       int run_rc = 0;
 #if USE_MPI
       run_rc = generator.Execute(synthetic_args.data(), &timer, status);

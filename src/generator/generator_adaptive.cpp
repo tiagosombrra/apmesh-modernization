@@ -28,6 +28,7 @@
 #include <filesystem>
 #include <system_error>
 #include <stdexcept>
+#include <utility>
 
 namespace {
 
@@ -579,6 +580,26 @@ unsigned int ResolvePatchIndex(const Geometry* geometry, Patch* patch) {
 
 GeneratorAdaptive::GeneratorAdaptive() {}
 
+GeneratorAdaptive::GeneratorAdaptive(apmesh::application::GenerationContext context)
+    : generation_context_(std::move(context)), adapter_(&*generation_context_) {}
+
+const apmesh::application::GenerationContext*
+GeneratorAdaptive::GetGenerationContext() const noexcept {
+  return generation_context_ ? &*generation_context_ : nullptr;
+}
+
+const std::string& GeneratorAdaptive::OutputPrefix() const noexcept {
+  return generation_context_ ? generation_context_->output_prefix : NAME_MODEL;
+}
+
+const std::string& GeneratorAdaptive::WriteMode() const noexcept {
+  return generation_context_ ? generation_context_->write_mode : WRITE_MESH;
+}
+
+const std::string& GeneratorAdaptive::ProcessSuffix() const noexcept {
+  return generation_context_ ? generation_context_->process_suffix : NUMBER_PROCESS;
+}
+
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   AdaptivePolicyRuntime policy;
   policy.mode = ADAPTIVE_MODE.empty() ? "legacy" : ADAPTIVE_MODE;
@@ -786,9 +807,11 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
   // Models3d models3d;
   // model.SetGeometry(models3d.ModelPneu(geometry));
 
-  if (argv[3]) {
+  const char* input_model =
+      generation_context_ ? generation_context_->input_model.c_str() : argv[3];
+  if (input_model) {
     timer->InitTimerParallel(0, 0, 5); // Leitura arquivo
-    model.SetGeometry(patch_reader.ReaderFilePatches(&geometry, argv[3]));
+    model.SetGeometry(patch_reader.ReaderFilePatches(&geometry, input_model));
     timer->EndTimerParallel(0, 0, 5); // Leitura arquivo
   } else {
     Models3d models3d;
@@ -1379,8 +1402,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                      std::vector<double>(static_cast<size_t>(size_patch), 1.0), last_submesh_error_,
                      true);
   timer->InitTimerParallel(0, 0, 11);
-  if (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
-      WRITE_MESH == std::string("h")) {
+  if (WriteMode() == std::string("m") || WriteMode() == std::string("q") ||
+      WriteMode() == std::string("h")) {
     const MeshAttemptMetrics initial_attempt{error_local_process_,
                                              error_local_process_,
                                              error_step_.front(),
@@ -2237,13 +2260,13 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
              << " (score=" << acceptance_score
              << ", crescimento_elementos=" << element_growth_factor << ")" << endl;
       }
-      if (mesh_ && (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
-                    WRITE_MESH == std::string("h"))) {
+      if (mesh_ && (WriteMode() == std::string("m") || WriteMode() == std::string("q") ||
+                    WriteMode() == std::string("h"))) {
         cout << "Salvando malha candidata rejeitada para analise no step " << this->step_ << endl;
       }
 #endif
-      if (mesh_ && (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
-                    WRITE_MESH == std::string("h"))) {
+      if (mesh_ && (WriteMode() == std::string("m") || WriteMode() == std::string("q") ||
+                    WriteMode() == std::string("h"))) {
         timer->InitTimerParallel(0, 0, 11);
         SaveMesh(std::move(mesh_), step_, attempt);
         timer->EndTimerParallel(0, 0, 11);
@@ -2416,8 +2439,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 #endif // USE_MPI
 
     timer->InitTimerParallel(0, 0, 11);
-    if (WRITE_MESH == std::string("m") || WRITE_MESH == std::string("q") ||
-        WRITE_MESH == std::string("h")) {
+    if (WriteMode() == std::string("m") || WriteMode() == std::string("q") ||
+        WriteMode() == std::string("h")) {
       SaveMesh(std::move(mesh_), step_, attempt);
     }
     WritePatchAdaptationLog(step_, true);
@@ -4608,7 +4631,7 @@ void GeneratorAdaptive::WritePatchAdaptationLog(int step, bool accepted) const {
   }
 
   std::ostringstream name;
-  name << NAME_MODEL << "_passo_" << step << "_patch_adaptation_"
+  name << OutputPrefix() << "_passo_" << step << "_patch_adaptation_"
        << (accepted ? "accepted" : "rejected") << ".csv";
   EnsureOutputParentDirectories(name.str());
   std::ofstream file(name.str().c_str());
@@ -4695,7 +4718,7 @@ void GeneratorAdaptive::WriteCurveAdaptationLog(int step, bool accepted) const {
   }
 
   std::ostringstream name;
-  name << NAME_MODEL << "_passo_" << step << "_curve_adaptation_"
+  name << OutputPrefix() << "_passo_" << step << "_curve_adaptation_"
        << (accepted ? "accepted" : "rejected") << ".csv";
   EnsureOutputParentDirectories(name.str());
   std::ofstream file(name.str().c_str());
@@ -4731,8 +4754,8 @@ void GeneratorAdaptive::WriteAcceptanceLog(int step, double score, const MeshQua
   }
 
   std::ostringstream name;
-  name << NAME_MODEL << "_passo_" << step << "_acceptance_" << (accepted ? "accepted" : "rejected")
-       << ".log";
+  name << OutputPrefix() << "_passo_" << step << "_acceptance_"
+       << (accepted ? "accepted" : "rejected") << ".log";
   EnsureOutputParentDirectories(name.str());
   std::ofstream file(name.str().c_str());
   if (!file.good()) {
@@ -6075,23 +6098,23 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_, vector<double>
   stringstream nome;
   stringstream nome_obj;
   if (rank == -1) {
-    nome << NAME_MODEL;
+    nome << OutputPrefix();
     nome << "_passo_";
     nome << step_;
     nome << "_malha_";
     nome << step_;
     nome << ".pos";
 
-    nome_obj << NAME_MODEL;
+    nome_obj << OutputPrefix();
     nome_obj << "_passo_";
     nome_obj << step_;
     nome_obj << "_malha_";
     nome_obj << step_;
     nome_obj << ".obj";
   } else {
-    nome << NAME_MODEL;
+    nome << OutputPrefix();
     nome << "_n.process_";
-    nome << NUMBER_PROCESS;
+    nome << ProcessSuffix();
     nome << "_passo_";
     nome << step_;
     nome << "_malha_";
@@ -6100,9 +6123,9 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_, vector<double>
     nome << rank;
     nome << ".pos";
 
-    nome_obj << NAME_MODEL;
+    nome_obj << OutputPrefix();
     nome_obj << "_n.process_";
-    nome_obj << NUMBER_PROCESS;
+    nome_obj << ProcessSuffix();
     nome_obj << "_passo_";
     nome_obj << step_;
     nome_obj << "_malha_";
@@ -6243,9 +6266,9 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_, vector<double>
   // cout<< "INIT >> ANÁLISE DOS ELEMENTOS DA MALHA GERADA"<< endl;
   stringstream nameFile;
 
-  nameFile << NAME_MODEL;
+  nameFile << OutputPrefix();
   nameFile << "_n.process_";
-  nameFile << NUMBER_PROCESS;
+  nameFile << ProcessSuffix();
   nameFile << "_passo_";
   nameFile << step_;
   nameFile << "_qualite_";
@@ -6341,9 +6364,9 @@ void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_, vector<double>
 void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
                                          const MeshAttemptMetrics& attempt, int rank) {
   stringstream nameFile;
-  nameFile << NAME_MODEL;
+  nameFile << OutputPrefix();
   nameFile << "_n.process_";
-  nameFile << NUMBER_PROCESS;
+  nameFile << ProcessSuffix();
   nameFile << "_passo_";
   nameFile << step_;
   nameFile << "_qualite_";
@@ -6874,9 +6897,9 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   file.close();
 
   stringstream csvName;
-  csvName << NAME_MODEL;
+  csvName << OutputPrefix();
   csvName << "_n.process_";
-  csvName << NUMBER_PROCESS;
+  csvName << ProcessSuffix();
   csvName << "_metrics_rank_";
   csvName << rank;
   csvName << ".csv";
@@ -7013,7 +7036,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
 }
 
 void GeneratorAdaptive::WriteCompatibilitySummary(const Geometry* geometry) const {
-  if (geometry == nullptr || NAME_MODEL.empty()) {
+  if (geometry == nullptr || OutputPrefix().empty()) {
     return;
   }
 
@@ -7053,7 +7076,7 @@ void GeneratorAdaptive::WriteCompatibilitySummary(const Geometry* geometry) cons
   }
 
   std::ostringstream name;
-  name << NAME_MODEL << "_compatibility_summary.csv";
+  name << OutputPrefix() << "_compatibility_summary.csv";
   EnsureOutputParentDirectories(name.str());
   const bool exists = std::ifstream(name.str().c_str()).good();
   std::ofstream file(name.str().c_str(), std::ios::app);
@@ -7063,14 +7086,14 @@ void GeneratorAdaptive::WriteCompatibilitySummary(const Geometry* geometry) cons
             "desynchronized_groups,compat_error_mean,compat_error_max"
          << std::endl;
   }
-  file << NAME_MODEL << "," << ENABLE_SHARED_CURVE_SYNC << "," << ENABLE_HYBRID_RECONSTRUCTION
+  file << OutputPrefix() << "," << ENABLE_SHARED_CURVE_SYNC << "," << ENABLE_HYBRID_RECONSTRUCTION
        << "," << error_step_.size() << "," << geometry->GetNumberCurves() << "," << groups.size()
        << "," << multi_incident_features << "," << compared_groups << "," << desynchronized_groups
        << "," << compatibility_error_mean << "," << compatibility_error_max << std::endl;
 }
 
 void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
-  if (timer == nullptr || NAME_MODEL.empty() || WRITE_RUNTIME_SUMMARY == 0) {
+  if (timer == nullptr || OutputPrefix().empty() || WRITE_RUNTIME_SUMMARY == 0) {
     return;
   }
 
@@ -7079,7 +7102,7 @@ void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
       error_step_.size() > 1U ? static_cast<unsigned int>(error_step_.size() - 1U) : 0U;
 
   std::ostringstream name;
-  name << NAME_MODEL << "_runtime_summary.csv";
+  name << OutputPrefix() << "_runtime_summary.csv";
   EnsureOutputParentDirectories(name.str());
   const bool exists = std::ifstream(name.str().c_str()).good();
   std::ofstream file(name.str().c_str(), std::ios::app);
@@ -7115,7 +7138,7 @@ void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
     }
     const double per_iteration_ms =
         measured_steps > 0U ? (1000.0 * total_seconds / static_cast<double>(measured_steps)) : 0.0;
-    file << NAME_MODEL << "," << ENABLE_SHARED_CURVE_SYNC << "," << ENABLE_HYBRID_RECONSTRUCTION
+    file << OutputPrefix() << "," << ENABLE_SHARED_CURVE_SYNC << "," << ENABLE_HYBRID_RECONSTRUCTION
          << "," << measured_steps << "," << type << "," << TimerTypeName(type) << ","
          << total_seconds << "," << per_iteration_ms << std::endl;
   }
@@ -7131,31 +7154,31 @@ void GeneratorAdaptive::SaveMesh(std::unique_ptr<MeshAdaptive> malha, int step_,
 
 #if !USE_MPI
   const std::string incidence_path =
-      NAME_MODEL + "_passo_" + std::to_string(step_) + "_incidences.json";
+      OutputPrefix() + "_passo_" + std::to_string(step_) + "_incidences.json";
   EnsureOutputParentDirectories(incidence_path);
   apmesh::io::WriteIncidenceSnapshot(*saved_mesh, incidence_path, step_);
 #endif
 
 #if USE_MPI
-  if (WRITE_MESH == std::string("q")) {
+  if (WriteMode() == std::string("q")) {
     PrintElments(saved_mesh, step_, this->error_step_, RANK_MPI);
     WriteQualityMesh(saved_mesh, step_, attempt, RANK_MPI);
-  } else if (WRITE_MESH == std::string("m")) {
+  } else if (WriteMode() == std::string("m")) {
     PrintElments(saved_mesh, step_, this->error_step_, RANK_MPI);
     WriteMesh(saved_mesh, step_, this->error_step_, RANK_MPI);
-  } else if (WRITE_MESH == std::string("h")) {
+  } else if (WriteMode() == std::string("h")) {
     PrintElments(saved_mesh, step_, this->error_step_, RANK_MPI);
     WriteMesh(saved_mesh, step_, this->error_step_, RANK_MPI);
     WriteQualityMesh(saved_mesh, step_, attempt, RANK_MPI);
   }
 #else
-  if (WRITE_MESH == std::string("q")) {
+  if (WriteMode() == std::string("q")) {
     PrintElments(saved_mesh, step_, this->error_step_);
     WriteQualityMesh(saved_mesh, step_, attempt);
-  } else if (WRITE_MESH == std::string("m")) {
+  } else if (WriteMode() == std::string("m")) {
     PrintElments(saved_mesh, step_, this->error_step_);
     WriteMesh(saved_mesh, step_, this->error_step_);
-  } else if (WRITE_MESH == std::string("h")) {
+  } else if (WriteMode() == std::string("h")) {
     PrintElments(saved_mesh, step_, this->error_step_);
     WriteMesh(saved_mesh, step_, this->error_step_);
     WriteQualityMesh(saved_mesh, step_, attempt);
@@ -7270,6 +7293,6 @@ void GeneratorAdaptive::PrintElments(MeshAdaptive* malha, int step_,
     Nt += sub->GetNumberElements();
   }
 
-  cout << "#elementos_" << NAME_MODEL << "_n.process_" << NUMBER_PROCESS << "_passo_" << step_
+  cout << "#elementos_" << OutputPrefix() << "_n.process_" << ProcessSuffix() << "_passo_" << step_
        << "_rank_" << rank << " = " << Nt << endl;
 }

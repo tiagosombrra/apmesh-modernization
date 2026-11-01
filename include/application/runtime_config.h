@@ -2,6 +2,7 @@
 #define APMESH_APPLICATION_RUNTIME_CONFIG_H
 
 #include "application/runtime_state.h"
+#include "application/generation_context.h"
 
 namespace apmesh::application {
 struct RuntimeConfig {
@@ -56,6 +57,8 @@ struct RuntimeConfig {
 
 RuntimeConfig LoadRuntimeConfig(const std::string& path);
 void ApplyRuntimeConfig(const RuntimeConfig& config);
+GenerationContext MakeGenerationContext(const RuntimeConfig& config,
+                                        std::string process_suffix = {});
 } // namespace apmesh::application
 
 #endif

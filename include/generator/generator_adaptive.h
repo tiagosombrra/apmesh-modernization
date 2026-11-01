@@ -9,8 +9,10 @@
 #include <list>
 #include <map>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
+#include "application/generation_context.h"
 
 #include "../adapter/adapter.h"
 #include "../crab_mesh/performer/ranged_id_manager.h"
@@ -387,7 +389,15 @@ public:
   typedef std::vector<std::pair<int, MeshAdaptive*>> ErrorMeshVector;
 
   GeneratorAdaptive();
+  explicit GeneratorAdaptive(apmesh::application::GenerationContext context);
+  GeneratorAdaptive(const GeneratorAdaptive&) = delete;
+  GeneratorAdaptive& operator=(const GeneratorAdaptive&) = delete;
+  GeneratorAdaptive(GeneratorAdaptive&&) = delete;
+  GeneratorAdaptive& operator=(GeneratorAdaptive&&) = delete;
   ~GeneratorAdaptive() = default;
+
+  // Null denotes the compatibility path that observes the legacy identity globals.
+  const apmesh::application::GenerationContext* GetGenerationContext() const noexcept;
 
 #if USE_MPI
   int Execute(char* argv[], Timer* timer, MPI_Status status);
@@ -607,6 +617,11 @@ private:
   std::vector<double> current_patch_target_h_;
   std::vector<int> current_patch_quadtree_depth_cap_;
   std::vector<double> current_curve_target_points_;
+  const std::string& OutputPrefix() const noexcept;
+  const std::string& WriteMode() const noexcept;
+  const std::string& ProcessSuffix() const noexcept;
+  // Declared first so the Adapter borrow retires before the owned strings.
+  std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;
   std::string stop_reason_;
   unsigned long long current_gauss_nodes_;

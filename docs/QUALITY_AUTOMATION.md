@@ -1,5 +1,16 @@
 # Local quality automation
 
+## Owned generation identity/output
+
+The [generation context lot](evidence/GENERATION_CONTEXT.md) uses the existing
+75 CTest entries and 385 Python controls. Require the native metrics marker for
+two owned identities, retired source and three interleaved outputs, plus the
+unchanged metric oracle, nine-state/45-artifact/123-boundary scientific comparison,
+GCC/MSVC builds and existing MSVC CLI controls on exact head/main. Check source
+reversal modulo identity access substitutions, scoped analysis and all standard
+format/inventory/contracts/identity/remote gates. No standalone instrument or new
+scientific matrix is required; historical ASan evidence keeps its artifact scope.
+
 ## Serial engine production package
 
 The [engine/runtime extraction](evidence/SERIAL_ENGINE.md) uses existing validation:
