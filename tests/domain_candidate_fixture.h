@@ -254,6 +254,7 @@ class DomainCandidateFixture {
   }
 
 public:
+  static void PromoteRetry(GeneratorAdaptive& generator) { generator.PromoteAdaptiveRetry(); }
   static int RunSnapshots();
   static int Run(bool release_control) {
     try {

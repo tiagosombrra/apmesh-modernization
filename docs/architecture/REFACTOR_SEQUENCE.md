@@ -20,9 +20,10 @@ their declared scope. No partial result closes the stage.
 The [engine/runtime/CLI boundary](../evidence/SERIAL_ENGINE.md) is delivered. The
 [owned identity/output context](../evidence/GENERATION_CONTEXT.md) is delivered.
 The [typed execution request](../evidence/TYPED_GENERATION_REQUEST.md) is delivered.
-The single active item is [adaptive-policy input ownership](../evidence/ADAPTIVE_POLICY_CONTEXT.md):
-own six policy-construction inputs, pass shared raw values to Adapter, preserve
-legacy callers and reuse the existing regression/scientific reference. Instrument
+The [adaptive-policy inputs](../evidence/ADAPTIVE_POLICY_CONTEXT.md) are delivered.
+The single active item is [stopping/retry criteria ownership](../evidence/STOP_RETRY_CONTEXT.md):
+own eleven criteria, keep effective retry promotion local for owned settings and
+preserve legacy updates, comparisons/reports and the existing regression. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 

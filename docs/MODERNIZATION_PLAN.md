@@ -22,12 +22,18 @@ The delivered [typed execution request](evidence/TYPED_GENERATION_REQUEST.md) re
 synthetic argv from the CLI-to-engine path while retaining the raw-argument bridge,
 CLI transcript and source input precedence. It is an engineering caller-contract
 delivery supporting S3-05 and stage 6, not a numerical-policy migration or closure.
-The active [adaptive-policy context](evidence/ADAPTIVE_POLICY_CONTEXT.md) owns six
+The delivered [adaptive-policy context](evidence/ADAPTIVE_POLICY_CONTEXT.md) owns six
 policy-construction inputs and supplies the same raw values to Adapter domain
 decisions. Preserve formulas, operation order and the optional legacy fallback;
 validate ownership/differential controls within the existing metrics probe and
 reuse the unchanged scientific reference. Remaining runtime globals/mutations
 stay serialized; no new scientific policy or stage closure is introduced.
+The active [stopping/retry context](evidence/STOP_RETRY_CONTEXT.md) owns eleven
+criteria, with separate effective retry promotion for an owned generator and the
+original live/global compatibility path. Preserve all comparisons, ordering,
+diagnostic/report spelling and the stable max(1,count) rule. Reuse the existing
+metrics/scientific/delivery gates; remaining geometry tolerances, relaxation and
+budget controls are outside this bounded caller-contract delivery.
 
 ## Current stage and completion route
 

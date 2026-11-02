@@ -315,6 +315,80 @@ extern "C" bool WrappedDomainExecute(AdvancingFront* front, const FaceList& prev
   }
   return RealDomainExecute(front, previous);
 }
+
+void CheckStopRetryContexts() {
+  using apmesh::application::StopRetryConfig;
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildStopRetryRuntime();
+  const auto apply = [](const StopRetryConfig& config) {
+    EPSYLON = config.global_error_target;
+    MIN_IMPROVEMENT = config.minimum_improvement;
+    PATIENCE = config.patience;
+    TOL_LOCAL = config.local_error_target;
+    ADAPTIVE_RETRY_COUNT = config.retry_count;
+    ADAPTIVE_RETRY_SHRINK = config.retry_shrink;
+    MAX_RETRY_ELEMENT_GROWTH_FACTOR = config.growth_factor_limit;
+    MAX_RETRY_ELEMENT_GROWTH_ABS = config.growth_absolute_limit;
+    ERROR_FLOOR = config.error_floor;
+    MIN_ERROR_DROP_ABS = config.minimum_error_drop;
+    MIN_ERROR_DROP_PER_ELEMENT = config.minimum_error_drop_per_element;
+  };
+  const auto equal = [](const StopRetryConfig& a, const StopRetryConfig& b) {
+    const std::array<double, 9> first{{a.global_error_target, a.minimum_improvement,
+                                       a.local_error_target, a.retry_shrink, a.growth_factor_limit,
+                                       a.growth_absolute_limit, a.error_floor, a.minimum_error_drop,
+                                       a.minimum_error_drop_per_element}};
+    const std::array<double, 9> second{{b.global_error_target, b.minimum_improvement,
+                                        b.local_error_target, b.retry_shrink, b.growth_factor_limit,
+                                        b.growth_absolute_limit, b.error_floor,
+                                        b.minimum_error_drop, b.minimum_error_drop_per_element}};
+    return a.patience == b.patience && a.retry_count == b.retry_count &&
+           std::memcmp(first.data(), second.data(), first.size() * sizeof(double)) == 0;
+  };
+  const std::array<StopRetryConfig, 3> cases{{
+      {},
+      {0.125, 0.25, 5, 0.0625, 2, 0.75, 3.0, 20.0, 0.01, 0.02, 0.03},
+      {-0.125, 0.0, 1, 0.0, -2, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+  }};
+  for (const auto& value : cases) {
+    apply(value);
+    auto expected = legacy.BuildStopRetryRuntime();
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      apmesh::application::RuntimeConfig config;
+      config.epsylon = value.global_error_target;
+      config.min_improvement = value.minimum_improvement;
+      config.patience = value.patience;
+      config.tol_local = value.local_error_target;
+      config.adaptive_retry_count = value.retry_count;
+      config.adaptive_retry_shrink = value.retry_shrink;
+      auto source = apmesh::application::MakeGenerationContext(config);
+      config.epsylon = 99.0;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.stop_retry.reset();
+    }
+    apply({0.5, 0.75, 9, 0.25, 13, 0.5, 7.0, 40.0, 0.1, 0.2, 0.3});
+    const auto foreign = legacy.BuildStopRetryRuntime();
+    if (equal(expected, foreign) || !equal(expected, owned->BuildStopRetryRuntime()) ||
+        !equal(foreign, identity_only.BuildStopRetryRuntime()))
+      throw std::runtime_error("Stopping/retry ownership or legacy differential control failed");
+    DomainCandidateFixture::PromoteRetry(*owned);
+    expected.retry_count = std::max(1, value.retry_count);
+    if (!equal(expected, owned->BuildStopRetryRuntime()) || ADAPTIVE_RETRY_COUNT != 13 ||
+        owned->GetGenerationContext()->stop_retry->retry_count != value.retry_count)
+      throw std::runtime_error("Owned retry promotion changed raw configuration or global state");
+    for (GeneratorAdaptive* generator : {&legacy, &identity_only}) {
+      apply(value);
+      DomainCandidateFixture::PromoteRetry(*generator);
+      if (!equal(expected, generator->BuildStopRetryRuntime()) ||
+          ADAPTIVE_RETRY_COUNT != expected.retry_count)
+        throw std::runtime_error("Legacy retry promotion stopped updating process state");
+    }
+  }
+  apply(saved);
+  std::cout << "stop_retry_context cases=3 scalar_bits=27 promotion=3 legacy=2\n";
+}
 #endif
 
 int main(int argc, char* argv[]) {
@@ -378,6 +452,9 @@ int main(int argc, char* argv[]) {
   CheckGenerationContexts(output);
   CheckGenerationRequests(output);
   CheckAdaptivePolicyContexts();
+#if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
+  CheckStopRetryContexts();
+#endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();
   GeneratorAdaptive generator;
