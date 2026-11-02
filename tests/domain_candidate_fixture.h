@@ -254,6 +254,15 @@ class DomainCandidateFixture {
   }
 
 public:
+  static void CurvePointBudget(GeneratorAdaptive& generator) { generator.EnableCurvePointBudget(); }
+  static void CurveConsistency(GeneratorAdaptive& generator) { generator.EnableCurveConsistency(); }
+  static int ClampCurvePoints(const GeneratorAdaptive& generator, int value) {
+    return generator.ClampCurveTarget(value);
+  }
+  static std::array<double, 2> CurveDiscretization(const GeneratorAdaptive& generator) {
+    return {{generator.adapter_.CurveDiscretizationFactor(),
+             generator.adapter_.InternalCurveDiscretizationFactor()}};
+  }
   static void StableElementBudget(GeneratorAdaptive& generator) {
     generator.ApplyStableElementBudgetSettings();
   }

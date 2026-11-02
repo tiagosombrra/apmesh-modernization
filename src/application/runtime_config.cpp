@@ -275,6 +275,15 @@ GenerationContext MakeGenerationContext(const RuntimeConfig& config, std::string
                               PATCH_BUDGET_EFFICIENCY_WEIGHT,
                               PATCH_BUDGET_QUALITY_WEIGHT,
                               PATCH_BUDGET_MIN_SHARE,
-                              PATCH_BUDGET_TOPK_ONLY_MODE}};
+                              PATCH_BUDGET_TOPK_ONLY_MODE},
+          CurveControlsConfig{config.curve_adaptation_policy, config.curve_adaptation_blend,
+                              config.curve_factor_sensitivity, STEP2_CURVE_SENSITIVITY_SCALE,
+                              CURVE_EFFICIENCY_WEIGHT, config.curve_point_budget_mode,
+                              config.curve_point_growth_step1, config.curve_point_growth_stepn,
+                              config.curve_point_budget_blend, config.curve_point_min,
+                              config.curve_point_max, CURVE_CONSISTENCY_MODE,
+                              CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2,
+                              CURVE_CONSISTENCY_PRIORITY_BONUS, CURVE_CONSISTENCY_GROUP_BLEND,
+                              DISCRETIZATION_CURVE_FACTOR, DISCRETIZATION_CURVE_FACTOR_INTERNAL}};
 }
 } // namespace apmesh::application

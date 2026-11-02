@@ -1,6 +1,7 @@
 #ifndef APMESH_APPLICATION_GENERATION_CONTEXT_H
 #define APMESH_APPLICATION_GENERATION_CONTEXT_H
 
+#include <cmath>
 #include <optional>
 #include <string>
 
@@ -74,6 +75,27 @@ struct ElementBudgetConfig {
   int patch_topk_only_mode = 0;
 };
 
+// Raw curve controls. The discretization pair is stored independently.
+struct CurveControlsConfig {
+  int adaptation_policy = 0;
+  double adaptation_blend = 0.75;
+  double factor_sensitivity = 1.0;
+  double step2_sensitivity_scale = 0.8;
+  double efficiency_weight = 0.5;
+  int point_budget_mode = 0;
+  double point_growth_step1 = 2.5;
+  double point_growth_stepn = 2.4;
+  double point_budget_blend = 0.7;
+  int point_min = 2;
+  int point_max = 128;
+  int consistency_mode = 0;
+  double consistency_max_point_ratio_step2 = 1.5;
+  int consistency_priority_bonus = 1;
+  double consistency_group_blend = 0.65;
+  double discretization_factor = 1.414213562;
+  double internal_discretization_factor = std::sqrt(1.414213562);
+};
+
 // Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
@@ -85,6 +107,7 @@ struct GenerationContext {
   std::optional<StopRetryConfig> stop_retry = std::nullopt;
   std::optional<AdaptationConfig> adaptation = std::nullopt;
   std::optional<ElementBudgetConfig> element_budget = std::nullopt;
+  std::optional<CurveControlsConfig> curves = std::nullopt;
 };
 } // namespace apmesh::application
 

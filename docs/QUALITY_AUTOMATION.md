@@ -1,5 +1,21 @@
 # Local quality automation
 
+## Curve discretization and point budgets
+
+The [curve lot](evidence/CURVE_CONTROLS_CONTEXT.md) reuses 75 CTest/385 nested
+Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/123-boundary reference
+and real MSVC CLI controls on exact head/main. Require prior markers plus three
+curve cases: 33 raw/33 stable double representations, six integer fields, source
+retirement, conflicting globals, intermediate/final mode updates, 18 actual point
+targets and 12 owned Adapter factor observations. The independent factor pair,
+point clamp order and legacy writes must remain intact. Source reversal permits
+only named reads, two original updates and the point-limiter method boundary;
+complete generator/Adapter formula/order/literal tokens and synchronization flow
+must match. Require unchanged parser/apply/defaults/other production, scoped
+analysis over the complete touched context header, explicit format/whitespace,
+inventory/contracts and staged/remote gates. Retain preparation-reader corrections;
+no scientific model, native target or instrument campaign is added.
+
 ## Element budget controls
 
 The [budget lot](evidence/ELEMENT_BUDGET_CONTEXT.md) reuses 75 CTest/385 nested
