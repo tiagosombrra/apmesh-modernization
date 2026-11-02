@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Patch and group consistency controls
+
+The [patch consistency lot](evidence/PATCH_CONSISTENCY_CONTEXT.md) reuses 75 CTest/
+385 nested Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/
+123-boundary reference and real MSVC CLI controls on exact head/main. Require all
+prior markers plus three cases: 33 raw/33 stable double representations, seven
+integer fields, retired sources, live legacy fallback, foreign-global negative
+controls and intermediate/final effective modes. Compare 144 actual regularizer
+outputs for steps 2/3 before/after stable updates: budgets, h, depth, group IDs,
+dispersion, penalty and active status. Foreign controls must form a positive
+two-patch group, clamp and change the outputs. Source reversal restores the complete
+generator body and both assignments in their original positions. Parser/apply/
+defaults and other production stay unchanged. Analyze each actual production
+compilation command once plus the existing probe, with flags unchanged. Require
+explicit token-checked format, whitespace, inventory/contracts and staged/remote
+gates. No new target, model or instrument campaign is introduced.
+
 ## Patch generation and refinement controls
 
 The [patch generation lot](evidence/PATCH_GENERATION_CONTEXT.md) reuses 75 CTest/

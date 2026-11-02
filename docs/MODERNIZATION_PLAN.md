@@ -60,13 +60,21 @@ each tree; cells keep their original tree observer. Preserve depth, subdivision,
 template and saturation expressions. Reuse the existing native/scientific/delivery
 regression. No root/domain/template policy or scientific criterion changes.
 
-The active [patch generation context](evidence/PATCH_GENERATION_CONTEXT.md) owns
+The delivered [patch generation context](evidence/PATCH_GENERATION_CONTEXT.md) owns
 37 generation/refinement/spatial/micro controls and separates 13 ordered stable
 writes in three original blocks. Preserve raw snapshots, legacy fallback and all
 factor, eligibility, size, smoothing, diagnostic and acceptance expressions.
 Require the existing native factor differential and scientific/delivery regression;
 do not add a model/instrument campaign. Patch consistency and acceptance controls
 are outside this bounded lot; remaining shared state and stage obligations stay open.
+
+The active [patch consistency context](evidence/PATCH_CONSISTENCY_CONTEXT.md) owns
+18 equivalence/group/consistency-acceptance inputs. Two stable flags retain their
+original positions around curve consistency using a shared effective instance
+copy. Preserve grouping, clamping, dispersion, penalties and acceptance expressions;
+store dormant controls without activating them. Require targeted native regularizer
+differentials and the existing scientific/delivery regression. Other acceptance/AFT
+settings and global state stay shared; no new model/instrument campaign or stage closure.
 
 ## Current stage and completion route
 

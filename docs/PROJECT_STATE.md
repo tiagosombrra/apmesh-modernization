@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `fae81724a7d8c48c81fe424d963e42436b0a4e3f` (PR #148).
+Entry main: `5613577390c681e18dcc9b9afc8b7f8e9491e843` (PR #149).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,23 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: patch generation and refinement controls
+## Active production delivery: patch and group consistency controls
+
+The [patch consistency context](evidence/PATCH_CONSISTENCY_CONTEXT.md) owns 18
+equivalence/group-limit/consistency-acceptance controls captured from current
+process values. Parsing, defaults and scientific expressions remain unchanged.
+Two stable mode writes keep their original positions around curve consistency;
+lazy separate effective state preserves the first update and raw configuration.
+Absent settings retain live global reads/writes. Three cases in the existing
+native probe check 33 raw/33 stable double representations, seven integer fields,
+source retirement, foreign globals, intermediate/final modes and 144 real
+regularizer results over steps 2/3. Foreign controls must produce an actual
+two-patch group, clamping and different outputs. Dormant controls stay dormant.
+Reuse the existing scientific/delivery regression without a new model, target or
+instrument campaign. Other acceptance/AFT controls remain shared and serialized;
+Stage 3/6, full-generation reuse/recovery and memory/parallel obligations stay open.
+
+## Delivered production context: patch generation and refinement controls
 
 The [patch generation context](evidence/PATCH_GENERATION_CONTEXT.md) owns 37
 generation/refinement/spatial/micro controls. The factory captures three

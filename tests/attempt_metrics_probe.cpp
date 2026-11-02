@@ -726,6 +726,147 @@ void CheckCurveControlsContexts() {
                "stable=3 legacy=2\n";
 }
 
+void CheckPatchConsistencyContexts() {
+  using apmesh::application::PatchConsistencyConfig;
+  const std::array<double PatchConsistencyConfig::*, 11> doubles{
+      {&PatchConsistencyConfig::area_tolerance, &PatchConsistencyConfig::error_tolerance,
+       &PatchConsistencyConfig::curvature_tolerance, &PatchConsistencyConfig::quality_tolerance,
+       &PatchConsistencyConfig::max_budget_ratio_step2,
+       &PatchConsistencyConfig::max_budget_ratio_stepn, &PatchConsistencyConfig::min_group_share,
+       &PatchConsistencyConfig::h_clamp_ratio, &PatchConsistencyConfig::step2_weight,
+       &PatchConsistencyConfig::acceptance_penalty_weight,
+       &PatchConsistencyConfig::acceptance_max_group_dispersion_step2}};
+  const std::array<int PatchConsistencyConfig::*, 7> integers{
+      {&PatchConsistencyConfig::mode, &PatchConsistencyConfig::neighbor_only,
+       &PatchConsistencyConfig::depth_clamp, &PatchConsistencyConfig::group_min_patches,
+       &PatchConsistencyConfig::group_neighbor_protection,
+       &PatchConsistencyConfig::disable_group_coarsen_if_unbalanced,
+       &PatchConsistencyConfig::acceptance_mode}};
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildPatchConsistencyRuntime();
+  const auto apply = [](const PatchConsistencyConfig& config) {
+    PATCH_CONSISTENCY_MODE = config.mode;
+    PATCH_CONSISTENCY_AREA_TOL = config.area_tolerance;
+    PATCH_CONSISTENCY_ERROR_TOL = config.error_tolerance;
+    PATCH_CONSISTENCY_CURVATURE_TOL = config.curvature_tolerance;
+    PATCH_CONSISTENCY_QUALITY_TOL = config.quality_tolerance;
+    PATCH_CONSISTENCY_NEIGHBOR_ONLY = config.neighbor_only;
+    PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEP2 = config.max_budget_ratio_step2;
+    PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEPN = config.max_budget_ratio_stepn;
+    PATCH_CONSISTENCY_MIN_GROUP_SHARE = config.min_group_share;
+    PATCH_CONSISTENCY_H_CLAMP_RATIO = config.h_clamp_ratio;
+    PATCH_CONSISTENCY_DEPTH_CLAMP = config.depth_clamp;
+    STEP2_CONSISTENCY_WEIGHT = config.step2_weight;
+    STEP2_GROUP_MIN_PATCHES = config.group_min_patches;
+    STEP2_GROUP_NEIGHBOR_PROTECTION = config.group_neighbor_protection;
+    STEP2_DISABLE_GROUP_COARSEN_IF_UNBALANCED = config.disable_group_coarsen_if_unbalanced;
+    STEP_ACCEPT_CONSISTENCY_MODE = config.acceptance_mode;
+    STEP_ACCEPT_CONSISTENCY_PENALTY_WEIGHT = config.acceptance_penalty_weight;
+    STEP_ACCEPT_MAX_GROUP_DISPERSION_STEP2 = config.acceptance_max_group_dispersion_step2;
+  };
+  const auto equal = [&](const PatchConsistencyConfig& a, const PatchConsistencyConfig& b) {
+    for (auto field : doubles)
+      if (std::memcmp(&(a.*field), &(b.*field), sizeof(double)) != 0)
+        return false;
+    for (auto field : integers)
+      if (a.*field != b.*field)
+        return false;
+    return true;
+  };
+  Geometry geometry;
+  Models3d models;
+  models.ModelDoisPatchesPlanosCurva(&geometry);
+  if (geometry.GetNumberPatches() != 2)
+    throw std::runtime_error("Consistency control requires the existing two-patch model");
+  const auto observe = [&](GeneratorAdaptive& generator, bool stable) {
+    std::array<double, 24> result{};
+    for (int step : {2, 3}) {
+      const auto values =
+          DomainCandidateFixture::ConsistencyOutputs(generator, geometry, step, stable);
+      std::copy(values.begin(), values.end(), result.begin() + (step - 2) * 12);
+    }
+    return result;
+  };
+  const auto same = [](const std::array<double, 24>& a, const std::array<double, 24>& b) {
+    return std::memcmp(a.data(), b.data(), a.size() * sizeof(double)) == 0;
+  };
+  std::array<PatchConsistencyConfig, 3> cases{};
+  for (auto& config : cases)
+    config.area_tolerance = 1.0;
+  cases[1].mode = 1;
+  cases[1].max_budget_ratio_step2 = 1.2;
+  cases[1].max_budget_ratio_stepn = 1.4;
+  cases[1].min_group_share = 0.1;
+  cases[1].h_clamp_ratio = 1.1;
+  cases[1].acceptance_penalty_weight = 0.73;
+  cases[2].mode = 1;
+  cases[2].group_min_patches = 3;
+  cases[2].depth_clamp = 0;
+  cases[2].acceptance_max_group_dispersion_step2 = 0.25;
+  PatchConsistencyConfig foreign;
+  foreign.mode = 1;
+  foreign.area_tolerance = 1.0;
+  foreign.max_budget_ratio_step2 = 2.5;
+  foreign.max_budget_ratio_stepn = 3.0;
+  foreign.min_group_share = 0.1;
+  foreign.h_clamp_ratio = 2.0;
+  foreign.depth_clamp = 0;
+  foreign.acceptance_mode = 9;
+  foreign.step2_weight = 0.91;
+  foreign.disable_group_coarsen_if_unbalanced = 0;
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildPatchConsistencyRuntime();
+    const auto expected_outputs = observe(legacy, false);
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      auto captured =
+          apmesh::application::MakeGenerationContext(apmesh::application::RuntimeConfig{});
+      if (!equal(expected, *captured.patch_consistency))
+        throw std::runtime_error("Consistency factory capture changed raw process settings");
+      apmesh::application::GenerationContext source{"unused", "unused", "", ""};
+      source.patch_consistency = captured.patch_consistency;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.patch_consistency = captured.patch_consistency = foreign;
+    }
+    apply(foreign);
+    const auto foreign_outputs = observe(legacy, false);
+    if (!equal(foreign, legacy.BuildPatchConsistencyRuntime()) ||
+        !equal(foreign, identity_only.BuildPatchConsistencyRuntime()) ||
+        !equal(expected, owned->BuildPatchConsistencyRuntime()) ||
+        !same(expected_outputs, observe(*owned, false)) ||
+        same(expected_outputs, foreign_outputs) || foreign_outputs[6] < 0.0 ||
+        foreign_outputs[6] != foreign_outputs[7] || foreign_outputs[11] != 1.0)
+      throw std::runtime_error(
+          "Consistency ownership, positive grouping or native differential failed");
+    auto intermediate = value;
+    intermediate.mode = 1;
+    DomainCandidateFixture::EnablePatchConsistency(*owned);
+    if (!equal(intermediate, owned->BuildPatchConsistencyRuntime()))
+      throw std::runtime_error("First consistency update changed its position or other settings");
+    DomainCandidateFixture::EnableConsistencyAcceptance(*owned);
+    if (!equal(value, *owned->GetGenerationContext()->patch_consistency) ||
+        !equal(foreign, legacy.BuildPatchConsistencyRuntime()))
+      throw std::runtime_error("Owned consistency updates changed raw settings or globals");
+    apply(value);
+    DomainCandidateFixture::EnablePatchConsistency(legacy);
+    DomainCandidateFixture::EnableConsistencyAcceptance(legacy);
+    const auto stable = legacy.BuildPatchConsistencyRuntime();
+    if (!equal(stable, owned->BuildPatchConsistencyRuntime()) ||
+        !same(observe(legacy, true), observe(*owned, true)))
+      throw std::runtime_error("Stable consistency updates changed effective values or grouping");
+    apply(value);
+    DomainCandidateFixture::EnablePatchConsistency(identity_only);
+    DomainCandidateFixture::EnableConsistencyAcceptance(identity_only);
+    if (!equal(stable, legacy.BuildPatchConsistencyRuntime()))
+      throw std::runtime_error("Legacy consistency updates stopped writing process state");
+  }
+  apply(saved);
+  std::cout << "patch_consistency_context cases=3 scalar_bits=33 outputs=144 "
+               "stable_writes=2 legacy=2\n";
+}
+
 void CheckPatchGenerationContexts() {
   using apmesh::application::PatchGenerationConfig;
   const std::array<double PatchGenerationConfig::*, 28> doubles{
@@ -1154,6 +1295,7 @@ int main(int argc, char* argv[]) {
   CheckCurveControlsContexts();
   CheckQuadtreeControlsContexts();
   CheckPatchGenerationContexts();
+  CheckPatchConsistencyContexts();
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();

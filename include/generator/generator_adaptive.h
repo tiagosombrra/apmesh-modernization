@@ -457,6 +457,7 @@ public:
   apmesh::application::CurveControlsConfig BuildCurveControlsRuntime() const noexcept;
   apmesh::application::QuadtreeControlsConfig BuildQuadtreeRuntime() const noexcept;
   apmesh::application::PatchGenerationConfig BuildPatchGenerationRuntime() const noexcept;
+  apmesh::application::PatchConsistencyConfig BuildPatchConsistencyRuntime() const noexcept;
   MeshQualityStats ComputeMeshQualityStats(const MeshAdaptive* mesh) const;
   void WritePatchAdaptationLog(int step, bool accepted) const;
   void WriteCurveAdaptationLog(int step, bool accepted) const;
@@ -779,6 +780,30 @@ private:
   void EnablePatchRefinementModes() noexcept;
   void ApplyStablePatchRefinement() noexcept;
   std::optional<apmesh::application::PatchGenerationConfig> effective_patch_generation_ =
+      std::nullopt;
+  const apmesh::application::PatchConsistencyConfig* PatchConsistencySettings() const noexcept;
+  apmesh::application::PatchConsistencyConfig* MutablePatchConsistencySettings() noexcept;
+  int PatchConsistencyMode() const noexcept;
+  double PatchConsistencyAreaTolerance() const noexcept;
+  double PatchConsistencyErrorTolerance() const noexcept;
+  double PatchConsistencyCurvatureTolerance() const noexcept;
+  double PatchConsistencyQualityTolerance() const noexcept;
+  int PatchConsistencyNeighborOnly() const noexcept;
+  double PatchConsistencyMaxBudgetRatioStep2() const noexcept;
+  double PatchConsistencyMaxBudgetRatioStepN() const noexcept;
+  double PatchConsistencyMinGroupShare() const noexcept;
+  double PatchConsistencyHClampRatio() const noexcept;
+  int PatchConsistencyDepthClamp() const noexcept;
+  double Step2ConsistencyWeight() const noexcept;
+  int Step2GroupMinPatches() const noexcept;
+  int Step2GroupNeighborProtection() const noexcept;
+  int Step2DisableGroupCoarsenIfUnbalanced() const noexcept;
+  int ConsistencyAcceptanceMode() const noexcept;
+  double ConsistencyAcceptancePenaltyWeight() const noexcept;
+  double ConsistencyAcceptanceMaxGroupDispersionStep2() const noexcept;
+  void EnablePatchConsistency() noexcept;
+  void EnableConsistencyAcceptance() noexcept;
+  std::optional<apmesh::application::PatchConsistencyConfig> effective_patch_consistency_ =
       std::nullopt;
   // Declared first so the Adapter borrow retires before the owned strings.
   std::optional<apmesh::application::GenerationContext> generation_context_;

@@ -1,0 +1,69 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "5613577390c681e18dcc9b9afc8b7f8e9491e843",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "18 patch/group consistency controls owned in context",
+    "Two stable flags isolated at their original distinct positions",
+    "Raw configuration and legacy fallback preserved",
+    "Native grouping/regularization and scientific expressions retained"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_complete_body_reversal": true,
+    "stable_writes": 2,
+    "stable_blocks": 2,
+    "stable_values_and_distinct_positions_preserved": true,
+    "parser_apply_global_defaults_and_other_production_unchanged": true,
+    "owned_inputs": [
+      "mode",
+      "area_tolerance",
+      "error_tolerance",
+      "curvature_tolerance",
+      "quality_tolerance",
+      "neighbor_only",
+      "max_budget_ratio_step2",
+      "max_budget_ratio_stepn",
+      "min_group_share",
+      "h_clamp_ratio",
+      "depth_clamp",
+      "step2_weight",
+      "group_min_patches",
+      "group_neighbor_protection",
+      "disable_group_coarsen_if_unbalanced",
+      "acceptance_mode",
+      "acceptance_penalty_weight",
+      "acceptance_max_group_dispersion_step2"
+    ],
+    "factory": "eighteen current process values; no parser changes",
+    "effective_state": "lazy separate generator value; each later update preserves earlier overrides",
+    "compatibility": "absent patch_consistency settings retain live legacy reads/writes",
+    "scope": "no scientific policy or algorithm changes; other controls remain shared"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "native_cases": 3,
+  "native_raw_double_representations": 33,
+  "native_stable_double_representations": 33,
+  "native_integer_fields": 7,
+  "native_regularizer_results": 144,
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "limits": [
+    "Single-group unit observation does not qualify multi-group dispersion or a complete acceptance matrix",
+    "Other acceptance/AFT controls remain shared; serialized execution",
+    "No recovery, parallel or complete-process memory qualification",
+    "Stage 3 and stage 6 remain open"
+  ]
+}
