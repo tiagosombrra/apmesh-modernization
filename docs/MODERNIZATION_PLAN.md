@@ -47,12 +47,18 @@ retry expression. Require targeted ownership/stable/target-clamp controls in the
 existing native metrics probe and the unchanged scientific/delivery regression.
 Curve-point/quadtree/generation controls remain outside this bounded lot; no
 new scientific input, instrument campaign or stage closure is introduced.
-The active [curve controls context](evidence/CURVE_CONTROLS_CONTEXT.md) owns
+The delivered [curve controls context](evidence/CURVE_CONTROLS_CONTEXT.md) owns
 17 settings and isolates two successive mode updates at their original positions.
 Adapter consumes the independently captured discretization pair. Preserve point
 clamping, weighting, synchronization and publication/rollback expressions; reuse
 the existing native/scientific/delivery gates without a new model campaign.
-Remaining patch/quadtree controls stay shared and stages remain open.
+Remaining patch/quadtree controls stay shared at that checkpoint; stages remain open.
+The active [quadtree controls context](evidence/QUADTREE_CONTROLS_CONTEXT.md)
+owns 19 limits/saturation/quality settings and isolates four stable writes.
+Adapter observes pinned effective state and copies three quality values into
+each tree; cells keep their original tree observer. Preserve depth, subdivision,
+template and saturation expressions. Reuse the existing native/scientific/delivery
+regression. No root/domain/template policy or scientific criterion changes.
 
 ## Current stage and completion route
 

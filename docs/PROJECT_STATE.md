@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `11a6576d8795c406111b334cda5b475647efcd16` (PR #146).
+Entry main: `3b2e12a47a5d0f449141e1bc492dd1ae655c8e82` (PR #147).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,25 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: curve discretization and point budgets
+## Active production delivery: quadtree limits and saturation controls
+
+The [quadtree context](evidence/QUADTREE_CONTROLS_CONTEXT.md) owns 19 depth,
+saturation and quality controls. Four stable writes retain their original values
+and distinct positions in a pinned effective generator value. Adapter observes
+that value through an explicit live/stationary borrow, retaining its original
+one-argument/default constructor paths. Each generated quadtree owns a copy of
+three quality controls; cells consult their existing tree observer. Standalone
+trees without settings retain live global reads. Depth estimation/resolution,
+subdivision, template statistics and all scientific expressions keep their tokens.
+Three native cases check 27 raw/27 stable doubles, ten integer fields, 42 depth
+results, nine real subdivision/template-stat observations and three tree snapshots
+after generator retirement. The original missing-declaration build failure and
+partial repeated-command analysis are retained. Canonical analysis uses each
+actual production command once, plus the existing probe command with flags intact.
+Require the existing delivery/scientific regression; other shared controls and
+Stage 3/6 obligations remain open.
+
+## Delivered production context: curve discretization and point budgets
 
 The [curve controls context](evidence/CURVE_CONTROLS_CONTEXT.md) owns 17 values:
 adaptation weights/sensitivity, point budgets/limits, curve consistency and the
@@ -219,7 +237,7 @@ The bounded 2026 milestone is this reusable serial engine/configuration/CLI
 boundary with preserved C++17 behavior. It is a stage 6 prerequisite supporting
 S3-05 caller work, not closure of Stage 3 or the whole modernization roadmap.
 Identity/output ownership and typed execution are delivered above. The active
-context lots add policy, criteria, adaptation, budgets and curves; migration needs a
+context lots add policy, criteria, adaptation, budgets, curves and tree controls; further migration needs a
 separate bounded caller contract.
 
 ## Retained instrument obligations for closure

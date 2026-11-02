@@ -4,26 +4,25 @@
 #include <climits>
 #include <memory>
 
+extern double QUADTREE_FACE_QUALITY_THRESHOLD;
+extern double QUADTREE_LOW_QUALITY_H_FACTOR;
 extern double TEMPLATE_POOR_SCORE_THRESHOLD;
 
 namespace Par2DJMesh {
 namespace AFT {
 QuadtreeTemplateStats::QuadtreeTemplateStats()
-    : total_templates(0),
-      low_score_templates(0),
-      overall_score_sum(0.0),
-      overall_score_min(DBL_MAX),
-      low_quality_subdivide_hits(0) {
+    : total_templates(0), low_score_templates(0), overall_score_sum(0.0),
+      overall_score_min(DBL_MAX), low_quality_subdivide_hits(0) {
   for (int i = 0; i < 6; ++i) {
     template_count[i] = 0;
     template_score_sum[i] = 0.0;
     template_score_min[i] = DBL_MAX;
   }
 }
-}  // namespace AFT
-}  // namespace Par2DJMesh
+} // namespace AFT
+} // namespace Par2DJMesh
 
-void escreve(Quadtree *q, int i) {
+void escreve(Quadtree* q, int i) {
   static int passo = 0;
 
   string s;
@@ -63,10 +62,9 @@ void escreve(Quadtree *q, int i) {
 
   int id = 0;
 
-  for (QuadtreeCellList::iterator iter = folhas.begin(); iter != folhas.end();
-       iter++) {
-    Vertex *min = (*iter)->getMin();
-    Vertex *max = (*iter)->getMax();
+  for (QuadtreeCellList::iterator iter = folhas.begin(); iter != folhas.end(); iter++) {
+    Vertex* min = (*iter)->getMin();
+    Vertex* max = (*iter)->getMax();
 
     Vertex v1(min->getX(), min->getY(), ++id);
     Vertex v2(max->getX(), min->getY(), ++id);
@@ -83,8 +81,7 @@ void escreve(Quadtree *q, int i) {
 
   arq << "%NODE.COORD" << endl << vertices.size() << endl;
 
-  for (list<Vertex>::iterator iter = vertices.begin(); iter != vertices.end();
-       iter++) {
+  for (list<Vertex>::iterator iter = vertices.begin(); iter != vertices.end(); iter++) {
     Vertex n = (*iter);
 
     arq << n.getId() << " " << n.getX() << " " << n.getY() << " "
@@ -120,8 +117,7 @@ void escreve(Quadtree *q, int i) {
   int idv = 1;
   int idq = 0;
 
-  for (QuadtreeCellList::iterator iter = folhas.begin(); iter != folhas.end();
-       iter++) {
+  for (QuadtreeCellList::iterator iter = folhas.begin(); iter != folhas.end(); iter++) {
     /*arq << ++idq << " "
              << "1 1 1 "
              << ++idv << " "
@@ -145,11 +141,10 @@ void escreve(Quadtree *q, int i) {
 
   arq.close();
 
-  cout << "escreveu o arquivo para a quadtree " << s << " para o passo "
-       << passo << endl;
+  cout << "escreveu o arquivo para a quadtree " << s << " para o passo " << passo << endl;
 }
 
-Quadtree::Quadtree(Boundary *boundary, double factor) : Shape(), maxLevelCap(-1) {
+Quadtree::Quadtree(Boundary* boundary, double factor) : Shape(), maxLevelCap(-1) {
   setBoundary(boundary);
   setFactor(factor);
   setRoot(nullptr);
@@ -215,11 +210,11 @@ void Quadtree::setMaxLevelCap(long int max_level_cap) { maxLevelCap = max_level_
 
 long int Quadtree::getMaxLevelCap() const { return maxLevelCap; }
 
-void Quadtree::setBoundary(Boundary *boundary) { this->boundary = boundary; }
+void Quadtree::setBoundary(Boundary* boundary) { this->boundary = boundary; }
 
-Boundary *Quadtree::getBoundary() { return boundary; }
+Boundary* Quadtree::getBoundary() { return boundary; }
 
-void Quadtree::setRoot(QuadtreeCell *root) {
+void Quadtree::setRoot(QuadtreeCell* root) {
   this->root = root;
 
   if (root) {
@@ -230,7 +225,7 @@ void Quadtree::setRoot(QuadtreeCell *root) {
     breadthSearch.push_back(root);
 
     while (!breadthSearch.empty()) {
-      QuadtreeCell *cell = breadthSearch.front();
+      QuadtreeCell* cell = breadthSearch.front();
       breadthSearch.pop_front();
 
       if (cell->subdivided()) {
@@ -245,9 +240,9 @@ void Quadtree::setRoot(QuadtreeCell *root) {
   }
 }
 
-QuadtreeCell *Quadtree::getRoot() { return root; }
+QuadtreeCell* Quadtree::getRoot() { return root; }
 
-void Quadtree::addLeaves(QuadtreeCell *cell) {
+void Quadtree::addLeaves(QuadtreeCell* cell) {
   leaves.remove(cell);
 
   leaves.push_back(cell->getChild(QUAD_BOTTOM_LEFT));
@@ -266,8 +261,8 @@ Vertex* Quadtree::getMax() { return root ? root->getMax() : nullptr; }
 
 long int Quadtree::getCellId() { return ++id; }
 
-void Quadtree::findCell(Edge *e) {
-  QuadtreeCell *q = root->findCell(e);
+void Quadtree::findCell(Edge* e) {
+  QuadtreeCell* q = root->findCell(e);
 
   if (!q) {
     return;
@@ -282,13 +277,13 @@ void Quadtree::findCell(Edge *e) {
   }
 }
 
-bool Quadtree::in(Vertex *v) { return root->in(v); }
+bool Quadtree::in(Vertex* v) { return root->in(v); }
 
-bool Quadtree::on(Vertex *v) { return root->on(v); }
+bool Quadtree::on(Vertex* v) { return root->on(v); }
 
-bool Quadtree::out(Vertex *v) { return root->out(v); }
+bool Quadtree::out(Vertex* v) { return root->out(v); }
 
-enum MethodStatus Quadtree::generate(const FaceList &oldmesh) {
+enum MethodStatus Quadtree::generate(const FaceList& oldmesh) {
   // 1o Passo
   if (!root) {
     double minX, minY, maxX, maxY;
@@ -328,8 +323,7 @@ enum MethodStatus Quadtree::generate(const FaceList &oldmesh) {
 
   //    escreve(this, 1);
 
-  for (FaceList::const_iterator iter = oldmesh.begin(); iter != oldmesh.end();
-       iter++) {
+  for (FaceList::const_iterator iter = oldmesh.begin(); iter != oldmesh.end(); iter++) {
     root->subdivide((*iter));
   }
 
@@ -369,7 +363,7 @@ enum MethodStatus Quadtree::refineAccordingToNeighbors() {
   QuadtreeCellList oldLeaves = leaves;
 
   while (!oldLeaves.empty()) {
-    QuadtreeCell *cell = oldLeaves.front();
+    QuadtreeCell* cell = oldLeaves.front();
     oldLeaves.pop_front();
 
     if (cell->subdivideAccordingToNeighbors()) {
@@ -382,7 +376,7 @@ enum MethodStatus Quadtree::refineAccordingToNeighbors() {
   return QUAD_REFINE_ACCORDING_TO_NEIGHBORS_DONE;
 }
 
-bool Quadtree::execute(const FaceList &oldmesh) {
+bool Quadtree::execute(const FaceList& oldmesh) {
   if (generate(oldmesh) != QUAD_INITIAL_TREE_DONE) {
     return false;
   }
@@ -419,13 +413,13 @@ void Quadtree::TransferTemplateMesh(VertexList& destination_vertices, EdgeList& 
   destination_faces.splice(destination_faces.end(), mesh);
 }
 
-void Quadtree::add(Vertex *v) { vertices.push_back(v); }
+void Quadtree::add(Vertex* v) { vertices.push_back(v); }
 
-void Quadtree::add(Edge *e) { edges.push_back(e); }
+void Quadtree::add(Edge* e) { edges.push_back(e); }
 
-void Quadtree::add(Face *f) { mesh.push_back(f); }
+void Quadtree::add(Face* f) { mesh.push_back(f); }
 
-void Quadtree::addFront(Edge *e) {
+void Quadtree::addFront(Edge* e) {
   front.push_back(e);
 
   e->setFree(true);
@@ -440,24 +434,18 @@ void Quadtree::RecordTemplateChoice(int type, double score) {
   const int idx = std::max(0, std::min(5, type - 1));
   ++template_stats.template_count[idx];
   template_stats.template_score_sum[idx] += score;
-  template_stats.template_score_min[idx] =
-      std::min(template_stats.template_score_min[idx], score);
+  template_stats.template_score_min[idx] = std::min(template_stats.template_score_min[idx], score);
   ++template_stats.total_templates;
   template_stats.overall_score_sum += score;
   template_stats.overall_score_min = std::min(template_stats.overall_score_min, score);
-  if (TEMPLATE_POOR_SCORE_THRESHOLD > 0.0 &&
-      score < TEMPLATE_POOR_SCORE_THRESHOLD) {
+  if (TemplatePoorScoreThreshold() > 0.0 && score < TemplatePoorScoreThreshold()) {
     ++template_stats.low_score_templates;
   }
 }
 
-void Quadtree::RecordLowQualitySubdivision() {
-  ++template_stats.low_quality_subdivide_hits;
-}
+void Quadtree::RecordLowQualitySubdivision() { ++template_stats.low_quality_subdivide_hits; }
 
-const QuadtreeTemplateStats& Quadtree::GetTemplateStats() const {
-  return template_stats;
-}
+const QuadtreeTemplateStats& Quadtree::GetTemplateStats() const { return template_stats; }
 
 enum MethodStatus Quadtree::makeTemplateBasedMesh() {
   ResetTemplateStats();
@@ -547,3 +535,22 @@ string Quadtree::getText() {
 //    }
 //}
 // #endif //#if USE_OPENGL
+
+void Quadtree::SetQualityControls(QuadtreeQualityControls controls) noexcept {
+  quality_controls_ = controls;
+}
+
+double Quadtree::FaceQualityThreshold() const noexcept {
+  return quality_controls_ ? quality_controls_->face_quality_threshold
+                           : QUADTREE_FACE_QUALITY_THRESHOLD;
+}
+
+double Quadtree::LowQualityHFactor() const noexcept {
+  return quality_controls_ ? quality_controls_->low_quality_h_factor
+                           : QUADTREE_LOW_QUALITY_H_FACTOR;
+}
+
+double Quadtree::TemplatePoorScoreThreshold() const noexcept {
+  return quality_controls_ ? quality_controls_->template_poor_score_threshold
+                           : TEMPLATE_POOR_SCORE_THRESHOLD;
+}

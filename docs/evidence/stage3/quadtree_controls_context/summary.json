@@ -1,0 +1,73 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "3b2e12a47a5d0f449141e1bc492dd1ae655c8e82",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "19 quadtree controls owned in context",
+    "Pinned effective generator state with four ordered stable writes",
+    "Adapter observes effective state and gives trees value-owned quality settings",
+    "Depth/subdivision/template/saturation expressions preserved",
+    "Unconfigured paths retain legacy reads/writes"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_adapter_tree_cell_body_reversal": true,
+    "stable_values_and_distinct_positions_preserved": true,
+    "depth_estimate_resolution_and_subdivision_formulas_preserved": true,
+    "parser_apply_global_defaults_and_other_production_unchanged": true,
+    "owned_inputs": [
+      "saturation_mode",
+      "saturation_elements_threshold",
+      "saturation_efficiency_threshold",
+      "saturation_h_scale",
+      "hard_saturation_mode",
+      "hard_saturation_steps",
+      "hard_saturation_factor_min",
+      "skip_low_quality_on_saturated",
+      "postprocess_damp_on_saturated",
+      "cap_mode",
+      "depth_step1",
+      "depth_stepn",
+      "min_h_scale",
+      "neighbor_relax",
+      "template_limit_mode",
+      "resolve_negative_depth",
+      "face_quality_threshold",
+      "low_quality_h_factor",
+      "template_poor_score_threshold"
+    ],
+    "factory": "six RuntimeConfig fields and thirteen process values",
+    "effective_state": "pinned generator value observed by Adapter; each tree owns a copy of three quality controls",
+    "compatibility": "absent quadtree settings and standalone trees retain live global reads/writes",
+    "scope": "no tree/template algorithm or scientific policy change; remaining global controls stay shared"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "native_cases": 3,
+  "native_raw_double_representations": 27,
+  "native_stable_double_representations": 27,
+  "native_integer_fields": 10,
+  "native_depth_results": 42,
+  "native_quality_observations": 9,
+  "native_retired_generator_snapshots": 3,
+  "build_failure": "Missing existing global declaration in new legacy getter; original GCC/MSVC logs retained and declaration added",
+  "analysis": "Original repeated compilation-command analysis stopped and retained; each actual production command plus probe analyzed once with unchanged flags",
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "limits": [
+    "Other patch controls and shared mutations remain",
+    "No new full quadtree parameter matrix, parallel/reentrant/recovery or memory qualification",
+    "Stage 3 and stage 6 remain open"
+  ]
+}

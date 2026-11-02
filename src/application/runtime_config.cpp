@@ -284,6 +284,17 @@ GenerationContext MakeGenerationContext(const RuntimeConfig& config, std::string
                               config.curve_point_max, CURVE_CONSISTENCY_MODE,
                               CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2,
                               CURVE_CONSISTENCY_PRIORITY_BONUS, CURVE_CONSISTENCY_GROUP_BLEND,
-                              DISCRETIZATION_CURVE_FACTOR, DISCRETIZATION_CURVE_FACTOR_INTERNAL}};
+                              DISCRETIZATION_CURVE_FACTOR, DISCRETIZATION_CURVE_FACTOR_INTERNAL},
+          QuadtreeControlsConfig{
+              QUADTREE_SATURATION_MODE, QUADTREE_SATURATION_ELEMENTS_THRESHOLD,
+              QUADTREE_SATURATION_EFFICIENCY_THRESHOLD, QUADTREE_SATURATION_H_SCALE,
+              QUADTREE_HARD_SATURATION_MODE, QUADTREE_HARD_SATURATION_STEPS,
+              QUADTREE_HARD_SATURATION_FACTOR_MIN, QUADTREE_SKIP_LOW_QUALITY_SUBDIVIDE_ON_SATURATED,
+              QUADTREE_POSTPROCESS_DAMP_ON_SATURATED, PATCH_QUADTREE_CAP_MODE,
+              config.patch_quadtree_depth_step1, config.patch_quadtree_depth_stepn,
+              config.patch_quadtree_min_h_scale, PATCH_QUADTREE_NEIGHBOR_RELAX,
+              PATCH_QUADTREE_TEMPLATE_LIMIT_MODE, config.adapter_resolve_negative_quadtree_depth,
+              config.quadtree_face_quality_threshold, config.quadtree_low_quality_h_factor,
+              TEMPLATE_POOR_SCORE_THRESHOLD}};
 }
 } // namespace apmesh::application

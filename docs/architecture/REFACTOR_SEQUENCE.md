@@ -24,9 +24,10 @@ The [adaptive-policy inputs](../evidence/ADAPTIVE_POLICY_CONTEXT.md) are deliver
 The [stopping/retry criteria](../evidence/STOP_RETRY_CONTEXT.md) are delivered.
 The [adaptation settings](../evidence/ADAPTATION_CONTEXT.md) are delivered.
 The [element budget controls](../evidence/ELEMENT_BUDGET_CONTEXT.md) are delivered.
-The single active item is [curve controls](../evidence/CURVE_CONTROLS_CONTEXT.md):
-own 17 values, isolate two ordered mode updates, share the independent factor pair
-with Adapter and preserve point/synchronization formulas and existing regression. Instrument
+The [curve controls](../evidence/CURVE_CONTROLS_CONTEXT.md) are delivered.
+The single active item is [quadtree controls](../evidence/QUADTREE_CONTROLS_CONTEXT.md):
+own 19 values, isolate four stable writes, bind Adapter to pinned effective state
+and give each tree its quality snapshot, preserving algorithms and regression. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 

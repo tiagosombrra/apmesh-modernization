@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 645,
+    "literal_include_directives": 646,
     "first_party_include_edges": 361
   },
   "cross_component_directives": [
@@ -377,7 +377,7 @@
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
-    "optional": 4,
+    "optional": 5,
     "ostream": 1,
     "queue": 2,
     "set": 3,
@@ -497,8 +497,8 @@
       "path": "include/adapter/adapter.h",
       "component_by_directory": "adapter",
       "kind": "header",
-      "sha256": "e76264d928f02769b59e73711eeeed2cb2f4f252f81043db4b4dc16d8b59d287",
-      "bytes": 4519,
+      "sha256": "642d4fcb7a00c4a544b729d1442faf7113f2e1542d2f33c7e9ab481a7f8b2085",
+      "bytes": 5112,
       "includes": [
         {
           "line": 4,
@@ -729,8 +729,8 @@
       "path": "include/application/generation_context.h",
       "component_by_directory": "application",
       "kind": "header",
-      "sha256": "2c5d3b2e3dada5298743fe1222908146d9950f4382ae3e1fe816d56b76d9cedd",
-      "bytes": 3741,
+      "sha256": "255dada32b2c5a93416e187ac929032b3a3db75fedb25af0823f9552736a6c97",
+      "bytes": 4594,
       "includes": [
         {
           "line": 4,
@@ -1047,53 +1047,60 @@
       "path": "include/crab_mesh/aft/quadtree.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "1de6b8c491ca25b32844465cd79bd7c61bd6e9170e7773ac1249351b18c29295",
-      "bytes": 3165,
+      "sha256": "727e84a3d81cd366ee9eeeafeba3e5ab08bb051e54ed76c7c82c3d17ed68f3fa",
+      "bytes": 3579,
       "includes": [
         {
           "line": 4,
+          "spelling": "optional",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
           "spelling": "../../data/definitions.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/definitions.h"
         },
         {
-          "line": 5,
+          "line": 6,
           "spelling": "boundary.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/boundary.h"
         },
         {
-          "line": 6,
+          "line": 7,
           "spelling": "edge.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/edge.h"
         },
         {
-          "line": 7,
+          "line": 8,
           "spelling": "face.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/face.h"
         },
         {
-          "line": 8,
+          "line": 9,
           "spelling": "quadtree_cell.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/quadtree_cell.h"
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "shape.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/shape.h"
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "vertex.h",
           "form": "quote",
           "scope": "first_party",
@@ -2748,8 +2755,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "091545491daef23e07fa7b7ba12922fb9d8a53372e169517ca2ac5d6257775b4",
-      "bytes": 32650,
+      "sha256": "8d22e2f2dcd6fd4530b3537f71f20c6f636861cdb28e187eff0fdf158cec114f",
+      "bytes": 34042,
       "includes": [
         {
           "line": 4,
@@ -3604,8 +3611,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "65ba9451573cc2aec80e2c9997f110723014f338273ea11c10eb2b9c029af0be",
-      "bytes": 71124,
+      "sha256": "722c942c97e2fd09189f8b44b834887339d2ad89ef5be0304ed74556a58a1a65",
+      "bytes": 72651,
       "includes": [
         {
           "line": 1,
@@ -3960,8 +3967,8 @@
       "path": "src/application/runtime_config.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "1080b2dffa30d089d2e9b7e2dd4311904281c8386babc9e18978c853679fae2b",
-      "bytes": 16270,
+      "sha256": "b644d74051ee597b1e87f379872b8ae2ee5069a80cf4b7cf67705261e1bb0169",
+      "bytes": 17126,
       "includes": [
         {
           "line": 1,
@@ -4212,8 +4219,8 @@
       "path": "src/crab_mesh/aft/quadtree.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "086b90245d09905e9f02407e90d6ae9865234e9e509d3c32c617d6f7437fd7e2",
-      "bytes": 13246,
+      "sha256": "990bbf8d1a0c25a0a18af6bd4d96ec248087775aaed9f4b67ababd7c6d6ab47a",
+      "bytes": 13962,
       "includes": [
         {
           "line": 1,
@@ -4249,8 +4256,8 @@
       "path": "src/crab_mesh/aft/quadtree_cell.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "fdf2bb0a554fa12cfae7c509323c986ca1d7e00ca02726299e135817cd5090fb",
-      "bytes": 59697,
+      "sha256": "1759113e92adac95e7ca8dfaf0f0eed4df4f0d1edfc5e0e2d62bd7ccceab84d9",
+      "bytes": 59047,
       "includes": [
         {
           "line": 1,
@@ -5646,8 +5653,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "84440f2ac504997fcba9a811ae56feb3a4d0cedcb1612810c0432f3498175ad8",
-      "bytes": 354212,
+      "sha256": "e9781d8622e17fb818dbc526bd9d642dccbc071fa9d6c303929d49cdb09e7f43",
+      "bytes": 360381,
       "includes": [
         {
           "line": 1,
@@ -6473,7 +6480,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 217,
+    "source_anchors": 220,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

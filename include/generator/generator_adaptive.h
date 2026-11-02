@@ -455,6 +455,7 @@ public:
   apmesh::application::AdaptationConfig BuildAdaptationRuntime() const noexcept;
   apmesh::application::ElementBudgetConfig BuildElementBudgetRuntime() const noexcept;
   apmesh::application::CurveControlsConfig BuildCurveControlsRuntime() const noexcept;
+  apmesh::application::QuadtreeControlsConfig BuildQuadtreeRuntime() const noexcept;
   MeshQualityStats ComputeMeshQualityStats(const MeshAdaptive* mesh) const;
   void WritePatchAdaptationLog(int step, bool accepted) const;
   void WriteCurveAdaptationLog(int step, bool accepted) const;
@@ -710,6 +711,30 @@ private:
   void EnableCurvePointBudget() noexcept;
   void EnableCurveConsistency() noexcept;
   std::optional<apmesh::application::CurveControlsConfig> effective_curve_controls_ = std::nullopt;
+  const apmesh::application::QuadtreeControlsConfig* QuadtreeSettings() const noexcept;
+  int QuadtreeSaturationMode() const noexcept;
+  double QuadtreeSaturationElementsThreshold() const noexcept;
+  double QuadtreeSaturationEfficiencyThreshold() const noexcept;
+  double QuadtreeSaturationHScale() const noexcept;
+  int QuadtreeHardSaturationMode() const noexcept;
+  int QuadtreeHardSaturationSteps() const noexcept;
+  double QuadtreeHardSaturationFactorMin() const noexcept;
+  int QuadtreeSkipLowQualityOnSaturated() const noexcept;
+  int QuadtreePostprocessDampOnSaturated() const noexcept;
+  int QuadtreeCapMode() const noexcept;
+  int QuadtreeDepthStep1() const noexcept;
+  int QuadtreeDepthStepN() const noexcept;
+  double QuadtreeMinHScale() const noexcept;
+  double QuadtreeNeighborRelax() const noexcept;
+  int QuadtreeTemplateLimitMode() const noexcept;
+  int ResolveNegativeQuadtreeDepth() const noexcept;
+  double QuadtreeFaceQualityThreshold() const noexcept;
+  double QuadtreeLowQualityHFactor() const noexcept;
+  double QuadtreeTemplatePoorScoreThreshold() const noexcept;
+  int EstimateOwnedQuadtreeDepth(double target_h, int step) const;
+  void EnableQuadtreeCap() noexcept;
+  void ApplyStableQuadtreeQuality() noexcept;
+  apmesh::application::QuadtreeControlsConfig effective_quadtree_{};
   // Declared first so the Adapter borrow retires before the owned strings.
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;

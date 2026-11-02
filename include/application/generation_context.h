@@ -96,6 +96,29 @@ struct CurveControlsConfig {
   double internal_discretization_factor = std::sqrt(1.414213562);
 };
 
+// Quadtree limits, saturation and quality settings; effective stable state is separate.
+struct QuadtreeControlsConfig {
+  int saturation_mode = 0;
+  double saturation_elements_threshold = 500.0;
+  double saturation_efficiency_threshold = 0.001;
+  double saturation_h_scale = 1.1;
+  int hard_saturation_mode = 0;
+  int hard_saturation_steps = 1;
+  double hard_saturation_factor_min = 1.02;
+  int skip_low_quality_on_saturated = 1;
+  int postprocess_damp_on_saturated = 1;
+  int cap_mode = 0;
+  int depth_step1 = 5;
+  int depth_stepn = 4;
+  double min_h_scale = 1.0;
+  double neighbor_relax = 1.0;
+  int template_limit_mode = 0;
+  int resolve_negative_depth = 1;
+  double face_quality_threshold = 0.0;
+  double low_quality_h_factor = 1.0;
+  double template_poor_score_threshold = 0.0;
+};
+
 // Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
@@ -108,6 +131,7 @@ struct GenerationContext {
   std::optional<AdaptationConfig> adaptation = std::nullopt;
   std::optional<ElementBudgetConfig> element_budget = std::nullopt;
   std::optional<CurveControlsConfig> curves = std::nullopt;
+  std::optional<QuadtreeControlsConfig> quadtree = std::nullopt;
 };
 } // namespace apmesh::application
 

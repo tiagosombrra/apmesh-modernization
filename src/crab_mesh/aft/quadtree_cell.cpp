@@ -44,8 +44,7 @@ double TemplateTriangleQuality(Vertex* a, Vertex* b, Vertex* c) {
   return (2.0 * r) / R;
 }
 
-double TemplateQualityScore(
-    const std::vector<std::array<Vertex*, 3>>& triangles) {
+double TemplateQualityScore(const std::vector<std::array<Vertex*, 3>>& triangles) {
   if (triangles.empty()) {
     return 0.0;
   }
@@ -53,8 +52,7 @@ double TemplateQualityScore(
   double min_quality = DBL_MAX;
   double sum_quality = 0.0;
   for (const auto& triangle : triangles) {
-    const double quality =
-        TemplateTriangleQuality(triangle[0], triangle[1], triangle[2]);
+    const double quality = TemplateTriangleQuality(triangle[0], triangle[1], triangle[2]);
     min_quality = std::min(min_quality, quality);
     sum_quality += quality;
   }
@@ -77,12 +75,12 @@ double TemplateQualityScoreFromFaces(Face** faces, const int num_faces) {
 
   return 0.75 * min_quality + 0.25 * (sum_quality / static_cast<double>(num_faces));
 }
-}  // namespace
+} // namespace
 
 QuadtreeCell::QuadtreeCell(long int id,
                            // MainDrive *mainDrive,
-                           Quadtree *tree, Vertex *min, Vertex *max,
-                           QuadtreeCell *parent, long int level)
+                           Quadtree* tree, Vertex* min, Vertex* max, QuadtreeCell* parent,
+                           long int level)
     : Shape(id) {
   setQuadtree(tree);
   setBox(min, max);
@@ -130,7 +128,7 @@ QuadtreeCell::~QuadtreeCell() {
   neighbors[QUAD_LEFT].clear();
 }
 
-Vertex **QuadtreeCell::makeMids() {
+Vertex** QuadtreeCell::makeMids() {
   std::unique_ptr<Vertex*[]> m;
 
   if (min && max) {
@@ -173,18 +171,15 @@ void QuadtreeCell::subdivide(bool setChildrenEdges) {
 
   mids = makeMids();
 
-  children[QUAD_BOTTOM_LEFT] =
-      new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree, min,
-                       mids[QUAD_MID], this, level + 1);
+  children[QUAD_BOTTOM_LEFT] = new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree, min,
+                                                mids[QUAD_MID], this, level + 1);
   children[QUAD_BOTTOM_RIGHT] =
-      new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree,
-                       mids[QUAD_BOTTOM], mids[QUAD_RIGHT], this, level + 1);
-  children[QUAD_TOP_RIGHT] =
-      new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree, mids[QUAD_MID],
-                       max, this, level + 1);
-  children[QUAD_TOP_LEFT] =
-      new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree, mids[QUAD_LEFT],
-                       mids[QUAD_TOP], this, level + 1);
+      new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree, mids[QUAD_BOTTOM], mids[QUAD_RIGHT],
+                       this, level + 1);
+  children[QUAD_TOP_RIGHT] = new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree,
+                                              mids[QUAD_MID], max, this, level + 1);
+  children[QUAD_TOP_LEFT] = new QuadtreeCell(tree->getCellId(), /*mainDrive, */ tree,
+                                             mids[QUAD_LEFT], mids[QUAD_TOP], this, level + 1);
 
   setChildrenNeighbors();
 
@@ -201,29 +196,21 @@ void QuadtreeCell::subdivide(bool setChildrenEdges) {
 }
 
 void QuadtreeCell::setChildrenNeighbors() {
-  children[QUAD_BOTTOM_LEFT]->neighbors[QUAD_RIGHT].push_back(
-      children[QUAD_BOTTOM_RIGHT]);
-  children[QUAD_BOTTOM_LEFT]->neighbors[QUAD_TOP].push_back(
-      children[QUAD_TOP_LEFT]);
+  children[QUAD_BOTTOM_LEFT]->neighbors[QUAD_RIGHT].push_back(children[QUAD_BOTTOM_RIGHT]);
+  children[QUAD_BOTTOM_LEFT]->neighbors[QUAD_TOP].push_back(children[QUAD_TOP_LEFT]);
 
-  children[QUAD_BOTTOM_RIGHT]->neighbors[QUAD_TOP].push_back(
-      children[QUAD_TOP_RIGHT]);
-  children[QUAD_BOTTOM_RIGHT]->neighbors[QUAD_LEFT].push_back(
-      children[QUAD_BOTTOM_LEFT]);
+  children[QUAD_BOTTOM_RIGHT]->neighbors[QUAD_TOP].push_back(children[QUAD_TOP_RIGHT]);
+  children[QUAD_BOTTOM_RIGHT]->neighbors[QUAD_LEFT].push_back(children[QUAD_BOTTOM_LEFT]);
 
-  children[QUAD_TOP_RIGHT]->neighbors[QUAD_BOTTOM].push_back(
-      children[QUAD_BOTTOM_RIGHT]);
-  children[QUAD_TOP_RIGHT]->neighbors[QUAD_LEFT].push_back(
-      children[QUAD_TOP_LEFT]);
+  children[QUAD_TOP_RIGHT]->neighbors[QUAD_BOTTOM].push_back(children[QUAD_BOTTOM_RIGHT]);
+  children[QUAD_TOP_RIGHT]->neighbors[QUAD_LEFT].push_back(children[QUAD_TOP_LEFT]);
 
-  children[QUAD_TOP_LEFT]->neighbors[QUAD_BOTTOM].push_back(
-      children[QUAD_BOTTOM_LEFT]);
-  children[QUAD_TOP_LEFT]->neighbors[QUAD_RIGHT].push_back(
-      children[QUAD_TOP_RIGHT]);
+  children[QUAD_TOP_LEFT]->neighbors[QUAD_BOTTOM].push_back(children[QUAD_BOTTOM_LEFT]);
+  children[QUAD_TOP_LEFT]->neighbors[QUAD_RIGHT].push_back(children[QUAD_TOP_RIGHT]);
 
   for (QuadtreeCellList::iterator iter = neighbors[QUAD_BOTTOM].begin();
        iter != neighbors[QUAD_BOTTOM].end(); iter++) {
-    QuadtreeCell *q = (*iter);
+    QuadtreeCell* q = (*iter);
 
     q->neighbors[QUAD_TOP].remove(this);
 
@@ -240,7 +227,7 @@ void QuadtreeCell::setChildrenNeighbors() {
 
   for (QuadtreeCellList::iterator iter = neighbors[QUAD_RIGHT].begin();
        iter != neighbors[QUAD_RIGHT].end(); iter++) {
-    QuadtreeCell *q = (*iter);
+    QuadtreeCell* q = (*iter);
 
     q->neighbors[QUAD_LEFT].remove(this);
 
@@ -257,7 +244,7 @@ void QuadtreeCell::setChildrenNeighbors() {
 
   for (QuadtreeCellList::iterator iter = neighbors[QUAD_TOP].begin();
        iter != neighbors[QUAD_TOP].end(); iter++) {
-    QuadtreeCell *q = (*iter);
+    QuadtreeCell* q = (*iter);
 
     q->neighbors[QUAD_BOTTOM].remove(this);
 
@@ -274,7 +261,7 @@ void QuadtreeCell::setChildrenNeighbors() {
 
   for (QuadtreeCellList::iterator iter = neighbors[QUAD_LEFT].begin();
        iter != neighbors[QUAD_LEFT].end(); iter++) {
-    QuadtreeCell *q = (*iter);
+    QuadtreeCell* q = (*iter);
 
     q->neighbors[QUAD_RIGHT].remove(this);
 
@@ -292,56 +279,56 @@ void QuadtreeCell::setChildrenNeighbors() {
 
 void QuadtreeCell::setChildrenEdges() {
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
-    Edge *e = (*iter);
+    Edge* e = (*iter);
 
     tree->findCell(e);
   }
 }
 
-Edge *QuadtreeCell::makeE(int i) {
+Edge* QuadtreeCell::makeE(int i) {
   int v1 = -1, v2 = -1;
 
   switch (i) {
-    case 0:
-      v1 = v[1] ? 1 : 2;
-      v2 = 0;
-      break;
-    case 1:
-      v1 = 2;
-      v2 = 1;
-      break;
-    case 2:
-      v1 = v[3] ? 3 : 4;
-      v2 = 2;
-      break;
-    case 3:
-      v1 = 4;
-      v2 = 3;
-      break;
-    case 4:
-      v1 = v[5] ? 5 : 6;
-      v2 = 4;
-      break;
-    case 5:
-      v1 = 6;
-      v2 = 5;
-      break;
-    case 6:
-      v1 = v[7] ? 7 : 0;
-      v2 = 6;
-      break;
-    case 7:
-      v1 = 0;
-      v2 = 7;
-      break;
+  case 0:
+    v1 = v[1] ? 1 : 2;
+    v2 = 0;
+    break;
+  case 1:
+    v1 = 2;
+    v2 = 1;
+    break;
+  case 2:
+    v1 = v[3] ? 3 : 4;
+    v2 = 2;
+    break;
+  case 3:
+    v1 = 4;
+    v2 = 3;
+    break;
+  case 4:
+    v1 = v[5] ? 5 : 6;
+    v2 = 4;
+    break;
+  case 5:
+    v1 = 6;
+    v2 = 5;
+    break;
+  case 6:
+    v1 = v[7] ? 7 : 0;
+    v2 = 6;
+    break;
+  case 7:
+    v1 = 0;
+    v2 = 7;
+    break;
   }
 
   return makeE(v1, v2);
 }
 
-Edge *QuadtreeCell::makeE(int i, int j) { return makeE(v[i], v[j]); }
+Edge* QuadtreeCell::makeE(int i, int j) { return makeE(v[i], v[j]); }
 
-Edge *QuadtreeCell::makeE(Vertex *v1, Vertex *v2) {
+Edge* QuadtreeCell::makeE(Vertex* v1, Vertex* v2) {
   apmesh::memory::PendingEdge e(new Edge(v1, v2, tree->edgeId()));
 
   v1->addAdjacentEdge(e.get());
@@ -513,29 +500,26 @@ void QuadtreeCell::makeMeshType2(int c) {
   int base = 0;
 
   switch (c) {
-    case QUAD_B:
-      base = 1;
-      break;
-    case QUAD_R:
-      base = 3;
-      break;
-    case QUAD_T:
-      base = 5;
-      break;
-    case QUAD_L:
-      base = 7;
-      break;
+  case QUAD_B:
+    base = 1;
+    break;
+  case QUAD_R:
+    base = 3;
+    break;
+  case QUAD_T:
+    base = 5;
+    break;
+  case QUAD_L:
+    base = 7;
+    break;
   }
 
   edges[0] = makeE(base, (base + 5) % 8);
   edges[1] = makeE(base, (base + 3) % 8);
 
-  faces[0] =
-      new Face(v[(base + 7) % 8], v[base], v[(base + 5) % 8], tree->faceId());
-  faces[1] =
-      new Face(v[(base + 5) % 8], v[base], v[(base + 3) % 8], tree->faceId());
-  faces[2] =
-      new Face(v[(base + 3) % 8], v[base], v[(base + 1) % 8], tree->faceId());
+  faces[0] = new Face(v[(base + 7) % 8], v[base], v[(base + 5) % 8], tree->faceId());
+  faces[1] = new Face(v[(base + 5) % 8], v[base], v[(base + 3) % 8], tree->faceId());
+  faces[2] = new Face(v[(base + 3) % 8], v[base], v[(base + 1) % 8], tree->faceId());
 
   for (int i = 0; i < numEdges; i++) {
     tree->add(edges[i]);
@@ -585,14 +569,14 @@ void QuadtreeCell::makeMeshType3(int c) {
   int base = 0;
 
   switch (c) {
-    case QUAD_B:
-    case QUAD_T:
-      base = 5;
-      break;
-    case QUAD_R:
-    case QUAD_L:
-      base = 7;
-      break;
+  case QUAD_B:
+  case QUAD_T:
+    base = 5;
+    break;
+  case QUAD_R:
+  case QUAD_L:
+    base = 7;
+    break;
   }
 
   const double center_x = 0.5 * (min->getX() + max->getX());
@@ -644,14 +628,10 @@ void QuadtreeCell::makeMeshType3(int c) {
   edges[5] = makeE(v[(base + 7) % 8], vertices[0]);
 
   faces[0] = new Face(v[base], v[(base + 1) % 8], vertices[0], tree->faceId());
-  faces[1] = new Face(v[(base + 1) % 8], v[(base + 3) % 8], vertices[0],
-                      tree->faceId());
-  faces[2] = new Face(v[(base + 3) % 8], v[(base + 4) % 8], vertices[0],
-                      tree->faceId());
-  faces[3] = new Face(v[(base + 4) % 8], v[(base + 5) % 8], vertices[0],
-                      tree->faceId());
-  faces[4] = new Face(v[(base + 5) % 8], v[(base + 7) % 8], vertices[0],
-                      tree->faceId());
+  faces[1] = new Face(v[(base + 1) % 8], v[(base + 3) % 8], vertices[0], tree->faceId());
+  faces[2] = new Face(v[(base + 3) % 8], v[(base + 4) % 8], vertices[0], tree->faceId());
+  faces[3] = new Face(v[(base + 4) % 8], v[(base + 5) % 8], vertices[0], tree->faceId());
+  faces[4] = new Face(v[(base + 5) % 8], v[(base + 7) % 8], vertices[0], tree->faceId());
   faces[5] = new Face(v[(base + 7) % 8], v[base], vertices[0], tree->faceId());
 
   for (int i = 0; i < numEdges; i++) {
@@ -705,18 +685,18 @@ void QuadtreeCell::makeMeshType4(int c) {
   int base = 0;
 
   switch (c) {
-    case QUAD_B:
-      base = 1;
-      break;
-    case QUAD_R:
-      base = 3;
-      break;
-    case QUAD_T:
-      base = 5;
-      break;
-    case QUAD_L:
-      base = 7;
-      break;
+  case QUAD_B:
+    base = 1;
+    break;
+  case QUAD_R:
+    base = 3;
+    break;
+  case QUAD_T:
+    base = 5;
+    break;
+  case QUAD_L:
+    base = 7;
+    break;
   }
 
   const double center_x = 0.5 * (min->getX() + max->getX());
@@ -726,18 +706,18 @@ void QuadtreeCell::makeMeshType4(int c) {
 
   std::pair<double, double> bias(0.0, 0.0);
   switch (c) {
-    case QUAD_B:
-      bias = {0.0, 0.5 * dy};
-      break;
-    case QUAD_R:
-      bias = {-0.5 * dx, 0.0};
-      break;
-    case QUAD_T:
-      bias = {0.0, -0.5 * dy};
-      break;
-    case QUAD_L:
-      bias = {0.5 * dx, 0.0};
-      break;
+  case QUAD_B:
+    bias = {0.0, 0.5 * dy};
+    break;
+  case QUAD_R:
+    bias = {-0.5 * dx, 0.0};
+    break;
+  case QUAD_T:
+    bias = {0.0, -0.5 * dy};
+    break;
+  case QUAD_L:
+    bias = {0.5 * dx, 0.0};
+    break;
   }
 
   double best_x = center_x + bias.first;
@@ -778,15 +758,11 @@ void QuadtreeCell::makeMeshType4(int c) {
   edges[4] = makeE(v[(base + 5) % 8], vertices[0]);
   edges[5] = makeE(v[(base + 7) % 8], vertices[0]);
 
-  faces[0] =
-      new Face(v[base], v[(base + 1) % 8], v[(base + 2) % 8], tree->faceId());
+  faces[0] = new Face(v[base], v[(base + 1) % 8], v[(base + 2) % 8], tree->faceId());
   faces[1] = new Face(v[base], v[(base + 2) % 8], vertices[0], tree->faceId());
-  faces[2] = new Face(v[(base + 2) % 8], v[(base + 3) % 8], vertices[0],
-                      tree->faceId());
-  faces[3] = new Face(v[(base + 3) % 8], v[(base + 5) % 8], vertices[0],
-                      tree->faceId());
-  faces[4] = new Face(v[(base + 5) % 8], v[(base + 7) % 8], vertices[0],
-                      tree->faceId());
+  faces[2] = new Face(v[(base + 2) % 8], v[(base + 3) % 8], vertices[0], tree->faceId());
+  faces[3] = new Face(v[(base + 3) % 8], v[(base + 5) % 8], vertices[0], tree->faceId());
+  faces[4] = new Face(v[(base + 5) % 8], v[(base + 7) % 8], vertices[0], tree->faceId());
   faces[5] = new Face(v[(base + 7) % 8], v[base], vertices[0], tree->faceId());
 
   for (int i = 0; i < numEdges; i++) {
@@ -838,18 +814,18 @@ void QuadtreeCell::makeMeshType5(int c) {
   int base = 0;
 
   switch (c) {
-    case QUAD_B:
-      base = 3;
-      break;
-    case QUAD_R:
-      base = 5;
-      break;
-    case QUAD_T:
-      base = 7;
-      break;
-    case QUAD_L:
-      base = 1;
-      break;
+  case QUAD_B:
+    base = 3;
+    break;
+  case QUAD_R:
+    base = 5;
+    break;
+  case QUAD_T:
+    base = 7;
+    break;
+  case QUAD_L:
+    base = 1;
+    break;
   }
 
   edges[0] = makeE(base, (base + 2) % 8);
@@ -857,16 +833,11 @@ void QuadtreeCell::makeMeshType5(int c) {
   edges[2] = makeE(base, (base + 5) % 8);
   edges[3] = makeE((base + 2) % 8, (base + 4) % 8);
 
-  faces[0] =
-      new Face(v[(base + 2) % 8], v[base], v[(base + 1) % 8], tree->faceId());
-  faces[1] =
-      new Face(v[(base + 4) % 8], v[base], v[(base + 2) % 8], tree->faceId());
-  faces[2] =
-      new Face(v[(base + 5) % 8], v[base], v[(base + 4) % 8], tree->faceId());
-  faces[3] =
-      new Face(v[(base + 7) % 8], v[base], v[(base + 5) % 8], tree->faceId());
-  faces[4] = new Face(v[(base + 3) % 8], v[(base + 4) % 8], v[(base + 2) % 8],
-                      tree->faceId());
+  faces[0] = new Face(v[(base + 2) % 8], v[base], v[(base + 1) % 8], tree->faceId());
+  faces[1] = new Face(v[(base + 4) % 8], v[base], v[(base + 2) % 8], tree->faceId());
+  faces[2] = new Face(v[(base + 5) % 8], v[base], v[(base + 4) % 8], tree->faceId());
+  faces[3] = new Face(v[(base + 7) % 8], v[base], v[(base + 5) % 8], tree->faceId());
+  faces[4] = new Face(v[(base + 3) % 8], v[(base + 4) % 8], v[(base + 2) % 8], tree->faceId());
 
   for (int i = 0; i < numEdges; i++) {
     tree->add(edges[i]);
@@ -909,10 +880,10 @@ void QuadtreeCell::makeMeshType6() {
   Edge** edges = pending.edges();
   Face** faces = pending.faces();
 
-  const double q13 = TemplateTriangleQuality(v[1], v[3], v[7]) +
-                     TemplateTriangleQuality(v[3], v[5], v[7]);
-  const double q15 = TemplateTriangleQuality(v[1], v[3], v[5]) +
-                     TemplateTriangleQuality(v[1], v[5], v[7]);
+  const double q13 =
+      TemplateTriangleQuality(v[1], v[3], v[7]) + TemplateTriangleQuality(v[3], v[5], v[7]);
+  const double q15 =
+      TemplateTriangleQuality(v[1], v[3], v[5]) + TemplateTriangleQuality(v[1], v[5], v[7]);
 
   if (q13 > q15) {
     edges[0] = makeE(3, 7);
@@ -957,7 +928,7 @@ void QuadtreeCell::makeMeshType6() {
   tree->RecordTemplateChoice(6, TemplateQualityScoreFromFaces(faces, numFaces));
 }
 
-void QuadtreeCell::setQuadtree(Quadtree *tree) { this->tree = tree; }
+void QuadtreeCell::setQuadtree(Quadtree* tree) { this->tree = tree; }
 
 void QuadtreeCell::setLevel(long int level) { this->level = level; }
 
@@ -965,21 +936,21 @@ long int QuadtreeCell::getLevel() { return level; }
 
 double QuadtreeCell::getSize() { return size; }
 
-void QuadtreeCell::setParent(QuadtreeCell *parent) { this->parent = parent; }
+void QuadtreeCell::setParent(QuadtreeCell* parent) { this->parent = parent; }
 
-QuadtreeCell *QuadtreeCell::getParent() { return parent; }
+QuadtreeCell* QuadtreeCell::getParent() { return parent; }
 
-void QuadtreeCell::setChild(int position, QuadtreeCell *child) {
+void QuadtreeCell::setChild(int position, QuadtreeCell* child) {
   if ((position >= 0) && (position <= 3)) {
     children[position] = child;
   }
 }
 
-QuadtreeCell *QuadtreeCell::getChild(int position) {
+QuadtreeCell* QuadtreeCell::getChild(int position) {
   return ((position >= 0) && (position <= 3)) ? children[position] : nullptr;
 }
 
-void QuadtreeCell::setBox(Vertex *min, Vertex *max) {
+void QuadtreeCell::setBox(Vertex* min, Vertex* max) {
   /*static*/ double spanX, spanY;
 
   this->min = min;
@@ -1025,11 +996,10 @@ VertexList QuadtreeCell::getVertices() {
     bool found1, found2;
     found1 = found2 = false;
 
-    Vertex *v1 = (*iter)->getV1();
-    Vertex *v2 = (*iter)->getV2();
+    Vertex* v1 = (*iter)->getV1();
+    Vertex* v2 = (*iter)->getV2();
 
-    for (VertexList::iterator iter2 = vertices.begin(); iter2 != vertices.end();
-         iter2++) {
+    for (VertexList::iterator iter2 = vertices.begin(); iter2 != vertices.end(); iter2++) {
       if ((*iter2) == v1) {
         found1 = true;
       }
@@ -1057,7 +1027,7 @@ VertexList QuadtreeCell::getVertices() {
 
 EdgeList QuadtreeCell::getEdges() { return edges; }
 
-bool QuadtreeCell::shouldSubdivide(Edge *e) {
+bool QuadtreeCell::shouldSubdivide(Edge* e) {
   if (!tree)
     throw std::logic_error("UV subdivision requires an attached quadtree");
   if (tree && tree->getMaxLevelCap() >= 0 &&
@@ -1067,7 +1037,7 @@ bool QuadtreeCell::shouldSubdivide(Edge *e) {
   return (size - e->getLen() * tree->getFactor() >= TOLERANCE_AFT);
 }
 
-bool QuadtreeCell::shouldSubdivide(Face *f) {
+bool QuadtreeCell::shouldSubdivide(Face* f) {
   if (!tree)
     throw std::logic_error("UV subdivision requires an attached quadtree");
   if (tree && tree->getMaxLevelCap() >= 0 &&
@@ -1084,21 +1054,18 @@ bool QuadtreeCell::shouldSubdivide(Face *f) {
     // f->h*tree->getFactor() >= Shape::tolerance) << endl;
   }
   double target_h = f->h;
-  if (QUADTREE_FACE_QUALITY_THRESHOLD > 0.0 &&
-      f->quality() < QUADTREE_FACE_QUALITY_THRESHOLD) {
-    target_h *= QUADTREE_LOW_QUALITY_H_FACTOR;
+  if (tree->FaceQualityThreshold() > 0.0 && f->quality() < tree->FaceQualityThreshold()) {
+    target_h *= tree->LowQualityHFactor();
   }
-  const bool should_subdivide =
-      (size - target_h * tree->getFactor() >= TOLERANCE_AFT);
-  if (should_subdivide && QUADTREE_FACE_QUALITY_THRESHOLD > 0.0 &&
-      f->quality() < QUADTREE_FACE_QUALITY_THRESHOLD &&
-      QUADTREE_LOW_QUALITY_H_FACTOR < 1.0) {
+  const bool should_subdivide = (size - target_h * tree->getFactor() >= TOLERANCE_AFT);
+  if (should_subdivide && tree->FaceQualityThreshold() > 0.0 &&
+      f->quality() < tree->FaceQualityThreshold() && tree->LowQualityHFactor() < 1.0) {
     tree->RecordLowQualitySubdivision();
   }
   return should_subdivide;
 }
 
-void QuadtreeCell::addEdge(Edge *e) {
+void QuadtreeCell::addEdge(Edge* e) {
   bool existed = false;
 
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
@@ -1113,7 +1080,7 @@ void QuadtreeCell::addEdge(Edge *e) {
   }
 }
 
-void QuadtreeCell::removeEdge(Edge *e) {
+void QuadtreeCell::removeEdge(Edge* e) {
   edges.remove(e);
 
   if (parent) {
@@ -1123,13 +1090,13 @@ void QuadtreeCell::removeEdge(Edge *e) {
 
 void QuadtreeCell::clearEdges() { edges.clear(); }
 
-QuadtreeCell *QuadtreeCell::findCell(Edge *e) {
+QuadtreeCell* QuadtreeCell::findCell(Edge* e) {
   if (out(e->getMid())) {
     return nullptr;
   }
 
   if (subdivided()) {
-    QuadtreeCell *q = children[QUAD_BOTTOM_LEFT]->findCell(e);
+    QuadtreeCell* q = children[QUAD_BOTTOM_LEFT]->findCell(e);
 
     if (!q) {
       q = children[QUAD_BOTTOM_RIGHT]->findCell(e);
@@ -1149,13 +1116,13 @@ QuadtreeCell *QuadtreeCell::findCell(Edge *e) {
   return this;
 }
 
-QuadtreeCell *QuadtreeCell::findCell(Face *f) {
+QuadtreeCell* QuadtreeCell::findCell(Face* f) {
   if (out(f->getMid())) {
     return nullptr;
   }
 
   if (subdivided()) {
-    QuadtreeCell *q = children[QUAD_BOTTOM_LEFT]->findCell(f);
+    QuadtreeCell* q = children[QUAD_BOTTOM_LEFT]->findCell(f);
 
     if (!q) {
       q = children[QUAD_BOTTOM_RIGHT]->findCell(f);
@@ -1175,22 +1142,21 @@ QuadtreeCell *QuadtreeCell::findCell(Face *f) {
   return this;
 }
 
-bool QuadtreeCell::in(Vertex *v) {
-  return (v->getX() > min->getX() && v->getX() < max->getX() &&
-          v->getY() > min->getY() && v->getY() < max->getY());
+bool QuadtreeCell::in(Vertex* v) {
+  return (v->getX() > min->getX() && v->getX() < max->getX() && v->getY() > min->getY() &&
+          v->getY() < max->getY());
 }
 
-bool QuadtreeCell::on(Vertex *v) { return (!in(v) && !(out(v))); }
+bool QuadtreeCell::on(Vertex* v) { return (!in(v) && !(out(v))); }
 
-bool QuadtreeCell::out(Vertex *v) {
+bool QuadtreeCell::out(Vertex* v) {
   // cout << "v = (" << v->getX() << ", " << v->getY() << ") " << endl;
   // cout << "box = (" << min->getX() << ", " << min->getY() << "), (" <<
   // max->getX() << ", " << max->getY() << ")" << endl;
 
   return ((v->getX() <= min->getX() - TOLERANCE_AFT) ||
           (v->getX() >= max->getX() + TOLERANCE_AFT) ||
-          (v->getY() <= min->getY() - TOLERANCE_AFT) ||
-          (v->getY() >= max->getY() + TOLERANCE_AFT));
+          (v->getY() <= min->getY() - TOLERANCE_AFT) || (v->getY() >= max->getY() + TOLERANCE_AFT));
   /*return ((v->getX() < min->getX()) ||
           (v->getX() > max->getX()) ||
           (v->getY() < min->getY()) ||
@@ -1198,16 +1164,16 @@ bool QuadtreeCell::out(Vertex *v) {
 }
 
 double QuadtreeCell::height() {
-  return size;  //(max->getX() - min->getX());
+  return size; //(max->getX() - min->getX());
 }
 
 double QuadtreeCell::surface() { return size * size; }
 
-Vertex *QuadtreeCell::getMin() { return min; }
+Vertex* QuadtreeCell::getMin() { return min; }
 
-Vertex *QuadtreeCell::getMax() { return max; }
+Vertex* QuadtreeCell::getMax() { return max; }
 
-bool QuadtreeCell::subdivide(Edge *e) {
+bool QuadtreeCell::subdivide(Edge* e) {
   if (out(e->getMid())) {
     return false;
   }
@@ -1269,7 +1235,7 @@ bool QuadtreeCell::subdivide(Edge *e) {
   return false;*/
 }
 
-bool QuadtreeCell::subdivide(Face *f) {
+bool QuadtreeCell::subdivide(Face* f) {
   if (f->getId() == 4) {
     // cout << " ****** TRIANGULO 4 *******" << endl;
   }
@@ -1343,8 +1309,7 @@ void QuadtreeCell::subdivideToLevel(unsigned long int level) {
   if ((parent) && (this->level <= level) && (edges.empty())) {
     EdgeList pEdges = parent->edges;
 
-    for (EdgeList::iterator iter = pEdges.begin(); iter != pEdges.end();
-         iter++) {
+    for (EdgeList::iterator iter = pEdges.begin(); iter != pEdges.end(); iter++) {
       tree->findCell((*iter));
     }
   }
@@ -1364,17 +1329,16 @@ void QuadtreeCell::subdivideToLevel(unsigned long int level) {
 }
 
 bool QuadtreeCell::subdivideAccordingToNeighbors() {
-  if ((neighbors[QUAD_BOTTOM].size() > 2) ||
-      (neighbors[QUAD_RIGHT].size() > 2) || (neighbors[QUAD_TOP].size() > 2) ||
-      (neighbors[QUAD_LEFT].size() > 2)) {
+  if ((neighbors[QUAD_BOTTOM].size() > 2) || (neighbors[QUAD_RIGHT].size() > 2) ||
+      (neighbors[QUAD_TOP].size() > 2) || (neighbors[QUAD_LEFT].size() > 2)) {
     subdivide();
 
     return true;
   }
 
   for (int dir = 0; dir < 4; ++dir) {
-    for (QuadtreeCellList::iterator iter = neighbors[dir].begin();
-         iter != neighbors[dir].end(); ++iter) {
+    for (QuadtreeCellList::iterator iter = neighbors[dir].begin(); iter != neighbors[dir].end();
+         ++iter) {
       if ((*iter) && ((*iter)->getLevel() > this->level + 1)) {
         subdivide();
         return true;
@@ -1398,24 +1362,24 @@ void QuadtreeCell::sortNeighbors() {
 
   for (int i = 0; i < 4; i++) {
     if (neighbors[i].size() > 1) {
-      QuadtreeCell *f = neighbors[i].front();
-      QuadtreeCell *b = neighbors[i].back();
+      QuadtreeCell* f = neighbors[i].front();
+      QuadtreeCell* b = neighbors[i].back();
 
       bool change = false;
 
       switch (i) {
-        case QUAD_B:
-          change = b->getMin()->getX() < f->getMin()->getX();
-          break;
-        case QUAD_R:
-          change = b->getMin()->getY() < f->getMin()->getY();
-          break;
-        case QUAD_T:
-          change = f->getMin()->getX() < b->getMin()->getX();
-          break;
-        case QUAD_L:
-          change = f->getMin()->getY() < b->getMin()->getY();
-          break;
+      case QUAD_B:
+        change = b->getMin()->getX() < f->getMin()->getX();
+        break;
+      case QUAD_R:
+        change = b->getMin()->getY() < f->getMin()->getY();
+        break;
+      case QUAD_T:
+        change = f->getMin()->getX() < b->getMin()->getX();
+        break;
+      case QUAD_L:
+        change = f->getMin()->getY() < b->getMin()->getY();
+        break;
       }
 
       if (change) {
@@ -1429,8 +1393,8 @@ void QuadtreeCell::sortNeighbors() {
 }
 
 bool QuadtreeCell::inBoundary() {
-  return (neighbors[QUAD_B].empty() || neighbors[QUAD_R].empty() ||
-          neighbors[QUAD_T].empty() || neighbors[QUAD_L].empty());
+  return (neighbors[QUAD_B].empty() || neighbors[QUAD_R].empty() || neighbors[QUAD_T].empty() ||
+          neighbors[QUAD_L].empty());
 }
 
 void QuadtreeCell::makeOuterVertices() {
@@ -1451,16 +1415,14 @@ void QuadtreeCell::makeOuterVertices() {
     tree->add(pending_vertex.get());
     v[0] = pending_vertex.release();
 
-    if ((neighbors[QUAD_L].size() == 2) ||
-        (neighbors[QUAD_L].back()->level == level) ||
+    if ((neighbors[QUAD_L].size() == 2) || (neighbors[QUAD_L].back()->level == level) ||
         (neighbors[QUAD_L].back()->neighbors[QUAD_R].front() == this)) {
       neighbors[QUAD_L].back()->v[2] = v[0];
     } else {
       neighbors[QUAD_L].back()->v[3] = v[0];
     }
 
-    if ((neighbors[QUAD_B].size() == 2) ||
-        (neighbors[QUAD_B].front()->level == level) ||
+    if ((neighbors[QUAD_B].size() == 2) || (neighbors[QUAD_B].front()->level == level) ||
         (neighbors[QUAD_B].front()->neighbors[QUAD_T].back() == this)) {
       neighbors[QUAD_B].front()->v[6] = v[0];
     } else {
@@ -1488,16 +1450,14 @@ void QuadtreeCell::makeOuterVertices() {
     tree->add(pending_vertex.get());
     v[2] = pending_vertex.release();
 
-    if ((neighbors[QUAD_B].size() == 2) ||
-        (neighbors[QUAD_B].back()->level == level) ||
+    if ((neighbors[QUAD_B].size() == 2) || (neighbors[QUAD_B].back()->level == level) ||
         (neighbors[QUAD_B].back()->neighbors[QUAD_T].front() == this)) {
       neighbors[QUAD_B].back()->v[4] = v[2];
     } else {
       neighbors[QUAD_B].back()->v[5] = v[2];
     }
 
-    if ((neighbors[QUAD_R].size() == 2) ||
-        (neighbors[QUAD_R].front()->level == level) ||
+    if ((neighbors[QUAD_R].size() == 2) || (neighbors[QUAD_R].front()->level == level) ||
         (neighbors[QUAD_R].front()->neighbors[QUAD_L].back() == this)) {
       neighbors[QUAD_R].front()->v[0] = v[2];
     } else {
@@ -1525,16 +1485,14 @@ void QuadtreeCell::makeOuterVertices() {
     tree->add(pending_vertex.get());
     v[4] = pending_vertex.release();
 
-    if ((neighbors[QUAD_R].size() == 2) ||
-        (neighbors[QUAD_R].back()->level == level) ||
+    if ((neighbors[QUAD_R].size() == 2) || (neighbors[QUAD_R].back()->level == level) ||
         (neighbors[QUAD_R].back()->neighbors[QUAD_L].front() == this)) {
       neighbors[QUAD_R].back()->v[6] = v[4];
     } else {
       neighbors[QUAD_R].back()->v[7] = v[4];
     }
 
-    if ((neighbors[QUAD_T].size() == 2) ||
-        (neighbors[QUAD_T].front()->level == level) ||
+    if ((neighbors[QUAD_T].size() == 2) || (neighbors[QUAD_T].front()->level == level) ||
         (neighbors[QUAD_T].front()->neighbors[QUAD_B].back() == this)) {
       neighbors[QUAD_T].front()->v[2] = v[4];
     } else {
@@ -1562,16 +1520,14 @@ void QuadtreeCell::makeOuterVertices() {
     tree->add(pending_vertex.get());
     v[6] = pending_vertex.release();
 
-    if ((neighbors[QUAD_T].size() == 2) ||
-        (neighbors[QUAD_T].back()->level == level) ||
+    if ((neighbors[QUAD_T].size() == 2) || (neighbors[QUAD_T].back()->level == level) ||
         (neighbors[QUAD_T].back()->neighbors[QUAD_B].front() == this)) {
       neighbors[QUAD_T].back()->v[0] = v[6];
     } else {
       neighbors[QUAD_T].back()->v[1] = v[6];
     }
 
-    if ((neighbors[QUAD_L].size() == 2) ||
-        (neighbors[QUAD_L].front()->level == level) ||
+    if ((neighbors[QUAD_L].size() == 2) || (neighbors[QUAD_L].front()->level == level) ||
         (neighbors[QUAD_L].front()->neighbors[QUAD_R].back() == this)) {
       neighbors[QUAD_L].front()->v[4] = v[6];
     } else {
@@ -1617,8 +1573,7 @@ void QuadtreeCell::makeOuterEdges() {
     if (neighbors[QUAD_B].front()->inBoundary()) {
       tree->addFront(e[0]);
     } else {
-      if ((neighbors[QUAD_B].size() == 1) &&
-          (neighbors[QUAD_B].front()->level < level) &&
+      if ((neighbors[QUAD_B].size() == 1) && (neighbors[QUAD_B].front()->level < level) &&
           (neighbors[QUAD_B].front()->neighbors[QUAD_T].back() == this)) {
         neighbors[QUAD_B].front()->e[5] = e[0];
       } else {
@@ -1665,8 +1620,7 @@ void QuadtreeCell::makeOuterEdges() {
     if (neighbors[QUAD_R].front()->inBoundary()) {
       tree->addFront(e[2]);
     } else {
-      if ((neighbors[QUAD_R].size() == 1) &&
-          (neighbors[QUAD_R].front()->level < level) &&
+      if ((neighbors[QUAD_R].size() == 1) && (neighbors[QUAD_R].front()->level < level) &&
           (neighbors[QUAD_R].front()->neighbors[QUAD_L].back() == this)) {
         neighbors[QUAD_R].front()->e[7] = e[2];
       } else {
@@ -1713,8 +1667,7 @@ void QuadtreeCell::makeOuterEdges() {
     if (neighbors[QUAD_T].front()->inBoundary()) {
       tree->addFront(e[4]);
     } else {
-      if ((neighbors[QUAD_T].size() == 1) &&
-          (neighbors[QUAD_T].front()->level < level) &&
+      if ((neighbors[QUAD_T].size() == 1) && (neighbors[QUAD_T].front()->level < level) &&
           (neighbors[QUAD_T].front()->neighbors[QUAD_B].back() == this)) {
         neighbors[QUAD_T].front()->e[1] = e[4];
       } else {
@@ -1761,8 +1714,7 @@ void QuadtreeCell::makeOuterEdges() {
     if (neighbors[QUAD_L].front()->inBoundary()) {
       tree->addFront(e[6]);
     } else {
-      if ((neighbors[QUAD_L].size() == 1) &&
-          (neighbors[QUAD_L].front()->level < level) &&
+      if ((neighbors[QUAD_L].size() == 1) && (neighbors[QUAD_L].front()->level < level) &&
           (neighbors[QUAD_L].front()->neighbors[QUAD_R].back() == this)) {
         neighbors[QUAD_L].front()->e[3] = e[6];
       } else {
@@ -2106,4 +2058,3 @@ string QuadtreeCell::getText() {
 //    }
 //}
 // #endif //#if USE_OPENGL
-
