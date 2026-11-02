@@ -18,9 +18,10 @@ their declared scope. No partial result closes the stage.
 ## Current production milestone
 
 The [engine/runtime/CLI boundary](../evidence/SERIAL_ENGINE.md) is delivered. The
-single active item is [owned generation identity/output](../evidence/GENERATION_CONTEXT.md):
-complete four owned identity strings, an Adapter borrow and the compatibility
-path, with the existing regression and unchanged scientific reference. Instrument
+[owned identity/output context](../evidence/GENERATION_CONTEXT.md) is delivered.
+The single active item is the [typed execution request](../evidence/TYPED_GENERATION_REQUEST.md):
+remove synthetic argv, retain the raw caller bridge and CLI transcript, and reuse
+the existing regression and unchanged scientific reference. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 

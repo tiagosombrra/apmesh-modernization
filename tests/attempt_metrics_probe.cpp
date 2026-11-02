@@ -33,6 +33,7 @@ using apmesh::application::LoadRuntimeConfig;
 #include <fstream>
 #include <iomanip>
 #include <memory>
+#include <sstream>
 #include <stdexcept>
 
 #if defined(_WIN32)
@@ -113,6 +114,51 @@ void CheckGenerationContexts(const std::filesystem::path& output) {
   NUMBER_PROCESS = saved_process;
   WRITE_MESH = saved_mode;
   std::cout << "generation_context owned=2 source_retired=1 interleaved_writes=3 legacy=1\n";
+}
+
+void CheckGenerationRequests(const std::filesystem::path& output) {
+  using apmesh::application::GenerationRequest;
+  const std::string path = (output / "missing-request.bp").generic_string();
+  const std::string owned_path = (output / "missing-context.bp").generic_string();
+  if (std::filesystem::exists(path) || std::filesystem::exists(owned_path) ||
+      GenerationRequest{}.input_model.has_value())
+    throw std::runtime_error("Generation request control precondition failed");
+  GenerationRequest request;
+  {
+    std::string source = path;
+    request = {2, 3, source};
+    source.clear();
+  }
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive owned({owned_path, "unused", "", ""});
+  const auto rejected = [](auto&& execute, const std::string& expected, bool bridge) {
+    std::ostringstream transcript;
+    struct RestoreBuffer {
+      std::streambuf* previous;
+      ~RestoreBuffer() { std::cout.rdbuf(previous); }
+    } restore{std::cout.rdbuf(transcript.rdbuf())};
+    bool caught = false;
+    try {
+      execute();
+    } catch (const std::runtime_error& error) {
+      caught = error.what() == "Cannot open model input: " + expected;
+    }
+    const bool printed = transcript.str().find("argv[]:") != std::string::npos;
+    if (!caught || printed != bridge ||
+        (bridge && transcript.str().find("argv[]:extra\n") == std::string::npos))
+      throw std::runtime_error("Typed generation request or legacy bridge changed input routing");
+  };
+  Timer timer;
+  rejected([&] { legacy.Execute(request, &timer); }, path, false);
+  rejected([&] { owned.Execute(request, &timer); }, owned_path, false);
+  request.input_model = "";
+  rejected([&] { legacy.Execute(request, &timer); }, "", false);
+  char program[] = "legacy", processes[] = "2", threads[] = "3", extra[] = "extra";
+  std::string mutable_path = path;
+  char* arguments[] = {program, processes, threads, mutable_path.data(), extra, nullptr};
+  rejected([&] { legacy.Execute(arguments, &timer); }, path, true);
+  rejected([&] { owned.Execute(arguments, &timer); }, owned_path, true);
+  std::cout << "generation_request typed=3 legacy=2 context_precedence=2 empty_path=1\n";
 }
 
 void CheckDomainInputs(const std::string& mode) {
@@ -260,6 +306,7 @@ int main(int argc, char* argv[]) {
   if (!std::filesystem::create_directories(output))
     throw std::runtime_error("Output directory already exists");
   CheckGenerationContexts(output);
+  CheckGenerationRequests(output);
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();
   GeneratorAdaptive generator;

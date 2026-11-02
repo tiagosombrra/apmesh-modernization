@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `06afd96f60f06d4abdbe420d6223fc57b29b65c0` (PR #140).
+Entry main: `fac42f748182ea12394bffea7f7bcc6d94dd7a3e` (PR #141).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,20 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: owned generation identity/output
+## Active production delivery: typed engine execution
+
+The [typed generation request](evidence/TYPED_GENERATION_REQUEST.md) replaces
+the CLI's synthetic string/pointer vectors with process/thread counts and an
+optional owned fallback input path. The motor consumes values directly; the
+historical argument transcript stays at the CLI boundary. Execute(char*[]) remains
+a compatibility wrapper. Owned context input still takes precedence; a missing
+fallback path retains the built-in model and an empty path remains a file input.
+Numerical configuration, scientific control flow and parallel routing are fixed.
+The existing metrics probe checks typed/legacy input routing and exception/log
+behavior; use the existing delivery regression, without another instrument campaign.
+This removes an internal textual protocol, not the remaining numerical globals.
+
+## Delivered production context: owned generation identity/output
 
 The [generation context lot](evidence/GENERATION_CONTEXT.md) owns input identity,
 output prefix, write mode and literal process suffix in each explicit generator.
@@ -108,8 +121,8 @@ identities after their source is changed/retired and interleaves three real repo
 writes against conflicting globals. The default constructor preserves live legacy
 reads. Numerical policies and unmigrated globals still require serialization.
 Use the existing delivery regression and scientific reference; no new instrument
-campaign is introduced. The next production lot must bound a cohesive group of
-numerical/runtime state and its caller contract before migration.
+campaign is introduced. The typed execution lot above removes the textual caller
+protocol; numerical/runtime-state migration still needs its own bounded contract.
 
 ## Delivered production boundary: serial engine and thin CLI
 
