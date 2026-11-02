@@ -1,0 +1,69 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "11a6576d8795c406111b334cda5b475647efcd16",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "17 curve controls owned in optional context",
+    "Two mode updates retain their original positions and share effective state",
+    "Adapter observes independently captured discretization pair",
+    "Point clamp formula/order and synchronization flow retained",
+    "Absent settings retain live legacy reads/writes"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_and_adapter_body_reversal": true,
+    "stable_mode_updates_preserve_values_order_and_distinct_positions": true,
+    "point_clamp_formula_and_order_preserved": true,
+    "parser_apply_global_defaults_and_other_production_unchanged": true,
+    "synchronization_and_publication_control_flow_preserved": true,
+    "owned_inputs": [
+      "adaptation_policy",
+      "adaptation_blend",
+      "factor_sensitivity",
+      "step2_sensitivity_scale",
+      "efficiency_weight",
+      "point_budget_mode",
+      "point_growth_step1",
+      "point_growth_stepn",
+      "point_budget_blend",
+      "point_min",
+      "point_max",
+      "consistency_mode",
+      "consistency_max_point_ratio_step2",
+      "consistency_priority_bonus",
+      "consistency_group_blend",
+      "discretization_factor",
+      "internal_discretization_factor"
+    ],
+    "factory": "nine RuntimeConfig fields and eight process values; discretization factor pair captured independently",
+    "effective_state": "two modes update the same optional instance copy without resetting prior adjustments; Adapter borrows unchanged raw pair",
+    "compatibility": "absent curves retains live global reads/writes",
+    "scope": "remaining patch/quadtree controls and other global mutations stay shared; no new parallel/recovery qualification"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "native_cases": 3,
+  "native_raw_double_representations": 33,
+  "native_stable_double_representations": 33,
+  "native_integer_fields": 6,
+  "native_point_targets": 18,
+  "native_owned_adapter_double_representations": 12,
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "limits": [
+    "Remaining patch/quadtree controls and other mutations stay shared",
+    "No new complete-generation curve matrix or parallel/reentrant/recovery qualification",
+    "Stage 3 and stage 6 remain open"
+  ]
+}

@@ -172,6 +172,7 @@ extern double PATCH_QUALITY_WEIGHT;
 extern double PATCH_QUALITY_TARGET;
 extern double PATCH_QUALITY_MIN_TARGET;
 extern double PATCH_TOP_ERROR_FRACTION;
+extern double DISCRETIZATION_CURVE_FACTOR_INTERNAL;
 extern int CURVE_ADAPTATION_POLICY;
 extern double CURVE_ADAPTATION_BLEND;
 extern double CURVE_FACTOR_SENSITIVITY;
@@ -951,6 +952,150 @@ GeneratorAdaptive::BuildElementBudgetRuntime() const noexcept {
           PatchBudgetTopKOnlyMode()};
 }
 
+const apmesh::application::CurveControlsConfig* GeneratorAdaptive::CurveSettings() const noexcept {
+  if (!generation_context_ || !generation_context_->curves) {
+    return nullptr;
+  }
+  return effective_curve_controls_ ? &*effective_curve_controls_ : &*generation_context_->curves;
+}
+
+apmesh::application::CurveControlsConfig* GeneratorAdaptive::MutableCurveSettings() noexcept {
+  if (!generation_context_ || !generation_context_->curves) {
+    return nullptr;
+  }
+  if (!effective_curve_controls_) {
+    effective_curve_controls_.emplace(*generation_context_->curves);
+  }
+  return &*effective_curve_controls_;
+}
+
+int GeneratorAdaptive::CurveAdaptationPolicy() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->adaptation_policy : CURVE_ADAPTATION_POLICY;
+}
+
+double GeneratorAdaptive::CurveAdaptationBlend() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->adaptation_blend : CURVE_ADAPTATION_BLEND;
+}
+
+double GeneratorAdaptive::CurveFactorSensitivity() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->factor_sensitivity : CURVE_FACTOR_SENSITIVITY;
+}
+
+double GeneratorAdaptive::Step2CurveSensitivityScale() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->step2_sensitivity_scale : STEP2_CURVE_SENSITIVITY_SCALE;
+}
+
+double GeneratorAdaptive::CurveEfficiencyWeight() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->efficiency_weight : CURVE_EFFICIENCY_WEIGHT;
+}
+
+int GeneratorAdaptive::CurvePointBudgetMode() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->point_budget_mode : CURVE_POINT_BUDGET_MODE;
+}
+
+double GeneratorAdaptive::CurvePointGrowthStep1() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->point_growth_step1 : CURVE_POINT_GROWTH_STEP1;
+}
+
+double GeneratorAdaptive::CurvePointGrowthStepN() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->point_growth_stepn : CURVE_POINT_GROWTH_STEPN;
+}
+
+double GeneratorAdaptive::CurvePointBudgetBlend() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->point_budget_blend : CURVE_POINT_BUDGET_BLEND;
+}
+
+int GeneratorAdaptive::CurvePointMin() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->point_min : CURVE_POINT_MIN;
+}
+
+int GeneratorAdaptive::CurvePointMax() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->point_max : CURVE_POINT_MAX;
+}
+
+int GeneratorAdaptive::CurveConsistencyMode() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->consistency_mode : CURVE_CONSISTENCY_MODE;
+}
+
+double GeneratorAdaptive::CurveConsistencyMaxPointRatioStep2() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->consistency_max_point_ratio_step2
+                : CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2;
+}
+
+int GeneratorAdaptive::CurveConsistencyPriorityBonus() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->consistency_priority_bonus : CURVE_CONSISTENCY_PRIORITY_BONUS;
+}
+
+double GeneratorAdaptive::CurveConsistencyGroupBlend() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->consistency_group_blend : CURVE_CONSISTENCY_GROUP_BLEND;
+}
+
+double GeneratorAdaptive::CurveDiscretizationFactor() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->discretization_factor : DISCRETIZATION_CURVE_FACTOR;
+}
+
+double GeneratorAdaptive::InternalCurveDiscretizationFactor() const noexcept {
+  const auto* config = CurveSettings();
+  return config ? config->internal_discretization_factor : DISCRETIZATION_CURVE_FACTOR_INTERNAL;
+}
+
+int GeneratorAdaptive::ClampCurveTarget(int value) const {
+  value = std::max(value, std::max(2, CurvePointMin()));
+  if (CurvePointMax() > 0) {
+    value = std::min(value, CurvePointMax());
+  }
+  return value;
+}
+
+void GeneratorAdaptive::EnableCurvePointBudget() noexcept {
+  auto* config = MutableCurveSettings();
+  int& mode = config ? config->point_budget_mode : CURVE_POINT_BUDGET_MODE;
+  mode = 1;
+}
+
+void GeneratorAdaptive::EnableCurveConsistency() noexcept {
+  auto* config = MutableCurveSettings();
+  int& mode = config ? config->consistency_mode : CURVE_CONSISTENCY_MODE;
+  mode = 1;
+}
+
+apmesh::application::CurveControlsConfig
+GeneratorAdaptive::BuildCurveControlsRuntime() const noexcept {
+  return {CurveAdaptationPolicy(),
+          CurveAdaptationBlend(),
+          CurveFactorSensitivity(),
+          Step2CurveSensitivityScale(),
+          CurveEfficiencyWeight(),
+          CurvePointBudgetMode(),
+          CurvePointGrowthStep1(),
+          CurvePointGrowthStepN(),
+          CurvePointBudgetBlend(),
+          CurvePointMin(),
+          CurvePointMax(),
+          CurveConsistencyMode(),
+          CurveConsistencyMaxPointRatioStep2(),
+          CurveConsistencyPriorityBonus(),
+          CurveConsistencyGroupBlend(),
+          CurveDiscretizationFactor(),
+          InternalCurveDiscretizationFactor()};
+}
+
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   const auto* config = generation_context_ && generation_context_->adaptive_policy
                            ? &*generation_context_->adaptive_policy
@@ -1476,12 +1621,12 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   current_policy_ = BuildAdaptivePolicyRuntime();
   if (current_policy_.stable_mode) {
     ApplyStableElementBudgetSettings();
-    CURVE_POINT_BUDGET_MODE = 1;
+    EnableCurvePointBudget();
     PATCH_QUADTREE_CAP_MODE = 1;
     PATCH_GENERATION_CONTROL_MODE = 1;
     PATCH_GENERATION_TOP_RANK_ONLY_MODE = 0;
     PATCH_CONSISTENCY_MODE = 1;
-    CURVE_CONSISTENCY_MODE = 1;
+    EnableCurveConsistency();
     STEP_ACCEPT_CONSISTENCY_MODE = 1;
     PATCH_STEPWISE_MODE = 1;
     STEP2_MICRO_REFINEMENT_MODE = 1;
@@ -2959,13 +3104,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
   current_curve_target_points_.assign(geometry->GetNumberCurves(), 0.0);
   current_curve_adaptation_.assign(geometry->GetNumberCurves(), CurveAdaptationSnapshot{});
 
-  auto clamp_curve_target = [](int value) {
-    value = std::max(value, std::max(2, CURVE_POINT_MIN));
-    if (CURVE_POINT_MAX > 0) {
-      value = std::min(value, CURVE_POINT_MAX);
-    }
-    return value;
-  };
+  auto clamp_curve_target = [this](int value) { return ClampCurveTarget(value); };
 
   for (unsigned int i = 0; i < geometry->GetNumberCurves(); ++i) {
     CurveAdaptive* curve = geometry->GetCurve(i);
@@ -2975,7 +3114,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     double min_adjacent_target_h = std::numeric_limits<double>::max();
     double max_adjacent_target_elements = 0.0;
     bool sensitive_curve = false;
-    if (BudgetDrivenAdaptation() == 1 && CURVE_POINT_BUDGET_MODE == 1) {
+    if (BudgetDrivenAdaptation() == 1 && CurvePointBudgetMode() == 1) {
       double max_patch_growth = 1.0;
       double max_patch_budget = 0.0;
       bool touches_priority_patch = false;
@@ -3014,9 +3153,9 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
         }
       }
       const double curve_growth_cap =
-          (step_ <= 1) ? CURVE_POINT_GROWTH_STEP1 : CURVE_POINT_GROWTH_STEPN;
+          (step_ <= 1) ? CurvePointGrowthStep1() : CurvePointGrowthStepN();
       const double blended_growth =
-          CURVE_POINT_BUDGET_BLEND * max_patch_growth + (1.0 - CURVE_POINT_BUDGET_BLEND) * 1.0;
+          CurvePointBudgetBlend() * max_patch_growth + (1.0 - CurvePointBudgetBlend()) * 1.0;
       target_curve_points = clamp_curve_target(
           static_cast<int>(std::round(static_cast<double>(previous_points) *
                                       std::min(curve_growth_cap, std::max(1.0, blended_growth)))));
@@ -3061,7 +3200,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     snapshot.curve_id = curve->GetId() != 0UL ? curve->GetId() : static_cast<unsigned long>(i);
     snapshot.factor = ComputeCurveAdaptationFactor(curve, patch_factors);
     snapshot.num_points = curve->GetNumBerPoints();
-    snapshot.policy = CURVE_ADAPTATION_POLICY;
+    snapshot.policy = CurveAdaptationPolicy();
     snapshot.target_points = target_curve_points;
     snapshot.actual_points = previous_points;
     snapshot.geometric_target_points = target_curve_points;
@@ -3090,7 +3229,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
       }
       adjacent_ids << patch_id;
       double weight = 1.0;
-      if (CURVE_ADAPTATION_POLICY == 3 && patch_id < patch_history_.size()) {
+      if (CurveAdaptationPolicy() == 3 && patch_id < patch_history_.size()) {
         weight = std::max(1.0e-9, patch_history_[patch_id].prev_patch_efficiency);
       } else if (patch_id < last_submesh_error_.size()) {
         weight = std::max(1.0e-9, last_submesh_error_[patch_id]);
@@ -3113,7 +3252,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     current_curve_adaptation_[i] = snapshot;
   }
 
-  if (PATCH_CONSISTENCY_MODE == 1 && CURVE_CONSISTENCY_MODE == 1 && BudgetDrivenAdaptation() == 1) {
+  if (PATCH_CONSISTENCY_MODE == 1 && CurveConsistencyMode() == 1 && BudgetDrivenAdaptation() == 1) {
     RegularizeCurveTargetsFromPatchConsistency(geometry);
   }
 
@@ -3164,7 +3303,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
           return adapter_.AdaptCurveBySurface(curve, map_points, this->id_managers_[0].get(),
                                               factor_disc_global);
         },
-        BudgetDrivenAdaptation() == 1 && CURVE_POINT_BUDGET_MODE == 1, target_curve_points,
+        BudgetDrivenAdaptation() == 1 && CurvePointBudgetMode() == 1, target_curve_points,
         this->id_managers_.empty() ? nullptr : this->id_managers_[0].get());
     CurveAdaptationSnapshot& snapshot = current_curve_adaptation_[i];
     snapshot.factor = factor_disc_global;
@@ -4673,7 +4812,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
 }
 
 void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(const Geometry* geometry) {
-  if (CURVE_CONSISTENCY_MODE != 1 || !geometry ||
+  if (CurveConsistencyMode() != 1 || !geometry ||
       current_curve_target_points_.size() != geometry->GetNumberCurves()) {
     return;
   }
@@ -4718,8 +4857,8 @@ void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(const Geometr
       }
     }
     snapshot.curve_patch_balance_ratio = max_budget / std::max(1.0, min_budget);
-    double max_ratio = (step_ == 2) ? CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2
-                                    : (CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2 + 0.5);
+    double max_ratio = (step_ == 2) ? CurveConsistencyMaxPointRatioStep2()
+                                    : (CurveConsistencyMaxPointRatioStep2() + 0.5);
     const int before = static_cast<int>(std::round(current_curve_target_points_[i]));
     const bool low_h_sensitive =
         min_target_h < std::numeric_limits<double>::max() && min_target_h <= 0.14;
@@ -4728,14 +4867,14 @@ void GeneratorAdaptive::RegularizeCurveTargetsFromPatchConsistency(const Geometr
         (touches_priority_patch || snapshot.sensitive_curve == 1 || low_h_sensitive);
     if ((same_group && snapshot.curve_patch_balance_ratio > max_ratio) || force_curve_alignment) {
       const int elevated = static_cast<int>(
-          std::round(CURVE_CONSISTENCY_GROUP_BLEND * static_cast<double>(before) +
-                     (1.0 - CURVE_CONSISTENCY_GROUP_BLEND) * static_cast<double>(before) *
+          std::round(CurveConsistencyGroupBlend() * static_cast<double>(before) +
+                     (1.0 - CurveConsistencyGroupBlend()) * static_cast<double>(before) *
                          std::min(max_ratio, snapshot.curve_patch_balance_ratio)));
       int after = std::max(before, elevated);
       if (current_policy_.stable_mode && step_ >= 2) {
         after = std::max(after, snapshot.geometric_target_points);
       }
-      if (touches_priority_patch && CURVE_CONSISTENCY_PRIORITY_BONUS == 1) {
+      if (touches_priority_patch && CurveConsistencyPriorityBonus() == 1) {
         after += 1;
       }
       current_curve_target_points_[i] = static_cast<double>(after);
@@ -4859,15 +4998,15 @@ GeneratorAdaptive::ComputeCurveAdaptationFactor(CurveAdaptive* curve,
     factor = found_patch ? std::min(factor, patch_factors[patch_id]) : patch_factors[patch_id];
     factor_sum += patch_factors[patch_id];
     double weight = 1.0;
-    if (CURVE_ADAPTATION_POLICY == 3 && patch_id < patch_history_.size()) {
+    if (CurveAdaptationPolicy() == 3 && patch_id < patch_history_.size()) {
       const double error_weight = (patch_id < last_submesh_error_.size())
                                       ? std::max(last_submesh_error_[patch_id], 1.0e-12)
                                       : 1.0;
       const double efficiency_weight =
           std::max(1.0e-12, patch_history_[patch_id].prev_patch_efficiency /
                                 std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
-      weight = (1.0 - CURVE_EFFICIENCY_WEIGHT) * error_weight +
-               CURVE_EFFICIENCY_WEIGHT * efficiency_weight;
+      weight = (1.0 - CurveEfficiencyWeight()) * error_weight +
+               CurveEfficiencyWeight() * efficiency_weight;
     } else if (patch_id < last_submesh_error_.size()) {
       weight = std::max(last_submesh_error_[patch_id], 1.0e-12);
     }
@@ -4883,7 +5022,7 @@ GeneratorAdaptive::ComputeCurveAdaptationFactor(CurveAdaptive* curve,
   const double mean_factor =
       contributing_patches > 0U ? factor_sum / static_cast<double>(contributing_patches) : factor;
   double weighted_factor = factor;
-  if ((CURVE_ADAPTATION_POLICY == 2 || CURVE_ADAPTATION_POLICY == 3) && weight_sum > 0.0) {
+  if ((CurveAdaptationPolicy() == 2 || CurveAdaptationPolicy() == 3) && weight_sum > 0.0) {
     weighted_factor = 0.0;
     for (unsigned int i = 0; i < curve->GetNumBerPatches(); ++i) {
       Patch* patch = curve->GetPatch(i);
@@ -4895,15 +5034,15 @@ GeneratorAdaptive::ComputeCurveAdaptationFactor(CurveAdaptive* curve,
         continue;
       }
       double weight = 1.0;
-      if (CURVE_ADAPTATION_POLICY == 3 && patch_id < patch_history_.size()) {
+      if (CurveAdaptationPolicy() == 3 && patch_id < patch_history_.size()) {
         const double error_weight = (patch_id < last_submesh_error_.size())
                                         ? std::max(last_submesh_error_[patch_id], 1.0e-12)
                                         : 1.0;
         const double efficiency_weight =
             std::max(1.0e-12, patch_history_[patch_id].prev_patch_efficiency /
                                   std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
-        weight = (1.0 - CURVE_EFFICIENCY_WEIGHT) * error_weight +
-                 CURVE_EFFICIENCY_WEIGHT * efficiency_weight;
+        weight = (1.0 - CurveEfficiencyWeight()) * error_weight +
+                 CurveEfficiencyWeight() * efficiency_weight;
       } else {
         weight = (patch_id < last_submesh_error_.size())
                      ? std::max(last_submesh_error_[patch_id], 1.0e-12)
@@ -4914,16 +5053,16 @@ GeneratorAdaptive::ComputeCurveAdaptationFactor(CurveAdaptive* curve,
   }
 
   double base_factor = factor;
-  if (CURVE_ADAPTATION_POLICY == 1) {
-    base_factor = CURVE_ADAPTATION_BLEND * factor + (1.0 - CURVE_ADAPTATION_BLEND) * mean_factor;
-  } else if (CURVE_ADAPTATION_POLICY == 2 || CURVE_ADAPTATION_POLICY == 3) {
+  if (CurveAdaptationPolicy() == 1) {
+    base_factor = CurveAdaptationBlend() * factor + (1.0 - CurveAdaptationBlend()) * mean_factor;
+  } else if (CurveAdaptationPolicy() == 2 || CurveAdaptationPolicy() == 3) {
     base_factor =
-        CURVE_ADAPTATION_BLEND * factor + (1.0 - CURVE_ADAPTATION_BLEND) * weighted_factor;
+        CurveAdaptationBlend() * factor + (1.0 - CurveAdaptationBlend()) * weighted_factor;
   }
 
-  const double sensitivity_scale = (step_ <= 1) ? 1.0 : STEP2_CURVE_SENSITIVITY_SCALE;
+  const double sensitivity_scale = (step_ <= 1) ? 1.0 : Step2CurveSensitivityScale();
   const double attenuated_factor =
-      1.0 + (CURVE_FACTOR_SENSITIVITY * sensitivity_scale) * (base_factor - 1.0);
+      1.0 + (CurveFactorSensitivity() * sensitivity_scale) * (base_factor - 1.0);
   return ClampValue(attenuated_factor, PatchFactorMin(), PatchFactorMax());
 }
 

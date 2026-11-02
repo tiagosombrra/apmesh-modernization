@@ -595,6 +595,136 @@ void CheckElementBudgetContexts() {
   apply(saved);
   std::cout << "element_budget_context cases=3 scalar_bits=72 target_bits=18 stable=3 legacy=2\n";
 }
+
+void CheckCurveControlsContexts() {
+  using apmesh::application::CurveControlsConfig;
+  const std::array<double CurveControlsConfig::*, 11> doubles{
+      {&CurveControlsConfig::adaptation_blend, &CurveControlsConfig::factor_sensitivity,
+       &CurveControlsConfig::step2_sensitivity_scale, &CurveControlsConfig::efficiency_weight,
+       &CurveControlsConfig::point_growth_step1, &CurveControlsConfig::point_growth_stepn,
+       &CurveControlsConfig::point_budget_blend,
+       &CurveControlsConfig::consistency_max_point_ratio_step2,
+       &CurveControlsConfig::consistency_group_blend, &CurveControlsConfig::discretization_factor,
+       &CurveControlsConfig::internal_discretization_factor}};
+  const std::array<int CurveControlsConfig::*, 6> integers{
+      {&CurveControlsConfig::adaptation_policy, &CurveControlsConfig::point_budget_mode,
+       &CurveControlsConfig::point_min, &CurveControlsConfig::point_max,
+       &CurveControlsConfig::consistency_mode, &CurveControlsConfig::consistency_priority_bonus}};
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildCurveControlsRuntime();
+  const auto apply = [](const CurveControlsConfig& config) {
+    CURVE_ADAPTATION_POLICY = config.adaptation_policy;
+    CURVE_ADAPTATION_BLEND = config.adaptation_blend;
+    CURVE_FACTOR_SENSITIVITY = config.factor_sensitivity;
+    STEP2_CURVE_SENSITIVITY_SCALE = config.step2_sensitivity_scale;
+    CURVE_EFFICIENCY_WEIGHT = config.efficiency_weight;
+    CURVE_POINT_BUDGET_MODE = config.point_budget_mode;
+    CURVE_POINT_GROWTH_STEP1 = config.point_growth_step1;
+    CURVE_POINT_GROWTH_STEPN = config.point_growth_stepn;
+    CURVE_POINT_BUDGET_BLEND = config.point_budget_blend;
+    CURVE_POINT_MIN = config.point_min;
+    CURVE_POINT_MAX = config.point_max;
+    CURVE_CONSISTENCY_MODE = config.consistency_mode;
+    CURVE_CONSISTENCY_MAX_POINT_RATIO_STEP2 = config.consistency_max_point_ratio_step2;
+    CURVE_CONSISTENCY_PRIORITY_BONUS = config.consistency_priority_bonus;
+    CURVE_CONSISTENCY_GROUP_BLEND = config.consistency_group_blend;
+    DISCRETIZATION_CURVE_FACTOR = config.discretization_factor;
+    DISCRETIZATION_CURVE_FACTOR_INTERNAL = config.internal_discretization_factor;
+  };
+  const auto equal = [&](const CurveControlsConfig& a, const CurveControlsConfig& b) {
+    for (auto field : doubles)
+      if (std::memcmp(&(a.*field), &(b.*field), sizeof(double)) != 0)
+        return false;
+    for (auto field : integers)
+      if (a.*field != b.*field)
+        return false;
+    return true;
+  };
+  const auto points = [](const GeneratorAdaptive& generator) {
+    return std::array<int, 3>{{DomainCandidateFixture::ClampCurvePoints(generator, -3),
+                               DomainCandidateFixture::ClampCurvePoints(generator, 8),
+                               DomainCandidateFixture::ClampCurvePoints(generator, 300)}};
+  };
+  const auto pair_equal = [](const std::array<double, 2>& a, const CurveControlsConfig& value) {
+    const std::array<double, 2> expected{
+        {value.discretization_factor, value.internal_discretization_factor}};
+    return std::memcmp(a.data(), expected.data(), a.size() * sizeof(double)) == 0;
+  };
+  std::array<CurveControlsConfig, 3> cases{};
+  CurveControlsConfig foreign;
+  for (std::size_t i = 0; i < doubles.size(); ++i) {
+    cases[1].*doubles[i] = 0.5 + static_cast<double>(i) * 0.125;
+    cases[2].*doubles[i] = 1.0 + static_cast<double>(i) * 0.25;
+    foreign.*doubles[i] = 10.0 + static_cast<double>(i);
+  }
+  cases[1].adaptation_policy = 3;
+  cases[1].point_min = 3;
+  cases[1].point_max = 33;
+  cases[2].adaptation_policy = 2;
+  cases[2].point_min = 9;
+  cases[2].point_max = 4;
+  cases[2].consistency_mode = 2;
+  foreign.adaptation_policy = 9;
+  foreign.point_budget_mode = foreign.consistency_mode = 9;
+  foreign.point_min = 20;
+  foreign.point_max = 27;
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildCurveControlsRuntime();
+    const auto expected_points = points(legacy);
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      apmesh::application::RuntimeConfig config;
+      config.curve_adaptation_policy = value.adaptation_policy;
+      config.curve_adaptation_blend = value.adaptation_blend;
+      config.curve_factor_sensitivity = value.factor_sensitivity;
+      config.curve_point_budget_mode = value.point_budget_mode;
+      config.curve_point_growth_step1 = value.point_growth_step1;
+      config.curve_point_growth_stepn = value.point_growth_stepn;
+      config.curve_point_budget_blend = value.point_budget_blend;
+      config.curve_point_min = value.point_min;
+      config.curve_point_max = value.point_max;
+      auto source = apmesh::application::MakeGenerationContext(config);
+      config.curve_adaptation_blend = 99.0;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.curves.reset();
+    }
+    apply(foreign);
+    if (equal(expected, legacy.BuildCurveControlsRuntime()) ||
+        !equal(expected, owned->BuildCurveControlsRuntime()) ||
+        !equal(foreign, identity_only.BuildCurveControlsRuntime()) ||
+        expected_points == points(legacy) || expected_points != points(*owned) ||
+        !pair_equal(DomainCandidateFixture::CurveDiscretization(*owned), value) ||
+        !pair_equal(DomainCandidateFixture::CurveDiscretization(legacy), foreign))
+      throw std::runtime_error(
+          "Curve controls ownership, point clamp or Adapter factor pair changed");
+    DomainCandidateFixture::CurvePointBudget(*owned);
+    auto intermediate = value;
+    intermediate.point_budget_mode = 1;
+    if (!equal(intermediate, owned->BuildCurveControlsRuntime()))
+      throw std::runtime_error("Curve point-budget update changed other controls");
+    DomainCandidateFixture::CurveConsistency(*owned);
+    if (!equal(foreign, legacy.BuildCurveControlsRuntime()) ||
+        !equal(value, *owned->GetGenerationContext()->curves))
+      throw std::runtime_error("Owned curve mode updates changed raw configuration or globals");
+    apply(value);
+    DomainCandidateFixture::CurvePointBudget(legacy);
+    DomainCandidateFixture::CurveConsistency(legacy);
+    const auto stable = legacy.BuildCurveControlsRuntime();
+    if (!equal(stable, owned->BuildCurveControlsRuntime()) || points(legacy) != points(*owned) ||
+        !pair_equal(DomainCandidateFixture::CurveDiscretization(*owned), value))
+      throw std::runtime_error("Curve mode updates lost prior effective settings or point targets");
+    apply(value);
+    DomainCandidateFixture::CurvePointBudget(identity_only);
+    DomainCandidateFixture::CurveConsistency(identity_only);
+    if (!equal(stable, legacy.BuildCurveControlsRuntime()))
+      throw std::runtime_error("Legacy curve mode updates stopped changing process state");
+  }
+  apply(saved);
+  std::cout << "curve_controls_context cases=3 scalar_bits=33 point_targets=18 adapter_bits=12 "
+               "stable=3 legacy=2\n";
+}
 #endif
 
 int main(int argc, char* argv[]) {
@@ -662,6 +792,7 @@ int main(int argc, char* argv[]) {
   CheckStopRetryContexts();
   CheckAdaptationContexts();
   CheckElementBudgetContexts();
+  CheckCurveControlsContexts();
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();

@@ -454,6 +454,7 @@ public:
   apmesh::application::StopRetryConfig BuildStopRetryRuntime() const noexcept;
   apmesh::application::AdaptationConfig BuildAdaptationRuntime() const noexcept;
   apmesh::application::ElementBudgetConfig BuildElementBudgetRuntime() const noexcept;
+  apmesh::application::CurveControlsConfig BuildCurveControlsRuntime() const noexcept;
   MeshQualityStats ComputeMeshQualityStats(const MeshAdaptive* mesh) const;
   void WritePatchAdaptationLog(int step, bool accepted) const;
   void WriteCurveAdaptationLog(int step, bool accepted) const;
@@ -686,6 +687,29 @@ private:
   double ClampBudgetTargetElements(double target_elements) const;
   void ApplyStableElementBudgetSettings() noexcept;
   std::optional<apmesh::application::ElementBudgetConfig> effective_element_budget_ = std::nullopt;
+  const apmesh::application::CurveControlsConfig* CurveSettings() const noexcept;
+  apmesh::application::CurveControlsConfig* MutableCurveSettings() noexcept;
+  int CurveAdaptationPolicy() const noexcept;
+  double CurveAdaptationBlend() const noexcept;
+  double CurveFactorSensitivity() const noexcept;
+  double Step2CurveSensitivityScale() const noexcept;
+  double CurveEfficiencyWeight() const noexcept;
+  int CurvePointBudgetMode() const noexcept;
+  double CurvePointGrowthStep1() const noexcept;
+  double CurvePointGrowthStepN() const noexcept;
+  double CurvePointBudgetBlend() const noexcept;
+  int CurvePointMin() const noexcept;
+  int CurvePointMax() const noexcept;
+  int CurveConsistencyMode() const noexcept;
+  double CurveConsistencyMaxPointRatioStep2() const noexcept;
+  int CurveConsistencyPriorityBonus() const noexcept;
+  double CurveConsistencyGroupBlend() const noexcept;
+  double CurveDiscretizationFactor() const noexcept;
+  double InternalCurveDiscretizationFactor() const noexcept;
+  int ClampCurveTarget(int value) const;
+  void EnableCurvePointBudget() noexcept;
+  void EnableCurveConsistency() noexcept;
+  std::optional<apmesh::application::CurveControlsConfig> effective_curve_controls_ = std::nullopt;
   // Declared first so the Adapter borrow retires before the owned strings.
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;

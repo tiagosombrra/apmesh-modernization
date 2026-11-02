@@ -40,13 +40,19 @@ instance state. Preserve the four assignment values/order and all per-attempt,
 clamp/rate-limit/curve expressions. Keep live global fallback and reuse the
 existing native/scientific/delivery regression. Other shared controls remain;
 this is a bounded engineering caller contract, not stage closure.
-The active [element budget context](evidence/ELEMENT_BUDGET_CONTEXT.md) owns
+The delivered [element budget context](evidence/ELEMENT_BUDGET_CONTEXT.md) owns
 32 process-sourced step/local/target/allocation controls and isolates five stable
 mode adjustments. Preserve target clamping and every budget/pressure/acceptance/
 retry expression. Require targeted ownership/stable/target-clamp controls in the
 existing native metrics probe and the unchanged scientific/delivery regression.
 Curve-point/quadtree/generation controls remain outside this bounded lot; no
 new scientific input, instrument campaign or stage closure is introduced.
+The active [curve controls context](evidence/CURVE_CONTROLS_CONTEXT.md) owns
+17 settings and isolates two successive mode updates at their original positions.
+Adapter consumes the independently captured discretization pair. Preserve point
+clamping, weighting, synchronization and publication/rollback expressions; reuse
+the existing native/scientific/delivery gates without a new model campaign.
+Remaining patch/quadtree controls stay shared and stages remain open.
 
 ## Current stage and completion route
 

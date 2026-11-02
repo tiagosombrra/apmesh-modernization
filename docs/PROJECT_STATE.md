@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `65cae05ac48775e4c8d5a4d80bc1776e398014e9` (PR #145).
+Entry main: `11a6576d8795c406111b334cda5b475647efcd16` (PR #146).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,24 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: element budget controls
+## Active production delivery: curve discretization and point budgets
+
+The [curve controls context](evidence/CURVE_CONTROLS_CONTEXT.md) owns 17 values:
+adaptation weights/sensitivity, point budgets/limits, curve consistency and the
+external/internal discretization pair. The factory captures nine RuntimeConfig
+fields and eight process values, with no new parser keys/default normalization.
+Two stable mode updates retain their original distinct positions in a shared
+effective instance copy; the second preserves the first adjustment. Raw context
+stays unchanged. Adapter observes the stationary context for its independent
+factor pair; no square root is recomputed when capturing either value. The point
+limiter keeps its original min/max order. Three native cases check 33 raw/33 stable
+double representations, six integer fields, retired source, foreign globals,
+18 actual point targets and 12 owned Adapter factor observations. Existing
+synchronization/publication/rollback flow and scientific formulas stay unchanged.
+Require the existing delivery/scientific regression. Remaining patch/quadtree
+controls and global mutations still require serialization; no stage closure.
+
+## Delivered production context: element budget controls
 
 The [element budget context](evidence/ELEMENT_BUDGET_CONTEXT.md) owns 32 controls:
 step limits/pressure/retry scaling, patch-local budgets, element growth/target
@@ -202,7 +219,7 @@ The bounded 2026 milestone is this reusable serial engine/configuration/CLI
 boundary with preserved C++17 behavior. It is a stage 6 prerequisite supporting
 S3-05 caller work, not closure of Stage 3 or the whole modernization roadmap.
 Identity/output ownership and typed execution are delivered above. The active
-context lots add policy, criteria, adaptation and element budgets; migration needs a
+context lots add policy, criteria, adaptation, budgets and curves; migration needs a
 separate bounded caller contract.
 
 ## Retained instrument obligations for closure

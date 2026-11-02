@@ -85,6 +85,9 @@ public:
   const DomainStructuralStats* GetPatchStructuralStats(int patch_index) const;
 
 private:
+  friend class DomainCandidateFixture;
+  double CurveDiscretizationFactor() const noexcept;
+  double InternalCurveDiscretizationFactor() const noexcept;
   const std::string& OutputPrefix() const noexcept;
   const apmesh::application::GenerationContext* generation_context_ = nullptr;
   double CalculateNewSize(const double ka, const double kd, const double factor_disc,

@@ -713,7 +713,7 @@ list<PointAdaptive*> Adapter::AdaptCurveByCurveOmp(CurveAdaptive* curve,
     // NOTE: Original code used CalculateCurvature(0/1); keep behavior.
     const double kd_average = (curve->CalculateCurvature(0) + curve->CalculateCurvature(1)) / 2.0;
 
-    const double factor_disc = DISCRETIZATION_CURVE_FACTOR;
+    const double factor_disc = CurveDiscretizationFactor();
 
     const double lenght_new = CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
 
@@ -845,7 +845,7 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurfaceOmp(CurveAdaptive* curve,
     }
 
     const double factor_disc = CalculateCurvatureDrivenFactor(
-        ka_midpoint, kd_average, DISCRETIZATION_CURVE_FACTOR, num_patches);
+        ka_midpoint, kd_average, CurveDiscretizationFactor(), num_patches);
 
     const double lenght_new = CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
 
@@ -898,7 +898,7 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
                                  int retry_index) {
   SubMesh* sub_mesh_new = new SubMesh;
 
-  const double factor_disc = DISCRETIZATION_CURVE_FACTOR_INTERNAL;
+  const double factor_disc = InternalCurveDiscretizationFactor();
 
   // Advancing front (ratio, tolerance, smoothing iterations, smoothing factor).
   AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,
@@ -1136,7 +1136,7 @@ list<PointAdaptive*> Adapter::AdaptCurveByCurve(CurveAdaptive* curve,
     // NOTE: Keep original behavior (CalculateCurvature(0/1)).
     const double kd_average = (curve->CalculateCurvature(0) + curve->CalculateCurvature(1)) / 2.0;
 
-    const double factor_disc = DISCRETIZATION_CURVE_FACTOR;
+    const double factor_disc = CurveDiscretizationFactor();
 
     const double lenght_new = CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
 
@@ -1231,7 +1231,7 @@ list<PointAdaptive*> Adapter::AdaptCurveBySurface(CurveAdaptive* curve,
     }
 
     const double factor_disc = CalculateCurvatureDrivenFactor(
-        ka_midpoint, kd_average, DISCRETIZATION_CURVE_FACTOR, num_patches);
+        ka_midpoint, kd_average, CurveDiscretizationFactor(), num_patches);
 
     const double lenght_new = CalculateNewSize(ka_midpoint, kd_average, factor_disc, length_old);
 
@@ -1285,7 +1285,7 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
                          int local_attempt) -> AttemptResult {
     AttemptResult result;
     result.sub_mesh = std::make_unique<SubMesh>();
-    const double factor_disc = DISCRETIZATION_CURVE_FACTOR_INTERNAL;
+    const double factor_disc = InternalCurveDiscretizationFactor();
     apmesh::adaptation::DomainUvCache cache;
     AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,
                           SMOOTHING_LAPLACIAN_FACTOR);
@@ -1641,4 +1641,16 @@ Adapter::Adapter(const apmesh::application::GenerationContext* context) noexcept
 
 const std::string& Adapter::OutputPrefix() const noexcept {
   return generation_context_ ? generation_context_->output_prefix : NAME_MODEL;
+}
+
+double Adapter::CurveDiscretizationFactor() const noexcept {
+  return generation_context_ && generation_context_->curves
+             ? generation_context_->curves->discretization_factor
+             : DISCRETIZATION_CURVE_FACTOR;
+}
+
+double Adapter::InternalCurveDiscretizationFactor() const noexcept {
+  return generation_context_ && generation_context_->curves
+             ? generation_context_->curves->internal_discretization_factor
+             : DISCRETIZATION_CURVE_FACTOR_INTERNAL;
 }

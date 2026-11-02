@@ -23,9 +23,10 @@ The [typed execution request](../evidence/TYPED_GENERATION_REQUEST.md) is delive
 The [adaptive-policy inputs](../evidence/ADAPTIVE_POLICY_CONTEXT.md) are delivered.
 The [stopping/retry criteria](../evidence/STOP_RETRY_CONTEXT.md) are delivered.
 The [adaptation settings](../evidence/ADAPTATION_CONTEXT.md) are delivered.
-The single active item is [element budget controls](../evidence/ELEMENT_BUDGET_CONTEXT.md):
-own 32 controls, isolate five stable flags and preserve target/budget/pressure/
-allocation formulas, legacy writes and the existing regression. Instrument
+The [element budget controls](../evidence/ELEMENT_BUDGET_CONTEXT.md) are delivered.
+The single active item is [curve controls](../evidence/CURVE_CONTROLS_CONTEXT.md):
+own 17 values, isolate two ordered mode updates, share the independent factor pair
+with Adapter and preserve point/synchronization formulas and existing regression. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 
