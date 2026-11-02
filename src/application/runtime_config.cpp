@@ -241,6 +241,8 @@ GenerationContext MakeGenerationContext(const RuntimeConfig& config, std::string
           StopRetryConfig{config.epsylon, config.min_improvement, config.patience, config.tol_local,
                           config.adaptive_retry_count, config.adaptive_retry_shrink,
                           MAX_RETRY_ELEMENT_GROWTH_FACTOR, MAX_RETRY_ELEMENT_GROWTH_ABS,
-                          ERROR_FLOOR, MIN_ERROR_DROP_ABS, MIN_ERROR_DROP_PER_ELEMENT}};
+                          ERROR_FLOOR, MIN_ERROR_DROP_ABS, MIN_ERROR_DROP_PER_ELEMENT},
+          AdaptationConfig{config.adaptation_relaxation, config.adaptation_max_delta,
+                           config.patch_factor_min, config.patch_factor_max}};
 }
 } // namespace apmesh::application

@@ -30,7 +30,15 @@ struct StopRetryConfig {
   double minimum_error_drop_per_element = 0.0;
 };
 
-// Value-owned identity/output options and an optional adaptive-policy snapshot.
+// Raw adaptation settings. Stable overrides and per-attempt values are instance state.
+struct AdaptationConfig {
+  double relaxation = 1.0;
+  double max_delta = 0.20;
+  double factor_min = 0.80;
+  double factor_max = 1.12;
+};
+
+// Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
   std::string output_prefix;
@@ -39,6 +47,7 @@ struct GenerationContext {
   // Absence preserves live legacy policy reads for identity-only callers.
   std::optional<AdaptivePolicyConfig> adaptive_policy = std::nullopt;
   std::optional<StopRetryConfig> stop_retry = std::nullopt;
+  std::optional<AdaptationConfig> adaptation = std::nullopt;
 };
 } // namespace apmesh::application
 

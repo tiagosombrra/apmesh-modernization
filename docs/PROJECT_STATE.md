@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `5a6e05e536fa6bc890f6a7068d669fd70dfdf805` (PR #143).
+Entry main: `e52325e84cbd55418f93ee4168cbbf05599fe7f8` (PR #144).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,22 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: stopping/retry criteria ownership
+## Active production delivery: adaptation settings and effective adjustments
+
+The [adaptation context](evidence/ADAPTATION_CONTEXT.md) owns relaxation, maximum
+delta and lower/upper factor bounds copied from RuntimeConfig. Stable overrides
+use a separate optional instance value; the raw context remains unchanged. The
+four original assignments keep their values/order/location. Existing per-attempt
+relaxation/delta members and retry/scaling expressions stay intact. Generator
+domain, smoothing, rate-limit and curve-factor reads use the same effective bounds.
+Contexts without adaptation settings retain live global reads and stable writes.
+The existing native metrics probe checks three cases, source retirement,
+conflicting globals, 12 raw/12 stable exact double representations and 18 outputs
+from the actual rate-limit function, including legacy negative/update controls.
+Use the existing delivery/scientific regression; no new model/instrument campaign.
+Budget/refinement controls and other mutations remain shared and serialized.
+
+## Delivered production context: stopping/retry criteria ownership
 
 The [stopping/retry context](evidence/STOP_RETRY_CONTEXT.md) owns eleven generator
 criteria: global/local error targets, minimum improvement, patience, retry count/
@@ -170,7 +185,7 @@ The bounded 2026 milestone is this reusable serial engine/configuration/CLI
 boundary with preserved C++17 behavior. It is a stage 6 prerequisite supporting
 S3-05 caller work, not closure of Stage 3 or the whole modernization roadmap.
 Identity/output ownership and typed execution are delivered above. The active
-context lots add policy and stopping/retry inputs; further migration requires a
+context lots add policy, stopping/retry and adaptation inputs; migration requires a
 separate bounded caller contract.
 
 ## Retained instrument obligations for closure

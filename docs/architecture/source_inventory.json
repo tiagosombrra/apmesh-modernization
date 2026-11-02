@@ -729,8 +729,8 @@
       "path": "include/application/generation_context.h",
       "component_by_directory": "application",
       "kind": "header",
-      "sha256": "5d1feed539c11dc1a214453c53f5d116134e8e0af5cf96f7f6ba2bc23b48dcd4",
-      "bytes": 1429,
+      "sha256": "3ca31b48eeb0c265fcded942a69bc2201b65c98dd14e58fa6144732b18cc5c56",
+      "bytes": 1714,
       "includes": [
         {
           "line": 4,
@@ -2741,8 +2741,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "a2746b6b2a9828421666f6fb2d63a74cb8bed6b32e862c82434245eb63b3ee17",
-      "bytes": 28826,
+      "sha256": "ed539006075562ab19bef36e4a0d3aa4fac5bf30c720dc1615907c8c3777d835",
+      "bytes": 29311,
       "includes": [
         {
           "line": 4,
@@ -3953,8 +3953,8 @@
       "path": "src/application/runtime_config.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "b2bb27351a9cc438f317a0968ac58ea4f59e102d760a5c9851ebb87d6989fdd1",
-      "bytes": 13317,
+      "sha256": "cda87233de5e6e9c6a4f5d0bb8b70f97b95d855f9059f92e56cc60a32a899156",
+      "bytes": 13481,
       "includes": [
         {
           "line": 1,
@@ -5639,8 +5639,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "3c00db1690a4f51603b587f00da2b9df750735c77c87a49afdffb223549d68f9",
-      "bytes": 339118,
+      "sha256": "9d4813dec0fecb7dfaee7f81ca380640740918273c24d594a225ac767e9b8b3b",
+      "bytes": 340843,
       "includes": [
         {
           "line": 1,
@@ -6466,7 +6466,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 210,
+    "source_anchors": 212,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

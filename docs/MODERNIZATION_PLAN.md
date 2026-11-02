@@ -28,12 +28,18 @@ decisions. Preserve formulas, operation order and the optional legacy fallback;
 validate ownership/differential controls within the existing metrics probe and
 reuse the unchanged scientific reference. Remaining runtime globals/mutations
 stay serialized; no new scientific policy or stage closure is introduced.
-The active [stopping/retry context](evidence/STOP_RETRY_CONTEXT.md) owns eleven
+The delivered [stopping/retry context](evidence/STOP_RETRY_CONTEXT.md) owns eleven
 criteria, with separate effective retry promotion for an owned generator and the
 original live/global compatibility path. Preserve all comparisons, ordering,
 diagnostic/report spelling and the stable max(1,count) rule. Reuse the existing
 metrics/scientific/delivery gates; remaining geometry tolerances, relaxation and
-budget controls are outside this bounded caller-contract delivery.
+budget controls are outside that bounded caller-contract delivery.
+The active [adaptation context](evidence/ADAPTATION_CONTEXT.md) owns four validated
+relaxation/delta/factor-bound inputs and isolates stable overrides in effective
+instance state. Preserve the four assignment values/order and all per-attempt,
+clamp/rate-limit/curve expressions. Keep live global fallback and reuse the
+existing native/scientific/delivery regression. Other shared controls remain;
+this is a bounded engineering caller contract, not stage closure.
 
 ## Current stage and completion route
 

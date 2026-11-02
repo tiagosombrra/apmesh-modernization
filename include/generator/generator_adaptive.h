@@ -452,6 +452,7 @@ public:
                                       const std::vector<double>& patch_factors) const;
   AdaptivePolicyRuntime BuildAdaptivePolicyRuntime() const;
   apmesh::application::StopRetryConfig BuildStopRetryRuntime() const noexcept;
+  apmesh::application::AdaptationConfig BuildAdaptationRuntime() const noexcept;
   MeshQualityStats ComputeMeshQualityStats(const MeshAdaptive* mesh) const;
   void WritePatchAdaptationLog(int step, bool accepted) const;
   void WriteCurveAdaptationLog(int step, bool accepted) const;
@@ -641,6 +642,13 @@ private:
   double MinimumErrorDropPerElement() const noexcept;
   void PromoteAdaptiveRetry() noexcept;
   std::optional<int> effective_retry_count_ = std::nullopt;
+  const apmesh::application::AdaptationConfig* AdaptationSettings() const noexcept;
+  double AdaptationRelaxation() const noexcept;
+  double AdaptationMaxDelta() const noexcept;
+  double PatchFactorMin() const noexcept;
+  double PatchFactorMax() const noexcept;
+  void ApplyStableAdaptationSettings() noexcept;
+  std::optional<apmesh::application::AdaptationConfig> effective_adaptation_ = std::nullopt;
   // Declared first so the Adapter borrow retires before the owned strings.
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;
