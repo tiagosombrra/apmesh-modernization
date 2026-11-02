@@ -254,6 +254,35 @@ class DomainCandidateFixture {
   }
 
 public:
+  static void EnablePatchGeneration(GeneratorAdaptive& generator) {
+    generator.EnablePatchGeneration();
+  }
+  static void EnablePatchRefinementModes(GeneratorAdaptive& generator) {
+    generator.EnablePatchRefinementModes();
+  }
+  static void ApplyStablePatchRefinement(GeneratorAdaptive& generator) {
+    generator.ApplyStablePatchRefinement();
+  }
+  static std::vector<double> PatchFactors(GeneratorAdaptive& generator, const Geometry& geometry,
+                                          int step, bool stable) {
+    generator.step_ = step;
+    generator.current_policy_ = generator.BuildAdaptivePolicyRuntime();
+    generator.current_policy_.stable_mode = stable;
+    generator.last_submesh_error_ = {0.7, 0.2};
+    generator.patch_history_.clear();
+    generator.current_budget_retry_count_ = step == 2 ? 1U : 0U;
+    generator.previous_patch_factors_.clear();
+    generator.current_adaptation_relaxation_ = 1.0;
+    generator.current_adaptation_max_delta_ = 0.2;
+    return generator.ComputePatchAdaptationFactors(&geometry);
+  }
+  static std::vector<double> SmoothPatchFactors(GeneratorAdaptive& generator,
+                                                const Geometry& geometry) {
+    generator.step_ = 2;
+    generator.current_patch_eligible_mask_ = {1, 0};
+    generator.current_patch_adaptation_.clear();
+    return generator.SmoothPatchAdaptationFactors(&geometry, {0.84, 1.05});
+  }
   static void QuadtreeCap(GeneratorAdaptive& generator) { generator.EnableQuadtreeCap(); }
   static void QuadtreeQuality(GeneratorAdaptive& generator) {
     generator.ApplyStableQuadtreeQuality();

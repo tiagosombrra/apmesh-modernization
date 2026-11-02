@@ -119,6 +119,47 @@ struct QuadtreeControlsConfig {
   double template_poor_score_threshold = 0.0;
 };
 
+// Raw patch generation/refinement controls; stable adjustments are instance state.
+struct PatchGenerationConfig {
+  int adaptation_mode = 0;
+  double refinement_strength = 0.22;
+  double coarsening_strength = 0.10;
+  double error_exponent = 1.35;
+  double quality_weight = 0.35;
+  double quality_target = 0.78;
+  double quality_min_target = 0.45;
+  double top_error_fraction = 1.0;
+  double efficiency_weight = 0.0;
+  double efficiency_target = 0.003;
+  double history_blend = 0.5;
+  double step2_refinement_scale = 0.75;
+  double inefficient_cap = 0.98;
+  int stepwise_mode = 0;
+  double refinement_attenuation = 0.8;
+  double top_error_fraction_scale = 0.7;
+  double factor_range_shrink = 0.8;
+  int hard_spatial_filter_mode = 0;
+  int top_patch_count_min = 2;
+  int top_patch_count_max = 6;
+  double noneligible_factor_min = 1.0;
+  int noneligible_force_coarsen = 1;
+  double smoothing_neighbor_weight = 0.02;
+  double eligible_refinement_damp = 0.65;
+  double eligible_refinement_damp_on_retry = 0.50;
+  double eligible_elements_threshold = 600.0;
+  double eligible_h_scale = 1.12;
+  int micro_refinement_mode = 0;
+  double micro_relaxation_scale = 0.75;
+  double micro_max_delta_scale = 0.70;
+  double micro_patch_refinement_scale = 0.60;
+  double micro_factor_range_scale = 0.70;
+  int control_mode = 1;
+  double budget_pressure_start = 0.70;
+  double micro_h_scale = 1.10;
+  double constrained_h_scale = 1.18;
+  int top_rank_only_mode = 1;
+};
+
 // Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
@@ -132,6 +173,7 @@ struct GenerationContext {
   std::optional<ElementBudgetConfig> element_budget = std::nullopt;
   std::optional<CurveControlsConfig> curves = std::nullopt;
   std::optional<QuadtreeControlsConfig> quadtree = std::nullopt;
+  std::optional<PatchGenerationConfig> patch_generation = std::nullopt;
 };
 } // namespace apmesh::application
 

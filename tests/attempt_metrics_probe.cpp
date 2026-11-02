@@ -726,6 +726,200 @@ void CheckCurveControlsContexts() {
                "stable=3 legacy=2\n";
 }
 
+void CheckPatchGenerationContexts() {
+  using apmesh::application::PatchGenerationConfig;
+  const std::array<double PatchGenerationConfig::*, 28> doubles{
+      {&PatchGenerationConfig::refinement_strength,
+       &PatchGenerationConfig::coarsening_strength,
+       &PatchGenerationConfig::error_exponent,
+       &PatchGenerationConfig::quality_weight,
+       &PatchGenerationConfig::quality_target,
+       &PatchGenerationConfig::quality_min_target,
+       &PatchGenerationConfig::top_error_fraction,
+       &PatchGenerationConfig::efficiency_weight,
+       &PatchGenerationConfig::efficiency_target,
+       &PatchGenerationConfig::history_blend,
+       &PatchGenerationConfig::step2_refinement_scale,
+       &PatchGenerationConfig::inefficient_cap,
+       &PatchGenerationConfig::refinement_attenuation,
+       &PatchGenerationConfig::top_error_fraction_scale,
+       &PatchGenerationConfig::factor_range_shrink,
+       &PatchGenerationConfig::noneligible_factor_min,
+       &PatchGenerationConfig::smoothing_neighbor_weight,
+       &PatchGenerationConfig::eligible_refinement_damp,
+       &PatchGenerationConfig::eligible_refinement_damp_on_retry,
+       &PatchGenerationConfig::eligible_elements_threshold,
+       &PatchGenerationConfig::eligible_h_scale,
+       &PatchGenerationConfig::micro_relaxation_scale,
+       &PatchGenerationConfig::micro_max_delta_scale,
+       &PatchGenerationConfig::micro_patch_refinement_scale,
+       &PatchGenerationConfig::micro_factor_range_scale,
+       &PatchGenerationConfig::budget_pressure_start,
+       &PatchGenerationConfig::micro_h_scale,
+       &PatchGenerationConfig::constrained_h_scale}};
+  const std::array<int PatchGenerationConfig::*, 9> integers{
+      {&PatchGenerationConfig::adaptation_mode, &PatchGenerationConfig::stepwise_mode,
+       &PatchGenerationConfig::hard_spatial_filter_mode,
+       &PatchGenerationConfig::top_patch_count_min, &PatchGenerationConfig::top_patch_count_max,
+       &PatchGenerationConfig::noneligible_force_coarsen,
+       &PatchGenerationConfig::micro_refinement_mode, &PatchGenerationConfig::control_mode,
+       &PatchGenerationConfig::top_rank_only_mode}};
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildPatchGenerationRuntime();
+  const auto apply = [](const PatchGenerationConfig& config) {
+    PATCH_ADAPTATION_MODE = config.adaptation_mode;
+    PATCH_REFINEMENT_STRENGTH = config.refinement_strength;
+    PATCH_COARSENING_STRENGTH = config.coarsening_strength;
+    PATCH_ERROR_EXPONENT = config.error_exponent;
+    PATCH_QUALITY_WEIGHT = config.quality_weight;
+    PATCH_QUALITY_TARGET = config.quality_target;
+    PATCH_QUALITY_MIN_TARGET = config.quality_min_target;
+    PATCH_TOP_ERROR_FRACTION = config.top_error_fraction;
+    PATCH_EFFICIENCY_WEIGHT = config.efficiency_weight;
+    PATCH_EFFICIENCY_TARGET = config.efficiency_target;
+    PATCH_HISTORY_BLEND = config.history_blend;
+    PATCH_STEP2_REFINEMENT_SCALE = config.step2_refinement_scale;
+    PATCH_INEFFICIENT_CAP = config.inefficient_cap;
+    PATCH_STEPWISE_MODE = config.stepwise_mode;
+    STEP2_REFINEMENT_ATTENUATION = config.refinement_attenuation;
+    STEP2_TOP_ERROR_FRACTION_SCALE = config.top_error_fraction_scale;
+    STEP2_FACTOR_RANGE_SHRINK = config.factor_range_shrink;
+    STEP2_HARD_SPATIAL_FILTER_MODE = config.hard_spatial_filter_mode;
+    STEP2_TOP_PATCH_COUNT_MIN = config.top_patch_count_min;
+    STEP2_TOP_PATCH_COUNT_MAX = config.top_patch_count_max;
+    STEP2_NONELIGIBLE_FACTOR_MIN = config.noneligible_factor_min;
+    STEP2_NONELIGIBLE_FORCE_COARSEN = config.noneligible_force_coarsen;
+    STEP2_SMOOTHING_NEIGHBOR_WEIGHT = config.smoothing_neighbor_weight;
+    STEP2_ELIGIBLE_REFINEMENT_DAMP = config.eligible_refinement_damp;
+    STEP2_ELIGIBLE_REFINEMENT_DAMP_ON_RETRY = config.eligible_refinement_damp_on_retry;
+    STEP2_ELIGIBLE_ELEMENTS_THRESHOLD = config.eligible_elements_threshold;
+    STEP2_ELIGIBLE_H_SCALE = config.eligible_h_scale;
+    STEP2_MICRO_REFINEMENT_MODE = config.micro_refinement_mode;
+    STEP2_MICRO_RELAXATION_SCALE = config.micro_relaxation_scale;
+    STEP2_MICRO_MAX_DELTA_SCALE = config.micro_max_delta_scale;
+    STEP2_MICRO_PATCH_REFINEMENT_SCALE = config.micro_patch_refinement_scale;
+    STEP2_MICRO_FACTOR_RANGE_SCALE = config.micro_factor_range_scale;
+    PATCH_GENERATION_CONTROL_MODE = config.control_mode;
+    PATCH_GENERATION_BUDGET_PRESSURE_START = config.budget_pressure_start;
+    PATCH_GENERATION_MICRO_H_SCALE = config.micro_h_scale;
+    PATCH_GENERATION_CONSTRAINED_H_SCALE = config.constrained_h_scale;
+    PATCH_GENERATION_TOP_RANK_ONLY_MODE = config.top_rank_only_mode;
+  };
+  const auto equal = [&](const PatchGenerationConfig& a, const PatchGenerationConfig& b) {
+    for (auto field : doubles)
+      if (std::memcmp(&(a.*field), &(b.*field), sizeof(double)) != 0)
+        return false;
+    for (auto field : integers)
+      if (a.*field != b.*field)
+        return false;
+    return true;
+  };
+  Geometry geometry;
+  Models3d models;
+  models.ModelDoisPatchesPlanosCurva(&geometry);
+  if (geometry.GetNumberPatches() != 2)
+    throw std::runtime_error("Patch control fixture requires two existing native patches");
+  const auto observe = [&](GeneratorAdaptive& generator, bool stable) {
+    std::vector<double> result;
+    for (int step : {1, 2}) {
+      auto factors = DomainCandidateFixture::PatchFactors(generator, geometry, step, stable);
+      result.insert(result.end(), factors.begin(), factors.end());
+    }
+    auto smooth = DomainCandidateFixture::SmoothPatchFactors(generator, geometry);
+    result.insert(result.end(), smooth.begin(), smooth.end());
+    return result;
+  };
+  const auto same = [](const std::vector<double>& a, const std::vector<double>& b) {
+    return a.size() == 6 && b.size() == 6 &&
+           std::memcmp(a.data(), b.data(), a.size() * sizeof(double)) == 0;
+  };
+  std::array<PatchGenerationConfig, 3> cases{};
+  cases[1].adaptation_mode = 1;
+  cases[1].refinement_strength = 0.31;
+  cases[1].coarsening_strength = 0.07;
+  cases[1].hard_spatial_filter_mode = 1;
+  cases[1].top_patch_count_min = cases[1].top_patch_count_max = 1;
+  cases[1].noneligible_factor_min = 1.04;
+  cases[1].smoothing_neighbor_weight = 0.25;
+  cases[1].micro_refinement_mode = 1;
+  cases[1].eligible_refinement_damp = 0.37;
+  cases[2].refinement_strength = 0.42;
+  cases[2].coarsening_strength = 0.18;
+  cases[2].quality_weight = 0.65;
+  cases[2].top_error_fraction = 0.5;
+  cases[2].stepwise_mode = 1;
+  cases[2].noneligible_force_coarsen = 0;
+  PatchGenerationConfig foreign;
+  for (std::size_t i = 0; i < doubles.size(); ++i)
+    foreign.*doubles[i] = 0.5 + static_cast<double>(i) * 0.01;
+  for (auto field : integers)
+    foreign.*field = 0;
+  foreign.adaptation_mode = 1;
+  foreign.top_patch_count_min = 1;
+  foreign.top_patch_count_max = 2;
+  unsigned differentiated = 0;
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildPatchGenerationRuntime();
+    const auto expected_outputs = observe(legacy, false);
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      apmesh::application::RuntimeConfig config;
+      config.patch_refinement_strength = value.refinement_strength;
+      config.patch_coarsening_strength = value.coarsening_strength;
+      config.step2_eligible_refinement_damp = value.eligible_refinement_damp;
+      auto captured = apmesh::application::MakeGenerationContext(config);
+      if (!equal(expected, *captured.patch_generation))
+        throw std::runtime_error("Patch generation factory capture changed raw values");
+      apmesh::application::GenerationContext source{"unused", "unused", "", ""};
+      source.patch_generation = captured.patch_generation;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.patch_generation = foreign;
+      captured.patch_generation = foreign;
+      config.patch_refinement_strength = 9.0;
+    }
+    apply(foreign);
+    if (!equal(foreign, legacy.BuildPatchGenerationRuntime()) ||
+        !equal(foreign, identity_only.BuildPatchGenerationRuntime()) ||
+        !equal(expected, owned->BuildPatchGenerationRuntime()) ||
+        !same(expected_outputs, observe(*owned, false)))
+      throw std::runtime_error("Patch generation ownership or native factor differential failed");
+    differentiated += !same(expected_outputs, observe(legacy, false));
+    DomainCandidateFixture::EnablePatchGeneration(*owned);
+    if (!equal(value, *owned->GetGenerationContext()->patch_generation) ||
+        !equal(foreign, legacy.BuildPatchGenerationRuntime()))
+      throw std::runtime_error("Patch overrides changed raw settings or process globals");
+    DomainCandidateFixture::EnablePatchRefinementModes(*owned);
+    if (!equal(value, *owned->GetGenerationContext()->patch_generation) ||
+        !equal(foreign, legacy.BuildPatchGenerationRuntime()))
+      throw std::runtime_error("Patch overrides changed raw settings or process globals");
+    DomainCandidateFixture::ApplyStablePatchRefinement(*owned);
+    if (!equal(value, *owned->GetGenerationContext()->patch_generation) ||
+        !equal(foreign, legacy.BuildPatchGenerationRuntime()))
+      throw std::runtime_error("Patch overrides changed raw settings or process globals");
+    apply(value);
+    DomainCandidateFixture::EnablePatchGeneration(legacy);
+    DomainCandidateFixture::EnablePatchRefinementModes(legacy);
+    DomainCandidateFixture::ApplyStablePatchRefinement(legacy);
+    const auto stable = legacy.BuildPatchGenerationRuntime();
+    if (!equal(stable, owned->BuildPatchGenerationRuntime()) ||
+        !same(observe(legacy, true), observe(*owned, true)))
+      throw std::runtime_error("Patch stable overrides changed effective values or native factors");
+    apply(value);
+    DomainCandidateFixture::EnablePatchGeneration(identity_only);
+    DomainCandidateFixture::EnablePatchRefinementModes(identity_only);
+    DomainCandidateFixture::ApplyStablePatchRefinement(identity_only);
+    if (!equal(stable, legacy.BuildPatchGenerationRuntime()))
+      throw std::runtime_error("Legacy patch overrides stopped updating process state");
+  }
+  apply(saved);
+  if (differentiated != 3)
+    throw std::runtime_error("Foreign patch controls did not exercise the native factor oracle");
+  std::cout << "patch_generation_context cases=3 scalar_bits=84 factor_bits=36 stable_writes=13 "
+               "legacy=2\n";
+}
+
 void CheckQuadtreeControlsContexts() {
   using apmesh::application::QuadtreeControlsConfig;
   const std::array<double QuadtreeControlsConfig::*, 9> doubles{
@@ -959,6 +1153,7 @@ int main(int argc, char* argv[]) {
   CheckElementBudgetContexts();
   CheckCurveControlsContexts();
   CheckQuadtreeControlsContexts();
+  CheckPatchGenerationContexts();
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();
