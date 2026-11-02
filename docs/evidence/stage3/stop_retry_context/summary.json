@@ -1,0 +1,56 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "5a6e05e536fa6bc890f6a7068d669fd70dfdf805",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "Eleven stopping/retry criteria owned in optional context",
+    "Generator decisions and reports use common scalar accessors",
+    "Stable max(1,count) promotion retained in separate effective instance state",
+    "Absent criteria retain live global reads and retry promotion writes"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_body_reversal": true,
+    "parser_apply_global_defaults_and_other_production_unchanged": true,
+    "unchanged_diagnostic_literals": true,
+    "owned_inputs": [
+      "global_error_target",
+      "minimum_improvement",
+      "patience",
+      "local_error_target",
+      "retry_count",
+      "retry_shrink",
+      "growth_factor_limit",
+      "growth_absolute_limit",
+      "error_floor",
+      "minimum_error_drop",
+      "minimum_error_drop_per_element"
+    ],
+    "factory": "six RuntimeConfig fields plus five current legacy threshold values",
+    "retry_promotion": "same conditional position and max(1,count); local effective state with owned settings, original global assignment for legacy",
+    "compatibility": "default and contexts without stop_retry retain live global reads/writes",
+    "scope": "step limits remain in adaptive_policy; relaxation/budget controls and other numerical globals remain shared; point equality EPSYLON unchanged"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "native_criteria_cases": 3,
+  "native_exact_double_representations": 27,
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "limits": [
+    "Geometric EPSYLON and remaining numerical controls/mutations stay shared",
+    "No new parallel/reentrant/recovery qualification",
+    "Stage 3 and stage 6 remain open"
+  ]
+}

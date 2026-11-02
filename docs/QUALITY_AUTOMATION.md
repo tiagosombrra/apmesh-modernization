@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Stopping/retry criteria context
+
+The [stopping/retry lot](evidence/STOP_RETRY_CONTEXT.md) uses the existing
+75 CTest entries/385 Python controls, C++17 GCC/MSVC builds, nine-state frozen
+reference (45 exact artifacts/123 boundary comparisons) and real MSVC CLI controls
+on exact head/main. Require prior markers plus the new native criteria marker:
+three cases/27 exact double representations, copied/retired source, conflicting
+globals, local effective promotion and two legacy update paths. Keep the original
+metric oracle and negative controls. Source reversal permits only the named read
+accessors and promotion helper at the original update point; comparisons, loop
+ordering, arithmetic and diagnostic literals must match. Require unchanged parser/
+apply/global defaults/other production, scoped analysis, explicit format/whitespace,
+contracts/inventory and staged/remote gates. No new model or instrument campaign.
+
 ## Adaptive-policy configuration context
 
 The [policy context lot](evidence/ADAPTIVE_POLICY_CONTEXT.md) uses the existing

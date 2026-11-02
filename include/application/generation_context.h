@@ -15,6 +15,21 @@ struct AdaptivePolicyConfig {
   double target_growth = 1.6;
 };
 
+// Raw generator stopping/retry criteria; effective retries are instance state.
+struct StopRetryConfig {
+  double global_error_target = 0.0000001;
+  double minimum_improvement = 0.01;
+  int patience = 2;
+  double local_error_target = 0.0000001;
+  int retry_count = 0;
+  double retry_shrink = 1.0;
+  double growth_factor_limit = 0.0;
+  double growth_absolute_limit = 0.0;
+  double error_floor = 0.0;
+  double minimum_error_drop = 0.0;
+  double minimum_error_drop_per_element = 0.0;
+};
+
 // Value-owned identity/output options and an optional adaptive-policy snapshot.
 struct GenerationContext {
   std::string input_model;
@@ -23,6 +38,7 @@ struct GenerationContext {
   std::string process_suffix;
   // Absence preserves live legacy policy reads for identity-only callers.
   std::optional<AdaptivePolicyConfig> adaptive_policy = std::nullopt;
+  std::optional<StopRetryConfig> stop_retry = std::nullopt;
 };
 } // namespace apmesh::application
 

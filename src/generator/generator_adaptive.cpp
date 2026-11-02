@@ -600,6 +600,81 @@ const std::string& GeneratorAdaptive::ProcessSuffix() const noexcept {
   return generation_context_ ? generation_context_->process_suffix : NUMBER_PROCESS;
 }
 
+const apmesh::application::StopRetryConfig* GeneratorAdaptive::StopRetrySettings() const noexcept {
+  return generation_context_ && generation_context_->stop_retry ? &*generation_context_->stop_retry
+                                                                : nullptr;
+}
+
+double GeneratorAdaptive::GlobalErrorTarget() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->global_error_target : EPSYLON;
+}
+
+double GeneratorAdaptive::MinimumImprovement() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->minimum_improvement : MIN_IMPROVEMENT;
+}
+
+int GeneratorAdaptive::Patience() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->patience : PATIENCE;
+}
+
+double GeneratorAdaptive::LocalErrorTarget() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->local_error_target : TOL_LOCAL;
+}
+
+int GeneratorAdaptive::AdaptiveRetryCount() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? effective_retry_count_.value_or(config->retry_count) : ADAPTIVE_RETRY_COUNT;
+}
+
+double GeneratorAdaptive::AdaptiveRetryShrink() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->retry_shrink : ADAPTIVE_RETRY_SHRINK;
+}
+
+double GeneratorAdaptive::RetryGrowthFactorLimit() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->growth_factor_limit : MAX_RETRY_ELEMENT_GROWTH_FACTOR;
+}
+
+double GeneratorAdaptive::RetryGrowthAbsoluteLimit() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->growth_absolute_limit : MAX_RETRY_ELEMENT_GROWTH_ABS;
+}
+
+double GeneratorAdaptive::ErrorFloor() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->error_floor : ERROR_FLOOR;
+}
+
+double GeneratorAdaptive::MinimumErrorDrop() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->minimum_error_drop : MIN_ERROR_DROP_ABS;
+}
+
+double GeneratorAdaptive::MinimumErrorDropPerElement() const noexcept {
+  const auto* config = StopRetrySettings();
+  return config ? config->minimum_error_drop_per_element : MIN_ERROR_DROP_PER_ELEMENT;
+}
+
+void GeneratorAdaptive::PromoteAdaptiveRetry() noexcept {
+  if (StopRetrySettings()) {
+    effective_retry_count_ = std::max(1, AdaptiveRetryCount());
+  } else {
+    ADAPTIVE_RETRY_COUNT = std::max(1, ADAPTIVE_RETRY_COUNT);
+  }
+}
+
+apmesh::application::StopRetryConfig GeneratorAdaptive::BuildStopRetryRuntime() const noexcept {
+  return {GlobalErrorTarget(),      MinimumImprovement(),        Patience(),
+          LocalErrorTarget(),       AdaptiveRetryCount(),        AdaptiveRetryShrink(),
+          RetryGrowthFactorLimit(), RetryGrowthAbsoluteLimit(),  ErrorFloor(),
+          MinimumErrorDrop(),       MinimumErrorDropPerElement()};
+}
+
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   const auto* config = generation_context_ && generation_context_->adaptive_policy
                            ? &*generation_context_->adaptive_policy
@@ -1139,7 +1214,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     PATCH_STEPWISE_MODE = 1;
     STEP2_MICRO_REFINEMENT_MODE = 1;
     STEP2_HARD_SPATIAL_FILTER_MODE = 0;
-    ADAPTIVE_RETRY_COUNT = std::max(1, ADAPTIVE_RETRY_COUNT);
+    PromoteAdaptiveRetry();
 
     ADAPTATION_RELAXATION = 0.30;
     ADAPTATION_MAX_DELTA = 0.05;
@@ -1383,7 +1458,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   eligible_patch_elements_sum_step_.push_back(0ULL);
   eligible_patch_mean_factor_step_.push_back(0.0);
   eligible_patch_mean_h_scale_step_.push_back(0.0);
-  retry_enabled_step_.push_back(ADAPTIVE_RETRY_COUNT > 0 ? 1 : 0);
+  retry_enabled_step_.push_back(AdaptiveRetryCount() > 0 ? 1 : 0);
   local_budget_mode_step_.push_back(PATCH_LOCAL_ELEMENT_BUDGET_MODE);
   target_element_growth_step_.push_back(0.0);
   actual_element_growth_step_.push_back(1.0);
@@ -1503,19 +1578,19 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
             ? 0.0
             : *std::max_element(last_submesh_error_.begin(), last_submesh_error_.end());
 #endif
-    if (stopping_global_error <= EPSYLON) {
+    if (stopping_global_error <= GlobalErrorTarget()) {
       stop_reason_ = "target_error_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: erro global <= EPSYLON (" << EPSYLON << ") no step " << this->step_
-           << " valor " << stopping_global_error << endl;
+      cout << "Parando: erro global <= EPSYLON (" << GlobalErrorTarget() << ") no step "
+           << this->step_ << " valor " << stopping_global_error << endl;
 #endif
       break;
     }
-    if (stopping_local_error <= TOL_LOCAL) {
+    if (stopping_local_error <= LocalErrorTarget()) {
       stop_reason_ = "local_error_threshold_reached";
 #if USE_PRINT_RESULTS
       cout << "Parando: erro local máximo (" << stopping_local_error << ") <= TOL_LOCAL ("
-           << TOL_LOCAL << ") no step " << this->step_ << endl;
+           << LocalErrorTarget() << ") no step " << this->step_ << endl;
 #endif
       break;
     }
@@ -1725,11 +1800,11 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
             ? 0
             : (stable_small_mesh_step1_retry ? 1 : 0);
     const int effective_retry_limit =
-        std::max(ADAPTIVE_RETRY_COUNT, stable_small_mesh_extra_retries);
+        std::max(AdaptiveRetryCount(), stable_small_mesh_extra_retries);
     const double effective_retry_shrink =
         stable_small_mesh_step1_retry
-            ? ClampValue(std::min(ADAPTIVE_RETRY_SHRINK, 0.70), 0.40, 0.95)
-            : ADAPTIVE_RETRY_SHRINK;
+            ? ClampValue(std::min(AdaptiveRetryShrink(), 0.70), 0.40, 0.95)
+            : AdaptiveRetryShrink();
     for (int retry = 0; retry <= effective_retry_limit; ++retry) {
       report_gauss_nodes = 0ULL;
       report_mean_nodes = 0ULL;
@@ -1933,24 +2008,23 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 
       bool rejected_by_growth = false;
       const bool allow_growth_reject = (effective_retry_limit > 0 && this->step_ > 1);
-      if (allow_growth_reject && previous_elements > 0ULL &&
-          MAX_RETRY_ELEMENT_GROWTH_FACTOR > 0.0) {
-        if (element_growth_factor > MAX_RETRY_ELEMENT_GROWTH_FACTOR) {
+      if (allow_growth_reject && previous_elements > 0ULL && RetryGrowthFactorLimit() > 0.0) {
+        if (element_growth_factor > RetryGrowthFactorLimit()) {
           rejected_by_growth = true;
 #if USE_PRINT_RESULTS
           cout << "Tentativa rejeitada no step " << this->step_
                << " por crescimento de elementos: fator=" << element_growth_factor
-               << " > limite=" << MAX_RETRY_ELEMENT_GROWTH_FACTOR << endl;
+               << " > limite=" << RetryGrowthFactorLimit() << endl;
 #endif
         }
       }
-      if (allow_growth_reject && !rejected_by_growth && MAX_RETRY_ELEMENT_GROWTH_ABS > 0.0 &&
-          delta_elements > static_cast<unsigned long long>(MAX_RETRY_ELEMENT_GROWTH_ABS)) {
+      if (allow_growth_reject && !rejected_by_growth && RetryGrowthAbsoluteLimit() > 0.0 &&
+          delta_elements > static_cast<unsigned long long>(RetryGrowthAbsoluteLimit())) {
         rejected_by_growth = true;
 #if USE_PRINT_RESULTS
         cout << "Tentativa rejeitada no step " << this->step_
              << " por delta de elementos: delta=" << delta_elements
-             << " > limite=" << MAX_RETRY_ELEMENT_GROWTH_ABS << endl;
+             << " > limite=" << RetryGrowthAbsoluteLimit() << endl;
 #endif
       }
 
@@ -2364,7 +2438,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 
     stable_consecutive_reject_count_ = 0U;
 
-    if (improvement < MIN_IMPROVEMENT) {
+    if (improvement < MinimumImprovement()) {
       ++stagnant;
     } else {
       stagnant = 0;
@@ -2415,7 +2489,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     budget_retry_count_step_.push_back(current_budget_retry_count_);
     budget_limited_step_.push_back(current_budget_limited_ ? 1 : 0);
     budget_final_status_step_.push_back(current_budget_final_status_);
-    retry_enabled_step_.push_back(ADAPTIVE_RETRY_COUNT > 0 ? 1 : 0);
+    retry_enabled_step_.push_back(AdaptiveRetryCount() > 0 ? 1 : 0);
     local_budget_mode_step_.push_back(PATCH_LOCAL_ELEMENT_BUDGET_MODE);
     target_element_growth_step_.push_back(current_target_element_growth_);
     actual_element_growth_step_.push_back(element_growth_factor);
@@ -2485,48 +2559,48 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                        element_growth_factor, true);
     timer->EndTimerParallel(0, 0, 11);
 
-    if (this->error_local_process_ <= EPSYLON) {
+    if (this->error_local_process_ <= GlobalErrorTarget()) {
       stop_reason_ = "target_error_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: erro global <= EPSYLON (" << EPSYLON << ") no step " << this->step_
-           << " valor " << this->error_local_process_ << endl;
+      cout << "Parando: erro global <= EPSYLON (" << GlobalErrorTarget() << ") no step "
+           << this->step_ << " valor " << this->error_local_process_ << endl;
 #endif
       break;
     }
 
-    if (ERROR_FLOOR > 0.0 && this->error_local_process_ <= ERROR_FLOOR) {
+    if (ErrorFloor() > 0.0 && this->error_local_process_ <= ErrorFloor()) {
       stop_reason_ = "error_floor_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: erro global <= ERROR_FLOOR (" << ERROR_FLOOR << ") no step " << this->step_
+      cout << "Parando: erro global <= ERROR_FLOOR (" << ErrorFloor() << ") no step " << this->step_
            << " valor " << this->error_local_process_ << endl;
 #endif
       break;
     }
 
-    if (MIN_ERROR_DROP_ABS > 0.0 && error_drop_abs <= MIN_ERROR_DROP_ABS) {
+    if (MinimumErrorDrop() > 0.0 && error_drop_abs <= MinimumErrorDrop()) {
       stop_reason_ = "saturation_reached";
 #if USE_PRINT_RESULTS
       cout << "Parando: queda absoluta do erro (" << error_drop_abs << ") <= MIN_ERROR_DROP_ABS ("
-           << MIN_ERROR_DROP_ABS << ") no step " << this->step_ << endl;
+           << MinimumErrorDrop() << ") no step " << this->step_ << endl;
 #endif
       break;
     }
 
-    if (MIN_ERROR_DROP_PER_ELEMENT > 0.0 && delta_elements > 0ULL &&
-        error_drop_per_element <= MIN_ERROR_DROP_PER_ELEMENT) {
+    if (MinimumErrorDropPerElement() > 0.0 && delta_elements > 0ULL &&
+        error_drop_per_element <= MinimumErrorDropPerElement()) {
       stop_reason_ = "saturation_reached";
 #if USE_PRINT_RESULTS
       cout << "Parando: eficiencia de queda do erro por elemento (" << error_drop_per_element
-           << ") <= MIN_ERROR_DROP_PER_ELEMENT (" << MIN_ERROR_DROP_PER_ELEMENT << ") no step "
+           << ") <= MIN_ERROR_DROP_PER_ELEMENT (" << MinimumErrorDropPerElement() << ") no step "
            << this->step_ << endl;
 #endif
       break;
     }
 
-    if (stagnant >= PATIENCE) {
+    if (stagnant >= Patience()) {
       stop_reason_ = "saturation_reached";
 #if USE_PRINT_RESULTS
-      cout << "Parando: melhoria relativa < " << MIN_IMPROVEMENT << " por " << PATIENCE
+      cout << "Parando: melhoria relativa < " << MinimumImprovement() << " por " << Patience()
            << " iterações consecutivas no step " << this->step_ << " (última melhoria "
            << improvement << ")" << endl;
 #endif
@@ -3646,7 +3720,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         factor = 0.90;
       } else if (normalized_error >= 0.25) {
         factor = 1.00;
-      } else if (local_error <= TOL_LOCAL) {
+      } else if (local_error <= LocalErrorTarget()) {
         factor = 1.12;
       } else {
         factor = 1.05;
@@ -3685,7 +3759,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
           refinement_gate);
       const double low_error_signal = Clamp01(1.0 - normalized_error);
       double coarsen_signal =
-          (local_error <= TOL_LOCAL)
+          (local_error <= LocalErrorTarget())
               ? Clamp01(low_error_signal * (1.0 - Clamp01(snapshot.poor_ratio)) *
                         Clamp01(snapshot.quality_mean / std::max(PATCH_QUALITY_TARGET, 1.0e-12)))
               : 0.0;
@@ -3765,7 +3839,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
       factor = 1.0 - (PATCH_REFINEMENT_STRENGTH * micro_patch_scale) * refine_signal +
                PATCH_COARSENING_STRENGTH * coarsen_signal;
       if (!current_policy_.stable_mode && (step_ <= 1 || STEP2_HARD_SPATIAL_FILTER_MODE == 0) &&
-          !is_top_error_patch && local_error > TOL_LOCAL) {
+          !is_top_error_patch && local_error > LocalErrorTarget()) {
         factor =
             std::max(1.0 + 0.5 * PATCH_COARSENING_STRENGTH, factor + PATCH_COARSENING_STRENGTH);
       }
@@ -4824,7 +4898,7 @@ void GeneratorAdaptive::WriteAcceptanceLog(int step, double score, const MeshQua
   file << "error_global_definition=surface_curvature_3d_relative" << std::endl;
   file << "element_growth_factor=" << element_growth_factor << std::endl;
   file << "budget_exceeded=" << (current_budget_exceeded_ ? 1 : 0) << std::endl;
-  file << "budget_policy=" << ((ADAPTIVE_RETRY_COUNT > 0) ? "retry_with_shrink" : "direct_control")
+  file << "budget_policy=" << ((AdaptiveRetryCount() > 0) ? "retry_with_shrink" : "direct_control")
        << std::endl;
   file << "budget_retry_count=" << current_budget_retry_count_ << std::endl;
   file << "budget_limited=" << (current_budget_limited_ ? 1 : 0) << std::endl;
@@ -4842,7 +4916,7 @@ void GeneratorAdaptive::WriteAcceptanceLog(int step, double score, const MeshQua
   file << "eligible_patch_elements_sum=" << current_eligible_patch_elements_sum_ << std::endl;
   file << "eligible_patch_mean_factor=" << current_eligible_patch_mean_factor_ << std::endl;
   file << "eligible_patch_mean_h_scale=" << current_eligible_patch_mean_h_scale_ << std::endl;
-  file << "retry_enabled=" << (ADAPTIVE_RETRY_COUNT > 0 ? 1 : 0) << std::endl;
+  file << "retry_enabled=" << (AdaptiveRetryCount() > 0 ? 1 : 0) << std::endl;
   file << "local_budget_mode=" << PATCH_LOCAL_ELEMENT_BUDGET_MODE << std::endl;
   file << "target_element_growth=" << current_target_element_growth_ << std::endl;
   file << "target_elements_step=" << current_target_elements_step_ << std::endl;
@@ -5261,7 +5335,7 @@ int GeneratorAdaptive::GeneratorOmp(Model& model, Timer* timer, int id_range,
   this->error_local_process_ = 1.0;
 
   // 4. enquanto o erro global de uma malha gerada não for menor que o desejado
-  while (this->error_local_process_ > EPSYLON) {
+  while (this->error_local_process_ > GlobalErrorTarget()) {
     if (step_ >= 2) {
       break;
     }
@@ -6659,7 +6733,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   const double applied_max_delta = attempt.applied_max_delta;
   const int retry_enabled = (step_ >= 0 && step_ < static_cast<int>(retry_enabled_step_.size()))
                                 ? retry_enabled_step_[static_cast<size_t>(step_)]
-                                : (ADAPTIVE_RETRY_COUNT > 0 ? 1 : 0);
+                                : (AdaptiveRetryCount() > 0 ? 1 : 0);
   const int local_budget_mode =
       (step_ >= 0 && step_ < static_cast<int>(local_budget_mode_step_.size()))
           ? local_budget_mode_step_[static_cast<size_t>(step_)]
@@ -6798,9 +6872,9 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
                ? static_cast<double>(mean_nodes) / static_cast<double>(gauss_nodes + mean_nodes)
                : 0.0)
        << endl;
-  file << "error_floor=" << ERROR_FLOOR << endl;
-  file << "min_error_drop_abs=" << MIN_ERROR_DROP_ABS << endl;
-  file << "min_error_drop_per_element=" << MIN_ERROR_DROP_PER_ELEMENT << endl;
+  file << "error_floor=" << ErrorFloor() << endl;
+  file << "min_error_drop_abs=" << MinimumErrorDrop() << endl;
+  file << "min_error_drop_per_element=" << MinimumErrorDropPerElement() << endl;
   file << "retry_attempt=" << retry_attempt << endl;
   file << "retry_enabled=" << retry_enabled << endl;
   file << "local_budget_mode=" << local_budget_mode << endl;
@@ -6824,10 +6898,10 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   file << "budget_driver_mode=" << budget_driver_mode << endl;
   file << "adaptation_relaxation=" << applied_relaxation << endl;
   file << "adaptation_max_delta=" << applied_max_delta << endl;
-  file << "adaptive_retry_count=" << ADAPTIVE_RETRY_COUNT << endl;
-  file << "adaptive_retry_shrink=" << ADAPTIVE_RETRY_SHRINK << endl;
-  file << "max_retry_element_growth_factor=" << MAX_RETRY_ELEMENT_GROWTH_FACTOR << endl;
-  file << "max_retry_element_growth_abs=" << MAX_RETRY_ELEMENT_GROWTH_ABS << endl;
+  file << "adaptive_retry_count=" << AdaptiveRetryCount() << endl;
+  file << "adaptive_retry_shrink=" << AdaptiveRetryShrink() << endl;
+  file << "max_retry_element_growth_factor=" << RetryGrowthFactorLimit() << endl;
+  file << "max_retry_element_growth_abs=" << RetryGrowthAbsoluteLimit() << endl;
   file << "stop_reason=" << stop_reason_ << endl;
   file << "laplacian_smoothing_iterations=" << static_cast<unsigned int>(SMOOTHING_LAPLACIAN_NUMBER)
        << endl;
@@ -7006,8 +7080,8 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
       << ((gauss_nodes + mean_nodes) > 0ULL
               ? static_cast<double>(mean_nodes) / static_cast<double>(gauss_nodes + mean_nodes)
               : 0.0)
-      << "," << ERROR_FLOOR << "," << MIN_ERROR_DROP_ABS << "," << MIN_ERROR_DROP_PER_ELEMENT << ","
-      << retry_attempt << "," << retry_enabled << "," << local_budget_mode << ","
+      << "," << ErrorFloor() << "," << MinimumErrorDrop() << "," << MinimumErrorDropPerElement()
+      << "," << retry_attempt << "," << retry_enabled << "," << local_budget_mode << ","
       << target_element_growth << "," << target_elements_step << "," << actual_elements_step << ","
       << target_growth_step << "," << actual_growth_step << "," << actual_element_growth << ","
       << step_efficiency << "," << local_progress_coverage << "," << improved_top_patches << ","
@@ -7015,9 +7089,9 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
       << consistency_regularization_active << "," << patch_budget_dispersion << ","
       << patch_h_dispersion << "," << actual_patch_element_dispersion << ","
       << curve_balance_dispersion << "," << patch_consistency_penalty << "," << budget_driver_mode
-      << "," << applied_relaxation << "," << applied_max_delta << "," << ADAPTIVE_RETRY_COUNT << ","
-      << ADAPTIVE_RETRY_SHRINK << "," << MAX_RETRY_ELEMENT_GROWTH_FACTOR << ","
-      << MAX_RETRY_ELEMENT_GROWTH_ABS << "," << element_budget_abs << ","
+      << "," << applied_relaxation << "," << applied_max_delta << "," << AdaptiveRetryCount() << ","
+      << AdaptiveRetryShrink() << "," << RetryGrowthFactorLimit() << ","
+      << RetryGrowthAbsoluteLimit() << "," << element_budget_abs << ","
       << element_budget_growth_factor_limit << "," << element_budget_soft_limit << ","
       << candidate_elements_before_budget_retry << "," << budget_retry_count << ","
       << budget_limited << "," << budget_final_status << "," << step_mode << "," << budget_pressure

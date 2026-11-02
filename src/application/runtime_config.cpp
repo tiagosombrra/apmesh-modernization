@@ -231,9 +231,16 @@ void ApplyRuntimeConfig(const RuntimeConfig& config) {
   }
 }
 GenerationContext MakeGenerationContext(const RuntimeConfig& config, std::string process_suffix) {
-  return {config.input_model, config.output_prefix, config.write_mode, std::move(process_suffix),
+  return {config.input_model,
+          config.output_prefix,
+          config.write_mode,
+          std::move(process_suffix),
           AdaptivePolicyConfig{config.adaptive_mode, config.adaptive_max_iterations, STEPS,
                                config.adaptive_intensity, config.adaptive_quality_priority,
-                               config.adaptive_target_growth}};
+                               config.adaptive_target_growth},
+          StopRetryConfig{config.epsylon, config.min_improvement, config.patience, config.tol_local,
+                          config.adaptive_retry_count, config.adaptive_retry_shrink,
+                          MAX_RETRY_ELEMENT_GROWTH_FACTOR, MAX_RETRY_ELEMENT_GROWTH_ABS,
+                          ERROR_FLOOR, MIN_ERROR_DROP_ABS, MIN_ERROR_DROP_PER_ELEMENT}};
 }
 } // namespace apmesh::application

@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `b93c271916c67bec727fe5a089c1d242ed86b54f` (PR #142).
+Entry main: `5a6e05e536fa6bc890f6a7068d669fd70dfdf805` (PR #143).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,23 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: adaptive-policy configuration ownership
+## Active production delivery: stopping/retry criteria ownership
+
+The [stopping/retry context](evidence/STOP_RETRY_CONTEXT.md) owns eleven generator
+criteria: global/local error targets, minimum improvement, patience, retry count/
+shrink, two growth limits and three saturation thresholds. The factory captures
+six RuntimeConfig values and five current legacy thresholds. Decisions and
+reports consume the same owned values without changing expressions or literals.
+Stable mode still promotes retries with max(1,count) at the original point;
+owned criteria use separate effective instance state, while legacy criteria retain
+the global update. Default/identity-only/adaptive-only contexts keep live reads.
+The existing native metrics probe checks three criteria cases, 27 exact double
+representations, source retirement, conflicting globals and both promotion paths.
+Use the existing scientific/delivery regression; no new instrument campaign.
+Geometric EPSYLON uses, relaxation/budget controls and remaining shared state stay
+unchanged and serialized. This does not close Stage 3 or stage 6.
+
+## Delivered production context: adaptive-policy configuration ownership
 
 The [adaptive-policy context](evidence/ADAPTIVE_POLICY_CONTEXT.md) owns the six
 inputs used to build the generator's policy: mode, adaptive/legacy step limits,
@@ -154,7 +170,7 @@ The bounded 2026 milestone is this reusable serial engine/configuration/CLI
 boundary with preserved C++17 behavior. It is a stage 6 prerequisite supporting
 S3-05 caller work, not closure of Stage 3 or the whole modernization roadmap.
 Identity/output ownership and typed execution are delivered above. The active
-lot adds six policy inputs; further numerical-state migration still requires a
+context lots add policy and stopping/retry inputs; further migration requires a
 separate bounded caller contract.
 
 ## Retained instrument obligations for closure

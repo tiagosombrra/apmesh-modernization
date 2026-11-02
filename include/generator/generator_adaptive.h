@@ -451,6 +451,7 @@ public:
   double ComputeCurveAdaptationFactor(CurveAdaptive* curve,
                                       const std::vector<double>& patch_factors) const;
   AdaptivePolicyRuntime BuildAdaptivePolicyRuntime() const;
+  apmesh::application::StopRetryConfig BuildStopRetryRuntime() const noexcept;
   MeshQualityStats ComputeMeshQualityStats(const MeshAdaptive* mesh) const;
   void WritePatchAdaptationLog(int step, bool accepted) const;
   void WriteCurveAdaptationLog(int step, bool accepted) const;
@@ -626,6 +627,20 @@ private:
   const std::string& OutputPrefix() const noexcept;
   const std::string& WriteMode() const noexcept;
   const std::string& ProcessSuffix() const noexcept;
+  const apmesh::application::StopRetryConfig* StopRetrySettings() const noexcept;
+  double GlobalErrorTarget() const noexcept;
+  double MinimumImprovement() const noexcept;
+  int Patience() const noexcept;
+  double LocalErrorTarget() const noexcept;
+  int AdaptiveRetryCount() const noexcept;
+  double AdaptiveRetryShrink() const noexcept;
+  double RetryGrowthFactorLimit() const noexcept;
+  double RetryGrowthAbsoluteLimit() const noexcept;
+  double ErrorFloor() const noexcept;
+  double MinimumErrorDrop() const noexcept;
+  double MinimumErrorDropPerElement() const noexcept;
+  void PromoteAdaptiveRetry() noexcept;
+  std::optional<int> effective_retry_count_ = std::nullopt;
   // Declared first so the Adapter borrow retires before the owned strings.
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;
