@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `fac42f748182ea12394bffea7f7bcc6d94dd7a3e` (PR #141).
+Entry main: `b93c271916c67bec727fe5a089c1d242ed86b54f` (PR #142).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,21 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: typed engine execution
+## Active production delivery: adaptive-policy configuration ownership
+
+The [adaptive-policy context](evidence/ADAPTIVE_POLICY_CONTEXT.md) owns the six
+inputs used to build the generator's policy: mode, adaptive/legacy step limits,
+intensity, quality priority and target growth. MakeGenerationContext snapshots
+validated configuration plus the current legacy STEPS value. The generator uses
+these inputs in its original formulas; its Adapter borrows the same raw mode,
+intensity and quality priority for domain decisions. No clamp moves into the
+factory. A missing policy snapshot preserves live global reads for default and
+identity-only callers. The existing metrics probe checks four policy cases,
+28 exact double representations, source retirement, conflicting globals and
+both compatibility paths. Use the existing delivery/scientific regression;
+other controls, runtime mutations and numerical globals remain shared/serialized.
+
+## Delivered production boundary: typed engine execution
 
 The [typed generation request](evidence/TYPED_GENERATION_REQUEST.md) replaces
 the CLI's synthetic string/pointer vectors with process/thread counts and an
@@ -139,8 +153,9 @@ and scientific reference; do not add a separate instrument campaign.
 The bounded 2026 milestone is this reusable serial engine/configuration/CLI
 boundary with preserved C++17 behavior. It is a stage 6 prerequisite supporting
 S3-05 caller work, not closure of Stage 3 or the whole modernization roadmap.
-Identity/output ownership is introduced by the active lot above. Numerical-state
-migration still requires a separate bounded caller contract.
+Identity/output ownership and typed execution are delivered above. The active
+lot adds six policy inputs; further numerical-state migration still requires a
+separate bounded caller contract.
 
 ## Retained instrument obligations for closure
 

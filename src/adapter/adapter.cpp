@@ -380,18 +380,33 @@ void AppendDomainDebugLog(const std::string& output_prefix, int adaptive_step, i
        << regional_stats.interior.aspect_ratio_mean << std::endl;
 }
 
-bool IsAdaptiveStableMode() { return ADAPTIVE_MODE == "adaptive_stable"; }
-
-int StablePatchMinElements() {
-  return std::max(8, static_cast<int>(std::round(6.0 + 8.0 * ADAPTIVE_QUALITY_PRIORITY)));
+const std::string& PolicyMode(const apmesh::application::AdaptivePolicyConfig* config) noexcept {
+  return config ? config->mode : ADAPTIVE_MODE;
 }
 
-double StablePatchQualityMin() {
-  return ClampValue(0.16 + 0.12 * ADAPTIVE_QUALITY_PRIORITY, 0.16, 0.30);
+double PolicyIntensity(const apmesh::application::AdaptivePolicyConfig* config) noexcept {
+  return config ? config->intensity : ADAPTIVE_INTENSITY;
 }
 
-double StablePatchPoorRatioMax() {
-  return ClampValue(0.45 - 0.25 * ADAPTIVE_QUALITY_PRIORITY, 0.15, 0.45);
+double PolicyQualityPriority(const apmesh::application::AdaptivePolicyConfig* config) noexcept {
+  return config ? config->quality_priority : ADAPTIVE_QUALITY_PRIORITY;
+}
+
+bool IsAdaptiveStableMode(const apmesh::application::AdaptivePolicyConfig* policy_config) {
+  return PolicyMode(policy_config) == "adaptive_stable";
+}
+
+int StablePatchMinElements(const apmesh::application::AdaptivePolicyConfig* policy_config) {
+  return std::max(8,
+                  static_cast<int>(std::round(6.0 + 8.0 * PolicyQualityPriority(policy_config))));
+}
+
+double StablePatchQualityMin(const apmesh::application::AdaptivePolicyConfig* policy_config) {
+  return ClampValue(0.16 + 0.12 * PolicyQualityPriority(policy_config), 0.16, 0.30);
+}
+
+double StablePatchPoorRatioMax(const apmesh::application::AdaptivePolicyConfig* policy_config) {
+  return ClampValue(0.45 - 0.25 * PolicyQualityPriority(policy_config), 0.15, 0.45);
 }
 
 double EstimateExpectedFaceCount(const double patch_area, const double target_patch_h) {
@@ -459,7 +474,8 @@ bool IsTransitionUnderresolved(const Par2DJMesh::AFT::AdvancingFrontRunStats& af
   return interior_dominant && (aft_stats.transition_element_ratio + 1.0e-9 < transition_floor);
 }
 
-double ComputePatchDegeneracyScore(const FaceMetricStats& generated_stats,
+double ComputePatchDegeneracyScore(const apmesh::application::AdaptivePolicyConfig* policy_config,
+                                   const FaceMetricStats& generated_stats,
                                    const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
                                    const double patch_area = 0.0,
                                    const double target_patch_h = -1.0,
@@ -467,19 +483,21 @@ double ComputePatchDegeneracyScore(const FaceMetricStats& generated_stats,
                                    const double curve_domain_balance = 1.0,
                                    const double curve_balance_floor = 0.0) {
   const double min_elements_score =
-      generated_stats.count < static_cast<unsigned long long>(StablePatchMinElements()) ? 1.0 : 0.0;
+      generated_stats.count < static_cast<unsigned long long>(StablePatchMinElements(policy_config))
+          ? 1.0
+          : 0.0;
   const double quality_score =
-      std::max(0.0, StablePatchQualityMin() - aft_stats.quality_post_aft_min);
+      std::max(0.0, StablePatchQualityMin(policy_config) - aft_stats.quality_post_aft_min);
   const double poor_ratio_score =
-      std::max(0.0, aft_stats.poor_ratio_post_aft - StablePatchPoorRatioMax());
+      std::max(0.0, aft_stats.poor_ratio_post_aft - StablePatchPoorRatioMax(policy_config));
   const double template_score =
       (aft_stats.quadtree_low_score_count > 0 &&
-       aft_stats.quadtree_template_score_min < (0.50 - 0.10 * ADAPTIVE_INTENSITY))
+       aft_stats.quadtree_template_score_min < (0.50 - 0.10 * PolicyIntensity(policy_config)))
           ? 1.0
           : 0.0;
   const double expected_faces = EstimateExpectedFaceCount(patch_area, target_patch_h);
   const double underresolved_score =
-      (expected_faces >= static_cast<double>(StablePatchMinElements()) * 1.5 &&
+      (expected_faces >= static_cast<double>(StablePatchMinElements(policy_config)) * 1.5 &&
        generated_stats.count < static_cast<unsigned long long>(std::floor(expected_faces * 0.45)))
           ? 1.0
           : 0.0;
@@ -493,7 +511,8 @@ double ComputePatchDegeneracyScore(const FaceMetricStats& generated_stats,
          1.2 * curve_balance_score;
 }
 
-bool PatchNeedsFallback(const FaceMetricStats& generated_stats,
+bool PatchNeedsFallback(const apmesh::application::AdaptivePolicyConfig* policy_config,
+                        const FaceMetricStats& generated_stats,
                         const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
                         const double patch_area = 0.0, const double target_patch_h = -1.0,
                         const double transition_floor = 0.0,
@@ -501,16 +520,17 @@ bool PatchNeedsFallback(const FaceMetricStats& generated_stats,
                         const double curve_balance_floor = 0.0) {
   const double expected_faces = EstimateExpectedFaceCount(patch_area, target_patch_h);
   const bool underresolved =
-      expected_faces >= static_cast<double>(StablePatchMinElements()) * 1.5 &&
+      expected_faces >= static_cast<double>(StablePatchMinElements(policy_config)) * 1.5 &&
       generated_stats.count < static_cast<unsigned long long>(std::floor(expected_faces * 0.45));
-  return generated_stats.count < static_cast<unsigned long long>(StablePatchMinElements()) ||
-         aft_stats.quality_post_aft_min < StablePatchQualityMin() ||
-         aft_stats.poor_ratio_post_aft > StablePatchPoorRatioMax() || underresolved ||
+  return generated_stats.count <
+             static_cast<unsigned long long>(StablePatchMinElements(policy_config)) ||
+         aft_stats.quality_post_aft_min < StablePatchQualityMin(policy_config) ||
+         aft_stats.poor_ratio_post_aft > StablePatchPoorRatioMax(policy_config) || underresolved ||
          (curve_domain_balance + 1.0e-9 < curve_balance_floor &&
           aft_stats.internal_element_ratio > 0.60) ||
          IsTransitionUnderresolved(aft_stats, transition_floor) ||
          (aft_stats.quadtree_low_score_count > 0 &&
-          aft_stats.quadtree_template_score_min < (0.50 - 0.10 * ADAPTIVE_INTENSITY));
+          aft_stats.quadtree_template_score_min < (0.50 - 0.10 * PolicyIntensity(policy_config)));
 }
 
 void SmoothDomainTargetSizes(FaceList& mesh_old) {
@@ -1238,6 +1258,9 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
                               double factor_disc_global, double target_patch_h,
                               int max_quadtree_depth, int adaptive_step, int patch_index,
                               int retry_index) {
+  const auto* policy_config = generation_context_ && generation_context_->adaptive_policy
+                                  ? &*generation_context_->adaptive_policy
+                                  : nullptr;
   PrepareStructuralStatsContext(adaptive_step, retry_index);
   const int resolved_quadtree_depth = ResolveQuadtreeDepthCap(max_quadtree_depth, adaptive_step);
   struct AttemptResult {
@@ -1384,10 +1407,10 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     result.interior_transition_imbalance =
         ComputeInteriorTransitionImbalance(result.aft_stats, result.transition_floor);
     result.degeneracy_score = ComputePatchDegeneracyScore(
-        result.generated_stats, result.aft_stats, result.patch_area, local_target_h,
+        policy_config, result.generated_stats, result.aft_stats, result.patch_area, local_target_h,
         result.transition_floor, result.curve_domain_balance, result.curve_balance_floor);
-    result.status = PatchNeedsFallback(result.generated_stats, result.aft_stats, result.patch_area,
-                                       local_target_h, result.transition_floor,
+    result.status = PatchNeedsFallback(policy_config, result.generated_stats, result.aft_stats,
+                                       result.patch_area, local_target_h, result.transition_floor,
                                        result.curve_domain_balance, result.curve_balance_floor)
                         ? (result.transition_underresolved == 1 ||
                                    result.curve_domain_balance + 1.0e-9 < result.curve_balance_floor
@@ -1396,7 +1419,7 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
                         : "ok";
 
     const double expected_faces = EstimateExpectedFaceCount(result.patch_area, local_target_h);
-    if (IsAdaptiveStableMode() && adaptive_step >= 2 && expected_faces > 0.0) {
+    if (IsAdaptiveStableMode(policy_config) && adaptive_step >= 2 && expected_faces > 0.0) {
       const bool transition_sensitive =
           (result.transition_underresolved == 1) ||
           (result.curve_domain_balance + 1.0e-9 < result.curve_balance_floor);
@@ -1452,9 +1475,9 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
   AttemptResult best = run_attempt(factor_disc_global, target_patch_h, resolved_quadtree_depth, 0);
   // Em adaptive_stable, permitir fallback estrutural tambem em passos tardios.
   // Isso ajuda patches curvos que entram em "degenerate_needs_retry" no step 4/5.
-  if (IsAdaptiveStableMode() && adaptive_step >= 1 &&
-      (!best.success || PatchNeedsFallback(best.generated_stats, best.aft_stats, best.patch_area,
-                                           target_patch_h, best.transition_floor,
+  if (IsAdaptiveStableMode(policy_config) && adaptive_step >= 1 &&
+      (!best.success || PatchNeedsFallback(policy_config, best.generated_stats, best.aft_stats,
+                                           best.patch_area, target_patch_h, best.transition_floor,
                                            best.curve_domain_balance, best.curve_balance_floor))) {
     const bool early_step = adaptive_step <= 1;
     const bool transition_retry_initial = (best.status == "curve_transition_needs_retry");
@@ -1468,15 +1491,17 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
           transition_retry
               ? factor_disc_global *
                     (early_step ? (1.10 + 0.06 * (attempt - 1)) : (1.22 + 0.08 * (attempt - 1)))
-              : factor_disc_global * (early_step ? (0.90 - 0.05 * ADAPTIVE_QUALITY_PRIORITY)
-                                                 : (0.94 - 0.04 * ADAPTIVE_QUALITY_PRIORITY));
+              : factor_disc_global * (early_step
+                                          ? (0.90 - 0.05 * PolicyQualityPriority(policy_config))
+                                          : (0.94 - 0.04 * PolicyQualityPriority(policy_config)));
       const double fallback_target_h =
           target_patch_h > 0.0
-              ? target_patch_h * (transition_retry
-                                      ? (early_step ? (0.82 - 0.04 * (attempt - 1))
-                                                    : (0.72 - 0.05 * (attempt - 1)))
-                                      : (early_step ? (0.82 - 0.05 * ADAPTIVE_INTENSITY)
-                                                    : (0.90 - 0.04 * ADAPTIVE_INTENSITY)))
+              ? target_patch_h *
+                    (transition_retry
+                         ? (early_step ? (0.82 - 0.04 * (attempt - 1))
+                                       : (0.72 - 0.05 * (attempt - 1)))
+                         : (early_step ? (0.82 - 0.05 * PolicyIntensity(policy_config))
+                                       : (0.90 - 0.04 * PolicyIntensity(policy_config))))
               : target_patch_h;
       int fallback_depth;
       if (resolved_quadtree_depth < 0) {

@@ -19,9 +19,10 @@ their declared scope. No partial result closes the stage.
 
 The [engine/runtime/CLI boundary](../evidence/SERIAL_ENGINE.md) is delivered. The
 [owned identity/output context](../evidence/GENERATION_CONTEXT.md) is delivered.
-The single active item is the [typed execution request](../evidence/TYPED_GENERATION_REQUEST.md):
-remove synthetic argv, retain the raw caller bridge and CLI transcript, and reuse
-the existing regression and unchanged scientific reference. Instrument
+The [typed execution request](../evidence/TYPED_GENERATION_REQUEST.md) is delivered.
+The single active item is [adaptive-policy input ownership](../evidence/ADAPTIVE_POLICY_CONTEXT.md):
+own six policy-construction inputs, pass shared raw values to Adapter, preserve
+legacy callers and reuse the existing regression/scientific reference. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 

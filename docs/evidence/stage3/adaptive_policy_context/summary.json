@@ -1,0 +1,53 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "b93c271916c67bec727fe5a089c1d242ed86b54f",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "Six policy inputs owned in optional GenerationContext value",
+    "Validated runtime snapshot plus current legacy STEPS",
+    "Generator formulas consume owned inputs",
+    "Adapter domain/fallback decisions consume the same raw mode/intensity/quality priority",
+    "Default and identity-only contexts retain live legacy policy reads"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_body_reversal": true,
+    "adapter_body_reversal": true,
+    "parser_apply_and_global_initializers_unchanged": true,
+    "cli_and_typed_request_unchanged": true,
+    "owned_inputs": [
+      "mode",
+      "adaptive_max_steps",
+      "legacy_max_steps",
+      "intensity",
+      "quality_priority",
+      "target_growth"
+    ],
+    "factory": "validated RuntimeConfig plus current STEPS for the legacy limit",
+    "adapter": "same stationary context borrow; raw mode/intensity/quality priority, without premature clamping",
+    "compatibility": "default and identity-only contexts retain live global reads",
+    "scope": "other numerical globals and Generator stable-mode global mutations remain; serialized execution required"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "native_policy_cases": 4,
+  "native_exact_double_representations": 28,
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "limits": [
+    "Other numerical globals and stable-mode mutations remain shared and serialized",
+    "No new parallel/reentrant/recovery qualification",
+    "Stage 3 and stage 6 remain open"
+  ]
+}

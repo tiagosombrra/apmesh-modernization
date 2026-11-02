@@ -601,15 +601,24 @@ const std::string& GeneratorAdaptive::ProcessSuffix() const noexcept {
 }
 
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
+  const auto* config = generation_context_ && generation_context_->adaptive_policy
+                           ? &*generation_context_->adaptive_policy
+                           : nullptr;
+  const std::string& mode = config ? config->mode : ADAPTIVE_MODE;
+  const int adaptive_max_steps = config ? config->adaptive_max_steps : ADAPTIVE_MAX_STEPS;
+  const int legacy_max_steps = config ? config->legacy_max_steps : STEPS;
+  const double intensity = config ? config->intensity : ADAPTIVE_INTENSITY;
+  const double quality_priority = config ? config->quality_priority : ADAPTIVE_QUALITY_PRIORITY;
+  const double target_growth = config ? config->target_growth : ADAPTIVE_TARGET_GROWTH;
   AdaptivePolicyRuntime policy;
-  policy.mode = ADAPTIVE_MODE.empty() ? "legacy" : ADAPTIVE_MODE;
+  policy.mode = mode.empty() ? "legacy" : mode;
   policy.stable_mode = (policy.mode == "adaptive_stable");
   policy.debug_mode = (policy.mode == "research_debug");
-  policy.max_steps = policy.stable_mode ? ADAPTIVE_MAX_STEPS : STEPS;
-  policy.intensity = ClampValue(ADAPTIVE_INTENSITY, 0.0, 1.0);
-  policy.quality_priority = ClampValue(ADAPTIVE_QUALITY_PRIORITY, 0.0, 1.0);
+  policy.max_steps = policy.stable_mode ? adaptive_max_steps : legacy_max_steps;
+  policy.intensity = ClampValue(intensity, 0.0, 1.0);
+  policy.quality_priority = ClampValue(quality_priority, 0.0, 1.0);
   policy.step1_target_growth = 1.0 + 8.0 * policy.intensity;
-  policy.stepn_target_growth = std::max(1.0, ADAPTIVE_TARGET_GROWTH);
+  policy.stepn_target_growth = std::max(1.0, target_growth);
   policy.step2_accept_quality_min = 0.16 + 0.10 * policy.quality_priority;
   policy.step2_accept_max_error_increase_abs =
       std::max(0.10, 1.10 - 0.80 * policy.quality_priority);
