@@ -389,6 +389,73 @@ void CheckStopRetryContexts() {
   apply(saved);
   std::cout << "stop_retry_context cases=3 scalar_bits=27 promotion=3 legacy=2\n";
 }
+
+void CheckAdaptationContexts() {
+  using apmesh::application::AdaptationConfig;
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildAdaptationRuntime();
+  const auto apply = [](const AdaptationConfig& config) {
+    ADAPTATION_RELAXATION = config.relaxation;
+    ADAPTATION_MAX_DELTA = config.max_delta;
+    PATCH_FACTOR_MIN = config.factor_min;
+    PATCH_FACTOR_MAX = config.factor_max;
+  };
+  const auto bits = [](const AdaptationConfig& config) {
+    return std::array<double, 4>{
+        {config.relaxation, config.max_delta, config.factor_min, config.factor_max}};
+  };
+  const auto equal = [&](const AdaptationConfig& a, const AdaptationConfig& b) {
+    const auto first = bits(a), second = bits(b);
+    return std::memcmp(first.data(), second.data(), first.size() * sizeof(double)) == 0;
+  };
+  const auto same_factors = [](const std::vector<double>& a, const std::vector<double>& b) {
+    return a.size() == b.size() && std::memcmp(a.data(), b.data(), a.size() * sizeof(double)) == 0;
+  };
+  const std::vector<double> targets{0.4, 0.95, 1.4};
+  const std::array<AdaptationConfig, 3> cases{
+      {{}, {0.20, 0.03, 0.87, 1.04}, {0.65, 0.25, 0.70, 1.30}}};
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildAdaptationRuntime();
+    const auto expected_factors = DomainCandidateFixture::RateLimit(legacy, targets);
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      apmesh::application::RuntimeConfig config;
+      config.adaptation_relaxation = value.relaxation;
+      config.adaptation_max_delta = value.max_delta;
+      config.patch_factor_min = value.factor_min;
+      config.patch_factor_max = value.factor_max;
+      auto source = apmesh::application::MakeGenerationContext(config);
+      config.adaptation_relaxation = 99.0;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.adaptation.reset();
+    }
+    apply({1.0, 0.8, 0.10, 2.0});
+    const auto foreign = legacy.BuildAdaptationRuntime();
+    if (equal(expected, foreign) || !equal(expected, owned->BuildAdaptationRuntime()) ||
+        !equal(foreign, identity_only.BuildAdaptationRuntime()) ||
+        same_factors(expected_factors, DomainCandidateFixture::RateLimit(legacy, targets)) ||
+        !same_factors(expected_factors, DomainCandidateFixture::RateLimit(*owned, targets)))
+      throw std::runtime_error("Adaptation ownership or rate-limit differential control failed");
+    DomainCandidateFixture::StableAdaptation(*owned);
+    if (!equal(foreign, legacy.BuildAdaptationRuntime()) ||
+        !equal(value, *owned->GetGenerationContext()->adaptation))
+      throw std::runtime_error("Owned stable adaptation changed raw configuration or globals");
+    DomainCandidateFixture::StableAdaptation(legacy);
+    const auto stable = legacy.BuildAdaptationRuntime();
+    if (!equal(stable, owned->BuildAdaptationRuntime()) ||
+        !same_factors(DomainCandidateFixture::RateLimit(legacy, targets),
+                      DomainCandidateFixture::RateLimit(*owned, targets)))
+      throw std::runtime_error("Owned stable adaptation changed effective values or factors");
+    apply(foreign);
+    DomainCandidateFixture::StableAdaptation(identity_only);
+    if (!equal(stable, legacy.BuildAdaptationRuntime()))
+      throw std::runtime_error("Identity-only stable adaptation stopped updating process state");
+  }
+  apply(saved);
+  std::cout << "adaptation_context cases=3 scalar_bits=12 rate_limit_bits=18 stable=3 legacy=2\n";
+}
 #endif
 
 int main(int argc, char* argv[]) {
@@ -454,6 +521,7 @@ int main(int argc, char* argv[]) {
   CheckAdaptivePolicyContexts();
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
   CheckStopRetryContexts();
+  CheckAdaptationContexts();
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();

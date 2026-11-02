@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Adaptation settings and effective adjustments
+
+The [adaptation lot](evidence/ADAPTATION_CONTEXT.md) reuses the existing 75 CTest/
+385 nested Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/
+123-boundary reference and real MSVC CLI controls on exact head/main. Require all
+prior native markers plus three adaptation cases: 12 raw and 12 stable exact
+double representations, source retirement, foreign-global negative controls,
+local/global override paths and 18 bit-exact outputs of the actual rate limiter.
+Retain original metrics and scientific oracles. Reverse only four read bindings
+and the four original stable assignments; verify unchanged per-attempt arithmetic,
+clamps, order and literals, parser/apply/defaults and other production. Require
+scoped analysis, explicit format/whitespace, inventory/contracts and staged/remote
+gates. No new model, test target or standalone instrument campaign is required.
+
 ## Stopping/retry criteria context
 
 The [stopping/retry lot](evidence/STOP_RETRY_CONTEXT.md) uses the existing

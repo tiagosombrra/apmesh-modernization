@@ -255,6 +255,17 @@ class DomainCandidateFixture {
 
 public:
   static void PromoteRetry(GeneratorAdaptive& generator) { generator.PromoteAdaptiveRetry(); }
+  static void StableAdaptation(GeneratorAdaptive& generator) {
+    generator.ApplyStableAdaptationSettings();
+  }
+  static std::vector<double> RateLimit(GeneratorAdaptive& generator,
+                                       const std::vector<double>& targets) {
+    const auto settings = generator.BuildAdaptationRuntime();
+    generator.current_adaptation_relaxation_ = settings.relaxation;
+    generator.current_adaptation_max_delta_ = settings.max_delta;
+    generator.previous_patch_factors_.clear();
+    return generator.ApplyAdaptationRateLimit(targets);
+  }
   static int RunSnapshots();
   static int Run(bool release_control) {
     try {

@@ -675,6 +675,53 @@ apmesh::application::StopRetryConfig GeneratorAdaptive::BuildStopRetryRuntime() 
           MinimumErrorDrop(),       MinimumErrorDropPerElement()};
 }
 
+const apmesh::application::AdaptationConfig*
+GeneratorAdaptive::AdaptationSettings() const noexcept {
+  if (!generation_context_ || !generation_context_->adaptation) {
+    return nullptr;
+  }
+  return effective_adaptation_ ? &*effective_adaptation_ : &*generation_context_->adaptation;
+}
+
+double GeneratorAdaptive::AdaptationRelaxation() const noexcept {
+  const auto* config = AdaptationSettings();
+  return config ? config->relaxation : ADAPTATION_RELAXATION;
+}
+
+double GeneratorAdaptive::AdaptationMaxDelta() const noexcept {
+  const auto* config = AdaptationSettings();
+  return config ? config->max_delta : ADAPTATION_MAX_DELTA;
+}
+
+double GeneratorAdaptive::PatchFactorMin() const noexcept {
+  const auto* config = AdaptationSettings();
+  return config ? config->factor_min : PATCH_FACTOR_MIN;
+}
+
+double GeneratorAdaptive::PatchFactorMax() const noexcept {
+  const auto* config = AdaptationSettings();
+  return config ? config->factor_max : PATCH_FACTOR_MAX;
+}
+
+void GeneratorAdaptive::ApplyStableAdaptationSettings() noexcept {
+  apmesh::application::AdaptationConfig* config = nullptr;
+  if (generation_context_ && generation_context_->adaptation) {
+    config = &effective_adaptation_.emplace(*generation_context_->adaptation);
+  }
+  double& relaxation = config ? config->relaxation : ADAPTATION_RELAXATION;
+  double& max_delta = config ? config->max_delta : ADAPTATION_MAX_DELTA;
+  double& factor_min = config ? config->factor_min : PATCH_FACTOR_MIN;
+  double& factor_max = config ? config->factor_max : PATCH_FACTOR_MAX;
+  relaxation = 0.30;
+  max_delta = 0.05;
+  factor_min = 0.90;
+  factor_max = 1.03;
+}
+
+apmesh::application::AdaptationConfig GeneratorAdaptive::BuildAdaptationRuntime() const noexcept {
+  return {AdaptationRelaxation(), AdaptationMaxDelta(), PatchFactorMin(), PatchFactorMax()};
+}
+
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   const auto* config = generation_context_ && generation_context_->adaptive_policy
                            ? &*generation_context_->adaptive_policy
@@ -1216,11 +1263,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     STEP2_HARD_SPATIAL_FILTER_MODE = 0;
     PromoteAdaptiveRetry();
 
-    ADAPTATION_RELAXATION = 0.30;
-    ADAPTATION_MAX_DELTA = 0.05;
-
-    PATCH_FACTOR_MIN = 0.90;
-    PATCH_FACTOR_MAX = 1.03;
+    ApplyStableAdaptationSettings();
 
     PATCH_REFINEMENT_STRENGTH = 0.14;
     PATCH_COARSENING_STRENGTH = 0.02;
@@ -1338,8 +1381,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   previous_patch_factors_.clear();
   current_gauss_nodes_ = 0ULL;
   current_mean_nodes_ = 0ULL;
-  current_adaptation_relaxation_ = ADAPTATION_RELAXATION;
-  current_adaptation_max_delta_ = ADAPTATION_MAX_DELTA;
+  current_adaptation_relaxation_ = AdaptationRelaxation();
+  current_adaptation_max_delta_ = AdaptationMaxDelta();
   current_target_element_growth_ = 0.0;
   current_step_efficiency_ = 0.0;
   current_generation_control_mode_ = "normal";
@@ -1616,8 +1659,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     const std::vector<double> accepted_patch_factors = previous_patch_factors_;
     const std::vector<std::vector<CurvePointSnapshot>> accepted_curve_snapshots =
         capture_curve_snapshots(geometry);
-    const double base_relaxation = ADAPTATION_RELAXATION;
-    const double base_max_delta = ADAPTATION_MAX_DELTA;
+    const double base_relaxation = AdaptationRelaxation();
+    const double base_max_delta = AdaptationMaxDelta();
     bool accepted_step = false;
     unsigned int accepted_retry_attempt = 0U;
     double improvement = 0.0;
@@ -2942,8 +2985,8 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
                                                    1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
           history.prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD) {
         soft_saturated = true;
-        domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE, PATCH_FACTOR_MIN,
-                                   PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE, PatchFactorMin(),
+                                   PatchFactorMax());
       }
       if (QUADTREE_HARD_SATURATION_MODE == 1 &&
           history.consecutive_inefficient_steps >=
@@ -2956,7 +2999,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       domain_factor =
           ClampValue(domain_factor * std::pow(STEP_ELEMENT_BUDGET_RETRY_H_SCALE,
                                               static_cast<int>(current_budget_retry_count_)),
-                     PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+                     PatchFactorMin(), PatchFactorMax());
     }
     const int refinement_rank =
         (i < current_patch_adaptation_.size()) ? current_patch_adaptation_[i].refinement_rank : -1;
@@ -2991,7 +3034,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         eligible_h_scale *= PATCH_GENERATION_MICRO_H_SCALE;
       }
       domain_factor =
-          ClampValue(domain_factor * eligible_h_scale, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+          ClampValue(domain_factor * eligible_h_scale, PatchFactorMin(), PatchFactorMax());
       if (i < current_patch_adaptation_.size()) {
         current_patch_adaptation_[i].eligible_h_scale_applied = eligible_h_scale;
       }
@@ -3048,14 +3091,14 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       current_patch_adaptation_[i].patch_budget_exceeded = patch_budget_exceeded ? 1 : 0;
       if (patch_budget_exceeded) {
         patch_generation_mode = "budget_constrained";
-        domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE, PATCH_FACTOR_MIN,
-                                   PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE, PatchFactorMin(),
+                                   PatchFactorMax());
       }
       if (!few_patch_low_error && PATCH_GENERATION_CONTROL_MODE == 1 &&
           current_target_element_growth_ > 0.0 && history.prev_patch_elements > 0ULL &&
           current_target_element_growth_ <= 1.0) {
-        domain_factor = ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE, PATCH_FACTOR_MIN,
-                                   PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE, PatchFactorMin(),
+                                   PatchFactorMax());
         // Em adaptive_stable, evitar mudar para 'budget_constrained' após
         // rejeições consecutivas (isso costuma gerar "complementos" errados
         // em patches curvos). Mantemos o clamp no fator, mas não mudamos o
@@ -3067,7 +3110,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       if (!few_patch_low_error && STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
           current_budget_pressure_ >= PATCH_GENERATION_BUDGET_PRESSURE_START) {
         domain_factor = ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
-                                   PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+                                   PatchFactorMin(), PatchFactorMax());
         patch_generation_mode = "budget_constrained";
       }
       current_patch_adaptation_[i].patch_generation_mode = patch_generation_mode;
@@ -3118,7 +3161,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     }
 
     if (current_policy_.stable_mode && step_ == 2 && !few_patch_low_error) {
-      domain_factor = ClampValue(domain_factor * 1.10, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+      domain_factor = ClampValue(domain_factor * 1.10, PatchFactorMin(), PatchFactorMax());
       if (target_patch_h > 0.0) {
         target_patch_h *= 1.18;
       }
@@ -3159,7 +3202,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       if (patch_curve_support_ratio < 0.85) {
         const double h_boost =
             ClampValue(1.0 + (0.85 - patch_curve_support_ratio) * 0.80, 1.0, 1.35);
-        domain_factor = ClampValue(domain_factor * h_boost, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * h_boost, PatchFactorMin(), PatchFactorMax());
         target_patch_h *= h_boost;
         patch_generation_mode = "curve_transition_balanced";
       }
@@ -3167,7 +3210,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         const double density_norm =
             Clamp01(static_cast<double>(patch_curve_density_points - 4) / 12.0);
         const double h_follow = ClampValue(1.0 - 0.18 * density_norm, 0.82, 1.0);
-        domain_factor = ClampValue(domain_factor * h_follow, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * h_follow, PatchFactorMin(), PatchFactorMax());
         target_patch_h *= h_follow;
         patch_generation_mode = "curve_density_follow";
       }
@@ -3264,7 +3307,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         floor_v = std::max(0.64, floor_v * st);
       }
       gen_factor = std::max(floor_v, domain_factor * mul);
-      gen_factor = ClampValue(gen_factor, floor_v, PATCH_FACTOR_MAX);
+      gen_factor = ClampValue(gen_factor, floor_v, PatchFactorMax());
       if (gen_h > 0.0) {
         gen_h *= (stable_consecutive_reject_count_ > 0U && this->step_ >= 3)
                      ? (0.88 * std::pow(0.985, static_cast<double>(
@@ -3310,7 +3353,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         top_priority_curve_patch && structural_first != nullptr &&
         structural_first->generation_status == "degenerate_needs_retry") {
       const double aggressive_factor =
-          ClampValue(gen_factor * 1.35, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+          ClampValue(gen_factor * 1.35, PatchFactorMin(), PatchFactorMax());
       const double aggressive_h = (gen_h > 0.0) ? std::max(1.0e-6, gen_h * 0.58) : gen_h;
       const int aggressive_depth =
           (gen_depth_cap >= 0) ? std::max(0, gen_depth_cap - 1) : gen_depth_cap;
@@ -3374,7 +3417,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         const double rebalance_factor =
             ClampValue(domain_factor * (dense_curved_patch ? (transition_bad ? 1.28 : 1.22)
                                                            : (transition_bad ? 1.22 : 1.18)),
-                       PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+                       PatchFactorMin(), PatchFactorMax());
         const double rebalance_h =
             (target_patch_h > 0.0)
                 ? target_patch_h * (dense_curved_patch ? (transition_bad ? 0.72 : 0.82)
@@ -3604,8 +3647,8 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
                        (micro_refinement_active ? STEP2_MICRO_FACTOR_RANGE_SCALE : 1.0))) *
           budget_range_scale * pressure_range_scale,
       0.05, 1.0);
-  const double shrunk_min = factor_mid - (factor_mid - PATCH_FACTOR_MIN) * effective_range_shrink;
-  const double shrunk_max = factor_mid + (PATCH_FACTOR_MAX - factor_mid) * effective_range_shrink;
+  const double shrunk_min = factor_mid - (factor_mid - PatchFactorMin()) * effective_range_shrink;
+  const double shrunk_max = factor_mid + (PatchFactorMax() - factor_mid) * effective_range_shrink;
 
   for (unsigned int i = 0; i < patch_count; ++i) {
     const double local_error = last_submesh_error_[i];
@@ -4140,7 +4183,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
           after = std::min(after, median_factor + 0.004);
           after = std::min(after, min_factor + 0.010);
         }
-        patch_factors[idx] = ClampValue(after, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        patch_factors[idx] = ClampValue(after, PatchFactorMin(), PatchFactorMax());
         if (std::fabs(patch_factors[idx] - before) > 1.0e-9) {
           current_patch_adaptation_[idx].consistency_clamped = 1;
           current_consistency_regularization_active_ = 1;
@@ -4533,7 +4576,7 @@ GeneratorAdaptive::SmoothPatchAdaptationFactors(const Geometry* geometry,
           (1.0 - neighbor_weight) * raw_factors[i] + neighbor_weight * neighbor_mean;
     }
 
-    smoothed_factors[i] = ClampValue(smoothed_factors[i], PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+    smoothed_factors[i] = ClampValue(smoothed_factors[i], PatchFactorMin(), PatchFactorMax());
     if (step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
         static_cast<size_t>(i) < current_patch_eligible_mask_.size() &&
         current_patch_eligible_mask_[i] == 0) {
@@ -4566,7 +4609,7 @@ GeneratorAdaptive::ApplyAdaptationRateLimit(const std::vector<double>& target_fa
     const double lower = previous - current_adaptation_max_delta_;
     const double upper = previous + current_adaptation_max_delta_;
     limited_factors[i] = std::max(lower, std::min(upper, relaxed));
-    limited_factors[i] = ClampValue(limited_factors[i], PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+    limited_factors[i] = ClampValue(limited_factors[i], PatchFactorMin(), PatchFactorMax());
   }
 
   previous_patch_factors_ = limited_factors;
@@ -4661,7 +4704,7 @@ GeneratorAdaptive::ComputeCurveAdaptationFactor(CurveAdaptive* curve,
   const double sensitivity_scale = (step_ <= 1) ? 1.0 : STEP2_CURVE_SENSITIVITY_SCALE;
   const double attenuated_factor =
       1.0 + (CURVE_FACTOR_SENSITIVITY * sensitivity_scale) * (base_factor - 1.0);
-  return ClampValue(attenuated_factor, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+  return ClampValue(attenuated_factor, PatchFactorMin(), PatchFactorMax());
 }
 
 GeneratorAdaptive::MeshQualityStats
@@ -5476,8 +5519,8 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
                     std::max(1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
             history.prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD) {
           soft_saturated = true;
-          domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE, PATCH_FACTOR_MIN,
-                                     PATCH_FACTOR_MAX);
+          domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE, PatchFactorMin(),
+                                     PatchFactorMax());
         }
         if (QUADTREE_HARD_SATURATION_MODE == 1 &&
             history.consecutive_inefficient_steps >=
@@ -5490,7 +5533,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
         domain_factor =
             ClampValue(domain_factor * std::pow(STEP_ELEMENT_BUDGET_RETRY_H_SCALE,
                                                 static_cast<int>(current_budget_retry_count_)),
-                       PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+                       PatchFactorMin(), PatchFactorMax());
       }
       const int refinement_rank =
           (static_cast<size_t>(i) < current_patch_adaptation_.size())
@@ -5529,7 +5572,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
           eligible_h_scale *= PATCH_GENERATION_MICRO_H_SCALE;
         }
         domain_factor =
-            ClampValue(domain_factor * eligible_h_scale, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+            ClampValue(domain_factor * eligible_h_scale, PatchFactorMin(), PatchFactorMax());
         if (static_cast<size_t>(i) < current_patch_adaptation_.size()) {
           current_patch_adaptation_[static_cast<size_t>(i)].eligible_h_scale_applied =
               eligible_h_scale;
@@ -5588,14 +5631,14 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
             patch_budget_exceeded ? 1 : 0;
         if (patch_budget_exceeded) {
           patch_generation_mode = "budget_constrained";
-          domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE, PATCH_FACTOR_MIN,
-                                     PATCH_FACTOR_MAX);
+          domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE, PatchFactorMin(),
+                                     PatchFactorMax());
         }
         if (!few_patch_low_error && PATCH_GENERATION_CONTROL_MODE == 1 &&
             current_target_element_growth_ > 0.0 && history.prev_patch_elements > 0ULL &&
             current_target_element_growth_ <= 1.0) {
-          domain_factor = ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE, PATCH_FACTOR_MIN,
-                                     PATCH_FACTOR_MAX);
+          domain_factor = ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE, PatchFactorMin(),
+                                     PatchFactorMax());
           // Em adaptive_stable, evitar trocar o modo para 'budget_constrained'
           // após rejeições consecutivas (isso tem correlação com malhas
           // complementares erradas em patches curvos).
@@ -5606,7 +5649,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
         if (!few_patch_low_error && STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
             current_budget_pressure_ >= PATCH_GENERATION_BUDGET_PRESSURE_START) {
           domain_factor = ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
-                                     PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+                                     PatchFactorMin(), PatchFactorMax());
           patch_generation_mode = "budget_constrained";
         }
         current_patch_adaptation_[static_cast<size_t>(i)].patch_generation_mode =
@@ -5655,7 +5698,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
         }
       }
       if (current_policy_.stable_mode && step_ == 2 && !few_patch_low_error) {
-        domain_factor = ClampValue(domain_factor * 1.10, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+        domain_factor = ClampValue(domain_factor * 1.10, PatchFactorMin(), PatchFactorMax());
         if (target_patch_h > 0.0) {
           target_patch_h *= 1.18;
         }
@@ -5690,7 +5733,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
         if (patch_curve_support_ratio < 0.85) {
           const double h_boost =
               ClampValue(1.0 + (0.85 - patch_curve_support_ratio) * 0.80, 1.0, 1.35);
-          domain_factor = ClampValue(domain_factor * h_boost, PATCH_FACTOR_MIN, PATCH_FACTOR_MAX);
+          domain_factor = ClampValue(domain_factor * h_boost, PatchFactorMin(), PatchFactorMax());
           target_patch_h *= h_boost;
           patch_generation_mode = "curve_transition_balanced";
         }
@@ -5741,7 +5784,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
           floor_v = std::max(0.64, floor_v * st);
         }
         gen_factor = std::max(floor_v, domain_factor * mul);
-        gen_factor = ClampValue(gen_factor, floor_v, PATCH_FACTOR_MAX);
+        gen_factor = ClampValue(gen_factor, floor_v, PatchFactorMax());
         if (gen_h > 0.0) {
           gen_h *= (stable_consecutive_reject_count_ > 0U && this->step_ >= 3)
                        ? (0.88 * std::pow(0.985, static_cast<double>(std::min(
