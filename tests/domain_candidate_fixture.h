@@ -254,6 +254,12 @@ class DomainCandidateFixture {
   }
 
 public:
+  static void StableElementBudget(GeneratorAdaptive& generator) {
+    generator.ApplyStableElementBudgetSettings();
+  }
+  static double ClampElementTarget(const GeneratorAdaptive& generator, double target) {
+    return generator.ClampBudgetTargetElements(target);
+  }
   static void PromoteRetry(GeneratorAdaptive& generator) { generator.PromoteAdaptiveRetry(); }
   static void StableAdaptation(GeneratorAdaptive& generator) {
     generator.ApplyStableAdaptationSettings();

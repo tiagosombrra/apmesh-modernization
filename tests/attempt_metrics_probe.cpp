@@ -456,6 +456,145 @@ void CheckAdaptationContexts() {
   apply(saved);
   std::cout << "adaptation_context cases=3 scalar_bits=12 rate_limit_bits=18 stable=3 legacy=2\n";
 }
+
+void CheckElementBudgetContexts() {
+  using apmesh::application::ElementBudgetConfig;
+  const std::array<double ElementBudgetConfig::*, 24> doubles{
+      {&ElementBudgetConfig::absolute_limit,
+       &ElementBudgetConfig::growth_factor,
+       &ElementBudgetConfig::soft_ratio,
+       &ElementBudgetConfig::retry_topk_shrink,
+       &ElementBudgetConfig::retry_h_scale,
+       &ElementBudgetConfig::retry_factor_range_scale,
+       &ElementBudgetConfig::pressure_start,
+       &ElementBudgetConfig::pressure_h_scale,
+       &ElementBudgetConfig::pressure_factor_shrink,
+       &ElementBudgetConfig::patch_local_base,
+       &ElementBudgetConfig::patch_local_rank_scale,
+       &ElementBudgetConfig::patch_local_efficiency_scale,
+       &ElementBudgetConfig::patch_local_h_scale,
+       &ElementBudgetConfig::patch_local_hard_cap,
+       &ElementBudgetConfig::step2_growth,
+       &ElementBudgetConfig::step3plus_growth,
+       &ElementBudgetConfig::target_h_scale,
+       &ElementBudgetConfig::step1_growth,
+       &ElementBudgetConfig::target_min,
+       &ElementBudgetConfig::target_max,
+       &ElementBudgetConfig::patch_error_weight,
+       &ElementBudgetConfig::patch_efficiency_weight,
+       &ElementBudgetConfig::patch_quality_weight,
+       &ElementBudgetConfig::patch_min_share}};
+  const std::array<int ElementBudgetConfig::*, 8> integers{
+      {&ElementBudgetConfig::step_mode, &ElementBudgetConfig::pressure_mode,
+       &ElementBudgetConfig::patch_local_mode, &ElementBudgetConfig::target_growth_mode,
+       &ElementBudgetConfig::budget_driven, &ElementBudgetConfig::target_mode,
+       &ElementBudgetConfig::patch_allocation_mode, &ElementBudgetConfig::patch_topk_only_mode}};
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildElementBudgetRuntime();
+  const auto apply = [](const ElementBudgetConfig& config) {
+    STEP_ELEMENT_BUDGET_MODE = config.step_mode;
+    STEP_ELEMENT_BUDGET_ABS = config.absolute_limit;
+    STEP_ELEMENT_BUDGET_GROWTH_FACTOR = config.growth_factor;
+    STEP_ELEMENT_BUDGET_SOFT_RATIO = config.soft_ratio;
+    STEP_ELEMENT_BUDGET_RETRY_SHRINK_TOPK = config.retry_topk_shrink;
+    STEP_ELEMENT_BUDGET_RETRY_H_SCALE = config.retry_h_scale;
+    STEP_ELEMENT_BUDGET_RETRY_FACTOR_RANGE_SCALE = config.retry_factor_range_scale;
+    STEP_ELEMENT_BUDGET_PRESSURE_MODE = config.pressure_mode;
+    STEP_ELEMENT_BUDGET_PRESSURE_START = config.pressure_start;
+    STEP_ELEMENT_BUDGET_PRESSURE_H_SCALE = config.pressure_h_scale;
+    STEP_ELEMENT_BUDGET_PRESSURE_FACTOR_SHRINK = config.pressure_factor_shrink;
+    PATCH_LOCAL_ELEMENT_BUDGET_MODE = config.patch_local_mode;
+    PATCH_LOCAL_ELEMENT_BUDGET_BASE = config.patch_local_base;
+    PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_RANK = config.patch_local_rank_scale;
+    PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_EFFICIENCY = config.patch_local_efficiency_scale;
+    PATCH_LOCAL_BUDGET_H_SCALE = config.patch_local_h_scale;
+    PATCH_LOCAL_BUDGET_HARD_CAP = config.patch_local_hard_cap;
+    STEP_TARGET_ELEMENT_GROWTH_MODE = config.target_growth_mode;
+    STEP2_TARGET_ELEMENT_GROWTH = config.step2_growth;
+    STEP3PLUS_TARGET_ELEMENT_GROWTH = config.step3plus_growth;
+    STEP_TARGET_GROWTH_H_SCALE = config.target_h_scale;
+    BUDGET_DRIVEN_ADAPTATION = config.budget_driven;
+    STEP_ELEMENT_TARGET_MODE = config.target_mode;
+    STEP1_TARGET_ELEMENT_GROWTH = config.step1_growth;
+    STEP_ELEMENT_TARGET_MIN = config.target_min;
+    STEP_ELEMENT_TARGET_MAX = config.target_max;
+    PATCH_BUDGET_ALLOCATION_MODE = config.patch_allocation_mode;
+    PATCH_BUDGET_ERROR_WEIGHT = config.patch_error_weight;
+    PATCH_BUDGET_EFFICIENCY_WEIGHT = config.patch_efficiency_weight;
+    PATCH_BUDGET_QUALITY_WEIGHT = config.patch_quality_weight;
+    PATCH_BUDGET_MIN_SHARE = config.patch_min_share;
+    PATCH_BUDGET_TOPK_ONLY_MODE = config.patch_topk_only_mode;
+  };
+  const auto equal = [&](const ElementBudgetConfig& a, const ElementBudgetConfig& b) {
+    for (auto field : doubles)
+      if (std::memcmp(&(a.*field), &(b.*field), sizeof(double)) != 0)
+        return false;
+    for (auto field : integers)
+      if (a.*field != b.*field)
+        return false;
+    return true;
+  };
+  const auto targets = [](const GeneratorAdaptive& generator) {
+    return std::array<double, 3>{{DomainCandidateFixture::ClampElementTarget(generator, 0.0),
+                                  DomainCandidateFixture::ClampElementTarget(generator, 100.0),
+                                  DomainCandidateFixture::ClampElementTarget(generator, 10000.0)}};
+  };
+  const auto same_targets = [](const std::array<double, 3>& a, const std::array<double, 3>& b) {
+    return std::memcmp(a.data(), b.data(), a.size() * sizeof(double)) == 0;
+  };
+  std::array<ElementBudgetConfig, 3> cases{};
+  ElementBudgetConfig foreign;
+  for (std::size_t i = 0; i < doubles.size(); ++i) {
+    cases[1].*doubles[i] = static_cast<double>(i + 1) * 0.125;
+    cases[2].*doubles[i] = static_cast<double>(i + 1) * 0.25;
+    foreign.*doubles[i] = 100.0 + static_cast<double>(i);
+  }
+  for (std::size_t i = 0; i < integers.size(); ++i) {
+    cases[1].*integers[i] = static_cast<int>(i % 2);
+    cases[2].*integers[i] = static_cast<int>(i % 3);
+    foreign.*integers[i] = 9;
+  }
+  foreign.target_min = 250.0;
+  foreign.target_max = 900.0;
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildElementBudgetRuntime();
+    const auto expected_targets = targets(legacy);
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      auto source =
+          apmesh::application::MakeGenerationContext(apmesh::application::RuntimeConfig{});
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.element_budget.reset();
+    }
+    apply(foreign);
+    if (equal(expected, legacy.BuildElementBudgetRuntime()) ||
+        !equal(expected, owned->BuildElementBudgetRuntime()) ||
+        !equal(foreign, identity_only.BuildElementBudgetRuntime()) ||
+        same_targets(expected_targets, targets(legacy)) ||
+        !same_targets(expected_targets, targets(*owned)))
+      throw std::runtime_error("Element budget ownership or target-clamp differential failed");
+    DomainCandidateFixture::StableElementBudget(*owned);
+    if (!equal(foreign, legacy.BuildElementBudgetRuntime()) ||
+        !equal(value, *owned->GetGenerationContext()->element_budget))
+      throw std::runtime_error(
+          "Owned element budget overrides changed raw configuration or globals");
+    apply(value);
+    DomainCandidateFixture::StableElementBudget(legacy);
+    const auto stable = legacy.BuildElementBudgetRuntime();
+    if (!equal(stable, owned->BuildElementBudgetRuntime()) ||
+        !same_targets(targets(legacy), targets(*owned)))
+      throw std::runtime_error(
+          "Owned element budget overrides changed effective values or targets");
+    apply(value);
+    DomainCandidateFixture::StableElementBudget(identity_only);
+    if (!equal(stable, legacy.BuildElementBudgetRuntime()))
+      throw std::runtime_error("Legacy element budget overrides stopped updating process state");
+  }
+  apply(saved);
+  std::cout << "element_budget_context cases=3 scalar_bits=72 target_bits=18 stable=3 legacy=2\n";
+}
 #endif
 
 int main(int argc, char* argv[]) {
@@ -522,6 +661,7 @@ int main(int argc, char* argv[]) {
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
   CheckStopRetryContexts();
   CheckAdaptationContexts();
+  CheckElementBudgetContexts();
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();

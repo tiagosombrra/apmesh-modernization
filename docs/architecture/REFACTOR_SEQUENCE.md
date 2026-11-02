@@ -22,9 +22,10 @@ The [engine/runtime/CLI boundary](../evidence/SERIAL_ENGINE.md) is delivered. Th
 The [typed execution request](../evidence/TYPED_GENERATION_REQUEST.md) is delivered.
 The [adaptive-policy inputs](../evidence/ADAPTIVE_POLICY_CONTEXT.md) are delivered.
 The [stopping/retry criteria](../evidence/STOP_RETRY_CONTEXT.md) are delivered.
-The single active item is [adaptation settings and adjustments](../evidence/ADAPTATION_CONTEXT.md):
-own four settings, isolate stable overrides and preserve per-attempt formulas,
-factor-bound consumers, legacy writes and the existing regression. Instrument
+The [adaptation settings](../evidence/ADAPTATION_CONTEXT.md) are delivered.
+The single active item is [element budget controls](../evidence/ELEMENT_BUDGET_CONTEXT.md):
+own 32 controls, isolate five stable flags and preserve target/budget/pressure/
+allocation formulas, legacy writes and the existing regression. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 
