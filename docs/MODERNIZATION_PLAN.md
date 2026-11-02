@@ -13,11 +13,15 @@ APMesh::Engine is linkable within the build, runtime parsing/state are outside
 main.cpp, existing consumers link the engine, and C++17 scientific behavior is
 preserved. This is a bounded stage 6 prerequisite for caller-root work. It neither
 closes Stage 3 nor promises the complete roadmap in 2026. The next production
-package implements [owned generation identity/output](evidence/GENERATION_CONTEXT.md):
+package follows the delivered [owned generation identity/output](evidence/GENERATION_CONTEXT.md):
 four value-owned strings, an explicit generator constructor, a bounded Adapter
 borrow and a legacy compatibility path. The existing metrics case gains targeted
 ownership/interleaved-output checks. Numerical state remains global and serialized;
 its next migration must name one cohesive policy/runtime group and caller contract.
+The active [typed execution request](evidence/TYPED_GENERATION_REQUEST.md) removes
+synthetic argv from the CLI-to-engine path while retaining the raw-argument bridge,
+CLI transcript and source input precedence. It is an engineering caller-contract
+delivery supporting S3-05 and stage 6, not a numerical-policy migration or closure.
 
 ## Current stage and completion route
 

@@ -1,0 +1,48 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "fac42f748182ea12394bffea7f7bcc6d94dd7a3e",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "Typed synchronous Execute overload",
+    "GenerationRequest owns optional fallback path and integer execution counts",
+    "Synthetic CLI argv vectors removed",
+    "Historical CLI transcript retained at application boundary",
+    "Legacy raw Execute logging/conditional conversion bridge retained"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_body_reversal": true,
+    "runtime_configuration_unchanged": true,
+    "cli_sequence_reversal": true,
+    "typed_request_fields": [
+      "num_processes",
+      "num_threads",
+      "optional input_model"
+    ],
+    "null_path": "historical built-in model without owned context",
+    "empty_path": "file input, not missing",
+    "context_precedence": "owned context path wins",
+    "compatibility": "raw argument logging/parsing isolated in legacy wrapper; valid historical layout required",
+    "parallel": "original conditional routing retained; no new runtime qualification"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "limits": [
+    "Numerical globals remain shared and serialized",
+    "No new parallel/reentrant/recovery qualification",
+    "Stage 3 and stage 6 remain open"
+  ]
+}

@@ -7,12 +7,12 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 162,
+    "files": 163,
     "translation_units": 76,
-    "headers": 86,
+    "headers": 87,
     "directory_components": {
       "adapter": 6,
-      "application": 7,
+      "application": 8,
       "cli": 1,
       "crab_mesh/aft": 18,
       "crab_mesh/numerical": 7,
@@ -29,8 +29,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 640,
-    "first_party_include_edges": 360
+    "literal_include_directives": 643,
+    "first_party_include_edges": 361
   },
   "cross_component_directives": [
     {
@@ -251,7 +251,7 @@
     {
       "from": "generator",
       "to": "application",
-      "count": 1
+      "count": 2
     },
     {
       "from": "generator",
@@ -377,14 +377,14 @@
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
-    "optional": 2,
+    "optional": 3,
     "ostream": 1,
     "queue": 2,
     "set": 3,
     "sstream": 6,
     "stdexcept": 11,
     "stdio.h": 1,
-    "string": 9,
+    "string": 10,
     "sys/time.h": 2,
     "system_error": 1,
     "tuple": 7,
@@ -734,6 +734,29 @@
       "includes": [
         {
           "line": 4,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
+      "path": "include/application/generation_request.h",
+      "component_by_directory": "application",
+      "kind": "header",
+      "sha256": "23a1fead999d8ee2dcba0b1fed2bee874db135cf5c5e2b1a10dd93e46330d2e4",
+      "bytes": 573,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "optional",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
           "spelling": "string",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -2711,8 +2734,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "8e05049ad90ca169e0a78aab0a982bfe62165d10d156b3fbf9ae93fc42a2fa6a",
-      "bytes": 27656,
+      "sha256": "e2ecf8d7042431c5cc08c1fd6514c046333884015c6f3432914642b86d6c48f8",
+      "bytes": 28069,
       "includes": [
         {
           "line": 4,
@@ -2778,98 +2801,105 @@
           "target": "include/application/generation_context.h"
         },
         {
-          "line": 17,
+          "line": 16,
+          "spelling": "application/generation_request.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/application/generation_request.h"
+        },
+        {
+          "line": 18,
           "spelling": "../adapter/adapter.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/adapter/adapter.h"
         },
         {
-          "line": 18,
+          "line": 19,
           "spelling": "../crab_mesh/performer/ranged_id_manager.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/performer/ranged_id_manager.h"
         },
         {
-          "line": 19,
+          "line": 20,
           "spelling": "../curvature/curvature_analytical.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/curvature_analytical.h"
         },
         {
-          "line": 20,
+          "line": 21,
           "spelling": "../curvature/curvature_discrete.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/curvature_discrete.h"
         },
         {
-          "line": 21,
+          "line": 22,
           "spelling": "../data/node_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/node_adaptive.h"
         },
         {
-          "line": 22,
+          "line": 23,
           "spelling": "../data/patch/patch_bezier.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_bezier.h"
         },
         {
-          "line": 23,
+          "line": 24,
           "spelling": "../data/patch/patch_coons.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_coons.h"
         },
         {
-          "line": 24,
+          "line": 25,
           "spelling": "../data/triangle_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/triangle_adaptive.h"
         },
         {
-          "line": 25,
+          "line": 26,
           "spelling": "../data/mesh/mesh_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/mesh/mesh_adaptive.h"
         },
         {
-          "line": 26,
+          "line": 27,
           "spelling": "../estimate/charge_estimate_process.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/estimate/charge_estimate_process.h"
         },
         {
-          "line": 27,
+          "line": 28,
           "spelling": "../input_output/models_3d.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/models_3d.h"
         },
         {
-          "line": 28,
+          "line": 29,
           "spelling": "../input_output/patch_reader.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/patch_reader.h"
         },
         {
-          "line": 29,
+          "line": 30,
           "spelling": "../parallel/ApMeshCommunicator.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/parallel/ApMeshCommunicator.h"
         },
         {
-          "line": 30,
+          "line": 31,
           "spelling": "../timer/timer.h",
           "form": "quote",
           "scope": "first_party",
@@ -3725,8 +3755,8 @@
       "path": "src/application/run_application.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "fa6da884cc81d261e2f2da0fd65f9c3e7509be10b3c3adf393e2a3fd6dec3457",
-      "bytes": 3926,
+      "sha256": "177dfb33ac55359574da486a15b11155d0314ba35f1e5b0a9fc381428b75e189",
+      "bytes": 3735,
       "includes": [
         {
           "line": 1,
@@ -5602,8 +5632,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "d84f6bda80b8a722a324460469890bcf79d9ed59c392c496f8c75549aae93f1a",
-      "bytes": 334667,
+      "sha256": "f450443641633fcbe7fd7487d31097eb9f98b33fc70e252ca6da25d8649273e3",
+      "bytes": 335540,
       "includes": [
         {
           "line": 1,
@@ -6429,7 +6459,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 205,
+    "source_anchors": 206,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

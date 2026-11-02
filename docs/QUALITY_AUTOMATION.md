@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Typed engine execution request
+
+The [typed request lot](evidence/TYPED_GENERATION_REQUEST.md) reuses the existing
+75 CTest entries/385 Python controls, C++17 GCC/MSVC builds, nine-state scientific
+reference (45 exact artifacts/123 boundary comparisons) and real MSVC CLI controls
+on exact head/main. Require the existing ownership marker and the new native
+request marker (three typed and two raw-bridge reader failures, including empty
+path and owned-context precedence), without changing the metric oracle. Verify
+the seven historical CLI transcript values in existing scientific executions.
+Source reversal permits only the named request/count/input bindings and transcript
+relocation. Require scoped analysis, explicit formatting, whitespace, inventory/
+contracts, staged and remote checks. No new instrument or model campaign is added.
+
 ## Owned generation identity/output
 
 The [generation context lot](evidence/GENERATION_CONTEXT.md) uses the existing

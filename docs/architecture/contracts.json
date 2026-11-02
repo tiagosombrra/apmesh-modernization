@@ -6,8 +6,8 @@
     {
       "id": "C01",
       "topic": "CLI runtime context",
-      "statement": "The thin CLI delegates to RunApplication. Validated configuration still initializes numerical/compatibility globals, while MakeGenerationContext supplies value-owned input/output identity to the explicit GeneratorAdaptive constructor. The serial reader and generator report/format decisions consume these owned strings. Its Adapter observes the stationary context for domain-log naming and retires before it. The default constructor preserves live legacy identity reads.",
-      "limits": "Only input path/output prefix/write mode/literal process suffix are isolated. Other numerical/runtime globals and alternate estimate/loader/output helpers remain shared. No reentrant/concurrent generation, same-Generator recovery or external ABI claim; calls remain serialized. Context views expire with the owner; independent Adapter observers require a live stationary context.",
+      "statement": "The thin CLI delegates to RunApplication. Validated configuration still initializes numerical/compatibility globals, while MakeGenerationContext supplies value-owned input/output identity to the explicit GeneratorAdaptive constructor. The serial reader and generator report/format decisions consume these owned strings. Its Adapter observes the stationary context for domain-log naming and retires before it. The default constructor preserves live legacy identity reads. GenerationRequest carries counts and an optional owned fallback input path into the synchronous typed Execute overload. RunApplication prints its historical argument transcript directly and does not construct synthetic argv. The raw Execute overload retains argument logging, conditionally parses legacy counts and delegates to typed execution. The owned context path wins over the fallback; absent fallback selects the built-in model, while empty fallback stays a file input.",
+      "limits": "Only input path/output prefix/write mode/literal process suffix are isolated. Other numerical/runtime globals and alternate estimate/loader/output helpers remain shared. No reentrant/concurrent generation, same-Generator recovery or external ABI claim; calls remain serialized. Context views expire with the owner; independent Adapter observers require a live stationary context. Typed counts are prevalidated by the caller; no new clamping policy is introduced. The request is borrowed only for the synchronous call. Raw callers must keep their historical valid null-terminated layout. String-copy/allocation timing may change; parallel branches retain routing but gain no runtime qualification.",
       "evidence": [
         {
           "path": "src/application/runtime_config.cpp",
@@ -15,7 +15,7 @@
         },
         {
           "path": "src/application/run_application.cpp",
-          "anchor": "std::vector<std::string> synthetic_args_storage"
+          "anchor": "const GenerationRequest request{"
         },
         {
           "path": "src/generator/generator_adaptive.cpp",
@@ -24,6 +24,10 @@
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "generation_context_(std::move(context))"
+        },
+        {
+          "path": "include/application/generation_request.h",
+          "anchor": "struct GenerationRequest"
         }
       ]
     },

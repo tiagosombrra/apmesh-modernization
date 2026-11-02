@@ -627,6 +627,32 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
     std::cout << "argv[]:" << *arg << std::endl;
   }
 
+  apmesh::application::GenerationRequest request;
+#if USE_MPI || USE_OPENMP
+  request.num_processes = atoi(argv[1]);
+#endif
+#if USE_OPENMP
+  request.num_threads = atoi(argv[2]);
+#endif
+#if !USE_MPI
+  if (!generation_context_ && argv[3] != nullptr) {
+    request.input_model = argv[3];
+  }
+#endif
+#if USE_MPI
+  return Execute(request, timer, status);
+#else
+  return Execute(request, timer);
+#endif
+}
+
+#if USE_MPI
+int GeneratorAdaptive::Execute(const apmesh::application::GenerationRequest& request, Timer* timer,
+                               MPI_Status status)
+#else
+int GeneratorAdaptive::Execute(const apmesh::application::GenerationRequest& request, Timer* timer)
+#endif // USE_MPI
+{
   Geometry geometry;
 
 #if USE_MPI
@@ -773,9 +799,9 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
 
     // gerador de malha para o processo root
 #if USE_OPENMP
-    Generator(patches_process0, izero, timer, 1024, atoi(argv[1]), atoi(argv[2]));
+    Generator(patches_process0, izero, timer, 1024, request.num_processes, request.num_threads);
 #else
-    Generator(patches_process0, izero, timer, 1024, atoi(argv[1]));
+    Generator(patches_process0, izero, timer, 1024, request.num_processes);
 #endif
 
   } else {
@@ -793,9 +819,9 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
 
     // gerador de malha para o processo (n)
 #if USE_OPENMP
-    Generator(patches, size_patches, timer, 1024, atoi(argv[1]), atoi(argv[2]));
+    Generator(patches, size_patches, timer, 1024, request.num_processes, request.num_threads);
 #else
-    Generator(patches, size_patches, timer, 1024, atoi(argv[1]));
+    Generator(patches, size_patches, timer, 1024, request.num_processes);
 #endif
   }
 #else
@@ -807,8 +833,9 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
   // Models3d models3d;
   // model.SetGeometry(models3d.ModelPneu(geometry));
 
-  const char* input_model =
-      generation_context_ ? generation_context_->input_model.c_str() : argv[3];
+  const char* input_model = generation_context_   ? generation_context_->input_model.c_str()
+                            : request.input_model ? request.input_model->c_str()
+                                                  : nullptr;
   if (input_model) {
     timer->InitTimerParallel(0, 0, 5); // Leitura arquivo
     model.SetGeometry(patch_reader.ReaderFilePatches(&geometry, input_model));
@@ -819,7 +846,7 @@ int GeneratorAdaptive::Execute(char* argv[], Timer* timer)
   }
 
 #if USE_OPENMP
-  Generator(model, timer, 1024, atoi(argv[1]), atoi(argv[2]));
+  Generator(model, timer, 1024, request.num_processes, request.num_threads);
 #else
   Generator(model, timer, 1024);
 #endif // USE_OPENMP

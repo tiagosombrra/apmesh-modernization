@@ -48,19 +48,7 @@ int RunApplication(int argc, char** argv) {
 #endif
 
       Timer timer(config.num_processes, config.num_threads, 12);
-      std::vector<std::string> synthetic_args_storage = {argv[0],
-                                                         std::to_string(config.num_processes),
-                                                         std::to_string(config.num_threads),
-                                                         config.input_model,
-                                                         config.write_mode,
-                                                         config.output_prefix,
-                                                         config.use_template};
-      std::vector<char*> synthetic_args;
-      synthetic_args.reserve(synthetic_args_storage.size() + 1);
-      for (std::string& arg : synthetic_args_storage) {
-        synthetic_args.push_back(arg.data());
-      }
-      synthetic_args.push_back(nullptr);
+      const GenerationRequest request{config.num_processes, config.num_threads, config.input_model};
 
       if (RANK_MPI == 0) {
         cout << "Metodo por config: mode=" << ADAPTIVE_MODE << ", input=" << config.input_model
@@ -68,11 +56,19 @@ int RunApplication(int argc, char** argv) {
       }
 
       GeneratorAdaptive generator(MakeGenerationContext(config, NUMBER_PROCESS));
+      // Preserve the CLI transcript without using it as the engine protocol.
+      std::cout << "argv[]:" << argv[0] << std::endl;
+      std::cout << "argv[]:" << std::to_string(config.num_processes) << std::endl;
+      std::cout << "argv[]:" << std::to_string(config.num_threads) << std::endl;
+      std::cout << "argv[]:" << config.input_model << std::endl;
+      std::cout << "argv[]:" << config.write_mode << std::endl;
+      std::cout << "argv[]:" << config.output_prefix << std::endl;
+      std::cout << "argv[]:" << config.use_template << std::endl;
       int run_rc = 0;
 #if USE_MPI
-      run_rc = generator.Execute(synthetic_args.data(), &timer, status);
+      run_rc = generator.Execute(request, &timer, status);
 #else
-      run_rc = generator.Execute(synthetic_args.data(), &timer);
+      run_rc = generator.Execute(request, &timer);
 #endif
       if (RANK_MPI == 0) {
         const unsigned long long fc = FINDUV_TOTAL_CALLS.load();

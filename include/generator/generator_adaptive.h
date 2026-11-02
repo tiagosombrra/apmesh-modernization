@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include "application/generation_context.h"
+#include "application/generation_request.h"
 
 #include "../adapter/adapter.h"
 #include "../crab_mesh/performer/ranged_id_manager.h"
@@ -400,6 +401,9 @@ public:
   const apmesh::application::GenerationContext* GetGenerationContext() const noexcept;
 
 #if USE_MPI
+  int Execute(const apmesh::application::GenerationRequest& request, Timer* timer,
+              MPI_Status status);
+  // Compatibility boundary: requires the original null-terminated argument layout.
   int Execute(char* argv[], Timer* timer, MPI_Status status);
   std::list<PatchBezier*> EstimateChargeofPatches(Geometry* geometry, Timer* timer);
   std::vector<CurveAdaptive*> CreateVectorOfCurves(std::list<PatchBezier*> patches);
@@ -413,6 +417,8 @@ public:
                  int size_rank = 1, int size_thread = 1);
   Geometry* UnpakGeometry(double patches[], int size_patches);
 #else
+  int Execute(const apmesh::application::GenerationRequest& request, Timer* timer);
+  // Compatibility boundary: requires the original null-terminated argument layout.
   int Execute(char* argv[], Timer* timer);
   void Generator(Model& model, Timer* timer, int id_range = 1024, int size_rank = 1,
                  int size_thread = 1);
