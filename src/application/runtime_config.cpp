@@ -231,6 +231,9 @@ void ApplyRuntimeConfig(const RuntimeConfig& config) {
   }
 }
 GenerationContext MakeGenerationContext(const RuntimeConfig& config, std::string process_suffix) {
-  return {config.input_model, config.output_prefix, config.write_mode, std::move(process_suffix)};
+  return {config.input_model, config.output_prefix, config.write_mode, std::move(process_suffix),
+          AdaptivePolicyConfig{config.adaptive_mode, config.adaptive_max_iterations, STEPS,
+                               config.adaptive_intensity, config.adaptive_quality_priority,
+                               config.adaptive_target_growth}};
 }
 } // namespace apmesh::application

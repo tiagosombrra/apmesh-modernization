@@ -29,6 +29,7 @@ using apmesh::application::ApplyRuntimeConfig;
 using apmesh::application::LoadRuntimeConfig;
 
 #include <array>
+#include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -159,6 +160,75 @@ void CheckGenerationRequests(const std::filesystem::path& output) {
   rejected([&] { legacy.Execute(arguments, &timer); }, path, true);
   rejected([&] { owned.Execute(arguments, &timer); }, owned_path, true);
   std::cout << "generation_request typed=3 legacy=2 context_precedence=2 empty_path=1\n";
+}
+
+void CheckAdaptivePolicyContexts() {
+  using apmesh::application::AdaptivePolicyConfig;
+  using apmesh::application::RuntimeConfig;
+  const AdaptivePolicyConfig saved{
+      ADAPTIVE_MODE,      ADAPTIVE_MAX_STEPS,        STEPS,
+      ADAPTIVE_INTENSITY, ADAPTIVE_QUALITY_PRIORITY, ADAPTIVE_TARGET_GROWTH};
+  const auto apply = [](const AdaptivePolicyConfig& config) {
+    ADAPTIVE_MODE = config.mode;
+    ADAPTIVE_MAX_STEPS = config.adaptive_max_steps;
+    STEPS = config.legacy_max_steps;
+    ADAPTIVE_INTENSITY = config.intensity;
+    ADAPTIVE_QUALITY_PRIORITY = config.quality_priority;
+    ADAPTIVE_TARGET_GROWTH = config.target_growth;
+  };
+  const auto equal = [](const GeneratorAdaptive::AdaptivePolicyRuntime& a,
+                        const GeneratorAdaptive::AdaptivePolicyRuntime& b) {
+    const std::array<double, 7> first{{a.intensity, a.quality_priority, a.step1_target_growth,
+                                       a.stepn_target_growth, a.step2_accept_quality_min,
+                                       a.step2_accept_max_error_increase_abs,
+                                       a.equivalent_patch_min_ratio}};
+    const std::array<double, 7> second{{b.intensity, b.quality_priority, b.step1_target_growth,
+                                        b.stepn_target_growth, b.step2_accept_quality_min,
+                                        b.step2_accept_max_error_increase_abs,
+                                        b.equivalent_patch_min_ratio}};
+    return a.mode == b.mode && a.stable_mode == b.stable_mode && a.debug_mode == b.debug_mode &&
+           a.max_steps == b.max_steps &&
+           std::memcmp(first.data(), second.data(), first.size() * sizeof(double)) == 0;
+  };
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const std::array<AdaptivePolicyConfig, 4> cases{{
+      {"", 7, 11, -0.5, 1.5, 0.5},
+      {"legacy", 4, 9, 0.35, 0.25, 2.2},
+      {"adaptive_stable", 7, 13, 1.5, -0.5, 0.8},
+      {"research_debug", 9, 17, 0.55, 0.8, 1.9},
+  }};
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildAdaptivePolicyRuntime();
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      RuntimeConfig config;
+      config.adaptive_mode = value.mode;
+      config.adaptive_max_iterations = value.adaptive_max_steps;
+      config.adaptive_intensity = value.intensity;
+      config.adaptive_quality_priority = value.quality_priority;
+      config.adaptive_target_growth = value.target_growth;
+      auto source = apmesh::application::MakeGenerationContext(config);
+      config.adaptive_mode = "changed";
+      config.adaptive_intensity = 0.99;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.adaptive_policy.reset();
+    }
+    apply({"legacy", 31, 99, 0.0, 0.0, 9.0});
+    const auto foreign = legacy.BuildAdaptivePolicyRuntime();
+    if (equal(expected, foreign) || !equal(expected, owned->BuildAdaptivePolicyRuntime()) ||
+        !equal(foreign, identity_only.BuildAdaptivePolicyRuntime()))
+      throw std::runtime_error("Adaptive policy ownership or legacy differential control failed");
+    if (expected.mode != (value.mode.empty() ? "legacy" : value.mode) ||
+        expected.max_steps !=
+            (value.mode == "adaptive_stable" ? value.adaptive_max_steps : value.legacy_max_steps) ||
+        expected.stable_mode != (value.mode == "adaptive_stable") ||
+        expected.debug_mode != (value.mode == "research_debug"))
+      throw std::runtime_error("Adaptive mode or step-limit selection changed");
+  }
+  apply(saved);
+  std::cout << "adaptive_policy_context cases=4 scalar_bits=28 conflicting_globals=4 legacy=2\n";
 }
 
 void CheckDomainInputs(const std::string& mode) {
@@ -307,6 +377,7 @@ int main(int argc, char* argv[]) {
     throw std::runtime_error("Output directory already exists");
   CheckGenerationContexts(output);
   CheckGenerationRequests(output);
+  CheckAdaptivePolicyContexts();
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();
   GeneratorAdaptive generator;

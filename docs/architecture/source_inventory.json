@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 643,
+    "literal_include_directives": 644,
     "first_party_include_edges": 361
   },
   "cross_component_directives": [
@@ -377,7 +377,7 @@
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
-    "optional": 3,
+    "optional": 4,
     "ostream": 1,
     "queue": 2,
     "set": 3,
@@ -729,11 +729,18 @@
       "path": "include/application/generation_context.h",
       "component_by_directory": "application",
       "kind": "header",
-      "sha256": "b2843221cec4d44542074f5d908056e56ddc01d2eca3aa2bf89c05215dca6acc",
-      "bytes": 422,
+      "sha256": "727b43d2c00cabfc85df7fb0ab44ad3825c0301cb462eff4b93706af23a7cabc",
+      "bytes": 884,
       "includes": [
         {
           "line": 4,
+          "spelling": "optional",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
           "spelling": "string",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -3590,8 +3597,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "faf64b564673bc767702b298cef048e0fb03ec069f284655eb887d2607a4bf66",
-      "bytes": 69168,
+      "sha256": "7db680aa9a86095a56237e3c2999a54a4f92684d938a98458a3bb24f7780ffff",
+      "bytes": 70632,
       "includes": [
         {
           "line": 1,
@@ -3946,8 +3953,8 @@
       "path": "src/application/runtime_config.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "5485453a7efdf4d3171160a728146885057b019103a0b0357a24e2b21611b806",
-      "bytes": 12677,
+      "sha256": "c98a553fff8ef141ad3896682caf2d6d5183b76131806d24a68b7c5f8ffa0461",
+      "bytes": 12924,
       "includes": [
         {
           "line": 1,
@@ -5632,8 +5639,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "f450443641633fcbe7fd7487d31097eb9f98b33fc70e252ca6da25d8649273e3",
-      "bytes": 335540,
+      "sha256": "ee23b679927dd4416732cbfb7f2a25ff28524d90df8fe7c0722527f7479fa344",
+      "bytes": 336188,
       "includes": [
         {
           "line": 1,
@@ -6459,7 +6466,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 206,
+    "source_anchors": 208,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

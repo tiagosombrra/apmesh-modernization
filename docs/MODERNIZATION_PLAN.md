@@ -12,16 +12,22 @@ The bounded 2026 milestone is the [serial engine/configuration/CLI boundary](evi
 APMesh::Engine is linkable within the build, runtime parsing/state are outside
 main.cpp, existing consumers link the engine, and C++17 scientific behavior is
 preserved. This is a bounded stage 6 prerequisite for caller-root work. It neither
-closes Stage 3 nor promises the complete roadmap in 2026. The next production
-package follows the delivered [owned generation identity/output](evidence/GENERATION_CONTEXT.md):
+closes Stage 3 nor promises the complete roadmap in 2026. The delivered
+[owned generation identity/output](evidence/GENERATION_CONTEXT.md) supplies:
 four value-owned strings, an explicit generator constructor, a bounded Adapter
 borrow and a legacy compatibility path. The existing metrics case gains targeted
 ownership/interleaved-output checks. Numerical state remains global and serialized;
 its next migration must name one cohesive policy/runtime group and caller contract.
-The active [typed execution request](evidence/TYPED_GENERATION_REQUEST.md) removes
+The delivered [typed execution request](evidence/TYPED_GENERATION_REQUEST.md) removes
 synthetic argv from the CLI-to-engine path while retaining the raw-argument bridge,
 CLI transcript and source input precedence. It is an engineering caller-contract
 delivery supporting S3-05 and stage 6, not a numerical-policy migration or closure.
+The active [adaptive-policy context](evidence/ADAPTIVE_POLICY_CONTEXT.md) owns six
+policy-construction inputs and supplies the same raw values to Adapter domain
+decisions. Preserve formulas, operation order and the optional legacy fallback;
+validate ownership/differential controls within the existing metrics probe and
+reuse the unchanged scientific reference. Remaining runtime globals/mutations
+stay serialized; no new scientific policy or stage closure is introduced.
 
 ## Current stage and completion route
 

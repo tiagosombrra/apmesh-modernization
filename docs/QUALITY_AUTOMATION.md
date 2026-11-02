@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Adaptive-policy configuration context
+
+The [policy context lot](evidence/ADAPTIVE_POLICY_CONTEXT.md) uses the existing
+75 CTest entries/385 Python controls, C++17 GCC/MSVC builds, frozen nine-state/
+45-artifact/123-boundary scientific reference and real MSVC CLI controls on exact
+head/main. Require prior native markers plus the policy marker: four differential
+cases, 28 exact double representations, retired source, conflicting globals and
+default/identity-only compatibility. The metric oracle is unchanged. Reverse only
+the six generator input bindings and Adapter's explicit raw-policy argument;
+require identical formula/ordering tokens, unchanged parser/apply/global defaults,
+scoped analysis, explicit format/whitespace, inventory/contracts and staged/remote
+checks. No new test target, scientific input or instrument campaign is required.
+
 ## Typed engine execution request
 
 The [typed request lot](evidence/TYPED_GENERATION_REQUEST.md) reuses the existing
