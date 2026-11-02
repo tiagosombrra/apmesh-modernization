@@ -38,6 +38,42 @@ struct AdaptationConfig {
   double factor_max = 1.12;
 };
 
+// Raw element-count budget controls; stable mode overrides are instance state.
+struct ElementBudgetConfig {
+  int step_mode = 0;
+  double absolute_limit = 12000.0;
+  double growth_factor = 3.0;
+  double soft_ratio = 1.05;
+  double retry_topk_shrink = 0.65;
+  double retry_h_scale = 1.08;
+  double retry_factor_range_scale = 0.75;
+  int pressure_mode = 0;
+  double pressure_start = 0.70;
+  double pressure_h_scale = 1.06;
+  double pressure_factor_shrink = 0.85;
+  int patch_local_mode = 1;
+  double patch_local_base = 1800.0;
+  double patch_local_rank_scale = 0.75;
+  double patch_local_efficiency_scale = 1.25;
+  double patch_local_h_scale = 1.10;
+  double patch_local_hard_cap = 2600.0;
+  int target_growth_mode = 1;
+  double step2_growth = 1.8;
+  double step3plus_growth = 1.5;
+  double target_h_scale = 1.10;
+  int budget_driven = 0;
+  int target_mode = 0;
+  double step1_growth = 8.0;
+  double target_min = 0.0;
+  double target_max = 0.0;
+  int patch_allocation_mode = 0;
+  double patch_error_weight = 1.0;
+  double patch_efficiency_weight = 0.5;
+  double patch_quality_weight = 0.3;
+  double patch_min_share = 0.01;
+  int patch_topk_only_mode = 0;
+};
+
 // Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
@@ -48,6 +84,7 @@ struct GenerationContext {
   std::optional<AdaptivePolicyConfig> adaptive_policy = std::nullopt;
   std::optional<StopRetryConfig> stop_retry = std::nullopt;
   std::optional<AdaptationConfig> adaptation = std::nullopt;
+  std::optional<ElementBudgetConfig> element_budget = std::nullopt;
 };
 } // namespace apmesh::application
 

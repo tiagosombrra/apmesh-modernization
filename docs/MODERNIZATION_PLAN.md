@@ -34,12 +34,19 @@ original live/global compatibility path. Preserve all comparisons, ordering,
 diagnostic/report spelling and the stable max(1,count) rule. Reuse the existing
 metrics/scientific/delivery gates; remaining geometry tolerances, relaxation and
 budget controls are outside that bounded caller-contract delivery.
-The active [adaptation context](evidence/ADAPTATION_CONTEXT.md) owns four validated
+The delivered [adaptation context](evidence/ADAPTATION_CONTEXT.md) owns four validated
 relaxation/delta/factor-bound inputs and isolates stable overrides in effective
 instance state. Preserve the four assignment values/order and all per-attempt,
 clamp/rate-limit/curve expressions. Keep live global fallback and reuse the
 existing native/scientific/delivery regression. Other shared controls remain;
 this is a bounded engineering caller contract, not stage closure.
+The active [element budget context](evidence/ELEMENT_BUDGET_CONTEXT.md) owns
+32 process-sourced step/local/target/allocation controls and isolates five stable
+mode adjustments. Preserve target clamping and every budget/pressure/acceptance/
+retry expression. Require targeted ownership/stable/target-clamp controls in the
+existing native metrics probe and the unchanged scientific/delivery regression.
+Curve-point/quadtree/generation controls remain outside this bounded lot; no
+new scientific input, instrument campaign or stage closure is introduced.
 
 ## Current stage and completion route
 

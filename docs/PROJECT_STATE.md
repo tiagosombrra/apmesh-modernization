@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `e52325e84cbd55418f93ee4168cbbf05599fe7f8` (PR #144).
+Entry main: `65cae05ac48775e4c8d5a4d80bc1776e398014e9` (PR #145).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,24 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: adaptation settings and effective adjustments
+## Active production delivery: element budget controls
+
+The [element budget context](evidence/ELEMENT_BUDGET_CONTEXT.md) owns 32 controls:
+step limits/pressure/retry scaling, patch-local budgets, element growth/target
+limits and patch allocation. The factory samples their existing process values;
+no parser key, default or validation changes. Five stable-mode flags keep their
+values/order/location in separate effective instance state. Raw context remains
+unchanged; absent settings retain live global reads and the five original writes.
+The target limiter receives explicit effective bounds with unchanged arithmetic.
+Existing budget pressure/counter/target members and all branch/acceptance/retry
+expressions remain intact. Three native cases check 72 raw/72 stable exact double
+representations, eight integer fields, source retirement, foreign globals and
+18 real target-clamp outputs. The original failed native control setup is retained;
+both legacy comparisons now start from the same raw case, without changing their
+oracles. Reuse the existing delivery/scientific regression. Curve-point, quadtree,
+generation/refinement controls and other shared state still require serialization.
+
+## Delivered production context: adaptation settings and effective adjustments
 
 The [adaptation context](evidence/ADAPTATION_CONTEXT.md) owns relaxation, maximum
 delta and lower/upper factor bounds copied from RuntimeConfig. Stable overrides
@@ -185,7 +202,7 @@ The bounded 2026 milestone is this reusable serial engine/configuration/CLI
 boundary with preserved C++17 behavior. It is a stage 6 prerequisite supporting
 S3-05 caller work, not closure of Stage 3 or the whole modernization roadmap.
 Identity/output ownership and typed execution are delivered above. The active
-context lots add policy, stopping/retry and adaptation inputs; migration requires a
+context lots add policy, criteria, adaptation and element budgets; migration needs a
 separate bounded caller contract.
 
 ## Retained instrument obligations for closure

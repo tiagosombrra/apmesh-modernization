@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Element budget controls
+
+The [budget lot](evidence/ELEMENT_BUDGET_CONTEXT.md) reuses 75 CTest/385 nested
+Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/123-boundary reference
+and real MSVC CLI controls on exact head/main. Require prior markers plus three
+budget cases: 72 raw/72 stable exact double representations, eight integer fields,
+source retirement, foreign-global negative controls, five local/global overrides
+and 18 outputs of the actual target limiter. Stable comparisons must use the same
+raw case on both paths; retain the original failed setup/source/identity. The
+existing metric/scientific oracles are unchanged. Source reversal permits only
+the 32 reads, five exact ordered stable assignments and explicit target bounds.
+Require unchanged parser/apply/defaults/other production, scoped analysis, explicit
+format/whitespace, inventory/contracts and staged/remote gates. No new model,
+test target or standalone instrument campaign is required.
+
 ## Adaptation settings and effective adjustments
 
 The [adaptation lot](evidence/ADAPTATION_CONTEXT.md) reuses the existing 75 CTest/

@@ -486,13 +486,14 @@ double SafeSqrtTargetH(const double patch_area, const double target_elements) {
   return std::sqrt(std::max(1.0e-12, patch_area / target_elements));
 }
 
-double ClampTargetElements(const double target_elements) {
+double ClampTargetElements(const double target_elements, const double target_min,
+                           const double target_max) {
   double value = target_elements;
-  if (STEP_ELEMENT_TARGET_MIN > 0.0) {
-    value = std::max(value, STEP_ELEMENT_TARGET_MIN);
+  if (target_min > 0.0) {
+    value = std::max(value, target_min);
   }
-  if (STEP_ELEMENT_TARGET_MAX > 0.0) {
-    value = std::min(value, STEP_ELEMENT_TARGET_MAX);
+  if (target_max > 0.0) {
+    value = std::min(value, target_max);
   }
   return value;
 }
@@ -720,6 +721,234 @@ void GeneratorAdaptive::ApplyStableAdaptationSettings() noexcept {
 
 apmesh::application::AdaptationConfig GeneratorAdaptive::BuildAdaptationRuntime() const noexcept {
   return {AdaptationRelaxation(), AdaptationMaxDelta(), PatchFactorMin(), PatchFactorMax()};
+}
+
+const apmesh::application::ElementBudgetConfig*
+GeneratorAdaptive::ElementBudgetSettings() const noexcept {
+  if (!generation_context_ || !generation_context_->element_budget) {
+    return nullptr;
+  }
+  return effective_element_budget_ ? &*effective_element_budget_
+                                   : &*generation_context_->element_budget;
+}
+
+int GeneratorAdaptive::ElementBudgetMode() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->step_mode : STEP_ELEMENT_BUDGET_MODE;
+}
+
+double GeneratorAdaptive::ElementBudgetAbsoluteLimit() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->absolute_limit : STEP_ELEMENT_BUDGET_ABS;
+}
+
+double GeneratorAdaptive::ElementBudgetGrowthFactor() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->growth_factor : STEP_ELEMENT_BUDGET_GROWTH_FACTOR;
+}
+
+double GeneratorAdaptive::ElementBudgetSoftRatio() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->soft_ratio : STEP_ELEMENT_BUDGET_SOFT_RATIO;
+}
+
+double GeneratorAdaptive::ElementBudgetRetryTopKShrink() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->retry_topk_shrink : STEP_ELEMENT_BUDGET_RETRY_SHRINK_TOPK;
+}
+
+double GeneratorAdaptive::ElementBudgetRetryHScale() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->retry_h_scale : STEP_ELEMENT_BUDGET_RETRY_H_SCALE;
+}
+
+double GeneratorAdaptive::ElementBudgetRetryFactorRangeScale() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->retry_factor_range_scale : STEP_ELEMENT_BUDGET_RETRY_FACTOR_RANGE_SCALE;
+}
+
+int GeneratorAdaptive::ElementBudgetPressureMode() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->pressure_mode : STEP_ELEMENT_BUDGET_PRESSURE_MODE;
+}
+
+double GeneratorAdaptive::ElementBudgetPressureStart() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->pressure_start : STEP_ELEMENT_BUDGET_PRESSURE_START;
+}
+
+double GeneratorAdaptive::ElementBudgetPressureHScale() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->pressure_h_scale : STEP_ELEMENT_BUDGET_PRESSURE_H_SCALE;
+}
+
+double GeneratorAdaptive::ElementBudgetPressureFactorShrink() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->pressure_factor_shrink : STEP_ELEMENT_BUDGET_PRESSURE_FACTOR_SHRINK;
+}
+
+int GeneratorAdaptive::PatchLocalBudgetMode() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_local_mode : PATCH_LOCAL_ELEMENT_BUDGET_MODE;
+}
+
+double GeneratorAdaptive::PatchLocalBudgetBase() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_local_base : PATCH_LOCAL_ELEMENT_BUDGET_BASE;
+}
+
+double GeneratorAdaptive::PatchLocalBudgetRankScale() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_local_rank_scale : PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_RANK;
+}
+
+double GeneratorAdaptive::PatchLocalBudgetEfficiencyScale() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_local_efficiency_scale
+                : PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_EFFICIENCY;
+}
+
+double GeneratorAdaptive::PatchLocalBudgetHScale() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_local_h_scale : PATCH_LOCAL_BUDGET_H_SCALE;
+}
+
+double GeneratorAdaptive::PatchLocalBudgetHardCap() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_local_hard_cap : PATCH_LOCAL_BUDGET_HARD_CAP;
+}
+
+int GeneratorAdaptive::ElementTargetGrowthMode() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->target_growth_mode : STEP_TARGET_ELEMENT_GROWTH_MODE;
+}
+
+double GeneratorAdaptive::Step2ElementTargetGrowth() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->step2_growth : STEP2_TARGET_ELEMENT_GROWTH;
+}
+
+double GeneratorAdaptive::Step3PlusElementTargetGrowth() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->step3plus_growth : STEP3PLUS_TARGET_ELEMENT_GROWTH;
+}
+
+double GeneratorAdaptive::ElementTargetHScale() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->target_h_scale : STEP_TARGET_GROWTH_H_SCALE;
+}
+
+int GeneratorAdaptive::BudgetDrivenAdaptation() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->budget_driven : BUDGET_DRIVEN_ADAPTATION;
+}
+
+int GeneratorAdaptive::ElementTargetMode() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->target_mode : STEP_ELEMENT_TARGET_MODE;
+}
+
+double GeneratorAdaptive::Step1ElementTargetGrowth() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->step1_growth : STEP1_TARGET_ELEMENT_GROWTH;
+}
+
+double GeneratorAdaptive::ElementTargetMin() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->target_min : STEP_ELEMENT_TARGET_MIN;
+}
+
+double GeneratorAdaptive::ElementTargetMax() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->target_max : STEP_ELEMENT_TARGET_MAX;
+}
+
+int GeneratorAdaptive::PatchBudgetAllocationMode() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_allocation_mode : PATCH_BUDGET_ALLOCATION_MODE;
+}
+
+double GeneratorAdaptive::PatchBudgetErrorWeight() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_error_weight : PATCH_BUDGET_ERROR_WEIGHT;
+}
+
+double GeneratorAdaptive::PatchBudgetEfficiencyWeight() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_efficiency_weight : PATCH_BUDGET_EFFICIENCY_WEIGHT;
+}
+
+double GeneratorAdaptive::PatchBudgetQualityWeight() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_quality_weight : PATCH_BUDGET_QUALITY_WEIGHT;
+}
+
+double GeneratorAdaptive::PatchBudgetMinShare() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_min_share : PATCH_BUDGET_MIN_SHARE;
+}
+
+int GeneratorAdaptive::PatchBudgetTopKOnlyMode() const noexcept {
+  const auto* config = ElementBudgetSettings();
+  return config ? config->patch_topk_only_mode : PATCH_BUDGET_TOPK_ONLY_MODE;
+}
+
+double GeneratorAdaptive::ClampBudgetTargetElements(double target_elements) const {
+  return ClampTargetElements(target_elements, ElementTargetMin(), ElementTargetMax());
+}
+
+void GeneratorAdaptive::ApplyStableElementBudgetSettings() noexcept {
+  apmesh::application::ElementBudgetConfig* config = nullptr;
+  if (generation_context_ && generation_context_->element_budget) {
+    config = &effective_element_budget_.emplace(*generation_context_->element_budget);
+  }
+  int& budget_driven = config ? config->budget_driven : BUDGET_DRIVEN_ADAPTATION;
+  int& target_mode = config ? config->target_mode : STEP_ELEMENT_TARGET_MODE;
+  int& target_growth_mode = config ? config->target_growth_mode : STEP_TARGET_ELEMENT_GROWTH_MODE;
+  int& patch_allocation_mode =
+      config ? config->patch_allocation_mode : PATCH_BUDGET_ALLOCATION_MODE;
+  int& patch_topk_only_mode = config ? config->patch_topk_only_mode : PATCH_BUDGET_TOPK_ONLY_MODE;
+  budget_driven = 1;
+  target_mode = 1;
+  target_growth_mode = 1;
+  patch_allocation_mode = 1;
+  patch_topk_only_mode = 0;
+}
+
+apmesh::application::ElementBudgetConfig
+GeneratorAdaptive::BuildElementBudgetRuntime() const noexcept {
+  return {ElementBudgetMode(),
+          ElementBudgetAbsoluteLimit(),
+          ElementBudgetGrowthFactor(),
+          ElementBudgetSoftRatio(),
+          ElementBudgetRetryTopKShrink(),
+          ElementBudgetRetryHScale(),
+          ElementBudgetRetryFactorRangeScale(),
+          ElementBudgetPressureMode(),
+          ElementBudgetPressureStart(),
+          ElementBudgetPressureHScale(),
+          ElementBudgetPressureFactorShrink(),
+          PatchLocalBudgetMode(),
+          PatchLocalBudgetBase(),
+          PatchLocalBudgetRankScale(),
+          PatchLocalBudgetEfficiencyScale(),
+          PatchLocalBudgetHScale(),
+          PatchLocalBudgetHardCap(),
+          ElementTargetGrowthMode(),
+          Step2ElementTargetGrowth(),
+          Step3PlusElementTargetGrowth(),
+          ElementTargetHScale(),
+          BudgetDrivenAdaptation(),
+          ElementTargetMode(),
+          Step1ElementTargetGrowth(),
+          ElementTargetMin(),
+          ElementTargetMax(),
+          PatchBudgetAllocationMode(),
+          PatchBudgetErrorWeight(),
+          PatchBudgetEfficiencyWeight(),
+          PatchBudgetQualityWeight(),
+          PatchBudgetMinShare(),
+          PatchBudgetTopKOnlyMode()};
 }
 
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
@@ -1246,11 +1475,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   this->stable_consecutive_reject_count_ = 0U;
   current_policy_ = BuildAdaptivePolicyRuntime();
   if (current_policy_.stable_mode) {
-    BUDGET_DRIVEN_ADAPTATION = 1;
-    STEP_ELEMENT_TARGET_MODE = 1;
-    STEP_TARGET_ELEMENT_GROWTH_MODE = 1;
-    PATCH_BUDGET_ALLOCATION_MODE = 1;
-    PATCH_BUDGET_TOPK_ONLY_MODE = 0;
+    ApplyStableElementBudgetSettings();
     CURVE_POINT_BUDGET_MODE = 1;
     PATCH_QUADTREE_CAP_MODE = 1;
     PATCH_GENERATION_CONTROL_MODE = 1;
@@ -1502,7 +1727,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   eligible_patch_mean_factor_step_.push_back(0.0);
   eligible_patch_mean_h_scale_step_.push_back(0.0);
   retry_enabled_step_.push_back(AdaptiveRetryCount() > 0 ? 1 : 0);
-  local_budget_mode_step_.push_back(PATCH_LOCAL_ELEMENT_BUDGET_MODE);
+  local_budget_mode_step_.push_back(PatchLocalBudgetMode());
   target_element_growth_step_.push_back(0.0);
   actual_element_growth_step_.push_back(1.0);
   step_efficiency_step_.push_back(0.0);
@@ -1712,21 +1937,20 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
         (current_policy_.stable_mode && previous_elements > 0ULL)
             ? ((this->step_ == 1) ? stable_step1_budget_growth
                                   : current_policy_.stepn_target_growth)
-            : ((STEP_TARGET_ELEMENT_GROWTH_MODE == 1 && previous_elements > 0ULL)
-                   ? ((this->step_ <= 2) ? STEP2_TARGET_ELEMENT_GROWTH
-                                         : STEP3PLUS_TARGET_ELEMENT_GROWTH)
+            : ((ElementTargetGrowthMode() == 1 && previous_elements > 0ULL)
+                   ? ((this->step_ <= 2) ? Step2ElementTargetGrowth()
+                                         : Step3PlusElementTargetGrowth())
                    : 0.0);
-    if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1 &&
-        previous_elements > 0ULL) {
+    if (BudgetDrivenAdaptation() == 1 && ElementTargetMode() == 1 && previous_elements > 0ULL) {
       current_target_element_growth_ =
           current_policy_.stable_mode
               ? ((this->step_ == 1) ? stable_step1_budget_growth
                                     : current_policy_.stepn_target_growth)
-              : ((this->step_ == 1) ? STEP1_TARGET_ELEMENT_GROWTH
-                                    : ((this->step_ == 2) ? STEP2_TARGET_ELEMENT_GROWTH
-                                                          : STEP3PLUS_TARGET_ELEMENT_GROWTH));
-      current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
-                                                          current_target_element_growth_);
+              : ((this->step_ == 1) ? Step1ElementTargetGrowth()
+                                    : ((this->step_ == 2) ? Step2ElementTargetGrowth()
+                                                          : Step3PlusElementTargetGrowth()));
+      current_target_elements_step_ = ClampBudgetTargetElements(
+          static_cast<double>(previous_elements) * current_target_element_growth_);
       current_budget_driver_mode_ = "budget_driven";
     } else {
       current_target_elements_step_ =
@@ -1739,18 +1963,18 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
         prev_error < 0.12 && previous_elements > 0ULL && geometry != nullptr &&
         geometry->GetNumberPatches() <= 4U) {
       current_target_element_growth_ = 1.0;
-      if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1) {
-        current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
-                                                            current_target_element_growth_);
+      if (BudgetDrivenAdaptation() == 1 && ElementTargetMode() == 1) {
+        current_target_elements_step_ = ClampBudgetTargetElements(
+            static_cast<double>(previous_elements) * current_target_element_growth_);
       }
     }
     if (current_policy_.stable_mode && this->step_ >= 5 && previous_elements > 0ULL) {
       constexpr double kStableLateTargetGrowthCap = 1.10;
       current_target_element_growth_ =
           std::min(current_target_element_growth_, kStableLateTargetGrowthCap);
-      if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1) {
-        current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
-                                                            current_target_element_growth_);
+      if (BudgetDrivenAdaptation() == 1 && ElementTargetMode() == 1) {
+        current_target_elements_step_ = ClampBudgetTargetElements(
+            static_cast<double>(previous_elements) * current_target_element_growth_);
       }
     }
     if (current_policy_.stable_mode && this->step_ >= 3 && previous_elements > 0ULL &&
@@ -1761,9 +1985,9 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
           this->step_ > 3 ? std::pow(0.93, static_cast<double>(this->step_ - 3)) : 1.0;
       current_target_element_growth_ =
           std::max(1.0, current_target_element_growth_ * growth_damp * step_tail);
-      if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1) {
-        current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
-                                                            current_target_element_growth_);
+      if (BudgetDrivenAdaptation() == 1 && ElementTargetMode() == 1) {
+        current_target_elements_step_ = ClampBudgetTargetElements(
+            static_cast<double>(previous_elements) * current_target_element_growth_);
       }
     }
     if (current_policy_.stable_mode && previous_elements > 0ULL &&
@@ -1781,9 +2005,9 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
           ClampValue(1.0 - 0.28 * quality_gap - 0.22 * transition_pressure, 0.72, 1.0);
       current_target_element_growth_ =
           std::max(1.02, current_target_element_growth_ * quality_growth_scale);
-      if (BUDGET_DRIVEN_ADAPTATION == 1 && STEP_ELEMENT_TARGET_MODE == 1) {
-        current_target_elements_step_ = ClampTargetElements(static_cast<double>(previous_elements) *
-                                                            current_target_element_growth_);
+      if (BudgetDrivenAdaptation() == 1 && ElementTargetMode() == 1) {
+        current_target_elements_step_ = ClampBudgetTargetElements(
+            static_cast<double>(previous_elements) * current_target_element_growth_);
       }
       if (prev_underresolved > 0.20 || prev_transition_imbalance > 0.14) {
         current_step_purpose_ = "transition_catch_up";
@@ -1952,25 +2176,24 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                                                              static_cast<double>(previous_elements)
                                                        : 1.0;
       const bool budget_active =
-          (STEP_ELEMENT_BUDGET_MODE == 1 && this->step_ > 1 && previous_elements > 0ULL &&
-           (STEP_ELEMENT_BUDGET_ABS > 0.0 || STEP_ELEMENT_BUDGET_GROWTH_FACTOR > 0.0));
-      current_element_budget_abs_ = budget_active ? STEP_ELEMENT_BUDGET_ABS : 0.0;
+          (ElementBudgetMode() == 1 && this->step_ > 1 && previous_elements > 0ULL &&
+           (ElementBudgetAbsoluteLimit() > 0.0 || ElementBudgetGrowthFactor() > 0.0));
+      current_element_budget_abs_ = budget_active ? ElementBudgetAbsoluteLimit() : 0.0;
       current_element_budget_growth_factor_limit_ =
-          budget_active ? STEP_ELEMENT_BUDGET_GROWTH_FACTOR : 0.0;
+          budget_active ? ElementBudgetGrowthFactor() : 0.0;
       double hard_budget_limit = 0.0;
-      if (budget_active && STEP_ELEMENT_BUDGET_ABS > 0.0) {
-        hard_budget_limit = STEP_ELEMENT_BUDGET_ABS;
+      if (budget_active && ElementBudgetAbsoluteLimit() > 0.0) {
+        hard_budget_limit = ElementBudgetAbsoluteLimit();
       }
-      if (budget_active && STEP_ELEMENT_BUDGET_GROWTH_FACTOR > 0.0) {
+      if (budget_active && ElementBudgetGrowthFactor() > 0.0) {
         const double growth_budget =
-            static_cast<double>(previous_elements) * STEP_ELEMENT_BUDGET_GROWTH_FACTOR;
+            static_cast<double>(previous_elements) * ElementBudgetGrowthFactor();
         hard_budget_limit =
             (hard_budget_limit > 0.0) ? std::min(hard_budget_limit, growth_budget) : growth_budget;
       }
       current_element_budget_soft_limit_ =
-          (hard_budget_limit > 0.0)
-              ? (hard_budget_limit * std::max(1.0, STEP_ELEMENT_BUDGET_SOFT_RATIO))
-              : 0.0;
+          (hard_budget_limit > 0.0) ? (hard_budget_limit * std::max(1.0, ElementBudgetSoftRatio()))
+                                    : 0.0;
       current_budget_pressure_ =
           (current_element_budget_soft_limit_ > 0.0)
               ? (static_cast<double>(current_elements) / current_element_budget_soft_limit_)
@@ -2143,7 +2366,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                                                                   : ACCEPTANCE_WEIGHT_GROWTH;
       const double growth_penalty = ComputeGrowthPenalty(element_growth_factor, this->step_);
       const double target_growth_miss =
-          (BUDGET_DRIVEN_ADAPTATION == 1 && current_target_element_growth_ > 0.0)
+          (BudgetDrivenAdaptation() == 1 && current_target_element_growth_ > 0.0)
               ? std::fabs(element_growth_factor - current_target_element_growth_)
               : 0.0;
       current_overshoot_ratio_ =
@@ -2184,7 +2407,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
           (growth_penalty * (ACCEPTANCE_WEIGHT_GROWTH > 0.0
                                  ? (acceptance_growth_weight / ACCEPTANCE_WEIGHT_GROWTH)
                                  : acceptance_growth_weight)) -
-          ((BUDGET_DRIVEN_ADAPTATION == 1)
+          ((BudgetDrivenAdaptation() == 1)
                ? (STEP_ACCEPT_BUDGET_MISS_PENALTY *
                   std::max(0.0, target_growth_miss - STEP_ACCEPT_TARGET_GROWTH_TOLERANCE))
                : 0.0);
@@ -2212,7 +2435,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
            candidate_quality.poor_ratio <=
                std::max(ACCEPTANCE_POOR_RATIO_TARGET, previous_poor_ratio + 0.01));
       const bool budget_driven_step1_ok =
-          (BUDGET_DRIVEN_ADAPTATION == 1 && this->step_ == 1)
+          (BudgetDrivenAdaptation() == 1 && this->step_ == 1)
               ? (error_drop_abs > 0.0 &&
                  candidate_quality.quality_mean + STEP_ACCEPT_QUALITY_DROP_TOLERANCE >=
                      quality_mean_step_.back() &&
@@ -2228,12 +2451,12 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                  candidate_quality.quality_mean + STEP_ACCEPT_QUALITY_DROP_TOLERANCE >=
                      quality_mean_step_.back());
       const bool target_growth_ok =
-          (BUDGET_DRIVEN_ADAPTATION == 0 || current_target_element_growth_ <= 0.0 ||
+          (BudgetDrivenAdaptation() == 0 || current_target_element_growth_ <= 0.0 ||
            this->step_ <= 1)
               ? true
               : (target_growth_miss <= STEP_ACCEPT_TARGET_GROWTH_TOLERANCE);
       const bool step2_quality_stable =
-          (this->step_ != 2 || BUDGET_DRIVEN_ADAPTATION == 0)
+          (this->step_ != 2 || BudgetDrivenAdaptation() == 0)
               ? true
               : (candidate_quality.quality_min >= (current_policy_.stable_mode
                                                        ? current_policy_.step2_accept_quality_min
@@ -2275,11 +2498,11 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
               ? true
               : ((this->step_ != 2) ||
                  (current_patch_budget_dispersion_ <= STEP_ACCEPT_MAX_GROUP_DISPERSION_STEP2));
-      if (this->step_ >= 3 && BUDGET_DRIVEN_ADAPTATION == 1) {
+      if (this->step_ >= 3 && BudgetDrivenAdaptation() == 1) {
         acceptance_score += 0.30 * (current_local_progress_coverage_ - 0.5);
       }
       const bool local_progress_ok =
-          (this->step_ <= 2 || BUDGET_DRIVEN_ADAPTATION == 0) ? true
+          (this->step_ <= 2 || BudgetDrivenAdaptation() == 0) ? true
           : (current_policy_.stable_mode && this->step_ >= 4)
               ? (current_local_progress_coverage_ >= 0.20 || current_improved_top_patches_ >= 1U ||
                  improvement > -0.05)
@@ -2359,7 +2582,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 #endif
         accepted_retry_attempt = static_cast<unsigned int>(retry);
         current_budget_final_status_ =
-            (this->step_ > 1 && STEP_ELEMENT_BUDGET_MODE == 1)
+            (this->step_ > 1 && ElementBudgetMode() == 1)
                 ? ((retry > 0) ? "accepted_after_retry" : "within_budget")
                 : "not_applied";
         accepted_candidate_patch_factors.resize(current_patch_adaptation_.size(), 1.0);
@@ -2533,7 +2756,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     budget_limited_step_.push_back(current_budget_limited_ ? 1 : 0);
     budget_final_status_step_.push_back(current_budget_final_status_);
     retry_enabled_step_.push_back(AdaptiveRetryCount() > 0 ? 1 : 0);
-    local_budget_mode_step_.push_back(PATCH_LOCAL_ELEMENT_BUDGET_MODE);
+    local_budget_mode_step_.push_back(PatchLocalBudgetMode());
     target_element_growth_step_.push_back(current_target_element_growth_);
     actual_element_growth_step_.push_back(element_growth_factor);
     step_efficiency_step_.push_back(current_step_efficiency_);
@@ -2752,7 +2975,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     double min_adjacent_target_h = std::numeric_limits<double>::max();
     double max_adjacent_target_elements = 0.0;
     bool sensitive_curve = false;
-    if (BUDGET_DRIVEN_ADAPTATION == 1 && CURVE_POINT_BUDGET_MODE == 1) {
+    if (BudgetDrivenAdaptation() == 1 && CURVE_POINT_BUDGET_MODE == 1) {
       double max_patch_growth = 1.0;
       double max_patch_budget = 0.0;
       bool touches_priority_patch = false;
@@ -2890,11 +3113,11 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     current_curve_adaptation_[i] = snapshot;
   }
 
-  if (PATCH_CONSISTENCY_MODE == 1 && CURVE_CONSISTENCY_MODE == 1 && BUDGET_DRIVEN_ADAPTATION == 1) {
+  if (PATCH_CONSISTENCY_MODE == 1 && CURVE_CONSISTENCY_MODE == 1 && BudgetDrivenAdaptation() == 1) {
     RegularizeCurveTargetsFromPatchConsistency(geometry);
   }
 
-  if (current_policy_.stable_mode && BUDGET_DRIVEN_ADAPTATION == 1 && step_ >= 2) {
+  if (current_policy_.stable_mode && BudgetDrivenAdaptation() == 1 && step_ >= 2) {
     for (unsigned int i = 0; i < geometry->GetNumberCurves(); ++i) {
       CurveAdaptive* curve = geometry->GetCurve(i);
       CurveAdaptationSnapshot& snapshot = current_curve_adaptation_[i];
@@ -2941,7 +3164,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
           return adapter_.AdaptCurveBySurface(curve, map_points, this->id_managers_[0].get(),
                                               factor_disc_global);
         },
-        BUDGET_DRIVEN_ADAPTATION == 1 && CURVE_POINT_BUDGET_MODE == 1, target_curve_points,
+        BudgetDrivenAdaptation() == 1 && CURVE_POINT_BUDGET_MODE == 1, target_curve_points,
         this->id_managers_.empty() ? nullptr : this->id_managers_[0].get());
     CurveAdaptationSnapshot& snapshot = current_curve_adaptation_[i];
     snapshot.factor = factor_disc_global;
@@ -2995,9 +3218,9 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         domain_factor = std::max(domain_factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
       }
     }
-    if (STEP_ELEMENT_BUDGET_MODE == 1 && step_ > 1 && current_budget_retry_count_ > 0U) {
+    if (ElementBudgetMode() == 1 && step_ > 1 && current_budget_retry_count_ > 0U) {
       domain_factor =
-          ClampValue(domain_factor * std::pow(STEP_ELEMENT_BUDGET_RETRY_H_SCALE,
+          ClampValue(domain_factor * std::pow(ElementBudgetRetryHScale(),
                                               static_cast<int>(current_budget_retry_count_)),
                      PatchFactorMin(), PatchFactorMax());
     }
@@ -3026,9 +3249,9 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
               static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
         eligible_h_scale *= 1.05;
       }
-      if (STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
-          current_budget_pressure_ > STEP_ELEMENT_BUDGET_PRESSURE_START) {
-        eligible_h_scale *= STEP_ELEMENT_BUDGET_PRESSURE_H_SCALE;
+      if (ElementBudgetPressureMode() == 1 &&
+          current_budget_pressure_ > ElementBudgetPressureStart()) {
+        eligible_h_scale *= ElementBudgetPressureHScale();
       }
       if (PATCH_GENERATION_CONTROL_MODE == 1) {
         eligible_h_scale *= PATCH_GENERATION_MICRO_H_SCALE;
@@ -3064,18 +3287,16 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       const double rank_weight =
           (refinement_rank > 0)
               ? std::max(0.35,
-                         1.0 + PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_RANK *
+                         1.0 + PatchLocalBudgetRankScale() *
                                    (1.0 - (static_cast<double>(refinement_rank - 1) /
                                            std::max(1.0, static_cast<double>(
                                                              current_top_patch_count_ > 1
                                                                  ? current_top_patch_count_ - 1
                                                                  : 1U)))))
               : 0.5;
-      const double efficiency_weight =
-          1.0 + PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_EFFICIENCY * efficiency_norm;
-      const double local_patch_budget =
-          std::min(PATCH_LOCAL_BUDGET_HARD_CAP,
-                   PATCH_LOCAL_ELEMENT_BUDGET_BASE * rank_weight * efficiency_weight);
+      const double efficiency_weight = 1.0 + PatchLocalBudgetEfficiencyScale() * efficiency_norm;
+      const double local_patch_budget = std::min(
+          PatchLocalBudgetHardCap(), PatchLocalBudgetBase() * rank_weight * efficiency_weight);
       current_patch_adaptation_[i].local_patch_budget = local_patch_budget;
       if (!few_patch_low_error) {
         current_patch_adaptation_[i].target_patch_elements = local_patch_budget;
@@ -3085,20 +3306,20 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
       current_patch_adaptation_[i].actual_patch_elements =
           static_cast<double>(history.prev_patch_generated_faces);
       const bool patch_budget_exceeded =
-          PATCH_LOCAL_ELEMENT_BUDGET_MODE == 1 &&
+          PatchLocalBudgetMode() == 1 &&
           history.prev_patch_generated_faces >
               static_cast<unsigned long long>(std::max(1.0, local_patch_budget));
       current_patch_adaptation_[i].patch_budget_exceeded = patch_budget_exceeded ? 1 : 0;
       if (patch_budget_exceeded) {
         patch_generation_mode = "budget_constrained";
-        domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE, PatchFactorMin(),
+        domain_factor = ClampValue(domain_factor * PatchLocalBudgetHScale(), PatchFactorMin(),
                                    PatchFactorMax());
       }
       if (!few_patch_low_error && PATCH_GENERATION_CONTROL_MODE == 1 &&
           current_target_element_growth_ > 0.0 && history.prev_patch_elements > 0ULL &&
           current_target_element_growth_ <= 1.0) {
-        domain_factor = ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE, PatchFactorMin(),
-                                   PatchFactorMax());
+        domain_factor =
+            ClampValue(domain_factor * ElementTargetHScale(), PatchFactorMin(), PatchFactorMax());
         // Em adaptive_stable, evitar mudar para 'budget_constrained' após
         // rejeições consecutivas (isso costuma gerar "complementos" errados
         // em patches curvos). Mantemos o clamp no fator, mas não mudamos o
@@ -3107,7 +3328,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
           patch_generation_mode = "budget_constrained";
         }
       }
-      if (!few_patch_low_error && STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
+      if (!few_patch_low_error && ElementBudgetPressureMode() == 1 &&
           current_budget_pressure_ >= PATCH_GENERATION_BUDGET_PRESSURE_START) {
         domain_factor = ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
                                    PatchFactorMin(), PatchFactorMax());
@@ -3577,8 +3798,8 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
   std::vector<double> sorted_errors;
   sorted_errors.reserve(patch_count);
   std::vector<int> refinement_rank(patch_count, -1);
-  const bool step2_phase = (BUDGET_DRIVEN_ADAPTATION == 1 && step_ == 2);
-  const bool step3plus_phase = (BUDGET_DRIVEN_ADAPTATION == 1 && step_ >= 3);
+  const bool step2_phase = (BudgetDrivenAdaptation() == 1 && step_ == 2);
+  const bool step3plus_phase = (BudgetDrivenAdaptation() == 1 && step_ >= 3);
   const bool few_patch_low_error_budget = current_policy_.stable_mode && geometry != nullptr &&
                                           patch_count <= 4U && !error_step_.empty() &&
                                           error_step_.back() < 0.12 && step_ <= 3;
@@ -3596,15 +3817,15 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
       1U, static_cast<unsigned int>(std::ceil(top_fraction * static_cast<double>(patch_count))));
   unsigned int top_count = nominal_top_count;
   if (!current_policy_.stable_mode && step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1) {
-    const double shrink_scale = std::pow(STEP_ELEMENT_BUDGET_RETRY_SHRINK_TOPK,
-                                         static_cast<int>(current_budget_retry_count_));
+    const double shrink_scale =
+        std::pow(ElementBudgetRetryTopKShrink(), static_cast<int>(current_budget_retry_count_));
     top_count = std::max(static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MIN),
                          static_cast<unsigned int>(
                              std::ceil(static_cast<double>(nominal_top_count) * shrink_scale)));
     top_count = std::min(top_count, static_cast<unsigned int>(std::max(STEP2_TOP_PATCH_COUNT_MIN,
                                                                        STEP2_TOP_PATCH_COUNT_MAX)));
     top_count = std::min(top_count, patch_count);
-    if (BUDGET_DRIVEN_ADAPTATION == 1 && current_target_element_growth_ > 1.0) {
+    if (BudgetDrivenAdaptation() == 1 && current_target_element_growth_ > 1.0) {
       const unsigned int expanded_top_count = std::min(
           patch_count, std::max(top_count, static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MAX)));
       top_count = std::max(top_count, expanded_top_count);
@@ -3633,14 +3854,13 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
   const double micro_patch_scale =
       micro_refinement_active ? STEP2_MICRO_PATCH_REFINEMENT_SCALE : 1.0;
   const double budget_range_scale = (step_ > 1 && current_budget_retry_count_ > 0U)
-                                        ? std::pow(STEP_ELEMENT_BUDGET_RETRY_FACTOR_RANGE_SCALE,
+                                        ? std::pow(ElementBudgetRetryFactorRangeScale(),
                                                    static_cast<int>(current_budget_retry_count_))
                                         : 1.0;
-  const double pressure_range_scale =
-      (step_ > 1 && STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
-       current_budget_pressure_ > STEP_ELEMENT_BUDGET_PRESSURE_START)
-          ? STEP_ELEMENT_BUDGET_PRESSURE_FACTOR_SHRINK
-          : 1.0;
+  const double pressure_range_scale = (step_ > 1 && ElementBudgetPressureMode() == 1 &&
+                                       current_budget_pressure_ > ElementBudgetPressureStart())
+                                          ? ElementBudgetPressureFactorShrink()
+                                          : 1.0;
   const double effective_range_shrink = ClampValue(
       ((step_ <= 1) ? 1.0
                     : (STEP2_FACTOR_RANGE_SHRINK *
@@ -3854,11 +4074,11 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
             static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
           eligible_damp *= 0.75;
         }
-        if (STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
-            current_budget_pressure_ > STEP_ELEMENT_BUDGET_PRESSURE_START) {
+        if (ElementBudgetPressureMode() == 1 &&
+            current_budget_pressure_ > ElementBudgetPressureStart()) {
           const double over_pressure =
-              Clamp01((current_budget_pressure_ - STEP_ELEMENT_BUDGET_PRESSURE_START) /
-                      std::max(1.0e-9, 1.0 - STEP_ELEMENT_BUDGET_PRESSURE_START));
+              Clamp01((current_budget_pressure_ - ElementBudgetPressureStart()) /
+                      std::max(1.0e-9, 1.0 - ElementBudgetPressureStart()));
           eligible_damp *= (1.0 - 0.5 * over_pressure);
           snapshot.budget_pressure_local = current_budget_pressure_;
         }
@@ -3869,7 +4089,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
           !eligible_for_refinement) {
         refine_signal = 0.0;
         coarsen_signal =
-            (step3plus_phase || BUDGET_DRIVEN_ADAPTATION == 1)
+            (step3plus_phase || BudgetDrivenAdaptation() == 1)
                 ? 0.0
                 : (STEP2_NONELIGIBLE_FORCE_COARSEN == 1 ? std::max(coarsen_signal, 0.20)
                                                         : coarsen_signal);
@@ -3898,7 +4118,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
       if (saturated_hard) {
         factor = std::max(factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
       }
-      if (!current_policy_.stable_mode && BUDGET_DRIVEN_ADAPTATION == 1 && step_ > 1 &&
+      if (!current_policy_.stable_mode && BudgetDrivenAdaptation() == 1 && step_ > 1 &&
           current_target_element_growth_ > 1.0 && !eligible_for_refinement) {
         factor = 1.0;
       }
@@ -3972,18 +4192,18 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
   current_patch_target_elements_.assign(patch_count, 0.0);
   current_patch_target_h_.assign(patch_count, -1.0);
   current_patch_quadtree_depth_cap_.assign(patch_count, -1);
-  if (BUDGET_DRIVEN_ADAPTATION == 1 && current_target_elements_step_ > 0.0 &&
-      PATCH_BUDGET_ALLOCATION_MODE == 1) {
+  if (BudgetDrivenAdaptation() == 1 && current_target_elements_step_ > 0.0 &&
+      PatchBudgetAllocationMode() == 1) {
     std::vector<double> allocation_score(patch_count, 0.0);
     double score_sum = 0.0;
     for (unsigned int i = 0; i < patch_count; ++i) {
       const PatchAdaptationSnapshot& snapshot = current_patch_adaptation_[i];
       const bool topk_allowed =
-          (current_policy_.stable_mode || PATCH_BUDGET_TOPK_ONLY_MODE == 0 ||
+          (current_policy_.stable_mode || PatchBudgetTopKOnlyMode() == 0 ||
            (snapshot.refinement_rank > 0 &&
             snapshot.refinement_rank <= static_cast<int>(current_top_patch_count_)));
       if (!topk_allowed) {
-        allocation_score[i] = std::max(1.0e-9, PATCH_BUDGET_MIN_SHARE);
+        allocation_score[i] = std::max(1.0e-9, PatchBudgetMinShare());
       } else {
         const PatchHistoryState* history =
             (i < patch_history_.size()) ? &patch_history_[i] : nullptr;
@@ -3993,11 +4213,11 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
                      0.4 * std::max(0.0, PATCH_QUALITY_MIN_TARGET - snapshot.quality_min)) /
                     std::max(PATCH_QUALITY_TARGET, 1.0e-9)) +
             Clamp01(snapshot.poor_ratio / 0.25);
-        const double error_term = PATCH_BUDGET_ERROR_WEIGHT * error_budget_share;
+        const double error_term = PatchBudgetErrorWeight() * error_budget_share;
         const double efficiency_term =
-            PATCH_BUDGET_EFFICIENCY_WEIGHT *
+            PatchBudgetEfficiencyWeight() *
             Clamp01(snapshot.efficiency_score / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
-        const double quality_term = PATCH_BUDGET_QUALITY_WEIGHT * quality_repair_budget_share;
+        const double quality_term = PatchBudgetQualityWeight() * quality_repair_budget_share;
         const double rank_term =
             current_policy_.stable_mode
                 ? 1.0
@@ -4027,7 +4247,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         if (snapshot.saturated_hard || snapshot.saturated_soft) {
           score *= 0.25;
         }
-        if (!current_policy_.stable_mode && BUDGET_DRIVEN_ADAPTATION == 1 && step_ > 1 &&
+        if (!current_policy_.stable_mode && BudgetDrivenAdaptation() == 1 && step_ > 1 &&
             snapshot.refinement_rank > 0 && snapshot.refinement_rank <= 2) {
           score *= 1.35;
         }
@@ -4035,7 +4255,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
             snapshot.refinement_rank <= static_cast<int>(top_count + 1U)) {
           score *= 1.15;
         }
-        allocation_score[i] = std::max(PATCH_BUDGET_MIN_SHARE, score);
+        allocation_score[i] = std::max(PatchBudgetMinShare(), score);
         current_patch_adaptation_[i].error_budget_share = error_budget_share;
         current_patch_adaptation_[i].quality_repair_budget_share = quality_repair_budget_share;
       }
@@ -4130,7 +4350,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
     }
   }
 
-  if (BUDGET_DRIVEN_ADAPTATION == 1 && PATCH_CONSISTENCY_MODE == 1 &&
+  if (BudgetDrivenAdaptation() == 1 && PATCH_CONSISTENCY_MODE == 1 &&
       (step_ > 1 || (current_policy_.stable_mode && step_ == 1)) && !few_patch_low_error_budget) {
     RegularizeEquivalentPatchBudgets(geometry);
   }
@@ -4960,7 +5180,7 @@ void GeneratorAdaptive::WriteAcceptanceLog(int step, double score, const MeshQua
   file << "eligible_patch_mean_factor=" << current_eligible_patch_mean_factor_ << std::endl;
   file << "eligible_patch_mean_h_scale=" << current_eligible_patch_mean_h_scale_ << std::endl;
   file << "retry_enabled=" << (AdaptiveRetryCount() > 0 ? 1 : 0) << std::endl;
-  file << "local_budget_mode=" << PATCH_LOCAL_ELEMENT_BUDGET_MODE << std::endl;
+  file << "local_budget_mode=" << PatchLocalBudgetMode() << std::endl;
   file << "target_element_growth=" << current_target_element_growth_ << std::endl;
   file << "target_elements_step=" << current_target_elements_step_ << std::endl;
   file << "actual_elements_step=" << current_candidate_elements_before_budget_retry_ << std::endl;
@@ -5529,9 +5749,9 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
           domain_factor = std::max(domain_factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
         }
       }
-      if (STEP_ELEMENT_BUDGET_MODE == 1 && step_ > 1 && current_budget_retry_count_ > 0U) {
+      if (ElementBudgetMode() == 1 && step_ > 1 && current_budget_retry_count_ > 0U) {
         domain_factor =
-            ClampValue(domain_factor * std::pow(STEP_ELEMENT_BUDGET_RETRY_H_SCALE,
+            ClampValue(domain_factor * std::pow(ElementBudgetRetryHScale(),
                                                 static_cast<int>(current_budget_retry_count_)),
                        PatchFactorMin(), PatchFactorMax());
       }
@@ -5564,9 +5784,9 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
                 static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
           eligible_h_scale *= 1.05;
         }
-        if (STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
-            current_budget_pressure_ > STEP_ELEMENT_BUDGET_PRESSURE_START) {
-          eligible_h_scale *= STEP_ELEMENT_BUDGET_PRESSURE_H_SCALE;
+        if (ElementBudgetPressureMode() == 1 &&
+            current_budget_pressure_ > ElementBudgetPressureStart()) {
+          eligible_h_scale *= ElementBudgetPressureHScale();
         }
         if (PATCH_GENERATION_CONTROL_MODE == 1) {
           eligible_h_scale *= PATCH_GENERATION_MICRO_H_SCALE;
@@ -5601,18 +5821,16 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
         const double rank_weight =
             (refinement_rank > 0)
                 ? std::max(0.35,
-                           1.0 + PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_RANK *
+                           1.0 + PatchLocalBudgetRankScale() *
                                      (1.0 - (static_cast<double>(refinement_rank - 1) /
                                              std::max(1.0, static_cast<double>(
                                                                current_top_patch_count_ > 1
                                                                    ? current_top_patch_count_ - 1
                                                                    : 1U)))))
                 : 0.5;
-        const double efficiency_weight =
-            1.0 + PATCH_LOCAL_ELEMENT_BUDGET_SCALE_BY_EFFICIENCY * efficiency_norm;
-        const double local_patch_budget =
-            std::min(PATCH_LOCAL_BUDGET_HARD_CAP,
-                     PATCH_LOCAL_ELEMENT_BUDGET_BASE * rank_weight * efficiency_weight);
+        const double efficiency_weight = 1.0 + PatchLocalBudgetEfficiencyScale() * efficiency_norm;
+        const double local_patch_budget = std::min(
+            PatchLocalBudgetHardCap(), PatchLocalBudgetBase() * rank_weight * efficiency_weight);
         current_patch_adaptation_[static_cast<size_t>(i)].local_patch_budget = local_patch_budget;
         if (!few_patch_low_error) {
           current_patch_adaptation_[static_cast<size_t>(i)].target_patch_elements =
@@ -5624,21 +5842,21 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
         current_patch_adaptation_[static_cast<size_t>(i)].actual_patch_elements =
             static_cast<double>(history.prev_patch_generated_faces);
         const bool patch_budget_exceeded =
-            PATCH_LOCAL_ELEMENT_BUDGET_MODE == 1 &&
+            PatchLocalBudgetMode() == 1 &&
             history.prev_patch_generated_faces >
                 static_cast<unsigned long long>(std::max(1.0, local_patch_budget));
         current_patch_adaptation_[static_cast<size_t>(i)].patch_budget_exceeded =
             patch_budget_exceeded ? 1 : 0;
         if (patch_budget_exceeded) {
           patch_generation_mode = "budget_constrained";
-          domain_factor = ClampValue(domain_factor * PATCH_LOCAL_BUDGET_H_SCALE, PatchFactorMin(),
+          domain_factor = ClampValue(domain_factor * PatchLocalBudgetHScale(), PatchFactorMin(),
                                      PatchFactorMax());
         }
         if (!few_patch_low_error && PATCH_GENERATION_CONTROL_MODE == 1 &&
             current_target_element_growth_ > 0.0 && history.prev_patch_elements > 0ULL &&
             current_target_element_growth_ <= 1.0) {
-          domain_factor = ClampValue(domain_factor * STEP_TARGET_GROWTH_H_SCALE, PatchFactorMin(),
-                                     PatchFactorMax());
+          domain_factor =
+              ClampValue(domain_factor * ElementTargetHScale(), PatchFactorMin(), PatchFactorMax());
           // Em adaptive_stable, evitar trocar o modo para 'budget_constrained'
           // após rejeições consecutivas (isso tem correlação com malhas
           // complementares erradas em patches curvos).
@@ -5646,7 +5864,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
             patch_generation_mode = "budget_constrained";
           }
         }
-        if (!few_patch_low_error && STEP_ELEMENT_BUDGET_PRESSURE_MODE == 1 &&
+        if (!few_patch_low_error && ElementBudgetPressureMode() == 1 &&
             current_budget_pressure_ >= PATCH_GENERATION_BUDGET_PRESSURE_START) {
           domain_factor = ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
                                      PatchFactorMin(), PatchFactorMax());
@@ -6780,7 +6998,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   const int local_budget_mode =
       (step_ >= 0 && step_ < static_cast<int>(local_budget_mode_step_.size()))
           ? local_budget_mode_step_[static_cast<size_t>(step_)]
-          : PATCH_LOCAL_ELEMENT_BUDGET_MODE;
+          : PatchLocalBudgetMode();
   const double target_element_growth =
       (step_ >= 0 && step_ < static_cast<int>(target_element_growth_step_.size()))
           ? target_element_growth_step_[static_cast<size_t>(step_)]
