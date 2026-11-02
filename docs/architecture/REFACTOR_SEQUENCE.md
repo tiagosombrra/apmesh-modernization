@@ -26,9 +26,10 @@ The [adaptation settings](../evidence/ADAPTATION_CONTEXT.md) are delivered.
 The [element budget controls](../evidence/ELEMENT_BUDGET_CONTEXT.md) are delivered.
 The [curve controls](../evidence/CURVE_CONTROLS_CONTEXT.md) are delivered.
 The [quadtree controls](../evidence/QUADTREE_CONTROLS_CONTEXT.md) are delivered.
-The single active item is [patch generation controls](../evidence/PATCH_GENERATION_CONTEXT.md):
-own 37 generation/refinement/spatial/micro values and isolate 13 ordered stable
-writes, preserving algorithms and using the existing regression. Instrument
+The [patch generation controls](../evidence/PATCH_GENERATION_CONTEXT.md) are delivered.
+The single active item is [patch consistency controls](../evidence/PATCH_CONSISTENCY_CONTEXT.md):
+own 18 equivalence/group/consistency-acceptance values and isolate two ordered mode
+writes, preserving expressions and using the existing regression. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 

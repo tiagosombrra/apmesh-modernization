@@ -160,6 +160,28 @@ struct PatchGenerationConfig {
   int top_rank_only_mode = 1;
 };
 
+// Raw patch/group consistency controls; stable adjustments are instance state.
+struct PatchConsistencyConfig {
+  int mode = 0;
+  double area_tolerance = 0.20;
+  double error_tolerance = 0.25;
+  double curvature_tolerance = 0.25;
+  double quality_tolerance = 0.20;
+  int neighbor_only = 1;
+  double max_budget_ratio_step2 = 1.5;
+  double max_budget_ratio_stepn = 2.0;
+  double min_group_share = 0.75;
+  double h_clamp_ratio = 1.25;
+  int depth_clamp = 1;
+  double step2_weight = 0.55;
+  int group_min_patches = 2;
+  int group_neighbor_protection = 1;
+  int disable_group_coarsen_if_unbalanced = 1;
+  int acceptance_mode = 0;
+  double acceptance_penalty_weight = 0.35;
+  double acceptance_max_group_dispersion_step2 = 0.45;
+};
+
 // Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
@@ -174,6 +196,7 @@ struct GenerationContext {
   std::optional<CurveControlsConfig> curves = std::nullopt;
   std::optional<QuadtreeControlsConfig> quadtree = std::nullopt;
   std::optional<PatchGenerationConfig> patch_generation = std::nullopt;
+  std::optional<PatchConsistencyConfig> patch_consistency = std::nullopt;
 };
 } // namespace apmesh::application
 

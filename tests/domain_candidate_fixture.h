@@ -254,6 +254,48 @@ class DomainCandidateFixture {
   }
 
 public:
+  static void EnablePatchConsistency(GeneratorAdaptive& generator) {
+    generator.EnablePatchConsistency();
+  }
+  static void EnableConsistencyAcceptance(GeneratorAdaptive& generator) {
+    generator.EnableConsistencyAcceptance();
+  }
+  static std::array<double, 12> ConsistencyOutputs(GeneratorAdaptive& generator,
+                                                   const Geometry& geometry, int step,
+                                                   bool stable) {
+    generator.step_ = step;
+    generator.current_policy_ = generator.BuildAdaptivePolicyRuntime();
+    generator.current_policy_.stable_mode = stable;
+    generator.current_patch_target_elements_ = {100.0, 400.0};
+    generator.current_patch_target_h_ = {0.2, 0.9};
+    generator.current_patch_quadtree_depth_cap_ = {3, 8};
+    generator.current_patch_adaptation_.assign(2, GeneratorAdaptive::PatchAdaptationSnapshot{});
+    generator.current_top_patch_count_ = 1U;
+    generator.current_patch_budget_dispersion_ = 0.0;
+    generator.current_patch_h_dispersion_ = 0.0;
+    generator.current_patch_consistency_penalty_ = 0.0;
+    for (unsigned i = 0; i < 2; ++i) {
+      auto& snapshot = generator.current_patch_adaptation_[i];
+      snapshot.local_error = i == 0 ? 0.6 : 0.3;
+      snapshot.normalized_error = 0.5;
+      snapshot.raw_factor = 0.9;
+      snapshot.quality_mean = 0.7;
+      snapshot.poor_ratio = 0.1;
+      snapshot.elements_prev = 100;
+      snapshot.refinement_rank = static_cast<int>(i + 1);
+    }
+    generator.RegularizeEquivalentPatchBudgets(&geometry);
+    return {{generator.current_patch_target_elements_[0],
+             generator.current_patch_target_elements_[1], generator.current_patch_target_h_[0],
+             generator.current_patch_target_h_[1],
+             static_cast<double>(generator.current_patch_quadtree_depth_cap_[0]),
+             static_cast<double>(generator.current_patch_quadtree_depth_cap_[1]),
+             static_cast<double>(generator.current_patch_adaptation_[0].similar_patch_group),
+             static_cast<double>(generator.current_patch_adaptation_[1].similar_patch_group),
+             generator.current_patch_budget_dispersion_, generator.current_patch_h_dispersion_,
+             generator.current_patch_consistency_penalty_,
+             static_cast<double>(generator.current_consistency_regularization_active_)}};
+  }
   static void EnablePatchGeneration(GeneratorAdaptive& generator) {
     generator.EnablePatchGeneration();
   }

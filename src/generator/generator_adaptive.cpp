@@ -1541,6 +1541,152 @@ GeneratorAdaptive::BuildPatchGenerationRuntime() const noexcept {
           PatchGenerationTopRankOnlyMode()};
 }
 
+const apmesh::application::PatchConsistencyConfig*
+GeneratorAdaptive::PatchConsistencySettings() const noexcept {
+  if (!generation_context_ || !generation_context_->patch_consistency) {
+    return nullptr;
+  }
+  return effective_patch_consistency_ ? &*effective_patch_consistency_
+                                      : &*generation_context_->patch_consistency;
+}
+
+apmesh::application::PatchConsistencyConfig*
+GeneratorAdaptive::MutablePatchConsistencySettings() noexcept {
+  if (!generation_context_ || !generation_context_->patch_consistency) {
+    return nullptr;
+  }
+  if (!effective_patch_consistency_) {
+    effective_patch_consistency_.emplace(*generation_context_->patch_consistency);
+  }
+  return &*effective_patch_consistency_;
+}
+
+int GeneratorAdaptive::PatchConsistencyMode() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->mode : PATCH_CONSISTENCY_MODE;
+}
+
+double GeneratorAdaptive::PatchConsistencyAreaTolerance() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->area_tolerance : PATCH_CONSISTENCY_AREA_TOL;
+}
+
+double GeneratorAdaptive::PatchConsistencyErrorTolerance() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->error_tolerance : PATCH_CONSISTENCY_ERROR_TOL;
+}
+
+double GeneratorAdaptive::PatchConsistencyCurvatureTolerance() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->curvature_tolerance : PATCH_CONSISTENCY_CURVATURE_TOL;
+}
+
+double GeneratorAdaptive::PatchConsistencyQualityTolerance() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->quality_tolerance : PATCH_CONSISTENCY_QUALITY_TOL;
+}
+
+int GeneratorAdaptive::PatchConsistencyNeighborOnly() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->neighbor_only : PATCH_CONSISTENCY_NEIGHBOR_ONLY;
+}
+
+double GeneratorAdaptive::PatchConsistencyMaxBudgetRatioStep2() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->max_budget_ratio_step2 : PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEP2;
+}
+
+double GeneratorAdaptive::PatchConsistencyMaxBudgetRatioStepN() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->max_budget_ratio_stepn : PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEPN;
+}
+
+double GeneratorAdaptive::PatchConsistencyMinGroupShare() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->min_group_share : PATCH_CONSISTENCY_MIN_GROUP_SHARE;
+}
+
+double GeneratorAdaptive::PatchConsistencyHClampRatio() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->h_clamp_ratio : PATCH_CONSISTENCY_H_CLAMP_RATIO;
+}
+
+int GeneratorAdaptive::PatchConsistencyDepthClamp() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->depth_clamp : PATCH_CONSISTENCY_DEPTH_CLAMP;
+}
+
+double GeneratorAdaptive::Step2ConsistencyWeight() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->step2_weight : STEP2_CONSISTENCY_WEIGHT;
+}
+
+int GeneratorAdaptive::Step2GroupMinPatches() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->group_min_patches : STEP2_GROUP_MIN_PATCHES;
+}
+
+int GeneratorAdaptive::Step2GroupNeighborProtection() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->group_neighbor_protection : STEP2_GROUP_NEIGHBOR_PROTECTION;
+}
+
+int GeneratorAdaptive::Step2DisableGroupCoarsenIfUnbalanced() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->disable_group_coarsen_if_unbalanced
+                : STEP2_DISABLE_GROUP_COARSEN_IF_UNBALANCED;
+}
+
+int GeneratorAdaptive::ConsistencyAcceptanceMode() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->acceptance_mode : STEP_ACCEPT_CONSISTENCY_MODE;
+}
+
+double GeneratorAdaptive::ConsistencyAcceptancePenaltyWeight() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->acceptance_penalty_weight : STEP_ACCEPT_CONSISTENCY_PENALTY_WEIGHT;
+}
+
+double GeneratorAdaptive::ConsistencyAcceptanceMaxGroupDispersionStep2() const noexcept {
+  const auto* config = PatchConsistencySettings();
+  return config ? config->acceptance_max_group_dispersion_step2
+                : STEP_ACCEPT_MAX_GROUP_DISPERSION_STEP2;
+}
+
+void GeneratorAdaptive::EnablePatchConsistency() noexcept {
+  auto* config = MutablePatchConsistencySettings();
+  int& mode = config ? config->mode : PATCH_CONSISTENCY_MODE;
+  mode = 1;
+}
+
+void GeneratorAdaptive::EnableConsistencyAcceptance() noexcept {
+  auto* config = MutablePatchConsistencySettings();
+  int& acceptance_mode = config ? config->acceptance_mode : STEP_ACCEPT_CONSISTENCY_MODE;
+  acceptance_mode = 1;
+}
+
+apmesh::application::PatchConsistencyConfig
+GeneratorAdaptive::BuildPatchConsistencyRuntime() const noexcept {
+  return {PatchConsistencyMode(),
+          PatchConsistencyAreaTolerance(),
+          PatchConsistencyErrorTolerance(),
+          PatchConsistencyCurvatureTolerance(),
+          PatchConsistencyQualityTolerance(),
+          PatchConsistencyNeighborOnly(),
+          PatchConsistencyMaxBudgetRatioStep2(),
+          PatchConsistencyMaxBudgetRatioStepN(),
+          PatchConsistencyMinGroupShare(),
+          PatchConsistencyHClampRatio(),
+          PatchConsistencyDepthClamp(),
+          Step2ConsistencyWeight(),
+          Step2GroupMinPatches(),
+          Step2GroupNeighborProtection(),
+          Step2DisableGroupCoarsenIfUnbalanced(),
+          ConsistencyAcceptanceMode(),
+          ConsistencyAcceptancePenaltyWeight(),
+          ConsistencyAcceptanceMaxGroupDispersionStep2()};
+}
+
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   const auto* config = generation_context_ && generation_context_->adaptive_policy
                            ? &*generation_context_->adaptive_policy
@@ -2069,9 +2215,9 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     EnableCurvePointBudget();
     EnableQuadtreeCap();
     EnablePatchGeneration();
-    PATCH_CONSISTENCY_MODE = 1;
+    EnablePatchConsistency();
     EnableCurveConsistency();
-    STEP_ACCEPT_CONSISTENCY_MODE = 1;
+    EnableConsistencyAcceptance();
     EnablePatchRefinementModes();
     PromoteAdaptiveRetry();
 
@@ -2994,9 +3140,9 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
         const double coherence_w = (this->step_ >= 4) ? 0.14 : 0.30;
         acceptance_score -= coherence_w * current_transition_coherence_penalty_;
       }
-      if (STEP_ACCEPT_CONSISTENCY_MODE == 1 && this->step_ > 1) {
+      if (ConsistencyAcceptanceMode() == 1 && this->step_ > 1) {
         acceptance_score -=
-            STEP_ACCEPT_CONSISTENCY_PENALTY_WEIGHT * current_patch_consistency_penalty_;
+            ConsistencyAcceptancePenaltyWeight() * current_patch_consistency_penalty_;
       }
       const bool error_within_tolerance =
           improvement >= (-ACCEPTANCE_MAX_ERROR_INCREASE_PCT / 100.0);
@@ -3070,10 +3216,10 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                         current_transition_imbalance_max_real_ <= 0.12 &&
                         current_transition_coherence_penalty_ <= 0.20));
       const bool consistency_ok =
-          (STEP_ACCEPT_CONSISTENCY_MODE == 0 || this->step_ <= 1)
+          (ConsistencyAcceptanceMode() == 0 || this->step_ <= 1)
               ? true
-              : ((this->step_ != 2) ||
-                 (current_patch_budget_dispersion_ <= STEP_ACCEPT_MAX_GROUP_DISPERSION_STEP2));
+              : ((this->step_ != 2) || (current_patch_budget_dispersion_ <=
+                                        ConsistencyAcceptanceMaxGroupDispersionStep2()));
       if (this->step_ >= 3 && BudgetDrivenAdaptation() == 1) {
         acceptance_score += 0.30 * (current_local_progress_coverage_ - 0.5);
       }
@@ -3683,7 +3829,7 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     current_curve_adaptation_[i] = snapshot;
   }
 
-  if (PATCH_CONSISTENCY_MODE == 1 && CurveConsistencyMode() == 1 && BudgetDrivenAdaptation() == 1) {
+  if (PatchConsistencyMode() == 1 && CurveConsistencyMode() == 1 && BudgetDrivenAdaptation() == 1) {
     RegularizeCurveTargetsFromPatchConsistency(geometry);
   }
 
@@ -4917,7 +5063,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
     }
   }
 
-  if (BudgetDrivenAdaptation() == 1 && PATCH_CONSISTENCY_MODE == 1 &&
+  if (BudgetDrivenAdaptation() == 1 && PatchConsistencyMode() == 1 &&
       (step_ > 1 || (current_policy_.stable_mode && step_ == 1)) && !few_patch_low_error_budget) {
     RegularizeEquivalentPatchBudgets(geometry);
   }
@@ -4942,7 +5088,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
 
   patch_factors = SmoothPatchAdaptationFactors(geometry, patch_factors);
   const std::vector<double> limited = ApplyAdaptationRateLimit(patch_factors);
-  if (current_policy_.stable_mode && PATCH_CONSISTENCY_MODE == 1 && step_ >= 1) {
+  if (current_policy_.stable_mode && PatchConsistencyMode() == 1 && step_ >= 1) {
     std::map<int, std::vector<unsigned int>> grouped;
     for (unsigned int i = 0; i < current_patch_adaptation_.size(); ++i) {
       const int group = current_patch_adaptation_[i].similar_patch_group;
@@ -5006,7 +5152,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
 
 void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometry) {
   const unsigned int patch_count = geometry ? geometry->GetNumberPatches() : 0U;
-  if (PATCH_CONSISTENCY_MODE != 1 || patch_count == 0 ||
+  if (PatchConsistencyMode() != 1 || patch_count == 0 ||
       current_patch_target_elements_.size() != patch_count ||
       current_patch_target_h_.size() != patch_count ||
       current_patch_adaptation_.size() != patch_count) {
@@ -5031,22 +5177,22 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
     const bool boundary_ok = patch_boundary_curves[lhs] == patch_boundary_curves[rhs];
     const bool area_geom_ok = RelativeDifference(std::max(1.0e-9, patch_areas[lhs]),
                                                  std::max(1.0e-9, patch_areas[rhs])) <=
-                              (step1_mode ? std::max(0.40, PATCH_CONSISTENCY_AREA_TOL * 2.0)
-                                          : PATCH_CONSISTENCY_AREA_TOL);
+                              (step1_mode ? std::max(0.40, PatchConsistencyAreaTolerance() * 2.0)
+                                          : PatchConsistencyAreaTolerance());
     const bool area_ok = RelativeDifference(std::max(1.0, static_cast<double>(a.elements_prev)),
                                             std::max(1.0, static_cast<double>(b.elements_prev))) <=
-                         (step1_mode ? std::max(0.55, PATCH_CONSISTENCY_AREA_TOL * 2.5)
-                                     : PATCH_CONSISTENCY_AREA_TOL);
-    const bool error_ok =
-        RelativeDifference(a.normalized_error, b.normalized_error) <= PATCH_CONSISTENCY_ERROR_TOL;
+                         (step1_mode ? std::max(0.55, PatchConsistencyAreaTolerance() * 2.5)
+                                     : PatchConsistencyAreaTolerance());
+    const bool error_ok = RelativeDifference(a.normalized_error, b.normalized_error) <=
+                          PatchConsistencyErrorTolerance();
     const double curvature_proxy_a = std::fabs(a.raw_factor - 1.0);
     const double curvature_proxy_b = std::fabs(b.raw_factor - 1.0);
-    const bool curvature_ok =
-        RelativeDifference(curvature_proxy_a, curvature_proxy_b) <= PATCH_CONSISTENCY_CURVATURE_TOL;
+    const bool curvature_ok = RelativeDifference(curvature_proxy_a, curvature_proxy_b) <=
+                              PatchConsistencyCurvatureTolerance();
     const bool quality_ok =
         RelativeDifference(std::max(0.05, a.quality_mean + (1.0 - a.poor_ratio)),
                            std::max(0.05, b.quality_mean + (1.0 - b.poor_ratio))) <=
-        PATCH_CONSISTENCY_QUALITY_TOL;
+        PatchConsistencyQualityTolerance();
     if (step1_mode) {
       return boundary_ok && (area_geom_ok || area_ok);
     }
@@ -5075,7 +5221,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
           if (neighbor == std::numeric_limits<unsigned int>::max() || neighbor == current) {
             continue;
           }
-          if (PATCH_CONSISTENCY_NEIGHBOR_ONLY == 1 && groups[neighbor] >= 0 &&
+          if (PatchConsistencyNeighborOnly() == 1 && groups[neighbor] >= 0 &&
               groups[neighbor] != groups[current]) {
             continue;
           }
@@ -5091,8 +5237,8 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
     }
   }
 
-  const double max_ratio = (step_ == 2) ? PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEP2
-                                        : PATCH_CONSISTENCY_MAX_BUDGET_RATIO_STEPN;
+  const double max_ratio =
+      (step_ == 2) ? PatchConsistencyMaxBudgetRatioStep2() : PatchConsistencyMaxBudgetRatioStepN();
   std::map<int, std::vector<unsigned int>> grouped;
   for (unsigned int i = 0; i < patch_count; ++i) {
     grouped[groups[i]].push_back(i);
@@ -5103,7 +5249,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
   std::vector<double> h_ratios;
   for (const auto& entry : grouped) {
     const std::vector<unsigned int>& members = entry.second;
-    if (members.size() < static_cast<size_t>(std::max(2, STEP2_GROUP_MIN_PATCHES))) {
+    if (members.size() < static_cast<size_t>(std::max(2, Step2GroupMinPatches()))) {
       for (unsigned int idx : members) {
         current_patch_adaptation_[idx].similar_patch_group = -1;
       }
@@ -5141,7 +5287,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
     std::sort(budgets.begin(), budgets.end());
     const double median_budget = budgets[budgets.size() / 2];
     const double anchor_budget = std::max(1.0, current_patch_target_elements_[anchor]);
-    const double budget_floor = std::max(median_budget * PATCH_CONSISTENCY_MIN_GROUP_SHARE,
+    const double budget_floor = std::max(median_budget * PatchConsistencyMinGroupShare(),
                                          anchor_budget / std::max(1.0, max_ratio));
     const double budget_ceil = std::max(budget_floor, anchor_budget * std::max(1.0, max_ratio));
     std::sort(hs.begin(), hs.end());
@@ -5177,7 +5323,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
         const double prev_el = std::max(1.0, static_cast<double>(snapshot.elements_prev));
         after_budget = std::max(after_budget, prev_el * 1.08);
       }
-      if (STEP2_GROUP_NEIGHBOR_PROTECTION == 1 &&
+      if (Step2GroupNeighborProtection() == 1 &&
           current_patch_adaptation_[anchor].refinement_rank > 0 &&
           snapshot.refinement_rank > static_cast<int>(current_top_patch_count_) && step_ == 2) {
         after_budget = std::max(after_budget, budget_floor);
@@ -5190,8 +5336,8 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
 
       double after_h = before_h;
       if (before_h > 0.0) {
-        after_h = ClampValue(before_h, anchor_h / std::max(1.0, PATCH_CONSISTENCY_H_CLAMP_RATIO),
-                             anchor_h * std::max(1.0, PATCH_CONSISTENCY_H_CLAMP_RATIO));
+        after_h = ClampValue(before_h, anchor_h / std::max(1.0, PatchConsistencyHClampRatio()),
+                             anchor_h * std::max(1.0, PatchConsistencyHClampRatio()));
         if (current_policy_.stable_mode && step_ >= 1 && stable_group_h > 0.0) {
           after_h = std::min(after_h, stable_group_h);
         }
@@ -5199,7 +5345,7 @@ void GeneratorAdaptive::RegularizeEquivalentPatchBudgets(const Geometry* geometr
         snapshot.target_patch_h = after_h;
       }
       snapshot.target_h_after_consistency = after_h;
-      if (PATCH_CONSISTENCY_DEPTH_CLAMP == 1 && !skip_depth_clamp_small_step1 &&
+      if (PatchConsistencyDepthClamp() == 1 && !skip_depth_clamp_small_step1 &&
           anchor < current_patch_quadtree_depth_cap_.size() &&
           idx < current_patch_quadtree_depth_cap_.size() &&
           current_patch_quadtree_depth_cap_[anchor] >= 0 &&
