@@ -1,5 +1,25 @@
 # Local quality automation
 
+## Patch generation and refinement controls
+
+The [patch generation lot](evidence/PATCH_GENERATION_CONTEXT.md) reuses 75 CTest/
+385 nested Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/
+123-boundary reference and real MSVC CLI controls on exact head/main. Require all
+prior native markers plus three patch cases: 84 raw/84 stable exact double
+representations, nine integer fields, retired sources, foreign-global negative
+controls and 36 actual adaptation/smoothing factor outputs. Check three factory
+fields against RuntimeConfig and the other 34 against existing process values.
+Source reversal must restore the complete generator body, 13 ordered stable
+writes in their three original blocks and every formula/branch/literal, with
+unchanged parser/apply/defaults/other production. Analyze the two touched production
+units and existing probe once each with unchanged canonical compilation commands.
+Require explicit token-checked formatting, whitespace, inventory/contracts and
+staged/remote gates. The initial foreign-control setup selected the discrete branch and failed its
+required output difference. That failure is retained; only its mode changes to the
+existing continuous branch, with production and exact oracles unchanged.
+
+No new target, model or instrument campaign is introduced.
+
 ## Quadtree limits and saturation controls
 
 The [quadtree lot](evidence/QUADTREE_CONTROLS_CONTEXT.md) reuses 75 CTest/385 nested

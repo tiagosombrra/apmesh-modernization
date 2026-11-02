@@ -1252,6 +1252,295 @@ GeneratorAdaptive::BuildQuadtreeRuntime() const noexcept {
           QuadtreeTemplatePoorScoreThreshold()};
 }
 
+const apmesh::application::PatchGenerationConfig*
+GeneratorAdaptive::PatchGenerationSettings() const noexcept {
+  if (!generation_context_ || !generation_context_->patch_generation) {
+    return nullptr;
+  }
+  return effective_patch_generation_ ? &*effective_patch_generation_
+                                     : &*generation_context_->patch_generation;
+}
+
+apmesh::application::PatchGenerationConfig*
+GeneratorAdaptive::MutablePatchGenerationSettings() noexcept {
+  if (!generation_context_ || !generation_context_->patch_generation) {
+    return nullptr;
+  }
+  if (!effective_patch_generation_) {
+    effective_patch_generation_.emplace(*generation_context_->patch_generation);
+  }
+  return &*effective_patch_generation_;
+}
+
+int GeneratorAdaptive::PatchAdaptationMode() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->adaptation_mode : PATCH_ADAPTATION_MODE;
+}
+
+double GeneratorAdaptive::PatchRefinementStrength() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->refinement_strength : PATCH_REFINEMENT_STRENGTH;
+}
+
+double GeneratorAdaptive::PatchCoarseningStrength() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->coarsening_strength : PATCH_COARSENING_STRENGTH;
+}
+
+double GeneratorAdaptive::PatchErrorExponent() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->error_exponent : PATCH_ERROR_EXPONENT;
+}
+
+double GeneratorAdaptive::PatchQualityWeight() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->quality_weight : PATCH_QUALITY_WEIGHT;
+}
+
+double GeneratorAdaptive::PatchQualityTarget() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->quality_target : PATCH_QUALITY_TARGET;
+}
+
+double GeneratorAdaptive::PatchQualityMinTarget() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->quality_min_target : PATCH_QUALITY_MIN_TARGET;
+}
+
+double GeneratorAdaptive::PatchTopErrorFraction() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->top_error_fraction : PATCH_TOP_ERROR_FRACTION;
+}
+
+double GeneratorAdaptive::PatchEfficiencyWeight() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->efficiency_weight : PATCH_EFFICIENCY_WEIGHT;
+}
+
+double GeneratorAdaptive::PatchEfficiencyTarget() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->efficiency_target : PATCH_EFFICIENCY_TARGET;
+}
+
+double GeneratorAdaptive::PatchHistoryBlend() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->history_blend : PATCH_HISTORY_BLEND;
+}
+
+double GeneratorAdaptive::PatchStep2RefinementScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->step2_refinement_scale : PATCH_STEP2_REFINEMENT_SCALE;
+}
+
+double GeneratorAdaptive::PatchInefficientCap() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->inefficient_cap : PATCH_INEFFICIENT_CAP;
+}
+
+int GeneratorAdaptive::PatchStepwiseMode() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->stepwise_mode : PATCH_STEPWISE_MODE;
+}
+
+double GeneratorAdaptive::Step2RefinementAttenuation() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->refinement_attenuation : STEP2_REFINEMENT_ATTENUATION;
+}
+
+double GeneratorAdaptive::Step2TopErrorFractionScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->top_error_fraction_scale : STEP2_TOP_ERROR_FRACTION_SCALE;
+}
+
+double GeneratorAdaptive::Step2FactorRangeShrink() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->factor_range_shrink : STEP2_FACTOR_RANGE_SHRINK;
+}
+
+int GeneratorAdaptive::Step2HardSpatialFilterMode() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->hard_spatial_filter_mode : STEP2_HARD_SPATIAL_FILTER_MODE;
+}
+
+int GeneratorAdaptive::Step2TopPatchCountMin() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->top_patch_count_min : STEP2_TOP_PATCH_COUNT_MIN;
+}
+
+int GeneratorAdaptive::Step2TopPatchCountMax() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->top_patch_count_max : STEP2_TOP_PATCH_COUNT_MAX;
+}
+
+double GeneratorAdaptive::Step2NoneligibleFactorMin() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->noneligible_factor_min : STEP2_NONELIGIBLE_FACTOR_MIN;
+}
+
+int GeneratorAdaptive::Step2NoneligibleForceCoarsen() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->noneligible_force_coarsen : STEP2_NONELIGIBLE_FORCE_COARSEN;
+}
+
+double GeneratorAdaptive::Step2SmoothingNeighborWeight() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->smoothing_neighbor_weight : STEP2_SMOOTHING_NEIGHBOR_WEIGHT;
+}
+
+double GeneratorAdaptive::Step2EligibleRefinementDamp() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->eligible_refinement_damp : STEP2_ELIGIBLE_REFINEMENT_DAMP;
+}
+
+double GeneratorAdaptive::Step2EligibleRefinementDampOnRetry() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->eligible_refinement_damp_on_retry
+                : STEP2_ELIGIBLE_REFINEMENT_DAMP_ON_RETRY;
+}
+
+double GeneratorAdaptive::Step2EligibleElementsThreshold() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->eligible_elements_threshold : STEP2_ELIGIBLE_ELEMENTS_THRESHOLD;
+}
+
+double GeneratorAdaptive::Step2EligibleHScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->eligible_h_scale : STEP2_ELIGIBLE_H_SCALE;
+}
+
+int GeneratorAdaptive::Step2MicroRefinementMode() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->micro_refinement_mode : STEP2_MICRO_REFINEMENT_MODE;
+}
+
+double GeneratorAdaptive::Step2MicroRelaxationScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->micro_relaxation_scale : STEP2_MICRO_RELAXATION_SCALE;
+}
+
+double GeneratorAdaptive::Step2MicroMaxDeltaScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->micro_max_delta_scale : STEP2_MICRO_MAX_DELTA_SCALE;
+}
+
+double GeneratorAdaptive::Step2MicroPatchRefinementScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->micro_patch_refinement_scale : STEP2_MICRO_PATCH_REFINEMENT_SCALE;
+}
+
+double GeneratorAdaptive::Step2MicroFactorRangeScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->micro_factor_range_scale : STEP2_MICRO_FACTOR_RANGE_SCALE;
+}
+
+int GeneratorAdaptive::PatchGenerationControlMode() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->control_mode : PATCH_GENERATION_CONTROL_MODE;
+}
+
+double GeneratorAdaptive::PatchGenerationBudgetPressureStart() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->budget_pressure_start : PATCH_GENERATION_BUDGET_PRESSURE_START;
+}
+
+double GeneratorAdaptive::PatchGenerationMicroHScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->micro_h_scale : PATCH_GENERATION_MICRO_H_SCALE;
+}
+
+double GeneratorAdaptive::PatchGenerationConstrainedHScale() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->constrained_h_scale : PATCH_GENERATION_CONSTRAINED_H_SCALE;
+}
+
+int GeneratorAdaptive::PatchGenerationTopRankOnlyMode() const noexcept {
+  const auto* config = PatchGenerationSettings();
+  return config ? config->top_rank_only_mode : PATCH_GENERATION_TOP_RANK_ONLY_MODE;
+}
+
+void GeneratorAdaptive::EnablePatchGeneration() noexcept {
+  auto* config = MutablePatchGenerationSettings();
+  int& control_mode = config ? config->control_mode : PATCH_GENERATION_CONTROL_MODE;
+  int& top_rank_only_mode =
+      config ? config->top_rank_only_mode : PATCH_GENERATION_TOP_RANK_ONLY_MODE;
+  control_mode = 1;
+  top_rank_only_mode = 0;
+}
+
+void GeneratorAdaptive::EnablePatchRefinementModes() noexcept {
+  auto* config = MutablePatchGenerationSettings();
+  int& stepwise_mode = config ? config->stepwise_mode : PATCH_STEPWISE_MODE;
+  int& micro_refinement_mode = config ? config->micro_refinement_mode : STEP2_MICRO_REFINEMENT_MODE;
+  int& hard_spatial_filter_mode =
+      config ? config->hard_spatial_filter_mode : STEP2_HARD_SPATIAL_FILTER_MODE;
+  stepwise_mode = 1;
+  micro_refinement_mode = 1;
+  hard_spatial_filter_mode = 0;
+}
+
+void GeneratorAdaptive::ApplyStablePatchRefinement() noexcept {
+  auto* config = MutablePatchGenerationSettings();
+  double& refinement_strength = config ? config->refinement_strength : PATCH_REFINEMENT_STRENGTH;
+  double& coarsening_strength = config ? config->coarsening_strength : PATCH_COARSENING_STRENGTH;
+  double& top_error_fraction = config ? config->top_error_fraction : PATCH_TOP_ERROR_FRACTION;
+  double& quality_weight = config ? config->quality_weight : PATCH_QUALITY_WEIGHT;
+  int& top_patch_count_min = config ? config->top_patch_count_min : STEP2_TOP_PATCH_COUNT_MIN;
+  int& top_patch_count_max = config ? config->top_patch_count_max : STEP2_TOP_PATCH_COUNT_MAX;
+  double& noneligible_factor_min =
+      config ? config->noneligible_factor_min : STEP2_NONELIGIBLE_FACTOR_MIN;
+  int& noneligible_force_coarsen =
+      config ? config->noneligible_force_coarsen : STEP2_NONELIGIBLE_FORCE_COARSEN;
+  refinement_strength = 0.14;
+  coarsening_strength = 0.02;
+  top_error_fraction = 1.0;
+  quality_weight = 0.40;
+  top_patch_count_min = 4;
+  top_patch_count_max = 8;
+  noneligible_factor_min = 1.0;
+  noneligible_force_coarsen = 0;
+}
+
+apmesh::application::PatchGenerationConfig
+GeneratorAdaptive::BuildPatchGenerationRuntime() const noexcept {
+  return {PatchAdaptationMode(),
+          PatchRefinementStrength(),
+          PatchCoarseningStrength(),
+          PatchErrorExponent(),
+          PatchQualityWeight(),
+          PatchQualityTarget(),
+          PatchQualityMinTarget(),
+          PatchTopErrorFraction(),
+          PatchEfficiencyWeight(),
+          PatchEfficiencyTarget(),
+          PatchHistoryBlend(),
+          PatchStep2RefinementScale(),
+          PatchInefficientCap(),
+          PatchStepwiseMode(),
+          Step2RefinementAttenuation(),
+          Step2TopErrorFractionScale(),
+          Step2FactorRangeShrink(),
+          Step2HardSpatialFilterMode(),
+          Step2TopPatchCountMin(),
+          Step2TopPatchCountMax(),
+          Step2NoneligibleFactorMin(),
+          Step2NoneligibleForceCoarsen(),
+          Step2SmoothingNeighborWeight(),
+          Step2EligibleRefinementDamp(),
+          Step2EligibleRefinementDampOnRetry(),
+          Step2EligibleElementsThreshold(),
+          Step2EligibleHScale(),
+          Step2MicroRefinementMode(),
+          Step2MicroRelaxationScale(),
+          Step2MicroMaxDeltaScale(),
+          Step2MicroPatchRefinementScale(),
+          Step2MicroFactorRangeScale(),
+          PatchGenerationControlMode(),
+          PatchGenerationBudgetPressureStart(),
+          PatchGenerationMicroHScale(),
+          PatchGenerationConstrainedHScale(),
+          PatchGenerationTopRankOnlyMode()};
+}
+
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   const auto* config = generation_context_ && generation_context_->adaptive_policy
                            ? &*generation_context_->adaptive_policy
@@ -1779,28 +2068,16 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     ApplyStableElementBudgetSettings();
     EnableCurvePointBudget();
     EnableQuadtreeCap();
-    PATCH_GENERATION_CONTROL_MODE = 1;
-    PATCH_GENERATION_TOP_RANK_ONLY_MODE = 0;
+    EnablePatchGeneration();
     PATCH_CONSISTENCY_MODE = 1;
     EnableCurveConsistency();
     STEP_ACCEPT_CONSISTENCY_MODE = 1;
-    PATCH_STEPWISE_MODE = 1;
-    STEP2_MICRO_REFINEMENT_MODE = 1;
-    STEP2_HARD_SPATIAL_FILTER_MODE = 0;
+    EnablePatchRefinementModes();
     PromoteAdaptiveRetry();
 
     ApplyStableAdaptationSettings();
 
-    PATCH_REFINEMENT_STRENGTH = 0.14;
-    PATCH_COARSENING_STRENGTH = 0.02;
-
-    PATCH_TOP_ERROR_FRACTION = 1.0;
-    PATCH_QUALITY_WEIGHT = 0.40;
-
-    STEP2_TOP_PATCH_COUNT_MIN = 4;
-    STEP2_TOP_PATCH_COUNT_MAX = 8;
-    STEP2_NONELIGIBLE_FACTOR_MIN = 1.0;
-    STEP2_NONELIGIBLE_FORCE_COARSEN = 0;
+    ApplyStablePatchRefinement();
 
     ApplyStableQuadtreeQuality();
     AFT_LOCAL_POSTPROCESS_PASSES = 2;
@@ -2330,7 +2607,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     current_top_patch_candidate_count_ = 0U;
     current_generation_control_mode_ =
         (this->step_ <= 1) ? "normal"
-                           : ((PATCH_GENERATION_CONTROL_MODE == 1) ? "micro_refinement" : "normal");
+                           : ((PatchGenerationControlMode() == 1) ? "micro_refinement" : "normal");
 
     unsigned long long report_gauss_nodes = 0ULL;
     unsigned long long report_mean_nodes = 0ULL;
@@ -2378,7 +2655,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
       ADAPTIVE_CURRENT_RETRY = retry;
       current_budget_retry_count_ = static_cast<unsigned int>(retry);
       current_budget_limited_ = (retry > 0);
-      const bool micro_refinement_active = (this->step_ > 1 && STEP2_MICRO_REFINEMENT_MODE == 1);
+      const bool micro_refinement_active = (this->step_ > 1 && Step2MicroRefinementMode() == 1);
       if (current_policy_.stable_mode) {
         current_step_mode_ = "iterating";
         current_generation_control_mode_ = "adaptive_stable";
@@ -2387,7 +2664,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
         current_generation_control_mode_ =
             (this->step_ <= 1)
                 ? "normal"
-                : ((PATCH_GENERATION_CONTROL_MODE == 1)
+                : ((PatchGenerationControlMode() == 1)
                        ? (micro_refinement_active ? "micro_refinement" : "budget_constrained")
                        : "normal");
       }
@@ -2401,8 +2678,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
       current_adaptation_max_delta_ =
           std::max(1.0e-3, base_max_delta * pow(effective_retry_shrink, retry));
       if (micro_refinement_active) {
-        current_adaptation_relaxation_ *= STEP2_MICRO_RELAXATION_SCALE;
-        current_adaptation_max_delta_ *= STEP2_MICRO_MAX_DELTA_SCALE;
+        current_adaptation_relaxation_ *= Step2MicroRelaxationScale();
+        current_adaptation_max_delta_ *= Step2MicroMaxDeltaScale();
       }
       if (current_policy_.stable_mode && this->step_ >= 5) {
         // ApplyAdaptationRateLimit só corre em AdaptDomain; AdaptCurve usa fatores
@@ -3522,32 +3799,32 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     const bool step2_quality_critical = (step_ == 2 && i < current_patch_adaptation_.size() &&
                                          (current_patch_adaptation_[i].quality_min < 0.25 ||
                                           current_patch_adaptation_[i].poor_ratio > 0.18));
-    if (step_ > 1 && PATCH_GENERATION_CONTROL_MODE == 1) {
-      patch_generation_mode = (STEP2_MICRO_REFINEMENT_MODE == 1) ? "micro_refinement" : "normal";
-      if (PATCH_GENERATION_TOP_RANK_ONLY_MODE == 1 &&
+    if (step_ > 1 && PatchGenerationControlMode() == 1) {
+      patch_generation_mode = (Step2MicroRefinementMode() == 1) ? "micro_refinement" : "normal";
+      if (PatchGenerationTopRankOnlyMode() == 1 &&
           (i >= current_patch_eligible_mask_.size() || current_patch_eligible_mask_[i] == 0)) {
         patch_generation_mode = "budget_constrained";
-        domain_factor = std::max(domain_factor, STEP2_NONELIGIBLE_FACTOR_MIN);
+        domain_factor = std::max(domain_factor, Step2NoneligibleFactorMin());
       }
     }
     if (step_ > 1 && !few_patch_low_error &&
         static_cast<size_t>(i) < current_patch_eligible_mask_.size() &&
         current_patch_eligible_mask_[i] == 1) {
       double eligible_h_scale = 1.0;
-      if (STEP2_MICRO_REFINEMENT_MODE == 1) {
-        eligible_h_scale *= STEP2_ELIGIBLE_H_SCALE;
+      if (Step2MicroRefinementMode() == 1) {
+        eligible_h_scale *= Step2EligibleHScale();
       }
       if (static_cast<size_t>(i) < patch_history_.size() &&
           patch_history_[i].prev_patch_elements >=
-              static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
+              static_cast<unsigned long long>(std::max(1.0, Step2EligibleElementsThreshold()))) {
         eligible_h_scale *= 1.05;
       }
       if (ElementBudgetPressureMode() == 1 &&
           current_budget_pressure_ > ElementBudgetPressureStart()) {
         eligible_h_scale *= ElementBudgetPressureHScale();
       }
-      if (PATCH_GENERATION_CONTROL_MODE == 1) {
-        eligible_h_scale *= PATCH_GENERATION_MICRO_H_SCALE;
+      if (PatchGenerationControlMode() == 1) {
+        eligible_h_scale *= PatchGenerationMicroHScale();
       }
       domain_factor =
           ClampValue(domain_factor * eligible_h_scale, PatchFactorMin(), PatchFactorMax());
@@ -3576,7 +3853,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     if (step_ > 1 && i < patch_history_.size() && i < current_patch_adaptation_.size()) {
       const PatchHistoryState& history = patch_history_[i];
       const double efficiency_norm =
-          Clamp01(history.prev_patch_efficiency / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+          Clamp01(history.prev_patch_efficiency / std::max(PatchEfficiencyTarget(), 1.0e-9));
       const double rank_weight =
           (refinement_rank > 0)
               ? std::max(0.35,
@@ -3608,7 +3885,7 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         domain_factor = ClampValue(domain_factor * PatchLocalBudgetHScale(), PatchFactorMin(),
                                    PatchFactorMax());
       }
-      if (!few_patch_low_error && PATCH_GENERATION_CONTROL_MODE == 1 &&
+      if (!few_patch_low_error && PatchGenerationControlMode() == 1 &&
           current_target_element_growth_ > 0.0 && history.prev_patch_elements > 0ULL &&
           current_target_element_growth_ <= 1.0) {
         domain_factor =
@@ -3622,8 +3899,8 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         }
       }
       if (!few_patch_low_error && ElementBudgetPressureMode() == 1 &&
-          current_budget_pressure_ >= PATCH_GENERATION_BUDGET_PRESSURE_START) {
-        domain_factor = ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
+          current_budget_pressure_ >= PatchGenerationBudgetPressureStart()) {
+        domain_factor = ClampValue(domain_factor * PatchGenerationConstrainedHScale(),
                                    PatchFactorMin(), PatchFactorMax());
         patch_generation_mode = "budget_constrained";
       }
@@ -4103,31 +4380,31 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
   const double top_fraction =
       current_policy_.stable_mode
           ? 1.0
-          : ((step_ <= 1) ? PATCH_TOP_ERROR_FRACTION
-                          : ClampValue(PATCH_TOP_ERROR_FRACTION * STEP2_TOP_ERROR_FRACTION_SCALE,
+          : ((step_ <= 1) ? PatchTopErrorFraction()
+                          : ClampValue(PatchTopErrorFraction() * Step2TopErrorFractionScale(),
                                        1.0 / std::max(1U, patch_count), 1.0));
   const unsigned int nominal_top_count = std::max(
       1U, static_cast<unsigned int>(std::ceil(top_fraction * static_cast<double>(patch_count))));
   unsigned int top_count = nominal_top_count;
-  if (!current_policy_.stable_mode && step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1) {
+  if (!current_policy_.stable_mode && step_ > 1 && Step2HardSpatialFilterMode() == 1) {
     const double shrink_scale =
         std::pow(ElementBudgetRetryTopKShrink(), static_cast<int>(current_budget_retry_count_));
-    top_count = std::max(static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MIN),
+    top_count = std::max(static_cast<unsigned int>(Step2TopPatchCountMin()),
                          static_cast<unsigned int>(
                              std::ceil(static_cast<double>(nominal_top_count) * shrink_scale)));
-    top_count = std::min(top_count, static_cast<unsigned int>(std::max(STEP2_TOP_PATCH_COUNT_MIN,
-                                                                       STEP2_TOP_PATCH_COUNT_MAX)));
+    top_count = std::min(top_count, static_cast<unsigned int>(std::max(Step2TopPatchCountMin(),
+                                                                       Step2TopPatchCountMax())));
     top_count = std::min(top_count, patch_count);
     if (BudgetDrivenAdaptation() == 1 && current_target_element_growth_ > 1.0) {
       const unsigned int expanded_top_count = std::min(
-          patch_count, std::max(top_count, static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MAX)));
+          patch_count, std::max(top_count, static_cast<unsigned int>(Step2TopPatchCountMax())));
       top_count = std::max(top_count, expanded_top_count);
     }
     if (step3plus_phase) {
       top_count = std::max(
           top_count,
           std::min(patch_count, std::max(static_cast<unsigned int>(4U),
-                                         static_cast<unsigned int>(STEP2_TOP_PATCH_COUNT_MAX))));
+                                         static_cast<unsigned int>(Step2TopPatchCountMax()))));
     }
     if (step2_phase) {
       top_count = std::max(top_count, std::min(patch_count, static_cast<unsigned int>(4U)));
@@ -4139,13 +4416,12 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
   const double refine_cutoff =
       sorted_errors[std::min(static_cast<size_t>(top_count - 1U), sorted_errors.size() - 1U)];
   const double refinement_scale =
-      (step_ <= 1) ? 1.0 : STEP2_REFINEMENT_ATTENUATION * PATCH_STEP2_REFINEMENT_SCALE;
+      (step_ <= 1) ? 1.0 : Step2RefinementAttenuation() * PatchStep2RefinementScale();
   const double refinement_scale_effective =
       refinement_scale * (stable_small_mesh_step1 ? 0.55 : 1.0);
   const double factor_mid = 1.0;
-  const bool micro_refinement_active = (step_ > 1 && STEP2_MICRO_REFINEMENT_MODE == 1);
-  const double micro_patch_scale =
-      micro_refinement_active ? STEP2_MICRO_PATCH_REFINEMENT_SCALE : 1.0;
+  const bool micro_refinement_active = (step_ > 1 && Step2MicroRefinementMode() == 1);
+  const double micro_patch_scale = micro_refinement_active ? Step2MicroPatchRefinementScale() : 1.0;
   const double budget_range_scale = (step_ > 1 && current_budget_retry_count_ > 0U)
                                         ? std::pow(ElementBudgetRetryFactorRangeScale(),
                                                    static_cast<int>(current_budget_retry_count_))
@@ -4154,12 +4430,12 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
                                        current_budget_pressure_ > ElementBudgetPressureStart())
                                           ? ElementBudgetPressureFactorShrink()
                                           : 1.0;
-  const double effective_range_shrink = ClampValue(
-      ((step_ <= 1) ? 1.0
-                    : (STEP2_FACTOR_RANGE_SHRINK *
-                       (micro_refinement_active ? STEP2_MICRO_FACTOR_RANGE_SCALE : 1.0))) *
-          budget_range_scale * pressure_range_scale,
-      0.05, 1.0);
+  const double effective_range_shrink =
+      ClampValue(((step_ <= 1) ? 1.0
+                               : (Step2FactorRangeShrink() *
+                                  (micro_refinement_active ? Step2MicroFactorRangeScale() : 1.0))) *
+                     budget_range_scale * pressure_range_scale,
+                 0.05, 1.0);
   const double shrunk_min = factor_mid - (factor_mid - PatchFactorMin()) * effective_range_shrink;
   const double shrunk_max = factor_mid + (PatchFactorMax() - factor_mid) * effective_range_shrink;
 
@@ -4233,7 +4509,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
     const bool is_top_error_patch = local_error >= refine_cutoff;
     const bool efficiency_ok =
         (i < patch_history_.size())
-            ? (patch_history_[i].prev_patch_efficiency >= std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9))
+            ? (patch_history_[i].prev_patch_efficiency >= std::max(PatchEfficiencyTarget(), 1.0e-9))
             : true;
     const bool history_improved =
         (i < patch_history_.size()) ? (patch_history_[i].prev_patch_improved == 1) : false;
@@ -4252,7 +4528,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
     const bool eligible_for_refinement =
         current_policy_.stable_mode
             ? !saturated_hard
-            : (!(step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1) ||
+            : (!(step_ > 1 && Step2HardSpatialFilterMode() == 1) ||
                (refinement_rank[i] > 0 && refinement_rank[i] <= static_cast<int>(top_count) &&
                 (efficiency_ok || history_improved || step2_phase || step3plus_phase) &&
                 !saturated_soft && !saturated_hard));
@@ -4269,7 +4545,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
             : 0;
 
     double factor = 1.0;
-    if (PATCH_ADAPTATION_MODE == 0) {
+    if (PatchAdaptationMode() == 0) {
       if (normalized_error >= 0.75) {
         factor = 0.80;
       } else if (normalized_error >= 0.50) {
@@ -4282,16 +4558,15 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         factor = 1.05;
       }
     } else {
-      const double error_signal = std::pow(Clamp01(normalized_error), PATCH_ERROR_EXPONENT);
+      const double error_signal = std::pow(Clamp01(normalized_error), PatchErrorExponent());
       const double mean_quality_deficit =
-          PATCH_QUALITY_TARGET > 0.0 ? Clamp01((PATCH_QUALITY_TARGET - snapshot.quality_mean) /
-                                               std::max(PATCH_QUALITY_TARGET, 1.0e-12))
+          PatchQualityTarget() > 0.0 ? Clamp01((PatchQualityTarget() - snapshot.quality_mean) /
+                                               std::max(PatchQualityTarget(), 1.0e-12))
                                      : 0.0;
       const double min_quality_deficit =
-          PATCH_QUALITY_MIN_TARGET > 0.0
-              ? Clamp01((PATCH_QUALITY_MIN_TARGET - snapshot.quality_min) /
-                        std::max(PATCH_QUALITY_MIN_TARGET, 1.0e-12))
-              : 0.0;
+          PatchQualityMinTarget() > 0.0 ? Clamp01((PatchQualityMinTarget() - snapshot.quality_min) /
+                                                  std::max(PatchQualityMinTarget(), 1.0e-12))
+                                        : 0.0;
       const double good_quality_deficit = Clamp01((0.70 - snapshot.good_ratio_ge_0_60) / 0.70);
       const double quality_signal = Clamp01(
           0.50 * mean_quality_deficit + 0.25 * min_quality_deficit +
@@ -4307,22 +4582,22 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
           current_policy_.stable_mode
               ? (eligible_for_refinement ? (0.55 + 0.45 * Clamp01(normalized_error)) : 0.35)
               : (eligible_for_refinement ? 1.0
-                                         : ((step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1)
+                                         : ((step_ > 1 && Step2HardSpatialFilterMode() == 1)
                                                 ? 0.0
                                                 : (is_top_error_patch ? 1.0 : 0.15)));
       double refine_signal = Clamp01(
-          ((1.0 - PATCH_QUALITY_WEIGHT) * error_signal + PATCH_QUALITY_WEIGHT * quality_signal) *
+          ((1.0 - PatchQualityWeight()) * error_signal + PatchQualityWeight() * quality_signal) *
           refinement_gate);
       const double low_error_signal = Clamp01(1.0 - normalized_error);
       double coarsen_signal =
           (local_error <= LocalErrorTarget())
               ? Clamp01(low_error_signal * (1.0 - Clamp01(snapshot.poor_ratio)) *
-                        Clamp01(snapshot.quality_mean / std::max(PATCH_QUALITY_TARGET, 1.0e-12)))
+                        Clamp01(snapshot.quality_mean / std::max(PatchQualityTarget(), 1.0e-12)))
               : 0.0;
-      if (PATCH_STEPWISE_MODE == 1 && i < patch_history_.size()) {
+      if (PatchStepwiseMode() == 1 && i < patch_history_.size()) {
         const PatchHistoryState& history = patch_history_[i];
         const double efficiency_norm =
-            Clamp01(history.prev_patch_efficiency / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+            Clamp01(history.prev_patch_efficiency / std::max(PatchEfficiencyTarget(), 1.0e-9));
         const double history_error_drop_signal =
             history.prev_patch_error > 0.0 ? Clamp01(history.prev_patch_error_drop_abs /
                                                      std::max(history.prev_patch_error, 1.0e-9))
@@ -4330,10 +4605,10 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         const double history_quality_signal = Clamp01(
             (history.prev_patch_quality_mean + (1.0 - history.prev_patch_poor_ratio)) / 2.0);
         const double history_signal =
-            PATCH_HISTORY_BLEND * (0.60 * efficiency_norm + 0.25 * history_error_drop_signal +
+            PatchHistoryBlend() * (0.60 * efficiency_norm + 0.25 * history_error_drop_signal +
                                    0.15 * history_quality_signal) +
-            (1.0 - PATCH_HISTORY_BLEND) * refine_signal;
-        refine_signal *= (1.0 - PATCH_EFFICIENCY_WEIGHT) + PATCH_EFFICIENCY_WEIGHT * history_signal;
+            (1.0 - PatchHistoryBlend()) * refine_signal;
+        refine_signal *= (1.0 - PatchEfficiencyWeight()) + PatchEfficiencyWeight() * history_signal;
         if (step3plus_phase && history.prev_patch_improved == 1 &&
             history.prev_patch_decision_class == "refine") {
           refine_signal = std::max(refine_signal, 0.35);
@@ -4348,7 +4623,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
           refine_signal = std::max(refine_signal, 0.25);
         }
         const bool inefficient_patch =
-            history.prev_patch_efficiency < std::max(1.0e-9, PATCH_EFFICIENCY_TARGET) &&
+            history.prev_patch_efficiency < std::max(1.0e-9, PatchEfficiencyTarget()) &&
             history.prev_patch_elements > static_cast<unsigned long long>(
                                               std::max(1.0, QuadtreeSaturationElementsThreshold()));
         if (inefficient_patch && !eligible_for_refinement) {
@@ -4359,12 +4634,12 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         }
       }
       if (eligible_for_refinement && step_ > 1) {
-        double eligible_damp = STEP2_ELIGIBLE_REFINEMENT_DAMP;
+        double eligible_damp = Step2EligibleRefinementDamp();
         if (current_budget_retry_count_ > 0U) {
-          eligible_damp *= STEP2_ELIGIBLE_REFINEMENT_DAMP_ON_RETRY;
+          eligible_damp *= Step2EligibleRefinementDampOnRetry();
         }
         if (snapshot.elements_prev >=
-            static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
+            static_cast<unsigned long long>(std::max(1.0, Step2EligibleElementsThreshold()))) {
           eligible_damp *= 0.75;
         }
         if (ElementBudgetPressureMode() == 1 &&
@@ -4378,35 +4653,34 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         refine_signal *= ClampValue(eligible_damp, 0.0, 1.0);
         snapshot.intra_patch_damped = 1;
       }
-      if (!current_policy_.stable_mode && step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
+      if (!current_policy_.stable_mode && step_ > 1 && Step2HardSpatialFilterMode() == 1 &&
           !eligible_for_refinement) {
         refine_signal = 0.0;
-        coarsen_signal =
-            (step3plus_phase || BudgetDrivenAdaptation() == 1)
-                ? 0.0
-                : (STEP2_NONELIGIBLE_FORCE_COARSEN == 1 ? std::max(coarsen_signal, 0.20)
-                                                        : coarsen_signal);
+        coarsen_signal = (step3plus_phase || BudgetDrivenAdaptation() == 1)
+                             ? 0.0
+                             : (Step2NoneligibleForceCoarsen() == 1 ? std::max(coarsen_signal, 0.20)
+                                                                    : coarsen_signal);
       }
       if (step2_phase && needs_quality_repair && refinement_rank[i] > 0 &&
           refinement_rank[i] <= static_cast<int>(top_count + 1U)) {
         refine_signal = std::max(refine_signal, 0.28);
         coarsen_signal *= 0.25;
       }
-      factor = 1.0 - (PATCH_REFINEMENT_STRENGTH * micro_patch_scale) * refine_signal +
-               PATCH_COARSENING_STRENGTH * coarsen_signal;
-      if (!current_policy_.stable_mode && (step_ <= 1 || STEP2_HARD_SPATIAL_FILTER_MODE == 0) &&
+      factor = 1.0 - (PatchRefinementStrength() * micro_patch_scale) * refine_signal +
+               PatchCoarseningStrength() * coarsen_signal;
+      if (!current_policy_.stable_mode && (step_ <= 1 || Step2HardSpatialFilterMode() == 0) &&
           !is_top_error_patch && local_error > LocalErrorTarget()) {
         factor =
-            std::max(1.0 + 0.5 * PATCH_COARSENING_STRENGTH, factor + PATCH_COARSENING_STRENGTH);
+            std::max(1.0 + 0.5 * PatchCoarseningStrength(), factor + PatchCoarseningStrength());
       }
       factor = 1.0 - refinement_scale_effective * (1.0 - factor);
-      if (PATCH_STEPWISE_MODE == 1 && i < patch_history_.size() &&
-          patch_history_[i].prev_patch_efficiency < std::max(1.0e-9, PATCH_EFFICIENCY_TARGET)) {
-        factor = std::max(factor, PATCH_INEFFICIENT_CAP);
+      if (PatchStepwiseMode() == 1 && i < patch_history_.size() &&
+          patch_history_[i].prev_patch_efficiency < std::max(1.0e-9, PatchEfficiencyTarget())) {
+        factor = std::max(factor, PatchInefficientCap());
       }
-      if (!current_policy_.stable_mode && step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
+      if (!current_policy_.stable_mode && step_ > 1 && Step2HardSpatialFilterMode() == 1 &&
           !eligible_for_refinement) {
-        factor = std::max(factor, STEP2_NONELIGIBLE_FACTOR_MIN);
+        factor = std::max(factor, Step2NoneligibleFactorMin());
       }
       if (saturated_hard) {
         factor = std::max(factor, QuadtreeHardSaturationFactorMin());
@@ -4502,14 +4776,14 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
             (i < patch_history_.size()) ? &patch_history_[i] : nullptr;
         const double error_budget_share = std::pow(std::max(0.0, snapshot.normalized_error), 1.35);
         const double quality_repair_budget_share =
-            Clamp01((0.6 * std::max(0.0, PATCH_QUALITY_TARGET - snapshot.quality_mean) +
-                     0.4 * std::max(0.0, PATCH_QUALITY_MIN_TARGET - snapshot.quality_min)) /
-                    std::max(PATCH_QUALITY_TARGET, 1.0e-9)) +
+            Clamp01((0.6 * std::max(0.0, PatchQualityTarget() - snapshot.quality_mean) +
+                     0.4 * std::max(0.0, PatchQualityMinTarget() - snapshot.quality_min)) /
+                    std::max(PatchQualityTarget(), 1.0e-9)) +
             Clamp01(snapshot.poor_ratio / 0.25);
         const double error_term = PatchBudgetErrorWeight() * error_budget_share;
         const double efficiency_term =
             PatchBudgetEfficiencyWeight() *
-            Clamp01(snapshot.efficiency_score / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+            Clamp01(snapshot.efficiency_score / std::max(PatchEfficiencyTarget(), 1.0e-9));
         const double quality_term = PatchBudgetQualityWeight() * quality_repair_budget_share;
         const double rank_term =
             current_policy_.stable_mode
@@ -5069,7 +5343,7 @@ GeneratorAdaptive::SmoothPatchAdaptationFactors(const Geometry* geometry,
         if (neighbor_id >= raw_factors.size()) {
           continue;
         }
-        if (step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
+        if (step_ > 1 && Step2HardSpatialFilterMode() == 1 &&
             static_cast<size_t>(i) < current_patch_eligible_mask_.size() &&
             static_cast<size_t>(neighbor_id) < current_patch_eligible_mask_.size() &&
             current_patch_eligible_mask_[neighbor_id] != current_patch_eligible_mask_[i]) {
@@ -5083,17 +5357,17 @@ GeneratorAdaptive::SmoothPatchAdaptationFactors(const Geometry* geometry,
 
     if (neighbor_count > 0) {
       const double neighbor_mean = neighbor_sum / static_cast<double>(neighbor_count);
-      const bool hard_spatial = (step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1);
-      const double neighbor_weight = hard_spatial ? STEP2_SMOOTHING_NEIGHBOR_WEIGHT : 0.10;
+      const bool hard_spatial = (step_ > 1 && Step2HardSpatialFilterMode() == 1);
+      const double neighbor_weight = hard_spatial ? Step2SmoothingNeighborWeight() : 0.10;
       smoothed_factors[i] =
           (1.0 - neighbor_weight) * raw_factors[i] + neighbor_weight * neighbor_mean;
     }
 
     smoothed_factors[i] = ClampValue(smoothed_factors[i], PatchFactorMin(), PatchFactorMax());
-    if (step_ > 1 && STEP2_HARD_SPATIAL_FILTER_MODE == 1 &&
+    if (step_ > 1 && Step2HardSpatialFilterMode() == 1 &&
         static_cast<size_t>(i) < current_patch_eligible_mask_.size() &&
         current_patch_eligible_mask_[i] == 0) {
-      smoothed_factors[i] = std::max(smoothed_factors[i], STEP2_NONELIGIBLE_FACTOR_MIN);
+      smoothed_factors[i] = std::max(smoothed_factors[i], Step2NoneligibleFactorMin());
     }
     if (i < current_patch_adaptation_.size()) {
       current_patch_adaptation_[i].smoothed_factor = smoothed_factors[i];
@@ -5158,7 +5432,7 @@ GeneratorAdaptive::ComputeCurveAdaptationFactor(CurveAdaptive* curve,
                                       : 1.0;
       const double efficiency_weight =
           std::max(1.0e-12, patch_history_[patch_id].prev_patch_efficiency /
-                                std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+                                std::max(PatchEfficiencyTarget(), 1.0e-9));
       weight = (1.0 - CurveEfficiencyWeight()) * error_weight +
                CurveEfficiencyWeight() * efficiency_weight;
     } else if (patch_id < last_submesh_error_.size()) {
@@ -5194,7 +5468,7 @@ GeneratorAdaptive::ComputeCurveAdaptationFactor(CurveAdaptive* curve,
                                         : 1.0;
         const double efficiency_weight =
             std::max(1.0e-12, patch_history_[patch_id].prev_patch_efficiency /
-                                  std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+                                  std::max(PatchEfficiencyTarget(), 1.0e-9));
         weight = (1.0 - CurveEfficiencyWeight()) * error_weight +
                  CurveEfficiencyWeight() * efficiency_weight;
       } else {
@@ -6055,33 +6329,33 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
           (step_ == 2 && static_cast<size_t>(i) < current_patch_adaptation_.size() &&
            (current_patch_adaptation_[static_cast<size_t>(i)].quality_min < 0.25 ||
             current_patch_adaptation_[static_cast<size_t>(i)].poor_ratio > 0.18));
-      if (step_ > 1 && PATCH_GENERATION_CONTROL_MODE == 1) {
-        patch_generation_mode = (STEP2_MICRO_REFINEMENT_MODE == 1) ? "micro_refinement" : "normal";
-        if (PATCH_GENERATION_TOP_RANK_ONLY_MODE == 1 &&
+      if (step_ > 1 && PatchGenerationControlMode() == 1) {
+        patch_generation_mode = (Step2MicroRefinementMode() == 1) ? "micro_refinement" : "normal";
+        if (PatchGenerationTopRankOnlyMode() == 1 &&
             (static_cast<size_t>(i) >= current_patch_eligible_mask_.size() ||
              current_patch_eligible_mask_[static_cast<size_t>(i)] == 0)) {
           patch_generation_mode = "budget_constrained";
-          domain_factor = std::max(domain_factor, STEP2_NONELIGIBLE_FACTOR_MIN);
+          domain_factor = std::max(domain_factor, Step2NoneligibleFactorMin());
         }
       }
       if (step_ > 1 && !few_patch_low_error &&
           static_cast<size_t>(i) < current_patch_eligible_mask_.size() &&
           current_patch_eligible_mask_[static_cast<size_t>(i)] == 1) {
         double eligible_h_scale = 1.0;
-        if (STEP2_MICRO_REFINEMENT_MODE == 1) {
-          eligible_h_scale *= STEP2_ELIGIBLE_H_SCALE;
+        if (Step2MicroRefinementMode() == 1) {
+          eligible_h_scale *= Step2EligibleHScale();
         }
         if (static_cast<size_t>(i) < patch_history_.size() &&
             patch_history_[static_cast<size_t>(i)].prev_patch_elements >=
-                static_cast<unsigned long long>(std::max(1.0, STEP2_ELIGIBLE_ELEMENTS_THRESHOLD))) {
+                static_cast<unsigned long long>(std::max(1.0, Step2EligibleElementsThreshold()))) {
           eligible_h_scale *= 1.05;
         }
         if (ElementBudgetPressureMode() == 1 &&
             current_budget_pressure_ > ElementBudgetPressureStart()) {
           eligible_h_scale *= ElementBudgetPressureHScale();
         }
-        if (PATCH_GENERATION_CONTROL_MODE == 1) {
-          eligible_h_scale *= PATCH_GENERATION_MICRO_H_SCALE;
+        if (PatchGenerationControlMode() == 1) {
+          eligible_h_scale *= PatchGenerationMicroHScale();
         }
         domain_factor =
             ClampValue(domain_factor * eligible_h_scale, PatchFactorMin(), PatchFactorMax());
@@ -6109,7 +6383,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
           static_cast<size_t>(i) < current_patch_adaptation_.size()) {
         const PatchHistoryState& history = patch_history_[static_cast<size_t>(i)];
         const double efficiency_norm =
-            Clamp01(history.prev_patch_efficiency / std::max(PATCH_EFFICIENCY_TARGET, 1.0e-9));
+            Clamp01(history.prev_patch_efficiency / std::max(PatchEfficiencyTarget(), 1.0e-9));
         const double rank_weight =
             (refinement_rank > 0)
                 ? std::max(0.35,
@@ -6144,7 +6418,7 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
           domain_factor = ClampValue(domain_factor * PatchLocalBudgetHScale(), PatchFactorMin(),
                                      PatchFactorMax());
         }
-        if (!few_patch_low_error && PATCH_GENERATION_CONTROL_MODE == 1 &&
+        if (!few_patch_low_error && PatchGenerationControlMode() == 1 &&
             current_target_element_growth_ > 0.0 && history.prev_patch_elements > 0ULL &&
             current_target_element_growth_ <= 1.0) {
           domain_factor =
@@ -6157,8 +6431,8 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
           }
         }
         if (!few_patch_low_error && ElementBudgetPressureMode() == 1 &&
-            current_budget_pressure_ >= PATCH_GENERATION_BUDGET_PRESSURE_START) {
-          domain_factor = ClampValue(domain_factor * PATCH_GENERATION_CONSTRAINED_H_SCALE,
+            current_budget_pressure_ >= PatchGenerationBudgetPressureStart()) {
+          domain_factor = ClampValue(domain_factor * PatchGenerationConstrainedHScale(),
                                      PatchFactorMin(), PatchFactorMax());
           patch_generation_mode = "budget_constrained";
         }

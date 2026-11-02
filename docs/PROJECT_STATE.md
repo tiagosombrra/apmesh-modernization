@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `3b2e12a47a5d0f449141e1bc492dd1ae655c8e82` (PR #147).
+Entry main: `fae81724a7d8c48c81fe424d963e42436b0a4e3f` (PR #148).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,23 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: quadtree limits and saturation controls
+## Active production delivery: patch generation and refinement controls
+
+The [patch generation context](evidence/PATCH_GENERATION_CONTEXT.md) owns 37
+generation/refinement/spatial/micro controls. The factory captures three
+RuntimeConfig fields and 34 existing process values without parser/default changes.
+Thirteen stable writes retain their values/order in three blocks at the original
+positions; separate effective instance state preserves earlier updates and raw
+configuration. Scalar consumers retain formulas, branch/diagnostic spelling,
+selection, acceptance and stopping policies. Absent settings keep live global
+reads and original writes. Three cases in the existing native metrics probe check
+84 raw/84 stable double representations, nine integer fields, retired sources,
+foreign globals and 36 actual adaptation/smoothing factor results. The unchanged
+scientific regression remains required; no new model, target or instrument
+campaign. Patch consistency, acceptance and other shared controls still require
+serialization. Stage 3/6 and full recovery/concurrency/memory obligations stay open.
+
+## Delivered production context: quadtree limits and saturation controls
 
 The [quadtree context](evidence/QUADTREE_CONTROLS_CONTEXT.md) owns 19 depth,
 saturation and quality controls. Four stable writes retain their original values

@@ -53,12 +53,20 @@ Adapter consumes the independently captured discretization pair. Preserve point
 clamping, weighting, synchronization and publication/rollback expressions; reuse
 the existing native/scientific/delivery gates without a new model campaign.
 Remaining patch/quadtree controls stay shared at that checkpoint; stages remain open.
-The active [quadtree controls context](evidence/QUADTREE_CONTROLS_CONTEXT.md)
+The delivered [quadtree controls context](evidence/QUADTREE_CONTROLS_CONTEXT.md)
 owns 19 limits/saturation/quality settings and isolates four stable writes.
 Adapter observes pinned effective state and copies three quality values into
 each tree; cells keep their original tree observer. Preserve depth, subdivision,
 template and saturation expressions. Reuse the existing native/scientific/delivery
 regression. No root/domain/template policy or scientific criterion changes.
+
+The active [patch generation context](evidence/PATCH_GENERATION_CONTEXT.md) owns
+37 generation/refinement/spatial/micro controls and separates 13 ordered stable
+writes in three original blocks. Preserve raw snapshots, legacy fallback and all
+factor, eligibility, size, smoothing, diagnostic and acceptance expressions.
+Require the existing native factor differential and scientific/delivery regression;
+do not add a model/instrument campaign. Patch consistency and acceptance controls
+are outside this bounded lot; remaining shared state and stage obligations stay open.
 
 ## Current stage and completion route
 
