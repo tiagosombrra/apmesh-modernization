@@ -1,6 +1,7 @@
 #ifndef _QUADTREE_H_
 #define _QUADTREE_H_
 
+#include <optional>
 #include "../../data/definitions.h"
 #include "boundary.h"
 #include "edge.h"
@@ -15,6 +16,12 @@ using namespace Par2DJMesh::Basics;
 
 namespace Par2DJMesh {
 namespace AFT {
+struct QuadtreeQualityControls {
+  double face_quality_threshold = 0.0;
+  double low_quality_h_factor = 1.0;
+  double template_poor_score_threshold = 0.0;
+};
+
 struct QuadtreeTemplateStats {
   unsigned long long template_count[6];
   double template_score_sum[6];
@@ -29,15 +36,15 @@ struct QuadtreeTemplateStats {
 };
 
 class Quadtree : public Shape {
- private:
+private:
   double factor;
   long int maxLevelCap;
 
-  QuadtreeCell *root;
+  QuadtreeCell* root;
 
   QuadtreeCellList leaves;
 
-  Boundary *boundary;
+  Boundary* boundary;
 
   // para a geracao baseada em templates
   EdgeList front;
@@ -48,82 +55,88 @@ class Quadtree : public Shape {
   long int lastEdgeId;
   long int lastFaceId;
   QuadtreeTemplateStats template_stats;
+  std::optional<QuadtreeQualityControls> quality_controls_ = std::nullopt;
 
- public:
-   Quadtree(Boundary* boundary = nullptr, double factor = 0.85);
-   ~Quadtree() override;
+public:
+  Quadtree(Boundary* boundary = nullptr, double factor = 0.85);
+  ~Quadtree() override;
 
-   void setFactor(double factor);
-   double getFactor();
-   void setMaxLevelCap(long int max_level_cap);
-   long int getMaxLevelCap() const;
+  void SetQualityControls(QuadtreeQualityControls controls) noexcept;
+  double FaceQualityThreshold() const noexcept;
+  double LowQualityHFactor() const noexcept;
+  double TemplatePoorScoreThreshold() const noexcept;
 
-   void setBoundary(Boundary* boundary);
-   Boundary* getBoundary();
+  void setFactor(double factor);
+  double getFactor();
+  void setMaxLevelCap(long int max_level_cap);
+  long int getMaxLevelCap() const;
 
-   void setRoot(QuadtreeCell* root);
-   QuadtreeCell* getRoot();
+  void setBoundary(Boundary* boundary);
+  Boundary* getBoundary();
 
-   // retira cell como folha e adiciona os filhos de cell
-   void addLeaves(QuadtreeCell* cell);
-   QuadtreeCellList getLeaves();
+  void setRoot(QuadtreeCell* root);
+  QuadtreeCell* getRoot();
 
-   int getNumCells();
+  // retira cell como folha e adiciona os filhos de cell
+  void addLeaves(QuadtreeCell* cell);
+  QuadtreeCellList getLeaves();
 
-   Vertex* getMin();
-   Vertex* getMax();
+  int getNumCells();
 
-   long int getCellId();
+  Vertex* getMin();
+  Vertex* getMax();
 
-   void findCell(Edge* e);
+  long int getCellId();
 
-   bool in(Vertex* v);
-   bool on(Vertex* v);
-   bool out(Vertex* v);
+  void findCell(Edge* e);
 
-   enum MethodStatus generate(const FaceList& oldmesh);
-   enum MethodStatus refineToLevel();
-   enum MethodStatus refineAccordingToNeighbors();
+  bool in(Vertex* v);
+  bool on(Vertex* v);
+  bool out(Vertex* v);
 
-   bool execute(const FaceList& oldmesh);
+  enum MethodStatus generate(const FaceList& oldmesh);
+  enum MethodStatus refineToLevel();
+  enum MethodStatus refineAccordingToNeighbors();
 
-   // para a geracao baseada em templates
-   long int vertexId();
-   long int edgeId();
-   long int faceId();
+  bool execute(const FaceList& oldmesh);
 
-   EdgeList getFront();
-   EdgeList getEdges();
-   VertexList getVertices();
-   FaceList getMesh();
+  // para a geracao baseada em templates
+  long int vertexId();
+  long int edgeId();
+  long int faceId();
 
-   // Append template owners in order and empty the source lists without allocation.
-   // Getters expose borrowed views before transfer; cells/front remain observers.
-   void TransferTemplateMesh(VertexList& destination_vertices, EdgeList& destination_edges,
-                             FaceList& destination_faces) noexcept;
+  EdgeList getFront();
+  EdgeList getEdges();
+  VertexList getVertices();
+  FaceList getMesh();
 
-   // Adopt each generated object exactly once until TransferTemplateMesh is called.
-   void add(Vertex* v);
-   void add(Edge* e);
-   void add(Face* f);
-   void addFront(Edge* e);
-   void ResetTemplateStats();
-   void RecordTemplateChoice(int type, double score);
-   void RecordLowQualitySubdivision();
-   const QuadtreeTemplateStats& GetTemplateStats() const;
+  // Append template owners in order and empty the source lists without allocation.
+  // Getters expose borrowed views before transfer; cells/front remain observers.
+  void TransferTemplateMesh(VertexList& destination_vertices, EdgeList& destination_edges,
+                            FaceList& destination_faces) noexcept;
 
-   enum MethodStatus makeTemplateBasedMesh();
+  // Adopt each generated object exactly once until TransferTemplateMesh is called.
+  void add(Vertex* v);
+  void add(Edge* e);
+  void add(Face* f);
+  void addFront(Edge* e);
+  void ResetTemplateStats();
+  void RecordTemplateChoice(int type, double score);
+  void RecordLowQualitySubdivision();
+  const QuadtreeTemplateStats& GetTemplateStats() const;
 
-   string getText() override;
+  enum MethodStatus makeTemplateBasedMesh();
 
-   // #if USE_OPENGL
-   //     void highlight();
-   //     void unhighlight();
+  string getText() override;
 
-   //    void draw();
-   // #endif //#if USE_OPENGL
+  // #if USE_OPENGL
+  //     void highlight();
+  //     void unhighlight();
+
+  //    void draw();
+  // #endif //#if USE_OPENGL
 };
-}  // namespace AFT
-}  // namespace Par2DJMesh
+} // namespace AFT
+} // namespace Par2DJMesh
 
-#endif  // #ifndef _QUADTREE_H_
+#endif // #ifndef _QUADTREE_H_

@@ -60,14 +60,15 @@ double ClampValue(const double value, const double lower, const double upper) {
 
 // Profundidade efetiva na quadtree do AFT: valores < 0 do gerador significam
 // "nÃ£o definido"; opcionalmente mapeamos para PATCH_QUADTREE_DEPTH_* (config).
-int ResolveQuadtreeDepthCap(int max_quadtree_depth, int adaptive_step) {
+int ResolveQuadtreeDepthCap(int max_quadtree_depth, int adaptive_step, int resolve_negative,
+                            int depth_step1, int depth_stepn) {
   if (max_quadtree_depth >= 0) {
     return max_quadtree_depth;
   }
-  if (ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH == 0) {
+  if (resolve_negative == 0) {
     return -1;
   }
-  const int d = (adaptive_step <= 1) ? PATCH_QUADTREE_DEPTH_STEP1 : PATCH_QUADTREE_DEPTH_STEPN;
+  const int d = (adaptive_step <= 1) ? depth_step1 : depth_stepn;
   return std::max(0, std::min(32, d));
 }
 
@@ -903,8 +904,9 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
   // Advancing front (ratio, tolerance, smoothing iterations, smoothing factor).
   AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,
                         SMOOTHING_LAPLACIAN_FACTOR);
+  ConfigureQuadtree(avanco.getQuadtree());
   avanco.SetAdaptiveContext(adaptive_step, patch_index);
-  const int resolved_depth_omp = ResolveQuadtreeDepthCap(max_quadtree_depth, adaptive_step);
+  const int resolved_depth_omp = ResolveQuadtreeDepth(max_quadtree_depth, adaptive_step);
   if (avanco.getQuadtree()) {
     avanco.getQuadtree()->setMaxLevelCap(resolved_depth_omp);
   }
@@ -1262,7 +1264,7 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
                                   ? &*generation_context_->adaptive_policy
                                   : nullptr;
   PrepareStructuralStatsContext(adaptive_step, retry_index);
-  const int resolved_quadtree_depth = ResolveQuadtreeDepthCap(max_quadtree_depth, adaptive_step);
+  const int resolved_quadtree_depth = ResolveQuadtreeDepth(max_quadtree_depth, adaptive_step);
   struct AttemptResult {
     std::unique_ptr<SubMesh> sub_mesh;
     FaceMetricStats raw_stats;
@@ -1289,6 +1291,7 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     apmesh::adaptation::DomainUvCache cache;
     AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,
                           SMOOTHING_LAPLACIAN_FACTOR);
+    ConfigureQuadtree(avanco.getQuadtree());
     avanco.SetAdaptiveContext(adaptive_step, patch_index);
     if (avanco.getQuadtree()) {
       avanco.getQuadtree()->setMaxLevelCap(local_depth);
@@ -1653,4 +1656,33 @@ double Adapter::InternalCurveDiscretizationFactor() const noexcept {
   return generation_context_ && generation_context_->curves
              ? generation_context_->curves->internal_discretization_factor
              : DISCRETIZATION_CURVE_FACTOR_INTERNAL;
+}
+
+Adapter::Adapter(const apmesh::application::GenerationContext* context,
+                 const apmesh::application::QuadtreeControlsConfig* effective_quadtree) noexcept
+    : generation_context_(context), effective_quadtree_(effective_quadtree) {}
+
+const apmesh::application::QuadtreeControlsConfig* Adapter::QuadtreeSettings() const noexcept {
+  if (effective_quadtree_) {
+    return effective_quadtree_;
+  }
+  return generation_context_ && generation_context_->quadtree ? &*generation_context_->quadtree
+                                                              : nullptr;
+}
+
+int Adapter::ResolveQuadtreeDepth(int max_depth, int step) const noexcept {
+  const auto* config = QuadtreeSettings();
+  return ResolveQuadtreeDepthCap(max_depth, step,
+                                 config ? config->resolve_negative_depth
+                                        : ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH,
+                                 config ? config->depth_step1 : PATCH_QUADTREE_DEPTH_STEP1,
+                                 config ? config->depth_stepn : PATCH_QUADTREE_DEPTH_STEPN);
+}
+
+void Adapter::ConfigureQuadtree(Par2DJMesh::AFT::Quadtree* tree) const noexcept {
+  const auto* config = QuadtreeSettings();
+  if (tree && config) {
+    tree->SetQualityControls({config->face_quality_threshold, config->low_quality_h_factor,
+                              config->template_poor_score_threshold});
+  }
 }

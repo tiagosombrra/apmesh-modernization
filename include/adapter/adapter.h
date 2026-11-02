@@ -25,13 +25,17 @@
 
 namespace apmesh::application {
 struct GenerationContext;
-}
+struct QuadtreeControlsConfig;
+} // namespace apmesh::application
 
 class Adapter {
 public:
   Adapter() = default;
   // Observer: the context must remain live and stationary through this Adapter's lifetime.
   explicit Adapter(const apmesh::application::GenerationContext* context) noexcept;
+  // Both observed values must remain live and stationary.
+  Adapter(const apmesh::application::GenerationContext* context,
+          const apmesh::application::QuadtreeControlsConfig* effective_quadtree) noexcept;
   struct RegionQualityStats {
     unsigned long long element_count = 0ULL;
     double quality_min = 0.0;
@@ -86,10 +90,14 @@ public:
 
 private:
   friend class DomainCandidateFixture;
+  const apmesh::application::QuadtreeControlsConfig* QuadtreeSettings() const noexcept;
+  int ResolveQuadtreeDepth(int max_depth, int step) const noexcept;
+  void ConfigureQuadtree(Par2DJMesh::AFT::Quadtree* tree) const noexcept;
   double CurveDiscretizationFactor() const noexcept;
   double InternalCurveDiscretizationFactor() const noexcept;
   const std::string& OutputPrefix() const noexcept;
   const apmesh::application::GenerationContext* generation_context_ = nullptr;
+  const apmesh::application::QuadtreeControlsConfig* effective_quadtree_ = nullptr;
   double CalculateNewSize(const double ka, const double kd, const double factor_disc,
                           const double length_old);
   double CalculateCurvatureDrivenFactor(const double ka, const double kd, const double base_factor,

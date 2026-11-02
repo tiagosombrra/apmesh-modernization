@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Quadtree limits and saturation controls
+
+The [quadtree lot](evidence/QUADTREE_CONTROLS_CONTEXT.md) reuses 75 CTest/385 nested
+Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/123-boundary reference
+and real MSVC CLI controls on exact head/main. Require prior markers plus three
+quadtree cases: 27 raw/27 stable exact double representations, ten integer fields,
+42 depth results, nine real face-subdivision/template-stat observations and three
+value snapshots after generator retirement. Retain legacy and foreign-global
+negative controls. Source reversal must preserve complete generator/Adapter/tree/
+cell expression/order/literal tokens modulo settings and explicit depth inputs.
+Keep the original failed build logs. Analyze each touched production translation
+unit with its unchanged ap_mesh_engine compilation command once, plus the existing
+native probe command; retain the initial repeated-command partial log. Formatting
+of touched legacy tree files is explicit and token-checked. Require unchanged
+parser/apply/defaults/other production, inventory/contracts and staged/remote gates.
+No new scientific input, native target or standalone instrument campaign is added.
+
 ## Curve discretization and point budgets
 
 The [curve lot](evidence/CURVE_CONTROLS_CONTEXT.md) reuses 75 CTest/385 nested

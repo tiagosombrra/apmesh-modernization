@@ -283,6 +283,7 @@ extern double CURVE_POINT_BUDGET_BLEND;
 extern int CURVE_POINT_MIN;
 extern int CURVE_POINT_MAX;
 extern int PATCH_QUADTREE_CAP_MODE;
+extern int ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH;
 extern int PATCH_QUADTREE_DEPTH_STEP1;
 extern int PATCH_QUADTREE_DEPTH_STEPN;
 extern double PATCH_QUADTREE_MIN_H_SCALE;
@@ -499,16 +500,17 @@ double ClampTargetElements(const double target_elements, const double target_min
   return value;
 }
 
-int EstimateQuadtreeDepthCap(const double target_patch_h, const int step) {
-  if (PATCH_QUADTREE_CAP_MODE != 1 || target_patch_h <= 0.0) {
+int EstimateQuadtreeDepthCap(const double target_patch_h, const int step, int cap_mode,
+                             double min_h_scale, int depth_step1, int depth_stepn) {
+  if (cap_mode != 1 || target_patch_h <= 0.0) {
     return -1;
   }
-  double effective_h = std::max(1.0e-6, target_patch_h * PATCH_QUADTREE_MIN_H_SCALE);
+  double effective_h = std::max(1.0e-6, target_patch_h * min_h_scale);
   if (effective_h > 0.55) {
     effective_h = 0.42;
   }
   const double raw_depth = std::ceil(std::log2(1.0 / effective_h));
-  const int structural_cap = (step <= 1) ? PATCH_QUADTREE_DEPTH_STEP1 : PATCH_QUADTREE_DEPTH_STEPN;
+  const int structural_cap = (step <= 1) ? depth_step1 : depth_stepn;
   return std::max(0, std::min(structural_cap, static_cast<int>(raw_depth)));
 }
 
@@ -583,7 +585,10 @@ unsigned int ResolvePatchIndex(const Geometry* geometry, Patch* patch) {
 GeneratorAdaptive::GeneratorAdaptive() {}
 
 GeneratorAdaptive::GeneratorAdaptive(apmesh::application::GenerationContext context)
-    : generation_context_(std::move(context)), adapter_(&*generation_context_) {}
+    : effective_quadtree_(context.quadtree.value_or(apmesh::application::QuadtreeControlsConfig{})),
+      generation_context_(std::move(context)),
+      adapter_(&*generation_context_,
+               generation_context_->quadtree ? &effective_quadtree_ : nullptr) {}
 
 const apmesh::application::GenerationContext*
 GeneratorAdaptive::GetGenerationContext() const noexcept {
@@ -1094,6 +1099,157 @@ GeneratorAdaptive::BuildCurveControlsRuntime() const noexcept {
           CurveConsistencyGroupBlend(),
           CurveDiscretizationFactor(),
           InternalCurveDiscretizationFactor()};
+}
+
+const apmesh::application::QuadtreeControlsConfig*
+GeneratorAdaptive::QuadtreeSettings() const noexcept {
+  return generation_context_ && generation_context_->quadtree ? &effective_quadtree_ : nullptr;
+}
+
+int GeneratorAdaptive::QuadtreeSaturationMode() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->saturation_mode : QUADTREE_SATURATION_MODE;
+}
+
+double GeneratorAdaptive::QuadtreeSaturationElementsThreshold() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->saturation_elements_threshold : QUADTREE_SATURATION_ELEMENTS_THRESHOLD;
+}
+
+double GeneratorAdaptive::QuadtreeSaturationEfficiencyThreshold() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->saturation_efficiency_threshold
+                : QUADTREE_SATURATION_EFFICIENCY_THRESHOLD;
+}
+
+double GeneratorAdaptive::QuadtreeSaturationHScale() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->saturation_h_scale : QUADTREE_SATURATION_H_SCALE;
+}
+
+int GeneratorAdaptive::QuadtreeHardSaturationMode() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->hard_saturation_mode : QUADTREE_HARD_SATURATION_MODE;
+}
+
+int GeneratorAdaptive::QuadtreeHardSaturationSteps() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->hard_saturation_steps : QUADTREE_HARD_SATURATION_STEPS;
+}
+
+double GeneratorAdaptive::QuadtreeHardSaturationFactorMin() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->hard_saturation_factor_min : QUADTREE_HARD_SATURATION_FACTOR_MIN;
+}
+
+int GeneratorAdaptive::QuadtreeSkipLowQualityOnSaturated() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->skip_low_quality_on_saturated
+                : QUADTREE_SKIP_LOW_QUALITY_SUBDIVIDE_ON_SATURATED;
+}
+
+int GeneratorAdaptive::QuadtreePostprocessDampOnSaturated() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->postprocess_damp_on_saturated : QUADTREE_POSTPROCESS_DAMP_ON_SATURATED;
+}
+
+int GeneratorAdaptive::QuadtreeCapMode() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->cap_mode : PATCH_QUADTREE_CAP_MODE;
+}
+
+int GeneratorAdaptive::QuadtreeDepthStep1() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->depth_step1 : PATCH_QUADTREE_DEPTH_STEP1;
+}
+
+int GeneratorAdaptive::QuadtreeDepthStepN() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->depth_stepn : PATCH_QUADTREE_DEPTH_STEPN;
+}
+
+double GeneratorAdaptive::QuadtreeMinHScale() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->min_h_scale : PATCH_QUADTREE_MIN_H_SCALE;
+}
+
+double GeneratorAdaptive::QuadtreeNeighborRelax() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->neighbor_relax : PATCH_QUADTREE_NEIGHBOR_RELAX;
+}
+
+int GeneratorAdaptive::QuadtreeTemplateLimitMode() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->template_limit_mode : PATCH_QUADTREE_TEMPLATE_LIMIT_MODE;
+}
+
+int GeneratorAdaptive::ResolveNegativeQuadtreeDepth() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->resolve_negative_depth : ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH;
+}
+
+double GeneratorAdaptive::QuadtreeFaceQualityThreshold() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->face_quality_threshold : QUADTREE_FACE_QUALITY_THRESHOLD;
+}
+
+double GeneratorAdaptive::QuadtreeLowQualityHFactor() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->low_quality_h_factor : QUADTREE_LOW_QUALITY_H_FACTOR;
+}
+
+double GeneratorAdaptive::QuadtreeTemplatePoorScoreThreshold() const noexcept {
+  const auto* config = QuadtreeSettings();
+  return config ? config->template_poor_score_threshold : TEMPLATE_POOR_SCORE_THRESHOLD;
+}
+
+int GeneratorAdaptive::EstimateOwnedQuadtreeDepth(double target_h, int step) const {
+  return EstimateQuadtreeDepthCap(target_h, step, QuadtreeCapMode(), QuadtreeMinHScale(),
+                                  QuadtreeDepthStep1(), QuadtreeDepthStepN());
+}
+
+void GeneratorAdaptive::EnableQuadtreeCap() noexcept {
+  auto* config =
+      generation_context_ && generation_context_->quadtree ? &effective_quadtree_ : nullptr;
+  int& mode = config ? config->cap_mode : PATCH_QUADTREE_CAP_MODE;
+  mode = 1;
+}
+
+void GeneratorAdaptive::ApplyStableQuadtreeQuality() noexcept {
+  auto* config =
+      generation_context_ && generation_context_->quadtree ? &effective_quadtree_ : nullptr;
+  double& face_quality_threshold =
+      config ? config->face_quality_threshold : QUADTREE_FACE_QUALITY_THRESHOLD;
+  double& low_quality_h_factor =
+      config ? config->low_quality_h_factor : QUADTREE_LOW_QUALITY_H_FACTOR;
+  double& template_poor_score_threshold =
+      config ? config->template_poor_score_threshold : TEMPLATE_POOR_SCORE_THRESHOLD;
+  face_quality_threshold = 0.40;
+  low_quality_h_factor = 0.85;
+  template_poor_score_threshold = 0.45;
+}
+
+apmesh::application::QuadtreeControlsConfig
+GeneratorAdaptive::BuildQuadtreeRuntime() const noexcept {
+  return {QuadtreeSaturationMode(),
+          QuadtreeSaturationElementsThreshold(),
+          QuadtreeSaturationEfficiencyThreshold(),
+          QuadtreeSaturationHScale(),
+          QuadtreeHardSaturationMode(),
+          QuadtreeHardSaturationSteps(),
+          QuadtreeHardSaturationFactorMin(),
+          QuadtreeSkipLowQualityOnSaturated(),
+          QuadtreePostprocessDampOnSaturated(),
+          QuadtreeCapMode(),
+          QuadtreeDepthStep1(),
+          QuadtreeDepthStepN(),
+          QuadtreeMinHScale(),
+          QuadtreeNeighborRelax(),
+          QuadtreeTemplateLimitMode(),
+          ResolveNegativeQuadtreeDepth(),
+          QuadtreeFaceQualityThreshold(),
+          QuadtreeLowQualityHFactor(),
+          QuadtreeTemplatePoorScoreThreshold()};
 }
 
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
@@ -1622,7 +1778,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   if (current_policy_.stable_mode) {
     ApplyStableElementBudgetSettings();
     EnableCurvePointBudget();
-    PATCH_QUADTREE_CAP_MODE = 1;
+    EnableQuadtreeCap();
     PATCH_GENERATION_CONTROL_MODE = 1;
     PATCH_GENERATION_TOP_RANK_ONLY_MODE = 0;
     PATCH_CONSISTENCY_MODE = 1;
@@ -1646,9 +1802,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     STEP2_NONELIGIBLE_FACTOR_MIN = 1.0;
     STEP2_NONELIGIBLE_FORCE_COARSEN = 0;
 
-    QUADTREE_FACE_QUALITY_THRESHOLD = 0.40;
-    QUADTREE_LOW_QUALITY_H_FACTOR = 0.85;
-    TEMPLATE_POOR_SCORE_THRESHOLD = 0.45;
+    ApplyStableQuadtreeQuality();
     AFT_LOCAL_POSTPROCESS_PASSES = 2;
   }
 
@@ -3341,20 +3495,20 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     std::string patch_generation_mode = "normal";
     bool soft_saturated = false;
     bool hard_saturated = false;
-    if (QUADTREE_SATURATION_MODE == 1 && step_ > 1 && i < patch_history_.size()) {
+    if (QuadtreeSaturationMode() == 1 && step_ > 1 && i < patch_history_.size()) {
       const PatchHistoryState& history = patch_history_[i];
       if (history.prev_patch_generated_faces > static_cast<unsigned long long>(std::max(
-                                                   1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
-          history.prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD) {
+                                                   1.0, QuadtreeSaturationElementsThreshold())) &&
+          history.prev_patch_efficiency <= QuadtreeSaturationEfficiencyThreshold()) {
         soft_saturated = true;
-        domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE, PatchFactorMin(),
+        domain_factor = ClampValue(domain_factor * QuadtreeSaturationHScale(), PatchFactorMin(),
                                    PatchFactorMax());
       }
-      if (QUADTREE_HARD_SATURATION_MODE == 1 &&
+      if (QuadtreeHardSaturationMode() == 1 &&
           history.consecutive_inefficient_steps >=
-              static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS)) {
+              static_cast<unsigned int>(QuadtreeHardSaturationSteps())) {
         hard_saturated = true;
-        domain_factor = std::max(domain_factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
+        domain_factor = std::max(domain_factor, QuadtreeHardSaturationFactorMin());
       }
     }
     if (ElementBudgetMode() == 1 && step_ > 1 && current_budget_retry_count_ > 0U) {
@@ -4087,12 +4241,12 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         (step_ > 1 && i < patch_history_.size() &&
          patch_history_[i].prev_patch_generated_faces >=
              static_cast<unsigned long long>(
-                 std::max(1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
-         patch_history_[i].prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD);
+                 std::max(1.0, QuadtreeSaturationElementsThreshold())) &&
+         patch_history_[i].prev_patch_efficiency <= QuadtreeSaturationEfficiencyThreshold());
     const bool saturated_hard =
-        (step_ > 1 && QUADTREE_HARD_SATURATION_MODE == 1 && i < patch_history_.size() &&
+        (step_ > 1 && QuadtreeHardSaturationMode() == 1 && i < patch_history_.size() &&
          patch_history_[i].consecutive_inefficient_steps >=
-             static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS));
+             static_cast<unsigned int>(QuadtreeHardSaturationSteps()));
     current_patch_saturated_soft_mask_[i] = saturated_soft ? 1 : 0;
     current_patch_saturated_hard_mask_[i] = saturated_hard ? 1 : 0;
     const bool eligible_for_refinement =
@@ -4195,8 +4349,8 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         }
         const bool inefficient_patch =
             history.prev_patch_efficiency < std::max(1.0e-9, PATCH_EFFICIENCY_TARGET) &&
-            history.prev_patch_elements > static_cast<unsigned long long>(std::max(
-                                              1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD));
+            history.prev_patch_elements > static_cast<unsigned long long>(
+                                              std::max(1.0, QuadtreeSaturationElementsThreshold()));
         if (inefficient_patch && !eligible_for_refinement) {
           refine_signal *= 0.35;
           coarsen_signal = std::max(coarsen_signal, 0.25);
@@ -4255,7 +4409,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         factor = std::max(factor, STEP2_NONELIGIBLE_FACTOR_MIN);
       }
       if (saturated_hard) {
-        factor = std::max(factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
+        factor = std::max(factor, QuadtreeHardSaturationFactorMin());
       }
       if (!current_policy_.stable_mode && BudgetDrivenAdaptation() == 1 && step_ > 1 &&
           current_target_element_growth_ > 1.0 && !eligible_for_refinement) {
@@ -4481,7 +4635,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
       }
       current_patch_target_h_[i] = target_h;
       current_patch_adaptation_[i].target_patch_h = target_h;
-      current_patch_quadtree_depth_cap_[i] = EstimateQuadtreeDepthCap(target_h, step_);
+      current_patch_quadtree_depth_cap_[i] = EstimateOwnedQuadtreeDepth(target_h, step_);
       current_patch_adaptation_[i].max_quadtree_depth_applied =
           current_patch_quadtree_depth_cap_[i];
       current_patch_adaptation_[i].quadtree_cap_applied =
@@ -4503,7 +4657,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
         if (i < current_patch_adaptation_.size()) {
           current_patch_adaptation_[i].target_patch_h = clamped;
         }
-        current_patch_quadtree_depth_cap_[i] = EstimateQuadtreeDepthCap(clamped, step_);
+        current_patch_quadtree_depth_cap_[i] = EstimateOwnedQuadtreeDepth(clamped, step_);
         if (i < current_patch_adaptation_.size()) {
           current_patch_adaptation_[i].max_quadtree_depth_applied =
               current_patch_quadtree_depth_cap_[i];
@@ -5435,14 +5589,14 @@ void GeneratorAdaptive::UpdatePatchHistory(const Geometry* geometry, const MeshA
             ? current_patch_adaptation_[patch_index].final_refinement_class
             : "freeze";
     const bool inefficient_now =
-        history.prev_patch_generated_faces >= static_cast<unsigned long long>(std::max(
-                                                  1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
-        history.prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD;
+        history.prev_patch_generated_faces >=
+            static_cast<unsigned long long>(std::max(1.0, QuadtreeSaturationElementsThreshold())) &&
+        history.prev_patch_efficiency <= QuadtreeSaturationEfficiencyThreshold();
     history.consecutive_inefficient_steps =
         inefficient_now ? (history.consecutive_inefficient_steps + 1U) : 0U;
     history.saturated_last_step =
         inefficient_now && history.consecutive_inefficient_steps >=
-                               static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS);
+                               static_cast<unsigned int>(QuadtreeHardSaturationSteps());
   }
 }
 
@@ -5870,22 +6024,21 @@ void GeneratorAdaptive::AdaptDomainOmp(Geometry* geo, MeshAdaptive* malha, Timer
       std::string patch_generation_mode = "normal";
       bool soft_saturated = false;
       bool hard_saturated = false;
-      if (QUADTREE_SATURATION_MODE == 1 && step_ > 1 &&
+      if (QuadtreeSaturationMode() == 1 && step_ > 1 &&
           static_cast<size_t>(i) < patch_history_.size()) {
         const PatchHistoryState& history = patch_history_[static_cast<size_t>(i)];
-        if (history.prev_patch_generated_faces >
-                static_cast<unsigned long long>(
-                    std::max(1.0, QUADTREE_SATURATION_ELEMENTS_THRESHOLD)) &&
-            history.prev_patch_efficiency <= QUADTREE_SATURATION_EFFICIENCY_THRESHOLD) {
+        if (history.prev_patch_generated_faces > static_cast<unsigned long long>(std::max(
+                                                     1.0, QuadtreeSaturationElementsThreshold())) &&
+            history.prev_patch_efficiency <= QuadtreeSaturationEfficiencyThreshold()) {
           soft_saturated = true;
-          domain_factor = ClampValue(domain_factor * QUADTREE_SATURATION_H_SCALE, PatchFactorMin(),
+          domain_factor = ClampValue(domain_factor * QuadtreeSaturationHScale(), PatchFactorMin(),
                                      PatchFactorMax());
         }
-        if (QUADTREE_HARD_SATURATION_MODE == 1 &&
+        if (QuadtreeHardSaturationMode() == 1 &&
             history.consecutive_inefficient_steps >=
-                static_cast<unsigned int>(QUADTREE_HARD_SATURATION_STEPS)) {
+                static_cast<unsigned int>(QuadtreeHardSaturationSteps())) {
           hard_saturated = true;
-          domain_factor = std::max(domain_factor, QUADTREE_HARD_SATURATION_FACTOR_MIN);
+          domain_factor = std::max(domain_factor, QuadtreeHardSaturationFactorMin());
         }
       }
       if (ElementBudgetMode() == 1 && step_ > 1 && current_budget_retry_count_ > 0U) {

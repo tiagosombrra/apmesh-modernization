@@ -725,6 +725,171 @@ void CheckCurveControlsContexts() {
   std::cout << "curve_controls_context cases=3 scalar_bits=33 point_targets=18 adapter_bits=12 "
                "stable=3 legacy=2\n";
 }
+
+void CheckQuadtreeControlsContexts() {
+  using apmesh::application::QuadtreeControlsConfig;
+  const std::array<double QuadtreeControlsConfig::*, 9> doubles{
+      {&QuadtreeControlsConfig::saturation_elements_threshold,
+       &QuadtreeControlsConfig::saturation_efficiency_threshold,
+       &QuadtreeControlsConfig::saturation_h_scale,
+       &QuadtreeControlsConfig::hard_saturation_factor_min, &QuadtreeControlsConfig::min_h_scale,
+       &QuadtreeControlsConfig::neighbor_relax, &QuadtreeControlsConfig::face_quality_threshold,
+       &QuadtreeControlsConfig::low_quality_h_factor,
+       &QuadtreeControlsConfig::template_poor_score_threshold}};
+  const std::array<int QuadtreeControlsConfig::*, 10> integers{
+      {&QuadtreeControlsConfig::saturation_mode, &QuadtreeControlsConfig::hard_saturation_mode,
+       &QuadtreeControlsConfig::hard_saturation_steps,
+       &QuadtreeControlsConfig::skip_low_quality_on_saturated,
+       &QuadtreeControlsConfig::postprocess_damp_on_saturated, &QuadtreeControlsConfig::cap_mode,
+       &QuadtreeControlsConfig::depth_step1, &QuadtreeControlsConfig::depth_stepn,
+       &QuadtreeControlsConfig::template_limit_mode,
+       &QuadtreeControlsConfig::resolve_negative_depth}};
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildQuadtreeRuntime();
+  const auto apply = [](const QuadtreeControlsConfig& config) {
+    QUADTREE_SATURATION_MODE = config.saturation_mode;
+    QUADTREE_SATURATION_ELEMENTS_THRESHOLD = config.saturation_elements_threshold;
+    QUADTREE_SATURATION_EFFICIENCY_THRESHOLD = config.saturation_efficiency_threshold;
+    QUADTREE_SATURATION_H_SCALE = config.saturation_h_scale;
+    QUADTREE_HARD_SATURATION_MODE = config.hard_saturation_mode;
+    QUADTREE_HARD_SATURATION_STEPS = config.hard_saturation_steps;
+    QUADTREE_HARD_SATURATION_FACTOR_MIN = config.hard_saturation_factor_min;
+    QUADTREE_SKIP_LOW_QUALITY_SUBDIVIDE_ON_SATURATED = config.skip_low_quality_on_saturated;
+    QUADTREE_POSTPROCESS_DAMP_ON_SATURATED = config.postprocess_damp_on_saturated;
+    PATCH_QUADTREE_CAP_MODE = config.cap_mode;
+    PATCH_QUADTREE_DEPTH_STEP1 = config.depth_step1;
+    PATCH_QUADTREE_DEPTH_STEPN = config.depth_stepn;
+    PATCH_QUADTREE_MIN_H_SCALE = config.min_h_scale;
+    PATCH_QUADTREE_NEIGHBOR_RELAX = config.neighbor_relax;
+    PATCH_QUADTREE_TEMPLATE_LIMIT_MODE = config.template_limit_mode;
+    ADAPTER_RESOLVE_NEGATIVE_QUADTREE_DEPTH = config.resolve_negative_depth;
+    QUADTREE_FACE_QUALITY_THRESHOLD = config.face_quality_threshold;
+    QUADTREE_LOW_QUALITY_H_FACTOR = config.low_quality_h_factor;
+    TEMPLATE_POOR_SCORE_THRESHOLD = config.template_poor_score_threshold;
+  };
+  const auto equal = [&](const QuadtreeControlsConfig& a, const QuadtreeControlsConfig& b) {
+    for (auto field : doubles)
+      if (std::memcmp(&(a.*field), &(b.*field), sizeof(double)) != 0)
+        return false;
+    for (auto field : integers)
+      if (a.*field != b.*field)
+        return false;
+    return true;
+  };
+  const auto depths = [](const GeneratorAdaptive& generator) {
+    return std::array<int, 7>{{DomainCandidateFixture::EstimateTreeDepth(generator, -1.0, 0),
+                               DomainCandidateFixture::EstimateTreeDepth(generator, 0.1, 1),
+                               DomainCandidateFixture::EstimateTreeDepth(generator, 0.7, 2),
+                               DomainCandidateFixture::ResolveTreeDepth(generator, 99, 1),
+                               DomainCandidateFixture::ResolveTreeDepth(generator, -1, 1),
+                               DomainCandidateFixture::ResolveTreeDepth(generator, -1, 2),
+                               DomainCandidateFixture::ResolveTreeDepth(generator, 0, 2)}};
+  };
+  const auto observe = [](Par2DJMesh::AFT::Quadtree& tree) {
+    using Par2DJMesh::Basics::Vertex;
+    using Par2DJMesh::Basics::Face;
+    Vertex minimum(0.0, 0.0), maximum(1.0, 1.0);
+    Vertex a(0.0, 0.0), b(1.0, 0.0), c(0.01, 0.001);
+    Face face(&a, &b, &c, 1);
+    struct Detach {
+      Face& face;
+      ~Detach() { face.DetachVertices(); }
+    } detach{face};
+    Par2DJMesh::AFT::QuadtreeCell cell(1, &tree, &minimum, &maximum);
+    face.h = 1.4;
+    tree.ResetTemplateStats();
+    const bool subdivide = cell.shouldSubdivide(&face);
+    tree.RecordTemplateChoice(1, 0.3);
+    return std::array<unsigned long long, 3>{{subdivide ? 1ULL : 0ULL,
+                                              tree.GetTemplateStats().low_quality_subdivide_hits,
+                                              tree.GetTemplateStats().low_score_templates}};
+  };
+  std::array<QuadtreeControlsConfig, 3> cases{};
+  cases[1].cap_mode = 1;
+  cases[1].depth_step1 = 3;
+  cases[1].depth_stepn = 7;
+  cases[1].min_h_scale = 0.75;
+  cases[1].face_quality_threshold = 0.4;
+  cases[1].low_quality_h_factor = 0.5;
+  cases[1].template_poor_score_threshold = 0.45;
+  cases[2].cap_mode = 1;
+  cases[2].depth_step1 = 40;
+  cases[2].depth_stepn = -2;
+  cases[2].resolve_negative_depth = 0;
+  cases[2].saturation_mode = cases[2].hard_saturation_mode = 1;
+  cases[2].saturation_h_scale = 1.3;
+  cases[2].face_quality_threshold = 0.1;
+  cases[2].low_quality_h_factor = 0.8;
+  cases[2].template_poor_score_threshold = 0.2;
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildQuadtreeRuntime();
+    const auto expected_depths = depths(legacy);
+    Par2DJMesh::AFT::Quadtree reference;
+    const auto expected_stats = observe(reference);
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      apmesh::application::RuntimeConfig config;
+      config.patch_quadtree_depth_step1 = value.depth_step1;
+      config.patch_quadtree_depth_stepn = value.depth_stepn;
+      config.patch_quadtree_min_h_scale = value.min_h_scale;
+      config.adapter_resolve_negative_quadtree_depth = value.resolve_negative_depth;
+      config.quadtree_face_quality_threshold = value.face_quality_threshold;
+      config.quadtree_low_quality_h_factor = value.low_quality_h_factor;
+      auto source = apmesh::application::MakeGenerationContext(config);
+      config.patch_quadtree_depth_step1 = 22;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.quadtree.reset();
+    }
+    auto foreign = value;
+    foreign.cap_mode = 1 - value.cap_mode;
+    foreign.depth_step1 = 1;
+    foreign.depth_stepn = 2;
+    foreign.face_quality_threshold = value.face_quality_threshold > 0.0 ? 0.0 : 1.0;
+    foreign.low_quality_h_factor = value.low_quality_h_factor < 1.0 ? 1.0 : 0.25;
+    foreign.template_poor_score_threshold = value.template_poor_score_threshold > 0.0 ? 0.0 : 0.8;
+    apply(foreign);
+    Par2DJMesh::AFT::Quadtree captured, foreign_tree;
+    DomainCandidateFixture::ConfigureTree(*owned, captured);
+    if (!equal(expected, owned->BuildQuadtreeRuntime()) ||
+        !equal(foreign, identity_only.BuildQuadtreeRuntime()) ||
+        expected_depths != depths(*owned) || expected_stats != observe(captured) ||
+        expected_stats == observe(foreign_tree))
+      throw std::runtime_error("Quadtree ownership, depth or native quality controls changed");
+    DomainCandidateFixture::QuadtreeCap(*owned);
+    auto intermediate = value;
+    intermediate.cap_mode = 1;
+    if (!equal(intermediate, owned->BuildQuadtreeRuntime()))
+      throw std::runtime_error("Quadtree cap update changed other controls");
+    DomainCandidateFixture::QuadtreeQuality(*owned);
+    if (!equal(foreign, legacy.BuildQuadtreeRuntime()) ||
+        !equal(value, *owned->GetGenerationContext()->quadtree))
+      throw std::runtime_error("Owned quadtree updates changed raw configuration or globals");
+    apply(value);
+    DomainCandidateFixture::QuadtreeCap(legacy);
+    DomainCandidateFixture::QuadtreeQuality(legacy);
+    const auto stable = legacy.BuildQuadtreeRuntime();
+    Par2DJMesh::AFT::Quadtree stable_reference;
+    const auto stable_stats = observe(stable_reference);
+    DomainCandidateFixture::ConfigureTree(*owned, captured);
+    if (!equal(stable, owned->BuildQuadtreeRuntime()) || depths(legacy) != depths(*owned) ||
+        stable_stats != observe(captured))
+      throw std::runtime_error("Adapter lost effective quadtree state or quality snapshot");
+    apply(value);
+    DomainCandidateFixture::QuadtreeCap(identity_only);
+    DomainCandidateFixture::QuadtreeQuality(identity_only);
+    if (!equal(stable, legacy.BuildQuadtreeRuntime()))
+      throw std::runtime_error("Legacy quadtree adjustments stopped changing global state");
+    owned.reset();
+    apply(foreign);
+    if (stable_stats != observe(captured))
+      throw std::runtime_error("Quadtree quality controls did not outlive the generator");
+  }
+  apply(saved);
+  std::cout << "quadtree_context cases=3 scalar_bits=27 depths=42 quality=9 "
+               "retired=3 legacy=2\n";
+}
 #endif
 
 int main(int argc, char* argv[]) {
@@ -793,6 +958,7 @@ int main(int argc, char* argv[]) {
   CheckAdaptationContexts();
   CheckElementBudgetContexts();
   CheckCurveControlsContexts();
+  CheckQuadtreeControlsContexts();
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();

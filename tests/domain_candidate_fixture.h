@@ -254,6 +254,19 @@ class DomainCandidateFixture {
   }
 
 public:
+  static void QuadtreeCap(GeneratorAdaptive& generator) { generator.EnableQuadtreeCap(); }
+  static void QuadtreeQuality(GeneratorAdaptive& generator) {
+    generator.ApplyStableQuadtreeQuality();
+  }
+  static int EstimateTreeDepth(const GeneratorAdaptive& generator, double h, int step) {
+    return generator.EstimateOwnedQuadtreeDepth(h, step);
+  }
+  static int ResolveTreeDepth(const GeneratorAdaptive& generator, int depth, int step) {
+    return generator.adapter_.ResolveQuadtreeDepth(depth, step);
+  }
+  static void ConfigureTree(const GeneratorAdaptive& generator, Par2DJMesh::AFT::Quadtree& tree) {
+    generator.adapter_.ConfigureQuadtree(&tree);
+  }
   static void CurvePointBudget(GeneratorAdaptive& generator) { generator.EnableCurvePointBudget(); }
   static void CurveConsistency(GeneratorAdaptive& generator) { generator.EnableCurveConsistency(); }
   static int ClampCurvePoints(const GeneratorAdaptive& generator, int value) {
