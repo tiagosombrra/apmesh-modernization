@@ -15,28 +15,23 @@ their declared scope. No partial result closes the stage.
 | P4: remaining supported-caller repairs | Batch related reproduced lifecycle/observer/UV defects by owner and contract. Each implementation must remove a named gap or qualify a previously unmeasured supported caller. | Admit one clear trigger and expected invariant before calibration. Preserve scientific selection and inputs. If no admitted witness or supported defect is established, record the exact open obligation and its next dependency; stop automatic source-audit successors. Do not mark the gap passed. | S3-05/06/07/08 |
 | P5: stage closure | Review all ten ledger rows, contracts, known failures, supported domain, documentation and exact-revision regression/instruments. | Every required row has an explicit justified disposition and applicable measured gates on delivery head and main. Any missing/failing required observation keeps Stage 3 open. | All rows |
 
-## Current production milestone
+## Consolidated production milestone and next dependency
 
-The [engine/runtime/CLI boundary](../evidence/SERIAL_ENGINE.md) is delivered. The
-[owned identity/output context](../evidence/GENERATION_CONTEXT.md) is delivered.
-The [typed execution request](../evidence/TYPED_GENERATION_REQUEST.md) is delivered.
-The [adaptive-policy inputs](../evidence/ADAPTIVE_POLICY_CONTEXT.md) are delivered.
-The [stopping/retry criteria](../evidence/STOP_RETRY_CONTEXT.md) are delivered.
-The [adaptation settings](../evidence/ADAPTATION_CONTEXT.md) are delivered.
-The [element budget controls](../evidence/ELEMENT_BUDGET_CONTEXT.md) are delivered.
-The [curve controls](../evidence/CURVE_CONTROLS_CONTEXT.md) are delivered.
-The [quadtree controls](../evidence/QUADTREE_CONTROLS_CONTEXT.md) are delivered.
-The [patch generation controls](../evidence/PATCH_GENERATION_CONTEXT.md) are delivered.
-The [patch consistency controls](../evidence/PATCH_CONSISTENCY_CONTEXT.md) are delivered.
-The [acceptance controls](../evidence/ACCEPTANCE_CONTEXT.md) are delivered.
-The [AFT controls](../evidence/AFT_CONTEXT.md) are delivered.
-The current bounded package is [serial flow controls](../evidence/SERIAL_FLOW_CONTEXT.md):
-own synchronization/hybrid/diagnostic switches and template mode while preserving
-graph operations, predicates, formats and the existing regression. After delivery,
-consolidate the engine/context milestone and explicit remaining shared-state/exit
-contract rather than automatically opening another instrument campaign. Instrument
-work is attached only when it blocks this implementation or required closure.
-The retained P3/P5 instrument obligations are not waived or automatically run next.
+The [internal serial engine/context contract](../evidence/ENGINE_CONTEXT_MILESTONE.md)
+consolidates the delivered engine, typed request, identity and eleven control
+groups. Its six exit criteria and [203-definition matrix](ENGINE_CONTEXT_STATE.json)
+separate bounded milestone closure from complete stage 3/6 closure and global
+freedom. The exact delivery/main seal is required; implementation criteria are
+established at PR #153. Reuse unchanged numerical/native/instrument evidence.
+
+One next production package is admitted: attempt metadata ownership. Generator
+already owns its step/retry state but duplicates it in ADAPTIVE_CURRENT_STEP and
+ADAPTIVE_CURRENT_RETRY before reading globals into Adapter calls. Replace that
+dependence while preserving attempt metadata, consumed IDs and legacy behavior.
+Attach the existing metrics/negative/scientific regression and stop on the first
+unexpected failure. This supports S3-08 without closing it. Shared precision,
+instrument qualification, other caller contracts and legacy positional CMake
+recipes remain explicit obligations, not automatic audit/campaign successors.
 
 ## Work-item admission and execution rules
 

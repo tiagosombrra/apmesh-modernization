@@ -1,0 +1,109 @@
+# Internal serial engine/context milestone
+
+Classification: documentation-only engineering consolidation. Reviewed baseline:
+PR #153 main `84fff0d2344429aaf61f9bae5c109b86c35fddad`. This closes the bounded
+internal serial engine/configuration/CLI milestone when the six exit criteria
+below are sealed on this delivery head and merged main. Stage 3 and the complete
+stage 6 remain open; the ten stage 3 ledger dispositions are unchanged.
+
+## Delivered boundary and exit criteria
+
+| ID | Objective criterion | Evidence / disposition |
+| --- | --- | --- |
+| EC-01 | CLI delegates to an internal linkable engine; canonical GCC/MSVC C++17 serial builds include the actual production units. | APMesh::Engine aliases ap_mesh_engine; thin CLI and existing consumers link it. PR #153 exact-head/main build reports are reused by unchanged source, build configuration and executable identity. |
+| EC-02 | Synchronous execution takes a typed request; configuration/identity are value-owned, with documented compatibility behavior. | GenerationRequest, GenerationContext and deleted generator copy/move operations remain qualified by the existing native controls. The raw argv bridge and missing-group live fallback remain available. |
+| EC-03 | Every declared context group has explicit raw/effective state and owner/observer boundaries; no scientific expression/order change is inferred from migration. | Eleven groups contain 181 fields, plus four identity/output fields. Stable updates remain local to the owning generator; Adapter borrows stationary state and trees/fronts own their published copies. Prior source-reversal and native evidence retain each group's scope. |
+| EC-04 | The existing numerical, boundary and negative-control reference remains valid on the delivered production code. | Reuse PR #153: 75 CTest/385 nested controls; nine scientific states, 45 exact artifacts, 123 boundary comparisons; 23 invalid MSVC controls and one analytic state with one positive boundary comparison. Current delivery reruns the existing CTest gate; unchanged scientific/MSVC/native/instrument observations are reused by identity. |
+| EC-05 | Remaining state and unsupported claims are explicit; the original closure/failure inventory remains visible. | Complete 203-definition matrix, named auxiliary statics and caller protocol below. No global definition is removed. All ten stage 3 rows keep their dispositions: three bounded-qualified, seven partial/open. |
+| EC-06 | Exact delivery head and merged main pass required quality/contracts/CTest/identity checks, with remote state audited. | Required for this consolidation. The PR and local build/engine-context-milestone integration seal record revisions, commands, hashes, evidence reuse and final disposition. Missing/failing required checks block this bounded closure. |
+
+EC-01..05 are established at the reviewed baseline and unchanged source. EC-06
+is the final delivery gate; successful local tests alone do not establish merge
+or main qualification. After sealing EC-06, this milestone has no automatic
+configuration-migration or instrument-campaign successor.
+
+## Admitted execution protocol
+
+Use the canonical serial C++17 profile with MPI/OpenMP disabled. The measured
+full-generation cases use one process/thread. Run the entire sequence serially:
+
+1. Load and validate configuration through LoadRuntimeConfig.
+2. ApplyRuntimeConfig updates process state and retains its existing clamps and
+   hybrid/template projection. MakeGenerationContext then copies both explicit
+   configuration fields and current applied process values.
+3. Construct a fresh stationary GeneratorAdaptive with that context and an owned
+   GenerationRequest. Execute is synchronous; Timer and borrowed observers must
+   remain live through their documented use.
+4. Retire the generator and associated local owners after the run. Preserve the
+   existing terminal-versus-logical-retry contract; a terminal failure introduces
+   no same-generator recovery guarantee.
+
+The CLI admits `ap_mesh --config <file>`. The internal raw Execute bridge retains
+its existing valid-layout precondition. Other public generation/estimation and
+low-level callers retain their individual contracts and open coverage assignments.
+The library is an internal build target, without an installed SDK or stable ABI.
+
+ApplyRuntimeConfig/MakeGenerationContext is not a pure request factory: defaults
+and several captured values depend on live process state. The qualified path is
+serialized end to end. A full context captures the named groups; a partial/default
+context deliberately reads live globals for missing groups. Native interleaving
+controls establish bounded setting/output ownership, not safe concurrent or
+repeated complete generations in one process. Callers must not infer those claims
+from value ownership or from a fresh generator alone.
+
+## Remaining process state
+
+The [complete matrix](../architecture/ENGINE_CONTEXT_STATE.json) classifies every
+definition in runtime_state.cpp against the actual aggregate factory. It is a
+reviewed source inventory, not a percentage of modernization or a race-freedom
+proof. All 203 definitions remain; 185 have a context binding and 18 do not.
+Capturing an input does not remove its legacy definition or prove that every
+alternate consumer uses the context.
+
+| Disposition | Names / boundary | Required next dependency |
+| --- | --- | --- |
+| Captured inputs | 181 fields in adaptive policy, stop/retry, adaptation, element budgets, curves, quadtree, patch generation, consistency, acceptance, AFT and serial flow; four identity/output fields. | Preserve raw/effective semantics, independent discretization values, configured consumers, legacy fallback and published value/observer lifetimes. No automatic extra migration is required to close this bounded milestone. |
+| Captured plus shared precision | EPSYLON is a stop/retry input and still serves PointAdaptive equality. | Distinguish physical/parametric units and consumers before any precision isolation. No blanket tolerance unification or value change is authorized. |
+| Captured plus legacy I/O | INPUT_MODEL, NAME_MODEL, NUMBER_PROCESS and WRITE_MESH still serve default/alternate readers, writers and timer/estimation helpers. | Delimit each actual caller before promising whole-call-graph isolation; keep S3-05/07/10 open. |
+| Uncaptured precision (5) | DELTA, TOLERANCE, TOLERANCE_CURVATURE, TOLERANCE_AFT, I_MAX. AFT's constructor tolerance argument remains inactive. | Audit units, geometric predicates and convergence contracts before propagation. Scientific changes require explicit alignment. |
+| Uncaptured execution (3) | RANK_MPI, SIZE_MPI, MAX_THREADS. | Explicit serial/parallel execution ownership and separately qualified routing; this milestone authorizes no MPI/OpenMP change. |
+| Uncaptured attempt metadata (2) | ADAPTIVE_CURRENT_STEP and ADAPTIVE_CURRENT_RETRY are assigned by the generator and read back into Adapter calls. | Next production package: remove duplicated global step/retry dependence using existing generator-owned state, preserving attempt traces and IDs. |
+| Uncaptured estimation (2) | TRIANGLE_MEDIO and ESTIMATIVE_TOLERANCE remain in estimation helpers. | Preserve units and caller semantics; broader estimation/load paths remain outside this measured entry boundary. |
+| Uncaptured observation (4) | TIME_READ_FILE, MAX_TIME, FINDUV_TOTAL_CALLS and FINDUV_IMAX_EXITS. | Separate timing/instrument ownership from scientific criteria; correct-clock/profiling obligations remain in their stages. |
+| Dormant registries (2) | LIST_ALL_POINTS_MODEL and LIST_ALL_SUB_MESH_MODEL have no non-declaration first-party uses in the reviewed source scan. | Keep explicit dormant disposition; do not convert absence of observed use into a global-freedom or external ABI claim. |
+
+Additional named first-party statics are the quadtree debug sequence, the
+translation-unit-local method-notice table and optional MPI communicator lifetime
+state. Commented-out static scratch in Edge is not active state. Immutable local
+constants and external/third-party internals are outside this explicit-definition
+inventory. Lexical occurrences can refer to shadowing members, so they are not
+runtime reachability evidence. The matrix and local evidence preserve that limit.
+
+## Closure review and dependency decision
+
+Code, build settings, tests, input fixtures and scientific oracles are unchanged
+by this consolidation. Existing source, executable, prior-seal and report hashes
+support evidence reuse. Contracts and documentation now distinguish captured
+inputs from remaining mutable state and from full stage closure. Historical
+failed observations remain failed; no zero-coverage path is relabeled qualified.
+
+S3-01/05/06/07/08/09/10 remain partial/open for supported-caller ownership,
+observer/cache validity, failed-tree/selection paths, orchestration/rollback,
+complete-process instruments and input-domain coverage. CRT/leak/UB, repeated
+complete execution and parallel obligations remain in the existing ledgers.
+The bounded outside-root observations keep their original negative/zero-reach
+scope. No generic instrument expansion follows this document.
+
+Three legacy run_book_v5_fix_* CMake convenience recipes still supply positional
+arguments although RunApplication admits only --config. This is a source-level
+workflow mismatch, not a new numerical observation; those recipes are not part of
+the qualified entry protocol. Their usability remains an explicit repair item.
+No positional parameter translation or scientific configuration change is made.
+
+The next admitted production dependency is attempt metadata ownership: use the
+already-owned generator step/retry state when calling Adapter, rather than adding
+another configuration group or normalizing precision. Expected invariant: every
+attempt's step/retry metadata and consumed IDs match the existing traces; default
+compatibility behavior remains explicit. Reuse existing metrics/negative/scientific
+regression and stop at the first unexpected failure. This is a concrete engineering
+package supporting S3-08; it does not close that row or reopen unrelated campaigns.

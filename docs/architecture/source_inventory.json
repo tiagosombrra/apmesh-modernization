@@ -6501,7 +6501,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 235,
+    "source_anchors": 238,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }
