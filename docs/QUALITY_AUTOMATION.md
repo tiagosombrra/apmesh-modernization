@@ -1,5 +1,21 @@
 # Local quality automation
 
+## Internal serial engine/context milestone consolidation
+
+The [consolidation](evidence/ENGINE_CONTEXT_MILESTONE.md) is documentation-only.
+Require source/test/build/input identity, the complete 203-definition matrix,
+actual factory-field binding checks, all six milestone exit dispositions and the
+unchanged stage 3 ledger. Reuse PR #153 GCC/MSVC builds, 13 native markers, nine
+scientific states/45 exact artifacts/123 boundary comparisons and actual MSVC CLI
+controls by executable/source/report hashes. Reuse historical instrument observations
+only within their original profiles; original failures remain intact. Run existing
+75 CTest/385 nested controls, whitespace, contracts/inventory, staged and remote
+checks on exact delivery head and merged main. No C++ file, test, CMake setting,
+fixture or scientific oracle changes, so no rebuild/static-analysis or fresh
+scientific/instrument/MSVC process campaign is needed. A changed dependency or
+failed required identity check stops evidence reuse and blocks closure. Local
+integration evidence records both newly run and reused gates explicitly.
+
 ## Serial synchronization, reconstruction and diagnostics
 
 The [serial flow lot](evidence/SERIAL_FLOW_CONTEXT.md) reuses 75 CTest/385 nested

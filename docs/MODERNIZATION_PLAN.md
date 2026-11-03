@@ -8,101 +8,28 @@ evidence. Additional instrument qualification is scheduled for a demonstrated
 production blocker or mandatory closure, rather than forming the primary queue.
 Scientific boundaries and exact-head/main closure gates remain mandatory.
 
-The bounded 2026 milestone is the [serial engine/configuration/CLI boundary](evidence/SERIAL_ENGINE.md):
-APMesh::Engine is linkable within the build, runtime parsing/state are outside
-main.cpp, existing consumers link the engine, and C++17 scientific behavior is
-preserved. This is a bounded stage 6 prerequisite for caller-root work. It neither
-closes Stage 3 nor promises the complete roadmap in 2026. The delivered
-[owned generation identity/output](evidence/GENERATION_CONTEXT.md) supplies:
-four value-owned strings, an explicit generator constructor, a bounded Adapter
-borrow and a legacy compatibility path. The existing metrics case gains targeted
-ownership/interleaved-output checks. Numerical state remains global and serialized;
-its next migration must name one cohesive policy/runtime group and caller contract.
-The delivered [typed execution request](evidence/TYPED_GENERATION_REQUEST.md) removes
-synthetic argv from the CLI-to-engine path while retaining the raw-argument bridge,
-CLI transcript and source input precedence. It is an engineering caller-contract
-delivery supporting S3-05 and stage 6, not a numerical-policy migration or closure.
-The delivered [adaptive-policy context](evidence/ADAPTIVE_POLICY_CONTEXT.md) owns six
-policy-construction inputs and supplies the same raw values to Adapter domain
-decisions. Preserve formulas, operation order and the optional legacy fallback;
-validate ownership/differential controls within the existing metrics probe and
-reuse the unchanged scientific reference. Remaining runtime globals/mutations
-stay serialized; no new scientific policy or stage closure is introduced.
-The delivered [stopping/retry context](evidence/STOP_RETRY_CONTEXT.md) owns eleven
-criteria, with separate effective retry promotion for an owned generator and the
-original live/global compatibility path. Preserve all comparisons, ordering,
-diagnostic/report spelling and the stable max(1,count) rule. Reuse the existing
-metrics/scientific/delivery gates; remaining geometry tolerances, relaxation and
-budget controls are outside that bounded caller-contract delivery.
-The delivered [adaptation context](evidence/ADAPTATION_CONTEXT.md) owns four validated
-relaxation/delta/factor-bound inputs and isolates stable overrides in effective
-instance state. Preserve the four assignment values/order and all per-attempt,
-clamp/rate-limit/curve expressions. Keep live global fallback and reuse the
-existing native/scientific/delivery regression. Other shared controls remain;
-this is a bounded engineering caller contract, not stage closure.
-The delivered [element budget context](evidence/ELEMENT_BUDGET_CONTEXT.md) owns
-32 process-sourced step/local/target/allocation controls and isolates five stable
-mode adjustments. Preserve target clamping and every budget/pressure/acceptance/
-retry expression. Require targeted ownership/stable/target-clamp controls in the
-existing native metrics probe and the unchanged scientific/delivery regression.
-Curve-point/quadtree/generation controls remain outside this bounded lot; no
-new scientific input, instrument campaign or stage closure is introduced.
-The delivered [curve controls context](evidence/CURVE_CONTROLS_CONTEXT.md) owns
-17 settings and isolates two successive mode updates at their original positions.
-Adapter consumes the independently captured discretization pair. Preserve point
-clamping, weighting, synchronization and publication/rollback expressions; reuse
-the existing native/scientific/delivery gates without a new model campaign.
-Remaining patch/quadtree controls stay shared at that checkpoint; stages remain open.
-The delivered [quadtree controls context](evidence/QUADTREE_CONTROLS_CONTEXT.md)
-owns 19 limits/saturation/quality settings and isolates four stable writes.
-Adapter observes pinned effective state and copies three quality values into
-each tree; cells keep their original tree observer. Preserve depth, subdivision,
-template and saturation expressions. Reuse the existing native/scientific/delivery
-regression. No root/domain/template policy or scientific criterion changes.
+The bounded 2026 [internal serial engine/context milestone](evidence/ENGINE_CONTEXT_MILESTONE.md)
+has an explicit exit contract: internal linkable engine/thin CLI, typed request,
+owned identity/control groups, preserved C++17 scientific evidence, complete
+remaining-state disposition and exact delivery/main gates. Implementation criteria
+are established at PR #153; the consolidation seal closes this bounded milestone
+after its required gates. Full stage 3 and stage 6 remain open.
 
-The delivered [patch generation context](evidence/PATCH_GENERATION_CONTEXT.md) owns
-37 generation/refinement/spatial/micro controls and separates 13 ordered stable
-writes in three original blocks. Preserve raw snapshots, legacy fallback and all
-factor, eligibility, size, smoothing, diagnostic and acceptance expressions.
-Require the existing native factor differential and scientific/delivery regression;
-do not add a model/instrument campaign. Patch consistency and acceptance controls
-are outside this bounded lot; remaining shared state and stage obligations stay open.
+Delivered groups are adaptive policy, stop/retry, adaptation, element budgets,
+curves, quadtree, patch generation, consistency, acceptance, AFT and serial flow.
+They contain 181 fields plus four identity/output fields. All 203 historical
+runtime definitions remain; the [reviewed matrix](architecture/ENGINE_CONTEXT_STATE.json)
+maps 185 captured symbols and 18 uncaptured symbols. Captured inputs can still
+have live legacy/alternate consumers. The factory depends on validated configuration
+and applied process state; the full caller sequence remains serialized.
 
-The delivered [patch consistency context](evidence/PATCH_CONSISTENCY_CONTEXT.md) owns
-18 equivalence/group/consistency-acceptance inputs. Two stable flags retain their
-original positions around curve consistency using a shared effective instance
-copy. Preserve grouping, clamping, dispersion, penalties and acceptance expressions;
-store dormant controls without activating them. Require targeted native regularizer
-differentials and the existing scientific/delivery regression. Other acceptance/AFT
-settings and global state stay shared; no new model/instrument campaign or stage closure.
-
-The delivered [acceptance context](evidence/ACCEPTANCE_CONTEXT.md) owns the remaining
-26 scoring/growth/small-gain/efficiency inputs. Preserve every expression, decision,
-report and the growth penalty's three call positions with five explicit settings.
-No stable writes exist in this group; read raw owned settings or live legacy
-globals. Require native scalar/growth/report controls plus the existing nine-state
-accepted/rejected and delivery regression. Remaining AFT/runtime state stays shared;
-no scientific criterion, model/instrument campaign or stage closure is introduced.
-
-The delivered [AFT context](evidence/AFT_CONTEXT.md) owns six active ratio/smoothing/
-postprocess settings, preserves the existing applied smoothing clamp/conversion
-and isolates the stable pass-count assignment. Adapter observes pinned effective
-state; fronts own postprocess copies. Preserve smoothing loops, arithmetic,
-statistics and scientific order. Require targeted native binding/movement/lifetime
-controls and the existing scientific/delivery regression. Shared geometric
-tolerance, the inactive constructor argument and other runtime globals stay
-unchanged. No new model/instrument campaign or stage closure is introduced.
-
-The current bounded [serial flow context](evidence/SERIAL_FLOW_CONTEXT.md) owns
-the synchronization/hybrid/runtime/debug switches and literal template mode.
-Preserve the existing applied hybrid projection, synchronization slot, diagnostic
-gates/formats and exact template comparison/phase. Fronts own their template string;
-new copy allocations have ordinary RAII cleanup without a recovery guarantee.
-Require focused graph/output/lifetime checks plus the existing scientific/delivery
-regression. This completes the named flow-control group; milestone consolidation
-must still delimit shared precision, instrumentation, rank/thread/runtime state and
-closure obligations before claiming broader engine/context isolation. No automatic
-instrument campaign, new scientific model or stage closure follows this package.
+The next production dependency is attempt metadata ownership: remove duplicated
+global step/retry reads in favor of existing generator-owned state while preserving
+attempt/ID traces and compatibility. Do not start another tolerance migration or
+instrument campaign solely because this milestone closes. Precision units,
+complete-process memory/recovery, other callers and parallel execution retain
+their existing stage/closure obligations. Legacy positional CMake run recipes
+remain an explicit workflow repair item outside the qualified --config protocol.
 
 ## Current stage and completion route
 

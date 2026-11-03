@@ -2,7 +2,8 @@
 
 ## Current checkpoint and active work
 
-Entry main: `00b7d3a5ed41e04cbc45277e6a65fc31a02c3470` (PR #152).
+Reviewed production main: `84fff0d2344429aaf61f9bae5c109b86c35fddad` (PR #153).
+Exact consolidation head/main status is recorded by its PR and local integration seal.
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,26 +98,37 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Latest production package: serial synchronization, reconstruction and diagnostics
+## Consolidated internal serial engine/context milestone
 
-The [serial flow context](evidence/SERIAL_FLOW_CONTEXT.md) owns four switches and
-the literal template mode, copied from already-applied process state. The existing
-ApplyRuntimeConfig hybrid-off projection to template mode n remains unchanged;
-the factory adds no normalization. The synchronization predicate keeps its
-original position through a bounded helper. Generator/Adapter diagnostic gates
-and compatibility/runtime metadata read owned values; each front owns a template
-string copy and keeps the original exact y comparison at the same execution phase.
-Missing groups and unconfigured standalone fronts retain live legacy reads.
-Four cases in the existing probe check source retirement, foreign globals, actual
-shared-curve graph changes, diagnostic file gates/metadata, Adapter debug values,
-literal modes and four front snapshots after generator retirement. Template values
-include y/n, empty and a long non-y string. String copies may allocate during front
-configuration; the constructed front retains RAII cleanup. Require the existing
-scientific/delivery regression. Exact integration status is recorded in the PR
-and local seal; the package heading is a checkpoint rather than an open successor.
-Remaining precision, counters, timing, rank/thread and other runtime state still
-require serialization. Stage 3/6 and whole-process recovery/memory/parallel
-obligations remain open; no scientific model, target or instrument campaign is added.
+The [milestone contract](evidence/ENGINE_CONTEXT_MILESTONE.md) fixes six objective
+exit criteria, the admitted synchronous caller protocol and the explicit remaining
+state boundary. Implementation criteria are established at PR #153; current exact-
+head/main gates and the integration seal close this bounded milestone. The internal
+engine, typed request, owned identity and eleven control groups are delivered.
+The [complete runtime matrix](architecture/ENGINE_CONTEXT_STATE.json) maps all 203
+preserved definitions: 185 have context bindings (181 group fields plus four
+identity/output fields), and 18 remain uncaptured. EPSYLON and legacy I/O also
+retain consumers beyond their captured roles. No global-removal percentage,
+pure factory, reentrant engine or repeated-generation safety is claimed.
+
+Current scientific/native/MSVC/instrument evidence is reused by unchanged source,
+executable, build-configuration and report identity. This documentation-only
+consolidation runs existing head/main CTest and quality/contracts/remote checks,
+without production/test/fixture changes or new campaigns. Stage 3 and full stage 6
+remain open; all ten stage 3 row dispositions stay unchanged. The next concrete
+production dependency is attempt metadata ownership (global step/retry duplicated
+from existing generator state), with the existing trace/ID oracles. Precision and
+parallel/instrument obligations retain their separate boundaries. Legacy positional
+CMake convenience recipes are explicitly recorded as an unresolved workflow item.
+
+## Delivered production context: serial flow controls
+
+PR #153 delivers the [serial flow group](evidence/SERIAL_FLOW_CONTEXT.md): four
+switches and the literal template mode. Graph operations, applied hybrid projection,
+diagnostic predicates/formats and the exact template comparison/phase are preserved.
+Fronts own template string copies; missing groups retain live legacy reads. The
+qualified four native cases and exact head/main scientific/delivery evidence keep
+their original bounded scope. String copying can allocate; no recovery promise.
 
 ## Delivered production context: advancing-front and postprocess controls
 
