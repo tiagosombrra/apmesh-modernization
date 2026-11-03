@@ -370,6 +370,8 @@ GenerationContext MakeGenerationContext(const RuntimeConfig& config, std::string
                            STEP_ACCEPT_BUDGET_MISS_PENALTY},
           AftConfig{RATIO_AFT, SMOOTHING_LAPLACIAN_NUMBER, SMOOTHING_LAPLACIAN_FACTOR,
                     AFT_LOCAL_POSTPROCESS_PASSES, AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD,
-                    AFT_LOCAL_POSTPROCESS_BLEND}};
+                    AFT_LOCAL_POSTPROCESS_BLEND},
+          SerialFlowConfig{ENABLE_SHARED_CURVE_SYNC, ENABLE_HYBRID_RECONSTRUCTION,
+                           WRITE_RUNTIME_SUMMARY, WRITE_ADAPTATION_DEBUG, USE_TEMPLATE}};
 }
 } // namespace apmesh::application

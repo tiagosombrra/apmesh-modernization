@@ -192,6 +192,7 @@ extern double ACCEPTANCE_MIN_SCORE;
 extern double ACCEPTANCE_MAX_ERROR_INCREASE_PCT;
 extern double ACCEPTANCE_POOR_RATIO_TARGET;
 extern int WRITE_ADAPTATION_DEBUG;
+extern std::string USE_TEMPLATE;
 extern double PATCH_EFFICIENCY_WEIGHT;
 extern double PATCH_EFFICIENCY_TARGET;
 extern double PATCH_HISTORY_BLEND;
@@ -1913,6 +1914,49 @@ apmesh::application::AftConfig GeneratorAdaptive::BuildAftRuntime() const noexce
           AftPostprocessBlend()};
 }
 
+const apmesh::application::SerialFlowConfig*
+GeneratorAdaptive::SerialFlowSettings() const noexcept {
+  return generation_context_ && generation_context_->serial_flow
+             ? &*generation_context_->serial_flow
+             : nullptr;
+}
+
+int GeneratorAdaptive::SharedCurveSync() const noexcept {
+  const auto* config = SerialFlowSettings();
+  return config ? config->shared_curve_sync : ENABLE_SHARED_CURVE_SYNC;
+}
+
+int GeneratorAdaptive::HybridReconstruction() const noexcept {
+  const auto* config = SerialFlowSettings();
+  return config ? config->hybrid_reconstruction : ENABLE_HYBRID_RECONSTRUCTION;
+}
+
+int GeneratorAdaptive::RuntimeSummaryEnabled() const noexcept {
+  const auto* config = SerialFlowSettings();
+  return config ? config->write_runtime_summary : WRITE_RUNTIME_SUMMARY;
+}
+
+int GeneratorAdaptive::AdaptationDebugEnabled() const noexcept {
+  const auto* config = SerialFlowSettings();
+  return config ? config->write_adaptation_debug : WRITE_ADAPTATION_DEBUG;
+}
+
+const std::string& GeneratorAdaptive::TemplateMode() const noexcept {
+  const auto* config = SerialFlowSettings();
+  return config ? config->template_mode : USE_TEMPLATE;
+}
+
+void GeneratorAdaptive::ConfigureSharedCurveSynchronization(Geometry* geometry) {
+  if (SharedCurveSync() == 0) {
+    DisableSharedCurveSynchronization(geometry);
+  }
+}
+
+apmesh::application::SerialFlowConfig GeneratorAdaptive::BuildSerialFlowRuntime() const {
+  return {SharedCurveSync(), HybridReconstruction(), RuntimeSummaryEnabled(),
+          AdaptationDebugEnabled(), TemplateMode()};
+}
+
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   const auto* config = generation_context_ && generation_context_->adaptive_policy
                            ? &*generation_context_->adaptive_policy
@@ -2420,9 +2464,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   apmesh::generation::CurveSampleLifetime curve_samples(*geometry);
 #endif
 
-  if (ENABLE_SHARED_CURVE_SYNC == 0) {
-    DisableSharedCurveSynchronization(geometry);
-  }
+  ConfigureSharedCurveSynchronization(geometry);
 
   int size_patch = geometry->GetNumberPatches();
 
@@ -5936,7 +5978,7 @@ GeneratorAdaptive::ComputeMeshQualityStats(const MeshAdaptive* mesh) const {
 }
 
 void GeneratorAdaptive::WritePatchAdaptationLog(int step, bool accepted) const {
-  if (!WRITE_ADAPTATION_DEBUG) {
+  if (!AdaptationDebugEnabled()) {
     return;
   }
 
@@ -6023,7 +6065,7 @@ void GeneratorAdaptive::WritePatchAdaptationLog(int step, bool accepted) const {
 }
 
 void GeneratorAdaptive::WriteCurveAdaptationLog(int step, bool accepted) const {
-  if (!WRITE_ADAPTATION_DEBUG) {
+  if (!AdaptationDebugEnabled()) {
     return;
   }
 
@@ -6059,7 +6101,7 @@ void GeneratorAdaptive::WriteCurveAdaptationLog(int step, bool accepted) const {
 void GeneratorAdaptive::WriteAcceptanceLog(int step, double score, const MeshQualityStats& stats,
                                            double error_improvement, double element_growth_factor,
                                            bool accepted) const {
-  if (!WRITE_ADAPTATION_DEBUG) {
+  if (!AdaptationDebugEnabled()) {
     return;
   }
 
@@ -8363,7 +8405,7 @@ void GeneratorAdaptive::WriteCompatibilitySummary(const Geometry* geometry) cons
   double compatibility_error_max = 0.0;
   unsigned int compared_groups = 0U;
   unsigned int desynchronized_groups = 0U;
-  if (ENABLE_SHARED_CURVE_SYNC == 0) {
+  if (SharedCurveSync() == 0) {
     for (const auto& entry : groups) {
       if (entry.second.size() <= 1U) {
         continue;
@@ -8392,14 +8434,14 @@ void GeneratorAdaptive::WriteCompatibilitySummary(const Geometry* geometry) cons
             "desynchronized_groups,compat_error_mean,compat_error_max"
          << std::endl;
   }
-  file << OutputPrefix() << "," << ENABLE_SHARED_CURVE_SYNC << "," << ENABLE_HYBRID_RECONSTRUCTION
-       << "," << error_step_.size() << "," << geometry->GetNumberCurves() << "," << groups.size()
-       << "," << multi_incident_features << "," << compared_groups << "," << desynchronized_groups
-       << "," << compatibility_error_mean << "," << compatibility_error_max << std::endl;
+  file << OutputPrefix() << "," << SharedCurveSync() << "," << HybridReconstruction() << ","
+       << error_step_.size() << "," << geometry->GetNumberCurves() << "," << groups.size() << ","
+       << multi_incident_features << "," << compared_groups << "," << desynchronized_groups << ","
+       << compatibility_error_mean << "," << compatibility_error_max << std::endl;
 }
 
 void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
-  if (timer == nullptr || OutputPrefix().empty() || WRITE_RUNTIME_SUMMARY == 0) {
+  if (timer == nullptr || OutputPrefix().empty() || RuntimeSummaryEnabled() == 0) {
     return;
   }
 
@@ -8444,9 +8486,9 @@ void GeneratorAdaptive::WriteRuntimeSummary(const Timer* timer) const {
     }
     const double per_iteration_ms =
         measured_steps > 0U ? (1000.0 * total_seconds / static_cast<double>(measured_steps)) : 0.0;
-    file << OutputPrefix() << "," << ENABLE_SHARED_CURVE_SYNC << "," << ENABLE_HYBRID_RECONSTRUCTION
-         << "," << measured_steps << "," << type << "," << TimerTypeName(type) << ","
-         << total_seconds << "," << per_iteration_ms << std::endl;
+    file << OutputPrefix() << "," << SharedCurveSync() << "," << HybridReconstruction() << ","
+         << measured_steps << "," << type << "," << TimerTypeName(type) << "," << total_seconds
+         << "," << per_iteration_ms << std::endl;
   }
 }
 

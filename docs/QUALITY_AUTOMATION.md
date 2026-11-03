@@ -1,5 +1,23 @@
 # Local quality automation
 
+## Serial synchronization, reconstruction and diagnostics
+
+The [serial flow lot](evidence/SERIAL_FLOW_CONTEXT.md) reuses 75 CTest/385 nested
+Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/123-boundary
+reference and real MSVC CLI controls on exact head/main. Require all prior native
+markers plus four cases: owned scalar/string capture, retired source, foreign
+globals, actual shared-curve graph changes and diagnostic presence/metadata. Check
+Adapter debug values, y/n/empty/long literal modes, unconfigured legacy fallback
+and four value snapshots after generator retirement. Native report checks measure
+gates/metadata; the existing reference retains full-generation scientific evidence.
+Source reversal restores generator/Adapter/AFT bodies, predicates, synchronization
+slot, exact template literal and phase, debug writer arguments and report formats.
+Parser/apply/defaults, hybrid-off projection and other production stay unchanged.
+Analyze each actual production compilation command once plus the existing probe
+with flags unchanged. Require explicit token-checked format, whitespace, inventory/
+contracts and staged/remote gates. No new scientific model, target or instrument
+campaign is added; remaining global state and stage obligations stay visible.
+
 ## Advancing-front and postprocess controls
 
 The [AFT lot](evidence/AFT_CONTEXT.md) reuses 75 CTest/385 nested Python controls,

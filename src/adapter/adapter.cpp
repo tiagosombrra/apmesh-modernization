@@ -298,18 +298,16 @@ FaceMetricStats ComputeFaceMetricStats(const FaceList& faces) {
   return stats;
 }
 
-void AppendDomainDebugLog(const std::string& output_prefix, int adaptive_step, int retry_index,
-                          int patch_index, double factor_disc_global,
-                          const FaceMetricStats& raw_stats, const FaceMetricStats& smoothed_stats,
-                          const FaceMetricStats& generated_stats,
-                          const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
-                          const RegionalPatchStats& regional_stats, int local_regen_attempt = 0,
-                          const std::string& generation_status = "ok",
-                          double degeneracy_score = 0.0, double transition_floor = 0.0,
-                          int transition_underresolved = 0,
-                          double interior_transition_imbalance = 0.0,
-                          double curve_domain_balance = 1.0) {
-  if (!WRITE_ADAPTATION_DEBUG || output_prefix.empty()) {
+void AppendDomainDebugLog(
+    int write_adaptation_debug, const std::string& output_prefix, int adaptive_step,
+    int retry_index, int patch_index, double factor_disc_global, const FaceMetricStats& raw_stats,
+    const FaceMetricStats& smoothed_stats, const FaceMetricStats& generated_stats,
+    const Par2DJMesh::AFT::AdvancingFrontRunStats& aft_stats,
+    const RegionalPatchStats& regional_stats, int local_regen_attempt = 0,
+    const std::string& generation_status = "ok", double degeneracy_score = 0.0,
+    double transition_floor = 0.0, int transition_underresolved = 0,
+    double interior_transition_imbalance = 0.0, double curve_domain_balance = 1.0) {
+  if (!write_adaptation_debug || output_prefix.empty()) {
     return;
   }
 
@@ -1056,8 +1054,9 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
 
   FaceList new_mesh = avanco.getMesh();
   const FaceMetricStats generated_stats = ComputeFaceMetricStats(new_mesh);
-  AppendDomainDebugLog(OutputPrefix(), adaptive_step, retry_index, patch_index, factor_disc_global,
-                       raw_stats, smoothed_stats, generated_stats, avanco.GetRunStats());
+  AppendDomainDebugLog(AdaptationDebugEnabled(), OutputPrefix(), adaptive_step, retry_index,
+                       patch_index, factor_disc_global, raw_stats, smoothed_stats, generated_stats,
+                       avanco.GetRunStats());
   VertexList new_vertices = avanco.getInnerVertices();
 
   while (!new_vertices.empty()) {
@@ -1435,12 +1434,12 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
       }
     }
 
-    AppendDomainDebugLog(OutputPrefix(), adaptive_step, retry_index, patch_index, local_factor,
-                         result.raw_stats, result.smoothed_stats, result.generated_stats,
-                         result.aft_stats, result.regional_stats, local_attempt, result.status,
-                         result.degeneracy_score, result.transition_floor,
-                         result.transition_underresolved, result.interior_transition_imbalance,
-                         result.curve_domain_balance);
+    AppendDomainDebugLog(AdaptationDebugEnabled(), OutputPrefix(), adaptive_step, retry_index,
+                         patch_index, local_factor, result.raw_stats, result.smoothed_stats,
+                         result.generated_stats, result.aft_stats, result.regional_stats,
+                         local_attempt, result.status, result.degeneracy_score,
+                         result.transition_floor, result.transition_underresolved,
+                         result.interior_transition_imbalance, result.curve_domain_balance);
 
     VertexList new_vertices = avanco.getInnerVertices();
     while (!new_vertices.empty()) {
@@ -1716,10 +1715,19 @@ double Adapter::AftSmoothingFactor() const noexcept {
   return config ? config->smoothing_factor : SMOOTHING_LAPLACIAN_FACTOR;
 }
 
-void Adapter::ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) const noexcept {
+void Adapter::ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) const {
   const auto* config = AftSettings();
   if (config) {
     front.SetPostprocessControls({config->postprocess_passes, config->postprocess_quality_threshold,
                                   config->postprocess_blend});
   }
+  if (generation_context_ && generation_context_->serial_flow) {
+    front.SetTemplateMode(generation_context_->serial_flow->template_mode);
+  }
+}
+
+int Adapter::AdaptationDebugEnabled() const noexcept {
+  return generation_context_ && generation_context_->serial_flow
+             ? generation_context_->serial_flow->write_adaptation_debug
+             : WRITE_ADAPTATION_DEBUG;
 }

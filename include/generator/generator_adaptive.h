@@ -460,6 +460,7 @@ public:
   apmesh::application::PatchConsistencyConfig BuildPatchConsistencyRuntime() const noexcept;
   apmesh::application::AcceptanceConfig BuildAcceptanceRuntime() const noexcept;
   apmesh::application::AftConfig BuildAftRuntime() const noexcept;
+  apmesh::application::SerialFlowConfig BuildSerialFlowRuntime() const;
   MeshQualityStats ComputeMeshQualityStats(const MeshAdaptive* mesh) const;
   void WritePatchAdaptationLog(int step, bool accepted) const;
   void WriteCurveAdaptationLog(int step, bool accepted) const;
@@ -844,6 +845,13 @@ private:
   double AftPostprocessBlend() const noexcept;
   void EnableStableAftPostprocess() noexcept;
   apmesh::application::AftConfig effective_aft_{};
+  const apmesh::application::SerialFlowConfig* SerialFlowSettings() const noexcept;
+  int SharedCurveSync() const noexcept;
+  int HybridReconstruction() const noexcept;
+  int RuntimeSummaryEnabled() const noexcept;
+  int AdaptationDebugEnabled() const noexcept;
+  const std::string& TemplateMode() const noexcept;
+  void ConfigureSharedCurveSynchronization(Geometry* geometry);
   // Declared first so the Adapter borrow retires before the owned strings.
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;

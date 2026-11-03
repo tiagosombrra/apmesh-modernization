@@ -2,6 +2,7 @@
 #define ADVANCING_FRONT_H_
 
 #include <optional>
+#include <string>
 #include "../../data/definitions.h"
 #include "boundary.h"
 #include "edge.h"
@@ -124,6 +125,8 @@ public:
 
   ~AdvancingFront() override;
 
+  void SetTemplateMode(std::string mode);
+  const std::string& TemplateMode() const noexcept;
   void SetPostprocessControls(AftPostprocessControls controls) noexcept;
   int PostprocessPasses() const noexcept;
   double PostprocessQualityThreshold() const noexcept;
@@ -178,6 +181,7 @@ public:
 private:
   AdvancingFrontRunStats run_stats;
   std::optional<AftPostprocessControls> postprocess_controls_ = std::nullopt;
+  std::optional<std::string> template_mode_ = std::nullopt;
 };
 } // namespace AFT
 } // namespace Par2DJMesh

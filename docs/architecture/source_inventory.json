@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 647,
+    "literal_include_directives": 649,
     "first_party_include_edges": 361
   },
   "cross_component_directives": [
@@ -384,7 +384,7 @@
     "sstream": 6,
     "stdexcept": 11,
     "stdio.h": 1,
-    "string": 10,
+    "string": 11,
     "sys/time.h": 2,
     "system_error": 1,
     "tuple": 7,
@@ -393,7 +393,7 @@
     "unistd.h": 1,
     "unordered_map": 7,
     "unordered_set": 7,
-    "utility": 15,
+    "utility": 16,
     "vector": 21,
     "windows.h": 1,
     "winsock2.h": 1
@@ -497,8 +497,8 @@
       "path": "include/adapter/adapter.h",
       "component_by_directory": "adapter",
       "kind": "header",
-      "sha256": "698f0261f323145e53053c3e92e81a1c55fa7f35d42797a02a07bee8ca67df73",
-      "bytes": 5704,
+      "sha256": "9c5b7ff48cc8c2ba6883e5b54e3daab9416a8168c6ec084ec00221e6c26bd83e",
+      "bytes": 5742,
       "includes": [
         {
           "line": 4,
@@ -729,8 +729,8 @@
       "path": "include/application/generation_context.h",
       "component_by_directory": "application",
       "kind": "header",
-      "sha256": "a5ebe9ee67ac729b74ff0068babcc28fa988f9eace9cc98d880b925bf2a52193",
-      "bytes": 8396,
+      "sha256": "2802785a7dddb60b57655e1ae27de241095ac7e75a36d87fbe7fc151c7f42f87",
+      "bytes": 8727,
       "includes": [
         {
           "line": 4,
@@ -843,8 +843,8 @@
       "path": "include/crab_mesh/aft/advancing_front.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "cd3c69ff1d3168309e2cd84485c6debd683b4e43127865b518b99800c66d9e6f",
-      "bytes": 5028,
+      "sha256": "bf9e7f0d52204f9289a9387bce8aa2af00e9fb49448337a225c77bbf18789fe6",
+      "bytes": 5200,
       "includes": [
         {
           "line": 4,
@@ -855,55 +855,62 @@
         },
         {
           "line": 5,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
           "spelling": "../../data/definitions.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/definitions.h"
         },
         {
-          "line": 6,
+          "line": 7,
           "spelling": "boundary.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/boundary.h"
         },
         {
-          "line": 7,
+          "line": 8,
           "spelling": "edge.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/edge.h"
         },
         {
-          "line": 8,
+          "line": 9,
           "spelling": "face.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/face.h"
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "quadtree.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/quadtree.h"
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "quadtree_cell.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/quadtree_cell.h"
         },
         {
-          "line": 11,
+          "line": 12,
           "spelling": "shape.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/shape.h"
         },
         {
-          "line": 12,
+          "line": 13,
           "spelling": "vertex.h",
           "form": "quote",
           "scope": "first_party",
@@ -2762,8 +2769,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "673a63d5decc05e05dd9420f7ee91e91bc456594a0efd799936c820c06c2aba2",
-      "bytes": 40095,
+      "sha256": "e0547a9d30fb982e7fd6bdbc3d911243f2037a4ad516e583854aa757b2a72d2a",
+      "bytes": 40545,
       "includes": [
         {
           "line": 4,
@@ -3618,8 +3625,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "87fc7011408646bc002d7d066829ac9a0682e74c0f69982a75a600aa4087ef5a",
-      "bytes": 74068,
+      "sha256": "5ba90e82f4935951d37280ed1e0c95b8ca5cf9d303d72f698c893c2cfbf53fdb",
+      "bytes": 74314,
       "includes": [
         {
           "line": 1,
@@ -3974,8 +3981,8 @@
       "path": "src/application/runtime_config.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "c54fb6521743e7a06a0697d1a866c6bb7579fc6c5350e7f54d927709a34c8632",
-      "bytes": 21890,
+      "sha256": "9eb4315fb6637a07e62a6523dffb7e7c966695ab87707798f71a0d2fa3b7706e",
+      "bytes": 22062,
       "includes": [
         {
           "line": 1,
@@ -4069,8 +4076,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "375aa8f4dc147f1b025f6596bfdf3ae11f4955e1f63a768aab5fcd91ddd0fbb5",
-      "bytes": 48438,
+      "sha256": "e42a48a823718eed8ca26d899a6cbcb4cc46b0db048decb0bd7e22b648b30520",
+      "bytes": 48688,
       "includes": [
         {
           "line": 1,
@@ -4110,6 +4117,13 @@
         {
           "line": 7,
           "spelling": "memory",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
+          "spelling": "utility",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -5660,8 +5674,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "20b8ed210b25f96e5b27b579c2af20d01673eb5761557eb39b5d4512e7a7b998",
-      "bytes": 386779,
+      "sha256": "f9a03eaa970d0c303cc6c421489583c8bd75a64f8b51122121bc9fd25c897029",
+      "bytes": 388298,
       "includes": [
         {
           "line": 1,
@@ -6487,7 +6501,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 232,
+    "source_anchors": 235,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }
