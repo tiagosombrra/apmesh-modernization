@@ -726,6 +726,154 @@ void CheckCurveControlsContexts() {
                "stable=3 legacy=2\n";
 }
 
+void CheckAcceptanceContexts(const std::filesystem::path& output) {
+  using apmesh::application::AcceptanceConfig;
+  const std::array<double AcceptanceConfig::*, 22> doubles{
+      {&AcceptanceConfig::error_weight,
+       &AcceptanceConfig::quality_min_weight,
+       &AcceptanceConfig::poor_ratio_weight,
+       &AcceptanceConfig::growth_weight,
+       &AcceptanceConfig::step1_growth_weight,
+       &AcceptanceConfig::stepn_growth_weight,
+       &AcceptanceConfig::step1_max_growth_soft,
+       &AcceptanceConfig::stepn_max_growth_soft,
+       &AcceptanceConfig::step1_min_error_drop_abs,
+       &AcceptanceConfig::step1_min_error_drop_pct,
+       &AcceptanceConfig::min_score,
+       &AcceptanceConfig::max_error_increase_pct,
+       &AcceptanceConfig::poor_ratio_target,
+       &AcceptanceConfig::small_gains_min_error_drop_abs,
+       &AcceptanceConfig::small_gains_min_error_drop_per_element,
+       &AcceptanceConfig::small_gains_growth_weight,
+       &AcceptanceConfig::min_efficiency,
+       &AcceptanceConfig::max_element_growth_soft,
+       &AcceptanceConfig::quality_drop_tolerance,
+       &AcceptanceConfig::target_growth_tolerance,
+       &AcceptanceConfig::error_drop_min,
+       &AcceptanceConfig::budget_miss_penalty}};
+  const std::array<int AcceptanceConfig::*, 4> integers{
+      {&AcceptanceConfig::mode, &AcceptanceConfig::growth_penalty_mode,
+       &AcceptanceConfig::small_gains_mode, &AcceptanceConfig::efficiency_mode}};
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildAcceptanceRuntime();
+  const int saved_debug = WRITE_ADAPTATION_DEBUG;
+  WRITE_ADAPTATION_DEBUG = 1;
+  const auto apply = [](const AcceptanceConfig& config) {
+    ACCEPTANCE_MODE = config.mode;
+    ACCEPTANCE_WEIGHT_ERROR = config.error_weight;
+    ACCEPTANCE_WEIGHT_QUALITY_MIN = config.quality_min_weight;
+    ACCEPTANCE_WEIGHT_POOR_RATIO = config.poor_ratio_weight;
+    ACCEPTANCE_WEIGHT_GROWTH = config.growth_weight;
+    ACCEPTANCE_STEP1_GROWTH_WEIGHT = config.step1_growth_weight;
+    ACCEPTANCE_STEPN_GROWTH_WEIGHT = config.stepn_growth_weight;
+    ACCEPTANCE_STEP1_MAX_GROWTH_SOFT = config.step1_max_growth_soft;
+    ACCEPTANCE_STEPN_MAX_GROWTH_SOFT = config.stepn_max_growth_soft;
+    ACCEPTANCE_GROWTH_PENALTY_MODE = config.growth_penalty_mode;
+    ACCEPTANCE_STEP1_MIN_ERROR_DROP_ABS = config.step1_min_error_drop_abs;
+    ACCEPTANCE_STEP1_MIN_ERROR_DROP_PCT = config.step1_min_error_drop_pct;
+    ACCEPTANCE_MIN_SCORE = config.min_score;
+    ACCEPTANCE_MAX_ERROR_INCREASE_PCT = config.max_error_increase_pct;
+    ACCEPTANCE_POOR_RATIO_TARGET = config.poor_ratio_target;
+    STEP2_ACCEPT_SMALL_GAINS_MODE = config.small_gains_mode;
+    STEP2_MIN_ERROR_DROP_ABS = config.small_gains_min_error_drop_abs;
+    STEP2_MIN_ERROR_DROP_PER_ELEMENT = config.small_gains_min_error_drop_per_element;
+    STEP2_ACCEPTANCE_GROWTH_WEIGHT = config.small_gains_growth_weight;
+    STEP_ACCEPT_EFFICIENCY_MODE = config.efficiency_mode;
+    STEP_ACCEPT_MIN_EFFICIENCY = config.min_efficiency;
+    STEP_ACCEPT_MAX_ELEMENT_GROWTH_SOFT = config.max_element_growth_soft;
+    STEP_ACCEPT_QUALITY_DROP_TOLERANCE = config.quality_drop_tolerance;
+    STEP_ACCEPT_TARGET_GROWTH_TOLERANCE = config.target_growth_tolerance;
+    STEP_ACCEPT_ERROR_DROP_MIN = config.error_drop_min;
+    STEP_ACCEPT_BUDGET_MISS_PENALTY = config.budget_miss_penalty;
+  };
+  const auto equal = [&](const AcceptanceConfig& a, const AcceptanceConfig& b) {
+    for (auto field : doubles)
+      if (std::memcmp(&(a.*field), &(b.*field), sizeof(double)) != 0)
+        return false;
+    for (auto field : integers)
+      if (a.*field != b.*field)
+        return false;
+    return true;
+  };
+  const auto penalties = [](const GeneratorAdaptive& generator) {
+    std::array<double, 10> result{};
+    unsigned index = 0;
+    for (int step : {1, 2})
+      for (double growth : {0.8, 1.0, 1.5, 3.0, 8.0})
+        result[index++] = DomainCandidateFixture::AcceptanceGrowthPenalty(generator, growth, step);
+    return result;
+  };
+  const auto same = [](const std::array<double, 10>& a, const std::array<double, 10>& b) {
+    return std::memcmp(a.data(), b.data(), a.size() * sizeof(double)) == 0;
+  };
+  std::array<AcceptanceConfig, 3> cases{};
+  cases[1].mode = cases[1].growth_penalty_mode = cases[1].small_gains_mode = 1;
+  cases[1].step1_growth_weight = 0.5;
+  cases[1].stepn_growth_weight = 0.25;
+  cases[1].step1_max_growth_soft = 2.0;
+  cases[1].stepn_max_growth_soft = 3.0;
+  cases[1].min_score = 0.07;
+  cases[1].min_efficiency = 0.002;
+  cases[2].mode = cases[2].growth_penalty_mode = 2;
+  cases[2].step1_growth_weight = 0.07;
+  cases[2].stepn_growth_weight = 0.33;
+  cases[2].growth_weight = -0.0;
+  cases[2].efficiency_mode = 0;
+  cases[2].small_gains_min_error_drop_abs = 0.003;
+  cases[2].target_growth_tolerance = 0.15;
+  AcceptanceConfig foreign;
+  for (std::size_t i = 0; i < doubles.size(); ++i)
+    foreign.*doubles[i] = 0.5 + static_cast<double>(i) * 0.01;
+  for (auto field : integers)
+    foreign.*field = 9;
+  foreign.growth_penalty_mode = 1;
+  foreign.step1_max_growth_soft = foreign.stepn_max_growth_soft = 1.0;
+  unsigned case_index = 0;
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildAcceptanceRuntime();
+    const auto expected_penalties = penalties(legacy);
+    const std::string prefix =
+        (output / ("acceptance_context_" + std::to_string(case_index++))).generic_string();
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      auto captured =
+          apmesh::application::MakeGenerationContext(apmesh::application::RuntimeConfig{});
+      if (!equal(expected, *captured.acceptance))
+        throw std::runtime_error("Acceptance factory changed raw process values");
+      apmesh::application::GenerationContext source{"unused", prefix, "", ""};
+      source.acceptance = captured.acceptance;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.acceptance = captured.acceptance = foreign;
+    }
+    apply(foreign);
+    if (!equal(foreign, legacy.BuildAcceptanceRuntime()) ||
+        !equal(foreign, identity_only.BuildAcceptanceRuntime()) ||
+        !equal(expected, owned->BuildAcceptanceRuntime()) ||
+        !same(expected_penalties, penalties(*owned)) || same(expected_penalties, penalties(legacy)))
+      throw std::runtime_error("Acceptance ownership or native growth differential failed");
+    for (bool accepted : {false, true}) {
+      owned->WriteAcceptanceLog(2, 0.25, GeneratorAdaptive::MeshQualityStats{}, 0.1, 1.5, accepted);
+      const std::string filename =
+          prefix + "_passo_2_acceptance_" + (accepted ? "accepted" : "rejected") + ".log";
+      std::ifstream file(filename);
+      std::string line;
+      bool found = false;
+      while (std::getline(file, line))
+        found = found || line == "acceptance_mode=" + std::to_string(value.mode);
+      if (!found)
+        throw std::runtime_error("Acceptance report used foreign process mode");
+    }
+    if (!equal(value, *owned->GetGenerationContext()->acceptance) ||
+        !equal(foreign, legacy.BuildAcceptanceRuntime()))
+      throw std::runtime_error("Acceptance evaluation changed raw context or process state");
+  }
+  apply(saved);
+  WRITE_ADAPTATION_DEBUG = saved_debug;
+  std::cout << "acceptance_context cases=3 scalar_bits=66 growth_bits=30 logs=6 legacy=2\n";
+}
+
 void CheckPatchConsistencyContexts() {
   using apmesh::application::PatchConsistencyConfig;
   const std::array<double PatchConsistencyConfig::*, 11> doubles{
@@ -1296,6 +1444,7 @@ int main(int argc, char* argv[]) {
   CheckQuadtreeControlsContexts();
   CheckPatchGenerationContexts();
   CheckPatchConsistencyContexts();
+  CheckAcceptanceContexts(output);
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();

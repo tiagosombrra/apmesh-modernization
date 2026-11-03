@@ -1,0 +1,78 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "b48810f4c6b4177b778749a2d29b03c213169015",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "26 remaining generation acceptance controls owned in context",
+    "Five growth settings passed explicitly at three original call positions",
+    "No stable writes in group; raw context and legacy fallback preserved",
+    "Scoring, accept/reject, growth, efficiency, quality and report expressions retained"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_complete_body_reversal": true,
+    "growth_formula_and_three_call_positions_preserved": true,
+    "growth_parameter_bindings": 5,
+    "stable_writes": 0,
+    "parser_apply_global_defaults_and_other_production_unchanged": true,
+    "owned_inputs": [
+      "mode",
+      "error_weight",
+      "quality_min_weight",
+      "poor_ratio_weight",
+      "growth_weight",
+      "step1_growth_weight",
+      "stepn_growth_weight",
+      "step1_max_growth_soft",
+      "stepn_max_growth_soft",
+      "growth_penalty_mode",
+      "step1_min_error_drop_abs",
+      "step1_min_error_drop_pct",
+      "min_score",
+      "max_error_increase_pct",
+      "poor_ratio_target",
+      "small_gains_mode",
+      "small_gains_min_error_drop_abs",
+      "small_gains_min_error_drop_per_element",
+      "small_gains_growth_weight",
+      "efficiency_mode",
+      "min_efficiency",
+      "max_element_growth_soft",
+      "quality_drop_tolerance",
+      "target_growth_tolerance",
+      "error_drop_min",
+      "budget_miss_penalty"
+    ],
+    "factory": "26 current process values; no parser changes",
+    "effective_state": "read-only context; no new override state because this group has no stable writes",
+    "compatibility": "absent acceptance settings retain live legacy reads",
+    "scope": "no scoring, accept/reject, growth, quality, efficiency or stopping policy change; remaining controls stay shared"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "native_cases": 3,
+  "native_double_representations": 66,
+  "native_integer_fields": 4,
+  "native_growth_results": 30,
+  "native_reports": 6,
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "local_driver_correction": "Whole-accessor identifier matching fixes a suffix reversal; production and oracle unchanged; initial refusal retained",
+  "limits": [
+    "Unit scalar/growth/report checks plus the existing accepted/rejected reference; no new full acceptance parameter matrix",
+    "AFT/runtime globals remain shared; serialized execution",
+    "No recovery, parallel or complete-process memory qualification",
+    "Stage 3 and stage 6 remain open"
+  ]
+}

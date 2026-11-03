@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Remaining generation acceptance controls
+
+The [acceptance lot](evidence/ACCEPTANCE_CONTEXT.md) reuses 75 CTest/385 nested
+Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/123-boundary
+accepted/rejected reference and real MSVC CLI controls on exact head/main. Require
+all prior native markers plus three cases: 66 exact double representations, four
+integer fields, retired sources, live legacy fallback, foreign-global negatives,
+30 actual growth-penalty outputs and six real accepted/rejected report labels.
+Native reports check the owned mode; full decision traces use the existing frozen
+reference. Source reversal restores the complete generator body, original growth
+formula and three call positions with exact parameter/getter bindings. Match whole
+accessor identifiers when reversing; preserve the initial local suffix-match
+refusal. Parser/apply/defaults/other production stay unchanged. Analyze each actual
+production compilation command once plus the existing probe with unchanged flags.
+Require explicit token-checked formatting, whitespace, inventory/contracts and
+staged/remote gates. No new model, target or instrument campaign is added.
+
 ## Patch and group consistency controls
 
 The [patch consistency lot](evidence/PATCH_CONSISTENCY_CONTEXT.md) reuses 75 CTest/

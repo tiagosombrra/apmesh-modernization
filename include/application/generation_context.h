@@ -182,6 +182,36 @@ struct PatchConsistencyConfig {
   double acceptance_max_group_dispersion_step2 = 0.45;
 };
 
+// Raw acceptance controls. Scientific comparisons and derived values remain at their use sites.
+struct AcceptanceConfig {
+  int mode = 0;
+  double error_weight = 1.0;
+  double quality_min_weight = 0.20;
+  double poor_ratio_weight = 0.20;
+  double growth_weight = 0.10;
+  double step1_growth_weight = 0.02;
+  double stepn_growth_weight = 0.18;
+  double step1_max_growth_soft = 40.0;
+  double stepn_max_growth_soft = 6.0;
+  int growth_penalty_mode = 0;
+  double step1_min_error_drop_abs = 0.0;
+  double step1_min_error_drop_pct = 0.0;
+  double min_score = 0.0;
+  double max_error_increase_pct = 0.0;
+  double poor_ratio_target = 0.15;
+  int small_gains_mode = 0;
+  double small_gains_min_error_drop_abs = 0.005;
+  double small_gains_min_error_drop_per_element = 0.0;
+  double small_gains_growth_weight = 0.10;
+  int efficiency_mode = 1;
+  double min_efficiency = 1.0e-6;
+  double max_element_growth_soft = 2.0;
+  double quality_drop_tolerance = 0.02;
+  double target_growth_tolerance = 0.35;
+  double error_drop_min = 0.0;
+  double budget_miss_penalty = 0.1;
+};
+
 // Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
@@ -197,6 +227,7 @@ struct GenerationContext {
   std::optional<QuadtreeControlsConfig> quadtree = std::nullopt;
   std::optional<PatchGenerationConfig> patch_generation = std::nullopt;
   std::optional<PatchConsistencyConfig> patch_consistency = std::nullopt;
+  std::optional<AcceptanceConfig> acceptance = std::nullopt;
 };
 } // namespace apmesh::application
 

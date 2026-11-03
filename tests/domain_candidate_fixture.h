@@ -254,6 +254,10 @@ class DomainCandidateFixture {
   }
 
 public:
+  static double AcceptanceGrowthPenalty(const GeneratorAdaptive& generator, double growth,
+                                        int step) {
+    return generator.ComputeAcceptanceGrowthPenalty(growth, step);
+  }
   static void EnablePatchConsistency(GeneratorAdaptive& generator) {
     generator.EnablePatchConsistency();
   }

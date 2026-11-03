@@ -469,13 +469,14 @@ TriangleShapeMetrics ComputeTriangleShapeMetrics3D(const NodeAdaptive& a, const 
   return metrics;
 }
 
-double ComputeGrowthPenalty(const double element_growth_factor, const int current_step) {
-  const double growth_weight =
-      (current_step <= 1) ? ACCEPTANCE_STEP1_GROWTH_WEIGHT : ACCEPTANCE_STEPN_GROWTH_WEIGHT;
-  const double soft_limit =
-      (current_step <= 1) ? ACCEPTANCE_STEP1_MAX_GROWTH_SOFT : ACCEPTANCE_STEPN_MAX_GROWTH_SOFT;
+double ComputeGrowthPenalty(const double element_growth_factor, const int current_step,
+                            double step1_growth_weight, double stepn_growth_weight,
+                            double step1_max_growth_soft, double stepn_max_growth_soft,
+                            int growth_penalty_mode) {
+  const double growth_weight = (current_step <= 1) ? step1_growth_weight : stepn_growth_weight;
+  const double soft_limit = (current_step <= 1) ? step1_max_growth_soft : stepn_max_growth_soft;
   const double growth_excess = std::max(0.0, element_growth_factor - std::max(1.0, soft_limit));
-  if (ACCEPTANCE_GROWTH_PENALTY_MODE == 1) {
+  if (growth_penalty_mode == 1) {
     return growth_weight * growth_excess * growth_excess;
   }
   return growth_weight * std::max(0.0, element_growth_factor - 1.0);
@@ -1685,6 +1686,177 @@ GeneratorAdaptive::BuildPatchConsistencyRuntime() const noexcept {
           ConsistencyAcceptanceMode(),
           ConsistencyAcceptancePenaltyWeight(),
           ConsistencyAcceptanceMaxGroupDispersionStep2()};
+}
+
+const apmesh::application::AcceptanceConfig*
+GeneratorAdaptive::AcceptanceSettings() const noexcept {
+  return generation_context_ && generation_context_->acceptance ? &*generation_context_->acceptance
+                                                                : nullptr;
+}
+
+int GeneratorAdaptive::AcceptanceMode() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->mode : ACCEPTANCE_MODE;
+}
+
+double GeneratorAdaptive::AcceptanceErrorWeight() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->error_weight : ACCEPTANCE_WEIGHT_ERROR;
+}
+
+double GeneratorAdaptive::AcceptanceQualityMinWeight() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->quality_min_weight : ACCEPTANCE_WEIGHT_QUALITY_MIN;
+}
+
+double GeneratorAdaptive::AcceptancePoorRatioWeight() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->poor_ratio_weight : ACCEPTANCE_WEIGHT_POOR_RATIO;
+}
+
+double GeneratorAdaptive::AcceptanceGrowthWeight() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->growth_weight : ACCEPTANCE_WEIGHT_GROWTH;
+}
+
+double GeneratorAdaptive::AcceptanceStep1GrowthWeight() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->step1_growth_weight : ACCEPTANCE_STEP1_GROWTH_WEIGHT;
+}
+
+double GeneratorAdaptive::AcceptanceStepNGrowthWeight() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->stepn_growth_weight : ACCEPTANCE_STEPN_GROWTH_WEIGHT;
+}
+
+double GeneratorAdaptive::AcceptanceStep1MaxGrowthSoft() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->step1_max_growth_soft : ACCEPTANCE_STEP1_MAX_GROWTH_SOFT;
+}
+
+double GeneratorAdaptive::AcceptanceStepNMaxGrowthSoft() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->stepn_max_growth_soft : ACCEPTANCE_STEPN_MAX_GROWTH_SOFT;
+}
+
+int GeneratorAdaptive::AcceptanceGrowthPenaltyMode() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->growth_penalty_mode : ACCEPTANCE_GROWTH_PENALTY_MODE;
+}
+
+double GeneratorAdaptive::AcceptanceStep1MinErrorDropAbs() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->step1_min_error_drop_abs : ACCEPTANCE_STEP1_MIN_ERROR_DROP_ABS;
+}
+
+double GeneratorAdaptive::AcceptanceStep1MinErrorDropPct() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->step1_min_error_drop_pct : ACCEPTANCE_STEP1_MIN_ERROR_DROP_PCT;
+}
+
+double GeneratorAdaptive::AcceptanceMinScore() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->min_score : ACCEPTANCE_MIN_SCORE;
+}
+
+double GeneratorAdaptive::AcceptanceMaxErrorIncreasePct() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->max_error_increase_pct : ACCEPTANCE_MAX_ERROR_INCREASE_PCT;
+}
+
+double GeneratorAdaptive::AcceptancePoorRatioTarget() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->poor_ratio_target : ACCEPTANCE_POOR_RATIO_TARGET;
+}
+
+int GeneratorAdaptive::Step2AcceptSmallGainsMode() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->small_gains_mode : STEP2_ACCEPT_SMALL_GAINS_MODE;
+}
+
+double GeneratorAdaptive::Step2MinErrorDropAbs() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->small_gains_min_error_drop_abs : STEP2_MIN_ERROR_DROP_ABS;
+}
+
+double GeneratorAdaptive::Step2MinErrorDropPerElement() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->small_gains_min_error_drop_per_element : STEP2_MIN_ERROR_DROP_PER_ELEMENT;
+}
+
+double GeneratorAdaptive::Step2AcceptanceGrowthWeight() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->small_gains_growth_weight : STEP2_ACCEPTANCE_GROWTH_WEIGHT;
+}
+
+int GeneratorAdaptive::StepAcceptEfficiencyMode() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->efficiency_mode : STEP_ACCEPT_EFFICIENCY_MODE;
+}
+
+double GeneratorAdaptive::StepAcceptMinEfficiency() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->min_efficiency : STEP_ACCEPT_MIN_EFFICIENCY;
+}
+
+double GeneratorAdaptive::StepAcceptMaxElementGrowthSoft() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->max_element_growth_soft : STEP_ACCEPT_MAX_ELEMENT_GROWTH_SOFT;
+}
+
+double GeneratorAdaptive::StepAcceptQualityDropTolerance() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->quality_drop_tolerance : STEP_ACCEPT_QUALITY_DROP_TOLERANCE;
+}
+
+double GeneratorAdaptive::StepAcceptTargetGrowthTolerance() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->target_growth_tolerance : STEP_ACCEPT_TARGET_GROWTH_TOLERANCE;
+}
+
+double GeneratorAdaptive::StepAcceptErrorDropMin() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->error_drop_min : STEP_ACCEPT_ERROR_DROP_MIN;
+}
+
+double GeneratorAdaptive::StepAcceptBudgetMissPenalty() const noexcept {
+  const auto* config = AcceptanceSettings();
+  return config ? config->budget_miss_penalty : STEP_ACCEPT_BUDGET_MISS_PENALTY;
+}
+
+double GeneratorAdaptive::ComputeAcceptanceGrowthPenalty(double growth_factor, int step) const {
+  return ComputeGrowthPenalty(growth_factor, step, AcceptanceStep1GrowthWeight(),
+                              AcceptanceStepNGrowthWeight(), AcceptanceStep1MaxGrowthSoft(),
+                              AcceptanceStepNMaxGrowthSoft(), AcceptanceGrowthPenaltyMode());
+}
+
+apmesh::application::AcceptanceConfig GeneratorAdaptive::BuildAcceptanceRuntime() const noexcept {
+  return {AcceptanceMode(),
+          AcceptanceErrorWeight(),
+          AcceptanceQualityMinWeight(),
+          AcceptancePoorRatioWeight(),
+          AcceptanceGrowthWeight(),
+          AcceptanceStep1GrowthWeight(),
+          AcceptanceStepNGrowthWeight(),
+          AcceptanceStep1MaxGrowthSoft(),
+          AcceptanceStepNMaxGrowthSoft(),
+          AcceptanceGrowthPenaltyMode(),
+          AcceptanceStep1MinErrorDropAbs(),
+          AcceptanceStep1MinErrorDropPct(),
+          AcceptanceMinScore(),
+          AcceptanceMaxErrorIncreasePct(),
+          AcceptancePoorRatioTarget(),
+          Step2AcceptSmallGainsMode(),
+          Step2MinErrorDropAbs(),
+          Step2MinErrorDropPerElement(),
+          Step2AcceptanceGrowthWeight(),
+          StepAcceptEfficiencyMode(),
+          StepAcceptMinEfficiency(),
+          StepAcceptMaxElementGrowthSoft(),
+          StepAcceptQualityDropTolerance(),
+          StepAcceptTargetGrowthTolerance(),
+          StepAcceptErrorDropMin(),
+          StepAcceptBudgetMissPenalty()};
 }
 
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
@@ -2987,10 +3159,10 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                                      : error_drop_abs;
         const double quality_min_delta = candidate_quality.quality_min - previous_quality_min;
         const double poor_ratio_delta = previous_poor_ratio - candidate_quality.poor_ratio;
-        acceptance_score = ACCEPTANCE_WEIGHT_ERROR * improvement +
-                           ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
-                           ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta -
-                           ComputeGrowthPenalty(element_growth_factor, this->step_);
+        acceptance_score = AcceptanceErrorWeight() * improvement +
+                           AcceptanceQualityMinWeight() * quality_min_delta +
+                           AcceptancePoorRatioWeight() * poor_ratio_delta -
+                           ComputeAcceptanceGrowthPenalty(element_growth_factor, this->step_);
         continue;
       }
 
@@ -3026,10 +3198,10 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                                      : error_drop_abs;
         const double quality_min_delta = candidate_quality.quality_min - previous_quality_min;
         const double poor_ratio_delta = previous_poor_ratio - candidate_quality.poor_ratio;
-        acceptance_score = ACCEPTANCE_WEIGHT_ERROR * improvement +
-                           ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
-                           ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta -
-                           ComputeGrowthPenalty(element_growth_factor, this->step_);
+        acceptance_score = AcceptanceErrorWeight() * improvement +
+                           AcceptanceQualityMinWeight() * quality_min_delta +
+                           AcceptancePoorRatioWeight() * poor_ratio_delta -
+                           ComputeAcceptanceGrowthPenalty(element_growth_factor, this->step_);
         continue;
       }
 
@@ -3083,10 +3255,11 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
           min_angle_p05_3d_step_.empty() ? 0.0 : min_angle_p05_3d_step_.back();
       const double previous_max_angle_p95 =
           max_angle_p95_3d_step_.empty() ? 180.0 : max_angle_p95_3d_step_.back();
-      const double acceptance_growth_weight =
-          (this->step_ > 1 && STEP2_ACCEPT_SMALL_GAINS_MODE == 1) ? STEP2_ACCEPTANCE_GROWTH_WEIGHT
-                                                                  : ACCEPTANCE_WEIGHT_GROWTH;
-      const double growth_penalty = ComputeGrowthPenalty(element_growth_factor, this->step_);
+      const double acceptance_growth_weight = (this->step_ > 1 && Step2AcceptSmallGainsMode() == 1)
+                                                  ? Step2AcceptanceGrowthWeight()
+                                                  : AcceptanceGrowthWeight();
+      const double growth_penalty =
+          ComputeAcceptanceGrowthPenalty(element_growth_factor, this->step_);
       const double target_growth_miss =
           (BudgetDrivenAdaptation() == 1 && current_target_element_growth_ > 0.0)
               ? std::fabs(element_growth_factor - current_target_element_growth_)
@@ -3123,15 +3296,14 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                                               0.30 * imbalance_mean_real + 0.25 * overshoot_excess +
                                               0.10 * curve_aux_penalty;
       acceptance_score =
-          ACCEPTANCE_WEIGHT_ERROR * improvement +
-          ACCEPTANCE_WEIGHT_QUALITY_MIN * quality_min_delta +
-          ACCEPTANCE_WEIGHT_POOR_RATIO * poor_ratio_delta + 0.40 * good_ratio_delta -
-          (growth_penalty * (ACCEPTANCE_WEIGHT_GROWTH > 0.0
-                                 ? (acceptance_growth_weight / ACCEPTANCE_WEIGHT_GROWTH)
+          AcceptanceErrorWeight() * improvement + AcceptanceQualityMinWeight() * quality_min_delta +
+          AcceptancePoorRatioWeight() * poor_ratio_delta + 0.40 * good_ratio_delta -
+          (growth_penalty * (AcceptanceGrowthWeight() > 0.0
+                                 ? (acceptance_growth_weight / AcceptanceGrowthWeight())
                                  : acceptance_growth_weight)) -
           ((BudgetDrivenAdaptation() == 1)
-               ? (STEP_ACCEPT_BUDGET_MISS_PENALTY *
-                  std::max(0.0, target_growth_miss - STEP_ACCEPT_TARGET_GROWTH_TOLERANCE))
+               ? (StepAcceptBudgetMissPenalty() *
+                  std::max(0.0, target_growth_miss - StepAcceptTargetGrowthTolerance()))
                : 0.0);
       if (overshoot_excess > 0.0 && good_ratio_delta <= 0.0) {
         acceptance_score -= 0.35 * overshoot_excess;
@@ -3144,39 +3316,37 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
         acceptance_score -=
             ConsistencyAcceptancePenaltyWeight() * current_patch_consistency_penalty_;
       }
-      const bool error_within_tolerance =
-          improvement >= (-ACCEPTANCE_MAX_ERROR_INCREASE_PCT / 100.0);
+      const bool error_within_tolerance = improvement >= (-AcceptanceMaxErrorIncreasePct() / 100.0);
       const bool small_step_drop_ok =
-          (this->step_ > 1 && STEP2_ACCEPT_SMALL_GAINS_MODE == 1)
-              ? (error_drop_abs >= STEP2_MIN_ERROR_DROP_ABS &&
-                 error_drop_per_element >= STEP2_MIN_ERROR_DROP_PER_ELEMENT)
+          (this->step_ > 1 && Step2AcceptSmallGainsMode() == 1)
+              ? (error_drop_abs >= Step2MinErrorDropAbs() &&
+                 error_drop_per_element >= Step2MinErrorDropPerElement())
               : true;
       const bool step1_override =
-          (this->step_ == 1 && error_drop_abs >= ACCEPTANCE_STEP1_MIN_ERROR_DROP_ABS &&
-           improvement * 100.0 >= ACCEPTANCE_STEP1_MIN_ERROR_DROP_PCT &&
+          (this->step_ == 1 && error_drop_abs >= AcceptanceStep1MinErrorDropAbs() &&
+           improvement * 100.0 >= AcceptanceStep1MinErrorDropPct() &&
            candidate_quality.poor_ratio <=
-               std::max(ACCEPTANCE_POOR_RATIO_TARGET, previous_poor_ratio + 0.01));
+               std::max(AcceptancePoorRatioTarget(), previous_poor_ratio + 0.01));
       const bool budget_driven_step1_ok =
           (BudgetDrivenAdaptation() == 1 && this->step_ == 1)
               ? (error_drop_abs > 0.0 &&
-                 candidate_quality.quality_mean + STEP_ACCEPT_QUALITY_DROP_TOLERANCE >=
+                 candidate_quality.quality_mean + StepAcceptQualityDropTolerance() >=
                      quality_mean_step_.back() &&
                  (current_target_element_growth_ <= 0.0 ||
                   element_growth_factor <=
-                      current_target_element_growth_ + STEP_ACCEPT_TARGET_GROWTH_TOLERANCE))
+                      current_target_element_growth_ + StepAcceptTargetGrowthTolerance()))
               : false;
       const bool efficiency_ok =
-          (this->step_ <= 1 || STEP_ACCEPT_EFFICIENCY_MODE == 0)
+          (this->step_ <= 1 || StepAcceptEfficiencyMode() == 0)
               ? true
-              : (error_drop_per_element >= STEP_ACCEPT_MIN_EFFICIENCY &&
-                 element_growth_factor <= STEP_ACCEPT_MAX_ELEMENT_GROWTH_SOFT &&
-                 candidate_quality.quality_mean + STEP_ACCEPT_QUALITY_DROP_TOLERANCE >=
+              : (error_drop_per_element >= StepAcceptMinEfficiency() &&
+                 element_growth_factor <= StepAcceptMaxElementGrowthSoft() &&
+                 candidate_quality.quality_mean + StepAcceptQualityDropTolerance() >=
                      quality_mean_step_.back());
-      const bool target_growth_ok =
-          (BudgetDrivenAdaptation() == 0 || current_target_element_growth_ <= 0.0 ||
-           this->step_ <= 1)
-              ? true
-              : (target_growth_miss <= STEP_ACCEPT_TARGET_GROWTH_TOLERANCE);
+      const bool target_growth_ok = (BudgetDrivenAdaptation() == 0 ||
+                                     current_target_element_growth_ <= 0.0 || this->step_ <= 1)
+                                        ? true
+                                        : (target_growth_miss <= StepAcceptTargetGrowthTolerance());
       const bool step2_quality_stable =
           (this->step_ != 2 || BudgetDrivenAdaptation() == 0)
               ? true
@@ -3233,7 +3403,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
       // patches) o candidato pode subir ~20% o indicador ao refinar sem "melhoria" >= 0,
       // deixando a malha aceite estagnada no passo 0 ate explore no passo 4.
       const bool stable_mid_explore_accept =
-          (ACCEPTANCE_MODE == 0) && current_policy_.stable_mode && this->step_ >= 2 &&
+          (AcceptanceMode() == 0) && current_policy_.stable_mode && this->step_ >= 2 &&
           this->step_ <= 3 && prev_error > 1.0e-30 &&
           this->error_local_process_ <= prev_error * 1.24 &&
           candidate_quality.quality_min + 1.0e-9 >= previous_quality_min * 0.68 &&
@@ -3242,7 +3412,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
       // Modo 0 exige improvement>=0; em passos tardios do adaptive_stable o refinamento
       // pode subir ligeiramente o indicador de erro enquanto a malha ganha elementos.
       const bool stable_late_explore_accept =
-          (ACCEPTANCE_MODE == 0) && current_policy_.stable_mode && this->step_ >= 4 &&
+          (AcceptanceMode() == 0) && current_policy_.stable_mode && this->step_ >= 4 &&
           prev_error > 1.0e-30 && this->error_local_process_ <= prev_error * 1.28 &&
           candidate_quality.quality_min + 1.0e-9 >= previous_quality_min * 0.75 &&
           candidate_quality.poor_ratio <= std::max(0.65, previous_poor_ratio + 0.22);
@@ -3279,13 +3449,13 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
               : ((quality_target_hit || quality_trending_ok || shape_target_hit) &&
                  hybrid_shape_gate_ok);
       const bool score_ok =
-          (ACCEPTANCE_MODE == 0)
+          (AcceptanceMode() == 0)
               ? ((improvement >= 0.0 || stable_mid_explore_accept || stable_late_explore_accept) &&
                  transition_coherence_ok && local_progress_ok && consistency_ok &&
                  stable_transition_ready && quality_gate_ok)
               : ((error_within_tolerance && small_step_drop_ok &&
-                  error_drop_abs >= STEP_ACCEPT_ERROR_DROP_MIN &&
-                  acceptance_score >= ACCEPTANCE_MIN_SCORE && efficiency_ok && target_growth_ok &&
+                  error_drop_abs >= StepAcceptErrorDropMin() &&
+                  acceptance_score >= AcceptanceMinScore() && efficiency_ok && target_growth_ok &&
                   local_progress_ok && step2_quality_stable && consistency_ok &&
                   stable_step2_error_ok && step2_overshoot_ok && stable_progressive_overshoot_ok &&
                   transition_coherence_ok && quality_gate_ok) ||
@@ -4716,7 +4886,7 @@ std::vector<double> GeneratorAdaptive::ComputePatchAdaptationFactors(const Geome
       const double good_quality_deficit = Clamp01((0.70 - snapshot.good_ratio_ge_0_60) / 0.70);
       const double quality_signal = Clamp01(
           0.50 * mean_quality_deficit + 0.25 * min_quality_deficit +
-          0.15 * Clamp01(snapshot.poor_ratio / std::max(ACCEPTANCE_POOR_RATIO_TARGET, 1.0e-6)) +
+          0.15 * Clamp01(snapshot.poor_ratio / std::max(AcceptancePoorRatioTarget(), 1.0e-6)) +
           0.10 * good_quality_deficit);
       const bool needs_quality_repair =
           (snapshot.quality_min > 0.0 && snapshot.quality_min < 0.25) ||
@@ -5850,7 +6020,7 @@ void GeneratorAdaptive::WriteAcceptanceLog(int step, double score, const MeshQua
 
   file << "step=" << step << std::endl;
   file << "accepted=" << (accepted ? 1 : 0) << std::endl;
-  file << "acceptance_mode=" << ACCEPTANCE_MODE << std::endl;
+  file << "acceptance_mode=" << AcceptanceMode() << std::endl;
   file << "acceptance_score=" << score << std::endl;
   file << "error_improvement=" << error_improvement << std::endl;
   file << "quality_min=" << stats.quality_min << std::endl;
@@ -5924,9 +6094,9 @@ void GeneratorAdaptive::WriteAcceptanceLog(int step, double score, const MeshQua
   file << "transition_imbalance_max_real=" << current_transition_imbalance_max_real_ << std::endl;
   file << "consistency_penalty=" << current_patch_consistency_penalty_ << std::endl;
   file << "budget_driver_mode=" << current_budget_driver_mode_ << std::endl;
-  file << "weights[error/quality_min/poor_ratio/growth]=" << ACCEPTANCE_WEIGHT_ERROR << "/"
-       << ACCEPTANCE_WEIGHT_QUALITY_MIN << "/" << ACCEPTANCE_WEIGHT_POOR_RATIO << "/"
-       << ACCEPTANCE_WEIGHT_GROWTH << std::endl;
+  file << "weights[error/quality_min/poor_ratio/growth]=" << AcceptanceErrorWeight() << "/"
+       << AcceptanceQualityMinWeight() << "/" << AcceptancePoorRatioWeight() << "/"
+       << AcceptanceGrowthWeight() << std::endl;
 }
 
 void GeneratorAdaptive::UpdatePatchHistory(const Geometry* geometry, const MeshAdaptive* mesh,
