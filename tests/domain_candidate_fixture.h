@@ -254,6 +254,15 @@ class DomainCandidateFixture {
   }
 
 public:
+  static void StableAft(GeneratorAdaptive& generator) { generator.EnableStableAftPostprocess(); }
+  static std::array<double, 3> AftConstructorInputs(const GeneratorAdaptive& generator) {
+    return {{generator.adapter_.AftRatio(), generator.adapter_.AftSmoothingIterations(),
+             generator.adapter_.AftSmoothingFactor()}};
+  }
+  static void ConfigureAft(const GeneratorAdaptive& generator,
+                           Par2DJMesh::AFT::AdvancingFront& front) {
+    generator.adapter_.ConfigureAdvancingFront(front);
+  }
   static double AcceptanceGrowthPenalty(const GeneratorAdaptive& generator, double growth,
                                         int step) {
     return generator.ComputeAcceptanceGrowthPenalty(growth, step);

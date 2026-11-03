@@ -26,6 +26,7 @@
 namespace apmesh::application {
 struct GenerationContext;
 struct QuadtreeControlsConfig;
+struct AftConfig;
 } // namespace apmesh::application
 
 class Adapter {
@@ -36,6 +37,9 @@ public:
   // Both observed values must remain live and stationary.
   Adapter(const apmesh::application::GenerationContext* context,
           const apmesh::application::QuadtreeControlsConfig* effective_quadtree) noexcept;
+  Adapter(const apmesh::application::GenerationContext* context,
+          const apmesh::application::QuadtreeControlsConfig* effective_quadtree,
+          const apmesh::application::AftConfig* effective_aft) noexcept;
   struct RegionQualityStats {
     unsigned long long element_count = 0ULL;
     double quality_min = 0.0;
@@ -95,9 +99,15 @@ private:
   void ConfigureQuadtree(Par2DJMesh::AFT::Quadtree* tree) const noexcept;
   double CurveDiscretizationFactor() const noexcept;
   double InternalCurveDiscretizationFactor() const noexcept;
+  const apmesh::application::AftConfig* AftSettings() const noexcept;
+  double AftRatio() const noexcept;
+  double AftSmoothingIterations() const noexcept;
+  double AftSmoothingFactor() const noexcept;
+  void ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) const noexcept;
   const std::string& OutputPrefix() const noexcept;
   const apmesh::application::GenerationContext* generation_context_ = nullptr;
   const apmesh::application::QuadtreeControlsConfig* effective_quadtree_ = nullptr;
+  const apmesh::application::AftConfig* effective_aft_ = nullptr;
   double CalculateNewSize(const double ka, const double kd, const double factor_disc,
                           const double length_old);
   double CalculateCurvatureDrivenFactor(const double ka, const double kd, const double base_factor,

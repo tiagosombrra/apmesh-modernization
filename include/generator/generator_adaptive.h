@@ -459,6 +459,7 @@ public:
   apmesh::application::PatchGenerationConfig BuildPatchGenerationRuntime() const noexcept;
   apmesh::application::PatchConsistencyConfig BuildPatchConsistencyRuntime() const noexcept;
   apmesh::application::AcceptanceConfig BuildAcceptanceRuntime() const noexcept;
+  apmesh::application::AftConfig BuildAftRuntime() const noexcept;
   MeshQualityStats ComputeMeshQualityStats(const MeshAdaptive* mesh) const;
   void WritePatchAdaptationLog(int step, bool accepted) const;
   void WriteCurveAdaptationLog(int step, bool accepted) const;
@@ -834,6 +835,15 @@ private:
   double StepAcceptErrorDropMin() const noexcept;
   double StepAcceptBudgetMissPenalty() const noexcept;
   double ComputeAcceptanceGrowthPenalty(double growth_factor, int step) const;
+  const apmesh::application::AftConfig* AftSettings() const noexcept;
+  double AftRatio() const noexcept;
+  double AftSmoothingIterations() const noexcept;
+  double AftSmoothingFactor() const noexcept;
+  int AftPostprocessPasses() const noexcept;
+  double AftPostprocessQualityThreshold() const noexcept;
+  double AftPostprocessBlend() const noexcept;
+  void EnableStableAftPostprocess() noexcept;
+  apmesh::application::AftConfig effective_aft_{};
   // Declared first so the Adapter borrow retires before the owned strings.
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;

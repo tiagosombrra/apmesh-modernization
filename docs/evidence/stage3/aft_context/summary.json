@@ -1,0 +1,59 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "e8efe024a8c8e00c71cd5efad37c50ad01b6158d",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "Six active AFT/smoothing/postprocess controls owned in context",
+    "Single stable pass-count write isolated with raw context preserved",
+    "Adapter observes pinned effective state; each front owns three postprocess values",
+    "Constructor conversion, smoothing formulas/order and scientific policies retained"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_adapter_aft_complete_body_reversal": true,
+    "stable_writes": 1,
+    "stable_pass_value_and_position_preserved": true,
+    "constructor_tolerance_still_inactive": true,
+    "geometric_tolerance_and_other_production_unchanged": true,
+    "parser_apply_defaults_smoothing_clamp_unchanged": true,
+    "owned_inputs": [
+      "ratio",
+      "smoothing_iterations",
+      "smoothing_factor",
+      "postprocess_passes",
+      "postprocess_quality_threshold",
+      "postprocess_blend"
+    ],
+    "factory": "six already-applied process values; sole existing smoothing clamp remains in ApplyRuntimeConfig",
+    "effective_state": "pinned generator value observed by Adapter; each front owns three postprocess values",
+    "compatibility": "missing AFT group and unconfigured standalone fronts retain live process reads/writes",
+    "scope": "no tolerance, smoothing, acceptance, selection, geometry or scientific policy change; other runtime state stays shared"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "native_cases": 3,
+  "native_raw_double_representations": 15,
+  "native_stable_double_representations": 15,
+  "native_integer_fields": 1,
+  "native_postprocess_outputs": 36,
+  "native_retired_generator_snapshots": 3,
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "limits": [
+    "Shared geometric tolerance and inactive constructor tolerance argument retain original behavior",
+    "Single-pass UV-fan unit observation plus unchanged full-generation reference; no new smoothing parameter matrix",
+    "Other runtime globals remain shared; serialized execution",
+    "Stage 3/6, recovery, parallel and complete-process memory obligations remain open"
+  ]
+}

@@ -76,13 +76,22 @@ store dormant controls without activating them. Require targeted native regulari
 differentials and the existing scientific/delivery regression. Other acceptance/AFT
 settings and global state stay shared; no new model/instrument campaign or stage closure.
 
-The active [acceptance context](evidence/ACCEPTANCE_CONTEXT.md) owns the remaining
+The delivered [acceptance context](evidence/ACCEPTANCE_CONTEXT.md) owns the remaining
 26 scoring/growth/small-gain/efficiency inputs. Preserve every expression, decision,
 report and the growth penalty's three call positions with five explicit settings.
 No stable writes exist in this group; read raw owned settings or live legacy
 globals. Require native scalar/growth/report controls plus the existing nine-state
 accepted/rejected and delivery regression. Remaining AFT/runtime state stays shared;
 no scientific criterion, model/instrument campaign or stage closure is introduced.
+
+The active [AFT context](evidence/AFT_CONTEXT.md) owns six active ratio/smoothing/
+postprocess settings, preserves the existing applied smoothing clamp/conversion
+and isolates the stable pass-count assignment. Adapter observes pinned effective
+state; fronts own postprocess copies. Preserve smoothing loops, arithmetic,
+statistics and scientific order. Require targeted native binding/movement/lifetime
+controls and the existing scientific/delivery regression. Shared geometric
+tolerance, the inactive constructor argument and other runtime globals stay
+unchanged. No new model/instrument campaign or stage closure is introduced.
 
 ## Current stage and completion route
 

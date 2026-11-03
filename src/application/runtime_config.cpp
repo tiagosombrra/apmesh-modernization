@@ -367,6 +367,9 @@ GenerationContext MakeGenerationContext(const RuntimeConfig& config, std::string
                            STEP_ACCEPT_QUALITY_DROP_TOLERANCE,
                            STEP_ACCEPT_TARGET_GROWTH_TOLERANCE,
                            STEP_ACCEPT_ERROR_DROP_MIN,
-                           STEP_ACCEPT_BUDGET_MISS_PENALTY}};
+                           STEP_ACCEPT_BUDGET_MISS_PENALTY},
+          AftConfig{RATIO_AFT, SMOOTHING_LAPLACIAN_NUMBER, SMOOTHING_LAPLACIAN_FACTOR,
+                    AFT_LOCAL_POSTPROCESS_PASSES, AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD,
+                    AFT_LOCAL_POSTPROCESS_BLEND}};
 }
 } // namespace apmesh::application

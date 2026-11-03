@@ -264,6 +264,9 @@ extern double STEP_ACCEPT_QUALITY_DROP_TOLERANCE;
 extern double QUADTREE_FACE_QUALITY_THRESHOLD;
 extern double QUADTREE_LOW_QUALITY_H_FACTOR;
 extern double TEMPLATE_POOR_SCORE_THRESHOLD;
+extern double RATIO_AFT;
+extern double AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD;
+extern double AFT_LOCAL_POSTPROCESS_BLEND;
 extern int AFT_LOCAL_POSTPROCESS_PASSES;
 extern int BUDGET_DRIVEN_ADAPTATION;
 extern int STEP_ELEMENT_TARGET_MODE;
@@ -587,9 +590,11 @@ GeneratorAdaptive::GeneratorAdaptive() {}
 
 GeneratorAdaptive::GeneratorAdaptive(apmesh::application::GenerationContext context)
     : effective_quadtree_(context.quadtree.value_or(apmesh::application::QuadtreeControlsConfig{})),
+      effective_aft_(context.aft.value_or(apmesh::application::AftConfig{})),
       generation_context_(std::move(context)),
       adapter_(&*generation_context_,
-               generation_context_->quadtree ? &effective_quadtree_ : nullptr) {}
+               generation_context_->quadtree ? &effective_quadtree_ : nullptr,
+               generation_context_->aft ? &effective_aft_ : nullptr) {}
 
 const apmesh::application::GenerationContext*
 GeneratorAdaptive::GetGenerationContext() const noexcept {
@@ -1859,6 +1864,55 @@ apmesh::application::AcceptanceConfig GeneratorAdaptive::BuildAcceptanceRuntime(
           StepAcceptBudgetMissPenalty()};
 }
 
+const apmesh::application::AftConfig* GeneratorAdaptive::AftSettings() const noexcept {
+  return generation_context_ && generation_context_->aft ? &effective_aft_ : nullptr;
+}
+
+double GeneratorAdaptive::AftRatio() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->ratio : RATIO_AFT;
+}
+
+double GeneratorAdaptive::AftSmoothingIterations() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->smoothing_iterations : SMOOTHING_LAPLACIAN_NUMBER;
+}
+
+double GeneratorAdaptive::AftSmoothingFactor() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->smoothing_factor : SMOOTHING_LAPLACIAN_FACTOR;
+}
+
+int GeneratorAdaptive::AftPostprocessPasses() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->postprocess_passes : AFT_LOCAL_POSTPROCESS_PASSES;
+}
+
+double GeneratorAdaptive::AftPostprocessQualityThreshold() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->postprocess_quality_threshold : AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD;
+}
+
+double GeneratorAdaptive::AftPostprocessBlend() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->postprocess_blend : AFT_LOCAL_POSTPROCESS_BLEND;
+}
+
+void GeneratorAdaptive::EnableStableAftPostprocess() noexcept {
+  auto* config = generation_context_ && generation_context_->aft ? &effective_aft_ : nullptr;
+  int& passes = config ? config->postprocess_passes : AFT_LOCAL_POSTPROCESS_PASSES;
+  passes = 2;
+}
+
+apmesh::application::AftConfig GeneratorAdaptive::BuildAftRuntime() const noexcept {
+  return {AftRatio(),
+          AftSmoothingIterations(),
+          AftSmoothingFactor(),
+          AftPostprocessPasses(),
+          AftPostprocessQualityThreshold(),
+          AftPostprocessBlend()};
+}
+
 GeneratorAdaptive::AdaptivePolicyRuntime GeneratorAdaptive::BuildAdaptivePolicyRuntime() const {
   const auto* config = generation_context_ && generation_context_->adaptive_policy
                            ? &*generation_context_->adaptive_policy
@@ -2398,7 +2452,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
     ApplyStablePatchRefinement();
 
     ApplyStableQuadtreeQuality();
-    AFT_LOCAL_POSTPROCESS_PASSES = 2;
+    EnableStableAftPostprocess();
   }
 
   MAX_THREADS = size_thread =
@@ -8046,9 +8100,9 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
   file << "max_retry_element_growth_factor=" << RetryGrowthFactorLimit() << endl;
   file << "max_retry_element_growth_abs=" << RetryGrowthAbsoluteLimit() << endl;
   file << "stop_reason=" << stop_reason_ << endl;
-  file << "laplacian_smoothing_iterations=" << static_cast<unsigned int>(SMOOTHING_LAPLACIAN_NUMBER)
+  file << "laplacian_smoothing_iterations=" << static_cast<unsigned int>(AftSmoothingIterations())
        << endl;
-  file << "laplacian_smoothing_factor=" << SMOOTHING_LAPLACIAN_FACTOR << endl;
+  file << "laplacian_smoothing_factor=" << AftSmoothingFactor() << endl;
   file << endl;
 
   file << "quality[min/p05/p50/p95/max]=" << quality_min << "/" << quality_p05 << "/" << quality_p50
@@ -8282,8 +8336,7 @@ void GeneratorAdaptive::WriteQualityMesh(MeshAdaptive* malha, int step_,
                              : 0.0)
       << "," << area_min << "," << area_mean << "," << area_max << "," << area_std << ","
       << edge_use_count.size() << "," << boundary_edges << "," << nonmanifold_edges << ","
-      << static_cast<unsigned int>(SMOOTHING_LAPLACIAN_NUMBER) << "," << SMOOTHING_LAPLACIAN_FACTOR
-      << endl;
+      << static_cast<unsigned int>(AftSmoothingIterations()) << "," << AftSmoothingFactor() << endl;
   csv.flush();
   csv.close();
 }
