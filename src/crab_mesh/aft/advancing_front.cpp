@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <map>
 #include <memory>
+#include <utility>
 
 extern int AFT_LOCAL_POSTPROCESS_PASSES;
 extern double AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD;
@@ -1552,7 +1553,7 @@ bool AdvancingFront::execute(const FaceList& oldmesh) {
   cout << "refinou a quadtree" << endl;
 #endif // #if USE_PRINT_COMENT
 
-  if (USE_TEMPLATE == std::string("y")) {
+  if (TemplateMode() == std::string("y")) {
     status = quadtree->makeTemplateBasedMesh();
     // cout << methodNotices[status] << endl;
     if (status != QUAD_MAKE_TEMPLATE_BASED_MESH_DONE) {
@@ -1826,4 +1827,10 @@ double AdvancingFront::PostprocessQualityThreshold() const noexcept {
 
 double AdvancingFront::PostprocessBlend() const noexcept {
   return postprocess_controls_ ? postprocess_controls_->blend : AFT_LOCAL_POSTPROCESS_BLEND;
+}
+
+void AdvancingFront::SetTemplateMode(std::string mode) { template_mode_.emplace(std::move(mode)); }
+
+const std::string& AdvancingFront::TemplateMode() const noexcept {
+  return template_mode_ ? *template_mode_ : USE_TEMPLATE;
 }

@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `e8efe024a8c8e00c71cd5efad37c50ad01b6158d` (PR #151).
+Entry main: `00b7d3a5ed41e04cbc45277e6a65fc31a02c3470` (PR #152).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,28 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: advancing-front and postprocess controls
+## Latest production package: serial synchronization, reconstruction and diagnostics
+
+The [serial flow context](evidence/SERIAL_FLOW_CONTEXT.md) owns four switches and
+the literal template mode, copied from already-applied process state. The existing
+ApplyRuntimeConfig hybrid-off projection to template mode n remains unchanged;
+the factory adds no normalization. The synchronization predicate keeps its
+original position through a bounded helper. Generator/Adapter diagnostic gates
+and compatibility/runtime metadata read owned values; each front owns a template
+string copy and keeps the original exact y comparison at the same execution phase.
+Missing groups and unconfigured standalone fronts retain live legacy reads.
+Four cases in the existing probe check source retirement, foreign globals, actual
+shared-curve graph changes, diagnostic file gates/metadata, Adapter debug values,
+literal modes and four front snapshots after generator retirement. Template values
+include y/n, empty and a long non-y string. String copies may allocate during front
+configuration; the constructed front retains RAII cleanup. Require the existing
+scientific/delivery regression. Exact integration status is recorded in the PR
+and local seal; the package heading is a checkpoint rather than an open successor.
+Remaining precision, counters, timing, rank/thread and other runtime state still
+require serialization. Stage 3/6 and whole-process recovery/memory/parallel
+obligations remain open; no scientific model, target or instrument campaign is added.
+
+## Delivered production context: advancing-front and postprocess controls
 
 The [AFT context](evidence/AFT_CONTEXT.md) owns six active ratio/smoothing/
 postprocess controls copied from already-applied process state. The existing

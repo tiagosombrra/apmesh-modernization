@@ -29,9 +29,12 @@ The [quadtree controls](../evidence/QUADTREE_CONTROLS_CONTEXT.md) are delivered.
 The [patch generation controls](../evidence/PATCH_GENERATION_CONTEXT.md) are delivered.
 The [patch consistency controls](../evidence/PATCH_CONSISTENCY_CONTEXT.md) are delivered.
 The [acceptance controls](../evidence/ACCEPTANCE_CONTEXT.md) are delivered.
-The single active item is [AFT controls](../evidence/AFT_CONTEXT.md): own six active
-ratio/smoothing/postprocess settings, isolate the stable pass-count write and give
-fronts value-owned postprocess settings with the existing regression. Instrument
+The [AFT controls](../evidence/AFT_CONTEXT.md) are delivered.
+The current bounded package is [serial flow controls](../evidence/SERIAL_FLOW_CONTEXT.md):
+own synchronization/hybrid/diagnostic switches and template mode while preserving
+graph operations, predicates, formats and the existing regression. After delivery,
+consolidate the engine/context milestone and explicit remaining shared-state/exit
+contract rather than automatically opening another instrument campaign. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 

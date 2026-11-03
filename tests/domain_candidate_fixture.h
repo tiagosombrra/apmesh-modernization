@@ -254,6 +254,12 @@ class DomainCandidateFixture {
   }
 
 public:
+  static void ConfigureSynchronization(GeneratorAdaptive& generator, Geometry& geometry) {
+    generator.ConfigureSharedCurveSynchronization(&geometry);
+  }
+  static int AdapterDebugMode(const GeneratorAdaptive& generator) {
+    return generator.adapter_.AdaptationDebugEnabled();
+  }
   static void StableAft(GeneratorAdaptive& generator) { generator.EnableStableAftPostprocess(); }
   static std::array<double, 3> AftConstructorInputs(const GeneratorAdaptive& generator) {
     return {{generator.adapter_.AftRatio(), generator.adapter_.AftSmoothingIterations(),

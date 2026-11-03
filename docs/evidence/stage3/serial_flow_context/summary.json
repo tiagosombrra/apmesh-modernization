@@ -1,0 +1,57 @@
+{
+  "classification": "engineering-only",
+  "entry_main": "00b7d3a5ed41e04cbc45277e6a65fc31a02c3470",
+  "closure_rows": [
+    "S3-05 caller contract",
+    "bounded stage 6 prerequisite"
+  ],
+  "delivered": [
+    "Four serial flow switches and literal template mode owned in context",
+    "Native synchronization predicate retains original slot; graph operations unchanged",
+    "Generator/Adapter diagnostics use owned gates and metadata",
+    "Front owns template string; exact literal and execution phase retained"
+  ],
+  "source_proof": {
+    "status": "scientific_tokens_and_policy_order_preserved",
+    "generator_adapter_aft_complete_body_reversal": true,
+    "sync_predicate_and_original_slot_preserved": true,
+    "template_literal_and_phase_position_preserved": true,
+    "diagnostic_gates_formats_and_metadata_preserved": true,
+    "parser_apply_defaults_and_hybrid_projection_unchanged": true,
+    "owned_inputs": [
+      "shared_curve_sync",
+      "hybrid_reconstruction",
+      "write_runtime_summary",
+      "write_adaptation_debug",
+      "template_mode"
+    ],
+    "stable_writes": 0,
+    "factory": "five already-applied process values; hybrid template projection remains in ApplyRuntimeConfig",
+    "effective_state": "immutable owned context; Adapter observes it and each front owns a template string copy",
+    "compatibility": "missing flow settings and unconfigured standalone fronts retain live process reads",
+    "limits": "Template copy introduces a possible allocation before execution; no recovery/parallel promise; tolerances/counters/timing and other runtime state stay shared"
+  },
+  "required_gates": {
+    "ctest": 75,
+    "nested_python_controls": 385,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid_controls": 23,
+    "msvc_analytic_states": 1
+  },
+  "native_cases": 4,
+  "native_graph_controls": 4,
+  "native_diagnostic_controls": 4,
+  "native_template_controls": 4,
+  "native_retired_generator_snapshots": 4,
+  "new_test_targets": 0,
+  "new_models": 0,
+  "new_instrument_campaigns": 0,
+  "limits": [
+    "Template copying may allocate before execute; normal RAII cleanup, no new failure/recovery qualification",
+    "Native output controls check gates/metadata; existing frozen reference supplies scientific comparisons",
+    "Precision, counters, timing and rank/thread/runtime state remain shared and serialized",
+    "Stage 3/6, recovery, parallel and complete-process memory obligations remain open"
+  ]
+}

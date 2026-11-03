@@ -726,6 +726,116 @@ void CheckCurveControlsContexts() {
                "stable=3 legacy=2\n";
 }
 
+void CheckSerialFlowContexts(const std::filesystem::path& output) {
+  using apmesh::application::SerialFlowConfig;
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildSerialFlowRuntime();
+  const auto apply = [](const SerialFlowConfig& config) {
+    ENABLE_SHARED_CURVE_SYNC = config.shared_curve_sync;
+    ENABLE_HYBRID_RECONSTRUCTION = config.hybrid_reconstruction;
+    WRITE_RUNTIME_SUMMARY = config.write_runtime_summary;
+    WRITE_ADAPTATION_DEBUG = config.write_adaptation_debug;
+    USE_TEMPLATE = config.template_mode;
+  };
+  const auto equal = [](const SerialFlowConfig& a, const SerialFlowConfig& b) {
+    return a.shared_curve_sync == b.shared_curve_sync &&
+           a.hybrid_reconstruction == b.hybrid_reconstruction &&
+           a.write_runtime_summary == b.write_runtime_summary &&
+           a.write_adaptation_debug == b.write_adaptation_debug &&
+           a.template_mode == b.template_mode;
+  };
+  const auto observe_sync = [](GeneratorAdaptive& generator, Geometry& geometry) {
+    Models3d models;
+    models.ModelDoisPatchesPlanosCurva(&geometry);
+    unsigned before_shared = 0;
+    for (unsigned i = 0; i < geometry.GetNumberCurves(); ++i)
+      before_shared += geometry.GetCurve(i)->GetNumBerPatches() > 1U;
+    if (before_shared == 0)
+      throw std::runtime_error("Serial flow fixture has no shared native curve");
+    DomainCandidateFixture::ConfigureSynchronization(generator, geometry);
+    unsigned after_shared = 0;
+    for (unsigned i = 0; i < geometry.GetNumberCurves(); ++i)
+      after_shared += geometry.GetCurve(i)->GetNumBerPatches() > 1U;
+    return std::array<unsigned, 2>{{geometry.GetNumberCurves(), after_shared}};
+  };
+  const auto report_has_prefix = [](const std::string& path, const std::string& prefix) {
+    std::ifstream file(path);
+    std::string line;
+    while (std::getline(file, line))
+      if (line.rfind(prefix, 0) == 0)
+        return true;
+    return false;
+  };
+  const std::array<SerialFlowConfig, 4> cases{{{1, 1, 1, 1, "y"},
+                                               {0, 0, 0, 0, "n"},
+                                               {0, 1, 9, 0, ""},
+                                               {1, 9, 0, 9, std::string(192, 'x')}}};
+  unsigned index = 0;
+  for (const auto& value : cases) {
+    apply(value);
+    Geometry reference_geometry;
+    const auto expected_sync = observe_sync(legacy, reference_geometry);
+    const auto foreign = SerialFlowConfig{
+        value.shared_curve_sync == 0 ? 1 : 0, value.hybrid_reconstruction == 0 ? 1 : 0,
+        value.write_runtime_summary == 0 ? 1 : 0, value.write_adaptation_debug == 0 ? 1 : 0,
+        value.template_mode == "y" ? "n" : "y"};
+    const std::string prefix =
+        (output / ("serial_flow_" + std::to_string(index++))).generic_string();
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      auto captured =
+          apmesh::application::MakeGenerationContext(apmesh::application::RuntimeConfig{});
+      if (!equal(value, *captured.serial_flow))
+        throw std::runtime_error("Serial flow factory changed already-applied controls");
+      apmesh::application::GenerationContext source{"unused", prefix, "", ""};
+      source.serial_flow = captured.serial_flow;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.serial_flow = captured.serial_flow = foreign;
+    }
+    apply(foreign);
+    Geometry owned_geometry, foreign_geometry;
+    const auto actual_sync = observe_sync(*owned, owned_geometry);
+    const auto foreign_sync = observe_sync(legacy, foreign_geometry);
+    if (!equal(value, owned->BuildSerialFlowRuntime()) ||
+        !equal(foreign, legacy.BuildSerialFlowRuntime()) ||
+        !equal(foreign, identity_only.BuildSerialFlowRuntime()) ||
+        DomainCandidateFixture::AdapterDebugMode(*owned) != value.write_adaptation_debug ||
+        actual_sync != expected_sync || actual_sync == foreign_sync ||
+        (value.shared_curve_sync == 0 ? actual_sync[1] != 0 : actual_sync[1] == 0))
+      throw std::runtime_error(
+          "Serial flow ownership, debug binding or native synchronization failed");
+    Par2DJMesh::AFT::AdvancingFront front, unconfigured;
+    DomainCandidateFixture::ConfigureAft(*owned, front);
+    if (front.TemplateMode() != value.template_mode ||
+        unconfigured.TemplateMode() != foreign.template_mode ||
+        ((front.TemplateMode() == std::string("y")) != (value.template_mode == std::string("y"))))
+      throw std::runtime_error("Template mode capture or exact literal gate changed");
+    Timer timer(1, 1, 12);
+    owned->WriteRuntimeSummary(&timer);
+    owned->WriteAcceptanceLog(2, 0.25, GeneratorAdaptive::MeshQualityStats{}, 0.1, 1.5, true);
+    owned->WriteCompatibilitySummary(&owned_geometry);
+    const std::string runtime = prefix + "_runtime_summary.csv";
+    const std::string debug = prefix + "_passo_2_acceptance_accepted.log";
+    const std::string metadata = prefix + "," + std::to_string(value.shared_curve_sync) + "," +
+                                 std::to_string(value.hybrid_reconstruction) + ",";
+    if (std::filesystem::exists(runtime) != (value.write_runtime_summary != 0) ||
+        std::filesystem::exists(debug) != (value.write_adaptation_debug != 0) ||
+        !report_has_prefix(prefix + "_compatibility_summary.csv", metadata) ||
+        (value.write_runtime_summary != 0 && !report_has_prefix(runtime, metadata)) ||
+        !equal(value, *owned->GetGenerationContext()->serial_flow) ||
+        !equal(foreign, legacy.BuildSerialFlowRuntime()))
+      throw std::runtime_error("Serial flow diagnostic gates/metadata or immutable state changed");
+    owned.reset();
+    USE_TEMPLATE = value.template_mode == "y" ? "n" : "y";
+    if (front.TemplateMode() != value.template_mode || unconfigured.TemplateMode() != USE_TEMPLATE)
+      throw std::runtime_error(
+          "Front template mode expired with its generator or legacy stopped following globals");
+  }
+  apply(saved);
+  std::cout << "serial_flow_context cases=4 sync=4 diagnostics=4 templates=4 retired=4 legacy=2\n";
+}
+
 class AftContextProbe : public Par2DJMesh::AFT::AdvancingFront {
   using Vertex = Par2DJMesh::Basics::Vertex;
   using Face = Par2DJMesh::Basics::Face;
@@ -1598,6 +1708,7 @@ int main(int argc, char* argv[]) {
   CheckPatchConsistencyContexts();
   CheckAcceptanceContexts(output);
   CheckAftContexts();
+  CheckSerialFlowContexts(output);
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();

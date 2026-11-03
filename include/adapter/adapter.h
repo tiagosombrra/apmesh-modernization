@@ -103,7 +103,8 @@ private:
   double AftRatio() const noexcept;
   double AftSmoothingIterations() const noexcept;
   double AftSmoothingFactor() const noexcept;
-  void ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) const noexcept;
+  void ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) const;
+  int AdaptationDebugEnabled() const noexcept;
   const std::string& OutputPrefix() const noexcept;
   const apmesh::application::GenerationContext* generation_context_ = nullptr;
   const apmesh::application::QuadtreeControlsConfig* effective_quadtree_ = nullptr;

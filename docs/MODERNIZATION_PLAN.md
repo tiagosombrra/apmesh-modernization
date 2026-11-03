@@ -84,7 +84,7 @@ globals. Require native scalar/growth/report controls plus the existing nine-sta
 accepted/rejected and delivery regression. Remaining AFT/runtime state stays shared;
 no scientific criterion, model/instrument campaign or stage closure is introduced.
 
-The active [AFT context](evidence/AFT_CONTEXT.md) owns six active ratio/smoothing/
+The delivered [AFT context](evidence/AFT_CONTEXT.md) owns six active ratio/smoothing/
 postprocess settings, preserves the existing applied smoothing clamp/conversion
 and isolates the stable pass-count assignment. Adapter observes pinned effective
 state; fronts own postprocess copies. Preserve smoothing loops, arithmetic,
@@ -92,6 +92,17 @@ statistics and scientific order. Require targeted native binding/movement/lifeti
 controls and the existing scientific/delivery regression. Shared geometric
 tolerance, the inactive constructor argument and other runtime globals stay
 unchanged. No new model/instrument campaign or stage closure is introduced.
+
+The current bounded [serial flow context](evidence/SERIAL_FLOW_CONTEXT.md) owns
+the synchronization/hybrid/runtime/debug switches and literal template mode.
+Preserve the existing applied hybrid projection, synchronization slot, diagnostic
+gates/formats and exact template comparison/phase. Fronts own their template string;
+new copy allocations have ordinary RAII cleanup without a recovery guarantee.
+Require focused graph/output/lifetime checks plus the existing scientific/delivery
+regression. This completes the named flow-control group; milestone consolidation
+must still delimit shared precision, instrumentation, rank/thread/runtime state and
+closure obligations before claiming broader engine/context isolation. No automatic
+instrument campaign, new scientific model or stage closure follows this package.
 
 ## Current stage and completion route
 

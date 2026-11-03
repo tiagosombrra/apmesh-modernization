@@ -222,6 +222,15 @@ struct AftConfig {
   double postprocess_blend = 0.35;
 };
 
+// Applied serial flow switches and literal template mode; no new normalization.
+struct SerialFlowConfig {
+  int shared_curve_sync = 1;
+  int hybrid_reconstruction = 1;
+  int write_runtime_summary = 1;
+  int write_adaptation_debug = 1;
+  std::string template_mode;
+};
+
 // Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
@@ -239,6 +248,7 @@ struct GenerationContext {
   std::optional<PatchConsistencyConfig> patch_consistency = std::nullopt;
   std::optional<AcceptanceConfig> acceptance = std::nullopt;
   std::optional<AftConfig> aft = std::nullopt;
+  std::optional<SerialFlowConfig> serial_flow = std::nullopt;
 };
 } // namespace apmesh::application
 
