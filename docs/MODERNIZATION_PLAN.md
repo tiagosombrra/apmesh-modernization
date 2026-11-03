@@ -68,13 +68,21 @@ Require the existing native factor differential and scientific/delivery regressi
 do not add a model/instrument campaign. Patch consistency and acceptance controls
 are outside this bounded lot; remaining shared state and stage obligations stay open.
 
-The active [patch consistency context](evidence/PATCH_CONSISTENCY_CONTEXT.md) owns
+The delivered [patch consistency context](evidence/PATCH_CONSISTENCY_CONTEXT.md) owns
 18 equivalence/group/consistency-acceptance inputs. Two stable flags retain their
 original positions around curve consistency using a shared effective instance
 copy. Preserve grouping, clamping, dispersion, penalties and acceptance expressions;
 store dormant controls without activating them. Require targeted native regularizer
 differentials and the existing scientific/delivery regression. Other acceptance/AFT
 settings and global state stay shared; no new model/instrument campaign or stage closure.
+
+The active [acceptance context](evidence/ACCEPTANCE_CONTEXT.md) owns the remaining
+26 scoring/growth/small-gain/efficiency inputs. Preserve every expression, decision,
+report and the growth penalty's three call positions with five explicit settings.
+No stable writes exist in this group; read raw owned settings or live legacy
+globals. Require native scalar/growth/report controls plus the existing nine-state
+accepted/rejected and delivery regression. Remaining AFT/runtime state stays shared;
+no scientific criterion, model/instrument campaign or stage closure is introduced.
 
 ## Current stage and completion route
 

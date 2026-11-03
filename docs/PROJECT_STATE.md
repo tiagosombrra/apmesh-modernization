@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `5613577390c681e18dcc9b9afc8b7f8e9491e843` (PR #149).
+Entry main: `b48810f4c6b4177b778749a2d29b03c213169015` (PR #150).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,24 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: patch and group consistency controls
+## Active production delivery: remaining generation acceptance controls
+
+The [acceptance context](evidence/ACCEPTANCE_CONTEXT.md) owns the remaining 26
+scoring/growth/small-gain/efficiency acceptance controls captured from current
+process values. The group has no stable writes, so it needs no effective override
+copy. The growth penalty receives five explicit inputs at its three original call
+positions. All arithmetic, comparisons, short-circuit decisions and report spelling
+are preserved. Missing settings retain live global reads. Three native cases in
+the existing probe check 66 exact double representations, four integer fields,
+source retirement, foreign globals, 30 actual growth-penalty outputs and six real
+acceptance reports. The local source-reversal driver was corrected to distinguish
+AcceptanceMode from the suffix of ConsistencyAcceptanceMode; production and the
+reversal oracle stay unchanged. Reuse the existing nine-state accepted/rejected
+scientific regression and delivery gates without a new model, target or instrument
+campaign. Remaining AFT/runtime globals still require serialization; Stage 3/6,
+whole-process memory and recovery/parallel obligations remain open.
+
+## Delivered production context: patch and group consistency controls
 
 The [patch consistency context](evidence/PATCH_CONSISTENCY_CONTEXT.md) owns 18
 equivalence/group-limit/consistency-acceptance controls captured from current

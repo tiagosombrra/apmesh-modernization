@@ -458,6 +458,7 @@ public:
   apmesh::application::QuadtreeControlsConfig BuildQuadtreeRuntime() const noexcept;
   apmesh::application::PatchGenerationConfig BuildPatchGenerationRuntime() const noexcept;
   apmesh::application::PatchConsistencyConfig BuildPatchConsistencyRuntime() const noexcept;
+  apmesh::application::AcceptanceConfig BuildAcceptanceRuntime() const noexcept;
   MeshQualityStats ComputeMeshQualityStats(const MeshAdaptive* mesh) const;
   void WritePatchAdaptationLog(int step, bool accepted) const;
   void WriteCurveAdaptationLog(int step, bool accepted) const;
@@ -805,6 +806,34 @@ private:
   void EnableConsistencyAcceptance() noexcept;
   std::optional<apmesh::application::PatchConsistencyConfig> effective_patch_consistency_ =
       std::nullopt;
+  const apmesh::application::AcceptanceConfig* AcceptanceSettings() const noexcept;
+  int AcceptanceMode() const noexcept;
+  double AcceptanceErrorWeight() const noexcept;
+  double AcceptanceQualityMinWeight() const noexcept;
+  double AcceptancePoorRatioWeight() const noexcept;
+  double AcceptanceGrowthWeight() const noexcept;
+  double AcceptanceStep1GrowthWeight() const noexcept;
+  double AcceptanceStepNGrowthWeight() const noexcept;
+  double AcceptanceStep1MaxGrowthSoft() const noexcept;
+  double AcceptanceStepNMaxGrowthSoft() const noexcept;
+  int AcceptanceGrowthPenaltyMode() const noexcept;
+  double AcceptanceStep1MinErrorDropAbs() const noexcept;
+  double AcceptanceStep1MinErrorDropPct() const noexcept;
+  double AcceptanceMinScore() const noexcept;
+  double AcceptanceMaxErrorIncreasePct() const noexcept;
+  double AcceptancePoorRatioTarget() const noexcept;
+  int Step2AcceptSmallGainsMode() const noexcept;
+  double Step2MinErrorDropAbs() const noexcept;
+  double Step2MinErrorDropPerElement() const noexcept;
+  double Step2AcceptanceGrowthWeight() const noexcept;
+  int StepAcceptEfficiencyMode() const noexcept;
+  double StepAcceptMinEfficiency() const noexcept;
+  double StepAcceptMaxElementGrowthSoft() const noexcept;
+  double StepAcceptQualityDropTolerance() const noexcept;
+  double StepAcceptTargetGrowthTolerance() const noexcept;
+  double StepAcceptErrorDropMin() const noexcept;
+  double StepAcceptBudgetMissPenalty() const noexcept;
+  double ComputeAcceptanceGrowthPenalty(double growth_factor, int step) const;
   // Declared first so the Adapter borrow retires before the owned strings.
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;
