@@ -57,77 +57,19 @@ endif()
 
 set(AP_MESH_WORKDIR "${CMAKE_CURRENT_SOURCE_DIR}")
 
-add_custom_target(run_book_v5_fix_balanced
-  COMMAND $<TARGET_FILE:ap_mesh>
-          1 1
-          ./input_models/book_v5_fix.bp
-          h
-          output_meshes/book_v5_fix_balanceado
-          y
-          0.01
-          0.01
-          2
-          0.001
-          7
-          0.5
-          0.75
-          0.10
-          0.0
-          0.25
-          0.0005
-  DEPENDS ap_mesh
-  WORKING_DIRECTORY "${AP_MESH_WORKDIR}"
-  USES_TERMINAL
-  COMMENT "Run ap_mesh with the balanced book_v5_fix configuration"
-)
-
-add_custom_target(run_book_v5_fix_conservative
-  COMMAND $<TARGET_FILE:ap_mesh>
-          1 1
-          ./input_models/book_v5_fix.bp
-          h
-          output_meshes/book_v5_fix_conservador
-          y
-          0.01
-          0.005
-          3
-          0.001
-          7
-          0.5
-          0.85
-          0.12
-          0.0
-          0.0
-          0.0
-  DEPENDS ap_mesh
-  WORKING_DIRECTORY "${AP_MESH_WORKDIR}"
-  USES_TERMINAL
-  COMMENT "Run ap_mesh with the conservative book_v5_fix configuration"
-)
-
-add_custom_target(run_book_v5_fix_strict
-  COMMAND $<TARGET_FILE:ap_mesh>
-          1 1
-          ./input_models/book_v5_fix.bp
-          h
-          output_meshes/book_v5_fix_estrito
-          y
-          0.01
-          0.015
-          1
-          0.001
-          7
-          0.5
-          0.60
-          0.08
-          0.0
-          0.50
-          0.001
-  DEPENDS ap_mesh
-  WORKING_DIRECTORY "${AP_MESH_WORKDIR}"
-  USES_TERMINAL
-  COMMENT "Run ap_mesh with the strict book_v5_fix configuration"
-)
+# Historical target names are aliases of the current Book article configuration.
+# They do not select separate balanced, conservative or strict scientific profiles.
+foreach(book_alias IN ITEMS balanced conservative strict)
+  add_custom_target(run_book_v5_fix_${book_alias}
+    COMMAND $<TARGET_FILE:ap_mesh>
+            --config "${CMAKE_CURRENT_SOURCE_DIR}/configs/book/article.conf"
+    DEPENDS ap_mesh "${CMAKE_CURRENT_SOURCE_DIR}/configs/book/article.conf"
+    WORKING_DIRECTORY "${AP_MESH_WORKDIR}"
+    USES_TERMINAL
+    VERBATIM
+    COMMENT "Run current Book article configuration (legacy ${book_alias} alias)"
+  )
+endforeach()
 
 # -----------------------------
 # Warnings / flags

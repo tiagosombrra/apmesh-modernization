@@ -30,6 +30,11 @@ ctest --preset local-serial
 python tools/quality.py doctor
 ```
 
+The historical `run_book_v5_fix_balanced`, `run_book_v5_fix_conservative` and
+`run_book_v5_fix_strict` CMake targets are aliases of `configs/book/article.conf`.
+They use the current Book model and shared output prefix, without distinct
+scientific profiles. See [commands and validation scope](docs/evidence/BOOK_CMAKE_RUN_RECIPES.md).
+
 The local suite includes required tooling, input, geometry, orientation,
 report-semantics and lifecycle tests; integrated baseline counts are recorded
 below and active qualification is recorded in PROJECT_STATE.md.

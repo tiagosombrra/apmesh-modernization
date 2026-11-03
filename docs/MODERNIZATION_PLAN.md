@@ -29,9 +29,13 @@ Global mirror writes and parallel consumers remain for compatibility; counts of
 runtime definitions/context bindings are unchanged. Existing candidate/snapshot
 and scientific gates verify traces, selection and IDs on exact head/main. This
 supports S3-08 without closing Stage 3 or full Stage 6. No new instrument campaign.
-The next independent production debt is the three legacy positional CMake run
-recipes outside the qualified --config protocol. Precision units, complete-process
-memory/recovery, other callers and parallel execution retain their obligations.
+The [Book recipe repair](evidence/BOOK_CMAKE_RUN_RECIPES.md) now closes that named
+workflow mismatch: all three historical target names explicitly alias the current
+Book article configuration through --config, without translating legacy numerical
+profiles or altering the configuration. Existing scientific evidence is reused by
+identity; generated commands and the existing exact-head/main suite are checked.
+Precision units, complete-process memory/recovery, other callers and parallel
+execution retain their obligations. No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 

@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Book CMake run aliases
+
+The [recipe repair](evidence/BOOK_CMAKE_RUN_RECIPES.md) changes only three
+convenience commands and documentation. Regenerate canonical GCC/MSVC serial
+build graphs, inspect all three Ninja command graph entries and twelve MSVC commands,
+and require unchanged C++/tests/config/model, compiler commands, application and
+prior-report identities. Reuse the nine-state/45-artifact/123-boundary scientific
+reference and MSVC CLI observations from PR #155. Run existing 75 CTest/385 controls,
+whitespace, contracts/inventory and staged/remote gates on exact head and main.
+No new scientific model, three-profile campaign, CTest target, C++ compilation or
+static-analysis run is required for the unchanged code. Any failed identity or
+command/gate blocks delivery; retain the original rejected positional invocation.
+
 ## Serial attempt metadata ownership
 
 The [attempt-state package](evidence/GENERATOR_ATTEMPT_STATE.md) requires the existing

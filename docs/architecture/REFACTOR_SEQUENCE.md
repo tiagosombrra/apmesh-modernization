@@ -28,9 +28,10 @@ The [attempt-state package](../evidence/GENERATOR_ATTEMPT_STATE.md) replaces bot
 serial global reads with generator-owned step/retry values, retaining compatibility
 mirrors, parallel consumers, local repair labels and IDs. Existing controls and
 frozen scientific reference are required on exact head/main. This supports S3-08
-without closing it. The next independent production debt is the three positional
-CMake convenience recipes: restore usability through the admitted --config
-protocol without translating or changing scientific policies. Shared precision,
+without closing it. The [Book recipe repair](../evidence/BOOK_CMAKE_RUN_RECIPES.md)
+closes the three positional CMake recipes as documented aliases of the unchanged
+Book article configuration. Generated commands and existing exact-revision gates
+are checked while numerical evidence is reused by identity. Shared precision,
 remaining callers and instrument/parallel closure retain their existing obligations.
 
 ## Work-item admission and execution rules

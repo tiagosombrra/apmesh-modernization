@@ -401,7 +401,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "979fdc18ca45b484f2c0ced53f9ad7fe7ee7c6a299647a690dc35141bb16139b"
+      "sha256": "f9588b0f73cf18b9ee6efe354732741f616bab16a2f119031dafaf591f6713db"
     },
     {
       "path": "CMakePresets.json",
@@ -6501,7 +6501,7 @@
   ],
   "contract_traceability": {
     "contracts": 29,
-    "source_anchors": 239,
+    "source_anchors": 240,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

@@ -2,8 +2,20 @@
 
 ## Current checkpoint and active work
 
-Reviewed starting main: `3e96b8516ccb97604fb7b08ef039e4af75593bb1` (PR #154).
-Exact attempt-state delivery head/main status is recorded by its PR and local integration seal.
+Reviewed starting main: `3d3ba4a88e4dd75c2d3c5e33d52ec74d161297cd` (PR #155).
+Exact Book recipe delivery head/main status is recorded by its PR and local integration seal.
+
+## Delivered workflow: Book CMake run aliases
+
+The [Book recipe repair](evidence/BOOK_CMAKE_RUN_RECIPES.md) routes all three
+historical run_book_v5_fix_* names to configs/book/article.conf through --config.
+These names are aliases, not separate balanced/conservative/strict profiles.
+The existing Book configuration, model and scientific controls are unchanged.
+Generated GCC/MSVC command checks and existing exact-head/main regression are
+required; unchanged numerical/native evidence is reused by identity. No new
+scientific generation or instrument campaign. This closes the named workflow
+mismatch; Stage 3/full Stage 6 and their remaining caller/memory obligations stay
+open. The bounded engine/context milestone remains closed in its declared scope.
 
 ## Delivered production boundary: serial attempt metadata
 
@@ -15,8 +27,7 @@ conflicting globals and attempt labels 0/5; frozen scientific traces preserve ID
 selection, local repair labels and accepted/rejected states. Require the existing
 exact-head/main regression and build/quality gates; no new instrument campaign.
 This supports S3-08 without closing it. All 203 runtime definitions remain.
-Next independent production item: repair the three legacy positional CMake run
-recipes against the already admitted --config entry protocol.
+The subsequent Book recipe repair above closes the named positional workflow debt.
 
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
