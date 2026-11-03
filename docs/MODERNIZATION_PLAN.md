@@ -23,13 +23,15 @@ maps 185 captured symbols and 18 uncaptured symbols. Captured inputs can still
 have live legacy/alternate consumers. The factory depends on validated configuration
 and applied process state; the full caller sequence remains serialized.
 
-The next production dependency is attempt metadata ownership: remove duplicated
-global step/retry reads in favor of existing generator-owned state while preserving
-attempt/ID traces and compatibility. Do not start another tolerance migration or
-instrument campaign solely because this milestone closes. Precision units,
-complete-process memory/recovery, other callers and parallel execution retain
-their existing stage/closure obligations. Legacy positional CMake run recipes
-remain an explicit workflow repair item outside the qualified --config protocol.
+The [attempt-state package](evidence/GENERATOR_ATTEMPT_STATE.md) now removes the
+two duplicated serial step/retry reads using existing generator-owned state.
+Global mirror writes and parallel consumers remain for compatibility; counts of
+runtime definitions/context bindings are unchanged. Existing candidate/snapshot
+and scientific gates verify traces, selection and IDs on exact head/main. This
+supports S3-08 without closing Stage 3 or full Stage 6. No new instrument campaign.
+The next independent production debt is the three legacy positional CMake run
+recipes outside the qualified --config protocol. Precision units, complete-process
+memory/recovery, other callers and parallel execution retain their obligations.
 
 ## Current stage and completion route
 

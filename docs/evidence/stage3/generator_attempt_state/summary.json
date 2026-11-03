@@ -1,0 +1,25 @@
+{
+  "schema": "apmesh-generator-attempt-state-v1",
+  "reviewed_base": "3e96b8516ccb97604fb7b08ef039e4af75593bb1",
+  "classification": "engineering-only",
+  "production": "two serial argument bindings; existing step and attempt state",
+  "new_members": 0,
+  "global_definitions_removed": 0,
+  "compatibility": "mirror assignments and parallel reads preserved",
+  "required_gates": {
+    "ctest": 75,
+    "python_controls": 385,
+    "candidate_contracts": 32,
+    "snapshot_contracts": 40,
+    "scientific_states": 9,
+    "exact_artifacts": 45,
+    "boundary_comparisons": 123,
+    "msvc_invalid": 23,
+    "msvc_analytic_states": 1,
+    "msvc_boundaries": 1
+  },
+  "initial_failure": "scenario-specific fixture overwrote expected initial retry; first expectation now assigned after all retry-list overrides; original failed report retained",
+  "evidence": "build/attempt-state/integration-verification.json",
+  "stage3": "open",
+  "stage6": "open"
+}

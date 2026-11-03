@@ -4481,7 +4481,12 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
                                    int local_retry) {
       DomainCandidate candidate;
       candidate.mesh.reset(adapter_.AdaptDomain(p, this->id_managers_[0].get(), local_factor,
-                                                local_h, local_depth, ADAPTIVE_CURRENT_STEP,
+                                                local_h, local_depth,
+#if USE_MPI || USE_OPENMP
+                                                ADAPTIVE_CURRENT_STEP,
+#else
+                                                step_,
+#endif
                                                 static_cast<int>(i), local_retry));
       if (const auto* structural = adapter_.GetPatchStructuralStats(static_cast<int>(i))) {
         candidate.structural = *structural;
@@ -4518,7 +4523,13 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
                      : 0.88;
       }
     }
-    auto candidate = generate_patch_mesh(gen_factor, gen_h, gen_depth_cap, ADAPTIVE_CURRENT_RETRY);
+    auto candidate = generate_patch_mesh(gen_factor, gen_h, gen_depth_cap,
+#if USE_MPI || USE_OPENMP
+                                         ADAPTIVE_CURRENT_RETRY
+#else
+                                         static_cast<int>(current_budget_retry_count_)
+#endif
+    );
     auto& sub_mesh = candidate.mesh;
     // Guard extra para patch curvo prioritário em stable tardio:
     // evita queda brusca de elementos entre candidatos rejeitados

@@ -1,5 +1,18 @@
 # Local quality automation
 
+## Serial attempt metadata ownership
+
+The [attempt-state package](evidence/GENERATOR_ATTEMPT_STATE.md) requires the existing
+75 CTest/385 controls, GCC/MSVC C++17 builds, nine-state/45-artifact/123-boundary
+reference and real MSVC CLI checks on exact head/main. Reuse candidate/snapshot
+targets with conflicting globals and attempts 0/5, keeping local repair labels,
+selection/ID oracles and negative controls. Reverse only the two serial call
+argument bindings; preserve mirror writes, parallel code and all other production.
+Require scoped analysis using actual compilation commands, explicit token-checked
+format, whitespace, contracts/inventory and staged/remote gates. Preserve the first
+snapshot fixture failure and its specific expectation-order correction. No new
+model, instrument campaign, target or scientific criterion.
+
 ## Internal serial engine/context milestone consolidation
 
 The [consolidation](evidence/ENGINE_CONTEXT_MILESTONE.md) is documentation-only.
