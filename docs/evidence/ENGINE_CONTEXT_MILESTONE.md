@@ -94,10 +94,11 @@ complete execution and parallel obligations remain in the existing ledgers.
 The bounded outside-root observations keep their original negative/zero-reach
 scope. No generic instrument expansion follows this document.
 
-Three legacy run_book_v5_fix_* CMake convenience recipes still supply positional
-arguments although RunApplication admits only --config. This is a source-level
+At consolidation, three legacy run_book_v5_fix_* CMake recipes supplied positional
+arguments although RunApplication admitted only --config. This was a source-level
 workflow mismatch, not a new numerical observation; those recipes are not part of
-the qualified entry protocol. Their usability remains an explicit repair item.
+the qualified entry protocol. The subsequent [Book recipe repair](BOOK_CMAKE_RUN_RECIPES.md) resolves usability
+as three documented aliases of the unchanged supported Book article configuration.
 No positional parameter translation or scientific configuration change is made.
 
 The admitted attempt metadata dependency is now [implemented](GENERATOR_ATTEMPT_STATE.md):
@@ -105,4 +106,4 @@ serial Adapter arguments use existing generator state, preserving global mirror
 writes and optional parallel reads. This supports S3-08 without closing it.
 The original consolidation was documentation-only; this subsequent engineering
 package retains its own exact-head/main build, regression and delivery seal.
-The remaining legacy CMake recipes are an independent concrete workflow debt.
+The subsequent Book recipe repair closes that independent workflow debt.
