@@ -54,8 +54,10 @@ int DomainCandidateFixture::RunSnapshots() {
         auto* patch = static_cast<PatchCoons*>(geometry.GetPatch(0));
         patch->SetSubMesh(accepted.get());
         GeneratorAdaptive generator;
-        generator.step_ = ADAPTIVE_CURRENT_STEP = 4;
-        ADAPTIVE_CURRENT_RETRY = 0;
+        generator.step_ = 4;
+        generator.current_budget_retry_count_ = scenario % 2 == 0 ? 0U : 5U;
+        ADAPTIVE_CURRENT_STEP = -91;
+        ADAPTIVE_CURRENT_RETRY = 17;
         generator.current_policy_.stable_mode = true;
         generator.stable_consecutive_reject_count_ = 1;
         generator.last_submesh_error_ = {1};
@@ -126,6 +128,7 @@ int DomainCandidateFixture::RunSnapshots() {
           state.retries = {0, 2};
           state.null_stat_call = scenario < 18 ? 1 : 2;
         }
+        state.retries.front() = scenario % 2 == 0 ? 0 : 5;
         const bool missing = expected >= 0 && state.null_stat_call == expected + 1;
         const auto expected_stats = expected >= 0
                                         ? state.snapshot_stats[static_cast<std::size_t>(expected)]

@@ -194,8 +194,9 @@ class DomainCandidateFixture {
     auto* patch = static_cast<PatchCoons*>(geometry.GetPatch(0));
     patch->SetSubMesh(accepted.get());
     GeneratorAdaptive generator;
-    generator.step_ = ADAPTIVE_CURRENT_STEP = 4;
-    ADAPTIVE_CURRENT_RETRY = 0;
+    generator.step_ = 4;
+    ADAPTIVE_CURRENT_STEP = -91;
+    ADAPTIVE_CURRENT_RETRY = 17;
     generator.current_policy_.stable_mode = true;
     generator.stable_consecutive_reject_count_ = 1;
     generator.last_submesh_error_ = {1};

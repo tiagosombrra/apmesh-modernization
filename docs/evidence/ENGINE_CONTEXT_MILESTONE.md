@@ -67,7 +67,7 @@ alternate consumer uses the context.
 | Captured plus legacy I/O | INPUT_MODEL, NAME_MODEL, NUMBER_PROCESS and WRITE_MESH still serve default/alternate readers, writers and timer/estimation helpers. | Delimit each actual caller before promising whole-call-graph isolation; keep S3-05/07/10 open. |
 | Uncaptured precision (5) | DELTA, TOLERANCE, TOLERANCE_CURVATURE, TOLERANCE_AFT, I_MAX. AFT's constructor tolerance argument remains inactive. | Audit units, geometric predicates and convergence contracts before propagation. Scientific changes require explicit alignment. |
 | Uncaptured execution (3) | RANK_MPI, SIZE_MPI, MAX_THREADS. | Explicit serial/parallel execution ownership and separately qualified routing; this milestone authorizes no MPI/OpenMP change. |
-| Uncaptured attempt metadata (2) | ADAPTIVE_CURRENT_STEP and ADAPTIVE_CURRENT_RETRY are assigned by the generator and read back into Adapter calls. | Next production package: remove duplicated global step/retry dependence using existing generator-owned state, preserving attempt traces and IDs. |
+| Attempt compatibility mirrors (2) | ADAPTIVE_CURRENT_STEP and ADAPTIVE_CURRENT_RETRY retain original writes and optional parallel reads. | [Serial dependence removed](GENERATOR_ATTEMPT_STATE.md): Adapter receives existing generator-owned step/retry values. Definitions remain uncaptured, not serial inputs. |
 | Uncaptured estimation (2) | TRIANGLE_MEDIO and ESTIMATIVE_TOLERANCE remain in estimation helpers. | Preserve units and caller semantics; broader estimation/load paths remain outside this measured entry boundary. |
 | Uncaptured observation (4) | TIME_READ_FILE, MAX_TIME, FINDUV_TOTAL_CALLS and FINDUV_IMAX_EXITS. | Separate timing/instrument ownership from scientific criteria; correct-clock/profiling obligations remain in their stages. |
 | Dormant registries (2) | LIST_ALL_POINTS_MODEL and LIST_ALL_SUB_MESH_MODEL have no non-declaration first-party uses in the reviewed source scan. | Keep explicit dormant disposition; do not convert absence of observed use into a global-freedom or external ABI claim. |
@@ -100,10 +100,9 @@ workflow mismatch, not a new numerical observation; those recipes are not part o
 the qualified entry protocol. Their usability remains an explicit repair item.
 No positional parameter translation or scientific configuration change is made.
 
-The next admitted production dependency is attempt metadata ownership: use the
-already-owned generator step/retry state when calling Adapter, rather than adding
-another configuration group or normalizing precision. Expected invariant: every
-attempt's step/retry metadata and consumed IDs match the existing traces; default
-compatibility behavior remains explicit. Reuse existing metrics/negative/scientific
-regression and stop at the first unexpected failure. This is a concrete engineering
-package supporting S3-08; it does not close that row or reopen unrelated campaigns.
+The admitted attempt metadata dependency is now [implemented](GENERATOR_ATTEMPT_STATE.md):
+serial Adapter arguments use existing generator state, preserving global mirror
+writes and optional parallel reads. This supports S3-08 without closing it.
+The original consolidation was documentation-only; this subsequent engineering
+package retains its own exact-head/main build, regression and delivery seal.
+The remaining legacy CMake recipes are an independent concrete workflow debt.

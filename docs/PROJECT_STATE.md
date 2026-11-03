@@ -2,8 +2,22 @@
 
 ## Current checkpoint and active work
 
-Reviewed production main: `84fff0d2344429aaf61f9bae5c109b86c35fddad` (PR #153).
-Exact consolidation head/main status is recorded by its PR and local integration seal.
+Reviewed starting main: `3e96b8516ccb97604fb7b08ef039e4af75593bb1` (PR #154).
+Exact attempt-state delivery head/main status is recorded by its PR and local integration seal.
+
+## Delivered production boundary: serial attempt metadata
+
+The [attempt-state package](evidence/GENERATOR_ATTEMPT_STATE.md) removes both
+process-global reads from serial domain adaptation using existing generator step
+and retry state. Legacy mirror writes and optional parallel reads remain intact;
+no new state or formula/policy change. Existing candidate/snapshot controls use
+conflicting globals and attempt labels 0/5; frozen scientific traces preserve IDs,
+selection, local repair labels and accepted/rejected states. Require the existing
+exact-head/main regression and build/quality gates; no new instrument campaign.
+This supports S3-08 without closing it. All 203 runtime definitions remain.
+Next independent production item: repair the three legacy positional CMake run
+recipes against the already admitted --config entry protocol.
+
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 

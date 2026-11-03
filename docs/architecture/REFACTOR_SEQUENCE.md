@@ -24,14 +24,14 @@ separate bounded milestone closure from complete stage 3/6 closure and global
 freedom. The exact delivery/main seal is required; implementation criteria are
 established at PR #153. Reuse unchanged numerical/native/instrument evidence.
 
-One next production package is admitted: attempt metadata ownership. Generator
-already owns its step/retry state but duplicates it in ADAPTIVE_CURRENT_STEP and
-ADAPTIVE_CURRENT_RETRY before reading globals into Adapter calls. Replace that
-dependence while preserving attempt metadata, consumed IDs and legacy behavior.
-Attach the existing metrics/negative/scientific regression and stop on the first
-unexpected failure. This supports S3-08 without closing it. Shared precision,
-instrument qualification, other caller contracts and legacy positional CMake
-recipes remain explicit obligations, not automatic audit/campaign successors.
+The [attempt-state package](../evidence/GENERATOR_ATTEMPT_STATE.md) replaces both
+serial global reads with generator-owned step/retry values, retaining compatibility
+mirrors, parallel consumers, local repair labels and IDs. Existing controls and
+frozen scientific reference are required on exact head/main. This supports S3-08
+without closing it. The next independent production debt is the three positional
+CMake convenience recipes: restore usability through the admitted --config
+protocol without translating or changing scientific policies. Shared precision,
+remaining callers and instrument/parallel closure retain their existing obligations.
 
 ## Work-item admission and execution rules
 
