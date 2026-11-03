@@ -1,14 +1,18 @@
 {
   "schema": "apmesh-engine-context-state-v1",
-  "reviewed_main": "3e96b8516ccb97604fb7b08ef039e4af75593bb1",
-  "scope": "All 203 explicit definitions in runtime_state.cpp, mapped to actual factory fields, plus named auxiliary static sites. Lexical anchors do not establish runtime reachability; this is not a whole-program race/global-freedom proof.",
-  "attempt_metadata_note": "Serial Adapter arguments use generator-owned step_/current_budget_retry_count_; original mirror writes and parallel-compiled reads remain under explicit guards.",
-  "definitions": 203,
-  "definitions_removed": 0,
+  "reviewed_main": "cd248e082a7f9a00067d596aeeb2314d511fe15b",
+  "scope": "All 201 current explicit definitions in runtime_state.cpp, mapped to actual factory fields, plus named auxiliary static sites. Lexical anchors do not establish runtime reachability; this is not a whole-program race/global-freedom proof.",
+  "definitions": 201,
+  "definitions_removed": 2,
   "captured_symbols": 185,
   "context_group_fields": 181,
   "identity_fields": 4,
-  "remaining_uncaptured_symbols": 18,
+  "remaining_uncaptured_symbols": 16,
+  "retired_symbols": [
+    "LIST_ALL_POINTS_MODEL",
+    "LIST_ALL_SUB_MESH_MODEL"
+  ],
+  "attempt_metadata_note": "Serial Adapter arguments use generator-owned step_/current_budget_retry_count_; original mirror writes and parallel-compiled reads remain under explicit guards.",
   "groups": [
     {
       "type": "AdaptivePolicyConfig",
@@ -259,8 +263,6 @@
     ["FINDUV_IMAX_EXITS", "std::atomic<unsigned long long>", "", "instrumentation", ["src/application/run_application.cpp:75", "src/data/patch/patch_bezier.cpp:501", "src/data/patch/patch_hermite.cpp:386"]],
     ["MAX_TIME", "double", "", "timing", ["src/timer/timer.cpp:193"]],
     ["MAX_THREADS", "int", "", "execution", ["src/generator/generator_adaptive.cpp:2500"]],
-    ["LIST_ALL_POINTS_MODEL", "std::set<PointAdaptive*>", "", "dormant_registry", []],
-    ["LIST_ALL_SUB_MESH_MODEL", "std::set<SubMesh*>", "", "dormant_registry", []],
     ["NAME_MODEL", "std::string", "GenerationContext.output_prefix", "captured_and_shared_legacy_io", []],
     ["INPUT_MODEL", "std::string", "GenerationContext.input_model", "captured_and_shared_legacy_io", []],
     ["NUMBER_PROCESS", "std::string", "GenerationContext.process_suffix", "captured_and_shared_legacy_io", []],
@@ -288,7 +290,8 @@
     ]
   ],
   "source_sha256": {
-    "src/application/runtime_state.cpp": "8937ed29dfef3d2dbf0f603fcca614d96280e4150ae72010790872fe76c1eed8",
+    "src/application/runtime_state.cpp": "5e57b6a249f614b0401476f0f77aab18ceb07a689df3c65ef1e7aa23d1d365da",
+    "include/application/runtime_state.h": "da7de7bebcaa540ba7419af71878ea9fea68d3f5a439fe8a60fcbd82c6a9a7c3",
     "include/application/generation_context.h": "2802785a7dddb60b57655e1ae27de241095ac7e75a36d87fbe7fc151c7f42f87",
     "src/application/runtime_config.cpp": "9eb4315fb6637a07e62a6523dffb7e7c966695ab87707798f71a0d2fa3b7706e"
   }

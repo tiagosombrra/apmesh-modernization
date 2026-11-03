@@ -14,7 +14,7 @@ stage 6 remain open; the ten stage 3 ledger dispositions are unchanged.
 | EC-02 | Synchronous execution takes a typed request; configuration/identity are value-owned, with documented compatibility behavior. | GenerationRequest, GenerationContext and deleted generator copy/move operations remain qualified by the existing native controls. The raw argv bridge and missing-group live fallback remain available. |
 | EC-03 | Every declared context group has explicit raw/effective state and owner/observer boundaries; no scientific expression/order change is inferred from migration. | Eleven groups contain 181 fields, plus four identity/output fields. Stable updates remain local to the owning generator; Adapter borrows stationary state and trees/fronts own their published copies. Prior source-reversal and native evidence retain each group's scope. |
 | EC-04 | The existing numerical, boundary and negative-control reference remains valid on the delivered production code. | Reuse PR #153: 75 CTest/385 nested controls; nine scientific states, 45 exact artifacts, 123 boundary comparisons; 23 invalid MSVC controls and one analytic state with one positive boundary comparison. Current delivery reruns the existing CTest gate; unchanged scientific/MSVC/native/instrument observations are reused by identity. |
-| EC-05 | Remaining state and unsupported claims are explicit; the original closure/failure inventory remains visible. | Complete 203-definition matrix, named auxiliary statics and caller protocol below. No global definition is removed. All ten stage 3 rows keep their dispositions: three bounded-qualified, seven partial/open. |
+| EC-05 | Remaining state and unsupported claims are explicit; the original closure/failure inventory remains visible. | The original consolidation classified 203 definitions; the current matrix tracks 201 active definitions and two retired dormant registries, plus named auxiliary statics and caller protocol. All ten stage 3 rows keep their dispositions: three bounded-qualified, seven partial/open. |
 | EC-06 | Exact delivery head and merged main pass required quality/contracts/CTest/identity checks, with remote state audited. | Required for this consolidation. The PR and local build/engine-context-milestone integration seal record revisions, commands, hashes, evidence reuse and final disposition. Missing/failing required checks block this bounded closure. |
 
 EC-01..05 are established at the reviewed baseline and unchanged source. EC-06
@@ -56,7 +56,9 @@ from value ownership or from a fresh generator alone.
 The [complete matrix](../architecture/ENGINE_CONTEXT_STATE.json) classifies every
 definition in runtime_state.cpp against the actual aggregate factory. It is a
 reviewed source inventory, not a percentage of modernization or a race-freedom
-proof. All 203 definitions remain; 185 have a context binding and 18 do not.
+proof. The original consolidation retained all 203 definitions. Subsequent
+[dormant registry retirement](DORMANT_RUNTIME_REGISTRIES.md) leaves 201 active
+definitions: 185 have a context binding and 16 do not; two removals are recorded.
 Capturing an input does not remove its legacy definition or prove that every
 alternate consumer uses the context.
 
@@ -70,7 +72,7 @@ alternate consumer uses the context.
 | Attempt compatibility mirrors (2) | ADAPTIVE_CURRENT_STEP and ADAPTIVE_CURRENT_RETRY retain original writes and optional parallel reads. | [Serial dependence removed](GENERATOR_ATTEMPT_STATE.md): Adapter receives existing generator-owned step/retry values. Definitions remain uncaptured, not serial inputs. |
 | Uncaptured estimation (2) | TRIANGLE_MEDIO and ESTIMATIVE_TOLERANCE remain in estimation helpers. | Preserve units and caller semantics; broader estimation/load paths remain outside this measured entry boundary. |
 | Uncaptured observation (4) | TIME_READ_FILE, MAX_TIME, FINDUV_TOTAL_CALLS and FINDUV_IMAX_EXITS. | Separate timing/instrument ownership from scientific criteria; correct-clock/profiling obligations remain in their stages. |
-| Dormant registries (2) | LIST_ALL_POINTS_MODEL and LIST_ALL_SUB_MESH_MODEL have no non-declaration first-party uses in the reviewed source scan. | Keep explicit dormant disposition; do not convert absence of observed use into a global-freedom or external ABI claim. |
+| Retired dormant registries (2) | LIST_ALL_POINTS_MODEL and LIST_ALL_SUB_MESH_MODEL had no internal consumers. Both definitions/declarations and header dependencies are removed. | Preserve named retirement evidence and internal source-interface scope; no global-freedom or external ABI claim. |
 
 Additional named first-party statics are the quadtree debug sequence, the
 translation-unit-local method-notice table and optional MPI communicator lifetime
