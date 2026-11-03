@@ -28,9 +28,10 @@ The [curve controls](../evidence/CURVE_CONTROLS_CONTEXT.md) are delivered.
 The [quadtree controls](../evidence/QUADTREE_CONTROLS_CONTEXT.md) are delivered.
 The [patch generation controls](../evidence/PATCH_GENERATION_CONTEXT.md) are delivered.
 The [patch consistency controls](../evidence/PATCH_CONSISTENCY_CONTEXT.md) are delivered.
-The single active item is [acceptance controls](../evidence/ACCEPTANCE_CONTEXT.md):
-own the remaining 26 scoring/growth/small-gain/efficiency settings, preserving all
-criteria and the growth penalty with the existing regression. Instrument
+The [acceptance controls](../evidence/ACCEPTANCE_CONTEXT.md) are delivered.
+The single active item is [AFT controls](../evidence/AFT_CONTEXT.md): own six active
+ratio/smoothing/postprocess settings, isolate the stable pass-count write and give
+fronts value-owned postprocess settings with the existing regression. Instrument
 work is attached only when it blocks this implementation or required closure.
 The retained P3/P5 instrument obligations are not waived or automatically run next.
 

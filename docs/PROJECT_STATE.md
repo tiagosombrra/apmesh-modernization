@@ -2,7 +2,7 @@
 
 ## Current checkpoint and active work
 
-Entry main: `b48810f4c6b4177b778749a2d29b03c213169015` (PR #150).
+Entry main: `e8efe024a8c8e00c71cd5efad37c50ad01b6158d` (PR #151).
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the
 automatic sequence of root-border microaudits with five finite work packages.
 
@@ -97,7 +97,25 @@ inherited obligations: three have bounded qualification and seven remain
 partial/open. P1 removes the compiler prerequisite, not the S3-09 complete-process
 memory obligation. No required observation is waived and no stage is closed.
 
-## Active production delivery: remaining generation acceptance controls
+## Active production delivery: advancing-front and postprocess controls
+
+The [AFT context](evidence/AFT_CONTEXT.md) owns six active ratio/smoothing/
+postprocess controls copied from already-applied process state. The existing
+ApplyRuntimeConfig clamp remains the sole CLI smoothing clamp; the double-to-
+unsigned constructor conversion stays in place. One stable write still sets
+postprocess passes to 2 at its original position. A pinned effective generator
+value is observed by Adapter; each front owns a copy of three postprocess values.
+Raw context remains unchanged. Missing settings and unconfigured standalone
+fronts keep live globals. Three cases in the existing native probe check 15 raw/
+15 stable double representations, constructor binding/conversion, 36 real poor-
+region smoothing outputs and three snapshots after generator retirement. Reuse
+the existing scientific/delivery regression without a new model, target or
+instrument campaign. Shared TOLERANCE_AFT and the inactive constructor tolerance
+argument retain their exact behavior; tolerance propagation is outside this lot.
+Other runtime globals remain serialized. Stage 3/6 and memory/recovery/parallel
+obligations remain open.
+
+## Delivered production context: remaining generation acceptance controls
 
 The [acceptance context](evidence/ACCEPTANCE_CONTEXT.md) owns the remaining 26
 scoring/growth/small-gain/efficiency acceptance controls captured from current

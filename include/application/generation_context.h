@@ -212,6 +212,16 @@ struct AcceptanceConfig {
   double budget_miss_penalty = 0.1;
 };
 
+// Active advancing-front/smoothing settings; geometric tolerance remains shared.
+struct AftConfig {
+  double ratio = 1.0;
+  double smoothing_iterations = 7;
+  double smoothing_factor = 0.5;
+  int postprocess_passes = 0;
+  double postprocess_quality_threshold = 0.35;
+  double postprocess_blend = 0.35;
+};
+
 // Value-owned identity/output options and optional execution configuration.
 struct GenerationContext {
   std::string input_model;
@@ -228,6 +238,7 @@ struct GenerationContext {
   std::optional<PatchGenerationConfig> patch_generation = std::nullopt;
   std::optional<PatchConsistencyConfig> patch_consistency = std::nullopt;
   std::optional<AcceptanceConfig> acceptance = std::nullopt;
+  std::optional<AftConfig> aft = std::nullopt;
 };
 } // namespace apmesh::application
 

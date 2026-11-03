@@ -726,6 +726,158 @@ void CheckCurveControlsContexts() {
                "stable=3 legacy=2\n";
 }
 
+class AftContextProbe : public Par2DJMesh::AFT::AdvancingFront {
+  using Vertex = Par2DJMesh::Basics::Vertex;
+  using Face = Par2DJMesh::Basics::Face;
+  std::array<Vertex, 4> corners_{
+      {Vertex(0.0, 0.0), Vertex(1.0, 0.0), Vertex(1.0, 1.0), Vertex(0.0, 1.0)}};
+  std::unique_ptr<Vertex> center_ = std::make_unique<Vertex>(0.05, 0.25);
+
+public:
+  explicit AftContextProbe(const std::array<double, 3>& inputs)
+      : AdvancingFront(inputs[0], TOLERANCE_AFT, inputs[1], inputs[2]) {
+    struct DetachDelete {
+      void operator()(Face* face) const noexcept {
+        face->DetachVertices();
+        delete face;
+      }
+    };
+    for (unsigned i = 0; i < 4; ++i) {
+      std::unique_ptr<Face, DetachDelete> face(
+          new Face(&corners_[i], &corners_[(i + 1) % 4], center_.get(), i + 1));
+      mesh.push_back(face.get());
+      face.release();
+    }
+    innerVertices.push_back(center_.get());
+  }
+  ~AftContextProbe() override {
+    for (auto* face : mesh) {
+      face->DetachVertices();
+      delete face;
+    }
+    mesh.clear();
+    innerVertices.clear();
+  }
+  double SmoothingFactor() const { return phi; }
+  std::array<double, 4> Observe() {
+    center_->setPosition(0.05, 0.25);
+    ResetRunStats();
+    bool changed = false;
+    if (!poorRegionShapeSmoothing(changed))
+      throw std::runtime_error("Native AFT poor-region smoothing failed");
+    const auto& stats = GetRunStats();
+    if (changed != (stats.postprocess_vertices_moved > 0))
+      throw std::runtime_error("Native AFT moved-vertex oracle disagrees");
+    return {{center_->getX(), center_->getY(),
+             static_cast<double>(stats.postprocess_vertices_considered),
+             static_cast<double>(stats.postprocess_vertices_moved)}};
+  }
+};
+
+void CheckAftContexts() {
+  using apmesh::application::AftConfig;
+  const std::array<double AftConfig::*, 5> doubles{
+      {&AftConfig::ratio, &AftConfig::smoothing_iterations, &AftConfig::smoothing_factor,
+       &AftConfig::postprocess_quality_threshold, &AftConfig::postprocess_blend}};
+  GeneratorAdaptive legacy;
+  GeneratorAdaptive identity_only({"unused", "unused", "", ""});
+  const auto saved = legacy.BuildAftRuntime();
+  const auto apply = [](const AftConfig& config) {
+    RATIO_AFT = config.ratio;
+    SMOOTHING_LAPLACIAN_NUMBER = config.smoothing_iterations;
+    SMOOTHING_LAPLACIAN_FACTOR = config.smoothing_factor;
+    AFT_LOCAL_POSTPROCESS_PASSES = config.postprocess_passes;
+    AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD = config.postprocess_quality_threshold;
+    AFT_LOCAL_POSTPROCESS_BLEND = config.postprocess_blend;
+  };
+  const auto equal = [&](const AftConfig& a, const AftConfig& b) {
+    for (auto field : doubles)
+      if (std::memcmp(&(a.*field), &(b.*field), sizeof(double)) != 0)
+        return false;
+    return a.postprocess_passes == b.postprocess_passes;
+  };
+  const auto same = [](const std::array<double, 4>& a, const std::array<double, 4>& b) {
+    return std::memcmp(a.data(), b.data(), a.size() * sizeof(double)) == 0;
+  };
+  const auto make_front = [](const GeneratorAdaptive& generator) {
+    auto front =
+        std::make_unique<AftContextProbe>(DomainCandidateFixture::AftConstructorInputs(generator));
+    DomainCandidateFixture::ConfigureAft(generator, *front);
+    return front;
+  };
+  const auto check_front = [](AftContextProbe& front, const AftConfig& config) {
+    const double factor = front.getQuadtree()->getFactor();
+    const double phi = front.SmoothingFactor();
+    const double threshold = front.PostprocessQualityThreshold();
+    const double blend = front.PostprocessBlend();
+    if (std::memcmp(&factor, &config.ratio, sizeof(double)) != 0 ||
+        std::memcmp(&phi, &config.smoothing_factor, sizeof(double)) != 0 ||
+        front.getNumImproves() != static_cast<unsigned int>(config.smoothing_iterations) ||
+        front.PostprocessPasses() != config.postprocess_passes ||
+        std::memcmp(&threshold, &config.postprocess_quality_threshold, sizeof(double)) != 0 ||
+        std::memcmp(&blend, &config.postprocess_blend, sizeof(double)) != 0)
+      throw std::runtime_error("AFT constructor conversion or postprocess binding changed");
+  };
+  std::array<AftConfig, 3> cases{};
+  cases[1] = {0.85, 6.75, 0.4, 1, 0.8, 0.25};
+  cases[2] = {1.1, 2.25, 0.6, 3, 0.6, 0.5};
+  const AftConfig foreign{1.3, 5.0, 0.2, 0, 0.0, 0.0};
+  unsigned raw_negative_differences = 0;
+  for (const auto& value : cases) {
+    apply(value);
+    const auto expected = legacy.BuildAftRuntime();
+    auto reference = make_front(legacy);
+    const auto expected_post = reference->Observe();
+    std::unique_ptr<GeneratorAdaptive> owned;
+    {
+      auto captured =
+          apmesh::application::MakeGenerationContext(apmesh::application::RuntimeConfig{});
+      if (!equal(expected, *captured.aft))
+        throw std::runtime_error("AFT factory changed already-applied process values");
+      apmesh::application::GenerationContext source{"unused", "unused", "", ""};
+      source.aft = captured.aft;
+      owned = std::make_unique<GeneratorAdaptive>(source);
+      source.aft = captured.aft = foreign;
+    }
+    apply(foreign);
+    auto front = make_front(*owned);
+    check_front(*front, value);
+    if (!equal(expected, owned->BuildAftRuntime()) || !equal(foreign, legacy.BuildAftRuntime()) ||
+        !equal(foreign, identity_only.BuildAftRuntime()) || !same(expected_post, front->Observe()))
+      throw std::runtime_error("AFT ownership or raw native smoothing differential failed");
+    auto foreign_front = make_front(legacy);
+    raw_negative_differences += !same(expected_post, foreign_front->Observe());
+    DomainCandidateFixture::StableAft(*owned);
+    if (!equal(value, *owned->GetGenerationContext()->aft) ||
+        !equal(foreign, legacy.BuildAftRuntime()))
+      throw std::runtime_error("Owned AFT update changed raw settings or process state");
+    auto stable_front = make_front(*owned);
+    apply(value);
+    DomainCandidateFixture::StableAft(legacy);
+    const auto stable = legacy.BuildAftRuntime();
+    auto stable_reference = make_front(legacy);
+    const auto stable_post = stable_reference->Observe();
+    if (!equal(stable, owned->BuildAftRuntime()) || !same(stable_post, stable_front->Observe()) ||
+        stable_post[3] <= 0.0)
+      throw std::runtime_error(
+          "AFT stable values, native differential or positive movement failed");
+    check_front(*stable_front, stable);
+    apply(foreign);
+    owned.reset();
+    check_front(*stable_front, stable);
+    if (!same(stable_post, stable_front->Observe()))
+      throw std::runtime_error("AFT value-owned settings expired with the generator");
+    apply(value);
+    DomainCandidateFixture::StableAft(identity_only);
+    if (!equal(stable, legacy.BuildAftRuntime()))
+      throw std::runtime_error("Legacy AFT update stopped writing process state");
+  }
+  apply(saved);
+  if (raw_negative_differences != 2)
+    throw std::runtime_error("AFT foreign-global control did not expose both active cases");
+  std::cout << "aft_context cases=3 scalar_bits=15 post_bits=36 retired=3 legacy=2\n";
+}
+
 void CheckAcceptanceContexts(const std::filesystem::path& output) {
   using apmesh::application::AcceptanceConfig;
   const std::array<double AcceptanceConfig::*, 22> doubles{
@@ -1445,6 +1597,7 @@ int main(int argc, char* argv[]) {
   CheckPatchGenerationContexts();
   CheckPatchConsistencyContexts();
   CheckAcceptanceContexts(output);
+  CheckAftContexts();
 #endif
   NAME_MODEL = (output / "attempt").generic_string();
   NUMBER_PROCESS.clear();

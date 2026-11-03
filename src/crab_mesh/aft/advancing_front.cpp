@@ -1485,7 +1485,7 @@ enum MethodStatus AdvancingFront::improveMesh() {
     qualityShapeSmoothing(shapeOptimized);
 
     bool localImproved = false;
-    for (int pass = 0; pass < AFT_LOCAL_POSTPROCESS_PASSES; ++pass) {
+    for (int pass = 0; pass < PostprocessPasses(); ++pass) {
       bool passChanged = false;
       poorRegionShapeSmoothing(passChanged);
       localImproved = localImproved || passChanged;
@@ -1501,7 +1501,7 @@ enum MethodStatus AdvancingFront::improveMesh() {
 
   if (run_stats.adaptive_step == 2 &&
       (run_stats.quality_post_aft_min < 0.22 || run_stats.poor_ratio_post_aft > 0.20)) {
-    for (int pass = 0; pass < std::max(2, AFT_LOCAL_POSTPROCESS_PASSES + 1); ++pass) {
+    for (int pass = 0; pass < std::max(2, PostprocessPasses() + 1); ++pass) {
       bool passChanged = false;
       poorRegionShapeSmoothing(passChanged);
       if (!passChanged) {
@@ -1610,7 +1610,7 @@ bool AdvancingFront::execute(const FaceList& oldmesh) {
 bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
   changed = false;
 
-  if (AFT_LOCAL_POSTPROCESS_PASSES <= 0 || AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD <= 0.0) {
+  if (PostprocessPasses() <= 0 || PostprocessQualityThreshold() <= 0.0) {
     return true;
   }
 
@@ -1626,7 +1626,7 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
 
     bool touchesPoorFace = false;
     for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
-      if ((*faceIter)->quality() < AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD) {
+      if ((*faceIter)->quality() < PostprocessQualityThreshold()) {
         touchesPoorFace = true;
         break;
       }
@@ -1654,7 +1654,7 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
       }
 
       const double quality = face->quality();
-      if (quality >= AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD) {
+      if (quality >= PostprocessQualityThreshold()) {
         continue;
       }
 
@@ -1673,7 +1673,7 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
       const double sign = (orientation >= 0.0) ? 1.0 : -1.0;
       const double idealX = midx + sign * sqrt3Half * edgeLen * nx;
       const double idealY = midy + sign * sqrt3Half * edgeLen * ny;
-      const double deficit = std::max(0.0, AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD - quality);
+      const double deficit = std::max(0.0, PostprocessQualityThreshold() - quality);
       const double weight = std::max(0.05, deficit * deficit);
       targetX += weight * idealX;
       targetY += weight * idealY;
@@ -1687,7 +1687,7 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
     targetX /= totalWeight;
     targetY /= totalWeight;
 
-    double blend = AFT_LOCAL_POSTPROCESS_BLEND;
+    double blend = PostprocessBlend();
     bool accepted = false;
     for (int trial = 0; trial < 4; ++trial) {
       v->setPosition(oldx + blend * (targetX - oldx), oldy + blend * (targetY - oldy));
@@ -1810,3 +1810,20 @@ string AdvancingFront::getText() {
 //    }
 //}
 // #endif //#if USE_OPENGL
+
+void AdvancingFront::SetPostprocessControls(AftPostprocessControls controls) noexcept {
+  postprocess_controls_ = controls;
+}
+
+int AdvancingFront::PostprocessPasses() const noexcept {
+  return postprocess_controls_ ? postprocess_controls_->passes : AFT_LOCAL_POSTPROCESS_PASSES;
+}
+
+double AdvancingFront::PostprocessQualityThreshold() const noexcept {
+  return postprocess_controls_ ? postprocess_controls_->quality_threshold
+                               : AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD;
+}
+
+double AdvancingFront::PostprocessBlend() const noexcept {
+  return postprocess_controls_ ? postprocess_controls_->blend : AFT_LOCAL_POSTPROCESS_BLEND;
+}

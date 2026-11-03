@@ -1,5 +1,25 @@
 # Local quality automation
 
+## Advancing-front and postprocess controls
+
+The [AFT lot](evidence/AFT_CONTEXT.md) reuses 75 CTest/385 nested Python controls,
+C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/123-boundary reference and
+real MSVC CLI controls on exact head/main. Require all prior markers plus three
+cases: 15 raw/15 stable exact double representations, one pass-count integer,
+retired source, foreign globals, constructor factor/iteration/phi binding and
+36 actual poor-region smoothing outputs. All stable cases must move a vertex;
+the two raw enabled cases must differ from disabled foreign controls. Three
+configured fronts must retain values/results after generator retirement. Native
+unit data is bounded to a fixed UV square fan and single-pass smoothing; full
+loop/selection decisions retain the existing reference. Source reversal restores
+the complete generator/Adapter/AFT bodies, stable assignment and constructor order.
+Parser/apply/defaults, the existing smoothing clamp, shared geometric tolerance,
+inactive constructor tolerance and other production stay unchanged. Analyze each
+actual production compilation command once plus the existing probe with flags
+unchanged. Explicit touched-file formatting is separately token-checked. Require
+whitespace, inventory/contracts and staged/remote gates. No new scientific model,
+target or instrument campaign is added.
+
 ## Remaining generation acceptance controls
 
 The [acceptance lot](evidence/ACCEPTANCE_CONTEXT.md) reuses 75 CTest/385 nested

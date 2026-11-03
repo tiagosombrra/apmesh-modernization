@@ -1,6 +1,7 @@
 #ifndef ADVANCING_FRONT_H_
 #define ADVANCING_FRONT_H_
 
+#include <optional>
 #include "../../data/definitions.h"
 #include "boundary.h"
 #include "edge.h"
@@ -19,6 +20,12 @@ extern std::string USE_TEMPLATE;
 
 namespace Par2DJMesh {
 namespace AFT {
+struct AftPostprocessControls {
+  int passes = 0;
+  double quality_threshold = 0.35;
+  double blend = 0.35;
+};
+
 struct AdvancingFrontRunStats {
   unsigned long long postprocess_vertices_moved;
   unsigned long long postprocess_vertices_considered;
@@ -50,7 +57,7 @@ struct AdvancingFrontRunStats {
 };
 
 class AdvancingFront : public Shape {
- protected:
+protected:
   long int lastVertexId;
   long int lastEdgeId;
   long int lastFaceId;
@@ -62,9 +69,9 @@ class AdvancingFront : public Shape {
   double phi;
   unsigned int numImproves;
 
-  Boundary *boundary;
+  Boundary* boundary;
 
-  Quadtree *quadtree;
+  Quadtree* quadtree;
 
   FaceList mesh;
 
@@ -77,46 +84,50 @@ class AdvancingFront : public Shape {
   VertexList innerVertices;
   VertexList vertices;
 
- protected:
+protected:
   void makeInitialFront();
   void sortFront();
 
   // Testa intersecoes com arestas jah existentes
   // e com as faces jah existentes
-  bool interceptionTest(Edge *e, Vertex *candidate, bool inFaceTest = true,
+  bool interceptionTest(Edge* e, Vertex* candidate, bool inFaceTest = true,
                         bool onlyFrontEdges = false);
-  bool interceptionTest(Edge *e);
+  bool interceptionTest(Edge* e);
 
-  Vertex *makeIdealVertex(Edge *e, double &h);
-  virtual bool findBestVertex(Edge *e, Vertex *&best, bool geometryPhase);
+  Vertex* makeIdealVertex(Edge* e, double& h);
+  virtual bool findBestVertex(Edge* e, Vertex*& best, bool geometryPhase);
 
-  void insertInFront(Edge *last, Edge *e);
+  void insertInFront(Edge* last, Edge* e);
 
-  Edge *findEdge(Vertex *v1, Vertex *v2);
-  EdgeList findAdjacentEdges(Vertex *v);
-  FaceList findAdjacentFaces(const FaceList &faces, Vertex *v);
+  Edge* findEdge(Vertex* v1, Vertex* v2);
+  EdgeList findAdjacentEdges(Vertex* v);
+  FaceList findAdjacentFaces(const FaceList& faces, Vertex* v);
 
   void removeFromFront(Vertex* v1, Vertex* v2 = nullptr, Vertex* v3 = nullptr);
 
-  virtual enum MethodStatus makeMesh(bool frontBased,
-                                     bool geometryPhase = true);
+  virtual enum MethodStatus makeMesh(bool frontBased, bool geometryPhase = true);
 
   void fillMesh();
 
-  bool laplacianSmoothing(bool &changed);
-  bool qualityShapeSmoothing(bool &changed);
-  bool poorRegionShapeSmoothing(bool &changed);
+  bool laplacianSmoothing(bool& changed);
+  bool qualityShapeSmoothing(bool& changed);
+  bool poorRegionShapeSmoothing(bool& changed);
   void ResetRunStats();
   void UpdateRunStatsFromQuadtree();
   void CaptureStageStats(const FaceList& faces, int stage);
 
- public:
-  AdvancingFront(double factor = 0.85, double tolerance = 1.e-8,
-                 unsigned int numImproves = 5, double phi = 0.5);
-  AdvancingFront(Boundary *boundary, Quadtree *quadtree,
-                 double tolerance = 1.e-8, unsigned int numImproves = 5);
+public:
+  AdvancingFront(double factor = 0.85, double tolerance = 1.e-8, unsigned int numImproves = 5,
+                 double phi = 0.5);
+  AdvancingFront(Boundary* boundary, Quadtree* quadtree, double tolerance = 1.e-8,
+                 unsigned int numImproves = 5);
 
   ~AdvancingFront() override;
+
+  void SetPostprocessControls(AftPostprocessControls controls) noexcept;
+  int PostprocessPasses() const noexcept;
+  double PostprocessQualityThreshold() const noexcept;
+  double PostprocessBlend() const noexcept;
 
   //    static double getTolerance();
 
@@ -126,11 +137,11 @@ class AdvancingFront : public Shape {
   void setNumImproves(unsigned int numImproves);
   unsigned int getNumImproves();
 
-  void setBoundary(Boundary *boundary);
-  Boundary *getBoundary();
+  void setBoundary(Boundary* boundary);
+  Boundary* getBoundary();
 
-  void setQuadtree(Quadtree *quadtree);
-  Quadtree *getQuadtree();
+  void setQuadtree(Quadtree* quadtree);
+  Quadtree* getQuadtree();
 
   VertexList getVertices();
   VertexList getInnerVertices();
@@ -145,7 +156,7 @@ class AdvancingFront : public Shape {
   void addEdgesToFront(EdgeList front);
   void addMesh(FaceList mesh);
 
-  bool belongsToAdvFront(Edge *e);
+  bool belongsToAdvFront(Edge* e);
 
   virtual enum MethodStatus makeGeometryBasedMesh();
   virtual enum MethodStatus makeTopologyBasedMesh();
@@ -153,7 +164,7 @@ class AdvancingFront : public Shape {
   const AdvancingFrontRunStats& GetRunStats() const;
   void SetAdaptiveContext(int adaptive_step, int patch_index);
 
-  bool execute(const FaceList &oldmesh);
+  bool execute(const FaceList& oldmesh);
 
   string getText() override;
 
@@ -164,10 +175,11 @@ class AdvancingFront : public Shape {
   //    void draw();
   //    void drawNormals();
   // #endif //#if USE_OPENGL
- private:
+private:
   AdvancingFrontRunStats run_stats;
+  std::optional<AftPostprocessControls> postprocess_controls_ = std::nullopt;
 };
-}  // namespace AFT
-}  // namespace Par2DJMesh
+} // namespace AFT
+} // namespace Par2DJMesh
 
-#endif  // ADVANCING_FRONT_H_
+#endif // ADVANCING_FRONT_H_

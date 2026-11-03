@@ -902,8 +902,8 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
   const double factor_disc = InternalCurveDiscretizationFactor();
 
   // Advancing front (ratio, tolerance, smoothing iterations, smoothing factor).
-  AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,
-                        SMOOTHING_LAPLACIAN_FACTOR);
+  AdvancingFront avanco(AftRatio(), TOLERANCE_AFT, AftSmoothingIterations(), AftSmoothingFactor());
+  ConfigureAdvancingFront(avanco);
   ConfigureQuadtree(avanco.getQuadtree());
   avanco.SetAdaptiveContext(adaptive_step, patch_index);
   const int resolved_depth_omp = ResolveQuadtreeDepth(max_quadtree_depth, adaptive_step);
@@ -1289,8 +1289,9 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     result.sub_mesh = std::make_unique<SubMesh>();
     const double factor_disc = InternalCurveDiscretizationFactor();
     apmesh::adaptation::DomainUvCache cache;
-    AdvancingFront avanco(RATIO_AFT, TOLERANCE_AFT, SMOOTHING_LAPLACIAN_NUMBER,
-                          SMOOTHING_LAPLACIAN_FACTOR);
+    AdvancingFront avanco(AftRatio(), TOLERANCE_AFT, AftSmoothingIterations(),
+                          AftSmoothingFactor());
+    ConfigureAdvancingFront(avanco);
     ConfigureQuadtree(avanco.getQuadtree());
     avanco.SetAdaptiveContext(adaptive_step, patch_index);
     if (avanco.getQuadtree()) {
@@ -1684,5 +1685,41 @@ void Adapter::ConfigureQuadtree(Par2DJMesh::AFT::Quadtree* tree) const noexcept 
   if (tree && config) {
     tree->SetQualityControls({config->face_quality_threshold, config->low_quality_h_factor,
                               config->template_poor_score_threshold});
+  }
+}
+
+Adapter::Adapter(const apmesh::application::GenerationContext* context,
+                 const apmesh::application::QuadtreeControlsConfig* effective_quadtree,
+                 const apmesh::application::AftConfig* effective_aft) noexcept
+    : generation_context_(context), effective_quadtree_(effective_quadtree),
+      effective_aft_(effective_aft) {}
+
+const apmesh::application::AftConfig* Adapter::AftSettings() const noexcept {
+  if (effective_aft_) {
+    return effective_aft_;
+  }
+  return generation_context_ && generation_context_->aft ? &*generation_context_->aft : nullptr;
+}
+
+double Adapter::AftRatio() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->ratio : RATIO_AFT;
+}
+
+double Adapter::AftSmoothingIterations() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->smoothing_iterations : SMOOTHING_LAPLACIAN_NUMBER;
+}
+
+double Adapter::AftSmoothingFactor() const noexcept {
+  const auto* config = AftSettings();
+  return config ? config->smoothing_factor : SMOOTHING_LAPLACIAN_FACTOR;
+}
+
+void Adapter::ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) const noexcept {
+  const auto* config = AftSettings();
+  if (config) {
+    front.SetPostprocessControls({config->postprocess_passes, config->postprocess_quality_threshold,
+                                  config->postprocess_blend});
   }
 }
