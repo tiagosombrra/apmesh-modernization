@@ -2,8 +2,20 @@
 
 ## Current checkpoint and active work
 
-Reviewed starting main: `3d3ba4a88e4dd75c2d3c5e33d52ec74d161297cd` (PR #155).
-Exact Book recipe delivery head/main status is recorded by its PR and local integration seal.
+Reviewed starting main: `cd248e082a7f9a00067d596aeeb2314d511fe15b` (PR #156).
+Exact dormant-state delivery head/main status is recorded by its PR and local integration seal.
+
+## Delivered production cleanup: dormant runtime registries
+
+The [dormant-state retirement](evidence/DORMANT_RUNTIME_REGISTRIES.md) removes both
+unused process-wide point/submesh registries and their geometry/set dependencies
+from the application state header. The complete source use inventory has no
+consumers to migrate. There are now 201 active runtime definitions, including
+185 context-bound and 16 uncaptured symbols; two retired symbols remain recorded.
+All other production, inputs, policies and the 201 remaining initializer sequences
+are preserved. The existing exact-head/main builds, regression, negative/scientific
+controls and quality gates are required. No new test target or instrument campaign.
+This closes the named dormant-state debt; Stage 3/full Stage 6 remain open.
 
 ## Delivered workflow: Book CMake run aliases
 
@@ -26,7 +38,7 @@ no new state or formula/policy change. Existing candidate/snapshot controls use
 conflicting globals and attempt labels 0/5; frozen scientific traces preserve IDs,
 selection, local repair labels and accepted/rejected states. Require the existing
 exact-head/main regression and build/quality gates; no new instrument campaign.
-This supports S3-08 without closing it. All 203 runtime definitions remain.
+This supports S3-08 without closing it. At that delivery all 203 runtime definitions remained.
 The subsequent Book recipe repair above closes the named positional workflow debt.
 
 The [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaced the

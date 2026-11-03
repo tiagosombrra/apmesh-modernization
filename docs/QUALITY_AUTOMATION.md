@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Dormant runtime registry retirement
+
+The [retirement](evidence/DORMANT_RUNTIME_REGISTRIES.md) reuses existing exact-head/
+main GCC/MSVC C++17 builds, 75 CTest/385 controls, nine frozen scientific states,
+45 exact artifacts/123 boundaries and MSVC CLI observations. Add no test target or
+instrument campaign. Complete source comparisons permit only the two dormant set
+definitions/declarations, set include and geometry forward-declaration removals;
+all other production, tests, build settings, models and configurations remain exact.
+Check zero first-party consumers/references, 201 unchanged ordered initializers,
+185 context bindings, 16 uncaptured symbols and two named retirements. Analyze
+the actual runtime-state/runtime-config commands and changed header once, preserve
+flags, explicitly check formatting tokens, whitespace, inventory/contracts and
+staged/remote gates. Stop at the first unexpected failure and retain its record.
+
 ## Book CMake run aliases
 
 The [recipe repair](evidence/BOOK_CMAKE_RUN_RECIPES.md) changes only three

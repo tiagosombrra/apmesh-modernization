@@ -2,11 +2,7 @@
 #define APMESH_APPLICATION_RUNTIME_STATE_H
 
 #include <atomic>
-#include <set>
 #include <string>
-
-class PointAdaptive;
-class SubMesh;
 
 // Legacy process-wide state remains serialized and retains its original initialization order.
 extern int RANK_MPI;
@@ -205,8 +201,6 @@ extern std::atomic<unsigned long long> FINDUV_TOTAL_CALLS;
 extern std::atomic<unsigned long long> FINDUV_IMAX_EXITS;
 extern double MAX_TIME;
 extern int MAX_THREADS;
-extern std::set<PointAdaptive*> LIST_ALL_POINTS_MODEL;
-extern std::set<SubMesh*> LIST_ALL_SUB_MESH_MODEL;
 extern std::string NAME_MODEL;
 extern std::string INPUT_MODEL;
 extern std::string NUMBER_PROCESS;

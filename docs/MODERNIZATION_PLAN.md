@@ -17,9 +17,10 @@ after its required gates. Full stage 3 and stage 6 remain open.
 
 Delivered groups are adaptive policy, stop/retry, adaptation, element budgets,
 curves, quadtree, patch generation, consistency, acceptance, AFT and serial flow.
-They contain 181 fields plus four identity/output fields. All 203 historical
-runtime definitions remain; the [reviewed matrix](architecture/ENGINE_CONTEXT_STATE.json)
-maps 185 captured symbols and 18 uncaptured symbols. Captured inputs can still
+They contain 181 fields plus four identity/output fields. The
+[reviewed matrix](architecture/ENGINE_CONTEXT_STATE.json) now records 201 active
+runtime definitions: 185 captured and 16 uncaptured, plus two retired dormant
+registries from the original 203-definition inventory. Captured inputs can still
 have live legacy/alternate consumers. The factory depends on validated configuration
 and applied process state; the full caller sequence remains serialized.
 
@@ -34,6 +35,10 @@ workflow mismatch: all three historical target names explicitly alias the curren
 Book article configuration through --config, without translating legacy numerical
 profiles or altering the configuration. Existing scientific evidence is reused by
 identity; generated commands and the existing exact-head/main suite are checked.
+The [dormant-state retirement](evidence/DORMANT_RUNTIME_REGISTRIES.md) removes both
+unused process-wide registries and their header dependencies, preserving every
+remaining initializer and all numerical/selection policies. Existing exact-revision
+builds and regression qualify the removal without new instruments or test targets.
 Precision units, complete-process memory/recovery, other callers and parallel
 execution retain their obligations. No automatic instrument/audit successor is added.
 

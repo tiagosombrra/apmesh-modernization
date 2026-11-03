@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 649,
+    "literal_include_directives": 648,
     "first_party_include_edges": 361
   },
   "cross_component_directives": [
@@ -380,7 +380,7 @@
     "optional": 6,
     "ostream": 1,
     "queue": 2,
-    "set": 3,
+    "set": 2,
     "sstream": 6,
     "stdexcept": 11,
     "stdio.h": 1,
@@ -813,8 +813,8 @@
       "path": "include/application/runtime_state.h",
       "component_by_directory": "application",
       "kind": "header",
-      "sha256": "68f657580ab7e78a3d776bcf4edc9c48ce1d11610df196b2d5059a471c572a19",
-      "bytes": 8715,
+      "sha256": "da7de7bebcaa540ba7419af71878ea9fea68d3f5a439fe8a60fcbd82c6a9a7c3",
+      "bytes": 8557,
       "includes": [
         {
           "line": 4,
@@ -825,13 +825,6 @@
         },
         {
           "line": 5,
-          "spelling": "set",
-          "form": "angle",
-          "scope": "toolchain_or_unresolved",
-          "target": null
-        },
-        {
-          "line": 6,
           "spelling": "string",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -4053,8 +4046,8 @@
       "path": "src/application/runtime_state.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "8937ed29dfef3d2dbf0f603fcca614d96280e4150ae72010790872fe76c1eed8",
-      "bytes": 8303,
+      "sha256": "5e57b6a249f614b0401476f0f77aab18ceb07a689df3c65ef1e7aa23d1d365da",
+      "bytes": 8211,
       "includes": [
         {
           "line": 1,

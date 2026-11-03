@@ -19,7 +19,7 @@ their declared scope. No partial result closes the stage.
 
 The [internal serial engine/context contract](../evidence/ENGINE_CONTEXT_MILESTONE.md)
 consolidates the delivered engine, typed request, identity and eleven control
-groups. Its six exit criteria and [203-definition matrix](ENGINE_CONTEXT_STATE.json)
+groups. Its six exit criteria and [runtime-state matrix](ENGINE_CONTEXT_STATE.json)
 separate bounded milestone closure from complete stage 3/6 closure and global
 freedom. The exact delivery/main seal is required; implementation criteria are
 established at PR #153. Reuse unchanged numerical/native/instrument evidence.
@@ -33,6 +33,12 @@ closes the three positional CMake recipes as documented aliases of the unchanged
 Book article configuration. Generated commands and existing exact-revision gates
 are checked while numerical evidence is reused by identity. Shared precision,
 remaining callers and instrument/parallel closure retain their existing obligations.
+The [dormant registry retirement](../evidence/DORMANT_RUNTIME_REGISTRIES.md) removes
+the two unused registry definitions, declarations and header dependencies. The
+current matrix has 201 active definitions and two named historical retirements;
+all remaining initializers and policy/selection order are preserved. This is a
+bounded stage 6 state cleanup supporting explicit S3-05 boundaries, not row/stage
+closure. Existing exact-revision gates apply; no audit/instrument successor is added.
 
 ## Work-item admission and execution rules
 

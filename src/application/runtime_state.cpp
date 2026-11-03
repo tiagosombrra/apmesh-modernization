@@ -206,8 +206,6 @@ std::atomic<unsigned long long> FINDUV_TOTAL_CALLS{0};
 std::atomic<unsigned long long> FINDUV_IMAX_EXITS{0};
 double MAX_TIME = 999999999;
 int MAX_THREADS = 1;
-std::set<PointAdaptive*> LIST_ALL_POINTS_MODEL;
-std::set<SubMesh*> LIST_ALL_SUB_MESH_MODEL;
 std::string NAME_MODEL;
 std::string INPUT_MODEL;
 std::string NUMBER_PROCESS;
