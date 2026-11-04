@@ -49,6 +49,12 @@ S3-05/08 bookkeeping without changing their row status or qualifying reuse/recov
 
 ## Work-item admission and execution rules
 
+The [obsolete-curve retirement package](../evidence/REPLACED_CURVE_OBSERVERS.md)
+repairs the reproduced Bezier/Hermite public setter defect. Its named S3-05/07
+sub-obligation preserves last-incidence semantics, destination publication and
+the existing nonallocating synchronization commit. Existing regression and the
+thirteen affected instrument outcomes provide its finite exit gates.
+
 The first returned P4 production package is
 [registered Patch/SubMesh retirement](../evidence/PATCH_SUBMESH_RETIREMENT.md).
 Both normal owner orders fail on the original public callers and are repaired

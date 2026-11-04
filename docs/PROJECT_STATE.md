@@ -2,8 +2,20 @@
 
 ## Current checkpoint and active work
 
-Reviewed starting main: `a97105da94fc18ad80eb08c5201ca4f411985455` (PR #159).
+Reviewed starting main: `de588cab99e45cc466e533eb29faa1b3f944ea16` (PR #160).
 Exact delivery head/main status is recorded by its PR and local integration seal.
+
+## P4 production repair: obsolete curve observers
+
+The [replacement repair](evidence/REPLACED_CURVE_OBSERVERS.md) removes a Patch's
+old-curve observations when its last current incidence is replaced. Both Bezier
+and Hermite reproduce the original stale-observer failure. Existing stable removal
+preserves other entries/order without allocation; repeated slots keep their
+observers until the last one leaves. Destination publication stays caller-managed,
+preserving the existing synchronization commit and scientific policies. Existing
+regression plus thirteen focused native instrument outcomes are required on exact
+head/main. This closes that S3-05/07 sub-obligation; cache mutation, arbitrary
+foreign publications and the other seven partial/open rows remain separate.
 
 ## P4 production repair: registered Patch/SubMesh retirement
 

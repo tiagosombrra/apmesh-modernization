@@ -51,6 +51,14 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+P4's [obsolete-curve retirement](evidence/REPLACED_CURVE_OBSERVERS.md) now repairs
+the reproduced public ReplaceCurve lifetime defect in Bezier and Hermite. Old
+observations retire after the last incidence leaves, without allocating or
+altering destination publication, synchronization order or scientific policies.
+Reuse existing regression and thirteen affected ASan/CRT outcomes. This closes
+that S3-05/07 sub-obligation; cache mutation and broader foreign arrangements
+retain their separate exit requirements. All ten row dispositions remain.
+
 P4 now repairs [registered Patch/SubMesh retirement](evidence/PATCH_SUBMESH_RETIREMENT.md)
 in both reproduced normal public-caller orders. The complete related registration,
 teardown, rebinding and move package closes this named S3-05/07 sub-obligation
