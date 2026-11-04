@@ -7,6 +7,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from audit_find_uv_recording import restore_find_uv_recording, validate_find_uv_header
+
 from audit_hermite_observers import restore_hermite_retirement
 
 BASE = "ace7abf0ce1b559d20b5c94f8e9120013c093f81"
@@ -23,6 +25,7 @@ NEW_HERMITE = """PatchHermite::PatchHermite(PatchHermite* patch_hermite)
 
 
 def code(text):
+    text = restore_find_uv_recording(text)
     text = re.sub(r"//[^\n]*|/\*.*?\*/", "", text, flags=re.S)
     return re.sub(r"\s+", "", text)
 
@@ -62,6 +65,7 @@ def audit(candidate_root, original_root=None):
                        subprocess.check_output(["git", "show", f"{BASE}:{name}"],
                                                cwd=candidate_root).decode("utf-8")) for name in FILES}
     candidates = {name: (candidate_root/name).read_text(encoding="utf-8") for name in FILES}
+    validate_find_uv_header(candidate_root, candidates.values())
     preserved = verify(originals, candidates)
     mutations = [
         (FILES[0], "mat_base_(StartBezierMatrix())", "mat_base_(Matrix4x4::Zero())"),
@@ -95,6 +99,7 @@ def audit(candidate_root, original_root=None):
             "source_identities": {label: {name: hashlib.sha256(text.encode()).hexdigest()
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
+            "finduv_recording": "Exact entry/I_MAX slots normalized after pinned helper validation",
             "scope": "Only the exact Bezier copy basis/zero-metadata and Hermite copy true-direction initializers change; "
                      "the exact independently guarded completed Hermite retirement declaration/body and "
                      "constructor rollback scope are normalized. "

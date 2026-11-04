@@ -117,6 +117,129 @@ void CheckGenerationContexts(const std::filesystem::path& output) {
   std::cout << "generation_context owned=2 source_retired=1 interleaved_writes=3 legacy=1\n";
 }
 
+void CheckFindUvStatistics(const std::filesystem::path& output) {
+  using apmesh::diagnostics::FindUvStatistics;
+  using apmesh::diagnostics::FindUvStatisticsScope;
+  struct Restore {
+    unsigned int imax = I_MAX;
+    unsigned long long calls = FINDUV_TOTAL_CALLS.load(), exits = FINDUV_IMAX_EXITS.load();
+    std::string mode = ADAPTIVE_MODE, name = NAME_MODEL, write = WRITE_MESH;
+    int steps = STEPS;
+    std::streambuf* stream = std::cout.rdbuf();
+    ~Restore() {
+      I_MAX = imax;
+      FINDUV_TOTAL_CALLS.store(calls);
+      FINDUV_IMAX_EXITS.store(exits);
+      ADAPTIVE_MODE = mode;
+      NAME_MODEL = name;
+      WRITE_MESH = write;
+      STEPS = steps;
+      std::cout.rdbuf(stream);
+    }
+  };
+  std::ostringstream transcript;
+  Restore restore;
+  std::cout.rdbuf(transcript.rdbuf());
+  const auto require = [](bool condition) {
+    if (!condition)
+      throw std::runtime_error("FindUV execution statistics contract failed");
+  };
+  const auto equal = [](FindUvStatistics a, FindUvStatistics b) {
+    return a.calls == b.calls && a.imax_exits == b.imax_exits;
+  };
+  const auto fixture =
+      std::filesystem::path(__FILE__).parent_path() / "curve_memory/data/charge_input.bp";
+  Geometry geometry;
+  PatchReader reader;
+  reader.ReaderFilePatches(&geometry, fixture.string().c_str());
+  auto& bezier = *static_cast<PatchBezier*>(geometry.GetPatch(0));
+  const PointAdaptive p00(0, 0, 0), p10(1, 0, 0), p01(0, 1, 0), p11(1, 1, 0);
+  const VectorAdaptive u(1, 0, 0), v(0, 1, 0), twist(0, 0, 0);
+  CurveAdaptiveParametricHermite c0(p00, p10, u, u), c1(p10, p11, v, v), c2(p01, p11, u, u),
+      c3(p00, p01, v, v);
+  PatchHermite hermite(&c0, &c1, &c2, &c3, twist, twist, twist, twist);
+  const auto invoke = [](PatchCoons& patch, bool limited) {
+    I_MAX = limited ? 1U : 100000U;
+    const auto uv = patch.FindUV(patch.Parameterize(limited ? 0.2 : 0.5, limited ? 0.7 : 0.5));
+    std::array<unsigned long long, 2> bits{};
+    const std::array<double, 2> values{std::get<0>(uv), std::get<1>(uv)};
+    static_assert(sizeof(bits) == sizeof(values));
+    std::memcpy(bits.data(), values.data(), sizeof(bits));
+    return bits;
+  };
+  const auto b0 = invoke(bezier, false), b1 = invoke(bezier, true), h0 = invoke(hermite, false),
+             h1 = invoke(hermite, true);
+  transcript.str("");
+  FINDUV_TOTAL_CALLS.store(1000);
+  FINDUV_IMAX_EXITS.store(1999);
+  FindUvStatistics outer, inner;
+  {
+    FindUvStatisticsScope outer_scope(outer);
+    require(invoke(bezier, true) == b1);
+    try {
+      FindUvStatisticsScope inner_scope(inner);
+      require(invoke(hermite, true) == h1 && invoke(bezier, false) == b0);
+      throw 7;
+    } catch (int value) {
+      require(value == 7);
+    }
+    require(invoke(hermite, false) == h0);
+  }
+  require(equal(outer, {2, 1}) && equal(inner, {2, 1}));
+  require(invoke(bezier, false) == b0 && equal(outer, {2, 1}) && equal(inner, {2, 1}));
+  require(FINDUV_TOTAL_CALLS.load() == 1005 && FINDUV_IMAX_EXITS.load() == 2001);
+  require(transcript.str().find("[FindUV Bezier] I_MAX") != std::string::npos &&
+          transcript.str().find("[FindUV Hermite] I_MAX") == std::string::npos);
+
+  I_MAX = restore.imax;
+  ADAPTIVE_MODE = "legacy";
+  STEPS = 0;
+  WRITE_MESH = "h";
+  NAME_MODEL = (output / "finduv-first").generic_string();
+  Timer timer;
+  GeneratorAdaptive first, second;
+  require(equal(first.GetFindUvStatistics(), {}) && equal(second.GetFindUvStatistics(), {}));
+  auto before_calls = FINDUV_TOTAL_CALLS.load(), before_exits = FINDUV_IMAX_EXITS.load();
+  require(first.Execute(apmesh::application::GenerationRequest{1, 1, fixture.generic_string()},
+                        &timer) == 0);
+  const auto first_result = first.GetFindUvStatistics();
+  require(first_result.calls > 0 &&
+          first_result.calls == FINDUV_TOTAL_CALLS.load() - before_calls &&
+          first_result.imax_exits == FINDUV_IMAX_EXITS.load() - before_exits);
+  FINDUV_TOTAL_CALLS.fetch_add(31);
+  FINDUV_IMAX_EXITS.fetch_add(7);
+  NAME_MODEL = (output / "finduv-second").generic_string();
+  char program[] = "finduv", processes[] = "1", threads[] = "1";
+  std::string input = fixture.generic_string();
+  char* arguments[] = {program, processes, threads, input.data(), nullptr};
+  before_calls = FINDUV_TOTAL_CALLS.load();
+  before_exits = FINDUV_IMAX_EXITS.load();
+  require(second.Execute(arguments, &timer) == 0);
+  const auto second_result = second.GetFindUvStatistics();
+  require(second_result.calls > 0 &&
+          second_result.calls == FINDUV_TOTAL_CALLS.load() - before_calls &&
+          second_result.imax_exits == FINDUV_IMAX_EXITS.load() - before_exits &&
+          equal(first.GetFindUvStatistics(), first_result));
+  const auto missing = (output / "finduv-absent.bp").generic_string();
+  require(!std::filesystem::exists(missing));
+  FindUvStatistics preceding;
+  {
+    FindUvStatisticsScope preceding_scope(preceding);
+    bool caught = false;
+    try {
+      first.Execute(apmesh::application::GenerationRequest{1, 1, missing}, &timer);
+    } catch (const std::runtime_error& error) {
+      caught = error.what() == "Cannot open model input: " + missing;
+    }
+    require(caught && equal(first.GetFindUvStatistics(), {}));
+    require(invoke(bezier, false) == b0 && equal(preceding, {1, 0}));
+  }
+  require(equal(second.GetFindUvStatistics(), second_result));
+  std::cout.rdbuf(restore.stream);
+  std::cout << "finduv_statistics patches=2 nested=2 unwind=2 "
+               "executions=2 reset=1 legacy=1 scalar_bits=10\n";
+}
+
 void CheckGenerationRequests(const std::filesystem::path& output) {
   using apmesh::application::GenerationRequest;
   const std::string path = (output / "missing-request.bp").generic_string();
@@ -1696,6 +1819,7 @@ int main(int argc, char* argv[]) {
   if (!std::filesystem::create_directories(output))
     throw std::runtime_error("Output directory already exists");
   CheckGenerationContexts(output);
+  CheckFindUvStatistics(output);
   CheckGenerationRequests(output);
   CheckAdaptivePolicyContexts();
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)

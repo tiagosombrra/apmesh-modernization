@@ -71,10 +71,12 @@ alternate consumer uses the context.
 | Uncaptured execution (3) | RANK_MPI, SIZE_MPI, MAX_THREADS. | Explicit serial/parallel execution ownership and separately qualified routing; this milestone authorizes no MPI/OpenMP change. |
 | Attempt compatibility mirrors (2) | ADAPTIVE_CURRENT_STEP and ADAPTIVE_CURRENT_RETRY retain original writes and optional parallel reads. | [Serial dependence removed](GENERATOR_ATTEMPT_STATE.md): Adapter receives existing generator-owned step/retry values. Definitions remain uncaptured, not serial inputs. |
 | Uncaptured estimation (2) | TRIANGLE_MEDIO and ESTIMATIVE_TOLERANCE remain in estimation helpers. | Preserve units and caller semantics; broader estimation/load paths remain outside this measured entry boundary. |
-| Uncaptured observation (4) | TIME_READ_FILE, MAX_TIME, FINDUV_TOTAL_CALLS and FINDUV_IMAX_EXITS. | Separate timing/instrument ownership from scientific criteria; correct-clock/profiling obligations remain in their stages. |
+| Uncaptured timing (2) | TIME_READ_FILE and MAX_TIME. | Separate timing ownership from scientific criteria; correct-clock/profiling obligations remain in their stages. |
+| Diagnostic compatibility aggregates (2) | FINDUV_TOTAL_CALLS and FINDUV_IMAX_EXITS remain cumulative atomics and supply the original I_MAX message ordinal. | [FindUV execution state](FIND_UV_EXECUTION_STATISTICS.md) now owns serial counts and CLI summaries; direct/parallel callers retain aggregate behavior. The separately inventoried thread-local observer is a scoped same-thread borrow, not a whole-engine concurrency guarantee. |
 | Retired dormant registries (2) | LIST_ALL_POINTS_MODEL and LIST_ALL_SUB_MESH_MODEL had no internal consumers. Both definitions/declarations and header dependencies are removed. | Preserve named retirement evidence and internal source-interface scope; no global-freedom or external ABI claim. |
 
-Additional named first-party statics are the quadtree debug sequence, the
+Additional named first-party statics include the scoped FindUV thread-local observer,
+the quadtree debug sequence, the
 translation-unit-local method-notice table and optional MPI communicator lifetime
 state. Commented-out static scratch in Edge is not active state. Immutable local
 constants and external/third-party internals are outside this explicit-definition

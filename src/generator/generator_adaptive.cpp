@@ -2019,6 +2019,10 @@ int GeneratorAdaptive::Execute(const apmesh::application::GenerationRequest& req
 int GeneratorAdaptive::Execute(const apmesh::application::GenerationRequest& request, Timer* timer)
 #endif // USE_MPI
 {
+#if !USE_MPI && !USE_OPENMP
+  find_uv_statistics_ = {};
+  apmesh::diagnostics::FindUvStatisticsScope find_uv_scope(find_uv_statistics_);
+#endif
   Geometry geometry;
 
 #if USE_MPI

@@ -16,6 +16,7 @@
 #include "application/generation_request.h"
 
 #include "../adapter/adapter.h"
+#include "data/patch/find_uv_statistics.h"
 #include "../crab_mesh/performer/ranged_id_manager.h"
 #include "../curvature/curvature_analytical.h"
 #include "../curvature/curvature_discrete.h"
@@ -399,6 +400,10 @@ public:
 
   // Null denotes the compatibility path that observes the legacy identity globals.
   const apmesh::application::GenerationContext* GetGenerationContext() const noexcept;
+  // Latest serial Execute result, including any partial count before an exception.
+  apmesh::diagnostics::FindUvStatistics GetFindUvStatistics() const noexcept {
+    return find_uv_statistics_;
+  }
 
 #if USE_MPI
   int Execute(const apmesh::application::GenerationRequest& request, Timer* timer,
@@ -853,6 +858,7 @@ private:
   const std::string& TemplateMode() const noexcept;
   void ConfigureSharedCurveSynchronization(Geometry* geometry);
   // Declared first so the Adapter borrow retires before the owned strings.
+  apmesh::diagnostics::FindUvStatistics find_uv_statistics_;
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;
   std::string stop_reason_;

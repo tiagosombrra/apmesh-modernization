@@ -8,6 +8,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from audit_find_uv_recording import restore_find_uv_recording, validate_find_uv_header
+
 from audit_patch_copy import restore_bezier_copy_initialization
 
 
@@ -21,6 +23,7 @@ RETIRED_DESTRUCTOR = ("PatchBezier::~PatchBezier(){for(auto*curve:curves_)"
 
 
 def code(text):
+    text = restore_find_uv_recording(text)
     text = re.sub(r"//[^\n]*|/\*.*?\*/", "", text, flags=re.S)
     text = re.sub(r"^\s*#include[^\n]*", "", text, flags=re.M)
     return re.sub(r"\s+", "", text)
@@ -69,6 +72,7 @@ def audit(candidate_root, original_root=None):
                        else subprocess.check_output(["git", "show", f"{BASE}:{name}"],
                             cwd=candidate_root).decode("utf-8")) for name in FILES}
     candidates = {name: (candidate_root / name).read_text(encoding="utf-8") for name in FILES}
+    validate_find_uv_header(candidate_root, candidates.values())
     preserved = verify(originals, candidates)
     # Each control changes a different preservation or lifetime obligation.
     mutations = [
@@ -94,6 +98,7 @@ def audit(candidate_root, original_root=None):
             "source_identities": {label: {name: hashlib.sha256(text.encode()).hexdigest()
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
+            "finduv_recording": "Exact entry/I_MAX slots normalized after pinned helper validation",
             "scope": "Six actual production files. Only the exact observer-removal declaration/body, "
                      "completed Bezier destructor, Geometry dependent retirement assignment and exact separately "
                      "checked detached-copy initialization prefix are normalized. "

@@ -7,6 +7,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from audit_find_uv_recording import restore_find_uv_recording, validate_find_uv_header
+
 BASE = "8eff0d6c4d69bb413674b003a22e49c3c6faca46"
 FILE = "src/data/patch/patch_hermite.cpp"
 INCLUDE = '#include"data/patch/patch_observer_scope.h"'
@@ -17,6 +19,7 @@ END = "this->mat_geo_gz_=this->GetH()*this->GetGz()*this->GetH().transpose();"
 
 
 def code(text):
+    text = restore_find_uv_recording(text)
     return re.sub(r"\s+", "", re.sub(r"//[^\n]*|/\*.*?\*/", "", text, flags=re.S))
 
 
@@ -45,6 +48,7 @@ def audit(candidate_root, original_root=None):
     original = ((original_root / FILE).read_text(encoding="utf-8") if original_root else
                 subprocess.check_output(["git", "show", f"{BASE}:{FILE}"], cwd=candidate_root).decode("utf-8"))
     candidate = (candidate_root / FILE).read_text(encoding="utf-8")
+    validate_find_uv_header(candidate_root, [candidate])
     preserved = verify(original, candidate)
     source = code(candidate)
     mutations = [
@@ -66,6 +70,7 @@ def audit(candidate_root, original_root=None):
         raise ValueError("Independent constructor mutation escaped")
     return {"status": "passed", "original_revision": BASE, "rejected_mutations": len(mutations),
             "preserved_tokens_sha256": preserved,
+            "finduv_recording": "Exact entry/I_MAX slots normalized after pinned helper validation",
             "scope": "Only the observer scope include, entry guard and terminal commit change. "
                      "Live nonnull Hermite curves and exclusive append-only publication are required. "
                      "No foreign publication or intermediate consumption of a pending patch is supported."}

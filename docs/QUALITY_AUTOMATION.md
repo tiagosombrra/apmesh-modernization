@@ -1,9 +1,29 @@
 # Local quality automation
 
+## Execution-owned FindUV statistics
+
+The [diagnostic package](evidence/FIND_UV_EXECUTION_STATISTICS.md) requires existing
+GCC/MSVC C++17 builds, 75 CTest/389 controls, nine scientific states/45 exact artifacts/
+123 boundaries and real MSVC CLI checks on exact head/main. Keep all thirteen
+prior native markers and require the new FindUV marker. Check actual Bezier/Hermite
+normal/I_MAX calls, ten coordinate bit comparisons, nested/unwound scopes, foreign
+aggregates, message cadence, typed/raw executions, snapshots and failed-call reset.
+Retain the first unsupported Hermite-output control failure and its correction to
+the existing Bezier fixture. Compare fresh CLI FindUV summaries with PR #157.
+Reverse only recording/scoping/serial-summary bindings; retain all solver and policy
+tokens, aggregate increments and the original global I_MAX ordinal. Reuse unchanged
+production analysis; analyze the corrected probe on its final source. Require
+explicit format/token, whitespace, inventory/contracts and staged/remote gates.
+Four historical source guards normalize only pinned recording slots/header,
+retaining their immutable bases, comparisons and original negative mutations.
+Four new Python controls reject relocation/numerical/helper tampering; all original
+385 controls remain. No new CTest target, model or instrument campaign;
+parallel/recovery limits remain.
+
 ## Dormant runtime registry retirement
 
 The [retirement](evidence/DORMANT_RUNTIME_REGISTRIES.md) reuses existing exact-head/
-main GCC/MSVC C++17 builds, 75 CTest/385 controls, nine frozen scientific states,
+main GCC/MSVC C++17 builds, 75 CTest/389 controls, nine frozen scientific states,
 45 exact artifacts/123 boundaries and MSVC CLI observations. Add no test target or
 instrument campaign. Complete source comparisons permit only the two dormant set
 definitions/declarations, set include and geometry forward-declaration removals;
@@ -21,7 +41,7 @@ convenience commands and documentation. Regenerate canonical GCC/MSVC serial
 build graphs, inspect all three Ninja command graph entries and twelve MSVC commands,
 and require unchanged C++/tests/config/model, compiler commands, application and
 prior-report identities. Reuse the nine-state/45-artifact/123-boundary scientific
-reference and MSVC CLI observations from PR #155. Run existing 75 CTest/385 controls,
+reference and MSVC CLI observations from PR #155. Run existing 75 CTest/389 controls,
 whitespace, contracts/inventory and staged/remote gates on exact head and main.
 No new scientific model, three-profile campaign, CTest target, C++ compilation or
 static-analysis run is required for the unchanged code. Any failed identity or
@@ -30,7 +50,7 @@ command/gate blocks delivery; retain the original rejected positional invocation
 ## Serial attempt metadata ownership
 
 The [attempt-state package](evidence/GENERATOR_ATTEMPT_STATE.md) requires the existing
-75 CTest/385 controls, GCC/MSVC C++17 builds, nine-state/45-artifact/123-boundary
+75 CTest/389 controls, GCC/MSVC C++17 builds, nine-state/45-artifact/123-boundary
 reference and real MSVC CLI checks on exact head/main. Reuse candidate/snapshot
 targets with conflicting globals and attempts 0/5, keeping local repair labels,
 selection/ID oracles and negative controls. Reverse only the two serial call
@@ -49,7 +69,7 @@ unchanged stage 3 ledger. Reuse PR #153 GCC/MSVC builds, 13 native markers, nine
 scientific states/45 exact artifacts/123 boundary comparisons and actual MSVC CLI
 controls by executable/source/report hashes. Reuse historical instrument observations
 only within their original profiles; original failures remain intact. Run existing
-75 CTest/385 nested controls, whitespace, contracts/inventory, staged and remote
+75 CTest/389 nested controls, whitespace, contracts/inventory, staged and remote
 checks on exact delivery head and merged main. No C++ file, test, CMake setting,
 fixture or scientific oracle changes, so no rebuild/static-analysis or fresh
 scientific/instrument/MSVC process campaign is needed. A changed dependency or
@@ -58,7 +78,7 @@ integration evidence records both newly run and reused gates explicitly.
 
 ## Serial synchronization, reconstruction and diagnostics
 
-The [serial flow lot](evidence/SERIAL_FLOW_CONTEXT.md) reuses 75 CTest/385 nested
+The [serial flow lot](evidence/SERIAL_FLOW_CONTEXT.md) reuses 75 CTest/389 nested
 Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/123-boundary
 reference and real MSVC CLI controls on exact head/main. Require all prior native
 markers plus four cases: owned scalar/string capture, retired source, foreign
@@ -76,7 +96,7 @@ campaign is added; remaining global state and stage obligations stay visible.
 
 ## Advancing-front and postprocess controls
 
-The [AFT lot](evidence/AFT_CONTEXT.md) reuses 75 CTest/385 nested Python controls,
+The [AFT lot](evidence/AFT_CONTEXT.md) reuses 75 CTest/389 nested Python controls,
 C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/123-boundary reference and
 real MSVC CLI controls on exact head/main. Require all prior markers plus three
 cases: 15 raw/15 stable exact double representations, one pass-count integer,
@@ -96,7 +116,7 @@ target or instrument campaign is added.
 
 ## Remaining generation acceptance controls
 
-The [acceptance lot](evidence/ACCEPTANCE_CONTEXT.md) reuses 75 CTest/385 nested
+The [acceptance lot](evidence/ACCEPTANCE_CONTEXT.md) reuses 75 CTest/389 nested
 Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/123-boundary
 accepted/rejected reference and real MSVC CLI controls on exact head/main. Require
 all prior native markers plus three cases: 66 exact double representations, four
@@ -114,7 +134,7 @@ staged/remote gates. No new model, target or instrument campaign is added.
 ## Patch and group consistency controls
 
 The [patch consistency lot](evidence/PATCH_CONSISTENCY_CONTEXT.md) reuses 75 CTest/
-385 nested Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/
+389 nested Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/
 123-boundary reference and real MSVC CLI controls on exact head/main. Require all
 prior markers plus three cases: 33 raw/33 stable double representations, seven
 integer fields, retired sources, live legacy fallback, foreign-global negative
@@ -131,7 +151,7 @@ gates. No new target, model or instrument campaign is introduced.
 ## Patch generation and refinement controls
 
 The [patch generation lot](evidence/PATCH_GENERATION_CONTEXT.md) reuses 75 CTest/
-385 nested Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/
+389 nested Python controls, C++17 GCC/MSVC builds, the frozen nine-state/45-artifact/
 123-boundary reference and real MSVC CLI controls on exact head/main. Require all
 prior native markers plus three patch cases: 84 raw/84 stable exact double
 representations, nine integer fields, retired sources, foreign-global negative
@@ -150,7 +170,7 @@ No new target, model or instrument campaign is introduced.
 
 ## Quadtree limits and saturation controls
 
-The [quadtree lot](evidence/QUADTREE_CONTROLS_CONTEXT.md) reuses 75 CTest/385 nested
+The [quadtree lot](evidence/QUADTREE_CONTROLS_CONTEXT.md) reuses 75 CTest/389 nested
 Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/123-boundary reference
 and real MSVC CLI controls on exact head/main. Require prior markers plus three
 quadtree cases: 27 raw/27 stable exact double representations, ten integer fields,
@@ -167,7 +187,7 @@ No new scientific input, native target or standalone instrument campaign is adde
 
 ## Curve discretization and point budgets
 
-The [curve lot](evidence/CURVE_CONTROLS_CONTEXT.md) reuses 75 CTest/385 nested
+The [curve lot](evidence/CURVE_CONTROLS_CONTEXT.md) reuses 75 CTest/389 nested
 Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/123-boundary reference
 and real MSVC CLI controls on exact head/main. Require prior markers plus three
 curve cases: 33 raw/33 stable double representations, six integer fields, source
@@ -183,7 +203,7 @@ no scientific model, native target or instrument campaign is added.
 
 ## Element budget controls
 
-The [budget lot](evidence/ELEMENT_BUDGET_CONTEXT.md) reuses 75 CTest/385 nested
+The [budget lot](evidence/ELEMENT_BUDGET_CONTEXT.md) reuses 75 CTest/389 nested
 Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/123-boundary reference
 and real MSVC CLI controls on exact head/main. Require prior markers plus three
 budget cases: 72 raw/72 stable exact double representations, eight integer fields,
@@ -199,7 +219,7 @@ test target or standalone instrument campaign is required.
 ## Adaptation settings and effective adjustments
 
 The [adaptation lot](evidence/ADAPTATION_CONTEXT.md) reuses the existing 75 CTest/
-385 nested Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/
+389 nested Python controls, C++17 GCC/MSVC builds, nine-state/45-artifact/
 123-boundary reference and real MSVC CLI controls on exact head/main. Require all
 prior native markers plus three adaptation cases: 12 raw and 12 stable exact
 double representations, source retirement, foreign-global negative controls,
@@ -213,7 +233,7 @@ gates. No new model, test target or standalone instrument campaign is required.
 ## Stopping/retry criteria context
 
 The [stopping/retry lot](evidence/STOP_RETRY_CONTEXT.md) uses the existing
-75 CTest entries/385 Python controls, C++17 GCC/MSVC builds, nine-state frozen
+75 CTest entries/389 Python controls, C++17 GCC/MSVC builds, nine-state frozen
 reference (45 exact artifacts/123 boundary comparisons) and real MSVC CLI controls
 on exact head/main. Require prior markers plus the new native criteria marker:
 three cases/27 exact double representations, copied/retired source, conflicting
@@ -227,7 +247,7 @@ contracts/inventory and staged/remote gates. No new model or instrument campaign
 ## Adaptive-policy configuration context
 
 The [policy context lot](evidence/ADAPTIVE_POLICY_CONTEXT.md) uses the existing
-75 CTest entries/385 Python controls, C++17 GCC/MSVC builds, frozen nine-state/
+75 CTest entries/389 Python controls, C++17 GCC/MSVC builds, frozen nine-state/
 45-artifact/123-boundary scientific reference and real MSVC CLI controls on exact
 head/main. Require prior native markers plus the policy marker: four differential
 cases, 28 exact double representations, retired source, conflicting globals and
@@ -240,7 +260,7 @@ checks. No new test target, scientific input or instrument campaign is required.
 ## Typed engine execution request
 
 The [typed request lot](evidence/TYPED_GENERATION_REQUEST.md) reuses the existing
-75 CTest entries/385 Python controls, C++17 GCC/MSVC builds, nine-state scientific
+75 CTest entries/389 Python controls, C++17 GCC/MSVC builds, nine-state scientific
 reference (45 exact artifacts/123 boundary comparisons) and real MSVC CLI controls
 on exact head/main. Require the existing ownership marker and the new native
 request marker (three typed and two raw-bridge reader failures, including empty
@@ -253,7 +273,7 @@ contracts, staged and remote checks. No new instrument or model campaign is adde
 ## Owned generation identity/output
 
 The [generation context lot](evidence/GENERATION_CONTEXT.md) uses the existing
-75 CTest entries and 385 Python controls. Require the native metrics marker for
+75 CTest entries and 389 Python controls. Require the native metrics marker for
 two owned identities, retired source and three interleaved outputs, plus the
 unchanged metric oracle, nine-state/45-artifact/123-boundary scientific comparison,
 GCC/MSVC builds and existing MSVC CLI controls on exact head/main. Check source
@@ -264,7 +284,7 @@ scientific matrix is required; historical ASan evidence keeps its artifact scope
 ## Serial engine production package
 
 The [engine/runtime extraction](evidence/SERIAL_ENGINE.md) uses existing validation:
-C++17 GCC/MSVC canonical builds, 75 CTest entries/385 nested controls, affected
+C++17 GCC/MSVC canonical builds, 75 CTest entries/389 nested controls, affected
 real MSVC invalid/analytic CLI checks and the frozen nine-state Eistute/Book
 reference (45 exact artifacts/123 boundary comparisons) on delivery head/main.
 Require token/order preservation for extracted defaults/parser/application/CLI,
@@ -279,7 +299,7 @@ requires actual external SubMesh allocation, one uncaught exception/attempt/deni
 the unchanged payload/CLI/library oracles and all five fixed contexts. Verify
 /fsanitize=address, /EHsc and /we4530 on all 74 actual compiler groups. Preserve
 both failed qualifications and original source/fixture/control identities.
-Require exact-head/main 75 CTest entries with zero failures/skips and 385 nested
+Require exact-head/main 75 CTest entries with zero failures/skips and 389 nested
 Python controls, scoped read-only analysis, formatting/whitespace, contracts/
 inventory, source/input/runtime/prior-seal and remote/staged checks. Reuse the
 single successful five-context measurement and unchanged nine-state GCC report
