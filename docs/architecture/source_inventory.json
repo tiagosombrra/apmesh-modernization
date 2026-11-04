@@ -29,8 +29,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 654,
-    "first_party_include_edges": 366
+    "literal_include_directives": 656,
+    "first_party_include_edges": 367
   },
   "cross_component_directives": [
     {
@@ -201,7 +201,7 @@
     {
       "from": "data/patch",
       "to": "data/curve",
-      "count": 3
+      "count": 4
     },
     {
       "from": "data/patch",
@@ -359,7 +359,7 @@
     "GL/gl.h": 1,
     "GL/glu.h": 1,
     "GL/glut.h": 1,
-    "algorithm": 12,
+    "algorithm": 13,
     "array": 10,
     "atomic": 5,
     "cctype": 2,
@@ -4951,8 +4951,8 @@
       "path": "src/data/patch/patch_coons.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "e35254f2c4fff24ca02164cd4d7ff4d87d35f6a6830f7c519ad3b09bf096b7b0",
-      "bytes": 919,
+      "sha256": "c090f026e94adbdec27b3613a2fbc064e33a8b419e6d252206701e59a2516fab",
+      "bytes": 1349,
       "includes": [
         {
           "line": 1,
@@ -4960,6 +4960,20 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_coons.h"
+        },
+        {
+          "line": 3,
+          "spelling": "algorithm",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 5,
+          "spelling": "data/curve/curve_adaptive.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/curve/curve_adaptive.h"
         }
       ]
     },
@@ -5677,8 +5691,8 @@
       "path": "src/generator/curve_synchronization.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "2f506894513c20f0132cb97c78278560e28fd3b3a414fedd3571fb6e478d41c3",
-      "bytes": 3018,
+      "sha256": "b205f01e57967a00fd8372bc4766bd0fabd47b8b73ecc98ae2259e58924ea5c1",
+      "bytes": 3103,
       "includes": [
         {
           "line": 1,
@@ -6554,8 +6568,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 31,
-    "source_anchors": 249,
+    "contracts": 32,
+    "source_anchors": 252,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

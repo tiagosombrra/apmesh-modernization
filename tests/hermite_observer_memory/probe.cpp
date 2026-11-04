@@ -14,6 +14,7 @@
 #endif
 #include "data/geometry.h"
 #include "data/patch/patch_hermite.h"
+#include "data/patch/patch_bezier.h"
 #include "generator/curve_synchronization.h"
 
 #if defined(_WIN32)
@@ -87,11 +88,12 @@ struct Snapshot {
         entries[i][j] = curves[i]->GetPatch(j);
     }
   }
-  bool MatchesExcept(Patch* retired) const {
+  bool MatchesExcept(Patch* retired, CurveAdaptive* selected_curve = nullptr) const {
     for (unsigned int i = 0; i < size; ++i) {
       unsigned int cursor = 0;
       for (unsigned int j = 0; j < counts[i]; ++j)
-        if (retired == nullptr || entries[i][j] != retired) {
+        if (retired == nullptr || entries[i][j] != retired ||
+            (selected_curve != nullptr && curves[i] != selected_curve)) {
           if (curves[i]->GetPatch(cursor) != entries[i][j])
             return false;
           ++cursor;
@@ -315,6 +317,95 @@ bool NoAllocationMove() {
   return result && Finished(previous) && Finished(incoming);
 }
 #endif
+bool ReplacementScenario(bool bezier, bool noalloc) {
+  Patch foreign;
+  Geometry geometry;
+  std::unique_ptr<PatchCoons> patch;
+  if (bezier) {
+    std::array<PointAdaptive, 16> p;
+    for (unsigned int i = 0; i < p.size(); ++i)
+      p[i] = PointAdaptive((i / 4) / 3.0, (i % 4) / 3.0, 0);
+    patch = std::make_unique<PatchBezier>(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8],
+                                          p[9], p[10], p[11], p[12], p[13], p[14], p[15]);
+    for (unsigned int i = 0; i < 4; ++i)
+      geometry.InsertCurve(std::unique_ptr<CurveAdaptive>(patch->GetCurve(i)));
+  } else {
+    const PointAdaptive p00(0, 0, 0), p10(1, 0, 0), p01(0, 1, 0), p11(1, 1, 0);
+    const VectorAdaptive u(1, 0, 0), v(0, 1, 0), twist;
+    geometry.InsertCurve(std::make_unique<CurveAdaptiveParametricHermite>(p00, p10, u, u));
+    geometry.InsertCurve(std::make_unique<CurveAdaptiveParametricHermite>(p10, p11, v, v));
+    geometry.InsertCurve(std::make_unique<CurveAdaptiveParametricHermite>(p01, p11, u, u));
+    geometry.InsertCurve(std::make_unique<CurveAdaptiveParametricHermite>(p00, p01, v, v));
+    patch = std::make_unique<PatchHermite>(geometry.GetCurve(0), geometry.GetCurve(1),
+                                           geometry.GetCurve(2), geometry.GetCurve(3), twist, twist,
+                                           twist, twist);
+  }
+  auto* identity = patch.get();
+  auto* previous = patch->GetCurve(0);
+  // Reuse the existing repeated-slot lifetime arrangement, with four live slots.
+  patch->ReplaceCurve(1, previous);
+  previous->InsertPatch(&foreign);
+  previous->InsertPatch(nullptr);
+  previous->InsertPatch(identity);
+  previous->InsertPatch(&foreign);
+  auto replacement = apmesh::generation::CloneCurveForPatch(previous, identity);
+  auto* destination = replacement.get();
+  destination->InsertPatch(nullptr);
+  destination->InsertPatch(&foreign);
+  geometry.InsertCurve(std::move(replacement));
+  Snapshot before(geometry);
+  const auto sample = [](PatchCoons& value) {
+    const auto point = value.Parameterize(0.25, 0.75);
+    const auto gradient = value.Qu(0.25, 0.75);
+    return std::array<std::uint64_t, 6>{Bits(point.GetX()),    Bits(point.GetY()),
+                                        Bits(point.GetZ()),    Bits(gradient.GetX()),
+                                        Bits(gradient.GetY()), Bits(gradient.GetZ())};
+  };
+  const auto numeric_before = sample(*patch);
+  bool guards = false, repeated = false, retired = false, destination_preserved = false;
+  bool numeric = false, final = false;
+  const auto exercise = [&]() {
+    patch->ReplaceCurve(99, destination);
+    patch->ReplaceCurve(0, previous);
+    guards = before.MatchesExcept(nullptr);
+    patch->ReplaceCurve(0, destination);
+    repeated = before.MatchesExcept(nullptr) && patch->GetCurve(1) == previous;
+    patch->ReplaceCurve(1, destination);
+    retired = before.MatchesExcept(identity, previous);
+    destination_preserved =
+        destination->GetNumBerPatches() == 3 && destination->GetPatch(0) == identity &&
+        destination->GetPatch(1) == nullptr && destination->GetPatch(2) == &foreign;
+    numeric = sample(*patch) == numeric_before;
+    patch->ReplaceCurve(0, nullptr);
+    repeated = repeated && destination->GetPatch(0) == identity;
+    patch->ReplaceCurve(0, destination);
+    destination_preserved = destination_preserved && destination->GetNumBerPatches() == 3;
+    patch.reset();
+    final = before.MatchesExcept(identity);
+  };
+#if defined(_MSC_VER) && defined(_DEBUG)
+  if (noalloc) {
+    AllocationScope hook;
+    exercise();
+  } else
+#endif
+    exercise();
+  std::printf("observer_replacement=kind:%s guards:%d repeated:%d retired:%d destination:%d "
+              "numeric:%d final:%d\n",
+              bezier ? "bezier" : "hermite", guards, repeated, retired, destination_preserved,
+              numeric, final);
+#if defined(_MSC_VER) && defined(_DEBUG)
+  if (noalloc) {
+    std::printf("observer_replacement_allocation=attempts:%d denied:%d\n", attempts, denied);
+    if (attempts != 0 || denied != 0)
+      return false;
+  }
+#else
+  (void)noalloc;
+#endif
+  return guards && repeated && retired && destination_preserved && numeric && final;
+}
+
 bool EmptyScenario(const char* mode, bool noalloc) {
   Fixture fixture(0, 1, 15, true);
   fixture.patches[0]->Parameterize(0.25, 0.75);
@@ -366,6 +457,8 @@ int main(int argc, char** argv) {
   int layout = -1, shape = -1, victim = -1, seed = -1;
   bool passed = true;
   if (std::strcmp(argv[1], "contracts") == 0) {
+    passed &= ReplacementScenario(false, false);
+    passed &= ReplacementScenario(true, false);
     for (int form = 0; form < 3; ++form)
       for (int surface = 0; surface < 2; ++surface)
         for (int position = 0; position < 3; ++position)
@@ -379,6 +472,12 @@ int main(int argc, char** argv) {
       passed &= GeometryScenario(mode);
     for (const char* mode : {"empty-default", "empty-detached", "null-current"})
       passed &= EmptyScenario(mode, false);
+  } else if (std::strcmp(argv[1], "replacement-bezier") == 0 ||
+             std::strcmp(argv[1], "replacement-hermite") == 0 ||
+             std::strcmp(argv[1], "noalloc-replacement-bezier") == 0 ||
+             std::strcmp(argv[1], "noalloc-replacement-hermite") == 0) {
+    passed = ReplacementScenario(std::strstr(argv[1], "bezier") != nullptr,
+                                 std::strncmp(argv[1], "noalloc-", 8) == 0);
   } else if (std::sscanf(argv[1], "normal-%d-%d-%d-%d", &layout, &shape, &victim, &seed) == 4) {
     for (int signs = 0; signs < 16; ++signs) {
       Fixture fixture(layout, shape, signs, seed != 0);

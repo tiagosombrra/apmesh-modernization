@@ -1246,6 +1246,26 @@
           "anchor": "void SetPatch(Patch* patch) noexcept;"
         }
       ]
+    },
+    {
+      "id": "C33",
+      "topic": "Retirement of replaced curve observers",
+      "statement": "PatchCoons::ReplaceCurve preserves invalid-position and same-value no-ops, assigns the requested curve and removes every observer equal to this Patch from the old curve only after its last current incidence is replaced. Repeated slots retain the old observations until that boundary. Removal preserves unrelated/null entries and order without allocation or deletion. Destination publication remains caller-managed; the synchronization commit already prepublishes clone observers and keeps its original token/order contract. Null old slots are safe; surface coefficients, orientation, formulas and policies are unchanged.",
+      "limits": "Old borrowed curves must remain live through replacement; current borrowed curves must outlive patch destruction. No automatic destination registration, cache refresh, arbitrary publication/copied observer repair, curve-first invalid lifetime, general recovery or complete-process/parallel/LSan/UBSan qualification. Repeated slots are lifetime guards only. Original Bezier/Hermite failures and exact-head/main gates are retained in REPLACED_CURVE_OBSERVERS.md.",
+      "evidence": [
+        {
+          "path": "src/data/patch/patch_coons.cpp",
+          "anchor": "void PatchCoons::ReplaceCurve(unsigned int position, CurveAdaptive* curve)"
+        },
+        {
+          "path": "src/data/curve/curve_adaptive.cpp",
+          "anchor": "void CurveAdaptive::RemovePatchObservers(const Patch* patch) noexcept"
+        },
+        {
+          "path": "src/generator/curve_synchronization.cpp",
+          "anchor": "patch->ReplaceCurve(e, replacement);"
+        }
+      ]
     }
   ]
 }

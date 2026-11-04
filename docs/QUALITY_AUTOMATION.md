@@ -1,5 +1,14 @@
 # Local quality automation
 
+## Replaced curve observers
+
+The [P4 replacement repair](evidence/REPLACED_CURVE_OBSERVERS.md) adds two focused
+cases to the existing observer probe and requires thirteen ASan/CRT outcomes,
+including the existing synchronization/UAF/leak/hook controls. Exact observer
+order, repeated slots, caller-managed destination publication, scalar bits and
+zero-allocation retirement are checked. Existing exact-head/main regression and
+scientific gates remain; no new target, model or full-process campaign.
+
 ## Execution-owned FindUV statistics
 
 The [diagnostic package](evidence/FIND_UV_EXECUTION_STATISTICS.md) requires existing

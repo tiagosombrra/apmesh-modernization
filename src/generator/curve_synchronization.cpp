@@ -54,7 +54,8 @@ void DisableSharedCurveSynchronization(Geometry* geometry) {
     unsigned int next_clone = geometry->GetNumberCurves();
     geometry->InsertCurves(std::move(pending));
     // The source already has capacity for multiple incidences. Clearing and
-    // reinserting one pointer cannot allocate; patch replacement only assigns.
+    // reinserting one pointer cannot allocate. Patch replacement retires obsolete
+    // source observers without allocation; clones already carry their observers.
     curve->ClearPatches();
     curve->InsertPatch(incident_patches.front());
     for (std::size_t i = 0; i < incident_patches.size(); ++i) {

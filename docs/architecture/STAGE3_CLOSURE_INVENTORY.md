@@ -35,6 +35,13 @@ parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 
+P4's [ReplaceCurve repair](../evidence/REPLACED_CURVE_OBSERVERS.md) closes the named
+obsolete-curve retirement sub-obligation of S3-05/07. Positive Bezier/Hermite
+replacement/destruction, repeated incidences, exact foreign observer order,
+unchanged destination publication and nonallocation are required alongside the
+existing regression. Cache mutation and arbitrary foreign/copied publications
+remain open; neither whole row nor Stage 3 is closed by this bounded repair.
+
 P4 closes the named [registered Patch/SubMesh retirement](../evidence/PATCH_SUBMESH_RETIREMENT.md)
 sub-obligation in S3-05/07: normal external-Geometry and Execute-local-Geometry
 callers now retire their registered observations in either owner order, including
