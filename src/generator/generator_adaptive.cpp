@@ -2466,6 +2466,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   // Histories belong to one generation. Retire borrowed aliases before owners.
   save_error_mesh_.clear();
   save_mesh_.clear();
+  current_consistency_regularization_active_ = 0;
   this->communicator_ = std::make_unique<Parallel::TMCommunicator>(false);
   Geometry* geometry = model.GetGeometry();
   apmesh::generation::CurveSampleLifetime curve_samples(*geometry);

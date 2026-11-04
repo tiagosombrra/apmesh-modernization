@@ -51,6 +51,13 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
+reproduced initial consistency-record difference on a reused Eistute generator.
+Two calls per unchanged captured Eistute/Book profile must match frozen GCC and
+fresh same-ABI MSVC output, including rejection/retry evidence and positive boundary
+coverage. Existing exact-head/main gates apply. This closes that S3-05/08 gap;
+context changes, failed-call recovery and other row requirements remain separate.
+
 P4's [serial archive isolation](evidence/SERIAL_GENERATOR_REUSE.md) removes the
 reproduced owner accumulation across successful h/h/disabled serial calls using
 the same Generator. Histories still retain every existing attempt within a run;

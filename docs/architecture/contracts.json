@@ -1286,6 +1286,22 @@
           "anchor": "int GeneratorAdaptive::Execute(const apmesh::application::GenerationRequest& request, Timer* timer)"
         }
       ]
+    },
+    {
+      "id": "C35",
+      "topic": "Adaptive reuse initial consistency metadata",
+      "statement": "Serial generation entry resets current_consistency_regularization_active_ to its original fresh-instance value zero. Later adaptive writes and acceptance/report calculations retain their original positions and formulas. The fixed normal reuse observation runs two typed Execute calls with one captured Eistute or Book article profile, fresh Timer and reapplied process config, archiving completed outputs between calls. GCC calls preserve frozen fresh output; MSVC second output preserves its independently verified fresh same-ABI first output. Saved-root and FindUV counts, scientific states, accepted/rejected traces, IDs and positive boundary coverage agree.",
+      "limits": "Only the original one-field Eistute step-0 acceptance-record leak is repaired; OBJ bytes and accepted/rejected decisions already agreed. No speculative effective-control reset, cross-ABI byte comparison, self-comparison, new scientific input or selector/failure injection. Exception recovery, changed contexts, arbitrary output reuse, interleaving/concurrency, external Geometry and complete-process instruments remain open. Original preparation failures and strict regression are preserved in ADAPTIVE_GENERATOR_REUSE.md.",
+      "evidence": [
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "current_consistency_regularization_active_ = 0;"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "file << \"consistency_regularization_active=\" << current_consistency_regularization_active_"
+        }
+      ]
     }
   ]
 }

@@ -23,6 +23,13 @@ other instruments and remaining closure obligations are still open.
 
 ## Entry domain and roots
 
+The later [adaptive reuse repair](../evidence/ADAPTIVE_GENERATOR_REUSE.md) fixes the
+observed consistency-record leak for two normal calls with one captured Eistute
+or Book profile. A fresh Timer and reapplied process configuration remain caller
+preconditions; output directories are archived between calls. GCC frozen and
+same-ABI MSVC observations are distinct. Recovery, changed contexts and concurrent
+calls remain unqualified; this does not rewrite the P2 historical machine ledger.
+
 The later [serial archive repair](../evidence/SERIAL_GENERATOR_REUSE.md) qualifies
 the fixed successful same-Generator initial-only h/h/disabled sequence against
 fresh instances and retires prior owners at serial generation entry. This does

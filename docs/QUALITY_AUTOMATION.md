@@ -1,5 +1,14 @@
 # Local quality automation
 
+## Adaptive generator reuse
+
+The [consistency-state repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) requires two
+calls per existing Eistute/Book article profile through the existing metrics
+probe, on GCC and MSVC. Compare GCC against frozen output and MSVC's second call
+against its independently checked fresh first call. Preserve exact scientific
+artifacts, traces, IDs and positive boundaries; keep ABI-specific evidence distinct.
+Existing exact-head/main gates apply; no new model, target or instrument campaign.
+
 ## Serial generator reuse
 
 The [archive isolation repair](evidence/SERIAL_GENERATOR_REUSE.md) adds one fixed

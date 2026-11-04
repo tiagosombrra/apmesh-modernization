@@ -2,8 +2,18 @@
 
 ## Current checkpoint and active work
 
-Reviewed starting main: `5bcef3273c7af2f8da11052c4eb65d343707698e` (PR #161).
+Reviewed starting main: `d1619137af4ad53e3bb98cf5fc4336f75350629f` (PR #162).
 Exact delivery head/main status is recorded by its PR and local integration seal.
+
+## P4 production repair: adaptive reuse consistency metadata
+
+The [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) resets the current
+consistency flag at serial generation entry. Original Eistute reuse leaks 1 into
+the next step-0 acceptance record; fresh runs report 0. OBJ bytes and decisions
+already agree. Only that demonstrated flag changes. Two same-profile Eistute/Book
+calls must preserve frozen GCC output and fresh same-ABI MSVC output, with positive
+independent boundary coverage, on exact head/main. Existing regression is reused.
+This closes that S3-05/08 record leak; broader reuse/recovery and Stage 3 stay open.
 
 ## P4 production repair: serial generation archive isolation
 

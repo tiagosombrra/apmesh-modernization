@@ -1826,6 +1826,41 @@ public:
 #endif
 
 namespace {
+int CheckAdaptiveReuse(const std::filesystem::path& config_path,
+                       const std::filesystem::path& output) {
+  const auto config = LoadRuntimeConfig(config_path.string());
+  ApplyRuntimeConfig(config);
+  GeneratorAdaptive generator(apmesh::application::MakeGenerationContext(config, NUMBER_PROCESS));
+  const auto live = std::filesystem::path(config.output_prefix).parent_path();
+  for (unsigned int call = 0; call < 2; ++call) {
+    ApplyRuntimeConfig(config);
+    if (!std::filesystem::create_directories(live))
+      throw std::runtime_error("Adaptive reuse requires a fresh output directory");
+    int code;
+    {
+      std::ofstream transcript(live / "stdout.log");
+      struct OutputScope {
+        std::streambuf* previous;
+        explicit OutputScope(std::ostream& output) : previous(std::cout.rdbuf(output.rdbuf())) {}
+        ~OutputScope() { std::cout.rdbuf(previous); }
+      } capture(transcript);
+      Timer timer(config.num_processes, config.num_threads, 12);
+      code = generator.Execute(apmesh::application::GenerationRequest{config.num_processes,
+                                                                      config.num_threads,
+                                                                      config.input_model},
+                               &timer);
+    }
+    const auto statistics = generator.GetFindUvStatistics();
+    std::cout << "adaptive_reuse call=" << call << " exit=" << code
+              << " archived=" << DomainCandidateFixture::SavedMeshes(generator).size()
+              << " calls=" << statistics.calls << " imax=" << statistics.imax_exits << '\n';
+    std::filesystem::rename(live, output / (call == 0 ? "first" : "second"));
+    if (code != 0)
+      return code;
+  }
+  return 0;
+}
+
 bool CheckSerialReuse(const std::filesystem::path& output) {
   struct Restore {
     std::string mode = ADAPTIVE_MODE, name = NAME_MODEL, write = WRITE_MESH;
@@ -1913,6 +1948,8 @@ bool CheckSerialReuse(const std::filesystem::path& output) {
 } // namespace
 
 int main(int argc, char* argv[]) {
+  if (argc == 4 && std::string(argv[1]) == "--adaptive-reuse-config")
+    return CheckAdaptiveReuse(argv[2], argv[3]);
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
   if (argc == 2 && std::string(argv[1]) == "--accepted-root-contracts")
     return accepted_root_test::Run(false);

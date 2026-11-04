@@ -35,6 +35,13 @@ parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 
+P4's [adaptive reuse observation/repair](../evidence/ADAPTIVE_GENERATOR_REUSE.md)
+closes the leaked initial consistency flag in S3-05/08. The fixed two-call
+Eistute/Book inventory preserves frozen GCC and fresh same-ABI MSVC output,
+decisions, IDs and positive boundary coverage. Its qualification does not extend
+to context changes, exception recovery, arbitrary inputs or complete-process
+instruments; all ten row statuses retain their existing limits.
+
 P4's [serial archive isolation](../evidence/SERIAL_GENERATOR_REUSE.md) closes prior
 owner retention in S3-01/05/08 for the fixed successful initial-only sequence:
 same-generator h/h/disabled calls must match fresh roots, graph bits and FindUV
