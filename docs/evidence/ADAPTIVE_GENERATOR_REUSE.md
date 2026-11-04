@@ -8,9 +8,15 @@ MSVC delivery head failed on empty diagonal lists; four fatal diagnostic prefixe
 localized those accesses. After guarding all four, the fixed checked-MSVC Eistute
 control made progress without another assertion but reached the unchanged
 300-second cap before finishing its first call. No second-call MSVC or Book
-qualification follows. Preserve iterator checks, input and cap. The active next
-dependency is diagnosis of this first-call timeout, not another fixture/campaign.
+qualification follows. Preserve iterator checks, input and cap. The diagnosed next dependency is the targeted AFT adjacency lookup optimization
+described below, not another fixture/campaign.
 Required MSVC qualification blocks closure and integration.
+
+The [single CPU/stack diagnosis](ADAPTIVE_REUSE_TIMEOUT_DIAGNOSIS.md) preserves the
+same binary/configuration and confirms active CPU work through FindUV/curvature,
+full face-adjacency scans in smoothing, then ErrorGlobal. Its next dependency is
+an order-preserving AFT incidence index, not another input or a larger cap. The
+timeout remains negative evidence; the diagnosis does not qualify the first call.
 
 P4 engineering diagnostic-state repair, starting at main
 d1619137af4ad53e3bb98cf5fc4336f75350629f (PR #162).

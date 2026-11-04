@@ -11,8 +11,16 @@ Remote main remains d1619137af4ad53e3bb98cf5fc4336f75350629f (PR #162).
 The adaptive reuse candidate fixes one reproduced record leak and four empty
 diagonal-list reads. GCC frozen/reuse observations pass. Checked MSVC Eistute
 then reaches the unchanged 300-second cap in its first call; repeated MSVC and
-Book are unqualified. The candidate stays unintegrated. Diagnose that fixed
-first-call timeout before resuming qualification; preserve input, checks and cap.
+Book are unqualified. The candidate stays unintegrated. The fixed first-call timeout remains a required
+gate; preserve input, checks and cap.
+
+The [single CPU/stack diagnosis](evidence/ADAPTIVE_REUSE_TIMEOUT_DIAGNOSIS.md) is now
+complete: 295.031 CPU seconds in 300.008 wall seconds, six valid samples, and
+21.788 ms total suspension. Samples identify FindUV/Bezier evaluation and repeated
+full face-list scans inside AFT smoothing; the last sample reaches ErrorGlobal.
+The required run still times out. Next implement an order-preserving temporary
+AFT face-incidence index, then measure the same case under the same cap. Production,
+binary/configuration and prior partial outputs are unchanged by the diagnosis.
 
 ## P4 production repair: adaptive reuse consistency metadata
 
