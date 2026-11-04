@@ -68,6 +68,15 @@ retain all prior failures, and do not expand the model campaign. The earlier
 diagnosis also identified FindUV/Bezier work; any successor must be a bounded,
 demonstrated production dependency rather than another broad test campaign.
 
+The [bounded operand-copy candidate](evidence/BEZIER_EVALUATION_OPERANDS.md) was
+rejected after its single checked-MSVC observation still timed out in the second
+call under the same total 300 s cap. Numerical preservation passed; sufficient
+performance improvement was not demonstrated. Restore all candidate production,
+probe, guard and inventory changes to d08d655 and retain its negative evidence.
+Do not accumulate another unproven evaluator rewrite or extend the model campaign.
+The remaining dependency is current-path cost localization, with existing input,
+checks and cap intact. Integration and Stage 3 remain blocked.
+
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.
 The required MSVC gate additionally exposed four empty diagonal-neighbor reads

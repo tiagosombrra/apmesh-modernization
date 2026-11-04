@@ -27,6 +27,15 @@ claimed. Preserve the earlier [CPU/stack diagnosis](evidence/ADAPTIVE_REUSE_TIME
 failed first-call observations and both new outputs. Further production work must
 target a demonstrated remaining cost without changing scientific policy or cap.
 
+A subsequent [Bezier operand-copy candidate](evidence/BEZIER_EVALUATION_OPERANDS.md)
+preserved scalar bits and all 25 first-call MSVC scientific artifacts, but its
+single fixed two-call observation still timed out at 300 s in the second call.
+The candidate is rejected: production, probe, guards and inventory are restored
+exactly to d08d655. Its source/binary/output evidence is retained locally; no
+additional model or observation is run. No performance improvement or new
+modernization delivery is claimed. Locate the residual cost in the current
+checked-MSVC reuse path before selecting another implementation.
+
 ## P4 production repair: adaptive reuse consistency metadata
 
 The [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) resets the current
