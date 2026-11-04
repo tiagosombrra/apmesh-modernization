@@ -71,11 +71,23 @@ demonstrated production dependency rather than another broad test campaign.
 The [bounded operand-copy candidate](evidence/BEZIER_EVALUATION_OPERANDS.md) was
 rejected after its single checked-MSVC observation still timed out in the second
 call under the same total 300 s cap. Numerical preservation passed; sufficient
-performance improvement was not demonstrated. Restore all candidate production,
-probe, guard and inventory changes to d08d655 and retain its negative evidence.
+performance improvement was not demonstrated. Its production, probe, guard and
+inventory changes were restored to d08d655 and its negative evidence retained.
 Do not accumulate another unproven evaluator rewrite or extend the model campaign.
-The remaining dependency is current-path cost localization, with existing input,
-checks and cap intact. Integration and Stage 3 remain blocked.
+The subsequent current-path observation and package below preserve input, checks
+and cap. Integration and Stage 3 remain blocked.
+
+The [curvature coordinate-access package](evidence/CURVATURE_VERTEX_POINTS.md)
+delivers a bounded production improvement: exact triangles provide point values
+without copying element-observer lists. The measured adjacency comparison falls
+from 30 real allocations/frees to zero; legacy extensions and scientific results
+remain preserved. Existing regression passes, while the new MSVC pair still times
+out in its second call. Retain the improvement as an unintegrated candidate and
+keep the required time/Book/head/main gates open. The unchanged-binary diagnostic
+pair's 289.468 s completion documents variability, not stable qualification.
+The next cohesive target is the sampled ordered edge-count lookup structure in
+AFT statistics, preserving face/reduction order and all classification counts;
+do not add another general diagnostic or model campaign.
 
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.

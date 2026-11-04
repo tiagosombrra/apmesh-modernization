@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iomanip>
+#include <list>
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
@@ -17,6 +18,7 @@
 #include "data/patch/patch_hermite.h"
 #include "data/vector_adaptive.h"
 #include "data/vertex_adaptive.h"
+#include "curvature/curvature_discrete.h"
 #include "generator/generator_adaptive.h"
 #include "input_output/models_3d.h"
 #include "input_output/input_validation.h"
@@ -1958,6 +1960,105 @@ bool CheckSerialReuse(const std::filesystem::path& output) {
 }
 } // namespace
 
+namespace {
+void CheckCurvaturePointAccess() {
+  struct LegacyTriangle : TriangleAdaptive {
+    using TriangleAdaptive::TriangleAdaptive;
+    mutable unsigned reads = 0;
+    NodeAdaptive GetNoh(unsigned int position) const override {
+      ++reads;
+      return TriangleAdaptive::GetNoh(position);
+    }
+  };
+  struct Fan {
+    std::array<NodeAdaptive, 5> nodes;
+    std::array<std::unique_ptr<TriangleAdaptive>, 4> triangles;
+    Fan(int shape, unsigned count, const std::array<unsigned, 4>& order, bool legacy) {
+      const double xy[5][2] = {{0, 0}, {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+      for (unsigned i = 0; i < nodes.size(); ++i) {
+        nodes[i].SetX(xy[i][0]);
+        nodes[i].SetY(xy[i][1]);
+        nodes[i].SetZ(shape * (0.2 * xy[i][0] * xy[i][0] + 0.1 * xy[i][1]));
+        nodes[i].SetId(100 + i);
+      }
+      for (unsigned i = 0; i < count; ++i) {
+        const unsigned slot = order[i];
+        auto* a = &nodes[0];
+        auto* b = &nodes[slot + 1];
+        auto* c = &nodes[(slot + 1) % 4 + 1];
+        if (legacy)
+          triangles[i] = std::make_unique<LegacyTriangle>(a, b, c);
+        else
+          triangles[i] = std::make_unique<TriangleAdaptive>(a, b, c);
+      }
+    }
+  };
+  auto require = [](bool value) {
+    if (!value)
+      throw std::runtime_error("Curvature point snapshot differential failed");
+  };
+  auto same = [](double a, double b) { return std::memcmp(&a, &b, sizeof(double)) == 0; };
+  unsigned cases = 0;
+  for (int shape : {0, 1})
+    for (unsigned count : {3U, 4U}) {
+      std::array<unsigned, 4> order{{0, 1, 2, 3}};
+      do {
+        Fan fast(shape, count, order, false), legacy(shape, count, order, true);
+        const std::list<ElementAdaptive*> before(fast.nodes[0].GetElements().begin(),
+                                                 fast.nodes[0].GetElements().end());
+        Adjacent adjacent;
+        for (unsigned i = 0; i < count; ++i)
+          for (unsigned j = 0; j < count; ++j) {
+            require(adjacent.ConfirmLeftAdjacency(fast.nodes[0], *fast.triangles[i],
+                                                  *fast.triangles[j]) ==
+                    adjacent.ConfirmLeftAdjacency(legacy.nodes[0], *legacy.triangles[i],
+                                                  *legacy.triangles[j]));
+            require(adjacent.ConfirmRightAdjacency(fast.nodes[0], *fast.triangles[i],
+                                                   *fast.triangles[j]) ==
+                    adjacent.ConfirmRightAdjacency(legacy.nodes[0], *legacy.triangles[i],
+                                                   *legacy.triangles[j]));
+            require(
+                adjacent.ConcavityElement(fast.nodes[0], *fast.triangles[i], *fast.triangles[j]) ==
+                adjacent.ConcavityElement(legacy.nodes[0], *legacy.triangles[i],
+                                          *legacy.triangles[j]));
+          }
+        CurvatureDiscrete a(fast.nodes[0]), b(legacy.nodes[0]);
+        require(same(a.CalculateMeanCurvature(), b.CalculateMeanCurvature()));
+        require(same(a.CalculateGaussCurvature(), b.CalculateGaussCurvature()));
+        require(fast.nodes[0].GetElements() == before);
+        require(static_cast<LegacyTriangle&>(*legacy.triangles[0]).reads > 0);
+        for (unsigned i = 0; i < count; ++i)
+          for (unsigned vertex = 1; vertex <= 3; ++vertex) {
+            const auto point = fast.triangles[i]->GetVertexPoint(vertex);
+            const auto node = legacy.triangles[i]->GetNoh(vertex);
+            require(point.GetId() == node.GetId() && same(point.GetX(), node.GetX()) &&
+                    same(point.GetY(), node.GetY()) && same(point.GetZ(), node.GetZ()));
+          }
+        const auto saved = fast.triangles[0]->GetVertexPoint(1);
+        fast.nodes[0].SetX(0.125);
+        require(saved.GetX() == 0.0 && fast.triangles[0]->GetVertexPoint(1).GetX() == 0.125);
+        ++cases;
+      } while (std::next_permutation(order.begin(), order.begin() + count));
+    }
+  struct VirtualTriangle : TriangleAdaptive {
+    bool reverse;
+    mutable unsigned reads = 0;
+    explicit VirtualTriangle(bool reversed) : reverse(reversed) {}
+    NodeAdaptive GetNoh(unsigned int position) const override {
+      ++reads;
+      if (reverse && position != 1)
+        position = 5 - position;
+      return NodeAdaptive(position == 2, position == 3, 0.0);
+    }
+  };
+  VirtualTriangle first(false), last(true);
+  Adjacent adjacent;
+  NodeAdaptive origin(0, 0, 0);
+  require(adjacent.ConfirmLeftAdjacency(origin, first, last) && first.reads > 0 && last.reads > 0);
+  std::cout << "curvature_point_access cases=" << cases << " virtual_fallback=1\n";
+}
+} // namespace
+
 int main(int argc, char* argv[]) {
   if (argc == 4 && std::string(argv[1]) == "--adaptive-reuse-config")
     return CheckAdaptiveReuse(argv[2], argv[3]);
@@ -2019,6 +2120,7 @@ int main(int argc, char* argv[]) {
   }
   if (argc != 2)
     throw std::runtime_error("Expected a fresh output directory");
+  CheckCurvaturePointAccess();
   const std::filesystem::path output(argv[1]);
   if (!std::filesystem::create_directories(output))
     throw std::runtime_error("Output directory already exists");

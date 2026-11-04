@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 658,
+    "literal_include_directives": 659,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -399,7 +399,7 @@
     "system_error": 1,
     "tuple": 7,
     "type_traits": 1,
-    "typeinfo": 1,
+    "typeinfo": 2,
     "unistd.h": 1,
     "unordered_map": 8,
     "unordered_set": 7,
@@ -2368,8 +2368,8 @@
       "path": "include/data/triangle_adaptive.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "0d7edd8593c868f4accad6b7bc4bb79c237fc3d0b8fbf853615234bd298de0fe",
-      "bytes": 2726,
+      "sha256": "45e6f14cb37d60714a1d6e12acd5670fb349916342c1e1eef60f0aa694494966",
+      "bytes": 2957,
       "includes": [
         {
           "line": 4,
@@ -4471,8 +4471,8 @@
       "path": "src/curvature/adjacent.cpp",
       "component_by_directory": "curvature",
       "kind": "translation_unit",
-      "sha256": "1c2f6911cd0c479381f00cd2571a0b7d9599de13744e4ab78217fc54afb9de19",
-      "bytes": 6204,
+      "sha256": "0c341999a1a6e28980dbb954055546f2feaedc4edbaa7d4faaba5a91e854ed90",
+      "bytes": 9017,
       "includes": [
         {
           "line": 1,
@@ -4480,6 +4480,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/adjacent.h"
+        },
+        {
+          "line": 3,
+          "spelling": "typeinfo",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -5092,8 +5099,8 @@
       "path": "src/data/triangle_adaptive.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "11ecc31b79ce8a826ea4f53cd1f3e597fe61fee46299c698c7b344192061011e",
-      "bytes": 4898,
+      "sha256": "53345ab265f634e13ee940e4bfe04e6e65654e70aaffe6e14951390f1692a923",
+      "bytes": 5120,
       "includes": [
         {
           "line": 3,
@@ -6583,7 +6590,7 @@
   ],
   "contract_traceability": {
     "contracts": 35,
-    "source_anchors": 263,
+    "source_anchors": 266,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

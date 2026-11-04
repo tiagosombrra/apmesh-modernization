@@ -30,11 +30,22 @@ target a demonstrated remaining cost without changing scientific policy or cap.
 A subsequent [Bezier operand-copy candidate](evidence/BEZIER_EVALUATION_OPERANDS.md)
 preserved scalar bits and all 25 first-call MSVC scientific artifacts, but its
 single fixed two-call observation still timed out at 300 s in the second call.
-The candidate is rejected: production, probe, guards and inventory are restored
-exactly to d08d655. Its source/binary/output evidence is retained locally; no
-additional model or observation is run. No performance improvement or new
-modernization delivery is claimed. Locate the residual cost in the current
-checked-MSVC reuse path before selecting another implementation.
+That Bezier candidate was rejected and its production, probe, guard and inventory
+changes were restored to d08d655 before the package below. Its source/binary/output
+evidence is retained locally, without another generation in that attempt. No
+performance improvement or modernization delivery is claimed for that candidate.
+
+The [curvature point-access package](evidence/CURVATURE_VERTEX_POINTS.md) now
+removes full node/list copies from adjacency and concavity for exact triangles,
+preserving virtual legacy behavior for extensions. One measured comparison uses
+zero allocations instead of 30, with identical result and observer state. Native
+differential controls, existing 75 CTest/389 controls and frozen Eistute pass. The
+new checked-MSVC pair still reaches 300 s in the second call; the first preserves
+25 exact artifacts and 15 boundaries. Keep the production improvement reviewable,
+but leave performance qualification and integration blocked. No further generation
+or Book run. The prior unchanged-binary diagnosis completed a pair in 289.468 s;
+retain both that timing variability and all timeouts, without cherry-picking.
+The sampled AFT edge-count lookups remain a concrete next implementation target.
 
 ## P4 production repair: adaptive reuse consistency metadata
 

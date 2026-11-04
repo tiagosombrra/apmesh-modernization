@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Curvature vertex points
+
+The [point-access package](evidence/CURVATURE_VERTEX_POINTS.md) reuses canonical
+C++17 GCC/checked-MSVC builds and 75 CTest/389 controls. Extend only the existing
+native metrics control: 60 planar/curved, boundary/closed and insertion-order
+cases require exact adjacency/concavity and bitwise curvature/point results,
+unchanged observers, live snapshots and virtual extension fallback. Reverse the
+86 admitted bindings and wrappers to retain every original algorithm token.
+Reuse the CRT hook with real allocations, a positive new/delete control and
+unchanged observers; qualify the measured comparison separately from process
+timing. Keep frozen GCC Eistute and one fixed new-binary MSVC pair under the
+unchanged total 300-second cap. A second-call timeout remains a failed required
+gate; no retry or new model. Require scoped analysis, format/token, contracts,
+inventory and staged/remote checks. Book and full integration remain open.
+
 ## Temporary AFT face adjacency index
 
 The [scoped index](evidence/AFT_FACE_ADJACENCY_INDEX.md) reuses canonical C++17
