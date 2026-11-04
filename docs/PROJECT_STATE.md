@@ -45,7 +45,14 @@ new checked-MSVC pair still reaches 300 s in the second call; the first preserve
 but leave performance qualification and integration blocked. No further generation
 or Book run. The prior unchanged-binary diagnosis completed a pair in 289.468 s;
 retain both that timing variability and all timeouts, without cherry-picking.
-The sampled AFT edge-count lookups remain a concrete next implementation target.
+The [AFT edge-count package](evidence/AFT_EDGE_COUNT_LOOKUPS.md) now replaces
+ordered-tree queries with a local hash counter. Original endpoint normalization,
+increments, duplicate multiplicity, face/edge order and numerical expressions stay
+unchanged. GCC/MSVC builds, 65 native count cases per ABI, existing 75 CTest/389
+controls and frozen GCC Eistute pass. The single new-binary MSVC pair still reaches
+300 s in the second call; its first call preserves 25 exact artifacts and 15
+boundaries. Keep the package reviewable and the timed reuse/integration gates
+blocked. No end-to-end speedup, retry, new model or Stage 3 closure is claimed.
 
 ## P4 production repair: adaptive reuse consistency metadata
 

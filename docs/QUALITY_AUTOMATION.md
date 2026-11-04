@@ -1,5 +1,18 @@
 # Local quality automation
 
+## AFT edge-count lookups
+
+The [hash-count package](evidence/AFT_EDGE_COUNT_LOOKUPS.md) reuses canonical
+C++17 GCC/checked-MSVC builds and 75 CTest/389 controls. Share the existing AFT
+fixture between both native probes and check 65 empty/duplicate-mask/reversed-order/
+swapped-endpoint cases against known boundary/transition/internal counts. Preserve
+all original loop, increment, lookup and numerical tokens beyond the admitted
+container/equality/hash/reservation changes. Require frozen GCC Eistute, scoped
+analysis, explicit formatting, inventory/contracts and staged/remote checks.
+Observe only one new-binary MSVC Eistute pair under the same total 300 s cap;
+keep its incomplete second call and all earlier failures. No retry, Book run,
+new scientific model, test target or relaxed oracle. Integration remains blocked.
+
 ## Curvature vertex points
 
 The [point-access package](evidence/CURVATURE_VERTEX_POINTS.md) reuses canonical

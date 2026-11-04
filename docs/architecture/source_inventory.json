@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 659,
+    "literal_include_directives": 660,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -376,13 +376,14 @@
     "execinfo.h": 1,
     "filesystem": 1,
     "fstream": 10,
+    "functional": 1,
     "initializer_list": 1,
     "iomanip": 2,
     "iostream": 11,
     "limits": 6,
     "list": 17,
     "locale": 1,
-    "map": 9,
+    "map": 8,
     "memory": 33,
     "mpi.h": 2,
     "numeric": 1,
@@ -401,7 +402,7 @@
     "type_traits": 1,
     "typeinfo": 2,
     "unistd.h": 1,
-    "unordered_map": 8,
+    "unordered_map": 9,
     "unordered_set": 7,
     "utility": 16,
     "vector": 21,
@@ -4116,8 +4117,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "118fa7dce0c8fcbe547c1eccee312ddf8c294121fde2bfb1f77bca7ad0556176",
-      "bytes": 48688,
+      "sha256": "5a4a4e9f1d8fa6ba21d051c7f3cb0ec76172c52bc510517121a0371eb18a4983",
+      "bytes": 49014,
       "includes": [
         {
           "line": 1,
@@ -4149,7 +4150,7 @@
         },
         {
           "line": 6,
-          "spelling": "map",
+          "spelling": "functional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -4163,6 +4164,13 @@
         },
         {
           "line": 8,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
           "spelling": "utility",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -6590,7 +6598,7 @@
   ],
   "contract_traceability": {
     "contracts": 35,
-    "source_anchors": 266,
+    "source_anchors": 267,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

@@ -3,8 +3,9 @@
 
 #include <cfloat>
 #include <algorithm>
-#include <map>
+#include <functional>
 #include <memory>
+#include <unordered_map>
 #include <utility>
 
 extern int AFT_LOCAL_POSTPROCESS_PASSES;
@@ -68,12 +69,17 @@ StageFaceStats ComputeStageFaceStats(const FaceList& faces) {
   struct EdgeKey {
     Vertex* a;
     Vertex* b;
-    bool operator<(const EdgeKey& other) const {
-      return (a < other.a) || (a == other.a && b < other.b);
+    bool operator==(const EdgeKey& other) const noexcept { return a == other.a && b == other.b; }
+  };
+  struct EdgeHash {
+    std::size_t operator()(const EdgeKey& key) const noexcept {
+      return std::hash<Vertex*>{}(key.a) ^ (std::hash<Vertex*>{}(key.b) << 1);
     }
   };
 
-  std::map<EdgeKey, unsigned int> edge_use_count;
+  // Only keyed counts are consumed; face order still drives every reduction.
+  std::unordered_map<EdgeKey, unsigned int, EdgeHash> edge_use_count;
+  edge_use_count.reserve(faces.size());
   for (FaceList::const_iterator iter = faces.begin(); iter != faces.end(); ++iter) {
     Face* face = *iter;
     Vertex* verts[3] = {face->getV1(), face->getV2(), face->getV3()};

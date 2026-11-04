@@ -85,9 +85,14 @@ remain preserved. Existing regression passes, while the new MSVC pair still time
 out in its second call. Retain the improvement as an unintegrated candidate and
 keep the required time/Book/head/main gates open. The unchanged-binary diagnostic
 pair's 289.468 s completion documents variability, not stable qualification.
-The next cohesive target is the sampled ordered edge-count lookup structure in
-AFT statistics, preserving face/reduction order and all classification counts;
-do not add another general diagnostic or model campaign.
+The [AFT edge-count package](evidence/AFT_EDGE_COUNT_LOOKUPS.md) now changes that
+sampled lookup structure to a local hash counter. Both face/edge loops, endpoint
+normalization, unsigned increments and every reduction/classification expression
+remain unchanged. Sixty-five fixed count cases per ABI and existing regression
+pass. The first MSVC call preserves exact artifacts and independent boundaries;
+the second still times out under the unchanged total 300 s cap. Keep timed reuse,
+Book and remaining exact-head/main qualification open; do not promote this
+structural improvement to an observed end-to-end speedup or Stage 3 closure.
 
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.

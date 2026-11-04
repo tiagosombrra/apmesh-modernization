@@ -470,6 +470,100 @@ void WriteCurvatureControl(const std::filesystem::path& output, bool curved) {
 }
 } // namespace
 
+class AftContextProbe : public Par2DJMesh::AFT::AdvancingFront {
+  using Vertex = Par2DJMesh::Basics::Vertex;
+  using Face = Par2DJMesh::Basics::Face;
+  std::array<Vertex, 4> corners_{
+      {Vertex(0.0, 0.0), Vertex(1.0, 0.0), Vertex(1.0, 1.0), Vertex(0.0, 1.0)}};
+  std::unique_ptr<Vertex> center_ = std::make_unique<Vertex>(0.05, 0.25);
+
+public:
+  explicit AftContextProbe(const std::array<double, 3>& inputs)
+      : AdvancingFront(inputs[0], TOLERANCE_AFT, inputs[1], inputs[2]) {
+    struct DetachDelete {
+      void operator()(Face* face) const noexcept {
+        face->DetachVertices();
+        delete face;
+      }
+    };
+    for (unsigned i = 0; i < 4; ++i) {
+      std::unique_ptr<Face, DetachDelete> face(
+          new Face(&corners_[i], &corners_[(i + 1) % 4], center_.get(), i + 1));
+      mesh.push_back(face.get());
+      face.release();
+    }
+    innerVertices.push_back(center_.get());
+  }
+  ~AftContextProbe() override {
+    for (auto* face : mesh) {
+      face->DetachVertices();
+      delete face;
+    }
+    mesh.clear();
+    innerVertices.clear();
+  }
+  double SmoothingFactor() const { return phi; }
+  void CheckEdgeCounts() {
+    std::array<Face*, 4> faces{};
+    std::copy(mesh.begin(), mesh.end(), faces.begin());
+    unsigned cases = 0;
+    auto check = [&](const FaceList& view, unsigned boundary_count, unsigned transition_count,
+                     unsigned internal_count) {
+      CaptureStageStats(view, 1);
+      const auto& stats = GetRunStats();
+      const double total = view.empty() ? 1.0 : static_cast<double>(view.size());
+      if (stats.boundary_element_ratio != boundary_count / total ||
+          stats.transition_element_ratio != transition_count / total ||
+          stats.internal_element_ratio != internal_count / total)
+        throw std::runtime_error("AFT edge multiplicity classification changed");
+      ++cases;
+    };
+    check({}, 0, 0, 0);
+    for (unsigned orientation = 0; orientation < 2; ++orientation) {
+      for (unsigned mask = 0; mask < 16; ++mask) {
+        FaceList view;
+        unsigned boundary_count = 0, transition_count = 0, internal_count = 0;
+        for (unsigned i = 0; i < faces.size(); ++i) {
+          view.push_back(faces[i]);
+          if ((mask & (1U << i)) == 0) {
+            ++boundary_count;
+          } else {
+            view.push_back(faces[i]);
+            // The two thin triangles are at the bottom and left of this fixture.
+            if (i == 0 || i == 3)
+              transition_count += 2;
+            else
+              internal_count += 2;
+          }
+        }
+        check(view, boundary_count, transition_count, internal_count);
+        view.reverse();
+        check(view, boundary_count, transition_count, internal_count);
+      }
+      for (auto* face : faces) {
+        auto* first = face->getV1();
+        face->setV1(face->getV2());
+        face->setV2(first);
+      }
+    }
+    std::cout << "aft_edge_counts cases=" << cases << " duplicates=16 orientations=2\n";
+  }
+  std::array<double, 4> Observe() {
+    center_->setPosition(0.05, 0.25);
+    ResetRunStats();
+    bool changed = false;
+    const FaceAdjacency faceAdjacency(mesh);
+    if (!poorRegionShapeSmoothing(changed, faceAdjacency))
+      throw std::runtime_error("Native AFT poor-region smoothing failed");
+    const auto& stats = GetRunStats();
+    if (changed != (stats.postprocess_vertices_moved > 0))
+      throw std::runtime_error("Native AFT moved-vertex oracle disagrees");
+    return {{center_->getX(), center_->getY(),
+             static_cast<double>(stats.postprocess_vertices_considered),
+             static_cast<double>(stats.postprocess_vertices_moved)}};
+  }
+};
+
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
 #include "domain_candidate_fixture.h"
 #include "candidate_snapshot_fixture.h"
@@ -1016,55 +1110,6 @@ void CheckSerialFlowContexts(const std::filesystem::path& output) {
   apply(saved);
   std::cout << "serial_flow_context cases=4 sync=4 diagnostics=4 templates=4 retired=4 legacy=2\n";
 }
-
-class AftContextProbe : public Par2DJMesh::AFT::AdvancingFront {
-  using Vertex = Par2DJMesh::Basics::Vertex;
-  using Face = Par2DJMesh::Basics::Face;
-  std::array<Vertex, 4> corners_{
-      {Vertex(0.0, 0.0), Vertex(1.0, 0.0), Vertex(1.0, 1.0), Vertex(0.0, 1.0)}};
-  std::unique_ptr<Vertex> center_ = std::make_unique<Vertex>(0.05, 0.25);
-
-public:
-  explicit AftContextProbe(const std::array<double, 3>& inputs)
-      : AdvancingFront(inputs[0], TOLERANCE_AFT, inputs[1], inputs[2]) {
-    struct DetachDelete {
-      void operator()(Face* face) const noexcept {
-        face->DetachVertices();
-        delete face;
-      }
-    };
-    for (unsigned i = 0; i < 4; ++i) {
-      std::unique_ptr<Face, DetachDelete> face(
-          new Face(&corners_[i], &corners_[(i + 1) % 4], center_.get(), i + 1));
-      mesh.push_back(face.get());
-      face.release();
-    }
-    innerVertices.push_back(center_.get());
-  }
-  ~AftContextProbe() override {
-    for (auto* face : mesh) {
-      face->DetachVertices();
-      delete face;
-    }
-    mesh.clear();
-    innerVertices.clear();
-  }
-  double SmoothingFactor() const { return phi; }
-  std::array<double, 4> Observe() {
-    center_->setPosition(0.05, 0.25);
-    ResetRunStats();
-    bool changed = false;
-    const FaceAdjacency faceAdjacency(mesh);
-    if (!poorRegionShapeSmoothing(changed, faceAdjacency))
-      throw std::runtime_error("Native AFT poor-region smoothing failed");
-    const auto& stats = GetRunStats();
-    if (changed != (stats.postprocess_vertices_moved > 0))
-      throw std::runtime_error("Native AFT moved-vertex oracle disagrees");
-    return {{center_->getX(), center_->getY(),
-             static_cast<double>(stats.postprocess_vertices_considered),
-             static_cast<double>(stats.postprocess_vertices_moved)}};
-  }
-};
 
 void CheckAftContexts() {
   using apmesh::application::AftConfig;
@@ -2121,6 +2166,10 @@ int main(int argc, char* argv[]) {
   if (argc != 2)
     throw std::runtime_error("Expected a fresh output directory");
   CheckCurvaturePointAccess();
+  {
+    AftContextProbe edge_counts({0.85, 5.0, 0.5});
+    edge_counts.CheckEdgeCounts();
+  }
   const std::filesystem::path output(argv[1]);
   if (!std::filesystem::create_directories(output))
     throw std::runtime_error("Output directory already exists");
