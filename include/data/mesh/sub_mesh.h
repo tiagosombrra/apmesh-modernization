@@ -24,6 +24,8 @@ public:
   SubMesh& operator=(SubMesh&&) noexcept;
 
   Patch* GetPatch() const noexcept;
+  // Register a null or live Patch without allocation. Either object's teardown
+  // retires this back observer and any matching reciprocal forward link.
   void SetPatch(Patch* patch) noexcept;
 
   NodeAdaptive* GetNoh(unsigned int position) noexcept;
@@ -50,7 +52,12 @@ public:
   unsigned int GetNumberElements() const noexcept;
 
 private:
+  friend class Patch;
+  void DetachPatchObserver(bool retire_forward) noexcept;
+  void AttachPatchObserver(Patch* patch) noexcept;
   Patch* patch_ = nullptr; // non-owning
+  SubMesh* previous_patch_observer_ = nullptr;
+  SubMesh* next_patch_observer_ = nullptr;
 
   std::vector<std::unique_ptr<NodeAdaptive>> nos_;
   std::vector<std::unique_ptr<ElementAdaptive>> elements_;

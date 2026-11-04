@@ -12,6 +12,7 @@
 #endif
 
 #include "data/mesh/sub_mesh.h"
+#include "data/patch/patch.h"
 #include "data/node_adaptive.h"
 #include "data/triangle_adaptive.h"
 
@@ -146,8 +147,7 @@ struct Snapshot {
 
 struct Fixture {
   Lifetime incoming, retired;
-  // Opaque, non-dereferenced patch observer tokens; no fake Patch object is accessed.
-  std::array<unsigned char, 2> patch_tokens{};
+  std::array<Patch, 2> patches;
   std::unique_ptr<SubMesh> source = std::make_unique<SubMesh>();
   std::unique_ptr<SubMesh> destination = std::make_unique<SubMesh>();
   std::optional<SubMesh> moved;
@@ -155,8 +155,8 @@ struct Fixture {
   explicit Fixture(int mode, bool read = false) : variant(mode) {
     incoming.read_observers = retired.read_observers = read;
     Populate(*source, incoming, mode == 5 ? 0 : (mode == 6 ? 1 : (mode == 7 ? 3 : 2)));
-    source->SetPatch(reinterpret_cast<Patch*>(&patch_tokens[0]));
-    destination->SetPatch(reinterpret_cast<Patch*>(&patch_tokens[1]));
+    source->SetPatch(&patches[0]);
+    destination->SetPatch(&patches[1]);
     if (mode == 3 || mode >= 5)
       Populate(*destination, retired, 2);
   }
@@ -190,6 +190,114 @@ struct Fixture {
   }
 };
 
+bool CheckPatchObservers() {
+  bool mesh_first = false, patch_first = false, history = false;
+  bool rebind = false, foreign = false, moves = false, patch_moves = false;
+  {
+    Patch patch;
+    std::optional<SubMesh> mesh(std::in_place);
+    mesh->SetPatch(&patch);
+    patch.SetSubMesh(&*mesh);
+    mesh.reset();
+    mesh_first = patch.GetSubMesh() == nullptr;
+  }
+  {
+    SubMesh mesh;
+    std::optional<Patch> patch(std::in_place);
+    mesh.SetPatch(&*patch);
+    patch->SetSubMesh(&mesh);
+    patch.reset();
+    patch_first = mesh.GetPatch() == nullptr;
+  }
+  {
+    std::array<SubMesh, 3> retained;
+    std::optional<Patch> patch(std::in_place);
+    for (auto& mesh : retained)
+      mesh.SetPatch(&*patch);
+    patch->SetSubMesh(&retained[1]);
+    patch.reset();
+    history = retained[0].GetPatch() == nullptr && retained[1].GetPatch() == nullptr &&
+              retained[2].GetPatch() == nullptr;
+  }
+  {
+    Patch first, second;
+    SubMesh mesh, unrelated;
+    mesh.SetPatch(&first);
+    first.SetSubMesh(&mesh);
+    mesh.SetPatch(&second);
+    rebind = first.GetSubMesh() == nullptr && mesh.GetPatch() == &second;
+    mesh.SetPatch(&second);
+    second.SetSubMesh(&unrelated);
+    mesh.SetPatch(nullptr);
+    mesh.SetPatch(nullptr);
+    foreign = second.GetSubMesh() == &unrelated && mesh.GetPatch() == nullptr;
+  }
+  {
+    Patch patch;
+    std::optional<SubMesh> oldest(std::in_place), middle(std::in_place), newest(std::in_place);
+    oldest->SetPatch(&patch);
+    middle->SetPatch(&patch);
+    newest->SetPatch(&patch);
+    patch.SetSubMesh(&*newest);
+    middle.reset();
+    oldest.reset();
+    history = history && patch.GetSubMesh() == &*newest && newest->GetPatch() == &patch;
+    newest.reset();
+    history = history && patch.GetSubMesh() == nullptr;
+    SubMesh unrelated;
+    std::optional<SubMesh> observer(std::in_place);
+    observer->SetPatch(&patch);
+    patch.SetSubMesh(&unrelated);
+    observer.reset();
+    foreign = foreign && patch.GetSubMesh() == &unrelated;
+  }
+  {
+    std::optional<Patch> first(std::in_place), second(std::in_place);
+    SubMesh source, target;
+    source.SetPatch(&*first);
+    target.SetPatch(&*second);
+    first->SetSubMesh(&source);
+    second->SetSubMesh(&target);
+    SubMesh moved(std::move(source));
+    target = std::move(moved);
+    auto* alias = &target;
+    target = std::move(*alias);
+    moves = source.GetPatch() == &*first && moved.GetPatch() == &*first &&
+            target.GetPatch() == &*first && first->GetSubMesh() == &source &&
+            second->GetSubMesh() == &target;
+    second.reset();
+    moves = moves && target.GetPatch() == &*first;
+    first.reset();
+    moves = moves && source.GetPatch() == nullptr && moved.GetPatch() == nullptr &&
+            target.GetPatch() == nullptr;
+  }
+  {
+    SubMesh first_mesh, second_mesh;
+    std::optional<Patch> first(std::in_place), second(std::in_place);
+    first->SetId(17);
+    first_mesh.SetPatch(&*first);
+    first->SetSubMesh(&first_mesh);
+    second_mesh.SetPatch(&*second);
+    Patch copied(&*first);
+    Patch moved(std::move(*first));
+    *second = std::move(moved);
+    auto* alias = &*second;
+    *second = std::move(*alias);
+    patch_moves = copied.GetId() == 17 && copied.GetSubMesh() == nullptr && second->GetId() == 17 &&
+                  second->GetSubMesh() == &first_mesh && first_mesh.GetPatch() == &*first &&
+                  second_mesh.GetPatch() == &*second;
+    first.reset();
+    patch_moves =
+        patch_moves && first_mesh.GetPatch() == nullptr && second_mesh.GetPatch() == &*second;
+    second.reset();
+    patch_moves = patch_moves && second_mesh.GetPatch() == nullptr;
+  }
+  std::printf("patch_observers mesh_first:%d patch_first:%d history:%d rebind:%d "
+              "foreign:%d moves:%d patch_moves:%d\n",
+              mesh_first, patch_first, history, rebind, foreign, moves, patch_moves);
+  return mesh_first && patch_first && history && rebind && foreign && moves && patch_moves;
+}
+
 #if defined(_MSC_VER) && defined(_DEBUG)
 int attempts = 0, denied = 0;
 int AllocationHook(int kind, void*, std::size_t, int, long, const unsigned char*, int) {
@@ -216,8 +324,10 @@ private:
 #endif
 
 bool Run(const char* mode) {
+  if (std::strcmp(mode, "patch-observers") == 0)
+    return CheckPatchObservers();
   if (std::strcmp(mode, "contracts") == 0) {
-    bool passed = true;
+    bool passed = CheckPatchObservers();
     for (int i = 0; i < 8; ++i) {
       Fixture fixture(i);
       passed = fixture.Exercise() && passed;
@@ -242,6 +352,14 @@ bool Run(const char* mode) {
   } else if (std::strcmp(mode, "leak") == 0) {
     std::printf("deliberate-leak=%p\n", static_cast<void*>(new NodeAdaptive(1, 2, 3)));
 #if defined(_MSC_VER) && defined(_DEBUG)
+  } else if (std::strcmp(mode, "patch-noalloc") == 0) {
+    bool passed;
+    {
+      AllocationScope hook;
+      passed = CheckPatchObservers();
+    }
+    std::printf("patch_allocation=attempts:%d denied:%d\n", attempts, denied);
+    return passed && attempts == 0 && denied == 0;
   } else if (std::strncmp(mode, "noalloc-", 8) == 0) {
     int variant = -1;
     Require(std::sscanf(mode, "noalloc-%d", &variant) == 1 && variant >= 0 && variant < 8,

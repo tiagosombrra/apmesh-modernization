@@ -2,8 +2,21 @@
 
 ## Current checkpoint and active work
 
-Reviewed starting main: `29c5484b4ca9fd5b25b902f019d31e0397300d62` (PR #157).
-Exact FindUV statistics delivery head/main status is recorded by its PR and local integration seal.
+Reviewed starting main: `a97105da94fc18ad80eb08c5201ca4f411985455` (PR #159).
+Exact delivery head/main status is recorded by its PR and local integration seal.
+
+## P4 production repair: registered Patch/SubMesh retirement
+
+The [observer retirement repair](evidence/PATCH_SUBMESH_RETIREMENT.md) addresses
+both reproduced normal caller orders: Generator destruction with external live
+Geometry, and local Geometry retirement before the outer Generator after Execute.
+An intrusive non-owning registration retires matching forward and all registered
+back observations without allocation, including archived meshes. Move identities,
+foreign forward links, physical destruction order and scientific policies remain
+preserved. Existing caller/native regression and 31 bounded ASan/CRT outcomes are
+required on exact delivery head/main. This closes the named S3-05/07 retirement
+sub-obligation; cache/public mutation, arbitrary foreign links and other required
+memory/caller gaps keep Stage 3 open. No new global-state migration is queued.
 
 ## Delivered production state: per-execution FindUV statistics
 

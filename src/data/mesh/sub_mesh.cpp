@@ -2,26 +2,63 @@
 
 #include "data/node_adaptive.h"
 #include "data/element_adaptive.h"
+#include "data/patch/patch.h"
 #include <memory>
 
 SubMesh::SubMesh() = default;
-SubMesh::~SubMesh() = default;
+SubMesh::~SubMesh() { DetachPatchObserver(true); }
 
-SubMesh::SubMesh(SubMesh&&) noexcept = default;
+SubMesh::SubMesh(SubMesh&& other) noexcept
+    : nos_(std::move(other.nos_)), elements_(std::move(other.elements_)) {
+  AttachPatchObserver(other.patch_);
+}
 SubMesh& SubMesh::operator=(SubMesh&& other) noexcept {
   if (this != &other) {
     // Elements borrow nodes, so retire them before replacing their node owners.
     elements_.clear();
     nos_ = std::move(other.nos_);
     elements_ = std::move(other.elements_);
-    patch_ = other.patch_;
+    // Preserve existing foreign forward links and the moved-from back observer.
+    DetachPatchObserver(false);
+    AttachPatchObserver(other.patch_);
   }
   return *this;
 }
 
 Patch* SubMesh::GetPatch() const noexcept { return patch_; }
 
-void SubMesh::SetPatch(Patch* patch) noexcept { patch_ = patch; }
+void SubMesh::SetPatch(Patch* patch) noexcept {
+  if (patch_ != patch) {
+    DetachPatchObserver(true);
+    AttachPatchObserver(patch);
+  }
+}
+
+void SubMesh::DetachPatchObserver(bool retire_forward) noexcept {
+  if (patch_ != nullptr) {
+    if (previous_patch_observer_ != nullptr)
+      previous_patch_observer_->next_patch_observer_ = next_patch_observer_;
+    else
+      patch_->sub_mesh_observers_ = next_patch_observer_;
+    if (next_patch_observer_ != nullptr)
+      next_patch_observer_->previous_patch_observer_ = previous_patch_observer_;
+    if (retire_forward && patch_->sub_mesh_ == this)
+      patch_->sub_mesh_ = nullptr;
+  }
+  patch_ = nullptr;
+  previous_patch_observer_ = nullptr;
+  next_patch_observer_ = nullptr;
+}
+
+void SubMesh::AttachPatchObserver(Patch* patch) noexcept {
+  patch_ = patch;
+  if (patch_ != nullptr) {
+    next_patch_observer_ = patch_->sub_mesh_observers_;
+    if (next_patch_observer_ != nullptr)
+      next_patch_observer_->previous_patch_observer_ = this;
+    patch_->sub_mesh_observers_ = this;
+  }
+}
 
 NodeAdaptive* SubMesh::GetNoh(unsigned int position) noexcept {
   return (position < nos_.size()) ? nos_[position].get() : nullptr;

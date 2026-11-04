@@ -23,6 +23,14 @@ other instruments and remaining closure obligations are still open.
 
 ## Entry domain and roots
 
+The later [P4 registered-observer repair](../evidence/PATCH_SUBMESH_RETIREMENT.md)
+now retires registered Patch/SubMesh links in both normal owner orders below.
+Its real external-Geometry and typed Execute witnesses use the unchanged existing
+three-patch reader fixture. A surviving registered pointer is null after its
+observed owner retires; this does not establish cache validity, arbitrary foreign
+forward-link safety, general Generator reuse or complete-process instruments.
+The P2 machine ledger remains the preserved entry specification.
+
 The measured production entry is `ap_mesh --config <file>`, serial, one process,
 one thread, C++17, with the existing Bezier BP reader. Use the unchanged Eistute
 and Book article configurations, existing analytic boundary controls and the

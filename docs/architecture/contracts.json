@@ -1222,6 +1222,30 @@
           "anchor": "apmesh::diagnostics::FindUvStatistics GetFindUvStatistics() const noexcept {"
         }
       ]
+    },
+    {
+      "id": "C32",
+      "topic": "Registered Patch/SubMesh retirement",
+      "statement": "SubMesh::SetPatch requires null or a live Patch and registers a non-owning back observer without allocation. SubMesh destruction or rebinding unlinks it and clears the old forward pointer only if it still equals that SubMesh. Patch destruction nulls every registered SubMesh back pointer, including retained history meshes. Intrusive registration has no ownership or heap storage. Existing moved-from pointer values and foreign forward values are preserved; move construction adds a separate back registration, move assignment keeps foreign forward links, and Patch moves leave registrations attached by object identity. Pointer-copy Patch construction stays detached; physical elements retire before nodes.",
+      "limits": "Arbitrary forward-only/copied/unmatched links assigned by Patch::SetSubMesh remain caller-managed; no foreign pointer is dereferenced for retirement. Public geometry/cache mutation, observer transfer/rebinding across moves, general Generator recovery/reuse, concurrent/parallel and complete-process memory qualification remain open. Layout changes require rebuilding consumers. Original normal external-Geometry and Execute-local-Geometry failures and exact-head/main gates are retained in PATCH_SUBMESH_RETIREMENT.md.",
+      "evidence": [
+        {
+          "path": "src/data/mesh/sub_mesh.cpp",
+          "anchor": "void SubMesh::DetachPatchObserver(bool retire_forward) noexcept"
+        },
+        {
+          "path": "src/data/patch/patch.cpp",
+          "anchor": "Patch::~Patch()"
+        },
+        {
+          "path": "include/data/patch/patch.h",
+          "anchor": "SubMesh* sub_mesh_observers_ = nullptr;"
+        },
+        {
+          "path": "include/data/mesh/sub_mesh.h",
+          "anchor": "void SetPatch(Patch* patch) noexcept;"
+        }
+      ]
     }
   ]
 }

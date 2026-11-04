@@ -67,6 +67,7 @@ elseif(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
 endif()
 
 add_executable(submesh_lifetime_probe submesh_probe.cpp
+  "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/patch/patch.cpp"
   "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/mesh/sub_mesh.cpp"
   "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/node_adaptive.cpp"
   "${AP_MESH_ADOPTION_SOURCE_ROOT}/src/data/point_adaptive.cpp"

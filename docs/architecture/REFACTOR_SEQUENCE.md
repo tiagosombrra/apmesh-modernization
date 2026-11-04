@@ -49,6 +49,13 @@ S3-05/08 bookkeeping without changing their row status or qualifying reuse/recov
 
 ## Work-item admission and execution rules
 
+The first returned P4 production package is
+[registered Patch/SubMesh retirement](../evidence/PATCH_SUBMESH_RETIREMENT.md).
+Both normal owner orders fail on the original public callers and are repaired
+through one nonallocating registration contract, including history and moves.
+Its named S3-05/07 sub-obligation has explicit caller and memory gates; remaining
+cache/mutation and foreign-forward arrangements retain their own obligations.
+
 Before a task, record its closure row, concrete output, supporting failure or
 coverage gap, minimal affected checks and stop decision. Deliver an implementation,
 a newly measured required contract, or a decision that changes the dependency

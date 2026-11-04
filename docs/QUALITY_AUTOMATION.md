@@ -967,6 +967,16 @@ eight measured zero-allocation operations and real UAF/leak/hook controls.
 Full exact-head/main gates pass. Destruction and geometry-cache refresh remain
 separate; see [commands and limits](evidence/STAGE3_TRIANGLE_OBSERVER.md).
 
+## Registered Patch/SubMesh retirement
+
+P4 extends the existing SubMesh lifetime runner with three observations for
+registered observer retirement: 31 outcomes on seven actual units. Both owner
+orders, history/list removal, rebind/moves and a measured zero-allocation check
+are included. The existing metrics probe also exercises the real external-
+Geometry and Execute-local-Geometry normal callers on the unchanged reader
+fixture. Exact-head/main scientific and existing negative controls remain
+required. [Scope and commands](evidence/PATCH_SUBMESH_RETIREMENT.md).
+
 ## SubMesh lifetime ordering (PR #66)
 
 Stage 3 slice 22 adds application.submesh_lifetime_contracts and
