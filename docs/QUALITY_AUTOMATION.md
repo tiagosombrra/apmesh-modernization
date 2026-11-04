@@ -1,5 +1,20 @@
 # Local quality automation
 
+## Serial timing intervals
+
+The [diagnostic repair](evidence/SERIAL_TIMING_INTERVALS.md) requires a reproduced
+old failure, existing native metrics controls and 75 CTest/389 Python controls.
+Seed only local timer timestamps during real error evaluation; require balanced
+6/7 intervals and bitwise unchanged error/node curvatures. Check early full-start
+through a rejected-input call and retain the rejected slow built-in fixture.
+Run both compiler builds and native controls, plus frozen GCC Eistute with exact
+science artifacts and positive boundaries. Require realistic runtime totals and
+curvature/error partitions bounded by the full interval. Reverse only admitted
+serial timer operations; retain scientific and parallel tokens, clock provider
+and watchdog. Reuse the unchanged long-run negative evidence without a new MSVC
+pair or Book campaign. Require scoped analysis, formatting, contracts/inventory,
+staged/remote checks; integration and broader timing/recovery remain open.
+
 ## AFT edge-count lookups
 
 The [hash-count package](evidence/AFT_EDGE_COUNT_LOOKUPS.md) reuses canonical

@@ -54,6 +54,16 @@ controls and frozen GCC Eistute pass. The single new-binary MSVC pair still reac
 boundaries. Keep the package reviewable and the timed reuse/integration gates
 blocked. No end-to-end speedup, retry, new model or Stage 3 closure is claimed.
 
+The [serial timing repair](evidence/SERIAL_TIMING_INTERVALS.md) now fixes the
+missing full start and overlapping/mismatched error/curvature intervals that
+produced impossible reports. The defect is reproduced before repair; corrected
+native controls preserve numeric payloads on both ABIs. Existing regression and
+five-state frozen GCC Eistute pass. Its full_without_io is 6.19113 s against
+7.05320 s wall time; the science artifacts remain exact. These are corrected
+diagnostics, not a speedup. No new long MSVC pair or Book run. The existing 300 s
+wall-clock gate and integration remain blocked; use valid per-stage data before
+choosing another implementation, rather than accumulating speculative changes.
+
 ## P4 production repair: adaptive reuse consistency metadata
 
 The [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) resets the current

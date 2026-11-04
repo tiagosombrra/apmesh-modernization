@@ -32,6 +32,7 @@ using apmesh::application::LoadRuntimeConfig;
 
 #include <array>
 #include <cstring>
+#include <chrono>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -271,6 +272,7 @@ bool CheckPatchCallerObservers(const std::filesystem::path& output) {
   {
     Model model(&external);
     GeneratorAdaptive generator;
+    timer.InitTimerParallel(0, 0, 10);
     generator.Generator(model, &timer);
     for (unsigned i = 0; i < count; ++i) {
       const auto* patch = external.GetPatch(i);
@@ -444,6 +446,7 @@ void WriteCurvatureControl(const std::filesystem::path& output, bool curved) {
   STEPS = 0;
   WRITE_MESH.clear();
   NAME_MODEL = (output / "diagnostic").generic_string();
+  timer.InitTimerParallel(0, 0, 10);
   generator.Generator(model, &timer);
   generator.SaveErrorMesh(generator.mesh_.get());
   const SubMesh* sub = generator.mesh_->GetSubMeshAdaptiveByPosition(0);
@@ -2006,6 +2009,100 @@ bool CheckSerialReuse(const std::filesystem::path& output) {
 } // namespace
 
 namespace {
+bool CheckSerialTiming(const std::filesystem::path& output) {
+  struct Restore {
+    std::string mode = ADAPTIVE_MODE, name = NAME_MODEL, write = WRITE_MESH;
+    int steps = STEPS;
+    ~Restore() {
+      ADAPTIVE_MODE = mode;
+      NAME_MODEL = name;
+      WRITE_MESH = write;
+      STEPS = steps;
+    }
+  } restore;
+  const auto fixture =
+      std::filesystem::path(__FILE__).parent_path() / "curve_memory/data/charge_input.bp";
+  Geometry geometry;
+  PatchReader reader;
+  reader.ReaderFilePatches(&geometry, fixture.string().c_str());
+  auto* reference_patch = static_cast<PatchBezier*>(geometry.GetPatch(0));
+  Timer curvature_timer;
+  struct MeasuredPatch : PatchBezier {
+    Timer& clock;
+    unsigned calls = 0;
+    MeasuredPatch(PatchBezier* source, Timer& value) : PatchBezier(source), clock(value) {}
+    std::tuple<double, double> FindUV(const PointAdaptive& point) override {
+      const auto result = PatchBezier::FindUV(point);
+      // Simulate known curvature time and poison the already-closed error start.
+      clock.timer_parallel_init_[0][0][6].tv_sec -= 100;
+      clock.timer_parallel_init_[0][0][7].tv_sec -= 100;
+      ++calls;
+      return result;
+    }
+  } measured_patch(reference_patch, curvature_timer);
+  auto make_mesh = [](PatchBezier& patch) {
+    auto mesh = std::make_unique<MeshAdaptive>();
+    auto sub = std::make_unique<SubMesh>();
+    std::array<NodeAdaptive*, 3> nodes{};
+    const std::array<std::array<double, 2>, 3> uv{{{0, 0}, {1, 0}, {0, 1}}};
+    for (unsigned i = 0; i < nodes.size(); ++i) {
+      auto node = std::make_unique<NodeAdaptive>(patch.Parameterize(uv[i][0], uv[i][1]));
+      node->SetId(i + 1);
+      nodes[i] = node.get();
+      sub->AddNoh(std::move(node));
+    }
+    sub->AddElement(std::make_unique<TriangleAdaptive>(nodes[0], nodes[1], nodes[2]));
+    sub->SetPatch(&patch);
+    mesh->InsertSubMeshAdaptive(sub.release());
+    return mesh;
+  };
+  auto reference_mesh = make_mesh(*reference_patch);
+  auto measured_mesh = make_mesh(measured_patch);
+  GeneratorAdaptive reference, measured;
+  Timer reference_timer;
+  const double expected_error = reference.ErrorGlobal(reference_mesh.get(), &reference_timer);
+  const double actual_error = measured.ErrorGlobal(measured_mesh.get(), &curvature_timer);
+  const double curvature = curvature_timer.GetRankThreadTime(0, 0, 6);
+  const double error = curvature_timer.GetRankThreadTime(0, 0, 7);
+  const bool balanced = measured_patch.calls == 3 && curvature >= 300.0 && curvature < 305.0 &&
+                        error >= 0.0 && error < 5.0;
+  bool same_payload = std::isfinite(expected_error) &&
+                      std::memcmp(&expected_error, &actual_error, sizeof(double)) == 0;
+  for (unsigned i = 0; i < 3; ++i) {
+    const auto* a = reference_mesh->GetSubMeshAdaptiveByPosition(0)->GetNoh(i);
+    const auto* b = measured_mesh->GetSubMeshAdaptiveByPosition(0)->GetNoh(i);
+    const std::array<double, 4> av{{a->GetGa(), a->GetGd(), a->GetHa(), a->GetHd()}};
+    const std::array<double, 4> bv{{b->GetGa(), b->GetGd(), b->GetHa(), b->GetHd()}};
+    same_payload = same_payload && std::memcmp(av.data(), bv.data(), sizeof(av)) == 0;
+  }
+  ADAPTIVE_MODE = "legacy";
+  STEPS = 0;
+  WRITE_MESH = "h";
+  NAME_MODEL = (output / "timing-initial").generic_string();
+  Timer total_timer;
+  GeneratorAdaptive generator;
+  const auto start = std::chrono::steady_clock::now();
+  const auto missing = (output / "timing-missing.bp").generic_string();
+  if (std::filesystem::exists(missing))
+    throw std::runtime_error("Timing control requires an absent input");
+  bool rejected = false;
+  try {
+    generator.Execute(apmesh::application::GenerationRequest{1, 1, missing}, &total_timer);
+  } catch (const std::exception&) {
+    rejected = true;
+  }
+  // Close the failed attempt explicitly to check the engine's early start protocol.
+  total_timer.EndTimerParallel(0, 0, 10);
+  const double wall =
+      std::chrono::duration<double>(std::chrono::steady_clock::now() - start).count();
+  const double full = total_timer.GetRankThreadTime(0, 0, 10);
+  const bool started = rejected && full >= 0.0 && full <= wall + 1.0;
+  std::cout << "serial_timing balanced=" << balanced << " started=" << started
+            << " same_payload=" << same_payload << " simulated_curvature=" << curvature
+            << " error=" << error << " full=" << full << " wall=" << wall << '\n';
+  return balanced && started && same_payload;
+}
+
 void CheckCurvaturePointAccess() {
   struct LegacyTriangle : TriangleAdaptive {
     using TriangleAdaptive::TriangleAdaptive;
@@ -2153,6 +2250,8 @@ int main(int argc, char* argv[]) {
     std::filesystem::current_path(output);
     if (mode == "null-geometry" || mode == "null-mesh" || mode == "null-both")
       CheckDomainInputs(mode);
+    else if (mode == "serial-timing")
+      return CheckSerialTiming(output) ? 0 : 1;
     else if (mode == "serial-reuse")
       return CheckSerialReuse(output) ? 0 : 1;
     else if (mode == "patch-observers")
@@ -2215,5 +2314,7 @@ int main(int argc, char* argv[]) {
   const GeneratorAdaptive::MeshAttemptMetrics zero{0, 0, 0, 1, 0, 1, 0, 0, 0, 0, .5, .1};
   generator.WriteQualityMesh(mesh.get(), 0, zero);
   generator.WriteQualityMesh(mesh.get(), 1, zero);
+  if (!CheckSerialTiming(output / "serial-timing"))
+    throw std::runtime_error("Serial timing interval protocol failed");
   return 0;
 }

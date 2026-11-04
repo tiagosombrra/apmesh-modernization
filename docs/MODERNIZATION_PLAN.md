@@ -94,6 +94,16 @@ the second still times out under the unchanged total 300 s cap. Keep timed reuse
 Book and remaining exact-head/main qualification open; do not promote this
 structural improvement to an observed end-to-end speedup or Stage 3 closure.
 
+The [serial timing repair](evidence/SERIAL_TIMING_INTERVALS.md) addresses a
+demonstrated prerequisite for further performance work: full-generation timing
+was unstarted and serial error/curvature intervals overlapped or used the wrong
+slot. Correct only those operations, retaining every scientific expression and
+parallel branch. Reproduced old failures, deterministic interval controls and
+frozen output checks pass on the repaired sources. This corrects diagnostics; it
+does not close the unchanged 300 s wall-clock gate. No new long run or model
+campaign. Further production selection must use the repaired stage accounting;
+Book, exact-head/main integration and Stage 3 remain open.
+
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.
 The required MSVC gate additionally exposed four empty diagonal-neighbor reads

@@ -942,8 +942,8 @@
     {
       "id": "C19",
       "topic": "Timing boundary",
-      "statement": "Timer accumulates gettimeofday-based intervals; Data::time uses platform-dependent implementations.",
-      "limits": "Current clock resolution/monotonicity and performance comparability are not qualified; no speedup claim follows from this inventory.",
+      "statement": "Timer accumulates gettimeofday-based intervals; Data::time uses platform-dependent implementations. Serial typed Execute starts the full-generation interval before input loading; raw Execute delegates to it. Serial ErrorGlobal owns slot 7 and closes curvature slot 6 before resuming slot 7, without duplicate serial caller brackets. Timing aggregates are diagnostic; the scientific expressions and external watchdog budget are unchanged.",
+      "limits": "Current clock resolution/monotonicity and performance comparability are not qualified; no speedup claim follows from this inventory. Direct legacy Generator callers still own their outer interval start. Failed Execute does not publish a completed runtime summary. MPI/OpenMP timer branches are unchanged and remain separately qualified.",
       "evidence": [
         {
           "path": "src/timer/timer.cpp",
@@ -952,6 +952,14 @@
         {
           "path": "src/data/definitions.cpp",
           "anchor": "return static_cast<Real>(std::time(nullptr));"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "timer->InitTimerParallel(0, 0, 10); // Full generation interval, including input loading."
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "// Close curvature accounting before resuming error accumulation."
         }
       ]
     },
