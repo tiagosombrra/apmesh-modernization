@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Temporary AFT face adjacency index
+
+The [scoped index](evidence/AFT_FACE_ADJACENCY_INDEX.md) reuses canonical C++17
+GCC/checked-MSVC builds, 75 CTest/389 nested controls and the existing adjacency
+probe. Check original scan order, duplicate entries, repeated endpoints, missing
+keys and live values. Preserve all remaining AFT implementation tokens except
+index bindings and const iterators. Reuse unchanged negative controls; run only
+Eistute for frozen GCC comparison and one checked-MSVC observation under the same
+total 300-second cap. Preserve old partial output and binary/configuration hashes.
+The completed first call is independently checked; a second-call timeout still
+blocks adaptive qualification and integration. Book remains unmeasured on this
+candidate. Require scoped analysis, explicit format/token, inventory/contracts,
+staged and remote checks. No new model, target, cap or instrument campaign.
+
 ## Adaptive generator reuse
 
 The [consistency-state repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) requires two

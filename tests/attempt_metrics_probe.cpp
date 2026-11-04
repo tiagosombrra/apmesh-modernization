@@ -1052,7 +1052,8 @@ public:
     center_->setPosition(0.05, 0.25);
     ResetRunStats();
     bool changed = false;
-    if (!poorRegionShapeSmoothing(changed))
+    const FaceAdjacency faceAdjacency(mesh);
+    if (!poorRegionShapeSmoothing(changed, faceAdjacency))
       throw std::runtime_error("Native AFT poor-region smoothing failed");
     const auto& stats = GetRunStats();
     if (changed != (stats.postprocess_vertices_moved > 0))

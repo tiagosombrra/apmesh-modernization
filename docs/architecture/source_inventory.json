@@ -29,8 +29,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 656,
-    "first_party_include_edges": 367
+    "literal_include_directives": 658,
+    "first_party_include_edges": 368
   },
   "cross_component_directives": [
     {
@@ -401,7 +401,7 @@
     "type_traits": 1,
     "typeinfo": 1,
     "unistd.h": 1,
-    "unordered_map": 7,
+    "unordered_map": 8,
     "unordered_set": 7,
     "utility": 16,
     "vector": 21,
@@ -846,8 +846,8 @@
       "path": "include/crab_mesh/aft/advancing_front.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "bf9e7f0d52204f9289a9387bce8aa2af00e9fb49448337a225c77bbf18789fe6",
-      "bytes": 5200,
+      "sha256": "64617a4b0fab486228b20f69e156c45b81710f09f82c71bdd72f319f90fecfe7",
+      "bytes": 5344,
       "includes": [
         {
           "line": 4,
@@ -914,6 +914,13 @@
         },
         {
           "line": 13,
+          "spelling": "smoothing_adjacency.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/smoothing_adjacency.h"
+        },
+        {
+          "line": 14,
           "spelling": "vertex.h",
           "form": "quote",
           "scope": "first_party",
@@ -1203,8 +1210,8 @@
       "path": "include/crab_mesh/aft/smoothing_adjacency.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "ae076f74f189caf8c7526d4ad7ac3c6ad8842ce50b6ce9349e8704edea94a848",
-      "bytes": 940,
+      "sha256": "c5c8c9c32f6b2670060dafd1e7c9d8de6057c8fa09e4294a7b61bfc16a54e88a",
+      "bytes": 1882,
       "includes": [
         {
           "line": 4,
@@ -1216,6 +1223,13 @@
         {
           "line": 5,
           "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "unordered_map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -4102,7 +4116,7 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "e42a48a823718eed8ca26d899a6cbcb4cc46b0db048decb0bd7e22b648b30520",
+      "sha256": "118fa7dce0c8fcbe547c1eccee312ddf8c294121fde2bfb1f77bca7ad0556176",
       "bytes": 48688,
       "includes": [
         {
@@ -6569,7 +6583,7 @@
   ],
   "contract_traceability": {
     "contracts": 35,
-    "source_anchors": 260,
+    "source_anchors": 263,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

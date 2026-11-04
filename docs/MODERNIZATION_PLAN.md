@@ -52,17 +52,21 @@ No automatic instrument/audit successor is added.
 ## Current stage and completion route
 
 The active adaptive-reuse candidate is blocked before integration: after four
-reproduced diagonal-list guards, checked MSVC Eistute times out at the unchanged
-300-second cap during its first call. GCC preservation/reuse passes; MSVC second
-call and Book remain unqualified. Keep the fixed first-call timeout as the required gate,
-without raising the cap, disabling checks or adding fixtures.
+reproduced diagonal-list guards, checked MSVC Eistute originally timed out in its
+first call. The index below completes that call, while the second reaches the
+unchanged total 300-second cap. GCC preservation/reuse passes; MSVC second call
+and Book remain unqualified. Keep the fixed control as the required gate, without
+raising the cap, disabling checks or adding fixtures.
 
-That [bounded diagnosis](evidence/ADAPTIVE_REUSE_TIMEOUT_DIAGNOSIS.md) now records
-CPU-bound phase progress: FindUV/Bezier evaluation and full face-list adjacency
-scans during smoothing. Three samples capture the latter O(V*F) traversal. The
-next dependency is a production face-incidence index scoped to topology-stable
-AFT postprocessing, preserving order, aliases and numerical/update policies.
-No optimization or speedup is yet qualified; retain the failed 300-second gate.
+The [temporary AFT face index](evidence/AFT_FACE_ADJACENCY_INDEX.md) now replaces
+the diagnosed full-list scans with ordered, non-owning incidences scoped to
+topology-stable postprocessing. Formulas, duplicate semantics and update order are
+preserved. Existing regression and frozen GCC Eistute pass. The single checked
+MSVC observation completes its first call but reaches the unchanged total 300 s
+cap in the second call at step 4. Keep two-call reuse and integration unqualified,
+retain all prior failures, and do not expand the model campaign. The earlier
+diagnosis also identified FindUV/Bezier work; any successor must be a bounded,
+demonstrated production dependency rather than another broad test campaign.
 
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.

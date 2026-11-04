@@ -729,18 +729,6 @@ EdgeList AdvancingFront::findAdjacentEdges(Vertex* v) {
   return orderedSmoothingAdjacency(v->getAdjacentEdges());
 }
 
-FaceList AdvancingFront::findAdjacentFaces(const FaceList& faces, Vertex* v) {
-  FaceList adjacency;
-
-  for (FaceList::const_iterator iter = faces.begin(); iter != faces.end(); iter++) {
-    if (((*iter)->getV1() == v) || ((*iter)->getV2() == v) || ((*iter)->getV3() == v)) {
-      adjacency.push_back((*iter));
-    }
-  }
-
-  return adjacency;
-}
-
 void AdvancingFront::removeFromFront(Vertex* v1, Vertex* v2, Vertex* v3) {
   // verifica se v1 eh adjacente a alguma aresta livre, ou seja,
   // da fronteira corrente. se for adjacente, nao remove. se nao for
@@ -1064,7 +1052,7 @@ void AdvancingFront::fillMesh() {
   quadtree->TransferTemplateMesh(innerVertices, innerEdges, mesh);
 }
 
-bool AdvancingFront::laplacianSmoothing(bool& changed) {
+bool AdvancingFront::laplacianSmoothing(bool& changed, const FaceAdjacency& faceAdjacency) {
   changed = false;
 
   static const double qualityTolerance = 1.0e-8;
@@ -1081,7 +1069,7 @@ bool AdvancingFront::laplacianSmoothing(bool& changed) {
     numx = numy = den = 0.0;
 
     EdgeList adjacency = findAdjacentEdges(v);
-    FaceList faces = findAdjacentFaces(mesh, v);
+    const FaceList& faces = faceAdjacency.Find(v);
 
     if (faces.empty()) {
       continue;
@@ -1091,7 +1079,7 @@ bool AdvancingFront::laplacianSmoothing(bool& changed) {
     double oldMinQuality = DBL_MAX;
     unsigned int faceCount = 0;
 
-    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
+    for (FaceList::const_iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
       const double quality = (*faceIter)->quality();
       oldAverageQuality += quality;
       oldMinQuality = std::min(oldMinQuality, quality);
@@ -1128,7 +1116,7 @@ bool AdvancingFront::laplacianSmoothing(bool& changed) {
     double newAverageQuality = 0.0;
     double newMinQuality = DBL_MAX;
 
-    for (FaceList::iterator iter2 = faces.begin(); iter2 != faces.end(); iter2++) {
+    for (FaceList::const_iterator iter2 = faces.begin(); iter2 != faces.end(); iter2++) {
       if ((*iter2)->orientedSurface() <= TOLERANCE_AFT) {
         negativeSurface = true;
         break;
@@ -1209,7 +1197,7 @@ void AdvancingFront::CaptureStageStats(const FaceList& faces, int stage) {
   }
 }
 
-bool AdvancingFront::qualityShapeSmoothing(bool& changed) {
+bool AdvancingFront::qualityShapeSmoothing(bool& changed, const FaceAdjacency& faceAdjacency) {
   changed = false;
 
   static const double qualityTolerance = 1.0e-8;
@@ -1217,7 +1205,7 @@ bool AdvancingFront::qualityShapeSmoothing(bool& changed) {
 
   for (VertexList::iterator iter = innerVertices.begin(); iter != innerVertices.end(); ++iter) {
     Vertex* v = (*iter);
-    FaceList faces = findAdjacentFaces(mesh, v);
+    const FaceList& faces = faceAdjacency.Find(v);
 
     if (faces.empty()) {
       continue;
@@ -1231,7 +1219,7 @@ bool AdvancingFront::qualityShapeSmoothing(bool& changed) {
     double targetY = 0.0;
     double totalWeight = 0.0;
 
-    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
+    for (FaceList::const_iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
       Face* face = (*faceIter);
       Vertex* a = nullptr;
       Vertex* b = nullptr;
@@ -1282,7 +1270,7 @@ bool AdvancingFront::qualityShapeSmoothing(bool& changed) {
       v->setPosition(candidateX, candidateY);
 
       bool negativeSurface = false;
-      for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
+      for (FaceList::const_iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
         if ((*faceIter)->orientedSurface() <= TOLERANCE_AFT) {
           negativeSurface = true;
           break;
@@ -1478,17 +1466,19 @@ enum MethodStatus AdvancingFront::makeTopologyBasedMesh() {
 }
 
 enum MethodStatus AdvancingFront::improveMesh() {
+  // All passes move coordinates only; mesh entries and face endpoints stay unchanged.
+  const FaceAdjacency faceAdjacency(mesh);
   for (unsigned int i = 0; i < numImproves; i++) {
     bool movedSomeVertex;
     bool shapeOptimized;
 
-    laplacianSmoothing(movedSomeVertex);
-    qualityShapeSmoothing(shapeOptimized);
+    laplacianSmoothing(movedSomeVertex, faceAdjacency);
+    qualityShapeSmoothing(shapeOptimized, faceAdjacency);
 
     bool localImproved = false;
     for (int pass = 0; pass < PostprocessPasses(); ++pass) {
       bool passChanged = false;
-      poorRegionShapeSmoothing(passChanged);
+      poorRegionShapeSmoothing(passChanged, faceAdjacency);
       localImproved = localImproved || passChanged;
       if (!passChanged) {
         break;
@@ -1504,7 +1494,7 @@ enum MethodStatus AdvancingFront::improveMesh() {
       (run_stats.quality_post_aft_min < 0.22 || run_stats.poor_ratio_post_aft > 0.20)) {
     for (int pass = 0; pass < std::max(2, PostprocessPasses() + 1); ++pass) {
       bool passChanged = false;
-      poorRegionShapeSmoothing(passChanged);
+      poorRegionShapeSmoothing(passChanged, faceAdjacency);
       if (!passChanged) {
         break;
       }
@@ -1608,7 +1598,7 @@ bool AdvancingFront::execute(const FaceList& oldmesh) {
   return true;
 }
 
-bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
+bool AdvancingFront::poorRegionShapeSmoothing(bool& changed, const FaceAdjacency& faceAdjacency) {
   changed = false;
 
   if (PostprocessPasses() <= 0 || PostprocessQualityThreshold() <= 0.0) {
@@ -1620,13 +1610,13 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
 
   for (VertexList::iterator iter = innerVertices.begin(); iter != innerVertices.end(); ++iter) {
     Vertex* v = (*iter);
-    FaceList faces = findAdjacentFaces(mesh, v);
+    const FaceList& faces = faceAdjacency.Find(v);
     if (faces.empty()) {
       continue;
     }
 
     bool touchesPoorFace = false;
-    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
+    for (FaceList::const_iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
       if ((*faceIter)->quality() < PostprocessQualityThreshold()) {
         touchesPoorFace = true;
         break;
@@ -1645,7 +1635,7 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
     double targetY = 0.0;
     double totalWeight = 0.0;
 
-    for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
+    for (FaceList::const_iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
       Face* face = (*faceIter);
       Vertex* a = nullptr;
       Vertex* b = nullptr;
@@ -1694,7 +1684,7 @@ bool AdvancingFront::poorRegionShapeSmoothing(bool& changed) {
       v->setPosition(oldx + blend * (targetX - oldx), oldy + blend * (targetY - oldy));
 
       bool negativeSurface = false;
-      for (FaceList::iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
+      for (FaceList::const_iterator faceIter = faces.begin(); faceIter != faces.end(); ++faceIter) {
         if ((*faceIter)->orientedSurface() <= TOLERANCE_AFT) {
           negativeSurface = true;
           break;

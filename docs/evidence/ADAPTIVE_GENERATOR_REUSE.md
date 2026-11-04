@@ -10,7 +10,12 @@ control made progress without another assertion but reached the unchanged
 300-second cap before finishing its first call. No second-call MSVC or Book
 qualification follows. Preserve iterator checks, input and cap. The diagnosed next dependency is the targeted AFT adjacency lookup optimization
 described below, not another fixture/campaign.
-Required MSVC qualification blocks closure and integration.
+Required MSVC qualification blocks closure and integration. Subsequently, the
+[temporary AFT face index](AFT_FACE_ADJACENCY_INDEX.md) completes the first checked
+MSVC Eistute call with preserved artifacts and independent boundaries; the same
+single process reaches its unchanged total 300-second cap in the second call.
+This supersedes the current first-call blocker, while retaining all earlier
+failed observations. Two-call reuse and Book remain unqualified.
 
 The [single CPU/stack diagnosis](ADAPTIVE_REUSE_TIMEOUT_DIAGNOSIS.md) preserves the
 same binary/configuration and confirms active CPU work through FindUV/curvature,

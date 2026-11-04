@@ -10,17 +10,22 @@ Exact delivery head/main status is recorded by its PR and local integration seal
 Remote main remains d1619137af4ad53e3bb98cf5fc4336f75350629f (PR #162).
 The adaptive reuse candidate fixes one reproduced record leak and four empty
 diagonal-list reads. GCC frozen/reuse observations pass. Checked MSVC Eistute
-then reaches the unchanged 300-second cap in its first call; repeated MSVC and
-Book are unqualified. The candidate stays unintegrated. The fixed first-call timeout remains a required
-gate; preserve input, checks and cap.
+previously reached the unchanged 300-second cap in its first call. With the scoped
+index below, the first now completes and the second reaches that total cap;
+repeated MSVC and Book remain unqualified. The candidate stays unintegrated.
+Preserve the required control's input, checks and cap.
 
-The [single CPU/stack diagnosis](evidence/ADAPTIVE_REUSE_TIMEOUT_DIAGNOSIS.md) is now
-complete: 295.031 CPU seconds in 300.008 wall seconds, six valid samples, and
-21.788 ms total suspension. Samples identify FindUV/Bezier evaluation and repeated
-full face-list scans inside AFT smoothing; the last sample reaches ErrorGlobal.
-The required run still times out. Next implement an order-preserving temporary
-AFT face-incidence index, then measure the same case under the same cap. Production,
-binary/configuration and prior partial outputs are unchanged by the diagnosis.
+The [temporary AFT face index](evidence/AFT_FACE_ADJACENCY_INDEX.md) now removes
+repeated full-list scans from all three smoothers while retaining face order,
+duplicates, live geometry and every numerical/update expression. GCC/MSVC builds,
+75 CTest/389 nested controls and frozen GCC Eistute preservation pass. One checked
+MSVC Eistute observation preserves input/configuration/checks and the total 300 s
+cap: the first call now completes (five states, 15 boundary comparisons, 18 old
+partial artifacts exact); the second times out at step 4. No further model is run.
+Adaptive reuse and integration remain blocked; no complete two-call speedup is
+claimed. Preserve the earlier [CPU/stack diagnosis](evidence/ADAPTIVE_REUSE_TIMEOUT_DIAGNOSIS.md),
+failed first-call observations and both new outputs. Further production work must
+target a demonstrated remaining cost without changing scientific policy or cap.
 
 ## P4 production repair: adaptive reuse consistency metadata
 
