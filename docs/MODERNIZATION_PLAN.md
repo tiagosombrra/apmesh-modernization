@@ -51,11 +51,20 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+The active adaptive-reuse candidate is blocked before integration: after four
+reproduced diagonal-list guards, checked MSVC Eistute times out at the unchanged
+300-second cap during its first call. GCC preservation/reuse passes; MSVC second
+call and Book remain unqualified. Keep one next dependency: diagnose that fixed
+first-call timeout without raising the cap, disabling checks or adding fixtures.
+
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.
+The required MSVC gate additionally exposed four empty diagonal-neighbor reads
+in first-call template construction. Guard only those observed accesses; preserve
+nonempty expressions and frozen science, without disabling Debug iterator checks.
 Two calls per unchanged captured Eistute/Book profile must match frozen GCC and
 fresh same-ABI MSVC output, including rejection/retry evidence and positive boundary
-coverage. Existing exact-head/main gates apply. This closes that S3-05/08 gap;
+coverage. Existing revised-head/main gates apply. These candidate S3-05/06/08 repairs remain unintegrated;
 context changes, failed-call recovery and other row requirements remain separate.
 
 P4's [serial archive isolation](evidence/SERIAL_GENERATOR_REUSE.md) removes the

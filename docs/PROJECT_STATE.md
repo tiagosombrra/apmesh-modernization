@@ -5,15 +5,28 @@
 Reviewed starting main: `d1619137af4ad53e3bb98cf5fc4336f75350629f` (PR #162).
 Exact delivery head/main status is recorded by its PR and local integration seal.
 
+## Active P4 candidate: integration blocked
+
+Remote main remains d1619137af4ad53e3bb98cf5fc4336f75350629f (PR #162).
+The adaptive reuse candidate fixes one reproduced record leak and four empty
+diagonal-list reads. GCC frozen/reuse observations pass. Checked MSVC Eistute
+then reaches the unchanged 300-second cap in its first call; repeated MSVC and
+Book are unqualified. The candidate stays unintegrated. Diagnose that fixed
+first-call timeout before resuming qualification; preserve input, checks and cap.
+
 ## P4 production repair: adaptive reuse consistency metadata
 
 The [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) resets the current
 consistency flag at serial generation entry. Original Eistute reuse leaks 1 into
 the next step-0 acceptance record; fresh runs report 0. OBJ bytes and decisions
-already agree. Only that demonstrated flag changes. Two same-profile Eistute/Book
+already agree. A required MSVC gate also reproduced four empty diagonal-list
+reads in first-call template construction; guarded accesses preserve all nonempty
+expressions, vertex publication and scientific policies. Failed head/stacks remain
+retained. Two same-profile Eistute/Book
 calls must preserve frozen GCC output and fresh same-ABI MSVC output, with positive
 independent boundary coverage, on exact head/main. Existing regression is reused.
-This closes that S3-05/08 record leak; broader reuse/recovery and Stage 3 stay open.
+Require the final revised head/main gates for S3-05/06/08; broader reuse/recovery
+and Stage 3 stay open.
 
 ## P4 production repair: serial generation archive isolation
 

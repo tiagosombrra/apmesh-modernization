@@ -1290,8 +1290,8 @@
     {
       "id": "C35",
       "topic": "Adaptive reuse initial consistency metadata",
-      "statement": "Serial generation entry resets current_consistency_regularization_active_ to its original fresh-instance value zero. Later adaptive writes and acceptance/report calculations retain their original positions and formulas. The fixed normal reuse observation runs two typed Execute calls with one captured Eistute or Book article profile, fresh Timer and reapplied process config, archiving completed outputs between calls. GCC calls preserve frozen fresh output; MSVC second output preserves its independently verified fresh same-ABI first output. Saved-root and FindUV counts, scientific states, accepted/rejected traces, IDs and positive boundary coverage agree.",
-      "limits": "Only the original one-field Eistute step-0 acceptance-record leak is repaired; OBJ bytes and accepted/rejected decisions already agreed. No speculative effective-control reset, cross-ABI byte comparison, self-comparison, new scientific input or selector/failure injection. Exception recovery, changed contexts, arbitrary output reuse, interleaving/concurrency, external Geometry and complete-process instruments remain open. Original preparation failures and strict regression are preserved in ADAPTIVE_GENERATOR_REUSE.md.",
+      "statement": "Serial generation entry resets current_consistency_regularization_active_ to its original fresh-instance value zero. Later adaptive writes and acceptance/report calculations retain their original positions and formulas. The fixed normal reuse observation runs two typed Execute calls with one captured Eistute or Book article profile, fresh Timer and reapplied process config, archiving completed outputs between calls. Required observations compare GCC calls with frozen fresh output and MSVC second output with its independently verified fresh same-ABI first output. Saved-root and FindUV counts, scientific states, accepted/rejected traces, IDs and positive boundary coverage must agree. Checked-MSVC qualification is currently blocked as recorded in the limits.",
+      "limits": "Only the original one-field Eistute step-0 acceptance-record leak is repaired; OBJ bytes and accepted/rejected decisions already agreed. No speculative effective-control reset, cross-ABI byte comparison, self-comparison, new scientific input or selector/failure injection. Exception recovery, changed contexts, arbitrary output reuse, interleaving/concurrency, external Geometry and complete-process instruments remain open. Original preparation failures and strict regression are preserved in ADAPTIVE_GENERATOR_REUSE.md. Candidate only: required checked-MSVC Eistute qualification is blocked by a 300-second first-call timeout after the guards; no integration or whole-row closure is claimed.",
       "evidence": [
         {
           "path": "src/generator/generator_adaptive.cpp",
@@ -1300,6 +1300,26 @@
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "file << \"consistency_regularization_active=\" << current_consistency_regularization_active_"
+        }
+      ]
+    },
+    {
+      "id": "C36",
+      "topic": "Outer vertex diagonal observer preconditions",
+      "statement": "At each of the four makeOuterVertices corner-sharing comparisons, both second-hop diagonal-neighbor lists must be nonempty before their front/back observers are read. Direct neighbors are covered by the existing inBoundary return. Empty diagonal lists provide no observer to compare; no cell or template is fabricated. With nonempty lists, original equality expressions and assignments, traversal order, coordinates, IDs and publication are unchanged. All four missing-list accesses are reproduced by fatal checked-MSVC diagnostic prefixes of the unchanged Eistute article input.",
+      "limits": "The original exact-head MSVC first call failed; its empty-list assertion and four stacks remain retained. Require revised-head/main checked-MSVC Eistute/Book execution and frozen GCC scientific identity before integration. No disabled iterator checks, broader neighbor-graph validity, foreign/null entries, general root/domain qualification, parallel execution or complete-process instrument claim follows. The repair changes only the demonstrated undefined accesses; all other template conditions and scientific policies retain their original source tokens. Candidate only: required checked-MSVC Eistute qualification is blocked by a 300-second first-call timeout after the guards; no integration or whole-row closure is claimed.",
+      "evidence": [
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "void QuadtreeCell::makeOuterVertices()"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "!neighbors[QUAD_R].front()->neighbors[QUAD_B].empty()"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "!neighbors[QUAD_L].front()->neighbors[QUAD_T].empty()"
         }
       ]
     }

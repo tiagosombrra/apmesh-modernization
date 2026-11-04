@@ -36,7 +36,10 @@ parallel or broader caller qualification follows. All row dispositions remain.
 ## Required exit observations
 
 P4's [adaptive reuse observation/repair](../evidence/ADAPTIVE_GENERATOR_REUSE.md)
-closes the leaked initial consistency flag in S3-05/08. The fixed two-call
+targets the leaked initial consistency flag in S3-05/08 and the four demonstrated
+S3-06 diagonal-list precondition failures. The initial MSVC head failed before
+its reused call; after guards, its first call reaches the unchanged 300-second
+cap. MSVC remains unqualified and integration is blocked. The fixed two-call
 Eistute/Book inventory preserves frozen GCC and fresh same-ABI MSVC output,
 decisions, IDs and positive boundary coverage. Its qualification does not extend
 to context changes, exception recovery, arbitrary inputs or complete-process

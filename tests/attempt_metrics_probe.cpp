@@ -40,6 +40,9 @@ using apmesh::application::LoadRuntimeConfig;
 #if defined(_WIN32)
 #include <windows.h>
 #endif
+#if defined(_MSC_VER) && defined(_DEBUG)
+#include <crtdbg.h>
+#endif
 
 namespace {
 std::unique_ptr<MeshAdaptive> MakeMesh(unsigned count) {
@@ -1828,6 +1831,13 @@ public:
 namespace {
 int CheckAdaptiveReuse(const std::filesystem::path& config_path,
                        const std::filesystem::path& output) {
+#if defined(_WIN32)
+  SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX);
+#endif
+#if defined(_MSC_VER) && defined(_DEBUG)
+  _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+  _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
+#endif
   const auto config = LoadRuntimeConfig(config_path.string());
   ApplyRuntimeConfig(config);
   GeneratorAdaptive generator(apmesh::application::MakeGenerationContext(config, NUMBER_PROCESS));

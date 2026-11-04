@@ -4303,8 +4303,8 @@
       "path": "src/crab_mesh/aft/quadtree_cell.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "1759113e92adac95e7ca8dfaf0f0eed4df4f0d1edfc5e0e2d62bd7ccceab84d9",
-      "bytes": 59047,
+      "sha256": "ee2211d196db73ab7d9c6583af08bf80214acd7316a388bc8172bef774f88aa4",
+      "bytes": 59579,
       "includes": [
         {
           "line": 1,
@@ -6568,8 +6568,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 34,
-    "source_anchors": 257,
+    "contracts": 35,
+    "source_anchors": 260,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

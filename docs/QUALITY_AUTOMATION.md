@@ -7,7 +7,9 @@ calls per existing Eistute/Book article profile through the existing metrics
 probe, on GCC and MSVC. Compare GCC against frozen output and MSVC's second call
 against its independently checked fresh first call. Preserve exact scientific
 artifacts, traces, IDs and positive boundaries; keep ABI-specific evidence distinct.
-Existing exact-head/main gates apply; no new model, target or instrument campaign.
+The first MSVC head stopped at an empty diagonal-neighbor access; four fatal
+stacks constrain the added list preconditions. Keep Debug iterator checks and
+require revised-head/main gates; no new model or instrument campaign.
 
 ## Serial generator reuse
 

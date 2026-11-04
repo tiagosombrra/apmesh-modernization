@@ -1,4 +1,16 @@
-# Adaptive generation reuse: initial consistency metadata
+# Adaptive reuse: consistency metadata and diagonal neighbor preconditions
+
+## Candidate status: integration blocked
+
+The candidate is not integrated. GCC normal/adaptive reuse, frozen scientific
+comparisons and the existing regression pass on the measured heads. The first
+MSVC delivery head failed on empty diagonal lists; four fatal diagnostic prefixes
+localized those accesses. After guarding all four, the fixed checked-MSVC Eistute
+control made progress without another assertion but reached the unchanged
+300-second cap before finishing its first call. No second-call MSVC or Book
+qualification follows. Preserve iterator checks, input and cap. The active next
+dependency is diagnosis of this first-call timeout, not another fixture/campaign.
+Required MSVC qualification blocks closure and integration.
 
 P4 engineering diagnostic-state repair, starting at main
 d1619137af4ad53e3bb98cf5fc4336f75350629f (PR #162).
@@ -11,8 +23,27 @@ survives because it was reset between adaptive steps but not at generation entry
 Reset only that demonstrated flag at the serial generation boundary, beside the
 existing archive isolation. The first-call constructor value remains 0; later
 adaptation updates are unchanged. No acceptance formula, policy, decision, output
-schema, layout, API, captured control or parallel path changes. Other current
-fields are not reset speculatively.
+schema, layout, API or captured control changes. Other current fields are not
+reset speculatively. The reset is exclusive to serial entry.
+
+The first exact-head MSVC observation then stopped in the first fresh Eistute
+call at std::list::front on an empty diagonal-neighbor list. Stack capture located
+makeOuterVertices; fixed-input diagnostic prefixes subsequently reproduced the
+same defect at all four corner comparisons, including empty back access. Direct
+neighbors exist on this non-boundary cell, but a direct neighbor can itself touch
+the root boundary and have no second-hop diagonal neighbor. Require both relevant
+lists before comparing their front/back entries. Existing nonempty comparisons,
+vertex coordinates, IDs, ownership/publication and template choices remain in
+their original order. An absent diagonal list supplies no observer to compare;
+no replacement cell, fallback or forced template is introduced. GCC frozen output
+and checked MSVC execution are required before accepting this bounded S3-06 repair.
+
+The failed head 94fa39eb945571e3a661f8fd7cd6da66c8085457, runtime dialog text and
+all four fatal diagnostic stacks are preserved. Diagnostics stop at the first
+assertion; they do not ignore checks. The normal probe now routes CRT assertions
+to stderr and keeps Windows fault dialogs out of unattended tests. Iterator checks
+and compiler flags remain enabled and unchanged. No MSVC first/second comparison
+or Book success is claimed from the failed head.
 
 ## Fixed observation and gates
 
@@ -50,8 +81,10 @@ whitespace, inventory/contracts and staged/remote checks. Unchanged destructor
 instrument evidence is reused by identity; no new instrument campaign. Timing
 CSV values remain outside byte preservation, as in the existing regression.
 
-This closes the observed initial consistency-record leak and qualifies only two
+The candidate addresses the observed initial consistency-record leak and the four
+diagonal-list precondition failures. GCC reuse observation remains limited to two
 normal adaptive calls with the same captured Eistute or Book profile within
-S3-05/08. Exception recovery, context changes, arbitrary output reuse, interleaved/
-concurrent execution, external Geometry, other inputs and complete-process memory
+S3-05/06/08; checked-MSVC qualification is blocked as recorded above. Exception
+recovery, context changes, arbitrary output reuse, interleaved/concurrent
+execution, external Geometry, other inputs and complete-process memory
 retain their obligations. Stage 3 remains open; no broader reuse claim follows.
