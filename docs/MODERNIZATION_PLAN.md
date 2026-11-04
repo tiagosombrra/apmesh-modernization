@@ -51,6 +51,13 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+P4's [serial archive isolation](evidence/SERIAL_GENERATOR_REUSE.md) removes the
+reproduced owner accumulation across successful h/h/disabled serial calls using
+the same Generator. Histories still retain every existing attempt within a run;
+normal typed/raw results match fresh generators. Existing GCC/MSVC/regression
+gates apply and unchanged destructor evidence is reused by identity. This closes
+that S3-01/05/08 sub-obligation; adaptive reuse, recovery and other row limits stay.
+
 P4's [obsolete-curve retirement](evidence/REPLACED_CURVE_OBSERVERS.md) now repairs
 the reproduced public ReplaceCurve lifetime defect in Bezier and Hermite. Old
 observations retire after the last incidence leaves, without allocating or

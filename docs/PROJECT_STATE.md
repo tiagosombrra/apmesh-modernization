@@ -2,8 +2,19 @@
 
 ## Current checkpoint and active work
 
-Reviewed starting main: `de588cab99e45cc466e533eb29faa1b3f944ea16` (PR #160).
+Reviewed starting main: `5bcef3273c7af2f8da11052c4eb65d343707698e` (PR #161).
 Exact delivery head/main status is recorded by its PR and local integration seal.
+
+## P4 production repair: serial generation archive isolation
+
+The [serial reuse repair](evidence/SERIAL_GENERATOR_REUSE.md) retires saved error
+aliases and mesh owners at the next serial generation entry. Original h/h/disabled
+calls retain 1/2/2 archives; repaired calls match fresh instances at 1/1/0 with
+identical graph/ID/scalar results and FindUV counts. Intra-generation histories,
+scientific policies and parallel paths are unchanged. Require existing regression
+and the same native control against GCC/MSVC engines on exact head/main; reuse
+unchanged destructor evidence. This closes the named S3-01/05/08 retention gap,
+not adaptive reuse/recovery or complete-process qualification. Stage 3 stays open.
 
 ## P4 production repair: obsolete curve observers
 
