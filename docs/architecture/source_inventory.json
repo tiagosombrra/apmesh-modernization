@@ -29,8 +29,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 652,
-    "first_party_include_edges": 364
+    "literal_include_directives": 654,
+    "first_party_include_edges": 366
   },
   "cross_component_directives": [
     {
@@ -189,6 +189,11 @@
       "count": 2
     },
     {
+      "from": "data/mesh",
+      "to": "data/patch",
+      "count": 1
+    },
+    {
       "from": "data/patch",
       "to": "data",
       "count": 1
@@ -197,6 +202,11 @@
       "from": "data/patch",
       "to": "data/curve",
       "count": 3
+    },
+    {
+      "from": "data/patch",
+      "to": "data/mesh",
+      "count": 1
     },
     {
       "from": "data/tree",
@@ -461,7 +471,7 @@
     },
     {
       "path": "tests/mesh_memory/CMakeLists.txt",
-      "sha256": "85962c88900bb666620e07c78cea1eb074fc932eb62d5d30feea17eff0e17bf8"
+      "sha256": "a81628e284a8794990be53111c9d37d09aafe668f0d0682b561c6d0420c5fa31"
     },
     {
       "path": "tests/model_memory/CMakeLists.txt",
@@ -2078,8 +2088,8 @@
       "path": "include/data/mesh/sub_mesh.h",
       "component_by_directory": "data/mesh",
       "kind": "header",
-      "sha256": "273d6f9aec08da7b17a6a5db7cd5f4e6d44c6aef41da353042123c7426de72b3",
-      "bytes": 2140,
+      "sha256": "e6260a066f62a1c90e767e273722956d23dcb3a7c2ae18aa62235ca368867dbc",
+      "bytes": 2515,
       "includes": [
         {
           "line": 4,
@@ -2184,8 +2194,8 @@
       "path": "include/data/patch/patch.h",
       "component_by_directory": "data/patch",
       "kind": "header",
-      "sha256": "70d96c24d0a58ad1870b64beefcdd8db30fda550c9c3064bffb553e390f43354",
-      "bytes": 620,
+      "sha256": "17a420775a1a84e0cf9fc83b290a3b7d3ff8bcb00b4923f33e3eb7c2f512b63e",
+      "bytes": 1005,
       "includes": []
     },
     {
@@ -4763,8 +4773,8 @@
       "path": "src/data/mesh/sub_mesh.cpp",
       "component_by_directory": "data/mesh",
       "kind": "translation_unit",
-      "sha256": "27a405b08c9bca17397cf1c86cf2c487dd0e96db5a366f9ed306a24ccb060b37",
-      "bytes": 2089,
+      "sha256": "e17fae302db15ca855f9aeb945f676da847bd23238810c83b3a2895bdd69e161",
+      "bytes": 3349,
       "includes": [
         {
           "line": 1,
@@ -4789,6 +4799,13 @@
         },
         {
           "line": 5,
+          "spelling": "data/patch/patch.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/patch.h"
+        },
+        {
+          "line": 6,
           "spelling": "memory",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -4839,8 +4856,8 @@
       "path": "src/data/patch/patch.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "c67345bb8c4640a4e23bac62e0897013ed7d6b3425af6c6fc56681990c134e9a",
-      "bytes": 518,
+      "sha256": "51ebf618c4e3c5e1ec630bca4a4d5b177c7def8cb213ce6f3790d8bc4564978e",
+      "bytes": 954,
       "includes": [
         {
           "line": 1,
@@ -4848,6 +4865,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch.h"
+        },
+        {
+          "line": 3,
+          "spelling": "data/mesh/sub_mesh.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/mesh/sub_mesh.h"
         }
       ]
     },
@@ -6530,8 +6554,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 30,
-    "source_anchors": 245,
+    "contracts": 31,
+    "source_anchors": 249,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

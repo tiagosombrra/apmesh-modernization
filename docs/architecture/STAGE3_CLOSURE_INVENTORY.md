@@ -35,6 +35,13 @@ parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 
+P4 closes the named [registered Patch/SubMesh retirement](../evidence/PATCH_SUBMESH_RETIREMENT.md)
+sub-obligation in S3-05/07: normal external-Geometry and Execute-local-Geometry
+callers now retire their registered observations in either owner order, including
+retained mesh back pointers. Exact-head/main caller, native ASan/CRT and existing
+scientific gates are required. This does not close either whole row: public
+mutation/cache, arbitrary foreign forward links and broader callers remain open.
+
 - **S3-01** (C04, C05): Supported caller/rebuild/rejection and teardown observations preserve ownership/adjacency, with actual negative instruments and explicit invalid arrangements. Evidence: [STAGE3_SUBMESH_LIFETIME.md](../evidence/STAGE3_SUBMESH_LIFETIME.md), [STAGE3_TRIANGLE_CONSTRUCTION.md](../evidence/STAGE3_TRIANGLE_CONSTRUCTION.md).
 - **S3-02** (C30): Preserve exact qualified prefix rollback/retry, working controls and evidence; rerun only required invalidated or delivery gates. Evidence: [STAGE3_HERMITE_CONSTRUCTION.md](../evidence/STAGE3_HERMITE_CONSTRUCTION.md).
 - **S3-03** (C29): Preserve qualified all-match removal, dependent teardown and controls; do not infer full-process safety. Evidence: [STAGE3_HERMITE_OBSERVERS.md](../evidence/STAGE3_HERMITE_OBSERVERS.md).

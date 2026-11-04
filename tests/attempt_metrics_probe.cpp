@@ -240,6 +240,59 @@ void CheckFindUvStatistics(const std::filesystem::path& output) {
                "executions=2 reset=1 legacy=1 scalar_bits=10\n";
 }
 
+bool CheckPatchCallerObservers(const std::filesystem::path& output) {
+  struct Restore {
+    std::string mode = ADAPTIVE_MODE, name = NAME_MODEL, write = WRITE_MESH;
+    int steps = STEPS;
+    ~Restore() {
+      ADAPTIVE_MODE = mode;
+      NAME_MODEL = name;
+      WRITE_MESH = write;
+      STEPS = steps;
+    }
+  } restore;
+  const auto fixture =
+      std::filesystem::path(__FILE__).parent_path() / "curve_memory/data/charge_input.bp";
+  ADAPTIVE_MODE = "legacy";
+  STEPS = 0;
+  Timer timer;
+  Geometry external;
+  PatchReader reader;
+  reader.ReaderFilePatches(&external, fixture.string().c_str());
+  const unsigned count = external.GetNumberPatches();
+  bool registered = count > 0, mesh_first = true, patch_first = false;
+  WRITE_MESH = "h";
+  NAME_MODEL = (output / "external-patch-owner").generic_string();
+  {
+    Model model(&external);
+    GeneratorAdaptive generator;
+    generator.Generator(model, &timer);
+    for (unsigned i = 0; i < count; ++i) {
+      const auto* patch = external.GetPatch(i);
+      const auto* sub = patch->GetSubMesh();
+      registered = registered && sub != nullptr && sub->GetPatch() == patch;
+    }
+  }
+  for (unsigned i = 0; i < count; ++i)
+    mesh_first = mesh_first && external.GetPatch(i)->GetSubMesh() == nullptr;
+  WRITE_MESH.clear();
+  NAME_MODEL = (output / "local-patch-owner").generic_string();
+  GeneratorAdaptive retained;
+  const int code = retained.Execute(
+      apmesh::application::GenerationRequest{1, 1, fixture.generic_string()}, &timer);
+  const auto* mesh = retained.mesh_.get();
+  patch_first = code == 0 && mesh != nullptr && mesh->GetNumberSubMeshesAdaptive() == count;
+  if (mesh != nullptr) {
+    for (unsigned i = 0; i < mesh->GetNumberSubMeshesAdaptive(); ++i) {
+      const auto* sub = mesh->GetSubMeshAdaptiveByPosition(i);
+      patch_first = patch_first && sub != nullptr && sub->GetPatch() == nullptr;
+    }
+  }
+  std::cout << "patch_caller_observers patches=" << count << " registered=" << registered
+            << " external_retired=" << mesh_first << " local_retired=" << patch_first << '\n';
+  return registered && mesh_first && patch_first;
+}
+
 void CheckGenerationRequests(const std::filesystem::path& output) {
   using apmesh::application::GenerationRequest;
   const std::string path = (output / "missing-request.bp").generic_string();
@@ -1807,6 +1860,8 @@ int main(int argc, char* argv[]) {
     std::filesystem::current_path(output);
     if (mode == "null-geometry" || mode == "null-mesh" || mode == "null-both")
       CheckDomainInputs(mode);
+    else if (mode == "patch-observers")
+      return CheckPatchCallerObservers(output) ? 0 : 1;
     else if (mode == "curved" || mode == "planar")
       WriteCurvatureControl(output, mode == "curved");
     else
@@ -1820,6 +1875,8 @@ int main(int argc, char* argv[]) {
     throw std::runtime_error("Output directory already exists");
   CheckGenerationContexts(output);
   CheckFindUvStatistics(output);
+  if (!CheckPatchCallerObservers(output))
+    throw std::runtime_error("Registered patch caller observations survived their owners");
   CheckGenerationRequests(output);
   CheckAdaptivePolicyContexts();
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)

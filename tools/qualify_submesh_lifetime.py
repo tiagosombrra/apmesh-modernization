@@ -23,6 +23,9 @@ def qualify(asan, crt, runtime, output):
               ("asan", asan, "use-after-free", "heap-use-after-free"),
               ("crt", crt, "leak", "retained-blocks"),
               ("crt", crt, "allocation-hook-control", None)]
+    cases += [("asan", asan, "patch-observers", None),
+              ("crt", crt, "patch-observers", None),
+              ("crt", crt, "patch-noalloc", None)]
     results = []
     for instrument, executable, mode, diagnostic in cases:
         process = subprocess.run([str(executable.resolve()), mode], env=environment,
@@ -47,27 +50,36 @@ def qualify(asan, crt, runtime, output):
                     passed = passed and "submesh_allocation=attempts:0 denied:0" in text
             elif mode == "allocation-hook-control":
                 passed = passed and "allocation_hook_control=detected" in text
+            elif mode in ("patch-observers", "patch-noalloc"):
+                passed = passed and ("patch_observers mesh_first:1 patch_first:1 history:1 "
+                                     "rebind:1 foreign:1 moves:1 patch_moves:1") in text
+                if mode == "patch-noalloc":
+                    passed = passed and "patch_allocation=attempts:0 denied:0" in text
         results.append({"instrument": instrument, "mode": mode, "exit_code": process.returncode,
                         "passed": bool(passed), "log_sha256": hashlib.sha256(data).hexdigest(),
                         "retained_blocks": int(retained[1]) if retained else None,
                         "retained_bytes": int(retained[2]) if retained else None,
                         "observations": [line for line in text.splitlines()
-                                         if line.startswith(("submesh_", "allocation_hook_control="))]})
+                                         if line.startswith(("submesh_", "patch_", "allocation_hook_control="))]})
         print(json.dumps({key: value for key, value in results[-1].items()
                           if key != "observations"}), flush=True)
+        if not passed:
+            break
     report = {
         "status": "passed" if all(case["passed"] for case in results) else "failed",
-        "scope": "Six actual mesh/node/element/triangle/point/vector units, Git-pinned original "
-                 "and candidate with the same probe. Eight lifetime layouts cover ordinary destruction, "
+        "scope": "Seven actual patch/mesh/node/element/triangle/point/vector units; "
+                 "Eight lifetime layouts cover ordinary destruction, "
                  "move construction, empty/populated destination assignment, populated self-move, empty "
                  "and node-only source, repeated vertices and null slots. Exact identity, adjacency, "
-                 "coordinates, curvature, UV, IDs, area and opaque patch observer values are checked. "
+                 "coordinates, curvature, UV, IDs, area and live patch observer identities are checked. "
                  "Eight CRT operations reject every allocation request and require zero attempts, "
                  "including teardown. Actual derived-element destruction consumes borrowed nodes in "
                  "a separate ASan experiment. Real UAF/leak/allocation-hook controls are required. "
                  "Graphs must own their nodes or borrow independently live nodes, with nonthrowing "
-                 "destructors. No automatic triangle deregistration, cross-owner graph repair, Patch "
-                 "rebinding, full-process/parallel/LSan/UBSan qualification or numerical change.",
+                 "destructors. Registered patch observers retire in both teardown orders, including "
+                 "history/list removal, rebind, move/source identity and foreign-forward preservation; "
+                 "a CRT check denies every allocation during those operations. No arbitrary foreign "
+                 "forward repair, cache refresh, full-process/parallel/LSan/UBSan qualification or numerical change.",
         "executables": {name: {"path": str(path.resolve()),
                                "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
                         for name, path in instruments},

@@ -51,6 +51,15 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+P4 now repairs [registered Patch/SubMesh retirement](evidence/PATCH_SUBMESH_RETIREMENT.md)
+in both reproduced normal public-caller orders. The complete related registration,
+teardown, rebinding and move package closes this named S3-05/07 sub-obligation
+without changing scientific policies. Reuse the existing regression and native
+instrument runner with three focused additions; require exact-head/main gates.
+Public mutation/cache and arbitrary foreign-forward validity remain separate.
+The next implementation must remove another demonstrated supported lifecycle gap;
+additional global-state migration or an automatic audit chain is not the queue.
+
 Stages 0-2 retain measured closure. Stage 3 remains open; stages 4-11 remain
 pending. The 37 numbered slices are historical component qualifications, not a
 percentage of completion. Later production repairs retain their own evidence.
