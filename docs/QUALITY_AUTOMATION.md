@@ -1,5 +1,13 @@
 # Local quality automation
 
+## Serial generator reuse
+
+The [archive isolation repair](evidence/SERIAL_GENERATOR_REUSE.md) adds one fixed
+successful reuse sequence to the existing metrics control and compiles that same
+probe against the canonical MSVC engine. Existing exact-head/main regression and
+science gates apply; unchanged isolated destructor evidence is reused by identity.
+No new CTest target or instrument campaign. Adaptive reuse/recovery remain open.
+
 ## Replaced curve observers
 
 The [P4 replacement repair](evidence/REPLACED_CURVE_OBSERVERS.md) adds two focused

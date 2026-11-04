@@ -23,6 +23,12 @@ other instruments and remaining closure obligations are still open.
 
 ## Entry domain and roots
 
+The later [serial archive repair](../evidence/SERIAL_GENERATOR_REUSE.md) qualifies
+the fixed successful same-Generator initial-only h/h/disabled sequence against
+fresh instances and retires prior owners at serial generation entry. This does
+not establish adaptive reuse, failure recovery or a complete-process instrument
+result; the P2 machine ledger remains the preserved historical entry specification.
+
 The later [P4 registered-observer repair](../evidence/PATCH_SUBMESH_RETIREMENT.md)
 now retires registered Patch/SubMesh links in both normal owner orders below.
 Its real external-Geometry and typed Execute witnesses use the unchanged existing

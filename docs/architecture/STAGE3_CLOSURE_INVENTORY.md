@@ -35,6 +35,12 @@ parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 
+P4's [serial archive isolation](../evidence/SERIAL_GENERATOR_REUSE.md) closes prior
+owner retention in S3-01/05/08 for the fixed successful initial-only sequence:
+same-generator h/h/disabled calls must match fresh roots, graph bits and FindUV
+counts at 1/1/0 saved roots. GCC/MSVC caller and exact-revision gates apply.
+Adaptive multi-step reuse, exception recovery and all whole-row limits remain.
+
 P4's [ReplaceCurve repair](../evidence/REPLACED_CURVE_OBSERVERS.md) closes the named
 obsolete-curve retirement sub-obligation of S3-05/07. Positive Bezier/Hermite
 replacement/destruction, repeated incidences, exact foreign observer order,

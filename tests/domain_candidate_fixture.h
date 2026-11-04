@@ -255,6 +255,12 @@ class DomainCandidateFixture {
   }
 
 public:
+  static const GeneratorAdaptive::MeshVector& SavedMeshes(const GeneratorAdaptive& generator) {
+    return generator.save_mesh_;
+  }
+  static std::size_t SavedErrorCount(const GeneratorAdaptive& generator) {
+    return generator.save_error_mesh_.size();
+  }
   static void ConfigureSynchronization(GeneratorAdaptive& generator, Geometry& geometry) {
     generator.ConfigureSharedCurveSynchronization(&geometry);
   }

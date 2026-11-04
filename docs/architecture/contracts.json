@@ -1266,6 +1266,26 @@
           "anchor": "patch->ReplaceCurve(e, replacement);"
         }
       ]
+    },
+    {
+      "id": "C34",
+      "topic": "Serial generation archive isolation",
+      "statement": "At entry to the serial Generator path, saved error aliases are cleared before prior saved MeshAdaptive owners. Histories belong to one generation: accepted/rejected owners within an ongoing call preserve their original ordering, retention and policy. Typed/raw Execute share this boundary after successful input reading; direct serial Generator uses it as well. Active root replacement, communicator/ID setup, metric resets, formulas and parallel paths are unchanged.",
+      "limits": "Measured reuse is the fixed successful initial-only Bezier h/h/disabled sequence, with saved-root counts 1/1/0 and exact graph/ID/scalar and FindUV equivalence to fresh instances on GCC/MSVC. Prior result views must not be used after the next generation begins. No adaptive multi-step reuse, changed captured context, failed-call recovery, concurrent/parallel, arbitrary external Geometry or complete-process memory qualification. Vector capacity may remain allocated. Existing destructor evidence is reused only for its unchanged isolated source scope.",
+      "evidence": [
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "save_error_mesh_.clear();"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "save_mesh_.clear();"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "int GeneratorAdaptive::Execute(const apmesh::application::GenerationRequest& request, Timer* timer)"
+        }
+      ]
     }
   ]
 }

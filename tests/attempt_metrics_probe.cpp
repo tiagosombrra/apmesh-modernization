@@ -1813,6 +1813,105 @@ void CheckQuadtreeControlsContexts() {
 }
 #endif
 
+#if !defined(AP_MESH_DOMAIN_FAILURE_WRAP)
+class DomainCandidateFixture {
+public:
+  static const GeneratorAdaptive::MeshVector& SavedMeshes(const GeneratorAdaptive& generator) {
+    return generator.save_mesh_;
+  }
+  static std::size_t SavedErrorCount(const GeneratorAdaptive& generator) {
+    return generator.save_error_mesh_.size();
+  }
+};
+#endif
+
+namespace {
+bool CheckSerialReuse(const std::filesystem::path& output) {
+  struct Restore {
+    std::string mode = ADAPTIVE_MODE, name = NAME_MODEL, write = WRITE_MESH;
+    int steps = STEPS;
+    ~Restore() {
+      ADAPTIVE_MODE = mode;
+      NAME_MODEL = name;
+      WRITE_MESH = write;
+      STEPS = steps;
+    }
+  } restore;
+  const auto input =
+      (std::filesystem::path(__FILE__).parent_path() / "curve_memory/data/charge_input.bp")
+          .generic_string();
+  const auto signature = [](const GeneratorAdaptive& generator) {
+    const auto& saved = DomainCandidateFixture::SavedMeshes(generator);
+    if (!generator.mesh_ && saved.empty())
+      throw std::runtime_error("Serial reuse control has no generated mesh");
+    auto* mesh = generator.mesh_ ? generator.mesh_.get() : saved.back().second.get();
+    std::vector<unsigned long long> values{mesh->GetNumberSubMeshesAdaptive()};
+    if (values.front() != 3)
+      throw std::runtime_error("Serial reuse reader fixture lost patch coverage");
+    const auto scalar = [&values](double value) {
+      unsigned long long bits;
+      static_assert(sizeof(bits) == sizeof(value));
+      std::memcpy(&bits, &value, sizeof(bits));
+      values.push_back(bits);
+    };
+    for (unsigned int i = 0; i < mesh->GetNumberSubMeshesAdaptive(); ++i) {
+      auto* sub = mesh->GetSubMeshAdaptiveByPosition(i);
+      values.push_back(sub->GetNumberNos());
+      values.push_back(sub->GetNumberElements());
+      for (unsigned int j = 0; j < sub->GetNumberNos(); ++j) {
+        const auto* node = sub->GetNoh(j);
+        values.push_back(node->GetId());
+        scalar(node->GetX());
+        scalar(node->GetY());
+        scalar(node->GetZ());
+      }
+      for (unsigned int j = 0; j < sub->GetNumberElements(); ++j) {
+        auto* element = sub->GetElement(j);
+        values.push_back(element->GetId());
+        for (unsigned int vertex = 1; vertex <= 3; ++vertex)
+          values.push_back(element->GetNoh(vertex).GetId());
+        scalar(element->GetArea());
+      }
+    }
+    return values;
+  };
+  ADAPTIVE_MODE = "legacy";
+  STEPS = 0;
+  GeneratorAdaptive reused;
+  bool passed = true;
+  for (unsigned int call = 0; call < 3; ++call) {
+    WRITE_MESH = call < 2 ? "h" : "";
+    const auto invoke = [&](GeneratorAdaptive& generator, const std::string& label) {
+      NAME_MODEL = (output / label / "control").generic_string();
+      Timer timer;
+      if (call == 1) {
+        char program[] = "reuse", processes[] = "1", threads[] = "1";
+        std::string path = input;
+        char* args[] = {program, processes, threads, path.data(), nullptr};
+        return generator.Execute(args, &timer);
+      }
+      return generator.Execute(apmesh::application::GenerationRequest{1, 1, input}, &timer);
+    };
+    GeneratorAdaptive fresh;
+    const int reference_code = invoke(fresh, "fresh-" + std::to_string(call));
+    const int reused_code = invoke(reused, "reused-" + std::to_string(call));
+    const auto count = DomainCandidateFixture::SavedMeshes(reused).size();
+    const auto expected = DomainCandidateFixture::SavedMeshes(fresh).size();
+    const bool equal = signature(reused) == signature(fresh);
+    const bool diagnostics =
+        reused.GetFindUvStatistics().calls == fresh.GetFindUvStatistics().calls &&
+        reused.GetFindUvStatistics().imax_exits == fresh.GetFindUvStatistics().imax_exits;
+    std::cout << "serial_reuse call=" << call << " archived=" << count << " expected=" << expected
+              << " graph_equal=" << equal << " diagnostics_equal=" << diagnostics << '\n';
+    passed = passed && reference_code == 0 && reused_code == 0 && count == expected &&
+             DomainCandidateFixture::SavedErrorCount(reused) ==
+                 DomainCandidateFixture::SavedErrorCount(fresh) &&
+             equal && diagnostics;
+  }
+  return passed;
+}
+} // namespace
+
 int main(int argc, char* argv[]) {
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
   if (argc == 2 && std::string(argv[1]) == "--accepted-root-contracts")
@@ -1860,6 +1959,8 @@ int main(int argc, char* argv[]) {
     std::filesystem::current_path(output);
     if (mode == "null-geometry" || mode == "null-mesh" || mode == "null-both")
       CheckDomainInputs(mode);
+    else if (mode == "serial-reuse")
+      return CheckSerialReuse(output) ? 0 : 1;
     else if (mode == "patch-observers")
       return CheckPatchCallerObservers(output) ? 0 : 1;
     else if (mode == "curved" || mode == "planar")
@@ -1875,6 +1976,8 @@ int main(int argc, char* argv[]) {
     throw std::runtime_error("Output directory already exists");
   CheckGenerationContexts(output);
   CheckFindUvStatistics(output);
+  if (!CheckSerialReuse(output))
+    throw std::runtime_error("Serial generation retained a prior execution archive");
   if (!CheckPatchCallerObservers(output))
     throw std::runtime_error("Registered patch caller observations survived their owners");
   CheckGenerationRequests(output);
