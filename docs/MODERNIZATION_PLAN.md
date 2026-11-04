@@ -39,8 +39,15 @@ The [dormant-state retirement](evidence/DORMANT_RUNTIME_REGISTRIES.md) removes b
 unused process-wide registries and their header dependencies, preserving every
 remaining initializer and all numerical/selection policies. Existing exact-revision
 builds and regression qualify the removal without new instruments or test targets.
-Precision units, complete-process memory/recovery, other callers and parallel
-execution retain their obligations. No automatic instrument/audit successor is added.
+The [FindUV diagnostic package](evidence/FIND_UV_EXECUTION_STATISTICS.md) now owns
+serial execution counts in each generator and isolates the CLI summary. Cumulative
+atomic aggregates and global I_MAX message cadence remain compatible; a same-thread
+scoped observer restores nested/unwound callers. No solver or scientific policy
+changes. The 201-definition counts remain, with two explicit compatibility
+aggregates and a separately inventoried observer. Existing regression is reused
+with focused native bookkeeping controls. Precision units, complete-process
+memory/recovery, other callers and parallel execution retain their obligations.
+No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 

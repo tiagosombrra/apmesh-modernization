@@ -6,17 +6,16 @@
 #include <iostream>
 
 #include "data/patch/patch_observer_scope.h"
+#include "data/patch/find_uv_statistics.h"
 
-extern double TOLERANCE;  // distância máxima entre dois pontos
+extern double TOLERANCE; // distância máxima entre dois pontos
 extern unsigned int I_MAX;
-extern std::atomic<unsigned long long> FINDUV_TOTAL_CALLS;
-extern std::atomic<unsigned long long> FINDUV_IMAX_EXITS;
 
 namespace {
 constexpr double kFindUvDamping = 0.65;
 constexpr double kFindUvParamTol = 1e-5;
 constexpr double kFindUvSpatialFactor = 50.0;
-}  // namespace
+} // namespace
 
 PatchHermite::PatchHermite() : PatchCoons() {}
 
@@ -59,12 +58,10 @@ PatchHermite::PatchHermite(PatchHermite* patch_hermite)
 //		C3
 //	C4		C2
 //		C1
-PatchHermite::PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2,
-                           CurveAdaptive* curve3, CurveAdaptive* curve4,
-                           VectorAdaptive tw00, VectorAdaptive tw10,
-                           VectorAdaptive tw01, VectorAdaptive tw11,
-                           bool signal_curve1, bool signal_curve2,
-                           bool signal_curve3, bool signal_curve4)
+PatchHermite::PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2, CurveAdaptive* curve3,
+                           CurveAdaptive* curve4, VectorAdaptive tw00, VectorAdaptive tw10,
+                           VectorAdaptive tw01, VectorAdaptive tw11, bool signal_curve1,
+                           bool signal_curve2, bool signal_curve3, bool signal_curve4)
     : PatchCoons() {
   apmesh::detail::PatchObserverScope observer_scope({curve1, curve2, curve3, curve4});
   this->signal_curve1_ = signal_curve1;
@@ -93,32 +90,20 @@ PatchHermite::PatchHermite(CurveAdaptive* curve1, CurveAdaptive* curve2,
 
   // 3. Seta os atributos de acordo com as curvas
   //
-  this->pt00_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve1)->GetPoint0();
-  this->pt01_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve3)->GetPoint0();
-  this->pt10_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve1)->GetPoint1();
-  this->pt11_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve3)->GetPoint1();
+  this->pt00_ = static_cast<CurveAdaptiveParametricHermite*>(curve1)->GetPoint0();
+  this->pt01_ = static_cast<CurveAdaptiveParametricHermite*>(curve3)->GetPoint0();
+  this->pt10_ = static_cast<CurveAdaptiveParametricHermite*>(curve1)->GetPoint1();
+  this->pt11_ = static_cast<CurveAdaptiveParametricHermite*>(curve3)->GetPoint1();
 
-  this->qv00_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve4)->GetVector0();
-  this->qv01_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve4)->GetVector1();
-  this->qv10_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve2)->GetVector0();
-  this->qv11_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve2)->GetVector1();
+  this->qv00_ = static_cast<CurveAdaptiveParametricHermite*>(curve4)->GetVector0();
+  this->qv01_ = static_cast<CurveAdaptiveParametricHermite*>(curve4)->GetVector1();
+  this->qv10_ = static_cast<CurveAdaptiveParametricHermite*>(curve2)->GetVector0();
+  this->qv11_ = static_cast<CurveAdaptiveParametricHermite*>(curve2)->GetVector1();
 
-  this->qu00_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve1)->GetVector0();
-  this->qu01_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve3)->GetVector0();
-  this->qu10_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve1)->GetVector1();
-  this->qu11_ =
-      static_cast<CurveAdaptiveParametricHermite*>(curve3)->GetVector1();
+  this->qu00_ = static_cast<CurveAdaptiveParametricHermite*>(curve1)->GetVector0();
+  this->qu01_ = static_cast<CurveAdaptiveParametricHermite*>(curve3)->GetVector0();
+  this->qu10_ = static_cast<CurveAdaptiveParametricHermite*>(curve1)->GetVector1();
+  this->qu11_ = static_cast<CurveAdaptiveParametricHermite*>(curve3)->GetVector1();
 
   this->tw00_ = tw00;
   this->tw01_ = tw01;
@@ -223,8 +208,7 @@ PointAdaptive PatchHermite::CalculatePointUV() {
   point.SetY((this->GetU() * ((this->GetGy() * (this->GetV()))))(0, 0));
   point.SetZ((this->GetU() * ((this->GetGz() * (this->GetV()))))(0, 0));
 
-  if (std::isnan(point.GetX()) || std::isnan(point.GetY()) ||
-      std::isnan(point.GetZ())) {
+  if (std::isnan(point.GetX()) || std::isnan(point.GetY()) || std::isnan(point.GetZ())) {
     cout << "-nan CalculatePointUV Hermite" << endl;
   }
 
@@ -242,7 +226,7 @@ void PatchHermite::PrintAllMatrixPatchHermite() {
 }
 
 tuple<double, double> PatchHermite::FindUV(const PointAdaptive& point) {
-  FINDUV_TOTAL_CALLS.fetch_add(1ULL, std::memory_order_relaxed);
+  apmesh::diagnostics::RecordFindUvCall();
 
   unsigned int iter = 0;
 
@@ -253,8 +237,7 @@ tuple<double, double> PatchHermite::FindUV(const PointAdaptive& point) {
   double delta_v = 0.0;
 
   PointAdaptive point_i;
-  const double spatial_tol =
-      std::max(1e-12, kFindUvSpatialFactor * std::fabs(TOLERANCE));
+  const double spatial_tol = std::max(1e-12, kFindUvSpatialFactor * std::fabs(TOLERANCE));
 
   while (true) {
     VectorAdaptive vector_tu = -(this->Qu(u_i, v_i));
@@ -268,8 +251,7 @@ tuple<double, double> PatchHermite::FindUV(const PointAdaptive& point) {
 
     point_i = this->Parameterize(u_i, v_i);
 
-    if (std::isnan(point_i.GetX()) || std::isnan(point_i.GetY()) ||
-        std::isnan(point_i.GetZ())) {
+    if (std::isnan(point_i.GetX()) || std::isnan(point_i.GetY()) || std::isnan(point_i.GetZ())) {
       cout << "-nan p_i" << endl;
     }
 
@@ -305,8 +287,8 @@ tuple<double, double> PatchHermite::FindUV(const PointAdaptive& point) {
     if (fabs(pivot) < TOLERANCE) {
       cout << "Erro! Não é possível encontrar as coordenadas paramétricas no "
               "ponto p"
-           << point.GetId() << " (" << point.GetX() << ", " << point.GetY()
-           << ", " << point.GetZ() << ")" << endl;
+           << point.GetId() << " (" << point.GetX() << ", " << point.GetY() << ", " << point.GetZ()
+           << ")" << endl;
 
       return make_tuple(-1.0, -1.0);
     }
@@ -374,22 +356,19 @@ tuple<double, double> PatchHermite::FindUV(const PointAdaptive& point) {
     point_i = this->Parameterize(u_i, v_i);
     const double dist = point_i.CalculateDistance(point);
 
-    const bool param_ok =
-        (fabs(delta_u) < kFindUvParamTol && fabs(delta_v) < kFindUvParamTol);
+    const bool param_ok = (fabs(delta_u) < kFindUvParamTol && fabs(delta_v) < kFindUvParamTol);
     if (param_ok || dist < spatial_tol) {
       break;
     }
 
     ++iter;
     if (iter >= I_MAX) {
-      const unsigned long long hit =
-          1ULL + FINDUV_IMAX_EXITS.fetch_add(1ULL, std::memory_order_relaxed);
+      const unsigned long long hit = apmesh::diagnostics::RecordFindUvImaxExit();
 #if USE_PRINT_COMENT
       if (hit <= 5ULL || (hit % 2000ULL) == 0ULL) {
-        std::cout << "[FindUV Hermite] I_MAX id=" << point.GetId()
-                  << " iter=" << iter << " |du|=" << fabs(delta_u)
-                  << " |dv|=" << fabs(delta_v) << " u=" << u_i << " v=" << v_i
-                  << " dist=" << dist << " spatial_tol=" << spatial_tol
+        std::cout << "[FindUV Hermite] I_MAX id=" << point.GetId() << " iter=" << iter
+                  << " |du|=" << fabs(delta_u) << " |dv|=" << fabs(delta_v) << " u=" << u_i
+                  << " v=" << v_i << " dist=" << dist << " spatial_tol=" << spatial_tol
                   << std::endl;
       }
 #endif

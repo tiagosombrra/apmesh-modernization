@@ -8,11 +8,10 @@
 #include <memory>
 
 #include "data/patch/patch_observer_scope.h"
+#include "data/patch/find_uv_statistics.h"
 
-extern double TOLERANCE;  // distância máxima entre dois pontos
+extern double TOLERANCE; // distância máxima entre dois pontos
 extern unsigned int I_MAX;
-extern std::atomic<unsigned long long> FINDUV_TOTAL_CALLS;
-extern std::atomic<unsigned long long> FINDUV_IMAX_EXITS;
 
 namespace {
 // Newton amortecido: reduz oscilacao; tolerancia em (du,dv) mais realista que TOLERANCE.
@@ -41,21 +40,12 @@ CreateOrientedCurve(const PointAdaptive& p0, const PointAdaptive& p1, const Poin
   return forward ? std::make_unique<CurveAdaptiveParametricBezier>(p0, p1, p2, p3)
                  : std::make_unique<CurveAdaptiveParametricBezier>(p3, p2, p1, p0);
 }
-}  // namespace
+} // namespace
 
 PatchBezier::PatchBezier()
-    : PatchCoons(),
-      signal_curve1_(true),
-      signal_curve2_(true),
-      signal_curve3_(true),
-      signal_curve4_(true),
-      area_(0),
-      ka_medio_(0),
-      segment_medio_(0),
-      area_triangle_(0),
-      number_triangle_(0),
-      id_process_(0),
-      id_patch_bezier_(0) {}
+    : PatchCoons(), signal_curve1_(true), signal_curve2_(true), signal_curve3_(true),
+      signal_curve4_(true), area_(0), ka_medio_(0), segment_medio_(0), area_triangle_(0),
+      number_triangle_(0), id_process_(0), id_patch_bezier_(0) {}
 
 PatchBezier::PatchBezier(PatchBezier* patch_bezier)
     : PatchCoons(patch_bezier), mat_base_(StartBezierMatrix()), area_(0), ka_medio_(0),
@@ -93,12 +83,10 @@ PatchBezier::PatchBezier(PatchBezier* patch_bezier)
 //		C3
 //	C4		C2
 //		C1
-PatchBezier::PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,
-                         CurveAdaptive* curve3, CurveAdaptive* curve4,
-                         PointAdaptive pt11, PointAdaptive pt21,
-                         PointAdaptive pt12, PointAdaptive pt22,
-                         bool signal_curve1, bool signal_curve2,
-                         bool signal_curve3, bool signal_curve4)
+PatchBezier::PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2, CurveAdaptive* curve3,
+                         CurveAdaptive* curve4, PointAdaptive pt11, PointAdaptive pt21,
+                         PointAdaptive pt12, PointAdaptive pt22, bool signal_curve1,
+                         bool signal_curve2, bool signal_curve3, bool signal_curve4)
     : PatchCoons() {
   apmesh::detail::PatchObserverScope observer_scope({curve1, curve2, curve3, curve4});
   this->signal_curve1_ = signal_curve1;
@@ -106,11 +94,11 @@ PatchBezier::PatchBezier(CurveAdaptive* curve1, CurveAdaptive* curve2,
   this->signal_curve3_ = signal_curve3;
   this->signal_curve4_ = signal_curve4;
 
-// As curvas devem ser definidas da esquerda para a direita, de baixo para
-// cima em relação ao Patch !!! Vizinhos que partilham a mesma curva (mesmos
-// quatro controlos, direto ou invertido — ver Geometry::VerifyCurveGeometry)
-// ficam ligados à mesma CurveAdaptive; a malha grosseira respeita ordem de
-// processamento dos patches (GeneratorInitialMesh).
+  // As curvas devem ser definidas da esquerda para a direita, de baixo para
+  // cima em relação ao Patch !!! Vizinhos que partilham a mesma curva (mesmos
+  // quatro controlos, direto ou invertido — ver Geometry::VerifyCurveGeometry)
+  // ficam ligados à mesma CurveAdaptive; a malha grosseira respeita ordem de
+  // processamento dos patches (GeneratorInitialMesh).
   // 1. Inclui as curvas na lista de curvas de CoonsPatch
   //
   this->curves_.push_back(curve1);
@@ -243,26 +231,11 @@ PatchBezier ::PatchBezier(const PointAdaptive pt00, const PointAdaptive pt01,
                           const PointAdaptive pt20, const PointAdaptive pt21,
                           const PointAdaptive pt22, const PointAdaptive pt23,
                           const PointAdaptive pt30, const PointAdaptive pt31,
-                          const PointAdaptive pt32, const PointAdaptive pt33,
-                          bool signal_curve1, bool signal_curve2,
-                          bool signal_curve3, bool signal_curve4)
-    : PatchCoons(),
-      pt03_(pt03),
-      pt13_(pt13),
-      pt23_(pt23),
-      pt33_(pt33),
-      pt02_(pt02),
-      pt12_(pt12),
-      pt22_(pt22),
-      pt32_(pt32),
-      pt01_(pt01),
-      pt11_(pt11),
-      pt21_(pt21),
-      pt31_(pt31),
-      pt00_(pt00),
-      pt10_(pt10),
-      pt20_(pt20),
-      pt30_(pt30) {
+                          const PointAdaptive pt32, const PointAdaptive pt33, bool signal_curve1,
+                          bool signal_curve2, bool signal_curve3, bool signal_curve4)
+    : PatchCoons(), pt03_(pt03), pt13_(pt13), pt23_(pt23), pt33_(pt33), pt02_(pt02), pt12_(pt12),
+      pt22_(pt22), pt32_(pt32), pt01_(pt01), pt11_(pt11), pt21_(pt21), pt31_(pt31), pt00_(pt00),
+      pt10_(pt10), pt20_(pt20), pt30_(pt30) {
   this->signal_curve1_ = signal_curve1;
   this->signal_curve2_ = signal_curve2;
   this->signal_curve3_ = signal_curve3;
@@ -398,7 +371,7 @@ void PatchBezier::PrintAllMatrixPatchBezier() {
 
 // encontra o parâmetro t de um dado ponto p na curva
 tuple<double, double> PatchBezier::FindUV(const PointAdaptive& point) {
-  FINDUV_TOTAL_CALLS.fetch_add(1ULL, std::memory_order_relaxed);
+  apmesh::diagnostics::RecordFindUvCall();
 
   unsigned int iter = 0;
 
@@ -410,8 +383,7 @@ tuple<double, double> PatchBezier::FindUV(const PointAdaptive& point) {
   double delta_v = 0.0;
 
   PointAdaptive p_i;
-  const double spatial_tol =
-      std::max(1e-12, kFindUvSpatialFactor * std::fabs(TOLERANCE));
+  const double spatial_tol = std::max(1e-12, kFindUvSpatialFactor * std::fabs(TOLERANCE));
 
   while (true) {
     VectorAdaptive Tu = -(this->Qu(u_i, v_i));
@@ -443,8 +415,8 @@ tuple<double, double> PatchBezier::FindUV(const PointAdaptive& point) {
     if (fabs(pivot) < TOLERANCE) {
       cout << "Erro! Não é possível encontrar as coordenadas paramétricas no "
               "ponto p"
-           << point.GetId() << " (" << point.GetX() << ", " << point.GetY()
-           << ", " << point.GetZ() << ")" << endl;
+           << point.GetId() << " (" << point.GetX() << ", " << point.GetY() << ", " << point.GetZ()
+           << ")" << endl;
 
       return make_tuple(-1.0, -1.0);
     }
@@ -489,22 +461,19 @@ tuple<double, double> PatchBezier::FindUV(const PointAdaptive& point) {
     p_i = this->Parameterize(u_i, v_i);
     const double dist = p_i.CalculateDistance(point);
 
-    const bool param_ok =
-        (fabs(delta_u) < kFindUvParamTol && fabs(delta_v) < kFindUvParamTol);
+    const bool param_ok = (fabs(delta_u) < kFindUvParamTol && fabs(delta_v) < kFindUvParamTol);
     if (param_ok || dist < spatial_tol) {
       break;
     }
 
     ++iter;
     if (iter >= I_MAX) {
-      const unsigned long long hit =
-          1ULL + FINDUV_IMAX_EXITS.fetch_add(1ULL, std::memory_order_relaxed);
+      const unsigned long long hit = apmesh::diagnostics::RecordFindUvImaxExit();
 #if USE_PRINT_COMENT
       if (hit <= 5ULL || (hit % 2000ULL) == 0ULL) {
-        std::cout << "[FindUV Bezier] I_MAX id=" << point.GetId()
-                  << " iter=" << iter << " |du|=" << fabs(delta_u)
-                  << " |dv|=" << fabs(delta_v) << " u=" << u_i << " v=" << v_i
-                  << " dist=" << dist << " spatial_tol=" << spatial_tol
+        std::cout << "[FindUV Bezier] I_MAX id=" << point.GetId() << " iter=" << iter
+                  << " |du|=" << fabs(delta_u) << " |dv|=" << fabs(delta_v) << " u=" << u_i
+                  << " v=" << v_i << " dist=" << dist << " spatial_tol=" << spatial_tol
                   << std::endl;
       }
 #endif

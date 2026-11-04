@@ -40,6 +40,13 @@ all remaining initializers and policy/selection order are preserved. This is a
 bounded stage 6 state cleanup supporting explicit S3-05 boundaries, not row/stage
 closure. Existing exact-revision gates apply; no audit/instrument successor is added.
 
+The [FindUV diagnostic package](../evidence/FIND_UV_EXECUTION_STATISTICS.md) isolates
+serial Execute counts in generator-owned state, preserving cumulative aggregates,
+message cadence and solver tokens. Same-thread scoped observation restores nested
+callers and unwinds. Existing native/scientific gates apply, including a direct
+same-profile summary comparison; no new instrument campaign. This supports
+S3-05/08 bookkeeping without changing their row status or qualifying reuse/recovery.
+
 ## Work-item admission and execution rules
 
 Before a task, record its closure row, concrete output, supporting failure or

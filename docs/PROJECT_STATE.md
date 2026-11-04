@@ -2,8 +2,21 @@
 
 ## Current checkpoint and active work
 
-Reviewed starting main: `cd248e082a7f9a00067d596aeeb2314d511fe15b` (PR #156).
-Exact dormant-state delivery head/main status is recorded by its PR and local integration seal.
+Reviewed starting main: `29c5484b4ca9fd5b25b902f019d31e0397300d62` (PR #157).
+Exact FindUV statistics delivery head/main status is recorded by its PR and local integration seal.
+
+## Delivered production state: per-execution FindUV statistics
+
+The [FindUV statistics package](evidence/FIND_UV_EXECUTION_STATISTICS.md) gives each
+serial Execute a generator-owned result and makes the CLI read that snapshot.
+Both patch solvers retain original increment positions, relaxed atomic aggregates,
+I_MAX ordinal, message cadence and all numerical/exit policies. A scoped same-thread
+observer restores preceding state on nesting/unwind. Typed and raw callers share
+one entry; parallel paths and unscoped callers retain aggregate behavior. Existing
+native/negative and exact-head/main scientific gates are reused with focused
+bookkeeping controls. This completes the named diagnostic isolation; 201 runtime
+definitions remain, including the two compatibility aggregates. Stage 3/full Stage
+6 and general reuse/recovery, parallel and complete memory obligations stay open.
 
 ## Delivered production cleanup: dormant runtime registries
 

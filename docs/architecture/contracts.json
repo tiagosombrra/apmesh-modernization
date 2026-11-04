@@ -1194,6 +1194,34 @@
           "anchor": "curves_[index]->TruncatePatchObservers(counts_[index]);"
         }
       ]
+    },
+    {
+      "id": "C31",
+      "topic": "Serial FindUV execution diagnostics",
+      "statement": "Each serial typed Execute clears and owns a FindUvStatistics value in its stationary GeneratorAdaptive; the raw bridge delegates. A scope before geometry lifetime borrows that value through a same-thread thread-local observer, charges nested calls only to the current owner and restores previous state on unwind. GetFindUvStatistics returns the latest serial result by value, including partial failure counts. The CLI reads it. Bezier/Hermite record at the original positions; every call/exit retains the original relaxed atomic aggregate increment. The I_MAX helper returns the original global ordinal and preserves message cadence and all solver formulas/exits. Unscoped callers retain aggregates; MPI/OpenMP engine/CLI paths keep original behavior.",
+      "limits": "No cross-thread scope/owner lifetime, general Generator reuse/recovery, reentrant/concurrent generation, parallel or whole-process memory qualification. Layout changes require rebuilding consumers. The observer is an explicit supplemental mutable-state site; cumulative globals remain compatibility state, not retired definitions. The native controls establish bookkeeping on the unchanged existing fixture, not new scientific-domain coverage.",
+      "evidence": [
+        {
+          "path": "include/data/patch/find_uv_statistics.h",
+          "anchor": "class FindUvStatisticsScope {"
+        },
+        {
+          "path": "include/data/patch/find_uv_statistics.h",
+          "anchor": "inline unsigned long long RecordFindUvImaxExit() noexcept {"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "apmesh::diagnostics::FindUvStatisticsScope find_uv_scope(find_uv_statistics_);"
+        },
+        {
+          "path": "src/application/run_application.cpp",
+          "anchor": "const auto statistics = generator.GetFindUvStatistics();"
+        },
+        {
+          "path": "include/generator/generator_adaptive.h",
+          "anchor": "apmesh::diagnostics::FindUvStatistics GetFindUvStatistics() const noexcept {"
+        }
+      ]
     }
   ]
 }

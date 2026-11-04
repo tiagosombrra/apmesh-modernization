@@ -7,6 +7,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from audit_find_uv_recording import restore_find_uv_recording, validate_find_uv_header
+
 from audit_hermite_construction import restore_hermite_construction
 
 BASE = "6669a29e03e868ecaa781e6da2a5299a19ddeae5"
@@ -18,6 +20,7 @@ ORIGINAL_DECLARATION = "~PatchHermite()override=default;"
 
 
 def code(text):
+    text = restore_find_uv_recording(text)
     return re.sub(r"\s+", "", re.sub(r"//[^\n]*|/\*.*?\*/", "", text, flags=re.S))
 
 
@@ -50,6 +53,7 @@ def audit(candidate_root, original_root=None):
                        subprocess.check_output(["git", "show", f"{BASE}:{name}"],
                                                cwd=candidate_root).decode("utf-8")) for name in FILES}
     candidates = {name: (candidate_root / name).read_text(encoding="utf-8") for name in FILES}
+    validate_find_uv_header(candidate_root, candidates.values())
     preserved = verify(originals, candidates)
     mutations = [
         (FILES[0], "curve->RemovePatchObservers(this);", "curve->ClearPatches();"),
@@ -76,6 +80,7 @@ def audit(candidate_root, original_root=None):
             "source_identities": {label: {name: hashlib.sha256(text.encode()).hexdigest()
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
+            "finduv_recording": "Exact entry/I_MAX slots normalized after pinned helper validation",
             "scope": "Only the exact completed Hermite destructor declaration/body changes after normalizing "
                      "the separately guarded constructor rollback scope. Every other constructor, "
                      "numeric read/formula/order, public signature/layout, direction default and detached-copy "

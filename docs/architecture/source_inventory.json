@@ -7,9 +7,9 @@
     "Directory components describe source organization, not semantic layers"
   ],
   "summary": {
-    "files": 163,
+    "files": 164,
     "translation_units": 76,
-    "headers": 87,
+    "headers": 88,
     "directory_components": {
       "adapter": 6,
       "application": 8,
@@ -21,7 +21,7 @@
       "data": 18,
       "data/curve": 9,
       "data/mesh": 4,
-      "data/patch": 9,
+      "data/patch": 10,
       "data/tree": 2,
       "estimate": 12,
       "generator": 18,
@@ -29,8 +29,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 648,
-    "first_party_include_edges": 361
+    "literal_include_directives": 652,
+    "first_party_include_edges": 364
   },
   "cross_component_directives": [
     {
@@ -281,7 +281,7 @@
     {
       "from": "generator",
       "to": "data/patch",
-      "count": 4
+      "count": 5
     },
     {
       "from": "generator",
@@ -351,7 +351,7 @@
     "GL/glut.h": 1,
     "algorithm": 12,
     "array": 10,
-    "atomic": 4,
+    "atomic": 5,
     "cctype": 2,
     "cfloat": 5,
     "climits": 2,
@@ -2165,6 +2165,22 @@
       ]
     },
     {
+      "path": "include/data/patch/find_uv_statistics.h",
+      "component_by_directory": "data/patch",
+      "kind": "header",
+      "sha256": "05b1984cb0d438f791476dd20d8ec3720690b2fe7e365ccad0a673ff2eebd97c",
+      "bytes": 1927,
+      "includes": [
+        {
+          "line": 4,
+          "spelling": "atomic",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        }
+      ]
+    },
+    {
       "path": "include/data/patch/patch.h",
       "component_by_directory": "data/patch",
       "kind": "header",
@@ -2762,8 +2778,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "e0547a9d30fb982e7fd6bdbc3d911243f2037a4ad516e583854aa757b2a72d2a",
-      "bytes": 40545,
+      "sha256": "d38bf1e449e73f2f75f295ab15a25e3079843ef8123b109dc05ebb0d584e8c7b",
+      "bytes": 40848,
       "includes": [
         {
           "line": 4,
@@ -2844,90 +2860,97 @@
         },
         {
           "line": 19,
+          "spelling": "data/patch/find_uv_statistics.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/find_uv_statistics.h"
+        },
+        {
+          "line": 20,
           "spelling": "../crab_mesh/performer/ranged_id_manager.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/performer/ranged_id_manager.h"
         },
         {
-          "line": 20,
+          "line": 21,
           "spelling": "../curvature/curvature_analytical.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/curvature_analytical.h"
         },
         {
-          "line": 21,
+          "line": 22,
           "spelling": "../curvature/curvature_discrete.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/curvature_discrete.h"
         },
         {
-          "line": 22,
+          "line": 23,
           "spelling": "../data/node_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/node_adaptive.h"
         },
         {
-          "line": 23,
+          "line": 24,
           "spelling": "../data/patch/patch_bezier.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_bezier.h"
         },
         {
-          "line": 24,
+          "line": 25,
           "spelling": "../data/patch/patch_coons.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_coons.h"
         },
         {
-          "line": 25,
+          "line": 26,
           "spelling": "../data/triangle_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/triangle_adaptive.h"
         },
         {
-          "line": 26,
+          "line": 27,
           "spelling": "../data/mesh/mesh_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/mesh/mesh_adaptive.h"
         },
         {
-          "line": 27,
+          "line": 28,
           "spelling": "../estimate/charge_estimate_process.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/estimate/charge_estimate_process.h"
         },
         {
-          "line": 28,
+          "line": 29,
           "spelling": "../input_output/models_3d.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/models_3d.h"
         },
         {
-          "line": 29,
+          "line": 30,
           "spelling": "../input_output/patch_reader.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/patch_reader.h"
         },
         {
-          "line": 30,
+          "line": 31,
           "spelling": "../parallel/ApMeshCommunicator.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/parallel/ApMeshCommunicator.h"
         },
         {
-          "line": 31,
+          "line": 32,
           "spelling": "../timer/timer.h",
           "form": "quote",
           "scope": "first_party",
@@ -3783,8 +3806,8 @@
       "path": "src/application/run_application.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "177dfb33ac55359574da486a15b11155d0314ba35f1e5b0a9fc381428b75e189",
-      "bytes": 3735,
+      "sha256": "cf397f3b2f440ee9493a84f2f96f9ef1fccf1f4cfe0021f24655d1733229e219",
+      "bytes": 3956,
       "includes": [
         {
           "line": 1,
@@ -4832,8 +4855,8 @@
       "path": "src/data/patch/patch_bezier.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "f7d807b5040140a0689f042eaeea598d69a5ef54479e8b1ec3a0ab578ffb29c8",
-      "bytes": 27834,
+      "sha256": "d8a18a19c1dea8cffbb32debec3d7ea662fe0e6aeaf4d31f35c8e0142816e568",
+      "bytes": 27466,
       "includes": [
         {
           "line": 1,
@@ -4890,6 +4913,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_observer_scope.h"
+        },
+        {
+          "line": 11,
+          "spelling": "data/patch/find_uv_statistics.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/find_uv_statistics.h"
         }
       ]
     },
@@ -4913,8 +4943,8 @@
       "path": "src/data/patch/patch_hermite.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "3147cc16174c58131e115f9baf2e040c5b1fe27c53fb814e6c143376448103ac",
-      "bytes": 21010,
+      "sha256": "6bbceb1d359cc0489cb2ff2d95a9e1c5ebd7efef9e2f33f0291dfd7f732f17d9",
+      "bytes": 20706,
       "includes": [
         {
           "line": 1,
@@ -4957,6 +4987,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_observer_scope.h"
+        },
+        {
+          "line": 9,
+          "spelling": "data/patch/find_uv_statistics.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/data/patch/find_uv_statistics.h"
         }
       ]
     },
@@ -5667,8 +5704,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "def5a922b0485d412f4adbe9505209f135f71a519626bbd54ef8c1113f26db54",
-      "bytes": 388612,
+      "sha256": "d5fa4b4623b7cb9ed4d3d5699d8367b3e215706a603b0ab0c1d27b124b1384df",
+      "bytes": 388756,
       "includes": [
         {
           "line": 1,
@@ -6493,8 +6530,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 29,
-    "source_anchors": 240,
+    "contracts": 30,
+    "source_anchors": 245,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

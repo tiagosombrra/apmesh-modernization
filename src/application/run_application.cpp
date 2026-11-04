@@ -71,8 +71,14 @@ int RunApplication(int argc, char** argv) {
       run_rc = generator.Execute(request, &timer);
 #endif
       if (RANK_MPI == 0) {
+#if USE_MPI || USE_OPENMP
         const unsigned long long fc = FINDUV_TOTAL_CALLS.load();
         const unsigned long long ix = FINDUV_IMAX_EXITS.load();
+#else
+        const auto statistics = generator.GetFindUvStatistics();
+        const unsigned long long fc = statistics.calls;
+        const unsigned long long ix = statistics.imax_exits;
+#endif
         if (fc > 0ULL) {
           const double pct = 100.0 * static_cast<double>(ix) / static_cast<double>(fc);
           std::cout << "[FindUV] chamadas=" << fc << " saidas_por_I_MAX=" << ix << " ("
