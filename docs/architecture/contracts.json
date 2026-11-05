@@ -826,7 +826,7 @@
     {
       "id": "C14",
       "topic": "Surface vs mesh curvature",
-      "statement": "CurvatureAnalytical evaluates surface derivatives after FindUV; CurvatureDiscrete uses physical-node triangle adjacency, areas and angles.",
+      "statement": "CurvatureAnalytical evaluates surface derivatives after FindUV; CurvatureDiscrete uses physical-node triangle adjacency, areas and angles. TriangleAdaptive exposes a nonvirtual PointAdaptive snapshot of vertex coordinates and ID without copying node element observers. Curvature adjacency and concavity use those values only for exact runtime TriangleAdaptive objects. Other element types and derived triangles retain virtual GetNoh and NodeAdaptive value lifetimes; comparisons, short circuits, vector arithmetic and adjacency ordering are unchanged. Discrete sorting transfers selected private working-list nodes with splice: seed and left matches append, right matches prepend. The first-match predicate scan, source node observers, working copy, saved node and additional closed-fan incidence are preserved. Legacy erase-and-return getters remain available. The moved containers have the same standard allocator and distinct identity; only their list-node ownership moves.",
       "limits": "Analytical and discrete curvatures are different quantities used for error/adaptation; consolidating their formulas would change the technique.",
       "evidence": [
         {
@@ -840,6 +840,18 @@
         {
           "path": "src/curvature/curvature_discrete.cpp",
           "anchor": "return (3.0 * (this->factor_disc_ - this->sum_phi_) / this->a_);"
+        },
+        {
+          "path": "src/data/triangle_adaptive.cpp",
+          "anchor": "PointAdaptive TriangleAdaptive::GetVertexPoint(unsigned int position) const"
+        },
+        {
+          "path": "src/curvature/adjacent.cpp",
+          "anchor": "template <bool Snapshot> auto NodePoint"
+        },
+        {
+          "path": "src/curvature/adjacent.cpp",
+          "anchor": "if (typeid(first) == typeid(TriangleAdaptive) && typeid(last) == typeid(TriangleAdaptive))"
         }
       ]
     },
@@ -866,7 +878,7 @@
     {
       "id": "C16",
       "topic": "Eigen/numerical dependency",
-      "statement": "Central definitions expose Eigen fixed-size aliases; PatchBezier evaluation and inverse mapping use matrix operations. CRABMesh also has root-finding numerical helpers.",
+      "statement": "Central definitions expose Eigen fixed-size aliases; PatchBezier evaluation retains Eigen matrix products. Only the local 3x3 scratch in PatchBezier::FindUV uses nested std::array storage. Its coefficient assignments, row swaps, scalar elimination order, pivot search, damping, convergence/limit policies and diagnostics are preserved. The public matrices, Hermite solver and Eigen dependency remain unchanged. CRABMesh also has root-finding numerical helpers.",
       "limits": "No alternative solver or Eigen deletion is authorized by this inventory; stage 5 requires analytic and aliasing/differential comparisons.",
       "evidence": [
         {
@@ -875,7 +887,7 @@
         },
         {
           "path": "src/data/patch/patch_bezier.cpp",
-          "anchor": "Matrix<double, 3, 3> matrix;"
+          "anchor": "std::array<std::array<double, 3>, 3> matrix;"
         },
         {
           "path": "src/data/curve/curve_adaptive_parametric.cpp",
@@ -930,8 +942,8 @@
     {
       "id": "C19",
       "topic": "Timing boundary",
-      "statement": "Timer accumulates gettimeofday-based intervals; Data::time uses platform-dependent implementations.",
-      "limits": "Current clock resolution/monotonicity and performance comparability are not qualified; no speedup claim follows from this inventory.",
+      "statement": "Timer accumulates gettimeofday-based intervals; Data::time uses platform-dependent implementations. Serial typed Execute starts the full-generation interval before input loading; raw Execute delegates to it. Serial ErrorGlobal owns slot 7 and closes curvature slot 6 before resuming slot 7, without duplicate serial caller brackets. Timing aggregates are diagnostic; the scientific expressions and external watchdog budget are unchanged.",
+      "limits": "Current clock resolution/monotonicity and performance comparability are not qualified; no speedup claim follows from this inventory. Direct legacy Generator callers still own their outer interval start. Failed Execute does not publish a completed runtime summary. MPI/OpenMP timer branches are unchanged and remain separately qualified.",
       "evidence": [
         {
           "path": "src/timer/timer.cpp",
@@ -940,13 +952,21 @@
         {
           "path": "src/data/definitions.cpp",
           "anchor": "return static_cast<Real>(std::time(nullptr));"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "timer->InitTimerParallel(0, 0, 10); // Full generation interval, including input loading."
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "// Close curvature accounting before resuming error accumulation."
         }
       ]
     },
     {
       "id": "C20",
       "topic": "Scientific order",
-      "statement": "AdvancingFront executes old-mesh quadtree generation, neighbor refinement, optional templates, geometric front with conditional topology fallback, then fill and improvement. Generator adapts shared curves before patch interiors and evaluates candidates before acceptance/rollback.",
+      "statement": "AdvancingFront executes old-mesh quadtree generation, neighbor refinement, optional templates, geometric front with conditional topology fallback, then fill and improvement. Generator adapts shared curves before patch interiors and evaluates candidates before acceptance/rollback. During topology-stable improveMesh, one scoped non-owning face-incidence index preserves mesh entry order and multiplicity. Repeated endpoints in one entry contribute once. All smoothers borrow contiguous incidence sequences while evaluating live coordinates and quality. Two endpoint passes count then append incidences in mesh order, reserving one pointer buffer per populated vertex before publication. Hash iteration reserves capacity only and never drives numerical reductions. Mesh owner lists and edge adjacency remain unchanged. Stage statistics count canonical endpoint-pair incidences in a local hash table. Duplicate face entries and repeated edges retain every increment. Only keyed counts are consumed; both original face/edge loops, reductions and classification expressions retain their original order.",
       "limits": "This ordering is a preservation constraint, not a proposed replacement algorithm.",
       "evidence": [
         {
@@ -976,6 +996,22 @@
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "AdaptDomain(geometry, mesh_.get());"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "const FaceAdjacency faceAdjacency(mesh);"
+        },
+        {
+          "path": "include/crab_mesh/aft/smoothing_adjacency.h",
+          "anchor": "class SmoothingFaceAdjacency"
+        },
+        {
+          "path": "include/crab_mesh/aft/smoothing_adjacency.h",
+          "anchor": "if (third != first && third != second)"
+        },
+        {
+          "path": "src/crab_mesh/aft/advancing_front.cpp",
+          "anchor": "std::unordered_map<EdgeKey, unsigned int, EdgeHash> edge_use_count;"
         }
       ]
     },
@@ -1284,6 +1320,42 @@
         {
           "path": "src/generator/generator_adaptive.cpp",
           "anchor": "int GeneratorAdaptive::Execute(const apmesh::application::GenerationRequest& request, Timer* timer)"
+        }
+      ]
+    },
+    {
+      "id": "C35",
+      "topic": "Adaptive reuse initial consistency metadata",
+      "statement": "Serial generation entry resets current_consistency_regularization_active_ to its original fresh-instance value zero. Later adaptive writes and acceptance/report calculations retain their original positions and formulas. The fixed normal reuse observation runs two typed Execute calls with one captured Eistute or Book article profile, fresh Timer and reapplied process config, archiving completed outputs between calls. Required observations compare GCC calls with frozen fresh output and MSVC second output with its independently verified fresh same-ABI first output. Saved-root and FindUV counts, scientific states, accepted/rejected traces, IDs and positive boundary coverage must agree. Checked-MSVC qualification is currently blocked as recorded in the limits.",
+      "limits": "Only the original one-field Eistute step-0 acceptance-record leak is repaired; OBJ bytes and accepted/rejected decisions already agreed. No speculative effective-control reset, cross-ABI byte comparison, self-comparison, new scientific input or selector/failure injection. Exception recovery, changed contexts, arbitrary output reuse, interleaving/concurrency, external Geometry and complete-process instruments remain open. Original preparation failures and strict regression are preserved in ADAPTIVE_GENERATOR_REUSE.md. Candidate only: required checked-MSVC Eistute qualification is blocked by a 300-second first-call timeout after the guards; no integration or whole-row closure is claimed.",
+      "evidence": [
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "current_consistency_regularization_active_ = 0;"
+        },
+        {
+          "path": "src/generator/generator_adaptive.cpp",
+          "anchor": "file << \"consistency_regularization_active=\" << current_consistency_regularization_active_"
+        }
+      ]
+    },
+    {
+      "id": "C36",
+      "topic": "Outer vertex diagonal observer preconditions",
+      "statement": "At each of the four makeOuterVertices corner-sharing comparisons, both second-hop diagonal-neighbor lists must be nonempty before their front/back observers are read. Direct neighbors are covered by the existing inBoundary return. Empty diagonal lists provide no observer to compare; no cell or template is fabricated. With nonempty lists, original equality expressions and assignments, traversal order, coordinates, IDs and publication are unchanged. All four missing-list accesses are reproduced by fatal checked-MSVC diagnostic prefixes of the unchanged Eistute article input.",
+      "limits": "The original exact-head MSVC first call failed; its empty-list assertion and four stacks remain retained. Require revised-head/main checked-MSVC Eistute/Book execution and frozen GCC scientific identity before integration. No disabled iterator checks, broader neighbor-graph validity, foreign/null entries, general root/domain qualification, parallel execution or complete-process instrument claim follows. The repair changes only the demonstrated undefined accesses; all other template conditions and scientific policies retain their original source tokens. Candidate only: required checked-MSVC Eistute qualification is blocked by a 300-second first-call timeout after the guards; no integration or whole-row closure is claimed.",
+      "evidence": [
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "void QuadtreeCell::makeOuterVertices()"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "!neighbors[QUAD_R].front()->neighbors[QUAD_B].empty()"
+        },
+        {
+          "path": "src/crab_mesh/aft/quadtree_cell.cpp",
+          "anchor": "!neighbors[QUAD_L].front()->neighbors[QUAD_T].empty()"
         }
       ]
     }

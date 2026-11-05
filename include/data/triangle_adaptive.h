@@ -27,6 +27,9 @@ public:
   void CalculateNormal() override; // OBS: Não normalizar a normal!
 
   NodeAdaptive GetNoh(unsigned const int position) const override;
+  // Snapshot coordinates and ID without copying the node's element observers.
+  // Requires a live node at valid positions; invalid positions retain GetNoh diagnostics.
+  PointAdaptive GetVertexPoint(unsigned int position) const;
   double GetAngle(const NodeAdaptive& n) override;
 
   // Replace the first matching vertex and transfer one existing observer list node.

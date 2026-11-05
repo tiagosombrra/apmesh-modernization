@@ -2020,6 +2020,7 @@ int GeneratorAdaptive::Execute(const apmesh::application::GenerationRequest& req
 #endif // USE_MPI
 {
 #if !USE_MPI && !USE_OPENMP
+  timer->InitTimerParallel(0, 0, 10); // Full generation interval, including input loading.
   find_uv_statistics_ = {};
   apmesh::diagnostics::FindUvStatisticsScope find_uv_scope(find_uv_statistics_);
 #endif
@@ -2466,6 +2467,7 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   // Histories belong to one generation. Retire borrowed aliases before owners.
   save_error_mesh_.clear();
   save_mesh_.clear();
+  current_consistency_regularization_active_ = 0;
   this->communicator_ = std::make_unique<Parallel::TMCommunicator>(false);
   Geometry* geometry = model.GetGeometry();
   apmesh::generation::CurveSampleLifetime curve_samples(*geometry);
@@ -2673,14 +2675,10 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 #else
 #if USE_MPI
   timer->InitTimerParallel(RANK_MPI, 0, 7); // Calculo do erro Global
-#else
-  timer->InitTimerParallel(0, 0, 7); // Calculo do erro Global
 #endif // USE_MPI
   this->error_local_process_ = this->ErrorGlobal(mesh_.get(), timer);
 #if USE_MPI
   timer->EndTimerParallel(RANK_MPI, 0, 7); // Calculo do erro Global
-#else
-  timer->EndTimerParallel(0, 0, 7); // Calculo do erro Global
 #endif // USE_MPI
 #endif // USE_OPENMP
 
@@ -3043,14 +3041,10 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
 #else
 #if USE_MPI
       timer->InitTimerParallel(RANK_MPI, 0, 7);
-#else
-      timer->InitTimerParallel(0, 0, 7);
 #endif
       this->error_local_process_ = this->ErrorGlobal(mesh_.get(), timer);
 #if USE_MPI
       timer->EndTimerParallel(RANK_MPI, 0, 7);
-#else
-      timer->EndTimerParallel(0, 0, 7);
 #endif
 #endif
       report_gauss_nodes = current_gauss_nodes_;
@@ -7166,10 +7160,9 @@ double GeneratorAdaptive::ErrorGlobal(MeshAdaptive* malha, Timer* timer, [[maybe
       timer->InitTimerParallel(0, omp_get_thread_num(), 7);
 #else
       // Seção de código sem MPI e sem OpenMP
-      // calculo do erro global
-      timer->EndTimerParallel(0, 0, 7);
-      // MediaGauss
-      timer->InitTimerParallel(0, 0, 6);
+      // Close curvature accounting before resuming error accumulation.
+      timer->EndTimerParallel(0, 0, 6);
+      timer->InitTimerParallel(0, 0, 7);
 #endif
 #endif
 

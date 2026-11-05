@@ -26,8 +26,8 @@ CurvatureDiscrete::CurvatureDiscrete(const NodeAdaptive& noh) {
   //	cout << "for ( ite = n.guarda_chuva.begin ( ); ite != n.guarda_chuva.end
   //( ); ++ite )\n{" << endl;
 
-  for (element_iterator = noh.GetElements().begin();
-       element_iterator != noh.GetElements().end(); ++element_iterator) {
+  for (element_iterator = noh.GetElements().begin(); element_iterator != noh.GetElements().end();
+       ++element_iterator) {
     //		cout << "\tA += " << (*ite)->getArea( ) << endl;
     this->a_ += (*element_iterator)->GetArea();
     //		cout << "\tA == " << this->A << endl;
@@ -44,25 +44,23 @@ CurvatureDiscrete::CurvatureDiscrete(const NodeAdaptive& noh) {
 double CurvatureDiscrete::CalculateMeanCurvature() {
   ElementAdaptive* first_element;
   ElementAdaptive* next_element;
-  double angle_gama = 0;  // ângulo entre dois elementos adjacentes
+  double angle_gama = 0; // ângulo entre dois elementos adjacentes
 
   while (this->elements_.size() > 1) {
     first_element = this->elements_.front();
     this->elements_.pop_front();
     next_element = this->elements_.front();
 
-    int concavity_value;  // v de Valor
+    int concavity_value; // v de Valor
     // verifica concavidade entre dois elementos adjacentes
-    concavity_value =
-        adjacent_.ConcavityElement(this->noh_, *first_element, *next_element);
+    concavity_value = adjacent_.ConcavityElement(this->noh_, *first_element, *next_element);
 
     // retorna o ângulo entre dois elementos adjacentes
     if (concavity_value)
-      angle_gama += concavity_value *
-                    adjacent_.AngleElement(*first_element, *next_element);
+      angle_gama += concavity_value * adjacent_.AngleElement(*first_element, *next_element);
   }
 
-  this->elements_.pop_front();  // esvazia a lista de elementos
+  this->elements_.pop_front(); // esvazia a lista de elementos
   return 3.0 * angle_gama / this->a_;
 }
 
@@ -81,19 +79,17 @@ void CurvatureDiscrete::AdjacencySort(const NodeAdaptive& noh) {
 
   //		retire o primeiro elemento E da nova_lista e insira em elementos
   ElementAdaptive* element_front = new_list_elements.front();
-  this->elements_.push_back(element_front);
-  new_list_elements.pop_front();
+  this->elements_.splice(this->elements_.end(), new_list_elements, new_list_elements.begin());
 
   //		enquanto encontrar um elemento adjacente à esquerda de E faça
   //			retire E' de nova_lista e insira ao final de elementos
   //			E recebe E'
-  bool find_adj_left = true;  // encontrou um adjacente à esquerda
+  bool find_adj_left = true; // encontrou um adjacente à esquerda
 
   while (find_adj_left) {
     ElementAdaptive* element =
-        adjacent_.GetElementLeft(noh, element_front, new_list_elements);
+        adjacent_.MoveElementLeft(noh, element_front, new_list_elements, this->elements_);
     if (element) {
-      this->elements_.push_back(element);
       element_front = element;
     } else
       find_adj_left = false;
@@ -109,16 +105,15 @@ void CurvatureDiscrete::AdjacencySort(const NodeAdaptive& noh) {
   //				retire E' de nova_lista e insira no início de
   // elementos 				E recebe E'
   if (!new_list_elements.empty()) {
-    this->factor_disc_ = M_PI;  // n está na borda !!!
+    this->factor_disc_ = M_PI; // n está na borda !!!
     element_front = this->elements_.front();
 
-    bool find_adj_right = true;  // encontrou um adjacente à direita
+    bool find_adj_right = true; // encontrou um adjacente à direita
 
     while (find_adj_right) {
       ElementAdaptive* element =
-          adjacent_.GetElementRight(noh, element_front, new_list_elements);
+          adjacent_.MoveElementRight(noh, element_front, new_list_elements, this->elements_);
       if (element) {
-        this->elements_.push_front(element);
         element_front = element;
       } else
         find_adj_right = false;
@@ -132,9 +127,9 @@ void CurvatureDiscrete::AdjacencySort(const NodeAdaptive& noh) {
   else {
     if (adjacent_.ConfirmRightAdjacency(noh, *(this->elements_.front()),
                                         *(this->elements_.back()))) {
-      this->factor_disc_ = 2 * M_PI;  // n está no interior !!!
-      this->elements_.push_back(this->elements_.front());  // lista "circular"
+      this->factor_disc_ = 2 * M_PI;                      // n está no interior !!!
+      this->elements_.push_back(this->elements_.front()); // lista "circular"
     } else
-      this->factor_disc_ = M_PI;  // n está no interior !!!
+      this->factor_disc_ = M_PI; // n está no interior !!!
   }
 }

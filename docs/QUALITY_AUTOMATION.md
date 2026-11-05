@@ -1,5 +1,158 @@
 # Local quality automation
 
+## Cumulative candidate regression and plan audit
+
+The [2026-11-05 audit](evidence/PLAN_REGRESSION_AUDIT.md) records the complete
+75-entry CTest inventory/391 nested controls, canonical incremental GCC/MSVC
+builds with unchanged qualified binaries, current checked-MSVC native/invalid
+input/CRT controls and static analysis of all ten cumulative changed translation
+units plus their headers. Frozen/reuse GCC Eistute/Book and one checked-MSVC pair
+per existing model pass; each MSVC pair retains the total 300-second cap. No retry,
+new scientific model, disabled check or production change is used.
+
+The full Doxygen command fails with 2,718 diagnostics and remains documentation
+debt; no diagnostic is suppressed. Earlier complete-process ASan results retain
+their artifact scopes. Required current delivery/main gates, full-process CRT/
+UB/leak, parallel and remaining caller obligations are not waived by this audit.
+Reuse runtime evidence only after checking source/input/compiler/binary/control
+identities; record a documentation-only delta explicitly. A new dependency or
+failed required check invalidates only the evidence it actually affects.
+
+## fillMesh pointer membership
+
+The [membership package](evidence/FILL_MESH_MEMBERSHIP.md) reuses the UV probe's
+transfer-order fixture and original scans calibrated before production edits.
+Require twelve pointer-sequence/owner cases and twelve repeated empty transfers
+on GCC/checked MSVC, preserving prefix duplicates, null entries, equal-value
+distinct identities and candidate order. Reuse the real CRT hook: deny each of
+the measured successful-path allocations, require one propagated bad_alloc,
+unchanged source owners, ordered observer prefixes and a complete retry with
+zero retention. Preserve the rejected unordered_set/debug-proxy abort and its
+stack; do not disable iterator checks. Require both C++17 builds, existing
+75 CTest/391 controls, unchanged native markers, frozen GCC Eistute's five states/
+25 exact artifacts/15 boundaries, source-scope proof, analysis, explicit format,
+inventory/contracts and staged/remote review. No new long MSVC pair, Book or
+scientific campaign; timing and integration remain open.
+
+## Bezier FindUV array scratch
+
+The [local scratch package](evidence/FINDUV_ARRAY_SCRATCH.md) requires a frozen
+Eigen solver calibrated on GCC/MSVC before production edits, unchanged afterward.
+Reuse the existing metrics target for 75 bounded affine/degenerate/nonfinite and
+real-fixture cases per ABI: analytic expectations, exact UV bits, virtual-call
+sequence, final public scratch, scoped counters and diagnostics must agree.
+Keep the one-bit comparator negative control and original source-guard mutations.
+Historical copy/observer guards reverse only one declaration, 35 accesses and two
+swaps, then require the entire compact previous solver hash. Outside policy and
+numerical changes must still fail. Preserve initial failed regression/calibration
+records. Require C++17 GCC/checked-MSVC builds, existing 75 CTest/391 Python controls,
+frozen GCC Eistute 25 exact artifacts/15 boundaries, scoped analysis admitting the
+reference header, source reversal, format, inventory/contracts and staged/remote
+review. No long MSVC pair, Book run, Eigen deletion or performance qualification.
+
+## Discrete curvature adjacency transfers
+
+The [splice package](evidence/CURVATURE_ADJACENCY_TRANSFERS.md) requires a frozen
+pre-change sorter independent of the new transfer path. Retain its before-fix
+GCC/MSVC results, binaries and source proof; the 60 existing fan fixtures give
+120 exact/virtual curvature comparisons per ABI. Require 912 direct transfer
+checks including first-match duplicate identity, destination head/tail and 48
+unmatched searches. Keep the oracle unchanged after calibration. Reuse the Debug
+CRT mechanism on open/closed versions of the same fan: positive real allocation/
+free control, exact scalar payloads, unchanged observers and complete release.
+Require canonical C++17 GCC/checked-MSVC builds, existing 75 CTest/389 controls,
+frozen GCC Eistute 25 exact artifacts/15 independent boundaries, scoped analysis
+including both headers, source reversal, formatting, inventory/contracts and
+staged/remote review. No new model, CTest target, long MSVC pair or Book run.
+Allocation failure ordinals changed; do not promote old denial observations to
+revised-path qualification. Timed reuse and exact-delivery/main gates stay open.
+
+## Contiguous AFT face incidences
+
+The [storage package](evidence/AFT_CONTIGUOUS_INCIDENCES.md) requires canonical
+C++17 GCC/checked-MSVC builds, existing 75 CTest/389 nested controls and the same
+smoothing-adjacency fixture on both ABIs. Compare ordered membership across the
+container boundary; preserve cancellation, duplicate entries, repeated endpoints,
+null/missing keys, live values and rebuilt scopes. Use one actual Debug CRT
+allocation comparison on that unchanged fixture, with a positive allocation/free
+control and complete release. Do not infer whole-process savings or speedup from
+this local count. Reverse only AFT incidence container/iterator types and one
+alias; all other implementation tokens remain identical modulo formatting.
+Require scoped analysis including the modified header, frozen GCC Eistute's
+25 exact artifacts/15 independent boundaries, contracts/inventory and staged/
+remote review. Observe only the fixed MSVC Eistute reuse pair under its unchanged
+300-second total cap after preflight. Stop on first unexpected failure; preserve
+old negative evidence. No retry, Book run, new model or test target. Broader reuse,
+Book and exact-head/main gates remain mandatory before integration.
+
+## Serial timing intervals
+
+The [diagnostic repair](evidence/SERIAL_TIMING_INTERVALS.md) requires a reproduced
+old failure, existing native metrics controls and 75 CTest/389 Python controls.
+Seed only local timer timestamps during real error evaluation; require balanced
+6/7 intervals and bitwise unchanged error/node curvatures. Check early full-start
+through a rejected-input call and retain the rejected slow built-in fixture.
+Run both compiler builds and native controls, plus frozen GCC Eistute with exact
+science artifacts and positive boundaries. Require realistic runtime totals and
+curvature/error partitions bounded by the full interval. Reverse only admitted
+serial timer operations; retain scientific and parallel tokens, clock provider
+and watchdog. Reuse the unchanged long-run negative evidence without a new MSVC
+pair or Book campaign. Require scoped analysis, formatting, contracts/inventory,
+staged/remote checks; integration and broader timing/recovery remain open.
+
+## AFT edge-count lookups
+
+The [hash-count package](evidence/AFT_EDGE_COUNT_LOOKUPS.md) reuses canonical
+C++17 GCC/checked-MSVC builds and 75 CTest/389 controls. Share the existing AFT
+fixture between both native probes and check 65 empty/duplicate-mask/reversed-order/
+swapped-endpoint cases against known boundary/transition/internal counts. Preserve
+all original loop, increment, lookup and numerical tokens beyond the admitted
+container/equality/hash/reservation changes. Require frozen GCC Eistute, scoped
+analysis, explicit formatting, inventory/contracts and staged/remote checks.
+Observe only one new-binary MSVC Eistute pair under the same total 300 s cap;
+keep its incomplete second call and all earlier failures. No retry, Book run,
+new scientific model, test target or relaxed oracle. Integration remains blocked.
+
+## Curvature vertex points
+
+The [point-access package](evidence/CURVATURE_VERTEX_POINTS.md) reuses canonical
+C++17 GCC/checked-MSVC builds and 75 CTest/389 controls. Extend only the existing
+native metrics control: 60 planar/curved, boundary/closed and insertion-order
+cases require exact adjacency/concavity and bitwise curvature/point results,
+unchanged observers, live snapshots and virtual extension fallback. Reverse the
+86 admitted bindings and wrappers to retain every original algorithm token.
+Reuse the CRT hook with real allocations, a positive new/delete control and
+unchanged observers; qualify the measured comparison separately from process
+timing. Keep frozen GCC Eistute and one fixed new-binary MSVC pair under the
+unchanged total 300-second cap. A second-call timeout remains a failed required
+gate; no retry or new model. Require scoped analysis, format/token, contracts,
+inventory and staged/remote checks. Book and full integration remain open.
+
+## Temporary AFT face adjacency index
+
+The [scoped index](evidence/AFT_FACE_ADJACENCY_INDEX.md) reuses canonical C++17
+GCC/checked-MSVC builds, 75 CTest/389 nested controls and the existing adjacency
+probe. Check original scan order, duplicate entries, repeated endpoints, missing
+keys and live values. Preserve all remaining AFT implementation tokens except
+index bindings and const iterators. Reuse unchanged negative controls; run only
+Eistute for frozen GCC comparison and one checked-MSVC observation under the same
+total 300-second cap. Preserve old partial output and binary/configuration hashes.
+The completed first call is independently checked; a second-call timeout still
+blocks adaptive qualification and integration. Book remains unmeasured on this
+candidate. Require scoped analysis, explicit format/token, inventory/contracts,
+staged and remote checks. No new model, target, cap or instrument campaign.
+
+## Adaptive generator reuse
+
+The [consistency-state repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) requires two
+calls per existing Eistute/Book article profile through the existing metrics
+probe, on GCC and MSVC. Compare GCC against frozen output and MSVC's second call
+against its independently checked fresh first call. Preserve exact scientific
+artifacts, traces, IDs and positive boundaries; keep ABI-specific evidence distinct.
+The first MSVC head stopped at an empty diagonal-neighbor access; four fatal
+stacks constrain the added list preconditions. Keep Debug iterator checks and
+require revised-head/main gates; no new model or instrument campaign.
+
 ## Serial generator reuse
 
 The [archive isolation repair](evidence/SERIAL_GENERATOR_REUSE.md) adds one fixed

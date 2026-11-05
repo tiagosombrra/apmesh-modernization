@@ -51,6 +51,55 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+The [2026-11-05 cumulative audit](evidence/PLAN_REGRESSION_AUDIT.md) confirms the
+technique-preserving direction and corrects the immediate dependency. At source
+head `1604599`, the fixed GCC and checked-MSVC Eistute/Book reuse observations
+pass. MSVC takes 200.651931 s for the Eistute pair and 115.115937 s for Book;
+each keeps the unchanged total 300-second cap. The old timeout remains negative
+historical evidence and is no longer the current artifact's runtime blocker.
+The subsequent PR #163 delivery binds that audit to its documentation delta,
+then executes the required fixed gates once on the exact head and once on the
+integrated main. The PR and local `build/pr163-delivery/integration-verification.json`
+record the result; no later production package starts before those gates pass.
+
+| Order | Required output | Acceptance and stop decision |
+| --- | --- | --- |
+| Current evidence | Cumulative code/contract review, GCC/MSVC builds, existing 75 CTest/391 controls, negative controls, fixed scientific/reuse observations and static analysis. | Measured on 1604599 with pinned binaries/inputs. Preserve the passed observations and all prior failures; do not call the failing Doxygen gate green. |
+| Next delivery | One consolidated candidate/evidence/plan review with explicit source, input, compiler, binary and control identities. | Audit fresh remote main/branch/PR/checks; finish every applicable exact-delivery requirement. Reuse identical runtime evidence across documentation-only changes with an explicit identity record. Changed dependencies or failed required gates stop integration. |
+| Main validation | Required regression and candidate scientific/reuse gates on the merged main revision. | No main qualification is inferred from this local audit or an unmerged PR. Retain commands, hashes and results; stop at the first unexpected required failure. |
+| Following P4 work | One demonstrated remaining supported lifecycle/caller gap assigned to the existing closure ledger. | Admit its concrete trigger, invariant, finite checks and stop decision before implementation. No automatic performance, global-state migration or source-audit chain. |
+| Stage closure | Every original ledger obligation has a measured or explicitly justified disposition, including applicable complete-process instruments/domain/parallel coverage. | Seven rows are still partial/open. A missing/failing required gate blocks closure; no obligation moves out of Stage 3 merely to make it complete. |
+
+Current results distinguish preservation, reuse, liveness and performance. Exact
+artifacts plus independent physical/UV/boundary checks establish only their
+measured caller/configuration scope. The one MSVC pair per model passes the
+fixed liveness gate; it is not repeated comparable timing evidence for Stage 9.
+The existing serial clock repair and qualified function profile retain their
+limits. No additional optimization is selected after the passed membership package.
+
+The internal serial engine/context milestone retains its bounded closure. Full
+Stage 6, C++23/compiler portability, Eigen removal and English/Doxygen closure
+remain separate obligations. Current source identities match the runtime matrix:
+201 active definitions, 185 context bindings, 16 uncaptured and two named retired
+registries. Public Eigen evaluation/types remain; FindUV's local array scratch
+is not dependency deletion. Historical ASan witnesses stay artifact-specific;
+full-process CRT/UB/leak and changed-dependency requalification remain required.
+
+The [former candidate chronology](MODERNIZATION_PLAN_HISTORY.md) retains the
+previous package order, timeouts, rejected operand-copy candidate, source profile
+and local allocation measurements verbatim. Detailed evidence remains valid
+within its measured scope; historical successor paragraphs are not active work.
+
+P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
+reproduced initial consistency-record difference on a reused Eistute generator.
+The required MSVC gate additionally exposed four empty diagonal-neighbor reads
+in first-call template construction. Guard only those observed accesses; preserve
+nonempty expressions and frozen science, without disabling Debug iterator checks.
+Two calls per unchanged captured Eistute/Book profile must match frozen GCC and
+fresh same-ABI MSVC output, including rejection/retry evidence and positive boundary
+coverage. Existing revised-head/main gates apply. These candidate S3-05/06/08 repairs remain unintegrated;
+context changes, failed-call recovery and other row requirements remain separate.
+
 P4's [serial archive isolation](evidence/SERIAL_GENERATOR_REUSE.md) removes the
 reproduced owner accumulation across successful h/h/disabled serial calls using
 the same Generator. Histories still retain every existing attempt within a run;
@@ -72,11 +121,13 @@ teardown, rebinding and move package closes this named S3-05/07 sub-obligation
 without changing scientific policies. Reuse the existing regression and native
 instrument runner with three focused additions; require exact-head/main gates.
 Public mutation/cache and arbitrary foreign-forward validity remain separate.
-The next implementation must remove another demonstrated supported lifecycle gap;
+After the current delivery/main gates, the next implementation must remove a
+demonstrated supported lifecycle gap. The audited route above takes precedence;
 additional global-state migration or an automatic audit chain is not the queue.
 
-Stages 0-2 retain measured closure. Stage 3 remains open; stages 4-11 remain
-pending. The 37 numbered slices are historical component qualifications, not a
+Stages 0-2 retain measured closure. Stage 3 and stages 4-11 remain unclosed;
+bounded compiler, local storage, engine/context and timing work supplies partial
+evidence within those later stages. The 37 numbered slices are historical component qualifications, not a
 percentage of completion. Later production repairs retain their own evidence.
 
 The active [consolidated audit](evidence/STAGE3_CONSOLIDATION_AUDIT.md) replaces

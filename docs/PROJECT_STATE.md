@@ -2,8 +2,61 @@
 
 ## Current checkpoint and active work
 
-Reviewed starting main: `5bcef3273c7af2f8da11052c4eb65d343707698e` (PR #161).
-Exact delivery head/main status is recorded by its PR and local integration seal.
+Reviewed PR #163 base main: `d1619137af4ad53e3bb98cf5fc4336f75350629f` (PR #162).
+Exact delivery head/main status is recorded by PR #163 and the local
+`build/pr163-delivery/integration-verification.json` seal. A missing or failing
+required delivery/main gate blocks the next production package.
+
+## P4 delivery checkpoint: bounded adaptive reuse
+
+The [cumulative plan/regression audit](evidence/PLAN_REGRESSION_AUDIT.md) measures
+source head `1604599cb36b9064907b5e93a3c45e56143a391f`. Remote main was
+`d1619137af4ad53e3bb98cf5fc4336f75350629f`; PR #163 was a draft with no
+configured hosted checks at that audit entry. Those measurements are distinct
+from the subsequent exact-head/main delivery records linked above.
+
+- Current GCC/MSVC builds preserve the qualified binaries. All 75 CTest entries
+  and 391 nested controls pass without skips; checked-MSVC native/invalid-input
+  and 515 allocation-denial controls pass with zero fixture CRT retention.
+- GCC Eistute/Book reuse matches the frozen references: nine states, 45 exact
+  scientific artifacts and 123 independent boundaries per combined call index.
+- One checked-MSVC Eistute pair completes in 200.651931 s; one Book pair in
+  115.115937 s. Both retain the unchanged total 300-second cap, exact same-ABI
+  artifacts/decisions and equal archive/FindUV counters. Earlier live output is
+  restored byte for byte. No retry or new scientific model is used.
+- Cumulative changed-line static analysis, formatting, whitespace and inventory/
+  contracts pass. Doxygen fails with 2,718 diagnostics; documentation is unqualified.
+
+Complete delivery review and exact-head/main validation before another production
+package. The delivery continuation records one required fixed run per revision;
+it does not retry a failed unchanged revision or select a speculative optimization.
+Check evidence identities when binding these results to a documentation-only
+revision; a changed production dependency requires its affected checks. Historical
+ASan observations do not qualify the changed whole process. Full-process CRT/
+UB/leak, parallel and wider caller/mutation/recovery obligations remain open.
+All ten Stage 3 dispositions remain: three bounded-qualified, seven partial/open.
+The audit alone establishes no integration, stable timing improvement or stage
+closure. Integration and subsequent main qualification require their own seal;
+all Stage 3 limits survive this bounded delivery.
+
+The [prior candidate chronology](PROJECT_STATE_HISTORY.md) preserves every former
+next-step paragraph, failed timeout, rejected Bezier candidate and bounded local
+allocation improvement. Detailed package reports remain authoritative within
+those scopes; their historical next actions do not override this checkpoint.
+
+## P4 production repair: adaptive reuse consistency metadata
+
+The [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) resets the current
+consistency flag at serial generation entry. Original Eistute reuse leaks 1 into
+the next step-0 acceptance record; fresh runs report 0. OBJ bytes and decisions
+already agree. A required MSVC gate also reproduced four empty diagonal-list
+reads in first-call template construction; guarded accesses preserve all nonempty
+expressions, vertex publication and scientific policies. Failed head/stacks remain
+retained. Two same-profile Eistute/Book
+calls must preserve frozen GCC output and fresh same-ABI MSVC output, with positive
+independent boundary coverage, on exact head/main. Existing regression is reused.
+Require the final revised head/main gates for S3-05/06/08; broader reuse/recovery
+and Stage 3 stay open.
 
 ## P4 production repair: serial generation archive isolation
 
@@ -97,7 +150,8 @@ automatic sequence of root-border microaudits with five finite work packages.
 | --- | --- |
 | 0-2 | Closed for their measured scope |
 | 3: memory and lifecycle | Open; 37 historical numbered slices, with later bounded repairs recorded separately |
-| 4-11 | Pending; P1 supplies a bounded stage 4 compiler prerequisite for stage 3 instruments |
+| 4-6 | Unclosed; bounded C++17 compiler, local scratch and engine/context packages are delivered |
+| 7-11 | Unclosed; English/contracts accompany touched code, with broader documentation, efficiency and integrated qualification still pending |
 
 P1 delivered the demonstrated complete serial MSVC build repair. The actual
 full ap_mesh target builds with C++17 and Debug iterator checks, without excluded
@@ -191,9 +245,11 @@ exit criteria, the admitted synchronous caller protocol and the explicit remaini
 state boundary. Implementation criteria are established at PR #153; current exact-
 head/main gates and the integration seal close this bounded milestone. The internal
 engine, typed request, owned identity and eleven control groups are delivered.
-The [complete runtime matrix](architecture/ENGINE_CONTEXT_STATE.json) maps all 203
-preserved definitions: 185 have context bindings (181 group fields plus four
-identity/output fields), and 18 remain uncaptured. EPSYLON and legacy I/O also
+The original consolidation mapped 203 preserved definitions. After dormant-state
+retirement, the [current runtime matrix](architecture/ENGINE_CONTEXT_STATE.json)
+maps 201 active definitions: 185 have context bindings (181 group fields plus four
+identity/output fields), 16 remain uncaptured and two retired registries are named.
+EPSYLON and legacy I/O also
 retain consumers beyond their captured roles. No global-removal percentage,
 pure factory, reentrant engine or repeated-generation safety is claimed.
 
@@ -201,11 +257,10 @@ Current scientific/native/MSVC/instrument evidence is reused by unchanged source
 executable, build-configuration and report identity. This documentation-only
 consolidation runs existing head/main CTest and quality/contracts/remote checks,
 without production/test/fixture changes or new campaigns. Stage 3 and full stage 6
-remain open; all ten stage 3 row dispositions stay unchanged. The next concrete
-production dependency is attempt metadata ownership (global step/retry duplicated
-from existing generator state), with the existing trace/ID oracles. Precision and
-parallel/instrument obligations retain their separate boundaries. Legacy positional
-CMake convenience recipes are explicitly recorded as an unresolved workflow item.
+remain open; all ten stage 3 row dispositions stay unchanged. The original
+successors, attempt metadata ownership and the Book convenience recipes, are
+delivered above. Follow the current candidate audit for the active dependency.
+Precision and parallel/instrument obligations retain their separate boundaries.
 
 ## Delivered production context: serial flow controls
 

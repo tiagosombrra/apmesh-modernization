@@ -29,8 +29,8 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 656,
-    "first_party_include_edges": 367
+    "literal_include_directives": 662,
+    "first_party_include_edges": 368
   },
   "cross_component_directives": [
     {
@@ -376,13 +376,14 @@
     "execinfo.h": 1,
     "filesystem": 1,
     "fstream": 10,
+    "functional": 1,
     "initializer_list": 1,
     "iomanip": 2,
     "iostream": 11,
     "limits": 6,
     "list": 17,
     "locale": 1,
-    "map": 9,
+    "map": 8,
     "memory": 33,
     "mpi.h": 2,
     "numeric": 1,
@@ -390,7 +391,7 @@
     "optional": 6,
     "ostream": 1,
     "queue": 2,
-    "set": 2,
+    "set": 3,
     "sstream": 6,
     "stdexcept": 11,
     "stdio.h": 1,
@@ -399,12 +400,12 @@
     "system_error": 1,
     "tuple": 7,
     "type_traits": 1,
-    "typeinfo": 1,
+    "typeinfo": 2,
     "unistd.h": 1,
-    "unordered_map": 7,
+    "unordered_map": 9,
     "unordered_set": 7,
     "utility": 16,
-    "vector": 21,
+    "vector": 22,
     "windows.h": 1,
     "winsock2.h": 1
   },
@@ -846,8 +847,8 @@
       "path": "include/crab_mesh/aft/advancing_front.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "bf9e7f0d52204f9289a9387bce8aa2af00e9fb49448337a225c77bbf18789fe6",
-      "bytes": 5200,
+      "sha256": "64617a4b0fab486228b20f69e156c45b81710f09f82c71bdd72f319f90fecfe7",
+      "bytes": 5344,
       "includes": [
         {
           "line": 4,
@@ -914,6 +915,13 @@
         },
         {
           "line": 13,
+          "spelling": "smoothing_adjacency.h",
+          "form": "quote",
+          "scope": "first_party",
+          "target": "include/crab_mesh/aft/smoothing_adjacency.h"
+        },
+        {
+          "line": 14,
           "spelling": "vertex.h",
           "form": "quote",
           "scope": "first_party",
@@ -1203,8 +1211,8 @@
       "path": "include/crab_mesh/aft/smoothing_adjacency.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "ae076f74f189caf8c7526d4ad7ac3c6ad8842ce50b6ce9349e8704edea94a848",
-      "bytes": 940,
+      "sha256": "620c2bf90691750877ad3089624675a779491bc21d640cc750c963c5cc383927",
+      "bytes": 2509,
       "includes": [
         {
           "line": 4,
@@ -1216,6 +1224,20 @@
         {
           "line": 5,
           "spelling": "stdexcept",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -1426,8 +1448,8 @@
       "path": "include/curvature/adjacent.h",
       "component_by_directory": "curvature",
       "kind": "header",
-      "sha256": "8ed6c1c4a2cf77c33d6ca1b3d465229cadda98c42fedd5c6c288f068f0cd3b05",
-      "bytes": 1366,
+      "sha256": "962dbbad86daa6fd8dc2e6dd1787308f77c6fe8f64afed6672ccae769ff39857",
+      "bytes": 1828,
       "includes": [
         {
           "line": 4,
@@ -2354,8 +2376,8 @@
       "path": "include/data/triangle_adaptive.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "0d7edd8593c868f4accad6b7bc4bb79c237fc3d0b8fbf853615234bd298de0fe",
-      "bytes": 2726,
+      "sha256": "45e6f14cb37d60714a1d6e12acd5670fb349916342c1e1eef60f0aa694494966",
+      "bytes": 2957,
       "includes": [
         {
           "line": 4,
@@ -4102,8 +4124,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "e42a48a823718eed8ca26d899a6cbcb4cc46b0db048decb0bd7e22b648b30520",
-      "bytes": 48688,
+      "sha256": "53acf38fef1411643993764a0610b42e3ec297d04e266dc93aed90b54ac26f2a",
+      "bytes": 49376,
       "includes": [
         {
           "line": 1,
@@ -4135,7 +4157,7 @@
         },
         {
           "line": 6,
-          "spelling": "map",
+          "spelling": "functional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -4149,6 +4171,20 @@
         },
         {
           "line": 8,
+          "spelling": "set",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 9,
+          "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
           "spelling": "utility",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -4303,8 +4339,8 @@
       "path": "src/crab_mesh/aft/quadtree_cell.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "1759113e92adac95e7ca8dfaf0f0eed4df4f0d1edfc5e0e2d62bd7ccceab84d9",
-      "bytes": 59047,
+      "sha256": "ee2211d196db73ab7d9c6583af08bf80214acd7316a388bc8172bef774f88aa4",
+      "bytes": 59579,
       "includes": [
         {
           "line": 1,
@@ -4457,8 +4493,8 @@
       "path": "src/curvature/adjacent.cpp",
       "component_by_directory": "curvature",
       "kind": "translation_unit",
-      "sha256": "1c2f6911cd0c479381f00cd2571a0b7d9599de13744e4ab78217fc54afb9de19",
-      "bytes": 6204,
+      "sha256": "c7afc9b703b1b8ee9d8f365164d3c499ec20bfc3415b2bc1fc339aabf7026cdc",
+      "bytes": 10275,
       "includes": [
         {
           "line": 1,
@@ -4466,6 +4502,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/adjacent.h"
+        },
+        {
+          "line": 3,
+          "spelling": "typeinfo",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },
@@ -4489,8 +4532,8 @@
       "path": "src/curvature/curvature_discrete.cpp",
       "component_by_directory": "curvature",
       "kind": "translation_unit",
-      "sha256": "1be331b3a0b702f3902bbdddb8c1f3dc43e8a021e99a409f9ce2d9ffcbf7fc23",
-      "bytes": 4883,
+      "sha256": "33fb75c7c0f8567024c91c94fb2d52b858b5f0fd5463dad151cfc6d177e23870",
+      "bytes": 4834,
       "includes": [
         {
           "line": 1,
@@ -4879,7 +4922,7 @@
       "path": "src/data/patch/patch_bezier.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "d8a18a19c1dea8cffbb32debec3d7ea662fe0e6aeaf4d31f35c8e0142816e568",
+      "sha256": "8c2fc77533cb2f4325b57c014686ecb22fcbfa167b0d417e9bca0362653a1807",
       "bytes": 27466,
       "includes": [
         {
@@ -5078,8 +5121,8 @@
       "path": "src/data/triangle_adaptive.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "11ecc31b79ce8a826ea4f53cd1f3e597fe61fee46299c698c7b344192061011e",
-      "bytes": 4898,
+      "sha256": "53345ab265f634e13ee940e4bfe04e6e65654e70aaffe6e14951390f1692a923",
+      "bytes": 5120,
       "includes": [
         {
           "line": 3,
@@ -5742,8 +5785,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "0fb699fa223242bb40c2418c1fc82bb117aa7e64430a681e0e9cd45c317f25b8",
-      "bytes": 388886,
+      "sha256": "0774b9182a8505a500ddc71d7c6592e2169f95143c09c3056efb02c02edf5704",
+      "bytes": 388818,
       "includes": [
         {
           "line": 1,
@@ -6568,8 +6611,8 @@
     }
   ],
   "contract_traceability": {
-    "contracts": 33,
-    "source_anchors": 255,
+    "contracts": 35,
+    "source_anchors": 269,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

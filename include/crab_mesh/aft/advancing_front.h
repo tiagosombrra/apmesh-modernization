@@ -10,6 +10,7 @@
 #include "quadtree.h"
 #include "quadtree_cell.h"
 #include "shape.h"
+#include "smoothing_adjacency.h"
 #include "vertex.h"
 
 using namespace Par2DJMesh;
@@ -102,7 +103,7 @@ protected:
 
   Edge* findEdge(Vertex* v1, Vertex* v2);
   EdgeList findAdjacentEdges(Vertex* v);
-  FaceList findAdjacentFaces(const FaceList& faces, Vertex* v);
+  using FaceAdjacency = SmoothingFaceAdjacency<Vertex*, FaceList>;
 
   void removeFromFront(Vertex* v1, Vertex* v2 = nullptr, Vertex* v3 = nullptr);
 
@@ -110,9 +111,9 @@ protected:
 
   void fillMesh();
 
-  bool laplacianSmoothing(bool& changed);
-  bool qualityShapeSmoothing(bool& changed);
-  bool poorRegionShapeSmoothing(bool& changed);
+  bool laplacianSmoothing(bool& changed, const FaceAdjacency& faceAdjacency);
+  bool qualityShapeSmoothing(bool& changed, const FaceAdjacency& faceAdjacency);
+  bool poorRegionShapeSmoothing(bool& changed, const FaceAdjacency& faceAdjacency);
   void ResetRunStats();
   void UpdateRunStatsFromQuadtree();
   void CaptureStageStats(const FaceList& faces, int stage);

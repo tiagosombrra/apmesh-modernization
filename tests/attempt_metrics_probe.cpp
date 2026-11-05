@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iomanip>
+#include <list>
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
@@ -17,6 +18,9 @@
 #include "data/patch/patch_hermite.h"
 #include "data/vector_adaptive.h"
 #include "data/vertex_adaptive.h"
+#include "curvature/curvature_discrete.h"
+#include "legacy_curvature_discrete.h"
+#include "legacy_bezier_find_uv.h"
 #include "generator/generator_adaptive.h"
 #include "input_output/models_3d.h"
 #include "input_output/input_validation.h"
@@ -29,7 +33,10 @@ using apmesh::application::ApplyRuntimeConfig;
 using apmesh::application::LoadRuntimeConfig;
 
 #include <array>
+#include <cstdint>
+#include <limits>
 #include <cstring>
+#include <chrono>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -39,6 +46,9 @@ using apmesh::application::LoadRuntimeConfig;
 
 #if defined(_WIN32)
 #include <windows.h>
+#endif
+#if defined(_MSC_VER) && defined(_DEBUG)
+#include <crtdbg.h>
 #endif
 
 namespace {
@@ -115,6 +125,174 @@ void CheckGenerationContexts(const std::filesystem::path& output) {
   NUMBER_PROCESS = saved_process;
   WRITE_MESH = saved_mode;
   std::cout << "generation_context owned=2 source_retired=1 interleaved_writes=3 legacy=1\n";
+}
+
+void CheckFindUvScratch() {
+  using apmesh::diagnostics::FindUvStatistics;
+  struct Restore {
+    double tolerance = TOLERANCE;
+    unsigned limit = I_MAX;
+    unsigned long long calls = FINDUV_TOTAL_CALLS.load(), exits = FINDUV_IMAX_EXITS.load();
+    std::streambuf* stream = std::cout.rdbuf();
+    ~Restore() {
+      TOLERANCE = tolerance;
+      I_MAX = limit;
+      FINDUV_TOTAL_CALLS.store(calls);
+      FINDUV_IMAX_EXITS.store(exits);
+      std::cout.rdbuf(stream);
+    }
+  } restore;
+  const auto require = [](bool value) {
+    if (!value)
+      throw std::runtime_error("FindUV scratch differential failed");
+  };
+  const auto bits = [](double value) {
+    std::uint64_t result;
+    std::memcpy(&result, &value, sizeof(result));
+    return result;
+  };
+  struct LoggedPatch : PatchBezier {
+    std::array<double, 3> a, b;
+    PatchBezier* target = nullptr;
+    std::vector<std::array<std::uint64_t, 3>> events;
+    void Record(unsigned operation, double u, double v) {
+      std::array<std::uint64_t, 3> event{operation, 0, 0};
+      std::memcpy(&event[1], &u, sizeof(u));
+      std::memcpy(&event[2], &v, sizeof(v));
+      events.push_back(event);
+      if (events.size() > 512)
+        throw std::runtime_error("FindUV trace exceeded the fixed unit bound");
+    }
+    PointAdaptive Parameterize(double u, double v) override {
+      Record(0, u, v);
+      return target ? target->Parameterize(u, v)
+                    : PointAdaptive(a[0] * u + b[0] * v, a[1] * u + b[1] * v, a[2] * u + b[2] * v);
+    }
+    VectorAdaptive Qu(double u, double v) override {
+      Record(1, u, v);
+      return target ? target->Qu(u, v) : VectorAdaptive(a[0], a[1], a[2]);
+    }
+    VectorAdaptive Qv(double u, double v) override {
+      Record(2, u, v);
+      return target ? target->Qv(u, v) : VectorAdaptive(b[0], b[1], b[2]);
+    }
+  } patch;
+  struct Observation {
+    std::array<std::uint64_t, 2> uv;
+    std::array<std::uint64_t, 8> scratch{};
+    std::vector<std::array<std::uint64_t, 3>> events;
+    FindUvStatistics statistics;
+    std::string transcript;
+  };
+  const auto equal = [](const Observation& a, const Observation& b) {
+    return a.uv == b.uv && a.scratch == b.scratch && a.events == b.events &&
+           a.statistics.calls == b.statistics.calls &&
+           a.statistics.imax_exits == b.statistics.imax_exits && a.transcript == b.transcript;
+  };
+  TOLERANCE = 1e-8;
+  const auto invoke = [&](const PointAdaptive& point, unsigned limit, bool legacy) {
+    I_MAX = limit;
+    FINDUV_TOTAL_CALLS.store(0);
+    FINDUV_IMAX_EXITS.store(0);
+    patch.events.clear();
+    Observation result;
+    std::ostringstream transcript;
+    struct StreamRestore {
+      std::streambuf* previous;
+      ~StreamRestore() { std::cout.rdbuf(previous); }
+    } stream_restore{std::cout.rdbuf(transcript.rdbuf())};
+    {
+      apmesh::diagnostics::FindUvStatisticsScope scope(result.statistics);
+      const auto uv = legacy ? bezier_find_uv_reference::FindUV(patch, point)
+                             : patch.PatchBezier::FindUV(point);
+      result.uv = {bits(std::get<0>(uv)), bits(std::get<1>(uv))};
+    }
+    result.events = patch.events;
+    result.transcript = transcript.str();
+    if (patch.target) {
+      const auto u = patch.target->GetU();
+      const auto v = patch.target->GetV();
+      for (unsigned i = 0; i < 4; ++i) {
+        result.scratch[i] = bits(u(0, i));
+        result.scratch[4 + i] = bits(v(i, 0));
+      }
+    }
+    return result;
+  };
+  unsigned cases = 0, limited = 0;
+  const auto compare = [&](PointAdaptive point, unsigned limit) {
+    point.SetId(42);
+    const auto old = invoke(point, limit, true);
+    const auto current = invoke(point, limit, false);
+    require(equal(old, current) && current.statistics.calls == 1);
+    auto corrupted = old;
+    corrupted.uv[0] ^= 1;
+    require(!equal(old, corrupted));
+    limited += static_cast<unsigned>(current.statistics.imax_exits);
+    ++cases;
+    std::array<double, 2> uv{};
+    std::memcpy(uv.data(), current.uv.data(), sizeof(uv));
+    return uv;
+  };
+  const std::array<std::array<double, 6>, 6> bases{{{1, 0, 0, 0, 1, 0},
+                                                    {0, 1, 0, 0, 0, 1},
+                                                    {0, 0, 1, 1, 0, 0},
+                                                    {1, 0, 0, 0, 0, 1},
+                                                    {-0.25, 0.3, 1, 1, 0.4, -0.2},
+                                                    {1e-8, 0, 0, 0, 1, 0}}};
+  const std::array<std::array<double, 2>, 4> parameters{
+      {{0.5, 0.5}, {0.2, 0.7}, {0.8, 0.1}, {-1, 2}}};
+  for (const auto& basis : bases) {
+    std::copy_n(basis.begin(), 3, patch.a.begin());
+    std::copy_n(basis.begin() + 3, 3, patch.b.begin());
+    for (const auto& desired : parameters)
+      for (unsigned limit : {1U, 64U}) {
+        const auto point = patch.Parameterize(desired[0], desired[1]);
+        const auto uv = compare(point, limit);
+        for (unsigned i = 0; i < 2; ++i) {
+          const double expected = limit == 1 ? std::clamp(0.5 + 0.65 * (desired[i] - 0.5), 0.0, 1.0)
+                                             : std::clamp(desired[i], 0.0, 1.0);
+          require(std::fabs(uv[i] - expected) < 4e-6);
+        }
+      }
+  }
+  for (const double scale : {0.0, 1e-9}) {
+    patch.a = {scale, 0, 0};
+    patch.b = {0, 1, 0};
+    const auto uv = compare(PointAdaptive(0.2, 0.7, 0), 3);
+    require(uv[0] == -1 && uv[1] == -1);
+  }
+  patch.a = {1, 0, 0};
+  patch.b = {0, 0, 0};
+  require(compare(PointAdaptive(0.2, 0, 0), 3) == (std::array<double, 2>{0.5, 0.5}));
+  patch.b = {0, 1, 0};
+  for (double x :
+       {std::numeric_limits<double>::quiet_NaN(), std::numeric_limits<double>::infinity()})
+    require(compare(PointAdaptive(x, 0.7, 0), 3) == (std::array<double, 2>{0.5, 0.5}));
+  Geometry geometry;
+  PatchReader reader;
+  const auto fixture =
+      std::filesystem::path(__FILE__).parent_path() / "curve_memory/data/charge_input.bp";
+  reader.ReaderFilePatches(&geometry, fixture.string().c_str());
+  patch.target = static_cast<PatchBezier*>(geometry.GetPatch(0));
+  const auto check_real = [&](double u, double v) {
+    const PointAdaptive point(u, v, (2 * u * u + u + 2 * v * v + v) / 24);
+    require(patch.target->Parameterize(u, v).CalculateDistance(point) < 1e-12);
+    for (unsigned limit : {1U, 64U}) {
+      const auto actual = compare(point, limit);
+      if (limit == 64)
+        require(std::fabs(actual[0] - u) < 4e-6 && std::fabs(actual[1] - v) < 4e-6);
+    }
+  };
+  for (double u : {0.0, 0.5, 1.0})
+    for (double v : {0.0, 0.5, 1.0})
+      check_real(u, v);
+  check_real(0.2, 0.7);
+  check_real(0.8, 0.1);
+  require(cases == 75 && limited > 0);
+  std::cout << "finduv_scratch cases=" << cases
+            << " analytic=1 bitwise=1 trace=1 diagnostics=1 negative=1 imax_exits=" << limited
+            << '\n';
 }
 
 void CheckFindUvStatistics(const std::filesystem::path& output) {
@@ -266,6 +444,7 @@ bool CheckPatchCallerObservers(const std::filesystem::path& output) {
   {
     Model model(&external);
     GeneratorAdaptive generator;
+    timer.InitTimerParallel(0, 0, 10);
     generator.Generator(model, &timer);
     for (unsigned i = 0; i < count; ++i) {
       const auto* patch = external.GetPatch(i);
@@ -439,6 +618,7 @@ void WriteCurvatureControl(const std::filesystem::path& output, bool curved) {
   STEPS = 0;
   WRITE_MESH.clear();
   NAME_MODEL = (output / "diagnostic").generic_string();
+  timer.InitTimerParallel(0, 0, 10);
   generator.Generator(model, &timer);
   generator.SaveErrorMesh(generator.mesh_.get());
   const SubMesh* sub = generator.mesh_->GetSubMeshAdaptiveByPosition(0);
@@ -464,6 +644,100 @@ void WriteCurvatureControl(const std::filesystem::path& output, bool curved) {
   fixture << "]}\n";
 }
 } // namespace
+
+class AftContextProbe : public Par2DJMesh::AFT::AdvancingFront {
+  using Vertex = Par2DJMesh::Basics::Vertex;
+  using Face = Par2DJMesh::Basics::Face;
+  std::array<Vertex, 4> corners_{
+      {Vertex(0.0, 0.0), Vertex(1.0, 0.0), Vertex(1.0, 1.0), Vertex(0.0, 1.0)}};
+  std::unique_ptr<Vertex> center_ = std::make_unique<Vertex>(0.05, 0.25);
+
+public:
+  explicit AftContextProbe(const std::array<double, 3>& inputs)
+      : AdvancingFront(inputs[0], TOLERANCE_AFT, inputs[1], inputs[2]) {
+    struct DetachDelete {
+      void operator()(Face* face) const noexcept {
+        face->DetachVertices();
+        delete face;
+      }
+    };
+    for (unsigned i = 0; i < 4; ++i) {
+      std::unique_ptr<Face, DetachDelete> face(
+          new Face(&corners_[i], &corners_[(i + 1) % 4], center_.get(), i + 1));
+      mesh.push_back(face.get());
+      face.release();
+    }
+    innerVertices.push_back(center_.get());
+  }
+  ~AftContextProbe() override {
+    for (auto* face : mesh) {
+      face->DetachVertices();
+      delete face;
+    }
+    mesh.clear();
+    innerVertices.clear();
+  }
+  double SmoothingFactor() const { return phi; }
+  void CheckEdgeCounts() {
+    std::array<Face*, 4> faces{};
+    std::copy(mesh.begin(), mesh.end(), faces.begin());
+    unsigned cases = 0;
+    auto check = [&](const FaceList& view, unsigned boundary_count, unsigned transition_count,
+                     unsigned internal_count) {
+      CaptureStageStats(view, 1);
+      const auto& stats = GetRunStats();
+      const double total = view.empty() ? 1.0 : static_cast<double>(view.size());
+      if (stats.boundary_element_ratio != boundary_count / total ||
+          stats.transition_element_ratio != transition_count / total ||
+          stats.internal_element_ratio != internal_count / total)
+        throw std::runtime_error("AFT edge multiplicity classification changed");
+      ++cases;
+    };
+    check({}, 0, 0, 0);
+    for (unsigned orientation = 0; orientation < 2; ++orientation) {
+      for (unsigned mask = 0; mask < 16; ++mask) {
+        FaceList view;
+        unsigned boundary_count = 0, transition_count = 0, internal_count = 0;
+        for (unsigned i = 0; i < faces.size(); ++i) {
+          view.push_back(faces[i]);
+          if ((mask & (1U << i)) == 0) {
+            ++boundary_count;
+          } else {
+            view.push_back(faces[i]);
+            // The two thin triangles are at the bottom and left of this fixture.
+            if (i == 0 || i == 3)
+              transition_count += 2;
+            else
+              internal_count += 2;
+          }
+        }
+        check(view, boundary_count, transition_count, internal_count);
+        view.reverse();
+        check(view, boundary_count, transition_count, internal_count);
+      }
+      for (auto* face : faces) {
+        auto* first = face->getV1();
+        face->setV1(face->getV2());
+        face->setV2(first);
+      }
+    }
+    std::cout << "aft_edge_counts cases=" << cases << " duplicates=16 orientations=2\n";
+  }
+  std::array<double, 4> Observe() {
+    center_->setPosition(0.05, 0.25);
+    ResetRunStats();
+    bool changed = false;
+    const FaceAdjacency faceAdjacency(mesh);
+    if (!poorRegionShapeSmoothing(changed, faceAdjacency))
+      throw std::runtime_error("Native AFT poor-region smoothing failed");
+    const auto& stats = GetRunStats();
+    if (changed != (stats.postprocess_vertices_moved > 0))
+      throw std::runtime_error("Native AFT moved-vertex oracle disagrees");
+    return {{center_->getX(), center_->getY(),
+             static_cast<double>(stats.postprocess_vertices_considered),
+             static_cast<double>(stats.postprocess_vertices_moved)}};
+  }
+};
 
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
 #include "domain_candidate_fixture.h"
@@ -1011,54 +1285,6 @@ void CheckSerialFlowContexts(const std::filesystem::path& output) {
   apply(saved);
   std::cout << "serial_flow_context cases=4 sync=4 diagnostics=4 templates=4 retired=4 legacy=2\n";
 }
-
-class AftContextProbe : public Par2DJMesh::AFT::AdvancingFront {
-  using Vertex = Par2DJMesh::Basics::Vertex;
-  using Face = Par2DJMesh::Basics::Face;
-  std::array<Vertex, 4> corners_{
-      {Vertex(0.0, 0.0), Vertex(1.0, 0.0), Vertex(1.0, 1.0), Vertex(0.0, 1.0)}};
-  std::unique_ptr<Vertex> center_ = std::make_unique<Vertex>(0.05, 0.25);
-
-public:
-  explicit AftContextProbe(const std::array<double, 3>& inputs)
-      : AdvancingFront(inputs[0], TOLERANCE_AFT, inputs[1], inputs[2]) {
-    struct DetachDelete {
-      void operator()(Face* face) const noexcept {
-        face->DetachVertices();
-        delete face;
-      }
-    };
-    for (unsigned i = 0; i < 4; ++i) {
-      std::unique_ptr<Face, DetachDelete> face(
-          new Face(&corners_[i], &corners_[(i + 1) % 4], center_.get(), i + 1));
-      mesh.push_back(face.get());
-      face.release();
-    }
-    innerVertices.push_back(center_.get());
-  }
-  ~AftContextProbe() override {
-    for (auto* face : mesh) {
-      face->DetachVertices();
-      delete face;
-    }
-    mesh.clear();
-    innerVertices.clear();
-  }
-  double SmoothingFactor() const { return phi; }
-  std::array<double, 4> Observe() {
-    center_->setPosition(0.05, 0.25);
-    ResetRunStats();
-    bool changed = false;
-    if (!poorRegionShapeSmoothing(changed))
-      throw std::runtime_error("Native AFT poor-region smoothing failed");
-    const auto& stats = GetRunStats();
-    if (changed != (stats.postprocess_vertices_moved > 0))
-      throw std::runtime_error("Native AFT moved-vertex oracle disagrees");
-    return {{center_->getX(), center_->getY(),
-             static_cast<double>(stats.postprocess_vertices_considered),
-             static_cast<double>(stats.postprocess_vertices_moved)}};
-  }
-};
 
 void CheckAftContexts() {
   using apmesh::application::AftConfig;
@@ -1826,6 +2052,48 @@ public:
 #endif
 
 namespace {
+int CheckAdaptiveReuse(const std::filesystem::path& config_path,
+                       const std::filesystem::path& output) {
+#if defined(_WIN32)
+  SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX);
+#endif
+#if defined(_MSC_VER) && defined(_DEBUG)
+  _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
+  _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
+#endif
+  const auto config = LoadRuntimeConfig(config_path.string());
+  ApplyRuntimeConfig(config);
+  GeneratorAdaptive generator(apmesh::application::MakeGenerationContext(config, NUMBER_PROCESS));
+  const auto live = std::filesystem::path(config.output_prefix).parent_path();
+  for (unsigned int call = 0; call < 2; ++call) {
+    ApplyRuntimeConfig(config);
+    if (!std::filesystem::create_directories(live))
+      throw std::runtime_error("Adaptive reuse requires a fresh output directory");
+    int code;
+    {
+      std::ofstream transcript(live / "stdout.log");
+      struct OutputScope {
+        std::streambuf* previous;
+        explicit OutputScope(std::ostream& output) : previous(std::cout.rdbuf(output.rdbuf())) {}
+        ~OutputScope() { std::cout.rdbuf(previous); }
+      } capture(transcript);
+      Timer timer(config.num_processes, config.num_threads, 12);
+      code = generator.Execute(apmesh::application::GenerationRequest{config.num_processes,
+                                                                      config.num_threads,
+                                                                      config.input_model},
+                               &timer);
+    }
+    const auto statistics = generator.GetFindUvStatistics();
+    std::cout << "adaptive_reuse call=" << call << " exit=" << code
+              << " archived=" << DomainCandidateFixture::SavedMeshes(generator).size()
+              << " calls=" << statistics.calls << " imax=" << statistics.imax_exits << '\n';
+    std::filesystem::rename(live, output / (call == 0 ? "first" : "second"));
+    if (code != 0)
+      return code;
+  }
+  return 0;
+}
+
 bool CheckSerialReuse(const std::filesystem::path& output) {
   struct Restore {
     std::string mode = ADAPTIVE_MODE, name = NAME_MODEL, write = WRITE_MESH;
@@ -1912,7 +2180,253 @@ bool CheckSerialReuse(const std::filesystem::path& output) {
 }
 } // namespace
 
+namespace {
+bool CheckSerialTiming(const std::filesystem::path& output) {
+  struct Restore {
+    std::string mode = ADAPTIVE_MODE, name = NAME_MODEL, write = WRITE_MESH;
+    int steps = STEPS;
+    ~Restore() {
+      ADAPTIVE_MODE = mode;
+      NAME_MODEL = name;
+      WRITE_MESH = write;
+      STEPS = steps;
+    }
+  } restore;
+  const auto fixture =
+      std::filesystem::path(__FILE__).parent_path() / "curve_memory/data/charge_input.bp";
+  Geometry geometry;
+  PatchReader reader;
+  reader.ReaderFilePatches(&geometry, fixture.string().c_str());
+  auto* reference_patch = static_cast<PatchBezier*>(geometry.GetPatch(0));
+  Timer curvature_timer;
+  struct MeasuredPatch : PatchBezier {
+    Timer& clock;
+    unsigned calls = 0;
+    MeasuredPatch(PatchBezier* source, Timer& value) : PatchBezier(source), clock(value) {}
+    std::tuple<double, double> FindUV(const PointAdaptive& point) override {
+      const auto result = PatchBezier::FindUV(point);
+      // Simulate known curvature time and poison the already-closed error start.
+      clock.timer_parallel_init_[0][0][6].tv_sec -= 100;
+      clock.timer_parallel_init_[0][0][7].tv_sec -= 100;
+      ++calls;
+      return result;
+    }
+  } measured_patch(reference_patch, curvature_timer);
+  auto make_mesh = [](PatchBezier& patch) {
+    auto mesh = std::make_unique<MeshAdaptive>();
+    auto sub = std::make_unique<SubMesh>();
+    std::array<NodeAdaptive*, 3> nodes{};
+    const std::array<std::array<double, 2>, 3> uv{{{0, 0}, {1, 0}, {0, 1}}};
+    for (unsigned i = 0; i < nodes.size(); ++i) {
+      auto node = std::make_unique<NodeAdaptive>(patch.Parameterize(uv[i][0], uv[i][1]));
+      node->SetId(i + 1);
+      nodes[i] = node.get();
+      sub->AddNoh(std::move(node));
+    }
+    sub->AddElement(std::make_unique<TriangleAdaptive>(nodes[0], nodes[1], nodes[2]));
+    sub->SetPatch(&patch);
+    mesh->InsertSubMeshAdaptive(sub.release());
+    return mesh;
+  };
+  auto reference_mesh = make_mesh(*reference_patch);
+  auto measured_mesh = make_mesh(measured_patch);
+  GeneratorAdaptive reference, measured;
+  Timer reference_timer;
+  const double expected_error = reference.ErrorGlobal(reference_mesh.get(), &reference_timer);
+  const double actual_error = measured.ErrorGlobal(measured_mesh.get(), &curvature_timer);
+  const double curvature = curvature_timer.GetRankThreadTime(0, 0, 6);
+  const double error = curvature_timer.GetRankThreadTime(0, 0, 7);
+  const bool balanced = measured_patch.calls == 3 && curvature >= 300.0 && curvature < 305.0 &&
+                        error >= 0.0 && error < 5.0;
+  bool same_payload = std::isfinite(expected_error) &&
+                      std::memcmp(&expected_error, &actual_error, sizeof(double)) == 0;
+  for (unsigned i = 0; i < 3; ++i) {
+    const auto* a = reference_mesh->GetSubMeshAdaptiveByPosition(0)->GetNoh(i);
+    const auto* b = measured_mesh->GetSubMeshAdaptiveByPosition(0)->GetNoh(i);
+    const std::array<double, 4> av{{a->GetGa(), a->GetGd(), a->GetHa(), a->GetHd()}};
+    const std::array<double, 4> bv{{b->GetGa(), b->GetGd(), b->GetHa(), b->GetHd()}};
+    same_payload = same_payload && std::memcmp(av.data(), bv.data(), sizeof(av)) == 0;
+  }
+  ADAPTIVE_MODE = "legacy";
+  STEPS = 0;
+  WRITE_MESH = "h";
+  NAME_MODEL = (output / "timing-initial").generic_string();
+  Timer total_timer;
+  GeneratorAdaptive generator;
+  const auto start = std::chrono::steady_clock::now();
+  const auto missing = (output / "timing-missing.bp").generic_string();
+  if (std::filesystem::exists(missing))
+    throw std::runtime_error("Timing control requires an absent input");
+  bool rejected = false;
+  try {
+    generator.Execute(apmesh::application::GenerationRequest{1, 1, missing}, &total_timer);
+  } catch (const std::exception&) {
+    rejected = true;
+  }
+  // Close the failed attempt explicitly to check the engine's early start protocol.
+  total_timer.EndTimerParallel(0, 0, 10);
+  const double wall =
+      std::chrono::duration<double>(std::chrono::steady_clock::now() - start).count();
+  const double full = total_timer.GetRankThreadTime(0, 0, 10);
+  const bool started = rejected && full >= 0.0 && full <= wall + 1.0;
+  std::cout << "serial_timing balanced=" << balanced << " started=" << started
+            << " same_payload=" << same_payload << " simulated_curvature=" << curvature
+            << " error=" << error << " full=" << full << " wall=" << wall << '\n';
+  return balanced && started && same_payload;
+}
+
+void CheckCurvaturePointAccess() {
+  struct LegacyTriangle : TriangleAdaptive {
+    using TriangleAdaptive::TriangleAdaptive;
+    mutable unsigned reads = 0;
+    NodeAdaptive GetNoh(unsigned int position) const override {
+      ++reads;
+      return TriangleAdaptive::GetNoh(position);
+    }
+  };
+  struct Fan {
+    std::array<NodeAdaptive, 5> nodes;
+    std::array<std::unique_ptr<TriangleAdaptive>, 4> triangles;
+    Fan(int shape, unsigned count, const std::array<unsigned, 4>& order, bool legacy) {
+      const double xy[5][2] = {{0, 0}, {1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+      for (unsigned i = 0; i < nodes.size(); ++i) {
+        nodes[i].SetX(xy[i][0]);
+        nodes[i].SetY(xy[i][1]);
+        nodes[i].SetZ(shape * (0.2 * xy[i][0] * xy[i][0] + 0.1 * xy[i][1]));
+        nodes[i].SetId(100 + i);
+      }
+      for (unsigned i = 0; i < count; ++i) {
+        const unsigned slot = order[i];
+        auto* a = &nodes[0];
+        auto* b = &nodes[slot + 1];
+        auto* c = &nodes[(slot + 1) % 4 + 1];
+        if (legacy)
+          triangles[i] = std::make_unique<LegacyTriangle>(a, b, c);
+        else
+          triangles[i] = std::make_unique<TriangleAdaptive>(a, b, c);
+      }
+    }
+  };
+  auto require = [](bool value) {
+    if (!value)
+      throw std::runtime_error("Curvature point snapshot differential failed");
+  };
+  auto same = [](double a, double b) { return std::memcmp(&a, &b, sizeof(double)) == 0; };
+  unsigned cases = 0;
+  unsigned transfers = 0;
+  unsigned unmatched = 0;
+  for (int shape : {0, 1})
+    for (unsigned count : {3U, 4U}) {
+      std::array<unsigned, 4> order{{0, 1, 2, 3}};
+      do {
+        Fan fast(shape, count, order, false), legacy(shape, count, order, true);
+        const std::list<ElementAdaptive*> before(fast.nodes[0].GetElements().begin(),
+                                                 fast.nodes[0].GetElements().end());
+        Adjacent adjacent;
+        for (unsigned i = 0; i < count; ++i)
+          for (unsigned j = 0; j < count; ++j) {
+            require(adjacent.ConfirmLeftAdjacency(fast.nodes[0], *fast.triangles[i],
+                                                  *fast.triangles[j]) ==
+                    adjacent.ConfirmLeftAdjacency(legacy.nodes[0], *legacy.triangles[i],
+                                                  *legacy.triangles[j]));
+            require(adjacent.ConfirmRightAdjacency(fast.nodes[0], *fast.triangles[i],
+                                                   *fast.triangles[j]) ==
+                    adjacent.ConfirmRightAdjacency(legacy.nodes[0], *legacy.triangles[i],
+                                                   *legacy.triangles[j]));
+            require(
+                adjacent.ConcavityElement(fast.nodes[0], *fast.triangles[i], *fast.triangles[j]) ==
+                adjacent.ConcavityElement(legacy.nodes[0], *legacy.triangles[i],
+                                          *legacy.triangles[j]));
+          }
+        for (Fan* fan : {&fast, &legacy})
+          for (unsigned seed = 0; seed < count; ++seed)
+            for (bool left : {true, false}) {
+              std::list<ElementAdaptive*> remaining = fan->nodes[0].GetElements();
+              remaining.push_back(remaining.front());
+              auto reference = remaining;
+              ElementAdaptive* start = fan->triangles[seed].get();
+              ElementAdaptive* expected =
+                  left ? adjacent.GetElementLeft(fan->nodes[0], start, reference)
+                       : adjacent.GetElementRight(fan->nodes[0], start, reference);
+              auto match = std::find(remaining.begin(), remaining.end(), expected);
+              ElementAdaptive** identity = expected ? std::addressof(*match) : nullptr;
+              std::list<ElementAdaptive*> destination{start, start};
+              auto expected_destination = destination;
+              if (expected)
+                expected_destination.insert(
+                    left ? expected_destination.end() : expected_destination.begin(), expected);
+              ElementAdaptive* actual =
+                  left ? adjacent.MoveElementLeft(fan->nodes[0], start, remaining, destination)
+                       : adjacent.MoveElementRight(fan->nodes[0], start, remaining, destination);
+              require(actual == expected && remaining == reference &&
+                      destination == expected_destination);
+              if (expected)
+                require(std::addressof(left ? destination.back() : destination.front()) ==
+                        identity);
+              else
+                ++unmatched;
+              ++transfers;
+            }
+        CurvatureDiscrete a(fast.nodes[0]), b(legacy.nodes[0]);
+        curvature_test_reference::LegacyCurvatureDiscrete old_fast(fast.nodes[0]);
+        curvature_test_reference::LegacyCurvatureDiscrete old_virtual(legacy.nodes[0]);
+        const double fast_mean = a.CalculateMeanCurvature();
+        const double virtual_mean = b.CalculateMeanCurvature();
+        require(same(fast_mean, virtual_mean));
+        require(same(fast_mean, old_fast.CalculateMeanCurvature()));
+        require(same(virtual_mean, old_virtual.CalculateMeanCurvature()));
+        require(same(a.CalculateGaussCurvature(), b.CalculateGaussCurvature()));
+        require(same(a.CalculateGaussCurvature(), old_fast.CalculateGaussCurvature()));
+        require(same(b.CalculateGaussCurvature(), old_virtual.CalculateGaussCurvature()));
+        require(fast.nodes[0].GetElements() == before);
+        require(static_cast<LegacyTriangle&>(*legacy.triangles[0]).reads > 0);
+        for (unsigned i = 0; i < count; ++i)
+          for (unsigned vertex = 1; vertex <= 3; ++vertex) {
+            const auto point = fast.triangles[i]->GetVertexPoint(vertex);
+            const auto node = legacy.triangles[i]->GetNoh(vertex);
+            require(point.GetId() == node.GetId() && same(point.GetX(), node.GetX()) &&
+                    same(point.GetY(), node.GetY()) && same(point.GetZ(), node.GetZ()));
+          }
+        const auto saved = fast.triangles[0]->GetVertexPoint(1);
+        fast.nodes[0].SetX(0.125);
+        require(saved.GetX() == 0.0 && fast.triangles[0]->GetVertexPoint(1).GetX() == 0.125);
+        ++cases;
+      } while (std::next_permutation(order.begin(), order.begin() + count));
+    }
+  struct VirtualTriangle : TriangleAdaptive {
+    bool reverse;
+    mutable unsigned reads = 0;
+    explicit VirtualTriangle(bool reversed) : reverse(reversed) {}
+    NodeAdaptive GetNoh(unsigned int position) const override {
+      ++reads;
+      if (reverse && position != 1)
+        position = 5 - position;
+      return NodeAdaptive(position == 2, position == 3, 0.0);
+    }
+  };
+  VirtualTriangle first(false), last(true);
+  Adjacent adjacent;
+  NodeAdaptive origin(0, 0, 0);
+  require(adjacent.ConfirmLeftAdjacency(origin, first, last) && first.reads > 0 && last.reads > 0);
+  std::cout << "curvature_point_access cases=" << cases << " virtual_fallback=1\n";
+  require(unmatched > 0);
+  std::cout << "curvature_sort_reference cases=" << 2 * cases << " bitwise=1\n";
+  std::cout << "curvature_transfers cases=" << transfers << " unmatched=" << unmatched
+            << " first_match=1 node_identity=1\n";
+}
+} // namespace
+
 int main(int argc, char* argv[]) {
+  if (argc == 2 && std::string(argv[1]) == "--finduv-scratch") {
+    CheckFindUvScratch();
+    return 0;
+  }
+  if (argc == 2 && std::string(argv[1]) == "--curvature-sort") {
+    CheckCurvaturePointAccess();
+    return 0;
+  }
+  if (argc == 4 && std::string(argv[1]) == "--adaptive-reuse-config")
+    return CheckAdaptiveReuse(argv[2], argv[3]);
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)
   if (argc == 2 && std::string(argv[1]) == "--accepted-root-contracts")
     return accepted_root_test::Run(false);
@@ -1959,6 +2473,8 @@ int main(int argc, char* argv[]) {
     std::filesystem::current_path(output);
     if (mode == "null-geometry" || mode == "null-mesh" || mode == "null-both")
       CheckDomainInputs(mode);
+    else if (mode == "serial-timing")
+      return CheckSerialTiming(output) ? 0 : 1;
     else if (mode == "serial-reuse")
       return CheckSerialReuse(output) ? 0 : 1;
     else if (mode == "patch-observers")
@@ -1971,6 +2487,12 @@ int main(int argc, char* argv[]) {
   }
   if (argc != 2)
     throw std::runtime_error("Expected a fresh output directory");
+  CheckFindUvScratch();
+  CheckCurvaturePointAccess();
+  {
+    AftContextProbe edge_counts({0.85, 5.0, 0.5});
+    edge_counts.CheckEdgeCounts();
+  }
   const std::filesystem::path output(argv[1]);
   if (!std::filesystem::create_directories(output))
     throw std::runtime_error("Output directory already exists");
@@ -2016,5 +2538,7 @@ int main(int argc, char* argv[]) {
   const GeneratorAdaptive::MeshAttemptMetrics zero{0, 0, 0, 1, 0, 1, 0, 0, 0, 0, .5, .1};
   generator.WriteQualityMesh(mesh.get(), 0, zero);
   generator.WriteQualityMesh(mesh.get(), 1, zero);
+  if (!CheckSerialTiming(output / "serial-timing"))
+    throw std::runtime_error("Serial timing interval protocol failed");
   return 0;
 }

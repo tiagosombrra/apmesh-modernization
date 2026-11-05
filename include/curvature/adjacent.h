@@ -10,23 +10,25 @@
 
 // OBS: Essa classe foi implementada para triâgulos !!!
 class Adjacent {
- public:
-  bool ConfirmLeftAdjacency(const NodeAdaptive& noh,
-                            const ElementAdaptive& first_element,
+public:
+  bool ConfirmLeftAdjacency(const NodeAdaptive& noh, const ElementAdaptive& first_element,
                             const ElementAdaptive& last_element);
-  bool ConfirmRightAdjacency(const NodeAdaptive& noh,
-                             const ElementAdaptive& first_element,
+  bool ConfirmRightAdjacency(const NodeAdaptive& noh, const ElementAdaptive& first_element,
                              const ElementAdaptive& last_element);
-  ElementAdaptive* GetElementLeft(const NodeAdaptive& noh,
-                                  ElementAdaptive* element,
+  ElementAdaptive* GetElementLeft(const NodeAdaptive& noh, ElementAdaptive* element,
                                   std::list<ElementAdaptive*>& list_element);
-  ElementAdaptive* GetElementRight(const NodeAdaptive& noh,
-                                   ElementAdaptive* element,
+  ElementAdaptive* GetElementRight(const NodeAdaptive& noh, ElementAdaptive* element,
                                    std::list<ElementAdaptive*>& list_element);
-  int ConcavityElement(const NodeAdaptive& noh,
-                       const ElementAdaptive& first_element,
+  // Transfer the first match between distinct private lists without allocating.
+  // Left appends to the destination tail; right prepends to its head.
+  ElementAdaptive* MoveElementLeft(const NodeAdaptive& node, ElementAdaptive* element,
+                                   std::list<ElementAdaptive*>& remaining,
+                                   std::list<ElementAdaptive*>& destination);
+  ElementAdaptive* MoveElementRight(const NodeAdaptive& node, ElementAdaptive* element,
+                                    std::list<ElementAdaptive*>& remaining,
+                                    std::list<ElementAdaptive*>& destination);
+  int ConcavityElement(const NodeAdaptive& noh, const ElementAdaptive& first_element,
                        const ElementAdaptive& next_element);
-  double AngleElement(const ElementAdaptive& first_element,
-                      const ElementAdaptive& next_element);
+  double AngleElement(const ElementAdaptive& first_element, const ElementAdaptive& next_element);
 };
-#endif  // CURVATURE_ADJACENT_H
+#endif // CURVATURE_ADJACENT_H

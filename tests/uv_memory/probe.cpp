@@ -405,6 +405,10 @@ void pending_tree() {
 class TransferFront : public AdvancingFront {
 public:
   using AdvancingFront::fillMesh;
+  void SetObserverViews(const VertexList& vertex_view, const EdgeList& edge_view) {
+    vertices = vertex_view;
+    edges = edge_view;
+  }
 };
 
 void prepare_transfer(TransferFront& front) {
@@ -415,7 +419,98 @@ void prepare_transfer(TransferFront& front) {
   require(!front.getQuadtree()->getMesh().empty(), "positive transfer source coverage");
 }
 
+// The pre-index fillMesh scans, kept independent of production membership storage.
+template <class List> List scan_union(List destination, List candidates) {
+  while (!candidates.empty()) {
+    auto* candidate = candidates.front();
+    candidates.pop_front();
+    bool found = false;
+    for (typename List::iterator iter = destination.begin(); iter != destination.end(); iter++) {
+      if ((*iter) == candidate) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      destination.push_back(candidate);
+    }
+  }
+  return destination;
+}
+
+void transfer_membership() {
+  struct BorrowedEndpointEdge : Edge {
+    using Edge::Edge;
+    ~BorrowedEndpointEdge() override { DetachVertices(); }
+  };
+  for (unsigned mode = 0; mode < 12; ++mode) {
+    TransferFront front;
+    prepare_transfer(front);
+    const auto source_vertices = front.getQuadtree()->getVertices();
+    const auto source_edges = front.getQuadtree()->getEdges();
+    const auto source_faces = front.getQuadtree()->getMesh();
+    require(!source_vertices.empty() && !source_edges.empty(), "positive union source coverage");
+    auto* vertex = source_vertices.front();
+    auto* edge = source_edges.front();
+    Vertex twin_vertex(vertex->getX(), vertex->getY(), vertex->getId());
+    BorrowedEndpointEdge twin_edge(edge->getV1(), edge->getV2(), edge->getId());
+    VertexList vertex_prefix;
+    EdgeList edge_prefix;
+    if (mode > 0 && mode < 9) {
+      vertex_prefix = {nullptr, &twin_vertex, &twin_vertex};
+      edge_prefix = {nullptr, &twin_edge, &twin_edge};
+      if ((mode - 1) & 1U) {
+        unsigned index = 0;
+        for (auto* value : source_vertices) {
+          if (index++ % 2 == 0) {
+            vertex_prefix.push_back(value);
+            if ((mode - 1) & 2U)
+              vertex_prefix.push_back(value);
+          }
+        }
+        index = 0;
+        for (auto* value : source_edges) {
+          if (index++ % 2 == 0) {
+            edge_prefix.push_back(value);
+            if ((mode - 1) & 2U)
+              edge_prefix.push_back(value);
+          }
+        }
+      }
+      if ((mode - 1) & 4U) {
+        vertex_prefix.reverse();
+        edge_prefix.reverse();
+      }
+    } else if (mode >= 9) {
+      if (mode != 11) {
+        vertex_prefix = source_vertices;
+        vertex_prefix.push_back(vertex);
+      }
+      if (mode != 10) {
+        edge_prefix = source_edges;
+        edge_prefix.push_back(edge);
+      }
+    }
+    const auto expected_vertices = scan_union(vertex_prefix, source_vertices);
+    const auto expected_edges = scan_union(edge_prefix, source_edges);
+    front.SetObserverViews(vertex_prefix, edge_prefix);
+    for (unsigned repetition = 0; repetition < 2; ++repetition) {
+      front.fillMesh();
+      require(front.getVertices() == expected_vertices && front.getEdges() == expected_edges,
+              "pointer union matches the former scans including order and prefix duplicates");
+      require(front.getInnerVertices() == source_vertices &&
+                  front.getInnerEdges() == source_edges && front.getMesh() == source_faces,
+              "membership views do not change owner order or multiplicity");
+      require(front.getQuadtree()->getVertices().empty() &&
+                  front.getQuadtree()->getEdges().empty() && front.getQuadtree()->getMesh().empty(),
+              "membership preparation precedes the complete owner commit");
+    }
+  }
+  std::puts("fill_mesh_membership cases=12 repeated_empty=12 pointer_identity=1 scan_reference=1");
+}
+
 void transfer_order() {
+  transfer_membership();
   TransferFront front;
   prepare_transfer(front);
   auto expected_vertices = front.getQuadtree()->getVertices();
@@ -673,7 +768,7 @@ void allocation_hook_control() {
   std::puts("allocation_hook_control=detected");
 }
 
-void transfer_allocation_failure() {
+void transfer_allocation_failure(bool all_ordinals = false) {
   forbid_allocations = false;
   allocation_attempts = 0;
   {
@@ -685,7 +780,13 @@ void transfer_allocation_failure() {
   }
   const int total = allocation_attempts;
   require(total > 2, "positive measured allocation coverage in observer preparation");
-  for (const int index : {0, total / 2, total - 1}) {
+  std::vector<int> indices{0, total / 2, total - 1};
+  if (all_ordinals) {
+    indices.clear();
+    for (int index = 0; index < total; ++index)
+      indices.push_back(index);
+  }
+  for (const int index : indices) {
     TransferFront front;
     prepare_transfer(front);
     const auto original_vertices = front.getQuadtree()->getVertices();
@@ -710,8 +811,21 @@ void transfer_allocation_failure() {
                 front.getQuadtree()->getEdges() == original_edges &&
                 front.getQuadtree()->getMesh() == original_faces,
             "source owners remain complete after allocation failure");
+    const auto vertex_prefix = front.getVertices();
+    const auto edge_prefix = front.getEdges();
+    require(vertex_prefix.size() <= original_vertices.size() &&
+                std::equal(vertex_prefix.begin(), vertex_prefix.end(), original_vertices.begin()) &&
+                edge_prefix.size() <= original_edges.size() &&
+                std::equal(edge_prefix.begin(), edge_prefix.end(), original_edges.begin()),
+            "failed preparation publishes only ordered observer prefixes");
+    front.fillMesh();
+    require(front.getVertices() == original_vertices && front.getEdges() == original_edges &&
+                front.getInnerVertices() == original_vertices &&
+                front.getInnerEdges() == original_edges && front.getMesh() == original_faces,
+            "retry rebuilds membership from the published prefixes and commits owners once");
   }
-  std::printf("transfer_allocation_failures=3 measured_allocations=%d\n", total);
+  std::printf("transfer_allocation_failures=%zu measured_allocations=%d all_ordinals=%d\n",
+              indices.size(), total, all_ordinals ? 1 : 0);
 }
 
 class AllocationScope {
@@ -1152,12 +1266,13 @@ void scenario(const char* mode) {
     require(false, "Debug CRT allocation hook required");
 #endif
   } else if (std::strcmp(mode, "allocation-hook-control") == 0 ||
-             std::strcmp(mode, "transfer-allocation-failure") == 0) {
+             std::strcmp(mode, "transfer-allocation-failure") == 0 ||
+             std::strcmp(mode, "transfer-membership-failure") == 0) {
 #if defined(_MSC_VER) && defined(_DEBUG)
     if (std::strcmp(mode, "allocation-hook-control") == 0)
       allocation_hook_control();
     else
-      transfer_allocation_failure();
+      transfer_allocation_failure(std::strcmp(mode, "transfer-membership-failure") == 0);
 #else
     require(false, "Debug CRT allocation hook required");
 #endif

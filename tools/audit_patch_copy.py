@@ -8,6 +8,7 @@ import re
 import subprocess
 
 from audit_find_uv_recording import restore_find_uv_recording, validate_find_uv_header
+from audit_find_uv_scratch import restore_find_uv_scratch
 
 from audit_hermite_observers import restore_hermite_retirement
 
@@ -25,6 +26,7 @@ NEW_HERMITE = """PatchHermite::PatchHermite(PatchHermite* patch_hermite)
 
 
 def code(text):
+    text = restore_find_uv_scratch(text)
     text = restore_find_uv_recording(text)
     text = re.sub(r"//[^\n]*|/\*.*?\*/", "", text, flags=re.S)
     return re.sub(r"\s+", "", text)
@@ -100,10 +102,11 @@ def audit(candidate_root, original_root=None):
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
             "finduv_recording": "Exact entry/I_MAX slots normalized after pinned helper validation",
+            "finduv_scratch": "Exact local array syntax reversed with the entire previous solver pinned",
             "scope": "Only the exact Bezier copy basis/zero-metadata and Hermite copy true-direction initializers change; "
                      "the exact independently guarded completed Hermite retirement declaration/body and "
                      "constructor rollback scope are normalized. "
-                     "Header code and all other complete-unit tokens, numerical order, source-field reads, detached "
+                     "The pinned local FindUV storage delta is reversed separately. Header code and all other complete-unit tokens, numerical order, source-field reads, detached "
                      "topology, signatures and layouts match immutable main. Eight independent basis, metadata-read, "
                      "direction, ID, control, topology, orientation and numerical mutations are rejected. "
                      "Actual initialized-value, incidence, nonallocation and original/candidate traces remain required."}

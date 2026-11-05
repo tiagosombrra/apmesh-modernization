@@ -7,6 +7,18 @@ route, not a promise that unknown supported defects take a fixed time to repair.
 The ten [closure obligations](STAGE3_CLOSURE_INVENTORY.md) remain mandatory in
 their declared scope. No partial result closes the stage.
 
+## Current dependency after the cumulative candidate audit
+
+The [2026-11-05 audit](../evidence/PLAN_REGRESSION_AUDIT.md) passes current GCC and
+checked-MSVC Eistute/Book reuse. Each MSVC pair finishes within the unchanged
+300-second total cap, with independent boundaries, preserved artifacts and equal
+native counters. The old timeout is retained evidence, not the current blocker.
+Complete the candidate's delivery review and exact-head/main gates before another
+implementation. Additional speculative performance packages are not queued.
+Preserve artifact-specific ASan results; full-process CRT/UB/leak, wider callers,
+parallel coverage and all seven partial/open rows remain closure work. The P2
+machine ledger is a preserved entry specification, not a current result table.
+
 | Package | Deliverable | Acceptance / stop decision | Closure rows |
 | --- | --- | --- | --- |
 | P1: compiler prerequisite implemented | The actual complete serial ap_mesh builds in MSVC C++17 Debug with all native units; existing pi definition and RAII scratch storage correct the demonstrated blockers. [Build evidence](../evidence/MSVC_SERIAL_CPP17_BUILD.md). | Require exact-head/main canonical preset builds, focused native/real CLI checks, C++17 scientific reference and source preservation. A working full build is the delivered prerequisite, not whole-process memory qualification. | S3-09; bounded stage 4 prerequisite |

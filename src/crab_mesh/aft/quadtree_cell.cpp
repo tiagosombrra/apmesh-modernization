@@ -1429,8 +1429,10 @@ void QuadtreeCell::makeOuterVertices() {
       neighbors[QUAD_B].front()->v[5] = v[0];
     }
 
-    if (neighbors[QUAD_B].front()->neighbors[QUAD_L].front() ==
-        neighbors[QUAD_L].back()->neighbors[QUAD_B].back()) {
+    if (!neighbors[QUAD_B].front()->neighbors[QUAD_L].empty() &&
+        !neighbors[QUAD_L].back()->neighbors[QUAD_B].empty() &&
+        neighbors[QUAD_B].front()->neighbors[QUAD_L].front() ==
+            neighbors[QUAD_L].back()->neighbors[QUAD_B].back()) {
       neighbors[QUAD_B].front()->neighbors[QUAD_L].front()->v[4] = v[0];
     }
   }
@@ -1464,8 +1466,10 @@ void QuadtreeCell::makeOuterVertices() {
       neighbors[QUAD_R].front()->v[7] = v[2];
     }
 
-    if (neighbors[QUAD_R].front()->neighbors[QUAD_B].front() ==
-        neighbors[QUAD_B].back()->neighbors[QUAD_R].back()) {
+    if (!neighbors[QUAD_R].front()->neighbors[QUAD_B].empty() &&
+        !neighbors[QUAD_B].back()->neighbors[QUAD_R].empty() &&
+        neighbors[QUAD_R].front()->neighbors[QUAD_B].front() ==
+            neighbors[QUAD_B].back()->neighbors[QUAD_R].back()) {
       neighbors[QUAD_R].front()->neighbors[QUAD_B].front()->v[6] = v[2];
     }
   }
@@ -1499,8 +1503,10 @@ void QuadtreeCell::makeOuterVertices() {
       neighbors[QUAD_T].front()->v[1] = v[4];
     }
 
-    if (neighbors[QUAD_T].front()->neighbors[QUAD_R].front() ==
-        neighbors[QUAD_R].back()->neighbors[QUAD_T].back()) {
+    if (!neighbors[QUAD_T].front()->neighbors[QUAD_R].empty() &&
+        !neighbors[QUAD_R].back()->neighbors[QUAD_T].empty() &&
+        neighbors[QUAD_T].front()->neighbors[QUAD_R].front() ==
+            neighbors[QUAD_R].back()->neighbors[QUAD_T].back()) {
       neighbors[QUAD_T].front()->neighbors[QUAD_R].front()->v[0] = v[4];
     }
   }
@@ -1534,8 +1540,10 @@ void QuadtreeCell::makeOuterVertices() {
       neighbors[QUAD_L].front()->v[3] = v[6];
     }
 
-    if (neighbors[QUAD_L].front()->neighbors[QUAD_T].front() ==
-        neighbors[QUAD_T].back()->neighbors[QUAD_L].back()) {
+    if (!neighbors[QUAD_L].front()->neighbors[QUAD_T].empty() &&
+        !neighbors[QUAD_T].back()->neighbors[QUAD_L].empty() &&
+        neighbors[QUAD_L].front()->neighbors[QUAD_T].front() ==
+            neighbors[QUAD_T].back()->neighbors[QUAD_L].back()) {
       neighbors[QUAD_L].front()->neighbors[QUAD_T].front()->v[2] = v[6];
     }
   }

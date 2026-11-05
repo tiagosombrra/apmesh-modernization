@@ -1909,3 +1909,154 @@ Historical next-work checkpoint (slice 21): triangle destruction/observer lifeti
 and SubMesh ordering were subsequently addressed by slices 22-24. Their measured
 scope does not establish general graph reuse or stage 3 closure. The active item
 and finite remaining inventory are linked at the top of this document.
+
+## Candidate chronology retained by the 2026-11-05 plan audit
+
+Snapshot at source head `1604599cb36b9064907b5e93a3c45e56143a391f`.
+The following text is preserved verbatim and is not the current work queue.
+
+## Active P4 candidate: integration blocked
+
+Remote main remains d1619137af4ad53e3bb98cf5fc4336f75350629f (PR #162).
+The adaptive reuse candidate fixes one reproduced record leak and four empty
+diagonal-list reads. GCC frozen/reuse observations pass. Checked MSVC Eistute
+previously reached the unchanged 300-second cap in its first call. With the scoped
+index below, the first now completes and the second reaches that total cap;
+repeated MSVC and Book remain unqualified. The candidate stays unintegrated.
+Preserve the required control's input, checks and cap.
+
+The [temporary AFT face index](evidence/AFT_FACE_ADJACENCY_INDEX.md) now removes
+repeated full-list scans from all three smoothers while retaining face order,
+duplicates, live geometry and every numerical/update expression. GCC/MSVC builds,
+75 CTest/389 nested controls and frozen GCC Eistute preservation pass. One checked
+MSVC Eistute observation preserves input/configuration/checks and the total 300 s
+cap: the first call now completes (five states, 15 boundary comparisons, 18 old
+partial artifacts exact); the second times out at step 4. No further model is run.
+Adaptive reuse and integration remain blocked; no complete two-call speedup is
+claimed. Preserve the earlier [CPU/stack diagnosis](evidence/ADAPTIVE_REUSE_TIMEOUT_DIAGNOSIS.md),
+failed first-call observations and both new outputs. Further production work must
+target a demonstrated remaining cost without changing scientific policy or cap.
+
+A subsequent [Bezier operand-copy candidate](evidence/BEZIER_EVALUATION_OPERANDS.md)
+preserved scalar bits and all 25 first-call MSVC scientific artifacts, but its
+single fixed two-call observation still timed out at 300 s in the second call.
+That Bezier candidate was rejected and its production, probe, guard and inventory
+changes were restored to d08d655 before the package below. Its source/binary/output
+evidence is retained locally, without another generation in that attempt. No
+performance improvement or modernization delivery is claimed for that candidate.
+
+The [curvature point-access package](evidence/CURVATURE_VERTEX_POINTS.md) now
+removes full node/list copies from adjacency and concavity for exact triangles,
+preserving virtual legacy behavior for extensions. One measured comparison uses
+zero allocations instead of 30, with identical result and observer state. Native
+differential controls, existing 75 CTest/389 controls and frozen Eistute pass. The
+new checked-MSVC pair still reaches 300 s in the second call; the first preserves
+25 exact artifacts and 15 boundaries. Keep the production improvement reviewable,
+but leave performance qualification and integration blocked. No further generation
+or Book run. The prior unchanged-binary diagnosis completed a pair in 289.468 s;
+retain both that timing variability and all timeouts, without cherry-picking.
+The [AFT edge-count package](evidence/AFT_EDGE_COUNT_LOOKUPS.md) now replaces
+ordered-tree queries with a local hash counter. Original endpoint normalization,
+increments, duplicate multiplicity, face/edge order and numerical expressions stay
+unchanged. GCC/MSVC builds, 65 native count cases per ABI, existing 75 CTest/389
+controls and frozen GCC Eistute pass. The single new-binary MSVC pair still reaches
+300 s in the second call; its first call preserves 25 exact artifacts and 15
+boundaries. Keep the package reviewable and the timed reuse/integration gates
+blocked. No end-to-end speedup, retry, new model or Stage 3 closure is claimed.
+
+The [serial timing repair](evidence/SERIAL_TIMING_INTERVALS.md) now fixes the
+missing full start and overlapping/mismatched error/curvature intervals that
+produced impossible reports. The defect is reproduced before repair; corrected
+native controls preserve numeric payloads on both ABIs. Existing regression and
+five-state frozen GCC Eistute pass. Its full_without_io is 6.19113 s against
+7.05320 s wall time; the science artifacts remain exact. These are corrected
+diagnostics, not a speedup. No new long MSVC pair or Book run. The existing 300 s
+wall-clock gate and integration remain blocked; use valid per-stage data before
+choosing another implementation, rather than accumulating speculative changes.
+
+
+The [contiguous AFT incidence package](evidence/AFT_CONTIGUOUS_INCIDENCES.md) now
+replaces per-incidence list nodes with reserved, ordered pointer sequences.
+All AFT arithmetic and traversal order remain preserved; real Debug CRT allocations
+fall from 28 to 17 on the existing fixture with matching payloads and full release.
+Existing regression, GCC/MSVC builds and frozen GCC Eistute pass. The one new
+MSVC pair still times out at the unchanged 300 s total cap; its first call retains
+25 exact artifacts and 15 independent boundaries. No retry or Book run. Corrected
+MSVC phase totals identify 82.6533 s patch reconstruction and 50.2315 s combined
+analytical/discrete curvature, without attributing either to a specific function.
+Retain the measured local improvement and negative timing result. Integration
+stays blocked; another speculative container/evaluator rewrite is not queued.
+
+
+The [discrete curvature transfer package](evidence/CURVATURE_ADJACENCY_TRANSFERS.md)
+now moves private list nodes with splice during adjacency ordering. Seed/left
+transfers append, right transfers prepend; first-match order, source observers,
+working copy, saved node and the extra circular incidence remain preserved.
+The frozen pre-change sorter passes 120 bitwise cases and 912 transfer checks per
+ABI on the existing fans. Actual Debug CRT allocations/frees fall from 15 to 12
+for an open fan and 19 to 15 for a closed fan, with identical curvature results.
+Existing 75 CTest/389 controls and frozen GCC Eistute's 25 artifacts/15 boundaries
+pass. No new long MSVC pair or Book run; old timeouts and required integration
+gates remain. The [cost decision](evidence/CURVATURE_COST_SELECTION.md) still limits
+attribution: the combined 50.2315 s phase is not a measured sorting cost or speedup.
+
+
+The [single post-transfer MSVC observation](evidence/CURVATURE_TRANSFER_REUSE.md)
+reopens only the fixed Eistute gate using the unchanged qualified 48c232a binary.
+Its first call completes with five states, 25 prior-version artifacts exact and
+15 independent boundary comparisons. The second times out at the unchanged
+300-second total cap; its partial traces reach accepted 0/1 and rejected 2/3.
+No native two-call count/return equality is available. There is no retry, Book
+run, production change or further campaign. Prior output is restored byte for
+byte. The local splice allocation saving remains demonstrated, while sufficient
+whole-process timing improvement and integration remain unqualified.
+
+
+The [Bezier FindUV scratch package](evidence/FINDUV_ARRAY_SCRATCH.md) now uses
+nested std::array storage for its nine local coefficients. One declaration,
+35 accesses and two row swaps are reversed to recover the complete preceding
+source; scalar operations, pivots, damping, stopping and diagnostics remain.
+Frozen Eigen reference controls pass 75 analytic/differential cases per ABI,
+including callback/state/counter/diagnostic equality. Existing 75 CTest/391 Python
+controls and frozen GCC Eistute retain 25 exact artifacts and 15 boundaries.
+Two historical guards admit only the pinned full solver after reversing this
+storage syntax; numerical/policy mutations remain rejected. Public Eigen types,
+evaluation and Hermite are unchanged. No long MSVC pair or Book run, performance
+claim, dependency deletion or stage closure; timed reuse/integration stay blocked.
+
+
+The [single post-scratch MSVC observation](evidence/FINDUV_SCRATCH_REUSE.md) runs
+only the fixed Eistute reuse gate with the qualified 1636547 binary. The first
+call retains five states, 25 exact prior-version artifacts and 15 independent
+boundaries; the second times out at the unchanged total 300 s cap. Partial second
+records reach accepted 0/1 and rejected 2/3; two-call native equality is unavailable.
+No retry, Book, source change or additional runtime test follows. Prior output
+is restored byte for byte. The first phase totals are reconstruction 100.452 s
+and combined curvature 50.7879 s; these do not locate cost by function or establish
+a speedup/regression. Next production selection requires function-level cost
+attribution; this observation admits no further speculative implementation.
+
+
+The [qualified Eistute function profile](evidence/EISTUTE_FUNCTION_PROFILE.md)
+now supplies 294 valid stacks with 0.4783% direct suspension and 1.3039% observer/
+target CPU, within limits fixed before collection. The one unchanged process
+still times out at 300 s in its first call; 18 partial artifacts agree, without
+complete-call qualification. Estimated first-production-frame weights are 30.59%
+fillMesh, 20.08% CalculatePointUV and 10.34% CalculatePointT. Of 86 fillMesh stacks,
+73 point to the repeated edge membership scan. Select one production package:
+scoped pointer-identity membership views for its vertex/edge unions, preserving
+list order, duplicates, publication/owner commits and scientific policies. No
+production is changed by this profile; timed reuse, Book and integration stay open.
+
+The [fillMesh membership package](evidence/FILL_MESH_MEMBERSHIP.md) now replaces
+both growing-list scans with temporary ordered pointer sets. List/candidate order,
+prefix duplicates and the final owner commit remain unchanged. The initial hash
+candidate was rejected after checked MSVC terminated on a denied debug-proxy
+allocation; ordered membership propagates all 515 measured local denial points,
+preserves observer prefixes and permits complete retry with zero CRT retention.
+Original-scan comparisons pass on both ABIs; existing 75 CTest/391 Python controls
+and frozen GCC Eistute retain 25 exact artifacts/15 boundaries. Lookup complexity
+is O((P + Q) log(P + Q)); no end-to-end speedup is measured. No new long MSVC pair
+or Book run. Timed reuse, revised-head Book and integration remain blocked.
+
+End of preserved candidate chronology.

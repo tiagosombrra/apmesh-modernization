@@ -62,6 +62,16 @@ NodeAdaptive TriangleAdaptive::GetNoh(unsigned const int position) const {
   return n;
 }
 
+PointAdaptive TriangleAdaptive::GetVertexPoint(unsigned int position) const {
+  if (position == 1)
+    return *n1_;
+  if (position == 2)
+    return *n2_;
+  if (position == 3)
+    return *n3_;
+  return GetNoh(position);
+}
+
 // calcula o ângulo no nó 1
 double TriangleAdaptive::CalculateAngleN1() {
   VectorAdaptive vector1(*(this->n1_), *(this->n2_));

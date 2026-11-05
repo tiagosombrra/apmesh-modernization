@@ -27,10 +27,59 @@ void require(bool condition, const char* message) {
   if (!condition)
     throw std::runtime_error(message);
 }
+
+void CheckFaceAdjacency() {
+  struct FaceSample {
+    int* a;
+    int* b;
+    int* c;
+    double value;
+    int* getV1() const { return a; }
+    int* getV2() const { return b; }
+    int* getV3() const { return c; }
+  };
+  using Faces = std::list<FaceSample*>;
+  using Index = Par2DJMesh::AFT::SmoothingFaceAdjacency<int*, Faces>;
+  std::array<int, 4> vertices{};
+  FaceSample a{&vertices[0], &vertices[1], &vertices[2], 1e16};
+  FaceSample b{&vertices[0], &vertices[0], &vertices[1], -1e16};
+  FaceSample c{&vertices[0], &vertices[2], &vertices[2], 1.0};
+  FaceSample d{nullptr, nullptr, nullptr, 2.0};
+  Faces faces{&a, &b, &c, &d, &c};
+  const Index index(faces);
+  auto compare = [&](int* vertex) {
+    Faces scanned;
+    for (auto* face : faces)
+      if (face->getV1() == vertex || face->getV2() == vertex || face->getV3() == vertex)
+        scanned.push_back(face);
+    require(index.Find(vertex).size() == scanned.size() &&
+                std::equal(index.Find(vertex).begin(), index.Find(vertex).end(), scanned.begin()),
+            "Face incidence order or multiplicity changed");
+    double expected = 0.0, actual = 0.0;
+    for (auto* face : scanned)
+      expected += face->value;
+    for (auto* face : index.Find(vertex))
+      actual += face->value;
+    require(actual == expected, "Face reduction order changed");
+  };
+  for (auto& vertex : vertices)
+    compare(&vertex);
+  compare(nullptr);
+  require(index.Find(&vertices[0]).size() == 4, "Repeated endpoints duplicated incidence");
+  require(index.Find(&vertices[3]).empty(), "Missing vertex acquired an incidence");
+  c.value = 3.0;
+  compare(&vertices[0]);
+  require(Index(Faces{}).Find(&vertices[0]).empty(), "Empty mesh acquired incidence");
+  faces.reverse();
+  const Index rebuilt(faces);
+  require(rebuilt.Find(&vertices[0]).front() == &c, "New scope retained previous order");
+  std::cout << "Face incidence order, duplicates, repeated endpoints and live values passed\n";
+}
 } // namespace
 
 int main() {
   try {
+    CheckFaceAdjacency();
     std::array<EdgeSample, 3> fixture{};
     std::set<EdgeSample*> adjacency;
     require(orderedSmoothingAdjacency(adjacency).empty(), "Empty adjacency");
