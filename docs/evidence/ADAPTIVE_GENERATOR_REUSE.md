@@ -1,6 +1,16 @@
 # Adaptive reuse: consistency metadata and diagonal neighbor preconditions
 
-## Candidate status: integration blocked
+## Bounded reuse qualification and delivery gates
+
+Current result: the [2026-11-05 cumulative audit](PLAN_REGRESSION_AUDIT.md)
+passes the fixed checked-MSVC pairs on source head 1604599: Eistute in 200.651931 s
+and Book in 115.115937 s, each below the unchanged total 300-second cap. Both
+calls preserve independently checked states/boundaries and equal archive/FindUV
+counters. GCC pairs match frozen references. Final delivery/main gates remain;
+the earlier failure chronology below is retained and no longer describes the
+current runtime blocker. This does not qualify exception recovery or Stage 3.
+
+## Retained failure chronology
 
 The candidate is not integrated. GCC normal/adaptive reuse, frozen scientific
 comparisons and the existing regression pass on the measured heads. The first
@@ -84,7 +94,7 @@ that field and admits both unchanged article cases. Original sources, executable
 raw outputs, differences and commands remain under build/adaptive-generator-reuse.
 
 Require the fixed GCC/MSVC reuse observations on exact head/main, canonical
-builds, all existing 75 CTest entries/389 Python controls and native markers, the
+builds, all existing 75 CTest entries/current 391 Python controls and native markers, the
 ordinary nine-state/45-artifact/123-boundary frozen regression, three FindUV
 summaries, 23 MSVC invalid CLI controls and one analytic state/boundary. Require
 source reversal, unchanged scientific inputs/guards, scoped analysis, formatting,
@@ -95,7 +105,9 @@ CSV values remain outside byte preservation, as in the existing regression.
 The candidate addresses the observed initial consistency-record leak and the four
 diagonal-list precondition failures. GCC reuse observation remains limited to two
 normal adaptive calls with the same captured Eistute or Book profile within
-S3-05/06/08; checked-MSVC qualification is blocked as recorded above. Exception
+S3-05/06/08; the current checked-MSVC pairs pass as recorded in the audit above.
+Final delivery/main qualification is recorded by PR #163 and its local integration
+seal; the original audit alone does not establish it. Exception
 recovery, context changes, arbitrary output reuse, interleaved/concurrent
 execution, external Geometry, other inputs and complete-process memory
 retain their obligations. Stage 3 remains open; no broader reuse claim follows.

@@ -1,5 +1,23 @@
 # Local quality automation
 
+## Cumulative candidate regression and plan audit
+
+The [2026-11-05 audit](evidence/PLAN_REGRESSION_AUDIT.md) records the complete
+75-entry CTest inventory/391 nested controls, canonical incremental GCC/MSVC
+builds with unchanged qualified binaries, current checked-MSVC native/invalid
+input/CRT controls and static analysis of all ten cumulative changed translation
+units plus their headers. Frozen/reuse GCC Eistute/Book and one checked-MSVC pair
+per existing model pass; each MSVC pair retains the total 300-second cap. No retry,
+new scientific model, disabled check or production change is used.
+
+The full Doxygen command fails with 2,718 diagnostics and remains documentation
+debt; no diagnostic is suppressed. Earlier complete-process ASan results retain
+their artifact scopes. Required current delivery/main gates, full-process CRT/
+UB/leak, parallel and remaining caller obligations are not waived by this audit.
+Reuse runtime evidence only after checking source/input/compiler/binary/control
+identities; record a documentation-only delta explicitly. A new dependency or
+failed required check invalidates only the evidence it actually affects.
+
 ## fillMesh pointer membership
 
 The [membership package](evidence/FILL_MESH_MEMBERSHIP.md) reuses the UV probe's

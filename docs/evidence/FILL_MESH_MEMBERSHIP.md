@@ -71,3 +71,11 @@ The short frozen GCC case is the existing preservation gate. Earlier 300-second
 failures remain negative evidence. Timed reuse, revised-head Book, exact-delivery/
 main, broader memory/parallel obligations and Stage 3 remain open; the PR stays
 a draft. This delivers the bounded lookup change, not integration or stage closure.
+
+The later [cumulative plan audit](PLAN_REGRESSION_AUDIT.md) runs the qualified
+1604599 checked-MSVC executable once per existing model: Eistute completes its
+two calls in 200.651931 s and Book in 115.115937 s, each under the unchanged total
+300-second cap. Artifacts, independent boundaries and native counters agree.
+The original package's no-long-run scope above remains historical. These new
+observations resolve the measured reuse blocker on this artifact; they do not
+establish a repeated timing comparison, integration or stage closure.

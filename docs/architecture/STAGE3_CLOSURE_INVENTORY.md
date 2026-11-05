@@ -38,8 +38,10 @@ parallel or broader caller qualification follows. All row dispositions remain.
 P4's [adaptive reuse observation/repair](../evidence/ADAPTIVE_GENERATOR_REUSE.md)
 targets the leaked initial consistency flag in S3-05/08 and the four demonstrated
 S3-06 diagonal-list precondition failures. The initial MSVC head failed before
-its reused call; after guards, its first call reaches the unchanged 300-second
-cap. MSVC remains unqualified and integration is blocked. The fixed two-call
+its reused call; the first guarded artifact then reached the unchanged 300-second
+cap. Those failures are preserved. The [current candidate audit](../evidence/PLAN_REGRESSION_AUDIT.md)
+records passing Eistute/Book pairs on the current checked-MSVC artifact. This
+resolves that measured runtime blocker; final delivery/main gates remain. The fixed two-call
 Eistute/Book inventory preserves frozen GCC and fresh same-ABI MSVC output,
 decisions, IDs and positive boundary coverage. Its qualification does not extend
 to context changes, exception recovery, arbitrary inputs or complete-process
@@ -97,13 +99,13 @@ exceptions do not promise Generator recovery; logical rejection retains existing
 bounded retry. The fixed subprocess inventory does not cover same-process reuse,
 public mutation or foreign owners, which remain explicit P4 obligations.
 
-P3 now has [one bounded complete-process ASan witness](../evidence/SERIAL_ASAN_SP02.md):
-all 73 native units compiled, actual release/UAF controls worked and natural
-initial-only SP-02 passed once with positive independent boundary coverage.
-The ten statuses stay unchanged. The following SP-05 timeout was diagnosed and
-its [quality scratch hot path corrected](../evidence/FACE_QUALITY_SCRATCH.md),
-with exact paired scalar bits and one completed rejection/retry witness under
-the same cap. Require its exact delivery gates before remaining/invalidation-
-relevant cases; SP-06..08 remain unrun. Stop at first unexpected failure. CRT/UB/leak,
-terminal observer portability and missing runtime observations remain open.
-Other packages remain pending; no stage closure or unlimited campaign follows.
+P3's first [bounded complete-process ASan witness](../evidence/SERIAL_ASAN_SP02.md)
+compiled all 73 native units, qualified actual release/UAF controls and measured
+natural SP-02 with positive independent boundaries. The later SP-05 timeout and
+[quality scratch correction](../evidence/FACE_QUALITY_SCRATCH.md) remain preserved.
+Subsequent SP-06..08 and portable SP-09/10 results are linked above: those cases
+are measured on their recorded artifacts, rather than still unrun. A changed
+production dependency does not inherit their complete-process qualification.
+CRT/UB/leak, parallel coverage and other required runtime observations remain
+open. The ten statuses stay unchanged; no stage closure or unlimited campaign
+follows. Stop at the first unexpected instrument/application failure.

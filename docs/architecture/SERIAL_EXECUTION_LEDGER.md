@@ -7,8 +7,10 @@ contracts, fixtures, inputs and scientific policies are unchanged. The
 recipes, provenance, instruments and remaining closure assignments.
 
 P1 delivered the complete MSVC C++17 executable. P2 replaces an open-ended caller
-search with the finite P3 entry inventory below. Defining an expected outcome is
-not measuring it: all complete-process memory observations remain unqualified.
+search with the finite P3 entry inventory below. Its machine-ledger measurement
+fields preserve the historical P2 entry status; they are not a live result table.
+Defining an expected outcome is not measuring it. Later observations qualify only
+their recorded source, executable, instrument and caller identities.
 The ten closure obligations and their three bounded/seven open dispositions stay
 intact. No valid configuration or public interface becomes unsupported merely
 because it is absent from this first measurement inventory.
@@ -18,8 +20,13 @@ records the five previously unrun natural MSVC/ASan production processes. They
 pass with the qualified quality-corrected artifact, exact Eistute/Book repetition
 and ordinary no-sync teardown. The fixed machine ledger below remains the P2
 entry specification; its planned/unqualified fields are historical entry status,
-not a replacement for the linked measured artifact-specific reports. SP-09/10,
-other instruments and remaining closure obligations are still open.
+not a replacement for the linked measured artifact-specific reports. The later
+[terminal observer requalification](../evidence/SERIAL_ASAN_TERMINAL_REQUALIFICATION.md)
+also qualifies the five fixed SP-09/10 contexts on its controlled ASan artifact.
+Other instruments and remaining closure obligations stay open. The
+[current plan audit](../evidence/PLAN_REGRESSION_AUDIT.md) distinguishes those
+historical instrument results from the current candidate's functional/reuse gates;
+it does not transfer complete-process ASan qualification to changed dependencies.
 
 ## Entry domain and roots
 
@@ -75,7 +82,7 @@ their caller preconditions; it does not add a blanket immutability rule to publi
 setters. Public mutation/invalidation/rebinding and foreign-owner arrangements
 remain S3-05/07 work in P4. No partial observer cleanup implies whole-state safety.
 
-## Fixed P3 case inventory
+## Fixed P3 case inventory: preserved entry specification
 
 All recipes use existing generators/checkers or retained existing fixtures.
 `<exe>`, `<probe>` and `<out>` are explicit profile-specific artifacts and a new
@@ -111,7 +118,10 @@ helper stubs or treat GNU functional evidence as MSVC heap accounting.
 
 ## Instrument applicability and stop rules
 
-| Profile | Required evidence | Present disposition |
+Requirements and stop rules remain applicable. The final column preserves the
+P2 entry disposition; the later artifact-specific results are linked above.
+
+| Profile | Required evidence | Historical P2 entry disposition |
 | --- | --- | --- |
 | W-ASAN: MSVC x64 C++17 RelWithDebInfo, complete target | All 73 native units instrumented, real clean-release and deliberate expired-access detections, runtime identity; then applicable SP cases | P1's Debug build is not ASan. Full-target instrument build/control qualification is the first P3 action. RelWithDebInfo is a separate profile, not a hidden Debug iterator override. |
 | W-CRT: MSVC x64 C++17 checked Debug process accounting | Explicit checkpoints spanning the actual entry and owner teardown, actual release/leak/hook controls; explain any runtime retention | Debug compilation alone is not leak measurement. A full-entry observer is required; preserve iterator level 2 unless a separately reviewed blocker proves otherwise. No unexplained residual is suppressed. |
@@ -132,7 +142,7 @@ article/no-sync execution. Timeout is retained failure evidence, not permission
 to increase caps or claim a numeric result. Keep positive/negative instrument
 controls separate from scientific results and report every missing observation.
 
-## Remaining obligations and delivery gates
+## Remaining obligations and historical P2 delivery gates
 
 S3-01/05/07/08/10 now have named entry/root/failure/domain assignments, not new
 runtime qualification. S3-02/03/04 retain their bounded results. S3-06 remains
@@ -151,5 +161,8 @@ on exact delivery head and merged main. Add no test target, assertion, native
 matrix or fresh scientific model run for this specification. The P1 scientific
 evidence remains valid by identity; it is not claimed as a new P2 measurement.
 
-P2 ends at this fixed execution decision. Next: P3's complete MSVC/ASan build,
-actual instrument controls and one natural SP-02 witness. Stage 3 stays open.
+P2 ended at this fixed execution decision. Its original next action was P3's
+complete MSVC/ASan build, actual controls and one natural SP-02 witness; the linked
+later reports record that work and its limits. Follow the current plan audit for
+the active dependency rather than replaying this historical entry sequence.
+Stage 3 stays open.
