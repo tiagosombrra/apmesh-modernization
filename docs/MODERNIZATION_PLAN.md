@@ -130,6 +130,17 @@ pass. No new long MSVC pair or Book run; old timeouts and required integration
 gates remain. The [cost decision](evidence/CURVATURE_COST_SELECTION.md) still limits
 attribution: the combined 50.2315 s phase is not a measured sorting cost or speedup.
 
+
+The [single post-transfer MSVC observation](evidence/CURVATURE_TRANSFER_REUSE.md)
+reopens only the fixed Eistute gate using the unchanged qualified 48c232a binary.
+Its first call completes with five states, 25 prior-version artifacts exact and
+15 independent boundary comparisons. The second times out at the unchanged
+300-second total cap; its partial traces reach accepted 0/1 and rejected 2/3.
+No native two-call count/return equality is available. There is no retry, Book
+run, production change or further campaign. Prior output is restored byte for
+byte. The local splice allocation saving remains demonstrated, while sufficient
+whole-process timing improvement and integration remain unqualified.
+
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.
 The required MSVC gate additionally exposed four empty diagonal-neighbor reads
