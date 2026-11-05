@@ -77,6 +77,17 @@ analytical/discrete curvature, without attributing either to a specific function
 Retain the measured local improvement and negative timing result. Integration
 stays blocked; another speculative container/evaluator rewrite is not queued.
 
+
+The [curvature cost decision](evidence/CURVATURE_COST_SELECTION.md) separates the
+50.2315 s combined MSVC phase from sparse historical stacks; it does not assign
+that total to discrete sorting. The old exact-triangle GetNoh-copy hotspot has
+already changed. Select one engineering package: transfer private list nodes
+while ordering discrete adjacency, retaining first-match order, source observers
+and circular multiplicity. Its independent pre-change oracle and bounded real-
+allocation control are required before a saving is claimed. No production, test,
+binary or input changes and no runtime campaign accompany this decision. The next
+item is that implementation, with no automatic 300 s rerun; integration stays blocked.
+
 ## P4 production repair: adaptive reuse consistency metadata
 
 The [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) resets the current
