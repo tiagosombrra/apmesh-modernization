@@ -166,6 +166,18 @@ and combined curvature 50.7879 s; these do not locate cost by function or establ
 a speedup/regression. Next production selection requires function-level cost
 attribution; this observation admits no further speculative implementation.
 
+
+The [qualified Eistute function profile](evidence/EISTUTE_FUNCTION_PROFILE.md)
+now supplies 294 valid stacks with 0.4783% direct suspension and 1.3039% observer/
+target CPU, within limits fixed before collection. The one unchanged process
+still times out at 300 s in its first call; 18 partial artifacts agree, without
+complete-call qualification. Estimated first-production-frame weights are 30.59%
+fillMesh, 20.08% CalculatePointUV and 10.34% CalculatePointT. Of 86 fillMesh stacks,
+73 point to the repeated edge membership scan. Select one production package:
+scoped pointer-identity membership views for its vertex/edge unions, preserving
+list order, duplicates, publication/owner commits and scientific policies. No
+production is changed by this profile; timed reuse, Book and integration stay open.
+
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.
 The required MSVC gate additionally exposed four empty diagonal-neighbor reads
