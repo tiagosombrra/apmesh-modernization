@@ -9,6 +9,7 @@ import re
 import subprocess
 
 from audit_find_uv_recording import restore_find_uv_recording, validate_find_uv_header
+from audit_find_uv_scratch import restore_find_uv_scratch
 
 from audit_patch_copy import restore_bezier_copy_initialization
 
@@ -23,6 +24,7 @@ RETIRED_DESTRUCTOR = ("PatchBezier::~PatchBezier(){for(auto*curve:curves_)"
 
 
 def code(text):
+    text = restore_find_uv_scratch(text)
     text = restore_find_uv_recording(text)
     text = re.sub(r"//[^\n]*|/\*.*?\*/", "", text, flags=re.S)
     text = re.sub(r"^\s*#include[^\n]*", "", text, flags=re.M)
@@ -99,10 +101,11 @@ def audit(candidate_root, original_root=None):
                                           for name, text in files.items()}
                                   for label, files in [("original", originals), ("candidate", candidates)]},
             "finduv_recording": "Exact entry/I_MAX slots normalized after pinned helper validation",
+            "finduv_scratch": "Exact local array syntax reversed with the entire previous solver pinned",
             "scope": "Six actual production files. Only the exact observer-removal declaration/body, "
                      "completed Bezier destructor, Geometry dependent retirement assignment and exact separately "
                      "checked detached-copy initialization prefix are normalized. "
-                     "All other numerical, constructor, API/layout and method tokens must match immutable main. "
+                     "The pinned local FindUV storage delta is reversed separately. All other numerical, constructor, API/layout and method tokens must match immutable main. "
                      "Six independent lifetime/numerical mutations must be rejected. Dynamic safety, normal "
                      "traces and allocation-free teardown remain separate required gates."}
 

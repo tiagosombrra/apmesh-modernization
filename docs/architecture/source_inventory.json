@@ -4915,7 +4915,7 @@
       "path": "src/data/patch/patch_bezier.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "d8a18a19c1dea8cffbb32debec3d7ea662fe0e6aeaf4d31f35c8e0142816e568",
+      "sha256": "8c2fc77533cb2f4325b57c014686ecb22fcbfa167b0d417e9bca0362653a1807",
       "bytes": 27466,
       "includes": [
         {

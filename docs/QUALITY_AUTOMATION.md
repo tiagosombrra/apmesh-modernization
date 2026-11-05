@@ -1,5 +1,21 @@
 # Local quality automation
 
+## Bezier FindUV array scratch
+
+The [local scratch package](evidence/FINDUV_ARRAY_SCRATCH.md) requires a frozen
+Eigen solver calibrated on GCC/MSVC before production edits, unchanged afterward.
+Reuse the existing metrics target for 75 bounded affine/degenerate/nonfinite and
+real-fixture cases per ABI: analytic expectations, exact UV bits, virtual-call
+sequence, final public scratch, scoped counters and diagnostics must agree.
+Keep the one-bit comparator negative control and original source-guard mutations.
+Historical copy/observer guards reverse only one declaration, 35 accesses and two
+swaps, then require the entire compact previous solver hash. Outside policy and
+numerical changes must still fail. Preserve initial failed regression/calibration
+records. Require C++17 GCC/checked-MSVC builds, existing 75 CTest/391 Python controls,
+frozen GCC Eistute 25 exact artifacts/15 boundaries, scoped analysis admitting the
+reference header, source reversal, format, inventory/contracts and staged/remote
+review. No long MSVC pair, Book run, Eigen deletion or performance qualification.
+
 ## Discrete curvature adjacency transfers
 
 The [splice package](evidence/CURVATURE_ADJACENCY_TRANSFERS.md) requires a frozen

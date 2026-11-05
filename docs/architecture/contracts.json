@@ -878,7 +878,7 @@
     {
       "id": "C16",
       "topic": "Eigen/numerical dependency",
-      "statement": "Central definitions expose Eigen fixed-size aliases; PatchBezier evaluation and inverse mapping use matrix operations. CRABMesh also has root-finding numerical helpers.",
+      "statement": "Central definitions expose Eigen fixed-size aliases; PatchBezier evaluation retains Eigen matrix products. Only the local 3x3 scratch in PatchBezier::FindUV uses nested std::array storage. Its coefficient assignments, row swaps, scalar elimination order, pivot search, damping, convergence/limit policies and diagnostics are preserved. The public matrices, Hermite solver and Eigen dependency remain unchanged. CRABMesh also has root-finding numerical helpers.",
       "limits": "No alternative solver or Eigen deletion is authorized by this inventory; stage 5 requires analytic and aliasing/differential comparisons.",
       "evidence": [
         {
@@ -887,7 +887,7 @@
         },
         {
           "path": "src/data/patch/patch_bezier.cpp",
-          "anchor": "Matrix<double, 3, 3> matrix;"
+          "anchor": "std::array<std::array<double, 3>, 3> matrix;"
         },
         {
           "path": "src/data/curve/curve_adaptive_parametric.cpp",

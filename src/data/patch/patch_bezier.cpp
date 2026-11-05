@@ -391,26 +391,26 @@ tuple<double, double> PatchBezier::FindUV(const PointAdaptive& point) {
 
     p_i = this->Parameterize(u_i, v_i);
 
-    Matrix<double, 3, 3> matrix;
-    matrix(0, 0) = Tu.GetX();
-    matrix(0, 1) = Tv.GetX();
-    matrix(0, 2) = p_i.GetX() - point.GetX();
-    matrix(1, 0) = Tu.GetY();
-    matrix(1, 1) = Tv.GetY();
-    matrix(1, 2) = p_i.GetY() - point.GetY();
-    matrix(2, 0) = Tu.GetZ();
-    matrix(2, 1) = Tv.GetZ();
-    matrix(2, 2) = p_i.GetZ() - point.GetZ();
+    std::array<std::array<double, 3>, 3> matrix;
+    matrix[0][0] = Tu.GetX();
+    matrix[0][1] = Tv.GetX();
+    matrix[0][2] = p_i.GetX() - point.GetX();
+    matrix[1][0] = Tu.GetY();
+    matrix[1][1] = Tv.GetY();
+    matrix[1][2] = p_i.GetY() - point.GetY();
+    matrix[2][0] = Tu.GetZ();
+    matrix[2][1] = Tv.GetZ();
+    matrix[2][2] = p_i.GetZ() - point.GetZ();
 
     int k = 0;
-    double pivot = matrix(0, 0);
+    double pivot = matrix[0][0];
 
     while ((fabs(pivot) < TOLERANCE) and (k < 2)) {
       ++k;
-      pivot = matrix(k, 0);
+      pivot = matrix[k][0];
     }
 
-    matrix.row(k).swap(matrix.row(0));
+    matrix[k].swap(matrix[0]);
 
     if (fabs(pivot) < TOLERANCE) {
       cout << "Erro! Não é possível encontrar as coordenadas paramétricas no "
@@ -421,33 +421,33 @@ tuple<double, double> PatchBezier::FindUV(const PointAdaptive& point) {
       return make_tuple(-1.0, -1.0);
     }
 
-    double A_10 = matrix(1, 0);
-    double A_20 = matrix(2, 0);
+    double A_10 = matrix[1][0];
+    double A_20 = matrix[2][0];
 
     for (short j = 0; j < 3; ++j) {
-      matrix(0, j) = static_cast<double>(matrix(0, j)) / pivot;
-      matrix(1, j) = matrix(1, j) - A_10 * (matrix(0, j));
-      matrix(2, j) = matrix(2, j) - A_20 * (matrix(0, j));
+      matrix[0][j] = static_cast<double>(matrix[0][j]) / pivot;
+      matrix[1][j] = matrix[1][j] - A_10 * (matrix[0][j]);
+      matrix[2][j] = matrix[2][j] - A_20 * (matrix[0][j]);
     }
 
-    pivot = matrix(1, 1);
+    pivot = matrix[1][1];
 
     if (fabs(pivot) < TOLERANCE) {
-      pivot = matrix(2, 1);
-      matrix.row(2).swap(matrix.row(1));
+      pivot = matrix[2][1];
+      matrix[2].swap(matrix[1]);
     }
 
-    double A_01 = matrix(0, 1);
-    double A_21 = matrix(2, 1);
+    double A_01 = matrix[0][1];
+    double A_21 = matrix[2][1];
 
     for (short j = 0; j < 3; ++j) {
-      matrix(1, j) = static_cast<double>(matrix(1, j) / pivot);
-      matrix(0, j) = matrix(0, j) - A_01 * (matrix(1, j));
-      matrix(2, j) = matrix(2, j) - A_21 * (matrix(1, j));
+      matrix[1][j] = static_cast<double>(matrix[1][j] / pivot);
+      matrix[0][j] = matrix[0][j] - A_01 * (matrix[1][j]);
+      matrix[2][j] = matrix[2][j] - A_21 * (matrix[1][j]);
     }
 
-    delta_u = matrix(0, 2);
-    delta_v = matrix(1, 2);
+    delta_u = matrix[0][2];
+    delta_v = matrix[1][2];
 
     if (std::isnan(delta_u) || std::isnan(delta_v)) {
       break;

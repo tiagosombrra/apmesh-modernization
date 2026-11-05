@@ -3,12 +3,14 @@
 import importlib
 from pathlib import Path
 import sys
+import subprocess
 import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 from audit_find_uv_recording import compact, restore_find_uv_recording, validate_find_uv_header
+from audit_find_uv_scratch import restore_find_uv_scratch
 
 
 def candidate(kind="Bezier"):
@@ -22,6 +24,44 @@ def candidate(kind="Bezier"):
 
 
 class FindUvRecordingTests(unittest.TestCase):
+    def test_scratch_roundtrip_and_rejected_solver_mutations(self):
+        name = "src/data/patch/patch_bezier.cpp"
+        baseline = subprocess.check_output(
+            ["git", "show", f"836df73fb973971b73c021f288a00966aed65e6d:{name}"], cwd=ROOT).decode()
+        source = (ROOT / name).read_text(encoding="utf-8")
+        self.assertEqual(compact(restore_find_uv_scratch(source)), compact(baseline))
+        self.assertEqual(restore_find_uv_scratch(baseline), baseline)
+        mutations = [
+            ("matrix[1][1]", "matrix[2][1]"),
+            ("matrix[k].swap(matrix[0])", "matrix[k].swap(matrix[1])"),
+            ("matrix[2][j] - A_20", "matrix[2][j] + A_20"),
+            ("fabs(pivot) < TOLERANCE", "fabs(pivot) <= TOLERANCE"),
+            ("iter >= I_MAX", "iter > I_MAX"),
+            ("matrix[0][0]", "matrix(0, 0)"),
+            ("RecordFindUvCall();", "RecordFindUvCall();RecordFindUvCall();"),
+        ]
+        for before, after in mutations:
+            self.assertIn(before, source)
+            with self.subTest(mutation=before), self.assertRaises(ValueError):
+                restore_find_uv_scratch(source.replace(before, after, 1))
+
+    def test_historical_guards_reject_scratch_and_external_policy_mutations(self):
+        name = "src/data/patch/patch_bezier.cpp"
+        for module_name in ("audit_patch_copy", "audit_bezier_observers"):
+            module = importlib.import_module(module_name)
+            originals = {file: subprocess.check_output(
+                ["git", "show", f"{module.BASE}:{file}"], cwd=ROOT).decode() for file in module.FILES}
+            candidates = {file: (ROOT / file).read_text(encoding="utf-8") for file in module.FILES}
+            module.verify(originals, candidates)
+            for before, after in (("matrix[k].swap(matrix[0])", "matrix[k].swap(matrix[1])"),
+                                  ("kFindUvDamping = 0.65", "kFindUvDamping = 0.66"),
+                                  ("kFindUvParamTol = 1e-5", "kFindUvParamTol = 1e-4")):
+                self.assertIn(before, candidates[name])
+                changed = dict(candidates)
+                changed[name] = changed[name].replace(before, after, 1)
+                with self.subTest(guard=module_name, mutation=before), self.assertRaises(ValueError):
+                    module.verify(originals, changed)
+
     def test_exact_binding_and_legacy_path(self):
         for kind in ("Bezier", "Hermite"):
             expected = (

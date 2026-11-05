@@ -20,6 +20,7 @@
 #include "data/vertex_adaptive.h"
 #include "curvature/curvature_discrete.h"
 #include "legacy_curvature_discrete.h"
+#include "legacy_bezier_find_uv.h"
 #include "generator/generator_adaptive.h"
 #include "input_output/models_3d.h"
 #include "input_output/input_validation.h"
@@ -32,6 +33,8 @@ using apmesh::application::ApplyRuntimeConfig;
 using apmesh::application::LoadRuntimeConfig;
 
 #include <array>
+#include <cstdint>
+#include <limits>
 #include <cstring>
 #include <chrono>
 #include <filesystem>
@@ -122,6 +125,174 @@ void CheckGenerationContexts(const std::filesystem::path& output) {
   NUMBER_PROCESS = saved_process;
   WRITE_MESH = saved_mode;
   std::cout << "generation_context owned=2 source_retired=1 interleaved_writes=3 legacy=1\n";
+}
+
+void CheckFindUvScratch() {
+  using apmesh::diagnostics::FindUvStatistics;
+  struct Restore {
+    double tolerance = TOLERANCE;
+    unsigned limit = I_MAX;
+    unsigned long long calls = FINDUV_TOTAL_CALLS.load(), exits = FINDUV_IMAX_EXITS.load();
+    std::streambuf* stream = std::cout.rdbuf();
+    ~Restore() {
+      TOLERANCE = tolerance;
+      I_MAX = limit;
+      FINDUV_TOTAL_CALLS.store(calls);
+      FINDUV_IMAX_EXITS.store(exits);
+      std::cout.rdbuf(stream);
+    }
+  } restore;
+  const auto require = [](bool value) {
+    if (!value)
+      throw std::runtime_error("FindUV scratch differential failed");
+  };
+  const auto bits = [](double value) {
+    std::uint64_t result;
+    std::memcpy(&result, &value, sizeof(result));
+    return result;
+  };
+  struct LoggedPatch : PatchBezier {
+    std::array<double, 3> a, b;
+    PatchBezier* target = nullptr;
+    std::vector<std::array<std::uint64_t, 3>> events;
+    void Record(unsigned operation, double u, double v) {
+      std::array<std::uint64_t, 3> event{operation, 0, 0};
+      std::memcpy(&event[1], &u, sizeof(u));
+      std::memcpy(&event[2], &v, sizeof(v));
+      events.push_back(event);
+      if (events.size() > 512)
+        throw std::runtime_error("FindUV trace exceeded the fixed unit bound");
+    }
+    PointAdaptive Parameterize(double u, double v) override {
+      Record(0, u, v);
+      return target ? target->Parameterize(u, v)
+                    : PointAdaptive(a[0] * u + b[0] * v, a[1] * u + b[1] * v, a[2] * u + b[2] * v);
+    }
+    VectorAdaptive Qu(double u, double v) override {
+      Record(1, u, v);
+      return target ? target->Qu(u, v) : VectorAdaptive(a[0], a[1], a[2]);
+    }
+    VectorAdaptive Qv(double u, double v) override {
+      Record(2, u, v);
+      return target ? target->Qv(u, v) : VectorAdaptive(b[0], b[1], b[2]);
+    }
+  } patch;
+  struct Observation {
+    std::array<std::uint64_t, 2> uv;
+    std::array<std::uint64_t, 8> scratch{};
+    std::vector<std::array<std::uint64_t, 3>> events;
+    FindUvStatistics statistics;
+    std::string transcript;
+  };
+  const auto equal = [](const Observation& a, const Observation& b) {
+    return a.uv == b.uv && a.scratch == b.scratch && a.events == b.events &&
+           a.statistics.calls == b.statistics.calls &&
+           a.statistics.imax_exits == b.statistics.imax_exits && a.transcript == b.transcript;
+  };
+  TOLERANCE = 1e-8;
+  const auto invoke = [&](const PointAdaptive& point, unsigned limit, bool legacy) {
+    I_MAX = limit;
+    FINDUV_TOTAL_CALLS.store(0);
+    FINDUV_IMAX_EXITS.store(0);
+    patch.events.clear();
+    Observation result;
+    std::ostringstream transcript;
+    struct StreamRestore {
+      std::streambuf* previous;
+      ~StreamRestore() { std::cout.rdbuf(previous); }
+    } stream_restore{std::cout.rdbuf(transcript.rdbuf())};
+    {
+      apmesh::diagnostics::FindUvStatisticsScope scope(result.statistics);
+      const auto uv = legacy ? bezier_find_uv_reference::FindUV(patch, point)
+                             : patch.PatchBezier::FindUV(point);
+      result.uv = {bits(std::get<0>(uv)), bits(std::get<1>(uv))};
+    }
+    result.events = patch.events;
+    result.transcript = transcript.str();
+    if (patch.target) {
+      const auto u = patch.target->GetU();
+      const auto v = patch.target->GetV();
+      for (unsigned i = 0; i < 4; ++i) {
+        result.scratch[i] = bits(u(0, i));
+        result.scratch[4 + i] = bits(v(i, 0));
+      }
+    }
+    return result;
+  };
+  unsigned cases = 0, limited = 0;
+  const auto compare = [&](PointAdaptive point, unsigned limit) {
+    point.SetId(42);
+    const auto old = invoke(point, limit, true);
+    const auto current = invoke(point, limit, false);
+    require(equal(old, current) && current.statistics.calls == 1);
+    auto corrupted = old;
+    corrupted.uv[0] ^= 1;
+    require(!equal(old, corrupted));
+    limited += static_cast<unsigned>(current.statistics.imax_exits);
+    ++cases;
+    std::array<double, 2> uv{};
+    std::memcpy(uv.data(), current.uv.data(), sizeof(uv));
+    return uv;
+  };
+  const std::array<std::array<double, 6>, 6> bases{{{1, 0, 0, 0, 1, 0},
+                                                    {0, 1, 0, 0, 0, 1},
+                                                    {0, 0, 1, 1, 0, 0},
+                                                    {1, 0, 0, 0, 0, 1},
+                                                    {-0.25, 0.3, 1, 1, 0.4, -0.2},
+                                                    {1e-8, 0, 0, 0, 1, 0}}};
+  const std::array<std::array<double, 2>, 4> parameters{
+      {{0.5, 0.5}, {0.2, 0.7}, {0.8, 0.1}, {-1, 2}}};
+  for (const auto& basis : bases) {
+    std::copy_n(basis.begin(), 3, patch.a.begin());
+    std::copy_n(basis.begin() + 3, 3, patch.b.begin());
+    for (const auto& desired : parameters)
+      for (unsigned limit : {1U, 64U}) {
+        const auto point = patch.Parameterize(desired[0], desired[1]);
+        const auto uv = compare(point, limit);
+        for (unsigned i = 0; i < 2; ++i) {
+          const double expected = limit == 1 ? std::clamp(0.5 + 0.65 * (desired[i] - 0.5), 0.0, 1.0)
+                                             : std::clamp(desired[i], 0.0, 1.0);
+          require(std::fabs(uv[i] - expected) < 4e-6);
+        }
+      }
+  }
+  for (const double scale : {0.0, 1e-9}) {
+    patch.a = {scale, 0, 0};
+    patch.b = {0, 1, 0};
+    const auto uv = compare(PointAdaptive(0.2, 0.7, 0), 3);
+    require(uv[0] == -1 && uv[1] == -1);
+  }
+  patch.a = {1, 0, 0};
+  patch.b = {0, 0, 0};
+  require(compare(PointAdaptive(0.2, 0, 0), 3) == (std::array<double, 2>{0.5, 0.5}));
+  patch.b = {0, 1, 0};
+  for (double x :
+       {std::numeric_limits<double>::quiet_NaN(), std::numeric_limits<double>::infinity()})
+    require(compare(PointAdaptive(x, 0.7, 0), 3) == (std::array<double, 2>{0.5, 0.5}));
+  Geometry geometry;
+  PatchReader reader;
+  const auto fixture =
+      std::filesystem::path(__FILE__).parent_path() / "curve_memory/data/charge_input.bp";
+  reader.ReaderFilePatches(&geometry, fixture.string().c_str());
+  patch.target = static_cast<PatchBezier*>(geometry.GetPatch(0));
+  const auto check_real = [&](double u, double v) {
+    const PointAdaptive point(u, v, (2 * u * u + u + 2 * v * v + v) / 24);
+    require(patch.target->Parameterize(u, v).CalculateDistance(point) < 1e-12);
+    for (unsigned limit : {1U, 64U}) {
+      const auto actual = compare(point, limit);
+      if (limit == 64)
+        require(std::fabs(actual[0] - u) < 4e-6 && std::fabs(actual[1] - v) < 4e-6);
+    }
+  };
+  for (double u : {0.0, 0.5, 1.0})
+    for (double v : {0.0, 0.5, 1.0})
+      check_real(u, v);
+  check_real(0.2, 0.7);
+  check_real(0.8, 0.1);
+  require(cases == 75 && limited > 0);
+  std::cout << "finduv_scratch cases=" << cases
+            << " analytic=1 bitwise=1 trace=1 diagnostics=1 negative=1 imax_exits=" << limited
+            << '\n';
 }
 
 void CheckFindUvStatistics(const std::filesystem::path& output) {
@@ -2246,6 +2417,10 @@ void CheckCurvaturePointAccess() {
 } // namespace
 
 int main(int argc, char* argv[]) {
+  if (argc == 2 && std::string(argv[1]) == "--finduv-scratch") {
+    CheckFindUvScratch();
+    return 0;
+  }
   if (argc == 2 && std::string(argv[1]) == "--curvature-sort") {
     CheckCurvaturePointAccess();
     return 0;
@@ -2312,6 +2487,7 @@ int main(int argc, char* argv[]) {
   }
   if (argc != 2)
     throw std::runtime_error("Expected a fresh output directory");
+  CheckFindUvScratch();
   CheckCurvaturePointAccess();
   {
     AftContextProbe edge_counts({0.85, 5.0, 0.5});

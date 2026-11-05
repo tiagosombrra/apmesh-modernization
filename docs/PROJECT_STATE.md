@@ -101,6 +101,19 @@ run, production change or further campaign. Prior output is restored byte for
 byte. The local splice allocation saving remains demonstrated, while sufficient
 whole-process timing improvement and integration remain unqualified.
 
+
+The [Bezier FindUV scratch package](evidence/FINDUV_ARRAY_SCRATCH.md) now uses
+nested std::array storage for its nine local coefficients. One declaration,
+35 accesses and two row swaps are reversed to recover the complete preceding
+source; scalar operations, pivots, damping, stopping and diagnostics remain.
+Frozen Eigen reference controls pass 75 analytic/differential cases per ABI,
+including callback/state/counter/diagnostic equality. Existing 75 CTest/391 Python
+controls and frozen GCC Eistute retain 25 exact artifacts and 15 boundaries.
+Two historical guards admit only the pinned full solver after reversing this
+storage syntax; numerical/policy mutations remain rejected. Public Eigen types,
+evaluation and Hermite are unchanged. No long MSVC pair or Book run, performance
+claim, dependency deletion or stage closure; timed reuse/integration stay blocked.
+
 ## P4 production repair: adaptive reuse consistency metadata
 
 The [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) resets the current
