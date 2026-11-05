@@ -178,6 +178,17 @@ scoped pointer-identity membership views for its vertex/edge unions, preserving
 list order, duplicates, publication/owner commits and scientific policies. No
 production is changed by this profile; timed reuse, Book and integration stay open.
 
+The [fillMesh membership package](evidence/FILL_MESH_MEMBERSHIP.md) now replaces
+both growing-list scans with temporary ordered pointer sets. List/candidate order,
+prefix duplicates and the final owner commit remain unchanged. The initial hash
+candidate was rejected after checked MSVC terminated on a denied debug-proxy
+allocation; ordered membership propagates all 515 measured local denial points,
+preserves observer prefixes and permits complete retry with zero CRT retention.
+Original-scan comparisons pass on both ABIs; existing 75 CTest/391 Python controls
+and frozen GCC Eistute retain 25 exact artifacts/15 boundaries. Lookup complexity
+is O((P + Q) log(P + Q)); no end-to-end speedup is measured. No new long MSVC pair
+or Book run. Timed reuse, revised-head Book and integration remain blocked.
+
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.
 The required MSVC gate additionally exposed four empty diagonal-neighbor reads

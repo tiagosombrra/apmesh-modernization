@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <functional>
 #include <memory>
+#include <set>
 #include <unordered_map>
 #include <utility>
 
@@ -1015,43 +1016,33 @@ void AdvancingFront::fillMesh() {
 
   VertexList quadVertices = quadtree->getVertices();
 
-  while (!quadVertices.empty()) {
-    Vertex* v = quadVertices.front();
-    quadVertices.pop_front();
+  if (!quadVertices.empty()) {
+    // Membership only: the lists retain order, duplicates and publication.
+    // Ordered membership keeps allocation failures catchable on checked MSVC.
+    std::set<Vertex*> vertexMembership;
+    vertexMembership.insert(vertices.begin(), vertices.end());
+    while (!quadVertices.empty()) {
+      Vertex* v = quadVertices.front();
+      quadVertices.pop_front();
 
-    bool found = false;
-
-    for (VertexList::iterator iter = vertices.begin(); iter != vertices.end(); iter++) {
-      if ((*iter) == v) {
-        found = true;
-
-        break;
+      if (vertexMembership.insert(v).second) {
+        vertices.push_back(v);
       }
-    }
-
-    if (!found) {
-      vertices.push_back(v);
     }
   }
 
   EdgeList quadEdges = quadtree->getEdges();
 
-  while (!quadEdges.empty()) {
-    Edge* e = quadEdges.front();
-    quadEdges.pop_front();
+  if (!quadEdges.empty()) {
+    std::set<Edge*> edgeMembership;
+    edgeMembership.insert(edges.begin(), edges.end());
+    while (!quadEdges.empty()) {
+      Edge* e = quadEdges.front();
+      quadEdges.pop_front();
 
-    bool found = false;
-
-    for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
-      if ((*iter) == e) {
-        found = true;
-
-        break;
+      if (edgeMembership.insert(e).second) {
+        edges.push_back(e);
       }
-    }
-
-    if (!found) {
-      edges.push_back(e);
     }
   }
 

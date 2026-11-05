@@ -1,5 +1,21 @@
 # Local quality automation
 
+## fillMesh pointer membership
+
+The [membership package](evidence/FILL_MESH_MEMBERSHIP.md) reuses the UV probe's
+transfer-order fixture and original scans calibrated before production edits.
+Require twelve pointer-sequence/owner cases and twelve repeated empty transfers
+on GCC/checked MSVC, preserving prefix duplicates, null entries, equal-value
+distinct identities and candidate order. Reuse the real CRT hook: deny each of
+the measured successful-path allocations, require one propagated bad_alloc,
+unchanged source owners, ordered observer prefixes and a complete retry with
+zero retention. Preserve the rejected unordered_set/debug-proxy abort and its
+stack; do not disable iterator checks. Require both C++17 builds, existing
+75 CTest/391 controls, unchanged native markers, frozen GCC Eistute's five states/
+25 exact artifacts/15 boundaries, source-scope proof, analysis, explicit format,
+inventory/contracts and staged/remote review. No new long MSVC pair, Book or
+scientific campaign; timing and integration remain open.
+
 ## Bezier FindUV array scratch
 
 The [local scratch package](evidence/FINDUV_ARRAY_SCRATCH.md) requires a frozen
