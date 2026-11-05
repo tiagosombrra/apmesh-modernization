@@ -64,6 +64,19 @@ diagnostics, not a speedup. No new long MSVC pair or Book run. The existing 300 
 wall-clock gate and integration remain blocked; use valid per-stage data before
 choosing another implementation, rather than accumulating speculative changes.
 
+
+The [contiguous AFT incidence package](evidence/AFT_CONTIGUOUS_INCIDENCES.md) now
+replaces per-incidence list nodes with reserved, ordered pointer sequences.
+All AFT arithmetic and traversal order remain preserved; real Debug CRT allocations
+fall from 28 to 17 on the existing fixture with matching payloads and full release.
+Existing regression, GCC/MSVC builds and frozen GCC Eistute pass. The one new
+MSVC pair still times out at the unchanged 300 s total cap; its first call retains
+25 exact artifacts and 15 independent boundaries. No retry or Book run. Corrected
+MSVC phase totals identify 82.6533 s patch reconstruction and 50.2315 s combined
+analytical/discrete curvature, without attributing either to a specific function.
+Retain the measured local improvement and negative timing result. Integration
+stays blocked; another speculative container/evaluator rewrite is not queued.
+
 ## P4 production repair: adaptive reuse consistency metadata
 
 The [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) resets the current

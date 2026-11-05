@@ -1,5 +1,23 @@
 # Local quality automation
 
+## Contiguous AFT face incidences
+
+The [storage package](evidence/AFT_CONTIGUOUS_INCIDENCES.md) requires canonical
+C++17 GCC/checked-MSVC builds, existing 75 CTest/389 nested controls and the same
+smoothing-adjacency fixture on both ABIs. Compare ordered membership across the
+container boundary; preserve cancellation, duplicate entries, repeated endpoints,
+null/missing keys, live values and rebuilt scopes. Use one actual Debug CRT
+allocation comparison on that unchanged fixture, with a positive allocation/free
+control and complete release. Do not infer whole-process savings or speedup from
+this local count. Reverse only AFT incidence container/iterator types and one
+alias; all other implementation tokens remain identical modulo formatting.
+Require scoped analysis including the modified header, frozen GCC Eistute's
+25 exact artifacts/15 independent boundaries, contracts/inventory and staged/
+remote review. Observe only the fixed MSVC Eistute reuse pair under its unchanged
+300-second total cap after preflight. Stop on first unexpected failure; preserve
+old negative evidence. No retry, Book run, new model or test target. Broader reuse,
+Book and exact-head/main gates remain mandatory before integration.
+
 ## Serial timing intervals
 
 The [diagnostic repair](evidence/SERIAL_TIMING_INTERVALS.md) requires a reproduced

@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 660,
+    "literal_include_directives": 661,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -405,7 +405,7 @@
     "unordered_map": 9,
     "unordered_set": 7,
     "utility": 16,
-    "vector": 21,
+    "vector": 22,
     "windows.h": 1,
     "winsock2.h": 1
   },
@@ -1211,8 +1211,8 @@
       "path": "include/crab_mesh/aft/smoothing_adjacency.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "c5c8c9c32f6b2670060dafd1e7c9d8de6057c8fa09e4294a7b61bfc16a54e88a",
-      "bytes": 1882,
+      "sha256": "620c2bf90691750877ad3089624675a779491bc21d640cc750c963c5cc383927",
+      "bytes": 2509,
       "includes": [
         {
           "line": 4,
@@ -1231,6 +1231,13 @@
         {
           "line": 6,
           "spelling": "unordered_map",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
+          "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
@@ -4117,8 +4124,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "5a4a4e9f1d8fa6ba21d051c7f3cb0ec76172c52bc510517121a0371eb18a4983",
-      "bytes": 49014,
+      "sha256": "10c7dc63394e6b5c59cc7564fb6019cff6513827a99e2fb775e0ae35046db45a",
+      "bytes": 49243,
       "includes": [
         {
           "line": 1,

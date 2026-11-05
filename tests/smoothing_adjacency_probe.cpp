@@ -52,7 +52,9 @@ void CheckFaceAdjacency() {
     for (auto* face : faces)
       if (face->getV1() == vertex || face->getV2() == vertex || face->getV3() == vertex)
         scanned.push_back(face);
-    require(index.Find(vertex) == scanned, "Face incidence order or multiplicity changed");
+    require(index.Find(vertex).size() == scanned.size() &&
+                std::equal(index.Find(vertex).begin(), index.Find(vertex).end(), scanned.begin()),
+            "Face incidence order or multiplicity changed");
     double expected = 0.0, actual = 0.0;
     for (auto* face : scanned)
       expected += face->value;
