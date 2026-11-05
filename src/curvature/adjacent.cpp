@@ -146,6 +146,40 @@ ElementAdaptive* Adjacent::GetElementRight(const NodeAdaptive& noh, ElementAdapt
   return element_result;
 }
 
+ElementAdaptive* Adjacent::MoveElementLeft(const NodeAdaptive& node, ElementAdaptive* element,
+                                           std::list<ElementAdaptive*>& remaining,
+                                           std::list<ElementAdaptive*>& destination) {
+  ElementAdaptive* selected = nullptr;
+  std::list<ElementAdaptive*>::iterator entry;
+
+  for (entry = remaining.begin(); entry != remaining.end(); ++entry) {
+    if (Adjacent::ConfirmLeftAdjacency(node, *element, *(*entry))) {
+      selected = *entry;
+      destination.splice(destination.end(), remaining, entry);
+      break;
+    }
+  }
+
+  return selected;
+}
+
+ElementAdaptive* Adjacent::MoveElementRight(const NodeAdaptive& node, ElementAdaptive* element,
+                                            std::list<ElementAdaptive*>& remaining,
+                                            std::list<ElementAdaptive*>& destination) {
+  ElementAdaptive* selected = nullptr;
+  std::list<ElementAdaptive*>::iterator entry;
+
+  for (entry = remaining.begin(); entry != remaining.end(); ++entry) {
+    if (Adjacent::ConfirmRightAdjacency(node, *element, *(*entry))) {
+      selected = *entry;
+      destination.splice(destination.begin(), remaining, entry);
+      break;
+    }
+  }
+
+  return selected;
+}
+
 // verifica a concavidade de dois elementos adjacentes
 template <bool Snapshot>
 static int ConcavityValues(const NodeAdaptive& noh, const ElementAdaptive& first_element,

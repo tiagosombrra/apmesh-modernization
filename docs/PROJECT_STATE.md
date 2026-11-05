@@ -78,15 +78,17 @@ Retain the measured local improvement and negative timing result. Integration
 stays blocked; another speculative container/evaluator rewrite is not queued.
 
 
-The [curvature cost decision](evidence/CURVATURE_COST_SELECTION.md) separates the
-50.2315 s combined MSVC phase from sparse historical stacks; it does not assign
-that total to discrete sorting. The old exact-triangle GetNoh-copy hotspot has
-already changed. Select one engineering package: transfer private list nodes
-while ordering discrete adjacency, retaining first-match order, source observers
-and circular multiplicity. Its independent pre-change oracle and bounded real-
-allocation control are required before a saving is claimed. No production, test,
-binary or input changes and no runtime campaign accompany this decision. The next
-item is that implementation, with no automatic 300 s rerun; integration stays blocked.
+The [discrete curvature transfer package](evidence/CURVATURE_ADJACENCY_TRANSFERS.md)
+now moves private list nodes with splice during adjacency ordering. Seed/left
+transfers append, right transfers prepend; first-match order, source observers,
+working copy, saved node and the extra circular incidence remain preserved.
+The frozen pre-change sorter passes 120 bitwise cases and 912 transfer checks per
+ABI on the existing fans. Actual Debug CRT allocations/frees fall from 15 to 12
+for an open fan and 19 to 15 for a closed fan, with identical curvature results.
+Existing 75 CTest/389 controls and frozen GCC Eistute's 25 artifacts/15 boundaries
+pass. No new long MSVC pair or Book run; old timeouts and required integration
+gates remain. The [cost decision](evidence/CURVATURE_COST_SELECTION.md) still limits
+attribution: the combined 50.2315 s phase is not a measured sorting cost or speedup.
 
 ## P4 production repair: adaptive reuse consistency metadata
 

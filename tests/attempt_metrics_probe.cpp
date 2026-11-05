@@ -19,6 +19,7 @@
 #include "data/vector_adaptive.h"
 #include "data/vertex_adaptive.h"
 #include "curvature/curvature_discrete.h"
+#include "legacy_curvature_discrete.h"
 #include "generator/generator_adaptive.h"
 #include "input_output/models_3d.h"
 #include "input_output/input_validation.h"
@@ -2141,6 +2142,8 @@ void CheckCurvaturePointAccess() {
   };
   auto same = [](double a, double b) { return std::memcmp(&a, &b, sizeof(double)) == 0; };
   unsigned cases = 0;
+  unsigned transfers = 0;
+  unsigned unmatched = 0;
   for (int shape : {0, 1})
     for (unsigned count : {3U, 4U}) {
       std::array<unsigned, 4> order{{0, 1, 2, 3}};
@@ -2164,9 +2167,46 @@ void CheckCurvaturePointAccess() {
                 adjacent.ConcavityElement(legacy.nodes[0], *legacy.triangles[i],
                                           *legacy.triangles[j]));
           }
+        for (Fan* fan : {&fast, &legacy})
+          for (unsigned seed = 0; seed < count; ++seed)
+            for (bool left : {true, false}) {
+              std::list<ElementAdaptive*> remaining = fan->nodes[0].GetElements();
+              remaining.push_back(remaining.front());
+              auto reference = remaining;
+              ElementAdaptive* start = fan->triangles[seed].get();
+              ElementAdaptive* expected =
+                  left ? adjacent.GetElementLeft(fan->nodes[0], start, reference)
+                       : adjacent.GetElementRight(fan->nodes[0], start, reference);
+              auto match = std::find(remaining.begin(), remaining.end(), expected);
+              ElementAdaptive** identity = expected ? std::addressof(*match) : nullptr;
+              std::list<ElementAdaptive*> destination{start, start};
+              auto expected_destination = destination;
+              if (expected)
+                expected_destination.insert(
+                    left ? expected_destination.end() : expected_destination.begin(), expected);
+              ElementAdaptive* actual =
+                  left ? adjacent.MoveElementLeft(fan->nodes[0], start, remaining, destination)
+                       : adjacent.MoveElementRight(fan->nodes[0], start, remaining, destination);
+              require(actual == expected && remaining == reference &&
+                      destination == expected_destination);
+              if (expected)
+                require(std::addressof(left ? destination.back() : destination.front()) ==
+                        identity);
+              else
+                ++unmatched;
+              ++transfers;
+            }
         CurvatureDiscrete a(fast.nodes[0]), b(legacy.nodes[0]);
-        require(same(a.CalculateMeanCurvature(), b.CalculateMeanCurvature()));
+        curvature_test_reference::LegacyCurvatureDiscrete old_fast(fast.nodes[0]);
+        curvature_test_reference::LegacyCurvatureDiscrete old_virtual(legacy.nodes[0]);
+        const double fast_mean = a.CalculateMeanCurvature();
+        const double virtual_mean = b.CalculateMeanCurvature();
+        require(same(fast_mean, virtual_mean));
+        require(same(fast_mean, old_fast.CalculateMeanCurvature()));
+        require(same(virtual_mean, old_virtual.CalculateMeanCurvature()));
         require(same(a.CalculateGaussCurvature(), b.CalculateGaussCurvature()));
+        require(same(a.CalculateGaussCurvature(), old_fast.CalculateGaussCurvature()));
+        require(same(b.CalculateGaussCurvature(), old_virtual.CalculateGaussCurvature()));
         require(fast.nodes[0].GetElements() == before);
         require(static_cast<LegacyTriangle&>(*legacy.triangles[0]).reads > 0);
         for (unsigned i = 0; i < count; ++i)
@@ -2198,10 +2238,18 @@ void CheckCurvaturePointAccess() {
   NodeAdaptive origin(0, 0, 0);
   require(adjacent.ConfirmLeftAdjacency(origin, first, last) && first.reads > 0 && last.reads > 0);
   std::cout << "curvature_point_access cases=" << cases << " virtual_fallback=1\n";
+  require(unmatched > 0);
+  std::cout << "curvature_sort_reference cases=" << 2 * cases << " bitwise=1\n";
+  std::cout << "curvature_transfers cases=" << transfers << " unmatched=" << unmatched
+            << " first_match=1 node_identity=1\n";
 }
 } // namespace
 
 int main(int argc, char* argv[]) {
+  if (argc == 2 && std::string(argv[1]) == "--curvature-sort") {
+    CheckCurvaturePointAccess();
+    return 0;
+  }
   if (argc == 4 && std::string(argv[1]) == "--adaptive-reuse-config")
     return CheckAdaptiveReuse(argv[2], argv[3]);
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)

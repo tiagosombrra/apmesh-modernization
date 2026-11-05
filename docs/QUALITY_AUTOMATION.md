@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Discrete curvature adjacency transfers
+
+The [splice package](evidence/CURVATURE_ADJACENCY_TRANSFERS.md) requires a frozen
+pre-change sorter independent of the new transfer path. Retain its before-fix
+GCC/MSVC results, binaries and source proof; the 60 existing fan fixtures give
+120 exact/virtual curvature comparisons per ABI. Require 912 direct transfer
+checks including first-match duplicate identity, destination head/tail and 48
+unmatched searches. Keep the oracle unchanged after calibration. Reuse the Debug
+CRT mechanism on open/closed versions of the same fan: positive real allocation/
+free control, exact scalar payloads, unchanged observers and complete release.
+Require canonical C++17 GCC/checked-MSVC builds, existing 75 CTest/389 controls,
+frozen GCC Eistute 25 exact artifacts/15 independent boundaries, scoped analysis
+including both headers, source reversal, formatting, inventory/contracts and
+staged/remote review. No new model, CTest target, long MSVC pair or Book run.
+Allocation failure ordinals changed; do not promote old denial observations to
+revised-path qualification. Timed reuse and exact-delivery/main gates stay open.
+
 ## Contiguous AFT face incidences
 
 The [storage package](evidence/AFT_CONTIGUOUS_INCIDENCES.md) requires canonical

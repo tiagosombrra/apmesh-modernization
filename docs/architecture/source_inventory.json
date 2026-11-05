@@ -1448,8 +1448,8 @@
       "path": "include/curvature/adjacent.h",
       "component_by_directory": "curvature",
       "kind": "header",
-      "sha256": "8ed6c1c4a2cf77c33d6ca1b3d465229cadda98c42fedd5c6c288f068f0cd3b05",
-      "bytes": 1366,
+      "sha256": "962dbbad86daa6fd8dc2e6dd1787308f77c6fe8f64afed6672ccae769ff39857",
+      "bytes": 1828,
       "includes": [
         {
           "line": 4,
@@ -4486,8 +4486,8 @@
       "path": "src/curvature/adjacent.cpp",
       "component_by_directory": "curvature",
       "kind": "translation_unit",
-      "sha256": "0c341999a1a6e28980dbb954055546f2feaedc4edbaa7d4faaba5a91e854ed90",
-      "bytes": 9017,
+      "sha256": "c7afc9b703b1b8ee9d8f365164d3c499ec20bfc3415b2bc1fc339aabf7026cdc",
+      "bytes": 10275,
       "includes": [
         {
           "line": 1,
@@ -4525,8 +4525,8 @@
       "path": "src/curvature/curvature_discrete.cpp",
       "component_by_directory": "curvature",
       "kind": "translation_unit",
-      "sha256": "1be331b3a0b702f3902bbdddb8c1f3dc43e8a021e99a409f9ce2d9ffcbf7fc23",
-      "bytes": 4883,
+      "sha256": "33fb75c7c0f8567024c91c94fb2d52b858b5f0fd5463dad151cfc6d177e23870",
+      "bytes": 4834,
       "includes": [
         {
           "line": 1,
