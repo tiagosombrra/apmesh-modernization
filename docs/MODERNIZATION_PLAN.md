@@ -154,6 +154,18 @@ storage syntax; numerical/policy mutations remain rejected. Public Eigen types,
 evaluation and Hermite are unchanged. No long MSVC pair or Book run, performance
 claim, dependency deletion or stage closure; timed reuse/integration stay blocked.
 
+
+The [single post-scratch MSVC observation](evidence/FINDUV_SCRATCH_REUSE.md) runs
+only the fixed Eistute reuse gate with the qualified 1636547 binary. The first
+call retains five states, 25 exact prior-version artifacts and 15 independent
+boundaries; the second times out at the unchanged total 300 s cap. Partial second
+records reach accepted 0/1 and rejected 2/3; two-call native equality is unavailable.
+No retry, Book, source change or additional runtime test follows. Prior output
+is restored byte for byte. The first phase totals are reconstruction 100.452 s
+and combined curvature 50.7879 s; these do not locate cost by function or establish
+a speedup/regression. Next production selection requires function-level cost
+attribution; this observation admits no further speculative implementation.
+
 P4's [adaptive reuse repair](evidence/ADAPTIVE_GENERATOR_REUSE.md) corrects only the
 reproduced initial consistency-record difference on a reused Eistute generator.
 The required MSVC gate additionally exposed four empty diagonal-neighbor reads
