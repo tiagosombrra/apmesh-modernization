@@ -21,6 +21,15 @@ post-publication mutation repair, does not change the supported domain, and
 leaves S3-05/S3-07 partial/open. The P4 admission/stop rule below remains in force;
 no automatic source-audit successor follows this observation.
 
+The independent S3-09 [static-owner attribution](../evidence/SERIAL_CRT_STATIC_TEARDOWN.md)
+accounts for the original 150 entry-return blocks / 7,456 bytes and observes all
+watched requests freed by executable-static teardown in one separately identified
+same-input diagnostic. Five native controls and independent SP-02 checks pass;
+the original failure and its 43 artifact hashes are preserved. No production leak
+repair is demonstrated. Complete-process/shutdown-created allocation coverage,
+other callers/instruments and delivery/main gates retain their obligations.
+No successor campaign or cache-audit chain is selected by this bounded result.
+
 ### Preserved cumulative-audit entry state
 
 The following archive failure and dependency observations precede PR #164's

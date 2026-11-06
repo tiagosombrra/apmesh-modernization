@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "classification": "engineering-only test instrument and required S3-09 observation",
+  "entry_main": "1ec01ada2a52e05009698ae18ccb0b7130680349",
+  "status": "blocked_by_unattributed_entry_return_retention",
+  "production_files_changed": false,
+  "engine_translation_units": 75,
+  "build_seconds": 132.03062789980322,
+  "instrument_controls": [
+    {
+      "mode": "release-control",
+      "status": "passed",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "heap_valid": 1,
+        "iterator_level": 2,
+        "allocations": 1,
+        "denied": 0,
+        "caught": 0,
+        "normal_blocks_delta": 0,
+        "normal_bytes_delta": 0,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 0,
+        "newer_live_bytes": 0,
+        "clean": true
+      }
+    },
+    {
+      "mode": "leak-control",
+      "status": "passed",
+      "exit_code": 2,
+      "observer": {
+        "app_exit": 0,
+        "heap_valid": 1,
+        "iterator_level": 2,
+        "allocations": 1,
+        "denied": 0,
+        "caught": 0,
+        "normal_blocks_delta": 1,
+        "normal_bytes_delta": 64,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 1,
+        "newer_live_bytes": 64,
+        "clean": false
+      }
+    },
+    {
+      "mode": "replacement-control",
+      "status": "passed",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "heap_valid": 1,
+        "iterator_level": 2,
+        "allocations": 1,
+        "denied": 0,
+        "caught": 0,
+        "normal_blocks_delta": 0,
+        "normal_bytes_delta": 0,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 1,
+        "newer_live_bytes": 64,
+        "clean": false
+      }
+    },
+    {
+      "mode": "hook-control",
+      "status": "passed",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "heap_valid": 1,
+        "iterator_level": 2,
+        "allocations": 1,
+        "denied": 1,
+        "caught": 1,
+        "normal_blocks_delta": 0,
+        "normal_bytes_delta": 0,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 0,
+        "newer_live_bytes": 0,
+        "clean": true
+      }
+    }
+  ],
+  "production_case": {
+    "id": "SP-02",
+    "status": "failed",
+    "executions": 1,
+    "app_exit": 0,
+    "observer_exit": 2,
+    "observer": {
+      "app_exit": 0,
+      "heap_valid": 1,
+      "iterator_level": 2,
+      "allocations": 6172,
+      "denied": 0,
+      "caught": 0,
+      "normal_blocks_delta": 150,
+      "normal_bytes_delta": 7456,
+      "client_blocks_delta": 0,
+      "client_bytes_delta": 0,
+      "newer_live_blocks": 150,
+      "newer_live_bytes": 7456,
+      "clean": false
+    },
+    "boundary_diagnostic": {
+      "patches": 2,
+      "triangles": 8,
+      "compared_incidences": 1
+    },
+    "full_mesh_uv_verification": "rejected_nonzero_observer_exit",
+    "input_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444",
+    "executable_sha256": "0dc7f272ee562e0cc035c3bea82bb05e6e8e0e8ddf14e9f232c09c4ae2f35a76",
+    "retained_size_distribution": {
+      "8": 1,
+      "16": 56,
+      "32": 33,
+      "48": 2,
+      "56": 53,
+      "128": 3,
+      "1024": 2
+    }
+  },
+  "python_controls": {
+    "total": 449,
+    "new": 8,
+    "status": "passed_after_inventory_update",
+    "initial_stale_inventory_failure_preserved": true
+  },
+  "metadata_preflight": "initial_encoding_assumption_failure_preserved; corrected_MSBuild_element_passed",
+  "delivery_exact_head_main_gates": "not_run_candidate_blocked",
+  "local_artifact_root": "build/p3-serial-crt-entry",
+  "artifacts": {
+    "build-report.json": "10de3d0327810bc6f9548942e6172cba79aae568c56691ba6211e59e939d5d5b",
+    "build-scope.json": "26b1cc3d9daada351af57e7046b19ce526f7c88bf6966fecadd558d17fb61156",
+    "metadata-preflight-initial.json": "932bf0200c7e89d1f52652bdb36a97c2616623f2e1a108be2f9859b52fa1a70b",
+    "tooling.log": "cbe78e7dc2100358f465e517bed7e63beaa19e8dc35a0e116e7a79a7ec4ae73f",
+    "tooling-after-inventory.log": "5fa4bc2ecaea5183db59d705e13facaba1783b4768dbc339c487834ef217e7fd",
+    "observation/report.json": "aaa1f818ebc81d61ec6f26672fd2fc8b6f231444ad4e58f22698067b46d6b94d",
+    "observation/aligned/stdout.log": "2f149fd76e3bc7b1552f6ac556f83353ad1ceccdd870b798e101e2f219a4aba2",
+    "observation/aligned/stderr.log": "45f591f1c1b72b77bbda69a6e7e49a097f88395234c6e08ab3022c099cac7a18"
+  },
+  "next_dependency": "Attribute retained requests and establish the static-owner teardown boundary before another production execution; repair only a demonstrated unowned supported path.",
+  "stage3": {
+    "bounded_qualified": 3,
+    "partial_open": 7,
+    "closed": false
+  },
+  "publication": "none"
+}

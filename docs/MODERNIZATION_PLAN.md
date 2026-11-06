@@ -59,7 +59,17 @@ The local-validation companion is integrated through PR #165, main
 and 441 Python controls, no skips. Both seals retain their bounded scope and
 earlier failures; neither closes Stage 3 or establishes full-process safety.
 
-The next production package remains P4. The current
+The bounded [CRT static-owner attribution](evidence/SERIAL_CRT_STATIC_TEARDOWN.md)
+now resolves the original S3-09 entry-return residual: a separately identified
+same-input SP-02 diagnostic accounts for all 150 blocks / 7,456 bytes and observes
+every watched request freed by executable-static teardown. Five native controls
+and independent physical/UV/boundary checks pass. The original failure and 43
+artifact hashes remain intact. No production leak repair is demonstrated;
+shutdown-created allocations, other cases/instruments and complete Stage 3 remain
+open. Exact delivery/main gates are separate; no successor campaign is selected.
+Production/scientific policies and the negative cache admission are unchanged.
+
+The next production package remains P4. The completed
 [cache-mutation admission](evidence/P4_CACHE_MUTATION_ADMISSION.md) identifies
 control-only reconstruction in the inspected serial readers, not a demonstrated
 supported post-publication mutation defect. It admits no implementation and does
