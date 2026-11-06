@@ -91,11 +91,27 @@ class SessionTests(unittest.TestCase):
 
     def test_final_check_runs_before_success_is_published(self):
         def fail():
-            self.assertEqual(session.read_json(self.root / "run/report.json")["status"], "running")
+            self.assertFalse((self.root / "run/report.json").exists())
+            latest = sorted((self.root / "run").glob("progress-*.json"))[-1]
+            self.assertEqual(session.read_json(latest)["status"], "running")
             raise ValueError("identity changed")
         result = self.chain([self.step("ready", "pass")], fail)
         self.assertEqual(result["status"], "failed")
         self.assertIn("identity changed", result["error"])
+
+    def test_progress_readers_never_require_replacing_a_receipt(self):
+        original = session.write_json
+        def reject_replacement(path, value):
+            if path.exists():
+                raise PermissionError("An observer denies replacement of an existing receipt")
+            original(path, value)
+        with patch.object(session, "write_json", side_effect=reject_replacement):
+            result = self.chain([self.step("first", "pass"), self.step("second", "pass")])
+        self.assertEqual(result["status"], "passed")
+        progress = sorted((self.root / "run").glob("progress-*.json"))
+        self.assertEqual(len(progress), 4)
+        self.assertTrue(all(session.read_json(path)["status"] == "running" for path in progress))
+        self.assertEqual(session.read_json(self.root / "run/report.json")["status"], "passed")
 
     def test_timeout_stops_owned_process_and_later_steps(self):
         result = self.chain([self.step("slow", "import time; time.sleep(10)", timeout=0.1), self.sentinel()])
@@ -331,6 +347,14 @@ class SessionTests(unittest.TestCase):
         self.assertEqual(value["command_seconds"], {"doctor": 5})
         self.assertEqual(value["model_tokens"], "unmeasured")
         self.assertIsNone(value["summary_bytes"])
+
+    def test_metrics_preserve_unfinished_jobs_as_unmeasured(self):
+        session.write_json(self.root / "build/validation-session/job/progress-0000.json",
+                           {"schema": 1, "status": "running", "steps": []})
+        value = session.metrics(self.root)
+        self.assertEqual(value["unfinished_jobs"], 1)
+        self.assertEqual(value["failed_jobs"], 0)
+        self.assertEqual(value["jobs"], 0)
 
 
 if __name__ == "__main__":

@@ -35,6 +35,8 @@ zero coverage and failed overall reports must retain their actual dispositions.
 UTF-8 plan artifacts are written explicitly; avoid shell-dependent text redirection.
 Runners hold an exclusive local process lock. After interruption, inspect its recorded
 process before manually clearing a stale lock; automatic recovery never starts a retry.
+Progress receipts are immutable; the final report is published once after its final
+checks. Interrupted progress remains unmeasured and is counted separately in metrics.
 
 The unchanged versioned pre-commit can be invoked through the adapter's `pre-commit`
 action with the local child-process environment. Any hook registration is a local

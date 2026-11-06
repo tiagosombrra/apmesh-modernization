@@ -267,7 +267,7 @@ def check_links(root: Path, files: dict) -> dict:
 
 
 def execute_steps(steps: list[dict], output: Path, env: dict, cwd: Path,
-                  final_check=None) -> dict:
+                  final_check=None, *, metadata=None) -> dict:
     """Execute sequentially; any failure stops the chain and remains in the record."""
     if not steps or any(not re.fullmatch(r"[a-z][a-z0-9-]{0,40}", step.get("id", "")) or
                         not isinstance(step.get("argv"), list) or not step["argv"] or
@@ -277,12 +277,18 @@ def execute_steps(steps: list[dict], output: Path, env: dict, cwd: Path,
                         for step in steps):
         raise ValueError("Empty or invalid execution steps")
     output.mkdir(parents=True, exist_ok=False)
-    record = {"schema": 1, "status": "running", "steps": []}
+    record = {**(metadata or {}), "schema": 1, "status": "running", "steps": []}
+    snapshot = 0
+    def progress():
+        nonlocal snapshot
+        # Readers may hold earlier receipts without granting Windows delete sharing.
+        write_json(output / f"progress-{snapshot:04d}.json", record)
+        snapshot += 1
     for index, step in enumerate(steps):
         started = time.monotonic()
         row = {"id": step["id"], "argv": step["argv"], "status": "running"}
         record["steps"].append(row)
-        write_json(output / "report.json", record)
+        progress()
         try:
             with (output / f"{index:02d}-{step['id']}.log").open("xb") as stream:
                 flags = {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP} if os.name == "nt" else {"start_new_session": True}
@@ -313,8 +319,9 @@ def execute_steps(steps: list[dict], output: Path, env: dict, cwd: Path,
             record["status"] = "failed"
         finally:
             row["seconds"] = time.monotonic() - started
-            write_json(output / "report.json", record)
+            progress()
         if record["status"] == "failed":
+            write_json(output / "report.json", record)
             return record
     try:
         if final_check:
@@ -387,11 +394,13 @@ def _run_plan(root: Path, plan: dict, output: Path) -> dict:
             cases = list(xml.iter("testcase"))
             if {case.attrib["name"] for case in cases} != set(selected) or len(cases) != len(selected) or any(list(xml.iter(tag)) for tag in ("failure", "error", "skipped")):
                 raise ValueError("Executed inventory differs or contains failures/skips")
-    record = execute_steps(steps, output, command_environment(root), root, validate_result)
-    record.update(scope="local_regression", plan_scope=plan["scope"], stage_closure=False,
-                  delivery_eligible=False, selected_tests=selected, new_unit_ids=plan["new_unit_ids"])
-    write_json(output / "plan.json", plan)
-    write_json(output / "report.json", record)
+        write_json(output / "plan.json", plan)
+    metadata = {"scope": "local_regression", "plan_scope": plan["scope"], "stage_closure": False,
+                "delivery_eligible": False, "selected_tests": selected, "new_unit_ids": plan["new_unit_ids"]}
+    record = execute_steps(steps, output, command_environment(root), root, validate_result,
+                           metadata=metadata)
+    if not (output / "plan.json").exists():
+        write_json(output / "plan.json", plan)
     return record
 
 
@@ -456,8 +465,13 @@ def metrics(root: Path) -> dict:
             occurrences[name] = occurrences.get(name, 0) + 1
             seconds[name] = seconds.get(name, 0) + row.get("seconds", 0)
     view = root / LOCAL / "OPERATIONAL_SUMMARY.md"
+    unfinished = jobs.count("running")
+    directory = root / "build/validation-session"
+    if directory.exists():
+        unfinished += sum(not (path / "report.json").exists() and any(path.glob("progress-*.json"))
+                          for path in directory.iterdir() if path.is_dir())
     return {"events": len(events), "timed_events": sum(row.get("duration_ms") is not None for row in events),
-            "jobs": len(jobs), "failed_jobs": jobs.count("failed"),
+            "jobs": len(jobs), "failed_jobs": jobs.count("failed"), "unfinished_jobs": unfinished,
             "command_occurrences": occurrences, "command_seconds": seconds,
             "canonical_bytes": sum((root / name).stat().st_size for name in CANONICAL),
             "summary_bytes": view.stat().st_size if view.exists() else None,
