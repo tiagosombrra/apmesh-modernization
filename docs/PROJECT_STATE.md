@@ -2,13 +2,25 @@
 
 ## Current checkpoint and active work
 
-Active package: [reuse archive diagnostics](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md).
-Its PR and local `build/reuse-archive-delivery/integration-verification.json`
-identify the exact delivery/main revisions and final gate disposition. A missing
-or failing required gate blocks the next production package. The observations
-below preserve the repair's entry state, not an inferred post-delivery result.
+The archive diagnostic dependency is qualified through PR #164, main
+`249492d299ca9192443ccb12bdf55b78e8e88198`. Its local
+`build/reuse-archive-delivery/integration-verification.json` records the passed
+exact-head/main GCC/MSVC archive/reuse gates and their bounded scope.
+The local-validation companion is integrated through PR #165, main
+`b8a0bb905e650715e5846ae6bdcd13aaae9f9205`, with 75 CTest entries and 441 Python
+controls passing on its final head and main, without skips. Its seal is local
+`build/development-environment-setup/closure/integration-verification.json`.
 
-### Repair entry observations
+Current bounded item: [P4 cache-mutation admission](evidence/P4_CACHE_MUTATION_ADMISSION.md).
+The inspected serial loaders use control-only setters before reconstructing
+geometric patches; that is not a demonstrated post-publication cache defect.
+No production repair is admitted by this observation. S3-05/S3-07 and every
+other ledger disposition remain unchanged. The next P4 repair requires a named
+supported caller, a concrete trigger and an independent expected invariant.
+The observations below preserve the archive repair's entry state and failures;
+they do not reclassify the qualified PR #164 dependency as currently blocked.
+
+### Preserved repair entry observations
 
 PR #163 merged as main `0df31939e19b86c8486c0f01df414316c263913b`;
 its tree matches qualified head `69582bbb2663ffc0249d79d648421c616763fffe`.

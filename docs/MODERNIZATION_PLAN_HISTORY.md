@@ -950,3 +950,17 @@ is O((P + Q) log(P + Q)); no end-to-end speedup is measured. No new long MSVC pa
 or Book run. Timed reuse, revised-head Book and integration remain blocked.
 
 End of preserved candidate chronology.
+
+
+## Routing checkpoint before PR #164/#165 reconciliation
+
+Preserved verbatim from `b8a0bb905e650715e5846ae6bdcd13aaae9f9205`; this historical routing paragraph
+is superseded by the qualified current checkpoint.
+
+```markdown
+The active bounded package is [reuse archive diagnostics](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md).
+Its PR and local `build/reuse-archive-delivery/integration-verification.json`
+record exact delivery/main identities and gate disposition. Missing or failing
+required gates block the next production package. The following chronology
+preserves the entry state; final qualification is not inferred from it.
+```
