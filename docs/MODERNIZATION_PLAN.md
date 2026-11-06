@@ -51,22 +51,48 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+The active bounded package is [reuse archive diagnostics](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md).
+Its PR and local `build/reuse-archive-delivery/integration-verification.json`
+record exact delivery/main identities and gate disposition. Missing or failing
+required gates block the next production package. The following chronology
+preserves the entry state; final qualification is not inferred from it.
+
+PR #163 is merged at main `0df31939e19b86c8486c0f01df414316c263913b`,
+with the same tree as its qualified delivery head. The
+[post-merge record](evidence/PR163_MAIN_VALIDATION.md) retains the initial build
+timeout and the reviewed continuation: the remaining 203 GCC actions complete
+in 266.601197 seconds at the unchanged 600-second cap and parallelism 2.
+GCC/MSVC builds, 75 CTest/391 nested controls, fixture/native/negative checks and
+ordinary frozen Eistute/Book science pass on the rebuilt artifacts. GCC reuse
+then aborts at the fixture's live-to-first directory rename with Permission
+denied; the second call and MSVC pairs did not start. Main qualification and the
+next production package remain blocked; the integration seal is absent. The
+[archive diagnostic repair](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md) now supplies
+failure/owner reporting calibrated with known closed, occupied and held-file
+controls on GCC/MSVC. A separate diagnostic Eistute pair did not reproduce the
+failure and does not identify its original cause. Deliver the test-only repair
+with the required exact-head/main gates; preserve both failures, caps and policies.
+
 The [2026-11-05 cumulative audit](evidence/PLAN_REGRESSION_AUDIT.md) confirms the
 technique-preserving direction and corrects the immediate dependency. At source
 head `1604599`, the fixed GCC and checked-MSVC Eistute/Book reuse observations
 pass. MSVC takes 200.651931 s for the Eistute pair and 115.115937 s for Book;
 each keeps the unchanged total 300-second cap. The old timeout remains negative
 historical evidence and is no longer the current artifact's runtime blocker.
-The subsequent PR #163 delivery binds that audit to its documentation delta,
-then executes the required fixed gates once on the exact head and once on the
-integrated main. The PR and local `build/pr163-delivery/integration-verification.json`
-record the result; no later production package starts before those gates pass.
+The subsequent PR #163 delivery binds that audit to its documentation delta and
+qualifies the exact head. Its main qualification remains failed as recorded
+above. The PR and local `build/pr163-delivery/{head,main}/report.json` retain the
+original results; `main-continuation/run/report.json` retains the reviewed
+continuation. `integration-verification.json` must not be inferred from the
+merge or green ordinary regression. No later production package starts before
+main qualification passes.
 
 | Order | Required output | Acceptance and stop decision |
 | --- | --- | --- |
 | Current evidence | Cumulative code/contract review, GCC/MSVC builds, existing 75 CTest/391 controls, negative controls, fixed scientific/reuse observations and static analysis. | Measured on 1604599 with pinned binaries/inputs. Preserve the passed observations and all prior failures; do not call the failing Doxygen gate green. |
-| Next delivery | One consolidated candidate/evidence/plan review with explicit source, input, compiler, binary and control identities. | Audit fresh remote main/branch/PR/checks; finish every applicable exact-delivery requirement. Reuse identical runtime evidence across documentation-only changes with an explicit identity record. Changed dependencies or failed required gates stop integration. |
-| Main validation | Required regression and candidate scientific/reuse gates on the merged main revision. | No main qualification is inferred from this local audit or an unmerged PR. Retain commands, hashes and results; stop at the first unexpected required failure. |
+| Delivered head | PR #163 is integrated; its exact head passed the consolidated review and required gates. | Preserve explicit source, input, compiler, binary and control identities and all earlier failures. Head qualification does not establish main qualification. |
+| Current dependency | Deliver the calibrated archive diagnostic repair at the existing reuse probe boundary. | Require its positive/negative owner controls and revised exact-head/main reuse gates. Preserve the initial timeout and archival abort; no hidden retry, cap increase or next production implementation. |
+| Main validation | Builds, 75 CTest/391 controls, native/negative/fixture checks and ordinary frozen GCC science pass; GCC/MSVC reuse qualification remains incomplete. | Retain exact rebuilt artifact identities and both failed attempts. Existing partial-prefix artifacts do not qualify reuse; no main qualification is inferred from green ordinary regression. |
 | Following P4 work | One demonstrated remaining supported lifecycle/caller gap assigned to the existing closure ledger. | Admit its concrete trigger, invariant, finite checks and stop decision before implementation. No automatic performance, global-state migration or source-audit chain. |
 | Stage closure | Every original ledger obligation has a measured or explicitly justified disposition, including applicable complete-process instruments/domain/parallel coverage. | Seven rows are still partial/open. A missing/failing required gate blocks closure; no obligation moves out of Stage 3 merely to make it complete. |
 
@@ -97,8 +123,9 @@ in first-call template construction. Guard only those observed accesses; preserv
 nonempty expressions and frozen science, without disabling Debug iterator checks.
 Two calls per unchanged captured Eistute/Book profile must match frozen GCC and
 fresh same-ABI MSVC output, including rejection/retry evidence and positive boundary
-coverage. Existing revised-head/main gates apply. These candidate S3-05/06/08 repairs remain unintegrated;
-context changes, failed-call recovery and other row requirements remain separate.
+coverage. The S3-05/06/08 repairs are integrated through PR #163, but main
+qualification remains blocked at the archive gate above. Context changes,
+failed-call recovery and other row requirements remain separate.
 
 P4's [serial archive isolation](evidence/SERIAL_GENERATOR_REUSE.md) removes the
 reproduced owner accumulation across successful h/h/disabled serial calls using
