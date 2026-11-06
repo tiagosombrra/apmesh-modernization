@@ -9,6 +9,23 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
+PR #164 qualifies the archive diagnostic dependency on exact delivery/main
+revisions, with seal `build/reuse-archive-delivery/integration-verification.json`.
+PR #165 integrates the local-validation companion as main
+`b8a0bb905e650715e5846ae6bdcd13aaae9f9205`; its head and main pass 75 CTest entries
+and 441 Python controls without skips. Neither package closes a whole ledger row.
+
+The [bounded C17 admission](../evidence/P4_CACHE_MUTATION_ADMISSION.md) records
+control-only construction in the inspected serial readers. It admits no
+post-publication mutation repair, does not change the supported domain, and
+leaves S3-05/S3-07 partial/open. The P4 admission/stop rule below remains in force;
+no automatic source-audit successor follows this observation.
+
+### Preserved cumulative-audit entry state
+
+The following archive failure and dependency observations precede PR #164's
+qualified seal. Keep them as historical evidence, not a current runtime blocker.
+
 The [2026-11-05 audit](../evidence/PLAN_REGRESSION_AUDIT.md) passes current GCC and
 checked-MSVC Eistute/Book reuse. Each MSVC pair finishes within the unchanged
 300-second total cap, with independent boundaries, preserved artifacts and equal

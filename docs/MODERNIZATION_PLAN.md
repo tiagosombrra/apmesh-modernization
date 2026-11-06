@@ -51,11 +51,27 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
-The active bounded package is [reuse archive diagnostics](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md).
-Its PR and local `build/reuse-archive-delivery/integration-verification.json`
-record exact delivery/main identities and gate disposition. Missing or failing
-required gates block the next production package. The following chronology
-preserves the entry state; final qualification is not inferred from it.
+The [archive diagnostic dependency](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md) is
+qualified through PR #164, main `249492d299ca9192443ccb12bdf55b78e8e88198`, as
+recorded in local `build/reuse-archive-delivery/integration-verification.json`.
+The local-validation companion is integrated through PR #165, main
+`b8a0bb905e650715e5846ae6bdcd13aaae9f9205`, with exact-head/main 75 CTest entries
+and 441 Python controls, no skips. Both seals retain their bounded scope and
+earlier failures; neither closes Stage 3 or establishes full-process safety.
+
+The next production package remains P4. The current
+[cache-mutation admission](evidence/P4_CACHE_MUTATION_ADMISSION.md) identifies
+control-only reconstruction in the inspected serial readers, not a demonstrated
+supported post-publication mutation defect. It admits no implementation and does
+not change C17, the supported domain or the ten closure dispositions. A later
+repair requires its own named supported caller, trigger, invariant and finite
+affected gates; this negative admission does not start another source-audit chain.
+
+### Preserved archive-repair entry chronology
+
+The following chronology and dependency table retain their pre-PR #164 states.
+Their original failures remain evidence; the current qualified checkpoints are
+recorded above rather than inferred from a merge or ordinary regression alone.
 
 PR #163 is merged at main `0df31939e19b86c8486c0f01df414316c263913b`,
 with the same tree as its qualified delivery head. The
