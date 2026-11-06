@@ -2,14 +2,37 @@
 
 ## Current checkpoint and active work
 
-Reviewed PR #163 base main: `d1619137af4ad53e3bb98cf5fc4336f75350629f` (PR #162).
-Exact delivery head/main status is recorded by PR #163 and the local
-`build/pr163-delivery/integration-verification.json` seal. A missing or failing
-required delivery/main gate blocks the next production package.
+Active package: [reuse archive diagnostics](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md).
+Its PR and local `build/reuse-archive-delivery/integration-verification.json`
+identify the exact delivery/main revisions and final gate disposition. A missing
+or failing required gate blocks the next production package. The observations
+below preserve the repair's entry state, not an inferred post-delivery result.
+
+### Repair entry observations
+
+PR #163 merged as main `0df31939e19b86c8486c0f01df414316c263913b`;
+its tree matches qualified head `69582bbb2663ffc0249d79d648421c616763fffe`.
+The [post-merge record](evidence/PR163_MAIN_VALIDATION.md) preserves the initial
+600-second GCC build timeout. After dependency/timestamp review, one explicit
+continuation completed the remaining 203 actions in 266.601197 seconds at the
+same cap and parallelism. All GCC/MSVC builds, 75 CTest entries/391 nested
+controls, 515 fixture allocation denials and ordinary frozen Eistute/Book gates
+pass on the rebuilt artifacts: nine states, 45 exact artifacts, 123 boundaries.
+GCC reuse then aborts at the fixture's live-to-first directory rename with
+Permission denied, before its second call. Its retained 25 scientific artifacts
+match the reference, but reuse remains unqualified; MSVC reuse did not start.
+At repair entry, main qualification was blocked and the integration seal absent. The
+[archive diagnostic repair](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md) now flushes the
+call status, preserves a failed archive as failure and reports Windows sharing/
+owner observations without retry. Closed, occupied, self-held and externally-held
+controls pass on GCC/MSVC. A separately calibrated Eistute diagnostic pair passes
+but does not attribute the original failure or replace delivery gates. Complete
+this test-only repair's exact-head/main qualification before another P4 package.
+Production and scientific policies are unchanged; no larger cap is introduced.
 
 ## P4 delivery checkpoint: bounded adaptive reuse
 
-The [cumulative plan/regression audit](evidence/PLAN_REGRESSION_AUDIT.md) measures
+The historical [cumulative plan/regression audit](evidence/PLAN_REGRESSION_AUDIT.md) measures
 source head `1604599cb36b9064907b5e93a3c45e56143a391f`. Remote main was
 `d1619137af4ad53e3bb98cf5fc4336f75350629f`; PR #163 was a draft with no
 configured hosted checks at that audit entry. Those measurements are distinct
@@ -27,9 +50,12 @@ from the subsequent exact-head/main delivery records linked above.
 - Cumulative changed-line static analysis, formatting, whitespace and inventory/
   contracts pass. Doxygen fails with 2,718 diagnostics; documentation is unqualified.
 
-Complete delivery review and exact-head/main validation before another production
-package. The delivery continuation records one required fixed run per revision;
-it does not retry a failed unchanged revision or select a speculative optimization.
+The package is integrated, but its post-merge reuse qualification is blocked as
+recorded above. The figures in this subsection describe the earlier cumulative
+audit, not the failed post-merge reuse gate. Complete main validation before
+another production package. Preserve the initial timeout and explicitly reviewed
+build continuation; do not retry failed scientific runs automatically or select
+a speculative optimization.
 Check evidence identities when binding these results to a documentation-only
 revision; a changed production dependency requires its affected checks. Historical
 ASan observations do not qualify the changed whole process. Full-process CRT/

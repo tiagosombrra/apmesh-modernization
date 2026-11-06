@@ -13,8 +13,18 @@ The [2026-11-05 audit](../evidence/PLAN_REGRESSION_AUDIT.md) passes current GCC 
 checked-MSVC Eistute/Book reuse. Each MSVC pair finishes within the unchanged
 300-second total cap, with independent boundaries, preserved artifacts and equal
 native counters. The old timeout is retained evidence, not the current blocker.
-Complete the candidate's delivery review and exact-head/main gates before another
-implementation. Additional speculative performance packages are not queued.
+PR #163 has since merged, with its exact head qualified. The
+[main record](../evidence/PR163_MAIN_VALIDATION.md) preserves the initial build
+timeout and one reviewed continuation. The remaining 203 GCC actions and all
+MSVC builds now pass, as do 75 CTest/391 controls, fixture/negative checks and
+ordinary frozen Eistute/Book science. GCC reuse aborts at the live-to-first
+directory rename with Permission denied before its second call; MSVC pairs did
+not start. The [archive diagnostic repair](../evidence/REUSE_ARCHIVE_DIAGNOSTICS.md)
+now supplies calibrated failure/owner reporting without changing production or
+the scientific caller sequence. Deliver its revised exact-head/main gates before
+another production implementation. Preserve both failures; no hidden retry or
+cap increase is admitted by this record.
+Additional speculative performance packages are not queued.
 Preserve artifact-specific ASan results; full-process CRT/UB/leak, wider callers,
 parallel coverage and all seven partial/open rows remain closure work. The P2
 machine ledger is a preserved entry specification, not a current result table.

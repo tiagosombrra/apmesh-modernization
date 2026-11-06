@@ -5,9 +5,57 @@ import argparse
 import csv
 import json
 import math
+import os
 from pathlib import Path
+import re
 import subprocess
 import tempfile
+
+
+def check_archive_controls(exe, root):
+    def launch(mode, folder):
+        process = subprocess.Popen([str(exe), "--archive-control", mode, str(folder)],
+                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            stdout, stderr = process.communicate(timeout=30)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.communicate()
+            raise
+        return process, stdout, stderr
+
+    modes = ["closed", "occupied"] + (["held", "external"] if os.name == "nt" else [])
+    observations = []
+    for mode in modes:
+        folder = root / ("archive-" + mode)
+        if mode == "external":
+            (folder / "live").mkdir(parents=True)
+            source = folder / "live" / "output.txt"
+            source.write_text("known external file owner\n", encoding="utf-8")
+            with source.open(encoding="utf-8"):
+                process, stdout, stderr = launch(mode, folder)
+            owner = os.getpid()
+        else:
+            process, stdout, stderr = launch(mode, folder)
+            owner = process.pid
+        (root / (mode + "-stdout.log")).write_bytes(stdout)
+        (root / (mode + "-stderr.log")).write_bytes(stderr)
+        assert process.returncode == (0 if mode == "closed" else 1), (mode, stderr)
+        if mode == "closed":
+            assert b"archive_result status=completed" in stderr
+            assert (folder / "first" / "output.txt").read_text() == "native archival ownership control\n"
+            assert not (folder / "live").exists()
+        else:
+            assert b"archive_result status=failed" in stderr
+            assert (folder / "live" / "output.txt").is_file()
+            if mode == "occupied":
+                assert (folder / "first" / "existing.txt").read_text() == "preserve occupied destination\n"
+            else:
+                assert b"archive_delete_access" in stderr and b"win32_error=32" in stderr
+                assert re.search(rb"archive_owner pid=" + str(owner).encode() + rb"\b", stderr), stderr
+                assert not (folder / "first").exists()
+        observations.append({"mode": mode, "status": "passed"})
+    return observations
 
 
 def check(root):
@@ -73,5 +121,6 @@ if __name__ == "__main__":
     work = Path(tempfile.mkdtemp(prefix="run-", dir=args.workspace)).resolve()
     subprocess.run([str(args.exe.resolve()), str(work / "output")], check=True, timeout=30)
     report = check(work / "output")
+    report["archive_controls"] = check_archive_controls(args.exe.resolve(), work)
     (work / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({**report, "report": str(work / "report.json")}))

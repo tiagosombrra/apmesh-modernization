@@ -38,6 +38,7 @@ using apmesh::application::LoadRuntimeConfig;
 #include <cstring>
 #include <chrono>
 #include <filesystem>
+#include "reuse_archive_diagnostics.h"
 #include <fstream>
 #include <iomanip>
 #include <memory>
@@ -2086,12 +2087,42 @@ int CheckAdaptiveReuse(const std::filesystem::path& config_path,
     const auto statistics = generator.GetFindUvStatistics();
     std::cout << "adaptive_reuse call=" << call << " exit=" << code
               << " archived=" << DomainCandidateFixture::SavedMeshes(generator).size()
-              << " calls=" << statistics.calls << " imax=" << statistics.imax_exits << '\n';
-    std::filesystem::rename(live, output / (call == 0 ? "first" : "second"));
+              << " calls=" << statistics.calls << " imax=" << statistics.imax_exits << std::endl;
+    if (!reuse_archive::Rename(live, output / (call == 0 ? "first" : "second")))
+      return 1;
     if (code != 0)
       return code;
   }
   return 0;
+}
+
+int CheckReuseArchiveControl(const std::string& mode, const std::filesystem::path& output) {
+  const auto live = output / "live";
+  if (mode != "external") {
+    if (std::filesystem::exists(output))
+      throw std::runtime_error("Archive control requires a fresh directory");
+    std::filesystem::create_directories(live);
+    std::ofstream file(live / "output.txt");
+    file << "native archival ownership control\n";
+    if (!file)
+      throw std::runtime_error("Archive control could not write its fixture");
+  }
+  if (mode == "occupied") {
+    std::filesystem::create_directories(output / "first");
+    std::ofstream file(output / "first" / "existing.txt");
+    file << "preserve occupied destination\n";
+    if (!file)
+      throw std::runtime_error("Archive control could not write its destination");
+  }
+  std::ifstream held;
+  if (mode == "held") {
+    held.open(live / "output.txt");
+    if (!held)
+      throw std::runtime_error("Archive control could not hold its fixture");
+  } else if (mode != "closed" && mode != "occupied" && mode != "external") {
+    throw std::runtime_error("Unknown archive control");
+  }
+  return reuse_archive::Rename(live, output / "first") ? 0 : 1;
 }
 
 bool CheckSerialReuse(const std::filesystem::path& output) {
@@ -2425,6 +2456,8 @@ int main(int argc, char* argv[]) {
     CheckCurvaturePointAccess();
     return 0;
   }
+  if (argc == 4 && std::string(argv[1]) == "--archive-control")
+    return CheckReuseArchiveControl(argv[2], argv[3]);
   if (argc == 4 && std::string(argv[1]) == "--adaptive-reuse-config")
     return CheckAdaptiveReuse(argv[2], argv[3]);
 #if defined(AP_MESH_DOMAIN_FAILURE_WRAP)

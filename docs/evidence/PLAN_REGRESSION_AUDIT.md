@@ -152,3 +152,24 @@ closure. All seven partial/open rows, artifact-specific ASan limits, complete-
 process CRT/UB/leak, parallel/caller/mutation/recovery obligations and the failing
 Stage 8 Doxygen gate remain explicit. No scientific threshold, support promise,
 baseline, instrument assertion or configured check is relaxed for delivery.
+
+## Post-merge main attempt
+
+PR #163 merged at `0df31939e19b86c8486c0f01df414316c263913b`, with the
+qualified head's tree. The [main validation record](PR163_MAIN_VALIDATION.md)
+retains the subsequent first GCC build timeout at 600 seconds. Later gates did
+not start; main qualification is blocked and no integration seal exists. This
+does not alter the passed head observations or any Stage 3 disposition.
+
+The later reviewed continuation resolves the build prerequisite without changing
+its 600-second cap or parallelism 2. Builds, 75 CTest/391 controls, native/negative/
+fixture checks and ordinary frozen GCC Eistute/Book observations pass on the
+rebuilt artifacts. GCC reuse then aborts at the fixture's directory rename with
+Permission denied. The second call and MSVC pairs did not start. The linked main
+record preserves both failures and the passed gates; no scientific retry, main
+qualification, integration seal or Stage 3 closure is inferred.
+
+The [subsequent archive diagnostic repair](REUSE_ARCHIVE_DIAGNOSTICS.md) changes
+only the test fixture and its Windows diagnostic linkage. Its calibrated owner
+controls do not attribute or erase the original archival failure. Revised
+exact-head/main caller gates remain mandatory before another production package.
