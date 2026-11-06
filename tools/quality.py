@@ -17,9 +17,10 @@ SPECIAL = {".editorconfig", ".clang-format", ".clang-tidy", ".gitignore", "Doxyf
 EXCLUDED = {".git", "libs", "reference", "input_models", "paper", "assets", "build", "results"}
 
 
-def run(command: list[str], *, capture: bool = False) -> subprocess.CompletedProcess:
+def run(command: list[str], *, capture: bool = False,
+        timeout: float | None = None) -> subprocess.CompletedProcess:
     """Execute argument vectors without a shell and preserve failure codes."""
-    return subprocess.run(command, cwd=ROOT, check=True, capture_output=capture)
+    return subprocess.run(command, cwd=ROOT, check=True, capture_output=capture, timeout=timeout)
 
 
 def tool(name: str) -> str:
@@ -27,6 +28,23 @@ def tool(name: str) -> str:
     if not found:
         raise ValueError(f"Required tool is unavailable: {name}")
     return found
+
+
+def doctor() -> int:
+    """Inventory every required tool; missing and broken tools fail the check."""
+    failures = 0
+    for name in ("git", "cmake", "ctest", "ninja", "clang-format", "clang-tidy", "doxygen"):
+        executable = shutil.which(name)
+        print(f"{name}: {executable or 'UNAVAILABLE (not found on PATH)'}")
+        if not executable:
+            failures += 1
+            continue
+        try:
+            run([executable, "--version"], timeout=10)
+        except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
+            failures += 1
+            print(f"{name}: BROKEN ({error})", file=sys.stderr)
+    return int(failures != 0)
 
 
 def allowed(path: Path) -> bool:
@@ -118,12 +136,7 @@ def main() -> int:
     if args.fix and args.action not in {"whitespace", "format"}:
         parser.error("--fix is supported only for whitespace and format")
     if args.action == "doctor":
-        for name in ["git", "cmake", "ctest", "ninja", "clang-format", "clang-tidy", "doxygen"]:
-            executable = shutil.which(name)
-            print(f"{name}: {executable or 'UNAVAILABLE'}")
-            if executable:
-                run([executable, "--version"])
-        return 0
+        return doctor()
     if args.action in {"whitespace", "format", "tidy"}:
         files = select(args.paths, args.base, cpp=args.action != "whitespace")
         if args.action == "whitespace":
