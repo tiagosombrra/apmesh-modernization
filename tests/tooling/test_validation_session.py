@@ -197,7 +197,8 @@ class SessionTests(unittest.TestCase):
             session.check_links(self.root, {"docs/link.md": "a" * 64})
 
     def test_unknown_and_shared_header_impact_is_conservative(self):
-        for name in ("unknown.bin", "include/shared.h", "CMakePresets.json"):
+        for name in ("unknown.bin", "include/shared.h", "CMakePresets.json",
+                     "docs/architecture/contracts.json", "docs/tool.py"):
             with self.subTest(name=name):
                 self.assertEqual(len(self.plan({name: "a" * 64})["iteration_selected"]), 2)
 

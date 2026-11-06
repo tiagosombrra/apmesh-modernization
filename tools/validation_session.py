@@ -221,7 +221,7 @@ def make_plan(root: Path, scope: str, base: str = "HEAD") -> dict:
     files = changes(root, base)
     all_names = sorted(test["name"] for test in tests)
     selected, reason = all_names, "unmapped or shared impact: conservative full coverage"
-    names = [name for name in files if not (name.startswith("docs/") or name.endswith(".md"))]
+    names = [name for name in files if not name.endswith(".md")]
     if not names:
         selected, reason = [], "documentation scope; no regression qualification inferred"
     elif all(name.startswith("tests/tooling/") or name in
