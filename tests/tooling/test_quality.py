@@ -1,6 +1,8 @@
 """Negative and positive controls for local quality infrastructure."""
 
 import importlib.util
+import contextlib
+import io
 import json
 import subprocess
 import sys
@@ -27,6 +29,59 @@ staged = load("check_staged")
 
 
 class QualityTests(unittest.TestCase):
+    def doctor_case(self, missing=(), failure=None):
+        output, errors = io.StringIO(), io.StringIO()
+        resolve = lambda name: None if name in missing else f"C:/tools with spaces/{name}.exe"
+        with patch.object(quality.shutil, "which", side_effect=resolve), \
+                patch.object(quality, "run", side_effect=failure) as run, \
+                contextlib.redirect_stdout(output), contextlib.redirect_stderr(errors):
+            code = quality.doctor()
+        return code, output.getvalue(), errors.getvalue(), run
+
+    def test_doctor_all_tools_present(self):
+        code, output, errors, run = self.doctor_case()
+        self.assertEqual(code, 0)
+        self.assertEqual(len(output.splitlines()), 7)
+        self.assertEqual(errors, "")
+        self.assertEqual(run.call_count, 7)
+        self.assertEqual(run.call_args_list[0].args[0], ["C:/tools with spaces/git.exe", "--version"])
+        self.assertEqual(run.call_args_list[0].kwargs, {"timeout": 10})
+
+    def test_doctor_one_missing_fails_and_checks_remaining_tools(self):
+        code, output, _, run = self.doctor_case(missing={"git"})
+        self.assertEqual(code, 1)
+        self.assertIn("git: UNAVAILABLE (not found on PATH)", output)
+        self.assertIn("doxygen:", output)
+        self.assertEqual(run.call_count, 6)
+
+    def test_doctor_all_missing_is_not_success(self):
+        with patch.object(quality.shutil, "which", return_value=None), \
+                patch.object(quality, "run") as run, contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(quality.doctor(), 1)
+        run.assert_not_called()
+
+    def test_doctor_version_failure_does_not_stop_inventory(self):
+        failure = subprocess.CalledProcessError(7, ["git", "--version"])
+        code, output, errors, run = self.doctor_case(failure=[failure] + [None] * 6)
+        self.assertEqual(code, 1)
+        self.assertEqual(run.call_count, 7)
+        self.assertIn("git: BROKEN", errors)
+        self.assertIn("doxygen:", output)
+
+    def test_doctor_unlaunchable_tool_is_broken(self):
+        for failure in (FileNotFoundError("disappeared"), PermissionError("denied"),
+                        subprocess.TimeoutExpired(["git", "--version"], 10)):
+            with self.subTest(failure=type(failure).__name__):
+                code, _, errors, run = self.doctor_case(failure=[failure] + [None] * 6)
+                self.assertEqual(code, 1)
+                self.assertEqual(run.call_count, 7)
+                self.assertIn("BROKEN", errors)
+
+    def test_doctor_main_propagates_failure(self):
+        with patch.object(sys, "argv", ["quality.py", "doctor"]), \
+                patch.object(quality, "doctor", return_value=1):
+            self.assertEqual(quality.main(), 1)
+
     def test_check_never_changes_bytes(self):
         with tempfile.TemporaryDirectory(dir=ROOT) as folder:
             path = Path(folder) / "sample.cpp"

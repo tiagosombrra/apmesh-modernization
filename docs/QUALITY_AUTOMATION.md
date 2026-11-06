@@ -1,5 +1,54 @@
 # Local quality automation
 
+## Local coordination and impact planning
+
+`python tools/quality.py doctor` inventories every required tool and returns nonzero
+for missing tools, failed version commands, launch errors or version-query timeouts.
+UNAVAILABLE means not found on PATH; it does not prove absence from the machine.
+No tool is installed and no global environment is changed by the diagnostic.
+
+The optional `tools/validation_session.py` adapter calls these existing controls.
+Its local execution profile and qualified test-ID baseline are kept under the
+ignored `build/validation-session/local/` directory. Typical entry points are:
+
+```text
+python tools/validation_session.py environment
+python tools/validation_session.py summary --task "Current authorized work item"
+python tools/validation_session.py check-summary
+python tools/validation_session.py plan --scope iteration
+python tools/validation_session.py plan --scope delivery --output build/delivery-plan.json
+python tools/validation_session.py run --plan build/delivery-plan.json
+python tools/validation_session.py metrics
+```
+
+Plans retain every qualified baseline test ID and report added unit cases.
+Incremental selection is feedback only. Unknown/shared impact is conservative;
+delivery scope runs the complete discovered baseline/superset without skipped tests.
+Before native tests, the adapter verifies the configured CMake source root and
+builds the existing tree with two jobs and the existing 600-second bound. A failed
+build prevents CTest. Tooling-only iteration does not require a native rebuild.
+If build regeneration changes the configured test inventory, execution stops
+before CTest and requires a new plan; new tests cannot be omitted silently.
+A passed adapter run qualifies only its stated local regression scope. Additional
+canonical package gates, fresh remote checks, exact-head/main validation and stage
+closure obligations remain mandatory. The adapter never publishes or integrates.
+
+Operational views are derived from canonical source hashes and rejected when stale.
+Evidence verification checks explicit identity axes and artifact hashes; it is not
+a replacement for the existing scientific or memory checkers. Expected negatives,
+zero coverage and failed overall reports must retain their actual dispositions.
+UTF-8 plan artifacts are written explicitly; avoid shell-dependent text redirection.
+Runners hold an exclusive local process lock. After interruption, inspect its recorded
+process before manually clearing a stale lock; automatic recovery never starts a retry.
+Interruption terminates and reaps the owned process group before releasing the
+lock. Unconfirmed cleanup preserves the lock for manual process inspection.
+Progress receipts are immutable; the final report is published once after its final
+checks. Interrupted progress remains unmeasured and is counted separately in metrics.
+
+The unchanged versioned pre-commit can be invoked through the adapter's `pre-commit`
+action with the local child-process environment. Any hook registration is a local
+opt-in; it must preserve staged-byte validation and native approval controls.
+
 ## Cumulative candidate regression and plan audit
 
 The [2026-11-05 audit](evidence/PLAN_REGRESSION_AUDIT.md) records the complete
