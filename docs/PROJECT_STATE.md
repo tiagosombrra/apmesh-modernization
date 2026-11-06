@@ -11,7 +11,25 @@ The local-validation companion is integrated through PR #165, main
 controls passing on its final head and main, without skips. Its seal is local
 `build/development-environment-setup/closure/integration-verification.json`.
 
-Current bounded item: [P4 cache-mutation admission](evidence/P4_CACHE_MUTATION_ADMISSION.md).
+Current review candidate: [CRT static-owner attribution](evidence/SERIAL_CRT_STATIC_TEARDOWN.md).
+The separately identified same-input SP-02 diagnostic reproduces the original
+150 blocks / 7,456 bytes: 147 configuration-key-set blocks, two global path
+buffers and ptr_aux vector storage. All watched requests retire naturally by
+the executable-static boundary. Five native controls and independent SP-02
+physical/UV/boundary checks pass. The original entry-return failure and all 43
+recorded artifact hashes remain preserved. This is tracked-request release
+evidence, not complete-process/Stage 3 qualification or a production leak repair.
+Delivery review binds offline symbols to their captured artifact and makes the
+initial observer's baseline/anchor ownership explicit. Four revised native
+controls plus invalid-invocation rejection pass; the qualified static observer
+and engine archive remain byte-identical. Required delivery regression is 75
+CTest entries / 463 Python controls. Exact-head/main records remain separate
+under build/p3-serial-crt-static/delivery. Production/scientific policies and
+broader instrument/caller obligations are unchanged. No successor campaign is selected.
+
+The [P4 cache-mutation admission](evidence/P4_CACHE_MUTATION_ADMISSION.md) is
+integrated through PR #166, main `1ec01ada2a52e05009698ae18ccb0b7130680349`,
+with exact-head/main 75 CTest entries and 441 Python controls, without skips.
 The inspected serial loaders use control-only setters before reconstructing
 geometric patches; that is not a demonstrated post-publication cache defect.
 No production repair is admitted by this observation. S3-05/S3-07 and every

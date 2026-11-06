@@ -1,5 +1,33 @@
 # Local quality automation
 
+## Complete-entry checked-CRT observation
+
+The [bounded S3-09 record](evidence/SERIAL_CRT_ENTRY.md) uses the separate
+tests/serial_crt project to build the complete existing serial engine in checked
+MSVC Debug, C++17, with two jobs and the existing 600-second limit. The test-only
+entry calls the real RunApplication and checkpoints after local owner teardown.
+No production build option or scientific policy is changed.
+
+tools/qualify_serial_crt.py requires a fresh output directory. It calibrates real
+release, retained-storage, balanced-retention and bad_alloc controls before one
+unchanged SP-02 at 60 seconds, retaining raw logs and newer-live-block dumps even
+when net deltas are zero. Stop at the first unexpected failure, without retry or
+case expansion. The first observation is failed: 150 normal blocks / 7,456 bytes
+remain at entry return. Its [static-teardown follow-up](evidence/SERIAL_CRT_STATIC_TEARDOWN.md)
+now attributes every watched request and observes all freed naturally in one
+separately identified same-input diagnostic, after five real controls. Preserve
+the original failed report, all 43 original artifact hashes and the follow-up's
+build/private-ntdll-symbol failures. Offline analysis uses the already captured
+executable/PDB symbols without repeating native execution; unavailable Windows
+private frames remain explicit module/RVA records. No warm-up, subtraction or
+manual global cleanup is used. This qualifies only the retained-request question;
+new shutdown allocations and whole-process coverage remain open. Delivery review
+requires symbols to match their registered captured artifact and requalifies the
+initial observer's RAII baseline/anchor through four controls and invalid-invocation
+rejection. The delivery inventory is 75 CTest entries / 463 Python controls, with
+read-only analysis of the three observer units using the unchanged check policy.
+Exact-head/main results are recorded separately; no stage closure is inferred.
+
 ## Local coordination and impact planning
 
 `python tools/quality.py doctor` inventories every required tool and returns nonzero

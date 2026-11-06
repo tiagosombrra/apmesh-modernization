@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "entry_main": "1ec01ada2a52e05009698ae18ccb0b7130680349",
+  "classification": "engineering-only retained-request attribution and teardown observation",
+  "status": "observed_requests_attributed_and_released",
+  "production_changes": 0,
+  "original_observation": {
+    "status": "preserved_failed_entry_return_accounting",
+    "artifacts_verified_before_and_after": 43,
+    "retained_blocks": 150,
+    "retained_bytes": 7456,
+    "observer_exit": 2,
+    "retrospective_teardown_observation": false
+  },
+  "followup": {
+    "controls": [
+      {
+        "mode": "release-control",
+        "status": "passed",
+        "exit_code": 0
+      },
+      {
+        "mode": "static-release-control",
+        "status": "passed",
+        "exit_code": 0
+      },
+      {
+        "mode": "static-leak-control",
+        "status": "passed_expected_retention",
+        "exit_code": 0
+      },
+      {
+        "mode": "hook-control",
+        "status": "passed",
+        "exit_code": 0
+      },
+      {
+        "mode": "keys-control",
+        "status": "passed",
+        "exit_code": 0
+      }
+    ],
+    "diagnostic_production_executions": 1,
+    "input_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444",
+    "same_input_as_original": true,
+    "executable_sha256": "92e7c0066b715593cc2e7c1c9850f92a41808bb24975ec47b9d138c0d6445974",
+    "independent_scientific_status": "passed",
+    "accepted_steps": [
+      0
+    ],
+    "rejected_steps": [],
+    "boundary_incidences": {
+      "0": {
+        "status": "passed",
+        "step": 0,
+        "patches": 2,
+        "incidences": 8,
+        "curve_groups": 7,
+        "shared_groups": 1,
+        "shared_incidences": 2,
+        "compared_incidences": 1,
+        "nonmanifold_groups": 0,
+        "max_curve_incidence": 2,
+        "reversed_incidences": 2,
+        "boundary_segments": 8,
+        "reversed_shared_incidences": 0,
+        "mixed_orientation_groups": 0,
+        "node_incidences": 10,
+        "triangles": 8,
+        "max_curve_error": 0.0,
+        "max_shared_gap": 0.0,
+        "parameter_roundtrip_budget": 8.881784197001252e-16,
+        "evaluation_roundoff_factor": 1.1368683772161603e-13,
+        "issues": {},
+        "examples": [],
+        "snapshot_sha256": "6a7175d570caf33a75c2e342361ec9ac9b0d21a770f29b8f907b48331b7254ac",
+        "input_model_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444"
+      }
+    },
+    "teardown_states": [
+      {
+        "name": "entry_return",
+        "phase": 1,
+        "blocks": 150,
+        "bytes": 7456
+      },
+      {
+        "name": "after_lazy_statics",
+        "phase": 3,
+        "blocks": 3,
+        "bytes": 264
+      },
+      {
+        "name": "after_executable_statics",
+        "phase": 4,
+        "blocks": 0,
+        "bytes": 0
+      }
+    ],
+    "attribution": {
+      "configuration_key_sets": {
+        "blocks": 147,
+        "bytes": 7192
+      },
+      "INPUT_MODEL": {
+        "blocks": 1,
+        "bytes": 128
+      },
+      "NAME_MODEL": {
+        "blocks": 1,
+        "bytes": 128
+      },
+      "ptr_aux_storage": {
+        "blocks": 1,
+        "bytes": 8
+      }
+    },
+    "release_phase_by_owner": {
+      "configuration_key_sets": {
+        "2": 147
+      },
+      "INPUT_MODEL": {
+        "3": 1
+      },
+      "NAME_MODEL": {
+        "3": 1
+      },
+      "ptr_aux_storage": {
+        "3": 1
+      }
+    },
+    "unfreed_tracked_requests_after_exit": 0,
+    "same_request_ordinal_size_pairs": 150,
+    "process_identity_limit": "Ordinals are process-local; this is a separately identified reproduction, not shared allocation identity."
+  },
+  "preserved_failures": {
+    "first_followup_build": "observer include order and init_seg-in-one-unit errors; corrected in test sources with unchanged engine archive",
+    "batch_symbolization": "ntdll.pdb unavailable; native diagnostic did not repeat; complete executable symbols already captured were used offline"
+  },
+  "private_executable_pdb_attribution": "all 150 requests attributed; unresolved external Windows frames retained as unresolved",
+  "late_shutdown_allocations": "not qualified by the watched entry-return request census",
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7,
+    "closed": false
+  },
+  "delivery_exact_head_main_gates": "Recorded separately under build/p3-serial-crt-static/delivery; the local_regression above retains its original iteration scope. Main qualification is not inferred.",
+  "local_root": "build/p3-serial-crt-static",
+  "artifacts": {
+    "original-preservation.json": "9c82b35385a0b81b5ceb4148f2a891eeeb5d066102181fd7ba6bed3e1fd3c5db",
+    "failed-build/build-report.json": "e162b04db78244712a20ffe5e50f0b333022eceba581cbc413b9b4b8939b13c2",
+    "failed-build/classification.json": "5aa3db0f6b24b2b002b3700359986443867556f29e6b28ab5217a7a067e04e88",
+    "revised-build-report.json": "077d554b268f08f8c366869a4c12ef189b01348940a61f2b86ec036f3f0b08b1",
+    "build-scope.json": "07392dc5fa72fa64d33df406a1733bcbee3c6d8833507e66b7e8df269a6aeeb0",
+    "observation/report.json": "cb7ec70728df1270f5a450c1c4b4f17995dabed4d4fa73bb3e55dbbefbe4d8dc",
+    "observation/aligned/stdout.log": "2d4327a852e0679c5685a4c91b3bb9e5f58e9df4f43ae41b38ebb57e567045f8",
+    "observation/aligned/stderr.log": "ac7791fda28871e111e5ede50fa0145f2d74a940d8179f6183146194f1d0c694",
+    "observation/symbols-0.stdout.log": "1a0e056d32bc1955b5e10c1e33ebea34a9763199482dc7cb32205ff8a39e7c4f",
+    "observation/symbols-1.stdout.log": "dfd7e71082a344fa837b613d27f644bda61813508c46c6e43df81647b5bf38da",
+    "attribution.json": "ad67eee304d145ac25554ff8dfdce5bfdce2ac9f7d1a02f913b7781cf1df6761",
+    "regression-ctest-full.log": "66572f3b937962a3e471e41d38df4acaee8639c93710d00049f26fcb244b8b18"
+  },
+  "local_regression": {
+    "status": "passed",
+    "scope": "iteration; uncommitted working tree",
+    "ctest": 75,
+    "python": 459,
+    "new_static_checker_cases": 10,
+    "failures": 0,
+    "disabled": 0,
+    "skips": 0,
+    "delivery_eligible": false,
+    "report": "build/validation-session/1793992862715373000-9f583f38/report.json"
+  },
+  "delivery_review": {
+    "captured_symbol_input": "registered path and digest required; four integrity controls added",
+    "initial_observer_owner_repair": "unique baseline/anchor owners; exact scenario argument count",
+    "python_inventory_expected": 463,
+    "ctest_inventory_expected": 75,
+    "native_controls": "four initial-observer controls and one invalid-invocation rejection passed",
+    "scientific_executions_added": 0,
+    "static_observer_and_engine_archive": "byte-identical",
+    "read_only_analysis": "three observer units passed unchanged repository check policy",
+    "first_analysis_failure": "preserved in delivery/tidy/report.json and 0.log",
+    "artifact_hashes": {
+      "review-attribution.json": "ad67eee304d145ac25554ff8dfdce5bfdce2ac9f7d1a02f913b7781cf1df6761",
+      "delivery/probe-controls/report.json": "f2ad357846939474db02247a3a09e5abbe3d41c90eff0a3115c9e19a97576036",
+      "delivery/tidy/revised-report.json": "7fec049fbb02e0c286f26ed52a2a501eacdfd0274bd1087c2b9ab4dbaed05da8"
+    }
+  }
+}
