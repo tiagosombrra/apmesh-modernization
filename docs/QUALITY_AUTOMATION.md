@@ -24,6 +24,11 @@ python tools/validation_session.py metrics
 Plans retain every qualified baseline test ID and report added unit cases.
 Incremental selection is feedback only. Unknown/shared impact is conservative;
 delivery scope runs the complete discovered baseline/superset without skipped tests.
+Before native tests, the adapter verifies the configured CMake source root and
+builds the existing tree with two jobs and the existing 600-second bound. A failed
+build prevents CTest. Tooling-only iteration does not require a native rebuild.
+If build regeneration changes the configured test inventory, execution stops
+before CTest and requires a new plan; new tests cannot be omitted silently.
 A passed adapter run qualifies only its stated local regression scope. Additional
 canonical package gates, fresh remote checks, exact-head/main validation and stage
 closure obligations remain mandatory. The adapter never publishes or integrates.
@@ -35,6 +40,8 @@ zero coverage and failed overall reports must retain their actual dispositions.
 UTF-8 plan artifacts are written explicitly; avoid shell-dependent text redirection.
 Runners hold an exclusive local process lock. After interruption, inspect its recorded
 process before manually clearing a stale lock; automatic recovery never starts a retry.
+Interruption terminates and reaps the owned process group before releasing the
+lock. Unconfirmed cleanup preserves the lock for manual process inspection.
 Progress receipts are immutable; the final report is published once after its final
 checks. Interrupted progress remains unmeasured and is counted separately in metrics.
 

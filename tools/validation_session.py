@@ -266,8 +266,31 @@ def check_links(root: Path, files: dict) -> dict:
             "local_targets": targets, "scope": "local target existence; fragments and URLs unmeasured"}
 
 
+class ProcessCleanupError(RuntimeError):
+    """Owned process cleanup is unconfirmed; preserve the validation lock."""
+
+
+def stop_process_tree(process, stream):
+    """Terminate the owned group and reap its leader before releasing its lock."""
+    try:
+        if os.name == "nt":
+            killer = Path(os.environ["SystemRoot"]) / "System32/taskkill.exe"
+            result = subprocess.run([str(killer), "/PID", str(process.pid), "/T", "/F"],
+                                    stdout=stream, stderr=subprocess.STDOUT, check=False, timeout=15)
+            if result.returncode != 0:
+                raise ProcessCleanupError(f"Process tree cleanup is unconfirmed for PID {process.pid}")
+        else:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+        process.wait(timeout=15)
+    except BaseException as error:
+        raise ProcessCleanupError(f"Process tree cleanup is unconfirmed for PID {process.pid}") from error
+
+
 def execute_steps(steps: list[dict], output: Path, env: dict, cwd: Path,
-                  final_check=None, *, metadata=None) -> dict:
+                  final_check=None, *, metadata=None, after_step=None) -> dict:
     """Execute sequentially; any failure stops the chain and remains in the record."""
     if not steps or any(not re.fullmatch(r"[a-z][a-z0-9-]{0,40}", step.get("id", "")) or
                         not isinstance(step.get("argv"), list) or not step["argv"] or
@@ -294,17 +317,14 @@ def execute_steps(steps: list[dict], output: Path, env: dict, cwd: Path,
                 flags = {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP} if os.name == "nt" else {"start_new_session": True}
                 process = subprocess.Popen(step["argv"], cwd=cwd, env=env, stdout=stream,
                                            stderr=subprocess.STDOUT, **flags)
+                row["pid"] = process.pid
                 try:
                     code = process.wait(timeout=step["timeout"])
-                except subprocess.TimeoutExpired:
-                    if os.name == "nt":
-                        killer = Path(os.environ["SystemRoot"]) / "System32/taskkill.exe"
-                        subprocess.run([str(killer), "/PID", str(process.pid), "/T", "/F"],
-                                       stdout=stream, stderr=subprocess.STDOUT, check=False, timeout=15)
-                    else:
-                        os.killpg(process.pid, signal.SIGKILL)
-                    process.wait(timeout=15)
-                    row["exit_code"] = 124
+                except BaseException as error:
+                    row.update(status="failed", error=type(error).__name__)
+                    record["status"] = "failed"
+                    row["exit_code"] = 124 if isinstance(error, subprocess.TimeoutExpired) else 130
+                    stop_process_tree(process, stream)
                     raise
             row["exit_code"] = code
             if code != 0:
@@ -313,10 +333,19 @@ def execute_steps(steps: list[dict], output: Path, env: dict, cwd: Path,
                 parsed = read_json(Path(step["result_json"]))
                 if not isinstance(parsed, dict) or parsed.get("status") != "passed":
                     raise ValueError("Missing or invalid prerequisite status")
+            if after_step:
+                after_step(step["id"])
             row["status"] = "passed"
         except (OSError, ValueError, subprocess.SubprocessError) as error:
             row.update(status="failed", error=str(error))
             record["status"] = "failed"
+        except (KeyboardInterrupt, SystemExit) as error:
+            row.update(status="failed", exit_code=130, error=type(error).__name__)
+            record["status"] = "failed"
+            write_json(output / "report.json", record)
+            if isinstance(error, SystemExit):
+                raise SystemExit(130) from error
+            raise
         finally:
             row["seconds"] = time.monotonic() - started
             progress()
@@ -342,12 +371,17 @@ def validation_lock(root: Path):
         stream = path.open("x", encoding="utf-8")
     except FileExistsError as error:
         raise ValueError("Validation runner is locked; inspect the recorded process before manual recovery") from error
+    release = True
     try:
         with stream:
             json.dump({"pid": os.getpid(), "started": time.time()}, stream)
         yield
+    except ProcessCleanupError:
+        release = False
+        raise
     finally:
-        path.unlink()
+        if release:
+            path.unlink()
 
 
 def run_plan(root: Path, plan: dict, output: Path) -> dict:
@@ -358,6 +392,13 @@ def run_plan(root: Path, plan: dict, output: Path) -> dict:
 def ctest_expression(names: list[str]) -> str:
     # CTest uses CMake's regular expressions, which do not support (?:...).
     return "^(" + "|".join(re.escape(name) for name in names) + ")$"
+
+
+def verify_build_root(root: Path, directory: Path):
+    cache = (directory / "CMakeCache.txt").read_text(encoding="utf-8")
+    match = re.search(r"^CMAKE_HOME_DIRECTORY:INTERNAL=(.+)$", cache, re.M)
+    if not match or Path(match[1].strip()).resolve() != root.resolve():
+        raise ValueError("Configured build belongs to another source root")
 
 
 def _run_plan(root: Path, plan: dict, output: Path) -> dict:
@@ -382,6 +423,9 @@ def _run_plan(root: Path, plan: dict, output: Path) -> dict:
     selected = plan["mandatory_tests"] if plan["scope"] == "delivery" else plan["iteration_selected"]
     directory = inside(root, profile(root).get("build_dir", "build/windows-gcc17"))
     if selected:
+        if plan["scope"] == "delivery" or any(not name.startswith("tooling.") for name in selected):
+            verify_build_root(root, directory)
+            steps.append({"id": "build", "argv": ["cmake", "--build", str(directory), "--parallel", "2"], "timeout": 600})
         expression = ctest_expression(selected)
         steps.append({"id": "ctest", "argv": ["ctest", "--test-dir", str(directory), "-R", expression,
                      "--output-on-failure", "--stop-on-failure", "--no-tests=error", "--output-junit", str(output / "ctest.xml")], "timeout": 900})
@@ -397,8 +441,11 @@ def _run_plan(root: Path, plan: dict, output: Path) -> dict:
         write_json(output / "plan.json", plan)
     metadata = {"scope": "local_regression", "plan_scope": plan["scope"], "stage_closure": False,
                 "delivery_eligible": False, "selected_tests": selected, "new_unit_ids": plan["new_unit_ids"]}
+    def verify_built_inventory(step_id):
+        if step_id == "build" and {test["name"] for test in test_inventory(root)} != set(plan["mandatory_tests"]):
+            raise ValueError("Build changed the configured test inventory; replan before testing")
     record = execute_steps(steps, output, command_environment(root), root, validate_result,
-                           metadata=metadata)
+                           metadata=metadata, after_step=verify_built_inventory)
     if not (output / "plan.json").exists():
         write_json(output / "plan.json", plan)
     return record
@@ -544,6 +591,6 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except (ValueError, OSError, KeyError, subprocess.SubprocessError) as error:
+    except (ValueError, OSError, KeyError, subprocess.SubprocessError, ProcessCleanupError) as error:
         print(f"Validation session failed: {error}", file=sys.stderr)
         raise SystemExit(1)

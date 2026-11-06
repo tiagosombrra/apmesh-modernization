@@ -6,8 +6,9 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
@@ -119,6 +120,64 @@ class SessionTests(unittest.TestCase):
         self.assertEqual(result["steps"][0]["exit_code"], 124)
         self.assertFalse((self.root / "mutation").exists())
 
+    def test_interruption_reaps_descendants_before_releasing_lock(self):
+        heartbeat = self.root / "heartbeat"
+        child = "import pathlib,time; p=pathlib.Path('heartbeat'); " + \
+                "exec('while True:\\n with p.open(\"ab\") as f: f.write(b\"x\")\\n time.sleep(0.02)')"
+        parent = "import subprocess,sys; subprocess.Popen([sys.executable,'-c'," + repr(child) + "]).wait()"
+        original_wait, original_stop = subprocess.Popen.wait, session.stop_process_tree
+        interrupted = False
+        def wait(process, timeout=None):
+            nonlocal interrupted
+            if not interrupted:
+                interrupted = True
+                deadline = time.monotonic() + 5
+                while not heartbeat.exists() or heartbeat.stat().st_size == 0:
+                    if time.monotonic() > deadline:
+                        raise AssertionError("Descendant did not reach its independent heartbeat")
+                    time.sleep(0.01)
+                raise KeyboardInterrupt
+            return original_wait(process, timeout=timeout)
+        def stop(process, stream):
+            self.assertTrue((self.root / session.LOCAL / "run.lock").exists())
+            original_stop(process, stream)
+            self.assertIsNotNone(process.poll())
+        with patch.object(subprocess.Popen, "wait", new=wait), \
+                patch.object(session, "stop_process_tree", side_effect=stop), \
+                self.assertRaises(KeyboardInterrupt):
+            with session.validation_lock(self.root):
+                self.chain([self.step("parent", parent), self.sentinel()])
+        self.assertFalse((self.root / session.LOCAL / "run.lock").exists())
+        size = heartbeat.stat().st_size
+        time.sleep(0.15)
+        self.assertEqual(heartbeat.stat().st_size, size)
+        self.assertFalse((self.root / "mutation").exists())
+        self.assertEqual(session.read_json(self.root / "run/report.json")["status"], "failed")
+
+    def test_unconfirmed_process_cleanup_preserves_lock(self):
+        process = Mock(pid=1234)
+        process.wait.side_effect = subprocess.TimeoutExpired("fixture", 0.1)
+        with patch.object(session.subprocess, "Popen", return_value=process), \
+                patch.object(session, "stop_process_tree", side_effect=session.ProcessCleanupError("unconfirmed")), \
+                self.assertRaises(session.ProcessCleanupError):
+            with session.validation_lock(self.root):
+                self.chain([self.step("unconfirmed", "pass"), self.sentinel()])
+        self.assertTrue((self.root / session.LOCAL / "run.lock").exists())
+        self.assertFalse((self.root / "mutation").exists())
+
+    def test_zero_exit_during_wait_cannot_report_success(self):
+        process = Mock(pid=1234)
+        process.wait.side_effect = SystemExit(0)
+        with patch.object(session.subprocess, "Popen", return_value=process), \
+                patch.object(session, "stop_process_tree") as stop, \
+                self.assertRaises(SystemExit) as interrupted:
+            with session.validation_lock(self.root):
+                self.chain([self.step("interrupted", "pass"), self.sentinel()])
+        self.assertEqual(interrupted.exception.code, 130)
+        stop.assert_called_once()
+        self.assertFalse((self.root / session.LOCAL / "run.lock").exists())
+        self.assertFalse((self.root / "mutation").exists())
+
     def test_empty_or_invalid_steps_rejected_before_execution(self):
         for steps in ([], [self.step("../escape", "pass")],
                       [self.step("infinite", "pass", timeout=float("inf"))],
@@ -226,6 +285,69 @@ class SessionTests(unittest.TestCase):
                            [{"file": str(source), "output": "CMakeFiles/probe.dir/private.cpp.obj"}])
         self.assertEqual(self.plan({"tests/private.cpp": "a" * 64})["iteration_selected"],
                          ["application.mesh"])
+
+    def test_foreign_or_missing_build_source_identity_is_rejected(self):
+        directory = self.root / "build/fixture"
+        directory.mkdir(parents=True)
+        for text in ("# no source identity\n", f"CMAKE_HOME_DIRECTORY:INTERNAL={self.root / 'other'}\n"):
+            (directory / "CMakeCache.txt").write_text(text, encoding="utf-8")
+            with self.assertRaises(ValueError):
+                session.verify_build_root(self.root, directory)
+        (directory / "CMakeCache.txt").write_text(
+            f"CMAKE_HOME_DIRECTORY:INTERNAL={self.root}\n", encoding="utf-8")
+        session.verify_build_root(self.root, directory)
+
+    def test_native_build_prevents_stale_artifact_regression_pass(self):
+        directory = self.root / "build/fixture"
+        env = session.command_environment(ROOT)
+        (self.root / "CMakeLists.txt").write_text('''cmake_minimum_required(VERSION 3.20)
+project(ArtifactIdentity NONE)
+enable_testing()
+add_custom_command(OUTPUT "${CMAKE_BINARY_DIR}/artifact.txt"
+  COMMAND "${CMAKE_COMMAND}" -E copy "${CMAKE_SOURCE_DIR}/source.txt" "${CMAKE_BINARY_DIR}/artifact.txt"
+  DEPENDS "${CMAKE_SOURCE_DIR}/source.txt")
+add_custom_target(probe ALL DEPENDS "${CMAKE_BINARY_DIR}/artifact.txt")
+add_test(NAME application.mesh COMMAND "${CMAKE_COMMAND}" -E compare_files
+  "${CMAKE_SOURCE_DIR}/source.txt" "${CMAKE_BINARY_DIR}/artifact.txt")
+''', encoding="utf-8")
+        source = self.root / "source.txt"
+        source.write_text("original\n", encoding="utf-8")
+        def run(argv, check=True):
+            return subprocess.run(argv, cwd=self.root, env=env, capture_output=True,
+                                  timeout=30, check=check)
+        run(["cmake", "-S", str(self.root), "-B", str(directory), "-G", "Ninja"])
+        run(["cmake", "--build", str(directory)])
+        source.write_text("changed\n", encoding="utf-8")
+        newer = (directory / "artifact.txt").stat().st_mtime + 2
+        os.utime(source, (newer, newer))
+        self.assertNotEqual(run(["ctest", "--test-dir", str(directory)], check=False).returncode, 0)
+        session.write_json(self.root / session.LOCAL / "environment.json",
+                           {"schema": 1, "tools": {}, "build_dir": "build/fixture"})
+        plan = {"schema": 1, "scope": "delivery", "identity": self.state(), "files": {},
+                "mandatory_tests": ["application.mesh"], "iteration_selected": ["application.mesh"],
+                "new_unit_ids": []}
+        original_execute = session.execute_steps
+        def native_steps(steps, *args, **kwargs):
+            selected = [step for step in steps if step["id"] in ("build", "ctest")]
+            self.assertEqual([step["id"] for step in selected], ["build", "ctest"])
+            return original_execute(selected, *args, **kwargs)
+        with patch.object(session, "identity", side_effect=self.state), \
+                patch.object(session, "make_plan", return_value=plan), \
+                patch.object(session, "command_environment", return_value=env), \
+                patch.object(session, "execute_steps", side_effect=native_steps):
+            result = session.run_plan(self.root, plan, self.root / "build/run")
+        self.assertEqual(result["status"], "passed")
+        self.assertEqual(source.read_bytes(), (directory / "artifact.txt").read_bytes())
+        with (self.root / "CMakeLists.txt").open("a", encoding="utf-8") as stream:
+            stream.write('add_test(NAME application.new COMMAND "${CMAKE_COMMAND}" -E true)\n')
+        with patch.object(session, "identity", side_effect=self.state), \
+                patch.object(session, "make_plan", return_value=plan), \
+                patch.object(session, "command_environment", return_value=env), \
+                patch.object(session, "execute_steps", side_effect=native_steps):
+            changed = session.run_plan(self.root, plan, self.root / "build/run-grown")
+        self.assertEqual(changed["status"], "failed")
+        self.assertEqual([step["id"] for step in changed["steps"]], ["build"])
+        self.assertIn("inventory", changed["steps"][0]["error"])
 
     def test_forged_or_stale_plan_stops_before_execution(self):
         plan = {"schema": 1, "scope": "delivery", "identity": self.state()}
