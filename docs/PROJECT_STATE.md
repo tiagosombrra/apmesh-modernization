@@ -2,14 +2,19 @@
 
 ## Current checkpoint and active work
 
-Current contract item: [complete native analytic UV callers](evidence/COMPLETE_ANALYTIC_UV_CALLERS.md).
-All six already-admitted contexts now reach original execute completion, including
-fillMesh ownership transfer and native smoothing. GCC and checked MSVC each pass
-17 prefix and 12 complete outcomes; observed/unobserved final meshes match exactly.
-Coarse/fine final meshes have 20/32 positive faces, unit UV area, valid incidence,
-empty source-owner lists and queues. Require exact-head/main 75 CTest / 515 Python,
-identity and remote gates. Production/scientific policy is unchanged; broader
-Stage 3 remains open, with no new outside-root retirement qualification.
+Current production item: [boundary close state guard](evidence/BOUNDARY_CLOSE_STATE.md).
+Empty or already-closed Boundary::close previously reached an invalid list read
+or null contour-start access. A three-line guard returns false before allocation
+or mutation. GCC/checked-MSVC state controls pass; exact successful generation
+trace and all 28 original boundary allocation denials remain unchanged. Require
+frozen Eistute/Book per ABI, exact-head/main 75 CTest / 515 Python and fresh remote/
+identity gates. No valid contour, numerical or scientific policy changes.
+
+The [complete native analytic UV callers](evidence/COMPLETE_ANALYTIC_UV_CALLERS.md)
+are integrated through PR #176 at main `8d3230cbc0d12686818df7d714913b466c4dce88`,
+with verified exact-head/main 75 CTest / 515 Python and its local integration seal.
+All six admitted contexts reach original transfer/smoothing; broader Stage 3 and
+outside-root ideal retirement retain their open scope.
 
 The [required UV prefixes](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md) are integrated
 through PR #175 at main `3a333a960439599b363b33f39103ed664c947b73`, with verified

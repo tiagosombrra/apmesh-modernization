@@ -1,5 +1,25 @@
 # Local quality automation
 
+## Boundary close state guard
+
+The [invalid-call repair](evidence/BOUNDARY_CLOSE_STATE.md) adds only an early
+false return before empty-list/null-start access. Require both original checked-
+MSVC fatal reproductions, GCC/checked-MSVC refusal/state/new-contour controls,
+zero invalid-call allocations and zero retained CRT blocks. Extend the existing
+application.uv_registration_contracts entry; preserve the original standalone
+registration trace byte for byte and all 4+14+10 registration-denial ordinals.
+The actual allocation-hook control remains mandatory. No new central test target.
+
+Require exact guard/comment reversal before formatting and token identity for
+explicit formatting of those two legacy files. Preserve the other 520 protected
+files and 43 original artifacts. Require native
+GCC/MSVC builds, frozen Eistute/Book and exact-head/main 75 CTest / 515 Python.
+Run configured full production analysis and all changed fixture/header lines.
+The existing deliberately invalid UV leak/UAF scenarios must remain detected;
+they are retained negative diagnostics, not a green whole-unit analysis claim.
+Keep failed setup/routing/filter logs; no check, warning, timeout or numerical
+policy is weakened. Guarded main checkout and fresh remote gates remain required.
+
 ## Required UV prefix contracts
 
 The [required matrix](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md) now rejects any

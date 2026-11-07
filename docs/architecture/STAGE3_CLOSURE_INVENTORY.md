@@ -35,6 +35,12 @@ parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 
+The [boundary close state guard](../evidence/BOUNDARY_CLOSE_STATE.md) repairs
+reproduced empty-list/null-start invalid lifecycle calls. Original valid operation
+bytes, owner/ID/adjacency/continuation controls and all 28 registration denials
+remain. This is a bounded S3-06/10 repair; no minimum-size, arbitrary setters,
+whole-process recovery or whole-row closure follows.
+
 The [complete analytic UV callers](../evidence/COMPLETE_ANALYTIC_UV_CALLERS.md)
 measure the six admitted inputs through original execute completion, transfer and
 smoothing. Each GCC/checked-MSVC profile passes 12 complete outcomes in addition

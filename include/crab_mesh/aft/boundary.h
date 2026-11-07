@@ -16,21 +16,21 @@ using namespace Par2DJMesh::Basics;
 namespace Par2DJMesh {
 namespace AFT {
 class Boundary : public Shape {
- private:
+private:
   VertexList boundary;
   EdgeList edges;
 
   long int lastVertexId;
   long int lastEdgeId;
 
-  Vertex *first;
+  Vertex* first;
   CurveAdaptiveParametric* outgoing_curve_ = nullptr;
   bool outgoing_reversed_ = false;
 
 private:
-  Edge *makeEdge(Vertex *v);
+  Edge* makeEdge(Vertex* v);
 
- public:
+public:
   Boundary();
   ~Boundary() override;
 
@@ -45,16 +45,17 @@ private:
 
   // Failed registration preserves existing owners, adjacency, IDs and contour start.
   Vertex* addVertex(double x, double y, CurveAdaptiveParametric* c, bool reversed = false);
-  Vertex *addVertex(long int id, double x, double y);
+  Vertex* addVertex(long int id, double x, double y);
+  // No active contour: return false without allocation or state changes.
   bool close(CurveAdaptiveParametric* c, bool reversed = false);
 
-  Edge *getEdge(long int id);
-  Vertex *getVertex(long int id);
+  Edge* getEdge(long int id);
+  Vertex* getVertex(long int id);
 
-  void getBox(double *minX, double *minY, double *maxX, double *maxY);
+  void getBox(double* minX, double* minY, double* maxX, double* maxY);
 
-  bool belongs(Edge *e);
-  bool belongs(Vertex *v1, Vertex *v2);
+  bool belongs(Edge* e);
+  bool belongs(Vertex* v1, Vertex* v2);
 
   string getText() override;
 
@@ -66,7 +67,7 @@ private:
   //    void drawNormals();
   // #endif //#if USE_OPENGL
 };
-}  // namespace AFT
-}  // namespace Par2DJMesh
+} // namespace AFT
+} // namespace Par2DJMesh
 
-#endif  // #ifndef _BOUNDARY_H_
+#endif // #ifndef _BOUNDARY_H_
