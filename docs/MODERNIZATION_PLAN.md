@@ -74,8 +74,17 @@ shutdown allocations. Six real controls and the fixed 32 SP-01..08 executions
 now pass their required final CRT and independent caller gates. Two failed parser
 prefixes remain; signed Windows status/newline handling is corrected and only
 unexecuted invalid cases resume. Exact-head/main 75 CTest / 475 Python gates
-remain required for this package. SP-09/10 retain their separate observer gate;
-no broader model, instrument or stage qualification follows.
+pass through PR #168, main `9682d53166eddada3ea52ec491205b53de0fe7e5`.
+The current [SP-09/10 checked-CRT gate](evidence/SERIAL_CRT_TERMINAL.md) reuses the
+portable terminal caller and its unchanged typed/lifetime oracles, after separate
+coupled calibration. Its first eight controls pass, including expected retention
+negatives, then the typed payload prerequisite aborts before any of the five
+directed contexts. An isolated checked-MSVC diagnostic confirms a debug-proxy
+allocation inside std::string's noexcept move and termination on denial. The
+required allocation-free payload ownership repair is a separate explicit
+dependency; production remains unchanged. Preserve the failed artifact and
+original logs, keep this review draft and block integration/phase closure.
+No broader model, instrument or stage qualification follows.
 Production/scientific policies and the negative cache admission are unchanged.
 
 The next production package remains P4. The completed

@@ -40,6 +40,15 @@ artifacts and every remaining terminal/runtime/UB/leak/parallel obligation.
 Required delivery inventory is 75 CTest / 475 Python controls; SP-09/10 remain a
 separate full-caller gate. No closure row or scientific policy is reclassified.
 
+The [SP-09/10 checked-CRT admission](../evidence/SERIAL_CRT_TERMINAL.md) now
+stops at the typed payload prerequisite after eight passed controls and before
+all five directed contexts. A minimal checked-MSVC diagnostic confirms a proxy
+allocation inside the production error's string move; denial terminates before
+catch. The next dependency is an explicit allocation-free payload ownership
+repair preserving complete status lifetime and identity/unwind contracts.
+The diagnostic review remains draft: required native qualification, integration
+and phase closure are blocked. No automatic retry or scientific change follows.
+
 ### Preserved cumulative-audit entry state
 
 The following archive failure and dependency observations precede PR #164's

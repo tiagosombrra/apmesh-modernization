@@ -35,6 +35,14 @@ parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 
+The [checked-CRT terminal prerequisite](../evidence/SERIAL_CRT_TERMINAL.md)
+fails before directed SP-09/10 execution. Its first eight controls pass; the typed
+payload control aborts before row zero. A separate minimal diagnostic identifies
+the MSVC checked-string move's proxy allocation and termination when denied.
+Explicit allocation-free payload ownership remains a demonstrated S3-08/09
+dependency. Original failures and all five unstarted contexts remain mandatory;
+no row or prior qualified evidence is reclassified. Integration is blocked.
+
 The [executable-owned CRT checkpoint](../evidence/SERIAL_CRT_LIFETIME.md)
 adds six actual release/retention/unwind controls and the fixed 32 SP-01..08
 observations after PR #167's integrated retained-request attribution. Normal and
