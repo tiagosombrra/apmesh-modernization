@@ -9,6 +9,16 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
+PR #171 closes borrowed control lookup at main
+`60820f327fb2f89d6218037783e11563ff9a5220`, with exact-head/main 75 CTest / 485
+Python and its verified local seal. The active engineering work is
+[qualified-tree main checkout](../evidence/QUALIFIED_MAIN_CHECKOUT.md), addressing
+the observed old-main/new-main source rewrite before post-merge validation.
+Require exact fetched merge identity, parent/tree equality, clean state,
+compare-and-swap ref protection, normal hooks and unchanged tracked bytes/mtimes.
+The helper grants no remote merge or qualification permission; main gates remain
+mandatory. This local tooling dependency changes no compiler or scientific profile.
+
 PR #170 integrates the shared reader at main
 `ee677a34fd9c9303eb83b70d525c6b966c6a240f`, with exact-head/main 75 CTest / 482
 Python and its qualified local integration seal. The next admitted production

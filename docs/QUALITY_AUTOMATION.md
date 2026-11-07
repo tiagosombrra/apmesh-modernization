@@ -1,5 +1,22 @@
 # Local quality automation
 
+## Qualified-tree main checkout
+
+The optional [checkout helper](evidence/QUALIFIED_MAIN_CHECKOUT.md) operates only
+after the caller's authorized remote merge and fetch. Its default is a read-only
+identity plan. Explicit --apply checks exact base/head/merge, two parents, equal
+trees, clean state and main worktree use, then advances the local ref with an
+expected-old-value guard before normal checkout. It verifies all tracked bytes/
+sizes/write-times and preserves hooks. Unsafe or existing receipt paths are
+rejected. No remote publication or qualification permission is granted.
+
+Ten real-Git controls retain the original rewrite as a detected failure and reject
+dirty, mismatched, concurrent and unsafe states. Require 75 CTest / 495 Python on
+final head/main, source/artifact identity and fresh remote audits. Main builds
+remain mandatory; any changed artifact needs its affected qualification. The
+existing validation adapter, compiler profiles and scientific references remain
+unchanged. A saved checkout receipt alone never establishes stage closure.
+
 ## Borrowed control lookup
 
 The [lookup package](evidence/BORROWED_CONTROL_LOOKUP.md) removes internal vector
