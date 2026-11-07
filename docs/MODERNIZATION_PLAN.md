@@ -51,15 +51,15 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
-The current item is [required analytic UV prefix contracts](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md),
-S3-06/C10: the old runner can accept two coarse seeded refusals even though the
-qualified diagonal guards now allow their native completion. Require the existing
-six nonempty/two guard-only/one input-refusal matrix, stop before an unchecked
-counterpart after a required refusal, and retain historical evidence. Current
-GCC/checked-MSVC matrices pass 17 outcomes each. The two newly admitted public
-geometry contexts also pass eight native paired observations; no new ideal or
-outside-root retirement occurs. Production/numerical inputs stay unchanged.
-Exact-head/main 75 CTest / 499 Python, identity and remote gates apply.
+The current item is [complete native analytic UV callers](evidence/COMPLETE_ANALYTIC_UV_CALLERS.md),
+S3-06/C10: the six admitted inputs now execute through original template transfer
+and smoothing, instead of ending at the geometry cut. Each GCC/checked-MSVC
+profile passes 17 prefix and 12 full observations with exact native differential
+agreement, final positive unit-area meshes and empty source owner/queue state.
+Require exact-head/main 75 CTest / 515 Python, unchanged production/scientific
+identities and fresh remote gates. No outside-root retirement or recovery claim.
+PR #175 closes the preceding required-prefix package at main
+`3a333a960439599b363b33f39103ed664c947b73`, with its verified integration seal.
 
 PR #174 closes [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md)
 at main `8f0dbc06b91d583910ec15f66e6217002420ee68`, with exact-head/main 75 CTest /

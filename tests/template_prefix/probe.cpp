@@ -191,8 +191,19 @@ std::unique_ptr<Face> OldFace(std::array<std::array<double, 2>, 3> xy, long id) 
 }
 
 class Fixture : public AdvancingFront {
+  struct TemplateOwners {
+    VertexList vertices;
+    EdgeList edges;
+    FaceList faces;
+  };
+  bool complete_;
+  std::unique_ptr<TemplateOwners> template_owners_;
+
 public:
-  Fixture() : AdvancingFront(1.0, TOLERANCE_AFT, 7, 0.5) { quadtree->setMaxLevelCap(-1); }
+  explicit Fixture(bool complete = false)
+      : AdvancingFront(1.0, TOLERANCE_AFT, 7, 0.5), complete_(complete) {
+    quadtree->setMaxLevelCap(-1);
+  }
 
   void BoundaryInput(int divisions, int mask,
                      std::array<std::unique_ptr<CurveAdaptiveParametricBezier>, 4>& curves,
@@ -244,7 +255,7 @@ public:
   MethodStatus makeGeometryBasedMesh() override {
     using prefix_test::Require;
     ++summary.geometry_entries;
-    // The public method is an explicit prefix cut; no selector or geometry mesh is run.
+    // Default mode cuts at this prefix. Complete mode resumes the native caller below.
     prefix_test::Inspect(quadtree);
     const auto bv = boundary->getBoundary();
     const auto be = boundary->getEdges();
@@ -295,7 +306,61 @@ public:
       Require(face->orientedSurface() > 0 && face->getId() <= lastFaceId, "template_face");
       summary.template_area += face->orientedSurface();
     }
+    if (complete_) {
+      template_owners_ = std::make_unique<TemplateOwners>();
+      template_owners_->vertices = qv;
+      template_owners_->edges = qe;
+      template_owners_->faces = qf;
+      return AdvancingFront::makeGeometryBasedMesh();
+    }
     throw PrefixReached{};
+  }
+
+  void PrintCompleteResult(bool success) {
+    using prefix_test::Require;
+    Require(complete_ && template_owners_, "missing_complete_prefix");
+    for (auto* vertex : template_owners_->vertices)
+      Require(std::count(innerVertices.begin(), innerVertices.end(), vertex) == 1 &&
+                  std::count(vertices.begin(), vertices.end(), vertex) == 1,
+              "template_vertex_transfer");
+    for (auto* edge : template_owners_->edges)
+      Require(std::count(innerEdges.begin(), innerEdges.end(), edge) == 1 &&
+                  std::count(edges.begin(), edges.end(), edge) == 1,
+              "template_edge_transfer");
+    for (auto* face : template_owners_->faces)
+      Require(std::count(mesh.begin(), mesh.end(), face) == 1, "template_face_transfer");
+    const auto& stats = GetRunStats();
+    std::printf("{\"complete_result\":{\"success\":%d,\"tree_owners\":[%zu,%zu,%zu],"
+                "\"transferred\":[%zu,%zu,%zu],\"inner\":[%zu,%zu,%zu],\"queues\":[%zu,%zu],"
+                "\"quality\":[%.17g,%.17g,%.17g,%.17g],\"vertices\":[",
+                success, quadtree->getVertices().size(), quadtree->getEdges().size(),
+                quadtree->getMesh().size(), template_owners_->vertices.size(),
+                template_owners_->edges.size(), template_owners_->faces.size(),
+                innerVertices.size(), innerEdges.size(), mesh.size(), front.size(), rejected.size(),
+                stats.quality_post_aft_min, stats.quality_post_aft_mean,
+                stats.quality_post_smoothing_min, stats.quality_post_smoothing_mean);
+    bool first = true;
+    for (auto* vertex : vertices) {
+      std::printf("%s[%ld,%.17g,%.17g]", first ? "" : ",", vertex->getId(), vertex->getX(),
+                  vertex->getY());
+      first = false;
+    }
+    std::printf("],\"edges\":[");
+    first = true;
+    for (auto* edge : edges) {
+      std::printf("%s[%ld,%ld,%ld]", first ? "" : ",", edge->getId(), edge->getV1()->getId(),
+                  edge->getV2()->getId());
+      first = false;
+    }
+    std::printf("],\"faces\":[");
+    first = true;
+    for (auto* face : mesh) {
+      std::printf("%s[%ld,%ld,%ld,%ld,%.17g]", first ? "" : ",", face->getId(),
+                  face->getV1()->getId(), face->getV2()->getId(), face->getV3()->getId(),
+                  face->orientedSurface());
+      first = false;
+    }
+    std::printf("]}}\n");
   }
 };
 
@@ -331,12 +396,15 @@ int main(int argc, char** argv) {
   _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_FILE);
   _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);
 #endif
-  if (argc != 5)
+  const bool complete = argc == 6 && std::string(argv[5]) == "--complete";
+  if (argc != 5 && !complete)
     return 3;
   const int divisions = std::atoi(argv[1]), mask = std::atoi(argv[2]),
             old_mode = std::atoi(argv[3]), control = std::atoi(argv[4]);
   if ((divisions != 2 && divisions != 4) || (mask != 0 && mask != 15) ||
       (old_mode != 0 && old_mode != 1) || (control != 0 && control != 1))
+    return 3;
+  if (complete && (control != 0 || (divisions == 2 && old_mode == 0)))
     return 3;
   const char* status = "unexpected_return";
   const char* reason = "none";
@@ -354,10 +422,14 @@ int main(int argc, char** argv) {
       FaceList input;
       for (auto& face : old)
         input.push_back(face.get());
-      Fixture fixture;
+      Fixture fixture(complete);
       try {
         fixture.BoundaryInput(divisions, mask, curves, control == 1);
-        fixture.execute(input);
+        const bool success = fixture.execute(input);
+        if (complete) {
+          fixture.PrintCompleteResult(success);
+          status = success ? "prefix_completed" : "execution_rejected";
+        }
       } catch (const PrefixReached&) {
         status = "prefix_completed";
       } catch (const prefix_test::Refused& failure) {

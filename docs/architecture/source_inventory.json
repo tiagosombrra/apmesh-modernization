@@ -496,7 +496,7 @@
     },
     {
       "path": "tests/template_prefix/CMakeLists.txt",
-      "sha256": "7232c079ba1ce2d904bf13079da9b702af2cbc444125666a628691fb06f2c54d"
+      "sha256": "e599afb7146505bf72014f6c4bae67ea48e5756ff4472dd3c2fcd79703d57d22"
     },
     {
       "path": "tests/terminal_observer/CMakeLists.txt",
