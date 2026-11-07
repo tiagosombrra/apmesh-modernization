@@ -2,14 +2,24 @@
 
 ## Current checkpoint and active work
 
-Current checkpoint: [Linux UB/leak qualification](evidence/LINUX_UB_LEAK_QUALIFICATION.md).
+Current production item: [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md).
+Replace exactly two raw pointer comparisons in native stage edge counting with
+the standard-library total pointer order. Preserve pointer identity, duplicates,
+face/reduction order and scientific policies. Existing native contracts gain
+independent heap/identity cases; canonical builds, frozen article and exact-head/
+main gates remain required. No broader Stage 3 closure is inferred.
+
+The [Linux UB/leak phase](evidence/LINUX_UB_LEAK_QUALIFICATION.md) is integrated
+through PR #173 as main `dfcfea67df41890e6eb838014a041cd7a75ef358`. Its local
+build/p3-linux-ub-leak/delivery/integration-verification.json seal passes exact
+head/main 75 CTest / 495 Python and closes that bounded phase.
 Both complete Clang C++17 profiles pass the fixed 32 unmodified-production and
 five final directed terminal callers each. A default-OFF Linux test-observer
 allocation-routing repair resolves the demonstrated standalone LSan symbol
 conflict; actual denial and invalid-leak controls remain mandatory. Instrumented
 articles match the uninstrumented Clang reference strictly; the separate raw
 Windows/Linux newline mismatch remains failed with an explicit encoding-only
-disposition. Require the final exact-head/main delivery seal. Production/scientific
+disposition. The final exact-head/main delivery seal is verified. Production/scientific
 policies and all ten Stage 3 dispositions remain unchanged; broader Stage 3 is open.
 
 The [qualified-tree main checkout](evidence/QUALIFIED_MAIN_CHECKOUT.md) is

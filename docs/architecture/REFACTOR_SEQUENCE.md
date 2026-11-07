@@ -9,6 +9,19 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
+The current production item is [portable AFT edge-key order](../evidence/AFT_POINTER_EDGE_ORDER.md).
+Replace only the two raw Vertex-pointer comparisons used to canonicalize
+undirected stage-count keys. Preserve pointer identity, multiplicity and every
+numerical/traversal policy. Independent native counts and wrong-ID-order negatives,
+canonical builds, frozen articles and exact-head/main gates apply.
+
+PR #173 closes the bounded Linux UB/leak phase at main
+`dfcfea67df41890e6eb838014a041cd7a75ef358`, with exact-head/main 75 CTest / 495
+Python and its verified local integration seal. Its recorded artifact scopes and
+all broader Stage 3 obligations remain; no automatic instrument successor follows.
+
+### Preserved preceding checkpoint
+
 PR #172 closes [qualified-tree main checkout](../evidence/QUALIFIED_MAIN_CHECKOUT.md)
 at main `6a3d25e647c633b3f36520181a789a79d98e02d2`, with exact-head/main 75 CTest /
 495 Python, its real 2,328-file preservation receipt and verified integration seal.

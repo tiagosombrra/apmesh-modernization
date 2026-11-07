@@ -1,0 +1,343 @@
+{
+  "schema": 1,
+  "classification": "engineering-only portable pointer-identity canonicalization",
+  "entry_main": "dfcfea67df41890e6eb838014a041cd7a75ef358",
+  "status": "production_source_native_science_and_analysis_gates_passed",
+  "production_scope": {
+    "file": "src/crab_mesh/aft/advancing_front.cpp",
+    "original_sha256": "53acf38fef1411643993764a0610b42e3ec297d04e266dc93aed90b54ac26f2a",
+    "candidate_sha256": "9d64fac4992ab873103de4d16cac54b43ab4cb00131fad602e7096e4b56a3329",
+    "replacement_count": 2,
+    "all_other_bytes_identical": true,
+    "public_api_changes": 0,
+    "floating_point_order_changes": 0,
+    "ownership_or_publication_changes": 0,
+    "purpose": "Use the standard-library strict total pointer order for undirected identity keys; no observed numerical failure claim"
+  },
+  "native_contracts": {
+    "abis": [
+      "GCC C++17 Release",
+      "MSVC C++17 checked Debug"
+    ],
+    "cases_each_revision_each_abi": 137,
+    "preceding_cases": 65,
+    "new_heap_identity_cases": 72,
+    "allocation_orders": 6,
+    "face_arrangements": 6,
+    "list_directions": 2,
+    "reference": "Undirected incidence counts by pointer equality only, without ordering or hashing",
+    "baseline_candidate_aggregate_pairs": 2,
+    "wrong_id_order_negatives": 2,
+    "negative_expected_exit": 1,
+    "same_coordinates_and_ids_distinct_objects": true,
+    "diagnostic_inputs_are_not_new_accepted_meshes": true
+  },
+  "scientific_cases": [
+    {
+      "abi": "gcc",
+      "model": "eistute",
+      "status": "passed",
+      "states": 5,
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ],
+      "exact_artifacts": [
+        "eistute_domain_adaptation.csv",
+        "eistute_n.process__metrics_rank_-1.csv",
+        "eistute_passo_0_acceptance_accepted.log",
+        "eistute_passo_0_incidences.json",
+        "eistute_passo_0_malha_0.obj",
+        "eistute_passo_1_acceptance_accepted.log",
+        "eistute_passo_1_curve_adaptation_accepted.csv",
+        "eistute_passo_1_incidences.json",
+        "eistute_passo_1_malha_1.obj",
+        "eistute_passo_1_patch_adaptation_accepted.csv",
+        "eistute_passo_2_acceptance_rejected.log",
+        "eistute_passo_2_curve_adaptation_rejected.csv",
+        "eistute_passo_2_incidences.json",
+        "eistute_passo_2_malha_2.obj",
+        "eistute_passo_2_patch_adaptation_rejected.csv",
+        "eistute_passo_3_acceptance_rejected.log",
+        "eistute_passo_3_curve_adaptation_rejected.csv",
+        "eistute_passo_3_incidences.json",
+        "eistute_passo_3_malha_3.obj",
+        "eistute_passo_3_patch_adaptation_rejected.csv",
+        "eistute_passo_4_acceptance_rejected.log",
+        "eistute_passo_4_curve_adaptation_rejected.csv",
+        "eistute_passo_4_incidences.json",
+        "eistute_passo_4_malha_4.obj",
+        "eistute_passo_4_patch_adaptation_rejected.csv"
+      ],
+      "process": {
+        "model": "eistute",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 5.409890800016001,
+        "executable_sha256": "38d4465843d84afa74803bcd3170f26c5914a434cd50f9de01b07e9104bf1b45",
+        "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+        "input_model": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\input_models\\eistute2.fixed.bp",
+        "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\aft-pointer-order\\working\\gcc-eistute\\article.conf"
+        ]
+      }
+    },
+    {
+      "abi": "gcc",
+      "model": "book",
+      "status": "passed",
+      "states": 4,
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ],
+      "exact_artifacts": [
+        "book_domain_adaptation.csv",
+        "book_n.process__metrics_rank_-1.csv",
+        "book_passo_0_acceptance_accepted.log",
+        "book_passo_0_incidences.json",
+        "book_passo_0_malha_0.obj",
+        "book_passo_1_acceptance_accepted.log",
+        "book_passo_1_curve_adaptation_accepted.csv",
+        "book_passo_1_incidences.json",
+        "book_passo_1_malha_1.obj",
+        "book_passo_1_patch_adaptation_accepted.csv",
+        "book_passo_2_acceptance_rejected.log",
+        "book_passo_2_curve_adaptation_rejected.csv",
+        "book_passo_2_incidences.json",
+        "book_passo_2_malha_2.obj",
+        "book_passo_2_patch_adaptation_rejected.csv",
+        "book_passo_3_acceptance_rejected.log",
+        "book_passo_3_curve_adaptation_rejected.csv",
+        "book_passo_3_incidences.json",
+        "book_passo_3_malha_3.obj",
+        "book_passo_3_patch_adaptation_rejected.csv"
+      ],
+      "process": {
+        "model": "book",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 3.5523853998165578,
+        "executable_sha256": "38d4465843d84afa74803bcd3170f26c5914a434cd50f9de01b07e9104bf1b45",
+        "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+        "input_model": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\input_models\\book_v7a.bp",
+        "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17\\bin\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\aft-pointer-order\\working\\gcc-book\\article.conf"
+        ]
+      }
+    },
+    {
+      "abi": "msvc",
+      "model": "eistute",
+      "status": "passed",
+      "states": 5,
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ],
+      "exact_artifacts": [
+        "eistute_domain_adaptation.csv",
+        "eistute_n.process__metrics_rank_-1.csv",
+        "eistute_passo_0_acceptance_accepted.log",
+        "eistute_passo_0_incidences.json",
+        "eistute_passo_0_malha_0.obj",
+        "eistute_passo_1_acceptance_accepted.log",
+        "eistute_passo_1_curve_adaptation_accepted.csv",
+        "eistute_passo_1_incidences.json",
+        "eistute_passo_1_malha_1.obj",
+        "eistute_passo_1_patch_adaptation_accepted.csv",
+        "eistute_passo_2_acceptance_rejected.log",
+        "eistute_passo_2_curve_adaptation_rejected.csv",
+        "eistute_passo_2_incidences.json",
+        "eistute_passo_2_malha_2.obj",
+        "eistute_passo_2_patch_adaptation_rejected.csv",
+        "eistute_passo_3_acceptance_rejected.log",
+        "eistute_passo_3_curve_adaptation_rejected.csv",
+        "eistute_passo_3_incidences.json",
+        "eistute_passo_3_malha_3.obj",
+        "eistute_passo_3_patch_adaptation_rejected.csv",
+        "eistute_passo_4_acceptance_rejected.log",
+        "eistute_passo_4_curve_adaptation_rejected.csv",
+        "eistute_passo_4_incidences.json",
+        "eistute_passo_4_malha_4.obj",
+        "eistute_passo_4_patch_adaptation_rejected.csv"
+      ],
+      "process": {
+        "model": "eistute",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 107.79765709978528,
+        "executable_sha256": "21cbfa4f4832c0853c705339b5abe7a7fe56c07927d1d68f2f437b36fa13b873",
+        "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+        "input_model": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\input_models\\eistute2.fixed.bp",
+        "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-msvc-serial\\bin\\Debug\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\aft-pointer-order\\working\\msvc-eistute\\article.conf"
+        ]
+      }
+    },
+    {
+      "abi": "msvc",
+      "model": "book",
+      "status": "passed",
+      "states": 4,
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ],
+      "exact_artifacts": [
+        "book_domain_adaptation.csv",
+        "book_n.process__metrics_rank_-1.csv",
+        "book_passo_0_acceptance_accepted.log",
+        "book_passo_0_incidences.json",
+        "book_passo_0_malha_0.obj",
+        "book_passo_1_acceptance_accepted.log",
+        "book_passo_1_curve_adaptation_accepted.csv",
+        "book_passo_1_incidences.json",
+        "book_passo_1_malha_1.obj",
+        "book_passo_1_patch_adaptation_accepted.csv",
+        "book_passo_2_acceptance_rejected.log",
+        "book_passo_2_curve_adaptation_rejected.csv",
+        "book_passo_2_incidences.json",
+        "book_passo_2_malha_2.obj",
+        "book_passo_2_patch_adaptation_rejected.csv",
+        "book_passo_3_acceptance_rejected.log",
+        "book_passo_3_curve_adaptation_rejected.csv",
+        "book_passo_3_incidences.json",
+        "book_passo_3_malha_3.obj",
+        "book_passo_3_patch_adaptation_rejected.csv"
+      ],
+      "process": {
+        "model": "book",
+        "status": "completed",
+        "exit_code": 0,
+        "wall_seconds": 56.31884959992021,
+        "executable_sha256": "21cbfa4f4832c0853c705339b5abe7a7fe56c07927d1d68f2f437b36fa13b873",
+        "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+        "input_model": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\input_models\\book_v7a.bp",
+        "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+        "relocated_keys": [
+          "INPUT_MODEL",
+          "OUTPUT_PREFIX"
+        ],
+        "command": [
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-msvc-serial\\bin\\Debug\\ap_mesh.exe",
+          "--config",
+          "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\aft-pointer-order\\working\\msvc-book\\article.conf"
+        ]
+      }
+    }
+  ],
+  "science_per_abi": {
+    "states": 9,
+    "raw_exact_artifacts": 45,
+    "positive_boundary_comparisons": 123,
+    "models": [
+      "eistute",
+      "book"
+    ],
+    "cap_seconds_each": 300,
+    "new_model_or_threshold": false
+  },
+  "validation": {
+    "configured_read_only_tidy": "passed",
+    "tidy_config_or_suppression_changes": false,
+    "formatter": "LLVM 22.1.8",
+    "required_exact_head_and_main": {
+      "ctest": 75,
+      "python": 495,
+      "failures": 0,
+      "skips": 0
+    }
+  },
+  "protected_source_build_inputs_unchanged": 521,
+  "historical_retained_block_artifacts_preserved": 43,
+  "baseline_binaries_preserved": {
+    "build/windows-gcc17/bin/ap_mesh.exe": "760c4221d50085be05ac1463d38919ac5c081f6c0d83ab7de15d028776b50c2d",
+    "build/windows-gcc17/libap_mesh_engine.a": "55c7013ef76a18a12364a1ade44f911b59496c7599631247bf28a990466d7136",
+    "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "5bbc8b46242ebfbe896a17ef97ec8d12163f2a7aaa9d806bd9a29ce219604901",
+    "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "0be3adf0c6a41fb9c7c98d8613e17bf2668827a7451cc96f0eb6996aabd4b50e"
+  },
+  "qualified_candidate_binaries": {
+    "build/windows-gcc17/bin/ap_mesh.exe": "38d4465843d84afa74803bcd3170f26c5914a434cd50f9de01b07e9104bf1b45",
+    "build/windows-gcc17/libap_mesh_engine.a": "55c7013ef76a18a12364a1ade44f911b59496c7599631247bf28a990466d7136",
+    "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "21cbfa4f4832c0853c705339b5abe7a7fe56c07927d1d68f2f437b36fa13b873",
+    "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "b59b8203817f3626791bee532114af393a35ce0bfd6ee36bd3280a467180af38"
+  },
+  "fixture_sha256": "3b60846854e433c75d00a0fd722c0bdd6befd489a0e4e37337773c2c91215e2b",
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "limitations": [
+    "No reproduced numerical-error or performance claim",
+    "Current live-endpoint preconditions unchanged",
+    "Prior whole-process instrument results retain their actual artifact/caller identities",
+    "Other callers/domain/mutation/foreign observers/exception recovery/parallel and documentation obligations remain open"
+  ],
+  "standard_references": [
+    "https://eel.is/c++draft/expr.rel",
+    "https://eel.is/c++draft/comparisons.general"
+  ],
+  "commands": [
+    "python build/aft-pointer-order/baseline.py",
+    "python build/aft-pointer-order/candidate.py",
+    "python build/aft-pointer-order/science.py working",
+    "clang-tidy -p build/windows-gcc17 src/crab_mesh/aft/advancing_front.cpp tests/attempt_metrics_probe.cpp"
+  ],
+  "local_records_sha256": {
+    "build/aft-pointer-order/entry.json": "b9fae91cc2519985058831bd5fbb15421063a0ede0bf41d392a8694c1cdaface",
+    "build/aft-pointer-order/baseline-report.json": "c0de022f10c2a1232cdde2494e3c607a01858e35d7e82124bb8a77279a73b260",
+    "build/aft-pointer-order/candidate-report.json": "dfd078bef383e8f042df196bcb3f38251377a4cabfe987f286a7d414c849b95b",
+    "build/aft-pointer-order/working/report.json": "f75dd08804956a5cca89ed9b45ec650bfc5324ab7966a6b8cb084cfead4790a2",
+    "build/aft-pointer-order/tidy-report.json": "b87d3273d06edd3e086a6dbf10f0e6ae2fd65e7d0c18e4704b31629e750f998d"
+  },
+  "controllers_sha256": {
+    "baseline.py": "ed2ba6b5da8658e5167b13a6a4af46b2459bc14070974e62d57e1a72809bd284",
+    "candidate.py": "b6f7ca5b1877adb84c0e971cec34362f85933a7b5201a6716f50c2f526031f08",
+    "science.py": "3dc317da55cfc2f760893df767886cfe869c2371919b9cab480ecc9b8b6e5a8d"
+  }
+}

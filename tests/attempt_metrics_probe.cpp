@@ -722,7 +722,68 @@ public:
         face->setV2(first);
       }
     }
-    std::cout << "aft_edge_counts cases=" << cases << " duplicates=16 orientations=2\n";
+    struct DetachedFaceDelete {
+      void operator()(Face* face) const noexcept {
+        face->DetachVertices();
+        delete face;
+      }
+    };
+    using OwnedFace = std::unique_ptr<Face, DetachedFaceDelete>;
+    const std::array<std::array<double, 2>, 3> positions{{{0.0, 0.0}, {2.0, 0.0}, {0.0, 2.0}}};
+    std::array<unsigned, 3> allocation_order{{0, 1, 2}};
+    unsigned heap_cases = 0;
+    do {
+      std::array<std::unique_ptr<Vertex>, 6> owned_vertices;
+      for (auto index : allocation_order)
+        for (unsigned copy = 0; copy < 2; ++copy)
+          owned_vertices[copy * 3 + index] =
+              std::make_unique<Vertex>(positions[index][0], positions[index][1], 17);
+      std::array<OwnedFace, 3> owned_faces{
+          OwnedFace(new Face(owned_vertices[0].get(), owned_vertices[1].get(),
+                             owned_vertices[2].get(), 17)),
+          OwnedFace(new Face(owned_vertices[1].get(), owned_vertices[0].get(),
+                             owned_vertices[2].get(), 17)),
+          OwnedFace(new Face(owned_vertices[3].get(), owned_vertices[4].get(),
+                             owned_vertices[5].get(), 17))};
+      Face* first = owned_faces[0].get();
+      Face* reversed = owned_faces[1].get();
+      Face* coincident = owned_faces[2].get();
+      const std::array<FaceList, 6> views{FaceList{first},
+                                          FaceList{first, first},
+                                          FaceList{first, reversed},
+                                          FaceList{first, coincident},
+                                          FaceList{first, reversed, coincident},
+                                          FaceList{first, reversed, coincident, coincident}};
+      for (auto view : views) {
+        for (unsigned reverse_order = 0; reverse_order < 2; ++reverse_order) {
+          unsigned boundary_count = 0;
+          for (auto* face : view) {
+            Vertex* endpoints[3] = {face->getV1(), face->getV2(), face->getV3()};
+            bool boundary = false;
+            for (unsigned edge = 0; edge < 3; ++edge) {
+              auto* a = endpoints[edge];
+              auto* b = endpoints[(edge + 1) % 3];
+              unsigned uses = 0;
+              for (auto* other : view) {
+                Vertex* candidates[3] = {other->getV1(), other->getV2(), other->getV3()};
+                for (unsigned index = 0; index < 3; ++index) {
+                  auto* c = candidates[index];
+                  auto* d = candidates[(index + 1) % 3];
+                  uses += (a == c && b == d) || (a == d && b == c);
+                }
+              }
+              boundary = boundary || uses == 1;
+            }
+            boundary_count += boundary;
+          }
+          check(view, boundary_count, 0, static_cast<unsigned>(view.size()) - boundary_count);
+          ++heap_cases;
+          view.reverse();
+        }
+      }
+    } while (std::next_permutation(allocation_order.begin(), allocation_order.end()));
+    std::cout << "aft_edge_counts cases=" << cases
+              << " duplicates=16 orientations=2 heap_identity_cases=" << heap_cases << '\n';
   }
   std::array<double, 4> Observe() {
     center_->setPosition(0.05, 0.25);
@@ -2448,6 +2509,16 @@ void CheckCurvaturePointAccess() {
 } // namespace
 
 int main(int argc, char* argv[]) {
+  if (argc == 2 && std::strcmp(argv[1], "--aft-edge-counts") == 0) {
+    try {
+      AftContextProbe edge_counts({0.85, 5.0, 0.5});
+      edge_counts.CheckEdgeCounts();
+      return 0;
+    } catch (const std::exception& error) {
+      std::cerr << "AFT edge-count control failed: " << error.what() << '\n';
+      return 1;
+    }
+  }
   if (argc == 2 && std::string(argv[1]) == "--finduv-scratch") {
     CheckFindUvScratch();
     return 0;

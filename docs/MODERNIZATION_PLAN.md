@@ -51,6 +51,22 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+The active production item is [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md):
+two raw comparisons of independently allocated Vertex pointers do not guarantee
+the total order required by undirected incidence keys. Use std::less<Vertex*>
+without changing equality/hash, face traversal, reduction order or thresholds.
+Require independent identity/multiplicity controls, wrong-value-order negatives,
+canonical builds, frozen GCC/MSVC science and exact-head/main regression. This is
+a concrete portability debt, not another instrument or root-source audit chain.
+
+PR #173 integrates [Linux UB/leak qualification](evidence/LINUX_UB_LEAK_QUALIFICATION.md)
+as main `dfcfea67df41890e6eb838014a041cd7a75ef358`, with exact-head/main 75 CTest /
+495 Python and its verified local integration seal. The fixed per-instrument
+32 production/five terminal observations close that bounded phase. Original
+failures and all ten Stage 3 dispositions retain their scope.
+
+### Preserved preceding checkpoint
+
 PR #172 integrates [qualified-tree main checkout](evidence/QUALIFIED_MAIN_CHECKOUT.md)
 at main `6a3d25e647c633b3f36520181a789a79d98e02d2`, with exact-head/main 75 CTest /
 495 Python and its verified local integration seal. The real checkout preserves
