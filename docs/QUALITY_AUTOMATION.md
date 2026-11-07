@@ -1,5 +1,26 @@
 # Local quality automation
 
+## Shared Bezier control reader
+
+The [reader consolidation](evidence/SHARED_BEZIER_CONTROL_READER.md) requires exact
+literal-preserving expansion to both entry implementations. Its eight actual
+source mutations reject control/ID/publication/resource, wrapper validation,
+diagnostic and API drift. The historical serial ownership guard expands the
+shared reader before its unchanged six negative controls and immutable comparison.
+Keep by-value point lookup and both wrappers' original admission/messages.
+
+Require the existing 131 serial and 189 charge ASan/static-Debug-CRT outcomes,
+including real UAF/leak/hook controls. Serial calibration must retain all sixteen
+counts and 2,731 complete denials. Native pairs compare nonempty controls/IDs,
+curve incidence/direction/scalar bits and writer bytes against frozen entry
+executables: eight serial and 24 charge scenarios per applicable ABI/profile;
+GCC also compiles the actual numerical charge members. Preserve profile-specific
+iterator/CRT/NRVO and instrument limits; do not infer whole-process qualification.
+Final head/main require canonical GCC/MSVC builds, 75 CTest / 482 Python without
+skips/failures, scoped analysis, explicit format, contracts/inventory, source/
+artifact/remote identity and existing nine-state article gates. No new model,
+scientific policy or Stage 3 row disposition is introduced.
+
 ## Checked-CRT terminal prerequisite
 
 The [terminal lifetime admission](evidence/SERIAL_CRT_TERMINAL.md) uses an opt-in

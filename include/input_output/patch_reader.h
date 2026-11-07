@@ -16,29 +16,32 @@ extern std::string INPUT_MODEL;
 extern int RANK_MPI;
 
 class PatchReader {
- public:
+public:
   PatchReader();
   ~PatchReader();
 
-  std::list<PatchBezier *> ParsePatchesBezier();
-  std::list<PatchBezier *> LoaderRibFile();
+  std::list<PatchBezier*> ParsePatchesBezier();
+  std::list<PatchBezier*> LoaderRibFile();
   // Each call transfers its control-only patches to one owning result.
   // Partial reads and exceptions release every unpublished patch.
   std::list<std::unique_ptr<PatchBezier>> LoaderBPFile(string filename);
-  std::list<PatchHermite *> LoaderBPFileHermite();
-  std::list<PatchBezier *> LoaderOBJFile();
-  std::list<PatchBezier *> OrderVectorToListBezierPatches(std::vector<double>);
-  PointAdaptive GetPointVectorControlPoints(std::vector<PointAdaptive>,
-                                            unsigned long);
+  std::list<PatchHermite*> LoaderBPFileHermite();
+  std::list<PatchBezier*> LoaderOBJFile();
+  std::list<PatchBezier*> OrderVectorToListBezierPatches(std::vector<double>);
+  PointAdaptive GetPointVectorControlPoints(std::vector<PointAdaptive>, unsigned long);
   // Each call transfers independent control-only owners; partial reads release them.
   std::list<std::unique_ptr<PatchBezier>> LoaderBezierPatchFile(string fileName);
-  Geometry *ReaderFilePatches(Geometry *geometry, string fileName);
+  Geometry* ReaderFilePatches(Geometry* geometry, string fileName);
 
- protected:
-  std::list<PatchBezier *> patches_;
-  std::list<PatchHermite *> patches_hermite_;
-  PatchBezier *patch_;
-  PatchHermite *patch_hermite_;
+private:
+  std::list<std::unique_ptr<PatchBezier>> ReadBezierControlPatches(const std::string& filename,
+                                                                   const char* empty_message);
+
+protected:
+  std::list<PatchBezier*> patches_;
+  std::list<PatchHermite*> patches_hermite_;
+  PatchBezier* patch_;
+  PatchHermite* patch_hermite_;
 };
 
-#endif  // INPUT_OUTPUT_PATCH_READER_H
+#endif // INPUT_OUTPUT_PATCH_READER_H

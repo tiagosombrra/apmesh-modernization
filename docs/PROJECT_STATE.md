@@ -2,6 +2,19 @@
 
 ## Current checkpoint and active work
 
+Current production item: [shared Bezier control reader](evidence/SHARED_BEZIER_CONTROL_READER.md),
+an engineering-only consolidation of the equivalent serial/control-estimation
+parsers. Preserve wrapper-specific validation and messages, exact controls/IDs,
+owning publication, allocation/resource and reconstruction semantics. This does
+not reopen the negative cache admission or introduce another source-only audit.
+
+PR #169 integrates the [payload/terminal CRT phase](evidence/TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md)
+as main `bccd5c1e7af3c058f62085f8fb908f5ccd5db78b`. Its local
+build/p3-terminal-crt-payload-repair/delivery/integration-verification.json seal
+passes exact-head/main 75 CTest / 479 Python, all five terminal CRT contexts and
+the bounded source/build/scientific gates. The earlier failed observations below
+remain historical evidence; the bounded phase is complete, broader Stage 3 open.
+
 The archive diagnostic dependency is qualified through PR #164, main
 `249492d299ca9192443ccb12bdf55b78e8e88198`. Its local
 `build/reuse-archive-delivery/integration-verification.json` records the passed
@@ -11,7 +24,7 @@ The local-validation companion is integrated through PR #165, main
 controls passing on its final head and main, without skips. Its seal is local
 `build/development-environment-setup/closure/integration-verification.json`.
 
-Current bounded item: [checked-CRT terminal caller lifetime](evidence/SERIAL_CRT_TERMINAL.md),
+Preserved completed phase: [checked-CRT terminal caller lifetime](evidence/SERIAL_CRT_TERMINAL.md),
 the five fixed SP-09/10 contexts using the existing portable full-caller observer.
 The coupled calibration stops at its ninth prerequisite: six lifetime and two
 terminal observer controls pass, then the unchanged typed payload control aborts

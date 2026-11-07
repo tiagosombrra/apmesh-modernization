@@ -48,10 +48,9 @@ bool UsesForwardControls(CurveAdaptive* curve, const PointAdaptive& p0, const Po
   throw std::logic_error("Matched shared curve has inconsistent control direction");
 }
 
-VertexAdaptive* InternControlPoint(
-    const PointAdaptive& src,
-    std::vector<std::unique_ptr<VertexAdaptive>>& storage,
-    std::vector<VertexAdaptive*>& registry) {
+VertexAdaptive* InternControlPoint(const PointAdaptive& src,
+                                   std::vector<std::unique_ptr<VertexAdaptive>>& storage,
+                                   std::vector<VertexAdaptive*>& registry) {
   for (VertexAdaptive* v : registry) {
     if (fabs(v->GetX() - src.GetX()) <= kBpControlMergeTol &&
         fabs(v->GetY() - src.GetY()) <= kBpControlMergeTol &&
@@ -59,8 +58,7 @@ VertexAdaptive* InternControlPoint(
       return v;
     }
   }
-  auto up =
-      std::make_unique<VertexAdaptive>(src.GetX(), src.GetY(), src.GetZ());
+  auto up = std::make_unique<VertexAdaptive>(src.GetX(), src.GetY(), src.GetZ());
   up->SetId(src.GetId());
   VertexAdaptive* raw = up.get();
   storage.push_back(std::move(up));
@@ -68,16 +66,15 @@ VertexAdaptive* InternControlPoint(
   return raw;
 }
 
-}  // namespace
+} // namespace
 
 std::list<PatchHermite*> PatchReader::LoaderBPFileHermite() {
 #ifdef __APPLE__
-  string filename =
-      "/Users/tiagosombra/Dropbox/tiago/ufc/MestradoTiago/GitHub/TMeshSurf/"
-      "apMesh/Modelos/blend/18_mountain.bp";
+  string filename = "/Users/tiagosombra/Dropbox/tiago/ufc/MestradoTiago/GitHub/TMeshSurf/"
+                    "apMesh/Modelos/blend/18_mountain.bp";
 #else
-  string filename = INPUT_MODEL;  //"../../INPUT_MODEL/mountain.bp"
-#endif  // #ifdef __APPLE__
+  string filename = INPUT_MODEL; //"../../INPUT_MODEL/mountain.bp"
+#endif // #ifdef __APPLE__
 
   patch_hermite_ = new PatchHermite();
 
@@ -192,12 +189,11 @@ std::list<PatchHermite*> PatchReader::LoaderBPFileHermite() {
 
 std::list<PatchBezier*> PatchReader::LoaderOBJFile() {
 #ifdef __APPLE__
-  string filename =
-      "/Users/tiagosombra/Dropbox/tiago/ufc/MestradoTiago/GitHub/TMeshSurf/"
-      "genBezierPatches/projeto/linux/saida/patch_estimativa_2.bp";
+  string filename = "/Users/tiagosombra/Dropbox/tiago/ufc/MestradoTiago/GitHub/TMeshSurf/"
+                    "genBezierPatches/projeto/linux/saida/patch_estimativa_2.bp";
 #else
   string filename = "../../INPUT_MODEL/uteapot.obj";
-#endif  // #ifdef __APPLE__
+#endif // #ifdef __APPLE__
 
   patch_ = new PatchBezier();
 
@@ -228,8 +224,7 @@ std::list<PatchBezier*> PatchReader::LoaderOBJFile() {
             v.erase(v.begin(), v.end());
           }
 
-          if (line[0] == 's' and line[1] == 'u' and line[2] == 'r' and
-              line[3] == 'f') {
+          if (line[0] == 's' and line[1] == 'u' and line[2] == 'r' and line[3] == 'f') {
             line = line.erase(0, 12);
             std::istringstream iss(line);
             long n;
@@ -292,8 +287,7 @@ std::list<PatchBezier*> PatchReader::LoaderOBJFile() {
   return patches_;
 }
 
-std::list<PatchBezier*> PatchReader::OrderVectorToListBezierPatches(
-    std::vector<double> vecDouble) {
+std::list<PatchBezier*> PatchReader::OrderVectorToListBezierPatches(std::vector<double> vecDouble) {
   for (unsigned int i = 0; i < vecDouble.size(); i += i + 16) {
     patch_ = new PatchBezier();
   }
@@ -306,9 +300,9 @@ std::list<PatchBezier*> PatchReader::ParsePatchesBezier() {
 
   QFileDialog dialog;
   QWidget* wid = new QWidget();
-  QString filename = dialog.getOpenFileName(
-      wid, QObject::tr("Adicionar um conjunto de patch"), QDir::currentPath(),
-      QObject::tr("Arquivo de cenas (*.patches *.pt)"));
+  QString filename =
+      dialog.getOpenFileName(wid, QObject::tr("Adicionar um conjunto de patch"),
+                             QDir::currentPath(), QObject::tr("Arquivo de cenas (*.patches *.pt)"));
   dialog.close();
 
 #else
@@ -319,9 +313,9 @@ std::list<PatchBezier*> PatchReader::ParsePatchesBezier() {
   string filename = "../../INPUT_MODEL/four_patches.pt";
 #else
   string filename = "../../INPUT_MODEL/cone1.pt";
-#endif  // #ifdef __APPLE__
+#endif // #ifdef __APPLE__
 
-#endif  // #if USE_INTERFACEQT
+#endif // #if USE_INTERFACEQT
 
 #if USE_INTERFACEQT
   if (!filename.isNull()) {
@@ -331,7 +325,7 @@ std::list<PatchBezier*> PatchReader::ParsePatchesBezier() {
   if (!filename.empty()) {
     std::ifstream fin(filename);
 
-#endif  // #if USE_INTERFACEQT
+#endif // #if USE_INTERFACEQT
 
     int count_points = 0;
     long id_point = 0;
@@ -467,19 +461,18 @@ std::list<PatchBezier*> PatchReader::ParsePatchesBezier() {
 
 #if USE_INTERFACEQT
   delete wid;
-#endif  // #if USE_INTERFACEQT
+#endif // #if USE_INTERFACEQT
   return patches_;
 }
 
 std::list<PatchBezier*> PatchReader::LoaderRibFile() {
 #ifdef __APPLE__
-  string filename =
-      "/Users/tiagosombra/Dropbox/tiago/ufc/GitHub/TMeshSurfAux_Documentos/"
-      "TMeshSurf_Aux/reunioes/objs/"
-      "four_patches.pt";
+  string filename = "/Users/tiagosombra/Dropbox/tiago/ufc/GitHub/TMeshSurfAux_Documentos/"
+                    "TMeshSurf_Aux/reunioes/objs/"
+                    "four_patches.pt";
 #else
   string filename = "../INPUT_MODEL/uteapot.rib";
-#endif  // #ifdef __APPLE__
+#endif // #ifdef __APPLE__
 
   std::vector<double> v;
 
@@ -491,8 +484,8 @@ std::list<PatchBezier*> PatchReader::LoaderRibFile() {
         std::string line;
 
         while (std::getline(fin, line)) {
-          if (line[0] == 'P' && line[1] == 'a' && line[2] == 't' &&
-              line[3] == 'c' && line[4] == 'h') {
+          if (line[0] == 'P' && line[1] == 'a' && line[2] == 't' && line[3] == 'c' &&
+              line[4] == 'h') {
             line = line.erase(0, 21);
 
             std::istringstream iss(line);
@@ -520,104 +513,7 @@ std::list<PatchBezier*> PatchReader::LoaderRibFile() {
 
 std::list<std::unique_ptr<PatchBezier>> PatchReader::LoaderBezierPatchFile(string fileName) {
   apmesh::io::ValidateBezierPatchInput(fileName);
-  std::list<std::unique_ptr<PatchBezier>> patches;
-  auto patch = std::make_unique<PatchBezier>();
-
-  if (!fileName.empty()) {
-    std::ifstream fin(fileName);
-    // Propagate resource failures before consuming a partial record.
-    fin.exceptions(std::ios::badbit);
-
-    if (fin) {
-      while (fin) {
-        std::string line;
-        std::vector<double> v;
-        std::vector<PointAdaptive> vectorControlPoints;
-        std::vector<long> p;
-        long id_ponto = 0;
-
-        while (std::getline(fin, line)) {
-          if (line[0] == 'v') {
-            line = line.erase(0, 1);
-            std::istringstream iss(line);
-            iss.exceptions(std::ios::badbit);
-            // int id_ponto;
-            // iss >> id_ponto;
-
-            // line = line.erase(0, 1);
-            double n;
-            while (iss >> n) {
-              v.push_back(n);
-            }
-
-            PointAdaptive ponto(v[0], v[1], v[2], id_ponto);
-            id_ponto++;
-            vectorControlPoints.push_back(ponto);
-            v.erase(v.begin(), v.end());
-          }
-
-          if (line[0] == 'p') {
-            line = line.erase(0, 1);
-            std::istringstream iss(line);
-            iss.exceptions(std::ios::badbit);
-            long n;
-            while (iss >> n) {
-              p.push_back(n);
-            }
-
-            for (unsigned int i = 0; i < p.size(); i++) {
-              if (i == 0) {
-                patch->SetPt00(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 1) {
-                patch->SetPt10(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 2) {
-                patch->SetPt20(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 3) {
-                patch->SetPt30(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 4) {
-                patch->SetPt01(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 5) {
-                patch->SetPt11(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 6) {
-                patch->SetPt21(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 7) {
-                patch->SetPt31(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 8) {
-                patch->SetPt02(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 9) {
-                patch->SetPt12(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 10) {
-                patch->SetPt22(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 11) {
-                patch->SetPt32(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 12) {
-                patch->SetPt03(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 13) {
-                patch->SetPt13(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 14) {
-                patch->SetPt23(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              } else if (i == 15) {
-                patch->SetPt33(GetPointVectorControlPoints(vectorControlPoints, p[i]));
-              }
-            }
-
-            p.erase(p.begin(), p.end());
-            patches.push_back(std::move(patch));
-            patch = std::make_unique<PatchBezier>();
-          }
-        }
-      }
-    } else {
-      std::cout << "Error: file .bp is not readable." << std::endl;
-    }
-
-    fin.close();
-
-  } else {
-    std::cout << "Erro ao abrir o arquivo .bp" << std::endl;
-  }
-
-  return patches;
+  return ReadBezierControlPatches(fileName, "Erro ao abrir o arquivo .bp");
 }
 
 Geometry* PatchReader::ReaderFilePatches(Geometry* geometry, string file_name) {

@@ -51,6 +51,15 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+The bounded payload/terminal CRT phase is integrated through PR #169 as main
+`bccd5c1e7af3c058f62085f8fb908f5ccd5db78b`, with its qualified local integration
+seal and exact-head/main 75 CTest / 479 Python. The next production delivery is
+the [shared Bezier control reader](evidence/SHARED_BEZIER_CONTROL_READER.md): remove
+the duplicate parser behind LoaderBPFile/LoaderBezierPatchFile while preserving
+their distinct entry validation/messages and all control/ownership semantics.
+This finite P4 engineering need has two named supported callers and exact
+existing oracles. It does not reopen C17 cache admission or scientific policies.
+
 The [archive diagnostic dependency](evidence/REUSE_ARCHIVE_DIAGNOSTICS.md) is
 qualified through PR #164, main `249492d299ca9192443ccb12bdf55b78e8e88198`, as
 recorded in local `build/reuse-archive-delivery/integration-verification.json`.
