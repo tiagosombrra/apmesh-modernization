@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "entry_main": "60820f327fb2f89d6218037783e11563ff9a5220",
+  "classification": "engineering-only guarded local main checkout; production/compiler/input unchanged",
+  "status": "ten_real_git_controls_and_full_iteration_passed_pending_exact_head_main_checkout",
+  "native_code_changes": 0,
+  "compiler_linker_flags_changed": false,
+  "controls": [
+    "read-only plan",
+    "same-tree bytes and mtimes preserved",
+    "old checkout rewrite detected",
+    "dirty/staged/untracked refusal",
+    "wrong remote/tree/parents refused",
+    "main in another worktree refused",
+    "atomic expected-old ref preserves concurrent progress",
+    "normal checkout hook runs",
+    "unsafe/existing receipts refused",
+    "linked-worktree common Git metadata protected"
+  ],
+  "unit_controls": 10,
+  "expected_regression": {
+    "ctest": 75,
+    "python": 495,
+    "failures": 0,
+    "skips": 0
+  },
+  "qualification_scope": "Callers retain remote merge authorization and all exact-head/main gates; no artifact qualification inferred from timestamps alone",
+  "preserved_failures": [
+    "First iteration stopped at missing compact-report link before native build/tests; real report added without weakening link validation"
+  ],
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "artifacts": {
+    "build/qualified-main-checkout/entry.json": "7687a7be21f28d0ceb39dfdd0f095a2d87be133ffe0d589e1262eecfeef52101",
+    "build/validation-session/1794050396947416600-04d1a555/report.json": "ee2aab800bcb20468acafd84eb19bf7a9ed34f6dd7f508ee4764e257f60c2975",
+    "build/validation-session/1794050448020566900-589cf218/report.json": "a8a1bb40db84ec2203ac53c23d302acb2c64809292a7f22847576051b97772cb",
+    "build/validation-session/1794050448020566900-589cf218/plan.json": "3df7c4c9abee32f545ec6d0f470ae501a57d6249778f0ba488663856695d8878",
+    "build/validation-session/1794050448020566900-589cf218/ctest.xml": "137973b3e3bc629f0cb0558b79ca566a4208c03a4e7fe0e91b250229e4a3f539",
+    "build/borrowed-control-lookup/delivery/integration-verification.json": "4a9eebe4f5eb90c1af2cd0d5b4cc88757b50bfe48583e94db619990f1e625767"
+  },
+  "iteration": {
+    "ctest": 75,
+    "python": 495,
+    "failures": 0,
+    "skips": 0
+  },
+  "source_build_input_files_unchanged": 522,
+  "qualified_parent_artifacts_unchanged": true
+}

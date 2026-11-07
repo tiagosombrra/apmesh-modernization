@@ -2,11 +2,19 @@
 
 ## Current checkpoint and active work
 
-Current production item: [borrowed control-point lookup](evidence/BORROWED_CONTROL_LOOKUP.md),
-removing sixteen redundant whole-vector copies per valid parsed patch. Preserve
-the public by-value compatibility API, first-ID match/default behavior, returned
-point independence, all reader policies and scientific results. Recalibrate
-allocation denials rather than crediting the former ordinals to changed code.
+Current engineering item: [qualified-tree main checkout](evidence/QUALIFIED_MAIN_CHECKOUT.md),
+removing the local old-main/new-main checkout round trip after an already merged
+qualified tree. Preserve clean/exact-head/tree/parent checks, concurrent ref
+progress, hooks and tracked bytes/timestamps. Remote authorization and all main
+gates remain mandatory. No compiler/linker option or scientific input changes.
+
+The [borrowed lookup](evidence/BORROWED_CONTROL_LOOKUP.md) is integrated through
+PR #171 as main `60820f327fb2f89d6218037783e11563ff9a5220`, with exact-head/main
+75 CTest / 485 Python and its local integration seal. It removes sixteen vector
+copies per valid patch while retaining the public API and scientific results.
+All 4,366 remaining denials and 120 native pairs pass; old costs total 5,518.
+The new main MSVC image passes fresh article gates after its reuse identity fails;
+that failure is preserved without attributing an unsupported compiler/link cause.
 
 The [shared Bezier reader](evidence/SHARED_BEZIER_CONTROL_READER.md) is integrated
 through PR #170 as main `ee677a34fd9c9303eb83b70d525c6b966c6a240f`, with exact-head/

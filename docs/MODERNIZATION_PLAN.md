@@ -51,6 +51,16 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+PR #171 integrates borrowed control lookup at main
+`60820f327fb2f89d6218037783e11563ff9a5220`, with exact-head/main 75 CTest / 485
+Python and its qualified local seal. The active engineering dependency is
+[qualified-tree main checkout](evidence/QUALIFIED_MAIN_CHECKOUT.md): avoid rewriting
+already qualified source files through the old local main before advancing to an
+identical remote merge tree. Verify identity, parents, clean state and concurrent
+main protection; preserve normal hooks and bytes/timestamps, then repeat required
+main validation. This is a local workflow repair with production inputs unchanged,
+not a new compiler configuration or an automatic instrument campaign.
+
 The [shared reader](evidence/SHARED_BEZIER_CONTROL_READER.md) is integrated through
 PR #170 as main `ee677a34fd9c9303eb83b70d525c6b966c6a240f`, with exact-head/main
 75 CTest / 482 Python and its local integration seal. The current production
