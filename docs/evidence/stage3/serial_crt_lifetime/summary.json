@@ -1,0 +1,586 @@
+{
+  "schema": 1,
+  "entry_main": "78b9fbf8b150793505946291245873582dc164e0",
+  "status": "fixed_sp01_to_sp08_executable_owned_crt_inventory_passed",
+  "production_changes": 0,
+  "compiler_profile": "MSVC C++17 x64 Debug DLL CRT; iterator level 2; /EHsc; C4530 as error",
+  "scope": "before user-priority executable initialization through final owning static destructor; normal/client CRT blocks; runtime/DLL baseline and later shutdown excluded",
+  "controls": [
+    {
+      "mode": "release",
+      "status": "passed",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "attempts": 0,
+        "denied": 0,
+        "caught": 0,
+        "late_mode": 0,
+        "normal_blocks_delta": 0,
+        "normal_bytes_delta": 0,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 0,
+        "newer_live_bytes": 0,
+        "live_requests": [],
+        "observed_allocations": [
+          {
+            "phase": "main",
+            "request": 1589,
+            "bytes": 64
+          }
+        ],
+        "clean": true
+      }
+    },
+    {
+      "mode": "global-release",
+      "status": "passed",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "attempts": 0,
+        "denied": 0,
+        "caught": 0,
+        "late_mode": 0,
+        "normal_blocks_delta": 0,
+        "normal_bytes_delta": 0,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 0,
+        "newer_live_bytes": 0,
+        "live_requests": [],
+        "observed_allocations": [
+          {
+            "phase": "main",
+            "request": 1589,
+            "bytes": 64
+          }
+        ],
+        "clean": true
+      }
+    },
+    {
+      "mode": "late-release",
+      "status": "passed",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "attempts": 0,
+        "denied": 0,
+        "caught": 0,
+        "late_mode": 1,
+        "normal_blocks_delta": 0,
+        "normal_bytes_delta": 0,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 0,
+        "newer_live_bytes": 0,
+        "live_requests": [],
+        "observed_allocations": [
+          {
+            "phase": "shutdown",
+            "request": 1589,
+            "bytes": 64
+          }
+        ],
+        "clean": true
+      }
+    },
+    {
+      "mode": "retention",
+      "status": "passed_expected_retention",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "attempts": 0,
+        "denied": 0,
+        "caught": 0,
+        "late_mode": 0,
+        "normal_blocks_delta": 1,
+        "normal_bytes_delta": 64,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 1,
+        "newer_live_bytes": 64,
+        "live_requests": [
+          1589
+        ],
+        "observed_allocations": [
+          {
+            "phase": "main",
+            "request": 1589,
+            "bytes": 64
+          }
+        ],
+        "clean": false
+      }
+    },
+    {
+      "mode": "late-retention",
+      "status": "passed_expected_retention",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "attempts": 0,
+        "denied": 0,
+        "caught": 0,
+        "late_mode": 2,
+        "normal_blocks_delta": 1,
+        "normal_bytes_delta": 64,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 1,
+        "newer_live_bytes": 64,
+        "live_requests": [
+          1589
+        ],
+        "observed_allocations": [
+          {
+            "phase": "shutdown",
+            "request": 1589,
+            "bytes": 64
+          }
+        ],
+        "clean": false
+      }
+    },
+    {
+      "mode": "denial",
+      "status": "passed",
+      "exit_code": 0,
+      "observer": {
+        "app_exit": 0,
+        "attempts": 2,
+        "denied": 1,
+        "caught": 1,
+        "late_mode": 0,
+        "normal_blocks_delta": 0,
+        "normal_bytes_delta": 0,
+        "client_blocks_delta": 0,
+        "client_bytes_delta": 0,
+        "newer_live_blocks": 0,
+        "newer_live_bytes": 0,
+        "live_requests": [],
+        "observed_allocations": [
+          {
+            "phase": "main",
+            "request": 1589,
+            "bytes": 64
+          }
+        ],
+        "clean": true
+      }
+    }
+  ],
+  "qualified_inventory": {
+    "executions": 32,
+    "groups": {
+      "SP-01": 23,
+      "SP-02": 1,
+      "SP-03": 1,
+      "SP-04": 1,
+      "SP-05": 1,
+      "SP-06": 2,
+      "SP-07": 2,
+      "SP-08": 1
+    },
+    "all_final_normal_client_deltas_zero": true,
+    "all_final_newer_object_dumps_empty": true,
+    "source_identity_verified": true,
+    "application_executions_including_preserved_extra_parser_prefix": 34,
+    "missing_model_artifact_census": "Measured in one isolated named completion; earlier two parser prefixes are not counted as complete invalid-input gates"
+  },
+  "groups": [
+    {
+      "id": "SP-01",
+      "status": "passed",
+      "outcome": {
+        "invalid_controls": 23,
+        "expected_nonzero_and_no_artifacts": true,
+        "carried_missing_model": "missing-model-completion/report.json; final CRT, Error diagnostic and no generated artifacts measured together"
+      }
+    },
+    {
+      "id": "SP-03",
+      "status": "passed",
+      "outcome": {
+        "mode": "m",
+        "triangles": 8,
+        "obj_sha256": "e4a2acdbedc830cda0ea5730f39c92cc615779700d056059b1497e0bdc16f432",
+        "compared_incidences": 1
+      }
+    },
+    {
+      "id": "SP-04",
+      "status": "passed",
+      "outcome": {
+        "mode": "q",
+        "physical_csv_fields_compared": 5,
+        "uv_csv_fields_compared": 10,
+        "compared_incidences": 1,
+        "paired_geometry_source": "SP-03/control_passo_0_malha_0.obj",
+        "own_obj_files": 0
+      }
+    },
+    {
+      "id": "SP-05",
+      "status": "passed",
+      "outcome": {
+        "accepted_steps": [
+          0,
+          1
+        ],
+        "rejected_steps": [
+          2,
+          3
+        ],
+        "max_retry": 1,
+        "input_model_sha256": "c65a0a45f5f67b90e43183965e63d0e3b193bac862dab7ec15d53f37206983ec",
+        "compared_incidences": 8
+      }
+    },
+    {
+      "id": "SP-06",
+      "status": "passed",
+      "outcome": {
+        "status": "passed",
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "d9bae83e7520cb0deb559788075964b6217e288cdd1f3839282c38857376b2d9",
+        "configuration_sha256": "cd0464f79f2eca41f7e45dfa8c64e898b517dfd856595c2c1ea189c822537325"
+      }
+    },
+    {
+      "id": "SP-07",
+      "status": "passed",
+      "outcome": {
+        "status": "passed",
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact",
+        "same_executable_same_configuration_same_command": true,
+        "executable_sha256": "d9bae83e7520cb0deb559788075964b6217e288cdd1f3839282c38857376b2d9",
+        "configuration_sha256": "02bee81f6251feeeb84e5930f67ce4ed44840c81e97ad8791e44b809737b76bc"
+      }
+    },
+    {
+      "id": "SP-08",
+      "status": "passed",
+      "outcome": {
+        "exit_code": 0,
+        "boundary_qualification": "not inferred for no-sync",
+        "config_sha256": "f69ed31afcab4af664299a54bf49f2332ac2ad4675a02e177b932f1b2c886da5"
+      }
+    }
+  ],
+  "production_launches": [
+    {
+      "group": "SP-01",
+      "case": "missing_model",
+      "status": "expected_rejection_clean",
+      "source": "missing-model-completion",
+      "exit_code": 4294967295,
+      "generated_artifacts": 0
+    },
+    {
+      "group": "SP-02",
+      "case": "aligned",
+      "status": "passed",
+      "source": "qualification/aligned",
+      "exit_code": 0
+    },
+    {
+      "group": "SP-01",
+      "case": "empty_model",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/01-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.016753600211814046
+    },
+    {
+      "group": "SP-01",
+      "case": "unknown_record",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/02-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.0120044001378119
+    },
+    {
+      "group": "SP-01",
+      "case": "short_vertex",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/03-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.011931300163269043
+    },
+    {
+      "group": "SP-01",
+      "case": "extra_coordinate",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/04-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.010130299953743815
+    },
+    {
+      "group": "SP-01",
+      "case": "nan_coordinate",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/05-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.011638999916613102
+    },
+    {
+      "group": "SP-01",
+      "case": "short_patch",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/06-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.012875099899247289
+    },
+    {
+      "group": "SP-01",
+      "case": "out_of_bounds_patch",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/07-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.012259499868378043
+    },
+    {
+      "group": "SP-01",
+      "case": "negative_patch_index",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/08-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.010219200048595667
+    },
+    {
+      "group": "SP-01",
+      "case": "no_patches",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/09-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.012652500066906214
+    },
+    {
+      "group": "SP-01",
+      "case": "indented_record",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/10-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.01112250005826354
+    },
+    {
+      "group": "SP-01",
+      "case": "bad_config_syntax",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/11-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.012046199990436435
+    },
+    {
+      "group": "SP-01",
+      "case": "unknown_key",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/12-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.013382799923419952
+    },
+    {
+      "group": "SP-01",
+      "case": "invalid_integer",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/13-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.015148000093176961
+    },
+    {
+      "group": "SP-01",
+      "case": "zero_threads",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/14-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.01094760000705719
+    },
+    {
+      "group": "SP-01",
+      "case": "invalid_float",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/15-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.01388849993236363
+    },
+    {
+      "group": "SP-01",
+      "case": "nan_float",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/16-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.009175200015306473
+    },
+    {
+      "group": "SP-01",
+      "case": "infinite_float",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/17-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.009194999933242798
+    },
+    {
+      "group": "SP-01",
+      "case": "invalid_mode",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/18-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.00975780002772808
+    },
+    {
+      "group": "SP-01",
+      "case": "duplicate_key",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/19-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.00878760009072721
+    },
+    {
+      "group": "SP-01",
+      "case": "missing_config",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/20-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.011189900105819106
+    },
+    {
+      "group": "SP-01",
+      "case": "missing_arguments",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/21-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.010767699917778373
+    },
+    {
+      "group": "SP-01",
+      "case": "extra_arguments",
+      "status": "expected_rejection_clean",
+      "source": "inventory-resumed/launches/22-SP-01",
+      "exit_code": 4294967295,
+      "seconds": 0.011138000059872866
+    },
+    {
+      "group": "SP-03",
+      "case": 1,
+      "status": "passed",
+      "source": "inventory-resumed/launches/23-SP-03",
+      "exit_code": 0,
+      "seconds": 0.06459740013815463
+    },
+    {
+      "group": "SP-04",
+      "case": 1,
+      "status": "passed",
+      "source": "inventory-resumed/launches/24-SP-04",
+      "exit_code": 0,
+      "seconds": 0.03811280010268092
+    },
+    {
+      "group": "SP-05",
+      "case": 1,
+      "status": "passed",
+      "source": "inventory-resumed/launches/25-SP-05",
+      "exit_code": 0,
+      "seconds": 2.433610300067812
+    },
+    {
+      "group": "SP-06",
+      "case": 1,
+      "status": "passed",
+      "source": "inventory-resumed/launches/26-SP-06",
+      "exit_code": 0,
+      "seconds": 101.50367580004968
+    },
+    {
+      "group": "SP-06",
+      "case": 2,
+      "status": "passed",
+      "source": "inventory-resumed/launches/27-SP-06",
+      "exit_code": 0,
+      "seconds": 101.58369529992342
+    },
+    {
+      "group": "SP-07",
+      "case": 1,
+      "status": "passed",
+      "source": "inventory-resumed/launches/28-SP-07",
+      "exit_code": 0,
+      "seconds": 54.366171300178394
+    },
+    {
+      "group": "SP-07",
+      "case": 2,
+      "status": "passed",
+      "source": "inventory-resumed/launches/29-SP-07",
+      "exit_code": 0,
+      "seconds": 53.20733079989441
+    },
+    {
+      "group": "SP-08",
+      "case": 1,
+      "status": "passed",
+      "source": "inventory-resumed/launches/30-SP-08",
+      "exit_code": 0,
+      "seconds": 11.172909500077367
+    }
+  ],
+  "retained_failures": [
+    "First invalid prefix: parser rejected signed native -1 / unsigned DWORD 4294967295 and CRLF capture",
+    "Second invalid prefix: raw CRLF not normalized in parsed view; native input rejection and final heap are clean in both"
+  ],
+  "resume_contract": "The two original parser prefixes are preserved and reinterpreted offline; 22 pending negatives run once. Final audit completes the unmeasured artifact census with one isolated missing-model run. The 32 qualified inventory observations do not substitute a cached native result.",
+  "terminal_sp09_sp10": "unqualified; dedicated full-caller observer gate remains",
+  "prior_pr167": {
+    "main": "78b9fbf8b150793505946291245873582dc164e0",
+    "head_and_main_ctest": 75,
+    "head_and_main_python": 463,
+    "seal": "build/p3-serial-crt-static/delivery/integration-verification.json"
+  },
+  "stage3": {
+    "bounded_qualified": 3,
+    "partial_open": 7,
+    "closed": false
+  },
+  "delivery": "exact head/main gates pending",
+  "local_root": "build/p3-serial-crt-lifetime",
+  "artifacts": {
+    "qualification/report.json": "985a60c9b054f7f532b2054a3d569e3d723f72386ac61c441de604180fdec006",
+    "inventory/report.json": "1f45c7f108d6d1e924808b0ce69f522f2df84fabdb95c86ebd8c1dd5984ca9d3",
+    "inventory-revised/report.json": "c60b8122914a257c3d8da06c060caf424c0e92c5b8a2a0cf93abaee34bc43a29",
+    "inventory-resumed/report.json": "9485b8b0024533820f95433d704c8573b512bbeb68884f0a7131add445840963",
+    "inventory-resumed/entry.json": "545d454f6b780fbca546c7c9cbfcac9a59d8fead83e55437f3412c56b6baaa5a",
+    "prefix-classification.json": "47a759b3e4ce9dabfc5e2b7aa4b2b2517dd0d513e662fa06a2cf0c507ed81009",
+    "resume-classification.json": "110b574767f409ac06cb1d4fecd2ebf7a533487dc6bb49fdfb7a105aee09295d",
+    "run_inventory-first.py": "43a932697453ab7f83099fc0c4648af44fcc4a0158a159c77c1393d8567bfa10",
+    "run_inventory-second.py": "aacb8a6d8a750fa52b75f487e1a68c210b5ea4c92694706fb18088b5d3448635",
+    "run_inventory.py": "f8eaac2df0daa2d8d07ba14f4674466e9cfba40e7e592dd794fa899c003db62d",
+    "analysis/report.json": "2e783968d07091a9b07e67467ef11e27c63d78c1d565355c765cb5a1c51ccc80",
+    "profile-verification.json": "301c0d7d1f02e4f3748a6adfd33ceee2c80dc172a9360ca304cd06d30bacc13a",
+    "missing-model-completion/report.json": "38809106e6dd368b15a100d9d7871ec67be5f6c35ee981215c594233d6a9056a"
+  },
+  "source_files_sha256": {
+    "tests/serial_crt/lifetime_probe.cpp": "2f7605c298506479e2c800f98cadb7f096a950fadc09983aab70de8a6c9a95d2",
+    "tests/serial_crt/lifetime_exit_observer.cpp": "3091ba5939b318d533a5db24331810cd2a44c353e24c138430530e8ee8f48f46",
+    "tools/qualify_serial_crt_lifetime.py": "f592c1b9d36c7f8043c8b02156b2a6540d0487438f8e399dab998c4fdb11bea3",
+    "tests/cli_failures.py": "cfd2eb34d7b7ba67d7e07fa4eaa1a865551025058c8a0825a4381ef133e2bd16"
+  }
+}

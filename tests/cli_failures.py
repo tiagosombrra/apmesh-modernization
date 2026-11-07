@@ -9,7 +9,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def verify_failures(executable: Path, workspace: Path) -> list[dict]:
+def verify_failures(executable: Path, workspace: Path, *, case_names=None) -> list[dict]:
     workspace.mkdir(parents=True, exist_ok=True)
     valid_vertices = "".join(f"v {i % 4} {i // 4} 0\n" for i in range(16))
     valid_model = valid_vertices + "p " + " ".join(str(i) for i in range(16)) + "\n"
@@ -25,11 +25,17 @@ def verify_failures(executable: Path, workspace: Path) -> list[dict]:
                 "infinite_float": "EPSYLON=inf\n", "invalid_mode": "WRITE_MODE=garbage\n",
                 "duplicate_key": "NUM_THREADS=1\nNUM_THREADS=2\n"}
     results = []
+    names = [*models, *settings, "missing_config", "missing_arguments", "extra_arguments"]
+    if case_names is not None:
+        selected = list(case_names)
+        if not selected or len(set(selected)) != len(selected) or any(name not in names for name in selected):
+            raise ValueError("Select a nonempty unique subset of existing invalid-input cases")
+        names = [name for name in names if name in selected]
     with tempfile.TemporaryDirectory(dir=workspace) as temporary:
         folder = Path(temporary)
         model = folder / "model.bp"
         config = folder / "config.conf"
-        for name in [*models, *settings, "missing_config", "missing_arguments", "extra_arguments"]:
+        for name in names:
             case = folder / name
             case.mkdir()
             content = models[name] if name in models else valid_model

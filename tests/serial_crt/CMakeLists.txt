@@ -25,3 +25,9 @@ target_link_libraries(serial_crt_static_probe PRIVATE APMesh::Engine)
 target_compile_options(serial_crt_static_probe PRIVATE /W4 /permissive- /EHsc /we4530)
 set_target_properties(serial_crt_static_probe PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+
+add_executable(serial_crt_lifetime_probe lifetime_probe.cpp lifetime_exit_observer.cpp)
+target_link_libraries(serial_crt_lifetime_probe PRIVATE APMesh::Engine)
+target_compile_options(serial_crt_lifetime_probe PRIVATE /W4 /permissive- /EHsc /we4530)
+set_target_properties(serial_crt_lifetime_probe PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")

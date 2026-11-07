@@ -30,6 +30,16 @@ repair is demonstrated. Complete-process/shutdown-created allocation coverage,
 other callers/instruments and delivery/main gates retain their obligations.
 No successor campaign or cache-audit chain is selected by this bounded result.
 
+PR #167 integrated that attribution at main
+`78b9fbf8b150793505946291245873582dc164e0`; its exact head/main pass 75 CTest
+entries / 463 Python controls. The independent required
+[executable-owned CRT window](../evidence/SERIAL_CRT_LIFETIME.md) now calibrates
+six controls and observes all 32 fixed SP-01..08 executions with clean final
+normal/client accounting. It retains both parser-failure prefixes, all original
+artifacts and every remaining terminal/runtime/UB/leak/parallel obligation.
+Required delivery inventory is 75 CTest / 475 Python controls; SP-09/10 remain a
+separate full-caller gate. No closure row or scientific policy is reclassified.
+
 ### Preserved cumulative-audit entry state
 
 The following archive failure and dependency observations precede PR #164's
