@@ -889,6 +889,16 @@ require topology/area/ID/observer checks, actual preflight refusal, source rever
 scoped fixture/header analysis, unchanged production/science and exact-head/main
 regression. The public geometry-entry cut performs no selection or retirement.
 
+The [complete caller gate](evidence/COMPLETE_ANALYTIC_UV_CALLERS.md) extends the
+same CTest entry with --complete-contracts: six admitted contexts, original and
+observed, through native execute/transfer/smoothing. Require 12 complete outcomes
+per GCC/checked-MSVC profile, 44 checker/preparation tests and exact-head/main
+75 CTest / 515 Python. Preserve default prefix mode, historical refusals, live
+curves, iterator level 2, finite child caps and first-failure byte captures. Require
+exact paired final meshes, pointer transfer, empty source owners/queues and an
+independent area/incidence/quality oracle. No new ideal retirement, failure/retry,
+leak or scientific-policy qualification follows.
+
 ## Geometry-phase ideal Vertex pending-owner gate
 
 `application.ideal_vertex_ownership` calls the inherited native selector in seven

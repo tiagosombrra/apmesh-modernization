@@ -2,15 +2,18 @@
 
 ## Current checkpoint and active work
 
-Current contract item: [required analytic UV prefixes](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md).
-The post-diagonal-guard source completes both formerly refused coarse seeded
-contexts. The required runner now rejects regression to those refusals before
-an unchecked counterpart starts. Current GCC/checked-MSVC prefix matrices pass
-17 outcomes each; both coarse public geometry contexts pass eight paired native
-observations with 16 positive faces/area 0.875 and existing-vertex selection only.
-No outside-root retirement is reached or qualified. Require final exact-head/main
-75 CTest / 499 Python and identity/remote gates. Production and scientific policy
-remain unchanged; broader Stage 3 remains open.
+Current contract item: [complete native analytic UV callers](evidence/COMPLETE_ANALYTIC_UV_CALLERS.md).
+All six already-admitted contexts now reach original execute completion, including
+fillMesh ownership transfer and native smoothing. GCC and checked MSVC each pass
+17 prefix and 12 complete outcomes; observed/unobserved final meshes match exactly.
+Coarse/fine final meshes have 20/32 positive faces, unit UV area, valid incidence,
+empty source-owner lists and queues. Require exact-head/main 75 CTest / 515 Python,
+identity and remote gates. Production/scientific policy is unchanged; broader
+Stage 3 remains open, with no new outside-root retirement qualification.
+
+The [required UV prefixes](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md) are integrated
+through PR #175 at main `3a333a960439599b363b33f39103ed664c947b73`, with verified
+exact-head/main 75 CTest / 499 Python and its local integration seal.
 
 The [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md) is integrated
 through PR #174 as main `8f0dbc06b91d583910ec15f66e6217002420ee68`, with verified

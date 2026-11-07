@@ -9,11 +9,124 @@ import unittest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tests'))
 sys.path.insert(0, str(ROOT / 'tools'))
-from template_prefix_case import check, compare, parse_output, require_contract, run_cases
+from template_prefix_case import (check, compare, parse_output, require_contract, run_cases,
+                                  check_complete, parse_complete_output, run_complete_cases,
+                                  COMPLETE_PROGRESS)
 from prepare_template_prefix import prepare, transform
 
 SAMPLES = json.loads((ROOT / 'tests/template_prefix/data/observations.json').read_text())
 CURRENT = json.loads((ROOT / 'tests/template_prefix/data/current_contracts.json').read_text(encoding='utf-8'))
+COMPLETED = json.loads((ROOT / 'tests/template_prefix/data/completed_observations.json').read_text(encoding='utf-8'))
+
+
+class CompleteCallerTests(unittest.TestCase):
+    def sample(self):
+        return copy.deepcopy(COMPLETED['samples'][0])
+
+    def reject(self, change):
+        row = self.sample()
+        change(row['result'])
+        with self.assertRaises((AssertionError, KeyError)):
+            check_complete(row['prefix'], row['result'], row['context'])
+
+    def test_captured_coarse_and_fine_meshes(self):
+        for row in COMPLETED['samples']:
+            self.assertIn('ownership transfer', check_complete(row['prefix'], row['result'], row['context']))
+
+    def test_failed_native_return(self):
+        self.reject(lambda r: r.update(success=0))
+
+    def test_unretired_source_owner(self):
+        self.reject(lambda r: r.update(tree_owners=[1, 0, 0]))
+
+    def test_missing_transfer(self):
+        self.reject(lambda r: r['transferred'].__setitem__(0, r['transferred'][0] - 1))
+
+    def test_duplicate_vertex_identity_number(self):
+        self.reject(lambda r: r['vertices'].append(r['vertices'][0][:]))
+
+    def test_foreign_face_endpoint(self):
+        self.reject(lambda r: r['faces'][0].__setitem__(1, -100))
+
+    def test_missing_final_face(self):
+        self.reject(lambda r: r['faces'].pop())
+
+    def test_inverted_final_face(self):
+        def invert(r):
+            face = r['faces'][0]
+            face[1], face[2] = face[2], face[1]
+        self.reject(invert)
+
+    def test_foreign_edge_endpoint(self):
+        self.reject(lambda r: r['edges'][0].__setitem__(1, -100))
+
+    def test_inconsistent_smoothed_quality(self):
+        self.reject(lambda r: r['quality'].__setitem__(3, 0.25))
+
+    def test_remaining_front(self):
+        self.reject(lambda r: r.update(queues=[1, 0]))
+
+    def output(self, row):
+        return ('\n'.join(COMPLETE_PROGRESS) + '\n' + json.dumps({'complete_result': row['result']})
+                + '\n' + json.dumps(row['prefix']) + '\n')
+
+    def test_exact_complete_progress(self):
+        row = self.sample()
+        self.assertEqual(parse_complete_output(self.output(row)), (row['prefix'], row['result']))
+
+    def test_unknown_diagnostic(self):
+        with self.assertRaises(ValueError):
+            parse_complete_output('unknown diagnostic\n' + self.output(self.sample()))
+
+    def test_missing_or_duplicate_completion(self):
+        row = self.sample()
+        output = self.output(row)
+        record = json.dumps({'complete_result': row['result']}) + '\n'
+        for text in (output.replace(record, ''), record + output):
+            with self.assertRaises(ValueError):
+                parse_complete_output(text)
+
+    def test_stop_before_unobserved_after_failed_completion(self):
+        from unittest.mock import patch
+        from subprocess import CompletedProcess
+        row = self.sample()
+        row['result']['success'] = 0
+        with tempfile.TemporaryDirectory() as temporary:
+            folder = Path(temporary)
+            binary = folder / 'binary'
+            binary.write_bytes(b'controller-only fixture, never executed')
+            output = folder / 'captures'
+            result = CompletedProcess([], 0, self.output(row).encode('utf-8'), b'')
+            with patch('template_prefix_case.subprocess.run', return_value=result) as launch:
+                with self.assertRaises(AssertionError):
+                    run_complete_cases(binary, binary, output)
+            self.assertEqual(launch.call_count, 1)
+            report = json.loads((output / 'report.json').read_text(encoding='utf-8'))
+            self.assertEqual(report['status'], 'failed')
+            self.assertEqual(len(report['cases']), 1)
+            case = report['cases'][0]
+            self.assertEqual((output / case['stdout']['path']).read_bytes(), result.stdout)
+            self.assertEqual((output / case['stderr']['path']).read_bytes(), b'')
+
+    def test_timeout_preserves_partial_streams_and_stops(self):
+        from unittest.mock import patch
+        from subprocess import TimeoutExpired
+        with tempfile.TemporaryDirectory() as temporary:
+            folder = Path(temporary)
+            binary = folder / 'binary'
+            binary.write_bytes(b'controller-only fixture, never executed')
+            output = folder / 'captures'
+            failure = TimeoutExpired([], 30, output=b'partial\r\n', stderr=b'native stderr\n')
+            with patch('template_prefix_case.subprocess.run', side_effect=failure) as launch:
+                with self.assertRaises(TimeoutExpired):
+                    run_complete_cases(binary, binary, output)
+            self.assertEqual(launch.call_count, 1)
+            report = json.loads((output / 'report.json').read_text(encoding='utf-8'))
+            self.assertEqual(report['status'], 'failed')
+            case = report['cases'][0]
+            self.assertEqual(case['timeout_seconds'], 30)
+            self.assertEqual((output / case['stdout']['path']).read_bytes(), failure.stdout)
+            self.assertEqual((output / case['stderr']['path']).read_bytes(), failure.stderr)
 
 
 class PrefixObservationTests(unittest.TestCase):

@@ -35,6 +35,13 @@ parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 
+The [complete analytic UV callers](../evidence/COMPLETE_ANALYTIC_UV_CALLERS.md)
+measure the six admitted inputs through original execute completion, transfer and
+smoothing. Each GCC/checked-MSVC profile passes 12 complete outcomes in addition
+to 17 preserved prefix outcomes. Final unit-area disk meshes and exact paired
+results qualify those successful transfers only; no new ideal retirement,
+allocation-failure, retry or whole-row closure follows. S3-06 remains partial-open.
+
 The [required UV prefix checkpoint](../evidence/REQUIRED_UV_PREFIX_CONTRACTS.md)
 requires six nonempty/two guard-only/one input refusal after the diagonal guards.
 GCC and checked MSVC each pass 17 outcomes; the two newly admitted coarse native

@@ -9,13 +9,14 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
-The active item is [required UV prefix contracts](../evidence/REQUIRED_UV_PREFIX_CONTRACTS.md):
-require both coarse seeded contexts to complete under the qualified diagonal
-guards. Historical refusals remain readable/unqualified; the current runner must
-stop before starting an unchecked counterpart. The existing 17-outcome matrix
-passes in GCC/checked MSVC; both newly admitted geometry contexts pass eight
-paired observations without reaching ideal retirement. No production or input
-policy change. Exact-head/main 75 CTest / 499 Python and identity/remote gates apply.
+The active item is [complete native analytic UV callers](../evidence/COMPLETE_ANALYTIC_UV_CALLERS.md):
+all six already-admitted contexts continue through native transfer and smoothing.
+Both ABIs pass 17 prefix and 12 complete outcomes, including ordered differential
+meshes and empty source owner/queue state. Require exact-head/main 75 CTest / 515
+Python, preserved production/science and fresh remote gates. No new retirement,
+allocation-failure or retry qualification. Stage 3 dispositions remain unchanged.
+PR #175 integrates the preceding required-prefix package at main
+`3a333a960439599b363b33f39103ed664c947b73` with its verified integration seal.
 
 PR #174 closes pointer-key ordering at main
 `8f0dbc06b91d583910ec15f66e6217002420ee68` with its verified integration seal.

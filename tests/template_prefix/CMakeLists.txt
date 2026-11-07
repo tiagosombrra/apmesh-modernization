@@ -40,7 +40,7 @@ if(NOT CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   add_test(NAME application.analytic_template_prefix
     COMMAND "${Python3_EXECUTABLE}" "${AP_MESH_PREFIX_ROOT}/tests/template_prefix_case.py"
       --exe "$<TARGET_FILE:template_prefix_probe>" --unobserved "$<TARGET_FILE:template_prefix_unobserved>"
-      --output "${CMAKE_BINARY_DIR}/analytic-template-prefix-controls" --repeatable-output)
+      --output "${CMAKE_BINARY_DIR}/analytic-template-prefix-controls" --repeatable-output --complete-contracts)
   set_tests_properties(application.analytic_template_prefix PROPERTIES
     LABELS "application;prefix;required-gate" TIMEOUT 60)
 endif()
