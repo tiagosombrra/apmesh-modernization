@@ -37,6 +37,9 @@ private:
   std::list<std::unique_ptr<PatchBezier>> ReadBezierControlPatches(const std::string& filename,
                                                                    const char* empty_message);
 
+  static PointAdaptive FindControlPoint(const std::vector<PointAdaptive>& vectorPoints,
+                                        unsigned long idPoint);
+
 protected:
   std::list<PatchBezier*> patches_;
   std::list<PatchHermite*> patches_hermite_;

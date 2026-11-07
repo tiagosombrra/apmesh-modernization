@@ -9,9 +9,18 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
+PR #170 integrates the shared reader at main
+`ee677a34fd9c9303eb83b70d525c6b966c6a240f`, with exact-head/main 75 CTest / 482
+Python and its qualified local integration seal. The next admitted production
+item is [borrowed control lookup](../evidence/BORROWED_CONTROL_LOOKUP.md): retain
+the public by-value compatibility boundary but remove whole-vector copies from
+the sixteen internal reads per valid patch. Preserve first-match/default/value
+semantics and recalibrate all affected failure ordinals. Source guards, public
+API/native pairs, complete memory/scientific and exact-head/main gates apply.
+
 PR #169 closes the bounded payload/terminal CRT phase at main
 `bccd5c1e7af3c058f62085f8fb908f5ccd5db78b`, with its verified local integration
-seal and exact-head/main 75 CTest / 479 Python. The current production package is
+seal and exact-head/main 75 CTest / 479 Python. The preceding production package was
 the [shared Bezier control reader](../evidence/SHARED_BEZIER_CONTROL_READER.md).
 Two named qualified callers duplicate the same parser body; extract it once while
 retaining public validation/messages, complete controls/IDs, pending ownership,
