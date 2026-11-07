@@ -1192,6 +1192,52 @@ void template_registration_failures(int stage) {
 
 #endif
 
+void boundary_close_state(bool closed) {
+  Boundary boundary;
+  if (closed) {
+    boundary.addVertex(0, 0, nullptr);
+    boundary.addVertex(1, 0, nullptr);
+    boundary.addVertex(0, 1, nullptr);
+    require(boundary.close(nullptr), "initial contour closes");
+  }
+  const auto vertices = boundary.getBoundary();
+  const auto edges = boundary.getEdges();
+  const auto vertex_id = boundary.getLastVertexId();
+  const auto edge_id = boundary.getLastEdgeId();
+  std::vector<EdgeSet> adjacency;
+  for (auto* vertex : vertices)
+    adjacency.push_back(vertex->getAdjacentEdges());
+  for (bool reversed : {false, true}) {
+    bool accepted = boundary.close(nullptr, reversed);
+    require(!accepted, "empty or already-closed contour is refused");
+#if defined(_MSC_VER) && defined(_DEBUG)
+    require(!inject_allocation_failure(0, [&] { accepted = boundary.close(nullptr, reversed); }) &&
+                allocation_attempts == 0 && denied_allocations == 0,
+            "invalid close returns without allocation");
+#endif
+    require(!accepted, "empty or already-closed contour is refused");
+    require(vertices == boundary.getBoundary() && edges == boundary.getEdges() &&
+                vertex_id == boundary.getLastVertexId() && edge_id == boundary.getLastEdgeId(),
+            "refused close preserves owner lists, order and IDs");
+    std::size_t index = 0;
+    for (auto* vertex : vertices)
+      require(adjacency[index++] == vertex->getAdjacentEdges(),
+              "refused close preserves endpoint adjacency");
+  }
+  auto* first = boundary.addVertex(2, 0, nullptr);
+  boundary.addVertex(3, 0, nullptr);
+  auto* last = boundary.addVertex(2, 1, nullptr);
+  require(boundary.close(nullptr), "new contour closes after refused close");
+  require(boundary.getLastVertexId() == vertex_id + 3 && boundary.getLastEdgeId() == edge_id + 3 &&
+              boundary.getEdges().back()->getV1() == last &&
+              boundary.getEdges().back()->getV2() == first,
+          "new contour preserves ID sequence and its own start");
+  require(first->getAdjacentEdges().size() == 2 && last->getAdjacentEdges().size() == 2,
+          "new contour retains native endpoint incidence");
+  std::printf("boundary_close_state=%s refused=2 unchanged=1 new_contour=1\n",
+              closed ? "closed" : "empty");
+}
+
 void scenario(const char* mode) {
   if (std::strcmp(mode, "normal") == 0)
     normal(false);
@@ -1237,9 +1283,17 @@ void scenario(const char* mode) {
 #else
     require(false, "Debug CRT allocation hook required");
 #endif
-  } else if (std::strcmp(mode, "registration-contracts") == 0)
+  } else if (std::strcmp(mode, "registration-trace") == 0)
     registration_contracts();
-  else if (std::strcmp(mode, "tree-contracts") == 0)
+  else if (std::strcmp(mode, "boundary-empty-close") == 0)
+    boundary_close_state(false);
+  else if (std::strcmp(mode, "boundary-repeat-close") == 0)
+    boundary_close_state(true);
+  else if (std::strcmp(mode, "registration-contracts") == 0) {
+    registration_contracts();
+    boundary_close_state(false);
+    boundary_close_state(true);
+  } else if (std::strcmp(mode, "tree-contracts") == 0)
     tree_contracts();
   else if (std::strncmp(mode, "tree-failure-", 13) == 0 && std::strlen(mode) == 14 &&
            mode[13] >= '0' && mode[13] <= '4') {

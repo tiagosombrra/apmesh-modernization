@@ -9,14 +9,15 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
-The active item is [complete native analytic UV callers](../evidence/COMPLETE_ANALYTIC_UV_CALLERS.md):
-all six already-admitted contexts continue through native transfer and smoothing.
-Both ABIs pass 17 prefix and 12 complete outcomes, including ordered differential
-meshes and empty source owner/queue state. Require exact-head/main 75 CTest / 515
-Python, preserved production/science and fresh remote gates. No new retirement,
-allocation-failure or retry qualification. Stage 3 dispositions remain unchanged.
-PR #175 integrates the preceding required-prefix package at main
-`3a333a960439599b363b33f39103ed664c947b73` with its verified integration seal.
+The active production item is [boundary close state guard](../evidence/BOUNDARY_CLOSE_STATE.md).
+The two actual invalid lifecycle calls fail under the original checked-MSVC
+implementation. Reject empty/already-closed calls before allocation or mutation;
+preserve valid registration and numerical execution. Require independent state/
+continuation tests, original trace and 28 denials, both frozen article profiles,
+configured analysis and exact-head/main 75 CTest / 515 Python. This closes only
+the named invalid-call defect, retaining all ten Stage 3 dispositions.
+PR #176 integrates the preceding complete native UV caller contract at main
+`8d3230cbc0d12686818df7d714913b466c4dce88` with its verified integration seal.
 
 PR #174 closes pointer-key ordering at main
 `8f0dbc06b91d583910ec15f66e6217002420ee68` with its verified integration seal.

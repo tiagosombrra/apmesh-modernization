@@ -1,0 +1,203 @@
+{
+  "schema": 1,
+  "classification": "behavior-changing defect repair for invalid lifecycle calls; valid numerical execution preserved",
+  "entry_main": "8d3230cbc0d12686818df7d714913b466c4dce88",
+  "status": "bounded_production_guard_final_native_and_scientific_gates_passed_delivery_required",
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "original_failures": {
+    "empty": {
+      "classification": "expected invalid lifecycle reproduction; not a passing contract",
+      "argv": [
+        "build/boundary-close-state/original-crt/Debug/uv_lifetime_probe.exe",
+        "boundary-empty-close"
+      ],
+      "exit": 3221226505,
+      "binary_sha256": "77cc1d53425ddad6c2cbbdeff01d762b35f3eaee62367ba057dc91d3a91d3cef",
+      "diagnostic": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\include\\list(1238) : Assertion failed: back() called on empty list\r\n"
+    },
+    "repeat": {
+      "classification": "expected invalid lifecycle reproduction; source shows first becomes null after successful close and is then dereferenced in adjacency insertion",
+      "argv": [
+        "build/boundary-close-state/original-crt/Debug/uv_lifetime_probe.exe",
+        "boundary-repeat-close"
+      ],
+      "exit": 3221225477,
+      "binary_sha256": "77cc1d53425ddad6c2cbbdeff01d762b35f3eaee62367ba057dc91d3a91d3cef"
+    }
+  },
+  "production": {
+    "include/crab_mesh/aft/boundary.h": {
+      "before": "4a43a21a127c0b825de07d23c9954080ef8f71fa193280b6d47c346dbbc188aa",
+      "after": "8df347c5b31684816c809241aa7b770c7a8b64a70327049f3948a18828ef55cd"
+    },
+    "src/crab_mesh/aft/boundary.cpp": {
+      "before": "6b5f1b60b64ad9301dd0f77103f3f92cdb93ec6b3e327b0dcabc1ef83fe8167b",
+      "after": "ab4cc2e42689f62eb6db138ea1cd2360f7c80acdd08641cf571b409db1f8025b"
+    }
+  },
+  "source_reversal": "Before explicit formatting, remove exactly three guard lines and one interface comment to reconstruct entry bytes. Lexical proof binds token-identical formatting of only those two files; valid operation tokens/string literals unchanged. Other 520 protected identities unchanged.",
+  "protected_reference": {
+    "path": "docs/evidence/stage3/complete_analytic_uv/summary.json",
+    "sha256": "46fcf6f2f33e541c9b6906beb9e7e9a8403270744ac5050c9adac8a6254fbe5c",
+    "entry_record_sha256": "8bac826d2f1a06a6017e45b123ee9cf778f464d06ff875099960c08f2793eea1"
+  },
+  "original_evidence_identities_preserved": 43,
+  "test_probe_sha256": "5cc81eef8e5584cba6fcec980e25749a89cb37808b74f1e73259aa2c7bd62cfb",
+  "native_controls": {
+    "profiles": [
+      "GCC C++17",
+      "MSVC C++17 Debug iterator2"
+    ],
+    "states": [
+      "empty",
+      "closed"
+    ],
+    "reversal_flags": [
+      false,
+      true
+    ],
+    "ordinary_refusals_per_profile": 4,
+    "checked_allocation_denied_refusals": 4,
+    "state_preservation": [
+      "owner pointer order",
+      "vertex/edge IDs",
+      "EdgeSet adjacency",
+      "new-contour closing identity/IDs/incidence"
+    ],
+    "retained_checked_blocks": 0,
+    "retained_checked_bytes": 0,
+    "valid_checked_trace_exact": true,
+    "existing_denial_sites": [
+      4,
+      14,
+      10
+    ],
+    "actual_hook_denial_detected": true,
+    "report_sha256": "095b40f3ac0ccff7f905fd387ee7dac044d2904bd3ac23d1bb76e301dd666082",
+    "formatted_report_sha256": "cce4d1bcc51e8651e597c779495fac4ed8f6edda1cf5467a176986c6a9e03564"
+  },
+  "scientific": {
+    "report": "build/boundary-close-state/final-science/report.json",
+    "report_sha256": "9baaf1955288f0a9e0d207bf5801ac12353594b202427a609fd1704a9f7f7a8a",
+    "earlier_four_passed_executions": {
+      "report_sha256": "f1a4338b8ae78c261b6ce997f07b595793e0f6ec2c2f11aa2f37b585cba6aac7",
+      "disposition": "Retained; final images changed after explicit formatting, so four affected scientific gates repeated with no cap change."
+    },
+    "cases": [
+      {
+        "abi": "gcc",
+        "model": "eistute",
+        "states": 5,
+        "exact_artifacts": 25,
+        "positive_boundaries": 15,
+        "accepted": [
+          0,
+          1
+        ],
+        "rejected": [
+          2,
+          3,
+          4
+        ],
+        "executable_sha256": "aae2a846b7e68aa0cca71e3590b570048c40ce327d860f265d6c642e560a5203"
+      },
+      {
+        "abi": "gcc",
+        "model": "book",
+        "states": 4,
+        "exact_artifacts": 20,
+        "positive_boundaries": 108,
+        "accepted": [
+          0,
+          1
+        ],
+        "rejected": [
+          2,
+          3
+        ],
+        "executable_sha256": "aae2a846b7e68aa0cca71e3590b570048c40ce327d860f265d6c642e560a5203"
+      },
+      {
+        "abi": "msvc",
+        "model": "eistute",
+        "states": 5,
+        "exact_artifacts": 25,
+        "positive_boundaries": 15,
+        "accepted": [
+          0,
+          1
+        ],
+        "rejected": [
+          2,
+          3,
+          4
+        ],
+        "executable_sha256": "ba86996bb6c37fd3d8f321bd5b1c378959a616f68eff245ba10388cb7495aa1e"
+      },
+      {
+        "abi": "msvc",
+        "model": "book",
+        "states": 4,
+        "exact_artifacts": 20,
+        "positive_boundaries": 108,
+        "accepted": [
+          0,
+          1
+        ],
+        "rejected": [
+          2,
+          3
+        ],
+        "executable_sha256": "ba86996bb6c37fd3d8f321bd5b1c378959a616f68eff245ba10388cb7495aa1e"
+      }
+    ]
+  },
+  "qualified_application_artifacts": {
+    "build/windows-gcc17/bin/ap_mesh.exe": "aae2a846b7e68aa0cca71e3590b570048c40ce327d860f265d6c642e560a5203",
+    "build/windows-gcc17/libap_mesh_engine.a": "1040cdc2f49b955f9de964714c878522a61682c39c9c015ecdaa8b0e5260f2aa",
+    "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "ba86996bb6c37fd3d8f321bd5b1c378959a616f68eff245ba10388cb7495aa1e",
+    "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "09dc0a12ebb8dceca556a25ef8c51266eb6a86377584f5262dabb7da07e5bdeb"
+  },
+  "analysis": {
+    "production_full_unit": "passed all 13 native compile commands",
+    "fixture_positive_changed_ranges": "passed unchanged checks/warnings-as-errors with forward-slash path filter",
+    "existing_invalid_controls": "UAF and leak diagnostics detected; full-unit UV probe remains expected-failed",
+    "record_sha256": "45dfc6a591ef53ed15316cf36dd32c4550a83048331ad34bf7212fa20970fa2e",
+    "formatted_record_sha256": "02fe91dab602b7b112e6ac8bb946147f17d5284b206a97e0edf312849e288d4f"
+  },
+  "required_ctest": 75,
+  "required_python": 515,
+  "retained_operational_failures": [
+    "New fixture EdgeList/EdgeSet compilation error corrected before native reproduction",
+    "Unknown local hook-control mode refused; only unstarted actual hook/denial controls resumed",
+    "Windows-separator line filter ineffective; existing forward-slash convention applied without check relaxation",
+    "Staged-file formatting gate required explicit formatting of the two legacy files; lexical identity and all affected final-image gates pass."
+  ],
+  "limits": [
+    "No minimum contour size or scientific input-domain expansion",
+    "No setter/foreign-alias consistency or complete mesh retry",
+    "No whole-process/parallel/stage closure"
+  ],
+  "formatting": {
+    "report": "build/boundary-close-state/format-preservation.json",
+    "report_sha256": "bd340c85601947e1ee900660b6c36eb2ae175322755f54556d0d84fbc0dae0c6",
+    "token_proof": {
+      "src/crab_mesh/aft/boundary.cpp": {
+        "before": "4aa72c872576742550519883f25316d4ca4d7dfcdcd4d39fd12873e58dcee8a1",
+        "after": "ab4cc2e42689f62eb6db138ea1cd2360f7c80acdd08641cf571b409db1f8025b",
+        "lexical_tokens": 1164,
+        "token_sha256": "04918f407285cdd10248a341143e247a44162934cc17e04789bf7c52db35206b"
+      },
+      "include/crab_mesh/aft/boundary.h": {
+        "before": "551b6aff0de7f9455465aa319b3fad929df769d4a98504d6ac1475aeba77bb7a",
+        "after": "8df347c5b31684816c809241aa7b770c7a8b64a70327049f3948a18828ef55cd",
+        "lexical_tokens": 263,
+        "token_sha256": "257edf7aeb7d9c712c7841ef1dc79d72967b295ff485c0a47843244d4bab1735"
+      }
+    }
+  }
+}

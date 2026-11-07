@@ -51,15 +51,15 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
-The current item is [complete native analytic UV callers](evidence/COMPLETE_ANALYTIC_UV_CALLERS.md),
-S3-06/C10: the six admitted inputs now execute through original template transfer
-and smoothing, instead of ending at the geometry cut. Each GCC/checked-MSVC
-profile passes 17 prefix and 12 full observations with exact native differential
-agreement, final positive unit-area meshes and empty source owner/queue state.
-Require exact-head/main 75 CTest / 515 Python, unchanged production/scientific
-identities and fresh remote gates. No outside-root retirement or recovery claim.
-PR #175 closes the preceding required-prefix package at main
-`3a333a960439599b363b33f39103ed664c947b73`, with its verified integration seal.
+The current production item is [boundary close state guard](evidence/BOUNDARY_CLOSE_STATE.md),
+S3-06/C10 and supported invalid-call handling under S3-10. Empty and repeated close
+are reproduced fatal lifecycle calls. Reject before allocation/mutation while
+preserving the entire valid operation body, owner/ID/adjacency state and new
+contour continuation. Require native GCC/checked-MSVC controls, unchanged valid
+trace/28 denials, frozen articles and exact-head/main 75 CTest / 515 Python.
+This changes invalid-call behavior only; no contour-size or scientific threshold
+is added. PR #176 closes the preceding complete-caller observation at main
+`8d3230cbc0d12686818df7d714913b466c4dce88` with its verified integration seal.
 
 PR #174 closes [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md)
 at main `8f0dbc06b91d583910ec15f66e6217002420ee68`, with exact-head/main 75 CTest /

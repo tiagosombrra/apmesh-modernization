@@ -9,7 +9,7 @@ Boundary::Boundary() : Shape() {
 
 Boundary::~Boundary() {
   while (!edges.empty()) {
-    Edge *e = edges.front();
+    Edge* e = edges.front();
     edges.pop_front();
 
     e->DetachVertices();
@@ -18,14 +18,14 @@ Boundary::~Boundary() {
   }
 
   while (!boundary.empty()) {
-    Vertex *v = boundary.front();
+    Vertex* v = boundary.front();
     boundary.pop_front();
 
     delete v;
   }
 }
 
-Edge *Boundary::makeEdge(Vertex *v) {
+Edge* Boundary::makeEdge(Vertex* v) {
   apmesh::memory::PendingEdge e(new Edge(boundary.back(), v, lastEdgeId + 1));
 
   boundary.back()->addAdjacentEdge(e.get());
@@ -114,7 +114,7 @@ Vertex* Boundary::addVertex(double x, double y, CurveAdaptiveParametric* c, bool
   return v;
 }
 
-Vertex *Boundary::addVertex(long int id, double x, double y) {
+Vertex* Boundary::addVertex(long int id, double x, double y) {
   Vertex* v = addVertex(x, y, nullptr);
 
   if (v) {
@@ -129,6 +129,9 @@ Vertex *Boundary::addVertex(long int id, double x, double y) {
 }
 
 bool Boundary::close(CurveAdaptiveParametric* c, bool reversed) {
+  if (!first || boundary.empty())
+    return false;
+
   apmesh::memory::PendingEdge pending_edge(new Edge(boundary.back(), first, lastEdgeId + 1));
   Edge* e = pending_edge.get();
 
@@ -157,7 +160,7 @@ bool Boundary::close(CurveAdaptiveParametric* c, bool reversed) {
   return true;
 }
 
-Edge *Boundary::getEdge(long int id) {
+Edge* Boundary::getEdge(long int id) {
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
     if ((*iter)->getId() == id) {
       return (*iter);
@@ -167,9 +170,8 @@ Edge *Boundary::getEdge(long int id) {
   return nullptr;
 }
 
-Vertex *Boundary::getVertex(long int id) {
-  for (VertexList::iterator iter = boundary.begin(); iter != boundary.end();
-       iter++) {
+Vertex* Boundary::getVertex(long int id) {
+  for (VertexList::iterator iter = boundary.begin(); iter != boundary.end(); iter++) {
     if ((*iter)->getId() == id) {
       return (*iter);
     }
@@ -178,15 +180,14 @@ Vertex *Boundary::getVertex(long int id) {
   return nullptr;
 }
 
-void Boundary::getBox(double *minX, double *minY, double *maxX, double *maxY) {
+void Boundary::getBox(double* minX, double* minY, double* maxX, double* maxY) {
   *minX = boundary.front()->getX();
   *maxX = boundary.front()->getX();
 
   *minY = boundary.front()->getY();
   *maxY = boundary.front()->getY();
 
-  for (VertexList::iterator iter = ++boundary.begin(); iter != boundary.end();
-       iter++) {
+  for (VertexList::iterator iter = ++boundary.begin(); iter != boundary.end(); iter++) {
     if ((*iter)->getX() < *minX) {
       *minX = (*iter)->getX();
     }
@@ -205,7 +206,7 @@ void Boundary::getBox(double *minX, double *minY, double *maxX, double *maxY) {
   }
 }
 
-bool Boundary::belongs(Edge *e) {
+bool Boundary::belongs(Edge* e) {
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
     if ((*iter) == e) {
       return true;
@@ -215,7 +216,7 @@ bool Boundary::belongs(Edge *e) {
   return false;
 }
 
-bool Boundary::belongs(Vertex *v1, Vertex *v2) {
+bool Boundary::belongs(Vertex* v1, Vertex* v2) {
   for (EdgeList::iterator iter = edges.begin(); iter != edges.end(); iter++) {
     if ((*iter)->equals(v1, v2)) {
       return true;
