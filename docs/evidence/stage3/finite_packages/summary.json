@@ -1,0 +1,336 @@
+{
+  "schema": 1,
+  "entry_main": "8550569d0c881843d7818d099ce56761df1ad800",
+  "classification": "Finite Stage 3 execution catalog and required F1 caller/precondition qualification",
+  "status": "F1_four_scopes_qualified_delivery_and_main_required",
+  "production_changes": 0,
+  "scientific_policy_changes": 0,
+  "stage_closure": false,
+  "fixed_catalog": {
+    "packages": 7,
+    "work_items": 28,
+    "final_audit": "F8",
+    "F1_items": 4,
+    "other_packages_remain_open": 6,
+    "blocked_admission_items": [
+      "F3-04",
+      "F4-03"
+    ]
+  },
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "physical_instruments": {
+    "outcomes": 34,
+    "original_controls_retained": 31,
+    "new_external_owner_outcomes": 3,
+    "isolated_crt_iterator_level": 0,
+    "report": "build/stage3-packages/submesh-qualification/report.json",
+    "sha256": "c3ce5cb85dc1d42ca9f29c8dcedff78292685cad900d9192703146ed1d1f3d32",
+    "executables": {
+      "asan": {
+        "path": "build/stage3-packages/submesh-asan/RelWithDebInfo/submesh_lifetime_probe.exe",
+        "sha256": "f18d68dcd1d0a98292291ad314a6b599fe523c203185bc361937c9a92c782866"
+      },
+      "crt": {
+        "path": "build/stage3-packages/submesh-crt/Debug/submesh_lifetime_probe.exe",
+        "sha256": "c94eaaba4525f01a82440600ccc848cd4dd02e166adc1c0be7f52c9afa1001e7"
+      }
+    }
+  },
+  "typed_callers": {
+    "prior_main": "8550569d0c881843d7818d099ce56761df1ad800",
+    "baseline_log_sha256": "cbf7081ab484ffd60a6fa1d7fc10954f017304ce0d9be8510ccd9345c8cc2a95",
+    "markers": [
+      "serial_reuse call=0 archived=1 expected=1 graph_equal=1 diagnostics_equal=1",
+      "serial_reuse call=1 archived=1 expected=1 graph_equal=1 diagnostics_equal=1",
+      "serial_reuse call=2 archived=0 expected=0 graph_equal=1 diagnostics_equal=1",
+      "patch_caller_observers patches=3 registered=1 external_retired=1 local_retired=1"
+    ],
+    "required_exact_head_main_recheck": true
+  },
+  "adaptive_reuse": {
+    "whole_process_iterator_level": 2,
+    "control_processes": 6,
+    "model_processes": 2,
+    "calls_each_model": 2,
+    "pair_cap_seconds": 300,
+    "report": "build/stage3-packages/qualification-final/report.json",
+    "sha256": "29f7a4d29cd765883248205b9cf1f1a85f4d75ab2ff073671eaab639d5fef0b7",
+    "executable": "build/stage3-packages/native/bin/Debug/serial_crt_reuse_probe.exe",
+    "executable_sha256": "2dd7c50f7e1461c6efa597eb2ca493a9532da4a47efb88f210f28658a8b31073",
+    "cases": [
+      {
+        "model": "eistute",
+        "lifetime": {
+          "app_exit": 0,
+          "attempts": 0,
+          "denied": 0,
+          "caught": 0,
+          "late_mode": 0,
+          "normal_blocks_delta": 0,
+          "normal_bytes_delta": 0,
+          "client_blocks_delta": 0,
+          "client_bytes_delta": 0,
+          "newer_live_blocks": 0,
+          "newer_live_bytes": 0,
+          "live_requests": [],
+          "observed_allocations": [],
+          "clean": true
+        },
+        "native_calls": [
+          {
+            "index": 0,
+            "exit": 0,
+            "archived": 5,
+            "finduv_calls": 14660,
+            "imax_exits": 1542
+          },
+          {
+            "index": 1,
+            "exit": 0,
+            "archived": 5,
+            "finduv_calls": 14660,
+            "imax_exits": 1542
+          }
+        ],
+        "science": [
+          {
+            "index": 0,
+            "states": 5,
+            "exact_artifacts": [
+              "eistute_domain_adaptation.csv",
+              "eistute_n.process__metrics_rank_-1.csv",
+              "eistute_passo_0_acceptance_accepted.log",
+              "eistute_passo_0_incidences.json",
+              "eistute_passo_0_malha_0.obj",
+              "eistute_passo_1_acceptance_accepted.log",
+              "eistute_passo_1_curve_adaptation_accepted.csv",
+              "eistute_passo_1_incidences.json",
+              "eistute_passo_1_malha_1.obj",
+              "eistute_passo_1_patch_adaptation_accepted.csv",
+              "eistute_passo_2_acceptance_rejected.log",
+              "eistute_passo_2_curve_adaptation_rejected.csv",
+              "eistute_passo_2_incidences.json",
+              "eistute_passo_2_malha_2.obj",
+              "eistute_passo_2_patch_adaptation_rejected.csv",
+              "eistute_passo_3_acceptance_rejected.log",
+              "eistute_passo_3_curve_adaptation_rejected.csv",
+              "eistute_passo_3_incidences.json",
+              "eistute_passo_3_malha_3.obj",
+              "eistute_passo_3_patch_adaptation_rejected.csv",
+              "eistute_passo_4_acceptance_rejected.log",
+              "eistute_passo_4_curve_adaptation_rejected.csv",
+              "eistute_passo_4_incidences.json",
+              "eistute_passo_4_malha_4.obj",
+              "eistute_passo_4_patch_adaptation_rejected.csv"
+            ],
+            "positive_boundaries": 15,
+            "accepted": [
+              0,
+              1
+            ],
+            "rejected": [
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "index": 1,
+            "states": 5,
+            "exact_artifacts": [
+              "eistute_domain_adaptation.csv",
+              "eistute_n.process__metrics_rank_-1.csv",
+              "eistute_passo_0_acceptance_accepted.log",
+              "eistute_passo_0_incidences.json",
+              "eistute_passo_0_malha_0.obj",
+              "eistute_passo_1_acceptance_accepted.log",
+              "eistute_passo_1_curve_adaptation_accepted.csv",
+              "eistute_passo_1_incidences.json",
+              "eistute_passo_1_malha_1.obj",
+              "eistute_passo_1_patch_adaptation_accepted.csv",
+              "eistute_passo_2_acceptance_rejected.log",
+              "eistute_passo_2_curve_adaptation_rejected.csv",
+              "eistute_passo_2_incidences.json",
+              "eistute_passo_2_malha_2.obj",
+              "eistute_passo_2_patch_adaptation_rejected.csv",
+              "eistute_passo_3_acceptance_rejected.log",
+              "eistute_passo_3_curve_adaptation_rejected.csv",
+              "eistute_passo_3_incidences.json",
+              "eistute_passo_3_malha_3.obj",
+              "eistute_passo_3_patch_adaptation_rejected.csv",
+              "eistute_passo_4_acceptance_rejected.log",
+              "eistute_passo_4_curve_adaptation_rejected.csv",
+              "eistute_passo_4_incidences.json",
+              "eistute_passo_4_malha_4.obj",
+              "eistute_passo_4_patch_adaptation_rejected.csv"
+            ],
+            "positive_boundaries": 15,
+            "accepted": [
+              0,
+              1
+            ],
+            "rejected": [
+              2,
+              3,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "model": "book",
+        "lifetime": {
+          "app_exit": 0,
+          "attempts": 0,
+          "denied": 0,
+          "caught": 0,
+          "late_mode": 0,
+          "normal_blocks_delta": 0,
+          "normal_bytes_delta": 0,
+          "client_blocks_delta": 0,
+          "client_bytes_delta": 0,
+          "newer_live_blocks": 0,
+          "newer_live_bytes": 0,
+          "live_requests": [],
+          "observed_allocations": [],
+          "clean": true
+        },
+        "native_calls": [
+          {
+            "index": 0,
+            "exit": 0,
+            "archived": 4,
+            "finduv_calls": 33456,
+            "imax_exits": 0
+          },
+          {
+            "index": 1,
+            "exit": 0,
+            "archived": 4,
+            "finduv_calls": 33456,
+            "imax_exits": 0
+          }
+        ],
+        "science": [
+          {
+            "index": 0,
+            "states": 4,
+            "exact_artifacts": [
+              "book_domain_adaptation.csv",
+              "book_n.process__metrics_rank_-1.csv",
+              "book_passo_0_acceptance_accepted.log",
+              "book_passo_0_incidences.json",
+              "book_passo_0_malha_0.obj",
+              "book_passo_1_acceptance_accepted.log",
+              "book_passo_1_curve_adaptation_accepted.csv",
+              "book_passo_1_incidences.json",
+              "book_passo_1_malha_1.obj",
+              "book_passo_1_patch_adaptation_accepted.csv",
+              "book_passo_2_acceptance_rejected.log",
+              "book_passo_2_curve_adaptation_rejected.csv",
+              "book_passo_2_incidences.json",
+              "book_passo_2_malha_2.obj",
+              "book_passo_2_patch_adaptation_rejected.csv",
+              "book_passo_3_acceptance_rejected.log",
+              "book_passo_3_curve_adaptation_rejected.csv",
+              "book_passo_3_incidences.json",
+              "book_passo_3_malha_3.obj",
+              "book_passo_3_patch_adaptation_rejected.csv"
+            ],
+            "positive_boundaries": 108,
+            "accepted": [
+              0,
+              1
+            ],
+            "rejected": [
+              2,
+              3
+            ]
+          },
+          {
+            "index": 1,
+            "states": 4,
+            "exact_artifacts": [
+              "book_domain_adaptation.csv",
+              "book_n.process__metrics_rank_-1.csv",
+              "book_passo_0_acceptance_accepted.log",
+              "book_passo_0_incidences.json",
+              "book_passo_0_malha_0.obj",
+              "book_passo_1_acceptance_accepted.log",
+              "book_passo_1_curve_adaptation_accepted.csv",
+              "book_passo_1_incidences.json",
+              "book_passo_1_malha_1.obj",
+              "book_passo_1_patch_adaptation_accepted.csv",
+              "book_passo_2_acceptance_rejected.log",
+              "book_passo_2_curve_adaptation_rejected.csv",
+              "book_passo_2_incidences.json",
+              "book_passo_2_malha_2.obj",
+              "book_passo_2_patch_adaptation_rejected.csv",
+              "book_passo_3_acceptance_rejected.log",
+              "book_passo_3_curve_adaptation_rejected.csv",
+              "book_passo_3_incidences.json",
+              "book_passo_3_malha_3.obj",
+              "book_passo_3_patch_adaptation_rejected.csv"
+            ],
+            "positive_boundaries": 108,
+            "accepted": [
+              0,
+              1
+            ],
+            "rejected": [
+              2,
+              3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "source_binding": {
+    "default_lifetime_source_exact_reversal": true,
+    "original_two_call_source_unchanged": true,
+    "record_sha256": "eb6c18ad37b57f2a987139ec85148e29476eb3b77720758710a972a049aa3091",
+    "final_build_record_sha256": "feddb449954cdefef1f7b8572763d1353c02413d34126a9e8296ee0c124e69a1",
+    "protected_files": 522,
+    "original_artifacts": 43,
+    "application_artifacts": {
+      "build/windows-gcc17/bin/ap_mesh.exe": "aae2a846b7e68aa0cca71e3590b570048c40ce327d860f265d6c642e560a5203",
+      "build/windows-gcc17/libap_mesh_engine.a": "1040cdc2f49b955f9de964714c878522a61682c39c9c015ecdaa8b0e5260f2aa",
+      "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "ba86996bb6c37fd3d8f321bd5b1c378959a616f68eff245ba10388cb7495aa1e",
+      "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "09dc0a12ebb8dceca556a25ef8c51266eb6a86377584f5262dabb7da07e5bdeb"
+    },
+    "test_and_oracle_sources": {
+      "tests/serial_crt/reuse_entry.cpp": "3c83033c25edc13d74b76bfe6e4eb6542ee037d944b42bfa41b9bb84d29544bd",
+      "tests/serial_crt/lifetime_probe.cpp": "c82b059004aa4122cb7b3acc1dd1ba4d949c0c97af785d0b4cf83033e2966bd6",
+      "tests/serial_crt/lifetime_exit_observer.cpp": "3091ba5939b318d533a5db24331810cd2a44c353e24c138430530e8ee8f48f46",
+      "tests/serial_crt/CMakeLists.txt": "942f41556d498b307dcf29755d8aa16ac68382897ad30e8491036f24ad72dc84",
+      "tests/attempt_metrics_probe.cpp": "3b60846854e433c75d00a0fd722c0bdd6befd489a0e4e37337773c2c91215e2b",
+      "tests/mesh_memory/submesh_probe.cpp": "8d816ab911c955a51785b5f62325d5932e22cab709c7e2655842e2807fea67ce",
+      "tests/mesh_memory/CMakeLists.txt": "a81628e284a8794990be53111c9d37d09aafe668f0d0682b561c6d0420c5fa31",
+      "tools/qualify_reuse_crt_lifetime.py": "ac49661f93f3a7a57ca07243d71f491d4334c7d11ec11226d61f6c59e084485f",
+      "tools/qualify_submesh_lifetime.py": "78d60a03b62dc8f6246bd6e83ca8462d5da67668578182cd3425cdf5dfccb658",
+      "tools/qualify_serial_crt_lifetime.py": "f592c1b9d36c7f8043c8b02156b2a6540d0487438f8e399dab998c4fdb11bea3",
+      "tools/verify_generation.py": "1b3cf1ac925d5b3c92dbb58640c5dfa1b7791fdea85ccd2708dee082294d5c8e",
+      "tests/tooling/test_serial_crt_lifetime.py": "bece8ac4bcaa9904b3cccc1544109f8005d3589a1b5a743c9d098198d27c395c"
+    }
+  },
+  "required_delivery": {
+    "ctest": 75,
+    "python": 524,
+    "fresh_remote": true,
+    "guarded_main_checkout": true,
+    "effective_F1_closure": "Matching exact-head/main integration receipt and remote PR; no whole-row/stage closure"
+  },
+  "retained_failures": [
+    "New bridge C++ signature link failure, before any native process",
+    "Analysis missing implicit MSVC includes, then ordinary/system-header classification; corrected implicit system paths, checks unchanged"
+  ],
+  "retained_initial_success": {
+    "report_sha256": "663bf4e9e7df62b0d1e79b7b76f408bbbaf93315132f70f737c7fc7b183e571c",
+    "disposition": "Final bridge formatting changed image; fixed finite inventory requalified on final image; no failed application retry"
+  },
+  "analysis_record_sha256": "6fd8bd7c118f7b7fb3014f79dadf414e6b129fd386c1016479b6b0857ebf441b"
+}

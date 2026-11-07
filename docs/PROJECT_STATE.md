@@ -2,13 +2,23 @@
 
 ## Current checkpoint and active work
 
-Current production item: [boundary close state guard](evidence/BOUNDARY_CLOSE_STATE.md).
-Empty or already-closed Boundary::close previously reached an invalid list read
-or null contour-start access. A three-line guard returns false before allocation
-or mutation. GCC/checked-MSVC state controls pass; exact successful generation
-trace and all 28 original boundary allocation denials remain unchanged. Require
-frozen Eistute/Book per ABI, exact-head/main 75 CTest / 515 Python and fresh remote/
-identity gates. No valid contour, numerical or scientific policy changes.
+Current route: [seven finite Stage 3 packages](architecture/STAGE3_FINITE_PACKAGES.md),
+28 named work items and one final closure audit. The [status register](architecture/STAGE3_PACKAGE_STATUS.json)
+separates measured scopes, retained evidence and blocked admissions; it is not a
+percentage or a deadline. No original obligation or support promise is removed.
+
+Current delivery: F1 physical owners and repeated successful callers. All four
+item scopes have measured evidence: refreshed local lifetime/observer controls,
+existing typed caller/initial-only reuse, fixed two-call adaptive CRT histories
+and live external-node borrowing with an actual invalid-expiry negative. Require
+exact-head/main 75 CTest / 524 Python, final native-image/source binding and fresh
+remote gates. Only a matching integration seal closes the delivered F1 scope;
+S3-01 and the broader stage retain their F4/F5/F6/F7 dependencies.
+
+The [boundary close guard](evidence/BOUNDARY_CLOSE_STATE.md) is integrated through
+PR #177 at main `8550569d0c881843d7818d099ce56761df1ad800`, with verified exact-head/
+main 75 CTest / 515 Python and its local integration seal. Production and
+scientific policies remain unchanged by the finite-package delivery.
 
 The [complete native analytic UV callers](evidence/COMPLETE_ANALYTIC_UV_CALLERS.md)
 are integrated through PR #176 at main `8d3230cbc0d12686818df7d714913b466c4dce88`,

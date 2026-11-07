@@ -323,11 +323,66 @@ private:
 };
 #endif
 
+bool ExternalNodes() {
+  for (bool populated : {false, true}) {
+    Lifetime previous, borrowed;
+    borrowed.read_observers = true;
+    {
+      std::array<std::unique_ptr<CountedNode>, 3> nodes;
+      for (int i = 0; i < 3; ++i)
+        nodes[i] = std::make_unique<CountedNode>(borrowed, i);
+      {
+        SubMesh incoming;
+        auto element = std::make_unique<CountedTriangle>(borrowed, nodes[0].get(), nodes[1].get(),
+                                                         nodes[2].get());
+        auto* identity = element.get();
+        incoming.AddElement(std::move(element));
+        {
+          SubMesh target;
+          if (populated)
+            Populate(target, previous, 2);
+          target = std::move(incoming);
+          Require(previous.Complete(), "replaced local graph retires before external borrowing");
+          Require(target.GetNumberNos() == 0 && target.GetNumberElements() == 1 &&
+                      target.GetElement(0) == identity && identity->GetArea() == 0.5,
+                  "external-node move preserves actual element identity and analytic area");
+          for (const auto& node : nodes)
+            Require(node->GetNumberElements() == 1 && node->GetElement(0) == identity,
+                    "live external nodes observe the moved element once");
+        }
+        Require(borrowed.elements == 1 && borrowed.nodes == 0,
+                "borrowed nodes survive element teardown");
+        for (const auto& node : nodes)
+          Require(node->GetNumberElements() == 0,
+                  "element teardown retires external-node observations");
+      }
+    }
+    Require(borrowed.Complete(), "independent node owner retires after its borrowing element");
+    std::printf("external_nodes populated:%d identity:1 adjacency:1 complete:1\n", populated);
+  }
+  return true;
+}
+
+bool ExpiredReplacementControl() {
+  Lifetime previous;
+  SubMesh target, incoming;
+  Populate(target, previous, 2);
+  // Deliberately violate the documented independently-live-node precondition.
+  incoming.AddElement(
+      std::make_unique<TriangleAdaptive>(target.GetNoh(0), target.GetNoh(1), target.GetNoh(2)));
+  target = std::move(incoming);
+  return true;
+}
+
 bool Run(const char* mode) {
+  if (std::strcmp(mode, "external-nodes") == 0)
+    return ExternalNodes();
+  if (std::strcmp(mode, "replaced-node-borrow") == 0)
+    return ExpiredReplacementControl();
   if (std::strcmp(mode, "patch-observers") == 0)
     return CheckPatchObservers();
   if (std::strcmp(mode, "contracts") == 0) {
-    bool passed = CheckPatchObservers();
+    bool passed = CheckPatchObservers() && ExternalNodes();
     for (int i = 0; i < 8; ++i) {
       Fixture fixture(i);
       passed = fixture.Exercise() && passed;

@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "entry_main": "8550569d0c881843d7818d099ce56761df1ad800",
+  "catalog": "STAGE3_FINITE_PACKAGES.md",
+  "fixed_work_items": 28,
+  "active_item": null,
+  "stage_closure": false,
+  "original_stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "packages": {
+    "F1": {
+      "status": "qualified_scope_delivery_required",
+      "items": {
+        "F1-01": {
+          "status": "qualified_scope_delivery_required",
+          "evidence": "../evidence/STAGE3_FINITE_EXECUTION.md"
+        },
+        "F1-02": {
+          "status": "qualified_scope_delivery_required",
+          "evidence": "../evidence/STAGE3_FINITE_EXECUTION.md"
+        },
+        "F1-03": {
+          "status": "qualified_scope_delivery_required",
+          "evidence": "../evidence/STAGE3_FINITE_EXECUTION.md"
+        },
+        "F1-04": {
+          "status": "qualified_scope_delivery_required",
+          "evidence": "../evidence/STAGE3_FINITE_EXECUTION.md"
+        }
+      }
+    },
+    "F2": {
+      "status": "open",
+      "items": {
+        "F2-01": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F2-02": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F2-03": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F2-04": {
+          "status": "pending",
+          "evidence": null
+        }
+      }
+    },
+    "F3": {
+      "status": "open",
+      "items": {
+        "F3-01": {
+          "status": "retained_evidence_applicability_required",
+          "evidence": "../evidence/COMPLETE_ANALYTIC_UV_CALLERS.md"
+        },
+        "F3-02": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F3-03": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F3-04": {
+          "status": "blocked_admission",
+          "dependency": "Missing admitted native history reaching outside-root retirement; prior zero reach is unqualified",
+          "evidence": "../evidence/OUTSIDE_IDEAL_VERTEX_RETIREMENT_AUDIT.md"
+        }
+      }
+    },
+    "F4": {
+      "status": "open",
+      "items": {
+        "F4-01": {
+          "status": "retained_evidence_applicability_required",
+          "evidence": "../evidence/PATCH_SUBMESH_RETIREMENT.md"
+        },
+        "F4-02": {
+          "status": "retained_evidence_applicability_required",
+          "evidence": "../evidence/REPLACED_CURVE_OBSERVERS.md"
+        },
+        "F4-03": {
+          "status": "blocked_admission",
+          "dependency": "Prior post-publication cache-mutation admission found no qualified native witness",
+          "evidence": "../evidence/P4_CACHE_MUTATION_ADMISSION.md"
+        },
+        "F4-04": {
+          "status": "pending",
+          "evidence": null
+        }
+      }
+    },
+    "F5": {
+      "status": "open",
+      "items": {
+        "F5-01": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F5-02": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F5-03": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F5-04": {
+          "status": "pending",
+          "evidence": null
+        }
+      }
+    },
+    "F6": {
+      "status": "open",
+      "items": {
+        "F6-01": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F6-02": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F6-03": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F6-04": {
+          "status": "pending",
+          "evidence": null
+        }
+      }
+    },
+    "F7": {
+      "status": "open",
+      "items": {
+        "F7-01": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F7-02": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F7-03": {
+          "status": "pending",
+          "evidence": null
+        },
+        "F7-04": {
+          "status": "pending",
+          "evidence": null
+        }
+      }
+    }
+  },
+  "F8": {
+    "status": "pending_all_required_exits",
+    "evidence": null
+  },
+  "active_delivery": "F1",
+  "next_package": "F2",
+  "completion_rule": "Effective F1 completion requires the matching head/main integration-verification receipt and remote merged PR; all other original-row dependencies remain."
+}

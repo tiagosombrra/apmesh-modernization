@@ -11,6 +11,10 @@
 #error The executable-lifetime CRT observer requires MSVC checked Debug
 #endif
 
+#if defined(AP_MESH_CRT_REUSE_ENTRY)
+extern "C" int SerialCrtReuseRun(int argc, char** argv);
+#endif
+
 namespace {
 _CrtMemState before{};
 HANDLE output_handle = INVALID_HANDLE_VALUE;
@@ -185,7 +189,11 @@ int main(int argc, char** argv) {
       app_exit = 64;
     }
   } else {
+#if defined(AP_MESH_CRT_REUSE_ENTRY)
+    app_exit = SerialCrtReuseRun(argc, argv);
+#else
     app_exit = apmesh::application::RunApplication(argc, argv);
+#endif
   }
   std::printf("LIFETIME_MAIN app_exit=%d iterator_level=%d attempts=%ld denied=%ld caught=%d\n",
               app_exit, _ITERATOR_DEBUG_LEVEL, attempts, denied, caught);

@@ -26,6 +26,9 @@ def qualify(asan, crt, runtime, output):
     cases += [("asan", asan, "patch-observers", None),
               ("crt", crt, "patch-observers", None),
               ("crt", crt, "patch-noalloc", None)]
+    cases += [("asan", asan, "external-nodes", None),
+              ("crt", crt, "external-nodes", None),
+              ("asan", asan, "replaced-node-borrow", "heap-use-after-free")]
     results = []
     for instrument, executable, mode, diagnostic in cases:
         process = subprocess.run([str(executable.resolve()), mode], env=environment,
@@ -55,6 +58,10 @@ def qualify(asan, crt, runtime, output):
                                      "rebind:1 foreign:1 moves:1 patch_moves:1") in text
                 if mode == "patch-noalloc":
                     passed = passed and "patch_allocation=attempts:0 denied:0" in text
+            elif mode == "external-nodes":
+                passed = passed and all(
+                    f"external_nodes populated:{int(populated)} identity:1 adjacency:1 complete:1" in text
+                    for populated in (False, True))
         results.append({"instrument": instrument, "mode": mode, "exit_code": process.returncode,
                         "passed": bool(passed), "log_sha256": hashlib.sha256(data).hexdigest(),
                         "retained_blocks": int(retained[1]) if retained else None,
@@ -85,7 +92,7 @@ def qualify(asan, crt, runtime, output):
                         for name, path in instruments},
         "cases": results,
     }
-    (output / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    (output / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
     return report
 
 

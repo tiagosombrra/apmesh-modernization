@@ -488,7 +488,7 @@
     },
     {
       "path": "tests/serial_crt/CMakeLists.txt",
-      "sha256": "7d96434fcaec4415061ffa00a831ee21c1c8e4b9dc809f24e5987ed030cead71"
+      "sha256": "942f41556d498b307dcf29755d8aa16ac68382897ad30e8491036f24ad72dc84"
     },
     {
       "path": "tests/shortcut_face_memory/CMakeLists.txt",

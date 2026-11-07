@@ -31,3 +31,16 @@ target_link_libraries(serial_crt_lifetime_probe PRIVATE APMesh::Engine)
 target_compile_options(serial_crt_lifetime_probe PRIVATE /W4 /permissive- /EHsc /we4530)
 set_target_properties(serial_crt_lifetime_probe PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+
+# Reuse the original two-call public Execute sequence without editing its body.
+add_library(serial_crt_reuse_entry OBJECT reuse_entry.cpp)
+target_compile_options(serial_crt_reuse_entry PRIVATE /W4 /permissive- /EHsc /we4530)
+target_link_libraries(serial_crt_reuse_entry PRIVATE APMesh::Engine)
+
+add_executable(serial_crt_reuse_probe lifetime_probe.cpp lifetime_exit_observer.cpp
+  $<TARGET_OBJECTS:serial_crt_reuse_entry>)
+target_compile_definitions(serial_crt_reuse_probe PRIVATE AP_MESH_CRT_REUSE_ENTRY)
+target_compile_options(serial_crt_reuse_probe PRIVATE /W4 /permissive- /EHsc /we4530)
+target_link_libraries(serial_crt_reuse_probe PRIVATE APMesh::Engine Rstrtmgr)
+set_target_properties(serial_crt_reuse_probe PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
