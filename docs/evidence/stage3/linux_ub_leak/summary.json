@@ -1,0 +1,292 @@
+{
+  "schema": 1,
+  "classification": "engineering-only controlled allocator integration repair and fixed Linux UB/leak qualification",
+  "observed_production_revision": "6a3d25e647c633b3f36520181a789a79d98e02d2",
+  "status": "both_instruments_and_fixed_SP01_to_SP10_callers_passed_with_preserved_failures",
+  "production_changes": 0,
+  "scientific_policy_changes": 0,
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "profiles": [
+    {
+      "name": "ubsan",
+      "compiler": "Ubuntu Clang 18.1.3 x86_64 C++17 RelWithDebInfo",
+      "production_native_units": 76,
+      "production_executable_sha256": "85272d2489e6f79fe41e5e7f84ee1e016e4e9884995157b3ab711661bbeda40b",
+      "production_archive_sha256": "15277f635c34862d78803c540ff7d5c0cb76ed9f39c57ba058ea02208e60d304",
+      "unmodified_production_processes": 32,
+      "controlled_terminal_compile_groups": 78,
+      "controlled_terminal_executable_sha256": "77b47f91bf91fd6df02c7d3d719f7bbcd35193873740965e522448ee6242392c",
+      "directed_terminal_processes": 5,
+      "actual_forms": "scalar=2 array=2 deletes=4 denials=2",
+      "payload_preparation_denials": 3,
+      "frozen_scientific_repetitions": 2,
+      "strict_scientific_states": 18,
+      "raw_exact_scientific_artifact_pairs": 90,
+      "positive_article_boundary_comparisons": 246,
+      "SP02_fixture_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444"
+    },
+    {
+      "name": "lsan",
+      "compiler": "Ubuntu Clang 18.1.3 x86_64 C++17 RelWithDebInfo",
+      "production_native_units": 76,
+      "production_executable_sha256": "b29aad3324ff3df66c83614b18853806994c9c8214422f8b4d2bc80cf8fbbeac",
+      "production_archive_sha256": "154137590e46a9e7afbc9c49748b15dbe209fa121ae0ec14470a8f7f50cfbbd5",
+      "unmodified_production_processes": 32,
+      "controlled_terminal_compile_groups": 78,
+      "controlled_terminal_executable_sha256": "3b95d5510ecca416c8e5289b97ebd4731ef8217a276f1e8936dfa72969705619",
+      "directed_terminal_processes": 5,
+      "actual_forms": "scalar=2 array=2 deletes=4 denials=2",
+      "payload_preparation_denials": 3,
+      "frozen_scientific_repetitions": 2,
+      "strict_scientific_states": 18,
+      "raw_exact_scientific_artifact_pairs": 90,
+      "positive_article_boundary_comparisons": 246,
+      "SP02_fixture_sha256": "41eb3c5216ad11452f467321a23c3e32fd10a75f85f538ce9e2c70bb28651444"
+    }
+  ],
+  "repair": {
+    "default": "OFF",
+    "scope": "Linux x86_64 Clang test fixture only",
+    "routing": [
+      "_Znwm",
+      "_Znam",
+      "_ZdlPv",
+      "_ZdaPv",
+      "_ZdlPvm",
+      "_ZdaPvm"
+    ],
+    "actual_definition_source_groups": 3,
+    "default_active_source_identical": true,
+    "unsupported_msvc_option": "passed_expected_rejection",
+    "fixture_sources_sha256": {
+      "tests/terminal_observer/CMakeLists.txt": "795febaab1d6cb3bd18906b6f7df2672bc18d627ec008839e0c22427b3ee8a6a",
+      "tests/terminal_observer/allocation_observer.cpp": "9513926faaaf3796ee94f37272a208669812739e57d7b7e18f2f8ffa95a6ab8b",
+      "tests/terminal_observer/allocation_observer.h": "9a1943fedaba2b609360f7dc2a1c0f56ffd8bfeae82f8c19d90e824bdc4af675",
+      "tests/terminal_observer/probe.cpp": "9ea50a8cdb347b9e35b6e7530b911790806d72c31d53dc2deff650624432a6fb",
+      "tests/terminal_observer/leak_control.cpp": "4b007d59cb39104266da65538f5a48caab92fe4750efd2d64c837f214ae04f4d"
+    }
+  },
+  "instrument_controls": {
+    "each_clean_exit": 0,
+    "actual_overflow_exit": 1,
+    "actual_overflow_diagnostic": true,
+    "standalone_lsan_exit": 23,
+    "standalone_lsan_bytes": 128,
+    "standalone_lsan_objects": 1,
+    "controlled_lsan_exit": 23,
+    "controlled_lsan_bytes": 4,
+    "controlled_lsan_objects": 1,
+    "source": "#include <climits>\n#include <cstdio>\n#include <cstring>\n\n__attribute__((noinline)) int Overflow(int value) { return value + 1; }\n__attribute__((noinline)) void Allocate(bool release) {\n    volatile int* values = new int[32];\n    values[0] = 42;\n    if (values[0] != 42) __builtin_trap();\n    if (release) delete[] values;\n}\nint main(int argc, char** argv) {\n    if (argc != 2) return 2;\n    if (std::strcmp(argv[1], \"overflow\") == 0) {\n        volatile int maximum = INT_MAX;\n        return Overflow(maximum);\n    }\n    if (std::strcmp(argv[1], \"leak\") == 0) { Allocate(false); return 0; }\n    if (std::strcmp(argv[1], \"clean\") != 0) return 2;\n    Allocate(true);\n    if (Overflow(41) != 42) return 3;\n    std::puts(\"clean-release-and-defined-arithmetic\");\n    return 0;\n}\n"
+  },
+  "compiler_reference": {
+    "models": [
+      "eistute",
+      "book"
+    ],
+    "states": 9,
+    "positive_boundaries": 123,
+    "raw_windows_linux_comparison": "failed_preserved",
+    "encoding_disposition": "CRLF to LF only; 45 exact canonical scientific artifacts",
+    "numerical_normalization_or_new_tolerance": false
+  },
+  "validation": {
+    "valid_default_and_wrapped_tidy": "passed_LLVM_22.1.8",
+    "standalone_invalid_leak_tidy": "passed_expected_diagnostic",
+    "configuration_or_suppression_changes": false,
+    "required_exact_delivery_head_and_main": {
+      "ctest": 75,
+      "python": 495,
+      "failures": 0,
+      "skips": 0
+    }
+  },
+  "preservation": {
+    "status": "passed",
+    "source_build_input_files_unchanged": 522,
+    "source_write_times_unchanged": true,
+    "qualified_windows_artifacts_unchanged": {
+      "build/windows-gcc17/bin/ap_mesh.exe": "760c4221d50085be05ac1463d38919ac5c081f6c0d83ab7de15d028776b50c2d",
+      "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "5bbc8b46242ebfbe896a17ef97ec8d12163f2a7aaa9d806bd9a29ce219604901",
+      "build/windows-gcc17/libap_mesh_engine.a": "55c7013ef76a18a12364a1ade44f911b59496c7599631247bf28a990466d7136",
+      "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "0be3adf0c6a41fb9c7c98d8613e17bf2668827a7451cc96f0eb6996aabd4b50e"
+    },
+    "historical_entry_artifacts_unchanged": 43,
+    "fixture_sources": {
+      "tests/terminal_observer/CMakeLists.txt": "795febaab1d6cb3bd18906b6f7df2672bc18d627ec008839e0c22427b3ee8a6a",
+      "tests/terminal_observer/allocation_observer.cpp": "9513926faaaf3796ee94f37272a208669812739e57d7b7e18f2f8ffa95a6ab8b",
+      "tests/terminal_observer/allocation_observer.h": "9a1943fedaba2b609360f7dc2a1c0f56ffd8bfeae82f8c19d90e824bdc4af675",
+      "tests/terminal_observer/probe.cpp": "9ea50a8cdb347b9e35b6e7530b911790806d72c31d53dc2deff650624432a6fb",
+      "tests/terminal_observer/leak_control.cpp": "4b007d59cb39104266da65538f5a48caab92fe4750efd2d64c837f214ae04f4d"
+    },
+    "production_and_inputs_changed": false
+  },
+  "preserved_findings": [
+    "Missing Linux runtime stops initial control link; runtime installed before new output phase",
+    "Combined undefined,leak control link leaves UBSan handlers unresolved; separate profiles qualified",
+    "Reference controller JSON stage-key mismatch and first incomplete exception-text replay corrected offline without native repeats",
+    "Strict Windows/Linux raw comparison remains failed; all 45 scientific pairs differ only by platform newlines",
+    "Original controlled LSan link rejects six duplicate strong allocation symbols; explicit test integration repaired",
+    "First wrapped LSan capture detects four bytes but unavailable stdout marker stops controller; exact-artifact offline attribution precedes only unstarted callers",
+    "Initial new zero-size-control write rejected by static analysis; revised control does not dereference zero-size storage",
+    "Intentional leak has its own invalid source, expected native/static detections and explicitly flushed marker",
+    "LLVM18 lacks required header filter; qualified LLVM22 configuration retained",
+    "Initial Windows analysis configure without canonical child PATH fails before target generation; canonical environment qualifies separate output",
+    "Architecture inventory CMake hash refreshed; 35 contracts /276 anchors and 164 production files unchanged"
+  ],
+  "limits": [
+    "LSan conservative reachability and compiled-caller allocation-denial scope",
+    "No generic shared-library allocation-hook or all-heap equivalence",
+    "No synchronization boundary qualification from no-sync or independent q OBJ claim",
+    "No Generator exception recovery or same-process reuse coverage from subprocess repetition",
+    "Broader loaders/domains, mutation/foreign observers, outside-root retirement and parallel obligations remain open"
+  ],
+  "commands": [
+    "wsl -d Ubuntu-24.04 -- python3 build/p3-linux-ub-leak/separate-instruments/qualify.py",
+    "wsl -d Ubuntu-24.04 -- python3 build/p3-linux-ub-leak/instrument_first.py",
+    "wsl -d Ubuntu-24.04 -- python3 build/p3-linux-ub-leak/remaining.py ubsan",
+    "wsl -d Ubuntu-24.04 -- python3 build/p3-linux-ub-leak/remaining.py lsan",
+    "wsl -d Ubuntu-24.04 -- python3 build/p3-linux-ub-leak/terminal_final.py"
+  ],
+  "tool_metadata": {
+    "tools": {
+      "clang++": {
+        "path": "/usr/lib/llvm-18/bin/clang",
+        "sha256": "8ef402d453d1ba4902e4ee0f0f847f6cfa01400c95aa43c24e97818b9c0e3f45"
+      },
+      "ld": {
+        "path": "/usr/bin/x86_64-linux-gnu-ld.bfd",
+        "sha256": "e46a122cc3a29feba3b1d0fc2a274b6e46538be016ebe381370c0801bb98b0b8"
+      },
+      "cmake": {
+        "path": "/usr/bin/cmake",
+        "sha256": "1c5227af4edd22d8d689def545e18ee458260c0fd579eba2187967f38817e638"
+      },
+      "ninja": {
+        "path": "/usr/bin/ninja",
+        "sha256": "5965527e09fe2b3787772aa4f711d6a36b393e7f2fcaa744a7a96c5a4ddf59cb"
+      },
+      "python3": {
+        "path": "/usr/bin/python3.12",
+        "sha256": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f"
+      },
+      "addr2line": {
+        "path": "/usr/bin/x86_64-linux-gnu-addr2line",
+        "sha256": "e43ace7e4b089a1c097034838d722d6519715c4a265fde346fbd793f7ff01fed"
+      }
+    },
+    "runtimes": {
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_minimal-i386.a": "a4235912cce4a76137e7098fd5445b596922073469ae953c734bea387aab041e",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_minimal-i386.so": "64c4c8f9ffc7d05128a3c791ad7b2df74340453875d9e4d270a6169144f73b84",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_minimal-x86_64.a": "66e08178e5231422dbe6717cbb0bd427ee4bb678175830ce1064d9d0b50781da",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_minimal-x86_64.a.syms": "e75012de432dd345c24acb6eecad877944bd1944fec55c9b44218ef610424fd0",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_minimal-x86_64.so": "2ae2a3d71d2beb4808bd3431802f3af3bdd869f267a4dabd64aee68ff1e752ed",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_standalone-i386.a": "6869970288a8a520d70c6d408cbb0852384e323783a7d56241fde7f0842512b0",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_standalone-i386.so": "6c0e2487825007d24d37eb14cfa84d6595700be180ffcbe707f089eccef89b2b",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_standalone-x86_64.a": "61651abda13da6eaf5868122830eae1caa052c694f5a31ec7acc03d6c96f304a",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_standalone-x86_64.a.syms": "7e1451c7af1386f34d27acf1eea732fdc3c293f9f501c01af29c5a7b964b3d80",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_standalone-x86_64.so": "c02e56cac9f8fc6886db10d662e2ff7b007525585d3f984323cda31c8432b9da",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_standalone_cxx-i386.a": "cfcdba9551fa565a8b0aeccfe84469b5fcdd96a4307409af9d9c815b7d0c7ff8",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_standalone_cxx-x86_64.a": "8c8d99537bbb3ce01a213a939433a8db5f5d211014b0f2a9bec33256d6662ebf",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.ubsan_standalone_cxx-x86_64.a.syms": "e75012de432dd345c24acb6eecad877944bd1944fec55c9b44218ef610424fd0",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.lsan-i386.a": "c4d8d06edfff40a5a97611ab18e2d8be7b7c0aeff6a3e3e7e5d47fd8447eb9ca",
+      "/usr/lib/llvm-18/lib/clang/18/lib/linux/libclang_rt.lsan-x86_64.a": "950322d2d50f6a310cd06a5f76ad0539608e685f122a1fb7d4aed1504bf35956",
+      "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+      "/usr/lib/x86_64-linux-gnu/libm.so.6": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+      "/usr/lib/x86_64-linux-gnu/libresolv.so.2": "1d730ea434da5a5595bc6a961d7a9ace83e03703205df9644044b3dca79c362f",
+      "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+      "/usr/lib/x86_64-linux-gnu/libc.so.6": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf"
+    },
+    "profiles": {
+      "ubsan": {
+        "executable_sha256": "85272d2489e6f79fe41e5e7f84ee1e016e4e9884995157b3ab711661bbeda40b",
+        "archive_sha256": "15277f635c34862d78803c540ff7d5c0cb76ed9f39c57ba058ea02208e60d304",
+        "compile_commands_sha256": "998496a6a0573cd00ab5c2a8cdcf05d20d6a494bfa20c1710005b2f0b095b672",
+        "link_sha256": "85fb28ca9a0055b9eaadc03c42639ab22f9e2e63a5dc02d5587c1ce99f10de73",
+        "dependencies_sha256": "b3067a0c22f2ff1922073b2317a90ee854afa83c83e28d2e79231aa07021fd8b"
+      },
+      "lsan": {
+        "executable_sha256": "b29aad3324ff3df66c83614b18853806994c9c8214422f8b4d2bc80cf8fbbeac",
+        "archive_sha256": "154137590e46a9e7afbc9c49748b15dbe209fa121ae0ec14470a8f7f50cfbbd5",
+        "compile_commands_sha256": "8d5416d0366eb7c2a8f69ccc93dc2dd4854cc29c5e4ed383c1f39b0206a61eef",
+        "link_sha256": "4c4513c04fa4e190627cab77841bf69b60afa9843d66180241d453a32c4523ac",
+        "dependencies_sha256": "70385d0e1b126e828028f25eb41e86eb6c659412cba3784f25b3570675871ed3"
+      }
+    },
+    "commands": [
+      {
+        "command": [
+          "addr2line",
+          "-C",
+          "-f",
+          "-e",
+          "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/p3-linux-ub-leak/separate-instruments/controls/ubsan",
+          "0x30725"
+        ],
+        "output": "Overflow(int)\n/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/p3-linux-ub-leak/separate-instruments/controls/probe.cpp:5\n",
+        "artifact_sha256": "73732942d7dffbe28a64ce42fbc1e26d6fcaba3503096d260317f6e5e0c0ccf3"
+      },
+      {
+        "command": [
+          "addr2line",
+          "-C",
+          "-f",
+          "-e",
+          "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/p3-linux-ub-leak/separate-instruments/controls/lsan",
+          "0x36561",
+          "0x36633"
+        ],
+        "output": "Allocate(bool)\n/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/p3-linux-ub-leak/separate-instruments/controls/probe.cpp:7\nmain\n/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/p3-linux-ub-leak/separate-instruments/controls/probe.cpp:18\n",
+        "artifact_sha256": "d7dbc28b83a84c650762022b757d55527a6f80b42b7e1eef7e811122678a4e24"
+      }
+    ],
+    "packages": "clang-18 1:18.1.3-1ubuntu1 ii \nlibc6:amd64 2.39-0ubuntu8.9 ii \nlibclang-rt-18-dev:amd64 1:18.1.3-1ubuntu1 ii \nlibstdc++-13-dev:amd64 13.3.0-6ubuntu2~24.04.1 ii \n"
+  },
+  "local_records_sha256": {
+    "build/p3-linux-ub-leak/report.json": "38af6ccff406df445dce87597c8d58506d456bc3f89a7010e9a34318f3afc0b7",
+    "build/p3-linux-ub-leak/runtime-disposition.json": "91111dc54325b70d6d0e259bcb81a0638fd790a8f04b820fb3e796605bd5f298",
+    "build/p3-linux-ub-leak/instrument-disposition.json": "036b90cc5122ef04c4017d4bdc28909303c1d1d5ed6bc1a3680d25b746be0d43",
+    "build/p3-linux-ub-leak/separate-instruments/report.json": "4aadf82f2d0481943feea8ffe8ed8eb6b2fc310abbd94acbf71ba3cf5b0cc119",
+    "build/p3-linux-ub-leak/separate-instruments/compiler-reference-report.json": "0416fed431a262122b6c785a7351d9e49bd1157fe92b149de7214e2405609730",
+    "build/p3-linux-ub-leak/separate-instruments/remaining-reference-report.json": "131971135bcda54b18b4a5174f18b06a36208a9b2939fae61a068429805a7d61",
+    "build/p3-linux-ub-leak/platform-encoding-disposition.json": "a2fc22c785c604309fe2395725e6111687c417a327d418247d1f8ca18e9383d5",
+    "build/p3-linux-ub-leak/platform-reference-report.json": "8c3a6365159119477af20a48a8235e777e9f045094f711f1215bfa1fbbb73f84",
+    "build/p3-linux-ub-leak/platform-compatibility-report.json": "21e4d8d0f21b8770fffb465011f160b6c2c4b5a3ec2ca0d990e57ebbdbe4f82a",
+    "build/p3-linux-ub-leak/instrument-first/report.json": "ce649d4b744404ca394989be67de63cde2e5bbe48459f8dc9c5d52e89d92ec21",
+    "build/p3-linux-ub-leak/remaining-ubsan/report.json": "20565f7a35b5f41827fcd31ee88c09b65d0e8b7f8856c716079d3ac701f7b644",
+    "build/p3-linux-ub-leak/remaining-lsan/report.json": "ea51ea7ac1c4ac17ac52f7f82c6c5b3cd718f205231f8c834018bcb207d9618f",
+    "build/p3-linux-ub-leak/article-equivalence-report.json": "54fbd22f1d1be1676a3357700bbbb049df5eb81c7194492b04cffcd1e7968b6c",
+    "build/p3-linux-ub-leak/terminal/report.json": "846e7caf9f03c94e896db463babe34e3d329fcc8c37a6d85358175bed8d051ff",
+    "build/p3-linux-ub-leak/terminal-allocator-disposition.json": "4959f491009d31536e68be8c16a73f37de95b1aa090dca8ffe2c1c684c76a7d3",
+    "build/p3-linux-ub-leak/terminal-wrapped/report.json": "2188383322e9c22595823f955fe77a9f2928d1f8263e4b9dc0afb60a8d63a315",
+    "build/p3-linux-ub-leak/terminal-lsan-resumed/report.json": "2f294a656531211cce38432f5a5e2b9030e6228b72c938eb84cc86350c7efdf2",
+    "build/p3-linux-ub-leak/terminal-lsan-resumed/negative-leak-offline-verification.json": "936ba6ad6a92946d3cc61362fd821e106e95c433ed699f4a76419e9a6261ca5c",
+    "build/p3-linux-ub-leak/control-analysis-disposition.json": "db16cc0289cbc713e2e5d8e304a28a0e45a517997a55ed752a539c88305286ed",
+    "build/p3-linux-ub-leak/terminal-final/report.json": "8316fb4905e2e3e369b6aeeb36d14e58c9e0f25b5222611165b658271d18ea7a",
+    "build/p3-linux-ub-leak/default-source-proof-final.json": "533a450ea84d9ee3280c1146a9990717eed3960af9ff926866e034c090c577dc",
+    "build/p3-linux-ub-leak/unsupported-platform-control.json": "4da971bffa6fe5cf83c7a988b823526f518a93d8ea0716e64c068c0d58a92417",
+    "build/p3-linux-ub-leak/tidy-report.json": "e2310eac6bddae8dbcbea880bab900965c3430c1dcde9d17c4dc994765b533dd",
+    "build/p3-linux-ub-leak/tidy-final-report.json": "572a31cf50b1a473391d242ffc3408d04ef425d4ef1017a9d8b1b1924491325e",
+    "build/p3-linux-ub-leak/tidy-negative-report.json": "b90541ce15f7f70408f2640f826d008bcfc117a5c310b638cb08d73dd6f77fa2",
+    "build/p3-linux-ub-leak/tool-metadata.json": "100ddd05edc4cf9162a597a16c6c9a8786023fb3670e3c89c36dde3573e361f9",
+    "build/p3-linux-ub-leak/source-artifact-preservation.json": "a20fc0eef0a634c2148e82883e0f69e3ef72425e1697267fce9618a69ae15b60"
+  },
+  "local_controllers_sha256": {
+    "article_equivalence.py": "f4b99354c6029c288e0936c8d2d2566f8cd062761722713307010839ee2d1891",
+    "default_source_proof.py": "8a0e66fc06b870192ed60c8ad684925a8602c51a00c6f6d103017d2f0db28302",
+    "default_source_proof_final.py": "ed269936bd3299547087545ed70c79fe7018f1850f908f18551bb1a5bd8969f5",
+    "instrument_first.py": "60db5ba3c2ce3f58e1a1e6e2b6e1d9ea6968d11dfeb25ac7be622599fb9e3434",
+    "platform_encoding.py": "fdbdb3c568c432d457d59c304abd49863c29c5cc46a403b79187572f0bd74e1f",
+    "qualify.py": "7e68cbb154e2437b4a9c6da45ffc71e71d09ea267e7c2d02fccc365304387beb",
+    "qualify_platform_reference.py": "26526f7e5591ef91a72a6d4aecc214391caeda4d452d380426840949c5f9176e",
+    "remaining.py": "7f2c5bcafb24c64942134d6cc2077377e9c4eb868e0a8ae762f9350caea7644c",
+    "resume_terminal_lsan.py": "e934d92d02a47c0a52c3f7b856de1c56834c31530b5aab66ec2e585b65bc6d38",
+    "terminal.py": "16fc2d9042168fe994ec45087414471060be8999ab50658f673fd45e9e11e32b",
+    "terminal_final.py": "2cf34c80a3dad0f6a81489cd8ee5f58bb836ba043ee32547e4d7b030d81899ad",
+    "terminal_wrapped.py": "bfdaa5684de16a3dae8f177a298577a216d4f3e4fb3bf6ad9edab007ee97027b",
+    "tool_metadata.py": "f859736c05edbad83e9ef7087e4c4a4aa6d7d60e2b3fa80a71bf55cfc52e398c"
+  }
+}

@@ -17,7 +17,7 @@ No open row is closed by this audit or by the latest green CTest run.
 | S3-06 | UV helper/template/tree/mate ownership | partial-open | Other setters, selected-result adoption, failed-tree reuse/logical rejection and outside-root ideal retirement remain incomplete. Current four prefixes have zero retirement. | P4 |
 | S3-07 | Observer/cache validity | partial-open | Bounded current-observer cleanup exists; public mutation/cache and foreign-observer contracts remain partial. | P2/P4 |
 | S3-08 | Adaptive orchestration | partial-open | Terminal cleanup, accepted-root/error/reporting repairs do not establish full adaptive metadata/history/budget rollback, retry or synchronization-disabled CLI lifetime. | P2/P3/P4 |
-| S3-09 | Complete-process instruments | partial-open | Isolated ASan/CRT batteries do not instrument the whole supported serial process; full-process/parallel/LSan/UBSan coverage and justified equivalence remain open. | P1/P3 |
+| S3-09 | Complete-process instruments | partial-open | Finite serial ASan/CRT and Linux UB/leak observations retain their exact artifact/caller scopes; broader process/heap/parallel coverage and justified equivalence remain open. | P1/P3 |
 | S3-10 | Supported input/configuration domain | partial-open | Eistute/Book and bounded analytic cases do not qualify malformed loaders, extreme/non-power-of-two complete meshes or all models. | P2/P5 |
 
 The [SP-06..08 ASan checkpoint](../evidence/SERIAL_ASAN_REMAINING.md) adds two
@@ -34,6 +34,18 @@ bounded S3-01/05/08/09 observations; no same-Generator recovery, full leak/UB/
 parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
+
+The [Linux UB/leak checkpoint](../evidence/LINUX_UB_LEAK_QUALIFICATION.md) addresses
+the existing L-UB/LEAK preparation and fixed caller inventory. Complete Clang
+C++17 builds, actual clean/overflow/leak controls and independent first SP-02
+verification precede expansion. Failed runtime/link prerequisites, the controller
+key-type error and strict raw cross-platform comparison remain preserved. The
+explicit CRLF/LF disposition normalizes no numerical content. Fixed caller and
+same-platform scientific results are separate from broad process/heap/parallel
+equivalence. This contributes to S3-01/05/08/09 without changing any row status.
+Final observations pass 32 production and five terminal processes per instrument;
+the default-OFF test allocator integration repair preserves actual denial/leak
+controls and all original failures. Exact-head/main delivery gates remain required.
 
 The [checked-CRT terminal prerequisite](../evidence/SERIAL_CRT_TERMINAL.md)
 fails before directed SP-09/10 execution. Its first eight controls pass; the typed

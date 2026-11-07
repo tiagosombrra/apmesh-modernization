@@ -2,11 +2,22 @@
 
 ## Current checkpoint and active work
 
-Current engineering item: [qualified-tree main checkout](evidence/QUALIFIED_MAIN_CHECKOUT.md),
-removing the local old-main/new-main checkout round trip after an already merged
-qualified tree. Preserve clean/exact-head/tree/parent checks, concurrent ref
-progress, hooks and tracked bytes/timestamps. Remote authorization and all main
-gates remain mandatory. No compiler/linker option or scientific input changes.
+Current checkpoint: [Linux UB/leak qualification](evidence/LINUX_UB_LEAK_QUALIFICATION.md).
+Both complete Clang C++17 profiles pass the fixed 32 unmodified-production and
+five final directed terminal callers each. A default-OFF Linux test-observer
+allocation-routing repair resolves the demonstrated standalone LSan symbol
+conflict; actual denial and invalid-leak controls remain mandatory. Instrumented
+articles match the uninstrumented Clang reference strictly; the separate raw
+Windows/Linux newline mismatch remains failed with an explicit encoding-only
+disposition. Require the final exact-head/main delivery seal. Production/scientific
+policies and all ten Stage 3 dispositions remain unchanged; broader Stage 3 is open.
+
+The [qualified-tree main checkout](evidence/QUALIFIED_MAIN_CHECKOUT.md) is
+integrated through PR #172 as main `6a3d25e647c633b3f36520181a789a79d98e02d2`.
+Exact-head/main 75 CTest / 495 Python pass. Its actual guarded checkout preserves
+all 2,328 tracked files and the qualified native executables/archives; the local
+integration seal closes this workflow dependency. Remote publication and every
+main gate remain mandatory for later deliveries.
 
 The [borrowed lookup](evidence/BORROWED_CONTROL_LOOKUP.md) is integrated through
 PR #171 as main `60820f327fb2f89d6218037783e11563ff9a5220`, with exact-head/main
