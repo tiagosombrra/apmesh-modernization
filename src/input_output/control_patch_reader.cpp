@@ -7,6 +7,11 @@ PatchReader::PatchReader() = default;
 PatchReader::~PatchReader() = default;
 
 std::list<std::unique_ptr<PatchBezier>> PatchReader::LoaderBPFile(std::string filename) {
+  return ReadBezierControlPatches(filename, "Error opening the .bp file");
+}
+
+std::list<std::unique_ptr<PatchBezier>>
+PatchReader::ReadBezierControlPatches(const std::string& filename, const char* empty_message) {
   std::list<std::unique_ptr<PatchBezier>> patches;
   auto patch = std::make_unique<PatchBezier>();
 
@@ -98,7 +103,7 @@ std::list<std::unique_ptr<PatchBezier>> PatchReader::LoaderBPFile(std::string fi
     fin.close();
 
   } else {
-    std::cout << "Error opening the .bp file" << std::endl;
+    std::cout << empty_message << std::endl;
   }
 
   return patches;

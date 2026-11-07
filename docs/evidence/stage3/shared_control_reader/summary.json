@@ -1,0 +1,177 @@
+{
+  "schema": 1,
+  "entry_main": "bccd5c1e7af3c058f62085f8fb908f5ccd5db78b",
+  "classification": "engineering-only duplicate parser implementation consolidation",
+  "status": "implementation_and_native_science_gates_passed_pending_exact_head_main_seal",
+  "production_outcome": "One private parser behind two existing wrappers; public validation/messages, complete control ordering/IDs, ownership, allocation counts and numerical behavior preserved",
+  "source_preservation": {
+    "status": "passed",
+    "changed_production_files": [
+      "include/input_output/patch_reader.h",
+      "src/input_output/control_patch_reader.cpp",
+      "src/input_output/patch_reader.cpp"
+    ],
+    "unchanged_production_input_files": 516,
+    "production_build_files_unchanged": 3,
+    "original_entry_artifacts_preserved": 43,
+    "source_sha256": {
+      "include/input_output/patch_reader.h": "38c56582a6fd9643c04a6ec28193f253aa6951b6c4bba0a1598905f43e65f181",
+      "src/input_output/control_patch_reader.cpp": "3215d357735425507d4bdbbc35ac5f71a854c2138868b96680f60a1d2b62cb98",
+      "src/input_output/patch_reader.cpp": "e5b6b8cea747b3733179affebc1acafe6df3713c2f5c67c561280cbb1b141d3b"
+    }
+  },
+  "expansion_guard": {
+    "new_negative_mutations": 8,
+    "historical_negative_mutations": 6,
+    "literal_preserving_entry_equivalence": true
+  },
+  "memory": {
+    "serial_cases": 131,
+    "serial_sweeps": 16,
+    "serial_denials": 2731,
+    "serial_allocation_counts_equal_to_baseline": true,
+    "charge_cases": 189,
+    "charge_sweeps": 20,
+    "charge_denials": 2787,
+    "expected_uaf_leak_hook_controls": "passed; deliberate detections remain expected negatives",
+    "profiles": "existing static Debug CRT iterator 0 with NRVO disabled; MSVC ASan RelWithDebInfo; no whole-process claim"
+  },
+  "traces": [
+    {
+      "name": "gcc-serial",
+      "status": "passed",
+      "paired_traces": 8
+    },
+    {
+      "name": "msvc-crt-serial",
+      "status": "passed",
+      "paired_traces": 8
+    },
+    {
+      "name": "gcc-charge-controlled",
+      "status": "passed",
+      "paired_traces": 24
+    },
+    {
+      "name": "gcc-charge-actual",
+      "status": "passed",
+      "paired_traces": 24
+    },
+    {
+      "name": "msvc-crt-charge",
+      "status": "passed",
+      "paired_traces": 24
+    },
+    {
+      "name": "msvc-asan-serial",
+      "status": "passed",
+      "paired_traces": 8
+    },
+    {
+      "name": "msvc-asan-charge",
+      "status": "passed",
+      "paired_traces": 24
+    }
+  ],
+  "scientific": [
+    {
+      "abi": "gcc",
+      "model": "eistute",
+      "states": 5,
+      "exact_artifacts": 25,
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "abi": "gcc",
+      "model": "book",
+      "states": 4,
+      "exact_artifacts": 20,
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ]
+    },
+    {
+      "abi": "msvc",
+      "model": "eistute",
+      "states": 5,
+      "exact_artifacts": 25,
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "abi": "msvc",
+      "model": "book",
+      "states": 4,
+      "exact_artifacts": 20,
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ]
+    }
+  ],
+  "expected_regression": {
+    "ctest": 75,
+    "python": 482,
+    "failures": 0,
+    "skips": 0
+  },
+  "preserved_tooling_corrections": [
+    "Diagnostic mutation admission matched repeated legacy literal; narrowed to exact delegate expression",
+    "Resource-mask source anchor moved with implementation; revised immutable plan path",
+    "Legacy UTF-8 comments restored with identical C++ tokens/literals and line count"
+  ],
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "remaining": "Original unsupported/wider loader, cache/mutation, whole-process/runtime/DLL/UB/leak, recovery and parallel obligations remain; charge writer-denial controls do not establish successful export",
+  "artifacts": {
+    "build/shared-bezier-control-reader/entry.json": "4cb127bcf8ae2a20edf011481843c756f20837d2a3d5f7bd5d44f061c78e7443",
+    "build/shared-bezier-control-reader/baseline-build.json": "321e93dd3e4e6837e598227678084005af5b5738039927f411e46bd63297a4ec",
+    "build/shared-bezier-control-reader/candidate-build.json": "8685c7c005384e95d9c8b6accf4e18a93d8a72dd89119b7d1612bcc5b4da89bf",
+    "build/shared-bezier-control-reader/baseline-asan-build.json": "d8308aba7c2ac2daa1e909e42c4d729af106a1ace61cfc859d1af3ca1a6231cd",
+    "build/shared-bezier-control-reader/baseline-calibration/report.json": "e0f7de0d215302a2787a6c19e0cde1cfacf6b4ad65a85b97186f8a50f96a734a",
+    "build/shared-bezier-control-reader/memory-report.json": "33ff1daa5a61b89b9ac00ceb6d8e750eed243b312787566c347ca95c897ebe95",
+    "build/shared-bezier-control-reader/memory-serial/report.json": "8436b3008b034dcd71253e8246884d92a47f55ab10385f3abb41fb86e65b1940",
+    "build/shared-bezier-control-reader/memory-charge/report.json": "0cc2c0bb20e64e827132e1732eb8d7b837c6a4bfd3c16d902f978712e1194b79",
+    "build/shared-bezier-control-reader/trace-report.json": "7ecc1deaeeb32b281544cc4084449d804454c740e0c3af21b99a4ee7b0ed9b84",
+    "build/shared-bezier-control-reader/trace-asan-report.json": "6b1b778c502b4c3c6a4a67505b985bd75dcd5cdfad225d9d3a00bdd8bb7b1b41",
+    "build/shared-bezier-control-reader/science-working/report.json": "e08f68d88688d8fba57bcfaf87f3a8c41907370568ba527afda257e6d6815439",
+    "build/shared-bezier-control-reader/profile-verification.json": "6f433a491efc6171536637af62fcf912275fcf4b2afb7bc133dd8b46652c370b",
+    "build/shared-bezier-control-reader/expansion-final-audit.json": "adaa27dbe4448a83728c6ee9c325d9b1ca6c479a322f0d87b2266f4a6782ae78",
+    "build/shared-bezier-control-reader/historical-final-audit.json": "75a339f1bad462787d2b16b5d853cd1cdd06c4120756523d52fb94945c18fb8b",
+    "build/shared-bezier-control-reader/encoding-source-proof.json": "9414703b573fc83172cd2f3bbc0f34235a7c051398f81a87ba0c2b971671641d",
+    "build/shared-bezier-control-reader/analysis/report.json": "b2eb46eea0624b57821b56c43c110f9b24d9c3de96c2a5735636b7872785a6d2",
+    "build/shared-bezier-control-reader/analysis/final-report.json": "7d800261ec54b8feacca204248d2fe020c32c90e8f03ee8ee1fc9713044f6e0d",
+    "build/shared-bezier-control-reader/source-preservation.json": "0d05b84f4e7f2a240828e3ff6464d0c795ad2389ed55ac8d2257415098147ca0"
+  }
+}

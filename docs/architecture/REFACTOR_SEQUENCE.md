@@ -9,6 +9,16 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
+PR #169 closes the bounded payload/terminal CRT phase at main
+`bccd5c1e7af3c058f62085f8fb908f5ccd5db78b`, with its verified local integration
+seal and exact-head/main 75 CTest / 479 Python. The current production package is
+the [shared Bezier control reader](../evidence/SHARED_BEZIER_CONTROL_READER.md).
+Two named qualified callers duplicate the same parser body; extract it once while
+retaining public validation/messages, complete controls/IDs, pending ownership,
+allocation counts and numerical results. Exact expansion, existing reader/charge
+fault and paired-trace gates, full regression/science and head/main seals apply.
+This is engineering debt removal, not a successor cache audit or row closure.
+
 PR #164 qualifies the archive diagnostic dependency on exact delivery/main
 revisions, with seal `build/reuse-archive-delivery/integration-verification.json`.
 PR #165 integrates the local-validation companion as main

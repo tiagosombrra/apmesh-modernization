@@ -3225,8 +3225,8 @@
       "path": "include/input_output/patch_reader.h",
       "component_by_directory": "input_output",
       "kind": "header",
-      "sha256": "4be8ac02df2632373981dd6b6bc02ef325445be5c10735285cc242fec64657fa",
-      "bytes": 1472,
+      "sha256": "38c56582a6fd9643c04a6ec28193f253aa6951b6c4bba0a1598905f43e65f181",
+      "bytes": 1619,
       "includes": [
         {
           "line": 4,
@@ -6094,8 +6094,8 @@
       "path": "src/input_output/control_patch_reader.cpp",
       "component_by_directory": "input_output",
       "kind": "translation_unit",
-      "sha256": "38647db78b0e51442a2f46f8364c24331bea3c7f3721b5313324181bf3452ffe",
-      "bytes": 4385,
+      "sha256": "3215d357735425507d4bdbbc35ac5f71a854c2138868b96680f60a1d2b62cb98",
+      "bytes": 4584,
       "includes": [
         {
           "line": 1,
@@ -6277,8 +6277,8 @@
       "path": "src/input_output/patch_reader.cpp",
       "component_by_directory": "input_output",
       "kind": "translation_unit",
-      "sha256": "b9688f77d51a79e09693b1387e811fd9106b97de1d67dbba898bc4b9a2af651b",
-      "bytes": 24967,
+      "sha256": "e5b6b8cea747b3733179affebc1acafe6df3713c2f5c67c561280cbb1b141d3b",
+      "bytes": 21381,
       "includes": [
         {
           "line": 1,
@@ -6623,7 +6623,7 @@
   ],
   "contract_traceability": {
     "contracts": 35,
-    "source_anchors": 272,
+    "source_anchors": 274,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

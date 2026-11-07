@@ -7,6 +7,8 @@ from pathlib import Path
 import re
 import subprocess
 
+from audit_control_reader import expand_shared_reader
+
 BASE = "f9c7d22c0028e8864da4de5a05bdc19489da52bf"
 FILES = ["include/input_output/patch_reader.h", "src/input_output/patch_reader.cpp",
          "include/input_output/input_validation.h"]
@@ -61,7 +63,11 @@ def verify(originals, candidates):
 def audit(candidate_root, original_root=None):
     originals = {name: ((original_root/name).read_text(encoding="utf-8") if original_root else
                        subprocess.check_output(["git", "show", f"{BASE}:{name}"],cwd=candidate_root).decode("utf-8")) for name in FILES}
-    candidates = {name: (candidate_root/name).read_text(encoding="utf-8") for name in FILES}
+    raw_candidates = {name: (candidate_root/name).read_text(encoding="utf-8") for name in FILES}
+    control = "src/input_output/control_patch_reader.cpp"
+    if (candidate_root/control).is_file():
+        raw_candidates[control] = (candidate_root/control).read_text(encoding="utf-8")
+    candidates = expand_shared_reader(raw_candidates)
     preserved = verify(originals, candidates)
     mutations = [("fin.exceptions(std::ios::badbit);", ""),
                  ("patch->SetPt10(", "patch->SetPt01("),
@@ -82,8 +88,9 @@ def audit(candidate_root, original_root=None):
     return {"status": "passed", "original_revision": BASE, "rejected_mutations": len(mutations),
             "preserved_tokens_sha256": preserved,
             "source_identities": {label: {name: hashlib.sha256(text.encode()).hexdigest() for name,text in files.items()}
-                                  for label,files in [("original",originals),("candidate",candidates)]},
-            "scope": "Three actual files. Exact owning return/local result/pending handoff and three badbit masks only. Every other parser, validation, interning, orientation, public layout and numerical token matches immutable main. Normal paired traces and full fault instruments remain separate."}
+                                  for label,files in [("original",originals),("candidate",raw_candidates)]},
+            "shared_control_reader_expansion": candidates != raw_candidates,
+            "scope": "Three historical files, with exact shared-reader expansion when present. Exact owning return/local result/pending handoff and three badbit masks only. Every other parser, validation, interning, orientation, public layout and numerical token matches immutable main. Shared helper/wrapper drift is also challenged by audit_control_reader. Normal paired traces and full fault instruments remain separate."}
 
 
 if __name__=="__main__":
