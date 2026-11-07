@@ -60,13 +60,22 @@ and 441 Python controls, no skips. Both seals retain their bounded scope and
 earlier failures; neither closes Stage 3 or establishes full-process safety.
 
 The bounded [CRT static-owner attribution](evidence/SERIAL_CRT_STATIC_TEARDOWN.md)
-now resolves the original S3-09 entry-return residual: a separately identified
+is integrated through PR #167 as main `78b9fbf8b150793505946291245873582dc164e0`,
+with exact-head/main 75 CTest entries / 463 Python controls and its local seal.
+It resolves the original S3-09 entry-return residual: a separately identified
 same-input SP-02 diagnostic accounts for all 150 blocks / 7,456 bytes and observes
 every watched request freed by executable-static teardown. Five native controls
 and independent physical/UV/boundary checks pass. The original failure and 43
 artifact hashes remain intact. No production leak repair is demonstrated;
 shutdown-created allocations, other cases/instruments and complete Stage 3 remain
-open. Exact delivery/main gates are separate; no successor campaign is selected.
+open. The current independent required S3-09 [lifetime checkpoint](evidence/SERIAL_CRT_LIFETIME.md)
+encloses executable-owned static initialization and teardown, including new
+shutdown allocations. Six real controls and the fixed 32 SP-01..08 executions
+now pass their required final CRT and independent caller gates. Two failed parser
+prefixes remain; signed Windows status/newline handling is corrected and only
+unexecuted invalid cases resume. Exact-head/main 75 CTest / 475 Python gates
+remain required for this package. SP-09/10 retain their separate observer gate;
+no broader model, instrument or stage qualification follows.
 Production/scientific policies and the negative cache admission are unchanged.
 
 The next production package remains P4. The completed

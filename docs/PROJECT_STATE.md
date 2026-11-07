@@ -11,7 +11,21 @@ The local-validation companion is integrated through PR #165, main
 controls passing on its final head and main, without skips. Its seal is local
 `build/development-environment-setup/closure/integration-verification.json`.
 
-Current review candidate: [CRT static-owner attribution](evidence/SERIAL_CRT_STATIC_TEARDOWN.md).
+Current bounded item: [serial executable-owned CRT lifetime checkpoint](evidence/SERIAL_CRT_LIFETIME.md)
+for the required S3-09 accounting gap. Six actual normal/global/shutdown release,
+retention and allocation-denial controls pass, then the fixed 32 SP-01..08
+executions finish with zero normal/client deltas and empty newer-object dumps.
+Independent positive geometry/UV/boundary, real rejection/retry and exact article
+repeatability pass in their existing scopes. Both parser-failure prefixes remain;
+an audited subset resumes only unexecuted invalid controls. Required delivery
+inventory is 75 CTest entries / 475 Python controls. The five terminal SP-09/10
+contexts and broader instrument/parallel obligations remain unqualified.
+
+The [CRT static-owner attribution](evidence/SERIAL_CRT_STATIC_TEARDOWN.md) is
+integrated through PR #167 as main `78b9fbf8b150793505946291245873582dc164e0`.
+Its exact head/main pass 75 CTest entries / 463 Python controls without skips;
+the local integration seal is
+build/p3-serial-crt-static/delivery/integration-verification.json.
 The separately identified same-input SP-02 diagnostic reproduces the original
 150 blocks / 7,456 bytes: 147 configuration-key-set blocks, two global path
 buffers and ptr_aux vector storage. All watched requests retire naturally by
@@ -25,7 +39,8 @@ controls plus invalid-invocation rejection pass; the qualified static observer
 and engine archive remain byte-identical. Required delivery regression is 75
 CTest entries / 463 Python controls. Exact-head/main records remain separate
 under build/p3-serial-crt-static/delivery. Production/scientific policies and
-broader instrument/caller obligations are unchanged. No successor campaign is selected.
+broader instrument/caller obligations are unchanged. The separate required
+lifetime checkpoint above does not reopen the negative cache source-audit chain.
 
 The [P4 cache-mutation admission](evidence/P4_CACHE_MUTATION_ADMISSION.md) is
 integrated through PR #166, main `1ec01ada2a52e05009698ae18ccb0b7130680349`,

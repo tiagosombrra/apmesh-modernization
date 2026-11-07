@@ -35,6 +35,15 @@ parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
 
+The [executable-owned CRT checkpoint](../evidence/SERIAL_CRT_LIFETIME.md)
+adds six actual release/retention/unwind controls and the fixed 32 SP-01..08
+observations after PR #167's integrated retained-request attribution. Normal and
+client deltas and newer-object dumps are clean through executable-owned static
+teardown, with positive independent boundaries where required and actual
+rejection/retry. The two parser-failure prefixes remain. Runtime/DLL baseline,
+later runtime shutdown, SP-09/10 full-caller contexts, other heaps/instruments
+and parallel obligations remain open; none of the ten dispositions changes.
+
 P4's [adaptive reuse observation/repair](../evidence/ADAPTIVE_GENERATOR_REUSE.md)
 targets the leaked initial consistency flag in S3-05/08 and the four demonstrated
 S3-06 diagonal-list precondition failures. The initial MSVC head failed before

@@ -1,5 +1,26 @@
 # Local quality automation
 
+## Executable-owned CRT lifetime window
+
+The [required serial window](evidence/SERIAL_CRT_LIFETIME.md) adds the standalone
+serial_crt_lifetime_probe target in tests/serial_crt, linking the unchanged
+complete checked-MSVC C++17 engine. The early RAII checkpoint encloses user-
+priority executable initialization, actual RunApplication and final owning-static
+destruction. Require six real release/retention/denial controls, including
+allocation during shutdown; native zero exit alone never establishes clean memory.
+Signed Windows int/DWORD status and native CRLF are parsed without changing raw
+captures. Both original parser failures are retained; explicit case-name subsets
+reject empty/duplicate/unknown selection and preserve the default 23 invalid cases.
+
+The fixed SP-01..08 inventory now has 32 scoped observations and unchanged
+10/60/300-second caps. Preserve raw captures, original source/input/binary flags,
+real m-output paired to q-quality checks, positive independent boundaries,
+rejected/retry states and same-path article repeatability. No-sync has no inferred
+boundary qualification. Exact-head/main 75 CTest / 475 Python regression and
+scoped quality/identity/remote gates are required. SP-09/10, runtime/DLL baseline
+and later shutdown, other heaps/instruments and parallel remain open; these
+observations are not a full-process or Stage 3 closure claim.
+
 ## Complete-entry checked-CRT observation
 
 The [bounded S3-09 record](evidence/SERIAL_CRT_ENTRY.md) uses the separate
