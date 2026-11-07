@@ -89,7 +89,7 @@ StageFaceStats ComputeStageFaceStats(const FaceList& faces) {
     for (int e = 0; e < 3; ++e) {
       Vertex* v1 = verts[e];
       Vertex* v2 = verts[(e + 1) % 3];
-      EdgeKey key = (v1 < v2) ? EdgeKey{v1, v2} : EdgeKey{v2, v1};
+      EdgeKey key = std::less<Vertex*>{}(v1, v2) ? EdgeKey{v1, v2} : EdgeKey{v2, v1};
       ++edge_use_count[key];
     }
   }
@@ -117,7 +117,7 @@ StageFaceStats ComputeStageFaceStats(const FaceList& faces) {
     for (int e = 0; e < 3; ++e) {
       Vertex* v1 = verts[e];
       Vertex* v2 = verts[(e + 1) % 3];
-      EdgeKey key = (v1 < v2) ? EdgeKey{v1, v2} : EdgeKey{v2, v1};
+      EdgeKey key = std::less<Vertex*>{}(v1, v2) ? EdgeKey{v1, v2} : EdgeKey{v2, v1};
       if (edge_use_count[key] == 1U) {
         ++boundary_edges;
       }

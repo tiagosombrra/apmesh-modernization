@@ -1,5 +1,21 @@
 # Local quality automation
 
+## Portable AFT edge-key order
+
+The [pointer-order package](evidence/AFT_POINTER_EDGE_ORDER.md) changes exactly
+two production expressions to std::less<Vertex*>. Require full-file source
+reversal to the entry bytes, 137 independent native edge-count cases per ABI
+(65 preceding plus 72 heap/identity cases), exact baseline/candidate aggregate
+output and actual wrong-ID-order rejection in GCC/MSVC. Equal coordinates/IDs
+must not merge distinct endpoint identities. No new central target is added.
+
+Require canonical builds, configured read-only LLVM analysis/format, frozen
+Eistute/Book GCC/MSVC results, 75 CTest / 495 Python on exact head/main,
+architecture/contracts/whitespace, preserved original evidence and fresh remote
+audits. Use the guarded same-tree main checkout and verify qualified binaries
+after the required main builds. Earlier instrument campaigns keep their actual
+artifact scope; this does not grant general memory, domain or stage closure.
+
 ## Linux UB/leak qualification
 
 The [L-UB/LEAK checkpoint](evidence/LINUX_UB_LEAK_QUALIFICATION.md) uses the
