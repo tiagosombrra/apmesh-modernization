@@ -16,6 +16,14 @@ import qualify_terminal_crt_lifetime as runner
 
 
 class TerminalCrtLifetimeTests(unittest.TestCase):
+    def test_payload_preparation_requires_measured_denials_and_complete_ownership_controls(self):
+        marker = "typed_payload_preparation lengths=3 denials=8 copies=3 moves=3 complete=1\n"
+        self.assertEqual(runner.payload_preparation(marker)["preparation_denials"], 8)
+        for text in ("", marker + marker, marker.replace("denials=8", "denials=0"),
+                     marker.replace("copies=3", "copies=2"), marker.replace("moves=3", "moves=0")):
+            with self.subTest(text=text), self.assertRaises(ValueError):
+                runner.payload_preparation(text)
+
     def test_fixed_inventory_rejects_missing_duplicate_changed_contexts_and_caps(self):
         ledger = json.loads((ROOT / "docs/evidence/stage3/serial_execution/ledger.json").read_text())
         self.assertEqual(len(runner.fixed_contexts(ledger)), 2)

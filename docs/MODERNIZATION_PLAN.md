@@ -81,9 +81,17 @@ coupled calibration. Its first eight controls pass, including expected retention
 negatives, then the typed payload prerequisite aborts before any of the five
 directed contexts. An isolated checked-MSVC diagnostic confirms a debug-proxy
 allocation inside std::string's noexcept move and termination on denial. The
-required allocation-free payload ownership repair is a separate explicit
-dependency; production remains unchanged. Preserve the failed artifact and
-original logs, keep this review draft and block integration/phase closure.
+required [payload ownership repair](evidence/TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md)
+is now explicitly admitted: copy status into exclusive storage during preparation,
+then transfer the prepared error without allocation. Preparation can fail normally
+with bad_alloc. The nine typed payload rows and eight measured preparation denials
+now pass checked MSVC, retaining context, identity/rethrow and unwind assertions.
+All five contexts now pass clean final CRT and unchanged typed/owner/sample
+oracles. GCC/MSVC each preserve nine scientific states, 45 exact artifacts and
+123 positive boundary comparisons. Preserve the failed artifact, original logs
+and reference-metadata failure; no completed scientific run is repeated for that
+metadata correction. Require final exact-head/main gates and the local repair
+integration seal before bounded phase closure.
 No broader model, instrument or stage qualification follows.
 Production/scientific policies and the negative cache admission are unchanged.
 

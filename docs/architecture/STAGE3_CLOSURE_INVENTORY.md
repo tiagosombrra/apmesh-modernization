@@ -39,9 +39,12 @@ The [checked-CRT terminal prerequisite](../evidence/SERIAL_CRT_TERMINAL.md)
 fails before directed SP-09/10 execution. Its first eight controls pass; the typed
 payload control aborts before row zero. A separate minimal diagnostic identifies
 the MSVC checked-string move's proxy allocation and termination when denied.
-Explicit allocation-free payload ownership remains a demonstrated S3-08/09
-dependency. Original failures and all five unstarted contexts remain mandatory;
-no row or prior qualified evidence is reclassified. Integration is blocked.
+The [payload ownership repair](../evidence/TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md)
+now supplies separate allocating preparation and allocation-free owner transfer.
+All nine payload rows, eight checked-MSVC preparation denials and the five fixed
+contexts pass clean final CRT accounting. Preserve the original failed artifact
+and require the final delivery/main seal. No row or prior artifact scope is
+reclassified; broader runtime/DLL, leak/UB/parallel and caller obligations remain.
 
 The [executable-owned CRT checkpoint](../evidence/SERIAL_CRT_LIFETIME.md)
 adds six actual release/retention/unwind controls and the fixed 32 SP-01..08

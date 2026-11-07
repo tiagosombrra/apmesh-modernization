@@ -1,5 +1,10 @@
 # Typed serial terminal domain failure
 
+The checked-MSVC construction claim below is superseded by the
+[explicit payload ownership repair](TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md).
+The original failure and evidence retain their original revisions. Current
+preparation may allocate; transfer of a prepared error is allocation-free.
+
 Reference main: `2bb1363429b212be0e21457bd0870ab6e26c163f` (PR #109).
 Classification: behavior-changing terminal error propagation/diagnostic repair.
 Successful meshing, formulas/order, retries, synchronization, selection and

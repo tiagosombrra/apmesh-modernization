@@ -34,6 +34,14 @@ def fixed_contexts(ledger):
     return contexts
 
 
+def payload_preparation(text):
+    rows = re.findall(r"^typed_payload_preparation lengths=3 denials=(\d+) copies=3 moves=3 complete=1$",
+                      text, re.M)
+    if len(rows) != 1 or int(rows[0]) < 3:
+        raise ValueError("Missing measured payload preparation, copy or move controls")
+    return {"lengths": 3, "preparation_denials": int(rows[0]), "copies": 3, "moves": 3}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--exe", type=Path, required=True)
@@ -84,6 +92,7 @@ def main():
                     raise ValueError("Live AFT, exclusion or actual allocation qualification absent")
             else:
                 validate_types(row["exit_code"], text)
+                row["payload_preparation"] = payload_preparation(text)
                 found = re.search(r"^terminal_unwind_allocation calls=(\d+) uncaught=(\d+) attempts=(\d+) denied=(\d+)$", text, re.M)
                 if not found or tuple(map(int, found.groups())) != (1, 1, 1, 1):
                     raise ValueError("Real SubMesh allocation during unwind was not denied exactly")

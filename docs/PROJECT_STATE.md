@@ -18,9 +18,20 @@ terminal observer controls pass, then the unchanged typed payload control aborts
 before its first row. No directed context starts. An isolated checked-MSVC
 diagnostic attributes one proxy allocation to std::string's noexcept move inside
 DomainGenerationError. Allocation denial therefore terminates before catch.
-The original failed artifact/logs remain; no production repair, retry or weakened
-contract is introduced. Integration and this phase's closure are blocked pending
-an explicit allocation-free payload ownership repair. The review remains a draft.
+The original failed artifact/logs remain. The explicitly admitted
+[payload ownership repair](evidence/TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md) prepares
+exclusive status storage before throwing, then transfers that owner without
+allocation. Preparation may propagate bad_alloc; complete bytes, const-reference
+access, exception identity and nonallocating unwind remain checked. Nine payload
+rows, eight preparation denials and copy/move controls now pass in checked MSVC.
+All five directed contexts now pass clean final CRT accounting and their original
+typed/owner/sample oracles. GCC and checked MSVC preserve nine scientific states,
+45 exact artifacts and 123 positive boundary comparisons per ABI. The failed
+reference-metadata comparison remains; completed captures are checked offline
+against the existing qualified full-metadata reference and only the unstarted
+Book process resumes. Final exact-head/main gates and the local
+build/p3-terminal-crt-payload-repair/delivery/integration-verification.json seal
+are required for bounded phase closure. This does not close broader Stage 3.
 No original failure, caller limit or scientific policy is weakened.
 
 The [serial executable-owned CRT lifetime checkpoint](evidence/SERIAL_CRT_LIFETIME.md)

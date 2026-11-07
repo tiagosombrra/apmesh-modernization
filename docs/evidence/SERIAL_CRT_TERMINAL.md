@@ -1,5 +1,10 @@
 # Checked-CRT terminal caller lifetime observation
 
+This document preserves the failed entry observation. Its blocker is addressed
+by the [explicit payload ownership repair](TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md),
+which records the revised contract and qualification. The original failed
+executable/report is never promoted to a passed result.
+
 Entry main: `9682d53166eddada3ea52ec491205b53de0fe7e5` (PR #168).
 Classification: engineering-only required S3-01/05/08/09 full-caller observation.
 The preceding [SP-01..08 lifetime window](SERIAL_CRT_LIFETIME.md) is integrated
