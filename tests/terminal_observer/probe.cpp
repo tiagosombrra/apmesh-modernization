@@ -50,6 +50,19 @@ bool Execute(AdvancingFront& front, const FaceList& previous) {
 
 int main(int argc, char* argv[]) {
   using domain_candidate_test::Require;
+#if defined(AP_MESH_TERMINAL_ALLOCATOR_WRAP)
+  if (argc == 2 && std::strcmp(argv[1], "--allocator-wrap-contracts") == 0) {
+    TerminalControlAllocatorForms();
+    std::puts("terminal_allocator_wrap scalar=2 array=2 deletes=4 denials=2");
+    return 0;
+  }
+  if (argc == 2 && std::strcmp(argv[1], "--instrument-leak") == 0) {
+    TerminalControlLeak();
+    std::puts("terminal_instrument deliberate_leak=1");
+    std::fflush(stdout);
+    return 0;
+  }
+#endif
   if (argc == 2 && std::strcmp(argv[1], "--observer-contracts") == 0) {
     typed_domain_test::Prepare(1);
     Require(!typed_domain_test::BeforeExecute(1, 1) && !typed_domain_test::BeforeExecute(2, 0) &&

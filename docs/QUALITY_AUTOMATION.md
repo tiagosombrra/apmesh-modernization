@@ -1,5 +1,40 @@
 # Local quality automation
 
+## Linux UB/leak qualification
+
+The [L-UB/LEAK checkpoint](evidence/LINUX_UB_LEAK_QUALIFICATION.md) uses the
+existing fixed serial inventory. Complete Clang C++17 reference and separate
+UBSan/standalone LSan targets require actual clean and overflow/leak detections,
+source/runtime/compile/link identities and a positive first natural SP-02 before
+expansion. Retain the missing-runtime and combined-link failures. The explicit
+offline CRLF/LF disposition leaves the strict raw cross-platform comparison
+failed and changes no numerical content or tolerance. Same-platform instrumented
+article captures require the unchanged strict comparator and exact raw artifacts.
+
+Use only fixed SP-01..10 recipes and their original 10/60/300-second caps. Preserve
+each child capture before another starts; an unexpected application/instrument
+diagnostic stops expansion. Controlled terminal targets retain the reversible
+observer, actual allocation/unwind/type controls and original failed-prefix oracles.
+No-sync and q-only outputs retain their separate positive-coverage limits.
+
+The default-OFF terminal allocator option is restricted to Linux x86_64 Clang.
+Require all six actual link mappings, four scalar/array allocation/deallocation
+pairs, two observed denials, clean release and a real four-byte leak detection
+before directed LSan callers. Preserve the original strong-symbol link failure,
+stdout-marker refusal and zero-size-control lint failure. LLVM 22.1.8 must pass
+both valid source branches and detect the explicitly separate invalid leak control;
+configuration/suppressions stay unchanged. Preserve default-active-source identity
+and the actual unsupported-platform rejection. Final controlled artifacts require
+their own complete prerequisites and five contexts; do not reuse an invalidated
+fixture binary merely because production code is unchanged.
+
+Documentation delivery requires exact-head/main 75 CTest / 495 Python, source/
+input/oracle and binary identity, original failure/artifact preservation,
+architecture/contracts/whitespace and fresh remote audits. Reuse completed native
+observations by identity; do not repeat a process for serialization or symbolization
+repairs. Preserve the guarded main-checkout receipt and canonical main builds.
+The ten Stage 3 dispositions and broader caller/heap/parallel obligations remain.
+
 ## Qualified-tree main checkout
 
 The optional [checkout helper](evidence/QUALIFIED_MAIN_CHECKOUT.md) operates only

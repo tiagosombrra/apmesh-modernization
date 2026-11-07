@@ -51,15 +51,31 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+PR #172 integrates [qualified-tree main checkout](evidence/QUALIFIED_MAIN_CHECKOUT.md)
+at main `6a3d25e647c633b3f36520181a789a79d98e02d2`, with exact-head/main 75 CTest /
+495 Python and its verified local integration seal. The real checkout preserves
+2,328 tracked files and qualified native artifacts. This dependency is complete.
+
+The current bounded closure phase is [Linux UB/leak qualification](evidence/LINUX_UB_LEAK_QUALIFICATION.md)
+under the existing L-UB/LEAK ledger profile. Its finite entry is full Clang C++17
+compiler/reference qualification, actual clean/overflow/leak controls and the first
+natural SP-02 witness for separate UBSan and LSan complete targets. After that
+qualification, continue only the remaining fixed SP-01..10 inventory. Preserve every
+failed prerequisite and original raw comparison; classify platform text encoding
+without numerical normalization. Any unexpected application/instrument failure
+stops expansion. No new model, acceptance criterion or production repair is
+inferred. This is a named mandatory S3-09 dependency, not a speculative audit queue.
+Its final observations now pass: 32 unmodified production processes and five
+directed terminal contexts per instrument, with actual controls, unchanged strict
+same-platform science and a default-OFF test allocator integration repair. Require
+the exact-head/main delivery seal; no entire Stage 3 row is closed by this result.
+
+### Preserved delivery chronology
+
 PR #171 integrates borrowed control lookup at main
 `60820f327fb2f89d6218037783e11563ff9a5220`, with exact-head/main 75 CTest / 485
-Python and its qualified local seal. The active engineering dependency is
-[qualified-tree main checkout](evidence/QUALIFIED_MAIN_CHECKOUT.md): avoid rewriting
-already qualified source files through the old local main before advancing to an
-identical remote merge tree. Verify identity, parents, clean state and concurrent
-main protection; preserve normal hooks and bytes/timestamps, then repeat required
-main validation. This is a local workflow repair with production inputs unchanged,
-not a new compiler configuration or an automatic instrument campaign.
+Python and its qualified local seal. Its subsequent local checkout dependency is
+completed by PR #172 above.
 
 The [shared reader](evidence/SHARED_BEZIER_CONTROL_READER.md) is integrated through
 PR #170 as main `ee677a34fd9c9303eb83b70d525c6b966c6a240f`, with exact-head/main

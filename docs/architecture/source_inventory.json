@@ -500,7 +500,7 @@
     },
     {
       "path": "tests/terminal_observer/CMakeLists.txt",
-      "sha256": "a2d3a2e663c27ec45570ea13146221dac69b4ab394cdf9fc4a4aac94e5b41f3e"
+      "sha256": "795febaab1d6cb3bd18906b6f7df2672bc18d627ec008839e0c22427b3ee8a6a"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",

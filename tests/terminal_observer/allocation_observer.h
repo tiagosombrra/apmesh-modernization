@@ -25,4 +25,9 @@ int TerminalControlRead(void* pointer);
 class SubMesh;
 SubMesh* TerminalControlAllocateSubMesh();
 
+#if defined(AP_MESH_TERMINAL_ALLOCATOR_WRAP)
+void TerminalControlAllocatorForms();
+void TerminalControlLeak();
+#endif
+
 #endif

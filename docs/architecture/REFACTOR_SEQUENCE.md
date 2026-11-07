@@ -9,15 +9,29 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
+PR #172 closes [qualified-tree main checkout](../evidence/QUALIFIED_MAIN_CHECKOUT.md)
+at main `6a3d25e647c633b3f36520181a789a79d98e02d2`, with exact-head/main 75 CTest /
+495 Python, its real 2,328-file preservation receipt and verified integration seal.
+
+The active required dependency is [Linux UB/leak qualification](../evidence/LINUX_UB_LEAK_QUALIFICATION.md):
+the existing L-UB/LEAK ledger profile needs complete Clang C++17 compiler/reference
+and actual clean/overflow/leak controls before its first natural SP-02 witness,
+then the remaining fixed SP-01..10 callers only after that prerequisite passes.
+Use separate UBSan and LSan complete targets; preserve failed prerequisites and
+the raw cross-platform comparison. Platform newline disposition changes no
+numerical bytes or scientific tolerance. Stop expansion on the first unexpected
+application/instrument failure. This fulfills a named S3-09 preparation need;
+broader case/parallel/foreign-caller obligations remain open.
+The final fixed 32 production/five terminal observations per profile pass, after
+the demonstrated test allocator integration repair. Original failures remain;
+the exact-head/main delivery seal is required before bounded phase closure.
+
+### Preserved delivery chronology
+
 PR #171 closes borrowed control lookup at main
 `60820f327fb2f89d6218037783e11563ff9a5220`, with exact-head/main 75 CTest / 485
-Python and its verified local seal. The active engineering work is
-[qualified-tree main checkout](../evidence/QUALIFIED_MAIN_CHECKOUT.md), addressing
-the observed old-main/new-main source rewrite before post-merge validation.
-Require exact fetched merge identity, parent/tree equality, clean state,
-compare-and-swap ref protection, normal hooks and unchanged tracked bytes/mtimes.
-The helper grants no remote merge or qualification permission; main gates remain
-mandatory. This local tooling dependency changes no compiler or scientific profile.
+Python and its verified local seal. Its subsequent checkout dependency is complete
+through PR #172 above.
 
 PR #170 integrates the shared reader at main
 `ee677a34fd9c9303eb83b70d525c6b966c6a240f`, with exact-head/main 75 CTest / 482

@@ -17,6 +17,22 @@ add_executable(terminal_observer_probe probe.cpp allocation_observer.cpp
 target_compile_features(terminal_observer_probe PRIVATE cxx_std_17)
 target_include_directories(terminal_observer_probe PRIVATE "${terminal_generated}"
   "${CMAKE_CURRENT_SOURCE_DIR}" "${terminal_root}/include" "${terminal_root}/src/adapter")
+
+option(AP_MESH_TERMINAL_ALLOCATOR_WRAP "Observe allocation before the Linux sanitizer's allocation functions" OFF)
+if(AP_MESH_TERMINAL_ALLOCATOR_WRAP)
+  if(NOT CMAKE_SYSTEM_NAME STREQUAL "Linux" OR
+     NOT CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" OR
+     NOT CMAKE_SIZEOF_VOID_P EQUAL 8 OR
+     NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    message(FATAL_ERROR "Terminal allocator wrapping requires Linux x86_64 Clang with the Itanium C++ ABI")
+  endif()
+  target_sources(terminal_observer_probe PRIVATE leak_control.cpp)
+  set_property(SOURCE probe.cpp allocation_observer.cpp leak_control.cpp APPEND PROPERTY
+    COMPILE_DEFINITIONS AP_MESH_TERMINAL_ALLOCATOR_WRAP=1)
+  foreach(terminal_allocation_symbol IN ITEMS _Znwm _Znam _ZdlPv _ZdaPv _ZdlPvm _ZdaPvm)
+    target_link_options(terminal_observer_probe PRIVATE "LINKER:--wrap=${terminal_allocation_symbol}")
+  endforeach()
+endif()
 if(MSVC)
   target_compile_options(terminal_observer_probe PRIVATE /W4 /permissive- /FS /EHsc /we4530)
 endif()
