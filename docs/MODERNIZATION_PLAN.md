@@ -51,6 +51,22 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+The current item is [required analytic UV prefix contracts](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md),
+S3-06/C10: the old runner can accept two coarse seeded refusals even though the
+qualified diagonal guards now allow their native completion. Require the existing
+six nonempty/two guard-only/one input-refusal matrix, stop before an unchecked
+counterpart after a required refusal, and retain historical evidence. Current
+GCC/checked-MSVC matrices pass 17 outcomes each. The two newly admitted public
+geometry contexts also pass eight native paired observations; no new ideal or
+outside-root retirement occurs. Production/numerical inputs stay unchanged.
+Exact-head/main 75 CTest / 499 Python, identity and remote gates apply.
+
+PR #174 closes [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md)
+at main `8f0dbc06b91d583910ec15f66e6217002420ee68`, with exact-head/main 75 CTest /
+495 Python and its verified local integration seal.
+
+### Preserved preceding production item
+
 The active production item is [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md):
 two raw comparisons of independently allocated Vertex pointers do not guarantee
 the total order required by undirected incidence keys. Use std::less<Vertex*>

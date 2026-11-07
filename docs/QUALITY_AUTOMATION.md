@@ -1,5 +1,23 @@
 # Local quality automation
 
+## Required UV prefix contracts
+
+The [required matrix](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md) now rejects any
+refusal of its six required nonempty contexts, while preserving two guard-only
+results and the missing-curve refusal. Keep historical refusal parsing available
+without promoting it to current qualification. Four new controller tests include
+actual current coarse captures and a stopped legacy refusal before its unchecked
+counterpart, with preserved failed raw output.
+
+Require the 17-outcome GCC/checked-MSVC prefix matrices, exact reversible source,
+independent native graph/area/ID/curve checks and eight paired public geometry
+observations from the two newly admitted coarse contexts. Preserve zero target
+retirement as an open gap. No production/input/policy change or new instrument
+claim follows. Require exact-head/main 75 CTest / 499 Python, protected source/
+binary/raw identities, inventory/contracts/whitespace and fresh remote audits.
+Reuse identical scientific evidence; guarded checkout/main builds and artifact
+identity remain required before bounded closure.
+
 ## Portable AFT edge-key order
 
 The [pointer-order package](evidence/AFT_POINTER_EDGE_ORDER.md) changes exactly
@@ -860,11 +878,13 @@ Preserve production, prior evidence, protected inputs and scientific policy.
 ## Analytic native template-prefix gate
 
 `application.analytic_template_prefix` exercises eight analytic configurations
-and one missing-curve control. Four contexts create a nonempty prefix and match
-the unobserved native source; two are guard-only and three are explicit refusals.
-Require 73 CTest entries and 380 Python tests, including 24 new checker/source-
-preparation controls, plus the same 15-process inventory in actual checked CRT
-with iterator level 2. [Scope and delivery gates](evidence/ANALYTIC_TEMPLATE_PREFIX.md)
+and one missing-curve control. The original PR #129 checkpoint admitted four
+nonempty contexts, two guard-only and three refusals; preserve that historical
+15-process record. The [current required contract](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md)
+admits six nonempty contexts, two guard-only and only the missing-curve refusal,
+with 17 outcomes per GCC/checked-MSVC profile and 28 checker/preparation tests.
+Require 75 CTest / 499 Python on exact head/main and preserve iterator level 2.
+The original [scope and delivery gates](evidence/ANALYTIC_TEMPLATE_PREFIX.md)
 require topology/area/ID/observer checks, actual preflight refusal, source reversal,
 scoped fixture/header analysis, unchanged production/science and exact-head/main
 regression. The public geometry-entry cut performs no selection or retirement.

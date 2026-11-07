@@ -14,7 +14,7 @@ No open row is closed by this audit or by the latest green CTest run.
 | S3-03 | Completed Hermite retirement | bounded-qualified | Current live borrowed curves and supported graph only; constructor/foreign observations retain their separate rows. | P5 |
 | S3-04 | Completed Bezier/Geometry retirement | bounded-qualified | Measured current-curve/Geometry scope only; other caller/mutation contracts remain open. | P5 |
 | S3-05 | Remaining caller and constructor roots | partial-open | Broader loaders/callers, complete cloning and foreign/copied/rebound observers remain unqualified despite bounded repairs. | P2/P4 |
-| S3-06 | UV helper/template/tree/mate ownership | partial-open | Other setters, selected-result adoption, failed-tree reuse/logical rejection and outside-root ideal retirement remain incomplete. Current four prefixes have zero retirement. | P4 |
+| S3-06 | UV helper/template/tree/mate ownership | partial-open | Other setters, selected-result adoption, failed-tree reuse/logical rejection and outside-root ideal retirement remain incomplete. The original four fine and newly admitted two coarse geometry contexts have zero retirement in their recorded scopes. | P4 |
 | S3-07 | Observer/cache validity | partial-open | Bounded current-observer cleanup exists; public mutation/cache and foreign-observer contracts remain partial. | P2/P4 |
 | S3-08 | Adaptive orchestration | partial-open | Terminal cleanup, accepted-root/error/reporting repairs do not establish full adaptive metadata/history/budget rollback, retry or synchronization-disabled CLI lifetime. | P2/P3/P4 |
 | S3-09 | Complete-process instruments | partial-open | Finite serial ASan/CRT and Linux UB/leak observations retain their exact artifact/caller scopes; broader process/heap/parallel coverage and justified equivalence remain open. | P1/P3 |
@@ -34,6 +34,14 @@ bounded S3-01/05/08/09 observations; no same-Generator recovery, full leak/UB/
 parallel or broader caller qualification follows. All row dispositions remain.
 
 ## Required exit observations
+
+The [required UV prefix checkpoint](../evidence/REQUIRED_UV_PREFIX_CONTRACTS.md)
+requires six nonempty/two guard-only/one input refusal after the diagonal guards.
+GCC and checked MSVC each pass 17 outcomes; the two newly admitted coarse native
+geometry contexts add eight paired observations with positive area/graph checks.
+The current runner rejects regression to historical coarse refusal before an
+unchecked counterpart starts. No new ideal or retirement occurs. This closes a
+specific regression-contract gap without changing S3-06 or any whole-row status.
 
 The [Linux UB/leak checkpoint](../evidence/LINUX_UB_LEAK_QUALIFICATION.md) addresses
 the existing L-UB/LEAK preparation and fixed caller inventory. Complete Clang

@@ -2,12 +2,20 @@
 
 ## Current checkpoint and active work
 
-Current production item: [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md).
-Replace exactly two raw pointer comparisons in native stage edge counting with
-the standard-library total pointer order. Preserve pointer identity, duplicates,
-face/reduction order and scientific policies. Existing native contracts gain
-independent heap/identity cases; canonical builds, frozen article and exact-head/
-main gates remain required. No broader Stage 3 closure is inferred.
+Current contract item: [required analytic UV prefixes](evidence/REQUIRED_UV_PREFIX_CONTRACTS.md).
+The post-diagonal-guard source completes both formerly refused coarse seeded
+contexts. The required runner now rejects regression to those refusals before
+an unchecked counterpart starts. Current GCC/checked-MSVC prefix matrices pass
+17 outcomes each; both coarse public geometry contexts pass eight paired native
+observations with 16 positive faces/area 0.875 and existing-vertex selection only.
+No outside-root retirement is reached or qualified. Require final exact-head/main
+75 CTest / 499 Python and identity/remote gates. Production and scientific policy
+remain unchanged; broader Stage 3 remains open.
+
+The [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md) is integrated
+through PR #174 as main `8f0dbc06b91d583910ec15f66e6217002420ee68`, with verified
+exact-head/main 75 CTest / 495 Python and its local integration seal. That bounded
+production package is complete; the remaining contracts retain their scope.
 
 The [Linux UB/leak phase](evidence/LINUX_UB_LEAK_QUALIFICATION.md) is integrated
 through PR #173 as main `dfcfea67df41890e6eb838014a041cd7a75ef358`. Its local
