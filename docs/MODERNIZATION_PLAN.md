@@ -51,6 +51,15 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
+The [shared reader](evidence/SHARED_BEZIER_CONTROL_READER.md) is integrated through
+PR #170 as main `ee677a34fd9c9303eb83b70d525c6b966c6a240f`, with exact-head/main
+75 CTest / 482 Python and its local integration seal. The current production
+item is [borrowed control lookup](evidence/BORROWED_CONTROL_LOOKUP.md): remove the
+sixteen internal whole-vector copies per valid patch while preserving the public
+by-value API, ordered first match, default point and independent return values.
+Recalibrate the affected denial inventory; no scientific policy or input-domain
+change follows. The older delivery chronology remains below.
+
 The bounded payload/terminal CRT phase is integrated through PR #169 as main
 `bccd5c1e7af3c058f62085f8fb908f5ccd5db78b`, with its qualified local integration
 seal and exact-head/main 75 CTest / 479 Python. The next production delivery is

@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "entry_main": "ee677a34fd9c9303eb83b70d525c6b966c6a240f",
+  "classification": "engineering-only internal vector-copy removal",
+  "status": "implementation_native_and_scientific_gates_passed_pending_exact_head_main_seal",
+  "production_outcome": "Sixteen internal whole-vector copies eliminated per valid patch; public by-value API, first-ID match/default and independent values retained",
+  "source_preservation": {
+    "status": "passed",
+    "changed_production_files": [
+      "include/input_output/patch_reader.h",
+      "src/input_output/control_patch_reader.cpp"
+    ],
+    "unchanged_production_input_reference_files": 517,
+    "unchanged_production_build_files": 3,
+    "original_entry_artifacts_preserved": 43,
+    "baseline_probe_hashes_preserved": true,
+    "point_value_type_and_charge_probe": "byte-identical to entry",
+    "source_sha256": {
+      "include/input_output/patch_reader.h": "6dc814cad65fc38f4bb8d528b3be99be3bc5abb784237e4a305fc05b885de80a",
+      "src/input_output/control_patch_reader.cpp": "ca9a730357b333375918e3ae74cbb568e850af98312694e8cff2d0230d5e0547"
+    }
+  },
+  "guards": {
+    "lookup_mutations": 9,
+    "shared_reader_mutations": 8,
+    "historical_ownership_mutations": 6
+  },
+  "api_contracts": [
+    "exact public by-value member type",
+    "first duplicate ID and later ID",
+    "missing/empty default point",
+    "scalar bits including signed zero",
+    "source/result independence"
+  ],
+  "memory": {
+    "expected_outcomes": 320,
+    "candidate_complete_sweeps": 36,
+    "candidate_serial_denials": 2219,
+    "candidate_charge_denials": 2147,
+    "entry_calibrated_allocations": 5518,
+    "candidate_calibrated_allocations": 4366,
+    "saved_allocations_in_fixed_inventory": 1152,
+    "saved_per_valid_patch": 16,
+    "reference_scope": "Entry serial calibration and charge first chunks establish counts; complete fault coverage belongs to candidate",
+    "profiles": "existing static Debug CRT iterator zero/NRVO-off and MSVC ASan RelWithDebInfo; not whole-process coverage",
+    "writer_failure_limit": "memory and live graph, not complete export"
+  },
+  "native_traces": [
+    {
+      "name": "gcc-serial",
+      "status": "passed",
+      "paired_traces": 8
+    },
+    {
+      "name": "msvc-crt-serial",
+      "status": "passed",
+      "paired_traces": 8
+    },
+    {
+      "name": "msvc-asan-serial",
+      "status": "passed",
+      "paired_traces": 8
+    },
+    {
+      "name": "gcc-charge-controlled",
+      "status": "passed",
+      "paired_traces": 24
+    },
+    {
+      "name": "gcc-charge-actual",
+      "status": "passed",
+      "paired_traces": 24
+    },
+    {
+      "name": "msvc-crt-charge",
+      "status": "passed",
+      "paired_traces": 24
+    },
+    {
+      "name": "msvc-asan-charge",
+      "status": "passed",
+      "paired_traces": 24
+    }
+  ],
+  "scientific": [
+    {
+      "abi": "gcc",
+      "model": "eistute",
+      "states": 5,
+      "exact_artifacts": 25,
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "abi": "gcc",
+      "model": "book",
+      "states": 4,
+      "exact_artifacts": 20,
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ]
+    },
+    {
+      "abi": "msvc",
+      "model": "eistute",
+      "states": 5,
+      "exact_artifacts": 25,
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "abi": "msvc",
+      "model": "book",
+      "states": 4,
+      "exact_artifacts": 20,
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ]
+    }
+  ],
+  "expected_regression": {
+    "ctest": 75,
+    "python": 485,
+    "failures": 0,
+    "skips": 0
+  },
+  "scientific_policy_changes": false,
+  "end_to_end_speedup_claimed": false,
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "preserved_tooling_correction": "Reference-root omission in initial source-proof archive corrected before closure; all protected files verified",
+  "artifacts": {
+    "build/borrowed-control-lookup/entry.json": "d1838b2810ee4d763393e7e9e390c23e9dac82189cd158c90533f968f20e59ac",
+    "build/borrowed-control-lookup/build-report.json": "20fa8dbc2834275793ac121074b7786a2e98cd2d6017a7026d0bd28b0e4b9747",
+    "build/borrowed-control-lookup/api-contracts.json": "daec5ed57f771f3ef423107591771c0dce752ac632556d779881bb6dbc29a415",
+    "build/borrowed-control-lookup/memory-report.json": "3f0ab66e01447d380ebdcb83e4477cd078cce3a1760557726a402ad5f56f6c1e",
+    "build/borrowed-control-lookup/memory-serial/report.json": "6a65e2380e760ca3ec91ba3d914233d533d33c504eadbbed07b439e7f2845a58",
+    "build/borrowed-control-lookup/memory-charge/report.json": "a6a6c8622a2b9ec1756843f144ca1ab120177c893e2f0d5549347c9f966bd269",
+    "build/borrowed-control-lookup/trace-report.json": "991c2ae43f1ba5d9ab60ffc421be7fe5ec0137bc42105a8c0edba839cc9510aa",
+    "build/borrowed-control-lookup/science-working/report.json": "7fbb629ff068f29995e64eb8ee0fcc12eb61c9b5a94658733c311add9bc18a0c",
+    "build/borrowed-control-lookup/lookup-audit.json": "ce5e037669b7fddf7d9162c6056ae2ead20e237c6cd7ea93e8a2efd5e51a1101",
+    "build/borrowed-control-lookup/reader-audit.json": "bc276e75eb59054b4a47d875acc6135df6f56ac3a1ef2af9a4d1ca5f2095b62f",
+    "build/borrowed-control-lookup/historical-audit.json": "6a1b6c129ab88d03c56d210337319acc70ee7a0a639042e3bf2ca0e6a3c68ea1",
+    "build/borrowed-control-lookup/analysis/report.json": "4ec3eabf1c12af36640d4578a04eb376f8bf4f79db45fb1bb390f5ea484de857",
+    "build/borrowed-control-lookup/profile-verification.json": "b0acb5d0544baa3559fcff671e09315ff9d751a2ef14e11d219162fd20f31a9f",
+    "build/borrowed-control-lookup/source-preservation.json": "60f60221bdd5acb1c204cf53acf09dda0649d16b671a446254c5c941f37623f8",
+    "build/borrowed-control-lookup/source-proof-correction.json": "3818f87b01a908cc4078f36231e843c957ebf56eabf934ac2eb4b0f3dba9028e"
+  }
+}

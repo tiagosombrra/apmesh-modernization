@@ -23,8 +23,8 @@ def tokens(text):
             if not m.group().isspace() and not m.group().startswith(("//", "/*"))]
 
 
-def function(text, name):
-    pattern = r"std::list<std::unique_ptr<PatchBezier>>\s+PatchReader::" + name + r"\s*\([^)]*\)\s*\{"
+def function(text, name, result_type=r"std::list<std::unique_ptr<PatchBezier>>"):
+    pattern = result_type + r"\s+PatchReader::" + name + r"\s*\([^)]*\)\s*\{"
     matches = list(re.finditer(pattern, text))
     if len(matches) != 1:
         raise ValueError("Missing or duplicate control reader: " + name)
@@ -44,9 +44,41 @@ def rename(body, names):
     return "".join(names.get(m.group(), m.group()) for m in TOKEN.finditer(body))
 
 
+def expand_borrowed_lookup(sources):
+    result = dict(sources)
+    control = result.get(FILES[2], "")
+    if "PatchReader::FindControlPoint(" not in control:
+        return result
+    start, end, body, signature = function(control, "FindControlPoint", "PointAdaptive")
+    expected = ("PointAdaptive PatchReader::FindControlPoint("
+                "const std::vector<PointAdaptive>& vectorPoints, unsigned long idPoint)")
+    if tokens(signature) != tokens(expected) or body.count("std::vector<PointAdaptive>::const_iterator") != 1:
+        raise ValueError("Borrowed lookup signature or const iteration changed")
+    legacy = body.replace("std::vector<PointAdaptive>::const_iterator", "std::vector<PointAdaptive>::iterator")
+    control = control[:start] + control[end:]
+    start, end, wrapper, signature = function(control, "GetPointVectorControlPoints", "PointAdaptive")
+    if tokens(wrapper) != tokens("return FindControlPoint(vectorPoints, idPoint);"):
+        raise ValueError("Public lookup compatibility delegate changed")
+    control = control[:start] + signature + "{" + legacy + "}" + control[end:]
+    start, end, shared, signature = function(control, "ReadBezierControlPatches")
+    if tokens(shared).count("FindControlPoint") != 16 or "GetPointVectorControlPoints" in tokens(shared):
+        raise ValueError("All sixteen internal control lookups must borrow")
+    shared = rename(shared, {"FindControlPoint": "GetPointVectorControlPoints"})
+    result[FILES[2]] = control[:start] + signature + "{" + shared + "}" + control[end:]
+    header = result[FILES[0]]
+    declarations = list(re.finditer(r"static\s+PointAdaptive\s+FindControlPoint\([^;]*\);", header))
+    expected = ("static PointAdaptive FindControlPoint("
+                "const std::vector<PointAdaptive>& vectorPoints, unsigned long idPoint);")
+    if len(declarations) != 1 or tokens(declarations[0].group()) != tokens(expected):
+        raise ValueError("Borrowed lookup declaration changed")
+    declaration = declarations[0]
+    result[FILES[0]] = header[:declaration.start()] + header[declaration.end():]
+    return result
+
+
 def expand_shared_reader(sources):
     """Return an inline view for the unchanged historical ownership oracle."""
-    result = dict(sources)
+    result = expand_borrowed_lookup(sources)
     control = result.get(FILES[2], "")
     if "PatchReader::ReadBezierControlPatches(" not in control:
         return result

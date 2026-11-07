@@ -56,37 +56,37 @@ PatchReader::ReadBezierControlPatches(const std::string& filename, const char* e
 
             for (unsigned int i = 0; i < p.size(); i++) {
               if (i == 0) {
-                patch->SetPt00(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt00(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 1) {
-                patch->SetPt10(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt10(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 2) {
-                patch->SetPt20(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt20(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 3) {
-                patch->SetPt30(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt30(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 4) {
-                patch->SetPt01(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt01(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 5) {
-                patch->SetPt11(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt11(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 6) {
-                patch->SetPt21(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt21(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 7) {
-                patch->SetPt31(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt31(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 8) {
-                patch->SetPt02(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt02(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 9) {
-                patch->SetPt12(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt12(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 10) {
-                patch->SetPt22(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt22(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 11) {
-                patch->SetPt32(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt32(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 12) {
-                patch->SetPt03(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt03(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 13) {
-                patch->SetPt13(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt13(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 14) {
-                patch->SetPt23(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt23(FindControlPoint(vectorControlPoints, p[i]));
               } else if (i == 15) {
-                patch->SetPt33(GetPointVectorControlPoints(vectorControlPoints, p[i]));
+                patch->SetPt33(FindControlPoint(vectorControlPoints, p[i]));
               }
             }
 
@@ -111,8 +111,13 @@ PatchReader::ReadBezierControlPatches(const std::string& filename, const char* e
 
 PointAdaptive PatchReader::GetPointVectorControlPoints(std::vector<PointAdaptive> vectorPoints,
                                                        unsigned long idPoint) {
-  for (std::vector<PointAdaptive>::iterator it = vectorPoints.begin(); it != vectorPoints.end();
-       ++it) {
+  return FindControlPoint(vectorPoints, idPoint);
+}
+
+PointAdaptive PatchReader::FindControlPoint(const std::vector<PointAdaptive>& vectorPoints,
+                                            unsigned long idPoint) {
+  for (std::vector<PointAdaptive>::const_iterator it = vectorPoints.begin();
+       it != vectorPoints.end(); ++it) {
     if ((*it).GetId() == idPoint) {
       return (*it);
     }

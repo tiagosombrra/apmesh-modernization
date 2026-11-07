@@ -44,6 +44,34 @@ std::uint64_t Bits(double value) {
   std::memcpy(&bits, &value, sizeof(bits));
   return bits;
 }
+bool LookupContracts() {
+  using PublicLookup = PointAdaptive (PatchReader::*)(std::vector<PointAdaptive>, unsigned long);
+  static_assert(std::is_same_v<decltype(&PatchReader::GetPointVectorControlPoints), PublicLookup>);
+  PatchReader reader;
+  std::vector<PointAdaptive> points{{1.25, -0.0, 3.5, 7}, {8, 9, 10, 7}, {-3, 4, 5, 9}};
+  auto first = reader.GetPointVectorControlPoints(points, 7);
+  Require(first.GetId() == 7 && Bits(first.GetX()) == Bits(1.25) &&
+              Bits(first.GetY()) == Bits(-0.0) && Bits(first.GetZ()) == Bits(3.5),
+          "lookup must retain the first duplicate ID and exact scalar bits");
+  first.SetX(42);
+  auto last = reader.GetPointVectorControlPoints(points, 9);
+  Require(last.GetId() == 9 && Bits(last.GetX()) == Bits(-3.0) && Bits(last.GetY()) == Bits(4.0) &&
+              Bits(last.GetZ()) == Bits(5.0),
+          "lookup lost its later matching control");
+  for (const auto& missing :
+       {reader.GetPointVectorControlPoints(points, 99), reader.GetPointVectorControlPoints({}, 7)})
+    Require(missing.GetId() == static_cast<unsigned long>(-1) &&
+                Bits(missing.GetX()) == Bits(0.0) && Bits(missing.GetY()) == Bits(0.0) &&
+                Bits(missing.GetZ()) == Bits(0.0),
+            "missing and empty lookups must retain the original default point");
+  Require(points.size() == 3 && points[0].GetId() == 7 && points[1].GetId() == 7 &&
+              points[2].GetId() == 9 && Bits(points[0].GetX()) == Bits(1.25) &&
+              Bits(points[0].GetY()) == Bits(-0.0) && Bits(points[1].GetX()) == Bits(8.0),
+          "lookup result must not alias or mutate the source vector");
+  std::puts(
+      "control_lookup duplicate=1 later=1 missing=1 empty=1 independent=1 public_value_api=1");
+  return true;
+}
 std::array<PointAdaptive, 16> Controls(PatchBezier* p) {
   return {p->GetPt00(), p->GetPt10(), p->GetPt20(), p->GetPt30(), p->GetPt01(), p->GetPt11(),
           p->GetPt21(), p->GetPt31(), p->GetPt02(), p->GetPt12(), p->GetPt22(), p->GetPt32(),
@@ -263,7 +291,7 @@ int main(int argc, char** argv) {
   bool passed = true;
   int operation = -1, seed = -1, first = -1;
   if (std::strcmp(argv[1], "contracts") == 0) {
-    passed = Read(argv[2], false) && Read(argv[2], true);
+    passed = LookupContracts() && Read(argv[2], false) && Read(argv[2], true);
     Geometry geometry;
     passed &= Build(geometry, argv[2], false);
     passed &= Build(geometry, argv[2], false);

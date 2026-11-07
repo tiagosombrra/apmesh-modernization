@@ -2,11 +2,19 @@
 
 ## Current checkpoint and active work
 
-Current production item: [shared Bezier control reader](evidence/SHARED_BEZIER_CONTROL_READER.md),
-an engineering-only consolidation of the equivalent serial/control-estimation
-parsers. Preserve wrapper-specific validation and messages, exact controls/IDs,
-owning publication, allocation/resource and reconstruction semantics. This does
-not reopen the negative cache admission or introduce another source-only audit.
+Current production item: [borrowed control-point lookup](evidence/BORROWED_CONTROL_LOOKUP.md),
+removing sixteen redundant whole-vector copies per valid parsed patch. Preserve
+the public by-value compatibility API, first-ID match/default behavior, returned
+point independence, all reader policies and scientific results. Recalibrate
+allocation denials rather than crediting the former ordinals to changed code.
+
+The [shared Bezier reader](evidence/SHARED_BEZIER_CONTROL_READER.md) is integrated
+through PR #170 as main `ee677a34fd9c9303eb83b70d525c6b966c6a240f`, with exact-head/
+main 75 CTest / 482 Python and its local integration seal. Both caller policies
+and results remain; 320 memory outcomes, 5,518 actual denials and 120 native pairs
+pass. The main MSVC binary-identity failure is preserved; that new artifact passes
+direct Eistute/Book qualification instead of assumed equivalence. Broader Stage 3
+remains open; no cache-admission successor is selected.
 
 PR #169 integrates the [payload/terminal CRT phase](evidence/TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md)
 as main `bccd5c1e7af3c058f62085f8fb908f5ccd5db78b`. Its local

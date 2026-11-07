@@ -1,6 +1,28 @@
 # Local quality automation
 
+## Borrowed control lookup
+
+The [lookup package](evidence/BORROWED_CONTROL_LOOKUP.md) removes internal vector
+copies while retaining the public by-value method. Its nine negative mutations
+guard const borrowing, all sixteen calls, first-match/default selection, public
+signature and independent value returns. Lookup expansion composes with the
+existing eight shared-reader and six historical ownership mutations. Native
+contracts verify the exact public member type, duplicate/later/missing/empty
+queries, scalar bits and source/result independence.
+
+Recalibrate the existing 131 serial / 189 charge expected memory outcomes and
+36 complete sweeps. Qualified fixtures now observe 2,219 serial and 2,147 charge
+denials, compared with entry costs 2,731 and 2,787. Each valid one-patch operation
+eliminates sixteen vector allocations, each three-patch operation forty-eight.
+These are bounded allocation savings, not an end-to-end speedup. Keep existing
+instrument/profile/timeout and writer-failure limits. Require 120 native pairs,
+canonical GCC/MSVC builds, exact-head/main 75 CTest / 485 Python, scoped analysis,
+format/contracts/inventory and the unchanged nine-state article reference.
+
 ## Shared Bezier control reader
+
+The following counts are the qualified PR #170 reference. The borrowed lookup
+above supersedes its internal-copy counts while preserving the public boundary.
 
 The [reader consolidation](evidence/SHARED_BEZIER_CONTROL_READER.md) requires exact
 literal-preserving expansion to both entry implementations. Its eight actual

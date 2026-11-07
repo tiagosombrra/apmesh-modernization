@@ -1078,7 +1078,7 @@
     {
       "id": "C23",
       "topic": "Charge input ownership",
-      "statement": "LoaderBPFile returns an independent list of uniquely owned control-only Bezier patches per invocation. ChargeEstimate retains these owners, constructs its sixteen coordinate-only VertexAdaptive values automatically and owns each pending reconstructed patch until Geometry consumes it. Existing curve matching, construction/control order, numerical arguments and descending stable mean-curvature sorting remain unchanged. A nonallocating four-curve scope removes exclusively appended patch observer suffixes when construction, evaluation or consuming Geometry adoption fails; committed Geometry patches retain their incidence. Reader badbit resource failures propagate instead of allowing unchecked access to an incomplete coordinate row; ordinary EOF/failbit behavior remains. The two control-only loaders delegate to one private ReadBezierControlPatches body; the serial wrapper retains input validation and each wrapper retains its prior empty-filename diagnostic. The shared body preserves the original parsing, IDs, control order, stream masks, pending/publication ownership and by-value point lookup.",
+      "statement": "LoaderBPFile returns an independent list of uniquely owned control-only Bezier patches per invocation. ChargeEstimate retains these owners, constructs its sixteen coordinate-only VertexAdaptive values automatically and owns each pending reconstructed patch until Geometry consumes it. Existing curve matching, construction/control order, numerical arguments and descending stable mean-curvature sorting remain unchanged. A nonallocating four-curve scope removes exclusively appended patch observer suffixes when construction, evaluation or consuming Geometry adoption fails; committed Geometry patches retain their incidence. Reader badbit resource failures propagate instead of allowing unchecked access to an incomplete coordinate row; ordinary EOF/failbit behavior remains. The two control-only loaders delegate to one private ReadBezierControlPatches body; the serial wrapper retains input validation and each wrapper retains its prior empty-filename diagnostic. The shared body preserves the original parsing, IDs, control order, stream masks, pending/publication ownership and by-value point lookup. Internal control selection now borrows the live parsed vector through a private const-reference lookup, preserving first matching ID, default point on a miss and independent point values. The public by-value lookup remains a compatibility delegate. Eliminated container copies change internal allocation ordinals, which require fresh denial calibration.",
       "limits": "This changes the raw reader return contract and removes its accumulated cross-call aliasing; the sole production caller is updated. Valid legacy BP fixtures only; other legacy loaders, malformed parser records and absent-input diagnostics are not input validation qualification. Geometry owns any committed curve/patch prefix after failure. Borrowed curves must outlive the scope; no concurrent/foreign observer suffix publication or intermediate observer consumption. Numerical helper scratch, timer/global/curvature metadata, physical mesh orchestration, acceptance/retry rollback and full-process/parallel/LSan/UBSan remain separate. Resource allocation timing/counts change; no performance claim.",
       "evidence": [
         {
@@ -1104,6 +1104,10 @@
         {
           "path": "src/input_output/control_patch_reader.cpp",
           "anchor": "PatchReader::ReadBezierControlPatches("
+        },
+        {
+          "path": "src/input_output/control_patch_reader.cpp",
+          "anchor": "PointAdaptive PatchReader::FindControlPoint("
         }
       ]
     },
@@ -1182,7 +1186,7 @@
     {
       "id": "C27",
       "topic": "Serial parsed-control and reconstructed-patch ownership",
-      "statement": "LoaderBezierPatchFile returns independent unique control-only owners per call and retains a local pending owner during parsing/publication. ReaderFilePatches retains parsed controls and consumes a separate unique reconstructed patch through Geometry. Three badbit masks propagate resource failures before partial record indexing. Existing validation, EOF/failbit behavior, control/index/ID order, interning tolerance, shared-curve selection, directions and numerical expressions are preserved. The two control-only loaders delegate to one private ReadBezierControlPatches body; the serial wrapper retains input validation and each wrapper retains its prior empty-filename diagnostic. The shared body preserves the original parsing, IDs, control order, stream masks, pending/publication ownership and by-value point lookup.",
+      "statement": "LoaderBezierPatchFile returns independent unique control-only owners per call and retains a local pending owner during parsing/publication. ReaderFilePatches retains parsed controls and consumes a separate unique reconstructed patch through Geometry. Three badbit masks propagate resource failures before partial record indexing. Existing validation, EOF/failbit behavior, control/index/ID order, interning tolerance, shared-curve selection, directions and numerical expressions are preserved. The two control-only loaders delegate to one private ReadBezierControlPatches body; the serial wrapper retains input validation and each wrapper retains its prior empty-filename diagnostic. The shared body preserves the original parsing, IDs, control order, stream masks, pending/publication ownership and by-value point lookup. Internal control selection now borrows the live parsed vector through a private const-reference lookup, preserving first matching ID, default point on a miss and independent point values. The public by-value lookup remains a compatibility delegate. Eliminated container copies change internal allocation ordinals, which require fresh denial calibration.",
       "limits": "Intentional owning-result source API migration at the audited serial caller; no external/raw ABI compatibility. Committed Geometry prefixes may remain on failure and consumed IDs remain consumed; no complete-reader rollback/retry. Borrowed curves outlive patch destruction under C25/C26. Other raw loaders, Model/copy, MPI/Hermite, broader inputs, cache/metadata/acceptance rollback and complete-process/parallel/LSan/UBSan remain separate. Exact-head/main qualification is required in STAGE3_SERIAL_READER.md.",
       "evidence": [
         {
@@ -1208,6 +1212,10 @@
         {
           "path": "src/input_output/control_patch_reader.cpp",
           "anchor": "PatchReader::ReadBezierControlPatches("
+        },
+        {
+          "path": "src/input_output/control_patch_reader.cpp",
+          "anchor": "PointAdaptive PatchReader::FindControlPoint("
         }
       ]
     },
