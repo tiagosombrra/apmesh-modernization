@@ -3,9 +3,13 @@
 
 #include "adapter/domain_generation_error.h"
 #include "domain_candidate_fixture.h"
+#include <type_traits>
 
 namespace typed_domain_test {
 using Error = apmesh::adaptation::DomainGenerationError;
+static_assert(std::is_nothrow_move_constructible_v<Error>);
+static_assert(std::is_nothrow_move_assignable_v<Error>);
+static_assert(std::is_copy_constructible_v<Error>);
 bool inject = false, captured = false;
 int target = 0, calls = 0;
 Geometry* geometry = nullptr;
@@ -59,11 +63,12 @@ int RunTypes() {
         if (length == 17)
           status = "generation_failed";
         const std::string expected = status;
+        Error prepared(context[0], context[1], context[2], std::move(status));
         bool identity = false, payload = false;
         state.active = state.deny_unwinding = true;
         state.remaining = 0;
         try {
-          throw Error(context[0], context[1], context[2], std::move(status));
+          throw std::move(prepared);
         } catch (const Error& error) {
           status.clear();
           payload = error.Step() == context[0] && error.PatchIndex() == context[1] &&
@@ -108,6 +113,61 @@ int RunTypes() {
     Require(detected && caught && state.unwind_attempts == 1 && state.denied == 1,
             "native allocation during unwinding was not denied");
     std::puts("typed_unwind_hook attempts=1 denied=1");
+    const auto unwind_control = state;
+    unsigned preparation_denials = 0;
+    for (unsigned length : {0U, 17U, 257U}) {
+      std::string status(length, 'x');
+      const std::string expected = status;
+      state = domain_candidate_test::State{};
+      state.active = true;
+      state.remaining = 1000;
+      {
+        Error prepared(4, 1, 3, std::move(status));
+        state.active = false;
+        Require(prepared.Status() == expected && status == expected,
+                "payload preparation changed its source or complete status");
+      }
+      const int allocations = state.attempts;
+      Require(allocations > 0 && state.denied == 0, "payload preparation was not measured");
+      for (int ordinal = 0; ordinal < allocations; ++ordinal) {
+        state = domain_candidate_test::State{};
+        state.active = true;
+        state.remaining = ordinal;
+        bool caught_preparation = false;
+        try {
+          Error prepared(4, 1, 3, std::move(status));
+        } catch (const std::bad_alloc&) {
+          caught_preparation = true;
+        }
+        state.active = false;
+        Require(caught_preparation && state.attempts == ordinal + 1 && state.denied == 1 &&
+                    state.unwind_attempts == 0 && status == expected,
+                "payload preparation denial did not propagate with the source intact");
+        ++preparation_denials;
+      }
+      Error original(4, 1, 3, std::move(status));
+      Error copied(original);
+      Error assigned(-1, -1, 0, std::string{});
+      assigned = copied;
+      assigned = assigned;
+      Require(original.Status() == expected && copied.Status() == expected &&
+                  assigned.Status() == expected && &original.Status() != &copied.Status() &&
+                  &copied.Status() != &assigned.Status() && assigned.Step() == 4 &&
+                  assigned.PatchIndex() == 1 && assigned.RetryIndex() == 3,
+              "explicit payload copies lost independent ownership or context");
+      const auto* identity = &original.Status();
+      state = domain_candidate_test::State{};
+      state.active = true;
+      state.remaining = 0;
+      assigned = std::move(original);
+      state.active = false;
+      Require(&assigned.Status() == identity && assigned.Status() == expected &&
+                  state.attempts == 0 && state.denied == 0,
+              "payload move assignment allocated or changed storage identity");
+    }
+    state = unwind_control;
+    std::printf("typed_payload_preparation lengths=3 denials=%u copies=3 moves=3 complete=1\n",
+                preparation_denials);
     std::puts("typed_error_contracts=9 complete=1");
     return 0;
   } catch (const std::exception& error) {

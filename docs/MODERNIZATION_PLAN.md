@@ -74,8 +74,25 @@ shutdown allocations. Six real controls and the fixed 32 SP-01..08 executions
 now pass their required final CRT and independent caller gates. Two failed parser
 prefixes remain; signed Windows status/newline handling is corrected and only
 unexecuted invalid cases resume. Exact-head/main 75 CTest / 475 Python gates
-remain required for this package. SP-09/10 retain their separate observer gate;
-no broader model, instrument or stage qualification follows.
+pass through PR #168, main `9682d53166eddada3ea52ec491205b53de0fe7e5`.
+The current [SP-09/10 checked-CRT gate](evidence/SERIAL_CRT_TERMINAL.md) reuses the
+portable terminal caller and its unchanged typed/lifetime oracles, after separate
+coupled calibration. Its first eight controls pass, including expected retention
+negatives, then the typed payload prerequisite aborts before any of the five
+directed contexts. An isolated checked-MSVC diagnostic confirms a debug-proxy
+allocation inside std::string's noexcept move and termination on denial. The
+required [payload ownership repair](evidence/TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md)
+is now explicitly admitted: copy status into exclusive storage during preparation,
+then transfer the prepared error without allocation. Preparation can fail normally
+with bad_alloc. The nine typed payload rows and eight measured preparation denials
+now pass checked MSVC, retaining context, identity/rethrow and unwind assertions.
+All five contexts now pass clean final CRT and unchanged typed/owner/sample
+oracles. GCC/MSVC each preserve nine scientific states, 45 exact artifacts and
+123 positive boundary comparisons. Preserve the failed artifact, original logs
+and reference-metadata failure; no completed scientific run is repeated for that
+metadata correction. Require final exact-head/main gates and the local repair
+integration seal before bounded phase closure.
+No broader model, instrument or stage qualification follows.
 Production/scientific policies and the negative cache admission are unchanged.
 
 The next production package remains P4. The completed

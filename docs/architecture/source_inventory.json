@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 662,
+    "literal_include_directives": 663,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -384,7 +384,7 @@
     "list": 17,
     "locale": 1,
     "map": 8,
-    "memory": 33,
+    "memory": 34,
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
@@ -500,7 +500,7 @@
     },
     {
       "path": "tests/terminal_observer/CMakeLists.txt",
-      "sha256": "8b46d1b37592c143f0647150d0781d3714c4c377bda751e815afb124a0844e6d"
+      "sha256": "a2d3a2e663c27ec45570ea13146221dac69b4ab394cdf9fc4a4aac94e5b41f3e"
     },
     {
       "path": "tests/uv_memory/CMakeLists.txt",
@@ -684,8 +684,8 @@
       "path": "include/adapter/domain_generation_error.h",
       "component_by_directory": "adapter",
       "kind": "header",
-      "sha256": "8ed594787ce32c4d3338dfa954a13f8369608e288bf33408e60e9d9807603f8b",
-      "bytes": 1044,
+      "sha256": "0b53d8093e472c8520e5e6f11b63139369167588b6594801f0d84c337a7e7fe3",
+      "bytes": 1902,
       "includes": [
         {
           "line": 4,
@@ -696,13 +696,20 @@
         },
         {
           "line": 5,
-          "spelling": "string",
+          "spelling": "memory",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 6,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
           "spelling": "utility",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
@@ -3677,8 +3684,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "5ba90e82f4935951d37280ed1e0c95b8ca5cf9d303d72f698c893c2cfbf53fdb",
-      "bytes": 74314,
+      "sha256": "28188b825772dafbbe4f158fcddef1fc649c49f4eda7d85cd057246e44e8a941",
+      "bytes": 74348,
       "includes": [
         {
           "line": 1,
@@ -6616,7 +6623,7 @@
   ],
   "contract_traceability": {
     "contracts": 35,
-    "source_anchors": 269,
+    "source_anchors": 272,
     "scope": "source anchors exist; semantic statements require independent review"
   }
 }

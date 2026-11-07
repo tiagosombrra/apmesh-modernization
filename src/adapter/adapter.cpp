@@ -1548,8 +1548,9 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
               << ", status=" << best.status << ")\n";
     std::exit(EXIT_FAILURE);
 #else
-    throw apmesh::adaptation::DomainGenerationError(adaptive_step, patch_index, retry_index,
-                                                    std::move(best.status));
+    apmesh::adaptation::DomainGenerationError failure(adaptive_step, patch_index, retry_index,
+                                                      std::move(best.status));
+    throw std::move(failure);
 #endif
   }
   if (patch_index >= 0) {

@@ -1,5 +1,24 @@
 # Local quality automation
 
+## Checked-CRT terminal prerequisite
+
+The [terminal lifetime admission](evidence/SERIAL_CRT_TERMINAL.md) uses an opt-in
+standalone MSVC C++17 Debug target, with iterator checks and /EHsc unchanged.
+Its six lifetime and two terminal observer controls pass; the unchanged typed
+payload control then aborts before any payload row or directed SP-09/10 context.
+Preserve the failed native artifact and raw output. The separate minimal control
+attributes an allocation to MSVC's noexcept string move; denial terminates before
+catch. The original instrument package admits no production repair or relaxed
+assertion. The separate [payload repair](evidence/TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md)
+now prepares exclusive status storage before allocation-free transfer. Require
+nine payload rows, every measured preparation denial, independent copy/move
+controls, actual unwind denial and all five unchanged terminal contexts with
+clean final CRT accounting. Full 75 CTest / 479 Python regression, GCC/MSVC builds,
+the nine-state scientific reference per ABI, analysis, format, source/contract and
+remote gates qualify the final revision. Repeat required validation on main;
+reuse runtime evidence only with verified source/build/input/oracle identities
+and an explicit equivalence seal. No total Stage 3 qualification follows.
+
 ## Executable-owned CRT lifetime window
 
 The [required serial window](evidence/SERIAL_CRT_LIFETIME.md) adds the standalone

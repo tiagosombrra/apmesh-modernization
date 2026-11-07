@@ -1,0 +1,234 @@
+{
+  "schema": 1,
+  "entry_head": "aef14c4d5c7beab6d5dd01694a49dfcb4f5cc7ad",
+  "base_main": "9682d53166eddada3ea52ec491205b53de0fe7e5",
+  "status": "payload_repair_and_fixed_terminal_crt_contexts_qualified_pending_delivery_seal",
+  "classification": "behavior-changing engineering repair of terminal preparation/propagation; scientific paths unchanged",
+  "scope": "prepared exclusive status owner transfers without allocating; preparation and explicit copies may allocate",
+  "copy_move_contract": "Complete status/context and independent copy ownership; moved-from errors retire or receive assignment; no external ABI guarantee",
+  "native_controls": [
+    {
+      "name": "lifetime-release",
+      "status": "passed",
+      "payload_preparation": null
+    },
+    {
+      "name": "lifetime-global-release",
+      "status": "passed",
+      "payload_preparation": null
+    },
+    {
+      "name": "lifetime-late-release",
+      "status": "passed",
+      "payload_preparation": null
+    },
+    {
+      "name": "lifetime-retention",
+      "status": "passed_expected_retention",
+      "payload_preparation": null
+    },
+    {
+      "name": "lifetime-late-retention",
+      "status": "passed_expected_retention",
+      "payload_preparation": null
+    },
+    {
+      "name": "lifetime-denial",
+      "status": "passed",
+      "payload_preparation": null
+    },
+    {
+      "name": "terminal-release",
+      "status": "passed",
+      "payload_preparation": null
+    },
+    {
+      "name": "observer-contracts",
+      "status": "passed",
+      "payload_preparation": null
+    },
+    {
+      "name": "typed-contracts",
+      "status": "passed",
+      "payload_preparation": {
+        "lengths": 3,
+        "preparation_denials": 8,
+        "copies": 3,
+        "moves": 3
+      }
+    }
+  ],
+  "terminal_contexts": [
+    {
+      "name": "SP-09-book-p0",
+      "status": "passed",
+      "exit_code": 1,
+      "normal_blocks_delta": 0,
+      "normal_bytes_delta": 0,
+      "client_blocks_delta": 0,
+      "newer_live_blocks": 0,
+      "failed_prefix_rejected": true
+    },
+    {
+      "name": "SP-09-eistute-p0",
+      "status": "passed",
+      "exit_code": 1,
+      "normal_blocks_delta": 0,
+      "normal_bytes_delta": 0,
+      "client_blocks_delta": 0,
+      "newer_live_blocks": 0,
+      "failed_prefix_rejected": true
+    },
+    {
+      "name": "SP-09-eistute-p1",
+      "status": "passed",
+      "exit_code": 1,
+      "normal_blocks_delta": 0,
+      "normal_bytes_delta": 0,
+      "client_blocks_delta": 0,
+      "newer_live_blocks": 0,
+      "failed_prefix_rejected": true
+    },
+    {
+      "name": "SP-10-book-p0",
+      "status": "passed",
+      "exit_code": 0,
+      "normal_blocks_delta": 0,
+      "normal_bytes_delta": 0,
+      "client_blocks_delta": 0,
+      "newer_live_blocks": 0,
+      "failed_prefix_rejected": null
+    },
+    {
+      "name": "SP-10-eistute-p1",
+      "status": "passed",
+      "exit_code": 0,
+      "normal_blocks_delta": 0,
+      "normal_bytes_delta": 0,
+      "client_blocks_delta": 0,
+      "newer_live_blocks": 0,
+      "failed_prefix_rejected": null
+    }
+  ],
+  "scientific": [
+    {
+      "abi": "gcc",
+      "model": "eistute",
+      "states": 5,
+      "exact_artifacts": 25,
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "abi": "gcc",
+      "model": "book",
+      "states": 4,
+      "exact_artifacts": 20,
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ]
+    },
+    {
+      "abi": "msvc",
+      "model": "eistute",
+      "states": 5,
+      "exact_artifacts": 25,
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "abi": "msvc",
+      "model": "book",
+      "states": 4,
+      "exact_artifacts": 20,
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ]
+    }
+  ],
+  "preservation": {
+    "status": "passed",
+    "changed_production_files": [
+      "include/adapter/domain_generation_error.h",
+      "src/adapter/adapter.cpp"
+    ],
+    "unchanged_production_input_files": 517,
+    "unchanged_production_build_files": 3,
+    "original_entry_artifacts": 43,
+    "original_terminal_failure_artifacts": 18,
+    "adapter_only_delta": "explicit terminal preparation followed by owner move; exact byte restoration outside this block",
+    "source_hashes": {
+      "include/adapter/domain_generation_error.h": "0b53d8093e472c8520e5e6f11b63139369167588b6594801f0d84c337a7e7fe3",
+      "src/adapter/adapter.cpp": "28188b825772dafbbe4f158fcddef1fc649c49f4eda7d85cd057246e44e8a941"
+    },
+    "format_delta": {
+      "status": "passed",
+      "scope": "one leading indentation correction in terminal error preparation; no token or line count changes",
+      "before_sha256": "337e5a0896f432c84ff6e9932cc569ab8d8b9f8b7e169f283feffb4b9ed7eb6f",
+      "after_sha256": "28188b825772dafbbe4f158fcddef1fc649c49f4eda7d85cd057246e44e8a941",
+      "changed_lines": [
+        1552
+      ]
+    }
+  },
+  "preserved_failures": [
+    "Original checked-MSVC typed payload abort; no initial directed contexts",
+    "Revised fixture build: ambiguous unqualified State; corrected before any native execution",
+    "Scientific orchestration: reference source_config_sha256 missing; offline recheck and only one pending launch"
+  ],
+  "scientific_processes_repeated_for_metadata": 0,
+  "review_regression": {
+    "ctest": 75,
+    "python": 479,
+    "failures": 0,
+    "skips": 0,
+    "scope": "iteration; final exact-head/main seals required"
+  },
+  "stage_closure": false,
+  "bounded_phase_closure": "requires local passed integration seal",
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "artifacts": {
+    "build/p3-terminal-crt-payload-repair/build-report.json": "6fa93b5606038a5f4f523d3527367c7edec8283d6077a4c0346882e65136c3b1",
+    "build/p3-terminal-crt-payload-repair/build-revised-report.json": "d022874c241e1ec491de5ff38b8a96db99ffba96fe33850267b741b78a9e1e1d",
+    "build/p3-terminal-crt-payload-repair/profile-verification.json": "229e5c4db11a6222836088444cd2b1e922184a4719be5e642a33a30506441cd0",
+    "build/p3-terminal-crt-payload-repair/observation/report.json": "13ef9b2ec8466c903e7591d1d60eb58fe47172d7172ab006108bbec95b377afd",
+    "build/p3-terminal-crt-payload-repair/science-working/report.json": "04772346cf6879762275ca4334c42829a8ce0f5442a3391382dd5cd7d6bf1754",
+    "build/p3-terminal-crt-payload-repair/science-classification.json": "18bb2892555e2c6566d352742b3bd6eb063431f0918e86802058ace58398fda1",
+    "build/p3-terminal-crt-payload-repair/science-completion/report.json": "14e3ee733e4fddba08ec8fd45b3702043949af0864ef47e0d3c8f7adb1474d72",
+    "build/p3-terminal-crt-payload-repair/source-preservation.json": "7ace4b48db31c175da767a67f5f10c7544c79aaacbd564ce96759d3069b59ebd",
+    "build/p3-terminal-crt-payload-repair/format-source-proof.json": "0a2f93d35f83d5fa542403c060afbac99a7bb8e71e9ab450a896d403815ae793",
+    "build/p3-terminal-crt-payload-repair/analysis/observer-report.json": "9437b0a4089ae616e19c81ca36269a1fbea96c1a45f63b46001d65d70b6f4e41",
+    "build/p3-terminal-crt-payload-repair/analysis/adapter-report.json": "03a0fd2cae84da80f8e785842979880c833bfbd71ea305ed8892e87888b9cb05"
+  }
+}

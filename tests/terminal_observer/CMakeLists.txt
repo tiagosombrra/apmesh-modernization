@@ -9,6 +9,7 @@ execute_process(COMMAND "${Python3_EXECUTABLE}" "${terminal_root}/tools/prepare_
 if(NOT terminal_preparation EQUAL 0)
   message(FATAL_ERROR "Terminal observer preparation failed")
 endif()
+
 file(GLOB_RECURSE terminal_sources CONFIGURE_DEPENDS "${terminal_root}/src/*.cpp")
 list(REMOVE_ITEM terminal_sources "${terminal_root}/src/main.cpp" "${terminal_root}/src/adapter/adapter.cpp")
 add_executable(terminal_observer_probe probe.cpp allocation_observer.cpp
@@ -22,4 +23,18 @@ endif()
 if(MINGW)
   target_compile_options(terminal_observer_probe PRIVATE -fno-strict-aliasing)
   target_link_options(terminal_observer_probe PRIVATE -static -static-libgcc -static-libstdc++)
+endif()
+
+option(AP_MESH_TERMINAL_CRT_LIFETIME "Observe the fixed terminal callers through checked-CRT static teardown" OFF)
+if(AP_MESH_TERMINAL_CRT_LIFETIME)
+  if(NOT MSVC)
+    message(FATAL_ERROR "The terminal CRT lifetime observer requires MSVC checked Debug")
+  endif()
+  add_executable(terminal_crt_lifetime_probe crt_lifetime_probe.cpp allocation_observer.cpp
+    "${terminal_root}/tests/serial_crt/lifetime_exit_observer.cpp"
+    "${terminal_generated}/adapter.cpp" ${terminal_sources})
+  target_compile_features(terminal_crt_lifetime_probe PRIVATE cxx_std_17)
+  target_include_directories(terminal_crt_lifetime_probe PRIVATE "${terminal_generated}"
+    "${CMAKE_CURRENT_SOURCE_DIR}" "${terminal_root}/include" "${terminal_root}/src/adapter")
+  target_compile_options(terminal_crt_lifetime_probe PRIVATE /W4 /permissive- /FS /EHsc /we4530)
 endif()

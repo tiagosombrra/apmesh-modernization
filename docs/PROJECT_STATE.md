@@ -11,8 +11,34 @@ The local-validation companion is integrated through PR #165, main
 controls passing on its final head and main, without skips. Its seal is local
 `build/development-environment-setup/closure/integration-verification.json`.
 
-Current bounded item: [serial executable-owned CRT lifetime checkpoint](evidence/SERIAL_CRT_LIFETIME.md)
-for the required S3-09 accounting gap. Six actual normal/global/shutdown release,
+Current bounded item: [checked-CRT terminal caller lifetime](evidence/SERIAL_CRT_TERMINAL.md),
+the five fixed SP-09/10 contexts using the existing portable full-caller observer.
+The coupled calibration stops at its ninth prerequisite: six lifetime and two
+terminal observer controls pass, then the unchanged typed payload control aborts
+before its first row. No directed context starts. An isolated checked-MSVC
+diagnostic attributes one proxy allocation to std::string's noexcept move inside
+DomainGenerationError. Allocation denial therefore terminates before catch.
+The original failed artifact/logs remain. The explicitly admitted
+[payload ownership repair](evidence/TYPED_DOMAIN_PAYLOAD_OWNERSHIP.md) prepares
+exclusive status storage before throwing, then transfers that owner without
+allocation. Preparation may propagate bad_alloc; complete bytes, const-reference
+access, exception identity and nonallocating unwind remain checked. Nine payload
+rows, eight preparation denials and copy/move controls now pass in checked MSVC.
+All five directed contexts now pass clean final CRT accounting and their original
+typed/owner/sample oracles. GCC and checked MSVC preserve nine scientific states,
+45 exact artifacts and 123 positive boundary comparisons per ABI. The failed
+reference-metadata comparison remains; completed captures are checked offline
+against the existing qualified full-metadata reference and only the unstarted
+Book process resumes. Final exact-head/main gates and the local
+build/p3-terminal-crt-payload-repair/delivery/integration-verification.json seal
+are required for bounded phase closure. This does not close broader Stage 3.
+No original failure, caller limit or scientific policy is weakened.
+
+The [serial executable-owned CRT lifetime checkpoint](evidence/SERIAL_CRT_LIFETIME.md)
+is integrated through PR #168 as main `9682d53166eddada3ea52ec491205b53de0fe7e5`,
+with exact-head/main 75 CTest entries / 475 Python controls and its local
+build/p3-serial-crt-lifetime/delivery/integration-verification.json seal.
+Six actual normal/global/shutdown release,
 retention and allocation-denial controls pass, then the fixed 32 SP-01..08
 executions finish with zero normal/client deltas and empty newer-object dumps.
 Independent positive geometry/UV/boundary, real rejection/retry and exact article

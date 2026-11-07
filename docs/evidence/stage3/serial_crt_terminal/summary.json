@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "entry_main": "9682d53166eddada3ea52ec491205b53de0fe7e5",
+  "status": "blocked_by_checked_msvc_typed_payload_allocation",
+  "classification": "engineering-only test instrumentation and failed qualification; production unchanged",
+  "production_changes": 0,
+  "scientific_policy_changes": false,
+  "compiler_profile": "MSVC 14.44.35207 C++17 x64 Debug DLL CRT; iterator level 2; /EHsc; C4530 as error",
+  "lifetime_scope": "executable-owned normal/client CRT interval; excludes runtime/DLL baseline and later shutdown",
+  "controls": [
+    {
+      "name": "lifetime-release",
+      "status": "passed",
+      "exit_code": 0,
+      "clean": true
+    },
+    {
+      "name": "lifetime-global-release",
+      "status": "passed",
+      "exit_code": 0,
+      "clean": true
+    },
+    {
+      "name": "lifetime-late-release",
+      "status": "passed",
+      "exit_code": 0,
+      "clean": true
+    },
+    {
+      "name": "lifetime-retention",
+      "status": "passed_expected_retention",
+      "exit_code": 0,
+      "clean": false
+    },
+    {
+      "name": "lifetime-late-retention",
+      "status": "passed_expected_retention",
+      "exit_code": 0,
+      "clean": false
+    },
+    {
+      "name": "lifetime-denial",
+      "status": "passed",
+      "exit_code": 0,
+      "clean": true
+    },
+    {
+      "name": "terminal-release",
+      "status": "passed",
+      "exit_code": 0,
+      "clean": true
+    },
+    {
+      "name": "observer-contracts",
+      "status": "passed",
+      "exit_code": 0,
+      "clean": true
+    },
+    {
+      "name": "typed-contracts",
+      "status": "failed",
+      "exit_code": 3,
+      "clean": null
+    }
+  ],
+  "directed_contexts_started": 0,
+  "required_directed_contexts": 5,
+  "completed_typed_payload_rows": 0,
+  "original_failure": "Missing, incomplete or duplicate entry/owner/final CRT checkpoint",
+  "diagnosis": {
+    "status": "checked_string_move_allocation_and_termination_confirmed",
+    "string_move_allocations": 1,
+    "error_constructor_allocations": 1,
+    "denied_error_result": "terminate handler reached; diagnostic exit 90",
+    "stack": "DomainGenerationError -> basic_string move -> _Alloc_proxy -> allocator<_Container_proxy>::allocate -> operator new",
+    "original_calibration_result": "exit 3; empty stdout; abort diagnostic; owner/final checkpoints absent",
+    "repair_required": "Explicit payload ownership design with allocation-free transfer and stable complete status lifetime; preserve context, exception identity, rethrow and unwind controls",
+    "repair_implemented": false
+  },
+  "integration": "blocked; no merge permitted by failed required native gate",
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "artifacts": {
+    "build/p3-terminal-crt-lifetime/build-report.json": "b549bf15856e8db8e1c076d08d77d7e8143a4f9f8dc73e51f7eb6814d074291e",
+    "build/p3-terminal-crt-lifetime/profile-verification.json": "5ff5667321336ad16a667b24b324f60fd1fa4689a8dcf56b3b7848efc4fe0000",
+    "build/p3-terminal-crt-lifetime/observation/report.json": "85c117518a24bd8c780c3809b94711b60ec23c90b4ab33d02411b2215e274c84",
+    "build/p3-terminal-crt-lifetime/diagnostic/report.json": "8ecc8d9abca717eb2b8a104c90af6932509db47eb669e2f20afe0622d2c780b8",
+    "build/p3-terminal-crt-lifetime/diagnostic/analysis.json": "da1ee968037b4885e7c011448b2a42f3ec10b88d18d357b72385aba6ea656e55",
+    "build/p3-terminal-crt-lifetime/diagnostic/deny-error.stack.txt": "e06e10708e5ddc66b9b285278e9444399c441d51a98c8f97aa60df4f4c85cca9",
+    "build/p3-terminal-crt-lifetime/native/Debug/terminal_crt_lifetime_probe.exe": "4b33cb69483fda46ba9770b8c1ae150f4d37804985b059aa6a15b81df915ab13",
+    "build/p3-terminal-crt-lifetime/native/Debug/terminal_crt_lifetime_probe.pdb": "c57322f8fb43d1f42100f72941c0713b892e0f507f919f358b8e827bda3ec830",
+    "build/p3-terminal-crt-lifetime/analysis/report.json": "b640c92fccf6b329c8d31da649eebb4dea513e414b0f4394bcf378d986aec0f5",
+    "build/p3-terminal-crt-lifetime/analysis-msvc/report.json": "bf4c82400311c4bf2be6fbe21246fd0261266c55c76cf56eaf25dac55453dfe3",
+    "tools/qualify_terminal_crt_lifetime.py": "13ed6f84a74d422834e0b2d1f5ecf199aa0dda2e48d768e1e993d8ef9a054bf4",
+    "tests/tooling/test_terminal_crt_lifetime.py": "bce9d6e80653a0a91caf4a7ed19abf0043f5f1e227be48fc05640925b3ed06d9",
+    "include/adapter/domain_generation_error.h": "8ed594787ce32c4d3338dfa954a13f8369608e288bf33408e60e9d9807603f8b"
+  },
+  "regression_required": {
+    "ctest": 75,
+    "python": 478,
+    "failures": 0,
+    "skips": 0,
+    "qualification": "review only; failed native gate still blocks integration"
+  },
+  "preservation": {
+    "production_input_files": 519,
+    "production_build_files": 3,
+    "original_entry_artifacts": 20,
+    "failed_terminal_artifacts": 18,
+    "all_hashes_match": true,
+    "original_entry_all_artifacts": 43
+  }
+}
