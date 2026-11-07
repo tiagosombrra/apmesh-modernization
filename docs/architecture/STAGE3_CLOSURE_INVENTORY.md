@@ -7,6 +7,12 @@ wording and complete evidence history are preserved verbatim in
 in contracts.json and linked qualification reports remain authoritative.
 No open row is closed by this audit or by the latest green CTest run.
 
+The [finite package catalog](STAGE3_FINITE_PACKAGES.md) now assigns the remaining
+work to seven packages / 28 named exits plus F8. Its [status register](STAGE3_PACKAGE_STATUS.json)
+records current progress. F1's four measured scopes require their delivery seal;
+closing that package does not close a broader row whose F4/F5/F6/F7 exits remain.
+All ten obligations below and their original scope are retained.
+
 | ID | Obligation | Status | Concrete remaining work / preserved scope | Package |
 | --- | --- | --- | --- | --- |
 | S3-01 | Physical node/triangle/SubMesh ownership | partial-open | Complete supported serial caller, repeated rebuild/rejection and foreign-owner preconditions remain incomplete. | P2/P3/P4 |

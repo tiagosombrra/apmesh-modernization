@@ -51,15 +51,23 @@ No automatic instrument/audit successor is added.
 
 ## Current stage and completion route
 
-The current production item is [boundary close state guard](evidence/BOUNDARY_CLOSE_STATE.md),
-S3-06/C10 and supported invalid-call handling under S3-10. Empty and repeated close
-are reproduced fatal lifecycle calls. Reject before allocation/mutation while
-preserving the entire valid operation body, owner/ID/adjacency state and new
-contour continuation. Require native GCC/checked-MSVC controls, unchanged valid
-trace/28 denials, frozen articles and exact-head/main 75 CTest / 515 Python.
-This changes invalid-call behavior only; no contour-size or scientific threshold
-is added. PR #176 closes the preceding complete-caller observation at main
-`8d3230cbc0d12686818df7d714913b466c4dce88` with its verified integration seal.
+The execution route is [seven finite packages](architecture/STAGE3_FINITE_PACKAGES.md),
+with 28 fixed items and a final F8 audit mapped back to every original obligation.
+The [status register](architecture/STAGE3_PACKAGE_STATUS.json) makes measured,
+retained and admission-blocked work explicit. Package completion does not imply
+whole-row completion when another mapped package is outstanding. Do not add an
+automatic audit/instrument successor, change support promises or relax a gate.
+
+The current delivery is F1: physical owners and fixed successful repeated callers.
+Its four item scopes cover current SubMesh lifetime/observers, typed owner orders/
+initial-only reuse, two-call adaptive executable-static CRT lifetime and independent
+external-node owners. Require final image/source identities and exact-head/main
+75 CTest / 524 Python before its integration seal. The next admitted F2 item uses
+existing loader/copy evidence; raw routes and blocked UV/cache histories require
+the named admission outputs, not another speculative implementation.
+
+PR #177 closes the boundary state guard at main
+`8550569d0c881843d7818d099ce56761df1ad800`, with its verified integration seal.
 
 PR #174 closes [portable AFT edge-key order](evidence/AFT_POINTER_EDGE_ORDER.md)
 at main `8f0dbc06b91d583910ec15f66e6217002420ee68`, with exact-head/main 75 CTest /

@@ -1,5 +1,35 @@
 # Local quality automation
 
+## Finite Stage 3 package delivery
+
+The [F1..F7 catalog](architecture/STAGE3_FINITE_PACKAGES.md) fixes 28 item exits
+and maps them to all ten original obligations. Its register distinguishes measured
+scope from completed integration. F8 retains every required final gate; blocked
+admission, zero reach and unavailable instruments are never successful outcomes.
+
+The [F1 execution](evidence/STAGE3_FINITE_EXECUTION.md) requires 34 actual SubMesh
+ASan/CRT outcomes, native typed owner orders and initial-only reuse, and the fixed
+Eistute/Book two-call executable-lifetime CRT histories. Preserve all original 31
+local controls, retain iterator-level 0 in the pre-existing isolated Debug fixture
+and iterator-level 2 in the complete caller, and require actual UAF/leak/denial
+controls. The new invalid replaced-owner borrow must be detected, never run as a
+positive mesh case. Reuse qualified numerical results only by relevant identity.
+
+The complete caller reuses the original two-call function through a typed test
+bridge; production and the default lifetime entry remain source-preserved. Require
+six actual lifetime controls before the two model pairs, original 10/300-second
+caps, separate byte-exact streams and first-failure stopping. Each call requires
+nonempty geometry, exact frozen science and positive independent boundaries, plus
+clean final normal/client CRT deltas and an independent empty final object dump.
+A clean heap without both completed calls is unqualified.
+
+Require configured analysis of both lifetime branches, the bridge/native caller,
+positive SubMesh additions and actual invalid controls. Final-format before native
+qualification. Preserve all 522 production/build/input files, four qualified
+application artifacts and 43 original evidence files. Exact-head/main 75 CTest /
+524 Python, architecture/contracts/whitespace, fresh remote audits and guarded
+same-tree main checkout remain mandatory. No whole-row or Stage 3 closure follows.
+
 ## Boundary close state guard
 
 The [invalid-call repair](evidence/BOUNDARY_CLOSE_STATE.md) adds only an early

@@ -9,15 +9,22 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
-The active production item is [boundary close state guard](../evidence/BOUNDARY_CLOSE_STATE.md).
-The two actual invalid lifecycle calls fail under the original checked-MSVC
-implementation. Reject empty/already-closed calls before allocation or mutation;
-preserve valid registration and numerical execution. Require independent state/
-continuation tests, original trace and 28 denials, both frozen article profiles,
-configured analysis and exact-head/main 75 CTest / 515 Python. This closes only
-the named invalid-call defect, retaining all ten Stage 3 dispositions.
-PR #176 integrates the preceding complete native UV caller contract at main
-`8d3230cbc0d12686818df7d714913b466c4dce88` with its verified integration seal.
+Use the [finite F1..F7 catalog and F8 closure audit](STAGE3_FINITE_PACKAGES.md):
+seven packages, four named items each, fixed exits and original-row dependencies.
+The [status register](STAGE3_PACKAGE_STATUS.json) separates admitted execution,
+retained evidence and blocked admissions. Historical P1..P5 below are completed/
+legacy buckets, not an open-ended replacement queue.
+
+Current delivery is F1 physical owners/repeated successful callers. Four item
+scopes have measured local/caller/process/precondition evidence; require the final
+exact-head/main 75 CTest / 524 Python and identity/remote seal before integration.
+After sealing F1, proceed to the first admitted unfinished F2..F5 item. Keep F3-04
+outside-root retirement and F4-03 cache mutation blocked until their actual native
+admission dependency changes. F6 is the final affected-instrument matrix; F8
+requires all original dispositions. No new scientific scope or silent deferral.
+
+PR #177 integrates the boundary state guard at main
+`8550569d0c881843d7818d099ce56761df1ad800` with its verified integration seal.
 
 PR #174 closes pointer-key ordering at main
 `8f0dbc06b91d583910ec15f66e6217002420ee68` with its verified integration seal.
