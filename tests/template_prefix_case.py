@@ -14,6 +14,21 @@ PROGRESS = ['gerou a quadtree', 'refinou a quadtree', 'gerou malha por templates
 OBSERVATION_ONLY = {'presorts', 'sort_reads', 'preflights', 'reads'}
 
 
+def require_contract(observation, context, *, observed=True, profile='gcc'):
+    """Keep historical refusal parsing separate from the current required matrix."""
+    contract = check(observation, context, observed=observed, profile=profile)
+    if tuple(context) == CONTROL:
+        required = 'actual input preflight refusal'
+    elif context[0] == 4 or context[2] == 1:
+        required = 'completed nonempty native prefix'
+    else:
+        required = 'completed guard-only prefix; no template coverage'
+    if contract != required:
+        raise ValueError(f'Required native prefix contract not satisfied: {tuple(context)}; '
+                         f'expected {required}; observed {contract}')
+    return contract
+
+
 def parse_output(text):
     """Preserve and recognize only the exact native progress prefix."""
     marker = '{"context":'
@@ -140,7 +155,7 @@ def run_cases(exe, unobserved, output, profile='gcc'):
                 assert result.returncode == 0, (context, label, result.returncode)
                 j = parse_output((result.stdout + result.stderr).decode('utf-8'))
                 case['observation'] = j
-                contract = check(j, context, observed=label == 'observed', profile=profile)
+                contract = require_contract(j, context, observed=label == 'observed', profile=profile)
                 case['contract'] = contract
                 pair[label] = j
                 if label == 'observed':
@@ -151,7 +166,10 @@ def run_cases(exe, unobserved, output, profile='gcc'):
                     report[key].append(list(context))
                 else:
                     compare(pair['observed'], j)
-        assert [4, 0, 0, 0] in report['qualified_contexts'], 'Required nonempty analytic prefix not reached'
+        assert len(report['cases']) == 17, 'Required native prefix inventory is incomplete'
+        assert len(report['qualified_contexts']) == 6 and len(report['guard_only_contexts']) == 2
+        assert report['refused_contexts'] == [list(CONTROL)]
+        assert len({(tuple(row['context']), row['label']) for row in report['cases']}) == 17
         report.update(status='prefix_fixture_checked', native_outcomes=len(report['cases']),
                       retirement_measurements=0, finished_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()))
     except Exception as error:

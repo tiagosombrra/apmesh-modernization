@@ -1,0 +1,844 @@
+{
+  "provenance": {
+    "revision": "8f0dbc06b91d583910ec15f66e6217002420ee68",
+    "report_sha256": "e80c2928e9cdd9f20a89569b62246ab6348914e66e863e0476d63863effa10e9",
+    "executables": {
+      "observed": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17\\bin\\template_prefix_probe.exe",
+        "sha256": "2ecb10ede58c0226f8c06421d4ab96be03c3cc907f7c71b1e1bc91ba90fc8e4e"
+      },
+      "unobserved": {
+        "path": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\windows-gcc17\\bin\\template_prefix_unobserved.exe",
+        "sha256": "df6eacb155be635bf38664d8e973ba18291298cc1bb00e49f77d02db0d9c29d8"
+      }
+    }
+  },
+  "coarse_seeded": {
+    "0": {
+      "context": [
+        2,
+        0,
+        1,
+        0
+      ],
+      "status": "prefix_completed",
+      "reason": "none",
+      "refusal_tag": -1,
+      "configuration": [
+        1,
+        0.0001,
+        -1,
+        1
+      ],
+      "old_faces": 2,
+      "old_h": 0.25,
+      "preflights": 1,
+      "reads": [
+        79,
+        15
+      ],
+      "geometry_entries": 1,
+      "teardown": 1,
+      "curves_live": 1,
+      "iterator_level": -1,
+      "boundary": [
+        8,
+        8,
+        4,
+        0
+      ],
+      "templates": [
+        7,
+        10,
+        4,
+        0.125
+      ],
+      "views": [
+        15,
+        16,
+        16
+      ],
+      "ids": [
+        15,
+        18,
+        4
+      ],
+      "cardinal_links": 32,
+      "interior_leaves": 2,
+      "leaves": [
+        {
+          "id": 2,
+          "level": 1,
+          "box": [
+            0,
+            0,
+            0.5,
+            0.5
+          ],
+          "neighbors": [
+            [],
+            [
+              6,
+              9
+            ],
+            [
+              11,
+              10
+            ],
+            []
+          ]
+        },
+        {
+          "id": 6,
+          "level": 2,
+          "box": [
+            0.5,
+            0,
+            0.75,
+            0.25
+          ],
+          "neighbors": [
+            [],
+            [
+              7
+            ],
+            [
+              9
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        {
+          "id": 7,
+          "level": 2,
+          "box": [
+            0.75,
+            0,
+            1,
+            0.25
+          ],
+          "neighbors": [
+            [],
+            [],
+            [
+              8
+            ],
+            [
+              6
+            ]
+          ]
+        },
+        {
+          "id": 8,
+          "level": 2,
+          "box": [
+            0.75,
+            0.25,
+            1,
+            0.5
+          ],
+          "neighbors": [
+            [
+              7
+            ],
+            [],
+            [
+              4
+            ],
+            [
+              9
+            ]
+          ]
+        },
+        {
+          "id": 9,
+          "level": 2,
+          "box": [
+            0.5,
+            0.25,
+            0.75,
+            0.5
+          ],
+          "neighbors": [
+            [
+              6
+            ],
+            [
+              8
+            ],
+            [
+              4
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "level": 1,
+          "box": [
+            0.5,
+            0.5,
+            1,
+            1
+          ],
+          "neighbors": [
+            [
+              9,
+              8
+            ],
+            [],
+            [],
+            [
+              12,
+              11
+            ]
+          ]
+        },
+        {
+          "id": 10,
+          "level": 2,
+          "box": [
+            0,
+            0.5,
+            0.25,
+            0.75
+          ],
+          "neighbors": [
+            [
+              2
+            ],
+            [
+              11
+            ],
+            [
+              13
+            ],
+            []
+          ]
+        },
+        {
+          "id": 11,
+          "level": 2,
+          "box": [
+            0.25,
+            0.5,
+            0.5,
+            0.75
+          ],
+          "neighbors": [
+            [
+              2
+            ],
+            [
+              4
+            ],
+            [
+              12
+            ],
+            [
+              10
+            ]
+          ]
+        },
+        {
+          "id": 12,
+          "level": 2,
+          "box": [
+            0.25,
+            0.75,
+            0.5,
+            1
+          ],
+          "neighbors": [
+            [
+              11
+            ],
+            [
+              4
+            ],
+            [],
+            [
+              13
+            ]
+          ]
+        },
+        {
+          "id": 13,
+          "level": 2,
+          "box": [
+            0,
+            0.75,
+            0.25,
+            1
+          ],
+          "neighbors": [
+            [
+              10
+            ],
+            [
+              12
+            ],
+            [],
+            []
+          ]
+        }
+      ],
+      "presorts": 1,
+      "sort_reads": 8
+    },
+    "15": {
+      "context": [
+        2,
+        15,
+        1,
+        0
+      ],
+      "status": "prefix_completed",
+      "reason": "none",
+      "refusal_tag": -1,
+      "configuration": [
+        1,
+        0.0001,
+        -1,
+        1
+      ],
+      "old_faces": 2,
+      "old_h": 0.25,
+      "preflights": 1,
+      "reads": [
+        79,
+        15
+      ],
+      "geometry_entries": 1,
+      "teardown": 1,
+      "curves_live": 1,
+      "iterator_level": -1,
+      "boundary": [
+        8,
+        8,
+        4,
+        0
+      ],
+      "templates": [
+        7,
+        10,
+        4,
+        0.125
+      ],
+      "views": [
+        15,
+        16,
+        16
+      ],
+      "ids": [
+        15,
+        18,
+        4
+      ],
+      "cardinal_links": 32,
+      "interior_leaves": 2,
+      "leaves": [
+        {
+          "id": 2,
+          "level": 1,
+          "box": [
+            0,
+            0,
+            0.5,
+            0.5
+          ],
+          "neighbors": [
+            [],
+            [
+              6,
+              9
+            ],
+            [
+              11,
+              10
+            ],
+            []
+          ]
+        },
+        {
+          "id": 6,
+          "level": 2,
+          "box": [
+            0.5,
+            0,
+            0.75,
+            0.25
+          ],
+          "neighbors": [
+            [],
+            [
+              7
+            ],
+            [
+              9
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        {
+          "id": 7,
+          "level": 2,
+          "box": [
+            0.75,
+            0,
+            1,
+            0.25
+          ],
+          "neighbors": [
+            [],
+            [],
+            [
+              8
+            ],
+            [
+              6
+            ]
+          ]
+        },
+        {
+          "id": 8,
+          "level": 2,
+          "box": [
+            0.75,
+            0.25,
+            1,
+            0.5
+          ],
+          "neighbors": [
+            [
+              7
+            ],
+            [],
+            [
+              4
+            ],
+            [
+              9
+            ]
+          ]
+        },
+        {
+          "id": 9,
+          "level": 2,
+          "box": [
+            0.5,
+            0.25,
+            0.75,
+            0.5
+          ],
+          "neighbors": [
+            [
+              6
+            ],
+            [
+              8
+            ],
+            [
+              4
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "level": 1,
+          "box": [
+            0.5,
+            0.5,
+            1,
+            1
+          ],
+          "neighbors": [
+            [
+              9,
+              8
+            ],
+            [],
+            [],
+            [
+              12,
+              11
+            ]
+          ]
+        },
+        {
+          "id": 10,
+          "level": 2,
+          "box": [
+            0,
+            0.5,
+            0.25,
+            0.75
+          ],
+          "neighbors": [
+            [
+              2
+            ],
+            [
+              11
+            ],
+            [
+              13
+            ],
+            []
+          ]
+        },
+        {
+          "id": 11,
+          "level": 2,
+          "box": [
+            0.25,
+            0.5,
+            0.5,
+            0.75
+          ],
+          "neighbors": [
+            [
+              2
+            ],
+            [
+              4
+            ],
+            [
+              12
+            ],
+            [
+              10
+            ]
+          ]
+        },
+        {
+          "id": 12,
+          "level": 2,
+          "box": [
+            0.25,
+            0.75,
+            0.5,
+            1
+          ],
+          "neighbors": [
+            [
+              11
+            ],
+            [
+              4
+            ],
+            [],
+            [
+              13
+            ]
+          ]
+        },
+        {
+          "id": 13,
+          "level": 2,
+          "box": [
+            0,
+            0.75,
+            0.25,
+            1
+          ],
+          "neighbors": [
+            [
+              10
+            ],
+            [
+              12
+            ],
+            [],
+            []
+          ]
+        }
+      ],
+      "presorts": 1,
+      "sort_reads": 8
+    }
+  },
+  "guard_pair": {
+    "observed": {
+      "context": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "status": "prefix_completed",
+      "reason": "none",
+      "refusal_tag": -1,
+      "configuration": [
+        1,
+        0.0001,
+        -1,
+        1
+      ],
+      "old_faces": 0,
+      "old_h": 0,
+      "preflights": 1,
+      "reads": [
+        0,
+        0
+      ],
+      "geometry_entries": 1,
+      "teardown": 1,
+      "curves_live": 1,
+      "iterator_level": -1,
+      "boundary": [
+        8,
+        8,
+        4,
+        0
+      ],
+      "templates": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "views": [
+        8,
+        8,
+        8
+      ],
+      "ids": [
+        8,
+        8,
+        0
+      ],
+      "cardinal_links": 8,
+      "interior_leaves": 0,
+      "leaves": [
+        {
+          "id": 2,
+          "level": 1,
+          "box": [
+            0,
+            0,
+            0.5,
+            0.5
+          ],
+          "neighbors": [
+            [],
+            [
+              3
+            ],
+            [
+              5
+            ],
+            []
+          ]
+        },
+        {
+          "id": 3,
+          "level": 1,
+          "box": [
+            0.5,
+            0,
+            1,
+            0.5
+          ],
+          "neighbors": [
+            [],
+            [],
+            [
+              4
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "level": 1,
+          "box": [
+            0.5,
+            0.5,
+            1,
+            1
+          ],
+          "neighbors": [
+            [
+              3
+            ],
+            [],
+            [],
+            [
+              5
+            ]
+          ]
+        },
+        {
+          "id": 5,
+          "level": 1,
+          "box": [
+            0,
+            0.5,
+            0.5,
+            1
+          ],
+          "neighbors": [
+            [
+              2
+            ],
+            [
+              4
+            ],
+            [],
+            []
+          ]
+        }
+      ],
+      "presorts": 1,
+      "sort_reads": 0
+    },
+    "unobserved": {
+      "context": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "status": "prefix_completed",
+      "reason": "none",
+      "refusal_tag": -1,
+      "configuration": [
+        1,
+        0.0001,
+        -1,
+        1
+      ],
+      "old_faces": 0,
+      "old_h": 0,
+      "preflights": 0,
+      "reads": [
+        0,
+        0
+      ],
+      "geometry_entries": 1,
+      "teardown": 1,
+      "curves_live": 1,
+      "iterator_level": -1,
+      "boundary": [
+        8,
+        8,
+        4,
+        0
+      ],
+      "templates": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "views": [
+        8,
+        8,
+        8
+      ],
+      "ids": [
+        8,
+        8,
+        0
+      ],
+      "cardinal_links": 8,
+      "interior_leaves": 0,
+      "leaves": [
+        {
+          "id": 2,
+          "level": 1,
+          "box": [
+            0,
+            0,
+            0.5,
+            0.5
+          ],
+          "neighbors": [
+            [],
+            [
+              3
+            ],
+            [
+              5
+            ],
+            []
+          ]
+        },
+        {
+          "id": 3,
+          "level": 1,
+          "box": [
+            0.5,
+            0,
+            1,
+            0.5
+          ],
+          "neighbors": [
+            [],
+            [],
+            [
+              4
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        {
+          "id": 4,
+          "level": 1,
+          "box": [
+            0.5,
+            0.5,
+            1,
+            1
+          ],
+          "neighbors": [
+            [
+              3
+            ],
+            [],
+            [],
+            [
+              5
+            ]
+          ]
+        },
+        {
+          "id": 5,
+          "level": 1,
+          "box": [
+            0,
+            0.5,
+            0.5,
+            1
+          ],
+          "neighbors": [
+            [
+              2
+            ],
+            [
+              4
+            ],
+            [],
+            []
+          ]
+        }
+      ],
+      "presorts": 0,
+      "sort_reads": 0
+    }
+  }
+}

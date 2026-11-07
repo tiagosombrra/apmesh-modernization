@@ -9,13 +9,57 @@ import unittest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tests'))
 sys.path.insert(0, str(ROOT / 'tools'))
-from template_prefix_case import check, compare, parse_output
+from template_prefix_case import check, compare, parse_output, require_contract, run_cases
 from prepare_template_prefix import prepare, transform
 
 SAMPLES = json.loads((ROOT / 'tests/template_prefix/data/observations.json').read_text())
+CURRENT = json.loads((ROOT / 'tests/template_prefix/data/current_contracts.json').read_text(encoding='utf-8'))
 
 
 class PrefixObservationTests(unittest.TestCase):
+    def test_current_coarse_seeded_contracts_are_nonempty(self):
+        for sample in CURRENT['coarse_seeded'].values():
+            self.assertEqual(require_contract(sample, sample['context']), 'completed nonempty native prefix')
+            self.assertEqual(sample['templates'], [7, 10, 4, 0.125])
+
+    def test_historical_refusal_is_readable_but_not_current_qualification(self):
+        sample = SAMPLES['refusal']
+        self.assertIn('not qualified', check(sample, sample['context']))
+        with self.assertRaisesRegex(ValueError, 'Required native prefix contract not satisfied'):
+            require_contract(sample, sample['context'])
+
+    def test_required_guard_and_invalid_input_keep_distinct_contracts(self):
+        guard = SAMPLES['guard_only']
+        self.assertEqual(require_contract(guard, guard['context']), 'completed guard-only prefix; no template coverage')
+        invalid = SAMPLES['input_control']
+        self.assertEqual(require_contract(invalid, invalid['context']), 'actual input preflight refusal')
+
+    def test_runner_stops_before_unobserved_call_after_required_refusal(self):
+        from unittest.mock import patch
+        from subprocess import CompletedProcess
+        samples = [CURRENT['guard_pair']['observed'], CURRENT['guard_pair']['unobserved'], SAMPLES['refusal']]
+        def native_result(arguments, **kwargs):
+            sample = samples.pop(0)
+            prefix = 'gerou a quadtree\nrefinou a quadtree\n'
+            if sample['status'] == 'prefix_completed':
+                prefix += 'gerou malha por templates\n'
+            return CompletedProcess(arguments, 0, (prefix + json.dumps(sample)).encode(), b'')
+        with tempfile.TemporaryDirectory() as temporary:
+            folder = Path(temporary)
+            executable = folder / 'binary'
+            executable.write_bytes(b'controller-only fixture, never executed')
+            output = folder / 'captures'
+            with patch('template_prefix_case.subprocess.run', side_effect=native_result) as launch:
+                with self.assertRaisesRegex(ValueError, 'Required native prefix contract not satisfied'):
+                    run_cases(executable, executable, output)
+            self.assertEqual(launch.call_count, 3)
+            report = json.loads((output / 'report.json').read_text(encoding='utf-8'))
+            self.assertEqual(report['status'], 'failed')
+            self.assertEqual(len(report['cases']), 3)
+            self.assertEqual(report['cases'][-1]['context'], [2, 0, 1, 0])
+            self.assertEqual(report['cases'][-1]['label'], 'observed')
+            self.assertTrue((output / report['cases'][-1]['log']).is_file())
+
     def reject(self, name, field, value):
         j = copy.deepcopy(SAMPLES[name])
         context = tuple(j['context'])

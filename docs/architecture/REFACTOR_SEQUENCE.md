@@ -9,6 +9,19 @@ their declared scope. No partial result closes the stage.
 
 ## Current dependency after the cumulative candidate audit
 
+The active item is [required UV prefix contracts](../evidence/REQUIRED_UV_PREFIX_CONTRACTS.md):
+require both coarse seeded contexts to complete under the qualified diagonal
+guards. Historical refusals remain readable/unqualified; the current runner must
+stop before starting an unchecked counterpart. The existing 17-outcome matrix
+passes in GCC/checked MSVC; both newly admitted geometry contexts pass eight
+paired observations without reaching ideal retirement. No production or input
+policy change. Exact-head/main 75 CTest / 499 Python and identity/remote gates apply.
+
+PR #174 closes pointer-key ordering at main
+`8f0dbc06b91d583910ec15f66e6217002420ee68` with its verified integration seal.
+
+### Preserved preceding production item
+
 The current production item is [portable AFT edge-key order](../evidence/AFT_POINTER_EDGE_ORDER.md).
 Replace only the two raw Vertex-pointer comparisons used to canonicalize
 undirected stage-count keys. Preserve pointer identity, multiplicity and every
