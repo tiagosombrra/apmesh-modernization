@@ -420,7 +420,7 @@
     },
     {
       "path": "cmake/Quality.cmake",
-      "sha256": "aa962b22aa9df407098f52707ca06b8f7b632cfb758adffdeaa934bb6af167c7"
+      "sha256": "429f99f3bfa8ee38b8e19b1663560a5f50ac243f2dc3ac18f802c98d62b5a8dd"
     },
     {
       "path": "tests/curve_memory/CMakeLists.txt",
