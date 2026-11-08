@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "entry_main": "80b44a347719270a6aa7489827debf5852a4cf8e",
+  "classification": "Engineering-only removal of five native quadtree read snapshots",
+  "status": "measured_production_change_pending_exact_head_main",
+  "production_scope": [
+    "include/crab_mesh/aft/quadtree.h",
+    "src/crab_mesh/aft/quadtree.cpp",
+    "src/crab_mesh/aft/advancing_front.cpp"
+  ],
+  "exact_source_reversal": true,
+  "other_protected_files": 519,
+  "original_artifacts": 43,
+  "source_binding": {
+    "include/crab_mesh/aft/quadtree.h": "d4577ebe1e8a546f9b421d7920dd0eaffe7741f148f380dfd1aafbdb92029cab",
+    "src/crab_mesh/aft/quadtree.cpp": "3feae30525b3bf6d04dd0364aae8911c054c4e14326790c5a266c40cdc0bc4dd",
+    "src/crab_mesh/aft/advancing_front.cpp": "4182dddf1290f984f7c6c4718cbf13c7f9e6e068a55d7f2bdfcafb40c70b7c44",
+    "tests/uv_memory/probe.cpp": "eced12e100702b372cd5df8f2effd70796272422798a87f223271b7d58d102d4",
+    "tests/uv_memory/CMakeLists.txt": "aa4e2b0267ad5445fb2defbb341ca87b57383ade3ffd6d658eb754b465a8f343",
+    "tests/template_prefix/probe.cpp": "b7e02401687ca8c6c0bf875729688dc11ce5814ef692a132d0aecab64b61b829",
+    "tests/template_prefix/CMakeLists.txt": "e599afb7146505bf72014f6c4bae67ea48e5756ff4472dd3c2fcd79703d57d22",
+    "tools/prepare_template_prefix.py": "26ece45a72cf5de2d3663a6f7a3bfaeaddcfe861fbb1aad0ef5fe58780f5f36b",
+    "tests/template_prefix_case.py": "3561f1111afd5e6049a928694136f43637f7743c85875dad10955ea931134d87",
+    ".clang-tidy": "cd82b961e72e1c5e795ec64e88d04a7b842f8dc53644e6800a616d617c03295f"
+  },
+  "allocation_result": {
+    "profile": "MSVC C++17 Debug iterator2 existing transfer fixture",
+    "entry": 515,
+    "current": 342,
+    "removed": 173,
+    "percent": 33.592233009708735,
+    "complete_current_denial_sweep": true,
+    "old_capture": {
+      "path": "build/f3-root-adoption/continuation/crt-transfer-membership-failure.stdout",
+      "sha256": "a86331ebc8fd3fb4df245b16e5ef53b461ae3ef901b38446b9b955fbd036581c"
+    },
+    "current_capture": {
+      "path": "build/uv-borrowed-reads/native/crt-transfer-membership-failure.stdout",
+      "sha256": "2c090727e0fa313224bf243fe4b6f76c2578adb4e63926441f8b8d933e69cbb0"
+    },
+    "all_five_queries": {
+      "allocations": 0,
+      "positive_mesh": true
+    },
+    "other_site_savings": "Not separately quantified",
+    "end_to_end_timing": "Unmeasured"
+  },
+  "native": {
+    "report": {
+      "path": "build/uv-borrowed-reads/native/report.json",
+      "sha256": "b02c75108f5e987ee6e9243b175fc38a88e34c319407b7ba69a3769187aa861c"
+    },
+    "expected_outcomes": 21,
+    "executables": {
+      "crt": {
+        "path": "build/uv-borrowed-reads/crt/Debug/uv_lifetime_probe.exe",
+        "sha256": "20763365408c0da3fc1fdc0e73ecea2b2919fce2bbd8c8d61e387fe337b74e8e"
+      },
+      "asan": {
+        "path": "build/uv-borrowed-reads/asan/RelWithDebInfo/uv_lifetime_probe.exe",
+        "sha256": "aa73e41b4f5ad9edf3d4eb9eee658e422ecd75a95b837a2a77a6066c0d073b60"
+      }
+    },
+    "original_registration_tree_traces": "Exact within each ASan/CRT profile",
+    "root_denials": 12,
+    "tree_denials": 3470
+  },
+  "checked_uv": {
+    "prefix": {
+      "path": "build/uv-borrowed-reads/prefix-current/report.json",
+      "sha256": "5e6cfbea69de6bcbfb2b8bb703002d74ebbda2e537bd9c66bc60eddd451d5620"
+    },
+    "complete": {
+      "path": "build/uv-borrowed-reads/prefix-current/complete/report.json",
+      "sha256": "56b8f85a4e98b6b2ca4579d3a5de2d067ed613a739d6f07639d29897367e6d77"
+    },
+    "prefix_outcomes": 17,
+    "complete_outcomes": 12
+  },
+  "scientific": {
+    "report": {
+      "path": "build/uv-borrowed-reads/scientific/report.json",
+      "sha256": "17d496dbb3c54aca8cd2ed990c1215a99951e516417dffd0f81972f3972de0e3"
+    },
+    "cases": 4,
+    "states": 18,
+    "exact_artifacts": 90,
+    "positive_boundaries": 246,
+    "application_artifacts": {
+      "build/windows-gcc17/bin/ap_mesh.exe": "07c21b43258028eb88ef5b3ead58f11a27fd515169ce2cfc9d263261e40cf663",
+      "build/windows-gcc17/libap_mesh_engine.a": "197ca4c90571535d315c788788ecd2fe02346035da9f09ee4e7b710240fe2084",
+      "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "75203db75226fb25c8e5b15e5d5a125bb90da97b121b22d7f2ba3746063c33d6",
+      "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "16a4bf881f416353c3b9494fb5bd26a59d290e295ecfe110f2cc3f822b936da7"
+    }
+  },
+  "analysis": {
+    "required_final_record": "build/uv-borrowed-reads/analysis-final.json",
+    "status": "Required before integration; final receipt binds its actual result",
+    "preserved_unqualified_timeouts": [
+      {
+        "path": "build/uv-borrowed-reads/analysis-gcc-timeout.json",
+        "sha256": "f916a77752d58bfbf90f3345e3417ea4f7ffe8f142b0acb0a73e56c48d8bdf86"
+      },
+      {
+        "path": "build/uv-borrowed-reads/analysis-native.json",
+        "sha256": "f520e0a70082872e2358fb45da56b261ef54076604c4b19bf87c70732f9a1a28"
+      }
+    ],
+    "scope": "Full changed production/header under actual GCC compile metadata; added positive probe/header code under GCC and actual checked-MSVC tlog metadata; unchanged diagnostics",
+    "explicit_tool_budget_seconds": 600,
+    "scientific_caps_unchanged": true
+  },
+  "unchanged_public_by_value_getters": true,
+  "owner_policy_and_scientific_order_unchanged": true,
+  "package_F3_complete": false,
+  "stage_closure": false,
+  "remaining": "Existing F2 corpus,F3 replacement/shared/recovery/retirement,F4-F7 and original ten-row obligations remain",
+  "required_delivery": {
+    "ctest": 75,
+    "python": 526,
+    "failures": 0,
+    "skips": 0,
+    "fresh_remote_and_guarded_main": true
+  }
+}

@@ -263,12 +263,7 @@ void AdvancingFront::makeInitialFront() {
     }
   }
 
-  EdgeList quadtreeFront = quadtree->getFront();
-
-  while (!quadtreeFront.empty()) {
-    Edge* e = quadtreeFront.front();
-    quadtreeFront.pop_front();
-
+  for (Edge* e : quadtree->GetFrontEdges()) {
     front.push_back(e);
 
     bool found = false;
@@ -1014,32 +1009,26 @@ void AdvancingFront::fillMesh() {
             <<  endl;
   }*/
 
-  VertexList quadVertices = quadtree->getVertices();
+  const VertexList& quadVertices = quadtree->GetTemplateVertices();
 
   if (!quadVertices.empty()) {
     // Membership only: the lists retain order, duplicates and publication.
     // Ordered membership keeps allocation failures catchable on checked MSVC.
     std::set<Vertex*> vertexMembership;
     vertexMembership.insert(vertices.begin(), vertices.end());
-    while (!quadVertices.empty()) {
-      Vertex* v = quadVertices.front();
-      quadVertices.pop_front();
-
+    for (Vertex* v : quadVertices) {
       if (vertexMembership.insert(v).second) {
         vertices.push_back(v);
       }
     }
   }
 
-  EdgeList quadEdges = quadtree->getEdges();
+  const EdgeList& quadEdges = quadtree->GetTemplateEdges();
 
   if (!quadEdges.empty()) {
     std::set<Edge*> edgeMembership;
     edgeMembership.insert(edges.begin(), edges.end());
-    while (!quadEdges.empty()) {
-      Edge* e = quadEdges.front();
-      quadEdges.pop_front();
-
+    for (Edge* e : quadEdges) {
       if (edgeMembership.insert(e).second) {
         edges.push_back(e);
       }
@@ -1161,7 +1150,7 @@ void AdvancingFront::UpdateRunStatsFromQuadtree() {
   if (!quadtree) {
     return;
   }
-  run_stats.quadtree_leaf_count = static_cast<unsigned long long>(quadtree->getLeaves().size());
+  run_stats.quadtree_leaf_count = static_cast<unsigned long long>(quadtree->GetLeafCount());
   const QuadtreeTemplateStats& template_stats = quadtree->GetTemplateStats();
   run_stats.quadtree_template_count = template_stats.total_templates;
   run_stats.quadtree_low_score_count = template_stats.low_score_templates;
@@ -1552,7 +1541,7 @@ bool AdvancingFront::execute(const FaceList& oldmesh) {
       return false;
     }
   }
-  CaptureStageStats(quadtree->getMesh(), 0);
+  CaptureStageStats(quadtree->GetTemplateFaces(), 0);
 
 #if USE_PRINT_COMENT
   cout << "gerou malha por templates" << endl;

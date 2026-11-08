@@ -1,5 +1,19 @@
 # Local quality automation
 
+## Borrowed quadtree reads
++
++The [production package](evidence/UV_BORROWED_READS.md) requires exact getter/API,
++pointer/order/transfer preservation and all five new queries under the existing
++CRT hook with zero attempts. Preserve the entry image/log as the 515-allocation
++baseline; measure and deny every current transfer allocation (342 in this profile).
++Require all 21 expected native outcomes, actual negative controls, unchanged root/
++tree denials, exact native traces, existing 17 prefix/12 full UV outcomes per ABI,
++fresh GCC/MSVC frozen comparisons, full changed-production/positive-fixture/header
++analysis and exact-head/main 75 CTest /526 Python. Preserve 519 other protected
++files and 43 original artifacts. Final-format source/image binding, guarded main
++checkout and remote gates remain. Do not rerun unrelated loader/copy campaigns.
++
++
 ## F3 initial root adoption
 
 The [bounded repair](evidence/F3_ROOT_ADOPTION.md) requires the actual original

@@ -80,6 +80,7 @@ public:
   // retira cell como folha e adiciona os filhos de cell
   void addLeaves(QuadtreeCell* cell);
   QuadtreeCellList getLeaves();
+  std::size_t GetLeafCount() const noexcept;
 
   int getNumCells();
 
@@ -109,6 +110,14 @@ public:
   EdgeList getEdges();
   VertexList getVertices();
   FaceList getMesh();
+
+  // Borrow read-only list containers while this tree is alive. Mutating tree
+  // operations can change their contents; TransferTemplateMesh empties owners.
+  // These observers never extend the lifetime of the pointed-to mesh objects.
+  const EdgeList& GetFrontEdges() const noexcept;
+  const EdgeList& GetTemplateEdges() const noexcept;
+  const VertexList& GetTemplateVertices() const noexcept;
+  const FaceList& GetTemplateFaces() const noexcept;
 
   // Append template owners in order and empty the source lists without allocation.
   // Getters expose borrowed views before transfer; cells/front remain observers.

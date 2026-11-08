@@ -58,14 +58,14 @@ retained and admission-blocked work explicit. Package completion does not imply
 whole-row completion when another mapped package is outstanding. Do not add an
 automatic audit/instrument successor, change support promises or relax a gate.
 
-The current delivery is [F3 initial root adoption](evidence/F3_ROOT_ADOPTION.md).
-Its admitted existing setter graph exposes premature root ownership publication
-on allocation failure. Preparing observer leaves before commit repairs that exit;
-all six current ordinals pass abandonment and helper-local retry, while complete
-successful tree traces retain native order. Current UV callers/terminal controls,
-fresh GCC/MSVC frozen comparisons and exact-head/main 75 CTest / 526 Python remain
-mandatory. F3-02 replacement/mate histories, F3-03 whole-tree recovery and F3-04
-outside-root retirement remain open; no synthetic native graph obtains coverage.
+The current delivery removes [redundant quadtree read snapshots](evidence/UV_BORROWED_READS.md)
+from five native AFT call sites. Borrowed list observers preserve the old public
+getters, object identity/order and complete owner transfer. The fixed transfer
+fixture measures 173 fewer allocations (515 -> 342), without an end-to-end timing
+claim. Run only focused affected controls plus required exact-head/main regression
+and current-image frozen comparisons. F3's wider sharing/recovery/retirement exits
+remain open. PR #180 integrated initial-root adoption at main
+`80b44a347719270a6aa7489827debf5852a4cf8e` with its matching head/main receipt.
 
 PR #179 integrates the defined partial F2 acceptance round at main
 `c9b26cc462ae041089f5c036a45ce7a49743e205` with its matching receipt. F2-02 still

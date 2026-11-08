@@ -253,6 +253,8 @@ void Quadtree::addLeaves(QuadtreeCell* cell) {
 
 QuadtreeCellList Quadtree::getLeaves() { return leaves; }
 
+std::size_t Quadtree::GetLeafCount() const noexcept { return leaves.size(); }
+
 int Quadtree::getNumCells() { return root ? root->getNumCells() : 0; }
 
 Vertex* Quadtree::getMin() { return root ? root->getMin() : nullptr; }
@@ -405,6 +407,14 @@ EdgeList Quadtree::getEdges() { return edges; }
 VertexList Quadtree::getVertices() { return vertices; }
 
 FaceList Quadtree::getMesh() { return mesh; }
+
+const EdgeList& Quadtree::GetFrontEdges() const noexcept { return front; }
+
+const EdgeList& Quadtree::GetTemplateEdges() const noexcept { return edges; }
+
+const VertexList& Quadtree::GetTemplateVertices() const noexcept { return vertices; }
+
+const FaceList& Quadtree::GetTemplateFaces() const noexcept { return mesh; }
 
 void Quadtree::TransferTemplateMesh(VertexList& destination_vertices, EdgeList& destination_edges,
                                     FaceList& destination_faces) noexcept {
