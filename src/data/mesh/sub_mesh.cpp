@@ -89,9 +89,12 @@ void SubMesh::AddElement(std::unique_ptr<ElementAdaptive> element) {
 void SubMesh::SetNoh(NodeAdaptive* noh) {
   if (!noh)
     return;
-  auto copy = std::make_unique<NodeAdaptive>(*noh);
-  // A new mesh node must not retain observers into the source mesh.
-  copy->ClearElements();
+  auto copy = std::make_unique<NodeAdaptive>(static_cast<const PointAdaptive&>(*noh));
+  // A physical clone needs scalar state, not a temporary copy of foreign adjacency.
+  copy->SetGa(noh->GetGa());
+  copy->SetGd(noh->GetGd());
+  copy->SetHa(noh->GetHa());
+  copy->SetHd(noh->GetHd());
   copy->SetId(noh->GetId());
   nos_.push_back(std::move(copy));
 }

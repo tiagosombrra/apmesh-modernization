@@ -58,15 +58,16 @@ retained and admission-blocked work explicit. Package completion does not imply
 whole-row completion when another mapped package is outstanding. Do not add an
 automatic audit/instrument successor, change support promises or relax a gate.
 
-The current delivery repairs [independent forward Patch/SubMesh retirement](evidence/FORWARD_PATCH_RETIREMENT.md),
-the concrete unmatched observer dependency of F2-04 in F4-01/04. Six existing
-live-object foreign/move histories now retire their forward borrows through an
-independent nonallocating registration, preserving reciprocal-link and move
-semantics. Require 37 SubMesh/95 detached patch-copy outcomes plus current-image
-science and exact-head/main gates. No complete F2/F3/F4 closure follows.
-PR #181 integrated five borrowed quadtree read sites at main
-`150ec6a5c3d19ff77d3d42361507bd69dac68bb5` with its verified receipt. PR #180
-integrated initial-root adoption at main `80b44a347719270a6aa7489827debf5852a4cf8e`.
+The current delivery repairs [node copy state and scalar-only mesh cloning](evidence/NODE_COPY_STATE.md),
+the ordinary Node value-copy portion of F2-04/F4-04. Prepare all observer storage
+before scalar/list commit and retain self-copy/list-slot identity on failure.
+Physical clone construction omits discarded adjacency (8 -> 4 measured allocations
+for four observers). Full preparation has its own measured cost; no end-to-end
+performance or foreign-element retirement claim follows. Require current focused
+native controls and exact-head/main gates with fresh changed-image science.
+PR #182 integrated independent forward Patch/SubMesh retirement at main
+`ced438b8b8d7b2d6539081c889c78a7fc29d856a` with its matching receipt. Prior borrowed
+quadtree reads and initial-root adoption retain their bounded qualified scopes.
 
 PR #179 integrates the defined partial F2 acceptance round at main
 `c9b26cc462ae041089f5c036a45ce7a49743e205` with its matching receipt. F2-02 still

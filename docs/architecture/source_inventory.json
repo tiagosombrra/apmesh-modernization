@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 663,
+    "literal_include_directives": 664,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -399,7 +399,7 @@
     "sys/time.h": 2,
     "system_error": 1,
     "tuple": 7,
-    "type_traits": 1,
+    "type_traits": 2,
     "typeinfo": 2,
     "unistd.h": 1,
     "unordered_map": 9,
@@ -2181,8 +2181,8 @@
       "path": "include/data/node_adaptive.h",
       "component_by_directory": "data",
       "kind": "header",
-      "sha256": "cfeddd179bddc2a6c6237e96b94391a8d923a0f1282098f64d394321eb4bbc65",
-      "bytes": 1646,
+      "sha256": "fe040c7ed28cbb423c20f36d27e42d1590153058b89b0d3a8a1e076105aa076c",
+      "bytes": 2081,
       "includes": [
         {
           "line": 5,
@@ -4827,8 +4827,8 @@
       "path": "src/data/mesh/sub_mesh.cpp",
       "component_by_directory": "data/mesh",
       "kind": "translation_unit",
-      "sha256": "7037bc962f1e9bef465e2b2ab08bb8148b0a618095f3d81d28782ec129cdf76d",
-      "bytes": 3472,
+      "sha256": "771a27ee2b59b132b607444668ea6b4a564338ebca830f90b63d3dcb757e9750",
+      "bytes": 3614,
       "includes": [
         {
           "line": 1,
@@ -4894,8 +4894,8 @@
       "path": "src/data/node_adaptive.cpp",
       "component_by_directory": "data",
       "kind": "translation_unit",
-      "sha256": "f94fbb328001b8a5690999135b332161210145a71313d036c578017e378f4a9b",
-      "bytes": 2299,
+      "sha256": "76f4ba8b1df33655561e3d91bb6bbc1253f54d99186692c1339d0284c076eccd",
+      "bytes": 2862,
       "includes": [
         {
           "line": 1,
@@ -4903,6 +4903,13 @@
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/node_adaptive.h"
+        },
+        {
+          "line": 3,
+          "spelling": "type_traits",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
         }
       ]
     },

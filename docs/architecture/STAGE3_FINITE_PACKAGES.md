@@ -66,6 +66,11 @@ Existing evidence: [caller roots](../evidence/STAGE3_CALLER_ROOT_AUDIT.md),
 [charge input](../evidence/STAGE3_CHARGE_INPUT.md),
 [copy audit](../evidence/STAGE3_PATCH_COPY_AUDIT.md).
 
+The [node-copy repair](../evidence/NODE_COPY_STATE.md) qualifies ordinary Node
+value/observer copies with live borrowed elements and removes discarded physical
+clone adjacency. Other F2-04 type families/foreign expiry and all raw input
+admissions retain their original exits.
+
 The [current F2 acceptance record](../evidence/F2_LOADER_COPY_ACCEPTANCE.md) resolves
 reused shared-loader evidence, current initialized-copy observations and the
 finite availability catalog. F2-02 has five named original-input/history/specification

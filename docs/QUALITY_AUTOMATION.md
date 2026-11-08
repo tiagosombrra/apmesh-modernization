@@ -1,5 +1,23 @@
 # Local quality automation
 
+## Node copy state and scalar-only mesh clones
+
+The [node-copy package](evidence/NODE_COPY_STATE.md) requires the three original
+partial-state observations and retained strong empty-target control, 22 current
+native outcomes and actual UAF/double-free/leak/hook controls. Require every measured
+32 assignment/list, 10 construction and four clone denials, exact old scalar bits/
+list-slot addresses on failure, source preservation and helper-local retry. Self
+and alias operations must allocate nothing. Preserve current scalar/ID/adjacency
+semantics and the original seven node outcomes. Record clone cost 8 -> 4 together
+with stronger-copy full-preparation costs, without a whole-run performance claim.
+
+Require full changed-production/header and positive-fixture analysis using actual
+GCC/MSVC metadata, current-image frozen Eistute/Book comparisons, exact-head/main
+75 CTest /526 Python, 519 other protected identities, 43 original artifacts and
+fresh remote/guarded-main gates. Other copy families/expired foreign observers,
+UV/cache/recovery and broader stage exits remain open.
+
+
 ## Independent forward Patch/SubMesh retirement
 
 The [observer repair](evidence/FORWARD_PATCH_RETIREMENT.md) requires both original
