@@ -1,0 +1,352 @@
+{
+  "schema": 1,
+  "source_revision": "069e9fb8bb8674a84baaf3cdfd04dde6799a1911",
+  "status": "documentary_transcription_consistent_pending_independent_review",
+  "paper_sha256": "49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5",
+  "transcription_sha256": "941deeb6ee9ab02907a96a025f208744850c68575c1b93cf30c624213f368f50",
+  "svg_sha256": "cb2d7d16ac8720da70420c0055b59dfda2043cab511b803734cd6997aba820d9",
+  "local_audit_script_sha256": "fc45976c7719b88b65ff0462a4fb0955c5dfaa998981830c55e213aab21d2f4d",
+  "positive_schematic_transforms": [
+    {
+      "column": 1,
+      "reflection": false,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 1,
+      "reflection": false,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 1,
+      "reflection": false,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 1,
+      "reflection": false,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 1,
+      "reflection": true,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 1,
+      "reflection": true,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 1,
+      "reflection": true,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 1,
+      "reflection": true,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 2,
+      "reflection": false,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 2,
+      "reflection": false,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 2,
+      "reflection": false,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 2,
+      "reflection": false,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 2,
+      "reflection": true,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 2,
+      "reflection": true,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 2,
+      "reflection": true,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 2,
+      "reflection": true,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 3,
+      "reflection": false,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 3,
+      "reflection": false,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 3,
+      "reflection": false,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 3,
+      "reflection": false,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 3,
+      "reflection": true,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 3,
+      "reflection": true,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 3,
+      "reflection": true,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 3,
+      "reflection": true,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 4,
+      "reflection": false,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 4,
+      "reflection": false,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 4,
+      "reflection": false,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 4,
+      "reflection": false,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 4,
+      "reflection": true,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 4,
+      "reflection": true,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 4,
+      "reflection": true,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 4,
+      "reflection": true,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 5,
+      "reflection": false,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 5,
+      "reflection": false,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 5,
+      "reflection": false,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 5,
+      "reflection": false,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 5,
+      "reflection": true,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 5,
+      "reflection": true,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 5,
+      "reflection": true,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 5,
+      "reflection": true,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 6,
+      "reflection": false,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 6,
+      "reflection": false,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 6,
+      "reflection": false,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 6,
+      "reflection": false,
+      "turns": 3,
+      "status": "passed"
+    },
+    {
+      "column": 6,
+      "reflection": true,
+      "turns": 0,
+      "status": "passed"
+    },
+    {
+      "column": 6,
+      "reflection": true,
+      "turns": 1,
+      "status": "passed"
+    },
+    {
+      "column": 6,
+      "reflection": true,
+      "turns": 2,
+      "status": "passed"
+    },
+    {
+      "column": 6,
+      "reflection": true,
+      "turns": 3,
+      "status": "passed"
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "missing_polygon",
+      "detected": "subdivision_count"
+    },
+    {
+      "case": "reversed_polygon",
+      "detected": "orientation"
+    },
+    {
+      "case": "repeated_vertex",
+      "detected": "repeated_vertex"
+    },
+    {
+      "case": "duplicate_polygon",
+      "detected": "subdivision_count"
+    },
+    {
+      "case": "swapped_T3_T4",
+      "detected": "class_mapping"
+    },
+    {
+      "case": "invented_T5_center",
+      "detected": "strict_convexity"
+    }
+  ],
+  "geometric_boundary_signatures": 16,
+  "class_rotation_orbit_sizes": {
+    "T1": 1,
+    "T2": 4,
+    "T4": 4,
+    "T3": 2,
+    "T5": 4,
+    "T6": 1
+  },
+  "limits": [
+    "Checks apply to rational schematic embedding only",
+    "No executable QUAD scientific fixture/emitter or unit suite added",
+    "D4 operations preserve geometry after reflection winding reversal; they are not publication-prescribed emission orders",
+    "Current class labels checked separately from printed left-to-right column order"
+  ],
+  "raw_artifacts": {
+    "fifth-detail.png": "d86b6ce6494beb72021bc30109732818b7d269e119e51be95bab850f20a1fb11",
+    "fifth.png": "b89d91b232cb824a2321bfb37d505b704fef5f5a30114028e2ac2dc83cecfded",
+    "figure7.png": "04e328147d563fc7bca683e56482a6fae7397c8b25e0edd236e11f5e02ff9c7f",
+    "page-1.png": "a85dc859cae09d43b3095a9026a516b9a4474281d22dc8741a07b8419c14d5a2",
+    "page-2.png": "81e9184e6199ce0557a3d3e39e74fd0f8aa4cd186a18575d75937774b14f4f56",
+    "page-3.png": "87f930ec297dfac43dda6ebbe9aad4b86da1b232cc4448aced27968768ac0e2d",
+    "page-4.png": "00381ab8da1362ea09ff6c71ec2b6668dac4b7d32969aaa6aba89fff8297e525",
+    "page-5.png": "fdc4300f85fb51153bc0f95a728cc0a64859015ee546beefee1a55322d190c19",
+    "page-6.png": "f1a613c4df228ee0a5c9797c03bec0b87e7c08a9b7bd76e4ba760156cefa8a45",
+    "page-7.png": "6cd967c1a47d3b3f4222d648b47b95607dbcd60a484a86a2900617184c64c816"
+  }
+}

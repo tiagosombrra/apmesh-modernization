@@ -4,15 +4,15 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-08-05
+**Last session:** 2026-11-08-06
 
-**Current milestone:** **M0 QUALIFIED in its declared serial baseline scope. M1 historical oracle is next / not implemented.**
+**Current milestone:** **M1 PARTIAL / REVIEW PENDING: Figure 7 graph transcribed and checked; independent confirmation and numerical scientific choices remain open. M0 stays qualified in its declared serial baseline scope.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md)
 
 **Plan:** [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md)
 
-**Evidence:** [M0_EVIDENCE.md](M0_EVIDENCE.md), [memory applicability](evidence/M0_MEMORY_APPLICABILITY_20261108.json), [serial contract register](M0_SERIAL_TRI_CONSUMERS.md), [GNU qualification](evidence/M0_GNU_QUALIFICATION_20261108.json), [MSVC review](evidence/M0_MSVC_REVIEW_20261108.json)
+**Evidence:** [M1 historical review](M1_HISTORICAL_ORACLE_REVIEW.md), [M0_EVIDENCE.md](M0_EVIDENCE.md), [memory applicability](evidence/M0_MEMORY_APPLICABILITY_20261108.json), [serial contract register](M0_SERIAL_TRI_CONSUMERS.md), [GNU qualification](evidence/M0_GNU_QUALIFICATION_20261108.json), [MSVC review](evidence/M0_MSVC_REVIEW_20261108.json)
 
 **History:** [SESSION_LOG.md](SESSION_LOG.md)
 
@@ -43,7 +43,7 @@ No QUAD generator, element or runtime test suite has been implemented. Moderniza
 | Milestone | State | Remaining admission / exit |
 | --- | --- | --- |
 | M0 - baseline | QUALIFIED: scoped G0-G7 baseline; 75/527 checkpoint regression recorded | Scoped exceptions retained below; no main/Stage 3 closure |
-| M1 - historical T1-T6 oracle | NEXT / NOT IMPLEMENTED | Independently verify Figure 7 topology, symmetries, ordered vertices/incidences and negative controls; no invented topology |
+| M1 - historical T1-T6 oracle | PARTIAL / REVIEW PENDING | Source-backed graph/table and schematic checks complete; independent confirmation, numerical choices and executable fixtures remain |
 | M2 - UV QUAD topology | PENDING | Coverage, incidence, orientation and no hanging nodes |
 | M3 - quadtree emitter | PENDING | Opt-in QUAD and exact default TRI preservation |
 | M4 - physical QUAD | PENDING | Defined UV-to-XYZ geometry and four-node lifecycle/ownership |
@@ -57,4 +57,13 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 
 ## Next exact action
 
-After the exact-head checkpoint gate and remote readback, begin **M1 source reconstruction only**: obtain the original 1993 paper, independently verify Figure 7 and record the ordered T1-T6 polygon/orientation/incidence table against that primary source. Cross-check the historical pattern names with the existing neighbor classifier; do not infer polygon connectivity from the current triangular code. Submit unresolved topology or scientific choices for adviser alignment before executable scientific fixtures/emission. Keep quad-dominant versus all-quad and paper priorities open for the planned scientific review. No alternative generator or production scientific change is authorized by this checkpoint.
+Review [the six transcribed cycles and scientific admission questions](M1_HISTORICAL_ORACLE_REVIEW.md) against the identified scan with the advisers. Record confirmation of the column/class mapping, normalized embedding and polygon-centroid definition before isolated executable M1 fixtures. Preserve the current TRI path and the independent modernization baseline. Keep quad-dominant versus all-quad and paper priorities open; no production scientific change is authorized by this checkpoint.
+
+## Current M1 reconstruction
+
+- Original seven-page local scan identified by SHA-256 `49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5`; Figure 7, printed p. 288 / PDF page 4, inspected visually. Drive candidate metadata is available, but its remote byte identity is unverified.
+- The printed columns map to current classes **T1,T2,T4,T3,T5,T6**. Column 5 has no central junction; the intermediate polygon graph includes triangles in columns 2 and 5. Ordered CCW cycles and a review SVG are recorded, with explicit schematic-coordinate conventions.
+- Local documentary checks pass 48 D4 graph observations, covering 16 geometric split signatures. Six deliberately altered records are detected. These are not production tests, independent human review or runtime QUAD validation.
+- The paper's later midpoint/centroid subdivision implies counts **4,11,12,8,11,16** in printed order, conditional on the stated graphs/valid geometry. No such emitter is implemented. The numeric embedding and centroid formula remain review choices; boundary triangle retention prevents a general historical all-quad guarantee.
+- Session 06 changes only research documentation/evidence. Raw source renders, local checker, audit and preview are under `build/quad-m1/session-20261108-06/`. Exact committed checkpoint publication requires full delivery regression, pre-commit/links and fresh remote audit/readback. Preserve that local report and the final SHA in the session response.
+- M1 remains open; M2 is not admitted. No new article, memory or scientific campaign runs for this documentary checkpoint. Main stays `f6050ec1`; all broader Stage 3 limits remain.

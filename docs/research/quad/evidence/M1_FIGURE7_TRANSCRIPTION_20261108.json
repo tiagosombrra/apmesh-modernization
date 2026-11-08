@@ -1,0 +1,277 @@
+{
+  "schema": 1,
+  "status": "primary_source_transcription_for_review_not_executable_scientific_oracle",
+  "source_revision": "069e9fb8bb8674a84baaf3cdfd04dde6799a1911",
+  "paper": {
+    "authors": [
+      "Joaquim Bento Cavalcante Neto",
+      "Marcelo Tilio Monteiro de Carvalho",
+      "Luiz Fernando Martha"
+    ],
+    "title": "Combinacao das Tecnicas de Quadtree e Delaunay para Geracao Automatica de Malhas de Elementos Finitos",
+    "venue": "SIBGRAPI VI, 1993",
+    "pages": "285-291",
+    "figure_page": 288,
+    "pdf_page_one_based": 4,
+    "sha256": "49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5",
+    "bytes": 5439448,
+    "drive_candidate": "https://drive.google.com/file/d/1dYBOU5Q-pFRBlmFXB3iWqQaPFdd2ClzA/view",
+    "drive_identity": "Metadata title/size found; remote bytes not compared to local scan"
+  },
+  "convention": {
+    "coordinates": "Normalized schematic embedding chosen for transcription; the paper gives no numerical table",
+    "orientation": "CCW",
+    "corners": "A=SW B=SE C=NE D=NW",
+    "midpoints": "S E N W",
+    "center": "O is a visible central junction only in columns 2,3,6; absent from column 5",
+    "numbering": "T labels belong to current source neighbor classifier, not printed labels in Figure 7"
+  },
+  "vertices": {
+    "A": [
+      0,
+      0
+    ],
+    "B": [
+      1,
+      0
+    ],
+    "C": [
+      1,
+      1
+    ],
+    "D": [
+      0,
+      1
+    ],
+    "S": [
+      0.5,
+      0
+    ],
+    "E": [
+      1,
+      0.5
+    ],
+    "N": [
+      0.5,
+      1
+    ],
+    "W": [
+      0,
+      0.5
+    ],
+    "O": [
+      0.5,
+      0.5
+    ]
+  },
+  "patterns": [
+    {
+      "column": 1,
+      "class": "T1",
+      "split_sides": [],
+      "polygons": [
+        [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      ],
+      "expected_quads_after_subdivision": 4,
+      "documentary_consistency": {
+        "boundary_edges": 4,
+        "interior_edges": 0,
+        "vertices": 4,
+        "polygons": 1,
+        "area": "1"
+      }
+    },
+    {
+      "column": 2,
+      "class": "T2",
+      "split_sides": [
+        "W"
+      ],
+      "polygons": [
+        [
+          "A",
+          "B",
+          "O",
+          "W"
+        ],
+        [
+          "B",
+          "C",
+          "O"
+        ],
+        [
+          "W",
+          "O",
+          "C",
+          "D"
+        ]
+      ],
+      "expected_quads_after_subdivision": 11,
+      "documentary_consistency": {
+        "boundary_edges": 5,
+        "interior_edges": 3,
+        "vertices": 6,
+        "polygons": 3,
+        "area": "1"
+      }
+    },
+    {
+      "column": 3,
+      "class": "T4",
+      "split_sides": [
+        "N",
+        "W"
+      ],
+      "polygons": [
+        [
+          "A",
+          "B",
+          "O",
+          "W"
+        ],
+        [
+          "W",
+          "O",
+          "N",
+          "D"
+        ],
+        [
+          "O",
+          "B",
+          "C",
+          "N"
+        ]
+      ],
+      "expected_quads_after_subdivision": 12,
+      "documentary_consistency": {
+        "boundary_edges": 6,
+        "interior_edges": 3,
+        "vertices": 7,
+        "polygons": 3,
+        "area": "1"
+      }
+    },
+    {
+      "column": 4,
+      "class": "T3",
+      "split_sides": [
+        "E",
+        "W"
+      ],
+      "polygons": [
+        [
+          "A",
+          "B",
+          "E",
+          "W"
+        ],
+        [
+          "W",
+          "E",
+          "C",
+          "D"
+        ]
+      ],
+      "expected_quads_after_subdivision": 8,
+      "documentary_consistency": {
+        "boundary_edges": 6,
+        "interior_edges": 1,
+        "vertices": 6,
+        "polygons": 2,
+        "area": "1"
+      }
+    },
+    {
+      "column": 5,
+      "class": "T5",
+      "split_sides": [
+        "S",
+        "N",
+        "W"
+      ],
+      "polygons": [
+        [
+          "A",
+          "S",
+          "W"
+        ],
+        [
+          "W",
+          "S",
+          "N",
+          "D"
+        ],
+        [
+          "S",
+          "B",
+          "C",
+          "N"
+        ]
+      ],
+      "expected_quads_after_subdivision": 11,
+      "documentary_consistency": {
+        "boundary_edges": 7,
+        "interior_edges": 2,
+        "vertices": 7,
+        "polygons": 3,
+        "area": "1"
+      }
+    },
+    {
+      "column": 6,
+      "class": "T6",
+      "split_sides": [
+        "S",
+        "E",
+        "N",
+        "W"
+      ],
+      "polygons": [
+        [
+          "A",
+          "S",
+          "O",
+          "W"
+        ],
+        [
+          "S",
+          "B",
+          "E",
+          "O"
+        ],
+        [
+          "O",
+          "E",
+          "C",
+          "N"
+        ],
+        [
+          "W",
+          "O",
+          "N",
+          "D"
+        ]
+      ],
+      "expected_quads_after_subdivision": 16,
+      "documentary_consistency": {
+        "boundary_edges": 8,
+        "interior_edges": 4,
+        "vertices": 9,
+        "polygons": 4,
+        "area": "1"
+      }
+    }
+  ],
+  "not_yet_approved": [
+    "Literal numeric embedding as a scientific fixture",
+    "Precise centroid formula and nonconvex/degenerate policy",
+    "Any production emitter or boundary topology",
+    "Independent reviewer confirmation and M1 executable fixtures"
+  ],
+  "scope": "Graph transcription and local documentary consistency checks only; no QUAD mesh generation"
+}

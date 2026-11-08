@@ -213,3 +213,18 @@ adviser alignment before executable fixtures/emission. No QUAD code exists yet.
 M0 is qualified in its declared serial scope. Final documentation publication
 retains the exact-head full-regression and remote-readback guard. M1 source
 reconstruction is next; no QUAD algorithm/scientific choice is approved here.
+
+## 2026-11-08-06 M1 primary-source progress
+
+M1 is **PARTIAL / REVIEW PENDING**, not closed. The original seven-page scan is
+identified by hash; Figure 7 is visually transcribed in the
+[historical review](M1_HISTORICAL_ORACLE_REVIEW.md), ordered JSON and SVG.
+Printed order is T1,T2,T4,T3,T5,T6 under current code labels; T5 has no center
+junction. Conditional later-subdivision counts are 4,11,12,8,11,16. Schematic
+documentary checks pass 48 D4 observations/16 split signatures and detect six
+altered records. These do not establish an approved executable scientific oracle.
+The paper does not provide a numeric coordinate or centroid-formula table,
+and its boundary procedure may retain triangles. Review the explicit graph,
+normalized embedding and centroid interpretation with advisers before M1
+executable fixtures; M2 and the boundary target remain unadmitted. Production,
+TRI references, main and modernization obligations remain unchanged.

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+<rect width="1200" height="300" fill="white"/>
+<g font-family="sans-serif" fill="#172238">
+<text x="20" y="25" font-size="18">Figure 7 lower row: normalized graph transcription for review</text>
+<text x="35" y="45" font-size="16">Column 1: T1</text>
+<polygon points="35,215 185,215 185,65 35,65" fill="#edf3ff" stroke="#172238" stroke-width="1.5"/>
+<text x="39" y="211" font-size="12">A</text>
+<text x="189" y="211" font-size="12">B</text>
+<text x="189" y="61" font-size="12">C</text>
+<text x="39" y="61" font-size="12">D</text>
+<text x="35" y="245" font-size="13">1 polygon; 4 inferred quads</text>
+<text x="230" y="45" font-size="16">Column 2: T2</text>
+<polygon points="230,215 380,215 305.0,140.0 230,140.0" fill="#edf3ff" stroke="#172238" stroke-width="1.5"/>
+<polygon points="380,215 380,65 305.0,140.0" fill="#f1f7eb" stroke="#172238" stroke-width="1.5"/>
+<polygon points="230,140.0 305.0,140.0 380,65 230,65" fill="#fff2de" stroke="#172238" stroke-width="1.5"/>
+<text x="234" y="211" font-size="12">A</text>
+<text x="384" y="211" font-size="12">B</text>
+<text x="384" y="61" font-size="12">C</text>
+<text x="234" y="61" font-size="12">D</text>
+<text x="309.0" y="136.0" font-size="12">O</text>
+<text x="234" y="136.0" font-size="12">W</text>
+<text x="230" y="245" font-size="13">3 polygons; 11 inferred quads</text>
+<text x="425" y="45" font-size="16">Column 3: T4</text>
+<polygon points="425,215 575,215 500.0,140.0 425,140.0" fill="#edf3ff" stroke="#172238" stroke-width="1.5"/>
+<polygon points="425,140.0 500.0,140.0 500.0,65 425,65" fill="#f1f7eb" stroke="#172238" stroke-width="1.5"/>
+<polygon points="500.0,140.0 575,215 575,65 500.0,65" fill="#fff2de" stroke="#172238" stroke-width="1.5"/>
+<text x="429" y="211" font-size="12">A</text>
+<text x="579" y="211" font-size="12">B</text>
+<text x="579" y="61" font-size="12">C</text>
+<text x="429" y="61" font-size="12">D</text>
+<text x="504.0" y="61" font-size="12">N</text>
+<text x="504.0" y="136.0" font-size="12">O</text>
+<text x="429" y="136.0" font-size="12">W</text>
+<text x="425" y="245" font-size="13">3 polygons; 12 inferred quads</text>
+<text x="620" y="45" font-size="16">Column 4: T3</text>
+<polygon points="620,215 770,215 770,140.0 620,140.0" fill="#edf3ff" stroke="#172238" stroke-width="1.5"/>
+<polygon points="620,140.0 770,140.0 770,65 620,65" fill="#f1f7eb" stroke="#172238" stroke-width="1.5"/>
+<text x="624" y="211" font-size="12">A</text>
+<text x="774" y="211" font-size="12">B</text>
+<text x="774" y="61" font-size="12">C</text>
+<text x="624" y="61" font-size="12">D</text>
+<text x="774" y="136.0" font-size="12">E</text>
+<text x="624" y="136.0" font-size="12">W</text>
+<text x="620" y="245" font-size="13">2 polygons; 8 inferred quads</text>
+<text x="815" y="45" font-size="16">Column 5: T5</text>
+<polygon points="815,215 890.0,215 815,140.0" fill="#edf3ff" stroke="#172238" stroke-width="1.5"/>
+<polygon points="815,140.0 890.0,215 890.0,65 815,65" fill="#f1f7eb" stroke="#172238" stroke-width="1.5"/>
+<polygon points="890.0,215 965,215 965,65 890.0,65" fill="#fff2de" stroke="#172238" stroke-width="1.5"/>
+<text x="819" y="211" font-size="12">A</text>
+<text x="969" y="211" font-size="12">B</text>
+<text x="969" y="61" font-size="12">C</text>
+<text x="819" y="61" font-size="12">D</text>
+<text x="894.0" y="61" font-size="12">N</text>
+<text x="894.0" y="211" font-size="12">S</text>
+<text x="819" y="136.0" font-size="12">W</text>
+<text x="815" y="245" font-size="13">3 polygons; 11 inferred quads</text>
+<text x="1010" y="45" font-size="16">Column 6: T6</text>
+<polygon points="1010,215 1085.0,215 1085.0,140.0 1010,140.0" fill="#edf3ff" stroke="#172238" stroke-width="1.5"/>
+<polygon points="1085.0,215 1160,215 1160,140.0 1085.0,140.0" fill="#f1f7eb" stroke="#172238" stroke-width="1.5"/>
+<polygon points="1085.0,140.0 1160,140.0 1160,65 1085.0,65" fill="#fff2de" stroke="#172238" stroke-width="1.5"/>
+<polygon points="1010,140.0 1085.0,140.0 1085.0,65 1010,65" fill="#eee7fa" stroke="#172238" stroke-width="1.5"/>
+<text x="1014" y="211" font-size="12">A</text>
+<text x="1164" y="211" font-size="12">B</text>
+<text x="1164" y="61" font-size="12">C</text>
+<text x="1014" y="61" font-size="12">D</text>
+<text x="1164" y="136.0" font-size="12">E</text>
+<text x="1089.0" y="61" font-size="12">N</text>
+<text x="1089.0" y="136.0" font-size="12">O</text>
+<text x="1089.0" y="211" font-size="12">S</text>
+<text x="1014" y="136.0" font-size="12">W</text>
+<text x="1010" y="245" font-size="13">4 polygons; 16 inferred quads</text>
+<text x="20" y="280" font-size="13">Schematic coordinates; not a production mesh, approved numerical oracle, or all-quad boundary guarantee.</text>
+</g></svg>
