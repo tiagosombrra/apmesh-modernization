@@ -168,9 +168,9 @@
     "status": "pending_all_required_exits",
     "evidence": null
   },
-  "active_delivery": "F3 initial root adoption repair",
+  "active_delivery": "F3 native borrowed-read production package",
   "next_package": "Independently admitted F3/F4 work; do not fabricate replacement/mate/retirement or raw-loader histories",
-  "completion_rule": "F1 and the partial F2 round have matching prior main receipts. The F3 initial-root repair requires its own exact head/main receipt; F2/F3 packages and original row dependencies remain open.",
+  "completion_rule": "F1 and prior F2/F3 bounded deliveries have matching receipts. The borrowed-read package needs its own exact head/main gates; existing F2/F3 package blockers and all original row dependencies remain open.",
   "prior_F1_integration": {
     "pr": 178,
     "main": "825c23b94f08a2506e2ceade07954cf120b176b8",
@@ -179,5 +179,9 @@
   "prior_F2_integration": {
     "pr": 179,
     "main": "c9b26cc462ae041089f5c036a45ce7a49743e205"
+  },
+  "prior_F3_root_integration": {
+    "pr": 180,
+    "main": "80b44a347719270a6aa7489827debf5852a4cf8e"
   }
 }

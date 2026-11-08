@@ -1083,8 +1083,8 @@
       "path": "include/crab_mesh/aft/quadtree.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "727e84a3d81cd366ee9eeeafeba3e5ab08bb051e54ed76c7c82c3d17ed68f3fa",
-      "bytes": 3579,
+      "sha256": "d4577ebe1e8a546f9b421d7920dd0eaffe7741f148f380dfd1aafbdb92029cab",
+      "bytes": 4076,
       "includes": [
         {
           "line": 4,
@@ -4135,8 +4135,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "9d64fac4992ab873103de4d16cac54b43ab4cb00131fad602e7096e4b56a3329",
-      "bytes": 49414,
+      "sha256": "4182dddf1290f984f7c6c4718cbf13c7f9e6e068a55d7f2bdfcafb40c70b7c44",
+      "bytes": 49203,
       "includes": [
         {
           "line": 1,
@@ -4313,8 +4313,8 @@
       "path": "src/crab_mesh/aft/quadtree.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "fc59027b40f121d2a1275ed7a851a710cd97d715fc20f25d2b4c0a07bf9c3f8f",
-      "bytes": 14081,
+      "sha256": "3feae30525b3bf6d04dd0364aae8911c054c4e14326790c5a266c40cdc0bc4dd",
+      "bytes": 14480,
       "includes": [
         {
           "line": 1,

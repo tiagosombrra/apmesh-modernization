@@ -7,15 +7,17 @@ Current route: [seven finite Stage 3 packages](architecture/STAGE3_FINITE_PACKAG
 separates measured scopes, retained evidence and blocked admissions; it is not a
 percentage or a deadline. No original obligation or support promise is removed.
 
-Current delivery: [F3 initial root adoption](evidence/F3_ROOT_ADOPTION.md).
-The existing admitted initial-root setter graph exposed premature ownership
-publication on allocation failure. The repair prepares leaf observers before
-commit. All six measured ordinals pass abandonment and helper-local retry with
-zero retained CRT blocks/bytes; original/current successful tree traces agree.
-Require current UV prefix/completion, terminal cleanup/negative controls, fresh
-GCC/MSVC Eistute/Book comparisons and exact-head/main 75 CTest / 526 Python.
-F3 remains partial: replacement/mate graphs, naturally reached logical failure,
-whole-tree recovery and outside-root ideal retirement retain their open exits.
+Current delivery: [borrowed quadtree reads](evidence/UV_BORROWED_READS.md).
+The native AFT pipeline now reads four list containers and the leaf count without
+temporary snapshots, preserving the public by-value getters and all owner/order
+semantics. The admitted transfer fixture measures 515 -> 342 allocations. Require
+current focused native controls, fresh frozen GCC/MSVC comparisons and exact-head/
+main 75 CTest /526 Python. This production change does not close F3's remaining
+sharing, replacement, recovery or ideal-retirement obligations.
+
+The [initial-root repair](evidence/F3_ROOT_ADOPTION.md) is integrated through
+PR #180 at main `80b44a347719270a6aa7489827debf5852a4cf8e`, with verified exact
+head/main 75 CTest /526 Python and its matching bounded integration receipt.
 
 F2's defined partial round is integrated through PR #179 at main
 `c9b26cc462ae041089f5c036a45ce7a49743e205`, with its verified 75 CTest / 526 Python

@@ -7,6 +7,8 @@
 #include <exception>
 #include <memory>
 #include <stdexcept>
+#include <type_traits>
+#include <utility>
 #include <vector>
 
 #if defined(_MSC_VER) && defined(_DEBUG)
@@ -32,6 +34,23 @@ double QUADTREE_LOW_QUALITY_H_FACTOR = 1.0;
 double TEMPLATE_POOR_SCORE_THRESHOLD = 0.0;
 
 namespace {
+static_assert(std::is_same_v<decltype(std::declval<Quadtree&>().getVertices()), VertexList>);
+static_assert(std::is_same_v<decltype(std::declval<Quadtree&>().getEdges()), EdgeList>);
+static_assert(std::is_same_v<decltype(std::declval<Quadtree&>().getMesh()), FaceList>);
+static_assert(std::is_same_v<decltype(std::declval<Quadtree&>().getFront()), EdgeList>);
+static_assert(std::is_same_v<decltype(std::declval<const Quadtree&>().GetTemplateVertices()),
+                             const VertexList&>);
+static_assert(
+    std::is_same_v<decltype(std::declval<const Quadtree&>().GetTemplateEdges()), const EdgeList&>);
+static_assert(
+    std::is_same_v<decltype(std::declval<const Quadtree&>().GetTemplateFaces()), const FaceList&>);
+static_assert(
+    std::is_same_v<decltype(std::declval<const Quadtree&>().GetFrontEdges()), const EdgeList&>);
+static_assert(noexcept(std::declval<const Quadtree&>().GetTemplateVertices()) &&
+              noexcept(std::declval<const Quadtree&>().GetTemplateEdges()) &&
+              noexcept(std::declval<const Quadtree&>().GetTemplateFaces()) &&
+              noexcept(std::declval<const Quadtree&>().GetFrontEdges()) &&
+              noexcept(std::declval<const Quadtree&>().GetLeafCount()));
 bool registration_contracts_ok = true;
 
 void registration_check(bool condition, const char* message) {
@@ -516,6 +535,16 @@ void transfer_order() {
   auto expected_vertices = front.getQuadtree()->getVertices();
   auto expected_edges = front.getQuadtree()->getEdges();
   auto expected_faces = front.getQuadtree()->getMesh();
+  const Quadtree& tree = *front.getQuadtree();
+  const auto& borrowed_vertices = tree.GetTemplateVertices();
+  const auto& borrowed_edges = tree.GetTemplateEdges();
+  const auto& borrowed_faces = tree.GetTemplateFaces();
+  const auto& borrowed_front = tree.GetFrontEdges();
+  const auto expected_front = front.getQuadtree()->getFront();
+  require(borrowed_vertices == expected_vertices && borrowed_edges == expected_edges &&
+              borrowed_faces == expected_faces && borrowed_front == expected_front &&
+              tree.GetLeafCount() == front.getQuadtree()->getLeaves().size(),
+          "borrowed containers preserve exact snapshot order and pointer identity");
   auto* a = new Vertex(0.2, 0.2);
   auto* b = new Vertex(0.8, 0.2);
   auto* c = new Vertex(0.2, 0.8);
@@ -528,6 +557,12 @@ void transfer_order() {
   expected_edges.push_front(edge);
   expected_faces.push_front(face);
   front.fillMesh();
+  require(borrowed_vertices.empty() && borrowed_edges.empty() && borrowed_faces.empty() &&
+              borrowed_front == expected_front &&
+              std::addressof(borrowed_vertices) == std::addressof(tree.GetTemplateVertices()) &&
+              std::addressof(borrowed_edges) == std::addressof(tree.GetTemplateEdges()) &&
+              std::addressof(borrowed_faces) == std::addressof(tree.GetTemplateFaces()),
+          "live borrowed containers reflect owner transfer without replacing their identity");
   require(front.getInnerVertices() == expected_vertices &&
               front.getInnerEdges() == expected_edges && front.getMesh() == expected_faces,
           "owner handoff preserves every address and append order");
@@ -906,6 +941,22 @@ template <class Action> bool inject_allocation_failure(int ordinal, Action actio
     }
   }
   return caught && denied_allocations == 1;
+}
+
+void borrowed_view_allocations() {
+  TransferFront front;
+  prepare_transfer(front);
+  const Quadtree& tree = *front.getQuadtree();
+  bool observed = false;
+  {
+    AllocationScope hook(0);
+    observed = !tree.GetTemplateVertices().empty() && !tree.GetTemplateEdges().empty() &&
+               !tree.GetTemplateFaces().empty() && !tree.GetFrontEdges().empty() &&
+               tree.GetLeafCount() > 0;
+  }
+  require(observed && allocation_attempts == 0 && denied_allocations == 0,
+          "all five borrowed quadtree queries observe a real mesh without allocation");
+  std::puts("borrowed_quadtree_queries=5 allocations=0 positive_mesh=1");
 }
 
 void root_adoption_failures() {
@@ -1364,7 +1415,13 @@ void scenario(const char* mode) {
     boundary_close_state(true);
   } else if (std::strcmp(mode, "tree-contracts") == 0)
     tree_contracts();
-  else if (std::strcmp(mode, "root-adoption-failure") == 0) {
+  else if (std::strcmp(mode, "borrowed-view-allocation") == 0) {
+#if defined(_MSC_VER) && defined(_DEBUG)
+    borrowed_view_allocations();
+#else
+    require(false, "Debug CRT allocation hook required");
+#endif
+  } else if (std::strcmp(mode, "root-adoption-failure") == 0) {
 #if defined(_MSC_VER) && defined(_DEBUG)
     root_adoption_failures();
 #else
