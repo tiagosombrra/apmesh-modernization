@@ -1,8 +1,23 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
-**Estado:** planejamento, sem implementação QUAD no pipeline. **Criado em:** 2026-11-08. **Revisão científica prevista:** 2026-11-11 com Joaquim Bento e Creto Vidal.  
+**Estado:** M0 baseline qualification **in progress**; no QUAD algorithm implementation in the production pipeline. **Criado em:** 2026-11-08. **Revisão científica prevista:** 2026-11-11 com Joaquim Bento e Creto Vidal.  
 **Branch:** `quad-templates`; **baseline imutável de origem:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` (PR #183).  
 **Auditoria:** [BASELINE_AUDIT.md](BASELINE_AUDIT.md). **Fonte histórica:** Bento et al., *Combinação das Técnicas de Quadtree e Delaunay para Geração Automática de Malhas de Elementos Finitos*, SIBGRAPI 1993, Figura 7 e seção sobre contorno.
+
+## Continuity and mandatory research handoff
+
+**Canonical current state:** [STATE.md](STATE.md) — read this before interpreting any milestone in this roadmap.  
+**Conversation/agent workflow:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — mandatory at each substantial QUAD session.  
+**Append-only activity:** [SESSION_LOG.md](SESSION_LOG.md).  
+**Current M0 gate evidence:** [M0_EVIDENCE.md](M0_EVIDENCE.md).
+
+At session end, write a verified GitHub checkpoint: update the canonical state,
+append the session log and record executed/unexecuted gates. Update this roadmap
+only for an actual milestone transition, changed approved scope or adjusted gate.
+New ChatGPT/Codex sessions must resume from these files and current remote commits,
+not from assumed recall of earlier conversations. The protocol is not an automatic
+scheduler: a connected actor must perform the write. If tools are unavailable,
+report that the checkpoint could not be persisted.
 
 ## 1. Decisão arquitetural
 
