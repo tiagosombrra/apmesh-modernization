@@ -150,8 +150,8 @@ extern "C" void WrappedCandidateInsert(MeshAdaptive* parent, SubMesh* mesh, int 
   }
   RealCandidateInsert(parent, mesh, position);
 }
-extern "C" void* RealCandidateNew(std::size_t) asm("__real__Znwy");
-extern "C" void* WrappedCandidateNew(std::size_t) asm("__wrap__Znwy");
+extern "C" void* RealCandidateNew(std::size_t) asm("__real__Znw" AP_MESH_SIZE_T_MANGLE);
+extern "C" void* WrappedCandidateNew(std::size_t) asm("__wrap__Znw" AP_MESH_SIZE_T_MANGLE);
 extern "C" void* WrappedCandidateNew(std::size_t size) {
   using namespace domain_candidate_test;
   if (state.deny_unwinding && std::uncaught_exceptions() > 0) {
@@ -174,8 +174,10 @@ extern "C" void WrappedCandidateDelete(void* value) {
   if (domain_candidate_test::Release(value))
     RealCandidateDelete(value);
 }
-extern "C" void RealCandidateSizedDelete(void*, std::size_t) asm("__real__ZdlPvy");
-extern "C" void WrappedCandidateSizedDelete(void*, std::size_t) asm("__wrap__ZdlPvy");
+extern "C" void RealCandidateSizedDelete(void*,
+                                         std::size_t) asm("__real__ZdlPv" AP_MESH_SIZE_T_MANGLE);
+extern "C" void WrappedCandidateSizedDelete(void*,
+                                            std::size_t) asm("__wrap__ZdlPv" AP_MESH_SIZE_T_MANGLE);
 extern "C" void WrappedCandidateSizedDelete(void* value, std::size_t size) {
   if (domain_candidate_test::Release(value))
     RealCandidateSizedDelete(value, size);
