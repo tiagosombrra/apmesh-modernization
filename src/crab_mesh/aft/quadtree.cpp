@@ -215,12 +215,9 @@ void Quadtree::setBoundary(Boundary* boundary) { this->boundary = boundary; }
 Boundary* Quadtree::getBoundary() { return boundary; }
 
 void Quadtree::setRoot(QuadtreeCell* root) {
-  this->root = root;
-
   if (root) {
     QuadtreeCellList breadthSearch;
-
-    leaves.clear();
+    QuadtreeCellList pendingLeaves;
 
     breadthSearch.push_back(root);
 
@@ -234,10 +231,13 @@ void Quadtree::setRoot(QuadtreeCell* root) {
         breadthSearch.push_back(cell->getChild(QUAD_TOP_RIGHT));
         breadthSearch.push_back(cell->getChild(QUAD_TOP_LEFT));
       } else {
-        leaves.push_back(cell);
+        pendingLeaves.push_back(cell);
       }
     }
+    // Commit only after every observer-list allocation succeeds.
+    leaves.swap(pendingLeaves);
   }
+  this->root = root;
 }
 
 QuadtreeCell* Quadtree::getRoot() { return root; }

@@ -14,7 +14,11 @@ records current progress. F1's four scopes are integrated through PR #178. The
 and initialized-copy scopes while five raw routes remain admission-blocked and
 implicit/foreign publications retain F4 dependencies. Neither package progress
 nor a green baseline closes a broader row whose mapped exits remain.
-All ten obligations below and their original scope are retained.
+The [F3 initial-root repair](../evidence/F3_ROOT_ADOPTION.md) makes one admitted
+setter adoption exception-safe. Its helper-local retry does not close root/mate
+replacement, failed-generation recovery or outside-root retirement. Current UV
+callers and terminal controls retain their exact limits. All ten obligations
+below and their original scope are retained.
 
 | ID | Obligation | Status | Concrete remaining work / preserved scope | Package |
 | --- | --- | --- | --- | --- |

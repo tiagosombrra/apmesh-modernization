@@ -676,6 +676,48 @@ struct TreeFixture {
   ~TreeFixture() { face.DetachVertices(); }
 };
 
+// The initial root graph is the existing TreeFixture stage 1 admission.
+struct PendingRootFixture {
+  std::unique_ptr<Quadtree> tree;
+  std::unique_ptr<Vertex> minimum = std::make_unique<Vertex>(0, 0);
+  std::unique_ptr<Vertex> maximum = std::make_unique<Vertex>(1, 1);
+  std::unique_ptr<QuadtreeCell> root;
+
+  PendingRootFixture() {
+    auto boundary = std::make_unique<Boundary>();
+    boundary->addVertex(0, 0, nullptr);
+    tree = std::make_unique<Quadtree>(boundary.get());
+    boundary.release();
+    root =
+        std::make_unique<QuadtreeCell>(tree->getCellId(), tree.get(), minimum.get(), maximum.get());
+  }
+
+  void adopt() {
+    tree->setRoot(root.get());
+    commit();
+  }
+
+  void commit() {
+    require(tree->getRoot() == root.get() && tree->getMin() == minimum.get() &&
+                tree->getMax() == maximum.get(),
+            "root adoption preserves exact cell and endpoint identity");
+    const auto leaves = tree->getLeaves();
+    require(leaves.size() == 1 && leaves.front() == root.get(), "initial root is the sole leaf");
+    root.release();
+    minimum.release();
+    maximum.release();
+  }
+
+  void check_pending() {
+    std::printf("root_published_after_denial=%d\n", tree->getRoot() != nullptr ? 1 : 0);
+    require(tree->getRoot() == nullptr && tree->getLeaves().empty(),
+            "failed initial adoption leaves the tree unchanged and caller-owned root pending");
+    require(root->getMin() == minimum.get() && root->getMax() == maximum.get() &&
+                minimum->getX() == 0 && maximum->getX() == 1,
+            "pending root and borrowed endpoints remain live");
+  }
+};
+
 void tree_operation(TreeFixture& fixture, int stage) {
   if (stage == 1)
     fixture.tree->getRoot()->subdivideToLevel(1);
@@ -723,6 +765,9 @@ void tree_contracts() {
       std::printf("tree_leaf=%ld\n", leaf->getId());
     }
   }
+  PendingRootFixture pending;
+  pending.adopt();
+  std::puts("root_adoption_identity=preserved");
 }
 
 #if defined(_MSC_VER) && defined(_DEBUG)
@@ -861,6 +906,30 @@ template <class Action> bool inject_allocation_failure(int ordinal, Action actio
     }
   }
   return caught && denied_allocations == 1;
+}
+
+void root_adoption_failures() {
+  int total = 0;
+  {
+    PendingRootFixture fixture;
+    total = measure_allocations([&] { fixture.tree->setRoot(fixture.root.get()); });
+    fixture.commit();
+  }
+  require(total > 0, "root adoption has positive measured allocation coverage");
+  std::printf("root_adoption_measured=%d\n", total);
+  for (int ordinal = 0; ordinal < total; ++ordinal) {
+    for (bool retry : {false, true}) {
+      PendingRootFixture fixture;
+      std::printf("root_adoption_inject=%d retry=%d\n", ordinal, retry ? 1 : 0);
+      require(
+          inject_allocation_failure(ordinal, [&] { fixture.tree->setRoot(fixture.root.get()); }),
+          "every initial root adoption denial propagates exactly once");
+      fixture.check_pending();
+      if (retry)
+        fixture.adopt();
+    }
+  }
+  std::printf("root_adoption_failure_sites=%d/%d abandonment=1 helper_retry=1\n", total, total);
 }
 
 void parametric_allocation_failures(int variant) {
@@ -1295,8 +1364,14 @@ void scenario(const char* mode) {
     boundary_close_state(true);
   } else if (std::strcmp(mode, "tree-contracts") == 0)
     tree_contracts();
-  else if (std::strncmp(mode, "tree-failure-", 13) == 0 && std::strlen(mode) == 14 &&
-           mode[13] >= '0' && mode[13] <= '4') {
+  else if (std::strcmp(mode, "root-adoption-failure") == 0) {
+#if defined(_MSC_VER) && defined(_DEBUG)
+    root_adoption_failures();
+#else
+    require(false, "Debug CRT allocation hook required");
+#endif
+  } else if (std::strncmp(mode, "tree-failure-", 13) == 0 && std::strlen(mode) == 14 &&
+             mode[13] >= '0' && mode[13] <= '4') {
 #if defined(_MSC_VER) && defined(_DEBUG)
     tree_allocation_failures(mode[13] - '0');
 #else

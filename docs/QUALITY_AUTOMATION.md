@@ -1,5 +1,29 @@
 # Local quality automation
 
+## F3 initial root adoption
+
+The [bounded repair](evidence/F3_ROOT_ADOPTION.md) requires the actual original
+premature-publication failure, exact initial graph/endpoint identity, all measured
+current adoption denials with both abandonment and helper-local retry, and zero
+CRT retention. Preserve exact original/current successful tree traces and the
+existing breadth-first child order. Successful allocation counts are measured
+four versus six under checked MSVC, not an unchanged-allocation claim.
+
+Require 20 current ASan/CRT outcomes, actual UAF/shared-delete/leak/hook controls,
+all 515 transfer and 3,470 existing tree denials, 17 prefix/12 full native UV calls
+per GCC/checked-MSVC ABI, and fresh Eistute/Book frozen comparisons for changed
+application images. Keep original rejected/calibration evidence and the local
+stdout/stderr controller classification failure. Continue only unstarted children.
+
+Require configured full production/all-added-positive-fixture analysis under GCC
+and checked-MSVC metadata, source reversal, 521 unchanged protected files and 43
+original artifacts, final-format native binding, exact-head/main 75 CTest /526
+Python, fresh remote audits and guarded same-tree main checkout. The native
+root-adoption-failure mode is the additional CRT gate; tree-contracts includes
+the positive path through its existing required CTest entry. No general owner
+replacement, mate, failed-generation retry, F3 package or stage closure follows.
+
+
 ## F2 loader and copy acceptance
 
 The [F2 round](evidence/F2_LOADER_COPY_ACCEPTANCE.md) requires reuse proof for all

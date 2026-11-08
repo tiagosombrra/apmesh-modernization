@@ -1,0 +1,435 @@
+{
+  "schema": 1,
+  "entry_main": "c9b26cc462ae041089f5c036a45ce7a49743e205",
+  "classification": "Behavior-changing allocation-failure repair for admitted initial root adoption; successful scientific execution preserved",
+  "status": "measured_round_pending_exact_head_main",
+  "F3_package_complete": false,
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "production": {
+    "path": "src/crab_mesh/aft/quadtree.cpp",
+    "entry_sha256": "990bbf8d1a0c25a0a18af6bd4d96ec248087775aaed9f4b67ababd7c6d6ab47a",
+    "current_sha256": "fc59027b40f121d2a1275ed7a851a710cd97d715fc20f25d2b4c0a07bf9c3f8f",
+    "exact_setter_reversal": true,
+    "explicit_formatting_introduced_no_additional_production_diff": true,
+    "other_protected_files": 521,
+    "original_artifacts": 43
+  },
+  "source_binding": {
+    "src/crab_mesh/aft/quadtree.cpp": "fc59027b40f121d2a1275ed7a851a710cd97d715fc20f25d2b4c0a07bf9c3f8f",
+    "tests/uv_memory/probe.cpp": "ae879d6c85b9ed5c437aa88c6cbbc6d7d23f3e6b8ebf6dada1fe15de0bbed139",
+    "tests/uv_memory/CMakeLists.txt": "aa4e2b0267ad5445fb2defbb341ca87b57383ade3ffd6d658eb754b465a8f343",
+    "tests/template_prefix/probe.cpp": "b7e02401687ca8c6c0bf875729688dc11ce5814ef692a132d0aecab64b61b829",
+    "tests/template_prefix/CMakeLists.txt": "e599afb7146505bf72014f6c4bae67ea48e5756ff4472dd3c2fcd79703d57d22",
+    "tools/prepare_template_prefix.py": "26ece45a72cf5de2d3663a6f7a3bfaeaddcfe861fbb1aad0ef5fe58780f5f36b",
+    "tests/template_prefix_case.py": "3561f1111afd5e6049a928694136f43637f7743c85875dad10955ea931134d87",
+    ".clang-tidy": "cd82b961e72e1c5e795ec64e88d04a7b842f8dc53644e6800a616d617c03295f"
+  },
+  "original_failure": {
+    "report": {
+      "path": "build/f3-root-adoption/original/report.json",
+      "sha256": "5c4499c83729976c37416cf86773576a9273a854da0736705d93bccb7d596a8c"
+    },
+    "stdout": {
+      "path": "build/f3-root-adoption/original/crt-root-adoption-failure.stdout",
+      "sha256": "4c4b2dce2c6435db165648a4d92fd12dec6dd6b8613fee37971ce14382e03d76"
+    },
+    "stderr": {
+      "path": "build/f3-root-adoption/original/crt-root-adoption-failure.stderr",
+      "sha256": "8a6ea5051aeecea434657766959511bcfe7c37c9a6081cad00e9dd0303988138"
+    },
+    "exit": 1,
+    "premature_root_publication": true,
+    "complete_old_denial_sweep": false,
+    "double_delete_independently_observed": false,
+    "measured_allocations": 4
+  },
+  "initial_root_repair": {
+    "measured_allocations": 6,
+    "denied_ordinals": 6,
+    "fresh_abandonment_histories": 6,
+    "fresh_helper_retry_histories": 6,
+    "total_actual_denials": 12,
+    "retained_normal_blocks": 0,
+    "retained_normal_bytes": 0,
+    "root_and_endpoint_identity": "exact native pointer checks",
+    "successful_tree_traces": "original/current byte-identical under each MSVC ABI",
+    "scope": "Existing TreeFixture stage-1 initial leaf only; no replacement or mate/shared endpoint qualification"
+  },
+  "current_native": {
+    "expected_outcomes": 20,
+    "cases": [
+      {
+        "profile": "asan",
+        "mode": "tree-contracts",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "70bf7b7546bdbadbedbb500cfbf057a34d28e5b5a9f96dfe37532938698490b8",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": [
+          "root_adoption_identity=preserved"
+        ]
+      },
+      {
+        "profile": "asan",
+        "mode": "contracts",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "b76f68cff2297ce5c2786ac3f484bfaca69747f50d3b1a38146ea85983f39a4b",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": []
+      },
+      {
+        "profile": "asan",
+        "mode": "registration-contracts",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "b3b5a2643c0792873a031193da2f931a148136e0b50bf85fcb50f8d9e774055c",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": []
+      },
+      {
+        "profile": "asan",
+        "mode": "unowned-cell-contracts",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "d62d0e15ccac130e99349a789cd3d593758fb5b007f1f049ba14639882f20114",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": []
+      },
+      {
+        "profile": "crt",
+        "mode": "tree-contracts",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "67c509f9dd398a2428441e33090574495c6494e0e15baba3f1e44d60a617f789",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": [
+          "root_adoption_identity=preserved",
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "contracts",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "4890e5156c668e89898bcd1eca621ba1189252b3e6e61c72fac284439bdffe3b",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": [
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "registration-contracts",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "cdbc5d755d35ea1835288c48dbc7d20f37d87dfcf4b05bb3e970a1d6c38a0242",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": [
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "unowned-cell-contracts",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "e74c20af7149278b8d4e392cfc74d622e8cc515aa0f4607928bb591aa035ce87",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": [
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "root-adoption-failure",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "6d57c8f297f177c6ff720090aa459dab3ea0652acb12753da059f5561e5c64b2",
+        "stderr_sha256": "2048cbe8bce2689e2706e14045fdae3c081abad4cfb4088cbc8af2bce7056fe8",
+        "observations": [
+          "root_adoption_measured=6",
+          "root_adoption_inject=0 retry=0",
+          "root_published_after_denial=0",
+          "root_adoption_inject=0 retry=1",
+          "root_published_after_denial=0",
+          "root_adoption_inject=1 retry=0",
+          "root_published_after_denial=0",
+          "root_adoption_inject=1 retry=1",
+          "root_published_after_denial=0",
+          "root_adoption_inject=2 retry=0",
+          "root_published_after_denial=0",
+          "root_adoption_inject=2 retry=1",
+          "root_published_after_denial=0",
+          "root_adoption_inject=3 retry=0",
+          "root_published_after_denial=0",
+          "root_adoption_inject=3 retry=1",
+          "root_published_after_denial=0",
+          "root_adoption_inject=4 retry=0",
+          "root_published_after_denial=0",
+          "root_adoption_inject=4 retry=1",
+          "root_published_after_denial=0",
+          "root_adoption_inject=5 retry=0",
+          "root_published_after_denial=0",
+          "root_adoption_inject=5 retry=1",
+          "root_published_after_denial=0",
+          "root_adoption_failure_sites=6/6 abandonment=1 helper_retry=1",
+          "CRT retained_blocks=0 retained_bytes=0"
+        ],
+        "reclassified_from_preserved_raw": true
+      },
+      {
+        "profile": "crt",
+        "mode": "allocation-hook-control",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "b2135275401ad22f01290a55aa5197dc9fcba3ad3285ccc6b3f53697c08ebf6c",
+        "stderr_sha256": "7266b93fdf43872592f473198da1729b8b920085658b568f9c8c9ada2024b231",
+        "observations": [
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "teardown-allocation",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "3875b8bd074b85dc04e96e83ef494ee5799e74bd81e2aeaca02b03b8b776d7c5",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observations": [
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "transfer-membership-failure",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "a86331ebc8fd3fb4df245b16e5ef53b461ae3ef901b38446b9b955fbd036581c",
+        "stderr_sha256": "889479a9204e26c09ba74fb3a8f09c22c28d36e33d06587ee7027de70b741038",
+        "observations": [
+          "transfer_allocation_failures=515 measured_allocations=515 all_ordinals=1",
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "tree-failure-0",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 180,
+        "stdout_sha256": "4229b82047149c19ad8c1a3bf73f1115e627241d0ada2e897f1c0f668f6794e2",
+        "stderr_sha256": "7a7018da763cbd1cf5459613cb1ce42d994c7da34851e1c65ef9144c8269bd5c",
+        "observations": [
+          "tree_failure_sites=0:20/20",
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "tree-failure-1",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 180,
+        "stdout_sha256": "1499da311618c48d7f67bee2869b0c09163df9e2f69a1890e7f12f3cdef31f10",
+        "stderr_sha256": "ac446ae603b87bbdc74ff91f387b0484fbf440e63f8389c8fddedfc291395e7e",
+        "observations": [
+          "tree_failure_sites=1:80/80",
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "tree-failure-2",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 180,
+        "stdout_sha256": "a864abf425fa2b0ce761b713c9bc271002b4b145738598d71c6e82147b476d7a",
+        "stderr_sha256": "182ad7c9d26f1ce6ca939df86826d8a52dd26fdec0761b3d9c2f7722ca500d83",
+        "observations": [
+          "tree_failure_sites=2:1490/1490",
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "tree-failure-3",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 180,
+        "stdout_sha256": "86ff070d506f40bb88275cc00b4b6254ebeb0f04427e62de616790bf6df80d3b",
+        "stderr_sha256": "02e53be388938a19f62439a208300dca6501f17bdcb2bf10a8724f434c77db32",
+        "observations": [
+          "tree_failure_sites=3:1578/1578",
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "crt",
+        "mode": "tree-failure-4",
+        "exit": 0,
+        "passed": true,
+        "cap_seconds": 180,
+        "stdout_sha256": "8435e1aef4866eba3113ceec9edf754f5900fe3ccbb0d33066c63b2c2d1a4f21",
+        "stderr_sha256": "6cf00cdc34da00b4a99dbea1e33eef81a2feeeb5216eb6b342462d47623a3949",
+        "observations": [
+          "tree_failure_sites=4:302/302",
+          "CRT retained_blocks=0 retained_bytes=0"
+        ]
+      },
+      {
+        "profile": "asan",
+        "mode": "use-after-free",
+        "exit": 1,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "bacf2317c5b37eb6cdbdc7837288d1500d1ed6760aa90eb2612545157c7aa5b9",
+        "stderr_sha256": "d6ce44a187cee85f1e229be3b7e60113b50a8e48f1affdcf09b0270d91c9d026",
+        "observations": []
+      },
+      {
+        "profile": "asan",
+        "mode": "shared-delete",
+        "exit": 1,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "bacf2317c5b37eb6cdbdc7837288d1500d1ed6760aa90eb2612545157c7aa5b9",
+        "stderr_sha256": "3fcdde34f820bd7406444ec5988993c1c416d9941c6e684af57c1a3591c7d7c2",
+        "observations": []
+      },
+      {
+        "profile": "crt",
+        "mode": "leak",
+        "exit": 1,
+        "passed": true,
+        "cap_seconds": 30,
+        "stdout_sha256": "67c0e7decf9268b3bc5b223b490380770f19f7d0f0cfd9ef28cbcf89508e6e1b",
+        "stderr_sha256": "128814fd38ae8f76492f3ac3569a4a0088cf679982f043742ab1fc2da320dba3",
+        "observations": [
+          "CRT retained_blocks=3 retained_bytes=112"
+        ]
+      }
+    ],
+    "executables": {
+      "crt": {
+        "path": "build/f3-root-adoption/crt/Debug/uv_lifetime_probe.exe",
+        "sha256": "bd7439731efdcdeed8897dfebf73622dbe4e8ac7c1082adb3c4b16a2a9dca754"
+      },
+      "asan": {
+        "path": "build/f3-root-adoption/asan/RelWithDebInfo/uv_lifetime_probe.exe",
+        "sha256": "a5eee8281b82e2876bdf0520a82ac45147cb8d46696199aa04e05f2433793def"
+      }
+    },
+    "reports": [
+      {
+        "path": "build/f3-root-adoption/candidate/report.json",
+        "sha256": "33b233466d0d9c9bd924310e572458d60506b9b9f3b31477dfd670b8ff6575bc"
+      },
+      {
+        "path": "build/f3-root-adoption/continuation/report.json",
+        "sha256": "21f9c75284e697f2d49ab1e7d89f6fd1481efe24503648be37c20fa6af8b5186"
+      }
+    ],
+    "transfer_denials": 515,
+    "existing_tree_denials": [
+      20,
+      80,
+      1490,
+      1578,
+      302
+    ],
+    "existing_tree_denials_total": 3470,
+    "actual_negative_controls": [
+      "ASan heap-use-after-free",
+      "ASan shared-delete",
+      "CRT retained-block leak",
+      "CRT actual denied allocation"
+    ]
+  },
+  "controller_classification": {
+    "preserved_failure_report": {
+      "path": "build/f3-root-adoption/candidate/report.json",
+      "sha256": "33b233466d0d9c9bd924310e572458d60506b9b9f3b31477dfd670b8ff6575bc"
+    },
+    "cause": "Successful stdout PASS followed by expected denial stderr in concatenated checker text",
+    "independent_reclassification": "Exit 0,12 actual denials,12 unpublished states,zero normal block/byte retention,stdout PASS; raw bytes preserved",
+    "only_unstarted_native_children_continued": 11,
+    "completed_native_children_repeated": 0,
+    "analysis_tool_unstarted_record": {
+      "path": "build/f3-root-adoption/analysis-unstarted-tool-routing.json",
+      "sha256": "94adc10f4dd5e3d6d86e71078623effac3b57a57b7c05f5f2dde6c5ee8878b97"
+    }
+  },
+  "checked_uv": {
+    "prefix": {
+      "path": "build/f3-root-adoption/prefix-current/report.json",
+      "sha256": "0b7d23ef68d46e07cf5c2e4149a07e55f3f27d07855aeb46ca5ebd37bf32469e"
+    },
+    "complete": {
+      "path": "build/f3-root-adoption/prefix-current/complete/report.json",
+      "sha256": "427fef5996e7fad8a1b217e0b958fbacaeef12a3d43cb70f4b75cdb132b88671"
+    },
+    "prefix_outcomes": 17,
+    "complete_outcomes": 12,
+    "new_ideal_retirement_qualification": false,
+    "GCC_current_matrix": "Existing mandatory application.analytic_template_prefix on exact delivery/main"
+  },
+  "scientific": {
+    "report": {
+      "path": "build/f3-root-adoption/scientific/report.json",
+      "sha256": "de451830ac1e6781ba0a2180332e1c3e819e1b47b973686256e63654a275d220"
+    },
+    "cases": 4,
+    "states": 18,
+    "exact_artifacts": 90,
+    "positive_boundaries": 246,
+    "application_artifacts": {
+      "build/windows-gcc17/bin/ap_mesh.exe": "7cd8b2a90d57097071d059d126b0bc35f906a0a6cb8789d30d46828df20e258f",
+      "build/windows-gcc17/libap_mesh_engine.a": "f99f39a8f039ad388627c0df4ed058f2bb22a745cc02c45dd3909f349a48cdb8",
+      "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "f37575e78aeebbdf9736af03dce1daa2295ae9ea281686fe7c24bc5973d9e225",
+      "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "acb7d07fe954df81133f1265e86f71fa09cd6c6a9cbc39447e9a2e62da5e0a78"
+    },
+    "accepted_rejected_preserved": true,
+    "new_models_or_parameters": false
+  },
+  "analysis": {
+    "path": "build/f3-root-adoption/analysis.json",
+    "sha256": "324a50fefa980eb36d8d8c8b55d94b0d6d4928ee3d82221c670e6567db7cb351"
+  },
+  "native_projects": {
+    "asan": "1a4ea961a59f7e75f8f71f0f139630df14d6a99bddf937fd1c753ecddd9f0a97",
+    "crt": "e5a6abe7577a23e9673423b03e852c88c7d7b3ffbcdd42dd5437ff553f509f25"
+  },
+  "remaining": {
+    "F3-02": "Owner replacement,pointer-constructor mismatch and mate/shared endpoints need admitted native histories",
+    "F3-03": "Injected terminal failures and destruction safety do not qualify naturally reached logical rejection or whole-tree query/retry/rollback; F5 remains",
+    "F3-04": "Admission-blocked zero-reach retirement; original calibration retained",
+    "F2-02": "Original corpus and call/scratch/ownership specification missing for five raw APIs",
+    "wider": "F4 observers,F5 orchestration,F6 instruments,F7 domain/parallel,F8 final closure remain"
+  },
+  "required_delivery": {
+    "ctest": 75,
+    "python": 526,
+    "failures": 0,
+    "skips": 0,
+    "fresh_remote": true,
+    "guarded_same_tree_main_checkout": true
+  }
+}
