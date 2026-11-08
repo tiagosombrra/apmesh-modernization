@@ -1,0 +1,504 @@
+{
+  "schema": 1,
+  "source_revision": "bb56d0741acdef9d775186c83bac7832a2e5c43f",
+  "classification": "Reviewed static contract inventory for the frozen serial CLI; no runtime QUAD or arbitrary external-client proof",
+  "production_files": 164,
+  "translation_units": 76,
+  "headers": 88,
+  "explicit_cast_query": "(?:static_cast|dynamic_cast)<[^>]*TriangleAdaptive|\\(TriangleAdaptive\\s*\\*\\)",
+  "cast_dispositions": {
+    "excluded_by_serial_preprocessor": 17,
+    "selected_serial_pipeline_requires_typed_quad_route": 16,
+    "compiled_nonselected_entry_no_serial_caller_identified": 5
+  },
+  "cast_sites": [
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 991,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));"
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1005,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));"
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1087,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "static_cast<TriangleAdaptive*>(element)->SetParametersN1("
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1089,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "static_cast<TriangleAdaptive*>(element)->SetParametersN2("
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1091,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "static_cast<TriangleAdaptive*>(element)->SetParametersN3("
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1357,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));"
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1367,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));"
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1464,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "static_cast<TriangleAdaptive*>(element)->SetParametersN1("
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1466,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "static_cast<TriangleAdaptive*>(element)->SetParametersN2("
+    },
+    {
+      "path": "src/adapter/adapter.cpp",
+      "line": 1468,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "static_cast<TriangleAdaptive*>(element)->SetParametersN3("
+    },
+    {
+      "path": "src/curvature/adjacent.cpp",
+      "line": 8,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "return static_cast<const TriangleAdaptive&>(element).GetVertexPoint(position);"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 535,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 4880,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5266,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 5937,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "const TriangleAdaptive* tri = static_cast<const TriangleAdaptive*>(sub->GetElement(elem_idx));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6235,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6361,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e1))->SetParametersN1(make_tuple(0, 0));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6362,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e1))->SetParametersN2(make_tuple(1, 0));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6363,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e1))->SetParametersN3(make_tuple(0.5, 0.5));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6369,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e2))->SetParametersN1(make_tuple(1, 0));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6370,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e2))->SetParametersN2(make_tuple(1, 1));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6371,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e2))->SetParametersN3(make_tuple(0.5, 0.5));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6377,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e3))->SetParametersN1(make_tuple(1, 1));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6378,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e3))->SetParametersN2(make_tuple(0, 1));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6379,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e3))->SetParametersN3(make_tuple(0.5, 0.5));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6385,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e4))->SetParametersN1(make_tuple(0, 1));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6386,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e4))->SetParametersN2(make_tuple(0, 0));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 6387,
+      "disposition": "excluded_by_serial_preprocessor",
+      "source": "(static_cast<TriangleAdaptive*>(e4))->SetParametersN3(make_tuple(0.5, 0.5));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 7444,
+      "disposition": "compiled_nonselected_entry_no_serial_caller_identified",
+      "source": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 7572,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 7613,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 7660,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 7779,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "TriangleAdaptive* t = static_cast<TriangleAdaptive*>(sub->GetElement(j));"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 8568,
+      "disposition": "compiled_nonselected_entry_no_serial_caller_identified",
+      "source": "tuple<double, double> t1 = ((TriangleAdaptive*)elem)->GetParametersN1();"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 8569,
+      "disposition": "compiled_nonselected_entry_no_serial_caller_identified",
+      "source": "tuple<double, double> t2 = ((TriangleAdaptive*)elem)->GetParametersN2();"
+    },
+    {
+      "path": "src/generator/generator_adaptive.cpp",
+      "line": 8570,
+      "disposition": "compiled_nonselected_entry_no_serial_caller_identified",
+      "source": "tuple<double, double> t3 = ((TriangleAdaptive*)elem)->GetParametersN3();"
+    },
+    {
+      "path": "src/input_output/incidence_snapshot.cpp",
+      "line": 90,
+      "disposition": "selected_serial_pipeline_requires_typed_quad_route",
+      "source": "const auto* triangle = dynamic_cast<const TriangleAdaptive*>(submesh->GetElement(face));"
+    },
+    {
+      "path": "src/input_output/write_obj_file.cpp",
+      "line": 116,
+      "disposition": "compiled_nonselected_entry_no_serial_caller_identified",
+      "source": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+    }
+  ],
+  "triangle_identifier_files": {
+    "include/data/mesh/sub_mesh.h": "859e030eb97829e835a0f3127573a3d9957ee11f287d7b4b41e30f46aa25a846",
+    "include/data/triangle_adaptive.h": "45e6f14cb37d60714a1d6e12acd5670fb349916342c1e1eef60f0aa694494966",
+    "src/adapter/adapter.cpp": "28188b825772dafbbe4f158fcddef1fc649c49f4eda7d85cd057246e44e8a941",
+    "src/curvature/adjacent.cpp": "c7afc9b703b1b8ee9d8f365164d3c499ec20bfc3415b2bc1fc339aabf7026cdc",
+    "src/data/triangle_adaptive.cpp": "53345ab265f634e13ee940e4bfe04e6e65654e70aaffe6e14951390f1692a923",
+    "src/estimate/initial_mesh_estimate.cpp": "46d4d8e243b551a2247bba54d0a11b64e92ba104055581cc1238ff20920438dd",
+    "src/generator/generator_adaptive.cpp": "0774b9182a8505a500ddc71d7c6592e2169f95143c09c3056efb02c02edf5704",
+    "src/generator/initial_mesh.cpp": "7578ba9de9b41bc4243829e2fd756e7614f71edf614d257779183ffc7dbb853a",
+    "src/input_output/incidence_snapshot.cpp": "00181029b23c95caddc977570a14fd613be24eec4cd912a85f19cd6045c8175f",
+    "src/input_output/write_obj_file.cpp": "846fd45f39f6202c146e2bf4cd71f1716b75cb3dd0905f15184d354550f1e804"
+  },
+  "reviewed_additional_contracts": [
+    "Face three-slot UV topology and T1..T6 emission",
+    "quadtree old-face refinement and AFT reconstruction",
+    "smoothing three-endpoint incidence",
+    "ElementAdaptive cached geometry and missing cardinality/UV interface",
+    "Node/SubMesh ownership and destruction order",
+    "CurvatureDiscrete triangle-star factor and Adjacent slot order",
+    "initial physical and estimate triangulations",
+    "Adapter historical size/curvature statistics and UV/physical conversion",
+    "generator quality/budget/history and accepted-state routes",
+    "incidence and T3/OBJ/quality exports",
+    "XYZ/cubic-basis/smoothing-pass exclusions"
+  ],
+  "g7_disposition": "reviewed_frozen_serial_contract_register",
+  "scientific_change": false,
+  "limits": [
+    "Compiler-active lines do not prove runtime reachability",
+    "Compiled legacy helpers retain external-client risk",
+    "OpenMP/MPI require their existing separate qualification",
+    "QUAD geometry/curvature/rollback/multipatch implementations and tests remain future milestones"
+  ],
+  "compiler_activity": {
+    "scope": "Compiler-selected lines, not runtime reachability",
+    "source_revision": "bb56d0741acdef9d775186c83bac7832a2e5c43f",
+    "units": {
+      "src/generator/generator_adaptive.cpp": {
+        "command": [
+          "/usr/bin/c++",
+          "-I/home/apmesh/quad-m0-20261108-04/include",
+          "-O3",
+          "-DNDEBUG",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Wshadow",
+          "-Wconversion",
+          "-Wno-cast-function-type",
+          "-O3",
+          "-fno-strict-aliasing",
+          "/home/apmesh/quad-m0-20261108-04/src/generator/generator_adaptive.cpp",
+          "-E",
+          "-fdirectives-only"
+        ],
+        "source_sha256": "0774b9182a8505a500ddc71d7c6592e2169f95143c09c3056efb02c02edf5704",
+        "preprocessed_sha256": "45b4bf524c8663dff20191212d3e172e9e90929ebec8aeb258526119fa10a4c1",
+        "casts": [
+          {
+            "line": 535,
+            "active": true,
+            "text": "static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));"
+          },
+          {
+            "line": 4880,
+            "active": true,
+            "text": "static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));"
+          },
+          {
+            "line": 5266,
+            "active": true,
+            "text": "static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));"
+          },
+          {
+            "line": 5937,
+            "active": true,
+            "text": "const TriangleAdaptive* tri = static_cast<const TriangleAdaptive*>(sub->GetElement(elem_idx));"
+          },
+          {
+            "line": 6235,
+            "active": true,
+            "text": "static_cast<const TriangleAdaptive*>(sub_mesh->GetElement(elem_idx));"
+          },
+          {
+            "line": 6361,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e1))->SetParametersN1(make_tuple(0, 0));"
+          },
+          {
+            "line": 6362,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e1))->SetParametersN2(make_tuple(1, 0));"
+          },
+          {
+            "line": 6363,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e1))->SetParametersN3(make_tuple(0.5, 0.5));"
+          },
+          {
+            "line": 6369,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e2))->SetParametersN1(make_tuple(1, 0));"
+          },
+          {
+            "line": 6370,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e2))->SetParametersN2(make_tuple(1, 1));"
+          },
+          {
+            "line": 6371,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e2))->SetParametersN3(make_tuple(0.5, 0.5));"
+          },
+          {
+            "line": 6377,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e3))->SetParametersN1(make_tuple(1, 1));"
+          },
+          {
+            "line": 6378,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e3))->SetParametersN2(make_tuple(0, 1));"
+          },
+          {
+            "line": 6379,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e3))->SetParametersN3(make_tuple(0.5, 0.5));"
+          },
+          {
+            "line": 6385,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e4))->SetParametersN1(make_tuple(0, 1));"
+          },
+          {
+            "line": 6386,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e4))->SetParametersN2(make_tuple(0, 0));"
+          },
+          {
+            "line": 6387,
+            "active": false,
+            "text": "(static_cast<TriangleAdaptive*>(e4))->SetParametersN3(make_tuple(0.5, 0.5));"
+          },
+          {
+            "line": 7444,
+            "active": true,
+            "text": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+          },
+          {
+            "line": 7572,
+            "active": true,
+            "text": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+          },
+          {
+            "line": 7613,
+            "active": true,
+            "text": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+          },
+          {
+            "line": 7660,
+            "active": true,
+            "text": "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);"
+          },
+          {
+            "line": 7779,
+            "active": true,
+            "text": "TriangleAdaptive* t = static_cast<TriangleAdaptive*>(sub->GetElement(j));"
+          },
+          {
+            "line": 8568,
+            "active": true,
+            "text": "tuple<double, double> t1 = ((TriangleAdaptive*)elem)->GetParametersN1();"
+          },
+          {
+            "line": 8569,
+            "active": true,
+            "text": "tuple<double, double> t2 = ((TriangleAdaptive*)elem)->GetParametersN2();"
+          },
+          {
+            "line": 8570,
+            "active": true,
+            "text": "tuple<double, double> t3 = ((TriangleAdaptive*)elem)->GetParametersN3();"
+          }
+        ]
+      },
+      "src/adapter/adapter.cpp": {
+        "command": [
+          "/usr/bin/c++",
+          "-I/home/apmesh/quad-m0-20261108-04/include",
+          "-O3",
+          "-DNDEBUG",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Wshadow",
+          "-Wconversion",
+          "-Wno-cast-function-type",
+          "-O3",
+          "-fno-strict-aliasing",
+          "/home/apmesh/quad-m0-20261108-04/src/adapter/adapter.cpp",
+          "-E",
+          "-fdirectives-only"
+        ],
+        "source_sha256": "28188b825772dafbbe4f158fcddef1fc649c49f4eda7d85cd057246e44e8a941",
+        "preprocessed_sha256": "25733cb993ed8b7cf1005815c85d87218f718e07edda6c0264dc38e18a34e330",
+        "casts": [
+          {
+            "line": 991,
+            "active": false,
+            "text": "TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));"
+          },
+          {
+            "line": 1005,
+            "active": false,
+            "text": "TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));"
+          },
+          {
+            "line": 1087,
+            "active": false,
+            "text": "static_cast<TriangleAdaptive*>(element)->SetParametersN1("
+          },
+          {
+            "line": 1089,
+            "active": false,
+            "text": "static_cast<TriangleAdaptive*>(element)->SetParametersN2("
+          },
+          {
+            "line": 1091,
+            "active": false,
+            "text": "static_cast<TriangleAdaptive*>(element)->SetParametersN3("
+          },
+          {
+            "line": 1357,
+            "active": true,
+            "text": "TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));"
+          },
+          {
+            "line": 1367,
+            "active": true,
+            "text": "TriangleAdaptive* tri = static_cast<TriangleAdaptive*>(sub_mesh_old->GetElement(i));"
+          },
+          {
+            "line": 1464,
+            "active": true,
+            "text": "static_cast<TriangleAdaptive*>(element)->SetParametersN1("
+          },
+          {
+            "line": 1466,
+            "active": true,
+            "text": "static_cast<TriangleAdaptive*>(element)->SetParametersN2("
+          },
+          {
+            "line": 1468,
+            "active": true,
+            "text": "static_cast<TriangleAdaptive*>(element)->SetParametersN3("
+          }
+        ]
+      }
+    }
+  }
+}

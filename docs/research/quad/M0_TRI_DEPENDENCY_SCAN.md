@@ -70,3 +70,17 @@ The directory-wide name search closes the missing lexical sample for these
 identifiers only. G7 still requires a semantic disposition of reachable serial
 consumers and implicit three-node loops, distinguishing topology from physical
 XYZ dimensionality. No production change or runtime QUAD compatibility follows.
+
+## Session 2026-11-08-05 - semantic serial disposition
+
+The [reviewed serial contract register](M0_SERIAL_TRI_CONSUMERS.md) and
+[machine-readable source/compile receipt](evidence/M0_SERIAL_TRI_REGISTER_20261108.json)
+supersede the partial G7 disposition above for the frozen serial entry only.
+All 38 named explicit casts have dispositions: 16 selected serial, 17 excluded
+by the configured preprocessor and five compiled entries with no selected serial
+caller identified. Producer/consumer, implicit three-node loops, ownership,
+metrics, curvature and export responsibilities are reviewed separately from
+XYZ/cubic/quadtree dimensions. This completes the named M0 static register;
+runtime QUAD, arbitrary external/parallel callers and scientific equivalence
+remain future milestone gates. Earlier lexical and failed-check records remain
+historical evidence, not stronger claims.

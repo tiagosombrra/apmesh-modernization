@@ -1,6 +1,6 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
-**Estado:** M0 baseline qualification **in progress**; no QUAD algorithm implementation in the production pipeline. **Criado em:** 2026-11-08. **Revisão científica prevista:** 2026-11-11 com Joaquim Bento e Creto Vidal.  
+**Estado:** M0 technical baseline inventory **complete with documented exceptions; exact checkpoint delivery gate required**; no QUAD algorithm implementation in the production pipeline. **Criado em:** 2026-11-08. **Revisão científica prevista:** 2026-11-11 com Joaquim Bento e Creto Vidal.
 **Branch:** `quad-templates`; **baseline imutável de origem:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` (PR #183).  
 **Auditoria:** [BASELINE_AUDIT.md](BASELINE_AUDIT.md). **Fonte histórica:** Bento et al., *Combinação das Técnicas de Quadtree e Delaunay para Geração Automática de Malhas de Elementos Finitos*, SIBGRAPI 1993, Figura 7 e seção sobre contorno.
 
@@ -186,3 +186,24 @@ Nunca flexibilizar critérios científicos ou prolongar limites de tempo silenci
 - Revisar o PR contra a branch `quad-templates`, entregar evidência e somente então iniciar M2/M3.
 
 **Registro de honestidade:** este documento é um plano com auditoria de código e evidências históricas. Não afirma execução dos 75 CTest /526 Python, compilação nativa nem implementação QUAD, que continuam pendentes.
+
+## 2026-11-08-05 measured milestone transition
+
+M0-G6 applicable memory and G7 frozen serial contract inventories are complete
+in their declared scopes. Reuse source-bound Node22; reject stale UV/Linux
+dependencies and refresh current UV21 plus the unchanged separate UBSan/LSan
+32-production/five-terminal matrix per profile. Preserve actual negatives,
+accepted/rejected traces, scientific comparisons and all earlier failures.
+The [memory receipt](evidence/M0_MEMORY_APPLICABILITY_20261108.json),
+[serial register](M0_SERIAL_TRI_CONSUMERS.md) and dated [closure audit](M0_EVIDENCE.md)
+record exact limits. The current regression count is 75 CTest /527 Python,
+retaining all original 526 plus one engineering regression. Before publishing
+this checkpoint, require the complete regression on its committed revision;
+missing/failing evidence blocks admission. Main and Stage 3 remain unchanged.
+
+The next work item is M1 primary-source reconstruction: independently verify
+the ordered T1-T6 polygon vertices, orientations, incidences and symmetries from
+Figure 7. No connectivity may be invented from the existing triangular emitter.
+This admission does not approve a new geometry/curvature formula or settle
+quad-dominant versus all-quad. Unresolved topology/scientific choices require
+adviser alignment before executable fixtures/emission. No QUAD code exists yet.

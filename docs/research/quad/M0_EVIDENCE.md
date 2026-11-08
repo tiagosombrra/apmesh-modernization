@@ -3,7 +3,7 @@
 **Research branch:** `quad-templates`  
 **Frozen entry commit:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`  
 **Evidence record opened:** 2026-11-08  
-**State:** **OPEN / PARTIAL — Linux build, full 75 CTest / 527 Python and strict articles qualified on the research delivery head/merge; MSVC captures retained. Applicable memory evidence and semantic caller inventory remain pending**. Later dated entries supersede earlier tables without erasing them.
+**State:** **TECHNICAL INVENTORY COMPLETE, checkpoint exact-head delivery gate pending**. Current G6/G7 results are in session 05; earlier observations remain historical. Previous state: **OPEN / PARTIAL — Linux build, full 75 CTest / 527 Python and strict articles qualified on the research delivery head/merge; MSVC captures retained. Applicable memory evidence and semantic caller inventory remain pending**. Later dated entries supersede earlier tables without erasing them.
 
 ## Read-only observations recorded in this session
 
@@ -64,7 +64,7 @@ Record: UTC/local date; source SHA; model/config/input hash; OS and compiler; ex
 - Attempted `env GIT_TERMINAL_PROMPT=0 git ls-remote https://github.com/tiagosombrra/apmesh-modernization.git refs/heads/quad-templates` with a 12-second external guard. Actual result: exit code 128, `Could not resolve host: github.com`. **This task environment cannot obtain the private repository checkout through Git.**
 - GitHub connector read-only access is functioning, but a source-file API response is not an executable checkout. No baseline compiler could be run against the exact source.
 - A locally prepared version of the M0 Python runner passed `python3 -m py_compile` and its `--help` command. Its negative smoke invocation from a non-repository folder returned **exit 2**, `blocked_preflight`, with a JSON report and no executed stages. These local checks cover the prepared script's behavior, **not the complete GitHub production source or exact GitHub-script byte identity**.
-- Added [`tools/quad_m0_baseline.py`](../../../../tools/quad_m0_baseline.py) to the research branch. The exact uploaded script must be syntax/preflight checked in the real checkout before it is used for qualification.
+- Added [`tools/quad_m0_baseline.py`](../../../tools/quad_m0_baseline.py) to the research branch. The exact uploaded script must be syntax/preflight checked in the real checkout before it is used for qualification.
 - Added a pinned [targeted TRI dependency scan](M0_TRI_DEPENDENCY_SCAN.md) based on direct GitHub file reads; 15 selected existing files, **37 lexical TRI casts** across the four matching files (10 Adapter, 25 GeneratorAdaptive, one curvature adjacency, one OBJ writer). This does **not** establish exhaustive caller coverage.
 
 ### Current gate disposition
@@ -183,3 +183,43 @@ Commands: existing `cmake --preset local-serial`, build with `--parallel 2`, `ct
 M0-G0/G1/G3/G4 now have measured Linux outcomes; G2 retains the verified MSVC source/profile capture. G5 has bounded MSVC and Linux article outcomes. **G6 remains pending** for a source/build/input/ABI/instrument-bound disposition of applicable baseline memory evidence; ordinary release/hook controls do not close whole-process ASan/LSan/CRT. **G7 remains partial** despite expanded lexical coverage. Inherited broken historical runner links remain a documentation finding. M0, M1 admission and broader Stage 3 remain open.
 
 Next: resolve G6/G7 using these exact artifacts and finite relevant evidence; do not repeat completed builds/articles or create an unrelated instrument campaign. Then assess M1 admission and independent historical topology fixtures.
+
+## Session 2026-11-08-05 - applicable memory and serial contract closure
+
+Observed source: `bb56d0741acdef9d775186c83bac7832a2e5c43f`; production/input tree equals entry `f6050ec1`. Engineering-only validation and documentation. No formula, ordering, boundary synchronization, tolerance, model, timeout, input or scientific policy change. This entry supersedes the pending G6/G7 disposition above; it does not erase earlier attempts.
+
+### M0-G6 identity and actual controls
+
+The [applicability receipt](evidence/M0_MEMORY_APPLICABILITY_20261108.json) records build/read dependencies, binary and raw-log hashes. Reuse is not inferred from matching filenames or a common ancestor.
+
+| Family | Identity disposition | Actual outcome and retained scope |
+| --- | --- | --- |
+| MSVC physical Node | 14 repository compiler-read dependencies per ASan/CRT profile match observed `12cf9e1`; binaries and 22 raw logs match | Reuse 22 bounded outcomes, actual UAF/double-free/CRT leak controls and 46 denials (32 assignment, 10 constructor, four clone); no native repetition |
+| Earlier UV ASan/CRT | 293 dependencies audited per profile; Node/Patch headers changed | Reject old 21 outcomes as current, retain historical evidence |
+| Current UV ASan/CRT | Rebuild existing probe from current source; all 293 read dependencies per profile match Git; same 21 cases, caps and oracles | 21 pass, actual UAF/shared-delete/CRT leak controls, zero positive retained blocks; 342 transfer denials, six root sites with abandonment/retry and 3,470 tree-failure denials; frozen tree/registration traces preserved |
+| Earlier complete-process Linux | 11 production dependencies changed | Reject historical process matrix as current; no deletion or reinterpretation |
+| Current separate UBSan/LSan | Explicit Clang 18.1.3, C++17 RelWithDebInfo, 76 production units with effective flags; sources pinned throughout | Per profile: 32 unchanged SP01-SP08 production observations and five SP09/SP10 controlled terminal contexts pass; 78 terminal compile groups with test-only allocator wrapping; actual release/forms/observer/typed controls pass |
+| Instrument calibration | Original compiler/runtime hashes, control binaries/source and four raw outcomes verified | Reuse clean/overflow UBSan and clean/128-byte-leak LSan controls with their expected exits; terminal LSan also detects its actual four-byte leak control |
+
+The complete fixed Linux inventory retains 23 malformed SP01 controls, natural two-sheet SP02, modes m/q, actual SP05 rejection/retry, article repetitions, SP08 no-sync, and terminal fatal/typed contexts. Existing commands/controllers/oracles and 10/30/60/180/300-second case caps are retained as applicable. Local controllers only relocate output/build/reference roots and explicitly select the already qualified Clang 18 compiler; no new scientific configuration is introduced. Fresh uninstrumented Linux Eistute/Book pass existing verification/strict reference comparisons. Eight instrumented article comparisons pass: per instrument 18 states, 90 exact scientific artifact pairs and 246 positive boundaries, including accepted/rejected traces. All 959 copied Linux raw records are byte-verified. Executables remain native; raw command/output manifests are local under `build/quad-m0/session-20261108-05/`.
+
+An initial offline parser incorrectly treated the symbolic CRT label `retained-blocks` as literal log text. Preserve that failed parser/report; correct the reader to the existing retained-block regex and expected positive leak/exit. No native process was repeated for this summary error. No application failure or scientific oracle was suppressed.
+
+### M0-G7 reviewed serial register
+
+The [human contract register](M0_SERIAL_TRI_CONSUMERS.md) and [source/compile receipt](evidence/M0_SERIAL_TRI_REGISTER_20261108.json) disposition all 38 explicit cast sites: 16 selected serial, 17 preprocessor-excluded, five compiled entries without a selected serial caller identified. Review includes initial/estimate producers, old physical-to-UV Face conversion, templates/AFT/smoothing, UV-to-physical adoption, Node/SubMesh observers, adjacency/curvature, metrics, accept/reject/history and all selected exports. The compiler's original command with `-E -fdirectives-only` independently identifies selected Generator/Adapter lines; it does not prove runtime reachability. XYZ dimension, cubic degree, quadtree child slots and smoothing budgets are explicitly distinguished from triangle cardinality.
+
+G7 is complete as the named frozen serial static contract inventory. New QUAD or external/parallel paths require their own later tests and a reopened register; no whole-program, arbitrary-subclass or runtime QUAD proof follows.
+
+### Explicit M0 closure audit
+
+| Area | Result / exception |
+| --- | --- |
+| Code | Session 05 changes only research documentation/evidence; previous six-file engineering portability PR is independently qualified; production/input/preset trees unchanged |
+| Tests | Prior exact head/research-merge 75 CTest /527 Python retained; exact committed checkpoint must repeat full delivery regression before push. Current bounded memory inventory and actual negatives above pass |
+| Contracts | Node/UV ownership, pointer identity, registration, denial/rollback and original accepted/rejected/boundary traces preserved; serial consumer assumptions explicitly mapped to future milestones |
+| Documentation | Correct 18 navigation hrefs in audit/evidence/journal only, preserving dated assertions and original failed-link records; all eight research markdown files pass local target existence. External URLs/fragments unmeasured |
+| Scientific scope | M0 is baseline qualification and static inventory; no QUAD algorithm, four-node geometry/curvature formula, boundary-policy choice or novelty claim |
+| Known failures/coverage | Prior failed prefixes and mismatched evidence remain; no full Windows process safety, all Stage 3 recovery/foreign callers, MPI/OpenMP or QUAD coverage claim. Main stays `f6050ec1` |
+
+**Disposition:** technical M0-G0 through G7 are measured/reviewed with the stated exceptions. Delivery is conditional on the exact checkpoint regression and fresh remote checks/readback, recorded by the session closure receipt. This does not close modernization Stage 3 or integrate research into main. M1's next admitted work is primary-source historical reconstruction, not production science or invented connectivity.
