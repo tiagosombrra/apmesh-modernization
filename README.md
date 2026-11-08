@@ -5,6 +5,17 @@ meshing implementation. The scientific technique is preserved while ownership,
 portability, architecture, duplication, English APIs and reproducibility improve.
 Scientific extensions require separate proposals aligned with the advisors.
 
+## QUAD research continuation (branch `quad-templates`)
+
+For the independent scientific line based on Bento et al. (1993), start with
+[the canonical current state](docs/research/quad/STATE.md), then read
+[the handoff protocol](docs/research/quad/CONTINUATION_PROTOCOL.md),
+[the milestone roadmap](docs/research/quad/IMPLEMENTATION_ROADMAP.md), and
+[the session history](docs/research/quad/SESSION_LOG.md). These are maintained
+separately from the modernization plan. They record what is **implemented**,
+**actually tested**, **pending** and **blocked**. A connected agent must
+update and commit the checkpoint at the end of each meaningful research session.
+
 ## Start here
 
 - [Project state](docs/PROJECT_STATE.md): completed, active and next work.
