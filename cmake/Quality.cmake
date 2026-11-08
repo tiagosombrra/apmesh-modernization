@@ -213,6 +213,10 @@ if(BUILD_TESTING)
   set_tests_properties(application.generator_diagnostics
     PROPERTIES LABELS "application;metric-schema;negative-input;required-gate" TIMEOUT 90)
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
+    if(NOT WIN32)
+      # Link the test runtime locally so --wrap also observes string-copy allocations.
+      target_link_options(attempt_metrics_probe PRIVATE -static-libstdc++ -static-libgcc)
+    endif()
     include(CheckCXXSourceCompiles)
     check_cxx_source_compiles("#include <cstddef>
 #include <type_traits>
