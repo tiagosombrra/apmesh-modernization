@@ -27,6 +27,11 @@ def qualify(asan: Path, crt: Path, runtime: Path, output: Path) -> dict:
         ("crt", crt, "expired-copy", None),
         ("crt", crt, "leak", "retained-blocks"),
     ]
+    cases += [("asan", asan, "copy-contracts", None), ("crt", crt, "copy-contracts", None)]
+    cases += [("crt", crt, f"copy-failure-{variant}", None) for variant in range(8)]
+    cases += [("crt", crt, mode, None) for mode in
+              ("clone-failure", "copy-self-noalloc", "construct-failure-0",
+               "construct-failure-1", "allocation-hook-control")]
     results = []
     for kind, executable, mode, expected in cases:
         process = subprocess.run([str(executable.resolve()), mode], env=environment,
@@ -43,9 +48,24 @@ def qualify(asan: Path, crt: Path, runtime: Path, output: Path) -> dict:
             passed = process.returncode == 0 and "PASS" in text and "ERROR: AddressSanitizer:" not in text
             if kind == "crt":
                 passed = passed and "CRT retained_blocks=0 retained_bytes=0" in text
+            if mode.startswith("copy-failure-"):
+                match = re.search(r"node_copy_failure_sites=variant:\d denied:(\d+)/(\d+) unchanged=1 retry=1", text)
+                passed = passed and match is not None and int(match[1]) == int(match[2]) > 0
+            if mode == "clone-failure":
+                match = re.search(r"node_clone_failure_sites=denied:(\d+)/(\d+) source_observers:4 scalar_bits:1", text)
+                passed = passed and match is not None and int(match[1]) == int(match[2]) > 0
+            if mode.startswith("construct-failure-"):
+                match = re.search(r"node_construct_failure_sites=empty:[01] denied:(\d+)/(\d+) source_nodes:preserved", text)
+                passed = passed and match is not None and int(match[1]) == int(match[2]) > 0
+            if mode == "copy-self-noalloc":
+                passed = passed and "node_copy_self=allocations:0 list_nodes:preserved" in text
+            if mode == "allocation-hook-control":
+                passed = passed and "node_allocation_hook=detected" in text
         results.append({"instrument": kind, "mode": mode, "exit_code": process.returncode,
                         "expected_diagnostic": expected, "passed": passed,
                         "log_sha256": hashlib.sha256(data).hexdigest()})
+        if not passed:
+            break
     report = {"status": "passed" if all(case["passed"] for case in results) else "failed",
               "scope": "Isolated actual physical node/submesh/triangle production sources; no whole-application or UBSan/LSan qualification.",
               "executables": {kind: {"path": str(path.resolve()),

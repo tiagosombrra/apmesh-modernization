@@ -13,6 +13,10 @@ public:
   NodeAdaptive(double x, double y, double z);
   NodeAdaptive(double x, double y, double z, unsigned long position);
   explicit NodeAdaptive(const PointAdaptive& point);
+  // Ordinary copies retain borrowed element values; those elements must stay live.
+  NodeAdaptive(const NodeAdaptive&) = default;
+  // Prepare observer storage first; failure preserves all scalar/list-node state.
+  NodeAdaptive& operator=(const NodeAdaptive& other);
   ~NodeAdaptive() override;
 
   void InsertElement(ElementAdaptive* element);
@@ -26,6 +30,8 @@ public:
   void ClearElements();
 
   const std::list<ElementAdaptive*>& GetElements() const;
+  // Replace borrowed values in order; failure and self input preserve list nodes.
+  // Successful replacement invalidates prior element-slot observers, not elements.
   void setElements(const std::list<ElementAdaptive*>& elements);
 
   double GetGa() const;

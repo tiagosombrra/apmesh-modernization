@@ -7,13 +7,18 @@ Current route: [seven finite Stage 3 packages](architecture/STAGE3_FINITE_PACKAG
 separates measured scopes, retained evidence and blocked admissions; it is not a
 percentage or a deadline. No original obligation or support promise is removed.
 
-Current delivery: [independent forward Patch/SubMesh retirement](evidence/FORWARD_PATCH_RETIREMENT.md).
-Six existing foreign-forward/move histories expose expired patch-to-mesh pointers
-after mesh destruction. Independent nonallocating forward registration now retires
-those pointers while preserving directional links and live-object move semantics.
-Require 37 native SubMesh and 95 detached patch-copy outcomes, current-image frozen
-science and exact-head/main 75 CTest /526 Python. This addresses the Patch/SubMesh
-dependency of F2-04 through F4-01/04; F2/F3 and wider F4 obligations remain open.
+Current delivery: [node copy state and scalar-only clones](evidence/NODE_COPY_STATE.md).
+Three original allocation-denial scenarios expose partially changed scalar/list
+state. Node assignment and observer replacement now prepare storage before commit;
+physical mesh cloning no longer copies foreign adjacency merely to discard it.
+Require 22 current native outcomes, all 46 copy/clone denials, frozen GCC/MSVC
+science and exact-head/main 75 CTest /526 Python. This resolves the Node value-copy
+portion of F2-04 while foreign-element expiry and other F2/F3/F4 exits remain open.
+
+The [forward Patch/SubMesh retirement](evidence/FORWARD_PATCH_RETIREMENT.md) is
+integrated through PR #182 at main `ced438b8b8d7b2d6539081c889c78a7fc29d856a`, with
+its verified matching head/main receipt. Its named unmatched link boundary is
+closed; other copied/foreign curve and UV observations remain separate.
 
 The [five borrowed quadtree reads](evidence/UV_BORROWED_READS.md) are integrated
 through PR #181 at main `150ec6a5c3d19ff77d3d42361507bd69dac68bb5`, with verified

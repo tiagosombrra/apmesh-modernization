@@ -48,9 +48,9 @@
           "evidence": "../evidence/F2_LOADER_COPY_ACCEPTANCE.md"
         },
         "F2-04": {
-          "status": "api_catalog_complete_F4_behavior_open",
-          "dependency": "Implicit/copied/foreign publication behavior remains assigned to F4",
-          "evidence": "../evidence/F2_LOADER_COPY_ACCEPTANCE.md"
+          "status": "node_value_copy_scope_measured_other_foreign_copies_open",
+          "dependency": "Node value/observer copies require live borrowed elements; other type families,foreign expiry and F4/F7 remain",
+          "evidence": "../evidence/NODE_COPY_STATE.md"
         }
       }
     },
@@ -97,7 +97,11 @@
         "F4-04": {
           "status": "patch_submesh_forward_scope_qualified_other_links_open",
           "evidence": "../evidence/FORWARD_PATCH_RETIREMENT.md",
-          "dependency": "Public live Patch/SubMesh forward links and object moves only; other curve/UV/copied foreign links remain open"
+          "dependency": "Public live Patch/SubMesh forward links and object moves only; other curve/UV/copied foreign links remain open",
+          "qualified_subscopes": [
+            "Public live Patch/SubMesh forward retirement",
+            "Node value/observer state with live borrowed elements; no foreign expiry guarantee"
+          ]
         }
       }
     },
@@ -169,9 +173,9 @@
     "status": "pending_all_required_exits",
     "evidence": null
   },
-  "active_delivery": "Independent forward Patch/SubMesh observer retirement, F2-04 dependency",
+  "active_delivery": "Node copy state and scalar-only physical clones, F2-04/F4-04",
   "next_package": "Independently admitted F3/F4 work; do not fabricate replacement/mate/retirement or raw-loader histories",
-  "completion_rule": "Prior bounded deliveries have matching main receipts. Forward Patch/SubMesh retirement requires its own exact head/main gates; all remaining F2/F3/F4 and original row exits remain mandatory.",
+  "completion_rule": "Prior bounded deliveries have matching main receipts. Node copy state requires its own exact head/main and current-image science; all remaining copy-family/foreign/domain/row exits remain mandatory.",
   "prior_F1_integration": {
     "pr": 178,
     "main": "825c23b94f08a2506e2ceade07954cf120b176b8",
@@ -188,5 +192,9 @@
   "prior_borrowed_read_integration": {
     "pr": 181,
     "main": "150ec6a5c3d19ff77d3d42361507bd69dac68bb5"
+  },
+  "prior_forward_patch_integration": {
+    "pr": 182,
+    "main": "ced438b8b8d7b2d6539081c889c78a7fc29d856a"
   }
 }

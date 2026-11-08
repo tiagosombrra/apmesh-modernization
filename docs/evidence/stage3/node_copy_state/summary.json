@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "entry_main": "ced438b8b8d7b2d6539081c889c78a7fc29d856a",
+  "classification": "Node value/observer copy failure repair and scalar-only physical clone; F2-04/F4-04 live-borrow scope",
+  "status": "native_copy_scope_measured_requires_current_image_science_and_exact_head_main",
+  "package_F2_complete": false,
+  "stage_closure": false,
+  "dependency": "Node portion of F2-04/F4-04; ordinary expired-element copies remain unqualified",
+  "production": [
+    "include/data/node_adaptive.h",
+    "src/data/node_adaptive.cpp",
+    "src/data/mesh/sub_mesh.cpp"
+  ],
+  "exact_source_reversal": true,
+  "class_layout_unchanged": true,
+  "other_protected_files": 519,
+  "original_artifacts": 43,
+  "source_binding": {
+    "include/data/node_adaptive.h": "fe040c7ed28cbb423c20f36d27e42d1590153058b89b0d3a8a1e076105aa076c",
+    "src/data/node_adaptive.cpp": "76f4ba8b1df33655561e3d91bb6bbc1253f54d99186692c1339d0284c076eccd",
+    "src/data/mesh/sub_mesh.cpp": "771a27ee2b59b132b607444668ea6b4a564338ebca830f90b63d3dcb757e9750",
+    "tests/memory/probe.cpp": "750b72ae25b3f0da555b3a8e0085eb949d4b42de9a42dba3b9af674ab1a96e59",
+    "tests/memory/CMakeLists.txt": "01d22d4fe64f47200a59d75fcd3baddf77751afb1c97b3bb845f95df2a868425",
+    "tools/qualify_node_lifetime.py": "6df761d5649e5285d4e583feac72ae66032f32867b11fb3eb23a721185d80f4f",
+    ".clang-tidy": "cd82b961e72e1c5e795ec64e88d04a7b842f8dc53644e6800a616d617c03295f"
+  },
+  "original": {
+    "first_report": {
+      "path": "build/node-copy-state/original/report.json",
+      "sha256": "b8b963d9114c64928120d768b5e8c21acb191b521f88995f2ea4aab4ba98971b"
+    },
+    "continuation_report": {
+      "path": "build/node-copy-state/original-continuation/report.json",
+      "sha256": "dd4f90f50d4039b61b892ea40f325d16098fbda9307c8f78597389c1bdf9d9e8"
+    },
+    "failed_variants": [
+      0,
+      2,
+      3
+    ],
+    "empty_setter_variant": 1,
+    "empty_setter_outcome": "Already strong in this library:actual full pass retained",
+    "controller_classification": "Original expected empty-setter failure was wrong; raw pass preserved and only three unstarted cases continued",
+    "completed_native_cases_repeated_after_failure": 0,
+    "retained_normal_blocks": 0
+  },
+  "current_native": {
+    "report": {
+      "path": "build/node-copy-state/current/report.json",
+      "sha256": "7ca2e72aaa079c97aaca4162382bec919b6e4d224a81b74a4ef6b02cd0395974"
+    },
+    "expected_outcomes": 22,
+    "executables": {
+      "asan": {
+        "path": "build/node-copy-state/asan/RelWithDebInfo/node_lifetime_probe.exe",
+        "sha256": "9ff82a3a0896c6149917574459c11d795e3fb147f28d0cec660b0a78ab3cc1f8"
+      },
+      "crt": {
+        "path": "build/node-copy-state/crt/Debug/node_lifetime_probe.exe",
+        "sha256": "2ab9b50dfb7ba0003697096620f1d0441b9a169816fa6e43967737979d5f2d04"
+      }
+    },
+    "assignment_replacement_denials": [
+      6,
+      6,
+      6,
+      6,
+      2,
+      2,
+      2,
+      2
+    ],
+    "constructor_denials": [
+      7,
+      3
+    ],
+    "clone_denials": 4,
+    "total_copy_clone_denials": 46,
+    "self_allocation_attempts": 0,
+    "old_scalar_bits_and_slot_addresses_preserved_on_failure": true,
+    "ordinary_copy_contract": "Separate containers of live borrowed elements;no graph clone or expiry retirement"
+  },
+  "clone_cost": {
+    "old_allocations": 8,
+    "current_allocations": 4,
+    "source_observers": 4,
+    "old_capture": {
+      "path": "build/node-copy-state/original-continuation/crt-clone-failure.stdout",
+      "sha256": "326e51200a88f92d1ad5bd570f6269811517b2e34f9d875af7fc6432b0e39b71"
+    },
+    "current_capture": {
+      "path": "build/node-copy-state/current/crt-clone-failure.log",
+      "sha256": "19b69850f5654e9b21f4836f803066c9f56e10dce69fd602a289055d5ca32b77"
+    },
+    "scope": "Checked MSVC Debug iterator2 existing physical clone fixture;not whole-run timing"
+  },
+  "copy_cost_tradeoff": "Complete temporary storage:6 allocations for populated sources,2 for empty sources; old reuse costs differed. Stronger failure guarantee is not advertised as a general allocation reduction",
+  "analysis": {
+    "path": "build/node-copy-state/analysis.json",
+    "sha256": "cc964c92a90aec9a6fddb99b31bddbc34bf4db4a81c3979c203631c65f174d36"
+  },
+  "scientific": {
+    "required_report": "build/node-copy-state/scientific/report.json",
+    "required_build_record": "build/node-copy-state/application-build.json",
+    "expected_cases": 4,
+    "expected_states": 18,
+    "expected_exact_artifacts": 90,
+    "expected_positive_boundaries": 246
+  },
+  "remaining": "Other F2 copy families/raw corpus,F4 foreign/curve/UV/expiry/cache,F3 ownership/recovery/retirement and process/domain/parallel/F8 remain open",
+  "required_delivery": {
+    "ctest": 75,
+    "python": 526,
+    "failures": 0,
+    "skips": 0,
+    "fresh_remote_and_guarded_main": true
+  }
+}

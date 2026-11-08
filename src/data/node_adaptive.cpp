@@ -1,5 +1,7 @@
 #include "../../include/data/node_adaptive.h"
 
+#include <type_traits>
+
 NodeAdaptive::NodeAdaptive() : PointAdaptive(), ga_(0), gd_(0), ha_(0), hd_(0) {}
 
 NodeAdaptive::NodeAdaptive(double x, double y, double z)
@@ -18,6 +20,21 @@ NodeAdaptive::NodeAdaptive(const PointAdaptive& point) : ga_(0), gd_(0), ha_(0),
 NodeAdaptive::~NodeAdaptive() {
   // 1. apaga a lista de elementos
   this->elements_.clear();
+}
+
+NodeAdaptive& NodeAdaptive::operator=(const NodeAdaptive& other) {
+  if (this != &other) {
+    auto pending_elements = other.elements_;
+    static_assert(std::is_nothrow_copy_assignable_v<PointAdaptive>);
+    static_assert(noexcept(elements_.swap(pending_elements)));
+    PointAdaptive::operator=(other);
+    elements_.swap(pending_elements);
+    ga_ = other.ga_;
+    gd_ = other.gd_;
+    ha_ = other.ha_;
+    hd_ = other.hd_;
+  }
+  return *this;
 }
 
 void NodeAdaptive::InsertElement(ElementAdaptive* element) { this->elements_.push_back(element); }
@@ -54,7 +71,10 @@ void NodeAdaptive::ClearElements() { elements_.clear(); }
 const std::list<ElementAdaptive*>& NodeAdaptive::GetElements() const { return elements_; }
 
 void NodeAdaptive::setElements(const std::list<ElementAdaptive*>& elements) {
-  elements_ = elements;
+  if (&elements != &elements_) {
+    auto pending_elements = elements;
+    elements_.swap(pending_elements);
+  }
 }
 
 double NodeAdaptive::GetGa() const { return ga_; }
