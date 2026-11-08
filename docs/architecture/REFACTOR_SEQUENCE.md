@@ -15,13 +15,11 @@ The [status register](STAGE3_PACKAGE_STATUS.json) separates admitted execution,
 retained evidence and blocked admissions. Historical P1..P5 below are completed/
 legacy buckets, not an open-ended replacement queue.
 
-Current delivery is [F3 initial root adoption](../evidence/F3_ROOT_ADOPTION.md):
-repair premature root publication in the existing admitted stage-1 setter graph,
-qualify all measured denial/abandonment/helper-retry paths, retain successful tree
-order and require fresh changed-image science plus exact-head/main gates.
-F3-02 replacement/mate graphs, F3-03 wider logical rejection/recovery and F3-04
-retirement remain open. Continue independently admitted F3/F4 work without an
-invented graph or automatic root-border/cache audit.
+Current delivery is [independent forward Patch/SubMesh retirement](../evidence/FORWARD_PATCH_RETIREMENT.md),
+the named unmatched observer dependency of F2-04 in F4-01/04. Preserve the two
+directions, live-object move values and nonallocation; retire surviving forward
+observers when their observed mesh dies. Other F2/F3/F4 exits remain open.
+PR #181 integrated the five borrowed quadtree reads with matching head/main gates.
 
 F2's partial round is integrated through PR #179 at main
 `c9b26cc462ae041089f5c036a45ce7a49743e205`; its raw corpus/call/ownership and F4

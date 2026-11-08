@@ -1,4 +1,5 @@
 #include <array>
+#include <array>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -298,6 +299,98 @@ bool CheckPatchObservers() {
   return mesh_first && patch_first && history && rebind && foreign && moves && patch_moves;
 }
 
+// Extend the existing foreign-forward and object-move arrangements through
+// retirement of the observed mesh; neither direction implies the other.
+bool CheckForwardPatchObservers() {
+  bool single = false, shared = false, rebind = false, patch_first = false;
+  bool patch_moves = false, mesh_moves = false;
+  {
+    Patch patch;
+    std::optional<SubMesh> mesh(std::in_place);
+    patch.SetSubMesh(&*mesh);
+    single = mesh->GetPatch() == nullptr;
+    mesh.reset();
+    single = single && patch.GetSubMesh() == nullptr;
+  }
+  {
+    SubMesh unrelated;
+    std::array<Patch, 4> patches;
+    std::optional<SubMesh> mesh(std::in_place);
+    for (auto& patch : patches)
+      patch.SetSubMesh(&*mesh);
+    patches[1].SetSubMesh(nullptr);
+    patches[2].SetSubMesh(&unrelated);
+    mesh.reset();
+    shared = patches[0].GetSubMesh() == nullptr && patches[1].GetSubMesh() == nullptr &&
+             patches[2].GetSubMesh() == &unrelated && patches[3].GetSubMesh() == nullptr;
+  }
+  {
+    Patch patch;
+    std::optional<SubMesh> first(std::in_place), second(std::in_place);
+    patch.SetSubMesh(&*first);
+    patch.SetSubMesh(&*first);
+    patch.SetSubMesh(&*second);
+    first.reset();
+    rebind = patch.GetSubMesh() == &*second;
+    second.reset();
+    rebind = rebind && patch.GetSubMesh() == nullptr;
+    patch.SetSubMesh(nullptr);
+    patch.SetSubMesh(nullptr);
+  }
+  {
+    std::array<std::optional<Patch>, 3> patches;
+    std::optional<SubMesh> mesh(std::in_place);
+    for (auto& patch : patches) {
+      patch.emplace();
+      patch->SetSubMesh(&*mesh);
+    }
+    patches[0].reset();
+    patches[2].reset();
+    patch_first = patches[1]->GetSubMesh() == &*mesh;
+    mesh.reset();
+    patch_first = patch_first && patches[1]->GetSubMesh() == nullptr;
+  }
+  {
+    std::optional<SubMesh> first_mesh(std::in_place), second_mesh(std::in_place);
+    Patch first, second;
+    first.SetId(17);
+    first.SetSubMesh(&*first_mesh);
+    second.SetSubMesh(&*second_mesh);
+    Patch detached(&first);
+    Patch moved(std::move(first));
+    second = std::move(moved);
+    auto* alias = &second;
+    second = std::move(*alias);
+    patch_moves = detached.GetSubMesh() == nullptr && second.GetId() == 17 &&
+                  first.GetSubMesh() == &*first_mesh && moved.GetSubMesh() == &*first_mesh &&
+                  second.GetSubMesh() == &*first_mesh;
+    second_mesh.reset();
+    patch_moves = patch_moves && second.GetSubMesh() == &*first_mesh;
+    first_mesh.reset();
+    patch_moves = patch_moves && first.GetSubMesh() == nullptr && moved.GetSubMesh() == nullptr &&
+                  second.GetSubMesh() == nullptr;
+  }
+  {
+    Patch first, second;
+    std::optional<SubMesh> source(std::in_place), target(std::in_place);
+    source->SetPatch(&first);
+    target->SetPatch(&second);
+    first.SetSubMesh(&*source);
+    second.SetSubMesh(&*target);
+    SubMesh moved(std::move(*source));
+    *target = std::move(moved);
+    mesh_moves = first.GetSubMesh() == &*source && second.GetSubMesh() == &*target;
+    source.reset();
+    mesh_moves = mesh_moves && first.GetSubMesh() == nullptr && second.GetSubMesh() == &*target;
+    target.reset();
+    mesh_moves = mesh_moves && second.GetSubMesh() == nullptr;
+  }
+  std::printf("forward_patch_observers single:%d shared:%d rebind:%d patch_first:%d "
+              "patch_moves:%d mesh_moves:%d\n",
+              single, shared, rebind, patch_first, patch_moves, mesh_moves);
+  return single && shared && rebind && patch_first && patch_moves && mesh_moves;
+}
+
 #if defined(_MSC_VER) && defined(_DEBUG)
 int attempts = 0, denied = 0;
 int AllocationHook(int kind, void*, std::size_t, int, long, const unsigned char*, int) {
@@ -381,13 +474,15 @@ bool Run(const char* mode) {
     return ExpiredReplacementControl();
   if (std::strcmp(mode, "patch-observers") == 0)
     return CheckPatchObservers();
+  if (std::strcmp(mode, "forward-patch-observers") == 0)
+    return CheckForwardPatchObservers();
   if (std::strcmp(mode, "contracts") == 0) {
     bool passed = CheckPatchObservers() && ExternalNodes();
     for (int i = 0; i < 8; ++i) {
       Fixture fixture(i);
       passed = fixture.Exercise() && passed;
     }
-    return passed;
+    return CheckForwardPatchObservers() && passed;
   }
   if (std::strncmp(mode, "normal-", 7) == 0) {
     int variant = -1;
@@ -414,6 +509,14 @@ bool Run(const char* mode) {
       passed = CheckPatchObservers();
     }
     std::printf("patch_allocation=attempts:%d denied:%d\n", attempts, denied);
+    return passed && attempts == 0 && denied == 0;
+  } else if (std::strcmp(mode, "forward-patch-noalloc") == 0) {
+    bool passed;
+    {
+      AllocationScope hook;
+      passed = CheckForwardPatchObservers();
+    }
+    std::printf("forward_patch_allocation=attempts:%d denied:%d\n", attempts, denied);
     return passed && attempts == 0 && denied == 0;
   } else if (std::strncmp(mode, "noalloc-", 8) == 0) {
     int variant = -1;

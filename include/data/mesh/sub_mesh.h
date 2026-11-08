@@ -58,6 +58,8 @@ private:
   Patch* patch_ = nullptr; // non-owning
   SubMesh* previous_patch_observer_ = nullptr;
   SubMesh* next_patch_observer_ = nullptr;
+  // Every Patch whose independent forward link observes this object address.
+  Patch* patch_observers_ = nullptr;
 
   std::vector<std::unique_ptr<NodeAdaptive>> nos_;
   std::vector<std::unique_ptr<ElementAdaptive>> elements_;

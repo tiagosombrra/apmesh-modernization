@@ -1,5 +1,23 @@
 # Local quality automation
 
+## Independent forward Patch/SubMesh retirement
+
+The [observer repair](evidence/FORWARD_PATCH_RETIREMENT.md) requires both original
+six-field semantic failures, exact retained registered traces and all 37 current
+SubMesh outcomes. Keep the old 34 native controls, actual UAF/leak/hook controls,
+both owner orders and both object-move contracts. The new six-history CRT scope
+must reject all allocations with zero attempts/retention. Require all 95 current
+initialized detached patch-copy outcomes and existing independent numeric oracles.
+
+Require full changed-production/header and added-positive-fixture analysis with
+actual GCC/MSVC metadata and unchanged diagnostics, current GCC/MSVC frozen
+Eistute/Book results, 518 other protected identities and 43 original artifacts,
+exact-head/main 75 CTest /526 Python, inventory/contracts/whitespace and fresh
+remote/guarded-main gates. The public forward link becomes registered without
+synthesizing a back link or transferring owners. Rebuild consumers after the
+private layout change; keep other copied/foreign/UV/cache/recovery scopes open.
+
+
 ## Borrowed quadtree reads
 +
 +The [production package](evidence/UV_BORROWED_READS.md) requires exact getter/API,

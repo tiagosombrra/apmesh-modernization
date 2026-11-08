@@ -6,7 +6,11 @@
 #include <memory>
 
 SubMesh::SubMesh() = default;
-SubMesh::~SubMesh() { DetachPatchObserver(true); }
+SubMesh::~SubMesh() {
+  DetachPatchObserver(true);
+  while (patch_observers_ != nullptr)
+    patch_observers_->DetachSubMeshObserver(patch_observers_);
+}
 
 SubMesh::SubMesh(SubMesh&& other) noexcept
     : nos_(std::move(other.nos_)), elements_(std::move(other.elements_)) {
@@ -43,7 +47,7 @@ void SubMesh::DetachPatchObserver(bool retire_forward) noexcept {
     if (next_patch_observer_ != nullptr)
       next_patch_observer_->previous_patch_observer_ = previous_patch_observer_;
     if (retire_forward && patch_->sub_mesh_ == this)
-      patch_->sub_mesh_ = nullptr;
+      patch_->DetachSubMeshObserver(patch_observers_);
   }
   patch_ = nullptr;
   previous_patch_observer_ = nullptr;

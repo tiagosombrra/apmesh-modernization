@@ -7,13 +7,18 @@ Current route: [seven finite Stage 3 packages](architecture/STAGE3_FINITE_PACKAG
 separates measured scopes, retained evidence and blocked admissions; it is not a
 percentage or a deadline. No original obligation or support promise is removed.
 
-Current delivery: [borrowed quadtree reads](evidence/UV_BORROWED_READS.md).
-The native AFT pipeline now reads four list containers and the leaf count without
-temporary snapshots, preserving the public by-value getters and all owner/order
-semantics. The admitted transfer fixture measures 515 -> 342 allocations. Require
-current focused native controls, fresh frozen GCC/MSVC comparisons and exact-head/
-main 75 CTest /526 Python. This production change does not close F3's remaining
-sharing, replacement, recovery or ideal-retirement obligations.
+Current delivery: [independent forward Patch/SubMesh retirement](evidence/FORWARD_PATCH_RETIREMENT.md).
+Six existing foreign-forward/move histories expose expired patch-to-mesh pointers
+after mesh destruction. Independent nonallocating forward registration now retires
+those pointers while preserving directional links and live-object move semantics.
+Require 37 native SubMesh and 95 detached patch-copy outcomes, current-image frozen
+science and exact-head/main 75 CTest /526 Python. This addresses the Patch/SubMesh
+dependency of F2-04 through F4-01/04; F2/F3 and wider F4 obligations remain open.
+
+The [five borrowed quadtree reads](evidence/UV_BORROWED_READS.md) are integrated
+through PR #181 at main `150ec6a5c3d19ff77d3d42361507bd69dac68bb5`, with verified
+head/main gates and their matching integration receipt. The transfer fixture's
+173-allocation reduction remains bounded cost evidence, not end-to-end speedup.
 
 The [initial-root repair](evidence/F3_ROOT_ADOPTION.md) is integrated through
 PR #180 at main `80b44a347719270a6aa7489827debf5852a4cf8e`, with verified exact

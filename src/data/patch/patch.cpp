@@ -7,6 +7,7 @@ Patch::Patch() = default;
 Patch::Patch(Patch* patch) : id_(patch ? patch->GetId() : 0) {}
 
 Patch::~Patch() {
+  SetSubMesh(nullptr);
   while (sub_mesh_observers_ != nullptr) {
     SubMesh* observer = sub_mesh_observers_;
     sub_mesh_observers_ = observer->next_patch_observer_;
@@ -16,11 +17,11 @@ Patch::~Patch() {
   }
 }
 
-Patch::Patch(Patch&& other) noexcept : id_(other.id_), sub_mesh_(other.sub_mesh_) {}
+Patch::Patch(Patch&& other) noexcept : id_(other.id_) { SetSubMesh(other.sub_mesh_); }
 Patch& Patch::operator=(Patch&& other) noexcept {
   if (this != &other) {
     id_ = other.id_;
-    sub_mesh_ = other.sub_mesh_;
+    SetSubMesh(other.sub_mesh_);
   }
   return *this;
 }
@@ -31,4 +32,16 @@ void Patch::SetId(unsigned int id) noexcept { id_ = id; }
 
 SubMesh* Patch::GetSubMesh() const noexcept { return sub_mesh_; }
 
-void Patch::SetSubMesh(SubMesh* sub_mesh) noexcept { sub_mesh_ = sub_mesh; }
+void Patch::SetSubMesh(SubMesh* sub_mesh) noexcept {
+  if (sub_mesh_ == sub_mesh)
+    return;
+  if (sub_mesh_ != nullptr)
+    DetachSubMeshObserver(sub_mesh_->patch_observers_);
+  sub_mesh_ = sub_mesh;
+  if (sub_mesh_ != nullptr) {
+    next_sub_mesh_observer_ = sub_mesh_->patch_observers_;
+    if (next_sub_mesh_observer_ != nullptr)
+      next_sub_mesh_observer_->previous_sub_mesh_observer_ = this;
+    sub_mesh_->patch_observers_ = this;
+  }
+}

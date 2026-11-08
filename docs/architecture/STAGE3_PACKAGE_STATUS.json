@@ -79,11 +79,11 @@
       }
     },
     "F4": {
-      "status": "open",
+      "status": "partial_forward_patch_retirement",
       "items": {
         "F4-01": {
-          "status": "retained_evidence_applicability_required",
-          "evidence": "../evidence/PATCH_SUBMESH_RETIREMENT.md"
+          "status": "registered_and_forward_patch_scope_delivery_required",
+          "evidence": "../evidence/FORWARD_PATCH_RETIREMENT.md"
         },
         "F4-02": {
           "status": "retained_evidence_applicability_required",
@@ -95,8 +95,9 @@
           "evidence": "../evidence/P4_CACHE_MUTATION_ADMISSION.md"
         },
         "F4-04": {
-          "status": "pending",
-          "evidence": null
+          "status": "patch_submesh_forward_scope_qualified_other_links_open",
+          "evidence": "../evidence/FORWARD_PATCH_RETIREMENT.md",
+          "dependency": "Public live Patch/SubMesh forward links and object moves only; other curve/UV/copied foreign links remain open"
         }
       }
     },
@@ -168,9 +169,9 @@
     "status": "pending_all_required_exits",
     "evidence": null
   },
-  "active_delivery": "F3 native borrowed-read production package",
+  "active_delivery": "Independent forward Patch/SubMesh observer retirement, F2-04 dependency",
   "next_package": "Independently admitted F3/F4 work; do not fabricate replacement/mate/retirement or raw-loader histories",
-  "completion_rule": "F1 and prior F2/F3 bounded deliveries have matching receipts. The borrowed-read package needs its own exact head/main gates; existing F2/F3 package blockers and all original row dependencies remain open.",
+  "completion_rule": "Prior bounded deliveries have matching main receipts. Forward Patch/SubMesh retirement requires its own exact head/main gates; all remaining F2/F3/F4 and original row exits remain mandatory.",
   "prior_F1_integration": {
     "pr": 178,
     "main": "825c23b94f08a2506e2ceade07954cf120b176b8",
@@ -183,5 +184,9 @@
   "prior_F3_root_integration": {
     "pr": 180,
     "main": "80b44a347719270a6aa7489827debf5852a4cf8e"
+  },
+  "prior_borrowed_read_integration": {
+    "pr": 181,
+    "main": "150ec6a5c3d19ff77d3d42361507bd69dac68bb5"
   }
 }
