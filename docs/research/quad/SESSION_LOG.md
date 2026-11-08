@@ -72,3 +72,21 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Handoff:** M0 PARTIAL / OPEN. Prepare local validation prerequisites, then execute clean WSL GCC and complete full CTest/Python, GCC science and applicable memory gates. Do not repeat MSVC generation for a profile fix. M1 awaits M0 and verified historical fixtures. Boundary topology and first-paper scope require adviser alignment. No QUAD scientific delivery or main merge is claimed. Checkpoint commit and remote readback are reported in the session response.
 
 **Documentation checks:** five-file whitespace passes. Full changed-document link validation stops on an inherited four-parent runner link in the earlier M0 evidence; the historical journal has the same path. Earlier entries remain intact; the corrected current link is [the runner](../../../tools/quad_m0_baseline.py). This is a retained documentation finding, not a passing link gate.
+
+## 2026-11-08-04 - native baseline and GNU validation portability
+
+**Intent:** continue M0 qualification from the verified checkpoint and preserve completed/pending results.
+
+**Entry:** `quad-templates=d400f37da8184b8cec6e1a40ff69d34f3e9c8ed1`, main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`, clean worktrees and no open PRs. Authenticated Windows Git remains the continuity channel.
+
+**Preparation:** native Linux Git cannot read the Windows worktree's drive-letter pointer. Create an isolated WSL clone at the published source SHA, prepare local validation profiles/baseline and required development tools. GCC stays 13.3/C++17; LLVM 18's unsupported-key failure is preserved, then LLVM 22.1.8 is installed without changing the configuration or disabling diagnostics.
+
+**Bounded repair:** Windows-specific allocation symbol mangling blocks the Linux full build; a dynamic C++ runtime later bypasses string-copy denial. The inventory also uses host-dependent Path order. A six-file engineering delivery detects size_t type, links only the GNU test probe's C++ runtime locally, makes inventory order explicit, adds one mixed-case regression and a standalone calibration, and refreshes the build fingerprint. No production source/input/preset/scientific-policy change.
+
+**Actual evidence:** complete Linux head and research-merge regression pass 75 CTest / 527 Python without skips. Original 526 IDs are preserved. Windows has six affected native entries and 527 Python controls in their recorded scopes. The old-ordering negative control is detected; dynamic/static allocation calibration records zero/one actual denials respectively. Fresh Linux Eistute/Book preserve 9 states, 45 exact artifacts, 123 positive boundaries and accepted/rejected decisions. The MSVC captures remain untouched.
+
+**Negative evidence:** retain original link failure; stale generated hash; cross-host inventory mismatch; failed snapshot copy-denial context; clang-tidy 18 configuration failure; and local summary-controller failure after successful CTest. The last is verified offline using complete LastTest.log, with no native repetition for the parser. Every source/tool prerequisite change has a distinct capture directory. All 168 copied native artifacts are byte-verified.
+
+**Delivery:** [PR #184](https://github.com/tiagosombrra/apmesh-modernization/pull/184), qualified head `d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205`, research merge `a29711bea1e38f6a1ea49dde443f0ae58ebadfa7`; identical trees, guarded checkout preserves 2,368 tracked timestamps per checkout. Exact post-merge 75/527 passes, and matching executable/tree permits science reuse. Zero returned remote statuses/check-runs is not passing CI. Main and its canonical state/plan remain untouched; the research source inventory updates its technical CMake fingerprint.
+
+**Checkpoint:** [GNU receipt](evidence/M0_GNU_QUALIFICATION_20261108.json), state, evidence, expanded source scan and roadmap summary. M0 is PARTIAL / OPEN. G6 memory applicability/identity and G7 semantic TRI consumer/loop disposition remain pending; inherited historical link errors remain explicit. No M1/QUAD implementation or scientific decision is admitted. Next session continues G6/G7 with these artifacts, without repeating the completed baseline or articles.

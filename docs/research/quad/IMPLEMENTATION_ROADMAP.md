@@ -18,6 +18,15 @@ boundaries. GCC/Linux, full research-branch CTest/Python and applicable memory
 qualification remain pending. The Windows doctor/profile failure is retained;
 see the [review receipt](evidence/M0_MSVC_REVIEW_20261108.json).
 
+**2026-11-08-04 measured update:** [PR #184](https://github.com/tiagosombrra/apmesh-modernization/pull/184)
+integrates bounded GNU validation portability into the research branch at
+`a29711bea1e38f6a1ea49dde443f0ae58ebadfa7`. Exact head/merge Linux regression passes
+75 CTest / 527 Python (all original 526 plus one new control). Strict Linux article
+comparison passes 9 states / 45 exact artifacts / 123 positive boundaries; preserved
+MSVC evidence remains separate. M0-G6 applicable memory disposition and M0-G7
+semantic caller inventory remain pending, so M0 stays OPEN and M1 is not admitted.
+See the [GNU qualification receipt](evidence/M0_GNU_QUALIFICATION_20261108.json).
+
 At session end, write a verified GitHub checkpoint: update the canonical state,
 append the session log and record executed/unexecuted gates. Update this roadmap
 only for an actual milestone transition, changed approved scope or adjusted gate.

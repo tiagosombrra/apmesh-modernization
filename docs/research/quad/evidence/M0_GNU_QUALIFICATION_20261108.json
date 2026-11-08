@@ -1,0 +1,341 @@
+{
+  "schema": 1,
+  "date": "2026-11-08",
+  "classification": "engineering-only M0 validation portability and bounded baseline qualification",
+  "m0_complete": false,
+  "quad_implemented": false,
+  "stage_closure": false,
+  "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/184",
+  "base": "d400f37da8184b8cec6e1a40ff69d34f3e9c8ed1",
+  "head": "d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205",
+  "research_merge": "a29711bea1e38f6a1ea49dde443f0ae58ebadfa7",
+  "unchanged_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "head_regression": {
+    "status": "baseline_native_passed_science_pending",
+    "source_revision": "d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205",
+    "classification": "offline verification of successful CTest capture after controller output-truncation failure",
+    "source_root": "/home/apmesh/quad-m0-20261108-04",
+    "ctest_executed": 75,
+    "python_executed": 527,
+    "failures": 0,
+    "skipped": 0,
+    "raw_controller_report": "/home/apmesh/quad-m0-20261108-04/build/quad-m0/session04-gcc-llvm22/report.json",
+    "raw_controller_report_sha256": "4d166dce395026db242f668c276fb17040f480b927e7dad0a08f462bd1b19b1a",
+    "ctest_xml_sha256": "cd0e9959e5b3238cc75391fbbd5dd4683b4da913e66336140aeea69903044731",
+    "full_test_log_sha256": "3bffa98ed1b5b87c5bb36437a1a052a5460beaf8045f7337eeeccf45263005f0",
+    "executable_sha256": "4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5",
+    "wrapped_probe_sha256": "b6582f43c46fc026f1ddacb092fd8984827d7a502a2dbd55d563687de9178aab",
+    "no_native_test_repeated_for_summary": true
+  },
+  "research_merge_regression": {
+    "source_revision": "a29711bea1e38f6a1ea49dde443f0ae58ebadfa7",
+    "source_tree": "d0a48d6ba1902c2c1e6c98a1f9f810a496cef494",
+    "status": "baseline_native_passed_science_pending",
+    "ctest_executed": 75,
+    "python_executed": 527,
+    "failures": 0,
+    "skipped": 0,
+    "executable_sha256": "4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5"
+  },
+  "current_python_inventory": {
+    "count": 527,
+    "retained_original_controls": 526,
+    "added_control": "test_architecture_inventory.ArchitectureInventoryTests.test_mixed_case_source_and_build_order_is_host_independent",
+    "old_ids_preserved": true
+  },
+  "linux_science": {
+    "source_revision": "d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205",
+    "status": "passed_bounded_linux_article_comparison",
+    "reference_profile": "Linux GCC article comparison against qualified Linux Clang reference",
+    "cases": [
+      {
+        "model": "eistute",
+        "status": "passed",
+        "states": 5,
+        "exact_artifacts": [
+          "eistute_domain_adaptation.csv",
+          "eistute_n.process__metrics_rank_-1.csv",
+          "eistute_passo_0_acceptance_accepted.log",
+          "eistute_passo_0_incidences.json",
+          "eistute_passo_0_malha_0.obj",
+          "eistute_passo_1_acceptance_accepted.log",
+          "eistute_passo_1_curve_adaptation_accepted.csv",
+          "eistute_passo_1_incidences.json",
+          "eistute_passo_1_malha_1.obj",
+          "eistute_passo_1_patch_adaptation_accepted.csv",
+          "eistute_passo_2_acceptance_rejected.log",
+          "eistute_passo_2_curve_adaptation_rejected.csv",
+          "eistute_passo_2_incidences.json",
+          "eistute_passo_2_malha_2.obj",
+          "eistute_passo_2_patch_adaptation_rejected.csv",
+          "eistute_passo_3_acceptance_rejected.log",
+          "eistute_passo_3_curve_adaptation_rejected.csv",
+          "eistute_passo_3_incidences.json",
+          "eistute_passo_3_malha_3.obj",
+          "eistute_passo_3_patch_adaptation_rejected.csv",
+          "eistute_passo_4_acceptance_rejected.log",
+          "eistute_passo_4_curve_adaptation_rejected.csv",
+          "eistute_passo_4_incidences.json",
+          "eistute_passo_4_malha_4.obj",
+          "eistute_passo_4_patch_adaptation_rejected.csv"
+        ],
+        "positive_boundaries": 15,
+        "accepted": [
+          0,
+          1
+        ],
+        "rejected": [
+          2,
+          3,
+          4
+        ],
+        "reference": "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/p3-linux-ub-leak/separate-instruments/reference-eistute",
+        "comparison": {
+          "model": "eistute",
+          "compared_meshes": 5,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 1168,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        },
+        "physical_quality_coverage": "full_precision_snapshot",
+        "parametric_quality_coverage": "full_precision_snapshot"
+      },
+      {
+        "model": "book",
+        "status": "passed",
+        "states": 4,
+        "exact_artifacts": [
+          "book_domain_adaptation.csv",
+          "book_n.process__metrics_rank_-1.csv",
+          "book_passo_0_acceptance_accepted.log",
+          "book_passo_0_incidences.json",
+          "book_passo_0_malha_0.obj",
+          "book_passo_1_acceptance_accepted.log",
+          "book_passo_1_curve_adaptation_accepted.csv",
+          "book_passo_1_incidences.json",
+          "book_passo_1_malha_1.obj",
+          "book_passo_1_patch_adaptation_accepted.csv",
+          "book_passo_2_acceptance_rejected.log",
+          "book_passo_2_curve_adaptation_rejected.csv",
+          "book_passo_2_incidences.json",
+          "book_passo_2_malha_2.obj",
+          "book_passo_2_patch_adaptation_rejected.csv",
+          "book_passo_3_acceptance_rejected.log",
+          "book_passo_3_curve_adaptation_rejected.csv",
+          "book_passo_3_incidences.json",
+          "book_passo_3_malha_3.obj",
+          "book_passo_3_patch_adaptation_rejected.csv"
+        ],
+        "positive_boundaries": 108,
+        "accepted": [
+          0,
+          1
+        ],
+        "rejected": [
+          2,
+          3
+        ],
+        "reference": "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/p3-linux-ub-leak/separate-instruments/reference-book",
+        "comparison": {
+          "model": "book",
+          "compared_meshes": 4,
+          "all_obj_byte_identical": true,
+          "all_acceptance_fields_equal": true,
+          "last_accepted_step": 1,
+          "last_accepted_triangles": 4256,
+          "boundary_incidence_coverage": "verified",
+          "boundary_regression": "exact"
+        },
+        "physical_quality_coverage": "full_precision_snapshot",
+        "parametric_quality_coverage": "full_precision_snapshot"
+      }
+    ]
+  },
+  "science_reused_after_merge_by_executable_and_tree_identity": true,
+  "unchanged_frozen_inputs": {
+    "src": "f36af5079e49f01225a75efd4673da46b91b4665",
+    "include": "d4f19e4fc9752843a5825369bc823428be4029a8",
+    "configs": "63a6bb843d29b147ab0ccc51352558d532016a6f",
+    "input_models": "19b306149e7a9cbb8aa26ecb04164c8c378daef7",
+    "reference": "a735e6031e7a17d89894d483c115efe4690a0a7b",
+    "CMakeLists.txt": "f44ced615dae35121da9d7c77652a4f37e393c47",
+    "CMakePresets.json": "f070e239d66d94012b0aadf5a358297fbee32d41",
+    ".clang-tidy": "bbb50197442d2ef48fc27b6f216c2a0e9f535197",
+    ".clang-format": "72d1ac10260e4944746b0debf8a3ddda704d354f"
+  },
+  "compiler_default_language": "#define __cplusplus 201703L",
+  "windows_native_scope": {
+    "source_revision": "851049c44f73446eea43abc192224f4d3b9bf682",
+    "status": "passed_bounded_windows_wrap_contracts",
+    "ctest_executed": 6,
+    "failures": 0,
+    "skipped": 0,
+    "probe_sha256": "06547ba2e0f25b13fa7c0c4d4210a269cdcb0d68f7032d73482683f97cf43897"
+  },
+  "windows_python_scope": {
+    "revision": "3078ab0bf65c9b361d95c46a97be5edbb9ba4015",
+    "status": "passed_527_python_controls",
+    "log_sha256": "68711562276d6121fb88e635a72f8386506e43486604d33edbc7ada50b678cb7"
+  },
+  "windows_reuse_limit": "Native wrapper code/Windows effective link flags unchanged after 851049c; tooling code unchanged after 3078ab0 except generated CMake fingerprint. Complete Windows CTest was not repeated.",
+  "preserved_prefixes": [
+    {
+      "folder": "session04-gcc",
+      "revision": "d400f37da8184b8cec6e1a40ff69d34f3e9c8ed1",
+      "status": "stopped_build"
+    },
+    {
+      "folder": "session04-gcc-repair",
+      "revision": "851049c44f73446eea43abc192224f4d3b9bf682",
+      "status": "stopped_ctest",
+      "executed": 43,
+      "failed": [
+        "tooling.controls"
+      ]
+    },
+    {
+      "folder": "session04-gcc-final",
+      "revision": "91f961ce913d1b5e1c18bea5e746c36aba2d8b04",
+      "status": "stopped_ctest",
+      "executed": 43,
+      "failed": [
+        "tooling.controls"
+      ]
+    },
+    {
+      "folder": "session04-gcc-qualified",
+      "revision": "3078ab0bf65c9b361d95c46a97be5edbb9ba4015",
+      "status": "stopped_ctest",
+      "executed": 53,
+      "failed": [
+        "application.candidate_snapshots"
+      ]
+    },
+    {
+      "folder": "session04-gcc-static-wrap",
+      "revision": "d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205",
+      "status": "stopped_ctest",
+      "executed": 58,
+      "failed": [
+        "tooling.tidy_header_scope"
+      ]
+    },
+    {
+      "folder": "session04-gcc-llvm22",
+      "revision": "d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205",
+      "status": "stopped_first_failure",
+      "executed": 75,
+      "failed": []
+    }
+  ],
+  "negative_ordering_control": {
+    "status": "detected_original_host_ordering",
+    "old_revision": "91f961ce913d1b5e1c18bea5e746c36aba2d8b04",
+    "tested_revision": "3078ab0bf65c9b361d95c46a97be5edbb9ba4015",
+    "tests": 1,
+    "expected_assertion_failures": 1,
+    "errors": 0
+  },
+  "allocation_hook_calibration": {
+    "classification": "independent runtime allocation-hook calibration",
+    "source_sha256": "e69cfcc87ea96c41f74dd0a41bad12ad448abd025af71775bf53c7a717ed3405",
+    "cases": [
+      {
+        "name": "dynamic",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-O3",
+          "/mnt/c/Users/tiago/Documents/dev/research/apmesh-quad/build/quad-m0/session-20261108-04/string_wrap_control.cpp",
+          "-Wl,--wrap=_Znwm",
+          "-o",
+          "/home/apmesh/quad-m0-20261108-04/build/quad-m0/string-wrap-control/dynamic"
+        ],
+        "exit_code": 1,
+        "stdout": "copied=257\ncaught=0 denied=0\n",
+        "stderr": "",
+        "exe_sha256": "8ef71fd7ffa11b44cd04d5fce7a4e90f06e97e59ab510d60b3fbba73c5586632"
+      },
+      {
+        "name": "static-cxx",
+        "command": [
+          "g++",
+          "-std=c++17",
+          "-O3",
+          "/mnt/c/Users/tiago/Documents/dev/research/apmesh-quad/build/quad-m0/session-20261108-04/string_wrap_control.cpp",
+          "-Wl,--wrap=_Znwm",
+          "-static-libstdc++",
+          "-static-libgcc",
+          "-o",
+          "/home/apmesh/quad-m0-20261108-04/build/quad-m0/string-wrap-control/static-cxx"
+        ],
+        "exit_code": 0,
+        "stdout": "caught=1 denied=1\n",
+        "stderr": "",
+        "exe_sha256": "b71135904983d5fabba96939610358fb0de71fae84a9d2c865ffed7dcb7ee5b6"
+      }
+    ],
+    "status": "dynamic_hook_gap_reproduced_static_cxx_hook_detected"
+  },
+  "tracked_control_source": "tests/allocation_wrap_control.cpp",
+  "tracked_control_source_sha256": "e69cfcc87ea96c41f74dd0a41bad12ad448abd025af71775bf53c7a717ed3405",
+  "llvm22_setup": {
+    "source": "https://apt.llvm.org/",
+    "suite": "llvm-toolchain-noble-22",
+    "status": "installed_llvm22_tools",
+    "steps": [
+      {
+        "name": "index",
+        "command": [
+          "apt-get",
+          "update",
+          "-o",
+          "Dir::Etc::sourcelist=/etc/apt/sources.list.d/apmesh-llvm22.list",
+          "-o",
+          "Dir::Etc::sourceparts=-",
+          "-o",
+          "APT::Get::List-Cleanup=0"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "install",
+        "command": [
+          "apt-get",
+          "install",
+          "-y",
+          "--no-install-recommends",
+          "clang-tidy-22",
+          "clang-format-22"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "key_sha256": "8b2a587ffd672c4687e7581dad4b2f6c1bb2ad6b480cd9771ba2ff48e0b8c75d"
+  },
+  "checkout": {
+    "status": "verified_research_merge_checkout",
+    "base": "d400f37da8184b8cec6e1a40ff69d34f3e9c8ed1",
+    "head": "d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205",
+    "merge": "a29711bea1e38f6a1ea49dde443f0ae58ebadfa7",
+    "same_tree": true,
+    "tracked_file_times_preserved": 2368,
+    "main_unchanged": true
+  },
+  "native_archive_sha256": "413e82e80ee35ea96ee73452cd11b16834da7dabb90cf2cfeed9bd488887c937",
+  "local_artifact_manifest": {
+    "path": "build/quad-m0/session-20261108-04/native-summary.json",
+    "sha256": "748ab79a5f6b79a4dca5875232fa063d58209f5771e1cffe08f073da47dc3c3f",
+    "byte_verified_copies": 168
+  },
+  "open_gates": [
+    "M0-G6 applicable memory evidence disposition",
+    "M0-G7 semantic reachable TRI-only consumer inventory",
+    "Inherited four-parent research runner links remain a documentation finding",
+    "M1 historical topologies and adviser decisions remain pending"
+  ],
+  "hosted_checks": "zero returned status/check runs; not passing CI"
+}

@@ -2,34 +2,47 @@
 
 **Branch:** `quad-templates`
 
-**Entry baseline:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` (modernization PR #183)
+**Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-08-03
+**Last session:** 2026-11-08-04
 
-**Active milestone:** **M0 - PARTIAL / OPEN; full baseline qualification pending**
+**Active milestone:** **M0 - PARTIAL / OPEN; native regression and article qualification measured, memory/caller disposition pending**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md)
 
 **Plan:** [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md)
 
-**Evidence:** [M0_EVIDENCE.md](M0_EVIDENCE.md), [MSVC receipt](evidence/M0_MSVC_REVIEW_20261108.json)
+**Evidence:** [M0_EVIDENCE.md](M0_EVIDENCE.md), [GNU qualification](evidence/M0_GNU_QUALIFICATION_20261108.json), [preserved MSVC review](evidence/M0_MSVC_REVIEW_20261108.json)
 
 **History:** [SESSION_LOG.md](SESSION_LOG.md)
 
-## Verified current position
+## Current measured delivery
 
-- An isolated Windows worktree exists at `C:\Users\tiago\Documents\dev\research\apmesh-quad`. Authenticated Git works; the previous session's DNS/missing-checkout blocker is resolved on this host.
-- Session entry verified remote research head `e8c55184f112d9ffb4fa004a9c9d88f5cf17ff49`, main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`, clean worktrees and no open PRs. No commit statuses or PR-triggered workflow runs were returned; this is not passing CI.
-- A pre-existing capture at `build/quad-m0/20261108T141009Z-msvc/` records MSVC 19.44 C++17 Debug configure/build and completed Eistute/Book, then `blocked_quality_doctor`. This review did not rerun those native operations.
-- Offline verification passes: nine states, 45 exact scientific artifacts, 123 positive boundary comparisons, preserved accepted/rejected decisions and full-precision physical/UV quality snapshots. All eight runner-log hashes and the current executable match the capture.
-- No QUAD algorithm or QUAD tests exist. Production/build/input/test files are unchanged from the entry baseline. GCC/Linux and complete research-branch regression/memory qualification remain pending.
+[PR #184](https://github.com/tiagosombrra/apmesh-modernization/pull/184) integrates engineering-only M0 validation portability into the research branch at `a29711bea1e38f6a1ea49dde443f0ae58ebadfa7`. Its qualified head is `d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205`; head and merge have identical trees. Modernization main remains unchanged.
 
-## Milestones
+- Linux GCC 13.3 C++17 serial build and **75 CTest / 527 Python controls** pass on the exact delivery head and research merge, without failures or skips. All original 526 Python IDs remain; one new mixed-case inventory control was added.
+- Fresh Linux Eistute/Book strictly match the qualified Linux references: **9 states, 45 exact scientific artifacts and 123 positive boundaries**, with full-precision physical/UV checks and preserved accepted/rejected decisions. Each model ran once within its existing 300-second cap. Exact executable/tree identity permits reuse after merge.
+- Windows GCC 16.1 has six affected native contract entries at `851049c` and 527 Python controls at `3078ab0`. Subsequent changes preserve their relevant Windows code/effective flags; full Windows CTest was not repeated. The original checked-MSVC build/article captures remain untouched.
+- Repair scope: ABI-correct allocation-wrapper symbols; a local C++ runtime for the GNU Linux test probe so string-copy allocations reach its hook; deterministic inventory path ordering; updated generated fingerprint. Production sources, inputs, presets and scientific policies remain unchanged.
+- The independent old-ordering control detects the original defect. The minimal dynamic-runtime string-copy control records zero denials and fails qualification; the static-runtime control records exactly one actual denial. Original failures are retained.
+- No QUAD generator or QUAD test suite has been implemented. This delivery does not close M0 or Stage 3.
+
+## Worktrees, tools and evidence
+
+- Windows research worktree: `C:\Users\tiago\Documents\dev\research\apmesh-quad`.
+- Native Linux clone: `/home/apmesh/quad-m0-20261108-04` in WSL Ubuntu 24.04. Native Git cannot consume the Windows-created worktree's drive-letter gitdir pointer; do not reuse the old `cd /mnt/c/.../apmesh-quad` recipe as a native Git checkout.
+- The clone was populated from locally available objects at the verified published SHA. Authenticated Windows Git remains the remote continuity channel; verify remote heads before transferring newer objects and fast-forwarding the clean Linux clone.
+- Linux profile: GCC 13.3, CMake 3.28.3, Ninja, Doxygen and LLVM format/tidy 22.1.8. LLVM 18's unsupported configuration-key failure remains recorded; no configuration/diagnostic suppression was applied. The GCC compiler cache is unchanged by the LLVM tool update.
+- Worktree-local validation profiles and protected baseline inventory are prepared. The original baseline receipt protects 75 CTest / 391 historical Python IDs; current qualification separately preserves all 526 entry IDs plus the added control.
+- Raw setup, failure prefixes, calibration, native reports and 168 byte-verified copied artifacts are local under `build/quad-m0/session-20261108-04/`. The compact GNU receipt records source/binary/log identities. The successful-head controller's JUnit truncation error remains; offline verification uses its complete preserved LastTest.log without repeating native tests for that summary.
+- Head/merge checkout receipts preserve all 2,368 tracked file times in each checkout. Research integration is separate from modernization main qualification.
+
+## Milestones and remaining gates
 
 | Milestone | State | Remaining admission / exit |
 | --- | --- | --- |
-| M0 - baseline | PARTIAL / OPEN | GCC/Linux, full 75 CTest / 526 Python inventory to verify, remaining science/memory gates and complete caller inventory |
-| M1 - historical T1-T6 oracle | PENDING | Verified Figure 7 topology, symmetries and negative controls |
+| M0 - baseline | PARTIAL / OPEN | M0-G6 applicable memory evidence disposition and M0-G7 semantic reachable TRI-only caller/loop inventory |
+| M1 - historical T1-T6 oracle | PENDING | M0 admission; verified Figure 7 topology, symmetries and negative controls |
 | M2 - UV QUAD topology | PENDING | Coverage, incidence, orientation and no hanging nodes |
 | M3 - quadtree emitter | PENDING | Opt-in QUAD and exact default TRI preservation |
 | M4 - physical QUAD | PENDING | Defined UV-to-XYZ geometry and four-node lifetime/ownership |
@@ -39,26 +52,10 @@
 | M8 - model study | PENDING | Reproducible independent metrics |
 | M9 - anisotropy | OPTIONAL / PENDING | Approved formulation and isolated ablation |
 
-## Blockers and limits
-
-- Windows doctor failed because Ninja, clang-format and clang-tidy were absent from its process PATH. They exist under `C:\msys64\ucrt64\bin`. Do not repeat completed MSVC generation to repair tool discovery.
-- This worktree's `validation_session.py environment` also fails on unavailable discovery tools. Iteration planning fails on missing `build/validation-session/local/validation-baseline.json`. Preserve both command failures; they are local prerequisites, not numerical failures.
-- WSL Ubuntu 24.04 has GCC 13.3, CMake 3.28.3 and Ninja. Availability only was checked; no Linux configure/build/test was run.
-- The M0 runner executes CTest only in GCC mode; MSVC uses `BUILD_TESTING=false`. It omits full Python, independent science comparison and ASan/LSan/CRT qualification. Verify actual compiler metadata and complete separate gates; runner success cannot close M0.
-- TRI consumer coverage remains partial: [M0_TRI_DEPENDENCY_SCAN.md](M0_TRI_DEPENDENCY_SCAN.md). Face, Adapter, curvature/adjacency and metrics/output need deliberate typed QUAD paths.
-- Documentation link validation stops on an inherited four-parent runner link in M0 evidence; the older journal also contains that path. These historical entries are retained. The correct current runner link is [tools/quad_m0_baseline.py](../../../tools/quad_m0_baseline.py). This checkpoint does not close the link gate.
-
-## Scientific decisions retained
-
-Keep QUAD opt-in and isolated from modernization main. Match six neighborhood classes without inferring historical polygon topology from TRI diagonals. Figure 7 fixtures remain unverified. Quad-dominant versus all-quad, boundary strategy and first-paper multipatch/non-manifold/anisotropy priorities require adviser alignment. No scientific merge is authorized by this checkpoint.
+The broader memory/caller gaps from modernization remain visible. Native release/denial controls do not establish complete-process ASan/LSan/CRT safety. A lexical scan is not a semantic reachability proof. Inherited four-parent runner links in old evidence/journal entries remain a documentation finding; this checkpoint does not close that link gate.
 
 ## Next exact action
 
-Continue M0 without repeating the completed MSVC cases. Prepare worktree-local validation environment/baseline using verified tool paths and the existing qualified inventory; retain the failed profile observations. Then run the clean GCC/Linux baseline from WSL Ubuntu 24.04:
+Continue **M0-G6/G7** on the integrated research source: bind reusable baseline memory evidence to the actual unchanged source/build/input/ABI/instrument dependencies, identify any genuinely unmeasured required case, and finish the serial TRI consumer/loop disposition before admitting M1. Reuse completed builds, tests and article captures by verified identity; do not rerun them merely to populate another summary.
 
-```sh
-cd /mnt/c/Users/tiago/Documents/dev/research/apmesh-quad
-python3 tools/quad_m0_baseline.py --mode gcc --science
-```
-
-Inspect the actual profile, keep existing time caps and stop at the first unexpected failure. Record full CTest/Python counts, offline GCC comparisons, applicable memory evidence and M0-G7 coverage before admitting M1. Unchanged source alone does not transfer previous qualification. Update this state and append the journal, then verify the remote checkpoint at session end.
+Keep historical failures and all original obligations. Do not start M1, select a boundary topology or add an instrument/model campaign without the required admission and finite scope. Figure 7 fixtures, quad-dominant versus all-quad and first-paper priorities still require independent evidence/adviser alignment. Keep the next session checkpoint in this branch and verify its remote readback.

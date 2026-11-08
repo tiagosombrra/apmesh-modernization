@@ -49,3 +49,24 @@ M0-G7 remains **PARTIAL**, not completed: a static token scan does not prove dyn
 Before merging a QUAD feature, enumerate and qualify all production consumers of `ElementAdaptive` and `Face`; verify relevant control/call paths and actual native tests. The existing source inventory and modernization gates continue to apply independently.
 
 **Evidence pointers:** [BASELINE_AUDIT.md](BASELINE_AUDIT.md), [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md), [M0_EVIDENCE.md](M0_EVIDENCE.md).
+
+## Session 2026-11-08-04 - expanded production-name scan
+
+The unchanged 164-file `src/include` tree was searched for `TriangleAdaptive` and
+explicit static/dynamic/C-style casts. Ten files contain the name; the current
+line-based cast query finds **38 occurrences**, adding the checked cast in
+`src/input_output/incidence_snapshot.cpp` to the earlier targeted 37. This is
+lexical query coverage, not an exhaustive semantic proof of aliases or loops.
+
+Three additional named source responsibilities were inspected:
+
+| Source | Observation | QUAD implication |
+| --- | --- | --- |
+| `src/generator/initial_mesh.cpp` | Initial submesh construction explicitly creates four TriangleAdaptive elements with three UV slots | Initial-state topology requires its own typed QUAD route |
+| `src/estimate/initial_mesh_estimate.cpp` | Initial estimate mesh construction is triangular | Sizing/estimation must retain a justified topology contract |
+| `src/input_output/incidence_snapshot.cpp:90` | Dynamic cast rejects non-triangles with `Incidence snapshot requires triangles`; three UV/node slots are serialized | Independent boundary/physical/UV validation export must support QUAD before multipatch claims |
+
+The directory-wide name search closes the missing lexical sample for these
+identifiers only. G7 still requires a semantic disposition of reachable serial
+consumers and implicit three-node loops, distinguishing topology from physical
+XYZ dimensionality. No production change or runtime QUAD compatibility follows.
