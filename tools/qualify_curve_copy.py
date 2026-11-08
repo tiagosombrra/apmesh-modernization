@@ -25,8 +25,16 @@ def qualify(asan, crt, runtime, output):
               ("crt", crt, "leak", "retained-blocks")]
     results = []
     for instrument, executable, mode, diagnostic in cases:
-        process = subprocess.run([str(executable.resolve()), mode], env=environment,
-                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=30)
+        try:
+            process = subprocess.run([str(executable.resolve()), mode], env=environment,
+                                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=30)
+        except subprocess.TimeoutExpired as error:
+            data = error.stdout or b""
+            (output / f"{instrument}-{mode}.log").write_bytes(data)
+            results.append({"instrument": instrument, "mode": mode, "exit_code": None,
+                            "expected_diagnostic": diagnostic, "passed": False,
+                            "timeout_seconds": 30, "log_sha256": hashlib.sha256(data).hexdigest()})
+            break
         data = process.stdout
         (output / f"{instrument}-{mode}.log").write_bytes(data)
         text = data.decode("utf-8", errors="replace")
@@ -71,7 +79,10 @@ def qualify(asan, crt, runtime, output):
                   "log_sha256": hashlib.sha256(data).hexdigest()}
         results.append(result)
         print(json.dumps({key: value for key, value in result.items() if key != "log_sha256"}), flush=True)
-    report = {"status": "passed" if all(case["passed"] for case in results) else "failed",
+        if not passed:
+            break
+    report = {"status": "passed" if len(results) == len(cases) and all(case["passed"] for case in results) else "failed",
+              "expected_cases": len(cases), "completed_cases": len(results),
               "scope": "Nine actual curve/point/patch/numerical production units. Initialized non-null pointer-taking copies, independent containers and borrowed-object lifetimes; ASan invalid-access and Debug CRT scoped retention/allocation denial. Not implicit copy/assignment, clone publication, full application, parallel, LSan or UBSan.",
               "executables": {kind: {"path": str(path.resolve()),
                                      "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}

@@ -15,13 +15,16 @@ The [status register](STAGE3_PACKAGE_STATUS.json) separates admitted execution,
 retained evidence and blocked admissions. Historical P1..P5 below are completed/
 legacy buckets, not an open-ended replacement queue.
 
-Current delivery is F1 physical owners/repeated successful callers. Four item
-scopes have measured local/caller/process/precondition evidence; require the final
-exact-head/main 75 CTest / 524 Python and identity/remote seal before integration.
-After sealing F1, proceed to the first admitted unfinished F2..F5 item. Keep F3-04
-outside-root retirement and F4-03 cache mutation blocked until their actual native
-admission dependency changes. F6 is the final affected-instrument matrix; F8
-requires all original dispositions. No new scientific scope or silent deferral.
+Current delivery is [F2 acceptance](../evidence/F2_LOADER_COPY_ACCEPTANCE.md):
+qualified shared-loader evidence reused by audited dependencies/images, current
+initialized copy controls, finite API catalog and five explicit raw-route
+admission blockers. The whole F2 package remains open. Require 75 CTest /526
+Python on exact head/main, identity and remote gates for this partial round.
+F1's four scopes are integrated through PR #178 at main
+`825c23b94f08a2506e2ceade07954cf120b176b8`, with a verified matching receipt.
+Next choose independently admitted F3 work while raw corpus/call-contract and F4
+foreign-publication obligations remain visible. Do not replace missing originals
+with guessed formats or fabricate native calibration.
 
 PR #177 integrates the boundary state guard at main
 `8550569d0c881843d7818d099ce56761df1ad800` with its verified integration seal.

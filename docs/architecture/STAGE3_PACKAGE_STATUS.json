@@ -11,44 +11,46 @@
   },
   "packages": {
     "F1": {
-      "status": "qualified_scope_delivery_required",
+      "status": "complete",
       "items": {
         "F1-01": {
-          "status": "qualified_scope_delivery_required",
+          "status": "complete",
           "evidence": "../evidence/STAGE3_FINITE_EXECUTION.md"
         },
         "F1-02": {
-          "status": "qualified_scope_delivery_required",
+          "status": "complete",
           "evidence": "../evidence/STAGE3_FINITE_EXECUTION.md"
         },
         "F1-03": {
-          "status": "qualified_scope_delivery_required",
+          "status": "complete",
           "evidence": "../evidence/STAGE3_FINITE_EXECUTION.md"
         },
         "F1-04": {
-          "status": "qualified_scope_delivery_required",
+          "status": "complete",
           "evidence": "../evidence/STAGE3_FINITE_EXECUTION.md"
         }
       }
     },
     "F2": {
-      "status": "open",
+      "status": "partial_admission_blocked",
       "items": {
         "F2-01": {
-          "status": "pending",
-          "evidence": null
+          "status": "qualified_scope_delivery_required",
+          "evidence": "../evidence/F2_LOADER_COPY_ACCEPTANCE.md"
         },
         "F2-02": {
-          "status": "pending",
-          "evidence": null
+          "status": "blocked_admission",
+          "dependency": "Five legacy routes need original corpus, defined outputs and call/scratch/ownership histories; native calls not admitted",
+          "evidence": "../evidence/F2_LOADER_COPY_ACCEPTANCE.md"
         },
         "F2-03": {
-          "status": "pending",
-          "evidence": null
+          "status": "qualified_scope_delivery_required",
+          "evidence": "../evidence/F2_LOADER_COPY_ACCEPTANCE.md"
         },
         "F2-04": {
-          "status": "pending",
-          "evidence": null
+          "status": "api_catalog_complete_F4_behavior_open",
+          "dependency": "Implicit/copied/foreign publication behavior remains assigned to F4",
+          "evidence": "../evidence/F2_LOADER_COPY_ACCEPTANCE.md"
         }
       }
     },
@@ -164,7 +166,12 @@
     "status": "pending_all_required_exits",
     "evidence": null
   },
-  "active_delivery": "F1",
-  "next_package": "F2",
-  "completion_rule": "Effective F1 completion requires the matching head/main integration-verification receipt and remote merged PR; all other original-row dependencies remain."
+  "active_delivery": "F2 acceptance round",
+  "next_package": "F3 admitted items while F2 admission/F4 dependencies remain",
+  "completion_rule": "F1 effective completion is verified by its prior main/receipt. F2 round integration requires its own matching head/main receipt; F2 package remains open until missing admission and mapped behavior dependencies are satisfied.",
+  "prior_F1_integration": {
+    "pr": 178,
+    "main": "825c23b94f08a2506e2ceade07954cf120b176b8",
+    "receipt_sha256": "f5ac6c092a84133df7ef5efc5ed2f76a64adeabebd6d5586064c56ab193d7610"
+  }
 }

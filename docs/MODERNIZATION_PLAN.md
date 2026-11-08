@@ -58,13 +58,20 @@ retained and admission-blocked work explicit. Package completion does not imply
 whole-row completion when another mapped package is outstanding. Do not add an
 automatic audit/instrument successor, change support promises or relax a gate.
 
-The current delivery is F1: physical owners and fixed successful repeated callers.
-Its four item scopes cover current SubMesh lifetime/observers, typed owner orders/
-initial-only reuse, two-call adaptive executable-static CRT lifetime and independent
-external-node owners. Require final image/source identities and exact-head/main
-75 CTest / 524 Python before its integration seal. The next admitted F2 item uses
-existing loader/copy evidence; raw routes and blocked UV/cache histories require
-the named admission outputs, not another speculative implementation.
+The current delivery is [F2 loader/copy acceptance](evidence/F2_LOADER_COPY_ACCEPTANCE.md).
+Reused qualified parser images/dependencies retain all 320 memory outcomes;
+current initialized copies pass 30 curve /95 patch outcomes. A 14-type native
+availability catalog records existing operations without promoting them to full
+clone or foreign-publication safety. Five raw legacy routes have explicit missing
+corpus/history/specification dependencies under F2-02. F2 remains open; the round
+must not turn blocked admission into qualification or silently drop support.
+The copy runner now stops on first failure/timeout with preserved raw capture.
+Require exact-head/main 75 CTest / 526 Python, identity and remote gates.
+
+PR #178 closes the four declared F1 item scopes at main
+`825c23b94f08a2506e2ceade07954cf120b176b8`, with its verified integration receipt.
+Next select an independently admitted F3 item while F2-02/F4 dependencies remain;
+no unadmitted legacy experiment or automatic root-border/cache audit follows.
 
 PR #177 closes the boundary state guard at main
 `8550569d0c881843d7818d099ce56761df1ad800`, with its verified integration seal.
