@@ -15,8 +15,10 @@
 - A dedicated scientific branch exists. It is isolated from the ongoing engineering modernization on `main`.
 - A source-level audit has mapped the six triangle-template neighborhood classes and the triangle-only downstream assumptions (UV `Face`, `Adapter`, `TriangleAdaptive`, curvature, reports and OBJ export).
 - The implementation roadmap defines M0–M9 with explicit technical/scientific gates; the user requested a persistent GitHub handoff at the end of every relevant conversation.
-- This checkpoint establishes that handoff protocol. **No QUAD algorithm or QUAD tests have been implemented yet.**
+- This checkpoint establishes that handoff protocol, discoverable from the research-branch root `AGENTS.md` and `README.md`. **No QUAD algorithm or QUAD tests have been implemented yet.**
 - The current M0 audit has verified repository metadata and GitHub status visibility, **not local GCC/MSVC builds, CTest or scientific runs**.
+
+**Most recent verified delivery:** session log checkpoint commit `18412a9740ebbd83b04c8aad502955d2e1004532` (2026-11-08); this state file update follows it. Inspect the live branch head before beginning any work.
 
 ## Current milestones
 
