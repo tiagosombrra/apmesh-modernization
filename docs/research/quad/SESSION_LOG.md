@@ -31,3 +31,7 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Milestone:** M0 *in progress*; native execution and oracle evidence are pending.  
 **Next action:** check out branch in isolated worktree, run recorded local qualification and frozen scientific comparisons, update M0 evidence, then start M1 only if M0 exit criteria are satisfied.  
 **Limitations:** GitHub source inspection and metadata are not a substitute for an executed build. The protocol does not auto-run after a conversation ends.
+
+**Delivery checkpoint (verified remote writes):** `CONTINUATION_PROTOCOL.md` at `dec71454`; `STATE.md` at `2f05ca64`; `SESSION_LOG.md` initial creation at `693fdd87`; `M0_EVIDENCE.md` at `2fd7a14d`; root `AGENTS.md` at `3363a2d8`; `IMPLEMENTATION_ROADMAP.md` at `61a625e2`; root `README.md` at `c3bf3440`. All file paths were read back through GitHub after the initial writes (README is the final navigation addition). No production code, TRI pipeline, or `main` file was changed. The current session's final log entry and state checkpoint constitute additional documentation-only commits.
+
+**Result:** continuity procedure installed and discoverable from both `README.md` and `AGENTS.md`; M0 evidence ledger remains open with no native run.  
