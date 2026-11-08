@@ -7,13 +7,21 @@ Current route: [seven finite Stage 3 packages](architecture/STAGE3_FINITE_PACKAG
 separates measured scopes, retained evidence and blocked admissions; it is not a
 percentage or a deadline. No original obligation or support promise is removed.
 
-Current delivery: F1 physical owners and repeated successful callers. All four
-item scopes have measured evidence: refreshed local lifetime/observer controls,
-existing typed caller/initial-only reuse, fixed two-call adaptive CRT histories
-and live external-node borrowing with an actual invalid-expiry negative. Require
-exact-head/main 75 CTest / 524 Python, final native-image/source binding and fresh
-remote gates. Only a matching integration seal closes the delivered F1 scope;
-S3-01 and the broader stage retain their F4/F5/F6/F7 dependencies.
+Current delivery: [F2 loader/copy acceptance round](evidence/F2_LOADER_COPY_ACCEPTANCE.md).
+F2-01 reuses 320 actual reader/charge outcomes with qualified image, build/input,
+raw-log and compiler dependency binding, including an explicit cosmetic header
+exception. F2-03 current initialized curve/patch copies pass 30/95 outcomes;
+F2-04 catalogs 14 type-availability records across GCC/MSVC without claiming a
+complete clone or qualified implicit/foreign publication behavior. F2-02 remains
+blocked on the original corpus and call/scratch/ownership contracts of five raw
+legacy routes. No native history is fabricated and no support promise is removed.
+Require exact-head/main 75 CTest / 526 Python and round identity/remote gates.
+
+F1 is integrated through PR #178 at main
+`825c23b94f08a2506e2ceade07954cf120b176b8`, with verified exact-head/main
+75 CTest / 524 Python and its four-item integration receipt. Its broader row
+dependencies remain. After this partial F2 round, select the next independently
+admitted F3 item while keeping F2-02 and F4 behavior obligations visible.
 
 The [boundary close guard](evidence/BOUNDARY_CLOSE_STATE.md) is integrated through
 PR #177 at main `8550569d0c881843d7818d099ce56761df1ad800`, with verified exact-head/

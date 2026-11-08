@@ -1,5 +1,29 @@
 # Local quality automation
 
+## F2 loader and copy acceptance
+
+The [F2 round](evidence/F2_LOADER_COPY_ACCEPTANCE.md) requires reuse proof for all
+131 serial /189 charge outcomes: exact cached images/projects, inputs/log hashes,
+compiler read dependencies and the explicit declaration-only cosmetic header
+proof. Historical trace records retain their original scope; current required
+ordinary/numerical CTest still applies. Do not rebuild/repeat an unchanged image
+merely to populate the acceptance table.
+
+Require 30 current-source initialized curve-copy and 95 detached patch-copy
+outcomes with the existing GCC/MSVC profiles, all measured denials/nonallocating
+scopes and actual negative controls. Record the separate 14-type availability
+mode under GCC, ASan and CRT; traits do not prove distinct move implementations,
+complete cloning or valid foreign observers. Keep five raw routes admission-
+blocked until their original corpus and call/ownership specification are known.
+The corrected curve runner stops on first failed/timeout child, preserves bytes
+and rejects partial inventories; two controller regressions require these facts.
+
+Require configured changed-code analysis, final-format image/source binding,
+unchanged 522 protected files/four application artifacts/43 original artifacts,
+75 CTest /526 Python on exact head and main, contracts/inventory/links/whitespace,
+fresh remote audits and guarded same-tree checkout. F2 package, F4 behavior and
+whole-stage closure remain open despite integration of this defined partial round.
+
 ## Finite Stage 3 package delivery
 
 The [F1..F7 catalog](architecture/STAGE3_FINITE_PACKAGES.md) fixes 28 item exits

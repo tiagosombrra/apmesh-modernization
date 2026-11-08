@@ -66,6 +66,12 @@ Existing evidence: [caller roots](../evidence/STAGE3_CALLER_ROOT_AUDIT.md),
 [charge input](../evidence/STAGE3_CHARGE_INPUT.md),
 [copy audit](../evidence/STAGE3_PATCH_COPY_AUDIT.md).
 
+The [current F2 acceptance record](../evidence/F2_LOADER_COPY_ACCEPTANCE.md) resolves
+reused shared-loader evidence, current initialized-copy observations and the
+finite availability catalog. F2-02 has five named original-input/history/specification
+blockers. F2 remains open, and F4 retains implicit/foreign publication behavior.
+This is an explicit round disposition, not a change to any fixed exit above.
+
 ## F3: UV tree/front ownership and failure boundaries
 
 Output: one UV acceptance record separating successful transfer, terminal failure,

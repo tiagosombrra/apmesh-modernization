@@ -1,4 +1,7 @@
 #include "data/mesh/sub_mesh.h"
+#include "data/mesh/mesh_adaptive.h"
+#include "data/geometry.h"
+#include "data/model.h"
 #include "data/patch/patch_bezier.h"
 #include "data/patch/patch_hermite.h"
 
@@ -23,6 +26,35 @@ unsigned int I_MAX = 100;
 std::atomic<unsigned long long> FINDUV_TOTAL_CALLS{0}, FINDUV_IMAX_EXITS{0};
 
 namespace {
+template <class T> void CopySurface(const char* name) {
+  std::printf("copy_surface type=%s abstract=%d copy=%d assign=%d rvalue=%d rvalue_assign=%d "
+              "pointer=%d\n",
+              name, std::is_abstract_v<T>, std::is_copy_constructible_v<T>,
+              std::is_copy_assignable_v<T>, std::is_move_constructible_v<T>,
+              std::is_move_assignable_v<T>, std::is_constructible_v<T, T*>);
+}
+
+void CopySurface() {
+  static_assert(!std::is_copy_constructible_v<Model> && !std::is_copy_constructible_v<Geometry> &&
+                !std::is_copy_constructible_v<MeshAdaptive> &&
+                !std::is_copy_constructible_v<SubMesh> &&
+                !std::is_copy_constructible_v<TriangleAdaptive>);
+  CopySurface<CurveAdaptive>("CurveAdaptive");
+  CopySurface<CurveAdaptiveParametric>("CurveAdaptiveParametric");
+  CopySurface<CurveAdaptiveParametricBezier>("CurveAdaptiveParametricBezier");
+  CopySurface<CurveAdaptiveParametricHermite>("CurveAdaptiveParametricHermite");
+  CopySurface<Patch>("Patch");
+  CopySurface<PatchCoons>("PatchCoons");
+  CopySurface<PatchBezier>("PatchBezier");
+  CopySurface<PatchHermite>("PatchHermite");
+  CopySurface<NodeAdaptive>("NodeAdaptive");
+  CopySurface<TriangleAdaptive>("TriangleAdaptive");
+  CopySurface<SubMesh>("SubMesh");
+  CopySurface<MeshAdaptive>("MeshAdaptive");
+  CopySurface<Geometry>("Geometry");
+  CopySurface<Model>("Model");
+}
+
 void Require(bool value, const char* message) {
   if (!value) {
     std::fprintf(stderr, "Detached patch-copy contract failed: %s\n", message);
@@ -353,7 +385,9 @@ int main(int argc, char** argv) {
   _CrtMemCheckpoint(&before);
 #endif
   const char* mode = argv[1];
-  if (std::strcmp(mode, "contracts") == 0) {
+  if (std::strcmp(mode, "api-surface") == 0)
+    CopySurface();
+  else if (std::strcmp(mode, "contracts") == 0) {
     Base();
     for (int shape = 0; shape < 2; ++shape)
       for (unsigned int mask = 0; mask < 16; ++mask)

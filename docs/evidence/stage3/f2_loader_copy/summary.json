@@ -1,0 +1,308 @@
+{
+  "schema": 1,
+  "entry_main": "825c23b94f08a2506e2ceade07954cf120b176b8",
+  "classification": "F2 partial acceptance, exact loader reuse, current initialized-copy/API checks and first-failure runner repair",
+  "status": "measured_round_pending_exact_head_main",
+  "F2_package_complete": false,
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "item_results": {
+    "F2-01": "qualified cached reader/caller scope retained by dependency/image/input/log identities",
+    "F2-02": "blocked admission for five raw APIs; original corpus/call/scratch/ownership contracts missing",
+    "F2-03": "30 curve +95 patch current expected instrument outcomes passed",
+    "F2-04": "14-type availability catalog complete; implicit/foreign behavior remains F4"
+  },
+  "loader_reuse": {
+    "record": "build/f2-loader-copy/loader-reuse.json",
+    "sha256": "eaed6b722a68b2e0c2d5e3a37d9bd42e582c8f1762de4c2bd9f4dc81663e583c",
+    "serial_outcomes": 131,
+    "charge_outcomes": 189,
+    "serial_denials": 2219,
+    "charge_denials": 2147,
+    "dependency_counts": {
+      "serial": 280,
+      "charge": 308
+    },
+    "audited_cosmetic_header": {
+      "path": "include/crab_mesh/aft/boundary.h",
+      "before_sha256": "4a43a21a127c0b825de07d23c9954080ef8f71fa193280b6d47c346dbbc188aa",
+      "after_sha256": "8df347c5b31684816c809241aa7b770c7a8b64a70327049f3948a18828ef55cd",
+      "tokens": 263,
+      "token_sha256": "257edf7aeb7d9c712c7841ef1dc79d72967b295ff485c0a47843244d4bab1735",
+      "scope": "Only comments/format differ in a declaration-only class header; all C++ tokens and qualified fixture images match. Boundary implementation changes are absent from these fixture dependencies."
+    },
+    "profiles_record_sha256": "b60cdc26e8f80ab06bf6f65ccd91ee86966b98e23d52234d94ffe41d46bf1d51",
+    "new_native_reader_calls": 0,
+    "historical_trace_scope": "Original 120 pairs retain their own images; current ordinary numerical CTest required"
+  },
+  "initialized_copies": {
+    "curve": {
+      "report": "build/f2-loader-copy/curve-qualification/report.json",
+      "sha256": "e30252627c4acd29002fee9d2bdeca3b9e7141dfdc4e16f49e27a73fafd04e3f",
+      "outcomes": 30,
+      "complete_sweeps": 9,
+      "actual_denials": 123,
+      "executables": {
+        "asan": {
+          "path": "build/f2-loader-copy/curve-asan/RelWithDebInfo/curve_copy_probe.exe",
+          "sha256": "5b2f1dcff521f6ba6a5791623d0a5fbdaecdc043217971ea1948bc8d7bc51753"
+        },
+        "crt": {
+          "path": "build/f2-loader-copy/curve-crt/Debug/curve_copy_probe.exe",
+          "sha256": "390bd0a83c65eb3583c61765294cca458665081827a4e0b01c915dea12449e6b"
+        }
+      }
+    },
+    "patch": {
+      "report": "build/f2-loader-copy/patch-qualification/report.json",
+      "sha256": "b0dfacf89912a95df3a8fd34d65c2a9a035f7351137d72e116a623f71d229112",
+      "outcomes": 95,
+      "nonallocating_scopes": 12,
+      "executables": {
+        "asan": {
+          "path": "build/f2-loader-copy/patch-asan/RelWithDebInfo/detached_patch_copy_probe.exe",
+          "sha256": "a2b94ee99a83d57f212ee401ec0cfe78f01efbc9d155e16a5bb5e6581caeab43"
+        },
+        "crt": {
+          "path": "build/f2-loader-copy/patch-crt/Debug/detached_patch_copy_probe.exe",
+          "sha256": "92907fd5a749293098c8a31a0377c2a031853805d5991d23cdc58a663f2dfc9d"
+        }
+      }
+    }
+  },
+  "api_surface": {
+    "report": "build/f2-loader-copy/surface.json",
+    "sha256": "2d8b51aacf1f3c751a2799a56e742df84c07084db262e4293ddd4fad8e77891a",
+    "types": 14,
+    "profiles": 3,
+    "default_probe_paths_exactly_preserved": true,
+    "scope": "Type availability only; rvalue acceptance may use a copy constructor; abstract bases remain separately declared; no complete clone or foreign-publication lifetime claim",
+    "records": [
+      [
+        "CurveAdaptive",
+        "0",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "CurveAdaptiveParametric",
+        "0",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "CurveAdaptiveParametricBezier",
+        "0",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "CurveAdaptiveParametricHermite",
+        "0",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "Patch",
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "PatchCoons",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "PatchBezier",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "PatchHermite",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1"
+      ],
+      [
+        "NodeAdaptive",
+        "0",
+        "1",
+        "1",
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "TriangleAdaptive",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "SubMesh",
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "MeshAdaptive",
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "Geometry",
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "Model",
+        "0",
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ]
+    ]
+  },
+  "raw_admission": {
+    "report": "build/f2-loader-copy/raw-route-admission.json",
+    "sha256": "12d2a1ec7a097b30d6863af0efbbf790b3dd95e96517e2336bdf1befca436fc2",
+    "original_tree": "1b7618d5a04e4d8d8a82a252f85b58757437408b",
+    "original_corpus_paths": [
+      "input_models/book_v7a.bp",
+      "input_models/eistute2.fixed.bp",
+      "input_models/ribbed_bracket_nm_decor.bp",
+      "reference/eistute_stage4.obj"
+    ],
+    "routes": [
+      {
+        "api": "LoaderBPFileHermite",
+        "line": 71,
+        "input": "INPUT_MODEL on Windows/Linux; original Apple mountain.bp path",
+        "grammar": "v records with XYZ and p index rows; active Hermite control assignments are absent",
+        "dependency": "Original Hermite file, expected control/state result and call-history/return-owner convention",
+        "status": "blocked_admission",
+        "source": "src/input_output/patch_reader.cpp",
+        "literal_occurrences": 2
+      },
+      {
+        "api": "LoaderOBJFile",
+        "line": 190,
+        "input": "../../INPUT_MODEL/uteapot.obj on Windows/Linux",
+        "grammar": "v XYZ and p patch-index records; this is not a generic triangle OBJ reader",
+        "dependency": "Original control-patch OBJ, expected patch/control/ID order and collective raw-return lifetime",
+        "status": "blocked_admission",
+        "source": "src/input_output/patch_reader.cpp",
+        "literal_occurrences": 2
+      },
+      {
+        "api": "OrderVectorToListBezierPatches",
+        "line": 290,
+        "input": "std::vector<double> argument",
+        "grammar": "Loop allocates PatchBezier scratch; no value-to-control mapping or patch publication is implemented",
+        "dependency": "Original nonempty-vector specification, expected publication and valid preceding/following call sequence",
+        "status": "blocked_admission",
+        "source": "src/input_output/patch_reader.cpp",
+        "literal_occurrences": 2
+      },
+      {
+        "api": "ParsePatchesBezier",
+        "line": 298,
+        "input": "../../INPUT_MODEL/cone1.pt or four_patches.pt; optional Qt selection",
+        "grammar": "pa patch ID and pc00..pc33 XYZ records, publication after 16 controls",
+        "dependency": "Original .pt/.patches corpus, expected results and scratch initialization/ownership history; no initial scratch allocation is present in this method",
+        "status": "blocked_admission",
+        "source": "src/input_output/patch_reader.cpp",
+        "literal_occurrences": 2
+      },
+      {
+        "api": "LoaderRibFile",
+        "line": 468,
+        "input": "../INPUT_MODEL/uteapot.rib on Windows/Linux",
+        "grammar": "Patch-prefixed lines append parsed numbers; this method does not reconstruct/publish new patches",
+        "dependency": "Original RIB and documented conversion/publication history and ownership contract",
+        "status": "blocked_admission",
+        "source": "src/input_output/patch_reader.cpp",
+        "literal_occurrences": 2
+      }
+    ],
+    "native_calls": 0
+  },
+  "runner_repair": {
+    "first_failed_or_timeout_prefix_stops_inventory": true,
+    "partial_inventory_cannot_pass": true,
+    "controller_tests": 2,
+    "child_cap_seconds": 30,
+    "production_changes": 0
+  },
+  "source_binding": {
+    "protected_files": 522,
+    "original_artifacts": 43,
+    "application_artifacts": {
+      "build/windows-gcc17/bin/ap_mesh.exe": "aae2a846b7e68aa0cca71e3590b570048c40ce327d860f265d6c642e560a5203",
+      "build/windows-gcc17/libap_mesh_engine.a": "1040cdc2f49b955f9de964714c878522a61682c39c9c015ecdaa8b0e5260f2aa",
+      "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "ba86996bb6c37fd3d8f321bd5b1c378959a616f68eff245ba10388cb7495aa1e",
+      "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "09dc0a12ebb8dceca556a25ef8c51266eb6a86377584f5262dabb7da07e5bdeb"
+    },
+    "changed_native_probe_source": {
+      "tests/patch_copy_memory/probe.cpp": "ce43ddd06f20c14296a4226c940d41724a8d282bc185d75a907125096f4676d5"
+    },
+    "runner_source": {
+      "tools/qualify_curve_copy.py": "4739e9604cff927d6da66c8c4e741039efbdc8b03c6f373923d173fb6ab517a2"
+    },
+    "analysis_record_sha256": "77469c36b4a85b9519f45f5e0a5347dc06c4ec908ff26db38262cc75d5571583"
+  },
+  "required_delivery": {
+    "ctest": 75,
+    "python": 526,
+    "F2_package_remains_open": true,
+    "F1_verified_complete": true,
+    "next_independent_package": "F3 admitted items",
+    "fresh_remote_and_guarded_main_gates": true
+  }
+}
