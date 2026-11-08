@@ -213,6 +213,37 @@ if(BUILD_TESTING)
   set_tests_properties(application.generator_diagnostics
     PROPERTIES LABELS "application;metric-schema;negative-input;required-gate" TIMEOUT 90)
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
+    if(NOT WIN32)
+      # Link the test runtime locally so --wrap also observes string-copy allocations.
+      target_link_options(attempt_metrics_probe PRIVATE -static-libstdc++ -static-libgcc)
+    endif()
+    include(CheckCXXSourceCompiles)
+    check_cxx_source_compiles("#include <cstddef>
+#include <type_traits>
+static_assert(std::is_same<std::size_t, unsigned long>::value, \"size_t type\");
+int main() {}" AP_MESH_SIZE_T_IS_UNSIGNED_LONG)
+    if(AP_MESH_SIZE_T_IS_UNSIGNED_LONG)
+      set(AP_MESH_SIZE_T_MANGLE "m")
+    else()
+      check_cxx_source_compiles("#include <cstddef>
+#include <type_traits>
+static_assert(std::is_same<std::size_t, unsigned long long>::value, \"size_t type\");
+int main() {}" AP_MESH_SIZE_T_IS_UNSIGNED_LONG_LONG)
+      if(AP_MESH_SIZE_T_IS_UNSIGNED_LONG_LONG)
+        set(AP_MESH_SIZE_T_MANGLE "y")
+      else()
+        check_cxx_source_compiles("#include <cstddef>
+#include <type_traits>
+static_assert(std::is_same<std::size_t, unsigned int>::value, \"size_t type\");
+int main() {}" AP_MESH_SIZE_T_IS_UNSIGNED_INT)
+        if(NOT AP_MESH_SIZE_T_IS_UNSIGNED_INT)
+          message(FATAL_ERROR "Unsupported size_t type for domain allocation wrappers")
+        endif()
+        set(AP_MESH_SIZE_T_MANGLE "j")
+      endif()
+    endif()
+    target_compile_definitions(attempt_metrics_probe PRIVATE
+      "AP_MESH_SIZE_T_MANGLE=\"${AP_MESH_SIZE_T_MANGLE}\"")
     set_property(SOURCE "${CMAKE_SOURCE_DIR}/tests/attempt_metrics_probe.cpp" APPEND
       PROPERTY COMPILE_DEFINITIONS AP_MESH_DOMAIN_FAILURE_WRAP=1)
     target_link_options(attempt_metrics_probe PRIVATE
@@ -220,7 +251,8 @@ if(BUILD_TESTING)
       "-Wl,--wrap=_ZN7Adapter11AdaptDomainEP10PatchCoonsPN9Performer9IdManagerEddiiii"
       "-Wl,--wrap=_ZNK7Adapter23GetPatchStructuralStatsEi"
       "-Wl,--wrap=_ZN12MeshAdaptive31InsertSubMeshAdaptiveByPositionEP7SubMeshi"
-      "-Wl,--wrap=_Znwy" "-Wl,--wrap=_ZdlPv" "-Wl,--wrap=_ZdlPvy")
+      "-Wl,--wrap=_Znw${AP_MESH_SIZE_T_MANGLE}" "-Wl,--wrap=_ZdlPv"
+      "-Wl,--wrap=_ZdlPv${AP_MESH_SIZE_T_MANGLE}")
     add_test(NAME application.domain_candidate_contracts
       COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/tests/domain_candidate_case.py"
         --exe "$<TARGET_FILE:attempt_metrics_probe>" --workspace "${CMAKE_BINARY_DIR}/domain-candidate-controls")

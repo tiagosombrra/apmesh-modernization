@@ -47,6 +47,24 @@ class ArchitectureInventoryTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Empty source root"):
                 inventory.inventory(root)
 
+    def test_mixed_case_source_and_build_order_is_host_independent(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as folder:
+            root = self.fixture(folder)
+            for name in ("MPICommunicator", "Message"):
+                (root / "include" / (name + ".h")).write_text("// fixture\n", encoding="utf-8")
+                build = root / "tests" / name / "CMakeLists.txt"
+                build.parent.mkdir(parents=True)
+                build.write_text("# fixture\n", encoding="utf-8")
+                cmake = root / "cmake" / (name + ".cmake")
+                cmake.parent.mkdir(exist_ok=True)
+                cmake.write_text("# fixture\n", encoding="utf-8")
+            result = inventory.inventory(root)
+            self.assertEqual([item["path"] for item in result["files"]], [
+                "include/Message.h", "include/MPICommunicator.h", "include/value.h", "src/main.cpp"])
+            self.assertEqual([item["path"] for item in result["build_inputs"]], [
+                "cmake/Message.cmake", "cmake/MPICommunicator.cmake",
+                "tests/Message/CMakeLists.txt", "tests/MPICommunicator/CMakeLists.txt"])
+
     def test_nested_test_build_changes_invalidate_inventory(self):
         with tempfile.TemporaryDirectory(dir=ROOT) as folder:
             root = self.fixture(folder)
