@@ -26,6 +26,12 @@ def remove_comments(text):
                         if match[0].startswith(("//", "/*")) else match[0], text)
 
 
+def path_order(path):
+    """Keep inventory order independent of host filesystem comparison rules."""
+    name = path.as_posix()
+    return name.casefold(), name
+
+
 def source_files(root):
     paths = []
     for folder in ("include", "src"):
@@ -41,7 +47,7 @@ def source_files(root):
         if not selected:
             raise ValueError(f"Empty source root: {folder}")
         paths.extend(selected)
-    return sorted(paths)
+    return sorted(paths, key=path_order)
 
 
 def component(name):
@@ -120,8 +126,8 @@ def inventory(root):
                       "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data),
                       "includes": includes})
     build_paths = [root / "CMakeLists.txt", root / "CMakePresets.json"]
-    build_paths.extend(sorted((root / "cmake").glob("*.cmake")))
-    build_paths.extend(sorted((root / "tests").rglob("CMakeLists.txt")))
+    build_paths.extend(sorted((root / "cmake").glob("*.cmake"), key=path_order))
+    build_paths.extend(sorted((root / "tests").rglob("CMakeLists.txt"), key=path_order))
     build_inputs = [{"path": path.relative_to(root).as_posix(),
                      "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
                     for path in build_paths if path.is_file()]
