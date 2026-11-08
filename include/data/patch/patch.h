@@ -19,8 +19,8 @@ public:
   void SetId(unsigned int id) noexcept;
 
   SubMesh* GetSubMesh() const noexcept;
-  // Borrowed forward link only; registration belongs to SubMesh::SetPatch.
-  // Foreign/copied forward links remain the caller's lifetime responsibility.
+  // Register a null or live borrowed SubMesh without allocation. Registration
+  // is independent of SubMesh::SetPatch; mesh retirement clears this observer.
   void SetSubMesh(SubMesh* sub_mesh) noexcept;
 
 protected:
@@ -32,6 +32,21 @@ private:
   // All live SubMesh back observers, including archived meshes. Object moves
   // preserve registrations by address rather than copying or transferring them.
   SubMesh* sub_mesh_observers_ = nullptr;
+
+  // Forward observers are separate from the mesh-to-patch registrations above.
+  Patch* previous_sub_mesh_observer_ = nullptr;
+  Patch* next_sub_mesh_observer_ = nullptr;
+  void DetachSubMeshObserver(Patch*& first) noexcept {
+    if (previous_sub_mesh_observer_ != nullptr)
+      previous_sub_mesh_observer_->next_sub_mesh_observer_ = next_sub_mesh_observer_;
+    else
+      first = next_sub_mesh_observer_;
+    if (next_sub_mesh_observer_ != nullptr)
+      next_sub_mesh_observer_->previous_sub_mesh_observer_ = previous_sub_mesh_observer_;
+    sub_mesh_ = nullptr;
+    previous_sub_mesh_observer_ = nullptr;
+    next_sub_mesh_observer_ = nullptr;
+  }
 };
 
 #endif // DATA_PATCH_PATCH_H

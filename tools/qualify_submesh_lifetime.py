@@ -29,6 +29,9 @@ def qualify(asan, crt, runtime, output):
     cases += [("asan", asan, "external-nodes", None),
               ("crt", crt, "external-nodes", None),
               ("asan", asan, "replaced-node-borrow", "heap-use-after-free")]
+    cases += [("asan", asan, "forward-patch-observers", None),
+              ("crt", crt, "forward-patch-observers", None),
+              ("crt", crt, "forward-patch-noalloc", None)]
     results = []
     for instrument, executable, mode, diagnostic in cases:
         process = subprocess.run([str(executable.resolve()), mode], env=environment,
@@ -58,6 +61,11 @@ def qualify(asan, crt, runtime, output):
                                      "rebind:1 foreign:1 moves:1 patch_moves:1") in text
                 if mode == "patch-noalloc":
                     passed = passed and "patch_allocation=attempts:0 denied:0" in text
+            elif mode in ("forward-patch-observers", "forward-patch-noalloc"):
+                passed = passed and ("forward_patch_observers single:1 shared:1 rebind:1 "
+                                     "patch_first:1 patch_moves:1 mesh_moves:1") in text
+                if mode == "forward-patch-noalloc":
+                    passed = passed and "forward_patch_allocation=attempts:0 denied:0" in text
             elif mode == "external-nodes":
                 passed = passed and all(
                     f"external_nodes populated:{int(populated)} identity:1 adjacency:1 complete:1" in text
@@ -85,8 +93,10 @@ def qualify(asan, crt, runtime, output):
                  "Graphs must own their nodes or borrow independently live nodes, with nonthrowing "
                  "destructors. Registered patch observers retire in both teardown orders, including "
                  "history/list removal, rebind, move/source identity and foreign-forward preservation; "
-                 "a CRT check denies every allocation during those operations. No arbitrary foreign "
-                 "forward repair, cache refresh, full-process/parallel/LSan/UBSan qualification or numerical change.",
+                 "a CRT check denies every allocation during those operations. Independent forward "
+                 "patch observers also retire without allocation through mesh destruction, rebind and "
+                 "object moves. No arbitrary expired-input, cache refresh, full-process/parallel/LSan/UBSan "
+                 "qualification or numerical change.",
         "executables": {name: {"path": str(path.resolve()),
                                "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
                         for name, path in instruments},

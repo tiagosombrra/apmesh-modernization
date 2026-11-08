@@ -109,6 +109,10 @@ S3-05/07; feeds F1/F2/F3. It adds no blanket immutability rule.
 | F4-03 | C17 Bezier control and parametric endpoint/tangent mutation after publication. | Admission needs an actual supported initialized-object mutation/evaluation history and independent recomputation oracle. The existing control-only-loader admission is negative; retain it and do not repeat a source-only successor audit. |
 | F4-04 | Forward-only, copied and rebound foreign links named by F2/F3. | Fixed list of actual API arrangements with positive live-owner ordering and independent invalid-expiry controls; define or enforce the existing promised validity boundary. Arbitrary unmeasured aliases remain blockers. |
 
+The [forward-retirement repair](../evidence/FORWARD_PATCH_RETIREMENT.md) resolves
+the named unmatched public Patch/SubMesh forward boundary in F4-01/04 and F2-04.
+Other foreign curve/UV and cache obligations retain their fixed exits.
+
 Existing evidence: [registered retirement](../evidence/PATCH_SUBMESH_RETIREMENT.md),
 [curve replacement](../evidence/REPLACED_CURVE_OBSERVERS.md),
 [cache admission](../evidence/P4_CACHE_MUTATION_ADMISSION.md).

@@ -2121,8 +2121,8 @@
       "path": "include/data/mesh/sub_mesh.h",
       "component_by_directory": "data/mesh",
       "kind": "header",
-      "sha256": "e6260a066f62a1c90e767e273722956d23dcb3a7c2ae18aa62235ca368867dbc",
-      "bytes": 2515,
+      "sha256": "859e030eb97829e835a0f3127573a3d9957ee11f287d7b4b41e30f46aa25a846",
+      "bytes": 2630,
       "includes": [
         {
           "line": 4,
@@ -2227,8 +2227,8 @@
       "path": "include/data/patch/patch.h",
       "component_by_directory": "data/patch",
       "kind": "header",
-      "sha256": "17a420775a1a84e0cf9fc83b290a3b7d3ff8bcb00b4923f33e3eb7c2f512b63e",
-      "bytes": 1005,
+      "sha256": "7c1157d77c3299b40cd870cf15085018988a0b2b5f7587c9b626dca94e491835",
+      "bytes": 1664,
       "includes": []
     },
     {
@@ -4827,8 +4827,8 @@
       "path": "src/data/mesh/sub_mesh.cpp",
       "component_by_directory": "data/mesh",
       "kind": "translation_unit",
-      "sha256": "e17fae302db15ca855f9aeb945f676da847bd23238810c83b3a2895bdd69e161",
-      "bytes": 3349,
+      "sha256": "7037bc962f1e9bef465e2b2ab08bb8148b0a618095f3d81d28782ec129cdf76d",
+      "bytes": 3472,
       "includes": [
         {
           "line": 1,
@@ -4910,8 +4910,8 @@
       "path": "src/data/patch/patch.cpp",
       "component_by_directory": "data/patch",
       "kind": "translation_unit",
-      "sha256": "51ebf618c4e3c5e1ec630bca4a4d5b177c7def8cb213ce6f3790d8bc4564978e",
-      "bytes": 954,
+      "sha256": "22eca33ef536a7c5c15c715ba2df8e538b2d6e60ea3a5ba7e096be08ad4852b5",
+      "bytes": 1350,
       "includes": [
         {
           "line": 1,

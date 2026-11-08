@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "entry_main": "150ec6a5c3d19ff77d3d42361507bd69dac68bb5",
+  "classification": "Behavior-changing forward Patch/SubMesh observer retirement; live pointer/move/scientific semantics preserved",
+  "status": "native_repair_measured_requires_frozen_science_and_exact_head_main",
+  "package_F4_complete": false,
+  "stage_closure": false,
+  "dependency": "F4-01/F4-04 Patch/SubMesh forward-publication portion of F2-04",
+  "production": [
+    "include/data/patch/patch.h",
+    "include/data/mesh/sub_mesh.h",
+    "src/data/patch/patch.cpp",
+    "src/data/mesh/sub_mesh.cpp"
+  ],
+  "exact_source_reversal": true,
+  "other_protected_files": 518,
+  "original_artifacts": 43,
+  "source_binding": {
+    "include/data/patch/patch.h": "7c1157d77c3299b40cd870cf15085018988a0b2b5f7587c9b626dca94e491835",
+    "include/data/mesh/sub_mesh.h": "859e030eb97829e835a0f3127573a3d9957ee11f287d7b4b41e30f46aa25a846",
+    "src/data/patch/patch.cpp": "22eca33ef536a7c5c15c715ba2df8e538b2d6e60ea3a5ba7e096be08ad4852b5",
+    "src/data/mesh/sub_mesh.cpp": "7037bc962f1e9bef465e2b2ab08bb8148b0a618095f3d81d28782ec129cdf76d",
+    "tests/mesh_memory/submesh_probe.cpp": "58e3be209f0f36624935bfa63014dedc406773ac6f6fc0087567fd9aee2224ab",
+    "tests/mesh_memory/CMakeLists.txt": "a81628e284a8794990be53111c9d37d09aafe668f0d0682b561c6d0420c5fa31",
+    "tests/patch_copy_memory/probe.cpp": "ce43ddd06f20c14296a4226c940d41724a8d282bc185d75a907125096f4676d5",
+    "tests/patch_copy_memory/CMakeLists.txt": "ac5180dc8feb8593c53aa8dcadb43b1360db2165b10b887afac16cd2e922e27d",
+    "tools/qualify_submesh_lifetime.py": "08cd664ffa6a1161767c6200afe6e3e24b4245767de1661f239a09a97930bf32",
+    "tools/qualify_patch_copy.py": "299e974bfb4e39acc008dc7ec0363999c807cbbe3d84542ecbb58d6d62aa2979",
+    ".clang-tidy": "cd82b961e72e1c5e795ec64e88d04a7b842f8dc53644e6800a616d617c03295f"
+  },
+  "original_failure": {
+    "report": {
+      "path": "build/forward-patch-retirement/original/report.json",
+      "sha256": "0a81f5cf01062e0be1fdbd67d6dc5f6ca7ee518e06212ab21954d54a55ae4695"
+    },
+    "semantic_failures_per_abi": 6,
+    "profiles": [
+      "MSVC ASan",
+      "MSVC CRT iterator0"
+    ],
+    "expired_objects_dereferenced": false,
+    "original_sanitizer_uaf_claim": false,
+    "original_retained_normal_blocks": 0
+  },
+  "current_native": {
+    "submesh": {
+      "report": {
+        "path": "build/forward-patch-retirement/submesh-qualification/report.json",
+        "sha256": "51dd38b07d07a9d098e5ca5639906348484cd4aaef4995ae0f5dac008fceb21f"
+      },
+      "expected_outcomes": 37,
+      "executables": {
+        "asan": {
+          "path": "build/forward-patch-retirement/submesh-asan/RelWithDebInfo/submesh_lifetime_probe.exe",
+          "sha256": "7781b228193ef2fd47c2a6ae8a51bdce5c8b0438ad7e4e39b56434baf0ec4969"
+        },
+        "crt": {
+          "path": "build/forward-patch-retirement/submesh-crt/Debug/submesh_lifetime_probe.exe",
+          "sha256": "faf842d076194e71c8cf94efeb36210bb43bb9d5ed183e1d28fea610e2f5f260"
+        }
+      }
+    },
+    "patch": {
+      "report": {
+        "path": "build/forward-patch-retirement/patch-qualification/report.json",
+        "sha256": "78fa773f95ffb83184f1967328e0f312dabd4a39f4c49c22e23ee05cd1f7cb5e"
+      },
+      "expected_outcomes": 95,
+      "executables": {
+        "asan": {
+          "path": "build/forward-patch-retirement/patch-asan/RelWithDebInfo/detached_patch_copy_probe.exe",
+          "sha256": "6790b1c401fb515c11999bfa611c2d99c92917134079aedbf115e2a1a7590763"
+        },
+        "crt": {
+          "path": "build/forward-patch-retirement/patch-crt/Debug/detached_patch_copy_probe.exe",
+          "sha256": "60f3984964602cba917b580f491dafe5c3e931cd735508c7114e05e4f2d50538"
+        }
+      }
+    }
+  },
+  "forward_contract": {
+    "histories": [
+      "single independent forward link",
+      "multiple observers and unrelated target",
+      "same/null/rebind",
+      "patch before mesh retirement",
+      "Patch move/source identity and detached pointer copy",
+      "SubMesh moves preserve target object addresses"
+    ],
+    "new_nonallocating_scope": true,
+    "allocation_attempts": 0,
+    "retained_normal_blocks": 0,
+    "retained_normal_bytes": 0,
+    "legacy_registered_trace_exact": true,
+    "reciprocal_publication": "Never synthesized",
+    "pointer_copy": "Detached as before",
+    "layout": "Two private Patch pointers and one SubMesh list-head pointer added; consumers rebuilt"
+  },
+  "scientific": {
+    "required_report": "build/forward-patch-retirement/scientific/report.json",
+    "expected_cases": 4,
+    "expected_states": 18,
+    "expected_exact_artifacts": 90,
+    "expected_positive_boundaries": 246,
+    "application_artifacts": {
+      "build/windows-gcc17/bin/ap_mesh.exe": "3249c3af260309adf50071906882a57f25f2e9a8b87a75b7bfb9c0675c2fc078",
+      "build/windows-gcc17/libap_mesh_engine.a": "df631c037eccb2f9f96795385d0e77e156124c8db32c1bd1a334e162b40206e9",
+      "build/windows-msvc-serial/bin/Debug/ap_mesh.exe": "b2d388aea197be6bf62d344c24e14e63405a4160954fb0eb246908cf0940e878",
+      "build/windows-msvc-serial/Debug/ap_mesh_engine.lib": "3382f77ff393ae4b1c9261a0760e98e7b9fdc0d9e24bee122814bb7229a2e94a"
+    },
+    "accepted_rejected_preservation_required": true
+  },
+  "analysis": {
+    "path": "build/forward-patch-retirement/analysis.json",
+    "sha256": "4c657abbc9f11d908400f5a2bb671eecf6a314b1bb390b09fe17381ad3667c0c"
+  },
+  "remaining": "Other curve/UV/copied foreign links,cache mutation,F2 raw corpus,F3 owners/recovery/retirement,full process/domain/parallel and F8 remain",
+  "required_delivery": {
+    "ctest": 75,
+    "python": 526,
+    "failures": 0,
+    "skips": 0,
+    "fresh_remote_and_guarded_main": true
+  }
+}
