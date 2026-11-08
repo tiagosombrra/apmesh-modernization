@@ -54,3 +54,21 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Decision:** M0 remains **BLOCKED**, not passed. Do not start M1 or silently relax an oracle. Continue on a genuine local `quad-templates` worktree and capture required logs/hashes; then update state and this journal before closing the next session.
 
 **GitHub artifacts:** runner commit `0e51325b549d1d9efffc29f1769fa56de07ce405`; targeted scan `274e77ddb985f83219aaac64c45a8d4bab48c595`; M0 evidence update `27f3fa200ca672b1cc44c43c1a0b0125b8a9d3c0`. The final state checkpoint follows this entry.
+
+## 2026-11-08-03 - review local continuation and recovered M0 evidence
+
+**Intent:** analyze `quad-templates`, verify the current process and establish the next executable work item.
+
+**Entry:** research head `e8c55184f112d9ffb4fa004a9c9d88f5cf17ff49`; main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`; clean isolated worktrees; authenticated remote access works; no open PRs or returned commit statuses/PR-triggered workflow runs.
+
+**Findings:** no QUAD implementation exists. Source review confirms six neighborhood classes, boundary-cell exclusion, triangular Face storage and triangular adjacency consumers. The runner omits full Python, independent oracle and memory qualification; CTest runs only in GCC mode. M0 remains the one active milestone.
+
+**Recovered evidence:** pre-existing local `build/quad-m0/20261108T141009Z-msvc/` at exact entry source records MSVC C++17 Debug configure/build and both capped article executions, followed by a missing-PATH doctor failure. This session reran no native operation. All eight log hashes and current executable match the capture.
+
+**Actual review:** exact-checkout runner syntax/help pass. Offline unchanged-verifier/exact-artifact comparison passes for MSVC: 9 states, 45 scientific artifacts, 123 positive boundaries and preserved accepted/rejected decisions. Full-precision physical/UV quality is available; reference and capture manifests stay unchanged. Local environment discovery fails; iteration planning fails on a missing worktree-local baseline. WSL availability only: Ubuntu 24.04 / GCC 13.3 / CMake 3.28.3 / Ninja.
+
+**Changes:** state, evidence, this journal, compact MSVC receipt and roadmap evidence summary. No production/build/input/test or modernization-document changes.
+
+**Handoff:** M0 PARTIAL / OPEN. Prepare local validation prerequisites, then execute clean WSL GCC and complete full CTest/Python, GCC science and applicable memory gates. Do not repeat MSVC generation for a profile fix. M1 awaits M0 and verified historical fixtures. Boundary topology and first-paper scope require adviser alignment. No QUAD scientific delivery or main merge is claimed. Checkpoint commit and remote readback are reported in the session response.
+
+**Documentation checks:** five-file whitespace passes. Full changed-document link validation stops on an inherited four-parent runner link in the earlier M0 evidence; the historical journal has the same path. Earlier entries remain intact; the corrected current link is [the runner](../../../tools/quad_m0_baseline.py). This is a retained documentation finding, not a passing link gate.

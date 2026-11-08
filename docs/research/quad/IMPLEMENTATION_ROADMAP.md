@@ -11,6 +11,13 @@
 **Append-only activity:** [SESSION_LOG.md](SESSION_LOG.md).  
 **Current M0 gate evidence:** [M0_EVIDENCE.md](M0_EVIDENCE.md).
 
+**2026-11-08-03 measured update:** M0 remains OPEN. A preserved local MSVC C++17
+build and Eistute/Book captures have verified log/binary identities and offline
+comparison evidence: 9 states, 45 exact scientific artifacts and 123 positive
+boundaries. GCC/Linux, full research-branch CTest/Python and applicable memory
+qualification remain pending. The Windows doctor/profile failure is retained;
+see the [review receipt](evidence/M0_MSVC_REVIEW_20261108.json).
+
 At session end, write a verified GitHub checkpoint: update the canonical state,
 append the session log and record executed/unexecuted gates. Update this roadmap
 only for an actual milestone transition, changed approved scope or adjusted gate.

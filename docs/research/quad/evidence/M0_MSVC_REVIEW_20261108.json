@@ -1,0 +1,190 @@
+{
+  "schema": 1,
+  "date": "2026-11-08",
+  "classification": "offline review of preserved MSVC serial captures; M0 remains open",
+  "source_revision": "e8c55184f112d9ffb4fa004a9c9d88f5cf17ff49",
+  "frozen_entry": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "capture": "build\\quad-m0\\20261108T141009Z-msvc",
+  "capture_report_sha256": "9910d4f6ab222cf07283f736cab35488e18a5e9918151437187eab797cd5b4a3",
+  "original_runner_status": "blocked_quality_doctor",
+  "compiler": "MSVC 19.44.35229 C++17 Debug /RTC1 /MDd",
+  "executable_sha256": "145f800150150a2cf5be09555b8418ac59b8253e8799e961a53bcbabca0f415b",
+  "log_identities": [
+    {
+      "path": "build\\quad-m0\\20261108T141009Z-msvc\\git-version.log",
+      "sha256": "4ad4cdf2b4512c97f9a0065cea36f707653e5bbfb275caf8e016aedd2c0a068f",
+      "original_status": "passed",
+      "verified": true
+    },
+    {
+      "path": "build\\quad-m0\\20261108T141009Z-msvc\\cmake-version.log",
+      "sha256": "f46066af33a13476fb604a1a1a24bb8d4dbddb6eb5855e0c24f9f7132784c9f0",
+      "original_status": "passed",
+      "verified": true
+    },
+    {
+      "path": "build\\quad-m0\\20261108T141009Z-msvc\\python-version.log",
+      "sha256": "2b095b05c4093ebca54b87bd2c6a6f557935e6b3f8f506a0c2e5e294a763f4ad",
+      "original_status": "passed",
+      "verified": true
+    },
+    {
+      "path": "build\\quad-m0\\20261108T141009Z-msvc\\configure.log",
+      "sha256": "77aba55a6bb9be4ed0aa356c04dda805c7d02adfb4fbf72e079be342b786fa19",
+      "original_status": "passed",
+      "verified": true
+    },
+    {
+      "path": "build\\quad-m0\\20261108T141009Z-msvc\\build.log",
+      "sha256": "270ca9eb5c0473ae8c100cacfc9f1f649665b7fad4decd08e40f4f4fddf4f04b",
+      "original_status": "passed",
+      "verified": true
+    },
+    {
+      "path": "build\\quad-m0\\20261108T141009Z-msvc\\science-eistute.log",
+      "sha256": "e58810dd0c6302551b4f64ee8a131209a3ef965dc761f90aa8e53a1d0bb833f1",
+      "original_status": "passed",
+      "verified": true
+    },
+    {
+      "path": "build\\quad-m0\\20261108T141009Z-msvc\\science-book.log",
+      "sha256": "611ad85fd9a297967bb0aea249cb98590ad986a0692e8b22bb674856eb762588",
+      "original_status": "passed",
+      "verified": true
+    },
+    {
+      "path": "build\\quad-m0\\20261108T141009Z-msvc\\quality-doctor.log",
+      "sha256": "364cac07bc37a3fee996d30074f196d2087573caa0a70de9c119da899254b56b",
+      "original_status": "failed",
+      "verified": true
+    }
+  ],
+  "review_command": "python build/quad-m0/review-20261108-03/audit.py",
+  "review_exit_code": 0,
+  "review_script_sha256": "d82912482bc81d2c029b27887cce19af7276769a5ae72bf29db0478b7279c009",
+  "review_report_sha256": "9ed31851bf40001d1603aa8d077e1b3644a32e5ec8c3b0f0a10f25d2f2a20852",
+  "new_native_runs": 0,
+  "cases": [
+    {
+      "model": "eistute",
+      "status": "passed",
+      "reference": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\reuse-archive-delivery\\head\\msvc-eistute\\first",
+      "states": 5,
+      "exact_artifact_count": 25,
+      "exact_artifact_names": [
+        "eistute_domain_adaptation.csv",
+        "eistute_n.process__metrics_rank_-1.csv",
+        "eistute_passo_0_acceptance_accepted.log",
+        "eistute_passo_0_incidences.json",
+        "eistute_passo_0_malha_0.obj",
+        "eistute_passo_1_acceptance_accepted.log",
+        "eistute_passo_1_curve_adaptation_accepted.csv",
+        "eistute_passo_1_incidences.json",
+        "eistute_passo_1_malha_1.obj",
+        "eistute_passo_1_patch_adaptation_accepted.csv",
+        "eistute_passo_2_acceptance_rejected.log",
+        "eistute_passo_2_curve_adaptation_rejected.csv",
+        "eistute_passo_2_incidences.json",
+        "eistute_passo_2_malha_2.obj",
+        "eistute_passo_2_patch_adaptation_rejected.csv",
+        "eistute_passo_3_acceptance_rejected.log",
+        "eistute_passo_3_curve_adaptation_rejected.csv",
+        "eistute_passo_3_incidences.json",
+        "eistute_passo_3_malha_3.obj",
+        "eistute_passo_3_patch_adaptation_rejected.csv",
+        "eistute_passo_4_acceptance_rejected.log",
+        "eistute_passo_4_curve_adaptation_rejected.csv",
+        "eistute_passo_4_incidences.json",
+        "eistute_passo_4_malha_4.obj",
+        "eistute_passo_4_patch_adaptation_rejected.csv"
+      ],
+      "positive_boundaries": 15,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3,
+        4
+      ],
+      "comparison": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "physical_quality_coverage": "full_precision_snapshot",
+      "parametric_quality_coverage": "full_precision_snapshot",
+      "source_config_sha256": "048ff91af2bc7a2400021641cc49cf4cfa5807ae1966c872bc88575a9ed22fcd",
+      "input_model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "process_wall_seconds": 81.7191356997937,
+      "process_exit_code": 0
+    },
+    {
+      "model": "book",
+      "status": "passed",
+      "reference": "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\reuse-archive-delivery\\head\\msvc-book\\first",
+      "states": 4,
+      "exact_artifact_count": 20,
+      "exact_artifact_names": [
+        "book_domain_adaptation.csv",
+        "book_n.process__metrics_rank_-1.csv",
+        "book_passo_0_acceptance_accepted.log",
+        "book_passo_0_incidences.json",
+        "book_passo_0_malha_0.obj",
+        "book_passo_1_acceptance_accepted.log",
+        "book_passo_1_curve_adaptation_accepted.csv",
+        "book_passo_1_incidences.json",
+        "book_passo_1_malha_1.obj",
+        "book_passo_1_patch_adaptation_accepted.csv",
+        "book_passo_2_acceptance_rejected.log",
+        "book_passo_2_curve_adaptation_rejected.csv",
+        "book_passo_2_incidences.json",
+        "book_passo_2_malha_2.obj",
+        "book_passo_2_patch_adaptation_rejected.csv",
+        "book_passo_3_acceptance_rejected.log",
+        "book_passo_3_curve_adaptation_rejected.csv",
+        "book_passo_3_incidences.json",
+        "book_passo_3_malha_3.obj",
+        "book_passo_3_patch_adaptation_rejected.csv"
+      ],
+      "positive_boundaries": 108,
+      "accepted": [
+        0,
+        1
+      ],
+      "rejected": [
+        2,
+        3
+      ],
+      "comparison": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "physical_quality_coverage": "full_precision_snapshot",
+      "parametric_quality_coverage": "full_precision_snapshot",
+      "source_config_sha256": "355539008aff8c7c9731832764e37960a0f804ad1eaa8e27e62e49abe70b7c99",
+      "input_model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+      "process_wall_seconds": 44.417604099959135,
+      "process_exit_code": 0
+    }
+  ],
+  "pending": [
+    "GCC/Linux baseline and scientific comparison",
+    "full research-branch CTest and Python suite",
+    "applicable memory/denial gates",
+    "complete reachable TRI consumer inventory",
+    "worktree-local validation environment and baseline"
+  ]
+}
