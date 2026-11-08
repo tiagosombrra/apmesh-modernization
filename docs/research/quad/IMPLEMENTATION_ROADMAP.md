@@ -1,6 +1,6 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
-**Estado:** M0 technical baseline inventory **complete with documented exceptions; exact checkpoint delivery gate required**; no QUAD algorithm implementation in the production pipeline. **Criado em:** 2026-11-08. **Revisão científica prevista:** 2026-11-11 com Joaquim Bento e Creto Vidal.
+**Estado:** M0 technical baseline inventory **qualified with documented serial-scope exceptions**; no QUAD algorithm implementation in the production pipeline. **Criado em:** 2026-11-08. **Revisão científica prevista:** 2026-11-11 com Joaquim Bento e Creto Vidal.
 **Branch:** `quad-templates`; **baseline imutável de origem:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` (PR #183).  
 **Auditoria:** [BASELINE_AUDIT.md](BASELINE_AUDIT.md). **Fonte histórica:** Bento et al., *Combinação das Técnicas de Quadtree e Delaunay para Geração Automática de Malhas de Elementos Finitos*, SIBGRAPI 1993, Figura 7 e seção sobre contorno.
 
@@ -207,3 +207,9 @@ Figure 7. No connectivity may be invented from the existing triangular emitter.
 This admission does not approve a new geometry/curvature formula or settle
 quad-dominant versus all-quad. Unresolved topology/scientific choices require
 adviser alignment before executable fixtures/emission. No QUAD code exists yet.
+
+**Measured checkpoint gate:** `5b928375d3033a0ab67150987123b8956562a362` passes
+75 CTest /527 Python with zero failures/skips; [closure receipt](evidence/M0_CLOSURE_20261108.json).
+M0 is qualified in its declared serial scope. Final documentation publication
+retains the exact-head full-regression and remote-readback guard. M1 source
+reconstruction is next; no QUAD algorithm/scientific choice is approved here.

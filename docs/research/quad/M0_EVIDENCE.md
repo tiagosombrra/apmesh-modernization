@@ -3,7 +3,7 @@
 **Research branch:** `quad-templates`  
 **Frozen entry commit:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`  
 **Evidence record opened:** 2026-11-08  
-**State:** **TECHNICAL INVENTORY COMPLETE, checkpoint exact-head delivery gate pending**. Current G6/G7 results are in session 05; earlier observations remain historical. Previous state: **OPEN / PARTIAL — Linux build, full 75 CTest / 527 Python and strict articles qualified on the research delivery head/merge; MSVC captures retained. Applicable memory evidence and semantic caller inventory remain pending**. Later dated entries supersede earlier tables without erasing them.
+**State:** **M0 QUALIFIED in the declared serial baseline scope; exact checkpoint 75/527 recorded**. Current G6/G7 results are in session 05; earlier observations remain historical. Previous state: **OPEN / PARTIAL — Linux build, full 75 CTest / 527 Python and strict articles qualified on the research delivery head/merge; MSVC captures retained. Applicable memory evidence and semantic caller inventory remain pending**. Later dated entries supersede earlier tables without erasing them.
 
 ## Read-only observations recorded in this session
 
@@ -223,3 +223,22 @@ G7 is complete as the named frozen serial static contract inventory. New QUAD or
 | Known failures/coverage | Prior failed prefixes and mismatched evidence remain; no full Windows process safety, all Stage 3 recovery/foreign callers, MPI/OpenMP or QUAD coverage claim. Main stays `f6050ec1` |
 
 **Disposition:** technical M0-G0 through G7 are measured/reviewed with the stated exceptions. Delivery is conditional on the exact checkpoint regression and fresh remote checks/readback, recorded by the session closure receipt. This does not close modernization Stage 3 or integrate research into main. M1's next admitted work is primary-source historical reconstruction, not production science or invented connectivity.
+
+### Measured checkpoint regression and final publication guard
+
+Exact committed checkpoint `5b928375d3033a0ab67150987123b8956562a362` passes the
+delivery adapter: doctor, architecture inventory, incremental build and all
+**75 CTest /527 Python controls**, zero failures/skips. Independent offline
+reading checks the JUnit inventory and full LastTest.log Python summary, the
+527 discovered identities and a clean unchanged source. The
+[closure receipt](evidence/M0_CLOSURE_20261108.json) records commands, hashes and
+observed revision. An initial local seal reader used nonexistent `identity.head`;
+the preserved plan uses `identity.revision`. Correct the reader only, retain the
+failed prefix, and read the same successful capture without a native repeat.
+
+This establishes scoped M0 qualification. Final documentation seal delivery
+requires another exact committed-head full regression before push, with its
+local seal and fresh remote readback. That required final-revision observation
+is distinct from repeating native tests for a summary-reader failure. All
+source, instrument, input and scientific oracle identities stay unchanged;
+article/memory observations are reused only in the declared applicable scopes.

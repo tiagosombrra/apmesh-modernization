@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "source_revision": "5b928375d3033a0ab67150987123b8956562a362",
+  "status": "exact_checkpoint_full_regression_passed",
+  "ctest": 75,
+  "python": 527,
+  "failures": 0,
+  "skips": 0,
+  "commands": [
+    "python3 tools/validation_session.py plan --scope delivery",
+    "python3 tools/validation_session.py run --scope delivery"
+  ],
+  "artifacts": {
+    "build/validation-session/1794163794319920691-9b799dbd/report.json": "44aadb9fb0c3b8cffec59d657c5fe14c3b22779f69cb8b964d3e6d76dac4f8b5",
+    "build/validation-session/1794163794319920691-9b799dbd/plan.json": "0a2ddbe120aa114d0b270918a23a5596ba6d084b15dd3ed01581a8abf053e339",
+    "build/validation-session/1794163794319920691-9b799dbd/ctest.xml": "5671b31ccdb7d659534ea8e9cde9d21d8c32ccb49a91a81b07370ab620754525",
+    "build/local-serial/Testing/Temporary/LastTest.log": "926bf4aeb544422a9cbf5f5ab12a06bd0d9a2272f909e7ac96cea0db33963e3c"
+  },
+  "steps": [
+    {
+      "id": "doctor",
+      "status": "passed",
+      "exit_code": 0,
+      "seconds": 0.7752138749999995
+    },
+    {
+      "id": "architecture",
+      "status": "passed",
+      "exit_code": 0,
+      "seconds": 0.2685764370000001
+    },
+    {
+      "id": "build",
+      "status": "passed",
+      "exit_code": 0,
+      "seconds": 0.2262665970000004
+    },
+    {
+      "id": "ctest",
+      "status": "passed",
+      "exit_code": 0,
+      "seconds": 9.628873584
+    }
+  ],
+  "limitations": [
+    "Local research checkpoint qualification; not main or whole Stage 3 closure",
+    "Remote statuses/check-runs absent; no hosted CI pass inferred",
+    "Scientific/memory capture reuse requires unchanged relevant identities"
+  ],
+  "unchanged_since_observed_source": "Only research markdown and compact evidence change; all production/build/test/input/oracle files retain their qualified identities",
+  "publication_guard": "Repeat full regression on final committed checkpoint before push; preserve exact-head local seal and verify remote SHA/readback. No main merge.",
+  "offline_reader_failure": "First reader used nonexistent identity.head; corrected to existing identity.revision after inspecting preserved plan. No tests repeated for reader correction."
+}

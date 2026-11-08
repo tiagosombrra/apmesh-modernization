@@ -6,7 +6,7 @@
 
 **Last session:** 2026-11-08-05
 
-**Current milestone:** **M0 technical inventory complete; checkpoint exact-head regression required before remote delivery. M1 historical oracle is the next work item.**
+**Current milestone:** **M0 QUALIFIED in its declared serial baseline scope. M1 historical oracle is next / not implemented.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md)
 
@@ -20,7 +20,7 @@
 
 [PR #184](https://github.com/tiagosombrra/apmesh-modernization/pull/184) integrates engineering-only M0 validation portability at `a29711bea1e38f6a1ea49dde443f0ae58ebadfa7`; qualified head `d11b83c33c6fc68892ea72d42c0cd5a1ba5aa205` has the identical tree. Production sources, inputs, presets, formulas, ordering and policies remain identical to the entry baseline. Session 05 changes only research documentation and evidence, based on `bb56d0741acdef9d775186c83bac7832a2e5c43f`.
 
-- Linux GCC 13.3 C++17 serial full build and **75 CTest / 527 Python controls** passed on the exact delivery head and research merge. All original 526 Python IDs remain, plus one inventory regression. The checkpoint delivery must independently repeat this full finite regression on its committed revision and retain the local report before push; absent or failing results block delivery.
+- Linux GCC 13.3 C++17 serial full build and **75 CTest / 527 Python controls** passed on the exact delivery head and research merge. All original 526 Python IDs remain, plus one inventory regression. Checkpoint `5b928375d3033a0ab67150987123b8956562a362` also passes the full 75/527 with no failures/skips; see the [closure receipt](evidence/M0_CLOSURE_20261108.json). Final documentation seal publication must pass the same exact-head gate before push; absent or failing results block delivery.
 - Linux Eistute/Book strictly preserve **9 states, 45 exact scientific artifacts and 123 positive boundaries**, including physical/UV precision and accepted/rejected decisions. Preserved checked-MSVC C++17 build/article captures have independently verified identities and the same bounded article counts. Do not regenerate these captures for documentation changes.
 - Windows GCC has six affected native entries and 527 Python controls in the previously recorded scopes. Full Windows CTest was not repeated; no new complete-process Windows ASan/CRT claim is made.
 - M0-G6: **22 source-bound MSVC Node outcomes reused**, including 46 verified denial sites; stale UV evidence rejected and **21 current ASan/CRT outcomes refreshed** against 293 repository dependencies per profile. Controls detect actual UAF/shared-delete/leak; positive retention and rollback/denial oracles pass.
@@ -42,7 +42,7 @@ No QUAD generator, element or runtime test suite has been implemented. Moderniza
 
 | Milestone | State | Remaining admission / exit |
 | --- | --- | --- |
-| M0 - baseline | Technical G0-G7 inventory complete, subject to exact checkpoint delivery gate above | Scoped exceptions retained below; no main/Stage 3 closure |
+| M0 - baseline | QUALIFIED: scoped G0-G7 baseline; 75/527 checkpoint regression recorded | Scoped exceptions retained below; no main/Stage 3 closure |
 | M1 - historical T1-T6 oracle | NEXT / NOT IMPLEMENTED | Independently verify Figure 7 topology, symmetries, ordered vertices/incidences and negative controls; no invented topology |
 | M2 - UV QUAD topology | PENDING | Coverage, incidence, orientation and no hanging nodes |
 | M3 - quadtree emitter | PENDING | Opt-in QUAD and exact default TRI preservation |
