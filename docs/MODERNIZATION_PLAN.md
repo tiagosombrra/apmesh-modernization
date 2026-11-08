@@ -58,20 +58,22 @@ retained and admission-blocked work explicit. Package completion does not imply
 whole-row completion when another mapped package is outstanding. Do not add an
 automatic audit/instrument successor, change support promises or relax a gate.
 
-The current delivery is [F2 loader/copy acceptance](evidence/F2_LOADER_COPY_ACCEPTANCE.md).
-Reused qualified parser images/dependencies retain all 320 memory outcomes;
-current initialized copies pass 30 curve /95 patch outcomes. A 14-type native
-availability catalog records existing operations without promoting them to full
-clone or foreign-publication safety. Five raw legacy routes have explicit missing
-corpus/history/specification dependencies under F2-02. F2 remains open; the round
-must not turn blocked admission into qualification or silently drop support.
-The copy runner now stops on first failure/timeout with preserved raw capture.
-Require exact-head/main 75 CTest / 526 Python, identity and remote gates.
+The current delivery is [F3 initial root adoption](evidence/F3_ROOT_ADOPTION.md).
+Its admitted existing setter graph exposes premature root ownership publication
+on allocation failure. Preparing observer leaves before commit repairs that exit;
+all six current ordinals pass abandonment and helper-local retry, while complete
+successful tree traces retain native order. Current UV callers/terminal controls,
+fresh GCC/MSVC frozen comparisons and exact-head/main 75 CTest / 526 Python remain
+mandatory. F3-02 replacement/mate histories, F3-03 whole-tree recovery and F3-04
+outside-root retirement remain open; no synthetic native graph obtains coverage.
 
-PR #178 closes the four declared F1 item scopes at main
-`825c23b94f08a2506e2ceade07954cf120b176b8`, with its verified integration receipt.
-Next select an independently admitted F3 item while F2-02/F4 dependencies remain;
-no unadmitted legacy experiment or automatic root-border/cache audit follows.
+PR #179 integrates the defined partial F2 acceptance round at main
+`c9b26cc462ae041089f5c036a45ce7a49743e205` with its matching receipt. F2-02 still
+needs original corpus/call/ownership specifications for five raw APIs, while F4
+retains implicit/foreign behavior. PR #178 integrates F1's four bounded scopes at
+main `825c23b94f08a2506e2ceade07954cf120b176b8`.
+Continue only independently admitted work; no automatic root-border/cache audit
+or unadmitted legacy experiment follows from a remaining coverage gap.
 
 PR #177 closes the boundary state guard at main
 `8550569d0c881843d7818d099ce56761df1ad800`, with its verified integration seal.

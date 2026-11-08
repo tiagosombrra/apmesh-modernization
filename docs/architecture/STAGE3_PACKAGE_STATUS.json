@@ -55,19 +55,21 @@
       }
     },
     "F3": {
-      "status": "open",
+      "status": "partial_initial_root_adoption",
       "items": {
         "F3-01": {
-          "status": "retained_evidence_applicability_required",
-          "evidence": "../evidence/COMPLETE_ANALYTIC_UV_CALLERS.md"
+          "status": "current_bounded_callers_delivery_required",
+          "evidence": "../evidence/F3_ROOT_ADOPTION.md"
         },
         "F3-02": {
-          "status": "pending",
-          "evidence": null
+          "status": "initial_root_adoption_qualified_remaining_graphs_open",
+          "evidence": "../evidence/F3_ROOT_ADOPTION.md",
+          "dependency": "Initial admitted root adoption only; replacement, pointer-constructor mismatch and mate/shared endpoint graphs need admitted native histories and destruction observation"
         },
         "F3-03": {
-          "status": "pending",
-          "evidence": null
+          "status": "terminal_cleanup_retained_orchestration_open",
+          "evidence": "../evidence/F3_ROOT_ADOPTION.md",
+          "dependency": "Current terminal allocation/injected public failure controls do not qualify naturally reached logical rejection or whole-tree query/retry/rollback; F5 remains"
         },
         "F3-04": {
           "status": "blocked_admission",
@@ -166,12 +168,16 @@
     "status": "pending_all_required_exits",
     "evidence": null
   },
-  "active_delivery": "F2 acceptance round",
-  "next_package": "F3 admitted items while F2 admission/F4 dependencies remain",
-  "completion_rule": "F1 effective completion is verified by its prior main/receipt. F2 round integration requires its own matching head/main receipt; F2 package remains open until missing admission and mapped behavior dependencies are satisfied.",
+  "active_delivery": "F3 initial root adoption repair",
+  "next_package": "Independently admitted F3/F4 work; do not fabricate replacement/mate/retirement or raw-loader histories",
+  "completion_rule": "F1 and the partial F2 round have matching prior main receipts. The F3 initial-root repair requires its own exact head/main receipt; F2/F3 packages and original row dependencies remain open.",
   "prior_F1_integration": {
     "pr": 178,
     "main": "825c23b94f08a2506e2ceade07954cf120b176b8",
     "receipt_sha256": "f5ac6c092a84133df7ef5efc5ed2f76a64adeabebd6d5586064c56ab193d7610"
+  },
+  "prior_F2_integration": {
+    "pr": 179,
+    "main": "c9b26cc462ae041089f5c036a45ce7a49743e205"
   }
 }

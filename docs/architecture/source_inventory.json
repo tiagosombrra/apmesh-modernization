@@ -4313,8 +4313,8 @@
       "path": "src/crab_mesh/aft/quadtree.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "990bbf8d1a0c25a0a18af6bd4d96ec248087775aaed9f4b67ababd7c6d6ab47a",
-      "bytes": 13962,
+      "sha256": "fc59027b40f121d2a1275ed7a851a710cd97d715fc20f25d2b4c0a07bf9c3f8f",
+      "bytes": 14081,
       "includes": [
         {
           "line": 1,

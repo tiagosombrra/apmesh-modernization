@@ -15,16 +15,17 @@ The [status register](STAGE3_PACKAGE_STATUS.json) separates admitted execution,
 retained evidence and blocked admissions. Historical P1..P5 below are completed/
 legacy buckets, not an open-ended replacement queue.
 
-Current delivery is [F2 acceptance](../evidence/F2_LOADER_COPY_ACCEPTANCE.md):
-qualified shared-loader evidence reused by audited dependencies/images, current
-initialized copy controls, finite API catalog and five explicit raw-route
-admission blockers. The whole F2 package remains open. Require 75 CTest /526
-Python on exact head/main, identity and remote gates for this partial round.
-F1's four scopes are integrated through PR #178 at main
-`825c23b94f08a2506e2ceade07954cf120b176b8`, with a verified matching receipt.
-Next choose independently admitted F3 work while raw corpus/call-contract and F4
-foreign-publication obligations remain visible. Do not replace missing originals
-with guessed formats or fabricate native calibration.
+Current delivery is [F3 initial root adoption](../evidence/F3_ROOT_ADOPTION.md):
+repair premature root publication in the existing admitted stage-1 setter graph,
+qualify all measured denial/abandonment/helper-retry paths, retain successful tree
+order and require fresh changed-image science plus exact-head/main gates.
+F3-02 replacement/mate graphs, F3-03 wider logical rejection/recovery and F3-04
+retirement remain open. Continue independently admitted F3/F4 work without an
+invented graph or automatic root-border/cache audit.
+
+F2's partial round is integrated through PR #179 at main
+`c9b26cc462ae041089f5c036a45ce7a49743e205`; its raw corpus/call/ownership and F4
+dependencies remain. F1's four bounded scopes are integrated through PR #178.
 
 PR #177 integrates the boundary state guard at main
 `8550569d0c881843d7818d099ce56761df1ad800` with its verified integration seal.

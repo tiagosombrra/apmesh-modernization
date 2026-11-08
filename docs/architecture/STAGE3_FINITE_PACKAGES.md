@@ -84,6 +84,13 @@ helper-local retry and unobserved branches. S3-06; F4/F5/F6 remain dependencies.
 | F3-03 | Existing template construction/adoption and public geometry/topology rejection states. | Current allocation-failure destruction guarantees and committed prefixes remain; classify logical rejection versus terminal exceptions. Failed-tree querying/retry is not inferred from safe destruction. F5 checks orchestration state. |
 | F3-04 | Outside-root ideal Vertex retirement and selected-result adoption. | A real native history must reach each missing branch with original curves/selection/parameters; then observe identity/adoption/retirement. Current zero reach stays blocked, not passed. The prior rejected calibration is retained; no automatic root-border audit or forced selector. |
 
+Current F3 round: [initial root adoption repair](../evidence/F3_ROOT_ADOPTION.md).
+Only the already admitted stage-1 root graph is repaired/qualified for allocation
+failure, abandonment and helper-local retry. Current prefix/full-call and terminal
+cleanup controls retain their exact scopes. Root replacement/mate histories,
+natural logical rejection/recovery and missing ideal retirement remain open.
+This is a partial round disposition; none of the fixed exits above is removed.
+
 Existing evidence: [complete UV callers](../evidence/COMPLETE_ANALYTIC_UV_CALLERS.md),
 [boundary guard](../evidence/BOUNDARY_CLOSE_STATE.md),
 [ideal ownership](../evidence/IDEAL_VERTEX_OWNERSHIP.md),

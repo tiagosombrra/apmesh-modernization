@@ -7,21 +7,22 @@ Current route: [seven finite Stage 3 packages](architecture/STAGE3_FINITE_PACKAG
 separates measured scopes, retained evidence and blocked admissions; it is not a
 percentage or a deadline. No original obligation or support promise is removed.
 
-Current delivery: [F2 loader/copy acceptance round](evidence/F2_LOADER_COPY_ACCEPTANCE.md).
-F2-01 reuses 320 actual reader/charge outcomes with qualified image, build/input,
-raw-log and compiler dependency binding, including an explicit cosmetic header
-exception. F2-03 current initialized curve/patch copies pass 30/95 outcomes;
-F2-04 catalogs 14 type-availability records across GCC/MSVC without claiming a
-complete clone or qualified implicit/foreign publication behavior. F2-02 remains
-blocked on the original corpus and call/scratch/ownership contracts of five raw
-legacy routes. No native history is fabricated and no support promise is removed.
-Require exact-head/main 75 CTest / 526 Python and round identity/remote gates.
+Current delivery: [F3 initial root adoption](evidence/F3_ROOT_ADOPTION.md).
+The existing admitted initial-root setter graph exposed premature ownership
+publication on allocation failure. The repair prepares leaf observers before
+commit. All six measured ordinals pass abandonment and helper-local retry with
+zero retained CRT blocks/bytes; original/current successful tree traces agree.
+Require current UV prefix/completion, terminal cleanup/negative controls, fresh
+GCC/MSVC Eistute/Book comparisons and exact-head/main 75 CTest / 526 Python.
+F3 remains partial: replacement/mate graphs, naturally reached logical failure,
+whole-tree recovery and outside-root ideal retirement retain their open exits.
 
-F1 is integrated through PR #178 at main
-`825c23b94f08a2506e2ceade07954cf120b176b8`, with verified exact-head/main
-75 CTest / 524 Python and its four-item integration receipt. Its broader row
-dependencies remain. After this partial F2 round, select the next independently
-admitted F3 item while keeping F2-02 and F4 behavior obligations visible.
+F2's defined partial round is integrated through PR #179 at main
+`c9b26cc462ae041089f5c036a45ce7a49743e205`, with its verified 75 CTest / 526 Python
+head/main receipt. Five raw loader routes remain admission-blocked; implicit and
+foreign publication behavior remains F4. F1's four bounded scopes are integrated
+through PR #178 at main `825c23b94f08a2506e2ceade07954cf120b176b8`.
+Do not fabricate a native graph or repeat a root-border/cache admission audit.
 
 The [boundary close guard](evidence/BOUNDARY_CLOSE_STATE.md) is integrated through
 PR #177 at main `8550569d0c881843d7818d099ce56761df1ad800`, with verified exact-head/
