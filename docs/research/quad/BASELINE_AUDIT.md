@@ -1,7 +1,7 @@
 # Auditoria de viabilidade — linha científica QUAD
 
 Data da análise: 2026-11-08. Status: **auditoria estática do repositório concluída; execução local de testes pendente**.
-Branch: `research/quad-templates-bento1993`. Baseline de origem: `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` (merge PR #183).
+Branch: `quad-templates`. Baseline de origem: `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` (merge PR #183).
 
 ## Decisão e limites
 
