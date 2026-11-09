@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "date": "2026-11-09",
+  "type": "research_uv_quad_integration",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "pr": 185,
+  "pr_merged": true,
+  "pr_head": "2e10fe199365f181c1e17d3525279cccef470dd6",
+  "tested_synthetic_merge": "af3e34749a42b924ec03dd24b681389cd59052d4",
+  "merge_sha": "514f92ea4fac97ec09445996ca659aa544f91461",
+  "tree_sha": "d5270ba261c9c1ad99dea9b3557376e978360fdc",
+  "tree_equal_all_three": true,
+  "main_unchanged_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "source_scope": [
+    "research/quad/",
+    "tests/quad/",
+    "docs/architecture/source_inventory.json",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "production_source_changed": false,
+  "ci": {
+    "run_id": 42635829240,
+    "head_sha": "2e10fe199365f181c1e17d3525279cccef470dd6",
+    "checked_out_sha": "af3e34749a42b924ec03dd24b681389cd59052d4",
+    "status": "success",
+    "jobs": {
+      "quad_linux_ctest": 2,
+      "quad_windows_msvc_ctest": 2,
+      "tri_linux_ctest": 75,
+      "python_tooling_unittests": 527
+    },
+    "failures": 0
+  },
+  "science": {
+    "reference_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+    "same_toolchain_flags": true,
+    "executable_sha256": "4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5",
+    "eistute": {
+      "compared_attempted_states": 5,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 1168
+    },
+    "book": {
+      "compared_attempted_states": 4,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 4256
+    },
+    "all_obj_byte_identical": true,
+    "all_acceptance_fields_equal": true,
+    "boundary_regression": "exact",
+    "boundary_incidence_coverage": "verified",
+    "artifact_id": 13682488092,
+    "artifact_link": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42635829240/artifacts/13682488092"
+  },
+  "retained_negative_evidence": [
+    "42629394523 initial CI 67/75 caused by shallow historical checkout and older clang-tidy",
+    "42633924826 scientific comparison passed but upload failed on out-of-workspace paths",
+    "earlier cancelled superseded candidate runs"
+  ],
+  "explicit_qualifications": {
+    "M0": "QUALIFIED within declared serial baseline scope",
+    "M1": "PARTIAL",
+    "M2": "PARTIAL",
+    "M3": "PARTIAL",
+    "M4": "PENDING",
+    "M5": "PENDING",
+    "M6": "PENDING",
+    "M7": "PENDING"
+  },
+  "closure_review": {
+    "code": "isolated UV and real-tree leaf capture integrated on research branch only",
+    "tests": "native Linux/MSVC and TRI/Python CTest controls passed on identical tree",
+    "contracts": "source TREE/TRI read-only preservation as previously bounded; allocation/memory campaigns incomplete",
+    "documentation": "canonical state, append-only log and workflow updated",
+    "scientific": "TRI Eistute/Book strict reference parity; no approved numerical QUAD centroid or physical QUAD evidence",
+    "known_inventory": "no full boundary, multipatch, adaptation, exact-predicate extreme coordinates, production performance or ASan/LSan whole process proof"
+  },
+  "next": "Inspect post-merge CI checkpoint; then design opt-in application entry preserving TRI and pending scientific point selection.",
+  "post_merge_ci": "pending_at_document_creation"
+}

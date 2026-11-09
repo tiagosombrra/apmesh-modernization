@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - 'quad/integration-*'
+      - quad-templates
+    paths-ignore:
+      - 'docs/research/quad/**'
   pull_request:
     branches: [quad-templates]
     types: [opened, synchronize, reopened]

@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-15 (Eistute/Book exact comparison passed; artifact upload repaired and rerunning)
+**Last session:** 2026-11-09-16 (PR #185 merged into research; native/scientific CI passed; post-merge CI pending)
 
-**Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
+**Current milestone:** **Isolated read-only real-quadtree UV QUAD bridge integrated in research `quad-templates` via PR #185. Application/physical integration remains pending. M0 remains qualified; M1/M2/M3 remain PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -101,9 +101,16 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - Corrected only the workflow artifact paths: baseline process receipts are copied into the candidate workspace before bounded upload. New [candidate commit `0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b`](https://github.com/tiagosombrra/apmesh-modernization/commit/0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b); [run #42634304685](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42634304685) was in progress at this checkpoint.
 - Full latest-head green CI, independent scientific evidence capture and original M1/M2/M3 research approvals are distinct; `main` and draft PR #185 remain unchanged.
 
+## 2026-11-09-16: research PR #185 integrated with exact-tree CI evidence
+
+- [PR #185](https://github.com/tiagosombrra/apmesh-modernization/pull/185) is **MERGED** into `quad-templates` at `514f92ea4fac97ec09445996ca659aa544f91461`. The tested synthetic GitHub PR merge `af3e34749a42b924ec03dd24b681389cd59052d4`, PR head `2e10fe199365f181c1e17d3525279cccef470dd6`, and final research merge all share exact tree `d5270ba261c9c1ad99dea9b3557376e978360fdc`. No production `main` change.
+- [Full PR workflow #42635829240](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42635829240) **success** on the exact tree: Linux QUAD CTest 2/2, Windows MSVC QUAD CTest 2/2, Linux TRI CTest 75/75, Python tooling 527/527; both Eistute/Book TRI comparisons accepted five/four attempted states with exact OBJ, decisions, metrics and positive boundary incidence. Bounded scientific artifact `13682488092` exists. The earlier failed/aborted CI prefixes remain in history.
+- [Integration evidence](evidence/PR185_RESEARCH_INTEGRATION_20261109.json) distinguishes tested implementation, independent numerical oracle, integration SHA and still-open contracts. An on-push `quad-templates` workflow was added in this documentation/policy checkpoint for separate post-merge regression. No result is inferred for that new run until recorded.
+- **Research-only integration:** `research/quad` and `tests/quad` are now present on `quad-templates`. No application opt-in code, adopted interior-point/centroid rule, physical QUAD, full boundary, multipatch or repeated adaptation implementation. Do not close M1/M2/M3 or modernization Stage 3.
+
 ## Next exact action
 
-Inspect corrected CI run #42634304685 at `0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b`, including science artifact upload and final exact-head native/75 CTest/527 Python checks; then reconcile candidate with the latest research base, preserve all session history, and qualify the integrated candidate before touching PR #185 or `quad-templates` code. The source-history reconciliation remains isolated and preserves earlier `c57749e` ancestry. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
+Inspect the post-merge GitHub Actions result on the new research checkpoint SHA; retain failure evidence if any. Then implement a separately scoped M3 **opt-in application entry/dispatch** using the integrated read-only UV QUAD bridge, preserving default TRI behavior and refusing to invent an unapproved scientific interior-point rule. Prepare the numerical policy/oracle decision for the advisers and keep M4/M5/M6/M7 separate.
 
 ## Current M1 reconstruction
 
