@@ -1,0 +1,297 @@
+{
+  "schema": 1,
+  "source_revision": "e88081d2e2a80ea1baa8b988dc8f3888f19a62c1",
+  "branch": "quad/m01-uv-prototype",
+  "status": "working_isolated_uv_quad_prototype_qualified_for_draft_review",
+  "classification": "Isolated research implementation with caller-supplied interior points; no production scientific change",
+  "profiles": {
+    "gcc": {
+      "compiler": "GNU 16.1 C++17 Debug",
+      "native_test_entries": 1,
+      "contract_outcomes": 117,
+      "failures": 0,
+      "skips": 0,
+      "source_files": {
+        "research/quad/uv_mesh.h": "b51234bc724e97e54bc5913b3bc471212bdcf0164d51342faba84b381a6d030b",
+        "research/quad/uv_mesh.cpp": "601e403179ee6f612beccdc57eceab9058825094989b4846da54d69ac61688b1",
+        "research/quad/demo.cpp": "bb6cac13de038dd5c3c4c87e804696db215d82b91e0db5f6902ce04820359fed",
+        "tests/quad/uv_contracts.cpp": "7b109d6558f83e1bd9cfefe1bb19639c78e2c6fb8a2b6e33bc53c7dee99280f5",
+        "tests/quad/CMakeLists.txt": "3eba5109e92455f5f458e2bf03d67d0edf7c4a5ad0a38d58e0c6d9d79b91000a"
+      },
+      "report_sha256": "dd68341ce15ca083e5d47662dba54069517e16b536590839f499e6b62085a4a3",
+      "last_test_log_sha256": "c2c66732b2a17e6e2462e776ddf26eb7fbc228d20476774723890b8d2c6ef3df",
+      "binary_sha256": "e1c8d6dac24e25e2d0b587d6d35161a9013d0f3768f1b9f3706bc1c87f870e6b",
+      "steps": [
+        {
+          "argv": [
+            "cmake",
+            "-S",
+            "tests/quad",
+            "-B",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad\\build\\quad-prototype\\session-20261108-07\\gcc-binary\\build",
+            "-G",
+            "Ninja",
+            "-DCMAKE_MAKE_PROGRAM=C:/msys64/ucrt64/bin/ninja.exe",
+            "-DCMAKE_CXX_COMPILER=C:/msys64/ucrt64/bin/g++.exe",
+            "-DCMAKE_BUILD_TYPE=Debug",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          ],
+          "exit_code": 0,
+          "seconds": 1.86,
+          "log": "0.log",
+          "sha256": "b3128118248618e2820dc0251e2cd40018b67d4fb3b7477df8272e3ff3688cab"
+        },
+        {
+          "argv": [
+            "cmake",
+            "--build",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad\\build\\quad-prototype\\session-20261108-07\\gcc-binary\\build",
+            "--config",
+            "Debug",
+            "--parallel",
+            "2"
+          ],
+          "exit_code": 0,
+          "seconds": 3.634,
+          "log": "1.log",
+          "sha256": "3cae7c2037c5f6006e2b12f74992f598ae116a102896ad089ffbdd61df5f2235"
+        },
+        {
+          "argv": [
+            "ctest",
+            "--test-dir",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad\\build\\quad-prototype\\session-20261108-07\\gcc-binary\\build",
+            "-C",
+            "Debug",
+            "--output-on-failure",
+            "--stop-on-failure",
+            "--no-tests=error",
+            "--output-junit",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad\\build\\quad-prototype\\session-20261108-07\\gcc-binary\\ctest.xml"
+          ],
+          "exit_code": 0,
+          "seconds": 0.369,
+          "log": "2.log",
+          "sha256": "b3ff2cc2320e770fddbe5ac9cfc253884d897c5b69b8de3cb1b9c31f5af95550"
+        }
+      ]
+    },
+    "msvc": {
+      "compiler": "MSVC 19.44 C++17 Debug",
+      "native_test_entries": 1,
+      "contract_outcomes": 117,
+      "failures": 0,
+      "skips": 0,
+      "source_files": {
+        "research/quad/uv_mesh.h": "b51234bc724e97e54bc5913b3bc471212bdcf0164d51342faba84b381a6d030b",
+        "research/quad/uv_mesh.cpp": "601e403179ee6f612beccdc57eceab9058825094989b4846da54d69ac61688b1",
+        "research/quad/demo.cpp": "bb6cac13de038dd5c3c4c87e804696db215d82b91e0db5f6902ce04820359fed",
+        "tests/quad/uv_contracts.cpp": "7b109d6558f83e1bd9cfefe1bb19639c78e2c6fb8a2b6e33bc53c7dee99280f5",
+        "tests/quad/CMakeLists.txt": "3eba5109e92455f5f458e2bf03d67d0edf7c4a5ad0a38d58e0c6d9d79b91000a"
+      },
+      "report_sha256": "5918451df052a82e3ef08a460e65371bb9a87a367d9b9c22ca08b54b50cf98d5",
+      "last_test_log_sha256": "6a707d83ab174ef5b06c2980ca570874314daf1518a6843b89da6d97d4a22194",
+      "binary_sha256": "2f3343bf21ef61bab1bdabce5882c049bfba1716158db345f907a206c36f98d7",
+      "steps": [
+        {
+          "argv": [
+            "cmake",
+            "-S",
+            "tests/quad",
+            "-B",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad\\build\\quad-prototype\\session-20261108-07\\msvc-binary\\build",
+            "-G",
+            "Visual Studio 17 2022",
+            "-A",
+            "x64",
+            "-DCMAKE_CXX_STANDARD=17"
+          ],
+          "exit_code": 0,
+          "seconds": 3.272,
+          "log": "0.log",
+          "sha256": "e637a1dab1649e712dfee100a89d263dffa811f76c6373b65b4e8df00169c165"
+        },
+        {
+          "argv": [
+            "cmake",
+            "--build",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad\\build\\quad-prototype\\session-20261108-07\\msvc-binary\\build",
+            "--config",
+            "Debug",
+            "--parallel",
+            "2"
+          ],
+          "exit_code": 0,
+          "seconds": 4.3,
+          "log": "1.log",
+          "sha256": "0e0ad8feb1863ce3d29e99885a867ab22d7f5e8e677c112148244050fb8dac5a"
+        },
+        {
+          "argv": [
+            "ctest",
+            "--test-dir",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad\\build\\quad-prototype\\session-20261108-07\\msvc-binary\\build",
+            "-C",
+            "Debug",
+            "--output-on-failure",
+            "--stop-on-failure",
+            "--no-tests=error",
+            "--output-junit",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad\\build\\quad-prototype\\session-20261108-07\\msvc-binary\\ctest.xml"
+          ],
+          "exit_code": 0,
+          "seconds": 0.489,
+          "log": "2.log",
+          "sha256": "b0dd2628c5819f4dcc1bad0f6e0c5c8ae673303024eb8353f745d7d50f3cef04"
+        }
+      ]
+    },
+    "linux_gcc": {
+      "compiler": "GNU 13.3 C++17 Debug",
+      "native_test_entries": 1,
+      "contract_outcomes": 117,
+      "failures": 0,
+      "skips": 0,
+      "report_sha256": "dd9cdff1d70fdff6a7dc3d71259ec1f5406d8c88673a0261c871a35bedd4b48d",
+      "source_files": {
+        "research/quad/uv_mesh.h": "b51234bc724e97e54bc5913b3bc471212bdcf0164d51342faba84b381a6d030b",
+        "research/quad/uv_mesh.cpp": "601e403179ee6f612beccdc57eceab9058825094989b4846da54d69ac61688b1",
+        "research/quad/demo.cpp": "bb6cac13de038dd5c3c4c87e804696db215d82b91e0db5f6902ce04820359fed",
+        "tests/quad/uv_contracts.cpp": "7b109d6558f83e1bd9cfefe1bb19639c78e2c6fb8a2b6e33bc53c7dee99280f5",
+        "tests/quad/CMakeLists.txt": "3eba5109e92455f5f458e2bf03d67d0edf7c4a5ad0a38d58e0c6d9d79b91000a"
+      },
+      "binaries": {
+        "quad_uv_contracts": "fe7263483b11e293e7616f42304ba3c1f5eedb343302d138c1eb22dffa8b8b90",
+        "quad_uv_demo": "93d79e70d7cfbc0476e0120f785f5d2663d5d6fd2b8b7bc3196fccedb655670e",
+        "libapmesh_quad_uv.a": "e9c45a71c754938a27b4b388c46213c9016f161f8fc7037e0b02c844994cfdda"
+      },
+      "steps": [
+        {
+          "argv": [
+            "cmake",
+            "-S",
+            "tests/quad",
+            "-B",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/build",
+            "-G",
+            "Ninja",
+            "-DCMAKE_BUILD_TYPE=Debug",
+            "-DCMAKE_CXX_STANDARD=17",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
+          ],
+          "timeout": 60,
+          "exit": 0,
+          "seconds": 1.5,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/0.log",
+          "sha256": "c329b474664945bf07cc5e9013c8a6a5669afdc2f440b84f272b5ed1becb1004"
+        },
+        {
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/build",
+            "--parallel",
+            "2"
+          ],
+          "timeout": 120,
+          "exit": 0,
+          "seconds": 2.72,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/1.log",
+          "sha256": "35a29dd9245181ba2980fc2ccfd6e9c635462a082390cf676e4754ebf198a277"
+        },
+        {
+          "argv": [
+            "ctest",
+            "--test-dir",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/build",
+            "--output-on-failure",
+            "--stop-on-failure",
+            "--no-tests=error",
+            "--output-junit",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/ctest.xml"
+          ],
+          "timeout": 30,
+          "exit": 0,
+          "seconds": 0.177,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/2.log",
+          "sha256": "847d1afc501ecc764c5a1800ea4127c4e1d7d43ffa1338d3c623ff109a7edd13"
+        },
+        {
+          "argv": [
+            "python3",
+            "tools/quality.py",
+            "format",
+            "research/quad/uv_mesh.h",
+            "research/quad/uv_mesh.cpp",
+            "research/quad/demo.cpp",
+            "tests/quad/uv_contracts.cpp"
+          ],
+          "timeout": 30,
+          "exit": 0,
+          "seconds": 0.217,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/3.log",
+          "sha256": "3bb03b5b321d69cf99ec320a72aaeaed2a1c44e429382b22a67e55a027033b5d"
+        },
+        {
+          "argv": [
+            "python3",
+            "tools/quality.py",
+            "tidy",
+            "research/quad/uv_mesh.cpp",
+            "research/quad/demo.cpp",
+            "tests/quad/uv_contracts.cpp",
+            "--build",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/build"
+          ],
+          "timeout": 60,
+          "exit": 0,
+          "seconds": 6.963,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-prototype/session07-binary/4.log",
+          "sha256": "3b78206e8b7a6821d3ebaf08665ea8f402f8fb90887731e7fcd2a3e70a248de3"
+        }
+      ]
+    }
+  },
+  "cli_cases": 8,
+  "cli_report_sha256": "e3917902f34566513e012cba3d4b6c1892a3710dc792809ae3bfe585a01bdbb8",
+  "linux_demo": {
+    "vertices": 15,
+    "quads": 8,
+    "area": 2,
+    "boundary_edges": 12,
+    "interior_edges": 10
+  },
+  "three_platform_obj_sha256": "e4694af9eb332515ae1b66cdcf4f72847786b02af92276514cc2ab6cea98257c",
+  "preserved_failure": {
+    "old_windows_obj_sha256": "1625f43757fbed5baa379bb38dd83a181f9f319068f54737de0d70db0c594c89",
+    "old_linux_obj_sha256": "e4694af9eb332515ae1b66cdcf4f72847786b02af92276514cc2ab6cea98257c",
+    "finding": "Offline comparison rejects 23 CRLF records versus LF. Preserve old bytes and failed reader; open demo output in binary mode, then execute fresh exports. Final comparison uses raw bytes without normalization."
+  },
+  "source_bound_reuse": "Final evidence/checkpoint edits must preserve all five compiled/build input hashes above; rerun complete baseline on final committed delivery revision",
+  "local_raw_root": "build/quad-prototype/session-20261108-07",
+  "copied_linux_artifacts": {
+    "report.json": "dd9cdff1d70fdff6a7dc3d71259ec1f5406d8c88673a0261c871a35bedd4b48d",
+    "ctest.xml": "f556d54792b2bb03c9bc6dc3b180c00f913fba01be2f2b99a32d8bf3184fba6d",
+    "0.log": "c329b474664945bf07cc5e9013c8a6a5669afdc2f440b84f272b5ed1becb1004",
+    "1.log": "35a29dd9245181ba2980fc2ccfd6e9c635462a082390cf676e4754ebf198a277",
+    "2.log": "847d1afc501ecc764c5a1800ea4127c4e1d7d43ffa1338d3c623ff109a7edd13",
+    "3.log": "3bb03b5b321d69cf99ec320a72aaeaed2a1c44e429382b22a67e55a027033b5d",
+    "4.log": "3b78206e8b7a6821d3ebaf08665ea8f402f8fb90887731e7fcd2a3e70a248de3",
+    "build/Testing/Temporary/LastTest.log": "a3e60d0605b2e450c32a96f28a662206a0064c1330e7b32831401a0cf50dc606",
+    "build/compile_commands.json": "b0a435c8e0db7bad3666ba75491c4b9672c544ae83f704a3076bfc40de687d32",
+    "demo.obj": "e4694af9eb332515ae1b66cdcf4f72847786b02af92276514cc2ab6cea98257c"
+  },
+  "quality": {
+    "linux_format": "passed for four C++ files",
+    "linux_tidy": "passed for all three actual compilation units, existing diagnostics unchanged"
+  },
+  "remaining": [
+    "Draft review and exact final delivery revision baseline required before publication",
+    "Advisor numerical decisions reported as aligned by user; exact centroid/embedding decisions still to be supplied",
+    "No automatic centroid rule; injected test points are not historical numerical oracles",
+    "No production leaf emitter/CLI selection, physical element, XYZ/curvature, boundary completion, multipatch or adaptation integration",
+    "M1/M2 are not closed: full historical numerical oracle, allocation-denial and extreme-coordinate qualification remain",
+    "Validator is exhaustive and limited to convex-face planar disks; holes and exact predicates are unsupported"
+  ]
+}
