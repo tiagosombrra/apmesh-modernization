@@ -4,11 +4,11 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-08-08
+**Last session:** 2026-11-09-09 (operational cross-conversation handoff; no scientific milestone advanced)
 
 **Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
 
-**Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md)
+**Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
 **Plan:** [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md)
 
@@ -54,6 +54,13 @@ A working isolated UV QUAD generator, typed element and native test suite now ex
 | M9 - anisotropy | OPTIONAL / PENDING | Approved formulation and isolated ablation |
 
 Bounded fixture memory observations do not prove complete-process Windows safety. The fixed Linux inventory does not close all Stage 3 recovery, external-observer/caller, parallel or ownership obligations. The static serial register must reopen for new dispatch, element types and exports. Original timeouts, unavailable-tool observations, failed prefixes, rejected old identities and the offline diagnostic-parser error remain recorded. Zero remote statuses/check-runs is not passing CI.
+
+## 2026-11-09 operational handoff checkpoint
+
+- Read/write access to the linked GitHub repository was confirmed; this is not access to any local uncommitted VS Code changes.
+- Remote PR [#185](https://github.com/tiagosombrra/apmesh-modernization/pull/185) remains **open and draft**, targeting `quad-templates`, feature head `bb50b161cad0121402cc61475442b32aef33d2bd`. `quad/uv-leaf-bridge` was compared to the PR feature and found identical in Git history in this review. At this checkpoint the PR head and research base are divergent (one base-only commit); review ancestry again at actual integration.
+- Previously recorded 117 UV + 30 leaf checks per native profile and 75 CTest /527 Python baseline are **retained historical evidence**, not re-executed in this ChatGPT session. No compilation, native benchmark, local clean-worktree inspection, merge, or source changes were performed; no milestone was closed.
+- Every future substantive conversation or Codex session must read live GitHub status first, write a bounded checkpoint on the research branch, preserve feature-PR code separately, and verify readback. An agent that cannot access GitHub must explicitly report that no remote checkpoint occurred. The documentation-only commit of this session is not an exact-head scientific test certification.
 
 ## Next exact action
 
