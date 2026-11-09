@@ -1,9 +1,10 @@
 # Isolated UV QUAD prototype
 
 This C++17 prototype generates real four-node planar elements from a conforming
-polygon disk. It has no dependency on `Face`, `TriangleAdaptive`, Eigen or the
-production application. All ownership is by value; connectivity uses stable
-vertex indices. The current TRI executable and its build remain unchanged.
+polygon disk. Its core UV library has no dependency on `Face`, `TriangleAdaptive`,
+Eigen or the production application. The optional tree bridge below links the
+existing legacy component. UV mesh ownership is by value; connectivity uses
+stable vertex indices. The current TRI executable and its build remain unchanged.
 
 `Subdivide` takes polygon connectivity and **one explicit interior point per
 polygon**. It creates an edge midpoint once per canonical endpoint-ID pair,
@@ -66,8 +67,47 @@ transition, ID permutation/scaling/translation, 32 bounded grids, invalid
 geometry/topology, failure/input preservation and OBJ precision/I/O controls.
 These are separate from the production 75 CTest /527 Python baseline.
 
+## Read-only bridge to the existing quadtree
+
+`quadtree_quad.h/.cpp` now captures actual `QuadtreeCell` leaves and their
+reciprocal neighbor lists. It classifies all 16 split-side signatures into
+T1-T6, rotates the recorded polygon graphs and assigns shared vertex IDs from
+the root's dyadic hierarchy. It preserves the source leaf order and existing
+empty-neighbor boundary exclusion, and does not sort, refine or publish TRI
+objects in the source tree. Invalid/nonreciprocal or unbalanced trees fail
+explicitly. Relative depth above 30 is outside this first bridge contract.
+
+`CaptureLeafPolygons(tree)` returns ordered polygons and value-only source
+metadata. Its `interior_points` is deliberately empty. `EmitLeafQuads(tree,
+selector)` asks the caller for one point per polygon, uses `Subdivide` and
+checks output coverage against the sum of the included leaf rectangles. The
+captured source has no retained tree/cell pointers. Selector references are
+valid only during the callback; the callback must not mutate the source tree.
+
+Enable the standalone bridge and its actual legacy component:
+
+```sh
+cmake -S tests/quad -B build/quad-tree -G Ninja -DCMAKE_BUILD_TYPE=Debug -DAP_MESH_QUAD_WITH_TREE=ON
+cmake --build build/quad-tree --parallel 2
+ctest --test-dir build/quad-tree --output-on-failure --stop-on-failure --no-tests=error
+build/quad-tree/quad_tree_demo build/quad-tree/adaptive-tree.obj
+```
+
+The adaptive demo constructs the existing quadtree through its public API,
+with a closed unit-square boundary, subdivides one actual interior leaf and
+emits **42 quads** from a **19-leaf** tree. The included interior area is 1/4;
+the excluded boundary leaves are not filled. The demo explicitly injects
+vertex-mean points as synthetic test data, not an application centroid policy.
+MSVC supports the same option using the generator/configuration above.
+
+The extra native suite checks 30 bridge outcomes: actual uniform/adaptive trees,
+all 16 masks, unchanged existing TRI owners/geometry/stats, unchanged list order,
+selector failures and malformed/unbalanced neighbor graphs. The original 117
+UV outcomes remain a separate unchanged test entry. Legacy-component warnings
+remain visible; no production source, diagnostic or historical oracle is changed.
+
 Next integration work is the approved point-selection policy and historical
-oracle completion, followed by mapping real quadtree leaves into this UV mesh.
+oracle completion, followed by an opt-in call from the application pipeline.
 Physical QUAD elements, XYZ mapping/curvature, boundary completion, multipatch
 synchronization and repeated adaptation remain later milestones. This library
 is not yet selected by the application CLI and is not a complete patch mesher.
