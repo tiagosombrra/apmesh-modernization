@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: quad-research-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   quad-native:
@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Check out exact candidate
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Identify revision
         shell: bash
         run: |
@@ -75,6 +77,19 @@ jobs:
     steps:
       - name: Check out exact candidate
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install approved LLVM tools for scientific baseline
+        shell: bash
+        run: |
+          python3 -m venv "$RUNNER_TEMP/quad-tools-venv"
+          "$RUNNER_TEMP/quad-tools-venv/bin/python" -m pip install --disable-pip-version-check --only-binary=:all: clang-tidy==22.1.8 clang-format==22.1.8
+          echo "$RUNNER_TEMP/quad-tools-venv/bin" >> "$GITHUB_PATH"
+      - name: Identify LLVM toolchain
+        shell: bash
+        run: |
+          clang-tidy --version
+          clang-format --version
       - name: Build unchanged TRI application and contract targets
         shell: bash
         run: |
