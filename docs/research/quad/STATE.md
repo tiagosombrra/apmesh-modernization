@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-09 (operational cross-conversation handoff; no scientific milestone advanced)
+**Last session:** 2026-11-09-10 (PR #185 pre-merge review; no scientific milestone advanced)
 
 **Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
 
@@ -62,9 +62,15 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - Previously recorded 117 UV + 30 leaf checks per native profile and 75 CTest /527 Python baseline are **retained historical evidence**, not re-executed in this ChatGPT session. No compilation, native benchmark, local clean-worktree inspection, merge, or source changes were performed; no milestone was closed.
 - Every future substantive conversation or Codex session must read live GitHub status first, write a bounded checkpoint on the research branch, preserve feature-PR code separately, and verify readback. An agent that cannot access GitHub must explicitly report that no remote checkpoint occurred. The documentation-only commit of this session is not an exact-head scientific test certification.
 
+## 2026-11-09-10 PR #185 pre-merge inspection
+
+- [Pre-merge review](PR185_PREMERGE_REVIEW_20261109.md) inspected live PR #185 (draft/open), candidate `bb50b161cad0121402cc61475442b32aef33d2bd`, and the divergent base. GitHub reports `mergeable=false`; canonical `STATE.md` and append-only `SESSION_LOG.md` are overlapping changes. Preserve both branches' recorded history before any attempt to merge.
+- **No native tests rerun and no code or PR branch changed in this ChatGPT session.** Existing native/regression reports are historical. Shell Git access to GitHub was unavailable here; all verified reads/writes used the connected GitHub integration.
+- Next gate: non-destructive reconciliation of the research-branch and PR history, followed by full exact-candidate QUAD + TRI baseline qualification before integrating code into `quad-templates`. Scientific interior-point choice and production opt-in remain open; `main` stays untouched.
+
 ## Next exact action
 
-Review the actual-tree bridge in draft PR #185 and bind the numerical point rule the user reports is already aligned. Then connect the tested bridge through an explicit application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
+Reconcile PR #185 with the current `quad-templates` history without losing session checkpoints, then execute exact-candidate QUAD and TRI regressions before any merge. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
 
 ## Current M1 reconstruction
 
