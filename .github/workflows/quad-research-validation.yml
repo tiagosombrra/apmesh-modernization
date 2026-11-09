@@ -110,3 +110,71 @@ jobs:
             build/local-serial/Testing/Temporary/LastTest.log
           if-no-files-found: ignore
           retention-days: 7
+
+  scientific-tri-compare:
+    name: TRI scientific equivalence against frozen baseline
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Fetch full ancestry for strict reference comparison
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Create immutable historical reference worktree
+        shell: bash
+        run: |
+          git worktree add --detach ../apmesh-tri-reference f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94
+          git diff --exit-code f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94 HEAD -- src/ include/ configs/
+          git rev-parse HEAD
+          git -C ../apmesh-tri-reference rev-parse HEAD
+      - name: Build reference TRI executable using the same compiler and flags
+        shell: bash
+        run: |
+          cmake -S ../apmesh-tri-reference -B ../apmesh-tri-reference/build/science-reference -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF
+          cmake --build ../apmesh-tri-reference/build/science-reference --target ap_mesh --parallel 2
+      - name: Build candidate TRI executable using the same compiler and flags
+        shell: bash
+        run: |
+          cmake -S . -B build/science-candidate -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF
+          cmake --build build/science-candidate --target ap_mesh --parallel 2
+          sha256sum ../apmesh-tri-reference/build/science-reference/bin/ap_mesh build/science-candidate/bin/ap_mesh
+      - name: Execute fixed Eistute and Book models for both revisions
+        shell: bash
+        run: |
+          for model in eistute book; do
+            python3 ../apmesh-tri-reference/tools/run_generation_case.py --exe ../apmesh-tri-reference/build/science-reference/bin/ap_mesh --model "$model" --output "../apmesh-tri-reference/build/science-reference/$model" --timeout 300
+            python3 tools/run_generation_case.py --exe build/science-candidate/bin/ap_mesh --model "$model" --output "build/science-candidate/$model" --timeout 300
+          done
+      - name: Independently audit snapshots and compare all accepted/rejected states
+        shell: bash
+        run: |
+          for model in eistute book; do
+            python3 tools/verify_generation.py "build/science-candidate/$model" --baseline "../apmesh-tri-reference/build/science-reference/$model" --require-boundary-coverage --report "build/science-candidate/${model}-comparison.json"
+          done
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          for model, expected_states in (("eistute", 5), ("book", 4)):
+              result = json.loads((Path("build/science-candidate") / f"{model}-comparison.json").read_text())
+              assert result["compared_meshes"] == expected_states, (model, result)
+              assert result["all_obj_byte_identical"] is True, (model, result)
+              assert result["all_acceptance_fields_equal"] is True, (model, result)
+              assert result["boundary_regression"] == "exact", (model, result)
+              assert result["boundary_incidence_coverage"] == "verified", (model, result)
+          PY
+      - name: Retain bounded reports and failure logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tri-science-${{ github.sha }}
+          path: |
+            build/science-candidate/*-comparison.json
+            build/science-candidate/eistute/process.json
+            build/science-candidate/book/process.json
+            build/science-candidate/eistute/stderr.log
+            build/science-candidate/book/stderr.log
+            ../apmesh-tri-reference/build/science-reference/eistute/process.json
+            ../apmesh-tri-reference/build/science-reference/book/process.json
+          if-no-files-found: ignore
+          retention-days: 7
