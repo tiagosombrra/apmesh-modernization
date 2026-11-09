@@ -188,3 +188,10 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Open gates:** Actual TRI baseline completion, final feature-head CI logs, exact original 75 CTest/527 Python admission, Eistute/Book scientific comparisons and memory/ownership gates. No M1/M2/M3 closure, PR merge or main changes. See [bounded remote CI receipt](REMOTE_CI_SETUP_20261109.md).
 
 **Next:** inspect latest run jobs/logs, fix real failures without relaxing oracles, then publish exact candidate evidence for review.
+## 2026-11-09-13 — hosted TRI CTest first failure and environment repair
+
+**Observed:** Run #42629394523 executes both QUAD native jobs successfully (2/2 CTest per Linux GCC and Windows MSVC, demo 19/42/53/0.25). TRI baseline produces **67 passed / 8 failed of 75** CTest entries. Seven fail when tests call `git show` for historical frozen SHA/path records absent from shallow `actions/checkout`, including tooling.controls with six affected Python lookups. One scope check fails due runner's older clang-tidy rejecting `ExcludeHeaderFilterRegex`. Failure logs and bounded uploaded artifact are retained, with no changed scientific reference.
+
+**Correction:** Updated only workflow on candidate and scientific base with `fetch-depth: 0` and environment-local PyPI LLVM `clang-tidy==22.1.8`/`clang-format==22.1.8` wheels. Candidate `1f87f8c270df5da0bd662fa147db32cb76fb44de`; canonical `aed5e517d897d0d8acd27208dab61cdfe13693e9`. Superseded runs may be cancelled; do not recast them as passes. Corrected run #42630886815 launched.
+
+**Not yet qualified:** complete exact-candidate 75/527, independent Eistute/Book scientific comparisons and broader memory claims. No source, unit test or acceptance policy modified, no PR merge, no main update. Next read corrected CI and, if it passes, expand independent scientific qualification without relaxing gates.

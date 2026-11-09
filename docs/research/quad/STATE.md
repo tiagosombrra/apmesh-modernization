@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-12 (remote Linux/MSVC CI enabled; full qualification pending)
+**Last session:** 2026-11-09-13 (remote CI failure diagnosed, setup repaired; full qualification pending)
 
 **Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
 
@@ -81,9 +81,15 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [Live remote CI receipt](REMOTE_CI_SETUP_20261109.md) preserves run #42629394523: native Linux QUAD and Windows QUAD jobs **success**; TRI baseline **in progress** when read. A second run #42629587785 for latest feature SHA `73184eb3eb25b2f73452737753cb707c092f18f0` was **pending**. Do not infer a completed exact-final-head gate.
 - The workflow is implementation infrastructure, not an alteration of the scientific algorithm. Full delivery regression/scientific oracle qualification, reviewers and branch integration remain open.
 
+## 2026-11-09-13 first CI failure and environment-only repair
+
+- First CI [run #42629394523](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42629394523) on `098b8aeb...`: Linux and Windows QUAD CTest each passed both tests (2/2 per platform), with example 19 leaves /42 quads /53 UV vertices /area 0.25. The TRI baseline CTest completed **67/75 passing, eight failing**. Seven affected entries required historical Git objects unavailable in shallow `checkout`; the `tooling.tidy_header_scope` entry required newer Clang tooling. The run is a **failed CI attempt**, retained without concealing any original gate.
+- Fixed only the GitHub Actions runner setup: `fetch-depth: 0` and pinned `clang-tidy==22.1.8`, `clang-format==22.1.8`; candidate workflow commit `1f87f8c270df5da0bd662fa147db32cb76fb44de`, canonical workflow update `aed5e517d897d0d8acd27208dab61cdfe13693e9`. No scientific test, C++ source or acceptance oracle modified.
+- [Corrected CI run #42630886815](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42630886815), SHA `1f87f8c270df5da0bd662fa147db32cb76fb44de`: **in_progress** when inspected; no passing final-head delivery conclusion yet. The previous policy-head run was superseded/cancelled in its TRI baseline. Future conversations must read the latest remote run status instead of these snapshots.
+
 ## Next exact action
 
-Inspect the GitHub Actions results for latest candidate `73184eb3eb25b2f73452737753cb707c092f18f0`, reconcile any native or TRI failures against the exact SHA and independently complete the required delivery/scientific regression gates before merging. The source-history reconciliation remains isolated and preserves earlier `c57749e` ancestry. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
+Inspect corrected GitHub Actions run #42630886815 on `1f87f8c270df5da0bd662fa147db32cb76fb44de` for full QUAD/Linux-MSVC, TRI CTest and Python control completion. Preserve any remaining failure before proceeding to separate exact delivery/scientific oracle gates and merging. The source-history reconciliation remains isolated and preserves earlier `c57749e` ancestry. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
 
 ## Current M1 reconstruction
 
