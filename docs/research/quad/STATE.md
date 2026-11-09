@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-08-06
+**Last session:** 2026-11-08-07
 
-**Current milestone:** **M1 PARTIAL / REVIEW PENDING: Figure 7 graph transcribed and checked; independent confirmation and numerical scientific choices remain open. M0 stays qualified in its declared serial baseline scope.**
+**Current milestone:** **Working isolated UV QUAD prototype in `quad/m01-uv-prototype`; M1/M2 remain partial. M0 stays qualified in its declared serial baseline scope.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md)
 
@@ -28,7 +28,7 @@
 - M0-G7: reviewed all named serial producer/consumer contracts and three-node loops. The 38 explicit cast sites have dispositions: **16 selected serial, 17 preprocessor-excluded, five compiled entries with no selected serial caller identified**. Compiler-selected lines and manual call/contract review support this bounded register; it is not formal whole-program or external-client proof.
 - Navigation-only maintenance corrects 18 inherited relative hrefs; prior failed link checks remain in dated history. All eight research documents pass local target-existence checks; URLs/fragments are unmeasured.
 
-No QUAD generator, element or runtime test suite has been implemented. Modernization Stage 3 remains separate and open.
+A working isolated UV QUAD generator, typed element and native test suite now exist in candidate branch `quad/m01-uv-prototype`. They are not integrated into the production application. Modernization Stage 3 remains separate and open.
 
 ## Worktrees and retained evidence
 
@@ -43,8 +43,8 @@ No QUAD generator, element or runtime test suite has been implemented. Moderniza
 | Milestone | State | Remaining admission / exit |
 | --- | --- | --- |
 | M0 - baseline | QUALIFIED: scoped G0-G7 baseline; 75/527 checkpoint regression recorded | Scoped exceptions retained below; no main/Stage 3 closure |
-| M1 - historical T1-T6 oracle | PARTIAL / REVIEW PENDING | Source-backed graph/table and schematic checks complete; independent confirmation, numerical choices and executable fixtures remain |
-| M2 - UV QUAD topology | PENDING | Coverage, incidence, orientation and no hanging nodes |
+| M1 - historical T1-T6 oracle | PARTIAL | Graphs now execute with supplied positive points; historical numerical expectations and stated adviser decisions remain |
+| M2 - UV QUAD topology | WORKING ISOLATED PROTOTYPE / PARTIAL | Value-owned UV mesh, canonical midpoints, quad emitter and disk validator; review, denials and broader numeric qualification remain |
 | M3 - quadtree emitter | PENDING | Opt-in QUAD and exact default TRI preservation |
 | M4 - physical QUAD | PENDING | Defined UV-to-XYZ geometry and four-node lifecycle/ownership |
 | M5 - boundary transition | PENDING | Adviser decision: quad-dominant or all-quad; complete valid patch mesh |
@@ -57,7 +57,7 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 
 ## Next exact action
 
-Review [the six transcribed cycles and scientific admission questions](M1_HISTORICAL_ORACLE_REVIEW.md) against the identified scan with the advisers. Record confirmation of the column/class mapping, normalized embedding and polygon-centroid definition before isolated executable M1 fixtures. Preserve the current TRI path and the independent modernization baseline. Keep quad-dominant versus all-quad and paper priorities open; no production scientific change is authorized by this checkpoint.
+Complete review of candidate `quad/m01-uv-prototype` and supply the numerical decisions the user reports are already aligned with the advisers. Bind the explicit point-selection/centroid rule and historical numeric oracles, then map real internal quadtree leaves into the tested UV QUAD API through a separate opt-in route. Keep the default TRI path unchanged. Physical mapping, full patch boundary completion and repeated adaptation retain separate milestones.
 
 ## Current M1 reconstruction
 
@@ -67,3 +67,25 @@ Review [the six transcribed cycles and scientific admission questions](M1_HISTOR
 - The paper's later midpoint/centroid subdivision implies counts **4,11,12,8,11,16** in printed order, conditional on the stated graphs/valid geometry. No such emitter is implemented. The numeric embedding and centroid formula remain review choices; boundary triangle retention prevents a general historical all-quad guarantee.
 - Session 06 changes only research documentation/evidence. Raw source renders, local checker, audit and preview are under `build/quad-m1/session-20261108-06/`. Exact committed checkpoint publication requires full delivery regression, pre-commit/links and fresh remote audit/readback. Preserve that local report and the final SHA in the session response.
 - M1 remains open; M2 is not admitted. No new article, memory or scientific campaign runs for this documentary checkpoint. Main stays `f6050ec1`; all broader Stage 3 limits remain.
+
+## Current implementation candidate - session 07
+
+- User explicitly requested implementation, clarified that the graph table is only a reference, and reported existing adviser alignment with decisions to follow. Continue the isolated implementation; do not treat a generic continuation as a supplied numerical formula.
+- Candidate `quad/m01-uv-prototype`, implementation revision `e88081d2e2a80ea1baa8b988dc8f3888f19a62c1`: `research/quad/uv_mesh.h/.cpp`, `demo.cpp`, README and standalone `tests/quad`. Typed four-index elements, canonical endpoint-ID midpoints, per-corner QUAD emission, strong input preservation and independent topology/area validation are implemented. Caller-supplied interior points avoid freezing an unspecified centroid policy.
+- Native suite passes **117 outcomes per profile** under Linux GCC 13.3, Windows GCC 16.1 and checked-MSVC 19.44 Debug, including 48 pattern transforms, 32 bounded grids, a 19-quad 2:1 seam and actual invalid-input/output controls. Separate suite: the production inventory remains 75 CTest /527 Python.
+- Native demo generates **8 quads /15 vertices /area 2**. All three platform OBJ files are byte-identical; Windows also passes eight CLI positive/negative observations. Linux format and configured static analysis pass for all new compilation units. Compact source/binary/log evidence is in candidate `docs/research/quad/evidence/UV_QUAD_PROTOTYPE_20261108.json`.
+- Final publication requires the complete regression on the exact final committed candidate and the research checkpoint, pre-commit/links and fresh remote checks/readback. Earlier successful 117-outcome captures may be reused only with matching code/build hashes. Final hashes/results and review link are recorded in the session response.
+- Scope limits: isolated UV disk API and OBJ only; no production QUAD option/leaf connection, physical element, XYZ/curvature, whole-boundary, multipatch or adaptation support. No whole M1/M2/Stage 3 closure or performance/memory-safety claim.
+
+## Published review candidate
+
+[Draft PR #185](https://github.com/tiagosombrra/apmesh-modernization/pull/185),
+head `1178720474c4b6efae37d01534648a1a8788ed2d`, contains the executable prototype.
+Its exact full baseline passes 75 CTest /527 Python with no failures/skips;
+117 native QUAD outcomes per profile are source/binary-bound. See the
+[draft delivery receipt](evidence/UV_QUAD_DRAFT_DELIVERY_20261108.json).
+The initial required-gate failure is a missing new CMake inventory entry;
+the corrected candidate records that one generated input without changing
+production sources/build targets. Remote statuses/check-runs are absent, not green.
+This research checkpoint publishes status/evidence only; the code remains in
+the draft branch and has not been merged into `quad-templates` or main.

@@ -228,3 +228,23 @@ and its boundary procedure may retain triangles. Review the explicit graph,
 normalized embedding and centroid interpretation with advisers before M1
 executable fixtures; M2 and the boundary target remain unadmitted. Production,
 TRI references, main and modernization obligations remain unchanged.
+
+## 2026-11-08-07 implementation steering and UV prototype
+
+The user prioritizes executable QUAD work and reports existing adviser alignment;
+specific numerical decisions will follow. Candidate `quad/m01-uv-prototype`
+implements an isolated value-owned UV mesh, canonical edge-midpoint registry,
+polygon-to-four-node-QUAD subdivision, disk topology/area validator and OBJ demo.
+Supplied interior points keep the unspecified centroid policy outside the API.
+The six graph fixtures execute with injected positive points, not historical
+numerical centroid claims. This supersedes the earlier blanket waiting step for
+engineering implementation; it does not adopt an unsupplied scientific formula.
+
+Native evidence: 117 outcomes per Linux GCC13.3, Windows GCC16.1 and checked
+MSVC19.44 Debug; actual 19-quad 2:1 seam, 32 bounded grids and malformed controls.
+The eight-quad demo has identical OBJ bytes on all three platforms. M1/M2 remain
+partial pending review/numerical-oracle and further qualification; full baseline
+75/527 and exact-head/remote gates still apply. After review and binding the
+reported scientific decisions, connect actual internal quadtree leaves to the
+UV emitter through the planned opt-in path. No physical/boundary/multipatch/
+adaptation integration or default TRI change is included.
