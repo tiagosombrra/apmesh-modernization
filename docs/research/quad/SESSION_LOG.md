@@ -223,3 +223,11 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Now:** Added a bounded `quad-templates` push trigger to the already reviewed free-runner workflow, with a `docs/research/quad/**` documentation-only path exclusion, so that post-merge source checkouts have independent CI and future documentation checkpoint writes do not continually rebuild. Store [bounded integration evidence](evidence/PR185_RESEARCH_INTEGRATION_20261109.json), then inspect the post-merge run separately.
 
 **Limits:** The integrated source remains an isolated UV QUAD bridge for interior leaves, with caller-injected point and strictly convex disk validator. Historical numeric T1–T6 oracle/adviser decision, M3 production opt-in, M4 physical XYZ, M5 boundary, M6 multipatch and M7 adaptation remain open. Full ASan/LSan/CRT/denial campaigns are not replaced by the CI CTest. No M1/M2/M3 milestone closure claimed. Next: post-merge CI readback, then gated M3 opt-in work.
+
+## 2026-11-09-17 — exact post-merge CI closure and M3 next slice
+
+**Rechecked:** `quad-templates=3650a50e4101fa9348147cdfb6979c1bad77a7a7`, PR #185 merged, `main` remains `f6050ec1...`. [Post-merge CI #42637555612](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42637555612) completed SUCCESS with Linux QUAD 2/2, MSVC QUAD 2/2, TRI Linux 75/75 CTest and Python 527/527. Exact frozen Eistute/Book comparison retains nine states, byte-equal OBJ output and verified boundaries; logged artifact `13682654557`. Runtime observed 6m19s, not a future guarantee.
+
+**Actions:** publish [post-merge evidence](POSTMERGE_CI_20261109.md), identify real app call graph from verified `src/main.cpp`, `RunApplication`, `RuntimeConfig`, `GeneratorAdaptive` and `AdvancingFront`, and publish [M3 opt-in implementation gate](M3_OPTIN_APPLICATION_DESIGN_20261109.md). This session does not modify production C++ or approve an unspecified numerical centroid.
+
+**Milestones:** baseline M0 qualified in scope; M1/M2/M3 partial, M4-M7 pending. Post-merge CI pending status from session 16 now closed. Separate memory/3D/multipatch/adaptation claims remain open. Next use a feature branch for fail-closed opt-in dispatch and its full exact-head regression.

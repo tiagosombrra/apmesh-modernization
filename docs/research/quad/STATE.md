@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-16 (PR #185 merged into research; native/scientific CI passed; post-merge CI pending)
+**Last session:** 2026-11-09-17 (post-merge exact-head CI passed; M3 opt-in integration seam reviewed)
 
 **Current milestone:** **Isolated read-only real-quadtree UV QUAD bridge integrated in research `quad-templates` via PR #185. Application/physical integration remains pending. M0 remains qualified; M1/M2/M3 remain PARTIAL.**
 
@@ -108,9 +108,15 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [Integration evidence](evidence/PR185_RESEARCH_INTEGRATION_20261109.json) distinguishes tested implementation, independent numerical oracle, integration SHA and still-open contracts. An on-push `quad-templates` workflow was added in this documentation/policy checkpoint for separate post-merge regression. No result is inferred for that new run until recorded.
 - **Research-only integration:** `research/quad` and `tests/quad` are now present on `quad-templates`. No application opt-in code, adopted interior-point/centroid rule, physical QUAD, full boundary, multipatch or repeated adaptation implementation. Do not close M1/M2/M3 or modernization Stage 3.
 
+## 2026-11-09-17 post-merge qualification and M3 readiness
+
+- [Post-merge test evidence](POSTMERGE_CI_20261109.md) confirms [GitHub run #42637555612](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42637555612) on exact research head `3650a50e4101fa9348147cdfb6979c1bad77a7a7`: **success**, Linux and Windows QUAD 2/2 CTest each; TRI 75/75 CTest and 527/527 Python; Eistute/Book frozen TRI equivalence and boundary coverage verified. This closes the previously pending *post-merge CI gate*, not broader M1/M2/M3 qualification.
+- [M3 opt-in integration plan](M3_OPTIN_APPLICATION_DESIGN_20261109.md) identifies `RunApplication` / `RuntimeConfig` / `GeneratorAdaptive` / `AdvancingFront` as control boundaries, and the integrated `CaptureLeafPolygons` / `EmitLeafQuads` as UV source API. Default TRI and `USE_TEMPLATE` must remain unchanged; numeric interior point rule is still an explicit scientific gate.
+- No production C++ was modified in this documentation checkpoint; no M3 opt-in behavior is claimed implemented.
+
 ## Next exact action
 
-Inspect the post-merge GitHub Actions result on the new research checkpoint SHA; retain failure evidence if any. Then implement a separately scoped M3 **opt-in application entry/dispatch** using the integrated read-only UV QUAD bridge, preserving default TRI behavior and refusing to invent an unapproved scientific interior-point rule. Prepare the numerical policy/oracle decision for the advisers and keep M4/M5/M6/M7 separate.
+Open an isolated M3 feature branch and implement the first bounded opt-in selector/dispatch gate documented in `M3_OPTIN_APPLICATION_DESIGN_20261109.md`, with negative tests for unsupported scientific point policy. Preserve the default TRI path and execute all native/scientific regressions before integrating any production changes. Prepare the numerical policy/oracle decision for the advisers and keep M4/M5/M6/M7 separate.
 
 ## Current M1 reconstruction
 
