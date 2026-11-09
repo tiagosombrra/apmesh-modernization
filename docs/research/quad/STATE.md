@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-17 (post-merge exact-head CI passed; M3 opt-in integration seam reviewed)
+**Last session:** 2026-11-09-18 (M3-1 fail-closed mesh-kind config integrated; post-merge CI running)
 
-**Current milestone:** **Isolated read-only real-quadtree UV QUAD bridge integrated in research `quad-templates` via PR #185. Application/physical integration remains pending. M0 remains qualified; M1/M2/M3 remain PARTIAL.**
+**Current milestone:** **M3-1 application TRI/QUAD selector integrated as a fail-closed config gate via PR #186, building on the isolated UV bridge of PR #185. No production QUAD emission is enabled. M0 remains qualified; M1/M2/M3 remain PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -114,9 +114,16 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [M3 opt-in integration plan](M3_OPTIN_APPLICATION_DESIGN_20261109.md) identifies `RunApplication` / `RuntimeConfig` / `GeneratorAdaptive` / `AdvancingFront` as control boundaries, and the integrated `CaptureLeafPolygons` / `EmitLeafQuads` as UV source API. Default TRI and `USE_TEMPLATE` must remain unchanged; numeric interior point rule is still an explicit scientific gate.
 - No production C++ was modified in this documentation checkpoint; no M3 opt-in behavior is claimed implemented.
 
+## 2026-11-09-18 guarded M3 dispatch research integration
+
+- [PR #186](https://github.com/tiagosombrra/apmesh-modernization/pull/186) merged to `quad-templates` at `e8c465e0ac5e1a127bc89bd4d2971dc4ec0583ca`. Source diff is restricted to `RuntimeConfig`/CLI dispatch; `include/input_output/input_validation.h` restored byte-exact to the qualified historical source. No change to modernization `main`.
+- [M3-1 evidence](evidence/M3_DISPATCH_GATE_20261109.json) records exact pre-merge GitHub Actions [#42680076066](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42680076066): Linux QUAD 3/3 CTest, Windows QUAD 3/3 CTest, TRI 75/75 CTest, Python 527/527, real application rejection controls 7/7, strict Eistute/Book five/four states with unchanged OBJ/acceptance/boundary. All four jobs **success**. Earlier 74/75 rejection on protected serial input validator is retained, as is the corrected source-inventory hash workflow.
+- `MESH_ELEMENT_KIND=tri` is optional/default. `MESH_ELEMENT_KIND=quad_uv` is recognized separately from `USE_TEMPLATE`, but **explicitly refused before `ApplyRuntimeConfig`** because no approved interior-point point rule/complete production contract exists. This is not a positive physical QUAD mode and does not close M3.
+- [Post-merge Actions #42681339818](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42681339818) was **in progress** at this checkpoint, not considered qualified until all jobs report success.
+
 ## Next exact action
 
-Open an isolated M3 feature branch and implement the first bounded opt-in selector/dispatch gate documented in `M3_OPTIN_APPLICATION_DESIGN_20261109.md`, with negative tests for unsupported scientific point policy. Preserve the default TRI path and execute all native/scientific regressions before integrating any production changes. Prepare the numerical policy/oracle decision for the advisers and keep M4/M5/M6/M7 separate.
+Inspect final result for post-merge Actions #42681339818, preserving all failure evidence. Then implement separately gated M3-2 read-only Quadtree capture after neighbor refinement and before TRI template publication, with explicit caller callback and no invented centroid, maintaining default TRI byte-equivalence. Prepare the numerical policy/oracle decision for the advisers and keep M4/M5/M6/M7 separate.
 
 ## Current M1 reconstruction
 

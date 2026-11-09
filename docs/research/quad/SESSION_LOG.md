@@ -231,3 +231,17 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Actions:** publish [post-merge evidence](POSTMERGE_CI_20261109.md), identify real app call graph from verified `src/main.cpp`, `RunApplication`, `RuntimeConfig`, `GeneratorAdaptive` and `AdvancingFront`, and publish [M3 opt-in implementation gate](M3_OPTIN_APPLICATION_DESIGN_20261109.md). This session does not modify production C++ or approve an unspecified numerical centroid.
 
 **Milestones:** baseline M0 qualified in scope; M1/M2/M3 partial, M4-M7 pending. Post-merge CI pending status from session 16 now closed. Separate memory/3D/multipatch/adaptation claims remain open. Next use a feature branch for fail-closed opt-in dispatch and its full exact-head regression.
+
+## 2026-11-09-18 — M3-1 application selector implemented, audited and merged
+
+**Entry:** Canonical research `3f1b81ae...`; no open QUAD feature PR. Existing UV bridge integrated; `main` at `f6050ec1...`. User requested continued autonomous GitHub-based implementation.
+
+**Changes:** isolated feature `quad/integration-m3-dispatch-20261109`, PR [#186](https://github.com/tiagosombrra/apmesh-modernization/pull/186): separate `MESH_ELEMENT_KIND=tri|quad_uv` runtime configuration, default `tri` and independent `USE_TEMPLATE` semantics. QUAD is fail-closed before `ApplyRuntimeConfig`; no false production QUAD output or unapproved point rule. New Linux/MSVC native grammar CTest plus seven direct application CLI refusals. Historical serial input validator fully preserved, architecture SHA-256 inventory regenerated and verified with standard known-answer vector. CI accepts only reviewed production mode/parser file changes; source baseline and science comparisons remain mandatory.
+
+**Failure preserved:** initial head `3313ccd3...`, CI #42678447975, 74/75 CTest: `tooling.serial_reader_preservation` correctly rejected a changed protected `include/input_output/input_validation.h`. Parser was moved into application runtime configuration instead of disabling the oracle. A separate temporary offline inventory SHA computation used wrong round constant ordering and was corrected with independently checked SHA-256 test vector; source hashes in the final candidate reflect actual bytes. Previous failures/cancellations remain in GitHub history.
+
+**Qualified:** exact reviewed head `cb0ec354d725e8db70dc06fca8f62751fc594b2f` run [#42680076066](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42680076066) completed SUCCESS: Linux QUAD 3/3, Windows QUAD 3/3, Linux TRI 75/75 CTest, Python 527/527, seven real CLI deny controls, and strict Eistute/Book scientific parity for five/four states, OBJ/acceptance/boundary equality. Scoped code review and merge-tree check before integration.
+
+**Integrated:** PR #186 merged into `quad-templates` as `e8c465e0ac5e1a127bc89bd4d2971dc4ec0583ca`, same source tree as the reviewed head; modernization `main` unchanged. Post-merge Actions #42681339818 launched, running at checkpoint. [Receipt](evidence/M3_DISPATCH_GATE_20261109.json).
+
+**Limits/next:** M1/M2/M3 remain partial. No actual production UV QUAD, approved numerical centroid, physical XYZ, closed boundary, shared curve multipatch or repeated adaptation. Inspect exact merge-head CI; next M3-2 design targets a read-only leaf capture seam after `AdvancingFront::refineAccordingToNeighbors` before TRI template generation, without changing default behavior. Native sanitizer/denial campaigns and full lifecycle remain outside this first gate.

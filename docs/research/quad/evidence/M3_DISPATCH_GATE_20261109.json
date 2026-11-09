@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "date": "2026-11-09",
+  "type": "m3_1_fail_closed_application_dispatch",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "feature_branch": "quad/integration-m3-dispatch-20261109",
+  "pr": 186,
+  "pr_merged": true,
+  "review_head": "cb0ec354d725e8db70dc06fca8f62751fc594b2f",
+  "merge_sha": "e8c465e0ac5e1a127bc89bd4d2971dc4ec0583ca",
+  "tree_sha": "e990454fa18aebc2b26b8c812f4d896822de9136",
+  "tree_same_as_review_head": true,
+  "default_main_unchanged_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "source_changes": [
+    "include/application/runtime_config.h",
+    "src/application/runtime_config.cpp",
+    "src/application/run_application.cpp"
+  ],
+  "legacy_input_validation_unchanged": true,
+  "new_option": {
+    "name": "MESH_ELEMENT_KIND",
+    "default": "tri",
+    "experimental": "quad_uv",
+    "quad_status": "explicitly_rejected_before_ApplyRuntimeConfig",
+    "template_selector": "USE_TEMPLATE stays independent"
+  },
+  "ci": {
+    "pre_merge_run_id": 42680076066,
+    "head_sha": "cb0ec354d725e8db70dc06fca8f62751fc594b2f",
+    "status": "success",
+    "quad_linux_ctest": 3,
+    "quad_windows_msvc_ctest": 3,
+    "tri_linux_ctest": 75,
+    "python_tooling": 527,
+    "real_cli_denials": 7,
+    "science": {
+      "eistute_compared_states": 5,
+      "book_compared_states": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "boundary_regression": "exact",
+      "boundary_coverage": "verified"
+    },
+    "failures": 0
+  },
+  "negative_history": [
+    {
+      "head": "3313ccd3f1ad5bb353ebcb554a8e14a38efa69bf",
+      "run_id": 42678447975,
+      "ctest_passed": 74,
+      "ctest_failed": 1,
+      "cause": "audit_serial_reader strict protected input_validation.h changed"
+    },
+    {
+      "head": "b4b0bca2fb50fbb74c583ae985700bd6b16e55ff",
+      "issue": "incorrect offline SHA-256 round-order fingerprints",
+      "resolution": "regenerated using validated SHA-256 abc test vector and original source hash"
+    }
+  ],
+  "post_merge_ci": {
+    "run_id": 42681339818,
+    "status": "in_progress_at_checkpoint",
+    "conclusion": null
+  },
+  "milestones": {
+    "M1": "PARTIAL",
+    "M2": "PARTIAL",
+    "M3": "PARTIAL",
+    "M4": "PENDING",
+    "M5": "PENDING",
+    "M6": "PENDING",
+    "M7": "PENDING"
+  },
+  "limitations": [
+    "No actual QUAD emitted from production app",
+    "No approved polygon interior-point selector",
+    "No physical UV-to-XYZ/quad ownership",
+    "No complete boundary, multipatch or adaptation",
+    "No comprehensive new allocation-denial or complete-process memory qualification"
+  ],
+  "next": "Inspect exact merge-head post-merge CI, then implement separately gated read-only quadtree capture and callback lifecycle without approving unknown numerical centroid."
+}
