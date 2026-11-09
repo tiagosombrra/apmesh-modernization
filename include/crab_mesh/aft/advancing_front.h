@@ -1,6 +1,7 @@
 #ifndef ADVANCING_FRONT_H_
 #define ADVANCING_FRONT_H_
 
+#include <functional>
 #include <optional>
 #include <string>
 #include "../../data/definitions.h"
@@ -126,6 +127,12 @@ public:
 
   ~AdvancingFront() override;
 
+  // Synchronously borrow the refined quadtree before TRI template publication.
+  // The callback must not mutate or retain the tree or any borrowed cell pointers.
+  // Exceptions abort the run; an empty observer preserves the original TRI path.
+  using RefinedQuadtreeObserver = std::function<void(Quadtree&)>;
+  void SetRefinedQuadtreeObserver(RefinedQuadtreeObserver observer);
+
   void SetTemplateMode(std::string mode);
   const std::string& TemplateMode() const noexcept;
   void SetPostprocessControls(AftPostprocessControls controls) noexcept;
@@ -180,6 +187,7 @@ public:
   //    void drawNormals();
   // #endif //#if USE_OPENGL
 private:
+  RefinedQuadtreeObserver refined_quadtree_observer_;
   AdvancingFrontRunStats run_stats;
   std::optional<AftPostprocessControls> postprocess_controls_ = std::nullopt;
   std::optional<std::string> template_mode_ = std::nullopt;

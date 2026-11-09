@@ -1534,6 +1534,11 @@ bool AdvancingFront::execute(const FaceList& oldmesh) {
   cout << "refinou a quadtree" << endl;
 #endif // #if USE_PRINT_COMENT
 
+  if (refined_quadtree_observer_) {
+    // The refined tree is borrowed only for this synchronous observation.
+    refined_quadtree_observer_(*quadtree);
+  }
+
   if (TemplateMode() == std::string("y")) {
     status = quadtree->makeTemplateBasedMesh();
     // cout << methodNotices[status] << endl;
@@ -1811,6 +1816,10 @@ double AdvancingFront::PostprocessQualityThreshold() const noexcept {
 
 double AdvancingFront::PostprocessBlend() const noexcept {
   return postprocess_controls_ ? postprocess_controls_->blend : AFT_LOCAL_POSTPROCESS_BLEND;
+}
+
+void AdvancingFront::SetRefinedQuadtreeObserver(RefinedQuadtreeObserver observer) {
+  refined_quadtree_observer_ = std::move(observer);
 }
 
 void AdvancingFront::SetTemplateMode(std::string mode) { template_mode_.emplace(std::move(mode)); }
