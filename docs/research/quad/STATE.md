@@ -76,3 +76,16 @@ Complete review of candidate `quad/m01-uv-prototype` and supply the numerical de
 - Native demo generates **8 quads /15 vertices /area 2**. All three platform OBJ files are byte-identical; Windows also passes eight CLI positive/negative observations. Linux format and configured static analysis pass for all new compilation units. Compact source/binary/log evidence is in candidate `docs/research/quad/evidence/UV_QUAD_PROTOTYPE_20261108.json`.
 - Final publication requires the complete regression on the exact final committed candidate and the research checkpoint, pre-commit/links and fresh remote checks/readback. Earlier successful 117-outcome captures may be reused only with matching code/build hashes. Final hashes/results and review link are recorded in the session response.
 - Scope limits: isolated UV disk API and OBJ only; no production QUAD option/leaf connection, physical element, XYZ/curvature, whole-boundary, multipatch or adaptation support. No whole M1/M2/Stage 3 closure or performance/memory-safety claim.
+
+## Published review candidate
+
+[Draft PR #185](https://github.com/tiagosombrra/apmesh-modernization/pull/185),
+head `1178720474c4b6efae37d01534648a1a8788ed2d`, contains the executable prototype.
+Its exact full baseline passes 75 CTest /527 Python with no failures/skips;
+117 native QUAD outcomes per profile are source/binary-bound. See the
+[draft delivery receipt](evidence/UV_QUAD_DRAFT_DELIVERY_20261108.json).
+The initial required-gate failure is a missing new CMake inventory entry;
+the corrected candidate records that one generated input without changing
+production sources/build targets. Remote statuses/check-runs are absent, not green.
+This research checkpoint publishes status/evidence only; the code remains in
+the draft branch and has not been merged into `quad-templates` or main.

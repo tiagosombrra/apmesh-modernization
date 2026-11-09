@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "source_revision": "1178720474c4b6efae37d01534648a1a8788ed2d",
+  "status": "exact_checkpoint_full_regression_passed",
+  "ctest": 75,
+  "python": 527,
+  "failures": 0,
+  "skips": 0,
+  "commands": [
+    "python3 tools/validation_session.py plan --scope delivery --base 97536dd75305251218dbdfe0da354e33a76717e5",
+    "python3 tools/validation_session.py run --scope delivery --base 97536dd75305251218dbdfe0da354e33a76717e5"
+  ],
+  "artifacts": {
+    "build/validation-session/1794183628156915697-c7e2a714/report.json": "44a103ed90cbb2310171c71ea2f74675aaaf6f19cf7f7455ab040329442cd386",
+    "build/validation-session/1794183628156915697-c7e2a714/plan.json": "cff2e96dd0dbde4b6ff562eb7b49c395c6c3f4b2960bbfdccb272cd72e9c324c",
+    "build/validation-session/1794183628156915697-c7e2a714/ctest.xml": "66505ccf98614a73513e8368a5253bb940d6f7d975471312174bb886fd683580",
+    "build/local-serial/Testing/Temporary/LastTest.log": "83e78739458da68ddad5f48263855e4c13ef9fa5ef571fc97998a1678fde472a"
+  },
+  "limitations": [
+    "Local research checkpoint qualification; not main or whole Stage 3 closure",
+    "Remote statuses/check-runs absent; no hosted CI pass inferred",
+    "Scientific/memory capture reuse requires unchanged relevant identities"
+  ],
+  "draft_pr": 185,
+  "draft_pr_url": "https://github.com/tiagosombrra/apmesh-modernization/pull/185",
+  "head": "1178720474c4b6efae37d01534648a1a8788ed2d",
+  "base_at_review_creation": "97536dd75305251218dbdfe0da354e33a76717e5",
+  "quad_contracts": {
+    "native_outcomes_per_profile": 117,
+    "profiles": [
+      "GNU13.3 Linux",
+      "GNU16.1 Windows",
+      "MSVC19.44 Debug"
+    ],
+    "reuse": "Code/build source hashes and qualified native images retained from e88081d; subsequent changes are documentation/generated inventory only"
+  },
+  "remote_checks": {
+    "commit_statuses": 0,
+    "check_runs": 0,
+    "interpretation": "No hosted CI evidence; local gates are authoritative"
+  },
+  "production_changes": false,
+  "integrated": false,
+  "publication_guard": "Research documentation checkpoint must pass its own exact-head baseline and remote readback; no prototype integration claimed"
+}
