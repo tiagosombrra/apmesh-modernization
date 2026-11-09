@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 664,
+    "literal_include_directives": 665,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -376,7 +376,7 @@
     "execinfo.h": 1,
     "filesystem": 1,
     "fstream": 10,
-    "functional": 1,
+    "functional": 2,
     "initializer_list": 1,
     "iomanip": 2,
     "iostream": 11,
@@ -484,7 +484,7 @@
     },
     {
       "path": "tests/quad/CMakeLists.txt",
-      "sha256": "eba0568933116d3d2db73ebc0446cabad785782ba430c63afbf8c659c0bba3e7"
+      "sha256": "91377905e0dfe726e1ec8e1f5ff26ca237c45c3d0079f4ce4c68c64e02925d53"
     },
     {
       "path": "tests/second_edge_memory/CMakeLists.txt",
@@ -862,81 +862,88 @@
       "path": "include/crab_mesh/aft/advancing_front.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "64617a4b0fab486228b20f69e156c45b81710f09f82c71bdd72f319f90fecfe7",
-      "bytes": 5344,
+      "sha256": "c255e84e2f955b87905265bb62410ef6ef4dd81a277dfe3f1c6d70cdb98bf831",
+      "bytes": 5802,
       "includes": [
         {
           "line": 4,
-          "spelling": "optional",
+          "spelling": "functional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 5,
-          "spelling": "string",
+          "spelling": "optional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 6,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 7,
           "spelling": "../../data/definitions.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/definitions.h"
         },
         {
-          "line": 7,
+          "line": 8,
           "spelling": "boundary.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/boundary.h"
         },
         {
-          "line": 8,
+          "line": 9,
           "spelling": "edge.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/edge.h"
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "face.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/face.h"
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "quadtree.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/quadtree.h"
         },
         {
-          "line": 11,
+          "line": 12,
           "spelling": "quadtree_cell.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/quadtree_cell.h"
         },
         {
-          "line": 12,
+          "line": 13,
           "spelling": "shape.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/shape.h"
         },
         {
-          "line": 13,
+          "line": 14,
           "spelling": "smoothing_adjacency.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/smoothing_adjacency.h"
         },
         {
-          "line": 14,
+          "line": 15,
           "spelling": "vertex.h",
           "form": "quote",
           "scope": "first_party",
@@ -4139,8 +4146,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "4182dddf1290f984f7c6c4718cbf13c7f9e6e068a55d7f2bdfcafb40c70b7c44",
-      "bytes": 49203,
+      "sha256": "48e1dcc1e8e4f30e730c5ac49bc562242e06fb5db18b7c4888b810ebcf5d5471",
+      "bytes": 49501,
       "includes": [
         {
           "line": 1,
