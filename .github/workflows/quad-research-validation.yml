@@ -1,0 +1,100 @@
+name: QUAD research native validation
+
+on:
+  push:
+    branches:
+      - 'quad/integration-*'
+  pull_request:
+    branches: [quad-templates]
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quad-research-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  quad-native:
+    name: QUAD native (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    steps:
+      - name: Check out exact candidate
+        uses: actions/checkout@v4
+      - name: Identify revision
+        shell: bash
+        run: |
+          git rev-parse HEAD
+          git status --short
+      - name: Configure and build native QUAD (Linux GCC)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          cmake -S tests/quad -B build/quad-ci-linux -G Ninja -DCMAKE_BUILD_TYPE=Debug -DAP_MESH_QUAD_WITH_TREE=ON
+          cmake --build build/quad-ci-linux --parallel 2
+      - name: Run native QUAD contracts (Linux GCC)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          ctest --test-dir build/quad-ci-linux --output-on-failure --no-tests=error
+          ./build/quad-ci-linux/quad_tree_demo "$RUNNER_TEMP/quad-native-tree.obj"
+      - name: Configure and build native QUAD (Windows MSVC)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          cmake -S tests/quad -B build/quad-ci-msvc -G "Visual Studio 17 2022" -A x64 -DAP_MESH_QUAD_WITH_TREE=ON
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build build/quad-ci-msvc --config Debug --parallel 2
+          exit $LASTEXITCODE
+      - name: Run native QUAD contracts (Windows MSVC)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          ctest --test-dir build/quad-ci-msvc -C Debug --output-on-failure --no-tests=error
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "build/quad-ci-msvc/Debug/quad_tree_demo.exe" "$env:RUNNER_TEMP/quad-native-tree.obj"
+          exit $LASTEXITCODE
+      - name: Publish bounded test logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-failure-${{ matrix.os }}-${{ github.sha }}
+          path: |
+            build/quad-ci-linux/Testing/Temporary/LastTest.log
+            build/quad-ci-msvc/Testing/Temporary/LastTest.log
+          if-no-files-found: ignore
+          retention-days: 7
+  baseline-linux:
+    name: TRI baseline and tooling controls (Linux)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Check out exact candidate
+        uses: actions/checkout@v4
+      - name: Build unchanged TRI application and contract targets
+        shell: bash
+        run: |
+          cmake --preset local-serial
+          cmake --build --preset local-serial --parallel 2
+      - name: Run full CTest baseline
+        shell: bash
+        run: ctest --preset local-serial --output-on-failure --no-tests=error
+      - name: Run tooling Python controls
+        shell: bash
+        run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
+      - name: Publish bounded baseline logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tri-failure-${{ github.sha }}
+          path: |
+            build/local-serial/Testing/Temporary/LastTest.log
+          if-no-files-found: ignore
+          retention-days: 7
