@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-10 (PR #185 pre-merge review; no scientific milestone advanced)
+**Last session:** 2026-11-09-15 (Eistute/Book exact comparison passed; artifact upload repaired and rerunning)
 
 **Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
 
@@ -68,9 +68,42 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - **No native tests rerun and no code or PR branch changed in this ChatGPT session.** Existing native/regression reports are historical. Shell Git access to GitHub was unavailable here; all verified reads/writes used the connected GitHub integration.
 - Next gate: non-destructive reconciliation of the research-branch and PR history, followed by full exact-candidate QUAD + TRI baseline qualification before integrating code into `quad-templates`. Scientific interior-point choice and production opt-in remain open; `main` stays untouched.
 
+## 2026-11-09-11 reconciled PR #185 candidate (validation pending)
+
+- [Exact-head candidate/runbook](PR185_RECONCILED_CANDIDATE_20261109.md) identifies merge commit `c57749e8691907bc25575114191f20782ba16248` on `quad/integration-pr185-20261109`, with parents `37a5771a396ff14dfda1647875df144773d1f9ad` (canonical research) and `bb50b161cad0121402cc61475442b32aef33d2bd` (draft PR #185). The candidate preserves full ancestry, canonical checkpoint files and exact candidate C++/test blobs.
+- Remote compare confirms exactly 12 feature files over the prior research base; `main` and the original PR branch have not been changed. This is structural reconciliation, **not** scientific approval.
+- **Blocked validation:** no native C++ build, no new 117+30 QUAD outcome run, no 75 CTest/527 Python run and no MSVC/WSL/production oracle requalification here. Shell Git cannot resolve GitHub; hosted workflows are prohibited by repository policy. Existing historical results remain historical.
+- Next action is to run the recorded gates on the exact candidate SHA in a clean native worktree, publish complete bounded evidence, and only then consider integrating into `quad-templates`.
+
+## 2026-11-09-12 scoped remote CI available
+
+- Owner-authorized, bounded public GitHub Actions CI is now enabled on the candidate via [workflow](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-pr185-20261109/.github/workflows/quad-research-validation.yml). The prohibition in `AGENTS.md` was revised for free standard runners only (canonical policy commit `2709dd1135b2e751d17b402afcbb6ef4314c9891`).
+- [Live remote CI receipt](REMOTE_CI_SETUP_20261109.md) preserves run #42629394523: native Linux QUAD and Windows QUAD jobs **success**; TRI baseline **in progress** when read. A second run #42629587785 for latest feature SHA `73184eb3eb25b2f73452737753cb707c092f18f0` was **pending**. Do not infer a completed exact-final-head gate.
+- The workflow is implementation infrastructure, not an alteration of the scientific algorithm. Full delivery regression/scientific oracle qualification, reviewers and branch integration remain open.
+
+## 2026-11-09-13 first CI failure and environment-only repair
+
+- First CI [run #42629394523](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42629394523) on `098b8aeb...`: Linux and Windows QUAD CTest each passed both tests (2/2 per platform), with example 19 leaves /42 quads /53 UV vertices /area 0.25. The TRI baseline CTest completed **67/75 passing, eight failing**. Seven affected entries required historical Git objects unavailable in shallow `checkout`; the `tooling.tidy_header_scope` entry required newer Clang tooling. The run is a **failed CI attempt**, retained without concealing any original gate.
+- Fixed only the GitHub Actions runner setup: `fetch-depth: 0` and pinned `clang-tidy==22.1.8`, `clang-format==22.1.8`; candidate workflow commit `1f87f8c270df5da0bd662fa147db32cb76fb44de`, canonical workflow update `aed5e517d897d0d8acd27208dab61cdfe13693e9`. No scientific test, C++ source or acceptance oracle modified.
+- [Corrected CI run #42630886815](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42630886815), SHA `1f87f8c270df5da0bd662fa147db32cb76fb44de`: **in_progress** when inspected; no passing final-head delivery conclusion yet. The previous policy-head run was superseded/cancelled in its TRI baseline. Future conversations must read the latest remote run status instead of these snapshots.
+
+## 2026-11-09-14 final native CI pass and scientific equivalence launch
+
+- [Run #42630886815](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42630886815) **completed success** on `1f87f8c270df5da0bd662fa147db32cb76fb44de`. Checked complete job logs: Linux native QUAD CTest 2/2; Windows MSVC native QUAD CTest 2/2; reference TRI application compiled; 75/75 CTest and 527/527 Python unittest controls passed, with no reported failures. Both QUAD demos emitted 19 source leaves, 42 quads, 53 UV vertices and area 0.25.
+- [Experimental scientific comparison run #42633924826](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42633924826) launched on candidate workflow commit `602f04a26c28a163c179969763eef2813351634e`; added a separate Linux job that builds frozen `main=f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` and candidate with the same compiler/flags, executes Eistute and Book with original 300s model budgets, independently validates full accepted/rejected states and boundary incidences, then requires byte-identical OBJ and exact comparison fields. **In progress**, no completed scientific pass claimed.
+- This historical-baseline comparison is an additional required gate; it does not replace original memory-sanitizer qualification, scientific adviser decisions, numerical centroid rule, boundary integration or independent M1–M3 review. The original PR #185 and `main` remain unchanged.
+
+## 2026-11-09-15 independently compared TRI science, archive repair underway
+
+- [Scientific run #42633924826](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42633924826) (candidate `602f04a26c28a163c179969763eef2813351634e`) compiled frozen TRI reference and candidate with matching GCC/flags; executable SHA-256 was **identical** `4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5`.
+- Both Eistute and Book reference/candidate model processes exited zero. The independent `verify_generation.py --baseline ... --require-boundary-coverage` step succeeded: Eistute five attempted states, 1168 triangles on last accepted step; Book four attempted states, 4256 triangles on last accepted step; OBJ SHA, acceptance fields, metrics and shared-boundary incidence matched exactly. The step's explicit five/four states and boundary coverage assertions passed.
+- **Whole workflow run is not green.** The following artifact-upload step rejected `../apmesh-tri-reference/...` relative paths outside the GitHub workspace. This is a publication/retention failure, not a numerical mismatch. Preserve the original failure report.
+- Corrected only the workflow artifact paths: baseline process receipts are copied into the candidate workspace before bounded upload. New [candidate commit `0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b`](https://github.com/tiagosombrra/apmesh-modernization/commit/0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b); [run #42634304685](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42634304685) was in progress at this checkpoint.
+- Full latest-head green CI, independent scientific evidence capture and original M1/M2/M3 research approvals are distinct; `main` and draft PR #185 remain unchanged.
+
 ## Next exact action
 
-Reconcile PR #185 with the current `quad-templates` history without losing session checkpoints, then execute exact-candidate QUAD and TRI regressions before any merge. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
+Inspect corrected CI run #42634304685 at `0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b`, including science artifact upload and final exact-head native/75 CTest/527 Python checks; then reconcile candidate with the latest research base, preserve all session history, and qualify the integrated candidate before touching PR #185 or `quad-templates` code. The source-history reconciliation remains isolated and preserves earlier `c57749e` ancestry. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
 
 ## Current M1 reconstruction
 

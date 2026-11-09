@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - 'quad/integration-*'
+  pull_request:
+    branches: [quad-templates]
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 permissions:

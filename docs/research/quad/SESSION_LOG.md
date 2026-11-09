@@ -166,3 +166,48 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Executed:** live GitHub reads and targeted source inspection; new report and state committed/read back. **Not executed:** new native compilation, 117+30 QUAD test controls, 75 CTest/527 Python, scientific comparisons, merge, MSVC/WSL/local worktree inspection. Native Git network to github.com unavailable in this session. Absence of remote checks is not a passing check.
 
 **Next:** integrate base into feature safely while preserving both documentation histories, run exact merged-candidate gates, then review the PR for research-branch integration. Scientifically adopted centroid and production opt-in remain separate tasks.
+
+## 2026-11-09-11 — non-destructive PR #185 merge candidate
+
+**Entry:** researched current remote canonical base `37a5771a396ff14dfda1647875df144773d1f9ad` and PR #185 `bb50b161cad0121402cc61475442b32aef33d2bd`, with `main` separate. Native shell `git ls-remote` failed DNS for github.com; the authenticated GitHub connector remained usable. Repository policy rejects automatic/paid Actions.
+
+**Implemented:** Published the two-parent merge commit `c57749e8691907bc25575114191f20782ba16248` on isolated branch `quad/integration-pr185-20261109`. Started from the exact canonical research tree; inserted only the 12 exact feature blobs (seven `research/quad`, four `tests/quad`, one build inventory). The canonical `STATE.md`, `SESSION_LOG.md`, handoff protocol, roadmap and evidence were retained. GitHub compare verifies both parents are ancestors and only the intended feature paths differ from the initial canonical base. No force update, history discard, `main` change, original PR branch mutation, production `src/` modification or algorithmic formula change.
+
+**Gate result:** Structural reconciliation passed remote readback. **NOT RUN:** native compile, standalone QUAD checks, 75/527 application baseline, scientific Eistute/Book captures, MSVC/WSL, memory and remote CI (none configured/permitted). No gate was silently declared green. See [candidate and exact qualification commands](PR185_RECONCILED_CANDIDATE_20261109.md).
+
+**Next action:** run the specified clean-worktree exact-head native qualification and retain raw reports/hashes. Only after passed gates/review integrate code into `quad-templates`. Scientific M1/M2/M3 remain partial.
+
+## 2026-11-09-12 — owner-authorized public remote CI
+
+**Intent/constraint:** User requires end-to-end development and verification from ChatGPT, independent of their VS Code machine. GitHub connector writes work, while container shell DNS cannot resolve github.com. Research root `AGENTS.md` previously barred hosted workflows; user explicitly authorized necessary adjustments.
+
+**Implemented:** created scoped [QUAD research workflow](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-pr185-20261109/.github/workflows/quad-research-validation.yml) on isolated candidate in commit `098b8aeb12858567a9602a8d523bf844996a0461`. It uses free standard public repository Ubuntu/Windows runners, readonly contents access, short artifact retention, no secrets/paid runners/deployments/automerge. Candidate policy update `73184eb3eb25b2f73452737753cb707c092f18f0`; canonical `quad-templates` root `AGENTS.md`/`README.md` policy updated at `2709dd1135b2e751d17b402afcbb6ef4314c9891`. QUAD C++ sources and production `main` untouched.
+
+**Measured:** GitHub pushed workflow run #42629394523 on commit `098b8aeb...`: standalone Linux QUAD and Windows MSVC QUAD job steps completed successfully; full TRI baseline job still in progress. The final policy candidate run #42629587785 for `73184eb3...` is pending; exact-final-head validation is not claimed.
+
+**Open gates:** Actual TRI baseline completion, final feature-head CI logs, exact original 75 CTest/527 Python admission, Eistute/Book scientific comparisons and memory/ownership gates. No M1/M2/M3 closure, PR merge or main changes. See [bounded remote CI receipt](REMOTE_CI_SETUP_20261109.md).
+
+**Next:** inspect latest run jobs/logs, fix real failures without relaxing oracles, then publish exact candidate evidence for review.
+## 2026-11-09-13 — hosted TRI CTest first failure and environment repair
+
+**Observed:** Run #42629394523 executes both QUAD native jobs successfully (2/2 CTest per Linux GCC and Windows MSVC, demo 19/42/53/0.25). TRI baseline produces **67 passed / 8 failed of 75** CTest entries. Seven fail when tests call `git show` for historical frozen SHA/path records absent from shallow `actions/checkout`, including tooling.controls with six affected Python lookups. One scope check fails due runner's older clang-tidy rejecting `ExcludeHeaderFilterRegex`. Failure logs and bounded uploaded artifact are retained, with no changed scientific reference.
+
+**Correction:** Updated only workflow on candidate and scientific base with `fetch-depth: 0` and environment-local PyPI LLVM `clang-tidy==22.1.8`/`clang-format==22.1.8` wheels. Candidate `1f87f8c270df5da0bd662fa147db32cb76fb44de`; canonical `aed5e517d897d0d8acd27208dab61cdfe13693e9`. Superseded runs may be cancelled; do not recast them as passes. Corrected run #42630886815 launched.
+
+**Not yet qualified:** complete exact-candidate 75/527, independent Eistute/Book scientific comparisons and broader memory claims. No source, unit test or acceptance policy modified, no PR merge, no main update. Next read corrected CI and, if it passes, expand independent scientific qualification without relaxing gates.
+## 2026-11-09-14 — remote native qualification passed; physical TRI oracle campaign started
+
+**Measured complete CI:** [run #42630886815](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42630886815) on `1f87f8c270df5da0bd662fa147db32cb76fb44de` finished success. Inspected decoded GitHub job logs: Linux GCC QUAD 2/2 CTest, Windows MSVC QUAD 2/2 CTest; both demos 19 leaves, 42 QUADs, 53 UV vertices and 0.25 area. Linux production TRI build succeeded, 75/75 CTest succeeded, 527/527 Python `unittest` controls succeeded. Initial eight CI failures and environment fix remain documented separately; no failed evidence discarded.
+
+**New scientific check:** candidate `602f04a26c28a163c179969763eef2813351634e` adds only workflow job `scientific-tri-compare`: build original `main=f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` in a separate Git worktree and the candidate using the same Ubuntu compiler/flags, assert unchanged `src/`, `include/`, `configs/`; execute Eistute/Book with 300s caps per model; verify original and candidate using the existing independent geometry/quality/boundary checks and require equal accepted/rejected state trace, metrics, output OBJ bytes and positive boundary incidence. [Run #42633924826](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42633924826) launched; its outcome was **in progress** at checkpoint. Do not claim final equivalence prematurely.
+
+**Unexecuted/unqualified:** end-to-end scientific output comparison pending; full original owner/ASan/LSan/CRT campaigns on current CI are not included; neither historical point rule approval nor production QUAD opt-in exists. No PR merge or production `main` update; M1/M2/M3 remain partial. Next: inspect science job reports and fix real failures without lowering scientific oracles, then reconcile exact delivery candidate and continue review.
+## 2026-11-09-15 — independent Eistute/Book oracle pass; artifact upload defect
+
+**Executed science:** [workflow #42633924826](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42633924826), candidate `602f04a26c28a163c179969763eef2813351634e`, built baseline `f6050ec1...` and feature on one Ubuntu GCC runner with identical flags and binary SHA `4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5`. The four original model runs (reference/candidate Eistute, reference/candidate Book) exited zero. Independent `verify_generation.py` comparison step passed with exact accepted/rejected decisions, metrics, OBJ SHA-256 and boundary coverage; Eistute 5 attempted states and Book 4. Last accepted Eistute 1168 triangles, Book 4256; native generated sources remain identical.
+
+**Actual failure:** the subsequent artifact upload attempted an out-of-workspace `../` path, rejected by `actions/upload-artifact@v4`. Preserve whole job status as **failure** despite passing numerical comparison. This is not an excuse to ignore the failure or to relabel the whole run green. Earlier failure/cancellation and scientific pass step remain in GitHub job logs.
+
+**Repair:** only workflow packaging changed: copy bounded baseline process.json receipts into permitted candidate build directory and upload there. Feature commit `0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b`; corrected [run #42634304685](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42634304685) launched and remains to be inspected. No scientific tolerance, input, source, CLI budget or comparator altered.
+
+**Still open:** exact final commit run result, final integrated-base gate, independent memory/ownership scope and M1 historical numeric policy. PR #185 still draft; no code merged to `quad-templates` or modernized `main`. Next check corrected run and exact report, then reconcile source/history.
