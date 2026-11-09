@@ -12,6 +12,8 @@ struct RuntimeConfig {
   std::string write_mode = "h";
   std::string output_prefix;
   std::string use_template = "n";
+  // Mesh selection is separate from the historical template toggle.
+  std::string mesh_element_kind = "tri";
   std::string adaptive_mode = "adaptive_stable";
   double adaptive_intensity = 0.45;
   double adaptive_quality_priority = 0.75;

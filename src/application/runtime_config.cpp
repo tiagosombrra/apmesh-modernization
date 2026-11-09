@@ -69,6 +69,7 @@ RuntimeConfig LoadRuntimeConfig(const std::string& path) {
   config.write_mode = GetConfigValue(values, "WRITE_MODE", "h");
   config.output_prefix = GetConfigValue(values, "OUTPUT_PREFIX");
   config.use_template = GetConfigValue(values, "USE_TEMPLATE", "y");
+  config.mesh_element_kind = GetConfigValue(values, "MESH_ELEMENT_KIND", "tri");
   config.adaptive_mode = GetConfigValue(values, "ADAPTIVE_MODE", "adaptive_stable");
   config.adaptive_intensity = atof(GetConfigValue(values, "ADAPTIVE_INTENSITY", "0.45").c_str());
   config.adaptive_quality_priority =

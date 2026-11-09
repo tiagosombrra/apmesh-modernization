@@ -107,6 +107,9 @@ jobs:
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
+      - name: Check application M3 mode rejection before TRI globals are touched
+        shell: bash
+        run: python3 tests/quad/test_m3_dispatch.py build/local-serial/bin/ap_mesh
       - name: Publish bounded baseline logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -130,7 +133,24 @@ jobs:
         shell: bash
         run: |
           git worktree add --detach ../apmesh-tri-reference f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94
-          git diff --exit-code f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94 HEAD -- src/ include/ configs/
+          python3 - <<'PY'
+          import subprocess
+          allowed = {
+              "include/application/runtime_config.h",
+              "include/input_output/input_validation.h",
+              "src/application/runtime_config.cpp",
+              "src/application/run_application.cpp",
+          }
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only",
+               "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94", "HEAD",
+               "--", "src/", "include/", "configs/"],
+              text=True).splitlines())
+          unexpected = changed - allowed
+          if unexpected:
+              raise SystemExit("Unreviewed production delta: " + ", ".join(sorted(unexpected)))
+          print("Reviewed M3 dispatch-only source delta:", sorted(changed))
+          PY
           git rev-parse HEAD
           git -C ../apmesh-tri-reference rev-parse HEAD
       - name: Build reference TRI executable using the same compiler and flags

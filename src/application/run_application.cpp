@@ -39,6 +39,12 @@ int RunApplication(int argc, char** argv) {
   if (config_mode) {
     try {
       const RuntimeConfig config = LoadRuntimeConfig(argv[2]);
+      if (config.mesh_element_kind != "tri") {
+        // Reject incomplete QUAD mode before changing legacy global state.
+        throw std::runtime_error(
+            "MESH_ELEMENT_KIND=quad_uv requires an approved interior-point policy; "
+            "experimental QUAD output is not yet available from the application");
+      }
       ApplyRuntimeConfig(config);
 
 #if USE_MPI
