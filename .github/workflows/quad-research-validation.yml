@@ -163,6 +163,16 @@ jobs:
               assert result["boundary_regression"] == "exact", (model, result)
               assert result["boundary_incidence_coverage"] == "verified", (model, result)
           PY
+      - name: Copy reference identity receipts into artifact workspace
+        if: always()
+        shell: bash
+        run: |
+          if test -f ../apmesh-tri-reference/build/science-reference/eistute/process.json; then
+            cp ../apmesh-tri-reference/build/science-reference/eistute/process.json build/science-candidate/reference-eistute-process.json
+          fi
+          if test -f ../apmesh-tri-reference/build/science-reference/book/process.json; then
+            cp ../apmesh-tri-reference/build/science-reference/book/process.json build/science-candidate/reference-book-process.json
+          fi
       - name: Retain bounded reports and failure logs
         if: always()
         uses: actions/upload-artifact@v4
@@ -174,7 +184,7 @@ jobs:
             build/science-candidate/book/process.json
             build/science-candidate/eistute/stderr.log
             build/science-candidate/book/stderr.log
-            ../apmesh-tri-reference/build/science-reference/eistute/process.json
-            ../apmesh-tri-reference/build/science-reference/book/process.json
+            build/science-candidate/reference-eistute-process.json
+            build/science-candidate/reference-book-process.json
           if-no-files-found: ignore
           retention-days: 7
