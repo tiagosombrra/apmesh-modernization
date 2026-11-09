@@ -258,3 +258,11 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Integration:** PR #187 review comment recorded, marked ready and merged to `quad-templates` as `43809cd03578eb03cdfb76b9b150a040ebf13288`. Verified its merge tree equals the tested candidate tree `64c8d440039aac16ee1e0302ce46bac76787d955`; modernization `main` remains `f6050ec1...`. Post-merge [Actions #42690813905](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42690813905) started but remains pending at checkpoint.
 
 **Limits:** The observed object is a mutable legacy `Quadtree&`; read-only is a caller contract, not type-enforced. No full QUAD generated, no approved interior-point formula, no XYZ, complete boundary, multipatch, repeated adaptation or full sanitizer campaign. M1/M2/M3 stay partial. Next: inspect exact post-merge run and design M3-3 value-only patch-level observer registration before any experimental positive generation mode.
+
+## 2026-11-09-20 — post-merge M3-2 exact-head green and adapter insertion review
+
+**Run verified:** GitHub Actions [#42690813905](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42690813905) on merged code head `43809cd03578eb03cdfb76b9b150a040ebf13288` completed SUCCESS with four green jobs; Linux/Windows QUAD each 4/4 CTest, TRI 75/75 CTest, Python 527/527, M3-1 real CLI negatives 7/7, Eistute/Book nine state exact OBJ/acceptance/boundary equivalence. Earlier pending checkpoint superseded without erasing prior negative CI attempt.
+
+**Research:** audited `src/adapter/adapter.cpp` and located both actual `AdvancingFront` entry points: `AdaptDomainOmp` line ~903/execute ~1038, and retry-aware `AdaptDomain` line ~1291/execute ~1393, sharing `ConfigureAdvancingFront` line ~1719. Published [M3-3 adapter capture review](M3_ADAPTER_CAPTURE_REVIEW_20261109.md), no new production code.
+
+**Closure:** M3-2 observer seam and first experimental call path qualified in tested scope; `main=f6050ec1...` unchanged. M1/M2/M3 remain partial. The legacy callback still exposes mutable `Quadtree&`, so true compile-time read-only proof is absent; value-owned attempt captures with provenance are the next M3-3 deliverable. No approved interior point/UV->XYZ/boundary/multipatch/adaptation or full sanitizer claim.

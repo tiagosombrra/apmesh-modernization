@@ -64,7 +64,21 @@
   "post_merge": {
     "run": 42690813905,
     "sha": "43809cd03578eb03cdfb76b9b150a040ebf13288",
-    "result": "in_progress_at_checkpoint"
+    "result": "success",
+    "prior_checkpoint_status": "in_progress_at_checkpoint",
+    "jobs_passed": 4,
+    "linux_quad_ctest": "4/4",
+    "windows_msvc_quad_ctest": "4/4",
+    "tri_linux_ctest": "75/75",
+    "python_tooling": "527/527",
+    "m3_1_cli_denials": "7/7",
+    "science": {
+      "eistute_compared_states": 5,
+      "book_compared_states": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "boundary_incidence_coverage": "verified"
+    }
   },
   "non_claims": [
     "No production QUAD elements emitted",

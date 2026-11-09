@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-19 (M3-2 refined quadtree observer merged and pre-merge CI qualified; post-merge CI pending)
+**Last session:** 2026-11-09-20 (M3-2 exact post-merge CI passed; M3-3 adapter sites reviewed, not implemented)
 
 **Current milestone:** **M3-2 refined-Quadtree synchronous observer integrated in `AdvancingFront` via PR #187, after M3-1 fail-closed selector via PR #186 and UV bridge via PR #185. No production QUAD emission is enabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
 
@@ -129,9 +129,16 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - **Remaining limit:** the observer receives a legacy mutable `Quadtree&`, so read-only is a documented/tested contract rather than compiler-enforced constness. No numerical point rule, QUAD emission, physical XYZ, boundary completion, multipatch or adaptation is adopted. M1/M2/M3 remain partial.
 - [Post-merge CI #42690813905](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42690813905) had **not finished** at checkpoint; check it before representing the merged revision as separately requalified.
 
+## 2026-11-09-20 — M3-2 post-merge gate closed, M3-3 adapter sites reviewed
+
+- [GitHub Actions #42690813905](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42690813905) on exact merged SHA `43809cd03578eb03cdfb76b9b150a040ebf13288` completed **SUCCESS**, 4/4 jobs: Linux QUAD 4/4, Windows MSVC QUAD 4/4, TRI 75/75 CTest, Python 527/527, CLI negatives 7/7; Eistute/Book five/four state exact OBJ/acceptance/boundary equivalence. This supersedes the prior pending post-merge status.
+- [M3-2 exact-head evidence](evidence/M3_REFINED_OBSERVER_20261109.json) and [review](M3_REFINED_OBSERVER_20261109.md) now record both pre-merge and post-merge results and retained failed test prefix. No full QUAD was generated.
+- [M3-3 adapter entrypoint review](M3_ADAPTER_CAPTURE_REVIEW_20261109.md) found two actual sites in `Adapter::AdaptDomainOmp` and retry-aware `Adapter::AdaptDomain`, both using `ConfigureAdvancingFront`. A future value-only snapshot must carry patch/step/retry/attempt provenance and must not conflate accepted/rejected candidates.
+- Full const-correctness, numerical interior-point policy, boundary inclusion, physical UV-to-XYZ, shared-curve synchronization, adaptation and sanitizer campaigns remain open. M1/M2/M3 stay partial.
+
 ## Next exact action
 
-Inspect exact merged-head CI #42690813905 and preserve any failure. Then develop separately gated M3-3 generator/patch-level registration using value-owned, lifetime-independent QUAD UV capture; keep TRI default unchanged and QUAD output fail-closed pending the approved interior-point policy.
+Implement M3-3 in a new isolated PR: introduce **explicit, non-default** value-owned UV capture registration at the common `Adapter::ConfigureAdvancingFront` seam, covering both OMP and retry-aware paths without global state. Preserve patch/step/retry/attempt provenance and accepted/rejected semantics. Do not enable production `quad_uv` emission or select an unapproved numerical point; run exact-head QUAD Linux/MSVC and frozen TRI 75/527 + Eistute/Book gates before merge.
 
 ## Current M1 reconstruction
 

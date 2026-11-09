@@ -1,6 +1,6 @@
 # M3-2 — Refined Quadtree observation in the live AFT execution (2026-11-09)
 
-**Status:** PR [#187](https://github.com/tiagosombrra/apmesh-modernization/pull/187) merged into `quad-templates`; exact PR head CI passed in scope; post-merge CI [#42690813905](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42690813905) in_progress_at_checkpoint. This is an **opt-in observer seam**, not a physical or complete QUAD generator.
+**Status:** PR [#187](https://github.com/tiagosombrra/apmesh-modernization/pull/187) merged into `quad-templates`; exact PR head CI passed in scope; post-merge CI [#42690813905](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42690813905) **SUCCESS on exact merge head**. This is an **opt-in observer seam**, not a physical or complete QUAD generator.
 
 ## Implemented
 
@@ -26,4 +26,10 @@ The callback receives legacy mutable `Quadtree&`. **Read-only is a caller contra
 
 No centroid/interior-point rule was approved, and the CLI does not generate QUAD output. Boundary leaves remain excluded from the current UV bridge; the existing standalone disk validator and later physical/multipatch/adaptation milestones are unchanged. Full ASan/LSan/CRT and allocation-fault campaigns remain unqualified.
 
-**Next:** close the exact merged-commit CI gate, then implement M3-3: value-only patch-level capture registration from the generator without touching the default TRI publication/acceptance path. Preserve source owners, timestamps, patch order, and error/rollback semantics.
+**Next:** implement M3-3: value-only patch-level capture registration from the generator without touching the default TRI publication/acceptance path. Preserve source owners, timestamps, patch order, and error/rollback semantics.
+
+## Final post-merge exact-head CI closure — session 20
+
+[Run #42690813905](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42690813905) completed **SUCCESS** on merged source SHA `43809cd03578eb03cdfb76b9b150a040ebf13288`, with all four jobs passing: GCC QUAD **4/4**, MSVC QUAD **4/4**, serial TRI **75/75 CTest**, tooling **527/527 Python** and **7/7** M3-1 rejection cases. Frozen Eistute/Book comparison retained five/four states, identical OBJ bytes/acceptance decisions and verified boundary incidence. All claims apply only to the tested research scope, not numerical centroid/physical QUAD/multipatch or whole-process memory safety.
+
+The next implementation boundary has been independently mapped in [M3-3 adapter review](M3_ADAPTER_CAPTURE_REVIEW_20261109.md): both `Adapter::AdaptDomainOmp` and retry-aware `Adapter::AdaptDomain` share `ConfigureAdvancingFront`. A future research-only registration must capture value-owned results per attempt and keep accepted/rejected trace separation.
