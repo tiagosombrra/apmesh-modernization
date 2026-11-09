@@ -97,8 +97,11 @@ remain open; stages 4-11 are pending.
 All new first-party code and documentation are English. Historical names and
 interfaces migrate in reviewed batches. Production serial code will ultimately
 depend only on the C++ standard library; Eigen is still present in this import.
-No paid Actions or hosted workflows are configured. Checks run locally and
-compact evidence is retained in Git. Read AGENTS.md before making changes.
+No paid or larger GitHub-hosted runners are authorized. A narrowly scoped
+QUAD research candidate workflow now runs standard public-repository hosted
+GCC/Linux and MSVC/Windows checks; the remaining scientific and memory gates
+still require documented independent qualification. Local checks remain supported
+and compact evidence is retained in Git. Read AGENTS.md before making changes.
 
 The original license, citation and third-party notices are retained. Historical
 artifacts, failed runs and unmeasured coverage must remain distinguishable from
