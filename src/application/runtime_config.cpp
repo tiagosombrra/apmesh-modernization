@@ -41,7 +41,16 @@ std::unordered_map<std::string, std::string> ReadConfigFile(const std::string& p
     }
     const std::string key = Trim(trimmed.substr(0, equal_pos));
     const std::string value = Trim(trimmed.substr(equal_pos + 1));
-    apmesh::io::ValidateConfigValue(key, value);
+    if (key == "MESH_ELEMENT_KIND") {
+      if (value.empty()) {
+        throw std::runtime_error("Empty configuration value for MESH_ELEMENT_KIND");
+      }
+      if (!IsSupportedMeshElementKind(value)) {
+        throw std::runtime_error("Unsupported configuration value for MESH_ELEMENT_KIND: " + value);
+      }
+    } else {
+      apmesh::io::ValidateConfigValue(key, value);
+    }
     if (!values.emplace(key, value).second) {
       throw std::runtime_error("Duplicate configuration key: " + key);
     }
@@ -69,6 +78,7 @@ RuntimeConfig LoadRuntimeConfig(const std::string& path) {
   config.write_mode = GetConfigValue(values, "WRITE_MODE", "h");
   config.output_prefix = GetConfigValue(values, "OUTPUT_PREFIX");
   config.use_template = GetConfigValue(values, "USE_TEMPLATE", "y");
+  config.mesh_element_kind = GetConfigValue(values, "MESH_ELEMENT_KIND", "tri");
   config.adaptive_mode = GetConfigValue(values, "ADAPTIVE_MODE", "adaptive_stable");
   config.adaptive_intensity = atof(GetConfigValue(values, "ADAPTIVE_INTENSITY", "0.45").c_str());
   config.adaptive_quality_priority =

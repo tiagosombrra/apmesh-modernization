@@ -5,6 +5,11 @@
 #include "application/generation_context.h"
 
 namespace apmesh::application {
+// Keep the experimental selection independent of frozen legacy input validation.
+inline bool IsSupportedMeshElementKind(const std::string& mode) noexcept {
+  return mode == "tri" || mode == "quad_uv";
+}
+
 struct RuntimeConfig {
   int num_processes = 1;
   int num_threads = 1;
@@ -12,6 +17,8 @@ struct RuntimeConfig {
   std::string write_mode = "h";
   std::string output_prefix;
   std::string use_template = "n";
+  // Mesh selection is separate from the historical template toggle.
+  std::string mesh_element_kind = "tri";
   std::string adaptive_mode = "adaptive_stable";
   double adaptive_intensity = 0.45;
   double adaptive_quality_priority = 0.75;
