@@ -176,3 +176,15 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Gate result:** Structural reconciliation passed remote readback. **NOT RUN:** native compile, standalone QUAD checks, 75/527 application baseline, scientific Eistute/Book captures, MSVC/WSL, memory and remote CI (none configured/permitted). No gate was silently declared green. See [candidate and exact qualification commands](PR185_RECONCILED_CANDIDATE_20261109.md).
 
 **Next action:** run the specified clean-worktree exact-head native qualification and retain raw reports/hashes. Only after passed gates/review integrate code into `quad-templates`. Scientific M1/M2/M3 remain partial.
+
+## 2026-11-09-12 — owner-authorized public remote CI
+
+**Intent/constraint:** User requires end-to-end development and verification from ChatGPT, independent of their VS Code machine. GitHub connector writes work, while container shell DNS cannot resolve github.com. Research root `AGENTS.md` previously barred hosted workflows; user explicitly authorized necessary adjustments.
+
+**Implemented:** created scoped [QUAD research workflow](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-pr185-20261109/.github/workflows/quad-research-validation.yml) on isolated candidate in commit `098b8aeb12858567a9602a8d523bf844996a0461`. It uses free standard public repository Ubuntu/Windows runners, readonly contents access, short artifact retention, no secrets/paid runners/deployments/automerge. Candidate policy update `73184eb3eb25b2f73452737753cb707c092f18f0`; canonical `quad-templates` root `AGENTS.md`/`README.md` policy updated at `2709dd1135b2e751d17b402afcbb6ef4314c9891`. QUAD C++ sources and production `main` untouched.
+
+**Measured:** GitHub pushed workflow run #42629394523 on commit `098b8aeb...`: standalone Linux QUAD and Windows MSVC QUAD job steps completed successfully; full TRI baseline job still in progress. The final policy candidate run #42629587785 for `73184eb3...` is pending; exact-final-head validation is not claimed.
+
+**Open gates:** Actual TRI baseline completion, final feature-head CI logs, exact original 75 CTest/527 Python admission, Eistute/Book scientific comparisons and memory/ownership gates. No M1/M2/M3 closure, PR merge or main changes. See [bounded remote CI receipt](REMOTE_CI_SETUP_20261109.md).
+
+**Next:** inspect latest run jobs/logs, fix real failures without relaxing oracles, then publish exact candidate evidence for review.

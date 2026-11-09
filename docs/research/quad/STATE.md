@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-11 (PR #185 reconciled candidate; native qualification blocked, no milestone advanced)
+**Last session:** 2026-11-09-12 (remote Linux/MSVC CI enabled; full qualification pending)
 
 **Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
 
@@ -75,9 +75,15 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - **Blocked validation:** no native C++ build, no new 117+30 QUAD outcome run, no 75 CTest/527 Python run and no MSVC/WSL/production oracle requalification here. Shell Git cannot resolve GitHub; hosted workflows are prohibited by repository policy. Existing historical results remain historical.
 - Next action is to run the recorded gates on the exact candidate SHA in a clean native worktree, publish complete bounded evidence, and only then consider integrating into `quad-templates`.
 
+## 2026-11-09-12 scoped remote CI available
+
+- Owner-authorized, bounded public GitHub Actions CI is now enabled on the candidate via [workflow](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-pr185-20261109/.github/workflows/quad-research-validation.yml). The prohibition in `AGENTS.md` was revised for free standard runners only (canonical policy commit `2709dd1135b2e751d17b402afcbb6ef4314c9891`).
+- [Live remote CI receipt](REMOTE_CI_SETUP_20261109.md) preserves run #42629394523: native Linux QUAD and Windows QUAD jobs **success**; TRI baseline **in progress** when read. A second run #42629587785 for latest feature SHA `73184eb3eb25b2f73452737753cb707c092f18f0` was **pending**. Do not infer a completed exact-final-head gate.
+- The workflow is implementation infrastructure, not an alteration of the scientific algorithm. Full delivery regression/scientific oracle qualification, reviewers and branch integration remain open.
+
 ## Next exact action
 
-Run exact-candidate QUAD and TRI regressions on reconciled commit `c57749e8691907bc25575114191f20782ba16248` in a clean native checkout, preserving all failure evidence. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
+Inspect the GitHub Actions results for latest candidate `73184eb3eb25b2f73452737753cb707c092f18f0`, reconcile any native or TRI failures against the exact SHA and independently complete the required delivery/scientific regression gates before merging. The source-history reconciliation remains isolated and preserves earlier `c57749e` ancestry. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
 
 ## Current M1 reconstruction
 
