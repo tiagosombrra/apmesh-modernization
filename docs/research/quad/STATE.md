@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-18 (M3-1 fail-closed mesh-kind config integrated; post-merge CI running)
+**Last session:** 2026-11-09-19 (M3-2 refined quadtree observer merged and pre-merge CI qualified; post-merge CI pending)
 
-**Current milestone:** **M3-1 application TRI/QUAD selector integrated as a fail-closed config gate via PR #186, building on the isolated UV bridge of PR #185. No production QUAD emission is enabled. M0 remains qualified; M1/M2/M3 remain PARTIAL.**
+**Current milestone:** **M3-2 refined-Quadtree synchronous observer integrated in `AdvancingFront` via PR #187, after M3-1 fail-closed selector via PR #186 and UV bridge via PR #185. No production QUAD emission is enabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -121,9 +121,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - `MESH_ELEMENT_KIND=tri` is optional/default. `MESH_ELEMENT_KIND=quad_uv` is recognized separately from `USE_TEMPLATE`, but **explicitly refused before `ApplyRuntimeConfig`** because no approved interior-point point rule/complete production contract exists. This is not a positive physical QUAD mode and does not close M3.
 - [Post-merge Actions #42681339818](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42681339818) was **in progress** at this checkpoint, not considered qualified until all jobs report success.
 
+## 2026-11-09-19 — M3-2 live refined-quadtree observation
+
+- [PR #187](https://github.com/tiagosombrra/apmesh-modernization/pull/187) merged into `quad-templates` as `43809cd03578eb03cdfb76b9b150a040ebf13288`, source tree matches reviewed head `cd5825c19d976be0b9197428d8e77cc79b51c897`; `main` unchanged.
+- [M3-2 evidence](evidence/M3_REFINED_OBSERVER_20261109.json) and [technical audit](M3_REFINED_OBSERVER_20261109.md) record native [CI #42689321763](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42689321763): Linux QUAD 4/4 CTest, Windows MSVC QUAD 4/4 CTest, TRI 75/75 CTest, Python 527/527, 7/7 CLI refusals and Eistute/Book 5/4 frozen-object equivalence. Four jobs **SUCCESS** on exact feature head.
+- The callback runs after successful 2:1 neighbor refinement and before TRI template publication. Test includes a real live `AdvancingFront` traversal, an intentional exception before TRI publication and a no-observer TRI generation. A test-only max-level cap fixes an earlier runaway synthetic edge fixture; initial timeout/crash and CI failures are retained, not hidden.
+- **Remaining limit:** the observer receives a legacy mutable `Quadtree&`, so read-only is a documented/tested contract rather than compiler-enforced constness. No numerical point rule, QUAD emission, physical XYZ, boundary completion, multipatch or adaptation is adopted. M1/M2/M3 remain partial.
+- [Post-merge CI #42690813905](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42690813905) had **not finished** at checkpoint; check it before representing the merged revision as separately requalified.
+
 ## Next exact action
 
-Inspect final result for post-merge Actions #42681339818, preserving all failure evidence. Then implement separately gated M3-2 read-only Quadtree capture after neighbor refinement and before TRI template publication, with explicit caller callback and no invented centroid, maintaining default TRI byte-equivalence. Prepare the numerical policy/oracle decision for the advisers and keep M4/M5/M6/M7 separate.
+Inspect exact merged-head CI #42690813905 and preserve any failure. Then develop separately gated M3-3 generator/patch-level registration using value-owned, lifetime-independent QUAD UV capture; keep TRI default unchanged and QUAD output fail-closed pending the approved interior-point policy.
 
 ## Current M1 reconstruction
 

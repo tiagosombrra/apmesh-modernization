@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "date": "2026-11-09",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "stage": "M3-2",
+  "claim": "Synchronous opt-in refined-quadtree observer integrated into research branch; experimental QUAD generation remains fail-closed.",
+  "research_branch": "quad-templates",
+  "pr": 187,
+  "feature_branch": "quad/integration-m3-refined-observer-20261109",
+  "candidate_sha": "cd5825c19d976be0b9197428d8e77cc79b51c897",
+  "merge_sha": "43809cd03578eb03cdfb76b9b150a040ebf13288",
+  "merge_tree_sha": "64c8d440039aac16ee1e0302ce46bac76787d955",
+  "merged_source_tree_matches_reviewed_candidate": true,
+  "modernization_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "runtime_contract": {
+    "source": "src/crab_mesh/aft/advancing_front.cpp",
+    "entry": "AdvancingFront::execute",
+    "exact_seam": "after successful quadtree->refineAccordingToNeighbors(); before makeTemplateBasedMesh()",
+    "callback": "std::function<void(Quadtree&)>",
+    "default": "empty, does not invoke observer",
+    "lifetime": "borrowed only synchronously during callback; no mutation or retained pointers permitted by contract",
+    "read_only_limit": "Legacy callback receives mutable Quadtree&; const correctness is not compile-time enforced. Safety relies on reviewed caller and native nonmutation controls.",
+    "failure": "callback exceptions propagate before TRI template allocation; caller must abandon failed run safely",
+    "production_quad": "disabled, quad_uv mode remains explicitly rejected before ApplyRuntimeConfig",
+    "interior_rule": "none adopted"
+  },
+  "changed_paths": [
+    "include/crab_mesh/aft/advancing_front.h",
+    "src/crab_mesh/aft/advancing_front.cpp",
+    "tests/quad/CMakeLists.txt",
+    "tests/quad/refined_observer_contracts.cpp",
+    "docs/architecture/source_inventory.json",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "failed_prefix": {
+    "commit": "e7a68e2fa2b307116c3c4bd5083dbd0c25da8ce7",
+    "run": 42688580750,
+    "results": [
+      "Linux QUAD test timeout 30s on unrestricted synthetic boundary",
+      "MSVC QUAD test crashed after unrestricted synthetic boundary",
+      "old science source guard rejected new AFT source paths"
+    ],
+    "cause": "Synthetic null-curve boundary without refinement depth cap, plus unextended scoped source path guard",
+    "resolution": "Added maxLevelCap(3) exclusively in fixture and reviewed AFT paths to science guard. Retained all failed/cancelled logs."
+  },
+  "qualification": {
+    "run": 42689321763,
+    "sha": "cd5825c19d976be0b9197428d8e77cc79b51c897",
+    "result": "success",
+    "jobs_passed": 4,
+    "linux_quad_ctest": "4/4",
+    "windows_msvc_quad_ctest": "4/4",
+    "tri_linux_ctest": "75/75",
+    "python_tooling": "527/527",
+    "m3_1_cli_denials": "7/7",
+    "science": {
+      "eistute_states": 5,
+      "book_states": 4,
+      "all_obj_byte_identical": true,
+      "acceptance_equal": true,
+      "boundary_incidence_coverage": "verified"
+    }
+  },
+  "post_merge": {
+    "run": 42690813905,
+    "sha": "43809cd03578eb03cdfb76b9b150a040ebf13288",
+    "result": "in_progress_at_checkpoint"
+  },
+  "non_claims": [
+    "No production QUAD elements emitted",
+    "No numeric centroid/interior-point rule approved",
+    "No complete boundary, physical UV->XYZ, curvature, multipatch or repeated adaptation",
+    "No compile-time immutability guarantee for borrowed legacy Quadtree&",
+    "No whole-process ASan/LSan/CRT/memory-denial qualification"
+  ],
+  "research_milestones": {
+    "M0": "QUALIFIED in baseline scope",
+    "M1": "PARTIAL",
+    "M2": "PARTIAL",
+    "M3": "PARTIAL",
+    "M4": "PENDING",
+    "M5": "PENDING",
+    "M6": "PENDING",
+    "M7": "PENDING"
+  },
+  "next_exact_action": "Inspect post-merge CI #42690813905. Next M3-3: register a bounded, source-preserving value-snapshot consumer at the actual generator/patch boundary, without QUAD publication or scientific policy invention."
+}
