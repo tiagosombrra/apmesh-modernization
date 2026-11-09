@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
                                           {{0.5, 0.5}, {1.5, 0.5}}};
     const auto mesh = apmesh::quad::Subdivide(input);
     const auto summary = apmesh::quad::Validate(mesh, 2);
-    std::ofstream output(path);
+    std::ofstream output(path, std::ios::binary);
     apmesh::quad::WriteObj(output, mesh);
     output.close();
     if (!output) {
