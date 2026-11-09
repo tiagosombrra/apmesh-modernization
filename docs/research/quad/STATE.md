@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-10 (PR #185 pre-merge review; no scientific milestone advanced)
+**Last session:** 2026-11-09-11 (PR #185 reconciled candidate; native qualification blocked, no milestone advanced)
 
 **Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
 
@@ -68,9 +68,16 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - **No native tests rerun and no code or PR branch changed in this ChatGPT session.** Existing native/regression reports are historical. Shell Git access to GitHub was unavailable here; all verified reads/writes used the connected GitHub integration.
 - Next gate: non-destructive reconciliation of the research-branch and PR history, followed by full exact-candidate QUAD + TRI baseline qualification before integrating code into `quad-templates`. Scientific interior-point choice and production opt-in remain open; `main` stays untouched.
 
+## 2026-11-09-11 reconciled PR #185 candidate (validation pending)
+
+- [Exact-head candidate/runbook](PR185_RECONCILED_CANDIDATE_20261109.md) identifies merge commit `c57749e8691907bc25575114191f20782ba16248` on `quad/integration-pr185-20261109`, with parents `37a5771a396ff14dfda1647875df144773d1f9ad` (canonical research) and `bb50b161cad0121402cc61475442b32aef33d2bd` (draft PR #185). The candidate preserves full ancestry, canonical checkpoint files and exact candidate C++/test blobs.
+- Remote compare confirms exactly 12 feature files over the prior research base; `main` and the original PR branch have not been changed. This is structural reconciliation, **not** scientific approval.
+- **Blocked validation:** no native C++ build, no new 117+30 QUAD outcome run, no 75 CTest/527 Python run and no MSVC/WSL/production oracle requalification here. Shell Git cannot resolve GitHub; hosted workflows are prohibited by repository policy. Existing historical results remain historical.
+- Next action is to run the recorded gates on the exact candidate SHA in a clean native worktree, publish complete bounded evidence, and only then consider integrating into `quad-templates`.
+
 ## Next exact action
 
-Reconcile PR #185 with the current `quad-templates` history without losing session checkpoints, then execute exact-candidate QUAD and TRI regressions before any merge. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
+Run exact-candidate QUAD and TRI regressions on reconciled commit `c57749e8691907bc25575114191f20782ba16248` in a clean native checkout, preserving all failure evidence. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
 
 ## Current M1 reconstruction
 
