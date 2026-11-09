@@ -166,3 +166,13 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Executed:** live GitHub reads and targeted source inspection; new report and state committed/read back. **Not executed:** new native compilation, 117+30 QUAD test controls, 75 CTest/527 Python, scientific comparisons, merge, MSVC/WSL/local worktree inspection. Native Git network to github.com unavailable in this session. Absence of remote checks is not a passing check.
 
 **Next:** integrate base into feature safely while preserving both documentation histories, run exact merged-candidate gates, then review the PR for research-branch integration. Scientifically adopted centroid and production opt-in remain separate tasks.
+
+## 2026-11-09-11 — non-destructive PR #185 merge candidate
+
+**Entry:** researched current remote canonical base `37a5771a396ff14dfda1647875df144773d1f9ad` and PR #185 `bb50b161cad0121402cc61475442b32aef33d2bd`, with `main` separate. Native shell `git ls-remote` failed DNS for github.com; the authenticated GitHub connector remained usable. Repository policy rejects automatic/paid Actions.
+
+**Implemented:** Published the two-parent merge commit `c57749e8691907bc25575114191f20782ba16248` on isolated branch `quad/integration-pr185-20261109`. Started from the exact canonical research tree; inserted only the 12 exact feature blobs (seven `research/quad`, four `tests/quad`, one build inventory). The canonical `STATE.md`, `SESSION_LOG.md`, handoff protocol, roadmap and evidence were retained. GitHub compare verifies both parents are ancestors and only the intended feature paths differ from the initial canonical base. No force update, history discard, `main` change, original PR branch mutation, production `src/` modification or algorithmic formula change.
+
+**Gate result:** Structural reconciliation passed remote readback. **NOT RUN:** native compile, standalone QUAD checks, 75/527 application baseline, scientific Eistute/Book captures, MSVC/WSL, memory and remote CI (none configured/permitted). No gate was silently declared green. See [candidate and exact qualification commands](PR185_RECONCILED_CANDIDATE_20261109.md).
+
+**Next action:** run the specified clean-worktree exact-head native qualification and retain raw reports/hashes. Only after passed gates/review integrate code into `quad-templates`. Scientific M1/M2/M3 remain partial.
