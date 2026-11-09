@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-14 (full remote 75/527 and QUAD native passed; Eistute/Book comparison running)
+**Last session:** 2026-11-09-15 (Eistute/Book exact comparison passed; artifact upload repaired and rerunning)
 
 **Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
 
@@ -93,9 +93,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [Experimental scientific comparison run #42633924826](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42633924826) launched on candidate workflow commit `602f04a26c28a163c179969763eef2813351634e`; added a separate Linux job that builds frozen `main=f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` and candidate with the same compiler/flags, executes Eistute and Book with original 300s model budgets, independently validates full accepted/rejected states and boundary incidences, then requires byte-identical OBJ and exact comparison fields. **In progress**, no completed scientific pass claimed.
 - This historical-baseline comparison is an additional required gate; it does not replace original memory-sanitizer qualification, scientific adviser decisions, numerical centroid rule, boundary integration or independent M1–M3 review. The original PR #185 and `main` remain unchanged.
 
+## 2026-11-09-15 independently compared TRI science, archive repair underway
+
+- [Scientific run #42633924826](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42633924826) (candidate `602f04a26c28a163c179969763eef2813351634e`) compiled frozen TRI reference and candidate with matching GCC/flags; executable SHA-256 was **identical** `4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5`.
+- Both Eistute and Book reference/candidate model processes exited zero. The independent `verify_generation.py --baseline ... --require-boundary-coverage` step succeeded: Eistute five attempted states, 1168 triangles on last accepted step; Book four attempted states, 4256 triangles on last accepted step; OBJ SHA, acceptance fields, metrics and shared-boundary incidence matched exactly. The step's explicit five/four states and boundary coverage assertions passed.
+- **Whole workflow run is not green.** The following artifact-upload step rejected `../apmesh-tri-reference/...` relative paths outside the GitHub workspace. This is a publication/retention failure, not a numerical mismatch. Preserve the original failure report.
+- Corrected only the workflow artifact paths: baseline process receipts are copied into the candidate workspace before bounded upload. New [candidate commit `0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b`](https://github.com/tiagosombrra/apmesh-modernization/commit/0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b); [run #42634304685](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42634304685) was in progress at this checkpoint.
+- Full latest-head green CI, independent scientific evidence capture and original M1/M2/M3 research approvals are distinct; `main` and draft PR #185 remain unchanged.
+
 ## Next exact action
 
-Inspect scientific run #42633924826 on `602f04a26c28a163c179969763eef2813351634e`. Preserve comparison evidence and any exact error; if the scientific job passes, reconcile candidate with the latest research base and perform final head qualification before deciding on PR #185 integration into `quad-templates` (never `main`). The source-history reconciliation remains isolated and preserves earlier `c57749e` ancestry. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
+Inspect corrected CI run #42634304685 at `0aa9b2edcfb1ee0a5abb428bf2d032182b9dcf4b`, including science artifact upload and final exact-head native/75 CTest/527 Python checks; then reconcile candidate with the latest research base, preserve all session history, and qualify the integrated candidate before touching PR #185 or `quad-templates` code. The source-history reconciliation remains isolated and preserves earlier `c57749e` ancestry. The source-history reconciliation is complete in an isolated branch; do not merge without test qualification. After integration, bind the approved numerical point-selection rule and connect the tested bridge through a separately validated application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
 
 ## Current M1 reconstruction
 
