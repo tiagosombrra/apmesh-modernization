@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.20)
+project(apmesh_quad_prototype LANGUAGES CXX)
+
+enable_testing()
+add_library(apmesh_quad_uv STATIC ../../research/quad/uv_mesh.cpp)
+target_include_directories(apmesh_quad_uv PUBLIC ../../research/quad)
+target_compile_features(apmesh_quad_uv PUBLIC cxx_std_17)
+add_executable(quad_uv_contracts uv_contracts.cpp)
+target_link_libraries(quad_uv_contracts PRIVATE apmesh_quad_uv)
+add_executable(quad_uv_demo ../../research/quad/demo.cpp)
+target_link_libraries(quad_uv_demo PRIVATE apmesh_quad_uv)
+
+foreach(target IN ITEMS apmesh_quad_uv quad_uv_contracts quad_uv_demo)
+  if(MSVC)
+    target_compile_options(${target} PRIVATE /W4 /WX /EHsc /utf-8)
+  else()
+    target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic -Wconversion -Wshadow -Werror)
+  endif()
+endforeach()
+
+add_test(NAME quad.uv.contracts COMMAND quad_uv_contracts)
+set_tests_properties(quad.uv.contracts PROPERTIES TIMEOUT 30 LABELS "research-quad")
