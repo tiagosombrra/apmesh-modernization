@@ -27,8 +27,14 @@ and whitespace fixes are explicit operations. Never run clang-tidy --fix over
 the repository. Do not suppress diagnostics merely to make a gate green.
 Never use -ffast-math or change floating-point order without numerical evidence.
 
-No paid Actions or automatic hosted workflows. Use local checks and retain
-small evidence reports. Do not describe zero tests, zero compared boundaries,
+GitHub Actions on standard GitHub-hosted runners are allowed for this public
+repository when explicitly scoped to QUAD research candidate branches. Use
+read-only repository permissions, bounded run time and artifact retention, no
+secrets or deployments, no paid/larger runners and no automatic merges.
+Hosted CI provides executable compiler/test evidence on the exact commit; it
+does not replace the full historical scientific oracles, native sanitizer
+qualification, Windows-specific memory checks or independent approval.
+Continue to support local checks and retain small evidence reports. Do not describe zero tests, zero compared boundaries,
 rejected candidates or unavailable tools as successful validation.
 Open reviewable PRs; merge only after required local gates pass on the exact
 head revision and remote checks, if configured, are green. Recheck after merge.
