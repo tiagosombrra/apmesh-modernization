@@ -20,7 +20,7 @@ namespace apmesh::io {
  */
 inline void ValidateConfigValue(const std::string& key, const std::string& value) {
   static const std::unordered_set<std::string> strings = {
-      "INPUT_MODEL",   "OUTPUT_PREFIX", "WRITE_MODE", "USE_TEMPLATE", "MESH_ELEMENT_KIND",
+      "INPUT_MODEL",   "OUTPUT_PREFIX", "WRITE_MODE", "USE_TEMPLATE",
       "ADAPTIVE_MODE", "BUILD_DIR",     "EXECUTABLE"};
   static const std::unordered_set<std::string> integers = {
       "NUM_PROCESSES",
@@ -71,8 +71,7 @@ inline void ValidateConfigValue(const std::string& key, const std::string& value
   }
   if (strings.count(key) != 0U) {
     if ((key == "WRITE_MODE" && value != "m" && value != "q" && value != "h") ||
-        (key == "USE_TEMPLATE" && value != "y" && value != "n") ||
-        (key == "MESH_ELEMENT_KIND" && value != "tri" && value != "quad_uv")) {
+        (key == "USE_TEMPLATE" && value != "y" && value != "n")) {
       throw std::runtime_error("Unsupported configuration value for " + key + ": " + value);
     }
     return;

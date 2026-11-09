@@ -1,7 +1,9 @@
+#include "application/runtime_config.h"
 #include "input_output/input_validation.h"
 
 #include <iostream>
 #include <stdexcept>
+#include <string>
 
 namespace {
 struct Case {
@@ -12,6 +14,9 @@ struct Case {
 
 bool Accepts(const Case& test) {
   try {
+    if (std::string(test.key) == "MESH_ELEMENT_KIND") {
+      return apmesh::application::IsSupportedMeshElementKind(test.value);
+    }
     apmesh::io::ValidateConfigValue(test.key, test.value);
     return true;
   } catch (const std::runtime_error&) {

@@ -5,6 +5,11 @@
 #include "application/generation_context.h"
 
 namespace apmesh::application {
+// Keep the experimental selection independent of frozen legacy input validation.
+inline bool IsSupportedMeshElementKind(const std::string& mode) noexcept {
+  return mode == "tri" || mode == "quad_uv";
+}
+
 struct RuntimeConfig {
   int num_processes = 1;
   int num_threads = 1;
