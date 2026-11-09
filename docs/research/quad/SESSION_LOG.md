@@ -156,3 +156,13 @@ Newest sessions are appended at the bottom. This log is not a substitute for [ST
 **Executed:** GitHub metadata, PR, compare and document read; authenticated repository write and remote readback are required to close this documentation checkpoint. **Not executed:** C++ build, CTest, Python control suite, MSVC/WSL source runs, code merge, GitHub Actions or inspection of uncommitted local work. Previous test results are historical only; this documentation-only checkpoint is not scientific qualification.
 
 **Next:** Review PR #185 and the outstanding point-selection/centroid scientific rule, reconcile the branch ancestry with upstream before integration, then implement a separately gated opt-in application path preserving TRI. Read the latest state and PR SHA anew in any resumed conversation.
+
+## 2026-11-09-10 - PR #185 integration-readiness audit
+
+**Scope:** inspected draft PR #185 and current research base for the next executable gate. Candidate `bb50b161cad0121402cc61475442b32aef33d2bd`, base observed `d85b5edc5cc4ef32673f9eb5967a7cd8d3fb570d`, `7` candidate-only versus `4` base-only commits, GitHub `mergeable=false`. Canonical `STATE.md` and `SESSION_LOG.md` require non-destructive reconciliation. [Full audit](PR185_PREMERGE_REVIEW_20261109.md).
+
+**Changes:** new technical pre-merge review and canonical next-action update only; no research C++ sources, test logic, existing historical evidence, PR branch, default TRI algorithm or `main` modified.
+
+**Executed:** live GitHub reads and targeted source inspection; new report and state committed/read back. **Not executed:** new native compilation, 117+30 QUAD test controls, 75 CTest/527 Python, scientific comparisons, merge, MSVC/WSL/local worktree inspection. Native Git network to github.com unavailable in this session. Absence of remote checks is not a passing check.
+
+**Next:** integrate base into feature safely while preserving both documentation histories, run exact merged-candidate gates, then review the PR for research-branch integration. Scientifically adopted centroid and production opt-in remain separate tasks.
