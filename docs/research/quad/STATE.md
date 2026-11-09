@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-08-07
+**Last session:** 2026-11-08-08
 
-**Current milestone:** **Working isolated UV QUAD prototype in `quad/m01-uv-prototype`; M1/M2 remain partial. M0 stays qualified in its declared serial baseline scope.**
+**Current milestone:** **Working real-quadtree UV QUAD bridge in `quad/uv-leaf-bridge`; application/physical integration remains pending. M0 stays qualified; M1/M2/M3 remain partial.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md)
 
@@ -45,7 +45,7 @@ A working isolated UV QUAD generator, typed element and native test suite now ex
 | M0 - baseline | QUALIFIED: scoped G0-G7 baseline; 75/527 checkpoint regression recorded | Scoped exceptions retained below; no main/Stage 3 closure |
 | M1 - historical T1-T6 oracle | PARTIAL | Graphs now execute with supplied positive points; historical numerical expectations and stated adviser decisions remain |
 | M2 - UV QUAD topology | WORKING ISOLATED PROTOTYPE / PARTIAL | Value-owned UV mesh, canonical midpoints, quad emitter and disk validator; review, denials and broader numeric qualification remain |
-| M3 - quadtree emitter | PENDING | Opt-in QUAD and exact default TRI preservation |
+| M3 - quadtree emitter | READ-ONLY LEAF BRIDGE IMPLEMENTED / PARTIAL | Real leaf capture/16 signatures and QUAD output tested; application opt-in call and full milestone qualification pending |
 | M4 - physical QUAD | PENDING | Defined UV-to-XYZ geometry and four-node lifecycle/ownership |
 | M5 - boundary transition | PENDING | Adviser decision: quad-dominant or all-quad; complete valid patch mesh |
 | M6 - shared-curve multipatch | PENDING | Reversed two-patch and at least three-patch conformity |
@@ -57,7 +57,7 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 
 ## Next exact action
 
-Complete review of candidate `quad/m01-uv-prototype` and supply the numerical decisions the user reports are already aligned with the advisers. Bind the explicit point-selection/centroid rule and historical numeric oracles, then map real internal quadtree leaves into the tested UV QUAD API through a separate opt-in route. Keep the default TRI path unchanged. Physical mapping, full patch boundary completion and repeated adaptation retain separate milestones.
+Review the actual-tree bridge in draft PR #185 and bind the numerical point rule the user reports is already aligned. Then connect the tested bridge through an explicit application opt-in entry, preserving the default TRI path. Physical QUAD/XYZ geometry, full patch boundary completion, shared-curve conformity and repeated adaptation retain separate milestones. The read-only leaf-to-QUAD bridge itself is now implemented and tested.
 
 ## Current M1 reconstruction
 
@@ -89,3 +89,13 @@ the corrected candidate records that one generated input without changing
 production sources/build targets. Remote statuses/check-runs are absent, not green.
 This research checkpoint publishes status/evidence only; the code remains in
 the draft branch and has not been merged into `quad-templates` or main.
+
+## Current implementation - session 08
+
+- The primary checkout `C:\Users\tiago\Documents\dev\research\apmesh-modernization` now uses `quad/uv-leaf-bridge`, so implementation files are visible directly under `research/quad`. Branch `main` is preserved at `f6050ec1`; it is no longer the active primary checkout. Committed files are visible in Explorer/history, not as pending Source Control changes. Compare with `git diff main -- research/quad tests/quad`.
+- `quadtree_quad.h/.cpp` captures actual legacy Quadtree leaves in original publication order, validates reciprocal 2:1 neighbors/hierarchy and emits T1-T6 polygons for all 16 split masks. Shared UV IDs use dyadic hierarchy keys, not coordinate welding. Boundary exclusion, source owners/IDs/geometry/stats remain unchanged; no sorting/refinement/publication is performed on the source.
+- GCC16/Windows, checked-MSVC19.44 Debug and GCC13/Linux pass **117 UV +30 bridge outcomes per profile**. Real uniform/adaptive trees, actual existing TRI preservation, 16 masks, neighbor-order independence and invalid/throwing cases are measured. The adaptive demo emits **42 quads /53 vertices /area 1/4** from **19 actual leaves**; OBJ raw bytes match all three platforms.
+- C++17 standalone legacy support reuses the same 14-source component as the existing UV probe plus unchanged runtime defaults. No `src/include/libs` change. Configured analysis plus explicit new-header coverage pass. Historical legacy warnings and both failed prefixes remain retained in the [bridge receipt](evidence/QUAD_LEAF_BRIDGE_20261108.json).
+- Candidate source `c1e09a18a107530d250e05ebb55eb6ba28f1800c`; final publication requires exact committed-head 75 CTest /527 Python, pre-commit/links and fresh remote audit/readback. Prototype/bridge native evidence may be reused only with matching compiled inputs and actual images. Final code/checkpoint revisions and PR state are recorded in the session response.
+- Once qualified, the final candidate revision and baseline log hashes are recorded separately in `evidence/QUAD_LEAF_BRIDGE_DELIVERY_20261108.json` on the research checkpoint; the draft PR remains the code continuity source.
+- Still pending: application selection/call, agreed point rule, physical element/UV-to-XYZ, complete patch boundary, multipatch and adaptation. The synthetic demo's vertex-mean selector is test input, not an adopted scientific centroid formula. This does not close M1/M2/M3 or modernization Stage 3.

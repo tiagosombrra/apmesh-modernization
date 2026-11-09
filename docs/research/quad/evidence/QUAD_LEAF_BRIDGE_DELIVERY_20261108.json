@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "source_revision": "bb50b161cad0121402cc61475442b32aef33d2bd",
+  "status": "exact_checkpoint_full_regression_passed",
+  "ctest": 75,
+  "python": 527,
+  "failures": 0,
+  "skips": 0,
+  "commands": [
+    "python3 tools/validation_session.py plan --scope delivery --base fac4cfbf8157ac70e568ed24b3d284c44f1a841a",
+    "python3 tools/validation_session.py run --scope delivery --base fac4cfbf8157ac70e568ed24b3d284c44f1a841a"
+  ],
+  "artifacts": {
+    "build/validation-session/1794186972148559692-c15f2b63/report.json": "0fbafb564f08a2e48b233ce78540045c3e9f0c9dcaa45dbb640dae71d90e9db4",
+    "build/validation-session/1794186972148559692-c15f2b63/plan.json": "37672778460dc9f3f35582e80bde3038b9ef692e0ca41e9b077925a54f767d50",
+    "build/validation-session/1794186972148559692-c15f2b63/ctest.xml": "2eb267b36928ef724c88532d65021dba0410cfac815024b67fba1d89097c48c5",
+    "build/local-serial/Testing/Temporary/LastTest.log": "10068d90ad813f8f7cce8fca3ef01c1a777720798a61c7a4a447254d9a9636f2"
+  },
+  "limitations": [
+    "Local research checkpoint qualification; not main or whole Stage 3 closure",
+    "Remote statuses/check-runs absent; no hosted CI pass inferred",
+    "Scientific/memory capture reuse requires unchanged relevant identities"
+  ],
+  "pr": 185,
+  "url": "https://github.com/tiagosombrra/apmesh-modernization/pull/185",
+  "draft": true,
+  "working_branch": "quad/uv-leaf-bridge",
+  "review_head_branch": "quad/m01-uv-prototype",
+  "qualified_head": "bb50b161cad0121402cc61475442b32aef33d2bd",
+  "base_at_qualification": "cf2795746b278cdcca91fde86d87614782624c85",
+  "native_contracts": {
+    "uv_outcomes": 117,
+    "leaf_outcomes": 30,
+    "profiles": [
+      "GCC16 Windows",
+      "MSVC19.44 Debug",
+      "GCC13 Linux"
+    ],
+    "binding": "All compiled prototype/bridge inputs retain the qualified c1e09a1 hashes; later changes are documentation only"
+  },
+  "remote_checks": {
+    "statuses": 0,
+    "check_runs": 0,
+    "interpretation": "No hosted CI pass inferred"
+  },
+  "integration": false,
+  "main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "publication_guard": "The research checkpoint requires its own exact-head full baseline and remote readback; no draft integration is claimed"
+}

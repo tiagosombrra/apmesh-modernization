@@ -1,0 +1,378 @@
+{
+  "schema": 1,
+  "source_revision": "c1e09a18a107530d250e05ebb55eb6ba28f1800c",
+  "branch": "quad/uv-leaf-bridge",
+  "status": "read_only_real_quadtree_bridge_qualified_for_draft_review",
+  "classification": "Isolated research bridge with explicit caller point selector; no production scientific policy change",
+  "production_trees_unchanged_from_main": {
+    "src": "f36af5079e49f01225a75efd4673da46b91b4665",
+    "include": "d4f19e4fc9752843a5825369bc823428be4029a8",
+    "libs": "f2e2fe9978350ec7cdf86ea58fc401fd435449a9"
+  },
+  "profiles": {
+    "gcc": {
+      "capture_revision": "fac4cfbf8157ac70e568ed24b3d284c44f1a841a",
+      "source_binding": "Working-tree compiled input hashes equal the committed source revision",
+      "compiled_inputs": {
+        "research/quad/demo.cpp": "bb6cac13de038dd5c3c4c87e804696db215d82b91e0db5f6902ce04820359fed",
+        "research/quad/quadtree_quad.cpp": "2efc2d84d277d367dd35a2e6dd45cc4a9d2ccb92d0a9e82f9660fbd34dec1848",
+        "research/quad/quadtree_quad.h": "dca47c63d540a312ce84e6e5658502a72bd9b37841ae5c16956f09fc1f3d210c",
+        "research/quad/tree_demo.cpp": "5c60d9d9504868d31b77e601a56212db4a1ec9f33e145e0609f7456913d0c559",
+        "research/quad/uv_mesh.cpp": "601e403179ee6f612beccdc57eceab9058825094989b4846da54d69ac61688b1",
+        "research/quad/uv_mesh.h": "b51234bc724e97e54bc5913b3bc471212bdcf0164d51342faba84b381a6d030b",
+        "tests/quad/CMakeLists.txt": "73757e82669432be628095deb15878fb786d86cf157df35dec57efc272f7ea19",
+        "tests/quad/leaf_contracts.cpp": "7038c3772d9a0950b74d6700f5573d661d02de36c7ec3a19d2e82a20a2115606",
+        "tests/quad/tree_fixture.h": "cf420f48f51d0960709d11ff7b2e64b35e957f2f00084817d76c2cbe23ea66d4",
+        "tests/quad/uv_contracts.cpp": "7b109d6558f83e1bd9cfefe1bb19639c78e2c6fb8a2b6e33bc53c7dee99280f5"
+      },
+      "native_test_entries": 2,
+      "uv_outcomes": 117,
+      "leaf_outcomes": 30,
+      "failures": 0,
+      "skips": 0,
+      "report_sha256": "45fe142e98ea7312906597c01f4bc78f01fa8eba34433753fb72b75bf57d583a",
+      "last_test_sha256": "2e0ad431245b0bef007486e4c8213dbf88efb403e3a12b01d19321035d2f1cc8",
+      "binaries": {
+        "quad_uv_contracts": "31dbd3c9810a3c92b17f55a4569c7c24df9fbecba401a7e3d248960628ba8e82",
+        "quad_leaf_contracts": "192626dd7722fe9f5afc64babf08072aa1c80a2956a23168104ae40435164d06",
+        "quad_tree_demo": "ca6bafacbddb9aca477e7d162f988fb0f2db530d8e7bc59bc7c09f8bc832b28f"
+      },
+      "compiler_warning_count": 1,
+      "warning_disposition": "Existing legacy component diagnostics retained, not suppressed or repaired",
+      "steps": [
+        {
+          "argv": [
+            "cmake",
+            "-S",
+            "tests/quad",
+            "-B",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-leaf\\session-20261108-08\\gcc-preflight\\build",
+            "-DAP_MESH_QUAD_WITH_TREE=ON",
+            "-DCMAKE_CXX_STANDARD=17",
+            "-G",
+            "Ninja",
+            "-DCMAKE_MAKE_PROGRAM=C:/msys64/ucrt64/bin/ninja.exe",
+            "-DCMAKE_CXX_COMPILER=C:/msys64/ucrt64/bin/g++.exe",
+            "-DCMAKE_BUILD_TYPE=Debug",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          ],
+          "timeout": 60,
+          "exit": 0,
+          "seconds": 1.033,
+          "log": "0.log",
+          "sha256": "e44feb675cd0d8b6a7fd656a106492fadcb047a007151784e64d77cf3cb61170"
+        },
+        {
+          "argv": [
+            "cmake",
+            "--build",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-leaf\\session-20261108-08\\gcc-preflight\\build",
+            "--config",
+            "Debug",
+            "--parallel",
+            "2"
+          ],
+          "timeout": 180,
+          "exit": 0,
+          "seconds": 20.408,
+          "log": "1.log",
+          "sha256": "ed964bde3710afded09a3b60c08f0c84cdff3c7f1a34f41868f489553d90bd32"
+        },
+        {
+          "argv": [
+            "ctest",
+            "--test-dir",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-leaf\\session-20261108-08\\gcc-preflight\\build",
+            "-C",
+            "Debug",
+            "--output-on-failure",
+            "--stop-on-failure",
+            "--no-tests=error",
+            "--output-junit",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-leaf\\session-20261108-08\\gcc-preflight\\ctest.xml"
+          ],
+          "timeout": 90,
+          "exit": 0,
+          "seconds": 0.698,
+          "log": "2.log",
+          "sha256": "178c3edcbedf43764637a9e73747daabb8d930ea2f0649552844e96c82be96e8"
+        }
+      ]
+    },
+    "msvc": {
+      "capture_revision": "fac4cfbf8157ac70e568ed24b3d284c44f1a841a",
+      "source_binding": "Working-tree compiled input hashes equal the committed source revision",
+      "compiled_inputs": {
+        "research/quad/demo.cpp": "bb6cac13de038dd5c3c4c87e804696db215d82b91e0db5f6902ce04820359fed",
+        "research/quad/quadtree_quad.cpp": "2efc2d84d277d367dd35a2e6dd45cc4a9d2ccb92d0a9e82f9660fbd34dec1848",
+        "research/quad/quadtree_quad.h": "dca47c63d540a312ce84e6e5658502a72bd9b37841ae5c16956f09fc1f3d210c",
+        "research/quad/tree_demo.cpp": "5c60d9d9504868d31b77e601a56212db4a1ec9f33e145e0609f7456913d0c559",
+        "research/quad/uv_mesh.cpp": "601e403179ee6f612beccdc57eceab9058825094989b4846da54d69ac61688b1",
+        "research/quad/uv_mesh.h": "b51234bc724e97e54bc5913b3bc471212bdcf0164d51342faba84b381a6d030b",
+        "tests/quad/CMakeLists.txt": "73757e82669432be628095deb15878fb786d86cf157df35dec57efc272f7ea19",
+        "tests/quad/leaf_contracts.cpp": "7038c3772d9a0950b74d6700f5573d661d02de36c7ec3a19d2e82a20a2115606",
+        "tests/quad/tree_fixture.h": "cf420f48f51d0960709d11ff7b2e64b35e957f2f00084817d76c2cbe23ea66d4",
+        "tests/quad/uv_contracts.cpp": "7b109d6558f83e1bd9cfefe1bb19639c78e2c6fb8a2b6e33bc53c7dee99280f5"
+      },
+      "native_test_entries": 2,
+      "uv_outcomes": 117,
+      "leaf_outcomes": 30,
+      "failures": 0,
+      "skips": 0,
+      "report_sha256": "a7c6dfa3cbcfe5be6b6dd4e4f84a2c25c25b219ca7e9145af561f82db14689c7",
+      "last_test_sha256": "1273c736605ccef6b817b112d6eb61b600806dbebb4e29b233d32609d5952119",
+      "binaries": {
+        "quad_uv_contracts": "877d6cb2bac6863f077df99274995f7587592cafeb479a1b088b34e2e712a266",
+        "quad_leaf_contracts": "9827e027548799b874eb7653a4be21b1d1ef5fb5a95b5a7d1f73b9d475da99fa",
+        "quad_tree_demo": "8c95b6f7153b80799d10c75b33f881ff870fedf2c2b3fc53b29c18a8442e939f"
+      },
+      "compiler_warning_count": 94,
+      "warning_disposition": "Existing legacy component diagnostics retained, not suppressed or repaired",
+      "steps": [
+        {
+          "argv": [
+            "cmake",
+            "-S",
+            "tests/quad",
+            "-B",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-leaf\\session-20261108-08\\msvc-preflight\\build",
+            "-DAP_MESH_QUAD_WITH_TREE=ON",
+            "-DCMAKE_CXX_STANDARD=17",
+            "-G",
+            "Visual Studio 17 2022",
+            "-A",
+            "x64"
+          ],
+          "timeout": 60,
+          "exit": 0,
+          "seconds": 2.253,
+          "log": "0.log",
+          "sha256": "a95b0e48a3378b0003a1f8a41258d2884a615e29a661e8e8af76874f00c9f3c1"
+        },
+        {
+          "argv": [
+            "cmake",
+            "--build",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-leaf\\session-20261108-08\\msvc-preflight\\build",
+            "--config",
+            "Debug",
+            "--parallel",
+            "2"
+          ],
+          "timeout": 180,
+          "exit": 0,
+          "seconds": 20.057,
+          "log": "1.log",
+          "sha256": "1b6b676a3501ba8b0118f9e97d7c22f0dab42f16bcc12942050f11428e88f80a"
+        },
+        {
+          "argv": [
+            "ctest",
+            "--test-dir",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-leaf\\session-20261108-08\\msvc-preflight\\build",
+            "-C",
+            "Debug",
+            "--output-on-failure",
+            "--stop-on-failure",
+            "--no-tests=error",
+            "--output-junit",
+            "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-leaf\\session-20261108-08\\msvc-preflight\\ctest.xml"
+          ],
+          "timeout": 90,
+          "exit": 0,
+          "seconds": 0.547,
+          "log": "2.log",
+          "sha256": "c714eeb35666d720bffaa7904cb19b1d9bb073dba85888278fe40ec8a9577824"
+        }
+      ]
+    },
+    "linux_gcc": {
+      "capture_revision": "c1e09a18a107530d250e05ebb55eb6ba28f1800c",
+      "compiled_inputs": {
+        "research/quad/quadtree_quad.h": "dca47c63d540a312ce84e6e5658502a72bd9b37841ae5c16956f09fc1f3d210c",
+        "research/quad/uv_mesh.cpp": "601e403179ee6f612beccdc57eceab9058825094989b4846da54d69ac61688b1",
+        "research/quad/uv_mesh.h": "b51234bc724e97e54bc5913b3bc471212bdcf0164d51342faba84b381a6d030b",
+        "research/quad/demo.cpp": "bb6cac13de038dd5c3c4c87e804696db215d82b91e0db5f6902ce04820359fed",
+        "research/quad/tree_demo.cpp": "5c60d9d9504868d31b77e601a56212db4a1ec9f33e145e0609f7456913d0c559",
+        "research/quad/quadtree_quad.cpp": "2efc2d84d277d367dd35a2e6dd45cc4a9d2ccb92d0a9e82f9660fbd34dec1848",
+        "tests/quad/uv_contracts.cpp": "7b109d6558f83e1bd9cfefe1bb19639c78e2c6fb8a2b6e33bc53c7dee99280f5",
+        "tests/quad/CMakeLists.txt": "73757e82669432be628095deb15878fb786d86cf157df35dec57efc272f7ea19",
+        "tests/quad/leaf_contracts.cpp": "7038c3772d9a0950b74d6700f5573d661d02de36c7ec3a19d2e82a20a2115606",
+        "tests/quad/tree_fixture.h": "cf420f48f51d0960709d11ff7b2e64b35e957f2f00084817d76c2cbe23ea66d4"
+      },
+      "native_test_entries": 2,
+      "uv_outcomes": 117,
+      "leaf_outcomes": 30,
+      "report_sha256": "a6f62ecc4afd1f4774c891a47ca87ce15649e3956188466f884aa346a37ed327",
+      "binaries": {
+        "quad_leaf_contracts": "1d0e40a869544766a380afa2902b626cf4b44675eba323eba531fc2bdb0de516",
+        "quad_tree_demo": "6a10f32f3f0e7c9c1e9297701e63ded6dc882a21dce5c7b963728493ca4e4a65",
+        "libapmesh_quad_tree.a": "56992140542bcb50ac81f29e76bc477cd02fa16d0ef5a697630e2428b5fff5d3"
+      },
+      "steps": [
+        {
+          "argv": [
+            "cmake",
+            "-S",
+            "tests/quad",
+            "-B",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/build",
+            "-G",
+            "Ninja",
+            "-DCMAKE_BUILD_TYPE=Debug",
+            "-DCMAKE_CXX_STANDARD=17",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "-DCMAKE_CXX_COMPILER=/usr/bin/g++",
+            "-DAP_MESH_QUAD_WITH_TREE=ON"
+          ],
+          "timeout": 60,
+          "exit": 0,
+          "seconds": 0.917,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/0.log",
+          "sha256": "190a8b4891fdd9502694c17c088d9cac16af604f15cac0b7e845801b6ed28812"
+        },
+        {
+          "argv": [
+            "cmake",
+            "--build",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/build",
+            "--parallel",
+            "2"
+          ],
+          "timeout": 180,
+          "exit": 0,
+          "seconds": 11.655,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/1.log",
+          "sha256": "5ee0cf7f6a364f152080e9ea021ca6a8156ac174cf1656c531b3a94ed1288dc4"
+        },
+        {
+          "argv": [
+            "ctest",
+            "--test-dir",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/build",
+            "--output-on-failure",
+            "--stop-on-failure",
+            "--no-tests=error",
+            "--output-junit",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/ctest.xml"
+          ],
+          "timeout": 90,
+          "exit": 0,
+          "seconds": 0.217,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/2.log",
+          "sha256": "98e06c750829f5167156d54f340032b7b63e476273d6392777de908b9c6c4aba"
+        },
+        {
+          "argv": [
+            "python3",
+            "tools/quality.py",
+            "format",
+            "research/quad/quadtree_quad.cpp",
+            "research/quad/tree_demo.cpp",
+            "tests/quad/leaf_contracts.cpp",
+            "research/quad/quadtree_quad.h",
+            "tests/quad/tree_fixture.h"
+          ],
+          "timeout": 30,
+          "exit": 0,
+          "seconds": 0.215,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/3.log",
+          "sha256": "f4ba99167e27f33b671d810d99f044f631546e979b94571e4e171908046fe4bb"
+        },
+        {
+          "argv": [
+            "python3",
+            "tools/quality.py",
+            "tidy",
+            "research/quad/quadtree_quad.cpp",
+            "research/quad/tree_demo.cpp",
+            "tests/quad/leaf_contracts.cpp",
+            "--build",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/build"
+          ],
+          "timeout": 90,
+          "exit": 0,
+          "seconds": 8.644,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/4.log",
+          "sha256": "ffbecd8910940477b28edbf20475fd1314606a517ac346983a8df472bcaefc20"
+        },
+        {
+          "argv": [
+            "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/build/quad_tree_demo",
+            "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/tree.obj"
+          ],
+          "timeout": 10,
+          "exit": 0,
+          "seconds": 0.008,
+          "log": "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/5.log",
+          "sha256": "662903e839693f0d62e833881fb1e66ff4ddd1db56a67b3a9d1898fe8a16939e"
+        }
+      ]
+    }
+  },
+  "linux_compilation_units": 21,
+  "quality": {
+    "format": "Five new C++ source/header files pass",
+    "configured_tidy": "Three actual new compilation units pass",
+    "extended_header_analysis": {
+      "argv": [
+        "/usr/lib/llvm-22/bin/clang-tidy",
+        "-p",
+        "/home/apmesh/quad-m0-20261108-04/build/quad-leaf/session08-candidate/build",
+        "--header-filter=.*[/\\](include|src|research[/\\]quad|tests[/\\]quad)[/\\].*",
+        "research/quad/quadtree_quad.cpp",
+        "research/quad/tree_demo.cpp",
+        "tests/quad/leaf_contracts.cpp"
+      ],
+      "exit_code": 0,
+      "log_sha256": "53b3c1aae8378b8a9b40bb9fa07d9ba7f62fa95890094ab4ca3b53bb67950696",
+      "scope": "Actual compilation database; existing checks/errors unchanged, header scope extended to new first-party research/test headers"
+    },
+    "diagnostics": "Existing vendor/check filters remain visible in logs; new research/test header scope is explicitly included"
+  },
+  "demo": {
+    "source_leaves": 19,
+    "quads": 42,
+    "vertices": 53,
+    "area": 0.25,
+    "three_platform_obj_sha256": "a1e4ab1da56a8119f64d89c304fb5d474f1b508f376633db815aa4bd15b9547a"
+  },
+  "windows_cli_cases": 8,
+  "cli_report_sha256": "adbed8a8945bf8414fec65d73efa8bc21cef00535871dae54ce7add9d14b83c6",
+  "raw_root": "build/quad-leaf/session-20261108-08",
+  "copied_linux_artifacts": {
+    "report.json": "a6f62ecc4afd1f4774c891a47ca87ce15649e3956188466f884aa346a37ed327",
+    "ctest.xml": "a47aa720d98ae4917692891e96ebff70755b16c749ec58645da37924e934a133",
+    "0.log": "190a8b4891fdd9502694c17c088d9cac16af604f15cac0b7e845801b6ed28812",
+    "1.log": "5ee0cf7f6a364f152080e9ea021ca6a8156ac174cf1656c531b3a94ed1288dc4",
+    "2.log": "98e06c750829f5167156d54f340032b7b63e476273d6392777de908b9c6c4aba",
+    "3.log": "f4ba99167e27f33b671d810d99f044f631546e979b94571e4e171908046fe4bb",
+    "4.log": "ffbecd8910940477b28edbf20475fd1314606a517ac346983a8df472bcaefc20",
+    "5.log": "662903e839693f0d62e833881fb1e66ff4ddd1db56a67b3a9d1898fe8a16939e",
+    "build/Testing/Temporary/LastTest.log": "279b639d96d7c538850dc44f1e5a51d4773ff84d582d33a8f1cb2b0c0cf76226",
+    "build/compile_commands.json": "c579db23786efca054229f2898637fad2167d99713020eb0e7d6c6bf64c99f5e",
+    "tree.obj": "a1e4ab1da56a8119f64d89c304fb5d474f1b508f376633db815aa4bd15b9547a",
+    "header-analysis.log": "53b3c1aae8378b8a9b40bb9fa07d9ba7f62fa95890094ab4ca3b53bb67950696",
+    "header-analysis.json": "79aae98cc4bad5b5ba6f16c290be4dcdb0697b4fc760c55fb9100b30ff584a65"
+  },
+  "preserved_failures": [
+    {
+      "profile": "gcc-first",
+      "report_sha256": "e94c4c519eb69b07cd32dd85c9c49e4917701f0dc56cd784b28f28b76c8ccf21",
+      "gdb_sha256": "9542cfd9bd72b5dfb139440070f98e4f1284e982f49ea242b9b18e8f80f841bd",
+      "finding": "TRI-preservation fixture called the historical template entry with null Boundary. Fix fixture to use a real closed contour and owned endpoints; production unchanged."
+    },
+    {
+      "profile": "msvc-boundary",
+      "report_sha256": "7c05b39438e1a14734bb4dc4bd93b3b0b87a73b39beed8dffce55c62a30cce9f",
+      "finding": "Malformed duplicate neighbor was rejected as reciprocal first under different pointer-map order. Add local-list validation pass before cross-cell checks; retain the exact negative oracle."
+    }
+  ],
+  "remaining": [
+    "Exact final delivery revision full baseline and fresh remote readback required",
+    "No application CLI/AdaptDomain call, physical QUAD/XYZ geometry, boundary fill, multipatch or adaptation integration",
+    "Point/centroid rule remains supplied by caller; adviser numerical decisions reported aligned are not invented",
+    "Relative-depth cap 30, strict-convex single-disk validation; holes/extreme robustness and allocation-denial instrumentation remain unqualified",
+    "Legacy warnings retained; no whole Stage 3, M1/M2/M3, or complete-process safety claim"
+  ]
+}

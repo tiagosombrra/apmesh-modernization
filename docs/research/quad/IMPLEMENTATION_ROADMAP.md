@@ -248,3 +248,20 @@ partial pending review/numerical-oracle and further qualification; full baseline
 reported scientific decisions, connect actual internal quadtree leaves to the
 UV emitter through the planned opt-in path. No physical/boundary/multipatch/
 adaptation integration or default TRI change is included.
+
+## 2026-11-08-08 actual quadtree leaf connection
+
+The primary implementation checkout is now `quad/uv-leaf-bridge` so the source
+is visible in the current workspace; historical main is preserved. The new
+read-only bridge maps actual leaves/neighbors into T1-T6 polygon graphs and
+the existing UV QUAD emitter, preserving boundary exclusion and source identity/
+order. Caller-selected points keep the scientific rule explicit. All 16 masks,
+147 native core/bridge outcomes per three compiler profiles and a 42-quad,
+19-leaf adaptive demo are measured; default TRI source and policies are unchanged.
+
+M3 now has a working leaf bridge but remains partial: no application opt-in
+entry, physical QUAD/XYZ, full boundary, shared-curve or adaptation integration.
+M1/M2 numeric/coverage exits remain. Bind the reported adviser decisions and
+qualify application selection separately; do not infer full patch meshing from
+the interior disk demo. Exact-head baseline and remote review/checkpoint gates
+remain mandatory; see the [bridge receipt](evidence/QUAD_LEAF_BRIDGE_20261108.json).
