@@ -22,6 +22,8 @@ struct StopAtObservation final {};
 
 std::unique_ptr<AdvancingFront> SquareFront() {
   auto front = std::make_unique<AdvancingFront>();
+  // Bound test-only edge refinement; unrestricted null-curve edges are unsafe.
+  front->getQuadtree()->setMaxLevelCap(3);
   auto* boundary = front->getQuadtree()->getBoundary();
   boundary->addVertex(0, 0, nullptr);
   boundary->addVertex(1, 0, nullptr);
