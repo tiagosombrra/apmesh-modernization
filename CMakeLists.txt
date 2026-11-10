@@ -183,3 +183,19 @@ if(BUILD_TESTING AND TARGET bezier_observer_probe)
       --candidate-root "${CMAKE_SOURCE_DIR}")
   set_tests_properties(tooling.bezier_observer_preservation PROPERTIES LABELS "tooling;required-gate" TIMEOUT 30)
 endif()
+
+# M3-5: exercise the actual serial Adapter with research hooks in a test process.
+# These sources are never linked into the production application or the CLI.
+if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
+  add_executable(quad_adapter_integration_probe
+    tests/quad/adapter_integration_probe.cpp
+    research/quad/quadtree_quad.cpp
+    research/quad/uv_mesh.cpp)
+  target_include_directories(quad_adapter_integration_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_adapter_integration_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_adapter_integration_probe PRIVATE cxx_std_17)
+  add_test(NAME quad.adapter.real_patch_capture COMMAND quad_adapter_integration_probe)
+  set_tests_properties(quad.adapter.real_patch_capture PROPERTIES
+    LABELS "research-quad;application;required-gate" TIMEOUT 75)
+endif()
