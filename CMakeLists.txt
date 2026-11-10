@@ -198,4 +198,19 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   add_test(NAME quad.adapter.real_patch_capture COMMAND quad_adapter_integration_probe)
   set_tests_properties(quad.adapter.real_patch_capture PROPERTIES
     LABELS "research-quad;application;required-gate" TIMEOUT 75)
+
+  # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
+  add_executable(quad_generator_outcome_probe
+    tests/quad/generator_outcome_probe.cpp)
+  target_include_directories(quad_generator_outcome_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_generator_outcome_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_generator_outcome_probe PRIVATE cxx_std_17)
+  add_test(NAME quad.generator.real_global_outcomes
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_generator_outcomes.py"
+      --exe "$<TARGET_FILE:quad_generator_outcome_probe>"
+      --root "${CMAKE_CURRENT_SOURCE_DIR}" --model eistute)
+  set_tests_properties(quad.generator.real_global_outcomes PROPERTIES
+    LABELS "research-quad;application;required-gate" TIMEOUT 350)
 endif()
