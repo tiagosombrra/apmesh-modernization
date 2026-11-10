@@ -901,7 +901,7 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
 
   // Advancing front (ratio, tolerance, smoothing iterations, smoothing factor).
   AdvancingFront avanco(AftRatio(), TOLERANCE_AFT, AftSmoothingIterations(), AftSmoothingFactor());
-  ConfigureAdvancingFront(avanco);
+  ConfigureAdvancingFront(avanco, {patch_index, adaptive_step, retry_index, 0});
   ConfigureQuadtree(avanco.getQuadtree());
   avanco.SetAdaptiveContext(adaptive_step, patch_index);
   const int resolved_depth_omp = ResolveQuadtreeDepth(max_quadtree_depth, adaptive_step);
@@ -1290,7 +1290,8 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     apmesh::adaptation::DomainUvCache cache;
     AdvancingFront avanco(AftRatio(), TOLERANCE_AFT, AftSmoothingIterations(),
                           AftSmoothingFactor());
-    ConfigureAdvancingFront(avanco);
+    ConfigureAdvancingFront(avanco,
+                           {patch_index, adaptive_step, retry_index, local_attempt});
     ConfigureQuadtree(avanco.getQuadtree());
     avanco.SetAdaptiveContext(adaptive_step, patch_index);
     if (avanco.getQuadtree()) {
@@ -1716,7 +1717,17 @@ double Adapter::AftSmoothingFactor() const noexcept {
   return config ? config->smoothing_factor : SMOOTHING_LAPLACIAN_FACTOR;
 }
 
-void Adapter::ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) const {
+void Adapter::SetResearchUvCapture(apmesh::quad::CaptureHooks hooks) {
+  apmesh::quad::ValidateCaptureHooks(hooks);
+  if (hooks.provider) {
+    uv_capture_hooks_.emplace(std::move(hooks));
+  } else {
+    uv_capture_hooks_.reset();
+  }
+}
+
+void Adapter::ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front,
+                                    apmesh::quad::PatchAttemptIdentity attempt) const {
   const auto* config = AftSettings();
   if (config) {
     front.SetPostprocessControls({config->postprocess_passes, config->postprocess_quality_threshold,
@@ -1724,6 +1735,10 @@ void Adapter::ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) co
   }
   if (generation_context_ && generation_context_->serial_flow) {
     front.SetTemplateMode(generation_context_->serial_flow->template_mode);
+  }
+  if (uv_capture_hooks_) {
+    // Keep observations provisional and independent from TRI retry acceptance.
+    apmesh::quad::BindRefinedCapture(front, *uv_capture_hooks_, attempt);
   }
 }
 

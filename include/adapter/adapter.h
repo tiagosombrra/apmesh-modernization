@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <limits>
 #include <map>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -22,6 +23,7 @@
 #include "../data/patch/patch_coons.h"
 #include "../data/tree/bin_tree.h"
 #include "../parallel/TMCommunicator.h"
+#include "../../research/quad/adapter_capture.h"
 
 namespace apmesh::application {
 struct GenerationContext;
@@ -91,6 +93,8 @@ public:
                        int max_quadtree_depth = -1, int adaptive_step = -1, int patch_index = -1,
                        int retry_index = 0);
   const DomainStructuralStats* GetPatchStructuralStats(int patch_index) const;
+  // Research-only opt-in. No CLI installs this callback; sink retains owned values.
+  void SetResearchUvCapture(apmesh::quad::CaptureHooks hooks);
 
 private:
   friend class DomainCandidateFixture;
@@ -103,12 +107,14 @@ private:
   double AftRatio() const noexcept;
   double AftSmoothingIterations() const noexcept;
   double AftSmoothingFactor() const noexcept;
-  void ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front) const;
+  void ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front,
+                              apmesh::quad::PatchAttemptIdentity attempt) const;
   int AdaptationDebugEnabled() const noexcept;
   const std::string& OutputPrefix() const noexcept;
   const apmesh::application::GenerationContext* generation_context_ = nullptr;
   const apmesh::application::QuadtreeControlsConfig* effective_quadtree_ = nullptr;
   const apmesh::application::AftConfig* effective_aft_ = nullptr;
+  std::optional<apmesh::quad::CaptureHooks> uv_capture_hooks_ = std::nullopt;
   double CalculateNewSize(const double ka, const double kd, const double factor_disc,
                           const double length_old);
   double CalculateCurvatureDrivenFactor(const double ka, const double kd, const double base_factor,
