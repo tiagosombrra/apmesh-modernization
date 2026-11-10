@@ -109,12 +109,12 @@ jobs:
       - name: Capture M3-5 diagnostic stack before root CTest
         shell: bash
         run: |
-          if command -v gdb >/dev/null 2>&1; then
-            # This is diagnostic only: the required CTest gate still runs next.
-            gdb --batch -ex 'set pagination off' -ex run -ex 'thread apply all bt 24' --args build/local-serial/bin/quad_adapter_integration_probe || true
-          else
-            echo "gdb not available; stage markers remain in required CTest logs"
+          if ! command -v gdb >/dev/null 2>&1; then
+            # This diagnostic step must not weaken the mandatory CTest gate.
+            sudo apt-get update -qq
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq gdb
           fi
+          gdb --batch -ex 'set pagination off' -ex run -ex 'thread apply all bt 32' --args build/local-serial/bin/quad_adapter_integration_probe || true
       - name: Run full CTest baseline
         shell: bash
         run: ctest --preset local-serial --output-on-failure --no-tests=error

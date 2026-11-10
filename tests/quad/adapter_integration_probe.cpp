@@ -62,8 +62,14 @@ CaseResult RunPatch(bool abort_during_capture) {
   std::vector<AttemptUvCapture> snapshots;
   std::vector<LocalSelectionEvent> decisions;
   CaptureHooks hooks;
-  hooks.provider = [](Quadtree& tree) { return apmesh::quad::CaptureLeafPolygons(tree); };
+  hooks.provider = [](Quadtree& tree) {
+    std::cerr << "m3_live_stage=provider_enter" << std::endl;
+    auto data = apmesh::quad::CaptureLeafPolygons(tree);
+    std::cerr << "m3_live_stage=provider_return" << std::endl;
+    return data;
+  };
   hooks.sink = [&](AttemptUvCapture snapshot) {
+    std::cerr << "m3_live_stage=sink_enter" << std::endl;
     Require(snapshot.attempt.patch_index == 0 &&
                 snapshot.attempt.adaptive_step == 1 &&
                 snapshot.attempt.retry_index == 0 &&
