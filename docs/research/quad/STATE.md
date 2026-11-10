@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-11 (M1 original 1993 source SHA-256 verified, Figure 7 visually reconciled, PR #197 comparative quality merged; adviser formula pending)
+**Last session:** 2026-11-10-12 (hybrid-1993 first/all-QUAD second choice recorded; native C++ visual OBJ exporter PR #198 merged, visual review gallery available)
 
-**Current milestone:** **M1 original 1993 source authenticated (SHA-256 matched) and six Figure 7 patterns visually reconciled against schematic transcription; research comparison of two unapproved centroid formulas integrated via PR #197 and passed exact-head CI. Historical point-rule equation and adviser sign-off remain open; M0 qualified in scope; M1/M2/M3 PARTIAL. No physical QUAD.**
+**Current milestone:** **M1 visual UV validation is now reproducible in actual C++: PR #198 exported 12 OBJ snapshots from the six frozen Figure 7 templates with two explicitly experimental point rules, 8/8 native CTest on GCC/MSVC and full premerge TRI scientific parity. Research plan now explicitly sequences historical hybrid 1993 first, selectable all-QUAD extension second; neither exists as a production mode. M0 qualified in scope; M1/M2/M3 PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -225,9 +225,18 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - Prior [M1 witness post-merge #42853155958](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42853155958) **SUCCESS**, four jobs. New [post-merge #42868211131](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42868211131) in_progress; confirm exact merged SHA separately. Original modernization `main` unchanged.
 - **M1 remains PARTIAL**: adviser approval of historical numeric formula/allowed geometry and comparison to 1987 full source absent; no positive physical QUAD, UV→XYZ/boundary/multipatch/concurrency/sanitizer proof.
 
+## 2026-11-10-12 — Visual M1 review and hybrid-first / all-QUAD-second choice
+
+- User's explicit research sequence: **(1) reproduce the 1993 hybrid quadtree QUAD + exterior Delaunay/contour contraction first; (2) extend to selectable full-domain all-QUAD**. Neither is currently a working mode or publication result. Preserve production TRI default. [Research visual/mode document](MODE_CHOICES_AND_VISUAL_REVIEW_20261110.md).
+- [PR #198](https://github.com/tiagosombrra/apmesh-modernization/pull/198) merged into research `quad-templates` at `8559d4d12651b4ca37f0d3f9e0fe95c4bb2685bb`, exact merge tree matching tested `c0b1f86661133dc019d5699383f80d173f289056`, `main` unchanged.
+- The real native `quad_visual_export` uses the existing `ExperimentalInteriorPoint`, `Subdivide`, `Validate`, `WriteObj` C++ libraries and emits **12 research UV OBJ** files for Figure 7 patterns `T1,T2,T4,T3,T5,T6` (4/11/12/8/11/16 QUAD for either rule, total 62 per rule). The [SVG gallery](figures/M1_UV_6_PATTERNS_20261110.svg) is **an independent diagram**, not a capture of compiled production execution.
+- [CI #42881742866](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42881742866) **SUCCESS all 4 jobs**: native GCC and MSVC **8/8 CTest**, TRI **78/78 CTest**, Python **527/527**, CLI negatives **7/7**, strict Eistute/Book five/four-state scientific parity (OBJ bytes, acceptances, boundary incidence). [Post-merge CI #42883282973](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42883282973) was **in_progress** at checkpoint; check its final result on exact merge SHA.
+- User-facing standalone HTML/PNG/ZIP viewer was independently produced in the conversation: 6 template cards, interactive rule choice, vertex labels, polygon outlines, 18 SVGs in compare mode, per-pattern human review status/comments exported as JSON, source Figure 7/8 scan crops, 12 source-derived OBJ, 2-cell demo and an independently reconstructed 2:1 neighbor 19-QUAD fixture. Its **offline artifacts are separate from the verified native C++ exporter**; the portable [GitHub SVG](figures/M1_UV_6_PATTERNS_20261110.svg) is durable in the repo.
+- [Evidence](evidence/M1_VISUAL_MODES_20261110.json) records the 12 real C++ exports and the independent visual checker distinctly. No real physical Eistute/Book hybrid mesh or full-QUAD extension generated, and no adviser-approved numerical point rule. M1/M2/M3 remain PARTIAL; outer Delaunay/boundary stage and UV→XYZ are next physical gates.
+
 ## Next exact action
 
-Verify merged-head CI #42868211131. Present the [verified primary-source audit](M1_SOURCE_VERIFIED_CENTROID_REVIEW_20261110.md) and [numeric decision record](M1_NUMERIC_DECISION_GATE_20261110.md) to Bento/Creto: decide if signed-area polygon centroid is the appropriate historically faithful point policy; explicitly record convexity, orientation, tolerances, degenerate/narrow cases and the hybrid (not necessarily all-QUAD) external contour treatment. Obtain or inspect the full Baehmann et al. (1987) source before asserting implementation fidelity. Only after approval move selected rule toward physical emitter; keep production TRI, default CLI and main unchanged.
+Verify post-merge #42883282973 at exact merge SHA, then implement an isolated **real-quadtree visual patch export** that labels classified interior QUAD candidates and exterior TRI/boundary regions of a known fixture; display both before claiming a complete historical hybrid mesh. Collect the human per-pattern review JSON from the offline viewer. Preserve no-default numerical point selection; align historical centroid with Bento/Creto before physically mapping quads. The all-QUAD extension comes **after** historical hybrid is qualified, with a separate selectable research mode and positive boundary conformity tests. Preserve TRI default, main and Eistute/Book scientific regression.
 
 ## Current M1 reconstruction
 

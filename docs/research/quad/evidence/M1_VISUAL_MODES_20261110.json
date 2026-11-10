@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "scope": "visual reproducibility and sequential selectable modes",
+  "repo": "tiagosombrra/apmesh-modernization",
+  "decision": {
+    "first": "historical_hybrid_1993",
+    "second": "all_quad_extension",
+    "choice_future": true,
+    "production_options_enabled": false,
+    "existing_tri_default_preserved": true,
+    "description": "Reproduce interior quadtree QUAD patterns plus exterior Delaunay/boundary contraction before introducing a selectable all-QUAD extension."
+  },
+  "source": {
+    "name": "Bento/Carvalho/Martha SIBGRAPI 1993",
+    "figure7_page": 288,
+    "figure8_page": 288,
+    "sha256": "49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5"
+  },
+  "repo_artifacts": {
+    "pr": 198,
+    "qualified_head": "c0b1f86661133dc019d5699383f80d173f289056",
+    "merge_sha": "8559d4d12651b4ca37f0d3f9e0fe95c4bb2685bb",
+    "merged_tree_sha": "7879796b46aab54b52b823ac7825366b383c3144",
+    "tree_identical": true,
+    "visual_exporter": "tests/quad/visual_export.cpp",
+    "standalone_svg": "docs/research/quad/figures/M1_UV_6_PATTERNS_20261110.svg",
+    "roadmap": "docs/research/quad/MODE_CHOICES_AND_VISUAL_REVIEW_20261110.md"
+  },
+  "qualified_ci": {
+    "run": 42881742866,
+    "result": "success",
+    "jobs": 4,
+    "linux_quad_ctest": "8/8",
+    "windows_quad_ctest": "8/8",
+    "tri_ctest": "78/78",
+    "python": "527/527",
+    "cli_denials": "7/7",
+    "science": {
+      "eistute_states": 5,
+      "book_states": 4,
+      "obj_byte_identical": true,
+      "acceptance_equal": true,
+      "boundary_incidence": "verified"
+    }
+  },
+  "postmerge_ci": {
+    "run": 42883282973,
+    "sha": "8559d4d12651b4ca37f0d3f9e0fe95c4bb2685bb",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "visual_stats": {
+    "pattern_order": [
+      "T1",
+      "T2",
+      "T4",
+      "T3",
+      "T5",
+      "T6"
+    ],
+    "quads_per_pattern": [
+      4,
+      11,
+      12,
+      8,
+      11,
+      16
+    ],
+    "sum_per_point_rule": 62,
+    "cxx_obj_snapshots": 12,
+    "standalone_visualizer_six_cards": true,
+    "independent_html_figure7_views": 18,
+    "independent_two_to_one_fixture": {
+      "quads": 19,
+      "area": "3/2",
+      "shared_seam_vertices_at": [
+        "(0,1/4)",
+        "(0,3/4)"
+      ],
+      "valid_euler_disk": true
+    },
+    "human_signoff_status": "not reviewed; offline HTML collects per-pattern status and exports a JSON review file"
+  },
+  "distinctions": [
+    "Existing C++ exporter generates parametric UV OBJ (Z=0), not physical XYZ",
+    "Independent offline HTML/PNG/OBJ gallery is source-derived, not C++ runtime capture",
+    "The original 1993 Figure 8 is a historical scan, not output from the current APMesh application",
+    "The complete hybrid method and all-QUAD extension remain unimplemented",
+    "Numerical historic centroid and 1987 Baehmann formula are not approved by advisers"
+  ],
+  "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "next": "Verify exact SHA postmerge. Collect user's template-by-template visual JSON review, then design research-only real-quadtree patch visualization and provenance for hybrid interior vs exterior TRI classification. Do not claim physical hybrid or all-QUAD until actual application outputs exist."
+}

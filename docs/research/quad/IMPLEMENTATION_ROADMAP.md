@@ -265,3 +265,8 @@ M1/M2 numeric/coverage exits remain. Bind the reported adviser decisions and
 qualify application selection separately; do not infer full patch meshing from
 the interior disk demo. Exact-head baseline and remote review/checkpoint gates
 remain mandatory; see the [bridge receipt](evidence/QUAD_LEAF_BRIDGE_20261108.json).
+## 2026-11-10 — Seleção científica de modos e validação visual
+
+O objetivo do doutorado, conforme decisão do pesquisador, é **reproduzir primeiro o método híbrido de 1993** (templates QUAD em células interiores e processamento externo Delaunay/contração de contorno) e **desenvolver depois uma extensão totalmente QUAD**, selecionável de forma explícita. Isso não altera o TRI atual como comportamento padrão; os dois modos ainda precisam ser implementados e validados na aplicação real. Não se deve tratar a etapa totalmente QUAD como se estivesse descrita integralmente no trabalho original.
+
+O M1 tem agora [uma galeria visual persistente](figures/M1_UV_6_PATTERNS_20261110.svg), um [exportador C++ reprodutível](../../tests/quad/visual_export.cpp) e um [plano de validação visual](MODE_CHOICES_AND_VISUAL_REVIEW_20261110.md). **São malhas UV de pesquisa**, não resultados físicos do pipeline completo. A entrega do modo híbrido exige, além dos templates, classificação de células do quadtree real, fronteira TRI gerada e sincronização/mapeamento físico, acompanhados de evidências visuais e científicas. A extensão totalmente QUAD só seguirá depois da validação híbrida, com interface de escolha e testes separados.
