@@ -36,8 +36,8 @@ std::vector<Region> ReadRealCells(quad_test::TreeFixture& fixture) {
   const auto leaves = fixture.tree.getLeaves();
   Check(leaves.size() == capture.source_leaves, "Capture leaf count mismatch");
   std::vector<Region> result;
-  for (std::size_t i = 0; i < leaves.size(); ++i) {
-    auto* c = leaves[i];
+  for (auto* c : leaves) {
+    const std::size_t i = result.size();
     Check(c && c->getMin() && c->getMax(), "Null real Quadtree cell");
     bool inside = true;
     for (int side = 0; side < 4; ++side)
