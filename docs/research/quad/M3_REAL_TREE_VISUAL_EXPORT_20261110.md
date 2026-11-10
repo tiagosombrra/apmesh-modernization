@@ -15,3 +15,7 @@ Usage:
     ctest --test-dir build/quad-visual --output-on-failure --no-tests=error
 
 Inspect build/quad-visual/real_tree_visual/tree_visual.svg and both OBJ files in ParaView, Blender or a browser. The actual patch is a controlled square fixture, not the physical Eistute/Book models. Next scientific step is historical exterior Delaunay triangulation and contour contraction with explicit seam verification, **before** an optional selectable all-QUAD extension. Production TRI defaults remain unchanged.
+
+## CI and merge receipt
+
+[PR #199](https://github.com/tiagosombrra/apmesh-modernization/pull/199) merged into research at `799dd62f7e3dd9145fcc120c5c6daae09c8e01bb` with exact candidate-tree equivalence. [Premerge #42892551246](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42892551246) SUCCESS (GCC/MSVC 10/10 native each, full TRI 78/78, Python 527, CLI 7, strict frozen Eistute/Book reference). [Real binary SVG/OBJ/CSV/JSON artifact #13798922455](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42892551246/artifacts/13798922455) retained 14 days and reproducible from source. [Post-merge #42894221887](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42894221887) in_progress at checkpoint. The 12 outer leaves have **no generated TRI**. [Audit evidence](evidence/M3_REAL_TREE_VISUAL_20261110.json).

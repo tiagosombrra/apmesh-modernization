@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-12 (hybrid-1993 first/all-QUAD second choice recorded; native C++ visual OBJ exporter PR #198 merged, visual review gallery available)
+**Last session:** 2026-11-10-13 (real C++ 19-leaf Quadtree SVG/OBJ exporter PR #199 integrated; boundary still unmeshed)
 
-**Current milestone:** **M1 visual UV validation is now reproducible in actual C++: PR #198 exported 12 OBJ snapshots from the six frozen Figure 7 templates with two explicitly experimental point rules, 8/8 native CTest on GCC/MSVC and full premerge TRI scientific parity. Research plan now explicitly sequences historical hybrid 1993 first, selectable all-QUAD extension second; neither exists as a production mode. M0 qualified in scope; M1/M2/M3 PARTIAL.**
+**Current milestone:** **M3 real Quadtree UV visualization qualified at feature HEAD via PR #199: 19 real source leaves, 7 interior QUAD-candidate leaves and 12 excluded but unmeshed boundary leaves; 42 UV QUAD/53 vertices, two explicit experimental center rules, source CSV/SVG/OBJ/JSON from actual C++ binaries; 10/10 native GCC/MSVC and full TRI science parity. Not yet a complete hybrid 1993 or all-QUAD production mode. M0 qualified in scope; M1/M2/M3 PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -234,9 +234,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - User-facing standalone HTML/PNG/ZIP viewer was independently produced in the conversation: 6 template cards, interactive rule choice, vertex labels, polygon outlines, 18 SVGs in compare mode, per-pattern human review status/comments exported as JSON, source Figure 7/8 scan crops, 12 source-derived OBJ, 2-cell demo and an independently reconstructed 2:1 neighbor 19-QUAD fixture. Its **offline artifacts are separate from the verified native C++ exporter**; the portable [GitHub SVG](figures/M1_UV_6_PATTERNS_20261110.svg) is durable in the repo.
 - [Evidence](evidence/M1_VISUAL_MODES_20261110.json) records the 12 real C++ exports and the independent visual checker distinctly. No real physical Eistute/Book hybrid mesh or full-QUAD extension generated, and no adviser-approved numerical point rule. M1/M2/M3 remain PARTIAL; outer Delaunay/boundary stage and UV→XYZ are next physical gates.
 
+## 2026-11-10-13 — Real Quadtree visual evidence integrated
+
+- [PR #199](https://github.com/tiagosombrra/apmesh-modernization/pull/199) merged at `799dd62f7e3dd9145fcc120c5c6daae09c8e01bb` and matches tested feature `5f72d163660aa3f29ef3f1f7184f26868650733a` exactly by Git tree; modernization `main` unchanged.
+- [Exact feature CI #42892551246](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42892551246) **SUCCESS** all four jobs: QUAD native GCC and MSVC **10/10 CTest each**, TRI **78/78 CTest**, Python **527/527**, seven CLI denials, frozen Eistute 5 / Book 4 OBJ byte equality, acceptance and boundary incidence.
+- The real C++ [exporter](../../../tests/quad/tree_visual_export.cpp) reads a live 19-leaf Quadtree, classifies 7 interior QUAD candidates, 12 **unmeshed boundary** leaves and emits 42 QUAD/53 UV vertices/area 0.25 for either explicit experimental center rule. Both OBJ, SVG and CSV are independently verified by [Python audit](../../../tests/quad/test_tree_visual_export.py). This is a *controlled square fixture* rather than a physical Eistute/Book hybrid.
+- [Actual C++ artifact #13798922455](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42892551246/artifacts/13798922455) includes generated SVG, JSON, CSV and two OBJ, with 14-day retention. A separate PNG preview in this ChatGPT session was a deterministic **source-derived reconstruction**, not an actual CI binary export.
+- [M3 technical note](M3_REAL_TREE_VISUAL_EXPORT_20261110.md) and [machine-readable evidence](evidence/M3_REAL_TREE_VISUAL_20261110.json). An initial failed attempt indexed `std::list` as a vector in the new test code ([run #42892288498](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42892288498)); corrected without altering topology expectations. Prior [post-merge #42883282973](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42883282973) **SUCCESS**; new [post-merge #42894221887](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42894221887) in_progress at checkpoint.
+
 ## Next exact action
 
-Verify post-merge #42883282973 at exact merge SHA, then implement an isolated **real-quadtree visual patch export** that labels classified interior QUAD candidates and exterior TRI/boundary regions of a known fixture; display both before claiming a complete historical hybrid mesh. Collect the human per-pattern review JSON from the offline viewer. Preserve no-default numerical point selection; align historical centroid with Bento/Creto before physically mapping quads. The all-QUAD extension comes **after** historical hybrid is qualified, with a separate selectable research mode and positive boundary conformity tests. Preserve TRI default, main and Eistute/Book scientific regression.
+Verify [post-merge CI #42894221887](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42894221887) on merged SHA `799dd62f7e3dd9145fcc120c5c6daae09c8e01bb`. Then create a separate research-only boundary/interface gate using real Quadtree leaf classification: extract the 7-interior/12-exterior separating polyline and evaluate the historical Delaunay plus contour-contraction algorithm for the excluded area. Require **actual TRI faces before labeling exterior cells TRI**, combined area 1.0 (current QUAD area 0.25; unmeshed exterior 0.75), exact matched interface vertex IDs, no hanging edges, manifold incidence, positive orientation, full visual SVG/OBJ output and strict Eistute/Book regressions. Only afterward develop the selectable all-QUAD extension. Historic center selection still requires Bento/Creto approval; keep main and default TRI intact.
 
 ## Current M1 reconstruction
 

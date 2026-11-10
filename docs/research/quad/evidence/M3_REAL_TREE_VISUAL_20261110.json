@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "scope": "actual C++ legacy Quadtree controlled 19-leaf UV fixture and visual export",
+  "repo": "tiagosombrra/apmesh-modernization",
+  "branch": "quad-templates",
+  "pr": 199,
+  "feature_sha": "5f72d163660aa3f29ef3f1f7184f26868650733a",
+  "merge_sha": "799dd62f7e3dd9145fcc120c5c6daae09c8e01bb",
+  "merge_tree_sha": "90dedc2310bc3c20f12f5fd3f87abecd5b650aa6",
+  "exact_merge_tree_matches_qualified_feature": true,
+  "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "observations": {
+    "source_leaves": 19,
+    "interior_quad_candidates": 7,
+    "excluded_boundary_unmeshed": 12,
+    "quads_per_experimental_rule": 42,
+    "vertices_per_rule": 53,
+    "quad_uv_area": 0.25,
+    "unmeshed_exterior_area": 0.75,
+    "triangles_emitted": 0,
+    "historical_centroid_approved": false
+  },
+  "premerge_ci": {
+    "run": 42892551246,
+    "conclusion": "success",
+    "jobs": 4,
+    "native_linux_ctest": "10/10",
+    "native_windows_ctest": "10/10",
+    "tri_ctest": "78/78",
+    "python_tooling": "527/527",
+    "cli_denials": "7/7",
+    "eistute_states": 5,
+    "book_states": 4,
+    "obj_byte_identical": true,
+    "acceptance_equal": true,
+    "boundary_incidence_verified": true
+  },
+  "native_artifact": {
+    "id": 13798922455,
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42892551246/artifacts/13798922455",
+    "retention_days": 14,
+    "files": [
+      "tree_visual.svg",
+      "tree_regions.csv",
+      "manifest.json",
+      "quads_vertex_mean.obj",
+      "quads_area_centroid.obj"
+    ],
+    "source": "actual C++ native executable in Linux GitHub Actions"
+  },
+  "visual_preview": {
+    "origin": "independent deterministic reconstruction of C++ fixture",
+    "derived_counts_validated_by_CI": true,
+    "not_native_artifact_capture": true
+  },
+  "first_failed_run": {
+    "id": 42892288498,
+    "cause": "getLeaves returns std::list, not vector",
+    "resolved_at_feature_sha": "5f72d163660aa3f29ef3f1f7184f26868650733a"
+  },
+  "prior_postmerge": {
+    "run": 42883282973,
+    "result": "success"
+  },
+  "current_postmerge": {
+    "run": 42894221887,
+    "sha": "799dd62f7e3dd9145fcc120c5c6daae09c8e01bb",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "not_yet_implemented": [
+    "historical exterior Delaunay and contour contraction",
+    "quad/tri conforming seam",
+    "full physical hybrid Eistute or Book UV-to-XYZ",
+    "adviser-approved historical point selection",
+    "selectable all-quad extension"
+  ],
+  "next": "Verify CI #42894221887 and capture real boundary interface, then implement historical exterior TRI only when actual face elements and seam checks pass."
+}
