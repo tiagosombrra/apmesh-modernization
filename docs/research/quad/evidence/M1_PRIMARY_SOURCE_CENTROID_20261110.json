@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "milestone": "M1 historical primary-source validation and comparative center-point research",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "research_branch": "quad-templates",
+  "pr": 197,
+  "source": {
+    "title": "1993_Bento_SIBGRAPI_Combinacao_das_Tecnicas_Templates_Quadrilaterais.pdf",
+    "url": "https://drive.google.com/file/d/1dYBOU5Q-pFRBlmFXB3iWqQaPFdd2ClzA/view",
+    "provider": "Authenticated user personal Google Drive",
+    "mime": "application/pdf",
+    "bytes": 5439448,
+    "pages": 7,
+    "sha256": "49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5",
+    "exact_match_to_previous_source_metadata": true
+  },
+  "figure7": {
+    "printed_page": 288,
+    "pdf_page_1_based": 4,
+    "inspection": "Assistant visual inspection of retrieved page",
+    "six_lower_patterns_match_proposed_transcription": true,
+    "source_prints_T1_to_T6_labels": false,
+    "internal_class_order": [
+      "T1",
+      "T2",
+      "T4",
+      "T3",
+      "T5",
+      "T6"
+    ],
+    "fifth_column_has_center_junction": false,
+    "adviser_signoff": false
+  },
+  "historical_centroid": {
+    "paper_wording": "Connect midpoint nodes with an inserted polygon centroid",
+    "numerical_equation_in_1993": false,
+    "preferred_mathematical_interpretation": "Signed-area polygon centroid (hypothesis only)",
+    "baehmann_reference": {
+      "year": 1987,
+      "title": "Robust, geometrically based, automatic two-dimensional mesh generation",
+      "doi": "10.1002/nme.1620240603",
+      "full_text_verified": false
+    },
+    "formal_historical_policy_approved": false
+  },
+  "scope_context": {
+    "interior": "Polygon pattern subdivision",
+    "exterior": "Delaunay triangulation with boundary contraction",
+    "all_quad_full_domain_guaranteed_by_1993": false
+  },
+  "candidate": "881fc9236b9541bdf256c6da790d68b9ffba533d",
+  "merge_sha": "7b0ae3aebb2c27d1504e5842e496742ca4d011a3",
+  "merge_tree_sha": "f37656927a834183128658e7196d9ee5271827ab",
+  "merge_tree_equal_tested_candidate": true,
+  "main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "qualified_ci": {
+    "run": 42867018870,
+    "sha": "881fc9236b9541bdf256c6da790d68b9ffba533d",
+    "result": "success",
+    "jobs": 4,
+    "native_quad_linux": "7/7",
+    "native_quad_windows": "7/7",
+    "root_tri_ctest": "78/78",
+    "python_tooling": "527/527",
+    "cli_negatives": "7/7",
+    "science": {
+      "eistute": 5,
+      "book": 4,
+      "all_obj_byte_identical": true,
+      "acceptance_fields_equal": true,
+      "boundary_incidence_verified": true
+    }
+  },
+  "postmerge_ci": {
+    "run": 42868211131,
+    "sha": "7b0ae3aebb2c27d1504e5842e496742ca4d011a3",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "prior_m1_point_witness_postmerge": {
+    "run": 42853155958,
+    "sha": "720309b4b153b5695a5afcb81aa9a967a17aaa0e",
+    "result": "success",
+    "jobs": 4
+  },
+  "comparison": {
+    "combinations": 96,
+    "measure": "worst normalized signed corner Jacobian sine (angle-based proxy)",
+    "rows": [
+      {
+        "pattern": "T1",
+        "quad_count": 4,
+        "vertex_mean_worst": 1,
+        "vertex_mean_average_element_worst": 1,
+        "area_centroid_worst": 1,
+        "area_centroid_average_element_worst": 1
+      },
+      {
+        "pattern": "T2",
+        "quad_count": 11,
+        "vertex_mean_worst": 0.6,
+        "vertex_mean_average_element_worst": 0.7654863137380862,
+        "area_centroid_worst": 0.6,
+        "area_centroid_average_element_worst": 0.753073347423271
+      },
+      {
+        "pattern": "T4",
+        "quad_count": 12,
+        "vertex_mean_worst": 0.7071067811865475,
+        "vertex_mean_average_element_worst": 0.8671779907288211,
+        "area_centroid_worst": 0.7071067811865475,
+        "area_centroid_average_element_worst": 0.855799438273574
+      },
+      {
+        "pattern": "T3",
+        "quad_count": 8,
+        "vertex_mean_worst": 1,
+        "vertex_mean_average_element_worst": 1,
+        "area_centroid_worst": 1,
+        "area_centroid_average_element_worst": 1
+      },
+      {
+        "pattern": "T5",
+        "quad_count": 11,
+        "vertex_mean_worst": 0.6,
+        "vertex_mean_average_element_worst": 0.8379346824314564,
+        "area_centroid_worst": 0.6,
+        "area_centroid_average_element_worst": 0.831728199274049
+      },
+      {
+        "pattern": "T6",
+        "quad_count": 16,
+        "vertex_mean_worst": 1,
+        "vertex_mean_average_element_worst": 1,
+        "area_centroid_worst": 1,
+        "area_centroid_average_element_worst": 1
+      }
+    ],
+    "minimum_equal_for_every_template": true
+  },
+  "limits": [
+    "No adviser sign-off of historical numeric centroid or polygon graph",
+    "1987 Baehmann full text not examined",
+    "Angle-only UV quality metric does not imply curved/XYZ mesh validity",
+    "No production QUAD, physical boundary synchronization, patch coverage, memory or parallel runtime proof"
+  ],
+  "next": "Verify exact postmerge CI 42868211131. Ask advisers to record whether signed-area centroid matches intended historical 1993 algorithm and define preconditions/degeneracy/contour and 1987-source support before implementing a production policy. Remain M1 partial."
+}
