@@ -14,6 +14,9 @@ target_link_libraries(apmesh_quad_experimental_point PUBLIC apmesh_quad_uv)
 add_executable(quad_experimental_point_contracts experimental_point_contracts.cpp)
 target_link_libraries(quad_experimental_point_contracts PRIVATE
   apmesh_quad_experimental_point)
+# Export real C++ UV research meshes for independent visual inspection.
+add_executable(quad_visual_export visual_export.cpp)
+target_link_libraries(quad_visual_export PRIVATE apmesh_quad_experimental_point)
 add_executable(quad_mesh_mode_contracts mesh_mode_contracts.cpp)
 target_include_directories(quad_mesh_mode_contracts PRIVATE ../../include)
 target_compile_features(quad_mesh_mode_contracts PRIVATE cxx_std_17)
@@ -21,7 +24,7 @@ add_executable(quad_uv_demo ../../research/quad/demo.cpp)
 target_link_libraries(quad_uv_demo PRIVATE apmesh_quad_uv)
 
 foreach(target IN ITEMS apmesh_quad_uv quad_uv_contracts quad_mesh_mode_contracts quad_uv_demo
-  apmesh_quad_experimental_point quad_experimental_point_contracts)
+  apmesh_quad_experimental_point quad_experimental_point_contracts quad_visual_export)
   if(MSVC)
     target_compile_options(${target} PRIVATE /W4 /WX /EHsc /utf-8)
   else()
@@ -36,6 +39,10 @@ set_tests_properties(quad.uv.contracts PROPERTIES TIMEOUT 30 LABELS "research-qu
 add_test(NAME quad.m1.experimental_point_witnesses COMMAND quad_experimental_point_contracts)
 set_tests_properties(quad.m1.experimental_point_witnesses PROPERTIES
   TIMEOUT 30 LABELS "research-quad;numeric-proposal")
+add_test(NAME quad.m1.visual_obj_export
+  COMMAND quad_visual_export "${CMAKE_CURRENT_BINARY_DIR}/visual_uv_objs")
+set_tests_properties(quad.m1.visual_obj_export PROPERTIES
+  TIMEOUT 30 LABELS "research-quad;visual-validation")
 # Independent exact-rational schematic audit of the Figure 7 transcription.
 # This is a documentary contract, not a numerical centroid or physical QUAD gate.
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
