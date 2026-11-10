@@ -110,4 +110,14 @@ if(AP_MESH_QUAD_WITH_TREE)
   set_tests_properties(quad.m3.real_tree_visual_verify PROPERTIES
     DEPENDS quad.m3.real_tree_visual_export
     TIMEOUT 30 LABELS "research-quad;visual-validation")
+  # Topology-only exterior center-fan experiment on actual C++ Quadtree outputs.
+  # Historical Delaunay and contour contraction are explicitly not implemented.
+  add_test(NAME quad.m5.experimental_exterior_interface
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/test_m5_exterior_interface.py"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/real_tree_visual")
+  set_tests_properties(quad.m5.experimental_exterior_interface PROPERTIES
+    DEPENDS quad.m3.real_tree_visual_verify
+    TIMEOUT 45 LABELS "research-quad;experimental-boundary")
+
 endif()
