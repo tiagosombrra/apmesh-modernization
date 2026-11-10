@@ -4,7 +4,7 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-03 (M3-5 real Adapter retry fixture merged via PR #190; post-merge CI pending)
+**Last session:** 2026-11-10-04 (M3-5 merged and pre-merge qualified; M3-6 provenance/acceptance audit documented; post-merge full CTest pending)
 
 **Current milestone:** **M3-5 real Adapter patch/UV capture/retry integration test merged via PR #190, qualifying three actual local attempts, one selection and controlled abort. Production QUAD remains disabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
 
@@ -160,9 +160,16 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [Post-merge CI #42809300817](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42809300817) was in_progress when this checkpoint was created and must be checked separately. The merge source tree equals reviewed tested head.
 - **Non-claims:** local Adapter selection is not global GeneratorAdaptive acceptance. OpenMP parallel runtime and whole-process sanitizer/memory-denial are not qualified. M1/M2/M3 remain partial; no positive physical QUAD generation, numerical interior selector, full boundary/XYZ/multipatch/adaptation.
 
+## 2026-11-10-04 — post-merge M3-5 verification and M3-6 identity audit
+
+- [GitHub Actions post-merge #42809300817](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42809300817) is **completed** at this checkpoint on actual merge SHA `536c94009ea8b6a3a613886dfdf93314f94c91f6`. Native Linux GCC QUAD and Windows MSVC QUAD jobs passed, as did independent frozen Eistute/Book science; root TRI 76 CTest/527 Python job remained in build. Do not call the full post-merge run qualified until it completes.
+- [Source-backed M3-6 design](M3_GLOBAL_ACCEPTANCE_DESIGN_20261110.md) traces outer `GeneratorAdaptive` retry and commit/rollback and distinguishes it from `Adapter::AdaptDomain` patch retry and local attempt. **The existing four-field `PatchAttemptIdentity` is not globally unique across generator retries**; joining current events by numeric retry alone would produce false matches.
+- Relevant global boundaries: `GeneratorAdaptive` outer retry near line 3066; budget/growth retry continuations near 3263/3302; successful accepted-mesh commit ~3570; rejected-step rollback ~3669. Any M3-6 outcome stream must include these paths and avoid claiming committed status before the actual commit.
+- Next implementation increment **M3-6a** should propagate a separate outer retry/epoch across Adapter observation events in an explicitly opt-in manner with tests for identity collisions. No complete global acceptance event is implemented by the design document; numeric/physical QUAD gates remain open.
+
 ## Next exact action
 
-Close post-merge Actions #42809300817 on exact M3-5 merge SHA, preserving failures if any. Then design/implement M3-6 as an **explicitly opt-in, value-only outer GeneratorAdaptive acceptance/rejection audit** correlated by patch/step/retry to local Adapter selections, without changing default TRI or claiming positive QUAD output. Preserve full native, Python, frozen science and new 76 CTest gates.
+Inspect and close exact merge-head post-merge Actions #42809300817 (especially new root 76 CTest/527 Python). Then open isolated M3-6a feature PR with explicit outer generator retry/epoch provenance separate from Adapter patch-retry/local-attempt, test collisions and preserve 76 CTest, 527 Python, four QUAD native tests per platform and Eistute/Book frozen oracles. Do not enable positive QUAD or modify main.
 
 ## Current M1 reconstruction
 
