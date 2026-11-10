@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-04 (M3-5 merged and pre-merge qualified; M3-6 provenance/acceptance audit documented; post-merge full CTest pending)
+**Last session:** 2026-11-10-05 (M3-6a outer retry epoch provenance merged via PR #191; post-merge CI pending)
 
-**Current milestone:** **M3-5 real Adapter patch/UV capture/retry integration test merged via PR #190, qualifying three actual local attempts, one selection and controlled abort. Production QUAD remains disabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
+**Current milestone:** **M3-6a caller-scoped session, outer retry and monotonic epoch propagated from `GeneratorAdaptive` into Adapter UV/local-decision events via PR #191; M3-5 real Adapter fixture qualified. Global acceptance outcomes and production QUAD emission remain disabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -167,9 +167,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - Relevant global boundaries: `GeneratorAdaptive` outer retry near line 3066; budget/growth retry continuations near 3263/3302; successful accepted-mesh commit ~3570; rejected-step rollback ~3669. Any M3-6 outcome stream must include these paths and avoid claiming committed status before the actual commit.
 - Next implementation increment **M3-6a** should propagate a separate outer retry/epoch across Adapter observation events in an explicitly opt-in manner with tests for identity collisions. No complete global acceptance event is implemented by the design document; numeric/physical QUAD gates remain open.
 
+## 2026-11-10-05 — M3-6a namespace/epoch wired and tested
+
+- [PR #191](https://github.com/tiagosombrra/apmesh-modernization/pull/191) merged into research `quad-templates` as `1f34cc31d7fef9f6a4427a9c7c0bfffaaf34d2eb`; the merge tree is identical to the reviewed candidate `65a566c3a895de28cd8c4b1c8e9cba12522bc4c5`. Modernization `main` stays unchanged.
+- [Exact pre-merge GitHub Actions #42813339493](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42813339493): **SUCCESS**, four jobs — QUAD GCC/MSVC each 4/4 CTest, TRI 76/76 CTest, Python 527/527, CLI negatives 7/7, OpenMP Adapter syntax; frozen Eistute/Book 5/4 accepted/rejected states with byte-identical OBJ and exact boundary coverage.
+- [M3-6a evidence](evidence/M3_OUTER_EPOCH_20261110.json) records the new `OuterAttemptIdentity{session, epoch, global_retry}`, appended to the legacy four-field `PatchAttemptIdentity`. Research caller supplies a nonzero namespace; the generator increments an instance-local epoch each outer retry. Serial and OMP Adapter sources annotate both UV captures and local-selection decisions. Mixed-epoch candidates are rejected before any decision publication.
+- Real Adapter fixture now executes three cases using different scopes, including two normal generations with reused local IDs and a controlled abort; 30 TRI elements and four UV observations were reported. This does not exercise full outer-generator accepted/rejected budget logic.
+- [Post-merge CI #42814238290](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42814238290) had status `in_progress` at this checkpoint and must be checked separately before claiming exact integrated-code qualification.
+
 ## Next exact action
 
-Inspect and close exact merge-head post-merge Actions #42809300817 (especially new root 76 CTest/527 Python). Then open isolated M3-6a feature PR with explicit outer generator retry/epoch provenance separate from Adapter patch-retry/local-attempt, test collisions and preserve 76 CTest, 527 Python, four QUAD native tests per platform and Eistute/Book frozen oracles. Do not enable positive QUAD or modify main.
+Inspect exact post-merge Actions #42814238290; retain any failure. Then implement isolated M3-6b global TRI outcome events: budget/growth retry evaluations, strictly post-commit accepted, and strictly post-rollback rejected events. Correlate via M3-6a explicit outer epoch, enforce research-only nonblocking delivery policy, preserve 76 CTest, 527 Python and Eistute/Book oracles. Never conflate accepted TRI with physical QUAD.
 
 ## Current M1 reconstruction
 

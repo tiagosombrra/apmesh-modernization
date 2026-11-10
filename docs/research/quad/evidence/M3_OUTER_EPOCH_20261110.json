@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "stage": "M3-6a",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "pr": 191,
+  "candidate_sha": "65a566c3a895de28cd8c4b1c8e9cba12522bc4c5",
+  "merged_sha": "1f34cc31d7fef9f6a4427a9c7c0bfffaaf34d2eb",
+  "merge_tree_sha": "3ce68b06bf6b6e8ed22b0657d72a2909dda0b8a3",
+  "tree_same_as_tested_candidate": true,
+  "main_unchanged_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "new_outer_identity": {
+    "fields": [
+      "session",
+      "epoch",
+      "global_retry"
+    ],
+    "legacy_four_field_initializer": "unchanged, unscoped sentinel",
+    "scope": "Caller-provided nonzero session ID, per-generator monotonic epoch and actual outer retry"
+  },
+  "algorithm_wiring": {
+    "entry": "GeneratorAdaptive::SetResearchUvCapture(hooks,session)",
+    "outer_retry_boundary": "GeneratorAdaptive serial outer retry loop increments epoch before patch generation",
+    "adapter": "SetResearchOuterAttempt updates research hook context and resets on re-registration",
+    "events": "AttemptUvCapture and LocalSelectionEvent carry same extra value scope"
+  },
+  "premerge": {
+    "run": 42813339493,
+    "head_sha": "65a566c3a895de28cd8c4b1c8e9cba12522bc4c5",
+    "status": "success",
+    "jobs_passed": 4,
+    "quad_linux_ctest": "4/4",
+    "quad_windows_msvc_ctest": "4/4",
+    "tri_ctest": "76/76",
+    "python_tooling": "527/527",
+    "cli_denials": "7/7",
+    "openmp_syntax": "passed",
+    "science": {
+      "eistute_states": 5,
+      "book_states": 4,
+      "all_obj_byte_identical": true,
+      "acceptance_fields_equal": true,
+      "boundary_incidence_coverage": "verified"
+    }
+  },
+  "real_adapter_fixture": {
+    "cases": 3,
+    "normal_triangles": 30,
+    "snapshots": 4,
+    "local_attempts": 3,
+    "selected": 1,
+    "superseded_or_failed": 2,
+    "aborted_decisions": 0,
+    "assertion": "same local patch identifiers under distinct global retry epochs, consistent UV and selection scope"
+  },
+  "postmerge": {
+    "run": 42814238290,
+    "sha": "1f34cc31d7fef9f6a4427a9c7c0bfffaaf34d2eb",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "limits": [
+    "Session namespace uniqueness between distinct generator instances must be guaranteed by the research caller",
+    "Outer generator setter source is compiled but a full hook-enabled generator Execute with budget retry has not been exercised",
+    "No global accepted/rejected step event implementation (M3-6b pending)",
+    "No physical quad generation, approved numerical interior point, boundary completion, UV-to-XYZ, multipatch or iterative QUAD adaptation",
+    "OpenMP source syntax tested, not runtime race-free certification",
+    "No comprehensive ASan/LSan/CRT ownership qualification"
+  ],
+  "next": "Check postmerge CI #42814238290; then M3-6b define and emit globally scoped budget/growth evaluation, post-Commit accepted and post-rollback rejected events from GeneratorAdaptive with explicit event delivery policy, preserving TRI outputs."
+}
