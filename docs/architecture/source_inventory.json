@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 665,
+    "literal_include_directives": 667,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -388,7 +388,7 @@
     "mpi.h": 2,
     "numeric": 1,
     "omp.h": 3,
-    "optional": 6,
+    "optional": 7,
     "ostream": 1,
     "queue": 2,
     "set": 3,
@@ -516,8 +516,8 @@
       "path": "include/adapter/adapter.h",
       "component_by_directory": "adapter",
       "kind": "header",
-      "sha256": "9c5b7ff48cc8c2ba6883e5b54e3daab9416a8168c6ec084ec00221e6c26bd83e",
-      "bytes": 5742,
+      "sha256": "b809bdc5fcf151d2361fe9afab4583a3591d097c298f5eed4646738b8baca99b",
+      "bytes": 6116,
       "includes": [
         {
           "line": 4,
@@ -549,115 +549,129 @@
         },
         {
           "line": 8,
-          "spelling": "string",
+          "spelling": "optional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 9,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 10,
           "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 11,
+          "line": 12,
           "spelling": "../crab_mesh/aft/advancing_front.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/advancing_front.h"
         },
         {
-          "line": 12,
+          "line": 13,
           "spelling": "../crab_mesh/aft/boundary.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/boundary.h"
         },
         {
-          "line": 13,
+          "line": 14,
           "spelling": "../crab_mesh/aft/edge.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/edge.h"
         },
         {
-          "line": 14,
+          "line": 15,
           "spelling": "../crab_mesh/aft/face.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/face.h"
         },
         {
-          "line": 15,
+          "line": 16,
           "spelling": "../crab_mesh/aft/vertex.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/vertex.h"
         },
         {
-          "line": 16,
+          "line": 17,
           "spelling": "../crab_mesh/performer/ranged_id_manager.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/performer/ranged_id_manager.h"
         },
         {
-          "line": 17,
+          "line": 18,
           "spelling": "../curvature/curvature_analytical.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/curvature_analytical.h"
         },
         {
-          "line": 18,
+          "line": 19,
           "spelling": "../curvature/curvature_discrete.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/curvature/curvature_discrete.h"
         },
         {
-          "line": 19,
+          "line": 20,
           "spelling": "../data/curve/curve_adaptive_parametric.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/curve/curve_adaptive_parametric.h"
         },
         {
-          "line": 20,
+          "line": 21,
           "spelling": "../data/definitions.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/definitions.h"
         },
         {
-          "line": 21,
+          "line": 22,
           "spelling": "../data/mesh/sub_mesh.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/mesh/sub_mesh.h"
         },
         {
-          "line": 22,
+          "line": 23,
           "spelling": "../data/patch/patch_coons.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_coons.h"
         },
         {
-          "line": 23,
+          "line": 24,
           "spelling": "../data/tree/bin_tree.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/tree/bin_tree.h"
         },
         {
-          "line": 24,
+          "line": 25,
           "spelling": "../parallel/TMCommunicator.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/parallel/TMCommunicator.h"
+        },
+        {
+          "line": 26,
+          "spelling": "../../research/quad/adapter_capture.h",
+          "form": "quote",
+          "scope": "repository_other",
+          "target": "research/quad/adapter_capture.h"
         }
       ]
     },
@@ -3695,8 +3709,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "28188b825772dafbbe4f158fcddef1fc649c49f4eda7d85cd057246e44e8a941",
-      "bytes": 74348,
+      "sha256": "40bee48326190b0552b57056b40a4e74b24aaddd050decf5f490b6ccd05edaa5",
+      "bytes": 75331,
       "includes": [
         {
           "line": 1,

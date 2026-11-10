@@ -66,6 +66,11 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           & "build/quad-ci-msvc/Debug/quad_tree_demo.exe" "$env:RUNNER_TEMP/quad-native-tree.obj"
           exit $LASTEXITCODE
+      - name: Check experimental OMP Adapter syntax without changing legacy build defaults
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          c++ -std=c++17 -DUSE_OPENMP=1 -fopenmp -Iinclude -Wall -Wextra -fsyntax-only src/adapter/adapter.cpp
       - name: Publish bounded test logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -142,6 +147,8 @@ jobs:
               "src/application/run_application.cpp",
               "include/crab_mesh/aft/advancing_front.h",
               "src/crab_mesh/aft/advancing_front.cpp",
+              "include/adapter/adapter.h",
+              "src/adapter/adapter.cpp",
           }
           changed = set(subprocess.check_output(
               ["git", "diff", "--name-only",
