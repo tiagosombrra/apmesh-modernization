@@ -191,6 +191,97 @@ void AssertAttemptIsolation() {
           "Independent attempts shared incorrect provenance");
 }
 
+
+void AssertLocalSelectionStream() {
+  using apmesh::quad::LocalAttemptRecord;
+  using apmesh::quad::LocalSelectionEvent;
+  using apmesh::quad::LocalSelectionKind;
+  std::vector<LocalAttemptRecord> records{
+      {{4, 2, 1, 0}, true, "degenerate_needs_retry"},
+      {{4, 2, 1, 1}, false, "generation_failed"},
+      {{4, 2, 1, 2}, true, "ok"},
+  };
+  std::vector<LocalSelectionEvent> results;
+  apmesh::quad::PublishLocalSelections(
+      records, 2, [&](LocalSelectionEvent value) { results.push_back(std::move(value)); });
+  Require(results.size() == 3, "Decision stream lost attempted candidates");
+  Require(results[0].kind == LocalSelectionKind::Superseded &&
+              results[1].kind == LocalSelectionKind::GenerationFailed &&
+              results[2].kind == LocalSelectionKind::SelectedForAdapterReturn,
+          "Local attempt disposition was incorrectly classified");
+  Require(results[2].attempt.patch_index == 4 &&
+              results[2].attempt.adaptive_step == 2 &&
+              results[2].attempt.retry_index == 1 &&
+              results[2].attempt.local_attempt == 2 &&
+              results[2].generation_status == "ok",
+          "Decision stream lost attempt metadata");
+  // A locally selected attempt is not a globally accepted TRI mesh.
+  Require(results[2].kind == LocalSelectionKind::SelectedForAdapterReturn,
+          "Selection was promoted to global acceptance");
+
+  bool rejected = false;
+  records.push_back(records[2]);
+  const auto previous = results.size();
+  try {
+    apmesh::quad::PublishLocalSelections(
+        records, 2, [&](LocalSelectionEvent value) { results.push_back(std::move(value)); });
+  } catch (const std::invalid_argument&) {
+    rejected = true;
+  }
+  Require(rejected && results.size() == previous, "Duplicate stream emitted partial decisions");
+  records.pop_back();
+
+  rejected = false;
+  try {
+    apmesh::quad::PublishLocalSelections(
+        records, 1, [&](LocalSelectionEvent value) { results.push_back(std::move(value)); });
+  } catch (const std::invalid_argument&) {
+    rejected = true;
+  }
+  Require(rejected && results.size() == previous, "Failed TRI attempt was marked selected");
+
+  rejected = false;
+  try {
+    apmesh::quad::PublishLocalSelections(
+        records, 8, [&](LocalSelectionEvent value) { results.push_back(std::move(value)); });
+  } catch (const std::invalid_argument&) {
+    rejected = true;
+  }
+  Require(rejected && results.size() == previous, "Missing local attempt was fabricated");
+
+  rejected = false;
+  try {
+    apmesh::quad::PublishLocalSelections(
+        records, -1, [&](LocalSelectionEvent value) { results.push_back(std::move(value)); });
+  } catch (const std::invalid_argument&) {
+    rejected = true;
+  }
+  Require(rejected && results.size() == previous, "Success was suppressed without selection");
+
+  std::vector<LocalAttemptRecord> all_failed{
+      {{4, 2, 1, 0}, false, "generation_failed"},
+      {{4, 2, 1, 1}, false, "generation_failed"}};
+  std::vector<LocalSelectionEvent> failed;
+  apmesh::quad::PublishLocalSelections(
+      all_failed, -1, [&](LocalSelectionEvent value) { failed.push_back(std::move(value)); });
+  Require(failed.size() == 2 &&
+              failed[0].kind == LocalSelectionKind::GenerationFailed &&
+              failed[1].kind == LocalSelectionKind::GenerationFailed,
+          "Unsuccessful patch received an invented accepted result");
+}
+
+void AssertDecisionHookRequiresCapture() {
+  apmesh::quad::CaptureHooks hooks;
+  hooks.local_selection_sink = [](apmesh::quad::LocalSelectionEvent) {};
+  bool rejected = false;
+  try {
+    apmesh::quad::ValidateCaptureHooks(hooks);
+  } catch (const std::invalid_argument&) {
+    rejected = true;
+  }
+  Require(rejected, "Decision-only hook was allowed without matching UV capture");
+}
+
 } // namespace
 
 int main() {
@@ -200,7 +291,9 @@ int main() {
     AssertValueOwnedAttemptCapture();
     AssertCaptureHookFailureAtomicity();
     AssertAttemptIsolation();
-    std::cout << "refined_observer_contract_cases=5 failed=0\n";
+    AssertLocalSelectionStream();
+    AssertDecisionHookRequiresCapture();
+    std::cout << "refined_observer_contract_cases=7 failed=0\n";
     return 0;
   } catch (const std::exception& error) {
     std::cerr << "Refined observer contract failed: " << error.what() << '\n';
