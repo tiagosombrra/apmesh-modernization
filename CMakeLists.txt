@@ -184,8 +184,8 @@ if(BUILD_TESTING AND TARGET bezier_observer_probe)
   set_tests_properties(tooling.bezier_observer_preservation PROPERTIES LABELS "tooling;required-gate" TIMEOUT 30)
 endif()
 
-// M3-5: exercise the actual serial Adapter with research hooks in a test process.
-// These sources are never linked into the production application or the CLI.
+# M3-5: exercise the actual serial Adapter with research hooks in a test process.
+# These sources are never linked into the production application or the CLI.
 if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   add_executable(quad_adapter_integration_probe
     tests/quad/adapter_integration_probe.cpp
