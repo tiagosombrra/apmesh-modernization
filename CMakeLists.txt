@@ -213,4 +213,12 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
       --root "${CMAKE_CURRENT_SOURCE_DIR}" --model eistute)
   set_tests_properties(quad.generator.real_global_outcomes PROPERTIES
     LABELS "research-quad;application;required-gate" TIMEOUT 350)
+  # Cross-model real GeneratorAdaptive outcome verification (same frozen settings).
+  add_test(NAME quad.generator.real_global_outcomes.book
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_generator_outcomes.py"
+      --exe "$<TARGET_FILE:quad_generator_outcome_probe>"
+      --root "${CMAKE_CURRENT_SOURCE_DIR}" --model book)
+  set_tests_properties(quad.generator.real_global_outcomes.book PROPERTIES
+    LABELS "research-quad;application;required-gate" TIMEOUT 350)
 endif()
