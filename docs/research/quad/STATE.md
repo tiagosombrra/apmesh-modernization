@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-13 (real C++ 19-leaf Quadtree SVG/OBJ exporter PR #199 integrated; boundary still unmeshed)
+**Last session:** 2026-11-10-15 (M5 research-only QUAD/TRI exterior interface experiment PR #200 merged; Delaunay historical/contour contraction pending)
 
-**Current milestone:** **M3 real Quadtree UV visualization qualified at feature HEAD via PR #199: 19 real source leaves, 7 interior QUAD-candidate leaves and 12 excluded but unmeshed boundary leaves; 42 UV QUAD/53 vertices, two explicit experimental center rules, source CSV/SVG/OBJ/JSON from actual C++ binaries; 10/10 native GCC/MSVC and full TRI science parity. Not yet a complete hybrid 1993 or all-QUAD production mode. M0 qualified in scope; M1/M2/M3 PARTIAL.**
+**Current milestone:** **M5 experimental UV interface closure qualified at feature HEAD via PR #200: original real C++ 19-leaf Quadtree, 42 native QUAD on 7 included leaves and 60 experimental center-fan TRI on 12 external leaves; combined 81 UV vertices, 20 matched QUAD/TRI seam edges and total area 1.0. GCC/MSVC 11/11 native, TRI/527 tooling and Eistute/Book science parity. This fan is explicitly NOT historical 1993 Delaunay/contour contraction, not physical UV→XYZ or a working application mode; M1/M2/M3/M5 remain PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -47,7 +47,7 @@ A working isolated UV QUAD generator, typed element and native test suite now ex
 | M2 - UV QUAD topology | WORKING ISOLATED PROTOTYPE / PARTIAL | Value-owned UV mesh, canonical midpoints, quad emitter and disk validator; review, denials and broader numeric qualification remain |
 | M3 - quadtree emitter | READ-ONLY LEAF BRIDGE IMPLEMENTED / PARTIAL | Real leaf capture/16 signatures and QUAD output tested; application opt-in call and full milestone qualification pending |
 | M4 - physical QUAD | PENDING | Defined UV-to-XYZ geometry and four-node lifecycle/ownership |
-| M5 - boundary transition | PENDING | Adviser decision: quad-dominant or all-quad; complete valid patch mesh |
+| M5 - boundary transition | RESEARCH-ONLY UV INTERFACE PROTOTYPE / PARTIAL | 42 C++ QUAD + 60 experimental external TRI, one conforming 20-edge seam; historical Delaunay/contour contraction, UV→XYZ and boundary/adviser gates remain |
 | M6 - shared-curve multipatch | PENDING | Reversed two-patch and at least three-patch conformity |
 | M7 - repeated adaptation | PENDING | QUAD history and accept/reject/retry/rollback |
 | M8 - model study | PENDING | Reproducible independent metrics |
@@ -249,9 +249,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [Actual binary SVG/CSV/JSON/OBJ artifact #13798814198](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42894221887/artifacts/13798814198) (14-day retention); [TRI scientific receipts #13798804430](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42894221887/artifacts/13798804430). Existing CTest reproduces both UV exports as needed.
 - No physical/hybrid exterior TRI is available yet; the 12 boundary-excluded leaves remain unmeshed. The next research gate remains the **real source-tree QUAD/outer-boundary interface**, then historically faithful Delaunay/contour contraction, with visual evidence and explicit scientific choices. `main` is unchanged.
 
+## 2026-11-10-15 — Native QUAD with experimentally triangulated exterior, PR #200
+
+- [PR #200](https://github.com/tiagosombrra/apmesh-modernization/pull/200) merged into `quad-templates` at `8a088cb58e89794c1cc22e8f62221fef2dd3dae4`; exact merge tree matches fully qualified feature `d30bc0e7457aecfafe6264dfc0961e8bd57d009e`. `main=f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` remains unchanged.
+- Input is the real C++ Quadtree export of PR #199: 19 leaves (7 interior, 12 outer), 42 native QUAD on 0.25 of UV domain. Python research-only exterior center-fan produces **60 actual TRI elements** on the remaining 0.75; combined 81 vertices, total area 1.0, 20 shared QUAD/TRI edges (one simple closed loop, perimeter 2.0) and 16 outer edges. No source QUAD geometry was changed. Four malformed geometric mutations were rejected. **This fan is NOT 1993 Delaunay or contour contraction, nor physical XYZ.**
+- [Exact feature CI #42898041678](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42898041678) **SUCCESS four jobs**: GCC and MSVC native QUAD **11/11** each, root TRI **78/78**, Python **527/527**, CLI rejects **7/7**, Eistute 5 / Book 4 exact OBJ/acceptance/boundary parity. Downloaded actual Linux artifact [#13801072358](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42898041678/artifacts/13801072358), independently verified 42/60 geometry and two mode variants locally.
+- CTest outputs `hybrid_experimental_*.obj`, `experimental_hybrid.svg`, `quad_tri_interface.csv`, `experimental_hybrid_manifest.json`; see [scientific limitations](M5_EXPERIMENTAL_EXTERIOR_INTERFACE_20261110.md) and [evidence](evidence/M5_EXPERIMENTAL_EXTERIOR_INTERFACE_20261110.json). [Post-merge #42899687132](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42899687132) was in_progress at checkpoint and must be verified after completion.
+- Research-mode choices still historical hybrid 1993 first, selectable all-QUAD extension second. The historical Delaunay/contraction, numerical centroid approval, real physical UV→XYZ, boundary ownership and user-facing production selection are unimplemented; M5 **PARTIAL**.
+
 ## Next exact action
 
-Verify [post-merge CI #42894221887](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42894221887) on merged SHA `799dd62f7e3dd9145fcc120c5c6daae09c8e01bb`. Then create a separate research-only boundary/interface gate using real Quadtree leaf classification: extract the 7-interior/12-exterior separating polyline and evaluate the historical Delaunay plus contour-contraction algorithm for the excluded area. Require **actual TRI faces before labeling exterior cells TRI**, combined area 1.0 (current QUAD area 0.25; unmeshed exterior 0.75), exact matched interface vertex IDs, no hanging edges, manifold incidence, positive orientation, full visual SVG/OBJ output and strict Eistute/Book regressions. Only afterward develop the selectable all-QUAD extension. Historic center selection still requires Bento/Creto approval; keep main and default TRI intact.
+Verify [M5 post-merge CI #42899687132](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42899687132) at exact merged SHA `8a088cb58e89794c1cc22e8f62221fef2dd3dae4`. Then investigate the original 1993 exterior **Delaunay and contour-contraction** algorithm and any reusable existing APMesh triangulation/boundary APIs; implement a *distinct, isolated* faithful research-only exterior mesher replacing the current experimental fan. Reuse the tested 20-edge QUAD/TRI interface, 1.0 area, 81 UV vertex example, 4 negative mutations, full SVG/OBJ/CSV provenance and Eistute/Book exact science gates. Do not claim historical fidelity or enable application/hybrid/all-QUAD selection until Delaunay and scientific numeric-point behavior have adviser approval; keep default TRI and modernization main intact.
 
 ## Current M1 reconstruction
 

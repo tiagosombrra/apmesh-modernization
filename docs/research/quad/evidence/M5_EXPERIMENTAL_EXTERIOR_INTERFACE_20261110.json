@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "milestone": "M5 experimental QUAD/TRI interface feasibility on native Quadtree",
+  "status": "research-only topology gate qualified premerge; historical M5 still partial",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "branch": "quad-templates",
+  "pr": 200,
+  "feature_sha": "d30bc0e7457aecfafe6264dfc0961e8bd57d009e",
+  "merge_sha": "8a088cb58e89794c1cc22e8f62221fef2dd3dae4",
+  "merge_tree_sha": "d71e28d2c2f3c131cb660cec9c918538e4ad7752",
+  "tree_identical_to_tested_feature": true,
+  "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "source": {
+    "prior_pr": 199,
+    "prior_real_tree_postmerge_run": 42894221887,
+    "source_leaves": 19,
+    "quad_candidate_leaves": 7,
+    "excluded_outer_leaves": 12,
+    "native_cpp_quads": 42,
+    "native_cpp_quad_vertices": 53,
+    "native_quad_area": 0.25,
+    "original_artifact_id": 13798814198,
+    "original_artifact_provenance": "actual native C++ GitHub Action output on research merge 799dd62"
+  },
+  "experiment": {
+    "algorithm": "external cell-center fan triangulation, NOT Delaunay or historical contour contraction",
+    "triangles": 60,
+    "combined_uv_vertices": 81,
+    "total_elements": 102,
+    "quad_area": 0.25,
+    "tri_area": 0.75,
+    "total_area": 1,
+    "interface_edges": 20,
+    "interface_length": 2,
+    "interface_one_closed_loop": true,
+    "outer_boundary_edges": 16,
+    "euler_single_disk": true,
+    "positive_orientation": true,
+    "matching_shared_ids": true,
+    "t_junctions_rejected": true,
+    "controlled_negative_mutations": 4,
+    "two_explicit_unapproved_center_rules": [
+      "vertex_mean",
+      "area_centroid"
+    ],
+    "same_connectivity_both_rules": true
+  },
+  "evidence_local": {
+    "source": "Downloaded original actual C++ PR#199 artifact, generated experimental exterior prototype with separate Python analysis, then independently rechecked actual PR#200 Linux artifact",
+    "second_local_verifier": "verified both 81-vertex, 42-quad, 60-tri mixed OBJs, seam and area",
+    "artifact_source": "GitHub Actions #42898041678, native artifact id 13801072358"
+  },
+  "qualified_ci": {
+    "run": 42898041678,
+    "sha": "d30bc0e7457aecfafe6264dfc0961e8bd57d009e",
+    "conclusion": "success",
+    "jobs": 4,
+    "native_linux": "11/11 CTest",
+    "native_windows": "11/11 CTest",
+    "tri_full": "78/78 CTest",
+    "python_tooling": "527/527",
+    "cli_rejections": "7/7",
+    "scientific": {
+      "eistute_states": 5,
+      "book_states": 4,
+      "obj_byte_identical": true,
+      "acceptance_equal": true,
+      "boundary_incidence_verified": true
+    }
+  },
+  "postmerge_ci": {
+    "run": 42899687132,
+    "sha": "8a088cb58e89794c1cc22e8f62221fef2dd3dae4",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "changed_paths": [
+    "tests/quad/test_m5_exterior_interface.py",
+    "tests/quad/CMakeLists.txt",
+    ".github/workflows/quad-research-validation.yml",
+    "docs/research/quad/M5_EXPERIMENTAL_EXTERIOR_INTERFACE_20261110.md",
+    "docs/architecture/source_inventory.json"
+  ],
+  "limits": [
+    "Not historical 1993 Delaunay triangulation nor contour contraction",
+    "Only UV parametric (z=0), no physical XYZ or real Eistute/Book QUAD",
+    "Single 19-leaf square fixture, no multipatch or repeated adaptation",
+    "No 1993 numeric centroid/adviser approved default",
+    "No production mode or all-QUAD extension"
+  ],
+  "next": "Verify postmerge exact SHA #42899687132. Then review paper and existing APMesh exterior/boundary implementation and implement faithful Delaunay/contour contraction in a new isolated research-only PR, replacing the experimental fan with independently validated shared-seam/area/visual gates. Preserve main/TRI. All-QUAD mode remains later."
+}
