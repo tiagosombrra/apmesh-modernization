@@ -119,5 +119,14 @@ if(AP_MESH_QUAD_WITH_TREE)
   set_tests_properties(quad.m5.experimental_exterior_interface PROPERTIES
     DEPENDS quad.m3.real_tree_visual_verify
     TIMEOUT 45 LABELS "research-quad;experimental-boundary")
+  # Research-only locally constrained Delaunay comparison over real C++ output.
+  # Exact 1993 Delaunay point insertion and contour contraction remain open.
+  add_test(NAME quad.m5.local_constrained_delaunay
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/test_m5_constrained_delaunay.py"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/real_tree_visual")
+  set_tests_properties(quad.m5.local_constrained_delaunay PROPERTIES
+    DEPENDS quad.m5.experimental_exterior_interface
+    TIMEOUT 120 LABELS "research-quad;experimental-boundary;local-delaunay")
 
 endif()
