@@ -18,3 +18,9 @@ Next: consult the original algorithm and existing Delaunay/contour implementatio
 - [PR #200](https://github.com/tiagosombrra/apmesh-modernization/pull/200) reviewed and merged to research `quad-templates` as `8a088cb58e89794c1cc22e8f62221fef2dd3dae4`; exact merge tree equals tested feature. Modernization `main` unchanged.
 - [Native Linux artifact #13801072358](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42898041678/artifacts/13801072358) was downloaded and independently inspected: both combined OBJ variants have 81 vertices, 42 source C++ QUAD and 60 experimental TRI, single 20-edge seam and unit UV area. This confirms **actual CI-produced output**, not merely local drawings. [Evidence JSON](evidence/M5_EXPERIMENTAL_EXTERIOR_INTERFACE_20261110.json) stores qualification.
 - [Postmerge #42899687132](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42899687132) in_progress at checkpoint; exact SHA result not yet declared final.
+
+## Post-merge exact regression closure — 2026-11-10
+
+The [exact merged-SHA Actions #42899687132](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42899687132) completed **SUCCESS** all four mandatory jobs: native QUAD 11/11 on GCC/MSVC, full TRI 78/78, tooling 527/527, CLI 7/7, Eistute 5/Book 4 scientific parity. [Evidence](evidence/M5_EXPERIMENTAL_EXTERIOR_INTERFACE_20261110.json) now records the final conclusion rather than the preceding in-progress checkpoint.
+
+**Next-source warning:** the current examined APMesh exterior code is in `AdvancingFront` and `Boundary` classes, which does not establish a historical Delaunay/contraction implementation. Analyze the original 1993 procedure and advisers' scientific point behavior explicitly before replacing this **experimental** center-fan test. Do not downgrade validation, claim physical hybrid, or enable all-QUAD by default.

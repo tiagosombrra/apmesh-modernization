@@ -72,8 +72,18 @@
   "postmerge_ci": {
     "run": 42899687132,
     "sha": "8a088cb58e89794c1cc22e8f62221fef2dd3dae4",
-    "status": "in_progress",
-    "conclusion": null
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 4,
+    "native_linux": "11/11",
+    "native_windows": "11/11",
+    "root_tri": "78/78",
+    "python": "527/527",
+    "cli_denials": "7/7",
+    "eistute_states": 5,
+    "book_states": 4,
+    "scientific_parity": true,
+    "previous_checkpoint_status": "in_progress"
   },
   "changed_paths": [
     "tests/quad/test_m5_exterior_interface.py",
@@ -89,5 +99,5 @@
     "No 1993 numeric centroid/adviser approved default",
     "No production mode or all-QUAD extension"
   ],
-  "next": "Verify postmerge exact SHA #42899687132. Then review paper and existing APMesh exterior/boundary implementation and implement faithful Delaunay/contour contraction in a new isolated research-only PR, replacing the experimental fan with independently validated shared-seam/area/visual gates. Preserve main/TRI. All-QUAD mode remains later."
+  "next": "Review historical 1993 Delaunay/contour-contraction outside the included 7 QUAD leaves. Existing inspected source includes advancing front, which is not automatically equivalent to historic Delaunay. Prepare a separate explicit research implementation plan with provenance and adviser decision, preserving the proven 20-edge interface and unit area, TRI default and main. All-QUAD only afterward."
 }
