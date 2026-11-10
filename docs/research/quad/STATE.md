@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-09 (M1 Figure 7 exact-rational independent test integrated via PR #195; scientific point policy still open)
+**Last session:** 2026-11-10-10 (M1 explicit arithmetic/area point witnesses integrated via PR #196; historical numerical policy unapproved)
 
-**Current milestone:** **M1 independent exact-rational Figure 7 test integrated via PR #195, alongside M3-6d real event instrumentation from PR #194. The historical schematic now has an executable independent checker, but its graph and numerical point rule are NOT adviser-approved. No physical QUAD. M0 qualified in scope; M1/M2/M3 PARTIAL.**
+**Current milestone:** **M1 separate, explicitly chosen arithmetic-mean and polygon-area-centroid research witnesses integrated via PR #196, building on independent exact-rational Figure 7 oracle of PR #195. Both pass native Linux/MSVC, but neither is the adviser-approved historical point rule; no physical QUAD. M0 qualified in scope; M1/M2/M3 PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -207,9 +207,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - Initial [Actions #42832471771](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42832471771) failed solely on a Python negative-fixture tuple-join bug, corrected without weakening geometry checks. Failed logs retained in PR discussion.
 - [Post-merge Actions #42834073835](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42834073835) was **in_progress** at checkpoint; verify exact merged SHA before separate postmerge claim. M1, M2, M3 remain PARTIAL; positive production quad_uv still disabled.
 
+## 2026-11-10-10 — M1 explicit competing interior-point research rules integrated
+
+- [PR #196](https://github.com/tiagosombrra/apmesh-modernization/pull/196) merged to research `quad-templates` as `720309b4b153b5695a5afcb81aa9a967a17aaa0e`. Merge tree matches exact tested source head `10065b24a7a4ae5a93dafc743a8324f5bf058975`; original modernization `main` unchanged. Only six scoped research/test/CMake/inventory files changed.
+- [Actions #42851499408](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42851499408) **SUCCESS all four jobs**: Linux GCC QUAD **6/6 CTest**, Windows MSVC QUAD **6/6**, TRI **78/78 CTest**, tooling Python **527/527**, CLI rejects **7/7**; Eistute 5 and Book 4 reference states retained byte-identical OBJ, equal acceptance decisions and exact verified boundary incidence.
+- The `apmesh_quad_experimental_point` target exposes `ExperimentalInteriorPoint(polygon, rule, tolerance)` with explicit `VertexArithmeticMean` or `PolygonAreaCentroid`; **no default** and no `Adapter`/production `ap_mesh` integration. Strictly convex, CCW and finite geometry enforced; negative cases include concave, collinear and near-degenerate polygons. Existing `Subdivide` still receives caller-supplied center.
+- Prior M1 Figure 7 [post-merge Actions #42834073835](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42834073835) **SUCCESS** four jobs. New [post-merge #42853155958](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42853155958) **in_progress** at checkpoint; its final state must be read separately.
+- [Experiment document](M1_EXPERIMENTAL_POINT_RULES_20261110.md), [evidence](evidence/M1_EXPERIMENTAL_POINT_RULES_20261110.json) and [scientific decision memo](M1_NUMERIC_DECISION_GATE_20261110.md) preserve limitations. M1/M2/M3 remain PARTIAL; original scan byte-hash identity/adviser approval, physical QUAD/boundary/XYZ/multipatch and OMP/sanitizer qualification remain open.
+
 ## Next exact action
 
-Verify exact merged-head CI #42834073835. Present [M1 numerical decision memo](M1_NUMERIC_DECISION_GATE_20261110.md) to Bento/Creto: confirm proposed Figure 7 cycles/printed class order and explicitly decide the point-location formula. Without a scientific decision, implement only additional labeled research test witnesses, never silently approve a centroid or enable production QUAD. Once approved, create an isolated numeric-oracle PR with independent expected coordinates/degeneracy/D4 tests and full native/scientific CI.
+Verify final exact-merge CI #42853155958 on research commit 720309b4. Present [M1 numerical decision memo](M1_NUMERIC_DECISION_GATE_20261110.md) to Bento/Creto; confirm T1–T6 source graphs and explicitly choose/justify vertex arithmetic mean, polygon area centroid or another formula, including admissible geometry and tolerances. Both implemented rules remain test-only alternatives until scientific approval; do not enable production QUAD. Subsequent numeric/quality studies must use a new isolated research PR and retain exact native/scientific gates.
 
 ## Current M1 reconstruction
 

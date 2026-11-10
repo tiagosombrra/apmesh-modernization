@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "milestone": "M1 opt-in research-only competing UV numerical center witnesses",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "branch": "quad-templates",
+  "pr": 196,
+  "feature": "10065b24a7a4ae5a93dafc743a8324f5bf058975",
+  "research_merge": "720309b4b153b5695a5afcb81aa9a967a17aaa0e",
+  "merge_tree": "af7629b04fb5149960ebb34360309c99a587ddb4",
+  "source_tree_identical_to_tested_feature": true,
+  "main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "prior_m1_fig7_postmerge": {
+    "run": 42834073835,
+    "head": "cb5aca8bae44fc33f3e927188389edf0281ac04e",
+    "result": "success",
+    "jobs": 4
+  },
+  "ci_exact_feature": {
+    "run": 42851499408,
+    "head": "10065b24a7a4ae5a93dafc743a8324f5bf058975",
+    "result": "success",
+    "jobs": 4,
+    "native_gcc": "6/6 CTest",
+    "native_msvc": "6/6 CTest",
+    "tri": "78/78 CTest",
+    "python": "527/527",
+    "real_cli_negative": "7/7",
+    "eistute_states": 5,
+    "book_states": 4,
+    "all_obj_byte_identical": true,
+    "acceptance_fields_equal": true,
+    "boundary_incidence": "verified"
+  },
+  "postmerge_ci": {
+    "run": 42853155958,
+    "sha": "720309b4b153b5695a5afcb81aa9a967a17aaa0e",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "changed_paths": [
+    "docs/architecture/source_inventory.json",
+    "docs/research/quad/M1_EXPERIMENTAL_POINT_RULES_20261110.md",
+    "research/quad/experimental_point_rule.cpp",
+    "research/quad/experimental_point_rule.h",
+    "tests/quad/CMakeLists.txt",
+    "tests/quad/experimental_point_contracts.cpp"
+  ],
+  "classification": "Explicitly named competing numerical research witnesses; NOT adopted historical rule or production behavior",
+  "policies": [
+    "VertexArithmeticMean",
+    "PolygonAreaCentroid"
+  ],
+  "test_scope": [
+    "6 proposed Figure 7 polygons under 8 D4 transformations and both rules: 96 witness subdivisions",
+    "Independent analytic rational golden T2 ABOW and T5 WSND",
+    "Affine scaling and translation",
+    "Rejected negative inputs including concave, clockwise, collinear, thin near-degenerate, invalid enum/tolerance and nonfinite",
+    "Existing source immutability and UV topology validation"
+  ],
+  "historical_figure_verified_by_advisers": false,
+  "historical_centroid_selected": false,
+  "production_quad_enabled": false,
+  "production_src_modified": false,
+  "limitations": [
+    "Neither numeric policy is documented as historical 1993 point formula",
+    "No independent adviser confirmation of Figure 7 transcription or scan bytes",
+    "No complete boundary, UV-XYZ, shared patch topology or physical QUAD",
+    "No end-to-end parallel execution or comprehensive sanitizer",
+    "Long-double behavior differs between GCC and MSVC at extreme magnitudes; native tested domain is limited"
+  ],
+  "next": "Verify merged exact-head CI #42853155958. Present scientific decision memo to Bento/Creto; record explicit choice of historical point rule/degeneracy policy and source topology. Until then keep both experimental, opt-in, not wired into production; next implementation can be research-only failure/quality stress experiments, not approved production QUAD."
+}
