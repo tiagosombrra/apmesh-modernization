@@ -175,6 +175,16 @@ int main() {
         invalid = Points("ABOW");
         invalid[1].v = std::numeric_limits<double>::quiet_NaN();
         Reject([&] { ExperimentalInteriorPoint(invalid, rule); });
+        // A reflex polygon cannot be treated as a valid convex QUAD template.
+        const std::vector<UvVertex> concave{{0, 0}, {2, 0}, {0.5, 0.2}, {0, 2}};
+        Reject([&] { ExperimentalInteriorPoint(concave, rule); });
+        // Collinear edges and near-zero relative area have no valid center witness.
+        const std::vector<UvVertex> collinear{{0, 0}, {0.5, 0}, {1, 0},
+                                               {1, 1}, {0, 1}};
+        Reject([&] { ExperimentalInteriorPoint(collinear, rule); });
+        const std::vector<UvVertex> very_thin{{0, 0}, {1, 0},
+                                               {1, 1.0e-15}, {0, 1.0e-15}};
+        Reject([&] { ExperimentalInteriorPoint(very_thin, rule); });
         Reject([&] { ExperimentalInteriorPoint(Points("ABCD"), static_cast<Rule>(999)); });
         Reject([&] { ExperimentalInteriorPoint(Points("ABCD"),
                        rule, std::numeric_limits<long double>::infinity()); });
