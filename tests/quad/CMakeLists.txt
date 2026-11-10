@@ -25,6 +25,14 @@ add_test(NAME quad.mesh_mode.contracts COMMAND quad_mesh_mode_contracts)
 set_tests_properties(quad.mesh_mode.contracts PROPERTIES TIMEOUT 20 LABELS "research-quad")
 add_test(NAME quad.uv.contracts COMMAND quad_uv_contracts)
 set_tests_properties(quad.uv.contracts PROPERTIES TIMEOUT 30 LABELS "research-quad")
+# Independent exact-rational schematic audit of the Figure 7 transcription.
+# This is a documentary contract, not a numerical centroid or physical QUAD gate.
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+add_test(NAME quad.m1.figure7.oracle
+  COMMAND "${Python3_EXECUTABLE}"
+    "${CMAKE_CURRENT_SOURCE_DIR}/test_m1_figure7_oracle.py"
+    --fixture "${CMAKE_CURRENT_SOURCE_DIR}/../../docs/research/quad/evidence/M1_FIGURE7_TRANSCRIPTION_20261108.json")
+set_tests_properties(quad.m1.figure7.oracle PROPERTIES TIMEOUT 120 LABELS "research-quad;historical-review")
 
 option(AP_MESH_QUAD_WITH_TREE "Build the read-only bridge to the existing serial quadtree" OFF)
 if(AP_MESH_QUAD_WITH_TREE)
