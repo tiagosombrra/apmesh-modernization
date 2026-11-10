@@ -158,6 +158,8 @@ jobs:
               "src/crab_mesh/aft/advancing_front.cpp",
               "include/adapter/adapter.h",
               "src/adapter/adapter.cpp",
+              "include/generator/generator_adaptive.h",
+              "src/generator/generator_adaptive.cpp",
           }
           changed = set(subprocess.check_output(
               ["git", "diff", "--name-only",

@@ -597,6 +597,18 @@ GeneratorAdaptive::GeneratorAdaptive(apmesh::application::GenerationContext cont
                generation_context_->quadtree ? &effective_quadtree_ : nullptr,
                generation_context_->aft ? &effective_aft_ : nullptr) {}
 
+void GeneratorAdaptive::SetResearchUvCapture(apmesh::quad::CaptureHooks hooks,
+                                             std::uint64_t session) {
+  apmesh::quad::ValidateCaptureHooks(hooks);
+  if ((hooks.provider && session == 0) || (!hooks.provider && session != 0)) {
+    throw std::invalid_argument("Research capture requires a nonzero session namespace");
+  }
+  const bool enabled = static_cast<bool>(hooks.provider);
+  adapter_.SetResearchUvCapture(std::move(hooks));
+  research_session_ = enabled ? session : 0;
+  research_outer_epoch_ = 0;
+}
+
 const apmesh::application::GenerationContext*
 GeneratorAdaptive::GetGenerationContext() const noexcept {
   return generation_context_ ? &*generation_context_ : nullptr;
@@ -3064,6 +3076,15 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
             ? ClampValue(std::min(AdaptiveRetryShrink(), 0.70), 0.40, 0.95)
             : AdaptiveRetryShrink();
     for (int retry = 0; retry <= effective_retry_limit; ++retry) {
+      if (research_session_ != 0) {
+        // One epoch is shared by every patch/local attempt in this outer retry.
+        // The namespace comes from the explicit research caller, never global state.
+        if (research_outer_epoch_ == std::numeric_limits<std::uint64_t>::max()) {
+          throw std::overflow_error("Research outer attempt epoch exhausted");
+        }
+        adapter_.SetResearchOuterAttempt(
+            {research_session_, ++research_outer_epoch_, retry});
+      }
       report_gauss_nodes = 0ULL;
       report_mean_nodes = 0ULL;
       ADAPTIVE_CURRENT_STEP = this->step_;

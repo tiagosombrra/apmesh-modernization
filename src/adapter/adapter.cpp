@@ -903,7 +903,8 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
 
   // Advancing front (ratio, tolerance, smoothing iterations, smoothing factor).
   AdvancingFront avanco(AftRatio(), TOLERANCE_AFT, AftSmoothingIterations(), AftSmoothingFactor());
-  ConfigureAdvancingFront(avanco, {patch_index, adaptive_step, retry_index, 0});
+  ConfigureAdvancingFront(
+      avanco, WithResearchOuterAttempt({patch_index, adaptive_step, retry_index, 0}));
   ConfigureQuadtree(avanco.getQuadtree());
   avanco.SetAdaptiveContext(adaptive_step, patch_index);
   const int resolved_depth_omp = ResolveQuadtreeDepth(max_quadtree_depth, adaptive_step);
@@ -1108,7 +1109,7 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
   if (uv_capture_hooks_ && uv_capture_hooks_->local_selection_sink) {
     // This local return is not the generator's global acceptance decision.
     apmesh::quad::PublishLocalSelections(
-        {{{patch_index, adaptive_step, retry_index, 0}, true, "ok"}}, 0,
+        {{WithResearchOuterAttempt({patch_index, adaptive_step, retry_index, 0}), true, "ok"}}, 0,
         uv_capture_hooks_->local_selection_sink);
   }
   return pending_sub_mesh.release();
@@ -1305,8 +1306,8 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     apmesh::adaptation::DomainUvCache cache;
     AdvancingFront avanco(AftRatio(), TOLERANCE_AFT, AftSmoothingIterations(),
                           AftSmoothingFactor());
-    ConfigureAdvancingFront(avanco,
-                           {patch_index, adaptive_step, retry_index, local_attempt});
+    ConfigureAdvancingFront(
+        avanco, WithResearchOuterAttempt({patch_index, adaptive_step, retry_index, local_attempt}));
     ConfigureQuadtree(avanco.getQuadtree());
     avanco.SetAdaptiveContext(adaptive_step, patch_index);
     if (avanco.getQuadtree()) {
@@ -1494,7 +1495,8 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
   AttemptResult best = run_attempt(factor_disc_global, target_patch_h, resolved_quadtree_depth, 0);
   if (uv_capture_hooks_ && uv_capture_hooks_->local_selection_sink) {
     local_selection_history.push_back(
-        {{patch_index, adaptive_step, retry_index, 0}, best.success, best.status});
+        {WithResearchOuterAttempt({patch_index, adaptive_step, retry_index, 0}),
+         best.success, best.status});
   }
   // Em adaptive_stable, permitir fallback estrutural tambem em passos tardios.
   // Isso ajuda patches curvos que entram em "degenerate_needs_retry" no step 4/5.
@@ -1538,7 +1540,8 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
           run_attempt(fallback_factor, fallback_target_h, fallback_depth, attempt);
       if (uv_capture_hooks_ && uv_capture_hooks_->local_selection_sink) {
         local_selection_history.push_back(
-            {{patch_index, adaptive_step, retry_index, attempt}, fallback.success, fallback.status});
+            {WithResearchOuterAttempt({patch_index, adaptive_step, retry_index, attempt}),
+             fallback.success, fallback.status});
       }
       const bool best_underresolved =
           best.transition_underresolved == 1 ||
@@ -1754,6 +1757,24 @@ void Adapter::SetResearchUvCapture(apmesh::quad::CaptureHooks hooks) {
   } else {
     uv_capture_hooks_.reset();
   }
+  // Replacing observers invalidates a prior correlation context.
+  research_outer_attempt_ = {};
+}
+
+void Adapter::SetResearchOuterAttempt(apmesh::quad::OuterAttemptIdentity context) {
+  apmesh::quad::ValidateOuterAttempt(context);
+  if (!uv_capture_hooks_ && !apmesh::quad::SameOuterAttempt(context, {})) {
+    throw std::invalid_argument("Outer attempt context requires installed research hooks");
+  }
+  research_outer_attempt_ = context;
+}
+
+apmesh::quad::PatchAttemptIdentity
+Adapter::WithResearchOuterAttempt(apmesh::quad::PatchAttemptIdentity attempt) const noexcept {
+  if (uv_capture_hooks_) {
+    attempt.outer = research_outer_attempt_;
+  }
+  return attempt;
 }
 
 void Adapter::ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front,

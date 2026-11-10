@@ -4,6 +4,7 @@
 #include "quadtree_quad.h"
 #include "crab_mesh/aft/advancing_front.h"
 
+#include <cstdint>
 #include <functional>
 #include <set>
 #include <stdexcept>
@@ -13,13 +14,44 @@
 
 namespace apmesh::quad {
 
+// A research caller defines a unique nonzero session namespace. The epoch
+// monotonically identifies one outer generator retry within that namespace.
+// All-zero scope is the legacy direct-Adapter fixture path, never a global join.
+struct OuterAttemptIdentity {
+  std::uint64_t session = 0;
+  std::uint64_t epoch = 0;
+  int global_retry = -1;
+};
+
+inline bool SameOuterAttempt(const OuterAttemptIdentity& a,
+                             const OuterAttemptIdentity& b) noexcept {
+  return a.session == b.session && a.epoch == b.epoch &&
+         a.global_retry == b.global_retry;
+}
+
+inline void ValidateOuterAttempt(const OuterAttemptIdentity& context) {
+  if (SameOuterAttempt(context, {})) {
+    return;
+  }
+  if (context.session == 0 || context.epoch == 0 || context.global_retry < 0) {
+    throw std::invalid_argument("Incomplete outer generator attempt namespace or epoch");
+  }
+}
+
 // An identity for a candidate attempt, not a published/accepted TRI mesh.
 struct PatchAttemptIdentity {
   int patch_index = -1;
   int adaptive_step = -1;
   int retry_index = 0;
   int local_attempt = 0;
+  OuterAttemptIdentity outer{};
 };
+
+inline bool SamePatchScope(const PatchAttemptIdentity& a,
+                           const PatchAttemptIdentity& b) noexcept {
+  return a.patch_index == b.patch_index && a.adaptive_step == b.adaptive_step &&
+         a.retry_index == b.retry_index && SameOuterAttempt(a.outer, b.outer);
+}
 
 enum class CaptureDisposition { PendingTriDecision };
 
@@ -67,6 +99,10 @@ inline void PublishLocalSelections(const std::vector<LocalAttemptRecord>& attemp
   std::set<int> seen;
   bool chosen_found = false;
   for (const auto& record : attempts) {
+    ValidateOuterAttempt(record.attempt.outer);
+    if (!attempts.empty() && !SamePatchScope(record.attempt, attempts.front().attempt)) {
+      throw std::invalid_argument("Cross-epoch or cross-patch local selection stream");
+    }
     if (!seen.insert(record.attempt.local_attempt).second) {
       throw std::invalid_argument("Duplicate local attempt in capture decision stream");
     }
