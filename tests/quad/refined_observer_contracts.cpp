@@ -301,6 +301,9 @@ void AssertOuterEpochAndLegacyCompatibility() {
           "Distinct global epochs collided despite identical patch coordinates");
   Require(apmesh::quad::SamePatchScope(a, a), "A stable global join key changed");
 
+  // Use distinct local IDs so the mixed-epoch validation, rather than only
+  // duplicate-ID validation, is the reason this entire stream is rejected.
+  b.local_attempt = 1;
   std::vector<LocalSelectionEvent> results;
   std::vector<LocalAttemptRecord> mixed{{a, true, "ok"}, {b, true, "ok"}};
   bool rejected = false;
