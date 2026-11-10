@@ -50,6 +50,19 @@ jobs:
         run: |
           ctest --test-dir build/quad-ci-linux --output-on-failure --no-tests=error
           ./build/quad-ci-linux/quad_tree_demo "$RUNNER_TEMP/quad-native-tree.obj"
+      - name: Upload actual C++ real-tree SVG and OBJ (Linux)
+        if: runner.os == 'Linux' && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-real-tree-visual-${{ github.sha }}
+          path: |
+            build/quad-ci-linux/real_tree_visual/manifest.json
+            build/quad-ci-linux/real_tree_visual/tree_regions.csv
+            build/quad-ci-linux/real_tree_visual/tree_visual.svg
+            build/quad-ci-linux/real_tree_visual/quads_vertex_mean.obj
+            build/quad-ci-linux/real_tree_visual/quads_area_centroid.obj
+          if-no-files-found: error
+          retention-days: 14
       - name: Configure and build native QUAD (Windows MSVC)
         if: runner.os == 'Windows'
         shell: pwsh

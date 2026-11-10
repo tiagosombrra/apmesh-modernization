@@ -84,7 +84,11 @@ if(AP_MESH_QUAD_WITH_TREE)
   add_executable(quad_tree_demo ../../research/quad/tree_demo.cpp)
   target_include_directories(quad_tree_demo PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
   target_link_libraries(quad_tree_demo PRIVATE apmesh_quad_tree)
-  foreach(target IN ITEMS apmesh_quad_legacy_tree apmesh_quad_tree quad_leaf_contracts quad_refined_observer_contracts quad_tree_demo)
+  add_executable(quad_tree_visual_export tree_visual_export.cpp)
+  target_include_directories(quad_tree_visual_export PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+  target_link_libraries(quad_tree_visual_export PRIVATE
+    apmesh_quad_tree apmesh_quad_experimental_point)
+  foreach(target IN ITEMS apmesh_quad_legacy_tree apmesh_quad_tree quad_leaf_contracts quad_refined_observer_contracts quad_tree_demo quad_tree_visual_export)
     # Keep diagnostics visible across the existing legacy-header integration.
     if(MSVC)
       target_compile_options(${target} PRIVATE /W4 /EHsc /utf-8)
@@ -96,4 +100,14 @@ if(AP_MESH_QUAD_WITH_TREE)
   set_tests_properties(quad.leaf.contracts PROPERTIES TIMEOUT 60 LABELS "research-quad")
   add_test(NAME quad.refined_observer.contracts COMMAND quad_refined_observer_contracts)
   set_tests_properties(quad.refined_observer.contracts PROPERTIES TIMEOUT 30 LABELS "research-quad")
+  add_test(NAME quad.m3.real_tree_visual_export
+    COMMAND quad_tree_visual_export "${CMAKE_CURRENT_BINARY_DIR}/real_tree_visual")
+  set_tests_properties(quad.m3.real_tree_visual_export PROPERTIES
+    TIMEOUT 30 LABELS "research-quad;visual-validation")
+  add_test(NAME quad.m3.real_tree_visual_verify
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/test_tree_visual_export.py"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/real_tree_visual")
+  set_tests_properties(quad.m3.real_tree_visual_verify PROPERTIES
+    DEPENDS quad.m3.real_tree_visual_export
+    TIMEOUT 30 LABELS "research-quad;visual-validation")
 endif()
