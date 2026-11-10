@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-05 (M3-6a outer retry epoch provenance merged via PR #191; post-merge CI pending)
+**Last session:** 2026-11-10-06 (M3-6b bounded global TRI outcome events merged via PR #192; post-merge CI pending)
 
-**Current milestone:** **M3-6a caller-scoped session, outer retry and monotonic epoch propagated from `GeneratorAdaptive` into Adapter UV/local-decision events via PR #191; M3-5 real Adapter fixture qualified. Global acceptance outcomes and production QUAD emission remain disabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
+**Current milestone:** **M3-6b bounded, research-only global TRI outcome events integrated in `GeneratorAdaptive` via PR #192, built on scoped epoch identity from PR #191. These are distinct from local Adapter selections. A real hook-enabled global acceptance/rejection execution test remains pending. No physical QUAD is emitted. M0 qualified in scope; M1/M2/M3 PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -175,9 +175,16 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - Real Adapter fixture now executes three cases using different scopes, including two normal generations with reused local IDs and a controlled abort; 30 TRI elements and four UV observations were reported. This does not exercise full outer-generator accepted/rejected budget logic.
 - [Post-merge CI #42814238290](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42814238290) had status `in_progress` at this checkpoint and must be checked separately before claiming exact integrated-code qualification.
 
+## 2026-11-10-06 M3-6b merged, bounded transition records
+
+- [PR #192](https://github.com/tiagosombrra/apmesh-modernization/pull/192) merged into research at `584fe2a2959b268908bc2d9feff8888658a47d62`, exact tree as candidate `ddbc678fccdbe7ea3c3e899514e4f51dd29a17e1`. `main` unchanged.
+- Exact-head [Actions #42816180344](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42816180344) **SUCCESS**, four jobs: QUAD Linux 4/4 and MSVC 4/4 CTest; TRI 76/76 CTest, Python 527/527, CLI rejections 7/7; Eistute/Book 5/4 frozen states with identical OBJ, accepted/rejected decisions and boundaries. [Post-merge #42821767939](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42821767939) in_progress at checkpoint, not yet certified.
+- [Bounded M3-6b evidence](evidence/M3_GLOBAL_OUTCOMES_20261110.json) records fixed 128-event prefix with `truncated()`, evaluations `ElementBudgetRejectedCandidate`/`GrowthRejectedCandidate` before retry, and genuine `AcceptedStepCommitted` after serial commit / `RejectedStepRestored` after geometry+curve rollback. No callback is invoked inside these critical paths.
+- **Remaining admission:** no full `GeneratorAdaptive::Execute` hook-enabled test asserts real event transitions. MPI/OpenMP runtime, centerpoint placement, positive QUAD, complete boundary, physical XYZ, multipatch and full memory audits remain open.
+
 ## Next exact action
 
-Inspect exact post-merge Actions #42814238290; retain any failure. Then implement isolated M3-6b global TRI outcome events: budget/growth retry evaluations, strictly post-commit accepted, and strictly post-rollback rejected events. Correlate via M3-6a explicit outer epoch, enforce research-only nonblocking delivery policy, preserve 76 CTest, 527 Python and Eistute/Book oracles. Never conflate accepted TRI with physical QUAD.
+Inspect final post-merge #42821767939. Implement an isolated M3-6c real `GeneratorAdaptive::Execute` fixture with explicitly installed research hooks on the existing Eistute/Book model, recording actual global commit/restore events and matching outer epochs. Preserve default TRI byte-equivalence and negative event semantics. Require exact-head QUAD Linux/MSVC, TRI CTest/Python, scientific comparison and separate post-merge CI.
 
 ## Current M1 reconstruction
 

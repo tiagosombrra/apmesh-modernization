@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "stage": "M3-6b",
+  "repo": "tiagosombrra/apmesh-modernization",
+  "pr": 192,
+  "candidate": "ddbc678fccdbe7ea3c3e899514e4f51dd29a17e1",
+  "merge_sha": "584fe2a2959b268908bc2d9feff8888658a47d62",
+  "merge_tree_sha": "ca39516f832bfb49875bf5d3fbeb495559abec6d",
+  "same_tree_as_tested_candidate": true,
+  "modernization_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "premerge": {
+    "run": 42816180344,
+    "conclusion": "success",
+    "jobs": 4,
+    "linux_quad_ctest": "4/4",
+    "msvc_quad_ctest": "4/4",
+    "tri_ctest": "76/76",
+    "python": "527/527",
+    "cli_negative": "7/7",
+    "eistute_states": 5,
+    "book_states": 4,
+    "obj_equal": true,
+    "acceptance_equal": true,
+    "boundary_verified": true
+  },
+  "postmerge": {
+    "run": 42821767939,
+    "status": "in_progress",
+    "conclusion": null,
+    "sha": "584fe2a2959b268908bc2d9feff8888658a47d62"
+  },
+  "changes": [
+    "include/generator/generator_adaptive.h",
+    "src/generator/generator_adaptive.cpp",
+    "research/quad/global_outcome.h",
+    "tests/quad/refined_observer_contracts.cpp",
+    "docs/architecture/source_inventory.json",
+    "docs/research/quad/M3_GLOBAL_OUTCOMES_20261110.md"
+  ],
+  "events": [
+    "ElementBudgetRejectedCandidate",
+    "GrowthRejectedCandidate",
+    "AcceptedStepCommitted",
+    "RejectedStepRestored"
+  ],
+  "constraints": [
+    "GlobalOutcomeLog capacity 128, explicit truncated flag; not a complete audit after overflow",
+    "Only allocated when research callback is installed; Record is noexcept",
+    "AcceptedStepCommitted occurs after serial scope.Commit",
+    "RejectedStepRestored occurs after both geometry and curve restores",
+    "Budget/growth evaluations are not rollbacks",
+    "No actual GeneratorAdaptive hook-enabled acceptance/rejection fixture yet",
+    "No MPI/OpenMP runtime, physical QUAD, numerical interior point, full boundary, multipatch or memory certification"
+  ],
+  "next": "M3-6c real GeneratorAdaptive::Execute hook-enabled experiment with bounded Eistute/Book config, asserting post-commit/post-rollback event namespace and actual TRI behavior; exact-head CI before PR merge."
+}
