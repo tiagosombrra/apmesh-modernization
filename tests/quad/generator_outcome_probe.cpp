@@ -115,10 +115,17 @@ int Run(const std::string& config_path) {
   for (const auto& outer : uv_attempts) {
     uv_keys.insert(OuterKey(outer));
   }
+  std::size_t joined_local_global = 0;
   for (const auto& outer : locally_selected) {
-    Require(uv_keys.count(OuterKey(outer)) > 0,
+    const auto key = OuterKey(outer);
+    Require(uv_keys.count(key) > 0,
             "Locally selected Adapter event lacks matching UV capture namespace");
+    if (global_epochs.count(key) > 0) {
+      ++joined_local_global;
+    }
   }
+  Require(joined_local_global > 0,
+          "No selected Adapter attempt was correlated to a real global outcome epoch");
 
   // Outer global commit/restore decisions are not equivalent to physical QUAD.
   std::cout << "real_generator_outcomes=1 accepted_tri=" << accepted
