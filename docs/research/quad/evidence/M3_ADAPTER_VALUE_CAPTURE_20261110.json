@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "stage": "M3-3",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "candidate": "b2ec2104be14a64bcf3fde235efd9c4b0d9ff20b",
+  "pr": 188,
+  "merged": true,
+  "merge_sha": "078301a27feaffda0a7ecd8d69de1f3ba0d4c71e",
+  "reviewed_tree_sha": "b1099498f39e0b047e964c254731aedd4e9e6bc4",
+  "premerge_run": {
+    "id": 42729761791,
+    "status": "success",
+    "head_sha": "b2ec2104be14a64bcf3fde235efd9c4b0d9ff20b",
+    "jobs": 4,
+    "quad_linux_ctest": "4/4",
+    "quad_windows_msvc_ctest": "4/4",
+    "tri_ctest": "75/75",
+    "tooling_python": "527/527",
+    "cli_denials": "7/7",
+    "omp": "USE_OPENMP=1 syntax-only passed",
+    "science": {
+      "eistute": 5,
+      "book": 4,
+      "all_obj_byte_identical": true,
+      "acceptance_equal": true,
+      "boundary_coverage": "verified"
+    }
+  },
+  "postmerge_run": {
+    "id": 42731206966,
+    "status": "success",
+    "head_sha": "078301a27feaffda0a7ecd8d69de1f3ba0d4c71e",
+    "jobs": 4
+  },
+  "retained_failure_prefix": [
+    {
+      "run": 42728506521,
+      "head": "def82c3b8e90537f8797a86743be8748ed2b3188",
+      "cause": "Changed single-argument ConfigureAdvancingFront rejected historical attempt_metrics_probe; default parameter restored"
+    },
+    {
+      "run": 42729304063,
+      "head": "8f1bdf4e245ddc021455a044aa943979609fafc0",
+      "cause": "Explicit OMP syntax check exposed pre-existing missing RegionalPatchStats in AppendDomainDebugLog; repaired OMP source, test not disabled"
+    }
+  ],
+  "constraints": [
+    "Research-only injected provider and sink; not installed by default",
+    "Capture event remains PendingTriDecision, not selected or accepted",
+    "Tree borrowed as mutable Quadtree& in provider, no const guarantee",
+    "OMP compilation syntax-tested; runtime concurrency and full sanitizer tests not qualified",
+    "No numerical interior point, physical XYZ QUAD, full boundary, multipatch, iterative adaptation"
+  ],
+  "next": "Develop isolated M3-4 local attempt selection/rejection disposition events; distinguish locally selected attempt from globally accepted mesh; preserve TRI default and full scientific gates"
+}

@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-09-20 (M3-2 exact post-merge CI passed; M3-3 adapter sites reviewed, not implemented)
+**Last session:** 2026-11-10-01 (M3-3 PR #188 merged, pre- and post-merge CI qualified; M3-4 next)
 
-**Current milestone:** **M3-2 refined-Quadtree synchronous observer integrated in `AdvancingFront` via PR #187, after M3-1 fail-closed selector via PR #186 and UV bridge via PR #185. No production QUAD emission is enabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
+**Current milestone:** **M3-3 value-owned experimental UV patch-attempt capture integrated in `Adapter` via PR #188, following PRs #185–#187. No production QUAD emission or accepted-attempt classification is enabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -136,9 +136,16 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [M3-3 adapter entrypoint review](M3_ADAPTER_CAPTURE_REVIEW_20261109.md) found two actual sites in `Adapter::AdaptDomainOmp` and retry-aware `Adapter::AdaptDomain`, both using `ConfigureAdvancingFront`. A future value-only snapshot must carry patch/step/retry/attempt provenance and must not conflate accepted/rejected candidates.
 - Full const-correctness, numerical interior-point policy, boundary inclusion, physical UV-to-XYZ, shared-curve synchronization, adaptation and sanitizer campaigns remain open. M1/M2/M3 stay partial.
 
+## 2026-11-10-01 — M3-3 exact-head CI and merge audit
+
+- [PR #188](https://github.com/tiagosombrra/apmesh-modernization/pull/188) merged to research `quad-templates` at `078301a27feaffda0a7ecd8d69de1f3ba0d4c71e`, with unchanged modernization `main`. Exact reviewed feature head `b2ec2104be14a64bcf3fde235efd9c4b0d9ff20b` has the same merge tree.
+- [Pre-merge Actions #42729761791](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42729761791) and [post-merge Actions #42731206966](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42731206966) both **SUCCESS** (four jobs each). Pre-merge logs show QUAD GCC/MSVC 4/4, TRI 75/75 CTest, 527/527 Python, seven CLI rejects and Eistute/Book 5/4 scientific parity. `USE_OPENMP=1` syntax-only compilation passed, but runtime race correctness remains unqualified.
+- [M3-3 evidence](evidence/M3_ADAPTER_VALUE_CAPTURE_20261110.json) documents preserved failures: historical one-argument `ConfigureAdvancingFront` test broke and was restored; OMP source check found pre-existing missing `RegionalPatchStats`, repaired without disabling checks.
+- `SetResearchUvCapture` is opt-in per Adapter and sends value-owned `AttemptUvCapture` with patch, step, retry and local attempt. Every event remains **PendingTriDecision**; neither local selection nor global TRI acceptance nor numerical/physical QUAD is certified.
+
 ## Next exact action
 
-Implement M3-3 in a new isolated PR: introduce **explicit, non-default** value-owned UV capture registration at the common `Adapter::ConfigureAdvancingFront` seam, covering both OMP and retry-aware paths without global state. Preserve patch/step/retry/attempt provenance and accepted/rejected semantics. Do not enable production `quad_uv` emission or select an unapproved numerical point; run exact-head QUAD Linux/MSVC and frozen TRI 75/527 + Eistute/Book gates before merge.
+Implement isolated M3-4 attempt-outcome classification. Emit separate value-only audit events when a patch candidate has been locally selected or superseded after retries; never call this globally accepted. Ensure failure/exception paths do not fabricate selection, preserve opt-in only behavior, validate native tests + TRI 75/527 + scientific Eistute/Book before merge.
 
 ## Current M1 reconstruction
 
