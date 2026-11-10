@@ -66,8 +66,17 @@
   "current_postmerge": {
     "run": 42894221887,
     "sha": "799dd62f7e3dd9145fcc120c5c6daae09c8e01bb",
-    "status": "in_progress",
-    "conclusion": null
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 4,
+    "native_linux": "10/10",
+    "native_windows": "10/10",
+    "tri": "78/78",
+    "python": "527/527",
+    "cli_denials": "7/7",
+    "eistute_states": 5,
+    "book_states": 4,
+    "science_equal": true
   },
   "not_yet_implemented": [
     "historical exterior Delaunay and contour contraction",
@@ -76,5 +85,15 @@
     "adviser-approved historical point selection",
     "selectable all-quad extension"
   ],
-  "next": "Verify CI #42894221887 and capture real boundary interface, then implement historical exterior TRI only when actual face elements and seam checks pass."
+  "next": "Verify CI #42894221887 and capture real boundary interface, then implement historical exterior TRI only when actual face elements and seam checks pass.",
+  "postmerge_artifact": {
+    "id": 13798814198,
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42894221887/artifacts/13798814198",
+    "retention_days": 14
+  },
+  "postmerge_science_artifact": {
+    "id": 13798804430,
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42894221887/artifacts/13798804430",
+    "retention_days": 14
+  }
 }
