@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-01 (M3-3 PR #188 merged, pre- and post-merge CI qualified; M3-4 next)
+**Last session:** 2026-11-10-02 (M3-4 local attempt selection audit merged via PR #189; post-merge CI pending)
 
-**Current milestone:** **M3-3 value-owned experimental UV patch-attempt capture integrated in `Adapter` via PR #188, following PRs #185–#187. No production QUAD emission or accepted-attempt classification is enabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
+**Current milestone:** **M3-4 local TRI candidate selection/supersession/failure events integrated in `Adapter` via PR #189, after M3-3 UV value-owned snapshots in PR #188. This is NOT global generator acceptance, and production QUAD remains disabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -143,9 +143,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [M3-3 evidence](evidence/M3_ADAPTER_VALUE_CAPTURE_20261110.json) documents preserved failures: historical one-argument `ConfigureAdvancingFront` test broke and was restored; OMP source check found pre-existing missing `RegionalPatchStats`, repaired without disabling checks.
 - `SetResearchUvCapture` is opt-in per Adapter and sends value-owned `AttemptUvCapture` with patch, step, retry and local attempt. Every event remains **PendingTriDecision**; neither local selection nor global TRI acceptance nor numerical/physical QUAD is certified.
 
+## 2026-11-10-02 — M3-4 candidate qualified and merged
+
+- [PR #189](https://github.com/tiagosombrra/apmesh-modernization/pull/189) merged to research `quad-templates` as `1ce8bdc967367714ee780ee52077115252fd465c`. Exact source tree matches reviewed feature `8798ca7a61eddd53862f78db15e4a6225ddf4a3f`; modernization `main` unchanged.
+- [Pre-merge CI #42785252030](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42785252030) completed **SUCCESS** across four jobs: QUAD GCC 4/4 and Windows MSVC 4/4 native CTest, TRI 75/75 CTest, 527/527 Python tooling, CLI rejections 7/7; `USE_OPENMP=1` conditional syntax check passed. Frozen Eistute/Book 5/4 states retained exact OBJ/acceptance/boundary equivalence.
+- [M3-4 evidence](evidence/M3_LOCAL_SELECTION_20261110.json) documents local event kinds `SelectedForAdapterReturn`, `Superseded`, `GenerationFailed` after patch-level retry selection. The original UV observation remains `PendingTriDecision`. **Local Adapter selection is not outer-generator scientific acceptance.**
+- [Post-merge CI #42786259118](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42786259118) was queued at checkpoint, not yet a completed qualification.
+- **Open gap:** native tests validate local decision stream invariants and source-lifetime separation, while hook-enabled *real patch execution* through the Adapter selection path and OpenMP runtime concurrency have not been separately qualified. No centroid, physical QUAD output, full boundary, XYZ, multipatch, adaptation or whole-process sanitizer claim.
+
 ## Next exact action
 
-Implement isolated M3-4 attempt-outcome classification. Emit separate value-only audit events when a patch candidate has been locally selected or superseded after retries; never call this globally accepted. Ensure failure/exception paths do not fabricate selection, preserve opt-in only behavior, validate native tests + TRI 75/527 + scientific Eistute/Book before merge.
+Inspect post-merge CI #42786259118 at exact merge SHA. Then implement M3-5 end-to-end, **hook-enabled actual Adapter patch fixture**, joining M3-3 UV provisional observations with M3-4 local selection/supersession by identity, including a real retry case and negative/error controls. Do not confuse local selection with global GeneratorAdaptive acceptance; preserve main/TRI and scientific point-policy gates.
 
 ## Current M1 reconstruction
 

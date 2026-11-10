@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "stage": "M3-4",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "research_branch": "quad-templates",
+  "pr": 189,
+  "candidate": "8798ca7a61eddd53862f78db15e4a6225ddf4a3f",
+  "merge_sha": "1ce8bdc967367714ee780ee52077115252fd465c",
+  "merge_tree_sha": "a8891ee1f0419f7af2c7e0e22e66d2d84760ac2e",
+  "merge_tree_equal_candidate": true,
+  "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "changed_paths": [
+    "research/quad/adapter_capture.h",
+    "src/adapter/adapter.cpp",
+    "tests/quad/refined_observer_contracts.cpp",
+    "docs/architecture/source_inventory.json",
+    "docs/research/quad/M3_LOCAL_SELECTION_20261110.md"
+  ],
+  "premerge_ci": {
+    "run": 42785252030,
+    "head": "8798ca7a61eddd53862f78db15e4a6225ddf4a3f",
+    "status": "success",
+    "jobs_passed": 4,
+    "linux_quad_ctest": "4/4",
+    "windows_msvc_quad_ctest": "4/4",
+    "linux_tri_ctest": "75/75",
+    "python_tooling": "527/527",
+    "real_cli_denials": "7/7",
+    "omp_syntax": "passed, syntax only, no parallel execution",
+    "science": {
+      "eistute_states": 5,
+      "book_states": 4,
+      "all_obj_byte_identical": true,
+      "acceptance_fields_equal": true,
+      "boundary_coverage": "verified"
+    }
+  },
+  "postmerge_ci": {
+    "run": 42786259118,
+    "sha": "1ce8bdc967367714ee780ee52077115252fd465c",
+    "status": "queued",
+    "conclusion": null
+  },
+  "implementation": {
+    "uv_capture_disposition": "PendingTriDecision, unchanged",
+    "local_selection_kinds": [
+      "SelectedForAdapterReturn",
+      "Superseded",
+      "GenerationFailed"
+    ],
+    "independent_event_type": "LocalSelectionEvent",
+    "scope": "Patch-local Adapter outcome; NOT global GeneratorAdaptive acceptance",
+    "retry_aware_path": "Records each local attempt; emits selection after retry/fallback resolution",
+    "omp_path": "Zero local retries; emits selected event after submesh constructed",
+    "validation": "Reject duplicate attempt IDs, selecting missing/failed attempts or unselected stream containing generated candidates before delivering any decision",
+    "default": "No provider/sink/selection hook installed by production CLI"
+  },
+  "limitations": [
+    "No end-to-end instrumented Adapter::AdaptDomain real-patch selection scenario qualified",
+    "No full concurrent OpenMP runtime test; only syntax check",
+    "No compile-time const requirement for borrowed Quadtree& provider",
+    "A throwing sink can leave partially emitted stream; no transactional multi-callback guarantee",
+    "No global generator acceptance classification",
+    "No physical QUAD output, approved numeric interior-point rule, complete boundary, XYZ, multipatch or repeated adaptation",
+    "No global sanitizer/memory fault campaign"
+  ],
+  "next": "Qualify a real Adapter hook-enabled end-to-end fixture showing source snapshot, local retry selection/supersession and provenance against accepted/rejected TRI traces, without changing frozen triangle defaults. Continue scientific centroid/oracle research independently."
+}
