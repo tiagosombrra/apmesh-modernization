@@ -1105,6 +1105,12 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
     delete face;
   }
 
+  if (uv_capture_hooks_ && uv_capture_hooks_->local_selection_sink) {
+    // This local return is not the generator's global acceptance decision.
+    apmesh::quad::PublishLocalSelections(
+        {{{patch_index, adaptive_step, retry_index, 0}, true, "ok"}}, 0,
+        uv_capture_hooks_->local_selection_sink);
+  }
   return pending_sub_mesh.release();
 }
 
@@ -1284,11 +1290,16 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     double curve_balance_floor = 0.0;
     std::string status = "ok";
     bool success = false;
+    int local_attempt = 0;
   };
+  // A provisional UV observation is correlated by identity to this local TRI
+  // selection stream. No geometry, tree pointers or global acceptance escapes.
+  std::vector<apmesh::quad::LocalAttemptRecord> local_selection_history;
 
   auto run_attempt = [&](double local_factor, double local_target_h, int local_depth,
                          int local_attempt) -> AttemptResult {
     AttemptResult result;
+    result.local_attempt = local_attempt;
     result.sub_mesh = std::make_unique<SubMesh>();
     const double factor_disc = InternalCurveDiscretizationFactor();
     apmesh::adaptation::DomainUvCache cache;
@@ -1481,6 +1492,10 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
   };
 
   AttemptResult best = run_attempt(factor_disc_global, target_patch_h, resolved_quadtree_depth, 0);
+  if (uv_capture_hooks_ && uv_capture_hooks_->local_selection_sink) {
+    local_selection_history.push_back(
+        {{patch_index, adaptive_step, retry_index, 0}, best.success, best.status});
+  }
   // Em adaptive_stable, permitir fallback estrutural tambem em passos tardios.
   // Isso ajuda patches curvos que entram em "degenerate_needs_retry" no step 4/5.
   if (IsAdaptiveStableMode(policy_config) && adaptive_step >= 1 &&
@@ -1521,6 +1536,10 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
       }
       AttemptResult fallback =
           run_attempt(fallback_factor, fallback_target_h, fallback_depth, attempt);
+      if (uv_capture_hooks_ && uv_capture_hooks_->local_selection_sink) {
+        local_selection_history.push_back(
+            {{patch_index, adaptive_step, retry_index, attempt}, fallback.success, fallback.status});
+      }
       const bool best_underresolved =
           best.transition_underresolved == 1 ||
           (best.curve_domain_balance + 1.0e-9 < best.curve_balance_floor);
@@ -1546,6 +1565,13 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     }
   }
 
+  if (uv_capture_hooks_ && uv_capture_hooks_->local_selection_sink) {
+    // Finalize local selection only after all fallback decisions have completed.
+    // A selected candidate can still be rejected by the outer generator.
+    apmesh::quad::PublishLocalSelections(
+        local_selection_history, best.success ? best.local_attempt : -1,
+        uv_capture_hooks_->local_selection_sink);
+  }
   if (!best.success) {
 #if USE_MPI || USE_OPENMP
     std::cerr << "Error: domain generation failed (step=" << adaptive_step
