@@ -56,11 +56,13 @@ struct CaseResult {
   unsigned output_triangles = 0;
   unsigned selected_decisions = 0;
   unsigned superseded_or_failed = 0;
+  apmesh::quad::OuterAttemptIdentity outer{};
 };
 
 // The real production-owned single-patch geometry and the real coarse TRI
 // initializer are used. No synthetic Quadtree or mocked Adapter is involved.
-CaseResult RunPatch(bool abort_during_capture) {
+CaseResult RunPatch(bool abort_during_capture,
+                    apmesh::quad::OuterAttemptIdentity outer = {}) {
   std::cerr << "m3_live_stage=begin abort=" << abort_during_capture << std::endl;
   ScopedLegacyCurveSorting sort_scratch;
   Geometry geometry;
@@ -110,6 +112,8 @@ CaseResult RunPatch(bool abort_during_capture) {
                 snapshot.attempt.retry_index == 0 &&
                 snapshot.attempt.local_attempt >= 0,
             "Real Adapter lost patch/step/retry/attempt provenance");
+    Require(apmesh::quad::SameOuterAttempt(snapshot.attempt.outer, outer),
+            "Real Adapter UV snapshot has wrong global retry epoch");
     Require(!snapshot.polygons.input.polygons.empty() &&
                 !snapshot.polygons.input.vertices.empty() &&
                 snapshot.polygons.input.interior_points.empty(),
@@ -124,6 +128,7 @@ CaseResult RunPatch(bool abort_during_capture) {
     decisions.push_back(std::move(outcome));
   };
   adapter.SetResearchUvCapture(std::move(hooks));
+  adapter.SetResearchOuterAttempt(outer);
   std::cerr << "m3_live_stage=hooks_registered" << std::endl;
   bool interrupted = false;
   std::unique_ptr<SubMesh> generated;
@@ -144,6 +149,7 @@ CaseResult RunPatch(bool abort_during_capture) {
   CaseResult result;
   result.snapshots = static_cast<unsigned>(snapshots.size());
   result.local_decisions = static_cast<unsigned>(decisions.size());
+  result.outer = outer;
   Require(result.snapshots >= (abort_during_capture ? 1U : 2U),
           "Expected real UV capture for both the initial and retry attempts");
   std::set<int> captured_attempts;
@@ -167,6 +173,8 @@ CaseResult RunPatch(bool abort_during_capture) {
             "Real Adapter did not record one local outcome per captured attempt");
     std::set<int> decided_attempts;
     for (const auto& event : decisions) {
+      Require(apmesh::quad::SameOuterAttempt(event.attempt.outer, outer),
+              "Real Adapter decision lost global retry epoch");
       Require(event.attempt.patch_index == 0 && event.attempt.adaptive_step == 1 &&
                   event.attempt.retry_index == 0,
               "Real local decision lost patch, step or retry provenance");
@@ -195,8 +203,13 @@ CaseResult RunPatch(bool abort_during_capture) {
 
 int main() {
   try {
-    const auto normal = RunPatch(false);
-    const auto failed = RunPatch(true);
+    const auto normal = RunPatch(false, {901, 17, 0});
+    const auto repeated = RunPatch(false, {901, 18, 1});
+    const auto failed = RunPatch(true, {901, 19, 2});
+    Require(normal.local_decisions == repeated.local_decisions &&
+                normal.selected_decisions == repeated.selected_decisions &&
+                !apmesh::quad::SameOuterAttempt(normal.outer, repeated.outer),
+            "Two identical patch/retry paths collided across global epochs");
     Require(normal.source_leaves > 0 && failed.source_leaves > 0,
             "No refined real Quadtree was observed");
     Require(normal.polygon_count > 0 && failed.polygon_count > 0,
@@ -204,7 +217,7 @@ int main() {
     Require(normal.local_decisions >= 2 && normal.selected_decisions == 1 &&
                 normal.superseded_or_failed >= 1 && failed.local_decisions == 0,
             "Real retry/local selection and abort decisions were not separated");
-    std::cout << "real_adapter_capture_cases=2 normal_triangles="
+    std::cout << "real_adapter_capture_cases=3 normal_triangles="
               << normal.output_triangles << " snapshots="
               << (normal.snapshots + failed.snapshots)
               << " local_attempts=" << normal.local_decisions

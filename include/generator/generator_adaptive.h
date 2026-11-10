@@ -6,6 +6,7 @@
 #if USE_OPENMP
 #include <omp.h>
 #endif
+#include <cstdint>
 #include <list>
 #include <map>
 #include <memory>
@@ -400,6 +401,9 @@ public:
 
   // Null denotes the compatibility path that observes the legacy identity globals.
   const apmesh::application::GenerationContext* GetGenerationContext() const noexcept;
+  // Research-only: the caller must assign a session ID unique among generator
+  // invocations whose audit streams will be joined. No CLI enables this.
+  void SetResearchUvCapture(apmesh::quad::CaptureHooks hooks, std::uint64_t session);
   // Latest serial Execute result, including any partial count before an exception.
   apmesh::diagnostics::FindUvStatistics GetFindUvStatistics() const noexcept {
     return find_uv_statistics_;
@@ -861,6 +865,8 @@ private:
   apmesh::diagnostics::FindUvStatistics find_uv_statistics_;
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;
+  std::uint64_t research_session_ = 0;
+  std::uint64_t research_outer_epoch_ = 0;
   std::string stop_reason_;
   unsigned long long current_gauss_nodes_;
   unsigned long long current_mean_nodes_;

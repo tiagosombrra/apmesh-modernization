@@ -282,6 +282,54 @@ void AssertDecisionHookRequiresCapture() {
   Require(rejected, "Decision-only hook was allowed without matching UV capture");
 }
 
+
+void AssertOuterEpochAndLegacyCompatibility() {
+  using apmesh::quad::LocalAttemptRecord;
+  using apmesh::quad::LocalSelectionEvent;
+  using apmesh::quad::OuterAttemptIdentity;
+  using apmesh::quad::PatchAttemptIdentity;
+  const PatchAttemptIdentity legacy{6, 4, 1, 0};
+  Require(apmesh::quad::SameOuterAttempt(legacy.outer, {}),
+          "Legacy four-field attempt acquired an unrequested global correlation");
+  const OuterAttemptIdentity outer1{712, 31, 0};
+  const OuterAttemptIdentity outer2{712, 32, 1};
+  PatchAttemptIdentity a{6, 4, 1, 0};
+  PatchAttemptIdentity b{6, 4, 1, 0};
+  a.outer = outer1;
+  b.outer = outer2;
+  Require(!apmesh::quad::SamePatchScope(a, b),
+          "Distinct global epochs collided despite identical patch coordinates");
+  Require(apmesh::quad::SamePatchScope(a, a), "A stable global join key changed");
+
+  // Use distinct local IDs so the mixed-epoch validation, rather than only
+  // duplicate-ID validation, is the reason this entire stream is rejected.
+  b.local_attempt = 1;
+  std::vector<LocalSelectionEvent> results;
+  std::vector<LocalAttemptRecord> mixed{{a, true, "ok"}, {b, true, "ok"}};
+  bool rejected = false;
+  try {
+    apmesh::quad::PublishLocalSelections(
+        mixed, 0, [&](LocalSelectionEvent e) { results.push_back(std::move(e)); });
+  } catch (const std::invalid_argument&) {
+    rejected = true;
+  }
+  Require(rejected && results.empty(), "Mixed outer epochs emitted partial decisions");
+
+  for (const OuterAttemptIdentity malformed :
+       {OuterAttemptIdentity{0, 1, 0}, OuterAttemptIdentity{712, 0, 0},
+        OuterAttemptIdentity{712, 1, -1}}) {
+    rejected = false;
+    try {
+      apmesh::quad::ValidateOuterAttempt(malformed);
+    } catch (const std::invalid_argument&) {
+      rejected = true;
+    }
+    Require(rejected, "Incomplete global namespace or retry was accepted");
+  }
+  apmesh::quad::ValidateOuterAttempt({});
+  apmesh::quad::ValidateOuterAttempt(outer1);
+}
+
 } // namespace
 
 int main() {
@@ -293,7 +341,8 @@ int main() {
     AssertAttemptIsolation();
     AssertLocalSelectionStream();
     AssertDecisionHookRequiresCapture();
-    std::cout << "refined_observer_contract_cases=7 failed=0\n";
+    AssertOuterEpochAndLegacyCompatibility();
+    std::cout << "refined_observer_contract_cases=8 failed=0\n";
     return 0;
   } catch (const std::exception& error) {
     std::cerr << "Refined observer contract failed: " << error.what() << '\n';
