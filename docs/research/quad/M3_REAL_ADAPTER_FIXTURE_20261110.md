@@ -1,0 +1,9 @@
+# M3-5 — real Adapter patch fixture, not a mock
+
+The regression candidate introduces a serial-only root CTest `quad.adapter.real_patch_capture` using the production `ap_mesh_engine` and the **actual** `Models3d::ModelBaseQuadrada` patch with a real `BuildInitialSubMesh` TRI seed. The test links `quadtree_quad.cpp` and `uv_mesh.cpp` **only** into its test executable, not into `ap_mesh`.
+
+Two bounded scenarios call `Adapter::AdaptDomain` on the patch with quadtree depth capped at 3: (1) a successful TRI patch attempt with real `CaptureLeafPolygons` and a `SelectedForAdapterReturn` decision; (2) a provider/sink observation interrupted by a deliberate exception before any TRI local selection, ensuring the former coarse patch binding is retained. Each snapshot must contain nonempty value-owned UV polygons, remain provisional, and retain its step/patch/retry/attempt identity. The default production execution does not install hooks.
+
+**Scope limitation:** the initial M3-5 candidate qualifies a single actual Adapter attempt with a negative path, **not a demonstrated real local fallback/retry**. The retry-path identity and disposition logic is separately covered by native unit contracts in M3-4; a real retry requires an additional controlled experimental fixture and will not be claimed until observed and verified. Scientific centroid, physical QUAD elements, boundary closure and global generator acceptance remain blocked.
+
+**Quality gates:** exact-feature-head CI on root CMake's **76 CTest** (historical 75 plus this new real-Adapter test), 527 Python, seven CLI negatives, and Eistute/Book exact scientific parity; standalone QUAD Linux and Windows MSVC retain four native tests. OpenMP syntax checks do not prove parallel execution. Never merge with a failing test or simply loosen the timeout.
