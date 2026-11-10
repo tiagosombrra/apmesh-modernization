@@ -604,9 +604,16 @@ void GeneratorAdaptive::SetResearchUvCapture(apmesh::quad::CaptureHooks hooks,
     throw std::invalid_argument("Research capture requires a nonzero session namespace");
   }
   const bool enabled = static_cast<bool>(hooks.provider);
+  std::unique_ptr<apmesh::quad::GlobalOutcomeLog> audit;
+  if (enabled) {
+    // Allocate only at explicit research setup, never inside TRI commit.
+    audit = std::make_unique<apmesh::quad::GlobalOutcomeLog>();
+  }
   adapter_.SetResearchUvCapture(std::move(hooks));
+  research_global_outcomes_ = std::move(audit);
   research_session_ = enabled ? session : 0;
   research_outer_epoch_ = 0;
+  current_research_outer_ = {};
 }
 
 const apmesh::application::GenerationContext*
@@ -3082,8 +3089,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
         if (research_outer_epoch_ == std::numeric_limits<std::uint64_t>::max()) {
           throw std::overflow_error("Research outer attempt epoch exhausted");
         }
-        adapter_.SetResearchOuterAttempt(
-            {research_session_, ++research_outer_epoch_, retry});
+        current_research_outer_ = {research_session_, ++research_outer_epoch_, retry};
+        adapter_.SetResearchOuterAttempt(current_research_outer_);
       }
       report_gauss_nodes = 0ULL;
       report_mean_nodes = 0ULL;
@@ -3281,6 +3288,12 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                            AcceptanceQualityMinWeight() * quality_min_delta +
                            AcceptancePoorRatioWeight() * poor_ratio_delta -
                            ComputeAcceptanceGrowthPenalty(element_growth_factor, this->step_);
+        if (research_global_outcomes_) {
+          // Budget rejection is an evaluation, not a completed rollback.
+          research_global_outcomes_->Record(
+              {current_research_outer_, step_,
+               apmesh::quad::GlobalOutcomeKind::ElementBudgetRejectedCandidate});
+        }
         continue;
       }
 
@@ -3320,6 +3333,12 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
                            AcceptanceQualityMinWeight() * quality_min_delta +
                            AcceptancePoorRatioWeight() * poor_ratio_delta -
                            ComputeAcceptanceGrowthPenalty(element_growth_factor, this->step_);
+        if (research_global_outcomes_) {
+          // Growth rejection is an evaluation, not a completed rollback.
+          research_global_outcomes_->Record(
+              {current_research_outer_, step_,
+               apmesh::quad::GlobalOutcomeKind::GrowthRejectedCandidate});
+        }
         continue;
       }
 
@@ -3589,6 +3608,12 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
         accepted_step = true;
 #if !USE_MPI && !USE_OPENMP
         accepted_mesh = accepted_scope.Commit();
+        if (research_global_outcomes_) {
+          // Log only after the serial accepted state has been committed.
+          research_global_outcomes_->Record(
+              {current_research_outer_, step_,
+               apmesh::quad::GlobalOutcomeKind::AcceptedStepCommitted});
+        }
 #endif
         accepted_retry_attempt = static_cast<unsigned int>(retry);
         current_budget_final_status_ =
@@ -3689,6 +3714,12 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
       // Isso evita que candidatos rejeitados "contaminem" os passos seguintes.
       restore_geometry_submeshes(geometry, accepted_mesh);
       restore_curve_snapshots(geometry, accepted_curve_snapshots);
+      if (research_global_outcomes_) {
+        // Log only after both rejected domain and curve states are restored.
+        research_global_outcomes_->Record(
+            {current_research_outer_, step_,
+             apmesh::quad::GlobalOutcomeKind::RejectedStepRestored});
+      }
       if (force_min_steps_for_logging && this->step_ < min_steps_for_logging) {
         if (current_policy_.stable_mode && previous_elements > 0ULL && previous_elements <= 64ULL &&
             current_elements > 0ULL) {
