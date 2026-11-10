@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-02 (M3-4 local attempt selection audit merged via PR #189; post-merge CI pending)
+**Last session:** 2026-11-10-03 (M3-5 real Adapter retry fixture merged via PR #190; post-merge CI pending)
 
-**Current milestone:** **M3-4 local TRI candidate selection/supersession/failure events integrated in `Adapter` via PR #189, after M3-3 UV value-owned snapshots in PR #188. This is NOT global generator acceptance, and production QUAD remains disabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
+**Current milestone:** **M3-5 real Adapter patch/UV capture/retry integration test merged via PR #190, qualifying three actual local attempts, one selection and controlled abort. Production QUAD remains disabled. M0 qualified in scope; M1/M2/M3 remain PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -151,9 +151,18 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [Post-merge CI #42786259118](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42786259118) was queued at checkpoint, not yet a completed qualification.
 - **Open gap:** native tests validate local decision stream invariants and source-lifetime separation, while hook-enabled *real patch execution* through the Adapter selection path and OpenMP runtime concurrency have not been separately qualified. No centroid, physical QUAD output, full boundary, XYZ, multipatch, adaptation or whole-process sanitizer claim.
 
+## 2026-11-10-03 — M3-5 actual Adapter retry fixture qualified
+
+- [PR #190](https://github.com/tiagosombrra/apmesh-modernization/pull/190) merged only into `quad-templates` as `536c94009ea8b6a3a613886dfdf93314f94c91f6`, source tree identical to qualified candidate `67a4ceb58af09d48ba86fa964b51efaae0c660cc`; modernization `main` unchanged.
+- [GitHub Actions #42808140065](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42808140065) SUCCESS, four jobs: native QUAD Linux 4/4 and Windows MSVC 4/4, root TRI 76/76 CTest (including new real Adapter test), tooling Python 527/527, CLI refusal 7/7; frozen Eistute/Book 5/4 states maintained identical OBJ, acceptance and boundary coverage.
+- [M3-5 evidence](evidence/M3_REAL_ADAPTER_FIXTURE_20261110.json): actual ModelBaseQuadrada patch plus BuildInitialSubMesh + Adapter::AdaptDomain with experimental test-only AFT ratio 0.15 (not production). Real run logged **three local attempts, three UV snapshots, one selected, two superseded/failed, 30 TRI elements**. Independent intentional capture-abort case observed one UV snapshot but zero selection decisions, no output mesh.
+- Failed test prefixes remain in Actions: curve-sort setup segfault, no included interior leaves, missing complete AftConfig include, incorrect single-attempt assumption. All were repaired in the **fixture**, not by changing the source algorithm or acceptance oracles. See [technical report](M3_REAL_ADAPTER_FIXTURE_20261110.md).
+- [Post-merge CI #42809300817](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42809300817) was in_progress when this checkpoint was created and must be checked separately. The merge source tree equals reviewed tested head.
+- **Non-claims:** local Adapter selection is not global GeneratorAdaptive acceptance. OpenMP parallel runtime and whole-process sanitizer/memory-denial are not qualified. M1/M2/M3 remain partial; no positive physical QUAD generation, numerical interior selector, full boundary/XYZ/multipatch/adaptation.
+
 ## Next exact action
 
-Inspect post-merge CI #42786259118 at exact merge SHA. Then implement M3-5 end-to-end, **hook-enabled actual Adapter patch fixture**, joining M3-3 UV provisional observations with M3-4 local selection/supersession by identity, including a real retry case and negative/error controls. Do not confuse local selection with global GeneratorAdaptive acceptance; preserve main/TRI and scientific point-policy gates.
+Close post-merge Actions #42809300817 on exact M3-5 merge SHA, preserving failures if any. Then design/implement M3-6 as an **explicitly opt-in, value-only outer GeneratorAdaptive acceptance/rejection audit** correlated by patch/step/retry to local Adapter selections, without changing default TRI or claiming positive QUAD output. Preserve full native, Python, frozen science and new 76 CTest gates.
 
 ## Current M1 reconstruction
 

@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "project": "apmesh-modernization",
+  "stage": "M3-5",
+  "status": "merged_scientific_branch_only",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "feature": "quad/integration-m3-real-adapter-fixture-20261110",
+  "pr": 190,
+  "candidate_sha": "67a4ceb58af09d48ba86fa964b51efaae0c660cc",
+  "merged_sha": "536c94009ea8b6a3a613886dfdf93314f94c91f6",
+  "tree_sha": "064102cc2dc81bcde7072897cee05b3f60aa2de2",
+  "tree_equal_to_qualified_candidate": true,
+  "production_main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "changed_files": [
+    ".github/workflows/quad-research-validation.yml",
+    "CMakeLists.txt",
+    "docs/architecture/source_inventory.json",
+    "docs/research/quad/M3_REAL_ADAPTER_FIXTURE_20261110.md",
+    "tests/quad/adapter_integration_probe.cpp"
+  ],
+  "fixture": {
+    "real_model": "Models3d::ModelBaseQuadrada",
+    "real_adapter": "Adapter::AdaptDomain",
+    "real_seed": "BuildInitialSubMesh",
+    "single_patch": true,
+    "quadtree_max_depth": 3,
+    "experimental_test_only_aft_ratio": 0.15,
+    "production_ratio_unchanged": true,
+    "two_executable_cases": 2,
+    "successful_case": {
+      "local_attempts": 3,
+      "uv_snapshots": 3,
+      "locally_selected": 1,
+      "superseded_or_generation_failed": 2,
+      "output_triangles": 30
+    },
+    "abort_case": {
+      "captured_uv_snapshots": 1,
+      "local_decisions": 0,
+      "generated_tri_mesh": false
+    },
+    "overall_snapshots": 4,
+    "uv_snapshot_value_owned": true,
+    "no_numeric_polygon_interior_points": true,
+    "source_patch_binding_preserved": true,
+    "global_generator_acceptance_not_claimed": true
+  },
+  "qualification": {
+    "premerge_run_id": 42808140065,
+    "sha": "67a4ceb58af09d48ba86fa964b51efaae0c660cc",
+    "status": "success",
+    "jobs": 4,
+    "linux_quad_ctest": "4/4",
+    "msvc_quad_ctest": "4/4",
+    "linux_root_ctest": "76/76",
+    "tooling_python": "527/527",
+    "cli_denials": "7/7",
+    "omp": "conditional syntax-only check, not a parallel runtime test",
+    "science": {
+      "Eistute": {
+        "compared_states": 5,
+        "all_obj_byte_identical": true,
+        "acceptance_equal": true,
+        "boundary_coverage": "verified"
+      },
+      "Book": {
+        "compared_states": 4,
+        "all_obj_byte_identical": true,
+        "acceptance_equal": true,
+        "boundary_coverage": "verified"
+      }
+    }
+  },
+  "failure_prefixes": [
+    {
+      "run": 42793750717,
+      "cause": "Fixture skipped legacy curve-sort scratch and parameter setup, causing segfault",
+      "fix": "ScopedLegacyCurveSorting and two genuine curve endpoint parameters"
+    },
+    {
+      "run": 42794836516,
+      "cause": "Coarse boundary case had zero included interior leaves",
+      "fix": "Test-only AftConfig ratio 0.15; no scientific algorithm/source changed"
+    },
+    {
+      "run": 42806945611,
+      "cause": "AftConfig forward declaration used without complete definition",
+      "fix": "Test-only generation_context.h include"
+    },
+    {
+      "run": 42807255830,
+      "cause": "Real fallback exposed invalid fixture assumption of only local_attempt=0",
+      "fix": "Assert unique correlated attempt IDs and local outcome stream for real retry"
+    }
+  ],
+  "postmerge": {
+    "run_id": 42809300817,
+    "sha": "536c94009ea8b6a3a613886dfdf93314f94c91f6",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "scientific_limits": [
+    "No CLI QUAD emission; quad_uv remains fail-closed",
+    "No approved numeric interior point or physical UV-to-XYZ mapping",
+    "No full boundary/multipatch/adaptation QUAD",
+    "No global GeneratorAdaptive acceptance trace correlated to local selection",
+    "No full OpenMP parallel runtime or whole-process ASan/LSan/CRT qualification"
+  ],
+  "next": "M3-6 observe outer GeneratorAdaptive global accept/reject and correlate to Adapter local outcome without changing acceptance; keep TRI defaults and independent scientific oracles"
+}
