@@ -84,7 +84,12 @@ CaseResult RunPatch(bool abort_during_capture) {
   Require(patch->GetSubMesh() == previous.get() && previous->GetNumberElements() == 4,
           "Fixture failed to publish original TRI coarse mesh");
 
-  Adapter adapter;
+  // A smaller AFT ratio creates genuine interior cells in this bounded real
+  // patch; the former default ratio refined only boundary-adjacent leaves.
+  // This is a test-only override, never a production or scientific default.
+  apmesh::application::AftConfig fixture_aft;
+  fixture_aft.ratio = 0.15;
+  Adapter adapter(nullptr, nullptr, &fixture_aft);
   std::vector<AttemptUvCapture> snapshots;
   std::vector<LocalSelectionEvent> decisions;
   CaptureHooks hooks;
