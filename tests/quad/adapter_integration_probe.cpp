@@ -1,5 +1,6 @@
 #include "adapter/adapter.h"
 #include "crab_mesh/performer/ranged_id_manager.h"
+#include "data/curve/curve_adaptive_parametric.h"
 #include "data/geometry.h"
 #include "data/mesh/sub_mesh.h"
 #include "data/patch/patch_coons.h"
@@ -15,6 +16,9 @@
 #include <utility>
 #include <vector>
 
+// The production generator initializes this legacy curve-sort scratch space.
+extern std::vector<CurveAdaptiveParametric*> ptr_aux;
+
 namespace {
 using apmesh::quad::AttemptUvCapture;
 using apmesh::quad::CaptureHooks;
@@ -23,6 +27,19 @@ using apmesh::quad::LocalSelectionKind;
 using Par2DJMesh::AFT::Quadtree;
 
 struct IntentionalCaptureAbort final {};
+
+// Reproduce the sort-scratch setup performed by GeneratorAdaptive, without
+// retaining pointers after this fixture's curves have been destroyed.
+struct ScopedLegacyCurveSorting {
+  std::vector<CurveAdaptiveParametric*> previous;
+  ScopedLegacyCurveSorting() : previous(std::move(ptr_aux)) {
+    ptr_aux.resize(1, nullptr);
+  }
+  ~ScopedLegacyCurveSorting() { ptr_aux = std::move(previous); }
+  ScopedLegacyCurveSorting(const ScopedLegacyCurveSorting&) = delete;
+  ScopedLegacyCurveSorting& operator=(const ScopedLegacyCurveSorting&) = delete;
+};
+
 void Require(bool condition, const char* message) {
   if (!condition) {
     throw std::runtime_error(message);
@@ -41,6 +58,7 @@ struct CaseResult {
 // initializer are used. No synthetic Quadtree or mocked Adapter is involved.
 CaseResult RunPatch(bool abort_during_capture) {
   std::cerr << "m3_live_stage=begin abort=" << abort_during_capture << std::endl;
+  ScopedLegacyCurveSorting sort_scratch;
   Geometry geometry;
   Models3d model;
   model.ModelBaseQuadrada(&geometry);
@@ -55,6 +73,14 @@ CaseResult RunPatch(bool abort_during_capture) {
   apmesh::generation::CurveSampleLifetime sample_lifetime(geometry);
   auto previous = apmesh::generation::BuildInitialSubMesh(patch, &id_manager);
   std::cerr << "m3_live_stage=coarse_tri_built" << std::endl;
+  for (unsigned i = 0; i < patch->GetNumBerCurves(); ++i) {
+    auto* curve = dynamic_cast<CurveAdaptiveParametric*>(patch->GetCurve(i));
+    Require(curve != nullptr && curve->GetNumBerPoints() == 2,
+            "Fixture did not prepare two curve samples");
+    // The production curve-adaptation stage has already produced these values.
+    curve->UpdateParameters({0.0, 1.0});
+  }
+  std::cerr << "m3_live_stage=curve_parameters_ready" << std::endl;
   Require(patch->GetSubMesh() == previous.get() && previous->GetNumberElements() == 4,
           "Fixture failed to publish original TRI coarse mesh");
 
