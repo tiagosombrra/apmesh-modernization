@@ -44,6 +44,13 @@ add_test(NAME quad.m1.figure7.oracle
     "${CMAKE_CURRENT_SOURCE_DIR}/test_m1_figure7_oracle.py"
     --fixture "${CMAKE_CURRENT_SOURCE_DIR}/../../docs/research/quad/evidence/M1_FIGURE7_TRANSCRIPTION_20261108.json")
 set_tests_properties(quad.m1.figure7.oracle PROPERTIES TIMEOUT 120 LABELS "research-quad;historical-review")
+# Research-only comparison: the historical area-centroid formula is not yet approved.
+add_test(NAME quad.m1.point_rule_quality
+  COMMAND "${Python3_EXECUTABLE}"
+    "${CMAKE_CURRENT_SOURCE_DIR}/test_m1_point_rule_quality.py"
+    --fixture "${CMAKE_CURRENT_SOURCE_DIR}/../../docs/research/quad/evidence/M1_FIGURE7_TRANSCRIPTION_20261108.json")
+set_tests_properties(quad.m1.point_rule_quality PROPERTIES
+  TIMEOUT 120 LABELS "research-quad;numeric-proposal")
 
 option(AP_MESH_QUAD_WITH_TREE "Build the read-only bridge to the existing serial quadtree" OFF)
 if(AP_MESH_QUAD_WITH_TREE)
