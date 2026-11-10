@@ -3,7 +3,7 @@
 
 ## Evidence available now
 
-The normalized schematic reconstruction proposes the six source patterns in Figure 7 order **T1, T2, T4, T3, T5, T6**, yielding **4, 11, 12, 8, 11, 16** theoretical quadrilateral subdivisions of their intermediate polygons. The new [executable exact-rational checker](../../tests/quad/test_m1_figure7_oracle.py) and the existing [C++ UV emitter tests](../../tests/quad/uv_contracts.cpp) validate this proposed interpretation under D4 symmetries. The Python checker is independently implemented but both artifacts depend on a human-transcribed graph; neither constitutes a second independent visual reading of the scanned paper.
+The normalized schematic reconstruction proposes the six source patterns in Figure 7 order **T1, T2, T4, T3, T5, T6**, yielding **4, 11, 12, 8, 11, 16** theoretical quadrilateral subdivisions of their intermediate polygons. The new [executable exact-rational checker](../../../tests/quad/test_m1_figure7_oracle.py) and the existing [C++ UV emitter tests](../../../tests/quad/uv_contracts.cpp) validate this proposed interpretation under D4 symmetries. The Python checker is independently implemented but both artifacts depend on a human-transcribed graph; neither constitutes a second independent visual reading of the scanned paper.
 
 Source provenance: Joaquim Bento Cavalcante Neto, Marcelo Tilio Monteiro de Carvalho and Luiz Fernando Martha, VI SIBGRAPI, 1993, p. 288, Figure 7; recorded local scan SHA-256 `49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5`. The Drive copy has **not** been byte-hash verified against the scan.
 
