@@ -1,4 +1,5 @@
 #include "adapter/adapter.h"
+#include "application/generation_context.h"
 #include "crab_mesh/performer/ranged_id_manager.h"
 #include "data/curve/curve_adaptive_parametric.h"
 #include "data/geometry.h"
