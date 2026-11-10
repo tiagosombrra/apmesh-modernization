@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-08 (M3-6d Book/Eistute real event chronology merged via PR #194; post-merge CI pending)
+**Last session:** 2026-11-10-09 (M1 Figure 7 exact-rational independent test integrated via PR #195; scientific point policy still open)
 
-**Current milestone:** **M3-6d real, cross-model Eistute/Book hook-enabled `GeneratorAdaptive::Execute` outcome tests integrated via PR #194. Both probes passed and correlate local selections with global epochs, while preserving byte-identical TRI references. No physical QUAD emitted. M0 qualified in scope; M1/M2/M3 PARTIAL.**
+**Current milestone:** **M1 independent exact-rational Figure 7 test integrated via PR #195, alongside M3-6d real event instrumentation from PR #194. The historical schematic now has an executable independent checker, but its graph and numerical point rule are NOT adviser-approved. No physical QUAD. M0 qualified in scope; M1/M2/M3 PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -198,9 +198,18 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - M3-6c prior [post-merge CI #42825582252](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42825582252) is separately **SUCCESS** all four jobs. [M3-6d post-merge #42827666971](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42827666971) was **in_progress** at checkpoint; verify its final result.
 - [M3-6d evidence](evidence/M3_CROSS_MODEL_OUTCOMES_20261110.json) and [scope](M3_CROSS_MODEL_OUTCOMES_20261110.md). No approved numeric center policy, physical QUAD, complete boundary, UV/XYZ, multipatch, OpenMP runtime or sanitizer campaign. M1/M2/M3 remain partial.
 
+## 2026-11-10-09 — M1 independent rational topology oracle integrated
+
+- [PR #195](https://github.com/tiagosombrra/apmesh-modernization/pull/195) merged to `quad-templates` at `cb5aca8bae44fc33f3e927188389edf0281ac04e`, source tree exactly matches the tested `2bb2ecb1a7daacb153116c6c8486d49bdd6d1c50`; `main` unchanged.
+- [CI #42832685760](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42832685760) **SUCCESS** four jobs: QUAD Linux GCC **5/5**, Windows MSVC **5/5**, TRI **78/78 CTest**, tooling Python **527/527**, real-CLI negatives **7/7**, Eistute 5 / Book 4 source-exact OBJ/acceptance/boundary parity.
+- [M1 executable test](../../tests/quad/test_m1_figure7_oracle.py) checks all six transcription cycles, 48 D4 oriented variants, 96 exact-rational *test-only witness* QUAD graphs, 16 split signatures and nine negative mutations. It distinguishes vertex mean and signed-area centroid (T2/T5 exhibit different coordinates) without adopting either as historical policy.
+- [M1 new evidence](evidence/M1_EXECUTABLE_ORACLE_20261110.json), [technical review](M1_EXECUTABLE_ORACLE_20261110.md), and [scientific decision memo](M1_NUMERIC_DECISION_GATE_20261110.md) document the precise open gate. Original scan byte identity from Drive and independent adviser visual confirmation remain unverified.
+- Initial [Actions #42832471771](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42832471771) failed solely on a Python negative-fixture tuple-join bug, corrected without weakening geometry checks. Failed logs retained in PR discussion.
+- [Post-merge Actions #42834073835](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42834073835) was **in_progress** at checkpoint; verify exact merged SHA before separate postmerge claim. M1, M2, M3 remain PARTIAL; positive production quad_uv still disabled.
+
 ## Next exact action
 
-Verify exact merged-head CI #42827666971. Then prioritize the historical M1 T1–T6 point-placement/centroid decision and isolated positive/negative UV QUAD topology fixtures, distinguishing agreed scientific rules from experimental caller-supplied policies. Preserve the unchanged TRI default, no production QUAD publication, and require new exact-head Linux/MSVC/science gates.
+Verify exact merged-head CI #42834073835. Present [M1 numerical decision memo](M1_NUMERIC_DECISION_GATE_20261110.md) to Bento/Creto: confirm proposed Figure 7 cycles/printed class order and explicitly decide the point-location formula. Without a scientific decision, implement only additional labeled research test witnesses, never silently approve a centroid or enable production QUAD. Once approved, create an isolated numeric-oracle PR with independent expected coordinates/degeneracy/D4 tests and full native/scientific CI.
 
 ## Current M1 reconstruction
 

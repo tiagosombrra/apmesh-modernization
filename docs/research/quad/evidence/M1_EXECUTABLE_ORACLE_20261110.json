@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "milestone": "M1 independent executable figure 7 schematic validation",
+  "research_branch": "quad-templates",
+  "pr": 195,
+  "source_scan": {
+    "metadata_sha256": "49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5",
+    "verification": "Original PDF remote bytes and independent human visual review NOT verified in this step"
+  },
+  "source_transcription": "docs/research/quad/evidence/M1_FIGURE7_TRANSCRIPTION_20261108.json",
+  "branch_head_qualified": "2bb2ecb1a7daacb153116c6c8486d49bdd6d1c50",
+  "merge_sha": "cb5aca8bae44fc33f3e927188389edf0281ac04e",
+  "merged_tree_sha": "b2ded2a2a8340800fb40514f654e8159536934ac",
+  "merge_tree_identical_to_qualified_candidate": true,
+  "modernization_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "failed_prefix": {
+    "run": 42832471771,
+    "head": "339003c13bac8d3e6dd43b48e75b4e63304e3998",
+    "issue": "Python TypeError in flattening T5 negative fixture vertex cycles; existing native QUAD contracts passed",
+    "fix": "2bb2ecb1a7daacb153116c6c8486d49bdd6d1c50",
+    "outcome": "Preserved failed Actions run and PR review comment"
+  },
+  "qualified_ci": {
+    "run": 42832685760,
+    "head": "2bb2ecb1a7daacb153116c6c8486d49bdd6d1c50",
+    "result": "success",
+    "jobs": 4,
+    "quad_linux_gcc_ctest": "5/5",
+    "quad_windows_msvc_ctest": "5/5",
+    "tri_ctest": "78/78",
+    "python_tooling": "527/527",
+    "cli_negative": "7/7",
+    "science": {
+      "eistute_states": 5,
+      "book_states": 4,
+      "obj_byte_identical": true,
+      "acceptance_equal": true,
+      "boundary_incidence": "verified"
+    },
+    "historical_oracle": {
+      "class_order": [
+        "T1",
+        "T2",
+        "T4",
+        "T3",
+        "T5",
+        "T6"
+      ],
+      "class_expected_quads": [
+        4,
+        11,
+        12,
+        8,
+        11,
+        16
+      ],
+      "d4_oriented_graphs": 48,
+      "point_witness_subdivisions": 96,
+      "split_signatures": 16,
+      "deliberate_negative_mutations": 9,
+      "numerical_point_rules": [
+        "test-only vertex arithmetic mean",
+        "test-only signed-area polygon centroid"
+      ],
+      "t2_abow": {
+        "vertex_mean": [
+          "3/8",
+          "1/4"
+        ],
+        "area_centroid": [
+          "7/18",
+          "2/9"
+        ]
+      },
+      "t5_wsnd": {
+        "vertex_mean": [
+          "1/4",
+          "5/8"
+        ],
+        "area_centroid": [
+          "5/18",
+          "11/18"
+        ]
+      },
+      "production_quad_emitted": false,
+      "historical_numeric_rule_approved": false
+    }
+  },
+  "postmerge_ci": {
+    "run": 42834073835,
+    "sha": "cb5aca8bae44fc33f3e927188389edf0281ac04e",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "remaining": [
+    "Bento/Creto independent confirmation of Figure 7 cycles and class mapping",
+    "Explicit numeric centroid/interior-point acceptance including tolerance and degenerate/nonconvex handling",
+    "More complete quadtree leaf signatures, patch boundary, UV to XYZ, physical quad ownership, multipatch, repeated adaptation",
+    "OpenMP/MPI runtime and full memory sanitizer/allocator fault gate"
+  ],
+  "next": "Verify exact-merge run #42834073835; then solicit explicit adviser decision on historical graph and interior point policy. Only after formal scientific approval implement isolated, independently expected numeric point policy tests. Preserve TRI and blocked physical QUAD."
+}
