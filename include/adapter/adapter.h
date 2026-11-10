@@ -108,7 +108,7 @@ private:
   double AftSmoothingIterations() const noexcept;
   double AftSmoothingFactor() const noexcept;
   void ConfigureAdvancingFront(Par2DJMesh::AFT::AdvancingFront& front,
-                              apmesh::quad::PatchAttemptIdentity attempt) const;
+                              apmesh::quad::PatchAttemptIdentity attempt = {}) const;
   int AdaptationDebugEnabled() const noexcept;
   const std::string& OutputPrefix() const noexcept;
   const apmesh::application::GenerationContext* generation_context_ = nullptr;

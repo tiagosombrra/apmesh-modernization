@@ -516,8 +516,8 @@
       "path": "include/adapter/adapter.h",
       "component_by_directory": "adapter",
       "kind": "header",
-      "sha256": "0495b5d979c0d5c37e60f00397031a9bd2770b6636ee97ba18384762291eef7a",
-      "bytes": 6111,
+      "sha256": "b809bdc5fcf151d2361fe9afab4583a3591d097c298f5eed4646738b8baca99b",
+      "bytes": 6116,
       "includes": [
         {
           "line": 4,
