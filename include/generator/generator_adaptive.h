@@ -15,6 +15,7 @@
 #include <vector>
 #include "application/generation_context.h"
 #include "application/generation_request.h"
+#include "../../research/quad/global_outcome.h"
 
 #include "../adapter/adapter.h"
 #include "data/patch/find_uv_statistics.h"
@@ -404,6 +405,10 @@ public:
   // Research-only: the caller must assign a session ID unique among generator
   // invocations whose audit streams will be joined. No CLI enables this.
   void SetResearchUvCapture(apmesh::quad::CaptureHooks hooks, std::uint64_t session);
+  // A research-only, bounded log with explicit overflow status.
+  const apmesh::quad::GlobalOutcomeLog* GetResearchGlobalOutcomeLog() const noexcept {
+    return research_global_outcomes_.get();
+  }
   // Latest serial Execute result, including any partial count before an exception.
   apmesh::diagnostics::FindUvStatistics GetFindUvStatistics() const noexcept {
     return find_uv_statistics_;
@@ -867,6 +872,8 @@ private:
   Adapter adapter_;
   std::uint64_t research_session_ = 0;
   std::uint64_t research_outer_epoch_ = 0;
+  apmesh::quad::OuterAttemptIdentity current_research_outer_{};
+  std::unique_ptr<apmesh::quad::GlobalOutcomeLog> research_global_outcomes_;
   std::string stop_reason_;
   unsigned long long current_gauss_nodes_;
   unsigned long long current_mean_nodes_;

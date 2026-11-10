@@ -1,5 +1,6 @@
 #include "adapter_capture.h"
 #include "quadtree_quad.h"
+#include "global_outcome.h"
 
 #include "crab_mesh/aft/advancing_front.h"
 
@@ -330,6 +331,32 @@ void AssertOuterEpochAndLegacyCompatibility() {
   apmesh::quad::ValidateOuterAttempt(outer1);
 }
 
+
+void AssertBoundedGlobalOutcomeLog() {
+  using apmesh::quad::BoundedGlobalOutcomeLog;
+  using apmesh::quad::GlobalOutcomeKind;
+  BoundedGlobalOutcomeLog<2> log;
+  static_assert(noexcept(log.Record({})), "Global outcome logging must not throw");
+  Require(log.size() == 0 && !log.truncated(), "Audit not empty initially");
+  log.Record({{500, 10, 0}, 2, GlobalOutcomeKind::ElementBudgetRejectedCandidate});
+  log.Record({{500, 11, 1}, 2, GlobalOutcomeKind::AcceptedStepCommitted});
+  log.Record({{500, 12, 2}, 2, GlobalOutcomeKind::RejectedStepRestored});
+  Require(log.size() == 2 && log.truncated(), "Overflow failed to mark incomplete audit");
+  Require(log.data()[0].kind == GlobalOutcomeKind::ElementBudgetRejectedCandidate &&
+              log.data()[0].outer.epoch == 10 &&
+              log.data()[1].kind == GlobalOutcomeKind::AcceptedStepCommitted &&
+              log.data()[1].outer.epoch == 11,
+          "Bounded audit changed retained event ordering or scope");
+  log.Reset();
+  Require(log.size() == 0 && !log.truncated(), "Audit reset retained lost-record flag");
+  log.Record({{500, 13, 0}, 3, GlobalOutcomeKind::GrowthRejectedCandidate});
+  log.Record({{500, 14, 1}, 3, GlobalOutcomeKind::RejectedStepRestored});
+  Require(log.size() == 2 && !log.truncated() &&
+              log.data()[0].kind == GlobalOutcomeKind::GrowthRejectedCandidate &&
+              log.data()[1].kind == GlobalOutcomeKind::RejectedStepRestored,
+          "Growth rejection was conflated with post-rollback restoration");
+}
+
 } // namespace
 
 int main() {
@@ -342,7 +369,8 @@ int main() {
     AssertLocalSelectionStream();
     AssertDecisionHookRequiresCapture();
     AssertOuterEpochAndLegacyCompatibility();
-    std::cout << "refined_observer_contract_cases=8 failed=0\n";
+    AssertBoundedGlobalOutcomeLog();
+    std::cout << "refined_observer_contract_cases=9 failed=0\n";
     return 0;
   } catch (const std::exception& error) {
     std::cerr << "Refined observer contract failed: " << error.what() << '\n';
