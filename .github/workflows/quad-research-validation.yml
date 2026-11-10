@@ -106,6 +106,15 @@ jobs:
         run: |
           cmake --preset local-serial
           cmake --build --preset local-serial --parallel 2
+      - name: Capture M3-5 diagnostic stack before root CTest
+        shell: bash
+        run: |
+          if command -v gdb >/dev/null 2>&1; then
+            # This is diagnostic only: the required CTest gate still runs next.
+            gdb --batch -ex 'set pagination off' -ex run -ex 'thread apply all bt 24' --args build/local-serial/bin/quad_adapter_integration_probe || true
+          else
+            echo "gdb not available; stage markers remain in required CTest logs"
+          fi
       - name: Run full CTest baseline
         shell: bash
         run: ctest --preset local-serial --output-on-failure --no-tests=error

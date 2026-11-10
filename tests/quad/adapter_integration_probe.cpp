@@ -40,9 +40,11 @@ struct CaseResult {
 // The real production-owned single-patch geometry and the real coarse TRI
 // initializer are used. No synthetic Quadtree or mocked Adapter is involved.
 CaseResult RunPatch(bool abort_during_capture) {
+  std::cerr << "m3_live_stage=begin abort=" << abort_during_capture << std::endl;
   Geometry geometry;
   Models3d model;
   model.ModelBaseQuadrada(&geometry);
+  std::cerr << "m3_live_stage=geometry_created" << std::endl;
   Require(geometry.GetNumberPatches() == 1, "Expected one native square patch");
   auto* patch = dynamic_cast<PatchCoons*>(geometry.GetPatch(0));
   Require(patch != nullptr, "Model patch is not a Coons patch");
@@ -52,6 +54,7 @@ CaseResult RunPatch(bool abort_during_capture) {
   id_manager.setId(1, 200);
   apmesh::generation::CurveSampleLifetime sample_lifetime(geometry);
   auto previous = apmesh::generation::BuildInitialSubMesh(patch, &id_manager);
+  std::cerr << "m3_live_stage=coarse_tri_built" << std::endl;
   Require(patch->GetSubMesh() == previous.get() && previous->GetNumberElements() == 4,
           "Fixture failed to publish original TRI coarse mesh");
 
@@ -71,6 +74,7 @@ CaseResult RunPatch(bool abort_during_capture) {
                 snapshot.polygons.input.interior_points.empty(),
             "Real Adapter UV capture was empty or invented an interior point");
     snapshots.push_back(std::move(snapshot));
+    std::cerr << "m3_live_stage=uv_snapshot_received" << std::endl;
     if (abort_during_capture) {
       throw IntentionalCaptureAbort{};
     }
@@ -79,14 +83,18 @@ CaseResult RunPatch(bool abort_during_capture) {
     decisions.push_back(std::move(outcome));
   };
   adapter.SetResearchUvCapture(std::move(hooks));
+  std::cerr << "m3_live_stage=hooks_registered" << std::endl;
   bool interrupted = false;
   std::unique_ptr<SubMesh> generated;
   try {
+    std::cerr << "m3_live_stage=before_real_adapter" << std::endl;
     generated.reset(adapter.AdaptDomain(patch, &id_manager,
                                         1.0, 0.20, 3, 1, 0, 0));
   } catch (const IntentionalCaptureAbort&) {
     interrupted = true;
+    std::cerr << "m3_live_stage=expected_abort_observed" << std::endl;
   }
+  std::cerr << "m3_live_stage=after_real_adapter" << std::endl;
   Require(interrupted == abort_during_capture,
           "Actual Adapter did not preserve the intentional observer exception");
   Require(patch->GetSubMesh() == previous.get(),
@@ -117,6 +125,7 @@ CaseResult RunPatch(bool abort_during_capture) {
   // The original patch binding is preserved independently of the output.
   // Unbind before both mesh owners and the geometry are destroyed.
   patch->SetSubMesh(nullptr);
+  std::cerr << "m3_live_stage=before_fixture_destruct" << std::endl;
   return result;
 }
 
