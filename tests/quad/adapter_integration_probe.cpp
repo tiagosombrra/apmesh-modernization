@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <memory>
+#include <set>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -53,6 +54,8 @@ struct CaseResult {
   unsigned source_leaves = 0;
   unsigned polygon_count = 0;
   unsigned output_triangles = 0;
+  unsigned selected_decisions = 0;
+  unsigned superseded_or_failed = 0;
 };
 
 // The real production-owned single-patch geometry and the real coarse TRI
@@ -105,7 +108,7 @@ CaseResult RunPatch(bool abort_during_capture) {
     Require(snapshot.attempt.patch_index == 0 &&
                 snapshot.attempt.adaptive_step == 1 &&
                 snapshot.attempt.retry_index == 0 &&
-                snapshot.attempt.local_attempt == 0,
+                snapshot.attempt.local_attempt >= 0,
             "Real Adapter lost patch/step/retry/attempt provenance");
     Require(!snapshot.polygons.input.polygons.empty() &&
                 !snapshot.polygons.input.vertices.empty() &&
@@ -141,7 +144,15 @@ CaseResult RunPatch(bool abort_during_capture) {
   CaseResult result;
   result.snapshots = static_cast<unsigned>(snapshots.size());
   result.local_decisions = static_cast<unsigned>(decisions.size());
-  Require(result.snapshots == 1, "Expected exactly one real UV capture");
+  Require(result.snapshots >= (abort_during_capture ? 1U : 2U),
+          "Expected real UV capture for both the initial and retry attempts");
+  std::set<int> captured_attempts;
+  for (const auto& observed : snapshots) {
+    Require(captured_attempts.insert(observed.attempt.local_attempt).second,
+            "Real Adapter called UV capture more than once for the same attempt");
+    Require(observed.disposition == apmesh::quad::CaptureDisposition::PendingTriDecision,
+            "UV observation was incorrectly marked accepted");
+  }
   result.source_leaves = snapshots.front().polygons.source_leaves;
   result.polygon_count = static_cast<unsigned>(
       snapshots.front().polygons.input.polygons.size());
@@ -152,12 +163,25 @@ CaseResult RunPatch(bool abort_during_capture) {
   } else {
     Require(generated && generated->GetNumberElements() > 0,
             "Real Adapter did not return generated TRI elements");
-    Require(decisions.size() == 1 &&
-                decisions.front().kind == LocalSelectionKind::SelectedForAdapterReturn &&
-                decisions.front().attempt.local_attempt == 0 &&
-                decisions.front().attempt.patch_index == 0 &&
-                decisions.front().attempt.adaptive_step == 1,
-            "Real Adapter did not publish the correct local TRI selection");
+    Require(decisions.size() == snapshots.size(),
+            "Real Adapter did not record one local outcome per captured attempt");
+    std::set<int> decided_attempts;
+    for (const auto& event : decisions) {
+      Require(event.attempt.patch_index == 0 && event.attempt.adaptive_step == 1 &&
+                  event.attempt.retry_index == 0,
+              "Real local decision lost patch, step or retry provenance");
+      Require(captured_attempts.count(event.attempt.local_attempt) == 1 &&
+                  decided_attempts.insert(event.attempt.local_attempt).second,
+              "Local decision did not correlate with a unique UV observation");
+      if (event.kind == LocalSelectionKind::SelectedForAdapterReturn) {
+        ++result.selected_decisions;
+      } else if (event.kind == LocalSelectionKind::Superseded ||
+                 event.kind == LocalSelectionKind::GenerationFailed) {
+        ++result.superseded_or_failed;
+      }
+    }
+    Require(result.selected_decisions == 1 && result.superseded_or_failed >= 1,
+            "Real fallback did not yield one selected and one nonselected attempt");
     result.output_triangles = generated->GetNumberElements();
   }
   // The original patch binding is preserved independently of the output.
@@ -177,12 +201,15 @@ int main() {
             "No refined real Quadtree was observed");
     Require(normal.polygon_count > 0 && failed.polygon_count > 0,
             "No actual UV polygon graph was transferred");
-    Require(normal.local_decisions == 1 && failed.local_decisions == 0,
-            "Failure and success published indistinguishable local decisions");
+    Require(normal.local_decisions >= 2 && normal.selected_decisions == 1 &&
+                normal.superseded_or_failed >= 1 && failed.local_decisions == 0,
+            "Real retry/local selection and abort decisions were not separated");
     std::cout << "real_adapter_capture_cases=2 normal_triangles="
               << normal.output_triangles << " snapshots="
               << (normal.snapshots + failed.snapshots)
-              << " selected=" << normal.local_decisions
+              << " local_attempts=" << normal.local_decisions
+              << " selected=" << normal.selected_decisions
+              << " superseded_or_failed=" << normal.superseded_or_failed
               << " aborted_decisions=" << failed.local_decisions << '\n';
     return 0;
   } catch (const std::exception& e) {
