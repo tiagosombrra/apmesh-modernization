@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "stage": "M3-6d",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "branch": "quad-templates",
+  "pr": 194,
+  "candidate": "648b7c1b46864b7b0ca8c1cfaeadc4cce820da2d",
+  "merge_sha": "abab2155896671c70cf370fd032edab865b942c8",
+  "merge_tree_sha": "7e8b19291a9b9b01a33654f7f24ebf91303f1b37",
+  "tree_identical_to_tested_candidate": true,
+  "modernization_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "previous_m3_6c_postmerge": {
+    "run": 42825582252,
+    "sha": "131623d1fb39350d90779d61a0255b35fecb3dea",
+    "result": "success"
+  },
+  "exact_candidate": {
+    "run": 42826247691,
+    "sha": "648b7c1b46864b7b0ca8c1cfaeadc4cce820da2d",
+    "result": "success",
+    "jobs": 4,
+    "root_tri_ctest": "78/78",
+    "python_tooling": "527/527",
+    "cli_denials": "7/7",
+    "quad_linux": "4/4",
+    "quad_windows": "4/4",
+    "real_generators": {
+      "eistute": {
+        "ctest": "quad.generator.real_global_outcomes",
+        "passed": true,
+        "elapsed_seconds": 5.78
+      },
+      "book": {
+        "ctest": "quad.generator.real_global_outcomes.book",
+        "passed": true,
+        "elapsed_seconds": 3.38
+      }
+    },
+    "science": {
+      "eistute_states": 5,
+      "book_states": 4,
+      "all_obj_byte_identical": true,
+      "acceptance_fields_equal": true,
+      "boundary_incidence": "verified"
+    }
+  },
+  "postmerge": {
+    "run": 42827666971,
+    "sha": "abab2155896671c70cf370fd032edab865b942c8",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "changed_paths": [
+    "CMakeLists.txt",
+    "docs/architecture/source_inventory.json",
+    "docs/research/quad/M3_CROSS_MODEL_OUTCOMES_20261110.md",
+    "tests/quad/generator_outcome_probe.cpp"
+  ],
+  "provenance": "At least one selected Adapter local outer epoch/retry key overlaps actual GeneratorAdaptive global outcome keys, with all local selections previously tied to source-tree observation.",
+  "scientific_limits": [
+    "This test checks TRI event chronology, not QUAD polygon connectivity or a physical quadrilateral mesh",
+    "No approved interior-point/centroid rule",
+    "No complete boundary or UV->XYZ",
+    "No parallel OpenMP/MPI end-to-end or comprehensive memory fault campaign",
+    "No new model-specific numerical settings were changed"
+  ],
+  "next": "Inspect merged-commit CI; resume primary-source M1 T1–T6 numerical embedding/centroid policy and isolated positive/negative QUAD topology test design without claiming scientific approval."
+}

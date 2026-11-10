@@ -11,3 +11,7 @@ Build target: `quad_generator_outcome_probe`, linked only to existing `ap_mesh_e
 ## Audit receipt — 2026-11-10
 
 Exact reviewed head `ab91727c555c222f4a3e95143522615fa16522ca`, [CI #42823072772](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42823072772): all four jobs passed; root TRI 77/77 CTest, Python 527/527, Linux/Windows native QUAD 4/4 each, and frozen Eistute/Book 5/4 equivalence. Merged as `131623d1fb39350d90779d61a0255b35fecb3dea`; [post-merge #42825582252](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42825582252) queued at checkpoint. No approved physical QUAD or centroid.
+
+## Exact M3-6c post-merge closure — 2026-11-10
+
+[GitHub Actions #42825582252](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42825582252) completed **SUCCESS** all four jobs on merged SHA `131623d1fb39350d90779d61a0255b35fecb3dea`. The former queued status is retained in [evidence](evidence/M3_REAL_GENERATOR_OUTCOMES_20261110.json) as prior state. Subsequent cross-model work is tracked in [M3-6d](M3_CROSS_MODEL_OUTCOMES_20261110.md).

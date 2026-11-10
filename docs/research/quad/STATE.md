@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-07 (M3-6c actual GeneratorAdaptive outcome fixture merged via PR #193; post-merge CI pending)
+**Last session:** 2026-11-10-08 (M3-6d Book/Eistute real event chronology merged via PR #194; post-merge CI pending)
 
-**Current milestone:** **M3-6c real, hook-enabled `GeneratorAdaptive::Execute` outcome test integrated via PR #193, following the bounded global TRI event log of PR #192. Candidate passed full premerge CI. This tests real TRI commit/restore chronology, not QUAD mesh emission. M0 qualified in scope; M1/M2/M3 PARTIAL.**
+**Current milestone:** **M3-6d real, cross-model Eistute/Book hook-enabled `GeneratorAdaptive::Execute` outcome tests integrated via PR #194. Both probes passed and correlate local selections with global epochs, while preserving byte-identical TRI references. No physical QUAD emitted. M0 qualified in scope; M1/M2/M3 PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -190,9 +190,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [M3-6c evidence](evidence/M3_REAL_GENERATOR_OUTCOMES_20261110.json) records scope and exact SHA. [Post-merge CI #42825582252](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42825582252) was **queued** at checkpoint and must be checked separately.
 - No numerical interior-point policy, physical QUAD elements, full boundary/UV-XYZ, shared multipatch, concurrent OMP/MPI or end-to-end sanitizer campaign qualified. M1/M2/M3 still partial.
 
+## 2026-11-10-08 — M3-6d cross-model exact-head qualification and integration
+
+- [PR #194](https://github.com/tiagosombrra/apmesh-modernization/pull/194) merged into `quad-templates` at `abab2155896671c70cf370fd032edab865b942c8`; exact merge tree matches `648b7c1b46864b7b0ca8c1cfaeadc4cce820da2d`. Modernization `main` remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
+- [CI #42826247691](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42826247691) **SUCCESS**, four green jobs. Root TRI **78/78 CTest** with both actual Eistute (5.78s) and Book (3.38s) global-outcome probes passing; Python **527/527**, CLI rejects **7/7**, QUAD Linux and Windows **4/4** each. Frozen Eistute 5/Book 4 states retain byte-identical OBJ, accepted/rejected decisions and verified boundary incidence.
+- M3-6d additionally asserts at least one selected Adapter event correlates to a real GeneratorAdaptive global (session, epoch, retry) outcome key. No article settings or production C++ were altered. This is **not** UV polygon topology/positive QUAD proof.
+- M3-6c prior [post-merge CI #42825582252](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42825582252) is separately **SUCCESS** all four jobs. [M3-6d post-merge #42827666971](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42827666971) was **in_progress** at checkpoint; verify its final result.
+- [M3-6d evidence](evidence/M3_CROSS_MODEL_OUTCOMES_20261110.json) and [scope](M3_CROSS_MODEL_OUTCOMES_20261110.md). No approved numeric center policy, physical QUAD, complete boundary, UV/XYZ, multipatch, OpenMP runtime or sanitizer campaign. M1/M2/M3 remain partial.
+
 ## Next exact action
 
-Verify final exact-head post-merge CI #42825582252. Next implement an isolated cross-model M3-6d validation of global event chronology and the disabled-hook TRI path, using Eistute and Book without changing numerical model settings. Preserve full native and frozen-science gates, keep main unchanged and positive QUAD fail-closed.
+Verify exact merged-head CI #42827666971. Then prioritize the historical M1 T1–T6 point-placement/centroid decision and isolated positive/negative UV QUAD topology fixtures, distinguishing agreed scientific rules from experimental caller-supplied policies. Preserve the unchanged TRI default, no production QUAD publication, and require new exact-head Linux/MSVC/science gates.
 
 ## Current M1 reconstruction
 

@@ -44,8 +44,10 @@
   "postmerge_ci": {
     "run": 42825582252,
     "sha": "131623d1fb39350d90779d61a0255b35fecb3dea",
-    "status": "queued",
-    "conclusion": null
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 4,
+    "prior_checkpoint_status": "queued"
   },
   "scope_limits": [
     "No physical QUAD emission or scientific point rule",
