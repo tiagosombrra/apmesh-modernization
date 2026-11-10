@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "stage": "M3-6c",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "pr": 193,
+  "branch": "quad-templates",
+  "candidate": "ab91727c555c222f4a3e95143522615fa16522ca",
+  "merge_sha": "131623d1fb39350d90779d61a0255b35fecb3dea",
+  "merge_tree": "781ad6558594bb8ab9ef5074a05caea67163b53b",
+  "tested_candidate_tree_identical": true,
+  "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "exact_head_ci": {
+    "run": 42823072772,
+    "result": "success",
+    "jobs": 4,
+    "serial_tri_ctest": "77/77",
+    "python": "527/527",
+    "quad_linux": "4/4",
+    "quad_windows": "4/4",
+    "cli_negative": "7/7",
+    "real_fixture": {
+      "test": "quad.generator.real_global_outcomes",
+      "result": "passed",
+      "model": "Eistute",
+      "conditions": [
+        "real GeneratorAdaptive Execute with registered research hooks",
+        "real source Quadtree observed; leaf count only",
+        "at least one AcceptedStepCommitted",
+        "at least one RejectedStepRestored",
+        "bounded log not truncated",
+        "outer epoch nondecreasing",
+        "locally selected epochs correlate to provisional captures"
+      ]
+    },
+    "science": {
+      "eistute_states": 5,
+      "book_states": 4,
+      "all_obj_byte_identical": true,
+      "acceptance_fields_equal": true,
+      "boundary_incidence": "verified"
+    }
+  },
+  "postmerge_ci": {
+    "run": 42825582252,
+    "sha": "131623d1fb39350d90779d61a0255b35fecb3dea",
+    "status": "queued",
+    "conclusion": null
+  },
+  "scope_limits": [
+    "No physical QUAD emission or scientific point rule",
+    "Fixture provider samples leaf counts, not actual quad polygon topology",
+    "No complete boundary or UV to XYZ",
+    "No OpenMP/MPI runtime qualification",
+    "No comprehensive allocation/sanitizer proof"
+  ],
+  "next": "Close exact-merge CI, then qualify cross-model and negative event chronology without changing TRI numerical thresholds or enabling QUAD production."
+}

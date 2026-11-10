@@ -4,9 +4,9 @@
 
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
-**Last session:** 2026-11-10-06 (M3-6b bounded global TRI outcome events merged via PR #192; post-merge CI pending)
+**Last session:** 2026-11-10-07 (M3-6c actual GeneratorAdaptive outcome fixture merged via PR #193; post-merge CI pending)
 
-**Current milestone:** **M3-6b bounded, research-only global TRI outcome events integrated in `GeneratorAdaptive` via PR #192, built on scoped epoch identity from PR #191. These are distinct from local Adapter selections. A real hook-enabled global acceptance/rejection execution test remains pending. No physical QUAD is emitted. M0 qualified in scope; M1/M2/M3 PARTIAL.**
+**Current milestone:** **M3-6c real, hook-enabled `GeneratorAdaptive::Execute` outcome test integrated via PR #193, following the bounded global TRI event log of PR #192. Candidate passed full premerge CI. This tests real TRI commit/restore chronology, not QUAD mesh emission. M0 qualified in scope; M1/M2/M3 PARTIAL.**
 
 **Protocol:** [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md) — includes remote-first continuity across ChatGPT/Codex sessions (2026-11-09).
 
@@ -182,9 +182,17 @@ Bounded fixture memory observations do not prove complete-process Windows safety
 - [Bounded M3-6b evidence](evidence/M3_GLOBAL_OUTCOMES_20261110.json) records fixed 128-event prefix with `truncated()`, evaluations `ElementBudgetRejectedCandidate`/`GrowthRejectedCandidate` before retry, and genuine `AcceptedStepCommitted` after serial commit / `RejectedStepRestored` after geometry+curve rollback. No callback is invoked inside these critical paths.
 - **Remaining admission:** no full `GeneratorAdaptive::Execute` hook-enabled test asserts real event transitions. MPI/OpenMP runtime, centerpoint placement, positive QUAD, complete boundary, physical XYZ, multipatch and full memory audits remain open.
 
+## 2026-11-10-07 — M3-6c actual GeneratorAdaptive test qualified and merged
+
+- [PR #193](https://github.com/tiagosombrra/apmesh-modernization/pull/193) merged to research `quad-templates` as `131623d1fb39350d90779d61a0255b35fecb3dea`. Merge tree equals exact tested candidate `ab91727c555c222f4a3e95143522615fa16522ca`; modernization `main` unchanged.
+- [CI #42823072772](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42823072772) and independent PR [CI #42823003811](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42823003811) each **SUCCESS**, all four jobs. Full TRI 77/77 CTest, 527/527 Python, QUAD Linux GCC 4/4 and Windows MSVC 4/4, negative CLI 7/7. Frozen Eistute/Book 5/4 states retained byte-identical OBJ/acceptance/boundary equivalence.
+- The real Eistute `GeneratorAdaptive::Execute` fixture with explicit research hooks (`quad.generator.real_global_outcomes`) **PASSED**. It asserts accepted commits, restored rejects, nontruncated chronological epoch keys and local selection correlations. The capture provider stores **source leaf count only**; it does not certify a complete UV polygon graph or physical QUAD.
+- [M3-6c evidence](evidence/M3_REAL_GENERATOR_OUTCOMES_20261110.json) records scope and exact SHA. [Post-merge CI #42825582252](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42825582252) was **queued** at checkpoint and must be checked separately.
+- No numerical interior-point policy, physical QUAD elements, full boundary/UV-XYZ, shared multipatch, concurrent OMP/MPI or end-to-end sanitizer campaign qualified. M1/M2/M3 still partial.
+
 ## Next exact action
 
-Inspect final post-merge #42821767939. Implement an isolated M3-6c real `GeneratorAdaptive::Execute` fixture with explicitly installed research hooks on the existing Eistute/Book model, recording actual global commit/restore events and matching outer epochs. Preserve default TRI byte-equivalence and negative event semantics. Require exact-head QUAD Linux/MSVC, TRI CTest/Python, scientific comparison and separate post-merge CI.
+Verify final exact-head post-merge CI #42825582252. Next implement an isolated cross-model M3-6d validation of global event chronology and the disabled-hook TRI path, using Eistute and Book without changing numerical model settings. Preserve full native and frozen-science gates, keep main unchanged and positive QUAD fail-closed.
 
 ## Current M1 reconstruction
 
