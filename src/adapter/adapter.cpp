@@ -895,7 +895,9 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
                                  double factor_disc_global, double target_patch_h,
                                  int max_quadtree_depth, int adaptive_step, int patch_index,
                                  int retry_index) {
-  SubMesh* sub_mesh_new = new SubMesh;
+  // Keep the local SubMesh owner alive if a research observer throws.
+  auto pending_sub_mesh = std::make_unique<SubMesh>();
+  SubMesh* sub_mesh_new = pending_sub_mesh.get();
 
   const double factor_disc = InternalCurveDiscretizationFactor();
 
@@ -1054,9 +1056,11 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
 
   FaceList new_mesh = avanco.getMesh();
   const FaceMetricStats generated_stats = ComputeFaceMetricStats(new_mesh);
+  // Use the existing serial-region metric calculation for the conditional OMP path.
+  const RegionalPatchStats regional_stats = ComputeRegionalPatchStats(new_mesh, target_patch_h);
   AppendDomainDebugLog(AdaptationDebugEnabled(), OutputPrefix(), adaptive_step, retry_index,
                        patch_index, factor_disc_global, raw_stats, smoothed_stats, generated_stats,
-                       avanco.GetRunStats());
+                       avanco.GetRunStats(), regional_stats);
   VertexList new_vertices = avanco.getInnerVertices();
 
   while (!new_vertices.empty()) {
@@ -1101,7 +1105,7 @@ SubMesh* Adapter::AdaptDomainOmp(PatchCoons* coons_patch, Performer::IdManager* 
     delete face;
   }
 
-  return sub_mesh_new;
+  return pending_sub_mesh.release();
 }
 
 #endif // USE_OPENMP
