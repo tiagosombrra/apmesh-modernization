@@ -171,9 +171,9 @@ def transform(point, reflection, turns):
 
 
 def signature(vertices):
-    return sum(1 << side for side, (_, point) in
-               enumerate(("S", MIDPOINTS["S"]), ("E", MIDPOINTS["E"]),
-                         ("N", MIDPOINTS["N"]), ("W", MIDPOINTS["W"]))
+    ordered = (("S", MIDPOINTS["S"]), ("E", MIDPOINTS["E"]),
+               ("N", MIDPOINTS["N"]), ("W", MIDPOINTS["W"]))
+    return sum(1 << side for side, (_, point) in enumerate(ordered)
                if point in vertices.values())
 
 
