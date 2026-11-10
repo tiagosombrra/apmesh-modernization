@@ -251,7 +251,7 @@ def audit(document):
             "Competing center-point golden coordinates changed")
 
     original = [tuple(v) for v in GOLDEN[4][2]]
-    t5 = {name: vertices[name] for name in set("".join(original))}
+    t5 = {name: vertices[name] for face in original for name in face}
     rejects(lambda: check_disk(t5, original[:-1]), "missing polygon")
     rejects(lambda: check_disk(t5, [original[0][::-1]] + original[1:]), "reversed winding")
     rejects(lambda: check_disk(t5, original + [original[-1]]), "duplicate polygon")
