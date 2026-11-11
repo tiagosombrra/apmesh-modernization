@@ -128,5 +128,13 @@ if(AP_MESH_QUAD_WITH_TREE)
   set_tests_properties(quad.m5.local_constrained_delaunay PROPERTIES
     DEPENDS quad.m5.experimental_exterior_interface
     TIMEOUT 120 LABELS "research-quad;experimental-boundary;local-delaunay")
+  # Analytical XYZ embedding of native C++ UV QUAD and experimental M5 TRI only.
+  add_test(NAME quad.m6.analytic_surface_lift
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/test_m6_analytic_surface_lift.py"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/real_tree_visual")
+  set_tests_properties(quad.m6.analytic_surface_lift PROPERTIES
+    DEPENDS quad.m5.local_constrained_delaunay
+    TIMEOUT 120 LABELS "research-quad;analytic-xyz;not-physical-model")
 
 endif()
