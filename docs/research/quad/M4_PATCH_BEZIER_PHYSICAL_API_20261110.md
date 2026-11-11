@@ -1,6 +1,6 @@
 # M4 preliminary — production PatchBezier geometric API probe (2026-11-10)
 
-**Status: implementation proposed; native CI qualification pending.** The test calls
+**Status: integrated isolated physical API probe; exact-head PR qualification passed.** The test calls
 the *real* C++ production `PatchBezier` constructor, `Parameterize(u,v)`,
 `Qu(u,v)` and `Qv(u,v)` in a standalone serial root CTest. Its 16
 Bernstein control points describe a deterministic mathematical test patch,
@@ -50,7 +50,9 @@ cmake --build --preset local-serial --parallel 2
 ctest --preset local-serial --output-on-failure --no-tests=error
 ```
 
-The named new test is `quad.patch_bezier.physical_api`. This adds one
+The named new test is `quad.patch_bezier.physical_api`. [PR #203](https://github.com/tiagosombrra/apmesh-modernization/pull/203) integrated at merge `6dcffdc0a96a69bd3bd0a1ebc9b434ea607eba20`, after exact feature `956127fdaef8535cb8ae995cae14f50099b306b5` passed four-job [CI #42990407284](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42990407284). An initial failure [#42944985482](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42944985482) was the stale root CMake SHA-256 in `docs/architecture/source_inventory.json`; the one-hash-only fix was validated and no numerical acceptance threshold was changed. Post-merge CI [#42991513759](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42991513759) was in progress when this documentation was prepared.
+
+The bounded next gate is [native hybrid geometry on a built-in model](M4_REAL_MODEL_HYBRID_DESIGN_20261111.md). This adds one
 research-only test to the previously recorded 78 root CTest cases, so a
 qualifying all-pass run should report 79 cases; all 527 Python controls,
 seven CLI denials and Eistute/Book strict TRI reference equivalence remain
