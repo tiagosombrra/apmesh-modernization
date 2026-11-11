@@ -305,6 +305,19 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     LABELS "research-quad;physical-model;external-bp;boundary;required-gate"
     TIMEOUT 300)
 
+  # Build conservative, real BP per-patch curve incidence hypergraphs.
+  # Depends on the preceding C++ PatchReader physical evidence CTest.
+  add_test(NAME quad.m4.sheet_incidence_graph
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_m4_sheet_incidence_graph.py"
+      --root "${CMAKE_CURRENT_SOURCE_DIR}"
+      --physical-directory "${CMAKE_CURRENT_BINARY_DIR}/m4_external_bezier"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/m4_sheet_incidence")
+  set_tests_properties(quad.m4.sheet_incidence_graph PROPERTIES
+    DEPENDS quad.m4.external_bezier_physical_diagnostics
+    LABELS "research-quad;physical-model;external-bp;sheet-incidence;required-gate"
+    TIMEOUT 180)
+
   # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
   add_executable(quad_generator_outcome_probe
     tests/quad/generator_outcome_probe.cpp)
