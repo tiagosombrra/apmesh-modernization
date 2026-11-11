@@ -43,20 +43,20 @@ explicitly selected**, keeping the original discretized curves, boundary
 samples/orientation, adapted tree and existing AFT TRI completion unchanged
 unless a minimal strictly isolated integration seam requires adaptation.
 This is initially **QUAD-dominant**, not all-QUAD. Preserve default
-\`MESH_ELEMENT_KIND=tri\`, separate \`USE_TEMPLATE\` behavior, frozen
+`MESH_ELEMENT_KIND=tri`, separate `USE_TEMPLATE` behavior, frozen
 TRI tests and original accepted/rejected scientific states.
 
 **[Detailed code audit and gap/priority register](OPTIN_QUAD_IMPLEMENTATION_AUDIT_20261111.md)**:
 existing 1993-proposed QUAD graph tests and native UV/physical prototypes are
-valuable, but the normal application still rejects \`quad_uv\` and publishes
-only 3-node \`Face\`/\`TriangleAdaptive\`; the actual QUAD-vs-TRI template
+valuable, but the normal application still rejects `quad_uv` and publishes
+only 3-node `Face`/`TriangleAdaptive`; the actual QUAD-vs-TRI template
 switch and nonduplicating QUAD/AFT interface are unimplemented.
 
 **Corrected critical path R0–R4** (original M0–M9 research history is
 preserved; the R gates refine practical priority rather than erase it):
 
 1. **R0**: baseline and explicit selection contract, TRI exact parity,
-   \`USE_TEMPLATE\` orthogonality, named experimental centroid provenance.
+   `USE_TEMPLATE` orthogonality, named experimental centroid provenance.
 2. **R1**: use the **same real Quadtree** to select the T1–T6 QUAD
    template emission in place of TRI interior, without double-publishing
    the same region; positive 2:1/edge/orientation/topology tests.
@@ -64,7 +64,7 @@ preserved; the R gates refine practical priority rather than erase it):
    TRI on a complete curved patch; preserve existing curve sampling and
    patch boundary, use typed element publication and an explicit shared
    QUAD–TRI interface; no unsupported claim of application readiness
-   before a successful live \`ap_mesh --config\` run.
+   before a successful live `ap_mesh --config` run.
 4. **R3**: mixed-element history, error/quality/adaptation, ownership,
    repeated retries/rollback; demonstrate at least two live iterations.
 5. **R4**: live complete Eistute/Book/Ribbed Bracket trials with preserved
@@ -81,7 +81,7 @@ and anisotropic models remain separate research work.
 **Next implementation package:** an isolated candidate that proves actual
 live interior QUAD substitution in the Quadtree while the TRI template
 path is disabled *for the same leaves*, then integrates a typed QUAD/legacy
-AFT transition. Do not enable \`quad_uv\` in the user-facing CLI merely
+AFT transition. Do not enable `quad_uv` in the user-facing CLI merely
 because a read-only observer emits a correct standalone OBJ. Native tests
 or source-scoped CI are required on any subsequent code change.
 
