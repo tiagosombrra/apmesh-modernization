@@ -123,7 +123,7 @@ publish any TRI faces, edges or vertices in the legacy tree, and rejects a
 tree whose legacy TRI templates are already published. The caller cannot
 choose a second mode in the same dispatcher session.
 
-The experimental result also lists the **directed one-owner boundary edges**
+The experimental result retains a **one-to-one original source cell, T1–T6 pattern, source leaf ordinal and polygon ordinal per emitted QUAD**, proving that every face can be traced back to an eligible real interior leaf; its ordered provenance is checked against an independent source capture in the native fixture. It also lists the **directed one-owner boundary edges**
 of the QUAD region, by the original UV vertex IDs. These are useful as a
 future QUAD–TRI front handoff contract, but **are not yet inserted into
 `AdvancingFront`**. The research-only result flags remain
