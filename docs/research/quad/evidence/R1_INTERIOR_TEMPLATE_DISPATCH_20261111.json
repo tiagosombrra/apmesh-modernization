@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "date_utc": "2026-11-11",
+  "status": "IMPLEMENTED_RESEARCH_CANDIDATE_CI_QUEUED_NOT_QUALIFIED",
+  "goal": "Opt-in replacement of TRI interior template generation with QUAD output on the same real Quadtree; retain existing curve and AFT boundary flow",
+  "scientific_classification": "engineering-only selection substrate; unapproved experimental polygon interior-point policy",
+  "feature_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/211",
+  "feature_branch": "quad/integration-r1-interior-template-dispatch-20261111",
+  "feature_sha": "e2e106238d7482656a098f8e26bb3f31ae2a7b4d",
+  "research_base_before_feature": "4cdebb62ec532c45d9834a72e3177a14a0dd3a87",
+  "modernization_main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "feature_files": [
+    "research/quad/interior_template_dispatch.h",
+    "research/quad/interior_template_dispatch.cpp",
+    "research/quad/README.md",
+    "tests/quad/interior_template_dispatch_contracts.cpp",
+    "tests/quad/CMakeLists.txt"
+  ],
+  "source_modifications": false,
+  "runtime_cli_modified": false,
+  "existing_tri_template_implementation_modified": false,
+  "native_ci_push": {
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43098029135",
+    "status": "queued",
+    "conclusion": null
+  },
+  "native_ci_pr": {
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43098033267",
+    "status": "queued",
+    "conclusion": null
+  },
+  "required_contracts": {
+    "uniform_tree_quads_expected": 16,
+    "refined_tree_quads_expected": 42,
+    "uniform_interface_edges_expected": 16,
+    "refined_interface_edges_expected": 20,
+    "quadtree_interior_uv_area_expected": 0.25,
+    "test_cases_authored": 12,
+    "test_cases_executed_and_passed": null,
+    "expected_nonoverlap": "Research QUAD output never invokes legacy TRI template publication; session can commit one choice only",
+    "legacy_tri_path": "Production Quadtree::makeTemplateBasedMesh invoked unchanged in LegacyTri mode",
+    "native_gcc_mscc_results": "pending",
+    "full_root_ctest_and_python": "unexecuted on this candidate head"
+  },
+  "scientific_restrictions": {
+    "experimental_centroid_historical_1993_approved": false,
+    "live_advancing_front_seam_published": false,
+    "physical_quad_elements_published": false,
+    "cli_quad_uv_enabled": false,
+    "repeated_adaptation_verified": false,
+    "full_multipatch_model_mesh_verified": false,
+    "nonmanifold_node_welding_allowed": false,
+    "all_quad_enabled": false
+  },
+  "next_gate": "Confirm exact feature SHA and PR test-merge GCC/MSVC standalone QUAD suite including R1 dispatch; repair only demonstrated defects. Do not merge if required CI pending or fails. Then design R2 owned live QUAD/legacy-AFT front and physical mixed element SubMesh.",
+  "local_git_build": "UNAVAILABLE_DNS_COULD_NOT_RESOLVE_github.com",
+  "historical_source_baseline": {
+    "merge_sha": "afa15277aef35aa5beae9a980b11e66a74c8dba3",
+    "qualified_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43057855090",
+    "ctest_passed": 85,
+    "python_tooling_passed": 527
+  }
+}
