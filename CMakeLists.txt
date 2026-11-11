@@ -288,6 +288,23 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     LABELS "research-quad;physical-model;boundary;hybrid;required-gate"
     TIMEOUT 240)
 
+  # Read-only external Bezier physical witnesses on real indexed BP control nets.
+  # No cross-patch global nodes, normal-Z shortcut, or production QUAD mode.
+  add_executable(quad_m4_external_bezier_sampler
+    tests/quad/external_bezier_physical_sampler.cpp)
+  target_link_libraries(quad_m4_external_bezier_sampler PRIVATE ap_mesh_engine)
+  target_compile_features(quad_m4_external_bezier_sampler PRIVATE cxx_std_17)
+  add_test(NAME quad.m4.external_bezier_physical_diagnostics
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_m4_external_bezier_physical.py"
+      --root "${CMAKE_CURRENT_SOURCE_DIR}"
+      --tree-exe "$<TARGET_FILE:quad_m4_native_tree_export>"
+      --sampler-exe "$<TARGET_FILE:quad_m4_external_bezier_sampler>"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/m4_external_bezier")
+  set_tests_properties(quad.m4.external_bezier_physical_diagnostics PROPERTIES
+    LABELS "research-quad;physical-model;external-bp;boundary;required-gate"
+    TIMEOUT 300)
+
   # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
   add_executable(quad_generator_outcome_probe
     tests/quad/generator_outcome_probe.cpp)
