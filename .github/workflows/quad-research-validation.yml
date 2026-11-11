@@ -70,6 +70,9 @@ jobs:
             build/quad-ci-linux/real_tree_visual/hybrid_research_local_delaunay_area_centroid.obj
             build/quad-ci-linux/real_tree_visual/research_local_delaunay_comparison.svg
             build/quad-ci-linux/real_tree_visual/research_local_delaunay_manifest.json
+            build/quad-ci-linux/real_tree_visual/analytic_surface_research_vertex_mean.obj
+            build/quad-ci-linux/real_tree_visual/analytic_surface_research_area_centroid.obj
+            build/quad-ci-linux/real_tree_visual/analytic_surface_research_manifest.json
           if-no-files-found: error
           retention-days: 14
       - name: Configure and build native QUAD (Windows MSVC)
