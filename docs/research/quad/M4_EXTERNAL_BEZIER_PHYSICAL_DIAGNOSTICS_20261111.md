@@ -103,3 +103,61 @@ selection remain **open**.
 reconcile *which* patch-boundary nodes may be shared across actual
 Eistute/Book/Bracket surfaces; separately implement/test a typed Hermite
 physical adapter for Pneu. The production TRI baseline remains untouched.
+
+## Verified exact-head measurements (2026-11-11 UTC)
+
+The following are **measured scientific diagnostics**, not an expected or
+hypothetical mesh. They are independently read from the source-head
+[Actions #43044996136](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43044996136)
+[artifact #13867960046](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43044996136/artifacts/13867960046)
+on SHA `a5f46fb5da336fee2c27cf6f9e1e102832a12b30`.
+The artifact was downloaded and inspected: its inner ZIP has **90 OBJ,
+14 CSV and one JSON** (105 files). The PR merge-ref test
+[#43045007952](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43045007952)
+also passed independently.
+
+| Model | Patches | Production curves | High-valence curves | Max sampled seam gap | Min sampled cross-derivative norm | Nonpositive local facet alignments |
+|---|---:|---:|---:|---:|---:|---:|
+| Eistute | 4 | 13 | 1 (degree 4) | 0 | 12.003695754670666 | 0 |
+| Book | 28 | 85 | 1 (degree 28) | 0 | 1.9994063772945894 | 0 |
+| Ribbed Bracket | 13 | 27 | 4 (degree 3) | 2.6645352591003757e-15 | 1.499999399999998 | 0 |
+
+Results hold under each of the **two unapproved interior-point rules**.
+45 patches × 2 rules produce 90 patch-local OBJ candidates, each with
+69 distinct local physical nodes, 42 native C++ Quadtree QUAD and
+36 experimental M5 Lawson TRI: **3,780 QUAD, 3,240 TRI and 6,210
+patch-local sampled vertex records**. All sampled near-zero Jacobian
+and near-degenerate facet counts were zero. Four negative model,
+physical-sample, curve-registry and physical-seam mutations passed.
+
+**Critical Eistute limitation:** Across its four patches there were
+36 sampled differential normals pointing opposite the corresponding
+patch-center reference **per rule**. These can coexist with zero
+nonpositive *local facet-vs-local differential normal* alignments;
+they are distinct predicates and do not prove an inverted Jacobian.
+Finite samples do not certify global Jacobian positivity, lack of
+self-intersection or model-wide conforming node ownership.
+
+**CI root cause and fix:** initial [run #43033602254](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43033602254)
+failed **before CTest** because optional GDB installation hit Ubuntu
+GitHub-runner DNS failures (apt exit 100). The feature CI was corrected
+to emit a visible `BACKTRACE NOT COLLECTED` warning when GDB is absent,
+without network installation and with **no change to mandatory CTest,
+Python tooling, native QUAD or frozen TRI scientific gates**. Exact
+source-head run #43044996136 then passed all four jobs, **84/84 CTest**
+(new external-model CTest #73), **527/527 Python**, GCC/Linux and
+MSVC/Windows native QUAD, plus strict frozen Eistute/Book TRI parity.
+
+[PR #209](https://github.com/tiagosombrra/apmesh-modernization/pull/209)
+was merged to research-only `quad-templates` at SHA
+`ff97e9c15d2b652433ecb494a90822fce88bea1b`.
+The [exact merged-source postmerge #43046674566](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43046674566)
+was **IN PROGRESS** at this documentation checkpoint and must be
+checked separately before scientific stage closure.
+
+**Scientific outcome:** source-linked per-patch physical diagnostics
+are demonstrated for all three real Bezier BP models. Their 4-way,
+28-way and 3-way edges remain *high-valence sheet incidences*, not
+approved manifold welding. No connected model-wide mesh,
+global element ownership, original 1993 Delaunay/insertion/contraction,
+general regularity proof or production QUAD execution is claimed.
