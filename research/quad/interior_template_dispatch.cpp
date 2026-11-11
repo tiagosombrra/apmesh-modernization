@@ -77,6 +77,18 @@ InteriorTemplateSelection InteriorTemplateDispatcher::Select(
     result.excluded_boundary_leaves = captured.excluded_boundary_leaves;
     result.quad_region_area = captured.interior_area;
     result.uv_quads = EmitLeafQuads(tree_, point_selector);
+    // Subdivide emits one QUAD per polygon corner, in source polygon order.
+    // Retain that provenance for non-overlap and later physical publication.
+    for (std::size_t i = 0; i < captured.input.polygons.size(); ++i) {
+      const auto& polygon = captured.input.polygons[i];
+      const auto& origin = captured.origins.at(i);
+      for (std::size_t corner = 0; corner < polygon.size(); ++corner) {
+        result.quad_face_origins.push_back(origin);
+      }
+    }
+    if (result.quad_face_origins.size() != result.uv_quads.quads.size()) {
+      throw std::invalid_argument("QUAD face count differs from source leaf provenance");
+    }
     result.quad_region_boundary = BoundaryOf(result.uv_quads);
     if (!tree_.GetTemplateFaces().empty() || !tree_.GetTemplateEdges().empty() ||
         !tree_.GetFrontEdges().empty()) {
