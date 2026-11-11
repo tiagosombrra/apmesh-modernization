@@ -30,8 +30,17 @@
   "postmerge": {
     "run": 42994999161,
     "exact_merge_sha": "da61e09d157698210faa674bfa911332f574c7ad",
-    "status_at_checkpoint": "in_progress",
-    "outcome_not_yet_claimed": true
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 4,
+    "root_ctest": "80/80",
+    "python_tooling": "527/527",
+    "cli_negative_cases": "7/7",
+    "native_quad_linux": "13/13",
+    "native_quad_windows": "13/13",
+    "frozen_tri_equivalence": true,
+    "physical_research_artifact_id": 13844285703,
+    "verified_at_checkpoint": true
   },
   "prototype": {
     "actual_native_cpp_quadtree_leaves": 19,
