@@ -196,6 +196,16 @@ jobs:
             build/local-serial/m4_pairwise_physical/native_uv_*.csv
           if-no-files-found: error
           retention-days: 14
+      - name: Publish real external Bezier per-patch physical diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-external-bezier-${{ github.sha }}
+          path: |
+            build/local-serial/m4_external_bezier/m4_external_bezier_physical_manifest.json
+            build/local-serial/m4_external_bezier/m4_external_bezier_physical_candidates.zip
+          if-no-files-found: error
+          retention-days: 14
       - name: Publish bounded baseline logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
