@@ -20,8 +20,17 @@
   },
   "exact_postmerge_actions": {
     "run": 43010542893,
-    "status": "in_progress_at_initial_checkpoint",
-    "result_pending": true
+    "exact_merge_sha": "eb28df95c150e6ed4825271d86c67b9c7f498732",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 4,
+    "root_ctest": "81/81",
+    "tooling_python": "527/527",
+    "cli_negative_rejections": "7/7",
+    "model_catalog_invalid_bp_mutations": "7/7",
+    "scientific_tri_eistute_book": "success",
+    "quad_native_linux_windows": "success",
+    "model_catalog_artifact_id": 13850132945
   },
   "inputs": [
     {
