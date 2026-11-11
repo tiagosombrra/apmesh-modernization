@@ -2,6 +2,8 @@
 
 **Branch:** `quad-templates`
 
+**Active checkpoint (2026-11-11 UTC; PR #203 pending):** M4 preliminary physical geometry API research. Feature head `35397a5f9980ef889794162984f5e6dbe4e0d7c3` adds production `PatchBezier` serial XYZ/Qu/Qv witness and invalid-geometry guard to independent root CTest; base remained `65f73647bb0594457ab44d113cc8fedf5fb921de` when opened. [PR #203](https://github.com/tiagosombrra/apmesh-modernization/pull/203) targets only this research branch. [CI #42944985482](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42944985482) was `in_progress` at this handoff (Linux QUAD native job passed; other jobs pending). The new root CTest is **not yet proven**; do not merge without exact-head four-job CI success, root 79 CTest, 527 Python, seven CLI denials and frozen nine-state Eistute/Book parity. `main` remains untouched. The 16-control-point patch is test-owned synthetic Bézier geometry, **not** loaded physical model or native 69-vertex hybrid mapping. After CI qualification, review PR #203, integrate only into `quad-templates`, verify postmerge, and then map native 42 QUAD + 36 research TRI + 20 shared seam to an actual owned/borrowed patch with independent geometry and loaded-model checks. Historic 1993 Delaunay/contraction and centroid policy remain open. See [M4 preliminary gate](M4_PATCH_BEZIER_PHYSICAL_API_20261110.md).
+
 **Entry baseline / unchanged modernization main:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`
 
 **Last session:** 2026-11-10-18 (PR #202 synthetic XYZ curvature bridge merged; research C++ QUAD unchanged, M5 TRI seam preserved, original model mapping still open)
