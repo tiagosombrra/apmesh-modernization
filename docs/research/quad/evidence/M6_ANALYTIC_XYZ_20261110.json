@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "milestone": "M6 analytic synthetic XYZ lift on native C++ QUAD/M5 research TRI",
+  "source_branch": "quad-templates",
+  "pr": 202,
+  "qualified_head": "e0e0d86ca4bad419425337ea7676b1c2a9ec3490",
+  "merge_sha": "b48526ab22f7190679cd37c61a12005687666c5f",
+  "merge_tree_sha": "0037aa28028fb8f1718641e01f677ffce6f5d2e6",
+  "tree_matches_tested": true,
+  "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "qualified_ci": {
+    "run": 42941827778,
+    "status": "success",
+    "jobs": 4,
+    "gcc_quad_ctest": "13/13",
+    "msvc_quad_ctest": "13/13",
+    "tri_ctest": "78/78",
+    "python_tooling": "527/527",
+    "cli_denials": "7/7",
+    "science": {
+      "eistute": 5,
+      "book": 4,
+      "OBJ_byte_identical": true,
+      "acceptance_equal": true,
+      "boundary_incidence": "verified"
+    }
+  },
+  "postmerge_ci": {
+    "run": 42942777929,
+    "sha": "b48526ab22f7190679cd37c61a12005687666c5f",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "prior_postmerge": {
+    "run": 42928126047,
+    "result": "success"
+  },
+  "native_artifact_id": 13821515576,
+  "independent_visual_audit": {
+    "provenance": "actual native C++-origin QUAD plus independent M5 research TRI",
+    "xyz_vertices_matched_within": 1e-13,
+    "vertex_count": 69,
+    "face_count": 78,
+    "all_face_records_identical": true,
+    "synthetic_graph": "(u,v,k*u*(1-u)*v*(1-v))",
+    "curvatures": [
+      0,
+      1.6,
+      -1.6
+    ],
+    "point_rules": [
+      "vertex_mean",
+      "area_centroid"
+    ],
+    "positive_oriented_subtriangles_per_case": 120,
+    "minimum_curved_normal_alignment": 0.9897848826346841,
+    "maximum_analytic_edge_midpoint_height_error": 0.01914063,
+    "negative_mutations_rejected": 8,
+    "quad_count": 42,
+    "tri_count": 36,
+    "shared_interface_edges": 20
+  },
+  "scientific_limits": {
+    "historical_1993_exterior_completed": false,
+    "real_physical_PatchBezier_used": false,
+    "adviser_historical_centroid_approved": false,
+    "production_mode_enabled": false,
+    "all_quad_enabled": false,
+    "synthetic_surface_only": true
+  },
+  "next": "Verify postmerge exact SHA. Implement independent bounded real PatchBezier Parameterize/Qu/Qv UV→XYZ read-only witness with physical curve boundary and tangent normals, preserving source identities. Obtain separately approved historical 1993/1987 exterior Delaunay + contour contraction specification; historical-hybrid first, all-quad later."
+}

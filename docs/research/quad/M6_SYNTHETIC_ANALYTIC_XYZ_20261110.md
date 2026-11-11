@@ -62,3 +62,10 @@ negative cases and Eistute/Book 5/4 strict parity remain mandatory.
    boundary extension with distinct scientific tests.
 
 Modernization \`main\` and the existing serial TRI behavior remain unchanged.
+
+## Qualification receipt and actual APMesh geometry entrypoints
+
+- Reviewed research PR [#202](https://github.com/tiagosombrra/apmesh-modernization/pull/202), exact candidate `e0e0d86ca4bad419425337ea7676b1c2a9ec3490`, merge `b48526ab22f7190679cd37c61a12005687666c5f` with matching tested tree. Main unchanged.
+- [CI #42941827778](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42941827778) **SUCCESS**: GCC/MSVC QUAD 13/13 each, TRI 78, Python 527, CLI denials 7 and Eistute/Book nine states with exact byte-OBJ/acceptance/boundary parity. Native artifact #13821515576 provided XYZ witness OBJs and manifest. Post-merge [#42942777929](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42942777929) was `in_progress` when checkpointed; verify its exact merged SHA.
+- In the actual application geometry, `include/data/patch/patch_bezier.h` exposes **`PatchBezier::Parameterize(double u,double v)`** returning a `PointAdaptive`, plus `Qu(u,v)`/`Qv(u,v)` and higher derivatives. The next isolated research prototype must obtain a **live owned/borrowed patch reference**, preserve patch and curve ownership contracts, independently check XYZ/normal and physical shared boundary identity, and reject invalid domain/degenerate Jacobian before any physical QUAD publication.
+- **No real PatchBezier was called in this PR**. The analytic surface above is purely a reproducible geometric intermediate. The 1993 historical Delaunay/contour contraction, centroid rule and all-QUAD remain unapproved/not implemented.
