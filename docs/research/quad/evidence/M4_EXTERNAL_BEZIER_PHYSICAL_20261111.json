@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "status": "SOURCE_LINKED_EXTERNAL_BEZIER_PER_PATCH_PHYSICAL_DIAGNOSTICS_QUALIFIED_NOT_GLOBAL_MESH",
+  "date_utc": "2026-11-11",
+  "feature_head_sha": "a5f46fb5da336fee2c27cf6f9e1e102832a12b30",
+  "research_merge_sha": "ff97e9c15d2b652433ecb494a90822fce88bea1b",
+  "feature_push_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43044996136",
+  "feature_pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43045007952",
+  "postmerge_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43046674566",
+  "feature_artifact": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43044996136/artifacts/13867960046",
+  "postmerge_artifact": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43046674566/artifacts/13868441332",
+  "checks": {
+    "feature": {
+      "jobs_passed": 4,
+      "jobs_total": 4,
+      "root_ctest_passed": 84,
+      "root_ctest_total": 84,
+      "external_ctest_index": 73,
+      "tooling_python_passed": 527,
+      "negative_mutations": 4,
+      "quad_native_linux": "passed",
+      "quad_native_windows": "passed",
+      "tri_frozen_eistute_book": "passed"
+    },
+    "postmerge": {
+      "jobs_passed": 4,
+      "jobs_total": 4,
+      "root_ctest_passed": 84,
+      "root_ctest_total": 84,
+      "tooling_python_passed": 527,
+      "quad_native_linux": "passed",
+      "quad_native_windows": "passed",
+      "tri_frozen_eistute_book": "passed"
+    }
+  },
+  "runner_infrastructure_failure": {
+    "first_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43033602254",
+    "error": "Ubuntu hosted apt mirror DNS failure during optional gdb installation, before CTest",
+    "resolution": "Optional gdb acquisition removed; absent debugger warns BACKTRACE NOT COLLECTED; mandatory CTest unchanged",
+    "does_not_measure_gdb_stack": true
+  },
+  "corpus": {
+    "model_count": 3,
+    "patch_count": 45,
+    "center_rule_count": 2,
+    "patch_local_OBJ_count": 90,
+    "patch_local_csv_count": 14,
+    "points_per_patch": 69,
+    "quads_per_patch": 42,
+    "triangles_per_patch": 36,
+    "total_independent_quads": 3780,
+    "total_independent_triangles": 3240,
+    "total_independent_vertex_records": 6210,
+    "source_tree_sha256": "5ba360ca3c1df204eba1b71174bdbcb286b73d0c6a3c529b6fa732544b52bd79",
+    "model_inputs": [
+      {
+        "model": "Eistute",
+        "path": "input_models/eistute2.fixed.bp",
+        "sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+        "patches": 4,
+        "curves": 13,
+        "high_valence_curves": 1,
+        "max_valence": 4,
+        "max_seam_gap": 0,
+        "min_sampled_cross_norm": 12.003695754670666,
+        "sampled_patch_center_opposed_normals_per_rule": 36,
+        "local_facets_with_nonpositive_normal_alignment_per_rule": 0
+      },
+      {
+        "model": "Book",
+        "path": "input_models/book_v7a.bp",
+        "sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+        "patches": 28,
+        "curves": 85,
+        "high_valence_curves": 1,
+        "max_valence": 28,
+        "max_seam_gap": 0,
+        "min_sampled_cross_norm": 1.9994063772945894,
+        "sampled_patch_center_opposed_normals_per_rule": 0,
+        "local_facets_with_nonpositive_normal_alignment_per_rule": 0
+      },
+      {
+        "model": "Ribbed Bracket",
+        "path": "input_models/ribbed_bracket_nm_decor.bp",
+        "sha256": "7b20e455dd5bde48d183006e1c0e67b454f033d1d8345f013a0acb7d72bade76",
+        "patches": 13,
+        "curves": 27,
+        "high_valence_curves": 4,
+        "max_valence": 3,
+        "max_seam_gap": 2.6645352591003757e-15,
+        "min_sampled_cross_norm": 1.499999399999998,
+        "sampled_patch_center_opposed_normals_per_rule": 0,
+        "local_facets_with_nonpositive_normal_alignment_per_rule": 0
+      }
+    ]
+  },
+  "scientific_limits": {
+    "global_welded_nodes": false,
+    "full_model_conforming_mesh_validated": false,
+    "point_rule_scientifically_approved": false,
+    "global_jacobian_lower_bound_proven": false,
+    "sheet_aware_high_valence_policy_approved": false,
+    "hermite_pneu_qualified": false,
+    "historical_1993_insertion_contraction_implemented": false,
+    "production_quad_enabled": false,
+    "modernization_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94"
+  }
+}
