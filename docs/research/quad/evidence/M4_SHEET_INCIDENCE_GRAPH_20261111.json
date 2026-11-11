@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "IMPLEMENTED_SOURCE_LINKED_SHEET_HYPERGRAPH_NOT_GLOBAL_WELDED_MESH",
+  "status": "QUALIFIED_SOURCE_LINKED_SHEET_HYPERGRAPH_NOT_GLOBAL_WELDED_MESH",
   "date_utc": "2026-11-11",
   "scientific_gate": "No high-valence weld approved; all candidate pairings require explicit independent scientific approval",
   "pull_request": "https://github.com/tiagosombrra/apmesh-modernization/pull/210",
@@ -9,7 +9,7 @@
   "feature_push_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43056284526",
   "pr_test_merge_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43056373612",
   "postmerge_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43057855090",
-  "postmerge_status_at_checkpoint": "IN_PROGRESS_NOT_YET_QUALIFIED",
+  "postmerge_status_at_checkpoint": "SUCCESS_4_OF_4",
   "feature_push_status": "SUCCESS_4_OF_4",
   "pr_test_merge_status": "SUCCESS_4_OF_4",
   "root_ctest_passed": 85,
@@ -112,5 +112,15 @@
     "No Hermite Pneu adapter"
   ],
   "optional_debugger": "GitHub runner backtrace not collected when gdb unavailable; mandatory tests preserved",
-  "main_sha_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94"
+  "main_sha_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "postmerge_artifact": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43057855090/artifacts/13873615406",
+  "postmerge_root_ctest_passed": 85,
+  "postmerge_root_ctest_total": 85,
+  "postmerge_python_tooling_passed": 527,
+  "postmerge_new_sheet_graph_ctest_index": 74,
+  "postmerge_quad_native_linux": "passed",
+  "postmerge_quad_native_windows": "passed",
+  "postmerge_frozen_tri_eistute_book": "passed",
+  "source_scope_certified": "read_only_patch_curve_geometry_graph_only",
+  "high_valence_junction_pairing_approved": false
 }
