@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "milestone": "M5 constrained locally Delaunay research test on actual 19-leaf native C++ Quadtree",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "branch": "quad-templates",
+  "pr": 201,
+  "qualified_feature_sha": "c3839121bed9dd356a28e7d121d50e13f157f7e5",
+  "merge_sha": "cd4aca73747edd95af2b4b370da6d6c4cfa4057b",
+  "merged_tree_sha": "c9db6f33f92953e125eab2843f002f89d5b9503f",
+  "merge_tree_equal_tested_feature": true,
+  "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "sources": {
+    "native_quadtree_pr": 199,
+    "prior_interface_pr": 200,
+    "original_postmerge_ci": 42899687132,
+    "leaves": 19,
+    "quad_candidate_leaves": 7,
+    "external_leaves": 12,
+    "native_quad_count": 42,
+    "native_vertex_count": 53,
+    "native_uv_quad_area": 0.25,
+    "previous_exterior_fan_triangles": 60,
+    "prior_interface_edges": 20
+  },
+  "candidate": {
+    "algorithm": "per-leaf ear clipping plus exact rational local Lawson diagonal flips",
+    "research_mode_only": true,
+    "triangles": 36,
+    "vertices": 69,
+    "lawson_flips_per_rule": [
+      8,
+      8
+    ],
+    "local_delaunay_flippable_edges_checked_per_rule": [
+      24,
+      24
+    ],
+    "area_quad": 0.25,
+    "area_tri": 0.75,
+    "total_area": 1,
+    "shared_seam_edges": 20,
+    "outer_edges": 16,
+    "ear_min_angle_degrees": 8.13010235415598,
+    "optimized_min_angle_degrees": 12.528807709151511,
+    "controlled_negative_cases_rejected": 5,
+    "native_quad_coordinates_and_faces_unchanged": true,
+    "exterior_connectivity_identical_between_explicit_unapproved_centroid_witnesses": true
+  },
+  "qualified_ci": {
+    "run": 42927019836,
+    "sha": "c3839121bed9dd356a28e7d121d50e13f157f7e5",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 4,
+    "quad_gcc": "12/12",
+    "quad_msvc": "12/12",
+    "tri_ctest": "78/78",
+    "python": "527/527",
+    "cli_denials": "7/7",
+    "eistute_states": 5,
+    "book_states": 4,
+    "obj_byte_equal": true,
+    "acceptance_equal": true,
+    "boundary_incidence_verified": true
+  },
+  "native_artifact": {
+    "id": 13813973287,
+    "run": 42927019836,
+    "downloaded_and_compared_locally": true,
+    "cpp_quad_obj_bytes_identical_to_prior": true,
+    "optimized_obj_geometry_identical_to_local_research": true,
+    "optimized_obj_text_has_header_difference": true
+  },
+  "postmerge_ci": {
+    "run": 42928126047,
+    "sha": "cd4aca73747edd95af2b4b370da6d6c4cfa4057b",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "scientific_limits": [
+    "Not the actual 1993 Delaunay point-insertion or contour contraction algorithm",
+    "Fixed normalized UV single patch, not physical model XYZ or curved surface",
+    "Numerical centroid selection still awaits scientific approval",
+    "All-QUAD extension and positive production hybrid selection remain disabled",
+    "No claim of arbitrary nonconvex constraint robustness, multipatch or repeated adaptation"
+  ],
+  "next": "Verify exact merged-head post-merge CI #42928126047 at research SHA `cd4aca73747edd95af2b4b370da6d6c4cfa4057b`. Then perform an **independent historical method specification** for exterior Delaunay point insertion, contour contraction and boundary curve treatment from the authenticated 1993 paper and (where feasible) the cited 1987 Baehmann original. Obtain Bento/Creto's formula/degeneracy approval; this fixed-UV research Lawson prototype is NOT itself that historical algorithm. Next isolated prototype must apply the approved method on **real physical model boundaries / UV→XYZ**, preserve native 42 QUAD source and the 20-edge seam as geometric oracles on the bounded test, and export side-by-side images and quality evidence. All-QUAD remains the later selectable extension after historical hybrid validation; protect main and the default TRI path with full CI gates."
+}
