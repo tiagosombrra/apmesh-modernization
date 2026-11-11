@@ -152,8 +152,14 @@ MSVC/Windows native QUAD, plus strict frozen Eistute/Book TRI parity.
 was merged to research-only `quad-templates` at SHA
 `ff97e9c15d2b652433ecb494a90822fce88bea1b`.
 The [exact merged-source postmerge #43046674566](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43046674566)
-was **IN PROGRESS** at this documentation checkpoint and must be
-checked separately before scientific stage closure.
+completed **SUCCESS** on the **exact merge SHA** `ff97e9c15d2b652433ecb494a90822fce88bea1b`:
+all four jobs passed, root **84/84 CTest**, **527/527 Python**, native
+Linux/Windows QUAD and frozen Eistute/Book TRI equivalence. The merged-source
+[90-OBJ research artifact #13868441332](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43046674566/artifacts/13868441332)
+was published. Durable measured [evidence JSON](evidence/M4_EXTERNAL_BEZIER_PHYSICAL_20261111.json)
+retains the source hashes, model metrics, exact CI and scientific limits
+after ephemeral Actions artifacts expire. This closes only the **bounded
+per-patch physical diagnosis gate**, not M4 global meshing or M5 history.
 
 **Scientific outcome:** source-linked per-patch physical diagnostics
 are demonstrated for all three real Bezier BP models. Their 4-way,
