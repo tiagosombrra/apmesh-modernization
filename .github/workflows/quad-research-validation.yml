@@ -208,6 +208,17 @@ jobs:
             build/local-serial/m4_external_bezier/m4_external_bezier_physical_candidates.zip
           if-no-files-found: error
           retention-days: 14
+      - name: Publish Bezier sheet/curve incidence graph audit
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-sheet-incidence-${{ github.sha }}
+          path: |
+            build/local-serial/m4_sheet_incidence/m4_sheet_incidence_manifest.json
+            build/local-serial/m4_sheet_incidence/sheet_graph_*.json
+            build/local-serial/m4_sheet_incidence/sheet_graph_*.dot
+          if-no-files-found: error
+          retention-days: 14
       - name: Publish bounded baseline logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
