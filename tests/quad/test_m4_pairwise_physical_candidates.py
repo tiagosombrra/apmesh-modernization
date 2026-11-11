@@ -213,6 +213,14 @@ def audit_candidates(folder: Path, mode: str, center: str, uv,
         verify_obj(file, mapped[patch], quads, triangles)
         objects.append(file)
     seam = audit_boundary(uv, quads, triangles, mapped, mode)
+    # Both experimental centroid rules must independently retain the exact
+    # same native outer-boundary geometry, regardless of their interior points.
+    shared_sites = sorted({
+        coordinate_key(mapped[0][index])
+        for index, (u, _, _) in enumerate(uv) if u == 1.0
+    })
+    require(len(shared_sites) == 5,
+            "Unexpected shared physical boundary vertex inventory")
 
     negatives = 0
     # A modified physical sample must be rejected independently of the C++ producer.
@@ -257,7 +265,9 @@ def audit_candidates(folder: Path, mode: str, center: str, uv,
             "physical_obj_sha256": {p.name: sha256(p) for p in objects},
             "per_patch_nodes": 69, "per_patch_quads": 42,
             "per_patch_triangles": 36, "per_patch_subtriangles": 120,
-            "seam": seam, "negative_output_mutations_rejected": negatives}
+            "seam": seam,
+            "shared_seam_coordinates": shared_sites,
+            "negative_output_mutations_rejected": negatives}
 
 
 def probe_input_rejections(folder: Path, sampler: Path, valid_uv: Path):
@@ -346,6 +356,12 @@ def main():
             sum(x["negative_output_mutations_rejected"] for x in results) == 12
             and negative_inputs == 7,
             "Did not execute all physical model and mutation controls")
+    for mode in MODES:
+        witnesses = [x for x in results if x["mode"] == mode]
+        require(len(witnesses) == 2 and
+                witnesses[0]["shared_seam_coordinates"] ==
+                witnesses[1]["shared_seam_coordinates"],
+                "An experimental centroid rule altered shared physical boundary sites")
     manifest = {
         "schema": 1,
         "status": "TWO_PATCH_LOCAL_PHYSICAL_CANDIDATES_NO_GLOBAL_WELD",
