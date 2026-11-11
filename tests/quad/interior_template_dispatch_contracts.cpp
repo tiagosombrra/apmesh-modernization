@@ -101,6 +101,35 @@ void CheckResearchResult(const InteriorTemplateSelection& result,
         "QUAD front does not cover all exterior edges exactly once");
 }
 
+void CheckFaceOrigins(quad_test::TreeFixture& fixture,
+                      const InteriorTemplateSelection& selection) {
+  // Each source polygon contributes one QUAD for each ordered polygon corner.
+  // Cross-check the emitted face trace against a second real-tree capture.
+  const auto source = apmesh::quad::CaptureLeafPolygons(fixture.tree);
+  std::size_t emitted = 0;
+  for (std::size_t polygon_index = 0; polygon_index < source.input.polygons.size();
+       ++polygon_index) {
+    const auto& expected = source.origins.at(polygon_index);
+    for (std::size_t corner = 0;
+         corner < source.input.polygons[polygon_index].size(); ++corner) {
+      Check(emitted < selection.quad_face_origins.size(),
+            "QUAD missing an ordered source-cell origin");
+      const auto& actual = selection.quad_face_origins[emitted++];
+      Check(actual.cell_id == expected.cell_id &&
+                actual.leaf_ordinal == expected.leaf_ordinal &&
+                actual.relative_depth == expected.relative_depth &&
+                actual.pattern == expected.pattern &&
+                actual.polygon_ordinal == expected.polygon_ordinal &&
+                actual.leaf_ordinal < source.source_leaves,
+            "QUAD source-cell/template provenance mismatches the refined Quadtree");
+    }
+  }
+  Check(emitted == selection.uv_quads.quads.size() &&
+            emitted == selection.quad_face_origins.size() &&
+            selection.source_leaves == source.source_leaves,
+        "QUAD face origin cardinality differs from the same source leaf mask");
+}
+
 }  // namespace
 
 int main() {
@@ -117,6 +146,7 @@ int main() {
       InteriorTemplateDispatcher selection(fixture.tree);
       auto result = selection.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticMean);
       CheckResearchResult(result, 16, 16);
+      CheckFaceOrigins(fixture, result);
       Check(before == Leaves(fixture) &&
                 fixture.tree.GetTemplateFaces().empty() &&
                 fixture.tree.GetTemplateEdges().empty() &&
@@ -131,6 +161,7 @@ int main() {
       InteriorTemplateDispatcher selection(fixture.tree);
       const auto result = selection.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticMean);
       CheckResearchResult(result, 42, 20);
+      CheckFaceOrigins(fixture, result);
       Check(before == Leaves(fixture) && fixture.tree.GetTemplateFaces().empty(),
             "Refined tree source or production TRI publication changed");
     });
@@ -140,6 +171,7 @@ int main() {
       InteriorTemplateDispatcher selection(fixture.tree);
       auto result = selection.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticCentroid);
       CheckResearchResult(result, 42, 20);
+      CheckFaceOrigins(fixture, result);
       Check(fixture.tree.GetTemplateFaces().empty(),
             "Experimental centroid published legacy TRI");
     });
@@ -214,6 +246,7 @@ int main() {
                 Leaves(fixture) == before, "Invalid QUAD point modified the source tree");
       const auto accepted = choice.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticMean);
       CheckResearchResult(accepted, 16, 16);
+      CheckFaceOrigins(fixture, accepted);
     });
     run("selector-callback-throw-then-retry", [] {
       quad_test::TreeFixture fixture;
@@ -230,6 +263,7 @@ int main() {
             "Throwing callback destroyed the tree or committed a broken selection");
       const auto accepted = choice.Select(InteriorTemplateMode::ExperimentalQuad, SyntheticMean);
       CheckResearchResult(accepted, 16, 16);
+      CheckFaceOrigins(fixture, accepted);
     });
     run("reject-second-mode-after-tri-success", [] {
       quad_test::TreeFixture fixture;
