@@ -134,12 +134,14 @@ jobs:
       - name: Capture M3-5 diagnostic stack before root CTest
         shell: bash
         run: |
-          if ! command -v gdb >/dev/null 2>&1; then
-            # This diagnostic step must not weaken the mandatory CTest gate.
-            sudo apt-get update -qq
-            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq gdb
+          # The backtrace is optional; mandatory root CTest is not.
+          # GitHub-hosted apt mirrors can be temporarily unreachable.
+          # Do not install dependencies over the network at this step.
+          if command -v gdb >/dev/null 2>&1; then
+            gdb --batch -ex 'set pagination off' -ex run -ex 'thread apply all bt 32' --args build/local-serial/bin/quad_adapter_integration_probe || true
+          else
+            echo "::warning title=Optional M3-5 debugger unavailable::gdb is not preinstalled; backtrace NOT COLLECTED. Mandatory root CTest follows without alteration."
           fi
-          gdb --batch -ex 'set pagination off' -ex run -ex 'thread apply all bt 32' --args build/local-serial/bin/quad_adapter_integration_probe || true
       - name: Run full CTest baseline
         shell: bash
         run: ctest --preset local-serial --output-on-failure --no-tests=error
