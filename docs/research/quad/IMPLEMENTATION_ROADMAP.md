@@ -35,6 +35,40 @@ not from assumed recall of earlier conversations. The protocol is not an automat
 scheduler: a connected actor must perform the write. If tools are unavailable,
 report that the checkpoint could not be persisted.
 
+## 2026-11-11 — R1 qualified research handoff; actual AFT integration is R2
+
+The first user-aligned **R1 native template selection** has been implemented
+and merged by [PR #211](https://github.com/tiagosombrra/apmesh-modernization/pull/211)
+into `quad-templates` at exact merged source
+`254d5f9aadf8cbac5e0f31780b69fb564291d2a5`.
+[Feature CI #43104622677](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43104622677),
+[PR test-merge #43104631590](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43104631590)
+and [exact merged-source CI #43106047878](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43106047878)
+each passed **4/4 jobs**, with **14/14 QUAD native GCC and 14/14 MSVC
+CTest**, **85/85 full root CTest**, **527/527 tooling Python**, and
+frozen Eistute/Book TRI science parity. The architecture inventory
+build-input SHA-256 was repaired without relaxing any gate.
+
+**Qualified scope:** The same actual C++ Quadtree may be used to
+choose either original TRI templates or research QUAD UV emission *for
+the eligible interior*, preserving per-face source cell / T1–T6
+provenance, explicit experimental point-rule selection, one-owner
+directed QUAD region interface and 12 positive/adversarial test
+controls. The per-attempt dispatcher fails closed against double
+publication. This is **not** a live `AdvancingFront` QUAD integration,
+not physical hybrid element output, not an enabled CLI mode, not
+approved 1993 centroid policy and not global welded surface topology.
+
+**Next active work item R2a:** implement a **read-only source-linked
+front geometry comparison** of the QUAD boundary and
+`Quadtree::GetFrontEdges()` under identical real adapted/refined
+source trees, including exact split midpoint coverage, opposite AFT
+winding, orientation and negative tests. Follow
+[R2 design and ownership contract](R2_LIVE_AFT_QUAD_INTERFACE_DESIGN_20261111.md)
+for the subsequent R2b/R2c owned AFT and typed physical mixed SubMesh.
+Do not release `MESH_ELEMENT_KIND=quad_uv` before full-patch R2
+acceptance. See [measured R1 evidence](evidence/R1_INTERIOR_TEMPLATE_DISPATCH_20261111.json).
+
 ## 2026-11-11 course correction — opt-in interior template replacement is P0
 
 The clarified feature target is **replace the existing TRI Quadtree template
