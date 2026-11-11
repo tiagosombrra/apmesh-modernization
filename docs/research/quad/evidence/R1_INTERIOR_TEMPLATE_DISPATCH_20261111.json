@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "date_utc": "2026-11-11",
-  "status": "R1_MERGED_SOURCE_POSTMERGE_CI_PENDING_3_OF_4",
+  "status": "R1_RESEARCH_SOURCE_GATE_QUALIFIED_NOT_LIVE_AFT_OR_CLI",
   "goal": "Opt-in replacement of TRI interior template generation with QUAD output on the same real Quadtree; retain existing curve and AFT boundary flow",
   "scientific_classification": "engineering-only selection substrate; unapproved experimental polygon interior-point policy",
   "feature_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/211",
@@ -68,7 +68,7 @@
     "nonmanifold_node_welding_allowed": false,
     "all_quad_enabled": false
   },
-  "next_gate": "Inspect exact merged-source run 43106047878 and require all 4 jobs success including 85/85 CTest, 527/527 tooling Python, frozen Eistute/Book TRI. Then mark R1 qualified and advance to R2a exact QUAD-front vs legacy Quadtree front geometry comparator; no live AFT/CLI QUAD yet.",
+  "next_gate": "R2a read-only exact source Quadtree/GetFrontEdges versus new QUAD directed interface segmentation comparator; demonstrate topology and required midpoint split ownership with positive/negative controls. No live AFT, no physical mixed SubMesh, no CLI acceptance until R2b/R2c.",
   "local_git_build": "UNAVAILABLE_DNS_COULD_NOT_RESOLVE_github.com",
   "historical_source_baseline": {
     "merge_sha": "afa15277aef35aa5beae9a980b11e66a74c8dba3",
@@ -86,11 +86,14 @@
   "postmerge_ci": {
     "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43106047878",
     "head_sha": "254d5f9aadf8cbac5e0f31780b69fb564291d2a5",
-    "status": "in_progress",
-    "conclusion": null,
-    "jobs_success": 3,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_success": 4,
     "jobs_total": 4,
-    "pending": "TRI baseline and tooling controls (Linux)"
+    "root_ctest": "85/85 passed",
+    "python_tooling": "527/527 passed",
+    "native_quad_ubuntu_windows": "14/14 CTest each",
+    "frozen_eistute_book_tri": "success"
   },
   "architecture_inventory": {
     "changed_build_input": "tests/quad/CMakeLists.txt",
