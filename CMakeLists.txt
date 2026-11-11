@@ -199,6 +199,17 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   set_tests_properties(quad.adapter.real_patch_capture PROPERTIES
     LABELS "research-quad;application;required-gate" TIMEOUT 75)
 
+  # M4 preliminary: test actual serial PatchBezier evaluation against independent
+  # XYZ and derivative goldens; no production QUAD publication is enabled.
+  add_executable(quad_patch_bezier_physical_probe
+    tests/quad/patch_bezier_physical_probe.cpp)
+  target_link_libraries(quad_patch_bezier_physical_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_patch_bezier_physical_probe PRIVATE cxx_std_17)
+  add_test(NAME quad.patch_bezier.physical_api
+    COMMAND quad_patch_bezier_physical_probe)
+  set_tests_properties(quad.patch_bezier.physical_api PROPERTIES
+    LABELS "research-quad;physical-api;application;required-gate" TIMEOUT 30)
+
   # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
   add_executable(quad_generator_outcome_probe
     tests/quad/generator_outcome_probe.cpp)
