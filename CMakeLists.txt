@@ -210,6 +210,33 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   set_tests_properties(quad.patch_bezier.physical_api PROPERTIES
     LABELS "research-quad;physical-api;application;required-gate" TIMEOUT 30)
 
+  # M4 research: use the actual C++ Quadtree, not a synthetic UV substitute.
+  # The physical output remains detached from the production TRI pipeline.
+  add_executable(quad_m4_native_tree_export
+    tests/quad/tree_visual_export.cpp
+    research/quad/quadtree_quad.cpp
+    research/quad/uv_mesh.cpp
+    research/quad/experimental_point_rule.cpp)
+  target_include_directories(quad_m4_native_tree_export PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad")
+  target_link_libraries(quad_m4_native_tree_export PRIVATE ap_mesh_engine)
+  target_compile_features(quad_m4_native_tree_export PRIVATE cxx_std_17)
+
+  add_executable(quad_m4_physical_model_lift
+    tests/quad/physical_model_hybrid_lift.cpp)
+  target_link_libraries(quad_m4_physical_model_lift PRIVATE ap_mesh_engine)
+  target_compile_features(quad_m4_physical_model_lift PRIVATE cxx_std_17)
+  add_test(NAME quad.m4.real_builtin_model_hybrid
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_m4_real_model_hybrid.py"
+      --tree-exe "$<TARGET_FILE:quad_m4_native_tree_export>"
+      --lift-exe "$<TARGET_FILE:quad_m4_physical_model_lift>"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/m4_real_model")
+  set_tests_properties(quad.m4.real_builtin_model_hybrid PROPERTIES
+    LABELS "research-quad;physical-model;application;required-gate"
+    TIMEOUT 180)
+
   # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
   add_executable(quad_generator_outcome_probe
     tests/quad/generator_outcome_probe.cpp)
