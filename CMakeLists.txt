@@ -271,6 +271,23 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     LABELS "research-quad;physical-model;boundary;required-gate"
     TIMEOUT 120)
 
+  # Lift real native C++ QUAD/M5 TRI UV on two controlled physical Bezier sheets.
+  # Only independent per-patch OBJ witnesses; no global node publication.
+  add_executable(quad_m4_pairwise_physical_sampler
+    tests/quad/pairwise_physical_sampler.cpp)
+  target_link_libraries(quad_m4_pairwise_physical_sampler PRIVATE ap_mesh_engine)
+  target_compile_features(quad_m4_pairwise_physical_sampler PRIVATE cxx_std_17)
+  add_test(NAME quad.m4.pairwise_native_physical_candidates
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_m4_pairwise_physical_candidates.py"
+      --tree-exe "$<TARGET_FILE:quad_m4_native_tree_export>"
+      --fixture-exe "$<TARGET_FILE:quad_m4_pairwise_boundary_probe>"
+      --sampler-exe "$<TARGET_FILE:quad_m4_pairwise_physical_sampler>"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/m4_pairwise_physical")
+  set_tests_properties(quad.m4.pairwise_native_physical_candidates PROPERTIES
+    LABELS "research-quad;physical-model;boundary;hybrid;required-gate"
+    TIMEOUT 240)
+
   # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
   add_executable(quad_generator_outcome_probe
     tests/quad/generator_outcome_probe.cpp)
