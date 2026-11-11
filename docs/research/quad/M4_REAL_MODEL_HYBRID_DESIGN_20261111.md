@@ -1,6 +1,6 @@
 # M4 next gate — native QUAD/TRI to a real APMesh Bezier model (2026-11-11)
 
-**Status: specified, NOT IMPLEMENTED, NOT TESTED.** This is the bounded next
+**Status: experimental built-in model implementation delivered through [PR #204](https://github.com/tiagosombrra/apmesh-modernization/pull/204); full physical elements and CAD admission remain pending.** This is the bounded next
 engineering experiment after the merged M4 physical API gate. Scientific
 approval of the 1993 historical exterior method and centroid remains open.
 
