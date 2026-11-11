@@ -149,6 +149,18 @@ jobs:
       - name: Check application M3 mode rejection before TRI globals are touched
         shell: bash
         run: python3 tests/quad/test_m3_dispatch.py build/local-serial/bin/ap_mesh
+      - name: Publish native-origin built-in physical hybrid research witnesses
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-real-model-${{ github.sha }}
+          path: |
+            build/local-serial/m4_real_model/physical_model_hybrid_manifest.json
+            build/local-serial/m4_real_model/physical_model_hybrid_*.obj
+            build/local-serial/m4_real_model/physical_model_hybrid_*.csv
+            build/local-serial/m4_real_model/research_local_delaunay_manifest.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Publish bounded baseline logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
