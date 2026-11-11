@@ -111,3 +111,38 @@ oracle completion, followed by an opt-in call from the application pipeline.
 Physical QUAD elements, XYZ mapping/curvature, boundary completion, multipatch
 synchronization and repeated adaptation remain later milestones. This library
 is not yet selected by the application CLI and is not a complete patch mesher.
+
+## R1 research-only template mode selection (2026-11-11)
+
+`interior_template_dispatch.h/.cpp` adds a **per-attempt** choice on the **same
+actual refined Quadtree**: `LegacyTri` calls the existing
+`Quadtree::makeTemplateBasedMesh()` once; `ExperimentalQuad` calls
+`EmitLeafQuads()` with an explicit caller-selected numerical interior-point
+rule and produces an **owned, value-only UV mesh**. In QUAD mode it does not
+publish any TRI faces, edges or vertices in the legacy tree, and rejects a
+tree whose legacy TRI templates are already published. The caller cannot
+choose a second mode in the same dispatcher session.
+
+The experimental result also lists the **directed one-owner boundary edges**
+of the QUAD region, by the original UV vertex IDs. These are useful as a
+future QUAD–TRI front handoff contract, but **are not yet inserted into
+`AdvancingFront`**. The research-only result flags remain
+`live_aft_interface_published=false` and
+`physical_elements_published=false` on both paths. The original CLI
+still refuses `MESH_ELEMENT_KIND=quad_uv`; neither historical point rule
+has been scientifically approved.
+
+`tests/quad/interior_template_dispatch_contracts.cpp` compares real
+uniform and refined Quadtree source trees (16 or 42 experimental QUAD
+respectively), 16/20 oriented region boundary segments, a direct reference
+TRI template publication, and adversarial/missing-policy/rollback cases.
+It runs under `AP_MESH_QUAD_WITH_TREE=ON` on native GCC/Linux and
+MSVC/Windows. This is **R1's first isolated selection contract** rather
+than completed R2 physical hybrid generation. No production `src/` or
+`include/` file is changed.
+
+The next slice must publish the QUAD region in a truly typed intermediate,
+seed the **existing exterior TRI AFT** with this same region's boundary,
+and avoid double-filling the 0.25 example domain. Then publish real
+four-node elements beside exterior TRI in a `SubMesh`; only after that
+positive end-to-end gate may the application QUAD CLI be enabled.
