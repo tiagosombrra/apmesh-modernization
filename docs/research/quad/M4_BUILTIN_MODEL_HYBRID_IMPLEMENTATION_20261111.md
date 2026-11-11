@@ -1,6 +1,6 @@
 # M4 — Native hybrid research geometry on the built-in curved APMesh model (2026-11-11)
 
-**Status: feature candidate implemented; CI qualification pending.** This is a
+**Status: integrated and feature CI-qualified research experiment (PR #204).** This is a
 bounded research implementation. It does not enable production QUAD, adopt a
 historical interior-point formula, reproduce the original 1993 Delaunay and
 contour-contraction procedure, or qualify imported CAD/multipatch boundaries.
@@ -68,3 +68,9 @@ elements, historical 1993 contour contraction/point insertion, approved
 interior-point policy, shared multipatch curves, adaptation reentry and the
 separate selectable all-QUAD extension. `main` and the default TRI pipeline
 must remain unchanged.
+
+## Exact feature qualification and integration
+
+- [PR #204](https://github.com/tiagosombrra/apmesh-modernization/pull/204) merged on scientific `quad-templates` as `da61e09d157698210faa674bfa911332f574c7ad` after exact feature `ac4eb3b464297962d7bc68376b97112c4523a8b5` passed all four [Actions #42993951256](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42993951256) jobs.
+- Root 80/80 CTest, Python 527/527, CLI negatives 7/7, independent research QUAD GCC/MSVC suites and strict Eistute/Book frozen TRI equivalence passed. Both centroid witnesses produced 3D OBJ/CSV research artifacts; the bounded [artifact #13842634340](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42993951256/artifacts/13842634340) was uploaded successfully. No claimed actual imported CAD or physical `ElementAdaptive`.
+- Post-merge exact-commit [Actions #42994999161](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42994999161) was in progress at this checkpoint; see [evidence receipt](evidence/M4_BUILTIN_MODEL_PHYSICAL_HYBRID_20261111.json) and canonical [STATE.md](STATE.md) for later final status.
