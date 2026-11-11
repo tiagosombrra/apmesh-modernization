@@ -76,6 +76,15 @@ if(AP_MESH_QUAD_WITH_TREE)
   target_compile_features(apmesh_quad_legacy_tree PUBLIC cxx_std_17)
   add_library(apmesh_quad_tree STATIC ../../research/quad/quadtree_quad.cpp)
   target_link_libraries(apmesh_quad_tree PUBLIC apmesh_quad_uv apmesh_quad_legacy_tree)
+  # Select actual Quadtree interior TRI or owned experimental QUAD once per attempt.
+  # No application or AFT behavior changes are made by this research target.
+  add_library(apmesh_quad_interior_dispatch STATIC
+    ../../research/quad/interior_template_dispatch.cpp)
+  target_link_libraries(apmesh_quad_interior_dispatch PUBLIC apmesh_quad_tree)
+  add_executable(quad_interior_dispatch_contracts interior_template_dispatch_contracts.cpp)
+  target_include_directories(quad_interior_dispatch_contracts PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+  target_link_libraries(quad_interior_dispatch_contracts PRIVATE
+    apmesh_quad_interior_dispatch apmesh_quad_experimental_point)
   add_executable(quad_leaf_contracts leaf_contracts.cpp)
   target_link_libraries(quad_leaf_contracts PRIVATE apmesh_quad_tree)
   add_executable(quad_refined_observer_contracts refined_observer_contracts.cpp)
@@ -88,7 +97,9 @@ if(AP_MESH_QUAD_WITH_TREE)
   target_include_directories(quad_tree_visual_export PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
   target_link_libraries(quad_tree_visual_export PRIVATE
     apmesh_quad_tree apmesh_quad_experimental_point)
-  foreach(target IN ITEMS apmesh_quad_legacy_tree apmesh_quad_tree quad_leaf_contracts quad_refined_observer_contracts quad_tree_demo quad_tree_visual_export)
+  foreach(target IN ITEMS apmesh_quad_legacy_tree apmesh_quad_tree apmesh_quad_interior_dispatch
+    quad_interior_dispatch_contracts quad_leaf_contracts quad_refined_observer_contracts
+    quad_tree_demo quad_tree_visual_export)
     # Keep diagnostics visible across the existing legacy-header integration.
     if(MSVC)
       target_compile_options(${target} PRIVATE /W4 /EHsc /utf-8)
@@ -96,6 +107,9 @@ if(AP_MESH_QUAD_WITH_TREE)
       target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic)
     endif()
   endforeach()
+  add_test(NAME quad.r1.interior_template_dispatch COMMAND quad_interior_dispatch_contracts)
+  set_tests_properties(quad.r1.interior_template_dispatch PROPERTIES
+    TIMEOUT 60 LABELS "research-quad;real-quadtree;interior-mode;negative-controls")
   add_test(NAME quad.leaf.contracts COMMAND quad_leaf_contracts)
   set_tests_properties(quad.leaf.contracts PROPERTIES TIMEOUT 60 LABELS "research-quad")
   add_test(NAME quad.refined_observer.contracts COMMAND quad_refined_observer_contracts)
