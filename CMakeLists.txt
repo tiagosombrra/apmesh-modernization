@@ -258,6 +258,19 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     LABELS "research-quad;physical-model;ownership;application;required-gate"
     TIMEOUT 180)
 
+  # Research-only pairwise boundary admission using the production .bp loader.
+  # This fixture never publishes QUAD elements or changes the default TRI path.
+  add_executable(quad_m4_pairwise_boundary_probe
+    tests/quad/patch_reader_pairwise_probe.cpp)
+  target_link_libraries(quad_m4_pairwise_boundary_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_m4_pairwise_boundary_probe PRIVATE cxx_std_17)
+  add_test(NAME quad.m4.pairwise_bezier_boundary
+    COMMAND "$<TARGET_FILE:quad_m4_pairwise_boundary_probe>"
+      "${CMAKE_CURRENT_BINARY_DIR}/m4_pairwise_bezier")
+  set_tests_properties(quad.m4.pairwise_bezier_boundary PROPERTIES
+    LABELS "research-quad;physical-model;boundary;required-gate"
+    TIMEOUT 120)
+
   # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
   add_executable(quad_generator_outcome_probe
     tests/quad/generator_outcome_probe.cpp)
