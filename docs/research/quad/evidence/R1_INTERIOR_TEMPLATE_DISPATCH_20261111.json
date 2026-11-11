@@ -1,12 +1,12 @@
 {
   "schema": 1,
   "date_utc": "2026-11-11",
-  "status": "IMPLEMENTED_RESEARCH_CANDIDATE_CI_QUEUED_NOT_QUALIFIED",
+  "status": "R1_MERGED_SOURCE_POSTMERGE_CI_PENDING_3_OF_4",
   "goal": "Opt-in replacement of TRI interior template generation with QUAD output on the same real Quadtree; retain existing curve and AFT boundary flow",
   "scientific_classification": "engineering-only selection substrate; unapproved experimental polygon interior-point policy",
   "feature_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/211",
   "feature_branch": "quad/integration-r1-interior-template-dispatch-20261111",
-  "feature_sha": "e2e106238d7482656a098f8e26bb3f31ae2a7b4d",
+  "feature_sha": "72aebb902632971a358e006c5d3b51ed3370462b",
   "research_base_before_feature": "4cdebb62ec532c45d9834a72e3177a14a0dd3a87",
   "modernization_main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "feature_files": [
@@ -14,20 +14,35 @@
     "research/quad/interior_template_dispatch.cpp",
     "research/quad/README.md",
     "tests/quad/interior_template_dispatch_contracts.cpp",
-    "tests/quad/CMakeLists.txt"
+    "tests/quad/CMakeLists.txt",
+    "docs/architecture/source_inventory.json"
   ],
   "source_modifications": false,
   "runtime_cli_modified": false,
   "existing_tri_template_implementation_modified": false,
   "native_ci_push": {
-    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43098029135",
-    "status": "queued",
-    "conclusion": null
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43104622677",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "72aebb902632971a358e006c5d3b51ed3370462b",
+    "jobs_success": 4,
+    "jobs_total": 4,
+    "root_ctest": "85/85 passed",
+    "python_tooling": "527/527 passed",
+    "native_quad_ubuntu_windows": "14/14 CTest each",
+    "frozen_eistute_book_tri": "success"
   },
   "native_ci_pr": {
-    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43098033267",
-    "status": "queued",
-    "conclusion": null
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43104631590",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "72aebb902632971a358e006c5d3b51ed3370462b",
+    "jobs_success": 4,
+    "jobs_total": 4,
+    "root_ctest": "85/85 passed",
+    "python_tooling": "527/527 passed",
+    "native_quad_ubuntu_windows": "14/14 CTest each",
+    "frozen_eistute_book_tri": "success"
   },
   "required_contracts": {
     "uniform_tree_quads_expected": 16,
@@ -36,11 +51,12 @@
     "refined_interface_edges_expected": 20,
     "quadtree_interior_uv_area_expected": 0.25,
     "test_cases_authored": 12,
-    "test_cases_executed_and_passed": null,
+    "test_cases_executed_and_passed": 12,
     "expected_nonoverlap": "Research QUAD output never invokes legacy TRI template publication; session can commit one choice only",
     "legacy_tri_path": "Production Quadtree::makeTemplateBasedMesh invoked unchanged in LegacyTri mode",
-    "native_gcc_mscc_results": "pending",
-    "full_root_ctest_and_python": "unexecuted on this candidate head"
+    "native_gcc_mscc_results": "SUCCESS: 14/14 native QUAD CTest Linux GCC and Windows MSVC at exact feature and PR SHA",
+    "full_root_ctest_and_python": "SUCCESS: 85/85 CTest, 527/527 Python in both exact-feature-head and PR test-merge CI",
+    "source_face_provenance": "Every QUAD face has original cell ID, leaf ordinal, depth, T1–T6 pattern and polygon ordinal; native contract checks source-ordered one-to-one trace"
   },
   "scientific_restrictions": {
     "experimental_centroid_historical_1993_approved": false,
@@ -52,12 +68,40 @@
     "nonmanifold_node_welding_allowed": false,
     "all_quad_enabled": false
   },
-  "next_gate": "Confirm exact feature SHA and PR test-merge GCC/MSVC standalone QUAD suite including R1 dispatch; repair only demonstrated defects. Do not merge if required CI pending or fails. Then design R2 owned live QUAD/legacy-AFT front and physical mixed element SubMesh.",
+  "next_gate": "Inspect exact merged-source run 43106047878 and require all 4 jobs success including 85/85 CTest, 527/527 tooling Python, frozen Eistute/Book TRI. Then mark R1 qualified and advance to R2a exact QUAD-front vs legacy Quadtree front geometry comparator; no live AFT/CLI QUAD yet.",
   "local_git_build": "UNAVAILABLE_DNS_COULD_NOT_RESOLVE_github.com",
   "historical_source_baseline": {
     "merge_sha": "afa15277aef35aa5beae9a980b11e66a74c8dba3",
     "qualified_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43057855090",
     "ctest_passed": 85,
     "python_tooling_passed": 527
+  },
+  "pr_merge": {
+    "merged": true,
+    "merged_at_utc": "2026-11-11T21:46:46Z",
+    "merge_sha": "254d5f9aadf8cbac5e0f31780b69fb564291d2a5",
+    "target_branch": "quad-templates",
+    "production_main_changed": false
+  },
+  "postmerge_ci": {
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43106047878",
+    "head_sha": "254d5f9aadf8cbac5e0f31780b69fb564291d2a5",
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs_success": 3,
+    "jobs_total": 4,
+    "pending": "TRI baseline and tooling controls (Linux)"
+  },
+  "architecture_inventory": {
+    "changed_build_input": "tests/quad/CMakeLists.txt",
+    "previous_sha256": "2e0508291719230c73cb92b522cf6d5eb8ed93d85f2a416c7ba9810daeae3799",
+    "current_sha256": "0554f07f5f6c5803b6b91c49e10fde23c74c664e82c6471eeb153a2ebd0b3712",
+    "gate": "PASS in 527 Python after required repair"
+  },
+  "prior_failure": {
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43103466011",
+    "cause": "Stale tests/quad/CMakeLists.txt SHA-256 in mandatory docs/architecture/source_inventory.json",
+    "fixed_in_commit": "72aebb902632971a358e006c5d3b51ed3370462b",
+    "control_removed_or_relaxed": false
   }
 }
