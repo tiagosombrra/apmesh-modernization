@@ -237,6 +237,27 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     LABELS "research-quad;physical-model;application;required-gate"
     TIMEOUT 180)
 
+  # M4 ownership proof: borrow four physical nodes per research QUAD while
+  # a SubMesh exclusively owns all 69 nodes and 78 mixed mesh elements.
+  # Reuse the independently qualified native Quadtree/M5/M4 model pipeline.
+  add_executable(quad_four_node_ownership_probe
+    tests/quad/physical_quad_ownership_probe.cpp
+    research/quad/physical_quadrilateral_adaptive.cpp)
+  target_include_directories(quad_four_node_ownership_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_four_node_ownership_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_four_node_ownership_probe PRIVATE cxx_std_17)
+  add_test(NAME quad.m4.four_node_ownership
+    COMMAND "${Python3_EXECUTABLE}"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_m4_quad_ownership.py"
+      --tree-exe "$<TARGET_FILE:quad_m4_native_tree_export>"
+      --lift-exe "$<TARGET_FILE:quad_m4_physical_model_lift>"
+      --ownership-exe "$<TARGET_FILE:quad_four_node_ownership_probe>"
+      --directory "${CMAKE_CURRENT_BINARY_DIR}/m4_quad_ownership")
+  set_tests_properties(quad.m4.four_node_ownership PROPERTIES
+    LABELS "research-quad;physical-model;ownership;application;required-gate"
+    TIMEOUT 180)
+
   # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
   add_executable(quad_generator_outcome_probe
     tests/quad/generator_outcome_probe.cpp)

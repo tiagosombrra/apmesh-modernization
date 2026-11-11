@@ -161,6 +161,17 @@ jobs:
             build/local-serial/m4_real_model/research_local_delaunay_manifest.json
           if-no-files-found: error
           retention-days: 14
+      - name: Publish physical four-node QUAD ownership research evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-four-node-ownership-${{ github.sha }}
+          path: |
+            build/local-serial/m4_quad_ownership/physical_quad_ownership_manifest.json
+            build/local-serial/m4_quad_ownership/physical_model_hybrid_*.obj
+            build/local-serial/m4_quad_ownership/physical_model_hybrid_*.csv
+          if-no-files-found: error
+          retention-days: 14
       - name: Publish bounded baseline logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
