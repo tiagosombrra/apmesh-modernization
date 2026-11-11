@@ -16,6 +16,9 @@ enum class InteriorTemplateMode { LegacyTri, ExperimentalQuad };
 struct InteriorTemplateSelection {
   InteriorTemplateMode mode = InteriorTemplateMode::LegacyTri;
   UvMesh uv_quads;
+  // One immutable source-cell/pattern origin for every emitted QUAD face.
+  // Its order matches UvMesh::quads and the original leaf polygon order.
+  std::vector<LeafPolygonOrigin> quad_face_origins;
   // Directed CCW QUAD-region edges. The TRI AFT does not yet consume them.
   std::vector<std::array<VertexId, 2>> quad_region_boundary;
   std::size_t legacy_tri_faces = 0;
