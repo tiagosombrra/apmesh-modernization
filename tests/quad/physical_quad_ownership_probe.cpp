@@ -6,6 +6,7 @@
 #include "data/triangle_adaptive.h"
 #include "input_output/models_3d.h"
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <fstream>
