@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "date": "2026-11-11",
+  "milestone": "M4 research-only physical 4-node quadrilateral ownership and lifetime",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "branch": "quad-templates",
+  "pr": 205,
+  "feature_sha": "1366ce697a5d04156ba58bb890c989f711d39f93",
+  "merge_sha": "4ffd9cdac09d99352e0500df8a0b5467054949c3",
+  "qualification": {
+    "run": 42999207821,
+    "exact_feature_head_verified": true,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": 4,
+    "root_ctest": "81/81",
+    "named_test": "quad.m4.four_node_ownership",
+    "named_test_passed": true,
+    "python_tooling": "527/527",
+    "cli_rejections": "7/7",
+    "quad_native_linux": "passed",
+    "quad_native_windows": "passed",
+    "scientific_reference_eistute_book": "passed",
+    "ownership_artifact_id": 13846190675,
+    "local_native_run_in_this_chat": false,
+    "hosted_ci_evidence": true
+  },
+  "postmerge": {
+    "run": 43000273810,
+    "exact_merge_sha": "4ffd9cdac09d99352e0500df8a0b5467054949c3",
+    "status": "queued_at_first_check",
+    "conclusion": null
+  },
+  "checked": {
+    "actual_native_cpp_tree_leaves": 19,
+    "source_quads": 42,
+    "source_m5_research_triangles": 36,
+    "physical_nodes_owned_by_SubMesh": 69,
+    "research_four_node_elements": 42,
+    "existing_TriangleAdaptive_elements": 36,
+    "total_owned_elements": 78,
+    "observed_node_element_links": 276,
+    "mixed_quad_tri_interface_edges": 20,
+    "exterior_parametric_edges": 16,
+    "centroid_witnesses": [
+      "vertex_mean",
+      "area_centroid"
+    ],
+    "constructor_fault_slots": 4,
+    "invalid_constructor_input_cases": 7,
+    "physical_file_negative_mutations_per_witness": 3,
+    "physical_file_negative_mutations_total": 6,
+    "independent_curved_model_mapping_oracle": "tests/quad/test_m4_real_model_hybrid.py",
+    "ownership_test": "tests/quad/test_m4_quad_ownership.py"
+  },
+  "files": [
+    "research/quad/physical_quadrilateral_adaptive.h",
+    "research/quad/physical_quadrilateral_adaptive.cpp",
+    "tests/quad/physical_quad_ownership_probe.cpp",
+    "tests/quad/test_m4_quad_ownership.py",
+    "CMakeLists.txt",
+    ".github/workflows/quad-research-validation.yml",
+    "docs/architecture/source_inventory.json",
+    "docs/research/quad/M4_FOUR_NODE_PHYSICAL_OWNERSHIP_20261111.md"
+  ],
+  "limitations": {
+    "production_files_changed": false,
+    "modernization_main_changed": false,
+    "production_quad_enabled": false,
+    "historical_1993_delaunay_contraction_implemented": false,
+    "all_quad_mode_enabled": false,
+    "imported_cad_boundary_verified": false,
+    "multipatch_curved_shared_curve_verified": false,
+    "curvature_consistent_jacobian_across_element_integration": false,
+    "memory_sanitizer_allocation_denial_qualified": false,
+    "historical_centroid_approved": false
+  },
+  "next": "Verify postmerge run 43000273810 on merge SHA, then isolate imported/multipatch curved boundary and real adaptation rollback admission. Preserve main/default TRI."
+}
