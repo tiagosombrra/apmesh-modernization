@@ -412,7 +412,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "4d3f6a6b221a0e7c7157277c96f70cdf87d7a5104846ef57e5c331816ad27396"
+      "sha256": "e78f8e0b3cae1057b74341cfba147aeddbeea108d0db5e6dd32a4e538d631377"
     },
     {
       "path": "CMakePresets.json",
