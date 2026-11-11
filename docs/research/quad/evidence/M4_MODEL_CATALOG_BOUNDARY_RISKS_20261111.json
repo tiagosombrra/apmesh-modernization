@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "date": "2026-11-11",
+  "scope": "Audited repository model source catalog and multipatch physical curve incidence; no QUAD mesh published",
+  "source_branch": "quad-templates",
+  "pr": 206,
+  "feature_sha": "b2d8f02fc4966a6cdab3c2e02a453cf1d0961718",
+  "research_merge_sha": "eb28df95c150e6ed4825271d86c67b9c7f498732",
+  "exact_feature_actions": {
+    "run": 43009461867,
+    "status": "success",
+    "jobs": 4,
+    "root_ctest": "81/81",
+    "tooling_python": "527/527",
+    "cli_negative_rejections": "7/7",
+    "model_catalog_invalid_bp_mutations": "7/7",
+    "scientific_tri_eistute_book": "success",
+    "quad_native_linux_windows": "success",
+    "model_catalog_artifact_id": 13849658571
+  },
+  "exact_postmerge_actions": {
+    "run": 43010542893,
+    "status": "in_progress_at_initial_checkpoint",
+    "result_pending": true
+  },
+  "inputs": [
+    {
+      "name": "Eistute",
+      "file": "input_models/eistute2.fixed.bp",
+      "format": "Bezier bicubic .bp",
+      "vertex_records": 64,
+      "patches": 4,
+      "control_curves_singly_incident": 12,
+      "paired_curves": 0,
+      "high_valence_curves": 1,
+      "maximum_curve_valence": 4,
+      "patches_with_normal_opposition_to_center_on_sample_grid": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "sampled_orientation_opposite_count": 60
+    },
+    {
+      "name": "Book",
+      "file": "input_models/book_v7a.bp",
+      "format": "Bezier bicubic .bp",
+      "vertex_records": 340,
+      "patches": 28,
+      "control_curves_singly_incident": 84,
+      "paired_curves": 0,
+      "high_valence_curves": 1,
+      "maximum_curve_valence": 28,
+      "patches_with_normal_opposition_to_center_on_sample_grid": [],
+      "sampled_orientation_opposite_count": 0
+    },
+    {
+      "name": "Ribbed Bracket",
+      "file": "input_models/ribbed_bracket_nm_decor.bp",
+      "format": "Bezier bicubic .bp",
+      "vertex_records": 125,
+      "patches": 13,
+      "control_curves_singly_incident": 6,
+      "paired_curves": 17,
+      "high_valence_curves": 4,
+      "maximum_curve_valence": 3,
+      "patches_with_normal_opposition_to_center_on_sample_grid": [],
+      "sampled_orientation_opposite_count": 0
+    }
+  ],
+  "builtin_models": {
+    "source": "src/input_output/models_3d.cpp",
+    "constructors": 14,
+    "source_declarations_bezier_patches": 45,
+    "source_declarations_hermite_patches": 23,
+    "models": [
+      [
+        "ModelPlanBook",
+        5,
+        0
+      ],
+      [
+        "ModelTresPatches",
+        3,
+        0
+      ],
+      [
+        "ModelDoisPatchesPlanosCurva1",
+        2,
+        0
+      ],
+      [
+        "ModelDoisPatchesPlanosCurva",
+        2,
+        0
+      ],
+      [
+        "ModelCurvaBezier",
+        1,
+        0
+      ],
+      [
+        "ModelParaboloide",
+        0,
+        1
+      ],
+      [
+        "ModelPneu",
+        0,
+        2
+      ],
+      [
+        "ModelLadoDescendente",
+        0,
+        1
+      ],
+      [
+        "ModelBaseCircular",
+        0,
+        1
+      ],
+      [
+        "ModelBaseQuadrada",
+        0,
+        1
+      ],
+      [
+        "ModelBordaCurva",
+        0,
+        1
+      ],
+      [
+        "ModelDoisPatches",
+        0,
+        2
+      ],
+      [
+        "ModelNariz",
+        0,
+        14
+      ],
+      [
+        "ModelUtahteapot",
+        32,
+        0
+      ]
+    ]
+  },
+  "missing_name": "No tracked ModelBolha constructor or filename containing bolha in this branch",
+  "methods": "Independently parsed 3 BP control net input files, 1e-7 control curve keys, 9x9 bicubic Bernstein Jacobian samples per patch, static C++ MakePatch constructor inventory; 7 synthetic invalid BP records.",
+  "limitations": [
+    "High-valence control curve != malformed model; needs per-sheet boundary policy",
+    "Negative center normal dot on curved 3D patch != proof of inverted Jacobian",
+    "9x9 sampled nonzero Jacobian != certified regularity",
+    "Static ModelPneu Hermite model declaration != actual QUAD generation",
+    "No Eistute, Book or any full-model physical hybrid mesh generated",
+    "Historical 1993 exterior Delaunay/contour contraction not approved or implemented",
+    "No production source or default TRI modification"
+  ],
+  "next": "Implement a research-only patch reader + adapter, start with two-patch Bezier seam; then Eistute high-valence spine, Book 28-page spine, Ribbed Bracket triple junction, Hermite Pneu via dedicated evaluator."
+}
