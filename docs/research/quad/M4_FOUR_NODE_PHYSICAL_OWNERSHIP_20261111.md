@@ -1,7 +1,6 @@
 # M4 research — four-node physical QUAD ownership and lifecycle (2026-11-11)
 
-**Delivery status:** feature implementation proposed; exact-head native CI gates
-are pending. This is a *research-only four-node physical element*, not
+**Delivery status:** feature implemented and merged in [PR #205](https://github.com/tiagosombrra/apmesh-modernization/pull/205) at `4ffd9cdac09d99352e0500df8a0b5467054949c3`; the exact feature head `1366ce697a5d04156ba58bb890c989f711d39f93` passed four-job [Actions #42999207821](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42999207821) (81/81 CTest, 527/527 Python tooling, seven CLI denials, native Linux/Windows QUAD and frozen Eistute/Book scientific equality). The named ownership test passed and [ownership artifact #13846190675](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42999207821/artifacts/13846190675) was uploaded. Exact [postmerge Actions #43000273810](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43000273810) is pending final verification. See [evidence](evidence/M4_FOUR_NODE_PHYSICAL_OWNERSHIP_20261111.json). This is a *research-only four-node physical element*, not
 production QUAD generation, historical 1993 validation, nor arbitrary CAD
 boundary conformity.
 
