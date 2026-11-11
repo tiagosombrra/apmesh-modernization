@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "status": "IMPLEMENTED_SOURCE_LINKED_SHEET_HYPERGRAPH_NOT_GLOBAL_WELDED_MESH",
+  "date_utc": "2026-11-11",
+  "scientific_gate": "No high-valence weld approved; all candidate pairings require explicit independent scientific approval",
+  "pull_request": "https://github.com/tiagosombrra/apmesh-modernization/pull/210",
+  "feature_sha": "c4dcf447fa6c918d69b000c75b189e58278f69ed",
+  "research_source_merge_sha": "afa15277aef35aa5beae9a980b11e66a74c8dba3",
+  "feature_push_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43056284526",
+  "pr_test_merge_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43056373612",
+  "postmerge_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43057855090",
+  "postmerge_status_at_checkpoint": "IN_PROGRESS_NOT_YET_QUALIFIED",
+  "feature_push_status": "SUCCESS_4_OF_4",
+  "pr_test_merge_status": "SUCCESS_4_OF_4",
+  "root_ctest_passed": 85,
+  "root_ctest_total": 85,
+  "new_graph_ctest_index": 74,
+  "python_tooling_passed": 527,
+  "standalone_quad_native_linux": "passed",
+  "standalone_quad_native_windows": "passed",
+  "frozen_tri_eistute_book": "passed",
+  "source_models": 3,
+  "source_patches": 45,
+  "physical_curve_groups_total": 125,
+  "degree_2_curves_total": 17,
+  "high_valence_curves_total": 6,
+  "potential_pairs_quarantined": 396,
+  "pairwise_geometry_candidates_needing_review": 17,
+  "admission_controls": 27,
+  "centroid_rule_cases": 6,
+  "source_physical_manifest_sha256": "b22abffdc2478963da639ef499d397d0df11bb640e1157a26bd8a11c10bfb82b",
+  "test_merge_graph_manifest_sha256": "6a13a382a5569a9a27f371ce1c022fb639486f265b5114406ecfc10329cddc9a",
+  "test_merge_artifact": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43056373612/artifacts/13871209334",
+  "source_model_graphs": [
+    {
+      "name": "Eistute",
+      "patches": 4,
+      "curve_groups": 13,
+      "high_valence_curves": 1,
+      "maximum_valence": 4,
+      "potential_pairs_quarantined": 6,
+      "pairwise_geometry_candidates": 0,
+      "candidate_only_components": 4,
+      "source_file_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f"
+    },
+    {
+      "name": "Book",
+      "patches": 28,
+      "curve_groups": 85,
+      "high_valence_curves": 1,
+      "maximum_valence": 28,
+      "potential_pairs_quarantined": 378,
+      "pairwise_geometry_candidates": 0,
+      "candidate_only_components": 28,
+      "source_file_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d"
+    },
+    {
+      "name": "Ribbed Bracket",
+      "patches": 13,
+      "curve_groups": 27,
+      "high_valence_curves": 4,
+      "maximum_valence": 3,
+      "potential_pairs_quarantined": 12,
+      "pairwise_geometry_candidates": 17,
+      "candidate_only_components": 4,
+      "candidate_only_component_members": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ],
+        [
+          12
+        ]
+      ],
+      "source_file_sha256": "7b20e455dd5bde48d183006e1c0e67b454f033d1d8345f013a0acb7d72bade76"
+    }
+  ],
+  "tested_pairwise_checks": [
+    "canonical 5-site UV/XYZ samples",
+    "curve orientation and tangent agreement",
+    "inward sector separation",
+    "source patch winding",
+    "high-valence strict quarantine",
+    "negative XYZ crack",
+    "negative tangent reversal",
+    "negative overlapping sector",
+    "unapproved or fabricated pair selection",
+    "center-rule graph invariance"
+  ],
+  "hard_nonclaims": [
+    "No actual interpatch NodeAdaptive welding",
+    "No global conforming manifold/nonmanifold whole-model mesh",
+    "No approved physical sheet topology",
+    "No original 1993 Delaunay insertion or contour contraction",
+    "No curvature-adapted per-model meshing",
+    "No full Jacobian/normal-field proof",
+    "No production QUAD or all-QUAD mode",
+    "No Hermite Pneu adapter"
+  ],
+  "optional_debugger": "GitHub runner backtrace not collected when gdb unavailable; mandatory tests preserved",
+  "main_sha_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94"
+}
