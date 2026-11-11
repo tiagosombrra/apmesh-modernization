@@ -146,6 +146,18 @@ jobs:
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
+      - name: Audit versioned and built-in research model catalog
+        shell: bash
+        run: |
+          python3 tests/quad/audit_model_catalog.py --root . --report build/local-serial/quad_model_catalog.json
+      - name: Retain research model catalog and shared-boundary diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-model-catalog-${{ github.sha }}
+          path: build/local-serial/quad_model_catalog.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Check application M3 mode rejection before TRI globals are touched
         shell: bash
         run: python3 tests/quad/test_m3_dispatch.py build/local-serial/bin/ap_mesh
