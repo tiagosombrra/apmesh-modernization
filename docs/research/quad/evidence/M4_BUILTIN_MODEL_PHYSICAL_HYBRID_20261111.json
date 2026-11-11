@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "date": "2026-11-11",
+  "milestone": "M4 bounded native QUAD + research M5 TRI physical lift on built-in curved APMesh PatchBezier",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "branch": "quad-templates",
+  "qualification": {
+    "pr": 204,
+    "feature_sha": "ac4eb3b464297962d7bc68376b97112c4523a8b5",
+    "merge_sha": "da61e09d157698210faa674bfa911332f574c7ad",
+    "tested_feature_run": 42993951256,
+    "tested_push_run": 42993814942,
+    "conclusion": "success",
+    "jobs": 4,
+    "root_ctest": "80/80",
+    "python_tooling": "527/527",
+    "cli_negative_cases": "7/7",
+    "native_quad_linux": "13/13",
+    "native_quad_windows": "13/13",
+    "frozen_scientific_models": [
+      "eistute",
+      "book"
+    ],
+    "strict_tri_baseline_equivalence": true,
+    "local_native_test_in_this_chat": false,
+    "hosted_ci_provenance": true,
+    "physical_research_artifact_id": 13842634340,
+    "physical_research_artifact_run": 42993951256
+  },
+  "postmerge": {
+    "run": 42994999161,
+    "exact_merge_sha": "da61e09d157698210faa674bfa911332f574c7ad",
+    "status_at_checkpoint": "in_progress",
+    "outcome_not_yet_claimed": true
+  },
+  "prototype": {
+    "actual_native_cpp_quadtree_leaves": 19,
+    "native_cpp_quads": 42,
+    "native_cpp_uv_vertices": 53,
+    "research_local_lawson_triangles": 36,
+    "mixed_uv_vertices": 69,
+    "interface_edges": 20,
+    "outer_edges": 16,
+    "physical_decomposed_subtriangles": 120,
+    "experimental_centroid_rules": [
+      "vertex_mean",
+      "area_centroid"
+    ],
+    "independent_bernstein_control_points": 16,
+    "verified_negative_mutations_per_rule": 11,
+    "total_negative_mutations": 22,
+    "source_model": "Models3d::ModelCurvaBezier",
+    "model_owned_by": "Geometry",
+    "physical_mapping": "PatchBezier::Parameterize, Qu and Qv (serialized)",
+    "geometry_export": "research-only two 3D OBJ and two tangent-sample CSV",
+    "validation": "independent pinned bicubic Bernstein geometry, derivatives, orientation, interface, curved boundary chord deviation and source hashes"
+  },
+  "source_files": [
+    "tests/quad/physical_model_hybrid_lift.cpp",
+    "tests/quad/test_m4_real_model_hybrid.py",
+    "tests/quad/tree_visual_export.cpp",
+    "tests/quad/test_m5_exterior_interface.py",
+    "tests/quad/test_m5_constrained_delaunay.py",
+    "CMakeLists.txt",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "constraints": {
+    "production_source_modified": false,
+    "modernization_main_modified": false,
+    "physical_element_adaptive_created": false,
+    "full_historical_1993_delaunay_contraction": false,
+    "imported_cad_geometry_validated": false,
+    "historical_centroid_approved": false,
+    "all_quad_mode_enabled": false,
+    "multipatch_boundary_validated": false,
+    "repeated_adaptation_validated": false
+  },
+  "next": "After merge-run #42994999161 success is verified, establish isolated physical four-node element/ownership and model boundary sync gates while awaiting historical method approval. Keep main unchanged."
+}
