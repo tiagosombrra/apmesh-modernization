@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-11-12",
+  "phase": "R2b2 original high-valence full sampled curve radial sector stability",
+  "classification": "research-only, discrete finite-parameter geometric evidence; no continuous intersection or fan-welding certificate",
+  "feature_sha": "686ef7d50d7deb981aff7a7919d8d9c6ca44ebb3",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "pr": 214,
+  "pr_state": "draft/unmerged",
+  "main_original_tri": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "qualified_predecessor": {
+    "sha": "d5c501c2eaa8d7b077caf95261cd2cf4e43c22b1",
+    "feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43273801537",
+    "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43273812916",
+    "status": "4/4 feature and PR; 87/87 CTest; 527/527 Python; native GCC/MSVC 16/16; original TRI frozen PASS; one original global epoch; all Eistute 4/4 and Book 28/28 source patches original AFT UV+physical XYZ accepted; no mixed global SubMesh"
+  },
+  "method": {
+    "source": "single actual original Adapter coherent epoch, real PatchReader/PatchBezier and CurveAdaptiveParametric",
+    "parameter_samples": "every strictly interior original sampled parameter and 0.25/0.50/0.75 of each original source interval; endpoints excluded for radial frames but separately verified for identity",
+    "per_frame": [
+      "original source gradient tangent",
+      "every incidence physical edge XYZ against original curve point",
+      "inward radial vector projected onto tangent normal plane",
+      "cyclic sector gap and canonical patch order"
+    ],
+    "summary": [
+      "number of evaluated parameter samples",
+      "original intervals covered",
+      "number of sector evaluations",
+      "minimum sampled angular gap, its source parameter",
+      "sampled cyclic order changes",
+      "near-coincident sector count",
+      "max inter-sample relative angular drift",
+      "sampled source-geometry admission versus rejection"
+    ],
+    "adversarial": [
+      "swap two actual radial patch identities",
+      "duplicate an angular sector direction",
+      "duplicate a source sample parameter",
+      "verify cyclic rotation is not classified as order swap"
+    ],
+    "limits": "discrete sampling cannot certify no hidden swap between probes, self-intersection or nonmanifold welding",
+    "auto_pairing": false,
+    "typed_physical_SubMesh_published": false
+  },
+  "ci": {
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43299825976",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43299837378",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "gates": "Linux and Windows native QUAD 16/16 each; root CTest 87; Python 527; frozen TRI Eistute and Book parity; both model radial traces — all pending"
+  },
+  "measured_eistute": null,
+  "measured_book": null,
+  "open": [
+    "continuous between-sample sector crossings/near-degeneracy not mathematically excluded",
+    "nonmanifold high-valence physical edge fan incidence and ownership policy undecided",
+    "atomic typed physical QUAD/TRI SubMesh publication and previous accepted mesh rollback not implemented",
+    "repeat mixed global adaptation unqualified",
+    "old fourth-in-process fixture lifetime issue pending ASan/UBSan",
+    "historical 1993 QUAD point placement unapproved",
+    "PR unmerged and quad_uv production CLI disabled"
+  ],
+  "next": "Inspect exact current CI and real per-model sweep results. If measured sampled fan stable, move to continuous interval bounds and explicit nonmanifold edge fan policy before R2c."
+}
