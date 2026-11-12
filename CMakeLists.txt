@@ -199,6 +199,28 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   set_tests_properties(quad.adapter.real_patch_capture PROPERTIES
     LABELS "research-quad;application;required-gate" TIMEOUT 75)
 
+  # R2b2: native source-aligned QUAD/AFT UV directly lifted through actual
+  # PatchReader/PatchBezier. This target never enters the production CLI.
+  add_executable(quad_r2b2_bezier_aft_probe
+    tests/quad/r2b2_bezier_aft_probe.cpp
+    research/quad/uv_mesh.cpp
+    research/quad/quadtree_quad.cpp
+    research/quad/interior_template_dispatch.cpp
+    research/quad/front_interface_audit.cpp
+    research/quad/owned_aft_front.cpp)
+  target_include_directories(quad_r2b2_bezier_aft_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad")
+  target_link_libraries(quad_r2b2_bezier_aft_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_r2b2_bezier_aft_probe PRIVATE cxx_std_17)
+  add_test(NAME quad.r2b2.real_bezier_aft
+    COMMAND quad_r2b2_bezier_aft_probe
+      "${CMAKE_CURRENT_SOURCE_DIR}/input_models/eistute2.fixed.bp"
+      "${CMAKE_CURRENT_SOURCE_DIR}/input_models/book_v7a.bp")
+  set_tests_properties(quad.r2b2.real_bezier_aft PROPERTIES
+    LABELS "research-quad;physical-source;application;required-gate"
+    TIMEOUT 120)
+
   # M4 preliminary: test actual serial PatchBezier evaluation against independent
   # XYZ and derivative goldens; no production QUAD publication is enabled.
   add_executable(quad_patch_bezier_physical_probe
