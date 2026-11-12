@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "date_utc": "2026-11-12",
+  "project": "tiagosombrra/apmesh-modernization",
+  "milestone": "R2b2 actual Adapter parametric source midpoint and owned native Quadtree replay",
+  "classification": "bounded research-only native structural source clone; no actual model-wide mixed physical meshing",
+  "source_sha": "76250559951b5ac0e45982d0c86606d001feb53a",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "pr": {
+    "number": 214,
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
+    "draft": true,
+    "merged": false,
+    "base": "quad-templates"
+  },
+  "production_main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "changed_paths": [
+    "research/quad/adapter_capture.h",
+    "research/quad/source_tree_replay.cpp",
+    "tests/quad/generator_outcome_probe.cpp",
+    "CMakeLists.txt",
+    "docs/architecture/source_inventory.json"
+  ],
+  "actual_source_geometry": {
+    "capture_timing": "after original Adapter Boundary::close, before original Quadtree::generate",
+    "fields": [
+      "original curve source sample indices/IDs",
+      "oriented actual UV curve vertex and XYZ",
+      "original Edge::makeParamMid cached UV midpoint",
+      "pre-generation normalized curve length"
+    ],
+    "ownership": "source curve and original TRI owners remain borrowed only within synchronous capture; the independently owned cloned Boundary/Quadtree holds its own native edges and vertices",
+    "exact_clone_checks": [
+      "original vertex count and coordinates",
+      "native refined leaf dyadic boxes and depth",
+      "all balanced native neighbor box relations",
+      "per original source boundary edge-cell geometry after copied curved midpoint",
+      "bad captured directed boundary is rejected"
+    ],
+    "external_model_scope": "one nontrivial dynamically adapted chart replay per Eistute and Book GeneratorAdaptive test; not all model patches or full AFT",
+    "original_exterior_AFT_on_actual_dynamic_source": false,
+    "source_physical_mixed_SubMesh_published": false
+  },
+  "ci": {
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43204053789",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43204061864",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "native_gcc": "16/16",
+    "native_msvc": "16/16",
+    "root_ctest": "87/87",
+    "python_tooling": "527/527",
+    "frozen_tri_science": "passed",
+    "required_specific_root_tests": [
+      "quad.adapter.real_patch_capture",
+      "quad.adapter.real_boundary_abort",
+      "quad.generator.real_global_outcomes",
+      "quad.generator.real_global_outcomes.book",
+      "quad.r2b2.real_bezier_aft"
+    ],
+    "qualification": "exact head 4/4 on feature and independent PR test-merge; no sanitizer or postmerge claim"
+  },
+  "historical_separate_source_patch_trial": {
+    "fixed_research_uv_boundary_segments": 16,
+    "eistute": {
+      "mapped": 4,
+      "rejected": 0
+    },
+    "book": {
+      "mapped": 28,
+      "rejected": 0
+    },
+    "built_in_curved": {
+      "mapped": 1,
+      "rejected": 0
+    },
+    "actual_Adapter_dynamic_sampling_used_for_this_aft": false
+  },
+  "limitations": [
+    "not full original exterior AFT on dynamic adapted contour",
+    "not source-exact full physical model QUAD/TRI",
+    "not typed mixed physical SubMesh or shared-curve sheet stitching",
+    "fourth-in-process fixture lifetime issue unqualified by ASan/UBSan",
+    "experimental centroid/1993 scientific rule not approved",
+    "no quad_uv CLI/production change"
+  ],
+  "next": "execute bounded original exterior AFT over real cloned Eistute/Book Adapter chart QUAD selection, independent geometric and physical seam/audit, evaluate rejected candidates/rollback; run in-process native sanitizers"
+}

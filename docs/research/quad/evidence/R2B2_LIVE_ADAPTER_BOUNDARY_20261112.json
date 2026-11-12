@@ -6,7 +6,7 @@
   "production_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "research_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
-  "candidate_sha": "8b0a774f463ce450aedeee216d978965428ef481",
+  "candidate_sha": "76250559951b5ac0e45982d0c86606d001feb53a",
   "paths_changed": [
     "research/quad/adapter_capture.h",
     "src/adapter/adapter.cpp",
@@ -67,31 +67,29 @@
     }
   ],
   "current_gate": {
-    "sha": "8b0a774f463ce450aedeee216d978965428ef481",
     "feature": {
-      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198429209",
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43204053789",
+      "head": "76250559951b5ac0e45982d0c86606d001feb53a",
       "status": "completed",
       "conclusion": "success",
       "jobs": "4/4"
     },
     "pr": {
-      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198438695",
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43204061864",
+      "head": "76250559951b5ac0e45982d0c86606d001feb53a",
       "status": "completed",
       "conclusion": "success",
       "jobs": "4/4"
     },
-    "native_linux_quad_ctest": "16/16",
-    "native_windows_quad_ctest": "16/16",
+    "linux_native_quad": "16/16",
+    "windows_native_quad": "16/16",
     "root_ctest": "87/87",
-    "python": "527/527",
-    "frozen_tri_eistute_book": "passed",
-    "single_patch_adapter": "passed",
-    "native_boundary_abort": "passed",
-    "real_generator_eistute": "passed",
-    "real_generator_book": "passed",
-    "source_bezier_aft": "passed",
-    "research_only": true,
-    "physical_mixed_SubMesh_published": false
+    "python_controls": "527/527",
+    "original_tri_frozen_eistute_book": "passed",
+    "real_source_replay_eistute": "at least one dynamically adapted multi-site source Quadtree replay verified by required root CTest",
+    "real_source_replay_book": "at least one dynamically adapted multi-site source Quadtree replay verified by required root CTest",
+    "real_dynamic_owned_AFT": "not implemented/executed",
+    "sanitizers": "not run"
   },
   "known_open": [
     "Observed fourth consecutive fixture invocation segfault under original serial runner; independent process isolation is not an ASan/UBSan lifetime proof",
@@ -116,9 +114,9 @@
     "frozen_tri": "passed",
     "per_model_source_mapping": "4/4 Eistute; 28/28 Book; 1 built-in; zero external rejects"
   },
-  "merge_status": "draft/unmerged; no R2c",
+  "merge_status": "draft/unmerged; R2c physical publication blocked",
   "next": "Build research-owned source-exact cloned original real refined Quadtree and run T1-T6 QUAD + original AFT from real Adapter's per-attempt chart and physical curve IDs; validate actual source versus physical seam and late rollback, independent in-process sanitizer. Then review research-only merge, postmerge exact 4/4, later typed mixed physical SubMesh R2c.",
-  "status": "EXACT_FEATURE_AND_PR_4_4_R2B2_LIVE_ADAPTER_CONTOUR_WITH_BOUNDED_SOURCE_BEZIER_32_32_PREMERGE_QUALIFIED",
+  "status": "R2B2_ACTUAL_EISTUTE_BOOK_ADAPTER_CURVE_MIDPOINT_TREE_REPLAY_EXACT_4_4_QUALIFIED_AFT_DYNAMIC_PENDING",
   "measured_source_Bezier": {
     "source": "verbatim verbose CTest quad.r2b2.real_bezier_aft stdout from both latest exact root CI jobs, retained in 14-day quad-r2b2-real-bezier-admission artifact",
     "fixed_research_boundary_segments": 16,
@@ -145,5 +143,9 @@
     "complete_global_hybrid_mesh": false,
     "typed_physical_SubMesh": false,
     "science_assistant_note": "32/32 source charts admitted under independent fixed research UV boundary; not proof a whole-model hybrid triangulation exists"
-  }
+  },
+  "latest_real_source_replay_evidence": "docs/research/quad/evidence/R2B2_REAL_SOURCE_REPLAY_20261112.json",
+  "real_source_midpoint_edge_metric_capture": true,
+  "real_curved_native_source_replay_per_model": 1,
+  "real_curved_AFT_per_model": false
 }
