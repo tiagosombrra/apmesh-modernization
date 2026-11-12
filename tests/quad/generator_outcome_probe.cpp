@@ -185,6 +185,13 @@ int Run(const std::string& config_path) {
   bool corrupt_source_replay_rejected = false;
   DynamicSourceAftWitness real_source_aft;
   bool source_aft_observed = false;
+  // One complete original global epoch, not a mixture of accepted/rejected
+  // retries from different adaptation steps. Keep only one first attempt for
+  // each patch, and retain its native candidate (including rejection) by value.
+  std::map<int, DynamicSourceAftWitness> coherent_patch_aft;
+  bool coherent_patch_epoch_initialized = false;
+  Key coherent_patch_epoch{};
+  std::size_t coherent_patch_duplicate_attempts = 0;
   // The original generator can revisit a logical patch/retry identity.
   // Chronological callback order, not a uniqueness assumption, joins the
   // actual source boundary to its one refined Quadtree observation.
@@ -239,6 +246,43 @@ int Run(const std::string& config_path) {
       replayed_adapted_boundary_sites += source_boundary.vertices.size();
       replayed_actual_source_leaves += replay.replayed_leaves;
       ++replayed_actual_source_trees;
+    }
+    if (!coherent_patch_epoch_initialized && source_boundary.vertices.size() > 4U) {
+      coherent_patch_epoch = OuterKey(source_boundary.attempt.outer);
+      coherent_patch_epoch_initialized = true;
+    }
+    if (coherent_patch_epoch_initialized &&
+        OuterKey(source_boundary.attempt.outer) == coherent_patch_epoch &&
+        source_boundary.vertices.size() > 4U) {
+      const int patch = source_boundary.attempt.patch_index;
+      if (coherent_patch_aft.count(patch) == 0U) {
+        DynamicSourceAftWitness witness;
+        if (replayed_actual_source_trees == 1U &&
+            real_source_aft.source_patch_index == patch &&
+            coherent_patch_aft.empty()) {
+          witness = real_source_aft;
+        } else {
+          try {
+            witness = ProbeNativeAftOnAdaptedSource(tree, source_boundary);
+          } catch (const std::exception& error) {
+            // A real native source reconstruction failure is a rejected
+            // scientific candidate, not a successful or omitted patch.
+            witness.attempted = true;
+            witness.source_patch_index = patch;
+            witness.source_sites = source_boundary.vertices.size();
+            witness.source_leaves = tree.GetLeafCount();
+            witness.original_boundary = source_boundary;
+            witness.rejection = error.what();
+          }
+        }
+        Require(witness.attempted &&
+                    witness.source_patch_index == patch &&
+                    witness.source_sites == source_boundary.vertices.size(),
+                "R2b2 coherent source AFT witness lost patch identity");
+        coherent_patch_aft.emplace(patch, std::move(witness));
+      } else {
+        ++coherent_patch_duplicate_attempts;
+      }
     }
     apmesh::quad::LeafPolygonMesh snapshot;
     snapshot.source_leaves = tree.GetLeafCount();
@@ -488,6 +532,109 @@ int Run(const std::string& config_path) {
                   shared.coherent_epoch_shared_curves_source_ids_rejected ==
                   shared.coherent_epoch_shared_curves_compared,
           "R2b2 no real same-epoch shared curve interfaces were audited");
+
+
+  // Exercise EVERY real dynamically adapted patch in exactly the SAME
+  // globally coherent source epoch selected by the shared-curve incidence
+  // graph. A passing CTest can still report individual physical rejections:
+  // candidate admission is separate from coverage and regression integrity.
+  Require(coherent_patch_epoch_initialized &&
+              coherent_patch_epoch == Key{session, shared.epoch, shared.retry} &&
+              shared.coherent_epoch_patches == shared.model_patches &&
+              coherent_patch_aft.size() == shared.model_patches,
+          "R2b2 did not evaluate every patch of the same original model epoch");
+  std::size_t all_uv_accepted = 0;
+  std::size_t all_uv_rejected = 0;
+  std::size_t all_physical_accepted = 0;
+  std::size_t all_physical_rejected = 0;
+  std::size_t all_source_sites = 0;
+  std::size_t all_quads = 0;
+  std::size_t all_tris = 0;
+  std::size_t all_facets = 0;
+  double all_min_alignment = 1.0;
+  double all_max_source_xyz_error = 0.0;
+  for (const auto& entry : coherent_patch_aft) {
+    const int patch_index = entry.first;
+    const auto& witness = entry.second;
+    const bool uv_ok = witness.admitted;
+    bool xyz_ok = false;
+    std::string reason = uv_ok ? "not_audited" :
+        (witness.rejection.empty() ? "native_aft_unqualified" : witness.rejection);
+    apmesh::quad::DynamicPhysicalAudit physical;
+    if (uv_ok) {
+      try {
+        Require(patch_index >= 0 &&
+                    static_cast<unsigned>(patch_index) < shared_geometry.GetNumberPatches(),
+                "R2b2 coherent source patch index invalid");
+        auto* native = dynamic_cast<PatchBezier*>(
+            shared_geometry.GetPatch(static_cast<unsigned>(patch_index)));
+        Require(native != nullptr, "R2b2 coherent source has no PatchBezier");
+        const auto* prior = native->GetSubMesh();
+        physical = apmesh::quad::AuditActualAdapterPhysicalFaces(
+            *native, witness.original_boundary,
+            witness.accepted_quad_uv, witness.accepted_tri_uv);
+        Require(native->GetSubMesh() == prior,
+                "R2b2 source physical witness published a mixed SubMesh");
+        xyz_ok = true;
+        reason = "none";
+      } catch (const std::exception& error) {
+        reason = error.what();
+      }
+    }
+    all_source_sites += witness.source_sites;
+    all_quads += witness.quad_faces;
+    all_tris += witness.exterior_triangles;
+    all_facets += physical.mapped_facets;
+    if (xyz_ok) {
+      ++all_physical_accepted;
+      all_min_alignment = std::min(
+          all_min_alignment, physical.minimum_orientation_alignment);
+      all_max_source_xyz_error = std::max(
+          all_max_source_xyz_error, physical.max_source_xyz_error);
+    } else {
+      ++all_physical_rejected;
+    }
+    if (uv_ok) ++all_uv_accepted;
+    else ++all_uv_rejected;
+    std::replace(reason.begin(), reason.end(), ' ', '_');
+    std::cout << "R2B2_ALL_PATCH_RESULT"
+              << " patch=" << patch_index
+              << " source_sites=" << witness.source_sites
+              << " source_leaves=" << witness.source_leaves
+              << " quad_faces=" << witness.quad_faces
+              << " exterior_triangles=" << witness.exterior_triangles
+              << " uv_admitted=" << uv_ok
+              << " physical_admitted=" << xyz_ok
+              << " physical_facets=" << physical.mapped_facets
+              << " min_alignment="
+              << (xyz_ok ? physical.minimum_orientation_alignment : 0.0)
+              << " max_source_xyz_error="
+              << (xyz_ok ? physical.max_source_xyz_error : 0.0)
+              << " rejection=" << reason << "\n";
+  }
+  Require(all_uv_accepted + all_uv_rejected == shared.model_patches &&
+              all_physical_accepted + all_physical_rejected == shared.model_patches &&
+              all_physical_accepted <= all_uv_accepted,
+          "R2b2 model-wide per-patch original AFT/physical counts do not balance");
+  std::cout << "R2B2_ALL_PATCH_MODEL"
+            << " expected=" << shared.model_patches
+            << " observed=" << coherent_patch_aft.size()
+            << " coherent_epoch=" << shared.epoch
+            << " coherent_retry=" << shared.retry
+            << " repeated_patch_attempts=" << coherent_patch_duplicate_attempts
+            << " uv_accepted=" << all_uv_accepted
+            << " uv_rejected=" << all_uv_rejected
+            << " physical_accepted=" << all_physical_accepted
+            << " physical_rejected=" << all_physical_rejected
+            << " source_sites=" << all_source_sites
+            << " quad_faces=" << all_quads
+            << " exterior_triangles=" << all_tris
+            << " validated_physical_facets=" << all_facets
+            << " min_physical_alignment=" << all_min_alignment
+            << " max_source_xyz_error=" << all_max_source_xyz_error
+            << " full_patch_coverage=1"
+            << " global_mixed_model_admitted=0"
+            << " physical_SubMesh_published=0\n";
 
   // Check high-valence source sheets as separate geometric radial sectors
   // in XYZ. A cyclic angular ordering is NOT an accepted sheet pairing.

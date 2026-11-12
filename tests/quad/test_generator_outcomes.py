@@ -56,11 +56,21 @@ def run(executable: Path, root: Path, model: str) -> None:
             line for line in result.stdout.splitlines()
             if line.startswith("R2B2_SHARED_SHEET_SECTORS ")
         ]
+        all_patches = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_ALL_PATCH_RESULT ")
+        ]
+        all_summary = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_ALL_PATCH_MODEL ")
+        ]
         if (result.returncode != 0 or len(markers) != 1
-                or len(shared) != 1 or len(radial) != 1):
+                or len(shared) != 1 or len(radial) != 1
+                or len(all_summary) != 1):
             raise AssertionError(
                 f"Generator research probe failed: rc={result.returncode}, "
                 f"markers={markers}, shared={shared}, radial={radial}, "
+                f"all_summary={all_summary}, all_patch_count={len(all_patches)}, "
                 f"stdout_tail={result.stdout[-5000:]!r}, "
                 f"stderr_tail={result.stderr[-5000:]!r}"
             )
@@ -132,8 +142,80 @@ def run(executable: Path, root: Path, model: str) -> None:
             and len(sector_fields["radial_order"].split(",")) == expected_patches
         ):
             raise AssertionError(f"Invalid real source sector observation: {radial[0]!r}")
+
+        # Every original model patch must be observed in a SINGLE source
+        # epoch. A rejected UV/AFT/XYZ candidate remains a rejected scientific
+        # result even when CTest passes: never turn coverage into admission.
+        summary = dict(re.findall(r"([A-Za-z_]+)=([^\s]+)", all_summary[0]))
+        all_fields = (
+            "expected", "observed", "coherent_epoch", "coherent_retry",
+            "uv_accepted", "uv_rejected", "physical_accepted",
+            "physical_rejected", "full_patch_coverage",
+            "global_mixed_model_admitted", "physical_SubMesh_published",
+        )
+        if any(key not in summary for key in all_fields):
+            raise AssertionError(f"Missing full-model source evidence: {all_summary[0]!r}")
+        physical_positive = 0
+        uv_positive = 0
+        unique_patches: set[int] = set()
+        if len(all_patches) != expected_patches:
+            raise AssertionError(
+                f"Every source patch must have a measured outcome: "
+                f"{len(all_patches)} vs {expected_patches}"
+            )
+        for line in all_patches:
+            values = dict(re.findall(r"([a-z_]+)=([^\s]+)", line))
+            required_patch = (
+                "patch", "source_sites", "source_leaves", "quad_faces",
+                "exterior_triangles", "uv_admitted", "physical_admitted",
+                "physical_facets", "rejection",
+            )
+            if any(key not in values for key in required_patch):
+                raise AssertionError(f"Missing native patch evidence: {line!r}")
+            patch = int(values["patch"])
+            uv_ok = int(values["uv_admitted"])
+            physical_ok = int(values["physical_admitted"])
+            if not (
+                0 <= patch < expected_patches
+                and patch not in unique_patches
+                and int(values["source_sites"]) > 4
+                and int(values["source_leaves"]) > 0
+                and uv_ok in (0, 1) and physical_ok in (0, 1)
+                and physical_ok <= uv_ok
+                and (values["rejection"] == "none") == (physical_ok == 1)
+                and (
+                    physical_ok == 0
+                    or int(values["physical_facets"]) ==
+                        2 * int(values["quad_faces"]) +
+                        int(values["exterior_triangles"])
+                )
+            ):
+                raise AssertionError(f"Invalid individual source patch admission: {line!r}")
+            unique_patches.add(patch)
+            uv_positive += uv_ok
+            physical_positive += physical_ok
+        if not (
+            len(unique_patches) == expected_patches
+            and int(summary["expected"]) == expected_patches
+            and int(summary["observed"]) == expected_patches
+            and int(summary["coherent_epoch"]) == int(fields["coherent_epoch"])
+            and int(summary["coherent_retry"]) == int(fields["coherent_retry"])
+            and int(summary["uv_accepted"]) == uv_positive
+            and int(summary["uv_rejected"]) == expected_patches - uv_positive
+            and int(summary["physical_accepted"]) == physical_positive
+            and int(summary["physical_rejected"]) ==
+                expected_patches - physical_positive
+            and int(summary["full_patch_coverage"]) == 1
+            and int(summary["global_mixed_model_admitted"]) == 0
+            and int(summary["physical_SubMesh_published"]) == 0
+        ):
+            raise AssertionError(f"Inconsistent full-model source counts: {all_summary[0]!r}")
+
         # Geometric sector admission is a separate scientific marker. Do not
         # convert an ambiguous real radial configuration into a CTest pass.
+        for measured_patch in all_patches:
+            print(measured_patch)
+        print(all_summary[0])
         print(shared[0])
         print(radial[0])
         print(markers[0])
