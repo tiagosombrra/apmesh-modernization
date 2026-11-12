@@ -199,7 +199,7 @@ def run(executable: Path, root: Path, model: str) -> None:
         # This report is computed from Bernstein control nets, NOT the
         # sampled sector sweep. A successful CTest can still report unproved
         # intervals, which must never be counted as continuous admission.
-        bound_fields = dict(re.findall(r"([a-z_]+)=([^\\s]+)", bernstein[0]))
+        bound_fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", bernstein[0]))
         required_bounds = (
             "patches", "high_valence_curves", "adjacent_pairs",
             "original_intervals", "pair_intervals_checked",
