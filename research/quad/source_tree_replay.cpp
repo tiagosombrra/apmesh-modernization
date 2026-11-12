@@ -99,7 +99,7 @@ void ValidateSourceContour(const AdapterBoundaryCapture& source,
               source.vertices.size() >= 4U &&
               source.vertices.size() == source.directed_edges.size(),
           "R2b2 source replay requires one provisional closed Adapter contour");
-  const auto* boundary = original.getBoundary();
+  auto* boundary = original.getBoundary();
   Require(boundary != nullptr, "R2b2 original source boundary is absent");
   const auto live_vertices = boundary->getBoundary();
   const auto live_edges = boundary->getEdges();
