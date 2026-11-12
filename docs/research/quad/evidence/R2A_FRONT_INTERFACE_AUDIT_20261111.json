@@ -2,7 +2,7 @@
   "schema": 1,
   "recorded_date_local": "2026-11-11",
   "scientific_scope": "Research engineering R2a: source-linked exact axis-aligned front geometry audit, not live hybrid generation",
-  "status": "R2A_CANDIDATE_NATIVE_AND_DIRECT_CI_QUALIFIED_PR_GATE_IN_PROGRESS",
+  "status": "R2A_RESEARCH_MERGED_EXACT_POSTMERGE_CI_PENDING",
   "feature_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/212",
   "feature_branch": "quad/integration-r2a-front-geometry-audit-20261111",
   "exact_feature_source_sha": "1e26f68c3e82d26382ceef9fbaf97ee0fdeb8fa8",
@@ -65,18 +65,14 @@
   "pr_ci": {
     "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43130207154",
     "exact_feature_source_sha": "1e26f68c3e82d26382ceef9fbaf97ee0fdeb8fa8",
-    "status": "in_progress",
-    "conclusion": null,
-    "jobs_passed": 3,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_passed": 4,
     "jobs_total": 4,
-    "passed": [
-      "native GCC QUAD",
-      "native MSVC QUAD",
-      "frozen TRI science parity"
-    ],
-    "pending": [
-      "Linux root CTest and tooling Python"
-    ]
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "native_gcc_msvc": "15/15 each",
+    "frozen_tri_eistute_book": "passed"
   },
   "limitations": {
     "production_tri_modified": false,
@@ -89,5 +85,20 @@
     "global_nonmanifold_weld_enabled": false,
     "no_local_compilation_claimed": true
   },
-  "next_gate": "Wait for exact PR test-merge CI 43130207154 to finish with required 4/4, then code review and merge expected head only after success; qualify exact merged-source SHA again, update evidence/roadmap/STATE and start R2b owned AFT front."
+  "next_gate": "Check exact merged SHA eabc5201 CI #43131307374 for Linux/GCC, Windows/MSVC, root 85 CTest, 527 Python and frozen TRI Eistute/Book. Only then mark R2a source gate qualified and proceed R2b owned front handoff; never imply live physical AFT elements or enabled CLI.",
+  "pr_merge": {
+    "merged": true,
+    "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/212",
+    "merged_sha": "eabc5201eadfe016c2b9698d43648c9ea7062109",
+    "target": "quad-templates",
+    "production_main_changed": false
+  },
+  "postmerge_ci": {
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43131307374",
+    "exact_source_sha": "eabc5201eadfe016c2b9698d43648c9ea7062109",
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs_passed": null,
+    "jobs_total": 4
+  }
 }
