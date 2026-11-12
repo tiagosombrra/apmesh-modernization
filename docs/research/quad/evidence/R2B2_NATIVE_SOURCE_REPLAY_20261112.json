@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-11-12",
+  "milestone": "R2b2 owned native tree replay from actual original serial Adapter and AFT",
+  "status": "EXPERIMENTAL_SOURCE_458C_NOT_EXACT_4_4_QUALIFIED",
+  "source_sha": "458cbea21e8330e23cdd5b3ca9c89f38d0c1d20d",
+  "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
+  "feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43202602922",
+  "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43202612264",
+  "prior_failed_source": "8f48280b288f7c74ff222b04d0fa86851324338d",
+  "prior_failure": "root compile failed due const native Boundary getter mismatch",
+  "production_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "scope": [
+    "Copy real Adapter UV/XYZ provenance values and contour into independent Boundary owners",
+    "Recreate exact original native refined tree topology by per-node selective subdivision",
+    "Compare exact original vs clone leaf boxes/depth/neighbor geography",
+    "Replay native TRI-template source front in one clone versus selected QUAD T1-T6 and original exterior AFT in another",
+    "Assert original in-flight TRI tree and accepted SubMesh unchanged; reject adversarial altered source UV",
+    "First positive case only a four-site original Adapter square; no model-wide Eistute/Book real adapted source tested"
+  ],
+  "gate": {
+    "linux_native_quad": "PASS",
+    "windows_native_quad": "PASS",
+    "frozen_eistute_book_tri": "PASS",
+    "root_87_ctest": "PENDING",
+    "python_527": "PENDING",
+    "feature_4of4": "NOT VERIFIED",
+    "pr_4of4": "NOT VERIFIED"
+  },
+  "open": [
+    "Nonuniform original curve midpoint and physical arc-length metadata not replayed into independent boundary",
+    "True Eistute/Book dynamic multi-sample original Adapter source replay not yet pushed",
+    "Late failure, global physics and repeated-run memory sanitizer not qualified",
+    "Original FOUR consecutive native fixture segfault unresolved; zero-snapshot bug fixed separately",
+    "No typed mixed QUAD/TRI SubMesh, no CLI quad_uv"
+  ],
+  "next": "Inspect exact root errors on 458c, correct with strict gates; then add dynamic Eistute/Book per-attempt source reconstruction and report actual source sample coverage."
+}
