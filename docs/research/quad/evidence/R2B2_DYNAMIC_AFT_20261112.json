@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date_utc": "2026-11-12",
+  "stage": "R2b2-original-AFT-dynamic-source-first-diagnostic",
+  "classification": "research-only, bounded original TRI AFT on real Adapter adapted source, candidate acceptance separate from test exit status",
+  "feature_sha": "1f2da57ff4dc4dd6dde358ede0efd772da3fb3ba",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "pr": 214,
+  "pr_state": "draft/unmerged",
+  "production_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "source_reference": {
+    "sha": "76250559951b5ac0e45982d0c86606d001feb53a",
+    "feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43204053789",
+    "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43204061864",
+    "status": "exact 4/4 each; real dynamic source tree one per external model"
+  },
+  "diagnostic": {
+    "source": "first nontrivial actual Eistute or Book source Adapter chart per GeneratorAdaptive invocation",
+    "tri_reference": "independent cloned original Quadtree native TRI-template front",
+    "quad_candidate": "separately owned cloned source Quadtree with T1–T6 research interior",
+    "aft": "OwnedQuadAftFront::Seed then original AdvancingFront geometry/topology exterior phases",
+    "positive_invariants": [
+      "nonzero exterior TRI",
+      "front and rejected edges drained",
+      "positive triangle signed areas",
+      "every original QUAD seam matched once by oppositely oriented TRI",
+      "unchanged seam vertices",
+      "QUAD+TRI UV area equals original source boundary",
+      "pairwise TRI/TRI and TRI/QUAD no positive-area overlap"
+    ],
+    "negative_policy": "diagnostic records rejection reason, destroys whole candidate owner, never publishes physical SubMesh or claims positive AFT viability",
+    "expected_stdout": [
+      "dynamic_source_aft_attempted",
+      "dynamic_source_aft_admitted",
+      "dynamic_source_aft_quad_faces",
+      "dynamic_source_aft_exterior_triangles",
+      "dynamic_source_aft_rejection"
+    ],
+    "run_artifact": "quad-r2b2-actual-source-aft-${github_sha}"
+  },
+  "ci": {
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43206236696",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43206246419",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "native_linux": "16/16 PASS",
+    "native_windows": "16/16 PASS",
+    "root_ctest": "pending",
+    "python": "pending",
+    "tri_frozen": "pending",
+    "dynamic_source_model_admission": "unverified"
+  },
+  "scope_limits": [
+    "one dynamic chart attempt per real external model, not all source patches",
+    "candidate rejection is not success even if CTest passes",
+    "no physical XYZ PatchBezier mapping for newly adapted candidate",
+    "no model-wide shared-curve ownership/welding",
+    "no typed mixed physical SubMesh",
+    "no repeated mixed adaptivity",
+    "no sanitizer verification of historical fourth-in-process crash",
+    "historical 1993 numeric formula remains experimental",
+    "quad_uv CLI disabled"
+  ],
+  "next": "Qualify exact push/PR and extract per-model diagnostic accepted/rejected values; fix actual failures without reducing scientific gates. Then physical source XYZ and previously accepted mesh rollback."
+}
