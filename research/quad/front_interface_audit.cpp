@@ -152,7 +152,7 @@ std::vector<UvFrontSegment> SnapshotLegacyFront(
 
   std::vector<UvFrontSegment> result;
   result.reserve(front.size());
-  for (const auto* edge : front) {
+  for (auto* edge : front) {
     Require(edge != nullptr, "Legacy front has a null edge");
     Require(edge->getV1() != nullptr && edge->getV2() != nullptr,
             "Legacy front has a missing endpoint");
