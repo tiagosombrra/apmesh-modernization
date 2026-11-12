@@ -79,7 +79,7 @@
     "historical 1993 point rule not advisor approved",
     "quad_uv CLI remains disabled"
   ],
-  "next": "Verify source-exact latest CI and original radial sector + endpoint/interior mismatched ID metrics; design explicit sheet policy without blind welding; then all-patch AFT, physical SubMesh rollback and ASan/UBSan.",
+  "next": "Qualify exact current source terminal provenance and both independent 4/4 CIs; inspect original shared source-owner IDs. Then formalize high-valence edge incidence without arbitrary welding, all-patch original AFT and physical XYZ; SubMesh publication/rollback, repeated adaptation and ASan/UBSan outstanding.",
   "measured_previous_true_source_topology": {
     "source_sha": "5952a0ea6acfa408e352dc82cb36c68a6d98d7d7",
     "feature": {
@@ -203,5 +203,64 @@
     "negative_controls": "duplicate radial sector and zero tangent; unverified",
     "source_node_id_endpoint_interior_split": "pending"
   },
-  "latest_feature": "47176ed47d0cfd4f7d328221777f499c15077a21"
+  "latest_feature": "47176ed47d0cfd4f7d328221777f499c15077a21",
+  "radial_sector_measured": {
+    "exact_sha": "47176ed47d0cfd4f7d328221777f499c15077a21",
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43265327210",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43265339342",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "native_linux_quad": "16/16",
+    "native_windows_quad": "16/16",
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "frozen_tri": "passed",
+    "eistute": {
+      "real_patches": 4,
+      "central_curve_valence": 4,
+      "angular_distinct_sectors": 4,
+      "coincident_radial_pairs": 0,
+      "minimum_angular_gap_radians": 1.5708,
+      "source_curve_xyz_error": 0,
+      "original_node_id_mismatch_sites": 6,
+      "mismatch_sites_at_source_endpoints": 6,
+      "mismatch_sites_at_interior_samples": 0,
+      "automatic_sheet_pairing": false,
+      "negative_controls": "passed"
+    },
+    "book": {
+      "real_patches": 28,
+      "central_curve_valence": 28,
+      "angular_distinct_sectors": 28,
+      "coincident_radial_pairs": 0,
+      "minimum_angular_gap_radians": 0.0318123,
+      "source_curve_xyz_error": 0,
+      "original_node_id_mismatch_sites": 378,
+      "mismatch_sites_at_source_endpoints": 378,
+      "mismatch_sites_at_interior_samples": 0,
+      "automatic_sheet_pairing": false,
+      "negative_controls": "passed"
+    },
+    "source": "verbatim root CI R2B2_SHARED_SHEET_SECTORS and R2B2_SHARED_CURVE_MODEL (both pipelines)",
+    "physical_submesh_published": false,
+    "global_mixed_mesh_admitted": false
+  },
+  "current_source_endpoint_candidate": {
+    "sha": "1d46ba4abce35cc5a28ec214c0d5787414928889",
+    "feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43267126924",
+    "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43267143566",
+    "status": "pending root",
+    "native_linux_windows": "16/16 passed",
+    "tri_frozen": "passed",
+    "source_owner_id_global_equality": "unverified",
+    "negative_controls": "forged original curve owner terminal ID and XYZ"
+  }
 }
