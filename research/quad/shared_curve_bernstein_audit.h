@@ -21,6 +21,8 @@ namespace apmesh::quad {
 struct SharedCurveBernsteinAudit {
   std::size_t high_valence_curves = 0;
   std::size_t adjacent_pairs = 0;
+  std::size_t wide_reference_pairs = 0;
+  std::size_t ambiguous_reference_pairs = 0;
   std::size_t original_intervals = 0;
   std::size_t pair_intervals_checked = 0;
   std::size_t certified_pair_intervals = 0;
@@ -184,15 +186,32 @@ inline SharedCurveBernsteinAudit AuditOriginalHighValenceBernsteinIntervals(
           ? second.angle_radians
           : second.angle_radians + 2.0 * 3.14159265358979323846;
       const double gap = end - first.angle_radians;
-      // Positive orientation alone cannot distinguish a >180-degree sector.
-      if (!(gap > 1e-6 && gap < 3.14159265358979323846)) {
-        report.reason = "unsupported_midpoint_sector_gap";
-        return report;
+      constexpr double pi = 3.14159265358979323846;
+      // An adjacent sector wider than pi has NEGATIVE signed triple
+      // product, not an invalid source fan. Certify the expected sign of
+      // every sector; this avoids rejecting a legitimate wide exterior
+      // sector in the original Book source.
+      const bool ambiguous =
+          !(gap > 1e-6 && gap < 2.0 * pi - 1e-6) ||
+          std::abs(gap - pi) <= 1e-6;
+      const bool wide = gap > pi;
+      ++report.adjacent_pairs;
+      report.wide_reference_pairs += wide ? 1U : 0U;
+      report.ambiguous_reference_pairs += ambiguous ? 1U : 0U;
+      if (ambiguous) {
+        // No sign choice is defensible at a tangency or antiparallel ray.
+        // Account for every original interval as explicitly inconclusive.
+        report.pair_intervals_checked += sites.size() - 1U;
+        report.inconclusive_pair_intervals += sites.size() - 1U;
+        continue;
       }
-      const auto polynomial = interval::OrientationPolynomial(
+      auto polynomial = interval::OrientationPolynomial(
           tangent, radials.at({first.patch, first.side}),
                    radials.at({second.patch, second.side}));
-      ++report.adjacent_pairs;
+      if (wide) {
+        for (auto& coefficient : polynomial)
+          coefficient = interval::Negate(coefficient);
+      }
       for (std::size_t i = 0; i + 1U < sites.size(); ++i) {
         const auto bound = interval::CertifyPositive(
             polynomial, sites[i].t, sites[i + 1U].t);
@@ -214,7 +233,8 @@ inline SharedCurveBernsteinAudit AuditOriginalHighValenceBernsteinIntervals(
       report.pair_intervals_checked > 0U &&
       report.pair_intervals_checked == report.certified_pair_intervals &&
       report.inverted_pair_intervals == 0U &&
-      report.inconclusive_pair_intervals == 0U;
+      report.inconclusive_pair_intervals == 0U &&
+      report.ambiguous_reference_pairs == 0U;
   report.reason = report.interval_order_certified
       ? "strict_positive_bernstein_bounds" : "unresolved_or_inverted_interval";
   report.automatic_sheet_pairing_enabled = false;
