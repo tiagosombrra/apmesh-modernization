@@ -60,6 +60,10 @@ def run(executable: Path, root: Path, model: str) -> None:
             line for line in result.stdout.splitlines()
             if line.startswith("R2B2_SHARED_SHEET_SWEEP ")
         ]
+        bernstein = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_SHARED_SHEET_BERNSTEIN ")
+        ]
         all_patches = [
             line for line in result.stdout.splitlines()
             if line.startswith("R2B2_ALL_PATCH_RESULT ")
@@ -70,11 +74,11 @@ def run(executable: Path, root: Path, model: str) -> None:
         ]
         if (result.returncode != 0 or len(markers) != 1
                 or len(shared) != 1 or len(radial) != 1
-                or len(sweep) != 1 or len(all_summary) != 1):
+                or len(sweep) != 1 or len(bernstein) != 1 or len(all_summary) != 1):
             raise AssertionError(
                 f"Generator research probe failed: rc={result.returncode}, "
                 f"markers={markers}, shared={shared}, radial={radial}, "
-                f"sweep={sweep}, "
+                f"sweep={sweep}, bernstein={bernstein}, "
                 f"all_summary={all_summary}, all_patch_count={len(all_patches)}, "
                 f"stdout_tail={result.stdout[-5000:]!r}, "
                 f"stderr_tail={result.stderr[-5000:]!r}"
@@ -190,6 +194,45 @@ def run(executable: Path, root: Path, model: str) -> None:
         ):
             raise AssertionError(
                 f"Invalid original high-valence curve sweep evidence: {sweep[0]!r}"
+            )
+
+        # This report is computed from Bernstein control nets, NOT the
+        # sampled sector sweep. A successful CTest can still report unproved
+        # intervals, which must never be counted as continuous admission.
+        bound_fields = dict(re.findall(r"([a-z_]+)=([^\\s]+)", bernstein[0]))
+        required_bounds = (
+            "patches", "high_valence_curves", "adjacent_pairs",
+            "original_intervals", "pair_intervals_checked",
+            "certified_pair_intervals", "inverted_pair_intervals",
+            "inconclusive_pair_intervals", "smallest_positive_lower",
+            "interval_order_certified", "automatic_sheet_pairing_enabled",
+            "negative_controls", "reason", "global_mixed_model_admitted",
+        )
+        if any(key not in bound_fields for key in required_bounds):
+            raise AssertionError(
+                f"Missing real continuous radial interval evidence: {bernstein[0]!r}"
+            )
+        checked = int(bound_fields["pair_intervals_checked"])
+        certified = int(bound_fields["certified_pair_intervals"])
+        inverted = int(bound_fields["inverted_pair_intervals"])
+        unresolved = int(bound_fields["inconclusive_pair_intervals"])
+        full_certificate = int(bound_fields["interval_order_certified"])
+        if not (
+            int(bound_fields["patches"]) == expected_patches
+            and int(bound_fields["high_valence_curves"]) == 1
+            and int(bound_fields["adjacent_pairs"]) == expected_patches
+            and int(bound_fields["original_intervals"]) == intervals
+            and checked == expected_patches * intervals
+            and checked == certified + inverted + unresolved
+            and full_certificate in (0, 1)
+            and (full_certificate == 1)
+            == (certified == checked and inverted == unresolved == 0)
+            and int(bound_fields["negative_controls"]) == 1
+            and int(bound_fields["automatic_sheet_pairing_enabled"]) == 0
+            and int(bound_fields["global_mixed_model_admitted"]) == 0
+        ):
+            raise AssertionError(
+                f"Invalid actual continuous Bezier sector bounds: {bernstein[0]!r}"
             )
 
         # Every original model patch must be observed in a SINGLE source
