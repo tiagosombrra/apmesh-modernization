@@ -82,15 +82,20 @@ class OwnedQuadAftFront final : public Par2DJMesh::AFT::AdvancingFront {
 
   bool IsSeeded() const noexcept { return seeded_; }
   const Par2DJMesh::Basics::EdgeList& ActiveFront() const noexcept { return front; }
-  const Par2DJMesh::Basics::EdgeList& OwnedSeamEdges() const noexcept {
-    return innerEdges;
+  // Immutable observer views for the ORIGINAL QUAD seam only. AFT appends
+  // newly generated TRI edges/vertices to innerEdges/innerVertices later.
+  const std::vector<Par2DJMesh::Basics::Edge*>& OwnedSeamEdges() const noexcept {
+    return seam_edges_;
   }
-  const Par2DJMesh::Basics::VertexList& OwnedSeamVertices() const noexcept {
-    return innerVertices;
+  const std::vector<Par2DJMesh::Basics::Vertex*>& OwnedSeamVertices() const noexcept {
+    return seam_vertices_;
   }
   const Par2DJMesh::Basics::FaceList& Triangles() const noexcept { return mesh; }
 
  private:
+  // AFT owns these objects; this vector owns no vertices or edges.
+  std::vector<Par2DJMesh::Basics::Edge*> seam_edges_;
+  std::vector<Par2DJMesh::Basics::Vertex*> seam_vertices_;
   bool exterior_attempted_ = false;
   bool seeded_ = false;
 };

@@ -201,7 +201,8 @@ OwnedAftFrontReport OwnedQuadAftFront::Seed(
     const std::vector<UvFrontSegment>& original_tri_front) {
   Require(!seeded_ && front.empty() && vertices.empty() &&
               innerVertices.empty() && innerEdges.empty() &&
-              edges.empty() && mesh.empty(),
+              edges.empty() && mesh.empty() &&
+              seam_edges_.empty() && seam_vertices_.empty(),
           "R2b front was already initialized or has prior accepted content");
   Require(quadtree != nullptr && boundary != nullptr &&
               quadtree->getBoundary() == boundary,
@@ -232,11 +233,18 @@ OwnedAftFrontReport OwnedQuadAftFront::Seed(
   std::list<Edge*> owned_edges;
   std::list<Edge*> edge_observers;
   std::list<Edge*> active_edges;
+  // Stage the research seam identity separately from AFT's growing owner lists.
+  // Both vectors are complete before the first AFT publication.
+  std::vector<Vertex*> staged_seam_vertices;
+  std::vector<Edge*> staged_seam_edges;
+  staged_seam_vertices.reserve(pending_vertices.size());
+  staged_seam_edges.reserve(planned.size());
 
   for (auto& [id, value] : pending_vertices) {
     (void)id;
     owned_vertices.push_back(value.get());
     vertex_observers.push_back(value.get());
+    staged_seam_vertices.push_back(value.get());
   }
   for (const auto& plan : planned) {
     auto* first = pending_vertices.at(plan.first).get();
@@ -251,6 +259,7 @@ OwnedAftFrontReport OwnedQuadAftFront::Seed(
     owned_edges.push_back(edge.get());
     edge_observers.push_back(edge.get());
     active_edges.push_back(edge.get());
+    staged_seam_edges.push_back(edge.get());
     pending_edges.push_back(std::move(edge));
   }
 
@@ -290,6 +299,8 @@ OwnedAftFrontReport OwnedQuadAftFront::Seed(
   edges.splice(edges.end(), edge_observers);
   innerVertices.splice(innerVertices.end(), owned_vertices);
   innerEdges.splice(innerEdges.end(), owned_edges);
+  seam_edges_.swap(staged_seam_edges);
+  seam_vertices_.swap(staged_seam_vertices);
   for (auto& edge : pending_edges) {
     edge.release();
   }
@@ -424,7 +435,7 @@ ExteriorAftReport OwnedQuadAftFront::AttemptExteriorTriangulation(
   Require(seeded_ && !exterior_attempted_ && mesh.empty(),
           "R2b2 requires an unused, successfully seeded AFT instance");
   Require(selected.mode == InteriorTemplateMode::ExperimentalQuad &&
-              selected.quad_region_boundary.size() == innerEdges.size() &&
+              selected.quad_region_boundary.size() == seam_edges_.size() &&
               quadtree->GetTemplateFaces().empty(),
           "R2b2 source changed or contains overlapping legacy TRI templates");
 
@@ -436,7 +447,7 @@ ExteriorAftReport OwnedQuadAftFront::AttemptExteriorTriangulation(
             "R2b2 requires source-boundary edges with live cell observers");
   }
   std::map<Vertex*, std::pair<double, double>> saved_uv;
-  for (auto* v : innerVertices) {
+  for (auto* v : seam_vertices_) {
     Require(v != nullptr, "R2b2 has a null owned seam vertex");
     saved_uv.emplace(v, std::make_pair(v->getX(), v->getY()));
   }
@@ -489,7 +500,7 @@ ExteriorAftReport OwnedQuadAftFront::AttemptExteriorTriangulation(
     }
     report.triangle_uv_area += 0.5 * twice;
   }
-  for (auto* edge : innerEdges) {
+  for (auto* edge : seam_edges_) {
     std::size_t count = 0;
     for (auto* face : mesh) {
       const std::array<std::pair<Vertex*, Vertex*>, 3> oriented{{
@@ -506,7 +517,7 @@ ExteriorAftReport OwnedQuadAftFront::AttemptExteriorTriangulation(
     if (count == 1) ++report.seam_edges_with_one_tri;
   }
   report.seam_orientation_complete =
-      report.seam_edges_with_one_tri == innerEdges.size();
+      report.seam_edges_with_one_tri == seam_edges_.size();
   report.seam_vertices_unchanged = true;
   for (const auto& [v, position] : saved_uv) {
     if (v->getX() != position.first || v->getY() != position.second) {

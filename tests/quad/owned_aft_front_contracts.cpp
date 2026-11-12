@@ -307,6 +307,9 @@ int main() {
               "Native source patch boundary has no valid cell observer");
       const auto report = s.aft->AttemptExteriorTriangulation(s.selected);
       Check(report.exterior_triangles == s.aft->Triangles().size() &&
+                s.aft->OwnedSeamEdges().size() == 16 &&
+                s.aft->OwnedSeamVertices().size() == 16 &&
+                report.seam_edges_with_one_tri == 16 &&
                 report.boundary_uv_area > report.quad_uv_area &&
                 report.seam_vertices_unchanged &&
                 report.spatial_overlap_tested && !report.qualified,
