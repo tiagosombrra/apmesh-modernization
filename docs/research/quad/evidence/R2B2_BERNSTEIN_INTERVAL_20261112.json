@@ -3,7 +3,7 @@
   "date_utc": "2026-11-12",
   "milestone": "R2b2 continuous source Bezier radial-order interval gate",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
-  "feature_sha": "ad9c789f200f2324c5d26a45703c10a621787809",
+  "feature_sha": "a2a830858357776d77ad0020721efd0adf7fa1cc",
   "draft_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
   "mathematical_quantity": "T(t) dot (R_i(t) cross R_j(t)); degree <= 8",
   "coefficient_basis": "Bernstein, outward nextafter interval arithmetic, de Casteljau restriction",
@@ -24,13 +24,12 @@
     "book": 336
   },
   "toolchain_status_at_checkpoint": {
-    "linux_native_quad": "success",
-    "windows_native_quad": "success",
-    "frozen_TRI_scientific_parity": "success",
-    "linux_root_ctest_python": "in_progress"
+    "exact_feature_native_quads": "in_progress",
+    "full_linux_root_ctest_python": "in_progress",
+    "frozen_TRI_scientific_parity": "in_progress"
   },
-  "exact_pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43307378736",
-  "observed_original_interval_model_counts": "not_yet_observed",
+  "exact_pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43309180825",
+  "observed_original_interval_model_counts": "Eistute first failed revision 40/40; final SHA both pending",
   "model_wide_interval_certification": "pending",
   "local_native_tests": "not_executed",
   "asan_ubsan": "not_executed",
@@ -40,5 +39,33 @@
   "physical_SubMesh_published": false,
   "main_untouched": true,
   "scientific_scope": "local adjacent radial sector order only; no nonmanifold ownership or whole surface nonintersection proof",
-  "next": "inspect exact CI source logs, classify Eistute/Book sign bounds, repair and repeat exact CI if necessary"
+  "next": "inspect exact CI source logs, classify Eistute/Book sign bounds, repair and repeat exact CI if necessary",
+  "gate_status": "postrepair_exact_head_ci_pending",
+  "prior_failed_gate": {
+    "sha": "9d6b46e9d9ba8f9161a34fbaf8f7128196f342c5",
+    "push_run": 43307082540,
+    "failed_ctests": [
+      "quad.generator.real_global_outcomes",
+      "quad.generator.real_global_outcomes.book"
+    ],
+    "observed_eistute": {
+      "pair_intervals_checked": 40,
+      "certified_pair_intervals": 40,
+      "smallest_positive_lower": 0.0329135,
+      "interval_order_certified": true
+    },
+    "book": "pre-marker early return; no interval report",
+    "cause": [
+      "literal backslash-n record separator",
+      "unsupported wide reference sector early return"
+    ]
+  },
+  "repair": {
+    "signed_wide_sectors": true,
+    "ambiguous_gaps_inconclusive": true,
+    "source_metrics": true,
+    "newline": true,
+    "negative_sign_control": true,
+    "sha": "a2a830858357776d77ad0020721efd0adf7fa1cc"
+  }
 }
