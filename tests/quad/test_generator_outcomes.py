@@ -232,6 +232,10 @@ def run(executable: Path, root: Path, model: str) -> None:
             and full_certificate in (0, 1)
             and (full_certificate == 1)
             == (certified == checked and inverted == unresolved == 0)
+            and (bound_fields["reason"] == "strict_positive_bernstein_bounds")
+                == (full_certificate == 1)
+            and (full_certificate == 0
+                 or float(bound_fields["smallest_positive_lower"]) > 0.0)
             and int(bound_fields["negative_controls"]) == 1
             and int(bound_fields["automatic_sheet_pairing_enabled"]) == 0
             and int(bound_fields["global_mixed_model_admitted"]) == 0
@@ -316,6 +320,9 @@ def run(executable: Path, root: Path, model: str) -> None:
         print(shared[0])
         print(radial[0])
         print(sweep[0])
+        # Retain the complete original-source interval certificate report.
+        # CTest success alone is not evidence that every interval was proven.
+        print(bernstein[0])
         print(markers[0])
 
 
