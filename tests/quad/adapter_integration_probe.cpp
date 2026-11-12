@@ -230,20 +230,29 @@ CaseResult RunPatch(bool abort_during_capture,
 
 } // namespace
 
-int main() {
+int main(int argc, char** argv) {
   try {
+    if (argc == 2 && std::string(argv[1]) == "--boundary-abort") {
+      // Keep this fault injection in an independent process. The historic
+      // three-scenario program is still exercised unchanged in one process.
+      const auto aborted = RunPatch(false, {901, 20, 3}, true);
+      Require(aborted.boundary_snapshots == 1 &&
+                  aborted.snapshots == 0 &&
+                  aborted.local_decisions == 0,
+              "Pre-refinement Adapter boundary abort published provisional output");
+      std::cout << "real_adapter_boundary_abort=ok snapshots=1"
+                   " refined_tree_callbacks=0 selected=0"
+                   " accepted_submesh_unchanged=1\n";
+      return 0;
+    }
+    Require(argc == 1, "Usage: quad_adapter_integration_probe [--boundary-abort]");
     const auto normal = RunPatch(false, {901, 17, 0});
     const auto repeated = RunPatch(false, {901, 18, 1});
     const auto failed = RunPatch(true, {901, 19, 2});
-    const auto pre_tree_failure = RunPatch(false, {901, 20, 3}, true);
     Require(normal.local_decisions == repeated.local_decisions &&
                 normal.selected_decisions == repeated.selected_decisions &&
                 !apmesh::quad::SameOuterAttempt(normal.outer, repeated.outer),
             "Two identical patch/retry paths collided across global epochs");
-    Require(pre_tree_failure.boundary_snapshots == 1 &&
-                pre_tree_failure.snapshots == 0 &&
-                pre_tree_failure.local_decisions == 0,
-            "Pre-refinement Adapter boundary failure was not fail-closed");
     Require(normal.source_leaves > 0 && failed.source_leaves > 0,
             "No refined real Quadtree was observed");
     Require(normal.polygon_count > 0 && failed.polygon_count > 0,
@@ -251,13 +260,12 @@ int main() {
     Require(normal.local_decisions >= 2 && normal.selected_decisions == 1 &&
                 normal.superseded_or_failed >= 1 && failed.local_decisions == 0,
             "Real retry/local selection and abort decisions were not separated");
-    std::cout << "real_adapter_capture_cases=4 normal_triangles="
+    std::cout << "real_adapter_capture_cases=3 normal_triangles="
               << normal.output_triangles << " snapshots="
               << (normal.snapshots + failed.snapshots)
               << " boundary_snapshots="
               << normal.boundary_snapshots + repeated.boundary_snapshots +
-                     failed.boundary_snapshots + pre_tree_failure.boundary_snapshots
-              << " boundary_abort_before_tree=" << pre_tree_failure.boundary_snapshots
+                     failed.boundary_snapshots
               << " local_attempts=" << normal.local_decisions
               << " selected=" << normal.selected_decisions
               << " superseded_or_failed=" << normal.superseded_or_failed

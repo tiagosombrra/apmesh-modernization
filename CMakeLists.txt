@@ -198,6 +198,12 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   add_test(NAME quad.adapter.real_patch_capture COMMAND quad_adapter_integration_probe)
   set_tests_properties(quad.adapter.real_patch_capture PROPERTIES
     LABELS "research-quad;application;required-gate" TIMEOUT 75)
+  # Run the pre-refinement observer-abort in its own native process to expose
+  # source lifetime and previous-SubMesh restoration independently.
+  add_test(NAME quad.adapter.real_boundary_abort
+    COMMAND quad_adapter_integration_probe --boundary-abort)
+  set_tests_properties(quad.adapter.real_boundary_abort PROPERTIES
+    LABELS "research-quad;application;ownership;required-gate" TIMEOUT 75)
 
   # R2b2: native source-aligned QUAD/AFT UV directly lifted through actual
   # PatchReader/PatchBezier. This target never enters the production CLI.

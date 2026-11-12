@@ -51,23 +51,28 @@ int Run(const std::string& config_path) {
   std::size_t original_boundary_samples = 0;
   std::size_t original_interior_curve_samples = 0;
   std::size_t source_tree_boundary_matches = 0;
-  std::map<AttemptKey, apmesh::quad::AdapterBoundaryCapture> boundaries;
-  AttemptKey last_boundary_key{};
+  // The original generator can revisit a logical patch/retry identity.
+  // Chronological callback order, not a uniqueness assumption, joins the
+  // actual source boundary to its one refined Quadtree observation.
+  std::vector<apmesh::quad::AdapterBoundaryCapture> boundaries;
+  std::map<AttemptKey, std::size_t> occurrences;
+  std::size_t repeated_boundary_keys = 0;
   apmesh::quad::CaptureHooks hooks;
   hooks.provider = [&](Par2DJMesh::AFT::Quadtree& tree) {
     // The M3-6c contract is global chronology, not a scientific polygon rule.
     Require(tree.getRoot() != nullptr, "Global fixture observed an uninitialized tree");
-    const auto latest = boundaries.find(last_boundary_key);
-    Require(latest != boundaries.end(),
-            "Original Adapter did not publish a source boundary before tree refinement");
+    Require(!boundaries.empty() &&
+                boundaries.size() > source_tree_boundary_matches,
+            "Original Adapter did not publish a new boundary before refinement");
+    const auto& source_boundary = boundaries.back();
     const auto actual = tree.getBoundary()->getBoundary();
     const auto edges = tree.getBoundary()->getEdges();
-    Require(actual.size() == latest->second.vertices.size() &&
-                edges.size() == latest->second.directed_edges.size(),
+    Require(actual.size() == source_boundary.vertices.size() &&
+                edges.size() == source_boundary.directed_edges.size(),
             "Real refined Quadtree changed original Adapter boundary count");
     std::size_t offset = 0;
     for (auto* vertex : actual) {
-      const auto& source = latest->second.vertices[offset++];
+      const auto& source = source_boundary.vertices[offset++];
       Require(vertex->getId() == source.aft_vertex_id &&
                   vertex->getX() == source.uv.u && vertex->getY() == source.uv.v,
               "Real refined Quadtree changed source UV/vertex identity");
@@ -83,8 +88,10 @@ int Run(const std::string& config_path) {
     Require(capture.attempt.outer.session == session &&
                 capture.attempt.outer.epoch > 0,
             "UV capture lost its outer generator namespace");
-    Require(boundaries.count(Identity(capture.attempt)) == 1,
-            "Refined Quadtree capture did not join the exact source boundary attempt");
+    Require(!boundaries.empty() &&
+                Identity(capture.attempt) == Identity(boundaries.back().attempt) &&
+                source_tree_boundary_matches == captured_calls + 1,
+            "Refined Quadtree did not join the current source boundary callback");
     source_leaves += capture.polygons.source_leaves;
     ++captured_calls;
     uv_attempts.push_back(capture.attempt.outer);
@@ -123,9 +130,10 @@ int Run(const std::string& config_path) {
       previous_local = point.chart_parameter;
       first = false;
     }
-    last_boundary_key = Identity(capture.attempt);
-    Require(boundaries.emplace(last_boundary_key, std::move(capture)).second,
-            "Original Adapter repeated the same boundary attempt identity");
+    const auto key = Identity(capture.attempt);
+    if (++occurrences[key] > 1U)
+      ++repeated_boundary_keys;
+    boundaries.push_back(std::move(capture));
     original_boundary_samples += sum;
     ++original_boundary_callbacks;
   };
@@ -214,6 +222,7 @@ int Run(const std::string& config_path) {
             << " boundary_source_samples=" << original_boundary_samples
             << " interior_curve_samples=" << original_interior_curve_samples
             << " identical_refined_boundary=" << source_tree_boundary_matches
+            << " repeated_logical_attempt_keys=" << repeated_boundary_keys
             << " local_selected=" << locally_selected.size()
             << " global_epochs=" << global_epochs.size()
             << " truncated=" << log->truncated() << '\n';
