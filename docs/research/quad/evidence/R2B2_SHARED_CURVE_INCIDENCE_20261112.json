@@ -79,7 +79,7 @@
     "historical 1993 point rule not advisor approved",
     "quad_uv CLI remains disabled"
   ],
-  "next": "verify exact 1535 source 4/4 and geometry matches, then audit real per-sheet physical junction sector pairing and all-patch QUAD AFT; no global welding or R2c publication before independent approval",
+  "next": "Verify source-exact latest CI and original radial sector + endpoint/interior mismatched ID metrics; design explicit sheet policy without blind welding; then all-patch AFT, physical SubMesh rollback and ASan/UBSan.",
   "measured_previous_true_source_topology": {
     "source_sha": "5952a0ea6acfa408e352dc82cb36c68a6d98d7d7",
     "feature": {
@@ -137,5 +137,71 @@
       "shared_node_pairs"
     ],
     "negative_controls": "bad direction must reject strict two-sided seam while geometry-only equal candidate passes"
-  }
+  },
+  "latest_model_curve_source": {
+    "sha": "09af072264d2c3c4328b43612fbc502f12197dea",
+    "push": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43259404484",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43259664560",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "linux_quad": "16/16",
+    "windows_quad": "16/16",
+    "tri_frozen": "passed",
+    "eistute": {
+      "patches": 4,
+      "curves": 13,
+      "high_valence": 4,
+      "curve_source_geometry_matched": 1,
+      "geometry_rejected": 0,
+      "source_node_id_pair_mismatches": 6,
+      "source_node_id_mismatch_sites": 6,
+      "source_site_pairs_compared": 66,
+      "xyz_error": 0,
+      "same_direction_pairs": 6,
+      "opposite_direction_pairs": 0,
+      "sheet_policy": "pending"
+    },
+    "book": {
+      "patches": 28,
+      "curves": 85,
+      "high_valence": 28,
+      "curve_source_geometry_matched": 1,
+      "geometry_rejected": 0,
+      "source_node_id_pair_mismatches": 378,
+      "source_node_id_mismatch_sites": 378,
+      "source_site_pairs_compared": 4914,
+      "xyz_error": 0,
+      "same_direction_pairs": 378,
+      "opposite_direction_pairs": 0,
+      "sheet_policy": "pending"
+    },
+    "conclusion": "True original source curve XYZ/parameter samples match across all high-valence incidences in same epoch; physical mixed shared-sheet topology is unqualified"
+  },
+  "radial_sector_candidate": {
+    "sha": "47176ed47d0cfd4f7d328221777f499c15077a21",
+    "paths": [
+      "research/quad/shared_curve_audit.h",
+      "research/quad/shared_curve_sector_audit.h",
+      "tests/quad/generator_outcome_probe.cpp",
+      "tests/quad/test_generator_outcomes.py"
+    ],
+    "feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43265327210",
+    "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43265339342",
+    "status": "in_progress",
+    "source_geometry_admission": "pending",
+    "automatic_sheet_pairing": false,
+    "negative_controls": "duplicate radial sector and zero tangent; unverified",
+    "source_node_id_endpoint_interior_split": "pending"
+  },
+  "latest_feature": "47176ed47d0cfd4f7d328221777f499c15077a21"
 }
