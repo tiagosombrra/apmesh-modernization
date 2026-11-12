@@ -35,6 +35,15 @@ not from assumed recall of earlier conversations. The protocol is not an automat
 scheduler: a connected actor must perform the write. If tools are unavailable,
 report that the checkpoint could not be persisted.
 
+
+## 2026-11-12 — R2b1 exact postmerge qualified; R2b2 native exterior draft
+
+[R2b1 exact merged-source Actions #43138162247](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43138162247) is confirmed **SUCCESS 4/4 on `8da5e523531b3579d9bacd69bbfe16ec96efe76d`**, with native Linux/Windows 16/16 QUAD CTest each, root 85/85 CTest, 527 Python controls and frozen TRI Eistute/Book parity. The older pending sentence below is an immutable earlier observation, not the present R2b1 status.
+
+**Active next research stage:** [draft PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214) on feature `quad/integration-r2b2-exterior-aft-20261112`, candidate `319cfc90e34530b220ff55c7e9febc951572e78a`, invokes original AFT geometry/topology on a live owned reversed QUAD front and measures actual exterior TRI incidence, exact source perimeter, positive signed triangle UV areas, total patch area and unmoved QUAD seam points. A separate convex polygon clipping audit detects TRI/TRI and TRI/QUAD positive-area overlaps, including three synthetic positive/adversarial cases. Fixed native predecessor `28ee9b3` passes 16/16 native CTest on GCC and MSVC, including strict closed front, opposite seam ownership and UV area balance. **Current exact overlap revision CI pending** and must be measured, not inferred from predecessor success. All code in research/test only; no production source or CMake changes.
+
+**Gate still open:** native overlap revision full feature + PR jobs, independent patch containment and real Bézier patch UV/physical XYZ validation, failed-AFT rollback/lifetime and physical mixed publication. Continue R2b2 research only, then R2c owned mixed four-node `SubMesh`, later repeated adaptivity and real Eistute/Book models. No all-QUAD output, numerical 1993 approval or global high-valence welding is implied.
+
 ## 2026-11-11 — R2a qualified, R2b1 merged; next R2b2 exterior TRI completion
 
 **R2a research front geometry:** [PR #212](https://github.com/tiagosombrra/apmesh-modernization/pull/212) merged at `eabc5201eadfe016c2b9698d43648c9ea7062109`; exact [postmerge CI #43131307374](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43131307374) **SUCCESS 4/4**, native QUAD GCC/MSVC **15/15 each**, root **85/85 CTest**, Python **527/527**, frozen TRI Eistute/Book parity. Source-matched original TRI AFT front vs new QUAD one-owner UV boundary tested for midpoint splitting, opposite winding, exact coverage and negative cases; **no actual AFT edge publication** in R2a.

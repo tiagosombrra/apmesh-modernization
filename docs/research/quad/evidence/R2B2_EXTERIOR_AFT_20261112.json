@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-11-12",
+  "milestone": "R2b2 exterior original AFT + independent UV overlap",
+  "status": "FEATURE_DRAFT_EXACT_HEAD_CI_PENDING_NOT_MERGED",
+  "research_base": "ed8f02b51b239738b809228a78bdd3f3d6d45f1a",
+  "production_main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
+  "branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "candidate_sha": "319cfc90e34530b220ff55c7e9febc951572e78a",
+  "changed_paths": [
+    "research/quad/owned_aft_front.h",
+    "research/quad/owned_aft_front.cpp",
+    "tests/quad/owned_aft_front_contracts.cpp"
+  ],
+  "experiment": "Invoke original AdvancingFront geometry and optional topology once on R2b1 owned QUAD interface, no smoothing/fillMesh, record closure, seam orientation/pointer identity, positive TRI UV, area and independently clipped TRI/TRI and QUAD/TRI overlap.",
+  "numeric_scope": "Absolute 1e-11 square UV overlap threshold for dyadic fixtures; not qualified for arbitrary physical model scales",
+  "negative_controls": [
+    "unseeded attempt rejected",
+    "unbound boundary QuadtreeCell rejected",
+    "second attempt rejected",
+    "shared TRI edge not counted as positive overlap",
+    "positive TRI/TRI overlap detected",
+    "positive QUAD/TRI overlap detected"
+  ],
+  "initial_failure": {
+    "sha": "2d9e3a4960e06ef6d8e74b2e6ea07144c9481a42",
+    "reason": "C++ nonconst Vertex getter called on const pointer",
+    "repaired_sha": "03a636fb3dbcc07dd753d0f9bc56c632c213a04e"
+  },
+  "predecessor_validated": {
+    "sha": "28ee9b3e7dc2026c438d88a2aff51bd842f89de0",
+    "native_linux": "16/16 passed",
+    "native_windows": "16/16 passed",
+    "strict_exterior_seam_and_area_assertions": "passed",
+    "source_ci_four_jobs": "not asserted"
+  },
+  "candidate_ci": {
+    "push": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43186301495",
+    "pull_request": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43186308348",
+    "conclusion": "pending",
+    "required": "16/16 native Linux and Windows, 85/85 root CTest, 527 Python, strict frozen Eistute/Book TRI"
+  },
+  "unverified": [
+    "candidate overlap native CI and root science",
+    "actual physical Bézier patch output",
+    "full patch containment and physical XYZ",
+    "failed partial AFT transactional rollback",
+    "mixed physical SubMesh publication",
+    "repeated adaptation",
+    "production CLI admission"
+  ],
+  "pr_draft": true,
+  "merged": false
+}

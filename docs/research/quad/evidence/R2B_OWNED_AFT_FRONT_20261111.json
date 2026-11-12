@@ -2,7 +2,7 @@
   "schema": 1,
   "recorded_at_local": "2026-11-11",
   "milestone": "R2b1 — research-only owned native AFT front seeding",
-  "status": "R2B1_MERGED_EXACT_POSTMERGE_CI_IN_PROGRESS_NOT_QUALIFIED",
+  "status": "R2B1_MERGED_EXACT_POSTMERGE_SOURCE_QUALIFIED",
   "user_goal": "Explicit QUAD T1–T6 substitutes TRI interior templates on the same Quadtree; original curve and patch-boundary flow and exterior TRI AFT preserved",
   "source_baseline": "8097be460c973e0e8db4b08a40b585ba176c7840",
   "main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
@@ -82,7 +82,7 @@
     "physical_bezier_model_hybrid_verified": false,
     "high_valence_global_node_welding": false
   },
-  "next_action": "Confirm merged-source CI 43138162247 4/4, root CTest 85/85, Python 527/527, QUAD GCC/MSVC 16/16, TRI Eistute/Book. Then begin R2b2 exterior original AFT geometry and topology completion against this owned frontier, measuring actual TRI face count, exact domain coverage, no overlap, seam winding and rejection/rollback. Do not enable CLI or make 1993 point approval claims.",
+  "next_action": "R2b1 certified. Inspect R2b2 draft PR #214 exact CI on feature 319cfc90e34530b220ff55c7e9febc951572e78a, independently quantify TRI/QUAD overlap and physical Bézier patch containment before any integration; keep application quad_uv blocked.",
   "pr_merge": {
     "merged": true,
     "merge_sha": "8da5e523531b3579d9bacd69bbfe16ec96efe76d",
@@ -92,9 +92,31 @@
   "postmerge_ci": {
     "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43138162247",
     "exact_merged_source_sha": "8da5e523531b3579d9bacd69bbfe16ec96efe76d",
-    "status": "in_progress",
-    "conclusion": null,
-    "jobs_passed": 0,
-    "jobs_total": 4
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_passed": 4,
+    "jobs_total": 4,
+    "native_quad_gcc": "16/16",
+    "native_quad_msvc": "16/16",
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "frozen_tri_eistute_book": "passed",
+    "verified_utc": "2026-11-12"
+  },
+  "r2b2_draft": {
+    "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
+    "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+    "latest_head": "319cfc90e34530b220ff55c7e9febc951572e78a",
+    "source_status": "implemented_research_only_pending_exact_head_ci",
+    "native_predecessor": "28ee9b3e7dc2026c438d88a2aff51bd842f89de0",
+    "native_predecessor_gcc": "16/16",
+    "native_predecessor_msvc": "16/16",
+    "ci_push": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43186301495",
+    "ci_pr": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43186308348",
+    "current_ci": "pending",
+    "overlap_check": "convex UV clipping, positive overlap threshold 1e-11 fixed fixture",
+    "test_count": "19 authored controls, pending CI",
+    "production_changed": false,
+    "merged": false
   }
 }
