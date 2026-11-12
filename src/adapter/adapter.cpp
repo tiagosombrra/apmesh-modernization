@@ -1366,6 +1366,13 @@ SubMesh* Adapter::AdaptDomain(PatchCoons* coons_patch, Performer::IdManager* id_
     avanco.getBoundary()->close(static_cast<CurveAdaptiveParametric*>(
                                     coons_patch->GetCurve(coons_patch->GetNumBerCurves() - 1)),
                                 coons_patch->IsCurveReversed(coons_patch->GetNumBerCurves() - 1));
+    if (uv_capture_hooks_ && uv_capture_hooks_->boundary_sink) {
+      // Observe exactly the original serial Adapter curve samples before
+      // Quadtree refinement. No copied pointer or candidate escapes this scope.
+      uv_capture_hooks_->boundary_sink(apmesh::quad::SnapshotOriginalAdapterBoundary(
+          *coons_patch, *avanco.getBoundary(), vertex_to_node,
+          WithResearchOuterAttempt({patch_index, adaptive_step, retry_index, local_attempt})));
+    }
 
     SubMesh* sub_mesh_old = coons_patch->GetSubMesh();
     FaceList& mesh_old = cache.BorrowFaces();

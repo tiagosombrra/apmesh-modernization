@@ -22,6 +22,7 @@
 extern std::vector<CurveAdaptiveParametric*> ptr_aux;
 
 namespace {
+using apmesh::quad::AdapterBoundaryCapture;
 using apmesh::quad::AttemptUvCapture;
 using apmesh::quad::CaptureHooks;
 using apmesh::quad::LocalSelectionEvent;
@@ -50,6 +51,7 @@ void Require(bool condition, const char* message) {
 
 struct CaseResult {
   unsigned snapshots = 0;
+  unsigned boundary_snapshots = 0;
   unsigned local_decisions = 0;
   unsigned source_leaves = 0;
   unsigned polygon_count = 0;
@@ -62,7 +64,8 @@ struct CaseResult {
 // The real production-owned single-patch geometry and the real coarse TRI
 // initializer are used. No synthetic Quadtree or mocked Adapter is involved.
 CaseResult RunPatch(bool abort_during_capture,
-                    apmesh::quad::OuterAttemptIdentity outer = {}) {
+                    apmesh::quad::OuterAttemptIdentity outer = {},
+                    bool abort_during_boundary = false) {
   std::cerr << "m3_live_stage=begin abort=" << abort_during_capture << std::endl;
   ScopedLegacyCurveSorting sort_scratch;
   Geometry geometry;
@@ -97,6 +100,7 @@ CaseResult RunPatch(bool abort_during_capture,
   fixture_aft.ratio = 0.15;
   Adapter adapter(nullptr, nullptr, &fixture_aft);
   std::vector<AttemptUvCapture> snapshots;
+  std::vector<AdapterBoundaryCapture> boundaries;
   std::vector<LocalSelectionEvent> decisions;
   CaptureHooks hooks;
   hooks.provider = [](Quadtree& tree) {
@@ -127,6 +131,25 @@ CaseResult RunPatch(bool abort_during_capture,
   hooks.local_selection_sink = [&](LocalSelectionEvent outcome) {
     decisions.push_back(std::move(outcome));
   };
+  hooks.boundary_sink = [&](AdapterBoundaryCapture source) {
+    Require(source.attempt.patch_index == 0 &&
+                source.attempt.adaptive_step == 1 &&
+                source.attempt.retry_index == 0 &&
+                apmesh::quad::SameOuterAttempt(source.attempt.outer, outer),
+            "Real Adapter boundary snapshot lost the original attempt identity");
+    Require(source.vertices.size() == 4 && source.directed_edges.size() == 4 &&
+                !source.accepted_mesh_published,
+            "One-site-per-side square contour was not captured before TRI generation");
+    for (unsigned side = 0; side < 4; ++side) {
+      const auto& sample = source.vertices[side];
+      Require(source.side_counts[side] == 1 && sample.side == side &&
+                  sample.source_index == (side >= 2 ? 1U : 0U) &&
+                  sample.physical_node_id > 0,
+              "Native curve side/parameter/physical node IDs were reordered");
+    }
+    boundaries.push_back(std::move(source));
+    if (abort_during_boundary) throw IntentionalCaptureAbort{};
+  };
   adapter.SetResearchUvCapture(std::move(hooks));
   adapter.SetResearchOuterAttempt(outer);
   std::cerr << "m3_live_stage=hooks_registered" << std::endl;
@@ -141,17 +164,22 @@ CaseResult RunPatch(bool abort_during_capture,
     std::cerr << "m3_live_stage=expected_abort_observed" << std::endl;
   }
   std::cerr << "m3_live_stage=after_real_adapter" << std::endl;
-  Require(interrupted == abort_during_capture,
+  Require(interrupted == (abort_during_capture || abort_during_boundary),
           "Actual Adapter did not preserve the intentional observer exception");
   Require(patch->GetSubMesh() == previous.get(),
           "Actual capture mutated the accepted coarse patch observer");
 
   CaseResult result;
   result.snapshots = static_cast<unsigned>(snapshots.size());
+  result.boundary_snapshots = static_cast<unsigned>(boundaries.size());
   result.local_decisions = static_cast<unsigned>(decisions.size());
   result.outer = outer;
-  Require(result.snapshots >= (abort_during_capture ? 1U : 2U),
+  Require(result.snapshots >= (abort_during_capture ? 1U :
+                                     (abort_during_boundary ? 0U : 2U)),
           "Expected real UV capture for both the initial and retry attempts");
+  Require(result.boundary_snapshots >= 1U &&
+              result.boundary_snapshots >= result.snapshots,
+          "Real Adapter did not capture the source boundary before refinement");
   std::set<int> captured_attempts;
   for (const auto& observed : snapshots) {
     Require(captured_attempts.insert(observed.attempt.local_attempt).second,
@@ -163,8 +191,9 @@ CaseResult RunPatch(bool abort_during_capture,
   result.polygon_count = static_cast<unsigned>(
       snapshots.front().polygons.input.polygons.size());
 
-  if (abort_during_capture) {
-    Require(!generated && decisions.empty(),
+  if (abort_during_capture || abort_during_boundary) {
+    Require(!generated && decisions.empty() &&
+                (!abort_during_boundary || snapshots.empty()),
             "Aborted capture published a local selection or mesh");
   } else {
     Require(generated && generated->GetNumberElements() > 0,
@@ -206,10 +235,15 @@ int main() {
     const auto normal = RunPatch(false, {901, 17, 0});
     const auto repeated = RunPatch(false, {901, 18, 1});
     const auto failed = RunPatch(true, {901, 19, 2});
+    const auto pre_tree_failure = RunPatch(false, {901, 20, 3}, true);
     Require(normal.local_decisions == repeated.local_decisions &&
                 normal.selected_decisions == repeated.selected_decisions &&
                 !apmesh::quad::SameOuterAttempt(normal.outer, repeated.outer),
             "Two identical patch/retry paths collided across global epochs");
+    Require(pre_tree_failure.boundary_snapshots == 1 &&
+                pre_tree_failure.snapshots == 0 &&
+                pre_tree_failure.local_decisions == 0,
+            "Pre-refinement Adapter boundary failure was not fail-closed");
     Require(normal.source_leaves > 0 && failed.source_leaves > 0,
             "No refined real Quadtree was observed");
     Require(normal.polygon_count > 0 && failed.polygon_count > 0,
@@ -217,9 +251,13 @@ int main() {
     Require(normal.local_decisions >= 2 && normal.selected_decisions == 1 &&
                 normal.superseded_or_failed >= 1 && failed.local_decisions == 0,
             "Real retry/local selection and abort decisions were not separated");
-    std::cout << "real_adapter_capture_cases=3 normal_triangles="
+    std::cout << "real_adapter_capture_cases=4 normal_triangles="
               << normal.output_triangles << " snapshots="
               << (normal.snapshots + failed.snapshots)
+              << " boundary_snapshots="
+              << normal.boundary_snapshots + repeated.boundary_snapshots +
+                     failed.boundary_snapshots + pre_tree_failure.boundary_snapshots
+              << " boundary_abort_before_tree=" << pre_tree_failure.boundary_snapshots
               << " local_attempts=" << normal.local_decisions
               << " selected=" << normal.selected_decisions
               << " superseded_or_failed=" << normal.superseded_or_failed

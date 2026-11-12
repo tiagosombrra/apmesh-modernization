@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <iostream>
+#include <map>
 #include <set>
 #include <stdexcept>
 #include <string>
@@ -13,6 +14,13 @@
 
 namespace {
 using Key = std::tuple<std::uint64_t, std::uint64_t, int>;
+using AttemptKey = std::tuple<std::uint64_t, std::uint64_t, int, int, int, int, int>;
+
+AttemptKey Identity(const apmesh::quad::PatchAttemptIdentity& attempt) {
+  return {attempt.outer.session, attempt.outer.epoch, attempt.outer.global_retry,
+          attempt.patch_index, attempt.adaptive_step,
+          attempt.retry_index, attempt.local_attempt};
+}
 
 void Require(bool valid, const char* message) {
   if (!valid) {
@@ -39,10 +47,32 @@ int Run(const std::string& config_path) {
   std::vector<apmesh::quad::OuterAttemptIdentity> locally_selected;
   std::size_t source_leaves = 0;
   std::size_t captured_calls = 0;
+  std::size_t original_boundary_callbacks = 0;
+  std::size_t original_boundary_samples = 0;
+  std::size_t original_interior_curve_samples = 0;
+  std::size_t source_tree_boundary_matches = 0;
+  std::map<AttemptKey, apmesh::quad::AdapterBoundaryCapture> boundaries;
+  AttemptKey last_boundary_key{};
   apmesh::quad::CaptureHooks hooks;
   hooks.provider = [&](Par2DJMesh::AFT::Quadtree& tree) {
     // The M3-6c contract is global chronology, not a scientific polygon rule.
     Require(tree.getRoot() != nullptr, "Global fixture observed an uninitialized tree");
+    const auto latest = boundaries.find(last_boundary_key);
+    Require(latest != boundaries.end(),
+            "Original Adapter did not publish a source boundary before tree refinement");
+    const auto actual = tree.getBoundary()->getBoundary();
+    const auto edges = tree.getBoundary()->getEdges();
+    Require(actual.size() == latest->second.vertices.size() &&
+                edges.size() == latest->second.directed_edges.size(),
+            "Real refined Quadtree changed original Adapter boundary count");
+    std::size_t offset = 0;
+    for (auto* vertex : actual) {
+      const auto& source = latest->second.vertices[offset++];
+      Require(vertex->getId() == source.aft_vertex_id &&
+                  vertex->getX() == source.uv.u && vertex->getY() == source.uv.v,
+              "Real refined Quadtree changed source UV/vertex identity");
+    }
+    ++source_tree_boundary_matches;
     apmesh::quad::LeafPolygonMesh snapshot;
     snapshot.source_leaves = tree.GetLeafCount();
     return snapshot;
@@ -53,9 +83,51 @@ int Run(const std::string& config_path) {
     Require(capture.attempt.outer.session == session &&
                 capture.attempt.outer.epoch > 0,
             "UV capture lost its outer generator namespace");
+    Require(boundaries.count(Identity(capture.attempt)) == 1,
+            "Refined Quadtree capture did not join the exact source boundary attempt");
     source_leaves += capture.polygons.source_leaves;
     ++captured_calls;
     uv_attempts.push_back(capture.attempt.outer);
+  };
+  hooks.boundary_sink = [&](apmesh::quad::AdapterBoundaryCapture capture) {
+    Require(capture.attempt.outer.session == session &&
+                capture.attempt.outer.epoch > 0 &&
+                !capture.accepted_mesh_published &&
+                capture.vertices.size() == capture.directed_edges.size(),
+            "Original Adapter boundary has invalid provenance or publication state");
+    std::size_t sum = 0;
+    for (const auto count : capture.side_counts) {
+      Require(count > 0, "Original Adapter dropped a source curve side");
+      sum += count;
+    }
+    Require(sum == capture.vertices.size() && sum >= 4,
+            "Adapter boundary lost physical curve samples");
+    std::size_t previous_side = 0;
+    double previous_local = 0;
+    bool first = true;
+    for (const auto& point : capture.vertices) {
+      Require(point.physical_node_id > 0 &&
+                  point.aft_vertex_id > 0 &&
+                  point.side < 4U &&
+                  point.chart_parameter >= 0.0 &&
+                  point.chart_parameter <= 1.0,
+              "Adapter source curve identity, UV or node was invalid");
+      if (!first && point.side == previous_side)
+        Require(point.side < 2U ? point.chart_parameter > previous_local
+                                 : point.chart_parameter < previous_local,
+                "Adapter boundary lost the original oriented sample order");
+      if (point.original_parameter > 1e-8 &&
+          point.original_parameter < 1.0 - 1e-8)
+        ++original_interior_curve_samples;
+      previous_side = point.side;
+      previous_local = point.chart_parameter;
+      first = false;
+    }
+    last_boundary_key = Identity(capture.attempt);
+    Require(boundaries.emplace(last_boundary_key, std::move(capture)).second,
+            "Original Adapter repeated the same boundary attempt identity");
+    original_boundary_samples += sum;
+    ++original_boundary_callbacks;
   };
   hooks.local_selection_sink = [&](apmesh::quad::LocalSelectionEvent event) {
     Require(event.attempt.outer.session == session && event.attempt.outer.epoch > 0,
@@ -109,6 +181,11 @@ int Run(const std::string& config_path) {
   Require(restored > 0, "Real generator never restored a rejected TRI step");
   Require(captured_calls > 0 && source_leaves > 0,
           "Hook-enabled real GeneratorAdaptive never observed a refined Quadtree");
+  Require(original_boundary_callbacks >= captured_calls &&
+              source_tree_boundary_matches == captured_calls &&
+              original_boundary_samples >= 4U * captured_calls &&
+              original_interior_curve_samples > 0,
+          "Real Generator source AdaptCurve samples were not retained through Quadtree");
   Require(!locally_selected.empty(),
           "Real generator did not emit any local Adapter selections");
   std::set<Key> uv_keys;
@@ -133,6 +210,10 @@ int Run(const std::string& config_path) {
             << " budget_evaluations=" << budget
             << " growth_evaluations=" << growth
             << " uv_captures=" << captured_calls
+            << " boundary_captures=" << original_boundary_callbacks
+            << " boundary_source_samples=" << original_boundary_samples
+            << " interior_curve_samples=" << original_interior_curve_samples
+            << " identical_refined_boundary=" << source_tree_boundary_matches
             << " local_selected=" << locally_selected.size()
             << " global_epochs=" << global_epochs.size()
             << " truncated=" << log->truncated() << '\n';
