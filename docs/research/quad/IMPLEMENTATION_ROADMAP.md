@@ -35,6 +35,24 @@ not from assumed recall of earlier conversations. The protocol is not an automat
 scheduler: a connected actor must perform the write. If tools are unavailable,
 report that the checkpoint could not be persisted.
 
+## 2026-11-11 — R2a qualified, R2b1 merged; next R2b2 exterior TRI completion
+
+**R2a research front geometry:** [PR #212](https://github.com/tiagosombrra/apmesh-modernization/pull/212) merged at `eabc5201eadfe016c2b9698d43648c9ea7062109`; exact [postmerge CI #43131307374](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43131307374) **SUCCESS 4/4**, native QUAD GCC/MSVC **15/15 each**, root **85/85 CTest**, Python **527/527**, frozen TRI Eistute/Book parity. Source-matched original TRI AFT front vs new QUAD one-owner UV boundary tested for midpoint splitting, opposite winding, exact coverage and negative cases; **no actual AFT edge publication** in R2a.
+
+**R2b1 active owned frontier:** [PR #213](https://github.com/tiagosombrra/apmesh-modernization/pull/213) merged into `quad-templates` at `8da5e523531b3579d9bacd69bbfe16ec96efe76d`, feature `eafaeb5bd15abea8effd5fc06994346eb657da0c`. Both [direct CI #43137020105](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43137020105) and [PR CI #43137083615](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43137083615) **SUCCESS 4/4** with 16/16 QUAD native CTest Linux/Windows, 85/85 root CTest, 527/527 tooling Python and exact scientific TRI equivalence. Exact [merged-source CI #43138162247](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43138162247) **still in progress (3/4)** when this roadmap entry was committed; **do not mark postmerge qualified yet**.
+
+R2b1 is **engineering-only, no production change**: research derived `OwnedQuadAftFront` stages actual native `Vertex`/`Edge` objects owned by the original AFT with reversed QUAD interface direction, one canonical pointer per UV seam vertex, real exterior `QuadtreeCell` observer, unchanged patch boundary, 13 positive/negative tests and preflight rejection/repair, on uniform/refined source Quadtree and synthetic nonuniform UV boundary. It deliberately **does not** execute `makeGeometryBasedMesh` / `makeTopologyBasedMesh` or publish a full mixed-element mesh. [R2b evidence](evidence/R2B_OWNED_AFT_FRONT_20261111.json) and [STATE](STATE.md) retain exact status.
+
+**Next active R2b2 work:**
+
+1. Certify PR #213's exact merged-source 4/4 gate first.
+2. On an isolated feature branch, execute the **original exterior TRI AFT geometry/topology phases** using R2b1's real seeded, reversed interface. Do **not** call the normal TRI template publication again; keep existing production generator unchanged.
+3. Capture native positive **nonzero TRI** output, original exterior region area and preserved QUAD interior area; check full patch UV coverage, zero overlay, no invalid/inverted TRI, no dangling QUAD seam segments and exact reversed TRI/QUAD boundary ownership with shared midpoint identity.
+4. Preserve physical curve-adaptive edge sampling, AFT retry and owner lifetime; negative tests for failed AFT, fake cells, incomplete seam, repeated attempt and partial TRI publication. Keep QUAD seam vertices **locked from AFT smoothing**, or postpone smoothing until a separately validated mixed-element owner policy exists.
+5. Only **R2c** may publish owned physical four-node `QuadrilateralAdaptive` with exterior TRI in one typed `SubMesh`; repeated adaptations, actual Eistute/Book full model and CLI `MESH_ELEMENT_KIND=quad_uv` admission are later gates.
+
+No high-valence sheet welding, all-QUAD requirement or advisor-approved 1993 numerical point rule is presumed. The default TRI path and modernization `main` remain frozen.
+
 ## 2026-11-11 — R1 qualified research handoff; actual AFT integration is R2
 
 The first user-aligned **R1 native template selection** has been implemented
