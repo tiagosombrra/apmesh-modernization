@@ -9,8 +9,13 @@
 #include "generator/initial_mesh.h"
 #include "input_output/models_3d.h"
 #include "quadtree_quad.h"
+#include "source_tree_replay.h"
+#include "front_interface_audit.h"
+#include "interior_template_dispatch.h"
+#include "owned_aft_front.h"
 
 #include <iostream>
+#include <cmath>
 #include <memory>
 #include <set>
 #include <stdexcept>
@@ -52,6 +57,9 @@ void Require(bool condition, const char* message) {
 struct CaseResult {
   unsigned snapshots = 0;
   unsigned boundary_snapshots = 0;
+  unsigned replayed_native_trees = 0;
+  unsigned independently_closed_aft = 0;
+  unsigned replayed_leaves = 0;
   unsigned local_decisions = 0;
   unsigned source_leaves = 0;
   unsigned polygon_count = 0;
@@ -60,6 +68,83 @@ struct CaseResult {
   unsigned superseded_or_failed = 0;
   apmesh::quad::OuterAttemptIdentity outer{};
 };
+
+apmesh::quad::UvVertex MeanPoint(
+    const apmesh::quad::LeafPolygonOrigin&,
+    const std::vector<apmesh::quad::UvVertex>& points) {
+  apmesh::quad::UvVertex mean{};
+  for (const auto& point : points) {
+    mean.u += point.u;
+    mean.v += point.v;
+  }
+  mean.u /= static_cast<double>(points.size());
+  mean.v /= static_cast<double>(points.size());
+  return mean;
+}
+
+void AuditOwnedSourceReplay(Quadtree& original,
+                            const AdapterBoundaryCapture& source) {
+  using apmesh::quad::InteriorTemplateDispatcher;
+  using apmesh::quad::InteriorTemplateMode;
+  using apmesh::quad::OwnedQuadAftFront;
+  using apmesh::quad::ReplayNativeSourceTree;
+
+  auto wrong = source;
+  wrong.vertices.front().uv.u += 0.03125;
+  bool rejected = false;
+  try {
+    static_cast<void>(ReplayNativeSourceTree(original, wrong));
+  } catch (const std::invalid_argument&) {
+    rejected = true;
+  }
+  Require(rejected, "R2b2 structural replay accepted altered original Adapter UV");
+
+  auto reference = ReplayNativeSourceTree(original, source);
+  auto selected_tree = ReplayNativeSourceTree(original, source);
+  Require(reference.original_leaves == selected_tree.original_leaves &&
+              reference.replayed_leaves == selected_tree.replayed_leaves &&
+              selected_tree.replayed_source_vertices == source.vertices.size(),
+          "R2b2 original source topology was not reproduced on independent owners");
+
+  const auto source_polygons = apmesh::quad::CaptureLeafPolygons(original);
+  const auto replay_polygons =
+      apmesh::quad::CaptureLeafPolygons(*selected_tree.owned_tree);
+  Require(source_polygons.input.polygons.size() ==
+                  replay_polygons.input.polygons.size() &&
+              source_polygons.interior_area == replay_polygons.interior_area,
+          "R2b2 exact original Quadtree replay changed QUAD-eligible source area");
+
+  Require(reference.owned_tree->makeTemplateBasedMesh() ==
+              Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
+          "R2b2 replay could not build independent original TRI front");
+  const auto original_tri_front =
+      apmesh::quad::SnapshotLegacyFront(*reference.owned_tree);
+  InteriorTemplateDispatcher dispatcher(*selected_tree.owned_tree);
+  const auto selection = dispatcher.Select(
+      InteriorTemplateMode::ExperimentalQuad, MeanPoint);
+  Require(!selection.uv_quads.quads.empty() &&
+              selection.source_leaves == original.GetLeafCount(),
+          "R2b2 original Adapter QUAD selection lost source leaf geometry");
+  auto* raw = selected_tree.owned_tree.get();
+  auto aft = std::make_unique<OwnedQuadAftFront>(raw->getBoundary(), raw);
+  selected_tree.owned_tree.release();
+  const auto seeded = aft->Seed(selection, original_tri_front);
+  Require(seeded.patch_boundary_edges == source.directed_edges.size() &&
+              seeded.quad_interface_edges > 0 &&
+              !seeded.physical_quads_published,
+          "R2b2 AFT did not own the true original Adapter source contour");
+  const auto report = aft->AttemptExteriorTriangulation(selection);
+  Require(report.exterior_triangles > 0 && report.front_drained &&
+              report.triangles_positive && report.seam_orientation_complete &&
+              report.seam_vertices_unchanged && report.uv_area_balanced &&
+              report.spatial_overlap_tested && report.no_spatial_overlap &&
+              !report.qualified,
+          "R2b2 AFT failed the actual Adapter source contour contract");
+  Require(original.GetTemplateFaces().empty() &&
+              original.GetFrontEdges().empty() &&
+              original.GetLeafCount() == reference.original_leaves,
+          "R2b2 research AFT mutated original production TRI source tree");
+}
 
 // The real production-owned single-patch geometry and the real coarse TRI
 // initializer are used. No synthetic Quadtree or mocked Adapter is involved.
@@ -102,12 +187,22 @@ CaseResult RunPatch(bool abort_during_capture,
   std::vector<AttemptUvCapture> snapshots;
   std::vector<AdapterBoundaryCapture> boundaries;
   std::vector<LocalSelectionEvent> decisions;
+  unsigned replayed_native_trees = 0;
+  unsigned independently_closed_aft = 0;
+  std::size_t replayed_leaves = 0;
   CaptureHooks hooks;
-  hooks.provider = [](Quadtree& tree) {
+  hooks.provider = [&](Quadtree& tree) {
     std::cerr << "m3_live_stage=provider_enter" << std::endl;
-    auto data = apmesh::quad::CaptureLeafPolygons(tree);
+    Require(boundaries.size() == snapshots.size() + 1U,
+            "R2b2 research source tree was not correlated to one Adapter boundary");
+    const auto source_polygons = apmesh::quad::CaptureLeafPolygons(tree);
+    AuditOwnedSourceReplay(tree, boundaries.back());
+    ++replayed_native_trees;
+    ++independently_closed_aft;
+    replayed_leaves += tree.GetLeafCount();
+    std::cerr << "m3_live_stage=original_source_replayed" << std::endl;
     std::cerr << "m3_live_stage=provider_return" << std::endl;
-    return data;
+    return source_polygons;
   };
   hooks.sink = [&](AttemptUvCapture snapshot) {
     std::cerr << "m3_live_stage=sink_enter" << std::endl;
@@ -172,6 +267,12 @@ CaseResult RunPatch(bool abort_during_capture,
   CaseResult result;
   result.snapshots = static_cast<unsigned>(snapshots.size());
   result.boundary_snapshots = static_cast<unsigned>(boundaries.size());
+  result.replayed_native_trees = replayed_native_trees;
+  result.independently_closed_aft = independently_closed_aft;
+  result.replayed_leaves = static_cast<unsigned>(replayed_leaves);
+  Require(result.replayed_native_trees == result.snapshots &&
+              result.independently_closed_aft == result.snapshots,
+          "R2b2 source AFT did not complete each observed original Adapter tree");
   result.local_decisions = static_cast<unsigned>(decisions.size());
   result.outer = outer;
   Require(result.snapshots >= (abort_during_capture ? 1U :
@@ -246,6 +347,7 @@ int main(int argc, char** argv) {
       const auto aborted = RunPatch(false, {901, 20, 3}, true);
       Require(aborted.boundary_snapshots == 1 &&
                   aborted.snapshots == 0 &&
+                  aborted.replayed_native_trees == 0 &&
                   aborted.local_decisions == 0,
               "Pre-refinement Adapter boundary abort published provisional output");
       std::cout << "real_adapter_boundary_abort=ok snapshots=1"
@@ -261,6 +363,11 @@ int main(int argc, char** argv) {
                 normal.selected_decisions == repeated.selected_decisions &&
                 !apmesh::quad::SameOuterAttempt(normal.outer, repeated.outer),
             "Two identical patch/retry paths collided across global epochs");
+    Require(normal.replayed_native_trees >= 2 &&
+                repeated.replayed_native_trees >= 2 &&
+                failed.replayed_native_trees == 1 &&
+                normal.independently_closed_aft == normal.replayed_native_trees,
+            "R2b2 research AFT was not tested across original retry and abort");
     Require(normal.source_leaves > 0 && failed.source_leaves > 0,
             "No refined real Quadtree was observed");
     Require(normal.polygon_count > 0 && failed.polygon_count > 0,
@@ -271,6 +378,14 @@ int main(int argc, char** argv) {
     std::cout << "real_adapter_capture_cases=3 normal_triangles="
               << normal.output_triangles << " snapshots="
               << (normal.snapshots + failed.snapshots)
+              << " native_replayed_trees="
+              << normal.replayed_native_trees + repeated.replayed_native_trees +
+                     failed.replayed_native_trees
+              << " source_owned_aft_completed="
+              << normal.independently_closed_aft + repeated.independently_closed_aft +
+                     failed.independently_closed_aft
+              << " replayed_source_leaves="
+              << normal.replayed_leaves + repeated.replayed_leaves + failed.replayed_leaves
               << " boundary_snapshots="
               << normal.boundary_snapshots + repeated.boundary_snapshots +
                      failed.boundary_snapshots

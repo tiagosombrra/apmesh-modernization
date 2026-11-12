@@ -190,7 +190,11 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   add_executable(quad_adapter_integration_probe
     tests/quad/adapter_integration_probe.cpp
     research/quad/quadtree_quad.cpp
-    research/quad/uv_mesh.cpp)
+    research/quad/uv_mesh.cpp
+    research/quad/interior_template_dispatch.cpp
+    research/quad/front_interface_audit.cpp
+    research/quad/owned_aft_front.cpp
+    research/quad/source_tree_replay.cpp)
   target_include_directories(quad_adapter_integration_probe PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
   target_link_libraries(quad_adapter_integration_probe PRIVATE ap_mesh_engine)
