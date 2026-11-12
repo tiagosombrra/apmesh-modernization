@@ -2,12 +2,12 @@
   "schema": 1,
   "recorded_utc": "2026-11-12",
   "milestone": "R2b2 exterior original AFT + independent UV overlap",
-  "status": "FEATURE_DRAFT_STABLE_SEAM_IDENTITY_FIXED_EXACT_HEAD_CI_PENDING",
+  "status": "R2B2_UV_EXACT_QUALIFIED_REAL_BEZIER_AND_FAULT_CANDIDATE_PENDING",
   "research_base": "ed8f02b51b239738b809228a78bdd3f3d6d45f1a",
   "production_main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
   "branch": "quad/integration-r2b2-exterior-aft-20261112",
-  "candidate_sha": "2e88fc164d87e5ad10d3205dad845bbac9fd30bd",
+  "candidate_sha": "c103c77d5c390873760744912533ecaf7dd5a2a9",
   "changed_paths": [
     "research/quad/owned_aft_front.h",
     "research/quad/owned_aft_front.cpp",
@@ -36,14 +36,11 @@
     "source_ci_four_jobs": "not asserted"
   },
   "candidate_ci": {
-    "push": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43187098299",
-    "pull_request": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43187106039",
-    "native_linux_push": "16/16 pass",
-    "native_linux_pr": "16/16 pass",
-    "native_windows": "in_progress",
-    "root_ctest_python": "in_progress",
-    "frozen_tri": "in_progress",
-    "whole_run": "in_progress"
+    "push": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43189723674",
+    "conclusion": "in_progress",
+    "root_ctest": "pending",
+    "native": "pending",
+    "external_patch_model": "pending"
   },
   "unverified": [
     "candidate overlap native CI and root science",
@@ -75,5 +72,43 @@
     "actual synthetic eight-point nonuniform UV contour exterior AFT",
     "independent positive overlap vs mere shared edge"
   ],
-  "authored_native_cases": 21
+  "authored_native_cases": 21,
+  "exact_uv_gate": {
+    "sha": "2e88fc164d87e5ad10d3205dad845bbac9fd30bd",
+    "feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43187098299",
+    "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43187106039",
+    "push": "success 4/4",
+    "pr": "success 4/4",
+    "linux_quad": "16/16",
+    "windows_quad": "16/16",
+    "root_ctest": "85/85",
+    "python": "527/527",
+    "tri_frozen": "passed",
+    "physical_model": false
+  },
+  "physical_probe": {
+    "paths": [
+      "tests/quad/r2b2_bezier_aft_probe.cpp",
+      "CMakeLists.txt",
+      "docs/architecture/source_inventory.json"
+    ],
+    "root_cmake_sha256": "84b33bde275f9ecd65ddd11c2f2ae7bb142a628dff07f4a42d9d342549e791d4",
+    "sources": [
+      "Models3d::ModelCurvaBezier one real patch",
+      "PatchReader eistute2.fixed.bp four patches",
+      "PatchReader book_v7a.bp twenty-eight patches"
+    ],
+    "assumptions": [
+      "16-segment chart boundary, not Adapter AdaptCurve",
+      "per-patch rejection is not whole-model acceptance",
+      "no physical mixed SubMesh publication"
+    ],
+    "status": "new candidate compilation and physical CTest unverified"
+  },
+  "failure_controls": {
+    "first_source_sha": "7146aa44834d0820789303c4a2f840201209aa2b",
+    "actual_compilation_failure": "invalid FaceUv temporary C++17 initialization at physical probe line 234",
+    "fixed_sha": "c103c77d5c390873760744912533ecaf7dd5a2a9",
+    "new_fault_case": "throw after at least one original AFT TRI, reject retry and retire partial owner; unverified"
+  }
 }

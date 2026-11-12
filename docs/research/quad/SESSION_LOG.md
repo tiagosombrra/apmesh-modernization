@@ -738,3 +738,17 @@ Scientific blockers remain as previously recorded: high-valence model edges cann
 
 **Next:** Review exact feature/PR all-four-job status and fix any real failure, without modifying original TRI science. Then extend scientific R2b2 to the real curve-boundary and failed partial-AFT paths, after which R2c physical mixed elements can be attempted.
 
+## 2026-11-12-48 — R2b2 exact 4/4 UV certification and real Bézier source/partial-failure trial
+
+**Qualified predecessor:** Confirmed source `2e88fc164d87e5ad10d3205dad845bbac9fd30bd` feature CI #43187098299 and PR #43187106039 both SUCCESS 4/4, actual 85/85 root CTest / 527/527 Python, native Linux GCC 16/16 and Windows MSVC 16/16 research CTest, frozen Eistute/Book original TRI parity. This qualifies the bounded source-native QUAD-front/exterior-AFT UV seam/area/overlap checks; it does not qualify physical XYZ or application mode.
+
+**New implementation:** Feature commit `7146aa44834d0820789303c4a2f840201209aa2b` added `tests/quad/r2b2_bezier_aft_probe.cpp` and root CMake `quad.r2b2.real_bezier_aft` registration, with source-inventory SHA-256 updated correctly. Actual `Models3d::ModelCurvaBezier` and `PatchReader` Eistute/Book `PatchBezier` supply source curves, XYZ and differentials for native `OwnedQuadAftFront` UV QUAD/TRI output. Physical candidate checks signed Jacobian, facet orientation, original control curves and unchanged accepted source mesh pointer. The fixed experimental UV contour has 16 sites and is not original Adapter curve adaptation; whole-model/physical SubMesh publication remain blocked. A per-patch rejection is explicitly diagnostic and not whole-model acceptance.
+
+**Actual failure:** Both feature CI #43189110700 and independent PR CI #43189121270 failed root Linux source build due invalid C++17 `FaceUv` temporary list initialization at source line 234, even while native isolated 16/16 and frozen TRI lanes completed. Preserved original error; not misclassified as model failure. New exact feature `c103c77d5c390873760744912533ecaf7dd5a2a9` repairs this using an explicitly typed `FaceUv` value.
+
+**Fault path:** The same new revision adds `OwnedQuadAftFront::SetResearchAbortAfterTriangles` and a test-only virtual `findBestVertex` injection after at least one generated exterior TRI face. Negative control requires partial TRI creation, catchable failure, rejected same-owner retry and safe retirement of whole AFT owner while the value-owned QUAD source remains unchanged. No production `AdvancingFront` or published `SubMesh` code changes. Original TRI regression cannot be inferred from new source before exact CI.
+
+**Checkpoint:** [Draft PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214) source `c103c77d...`, [exact feature CI #43189723674](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43189723674) in progress; independent PR run pending discovery. No physical model or source-native CTest acceptance is asserted for this head. Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
+
+**Next:** Verify complete current Linux/MSVC/source-Bezier/fault CI, repair demonstrated scientific/compiler faults; then bridge actual Adapter curve sampling and typed mixed publication R2c separately, without unqualified `quad_uv` CLI.
+
