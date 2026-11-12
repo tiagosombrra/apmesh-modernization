@@ -7,7 +7,7 @@
   "production_main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
   "branch": "quad/integration-r2b2-exterior-aft-20261112",
-  "candidate_sha": "c103c77d5c390873760744912533ecaf7dd5a2a9",
+  "candidate_sha": "8b0a774f463ce450aedeee216d978965428ef481",
   "changed_paths": [
     "research/quad/owned_aft_front.h",
     "research/quad/owned_aft_front.cpp",
@@ -144,7 +144,7 @@
     "normal_production_fault_hook": false,
     "whole_process_memory_qualified": false
   },
-  "current_feature_head": "c103c77d5c390873760744912533ecaf7dd5a2a9",
+  "current_feature_head": "8b0a774f463ce450aedeee216d978965428ef481",
   "open_admission_gates": [
     "r",
     "e",
@@ -174,10 +174,33 @@
   "live_adapter_evidence": "docs/research/quad/evidence/R2B2_LIVE_ADAPTER_BOUNDARY_20261112.json",
   "latest_attempt": {
     "feature_sha": "8b0a774f463ce450aedeee216d978965428ef481",
-    "state": "native + frozen TRI pass; root 87/87 pending",
-    "previous_failed_sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
-    "previous_failure": "86/87 root CTest, one isolated negative fixture accessed empty snapshots.front(); guarded in current source",
-    "live_adapter_evidence": "docs/research/quad/evidence/R2B2_LIVE_ADAPTER_BOUNDARY_20261112.json",
-    "pr": "draft, no research merge"
-  }
+    "status": "bounded live original source contour and Bezier mapping exact 4/4 feature+PR",
+    "feature_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198429209",
+    "pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198438695",
+    "native_linux_ctest": "16/16",
+    "native_windows_ctest": "16/16",
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "frozen_tri": "passed",
+    "real_source_bezier_model_mapping": {
+      "eistute": {
+        "mapped": 4,
+        "rejected": 0
+      },
+      "book": {
+        "mapped": 28,
+        "rejected": 0
+      },
+      "builtin": {
+        "mapped": 1,
+        "rejected": 0
+      }
+    },
+    "live_adapter_contour_captured": true,
+    "live_adapter_contour_used_for_original_owned_AFT": false,
+    "pr_draft": true,
+    "merged": false,
+    "unresolved_original_repeated_fixture_segfault": true
+  },
+  "current_conclusion": "bounded source-only R2b2-qualified exact premerge; source-replay owned AFT and physical typed mesh not qualified"
 }

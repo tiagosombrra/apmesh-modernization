@@ -68,17 +68,30 @@
   ],
   "current_gate": {
     "sha": "8b0a774f463ce450aedeee216d978965428ef481",
-    "status": "3/4 native and frozen TRI successful, root pending",
-    "feature_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198429209",
-    "pr_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198438695",
-    "required": [
-      "4/4 exact feature and PR",
-      "root CTest 87/87",
-      "527 Python",
-      "16/16 Linux GCC, 16/16 Windows MSVC",
-      "frozen TRI Eistute and Book",
-      "per-model R2B2_SOURCE_MODEL maps/rejects"
-    ]
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198429209",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198438695",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "native_linux_quad_ctest": "16/16",
+    "native_windows_quad_ctest": "16/16",
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "frozen_tri_eistute_book": "passed",
+    "single_patch_adapter": "passed",
+    "native_boundary_abort": "passed",
+    "real_generator_eistute": "passed",
+    "real_generator_book": "passed",
+    "source_bezier_aft": "passed",
+    "research_only": true,
+    "physical_mixed_SubMesh_published": false
   },
   "known_open": [
     "Observed fourth consecutive fixture invocation segfault under original serial runner; independent process isolation is not an ASan/UBSan lifetime proof",
@@ -86,13 +99,51 @@
     "AFT real full-source refined tree and original output are not yet joined to an OwnedQuadAftFront in the same attempt",
     "All Eistute/Book patches physical acceptance and scientific 1993 rule not qualified",
     "Repeated mixed adaptation and multi-sheet geometry not qualified",
-    "Fourth consecutive test fixture segfault from 7797b8b2 unresolved; 8b0a fix only explains separate empty snapshot negative probe crash"
+    "Fourth consecutive test fixture segfault from 7797b8b2 unresolved; 8b0a fix only explains separate empty snapshot negative probe crash",
+    "Original Adapter dynamic source contour is captured but not yet used to seed the same source native owned AFT QUAD/TRI run",
+    "Fourth consecutive single-process fixture 7797b8b2 segment fault unqualified under sanitizer",
+    "R2c mixed physical SubMesh and global model-wide continuity not implemented"
   ],
   "recorded_tests": {
     "predecessor_c103": "feature+PR SUCCESS 4/4, native Linux/MSVC 16/16, root 86/86, Python 527/527, frozen TRI pass",
-    "current_feature": "unverified as of checkpoint"
+    "current_feature": "unverified as of checkpoint",
+    "latest_push": "4/4 success",
+    "latest_pr": "4/4 success",
+    "root": "87/87",
+    "tooling": "527/527",
+    "linux_native": "16/16",
+    "windows_native": "16/16",
+    "frozen_tri": "passed",
+    "per_model_source_mapping": "4/4 Eistute; 28/28 Book; 1 built-in; zero external rejects"
   },
-  "merge_status": "PR draft/unmerged",
-  "next": "Check exact feature and PR CI for 3330e0ed; correct any new reproduced failures. Inspect verbose real source per-model acceptance logs. Then pass actual Adapter value-contour into a research OwnedQuadAftFront on equivalent real refined Quadtree and test true curve sample continuity. Do not enable R2c or CLI without owned physical transaction and full models.",
-  "status": "R2B2_LIVE_ADAPTER_BOUNDARY_SOURCE_GUARDED_ABORT_EXACT_CI_PENDING"
+  "merge_status": "draft/unmerged; no R2c",
+  "next": "Build research-owned source-exact cloned original real refined Quadtree and run T1-T6 QUAD + original AFT from real Adapter's per-attempt chart and physical curve IDs; validate actual source versus physical seam and late rollback, independent in-process sanitizer. Then review research-only merge, postmerge exact 4/4, later typed mixed physical SubMesh R2c.",
+  "status": "EXACT_FEATURE_AND_PR_4_4_R2B2_LIVE_ADAPTER_CONTOUR_WITH_BOUNDED_SOURCE_BEZIER_32_32_PREMERGE_QUALIFIED",
+  "measured_source_Bezier": {
+    "source": "verbatim verbose CTest quad.r2b2.real_bezier_aft stdout from both latest exact root CI jobs, retained in 14-day quad-r2b2-real-bezier-admission artifact",
+    "fixed_research_boundary_segments": 16,
+    "models": {
+      "built_in_curved": {
+        "attempted": 1,
+        "mapped": 1,
+        "rejected": 0
+      },
+      "eistute": {
+        "attempted": 4,
+        "mapped": 4,
+        "rejected": 0
+      },
+      "book": {
+        "attempted": 28,
+        "mapped": 28,
+        "rejected": 0
+      }
+    },
+    "native_engine_original_AFT": true,
+    "real_patch_reader_and_PatchBezier": true,
+    "real_Adapter_sample_stream_used_for_original_AFT": false,
+    "complete_global_hybrid_mesh": false,
+    "typed_physical_SubMesh": false,
+    "science_assistant_note": "32/32 source charts admitted under independent fixed research UV boundary; not proof a whole-model hybrid triangulation exists"
+  }
 }
