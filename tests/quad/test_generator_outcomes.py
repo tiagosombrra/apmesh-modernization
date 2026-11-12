@@ -68,7 +68,9 @@ def run(executable: Path, root: Path, model: str) -> None:
             "patches", "shared_curves", "coherent_epoch_patches",
             "shared_compared", "shared_matched", "shared_rejected",
             "shared_unobserved", "shared_geometry_matched",
-            "shared_geometry_rejected", "sheet_policy_pending",
+            "shared_geometry_rejected", "shared_source_ids_matched",
+            "shared_source_ids_rejected", "shared_node_id_mismatch_pairs",
+            "shared_node_id_mismatch_sites", "sheet_policy_pending",
             "same_orientation_pairs", "opposite_orientation_pairs",
             "negative_controls", "global_mixed_model_admitted",
         )
@@ -79,6 +81,8 @@ def run(executable: Path, root: Path, model: str) -> None:
         rejected = int(fields["shared_rejected"])
         geometry_matched = int(fields["shared_geometry_matched"])
         geometry_rejected = int(fields["shared_geometry_rejected"])
+        source_ids_matched = int(fields["shared_source_ids_matched"])
+        source_ids_rejected = int(fields["shared_source_ids_rejected"])
         if not (
             int(fields["patches"]) == expected_patches
             and int(fields["shared_curves"]) > 0
@@ -86,6 +90,7 @@ def run(executable: Path, root: Path, model: str) -> None:
             and compared > 0
             and matched + rejected == compared
             and geometry_matched + geometry_rejected == compared
+            and source_ids_matched + source_ids_rejected == compared
             and (int(fields["same_orientation_pairs"])
                  + int(fields["opposite_orientation_pairs"])) > 0
             and int(fields["negative_controls"]) == 1

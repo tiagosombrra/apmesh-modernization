@@ -482,6 +482,9 @@ int Run(const std::string& config_path) {
                   shared.coherent_epoch_shared_curves_compared &&
               shared.coherent_epoch_shared_curves_geometry_matched +
                   shared.coherent_epoch_shared_curves_geometry_rejected ==
+                  shared.coherent_epoch_shared_curves_compared &&
+              shared.coherent_epoch_shared_curves_source_ids_matched +
+                  shared.coherent_epoch_shared_curves_source_ids_rejected ==
                   shared.coherent_epoch_shared_curves_compared,
           "R2b2 no real same-epoch shared curve interfaces were audited");
 
@@ -512,7 +515,9 @@ int Run(const std::string& config_path) {
       !apmesh::quad::CompareSharedCurveSides(original_side, bad_orientation).matched;
   Require(shared_negative_controls &&
               apmesh::quad::CompareSharedCurveSides(
-                  original_side, bad_orientation, false).matched,
+                  original_side, bad_orientation, false).matched &&
+              apmesh::quad::CompareSharedCurveSides(
+                  original_side, bad_node, false, false).matched,
           "R2b2 real source geometry and multi-sheet orientation controls failed");
   std::ostringstream shared_rejections;
   for (const auto& entry : shared.rejection_reasons) {
@@ -537,6 +542,14 @@ int Run(const std::string& config_path) {
             << shared.coherent_epoch_shared_curves_geometry_matched
             << " shared_geometry_rejected="
             << shared.coherent_epoch_shared_curves_geometry_rejected
+            << " shared_source_ids_matched="
+            << shared.coherent_epoch_shared_curves_source_ids_matched
+            << " shared_source_ids_rejected="
+            << shared.coherent_epoch_shared_curves_source_ids_rejected
+            << " shared_node_id_mismatch_pairs="
+            << shared.shared_node_id_mismatch_pairs
+            << " shared_node_id_mismatch_sites="
+            << shared.shared_node_id_mismatch_sites
             << " sheet_policy_pending=" << shared.coherent_epoch_sheet_policy_pending
             << " same_orientation_pairs=" << shared.shared_same_orientation_pairs
             << " opposite_orientation_pairs=" << shared.shared_opposite_orientation_pairs

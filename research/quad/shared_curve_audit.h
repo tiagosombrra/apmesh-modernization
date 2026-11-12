@@ -167,12 +167,14 @@ struct SharedCurveComparison {
   bool matched = false;
   std::string reason = "not_compared";
   std::size_t compared_sites = 0;
+  std::size_t node_id_mismatched_sites = 0;
   double maximum_xyz_error = 0.0;
 };
 
 inline SharedCurveComparison CompareSharedCurveSides(
     const SharedCurveSide& a, const SharedCurveSide& b,
-    bool require_opposite_orientation = true) {
+    bool require_opposite_orientation = true,
+    bool require_same_node_ids = true) {
   SharedCurveComparison result;
   if (a.patch == b.patch) { result.reason = "same_patch"; return result; }
   if (a.curve_id != b.curve_id) {
@@ -194,7 +196,10 @@ inline SharedCurveComparison CompareSharedCurveSides(
       result.reason = "parameter"; return result;
     }
     if (x.node_id != y.node_id) {
-      result.reason = "node_identity"; return result;
+      ++result.node_id_mismatched_sites;
+      if (require_same_node_ids) {
+        result.reason = "node_identity"; return result;
+      }
     }
     double square_error = 0.0, square_scale = 0.0;
     for (unsigned axis = 0; axis < 3U; ++axis) {
@@ -230,6 +235,10 @@ struct SharedCurveModelAudit {
   std::size_t coherent_epoch_shared_curves_unobserved = 0;
   std::size_t coherent_epoch_shared_curves_geometry_matched = 0;
   std::size_t coherent_epoch_shared_curves_geometry_rejected = 0;
+  std::size_t coherent_epoch_shared_curves_source_ids_matched = 0;
+  std::size_t coherent_epoch_shared_curves_source_ids_rejected = 0;
+  std::size_t shared_node_id_mismatch_pairs = 0;
+  std::size_t shared_node_id_mismatch_sites = 0;
   std::size_t coherent_epoch_sheet_policy_pending = 0;
   std::size_t shared_same_orientation_pairs = 0;
   std::size_t shared_opposite_orientation_pairs = 0;
@@ -309,6 +318,7 @@ inline SharedCurveModelAudit AuditCoherentAdapterSharedCurves(
     // equivalence for ALL curve incidences WITHOUT imposing a sheet pairing.
     // Only a valence-2 incidence may be admitted as one opposing seam here.
     bool geometry_matched = actual.size() == group.size();
+    bool source_ids_matched = geometry_matched;
     bool sheet_matched = geometry_matched && group.size() == 2U;
     if (group.size() > 2U) {
       ++result.coherent_epoch_sheet_policy_pending;
@@ -320,8 +330,15 @@ inline SharedCurveModelAudit AuditCoherentAdapterSharedCurves(
     for (std::size_t i = 0; i < actual.size(); ++i) {
       for (std::size_t j = i + 1U; j < actual.size(); ++j) {
         const auto compare = CompareSharedCurveSides(
-            actual[i], actual[j], false);
+            actual[i], actual[j], false, false);
         result.shared_site_pairs_compared += compare.compared_sites;
+        if (compare.node_id_mismatched_sites != 0U) {
+          source_ids_matched = false;
+          sheet_matched = false;
+          ++result.shared_node_id_mismatch_pairs;
+          result.shared_node_id_mismatch_sites += compare.node_id_mismatched_sites;
+          ++result.rejection_reasons["source_node_identity"];
+        }
         result.maximum_xyz_error = std::max(
             result.maximum_xyz_error, compare.maximum_xyz_error);
         if (!compare.matched) {
@@ -345,6 +362,10 @@ inline SharedCurveModelAudit AuditCoherentAdapterSharedCurves(
       ++result.coherent_epoch_shared_curves_geometry_matched;
     else
       ++result.coherent_epoch_shared_curves_geometry_rejected;
+    if (source_ids_matched)
+      ++result.coherent_epoch_shared_curves_source_ids_matched;
+    else
+      ++result.coherent_epoch_shared_curves_source_ids_rejected;
     if (sheet_matched) ++result.coherent_epoch_shared_curves_matched;
     else ++result.coherent_epoch_shared_curves_rejected;
   }
