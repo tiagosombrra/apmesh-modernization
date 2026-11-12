@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <iterator>
 #include <list>
 #include <map>
 #include <memory>
@@ -16,6 +17,10 @@ namespace apmesh::quad {
 namespace {
 
 using Par2DJMesh::AFT::QuadtreeCell;
+using Par2DJMesh::AFT::QUAD_B;
+using Par2DJMesh::AFT::QUAD_R;
+using Par2DJMesh::AFT::QUAD_T;
+using Par2DJMesh::AFT::QUAD_L;
 using Par2DJMesh::Basics::Edge;
 using Par2DJMesh::Basics::Vertex;
 using EdgeKey = std::pair<VertexId, VertexId>;
