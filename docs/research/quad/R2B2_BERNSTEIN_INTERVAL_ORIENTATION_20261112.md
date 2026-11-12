@@ -30,15 +30,21 @@ plane of the original tangent. Their signed orientation is positive, because
 tangent-parallel components vanish from the triple product. It does not require
 an arbitrary moving angular-zero reference.
 
-The research condition is **strictly positive on every closed original curve
-parameter interval for every adjacent cyclic pair**, and initial observed
-adjacent gaps strictly between 0 and pi. Then the tangent cannot vanish and no
-adjacent projected radial can become zero or collinear on that interval.
-Continuity of the source polynomial fields and their cyclic order at the
-reference parameter permits continuation of the radial fan without an adjacent
-swap. The sum of positive adjacent gaps cannot jump winding number. This is a
-**local radial-order** condition only, not a proof of global disjointness of
-whole surfaces, nor a classification of physical sheet ownership.
+The research condition is that **every adjacent pair preserve its initial
+oriented sector sign throughout every closed original source interval**. For a
+reference cyclic gap in `(0, pi)`, this requires strictly positive `D_ij`;
+for a valid wide gap in `(pi, 2pi)`, strictly negative `D_ij` is required.
+Checking only positivity would incorrectly reject a legitimate wide empty
+sector in Book. Near 0, pi, or 2pi, the reference sign cannot be trusted:
+the pair is classified **inconclusive** rather than silently omitted.
+
+Strict sign of the triple product excludes loss of source tangent, projected
+radial collapse and pairwise collinearity on the entire interval. Continuity
+of the original polynomial fields and the reference cyclic order then excludes
+a crossing of adjacent sheets; the circular order is preserved by continuous
+deformation unless an adjacent pair collides. This is a **local radial-order**
+condition only, not a proof of global disjointness of whole surfaces or a
+classification of physical sheet ownership.
 
 ## Evaluation strategy and numerical gate
 
@@ -57,10 +63,14 @@ whole surfaces, nor a classification of physical sheet ownership.
   interval-valued de Casteljau subdivision. If all coefficient lower bounds
   are strictly positive, the Bernstein convex-hull property proves
   positivity on the entire interval, not only at the tested samples.
+- For a wide initial reference gap greater than pi, negate all degree-eight
+  polynomial coefficient intervals and prove strict positivity of `-D_ij`,
+  equivalently strict negativity of `D_ij`. A validated opposite sign is a
+  **sign-inverted** interval, not an acceptable orientation.
 - Otherwise subdivide with a finite recursion budget (currently 10).
-  Record a negative interval only when a negative convex-hull sign is
-  established on a subinterval. A mixed, zero-touching or exhausted branch
-  remains **inconclusive**, never accepted.
+  Record a sign-inverted interval only when an opposite-sign convex-hull
+  sign is established on a subinterval. A mixed, zero-touching or exhausted
+  branch remains **inconclusive**, never accepted.
 
 The reported certification is conditional on IEEE-754 conforming finite
 operations and on the stated outward-rounding implementation, with no
@@ -95,3 +105,23 @@ repeated model adaptation; historical 1993 point-selection formula; and
 production QUAD. The implementation keeps `automatic_sheet_pairing_enabled=0`
 and `global_mixed_model_admitted=0`, preserves the original TRI behavior,
 and remains in draft PR #214 targeting the separate research branch.
+
+## First exact-head CI defect review (2026-11-12)
+
+The preceding experimental push `9d6b46e9d9ba8f9161a34fbaf8f7128196f342c5`
+[failed its Linux root CTest gate](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43307082540),
+despite native Linux/Windows QUAD and frozen TRI comparison passing. The source
+test output showed **Eistute 40/40 sign-certified pair-intervals** with original
+Bézier controls, but the new report printed a literal backslash-n rather than
+a line ending. The Book source stopped before its interval marker with
+`R2b2 continuous Bezier fan interval accounting incomplete`; the initial
+candidate rejected wider-than-pi cyclic sectors before counting every pair.
+
+The repair requires retaining wide sectors with **negative** signed scalar
+orientation and proving their expected sign, while retaining zero/pi/two-pi
+reference ambiguities as `inconclusive` entries. It also repairs the record
+newline, strengthens source-wrapper count checks and adds an explicit
+expected-negative synthetic control. These are defect repairs in the separate
+research candidate, **not** changes to production TRI or newly approved
+surface pairing. Until the post-repair exact-head full root tests pass and
+the actual Book sign counts are inspected, the interval gate is pending.
