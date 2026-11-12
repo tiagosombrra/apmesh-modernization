@@ -128,10 +128,10 @@ DynamicSourceAftWitness ProbeNativeAftOnAdaptedSource(
       Require(face != nullptr && face->getV1() != nullptr &&
                   face->getV2() != nullptr && face->getV3() != nullptr,
               "R2b2 original AFT emitted incomplete TRI face");
-      result.accepted_tri_uv.push_back({
-          {face->getV1()->getX(), face->getV1()->getY()},
-          {face->getV2()->getX(), face->getV2()->getY()},
-          {face->getV3()->getX(), face->getV3()->getY()}});
+      result.accepted_tri_uv.push_back(apmesh::quad::PhysicalTriangleUv{
+          apmesh::quad::UvVertex{face->getV1()->getX(), face->getV1()->getY()},
+          apmesh::quad::UvVertex{face->getV2()->getX(), face->getV2()->getY()},
+          apmesh::quad::UvVertex{face->getV3()->getX(), face->getV3()->getY()}});
     }
     Require(result.accepted_quad_uv.size() == result.quad_faces &&
                 result.accepted_tri_uv.size() == result.exterior_triangles,
@@ -361,8 +361,6 @@ int Run(const std::string& config_path) {
           "Real Eistute/Book adapted source tree/AFT diagnostic was not attempted");
   Require(!locally_selected.empty(),
           "Real generator did not emit any local Adapter selections");
-  Require(!real_source_aft.admitted || dynamic_physical_attempted,
-          "R2b2 accepted UV AFT was not presented for physical admission");
   std::set<Key> uv_keys;
   for (const auto& outer : uv_attempts) {
     uv_keys.insert(OuterKey(outer));
@@ -451,6 +449,9 @@ int Run(const std::string& config_path) {
       dynamic_physical_rejection = error.what();
     }
   }
+
+  Require(!real_source_aft.admitted || dynamic_physical_attempted,
+          "R2b2 accepted UV AFT was not presented for physical admission");
 
   // Outer global commit/restore decisions are not equivalent to physical QUAD.
   std::cout << "real_generator_outcomes=1 accepted_tri=" << accepted
