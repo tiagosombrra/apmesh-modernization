@@ -325,6 +325,24 @@ int main() {
                 << " area_tri=" << report.triangle_uv_area
                 << " area_balanced=" << report.uv_area_balanced << '\n';
       Reject([&] { s.aft->AttemptExteriorTriangulation(s.selected); });
+      // This is an executable scientific gate: partial or overlapping area
+      // cannot be promoted merely because AFT returned some faces.
+      const bool complete = report.exterior_triangles > 0 &&
+          report.triangles_positive && report.front_drained &&
+          report.seam_orientation_complete && report.uv_area_balanced;
+      if (!complete) {
+        throw std::runtime_error(
+            "R2b2 exterior AFT not closed: tri=" +
+            std::to_string(report.exterior_triangles) +
+            " front=" + std::to_string(report.unresolved_front_edges) +
+            " rejected=" + std::to_string(report.unresolved_rejected_edges) +
+            " seam=" + std::to_string(report.seam_edges_with_one_tri) +
+            " triangle_positive=" + std::to_string(report.triangles_positive) +
+            " area_balanced=" + std::to_string(report.uv_area_balanced) +
+            " patch=" + std::to_string(report.boundary_uv_area) +
+            " quad=" + std::to_string(report.quad_uv_area) +
+            " tri_area=" + std::to_string(report.triangle_uv_area));
+      }
     });
     Check(accepted == 16, "R2b/R2b2 native diagnostic controls were skipped");
     std::cout << "r2b_owned_aft_front=ok outcomes=" << accepted
