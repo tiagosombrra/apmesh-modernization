@@ -2,7 +2,7 @@
   "schema": 1,
   "recorded_at_local": "2026-11-11",
   "milestone": "R2b1 — research-only owned native AFT front seeding",
-  "status": "FEATURE_PR_213_OPEN_CI_IN_PROGRESS_NOT_MERGED",
+  "status": "R2B1_MERGED_EXACT_POSTMERGE_CI_IN_PROGRESS_NOT_QUALIFIED",
   "user_goal": "Explicit QUAD T1–T6 substitutes TRI interior templates on the same Quadtree; original curve and patch-boundary flow and exterior TRI AFT preserved",
   "source_baseline": "8097be460c973e0e8db4b08a40b585ba176c7840",
   "main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
@@ -45,23 +45,27 @@
   },
   "ci_push": {
     "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43137020105",
-    "status": "in_progress",
-    "conclusion": null,
-    "native_gcc": "16/16 CTest PASS",
-    "native_msvc": "16/16 CTest PASS",
-    "frozen_tri": "pending",
-    "root_ctest": "pending",
-    "python_tooling": "pending"
+    "head_sha": "eafaeb5bd15abea8effd5fc06994346eb657da0c",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_passed": 4,
+    "jobs_total": 4,
+    "native_gcc_msvc": "16/16 each",
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "frozen_tri_eistute_book": "passed"
   },
   "ci_pr": {
     "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43137083615",
-    "status": "in_progress",
-    "conclusion": null,
-    "native_gcc": "16/16 CTest PASS",
-    "native_msvc": "16/16 CTest PASS",
-    "frozen_tri": "pending",
-    "root_ctest": "pending",
-    "python_tooling": "pending"
+    "head_sha": "eafaeb5bd15abea8effd5fc06994346eb657da0c",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_passed": 4,
+    "jobs_total": 4,
+    "native_gcc_msvc": "16/16 each",
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "frozen_tri_eistute_book": "passed"
   },
   "source_inventory": {
     "build_input": "tests/quad/CMakeLists.txt",
@@ -78,5 +82,19 @@
     "physical_bezier_model_hybrid_verified": false,
     "high_valence_global_node_welding": false
   },
-  "next_action": "Confirm exact PR #213 SHA Linux GCC/MSVC native, root 85 CTest+527 Python, frozen TRI. After required two 4/4 green workflows, merge protected into research quad-templates and certify exact merged SHA. Then R2b2 call genuine AFT geometry/topology completion from owned QUAD front and audit TRI/QUAD UV area+seam for nonzero triangles without overlapped interior; thereafter R2c typed physical mixed SubMesh."
+  "next_action": "Confirm merged-source CI 43138162247 4/4, root CTest 85/85, Python 527/527, QUAD GCC/MSVC 16/16, TRI Eistute/Book. Then begin R2b2 exterior original AFT geometry and topology completion against this owned frontier, measuring actual TRI face count, exact domain coverage, no overlap, seam winding and rejection/rollback. Do not enable CLI or make 1993 point approval claims.",
+  "pr_merge": {
+    "merged": true,
+    "merge_sha": "8da5e523531b3579d9bacd69bbfe16ec96efe76d",
+    "target": "quad-templates",
+    "production_main_changed": false
+  },
+  "postmerge_ci": {
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43138162247",
+    "exact_merged_source_sha": "8da5e523531b3579d9bacd69bbfe16ec96efe76d",
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs_passed": 0,
+    "jobs_total": 4
+  }
 }
