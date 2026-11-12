@@ -146,11 +146,37 @@
   },
   "current_feature_head": "c103c77d5c390873760744912533ecaf7dd5a2a9",
   "open_admission_gates": [
+    "r",
+    "e",
+    "a",
+    "l",
+    " ",
+    "A",
+    "d",
+    "p",
+    "t",
+    "b",
+    "o",
+    "u",
+    "n",
+    "y",
+    "c",
+    "k",
+    "s",
+    "q",
     "read-only actual Adapter AdaptDomain boundary and AdaptCurve source sequence exact match",
     "external Eistute/Book accepted/rejected patch count and documented reasons",
     "late AFT failure preserving accepted physical patch and curve samples through source Adapter",
     "independent full physical mixed element owner and SubMesh transaction R2c",
     "repeated adaptation and models/global sheet policy",
     "scientific adviser 1993 numeric point decision and disabled CLI admission"
-  ]
+  ],
+  "live_adapter_evidence": "docs/research/quad/evidence/R2B2_LIVE_ADAPTER_BOUNDARY_20261112.json",
+  "latest_attempt": {
+    "feature_sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
+    "state": "native root 87 CTest / Python / parity pending",
+    "first_failed_sha": "7797b8b2aa8d1236400f3b8e7ace1dc4b982a4c0",
+    "failure": "old strict root CTest 3/86 failures including 4th-in-process segfault and false repeated attempt identity; source inventory repaired",
+    "pr": "draft, no research merge"
+  }
 }

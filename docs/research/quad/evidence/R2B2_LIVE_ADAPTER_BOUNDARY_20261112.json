@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-11-12",
+  "milestone": "R2b2-live-Adapter: actual ordered source curve sample and boundary/Quadtree correspondence",
+  "classification": "research-only opt-in observational engineering; no scientific policy, default TRI or CLI change",
+  "production_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "research_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "candidate_sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
+  "paths_changed": [
+    "research/quad/adapter_capture.h",
+    "src/adapter/adapter.cpp",
+    "tests/quad/adapter_integration_probe.cpp",
+    "tests/quad/generator_outcome_probe.cpp",
+    "docs/architecture/source_inventory.json",
+    "CMakeLists.txt",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "method": "Capture the exact serial Adapter::AdaptDomain Boundary closed after real CurveAdaptiveParametric sample mapping with four oriented patch incidences. Copy source UV, curve parameter, source sample index, physical node ID/XYZ, original AFT vertex ID and directed contour. Compare in original GeneratorAdaptive's RefinedQuadtree observer with the same live Boundary vertex count/identity/coordinates, then join exact callback chronology to the UV snapshot. Exceptions before tree publication must not replace accepted SubMesh.",
+  "model_sources": "real GeneratorAdaptive Eistute and Book serial configs, plus existing native single-patch square fallback/retry test",
+  "risk_contracts": [
+    "Do not treat repeated logical patch/retry identities as duplicate events; record ordinal callback sequence and repeated-key count",
+    "Preserve exact side direction 0/1 increasing UV and 2/3 decreasing UV, with incidence-aware parameter inversion",
+    "Keep copied samples value-only; do not retain pointers to Adapter/Quadtree/curve/mesh after callback",
+    "Default TRI result, point rule, 1993 formulas, AFT smoothing and production selection unchanged",
+    "An isolated pre-refinement research fault must leave prior physical SubMesh intact"
+  ],
+  "observed_initial_failures": [
+    {
+      "sha": "7797b8b2aa8d1236400f3b8e7ace1dc4b982a4c0",
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43195490660",
+      "native_gcc": "success",
+      "native_msvc": "success",
+      "frozen_tri": "success",
+      "root": "failed 3/86: stale source inventory SHA, segmentation fault in fourth consecutive Adapter fixture invocation before coarse mesh, and false uniqueness rejection of a real Eistute repeated logical attempt ID",
+      "not_scientific_acceptance": true
+    },
+    {
+      "sha": "5daf959b2ce4386b500b6f5f801c97e8cdfcde42",
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43196178948",
+      "root": "failed before jobs because workflow content was accidentally duplicated by JS string replacement using literal $' regex anchor; repaired to exact original plus a bounded new CI step",
+      "not_tested": true
+    }
+  ],
+  "repairs": [
+    {
+      "sha": "7dcb67d8fd125ac38bdb1a5066ca2c339b6bc860",
+      "change": "Repair GitHub Actions YAML to one valid CTest-verbose single-test call and bounded 14d admission artifact"
+    },
+    {
+      "sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
+      "change": "Join actual boundaries to refined tree by synchronous callback chronology instead of invalid logical-key uniqueness; isolate pre-tree fault test as a dedicated native CTest process, retaining the original 3-case process; register test with true root CMake hash and first-party adapter source SHA"
+    }
+  ],
+  "current_gate": {
+    "sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
+    "status": "pending live CI",
+    "required": [
+      "native Linux QUAD (16)",
+      "native Windows QUAD (16)",
+      "root Linux CTest (87 expected) including 1 new pre-tree abort and real Generator Eistute/Book",
+      "527 Python tooling",
+      "frozen TRI Eistute/Book",
+      "R2b2 mapped and rejected source patch count artifact"
+    ]
+  },
+  "known_open": [
+    "Observed fourth consecutive fixture invocation segfault under original serial runner; independent process isolation is not an ASan/UBSan lifetime proof",
+    "True physical QUAD/TRI publication from matched original Adapter curves is not implemented",
+    "AFT real full-source refined tree and original output are not yet joined to an OwnedQuadAftFront in the same attempt",
+    "All Eistute/Book patches physical acceptance and scientific 1993 rule not qualified",
+    "Repeated mixed adaptation and multi-sheet geometry not qualified"
+  ],
+  "recorded_tests": {
+    "predecessor_c103": "feature+PR SUCCESS 4/4, native Linux/MSVC 16/16, root 86/86, Python 527/527, frozen TRI pass",
+    "current_feature": "unverified as of checkpoint"
+  },
+  "merge_status": "PR draft/unmerged",
+  "next": "Check exact feature and PR CI for 3330e0ed; correct any new reproduced failures. Inspect verbose real source per-model acceptance logs. Then pass actual Adapter value-contour into a research OwnedQuadAftFront on equivalent real refined Quadtree and test true curve sample continuity. Do not enable R2c or CLI without owned physical transaction and full models."
+}
