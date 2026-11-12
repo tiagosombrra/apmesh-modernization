@@ -36,6 +36,14 @@ scheduler: a connected actor must perform the write. If tools are unavailable,
 report that the checkpoint could not be persisted.
 
 
+## 2026-11-12 — R2b2 source Bézier admission evidence; real Adapter contour remains open
+
+Draft [PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214) source `c103c77d5c390873760744912533ecaf7dd5a2a9` passes exact [feature #43189723674](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43189723674) and [PR #43189733267](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43189733267) **SUCCESS 4/4 each**: Linux+Windows native QUAD 16/16 CTest, root 86/86 CTest, Python 527/527, frozen Eistute/Book original TRI parity. The actual native R2b2 AFT generates positive/nonoverlapping exterior TRI around source QUAD interior; original QUAD split edge identity and oriented seam are preserved. Controlled abort after TRI face emission rejects retry and destroys partial AFT owner.
+
+The new bounded source physical probe passes on one native curved Bezier patch and at least one per source Eistute/Book model; it maps direct AFT UV faces via real `PatchBezier::Parameterize/Qu/Qv` and source curve evaluations and protects original `SubMesh` pointer. The test attempts 4+28 external patches but admits only existence (`mapped >= 1`) and does not persist complete accepted/rejected counts. No full model-wide hybrid guarantee, no physical QUAD/TRI publication. Original fixed 16-segment UV boundary is a research chart, **not the actual `Adapter::AdaptCurve` ordered sample stream**. This is a **qualified bounded physical-source gate** but not complete R2b2 or R2c integration.
+
+**Next actionable R2b2-live-Adapter:** capture the original Adapter's ordered UV boundary and source CurveAdaptiveParametric parameter IDs/orientations on a real physical patch for a concrete adaptation attempt; reconcile exact AFT outer contour and QUAD split region on the same tree without source TRI interior publication; exercise late rejection preserving previously accepted source patch mesh/curves. Quantify accepted/rejected physical patch counts per Eistute/Book and independently evaluate Jacobian/orientation/coverage. Keep PR #214 draft/unmerged until this admission; preserve production `main`, historical 1993 point rule pending, and disabled `quad_uv` CLI.
+
 ## 2026-11-12 — R2b1 exact postmerge qualified; R2b2 native exterior draft
 
 [R2b1 exact merged-source Actions #43138162247](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43138162247) is confirmed **SUCCESS 4/4 on `8da5e523531b3579d9bacd69bbfe16ec96efe76d`**, with native Linux/Windows 16/16 QUAD CTest each, root 85/85 CTest, 527 Python controls and frozen TRI Eistute/Book parity. The older pending sentence below is an immutable earlier observation, not the present R2b1 status.

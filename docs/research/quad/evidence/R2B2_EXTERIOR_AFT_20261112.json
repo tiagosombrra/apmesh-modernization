@@ -2,7 +2,7 @@
   "schema": 1,
   "recorded_utc": "2026-11-12",
   "milestone": "R2b2 exterior original AFT + independent UV overlap",
-  "status": "R2B2_UV_EXACT_QUALIFIED_REAL_BEZIER_AND_FAULT_CANDIDATE_PENDING",
+  "status": "R2B2_BOUNDED_SOURCE_BEZIER_AND_PARTIAL_AFT_FAILURE_EXACT_PREMERGE_QUALIFIED_ADAPTER_UNQUALIFIED",
   "research_base": "ed8f02b51b239738b809228a78bdd3f3d6d45f1a",
   "production_main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
@@ -36,11 +36,27 @@
     "source_ci_four_jobs": "not asserted"
   },
   "candidate_ci": {
-    "push": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43189723674",
-    "conclusion": "in_progress",
-    "root_ctest": "pending",
-    "native": "pending",
-    "external_patch_model": "pending"
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43189723674",
+      "head": "c103c77d5c390873760744912533ecaf7dd5a2a9",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43189733267",
+      "head": "c103c77d5c390873760744912533ecaf7dd5a2a9",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4",
+      "test_merge_sha": "21752ff9936f3a7f5d4df62b49d023a8b2a34cc7"
+    },
+    "quad_native_gcc": "16/16",
+    "quad_native_msvc": "16/16",
+    "root_ctest": "86/86",
+    "python_tooling": "527/527",
+    "frozen_tri_eistute_book": "passed",
+    "bezier_root_test": "quad.r2b2.real_bezier_aft PASS both jobs"
   },
   "unverified": [
     "candidate overlap native CI and root science",
@@ -103,12 +119,38 @@
       "per-patch rejection is not whole-model acceptance",
       "no physical mixed SubMesh publication"
     ],
-    "status": "new candidate compilation and physical CTest unverified"
+    "status": "source-aligned_curved_Bezier_test_executed_both_root_jobs",
+    "models_attempted": {
+      "built_in_curved": 1,
+      "eistute": 4,
+      "book": 28
+    },
+    "model_gate": "at least 1 accepted patch in each external model; test pass does not prove all patches accepted",
+    "admitted_source_counts": {
+      "built_in_curved": 1,
+      "eistute": "at_least_1_exact_count_not_retained",
+      "book": "at_least_1_exact_count_not_retained"
+    },
+    "rejected_source_counts": "not persisted as independent CI artifact",
+    "real_Adapter_AdaptCurve_sample_stream": false,
+    "physical_SubMesh_publication": false
   },
   "failure_controls": {
     "first_source_sha": "7146aa44834d0820789303c4a2f840201209aa2b",
     "actual_compilation_failure": "invalid FaceUv temporary C++17 initialization at physical probe line 234",
     "fixed_sha": "c103c77d5c390873760744912533ecaf7dd5a2a9",
-    "new_fault_case": "throw after at least one original AFT TRI, reject retry and retire partial owner; unverified"
-  }
+    "new_fault_case": "throw after at least one original AFT TRI, reject retry and retire partial owner; unverified",
+    "actual_native_fault_test": "passed Linux 16/16 and Windows 16/16 exact feature+PR",
+    "normal_production_fault_hook": false,
+    "whole_process_memory_qualified": false
+  },
+  "current_feature_head": "c103c77d5c390873760744912533ecaf7dd5a2a9",
+  "open_admission_gates": [
+    "read-only actual Adapter AdaptDomain boundary and AdaptCurve source sequence exact match",
+    "external Eistute/Book accepted/rejected patch count and documented reasons",
+    "late AFT failure preserving accepted physical patch and curve samples through source Adapter",
+    "independent full physical mixed element owner and SubMesh transaction R2c",
+    "repeated adaptation and models/global sheet policy",
+    "scientific adviser 1993 numeric point decision and disabled CLI admission"
+  ]
 }
