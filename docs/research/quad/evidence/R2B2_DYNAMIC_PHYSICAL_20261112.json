@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "date_utc": "2026-11-12",
+  "milestone": "R2b2 dynamic original Adapter/AFT QUAD and TRI physical Bezier audit",
+  "classification": "research-only independent physical source probe; no physical SubMesh publication",
+  "source_feature_sha": "24349b74befb2308bb3d6202f747998def5eedd3",
+  "pr_number": 214,
+  "pr_state": "draft/unmerged",
+  "production_main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "source_paths": [
+    "research/quad/dynamic_physical_audit.h",
+    "tests/quad/generator_outcome_probe.cpp"
+  ],
+  "original_dynamic_uv_predecessor": {
+    "sha": "1f2da57ff4dc4dd6dde358ede0efd772da3fb3ba",
+    "ci_feature": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43206236696",
+    "ci_pr": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43206246419",
+    "qualification": "4/4 both, root 87/87, Python 527/527, native GCC/MSVC 16/16, frozen Eistute/Book TRI",
+    "eistute": {
+      "original_source_sites": 40,
+      "source_leaves": 130,
+      "quad": 472,
+      "exterior_tri": 152,
+      "uv_admitted": 1
+    },
+    "book": {
+      "original_source_sites": 36,
+      "source_leaves": 64,
+      "quad": 188,
+      "exterior_tri": 100,
+      "uv_admitted": 1
+    }
+  },
+  "audit_contract": {
+    "capture": "freeze actual accepted AFT TRI and selected QUAD UV face arrays from same original source cloned tree, copy original Adapter node XYZ and oriented original source curve parameters; after real TRI generator success load separate original BP geometry",
+    "source_node": "original adapted curve node XYZ == independently loaded PatchBezier::Parameterize and source CurveAdaptiveParametric::FindPointByParameter for EVERY original boundary site, tolerance 2e-7 * max(1,norm(XYZ))",
+    "facets": "QUAD diagonally split into two oriented test facets; all original exterior TRI tested through real PatchBezier Qu/Qv Jacobian, positive nondegenerate 3D area, finite XYZ, positive facet-vs-Jacobian normal alignment",
+    "negative_controls": [
+      "perturbed source node XYZ rejected",
+      "inverted exterior TRI rejected",
+      "out of chart UV rejected"
+    ],
+    "publication": "no physical mixed SubMesh and no change to original production TRI",
+    "science_rule": "research mean interior point, 1993 formula unapproved",
+    "result_markers": [
+      "dynamic_physical_attempted",
+      "dynamic_physical_admitted",
+      "dynamic_physical_source_nodes",
+      "dynamic_physical_facets",
+      "dynamic_physical_min_alignment",
+      "dynamic_physical_max_source_error",
+      "dynamic_physical_negative_controls",
+      "dynamic_physical_rejection"
+    ]
+  },
+  "predecessor_compilation_failure": {
+    "sha": "3adfff01d970e03368ebba5d0215214f9897bd86",
+    "feature_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43245604544",
+    "pr_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43245617085",
+    "failed_gate": "root Linux compile: ambiguous C++ std::array UV triangle initializer and use of physical attempted variable before declaration",
+    "native_quad_linux_windows": "passed",
+    "tri_scientific_frozen": "passed",
+    "physical_probe_executed": false
+  },
+  "latest_candidate_ci": {
+    "sha": "24349b74befb2308bb3d6202f747998def5eedd3",
+    "feature": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43246304785",
+    "pr": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43246317558",
+    "linux_quad": "passed",
+    "windows_quad": "passed",
+    "root_ctest": "pending",
+    "python": "pending",
+    "tri_frozen": "pending",
+    "dynamic_physical_admission": "unverified"
+  },
+  "open": [
+    "all 4/28 external patches dynamic physical coverage not shown",
+    "global shared curve/sheet seam conformity unqualified",
+    "typed physical mixed SubMesh and atomic rollback not implemented",
+    "repeated adaptation not qualified",
+    "historical fourth in-process fixture failure unqualified by sanitizer",
+    "production quad_uv intentionally disabled"
+  ],
+  "next": "Inspect exact head 4/4 and verbose per-model dynamic_physical markers, then require positive physical admission and all negative controls before advancing global interface work."
+}
