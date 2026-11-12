@@ -187,9 +187,17 @@ CaseResult RunPatch(bool abort_during_capture,
     Require(observed.disposition == apmesh::quad::CaptureDisposition::PendingTriDecision,
             "UV observation was incorrectly marked accepted");
   }
-  result.source_leaves = snapshots.front().polygons.source_leaves;
-  result.polygon_count = static_cast<unsigned>(
-      snapshots.front().polygons.input.polygons.size());
+  // The intentionally aborted boundary observer runs before the refined
+  // Quadtree callback, so a zero-snapshot result is a valid negative trace.
+  // Never dereference snapshots.front() until that callback has run.
+  if (!snapshots.empty()) {
+    result.source_leaves = snapshots.front().polygons.source_leaves;
+    result.polygon_count = static_cast<unsigned>(
+        snapshots.front().polygons.input.polygons.size());
+  } else {
+    Require(abort_during_boundary && result.boundary_snapshots == 1,
+            "A non-aborted Adapter path lost its refined Quadtree snapshot");
+  }
 
   if (abort_during_capture || abort_during_boundary) {
     Require(!generated && decisions.empty() &&
