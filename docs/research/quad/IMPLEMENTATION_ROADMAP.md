@@ -4,6 +4,12 @@
 **Branch:** `quad-templates`; **baseline imutável de origem:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` (PR #183).  
 **Auditoria:** [BASELINE_AUDIT.md](BASELINE_AUDIT.md). **Fonte histórica:** Bento et al., *Combinação das Técnicas de Quadtree e Delaunay para Geração Automática de Malhas de Elementos Finitos*, SIBGRAPI 1993, Figura 7 e seção sobre contorno.
 
+## 2026-11-12 — R2b2 continuous high-valence source curve radial order: exact double CI qualified
+
+[Draft PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214) feature `e9cdea99463f18075ba29535a9f5c37a749a1330` now has two independent exact-head **4/4 completed SUCCESS** CI runs ([push #43313839319](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43313839319), [PR #43313852405](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43313852405)). Both qualified GCC/MSVC native QUAD 16/16, Linux root 87/87 CTest, Python 527/527 and unchanged source TRI equivalence. Real-model original signed Bernstein triple-product interval audit: **Eistute 40/40**, **Book 336/336**, all strictly sign-certified, **0 inverted/0 inconclusive**, with Book's single legitimate >pi sector treated with negative sign, minimum oriented lower bounds 0.0329135 and 1.80351e-05. Results recorded from *both real model root logs*, not merely CTest success. This closes the **bounded R2b2 local continuous radial-order numerical source gate**, conditional on the documented arithmetic/control-net assumptions; it does not close the global scientific/topological R2c gate. [Evidence](evidence/R2B2_BERNSTEIN_INTERVAL_20261112.json).
+
+**Next R2c-0 proposal:** model-SHA-bound immutable source-curve radial edge incidence rings (valence 4 and 28), explicit sheet semantic approval and canonical ownership staging policy, with **no automatic `twin` pairing or physical `SubMesh` publish**. See [read-only ownership preflight](R2C_NONMANIFOLD_RADIAL_OWNERSHIP_DESIGN_20261112.md). The original production `main`, TRI, all-QUAD/quad_uv policy, historical 1993 point selection and global repeated adaptive/lifetime gates remain unchanged/pending. PR #214 remains draft/unmerged pending scientific review.
+
 ## Continuity and mandatory research handoff
 
 **Canonical current state:** [STATE.md](STATE.md) — read this before interpreting any milestone in this roadmap.  

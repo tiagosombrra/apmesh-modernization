@@ -1,9 +1,9 @@
 {
-  "schema": "apmesh.quad.r2b2.bernstein_interval.candidate.v1",
+  "schema": "apmesh.quad.r2b2.bernstein_interval.observed.v2",
   "date_utc": "2026-11-12",
   "milestone": "R2b2 continuous source Bezier radial-order interval gate",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
-  "feature_sha": "a2a830858357776d77ad0020721efd0adf7fa1cc",
+  "feature_sha": "e9cdea99463f18075ba29535a9f5c37a749a1330",
   "draft_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
   "mathematical_quantity": "T(t) dot (R_i(t) cross R_j(t)); degree <= 8",
   "coefficient_basis": "Bernstein, outward nextafter interval arithmetic, de Casteljau restriction",
@@ -24,13 +24,26 @@
     "book": 336
   },
   "toolchain_status_at_checkpoint": {
-    "exact_feature_native_quads": "in_progress",
-    "full_linux_root_ctest_python": "in_progress",
-    "frozen_TRI_scientific_parity": "in_progress"
+    "feature_push": {
+      "four_jobs": "success",
+      "linux_native_quad": "16/16",
+      "windows_native_quad": "16/16",
+      "root_ctest": "87/87",
+      "python_tooling": "527/527",
+      "frozen_tri_equivalence": "pass"
+    },
+    "independent_pr": {
+      "four_jobs": "success",
+      "linux_native_quad": "16/16",
+      "windows_native_quad": "16/16",
+      "root_ctest": "87/87",
+      "python_tooling": "527/527",
+      "frozen_tri_equivalence": "pass"
+    }
   },
-  "exact_pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43309180825",
-  "observed_original_interval_model_counts": "Eistute first failed revision 40/40; final SHA both pending",
-  "model_wide_interval_certification": "pending",
+  "exact_pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43313852405",
+  "observed_original_interval_model_counts": "Eistute 40/40 and Book 336/336 source-derived both feature and PR exact root logs",
+  "model_wide_interval_certification": "local_high_valence_radial_order_numerically_qualified; not global surface topology",
   "local_native_tests": "not_executed",
   "asan_ubsan": "not_executed",
   "advisor_review": "pending",
@@ -39,8 +52,8 @@
   "physical_SubMesh_published": false,
   "main_untouched": true,
   "scientific_scope": "local adjacent radial sector order only; no nonmanifold ownership or whole surface nonintersection proof",
-  "next": "inspect exact CI source logs, classify Eistute/Book sign bounds, repair and repeat exact CI if necessary",
-  "gate_status": "postrepair_exact_head_ci_pending",
+  "next": "independent source-semantic nonmanifold edge fan/sheet ownership review (valence 4/28); then R2c-0 read-only records, no welding until approved",
+  "gate_status": "exact_double_CI_complete_numerical_local_radial_interval_qualified",
   "prior_failed_gate": {
     "sha": "9d6b46e9d9ba8f9161a34fbaf8f7128196f342c5",
     "push_run": 43307082540,
@@ -67,5 +80,40 @@
     "newline": true,
     "negative_sign_control": true,
     "sha": "a2a830858357776d77ad0020721efd0adf7fa1cc"
+  },
+  "exact_feature_push_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43313839319",
+  "original_model_interval_results": {
+    "eistute": {
+      "original_curve_valence": 4,
+      "original_intervals": 10,
+      "adjacent_pairs": 4,
+      "pair_intervals_checked": 40,
+      "certified_pair_intervals": 40,
+      "inverted_pair_intervals": 0,
+      "inconclusive_pair_intervals": 0,
+      "wide_reference_pairs": 0,
+      "ambiguous_reference_pairs": 0,
+      "smallest_positive_lower": 0.0329135,
+      "interval_order_certified": 1,
+      "source_negative_controls": 1
+    },
+    "book": {
+      "original_curve_valence": 28,
+      "original_intervals": 12,
+      "adjacent_pairs": 28,
+      "pair_intervals_checked": 336,
+      "certified_pair_intervals": 336,
+      "inverted_pair_intervals": 0,
+      "inconclusive_pair_intervals": 0,
+      "wide_reference_pairs": 1,
+      "ambiguous_reference_pairs": 0,
+      "smallest_positive_lower": 0.0000180351,
+      "interval_order_certified": 1,
+      "source_negative_controls": 1
+    }
+  },
+  "source_ci_root_job_ids": {
+    "feature_push": 131516565007,
+    "independent_pr": 131516608753
   }
 }
