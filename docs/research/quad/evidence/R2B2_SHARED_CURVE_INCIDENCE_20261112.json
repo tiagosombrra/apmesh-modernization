@@ -2,9 +2,9 @@
   "schema": 1,
   "date_utc": "2026-11-12",
   "stage": "R2b2 original dynamically adapted multi-patch source curve/sheet incidence audit",
-  "status": "TRUE_MODEL_JUNCTION_HIGH_VALENCE_CONFIRMED_GEOMETRIC_EQUIVALENCE_SEPARATED_FROM_SHEET_POLICY_PENDING",
+  "status": "ORIGINAL_CENTRAL_CURVE_ALL_PATCH_SOURCE_NODE_IDS_AND_XYZ_EXACT_DOUBLE_4_4_HIGH_VALENCE_SHEET_POLICY_PENDING",
   "classification": "read-only research oracle, not source-wide QUAD physical mesh",
-  "feature_sha": "1535b51ee42d19a406effbea36570514c4641bfb",
+  "feature_sha": "1d46ba4abce35cc5a28ec214c0d5787414928889",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "pr": 214,
   "pr_state": "draft_unmerged",
@@ -79,7 +79,7 @@
     "historical 1993 point rule not advisor approved",
     "quad_uv CLI remains disabled"
   ],
-  "next": "Qualify exact current source terminal provenance and both independent 4/4 CIs; inspect original shared source-owner IDs. Then formalize high-valence edge incidence without arbitrary welding, all-patch original AFT and physical XYZ; SubMesh publication/rollback, repeated adaptation and ASan/UBSan outstanding.",
+  "next": "Implement bounded ALL 4 Eistute/28 Book patch original-adapted research-owned AFT and PatchBezier physical per-patch admit/reject, verify multi-t curve fan ordering and science policy, then typed mixed SubMesh rollback; ASan/UBSan historical 4th-in-process fixture remains pending.",
   "measured_previous_true_source_topology": {
     "source_sha": "5952a0ea6acfa408e352dc82cb36c68a6d98d7d7",
     "feature": {
@@ -251,16 +251,56 @@
     },
     "source": "verbatim root CI R2B2_SHARED_SHEET_SECTORS and R2B2_SHARED_CURVE_MODEL (both pipelines)",
     "physical_submesh_published": false,
-    "global_mixed_mesh_admitted": false
+    "global_mixed_mesh_admitted": false,
+    "status": "certified double exact CI + reconfirmed at latest source"
   },
   "current_source_endpoint_candidate": {
     "sha": "1d46ba4abce35cc5a28ec214c0d5787414928889",
-    "feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43267126924",
-    "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43267143566",
-    "status": "pending root",
-    "native_linux_windows": "16/16 passed",
+    "status": "completed_exact_double_4_4",
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43267126924",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43267143566",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "native_gcc": "16/16",
+    "native_msvc": "16/16",
     "tri_frozen": "passed",
-    "source_owner_id_global_equality": "unverified",
-    "negative_controls": "forged original curve owner terminal ID and XYZ"
+    "negative_controls": "corrupt original source owner terminal ID and XYZ both rejected",
+    "eistute": {
+      "coherent_epoch_patches": 4,
+      "original_shared_curve_valence": 4,
+      "shared_curve_geometry_matched": 1,
+      "shared_curve_original_owner_ids_matched": 1,
+      "source_id_mismatch_pairs": 0,
+      "source_id_mismatch_sites": 0,
+      "source_site_pairs_compared": 66,
+      "max_xyz_error": 0,
+      "radial_distinct_sectors": 4,
+      "min_radial_gap_radians": 1.5708
+    },
+    "book": {
+      "coherent_epoch_patches": 28,
+      "original_shared_curve_valence": 28,
+      "shared_curve_geometry_matched": 1,
+      "shared_curve_original_owner_ids_matched": 1,
+      "source_id_mismatch_pairs": 0,
+      "source_id_mismatch_sites": 0,
+      "source_site_pairs_compared": 4914,
+      "max_xyz_error": 0,
+      "radial_distinct_sectors": 28,
+      "min_radial_gap_radians": 0.0318123
+    },
+    "physical_submesh_published": false,
+    "global_mixed_model_admitted": false,
+    "cause_of_prior_mismatch": "Research observer used next-side AFT boundary corner alias node ID for previous original shared curve terminal source point; native AFT closure correct and unchanged"
   }
 }
