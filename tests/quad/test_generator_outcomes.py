@@ -44,14 +44,48 @@ def run(executable: Path, root: Path, model: str) -> None:
             timeout=300,
             check=False,
         )
-        markers = [line for line in result.stdout.splitlines()
-                   if line.startswith("real_generator_outcomes=")]
-        if result.returncode != 0 or len(markers) != 1:
+        markers = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("real_generator_outcomes=")
+        ]
+        shared = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_SHARED_CURVE_MODEL ")
+        ]
+        if result.returncode != 0 or len(markers) != 1 or len(shared) != 1:
             raise AssertionError(
                 f"Generator research probe failed: rc={result.returncode}, "
-                f"markers={markers}, stdout_tail={result.stdout[-5000:]!r}, "
+                f"markers={markers}, shared={shared}, "
+                f"stdout_tail={result.stdout[-5000:]!r}, "
                 f"stderr_tail={result.stderr[-5000:]!r}"
             )
+
+        # Require source-derived, coherent and nonzero real interface evidence.
+        # CTest success does NOT classify rejected interfaces as conforming.
+        fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", shared[0]))
+        expected_patches = 4 if model == "eistute" else 28
+        required = (
+            "patches", "shared_curves", "coherent_epoch_patches",
+            "shared_compared", "shared_matched", "shared_rejected",
+            "shared_unobserved", "negative_controls",
+            "global_mixed_model_admitted",
+        )
+        if any(field not in fields for field in required):
+            raise AssertionError(f"Missing source interface evidence: {shared[0]!r}")
+        compared = int(fields["shared_compared"])
+        matched = int(fields["shared_matched"])
+        rejected = int(fields["shared_rejected"])
+        if not (
+            int(fields["patches"]) == expected_patches
+            and int(fields["shared_curves"]) > 0
+            and int(fields["coherent_epoch_patches"]) > 1
+            and compared > 0
+            and matched + rejected == compared
+            and int(fields["negative_controls"]) == 1
+            and int(fields["global_mixed_model_admitted"]) == 0
+        ):
+            raise AssertionError(f"Unqualified or empty source audit: {shared[0]!r}")
+        print(shared[0])
         print(markers[0])
 
 
