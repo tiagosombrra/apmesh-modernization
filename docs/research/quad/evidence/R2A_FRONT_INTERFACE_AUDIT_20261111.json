@@ -2,7 +2,7 @@
   "schema": 1,
   "recorded_date_local": "2026-11-11",
   "scientific_scope": "Research engineering R2a: source-linked exact axis-aligned front geometry audit, not live hybrid generation",
-  "status": "R2A_RESEARCH_MERGED_EXACT_POSTMERGE_CI_PENDING",
+  "status": "R2A_RESEARCH_SOURCE_FULLY_QUALIFIED_LIVE_AFT_PUBLICATION_NOT_IMPLEMENTED",
   "feature_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/212",
   "feature_branch": "quad/integration-r2a-front-geometry-audit-20261111",
   "exact_feature_source_sha": "1e26f68c3e82d26382ceef9fbaf97ee0fdeb8fa8",
@@ -85,7 +85,7 @@
     "global_nonmanifold_weld_enabled": false,
     "no_local_compilation_claimed": true
   },
-  "next_gate": "Check exact merged SHA eabc5201 CI #43131307374 for Linux/GCC, Windows/MSVC, root 85 CTest, 527 Python and frozen TRI Eistute/Book. Only then mark R2a source gate qualified and proceed R2b owned front handoff; never imply live physical AFT elements or enabled CLI.",
+  "next_gate": "R2b: isolated research-only derived native AdvancingFront harness accepting reversed QUAD interface as real owned Vertex and Edge objects, with valid exterior QuadtreeCell observers and clean rollback; prove actual active front and no TRI-template publication. Only then attempt real exterior triangle completion and R2c physical SubMesh. Preserve default production TRI unchanged.",
   "pr_merge": {
     "merged": true,
     "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/212",
@@ -96,9 +96,13 @@
   "postmerge_ci": {
     "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43131307374",
     "exact_source_sha": "eabc5201eadfe016c2b9698d43648c9ea7062109",
-    "status": "in_progress",
-    "conclusion": null,
-    "jobs_passed": null,
-    "jobs_total": 4
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_passed": 4,
+    "jobs_total": 4,
+    "root_ctest": "85/85 passed",
+    "python_tooling": "527/527 passed",
+    "native_gcc_msvc": "15/15 each",
+    "frozen_tri_eistute_book": "passed"
   }
 }
