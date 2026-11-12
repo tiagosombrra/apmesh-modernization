@@ -10,6 +10,7 @@
 #include "shared_curve_audit.h"
 #include "shared_curve_sector_audit.h"
 #include "shared_curve_sector_sweep.h"
+#include "shared_curve_bernstein_audit.h"
 
 #include "data/geometry.h"
 #include "input_output/patch_reader.h"
@@ -766,6 +767,94 @@ int Run(const std::string& config_path) {
             << " negative_controls=" << sector_sweep_negative_controls
             << " reason=" << sweep.rejection
             << " global_mixed_model_admitted=0\n";
+
+  // Source-control Bernstein coefficients bound each WHOLE original curve
+  // interval. This is intentionally distinct from sampled radial ordering:
+  // an unresolved interval blocks continuous order admission but never
+  // changes production behavior or grants automatic nonmanifold welding.
+  const auto interval_fan =
+      apmesh::quad::AuditOriginalHighValenceBernsteinIntervals(
+          shared_geometry, shared_graph, boundaries, shared);
+  Require(interval_fan.high_valence_curves ==
+              shared_graph.nonmanifold_curves &&
+              interval_fan.adjacent_pairs ==
+                  (shared.model_patches == 4U ? 4U : 28U) &&
+              interval_fan.original_intervals ==
+                  sweep.original_curve_intervals &&
+              interval_fan.pair_intervals_checked ==
+                  interval_fan.adjacent_pairs *
+                  interval_fan.original_intervals &&
+              interval_fan.pair_intervals_checked ==
+                  interval_fan.certified_pair_intervals +
+                  interval_fan.inverted_pair_intervals +
+                  interval_fan.inconclusive_pair_intervals &&
+              !interval_fan.automatic_sheet_pairing_enabled,
+          "R2b2 continuous Bezier fan interval accounting incomplete");
+
+  // Independent analytic positive/negative controls are not substituted for
+  // the actual Eistute/Book cubic surface controls. Two hidden crossings
+  // between positive endpoints must never be admitted as positive.
+  using IntervalVector = apmesh::quad::interval::Vector3;
+  const auto scalar = [](double value) {
+    return apmesh::quad::interval::Exact(value);
+  };
+  const IntervalVector vertical{{scalar(0.0), scalar(0.0), scalar(1.0)}};
+  const IntervalVector x_direction{{scalar(1.0), scalar(0.0), scalar(0.0)}};
+  const IntervalVector y_direction{{scalar(0.0), scalar(1.0), scalar(0.0)}};
+  const IntervalVector reversed_y{{scalar(0.0), scalar(-1.0), scalar(0.0)}};
+  const IntervalVector zero{{scalar(0.0), scalar(0.0), scalar(0.0)}};
+  const std::array<IntervalVector, 3> tangent_control{
+      vertical, vertical, vertical};
+  const std::array<IntervalVector, 4> first_control{
+      x_direction, x_direction, x_direction, x_direction};
+  const std::array<IntervalVector, 4> positive_control{
+      y_direction, y_direction, y_direction, y_direction};
+  const std::array<IntervalVector, 4> reversed_control{
+      reversed_y, reversed_y, reversed_y, reversed_y};
+  const std::array<IntervalVector, 4> collapsed_control{
+      zero, zero, zero, zero};
+  const std::array<IntervalVector, 4> hidden_crossing_control{
+      y_direction, reversed_y, reversed_y, y_direction};
+  const auto certify = [&](const std::array<IntervalVector, 4>& second) {
+    return apmesh::quad::interval::CertifyPositive(
+        apmesh::quad::interval::OrientationPolynomial(
+            tangent_control, first_control, second), 0.0, 1.0, 8U);
+  };
+  bool invalid_interval_rejected = false;
+  try {
+    static_cast<void>(apmesh::quad::interval::CertifyPositive(
+        apmesh::quad::interval::OrientationPolynomial(
+            tangent_control, first_control, positive_control), 0.5, 0.5));
+  } catch (const std::invalid_argument&) {
+    invalid_interval_rejected = true;
+  }
+  const bool interval_negative_controls =
+      certify(positive_control).strictly_positive &&
+      !certify(reversed_control).strictly_positive &&
+      !certify(collapsed_control).strictly_positive &&
+      !certify(hidden_crossing_control).strictly_positive &&
+      invalid_interval_rejected;
+  Require(interval_negative_controls,
+          "R2b2 Bernstein continuous sign or adversarial controls failed");
+  std::cout << "R2B2_SHARED_SHEET_BERNSTEIN"
+            << " patches=" << shared.model_patches
+            << " high_valence_curves=" << interval_fan.high_valence_curves
+            << " adjacent_pairs=" << interval_fan.adjacent_pairs
+            << " original_intervals=" << interval_fan.original_intervals
+            << " pair_intervals_checked=" << interval_fan.pair_intervals_checked
+            << " certified_pair_intervals=" << interval_fan.certified_pair_intervals
+            << " inverted_pair_intervals=" << interval_fan.inverted_pair_intervals
+            << " inconclusive_pair_intervals="
+            << interval_fan.inconclusive_pair_intervals
+            << " smallest_positive_lower="
+            << interval_fan.smallest_positive_lower
+            << " interval_order_certified="
+            << interval_fan.interval_order_certified
+            << " automatic_sheet_pairing_enabled="
+            << interval_fan.automatic_sheet_pairing_enabled
+            << " negative_controls=" << interval_negative_controls
+            << " reason=" << interval_fan.reason
+            << " global_mixed_model_admitted=0\\n";
 
   // Construct four adversarial counterparts from an ACTUAL original Adapter
   // sampled curve, without inventing a new curve or a synthetic UV geometry.
