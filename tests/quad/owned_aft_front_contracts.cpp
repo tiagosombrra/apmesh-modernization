@@ -284,7 +284,49 @@ int main() {
       s.selected.quad_face_origins = saved;
       CheckSeed(s, 16, 4);
     });
-    Check(accepted == 13, "R2b native positive and negative controls were skipped");
+    run("r2b2-reject-unseeded-exterior-attempt", [] {
+      auto s = Make();
+      Reject([&] { s.aft->AttemptExteriorTriangulation(s.selected); });
+      CheckUnmodified(s);
+    });
+    run("r2b2-reject-unbound-patch-cells", [] {
+      auto s = Make();
+      CheckSeed(s, 16, 4);
+      Reject([&] { s.aft->AttemptExteriorTriangulation(s.selected); });
+      Check(s.aft->Triangles().empty(), "Failed AFT preflight emitted triangles");
+    });
+    run("r2b2-run-native-original-geometry-topology", [] {
+      auto s = Make();
+      CheckSeed(s, 16, 4);
+      // The original production tree registers boundary cells in generate().
+      // This research fixture manually constructs the same already-refined tree.
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        s.aft->getQuadtree()->findCell(edge);
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        Check(edge->getCell() != nullptr,
+              "Native source patch boundary has no valid cell observer");
+      const auto report = s.aft->AttemptExteriorTriangulation(s.selected);
+      Check(report.exterior_triangles == s.aft->Triangles().size() &&
+                report.boundary_uv_area > report.quad_uv_area &&
+                report.seam_vertices_unchanged &&
+                !report.spatial_overlap_tested && !report.qualified,
+            "R2b2 misrepresented its measured exterior AFT attempt");
+      std::cout << "R2B2_DIAGNOSTIC exterior_triangles="
+                << report.exterior_triangles
+                << " geometry_done=" << report.geometry_done
+                << " topology_attempted=" << report.topology_attempted
+                << " topology_done=" << report.topology_done
+                << " unresolved_front=" << report.unresolved_front_edges
+                << " rejected=" << report.unresolved_rejected_edges
+                << " seam_owned=" << report.seam_edges_with_one_tri
+                << " seam_expected=" << s.aft->OwnedSeamEdges().size()
+                << " area_boundary=" << report.boundary_uv_area
+                << " area_quad=" << report.quad_uv_area
+                << " area_tri=" << report.triangle_uv_area
+                << " area_balanced=" << report.uv_area_balanced << '\\n';
+      Reject([&] { s.aft->AttemptExteriorTriangulation(s.selected); });
+    });
+    Check(accepted == 16, "R2b/R2b2 native diagnostic controls were skipped");
     std::cout << "r2b_owned_aft_front=ok outcomes=" << accepted
               << " native_quadtree_and_boundary=1"
               << " aft_active_real_edges=1"

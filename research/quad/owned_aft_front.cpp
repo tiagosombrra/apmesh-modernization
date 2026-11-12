@@ -301,4 +301,133 @@ OwnedAftFrontReport OwnedQuadAftFront::Seed(
   return report;
 }
 
+namespace {
+
+double SignedTwiceArea(const std::vector<UvVertex>& points) {
+  double twice = 0.0;
+  for (std::size_t i = 0; i < points.size(); ++i) {
+    const auto& a = points[i];
+    const auto& b = points[(i + 1) % points.size()];
+    twice += a.u * b.v - b.u * a.v;
+  }
+  return twice;
+}
+
+double TriangleTwiceArea(Par2DJMesh::Basics::Face* face) {
+  const auto* a = face->getV1();
+  const auto* b = face->getV2();
+  const auto* c = face->getV3();
+  return (b->getX() - a->getX()) * (c->getY() - a->getY()) -
+         (b->getY() - a->getY()) * (c->getX() - a->getX());
+}
+
+}  // namespace
+
+ExteriorAftReport OwnedQuadAftFront::AttemptExteriorTriangulation(
+    const InteriorTemplateSelection& selected) {
+  Require(seeded_ && !exterior_attempted_ && mesh.empty(),
+          "R2b2 requires an unused, successfully seeded AFT instance");
+  Require(selected.mode == InteriorTemplateMode::ExperimentalQuad &&
+              selected.quad_region_boundary.size() == innerEdges.size() &&
+              quadtree->GetTemplateFaces().empty(),
+          "R2b2 source changed or contains overlapping legacy TRI templates");
+
+  // Normal execution associates cells during Quadtree::generate. The synthetic
+  // test fixture explicitly registers these cells before calling this method.
+  for (auto* e : boundary->getEdges()) {
+    Require(e != nullptr && e->getCell() != nullptr &&
+                e->getV1() != nullptr && e->getV2() != nullptr,
+            "R2b2 requires source-boundary edges with live cell observers");
+  }
+  std::map<const Vertex*, std::pair<double, double>> saved_uv;
+  for (auto* v : innerVertices) {
+    Require(v != nullptr, "R2b2 has a null owned seam vertex");
+    saved_uv.emplace(v, std::make_pair(v->getX(), v->getY()));
+  }
+  std::vector<UvVertex> polygon;
+  for (auto* v : boundary->getBoundary()) {
+    Require(v != nullptr, "R2b2 has a null patch boundary vertex");
+    polygon.push_back({v->getX(), v->getY()});
+  }
+  Require(polygon.size() >= 3, "R2b2 needs a real closed UV patch boundary");
+
+  ExteriorAftReport report;
+  report.boundary_uv_area = 0.5 * SignedTwiceArea(polygon);
+  Require(report.boundary_uv_area > 0.0,
+          "R2b2 requires a positively oriented source patch contour");
+  for (const auto& face : selected.uv_quads.quads) {
+    std::vector<UvVertex> points;
+    for (auto id : face.vertices) {
+      Require(id < selected.uv_quads.vertices.size(),
+              "R2b2 QUAD source face has a foreign UV vertex");
+      points.push_back(selected.uv_quads.vertices[id]);
+    }
+    Require(points.size() == 4, "R2b2 requires four-node interior QUAD faces");
+    const double area = 0.5 * SignedTwiceArea(points);
+    Require(std::isfinite(area) && area > 0.0,
+            "R2b2 QUAD interior face has invalid signed area");
+    report.quad_uv_area += area;
+  }
+
+  // After this point the original AFT can mutate partial faces/fronts.
+  // A rejected/unfinished attempt must be discarded with its AFT owner; it
+  // must never be presented as an accepted mesh or reused on the same owner.
+  exterior_attempted_ = true;
+  const auto geometric = makeGeometryBasedMesh();
+  report.geometry_done = (geometric == Par2DJMesh::AFT::ADVF_GEOMETRY_MESH_DONE);
+  if (geometric == Par2DJMesh::AFT::ADVF_GEOMETRY_EDGE_REJECTED_TWICE) {
+    report.topology_attempted = true;
+    report.topology_done =
+        (makeTopologyBasedMesh() == Par2DJMesh::AFT::ADVF_TOPOLOGY_MESH_DONE);
+  }
+  report.exterior_triangles = mesh.size();
+  report.unresolved_front_edges = front.size();
+  report.unresolved_rejected_edges = rejected.size();
+  report.front_drained = front.empty() && rejected.empty();
+
+  report.triangles_positive = !mesh.empty();
+  for (auto* face : mesh) {
+    const double twice = TriangleTwiceArea(face);
+    if (!std::isfinite(twice) || twice <= 1.0e-12) {
+      report.triangles_positive = false;
+    }
+    report.triangle_uv_area += 0.5 * twice;
+  }
+  for (auto* edge : innerEdges) {
+    std::size_t count = 0;
+    for (auto* face : mesh) {
+      const std::array<std::pair<Vertex*, Vertex*>, 3> oriented{{
+          {face->getV1(), face->getV2()},
+          {face->getV2(), face->getV3()},
+          {face->getV3(), face->getV1()}}};
+      for (const auto& side : oriented) {
+        if (side.first == edge->getV1() &&
+            side.second == edge->getV2()) {
+          ++count;
+        }
+      }
+    }
+    if (count == 1) ++report.seam_edges_with_one_tri;
+  }
+  report.seam_orientation_complete =
+      report.seam_edges_with_one_tri == innerEdges.size();
+  report.seam_vertices_unchanged = true;
+  for (const auto& [v, position] : saved_uv) {
+    if (v->getX() != position.first || v->getY() != position.second) {
+      report.seam_vertices_unchanged = false;
+    }
+  }
+  report.uv_area_balanced =
+      std::fabs(report.quad_uv_area + report.triangle_uv_area -
+                report.boundary_uv_area) <=
+      1.0e-8 * std::max(1.0, report.boundary_uv_area);
+
+  // Triangle/QUAD spatial overlap and source-Bezier physical XYZ are not
+  // independently checked in this slice. Never promote diagnostics to
+  // production qualification or claim an accepted hybrid result.
+  report.spatial_overlap_tested = false;
+  report.qualified = false;
+  return report;
+}
+
 }  // namespace apmesh::quad
