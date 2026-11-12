@@ -168,6 +168,8 @@ struct SharedCurveComparison {
   std::string reason = "not_compared";
   std::size_t compared_sites = 0;
   std::size_t node_id_mismatched_sites = 0;
+  std::size_t node_id_mismatched_endpoints = 0;
+  std::size_t node_id_mismatched_interiors = 0;
   double maximum_xyz_error = 0.0;
 };
 
@@ -197,6 +199,10 @@ inline SharedCurveComparison CompareSharedCurveSides(
     }
     if (x.node_id != y.node_id) {
       ++result.node_id_mismatched_sites;
+      if (i == 0U || i + 1U == a.ordered_by_original_parameter.size())
+        ++result.node_id_mismatched_endpoints;
+      else
+        ++result.node_id_mismatched_interiors;
       if (require_same_node_ids) {
         result.reason = "node_identity"; return result;
       }
@@ -239,6 +245,8 @@ struct SharedCurveModelAudit {
   std::size_t coherent_epoch_shared_curves_source_ids_rejected = 0;
   std::size_t shared_node_id_mismatch_pairs = 0;
   std::size_t shared_node_id_mismatch_sites = 0;
+  std::size_t shared_node_id_mismatch_endpoints = 0;
+  std::size_t shared_node_id_mismatch_interiors = 0;
   std::size_t coherent_epoch_sheet_policy_pending = 0;
   std::size_t shared_same_orientation_pairs = 0;
   std::size_t shared_opposite_orientation_pairs = 0;
@@ -337,6 +345,10 @@ inline SharedCurveModelAudit AuditCoherentAdapterSharedCurves(
           sheet_matched = false;
           ++result.shared_node_id_mismatch_pairs;
           result.shared_node_id_mismatch_sites += compare.node_id_mismatched_sites;
+          result.shared_node_id_mismatch_endpoints +=
+              compare.node_id_mismatched_endpoints;
+          result.shared_node_id_mismatch_interiors +=
+              compare.node_id_mismatched_interiors;
           ++result.rejection_reasons["source_node_identity"];
         }
         result.maximum_xyz_error = std::max(

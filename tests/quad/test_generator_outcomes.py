@@ -52,10 +52,15 @@ def run(executable: Path, root: Path, model: str) -> None:
             line for line in result.stdout.splitlines()
             if line.startswith("R2B2_SHARED_CURVE_MODEL ")
         ]
-        if result.returncode != 0 or len(markers) != 1 or len(shared) != 1:
+        radial = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_SHARED_SHEET_SECTORS ")
+        ]
+        if (result.returncode != 0 or len(markers) != 1
+                or len(shared) != 1 or len(radial) != 1):
             raise AssertionError(
                 f"Generator research probe failed: rc={result.returncode}, "
-                f"markers={markers}, shared={shared}, "
+                f"markers={markers}, shared={shared}, radial={radial}, "
                 f"stdout_tail={result.stdout[-5000:]!r}, "
                 f"stderr_tail={result.stderr[-5000:]!r}"
             )
@@ -70,7 +75,10 @@ def run(executable: Path, root: Path, model: str) -> None:
             "shared_unobserved", "shared_geometry_matched",
             "shared_geometry_rejected", "shared_source_ids_matched",
             "shared_source_ids_rejected", "shared_node_id_mismatch_pairs",
-            "shared_node_id_mismatch_sites", "sheet_policy_pending",
+            "shared_node_id_mismatch_sites",
+            "shared_node_id_mismatch_endpoints",
+            "shared_node_id_mismatch_interiors",
+            "sheet_policy_pending",
             "same_orientation_pairs", "opposite_orientation_pairs",
             "negative_controls", "global_mixed_model_admitted",
         )
@@ -97,7 +105,35 @@ def run(executable: Path, root: Path, model: str) -> None:
             and int(fields["global_mixed_model_admitted"]) == 0
         ):
             raise AssertionError(f"Unqualified or empty source audit: {shared[0]!r}")
+        if (int(fields["shared_node_id_mismatch_endpoints"])
+                + int(fields["shared_node_id_mismatch_interiors"])
+                != int(fields["shared_node_id_mismatch_sites"])):
+            raise AssertionError(f"Source IDs have inconsistent classification: {shared[0]!r}")
+
+        sector_fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", radial[0]))
+        sector_required = (
+            "patches", "high_valence_curves", "curve_incidences",
+            "angular_adjacent_pairs", "radial_coincident_pairs",
+            "minimum_cyclic_angle", "max_patch_curve_xyz_error",
+            "source_geometry_admitted", "automatic_sheet_pairing_enabled",
+            "negative_controls", "reason", "radial_order",
+        )
+        if any(field not in sector_fields for field in sector_required):
+            raise AssertionError(f"Missing real source radial sector evidence: {radial[0]!r}")
+        if not (
+            int(sector_fields["patches"]) == expected_patches
+            and int(sector_fields["high_valence_curves"]) > 0
+            and int(sector_fields["curve_incidences"]) == expected_patches
+            and int(sector_fields["angular_adjacent_pairs"]) == expected_patches
+            and int(sector_fields["negative_controls"]) == 1
+            and int(sector_fields["automatic_sheet_pairing_enabled"]) == 0
+            and len(sector_fields["radial_order"].split(",")) == expected_patches
+        ):
+            raise AssertionError(f"Invalid real source sector observation: {radial[0]!r}")
+        # Geometric sector admission is a separate scientific marker. Do not
+        # convert an ambiguous real radial configuration into a CTest pass.
         print(shared[0])
+        print(radial[0])
         print(markers[0])
 
 

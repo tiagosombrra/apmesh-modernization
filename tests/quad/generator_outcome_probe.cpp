@@ -8,6 +8,7 @@
 #include "owned_aft_front.h"
 #include "dynamic_physical_audit.h"
 #include "shared_curve_audit.h"
+#include "shared_curve_sector_audit.h"
 
 #include "data/geometry.h"
 #include "input_output/patch_reader.h"
@@ -488,6 +489,63 @@ int Run(const std::string& config_path) {
                   shared.coherent_epoch_shared_curves_compared,
           "R2b2 no real same-epoch shared curve interfaces were audited");
 
+  // Check high-valence source sheets as separate geometric radial sectors
+  // in XYZ. A cyclic angular ordering is NOT an accepted sheet pairing.
+  const auto sectors = apmesh::quad::AuditOriginalHighValenceSectors(
+      shared_geometry, shared_graph, boundaries, shared);
+  Require(sectors.high_valence_curves_sampled ==
+              shared_graph.nonmanifold_curves &&
+              sectors.incidences_evaluated ==
+                  (shared_graph.patches == 4U ? 4U : 28U) &&
+              !sectors.sectors.empty() &&
+              !sectors.automatic_sheet_pairing_enabled,
+          "R2b2 real central curve sector incidence was not observed");
+
+  // A duplicate radial direction must be classified as an ambiguous sector;
+  // a zero physical tangent cannot support any angular sheet ordering.
+  auto duplicate_sectors = sectors.sectors.front();
+  duplicate_sectors.push_back(duplicate_sectors.front());
+  std::sort(duplicate_sectors.begin(), duplicate_sectors.end(),
+            [](const apmesh::quad::SharedCurveRadialSector& a,
+               const apmesh::quad::SharedCurveRadialSector& b) {
+              return a.angle_radians < b.angle_radians;
+            });
+  bool zero_tangent_rejected = false;
+  try {
+    static_cast<void>(apmesh::quad::NormalizedPhysical(
+        {0.0, 0.0, 0.0}, "R2b2 deliberately invalid curve tangent"));
+  } catch (const std::invalid_argument&) {
+    zero_tangent_rejected = true;
+  }
+  const bool sector_negative_controls =
+      apmesh::quad::CircularMinimumAngle(duplicate_sectors) == 0.0 &&
+      zero_tangent_rejected;
+  Require(sector_negative_controls,
+          "R2b2 radial source duplicate/tangent negative cases did not reject");
+
+  std::ostringstream sector_order;
+  for (const auto& curve : sectors.sectors) {
+    for (const auto& sheet : curve) {
+      if (sector_order.tellp() > 0) sector_order << ",";
+      sector_order << sheet.patch << ":" << sheet.side;
+    }
+  }
+  std::cout << "R2B2_SHARED_SHEET_SECTORS"
+            << " patches=" << shared.model_patches
+            << " high_valence_curves=" << sectors.high_valence_curves_sampled
+            << " curve_incidences=" << sectors.incidences_evaluated
+            << " angular_adjacent_pairs=" << sectors.angular_adjacent_pairs
+            << " radial_coincident_pairs=" << sectors.radial_coincident_pairs
+            << " minimum_cyclic_angle="
+            << sectors.minimum_cyclic_angle_radians
+            << " max_patch_curve_xyz_error=" << sectors.maximum_curve_xyz_error
+            << " source_geometry_admitted=" << sectors.source_geometry_admitted
+            << " automatic_sheet_pairing_enabled="
+            << sectors.automatic_sheet_pairing_enabled
+            << " negative_controls=" << sector_negative_controls
+            << " reason=" << sectors.rejection
+            << " radial_order=" << sector_order.str() << "\n";
+
   // Construct four adversarial counterparts from an ACTUAL original Adapter
   // sampled curve, without inventing a new curve or a synthetic UV geometry.
   const auto original_side =
@@ -550,6 +608,10 @@ int Run(const std::string& config_path) {
             << shared.shared_node_id_mismatch_pairs
             << " shared_node_id_mismatch_sites="
             << shared.shared_node_id_mismatch_sites
+            << " shared_node_id_mismatch_endpoints="
+            << shared.shared_node_id_mismatch_endpoints
+            << " shared_node_id_mismatch_interiors="
+            << shared.shared_node_id_mismatch_interiors
             << " sheet_policy_pending=" << shared.coherent_epoch_sheet_policy_pending
             << " same_orientation_pairs=" << shared.shared_same_orientation_pairs
             << " opposite_orientation_pairs=" << shared.shared_opposite_orientation_pairs
