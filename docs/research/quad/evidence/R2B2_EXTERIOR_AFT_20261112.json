@@ -2,12 +2,12 @@
   "schema": 1,
   "recorded_utc": "2026-11-12",
   "milestone": "R2b2 exterior original AFT + independent UV overlap",
-  "status": "FEATURE_DRAFT_EXACT_HEAD_CI_PENDING_NOT_MERGED",
+  "status": "FEATURE_DRAFT_STABLE_SEAM_IDENTITY_FIXED_EXACT_HEAD_CI_PENDING",
   "research_base": "ed8f02b51b239738b809228a78bdd3f3d6d45f1a",
   "production_main_preserved": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
   "branch": "quad/integration-r2b2-exterior-aft-20261112",
-  "candidate_sha": "319cfc90e34530b220ff55c7e9febc951572e78a",
+  "candidate_sha": "2e88fc164d87e5ad10d3205dad845bbac9fd30bd",
   "changed_paths": [
     "research/quad/owned_aft_front.h",
     "research/quad/owned_aft_front.cpp",
@@ -36,10 +36,14 @@
     "source_ci_four_jobs": "not asserted"
   },
   "candidate_ci": {
-    "push": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43186301495",
-    "pull_request": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43186308348",
-    "conclusion": "pending",
-    "required": "16/16 native Linux and Windows, 85/85 root CTest, 527 Python, strict frozen Eistute/Book TRI"
+    "push": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43187098299",
+    "pull_request": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43187106039",
+    "native_linux_push": "16/16 pass",
+    "native_linux_pr": "16/16 pass",
+    "native_windows": "in_progress",
+    "root_ctest_python": "in_progress",
+    "frozen_tri": "in_progress",
+    "whole_run": "in_progress"
   },
   "unverified": [
     "candidate overlap native CI and root science",
@@ -48,8 +52,28 @@
     "failed partial AFT transactional rollback",
     "mixed physical SubMesh publication",
     "repeated adaptation",
-    "production CLI admission"
+    "production CLI admission",
+    "native Windows latest head",
+    "full root CTest/Python latest head",
+    "frozen TRI latest head"
   ],
   "pr_draft": true,
-  "merged": false
+  "merged": false,
+  "failure_oracle_discovered": {
+    "source_sha": "6e6bf67c086a5689f8b54cd5a87b93936d6e3eac",
+    "ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43186741954",
+    "observed_uniform_seam_report": 36,
+    "actual_uniform_seam_segments": 16,
+    "observed_refined_seam_report": 44,
+    "actual_refined_seam_segments": 20,
+    "reason": "Original observer wrongly returned growing AFT innerEdges list containing generated TRI edges",
+    "fix": "Stable source seam observer vector staged atomically before AFT commit; do not weaken the seam matching gate",
+    "fixed_sha": "2e88fc164d87e5ad10d3205dad845bbac9fd30bd"
+  },
+  "new_native_cases": [
+    "actual refined 20-piece QUAD front exterior AFT",
+    "actual synthetic eight-point nonuniform UV contour exterior AFT",
+    "independent positive overlap vs mere shared edge"
+  ],
+  "authored_native_cases": 21
 }
