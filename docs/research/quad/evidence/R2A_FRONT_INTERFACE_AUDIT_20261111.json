@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "recorded_date_local": "2026-11-11",
+  "scientific_scope": "Research engineering R2a: source-linked exact axis-aligned front geometry audit, not live hybrid generation",
+  "status": "R2A_CANDIDATE_NATIVE_AND_DIRECT_CI_QUALIFIED_PR_GATE_IN_PROGRESS",
+  "feature_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/212",
+  "feature_branch": "quad/integration-r2a-front-geometry-audit-20261111",
+  "exact_feature_source_sha": "1e26f68c3e82d26382ceef9fbaf97ee0fdeb8fa8",
+  "research_base_at_pr_creation": "8190e5f000e63e93c2ae8d444229ce93251b84f1",
+  "modernization_main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "files": [
+    "research/quad/front_interface_audit.h",
+    "research/quad/front_interface_audit.cpp",
+    "tests/quad/front_interface_audit_contracts.cpp",
+    "tests/quad/CMakeLists.txt",
+    "docs/architecture/source_inventory.json"
+  ],
+  "comparison_contract": {
+    "actual_legacy_tree": "A separate matching C++ Quadtree after unchanged original TRI makeTemplateBasedMesh; copy original GetFrontEdges endpoint values only",
+    "quad_tree": "Native matching refined C++ Quadtree using R1 exclusive ExperimentalQuad selection",
+    "quad_uv_faces_uniform": 16,
+    "quad_uv_faces_refined": 42,
+    "quad_boundary_edges_uniform": 16,
+    "quad_boundary_edges_refined": 20,
+    "source_legacy_front_exact_segment_count": "Measured by runtime test but not exported to permanent CI artifact; do not claim a precise value",
+    "expected_uv_interface_total_length": 2,
+    "positive_negative_cases_authored": 20,
+    "native_gcc_ubuntu": "PASS: 15/15 standalone CTest including quad.r2a.front_interface_audit",
+    "native_msvc_windows": "PASS: 15/15 standalone CTest including quad.r2a.front_interface_audit",
+    "fail_closed": [
+      "QUAD one-owner face incidence mismatch",
+      "duplicate/missing/foreign front edge",
+      "opposite winding violated",
+      "source line mismatch",
+      "uncovered gap",
+      "overlapping edges",
+      "QUAD edge spanning multiple source legacy edges",
+      "nonfinite edge",
+      "nonaxis edge",
+      "zero-length edge",
+      "source owner missing",
+      "value lifetime and order independence"
+    ],
+    "comparison_convention": "Original TRI AFT directed front left-of-edge points into exterior; QUAD face boundary is CCW left-of-edge into interior. Comparisons require opposite direction. The new AFT handoff must use reversed QUAD direction.",
+    "numeric_scope": "Exact float comparison on dyadic axis-aligned Quadtree native UV fixtures; general tolerance and adapted curved patch sources not yet qualified."
+  },
+  "inventory": {
+    "path": "tests/quad/CMakeLists.txt",
+    "old_sha256": "0554f07f5f6c5803b6b91c49e10fde23c74c664e82c6471eeb153a2ebd0b3712",
+    "new_sha256": "538d5a5329982e871ca54140d815e5eba9bf37f44f6e273c3810388a27cdf2e5",
+    "test_relaxed": false
+  },
+  "push_ci": {
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43130141429",
+    "exact_feature_source_sha": "1e26f68c3e82d26382ceef9fbaf97ee0fdeb8fa8",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_passed": 4,
+    "jobs_total": 4,
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "native_gcc_msvc": "15/15 each",
+    "frozen_tri_eistute_book": "passed"
+  },
+  "pr_ci": {
+    "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43130207154",
+    "exact_feature_source_sha": "1e26f68c3e82d26382ceef9fbaf97ee0fdeb8fa8",
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs_passed": 3,
+    "jobs_total": 4,
+    "passed": [
+      "native GCC QUAD",
+      "native MSVC QUAD",
+      "frozen TRI science parity"
+    ],
+    "pending": [
+      "Linux root CTest and tooling Python"
+    ]
+  },
+  "limitations": {
+    "production_tri_modified": false,
+    "model_curve_or_boundary_modified": false,
+    "physical_aft_front_published": false,
+    "physical_mixed_submesh_published": false,
+    "quad_cli_enabled": false,
+    "quad_surface_models_certified": false,
+    "historical_1993_centroid_approved": false,
+    "global_nonmanifold_weld_enabled": false,
+    "no_local_compilation_claimed": true
+  },
+  "next_gate": "Wait for exact PR test-merge CI 43130207154 to finish with required 4/4, then code review and merge expected head only after success; qualify exact merged-source SHA again, update evidence/roadmap/STATE and start R2b owned AFT front."
+}
