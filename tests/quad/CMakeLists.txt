@@ -96,6 +96,17 @@ if(AP_MESH_QUAD_WITH_TREE)
     "${CMAKE_CURRENT_SOURCE_DIR}")
   target_link_libraries(quad_front_interface_audit_contracts PRIVATE
     apmesh_quad_front_interface_audit apmesh_quad_experimental_point)
+  # R2b: stage actual AFT-owned front vertices/edges in a research-only
+  # AdvancingFront subclass with exterior QuadtreeCell observers.
+  add_library(apmesh_quad_owned_aft_front STATIC
+    ../../research/quad/owned_aft_front.cpp)
+  target_link_libraries(apmesh_quad_owned_aft_front PUBLIC
+    apmesh_quad_front_interface_audit)
+  add_executable(quad_owned_aft_front_contracts owned_aft_front_contracts.cpp)
+  target_include_directories(quad_owned_aft_front_contracts PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}")
+  target_link_libraries(quad_owned_aft_front_contracts PRIVATE
+    apmesh_quad_owned_aft_front apmesh_quad_experimental_point)
   add_executable(quad_leaf_contracts leaf_contracts.cpp)
   target_link_libraries(quad_leaf_contracts PRIVATE apmesh_quad_tree)
   add_executable(quad_refined_observer_contracts refined_observer_contracts.cpp)
@@ -109,8 +120,9 @@ if(AP_MESH_QUAD_WITH_TREE)
   target_link_libraries(quad_tree_visual_export PRIVATE
     apmesh_quad_tree apmesh_quad_experimental_point)
   foreach(target IN ITEMS apmesh_quad_legacy_tree apmesh_quad_tree apmesh_quad_interior_dispatch
-    apmesh_quad_front_interface_audit quad_interior_dispatch_contracts
-    quad_front_interface_audit_contracts quad_leaf_contracts
+    apmesh_quad_front_interface_audit apmesh_quad_owned_aft_front
+    quad_interior_dispatch_contracts quad_front_interface_audit_contracts
+    quad_owned_aft_front_contracts quad_leaf_contracts
     quad_refined_observer_contracts quad_tree_demo quad_tree_visual_export)
     # Keep diagnostics visible across the existing legacy-header integration.
     if(MSVC)
@@ -119,6 +131,9 @@ if(AP_MESH_QUAD_WITH_TREE)
       target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic)
     endif()
   endforeach()
+  add_test(NAME quad.r2b.owned_aft_front COMMAND quad_owned_aft_front_contracts)
+  set_tests_properties(quad.r2b.owned_aft_front PROPERTIES
+    TIMEOUT 60 LABELS "research-quad;native-aft;owned-front;negative-controls")
   add_test(NAME quad.r2a.front_interface_audit COMMAND quad_front_interface_audit_contracts)
   set_tests_properties(quad.r2a.front_interface_audit PROPERTIES
     TIMEOUT 60 LABELS "research-quad;real-quadtree;aft-seam;negative-controls")
