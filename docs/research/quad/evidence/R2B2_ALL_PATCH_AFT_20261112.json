@@ -34,29 +34,77 @@
   "exact_new_ci": {
     "feature": {
       "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43273801537",
-      "state": "running",
-      "conclusion": null
+      "sha": "d5c501c2eaa8d7b077caf95261cd2cf4e43c22b1",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
     },
     "pr": {
       "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43273812916",
-      "state": "running",
-      "conclusion": null
+      "sha": "d5c501c2eaa8d7b077caf95261cd2cf4e43c22b1",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
     },
-    "native_linux_quad": "16/16 pass",
-    "native_windows_quad": "16/16 pass",
-    "root_ctest": "pending",
-    "python": "pending",
-    "frozen_original_tri": "pending",
-    "all_patch_physical_admission": "not measured yet"
+    "native_linux_quad": "16/16",
+    "native_windows_quad": "16/16",
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "frozen_original_tri_eistute_book": "passed",
+    "exact_model_and_individual_stdout": "both completed root job logs, one per unique source patch"
   },
   "open": [
-    "high-valence central curve (4 Eistute / 28 Book) requires explicit nonmanifold sheet-fan edge incidence policy",
-    "radial sector stability along all original shared curve parameters not qualified",
-    "physical typed four-node mixed SubMesh commit/rollback not implemented",
-    "repeated mixed adaptive steps not qualified",
-    "historical fourth-consecutive-in-process test fault ASan/UBSan pending",
-    "historical 1993 interior point rule not approved",
-    "quad_uv CLI remains disabled"
+    "high-valence valence-4 Eistute and valence-28 Book common-curve nonmanifold physical edge/face-incidence ownership policy unapproved",
+    "radial sheet order checked only at one original source parameter, not along the whole curve",
+    "global atomic typed physical mixed QUAD/TRI SubMesh publication and prior TRI accepted mesh rollback not implemented",
+    "original global mixed repeated adaptation history not qualified; current per-patch witnesses are first observed local attempt in one original epoch",
+    "historical fourth-in-process original fixture ASan/UBSan lifetime analysis pending",
+    "historical 1993 QUAD interior positioning is experimental",
+    "production quad_uv CLI disabled, PR #214 draft/unmerged"
   ],
-  "next": "Review exact CI and per-patch admission/rejection; qualify global patch coverage separately from physical success. Then implement fan-sector stability/ownership policy before R2c."
+  "next": "Implement source high-valence radial sector stability across original sampled curve parameter set and explicit nonmanifold fan edge-incidence policy; then R2c typed physical mixed SubMesh transactional commit/rollback and repeated adaptation.",
+  "status": "R2B2_ALL_ORIGINAL_ADAPTED_PATCH_AFT_AND_PHYSICAL_EISTUTE_4_4_BOOK_28_28_DOUBLE_EXACT_CI_QUALIFIED",
+  "physical_model_results": {
+    "measured_epoch": {
+      "source_session": 6306001,
+      "epoch": 1,
+      "global_retry": 0,
+      "meaning": "first distinct actual original Adapter local attempt per patch within one complete original epoch, NOT a globally accepted mixed publication"
+    },
+    "eistute": {
+      "patches_expected": 4,
+      "patches_observed": 4,
+      "uv_accepted": 4,
+      "uv_rejected": 0,
+      "physical_accepted": 4,
+      "physical_rejected": 0,
+      "original_source_sites": 160,
+      "interior_quads": 1888,
+      "original_aft_exterior_tris": 608,
+      "physical_facets_checked": 4384,
+      "minimum_physical_alignment": 0.760759,
+      "maximum_source_xyz_discrepancy": 9.10112e-15,
+      "duplicate_local_attempt_callbacks": 20
+    },
+    "book": {
+      "patches_expected": 28,
+      "patches_observed": 28,
+      "uv_accepted": 28,
+      "uv_rejected": 0,
+      "physical_accepted": 28,
+      "physical_rejected": 0,
+      "original_source_sites": 1008,
+      "interior_quads": 5264,
+      "original_aft_exterior_tris": 2800,
+      "physical_facets_checked": 13328,
+      "minimum_physical_alignment": 0.998453,
+      "maximum_source_xyz_discrepancy": 4.44089e-16,
+      "duplicate_local_attempt_callbacks": 0
+    },
+    "source": "actual R2B2_ALL_PATCH_MODEL / 32 R2B2_ALL_PATCH_RESULT markers from both exact GitHub Actions root job logs",
+    "global_mixed_model_admitted": false,
+    "physical_SubMesh_published": false,
+    "high_valence_nonmanifold_sheet_policy": "pending",
+    "original_tri_unchanged": true
+  }
 }
