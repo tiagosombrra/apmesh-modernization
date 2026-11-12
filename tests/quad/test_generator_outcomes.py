@@ -56,6 +56,10 @@ def run(executable: Path, root: Path, model: str) -> None:
             line for line in result.stdout.splitlines()
             if line.startswith("R2B2_SHARED_SHEET_SECTORS ")
         ]
+        sweep = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_SHARED_SHEET_SWEEP ")
+        ]
         all_patches = [
             line for line in result.stdout.splitlines()
             if line.startswith("R2B2_ALL_PATCH_RESULT ")
@@ -66,10 +70,11 @@ def run(executable: Path, root: Path, model: str) -> None:
         ]
         if (result.returncode != 0 or len(markers) != 1
                 or len(shared) != 1 or len(radial) != 1
-                or len(all_summary) != 1):
+                or len(sweep) != 1 or len(all_summary) != 1):
             raise AssertionError(
                 f"Generator research probe failed: rc={result.returncode}, "
                 f"markers={markers}, shared={shared}, radial={radial}, "
+                f"sweep={sweep}, "
                 f"all_summary={all_summary}, all_patch_count={len(all_patches)}, "
                 f"stdout_tail={result.stdout[-5000:]!r}, "
                 f"stderr_tail={result.stderr[-5000:]!r}"
@@ -142,6 +147,50 @@ def run(executable: Path, root: Path, model: str) -> None:
             and len(sector_fields["radial_order"].split(",")) == expected_patches
         ):
             raise AssertionError(f"Invalid real source sector observation: {radial[0]!r}")
+
+        # An original high-valence fan is inspected over the actual source
+        # interior samples AND interior interval probes. This is intentionally
+        # discrete evidence: green infrastructure tests cannot imply that a
+        # nonmanifold sheet fan is continuously intersection-free or weldable.
+        sweep_fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", sweep[0]))
+        sweep_required = (
+            "patches", "high_valence_curves", "original_curve_intervals",
+            "parameter_samples", "sector_evaluations",
+            "adjacent_sector_pairs", "order_changes",
+            "coincident_sector_pairs", "invalid_source_samples",
+            "minimum_cyclic_gap", "parameter_at_minimum_gap",
+            "max_curve_xyz_error", "max_inter_sample_sector_rotation",
+            "sampled_order_admitted", "automatic_sheet_pairing_enabled",
+            "negative_controls", "reason", "global_mixed_model_admitted",
+        )
+        if any(key not in sweep_fields for key in sweep_required):
+            raise AssertionError(f"Missing source full-curve sector sweep: {sweep[0]!r}")
+        samples = int(sweep_fields["parameter_samples"])
+        intervals = int(sweep_fields["original_curve_intervals"])
+        evaluated = int(sweep_fields["sector_evaluations"])
+        admitted = int(sweep_fields["sampled_order_admitted"])
+        swaps = int(sweep_fields["order_changes"])
+        collisions = int(sweep_fields["coincident_sector_pairs"])
+        if not (
+            int(sweep_fields["patches"]) == expected_patches
+            and int(sweep_fields["high_valence_curves"]) == 1
+            and intervals > 1 and samples > intervals
+            and evaluated == samples * expected_patches
+            and int(sweep_fields["adjacent_sector_pairs"]) == evaluated
+            and swaps >= 0 and collisions >= 0
+            and int(sweep_fields["invalid_source_samples"]) == 0
+            and admitted in (0, 1)
+            and int(sweep_fields["automatic_sheet_pairing_enabled"]) == 0
+            and int(sweep_fields["global_mixed_model_admitted"]) == 0
+            and int(sweep_fields["negative_controls"]) == 1
+            and (sweep_fields["reason"] == "none") == (admitted == 1)
+            and (admitted == 0 or
+                 (swaps == 0 and collisions == 0
+                  and float(sweep_fields["minimum_cyclic_gap"]) > 1e-6))
+        ):
+            raise AssertionError(
+                f"Invalid original high-valence curve sweep evidence: {sweep[0]!r}"
+            )
 
         # Every original model patch must be observed in a SINGLE source
         # epoch. A rejected UV/AFT/XYZ candidate remains a rejected scientific
@@ -218,6 +267,7 @@ def run(executable: Path, root: Path, model: str) -> None:
         print(all_summary[0])
         print(shared[0])
         print(radial[0])
+        print(sweep[0])
         print(markers[0])
 
 

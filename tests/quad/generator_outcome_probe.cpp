@@ -9,6 +9,7 @@
 #include "dynamic_physical_audit.h"
 #include "shared_curve_audit.h"
 #include "shared_curve_sector_audit.h"
+#include "shared_curve_sector_sweep.h"
 
 #include "data/geometry.h"
 #include "input_output/patch_reader.h"
@@ -692,6 +693,79 @@ int Run(const std::string& config_path) {
             << " negative_controls=" << sector_negative_controls
             << " reason=" << sectors.rejection
             << " radial_order=" << sector_order.str() << "\n";
+
+  // Revisit EVERY interior source parameter and three interval probes
+  // between adjacent original samples. This is a discrete physical-sector
+  // stability witness, NOT a continuous no-intersection theorem or a license
+  // to pair the nonmanifold sheets automatically.
+  const auto sweep = apmesh::quad::AuditOriginalHighValenceSectorSweep(
+      shared_geometry, shared_graph, boundaries, shared);
+  Require(sweep.high_valence_curves == shared_graph.nonmanifold_curves &&
+              sweep.parameter_samples > sweep.original_curve_intervals &&
+              sweep.sector_evaluations ==
+                  sweep.parameter_samples *
+                      (shared.model_patches == 4U ? 4U : 28U) &&
+              sweep.observed_frames.size() == sweep.parameter_samples &&
+              !sweep.automatic_sheet_pairing_enabled,
+          "R2b2 actual original source-sector parameter sweep was incomplete");
+
+  // Distinguish a cyclic permutation from a harmless 2-pi rotation of the
+  // angular zero; reject swapping real patch identities at fixed sectors.
+  const auto original_frame = sweep.observed_frames.front();
+  auto swapped_frame = original_frame;
+  Require(swapped_frame.size() >= 3U, "R2b2 source fan needs three sectors");
+  std::swap(swapped_frame[1].patch, swapped_frame[2].patch);
+  std::swap(swapped_frame[1].side, swapped_frame[2].side);
+  auto coincident_frame = original_frame;
+  coincident_frame[1].angle_radians = coincident_frame[0].angle_radians;
+  std::sort(coincident_frame.begin(), coincident_frame.end(),
+      [](const apmesh::quad::SharedCurveRadialSector& a,
+         const apmesh::quad::SharedCurveRadialSector& b) {
+        return a.angle_radians < b.angle_radians;
+      });
+  auto rotated_frame = original_frame;
+  std::rotate(rotated_frame.begin(), rotated_frame.begin() + 1,
+              rotated_frame.end());
+  auto malformed_source =
+      apmesh::quad::SnapshotSharedCurveSide(boundaries.front(), 0U);
+  malformed_source.ordered_by_original_parameter[1].t =
+      malformed_source.ordered_by_original_parameter.front().t;
+  bool repeated_parameter_rejected = false;
+  try {
+    static_cast<void>(
+        apmesh::quad::SourceSectorSweepParameters(malformed_source));
+  } catch (const std::invalid_argument&) {
+    repeated_parameter_rejected = true;
+  }
+  const bool sector_sweep_negative_controls =
+      !apmesh::quad::SameCyclicSectorOrder(original_frame, swapped_frame) &&
+      apmesh::quad::SameCyclicSectorOrder(original_frame, rotated_frame) &&
+      apmesh::quad::CircularMinimumAngle(coincident_frame) == 0.0 &&
+      repeated_parameter_rejected;
+  Require(sector_sweep_negative_controls,
+          "R2b2 real original sector-sweep order/gap/parameter negative controls failed");
+
+  std::cout << "R2B2_SHARED_SHEET_SWEEP"
+            << " patches=" << shared.model_patches
+            << " high_valence_curves=" << sweep.high_valence_curves
+            << " original_curve_intervals=" << sweep.original_curve_intervals
+            << " parameter_samples=" << sweep.parameter_samples
+            << " sector_evaluations=" << sweep.sector_evaluations
+            << " adjacent_sector_pairs=" << sweep.adjacent_sector_pairs
+            << " order_changes=" << sweep.order_changes
+            << " coincident_sector_pairs=" << sweep.coincident_sector_pairs
+            << " invalid_source_samples=" << sweep.invalid_source_samples
+            << " minimum_cyclic_gap=" << sweep.minimum_cyclic_gap
+            << " parameter_at_minimum_gap=" << sweep.parameter_at_minimum_gap
+            << " max_curve_xyz_error=" << sweep.maximum_curve_xyz_error
+            << " max_inter_sample_sector_rotation="
+            << sweep.maximum_sample_to_sample_sector_rotation
+            << " sampled_order_admitted=" << sweep.sampled_order_admitted
+            << " automatic_sheet_pairing_enabled="
+            << sweep.automatic_sheet_pairing_enabled
+            << " negative_controls=" << sector_sweep_negative_controls
+            << " reason=" << sweep.rejection
+            << " global_mixed_model_admitted=0\n";
 
   // Construct four adversarial counterparts from an ACTUAL original Adapter
   // sampled curve, without inventing a new curve or a synthetic UV geometry.
