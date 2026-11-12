@@ -1,0 +1,44 @@
+{
+  "schema": "apmesh.quad.r2b2.bernstein_interval.candidate.v1",
+  "date_utc": "2026-11-12",
+  "milestone": "R2b2 continuous source Bezier radial-order interval gate",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_sha": "ad9c789f200f2324c5d26a45703c10a621787809",
+  "draft_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
+  "mathematical_quantity": "T(t) dot (R_i(t) cross R_j(t)); degree <= 8",
+  "coefficient_basis": "Bernstein, outward nextafter interval arithmetic, de Casteljau restriction",
+  "prior_sampled_witness": {
+    "eistute": {
+      "source_intervals": 10,
+      "radial_valence": 4,
+      "samples": 39
+    },
+    "book": {
+      "source_intervals": 12,
+      "radial_valence": 28,
+      "samples": 47
+    }
+  },
+  "expected_pair_interval_checks": {
+    "eistute": 40,
+    "book": 336
+  },
+  "toolchain_status_at_checkpoint": {
+    "linux_native_quad": "success",
+    "windows_native_quad": "success",
+    "frozen_TRI_scientific_parity": "success",
+    "linux_root_ctest_python": "in_progress"
+  },
+  "exact_pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43307378736",
+  "observed_original_interval_model_counts": "not_yet_observed",
+  "model_wide_interval_certification": "pending",
+  "local_native_tests": "not_executed",
+  "asan_ubsan": "not_executed",
+  "advisor_review": "pending",
+  "automatic_sheet_pairing_enabled": false,
+  "global_mixed_model_admitted": false,
+  "physical_SubMesh_published": false,
+  "main_untouched": true,
+  "scientific_scope": "local adjacent radial sector order only; no nonmanifold ownership or whole surface nonintersection proof",
+  "next": "inspect exact CI source logs, classify Eistute/Book sign bounds, repair and repeat exact CI if necessary"
+}
