@@ -2,6 +2,7 @@
 #include "generator/generator_adaptive.h"
 #include "timer/timer.h"
 #include "adapter_capture.h"
+#include "source_tree_replay.h"
 
 #include <cstdint>
 #include <iostream>
@@ -51,6 +52,10 @@ int Run(const std::string& config_path) {
   std::size_t original_boundary_samples = 0;
   std::size_t original_interior_curve_samples = 0;
   std::size_t source_tree_boundary_matches = 0;
+  std::size_t replayed_actual_source_trees = 0;
+  std::size_t replayed_adapted_boundary_sites = 0;
+  std::size_t replayed_actual_source_leaves = 0;
+  bool corrupt_source_replay_rejected = false;
   // The original generator can revisit a logical patch/retry identity.
   // Chronological callback order, not a uniqueness assumption, joins the
   // actual source boundary to its one refined Quadtree observation.
@@ -78,6 +83,32 @@ int Run(const std::string& config_path) {
               "Real refined Quadtree changed source UV/vertex identity");
     }
     ++source_tree_boundary_matches;
+    if (replayed_actual_source_trees == 0 &&
+        source_boundary.vertices.size() > 4U) {
+      // Build a separate native Quadtree from a REAL adapted Eistute/Book
+      // source attempt, never the research fixed 16-site chart.
+      const auto replay = apmesh::quad::ReplayNativeSourceTree(tree, source_boundary);
+      Require(replay.owned_tree &&
+                  replay.original_leaves == replay.replayed_leaves &&
+                  replay.replayed_source_vertices == source_boundary.vertices.size() &&
+                  replay.matched_leaf_neighbors == tree.GetLeafCount(),
+              "Native replay did not preserve the real adapted model Quadtree");
+      auto corrupted = source_boundary;
+      corrupted.directed_edges.front()[0] += 1.0 / 256.0;
+      try {
+        static_cast<void>(apmesh::quad::ReplayNativeSourceTree(tree, corrupted));
+      } catch (const std::invalid_argument&) {
+        corrupt_source_replay_rejected = true;
+      }
+      Require(corrupt_source_replay_rejected,
+              "Native source replay did not reject a modified real curved boundary");
+      Require(tree.GetFrontEdges().empty() &&
+                  tree.GetTemplateFaces().empty(),
+              "Native QUAD source replay published into the original TRI Quadtree");
+      replayed_adapted_boundary_sites += source_boundary.vertices.size();
+      replayed_actual_source_leaves += replay.replayed_leaves;
+      ++replayed_actual_source_trees;
+    }
     apmesh::quad::LeafPolygonMesh snapshot;
     snapshot.source_leaves = tree.GetLeafCount();
     return snapshot;
@@ -194,6 +225,11 @@ int Run(const std::string& config_path) {
               original_boundary_samples >= 4U * captured_calls &&
               original_interior_curve_samples > 0,
           "Real Generator source AdaptCurve samples were not retained through Quadtree");
+  Require(replayed_actual_source_trees == 1 &&
+              replayed_adapted_boundary_sites > 4U &&
+              replayed_actual_source_leaves > 0 &&
+              corrupt_source_replay_rejected,
+          "Real Eistute/Book adapted source tree replay was not independently qualified");
   Require(!locally_selected.empty(),
           "Real generator did not emit any local Adapter selections");
   std::set<Key> uv_keys;
@@ -223,6 +259,11 @@ int Run(const std::string& config_path) {
             << " interior_curve_samples=" << original_interior_curve_samples
             << " identical_refined_boundary=" << source_tree_boundary_matches
             << " repeated_logical_attempt_keys=" << repeated_boundary_keys
+            << " original_source_trees_replayed=" << replayed_actual_source_trees
+            << " original_adapted_boundary_sites=" << replayed_adapted_boundary_sites
+            << " original_source_leaves_replayed=" << replayed_actual_source_leaves
+            << " negative_replay_corruption_rejected="
+            << corrupt_source_replay_rejected
             << " local_selected=" << locally_selected.size()
             << " global_epochs=" << global_epochs.size()
             << " truncated=" << log->truncated() << '\n';

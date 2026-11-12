@@ -74,10 +74,16 @@ struct AdapterBoundaryPoint {
   double chart_parameter = 0.0;
 };
 
+struct AdapterBoundaryEdgeMetric {
+  UvVertex source_midpoint{};
+  double source_normalized_length = -1.0;
+};
+
 struct AdapterBoundaryCapture {
   PatchAttemptIdentity attempt{};
   std::vector<AdapterBoundaryPoint> vertices;
   std::vector<std::array<double, 4>> directed_edges;
+  std::vector<AdapterBoundaryEdgeMetric> original_edge_metrics;
   std::array<std::size_t, 4> side_counts{};
   bool accepted_mesh_published = false;
 };
@@ -157,6 +163,14 @@ inline AdapterBoundaryCapture SnapshotOriginalAdapterBoundary(
     const auto& a = result.vertices[edge_index];
     const auto& b = result.vertices[(edge_index + 1U) % result.vertices.size()];
     result.directed_edges.push_back({a.uv.u, a.uv.v, b.uv.u, b.uv.v});
+    auto* midpoint = edge->getMid();
+    const double h = edge->getLen();
+    if (midpoint == nullptr || !std::isfinite(midpoint->getX()) ||
+        !std::isfinite(midpoint->getY()) || !std::isfinite(h)) {
+      throw std::invalid_argument("Adapter edge midpoint/arc length is nonfinite or absent");
+    }
+    result.original_edge_metrics.push_back(
+        {{midpoint->getX(), midpoint->getY()}, h});
     ++edge_index;
   }
   double twice_area = 0.0;

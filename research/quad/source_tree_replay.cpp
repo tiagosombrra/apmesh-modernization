@@ -97,7 +97,8 @@ void ValidateSourceContour(const AdapterBoundaryCapture& source,
                            Quadtree& original) {
   Require(!source.accepted_mesh_published &&
               source.vertices.size() >= 4U &&
-              source.vertices.size() == source.directed_edges.size(),
+              source.vertices.size() == source.directed_edges.size() &&
+              source.vertices.size() == source.original_edge_metrics.size(),
           "R2b2 source replay requires one provisional closed Adapter contour");
   auto* boundary = original.getBoundary();
   Require(boundary != nullptr, "R2b2 original source boundary is absent");
@@ -122,6 +123,14 @@ void ValidateSourceContour(const AdapterBoundaryCapture& source,
     const auto& point = source.vertices[i];
     const auto& next = source.vertices[(i + 1U) % source.vertices.size()];
     const auto& segment = source.directed_edges[i];
+    const auto& metric = source.original_edge_metrics[i];
+    auto* original_midpoint = (*e)->getMid();
+    Require(original_midpoint && std::isfinite(metric.source_midpoint.u) &&
+                std::isfinite(metric.source_midpoint.v) &&
+                std::isfinite(metric.source_normalized_length) &&
+                metric.source_midpoint.u == original_midpoint->getX() &&
+                metric.source_midpoint.v == original_midpoint->getY(),
+            "R2b2 original source curved midpoint cache has changed");
     Require(point.side < 4U && point.aft_vertex_id > 0 &&
                 point.physical_node_id > 0 && point.original_parameter >= 0.0 &&
                 point.original_parameter <= 1.0 &&
@@ -195,11 +204,36 @@ NativeSourceTreeReplay ReplayNativeSourceTree(
               report.source_boundary_segments == report.replayed_source_vertices,
           "R2b2 replay changed source leaf or boundary cardinality");
 
-  for (auto* edge : target->getBoundary()->getEdges()) {
+  // Preserve original curved parameter midpoint and arc length as VALUES.
+  // The native Edge constructor produced an owned arithmetic midpoint;
+  // replacing only its coordinates preserves its ownership/adjacency graph.
+  // The original Quadtree::generate may have reset getLen() to -1 already,
+  // so retain captured pre-refinement length in the snapshot but reproduce
+  // the current *actual* original edge state in the cloned native owner.
+  auto clone_edges = target->getBoundary()->getEdges();
+  auto original_edges = original.getBoundary()->getEdges();
+  auto original_edge = original_edges.begin();
+  std::size_t source_index = 0;
+  for (auto* edge : clone_edges) {
+    Require(original_edge != original_edges.end() &&
+                edge != nullptr && edge->getMid() != nullptr &&
+                *original_edge != nullptr,
+            "R2b2 copied source curve edge lost its native owner");
+    const auto& metric = source.original_edge_metrics[source_index++];
+    edge->getMid()->setPosition(metric.source_midpoint.u,
+                                metric.source_midpoint.v);
+    edge->setLen((*original_edge)->getLen());
     target->findCell(edge);
-    Require(edge->getCell() != nullptr,
-            "R2b2 copied source curve edge lacks a live native cell");
+    Require(edge->getCell() != nullptr &&
+                (*original_edge)->getCell() != nullptr &&
+                SnapshotBox(edge->getCell()) ==
+                    SnapshotBox((*original_edge)->getCell()),
+            "R2b2 copied source curve midpoint resolves to a different native cell");
+    ++original_edge;
   }
+  Require(original_edge == original_edges.end() &&
+              source_index == source.original_edge_metrics.size(),
+          "R2b2 original source curve edge count changed during clone");
 
   report.owned_tree = std::move(target);
   return report;
