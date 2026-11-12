@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-11-12",
+  "stage": "R2b2 actual original all-patch AFT with independent physical Bezier evaluation",
+  "classification": "research-only, exact coherent epoch and actual individual admission/rejection witness",
+  "feature_sha": "d5c501c2eaa8d7b077caf95261cd2cf4e43c22b1",
+  "pr": 214,
+  "pr_state": "draft/unmerged",
+  "production_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "source_paths": [
+    "tests/quad/generator_outcome_probe.cpp",
+    "tests/quad/test_generator_outcomes.py"
+  ],
+  "predecessor_source_exact": {
+    "sha": "1d46ba4abce35cc5a28ec214c0d5787414928889",
+    "feature_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43267126924",
+    "pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43267143566",
+    "ci": "SUCCESS 4/4 each; root CTest 87/87, Python 527/527, native QUAD Linux/Windows 16/16, frozen Eistute/Book TRI pass",
+    "scope": "all 4 Eistute and 28 Book original coherent curve owner IDs/XYZ true, shared central curve valence 4/28; separate first-patch dynamic physical AFT acceptance only"
+  },
+  "test_contract": {
+    "source": "first distinct original Adapter capture per patch in single initial real global epoch/retry, matching already qualified coherent shared curve graph epoch",
+    "coverage": "exact 4 Eistute / 28 Book real patches, no synthetic charts nor cross-epoch mix",
+    "native": "each patch reconstructed in fresh native original Quadtree owners, T1–T6 interior QUAD and original AFT exterior attempted, fail reason recorded",
+    "physical": "after real original TRI generator ends, independent original BP PatchReader/PatchBezier checks every admitted candidate's original sampled curve XYZ and all QUAD/Tri facet normals/Jacobians",
+    "positive_counts": "per-patch physical facet count = 2*QUAD + TRI; every observed patch classified exactly once",
+    "negative_policy": "candidate scientific rejection is explicitly counted and returned with reason; CTest PASS is not globally admitted hybrid mesh",
+    "report_markers": [
+      "R2B2_ALL_PATCH_RESULT",
+      "R2B2_ALL_PATCH_MODEL"
+    ],
+    "publication": "no mixed typed SubMesh; no global sheet pairing; no production CLI"
+  },
+  "exact_new_ci": {
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43273801537",
+      "state": "running",
+      "conclusion": null
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43273812916",
+      "state": "running",
+      "conclusion": null
+    },
+    "native_linux_quad": "16/16 pass",
+    "native_windows_quad": "16/16 pass",
+    "root_ctest": "pending",
+    "python": "pending",
+    "frozen_original_tri": "pending",
+    "all_patch_physical_admission": "not measured yet"
+  },
+  "open": [
+    "high-valence central curve (4 Eistute / 28 Book) requires explicit nonmanifold sheet-fan edge incidence policy",
+    "radial sector stability along all original shared curve parameters not qualified",
+    "physical typed four-node mixed SubMesh commit/rollback not implemented",
+    "repeated mixed adaptive steps not qualified",
+    "historical fourth-consecutive-in-process test fault ASan/UBSan pending",
+    "historical 1993 interior point rule not approved",
+    "quad_uv CLI remains disabled"
+  ],
+  "next": "Review exact CI and per-patch admission/rejection; qualify global patch coverage separately from physical success. Then implement fan-sector stability/ownership policy before R2c."
+}
