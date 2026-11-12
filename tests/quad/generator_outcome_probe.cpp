@@ -840,6 +840,9 @@ int Run(const std::string& config_path) {
             << " patches=" << shared.model_patches
             << " high_valence_curves=" << interval_fan.high_valence_curves
             << " adjacent_pairs=" << interval_fan.adjacent_pairs
+            << " wide_reference_pairs=" << interval_fan.wide_reference_pairs
+            << " ambiguous_reference_pairs="
+            << interval_fan.ambiguous_reference_pairs
             << " original_intervals=" << interval_fan.original_intervals
             << " pair_intervals_checked=" << interval_fan.pair_intervals_checked
             << " certified_pair_intervals=" << interval_fan.certified_pair_intervals
@@ -854,7 +857,7 @@ int Run(const std::string& config_path) {
             << interval_fan.automatic_sheet_pairing_enabled
             << " negative_controls=" << interval_negative_controls
             << " reason=" << interval_fan.reason
-            << " global_mixed_model_admitted=0\\n";
+            << " global_mixed_model_admitted=0\n";
 
   // Construct four adversarial counterparts from an ACTUAL original Adapter
   // sampled curve, without inventing a new curve or a synthetic UV geometry.
