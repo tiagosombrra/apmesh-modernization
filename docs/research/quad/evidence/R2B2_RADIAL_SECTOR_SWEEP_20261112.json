@@ -46,18 +46,58 @@
   "ci": {
     "feature": {
       "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43299825976",
-      "status": "in_progress",
-      "conclusion": null
+      "sha": "686ef7d50d7deb981aff7a7919d8d9c6ca44ebb3",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
     },
     "pr": {
       "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43299837378",
-      "status": "in_progress",
-      "conclusion": null
+      "sha": "686ef7d50d7deb981aff7a7919d8d9c6ca44ebb3",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
     },
-    "gates": "Linux and Windows native QUAD 16/16 each; root CTest 87; Python 527; frozen TRI Eistute and Book parity; both model radial traces — all pending"
+    "linux_native_quad": "16/16",
+    "windows_native_quad": "16/16",
+    "root_ctest": "87/87",
+    "python_tooling": "527/527",
+    "frozen_original_tri_eistute_book": "passed",
+    "real_model_radial_markers": "verified in BOTH exact original root job logs"
   },
-  "measured_eistute": null,
-  "measured_book": null,
+  "measured_eistute": {
+    "curve_valence": 4,
+    "original_intervals": 10,
+    "parameter_samples": 39,
+    "radial_sector_evaluations": 156,
+    "adjacent_sector_pairs": 156,
+    "sampled_cyclic_order_changes": 0,
+    "coincident_sector_pairs": 0,
+    "invalid_source_samples": 0,
+    "minimum_cyclic_gap_radians": 1.5708,
+    "parameter_at_minimum_gap": 0.25,
+    "maximum_source_patch_curve_xyz_error": 8.88178e-16,
+    "maximum_inter_sample_angular_drift": 9.76996e-15,
+    "sampled_order_admitted": true,
+    "negative_controls_pass": true
+  },
+  "measured_book": {
+    "curve_valence": 28,
+    "original_intervals": 12,
+    "parameter_samples": 47,
+    "radial_sector_evaluations": 1316,
+    "adjacent_sector_pairs": 1316,
+    "sampled_cyclic_order_changes": 0,
+    "coincident_sector_pairs": 0,
+    "invalid_source_samples": 0,
+    "minimum_cyclic_gap_radians": 0.0318123,
+    "parameter_at_minimum_gap": 0.5,
+    "maximum_source_patch_curve_xyz_error": 2.22045e-16,
+    "maximum_inter_sample_angular_drift": 0.0151401,
+    "sampled_order_admitted": true,
+    "negative_controls_pass": true,
+    "conditioning_warning": "minimum angular gap ~1.823 degrees; not a certified lower bound between source probes"
+  },
   "open": [
     "continuous between-sample sector crossings/near-degeneracy not mathematically excluded",
     "nonmanifold high-valence physical edge fan incidence and ownership policy undecided",
@@ -67,5 +107,11 @@
     "historical 1993 QUAD point placement unapproved",
     "PR unmerged and quad_uv production CLI disabled"
   ],
-  "next": "Inspect exact current CI and real per-model sweep results. If measured sampled fan stable, move to continuous interval bounds and explicit nonmanifold edge fan policy before R2c."
+  "next": "derive interval-certified source Bézier sector separation and no-crossing bounds with validated numerical error, then independently review high-valence radial fan edge incidence and ownership; only then R2c typed physical SubMesh transactional publication, repeated adaptation and ASan/UBSan lifetime qualification",
+  "status": "R2B2_ORIGINAL_SOURCE_RADIAL_SWEEP_EISTUTE_39_BOOK_47_EXACT_DOUBLE_4_4_QUALIFIED_BOUNDED_SAMPLING",
+  "continuous_interval_nonintersection_certified": false,
+  "high_valence_radial_fan_ownership_policy_approved": false,
+  "automatic_sheet_pairing_enabled": false,
+  "global_mixed_model_admitted": false,
+  "typed_physical_SubMesh_published": false
 }
