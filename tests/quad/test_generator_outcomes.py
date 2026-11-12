@@ -202,6 +202,7 @@ def run(executable: Path, root: Path, model: str) -> None:
         bound_fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", bernstein[0]))
         required_bounds = (
             "patches", "high_valence_curves", "adjacent_pairs",
+            "wide_reference_pairs", "ambiguous_reference_pairs",
             "original_intervals", "pair_intervals_checked",
             "certified_pair_intervals", "inverted_pair_intervals",
             "inconclusive_pair_intervals", "smallest_positive_lower",
@@ -221,6 +222,10 @@ def run(executable: Path, root: Path, model: str) -> None:
             int(bound_fields["patches"]) == expected_patches
             and int(bound_fields["high_valence_curves"]) == 1
             and int(bound_fields["adjacent_pairs"]) == expected_patches
+            and 0 <= int(bound_fields["wide_reference_pairs"]) <= expected_patches
+            and 0 <= int(bound_fields["ambiguous_reference_pairs"]) <= expected_patches
+            and (full_certificate == 0
+                 or int(bound_fields["ambiguous_reference_pairs"]) == 0)
             and int(bound_fields["original_intervals"]) == intervals
             and checked == expected_patches * intervals
             and checked == certified + inverted + unresolved
