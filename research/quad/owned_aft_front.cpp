@@ -314,9 +314,9 @@ double SignedTwiceArea(const std::vector<UvVertex>& points) {
 }
 
 double TriangleTwiceArea(Par2DJMesh::Basics::Face* face) {
-  const auto* a = face->getV1();
-  const auto* b = face->getV2();
-  const auto* c = face->getV3();
+  auto* a = face->getV1();
+  auto* b = face->getV2();
+  auto* c = face->getV3();
   return (b->getX() - a->getX()) * (c->getY() - a->getY()) -
          (b->getY() - a->getY()) * (c->getX() - a->getX());
 }
@@ -339,7 +339,7 @@ ExteriorAftReport OwnedQuadAftFront::AttemptExteriorTriangulation(
                 e->getV1() != nullptr && e->getV2() != nullptr,
             "R2b2 requires source-boundary edges with live cell observers");
   }
-  std::map<const Vertex*, std::pair<double, double>> saved_uv;
+  std::map<Vertex*, std::pair<double, double>> saved_uv;
   for (auto* v : innerVertices) {
     Require(v != nullptr, "R2b2 has a null owned seam vertex");
     saved_uv.emplace(v, std::make_pair(v->getX(), v->getY()));

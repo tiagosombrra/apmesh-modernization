@@ -323,7 +323,7 @@ int main() {
                 << " area_boundary=" << report.boundary_uv_area
                 << " area_quad=" << report.quad_uv_area
                 << " area_tri=" << report.triangle_uv_area
-                << " area_balanced=" << report.uv_area_balanced << '\\n';
+                << " area_balanced=" << report.uv_area_balanced << '\n';
       Reject([&] { s.aft->AttemptExteriorTriangulation(s.selected); });
     });
     Check(accepted == 16, "R2b/R2b2 native diagnostic controls were skipped");
