@@ -6,6 +6,10 @@
 #include "interior_template_dispatch.h"
 #include "front_interface_audit.h"
 #include "owned_aft_front.h"
+#include "dynamic_physical_audit.h"
+
+#include "data/geometry.h"
+#include "input_output/patch_reader.h"
 
 #include <cstdint>
 #include <iostream>
@@ -16,6 +20,7 @@
 #include <stdexcept>
 #include <string>
 #include <tuple>
+#include <utility>
 #include <vector>
 
 namespace {
@@ -46,6 +51,10 @@ struct DynamicSourceAftWitness {
   std::size_t source_leaves = 0;
   std::size_t quad_faces = 0;
   std::size_t exterior_triangles = 0;
+  int source_patch_index = -1;
+  apmesh::quad::AdapterBoundaryCapture original_boundary;
+  std::vector<apmesh::quad::PhysicalQuadUv> accepted_quad_uv;
+  std::vector<apmesh::quad::PhysicalTriangleUv> accepted_tri_uv;
   std::string rejection;
 };
 
@@ -61,6 +70,8 @@ DynamicSourceAftWitness ProbeNativeAftOnAdaptedSource(
   result.attempted = true;
   result.source_sites = contour.vertices.size();
   result.source_leaves = source.GetLeafCount();
+  result.source_patch_index = contour.attempt.patch_index;
+  result.original_boundary = contour;
 
   try {
     Require(legacy.owned_tree != nullptr && candidate.owned_tree != nullptr,
@@ -104,11 +115,34 @@ DynamicSourceAftWitness ProbeNativeAftOnAdaptedSource(
                 geometry.spatial_overlap_tested &&
                 geometry.no_spatial_overlap,
             "R2b2 real adapted exterior AFT did not meet all strict UV gates");
+    // Freeze every actual AFT TRI and selected QUAD vertex by value while its
+    // research-owned native objects are live. Physical evaluation happens
+    // ONLY after original TRI GeneratorAdaptive::Execute has completed.
+    for (const auto& quad : select.uv_quads.quads) {
+      const auto& uv = select.uv_quads.vertices;
+      result.accepted_quad_uv.push_back(
+          {uv[quad.vertices[0]], uv[quad.vertices[1]],
+           uv[quad.vertices[2]], uv[quad.vertices[3]]});
+    }
+    for (auto* face : aft->Triangles()) {
+      Require(face != nullptr && face->getV1() != nullptr &&
+                  face->getV2() != nullptr && face->getV3() != nullptr,
+              "R2b2 original AFT emitted incomplete TRI face");
+      result.accepted_tri_uv.push_back({
+          {face->getV1()->getX(), face->getV1()->getY()},
+          {face->getV2()->getX(), face->getV2()->getY()},
+          {face->getV3()->getX(), face->getV3()->getY()}});
+    }
+    Require(result.accepted_quad_uv.size() == result.quad_faces &&
+                result.accepted_tri_uv.size() == result.exterior_triangles,
+            "R2b2 actual AFT UV physical witness lost selected face identity");
     result.admitted = true;
   } catch (const std::exception& error) {
     // This is a measured scientific rejection, not a passing hybrid mesh.
     // Every candidate owner is discarded on this path, including partial AFT.
     result.rejection = error.what();
+    result.accepted_quad_uv.clear();
+    result.accepted_tri_uv.clear();
   }
 
   Require(source.GetTemplateFaces().empty() &&
@@ -327,6 +361,8 @@ int Run(const std::string& config_path) {
           "Real Eistute/Book adapted source tree/AFT diagnostic was not attempted");
   Require(!locally_selected.empty(),
           "Real generator did not emit any local Adapter selections");
+  Require(!real_source_aft.admitted || dynamic_physical_attempted,
+          "R2b2 accepted UV AFT was not presented for physical admission");
   std::set<Key> uv_keys;
   for (const auto& outer : uv_attempts) {
     uv_keys.insert(OuterKey(outer));
@@ -342,6 +378,79 @@ int Run(const std::string& config_path) {
   }
   Require(joined_local_global > 0,
           "No selected Adapter attempt was correlated to a real global outcome epoch");
+
+  // Compare an independent BP model to the actual original Adapter source
+  // curve XYZ sites and ALL accepted TRI/QUAD UV faces only after original TRI
+  // generation/acceptance and restoration traces are complete. ReaderFilePatches
+  // is a separate owner; no source or physical SubMesh is replaced.
+  bool dynamic_physical_attempted = false;
+  bool dynamic_physical_admitted = false;
+  bool negative_source_xyz_rejected = false;
+  bool negative_inverted_facet_rejected = false;
+  bool negative_invalid_uv_rejected = false;
+  apmesh::quad::DynamicPhysicalAudit dynamic_physical;
+  std::string dynamic_physical_rejection = "not_attempted";
+  if (real_source_aft.admitted) {
+    dynamic_physical_attempted = true;
+    try {
+      Geometry independent_geometry;
+      PatchReader independent_reader;
+      Require(independent_reader.ReaderFilePatches(
+                  &independent_geometry, config.input_model) == &independent_geometry,
+              "R2b2 dynamic source physical PatchReader failed");
+      Require(real_source_aft.source_patch_index >= 0 &&
+                  static_cast<unsigned>(real_source_aft.source_patch_index) <
+                      independent_geometry.GetNumberPatches(),
+              "R2b2 original Adapter patch index diverged from physical model");
+      auto* native = dynamic_cast<PatchBezier*>(independent_geometry.GetPatch(
+          static_cast<unsigned>(real_source_aft.source_patch_index)));
+      Require(native != nullptr, "R2b2 actual source geometry is not PatchBezier");
+      const auto* accepted_before = native->GetSubMesh();
+      const auto& source = real_source_aft.original_boundary;
+      const auto& quads = real_source_aft.accepted_quad_uv;
+      const auto& triangles = real_source_aft.accepted_tri_uv;
+      dynamic_physical = apmesh::quad::AuditActualAdapterPhysicalFaces(
+          *native, source, quads, triangles);
+
+      auto tampered_source = source;
+      tampered_source.vertices.front().physical_xyz[0] +=
+          0.125 * std::max(1.0,
+              apmesh::quad::PhysicalNorm(
+                  tampered_source.vertices.front().physical_xyz));
+      try {
+        static_cast<void>(apmesh::quad::AuditActualAdapterPhysicalFaces(
+            *native, tampered_source, quads, triangles));
+      } catch (const std::invalid_argument&) {
+        negative_source_xyz_rejected = true;
+      }
+      auto inverted_faces = triangles;
+      std::swap(inverted_faces.front()[0], inverted_faces.front()[1]);
+      try {
+        static_cast<void>(apmesh::quad::AuditActualAdapterPhysicalFaces(
+            *native, source, quads, inverted_faces));
+      } catch (const std::invalid_argument&) {
+        negative_inverted_facet_rejected = true;
+      }
+      auto invalid_uv_faces = quads;
+      invalid_uv_faces.front()[0].u = -0.125;
+      try {
+        static_cast<void>(apmesh::quad::AuditActualAdapterPhysicalFaces(
+            *native, source, invalid_uv_faces, triangles));
+      } catch (const std::invalid_argument&) {
+        negative_invalid_uv_rejected = true;
+      }
+      Require(negative_source_xyz_rejected &&
+                  negative_inverted_facet_rejected &&
+                  negative_invalid_uv_rejected &&
+                  native->GetSubMesh() == accepted_before,
+              "R2b2 physical negative controls or immutable ownership failed");
+      dynamic_physical_admitted = true;
+      dynamic_physical_rejection = "none";
+    } catch (const std::exception& error) {
+      // A physical rejection MUST be visible even if UV AFT was admitted.
+      dynamic_physical_rejection = error.what();
+    }
+  }
 
   // Outer global commit/restore decisions are not equivalent to physical QUAD.
   std::cout << "real_generator_outcomes=1 accepted_tri=" << accepted
@@ -365,6 +474,19 @@ int Run(const std::string& config_path) {
             << " dynamic_source_aft_rejection="
             << (real_source_aft.rejection.empty() ? "none" :
                 real_source_aft.rejection)
+            << " dynamic_physical_attempted=" << dynamic_physical_attempted
+            << " dynamic_physical_admitted=" << dynamic_physical_admitted
+            << " dynamic_physical_source_nodes="
+            << dynamic_physical.source_sites_compared
+            << " dynamic_physical_facets=" << dynamic_physical.mapped_facets
+            << " dynamic_physical_min_alignment="
+            << dynamic_physical.minimum_orientation_alignment
+            << " dynamic_physical_max_source_error="
+            << dynamic_physical.max_source_xyz_error
+            << " dynamic_physical_negative_controls="
+            << (negative_source_xyz_rejected &&
+                negative_inverted_facet_rejected && negative_invalid_uv_rejected)
+            << " dynamic_physical_rejection=" << dynamic_physical_rejection
             << " negative_replay_corruption_rejected="
             << corrupt_source_replay_rejected
             << " local_selected=" << locally_selected.size()
