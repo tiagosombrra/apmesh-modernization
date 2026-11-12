@@ -550,6 +550,33 @@ int Run(const std::string& config_path) {
   // sampled curve, without inventing a new curve or a synthetic UV geometry.
   const auto original_side =
       apmesh::quad::SnapshotSharedCurveSide(boundaries.front(), 0U);
+
+  // The native corner aliases the first vertex of the following side.
+  // Prevent a forged source-curve terminal ID/XYZ from being promoted into
+  // the true original shared curve's identity or physical seam.
+  auto invalid_terminal_id = boundaries.front();
+  invalid_terminal_id.original_curve_endpoints[0].node_id = 0;
+  bool invalid_terminal_id_rejected = false;
+  try {
+    static_cast<void>(
+        apmesh::quad::SnapshotSharedCurveSide(invalid_terminal_id, 0U));
+  } catch (const std::invalid_argument&) {
+    invalid_terminal_id_rejected = true;
+  }
+  auto invalid_terminal_xyz = boundaries.front();
+  invalid_terminal_xyz.original_curve_endpoints[0].xyz[0] +=
+      std::max(1.0, apmesh::quad::PhysicalNorm(
+          invalid_terminal_xyz.original_curve_endpoints[0].xyz));
+  bool invalid_terminal_xyz_rejected = false;
+  try {
+    static_cast<void>(
+        apmesh::quad::SnapshotSharedCurveSide(invalid_terminal_xyz, 0U));
+  } catch (const std::invalid_argument&) {
+    invalid_terminal_xyz_rejected = true;
+  }
+  Require(invalid_terminal_id_rejected && invalid_terminal_xyz_rejected,
+          "R2b2 original owner endpoint negative provenance tests failed");
+
   auto counterparty = original_side;
   counterparty.patch = (original_side.patch + 1U) % shared_graph.patches;
   counterparty.traversal *= -1;
@@ -619,6 +646,8 @@ int Run(const std::string& config_path) {
             << " max_shared_xyz_error=" << shared.maximum_xyz_error
             << " repeated_source_attempts=" << shared.repeated_patch_attempts
             << " negative_controls=" << shared_negative_controls
+            << " owner_endpoint_negative_controls="
+            << (invalid_terminal_id_rejected && invalid_terminal_xyz_rejected)
             << " rejection_reasons="
             << (shared_rejections.str().empty() ? "none" : shared_rejections.str())
             << " physical_SubMesh_published=0"

@@ -79,12 +79,24 @@ struct AdapterBoundaryEdgeMetric {
   double source_normalized_length = -1.0;
 };
 
+// This endpoint belongs to the ORIGINAL source curve object. The actual AFT
+// Boundary omits the last site of each side and aliases the first site of the
+// next side for topological closure; that borrowed corner may carry the NEXT
+// curve's patch-local node ID despite having exactly identical physical XYZ.
+struct AdapterOriginalCurveEndpoint {
+  double parameter = 0.0;
+  unsigned long node_id = 0;
+  unsigned source_index = 0;
+  std::array<double, 3> xyz{};
+};
+
 struct AdapterBoundaryCapture {
   PatchAttemptIdentity attempt{};
   std::vector<AdapterBoundaryPoint> vertices;
   std::vector<std::array<double, 4>> directed_edges;
   std::vector<AdapterBoundaryEdgeMetric> original_edge_metrics;
   std::array<std::size_t, 4> side_counts{};
+  std::array<AdapterOriginalCurveEndpoint, 4> original_curve_endpoints{};
   bool accepted_mesh_published = false;
 };
 
@@ -117,6 +129,25 @@ inline AdapterBoundaryCapture SnapshotOriginalAdapterBoundary(
       throw std::invalid_argument("Adapter source curve point/parameter mismatch");
     const bool reversed = patch.IsCurveReversed(side);
     result.side_counts[side] = count - 1U;
+    const std::size_t terminal_index = reversed
+        ? (side < 2U ? 0U : count - 1U)
+        : (side < 2U ? count - 1U : 0U);
+    const auto* terminal = curve->GetPoint(
+        static_cast<unsigned>(terminal_index));
+    if (terminal == nullptr || terminal->GetId() == 0UL ||
+        !std::isfinite(parameters[terminal_index])) {
+      throw std::invalid_argument("Original source curve endpoint has invalid provenance");
+    }
+    const std::array<double, 3> terminal_xyz{
+        terminal->GetX(), terminal->GetY(), terminal->GetZ()};
+    if (!std::isfinite(terminal_xyz[0]) ||
+        !std::isfinite(terminal_xyz[1]) ||
+        !std::isfinite(terminal_xyz[2])) {
+      throw std::invalid_argument("Original source curve endpoint XYZ is invalid");
+    }
+    result.original_curve_endpoints[side] = {
+        parameters[terminal_index], terminal->GetId(),
+        static_cast<unsigned>(terminal_index), terminal_xyz};
 
     for (std::size_t offset = 0; offset + 1U < count; ++offset) {
       if (cursor >= actual.size())

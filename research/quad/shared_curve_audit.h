@@ -138,12 +138,40 @@ inline SharedCurveSide SnapshotSharedCurveSide(
   // this shared boundary vertex, not an independently evaluated substitute.
   const auto& endpoint =
       capture.vertices[(last_index + 1U) % capture.vertices.size()];
+  const auto& owner_endpoint = capture.original_curve_endpoints[side];
   const double chart_end = side < 2U ? 1.0 : 0.0;
   const double original_end = reversed ? 1.0 - chart_end : chart_end;
+  const auto original_index = original_end == 0.0 ? 0U :
+      static_cast<unsigned>(count);
+  if (owner_endpoint.node_id == 0 ||
+      owner_endpoint.parameter != original_end ||
+      owner_endpoint.source_index != original_index)
+    throw std::invalid_argument(
+        "R2b2 original curve endpoint identity was not captured");
+
+  // Native AFT has ONE vertex at the corner and borrows it as the next side's
+  // first sample. For source-curve provenance use the curve's own *omitted*
+  // terminal node, NOT the next side's unrelated node ID. Validate the
+  // physical equivalence explicitly; never silently weld unrelated corners.
+  double error_squared = 0.0;
+  double scale_squared = 0.0;
+  for (unsigned axis = 0; axis < 3U; ++axis) {
+    const double actual = endpoint.physical_xyz[axis];
+    const double owner = owner_endpoint.xyz[axis];
+    if (!std::isfinite(actual) || !std::isfinite(owner))
+      throw std::invalid_argument("R2b2 source curve corner XYZ is nonfinite");
+    const double difference = actual - owner;
+    error_squared += difference * difference;
+    scale_squared += owner * owner;
+  }
+  if (!std::isfinite(error_squared) ||
+      std::sqrt(error_squared) >
+          2e-7 * std::max(1.0, std::sqrt(scale_squared)))
+    throw std::invalid_argument(
+        "R2b2 native corner is not physically continuous with source curve");
   result.ordered_by_original_parameter.push_back(
-      {original_end, endpoint.physical_node_id,
-       original_end == 0.0 ? 0U : static_cast<unsigned>(count),
-       endpoint.physical_xyz});
+      {owner_endpoint.parameter, owner_endpoint.node_id,
+       owner_endpoint.source_index, owner_endpoint.xyz});
 
   auto& sites = result.ordered_by_original_parameter;
   std::sort(sites.begin(), sites.end(),
