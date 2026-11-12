@@ -64,14 +64,24 @@
   },
   "latest_candidate_ci": {
     "sha": "24349b74befb2308bb3d6202f747998def5eedd3",
-    "feature": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43246304785",
-    "pr": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43246317558",
-    "linux_quad": "passed",
-    "windows_quad": "passed",
-    "root_ctest": "pending",
-    "python": "pending",
-    "tri_frozen": "pending",
-    "dynamic_physical_admission": "unverified"
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43246304785",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43246317558",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
+    },
+    "linux_quad": "16/16",
+    "windows_quad": "16/16",
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "tri_frozen": "passed",
+    "dynamic_physical_admission": "both models 1/1 accepted, negative controls 3/3 each, measured in both CI root job verbose logs"
   },
   "open": [
     "all 4/28 external patches dynamic physical coverage not shown",
@@ -79,7 +89,48 @@
     "typed physical mixed SubMesh and atomic rollback not implemented",
     "repeated adaptation not qualified",
     "historical fourth in-process fixture failure unqualified by sanitizer",
-    "production quad_uv intentionally disabled"
+    "production quad_uv intentionally disabled",
+    "multi-patch model-wide real adapted source curve conformity not qualified",
+    "physical mixed four-node SubMesh output not published",
+    "old fourth-in-process fixture lifetime not ASan/UBSan qualified"
   ],
-  "next": "Inspect exact head 4/4 and verbose per-model dynamic_physical markers, then require positive physical admission and all negative controls before advancing global interface work."
+  "next": "Audit shared model curve sample/edge XYZ and orientation conformity across all external Eistute and Book patches and sheet incidences, retaining rejected cases; then typed mixed physical SubMesh transaction/rollback, repeated adaptation and independent ASan/UBSan.",
+  "status": "TRUE_ADAPTER_DYNAMIC_AFT_PHYSICAL_PATCHBEZIER_EISTUTE_BOOK_ONE_CHART_EACH_EXACT_FEATURE_AND_PR_4_4_QUALIFIED",
+  "physical_admission": {
+    "source": "actual CI root verbose CTest quad.generator.real_global_outcomes and .book on BOTH feature and PR jobs, exact SHA",
+    "eistute": {
+      "original_adapted_boundary_nodes": 40,
+      "source_leaves": 130,
+      "interior_quads": 472,
+      "exterior_tris": 152,
+      "physical_facets_tested": 1096,
+      "minimum_orientation_alignment": 0.760759,
+      "maximum_xyz_source_error": 8.97016e-15,
+      "uv_admitted": 1,
+      "physical_attempted": 1,
+      "physical_admitted": 1,
+      "all_three_negative_controls_passed": true,
+      "reason": "none"
+    },
+    "book": {
+      "original_adapted_boundary_nodes": 36,
+      "source_leaves": 64,
+      "interior_quads": 188,
+      "exterior_tris": 100,
+      "physical_facets_tested": 476,
+      "minimum_orientation_alignment": 0.999823,
+      "maximum_xyz_source_error": 2.48253e-16,
+      "uv_admitted": 1,
+      "physical_attempted": 1,
+      "physical_admitted": 1,
+      "all_three_negative_controls_passed": true,
+      "reason": "none"
+    },
+    "experimental_research_scope": "one original dynamically adapted real source patch per external model, not all patches/retries",
+    "physical_four_node_mixed_SubMesh_published": false,
+    "full_model_global_geometry_qualified": false,
+    "source_reader": "independent PatchReader after original TRI GeneratorAdaptive execution; same BP patch index and CurveAdaptiveParametric orientation",
+    "thresholds_unchanged": true,
+    "production_original_tri_untouched": true
+  }
 }
