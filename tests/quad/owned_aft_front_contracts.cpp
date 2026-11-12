@@ -309,7 +309,7 @@ int main() {
       Check(report.exterior_triangles == s.aft->Triangles().size() &&
                 report.boundary_uv_area > report.quad_uv_area &&
                 report.seam_vertices_unchanged &&
-                !report.spatial_overlap_tested && !report.qualified,
+                report.spatial_overlap_tested && !report.qualified,
             "R2b2 misrepresented its measured exterior AFT attempt");
       std::cout << "R2B2_DIAGNOSTIC exterior_triangles="
                 << report.exterior_triangles
@@ -329,7 +329,8 @@ int main() {
       // cannot be promoted merely because AFT returned some faces.
       const bool complete = report.exterior_triangles > 0 &&
           report.triangles_positive && report.front_drained &&
-          report.seam_orientation_complete && report.uv_area_balanced;
+          report.seam_orientation_complete && report.uv_area_balanced &&
+          report.spatial_overlap_tested && report.no_spatial_overlap;
       if (!complete) {
         throw std::runtime_error(
             "R2b2 exterior AFT not closed: tri=" +
@@ -339,12 +340,43 @@ int main() {
             " seam=" + std::to_string(report.seam_edges_with_one_tri) +
             " triangle_positive=" + std::to_string(report.triangles_positive) +
             " area_balanced=" + std::to_string(report.uv_area_balanced) +
+            " overlap_area=" + std::to_string(report.cumulative_overlap_area) +
             " patch=" + std::to_string(report.boundary_uv_area) +
             " quad=" + std::to_string(report.quad_uv_area) +
             " tri_area=" + std::to_string(report.triangle_uv_area));
       }
     });
-    Check(accepted == 16, "R2b/R2b2 native diagnostic controls were skipped");
+    run("r2b2-uv-overlap-shared-edge-is-not-overlap", [] {
+      apmesh::quad::UvMesh quads;
+      const std::vector<std::array<UvVertex, 3>> triangles{
+          {{{0, 0}, {1, 0}, {0, 1}}},
+          {{{1, 0}, {1, 1}, {0, 1}}}};
+      const auto result = apmesh::quad::AuditUvOverlap(quads, triangles);
+      Check(result.no_overlap && result.overlap_area == 0.0,
+            "Shared TRI edge was incorrectly counted as spatial overlap");
+    });
+    run("r2b2-uv-overlap-triangle-triangle-detected", [] {
+      apmesh::quad::UvMesh quads;
+      const std::vector<std::array<UvVertex, 3>> triangles{
+          {{{0, 0}, {1, 0}, {0, 1}}},
+          {{{0.1, 0.1}, {0.9, 0.1}, {0.1, 0.9}}}};
+      const auto result = apmesh::quad::AuditUvOverlap(quads, triangles);
+      Check(!result.no_overlap && result.tri_tri_pairs == 1 &&
+                result.overlap_area > 0.0,
+            "Positive-area TRI/TRI overlap was missed");
+    });
+    run("r2b2-uv-overlap-triangle-quad-detected", [] {
+      apmesh::quad::UvMesh quads;
+      quads.vertices = {{0, 0}, {0.5, 0}, {0.5, 0.5}, {0, 0.5}};
+      quads.quads.push_back({{0, 1, 2, 3}});
+      const std::vector<std::array<UvVertex, 3>> triangles{
+          {{{0.2, 0.2}, {0.6, 0.2}, {0.2, 0.6}}}};
+      const auto result = apmesh::quad::AuditUvOverlap(quads, triangles);
+      Check(!result.no_overlap && result.tri_quad_pairs == 1 &&
+                result.overlap_area > 0.0,
+            "Positive-area TRI/QUAD overlap was missed");
+    });
+    Check(accepted == 19, "R2b/R2b2 native diagnostic controls were skipped");
     std::cout << "r2b_owned_aft_front=ok outcomes=" << accepted
               << " native_quadtree_and_boundary=1"
               << " aft_active_real_edges=1"

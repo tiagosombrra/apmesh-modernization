@@ -323,6 +323,102 @@ double TriangleTwiceArea(Par2DJMesh::Basics::Face* face) {
 
 }  // namespace
 
+
+namespace {
+using UvPolygon = std::vector<UvVertex>;
+long double CrossUv(const UvVertex& a, const UvVertex& b, const UvVertex& c) {
+  return (static_cast<long double>(b.u) - a.u) *
+             (static_cast<long double>(c.v) - a.v) -
+         (static_cast<long double>(b.v) - a.v) *
+             (static_cast<long double>(c.u) - a.u);
+}
+void CheckConvex(const UvPolygon& p) {
+  Require(p.size() >= 3 && SignedTwiceArea(p) > 0.0,
+          "R2b2 overlap audit requires positive-area CCW polygon");
+  for (std::size_t i = 0; i < p.size(); ++i) {
+    const auto& a = p[i];
+    const auto& b = p[(i + 1) % p.size()];
+    const auto& c = p[(i + 2) % p.size()];
+    Require(std::isfinite(a.u) && std::isfinite(a.v) &&
+                CrossUv(a, b, c) >= 0.0L,
+            "R2b2 overlap audit requires finite convex faces");
+  }
+}
+double IntersectionArea(UvPolygon subject, const UvPolygon& clip) {
+  for (std::size_t i = 0; i < clip.size() && !subject.empty(); ++i) {
+    const auto& a = clip[i];
+    const auto& b = clip[(i + 1) % clip.size()];
+    UvPolygon next;
+    next.reserve(subject.size() * 2);
+    auto previous = subject.back();
+    auto prev_distance = CrossUv(a, b, previous);
+    for (const auto& current : subject) {
+      const auto cur_distance = CrossUv(a, b, current);
+      const bool prev_in = prev_distance >= 0.0L;
+      const bool cur_in = cur_distance >= 0.0L;
+      if (prev_in != cur_in) {
+        const long double t = prev_distance / (prev_distance - cur_distance);
+        next.push_back({
+            static_cast<double>(previous.u + t * (current.u - previous.u)),
+            static_cast<double>(previous.v + t * (current.v - previous.v))});
+      }
+      if (cur_in) next.push_back(current);
+      previous = current;
+      prev_distance = cur_distance;
+    }
+    subject.swap(next);
+  }
+  if (subject.size() < 3) return 0.0;
+  return std::max(0.0, 0.5 * SignedTwiceArea(subject));
+}
+}  // namespace
+
+UvOverlapReport AuditUvOverlap(
+    const UvMesh& quads, const std::vector<std::array<UvVertex, 3>>& triangles) {
+  std::vector<UvPolygon> quad_faces;
+  quad_faces.reserve(quads.quads.size());
+  for (const auto& q : quads.quads) {
+    UvPolygon face;
+    for (auto id : q.vertices) {
+      Require(id < quads.vertices.size(), "R2b2 QUAD overlap index out of range");
+      face.push_back(quads.vertices[id]);
+    }
+    CheckConvex(face);
+    quad_faces.push_back(std::move(face));
+  }
+  std::vector<UvPolygon> tri_faces;
+  tri_faces.reserve(triangles.size());
+  for (const auto& t : triangles) {
+    UvPolygon face(t.begin(), t.end());
+    CheckConvex(face);
+    tri_faces.push_back(std::move(face));
+  }
+  UvOverlapReport result;
+  // The research fixture uses dyadic UV inputs. Intersections smaller than
+  // 1e-11 square UV units are treated as numeric boundary contact.
+  constexpr double positive_overlap_epsilon = 1.0e-11;
+  for (const auto& t : tri_faces) {
+    for (const auto& q : quad_faces) {
+      const double overlap = IntersectionArea(t, q);
+      if (overlap > positive_overlap_epsilon) {
+        ++result.tri_quad_pairs;
+        result.overlap_area += overlap;
+      }
+    }
+  }
+  for (std::size_t i = 0; i < tri_faces.size(); ++i) {
+    for (std::size_t j = i + 1; j < tri_faces.size(); ++j) {
+      const double overlap = IntersectionArea(tri_faces[i], tri_faces[j]);
+      if (overlap > positive_overlap_epsilon) {
+        ++result.tri_tri_pairs;
+        result.overlap_area += overlap;
+      }
+    }
+  }
+  result.no_overlap = result.tri_quad_pairs == 0 && result.tri_tri_pairs == 0;
+  return result;
+}
+
 ExteriorAftReport OwnedQuadAftFront::AttemptExteriorTriangulation(
     const InteriorTemplateSelection& selected) {
   Require(seeded_ && !exterior_attempted_ && mesh.empty(),
@@ -422,10 +518,24 @@ ExteriorAftReport OwnedQuadAftFront::AttemptExteriorTriangulation(
                 report.boundary_uv_area) <=
       1.0e-8 * std::max(1.0, report.boundary_uv_area);
 
-  // Triangle/QUAD spatial overlap and source-Bezier physical XYZ are not
-  // independently checked in this slice. Never promote diagnostics to
-  // production qualification or claim an accepted hybrid result.
-  report.spatial_overlap_tested = false;
+  // Independent pairwise positive-area clipping audit, separate from area sum.
+  std::vector<std::array<UvVertex, 3>> triangles_uv;
+  triangles_uv.reserve(mesh.size());
+  for (auto* f : mesh) {
+    auto* a = f->getV1();
+    auto* b = f->getV2();
+    auto* c = f->getV3();
+    triangles_uv.push_back({{{a->getX(), a->getY()},
+                             {b->getX(), b->getY()},
+                             {c->getX(), c->getY()}}});
+  }
+  const auto overlap = AuditUvOverlap(selected.uv_quads, triangles_uv);
+  report.spatial_overlap_tested = true;
+  report.no_spatial_overlap = overlap.no_overlap;
+  report.overlapping_tri_quad_pairs = overlap.tri_quad_pairs;
+  report.overlapping_tri_tri_pairs = overlap.tri_tri_pairs;
+  report.cumulative_overlap_area = overlap.overlap_area;
+  // No physical Bézier XYZ or mixed-element SubMesh is published here.
   report.qualified = false;
   return report;
 }

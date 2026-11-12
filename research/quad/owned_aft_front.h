@@ -34,6 +34,10 @@ struct ExteriorAftReport {
   bool seam_vertices_unchanged = false;
   bool uv_area_balanced = false;
   bool spatial_overlap_tested = false;
+  bool no_spatial_overlap = false;
+  std::size_t overlapping_tri_quad_pairs = 0;
+  std::size_t overlapping_tri_tri_pairs = 0;
+  double cumulative_overlap_area = 0.0;
   bool qualified = false;
   std::size_t exterior_triangles = 0;
   std::size_t unresolved_front_edges = 0;
@@ -43,6 +47,17 @@ struct ExteriorAftReport {
   double quad_uv_area = 0.0;
   double triangle_uv_area = 0.0;
 };
+
+// Independent area-intersection test for CCW convex UV faces. Touching edges
+// are not interior overlap. Production and physical XYZ are not modified.
+struct UvOverlapReport {
+  bool no_overlap = false;
+  std::size_t tri_quad_pairs = 0;
+  std::size_t tri_tri_pairs = 0;
+  double overlap_area = 0.0;
+};
+UvOverlapReport AuditUvOverlap(
+    const UvMesh& quads, const std::vector<std::array<UvVertex, 3>>& triangles);
 
 // Derivation accesses the existing protected AFT front and owner lists without
 // any modification to production AdvancingFront or Quadtree implementations.
