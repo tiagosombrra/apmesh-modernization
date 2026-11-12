@@ -312,6 +312,23 @@ OwnedAftFrontReport OwnedQuadAftFront::Seed(
   return report;
 }
 
+void OwnedQuadAftFront::SetResearchAbortAfterTriangles(std::size_t n) {
+  Require(seeded_ && !exterior_attempted_ && n > 0 && mesh.empty(),
+          "R2b2 fault hook requires a new seeded AFT before TRI emission");
+  research_abort_after_triangles_ = n;
+  research_abort_enabled_ = true;
+}
+
+bool OwnedQuadAftFront::findBestVertex(Edge* edge, Vertex*& best,
+                                       bool geometry_phase) {
+  if (research_abort_enabled_ &&
+      mesh.size() >= research_abort_after_triangles_) {
+    throw std::runtime_error(
+        "R2b2 injected research-only failure after partial exterior TRI");
+  }
+  return AdvancingFront::findBestVertex(edge, best, geometry_phase);
+}
+
 namespace {
 
 double SignedTwiceArea(const std::vector<UvVertex>& points) {

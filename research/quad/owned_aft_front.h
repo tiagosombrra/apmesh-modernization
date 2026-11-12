@@ -80,6 +80,10 @@ class OwnedQuadAftFront final : public Par2DJMesh::AFT::AdvancingFront {
   ExteriorAftReport AttemptExteriorTriangulation(
       const InteriorTemplateSelection& selected);
 
+  // Test-only deterministic abort after AFT has generated n TRI faces.
+  // This never applies to the normal generator or a published mixed mesh.
+  void SetResearchAbortAfterTriangles(std::size_t n);
+
   bool IsSeeded() const noexcept { return seeded_; }
   const Par2DJMesh::Basics::EdgeList& ActiveFront() const noexcept { return front; }
   // Immutable observer views for the ORIGINAL QUAD seam only. AFT appends
@@ -92,10 +96,17 @@ class OwnedQuadAftFront final : public Par2DJMesh::AFT::AdvancingFront {
   }
   const Par2DJMesh::Basics::FaceList& Triangles() const noexcept { return mesh; }
 
+ protected:
+  bool findBestVertex(Par2DJMesh::Basics::Edge* edge,
+                      Par2DJMesh::Basics::Vertex*& best,
+                      bool geometry_phase) override;
+
  private:
   // AFT owns these objects; this vector owns no vertices or edges.
   std::vector<Par2DJMesh::Basics::Edge*> seam_edges_;
   std::vector<Par2DJMesh::Basics::Vertex*> seam_vertices_;
+  std::size_t research_abort_after_triangles_ = 0;
+  bool research_abort_enabled_ = false;
   bool exterior_attempted_ = false;
   bool seeded_ = false;
 };

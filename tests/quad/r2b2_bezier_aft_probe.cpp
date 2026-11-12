@@ -231,10 +231,10 @@ Witness RunNativePatch(PatchBezier& patch, bool refined) {
     witness.sampled_facets += 2;
   }
   for (Face* f : aft->Triangles()) {
-    CheckFacet(patch, {{{f->getV1()->getX(), f->getV1()->getY()},
-                        {f->getV2()->getX(), f->getV2()->getY()},
-                        {f->getV3()->getX(), f->getV3()->getY()}}},
-               witness.min_alignment);
+    const FaceUv triangle{{UvVertex{f->getV1()->getX(), f->getV1()->getY()},
+                           UvVertex{f->getV2()->getX(), f->getV2()->getY()},
+                           UvVertex{f->getV3()->getX(), f->getV3()->getY()}}};
+    CheckFacet(patch, triangle, witness.min_alignment);
     ++witness.sampled_facets;
   }
   // Physical boundary/site data must remain independent of failed candidates.

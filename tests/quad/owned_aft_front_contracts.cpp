@@ -416,7 +416,33 @@ int main() {
                 result.spatial_overlap_tested && result.no_spatial_overlap,
             "Nonuniform source patch boundary did not complete with TRI exterior");
     });
-    Check(accepted == 21, "R2b/R2b2 native diagnostic controls were skipped");
+    run("r2b2-abort-after-partial-original-AFT-triangles", [] {
+      auto s = Make();
+      CheckSeed(s, 16, 4);
+      const auto original_faces = s.selected.uv_quads.quads.size();
+      const auto original_seam = s.selected.quad_region_boundary.size();
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        s.aft->getQuadtree()->findCell(edge);
+      s.aft->SetResearchAbortAfterTriangles(1);
+      bool interrupted = false;
+      try {
+        (void)s.aft->AttemptExteriorTriangulation(s.selected);
+      } catch (const std::runtime_error& error) {
+        interrupted = std::string(error.what()).find(
+            "injected research-only failure") != std::string::npos;
+      }
+      Check(interrupted && s.aft->Triangles().size() >= 1 &&
+                s.aft->getQuadtree()->GetTemplateFaces().empty(),
+            "Native AFT did not abort after partially generated exterior TRI");
+      Reject([&] { (void)s.aft->AttemptExteriorTriangulation(s.selected); });
+      // Retire every partial AFT vertex, edge and face with its owner. The
+      // value-owned QUAD source stays valid; no physical mesh was published.
+      s.aft.reset();
+      Check(s.selected.uv_quads.quads.size() == original_faces &&
+                s.selected.quad_region_boundary.size() == original_seam,
+            "Failed AFT owner destruction corrupted the source QUAD selection");
+    });
+    Check(accepted == 22, "R2b/R2b2 native diagnostic controls were skipped");
     std::cout << "r2b_owned_aft_front=ok outcomes=" << accepted
               << " native_quadtree_and_boundary=1"
               << " aft_active_real_edges=1"
