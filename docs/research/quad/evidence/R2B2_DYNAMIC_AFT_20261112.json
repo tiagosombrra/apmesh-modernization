@@ -36,25 +36,33 @@
       "dynamic_source_aft_exterior_triangles",
       "dynamic_source_aft_rejection"
     ],
-    "run_artifact": "quad-r2b2-actual-source-aft-${github_sha}"
+    "run_artifact": "quad-r2b2-actual-source-aft-${github_sha}",
+    "acceptance_result": "one strict original AFT exterior research UV candidate per external model was admitted; not a globally accepted physical QUAD/TRI mesh",
+    "actual_source_dynamic_aft_uv_qualified": true,
+    "actual_source_dynamic_aft_physical_XYZ_qualified": false,
+    "physical_SubMesh_published": false
   },
   "ci": {
     "feature": {
       "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43206236696",
-      "status": "in_progress",
-      "conclusion": null
+      "sha": "1f2da57ff4dc4dd6dde358ede0efd772da3fb3ba",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
     },
     "pr": {
       "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43206246419",
-      "status": "in_progress",
-      "conclusion": null
+      "sha": "1f2da57ff4dc4dd6dde358ede0efd772da3fb3ba",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": "4/4"
     },
-    "native_linux": "16/16 PASS",
-    "native_windows": "16/16 PASS",
-    "root_ctest": "pending",
-    "python": "pending",
-    "tri_frozen": "pending",
-    "dynamic_source_model_admission": "unverified"
+    "native_linux_quad": "16/16",
+    "native_windows_quad": "16/16",
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "frozen_original_tri_eistute_book": "passed",
+    "exact_logs_read": "both feature and PR"
   },
   "scope_limits": [
     "one dynamic chart attempt per real external model, not all source patches",
@@ -67,5 +75,36 @@
     "historical 1993 numeric formula remains experimental",
     "quad_uv CLI disabled"
   ],
-  "next": "Qualify exact push/PR and extract per-model diagnostic accepted/rejected values; fix actual failures without reducing scientific gates. Then physical source XYZ and previously accepted mesh rollback."
+  "next": "Qualify exact push/PR and extract per-model diagnostic accepted/rejected values; fix actual failures without reducing scientific gates. Then physical source XYZ and previously accepted mesh rollback.",
+  "status": "TRUE_ORIGINAL_AFT_DYNAMIC_ADAPTED_EISTUTE_BOOK_UV_ADMITTED_EXACT_FEATURE_AND_PR_4_4_PHYSICAL_R2C_PENDING",
+  "measured_dynamic_model_outcomes": {
+    "source": "VERBATIM CI verbose CTest quad.generator.real_global_outcomes[.book] both runs",
+    "eistute": {
+      "actual_curve_boundary_sites": 40,
+      "replayed_source_leaves": 130,
+      "attempted": 1,
+      "admitted": 1,
+      "quad_faces": 472,
+      "exterior_triangles": 152,
+      "rejection": "none"
+    },
+    "book": {
+      "actual_curve_boundary_sites": 36,
+      "replayed_source_leaves": 64,
+      "attempted": 1,
+      "admitted": 1,
+      "quad_faces": 188,
+      "exterior_triangles": 100,
+      "rejection": "none"
+    }
+  },
+  "current_next": "Map these exact accepted original dynamic source AFT TRI/QUAD vertices via real source PatchBezier and original curve/NodeAdaptive XYZ with strict 3D Jacobian and face normal checks; then shared sheet/patch seams and typed physical SubMesh owner transaction. Independent old 4th-in-process sanitizer gate also open.",
+  "known_open": [
+    "physical XYZ of the dynamically adapted AFT output untested",
+    "whole-model patch seams/global manifold validity untested",
+    "typed mixed QUAD/TRI physical SubMesh and acceptance/rollback unimplemented",
+    "repeated-in-process historical fixture SIGSEGV remains unresolved without ASan/UBSan",
+    "historical 1993 point rule unapproved",
+    "production quad_uv disabled"
+  ]
 }
