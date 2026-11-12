@@ -7,10 +7,13 @@
 #include "front_interface_audit.h"
 #include "owned_aft_front.h"
 #include "dynamic_physical_audit.h"
+#include "shared_curve_audit.h"
 
 #include "data/geometry.h"
 #include "input_output/patch_reader.h"
 
+#include <algorithm>
+#include <cmath>
 #include <cstdint>
 #include <iostream>
 #include <map>
@@ -452,6 +455,87 @@ int Run(const std::string& config_path) {
 
   Require(!real_source_aft.admitted || dynamic_physical_attempted,
           "R2b2 accepted UV AFT was not presented for physical admission");
+
+
+  // Audit the entire actual source model curve-incidence graph from a fresh
+  // independently owned PatchReader geometry, then compare ONLY source
+  // Adapter captures belonging to one coherent global epoch+retry. The test
+  // returns measured rejections, never a fabricated model-wide hybrid mesh.
+  Geometry shared_geometry;
+  PatchReader shared_reader;
+  Require(shared_reader.ReaderFilePatches(
+              &shared_geometry, config.input_model) == &shared_geometry,
+          "R2b2 shared curve PatchReader failed");
+  const auto shared_graph =
+      apmesh::quad::BuildSharedCurveTopology(shared_geometry);
+  Require(shared_graph.patches == (
+              config.input_model.find("book") != std::string::npos ? 28U : 4U),
+          "R2b2 external original model patch cardinality changed");
+  const auto shared = apmesh::quad::AuditCoherentAdapterSharedCurves(
+      shared_graph, boundaries);
+  Require(shared.model_curves == shared_geometry.GetNumberCurves() &&
+              shared.model_shared_curves > 0U &&
+              shared.coherent_epoch_patches > 1U &&
+              shared.coherent_epoch_shared_curves_compared > 0U &&
+              shared.coherent_epoch_shared_curves_matched +
+                  shared.coherent_epoch_shared_curves_rejected ==
+                  shared.coherent_epoch_shared_curves_compared,
+          "R2b2 no real same-epoch shared curve interfaces were audited");
+
+  // Construct four adversarial counterparts from an ACTUAL original Adapter
+  // sampled curve, without inventing a new curve or a synthetic UV geometry.
+  const auto original_side =
+      apmesh::quad::SnapshotSharedCurveSide(boundaries.front(), 0U);
+  auto counterparty = original_side;
+  counterparty.patch = (original_side.patch + 1U) % shared_graph.patches;
+  counterparty.traversal *= -1;
+  Require(apmesh::quad::CompareSharedCurveSides(
+              original_side, counterparty).matched,
+          "R2b2 original source curve self-pair calibration failed");
+  auto bad_xyz = counterparty;
+  bad_xyz.ordered_by_original_parameter.front().xyz[0] += 0.5 *
+      std::max(1.0, apmesh::quad::PhysicalNorm(
+          bad_xyz.ordered_by_original_parameter.front().xyz));
+  auto bad_node = counterparty;
+  ++bad_node.ordered_by_original_parameter.front().node_id;
+  auto bad_sampling = counterparty;
+  bad_sampling.ordered_by_original_parameter.pop_back();
+  auto bad_orientation = counterparty;
+  bad_orientation.traversal *= -1;
+  const bool shared_negative_controls =
+      !apmesh::quad::CompareSharedCurveSides(original_side, bad_xyz).matched &&
+      !apmesh::quad::CompareSharedCurveSides(original_side, bad_node).matched &&
+      !apmesh::quad::CompareSharedCurveSides(original_side, bad_sampling).matched &&
+      !apmesh::quad::CompareSharedCurveSides(original_side, bad_orientation).matched;
+  Require(shared_negative_controls,
+          "R2b2 real shared curve negative geometry/topology tests failed");
+  std::ostringstream shared_rejections;
+  for (const auto& entry : shared.rejection_reasons) {
+    if (shared_rejections.tellp() > 0)
+      shared_rejections << ",";
+    shared_rejections << entry.first << ":" << entry.second;
+  }
+  std::cout << "R2B2_SHARED_CURVE_MODEL"
+            << " patches=" << shared.model_patches
+            << " curves=" << shared.model_curves
+            << " shared_curves=" << shared.model_shared_curves
+            << " exterior_curves=" << shared.model_exterior_curves
+            << " nonmanifold_curves=" << shared.model_nonmanifold_curves
+            << " coherent_epoch=" << shared.epoch
+            << " coherent_retry=" << shared.retry
+            << " coherent_epoch_patches=" << shared.coherent_epoch_patches
+            << " shared_compared=" << shared.coherent_epoch_shared_curves_compared
+            << " shared_matched=" << shared.coherent_epoch_shared_curves_matched
+            << " shared_rejected=" << shared.coherent_epoch_shared_curves_rejected
+            << " shared_unobserved=" << shared.coherent_epoch_shared_curves_unobserved
+            << " shared_node_pairs=" << shared.shared_site_pairs_compared
+            << " max_shared_xyz_error=" << shared.maximum_xyz_error
+            << " repeated_source_attempts=" << shared.repeated_patch_attempts
+            << " negative_controls=" << shared_negative_controls
+            << " rejection_reasons="
+            << (shared_rejections.str().empty() ? "none" : shared_rejections.str())
+            << " physical_SubMesh_published=0"
+            << " global_mixed_model_admitted=0\n";
 
   // Outer global commit/restore decisions are not equivalent to physical QUAD.
   std::cout << "real_generator_outcomes=1 accepted_tri=" << accepted
