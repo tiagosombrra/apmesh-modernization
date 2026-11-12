@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "date_utc": "2026-11-12",
+  "stage": "R2b2 original dynamically adapted multi-patch source curve/sheet incidence audit",
+  "status": "implemented_exact_CI_and_true_counts_pending",
+  "classification": "read-only research oracle, not source-wide QUAD physical mesh",
+  "feature_sha": "017d3f6c9cf85e5f13482b62719a884a048140f6",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "pr": 214,
+  "pr_state": "draft_unmerged",
+  "production_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "changed_paths": [
+    "research/quad/shared_curve_audit.h",
+    "tests/quad/generator_outcome_probe.cpp"
+  ],
+  "previous_exact_single_chart_physical": {
+    "sha": "24349b74befb2308bb3d6202f747998def5eedd3",
+    "feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43246304785",
+    "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43246317558",
+    "qualified": "4/4 each, root 87/87 Python 527/527, native Linux/Windows 16/16, frozen TRI parity, one actual adapted chart Eistute & Book physical admitted"
+  },
+  "oracle": {
+    "graph_source": "independent original PatchReader geometry pointer-identity curve ownership across all patches",
+    "model_expected_patches": {
+      "eistute": 4,
+      "book": 28
+    },
+    "counts": [
+      "curves",
+      "shared_curves",
+      "exterior_curves",
+      "nonmanifold_curves"
+    ],
+    "selection": "one outer generator epoch/session/retry with maximal distinct patch coverage, first observed per patch for that epoch; no cross-epoch samples mixed or global acceptance inferred",
+    "data": "actual serial Adapter captured original curve parameters, source index, physical node IDs, source curve IDs, XYZ, reversed orientation and original source node that closes each side",
+    "comparisons": [
+      "original curve sample count",
+      "exact original parameter/index order",
+      "source node identity",
+      "source curve identity on comparable actual Adapter samples",
+      "physical XYZ within existing scale 2e-7",
+      "opposite directed walk"
+    ],
+    "negative_controls": [
+      "perturb actual source XYZ",
+      "perturb source node ID",
+      "remove sample",
+      "reverse required opposite traversal"
+    ],
+    "classification": "matched/rejected/unobserved per true shared source curve; valence >2 unresolved global sheet policy even if source XYZ pairs agree",
+    "output_marker": "R2B2_SHARED_CURVE_MODEL",
+    "full_model_hybrid_admitted": false
+  },
+  "ci": {
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43254280934",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43254298335",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "native_linux": "16/16 pass",
+    "native_windows": "16/16 pass",
+    "frozen_tri": "pass",
+    "root_ctest": "pending",
+    "python": "pending",
+    "measured_source_incidence": "pending"
+  },
+  "pending": [
+    "independently verify exact CI 4/4 and verbose per-model shared curve counts",
+    "all real patch original AFT run and physical XYZ not attempted",
+    "atomic physical mixed four-node SubMesh publication/rollback not implemented",
+    "actual nonmanifold curve sheet policy not decided",
+    "historical fourth-consecutive in-process memory defect ASan/UBSan not qualified",
+    "historical 1993 point rule not advisor approved",
+    "quad_uv CLI remains disabled"
+  ],
+  "next": "read exact CI and true external model interface counts, classify source/research gate if failed, then adapt full patch physical AFT tests before R2c"
+}
