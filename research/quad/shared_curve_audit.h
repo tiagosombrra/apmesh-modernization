@@ -171,14 +171,16 @@ struct SharedCurveComparison {
 };
 
 inline SharedCurveComparison CompareSharedCurveSides(
-    const SharedCurveSide& a, const SharedCurveSide& b) {
+    const SharedCurveSide& a, const SharedCurveSide& b,
+    bool require_opposite_orientation = true) {
   SharedCurveComparison result;
   if (a.patch == b.patch) { result.reason = "same_patch"; return result; }
   if (a.curve_id != b.curve_id) {
     result.reason = "curve_identity"; return result;
   }
   if (a.traversal == 0 || b.traversal == 0 ||
-      a.traversal != -b.traversal) {
+      (require_opposite_orientation &&
+       a.traversal != -b.traversal)) {
     result.reason = "orientation"; return result;
   }
   if (a.ordered_by_original_parameter.size() !=
@@ -226,6 +228,11 @@ struct SharedCurveModelAudit {
   std::size_t coherent_epoch_shared_curves_matched = 0;
   std::size_t coherent_epoch_shared_curves_rejected = 0;
   std::size_t coherent_epoch_shared_curves_unobserved = 0;
+  std::size_t coherent_epoch_shared_curves_geometry_matched = 0;
+  std::size_t coherent_epoch_shared_curves_geometry_rejected = 0;
+  std::size_t coherent_epoch_sheet_policy_pending = 0;
+  std::size_t shared_same_orientation_pairs = 0;
+  std::size_t shared_opposite_orientation_pairs = 0;
   std::size_t shared_site_pairs_compared = 0;
   std::size_t repeated_patch_attempts = 0;
   std::uint64_t epoch = 0;
@@ -297,24 +304,48 @@ inline SharedCurveModelAudit AuditCoherentAdapterSharedCurves(
       continue;
     }
     ++result.coherent_epoch_shared_curves_compared;
-    bool matched = actual.size() == group.size() && group.size() == 2U;
-    if (!matched)
-      ++result.rejection_reasons[
-          group.size() > 2U ? "nonmanifold_sheet_policy" :
-                              "incomplete_curve_incidence"];
+    // A multi-sheet curve cannot have pairwise opposing traversal for every
+    // incident patch when valence > 2. First audit source node/parameter/XYZ
+    // equivalence for ALL curve incidences WITHOUT imposing a sheet pairing.
+    // Only a valence-2 incidence may be admitted as one opposing seam here.
+    bool geometry_matched = actual.size() == group.size();
+    bool sheet_matched = geometry_matched && group.size() == 2U;
+    if (group.size() > 2U) {
+      ++result.coherent_epoch_sheet_policy_pending;
+      ++result.rejection_reasons["nonmanifold_sheet_policy"];
+    }
+    if (actual.size() != group.size()) {
+      ++result.rejection_reasons["incomplete_curve_incidence"];
+    }
     for (std::size_t i = 0; i < actual.size(); ++i) {
       for (std::size_t j = i + 1U; j < actual.size(); ++j) {
-        const auto compare = CompareSharedCurveSides(actual[i], actual[j]);
+        const auto compare = CompareSharedCurveSides(
+            actual[i], actual[j], false);
         result.shared_site_pairs_compared += compare.compared_sites;
         result.maximum_xyz_error = std::max(
             result.maximum_xyz_error, compare.maximum_xyz_error);
         if (!compare.matched) {
-          matched = false;
+          geometry_matched = false;
+          sheet_matched = false;
           ++result.rejection_reasons[compare.reason];
+        }
+        if (actual[i].traversal == -actual[j].traversal) {
+          ++result.shared_opposite_orientation_pairs;
+        } else {
+          ++result.shared_same_orientation_pairs;
+          // This is a sheet seam failure only for an otherwise two-sided edge.
+          if (group.size() == 2U) {
+            sheet_matched = false;
+            ++result.rejection_reasons["orientation"];
+          }
         }
       }
     }
-    if (matched) ++result.coherent_epoch_shared_curves_matched;
+    if (geometry_matched)
+      ++result.coherent_epoch_shared_curves_geometry_matched;
+    else
+      ++result.coherent_epoch_shared_curves_geometry_rejected;
+    if (sheet_matched) ++result.coherent_epoch_shared_curves_matched;
     else ++result.coherent_epoch_shared_curves_rejected;
   }
   return result;

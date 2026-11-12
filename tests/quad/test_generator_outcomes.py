@@ -67,20 +67,27 @@ def run(executable: Path, root: Path, model: str) -> None:
         required = (
             "patches", "shared_curves", "coherent_epoch_patches",
             "shared_compared", "shared_matched", "shared_rejected",
-            "shared_unobserved", "negative_controls",
-            "global_mixed_model_admitted",
+            "shared_unobserved", "shared_geometry_matched",
+            "shared_geometry_rejected", "sheet_policy_pending",
+            "same_orientation_pairs", "opposite_orientation_pairs",
+            "negative_controls", "global_mixed_model_admitted",
         )
         if any(field not in fields for field in required):
             raise AssertionError(f"Missing source interface evidence: {shared[0]!r}")
         compared = int(fields["shared_compared"])
         matched = int(fields["shared_matched"])
         rejected = int(fields["shared_rejected"])
+        geometry_matched = int(fields["shared_geometry_matched"])
+        geometry_rejected = int(fields["shared_geometry_rejected"])
         if not (
             int(fields["patches"]) == expected_patches
             and int(fields["shared_curves"]) > 0
             and int(fields["coherent_epoch_patches"]) > 1
             and compared > 0
             and matched + rejected == compared
+            and geometry_matched + geometry_rejected == compared
+            and (int(fields["same_orientation_pairs"])
+                 + int(fields["opposite_orientation_pairs"])) > 0
             and int(fields["negative_controls"]) == 1
             and int(fields["global_mixed_model_admitted"]) == 0
         ):

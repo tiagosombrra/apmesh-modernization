@@ -479,6 +479,9 @@ int Run(const std::string& config_path) {
               shared.coherent_epoch_shared_curves_compared > 0U &&
               shared.coherent_epoch_shared_curves_matched +
                   shared.coherent_epoch_shared_curves_rejected ==
+                  shared.coherent_epoch_shared_curves_compared &&
+              shared.coherent_epoch_shared_curves_geometry_matched +
+                  shared.coherent_epoch_shared_curves_geometry_rejected ==
                   shared.coherent_epoch_shared_curves_compared,
           "R2b2 no real same-epoch shared curve interfaces were audited");
 
@@ -507,8 +510,10 @@ int Run(const std::string& config_path) {
       !apmesh::quad::CompareSharedCurveSides(original_side, bad_node).matched &&
       !apmesh::quad::CompareSharedCurveSides(original_side, bad_sampling).matched &&
       !apmesh::quad::CompareSharedCurveSides(original_side, bad_orientation).matched;
-  Require(shared_negative_controls,
-          "R2b2 real shared curve negative geometry/topology tests failed");
+  Require(shared_negative_controls &&
+              apmesh::quad::CompareSharedCurveSides(
+                  original_side, bad_orientation, false).matched,
+          "R2b2 real source geometry and multi-sheet orientation controls failed");
   std::ostringstream shared_rejections;
   for (const auto& entry : shared.rejection_reasons) {
     if (shared_rejections.tellp() > 0)
@@ -528,6 +533,13 @@ int Run(const std::string& config_path) {
             << " shared_matched=" << shared.coherent_epoch_shared_curves_matched
             << " shared_rejected=" << shared.coherent_epoch_shared_curves_rejected
             << " shared_unobserved=" << shared.coherent_epoch_shared_curves_unobserved
+            << " shared_geometry_matched="
+            << shared.coherent_epoch_shared_curves_geometry_matched
+            << " shared_geometry_rejected="
+            << shared.coherent_epoch_shared_curves_geometry_rejected
+            << " sheet_policy_pending=" << shared.coherent_epoch_sheet_policy_pending
+            << " same_orientation_pairs=" << shared.shared_same_orientation_pairs
+            << " opposite_orientation_pairs=" << shared.shared_opposite_orientation_pairs
             << " shared_node_pairs=" << shared.shared_site_pairs_compared
             << " max_shared_xyz_error=" << shared.maximum_xyz_error
             << " repeated_source_attempts=" << shared.repeated_patch_attempts
