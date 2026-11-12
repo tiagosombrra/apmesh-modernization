@@ -6,7 +6,7 @@
   "production_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "research_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
-  "candidate_sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
+  "candidate_sha": "8b0a774f463ce450aedeee216d978965428ef481",
   "paths_changed": [
     "research/quad/adapter_capture.h",
     "src/adapter/adapter.cpp",
@@ -40,6 +40,16 @@
       "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43196178948",
       "root": "failed before jobs because workflow content was accidentally duplicated by JS string replacement using literal $' regex anchor; repaired to exact original plus a bounded new CI step",
       "not_tested": true
+    },
+    {
+      "sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43197078482",
+      "root": "86/87 PASS; `quad.adapter.real_boundary_abort` SIGSEGV after correctly catching pre-tree exception due unconditional `snapshots.front()` on an empty snapshot vector",
+      "native_linux": "16/16 PASS",
+      "native_windows": "16/16 PASS",
+      "frozen_tri": "PASS",
+      "real_generator_eistute_and_book": "PASS",
+      "model_bezier": "PASS"
     }
   ],
   "repairs": [
@@ -50,18 +60,24 @@
     {
       "sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
       "change": "Join actual boundaries to refined tree by synchronous callback chronology instead of invalid logical-key uniqueness; isolate pre-tree fault test as a dedicated native CTest process, retaining the original 3-case process; register test with true root CMake hash and first-party adapter source SHA"
+    },
+    {
+      "sha": "8b0a774f463ce450aedeee216d978965428ef481",
+      "change": "Guard snapshots.front() after pre-tree intentional callback abort, require zero refined snapshots only in the isolated negative test; preserve original positive 3-case path"
     }
   ],
   "current_gate": {
-    "sha": "3330e0ed9dfa771ad2c38813697ba7b0fa7b83c7",
-    "status": "pending live CI",
+    "sha": "8b0a774f463ce450aedeee216d978965428ef481",
+    "status": "3/4 native and frozen TRI successful, root pending",
+    "feature_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198429209",
+    "pr_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43198438695",
     "required": [
-      "native Linux QUAD (16)",
-      "native Windows QUAD (16)",
-      "root Linux CTest (87 expected) including 1 new pre-tree abort and real Generator Eistute/Book",
-      "527 Python tooling",
-      "frozen TRI Eistute/Book",
-      "R2b2 mapped and rejected source patch count artifact"
+      "4/4 exact feature and PR",
+      "root CTest 87/87",
+      "527 Python",
+      "16/16 Linux GCC, 16/16 Windows MSVC",
+      "frozen TRI Eistute and Book",
+      "per-model R2B2_SOURCE_MODEL maps/rejects"
     ]
   },
   "known_open": [
@@ -69,12 +85,14 @@
     "True physical QUAD/TRI publication from matched original Adapter curves is not implemented",
     "AFT real full-source refined tree and original output are not yet joined to an OwnedQuadAftFront in the same attempt",
     "All Eistute/Book patches physical acceptance and scientific 1993 rule not qualified",
-    "Repeated mixed adaptation and multi-sheet geometry not qualified"
+    "Repeated mixed adaptation and multi-sheet geometry not qualified",
+    "Fourth consecutive test fixture segfault from 7797b8b2 unresolved; 8b0a fix only explains separate empty snapshot negative probe crash"
   ],
   "recorded_tests": {
     "predecessor_c103": "feature+PR SUCCESS 4/4, native Linux/MSVC 16/16, root 86/86, Python 527/527, frozen TRI pass",
     "current_feature": "unverified as of checkpoint"
   },
   "merge_status": "PR draft/unmerged",
-  "next": "Check exact feature and PR CI for 3330e0ed; correct any new reproduced failures. Inspect verbose real source per-model acceptance logs. Then pass actual Adapter value-contour into a research OwnedQuadAftFront on equivalent real refined Quadtree and test true curve sample continuity. Do not enable R2c or CLI without owned physical transaction and full models."
+  "next": "Check exact feature and PR CI for 3330e0ed; correct any new reproduced failures. Inspect verbose real source per-model acceptance logs. Then pass actual Adapter value-contour into a research OwnedQuadAftFront on equivalent real refined Quadtree and test true curve sample continuity. Do not enable R2c or CLI without owned physical transaction and full models.",
+  "status": "R2B2_LIVE_ADAPTER_BOUNDARY_SOURCE_GUARDED_ABORT_EXACT_CI_PENDING"
 }
