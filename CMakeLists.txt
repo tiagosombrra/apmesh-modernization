@@ -353,7 +353,12 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   # M3-6c: execute the real GeneratorAdaptive with research hooks enabled.
   add_executable(quad_generator_outcome_probe
     tests/quad/generator_outcome_probe.cpp
-    research/quad/source_tree_replay.cpp)
+    research/quad/source_tree_replay.cpp
+    research/quad/uv_mesh.cpp
+    research/quad/quadtree_quad.cpp
+    research/quad/interior_template_dispatch.cpp
+    research/quad/front_interface_audit.cpp
+    research/quad/owned_aft_front.cpp)
   target_include_directories(quad_generator_outcome_probe PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
   target_link_libraries(quad_generator_outcome_probe PRIVATE ap_mesh_engine)

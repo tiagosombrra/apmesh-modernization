@@ -3,11 +3,16 @@
 #include "timer/timer.h"
 #include "adapter_capture.h"
 #include "source_tree_replay.h"
+#include "interior_template_dispatch.h"
+#include "front_interface_audit.h"
+#include "owned_aft_front.h"
 
 #include <cstdint>
 #include <iostream>
 #include <map>
+#include <memory>
 #include <set>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <tuple>
@@ -27,6 +32,90 @@ void Require(bool valid, const char* message) {
   if (!valid) {
     throw std::runtime_error(message);
   }
+}
+
+
+// A bounded research diagnostic that executes the ORIGINAL exterior AFT on
+// an independently owned clone of the ORIGINAL adapted model Quadtree.
+// The result is explicitly classified; a rejected candidate is not a pass
+// for physical QUAD admission, even if the regression CTest itself passes.
+struct DynamicSourceAftWitness {
+  bool attempted = false;
+  bool admitted = false;
+  std::size_t source_sites = 0;
+  std::size_t source_leaves = 0;
+  std::size_t quad_faces = 0;
+  std::size_t exterior_triangles = 0;
+  std::string rejection;
+};
+
+DynamicSourceAftWitness ProbeNativeAftOnAdaptedSource(
+    Par2DJMesh::AFT::Quadtree& source,
+    const apmesh::quad::AdapterBoundaryCapture& contour) {
+  using apmesh::quad::InteriorTemplateMode;
+  using apmesh::quad::InteriorTemplateDispatcher;
+  using apmesh::quad::OwnedQuadAftFront;
+  auto legacy = apmesh::quad::ReplayNativeSourceTree(source, contour);
+  auto candidate = apmesh::quad::ReplayNativeSourceTree(source, contour);
+  DynamicSourceAftWitness result;
+  result.attempted = true;
+  result.source_sites = contour.vertices.size();
+  result.source_leaves = source.GetLeafCount();
+
+  try {
+    Require(legacy.owned_tree != nullptr && candidate.owned_tree != nullptr,
+            "R2b2 real source has no research-owned Quadtree");
+    Require(legacy.owned_tree->makeTemplateBasedMesh() ==
+                Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
+            "R2b2 original TRI template reference could not initialize");
+    const auto original_front =
+        apmesh::quad::SnapshotLegacyFront(*legacy.owned_tree);
+    InteriorTemplateDispatcher selector(*candidate.owned_tree);
+    const auto select = selector.Select(
+        InteriorTemplateMode::ExperimentalQuad,
+        [](const apmesh::quad::LeafPolygonOrigin&,
+           const std::vector<apmesh::quad::UvVertex>& polygon) {
+          apmesh::quad::UvVertex center{};
+          for (const auto& site : polygon) {
+            center.u += site.u;
+            center.v += site.v;
+          }
+          center.u /= static_cast<double>(polygon.size());
+          center.v /= static_cast<double>(polygon.size());
+          return center;
+        });
+    result.quad_faces = select.uv_quads.quads.size();
+    auto* tree = candidate.owned_tree.get();
+    auto aft = std::make_unique<OwnedQuadAftFront>(tree->getBoundary(), tree);
+    candidate.owned_tree.release();
+    const auto seeded = aft->Seed(select, original_front);
+    Require(seeded.patch_boundary_edges == contour.vertices.size() &&
+                seeded.quad_interface_edges > 0 &&
+                !seeded.physical_quads_published,
+            "R2b2 real adapted AFT seed lost original physical curve perimeter");
+    const auto geometry = aft->AttemptExteriorTriangulation(select);
+    result.exterior_triangles = geometry.exterior_triangles;
+    Require(geometry.exterior_triangles > 0 &&
+                geometry.front_drained &&
+                geometry.triangles_positive &&
+                geometry.seam_orientation_complete &&
+                geometry.seam_vertices_unchanged &&
+                geometry.uv_area_balanced &&
+                geometry.spatial_overlap_tested &&
+                geometry.no_spatial_overlap,
+            "R2b2 real adapted exterior AFT did not meet all strict UV gates");
+    result.admitted = true;
+  } catch (const std::exception& error) {
+    // This is a measured scientific rejection, not a passing hybrid mesh.
+    // Every candidate owner is discarded on this path, including partial AFT.
+    result.rejection = error.what();
+  }
+
+  Require(source.GetTemplateFaces().empty() &&
+              source.GetTemplateEdges().empty() &&
+              source.GetFrontEdges().empty(),
+          "R2b2 candidate AFT mutated its original in-flight TRI source");
+  return result;
 }
 
 Key OuterKey(const apmesh::quad::OuterAttemptIdentity& outer) {
@@ -56,6 +145,8 @@ int Run(const std::string& config_path) {
   std::size_t replayed_adapted_boundary_sites = 0;
   std::size_t replayed_actual_source_leaves = 0;
   bool corrupt_source_replay_rejected = false;
+  DynamicSourceAftWitness real_source_aft;
+  bool source_aft_observed = false;
   // The original generator can revisit a logical patch/retry identity.
   // Chronological callback order, not a uniqueness assumption, joins the
   // actual source boundary to its one refined Quadtree observation.
@@ -105,6 +196,8 @@ int Run(const std::string& config_path) {
       Require(tree.GetFrontEdges().empty() &&
                   tree.GetTemplateFaces().empty(),
               "Native QUAD source replay published into the original TRI Quadtree");
+      real_source_aft = ProbeNativeAftOnAdaptedSource(tree, source_boundary);
+      source_aft_observed = real_source_aft.attempted;
       replayed_adapted_boundary_sites += source_boundary.vertices.size();
       replayed_actual_source_leaves += replay.replayed_leaves;
       ++replayed_actual_source_trees;
@@ -228,8 +321,10 @@ int Run(const std::string& config_path) {
   Require(replayed_actual_source_trees == 1 &&
               replayed_adapted_boundary_sites > 4U &&
               replayed_actual_source_leaves > 0 &&
-              corrupt_source_replay_rejected,
-          "Real Eistute/Book adapted source tree replay was not independently qualified");
+              corrupt_source_replay_rejected && source_aft_observed &&
+              real_source_aft.source_sites == replayed_adapted_boundary_sites &&
+              real_source_aft.source_leaves == replayed_actual_source_leaves,
+          "Real Eistute/Book adapted source tree/AFT diagnostic was not attempted");
   Require(!locally_selected.empty(),
           "Real generator did not emit any local Adapter selections");
   std::set<Key> uv_keys;
@@ -262,6 +357,14 @@ int Run(const std::string& config_path) {
             << " original_source_trees_replayed=" << replayed_actual_source_trees
             << " original_adapted_boundary_sites=" << replayed_adapted_boundary_sites
             << " original_source_leaves_replayed=" << replayed_actual_source_leaves
+            << " dynamic_source_aft_attempted=" << source_aft_observed
+            << " dynamic_source_aft_admitted=" << real_source_aft.admitted
+            << " dynamic_source_aft_quad_faces=" << real_source_aft.quad_faces
+            << " dynamic_source_aft_exterior_triangles="
+            << real_source_aft.exterior_triangles
+            << " dynamic_source_aft_rejection="
+            << (real_source_aft.rejection.empty() ? "none" :
+                real_source_aft.rejection)
             << " negative_replay_corruption_rejected="
             << corrupt_source_replay_rejected
             << " local_selected=" << locally_selected.size()

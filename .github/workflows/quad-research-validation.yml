@@ -159,6 +159,20 @@ jobs:
           path: build/local-serial/quad_r2b2_source_admission.log
           if-no-files-found: error
           retention-days: 14
+      - name: Record true Adapter dynamically curved original AFT trial
+        shell: bash
+        run: |
+          # This repeats two already required CTests verbosely to retain the
+          # original AFT admission/rejection and unmodified TRI outcome trace.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]generator[.]real_global_outcomes([.]book)?$' --no-tests=error | tee build/local-serial/quad_dynamic_source_aft.log
+      - name: Retain original Adapter dynamic source AFT diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2b2-actual-source-aft-${{ github.sha }}
+          path: build/local-serial/quad_dynamic_source_aft.log
+          if-no-files-found: error
+          retention-days: 14
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
