@@ -376,7 +376,44 @@ int main() {
                 result.overlap_area > 0.0,
             "Positive-area TRI/QUAD overlap was missed");
     });
-    Check(accepted == 19, "R2b/R2b2 native diagnostic controls were skipped");
+    run("r2b2-refined-20-split-interface-complete", [] {
+      auto s = Make(true);
+      CheckSeed(s, 20, 4);
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        s.aft->getQuadtree()->findCell(edge);
+      const auto result = s.aft->AttemptExteriorTriangulation(s.selected);
+      std::cout << "R2B2_REFINED exterior_triangles=" << result.exterior_triangles
+                << " seam=" << result.seam_edges_with_one_tri
+                << " expected=20"
+                << " area_tri=" << result.triangle_uv_area
+                << " overlap_area=" << result.cumulative_overlap_area << '\n';
+      Check(result.exterior_triangles > 0 && result.front_drained &&
+                result.triangles_positive && result.seam_orientation_complete &&
+                result.seam_edges_with_one_tri == 20 &&
+                result.seam_vertices_unchanged && result.uv_area_balanced &&
+                result.spatial_overlap_tested && result.no_spatial_overlap,
+            "Refined QUAD interface did not complete with correct TRI exterior");
+    });
+    run("r2b2-nonuniform-eight-point-contour-complete", [] {
+      auto s = Make(false, false, true);
+      CheckSeed(s, 16, 8);
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        s.aft->getQuadtree()->findCell(edge);
+      const auto result = s.aft->AttemptExteriorTriangulation(s.selected);
+      std::cout << "R2B2_NONUNIFORM exterior_triangles=" << result.exterior_triangles
+                << " seam=" << result.seam_edges_with_one_tri
+                << " expected=16"
+                << " area_patch=" << result.boundary_uv_area
+                << " area_tri=" << result.triangle_uv_area
+                << " overlap_area=" << result.cumulative_overlap_area << '\n';
+      Check(result.exterior_triangles > 0 && result.front_drained &&
+                result.triangles_positive && result.seam_orientation_complete &&
+                result.seam_edges_with_one_tri == 16 &&
+                result.seam_vertices_unchanged && result.uv_area_balanced &&
+                result.spatial_overlap_tested && result.no_spatial_overlap,
+            "Nonuniform source patch boundary did not complete with TRI exterior");
+    });
+    Check(accepted == 21, "R2b/R2b2 native diagnostic controls were skipped");
     std::cout << "r2b_owned_aft_front=ok outcomes=" << accepted
               << " native_quadtree_and_boundary=1"
               << " aft_active_real_edges=1"
