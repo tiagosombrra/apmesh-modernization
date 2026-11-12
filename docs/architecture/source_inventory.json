@@ -3723,8 +3723,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "bd31eeb99a23814b60aa54d362e9f40c2f3027741e044261d3b22bf5f96dc121",
-      "bytes": 77574,
+      "sha256": "0d0c4db0e0caf6297006209d96e673ae8fab156141c0877e04cdc1ded8212f16",
+      "bytes": 78045,
       "includes": [
         {
           "line": 1,
