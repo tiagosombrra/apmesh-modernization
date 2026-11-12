@@ -2,16 +2,17 @@
   "schema": 1,
   "date_utc": "2026-11-12",
   "stage": "R2b2 original dynamically adapted multi-patch source curve/sheet incidence audit",
-  "status": "implemented_exact_CI_and_true_counts_pending",
+  "status": "TRUE_MODEL_JUNCTION_HIGH_VALENCE_CONFIRMED_GEOMETRIC_EQUIVALENCE_SEPARATED_FROM_SHEET_POLICY_PENDING",
   "classification": "read-only research oracle, not source-wide QUAD physical mesh",
-  "feature_sha": "017d3f6c9cf85e5f13482b62719a884a048140f6",
+  "feature_sha": "1535b51ee42d19a406effbea36570514c4641bfb",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "pr": 214,
   "pr_state": "draft_unmerged",
   "production_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "changed_paths": [
     "research/quad/shared_curve_audit.h",
-    "tests/quad/generator_outcome_probe.cpp"
+    "tests/quad/generator_outcome_probe.cpp",
+    "tests/quad/test_generator_outcomes.py"
   ],
   "previous_exact_single_chart_physical": {
     "sha": "24349b74befb2308bb3d6202f747998def5eedd3",
@@ -53,21 +54,21 @@
   },
   "ci": {
     "feature": {
-      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43254280934",
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43257927657",
       "status": "in_progress",
       "conclusion": null
     },
     "pr": {
-      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43254298335",
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43257943351",
       "status": "in_progress",
       "conclusion": null
     },
-    "native_linux": "16/16 pass",
-    "native_windows": "16/16 pass",
-    "frozen_tri": "pass",
+    "geometric_source_samples": "pending",
+    "all_incidence_geometry_matching": "unverified",
+    "native_quad": "pending",
     "root_ctest": "pending",
     "python": "pending",
-    "measured_source_incidence": "pending"
+    "frozen_tri": "pending"
   },
   "pending": [
     "independently verify exact CI 4/4 and verbose per-model shared curve counts",
@@ -78,5 +79,63 @@
     "historical 1993 point rule not advisor approved",
     "quad_uv CLI remains disabled"
   ],
-  "next": "read exact CI and true external model interface counts, classify source/research gate if failed, then adapt full patch physical AFT tests before R2c"
+  "next": "verify exact 1535 source 4/4 and geometry matches, then audit real per-sheet physical junction sector pairing and all-patch QUAD AFT; no global welding or R2c publication before independent approval",
+  "measured_previous_true_source_topology": {
+    "source_sha": "5952a0ea6acfa408e352dc82cb36c68a6d98d7d7",
+    "feature": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43256219375",
+      "jobs": "4/4",
+      "conclusion": "success"
+    },
+    "pr": {
+      "url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43256234958",
+      "jobs": "4/4",
+      "conclusion": "success"
+    },
+    "root_ctest": "87/87",
+    "python": "527/527",
+    "native_linux_windows_quad": "16/16 each",
+    "frozen_tri": "passed",
+    "eistute": {
+      "model_patches": 4,
+      "distinct_curves": 13,
+      "exterior_curves": 12,
+      "shared_curves": 1,
+      "central_shared_curve_valence": 4,
+      "coherent_epoch": 1,
+      "coherent_retry": 0,
+      "coherent_epoch_patches": 4,
+      "naive_pairwise_orientation_rejects": 6,
+      "geometrical_source_node_pairs_compared": 0,
+      "negative_controls": "4/4",
+      "interpretation": "all pairs cannot have opposite winding for valence 4; no XYZ geometry measured by original early orientation oracle"
+    },
+    "book": {
+      "model_patches": 28,
+      "distinct_curves": 85,
+      "exterior_curves": 84,
+      "shared_curves": 1,
+      "central_shared_curve_valence": 28,
+      "coherent_epoch": 1,
+      "coherent_retry": 0,
+      "coherent_epoch_patches": 28,
+      "naive_pairwise_orientation_rejects": 378,
+      "geometrical_source_node_pairs_compared": 0,
+      "negative_controls": "4/4",
+      "interpretation": "all pairs cannot have opposite winding for valence 28; no XYZ geometry measured by original early orientation oracle"
+    }
+  },
+  "oracle_correction": {
+    "cause": "earlier naive pairwise opposite winding constraint applied to high-valence curve before inspecting any geometry",
+    "fix": "compare ALL source samples in original canonical curve frame without orientation constraint, track geometry matched/rejected independently, strict orientation only on actual 2-sided manifold edges; mark valence>2 sheet pairing undecided",
+    "output_fields": [
+      "shared_geometry_matched",
+      "shared_geometry_rejected",
+      "sheet_policy_pending",
+      "same_orientation_pairs",
+      "opposite_orientation_pairs",
+      "shared_node_pairs"
+    ],
+    "negative_controls": "bad direction must reject strict two-sided seam while geometry-only equal candidate passes"
+  }
 }
