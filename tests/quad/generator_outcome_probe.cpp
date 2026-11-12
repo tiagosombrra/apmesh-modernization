@@ -828,8 +828,18 @@ int Run(const std::string& config_path) {
   } catch (const std::invalid_argument&) {
     invalid_interval_rejected = true;
   }
+  const auto wide_control_polynomial =
+      apmesh::quad::interval::OrientationPolynomial(
+          tangent_control, first_control, reversed_control);
+  auto wide_expected_sign = wide_control_polynomial;
+  for (auto& coefficient : wide_expected_sign)
+    coefficient = apmesh::quad::interval::Negate(coefficient);
+  const auto wide_admitted =
+      apmesh::quad::interval::CertifyPositive(
+          wide_expected_sign, 0.0, 1.0, 8U).strictly_positive;
   const bool interval_negative_controls =
       certify(positive_control).strictly_positive &&
+      wide_admitted &&
       !certify(reversed_control).strictly_positive &&
       !certify(collapsed_control).strictly_positive &&
       !certify(hidden_crossing_control).strictly_positive &&
