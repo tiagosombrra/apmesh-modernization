@@ -1,0 +1,73 @@
+{
+  "schema": "apmesh.quad.r2c19.native_original_generator_accepted_tri_quality_and_book_joint_aft_source_v1",
+  "date_utc": "2026-11-13",
+  "status": "EXPERIMENT_COMMITTED_EXACT_CI_PENDING_NOT_SCIENTIFICALLY_FULLY_QUALIFIED",
+  "pr_number": 214,
+  "feature_head": "61abad7c1ebe21fbe38360fbc8bfd061426b2c4e",
+  "run_id": 43520477471,
+  "qualified_r2c18_reference": {
+    "run_id": 43518589990,
+    "artifact_id": 14081183906,
+    "conclusion": "success",
+    "jobs": "4/4",
+    "root_ctest": "89/89",
+    "python": "527/527",
+    "gcc_quad": "16/16",
+    "msvc_quad": "16/16",
+    "TRI_science_parity": "PASS",
+    "eistute_original_generator_accepted_steps": [
+      1,
+      2,
+      4
+    ],
+    "eistute_outer_epoch_ids": [
+      1,
+      2,
+      5
+    ],
+    "eistute_restored_steps": 1,
+    "book_original_generator_accepted_steps": [
+      1
+    ],
+    "book_restored_steps": 2
+  },
+  "code": [
+    "tests/quad/test_r2c19_original_accepted_quality_book_joint_recovery.py",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "research_scopes": [
+    "Independently parse the three actual Eistute original source accepted acceptance.log and patch_adaptation_accepted.csv, require original source SHA-backed 13 curves and 4 patches and positive minimum 3D/UV native committed TRI quality for each source step",
+    "Explicitly report Eistute non-monotone global error (source step2 error increased by about 20.45%), and acknowledge no independent per-face area scan yet",
+    "Repeat entire Eistute source experiment in a second complete exact-source GitHub Actions native job, independently from prior R2c18 run; reference original unchanged GenerationContext and original .bp SHA",
+    "Test Book two AFT joint-control sensitivities (passes 4 + quality selection target 0.80; passes 8 + target 0.80); two knobs and no one-variable causal claim",
+    "Verify original model-wide actual accepted GeneratorAdaptive commits and source curve/patch/incidence SHA logs, no artificial acceptance from local Adapter attempts",
+    "Freeze original production TRI, original model bytes, original scientific acceptance thresholds, rollback and nonmanifold M6 sheet owner policy"
+  ],
+  "expected_native_marker": "R2C19_ACCEPTED_TRI_FACE_QUALITY_AND_BOOK_JOINT_RECOVERY",
+  "expected_artifact": "r2c19_original_accepted_tri_quality_book_joint_recovery.json plus original accepted Eistute TRI acceptance/patch records and Book real domain attempts",
+  "preliminary_eistute_original_step_summaries": {
+    "step1": {
+      "elements": 1168,
+      "error_global": 0.0636432,
+      "quality_min": 0.184411
+    },
+    "step2": {
+      "elements": 2008,
+      "error_global": 0.0766612,
+      "quality_min": 0.167252,
+      "global_error_worsening_fraction": 0.204546
+    },
+    "step4": {
+      "elements": 4032,
+      "error_global": 0.0588399,
+      "quality_min": 0.208604,
+      "quality_mean": 0.6974
+    },
+    "caution": "True accepted source epochs do not prove monotone global error, optimal efficiency, individual triangle 3D area scans or a globally connected physical QUAD/AFT mesh"
+  },
+  "actual_r2c19_results": null,
+  "original_eistute_two_plus_generator_epochs_previously_observed": true,
+  "original_book_two_plus_generator_epochs_verified": false,
+  "original_global_connected_QUAD_AFT_approved": false,
+  "next_action": "Observe exact CI #43520477471 including full Eistute per-accepted native TRI 3D/UV quality and Book two-knob results. If Book remains at one accepted epoch, use real Book original Adapter min physical quality to design minimal opt-in source-side quality repair without relaxing acceptance or welding."
+}
