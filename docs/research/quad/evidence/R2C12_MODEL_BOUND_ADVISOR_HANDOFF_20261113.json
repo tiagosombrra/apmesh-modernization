@@ -43,11 +43,13 @@
     "r2c12_book_advisor_handoff.json",
     "r2c12_handoff_manifest.json"
   ],
-  "ci_id": null,
+  "ci_id": 43499503532,
   "artifacts": [],
   "certified": false,
   "scientific_admission": false,
   "physical_node_welding": false,
   "advisor_approval": null,
-  "next_action": "Inspect exact native CI and any failure of source curve ID / high-valence radial membership; refine only evidence identity interpretation with no relaxed source/quality/ownership gate. Obtain actual advisor decisions separately."
+  "next_action": "Inspect exact native CI and any failure of source curve ID / high-valence radial membership; refine only evidence identity interpretation with no relaxed source/quality/ownership gate. Obtain actual advisor decisions separately.",
+  "ci_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43499503532",
+  "sci_scope": "Original R2c0/R2c1 GeneratorAdaptive radial certificate and R2c11 original physical two-pass Adapter source use independently sampled original curve partitions; same source curve/patch incidence is not cross-epoch node identity."
 }
