@@ -12,6 +12,7 @@
 #include "crab_mesh/performer/ranged_id_manager.h"
 #include "generator/curve_publication.h"
 #include "generator/curve_sample_lifetime.h"
+#include "generator/curve_sample_graph.h"
 #include "generator/initial_mesh.h"
 #include "data/patch/patch_bezier.h"
 #include "input_output/patch_reader.h"
@@ -1586,6 +1587,388 @@ void RunNativeOriginalSharedCurveAdaptation(const std::string& model,
             << " global_mesh_publication=0\n";
 }
 
+// R2c-6: a separate, original, complete-model serial two-pass source curve
+// sweep. This uses the production graph transaction, but does NOT claim the
+// generator's budget/target policy or complete accepted AdaptDomain epoch.
+struct AllCurveIncidenceSnapshot {
+  unsigned patch_id = 0;
+  unsigned side = 0;
+  unsigned long curve_id = 0UL;
+  bool reversed = false;
+  std::vector<NativeAdaptedSite> canonical_source_sites;
+};
+
+std::vector<NativeAdaptedSite> SnapshotAnyOriginalSourceCurve(
+    CurveAdaptiveParametric& curve) {
+  const std::vector<double> parameters(
+      curve.parameters_.begin(), curve.parameters_.end());
+  const auto& nodes = curve.GetPoints();
+  Require(parameters.size() == nodes.size() && parameters.size() >= 2U &&
+              parameters.front() == 0.0 && parameters.back() == 1.0,
+          "Whole-model original two-pass Adapter curve has missing endpoints");
+  std::vector<NativeAdaptedSite> result;
+  result.reserve(parameters.size());
+  std::set<unsigned long> ids;
+  auto node = nodes.begin();
+  for (unsigned i = 0; i < parameters.size(); ++i, ++node) {
+    auto* original = dynamic_cast<NodeAdaptive*>(*node);
+    Require(original != nullptr && original->GetId() != 0UL &&
+                ids.insert(original->GetId()).second &&
+                std::isfinite(parameters[i]) &&
+                (i == 0U || parameters[i] > parameters[i - 1U]),
+            "Whole-model original curve has invalid real samples or parameter order");
+    const Xyz observed = Values(*original);
+    Require(NearSource(observed,
+                       Values(curve.FindPointByParameter(parameters[i]))),
+            "Whole-model original Adapter generated an off-curve physical sample");
+    result.push_back({parameters[i], original->GetId(), observed});
+  }
+  return result;
+}
+
+void ValidateWholeModelSourceIncidence(
+    PatchBezier& patch, CurveAdaptiveParametric& source,
+    const AllCurveIncidenceSnapshot& side) {
+  Require(side.side < 4U && side.curve_id == source.GetId() &&
+              side.reversed == patch.IsCurveReversed(side.side) &&
+              patch.GetCurve(side.side) == &source,
+          "Whole-model source incidence has foreign curve or orientation metadata");
+  const auto canonical = SnapshotAnyOriginalSourceCurve(source);
+  Require(side.canonical_source_sites.size() == canonical.size(),
+          "Whole-model source incidence omitted an actual Adapter site");
+  for (unsigned i = 0; i < canonical.size(); ++i) {
+    const auto& recorded = side.canonical_source_sites[i];
+    const auto& original = canonical[i];
+    Require(recorded.parameter == original.parameter &&
+                recorded.source_node_id == original.source_node_id &&
+                NearSource(recorded.physical, original.physical),
+            "Whole-model source incidence changed a canonical source sample");
+    const double local = side.reversed
+        ? 1.0 - recorded.parameter : recorded.parameter;
+    const UvVertex uv = side.side == 0U ? UvVertex{local, 0.0}
+        : side.side == 1U ? UvVertex{1.0, local}
+        : side.side == 2U ? UvVertex{local, 1.0}
+                          : UvVertex{0.0, local};
+    Require(NearSource(recorded.physical,
+                       Values(patch.Parameterize(uv.u, uv.v))),
+            "Whole-model original patch boundary disagrees with adapted source");
+  }
+}
+
+bool SameCanonicalWholeModelSide(
+    const AllCurveIncidenceSnapshot& a,
+    const AllCurveIncidenceSnapshot& b) {
+  if (a.patch_id == b.patch_id || a.curve_id != b.curve_id ||
+      a.canonical_source_sites.size() != b.canonical_source_sites.size())
+    return false;
+  for (unsigned i = 0; i < a.canonical_source_sites.size(); ++i) {
+    const auto& left = a.canonical_source_sites[i];
+    const auto& right = b.canonical_source_sites[i];
+    if (left.parameter != right.parameter ||
+        left.source_node_id != right.source_node_id ||
+        !NearSource(left.physical, right.physical))
+      return false;
+  }
+  // Shared source identity does not imply opposite winding at valence > 2.
+  return true;
+}
+
+unsigned RejectWholeModelSourceSnapshotCorruptions(
+    PatchBezier& original_patch, CurveAdaptiveParametric& original_curve,
+    const AllCurveIncidenceSnapshot& valid) {
+  unsigned rejected = 0;
+  const auto must_reject = [&](AllCurveIncidenceSnapshot altered) {
+    bool failed = false;
+    try {
+      ValidateWholeModelSourceIncidence(
+          original_patch, original_curve, altered);
+    } catch (const std::runtime_error&) {
+      failed = true;
+    }
+    Require(failed,
+            "Invalid whole-model original source incidence escaped the oracle");
+    ++rejected;
+  };
+  auto distorted = valid;
+  distorted.canonical_source_sites.front().physical[0] += 1.0;
+  must_reject(std::move(distorted));
+  auto wrong_parameter = valid;
+  wrong_parameter.canonical_source_sites.front().parameter += 0.1;
+  must_reject(std::move(wrong_parameter));
+  auto wrong_node = valid;
+  wrong_node.canonical_source_sites.front().source_node_id += 99999UL;
+  must_reject(std::move(wrong_node));
+  auto wrong_curve = valid;
+  wrong_curve.curve_id += 99999UL;
+  must_reject(std::move(wrong_curve));
+  auto wrong_orientation = valid;
+  wrong_orientation.reversed = !wrong_orientation.reversed;
+  must_reject(std::move(wrong_orientation));
+  auto omitted = valid;
+  omitted.canonical_source_sites.pop_back();
+  must_reject(std::move(omitted));
+  return rejected;
+}
+
+struct WholeModelSourceEpochReport {
+  std::size_t original_patches = 0;
+  std::size_t original_curves = 0;
+  std::size_t original_curve_incidences = 0;
+  std::size_t shared_original_curves = 0;
+  std::size_t nonmanifold_original_curves = 0;
+  std::size_t refined_original_curves = 0;
+  std::size_t unchanged_two_endpoint_curves = 0;
+  std::size_t adapted_source_points = 0;
+  std::size_t adapted_source_intervals = 0;
+  std::size_t complete_incidence_sites = 0;
+  std::size_t complete_incidence_intervals = 0;
+  std::size_t shared_source_incidence_pairs = 0;
+  std::size_t shared_source_site_pair_comparisons = 0;
+  std::size_t shared_source_interval_pair_comparisons = 0;
+  std::size_t shared_opposite_source_traversal_pairs = 0;
+  std::size_t shared_same_source_traversal_pairs = 0;
+  std::size_t maximum_original_curve_valence = 0;
+  std::size_t corrupted_source_snapshots_rejected = 0;
+  std::size_t initial_tri_observers_preserved = 0;
+  std::size_t curves_with_curve_and_surface_pass = 0;
+};
+
+WholeModelSourceEpochReport RunWholeOriginalModelTwoPassCurveSweep(
+    const std::string& source_path, unsigned expected_patches) {
+  Geometry original;
+  PatchReader reader;
+  Require(reader.ReaderFilePatches(&original, source_path) == &original &&
+              original.GetNumberPatches() == expected_patches &&
+              original.GetNumberCurves() > 0U,
+          "Original full-model source curve sweep input was invalid");
+  const auto topology = apmesh::quad::BuildSharedCurveTopology(original);
+  Require(topology.patches == expected_patches &&
+              topology.curves == original.GetNumberCurves(),
+          "Original whole-model curve topology was modified");
+  Performer::RangedIdManager id_manager(0, 0, 100000, 100000, 2);
+  id_manager.setId(100);
+  id_manager.setId(1, 200);
+  apmesh::generation::CurveSampleLifetime lifetime(original);
+  std::vector<std::unique_ptr<SubMesh>> coarse;
+  coarse.reserve(expected_patches);
+  for (unsigned p = 0; p < expected_patches; ++p) {
+    auto* patch = dynamic_cast<PatchCoons*>(original.GetPatch(p));
+    Require(patch != nullptr,
+            "Whole-model original curve sweep contains foreign Patch type");
+    coarse.push_back(
+        apmesh::generation::BuildInitialSubMesh(patch, &id_manager));
+  }
+  std::vector<SubMesh*> accepted_coarse_tri;
+  accepted_coarse_tri.reserve(expected_patches);
+  for (unsigned p = 0; p < expected_patches; ++p) {
+    auto* patch = original.GetPatch(p);
+    Require(patch->GetSubMesh() == coarse[p].get(),
+            "Whole-model initial original coarse TRI observer was not accepted");
+    accepted_coarse_tri.push_back(patch->GetSubMesh());
+  }
+
+  for (unsigned c = 0; c < original.GetNumberCurves(); ++c) {
+    auto* curve = dynamic_cast<CurveAdaptiveParametric*>(
+        original.GetCurve(c));
+    Require(curve && curve->GetNumBerPoints() == 2U &&
+                curve->GetNumBerPatches() == topology.incidence[c].size(),
+            "Whole-model source curve was not initialized exactly once");
+    curve->UpdateParameters({0.0, 1.0});
+    curve->CalculateLengthCurve();
+    Require(std::isfinite(curve->GetLength()) && curve->GetLength() > 0.0,
+            "Original whole-model source curve length is invalid");
+  }
+
+  // The original serial sorter requires a process-local comparator scratch.
+  // Its prior contents are restored after this independent source fixture.
+  struct ScopedCurveComparatorScratch {
+    std::vector<CurveAdaptiveParametric*> saved;
+    ScopedCurveComparatorScratch() : saved(std::move(ptr_aux)) {
+      ptr_aux.resize(1U, nullptr);
+    }
+    ~ScopedCurveComparatorScratch() { ptr_aux = std::move(saved); }
+  } sort_scratch;
+
+  Adapter original_adapter;
+  WholeModelSourceEpochReport report;
+  report.original_patches = expected_patches;
+  report.original_curves = original.GetNumberCurves();
+  report.original_curve_incidences = 4U * expected_patches;
+  report.shared_original_curves = topology.shared_curves;
+  report.nonmanifold_original_curves = topology.nonmanifold_curves;
+  const std::vector<CurveAdaptiveParametric*> original_curve_pointers = [&] {
+    std::vector<CurveAdaptiveParametric*> pointers;
+    pointers.reserve(original.GetNumberCurves());
+    for (unsigned c = 0; c < original.GetNumberCurves(); ++c)
+      pointers.push_back(static_cast<CurveAdaptiveParametric*>(
+          original.GetCurve(c)));
+    return pointers;
+  }();
+  // Exactly one serial outer transaction owns the full list/parameter graph
+  // while the actual original two-pass Adapter primitives visit every curve.
+  {
+    apmesh::generation::CurveSampleGraphTransaction all_curves(&original);
+    auto& cache = all_curves.Cache();
+    for (auto* curve : original_curve_pointers) {
+      apmesh::generation::RefineCurveSamples(
+          curve, cache,
+          [&] {
+            return original_adapter.AdaptCurveByCurve(
+                curve, cache, &id_manager, 1.0);
+          },
+          [&] {
+            return original_adapter.AdaptCurveBySurface(
+                curve, cache, &id_manager, 1.0);
+          },
+          false, 0, &id_manager);
+      ++report.curves_with_curve_and_surface_pass;
+    }
+    all_curves.Commit();
+  }
+  Require(report.curves_with_curve_and_surface_pass ==
+              report.original_curves,
+          "Original full-model sweep skipped a source curve adaptation pass");
+
+  std::vector<std::vector<AllCurveIncidenceSnapshot>> incidences(
+      original.GetNumberCurves());
+  for (unsigned c = 0; c < original.GetNumberCurves(); ++c) {
+    auto* curve = original_curve_pointers[c];
+    Require(curve == original.GetCurve(c),
+            "Original whole-model curve pointer changed across adaptation");
+    const auto sites = SnapshotAnyOriginalSourceCurve(*curve);
+    report.adapted_source_points += sites.size();
+    report.adapted_source_intervals += sites.size() - 1U;
+    if (sites.size() > 2U) ++report.refined_original_curves;
+    else ++report.unchanged_two_endpoint_curves;
+    const auto& group = topology.incidence[c];
+    report.maximum_original_curve_valence =
+        std::max(report.maximum_original_curve_valence, group.size());
+    for (const auto& incidence : group) {
+      auto* patch = dynamic_cast<PatchBezier*>(
+          original.GetPatch(static_cast<unsigned>(incidence.patch)));
+      Require(patch && patch->GetSubMesh() ==
+                  accepted_coarse_tri[incidence.patch],
+              "Original source all-curve sweep rebound the accepted TRI Patch");
+      AllCurveIncidenceSnapshot side{
+          static_cast<unsigned>(incidence.patch), incidence.side,
+          curve->GetId(), patch->IsCurveReversed(incidence.side), sites};
+      ValidateWholeModelSourceIncidence(*patch, *curve, side);
+      report.complete_incidence_sites += side.canonical_source_sites.size();
+      report.complete_incidence_intervals +=
+          side.canonical_source_sites.size() - 1U;
+      incidences[c].push_back(std::move(side));
+    }
+    Require(incidences[c].size() == group.size(),
+            "Original full-model source curve incidence coverage incomplete");
+  }
+  Require(report.maximum_original_curve_valence == expected_patches &&
+              report.complete_incidence_intervals >= 4U * expected_patches &&
+              report.adapted_source_points ==
+                  report.adapted_source_intervals + report.original_curves,
+          "Whole-model source curve sweep has incomplete interval coverage");
+
+  bool negative_pair_tested = false;
+  for (unsigned c = 0; c < incidences.size(); ++c) {
+    auto& group = incidences[c];
+    for (unsigned i = 0; i < group.size(); ++i)
+      for (unsigned j = i + 1U; j < group.size(); ++j) {
+        Require(SameCanonicalWholeModelSide(group[i], group[j]),
+                "Original all-curve shared incidence has divergent source samples");
+        ++report.shared_source_incidence_pairs;
+        report.shared_source_site_pair_comparisons +=
+            group[i].canonical_source_sites.size();
+        report.shared_source_interval_pair_comparisons +=
+            group[i].canonical_source_sites.size() - 1U;
+        const int direction_a = (group[i].side < 2U ? 1 : -1) *
+                                (group[i].reversed ? -1 : 1);
+        const int direction_b = (group[j].side < 2U ? 1 : -1) *
+                                (group[j].reversed ? -1 : 1);
+        if (direction_a == -direction_b)
+          ++report.shared_opposite_source_traversal_pairs;
+        else
+          ++report.shared_same_source_traversal_pairs;
+        if (!negative_pair_tested) {
+          auto broken = group[j];
+          broken.canonical_source_sites[0].source_node_id += 55555UL;
+          Require(!SameCanonicalWholeModelSide(group[i], broken),
+                  "Original whole-model pairwise source identity fault escaped");
+          ++report.corrupted_source_snapshots_rejected;
+          negative_pair_tested = true;
+        }
+      }
+  }
+  Require(negative_pair_tested &&
+              report.shared_source_incidence_pairs > 0 &&
+              report.shared_source_interval_pair_comparisons > 0,
+          "Original all-curve high-valence shared source pairs were not audited");
+
+  const auto& radial = incidences.at(
+      [&] {
+        for (unsigned i = 0; i < incidences.size(); ++i)
+          if (incidences[i].size() == expected_patches) return i;
+        throw std::runtime_error(
+            "Original whole-model high-valence curve owner not found");
+      }());
+  Require(!radial.empty(), "Missing original high-valence source incidence");
+  auto* radial_patch = dynamic_cast<PatchBezier*>(
+      original.GetPatch(radial.front().patch_id));
+  Require(radial_patch != nullptr,
+          "Missing original high-valence incidence source patch");
+  const auto* radial_curve = dynamic_cast<CurveAdaptiveParametric*>(
+      radial_patch->GetCurve(radial.front().side));
+  Require(radial_curve != nullptr,
+          "Missing original high-valence incidence source curve");
+  report.corrupted_source_snapshots_rejected +=
+      RejectWholeModelSourceSnapshotCorruptions(
+          *radial_patch, *const_cast<CurveAdaptiveParametric*>(radial_curve),
+          radial.front());
+  Require(report.corrupted_source_snapshots_rejected == 7U,
+          "Whole-model original source negative snapshot cases incomplete");
+
+  for (unsigned p = 0; p < expected_patches; ++p) {
+    auto* patch = original.GetPatch(p);
+    Require(patch->GetSubMesh() == accepted_coarse_tri[p],
+            "Whole-model all-curve source sweep mutated original TRI observer");
+    ++report.initial_tri_observers_preserved;
+  }
+  std::cout << "R2C6_WHOLE_ORIGINAL_MODEL_SOURCE_CURVES"
+            << " original_patches=" << report.original_patches
+            << " original_curves=" << report.original_curves
+            << " all_original_curves_two_pass=" << report.curves_with_curve_and_surface_pass
+            << " original_curve_incidences=" << report.original_curve_incidences
+            << " original_shared_curves=" << report.shared_original_curves
+            << " original_nonmanifold_curves=" << report.nonmanifold_original_curves
+            << " refined_original_curves=" << report.refined_original_curves
+            << " unchanged_two_endpoint_curves="
+            << report.unchanged_two_endpoint_curves
+            << " adapted_source_points=" << report.adapted_source_points
+            << " adapted_source_intervals=" << report.adapted_source_intervals
+            << " complete_incidence_sites=" << report.complete_incidence_sites
+            << " complete_incidence_intervals=" << report.complete_incidence_intervals
+            << " shared_source_incidence_pairs="
+            << report.shared_source_incidence_pairs
+            << " shared_source_site_pair_comparisons="
+            << report.shared_source_site_pair_comparisons
+            << " shared_source_interval_pair_comparisons="
+            << report.shared_source_interval_pair_comparisons
+            << " opposite_oriented_incidence_pairs="
+            << report.shared_opposite_source_traversal_pairs
+            << " same_oriented_incidence_pairs="
+            << report.shared_same_source_traversal_pairs
+            << " maximum_source_valence=" << report.maximum_original_curve_valence
+            << " rejected_source_snapshot_controls="
+            << report.corrupted_source_snapshots_rejected
+            << " preserved_original_TRI_Patch_observers="
+            << report.initial_tri_observers_preserved
+            << " single_original_curve_graph_transaction=1"
+            << " full_generator_policy_targets_computed=0"
+            << " accepted_GeneratorAdaptive_Domain_epoch=0"
+            << " independent_physical_seam_nodes_proved=0"
+            << " nonmanifold_sheet_owner_approved=0"
+            << " global_mesh_published=0\n";
+  return report;
+}
+
 void RunSource(const std::string& source, unsigned expected, bool refined) {
   Geometry original;
   PatchReader reader;
@@ -1705,6 +2088,8 @@ int main(int argc, char** argv) {
     RunSource(argv[2], 28U, true);
     RunNativeOriginalSharedCurveAdaptation(argv[1], 4U);
     RunNativeOriginalSharedCurveAdaptation(argv[2], 28U);
+    RunWholeOriginalModelTwoPassCurveSweep(argv[1], 4U);
+    RunWholeOriginalModelTwoPassCurveSweep(argv[2], 28U);
     return 0;
   } catch (const std::exception& error) {
     std::cerr << "R2c2 full original AFT detached staging failed: "
