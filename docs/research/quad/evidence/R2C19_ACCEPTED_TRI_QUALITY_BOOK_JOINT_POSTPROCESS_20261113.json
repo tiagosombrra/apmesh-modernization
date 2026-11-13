@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c19.native_original_generator_accepted_tri_quality_and_book_joint_aft_source_v1",
   "date_utc": "2026-11-13",
-  "status": "INITIAL_EXACT_CI_PASS_GLOBAL_TRI_QUALITY_POSITIVE; PATCH_CSV_QUALITY_PREVIOUS_EPOCH_LAG_DISCOVERED_AND_CORRECTIVE_CI_PENDING",
+  "status": "CORRECTED_SOURCE_QUALIFIED_EXACT_CI_FULL_4_OF_4; POSITIVE_CURRENT_GLOBAL_TRI_MIN_3D_UV; PREVIOUS_EPOCH_PATCH_SNAPSHOTS_NOT_CURRENT",
   "pr_number": 214,
   "feature_head": "61abad7c1ebe21fbe38360fbc8bfd061426b2c4e",
   "run_id": 43520477471,
@@ -65,11 +65,28 @@
     },
     "caution": "True accepted source epochs do not prove monotone global error, optimal efficiency, individual triangle 3D area scans or a globally connected physical QUAD/AFT mesh"
   },
-  "actual_r2c19_results": null,
+  "actual_r2c19_results": {
+    "global_min_3d_by_original_eistute_accepted_step": {
+      "1": 0.184411,
+      "2": 0.167252,
+      "4": 0.208604
+    },
+    "global_min_uv_by_original_eistute_accepted_step": {
+      "1": 0.769725,
+      "2": 0.747618,
+      "4": 0.514657
+    },
+    "original_csv_quality_proven_previous_epochs": true,
+    "original_book_two_accepted_profiles": 0,
+    "original_eistute_two_accepted_profiles": 1,
+    "eistute_error_nonmonotonic": true,
+    "per_face_original_accepted_TRI_3D_area_scan_pending": true,
+    "current_accepted_patch_quality_source_pending": true
+  },
   "original_eistute_two_plus_generator_epochs_previously_observed": true,
   "original_book_two_plus_generator_epochs_verified": false,
   "original_global_connected_QUAD_AFT_approved": false,
-  "next_action": "Observe exact CI #43520477471 including full Eistute per-accepted native TRI 3D/UV quality and Book two-knob results. If Book remains at one accepted epoch, use real Book original Adapter min physical quality to design minimal opt-in source-side quality repair without relaxing acceptance or welding.",
+  "next_action": "R2c20: independently parse original accepted GeneratorAdaptive-exported TRI OBJ meshes and verify every actual face index/finite 3D coordinate/nonzero 3D area plus accepted source face counts for Eistute steps1/2/4 and Book first accepted step. Do not claim original per-patch ownership without native OBJ groups nor globally conforming nonmanifold QUAD.",
   "initial_execution": {
     "source_commit": "61abad7c1ebe21fbe38360fbc8bfd061426b2c4e",
     "run_id": 43520477471,
@@ -158,5 +175,28 @@
       "Retain Book true source two-parameter diagnostic and original TRI admission, regression controls"
     ],
     "next_action": "Inspect corrected exact CI #43522312435. Mark qualified only for positive global accepted TRI quality and proven previous-source-epoch patch snapshot semantics; full accepted current per-face scan remains unqualified."
-  }
+  },
+  "corrected_exact_ci": {
+    "feature_head": "c659e37d3a958eb3f452a7261c7b1ab5b6b35797",
+    "run_id": 43522312435,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": "4/4",
+    "root_ctest": "89/89",
+    "tooling_python": "527/527",
+    "gcc_quad": "16/16",
+    "msvc_quad": "16/16",
+    "frozen_original_TRI_parity": "PASS",
+    "original_marker": "R2C19_GLOBAL_ACCEPTED_TRI_QUALITY_AND_PATCH_SNAPSHOT_LAG",
+    "artifact_id": 14084860307,
+    "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43522312435/artifacts/14084860307",
+    "retention_days": 14
+  },
+  "qualified_positive_scope": [
+    "Eistute genuine GeneratorAdaptive source accepted steps 1,2,4 reproduced in exact corrected full native CI",
+    "Current original accepted GLOBAL TRI quality_min_3d and quality_min_uv >0 in original `_acceptance_accepted.log` for all three accepted source steps",
+    "Original `_patch_adaptation_accepted.csv` snapshot minima match previous accepted source epoch (step0,1,2 for CSV steps 1,2,4), and MUST NOT be labeled current per-patch quality",
+    "Book original research joint passes4/8 + quality selection 0.8 both only one accepted source step, original TRI quality thresholds untouched",
+    "No independent per-face area or current accepted per-patch quality scan, nonmonotone original Eistute global error, M6 sheet/weld approval pending"
+  ]
 }
