@@ -39,7 +39,7 @@ def digest(obj: object) -> str:
 
 
 def fields(line: str) -> dict[str, str]:
-    match = re.match(r"^(?:\\d+: )?([A-Z0-9_]+) (.+)$", line.strip())
+    match = re.match(r"^(?:\d+: )?([A-Z0-9_]+) (.+)$", line.strip())
     require(match is not None, "Missing actual native source marker")
     parts = {}
     for item in match.group(2).split():
@@ -58,7 +58,7 @@ def parse_log(source_log: Path) -> dict[int, dict[str, dict[str, str]]]:
         "R2B2_SHARED_CURVE_MODEL": "source",
     }
     for line in source_log.read_text(encoding="utf-8").splitlines():
-        text = re.sub(r"^\\d+: ", "", line.strip())
+        text = re.sub(r"^\d+: ", "", line.strip())
         kind = next((key for key in prefixes if text.startswith(key + " ")), None)
         if kind is None:
             continue
@@ -132,7 +132,7 @@ def source_record(graph: dict, reports: dict[int, dict],
             "Duplicate physical source curve incidence")
     order = []
     for pair in order_text:
-        match = re.fullmatch(r"(\\d+):(\\d+)", pair)
+        match = re.fullmatch(r"(\d+):(\d+)", pair)
         require(match is not None, "Invalid radial patch/side identity")
         key = tuple(int(x) for x in match.groups())
         require(key in incidence and key not in
@@ -343,9 +343,9 @@ def run(root: Path, graph_directory: Path,
         output_directory.mkdir(parents=True, exist_ok=True)
         record_path = output_directory / f"r2c0_{model_key}_radial_incidence.json"
         policy_path = output_directory / f"r2c0_{model_key}_pending_policy.json"
-        record_path.write_text(json.dumps(a, indent=2, allow_nan=False)+"\\n",
+        record_path.write_text(json.dumps(a, indent=2, allow_nan=False)+"\n",
                                encoding="utf-8")
-        policy_path.write_text(json.dumps(policy, indent=2)+"\\n",
+        policy_path.write_text(json.dumps(policy, indent=2)+"\n",
                                encoding="utf-8")
         outcome.append({
             "model": name, "source_curve_index": a["source_curve_index"],
@@ -373,7 +373,7 @@ def run(root: Path, graph_directory: Path,
         "production_quad_enabled": False,
     }
     (output_directory / "r2c0_manifest.json").write_text(
-        json.dumps(result, indent=2, allow_nan=False)+"\\n", encoding="utf-8")
+        json.dumps(result, indent=2, allow_nan=False)+"\n", encoding="utf-8")
     print(f"R2C0_SOURCE_INCIDENCE models=2 source_intervals=22 "
           f"adjacencies=376 negative_controls={negative_count} "
           "radial_records=source_verified node_welding=0 "
