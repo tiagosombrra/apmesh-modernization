@@ -1907,6 +1907,120 @@ AllSidesPhysicalTrial TrialAllSidesPhysicalOriginalPatch(
   return trial;
 }
 
+// R2c-9: attempt the COMPLETE original 4/28-chart physical generation from
+// all four genuinely adapted sides. This remains a disconnected research
+// MeshAdaptive candidate, not a production model or a welded global mesh.
+struct AllSidesPhysicalModelReport {
+  std::size_t attempted_patches = 0;
+  std::size_t staged_patches = 0;
+  std::size_t physical_nodes = 0;
+  std::size_t physical_quads = 0;
+  std::size_t physical_tris = 0;
+  std::size_t boundary_source_sites = 0;
+  std::size_t adapted_source_sites = 0;
+  std::size_t observed_tree_leaves = 0;
+  std::size_t quad_seam_edges = 0;
+  double minimum_uv_triangle_quality = 1.0;
+  double minimum_physical_normal_alignment = 1.0;
+  bool complete_disconnected_stage = false;
+  std::size_t first_failed_patch = 0;
+  std::string rejection_reason;
+};
+
+AllSidesPhysicalModelReport TrialWholeOriginalAllSidesPhysicalModel(
+    Geometry& original, const std::vector<SubMesh*>& accepted_tri,
+    unsigned expected_patches) {
+  Require(expected_patches > 0U &&
+              expected_patches == accepted_tri.size() &&
+              original.GetNumberPatches() == expected_patches,
+          "R2c9 original whole physical model has incomplete patch provenance");
+  AllSidesPhysicalModelReport report;
+  DisjointOwnerStage stage(expected_patches);
+  std::unique_ptr<MeshAdaptive> detached_root =
+      std::make_unique<MeshAdaptive>();
+  for (unsigned p = 0; p < expected_patches; ++p) {
+    auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(p));
+    Require(patch && patch->GetSubMesh() == accepted_tri[p],
+            "R2c9 original TRI Patch observer is not intact");
+    ++report.attempted_patches;
+    try {
+      auto native = BuildDetachedSourceBoundaryImpl(
+          *patch, p, nullptr, true);
+      auto reference = BuildDetachedSourceBoundaryImpl(
+          *patch, p, nullptr, true);
+      DynamicNativeChartCounts counts;
+      auto physical = BuildDynamicAdaptedAftChart(
+          *patch, p, std::move(native), std::move(reference),
+          counts, true);
+      DisjointOwnerStage::CheckChart(*physical);
+      Require(physical->GetPatch() == nullptr &&
+                  counts.quads > 0U && counts.tris > 0U &&
+                  counts.physical_nodes > counts.original_boundary_sites &&
+                  counts.original_adapted_sites ==
+                      counts.original_boundary_sites &&
+                  counts.original_source_boundary_edges ==
+                      counts.original_boundary_sites &&
+                  counts.min_uv_triangle_quality > 0.0 &&
+                  counts.min_physical_alignment > 0.0,
+              "R2c9 original all-sides physical chart failed typed coverage");
+      stage.Add(std::move(physical));
+      ++report.staged_patches;
+      report.physical_nodes += counts.physical_nodes;
+      report.physical_quads += counts.quads;
+      report.physical_tris += counts.tris;
+      report.boundary_source_sites += counts.original_boundary_sites;
+      report.adapted_source_sites += counts.original_adapted_sites;
+      report.observed_tree_leaves += counts.source_quadtree_leaves;
+      report.quad_seam_edges += counts.quad_seam_edges;
+      report.minimum_uv_triangle_quality =
+          std::min(report.minimum_uv_triangle_quality,
+                   counts.min_uv_triangle_quality);
+      report.minimum_physical_normal_alignment =
+          std::min(report.minimum_physical_normal_alignment,
+                   counts.min_physical_alignment);
+    } catch (const std::exception& error) {
+      report.first_failed_patch = p;
+      report.rejection_reason = error.what();
+      break;
+    }
+    Require(patch->GetSubMesh() == accepted_tri[p],
+            "R2c9 mixed research candidate rebound original TRI");
+  }
+  // No partial detached model is published on a failed individual patch.
+  if (report.staged_patches == expected_patches) {
+    stage.Replace(detached_root);
+    Require(detached_root &&
+                detached_root->GetNumberSubMeshesAdaptive() ==
+                    expected_patches &&
+                report.boundary_source_sites == report.adapted_source_sites &&
+                report.minimum_uv_triangle_quality > 0.0 &&
+                report.minimum_physical_normal_alignment > 0.0,
+            "R2c9 disconnected full model physical adoption is incomplete");
+    std::set<const NodeAdaptive*> distinct_nodes;
+    for (unsigned p = 0; p < expected_patches; ++p) {
+      auto* chart = detached_root->GetSubMeshAdaptiveByPosition(p);
+      Require(chart && chart->GetPatch() == nullptr &&
+                  original.GetPatch(p)->GetSubMesh() == accepted_tri[p],
+              "R2c9 physical model changed original Patch ownership");
+      DisjointOwnerStage::CheckChart(*chart);
+      for (unsigned n = 0; n < chart->GetNumberNos(); ++n)
+        Require(distinct_nodes.insert(chart->GetNoh(n)).second,
+                "R2c9 original patches illegally share physical node owners");
+    }
+    Require(distinct_nodes.size() == report.physical_nodes,
+            "R2c9 all-chart model physical owner count mismatch");
+    report.complete_disconnected_stage = true;
+  } else {
+    Require(!report.rejection_reason.empty() &&
+                detached_root->GetNumberSubMeshesAdaptive() == 0U,
+            "R2c9 rejected a candidate without an atomic rollback");
+  }
+  for (unsigned p = 0; p < expected_patches; ++p)
+    Require(original.GetPatch(p)->GetSubMesh() == accepted_tri[p],
+            "R2c9 whole model trial changed an original TRI Patch observer");
+  return report;
+}
+
 struct WholeModelSourceEpochReport {
   std::size_t original_patches = 0;
   std::size_t original_curves = 0;
@@ -2159,6 +2273,36 @@ WholeModelSourceEpochReport RunWholeOriginalModelTwoPassCurveSweep(
             << " interpatch_node_welding=0";
   if (!physical_trial.succeeded)
     std::cout << " rejection_reason=" << physical_trial.blocked_reason;
+  std::cout << '\n';
+  const auto all_physical = TrialWholeOriginalAllSidesPhysicalModel(
+      original, accepted_coarse_tri, expected_patches);
+  std::cout << "R2C9_ALL_ORIGINAL_PHYSICAL_CHARTS"
+            << " original_patches=" << expected_patches
+            << " attempted_original_patches=" << all_physical.attempted_patches
+            << " staged_physical_patches=" << all_physical.staged_patches
+            << " complete_disconnected_model="
+            << (all_physical.complete_disconnected_stage ? 1 : 0)
+            << " physically_owned_nodes=" << all_physical.physical_nodes
+            << " typed_QUAD=" << all_physical.physical_quads
+            << " typed_TRI=" << all_physical.physical_tris
+            << " all_sides_source_boundary_sites="
+            << all_physical.boundary_source_sites
+            << " source_adapted_sites=" << all_physical.adapted_source_sites
+            << " research_tree_leaves=" << all_physical.observed_tree_leaves
+            << " quad_aft_seam_edges=" << all_physical.quad_seam_edges
+            << " min_uv_triangle_quality="
+            << all_physical.minimum_uv_triangle_quality
+            << " min_physical_normal_alignment="
+            << all_physical.minimum_physical_normal_alignment
+            << " first_rejected_patch=" << all_physical.first_failed_patch
+            << " original_TRI_observers_preserved=1"
+            << " real_native_QUAD_AFT_or_rejected=1"
+            << " rejected_partial_candidate_not_published=1"
+            << " actual_production_AdaptDomain_tree=0"
+            << " scientifically_approved_global_mesh=0"
+            << " interpatch_physical_welding=0";
+  if (!all_physical.complete_disconnected_stage)
+    std::cout << " rejection_reason=" << all_physical.rejection_reason;
   std::cout << '\n';
   std::cout << "R2C7_ALL_SIDES_AFT_BOUNDARIES"
             << " original_patches=" << all_sides.contours
