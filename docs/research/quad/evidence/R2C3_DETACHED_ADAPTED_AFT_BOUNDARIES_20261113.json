@@ -1,0 +1,76 @@
+{
+  "milestone": "R2c-3 original high-valence serial Adapter source partitions lifted into separate native original AFT::Boundary owners",
+  "date_utc": "2026-11-13",
+  "status": "IMPLEMENTED_NATIVE_SOURCE_CI_PENDING",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_head_sha": "4258dbca7131427e22220fa190391af6810411ab",
+  "draft_pr": 214,
+  "production_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "source_code": [
+    "tests/quad/full_source_patch_stage_probe.cpp"
+  ],
+  "new_root_ctest": "Existing quad.r2c2.full_source_patch_stage extended (no CMake, CLI or production algorithm change)",
+  "source_models": [
+    "input_models/eistute2.fixed.bp",
+    "input_models/book_v7a.bp"
+  ],
+  "native_source_operations": [
+    "Load original PatchReader full source model",
+    "Initialize all original coarse Patch/SubMesh TRI observers and source curve nodes through BuildInitialSubMesh",
+    "Use actual Adapter::AdaptCurveByCurve + AdaptCurveBySurface on exactly the one maximal-valence shared source curve",
+    "Compute original source curve lengths for native Edge::makeParamMid and normalized edge length",
+    "Build a detached original AFT::Boundary for each incident PatchBezier from the actual parameter and borrowed source NodeAdaptive, with copies of physical NodeAdaptive data privately owned by each detached contour",
+    "Validate original native AFT boundary closed cycle, directed edge to next Vertex, curved midpoint and finite normalized length",
+    "SnapshotOriginalAdapterBoundary validates native AFT curve-ordered source ID, parameter, side orientation, UV, XYZ, unique original source endpoints",
+    "SnapshotSharedCurveSide and CompareSharedCurveSides validate all original high-valence paired source incidences in canonical original source parameter order",
+    "Reject seven mutated source snapshot scenarios per original model"
+  ],
+  "expected_source_boundaries": {
+    "Eistute": 4,
+    "Book": 28
+  },
+  "expected_adapted_source_edges": {
+    "Eistute": 24,
+    "Book": 168
+  },
+  "expected_detached_native_boundary_vertices": {
+    "Eistute": 36,
+    "Book": 252
+  },
+  "expected_source_curve_intervals_per_incidence": 6,
+  "expected_total_native_edge_count": {
+    "Eistute": 36,
+    "Book": 252
+  },
+  "expected_rejected_negative_snapshots_per_model": 7,
+  "source_edge_directions": "Original serial Adapter CCW order with PatchBezier::IsCurveReversed, side 0/1 order forward and side 2/3 reverse, original source curve sampled parameters retained without interpolation",
+  "source_sha_specific_tests": {
+    "push_run_id": 43439921989,
+    "pr_run_id": 43439932294,
+    "expected_sha": "4258dbca7131427e22220fa190391af6810411ab",
+    "status": "PENDING",
+    "native_source_marker": "R2C3_NATIVE_ADAPTED_AFT_BOUNDARIES",
+    "original_model_metrics": "UNMEASURED"
+  },
+  "scientific_scope": {
+    "original_source_curve_adapted_per_model": 1,
+    "remaining_original_sides_coarse": true,
+    "actual_native_Quadtree_executed": false,
+    "actual_original_AFT_exterior_triangulation_executed": false,
+    "physical_QUAD_TRI_staged_from_dynamic_boundary": false,
+    "shared_node_physical_welding": false,
+    "original_scientific_sheet_continuity_approved": false,
+    "all_source_curve_original_epoch_qualified": false,
+    "Patch_forward_backward_observer_rebinding": false,
+    "global_quad_tri_mesh_published": false,
+    "local_asan_ubsan": "NOT_RUN"
+  },
+  "known_blockers": [
+    "Source-only adaptation of one maximal-valence original shared curve per model, not whole-model coherent GeneratorAdaptive::AdaptCurve epoch",
+    "No Quad interior or AFT exterior produced from new dynamic native contours",
+    "No cross-patch physically shared nodes or matching model-wide full original curves",
+    "Nonmanifold source-model-SHA-bound valence 4 and valence 28 sheet/owner scientific decisions are absent",
+    "No native local ASan UBSan or original 1993 reconstruction"
+  ],
+  "next_action": "Inspect exact-head native root CTest/build logs, repair actual failures, retain real model boundary metrics and 7 negatives per model, obtain 2 fully green identical SHA CI workflows. Only then progress to original native Quadtree QUAD/AFT meshing on the detached dynamic boundary without global publish."
+}
