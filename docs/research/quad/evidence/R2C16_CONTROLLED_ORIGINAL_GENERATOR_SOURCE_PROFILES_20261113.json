@@ -1,0 +1,76 @@
+{
+  "schema": "apmesh.quad.r2c16.original_generator_m7_source_controlled_sensitivity.v1",
+  "date_utc": "2026-11-13",
+  "status": "SOURCE_COMMITTED_EXACT_CI_PENDING_TWO_ACCEPTED_EPOCHS_NOT_QUALIFIED",
+  "pr_number": 214,
+  "candidate_head": "797c2b39be3d0508a71ddd8234ad17a213373c23",
+  "workflow_run_id": 43509163882,
+  "previous_r2c13": {
+    "run_id": 43502743922,
+    "diagnostic": "PASS",
+    "source_proven_two_accepted_epochs": false,
+    "original_eistute_accepted": 1,
+    "original_book_accepted": 1
+  },
+  "previous_r2c14": {
+    "run_id": 43504972443,
+    "diagnostic": "PASS",
+    "artifact_id": 14077445183,
+    "structural_statuses_original": {
+      "eistute_step4": "4/4 curve_transition_needs_retry",
+      "book_step2": "28/28 degenerate_needs_retry"
+    }
+  },
+  "pending_r2c15": {
+    "previous_run_id": 43508097551,
+    "previous_run_status": "CANCELLED_BEFORE_SOURCE_PREDICATE_TEST",
+    "new_included_run": 43509163882
+  },
+  "code": [
+    "tests/quad/test_r2c16_m7_bounded_research_profiles.py",
+    "tools/verify_r2c15_original_acceptance_guards.py",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "eistute_single_variable_cases": [
+    {
+      "profile": "curve_growth_stepn_1p5",
+      "override": {
+        "CURVE_POINT_GROWTH_STEPN": "1.5"
+      }
+    },
+    {
+      "profile": "quadtree_stepn_depth3",
+      "override": {
+        "PATCH_QUADTREE_DEPTH_STEPN": "3"
+      }
+    }
+  ],
+  "book_single_variable_cases": [
+    {
+      "profile": "debug_curve_growth_stepn_1p5",
+      "override": {
+        "CURVE_POINT_GROWTH_STEPN": "1.5"
+      }
+    },
+    {
+      "profile": "stable_quadtree_stepn_depth2",
+      "overrides": {
+        "ADAPTIVE_MODE": "adaptive_stable",
+        "PATCH_QUADTREE_DEPTH_STEPN": "2"
+      },
+      "note": "Includes change of original Book mode to stable plus source Quadtree depth; is a two-variable sensitivity, not a strict one-variable causal ablation"
+    }
+  ],
+  "actual_source_two_commits_verified": false,
+  "independent_test_status": null,
+  "production_acceptance_threshold_modified": false,
+  "scientific_approval": false,
+  "acceptance_contract": [
+    "Every case reuses the original real GeneratorAdaptive source, TRI scientific acceptance criteria and original Eistute/Book SHA-256 inputs",
+    "Research overrides are explicit, isolated, and never overwrite article.conf",
+    "Only genuine distinct native AcceptedMeshScope::Commit steps count toward two accepted source epochs, with original per-accepted-step curve/patch/incidence receipts",
+    "Failed native research profile is reported as unqualified, not as success",
+    "R2c15 must independently verify exact stable-mode original acceptance necessary inequalities before interpreting profile results"
+  ],
+  "next_action": "Inspect exact workflow #43509163882 including R2c15 source-predicate receipt, R2c16 model-by-model accepted-step matrix and artifacts. On unsuccessful profiles, target true original source generation status and global element-budget coherence, no threshold loosening or fabricated second commit."
+}
