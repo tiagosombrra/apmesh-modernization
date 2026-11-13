@@ -1,9 +1,9 @@
 {
   "milestone": "R2c-2 original-source full native QUAD/AFT disconnected physical chart owner stage",
   "date_utc": "2026-11-13",
-  "status": "FULL_ORIGINAL_SOURCE_AFT_CHART_STAGE_EXACT_DOUBLE_CI_QUALIFIED",
+  "status": "COMPLETE_SOURCE_DISJOINT_OWNER_DOUBLE_CI_CERTIFIED_WITH_BOTH_MODEL_COUNTS",
   "research_feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
-  "research_feature_head": "e43979013cc402804675edbdf9d9ebba5df6d59b",
+  "research_feature_head": "9360196fec8790e0cb7ddec42714b2717919530a",
   "draft_pull_request": 214,
   "production_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "new_source": "tests/quad/full_source_patch_stage_probe.cpp",
@@ -34,7 +34,30 @@
       "middle",
       "prepublication"
     ],
-    "per_patch_full_face_counts": "UNMEASURED: successful root CTest suppresses native model counts; retained verbose root receipt to be captured on follow-up CI",
+    "per_patch_full_face_counts": {
+      "scope": "Totals across original disconnected model patches; original fixed quarter-side UV sampling; no global mesh",
+      "Eistute": {
+        "patches": 4,
+        "physical_nodes": 164,
+        "typed_QUAD": 64,
+        "typed_TRI": 128,
+        "rejected_injected_stages": 3
+      },
+      "Book": {
+        "patches": 28,
+        "physical_nodes": 1932,
+        "typed_QUAD": 1176,
+        "typed_TRI": 1008,
+        "rejected_injected_stages": 3
+      },
+      "aggregate": {
+        "patches": 32,
+        "physical_nodes": 2096,
+        "typed_QUAD": 1240,
+        "typed_TRI": 1136,
+        "rejected_injected_stages": 6
+      }
+    },
     "interpatch_seam_subdivision_equivalence": "NOT_PROVED",
     "physical_shared_node_owner": "NOT_APPROVED",
     "source_model_sheet_memberships": "PENDING_INDEPENDENT_SCIENTIFIC_APPROVAL",
@@ -44,39 +67,47 @@
     "detached_full_original_patch_stage_test": "PASS on both runs; no cross-patch node sharing"
   },
   "required_ci": {
-    "feature_push_run_id": 43397303113,
+    "feature_push_run_id": 43398974425,
     "exact_sha_completed": true,
-    "linux_root_ctest": "89/89 PASS each run; new quad.r2c2.full_source_patch_stage test #74/89 PASS (0.21s push, 0.25s PR)",
-    "python_tooling": "527/527 PASS each run",
-    "native_quad_gcc": "16/16 PASS each run",
-    "native_quad_msvc": "16/16 PASS each run",
-    "frozen_original_tri": "PASS each run",
-    "feature_pull_request_run_id": 43397311631,
-    "exact_sha": "e43979013cc402804675edbdf9d9ebba5df6d59b",
+    "linux_root_ctest": "89/89 PASS each (native full-source CTest #74 PASS); exact source 9360196",
+    "python_tooling": "527/527 PASS each",
+    "native_quad_gcc": "16/16 PASS each",
+    "native_quad_msvc": "16/16 PASS each",
+    "frozen_original_tri": "PASS each",
+    "feature_pull_request_run_id": 43399166024,
+    "exact_sha": "9360196fec8790e0cb7ddec42714b2717919530a",
     "independent_runs_completed_success": "2/2 each 4/4 jobs",
     "source_r2c0": "376 source radial adjacencies; 38 rejected policy mutations, PASS each run",
     "source_r2c1": "376 source radial adjacencies; 98 rejected policy mutations, PASS each run",
     "original_r2b2_patch_admission": "Eistute mapped 4/4, Book mapped 28/28, rejected 0, native AFT audit trace in both roots",
     "root_job_ids": [
-      131791276208,
-      131791295375
+      131796779240,
+      131797407035
     ]
   },
   "local_native_compilation": "NOT_RUN_REMOTE_ONLY",
   "local_asan_ubsan": "NOT_RUN",
   "admission": "DISCONNECTED_ORIGINAL_PATCH_ENGINEERING_CI_QUALIFIED; GLOBAL_MODEL_SCIENTIFIC_CONNECTIVITY_BLOCKED",
-  "next_action": "Read 9360196 workflow push/PR exact CI and retained full-source verbose artifact; capture original per-model physical node, QUAD, TRI counts; do not infer model-global physical continuity or publish Patch observers.",
+  "next_action": "Qualify read-only original shared-curve sample matching on actual staged physical SubMesh boundary nodes (feature 74a04b28, independent CI pending), with negative controls and NO physical seam welding or sheet approval.",
   "instrumentation": {
     "workflow_commit_sha": "9360196fec8790e0cb7ddec42714b2717919530a",
     "full_source_verbose_ctest_name": "quad.r2c2.full_source_patch_stage",
     "artifact_name_prefix": "quad-r2c2-full-source-stage",
-    "run_status": "PENDING",
+    "run_status": "COMPLETED_SUCCESS_BOTH_PUSH_AND_PR_SAME_SHA",
     "reason": "Capture original per-model total physical nodes, QUAD and TRI elements on exact source code, not inferred from previous 2-face sample test.",
     "adverse_intermediate": {
       "commit": "17d8a273fc2a99fa1d7ac3e2b9f86006b7382ad1",
       "run_id": 43398913350,
       "status": "workflow YAML invalid; literal JS replacement interpreted $' regex-substitution expansion; restored original complete workflow via replacement callback in 9360196"
     },
-    "source_code_changed_since_qualified_commit": false
-  }
+    "source_code_changed_since_qualified_commit": false,
+    "feature_push_run_id": 43398974425,
+    "feature_pull_request_run_id": 43399166024,
+    "measured_original_native_source_models": {
+      "Eistute": "R2C2_FULL_SOURCE_AFT original_patches=4 physical_nodes=164 typed_QUAD=64 typed_TRI=128 rejected_injected_stages=3",
+      "Book": "R2C2_FULL_SOURCE_AFT original_patches=28 physical_nodes=1932 typed_QUAD=1176 typed_TRI=1008 rejected_injected_stages=3",
+      "same_markers_in_both_verbose_root_logs": true
+    }
+  },
+  "measured_exact_head_sha": "9360196fec8790e0cb7ddec42714b2717919530a"
 }
