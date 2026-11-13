@@ -1,5 +1,5 @@
 {
-  "schema": "apmesh.quad.r2c2.detached_owner_stage.candidate.v1",
+  "schema": "apmesh.quad.r2c2.detached_owner_stage.qualified.v2",
   "date_utc": "2026-11-13",
   "feature_head": "54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5",
   "source_branch": "quad/integration-r2b2-exterior-aft-20261112",
@@ -11,7 +11,7 @@
   ],
   "target": "quad.r2c2.disjoint_owner_stage",
   "required_root_ctest_expected": "88/88",
-  "phase": "new_cpp_ctest_positive_full_exact_head_regression_pending",
+  "phase": "exact_double_ci_4of4_qualified_bounded_detached_owner_root_rollback",
   "synthetic_disjoint_expected": {
     "chart_counts": [
       4,
@@ -44,8 +44,13 @@
     "global_source_connected_mesh": false
   },
   "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349923938",
-  "observed_new_root_ctest": "passed Test #73/88 on failed complete root CI #43348480434; not exact current head",
-  "observed_root_log_markers": "pending on exact current head",
+  "observed_new_root_ctest": "passed #73/88 on both exact source runs",
+  "observed_root_log_markers": [
+    "R2C2_DISJOINT_STAGE patches=4",
+    "R2C2_DISJOINT_STAGE patches=28",
+    "R2C2_REAL_SOURCE_DISJOINT patches=4",
+    "R2C2_REAL_SOURCE_DISJOINT patches=28"
+  ],
   "ci_status": "three independent jobs completed on both exact push/PR; root build in progress",
   "actual_patch_observers_touched": false,
   "physical_global_SubMesh_published": false,
@@ -53,7 +58,7 @@
   "scientific_advisor_sheet_policy": "PENDING_ADVISOR_REVIEW",
   "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "asan_ubsan": "not_executed",
-  "next": "inspect root C++ compile and detached source model stage, fix any actual negative gates, requalify exact head and record",
+  "next": "stage actual complete R2b2 per-patch QUAD/AFT candidates off-side using source-original boundary param checks; independently obtain Eistute/Book scientific sheet semantics before any cross-chart welding or atomic Patch observer rebinding.",
   "push_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349916549",
   "observed_first_complete_root": "87/88, tooling.controls stale CMake hash",
   "first_complete_root_failure_run": 43348480434,
@@ -62,5 +67,84 @@
   "architecture_inventory_repair": "a0a611b2221b6ad4a2c4442fdddfba2988e07785",
   "invalid_workflow_run": 43349647165,
   "invalid_workflow_cause": "JS replacement expansion of regex end-anchor followed by a quote duplicated YAML workflow tail",
-  "workflow_repaired_at_feature_head": "54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5"
+  "workflow_repaired_at_feature_head": "54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5",
+  "status": "bounded_research_detached_source_patches_and_synthetic_owner_atomic_swap_passed; scientific_junction_policy_pending",
+  "exact_double_ci": {
+    "feature_push": {
+      "run": 43349916549,
+      "source_sha": "54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5",
+      "status": "completed",
+      "result": "success",
+      "jobs": "4/4",
+      "root_job_id": 131638309449,
+      "ctest": "88/88",
+      "python_tooling": "527/527",
+      "native_linux_quad": "16/16",
+      "native_windows_quad": "16/16",
+      "original_tri_science": "pass",
+      "r2c0": "pass",
+      "r2c1": "pass",
+      "r2c2": "pass",
+      "artifact_id": 14003742707,
+      "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349916549/artifacts/14003742707"
+    },
+    "independent_pr": {
+      "run": 43349923938,
+      "source_sha": "54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5",
+      "status": "completed",
+      "result": "success",
+      "jobs": "4/4",
+      "root_job_id": 131638320983,
+      "ctest": "88/88",
+      "python_tooling": "527/527",
+      "native_linux_quad": "16/16",
+      "native_windows_quad": "16/16",
+      "original_tri_science": "pass",
+      "r2c0": "pass",
+      "r2c1": "pass",
+      "r2c2": "pass",
+      "artifact_id": 14004455234,
+      "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349923938/artifacts/14004455234"
+    }
+  },
+  "observed_synthetic_disjoint": {
+    "eistute_cardinality": {
+      "patches": 4,
+      "owned_nodes": 28,
+      "typed_elements": 8,
+      "failed_stage_cases_rejected": 6,
+      "repeated_root_replacements": 2
+    },
+    "book_cardinality": {
+      "patches": 28,
+      "owned_nodes": 196,
+      "typed_elements": 56,
+      "failed_stage_cases_rejected": 30,
+      "repeated_root_replacements": 2
+    }
+  },
+  "observed_real_source_disjoint": {
+    "Eistute": {
+      "patches": 4,
+      "original_PatchReader": true,
+      "source_patch_examples": 4,
+      "physical_interior_sample_elements_per_patch": 2,
+      "failed_stage_cases_rejected": 5
+    },
+    "Book": {
+      "patches": 28,
+      "original_PatchReader": true,
+      "source_patch_examples": 28,
+      "physical_interior_sample_elements_per_patch": 2,
+      "failed_stage_cases_rejected": 29
+    }
+  },
+  "observed_total_injected_rejections": 70,
+  "known_diagnostic_formatting": "Both original source model records occur on one physical output line separated by a literal backslash-n; counts parsed from both marker substrings in each root log.",
+  "observed_r2c0_policy_negative_controls": 38,
+  "observed_r2c1_policy_negative_controls": 98,
+  "first_complete_root_failure": "87/88, tooling.controls retained architecture CMake SHA",
+  "invalid_workflow_result": "failure with zero jobs due to malformed intermediate YAML",
+  "last_repair_sha": "54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5",
+  "actual_source_native_full_quadtree_aft_mesh_in_staging": false
 }
