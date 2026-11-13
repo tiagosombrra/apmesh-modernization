@@ -343,6 +343,25 @@ jobs:
           path: build/local-serial/r2c12_advisor_handoff/*.json
           if-no-files-found: error
           retention-days: 14
+      - name: Measure R2c18 original AFT postprocess controls without changing TRI admission
+        shell: bash
+        run: |
+          python3 tests/quad/test_r2c18_original_aft_postprocess_profiles.py \
+            --exe build/local-serial/bin/quad_generator_outcome_probe \
+            --root . \
+            --directory build/local-serial/r2c18_aft_postprocess
+      - name: Retain R2c18 original AFT postprocess research profiles and domain evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c18-original-aft-postprocess-${{ github.sha }}
+          path: |
+            build/local-serial/r2c18_aft_postprocess/r2c18_original_aft_postprocess_profiles.json
+            build/local-serial/r2c18_aft_postprocess/*/generator_stdout.log
+            build/local-serial/r2c18_aft_postprocess/*/generator_stderr.log
+            build/local-serial/r2c18_aft_postprocess/*/*_domain_adaptation.csv
+          if-no-files-found: error
+          retention-days: 14
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
