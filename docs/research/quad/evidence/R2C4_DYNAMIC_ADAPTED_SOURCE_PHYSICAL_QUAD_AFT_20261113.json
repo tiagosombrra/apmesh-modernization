@@ -1,7 +1,7 @@
 {
   "milestone": "R2c-4 full disconnected typed QUAD/AFT physical charts from the original two-pass real high-valence adapted source contour",
   "date_utc": "2026-11-13",
-  "status": "IMPLEMENTED_NEW_EXPERIMENTAL_SOURCE_EXACT_CI_PENDING",
+  "status": "EXACT_TWO_INDEPENDENT_CI_FULL_SOURCE_ADAPTED_DETACHED_TYPED_QUAD_AFT_PHYSICAL_CHARTS_QUALIFIED",
   "feature_head": "80f839e1a7b01fa36e8f2f82c86c5766629d742c",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "draft_pr": 214,
@@ -50,7 +50,7 @@
     "push_run": 43443545741,
     "pr_run": 43443556635,
     "exact_sha": "80f839e1a7b01fa36e8f2f82c86c5766629d742c",
-    "status": "IN_PROGRESS",
+    "status": "BOTH_INDEPENDENT_COMPLETED_SUCCESS_4_OF_4_JOBS_EACH_SAME_SHA",
     "expected_builds": [
       "Linux root 89/89 CTest",
       "Python 527/527",
@@ -58,10 +58,87 @@
       "native MSVC QUAD 16/16",
       "frozen TRI scientific parity"
     ],
-    "new_r2c4_marker": "R2C3_ADAPTED_SOURCE_PHYSICAL_QUAD_AFT"
+    "new_r2c4_marker": "R2C3_ADAPTED_SOURCE_PHYSICAL_QUAD_AFT",
+    "actual_evidence": {
+      "push": {
+        "run_id": 43443545741,
+        "head_sha": "80f839e1a7b01fa36e8f2f82c86c5766629d742c",
+        "conclusion": "success",
+        "jobs": "4/4",
+        "root_ctest": "89/89 PASS, includes quad.r2c2.full_source_patch_stage #74",
+        "python": "527/527 PASS",
+        "native_gcc_quad": "16/16 PASS",
+        "native_msvc_quad": "16/16 PASS",
+        "frozen_eistute_book_tri": "PASS",
+        "native_full_source_log_artifact_id": 14046343101
+      },
+      "pr": {
+        "run_id": 43443556635,
+        "head_sha": "80f839e1a7b01fa36e8f2f82c86c5766629d742c",
+        "conclusion": "success",
+        "jobs": "4/4",
+        "root_ctest": "89/89 PASS, includes quad.r2c2.full_source_patch_stage #74",
+        "python": "527/527 PASS",
+        "native_gcc_quad": "16/16 PASS",
+        "native_msvc_quad": "16/16 PASS",
+        "frozen_eistute_book_tri": "PASS",
+        "native_full_source_log_artifact_id": 14047831316
+      },
+      "both_native_root_source_markers_identical": true
+    }
   },
-  "measured_model_physical_faces": "NOT_MEASURED",
-  "any_model_full_candidate_admitted": "NOT_DETERMINED",
+  "measured_model_physical_faces": {
+    "Eistute": {
+      "original_patches": 4,
+      "disconnected_physical_charts": 4,
+      "physical_nodes": 136,
+      "typed_QUAD": 64,
+      "typed_TRI": 100,
+      "source_boundary_knot_checks": 36,
+      "dynamic_curve_knot_checks": 24,
+      "research_source_tree_leaves": 64,
+      "original_AFT_boundary_edges": 36,
+      "quad_aft_seam_edges": 64,
+      "minimum_uv_triangle_quality": 0.203771,
+      "minimum_physical_normal_alignment": 0.423,
+      "all_fronts_drained": true,
+      "quad_tri_area_balance": true,
+      "positive_nonoverlapping_uv_faces": true
+    },
+    "Book": {
+      "original_patches": 28,
+      "disconnected_physical_charts": 28,
+      "physical_nodes": 952,
+      "typed_QUAD": 448,
+      "typed_TRI": 700,
+      "source_boundary_knot_checks": 252,
+      "dynamic_curve_knot_checks": 168,
+      "research_source_tree_leaves": 448,
+      "original_AFT_boundary_edges": 252,
+      "quad_aft_seam_edges": 448,
+      "minimum_uv_triangle_quality": 0.203771,
+      "minimum_physical_normal_alignment": 0.741053,
+      "all_fronts_drained": true,
+      "quad_tri_area_balance": true,
+      "positive_nonoverlapping_uv_faces": true
+    },
+    "combined": {
+      "original_patches": 32,
+      "disconnected_physical_charts": 32,
+      "physical_nodes": 1088,
+      "typed_QUAD": 512,
+      "typed_TRI": 800,
+      "total_physical_elements": 1312,
+      "source_boundary_knot_checks": 288,
+      "dynamic_curve_knot_checks": 192,
+      "research_source_tree_leaves": 512,
+      "original_AFT_boundary_edges": 288,
+      "quad_aft_seam_edges": 512,
+      "minimum_uv_triangle_quality": 0.203771,
+      "minimum_physical_normal_alignment": 0.423
+    }
+  },
+  "any_model_full_candidate_admitted": "YES_BOTH_ORIGINAL_SOURCE_MODELS_ACCEPTED_AS_32_DISCONNECTED_RESEARCH_CHARTS_ON_EXACT_CI",
   "science_gate": {
     "global_physical_mesh_conforming": false,
     "interpatch_weld": false,
@@ -70,7 +147,24 @@
     "entire_accepted_model_Adapter_epoch": false,
     "separate_real_original_Quadtree_adaptive_hierarchy": false,
     "production_quad_uv": false,
-    "new_code_native_ASAN_UBSAN": "NOT_RUN"
+    "new_code_native_ASAN_UBSAN": "NOT_RUN",
+    "globally_qualified": false
   },
-  "next_action": "Read exact-head root C++ compilation and original R2C3_ADAPTED_SOURCE_PHYSICAL_QUAD_AFT output for both genuine source models; if any root test failure occurs, inspect and fix without bypassing real contour/physical QUAD/AFT/source science gates. On independent double green record actual total QUAD TRI nodes seam/quality metrics; if rejected preserve precise rejection reason."
+  "next_action": "Separately test real dynamic source-boundary mixed QUAD/AFT stage fault-injection/rollback, repeat deterministic original AdaptCurve source epochs and complete all original shared curve interface partitions without changing source policies; request model-hash-bound scientific sheet/junction/physical owner approval for Eistute 4 and Book 28 before any interpatch node welding or full accepted global physical mesh. Local ASan/UBSan still pending.",
+  "stage_closure_audit": {
+    "code": "ONE_NATIVE_RESEARCH_CTEST_FILE_MODIFIED_ONLY",
+    "tests": "EXACT_SAME_SHA_DOUBLE_CI_COMPLETE",
+    "original_eistute_book_native_oracles": "PASSED_IN_BOTH_ROOT_LOGS",
+    "required_negative_controls": {
+      "retained_source_boundary_snapshot": "7/7 rejected per model; two models 14",
+      "retained_native_source_adaptor": "5/5 rejected per model; two models 10",
+      "retained_fixed_disjoint_physical_stage": "3/3 rejected per model; two models 6",
+      "new_r2c4_deterministic_abort_injection": "NOT_RUN; follow-up separate gate",
+      "new_r2c4_explicit_reject_trace": "NO_REJECTIONS_ENCOUNTERED; production native source AFT failure branch still separately unqualified"
+    },
+    "scientific_interpatch_owner_decision": "NOT_APPROVED",
+    "full_original_all_curve_Adapter_epoch": "NOT_RUN",
+    "local_native_sanitizers": "NOT_RUN",
+    "production_tri": "UNCHANGED"
+  }
 }
