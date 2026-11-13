@@ -1,7 +1,7 @@
 {
   "milestone": "R2c-2 original-source full native QUAD/AFT disconnected physical chart owner stage",
   "date_utc": "2026-11-13",
-  "status": "IMPLEMENTED_EXACT_HEAD_CI_PENDING",
+  "status": "FULL_ORIGINAL_SOURCE_AFT_CHART_STAGE_EXACT_DOUBLE_CI_QUALIFIED",
   "research_feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "research_feature_head": "e43979013cc402804675edbdf9d9ebba5df6d59b",
   "draft_pull_request": 214,
@@ -34,25 +34,49 @@
       "middle",
       "prepublication"
     ],
-    "per_patch_full_face_counts": "NOT_MEASURED_YET",
+    "per_patch_full_face_counts": "UNMEASURED: successful root CTest suppresses native model counts; retained verbose root receipt to be captured on follow-up CI",
     "interpatch_seam_subdivision_equivalence": "NOT_PROVED",
     "physical_shared_node_owner": "NOT_APPROVED",
     "source_model_sheet_memberships": "PENDING_INDEPENDENT_SCIENTIFIC_APPROVAL",
     "patch_forward_backward_observer_transaction": "NOT_IMPLEMENTED",
     "production_cli_mode": "UNCHANGED_TRI",
-    "global_physical_mesh_published": false
+    "global_physical_mesh_published": false,
+    "detached_full_original_patch_stage_test": "PASS on both runs; no cross-patch node sharing"
   },
   "required_ci": {
     "feature_push_run_id": 43397303113,
-    "exact_sha_completed": false,
-    "linux_root_ctest": "PENDING",
-    "python_tooling": "PENDING",
-    "native_quad_gcc": "PENDING",
-    "native_quad_msvc": "PENDING",
-    "frozen_original_tri": "PENDING"
+    "exact_sha_completed": true,
+    "linux_root_ctest": "89/89 PASS each run; new quad.r2c2.full_source_patch_stage test #74/89 PASS (0.21s push, 0.25s PR)",
+    "python_tooling": "527/527 PASS each run",
+    "native_quad_gcc": "16/16 PASS each run",
+    "native_quad_msvc": "16/16 PASS each run",
+    "frozen_original_tri": "PASS each run",
+    "feature_pull_request_run_id": 43397311631,
+    "exact_sha": "e43979013cc402804675edbdf9d9ebba5df6d59b",
+    "independent_runs_completed_success": "2/2 each 4/4 jobs",
+    "source_r2c0": "376 source radial adjacencies; 38 rejected policy mutations, PASS each run",
+    "source_r2c1": "376 source radial adjacencies; 98 rejected policy mutations, PASS each run",
+    "original_r2b2_patch_admission": "Eistute mapped 4/4, Book mapped 28/28, rejected 0, native AFT audit trace in both roots",
+    "root_job_ids": [
+      131791276208,
+      131791295375
+    ]
   },
   "local_native_compilation": "NOT_RUN_REMOTE_ONLY",
   "local_asan_ubsan": "NOT_RUN",
-  "admission": "BLOCKED_PENDING_EXACT_CI_AND_SCIENTIFIC_SHEET_REVIEW",
-  "next_action": "Read exact e4397901 push/PR job logs; repair any build or runtime rejection without relaxing topology or source oracles; verify complete 89-test root regression, then record measured per-model native full candidate node and face counts."
+  "admission": "DISCONNECTED_ORIGINAL_PATCH_ENGINEERING_CI_QUALIFIED; GLOBAL_MODEL_SCIENTIFIC_CONNECTIVITY_BLOCKED",
+  "next_action": "Read 9360196 workflow push/PR exact CI and retained full-source verbose artifact; capture original per-model physical node, QUAD, TRI counts; do not infer model-global physical continuity or publish Patch observers.",
+  "instrumentation": {
+    "workflow_commit_sha": "9360196fec8790e0cb7ddec42714b2717919530a",
+    "full_source_verbose_ctest_name": "quad.r2c2.full_source_patch_stage",
+    "artifact_name_prefix": "quad-r2c2-full-source-stage",
+    "run_status": "PENDING",
+    "reason": "Capture original per-model total physical nodes, QUAD and TRI elements on exact source code, not inferred from previous 2-face sample test.",
+    "adverse_intermediate": {
+      "commit": "17d8a273fc2a99fa1d7ac3e2b9f86006b7382ad1",
+      "run_id": 43398913350,
+      "status": "workflow YAML invalid; literal JS replacement interpreted $' regex-substitution expansion; restored original complete workflow via replacement callback in 9360196"
+    },
+    "source_code_changed_since_qualified_commit": false
+  }
 }
