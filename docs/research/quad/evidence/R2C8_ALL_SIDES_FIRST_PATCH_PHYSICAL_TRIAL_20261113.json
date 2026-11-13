@@ -1,0 +1,34 @@
+{
+  "schema": "apmesh.quad.r2c8.original_all_sides_first_patch_native_physical_trial.v1",
+  "date_utc": "2026-11-13",
+  "feature_pr": 214,
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_commit": "4a90acfe430c233e4df1a66ef2300a11c0674e83",
+  "state": "IMPLEMENTED_DIAGNOSTIC_UNCOMPILED_CI_PENDING",
+  "scope": [
+    "Use exact R2c6 source adaptation on all curves and R2c7 native all-four-sides AFT boundary owners",
+    "Generalize existing separately owned native Quadtree/AFT typed QUAD/TRI chart builder to variable-length source boundary",
+    "Attempt exactly original patch 0 in each of Eistute and Book, with full original boundary sample partitions, actual native AFT triangulation and typed physical QUAD/TRI output",
+    "Catch diagnostic physical rejection without treating rejected physical output as a success",
+    "Do not weld across source patches; preserve exact original TRI Patch observer"
+  ],
+  "test_executed_in_chat": [],
+  "test_not_run": [
+    "Native compilation",
+    "Original native CTest",
+    "Original input TRI parity",
+    "Local ASan/UBSan",
+    "Second independent exact-source reproducibility run"
+  ],
+  "accepted_models": [],
+  "failures_verified": [],
+  "known_limitations": [
+    "Not yet an accepted production GeneratorAdaptive AdaptDomain original source-adaptive Quadtree",
+    "Only first patch candidate per model, not all 32",
+    "No global conforming seam or physical node welding",
+    "No advisor-approved high-valence sheet/junction ownership",
+    "No original 1993 point-rule scientific approval",
+    "No production quad_uv"
+  ],
+  "next_action": "Read exact CI native R2C8_ALL_SIDES_PHYSICAL_FIRST_PATCH_TRIAL source receipts; on failure isolate the first actual geometric/QUAD/AFT incompatibility without modifying original source curves, numeric tolerances or TRI oracles. Only after first-patch success expand to all 32."
+}
