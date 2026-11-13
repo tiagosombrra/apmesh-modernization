@@ -1,0 +1,53 @@
+{
+  "milestone": "R2c-2 source-ordered geometric boundary samples from actual disconnected per-patch physical QUAD/AFT nodes",
+  "date_utc": "2026-11-13",
+  "candidate_feature_sha": "74a04b289a08a91ba0e7f26b234c7ba13ccab014",
+  "draft_pr": 214,
+  "status": "CODE_COMMITTED_EXACT_HEAD_CI_PENDING",
+  "source_model_inputs": [
+    "input_models/eistute2.fixed.bp",
+    "input_models/book_v7a.bp"
+  ],
+  "implementation": "tests/quad/full_source_patch_stage_probe.cpp",
+  "scope": [
+    "extract physical chart-owned source-quarter boundary nodes from already constructed typed TRI/QUAD elements",
+    "map original source parameter order through PatchBezier::IsCurveReversed",
+    "compare actual detached NodeAdaptive XYZ against original CurveAdaptiveParametric control curve at 5 sites per side",
+    "group by original CurveAdaptiveParametric pointer from PatchReader and pairwise compare shared original source-curve sites across distinct chart owners",
+    "require no duplicate patch/side and no cross-patch NodeAdaptive pointer alias",
+    "negative controls reject coordinate distortion, missing physical node, null source curve provenance and forged physical owner alias"
+  ],
+  "expected_source_max_valence": {
+    "Eistute": 4,
+    "Book": 28
+  },
+  "known_unqualified": [
+    "real production Adapter::AdaptCurve source subdivision",
+    "entire continuous curve not just 5 fixed source sites",
+    "all source curve interval knot correspondence",
+    "global geometric nonintersection",
+    "nonmanifold sheet/junction scientific owner approval",
+    "global physical node welding",
+    "cross-patch mesh adjacency",
+    "Patch and SubMesh observer publication",
+    "local ASan UBSan"
+  ],
+  "scientific_admission": false,
+  "physical_mesh_published": false,
+  "required_exact_head_push": 43427687327,
+  "required_exact_head_pr": 43427695306,
+  "qualified_ci": false,
+  "native_source_counts": "PENDING",
+  "expected_negative_rejections_per_original_model": 4,
+  "existing_measured_predecessor": {
+    "sha": "9360196fec8790e0cb7ddec42714b2717919530a",
+    "push": 43398974425,
+    "pr": 43399166024,
+    "linux_root_ctest": "89/89",
+    "python": "527/527",
+    "gcc_quad": "16/16",
+    "msvc_quad": "16/16",
+    "actual_source_counts": "Eistute 164 nodes/64 QUAD/128 TRI; Book 1932 nodes/1176 QUAD/1008 TRI"
+  },
+  "next_action": "Read full new CTest original curve markers and negative control outcomes on exact source SHA; fix any actual failure without weakening original R2c constraints."
+}
