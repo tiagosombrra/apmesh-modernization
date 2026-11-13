@@ -241,6 +241,24 @@ jobs:
             --directory build/local-serial/r2c13_generator_epochs \
             --root . \
             --engine-source src/generator/generator_adaptive.cpp
+      - name: Measure R2c16 bounded original GeneratorAdaptive source-control profiles
+        shell: bash
+        run: |
+          python3 tests/quad/test_r2c16_m7_bounded_research_profiles.py \
+            --exe build/local-serial/bin/quad_generator_outcome_probe \
+            --root . \
+            --directory build/local-serial/r2c16_generator_research_profiles
+      - name: Retain R2c16 source-bound control ablations (no acceptance overrides)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c16-source-ablation-${{ github.sha }}
+          path: |
+            build/local-serial/r2c16_generator_research_profiles/r2c16_original_generator_controlled_profiles.json
+            build/local-serial/r2c16_generator_research_profiles/*/generator_stdout.log
+            build/local-serial/r2c16_generator_research_profiles/*/generator_stderr.log
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain R2c13 original generator accepted-step and rollback diagnostics
         if: success()
         uses: actions/upload-artifact@v4
