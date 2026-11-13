@@ -60,7 +60,7 @@ def sha(path):
 
 
 def key_values(line):
-    return dict(re.findall(r"([a-z_]+)=([^\s]+)", line))
+    return dict(re.findall(r"([A-Za-z_]+)=([^\s]+)", line))
 
 
 def integer(fields, name):
