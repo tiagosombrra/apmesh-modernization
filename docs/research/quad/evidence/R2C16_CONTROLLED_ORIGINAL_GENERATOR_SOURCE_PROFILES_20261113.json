@@ -115,5 +115,43 @@
         "two_accepted": false
       }
     ]
-  }
+  },
+  "additional_original_native_stdout_findings": {
+    "eistute": {
+      "curve_growth_stepn_1p5": {
+        "accepted_step1_elements": 1168,
+        "accepted_step1_error": 0.0620623,
+        "step2_error": 0.0775284,
+        "step3_error": 0.0746173,
+        "step4_error": 0.0100167,
+        "step4_growth": 6.17808,
+        "second_commit": false
+      },
+      "quadtree_stepn_depth3": {
+        "same_original_generated_element_and_error_receipts_as_curve_growth_stepn_1p5": true,
+        "second_commit": false
+      }
+    },
+    "book": {
+      "debug_curve_growth_stepn_1p5": {
+        "accepted_step1_elements": 4256,
+        "accepted_step1_error": 42.1875,
+        "step2_error": 168.932,
+        "step3_error": 168.932,
+        "second_commit": false
+      },
+      "stable_quadtree_stepn_depth2": {
+        "accepted_step1_elements": 715,
+        "accepted_step1_error": 35.0645,
+        "rejected_step2_error": 97.0878,
+        "rejected_step3_error": 68.8843,
+        "rejected_step4_error": 11.9415,
+        "rejected_step4_candidate_growth": 11.9566,
+        "rejected_step4_score": -6.83409,
+        "original_reason": "hybrid_criterion_rejected",
+        "second_commit": false
+      }
+    }
+  },
+  "additional_interpretation": "Eistute source curve-growth and shallower Quadtree variations produced identical printed source candidate counts/errors, so cannot claim a causal improvement. The two-knob Book stable profile legitimately obtained a smaller accepted first TRI mesh (715 vs 4256 in pinned original), lower step1 error (35.0645 vs 42.1875), but all later source epochs remained rejected; step4 lower candidate error at 11.9415 with >11x growth is not an accepted second mesh."
 }
