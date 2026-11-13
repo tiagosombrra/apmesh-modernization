@@ -8,6 +8,11 @@
 #include "crab_mesh/aft/quadtree_cell.h"
 #include "data/curve/curve_adaptive_parametric.h"
 #include "data/geometry.h"
+#include "adapter/adapter.h"
+#include "crab_mesh/performer/ranged_id_manager.h"
+#include "generator/curve_publication.h"
+#include "generator/curve_sample_lifetime.h"
+#include "generator/initial_mesh.h"
 #include "data/patch/patch_bezier.h"
 #include "input_output/patch_reader.h"
 
@@ -443,6 +448,252 @@ std::unique_ptr<SubMesh> BuildOriginalAftChart(
   return chart;
 }
 
+// Source-only original two-pass Adapter experiment on one genuine high-valence
+// curve per original model. It is independent of the detached QUAD/AFT charts.
+struct NativeAdaptedSite {
+  double parameter = 0.0;
+  unsigned long source_node_id = 0UL;
+  Xyz physical{};
+};
+
+using NativeAdaptedSites = std::vector<NativeAdaptedSite>;
+
+NativeAdaptedSites SnapshotNativeAdaptedSource(
+    CurveAdaptiveParametric& source) {
+  const std::vector<double> t(source.parameters_.begin(),
+                              source.parameters_.end());
+  const auto& points = source.GetPoints();
+  Require(t.size() == points.size() && t.size() > 2U,
+          "Real two-pass Adapter did not produce a refined physical curve");
+  NativeAdaptedSites sites;
+  sites.reserve(t.size());
+  auto point = points.begin();
+  std::set<unsigned long> node_ids;
+  for (std::size_t i = 0; i < t.size(); ++i, ++point) {
+    auto* physical = dynamic_cast<NodeAdaptive*>(*point);
+    Require(physical && physical->GetId() > 0UL &&
+                node_ids.insert(physical->GetId()).second &&
+                std::isfinite(t[i]) && t[i] >= 0.0 && t[i] <= 1.0 &&
+                (i == 0U || t[i] > t[i - 1U]),
+            "Real two-pass Adapter output has invalid ordered samples or IDs");
+    sites.push_back({t[i], physical->GetId(), Values(*physical)});
+  }
+  Require(t.front() == 0.0 && t.back() == 1.0,
+          "Real original adapted curve dropped source endpoints");
+  return sites;
+}
+
+struct NativeAdaptedReport {
+  std::size_t intervals = 0;
+  std::size_t source_sites = 0;
+  std::size_t incidences = 0;
+  std::size_t full_incidence_site_checks = 0;
+  std::size_t full_incidence_interval_checks = 0;
+  std::size_t geometric_incidence_pairs = 0;
+  std::size_t pairwise_interval_matches = 0;
+};
+
+NativeAdaptedReport AuditNativeAdapterSourceIntervals(
+    Geometry& original, CurveAdaptiveParametric& source,
+    const NativeAdaptedSites& samples, unsigned expected_valence) {
+  Require(samples.size() > 2U && expected_valence > 2U,
+          "Original source Adapter interval audit requires adaptive samples");
+  NativeAdaptedReport result;
+  result.source_sites = samples.size();
+  result.intervals = samples.size() - 1U;
+  const auto observed = SnapshotNativeAdaptedSource(source);
+  Require(observed.size() == samples.size(),
+          "Original adapted source curve changed during a read-only audit");
+  for (std::size_t i = 0; i < samples.size(); ++i) {
+    Require(samples[i].source_node_id == observed[i].source_node_id &&
+                samples[i].parameter == observed[i].parameter &&
+                NearSource(samples[i].physical, observed[i].physical) &&
+                NearSource(samples[i].physical,
+                           Values(source.FindPointByParameter(samples[i].parameter))),
+            "Original source Adapter sample was forged or mutated");
+  }
+  std::vector<unsigned> incident_patches;
+  for (unsigned p = 0; p < original.GetNumberPatches(); ++p) {
+    auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(p));
+    Require(patch != nullptr, "Original source patch type changed");
+    for (unsigned side = 0; side < patch->GetNumBerCurves(); ++side) {
+      if (patch->GetCurve(side) != &source) continue;
+      Require(std::find(incident_patches.begin(), incident_patches.end(), p) ==
+                  incident_patches.end(),
+              "High-valence source curve occurs twice in one patch");
+      incident_patches.push_back(p);
+      ++result.incidences;
+      for (std::size_t i = 0; i < samples.size(); ++i) {
+        const double local = patch->IsCurveReversed(side)
+            ? 1.0 - samples[i].parameter : samples[i].parameter;
+        const UvVertex uv = side == 0U ? UvVertex{local, 0.0}
+            : side == 1U ? UvVertex{1.0, local}
+            : side == 2U ? UvVertex{local, 1.0}
+                         : UvVertex{0.0, local};
+        Require(NearSource(samples[i].physical,
+                           Values(patch->Parameterize(uv.u, uv.v))),
+                "Original adapted source parameter did not match patch XYZ");
+        ++result.full_incidence_site_checks;
+      }
+      for (std::size_t i = 1; i < samples.size(); ++i) {
+        Require(samples[i].parameter > samples[i - 1U].parameter &&
+                    samples[i].source_node_id != samples[i - 1U].source_node_id,
+                "Original dynamically adapted source interval collapsed");
+        ++result.full_incidence_interval_checks;
+      }
+    }
+  }
+  Require(result.incidences == expected_valence &&
+              result.incidences == source.GetNumBerPatches() &&
+              result.full_incidence_site_checks ==
+                  samples.size() * expected_valence &&
+              result.full_incidence_interval_checks ==
+                  result.intervals * expected_valence,
+          "Original source high-valence adaptation coverage incomplete");
+  result.geometric_incidence_pairs =
+      result.incidences * (result.incidences - 1U) / 2U;
+  result.pairwise_interval_matches =
+      result.geometric_incidence_pairs * result.intervals;
+  // A shared source CurveAdaptiveParametric owns one parameter partition;
+  // these are geometric pairwise interval equalities, not physical joins.
+  return result;
+}
+
+unsigned RejectAlteredAdapterSnapshots(
+    Geometry& original, CurveAdaptiveParametric& source,
+    const NativeAdaptedSites& valid, unsigned valence) {
+  unsigned rejected = 0;
+  const auto must_reject = [&](NativeAdaptedSites samples) {
+    bool failed = false;
+    try {
+      static_cast<void>(AuditNativeAdapterSourceIntervals(
+          original, source, samples, valence));
+    } catch (const std::runtime_error&) {
+      failed = true;
+    }
+    Require(failed, "Invalid original Adapter source partition was admitted");
+    ++rejected;
+  };
+  auto distorted = valid;
+  distorted[1].physical[0] += 1.0;
+  must_reject(std::move(distorted));
+  auto dropped = valid;
+  dropped.erase(dropped.begin() + 1);
+  must_reject(std::move(dropped));
+  auto reordered = valid;
+  std::swap(reordered[0], reordered[1]);
+  must_reject(std::move(reordered));
+  auto alias = valid;
+  alias[1].source_node_id = alias[0].source_node_id;
+  must_reject(std::move(alias));
+  auto wrong_param = valid;
+  wrong_param[1].parameter =
+      (wrong_param[0].parameter + wrong_param[1].parameter) / 2.0;
+  must_reject(std::move(wrong_param));
+  return rejected;
+}
+
+void RunNativeOriginalSharedCurveAdaptation(const std::string& model,
+                                            unsigned expected_valence) {
+  Geometry original;
+  PatchReader reader;
+  Require(reader.ReaderFilePatches(&original, model) == &original &&
+              original.GetNumberPatches() == expected_valence,
+          "Original model for native Adapter curve sample audit unavailable");
+  Performer::RangedIdManager id_manager(0, 0, 100000, 100000, 2);
+  id_manager.setId(100);
+  id_manager.setId(1, 200);
+  apmesh::generation::CurveSampleLifetime lifetime(original);
+  std::vector<std::unique_ptr<SubMesh>> original_coarse_meshes;
+  original_coarse_meshes.reserve(original.GetNumberPatches());
+  for (unsigned patch = 0; patch < original.GetNumberPatches(); ++patch) {
+    auto* source = dynamic_cast<PatchCoons*>(original.GetPatch(patch));
+    Require(source != nullptr, "Original source model lacks a Coons patch");
+    original_coarse_meshes.push_back(
+        apmesh::generation::BuildInitialSubMesh(source, &id_manager));
+  }
+
+  // Retire initial samples replaced by the two original Adapter passes.
+  // Any still referenced by other original curves remain under their existing
+  // collective CurveSampleLifetime owner. Destruction precedes that owner.
+  struct RetireOrphanedSamples {
+    Geometry& geometry;
+    std::set<PointAdaptive*> initial;
+    ~RetireOrphanedSamples() noexcept {
+      std::set<PointAdaptive*> current;
+      for (unsigned c = 0; c < geometry.GetNumberCurves(); ++c)
+        for (auto* point : geometry.GetCurve(c)->GetPoints())
+          current.insert(point);
+      for (auto* point : initial)
+        if (!current.count(point)) delete point;
+    }
+  } retire{original, {}};
+  for (unsigned c = 0; c < original.GetNumberCurves(); ++c) {
+    auto* curve = dynamic_cast<CurveAdaptiveParametric*>(
+        original.GetCurve(c));
+    Require(curve != nullptr && curve->GetNumBerPoints() == 2U,
+            "Native coarse original model has uninitialized curve endpoints");
+    curve->UpdateParameters({0.0, 1.0});
+    for (auto* point : curve->GetPoints()) retire.initial.insert(point);
+  }
+
+  CurveAdaptiveParametric* target = nullptr;
+  for (unsigned c = 0; c < original.GetNumberCurves(); ++c) {
+    auto* curve = dynamic_cast<CurveAdaptiveParametric*>(
+        original.GetCurve(c));
+    if (curve && curve->GetNumBerPatches() == expected_valence) {
+      Require(target == nullptr,
+              "More than one expected high-valence original source curve");
+      target = curve;
+    }
+  }
+  Require(target != nullptr, "Missing original valence-4/28 source curve");
+  target->CalculateLengthCurve();
+  Require(std::isfinite(target->GetLength()) && target->GetLength() > 0.0,
+          "Original high-valence curve has invalid parametric length");
+  Adapter adapter;
+  std::map<PointAdaptive*, PointAdaptive*> point_cache;
+  apmesh::generation::RefineCurveSamples(
+      target, point_cache,
+      [&] {
+        return adapter.AdaptCurveByCurve(target, point_cache, &id_manager, 1.0);
+      },
+      [&] {
+        return adapter.AdaptCurveBySurface(target, point_cache, &id_manager, 1.0);
+      },
+      false, 0, &id_manager);
+  const NativeAdaptedSites sampled = SnapshotNativeAdaptedSource(*target);
+  const auto report = AuditNativeAdapterSourceIntervals(
+      original, *target, sampled, expected_valence);
+  const unsigned rejected = RejectAlteredAdapterSnapshots(
+      original, *target, sampled, expected_valence);
+  Require(rejected == 5U, "Original Adapter source negative controls incomplete");
+  for (unsigned patch = 0; patch < original.GetNumberPatches(); ++patch) {
+    Require(original.GetPatch(patch)->GetSubMesh() ==
+                original_coarse_meshes[patch].get(),
+            "Source Adapter curve audit modified original accepted TRI observer");
+  }
+  std::cout << "R2C3_NATIVE_ADAPTER_SOURCE_INTERVALS"
+            << " original_patches=" << expected_valence
+            << " original_shared_source_curves=1"
+            << " source_sites=" << report.source_sites
+            << " source_intervals=" << report.intervals
+            << " original_source_incidences=" << report.incidences
+            << " complete_incidence_sites=" << report.full_incidence_site_checks
+            << " complete_incidence_intervals="
+            << report.full_incidence_interval_checks
+            << " pairwise_incidence_comparisons="
+            << report.geometric_incidence_pairs
+            << " pairwise_interval_matches="
+            << report.pairwise_interval_matches
+            << " rejected_negative_controls=" << rejected
+            << " adaptation=AdapterByCurve+AdapterBySurface"
+            << " original_submesh_observers_preserved=1"
+            << " topology_sheet_approval=0"
+            << " physical_cross_patch_welding=0"
+            << " global_mesh_publication=0\n";
+}
+
 void RunSource(const std::string& source, unsigned expected, bool refined) {
   Geometry original;
   PatchReader reader;
@@ -560,6 +811,8 @@ int main(int argc, char** argv) {
     Require(argc == 3, "Expected original Eistute and Book .bp sources");
     RunSource(argv[1], 4U, false);
     RunSource(argv[2], 28U, true);
+    RunNativeOriginalSharedCurveAdaptation(argv[1], 4U);
+    RunNativeOriginalSharedCurveAdaptation(argv[2], 28U);
     return 0;
   } catch (const std::exception& error) {
     std::cerr << "R2c2 full original AFT detached staging failed: "
