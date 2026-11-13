@@ -85,7 +85,8 @@ def verify_one_model(directory, model, spec):
     for r in records:
         patch = int(r["patch_id"])
         side = int(r["side"])
-        curve = int(r["curve_id"])
+        curve_registry = int(r["curve_registry_index"])
+        curve_id = int(r["curve_id"])
         node = int(r["source_node_id"])
         t = float(r["source_parameter"])
         xyz = (float(r["source_x"]), float(r["source_y"]),
@@ -93,6 +94,7 @@ def verify_one_model(directory, model, spec):
         index = int(r["obj_vertex_index"])
         terminal = int(r["is_terminal"])
         require(0 <= patch < spec["patches"] and 0 <= side < 4 and
+                0 <= curve_registry < spec["curves"] and curve_id >= 0 and
                 node > 0 and 0.0 <= t <= 1.0 and terminal in (0, 1),
                 "Bad original source curve incidence provenance")
         require(index in vertices and vertices[index][0] == patch,
@@ -100,16 +102,18 @@ def verify_one_model(directory, model, spec):
         require(all(math.isfinite(x) for x in xyz) and
                 near_xyz(xyz, vertices[index][1]),
                 "Adapted source site has no corresponding exported physical node")
-        by_side[(patch, side)].append((curve, node, t, xyz, terminal))
-        by_curve[curve].append((patch, side, node, t, xyz, terminal))
+        by_side[(patch, side)].append(
+            (curve_registry, node, t, xyz, terminal, curve_id))
+        by_curve[curve_registry].append(
+            (patch, side, node, t, xyz, terminal, curve_id))
         source_witnesses.add((patch, side, node, t, index))
 
     require(len(source_witnesses) == len(records),
             "Repeated source patch-side knots in atlas")
     require(len(by_side) == 4 * spec["patches"],
             "Not every one of the original four sides has source witnesses")
-    require(len(by_curve) == spec["curves"],
-            "The actual source atlas does not cover all original curves")
+    require(set(by_curve) == set(range(spec["curves"])),
+            "The actual source atlas does not cover every Geometry curve registry index")
     for key, values in by_side.items():
         require(len(values) >= 3 and sum(x[4] for x in values) == 1,
                 f"Original side {key} lost refined knots or its terminal")
@@ -128,8 +132,12 @@ def verify_one_model(directory, model, spec):
     compared_pairs = 0
     compared_sites = 0
     for curve, values in by_curve.items():
+        # Legacy curve IDs may be reused; the original Geometry registry index
+        # is the canonical identity for distinct source curve objects.
+        require(len({value[6] for value in values}) == 1,
+                "A source registry curve unexpectedly changed its legacy ID")
         incidences = defaultdict(list)
-        for patch, side, node, t, xyz, terminal in values:
+        for patch, side, node, t, xyz, terminal, legacy_id in values:
             incidences[(patch, side)].append((t, node, xyz))
         order = sorted(incidences)
         canonical = sorted(incidences[order[0]])
@@ -163,6 +171,9 @@ def verify_one_model(directory, model, spec):
     return {
         "patches": spec["patches"],
         "source_curves": len(by_curve),
+        "distinct_legacy_curve_ids": len({
+            value[0][6] for value in by_curve.values()
+        }),
         "unique_source_curve_points": source_points,
         "physical_obj_source_witnesses": len(records),
         "all_original_patch_sides": len(by_side),
