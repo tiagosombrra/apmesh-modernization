@@ -229,6 +229,11 @@ jobs:
             --exe build/local-serial/bin/quad_generator_outcome_probe \
             --root . \
             --directory build/local-serial/r2c13_generator_epochs
+      - name: Diagnose R2c14 original rejected generator candidate quality and patch regressions
+        shell: bash
+        run: |
+          python3 tools/diagnose_r2c14_generator_rejections.py \
+            --directory build/local-serial/r2c13_generator_epochs
       - name: Retain R2c13 original generator accepted-step and rollback diagnostics
         if: success()
         uses: actions/upload-artifact@v4
@@ -236,6 +241,10 @@ jobs:
           name: quad-r2c13-original-generator-epochs-${{ github.sha }}
           path: |
             build/local-serial/r2c13_generator_epochs/r2c13_accepted_generator_epochs.json
+            build/local-serial/r2c13_generator_epochs/r2c14_generator_rejection_forensics.json
+            build/local-serial/r2c13_generator_epochs/*/*_acceptance_*.log
+            build/local-serial/r2c13_generator_epochs/*/*_curve_adaptation_*.csv
+            build/local-serial/r2c13_generator_epochs/*/*_patch_adaptation_*.csv
             build/local-serial/r2c13_generator_epochs/*/generator_stdout.log
             build/local-serial/r2c13_generator_epochs/*/generator_stderr.log
           if-no-files-found: error
