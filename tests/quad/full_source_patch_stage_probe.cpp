@@ -1960,8 +1960,9 @@ void ExportAllSidesPhysicalOriginalModel(
           "R2c11 unable to create physical research mesh/atlas exports");
   obj << std::setprecision(17);
   atlas << std::setprecision(17)
-        << "patch_id,side,curve_id,source_node_id,source_parameter,"
-        << "source_x,source_y,source_z,obj_vertex_index,is_terminal\n";
+        << "patch_id,side,curve_registry_index,curve_id,source_node_id,"
+        << "source_parameter,source_x,source_y,source_z,"
+        << "obj_vertex_index,is_terminal\n";
   obj << "# Research-only original " << model
       << " QUAD/AFT; all four adapted sides per patch\n";
   obj << "# Separate patch nodes, no nonmanifold welding or global sheet approval\n";
@@ -1982,6 +1983,15 @@ void ExportAllSidesPhysicalOriginalModel(
   std::size_t total_quads = 0;
   std::size_t total_tris = 0;
   std::size_t source_atlas_sites = 0;
+  std::map<const CurveAdaptiveParametric*, unsigned> original_curve_registry;
+  for (unsigned c = 0; c < original.GetNumberCurves(); ++c) {
+    auto* curve = dynamic_cast<CurveAdaptiveParametric*>(
+        original.GetCurve(c));
+    Require(curve && original_curve_registry.emplace(curve, c).second,
+            "R2c11 original source curve registry has invalid or repeated owners");
+  }
+  Require(original_curve_registry.size() == (eistute ? 13U : 85U),
+          "R2c11 original source registry cardinality differs from model");
   for (unsigned patch_id = 0; patch_id < original_patches; ++patch_id) {
     const auto* chart = detached_root.GetSubMeshAdaptiveByPosition(patch_id);
     Require(chart && chart->GetPatch() == nullptr,
@@ -2076,7 +2086,9 @@ void ExportAllSidesPhysicalOriginalModel(
                     Finite(site.physical_xyz) &&
                     std::isfinite(site.original_parameter),
                 "R2c11 original nonterminal site provenance is invalid");
-        atlas << patch_id << ',' << side << ',' << site.curve_id << ','
+        atlas << patch_id << ',' << side << ','
+              << original_curve_registry.at(curve) << ','
+              << site.curve_id << ','
               << site.physical_node_id << ','
               << site.original_parameter << ','
               << site.physical_xyz[0] << ',' << site.physical_xyz[1]
@@ -2092,7 +2104,9 @@ void ExportAllSidesPhysicalOriginalModel(
                   Finite(terminal.xyz) &&
                   std::isfinite(terminal.parameter),
               "R2c11 original source curve terminal corner is invalid");
-      atlas << patch_id << ',' << side << ',' << curve->GetId() << ','
+      atlas << patch_id << ',' << side << ','
+            << original_curve_registry.at(curve) << ','
+            << curve->GetId() << ','
             << terminal.node_id << ',' << terminal.parameter << ','
             << terminal.xyz[0] << ',' << terminal.xyz[1]
             << ',' << terminal.xyz[2] << ','
@@ -2132,6 +2146,7 @@ void ExportAllSidesPhysicalOriginalModel(
             << " original_source_incidence_sites=" << source_atlas_sites
             << " actual_physical_OBJ_vertex_witnesses=" << source_atlas_sites
             << " original_curve_ids_and_node_ids_retained=1"
+            << " unique_original_curve_registry_index_retained=1"
             << " all_adapted_source_terminal_corners_recorded=1"
             << " cross_patch_source_equality_not_node_welding=1"
             << " scientific_sheet_policy_approved=0\n";
