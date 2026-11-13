@@ -256,6 +256,23 @@ jobs:
           path: build/local-serial/r2c1_sheet_review/*.json
           if-no-files-found: error
           retention-days: 14
+      - name: Bind original radial scientific records to exported physical seam atlas for advisor review
+        shell: bash
+        run: |
+          python3 tools/build_r2c12_advisor_handoff.py \
+            --root . \
+            --radial-directory build/local-serial/r2c0_radial_incidence \
+            --review-directory build/local-serial/r2c1_sheet_review \
+            --mesh-directory build/local-serial/r2c10_original_detached_meshes \
+            --output-directory build/local-serial/r2c12_advisor_handoff
+      - name: Retain R2c12 model SHA-bound scientific advisor handoff (no welding)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c12-advisor-handoff-${{ github.sha }}
+          path: build/local-serial/r2c12_advisor_handoff/*.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
