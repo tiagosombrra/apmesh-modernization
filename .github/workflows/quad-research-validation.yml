@@ -234,6 +234,13 @@ jobs:
         run: |
           python3 tools/diagnose_r2c14_generator_rejections.py \
             --directory build/local-serial/r2c13_generator_epochs
+      - name: Diagnose R2c15 exact source-stable GeneratorAdaptive guard inequalities
+        shell: bash
+        run: |
+          python3 tools/verify_r2c15_original_acceptance_guards.py \
+            --directory build/local-serial/r2c13_generator_epochs \
+            --root . \
+            --engine-source src/generator/generator_adaptive.cpp
       - name: Retain R2c13 original generator accepted-step and rollback diagnostics
         if: success()
         uses: actions/upload-artifact@v4
@@ -242,6 +249,7 @@ jobs:
           path: |
             build/local-serial/r2c13_generator_epochs/r2c13_accepted_generator_epochs.json
             build/local-serial/r2c13_generator_epochs/r2c14_generator_rejection_forensics.json
+            build/local-serial/r2c13_generator_epochs/r2c15_original_acceptance_guard_inequalities.json
             build/local-serial/r2c13_generator_epochs/*/*_acceptance_*.log
             build/local-serial/r2c13_generator_epochs/*/*_curve_adaptation_*.csv
             build/local-serial/r2c13_generator_epochs/*/*_patch_adaptation_*.csv
