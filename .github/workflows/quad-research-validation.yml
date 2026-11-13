@@ -145,6 +145,281 @@ jobs:
       - name: Run full CTest baseline
         shell: bash
         run: ctest --preset local-serial --output-on-failure --no-tests=error
+      - name: Record full original-source QUAD/AFT detached chart inventories
+        shell: bash
+        run: |
+          set -o pipefail
+          # Retain real physical node/element counts and rollbacks on both originals.
+          # This does not authorize source boundary welding or patch observers.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]r2c2[.]full_source_patch_stage
+        shell: bash
+        run: |
+          # Retain actual original-model and synthetic chart fault results.
+          # This proof does not authorize cross-patch physical connectivity.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]r2c2[.]disjoint_owner_stage$' --no-tests=error | tee build/local-serial/quad_r2c2_disjoint_stage.log
+      - name: Retain bounded detached source-model QUAD TRI owner receipts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c2-disjoint-owner-${{ github.sha }}
+          path: build/local-serial/quad_r2c2_disjoint_stage.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Record native R2b2 Bezier source patch admission
+        shell: bash
+        run: |
+          # Repeat the already-registered native source test with retained output.
+          # This makes exact per-model ACCEPT/REJECT counts independently visible.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]r2b2[.]real_bezier_aft$' --no-tests=error | tee build/local-serial/quad_r2b2_source_admission.log
+      - name: Retain R2b2 actual Bezier source admission report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2b2-real-bezier-admission-${{ github.sha }}
+          path: build/local-serial/quad_r2b2_source_admission.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Record true Adapter dynamically curved original AFT trial
+        shell: bash
+        run: |
+          # This repeats two already required CTests verbosely to retain the
+          # original AFT admission/rejection and unmodified TRI outcome trace.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]generator[.]real_global_outcomes([.]book)?$' --no-tests=error | tee build/local-serial/quad_dynamic_source_aft.log
+      - name: Retain original Adapter dynamic source AFT diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2b2-actual-source-aft-${{ github.sha }}
+          path: build/local-serial/quad_dynamic_source_aft.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Build fail-closed R2c0 original source radial edge incidence records
+        shell: bash
+        run: |
+          # Cross-check real PatchReader incidence graphs and source Bézier interval
+          # proof logs. This does not publish/weld any physical nodes or elements.
+          python3 tests/quad/test_r2c0_source_radial_incidence.py \
+            --root . \
+            --graph-directory build/local-serial/m4_sheet_incidence \
+            --source-log build/local-serial/quad_dynamic_source_aft.log \
+            --directory build/local-serial/r2c0_radial_incidence
+      - name: Retain bounded source-linked R2c0 incidence and pending policy
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c0-radial-incidence-${{ github.sha }}
+          path: build/local-serial/r2c0_radial_incidence/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Validate source-bound R2c1 sheet review packets and draft semantics
+        shell: bash
+        run: |
+          # All candidate continuations remain unapproved; no node owners change.
+          python3 tests/quad/test_r2c1_sheet_review.py \
+            --root . \
+            --r2c0-directory build/local-serial/r2c0_radial_incidence \
+            --directory build/local-serial/r2c1_sheet_review
+      - name: Retain bounded R2c1 pending scientific review packets
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c1-sheet-review-${{ github.sha }}
+          path: build/local-serial/r2c1_sheet_review/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Run tooling Python controls
+        shell: bash
+        run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
+      - name: Audit versioned and built-in research model catalog
+        shell: bash
+        run: |
+          python3 tests/quad/audit_model_catalog.py --root . --report build/local-serial/quad_model_catalog.json
+      - name: Retain research model catalog and shared-boundary diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-model-catalog-${{ github.sha }}
+          path: build/local-serial/quad_model_catalog.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Check application M3 mode rejection before TRI globals are touched
+        shell: bash
+        run: python3 tests/quad/test_m3_dispatch.py build/local-serial/bin/ap_mesh
+      - name: Publish native-origin built-in physical hybrid research witnesses
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-real-model-${{ github.sha }}
+          path: |
+            build/local-serial/m4_real_model/physical_model_hybrid_manifest.json
+            build/local-serial/m4_real_model/physical_model_hybrid_*.obj
+            build/local-serial/m4_real_model/physical_model_hybrid_*.csv
+            build/local-serial/m4_real_model/research_local_delaunay_manifest.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Publish physical four-node QUAD ownership research evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-four-node-ownership-${{ github.sha }}
+          path: |
+            build/local-serial/m4_quad_ownership/physical_quad_ownership_manifest.json
+            build/local-serial/m4_quad_ownership/physical_model_hybrid_*.obj
+            build/local-serial/m4_quad_ownership/physical_model_hybrid_*.csv
+          if-no-files-found: error
+          retention-days: 14
+      - name: Publish audited two-patch physical QUAD/TRI research candidates
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-pairwise-physical-${{ github.sha }}
+          path: |
+            build/local-serial/m4_pairwise_physical/pairwise_physical_manifest.json
+            build/local-serial/m4_pairwise_physical/pairwise_*.obj
+            build/local-serial/m4_pairwise_physical/pairwise_*.csv
+            build/local-serial/m4_pairwise_physical/native_uv_*.csv
+          if-no-files-found: error
+          retention-days: 14
+      - name: Publish real external Bezier per-patch physical diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-external-bezier-${{ github.sha }}
+          path: |
+            build/local-serial/m4_external_bezier/m4_external_bezier_physical_manifest.json
+            build/local-serial/m4_external_bezier/m4_external_bezier_physical_candidates.zip
+          if-no-files-found: error
+          retention-days: 14
+      - name: Publish Bezier sheet/curve incidence graph audit
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-m4-sheet-incidence-${{ github.sha }}
+          path: |
+            build/local-serial/m4_sheet_incidence/m4_sheet_incidence_manifest.json
+            build/local-serial/m4_sheet_incidence/sheet_graph_*.json
+            build/local-serial/m4_sheet_incidence/sheet_graph_*.dot
+          if-no-files-found: error
+          retention-days: 14
+      - name: Publish bounded baseline logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tri-failure-${{ github.sha }}
+          path: |
+            build/local-serial/Testing/Temporary/LastTest.log
+          if-no-files-found: ignore
+          retention-days: 7
+
+  scientific-tri-compare:
+    name: TRI scientific equivalence against frozen baseline
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Fetch full ancestry for strict reference comparison
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Create immutable historical reference worktree
+        shell: bash
+        run: |
+          git worktree add --detach ../apmesh-tri-reference f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94
+          python3 - <<'PY'
+          import subprocess
+          allowed = {
+              "include/application/runtime_config.h",
+              "include/input_output/input_validation.h",
+              "src/application/runtime_config.cpp",
+              "src/application/run_application.cpp",
+              "include/crab_mesh/aft/advancing_front.h",
+              "src/crab_mesh/aft/advancing_front.cpp",
+              "include/adapter/adapter.h",
+              "src/adapter/adapter.cpp",
+              "include/generator/generator_adaptive.h",
+              "src/generator/generator_adaptive.cpp",
+          }
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only",
+               "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94", "HEAD",
+               "--", "src/", "include/", "configs/"],
+              text=True).splitlines())
+          unexpected = changed - allowed
+          if unexpected:
+              raise SystemExit("Unreviewed production delta: " + ", ".join(sorted(unexpected)))
+          print("Reviewed M3 dispatch-only source delta:", sorted(changed))
+          PY
+          git rev-parse HEAD
+          git -C ../apmesh-tri-reference rev-parse HEAD
+      - name: Build reference TRI executable using the same compiler and flags
+        shell: bash
+        run: |
+          cmake -S ../apmesh-tri-reference -B ../apmesh-tri-reference/build/science-reference -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF
+          cmake --build ../apmesh-tri-reference/build/science-reference --target ap_mesh --parallel 2
+      - name: Build candidate TRI executable using the same compiler and flags
+        shell: bash
+        run: |
+          cmake -S . -B build/science-candidate -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF
+          cmake --build build/science-candidate --target ap_mesh --parallel 2
+          sha256sum ../apmesh-tri-reference/build/science-reference/bin/ap_mesh build/science-candidate/bin/ap_mesh
+      - name: Execute fixed Eistute and Book models for both revisions
+        shell: bash
+        run: |
+          for model in eistute book; do
+            python3 ../apmesh-tri-reference/tools/run_generation_case.py --exe ../apmesh-tri-reference/build/science-reference/bin/ap_mesh --model "$model" --output "../apmesh-tri-reference/build/science-reference/$model" --timeout 300
+            python3 tools/run_generation_case.py --exe build/science-candidate/bin/ap_mesh --model "$model" --output "build/science-candidate/$model" --timeout 300
+          done
+      - name: Independently audit snapshots and compare all accepted/rejected states
+        shell: bash
+        run: |
+          for model in eistute book; do
+            python3 tools/verify_generation.py "build/science-candidate/$model" --baseline "../apmesh-tri-reference/build/science-reference/$model" --require-boundary-coverage --report "build/science-candidate/${model}-comparison.json"
+          done
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          for model, expected_states in (("eistute", 5), ("book", 4)):
+              result = json.loads((Path("build/science-candidate") / f"{model}-comparison.json").read_text())
+              assert result["compared_meshes"] == expected_states, (model, result)
+              assert result["all_obj_byte_identical"] is True, (model, result)
+              assert result["all_acceptance_fields_equal"] is True, (model, result)
+              assert result["boundary_regression"] == "exact", (model, result)
+              assert result["boundary_incidence_coverage"] == "verified", (model, result)
+          PY
+      - name: Copy reference identity receipts into artifact workspace
+        if: always()
+        shell: bash
+        run: |
+          if test -f ../apmesh-tri-reference/build/science-reference/eistute/process.json; then
+            cp ../apmesh-tri-reference/build/science-reference/eistute/process.json build/science-candidate/reference-eistute-process.json
+          fi
+          if test -f ../apmesh-tri-reference/build/science-reference/book/process.json; then
+            cp ../apmesh-tri-reference/build/science-reference/book/process.json build/science-candidate/reference-book-process.json
+          fi
+      - name: Retain bounded reports and failure logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tri-science-${{ github.sha }}
+          path: |
+            build/science-candidate/*-comparison.json
+            build/science-candidate/eistute/process.json
+            build/science-candidate/book/process.json
+            build/science-candidate/eistute/stderr.log
+            build/science-candidate/book/stderr.log
+            build/science-candidate/reference-eistute-process.json
+            build/science-candidate/reference-book-process.json
+          if-no-files-found: ignore
+          retention-days: 7
+ --no-tests=error | tee build/local-serial/quad_r2c2_full_source_stage.log
+      - name: Retain original full QUAD/AFT source chart staging receipt
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c2-full-source-stage-${{ github.sha }}
+          path: build/local-serial/quad_r2c2_full_source_stage.log
+          if-no-files-found: error
+          retention-days: 14
       - name: Record original-source disconnected owner staging and rollback
         shell: bash
         run: |
