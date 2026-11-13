@@ -1,0 +1,37 @@
+{
+  "schema": "apmesh.quad.r2c14.actual_original_generator_rejection_forensics.v1",
+  "date_utc": "2026-11-13",
+  "status": "CODE_COMMITTED_EXACT_CI_PENDING_NOT_QUALIFIED",
+  "research_pr_number": 214,
+  "source_commit": "2a668414694070b4e74f826996cc5811df6fd0a8",
+  "source_files": [
+    "tools/diagnose_r2c14_generator_rejections.py",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "qualified_predecessor": {
+    "gate": "R2c13",
+    "commit": "082ecd0408d31808dae5d629e711be99fd01d1a7",
+    "run_id": 43502743922,
+    "artifact_id": 14074978033,
+    "root_ctest": "89/89",
+    "tooling": "527/527",
+    "jobs": "4/4",
+    "actual_two_accepted_source_epochs": false
+  },
+  "design_contract": [
+    "Consume real original accepted/rejected debug logs and source curve/patch adaptation CSV emitted by unchanged TRI GeneratorAdaptive for each model/profile",
+    "Require explicit accepted=0 in rejected log; rejected candidate step never overlaps true committed accepted step",
+    "Recheck original 4/28 patch and 13/85 curve counts for every rejected attempt without trusting legacy repeated GetId",
+    "Compare each rejected patch local error against the latest actually accepted ancestor; list regressed patch indices and deltas",
+    "Record actual acceptance score, improvement, element growth, quality, overshoot, transition coherence/imbalance and curve target shortfalls",
+    "Do not infer exact Boolean acceptance subgate solely from aggregate logged metrics",
+    "Retain original native acceptance and adaptation CSV for independent inspection",
+    "No source model modifications, TRI acceptance threshold changes, physical sheet node welding or production QUAD integration"
+  ],
+  "expected_marker": "R2C14_ORIGINAL_GENERATOR_REJECTION_FORENSICS",
+  "expected_artifact": "r2c14_generator_rejection_forensics.json and original accepted/rejected logs",
+  "native_results": null,
+  "accepted_two_original_generator_epochs": false,
+  "scientific_global_quad_accepted": false,
+  "next_action": "Inspect workflow success and independently parsed R2c14 actual rejection provenance; pinpoint per-patch error growth/quality constraints. Correct any provenance mismatch before continuing to genuine M7 algorithm improvement under the frozen TRI scientific baseline."
+}
