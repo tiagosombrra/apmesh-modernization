@@ -2104,8 +2104,7 @@ WholeModelSourceEpochReport RunWholeOriginalModelTwoPassCurveSweep(
             << " original_GeneratorAdaptive_Domain_epoch=0"
             << " complete_physical_QUAD_AFT_mesh=0"
             << " cross_patch_node_welding=0"
-            << " advisor_sheet_approval=0
-";
+            << " advisor_sheet_approval=0\n";
   std::cout << "R2C6_WHOLE_ORIGINAL_MODEL_SOURCE_CURVES"
             << " original_patches=" << report.original_patches
             << " original_curves=" << report.original_curves
