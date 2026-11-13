@@ -362,6 +362,28 @@ jobs:
             build/local-serial/r2c18_aft_postprocess/*/*_domain_adaptation.csv
           if-no-files-found: error
           retention-days: 14
+      - name: Verify R2c19 accepted Eistute TRI quality and bounded Book AFT joint recovery
+        shell: bash
+        run: |
+          python3 tests/quad/test_r2c19_original_accepted_quality_book_joint_recovery.py \
+            --exe build/local-serial/bin/quad_generator_outcome_probe \
+            --root . \
+            --r2c18-directory build/local-serial/r2c18_aft_postprocess \
+            --directory build/local-serial/r2c19_quality_and_book_joint
+      - name: Retain R2c19 native accepted TRI geometry-quality receipts and Book joint profiles
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c19-original-tri-quality-book-joint-${{ github.sha }}
+          path: |
+            build/local-serial/r2c19_quality_and_book_joint/r2c19_original_accepted_tri_quality_book_joint_recovery.json
+            build/local-serial/r2c19_quality_and_book_joint/*/generator_stdout.log
+            build/local-serial/r2c19_quality_and_book_joint/*/generator_stderr.log
+            build/local-serial/r2c19_quality_and_book_joint/*/*_domain_adaptation.csv
+            build/local-serial/r2c18_aft_postprocess/eistute_aft_postprocess_quality_0p80/*_acceptance_accepted.log
+            build/local-serial/r2c18_aft_postprocess/eistute_aft_postprocess_quality_0p80/*_patch_adaptation_accepted.csv
+          if-no-files-found: error
+          retention-days: 14
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
