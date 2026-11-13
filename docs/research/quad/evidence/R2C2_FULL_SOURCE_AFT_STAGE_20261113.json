@@ -1,0 +1,58 @@
+{
+  "milestone": "R2c-2 original-source full native QUAD/AFT disconnected physical chart owner stage",
+  "date_utc": "2026-11-13",
+  "status": "IMPLEMENTED_EXACT_HEAD_CI_PENDING",
+  "research_feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "research_feature_head": "e43979013cc402804675edbdf9d9ebba5df6d59b",
+  "draft_pull_request": 214,
+  "production_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "new_source": "tests/quad/full_source_patch_stage_probe.cpp",
+  "build_changed": "CMakeLists.txt",
+  "build_inventory_changed": "docs/architecture/source_inventory.json",
+  "new_root_ctest": "quad.r2c2.full_source_patch_stage",
+  "scientific_scope": {
+    "actual_model_sources": [
+      "input_models/eistute2.fixed.bp",
+      "input_models/book_v7a.bp"
+    ],
+    "native_per_patch_pipeline": [
+      "original fixed UV boundary source sampling",
+      "original quadtree TRI-template reference",
+      "experimental QUAD interior templates",
+      "original owned AFT exterior TRI",
+      "PatchBezier::Parameterize XYZ lifting",
+      "typed four-node QUAD and three-node TRI SubMesh element ownership",
+      "disconnected MeshAdaptive owner swap"
+    ],
+    "expected_source_patch_counts": [
+      4,
+      28
+    ],
+    "per_patch_boundary_check": true,
+    "candidate_rollback_injection_points": [
+      0,
+      "middle",
+      "prepublication"
+    ],
+    "per_patch_full_face_counts": "NOT_MEASURED_YET",
+    "interpatch_seam_subdivision_equivalence": "NOT_PROVED",
+    "physical_shared_node_owner": "NOT_APPROVED",
+    "source_model_sheet_memberships": "PENDING_INDEPENDENT_SCIENTIFIC_APPROVAL",
+    "patch_forward_backward_observer_transaction": "NOT_IMPLEMENTED",
+    "production_cli_mode": "UNCHANGED_TRI",
+    "global_physical_mesh_published": false
+  },
+  "required_ci": {
+    "feature_push_run_id": 43397303113,
+    "exact_sha_completed": false,
+    "linux_root_ctest": "PENDING",
+    "python_tooling": "PENDING",
+    "native_quad_gcc": "PENDING",
+    "native_quad_msvc": "PENDING",
+    "frozen_original_tri": "PENDING"
+  },
+  "local_native_compilation": "NOT_RUN_REMOTE_ONLY",
+  "local_asan_ubsan": "NOT_RUN",
+  "admission": "BLOCKED_PENDING_EXACT_CI_AND_SCIENTIFIC_SHEET_REVIEW",
+  "next_action": "Read exact e4397901 push/PR job logs; repair any build or runtime rejection without relaxing topology or source oracles; verify complete 89-test root regression, then record measured per-model native full candidate node and face counts."
+}
