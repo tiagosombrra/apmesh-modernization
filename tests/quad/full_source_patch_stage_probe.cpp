@@ -15,6 +15,7 @@
 #include "generator/initial_mesh.h"
 #include "data/patch/patch_bezier.h"
 #include "input_output/patch_reader.h"
+#include "shared_curve_audit.h"
 
 #include <algorithm>
 #include <array>
@@ -596,6 +597,282 @@ unsigned RejectAlteredAdapterSnapshots(
   return rejected;
 }
 
+// Research-only original source-directed native AFT Boundary, not a QUAD
+// mesh, source curve owner, or cross-chart physical node sharing contract.
+struct DetachedSourceBoundary {
+  std::unique_ptr<Boundary> boundary;
+  std::vector<std::unique_ptr<NodeAdaptive>> physical_copies;
+  apmesh::quad::AdapterBoundaryCapture capture;
+  std::size_t adapted_side = 0;
+};
+
+DetachedSourceBoundary BuildDetachedAdaptedSourceBoundary(
+    PatchBezier& patch, unsigned patch_id, CurveAdaptiveParametric& adapted) {
+  DetachedSourceBoundary result;
+  result.boundary = std::make_unique<Boundary>();
+  std::map<Vertex*, NodeAdaptive*> copied_nodes;
+  std::size_t adapted_sides = 0;
+  CurveAdaptiveParametric* last_curve = nullptr;
+  bool last_reversed = false;
+  for (unsigned side = 0; side < 4U; ++side) {
+    auto* curve = dynamic_cast<CurveAdaptiveParametric*>(patch.GetCurve(side));
+    Require(curve != nullptr, "Native detached contour has a missing source curve");
+    const std::vector<double> parameters(curve->parameters_.begin(),
+                                         curve->parameters_.end());
+    Require(parameters.size() == curve->GetNumBerPoints() &&
+                parameters.size() >= 2U && parameters.front() == 0.0 &&
+                parameters.back() == 1.0,
+            "Native detached contour has incomplete actual source parameters");
+    const bool reversed = patch.IsCurveReversed(side);
+    if (curve == &adapted) {
+      Require(parameters.size() > 2U,
+              "Original high-valence source curve did not adapt");
+      result.adapted_side = side;
+      ++adapted_sides;
+    } else {
+      Require(parameters.size() == 2U,
+              "Untouched source side was silently adapted or replaced");
+    }
+    for (std::size_t i = 0; i < parameters.size(); ++i) {
+      Require(std::isfinite(parameters[i]) &&
+                  (i == 0U || parameters[i] > parameters[i - 1U]),
+              "Original source contour parameters are not strictly ordered");
+    }
+    for (std::size_t offset = 0; offset + 1U < parameters.size(); ++offset) {
+      // Use the original serial Adapter's CCW traversal and curve reversal.
+      const std::size_t index =
+          reversed ? (side < 2U ? parameters.size() - 1U - offset : offset)
+                   : (side < 2U ? offset : parameters.size() - 1U - offset);
+      const double source_parameter = parameters[index];
+      const double local_parameter =
+          reversed ? 1.0 - source_parameter : source_parameter;
+      const UvVertex uv = side == 0U ? UvVertex{local_parameter, 0.0}
+          : side == 1U ? UvVertex{1.0, local_parameter}
+          : side == 2U ? UvVertex{local_parameter, 1.0}
+                       : UvVertex{0.0, local_parameter};
+
+      auto* source_node = dynamic_cast<NodeAdaptive*>(
+          curve->GetPoint(static_cast<unsigned>(index)));
+      Require(source_node && source_node->GetId() > 0UL &&
+                  NearSource(Values(*source_node),
+                             Values(curve->FindPointByParameter(source_parameter))) &&
+                  NearSource(Values(*source_node),
+                             Values(patch.Parameterize(uv.u, uv.v))),
+              "Real adapted source sample does not lie on its original patch");
+
+      auto copy = std::make_unique<NodeAdaptive>(
+          source_node->GetX(), source_node->GetY(), source_node->GetZ());
+      copy->SetId(source_node->GetId());
+      Require(copy->GetNumberElements() == 0U,
+              "Detached physical sample copied external TRI adjacency");
+      NodeAdaptive* owned = copy.get();
+      auto* vertex = result.boundary->addVertex(
+          uv.u, uv.v, curve, reversed);
+      Require(vertex != nullptr && vertex->getId() > 0 &&
+                  copied_nodes.emplace(vertex, owned).second,
+              "Failed to construct disjoint native AFT source contour vertex");
+      result.physical_copies.push_back(std::move(copy));
+    }
+    last_curve = curve;
+    last_reversed = reversed;
+  }
+  Require(adapted_sides == 1U && last_curve != nullptr &&
+              result.boundary->close(last_curve, last_reversed),
+          "Native detached high-valence source boundary failed to close");
+  result.capture = apmesh::quad::SnapshotOriginalAdapterBoundary(
+      patch, *result.boundary, copied_nodes,
+      {static_cast<int>(patch_id), 1, 0, 0, {2U, 1U, 0}});
+  Require(result.capture.vertices.size() ==
+              result.physical_copies.size() &&
+              result.capture.vertices.size() ==
+                  adapted.GetNumBerPoints() - 1U + 3U &&
+              result.capture.directed_edges.size() ==
+                  result.capture.vertices.size() &&
+              result.capture.side_counts[result.adapted_side] ==
+                  adapted.GetNumBerPoints() - 1U,
+          "Detached AFT contour omitted or duplicated source intervals");
+
+  double twice_area = 0.0;
+  std::size_t inspected = 0;
+  auto vertices = result.boundary->getBoundary();
+  auto edges = result.boundary->getEdges();
+  auto v = vertices.begin();
+  auto e = edges.begin();
+  std::set<const NodeAdaptive*> separate_copy_owners;
+  for (std::size_t i = 0; i < result.capture.vertices.size();
+       ++i, ++v, ++e) {
+    Require(v != vertices.end() && e != edges.end() &&
+                *v != nullptr && *e != nullptr,
+            "Detached contour has missing owned vertices or edges");
+    auto* edge = *e;
+    const auto& site = result.capture.vertices[i];
+    const auto& next =
+        result.capture.vertices[(i + 1U) % result.capture.vertices.size()];
+    Require(edge->getV1() == *v &&
+                edge->getV2() != nullptr &&
+                edge->getV1()->getId() == site.aft_vertex_id &&
+                edge->getV2()->getId() == next.aft_vertex_id &&
+                edge->getMid() != nullptr &&
+                std::isfinite(edge->getLen()) && edge->getLen() > 0.0 &&
+                separate_copy_owners.insert(
+                    result.physical_copies[i].get()).second,
+            "Original native contour lost directed edge, curved metric or owner");
+    twice_area += site.uv.u * next.uv.v - next.uv.u * site.uv.v;
+    ++inspected;
+  }
+  Require(inspected == result.capture.vertices.size() &&
+              v == vertices.end() && e == edges.end() &&
+              std::isfinite(twice_area) && twice_area > 0.0 &&
+              patch.GetSubMesh() != nullptr,
+          "Detached actual source contour invalidated original TRI Patch");
+  return result;
+}
+
+struct DetachedSourceBoundaryStats {
+  std::size_t patch_boundaries = 0;
+  std::size_t total_boundary_vertices = 0;
+  std::size_t adapted_side_edges = 0;
+  std::size_t all_native_directed_edges = 0;
+  std::size_t per_patch_source_sites = 0;
+  std::size_t matched_canonical_source_sites = 0;
+  std::size_t matched_incidence_pairs = 0;
+  std::size_t pairwise_source_sites = 0;
+  std::size_t pairwise_source_intervals = 0;
+  std::size_t rejected_negative_snapshots = 0;
+};
+
+DetachedSourceBoundaryStats AuditDetachedSourceBoundaries(
+    Geometry& original, CurveAdaptiveParametric& source,
+    const std::vector<DetachedSourceBoundary>& boundaries,
+    unsigned expected_valence) {
+  Require(boundaries.size() == expected_valence,
+          "Missing native detached original high-valence source patch");
+  DetachedSourceBoundaryStats stats;
+  stats.patch_boundaries = boundaries.size();
+  std::vector<apmesh::quad::SharedCurveSide> source_sides;
+  source_sides.reserve(boundaries.size());
+  std::set<const NodeAdaptive*> physical_owners;
+  for (unsigned i = 0; i < boundaries.size(); ++i) {
+    const auto& candidate = boundaries[i];
+    auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(i));
+    Require(patch && candidate.boundary && patch->GetSubMesh() &&
+                patch->GetCurve(static_cast<unsigned>(candidate.adapted_side)) == &source,
+            "Detached native contour lost original source Patch identity");
+    stats.total_boundary_vertices += candidate.capture.vertices.size();
+    stats.all_native_directed_edges += candidate.capture.directed_edges.size();
+    stats.adapted_side_edges +=
+        candidate.capture.side_counts[candidate.adapted_side];
+    for (const auto& copy : candidate.physical_copies)
+      Require(copy && physical_owners.insert(copy.get()).second,
+              "Two separate original AFT boundaries share a physical node owner");
+    auto side = apmesh::quad::SnapshotSharedCurveSide(
+        candidate.capture, static_cast<unsigned>(candidate.adapted_side));
+    Require(side.curve_id == source.GetId() &&
+                side.ordered_by_original_parameter.size() ==
+                    source.GetNumBerPoints(),
+            "Native detached adapted contour dropped source incidence samples");
+    const std::vector<double> canonical_parameters(
+        source.parameters_.begin(), source.parameters_.end());
+    for (std::size_t j = 0; j < side.ordered_by_original_parameter.size(); ++j) {
+      const auto& sample = side.ordered_by_original_parameter[j];
+      Require(sample.t == canonical_parameters[j] &&
+                  NearSource(sample.xyz,
+                             Values(source.FindPointByParameter(sample.t))) &&
+                  sample.node_id ==
+                      source.GetPoint(static_cast<unsigned>(j))->GetId(),
+              "Native detached original AFT side lost adapted source provenance");
+      ++stats.matched_canonical_source_sites;
+    }
+    source_sides.push_back(std::move(side));
+    ++stats.per_patch_source_sites;
+  }
+  Require(physical_owners.size() == stats.total_boundary_vertices,
+          "Detached source boundaries have missing physical node owners");
+  for (unsigned i = 0; i < source_sides.size(); ++i) {
+    for (unsigned j = i + 1U; j < source_sides.size(); ++j) {
+      const auto cmp = apmesh::quad::CompareSharedCurveSides(
+          source_sides[i], source_sides[j], false, true);
+      Require(cmp.matched &&
+                  cmp.compared_sites == source.GetNumBerPoints(),
+              "Different detached AFT patches disagree on a shared source curve");
+      ++stats.matched_incidence_pairs;
+      stats.pairwise_source_sites += cmp.compared_sites;
+      stats.pairwise_source_intervals += cmp.compared_sites - 1U;
+    }
+  }
+  Require(stats.per_patch_source_sites == expected_valence &&
+              stats.matched_incidence_pairs ==
+                  expected_valence * (expected_valence - 1U) / 2U &&
+              stats.total_boundary_vertices ==
+                  expected_valence * (source.GetNumBerPoints() + 2U) &&
+              stats.adapted_side_edges ==
+                  expected_valence * (source.GetNumBerPoints() - 1U),
+          "Original detached dynamic AFT contour coverage was incomplete");
+  return stats;
+}
+
+unsigned RejectDetachedSourceBoundaryMutations(
+    const std::vector<DetachedSourceBoundary>& boundaries) {
+  Require(boundaries.size() > 1U,
+          "Source boundary rejection needs a shared curve pair");
+  const auto& first = boundaries[0];
+  const auto& second = boundaries[1];
+  const unsigned side_a = static_cast<unsigned>(first.adapted_side);
+  const unsigned side_b = static_cast<unsigned>(second.adapted_side);
+  const auto original_left = apmesh::quad::SnapshotSharedCurveSide(
+      first.capture, side_a);
+  const auto original_right = apmesh::quad::SnapshotSharedCurveSide(
+      second.capture, side_b);
+  Require(apmesh::quad::CompareSharedCurveSides(
+              original_left, original_right, false, true).matched,
+          "Genuine detached source boundaries are not initially equivalent");
+  unsigned rejected = 0;
+  const auto must_reject = [&](apmesh::quad::AdapterBoundaryCapture altered) {
+    bool failed = false;
+    try {
+      const auto right = apmesh::quad::SnapshotSharedCurveSide(altered, side_b);
+      const auto compared = apmesh::quad::CompareSharedCurveSides(
+          original_left, right, false, true);
+      failed = !compared.matched;
+    } catch (const std::invalid_argument&) {
+      failed = true;
+    }
+    Require(failed, "Corrupted detached original source boundary was accepted");
+    ++rejected;
+  };
+  const auto find_site = [&]() {
+    for (std::size_t i = 0; i < second.capture.vertices.size(); ++i)
+      if (second.capture.vertices[i].side == side_b)
+        return i;
+    throw std::runtime_error("Detached source boundary has no shared side");
+  };
+  const std::size_t selected = find_site();
+  auto displaced = second.capture;
+  displaced.vertices[selected].physical_xyz[0] += 1.0;
+  must_reject(std::move(displaced));
+  auto parameter_changed = second.capture;
+  parameter_changed.vertices[selected].original_parameter += 0.03125;
+  must_reject(std::move(parameter_changed));
+  auto id_changed = second.capture;
+  id_changed.vertices[selected].physical_node_id += 98765UL;
+  must_reject(std::move(id_changed));
+  auto source_changed = second.capture;
+  source_changed.vertices[selected].curve_id += 999UL;
+  must_reject(std::move(source_changed));
+  auto inversion_changed = second.capture;
+  inversion_changed.vertices[selected].curve_reversed =
+      !inversion_changed.vertices[selected].curve_reversed;
+  must_reject(std::move(inversion_changed));
+  auto omitted = second.capture;
+  omitted.vertices.erase(omitted.vertices.begin() +
+                         static_cast<std::ptrdiff_t>(selected));
+  must_reject(std::move(omitted));
+  auto endpoint_changed = second.capture;
+  endpoint_changed.original_curve_endpoints[side_b].node_id = 0UL;
+  must_reject(std::move(endpoint_changed));
+  return rejected;
+}
+
 void RunNativeOriginalSharedCurveAdaptation(const std::string& model,
                                             unsigned expected_valence) {
   Geometry original;
@@ -680,6 +957,61 @@ void RunNativeOriginalSharedCurveAdaptation(const std::string& model,
   const unsigned rejected = RejectAlteredAdapterSnapshots(
       original, *target, sampled, expected_valence);
   Require(rejected == 5U, "Original Adapter source negative controls incomplete");
+  // The native Boundary owners are distinct from the original coarse TRI
+  // owners and from each other. Only original source curve nodes are borrowed
+  // while the observed source geometry is live.
+  for (unsigned c = 0; c < original.GetNumberCurves(); ++c) {
+    auto* curve = dynamic_cast<CurveAdaptiveParametric*>(
+        original.GetCurve(c));
+    Require(curve != nullptr, "Missing original contour source curve");
+    if (curve != target) curve->CalculateLengthCurve();
+    Require(std::isfinite(curve->GetLength()) && curve->GetLength() > 0.0,
+            "Native source AFT edge lacks original parametric length");
+  }
+  std::vector<DetachedSourceBoundary> native_boundaries;
+  native_boundaries.reserve(expected_valence);
+  for (unsigned patch = 0; patch < original.GetNumberPatches(); ++patch) {
+    auto* source_patch = dynamic_cast<PatchBezier*>(original.GetPatch(patch));
+    Require(source_patch != nullptr,
+            "Missing original Bezier patch for detached native AFT contour");
+    native_boundaries.push_back(BuildDetachedAdaptedSourceBoundary(
+        *source_patch, patch, *target));
+  }
+  const auto boundary_report = AuditDetachedSourceBoundaries(
+      original, *target, native_boundaries, expected_valence);
+  const unsigned boundary_rejected =
+      RejectDetachedSourceBoundaryMutations(native_boundaries);
+  Require(boundary_rejected == 7U &&
+              boundary_report.adapted_side_edges ==
+                  report.full_incidence_interval_checks &&
+              boundary_report.pairwise_source_intervals ==
+                  report.pairwise_interval_matches,
+          "Original native detached contour lost adapted curve interval coverage");
+  std::cout << "R2C3_NATIVE_ADAPTED_AFT_BOUNDARIES"
+            << " original_patches=" << expected_valence
+            << " original_high_valence_curves=1"
+            << " detached_boundary_owners=" << boundary_report.patch_boundaries
+            << " native_owned_vertices=" << boundary_report.total_boundary_vertices
+            << " native_directed_edges=" << boundary_report.all_native_directed_edges
+            << " adapted_source_edges=" << boundary_report.adapted_side_edges
+            << " canonical_source_site_checks="
+            << boundary_report.matched_canonical_source_sites
+            << " shared_incidence_pairs=" << boundary_report.matched_incidence_pairs
+            << " cross_patch_source_site_pairs="
+            << boundary_report.pairwise_source_sites
+            << " cross_patch_source_interval_pairs="
+            << boundary_report.pairwise_source_intervals
+            << " rejected_negative_snapshots=" << boundary_rejected
+            << " actual_source_Adapter_partition=1"
+            << " untouched_source_sides_coarse=1"
+            << " native_Boundary_closed=1"
+            << " native_curved_edge_metrics=1"
+            << " physical_node_copy_owners_disjoint=1"
+            << " native_AFT_triangulation_executed=0"
+            << " quadtree_quad_templates_executed=0"
+            << " globally_welded=0"
+            << " patch_observers_rebound=0"
+            << " advisor_sheet_approved=0\n";
   for (unsigned patch = 0; patch < original.GetNumberPatches(); ++patch) {
     Require(original.GetPatch(patch)->GetSubMesh() ==
                 original_coarse_meshes[patch].get(),
