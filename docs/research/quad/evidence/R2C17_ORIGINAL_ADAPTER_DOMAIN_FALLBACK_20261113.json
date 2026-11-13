@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c17.original_adapter_local_attempt_domain_source_provenance.v1",
   "date_utc": "2026-11-13",
-  "status": "RESEARCH_CODE_COMMITTED_EXACT_NATIVE_CI_PENDING_NOT_QUALIFIED",
+  "status": "ORIGINAL_ADAPTER_DOMAIN_LOCAL_RETRY_FORENSICS_EXACT_CI_4_OF_4_QUALIFIED; M7_TWO_ACCEPTED_SOURCE_EPOCHS_NOT_MET",
   "pr_number": 214,
   "feature_head": "c37d6ef8a76a59223469c8123c1de263832879e9",
   "run_id": 43510748191,
@@ -46,5 +46,82 @@
   "ci_results": null,
   "original_two_accepted_source_epochs": false,
   "scientific_global_nonmanifold_approval": false,
-  "next_action": "Read GitHub CI #43510748191; identify native domain retry patch/step profiles and exact measurable fallback conditions in Eistute step4 and Book steps2/3. If source CSV provenance mismatch, diagnose actual original Adapter ownership/history instead of weakening tests."
+  "next_action": "R2c18: targeted research-only original production GeneratorAdaptive config sensitivity of AFT local smoothing/postprocess and source transition quality, no TRI admission threshold changes. Require two genuine committed source epochs; profile improvements on first epoch alone are diagnostic, not M7 completion.",
+  "exact_ci_result": {
+    "feature_head": "c37d6ef8a76a59223469c8123c1de263832879e9",
+    "run_id": 43510748191,
+    "conclusion": "success",
+    "jobs": "4/4",
+    "root_ctest": "89/89",
+    "tooling": "527/527",
+    "gcc_quad": "16/16",
+    "msvc_quad": "16/16",
+    "frozen_tri_parity": "PASS",
+    "native_source_marker": "R2C17_NATIVE_ADAPTER_DOMAIN_FALLBACK",
+    "artifact_id": 14077649353,
+    "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43510748191/artifacts/14077649353",
+    "artifact_retention_days": 14
+  },
+  "actual_source_domain_measurements": {
+    "book_article_step2_and_step3": {
+      "source_patches": 28,
+      "local_attempts_per_step": 28,
+      "status_all": "degenerate_needs_retry",
+      "quality_post_aft_min": 0.181191,
+      "original_policy_quality_min": 0.274,
+      "actually_degenerate_post_aft": 0,
+      "actually_degenerate_post_smoothing": 0,
+      "quadtree_low_template_count": 0,
+      "transition_underresolved": 0,
+      "curve_domain_balance": 1,
+      "source_backed_predicate": "aft_min_quality_below_original_threshold"
+    },
+    "eistute_article_step4": {
+      "source_patches": 4,
+      "local_attempts": 64,
+      "status_all": "curve_transition_needs_retry",
+      "quality_post_aft_min": 0.266221,
+      "original_policy_quality_min": 0.2692,
+      "transition_underresolved_attempts": 64,
+      "curve_domain_balance_range": [
+        0.0866,
+        0.1639
+      ],
+      "actually_degenerate_post_smoothing": 0,
+      "source_backed_predicates": [
+        "aft_min_quality_below_original_threshold",
+        "native_transition_underresolved"
+      ]
+    },
+    "book_stable_alternative_step4": {
+      "source_patches": 28,
+      "local_attempts": 448,
+      "status_all": "curve_transition_needs_retry",
+      "transition_underresolved_attempts": 280,
+      "actual_degenerate_post_smoothing": 0,
+      "min_post_aft_quality_range": [
+        0.50616,
+        0.828427
+      ],
+      "curve_domain_balance_range": [
+        0.2667,
+        0.5
+      ]
+    },
+    "eistute_debug_step2": {
+      "source_patches": 4,
+      "local_attempts": 8,
+      "status_all": "curve_transition_needs_retry",
+      "post_aft_degenerate_face_observations_total": 672,
+      "post_smoothing_degenerate_face_observations_total": 672,
+      "transition_underresolved_attempts": 8,
+      "source_backed_predicate": "post-AFT degeneration is evidenced in this debug scenario, unlike original Book"
+    }
+  },
+  "caveats": [
+    "Original quality min derived from source StablePatchQualityMin = clamp(0.16+0.12*quality_priority,0.16,0.30), 0.274 Book at 0.95, 0.2692 Eistute at 0.91",
+    "Matching status across original domain attempts is not proof that a specific matching row is the final selected candidate; classified observations are exact in common repeated cases, not a global source owner decision",
+    "Local attempt counts can exceed original patch count because retry/regeneration; never count them as additional accepted source epochs",
+    "The original 1993 historical point rule and M6 high-valence physical sheet policy remain independently unapproved"
+  ]
 }
