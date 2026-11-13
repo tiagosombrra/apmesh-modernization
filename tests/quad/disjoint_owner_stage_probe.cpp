@@ -1,4 +1,7 @@
 #include "disjoint_owner_stage.h"
+#include "data/geometry.h"
+#include "data/patch/patch_bezier.h"
+#include "input_output/patch_reader.h"
 
 #include <array>
 #include <iostream>
@@ -74,6 +77,98 @@ void CheckModel(const std::unique_ptr<MeshAdaptive>& model,
   Require(all_nodes.size() == expected_charts * 7U &&
               all_elements.size() == expected_charts * 2U,
           "Unexpected detached patch chart owner inventory");
+}
+
+std::unique_ptr<SubMesh> SourcePatchChart(PatchBezier& patch,
+                                          unsigned chart_id,
+                                          unsigned generation) {
+  // These are two small, detached UV test elements on the REAL original
+  // surface, not the original native Quadtree/AFT-generated full mesh.
+  const std::array<std::array<double, 2>, 7> uv{{
+      {{0.1, 0.1}}, {{0.4, 0.1}}, {{0.4, 0.4}}, {{0.1, 0.4}},
+      {{0.6, 0.6}}, {{0.9, 0.6}}, {{0.6, 0.9}},
+  }};
+  auto chart = std::make_unique<SubMesh>();
+  std::array<NodeAdaptive*, 7> nodes{};
+  for (unsigned i = 0; i < uv.size(); ++i) {
+    const auto p = patch.Parameterize(uv[i][0], uv[i][1]);
+    auto node = std::make_unique<NodeAdaptive>(
+        p.GetX(), p.GetY(), p.GetZ());
+    node->SetId(static_cast<unsigned long>(
+        chart_id * 1000U + generation * 10U + i + 1U));
+    nodes[i] = node.get();
+    chart->AddNoh(std::move(node));
+  }
+  const QuadrilateralAdaptive::Nodes quad_nodes{
+      nodes[0], nodes[1], nodes[2], nodes[3]};
+  const QuadrilateralAdaptive::Parameters quad_uv{{
+      {{0.1, 0.1}}, {{0.4, 0.1}},
+      {{0.4, 0.4}}, {{0.1, 0.4}},
+  }};
+  const VectorAdaptive normal = patch.Qu(0.25, 0.25) * patch.Qv(0.25, 0.25);
+  chart->AddElement(std::make_unique<QuadrilateralAdaptive>(
+      quad_nodes, quad_uv, normal));
+  chart->AddElement(std::make_unique<TriangleAdaptive>(
+      nodes[4], nodes[5], nodes[6]));
+  DisjointOwnerStage::CheckChart(*chart);
+  return chart;
+}
+
+void TestOriginalSourceDisjointCharts(const std::string& source_path,
+                                      unsigned expected) {
+  Geometry original;
+  PatchReader reader;
+  Require(reader.ReaderFilePatches(&original, source_path) == &original &&
+              original.GetNumberPatches() == expected,
+          "Original PatchReader model source cardinality mismatch");
+  std::unique_ptr<MeshAdaptive> active = std::make_unique<MeshAdaptive>();
+  active->InsertSubMeshAdaptive(SyntheticChart(0, 1).release());
+  MeshAdaptive* const baseline = active.get();
+  SubMesh* const baseline_chart = active->GetSubMeshAdaptiveByPosition(0);
+  unsigned rejected = 0;
+  for (unsigned fault = 0; fault <= expected; ++fault) {
+    DisjointOwnerStage stage(expected);
+    for (unsigned patch_id = 0; patch_id < expected; ++patch_id) {
+      auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(patch_id));
+      Require(patch != nullptr, "Missing real source Bezier patch");
+      stage.Add(SourcePatchChart(*patch, patch_id, fault + 2U));
+    }
+    bool failed = false;
+    try {
+      stage.Replace(active, static_cast<int>(fault));
+    } catch (const std::runtime_error&) {
+      failed = true;
+    }
+    Require(failed && active.get() == baseline &&
+                active->GetSubMeshAdaptiveByPosition(0) == baseline_chart,
+            "Real-source detached stage damaged the previous mesh owner");
+    ++rejected;
+  }
+  DisjointOwnerStage stage(expected);
+  for (unsigned patch_id = 0; patch_id < expected; ++patch_id) {
+    auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(patch_id));
+    Require(patch != nullptr, "Missing real source patch for final stage");
+    stage.Add(SourcePatchChart(*patch, patch_id, 80));
+  }
+  stage.Replace(active);
+  CheckModel(active, expected);
+  for (unsigned patch_id = 0; patch_id < expected; ++patch_id) {
+    auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(patch_id));
+    Require(patch != nullptr && patch->GetSubMesh() == nullptr,
+            "Detached original source patch gained an unauthorized mesh observer");
+  }
+  std::cout << "R2C2_REAL_SOURCE_DISJOINT"
+            << " patches=" << expected
+            << " original_PatchReader=1"
+            << " source_patch_examples=" << expected
+            << " original_bezier_xyz=1"
+            << " sample_elements_per_patch=2"
+            << " fault_cases_rejected=" << rejected
+            << " source_native_AFT_mesh=0"
+            << " cross_patch_shared_nodes=0"
+            << " patch_observers_touched=0"
+            << " actual_global_mesh_published=0"
+            << " scientific_sheet_approval=0\\n";
 }
 
 void TestStage(unsigned patches) {
@@ -155,10 +250,13 @@ void TestStage(unsigned patches) {
 }
 }  // namespace
 
-int main() {
+int main(int argc, char** argv) {
   try {
+    Require(argc == 3, "Expected original Eistute and Book .bp model paths");
     TestStage(4);
     TestStage(28);
+    TestOriginalSourceDisjointCharts(argv[1], 4);
+    TestOriginalSourceDisjointCharts(argv[2], 28);
     return 0;
   } catch (const std::exception& error) {
     std::cerr << "R2c2 detached owner stage failure: "
