@@ -43,18 +43,34 @@ This bounded experiment builds on the already tested M4 typed four-node
   reject each stage failure, including a missing chart, check no partial
   active root mutation, publish two successive fully detached synthetic
   owners, and recheck all node-element observer graphs.
+- The same root CTest also runs a second, **original-source** mode.
+  `PatchReader::ReaderFilePatches` loads the tracked real
+  `input_models/eistute2.fixed.bp` (4 patches) and
+  `input_models/book_v7a.bp` (28 patches). On **each original physical
+  `PatchBezier`**, seven separately owned nodes are lifted using
+  `PatchBezier::Parameterize` at fixed interior UV locations. A research
+  QUAD uses the actual source `Qu×Qv` reference normal and a TRI uses
+  three other original-patch positions. This proves limited source XYZ
+  element construction and detached owner rollback, not the real
+  native QUAD/AFT-generated patch mesh or seamless adjacency.
 - One separate `quad.r2c2.disjoint_owner_stage` root CTest is mandatory.
-  Its expected bounded output is 4-chart and 28-chart stage inventories,
-  respectively **6** and **30** failures injected/rejected (the number
-  of chart boundaries plus the prepublication sentinel and missing chart)
-  and two successful repeated atomic root replacements per case.
+  The synthetic 4-chart and 28-chart stage stress tests require
+  respectively **6** and **30** injected/rejected cases (all chart
+  adoption seams, prepublication, and missing chart), two successful
+  repeated owner swaps, plus original-source 4-chart and 28-chart
+  source-provenance subtrials with **5** and **29** rejected candidate
+  adoptions each. Original `Patch::GetSubMesh` remains null.
 
 ## Non-goals and blocked physical obligations
 
-1. The test operates on **synthetic flat, disjoint** QUAD/TRI charts.
-   There is no source `.bp` load, no original QUAD/AFT solver, no model-
-   wide UV/XYZ seam conformity or Jacobian proof. The counts 4 and 28
-   are cardinality stress tests, not validation of actual global models.
+1. The test combines **synthetic flat, disjoint** ownership stress
+   and **small interior source-patch QUAD/TRI physical examples** lifted
+   through the actual original Eistute/Book `.bp` loader. It never runs
+   the original Quadtree/AFT solver to construct the **full** source
+   model mesh in this probe. Two interior example elements per patch do
+   not establish model-wide UV/XYZ seam conformity or a continuous
+   Jacobian/nonintersection proof. Cardinalities 4 and 28 stress the
+   all-or-nothing owner lifecycle, not global joined-mesh admission.
 2. `Patch::SetSubMesh`, `SubMesh::SetPatch` and model owner/observer
    attachment are **intentionally not performed**. This is not an
    atomic publication into the production patch graph, only a fully
