@@ -917,7 +917,7 @@ int Run(const std::string& config_path) {
               << " radial_order=" << sector_order.str()
               << " interval_order_certified="
               << interval_fan.interval_order_certified
-              << " no_welding=1\\n";
+              << " no_welding=1\n";
   }
 
   // Construct four adversarial counterparts from an ACTUAL original Adapter
