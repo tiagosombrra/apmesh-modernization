@@ -1,7 +1,7 @@
 {
   "milestone": "R2c-3 original high-valence serial Adapter source partitions lifted into separate native original AFT::Boundary owners",
   "date_utc": "2026-11-13",
-  "status": "ORIGINAL_SOURCE_NATIVE_DETACHED_AFT_BOUNDARIES_FEATURE_PUSH_CI_GREEN_INDEPENDENT_PR_CI_PENDING",
+  "status": "ORIGINAL_ADAPTED_NATIVE_DETACHED_AFT_BOUNDARIES_EXACT_DOUBLE_CI_ENGINEERING_QUALIFIED",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_head_sha": "4258dbca7131427e22220fa190391af6810411ab",
   "draft_pr": 214,
@@ -48,7 +48,7 @@
     "push_run_id": 43439921989,
     "pr_run_id": 43439932294,
     "expected_sha": "4258dbca7131427e22220fa190391af6810411ab",
-    "status": "PUSH_CI_ALL_4_OF_4_SUCCESS_PR_CI_IN_PROGRESS",
+    "status": "EXACT_SAME_SOURCE_SHA_TWO_INDEPENDENT_COMPLETED_SUCCESS_4_OF_4_JOBS_EACH",
     "native_source_marker": "R2C3_NATIVE_ADAPTED_AFT_BOUNDARIES",
     "original_model_metrics": "UNMEASURED",
     "feature_push_root_job_id": 131934564274,
@@ -86,6 +86,88 @@
         "cross_patch_source_interval_pairs": 2268,
         "rejected_negative_snapshots": 7
       }
+    },
+    "actual_native_source_contours_pr_log": {
+      "Eistute": {
+        "original_patches": 4,
+        "detached_boundary_owners": 4,
+        "native_owned_vertices": 36,
+        "native_directed_edges": 36,
+        "adapted_source_edges": 24,
+        "canonical_source_site_checks": 28,
+        "shared_incidence_pairs": 6,
+        "cross_patch_source_site_pairs": 42,
+        "cross_patch_source_interval_pairs": 36,
+        "rejected_negative_snapshots": 7
+      },
+      "Book": {
+        "original_patches": 28,
+        "detached_boundary_owners": 28,
+        "native_owned_vertices": 252,
+        "native_directed_edges": 252,
+        "adapted_source_edges": 168,
+        "canonical_source_site_checks": 196,
+        "shared_incidence_pairs": 378,
+        "cross_patch_source_site_pairs": 2646,
+        "cross_patch_source_interval_pairs": 2268,
+        "rejected_negative_snapshots": 7
+      }
+    },
+    "actual_native_source_contours_pr_log_identical_to_push": true,
+    "actual_pr_checks": {
+      "sha": "4258dbca7131427e22220fa190391af6810411ab",
+      "root_ctest": "89/89 PASS, including quad.r2c2.full_source_patch_stage #74",
+      "python": "527/527 PASS",
+      "native_quad_gcc": "16/16 PASS",
+      "native_quad_msvc": "16/16 PASS",
+      "frozen_tri_parity": "PASS"
+    },
+    "direct_source_logs": {
+      "push_run_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43439921989",
+      "pr_run_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43439932294",
+      "push_artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43439921989/artifacts/14046021014",
+      "pr_artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43439932294/artifacts/14044284605",
+      "source_marker": "R2C3_NATIVE_ADAPTED_AFT_BOUNDARIES",
+      "both_logs_verified_same_markers": true,
+      "retention_days": 14
+    },
+    "actual_native_source_contours": {
+      "Eistute": {
+        "original_patches": 4,
+        "detached_boundary_owners": 4,
+        "native_owned_vertices": 36,
+        "native_directed_edges": 36,
+        "adapted_source_edges": 24,
+        "canonical_source_site_checks": 28,
+        "shared_incidence_pairs": 6,
+        "cross_patch_source_site_pairs": 42,
+        "cross_patch_source_interval_pairs": 36,
+        "rejected_negative_snapshots": 7
+      },
+      "Book": {
+        "original_patches": 28,
+        "detached_boundary_owners": 28,
+        "native_owned_vertices": 252,
+        "native_directed_edges": 252,
+        "adapted_source_edges": 168,
+        "canonical_source_site_checks": 196,
+        "shared_incidence_pairs": 378,
+        "cross_patch_source_site_pairs": 2646,
+        "cross_patch_source_interval_pairs": 2268,
+        "rejected_negative_snapshots": 7
+      },
+      "aggregate": {
+        "original_patches": 32,
+        "detached_boundary_owners": 32,
+        "native_owned_vertices": 288,
+        "native_directed_edges": 288,
+        "adapted_source_edges": 192,
+        "canonical_source_site_checks": 224,
+        "shared_incidence_pairs": 384,
+        "cross_patch_source_site_pairs": 2688,
+        "cross_patch_source_interval_pairs": 2304,
+        "rejected_negative_snapshots": 14
+      }
     }
   },
   "scientific_scope": {
@@ -108,5 +190,6 @@
     "Nonmanifold source-model-SHA-bound valence 4 and valence 28 sheet/owner scientific decisions are absent",
     "No native local ASan UBSan or original 1993 reconstruction"
   ],
-  "next_action": "Verify independent PR #43439932294 4/4 success on exactly source sha 4258dbca and compare same two new R2C3 native AFT boundary source log markers; then qualify evidence and state without altering production, no physical QUAD/TRI meshing yet."
+  "next_action": "Start a separately scoped original native Quadtree + QUAD interior template and AFT exterior closed-front candidate on the source-driven detached AFT::Boundary contours. Keep 6 adapted segments on original maximal-valence shared curve and 1 per other untouched side; first compare source contour vs original quadtree and reject unsafe templates/transitions. Do not weld or publish across patches, and do not claim full original GeneratorAdaptive model-epoch sync without matching all curves.",
+  "research_admission": "BOUNDARIES_ADMITTED_RESEARCH_ONLY; GLOBAL_QUAD_TRI_PHYSICAL_MESH_AND_SCIENTIFIC_SHEET_CONTINUITY_BLOCKED"
 }
