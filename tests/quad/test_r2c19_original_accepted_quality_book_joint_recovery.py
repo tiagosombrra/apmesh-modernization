@@ -54,6 +54,7 @@ def number(value, description):
 def validate_original_accepted_step_quality(directory, model, profile, steps):
     prefix = directory / f"{model}_{profile}" / f"{model}_{profile}"
     snapshots = []
+    previous_accepted_step = 0
     for step in steps:
         path = Path(f"{prefix}_passo_{step}_acceptance_accepted.log")
         fields = read_kv(path)
@@ -84,14 +85,35 @@ def validate_original_accepted_step_quality(directory, model, profile, steps):
             number(p["quality_min_uv"], "accepted patch min UV quality")
             for p in patches)
         require(min_patch_3d > 0.0 and min_patch_uv > 0.0,
-                "An accepted original TRI patch reports nonpositive 3D/UV quality")
+                "Historical per-patch TRI snapshot reports nonpositive 3D/UV quality")
+        # GeneratorAdaptive writes patch-adaptation quality from the
+        # previous accepted mesh; this is not the current accepted patch mesh.
+        previous_log = read_kv(Path(
+            f"{prefix}_passo_{previous_accepted_step}_acceptance_accepted.log"))
+        previous_3d = number(
+            previous_log["quality_min_3d"], "previous accepted min 3D quality")
+        previous_uv = number(
+            previous_log["quality_min_uv"], "previous accepted min UV quality")
+        matches_previous = (
+            abs(min_patch_3d - previous_3d) <= 1e-6 and
+            abs(min_patch_uv - previous_uv) <= 1e-6)
+        if model == "eistute":
+            require(matches_previous,
+                    "Historical Eistute patch snapshot did not match preceding "
+                    "committed global mesh; investigate its epoch provenance")
         snapshots.append({
             "original_accepted_step": step,
             "source_min_quality_3d": source_3d,
             "source_min_quality_uv": source_uv,
             "source_min_quality_global": source_global,
-            "minimum_accepted_patch_quality_3d": min_patch_3d,
-            "minimum_accepted_patch_quality_uv": min_patch_uv,
+            "previous_accepted_source_step": previous_accepted_step,
+            "minimum_historical_patch_snapshot_quality_3d": min_patch_3d,
+            "minimum_historical_patch_snapshot_quality_uv": min_patch_uv,
+            "previous_accepted_global_quality_3d": previous_3d,
+            "previous_accepted_global_quality_uv": previous_uv,
+            "patch_quality_matches_previous_source_epoch": matches_previous,
+            "patch_snapshot_is_current_accepted_mesh": False,
+            "independent_current_patchwise_quality_scan_completed": False,
             "accepted_global_error_improvement_fraction": number(
                 fields["error_improvement"], "accepted global error improvement"),
             "accepted_original_growth_factor": number(
@@ -100,6 +122,7 @@ def validate_original_accepted_step_quality(directory, model, profile, steps):
             "accepted_original_TRI_patch_log_sha256": digest(patch_path),
             "independent_full_face_area_scan_completed": False,
         })
+        previous_accepted_step = step
     return snapshots
 
 
@@ -140,7 +163,7 @@ def run(exe, root, directory, prior):
         book_cases.append(case)
 
     report = {
-        "schema": "apmesh.quad.r2c19.original_accepted_tri_quality_and_book_joint_recovery.v1",
+        "schema": "apmesh.quad.r2c19.global_tri_acceptance_and_previous_patch_snapshot.v2",
         "previous_r2c18_report_sha256": digest(r18_path),
         "original_eistute_sha256": MODELS["eistute"]["sha256"],
         "original_book_sha256": MODELS["book"]["sha256"],
@@ -153,6 +176,8 @@ def run(exe, root, directory, prior):
                 all(x["accepted_global_error_improvement_fraction"] > 0.0
                     for x in accepted),
             "full_independent_3d_face_area_scan_completed": False,
+            "current_accepted_patchwise_quality_certified": False,
+            "patch_quality_proven_to_lag_prior_accepted_source_epoch": True,
         },
         "book_joint_recovery": {
             "scenarios": book_cases,
@@ -169,11 +194,15 @@ def run(exe, root, directory, prior):
     target = directory / "r2c19_original_accepted_tri_quality_book_joint_recovery.json"
     target.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n",
                       encoding="utf-8")
-    print("R2C19_ACCEPTED_TRI_FACE_QUALITY_AND_BOOK_JOINT_RECOVERY",
+    print("R2C19_GLOBAL_ACCEPTED_TRI_QUALITY_AND_PATCH_SNAPSHOT_LAG",
           json.dumps({
               "eistute_accepted_steps": [x["original_accepted_step"]
                                          for x in accepted],
-              "eistute_all_accepted_positive_3d_uv_quality": True,
+              "eistute_current_global_min_3d_uv_quality_positive": True,
+              "eistute_historical_patch_quality_matches_previous_epoch":
+                  report["eistute_quality_audit"][
+                      "patch_quality_proven_to_lag_prior_accepted_source_epoch"],
+              "eistute_current_accepted_patchwise_quality_certified": False,
               "eistute_accepted_global_error_monotone":
                   report["eistute_quality_audit"][
                       "global_error_monotonically_decreased_in_all_commits"],
