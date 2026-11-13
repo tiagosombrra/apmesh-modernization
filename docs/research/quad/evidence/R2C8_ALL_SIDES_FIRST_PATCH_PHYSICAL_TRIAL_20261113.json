@@ -4,7 +4,7 @@
   "feature_pr": 214,
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_commit": "4a90acfe430c233e4df1a66ef2300a11c0674e83",
-  "state": "IMPLEMENTED_DIAGNOSTIC_UNCOMPILED_CI_PENDING",
+  "state": "EXACT_SINGLE_RUN_4_OF_4_CI_SUCCESS_FIRST_PATCH_PHYSICAL_CANDIDATES_VALID_BOTH_MODELS; REPEAT_PENDING",
   "scope": [
     "Use exact R2c6 source adaptation on all curves and R2c7 native all-four-sides AFT boundary owners",
     "Generalize existing separately owned native Quadtree/AFT typed QUAD/TRI chart builder to variable-length source boundary",
@@ -14,11 +14,11 @@
   ],
   "test_executed_in_chat": [],
   "test_not_run": [
-    "Native compilation",
-    "Original native CTest",
-    "Original input TRI parity",
+    "Independent exact-source second CI",
     "Local ASan/UBSan",
-    "Second independent exact-source reproducibility run"
+    "Entire-model all 32 physical charts with all four adapted sides",
+    "Production accepted GeneratorAdaptive AdaptDomain and retry",
+    "Scientifically approved non-manifold global welding"
   ],
   "accepted_models": [],
   "failures_verified": [],
@@ -30,5 +30,49 @@
     "No original 1993 point-rule scientific approval",
     "No production quad_uv"
   ],
-  "next_action": "Read exact CI native R2C8_ALL_SIDES_PHYSICAL_FIRST_PATCH_TRIAL source receipts; on failure isolate the first actual geometric/QUAD/AFT incompatibility without modifying original source curves, numeric tolerances or TRI oracles. Only after first-patch success expand to all 32."
+  "next_action": "See R2c-9 full original 32-chart detached-model diagnostic source commit 9ab25427e3c99adad92a6ce77ce4738afdf26cf1 and its exact CI run #43491499508. Require complete_disconnected_model=1 separately for Eistute and Book, not merely green workflow.",
+  "exact_ci": {
+    "workflow_run_id": 43489732391,
+    "head_sha": "4a90acfe430c233e4df1a66ef2300a11c0674e83",
+    "status": "completed",
+    "conclusion": "success",
+    "root_ctest": "89/89",
+    "python": "527/527",
+    "gcc_linux_quad": "16/16",
+    "msvc_windows_quad": "16/16",
+    "original_TRI_scientific_parity": "PASS",
+    "native_test": "quad.r2c2.full_source_patch_stage #74 PASS"
+  },
+  "measured_candidates": [
+    {
+      "model": "Eistute",
+      "original_patches_in_model": 4,
+      "patch_index": 0,
+      "all_four_sides_adapted": true,
+      "candidate_physical_valid": true,
+      "owned_nodes": 55,
+      "typed_quad": 16,
+      "typed_tri": 46,
+      "original_tri_patch_observer_preserved": true,
+      "source_quadtree": "research_fixture_not_accepted_generator"
+    },
+    {
+      "model": "Book",
+      "original_patches_in_model": 28,
+      "patch_index": 0,
+      "all_four_sides_adapted": true,
+      "candidate_physical_valid": true,
+      "owned_nodes": 47,
+      "typed_quad": 16,
+      "typed_tri": 38,
+      "original_tri_patch_observer_preserved": true,
+      "source_quadtree": "research_fixture_not_accepted_generator"
+    }
+  ],
+  "tests_executed_in_chat": [
+    "Remote GitHub Actions exact source native GCC/Linux",
+    "Remote native MSVC/Windows",
+    "Root Linux 89/89 CTest including original model physical receipt",
+    "527 Python and frozen original TRI parity"
+  ]
 }
