@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c10.exported_all_four_sides_disjoint_original_meshes.v1",
   "date_utc": "2026-11-13",
-  "state": "SOURCE_IMPLEMENTED_EXACT_CI_PENDING_NOT_ARTIFACT_QUALIFIED",
+  "state": "QUALIFIED_EXACT_SINGLE_CI_EXPORTED_DETACHED_ORIGINAL_MESHES; GLOBAL_TOPOLOGY_AND_DOUBLE_CI_OPEN",
   "feature_pr": 214,
   "feature_head": "068a3ea8849a07e6ff7b861791cfbed53d64089f",
   "workflow_id": 43494028352,
@@ -44,8 +44,26 @@
     "Source SHA-256 identified as prior R2c6 provenance, not rehashed during export",
     "No global physical welding or scientific sheet approval claimed"
   ],
-  "exact_ci_result": null,
-  "verified_artifact_id": null,
+  "exact_ci_result": {
+    "run_id": 43494028352,
+    "status": "completed",
+    "conclusion": "success",
+    "pr_source_head": "068a3ea8849a07e6ff7b861791cfbed53d64089f",
+    "github_runner_merge_commit": "ed3132274d2f934604f86f79b6e57a519b2e1d1a",
+    "jobs": 4,
+    "successful_jobs": 4,
+    "linux_root_ctest": "89/89",
+    "tooling_python": "527/527",
+    "gcc_quad_native": "16/16",
+    "msvc_quad_native": "16/16",
+    "scientific_tri_baseline": "PASS",
+    "native_evidence": [
+      "R2C10_DETACHED_ORIGINAL_MESH_EXPORT model=eistute original_patches=4 physical_vertices=220 physical_QUAD=64 physical_TRI=184",
+      "R2C10_DETACHED_ORIGINAL_MESH_EXPORT model=book original_patches=28 physical_vertices=1524 physical_QUAD=448 physical_TRI=1272"
+    ],
+    "independent_verifier": "R2C10_INDEPENDENT_OBJ_VERIFICATION PASS eistute/book: 4+28 patch groups, all physical faces valid/nondegenerate, per-patch disjoint vertex ranges, counts identical to R2c9"
+  },
+  "verified_artifact_id": 14070503827,
   "local_sanitizers": "NOT_RUN",
   "science_blockers": [
     "Global nonmanifold sheet/junction physical node pairing not reviewed by advisors",
@@ -54,5 +72,9 @@
     "No independent identical-source double CI",
     "No verified global self-intersection/connected-seam quality"
   ],
-  "next_action": "Read workflow 43494028352, check R2C10_DETACHED_ORIGINAL_MESH_EXPORT and R2C10_INDEPENDENT_OBJ_VERIFICATION receipt for Eistute/Book and upload artifact ID. Only then claim model OBJ files are available."
+  "next_action": "Proceed to R2c11 native source-curve atlas / exported physical boundary sample cross-incidence audit on original model geometry; keep physical chart nodes unwelded and explicit advisor policy pending.",
+  "artifact_web_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43494028352/artifacts/14070503827",
+  "artifact_name": "quad-r2c10-original-detached-meshes-ed3132274d2f934604f86f79b6e57a519b2e1d1a",
+  "artifact_retention_days": 14,
+  "accepted_scope": "Reproducible detached all-adapted original Eistute and Book hybrid physical OBJ plus JSON and independent check, all in bounded GitHub CI; not shared-node/global nonmanifold mesh"
 }
