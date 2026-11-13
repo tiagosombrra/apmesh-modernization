@@ -1,0 +1,57 @@
+{
+  "schema": "apmesh.quad.r2c2.detached_owner_stage.candidate.v1",
+  "date_utc": "2026-11-13",
+  "feature_head": "290e37a8b99a9c4096b6e7d32d636a0c2b513b1c",
+  "source_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "pull_request": 214,
+  "code": [
+    "research/quad/disjoint_owner_stage.h",
+    "tests/quad/disjoint_owner_stage_probe.cpp",
+    "CMakeLists.txt"
+  ],
+  "target": "quad.r2c2.disjoint_owner_stage",
+  "required_root_ctest_expected": "88/88",
+  "phase": "implemented_exact_head_ci_pending",
+  "synthetic_disjoint_expected": {
+    "chart_counts": [
+      4,
+      28
+    ],
+    "nodes_per_chart": 7,
+    "typed_quads_per_chart": 1,
+    "original_tris_per_chart": 1,
+    "forced_failures_rejected": [
+      6,
+      30
+    ],
+    "successful_root_replacements_per_case": 2
+  },
+  "real_source_sample_expected": {
+    "source_models": [
+      "input_models/eistute2.fixed.bp",
+      "input_models/book_v7a.bp"
+    ],
+    "patch_cardinalities": [
+      4,
+      28
+    ],
+    "interior_quad_and_tri_examples_per_patch": 2,
+    "forced_failures_rejected": [
+      5,
+      29
+    ],
+    "real_native_source_quadtree_aft_full_mesh": false,
+    "global_source_connected_mesh": false
+  },
+  "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43348535255",
+  "observed_new_root_ctest": "pending",
+  "observed_root_log_markers": "pending",
+  "ci_status": "pending",
+  "actual_patch_observers_touched": false,
+  "physical_global_SubMesh_published": false,
+  "automatic_sheet_pairing_enabled": false,
+  "scientific_advisor_sheet_policy": "PENDING_ADVISOR_REVIEW",
+  "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "asan_ubsan": "not_executed",
+  "next": "inspect root C++ compile and detached source model stage, fix any actual negative gates, requalify exact head and record"
+}

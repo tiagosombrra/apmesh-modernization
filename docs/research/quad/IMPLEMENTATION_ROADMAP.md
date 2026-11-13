@@ -32,6 +32,12 @@
 
 **Next pending:** independent, source-hash-pinned advisor/model-owner determination of Eistute valence-4 and Book valence-28 sheet/junction classification, boundary orientation, node ownership and source interval semantics; only then engineering admission policy and staged physical QUAD/TRI `SubMesh` ownership/rollback. Never accept synthetic draft candidates as approval; no automatic weld, all-QUAD or TRI production changes.
 
+## 2026-11-13 — R2c-2 preparatory detached owners and atomic root swap (source CI pending)
+
+[Draft PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214) head `290e37a8b99a9c4096b6e7d32d636a0c2b513b1c`: research-only C++17 `DisjointOwnerStage` checks per-chart owned QUAD/TRI node observers, constructs an entire candidate `MeshAdaptive` off-side, rejects chart/fault failures preserving the previously accepted root, and then swaps the finished root in one no-throw operation. Root CTest `quad.r2c2.disjoint_owner_stage` exercises 4/28 disconnected synthetic patches and two small genuine `PatchReader` Bézier interior XYZ elements per original Eistute/Book patch, with staged fault injection. **Not the full native QUAD/AFT physical tessellation; no cross-patch weld, no global model physical publication, no Patch/SubMesh forward observer attachment, no scientific sheet approval.** New 88/88 root CTest and exact CI are **PENDING**, not yet homologated. [Experiment and blocked contracts](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-r2b2-exterior-aft-20261112/docs/research/quad/R2C2_DETACHED_DISJOINT_STAGE_PREFLIGHT_20261113.md) · [provisional evidence](evidence/R2C2_DISJOINT_OWNER_STAGE_20261113.json).
+
+**After qualification:** Revisit real source patch owner/observer atomicity only under explicit staging engineering gates; actual high-valence sheet membership/orientation/source-node ownership requires independent advisor/model-owner scientific decisions. Local sanitizers, repeated adaptivity, global QUAD/TRI mesh and the original 1993 numerical algorithm remain open.
+
 ## Continuity and mandatory research handoff
 
 **Canonical current state:** [STATE.md](STATE.md) — read this before interpreting any milestone in this roadmap.  
