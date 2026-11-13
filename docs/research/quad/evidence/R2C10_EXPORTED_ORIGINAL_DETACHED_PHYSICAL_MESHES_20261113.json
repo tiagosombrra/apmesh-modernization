@@ -1,0 +1,58 @@
+{
+  "schema": "apmesh.quad.r2c10.exported_all_four_sides_disjoint_original_meshes.v1",
+  "date_utc": "2026-11-13",
+  "state": "SOURCE_IMPLEMENTED_EXACT_CI_PENDING_NOT_ARTIFACT_QUALIFIED",
+  "feature_pr": 214,
+  "feature_head": "068a3ea8849a07e6ff7b861791cfbed53d64089f",
+  "workflow_id": 43494028352,
+  "source_code": [
+    "tests/quad/full_source_patch_stage_probe.cpp",
+    "tools/verify_r2c10_mesh_export.py",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "qualified_predecessor": {
+    "r2c9_source": "9ab25427e3c99adad92a6ce77ce4738afdf26cf1",
+    "run_id": 43491499508,
+    "models": {
+      "eistute": {
+        "patches": 4,
+        "nodes": 220,
+        "quads": 64,
+        "tris": 184
+      },
+      "book": {
+        "patches": 28,
+        "nodes": 1524,
+        "quads": 448,
+        "tris": 1272
+      }
+    }
+  },
+  "planned_artifacts": [
+    "eistute_all_sides_detached_quad_aft.obj",
+    "book_all_sides_detached_quad_aft.obj",
+    "eistute_all_sides_detached_quad_aft.json",
+    "book_all_sides_detached_quad_aft.json",
+    "r2c10_independent_obj_verification.json"
+  ],
+  "validation_contract": [
+    "All 4 Eistute and 28 Book patch groups present and ordered",
+    "Original disconnected patch node ownership reflected as disjoint OBJ vertex ranges",
+    "Every face references exactly three or four nodes from its own patch group",
+    "Every triangle or quadrilateral constituent triangle has positive finite nonzero 3D area",
+    "Per patch and total OBJ node/element counts exactly match R2c9 native proof",
+    "Source SHA-256 identified as prior R2c6 provenance, not rehashed during export",
+    "No global physical welding or scientific sheet approval claimed"
+  ],
+  "exact_ci_result": null,
+  "verified_artifact_id": null,
+  "local_sanitizers": "NOT_RUN",
+  "science_blockers": [
+    "Global nonmanifold sheet/junction physical node pairing not reviewed by advisors",
+    "No full original production AdaptDomain accepted epoch",
+    "No local native sanitizers or repeated adaptive accepted epochs",
+    "No independent identical-source double CI",
+    "No verified global self-intersection/connected-seam quality"
+  ],
+  "next_action": "Read workflow 43494028352, check R2C10_DETACHED_ORIGINAL_MESH_EXPORT and R2C10_INDEPENDENT_OBJ_VERIFICATION receipt for Eistute/Book and upload artifact ID. Only then claim model OBJ files are available."
+}
