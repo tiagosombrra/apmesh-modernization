@@ -1,0 +1,54 @@
+{
+  "schema": "apmesh.quad.r2c7.all_four_sides_native_aft_boundary_preflight.v1",
+  "date_utc": "2026-11-13",
+  "feature_pr": 214,
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_commit": "2d3198d78743c2bd18ab3598f2b85b9e64d17830",
+  "predecessor_qualified_commit": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
+  "state": "IMPLEMENTED_SOURCE_CANDIDATE_CI_PENDING_NOT_SCIENTIFICALLY_QUALIFIED",
+  "source_changes": [
+    "tests/quad/full_source_patch_stage_probe.cpp"
+  ],
+  "input_models": [
+    {
+      "path": "input_models/eistute2.fixed.bp",
+      "original_patches": 4
+    },
+    {
+      "path": "input_models/book_v7a.bp",
+      "original_patches": 28
+    }
+  ],
+  "attempted_scope": [
+    "Use every original AdaptCurveByCurve plus AdaptCurveBySurface source partition for all four PatchBezier sides",
+    "Create separately owned original native AFT::Boundary contours with full dynamic source intervals",
+    "Validate original source node IDs, Bézier UV/XYZ, IsCurveReversed, CCW and positive native curved-edge metrics",
+    "Compare detached original shared-curve source partitions without physical node welding",
+    "Reject a source-corrupted physical copy before native boundary capture; reject corrupt shared source value snapshots",
+    "Preserve all original TRI Patch observers"
+  ],
+  "exact_commit_ci": {
+    "pr_run_id": 43484928465,
+    "observed_status": "in_progress",
+    "observed_conclusion": null
+  },
+  "tests_executed_in_chat": [],
+  "tests_unexecuted_in_chat": [
+    "Native GCC Linux C++ compilation",
+    "Native MSVC Windows C++ compilation",
+    "Root 89/89 CTest",
+    "Python 527/527",
+    "Frozen original TRI scientific parity",
+    "Local ASan/UBSan"
+  ],
+  "assertions_not_approved": [
+    "all-four-sides native AFT boundary success before exact CI",
+    "full physical QUAD/AFT original-model candidate",
+    "production GeneratorAdaptive accepted AdaptDomain epoch or adaptive retry",
+    "global nonmanifold sheet/junction pairing and physical node welding",
+    "production quad_uv",
+    "original 1993 scientific point rule"
+  ],
+  "deferred_benchmark_provenance_issue": 215,
+  "next_action": "Inspect exact CI run 43484928465, diagnose/fix native failures without weakening original scientific oracles, then obtain independent reproducible native source receipts before qualifying the boundary-only R2c-7 preflight."
+}
