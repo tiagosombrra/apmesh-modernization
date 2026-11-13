@@ -443,8 +443,10 @@ def run(root: Path, directory: Path, output: Path) -> dict:
             "scientific_admission": False,
             "physical_node_welding": False,
         })
+    # Every retained control must remain observable: 49 per original model.
     require(total_intervals == 22 and total_radials == 376 and
-            total_controls > 0,
+            total_controls == 98 and
+            all(x["negative_controls_rejected"] == 49 for x in results),
             "R2c1 source or adversarial policy coverage incomplete")
     receipt = {
         "schema": SCHEMA,
