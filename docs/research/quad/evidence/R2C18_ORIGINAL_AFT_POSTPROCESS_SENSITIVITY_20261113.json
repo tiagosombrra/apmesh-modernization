@@ -1,0 +1,74 @@
+{
+  "schema": "apmesh.quad.r2c18.original_tri_aft_postprocess_source_sensitivity.v1",
+  "date_utc": "2026-11-13",
+  "status": "FEATURE_AND_CI_SUBMITTED_NOT_NATIVE_QUALIFIED_M7_OPEN",
+  "pr_number": 214,
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_head": "cc18c1989017da231c9442190ab684cb1b50da44",
+  "run_id": 43518589990,
+  "previous_qualified_r2c17": {
+    "run_id": 43510748191,
+    "artifact_id": 14077649353,
+    "jobs": "4/4",
+    "native_root_ctest": "89/89",
+    "python": "527/527",
+    "original_tri_parity": "PASS",
+    "measured_book_quality_min": 0.181191,
+    "book_original_min_threshold": 0.274,
+    "book_actual_smoothed_degenerate_faces": 0,
+    "measured_eistute_quality_min": 0.266221,
+    "eistute_original_min_threshold": 0.2692,
+    "source_transition_underresolved_eistute_step4": true,
+    "source_nonmanifold_approved": false
+  },
+  "original_sha256_models": {
+    "eistute": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+    "book": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d"
+  },
+  "experimental_single_control_cases": {
+    "eistute": [
+      {
+        "name": "aft_postprocess_blend_0p78",
+        "only_override": {
+          "AFT_LOCAL_POSTPROCESS_BLEND": "0.78"
+        }
+      },
+      {
+        "name": "aft_postprocess_quality_0p80",
+        "only_override": {
+          "AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD": "0.80"
+        }
+      }
+    ],
+    "book": [
+      {
+        "name": "aft_postprocess_passes_4",
+        "only_override": {
+          "AFT_LOCAL_POSTPROCESS_PASSES": "4"
+        }
+      },
+      {
+        "name": "aft_postprocess_passes_8",
+        "only_override": {
+          "AFT_LOCAL_POSTPROCESS_PASSES": "8"
+        }
+      }
+    ]
+  },
+  "source_paths": [
+    "tests/quad/test_r2c18_original_aft_postprocess_profiles.py",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "quality_conformance": [
+    "Original Adapter and GeneratorAdaptive production C++ unchanged",
+    "Original TRI acceptance and rollback thresholds not modified",
+    "Each profile isolated and config overrides recorded with original SHA-256 input model and original article config hashes",
+    "Actual original committed generator steps and associated accepted curve/patch/incidence files required to qualify two accepted epochs",
+    "Native Adapter local domain attempts counted separately from accepted source generator commits",
+    "All source domain CSV attempts retained, native quality/degenerate/transition measurements audited and original TRI baseline frozen"
+  ],
+  "ci": null,
+  "qualified_two_accepted_original_source_epochs": false,
+  "physical_global_welding_approved": false,
+  "next_action": "Observe exact GitHub Actions run 43518589990. If all four native science/QUAD jobs pass, examine R2C18_ORIGINAL_AFT_POSTPROCESS_PROFILES for per-model actual accepted counts, local quality and transition. If unsuccessful, diagnose whether existing postprocess knobs influence native generator under stable source policy. Do not claim M7 from a successful CI alone."
+}
