@@ -222,6 +222,24 @@ jobs:
           path: build/local-serial/quad_dynamic_source_aft.log
           if-no-files-found: error
           retention-days: 14
+      - name: Measure R2c13 actual accepted original GeneratorAdaptive source epochs
+        shell: bash
+        run: |
+          python3 tests/quad/test_r2c13_m7_accepted_epochs.py \
+            --exe build/local-serial/bin/quad_generator_outcome_probe \
+            --root . \
+            --directory build/local-serial/r2c13_generator_epochs
+      - name: Retain R2c13 original generator accepted-step and rollback diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c13-original-generator-epochs-${{ github.sha }}
+          path: |
+            build/local-serial/r2c13_generator_epochs/r2c13_accepted_generator_epochs.json
+            build/local-serial/r2c13_generator_epochs/*/generator_stdout.log
+            build/local-serial/r2c13_generator_epochs/*/generator_stderr.log
+          if-no-files-found: error
+          retention-days: 14
       - name: Build fail-closed R2c0 original source radial edge incidence records
         shell: bash
         run: |
