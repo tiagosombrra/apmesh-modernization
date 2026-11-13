@@ -1,0 +1,44 @@
+{
+  "schema": "apmesh.quad.r2c9.full_original_all_sides_disconnected_physical_model.v1",
+  "date_utc": "2026-11-13",
+  "status": "IMPLEMENTED_CANDIDATE_EXACT_CI_PENDING_NO_MODEL_WIDE_QUALIFICATION",
+  "feature_pr": 214,
+  "exact_candidate_source_sha": "9ab25427e3c99adad92a6ce77ce4738afdf26cf1",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "native_test_path": "tests/quad/full_source_patch_stage_probe.cpp",
+  "source_models": [
+    {
+      "path": "input_models/eistute2.fixed.bp",
+      "expected_patches": 4,
+      "model_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f"
+    },
+    {
+      "path": "input_models/book_v7a.bp",
+      "expected_patches": 28,
+      "model_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d"
+    }
+  ],
+  "workflow_run_id": 43491499508,
+  "accepted_claims": [],
+  "executed_new_native_tests": [],
+  "native_receipt_to_check": "R2C9_ALL_ORIGINAL_PHYSICAL_CHARTS",
+  "required_success_marker": {
+    "complete_disconnected_model": 1,
+    "staged_patches_equals_original_patches": true,
+    "source_adapted_sites_equals_all_source_boundary_sites": true,
+    "typed_QUAD_positive": true,
+    "typed_TRI_positive": true,
+    "original_TRI_observers_preserved": 1
+  },
+  "diagnostics": "Failure to stage any one patch results in complete_disconnected_model=0 and an original patch index and native rejection_reason; partial stages are not published. Green CI alone is not proof of complete model.",
+  "remaining_scientific_blockers": [
+    "No global physical welding or shared-node topology",
+    "No source model advisor-approved Eistute valence 4 and Book valence 28 sheet continuation rules",
+    "Research-only 4x4 native Quadtree fixture, not original GeneratorAdaptive::AdaptDomain accepted tree",
+    "No original 1993 algorithm's scientific point rule approval",
+    "No local ASan/UBSan or source-identical independent double CI",
+    "No exported complete global mesh files",
+    "No production quad_uv CLI"
+  ],
+  "next_action": "Read exact native root CTest receipt from workflow #43491499508; correct only demonstrated first failing original patch or classify a bounded blocker. Never assert globally conforming physical mesh."
+}
