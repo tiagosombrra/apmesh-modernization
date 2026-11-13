@@ -171,10 +171,143 @@ void CheckOriginalSourceBoundary(PatchBezier& patch) {
   }
 }
 
+// Read-only snapshots from actual staged SubMesh boundary nodes. The original
+// source Curve pointer groups geometric incidences, not approved physical sheets.
+struct BoundarySite {
+  const NodeAdaptive* node = nullptr;
+  Xyz physical{};
+  Xyz source{};
+};
+
+struct SourceCurveIncidence {
+  const CurveAdaptiveParametric* curve = nullptr;
+  unsigned patch = 0;
+  unsigned side = 0;
+  std::array<BoundarySite, 5> sites{};
+};
+
+struct SourceSeamReport {
+  std::size_t source_incidences = 0;
+  std::size_t source_site_checks = 0;
+  std::size_t shared_curve_groups = 0;
+  std::size_t shared_incidence_pairs = 0;
+  std::size_t pairwise_source_site_checks = 0;
+  std::size_t max_source_valence = 0;
+};
+
+bool NearSource(const Xyz& a, const Xyz& b) {
+  return Finite(a) && Finite(b) &&
+         Norm(Subtract(a, b)) <= 2e-7 *
+             std::max({1.0, Norm(a), Norm(b)});
+}
+
+// Neither source positions nor patch node observers are changed. This only
+// checks fixed-quarter source-knot coincidence and distinct physical owners.
+SourceSeamReport AuditReadOnlySourceSeams(
+    const std::vector<SourceCurveIncidence>& incidences,
+    unsigned expected_max_valence) {
+  Require(!incidences.empty(), "No source chart boundary incidences");
+  std::set<std::pair<unsigned, unsigned>> sides;
+  std::map<const CurveAdaptiveParametric*,
+           std::vector<const SourceCurveIncidence*>> grouped;
+  SourceSeamReport report;
+  report.source_incidences = incidences.size();
+  for (const auto& incidence : incidences) {
+    Require(incidence.curve != nullptr && incidence.side < 4U &&
+                sides.insert({incidence.patch, incidence.side}).second,
+            "Malformed, duplicated or missing source chart incidence");
+    for (unsigned t = 0; t < 5U; ++t) {
+      const auto& site = incidence.sites[t];
+      Require(site.node != nullptr &&
+                  NearSource(site.physical, site.source),
+              "Physical AFT boundary node disagrees with source curve knot");
+      ++report.source_site_checks;
+    }
+    grouped[incidence.curve].push_back(&incidence);
+  }
+  for (const auto& group : grouped) {
+    const auto& owners = group.second;
+    report.max_source_valence =
+        std::max(report.max_source_valence, owners.size());
+    if (owners.size() < 2U) continue;
+    ++report.shared_curve_groups;
+    for (std::size_t i = 0; i < owners.size(); ++i) {
+      for (std::size_t j = i + 1; j < owners.size(); ++j) {
+        Require(owners[i]->patch != owners[j]->patch,
+                "Duplicate patch owner on one original shared curve");
+        ++report.shared_incidence_pairs;
+        for (unsigned t = 0; t < 5U; ++t) {
+          const auto& left = owners[i]->sites[t];
+          const auto& right = owners[j]->sites[t];
+          Require(left.node != right.node &&
+                      NearSource(left.physical, right.physical) &&
+                      NearSource(left.source, right.source),
+                  "Original shared curve nodes mismatch or share physical ownership");
+          ++report.pairwise_source_site_checks;
+        }
+      }
+    }
+  }
+  Require(report.shared_curve_groups > 0U &&
+              report.pairwise_source_site_checks > 0U &&
+              report.max_source_valence == expected_max_valence,
+          "Original high-valence source curve incidence is not represented");
+  return report;
+}
+
+void CheckSourceSeamNegativeControls(
+    const std::vector<SourceCurveIncidence>& incidences,
+    unsigned expected_max_valence) {
+  const auto rejected = [&](std::vector<SourceCurveIncidence> changed,
+                            const char* reason) {
+    bool failed = false;
+    try {
+      static_cast<void>(
+          AuditReadOnlySourceSeams(changed, expected_max_valence));
+    } catch (const std::runtime_error&) {
+      failed = true;
+    }
+    Require(failed, reason);
+  };
+  auto distorted = incidences;
+  distorted.front().sites[2].physical[0] += 1.0;
+  rejected(std::move(distorted),
+           "Injected physical boundary distortion escaped source audit");
+
+  auto missing = incidences;
+  missing.front().sites[0].node = nullptr;
+  rejected(std::move(missing),
+           "Missing source-owned boundary node escaped source audit");
+
+  auto wrong_curve = incidences;
+  wrong_curve.front().curve = nullptr;
+  rejected(std::move(wrong_curve),
+           "Missing original curve provenance escaped source audit");
+
+  // All real source-patch node pointers must remain disjoint even if their
+  // sampled XYZ positions coincide exactly.
+  auto aliased = incidences;
+  bool found_shared = false;
+  for (std::size_t i = 0; i < aliased.size() && !found_shared; ++i) {
+    for (std::size_t j = i + 1; j < aliased.size(); ++j) {
+      if (aliased[i].curve == aliased[j].curve &&
+          aliased[i].patch != aliased[j].patch) {
+        aliased[j].sites[0].node = aliased[i].sites[0].node;
+        found_shared = true;
+        break;
+      }
+    }
+  }
+  Require(found_shared, "No shared original curve for alias rejection");
+  rejected(std::move(aliased),
+           "Unauthorized original physical node alias escaped source audit");
+}
+
 struct ChartCounts {
   std::size_t nodes = 0;
   std::size_t quads = 0;
   std::size_t tris = 0;
+  std::array<SourceCurveIncidence, 4> source_sides{};
 };
 
 std::unique_ptr<SubMesh> BuildOriginalAftChart(
@@ -270,6 +403,33 @@ std::unique_ptr<SubMesh> BuildOriginalAftChart(
     chart->AddElement(std::move(triangle));
     ++counts.tris;
   }
+  // Extract only sites that actually exist in the typed physical AFT output.
+  // A source sample that is not represented by a candidate node is a failure,
+  // not permission to manufacture a missing physical seam node.
+  for (unsigned side = 0; side < 4U; ++side) {
+    auto* curve = dynamic_cast<CurveAdaptiveParametric*>(patch.GetCurve(side));
+    Require(curve != nullptr, "Original source boundary curve is unavailable");
+    auto& incidence = counts.source_sides[side];
+    incidence.curve = curve;
+    incidence.patch = patch_id;
+    incidence.side = side;
+    for (unsigned k = 0; k < 5U; ++k) {
+      const double source_t = static_cast<double>(k) / 4.0;
+      const double local_t =
+          patch.IsCurveReversed(side) ? 1.0 - source_t : source_t;
+      const UvVertex uv = side == 0U ? UvVertex{local_t, 0.0}
+          : side == 1U ? UvVertex{1.0, local_t}
+          : side == 2U ? UvVertex{local_t, 1.0}
+                       : UvVertex{0.0, local_t};
+      const auto it = local_nodes.find({uv.u, uv.v});
+      Require(it != local_nodes.end() && it->second != nullptr,
+              "Native typed QUAD/AFT physical boundary is missing a source knot");
+      const auto* node = it->second;
+      incidence.sites[k] = {
+          node, {node->GetX(), node->GetY(), node->GetZ()},
+          Values(curve->FindPointByParameter(source_t))};
+    }
+  }
   counts.nodes = chart->GetNumberNos();
   Require(counts.quads == selected.uv_quads.quads.size() &&
               counts.tris == aft->Triangles().size() &&
@@ -326,6 +486,8 @@ void RunSource(const std::string& source, unsigned expected, bool refined) {
 
   DisjointOwnerStage staged(expected);
   ChartCounts total;
+  std::vector<SourceCurveIncidence> source_incidences;
+  source_incidences.reserve(expected * 4U);
   for (unsigned i = 0; i < expected; ++i) {
     auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(i));
     Require(patch != nullptr, "Missing original source Bezier chart");
@@ -334,6 +496,9 @@ void RunSource(const std::string& source, unsigned expected, bool refined) {
     total.nodes += count.nodes;
     total.quads += count.quads;
     total.tris += count.tris;
+    source_incidences.insert(source_incidences.end(),
+                             count.source_sides.begin(),
+                             count.source_sides.end());
   }
   staged.Replace(active);
   Require(active.get() != prior &&
@@ -354,6 +519,24 @@ void RunSource(const std::string& source, unsigned expected, bool refined) {
   }
   Require(unique_nodes.size() == total.nodes,
           "Native chart physical node inventory is inconsistent");
+  const auto seams =
+      AuditReadOnlySourceSeams(source_incidences, expected);
+  CheckSourceSeamNegativeControls(source_incidences, expected);
+  std::cout << "R2C2_SOURCE_CURVE_SITES"
+            << " original_patches=" << expected
+            << " source_incidences=" << seams.source_incidences
+            << " source_site_checks=" << seams.source_site_checks
+            << " shared_curve_groups=" << seams.shared_curve_groups
+            << " shared_incidence_pairs=" << seams.shared_incidence_pairs
+            << " shared_curve_site_pair_checks="
+            << seams.pairwise_source_site_checks
+            << " max_source_valence=" << seams.max_source_valence
+            << " rejected_negative_controls=4"
+            << " physical_boundary_samples=real_SubMesh_nodes"
+            << " original_curve_order=1"
+            << " source_sheet_continuity_approved=0"
+            << " global_seam_conformity_proved=0"
+            << " patch_observers_touched=0\n";
   std::cout << "R2C2_FULL_SOURCE_AFT"
             << " original_patches=" << expected
             << " physical_nodes=" << total.nodes
