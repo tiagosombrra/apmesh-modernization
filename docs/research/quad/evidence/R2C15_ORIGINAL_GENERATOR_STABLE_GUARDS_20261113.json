@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c15.source_bound_original_generator_guard_inequalities.v1",
   "date_utc": "2026-11-13",
-  "status": "SOURCE_IMPLEMENTED_PRIOR_EXACT_CI_CANCELED_NEW_COMBINED_CI_PENDING",
+  "status": "SOURCE_STABLE_NECESSARY_GUARD_AUDIT_QUALIFIED_SINGLE_EXACT_CI; TWO_ORIGINAL_SOURCE_EPOCHS_NOT_ACHIEVED",
   "pr_number": 214,
   "source_commit": "09b9eea7a3de3d4521c203189f38c9ba3d28cb80",
   "workflow_id": 43508097551,
@@ -32,10 +32,24 @@
   ],
   "expected_output": "build/local-serial/r2c13_generator_epochs/r2c15_original_acceptance_guard_inequalities.json",
   "expected_marker": "R2C15_REAL_SOURCE_GUARD_INEQUALITIES",
-  "actual_ci_results": null,
+  "actual_ci_results": {
+    "commit": "797c2b39be3d0508a71ddd8234ad17a213373c23",
+    "run_id": 43509163882,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": "4/4",
+    "root_ctest": "89/89",
+    "python": "527/527",
+    "gcc_quad": "16/16",
+    "msvc_quad": "16/16",
+    "frozen_tri_science": "PASS",
+    "independent_native_guard_marker": "R2C15_REAL_SOURCE_GUARD_INEQUALITIES",
+    "artifact_id": 14076444324,
+    "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43509163882/artifacts/14076444324"
+  },
   "originally_accepted_epoch_gate_satisfied": false,
   "scientific_sheet_approval": false,
-  "next_action": "Inspect exact combined run 43509163882 and positive native R2C15_REAL_SOURCE_GUARD_INEQUALITIES receipt; do not claim success from canceled precursor. Distinguish stable original acceptance from research_debug only by verified source mode.",
+  "next_action": "Proceed to original Adapter::PatchNeedsFallback source granular domain adaptation CSV auditing, distinguish actual degeneracy from generic fallback classification, and test legitimate source cap/transition corrections without admission override.",
   "canceled_attempt": {
     "source_sha": "09b9eea7a3de3d4521c203189f38c9ba3d28cb80",
     "run_id": 43508097551,
@@ -53,5 +67,38 @@
       "R2c15 original source-stable guard inequalities",
       "R2c16 original source-control sensitivity profiles"
     ]
+  },
+  "original_source_guard_failures": {
+    "eistute": {
+      "pinned": {
+        "step2": [
+          "stable_step2_overshoot_ok"
+        ],
+        "step3": [
+          "stable_progressive_overshoot_ok"
+        ],
+        "step4": [
+          "stable_progressive_overshoot_ok",
+          "transition_coherence_ok",
+          "stable_transition_ready"
+        ]
+      },
+      "stable_small_increment": "same original stable failures as pinned"
+    },
+    "book": {
+      "pinned_original_research_debug": "stable guards not applied (model original uses research_debug)",
+      "stable_small_increment": {
+        "step2": [
+          "transition_coherence_ok"
+        ],
+        "step3": [
+          "transition_coherence_ok"
+        ],
+        "step4": [
+          "stable_progressive_overshoot_ok",
+          "transition_coherence_ok"
+        ]
+      }
+    }
   }
 }
