@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c13.m7.genuine_generator_accepted_epochs.v1",
   "date_utc": "2026-11-13",
-  "status": "IMPLEMENTED_EXPERIMENT_AND_DIAGNOSTIC_CI_PENDING_NO_TWO_ACCEPTED_EPOCH_CLAIM",
+  "status": "DIAGNOSTIC_QUALIFIED_EXACT_4_OF_4_CI_M7_TWO_ACCEPTED_EPOCH_GATE_NOT_MET",
   "pr_number": 214,
   "pr_head": "082ecd0408d31808dae5d629e711be99fd01d1a7",
   "workflow_run_id": 43502743922,
@@ -54,7 +54,104 @@
     "Rejected/retried attempts excluded, no invented accepted step based on regeneration or CTest green",
     "No production QUAD output, nonmanifold sheet welding or original 1993 rule approved"
   ],
-  "native_execution_this_turn": null,
+  "native_execution_this_turn": {
+    "commit": "082ecd0408d31808dae5d629e711be99fd01d1a7",
+    "run_id": 43502743922,
+    "conclusion": "success",
+    "jobs": "4/4",
+    "root_linux_ctest": "89/89",
+    "python_tooling": "527/527",
+    "quad_native_linux": "16/16",
+    "quad_native_windows": "16/16",
+    "frozen_tri_science": "PASS",
+    "bounded_research_runner": "PASS",
+    "artifact_id": 14074978033,
+    "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43502743922/artifacts/14074978033"
+  },
   "actual_two_accepted_epochs_qualified": false,
-  "next_action": "Inspect new workflow 43502743922 compiler and instrumented original-model production GeneratorAdaptive diagnostics. If only one accepted step per model, classify exact scenario/stop reason and refine M7 test using production acceptance rules without weakening them. Avoid claiming M7 complete from green CI alone."
+  "next_action": "R2c14: produce exact, model- and step-specific rejection reason table from original candidate acceptance logs and source numeric limits (growth, budget, local progress, curve/patch target, normal quality) without loosening production gates. Prioritize Book step-2 global-error regression and Eistute step-4 error improvement rejected on growth/quality. No artificial acceptance overrides.",
+  "measured_models": [
+    {
+      "name": "eistute",
+      "original_patches": 4,
+      "pinned_article": {
+        "accepted_commits": 1,
+        "rejected_restored": 3,
+        "distinct_accepted_epochs": [
+          1
+        ],
+        "accepted_original_curves": 13,
+        "source_boundary_witnesses": 960
+      },
+      "stable_small_increment": {
+        "accepted_commits": 1,
+        "rejected_restored": 3,
+        "source_witnesses_equivalent_to_pinned": true
+      },
+      "research_debug_low_intensity": {
+        "accepted_commits": 1,
+        "rejected_restored": 2,
+        "accepted_original_curves": 13
+      },
+      "pinned_step2": {
+        "previous_global_error": 0.0620623,
+        "rejected_candidate_global_error": 0.0775284,
+        "element_growth_factor": 1.71918
+      },
+      "pinned_step3": {
+        "rejected_candidate_global_error": 0.0746173,
+        "element_growth_factor": 1.88014
+      },
+      "pinned_step4": {
+        "rejected_candidate_global_error": 0.0100167,
+        "element_growth_factor": 6.17808,
+        "reason": "hybrid_criterion_rejected",
+        "score": -2.52902
+      },
+      "two_accepted_epochs": false
+    },
+    {
+      "name": "book",
+      "original_patches": 28,
+      "pinned_article": {
+        "accepted_commits": 1,
+        "rejected_restored": 2,
+        "distinct_accepted_epochs": [
+          1
+        ],
+        "accepted_original_curves": 85,
+        "source_boundary_witnesses": 1008
+      },
+      "stable_small_increment": {
+        "accepted_commits": 0,
+        "native_research_probe_exit": 1,
+        "reason": "Real generator never committed an accepted TRI step",
+        "analysis_of_native_output": "Step 2-4 candidate reduced global error 51.5505 to 34.1271 but was rejected by original hybrid criterion and element growth 7; no acceptance fabricated"
+      },
+      "research_debug_low_intensity": {
+        "accepted_commits": 1,
+        "rejected_restored": 2,
+        "accepted_original_curves": 85
+      },
+      "pinned_step2": {
+        "previous_global_error": 42.1875,
+        "rejected_candidate_global_error": 168.932,
+        "element_growth_factor": 4.64615
+      },
+      "pinned_step3": {
+        "rejected_candidate_global_error": 168.932,
+        "element_growth_factor": 4.64615
+      },
+      "two_accepted_epochs": false
+    }
+  ],
+  "evidence_constraints": [
+    "Existing actual GeneratorAdaptive::AdaptCurve and AdaptDomain were not modified",
+    "Only one real AcceptedMeshScope::Commit was observed per original model in pinned and usable sensitivity profiles",
+    "Each accepted model step had native complete patch boundary and 13/85 curve adaptation CSV witnesses plus acceptance and mesh incidence file SHA receipts",
+    "Rejected and restored candidates never counted toward M7",
+    "Research stable-small-increment Book had no accepted commit and must remain unqualified despite reducing error in later rejected candidates",
+    "No global physical QUAD/AFT mesh or nonmanifold sheet node welding approved",
+    "Artifact retains source stdout/stderr and JSON report with digests of per-step acceptance files; archived file contents beyond these logs are not included"
+  ]
 }
