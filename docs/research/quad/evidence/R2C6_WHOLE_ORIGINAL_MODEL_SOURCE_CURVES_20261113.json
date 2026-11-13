@@ -1,0 +1,69 @@
+{
+  "milestone": "R2c-6 full original model all-source-curves original Adapter two-pass serial sweep / source incidence audit",
+  "date_utc": "2026-11-13",
+  "status": "IMPLEMENTED_RESEARCH_TEST_ONLY_EXACT_HEAD_CI_PENDING",
+  "original_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_sha": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
+  "draft_pr": 214,
+  "source_code": "tests/quad/full_source_patch_stage_probe.cpp",
+  "existing_mandatory_ctest": "quad.r2c2.full_source_patch_stage",
+  "receipt": "R2C6_WHOLE_ORIGINAL_MODEL_SOURCE_CURVES",
+  "original_models": {
+    "Eistute": {
+      "path": "input_models/eistute2.fixed.bp",
+      "git_blob_sha1": "6fa2f40e4270cccb6da140111953bbbcb69b0086",
+      "expected_source_patches": 4,
+      "expected_max_source_valence": 4
+    },
+    "Book": {
+      "path": "input_models/book_v7a.bp",
+      "git_blob_sha1": "7e3338a4ebc43f0b3119b1cb6eda47e2ac205d14",
+      "expected_source_patches": 28,
+      "expected_max_source_valence": 28
+    }
+  },
+  "source_model_hash_note": "Git blob SHA-1 content object IDs, not raw-file SHA-256; no advisory signoff implied.",
+  "engineering_candidate_steps": [
+    "Load separate original PatchReader full models, build each actual coarse original TRI SubMesh and source samples with BuildInitialSubMesh",
+    "Establish all source CurveAdaptiveParametric source parameters 0,1 and verify finite strictly positive source curve lengths",
+    "Use existing production CurveSampleGraphTransaction on entire original source curve graph, preserving original curve owner pointers and shared source incidence",
+    "Use original Adapter::AdaptCurveByCurve then Adapter::AdaptCurveBySurface via production RefineCurveSamples on EVERY original source curve exactly once, with original shared point cache, fixed research factor 1.0, no target point budget rebuild",
+    "Commit graph only after full two-pass loop completes, retire original entry samples using existing production transaction",
+    "Validate real ordered NodeAdaptive samples/IDs/XYZ for every original curve and every original source patch side with original IsCurveReversed UV mapping and exact source curve geometry",
+    "Compare canonical source parameter, real node ID and XYZ for every pair of original shared curve incidences without inferring nonmanifold sheet pairing",
+    "Verify original per-curve topology/patch incidence and every previous original coarse TRI Patch/SubMesh observer",
+    "Reject 6 deliberately corrupted source incidence snapshot cases plus one shared source node ID mismatch, leaving original source graph unchanged"
+  ],
+  "new_negative_controls_expected_per_model": 7,
+  "required_exact_head_ci": {
+    "push_run_id": 43461405847,
+    "pr_run_id": 43461420478,
+    "source_sha": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
+    "status": "IN_PROGRESS",
+    "required_jobs": [
+      "TRI baseline and tooling controls Linux incl 89/89 CTests",
+      "TRI scientific equivalence against frozen baseline",
+      "QUAD native ubuntu-24.04 16/16",
+      "QUAD native windows-2022 16/16"
+    ],
+    "actual_original_full_model_curve_counts": "PENDING",
+    "two_pass_full_original_model_receipt": "PENDING"
+  },
+  "scientific_scope": {
+    "true_original_Adapter_two_pass_methods_executed": true,
+    "all_original_source_curves_visited": true,
+    "one_original_serial_source_graph_transaction": true,
+    "original_GeneratorAdaptive_curved_budget_factors_executed": false,
+    "original_GeneratorAdaptive_model_acceptance_epoch": false,
+    "original_GeneratorAdaptive_AdaptDomain_native_quadtree": false,
+    "all_original_source_edges_physically_conforming_QUAD_AFT_SubMesh": false,
+    "independent_cross_patch_physical_node_ownership_proved": false,
+    "model_global_welded_Quad_Tri_mesh": false,
+    "high_valence_4_28_sheet_advisor_approved": false,
+    "local_ASAN_UBSAN_qualified": false,
+    "historical_1993_point_rule_qualified": false,
+    "production_main_changed": false
+  },
+  "next_action": "Read two independent exact-head Linux CTest full original curve model markers and investigate any failed original source side geometry/ID/transaction without synthetic regridding or relaxed oracles. After success measure every original curve/side/pair and update canonical STATE/SESSION_LOG. Next distinct step would adapt all original physical AFT patch edges and obtain advisor-signed radial topology before global welding."
+}
