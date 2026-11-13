@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c11.exported_original_source_seam_atlas.v1",
   "date_utc": "2026-11-13",
-  "status": "CANDIDATE_CODE_COMMITTED_CI_QUEUED_NOT_QUALIFIED",
+  "status": "FIRST_EXACT_CI_REJECTED_BY_INDEPENDENT_CURVE_IDENTITY_ORACLE; CORRECTION_COMMITTED_CI_PENDING",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_head": "1fd693eb38732b6c01a638cbd97208a6e87f9905",
   "pr_number": 214,
@@ -60,5 +60,37 @@
     "Production accepted GeneratorAdaptive AdaptDomain and repeated adaptation",
     "Local ASan/UBSan"
   ],
-  "next_action": "Inspect exact CI #43495975211, diagnose mismatch without weakening original source/physical ownership or TRI oracles, require actual source/OBJ positive seam receipts on both models before claiming R2c11."
+  "next_action": "Observe corrected exact CI on c6a9cb25985af82293c89ede6ede10a11a353df8; if all source checks pass, retain actual exported seam CSV evidence and artifact; if not, diagnose exact error instead of weakening cardinality.",
+  "first_attempt": {
+    "sha": "1fd693eb38732b6c01a638cbd97208a6e87f9905",
+    "run_id": 43495975211,
+    "conclusion": "failure",
+    "jobs": {
+      "native_gcc": "success",
+      "native_msvc": "success",
+      "tri_scientific": "success",
+      "linux_root": "failure"
+    },
+    "native_root_ctest": "89/89 PASS",
+    "native_model_trial": "PASS",
+    "native_seam_export_receipts": [
+      {
+        "model": "eistute",
+        "source_incidence_sites": 136
+      },
+      {
+        "model": "book",
+        "source_incidence_sites": 936
+      }
+    ],
+    "previous_obj_validation": "PASS",
+    "independent_atlas_validation": "FAIL The actual source atlas does not cover all original curves",
+    "hypothesis": "Legacy CurveAdaptiveParametric::GetId is not a unique key over original Geometry curves; must use original GetCurve registry index to distinguish actual source objects. This hypothesis requires direct successful independent native evidence before acceptance."
+  },
+  "corrective_feature_head": "c6a9cb25985af82293c89ede6ede10a11a353df8",
+  "corrective_changes": [
+    "C++ source atlas exports both original Geometry curve registry index and legacy source curve ID",
+    "Independent Python verifier groups canonical shared-source samples by registry index, retains legacy ID as checked metadata",
+    "No reduction in expected original curves or positive physical/site counts, no altered numeric or geometry tolerances, original input and TRI unchanged"
+  ]
 }
