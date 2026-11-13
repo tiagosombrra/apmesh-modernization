@@ -301,7 +301,9 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   target_link_libraries(quad_disjoint_owner_stage_probe PRIVATE ap_mesh_engine)
   target_compile_features(quad_disjoint_owner_stage_probe PRIVATE cxx_std_17)
   add_test(NAME quad.r2c2.disjoint_owner_stage
-    COMMAND "$<TARGET_FILE:quad_disjoint_owner_stage_probe>")
+    COMMAND "$<TARGET_FILE:quad_disjoint_owner_stage_probe>"
+      "${CMAKE_CURRENT_SOURCE_DIR}/input_models/eistute2.fixed.bp"
+      "${CMAKE_CURRENT_SOURCE_DIR}/input_models/book_v7a.bp")
   set_tests_properties(quad.r2c2.disjoint_owner_stage PROPERTIES
     LABELS "research-quad;ownership;detached;required-gate" TIMEOUT 90)
 
