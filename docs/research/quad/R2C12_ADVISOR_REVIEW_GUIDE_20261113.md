@@ -8,6 +8,7 @@
 - [OBJ, atlas CSV e relatório R2c-11](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43497162260/artifacts/14073665054): evidência temporária, sujeito à retenção do GitHub Actions.
 - [R2c-1 — pacote científico de ordenação radial sem autorização](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-r2b2-exterior-aft-20261112/docs/research/quad/R2C1_SOURCE_BOUND_SHEET_REVIEW_20261113.md): arquivo de referência na PR experimental; assinatura/decisão independente ainda não realizada.
 - [Evidência qualificada R2c-11](evidence/R2C11_ORIGINAL_SOURCE_SEAM_ATLAS_20261113.json) e [R2c-12](evidence/R2C12_MODEL_BOUND_ADVISOR_HANDOFF_20261113.json).
+- [Pacotes Eistute/Book de revisão científica R2c-12 gerados em CI](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43499503532/artifacts/14072853917) — contém os hashes, as evidências físicas/radiais comparadas e o campo de decisão ainda pendente; retenção temporária de 14 dias.
 - [Plano geral M0–M9](MILESTONE_STATUS.md). O código de produção TRI e os arquivos de entrada não foram alterados.
 
 | Modelo original | SHA-256 do arquivo original | Patches | Curvas originais | Valência da curva compartilhada |
@@ -16,6 +17,8 @@
 | Book (`book_v7a.bp`) | `3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d` | 28 | 85 | 28 |
 
 **Medição física:** 4/4 Eistute e 28/28 Book foram gerados separadamente em elementos QUAD+AFT (512 QUAD e 1456 TRI em conjunto) e exportados como OBJ **desconectados**. A correspondência das amostras paramétricas originais com vértices OBJ foi medida; isso não estabelece pares de halfedges nem propriedade compartilhada de nós.
+
+**Resultado medido do R2c-12:** a curva central compartilhada possui índice de registro original `Geometry` **3 em ambos os modelos** (índice, não valência). São **10 → 6 intervalos em Eistute** e **12 → 6 em Book**, comparando respectivamente o certificado radial do gerador original e o atlas físico da adaptação experimental independente. Isso não implica correspondência de IDs/nós entre épocas e permanece sujeito à decisão de sincronização.
 
 ## Uma diferença que requer decisão explícita
 
