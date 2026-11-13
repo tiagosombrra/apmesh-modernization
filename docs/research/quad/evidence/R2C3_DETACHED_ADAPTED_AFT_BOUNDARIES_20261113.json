@@ -1,7 +1,7 @@
 {
   "milestone": "R2c-3 original high-valence serial Adapter source partitions lifted into separate native original AFT::Boundary owners",
   "date_utc": "2026-11-13",
-  "status": "IMPLEMENTED_NATIVE_SOURCE_CI_PENDING",
+  "status": "ORIGINAL_SOURCE_NATIVE_DETACHED_AFT_BOUNDARIES_FEATURE_PUSH_CI_GREEN_INDEPENDENT_PR_CI_PENDING",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_head_sha": "4258dbca7131427e22220fa190391af6810411ab",
   "draft_pr": 214,
@@ -48,9 +48,45 @@
     "push_run_id": 43439921989,
     "pr_run_id": 43439932294,
     "expected_sha": "4258dbca7131427e22220fa190391af6810411ab",
-    "status": "PENDING",
+    "status": "PUSH_CI_ALL_4_OF_4_SUCCESS_PR_CI_IN_PROGRESS",
     "native_source_marker": "R2C3_NATIVE_ADAPTED_AFT_BOUNDARIES",
-    "original_model_metrics": "UNMEASURED"
+    "original_model_metrics": "UNMEASURED",
+    "feature_push_root_job_id": 131934564274,
+    "feature_pr_root_job_id": 131934600416,
+    "actual_push_checks": {
+      "sha": "4258dbca7131427e22220fa190391af6810411ab",
+      "root_ctest": "89/89 PASS, including quad.r2c2.full_source_patch_stage",
+      "python": "527/527 PASS",
+      "native_quad_gcc": "PASS",
+      "native_quad_msvc": "PASS",
+      "frozen_tri_parity": "PASS"
+    },
+    "actual_native_source_contours_push_log": {
+      "Eistute": {
+        "original_patches": 4,
+        "detached_boundary_owners": 4,
+        "native_owned_vertices": 36,
+        "native_directed_edges": 36,
+        "adapted_source_edges": 24,
+        "canonical_source_site_checks": 28,
+        "shared_incidence_pairs": 6,
+        "cross_patch_source_site_pairs": 42,
+        "cross_patch_source_interval_pairs": 36,
+        "rejected_negative_snapshots": 7
+      },
+      "Book": {
+        "original_patches": 28,
+        "detached_boundary_owners": 28,
+        "native_owned_vertices": 252,
+        "native_directed_edges": 252,
+        "adapted_source_edges": 168,
+        "canonical_source_site_checks": 196,
+        "shared_incidence_pairs": 378,
+        "cross_patch_source_site_pairs": 2646,
+        "cross_patch_source_interval_pairs": 2268,
+        "rejected_negative_snapshots": 7
+      }
+    }
   },
   "scientific_scope": {
     "original_source_curve_adapted_per_model": 1,
@@ -72,5 +108,5 @@
     "Nonmanifold source-model-SHA-bound valence 4 and valence 28 sheet/owner scientific decisions are absent",
     "No native local ASan UBSan or original 1993 reconstruction"
   ],
-  "next_action": "Inspect exact-head native root CTest/build logs, repair actual failures, retain real model boundary metrics and 7 negatives per model, obtain 2 fully green identical SHA CI workflows. Only then progress to original native Quadtree QUAD/AFT meshing on the detached dynamic boundary without global publish."
+  "next_action": "Verify independent PR #43439932294 4/4 success on exactly source sha 4258dbca and compare same two new R2C3 native AFT boundary source log markers; then qualify evidence and state without altering production, no physical QUAD/TRI meshing yet."
 }
