@@ -1105,6 +1105,56 @@ std::unique_ptr<SubMesh> BuildDynamicAdaptedAftChart(
   return chart;
 }
 
+// Capture only immutable, owned physical values and ordered element kinds.
+// This compares actual old/new full QUAD/AFT candidate generations without
+// dereferencing any pointers after the old MeshAdaptive owner is retired.
+struct DynamicPhysicalFingerprint {
+  std::vector<std::tuple<unsigned long, double, double, double>> nodes;
+  std::vector<unsigned> element_types;
+  bool operator==(const DynamicPhysicalFingerprint& other) const {
+    return nodes == other.nodes && element_types == other.element_types;
+  }
+};
+
+DynamicPhysicalFingerprint FingerprintDynamicChart(const SubMesh& chart) {
+  DisjointOwnerStage::CheckChart(chart);
+  DynamicPhysicalFingerprint result;
+  result.nodes.reserve(chart.GetNumberNos());
+  result.element_types.reserve(chart.GetNumberElements());
+  for (unsigned i = 0; i < chart.GetNumberNos(); ++i) {
+    const auto* node = chart.GetNoh(i);
+    Require(node && Finite(Values(*node)),
+            "Dynamic source physical fingerprint contains an invalid node");
+    result.nodes.emplace_back(
+        node->GetId(), node->GetX(), node->GetY(), node->GetZ());
+  }
+  for (unsigned i = 0; i < chart.GetNumberElements(); ++i) {
+    const auto* element = chart.GetElement(i);
+    const unsigned kind =
+        dynamic_cast<const QuadrilateralAdaptive*>(element) ? 4U :
+        dynamic_cast<const TriangleAdaptive*>(element) ? 3U : 0U;
+    Require(kind != 0U,
+            "Dynamic source physical fingerprint contains an untyped element");
+    result.element_types.push_back(kind);
+  }
+  return result;
+}
+
+std::vector<DynamicPhysicalFingerprint> SnapshotDynamicPhysicalModel(
+    MeshAdaptive& active, unsigned original_patches) {
+  Require(active.GetNumberSubMeshesAdaptive() == original_patches,
+          "Dynamic physical model owner has incomplete chart publication");
+  std::vector<DynamicPhysicalFingerprint> result;
+  result.reserve(original_patches);
+  for (unsigned i = 0; i < original_patches; ++i) {
+    const auto* chart = active.GetSubMeshAdaptiveByPosition(i);
+    Require(chart && chart->GetPatch() == nullptr,
+            "Dynamic physical model chart was rebound to an original Patch");
+    result.push_back(FingerprintDynamicChart(*chart));
+  }
+  return result;
+}
+
 struct DynamicNativeModelTotals {
   std::size_t charts = 0;
   std::size_t physical_nodes = 0;
@@ -1117,6 +1167,11 @@ struct DynamicNativeModelTotals {
   std::size_t native_boundary_edges = 0;
   double min_uv_triangle_quality = 1.0;
   double min_physical_alignment = 1.0;
+  std::size_t rejected_physical_stage_faults = 0;
+  std::size_t rejected_incomplete_physical_stages = 0;
+  std::size_t repeated_atomic_physical_publications = 0;
+  std::size_t repeated_deterministic_chart_checks = 0;
+  std::size_t preserved_original_source_node_observers = 0;
 };
 
 DynamicNativeModelTotals StageDynamicOriginalPhysicalCharts(
@@ -1184,6 +1239,135 @@ DynamicNativeModelTotals StageDynamicOriginalPhysicalCharts(
   }
   Require(unique_nodes.size() == report.physical_nodes,
           "Staged native dynamic physical chart node inventory mismatched");
+
+  // Start from a REAL fully admitted source-driven QUAD/AFT model. Fail the
+  // replacement of a new equally real model at three distinct adoption points,
+  // then verify the complete original owner graph remains byte-for-byte stable
+  // as values and pointer-for-pointer live as observers.
+  MeshAdaptive* const accepted_owner = disconnected.get();
+  const auto accepted_values =
+      SnapshotDynamicPhysicalModel(*accepted_owner, original_patches);
+  std::vector<SubMesh*> accepted_charts;
+  std::vector<NodeAdaptive*> accepted_nodes;
+  std::vector<ElementAdaptive*> accepted_elements;
+  accepted_charts.reserve(original_patches);
+  accepted_nodes.reserve(original_patches);
+  accepted_elements.reserve(original_patches);
+  for (unsigned p = 0; p < original_patches; ++p) {
+    auto* chart = accepted_owner->GetSubMeshAdaptiveByPosition(p);
+    accepted_charts.push_back(chart);
+    accepted_nodes.push_back(chart->GetNoh(0));
+    accepted_elements.push_back(chart->GetElement(0));
+  }
+  const NativeAdaptedSites source_values =
+      SnapshotNativeAdaptedSource(adapted);
+  const std::vector<PointAdaptive*> source_observers(
+      adapted.GetPoints().begin(), adapted.GetPoints().end());
+  const auto verify_original_observers = [&] {
+    Require(disconnected.get() != nullptr &&
+                disconnected->GetNumberSubMeshesAdaptive() == original_patches,
+            "Dynamic stage lost its accepted MeshAdaptive owner");
+    for (unsigned p = 0; p < original_patches; ++p)
+      Require(original.GetPatch(p)->GetSubMesh() == original_tri[p],
+              "Dynamic stage rebound the original accepted TRI Patch");
+    const auto current = SnapshotNativeAdaptedSource(adapted);
+    Require(current.size() == source_values.size() &&
+                adapted.GetPoints().size() == source_observers.size(),
+            "Dynamic stage mutated the actual original Adapter source graph");
+    for (std::size_t i = 0; i < source_values.size(); ++i)
+      Require(current[i].parameter == source_values[i].parameter &&
+                  current[i].source_node_id == source_values[i].source_node_id &&
+                  current[i].physical == source_values[i].physical &&
+                  adapted.GetPoint(static_cast<unsigned>(i)) ==
+                      source_observers[i],
+              "Dynamic stage changed an original adapted source NodeAdaptive observer");
+  };
+  const auto prepare_full_dynamic_stage = [&](DisjointOwnerStage& next,
+                                               unsigned count) {
+    Require(count <= original_patches,
+            "Dynamic stage requested more patches than source geometry owns");
+    for (unsigned p = 0; p < count; ++p) {
+      auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(p));
+      Require(patch && patch->GetSubMesh() == original_tri[p],
+              "Dynamic stage has an invalid original source TRI observer");
+      auto native = BuildDetachedAdaptedSourceBoundary(*patch, p, adapted);
+      auto reference = BuildDetachedAdaptedSourceBoundary(*patch, p, adapted);
+      DynamicNativeChartCounts counts;
+      auto physical = BuildDynamicAdaptedAftChart(
+          *patch, p, std::move(native), std::move(reference), counts);
+      Require(counts.quads > 0U && counts.tris > 0U &&
+                  counts.original_adapted_sites == 6U &&
+                  counts.original_boundary_sites == 9U,
+              "Dynamic stage test would accept an incomplete real source patch");
+      Require(FingerprintDynamicChart(*physical) == accepted_values[p],
+              "Identical original Adapter source graph produced different physical elements");
+      ++report.repeated_deterministic_chart_checks;
+      next.Add(std::move(physical));
+    }
+  };
+  const auto verify_failed_stage = [&] {
+    Require(disconnected.get() == accepted_owner &&
+                SnapshotDynamicPhysicalModel(*disconnected, original_patches)
+                    == accepted_values,
+            "Rejected dynamic stage changed accepted physical QUAD/AFT values");
+    for (unsigned p = 0; p < original_patches; ++p) {
+      auto* live = disconnected->GetSubMeshAdaptiveByPosition(p);
+      Require(live == accepted_charts[p] &&
+                  live->GetNoh(0) == accepted_nodes[p] &&
+                  live->GetElement(0) == accepted_elements[p],
+              "Rejected dynamic stage changed an accepted physical element owner");
+    }
+    verify_original_observers();
+  };
+  const std::array<unsigned, 3> fault_positions{
+      {0U, original_patches / 2U, original_patches}};
+  for (const auto fault : fault_positions) {
+    DisjointOwnerStage candidate(original_patches);
+    prepare_full_dynamic_stage(candidate, original_patches);
+    bool rejected = false;
+    try {
+      candidate.Replace(disconnected, static_cast<int>(fault));
+    } catch (const std::runtime_error&) {
+      rejected = true;
+    }
+    Require(rejected, "Injected dynamic physical owner rollback was admitted");
+    verify_failed_stage();
+    ++report.rejected_physical_stage_faults;
+  }
+  {
+    // A fully real but incomplete collection must not replace prior work.
+    DisjointOwnerStage incomplete(original_patches);
+    prepare_full_dynamic_stage(incomplete, original_patches - 1U);
+    bool rejected = false;
+    try {
+      incomplete.Replace(disconnected);
+    } catch (const std::invalid_argument&) {
+      rejected = true;
+    }
+    Require(rejected, "Incomplete dynamic source physical stage was admitted");
+    verify_failed_stage();
+    ++report.rejected_incomplete_physical_stages;
+  }
+  {
+    // The second complete publication consumes a fresh real source-conformant
+    // QUAD/AFT graph. Do not dereference any retired graph after replacement.
+    DisjointOwnerStage next(original_patches);
+    prepare_full_dynamic_stage(next, original_patches);
+    next.Replace(disconnected);
+    Require(disconnected.get() != accepted_owner &&
+                SnapshotDynamicPhysicalModel(*disconnected, original_patches)
+                    == accepted_values,
+            "Repeated real dynamic QUAD/AFT stage changed its physical output");
+    verify_original_observers();
+    ++report.repeated_atomic_physical_publications;
+  }
+  Require(report.rejected_physical_stage_faults == 3U &&
+              report.rejected_incomplete_physical_stages == 1U &&
+              report.repeated_atomic_physical_publications == 1U &&
+              report.repeated_deterministic_chart_checks ==
+                  5U * original_patches - 1U,
+          "Dynamic original physical stage fault/repeat controls incomplete");
+  report.preserved_original_source_node_observers = source_observers.size();
   return report;
 }
 
@@ -1358,6 +1542,29 @@ void RunNativeOriginalSharedCurveAdaptation(const std::string& model,
             << " global_physical_mesh_welded=0"
             << " scientific_sheet_owner_approved=0"
             << " production_quad_enabled=0\n";
+  std::cout << "R2C4_DYNAMIC_PHYSICAL_STAGE_ROLLBACK"
+            << " original_patches=" << expected_valence
+            << " genuine_physical_charts_per_complete_stage="
+            << physical.charts
+            << " rejected_injected_owner_faults="
+            << physical.rejected_physical_stage_faults
+            << " rejected_incomplete_stages="
+            << physical.rejected_incomplete_physical_stages
+            << " repeated_atomic_publications="
+            << physical.repeated_atomic_physical_publications
+            << " deterministic_real_chart_comparisons="
+            << physical.repeated_deterministic_chart_checks
+            << " preserved_adapted_source_node_observers="
+            << physical.preserved_original_source_node_observers
+            << " original_TRI_Patch_observers_preserved=1"
+            << " previous_accepted_QUAD_TRI_owner_preserved_on_fault=1"
+            << " previous_accepted_QUAD_TRI_nodes_preserved_on_fault=1"
+            << " previous_accepted_QUAD_TRI_elements_preserved_on_fault=1"
+            << " original_Adapter_source_graph_unchanged=1"
+            << " original_Adapter_reexecuted=0"
+            << " global_welding=0"
+            << " patch_observer_transaction=0"
+            << " advisor_sheet_approved=0\n";
   std::cout << "R2C3_NATIVE_ADAPTER_SOURCE_INTERVALS"
             << " original_patches=" << expected_valence
             << " original_shared_source_curves=1"
