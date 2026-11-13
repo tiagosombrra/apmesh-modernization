@@ -1,0 +1,48 @@
+{
+  "milestone": "R2c-3 read-only original high-valence dynamically adapted curve interval preflight",
+  "date_utc": "2026-11-13",
+  "status": "IMPLEMENTED_EXACT_HEAD_NATIVE_CI_PENDING",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_head_sha": "85c4c7816eac32da21c18ab323a16740081cb219",
+  "draft_pull_request": 214,
+  "original_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "source_code": "tests/quad/full_source_patch_stage_probe.cpp",
+  "root_ctest": "quad.r2c2.full_source_patch_stage (existing test extended; no production sources changed)",
+  "original_sources": [
+    "input_models/eistute2.fixed.bp",
+    "input_models/book_v7a.bp"
+  ],
+  "actual_legacy_operations": [
+    "Original PatchReader::ReaderFilePatches loads original full model",
+    "Original BuildInitialSubMesh establishes actual coarse TRI Patch observer and original sample nodes",
+    "Original Adapter::AdaptCurveByCurve computes first source curvature subdivision",
+    "Original Adapter::AdaptCurveBySurface computes second all-adjacent-patch curvature subdivision",
+    "Original generator's RefineCurveSamples commits both passes on ONE original shared source curve",
+    "Source CurveAdaptiveParametric returned parameter/node pairs are checked for strictly increasing parameter, finite geometry and unique real node IDs",
+    "Every original incident PatchBezier side is compared against all actual generated source node positions using IsCurveReversed for orientation",
+    "Five deliberate source-snapshot corruptions must be rejected without changing the input source curve"
+  ],
+  "coverage_boundary": "Only the original unique maximal-valence shared source curve per model; other original source curves and actual production AdaptDomain QUAD boundary are not adapted in this fixture.",
+  "expected_valence_Eistute": 4,
+  "expected_valence_Book": 28,
+  "exact_CI_push_run_id": 43431223035,
+  "exact_CI_pull_request_run_id": 43431234321,
+  "all_required_CI": "PENDING",
+  "native_R2C3_marker": "PENDING",
+  "measured_original_shared_source_intervals": "PENDING",
+  "negative_controls_expected_per_model": 5,
+  "scientific_claims_explicitly_not_proved": [
+    "Independent per-patch adaptive physical seam node equality",
+    "Globally coherent original serial adaptation epoch and all source intervals",
+    "All source curves adapted and synchronized",
+    "Original source interval material/sheet topology assignment",
+    "Valence-4/28 owner and nonmanifold junction advisor approval",
+    "Physical cross-patch node welding or publication",
+    "Full adaptive QUAD/AFT model and accepted production CLI output",
+    "Local ASan/UBSan or native Windows memory-safety qualification"
+  ],
+  "interpatch_sheet_science_approved": false,
+  "patch_observer_rebound": false,
+  "global_quad_tri_mesh_published": false,
+  "next_action": "Read exact-head Linux CTest and verbose R2C3_NATIVE_ADAPTER_SOURCE_INTERVALS markers; repair real failures without weakening the original parameter or ownership oracles. Distinguish actual serial original source-curve adaptation from future independently synchronized per-patch physical seams."
+}
