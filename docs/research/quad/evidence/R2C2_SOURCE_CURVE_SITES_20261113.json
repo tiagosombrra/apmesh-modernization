@@ -3,7 +3,7 @@
   "date_utc": "2026-11-13",
   "candidate_feature_sha": "74a04b289a08a91ba0e7f26b234c7ba13ccab014",
   "draft_pr": 214,
-  "status": "CODE_COMMITTED_EXACT_HEAD_CI_PENDING",
+  "status": "READ_ONLY_ORIGINAL_SOURCE_BOUNDARY_SITE_AUDIT_EXACT_DOUBLE_CI_QUALIFIED",
   "source_model_inputs": [
     "input_models/eistute2.fixed.bp",
     "input_models/book_v7a.bp"
@@ -36,8 +36,36 @@
   "physical_mesh_published": false,
   "required_exact_head_push": 43427687327,
   "required_exact_head_pr": 43427695306,
-  "qualified_ci": false,
-  "native_source_counts": "PENDING",
+  "qualified_ci": true,
+  "native_source_counts": {
+    "Eistute": {
+      "original_patches": 4,
+      "source_incidences": 16,
+      "source_site_checks": 80,
+      "shared_curve_groups": 1,
+      "shared_incidence_pairs": 6,
+      "shared_curve_site_pair_checks": 30,
+      "max_source_valence": 4,
+      "rejected_negative_controls": 4
+    },
+    "Book": {
+      "original_patches": 28,
+      "source_incidences": 112,
+      "source_site_checks": 560,
+      "shared_curve_groups": 1,
+      "shared_incidence_pairs": 378,
+      "shared_curve_site_pair_checks": 1890,
+      "max_source_valence": 28,
+      "rejected_negative_controls": 4
+    },
+    "two_models": {
+      "source_incidences": 128,
+      "source_site_checks": 640,
+      "shared_curve_site_pair_checks": 1920,
+      "total_geometric_site_checks": 2560,
+      "rejected_negative_controls": 8
+    }
+  },
   "expected_negative_rejections_per_original_model": 4,
   "existing_measured_predecessor": {
     "sha": "9360196fec8790e0cb7ddec42714b2717919530a",
@@ -49,5 +77,18 @@
     "msvc_quad": "16/16",
     "actual_source_counts": "Eistute 164 nodes/64 QUAD/128 TRI; Book 1932 nodes/1176 QUAD/1008 TRI"
   },
-  "next_action": "Read full new CTest original curve markers and negative control outcomes on exact source SHA; fix any actual failure without weakening original R2c constraints."
+  "next_action": "Implement/verify a bounded separately labeled original source high-valence curve two-pass AdaptCurveByCurve/AdaptCurveBySurface parameter partition preflight on original models; new feature 85c4c781 exact CI pending, physical joins remain scientifically blocked.",
+  "measured_exact_head_sha": "74a04b289a08a91ba0e7f26b234c7ba13ccab014",
+  "ci": {
+    "sha": "74a04b289a08a91ba0e7f26b234c7ba13ccab014",
+    "push_run_id": 43427687327,
+    "pr_run_id": 43427695306,
+    "jobs": "4/4 each SUCCESS",
+    "linux_root_ctest": "89/89 each PASS; native full source probe #74 PASS",
+    "python_tooling": "527/527 each PASS",
+    "gcc_linux_quad": "16/16 each PASS",
+    "msvc_windows_quad": "16/16 each PASS",
+    "tri_frozen_scientific_parity": "PASS each",
+    "same_original_source_site_markers_in_both_root_logs": true
+  }
 }
