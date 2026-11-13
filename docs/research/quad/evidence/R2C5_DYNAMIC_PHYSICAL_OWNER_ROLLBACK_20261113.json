@@ -1,7 +1,7 @@
 {
   "milestone": "R2c-5 genuine original source-adapted physical QUAD/AFT stage fault-injection and same-source accepted model replacement",
   "date_utc": "2026-11-13",
-  "status": "RESEARCH_SOURCE_COMMITTED_EXACT_DOUBLE_CI_PENDING",
+  "status": "FEATURE_PUSH_EXACT_CI_ALL_4_OF_4_GREEN_INDEPENDENT_PR_ROOT_PENDING",
   "original_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "research_feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "research_feature_sha": "232e29741d069dd8f408b029cb8dd69ab66d3cee",
@@ -17,10 +17,25 @@
   "exact_head_ci": {
     "push_run_id": 43449485572,
     "pr_run_id": 43449501542,
-    "status": "IN_PROGRESS",
+    "status": "PUSH_COMPLETE_4_OF_4_SUCCESS_PR_LINUX_ROOT_PENDING",
     "compiled": null,
     "native_ctest": null,
-    "double_green": false
+    "double_green": false,
+    "feature_push": {
+      "run_id": 43449485572,
+      "head_sha": "232e29741d069dd8f408b029cb8dd69ab66d3cee",
+      "root_ctest": "89/89 including quad.r2c2.full_source_patch_stage #74 PASS",
+      "python_tooling": "527/527 PASS",
+      "native_gcc_quad": "16/16 PASS",
+      "native_msvc_quad": "16/16 PASS",
+      "frozen_tri_scientific_parity": "PASS",
+      "conclusion": "SUCCESS_4_OF_4"
+    },
+    "feature_pr": {
+      "run_id": 43449501542,
+      "status": "IN_PROGRESS_LINUX_ROOT_NATIVE_TEST_PENDING",
+      "other_jobs": "native QUAD GCC, native QUAD MSVC, frozen TRI scientific parity SUCCESS"
+    }
   },
   "engineering_candidate": {
     "adaptation_scope": "Original same two-pass source graph on the unique maximal-valence curve per original model, with other source sides coarse; NOT another accepted Adapter adaptation epoch",
@@ -58,6 +73,38 @@
     "local_ASAN_UBSAN_executed": false,
     "new_work_is_scientific_policy_change": false
   },
-  "reported_measurements": "PENDING_NOT_CLAIMED",
-  "next_action": "Inspect GitHub root original C++ compilation and native source test failures. The test must reject all real QUAD/AFT stage injected faults and preserve former actual physical owner; do not weaken graph oracles, skip patches or fabricate counters. If exact double CI passes, bind measured Eistute 4 / Book 28 receipts to this evidence."
+  "reported_measurements": "MEASURED_FEATURE_PUSH_ONLY_PR_MUST_MATCH",
+  "next_action": "Verify independent PR root Linux CTest 89/89 and complete 4/4 CI, compare R2C4_DYNAMIC_PHYSICAL_STAGE_ROLLBACK counts for both original models on exact source SHA; then record double-green qualification without claiming second source Adapter epoch.",
+  "measured_push_original_models": {
+    "Eistute": {
+      "original_patches": 4,
+      "genuine_physical_charts_per_complete_stage": 4,
+      "rejected_injected_owner_faults": 3,
+      "rejected_incomplete_stages": 1,
+      "repeated_atomic_publications": 1,
+      "deterministic_real_chart_comparisons": 19,
+      "preserved_adapted_source_node_observers": 7,
+      "previous_accepted_owners_preserved_on_all_faults": true,
+      "original_tri_patch_observers_preserved": true
+    },
+    "Book": {
+      "original_patches": 28,
+      "genuine_physical_charts_per_complete_stage": 28,
+      "rejected_injected_owner_faults": 3,
+      "rejected_incomplete_stages": 1,
+      "repeated_atomic_publications": 1,
+      "deterministic_real_chart_comparisons": 139,
+      "preserved_adapted_source_node_observers": 7,
+      "previous_accepted_owners_preserved_on_all_faults": true,
+      "original_tri_patch_observers_preserved": true
+    },
+    "combined": {
+      "original_patches": 32,
+      "rejected_injected_owner_faults": 6,
+      "rejected_incomplete_stages": 2,
+      "repeated_atomic_publications": 2,
+      "deterministic_real_chart_comparisons": 158,
+      "original_source_node_observer_checks": 14
+    }
+  }
 }
