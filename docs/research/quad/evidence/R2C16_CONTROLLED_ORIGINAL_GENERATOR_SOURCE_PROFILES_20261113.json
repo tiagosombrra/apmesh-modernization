@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c16.original_generator_m7_source_controlled_sensitivity.v1",
   "date_utc": "2026-11-13",
-  "status": "SOURCE_COMMITTED_EXACT_CI_PENDING_TWO_ACCEPTED_EPOCHS_NOT_QUALIFIED",
+  "status": "FOUR_ORIGINAL_SOURCE_PROFILE_ABLATIONS_QUALIFIED_AS_NEGATIVE_M7_DIAGNOSTIC; TWO_ACCEPTED_EPOCHS_NOT_DEMONSTRATED",
   "pr_number": 214,
   "candidate_head": "797c2b39be3d0508a71ddd8234ad17a213373c23",
   "workflow_run_id": 43509163882,
@@ -62,7 +62,7 @@
     }
   ],
   "actual_source_two_commits_verified": false,
-  "independent_test_status": null,
+  "independent_test_status": "PASS",
   "production_acceptance_threshold_modified": false,
   "scientific_approval": false,
   "acceptance_contract": [
@@ -72,5 +72,48 @@
     "Failed native research profile is reported as unqualified, not as success",
     "R2c15 must independently verify exact stable-mode original acceptance necessary inequalities before interpreting profile results"
   ],
-  "next_action": "Inspect exact workflow #43509163882 including R2c15 source-predicate receipt, R2c16 model-by-model accepted-step matrix and artifacts. On unsuccessful profiles, target true original source generation status and global element-budget coherence, no threshold loosening or fabricated second commit."
+  "next_action": "Do not claim M7. Next source-level forensic gate R2c17 must inspect original Adapter domain debug CSV per local retry/patch to determine which original fallback criteria remain violated.",
+  "actual_ci": {
+    "commit": "797c2b39be3d0508a71ddd8234ad17a213373c23",
+    "run_id": 43509163882,
+    "conclusion": "success",
+    "jobs": "4/4",
+    "root_ctest": "89/89",
+    "python": "527/527",
+    "gcc_quad": "16/16",
+    "msvc_quad": "16/16",
+    "frozen_tri_science": "PASS",
+    "r2c16_artifact_id": 14076394263,
+    "r2c16_artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43509163882/artifacts/14076394263"
+  },
+  "measured_results": {
+    "eistute": [
+      {
+        "profile": "curve_growth_stepn_1p5",
+        "accepted": 1,
+        "restored": 3,
+        "two_accepted": false
+      },
+      {
+        "profile": "quadtree_stepn_depth3",
+        "accepted": 1,
+        "restored": 3,
+        "two_accepted": false
+      }
+    ],
+    "book": [
+      {
+        "profile": "debug_curve_growth_stepn_1p5",
+        "accepted": 1,
+        "restored": 2,
+        "two_accepted": false
+      },
+      {
+        "profile": "stable_quadtree_stepn_depth2",
+        "accepted": 1,
+        "restored": 3,
+        "two_accepted": false
+      }
+    ]
+  }
 }
