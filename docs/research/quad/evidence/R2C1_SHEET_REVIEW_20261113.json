@@ -1,0 +1,31 @@
+{
+  "schema": "apmesh.quad.r2c1.sheet_review_gate.candidate.v1",
+  "date_utc": "2026-11-13",
+  "feature_sha": "f5bf84552c5f73d4e57fd272ef48f85f496cef6d",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "draft_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
+  "source_script": "tests/quad/test_r2c1_sheet_review.py",
+  "read_only_models": [
+    "Eistute",
+    "Book"
+  ],
+  "expected_original_intervals": 22,
+  "expected_radial_adjacencies": 376,
+  "expected_negative_controls_per_model": 49,
+  "expected_negative_controls_total": 98,
+  "observed_negative_controls": "pending exact feature CI",
+  "observed_root_ctest": "pending exact feature CI",
+  "ci_pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43346066228",
+  "source_review_packets_generated": "pending exact CI",
+  "status": "implemented_pending_exact_head_full_ci",
+  "advisor_sheet_semantics": "PENDING_ADVISOR_REVIEW",
+  "signed_advisor_approval_present": false,
+  "scientific_admission": false,
+  "synthetic_positive_drafts_only": true,
+  "automatic_sheet_pairing_enabled": false,
+  "manifold_twin_authorized": false,
+  "physical_node_welding": false,
+  "physical_SubMesh_published": false,
+  "main_unchanged": true,
+  "next": "inspect exact PR/push root R2C1_SHEET_REVIEW receipts; resolve failures; verify read-only 98 negative controls; acquire genuine independent scientific sheet decisions"
+}

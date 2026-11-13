@@ -20,6 +20,12 @@
 
 **Next R2c-1**: Independent scientific approval of Eistute valence-4 and Book valence-28 source-sheet junction semantics, exact source model SHA, boundary orientation, planned actual node sharing versus disconnected physical sheets. Only then can approved policy parsing, model-level owner staging and atomic per-patch physical `SubMesh` publication/rollback be developed and separately validated; Ribbed Bracket valence-3 source interval proof, multiple adaptivity and sanitizer remain pending. `main`/TRI and production CLI remain unchanged; research PR stays draft/unmerged.
 
+## 2026-11-13 — R2c-1 source-bound reviewer packet + draft-structure gate implemented (exact CI pending)
+
+[Draft PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214) research head `f5bf84552c5f73d4e57fd272ef48f85f496cef6d` includes read-only `test_r2c1_sheet_review.py`, real R2c0 original-model source hash and interval linkage, versioned immutable Eistute/Book `PENDING_ADVISOR_REVIEW` packets, 5 explicit unanswered junction questions, no claimed scientific sheet decisions. A separate synthetic TEST-ONLY draft validator checks source graph completeness, canonical radial order, entire interval coverage, disjoint group membership, orientational review requirement and UNASSIGNED node ownership. The required GitHub Actions gate expects **49 negative rejection controls/model = 98 total**, but exact-head tests are **PENDING** at this checkpoint. [Implementation and scientific scope](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-r2b2-exterior-aft-20261112/docs/research/quad/R2C1_SOURCE_BOUND_SHEET_REVIEW_20261113.md) · [provisional evidence](evidence/R2C1_SHEET_REVIEW_20261113.json). **No physical rights are created, even by structurally valid candidate drafts.**
+
+**Blocked next:** genuine advisor-reviewed model-SHA-bound junction semantics for Eistute/Book and a separately defensible approval-provenance channel. Only afterward may real continued physical connectivity, model-level staged node owners, rollback and sanitizer/repeated adaptive qualification be designed. `main` and default TRI unchanged, research PR draft/unmerged.
+
 ## Continuity and mandatory research handoff
 
 **Canonical current state:** [STATE.md](STATE.md) — read this before interpreting any milestone in this roadmap.  
