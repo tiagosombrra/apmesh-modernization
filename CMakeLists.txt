@@ -290,6 +290,21 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
     LABELS "research-quad;physical-model;ownership;application;required-gate"
     TIMEOUT 180)
 
+  # R2c-2 preflight: detached, unjoined owner roots with fault-injected
+  # 4- and 28-chart QUAD/TRI lifetime and strong publication rollback.
+  # This does NOT attach physical source Patch observers or authorize welding.
+  add_executable(quad_disjoint_owner_stage_probe
+    tests/quad/disjoint_owner_stage_probe.cpp
+    research/quad/physical_quadrilateral_adaptive.cpp)
+  target_include_directories(quad_disjoint_owner_stage_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_disjoint_owner_stage_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_disjoint_owner_stage_probe PRIVATE cxx_std_17)
+  add_test(NAME quad.r2c2.disjoint_owner_stage
+    COMMAND "$<TARGET_FILE:quad_disjoint_owner_stage_probe>")
+  set_tests_properties(quad.r2c2.disjoint_owner_stage PROPERTIES
+    LABELS "research-quad;ownership;detached;required-gate" TIMEOUT 90)
+
   # Research-only pairwise boundary admission using the production .bp loader.
   # This fixture never publishes QUAD elements or changes the default TRI path.
   add_executable(quad_m4_pairwise_boundary_probe
