@@ -290,7 +290,15 @@ void RunSource(const std::string& source, unsigned expected, bool refined) {
               original.GetNumberPatches() == expected,
           "Original source model does not match chart cardinality");
   std::unique_ptr<MeshAdaptive> active = std::make_unique<MeshAdaptive>();
+  auto* initial_patch = dynamic_cast<PatchBezier*>(original.GetPatch(0));
+  Require(initial_patch != nullptr, "Missing initial original Bezier chart");
+  ChartCounts initial_counts;
+  active->InsertSubMeshAdaptive(
+      BuildOriginalAftChart(*initial_patch, 0U, refined, initial_counts).release());
   MeshAdaptive* const prior = active.get();
+  SubMesh* const prior_chart = active->GetSubMeshAdaptiveByPosition(0);
+  NodeAdaptive* const prior_node = prior_chart->GetNoh(0);
+  ElementAdaptive* const prior_element = prior_chart->GetElement(0);
   const std::array<unsigned, 3> faults{{0U, expected / 2U, expected}};
   unsigned rejected = 0;
   for (const unsigned fault : faults) {
@@ -308,8 +316,11 @@ void RunSource(const std::string& source, unsigned expected, bool refined) {
       threw = true;
     }
     Require(threw && active.get() == prior &&
-                active->GetNumberSubMeshesAdaptive() == 0U,
-            "Fault changed an existing detached physical owner");
+                active->GetNumberSubMeshesAdaptive() == 1U &&
+                active->GetSubMeshAdaptiveByPosition(0) == prior_chart &&
+                prior_chart->GetNoh(0) == prior_node &&
+                prior_chart->GetElement(0) == prior_element,
+            "Fault changed the already-accepted original physical chart");
     ++rejected;
   }
 
