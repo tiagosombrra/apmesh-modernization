@@ -29,6 +29,9 @@
 #include <utility>
 #include <vector>
 
+// The original serial curve sorter uses this process-local comparator scratch.
+extern std::vector<CurveAdaptiveParametric*> ptr_aux;
+
 namespace {
 using apmesh::quad::InteriorTemplateDispatcher;
 using apmesh::quad::InteriorTemplateMode;
@@ -648,6 +651,15 @@ void RunNativeOriginalSharedCurveAdaptation(const std::string& model,
     }
   }
   Require(target != nullptr, "Missing original valence-4/28 source curve");
+  // Production's serial sorter expects its shared comparator slot to exist.
+  // Preserve and restore any previous process-scoped fixture scratch.
+  struct ScopedOriginalSortScratch {
+    std::vector<CurveAdaptiveParametric*> previous;
+    ScopedOriginalSortScratch() : previous(std::move(ptr_aux)) {
+      ptr_aux.resize(1U, nullptr);
+    }
+    ~ScopedOriginalSortScratch() { ptr_aux = std::move(previous); }
+  } sort_scratch;
   target->CalculateLengthCurve();
   Require(std::isfinite(target->GetLength()) && target->GetLength() > 0.0,
           "Original high-valence curve has invalid parametric length");
