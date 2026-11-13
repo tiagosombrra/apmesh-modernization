@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c12.original_model_bound_radial_physical_review_v1",
   "date_utc": "2026-11-13",
-  "status": "CODE_COMMITTED_EXACT_CI_PENDING_NOT_SCIENTIFICALLY_APPROVED",
+  "status": "QUALIFIED_SOURCE_BOUND_REVIEW_PACKET_GENERATION_SINGLE_EXACT_CI; NO_ADVISOR_APPROVAL_NO_GLOBAL_WELDING",
   "feature_pr": 214,
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_head": "e4bfa162aff72a7ded3b3d424739349a700ea723",
@@ -44,12 +44,61 @@
     "r2c12_handoff_manifest.json"
   ],
   "ci_id": 43499503532,
-  "artifacts": [],
-  "certified": false,
+  "artifacts": [
+    {
+      "id": 14072853917,
+      "description": "Source SHA-bound original valence-4/28 signed radial/physical atlas advisor packet and manifest",
+      "retention": "GitHub Actions 14 days"
+    }
+  ],
+  "certified": true,
   "scientific_admission": false,
   "physical_node_welding": false,
   "advisor_approval": null,
-  "next_action": "Inspect exact native CI and any failure of source curve ID / high-valence radial membership; refine only evidence identity interpretation with no relaxed source/quality/ownership gate. Obtain actual advisor decisions separately.",
+  "next_action": "Obtain external advisor source SHA-bound scientific decisions on sheet/junction semantics and physical node ownership before welding. In parallel begin bounded M7 actual production GeneratorAdaptive::AdaptCurve/AdaptDomain and two accepted source epochs, preserve unchanged production TRI.",
   "ci_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43499503532",
-  "sci_scope": "Original R2c0/R2c1 GeneratorAdaptive radial certificate and R2c11 original physical two-pass Adapter source use independently sampled original curve partitions; same source curve/patch incidence is not cross-epoch node identity."
+  "sci_scope": "Original R2c0/R2c1 GeneratorAdaptive radial certificate and R2c11 original physical two-pass Adapter source use independently sampled original curve partitions; same source curve/patch incidence is not cross-epoch node identity.",
+  "ci_results": {
+    "exact_pr_feature_source": "e4bfa162aff72a7ded3b3d424739349a700ea723",
+    "workflow_run_id": 43499503532,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_success": "4/4",
+    "original_linux_root_ctest": "89/89",
+    "tooling_python": "527/527",
+    "native_quad_gcc": "16/16",
+    "native_quad_msvc": "16/16",
+    "original_tri_scientific_parity": "PASS",
+    "native_r2c11_obj_and_seam_audit": "PASS",
+    "original_r2c0_radial_and_r2c1_review_validation": "PASS",
+    "r2c12_packet_builder": "PASS",
+    "artifact_id": 14072853917,
+    "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43499503532/artifacts/14072853917"
+  },
+  "per_model_verified": [
+    {
+      "model": "eistute",
+      "sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "radial_source_curve_registry_index": 3,
+      "high_valence": 4,
+      "original_generator_radial_intervals": 10,
+      "independent_research_adapter_physical_intervals": 6,
+      "advisor_packet_name": "r2c12_eistute_advisor_handoff.json",
+      "advisor_packet_sha256": "55e6255eeac02a4f260aaa63416f657c73bf192f5e31ecb162616d507061a85e",
+      "physical_node_welding": false,
+      "review_status": "PENDING_INDEPENDENT_ADVISOR_REVIEW"
+    },
+    {
+      "model": "book",
+      "sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+      "radial_source_curve_registry_index": 3,
+      "high_valence": 28,
+      "original_generator_radial_intervals": 12,
+      "independent_research_adapter_physical_intervals": 6,
+      "advisor_packet_name": "r2c12_book_advisor_handoff.json",
+      "advisor_packet_sha256": "70cebce500658c7e379e662f6106b96f0f6e6c75f163afad0a5af73514f4169b",
+      "physical_node_welding": false,
+      "review_status": "PENDING_INDEPENDENT_ADVISOR_REVIEW"
+    }
+  ]
 }
