@@ -6,7 +6,7 @@
 
 - [R2c-11 CI original](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43497162260): 4/4 jobs aprovados, teste original nativo, equivalência TRI congelada e auditoria física independente, somente em patches desconectados.
 - [OBJ, atlas CSV e relatório R2c-11](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43497162260/artifacts/14073665054): evidência temporária, sujeito à retenção do GitHub Actions.
-- [R2c-1 — pacote científico de ordenação radial sem autorização](R2C1_SOURCE_BOUND_SHEET_REVIEW_20261113.md): arquivo de referência na PR experimental; assinatura/decisão independente ainda não realizada.
+- [R2c-1 — pacote científico de ordenação radial sem autorização](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-r2b2-exterior-aft-20261112/docs/research/quad/R2C1_SOURCE_BOUND_SHEET_REVIEW_20261113.md): arquivo de referência na PR experimental; assinatura/decisão independente ainda não realizada.
 - [Evidência qualificada R2c-11](evidence/R2C11_ORIGINAL_SOURCE_SEAM_ATLAS_20261113.json) e [R2c-12](evidence/R2C12_MODEL_BOUND_ADVISOR_HANDOFF_20261113.json).
 - [Plano geral M0–M9](MILESTONE_STATUS.md). O código de produção TRI e os arquivos de entrada não foram alterados.
 
