@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c18.original_tri_aft_postprocess_source_sensitivity.v1",
   "date_utc": "2026-11-13",
-  "status": "FEATURE_AND_CI_SUBMITTED_NOT_NATIVE_QUALIFIED_M7_OPEN",
+  "status": "QUALIFIED_SINGLE_EXACT_CI_EISTUTE_THREE_TRUE_ACCEPTED_ORIGINAL_SOURCE_EPOCHS_BOOK_ONE; M7_ALL_MODELS_OPEN",
   "pr_number": 214,
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_head": "cc18c1989017da231c9442190ab684cb1b50da44",
@@ -70,5 +70,124 @@
   "ci": null,
   "qualified_two_accepted_original_source_epochs": false,
   "physical_global_welding_approved": false,
-  "next_action": "Observe exact GitHub Actions run 43518589990. If all four native science/QUAD jobs pass, examine R2C18_ORIGINAL_AFT_POSTPROCESS_PROFILES for per-model actual accepted counts, local quality and transition. If unsuccessful, diagnose whether existing postprocess knobs influence native generator under stable source policy. Do not claim M7 from a successful CI alone."
+  "next_action": "Validate positive Eistute 3 accepted source epochs independently on source-identical CI and inspect actual accepted final TRI face invariants, error-vs-element efficiency and local Adapter candidate degeneracy. For Book test non-univariate bounded quality-target AFT pass + threshold or another source quality recovery, preserving original scientific TRI acceptance. Do not automatically merge or weld original QUAD/AFT patches.",
+  "exact_ci": {
+    "feature_sha": "cc18c1989017da231c9442190ab684cb1b50da44",
+    "run_id": 43518589990,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": "4/4",
+    "root_linux_ctest": "89/89",
+    "tooling_python": "527/527",
+    "gcc_quad_native": "16/16",
+    "msvc_quad_native": "16/16",
+    "frozen_TRI_scientific_parity": "PASS",
+    "native_marker": "R2C18_ORIGINAL_AFT_POSTPROCESS_PROFILES",
+    "artifact_id": 14081183906,
+    "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43518589990/artifacts/14081183906",
+    "retention_days": 14
+  },
+  "measured_results": {
+    "eistute": [
+      {
+        "profile": "aft_postprocess_blend_0p78",
+        "only_override": "AFT_LOCAL_POSTPROCESS_BLEND=0.78",
+        "accepted_original_source_epochs": 1,
+        "accepted_step_ids": [
+          1
+        ],
+        "restored_original_steps": 3,
+        "native_domain_local_attempts": 104,
+        "two_source_epochs": false
+      },
+      {
+        "profile": "aft_postprocess_quality_0p80",
+        "only_override": "AFT_LOCAL_POSTPROCESS_QUALITY_THRESHOLD=0.80",
+        "accepted_original_source_epochs": 3,
+        "accepted_step_ids": [
+          1,
+          2,
+          4
+        ],
+        "distinct_accepted_outer_epoch_ids": [
+          1,
+          2,
+          5
+        ],
+        "restored_original_steps": 1,
+        "accepted_actual_patch_coverage_per_epoch": 4,
+        "accepted_actual_curves_per_epoch": 13,
+        "native_domain_local_attempts": 68,
+        "two_source_epochs": true,
+        "actual_accepted_step1": {
+          "elements": 1168,
+          "global_error": 0.0636432,
+          "quality_min": 0.184411,
+          "quality_mean": 0.673505
+        },
+        "actual_accepted_step2": {
+          "elements": 2008,
+          "global_error": 0.0766612,
+          "quality_min": 0.167252,
+          "quality_mean": 0.672271,
+          "global_error_regression_vs_previous": 0.204546
+        },
+        "actual_accepted_step4": {
+          "elements": 4032,
+          "global_error": 0.0588399,
+          "quality_min": 0.208604,
+          "quality_mean": 0.6974,
+          "poor_ratio": 0.00793651,
+          "source_tri_accepted_score": 0.121752
+        },
+        "original_source_step3_rejected_and_restored": true,
+        "step4_source_local_attempts": 32,
+        "step4_native_underresolved_local_attempts": 0,
+        "step4_selected_source_status": "curve_transition_needs_retry",
+        "step4_post_smoothing_degenerate_face_observations_across_all_attempts": 700,
+        "final_accepted_mesh_zero_area_independently_proven": false
+      }
+    ],
+    "book": [
+      {
+        "profile": "aft_postprocess_passes_4",
+        "only_override": "AFT_LOCAL_POSTPROCESS_PASSES=4",
+        "accepted_original_source_epochs": 1,
+        "accepted_step_ids": [
+          1
+        ],
+        "restored_original_steps": 2,
+        "native_domain_local_attempts": 84,
+        "two_source_epochs": false,
+        "source_step2_min_post_aft_quality": 0.181191,
+        "source_step2_degenerate_post_smoothing_faces": 0
+      },
+      {
+        "profile": "aft_postprocess_passes_8",
+        "only_override": "AFT_LOCAL_POSTPROCESS_PASSES=8",
+        "accepted_original_source_epochs": 1,
+        "accepted_step_ids": [
+          1
+        ],
+        "restored_original_steps": 2,
+        "native_domain_local_attempts": 84,
+        "two_source_epochs": false,
+        "source_step2_min_post_aft_quality": 0.181191,
+        "source_step2_degenerate_post_smoothing_faces": 0
+      }
+    ]
+  },
+  "qualification_scope": [
+    "Eistute native actual production GeneratorAdaptive::AdaptCurve and AdaptDomain three AcceptedMeshScope::Commit original source events, distinct outer epochs, 4 actual original PatchBezier source boundary witnesses per accepted source epoch, 13 curve adaptation CSV entries/4 patch rows per accepted step and incidence JSON SHA",
+    "Eistute accepted step2 global error increased by 20.45%, despite original implementation acceptance; repeated commit capability is not proof of monotonically improving error or optimal cost/quality",
+    "Eistute accepted step4 source summary min TRI face quality 0.208604 positive, but 700 source local post-smoothing degeneracy face observations across unselected/retry Adapter attempts; no independent zero-degenerate full accepted final mesh proof",
+    "Book increased postprocess pass counts unchanged source AFT min quality at step2 0.181191, still below original threshold 0.274; original source Book two-accepted-epoch proof remains absent",
+    "Frozen original TRI baseline and main unchanged; profile changes research runtime configuration only; no global QUAD/AFT welding or nonmanifold science approval"
+  ],
+  "original_two_accepted_generator_epochs_qualified": {
+    "eistute": true,
+    "book": false,
+    "all_models": false
+  },
+  "verified_artifact_file": "r2c18_original_aft_postprocess_profiles.json"
 }
