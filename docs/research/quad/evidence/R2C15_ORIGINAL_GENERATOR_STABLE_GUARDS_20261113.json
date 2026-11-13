@@ -1,0 +1,39 @@
+{
+  "schema": "apmesh.quad.r2c15.source_bound_original_generator_guard_inequalities.v1",
+  "date_utc": "2026-11-13",
+  "status": "CODE_COMMITTED_EXACT_CI_PENDING_NOT_ACCEPTED_TWO_EPOCHS",
+  "pr_number": 214,
+  "source_commit": "09b9eea7a3de3d4521c203189f38c9ba3d28cb80",
+  "workflow_id": 43508097551,
+  "qualified_predecessor": {
+    "r2c14_commit": "2a668414694070b4e74f826996cc5811df6fd0a8",
+    "run_id": 43504972443,
+    "conclusion": "success",
+    "jobs": "4/4",
+    "root_ctest": "89/89",
+    "python": "527/527",
+    "artifact_id": 14077445183,
+    "actual_original_generator_accepted_source_epochs_per_original_model": 1
+  },
+  "test_subjects": [
+    "Original source unchanged src/generator/generator_adaptive.cpp actual accept score gates",
+    "Original per-candidate accepted=0 metrics and original source file SHA-256 digests",
+    "Original stable mode calculated from source article.conf plus specific recorded R2c13 profile overrides",
+    "Exact original stable step2/step3+ transition coherence, target overshoot and transition readiness necessary conjuncts"
+  ],
+  "contract": [
+    "Fail closed if historical source acceptance guard literals drift",
+    "Do not apply stable mode acceptance guards to research_debug/book original profiles",
+    "Distinguish source necessary-conjunct failures from unknown complete boolean decision tree",
+    "Do not lower source error/quality tolerances, modify original model files or production TRI",
+    "Original Eistute pinned step4 must prove three independent original stable necessary guard violations",
+    "Book stable-small research step >=2 must prove at least one stable necessary guard violation",
+    "CI success is forensic success, NOT two accepted global source epochs or physical QUAD admission"
+  ],
+  "expected_output": "build/local-serial/r2c13_generator_epochs/r2c15_original_acceptance_guard_inequalities.json",
+  "expected_marker": "R2C15_REAL_SOURCE_GUARD_INEQUALITIES",
+  "actual_ci_results": null,
+  "originally_accepted_epoch_gate_satisfied": false,
+  "scientific_sheet_approval": false,
+  "next_action": "Inspect exact CI #43508097551, candidate source predicate error on original profile. If positive, identify exact blocked guard per original step and design a bounded algorithmic source refinement test preserving original acceptance criteria and original TRI quality."
+}
