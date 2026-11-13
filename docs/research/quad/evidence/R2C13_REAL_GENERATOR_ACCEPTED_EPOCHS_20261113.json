@@ -1,0 +1,60 @@
+{
+  "schema": "apmesh.quad.r2c13.m7.genuine_generator_accepted_epochs.v1",
+  "date_utc": "2026-11-13",
+  "status": "IMPLEMENTED_EXPERIMENT_AND_DIAGNOSTIC_CI_PENDING_NO_TWO_ACCEPTED_EPOCH_CLAIM",
+  "pr_number": 214,
+  "pr_head": "082ecd0408d31808dae5d629e711be99fd01d1a7",
+  "workflow_run_id": 43502743922,
+  "provenance": [
+    "Original production GeneratorAdaptive::Generator, AdaptCurve and AdaptDomain, unmodified",
+    "Existing research hook GlobalOutcomeKind::AcceptedStepCommitted emitted immediately after AcceptedMeshScope::Commit",
+    "Original adapter per-patch source boundary snapshots read from same outer source session, epoch and retry",
+    "Per-accepted-step original _acceptance_accepted.log, _curve_adaptation_accepted.csv, _patch_adaptation_accepted.csv and _incidences.json"
+  ],
+  "original_scenarios": [
+    {
+      "model": "eistute",
+      "source": "configs/eistute/article.conf",
+      "expected_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "original_patches": 4,
+      "curves": 13
+    },
+    {
+      "model": "book",
+      "source": "configs/book/article.conf",
+      "expected_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+      "original_patches": 28,
+      "curves": 85
+    }
+  ],
+  "profiles": [
+    "pinned_article unmodified except relocated absolute input/output paths",
+    "adaptive_stable intensity 0.12 and target growth 1.08 max steps 4",
+    "research_debug intensity 0.02 and target growth 1.05 max steps 4"
+  ],
+  "measured_pinned_baseline_previous_ci": {
+    "reference_run": 43499503532,
+    "eistute": {
+      "accepted": 1,
+      "rejected_and_restored": 3,
+      "global_outer_epochs": 4
+    },
+    "book": {
+      "accepted": 1,
+      "rejected_and_restored": 2,
+      "global_outer_epochs": 3
+    }
+  },
+  "new_native_source_marker": "R2C13_REAL_GENERATOR_ACCEPTED_EPOCHS",
+  "new_independent_report": "r2c13_accepted_generator_epochs.json",
+  "acceptance_contract": [
+    "At least two distinct original GeneratorAdaptive AcceptedMeshScope::Commit events with increasing step IDs and outer epochs for each original model",
+    "Each accepted epoch contains actual original Adapter boundary witnesses for every original patch",
+    "Per-accepted-step actual saved source curve adaptation CSV covers all 13/85 curves, patch/acceptance/mesh incidence files retained",
+    "Rejected/retried attempts excluded, no invented accepted step based on regeneration or CTest green",
+    "No production QUAD output, nonmanifold sheet welding or original 1993 rule approved"
+  ],
+  "native_execution_this_turn": null,
+  "actual_two_accepted_epochs_qualified": false,
+  "next_action": "Inspect new workflow 43502743922 compiler and instrumented original-model production GeneratorAdaptive diagnostics. If only one accepted step per model, classify exact scenario/stop reason and refine M7 test using production acceptance rules without weakening them. Avoid claiming M7 complete from green CI alone."
+}
