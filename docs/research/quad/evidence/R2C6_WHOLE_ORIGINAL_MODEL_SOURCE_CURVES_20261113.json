@@ -1,7 +1,7 @@
 {
   "milestone": "R2c-6 full original model all-source-curves original Adapter two-pass serial sweep / source incidence audit",
   "date_utc": "2026-11-13",
-  "status": "IMPLEMENTED_RESEARCH_TEST_ONLY_EXACT_HEAD_CI_PENDING",
+  "status": "FEATURE_PUSH_EXACT_CI_ALL_FOUR_JOBS_SUCCESS_PR_ROOT_PENDING",
   "original_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_sha": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
@@ -40,7 +40,7 @@
     "push_run_id": 43461405847,
     "pr_run_id": 43461420478,
     "source_sha": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
-    "status": "IN_PROGRESS",
+    "status": "PUSH_4_OF_4_SUCCESS_INDEPENDENT_PR_ROOT_LINUX_PENDING",
     "required_jobs": [
       "TRI baseline and tooling controls Linux incl 89/89 CTests",
       "TRI scientific equivalence against frozen baseline",
@@ -48,7 +48,22 @@
       "QUAD native windows-2022 16/16"
     ],
     "actual_original_full_model_curve_counts": "PENDING",
-    "two_pass_full_original_model_receipt": "PENDING"
+    "two_pass_full_original_model_receipt": "PUSH_ONLY_MEASURED; INDEPENDENT_PR_PENDING",
+    "feature_push": {
+      "run_id": 43461405847,
+      "exact_sha": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
+      "all_jobs": "4/4 SUCCESS",
+      "root_ctest": "89/89 PASS including quad.r2c2.full_source_patch_stage #74",
+      "python": "527/527 PASS",
+      "native_gcc_quad": "16/16 PASS",
+      "native_msvc_quad": "16/16 PASS",
+      "frozen_original_tri": "PASS"
+    },
+    "feature_pr": {
+      "run_id": 43461420478,
+      "status": "LINUX_ROOT_BUILD_IN_PROGRESS",
+      "other_jobs": "native GCC/MSVC QUAD and original TRI parity SUCCESS"
+    }
   },
   "scientific_scope": {
     "true_original_Adapter_two_pass_methods_executed": true,
@@ -63,7 +78,71 @@
     "high_valence_4_28_sheet_advisor_approved": false,
     "local_ASAN_UBSAN_qualified": false,
     "historical_1993_point_rule_qualified": false,
-    "production_main_changed": false
+    "production_main_changed": false,
+    "measured_radial_source_orientation": "All original shared source incidences have same canonical chart-direction in this fixture; no opposite-traversal pair observed, valence 4/28 sheet/owner decision is unapproved."
   },
-  "next_action": "Read two independent exact-head Linux CTest full original curve model markers and investigate any failed original source side geometry/ID/transaction without synthetic regridding or relaxed oracles. After success measure every original curve/side/pair and update canonical STATE/SESSION_LOG. Next distinct step would adapt all original physical AFT patch edges and obtain advisor-signed radial topology before global welding."
+  "next_action": "Verify independent exact SHA PR CI root 89/89 and compare original Eistute 13 curves/115 samples/102 intervals and Book 85 curves/747 samples/662 intervals with the same 7 snapshot mutation controls. Do not infer physical sheet continuity from common curve same traversal.",
+  "measured_exact_source_push_original_models": {
+    "Eistute": {
+      "original_patches": 4,
+      "original_curves": 13,
+      "all_original_curves_two_pass": 13,
+      "original_curve_incidences": 16,
+      "original_shared_curves": 1,
+      "original_nonmanifold_curves": 1,
+      "refined_original_curves": 13,
+      "unchanged_two_endpoint_curves": 0,
+      "adapted_source_points": 115,
+      "adapted_source_intervals": 102,
+      "complete_incidence_sites": 136,
+      "complete_incidence_intervals": 120,
+      "shared_source_incidence_pairs": 6,
+      "shared_source_site_pair_comparisons": 42,
+      "shared_source_interval_pair_comparisons": 36,
+      "opposite_oriented_incidence_pairs": 0,
+      "same_oriented_incidence_pairs": 6,
+      "maximum_source_valence": 4,
+      "rejected_source_snapshot_controls": 7,
+      "preserved_original_TRI_Patch_observers": 4
+    },
+    "Book": {
+      "original_patches": 28,
+      "original_curves": 85,
+      "all_original_curves_two_pass": 85,
+      "original_curve_incidences": 112,
+      "original_shared_curves": 1,
+      "original_nonmanifold_curves": 1,
+      "refined_original_curves": 85,
+      "unchanged_two_endpoint_curves": 0,
+      "adapted_source_points": 747,
+      "adapted_source_intervals": 662,
+      "complete_incidence_sites": 936,
+      "complete_incidence_intervals": 824,
+      "shared_source_incidence_pairs": 378,
+      "shared_source_site_pair_comparisons": 2646,
+      "shared_source_interval_pair_comparisons": 2268,
+      "opposite_oriented_incidence_pairs": 0,
+      "same_oriented_incidence_pairs": 378,
+      "maximum_source_valence": 28,
+      "rejected_source_snapshot_controls": 7,
+      "preserved_original_TRI_Patch_observers": 28
+    },
+    "combined": {
+      "original_patches": 32,
+      "all_original_curves_two_pass": 98,
+      "original_curve_incidences": 128,
+      "refined_original_curves": 98,
+      "adapted_source_points": 862,
+      "adapted_source_intervals": 764,
+      "complete_incidence_sites": 1072,
+      "complete_incidence_intervals": 944,
+      "shared_source_incidence_pairs": 384,
+      "shared_source_site_pair_comparisons": 2688,
+      "shared_source_interval_pair_comparisons": 2304,
+      "same_oriented_incidence_pairs": 384,
+      "opposite_oriented_incidence_pairs": 0,
+      "rejected_source_snapshot_controls": 14,
+      "preserved_original_TRI_Patch_observers": 32
+    }
+  }
 }
