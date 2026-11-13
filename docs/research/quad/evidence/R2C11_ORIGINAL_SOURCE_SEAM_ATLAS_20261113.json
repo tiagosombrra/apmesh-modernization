@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c11.exported_original_source_seam_atlas.v1",
   "date_utc": "2026-11-13",
-  "status": "FIRST_EXACT_CI_REJECTED_BY_INDEPENDENT_CURVE_IDENTITY_ORACLE; CORRECTION_COMMITTED_CI_PENDING",
+  "status": "QUALIFIED_EXACT_SINGLE_CI_NATIVE_SOURCE_ATLAS_AND_INDEPENDENT_OBJ_SEAM_AUDIT; DOUBLE_CI_AND_SCIENTIFIC_WELDING_OPEN",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_head": "1fd693eb38732b6c01a638cbd97208a6e87f9905",
   "pr_number": 214,
@@ -60,7 +60,7 @@
     "Production accepted GeneratorAdaptive AdaptDomain and repeated adaptation",
     "Local ASan/UBSan"
   ],
-  "next_action": "Observe corrected exact CI on c6a9cb25985af82293c89ede6ede10a11a353df8; if all source checks pass, retain actual exported seam CSV evidence and artifact; if not, diagnose exact error instead of weakening cardinality.",
+  "next_action": "Prepare source-model hash-bound advisor handoff combining existing R2c1 original signed radial review packet with exported R2c11 physical atlas; compare model/curve/radial membership but explicitly distinguish different sample epochs and leave decisions null.",
   "first_attempt": {
     "sha": "1fd693eb38732b6c01a638cbd97208a6e87f9905",
     "run_id": 43495975211,
@@ -92,5 +92,59 @@
     "C++ source atlas exports both original Geometry curve registry index and legacy source curve ID",
     "Independent Python verifier groups canonical shared-source samples by registry index, retains legacy ID as checked metadata",
     "No reduction in expected original curves or positive physical/site counts, no altered numeric or geometry tolerances, original input and TRI unchanged"
+  ],
+  "corrected_exact_ci": {
+    "feature_head": "c6a9cb25985af82293c89ede6ede10a11a353df8",
+    "run_id": 43497162260,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": "4/4",
+    "linux_root_ctest": "89/89",
+    "tooling_python": "527/527",
+    "native_gcc": "16/16",
+    "native_msvc": "16/16",
+    "original_TRI_parity": "PASS",
+    "native_original_source_atlas": [
+      "Eistute 136/136 original physical witnesses",
+      "Book 936/936 original physical witnesses"
+    ],
+    "independent_atlas_receipts": {
+      "eistute": {
+        "patches": 4,
+        "curves": 13,
+        "unique_original_curve_points": 115,
+        "source_incidence_sites": 136,
+        "radial_shared_pairs": 6,
+        "shared_site_comparisons": 42,
+        "valence": 4,
+        "legacy_curve_ids_distinct": 1
+      },
+      "book": {
+        "patches": 28,
+        "curves": 85,
+        "unique_original_curve_points": 747,
+        "source_incidence_sites": 936,
+        "radial_shared_pairs": 378,
+        "shared_site_comparisons": 2646,
+        "valence": 28,
+        "legacy_curve_ids_distinct": 1
+      }
+    },
+    "previous_r2c10_independent_obj_verifier": "PASS"
+  },
+  "artifact_id": 14073665054,
+  "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43497162260/artifacts/14073665054",
+  "specific_findings": [
+    "Original Geometry curve registry index is required: distinct original Bézier curves share one legacy CurveAdaptiveParametric GetId value in each model",
+    "Both original all-curve sample configurations compare shared source site indices/parameters/node IDs/XYZ consistently across all patch incidences",
+    "CSV atlas provides patch-specific OBJ physical vertex witnesses for all original adapted source knots and explicit terminal corners",
+    "No physical node welding or global sheet/twin approval"
+  ],
+  "open_scientific_limitations": [
+    "R2c0/1 original accepted GeneratorAdaptive radial source epoch can use 10/12 intervals versus R2c6/11 6 intervals on central shared curve; different epochs are not assumed to have equal source node IDs/parameters",
+    "No global physical nodes/halfedge twins assigned, advisor decisions pending",
+    "No full production AdaptDomain/repeated accepted adaptation",
+    "No independent source-identical second CI or local sanitizers",
+    "No global intersection test"
   ]
 }
