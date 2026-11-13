@@ -1,7 +1,7 @@
 {
   "milestone": "R2c-6 full original model all-source-curves original Adapter two-pass serial sweep / source incidence audit",
   "date_utc": "2026-11-13",
-  "status": "FEATURE_PUSH_EXACT_CI_ALL_FOUR_JOBS_SUCCESS_PR_ROOT_PENDING",
+  "status": "TWO_INDEPENDENT_EXACT_HEAD_FULL_ORIGINAL_ALL_SOURCE_CURVE_TWO_PASS_SERIAL_ADAPTER_GRAPH_ENGINEERING_QUALIFIED",
   "original_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "feature_sha": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
@@ -14,16 +14,20 @@
       "path": "input_models/eistute2.fixed.bp",
       "git_blob_sha1": "6fa2f40e4270cccb6da140111953bbbcb69b0086",
       "expected_source_patches": 4,
-      "expected_max_source_valence": 4
+      "expected_max_source_valence": 4,
+      "raw_file_sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "raw_file_bytes": 2213
     },
     "Book": {
       "path": "input_models/book_v7a.bp",
       "git_blob_sha1": "7e3338a4ebc43f0b3119b1cb6eda47e2ac205d14",
       "expected_source_patches": 28,
-      "expected_max_source_valence": 28
+      "expected_max_source_valence": 28,
+      "raw_file_sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+      "raw_file_bytes": 11577
     }
   },
-  "source_model_hash_note": "Git blob SHA-1 content object IDs, not raw-file SHA-256; no advisory signoff implied.",
+  "source_model_hash_note": "Exact ASCII source blobs retrieved at feature SHA; SHA-256 calculated over their UTF-8 bytes with a SHA-256 implementation verified against the standard 'abc' test vector. Git blob SHA-1 also recorded independently. Source hashes are provenance, NOT advisor approval.",
   "engineering_candidate_steps": [
     "Load separate original PatchReader full models, build each actual coarse original TRI SubMesh and source samples with BuildInitialSubMesh",
     "Establish all source CurveAdaptiveParametric source parameters 0,1 and verify finite strictly positive source curve lengths",
@@ -40,7 +44,7 @@
     "push_run_id": 43461405847,
     "pr_run_id": 43461420478,
     "source_sha": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
-    "status": "PUSH_4_OF_4_SUCCESS_INDEPENDENT_PR_ROOT_LINUX_PENDING",
+    "status": "BOTH_INDEPENDENT_FULLY_COMPLETED_SUCCESS_4_OF_4_JOBS_EACH_IDENTICAL_FEATURE_SOURCE_SHA",
     "required_jobs": [
       "TRI baseline and tooling controls Linux incl 89/89 CTests",
       "TRI scientific equivalence against frozen baseline",
@@ -48,7 +52,7 @@
       "QUAD native windows-2022 16/16"
     ],
     "actual_original_full_model_curve_counts": "PENDING",
-    "two_pass_full_original_model_receipt": "PUSH_ONLY_MEASURED; INDEPENDENT_PR_PENDING",
+    "two_pass_full_original_model_receipt": "R2C6_WHOLE_ORIGINAL_MODEL_SOURCE_CURVES_IDENTICAL_IN_PUSH_AND_PR_ROOT_LOGS",
     "feature_push": {
       "run_id": 43461405847,
       "exact_sha": "1c8f0c82fbc89d73118ea00e0f6c2157c94e8a01",
@@ -63,6 +67,27 @@
       "run_id": 43461420478,
       "status": "LINUX_ROOT_BUILD_IN_PROGRESS",
       "other_jobs": "native GCC/MSVC QUAD and original TRI parity SUCCESS"
+    },
+    "double_green": true,
+    "push_job": {
+      "root_job_id": 132008975543,
+      "root_ctest": "89/89 PASS, original all curve native #74 PASS",
+      "python": "527/527 PASS",
+      "native_linux_quad": "16/16 PASS",
+      "native_windows_quad": "16/16 PASS",
+      "frozen_original_tri": "PASS",
+      "workflow": "4/4 SUCCESS",
+      "artifact_id": 14055514255
+    },
+    "pr_job": {
+      "root_job_id": 132009025758,
+      "root_ctest": "89/89 PASS, original all curve native #74 PASS",
+      "python": "527/527 PASS",
+      "native_linux_quad": "16/16 PASS",
+      "native_windows_quad": "16/16 PASS",
+      "frozen_original_tri": "PASS",
+      "workflow": "4/4 SUCCESS",
+      "artifact_id": 14056708088
     }
   },
   "scientific_scope": {
@@ -79,9 +104,9 @@
     "local_ASAN_UBSAN_qualified": false,
     "historical_1993_point_rule_qualified": false,
     "production_main_changed": false,
-    "measured_radial_source_orientation": "All original shared source incidences have same canonical chart-direction in this fixture; no opposite-traversal pair observed, valence 4/28 sheet/owner decision is unapproved."
+    "measured_radial_source_orientation": "The sole original shared curve group in each source model is nonmanifold (valence Eistute 4, Book 28). Every pair of original chart traversal flags in this incidence group has SAME computed direction (Eistute 6/6, Book 378/378); no opposite pair observed. This is a source orientation observation, not an admissible sheet-pair rule."
   },
-  "next_action": "Verify independent exact SHA PR CI root 89/89 and compare original Eistute 13 curves/115 samples/102 intervals and Book 85 curves/747 samples/662 intervals with the same 7 snapshot mutation controls. Do not infer physical sheet continuity from common curve same traversal.",
+  "next_action": "R2c-7 bounded research: construct independent native AFT::Boundary contours on all four genuinely adapted original source sides per patch, audit exact source sample and curvature/midpoint provenance including all curve incidences, then trial fully detached physical QUAD/AFT charts on these all-sides-adapted contours if native tree/AFT front closure permits. Keep Eistute 4 and Book 28 scientific sheet/owner choice blocked; advisor must approve model SHA-256-scoped pairing before any actual cross-patch node weld.",
   "measured_exact_source_push_original_models": {
     "Eistute": {
       "original_patches": 4,
@@ -144,5 +169,159 @@
       "rejected_source_snapshot_controls": 14,
       "preserved_original_TRI_Patch_observers": 32
     }
+  },
+  "measured_exact_source_pr_original_models": {
+    "Eistute": {
+      "original_patches": 4,
+      "original_curves": 13,
+      "all_original_curves_two_pass": 13,
+      "original_curve_incidences": 16,
+      "original_shared_curves": 1,
+      "original_nonmanifold_curves": 1,
+      "refined_original_curves": 13,
+      "unchanged_two_endpoint_curves": 0,
+      "adapted_source_points": 115,
+      "adapted_source_intervals": 102,
+      "complete_incidence_sites": 136,
+      "complete_incidence_intervals": 120,
+      "shared_source_incidence_pairs": 6,
+      "shared_source_site_pair_comparisons": 42,
+      "shared_source_interval_pair_comparisons": 36,
+      "opposite_oriented_incidence_pairs": 0,
+      "same_oriented_incidence_pairs": 6,
+      "maximum_source_valence": 4,
+      "rejected_source_snapshot_controls": 7,
+      "preserved_original_TRI_Patch_observers": 4
+    },
+    "Book": {
+      "original_patches": 28,
+      "original_curves": 85,
+      "all_original_curves_two_pass": 85,
+      "original_curve_incidences": 112,
+      "original_shared_curves": 1,
+      "original_nonmanifold_curves": 1,
+      "refined_original_curves": 85,
+      "unchanged_two_endpoint_curves": 0,
+      "adapted_source_points": 747,
+      "adapted_source_intervals": 662,
+      "complete_incidence_sites": 936,
+      "complete_incidence_intervals": 824,
+      "shared_source_incidence_pairs": 378,
+      "shared_source_site_pair_comparisons": 2646,
+      "shared_source_interval_pair_comparisons": 2268,
+      "opposite_oriented_incidence_pairs": 0,
+      "same_oriented_incidence_pairs": 378,
+      "maximum_source_valence": 28,
+      "rejected_source_snapshot_controls": 7,
+      "preserved_original_TRI_Patch_observers": 28
+    },
+    "combined": {
+      "original_patches": 32,
+      "all_original_curves_two_pass": 98,
+      "original_curve_incidences": 128,
+      "refined_original_curves": 98,
+      "adapted_source_points": 862,
+      "adapted_source_intervals": 764,
+      "complete_incidence_sites": 1072,
+      "complete_incidence_intervals": 944,
+      "shared_source_incidence_pairs": 384,
+      "shared_source_site_pair_comparisons": 2688,
+      "shared_source_interval_pair_comparisons": 2304,
+      "same_oriented_incidence_pairs": 384,
+      "opposite_oriented_incidence_pairs": 0,
+      "rejected_source_snapshot_controls": 14,
+      "preserved_original_TRI_Patch_observers": 32
+    }
+  },
+  "measured_original_models": {
+    "Eistute": {
+      "original_patches": 4,
+      "original_curves": 13,
+      "all_original_curves_two_pass": 13,
+      "original_curve_incidences": 16,
+      "original_shared_curves": 1,
+      "original_nonmanifold_curves": 1,
+      "refined_original_curves": 13,
+      "unchanged_two_endpoint_curves": 0,
+      "adapted_source_points": 115,
+      "adapted_source_intervals": 102,
+      "complete_incidence_sites": 136,
+      "complete_incidence_intervals": 120,
+      "shared_source_incidence_pairs": 6,
+      "shared_source_site_pair_comparisons": 42,
+      "shared_source_interval_pair_comparisons": 36,
+      "opposite_oriented_incidence_pairs": 0,
+      "same_oriented_incidence_pairs": 6,
+      "maximum_source_valence": 4,
+      "rejected_source_snapshot_controls": 7,
+      "preserved_original_TRI_Patch_observers": 4
+    },
+    "Book": {
+      "original_patches": 28,
+      "original_curves": 85,
+      "all_original_curves_two_pass": 85,
+      "original_curve_incidences": 112,
+      "original_shared_curves": 1,
+      "original_nonmanifold_curves": 1,
+      "refined_original_curves": 85,
+      "unchanged_two_endpoint_curves": 0,
+      "adapted_source_points": 747,
+      "adapted_source_intervals": 662,
+      "complete_incidence_sites": 936,
+      "complete_incidence_intervals": 824,
+      "shared_source_incidence_pairs": 378,
+      "shared_source_site_pair_comparisons": 2646,
+      "shared_source_interval_pair_comparisons": 2268,
+      "opposite_oriented_incidence_pairs": 0,
+      "same_oriented_incidence_pairs": 378,
+      "maximum_source_valence": 28,
+      "rejected_source_snapshot_controls": 7,
+      "preserved_original_TRI_Patch_observers": 28
+    },
+    "combined": {
+      "original_patches": 32,
+      "all_original_curves_two_pass": 98,
+      "original_curve_incidences": 128,
+      "refined_original_curves": 98,
+      "adapted_source_points": 862,
+      "adapted_source_intervals": 764,
+      "complete_incidence_sites": 1072,
+      "complete_incidence_intervals": 944,
+      "shared_source_incidence_pairs": 384,
+      "shared_source_site_pair_comparisons": 2688,
+      "shared_source_interval_pair_comparisons": 2304,
+      "same_oriented_incidence_pairs": 384,
+      "opposite_oriented_incidence_pairs": 0,
+      "rejected_source_snapshot_controls": 14,
+      "preserved_original_TRI_Patch_observers": 32
+    }
+  },
+  "source_negative_controls_per_model": 7,
+  "complete_source_scope": {
+    "all_original_curves_refined": 98,
+    "total_source_points": 862,
+    "total_source_intervals": 764,
+    "all_original_source_patch_incidences": 128,
+    "original_shared_curve_groups": 2,
+    "original_nonmanifold_curve_groups": 2,
+    "all_shared_pair_checks": 384,
+    "shared_site_pair_checks": 2688,
+    "shared_interval_pair_checks": 2304,
+    "all_incidence_sites": 1072,
+    "all_incidence_intervals": 944,
+    "initial_tri_observers_preserved": 32,
+    "corrupted_source_snapshots_rejected": 14,
+    "no_source_exterior_curve_ignored": true
+  },
+  "closure_audit": {
+    "code": "Research native test-only modified on feature, no production Adapter/GeneratorAdaptive/CLI/quadtree or original source model mutation",
+    "compile": "Both independent exact SHA Linux root builds success; native QUAD GCC/MSVC 16/16",
+    "native_regression": "Both root CTest 89/89, Python 527/527 and strict frozen TRI science parity, unchanged R2c5 full physical owner fault test",
+    "source_graph": "Original entire model CurveSampleGraphTransaction and original Adapter curve/surface passes on every one of 13 Eistute and 85 Book source curves; all 98 refined",
+    "source_geometry": "All patch-side 128 incidences and 1072 real original source knot observations match original curve/sample XYZ and PatchBezier side evaluated geometry under existing tolerance",
+    "negative_controls": "7/7 per source, all 14/14 total; one source pair ID mutation, six curve side snapshot mutations per model",
+    "model_provenance": "Independent Git object blob SHA-1 and raw ASCII UTF-8 SHA-256 hashes recorded",
+    "scientific_blockers": "All shared curve incidences of valence 4/28 share computed chart traversal, no opposite pair; advisor model-hash-bound nonmanifold sheet/owner pairing absent; still no globally conforming physical node graph",
+    "unqualified": "Full GeneratorAdaptive policy/budget/retry accepted epoch, all-curve physically regenerated QUAD/AFT patch boundary, true accepted GeneratorAdaptive AdaptDomain quadtree, local native ASan/UBSan, historical 1993 exact policy"
   }
 }
