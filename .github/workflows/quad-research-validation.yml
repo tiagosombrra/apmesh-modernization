@@ -173,6 +173,24 @@ jobs:
           path: build/local-serial/quad_dynamic_source_aft.log
           if-no-files-found: error
           retention-days: 14
+      - name: Build fail-closed R2c0 original source radial edge incidence records
+        shell: bash
+        run: |
+          # Cross-check real PatchReader incidence graphs and source Bézier interval
+          # proof logs. This does not publish/weld any physical nodes or elements.
+          python3 tests/quad/test_r2c0_source_radial_incidence.py \\
+            --root . \\
+            --graph-directory build/local-serial/m4_sheet_incidence \\
+            --source-log build/local-serial/quad_dynamic_source_aft.log \\
+            --directory build/local-serial/r2c0_radial_incidence
+      - name: Retain bounded source-linked R2c0 incidence and pending policy
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c0-radial-incidence-${{ github.sha }}
+          path: build/local-serial/r2c0_radial_incidence/*.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
