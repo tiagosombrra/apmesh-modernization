@@ -241,6 +241,23 @@ jobs:
             --directory build/local-serial/r2c13_generator_epochs \
             --root . \
             --engine-source src/generator/generator_adaptive.cpp
+      - name: Diagnose R2c17 original Adapter native per-patch fallback attempts
+        shell: bash
+        run: |
+          python3 tools/verify_r2c17_original_adapter_domain_fallback.py \
+            --directory build/local-serial/r2c13_generator_epochs \
+            --root . \
+            --adapter-source src/adapter/adapter.cpp
+      - name: Retain R2c17 exact original Adapter domain CSV and fallback report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c17-original-adapter-domain-${{ github.sha }}
+          path: |
+            build/local-serial/r2c13_generator_epochs/r2c17_original_adapter_fallback_forensics.json
+            build/local-serial/r2c13_generator_epochs/*/*_domain_adaptation.csv
+          if-no-files-found: error
+          retention-days: 14
       - name: Measure R2c16 bounded original GeneratorAdaptive source-control profiles
         shell: bash
         run: |
