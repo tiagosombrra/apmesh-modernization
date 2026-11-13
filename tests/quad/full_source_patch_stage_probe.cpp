@@ -1934,7 +1934,7 @@ struct AllSidesPhysicalModelReport {
 // Export only an accepted research-only disjoint model. OBJ uses independent
 // vertex indices per PatchBezier and never implies cross-patch welding.
 void ExportAllSidesPhysicalOriginalModel(
-    const MeshAdaptive& detached_root,
+    Geometry& original, const MeshAdaptive& detached_root,
     const AllSidesPhysicalModelReport& report, unsigned original_patches) {
   const char* destination = std::getenv("APMESH_QUAD_R2C10_EXPORT_DIR");
   if (!destination || !*destination) return;
@@ -1952,10 +1952,16 @@ void ExportAllSidesPhysicalOriginalModel(
   std::filesystem::create_directories(folder);
   const auto obj_path = folder / (model + "_all_sides_detached_quad_aft.obj");
   const auto json_path = folder / (model + "_all_sides_detached_quad_aft.json");
+  const auto atlas_path = folder / (model + "_original_source_seam_atlas.csv");
   std::ofstream obj(obj_path, std::ios::trunc);
   std::ofstream manifest(json_path, std::ios::trunc);
-  Require(obj && manifest, "R2c10 unable to create physical research mesh exports");
+  std::ofstream atlas(atlas_path, std::ios::trunc);
+  Require(obj && manifest && atlas,
+          "R2c11 unable to create physical research mesh/atlas exports");
   obj << std::setprecision(17);
+  atlas << std::setprecision(17)
+        << "patch_id,side,curve_id,source_node_id,source_parameter,"
+        << "source_x,source_y,source_z,obj_vertex_index,is_terminal\n";
   obj << "# Research-only original " << model
       << " QUAD/AFT; all four adapted sides per patch\n";
   obj << "# Separate patch nodes, no nonmanifold welding or global sheet approval\n";
@@ -1975,6 +1981,7 @@ void ExportAllSidesPhysicalOriginalModel(
   std::size_t total_nodes = 0;
   std::size_t total_quads = 0;
   std::size_t total_tris = 0;
+  std::size_t source_atlas_sites = 0;
   for (unsigned patch_id = 0; patch_id < original_patches; ++patch_id) {
     const auto* chart = detached_root.GetSubMeshAdaptiveByPosition(patch_id);
     Require(chart && chart->GetPatch() == nullptr,
@@ -2026,6 +2033,73 @@ void ExportAllSidesPhysicalOriginalModel(
     Require(quads > 0U && triangles > 0U &&
                 quads + triangles == chart->GetNumberElements(),
             "R2c10 exported patch dropped a physical mesh element");
+    // R2c-11 preserves every original source curve site including the terminal
+    // corner omitted by the closed AFT ring, with a chart-local physical OBJ
+    // vertex witness. It never equates physical node owners across patches.
+    auto* source_patch =
+        dynamic_cast<PatchBezier*>(original.GetPatch(patch_id));
+    Require(source_patch && source_patch->GetSubMesh(),
+            "R2c11 original source PatchBezier observer is missing");
+    auto original_boundary = BuildDetachedSourceBoundaryImpl(
+        *source_patch, patch_id, nullptr, true);
+    const auto& capture = original_boundary.capture;
+    const auto obj_vertex_for = [&](const Xyz& original_xyz) {
+      std::size_t selected = 0U;
+      double selected_distance = std::numeric_limits<double>::infinity();
+      for (unsigned index = 0; index < chart->GetNumberNos(); ++index) {
+        const auto* node = chart->GetNoh(index);
+        Require(node != nullptr && Finite(Values(*node)),
+                "R2c11 detached OBJ mesh contains a nonfinite physical point");
+        const double distance = Norm(Subtract(Values(*node), original_xyz));
+        if (distance < selected_distance) {
+          selected_distance = distance;
+          selected = total_nodes + index + 1U;
+        }
+      }
+      Require(selected != 0U &&
+                  NearSource(original_xyz,
+                             Values(*chart->GetNoh(static_cast<unsigned>(
+                                 selected - total_nodes - 1U)))),
+              "R2c11 original source site is not represented in physical OBJ");
+      return selected;
+    };
+    for (unsigned side = 0; side < 4U; ++side) {
+      auto* curve = dynamic_cast<CurveAdaptiveParametric*>(
+          source_patch->GetCurve(side));
+      Require(curve != nullptr && capture.side_counts[side] > 1U,
+              "R2c11 original adapted source curve was lost");
+      std::size_t count = 0U;
+      for (const auto& site : capture.vertices) {
+        if (site.side != side) continue;
+        Require(site.curve_id == curve->GetId() &&
+                    site.physical_node_id != 0UL &&
+                    Finite(site.physical_xyz) &&
+                    std::isfinite(site.original_parameter),
+                "R2c11 original nonterminal site provenance is invalid");
+        atlas << patch_id << ',' << side << ',' << site.curve_id << ','
+              << site.physical_node_id << ','
+              << site.original_parameter << ','
+              << site.physical_xyz[0] << ',' << site.physical_xyz[1]
+              << ',' << site.physical_xyz[2] << ','
+              << obj_vertex_for(site.physical_xyz) << ",0\n";
+        ++count;
+        ++source_atlas_sites;
+      }
+      Require(count == capture.side_counts[side],
+              "R2c11 original source side missing an AFT interval knot");
+      const auto& terminal = capture.original_curve_endpoints[side];
+      Require(terminal.node_id != 0UL &&
+                  Finite(terminal.xyz) &&
+                  std::isfinite(terminal.parameter),
+              "R2c11 original source curve terminal corner is invalid");
+      atlas << patch_id << ',' << side << ',' << curve->GetId() << ','
+            << terminal.node_id << ',' << terminal.parameter << ','
+            << terminal.xyz[0] << ',' << terminal.xyz[1]
+            << ',' << terminal.xyz[2] << ','
+            << obj_vertex_for(terminal.xyz) << ",1\n";
+      ++source_atlas_sites;
+    }
+
     if (patch_id != 0U) manifest << ",\n";
     manifest << "    {\"patch_id\": " << patch_id
              << ", \"vertices\": " << chart->GetNumberNos()
@@ -2041,13 +2115,26 @@ void ExportAllSidesPhysicalOriginalModel(
            << "  \"typed_TRI\": " << total_tris << "\n}\n";
   obj.close();
   manifest.close();
-  Require(obj && manifest &&
+  atlas.close();
+  Require(obj && manifest && atlas &&
+              source_atlas_sites ==
+                  (eistute ? 136U : 936U) &&
               total_nodes == report.physical_nodes &&
               total_quads == report.physical_quads &&
               total_tris == report.physical_tris &&
               std::filesystem::file_size(obj_path) > 0U &&
-              std::filesystem::file_size(json_path) > 0U,
-          "R2c10 serialized original physical QUAD/AFT counts are inconsistent");
+              std::filesystem::file_size(json_path) > 0U &&
+              std::filesystem::file_size(atlas_path) > 0U,
+          "R2c11 serialized original physical/source atlas counts are inconsistent");
+  std::cout << "R2C11_ORIGINAL_SOURCE_SEAM_ATLAS"
+            << " model=" << model
+            << " original_patches=" << original_patches
+            << " original_source_incidence_sites=" << source_atlas_sites
+            << " actual_physical_OBJ_vertex_witnesses=" << source_atlas_sites
+            << " original_curve_ids_and_node_ids_retained=1"
+            << " all_adapted_source_terminal_corners_recorded=1"
+            << " cross_patch_source_equality_not_node_welding=1"
+            << " scientific_sheet_policy_approved=0\n";
   std::cout << "R2C10_DETACHED_ORIGINAL_MESH_EXPORT"
             << " model=" << model
             << " original_patches=" << original_patches
@@ -2145,7 +2232,7 @@ AllSidesPhysicalModelReport TrialWholeOriginalAllSidesPhysicalModel(
             "R2c9 all-chart model physical owner count mismatch");
     report.complete_disconnected_stage = true;
     ExportAllSidesPhysicalOriginalModel(
-        *detached_root, report, expected_patches);
+        original, *detached_root, report, expected_patches);
   } else {
     Require(!report.rejection_reason.empty() &&
                 detached_root->GetNumberSubMeshesAdaptive() == 0U,
