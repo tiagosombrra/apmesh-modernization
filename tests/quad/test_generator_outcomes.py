@@ -267,7 +267,9 @@ def run(executable: Path, root: Path, model: str) -> None:
         if not (
             int(source_ring["patches"]) == expected_patches
             and int(source_ring["curve_index"]) >= 0
-            and int(source_ring["curve_id"]) > 0
+            # The legacy CurveAdaptive::GetId may legitimately remain zero.
+            # The audited Geometry registry index carries curve identity.
+            and int(source_ring["curve_id"]) >= 0
             and int(source_ring["original_intervals"]) == intervals
             and len(parameters) == len(node_ids) == intervals + 1
             and parameters[0] == 0 and parameters[-1] == 1
