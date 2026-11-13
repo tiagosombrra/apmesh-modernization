@@ -384,6 +384,24 @@ jobs:
             build/local-serial/r2c18_aft_postprocess/eistute_aft_postprocess_quality_0p80/*_patch_adaptation_accepted.csv
           if-no-files-found: error
           retention-days: 14
+      - name: R2c20 independently inspect every original accepted TRI 3D OBJ face
+        shell: bash
+        run: |
+          python3 tools/verify_r2c20_original_accepted_tri_obj_faces.py \
+            --r2c13 build/local-serial/r2c13_generator_epochs \
+            --r2c18 build/local-serial/r2c18_aft_postprocess \
+            --output build/local-serial/r2c20_original_accepted_tri_faces
+      - name: Retain R2c20 accepted original TRI OBJ models and face integrity report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c20-original-accepted-tri-face-integrity-${{ github.sha }}
+          path: |
+            build/local-serial/r2c20_original_accepted_tri_faces/r2c20_original_accepted_tri_3d_face_integrity.json
+            build/local-serial/r2c18_aft_postprocess/eistute_aft_postprocess_quality_0p80/*_malha_*.obj
+            build/local-serial/r2c13_generator_epochs/book_pinned_article/*_malha_*.obj
+          if-no-files-found: error
+          retention-days: 14
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
