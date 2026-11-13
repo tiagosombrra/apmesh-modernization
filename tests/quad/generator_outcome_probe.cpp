@@ -19,6 +19,8 @@
 #include <cmath>
 #include <cstdint>
 #include <iostream>
+#include <iomanip>
+#include <limits>
 #include <map>
 #include <memory>
 #include <set>
@@ -868,6 +870,55 @@ int Run(const std::string& config_path) {
             << " negative_controls=" << interval_negative_controls
             << " reason=" << interval_fan.reason
             << " global_mixed_model_admitted=0\n";
+
+  // R2c-0 source-only provenance: retain the exact original source
+  // parameter subdivision and node IDs used by the Bernstein interval
+  // certificate. Radial adjacency is an observation, never a halfedge twin.
+  for (std::size_t curve_index = 0;
+       curve_index < shared_graph.incidence.size(); ++curve_index) {
+    const auto& group = shared_graph.incidence[curve_index];
+    if (group.size() <= 2U) continue;
+    const apmesh::quad::AdapterBoundaryCapture* captured = nullptr;
+    for (const auto& item : boundaries) {
+      if (item.attempt.outer.epoch == shared.epoch &&
+          item.attempt.outer.global_retry == shared.retry &&
+          item.attempt.patch_index ==
+              static_cast<int>(group.front().patch)) {
+        captured = &item;
+        break;
+      }
+    }
+    Require(captured != nullptr, "R2c0 source epoch/patch missing");
+    const auto source = apmesh::quad::SnapshotSharedCurveSide(
+        *captured, group.front().side);
+    Require(source.ordered_by_original_parameter.size() ==
+                interval_fan.original_intervals + 1U &&
+                source.curve_id == group.front().curve_id,
+            "R2c0 original curve/node provenance unavailable");
+    std::ostringstream parameters, node_ids;
+    parameters << std::setprecision(std::numeric_limits<double>::max_digits10);
+    for (const auto& sample : source.ordered_by_original_parameter) {
+      if (parameters.tellp() > 0) {
+        parameters << ",";
+        node_ids << ",";
+      }
+      parameters << sample.t;
+      node_ids << sample.node_id;
+    }
+    std::cout << "R2C0_ORIGINAL_SOURCE_RING"
+              << " patches=" << shared.model_patches
+              << " curve_index=" << curve_index
+              << " curve_id=" << source.curve_id
+              << " epoch=" << shared.epoch
+              << " retry=" << shared.retry
+              << " original_intervals=" << interval_fan.original_intervals
+              << " parameters=" << parameters.str()
+              << " node_ids=" << node_ids.str()
+              << " radial_order=" << sector_order.str()
+              << " interval_order_certified="
+              << interval_fan.interval_order_certified
+              << " no_welding=1\\n";
+  }
 
   // Construct four adversarial counterparts from an ACTUAL original Adapter
   // sampled curve, without inventing a new curve or a synthetic UV geometry.
