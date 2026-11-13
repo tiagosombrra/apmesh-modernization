@@ -21,6 +21,10 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <cstdlib>
+#include <filesystem>
+#include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <limits>
 #include <map>
@@ -1927,6 +1931,136 @@ struct AllSidesPhysicalModelReport {
   std::string rejection_reason;
 };
 
+// Export only an accepted research-only disjoint model. OBJ uses independent
+// vertex indices per PatchBezier and never implies cross-patch welding.
+void ExportAllSidesPhysicalOriginalModel(
+    const MeshAdaptive& detached_root,
+    const AllSidesPhysicalModelReport& report, unsigned original_patches) {
+  const char* destination = std::getenv("APMESH_QUAD_R2C10_EXPORT_DIR");
+  if (!destination || !*destination) return;
+  Require(report.complete_disconnected_stage &&
+              detached_root.GetNumberSubMeshesAdaptive() == original_patches,
+          "R2c10 export requires a complete accepted detached physical model");
+  const bool eistute = original_patches == 4U;
+  Require(eistute || original_patches == 28U,
+          "R2c10 source model provenance is unknown");
+  const std::string model = eistute ? "eistute" : "book";
+  const char* documented_sha256 = eistute
+      ? "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f"
+      : "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d";
+  const auto folder = std::filesystem::path(destination);
+  std::filesystem::create_directories(folder);
+  const auto obj_path = folder / (model + "_all_sides_detached_quad_aft.obj");
+  const auto json_path = folder / (model + "_all_sides_detached_quad_aft.json");
+  std::ofstream obj(obj_path, std::ios::trunc);
+  std::ofstream manifest(json_path, std::ios::trunc);
+  Require(obj && manifest, "R2c10 unable to create physical research mesh exports");
+  obj << std::setprecision(17);
+  obj << "# Research-only original " << model
+      << " QUAD/AFT; all four adapted sides per patch\n";
+  obj << "# Separate patch nodes, no nonmanifold welding or global sheet approval\n";
+  obj << "o " << model << "_unwelded_all_sides_quad_aft\n";
+  manifest << "{\n"
+           << "  \"schema\": \"apmesh.quad.r2c10.detached_original_mesh.v1\",\n"
+           << "  \"model\": \"" << model << "\",\n"
+           << "  \"expected_model_sha256_from_r2c6_evidence_not_recomputed\": \""
+           << documented_sha256 << "\",\n"
+           << "  \"original_patches\": " << original_patches << ",\n"
+           << "  \"all_four_original_sides_adapted\": true,\n"
+           << "  \"disconnected_physical_chart_owners\": true,\n"
+           << "  \"cross_patch_welding\": false,\n"
+           << "  \"original_generator_adapt_domain_accepted\": false,\n"
+           << "  \"global_scientific_mesh_approved\": false,\n"
+           << "  \"patches\": [\n";
+  std::size_t total_nodes = 0;
+  std::size_t total_quads = 0;
+  std::size_t total_tris = 0;
+  for (unsigned patch_id = 0; patch_id < original_patches; ++patch_id) {
+    const auto* chart = detached_root.GetSubMeshAdaptiveByPosition(patch_id);
+    Require(chart && chart->GetPatch() == nullptr,
+            "R2c10 original physical export has a foreign Patch observer");
+    DisjointOwnerStage::CheckChart(*chart);
+    obj << "g patch_" << patch_id << '\n';
+    std::map<unsigned long, std::size_t> original_node_ids;
+    for (unsigned i = 0; i < chart->GetNumberNos(); ++i) {
+      const auto* node = chart->GetNoh(i);
+      Require(node && Finite(Values(*node)) &&
+                  original_node_ids.emplace(
+                      node->GetId(), total_nodes + i + 1U).second,
+              "R2c10 duplicate or invalid physical node ID in patch");
+      obj << "v " << node->GetX() << ' ' << node->GetY()
+          << ' ' << node->GetZ() << '\n';
+    }
+    unsigned quads = 0;
+    unsigned triangles = 0;
+    for (unsigned i = 0; i < chart->GetNumberElements(); ++i) {
+      const auto* element = chart->GetElement(i);
+      if (const auto* quad =
+              dynamic_cast<const QuadrilateralAdaptive*>(element)) {
+        obj << 'f';
+        for (const auto* node : quad->GetNodeObservers()) {
+          const auto found = original_node_ids.find(node->GetId());
+          Require(found != original_node_ids.end(),
+                  "R2c10 QUAD face references a foreign patch vertex");
+          obj << ' ' << found->second;
+        }
+        obj << '\n';
+        ++quads;
+      } else if (const auto* triangle =
+                     dynamic_cast<const TriangleAdaptive*>(element)) {
+        obj << 'f';
+        for (unsigned vertex = 1U; vertex <= 3U; ++vertex) {
+          const auto point = triangle->GetVertexPoint(vertex);
+          const auto found = original_node_ids.find(point.GetId());
+          Require(found != original_node_ids.end(),
+                  "R2c10 TRI face references a foreign patch vertex");
+          obj << ' ' << found->second;
+        }
+        obj << '\n';
+        ++triangles;
+      } else {
+        throw std::runtime_error(
+            "R2c10 physical export has an unexpected non-QUAD/TRI element");
+      }
+    }
+    Require(quads > 0U && triangles > 0U &&
+                quads + triangles == chart->GetNumberElements(),
+            "R2c10 exported patch dropped a physical mesh element");
+    if (patch_id != 0U) manifest << ",\n";
+    manifest << "    {\"patch_id\": " << patch_id
+             << ", \"vertices\": " << chart->GetNumberNos()
+             << ", \"quads\": " << quads
+             << ", \"tris\": " << triangles << "}";
+    total_nodes += chart->GetNumberNos();
+    total_quads += quads;
+    total_tris += triangles;
+  }
+  manifest << "\n  ],\n"
+           << "  \"physical_nodes\": " << total_nodes << ",\n"
+           << "  \"typed_QUAD\": " << total_quads << ",\n"
+           << "  \"typed_TRI\": " << total_tris << "\n}\n";
+  obj.close();
+  manifest.close();
+  Require(obj && manifest &&
+              total_nodes == report.physical_nodes &&
+              total_quads == report.physical_quads &&
+              total_tris == report.physical_tris &&
+              std::filesystem::file_size(obj_path) > 0U &&
+              std::filesystem::file_size(json_path) > 0U,
+          "R2c10 serialized original physical QUAD/AFT counts are inconsistent");
+  std::cout << "R2C10_DETACHED_ORIGINAL_MESH_EXPORT"
+            << " model=" << model
+            << " original_patches=" << original_patches
+            << " physical_vertices=" << total_nodes
+            << " physical_QUAD=" << total_quads
+            << " physical_TRI=" << total_tris
+            << " all_original_sides_adapted=1"
+            << " exact_node_element_counts_match_R2C9=1"
+            << " unshared_physical_patch_owners=1"
+            << " source_sha256_recomputed=0"
+            << " global_nonmanifold_connectivity_approved=0\n";
+}
+
 AllSidesPhysicalModelReport TrialWholeOriginalAllSidesPhysicalModel(
     Geometry& original, const std::vector<SubMesh*>& accepted_tri,
     unsigned expected_patches) {
@@ -2010,6 +2144,8 @@ AllSidesPhysicalModelReport TrialWholeOriginalAllSidesPhysicalModel(
     Require(distinct_nodes.size() == report.physical_nodes,
             "R2c9 all-chart model physical owner count mismatch");
     report.complete_disconnected_stage = true;
+    ExportAllSidesPhysicalOriginalModel(
+        *detached_root, report, expected_patches);
   } else {
     Require(!report.rejection_reason.empty() &&
                 detached_root->GetNumberSubMeshesAdaptive() == 0U,
