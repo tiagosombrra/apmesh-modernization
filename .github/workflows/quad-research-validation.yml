@@ -191,6 +191,22 @@ jobs:
           path: build/local-serial/r2c0_radial_incidence/*.json
           if-no-files-found: error
           retention-days: 14
+      - name: Validate source-bound R2c1 sheet review packets and draft semantics
+        shell: bash
+        run: |
+          # All candidate continuations remain unapproved; no node owners change.
+          python3 tests/quad/test_r2c1_sheet_review.py \
+            --root . \
+            --r2c0-directory build/local-serial/r2c0_radial_incidence \
+            --directory build/local-serial/r2c1_sheet_review
+      - name: Retain bounded R2c1 pending scientific review packets
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c1-sheet-review-${{ github.sha }}
+          path: build/local-serial/r2c1_sheet_review/*.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'
