@@ -1,0 +1,64 @@
+{
+  "schema": "apmesh.quad.r2c11.exported_original_source_seam_atlas.v1",
+  "date_utc": "2026-11-13",
+  "status": "CANDIDATE_CODE_COMMITTED_CI_QUEUED_NOT_QUALIFIED",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_head": "1fd693eb38732b6c01a638cbd97208a6e87f9905",
+  "pr_number": 214,
+  "workflow_run_id": 43495975211,
+  "source_models": [
+    {
+      "name": "eistute",
+      "input": "input_models/eistute2.fixed.bp",
+      "sha256": "fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f",
+      "expected_patches": 4,
+      "expected_curves": 13,
+      "expected_unique_source_curve_nodes": 115,
+      "expected_patch_incidence_source_sites": 136,
+      "expected_shared_valence": 4,
+      "expected_shared_incidence_pairs": 6
+    },
+    {
+      "name": "book",
+      "input": "input_models/book_v7a.bp",
+      "sha256": "3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d",
+      "expected_patches": 28,
+      "expected_curves": 85,
+      "expected_unique_source_curve_nodes": 747,
+      "expected_patch_incidence_source_sites": 936,
+      "expected_shared_valence": 28,
+      "expected_shared_incidence_pairs": 378
+    }
+  ],
+  "impl_paths": [
+    "tests/quad/full_source_patch_stage_probe.cpp",
+    "tools/verify_r2c11_source_seam_atlas.py",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "planned_export_atlas": [
+    "eistute_original_source_seam_atlas.csv",
+    "book_original_source_seam_atlas.csv"
+  ],
+  "assertions": [
+    "Original PatchReader and AdaptCurveByCurve/AdaptCurveBySurface original source record IDs, parameters, XYZ and terminal corner retained per actual patch-side",
+    "Each original source site mapped to concrete valid detached OBJ physical node index within its patch",
+    "Each original side parameter sequence strictly monotone; terminal corner explicit",
+    "All native original curves and actual source site cardinalities recovered (not synthetic uniform sites)",
+    "All repeated original curve shared incidences have same canonical node/parameter/XYZ sample list",
+    "Eistute shared curve valence 4 and Book valence 28 retained as radial records WITHOUT welding",
+    "Positive typed physical candidate counts retained from R2c10"
+  ],
+  "expected_native_marker": "R2C11_ORIGINAL_SOURCE_SEAM_ATLAS",
+  "expected_python_marker": "R2C11_ORIGINAL_SOURCE_SEAM_AUDIT",
+  "qualification": null,
+  "unverified": [
+    "Native C++ compilation of this new feature source",
+    "Original Linux CTest and Python independent seam audits",
+    "Native and TRI scientific parity on exact head",
+    "Second independent full exact source CI",
+    "Global non-manifold radial sheet pairing approval",
+    "Production accepted GeneratorAdaptive AdaptDomain and repeated adaptation",
+    "Local ASan/UBSan"
+  ],
+  "next_action": "Inspect exact CI #43495975211, diagnose mismatch without weakening original source/physical ownership or TRI oracles, require actual source/OBJ positive seam receipts on both models before claiming R2c11."
+}
