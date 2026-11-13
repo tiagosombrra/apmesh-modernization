@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c14.actual_original_generator_rejection_forensics.v1",
   "date_utc": "2026-11-13",
-  "status": "CODE_COMMITTED_EXACT_CI_PENDING_NOT_QUALIFIED",
+  "status": "QUALIFIED_NATIVE_ORIGINAL_REJECTED_CANDIDATE_FORENSICS_EXACT_4_OF_4_CI; M7_TWO_EPOCH_GATE_NOT_MET",
   "research_pr_number": 214,
   "source_commit": "2a668414694070b4e74f826996cc5811df6fd0a8",
   "source_files": [
@@ -33,5 +33,78 @@
   "native_results": null,
   "accepted_two_original_generator_epochs": false,
   "scientific_global_quad_accepted": false,
-  "next_action": "Inspect workflow success and independently parsed R2c14 actual rejection provenance; pinpoint per-patch error growth/quality constraints. Correct any provenance mismatch before continuing to genuine M7 algorithm improvement under the frozen TRI scientific baseline."
+  "next_action": "R2c15 independent read-only reference acceptance-guard inequality diagnosis from authentic step reports and unchanged source branch; distinguish provable guard failure vs unobservable flags and exceptions. Do not change thresholds or force accepted epochs.",
+  "exact_ci": {
+    "pr_head": "2a668414694070b4e74f826996cc5811df6fd0a8",
+    "run_id": 43504972443,
+    "conclusion": "success",
+    "jobs": "4/4",
+    "native_gcc_quad": "16/16",
+    "native_msvc_quad": "16/16",
+    "linux_root_ctest": "89/89",
+    "tooling_python": "527/527",
+    "original_tri_parity": "PASS",
+    "r2c14_marker": "R2C14_ORIGINAL_GENERATOR_REJECTION_FORENSICS production_acceptance_unchanged=1 exact_boolean_gate_unapproved=1",
+    "artifact_id": 14077445183,
+    "artifact_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43504972443/artifacts/14077445183",
+    "artifact_retention_days": 14
+  },
+  "measured_rejections": {
+    "eistute": {
+      "pinned": {
+        "step2": {
+          "global_error_improvement": -0.2492,
+          "growth": 1.71918,
+          "overshoot": 1.685,
+          "transition_penalty": 0.173
+        },
+        "step3": {
+          "global_error_improvement": -0.2023,
+          "growth": 1.88014,
+          "overshoot": 1.843,
+          "transition_penalty": 0.211
+        },
+        "step4": {
+          "global_error_improvement": 0.8386,
+          "growth": 6.17808,
+          "overshoot": 6.057,
+          "transition_penalty": 2.067,
+          "underresolved_transition_fraction": 1,
+          "transition_imbalance_max": 0.298,
+          "quality_min": 0.126,
+          "under_target_source_curves": 0
+        }
+      }
+    },
+    "book": {
+      "pinned": {
+        "step2": {
+          "global_error_improvement": -3.00433,
+          "growth": 4.64615,
+          "overshoot": 4.64615,
+          "transition_penalty": 0.997251,
+          "underresolved_transition_fraction": 0,
+          "under_target_source_curves": 0,
+          "local_patches_with_increased_error": 4,
+          "worst_patch_id": 27
+        },
+        "step3": {
+          "same_outcomes_as_step2": true
+        }
+      },
+      "stable_small_increment": {
+        "accepted_actual_steps": 0,
+        "step2_to_step4_global_error_improvement": 0.338,
+        "growth": 7,
+        "overshoot": 6.863,
+        "under_target_source_curves": 0
+      }
+    }
+  },
+  "findings": [
+    "Original source per-curve target points completed in every inspected rejected candidate, but that does not imply completed transition bands; Eistute pinned step4 has underresolved transition fraction 1.0",
+    "Book pinned global error increased approx 300% and actual candidate grew >4.6x, while four local patches regressed",
+    "Eistute pinned step4 global error reduced ~83.9% yet original quality/transition/overshoot gate rejects, hence cannot take error improvement alone as scientific acceptance",
+    "Exact individual Boolean gate outcomes are not logged by the historical GeneratorAdaptive and cannot be asserted from aggregate metrics alone without evaluating original source inequalities"
+  ]
 }
