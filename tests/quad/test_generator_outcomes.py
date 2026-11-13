@@ -64,6 +64,10 @@ def run(executable: Path, root: Path, model: str) -> None:
             line for line in result.stdout.splitlines()
             if line.startswith("R2B2_SHARED_SHEET_BERNSTEIN ")
         ]
+        source_rings = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2C0_ORIGINAL_SOURCE_RING ")
+        ]
         all_patches = [
             line for line in result.stdout.splitlines()
             if line.startswith("R2B2_ALL_PATCH_RESULT ")
@@ -244,6 +248,44 @@ def run(executable: Path, root: Path, model: str) -> None:
                 f"Invalid actual continuous Bezier sector bounds: {bernstein[0]!r}"
             )
 
+        # Source subdivision/radial ordering must come from the SAME
+        # original generator epoch, not model-wide coordinate welding.
+        if len(source_rings) != 1:
+            raise AssertionError("Missing unique original source incidence ring")
+        source_ring = dict(re.findall(r"([a-z_]+)=([^\\s]+)", source_rings[0]))
+        ring_required = ("patches", "curve_index", "curve_id", "epoch",
+                         "retry", "original_intervals", "parameters",
+                         "node_ids", "radial_order",
+                         "interval_order_certified", "no_welding")
+        if any(key not in source_ring for key in ring_required):
+            raise AssertionError("Malformed R2c0 original source curve record")
+        parameters = [float(x) for x in source_ring["parameters"].split(",")]
+        node_ids = [int(x) for x in source_ring["node_ids"].split(",")]
+        radial_order = source_ring["radial_order"].split(",")
+        measured_order = dict(re.findall(r"([a-z_]+)=([^\\s]+)", radial[0]))
+        source_epochs = dict(re.findall(r"([a-z_]+)=([^\\s]+)", shared[0]))
+        if not (
+            int(source_ring["patches"]) == expected_patches
+            and int(source_ring["curve_index"]) >= 0
+            and int(source_ring["curve_id"]) > 0
+            and int(source_ring["original_intervals"]) == intervals
+            and len(parameters) == len(node_ids) == intervals + 1
+            and parameters[0] == 0 and parameters[-1] == 1
+            and all(0 <= a < b <= 1
+                    for a, b in zip(parameters, parameters[1:]))
+            and len(set(node_ids)) == len(node_ids)
+            and all(v > 0 for v in node_ids)
+            and len(radial_order) == len(set(radial_order)) == expected_patches
+            and source_ring["radial_order"] == measured_order["radial_order"]
+            and int(source_ring["epoch"]) == int(source_epochs["coherent_epoch"])
+            and int(source_ring["retry"]) == int(source_epochs["coherent_retry"])
+            and int(source_ring["interval_order_certified"]) == full_certificate
+            and int(source_ring["no_welding"]) == 1
+        ):
+            raise AssertionError(
+                f"Inconsistent original source R2c0 incidence: {source_rings[0]!r}"
+            )
+
         # Every original model patch must be observed in a SINGLE source
         # epoch. A rejected UV/AFT/XYZ candidate remains a rejected scientific
         # result even when CTest passes: never turn coverage into admission.
@@ -323,6 +365,7 @@ def run(executable: Path, root: Path, model: str) -> None:
         # Retain the complete original-source interval certificate report.
         # CTest success alone is not evidence that every interval was proven.
         print(bernstein[0])
+        print(source_rings[0])
         print(markers[0])
 
 
