@@ -252,18 +252,22 @@ def run(executable: Path, root: Path, model: str) -> None:
         # original generator epoch, not model-wide coordinate welding.
         if len(source_rings) != 1:
             raise AssertionError("Missing unique original source incidence ring")
-        source_ring = dict(re.findall(r"([a-z_]+)=([^\\s]+)", source_rings[0]))
+        source_ring = dict(re.findall(r"([a-z_]+)=([^\s]+)", source_rings[0]))
         ring_required = ("patches", "curve_index", "curve_id", "epoch",
                          "retry", "original_intervals", "parameters",
                          "node_ids", "radial_order",
                          "interval_order_certified", "no_welding")
         if any(key not in source_ring for key in ring_required):
-            raise AssertionError("Malformed R2c0 original source curve record")
+            raise AssertionError(
+                f"Malformed R2c0 original source curve record: "
+                f"missing={sorted(set(ring_required) - set(source_ring))!r}; "
+                f"line={source_rings[0]!r}"
+            )
         parameters = [float(x) for x in source_ring["parameters"].split(",")]
         node_ids = [int(x) for x in source_ring["node_ids"].split(",")]
         radial_order = source_ring["radial_order"].split(",")
-        measured_order = dict(re.findall(r"([a-z_]+)=([^\\s]+)", radial[0]))
-        source_epochs = dict(re.findall(r"([a-z_]+)=([^\\s]+)", shared[0]))
+        measured_order = dict(re.findall(r"([a-z_]+)=([^\s]+)", radial[0]))
+        source_epochs = dict(re.findall(r"([a-z_]+)=([^\s]+)", shared[0]))
         if not (
             int(source_ring["patches"]) == expected_patches
             and int(source_ring["curve_index"]) >= 0
