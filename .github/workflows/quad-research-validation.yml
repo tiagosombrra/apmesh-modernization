@@ -178,10 +178,10 @@ jobs:
         run: |
           # Cross-check real PatchReader incidence graphs and source Bézier interval
           # proof logs. This does not publish/weld any physical nodes or elements.
-          python3 tests/quad/test_r2c0_source_radial_incidence.py \\
-            --root . \\
-            --graph-directory build/local-serial/m4_sheet_incidence \\
-            --source-log build/local-serial/quad_dynamic_source_aft.log \\
+          python3 tests/quad/test_r2c0_source_radial_incidence.py \
+            --root . \
+            --graph-directory build/local-serial/m4_sheet_incidence \
+            --source-log build/local-serial/quad_dynamic_source_aft.log \
             --directory build/local-serial/r2c0_radial_incidence
       - name: Retain bounded source-linked R2c0 incidence and pending policy
         if: success()
