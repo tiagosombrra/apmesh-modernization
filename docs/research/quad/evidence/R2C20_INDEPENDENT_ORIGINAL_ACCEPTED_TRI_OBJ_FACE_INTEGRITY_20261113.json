@@ -1,0 +1,61 @@
+{
+  "schema": "apmesh.quad.r2c20.source_sha_bound_original_accepted_tri_obj_all_face_integrity.v1",
+  "date_utc": "2026-11-13",
+  "status": "FEATURE_CODE_COMMITTED_IN_EXACT_NATIVE_CI_NO_CLAIM_UNTIL_RUN_COMPLETES",
+  "pr_number": 214,
+  "feature_head": "d96b30731048daecb7c04659f9219cb7c07a75f6",
+  "run_id": 43523848833,
+  "prior_r2c19_corrected": {
+    "feature_head": "c659e37d3a958eb3f452a7261c7b1ab5b6b35797",
+    "run_id": 43522312435,
+    "conclusion": "success",
+    "jobs": "4/4",
+    "ctest": "89/89",
+    "python": "527/527",
+    "artifact_id": 14084860307,
+    "eistute_original_accepted_source_steps": [
+      1,
+      2,
+      4
+    ],
+    "current_global_3d_uv_source_quality_positive": true,
+    "original_patch_csv_quality_points_to_previous_source_epoch": true,
+    "original_book_joint_aft_two_epochs": false
+  },
+  "why_needed": "Original GeneratorAdaptive patch_adaptation_accepted.csv quality minima report prior accepted mesh state, not the newly accepted per-patch physical mesh. The native accepted global acceptance log is current but not independently scanning each physical TRI face.",
+  "source_code": [
+    "tools/verify_r2c20_original_accepted_tri_obj_faces.py",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "plan": {
+    "source_research_true_original_meshes": [
+      "eistute2.fixed.bp (sha256 fdce4714524b88f536ec9f8eddc467e54e638dc6e765784ab68edc9a366a0a3f): original genuine accepted TRI steps 1 (1168 faces), 2 (2008 faces), 4 (4032 faces) from single variable AFT postprocessing quality0.8",
+      "book_v7a.bp (sha256 3c4255cbd2f46bd2dce5f0e86b8e7ee9ac0c58df949d4563dd821deedcd8412d): original article pinned step1 4256 accepted TRI faces"
+    ],
+    "parser_negative_controls": [
+      "repeated node index",
+      "foreign node index",
+      "collinear zero 3D area",
+      "nonfinite XYZ",
+      "duplicated TRI source face indices"
+    ],
+    "required_native_checks": [
+      "actual original exported TRI OBJ exists for true acceptance only and source acceptance log SHA matches R2c13/18 receipts",
+      "all exported physical 3D vertices finite, all faces indexed by valid distinct nodes, all face 3D areas positive and shape quality finite",
+      "actual original-model source-specific accepted TRI face counts exact, no duplicated face node tuples",
+      "current accepted GLOBAL quality 3D and UV positive from source log; independent exported OBJ quality 3D is not identical to source native shape metric",
+      "no current patch-wise element owner assertion: original OBJ lacks patch-group labels, no automatic non-manifold QUAD/AFT nodes welded",
+      "frozen original TRI science, original main and source files unchanged, no source generator method or acceptance threshold modified"
+    ],
+    "expected_native_marker": "R2C20_ALL_ACCEPTED_ORIGINAL_TRI_3D_OBJ_FACE_INTEGRITY",
+    "expected_artifact": [
+      "r2c20_original_accepted_tri_3d_face_integrity.json",
+      "original full accepted source Eistute 3 TRI OBJ",
+      "original Book first accepted TRI OBJ"
+    ]
+  },
+  "native_result": null,
+  "scientific_global_patchwise_integrity_qualified": false,
+  "scientific_nonmanifold_approval": false,
+  "next_action": "Inspect exact workflow #43523848833 and independent source artifact. If export aliasing or geometric collapse is detected, retain first failed 3D face/nodes and repair only proof/serialization with scientific permission; never modify source acceptance, original model or force M7 Book second commit."
+}
