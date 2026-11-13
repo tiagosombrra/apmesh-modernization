@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c2.detached_owner_stage.candidate.v1",
   "date_utc": "2026-11-13",
-  "feature_head": "290e37a8b99a9c4096b6e7d32d636a0c2b513b1c",
+  "feature_head": "54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5",
   "source_branch": "quad/integration-r2b2-exterior-aft-20261112",
   "pull_request": 214,
   "code": [
@@ -11,7 +11,7 @@
   ],
   "target": "quad.r2c2.disjoint_owner_stage",
   "required_root_ctest_expected": "88/88",
-  "phase": "implemented_exact_head_ci_pending",
+  "phase": "new_cpp_ctest_positive_full_exact_head_regression_pending",
   "synthetic_disjoint_expected": {
     "chart_counts": [
       4,
@@ -43,15 +43,24 @@
     "real_native_source_quadtree_aft_full_mesh": false,
     "global_source_connected_mesh": false
   },
-  "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43348535255",
-  "observed_new_root_ctest": "pending",
-  "observed_root_log_markers": "pending",
-  "ci_status": "pending",
+  "pr_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349923938",
+  "observed_new_root_ctest": "passed Test #73/88 on failed complete root CI #43348480434; not exact current head",
+  "observed_root_log_markers": "pending on exact current head",
+  "ci_status": "three independent jobs completed on both exact push/PR; root build in progress",
   "actual_patch_observers_touched": false,
   "physical_global_SubMesh_published": false,
   "automatic_sheet_pairing_enabled": false,
   "scientific_advisor_sheet_policy": "PENDING_ADVISOR_REVIEW",
   "main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
   "asan_ubsan": "not_executed",
-  "next": "inspect root C++ compile and detached source model stage, fix any actual negative gates, requalify exact head and record"
+  "next": "inspect root C++ compile and detached source model stage, fix any actual negative gates, requalify exact head and record",
+  "push_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349916549",
+  "observed_first_complete_root": "87/88, tooling.controls stale CMake hash",
+  "first_complete_root_failure_run": 43348480434,
+  "first_complete_root_failure_cause": "CMakeLists.txt input digest in retained docs/architecture/source_inventory.json stale",
+  "architecture_hash_sha256": "564316245bfaf95c47930b74557fd962970e0c4b6fca29cf65a7b6b32c674d76",
+  "architecture_inventory_repair": "a0a611b2221b6ad4a2c4442fdddfba2988e07785",
+  "invalid_workflow_run": 43349647165,
+  "invalid_workflow_cause": "JS replacement expansion of regex end-anchor followed by a quote duplicated YAML workflow tail",
+  "workflow_repaired_at_feature_head": "54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5"
 }

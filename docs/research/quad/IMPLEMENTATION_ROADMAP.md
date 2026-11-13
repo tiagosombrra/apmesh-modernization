@@ -38,6 +38,10 @@
 
 **After qualification:** Revisit real source patch owner/observer atomicity only under explicit staging engineering gates; actual high-valence sheet membership/orientation/source-node ownership requires independent advisor/model-owner scientific decisions. Local sanitizers, repeated adaptivity, global QUAD/TRI mesh and the original 1993 numerical algorithm remain open.
 
+## 2026-11-13 — R2c-2 candidate C++17 detached original-source patch owners: actual CTest PASS, full exact CI pending
+
+Research [PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214) candidate `54f0aafbfbbd27b8f3d6a923dbc34cc8579212a5` passes isolated root `quad.r2c2.disjoint_owner_stage` on [first full run #43348480434](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43348480434), including synthetic 4/28 rollback and real Eistute/Book original PatchReader/PatchBezier **small interior QUAD/TRI examples** (not full native AFT/Quadtree output). That first root **87/88 failed** an existing tooling architecture-inventory CMake digest; metadata was updated with the real SHA-256, and a separate invalid YAML integration [#43349647165](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349647165) was repaired by restoring the original workflow and adding only two bounded retained source-C++ test receipt steps. Current exact push [#43349916549](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349916549) / PR [#43349923938](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43349923938) await the final full root stage. New C++ source-root swap is detached and has **no Patch observer binding, nonmanifold node welding, global accepted physical SubMesh or scientific approval**. [Evidence](evidence/R2C2_DISJOINT_OWNER_STAGE_20261113.json). Complete exact-root gates and retained real source/failure markers before declaring bounded ownership preflight qualified.
+
 ## Continuity and mandatory research handoff
 
 **Canonical current state:** [STATE.md](STATE.md) — read this before interpreting any milestone in this roadmap.  
