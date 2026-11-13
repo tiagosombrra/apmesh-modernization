@@ -133,7 +133,7 @@ def run(exe, root, directory, prior):
         case["sensitivity_design"] = "joint_two_knob_noncausal"
         case["native_adapter_local_attempts"] = native_local_attempts(
             directory, "book", profile)
-        if case["accepted_committed_steps"] if "accepted_committed_steps" in case else False:
+        if case.get("accepted_committed_steps", 0) > 0:
             case["actual_accepted_TRI_quality"] = (
                 validate_original_accepted_step_quality(
                     directory, "book", profile, case["accepted_step_ids"]))
