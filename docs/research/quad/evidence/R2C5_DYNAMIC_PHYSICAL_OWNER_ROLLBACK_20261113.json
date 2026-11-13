@@ -1,0 +1,63 @@
+{
+  "milestone": "R2c-5 genuine original source-adapted physical QUAD/AFT stage fault-injection and same-source accepted model replacement",
+  "date_utc": "2026-11-13",
+  "status": "RESEARCH_SOURCE_COMMITTED_EXACT_DOUBLE_CI_PENDING",
+  "original_main_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "research_feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "research_feature_sha": "232e29741d069dd8f408b029cb8dd69ab66d3cee",
+  "draft_pr": 214,
+  "source_file": "tests/quad/full_source_patch_stage_probe.cpp",
+  "existing_mandatory_root_ctest": "quad.r2c2.full_source_patch_stage",
+  "new_original_source_receipt": "R2C4_DYNAMIC_PHYSICAL_STAGE_ROLLBACK",
+  "original_input_models": [
+    "input_models/eistute2.fixed.bp",
+    "input_models/book_v7a.bp"
+  ],
+  "predecessor_qualified_gate": "evidence/R2C4_DYNAMIC_ADAPTED_SOURCE_PHYSICAL_QUAD_AFT_20261113.json",
+  "exact_head_ci": {
+    "push_run_id": 43449485572,
+    "pr_run_id": 43449501542,
+    "status": "IN_PROGRESS",
+    "compiled": null,
+    "native_ctest": null,
+    "double_green": false
+  },
+  "engineering_candidate": {
+    "adaptation_scope": "Original same two-pass source graph on the unique maximal-valence curve per original model, with other source sides coarse; NOT another accepted Adapter adaptation epoch",
+    "accepted_initial_physical_generation": "Real original Eistute 4 / Book 28 full separately owned typed QUAD/AFT physical SubMesh charts generated from actual 9-edge adapted AFT Boundary",
+    "replacement_physical_candidate": "Fresh full genuine QUAD/AFT regenerated on the same unchanged source graph for every injected failure / incomplete stage and one successful repeat",
+    "deterministic_stage_injection_positions": [
+      0,
+      "original_patches/2",
+      "original_patches"
+    ],
+    "incomplete_stage": "Rebuild genuine original QUAD/AFT patches except last and require rejection before publishing",
+    "expected_rejected_stage_faults_per_original_model": 3,
+    "expected_rejected_incomplete_stage_per_model": 1,
+    "expected_successful_same_source_replacement_per_model": 1,
+    "expected_rebuilt_real_chart_fingerprint_checks": {
+      "Eistute": 19,
+      "Book": 139
+    },
+    "accepted_observer_assertions": [
+      "Previously accepted MeshAdaptive pointer stable across every failed stage",
+      "All existing accepted original per-chart SubMesh, first NodeAdaptive and ElementAdaptive observer identities unchanged after failure",
+      "Original accepted typed physical chart NodeAdaptive XYZ/ID and element type sequence unchanged on rejected replacement",
+      "Source original AdaptCurve NodeAdaptive pointer identities, IDs, physical XYZ and actual parameter list unchanged throughout",
+      "Every original TRI Patch/SubMesh observer unchanged",
+      "Successful second atomic owner replacement preserves physically measured chart values while retiring prior owner; previous retired pointer is never dereferenced"
+    ],
+    "explicitly_not_executed": "Second independent original serial Adapter::AdaptCurve epoch, all-original-curves coherent epoch, real native accepted production Quadtree, model-global physical node weld, certified historical 1993 point rule"
+  },
+  "scientific_boundaries": {
+    "Eistute_valence4_sheet_approved": false,
+    "Book_valence28_sheet_approved": false,
+    "all_curves_source_adapted_same_epoch": false,
+    "physical_globally_connected": false,
+    "production_TRI_changed": false,
+    "local_ASAN_UBSAN_executed": false,
+    "new_work_is_scientific_policy_change": false
+  },
+  "reported_measurements": "PENDING_NOT_CLAIMED",
+  "next_action": "Inspect GitHub root original C++ compilation and native source test failures. The test must reject all real QUAD/AFT stage injected faults and preserve former actual physical owner; do not weaken graph oracles, skip patches or fabricate counters. If exact double CI passes, bind measured Eistute 4 / Book 28 receipts to this evidence."
+}
