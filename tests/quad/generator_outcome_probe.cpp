@@ -1027,6 +1027,82 @@ int Run(const std::string& config_path) {
             << " physical_SubMesh_published=0"
             << " global_mixed_model_admitted=0\n";
 
+  // M7 read-only checkpoint: only an actual AcceptedMeshScope::Commit event
+  // from the original GeneratorAdaptive counts as an accepted source epoch.
+  // The original Adapter boundary must cover EVERY original PatchBezier chart
+  // in the same exact outer epoch/retry before this becomes an M7 candidate.
+  // Regenerated or rejected trial meshes are never counted as accepted.
+  std::set<Key> m7_committed_outer;
+  std::set<int> m7_committed_steps;
+  std::size_t m7_accepted_complete_model_epochs = 0U;
+  std::size_t m7_accepted_boundary_witnesses = 0U;
+  std::uint64_t previous_accepted_epoch = 0U;
+  int previous_accepted_step = 0;
+  std::ostringstream m7_step_ids, m7_outer_epochs;
+  for (std::size_t event_id = 0; event_id < log->size(); ++event_id) {
+    const auto& event = log->data()[event_id];
+    if (event.kind != apmesh::quad::GlobalOutcomeKind::AcceptedStepCommitted)
+      continue;
+    Require(event.adaptive_step > previous_accepted_step &&
+                event.outer.epoch > previous_accepted_epoch &&
+                m7_committed_steps.insert(event.adaptive_step).second &&
+                m7_committed_outer.insert(OuterKey(event.outer)).second,
+            "M7 accepted original generator step/outer epoch was reused");
+    previous_accepted_step = event.adaptive_step;
+    previous_accepted_epoch = event.outer.epoch;
+    std::set<int> patch_witnesses;
+    std::size_t source_site_witnesses = 0U;
+    for (const auto& capture : boundaries) {
+      if (!apmesh::quad::SameOuterAttempt(capture.attempt.outer, event.outer))
+        continue;
+      Require(capture.attempt.patch_index >= 0 &&
+                  static_cast<unsigned>(capture.attempt.patch_index) <
+                      shared.model_patches &&
+                  capture.vertices.size() >= 4U &&
+                  capture.vertices.size() ==
+                      capture.directed_edges.size(),
+              "M7 accepted epoch has an invalid original Adapter contour");
+      patch_witnesses.insert(capture.attempt.patch_index);
+      source_site_witnesses += capture.vertices.size();
+    }
+    Require(patch_witnesses.size() == shared.model_patches &&
+                source_site_witnesses >= 4U * shared.model_patches,
+            "M7 accepted TRI commit had no full original source patch boundary epoch");
+    ++m7_accepted_complete_model_epochs;
+    m7_accepted_boundary_witnesses += source_site_witnesses;
+    if (m7_step_ids.tellp() > 0) {
+      m7_step_ids << ',';
+      m7_outer_epochs << ',';
+    }
+    m7_step_ids << event.adaptive_step;
+    m7_outer_epochs << event.outer.epoch;
+  }
+  Require(m7_committed_outer.size() == accepted &&
+              m7_committed_steps.size() == accepted &&
+              m7_accepted_complete_model_epochs == accepted &&
+              accepted + restored <= global_epochs.size(),
+          "M7 accepted original TRI epochs were not consistently committed");
+  std::cout << "R2C13_REAL_GENERATOR_ACCEPTED_EPOCHS"
+            << " original_patches=" << shared.model_patches
+            << " observed_global_outer_epochs=" << global_epochs.size()
+            << " accepted_committed_steps=" << accepted
+            << " accepted_step_ids=" << m7_step_ids.str()
+            << " accepted_distinct_outer_epochs=" << m7_committed_outer.size()
+            << " accepted_outer_epoch_ids=" << m7_outer_epochs.str()
+            << " accepted_full_source_patch_coverage_epochs="
+            << m7_accepted_complete_model_epochs
+            << " accepted_source_boundary_vertex_observations="
+            << m7_accepted_boundary_witnesses
+            << " rejected_restored_original_steps=" << restored
+            << " element_budget_rejections=" << budget
+            << " growth_rejections=" << growth
+            << " two_accepted_original_generator_epochs="
+            << (accepted >= 2U && m7_accepted_complete_model_epochs >= 2U ? 1 : 0)
+            << " original_AdaptCurve_and_AdaptDomain_called=1"
+            << " original_TRI_commit_events=1"
+            << " research_nonmanifold_sheet_approved=0"
+            << " globally_connected_QUAD_AFT_mesh_accepted=0\n";
+
   // Outer global commit/restore decisions are not equivalent to physical QUAD.
   std::cout << "real_generator_outcomes=1 accepted_tri=" << accepted
             << " restored_tri=" << restored
