@@ -1,7 +1,7 @@
 {
   "schema": "apmesh.quad.r2c15.source_bound_original_generator_guard_inequalities.v1",
   "date_utc": "2026-11-13",
-  "status": "CODE_COMMITTED_EXACT_CI_PENDING_NOT_ACCEPTED_TWO_EPOCHS",
+  "status": "SOURCE_IMPLEMENTED_PRIOR_EXACT_CI_CANCELED_NEW_COMBINED_CI_PENDING",
   "pr_number": 214,
   "source_commit": "09b9eea7a3de3d4521c203189f38c9ba3d28cb80",
   "workflow_id": 43508097551,
@@ -35,5 +35,23 @@
   "actual_ci_results": null,
   "originally_accepted_epoch_gate_satisfied": false,
   "scientific_sheet_approval": false,
-  "next_action": "Inspect exact CI #43508097551, candidate source predicate error on original profile. If positive, identify exact blocked guard per original step and design a bounded algorithmic source refinement test preserving original acceptance criteria and original TRI quality."
+  "next_action": "Inspect exact combined run 43509163882 and positive native R2C15_REAL_SOURCE_GUARD_INEQUALITIES receipt; do not claim success from canceled precursor. Distinguish stable original acceptance from research_debug only by verified source mode.",
+  "canceled_attempt": {
+    "source_sha": "09b9eea7a3de3d4521c203189f38c9ba3d28cb80",
+    "run_id": 43508097551,
+    "conclusion": "cancelled",
+    "native_gcc_quad": "success",
+    "native_msvc_quad": "success",
+    "frozen_TRI_parity": "success",
+    "linux_root": "cancelled before R2c15 verification step; no guard classification from this run"
+  },
+  "current_combined_retry": {
+    "source_sha": "797c2b39be3d0508a71ddd8234ad17a213373c23",
+    "run_id": 43509163882,
+    "status": "in_progress",
+    "bundles": [
+      "R2c15 original source-stable guard inequalities",
+      "R2c16 original source-control sensitivity profiles"
+    ]
+  }
 }
