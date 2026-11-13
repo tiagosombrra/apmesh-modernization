@@ -1,0 +1,53 @@
+{
+  "schema": "apmesh.quad.r2c12.original_model_bound_radial_physical_review_v1",
+  "date_utc": "2026-11-13",
+  "status": "CODE_COMMITTED_EXACT_CI_PENDING_NOT_SCIENTIFICALLY_APPROVED",
+  "feature_pr": 214,
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_head": "e4bfa162aff72a7ded3b3d424739349a700ea723",
+  "code": [
+    "tools/build_r2c12_advisor_handoff.py",
+    ".github/workflows/quad-research-validation.yml"
+  ],
+  "previous_verified_r2c11": {
+    "feature_sha": "c6a9cb25985af82293c89ede6ede10a11a353df8",
+    "run_id": 43497162260,
+    "artifact_id": 14073665054,
+    "source_curves": {
+      "eistute": 13,
+      "book": 85
+    },
+    "physical_atlas_sites": {
+      "eistute": 136,
+      "book": 936
+    },
+    "unique_curve_points": {
+      "eistute": 115,
+      "book": 747
+    },
+    "shared_pair_checks": {
+      "eistute": 6,
+      "book": 378
+    },
+    "global_physical_welding": false
+  },
+  "planned_scope": [
+    "Re-hash both source model .bp original files and compare their SHA-256 against original R2c0/R2c1 review record and physical export manifests",
+    "Require original R2c0 radial signed Bernstein review packets remain PENDING_ADVISOR_REVIEW, with no reviewer findings/owners/twins",
+    "Compare original radial source curve registry index, patch-side membership and valence-4 Eistute /valence-28 Book to real R2c11 source-atlas physical OBJ patch witness",
+    "Explicitly distinguish original production GeneratorAdaptive radial interval sampling (10/12) from separate two-pass research Adapter physical sampling (likely 6/6); never weld nodes based on different epochs",
+    "Emit tamper-detectable source/packet/OBJ/atlas SHA-256 and explicit null scientific decisions; no production code changes"
+  ],
+  "required_output": [
+    "r2c12_eistute_advisor_handoff.json",
+    "r2c12_book_advisor_handoff.json",
+    "r2c12_handoff_manifest.json"
+  ],
+  "ci_id": null,
+  "artifacts": [],
+  "certified": false,
+  "scientific_admission": false,
+  "physical_node_welding": false,
+  "advisor_approval": null,
+  "next_action": "Inspect exact native CI and any failure of source curve ID / high-valence radial membership; refine only evidence identity interpretation with no relaxed source/quality/ownership gate. Obtain actual advisor decisions separately."
+}
