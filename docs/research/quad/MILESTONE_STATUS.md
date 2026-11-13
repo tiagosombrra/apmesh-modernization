@@ -28,7 +28,7 @@
 | **R2c-8** | Primeiro patch físico original de ambos os modelos: QUAD/AFT válido | [Primeiros patches](evidence/R2C8_ALL_SIDES_FIRST_PATCH_PHYSICAL_TRIAL_20261113.json) |
 | **R2c-9** | 4/4 Eistute + 28/28 Book patches físicos desconectados, um CI completo | [Contagens e qualidade](evidence/R2C9_ALL_ORIGINAL_PHYSICAL_CHARTS_20261113.json) |
 | **R2c-10** | **Concluído:** dois OBJ físicos e manifestos exportados e validados independentemente; CI exato 4/4 | [Evidência](evidence/R2C10_EXPORTED_ORIGINAL_DETACHED_PHYSICAL_MESHES_20261113.json) · [Artefato GitHub](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43494028352/artifacts/14070503827) |
-| **R2c-11** | **Candidato em CI:** mapa de cada amostra de curva original para nó físico do OBJ, comparação de curvas compartilhadas valência 4/28 sem soldagem | [Plano de prova](evidence/R2C11_ORIGINAL_SOURCE_SEAM_ATLAS_20261113.json) · [CI pendente](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43495975211) |
+| **R2c-11** | **Correção em CI:** a primeira tentativa exportou 136+936 testemunhas físicas reais, mas a auditoria independente **rejeitou** a chave ambígua de ID de curva. Corrigida a classificação pelo índice canônico da curva no `Geometry`; a nova execução ainda não foi qualificada. | [Falha e correção](evidence/R2C11_ORIGINAL_SOURCE_SEAM_ATLAS_20261113.json) · [CI do reteste](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43497162260) |
 
 ## Como atualizar a cada marco
 
