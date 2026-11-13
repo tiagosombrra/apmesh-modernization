@@ -10,6 +10,10 @@
 
 **Next R2c-0 proposal:** model-SHA-bound immutable source-curve radial edge incidence rings (valence 4 and 28), explicit sheet semantic approval and canonical ownership staging policy, with **no automatic `twin` pairing or physical `SubMesh` publish**. See [read-only ownership preflight](R2C_NONMANIFOLD_RADIAL_OWNERSHIP_DESIGN_20261112.md). The original production `main`, TRI, all-QUAD/quad_uv policy, historical 1993 point selection and global repeated adaptive/lifetime gates remain unchanged/pending. PR #214 remains draft/unmerged pending scientific review.
 
+## 2026-11-12/13 — R2c-0 read-only original interval incidence records (experimental, exact CI pending)
+
+[Draft PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214) head `2907e0e04ea7f819e52009713a2d870cab70bc62` adds original source `R2C0_ORIGINAL_SOURCE_RING`, linked to original R2b2 signed Bernstein proof, real M4 source PatchReader incidence graphs and both Eistute and Book original source curve parameter partitions. It stages **no** welding, per-patch `SubMesh` publication or production `quad_uv` mode. The independent `test_r2c0_source_radial_incidence.py` verifies source/model byte hashes, native coherent epoch and original physical node IDs, explicit directed radial successor on every original source segment, and strict pending sheet policy including attempted forged approvals/continuations. [Implementation scope](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/integration-r2b2-exterior-aft-20261112/docs/research/quad/R2C0_REAL_SOURCE_RADIAL_EDGE_RECORDS_20261112.md). Exact new full source CI and per-model evidence are **PENDING**; do not mark R2c-0 qualified yet. Later R2c policy still requires advisor-approved high-valence physical semantics, transactional shared-node ownership and rollback, and Ribbed Bracket continuous-source certification.
+
 ## Continuity and mandatory research handoff
 
 **Canonical current state:** [STATE.md](STATE.md) — read this before interpreting any milestone in this roadmap.  

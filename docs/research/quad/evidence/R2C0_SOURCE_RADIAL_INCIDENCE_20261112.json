@@ -1,0 +1,44 @@
+{
+  "schema": "apmesh.quad.r2c0.read_only_source_radial_incidence.candidate.v1",
+  "date_utc": "2026-11-13",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "feature_sha": "2907e0e04ea7f819e52009713a2d870cab70bc62",
+  "draft_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/214",
+  "source_python": "tests/quad/test_r2c0_source_radial_incidence.py",
+  "native_source_report": "R2C0_ORIGINAL_SOURCE_RING",
+  "required_original_source_models": {
+    "Eistute": {
+      "valence": 4,
+      "original_intervals": 10,
+      "required_pairs": 40
+    },
+    "Book": {
+      "valence": 28,
+      "original_intervals": 12,
+      "required_pairs": 336
+    }
+  },
+  "expected_total_original_interval_pairs": 376,
+  "observed_original_interval_records": "pending exact CI and artifact inspection",
+  "expected_negative_policy_controls": 38,
+  "observed_negative_policy_controls": "pending exact CI and artifact inspection",
+  "feature_push_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43336171330",
+  "pr_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43336183353",
+  "last_known_qualifications": {
+    "native_quad_gcc": "success",
+    "native_quad_msvc": "success",
+    "frozen_original_tri": "success",
+    "root_ctest": "in_progress",
+    "python_tooling": "pending",
+    "r2c0_source_verifier": "pending"
+  },
+  "source_interval_proof_from_prior_feature_sha": "e9cdea99463f18075ba29535a9f5c37a749a1330",
+  "local_native": "not_executed",
+  "asan_ubsan": "not_executed",
+  "scientific_advisor_sheet_policy": "pending",
+  "automatic_sheet_pairing_enabled": false,
+  "physical_nodes_welded": false,
+  "physical_SubMesh_published": false,
+  "main_unchanged": true,
+  "next": "inspect latest exact-head root CI and R2c0 artifact; fix actual defects; double qualify then stage advisor-reviewed sheet semantics"
+}
