@@ -1,0 +1,76 @@
+{
+  "milestone": "R2c-4 full disconnected typed QUAD/AFT physical charts from the original two-pass real high-valence adapted source contour",
+  "date_utc": "2026-11-13",
+  "status": "IMPLEMENTED_NEW_EXPERIMENTAL_SOURCE_EXACT_CI_PENDING",
+  "feature_head": "80f839e1a7b01fa36e8f2f82c86c5766629d742c",
+  "feature_branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "draft_pr": 214,
+  "main_original_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "implementation": "tests/quad/full_source_patch_stage_probe.cpp",
+  "existing_root_ctest": "quad.r2c2.full_source_patch_stage (extended with separately named R2C3_ADAPTED_SOURCE_PHYSICAL_QUAD_AFT marker)",
+  "code_scope": "test-only; production Adapter, GeneratorAdaptive, original TRI, QUAD engine, AFT and CMake not edited",
+  "input_models": [
+    "input_models/eistute2.fixed.bp",
+    "input_models/book_v7a.bp"
+  ],
+  "original_dynamic_source_provenance": {
+    "source_adapter_passes": [
+      "Adapter::AdaptCurveByCurve",
+      "Adapter::AdaptCurveBySurface"
+    ],
+    "source_curves_adapted_per_model": 1,
+    "adapted_curve_is_model_maximal_valence": true,
+    "adapted_original_nodes_per_source_curve": 7,
+    "adapted_original_source_intervals": 6,
+    "other_original_patch_sides_coarse_one_interval_each": true,
+    "native_detached_9_edge_boundary_evidence": "evidence/R2C3_DETACHED_ADAPTED_AFT_BOUNDARIES_20261113.json"
+  },
+  "new_engineering_candidate_operations": [
+    "Construct separate real native Quadtree root over each already verified nine-edge original adapted AFT contour, fixture hierarchy 4x4 leaf cells",
+    "Independently run legacy TRI template on another detached contour and preserve the read-only original TRI front for geometric QUAD interface comparison",
+    "Select ExperimentalQuad interior template on another native Quadtree and seed OwnedQuadAftFront with original directed patch boundary and candidate QUAD front",
+    "Resolve each of nine real original AFT boundary Edge owners to a live QuadtreeCell",
+    "Attempt original AFT geometry/topology exterior TRI execution, require drained front/rejection lists, same directed seam vertex positions, positive triangles, positive within-chart oriented UV, area balance and separate spatial no-overlap",
+    "Copy experimental QUAD and native AFT exterior TRI into independently owned physical SubMesh per original PatchBezier, preserving actual parametric UV, Bezier XYZ and Jacobian facet normal orientation",
+    "Audit every original adapted nine-edge native boundary site still occurs as a real final physical mesh node (not synthesized), coincides with original XYZ and does not alias the captured source NodeAdaptive copy",
+    "Stage every accepted chart as a single research-only disjoint MeshAdaptive owner, validate no physical nodes cross between patches, retain original accepted coarse TRI Patch and no global observer binding"
+  ],
+  "required_negative_controls": {
+    "predecessor_native_boundary_capture": 7,
+    "predecessor_original_adapter_source_graph": 5,
+    "predecessor_disjoint_stage_injected_rollback": 3,
+    "new_adapted_mesh_completion": "MUST reject incomplete or inverted, overlapping, poor-quality or missing-source-boundary-node candidates; positive checks unqualified until CI",
+    "required_no_weakening": "Do not suppress failure or skip original failed model patches"
+  },
+  "expected_original_patches": {
+    "Eistute": 4,
+    "Book": 28
+  },
+  "required_exact_head_ci": {
+    "push_run": 43443545741,
+    "pr_run": 43443556635,
+    "exact_sha": "80f839e1a7b01fa36e8f2f82c86c5766629d742c",
+    "status": "IN_PROGRESS",
+    "expected_builds": [
+      "Linux root 89/89 CTest",
+      "Python 527/527",
+      "native GCC QUAD 16/16",
+      "native MSVC QUAD 16/16",
+      "frozen TRI scientific parity"
+    ],
+    "new_r2c4_marker": "R2C3_ADAPTED_SOURCE_PHYSICAL_QUAD_AFT"
+  },
+  "measured_model_physical_faces": "NOT_MEASURED",
+  "any_model_full_candidate_admitted": "NOT_DETERMINED",
+  "science_gate": {
+    "global_physical_mesh_conforming": false,
+    "interpatch_weld": false,
+    "advisor_approved_valence4": false,
+    "advisor_approved_valence28": false,
+    "entire_accepted_model_Adapter_epoch": false,
+    "separate_real_original_Quadtree_adaptive_hierarchy": false,
+    "production_quad_uv": false,
+    "new_code_native_ASAN_UBSAN": "NOT_RUN"
+  },
+  "next_action": "Read exact-head root C++ compilation and original R2C3_ADAPTED_SOURCE_PHYSICAL_QUAD_AFT output for both genuine source models; if any root test failure occurs, inspect and fix without bypassing real contour/physical QUAD/AFT/source science gates. On independent double green record actual total QUAD TRI nodes seam/quality metrics; if rejected preserve precise rejection reason."
+}
