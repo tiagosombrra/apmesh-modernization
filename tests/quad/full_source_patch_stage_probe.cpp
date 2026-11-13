@@ -21,6 +21,7 @@
 #include <array>
 #include <cmath>
 #include <iostream>
+#include <limits>
 #include <map>
 #include <memory>
 #include <set>
@@ -873,6 +874,319 @@ unsigned RejectDetachedSourceBoundaryMutations(
   return rejected;
 }
 
+// A dedicated research Quadtree owns one actual source-driven native AFT
+// boundary, never the accepted TRI Patch observer or another patch's contour.
+// Its leaves are an independently qualified *test* hierarchy, not the original
+// GeneratorAdaptive::AdaptDomain accepted epoch or production QUAD tree.
+std::unique_ptr<Quadtree> MakeDynamicSourceTree(
+    DetachedSourceBoundary& source) {
+  Require(source.boundary != nullptr &&
+              source.capture.vertices.size() == 9U,
+          "Dynamic original native Quadtree requires nine directed sources");
+  auto tree = std::make_unique<Quadtree>();
+  tree->setBoundary(source.boundary.release());
+  auto low = std::make_unique<Vertex>(0.0, 0.0);
+  auto high = std::make_unique<Vertex>(1.0, 1.0);
+  auto root = std::make_unique<QuadtreeCell>(
+      tree->getCellId(), tree.get(), low.get(), high.get());
+  tree->setRoot(root.get());
+  root.release();
+  low.release();
+  high.release();
+  tree->getRoot()->subdivideToLevel(2);
+  Require(tree->GetLeafCount() == 16U,
+          "Dynamic original source root did not produce the full test tree");
+  return tree;
+}
+
+double DynamicUvQuality(const std::array<UvVertex, 3>& uv) {
+  const auto squared = [](const UvVertex& a, const UvVertex& b) {
+    return (a.u - b.u) * (a.u - b.u) +
+           (a.v - b.v) * (a.v - b.v);
+  };
+  const double sum = squared(uv[0], uv[1]) +
+                     squared(uv[1], uv[2]) +
+                     squared(uv[2], uv[0]);
+  const double twice = (uv[1].u - uv[0].u) * (uv[2].v - uv[0].v) -
+                       (uv[1].v - uv[0].v) * (uv[2].u - uv[0].u);
+  Require(std::isfinite(twice) && twice > 1e-12 &&
+              std::isfinite(sum) && sum > 0.0,
+          "Dynamic source-driven UV element collapsed or inverted");
+  const double quality = 2.0 * std::sqrt(3.0) * twice / sum;
+  Require(std::isfinite(quality) && quality > 1e-10,
+          "Dynamic source-driven UV triangle has invalid shape quality");
+  return quality;
+}
+
+double DynamicPhysicalAlignment(PatchBezier& patch,
+                                const std::array<UvVertex, 3>& uv) {
+  CheckFaceOrientation(patch, uv);
+  const UvVertex middle{
+      (uv[0].u + uv[1].u + uv[2].u) / 3.0,
+      (uv[0].v + uv[1].v + uv[2].v) / 3.0};
+  const Xyz source = Cross(Values(patch.Qu(middle.u, middle.v)),
+                           Values(patch.Qv(middle.u, middle.v)));
+  const Xyz a = Values(patch.Parameterize(uv[0].u, uv[0].v));
+  const Xyz b = Values(patch.Parameterize(uv[1].u, uv[1].v));
+  const Xyz c = Values(patch.Parameterize(uv[2].u, uv[2].v));
+  const Xyz facet = Cross(Subtract(b, a), Subtract(c, a));
+  const double denominator = Norm(source) * Norm(facet);
+  Require(std::isfinite(denominator) && denominator > 1e-14,
+          "Dynamic physical original facet has no differential orientation");
+  const double cosine = Dot(source, facet) / denominator;
+  Require(std::isfinite(cosine) && cosine > 0.0 &&
+              cosine <= 1.0 + 1e-10,
+          "Dynamic original QUAD/AFT facet does not follow Bézier normal");
+  return cosine;
+}
+
+struct DynamicNativeChartCounts {
+  std::size_t physical_nodes = 0;
+  std::size_t quads = 0;
+  std::size_t tris = 0;
+  std::size_t original_boundary_sites = 0;
+  std::size_t original_adapted_sites = 0;
+  std::size_t source_quadtree_leaves = 0;
+  std::size_t quad_seam_edges = 0;
+  std::size_t original_source_boundary_edges = 0;
+  double min_uv_triangle_quality = 1.0;
+  double min_physical_alignment = 1.0;
+};
+
+std::unique_ptr<SubMesh> BuildDynamicAdaptedAftChart(
+    PatchBezier& patch, unsigned patch_id,
+    DetachedSourceBoundary&& source,
+    DetachedSourceBoundary&& reference,
+    DynamicNativeChartCounts& counts) {
+  SubMesh* const original_tri = patch.GetSubMesh();
+  Require(original_tri != nullptr && source.boundary &&
+              reference.boundary &&
+              source.capture.vertices.size() == 9U &&
+              reference.capture.vertices.size() == 9U,
+          "Original dynamic patch lacks a real native source boundary pair");
+  auto legacy = MakeDynamicSourceTree(reference);
+  Require(legacy->makeTemplateBasedMesh() ==
+              Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
+          "Original dynamic native reference TRI template failed");
+  const auto original_front = SnapshotLegacyFront(*legacy);
+  auto tree = MakeDynamicSourceTree(source);
+  InteriorTemplateDispatcher selector(*tree);
+  auto selected = selector.Select(InteriorTemplateMode::ExperimentalQuad,
+                                  PointRule);
+  Require(!selected.uv_quads.quads.empty() &&
+              !selected.quad_region_boundary.empty(),
+          "Dynamic original source Quadtree selected no interior QUADs");
+  counts.source_quadtree_leaves = selected.source_leaves;
+  auto* owner = tree.get();
+  auto aft = std::make_unique<OwnedQuadAftFront>(
+      owner->getBoundary(), owner);
+  tree.release();
+  const auto seeded = aft->Seed(selected, original_front);
+  Require(seeded.patch_boundary_edges == source.capture.vertices.size() &&
+              seeded.quad_interface_edges ==
+                  selected.quad_region_boundary.size() &&
+              seeded.attached_exterior_cells > 0U,
+          "Dynamic native source QUAD/AFT interface lost source cell coverage");
+  counts.quad_seam_edges = seeded.quad_interface_edges;
+  counts.original_source_boundary_edges = seeded.patch_boundary_edges;
+  for (auto* edge : aft->getBoundary()->getEdges()) {
+    aft->getQuadtree()->findCell(edge);
+    Require(edge && edge->getCell() != nullptr,
+            "Dynamic adapted AFT edge lacks a live original source tree cell");
+  }
+  const auto exterior = aft->AttemptExteriorTriangulation(selected);
+  Require(exterior.exterior_triangles > 0U &&
+              exterior.front_drained && exterior.triangles_positive &&
+              exterior.seam_orientation_complete &&
+              exterior.seam_vertices_unchanged &&
+              exterior.uv_area_balanced &&
+              exterior.spatial_overlap_tested &&
+              exterior.no_spatial_overlap &&
+              exterior.unresolved_front_edges == 0U &&
+              exterior.unresolved_rejected_edges == 0U &&
+              exterior.seam_edges_with_one_tri == seeded.quad_interface_edges,
+          "Dynamic native source QUAD/AFT front did not close cleanly");
+
+  auto chart = std::make_unique<SubMesh>();
+  std::map<std::pair<double, double>, NodeAdaptive*> local_nodes;
+  const auto node_at = [&](UvVertex uv) {
+    const auto key = std::make_pair(uv.u, uv.v);
+    const auto existing = local_nodes.find(key);
+    if (existing != local_nodes.end()) return existing->second;
+    const Xyz xyz = Evaluate(patch, uv);
+    auto point = std::make_unique<NodeAdaptive>(xyz[0], xyz[1], xyz[2]);
+    point->SetId(static_cast<unsigned long>(
+        1000000U * (patch_id + 1U) + local_nodes.size() + 1U));
+    NodeAdaptive* observed = point.get();
+    chart->AddNoh(std::move(point));
+    local_nodes.emplace(key, observed);
+    return observed;
+  };
+  for (const auto& quad : selected.uv_quads.quads) {
+    QuadrilateralAdaptive::Parameters uv{};
+    QuadrilateralAdaptive::Nodes nodes{};
+    UvVertex center{};
+    for (unsigned n = 0; n < 4U; ++n) {
+      const UvVertex vertex =
+          selected.uv_quads.vertices.at(quad.vertices[n]);
+      uv[n] = {vertex.u, vertex.v};
+      nodes[n] = node_at(vertex);
+      center.u += vertex.u;
+      center.v += vertex.v;
+    }
+    center.u *= 0.25;
+    center.v *= 0.25;
+    const std::array<UvVertex, 3> left{
+        {selected.uv_quads.vertices.at(quad.vertices[0]),
+         selected.uv_quads.vertices.at(quad.vertices[1]),
+         selected.uv_quads.vertices.at(quad.vertices[2])}};
+    const std::array<UvVertex, 3> right{
+        {selected.uv_quads.vertices.at(quad.vertices[0]),
+         selected.uv_quads.vertices.at(quad.vertices[2]),
+         selected.uv_quads.vertices.at(quad.vertices[3])}};
+    for (const auto& face : {left, right}) {
+      counts.min_uv_triangle_quality =
+          std::min(counts.min_uv_triangle_quality, DynamicUvQuality(face));
+      counts.min_physical_alignment =
+          std::min(counts.min_physical_alignment,
+                   DynamicPhysicalAlignment(patch, face));
+    }
+    const VectorAdaptive reference_normal =
+        patch.Qu(center.u, center.v) * patch.Qv(center.u, center.v);
+    chart->AddElement(std::make_unique<QuadrilateralAdaptive>(
+        nodes, uv, reference_normal));
+    ++counts.quads;
+  }
+  for (Face* face : aft->Triangles()) {
+    Require(face != nullptr, "Native dynamic AFT emitted a null TRI face");
+    const std::array<UvVertex, 3> uv{{
+        {face->getV1()->getX(), face->getV1()->getY()},
+        {face->getV2()->getX(), face->getV2()->getY()},
+        {face->getV3()->getX(), face->getV3()->getY()}}};
+    counts.min_uv_triangle_quality =
+        std::min(counts.min_uv_triangle_quality, DynamicUvQuality(uv));
+    counts.min_physical_alignment =
+        std::min(counts.min_physical_alignment,
+                 DynamicPhysicalAlignment(patch, uv));
+    auto triangle = std::make_unique<TriangleAdaptive>(
+        node_at(uv[0]), node_at(uv[1]), node_at(uv[2]));
+    triangle->SetParametersN1({uv[0].u, uv[0].v});
+    triangle->SetParametersN2({uv[1].u, uv[1].v});
+    triangle->SetParametersN3({uv[2].u, uv[2].v});
+    chart->AddElement(std::move(triangle));
+    ++counts.tris;
+  }
+  for (std::size_t i = 0; i < source.capture.vertices.size(); ++i) {
+    const auto& observed = source.capture.vertices[i];
+    const auto original = local_nodes.find({observed.uv.u, observed.uv.v});
+    Require(original != local_nodes.end() && original->second != nullptr &&
+                NearSource(Values(*original->second),
+                           source.capture.vertices[i].physical_xyz) &&
+                NearSource(Values(*original->second),
+                           Values(*source.physical_copies[i])) &&
+                original->second != source.physical_copies[i].get(),
+            "Native dynamic QUAD/AFT physical mesh dropped or aliased a real adapted boundary knot");
+    ++counts.original_boundary_sites;
+    if (observed.side == source.adapted_side)
+      ++counts.original_adapted_sites;
+  }
+  counts.physical_nodes = chart->GetNumberNos();
+  Require(counts.quads == selected.uv_quads.quads.size() &&
+              counts.tris == aft->Triangles().size() &&
+              counts.quads > 0U && counts.tris > 0U &&
+              counts.original_boundary_sites == 9U &&
+              counts.original_adapted_sites == 6U &&
+              counts.min_uv_triangle_quality > 0.0 &&
+              counts.min_physical_alignment > 0.0 &&
+              chart->GetNumberElements() == counts.quads + counts.tris &&
+              patch.GetSubMesh() == original_tri,
+          "Dynamic physical AFT mixed chart failed source owner or geometry gate");
+  DisjointOwnerStage::CheckChart(*chart);
+  return chart;
+}
+
+struct DynamicNativeModelTotals {
+  std::size_t charts = 0;
+  std::size_t physical_nodes = 0;
+  std::size_t quads = 0;
+  std::size_t tris = 0;
+  std::size_t source_knot_checks = 0;
+  std::size_t adapted_knot_checks = 0;
+  std::size_t source_tree_leaves = 0;
+  std::size_t quad_seam_edges = 0;
+  std::size_t native_boundary_edges = 0;
+  double min_uv_triangle_quality = 1.0;
+  double min_physical_alignment = 1.0;
+};
+
+DynamicNativeModelTotals StageDynamicOriginalPhysicalCharts(
+    Geometry& original, CurveAdaptiveParametric& adapted,
+    std::vector<DetachedSourceBoundary>& source_boundaries,
+    unsigned original_patches) {
+  Require(source_boundaries.size() == original_patches,
+          "Dynamic original physical model has missing source chart owners");
+  std::vector<SubMesh*> original_tri;
+  original_tri.reserve(original_patches);
+  std::unique_ptr<MeshAdaptive> disconnected = std::make_unique<MeshAdaptive>();
+  DisjointOwnerStage staged(original_patches);
+  DynamicNativeModelTotals report;
+  for (unsigned patch_id = 0; patch_id < original_patches; ++patch_id) {
+    auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(patch_id));
+    Require(patch != nullptr && patch->GetSubMesh() != nullptr,
+            "Dynamic physical chart requires its original accepted TRI observer");
+    original_tri.push_back(patch->GetSubMesh());
+    auto reference =
+        BuildDetachedAdaptedSourceBoundary(*patch, patch_id, adapted);
+    DynamicNativeChartCounts counts;
+    auto physical = BuildDynamicAdaptedAftChart(
+        *patch, patch_id, std::move(source_boundaries[patch_id]),
+        std::move(reference), counts);
+    DisjointOwnerStage::CheckChart(*physical);
+    staged.Add(std::move(physical));
+    ++report.charts;
+    report.physical_nodes += counts.physical_nodes;
+    report.quads += counts.quads;
+    report.tris += counts.tris;
+    report.source_knot_checks += counts.original_boundary_sites;
+    report.adapted_knot_checks += counts.original_adapted_sites;
+    report.source_tree_leaves += counts.source_quadtree_leaves;
+    report.quad_seam_edges += counts.quad_seam_edges;
+    report.native_boundary_edges += counts.original_source_boundary_edges;
+    report.min_uv_triangle_quality =
+        std::min(report.min_uv_triangle_quality,
+                 counts.min_uv_triangle_quality);
+    report.min_physical_alignment =
+        std::min(report.min_physical_alignment,
+                 counts.min_physical_alignment);
+  }
+  staged.Replace(disconnected);
+  Require(disconnected != nullptr &&
+              disconnected->GetNumberSubMeshesAdaptive() == original_patches &&
+              report.charts == original_patches &&
+              report.source_knot_checks == 9U * original_patches &&
+              report.adapted_knot_checks == 6U * original_patches &&
+              report.native_boundary_edges == 9U * original_patches &&
+              report.quads > 0U && report.tris > 0U &&
+              report.physical_nodes > report.source_knot_checks &&
+              report.min_uv_triangle_quality > 0.0 &&
+              report.min_physical_alignment > 0.0,
+          "Actual source dynamic physical QUAD/AFT model inventory incomplete");
+  std::set<const NodeAdaptive*> unique_nodes;
+  for (unsigned p = 0; p < original_patches; ++p) {
+    auto* chart = disconnected->GetSubMeshAdaptiveByPosition(p);
+    Require(chart != nullptr && chart->GetPatch() == nullptr &&
+                original.GetPatch(p)->GetSubMesh() == original_tri[p],
+            "Staged dynamic physical source chart mutated an original observer");
+    DisjointOwnerStage::CheckChart(*chart);
+    for (unsigned n = 0; n < chart->GetNumberNos(); ++n)
+      Require(unique_nodes.insert(chart->GetNoh(n)).second,
+              "Native dynamic AFT physical node is shared across patch owners");
+  }
+  Require(unique_nodes.size() == report.physical_nodes,
+          "Staged native dynamic physical chart node inventory mismatched");
+  return report;
+}
+
 void RunNativeOriginalSharedCurveAdaptation(const std::string& model,
                                             unsigned expected_valence) {
   Geometry original;
@@ -1017,6 +1331,33 @@ void RunNativeOriginalSharedCurveAdaptation(const std::string& model,
                 original_coarse_meshes[patch].get(),
             "Source Adapter curve audit modified original accepted TRI observer");
   }
+  const auto physical = StageDynamicOriginalPhysicalCharts(
+      original, *target, native_boundaries, expected_valence);
+  std::cout << "R2C3_ADAPTED_SOURCE_PHYSICAL_QUAD_AFT"
+            << " original_patches=" << expected_valence
+            << " disconnected_physical_charts=" << physical.charts
+            << " physical_nodes=" << physical.physical_nodes
+            << " typed_QUAD=" << physical.quads
+            << " typed_TRI=" << physical.tris
+            << " source_boundary_knot_checks=" << physical.source_knot_checks
+            << " dynamic_curve_knot_checks=" << physical.adapted_knot_checks
+            << " research_source_tree_leaves=" << physical.source_tree_leaves
+            << " original_AFT_boundary_edges=" << physical.native_boundary_edges
+            << " quad_aft_seam_edges=" << physical.quad_seam_edges
+            << " minimum_uv_triangle_quality="
+            << physical.min_uv_triangle_quality
+            << " minimum_physical_normal_alignment="
+            << physical.min_physical_alignment
+            << " all_fronts_drained=1"
+            << " quad_tri_area_balance=1"
+            << " positive_nonoverlapping_uv_faces=1"
+            << " real_original_six_interval_curve_used=1"
+            << " original_other_three_sides_coarse=1"
+            << " original_tri_patch_observers_preserved=1"
+            << " all_chart_physical_nodes_disjoint=1"
+            << " global_physical_mesh_welded=0"
+            << " scientific_sheet_owner_approved=0"
+            << " production_quad_enabled=0\n";
   std::cout << "R2C3_NATIVE_ADAPTER_SOURCE_INTERVALS"
             << " original_patches=" << expected_valence
             << " original_shared_source_curves=1"
