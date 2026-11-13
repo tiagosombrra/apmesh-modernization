@@ -1,0 +1,38 @@
+# APMESH QUAD — quadro de acompanhamento dos marcos
+
+**Atualização:** 2026-11-13. **Plano autoritativo:** [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md). **Estado técnico atual:** [STATE.md](STATE.md). **Branch de pesquisa:** `quad-templates`; código experimental: [PR #214](https://github.com/tiagosombrra/apmesh-modernization/pull/214), draft, base `quad-templates`. `main` e gerador TRI de produção preservados.
+
+## Visão global, sem percentuais fictícios
+
+| Marco | Entregável global | Comprovação alcançada | Lacuna para encerramento total |
+|---|---|---|---|
+| **M0 — Baseline** | Regressão TRI, modelos e ferramentas | Suítes CI Linux/Windows e equivalência TRI original reproduzidas nos gates R2c; oráculos congelados | Qualificação local com sanitizers, cenários fora do escopo serial e revisão das exceções |
+| **M1 — Padrões históricos T1–T6** | Reconstrução fiel da publicação de 1993 | Oráculos, transcrição e experimentos de templates de pesquisa criados | Provar identidade literal de todos os padrões e da regra de seleção histórica, sem confundir versão experimental |
+| **M2 — Topologia QUAD UV** | Vértices, arestas, validações e 2:1 | Construtores e contratos de UV/exterior QUAD+AFT testados em escopo de pesquisa | Campanha completa metamórfica/fuzz, transições e conformidade abrangente |
+| **M3 — Seletor/emissor opt-in** | TRI intocado e QUAD interior | Seleção experimental de QUAD e QUAD interior nativo em fixtures com TRI baseline protegido | Aceitação e integração do modo de produção, ainda deliberadamente bloqueadas |
+| **M4 — Elementos QUAD físicos** | QUAD com 4 nós, UV/XYZ, área/normal/ownership | **R2c-9:** 32/32 patches originais (Eistute/Book) com 1.744 nós físicos, 512 QUAD e 1.456 TRI/AFT; orientação e qualidade local positivas | Sanitizers nativos locais, campanhas adversariais e generalização além dos dois modelos |
+| **M5 — Contorno QUAD/AFT** | Malha híbrida por patch, sem buracos/overlap | **R2c-10:** OBJ exportados e independentemente conferidos, fontes com as quatro curvas adaptadas; AFT TRI exterior | Comparar regra de contorno de 1993, variantes all-quad e qualidade sob outros orçamentos |
+| **M6 — Multipatch e non-manifold** | Incidência, nós e arestas físicos compatíveis entre patches | **R2c-6/7:** 98 curvas originais sincronizadas, 128 lados/944 arestas de fronteira; valências 4 e 28; contornos locais preservados | **BLOQUEIO científico:** política aprovada por Creto/Bento sobre sheets/junções e compartilhamento físico em valência 4/28; geometria coincidente não autoriza soldagem |
+| **M7 — Repetição adaptativa** | Pelo menos duas iterações aceitas, retry e rollback sem regressão | Rollback e repetição física em mesmo grafo fonte demonstrados em testes de pesquisa | Falta executar política, budgets, `AdaptCurve` e `AdaptDomain` reais de produção em mais de uma época aceita |
+| **M8 — Experimentos e modelos** | Comparação TRI × quad-dominant × alternativas, custo/erro/qualidade | Eistute e Book com entradas originais SHA-256 e geração física de pesquisa; candidatos externos mapeados na [issue #215](https://github.com/tiagosombrra/apmesh-modernization/issues/215) | Ampliar corpus e métricas, exportações/auditoria independente, repetibilidade e ablação em igualdade de erro |
+| **M9 — Anisotropia** | Campo métrico e comparação anisotrópica | Fora do escopo certificado | Opcional para primeiro artigo; ainda não implementado nem demonstrado cientificamente |
+
+**Leitura obrigatória:** uma etapa pode estar comprovada no **escopo experimental por patch** sem estar aprovada no **escopo global de produção**. Não interpretar “32/32 patches gerados” como “modelo non-manifold conectado correto”. `QUAD/AFT` neste estágio é malha mista (*quad-dominant*), não *all-quad*.
+
+## Últimos gates de engenharia QUAD
+
+| Gate | Estado verificável | Evidência |
+|---|---|---|
+| **R2c-6** | 98 curvas originais adaptadas e comparadas em duas execuções CI independentes | [Estado e evidência](evidence/R2C6_WHOLE_ORIGINAL_MODEL_SOURCE_CURVES_20261113.json) |
+| **R2c-7** | Fronteiras AFT com todos os quatro lados: 32 contornos / 944 arestas, single-run CI | [Contornos reais](evidence/R2C7_ALL_SIDES_AFT_BOUNDARIES_20261113.json) |
+| **R2c-8** | Primeiro patch físico original de ambos os modelos: QUAD/AFT válido | [Primeiros patches](evidence/R2C8_ALL_SIDES_FIRST_PATCH_PHYSICAL_TRIAL_20261113.json) |
+| **R2c-9** | 4/4 Eistute + 28/28 Book patches físicos desconectados, um CI completo | [Contagens e qualidade](evidence/R2C9_ALL_ORIGINAL_PHYSICAL_CHARTS_20261113.json) |
+| **R2c-10** | **Concluído:** dois OBJ físicos e manifestos exportados e validados independentemente; CI exato 4/4 | [Evidência](evidence/R2C10_EXPORTED_ORIGINAL_DETACHED_PHYSICAL_MESHES_20261113.json) · [Artefato GitHub](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43494028352/artifacts/14070503827) |
+| **R2c-11** | **Candidato em CI:** mapa de cada amostra de curva original para nó físico do OBJ, comparação de curvas compartilhadas valência 4/28 sem soldagem | [Plano de prova](evidence/R2C11_ORIGINAL_SOURCE_SEAM_ATLAS_20261113.json) · [CI pendente](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43495975211) |
+
+## Como atualizar a cada marco
+
+1. Registrar **implementado → compilado → testado → validado no escopo → cientificamente aprovado → integrado**, sem saltar etapas.
+2. Reabrir este quadro com valores medidos da execução e identificar o SHA exato, o artefato e testes negativos.
+3. Atualizar [STATE.md](STATE.md), anexar entrada no [SESSION_LOG.md](SESSION_LOG.md) e atualizar o arquivo `evidence/` do gate; respeitar [CONTINUATION_PROTOCOL.md](CONTINUATION_PROTOCOL.md).
+4. Relatar o **marco concluído**, o status M0–M9, os **bloqueios** e o **próximo gate**. Atualização por conversa só ocorre quando alguém executa a verificação; este quadro não equivale a monitoramento automático.
