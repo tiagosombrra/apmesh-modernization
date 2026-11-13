@@ -167,6 +167,7 @@ jobs:
           export APMESH_QUAD_R2C10_EXPORT_DIR="$PWD/build/local-serial/r2c10_original_detached_meshes"
           ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]r2c2[.]full_source_patch_stage$' --no-tests=error | tee build/local-serial/r2c10_original_mesh_export.log
           python3 tools/verify_r2c10_mesh_export.py --directory build/local-serial/r2c10_original_detached_meshes
+          python3 tools/verify_r2c11_source_seam_atlas.py --directory build/local-serial/r2c10_original_detached_meshes
       - name: Retain R2c10 original unwelded QUAD AFT OBJ and verification
         if: success()
         uses: actions/upload-artifact@v4
@@ -174,6 +175,7 @@ jobs:
           name: quad-r2c10-original-detached-meshes-${{ github.sha }}
           path: |
             build/local-serial/r2c10_original_detached_meshes/*.obj
+            build/local-serial/r2c10_original_detached_meshes/*.csv
             build/local-serial/r2c10_original_detached_meshes/*.json
             build/local-serial/r2c10_original_mesh_export.log
           if-no-files-found: error
