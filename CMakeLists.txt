@@ -307,6 +307,28 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
   set_tests_properties(quad.r2c2.disjoint_owner_stage PROPERTIES
     LABELS "research-quad;ownership;detached;required-gate" TIMEOUT 90)
 
+  # R2c-2 extension: generate all locally qualified native QUAD/AFT faces
+  # on original Eistute/Book patches, then stage complete disconnected
+  # typed physical charts without binding production Patch observers.
+  add_executable(quad_full_source_patch_stage_probe
+    tests/quad/full_source_patch_stage_probe.cpp
+    research/quad/physical_quadrilateral_adaptive.cpp
+    research/quad/uv_mesh.cpp
+    research/quad/quadtree_quad.cpp
+    research/quad/interior_template_dispatch.cpp
+    research/quad/front_interface_audit.cpp
+    research/quad/owned_aft_front.cpp)
+  target_include_directories(quad_full_source_patch_stage_probe PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_full_source_patch_stage_probe PRIVATE ap_mesh_engine)
+  target_compile_features(quad_full_source_patch_stage_probe PRIVATE cxx_std_17)
+  add_test(NAME quad.r2c2.full_source_patch_stage
+    COMMAND "$<TARGET_FILE:quad_full_source_patch_stage_probe>"
+      "${CMAKE_CURRENT_SOURCE_DIR}/input_models/eistute2.fixed.bp"
+      "${CMAKE_CURRENT_SOURCE_DIR}/input_models/book_v7a.bp")
+  set_tests_properties(quad.r2c2.full_source_patch_stage PROPERTIES
+    LABELS "research-quad;ownership;native-aft;required-gate" TIMEOUT 300)
+
   # Research-only pairwise boundary admission using the production .bp loader.
   # This fixture never publishes QUAD elements or changes the default TRI path.
   add_executable(quad_m4_pairwise_boundary_probe
