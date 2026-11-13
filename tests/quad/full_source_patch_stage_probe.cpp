@@ -902,8 +902,10 @@ unsigned RejectDetachedSourceBoundaryMutations(
 std::unique_ptr<Quadtree> MakeDynamicSourceTree(
     DetachedSourceBoundary& source) {
   Require(source.boundary != nullptr &&
-              source.capture.vertices.size() == 9U,
-          "Dynamic original native Quadtree requires nine directed sources");
+              source.capture.vertices.size() >= 4U &&
+              source.capture.directed_edges.size() ==
+                  source.capture.vertices.size(),
+          "Dynamic original native Quadtree requires a complete variable-edge source contour");
   auto tree = std::make_unique<Quadtree>();
   tree->setBoundary(source.boundary.release());
   auto low = std::make_unique<Vertex>(0.0, 0.0);
@@ -978,13 +980,16 @@ std::unique_ptr<SubMesh> BuildDynamicAdaptedAftChart(
     PatchBezier& patch, unsigned patch_id,
     DetachedSourceBoundary&& source,
     DetachedSourceBoundary&& reference,
-    DynamicNativeChartCounts& counts) {
+    DynamicNativeChartCounts& counts, bool all_sides_adapted = false) {
   SubMesh* const original_tri = patch.GetSubMesh();
   Require(original_tri != nullptr && source.boundary &&
               reference.boundary &&
-              source.capture.vertices.size() == 9U &&
-              reference.capture.vertices.size() == 9U,
-          "Original dynamic patch lacks a real native source boundary pair");
+              source.capture.vertices.size() >= 4U &&
+              source.capture.vertices.size() ==
+                  reference.capture.vertices.size() &&
+              source.capture.directed_edges.size() ==
+                  source.capture.vertices.size(),
+          "Original dynamic patch lacks a matching complete native source boundary pair");
   auto legacy = MakeDynamicSourceTree(reference);
   Require(legacy->makeTemplateBasedMesh() ==
               Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
@@ -1108,15 +1113,19 @@ std::unique_ptr<SubMesh> BuildDynamicAdaptedAftChart(
                 original->second != source.physical_copies[i].get(),
             "Native dynamic QUAD/AFT physical mesh dropped or aliased a real adapted boundary knot");
     ++counts.original_boundary_sites;
-    if (observed.side == source.adapted_side)
+    if (all_sides_adapted || observed.side == source.adapted_side)
       ++counts.original_adapted_sites;
   }
   counts.physical_nodes = chart->GetNumberNos();
   Require(counts.quads == selected.uv_quads.quads.size() &&
               counts.tris == aft->Triangles().size() &&
               counts.quads > 0U && counts.tris > 0U &&
-              counts.original_boundary_sites == 9U &&
-              counts.original_adapted_sites == 6U &&
+              counts.original_boundary_sites ==
+                  source.capture.vertices.size() &&
+              counts.original_adapted_sites ==
+                  (all_sides_adapted
+                       ? source.capture.vertices.size()
+                       : source.capture.side_counts[source.adapted_side]) &&
               counts.min_uv_triangle_quality > 0.0 &&
               counts.min_physical_alignment > 0.0 &&
               chart->GetNumberElements() == counts.quads + counts.tris &&
@@ -1859,6 +1868,45 @@ AllSidesAftBoundaryReport AuditWholeModelAllSidesAftBoundaries(
   return report;
 }
 
+// R2c-8 first-patch physical feasibility trial, never a global model proof.
+// A rejected QUAD/AFT attempt is explicitly reported as a diagnostic blocker.
+struct AllSidesPhysicalTrial {
+  bool succeeded = false;
+  std::string blocked_reason;
+  DynamicNativeChartCounts candidate{};
+};
+
+AllSidesPhysicalTrial TrialAllSidesPhysicalOriginalPatch(
+    Geometry& original, unsigned patch_id, SubMesh* accepted_tri) {
+  auto* patch = dynamic_cast<PatchBezier*>(original.GetPatch(patch_id));
+  Require(patch && accepted_tri && patch->GetSubMesh() == accepted_tri,
+          "R2c8 preflight lost the accepted original TRI patch");
+  AllSidesPhysicalTrial trial;
+  try {
+    auto native = BuildDetachedSourceBoundaryImpl(
+        *patch, patch_id, nullptr, true);
+    auto reference = BuildDetachedSourceBoundaryImpl(
+        *patch, patch_id, nullptr, true);
+    auto chart = BuildDynamicAdaptedAftChart(
+        *patch, patch_id, std::move(native), std::move(reference),
+        trial.candidate, true);
+    DisjointOwnerStage::CheckChart(*chart);
+    Require(chart->GetPatch() == nullptr &&
+                trial.candidate.original_boundary_sites ==
+                    trial.candidate.original_adapted_sites &&
+                trial.candidate.quads > 0U && trial.candidate.tris > 0U &&
+                trial.candidate.physical_nodes >
+                    trial.candidate.original_boundary_sites,
+            "R2c8 all-sides physical QUAD/AFT source chart incomplete");
+    trial.succeeded = true;
+  } catch (const std::exception& error) {
+    trial.blocked_reason = error.what();
+  }
+  Require(patch->GetSubMesh() == accepted_tri,
+          "R2c8 diagnostic physical trial rebound original TRI Patch");
+  return trial;
+}
+
 struct WholeModelSourceEpochReport {
   std::size_t original_patches = 0;
   std::size_t original_curves = 0;
@@ -2088,6 +2136,30 @@ WholeModelSourceEpochReport RunWholeOriginalModelTwoPassCurveSweep(
               all_sides.compared_shared_sites ==
                   report.shared_source_site_pair_comparisons,
           "R2c7 all-sides AFT native source coverage diverged from R2c6");
+  const auto physical_trial = TrialAllSidesPhysicalOriginalPatch(
+      original, 0U, accepted_coarse_tri.at(0));
+  std::cout << "R2C8_ALL_SIDES_PHYSICAL_FIRST_PATCH_TRIAL"
+            << " original_patches=" << expected_patches
+            << " original_patch_index=0"
+            << " native_aft_source_boundary_edges="
+            << all_sides.directed_edges
+            << " candidate_physical_valid=" << (physical_trial.succeeded ? 1 : 0)
+            << " candidate_physical_nodes="
+            << (physical_trial.succeeded ? physical_trial.candidate.physical_nodes : 0U)
+            << " candidate_typed_QUAD="
+            << (physical_trial.succeeded ? physical_trial.candidate.quads : 0U)
+            << " candidate_typed_TRI="
+            << (physical_trial.succeeded ? physical_trial.candidate.tris : 0U)
+            << " all_original_boundaries_adapted=1"
+            << " only_first_patch_attempted=1"
+            << " rejected_physical_trial_is_not_qualification=1"
+            << " original_TRI_Patch_observer_preserved=1"
+            << " source_tree_is_research_fixture=1"
+            << " model_global_physical_mesh=0"
+            << " interpatch_node_welding=0";
+  if (!physical_trial.succeeded)
+    std::cout << " rejection_reason=" << physical_trial.blocked_reason;
+  std::cout << '\n';
   std::cout << "R2C7_ALL_SIDES_AFT_BOUNDARIES"
             << " original_patches=" << all_sides.contours
             << " all_original_adapted_patch_sides=" << all_sides.side_incidences
