@@ -289,10 +289,13 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit) {
         v += result.uv[id].v / 4;
       }
       const auto normal = patch.Qu(u, v) * patch.Qv(u, v);
-      result.mesh->AddElement(std::make_unique<research::QuadrilateralAdaptive>(
-          research::QuadrilateralAdaptive::Nodes{a, b, c, d}, uv, normal));
+      auto quad = std::make_unique<research::QuadrilateralAdaptive>(
+          research::QuadrilateralAdaptive::Nodes{a, b, c, d}, uv, normal);
+      quad->SetId(static_cast<unsigned long>(i + 1));
+      result.mesh->AddElement(std::move(quad));
     } else {
       auto tri = std::make_unique<TriangleAdaptive>(a, b, c);
+      tri->SetId(static_cast<unsigned long>(i + 1));
       tri->SetParametersN1({result.uv[ids[0]].u, result.uv[ids[0]].v});
       tri->SetParametersN2({result.uv[ids[1]].u, result.uv[ids[1]].v});
       tri->SetParametersN3({result.uv[ids[2]].u, result.uv[ids[2]].v});
@@ -319,6 +322,8 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit) {
         work.push_back(j);
   }
   Require(seen.size() == result.faces.size(), "Disconnected physical chart");
+  for (unsigned i = 0; i < result.mesh->GetNumberElements(); ++i)
+    Require(result.mesh->GetElement(i)->GetId() == i + 1, "Physical element identity differs");
   if (fail_before_commit)
     throw PublicationFailure("Injected failure before physical publication");
   return result;
@@ -390,7 +395,7 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
             << " triangles=" << candidate.faces.size() - candidate.quads
             << " nodes=" << accepted->GetNumberNos()
             << " boundary=16 UV_disk=1 overlap=0 min_alignment=" << candidate.min_alignment
-            << " min_facet_quality=" << candidate.min_quality << " published=1\n";
+            << " min_facet_quality=" << candidate.min_quality << " ids_unique=1 published=1\n";
   if (config.quad_verify_rollback) {
     auto* old = accepted.get();
     auto* node = old->GetNoh(0);

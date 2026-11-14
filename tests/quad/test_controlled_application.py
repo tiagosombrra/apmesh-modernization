@@ -96,7 +96,8 @@ def main():
         (root/(name+".stderr")).write_bytes(r.stderr)
         return r
     r = execute("accepted")
-    require(r.returncode == 0 and b"published=1" in r.stdout, "Real CLI generation failed")
+    require(r.returncode == 0 and b"ids_unique=1 published=1" in r.stdout,
+            "Real CLI generation or physical identities failed")
     result = audit(root/"accepted.obj")
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
