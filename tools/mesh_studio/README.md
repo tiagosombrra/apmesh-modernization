@@ -120,3 +120,34 @@ SHA-256 manifest. It is **not** a 3D shaded vector export, continuous Jacobian
 certificate, accepted hybrid adaptive history, global non-manifold welded mesh,
 all-quad result or anisotropic method output. The TRI and QUAD groups classify
 **element types**, not two different physical source patches.
+
+
+## S4: optional physical XYZ / source UV desktop viewer
+
+The **headless** `scene_model.py` preserves original source IDs, separate TRI/QUAD
+faces, per-corner UV and camera/visibility recipes pinned to the input OBJ SHA.
+`scene_vtk.py` and `render3d_cli.py` provide native VTK 3D previews **as raster
+PNGs**, with audit JSON. Do not label these screenshots vector figures.
+
+```sh
+python -m unittest tools.mesh_studio.test_desktop_stage -v
+python -m tools.mesh_studio.render3d_cli \
+  tools/mesh_studio/fixtures/real_p1/accepted.obj \
+  --png build/mesh-studio/p1_real_xyz.png
+```
+
+The optional GUI source is available in `desktop_app.py` (PySide6 + PyVistaQt),
+with 3D/UV linked face IDs, TRI/QUAD toggles, camera recipes and interactive
+cell inspection. Install only after resolving and validating exact Qt/VTK
+version constraints on the target host:
+
+```sh
+python -m pip install -r tools/mesh_studio/requirements-desktop.in
+python -m tools.mesh_studio.desktop_app --obj tools/mesh_studio/fixtures/real_p1/accepted.obj
+```
+
+**Qualification limit:** Native VTK EGL rendered successfully and all S4 headless
+tests passed. A PySide6/PyVista/pyvistaqt desktop run was NOT executable in this
+environment, so interactive cell picking, Qt ABI and close/reopen memory behavior
+are UNQUALIFIED until an actual GUI smoke run. See
+`docs/mesh-studio/IMPLEMENTATION_S4_20261114.md`.

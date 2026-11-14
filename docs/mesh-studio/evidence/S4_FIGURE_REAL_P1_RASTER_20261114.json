@@ -1,0 +1,25 @@
+{
+  "PySide6_GUI_run_qualified": false,
+  "camera_pixel_identity_cross_platform": false,
+  "format": "PNG_RASTER_3D_NOT_VECTOR",
+  "geometry_global_surface_certified": false,
+  "mesh": {
+    "native_AFT_triangles": 36,
+    "nodes": 69,
+    "quad": 42,
+    "source_interface_edges": 20
+  },
+  "method": "VTK 9.6.2 offscreen EGL renderer, oblique azimuth 33 elevation 28",
+  "original_input_modified": false,
+  "published_generator_modes": [
+    "quad_tri_controlled_fixed16_vertex_mean_v1"
+  ],
+  "schema": "apmesh.meshstudio.S4_raster_figure_receipt.v1",
+  "source_kind": "REAL_SOURCE_CI_ARTIFACT",
+  "source_name": "PR217 controlled P1 ModelCurvaBezier",
+  "source_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "synthetic": false,
+  "vector_figure_alternative": "docs/mesh-studio/figures/S3_REAL_P1_UV.svg",
+  "viewer_figure": "S4_REAL_P1_XYZ_RASTER.png",
+  "viewer_figure_sha256": "6da708922627b6e0fd07e0ad711bb8b6ae9cb3a7b5496b54a96bdaccce575c40"
+}
