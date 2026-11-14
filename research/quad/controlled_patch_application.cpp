@@ -15,6 +15,7 @@
 #include "front_interface_audit.h"
 #include "typed_mixed_curvature.h"
 #include "typed_mixed_quality.h"
+#include "mixed_surface_residual.h"
 
 #include "crab_mesh/aft/boundary.h"
 #include "crab_mesh/aft/quadtree.h"
@@ -178,6 +179,7 @@ struct Candidate {
   std::unique_ptr<SubMesh> mesh = std::make_unique<SubMesh>();
   std::vector<UvVertex> uv;
   std::vector<std::vector<std::size_t>> faces;
+  std::vector<LeafPolygonOrigin> quad_origins;
   std::size_t quads = 0;
   double min_alignment = 1.0;
   double min_quality = 1.0;
@@ -226,6 +228,9 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit) {
   for (const auto& quad : selected.uv_quads.quads)
     result.faces.emplace_back(quad.vertices.begin(), quad.vertices.end());
   result.quads = result.faces.size();
+  result.quad_origins = selected.quad_face_origins;
+  Require(result.quad_origins.size() == result.quads,
+          "Mixed residual leaf provenance differs from the real native tree");
   std::map<Vertex*, std::size_t> aft_ids;
   // Only the already-audited seam may bridge source pointer identities to QUAD IDs.
   for (auto* v : aft->OwnedSeamVertices())
@@ -618,6 +623,58 @@ void ProbePhysicalQuadQuality(SubMesh& mesh, const Candidate& layout, PatchBezie
   std::cout << output.str();
 }
 
+// Read the accepted physical candidate and choose a real native source leaf by error.
+void ProbeMixedSurfaceResidual(const Candidate& candidate, PatchBezier& patch) {
+  std::vector<research::ResidualUv> parametric;
+  std::vector<research::ResidualPoint3> physical;
+  parametric.reserve(candidate.uv.size());
+  physical.reserve(candidate.uv.size());
+  for (std::size_t i = 0; i < candidate.uv.size(); ++i) {
+    parametric.push_back({candidate.uv[i].u, candidate.uv[i].v});
+    const auto* n = candidate.mesh->GetNoh(static_cast<unsigned>(i));
+    Require(n != nullptr, "Mixed residual references a missing accepted physical node");
+    physical.push_back({n->GetX(), n->GetY(), n->GetZ()});
+  }
+  const auto source = [&patch](const research::ResidualUv& uv) -> research::ResidualPoint3 {
+    return Evaluate(patch, UvVertex{uv[0], uv[1]});
+  };
+  const auto metrics = research::MeasureMixedSurfaceResidual(
+      parametric, physical, candidate.faces, source);
+  Require(metrics.quadrilaterals == candidate.quads &&
+              metrics.triangles == candidate.faces.size() - candidate.quads &&
+              metrics.samples == 5 * metrics.quadrilaterals + 4 * metrics.triangles &&
+              metrics.worst_quad_face < candidate.quad_origins.size() &&
+              metrics.maximum >= metrics.quad_maximum &&
+              metrics.maximum >= metrics.triangle_maximum,
+          "Mixed physical error/source-leaf witness is invalid");
+  const auto& leaf = candidate.quad_origins[metrics.worst_quad_face];
+  Require(leaf.cell_id >= 0 && leaf.relative_depth >= 2 &&
+              metrics.worst_quad_sample_uv[0] > 0.0 &&
+              metrics.worst_quad_sample_uv[0] < 1.0 &&
+              metrics.worst_quad_sample_uv[1] > 0.0 &&
+              metrics.worst_quad_sample_uv[1] < 1.0,
+          "Mixed residual selected an invalid real native quadtree source leaf");
+  std::ostringstream line;
+  line.imbue(std::locale::classic());
+  line << std::setprecision(17)
+       << "QUAD_SOURCE_RESIDUAL samples=" << metrics.samples
+       << " quads=" << metrics.quadrilaterals
+       << " triangles=" << metrics.triangles
+       << " maximum=" << metrics.maximum
+       << " rms=" << metrics.rms
+       << " quad_maximum=" << metrics.quad_maximum
+       << " triangle_maximum=" << metrics.triangle_maximum
+       << " worst_quad_face=" << metrics.worst_quad_face
+       << " real_leaf_ordinal=" << leaf.leaf_ordinal
+       << " real_cell_id=" << leaf.cell_id
+       << " source_depth=" << leaf.relative_depth
+       << " select_u=" << metrics.worst_quad_sample_uv[0]
+       << " select_v=" << metrics.worst_quad_sample_uv[1]
+       << " policy=physical_bilinear_quad_tri_barycentric_v1"
+       << " real_tree_edits=0 adaptive_epochs=0\n";
+  std::cout << line.str();
+}
+
 void Export(const Candidate& result, const std::filesystem::path& path) {
   Require(!std::filesystem::exists(path), "Controlled output already exists");
   auto staging = path;
@@ -678,6 +735,7 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
   ProbeTypedHistory(*candidate.mesh, candidate, *patch);
   ProbeMixedCurvature(*candidate.mesh, candidate);
   ProbePhysicalQuadQuality(*candidate.mesh, candidate, *patch);
+  ProbeMixedSurfaceResidual(candidate, *patch);
   Export(candidate, config.output_prefix + ".obj");
   candidate.mesh->SetPatch(patch);
   patch->SetSubMesh(candidate.mesh.get());
