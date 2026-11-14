@@ -26,3 +26,16 @@ This is a **native source-domain trial only**. Actual second native exterior AFT
 Run exact-feature Linux/Windows native and complete application/independent source oracle, Linux ASan/UBSan/leak, 85 root CTests, 527 Python tooling and frozen Eistute/Book TRI scientific parity. **CI is not prequalified merely because this source exists**; any failed actual AFT/UV topology result must be retained and classified, not bypassed. Keep draft until qualified.
 
 **P2d-1c2** after this gate: use each physically viable new native source tree for original `OwnedQuadAftFront` and typed Bezier XYZ output, independently measure same-site error against the first staged candidate, min scaled-Jacobian/warpage, element complexity and source boundary, then prepare an explicit scientific acceptance policy and strong-exception owner transaction. [R3/M7 issue221](https://github.com/tiagosombrra/apmesh-modernization/issues/221) remains OPEN.
+
+## Exact-head CI sequencing
+
+PR #233 was initially stacked on PR #232's research feature branch; that
+noncanonical target does not match the repository's QUAD workflow
+`pull_request` filter, which runs only for base `quad-templates`.
+The PR base was therefore temporarily changed to canonical `quad-templates`
+so an exact combined-tree Linux/Windows/native/scientific CI can run.
+**Do not merge PR #233 before PR #232's six-case preflight is qualified and
+integrated.** Once PR #232 merges, recheck the net changed-file delta and
+the exact feature commit, retain any CI failures, and independently verify
+that neither PR changes `main`/production TRI. This sequence is a test
+harness action, not an adaptive-epoch acceptance.
