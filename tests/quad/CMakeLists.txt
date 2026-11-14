@@ -26,10 +26,14 @@ target_link_libraries(quad_uv_demo PRIVATE apmesh_quad_uv)
 add_executable(quad_epoch_admission_contracts mixed_epoch_admission_contracts.cpp)
 target_include_directories(quad_epoch_admission_contracts PRIVATE ../../research/quad)
 target_compile_features(quad_epoch_admission_contracts PRIVATE cxx_std_17)
+# P2d-1a real face-error indicator; no tree mutation or accepted epochs.
+add_executable(quad_mixed_surface_residual_contracts mixed_surface_residual_contracts.cpp)
+target_include_directories(quad_mixed_surface_residual_contracts PRIVATE ../../research/quad)
+target_compile_features(quad_mixed_surface_residual_contracts PRIVATE cxx_std_17)
 
 foreach(target IN ITEMS apmesh_quad_uv quad_uv_contracts quad_mesh_mode_contracts quad_uv_demo
   apmesh_quad_experimental_point quad_experimental_point_contracts quad_visual_export
-  quad_epoch_admission_contracts)
+  quad_epoch_admission_contracts quad_mixed_surface_residual_contracts)
   if(MSVC)
     target_compile_options(${target} PRIVATE /W4 /WX /EHsc /utf-8)
   else()
@@ -37,6 +41,9 @@ foreach(target IN ITEMS apmesh_quad_uv quad_uv_contracts quad_mesh_mode_contract
   endif()
 endforeach()
 
+add_test(NAME quad.p2d1a.mixed_surface_residual COMMAND quad_mixed_surface_residual_contracts)
+set_tests_properties(quad.p2d1a.mixed_surface_residual PROPERTIES
+  TIMEOUT 20 LABELS "research-quad;physical-error;negative-controls")
 add_test(NAME quad.p2d0.synthetic_epoch_preflight COMMAND quad_epoch_admission_contracts)
 set_tests_properties(quad.p2d0.synthetic_epoch_preflight PROPERTIES
   TIMEOUT 20 LABELS "research-quad;synthetic-preflight;negative-controls")
