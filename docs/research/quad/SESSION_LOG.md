@@ -1664,3 +1664,44 @@ source AdaptCurve equivalence, approved quality policy, full M7/R3,
 1993 equivalence, nonmanifold global welding, all-QUAD or anisotropy.
 Main remained outside these research deliveries. This documentation-only
 checkpoint adds no scientific qualification to its own commit SHA.
+
+
+## 2026-11-14 — P2d-1b0/1 real native source refinement and connected QUAD disk
+
+PR227 exact feature4dba0421807047975a2163c917bd8bcd802bca8c
+merged9259de230c3da24ffd4dbced65beae7375c3fc46 after
+CI43609586259 PASS4/4, native QUAD Linux/Windows 18/18 each, 85
+root CTests, 527 Python, Linux sanitizers and frozen original TRI.
+The previous real source-error candidate's interior cell13
+subdivision gives 22 original Quadtree leaves, 54 emitted UV QUAD
+but unchanged 0.25 UV area. AFT-dominated source cell6 instead
+creates a boundary QUAD island: prospective area0.265625, native
+`EmitLeafQuads` rejects `Boundary vertex is not manifold`
+and zero illegal faces are published. Exact negative witness pinned.
+
+PR228 exact feature0c9bdc7f7562ce2c9633b4b44bb07fe7039b16a8
+merged092b9adfa0f9f03d4c28b5218759b7e89cf5b199 after
+CI43618564496 PASS4/4, Linux/Windows real application, Linux
+ASan/UBSan/leak, frozen TRI and full 85 CTest/527 Python.
+A native three-cell band driven by the actual AFT source error
+subdivides original cells6/7/9 and balances the original
+Quadtree 19→28 leaves. Real `CaptureLeafPolygons` /
+`EmitLeafQuads` passes disk and produces 62 UV QUAD, area
+0.328125 (32.8125%). Independent Python reassembles the
+original 8×8 dyadic source grid: 21/64 eligible cells,
+four-neighbor connected, no enclosed holes. The accepted
+initial physical OBJ is unchanged at SHA256
+cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0
+on all Linux/Windows/ASan outputs. This is a topology-only
+candidate without new native AFT or physical QUAD/TRI SubMesh:
+`actual_aft_retriangulations=0 adaptive_epochs=0`.
+
+Draft PR229 opens the next bounded gate: original native AFT
+reconstruction and full typed physical candidate from *identical
+independently rebuilt* native band trees, candidate-only OBJ,
+independent source/quality audit, physical failure/rollback.
+Even successful staging must not be mistaken for an accepted
+adaptive epoch. Main TRI behavior remains unchanged. Evidence:
+evidence/P2D1B0_P2D1B1_NATIVE_TREE_BAND_20261114.json;
+canonical R3 issue221 remains OPEN. This documentation-only
+checkpoint has no scientific qualification for its own SHA.
