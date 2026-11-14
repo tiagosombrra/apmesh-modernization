@@ -1,0 +1,42 @@
+{
+  "evidence_kind": "REAL_SOURCE_CI_ARTIFACT_NOT_SYNTHETIC",
+  "generator_candidate_revision": "0999769722f128d887e1143c8ec1da67da627850",
+  "generator_execution_is_not_adaptation": true,
+  "generator_revision": "d39bbc447f88e179c3c4ee674bd9309f59c18eed",
+  "original_actions_run": 43588588497,
+  "original_linux_artifact": 14111372234,
+  "original_windows_artifact": 14111247733,
+  "schema": "apmesh.meshstudio.p1_qualification.v1",
+  "source": {
+    "assertions": {
+      "anisotropic_adaptation_qualified": false,
+      "continuous_source_jacobian_certified": false,
+      "global_source_welding_certified": false,
+      "indexed_uv_and_xyz_correspondence": true,
+      "mixed_adaptive_epoch_qualified": false,
+      "original_outer_curve_location": true,
+      "original_quad_tri_seam_orientation": true,
+      "source_bezier_control_net_match": true
+    },
+    "max_source_xyz_component_error": 1.0408340855860843e-16,
+    "minimum_facet_normal_alignment": 0.9859299598139977,
+    "minimum_sampled_source_jacobian": 1.9513428350741675,
+    "native_aft_triangles": 36,
+    "oriented_physical_facets": 120,
+    "outer_boundary_edges": 16,
+    "quad_tri_seam_edges": 20,
+    "quads": 42,
+    "region_topology": {
+      "mixed": "indexed_disk",
+      "quad": "indexed_disk",
+      "tri_aft": "indexed_annulus"
+    },
+    "schema": "apmesh.meshstudio.p1_real_surface_oracle.v1",
+    "source_geometry": "Models3d::ModelCurvaBezier pinned source 4x4 control net",
+    "source_topology_scope": "single_connected_controlled_patch_only",
+    "total_faces": 78,
+    "total_vertices": 69
+  },
+  "source_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "verified_linux_windows_obj_sha256_equal": true
+}

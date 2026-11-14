@@ -1,0 +1,38 @@
+{
+  "adaptive_epochs": 0,
+  "cell_inventory": {
+    "quad": 42,
+    "triangle": 36
+  },
+  "files_sha256": {
+    "comparison_matrix.json": "4b40954b3a0598e59750307b8e58cacea01a7e2e54de48702558e0d56fc0a712",
+    "figure.pdf": "de045eaf67ec94d3b0a8d107d1e9c4a5aeed122745617161c1aa572643c69348",
+    "figure.recipe.json": "c00b39ae135d9de3b6106a7d02c0dafdf367ec5e158462ed8d0b240847de4b27",
+    "figure.svg": "66ed816daea5731ba49c6c9e667547500dd047839dda3dcb3117fc21380003d1",
+    "include.tex": "f6b281079c28cc21a5909e9736a419844422e68fa24bd98a89652dd93e07f5d0",
+    "source_oracle.json": "84fca1414af258719056e97719be41745d48bd77d784f9d057fa05e4e8781c50",
+    "triangle_quality.csv": "d5380edcf585a354487a4001c5bfdfe4e40d10b342f6ec757e5c755e3c3a9b12"
+  },
+  "pdf_size_mm": [
+    178,
+    108
+  ],
+  "pdf_vector_audit": {
+    "font_inventory": 2,
+    "height_mm": 108,
+    "page_count": 1,
+    "vector_drawings_at_least": 70,
+    "vector_only_no_image_xobjects": true,
+    "width_mm": 178
+  },
+  "schema": "apmesh.meshstudio.publication_receipt.v1",
+  "source_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "source_real": true,
+  "svg_vector_audit": {
+    "image_elements": 0,
+    "local_glyph_references": 735,
+    "path_elements": 210,
+    "vector_only": true
+  },
+  "synthetic": false
+}

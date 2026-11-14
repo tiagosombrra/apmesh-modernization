@@ -1,0 +1,26 @@
+{
+  "accepted_adaptive_epochs": 0,
+  "algorithm": "QUAD interior + original AFT exterior",
+  "comparison_policy": "NOT_A_3x2_ISOTROPIC_VS_ANISOTROPIC_ADAPTIVE_RUN",
+  "evidence_kind": "REAL_SOURCE_CI_ARTIFACT_NOT_SYNTHETIC",
+  "figure_height_mm": 108,
+  "figure_width_mm": 178,
+  "generator_report_sha256": "1ec6d5e698b6502f117b01d9fce9f2ce9e26048b82b97484da219b747ad908d2",
+  "metrics": [
+    "triangle_mean_ratio_3d_v1"
+  ],
+  "model": "Models3d::ModelCurvaBezier",
+  "panels": [
+    "source_uv_indexed_mesh",
+    "triangle_mean_ratio_distribution",
+    "original_face_inventory"
+  ],
+  "pdf_raster_image_count": 0,
+  "publication_figures_are_not_continuous_surface_certification": true,
+  "quad_planar_quality": "NOT_EVALUABLE_NONPLANAR",
+  "sampling": "fixed16_vertex_mean_v1",
+  "schema": "apmesh.meshstudio.paper_figure.v1",
+  "source_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "svg_raster_image_count": 0,
+  "version": 1
+}
