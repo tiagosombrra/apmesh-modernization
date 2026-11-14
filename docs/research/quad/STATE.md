@@ -77,12 +77,27 @@ all three candidate checkouts and artifact names to the actual PR head SHA,
 with an explicit clean-worktree identity check. Do not retroactively relabel
 the prior candidate runs.
 
-**P2c active research candidate** adds positive physical four-corner
-source-normal quality/warpage/edge-ratio diagnostics in the controlled case,
-not a production curvature/quality policy. See
-[P2c scope](P2C_TYPED_PHYSICAL_QUAD_QUALITY_20261114.md).
+**P2c integrated** via [PR220](https://github.com/tiagosombrra/apmesh-modernization/pull/220),
+merge `535acf7b3ba68dd1ee1267e682f2991a89214a87`. Its real controlled
+physical QUAD corner-normal metric has minimum scaled Jacobian `0.567009347`,
+minimum split-normal cosine `0.999145645` and maximum physical edge ratio
+`3.309653057`, each independently checked against original Bernstein-control
+Bezier derivatives. Four physical-negative cases are rejected. Exact feature
+source `bd6135cd4c6ec30f4e3de3bf94593d106002c8b9` passed [CI
+#43603290586](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43603290586):
+4/4 jobs, Linux/Windows application, ASan/UBSan/leak, 85 root CTests,
+527 Python tooling and original frozen Eistute/Book TRI equivalence. The
+updated workflow now confirms actual feature-head source SHA at all candidate
+checkouts and labels artifacts by that SHA. The output physical OBJ SHA-256
+remains `cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0`.
+See [P2c scope](P2C_TYPED_PHYSICAL_QUAD_QUALITY_20261114.md).
+The previous two PR CI checkout identity limits remain documented above;
+P2c rechecks their integrated code in the current exact feature tree.
 **P2/R3 and M7 remain OPEN:** no two distinct adapted and accepted
-QUAD/TRI mesh epochs, no production mixed curvature or rejection policy.
+QUAD/TRI mesh epochs, no production mixed curvature or rejection policy. The
+[next constrained implementation issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
+requires two real previous-state-driven accepted mixed epochs with independent
+provenance, quality, rollback and default TRI equivalence.
 Do not confuse P2a/P2b test passes with completed adaptive history.
 
 ## Explicit remaining limits and history
