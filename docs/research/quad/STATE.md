@@ -55,7 +55,7 @@ retry/rollback and export. No P2 implementation or mixed epoch claim yet.
 merged as \`d40114ed2dc9def294b382557a571e5b62285b83\`.
 It qualifies a bounded typed physical SubMesh clone, partial-construction
 fault rollback, Patch observer restoration and independent element/node
-identities. Exact feature CI: 4/4 success, Linux ASan/UBSan/leak success,
+identities. Original PR synthetic-merge CI: 4/4 success, Linux ASan/UBSan/leak success,
 85 baseline CTests and 527 tooling Python.
 
 [P2b PR219](https://github.com/tiagosombrra/apmesh-modernization/pull/219)
@@ -65,9 +65,17 @@ auditor and a *triangulated metric diagnostic*, cross-checked from original
 OBJ via independent Python cosine-law/Heron calculations. Five malformed
 cases are refused. The real 69-node controlled patch has 16 boundary and
 53 interior vertices; its barycentric angle-defect witness sums to 2*pi.
-Exact PR CI: four successful jobs including Linux sanitizers and unchanged
+Original PR synthetic-merge CI: four successful jobs including Linux sanitizers and unchanged
 frozen TRI scientific parity. Neither contribution changes the original
 triangle-specific \`Adjacent\`/\`CurvatureDiscrete\` path.
+
+**CI provenance correction:** Previous P2a/P2b PR workflows used GitHub's
+synthetic pull-request merge checkout and did not assert exact feature-head
+identity. Their passing checks are valid for the corresponding tested trees,
+not proof that the runner checked out their stated feature SHA. P2c changes
+all three candidate checkouts and artifact names to the actual PR head SHA,
+with an explicit clean-worktree identity check. Do not retroactively relabel
+the prior candidate runs.
 
 **P2c active research candidate** adds positive physical four-corner
 source-normal quality/warpage/edge-ratio diagnostics in the controlled case,
