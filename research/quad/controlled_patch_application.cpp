@@ -703,8 +703,8 @@ NativeRefinementTrial TrialRealTreeRefinement(const research::ResidualUv& select
   NativeRefinementTrial trial;
   QuadtreeCell* target = nullptr;
   for (auto* leaf : tree->getLeaves()) {
-    const auto* minimum = leaf->getMin();
-    const auto* maximum = leaf->getMax();
+    auto* minimum = leaf->getMin();
+    auto* maximum = leaf->getMax();
     if (selected_uv[0] > minimum->getX() && selected_uv[0] < maximum->getX() &&
         selected_uv[1] > minimum->getY() && selected_uv[1] < maximum->getY()) {
       Require(target == nullptr, "Ambiguous native source cell chosen for refinement");
