@@ -110,6 +110,15 @@ int main() {
     ExpectRejected(ledger, bad, 1);
   }
 
+  {
+    auto bad = candidate; bad.policy_id = "unreviewed-policy-swap";
+    ExpectRejected(ledger, bad, 1);
+  }
+  {
+    auto bad = candidate; bad.source_boundary_edges += 1;
+    ExpectRejected(ledger, bad, 1);
+  }
+
   // These two records are fabricated to test metadata transitions ONLY.
   ledger.AdmitCandidate(candidate);
   Require(ledger.RecordedStates() == 2);
@@ -123,6 +132,6 @@ int main() {
   ledger.AdmitCandidate(next);
   Require(ledger.RecordedStates() == 3);
   Require(ledger.Latest().mesh_sha256 == next.mesh_sha256);
-  std::cout << "QUAD_EPOCH_PREFLIGHT synthetic_states=3 negative_cases=12 "
+  std::cout << "QUAD_EPOCH_PREFLIGHT synthetic_states=3 negative_cases=14 "
                "lineage_verified=1 actual_adaptive_epochs=0\n";
 }
