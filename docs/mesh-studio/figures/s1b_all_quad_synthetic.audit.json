@@ -1,0 +1,32 @@
+{
+  "figure_type": "all_quad_parity",
+  "metadata": {
+    "negative": {
+      "conforming_all_quad_disk_exists": false,
+      "fixed_boundary_edges": 5
+    },
+    "positive": {
+      "boundary_edges": 8,
+      "boundary_is_even": true,
+      "interior_edges": 4,
+      "quads": 4
+    },
+    "scope": "conforming disk with fixed boundary segmentation"
+  },
+  "observed_generator_events": 0,
+  "panel_count": 2,
+  "panel_ids": [
+    "parity-even",
+    "parity-odd"
+  ],
+  "provenance": "SIMULATED",
+  "schema": "apmesh.meshstudio.synthetic_storyboard.v1",
+  "svg_audit": {
+    "polygon_count": 5,
+    "raster_image_count": 0,
+    "vector_only": true
+  },
+  "svg_sha256": "9b0fe58be5d18f0a00ab60bc792c38c63612b260d20ffeebe06fa5f3c8879be0",
+  "synthetic": true,
+  "true_vector_svg": true
+}

@@ -1,0 +1,43 @@
+{
+  "figure_type": "anisotropy_metric",
+  "metadata": {
+    "metric_anisotropic": {
+      "m00": 16,
+      "m01": 0,
+      "m11": 1
+    },
+    "metric_frame": "illustrative planar XY",
+    "metric_iso": {
+      "m00": 1,
+      "m01": 0,
+      "m11": 1
+    },
+    "tensor_source": "synthetic_prescribed",
+    "unit_metric_edges": [
+      [
+        0.25,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "observed_generator_events": 0,
+  "panel_count": 2,
+  "panel_ids": [
+    "metric-iso",
+    "metric-aniso"
+  ],
+  "provenance": "SIMULATED",
+  "schema": "apmesh.meshstudio.synthetic_storyboard.v1",
+  "svg_audit": {
+    "polygon_count": 0,
+    "raster_image_count": 0,
+    "vector_only": true
+  },
+  "svg_sha256": "b4a6d17a635dc0444fb4f228180d1c871275f0e50a4860bb46655adf989ddec7",
+  "synthetic": true,
+  "true_vector_svg": true
+}

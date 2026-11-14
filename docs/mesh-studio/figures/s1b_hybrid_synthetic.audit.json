@@ -1,0 +1,40 @@
+{
+  "figure_type": "hybrid_construction",
+  "metadata": {
+    "analytic_lift": "z=0.25*(1-u*u)*(1-v*v)",
+    "cells": {
+      "quad": 1,
+      "triangle": 8
+    },
+    "event_capture_available": false,
+    "source_obj_sha256": "ff0ea68b185902cd1b5c635f5a2a0af33ba7631b927f8b02a892d2d4948c128f",
+    "stage_types": [
+      "simulated",
+      "simulated",
+      "simulated",
+      "simulated",
+      "simulated",
+      "simulated"
+    ]
+  },
+  "observed_generator_events": 0,
+  "panel_count": 6,
+  "panel_ids": [
+    "hybrid-stage-01",
+    "hybrid-stage-02",
+    "hybrid-stage-03",
+    "hybrid-stage-04",
+    "hybrid-stage-05",
+    "hybrid-stage-06"
+  ],
+  "provenance": "SIMULATED",
+  "schema": "apmesh.meshstudio.synthetic_storyboard.v1",
+  "svg_audit": {
+    "polygon_count": 27,
+    "raster_image_count": 0,
+    "vector_only": true
+  },
+  "svg_sha256": "2fe67fccbc5a36a724f2f3bd516aba23a6b7a78a0371cd2ba6a4e9ec5d75f17c",
+  "synthetic": true,
+  "true_vector_svg": true
+}
