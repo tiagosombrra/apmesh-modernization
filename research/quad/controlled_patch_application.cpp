@@ -624,7 +624,7 @@ void ProbePhysicalQuadQuality(SubMesh& mesh, const Candidate& layout, PatchBezie
 }
 
 // Read the accepted physical candidate and choose a real native source leaf by error.
-void ProbeMixedSurfaceResidual(const Candidate& candidate, PatchBezier& patch) {
+research::MixedSurfaceResidual ProbeMixedSurfaceResidual(const Candidate& candidate, PatchBezier& patch) {
   std::vector<research::ResidualUv> parametric;
   std::vector<research::ResidualPoint3> physical;
   parametric.reserve(candidate.uv.size());
@@ -680,6 +680,116 @@ void ProbeMixedSurfaceResidual(const Candidate& candidate, PatchBezier& patch) {
        << " policy=physical_bilinear_quad_tri_barycentric_v1"
        << " real_tree_edits=0 adaptive_epochs=0\n";
   std::cout << line.str();
+  return metrics;
+}
+
+// Mutate only fresh native Quadtree candidates; never modify the accepted mesh.
+struct NativeRefinementTrial {
+  long chosen_cell_id = -1;
+  unsigned initial_leaf_depth = 0;
+  std::size_t leaves = 0;
+  std::size_t quads = 0;
+  long double interior_uv_area = 0.0L;
+  bool emitted_disk = false;
+  std::string rejection = "none";
+};
+
+NativeRefinementTrial TrialRealTreeRefinement(const research::ResidualUv& selected_uv) {
+  Require(std::isfinite(selected_uv[0]) && std::isfinite(selected_uv[1]) &&
+              selected_uv[0] > 0.0 && selected_uv[0] < 1.0 &&
+              selected_uv[1] > 0.0 && selected_uv[1] < 1.0,
+          "Native QUAD tree refinement selection requires strict interior UV");
+  auto tree = MakeSourceTree(true);
+  NativeRefinementTrial trial;
+  QuadtreeCell* target = nullptr;
+  for (auto* leaf : tree->getLeaves()) {
+    const auto* minimum = leaf->getMin();
+    const auto* maximum = leaf->getMax();
+    if (selected_uv[0] > minimum->getX() && selected_uv[0] < maximum->getX() &&
+        selected_uv[1] > minimum->getY() && selected_uv[1] < maximum->getY()) {
+      Require(target == nullptr, "Ambiguous native source cell chosen for refinement");
+      target = leaf;
+    }
+  }
+  Require(target != nullptr && !target->subdivided() && target->getLevel() < 8,
+          "No eligible original native source quadtree leaf contains the error site");
+  trial.chosen_cell_id = target->getId();
+  trial.initial_leaf_depth = static_cast<unsigned>(target->getLevel());
+  const auto leaves_before = tree->GetLeafCount();
+  target->subdivideToLevel(target->getLevel() + 1);
+  tree->refineAccordingToNeighbors();
+  trial.leaves = tree->GetLeafCount();
+  Require(trial.leaves > leaves_before,
+          "Native source tree trial did not actually refine a source leaf");
+  try {
+    const auto captured = CaptureLeafPolygons(*tree);
+    trial.interior_uv_area = captured.interior_area;
+    const auto emitted = EmitLeafQuads(*tree, PointRule);
+    trial.quads = emitted.quads.size();
+    trial.emitted_disk = true;
+  } catch (const std::invalid_argument& error) {
+    // A disconnected island or broken 2:1 interface is a rejected native trial.
+    trial.rejection = error.what();
+  }
+  return trial;
+}
+
+void ProbeNativeTreeAlternatives(const Candidate& unchanged,
+                                 const research::MixedSurfaceResidual& residual) {
+  Require(unchanged.mesh != nullptr && unchanged.quads > 0 &&
+              residual.worst_quad_face < unchanged.quads &&
+              residual.worst_triangle_face >= unchanged.quads &&
+              residual.worst_triangle_face < unchanged.faces.size(),
+          "Native tree trials lack a real previous physical error/face owner");
+  const auto previous_observers = CaptureNodeObservers(*unchanged.mesh);
+  const auto* node = unchanged.mesh->GetNoh(0);
+  const auto* element = unchanged.mesh->GetElement(0);
+  const auto baseline_tree = MakeSourceTree(true);
+  const auto baseline = CaptureLeafPolygons(*baseline_tree);
+  Require(baseline.source_leaves == 19 && baseline.interior_area == 0.25L,
+          "Unexpected original fixed16 native QUAD region before refinement");
+  const auto quad_trial = TrialRealTreeRefinement(residual.worst_quad_sample_uv);
+  const auto aft_trial = TrialRealTreeRefinement(residual.worst_triangle_sample_uv);
+  Require(quad_trial.chosen_cell_id != aft_trial.chosen_cell_id &&
+              quad_trial.initial_leaf_depth == 2 && aft_trial.initial_leaf_depth == 2 &&
+              quad_trial.leaves > baseline.source_leaves &&
+              aft_trial.leaves > baseline.source_leaves,
+          "Mixed source errors did not select two distinct real native level-2 leaves");
+  Require(unchanged.mesh->GetNoh(0) == node &&
+              unchanged.mesh->GetElement(0) == element &&
+              CaptureNodeObservers(*unchanged.mesh) == previous_observers,
+          "Transient native tree trials damaged the original accepted physical candidate");
+  Require(quad_trial.interior_uv_area >= baseline.interior_area || !quad_trial.emitted_disk,
+          "Interior QUAD trial unexpectedly lost admitted source region");
+  Require(aft_trial.interior_uv_area >= baseline.interior_area || !aft_trial.emitted_disk,
+          "Boundary AFT trial unexpectedly lost admitted source region");
+
+  std::ostringstream output;
+  output.imbue(std::locale::classic());
+  output << std::setprecision(17)
+         << "QUAD_NATIVE_TREE_TRIALS"
+         << " source=previous_real_mixed_physical_residual"
+         << " baseline_leaves=" << baseline.source_leaves
+         << " baseline_quad_uv_area=" << baseline.interior_area
+         << " quad_cell_id=" << quad_trial.chosen_cell_id
+         << " quad_leaves=" << quad_trial.leaves
+         << " quad_emitted_disk=" << int(quad_trial.emitted_disk)
+         << " quad_uv_area=" << quad_trial.interior_uv_area
+         << " quad_faces=" << quad_trial.quads
+         << " aft_cell_id=" << aft_trial.chosen_cell_id
+         << " aft_leaves=" << aft_trial.leaves
+         << " aft_emitted_disk=" << int(aft_trial.emitted_disk)
+         << " aft_uv_area=" << aft_trial.interior_uv_area
+         << " aft_quad_faces=" << aft_trial.quads
+         << " source_candidate_preserved=1"
+         << " native_trial_refinements=2"
+         << " actual_adaptive_epochs=0\n";
+  std::cout << output.str();
+  // Preserve rejected-candidate reasons without admitting a partial quadtree.
+  if (!quad_trial.emitted_disk)
+    std::cout << "QUAD_NATIVE_TRIAL_REJECTION region=quad reason=" << quad_trial.rejection << '\n';
+  if (!aft_trial.emitted_disk)
+    std::cout << "QUAD_NATIVE_TRIAL_REJECTION region=aft reason=" << aft_trial.rejection << '\n';
 }
 
 void Export(const Candidate& result, const std::filesystem::path& path) {
@@ -742,7 +852,8 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
   ProbeTypedHistory(*candidate.mesh, candidate, *patch);
   ProbeMixedCurvature(*candidate.mesh, candidate);
   ProbePhysicalQuadQuality(*candidate.mesh, candidate, *patch);
-  ProbeMixedSurfaceResidual(candidate, *patch);
+  const auto mixed_residual = ProbeMixedSurfaceResidual(candidate, *patch);
+  ProbeNativeTreeAlternatives(candidate, mixed_residual);
   Export(candidate, config.output_prefix + ".obj");
   candidate.mesh->SetPatch(patch);
   patch->SetSubMesh(candidate.mesh.get());
