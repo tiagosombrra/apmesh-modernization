@@ -69,3 +69,7 @@ The locally executed prototype STEP screen passed **6/6** adversarial tests and 
 6. Conversion to .bp, APMesh TRI generation, historical regressions and future QUAD/anisotropic claims remain separately blocked until their gates are measured.
 
 **Disposition:** R2 partial structural and contact evidence obtained; **0 externally validated 3+-sheet non-manifold APMesh models**, **0 converted models**, **0 generator claims**. No source algorithm or historical experimental artifact changed.
+
+## R2 native kernel follow-on
+
+A separate, measured source-recipe mirror and native STEP round-trip now reconstruct four candidate surface sheets around a central three-body contact, with explicit source-edge separation and 15 local adversarial tests. See [R2_NATIVE_INTERFACE_PROOF.md](R2_NATIVE_INTERFACE_PROOF.md). This result does NOT approve G2, validate an external model, convert BP, or qualify the APMesh generator.
