@@ -5,15 +5,21 @@
 
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
 M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through
-PR216 with its scoped exact-candidate/research-merge gates. Controlled P1/R2 is integrated through PR217; P2/R3 is the next
-delivery. P0 repairs the existing admission contract; it introduces no new
-numerical or scientific policy.
+PR216 with its scoped exact-candidate/research-merge gates. Controlled P1/R2 is integrated through PR217.
+P2a (PR218), P2b (PR219) and P2c (PR220) are bounded research-only
+prerequisites. **P2d/R3 is the active next delivery: two truly distinct
+accepted mixed QUAD/TRI adaptive epochs** ([issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)).
+P0 repairs the existing admission contract; it introduces no new numerical
+or scientific policy.
 
 | Order | Finite delivery | Acceptance and explicit remaining scope |
 | --- | --- | --- |
 | P0 — integrated | Reject concave UV cycles in the physical QUAD | Preserve the reproduced failing witness. Check all four UV corner determinants against the existing `1e-14` threshold, including cyclic rotations and reversed winding. Retain valid-element behavior within that four-corner threshold scope, original input and observer/rollback contracts. Do not claim unchanged admission of every previously accepted convex input. Scoped ordinary native, analysis, exact-head and remote gates passed; see the [delivery receipt](evidence/FOUR_CORNER_ADMISSION_DELIVERY_20261114.json). Broader M4 sanitizer/denial gates remain open. |
 | P1 — controlled case integrated, PR217 | Live controlled curved manifold patch | Execute explicit opt-in `ap_mesh --config` with actual typed QUAD interior and original AFT TRI exterior, original source boundary, independent UV/XYZ/orientation checks and failed-publication rollback. Detached chart export alone does not close this gate. |
-| P2 — next, R3 | Actual mixed-element adaptive history | Consume the accepted QUAD/TRI mesh as history for at least two accepted epochs; use typed curvature, quality, export, cloning and acceptance, and retain retry/rollback and exact default-TRI evidence. Original TRI epochs remain prerequisites, not QUAD M7 completion. |
+| P2a — integrated, PR218 | Typed mixed owner/observer clone and rollback | Bounded real controlled SubMesh clone, existing owner/observers retained on injected failures. No adaptive epoch. |
+| P2b — integrated, PR219 | Polygon-aware vertex links and defect-angle witness | Read-only oriented 3-/4-node vertex-link admission; experimental diagonal-barycentric metric; independent Python OBJ oracle. Not a production QUAD curvature estimator. |
+| P2c — integrated, PR220 | Four-corner physical QUAD quality witnesses and exact feature CI | Source-normal signed corner scaled Jacobians, split-normal cosine, physical edge ratios and negative cases; exact PR-head SHA checkout, 4/4 CI. Does not prove continuous validity or authorize thresholds. |
+| **P2d — NEXT, R3/M7 open** | Two genuinely adapted and accepted mixed epochs | Drive actual previous accepted QUAD/TRI mesh into typed subsequent reconstruction, scientifically review curvature/quality acceptance, preserve original source curve identity, retry/rollback and frozen TRI. Two clones or TRI-only accepted epochs do not satisfy this gate; [issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221). |
 
 R4 model-wide trials follow these functional deliveries. High-valence sheet/weld
 decisions, literal historical-method approval, all-QUAD and anisotropy remain
