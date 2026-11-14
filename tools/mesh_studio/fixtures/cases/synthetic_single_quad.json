@@ -1,0 +1,77 @@
+{
+  "case_id": "synthetic_single_quad",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": null,
+    "node_count": 4,
+    "quad_count": 1,
+    "triangle_count": 0,
+    "valid": true
+  },
+  "faces": [
+    {
+      "kind": "quad",
+      "nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "notes": "Four positive planar UV turns.",
+  "obj_sha256": "41492184a167272af081552b83ce02838d72639ee9f2a3f777dbbecdff6bd51f",
+  "reference_normal": [
+    0,
+    0,
+    1
+  ],
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

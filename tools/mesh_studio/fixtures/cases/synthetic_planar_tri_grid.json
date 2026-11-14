@@ -1,0 +1,258 @@
+{
+  "case_id": "synthetic_planar_tri_grid",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": null,
+    "node_count": 9,
+    "quad_count": 0,
+    "triangle_count": 8,
+    "valid": true
+  },
+  "faces": [
+    {
+      "kind": "triangle",
+      "nodes": [
+        0,
+        1,
+        4
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        0,
+        4,
+        3
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        1,
+        2,
+        5
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        1,
+        5,
+        4
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        3,
+        4,
+        7
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        3,
+        7,
+        6
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        4,
+        5,
+        8
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        4,
+        8,
+        7
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.5,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.5,
+      0.0
+    ],
+    [
+      0.5,
+      0.5,
+      0.0
+    ],
+    [
+      1.0,
+      0.5,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.5,
+      1.0,
+      0.0
+    ],
+    [
+      1.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "notes": "",
+  "obj_sha256": "9e4f480ec13b31bac27406fcae62fafd6ad263336ed99b9f6d506ddf5a7b3e96",
+  "reference_normal": [
+    0,
+    0,
+    1
+  ],
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

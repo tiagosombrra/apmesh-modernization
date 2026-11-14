@@ -1,0 +1,73 @@
+{
+  "case_id": "synthetic_nonfinite_coordinate",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": "nonfinite_coordinate",
+    "node_count": 4,
+    "quad_count": 1,
+    "triangle_count": 0,
+    "valid": false
+  },
+  "faces": [
+    {
+      "kind": "quad",
+      "nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "notes": "",
+  "obj_sha256": "241b97aa7c8af348cd026c4f1c13b2638b77e3b4c5973a83f00574693da28bd2",
+  "reference_normal": null,
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

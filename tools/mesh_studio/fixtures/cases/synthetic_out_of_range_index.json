@@ -1,0 +1,73 @@
+{
+  "case_id": "synthetic_out_of_range_index",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": "out_of_range_index",
+    "node_count": 4,
+    "quad_count": 1,
+    "triangle_count": 0,
+    "valid": false
+  },
+  "faces": [
+    {
+      "kind": "quad",
+      "nodes": [
+        0,
+        1,
+        4,
+        3
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "notes": "",
+  "obj_sha256": "021ba365fc61d236fd00816df70650b9c09c2890add057f219d0887c8dab0c86",
+  "reference_normal": null,
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

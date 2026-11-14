@@ -1,0 +1,73 @@
+{
+  "case_id": "synthetic_degenerate_quad",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": "repeated_vertex",
+    "node_count": 4,
+    "quad_count": 1,
+    "triangle_count": 0,
+    "valid": false
+  },
+  "faces": [
+    {
+      "kind": "quad",
+      "nodes": [
+        0,
+        1,
+        1,
+        3
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "notes": "",
+  "obj_sha256": "afa6647502c524b7cf8d783162f91ed6fcfcbc4686c12b1b246cc7ffe10f336b",
+  "reference_normal": null,
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

@@ -1,0 +1,199 @@
+{
+  "case_id": "synthetic_curved_bezier_grid",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": null,
+    "node_count": 9,
+    "quad_count": 4,
+    "triangle_count": 0,
+    "valid": true
+  },
+  "faces": [
+    {
+      "kind": "quad",
+      "nodes": [
+        0,
+        1,
+        4,
+        3
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.0,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "quad",
+      "nodes": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "quad",
+      "nodes": [
+        3,
+        4,
+        7,
+        6
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "kind": "quad",
+      "nodes": [
+        4,
+        5,
+        8,
+        7
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.5,
+      0.0,
+      0.05
+    ],
+    [
+      1.0,
+      0.0,
+      0.2
+    ],
+    [
+      0.0,
+      0.5,
+      0.025
+    ],
+    [
+      0.5,
+      0.5,
+      0.07500000000000001
+    ],
+    [
+      1.0,
+      0.5,
+      0.225
+    ],
+    [
+      0.0,
+      1.0,
+      0.1
+    ],
+    [
+      0.5,
+      1.0,
+      0.15000000000000002
+    ],
+    [
+      1.0,
+      1.0,
+      0.30000000000000004
+    ]
+  ],
+  "notes": "An analytically specified polynomial representable by a Bezier patch.",
+  "obj_sha256": "ad9011a932f4b4ac3ae322140d01b2e7d19850fc30ed14a50a8c91da41f573db",
+  "reference_normal": null,
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": {
+    "evaluation": "analytical_synthetic_not_original_Bezier",
+    "expression": "[u,v,0.2*u*u+0.1*v*v]",
+    "parameter_domain": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "source_derivatives": [
+      "[1,0,0.4*u]",
+      "[0,1,0.2*v]"
+    ]
+  },
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

@@ -1,0 +1,264 @@
+{
+  "case_id": "synthetic_shared_curve_fan2",
+  "coordinate_space": "XYZ",
+  "curves": [
+    {
+      "by_patch_xyz": {
+        "patch_0": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.5,
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "patch_1": [
+          [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.5,
+            -0.0,
+            0.0
+          ],
+          [
+            1.0,
+            -0.0,
+            0.0
+          ]
+        ]
+      },
+      "canonical_xyz": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "curve_id": "shared_axis_0",
+      "incident_patches": [
+        "patch_0",
+        "patch_1"
+      ],
+      "sample_parameters": [
+        0.0,
+        0.5,
+        1.0
+      ],
+      "topology_weld_approved": false
+    }
+  ],
+  "expected": {
+    "diagnostic": null,
+    "node_count": 12,
+    "quad_count": 4,
+    "triangle_count": 0,
+    "valid": true
+  },
+  "faces": [
+    {
+      "kind": "quad",
+      "nodes": [
+        0,
+        1,
+        4,
+        3
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "kind": "quad",
+      "nodes": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ]
+    },
+    {
+      "kind": "quad",
+      "nodes": [
+        6,
+        7,
+        10,
+        9
+      ],
+      "patch_id": "patch_1",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0
+        ],
+        [
+          0.5,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "kind": "quad",
+      "nodes": [
+        7,
+        8,
+        11,
+        10
+      ],
+      "patch_id": "patch_1",
+      "uv": [
+        [
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.5,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.5,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.5,
+      1.0,
+      0.0
+    ],
+    [
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    [
+      0.5,
+      -0.0,
+      0.0
+    ],
+    [
+      1.0,
+      -0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0,
+      1.2246467991473532e-16
+    ],
+    [
+      0.5,
+      -1.0,
+      1.2246467991473532e-16
+    ],
+    [
+      1.0,
+      -1.0,
+      1.2246467991473532e-16
+    ]
+  ],
+  "notes": "2 distinct patch-local sheets share logical curve samples; not welded.",
+  "obj_sha256": "6dc58651a570478a0c7a0d9a61e304cc74b262dc858a34bf31572d3b8e4f18d0",
+  "reference_normal": null,
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

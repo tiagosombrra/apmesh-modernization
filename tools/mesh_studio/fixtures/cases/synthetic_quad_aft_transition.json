@@ -1,0 +1,281 @@
+{
+  "case_id": "synthetic_quad_aft_transition",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": null,
+    "node_count": 8,
+    "quad_count": 1,
+    "triangle_count": 8,
+    "valid": true
+  },
+  "faces": [
+    {
+      "kind": "quad",
+      "nodes": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          -0.5,
+          -0.5
+        ],
+        [
+          0.5,
+          -0.5
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        0,
+        1,
+        5
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          -1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          -1.0
+        ],
+        [
+          0.5,
+          -0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        0,
+        5,
+        4
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          -1.0,
+          -1.0
+        ],
+        [
+          0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          -0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        1,
+        2,
+        6
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          1.0,
+          -1.0
+        ],
+        [
+          1.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        1,
+        6,
+        5
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          1.0,
+          -1.0
+        ],
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          -0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        2,
+        3,
+        7
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        2,
+        7,
+        6
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          -0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        3,
+        0,
+        4
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -1.0,
+          -1.0
+        ],
+        [
+          -0.5,
+          -0.5
+        ]
+      ]
+    },
+    {
+      "kind": "triangle",
+      "nodes": [
+        3,
+        4,
+        7
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          -1.0,
+          1.0
+        ],
+        [
+          -0.5,
+          -0.5
+        ],
+        [
+          -0.5,
+          0.5
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      -1,
+      -1,
+      0.0
+    ],
+    [
+      1,
+      -1,
+      0.0
+    ],
+    [
+      1,
+      1,
+      0.0
+    ],
+    [
+      -1,
+      1,
+      0.0
+    ],
+    [
+      -0.5,
+      -0.5,
+      0.0
+    ],
+    [
+      0.5,
+      -0.5,
+      0.0
+    ],
+    [
+      0.5,
+      0.5,
+      0.0
+    ],
+    [
+      -0.5,
+      0.5,
+      0.0
+    ]
+  ],
+  "notes": "One interior QUAD and eight exterior TRI: 4 QUAD/TRI seam edges.",
+  "obj_sha256": "ff0ea68b185902cd1b5c635f5a2a0af33ba7631b927f8b02a892d2d4948c128f",
+  "reference_normal": [
+    0,
+    0,
+    1
+  ],
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

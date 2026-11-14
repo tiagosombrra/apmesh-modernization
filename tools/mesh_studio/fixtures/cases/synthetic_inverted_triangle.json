@@ -1,0 +1,67 @@
+{
+  "case_id": "synthetic_inverted_triangle",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": "uv_winding",
+    "node_count": 3,
+    "quad_count": 0,
+    "triangle_count": 1,
+    "valid": false
+  },
+  "faces": [
+    {
+      "kind": "triangle",
+      "nodes": [
+        0,
+        2,
+        1
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "notes": "",
+  "obj_sha256": "48ae1d16f9c03eab56689e443926cc1faf64bdbd13bc4baab374c87cdd6e72c7",
+  "reference_normal": [
+    0,
+    0,
+    1
+  ],
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

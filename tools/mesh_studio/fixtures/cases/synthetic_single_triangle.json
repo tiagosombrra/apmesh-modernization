@@ -1,0 +1,67 @@
+{
+  "case_id": "synthetic_single_triangle",
+  "coordinate_space": "XYZ",
+  "curves": [],
+  "expected": {
+    "diagnostic": null,
+    "node_count": 3,
+    "quad_count": 0,
+    "triangle_count": 1,
+    "valid": true
+  },
+  "faces": [
+    {
+      "kind": "triangle",
+      "nodes": [
+        0,
+        1,
+        2
+      ],
+      "patch_id": "patch_0",
+      "uv": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "nodes": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "notes": "Positive triangle calibration.",
+  "obj_sha256": "be1a46f4426089e3317b9a645d1aec19f76d9a9f62a0ed5a4f97053014fc87a9",
+  "reference_normal": [
+    0,
+    0,
+    1
+  ],
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "source_model": "analytically_created_fixture",
+  "surface": null,
+  "synthetic": true,
+  "topology_scope": "patch_local",
+  "watermark": "SYNTHETIC TEST FIXTURE \u2014 NOT AN APMesh SCIENTIFIC RESULT"
+}

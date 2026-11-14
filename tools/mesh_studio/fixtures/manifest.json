@@ -1,0 +1,184 @@
+{
+  "experiment_file": "experiments/synthetic_nonmonotone_epochs.csv",
+  "fixture_cases": [
+    {
+      "case_id": "synthetic_concave_uv",
+      "expected": {
+        "diagnostic": "concave_uv",
+        "node_count": 4,
+        "quad_count": 1,
+        "triangle_count": 0,
+        "valid": false
+      },
+      "obj_sha256": "472cb0c11f4078002b39f4bd4639dfa5ec7d757a297eb3cd2b59e177e404181b"
+    },
+    {
+      "case_id": "synthetic_curved_bezier_grid",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 9,
+        "quad_count": 4,
+        "triangle_count": 0,
+        "valid": true
+      },
+      "obj_sha256": "ad9011a932f4b4ac3ae322140d01b2e7d19850fc30ed14a50a8c91da41f573db"
+    },
+    {
+      "case_id": "synthetic_degenerate_quad",
+      "expected": {
+        "diagnostic": "repeated_vertex",
+        "node_count": 4,
+        "quad_count": 1,
+        "triangle_count": 0,
+        "valid": false
+      },
+      "obj_sha256": "afa6647502c524b7cf8d783162f91ed6fcfcbc4686c12b1b246cc7ffe10f336b"
+    },
+    {
+      "case_id": "synthetic_inverted_triangle",
+      "expected": {
+        "diagnostic": "uv_winding",
+        "node_count": 3,
+        "quad_count": 0,
+        "triangle_count": 1,
+        "valid": false
+      },
+      "obj_sha256": "48ae1d16f9c03eab56689e443926cc1faf64bdbd13bc4baab374c87cdd6e72c7"
+    },
+    {
+      "case_id": "synthetic_nonfinite_coordinate",
+      "expected": {
+        "diagnostic": "nonfinite_coordinate",
+        "node_count": 4,
+        "quad_count": 1,
+        "triangle_count": 0,
+        "valid": false
+      },
+      "obj_sha256": "241b97aa7c8af348cd026c4f1c13b2638b77e3b4c5973a83f00574693da28bd2"
+    },
+    {
+      "case_id": "synthetic_out_of_range_index",
+      "expected": {
+        "diagnostic": "out_of_range_index",
+        "node_count": 4,
+        "quad_count": 1,
+        "triangle_count": 0,
+        "valid": false
+      },
+      "obj_sha256": "021ba365fc61d236fd00816df70650b9c09c2890add057f219d0887c8dab0c86"
+    },
+    {
+      "case_id": "synthetic_planar_quad_grid",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 9,
+        "quad_count": 4,
+        "triangle_count": 0,
+        "valid": true
+      },
+      "obj_sha256": "e0587b79d8c8cfc835a9abf49aca2f2c85186ed62e3f43138c1845423729b2e6"
+    },
+    {
+      "case_id": "synthetic_planar_tri_grid",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 9,
+        "quad_count": 0,
+        "triangle_count": 8,
+        "valid": true
+      },
+      "obj_sha256": "9e4f480ec13b31bac27406fcae62fafd6ad263336ed99b9f6d506ddf5a7b3e96"
+    },
+    {
+      "case_id": "synthetic_quad_aft_transition",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 8,
+        "quad_count": 1,
+        "triangle_count": 8,
+        "valid": true
+      },
+      "obj_sha256": "ff0ea68b185902cd1b5c635f5a2a0af33ba7631b927f8b02a892d2d4948c128f"
+    },
+    {
+      "case_id": "synthetic_shared_curve_fan2",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 12,
+        "quad_count": 4,
+        "triangle_count": 0,
+        "valid": true
+      },
+      "obj_sha256": "6dc58651a570478a0c7a0d9a61e304cc74b262dc858a34bf31572d3b8e4f18d0"
+    },
+    {
+      "case_id": "synthetic_shared_curve_fan28",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 168,
+        "quad_count": 56,
+        "triangle_count": 0,
+        "valid": true
+      },
+      "obj_sha256": "55648a1cdc783a9a35e131f6e1605349c274ae78f72d51aee1a67e70b41f3114"
+    },
+    {
+      "case_id": "synthetic_shared_curve_fan3",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 18,
+        "quad_count": 6,
+        "triangle_count": 0,
+        "valid": true
+      },
+      "obj_sha256": "8883363201231a0e93d44fc918f1e4eff9631b08fee0997bd4296fba725fb649"
+    },
+    {
+      "case_id": "synthetic_shared_curve_fan4",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 24,
+        "quad_count": 8,
+        "triangle_count": 0,
+        "valid": true
+      },
+      "obj_sha256": "b06ead3bad5071a8ffcf31f42219aa66f402fc1c15af2c956118c1272835285e"
+    },
+    {
+      "case_id": "synthetic_shared_curve_mismatch",
+      "expected": {
+        "diagnostic": "shared_curve_mismatch",
+        "node_count": 18,
+        "quad_count": 6,
+        "triangle_count": 0,
+        "valid": false
+      },
+      "obj_sha256": "62773ca670821ee29d284c6760ca82a699f088a12094f2119315f6f045649bd3"
+    },
+    {
+      "case_id": "synthetic_single_quad",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 4,
+        "quad_count": 1,
+        "triangle_count": 0,
+        "valid": true
+      },
+      "obj_sha256": "41492184a167272af081552b83ce02838d72639ee9f2a3f777dbbecdff6bd51f"
+    },
+    {
+      "case_id": "synthetic_single_triangle",
+      "expected": {
+        "diagnostic": null,
+        "node_count": 3,
+        "quad_count": 0,
+        "triangle_count": 1,
+        "valid": true
+      },
+      "obj_sha256": "be1a46f4426089e3317b9a645d1aec19f76d9a9f62a0ed5a4f97053014fc87a9"
+    }
+  ],
+  "publication_warning": "Never report synthetic fixture measurements as actual APMesh scientific experiments.",
+  "schema": "apmesh.meshstudio.synthetic.v1",
+  "synthetic": true
+}
