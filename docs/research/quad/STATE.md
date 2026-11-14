@@ -2,6 +2,13 @@
 
 **Branch:** `quad-templates`
 
+**Active checkpoint (2026-11-13 Fortaleza / 2026-11-14 UTC — R2c20 qualified, R2c21 experimental candidate 5ed7fdd in CI):** Verified PR #214 is still DRAFT/UNMERGED. Original feature head d96b30731048daecb7c04659f9219cb7c07a75f6 achieved GitHub Actions run #43523848833 SUCCESS 4/4, including native GCC/MSVC QUAD checks, root CTest/Python and frozen Eistute/Book TRI equivalence. R2c20 checked all original accepted source TRI OBJ 3D faces for Eistute accepted steps [1,2,4] and Book [1] with five negative controls; this is not current patch UV/normal or global manifold certification.
+
+**R2c21 experimental candidate 5ed7fdd:** Pushed research-only source commit 5ed7fdd572af195b0b2dce4c223ff6cd5f4c1183 to the existing PR #214 branch. The new tools/verify_r2c21_detached_chart_topology.py independently checks original detached Eistute/Book QUAD/AFT per-patch indexed halfedge winding, no >2 local face uses, connectivity, boundary vertex degrees, duplicate faces, finite Newell normals and seven negative controls. Registered a bounded read-only workflow step and retained report; saved the scope note R2C21_DETACHED_PATCH_LOCAL_TOPOLOGY_20261113.md. Exact Actions #43532150635 was IN PROGRESS at checkpoint. No exact new native original patch results or complete 4/4 qualification are claimed. Source UV, original Bezier differential normals, global valence-4/28 sheet pairing and cross-patch welding still require separate proof and Creto/Bento approval. No source TRI, main or model inputs changed; no local native/sanitizer execution was performed.
+
+**Next gate:** inspect full R2c21 CI on the exact commit, retain first genuine failing patch/edge if present, and certify original source UV and normal winding as a separate step; never authorize global welding until a source-SHA-bound advisor sheet policy exists.
+
+
 
 **Active checkpoint (2026-11-13 UTC — session 107, R2c-19 SECOND SOURCE-IDENTICAL CI GLOBAL ORIGINAL TRI QUALITY POSITIVE BUT PATCH CSV PREVIOUS-EPOCH SNAPSHOT PROVEN; R2c-20 ACTUAL ACCEPTED ORIGINAL TRI OBJ PER-FACE AUDIT CANDIDATE IN CI):**
 

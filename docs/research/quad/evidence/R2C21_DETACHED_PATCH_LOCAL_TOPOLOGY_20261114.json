@@ -1,0 +1,26 @@
+{
+  "schema": "apmesh.quad.r2c21.indexed_patch_gate_checkpoint.v1",
+  "date_local": "2026-11-13",
+  "prior_original_source_sha": "d96b30731048daecb7c04659f9219cb7c07a75f6",
+  "prior_full_run": {
+    "id": 43523848833,
+    "conclusion": "success_4_of_4"
+  },
+  "new_source_sha": "5ed7fdd572af195b0b2dce4c223ff6cd5f4c1183",
+  "new_full_run": {
+    "id": 43532150635,
+    "state_at_checkpoint": "in_progress_unqualified"
+  },
+  "open_pr": 214,
+  "branch": "quad/integration-r2b2-exterior-aft-20261112",
+  "negative_controls_authored": 7,
+  "native_original_patch_gate_qualified": false,
+  "scientific_source_UV_normal_proof": false,
+  "scientific_sheet_approval": false,
+  "cross_patch_welding": false,
+  "production_TRI_modified": false,
+  "original_model_valences": {
+    "eistute": 4,
+    "book": 28
+  }
+}
