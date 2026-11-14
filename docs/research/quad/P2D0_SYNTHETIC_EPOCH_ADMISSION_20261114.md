@@ -1,6 +1,6 @@
 # P2d-0 — metadata-only mixed epoch preflight
 
-Date: 2026-11-14. Tracking: [R3/M7 issue #222](https://github.com/tiagosombrra/apmesh-modernization/issues/222).
+Date: 2026-11-14. Tracking: [R3/M7 issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221).
 
 ## What this change actually tests
 
@@ -24,6 +24,9 @@ then checks subsequent receipts for:
   rule, NOT an approved universal quality or efficiency decision);
 - exception-safe append of metadata, leaving the prior record unchanged
   on invalid input or failed allocation.
+
+This gate is metadata-only: claimed hashes are not independently attested,
+and a nonzero claimed tree edit does not prove that a Quadtree changed.
 
 The native test uses **fabricated** hashes and a fabricated sequence of three
 metadata states with two transitions, plus **14 targeted negative witnesses**.
