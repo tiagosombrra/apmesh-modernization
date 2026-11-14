@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <locale>
 #include <set>
+#include <tuple>
 #include "owned_aft_front.h"
 #include "interior_template_dispatch.h"
 #include "front_interface_audit.h"
@@ -329,6 +330,170 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit) {
   return result;
 }
 
+// Capture exactly the live non-owning element links, including their order.
+std::vector<std::vector<ElementAdaptive*>> CaptureNodeObservers(SubMesh& mesh) {
+  std::vector<std::vector<ElementAdaptive*>> snapshots;
+  snapshots.reserve(mesh.GetNumberNos());
+  for (unsigned i = 0; i < mesh.GetNumberNos(); ++i) {
+    const auto& observers = mesh.GetNoh(i)->GetElements();
+    snapshots.emplace_back(observers.begin(), observers.end());
+  }
+  return snapshots;
+}
+
+// Verify that a physical history node observes only its own actual elements.
+void CheckTypedIncidence(SubMesh& mesh, const Candidate& layout) {
+  Require(mesh.GetNumberNos() == layout.uv.size() &&
+              mesh.GetNumberElements() == layout.faces.size(),
+          "Typed history size differs from the accepted QUAD/TRI layout");
+  std::vector<std::set<ElementAdaptive*>> expected(mesh.GetNumberNos());
+  for (unsigned i = 0; i < mesh.GetNumberElements(); ++i) {
+    auto* element = mesh.GetElement(i);
+    Require(element != nullptr, "Missing physical history element");
+    const auto& face = layout.faces[i];
+    Require(face.size() == 3 || face.size() == 4, "Unexpected mixed element arity");
+    const bool is_quad = dynamic_cast<research::QuadrilateralAdaptive*>(element) != nullptr;
+    const bool is_tri = dynamic_cast<TriangleAdaptive*>(element) != nullptr;
+    Require((face.size() == 4 && is_quad && !is_tri) ||
+                (face.size() == 3 && is_tri && !is_quad),
+            "History element type does not match its physical topology");
+    for (const auto index : face) {
+      Require(index < expected.size() && expected[index].insert(element).second,
+              "Duplicate or invalid typed history incidence");
+    }
+  }
+  for (unsigned i = 0; i < mesh.GetNumberNos(); ++i) {
+    auto* node = mesh.GetNoh(i);
+    Require(node != nullptr && node->GetId() == static_cast<unsigned long>(i + 1),
+            "Typed history node identity changed");
+    const auto& actual = node->GetElements();
+    Require(actual.size() == expected[i].size() &&
+                std::set<ElementAdaptive*>(actual.begin(), actual.end()) == expected[i],
+            "Typed history contains a stale, foreign or duplicated observer");
+  }
+}
+
+// Rebuild a true owned mixed-element graph; never copy borrowed observer lists.
+std::unique_ptr<SubMesh> CloneTypedHistory(const SubMesh& original,
+                                           const Candidate& layout, PatchBezier& patch,
+                                           int fail_before_element) {
+  Require(original.GetNumberNos() == layout.uv.size() &&
+              original.GetNumberElements() == layout.faces.size(),
+          "Typed history source/layout count mismatch");
+  auto clone = std::make_unique<SubMesh>();
+  for (unsigned i = 0; i < original.GetNumberNos(); ++i) {
+    const auto* node = original.GetNoh(i);
+    Require(node != nullptr, "Typed history source has a missing node");
+    auto copied = std::make_unique<NodeAdaptive>(node->GetX(), node->GetY(), node->GetZ());
+    copied->SetId(node->GetId());
+    copied->SetGa(node->GetGa());
+    copied->SetGd(node->GetGd());
+    copied->SetHa(node->GetHa());
+    copied->SetHd(node->GetHd());
+    clone->AddNoh(std::move(copied));
+  }
+  for (unsigned i = 0; i < original.GetNumberElements(); ++i) {
+    if (fail_before_element == static_cast<int>(i))
+      throw PublicationFailure("Injected partial typed history clone failure");
+    const auto& face = layout.faces[i];
+    auto* source_element = original.GetElement(i);
+    Require(source_element != nullptr, "Typed history source has a missing element");
+    auto* a = clone->GetNoh(static_cast<unsigned>(face.at(0)));
+    auto* b = clone->GetNoh(static_cast<unsigned>(face.at(1)));
+    auto* c = clone->GetNoh(static_cast<unsigned>(face.at(2)));
+    if (face.size() == 4) {
+      const auto* source_quad = dynamic_cast<const research::QuadrilateralAdaptive*>(source_element);
+      Require(source_quad != nullptr, "A QUAD was lost during typed history cloning");
+      research::QuadrilateralAdaptive::Parameters parameters{};
+      double u = 0.0, v = 0.0;
+      for (unsigned corner = 0; corner < 4; ++corner) {
+        const auto uv = layout.uv.at(face[corner]);
+        parameters[corner] = {uv.u, uv.v};
+        Require(source_quad->GetParameters()[corner] == parameters[corner],
+                "QUAD source UV metadata differs from layout");
+        u += uv.u / 4.0;
+        v += uv.v / 4.0;
+      }
+      auto* d = clone->GetNoh(static_cast<unsigned>(face[3]));
+      const auto normal = patch.Qu(u, v) * patch.Qv(u, v);
+      auto copied = std::make_unique<research::QuadrilateralAdaptive>(
+          research::QuadrilateralAdaptive::Nodes{a, b, c, d}, parameters, normal);
+      copied->SetId(static_cast<unsigned long>(i + 1));
+      clone->AddElement(std::move(copied));
+    } else {
+      Require(face.size() == 3, "Unsupported history element arity");
+      const auto* source_tri = dynamic_cast<const TriangleAdaptive*>(source_element);
+      Require(source_tri != nullptr, "An AFT triangle was lost during typed history cloning");
+      auto matches = [](const std::tuple<double, double>& values, UvVertex uv) {
+        return std::get<0>(values) == uv.u && std::get<1>(values) == uv.v;
+      };
+      Require(matches(source_tri->GetParametersN1(), layout.uv.at(face[0])) &&
+                  matches(source_tri->GetParametersN2(), layout.uv.at(face[1])) &&
+                  matches(source_tri->GetParametersN3(), layout.uv.at(face[2])),
+              "AFT triangle source UV metadata differs from layout");
+      auto copied = std::make_unique<TriangleAdaptive>(a, b, c);
+      copied->SetId(static_cast<unsigned long>(i + 1));
+      copied->SetParametersN1({layout.uv[face[0]].u, layout.uv[face[0]].v});
+      copied->SetParametersN2({layout.uv[face[1]].u, layout.uv[face[1]].v});
+      copied->SetParametersN3({layout.uv[face[2]].u, layout.uv[face[2]].v});
+      clone->AddElement(std::move(copied));
+    }
+    const auto* replica = clone->GetElement(i);
+    Require(replica != source_element &&
+                std::abs(replica->GetArea() - source_element->GetArea()) <=
+                    1e-12 * std::max(1.0, std::abs(source_element->GetArea())),
+            "History copy changed physical element area or reused its identity");
+  }
+  return clone;
+}
+
+void ProbeTypedHistory(SubMesh& accepted, const Candidate& layout, PatchBezier& patch) {
+  // The probe runs before OBJ publication and before the candidate is committed.
+  SubMesh* previous_patch_owner = patch.GetSubMesh();
+  CheckTypedIncidence(accepted, layout);
+  const auto original_observers = CaptureNodeObservers(accepted);
+  const auto* first_original_node = accepted.GetNoh(0);
+  const auto* first_original_element = accepted.GetElement(0);
+  {
+    auto clone = CloneTypedHistory(accepted, layout, patch, -1);
+    CheckTypedIncidence(*clone, layout);
+    Require(clone->GetNoh(0) != first_original_node &&
+                clone->GetElement(0) != first_original_element,
+            "Typed history clone aliases a previously accepted owner");
+
+    // Restore the original observer even if a later verification throws.
+    struct RestoreOriginalPatch final {
+      PatchBezier& patch;
+      SubMesh* previous;
+      ~RestoreOriginalPatch() { patch.SetSubMesh(previous); }
+    } restore{patch, previous_patch_owner};
+    clone->SetPatch(&patch);
+    patch.SetSubMesh(clone.get());
+    Require(patch.GetSubMesh() == clone.get(),
+            "Typed clone could not be staged as the current Patch submesh");
+    bool rejected = false;
+    try {
+      auto failed = CloneTypedHistory(*clone, layout, patch, 7);
+      (void)failed;
+    } catch (const PublicationFailure&) {
+      rejected = true;
+    }
+    Require(rejected && patch.GetSubMesh() == clone.get(),
+            "Rejected partial history clone replaced the accepted candidate");
+    CheckTypedIncidence(*clone, layout);
+    CheckTypedIncidence(accepted, layout);
+    Require(CaptureNodeObservers(accepted) == original_observers,
+            "Transient history clone mutated previously accepted node observers");
+  }
+  Require(patch.GetSubMesh() == previous_patch_owner &&
+              accepted.GetNoh(0) == first_original_node &&
+              accepted.GetElement(0) == first_original_element &&
+              CaptureNodeObservers(accepted) == original_observers,
+          "Typed history clone teardown damaged previously accepted state");
+  std::cout << "QUAD_TYPED_HISTORY_CLONE accepted_clone=1 partial_failure_rollback=1"
+               " source_observers_preserved=1 adaptive_epochs=0\n";
+}
+
 void Export(const Candidate& result, const std::filesystem::path& path) {
   Require(!std::filesystem::exists(path), "Controlled output already exists");
   auto staging = path;
@@ -386,6 +551,7 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
   auto* patch = dynamic_cast<PatchBezier*>(geometry.GetPatch(0));
   Require(patch != nullptr, "Controlled source must be Bezier");
   auto candidate = Generate(*patch, false);
+  ProbeTypedHistory(*candidate.mesh, candidate, *patch);
   Export(candidate, config.output_prefix + ".obj");
   candidate.mesh->SetPatch(patch);
   patch->SetSubMesh(candidate.mesh.get());
