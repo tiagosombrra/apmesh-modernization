@@ -645,7 +645,9 @@ void ProbeMixedSurfaceResidual(const Candidate& candidate, PatchBezier& patch) {
               metrics.samples == 5 * metrics.quadrilaterals + 4 * metrics.triangles &&
               metrics.worst_quad_face < candidate.quad_origins.size() &&
               metrics.maximum >= metrics.quad_maximum &&
-              metrics.maximum >= metrics.triangle_maximum,
+              metrics.maximum >= metrics.triangle_maximum &&
+              metrics.worst_triangle_face >= candidate.quads &&
+              metrics.worst_triangle_face < candidate.faces.size(),
           "Mixed physical error/source-leaf witness is invalid");
   const auto& leaf = candidate.quad_origins[metrics.worst_quad_face];
   Require(leaf.cell_id >= 0 && leaf.relative_depth >= 2 &&
@@ -665,6 +667,11 @@ void ProbeMixedSurfaceResidual(const Candidate& candidate, PatchBezier& patch) {
        << " quad_maximum=" << metrics.quad_maximum
        << " triangle_maximum=" << metrics.triangle_maximum
        << " worst_quad_face=" << metrics.worst_quad_face
+       << " worst_triangle_face=" << metrics.worst_triangle_face
+       << " dominant_region="
+       << (metrics.triangle_maximum > metrics.quad_maximum ? "tri_aft" : "quad_interior")
+       << " tri_sample_u=" << metrics.worst_triangle_sample_uv[0]
+       << " tri_sample_v=" << metrics.worst_triangle_sample_uv[1]
        << " real_leaf_ordinal=" << leaf.leaf_ordinal
        << " real_cell_id=" << leaf.cell_id
        << " source_depth=" << leaf.relative_depth
