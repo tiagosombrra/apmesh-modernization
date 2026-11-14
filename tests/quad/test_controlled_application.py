@@ -360,6 +360,57 @@ def verify_native_tree_trials(stdout, residual):
     return values
 
 
+def independent_source_band_grid_oracle():
+    # Reconstruct the proposed source-cell plan in exact 1/8 dyadic units,
+    # independently of the native quadtree capture/emitter implementation.
+    subdivided = {(1, 1), (0, 0), (1, 0), (0, 1)}
+    leaves = []
+    for x in range(4):
+        for y in range(4):
+            if (x, y) in subdivided:
+                leaves.extend((2*x+dx, 2*y+dy, 2*x+dx+1, 2*y+dy+1)
+                              for dx in (0, 1) for dy in (0, 1))
+            else:
+                leaves.append((2*x, 2*y, 2*x+2, 2*y+2))
+    require(len(leaves) == 28, "Independent source band leaf count changed")
+    eligible = [tile for tile in leaves
+                if tile[0] > 0 and tile[1] > 0 and
+                   tile[2] < 8 and tile[3] < 8]
+    tiles = {(u, v) for x0, y0, x1, y1 in eligible
+             for u in range(x0, x1) for v in range(y0, y1)}
+    require(len(tiles) == 21, "Independent source band grid area changed")
+    # Four-neighbor connectivity, not point contact, is essential for a disk.
+    pending = [next(iter(tiles))]
+    seen = set()
+    while pending:
+        xy = pending.pop()
+        if xy in seen:
+            continue
+        seen.add(xy)
+        pending.extend((xy[0]+du, xy[1]+dv)
+                       for du, dv in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                       if (xy[0]+du, xy[1]+dv) in tiles and
+                       (xy[0]+du, xy[1]+dv) not in seen)
+    require(seen == tiles, "Independent source band is not edge-connected")
+    # Reject an enclosed hole with a separate complement flood-fill.
+    outside = {(u, v) for u in range(8) for v in range(8)} - tiles
+    start = {(u, v) for u, v in outside
+             if u in (0, 7) or v in (0, 7)}
+    frontier = list(start)
+    reachable = set()
+    while frontier:
+        xy = frontier.pop()
+        if xy in reachable:
+            continue
+        reachable.add(xy)
+        frontier.extend((xy[0]+du, xy[1]+dv)
+                        for du, dv in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                        if (xy[0]+du, xy[1]+dv) in outside and
+                        (xy[0]+du, xy[1]+dv) not in reachable)
+    require(reachable == outside, "Independent source band contains a UV hole")
+    return len(tiles) / 64.0
+
+
 def verify_connected_aft_band(stdout, source_residual):
     # The band edits a separate native tree, never the accepted physical mesh.
     lines = stdout.decode().splitlines()
@@ -399,6 +450,9 @@ def verify_connected_aft_band(stdout, source_residual):
             int(record["emitted_quads"]) == 62 and
             math.isclose(float(record["quad_uv_area"]), 0.328125, abs_tol=1e-12),
             "Connected source band changed its qualified 2:1 manifold witness")
+    require(math.isclose(float(record["quad_uv_area"]),
+                         independent_source_band_grid_oracle(), abs_tol=1e-12),
+            "Real source band differs from independent dyadic union oracle")
     require(source_residual["worst_triangle_face"] == 74,
             "Connected band did not track real initial AFT source error")
     return record
