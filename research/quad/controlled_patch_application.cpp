@@ -734,6 +734,121 @@ NativeRefinementTrial TrialRealTreeRefinement(const research::ResidualUv& select
   return trial;
 }
 
+// A bounded three-leaf source refinement band reconnects a corner AFT island
+// toward the interior QUAD region, without claiming any new physical mesh.
+struct ConnectedBandTrial {
+  std::array<long, 3> refined_cell_ids{{-1, -1, -1}};
+  std::size_t baseline_leaves = 0;
+  std::size_t leaves = 0;
+  std::size_t quads = 0;
+  long double uv_area = 0.0L;
+  bool admitted_uv_disk = false;
+  std::string rejection = "none";
+};
+
+ConnectedBandTrial TrialConnectedAftBand(const research::ResidualUv& selected_uv) {
+  Require(std::isfinite(selected_uv[0]) && std::isfinite(selected_uv[1]) &&
+              selected_uv[0] > 0.0 && selected_uv[0] < 1.0 &&
+              selected_uv[1] > 0.0 && selected_uv[1] < 1.0,
+          "Connected AFT band needs a real interior source residual sample");
+  auto tree = MakeSourceTree(true);
+  ConnectedBandTrial result;
+  result.baseline_leaves = tree->GetLeafCount();
+  const auto find_leaf = [&tree](double u, double v) -> QuadtreeCell* {
+    QuadtreeCell* chosen = nullptr;
+    for (auto* cell : tree->getLeaves()) {
+      auto* low = cell->getMin();
+      auto* high = cell->getMax();
+      if (u > low->getX() && u < high->getX() &&
+          v > low->getY() && v < high->getY()) {
+        Require(chosen == nullptr, "Ambiguous source leaf in connected band");
+        chosen = cell;
+      }
+    }
+    Require(chosen != nullptr, "Connected band source site lacks a native leaf");
+    return chosen;
+  };
+
+  auto* corner = find_leaf(selected_uv[0], selected_uv[1]);
+  const double u0 = corner->getMin()->getX();
+  const double v0 = corner->getMin()->getY();
+  const double du = corner->getMax()->getX() - u0;
+  const double dv = corner->getMax()->getY() - v0;
+  const double center_u = u0 + 0.5 * du;
+  const double center_v = v0 + 0.5 * dv;
+  // Only the current lower-left AFT-dominated corner geometry is qualified.
+  Require(corner->getLevel() == 2 && center_u < 0.5 && center_v < 0.5 &&
+              std::isfinite(du) && std::isfinite(dv) && du > 0.0 && dv > 0.0,
+          "Connected AFT band requires the pinned corner source chart");
+  auto* east = find_leaf(center_u + du, center_v);
+  auto* north = find_leaf(center_u, center_v + dv);
+  const std::array<QuadtreeCell*, 3> selected{{corner, east, north}};
+  std::set<QuadtreeCell*> unique(selected.begin(), selected.end());
+  Require(unique.size() == 3 &&
+              east->getLevel() == corner->getLevel() &&
+              north->getLevel() == corner->getLevel(),
+          "Connected band did not select three distinct native source leaves");
+  for (std::size_t i = 0; i < selected.size(); ++i) {
+    auto* leaf = selected[i];
+    result.refined_cell_ids[i] = leaf->getId();
+    Require(!leaf->subdivided(), "Connected band attempted repeat native leaf edit");
+    leaf->subdivideToLevel(leaf->getLevel() + 1);
+  }
+  tree->refineAccordingToNeighbors();
+  result.leaves = tree->GetLeafCount();
+  Require(result.leaves >= result.baseline_leaves + 9,
+          "Connected band did not perform three actual native subdivisions");
+  try {
+    const auto region = CaptureLeafPolygons(*tree);
+    result.uv_area = region.interior_area;
+    auto emitted = EmitLeafQuads(*tree, PointRule);
+    result.quads = emitted.quads.size();
+    result.admitted_uv_disk = true;
+  } catch (const std::invalid_argument& failure) {
+    // Retain the genuine native topological failure as a rejected proposal.
+    result.rejection = failure.what();
+  }
+  return result;
+}
+
+void ProbeConnectedAftBand(const Candidate& unchanged,
+                           const research::MixedSurfaceResidual& residual) {
+  Require(unchanged.mesh && unchanged.quads > 0 &&
+              residual.worst_triangle_face >= unchanged.quads &&
+              residual.worst_triangle_face < unchanged.faces.size(),
+          "Connected band has no previous real physical AFT source error");
+  const auto observers = CaptureNodeObservers(*unchanged.mesh);
+  const auto* original_node = unchanged.mesh->GetNoh(0);
+  const auto* original_element = unchanged.mesh->GetElement(0);
+  const auto band = TrialConnectedAftBand(residual.worst_triangle_sample_uv);
+  Require(band.refined_cell_ids[0] == 6 && band.refined_cell_ids[1] > 0 &&
+              band.refined_cell_ids[2] > 0 &&
+              unchanged.mesh->GetNoh(0) == original_node &&
+              unchanged.mesh->GetElement(0) == original_element &&
+              CaptureNodeObservers(*unchanged.mesh) == observers,
+          "Connected native band lost physical source selection or prior owner identity");
+  std::ostringstream out;
+  out.imbue(std::locale::classic());
+  out << std::setprecision(17)
+      << "QUAD_CONNECTED_BAND_TRIAL"
+      << " source=real_candidate_worst_aft_triangle"
+      << " source_cell_id=" << band.refined_cell_ids[0]
+      << " bridge_east_cell_id=" << band.refined_cell_ids[1]
+      << " bridge_north_cell_id=" << band.refined_cell_ids[2]
+      << " baseline_leaves=" << band.baseline_leaves
+      << " refined_leaves=" << band.leaves
+      << " native_leaf_edits=3"
+      << " admitted_uv_disk=" << int(band.admitted_uv_disk)
+      << " quad_uv_area=" << band.uv_area
+      << " emitted_quads=" << band.quads
+      << " prior_physical_owner_preserved=1"
+      << " actual_aft_retriangulations=0"
+      << " adaptive_epochs=0\n";
+  std::cout << out.str();
+  if (!band.admitted_uv_disk)
+    std::cout << "QUAD_CONNECTED_BAND_REJECTION reason=" << band.rejection << '\n';
+}
+
 void ProbeNativeTreeAlternatives(const Candidate& unchanged,
                                  const research::MixedSurfaceResidual& residual) {
   Require(unchanged.mesh != nullptr && unchanged.quads > 0 &&
@@ -854,6 +969,7 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
   ProbePhysicalQuadQuality(*candidate.mesh, candidate, *patch);
   const auto mixed_residual = ProbeMixedSurfaceResidual(candidate, *patch);
   ProbeNativeTreeAlternatives(candidate, mixed_residual);
+  ProbeConnectedAftBand(candidate, mixed_residual);
   Export(candidate, config.output_prefix + ".obj");
   candidate.mesh->SetPatch(patch);
   patch->SetSubMesh(candidate.mesh.get());

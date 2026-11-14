@@ -360,6 +360,104 @@ def verify_native_tree_trials(stdout, residual):
     return values
 
 
+def independent_source_band_grid_oracle():
+    # Reconstruct the proposed source-cell plan in exact 1/8 dyadic units,
+    # independently of the native quadtree capture/emitter implementation.
+    subdivided = {(1, 1), (0, 0), (1, 0), (0, 1)}
+    leaves = []
+    for x in range(4):
+        for y in range(4):
+            if (x, y) in subdivided:
+                leaves.extend((2*x+dx, 2*y+dy, 2*x+dx+1, 2*y+dy+1)
+                              for dx in (0, 1) for dy in (0, 1))
+            else:
+                leaves.append((2*x, 2*y, 2*x+2, 2*y+2))
+    require(len(leaves) == 28, "Independent source band leaf count changed")
+    eligible = [tile for tile in leaves
+                if tile[0] > 0 and tile[1] > 0 and
+                   tile[2] < 8 and tile[3] < 8]
+    tiles = {(u, v) for x0, y0, x1, y1 in eligible
+             for u in range(x0, x1) for v in range(y0, y1)}
+    require(len(tiles) == 21, "Independent source band grid area changed")
+    # Four-neighbor connectivity, not point contact, is essential for a disk.
+    pending = [next(iter(tiles))]
+    seen = set()
+    while pending:
+        xy = pending.pop()
+        if xy in seen:
+            continue
+        seen.add(xy)
+        pending.extend((xy[0]+du, xy[1]+dv)
+                       for du, dv in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                       if (xy[0]+du, xy[1]+dv) in tiles and
+                       (xy[0]+du, xy[1]+dv) not in seen)
+    require(seen == tiles, "Independent source band is not edge-connected")
+    # Reject an enclosed hole with a separate complement flood-fill.
+    outside = {(u, v) for u in range(8) for v in range(8)} - tiles
+    start = {(u, v) for u, v in outside
+             if u in (0, 7) or v in (0, 7)}
+    frontier = list(start)
+    reachable = set()
+    while frontier:
+        xy = frontier.pop()
+        if xy in reachable:
+            continue
+        reachable.add(xy)
+        frontier.extend((xy[0]+du, xy[1]+dv)
+                        for du, dv in ((1, 0), (-1, 0), (0, 1), (0, -1))
+                        if (xy[0]+du, xy[1]+dv) in outside and
+                        (xy[0]+du, xy[1]+dv) not in reachable)
+    require(reachable == outside, "Independent source band contains a UV hole")
+    return len(tiles) / 64.0
+
+
+def verify_connected_aft_band(stdout, source_residual):
+    # The band edits a separate native tree, never the accepted physical mesh.
+    lines = stdout.decode().splitlines()
+    entries = [line for line in lines if line.startswith("QUAD_CONNECTED_BAND_TRIAL ")]
+    require(len(entries) == 1, "Connected AFT band result missing or duplicated")
+    record = dict(token.split("=", 1) for token in entries[0].split()[1:])
+    require(record["source"] == "real_candidate_worst_aft_triangle" and
+            int(record["source_cell_id"]) == 6 and
+            len({int(record[key]) for key in ("source_cell_id", "bridge_east_cell_id",
+                "bridge_north_cell_id")}) == 3 and
+            int(record["baseline_leaves"]) == 19 and
+            int(record["refined_leaves"]) >= 28 and
+            int(record["native_leaf_edits"]) == 3 and
+            record["prior_physical_owner_preserved"] == "1" and
+            record["actual_aft_retriangulations"] == "0" and
+            record["adaptive_epochs"] == "0",
+            "Connected band has false tree, physical or adaptive epoch provenance")
+    admitted = int(record["admitted_uv_disk"])
+    require(admitted in (0, 1), "Connected band has an invalid UV-disk status")
+    if admitted:
+        require(float(record["quad_uv_area"]) > 0.265625 and
+                int(record["emitted_quads"]) > 0,
+                "Connected band claimed a disk without expanding QUAD coverage")
+        require(not any(line.startswith("QUAD_CONNECTED_BAND_REJECTION ")
+                        for line in lines),
+                "Connected band both admitted and rejected the same source trial")
+    else:
+        require(int(record["emitted_quads"]) == 0 and
+                any(line.startswith("QUAD_CONNECTED_BAND_REJECTION reason=")
+                    for line in lines),
+                "Rejected source band failed to disclose the topology blocker")
+    # Freeze this source-specific result; any changed topology needs explicit review.
+    require(int(record["bridge_east_cell_id"]) == 7 and
+            int(record["bridge_north_cell_id"]) == 9 and
+            int(record["refined_leaves"]) == 28 and
+            int(record["admitted_uv_disk"]) == 1 and
+            int(record["emitted_quads"]) == 62 and
+            math.isclose(float(record["quad_uv_area"]), 0.328125, abs_tol=1e-12),
+            "Connected source band changed its qualified 2:1 manifold witness")
+    require(math.isclose(float(record["quad_uv_area"]),
+                         independent_source_band_grid_oracle(), abs_tol=1e-12),
+            "Real source band differs from independent dyadic union oracle")
+    require(source_residual["worst_triangle_face"] == 74,
+            "Connected band did not track real initial AFT source error")
+    return record
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -389,6 +487,7 @@ def main():
     quality = verify_quad_physical_quality(r.stdout, root/"accepted.obj")
     residual = verify_mixed_surface_residual(r.stdout, root/"accepted.obj")
     trials = verify_native_tree_trials(r.stdout, residual)
+    band = verify_connected_aft_band(r.stdout, residual)
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -408,6 +507,8 @@ def main():
             "Rollback changed history-dependent source residual")
     require(verify_native_tree_trials(r.stdout, residual) == trials,
             "Rollback native tree trial provenance differs from accepted control")
+    require(verify_connected_aft_band(r.stdout, residual) == band,
+            "Rollback native connected band provenance differs")
     r = execute("unsupported", model="missing.bp")
     require(r.returncode != 0 and not (root/"unsupported.obj").exists(),
             "Invalid source was published")
@@ -430,6 +531,7 @@ def main():
               "typed_physical_quad_quality": quality,
               "mixed_surface_residual": residual,
               "real_native_tree_trials": trials,
+              "connected_native_refinement_band": band,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
