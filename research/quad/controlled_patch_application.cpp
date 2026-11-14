@@ -14,6 +14,7 @@
 #include "interior_template_dispatch.h"
 #include "front_interface_audit.h"
 #include "typed_mixed_curvature.h"
+#include "typed_mixed_quality.h"
 
 #include "crab_mesh/aft/boundary.h"
 #include "crab_mesh/aft/quadtree.h"
@@ -550,6 +551,73 @@ void ProbeMixedCurvature(SubMesh& mesh, const Candidate& layout) {
   std::cout << output.str();
 }
 
+// Observe true physical four-corner quality without changing QUAD ownership.
+void ProbePhysicalQuadQuality(SubMesh& mesh, const Candidate& layout, PatchBezier& patch) {
+  double min_scaled = 1.0;
+  double min_warp_cosine = 1.0;
+  double max_edge_ratio = 1.0;
+  unsigned count = 0;
+  for (std::size_t i = 0; i < layout.quads; ++i) {
+    const auto& face = layout.faces.at(i);
+    Require(face.size() == 4 &&
+                dynamic_cast<research::QuadrilateralAdaptive*>(mesh.GetElement(static_cast<unsigned>(i))) != nullptr,
+            "Unexpected physical element in typed QUAD quality gate");
+    research::PhysicalQuadCorners points{};
+    research::PhysicalQuadCorners normals{};
+    for (unsigned corner = 0; corner < 4; ++corner) {
+      const auto id = face[corner];
+      const auto* node = mesh.GetNoh(static_cast<unsigned>(id));
+      Require(node != nullptr, "Missing physical QUAD quality node");
+      points[corner] = {node->GetX(), node->GetY(), node->GetZ()};
+      const auto uv = layout.uv.at(id);
+      normals[corner] = Cross(Values(patch.Qu(uv.u, uv.v)), Values(patch.Qv(uv.u, uv.v)));
+    }
+    const auto metric = research::ObservePhysicalQuadQuality(points, normals);
+    min_scaled = std::min(min_scaled, metric.min_scaled_jacobian);
+    min_warp_cosine = std::min(min_warp_cosine, metric.diagonal_normal_cosine);
+    max_edge_ratio = std::max(max_edge_ratio, metric.edge_ratio);
+    ++count;
+  }
+  Require(count == 42 && min_scaled > 0.0 && min_warp_cosine > 0.0 &&
+              std::isfinite(max_edge_ratio),
+          "Invalid controlled typed QUAD physical quality");
+
+  // Independent malformed physical-only witnesses do not mutate the live mesh.
+  const research::PhysicalQuadCorners square{{{0, 0, 0}, {1, 0, 0}, {1, 1, 0}, {0, 1, 0}}};
+  const research::PhysicalQuadCorners forward{{{0, 0, 1}, {0, 0, 1}, {0, 0, 1}, {0, 0, 1}}};
+  const auto flat = research::ObservePhysicalQuadQuality(square, forward);
+  Require(std::abs(flat.min_scaled_jacobian - 1.0) < 1e-12 &&
+              std::abs(flat.diagonal_normal_cosine - 1.0) < 1e-12 &&
+              std::abs(flat.edge_ratio - 1.0) < 1e-12,
+          "Analytic square QUAD physical quality witness failed");
+  unsigned rejected = 0;
+  const auto must_reject = [&](const research::PhysicalQuadCorners& points,
+                               const research::PhysicalQuadCorners& normals) {
+    try {
+      (void)research::ObservePhysicalQuadQuality(points, normals);
+    } catch (const std::invalid_argument&) {
+      ++rejected;
+    }
+  };
+  must_reject({{{0, 0, 0}, {0, 1, 0}, {1, 1, 0}, {1, 0, 0}}}, forward);
+  must_reject({{{0, 0, 0}, {1, 0, 0}, {1, 0, 0}, {0, 1, 0}}}, forward);
+  must_reject(square, {{{0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}}});
+  auto nonfinite = square;
+  nonfinite[0][0] = std::numeric_limits<double>::quiet_NaN();
+  must_reject(nonfinite, forward);
+  Require(rejected == 4, "Malformed typed QUAD physical quality input was admitted");
+  std::ostringstream output;
+  output.imbue(std::locale::classic());
+  output << std::setprecision(17)
+         << "QUAD_TYPED_QUALITY quads=" << count
+         << " min_scaled_jacobian=" << min_scaled
+         << " min_warpage_cosine=" << min_warp_cosine
+         << " max_edge_ratio=" << max_edge_ratio
+         << " negative_cases=" << rejected
+         << " policy=corner_normal_metric_probe adaptive_epochs=0\n";
+  std::cout << output.str();
+}
+
 void Export(const Candidate& result, const std::filesystem::path& path) {
   Require(!std::filesystem::exists(path), "Controlled output already exists");
   auto staging = path;
@@ -609,6 +677,7 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
   auto candidate = Generate(*patch, false);
   ProbeTypedHistory(*candidate.mesh, candidate, *patch);
   ProbeMixedCurvature(*candidate.mesh, candidate);
+  ProbePhysicalQuadQuality(*candidate.mesh, candidate, *patch);
   Export(candidate, config.output_prefix + ".obj");
   candidate.mesh->SetPatch(patch);
   patch->SetSubMesh(candidate.mesh.get());
