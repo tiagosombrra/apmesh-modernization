@@ -1,15 +1,24 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
 
-## 2026-11-13 execution audit
+## Current finite execution queue — 2026-11-14
 
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
-M0–M9 acceptance criteria. First repair the reproduced physical convexity
-contract, then finish live controlled curved-patch R2 and mixed-history R3.
-Original TRI epoch observations do not close M7 QUAD history. High-valence
-sheet/weld decisions and literal historical-method approval remain separate
-scientific gates, outside the first controlled R2 patch delivery. No scientific
-scope expansion or stage closure is authorized here.
+M0–M9 acceptance criteria. Only the physical convexity repair is active; its
+qualification is pending. This is a behavior-changing defect repair of the
+existing admission contract, not a new numerical or scientific policy.
+
+| Order | Finite delivery | Acceptance and explicit remaining scope |
+| --- | --- | --- |
+| P0 — active | Reject concave UV cycles in the physical QUAD | Preserve the reproduced failing witness. Check all four UV corner determinants against the existing `1e-14` threshold, including cyclic rotations and reversed winding. Retain valid-element behavior within that four-corner threshold scope, original input and observer/rollback contracts. Do not claim unchanged admission of every previously accepted convex input. Require applicable native, memory, analysis, exact-head and remote delivery gates before integration. |
+| P1 — next, R2 | Live controlled curved manifold patch | Execute explicit opt-in `ap_mesh --config` with actual typed QUAD interior and original AFT TRI exterior, original source boundary, independent UV/XYZ/orientation checks and failed-publication rollback. Detached chart export alone does not close this gate. |
+| P2 — after R2, R3 | Actual mixed-element adaptive history | Consume the accepted QUAD/TRI mesh as history for at least two accepted epochs; use typed curvature, quality, export, cloning and acceptance, and retain retry/rollback and exact default-TRI evidence. Original TRI epochs remain prerequisites, not QUAD M7 completion. |
+
+R4 model-wide trials follow these functional deliveries. High-valence sheet/weld
+decisions, literal historical-method approval, all-QUAD and anisotropy remain
+separate scientific gates; new valence-4/28 pairing is outside the first controlled
+R2 patch delivery. No scientific scope expansion, weakened gate or stage closure
+is authorized by this queue.
 
 
 **Estado:** M0 technical baseline inventory **qualified with documented serial-scope exceptions**; no QUAD algorithm implementation in the production pipeline. **Criado em:** 2026-11-08. **Revisão científica prevista:** 2026-11-11 com Joaquim Bento e Creto Vidal.

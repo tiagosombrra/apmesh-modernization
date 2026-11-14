@@ -1522,3 +1522,29 @@ R2, then actual mixed-element history R3. Original TRI epochs do not close QUAD
 M7. Consolidated current status/evidence and smaller review packages are still
 needed; high-valence sheet approval remains separate. No implementation, model
 campaign, hosted workflow trigger or merge. Roadmap scope/criteria unchanged.
+
+
+## 2026-11-14 Fortaleza — Execute audit P0 and restore one current state
+
+User authorized incorporating the audit findings and continuing implementation.
+Pinned clean canonical3809eb7, mainf6050ec1 and draft PR214 head7cd5014 before
+edits. Created the visible primary feature branch for the bounded convexity
+repair. Classified the change as an admission-contract defect repair: retain
+original012/023 expressions first, add123/301 at unchanged1e-14 before any
+observer registration; physical metrics and production sources remain intact.
+
+New60-case fixture fails on the unchanged original class with the preserved
+concavity error, then passes20accepted/40rejected under Linux GCC13.3, Windows
+GCC16.1 and MSVC19.44 Debug C++17. Existing physical ownership/lifecycle oracles
+remain and additionally require the full fixture. Configured LLVM22 analysis
+passes for element/new header via actual GCC metadata. Initial inherited format
+violations and a rejected /mnt/c/c setup path remain recorded; explicit touched-
+file formatting preserves whitespace-removed text identity. No native failure
+is hidden or oracle/tolerance weakened.
+
+Roadmap/dashboard now name finite P0→live curved-patch R2→mixed-history R3.
+Archived the former STATE byte-for-byte at the same relative-link depth and
+replaced the current entry with one concise active item. Legacy evidence scope,
+interrupted prior build and scientific decisions remain explicit. Full current
+native regression, complete model ownership and whole-probe analysis plus fresh
+remote gates are pending at this candidate commit; no stage closure/integration.
