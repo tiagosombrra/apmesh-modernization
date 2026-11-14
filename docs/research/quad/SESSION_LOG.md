@@ -1621,3 +1621,46 @@ is explicitly gated. Fixed16/vertexmean is not AdaptCurve or1993 validation.
 No global XYZ/sheet or broad memory qualification, no P2/mixed epoch claim.
 Next technical delivery: use this actual typed mesh as two accepted adaptive
 history epochs. Checkpoint is brief documentation/evidence, not new science.
+
+## 2026-11-14 — P2d0 synthetic preflight and P2d1a physical source residual qualified
+
+PR223 feature f1ea9332 (research merge 82522e05) qualified synthetic metadata
+epoch-parent/mesh/topology/source/policy invariants with 14 negative cases and
+fault-before-record-commit rollback. Its first exact-SHA CI failed the strict
+architecture inventory because tests/quad/CMakeLists.txt changed; refreshed
+ONLY the retained actual CMake SHA-256, without weakening the inventory
+algorithm or production TRI checks. New exact candidate CI43605731184: 4/4
+jobs, 85/85 root CTest, 527/527 Python, native Linux/Windows and frozen TRI.
+These synthetic metadata transitions count as zero adapted QUAD epochs.
+
+PR226 feature 53091439 (research merge c78a4445) added independent
+source-parameterized physical residuals on the real 42QUAD/36AFT TRI
+controlled candidate; native QUAD bilinear face geometry is never split for
+the estimator, TRI remains barycentric, and old original Bezier control-net
+is evaluated again at 354 deterministic UV sample points. Face4 maps
+to real native QUAD cell13, ordinal6, depth2; face74 is maximum AFT TRI
+error near UV(0.2,0.1). The true C++ application, independent Bernstein/OBJ
+Python oracle and Linux/Windows artifacts agree: QUAD max0.0026204483,
+AFT TRI max0.0463899583, sampled RMS0.0130653586. Identical physical
+OBJ SHA-256 cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0
+retained; original TRI unchanged. Exact feature CI43606747684: 4/4 jobs,
+18/18 QUAD native per OS, Linux ASan/UBSan/leak, 85/85 root CTest,
+527/527 Python and frozen original Eistute/Book TRI scientific parity.
+
+Independent supplementary topology/area audit: QUAD 25% UV area and
+29.6% faceted XYZ area, versus AFT TRI 75% UV and 70.4% faceted XYZ.
+Unweighted squared sampled residual is ~99.53% TRI/AFT; a coarse facet
+area-weighted sampled squared residual is ~99.84% TRI/AFT. Neither is
+a continuous area integral. Native CaptureLeafPolygons excludes leaves
+touching source boundary: refining an existing interior QUAD leaf alone
+cannot increase the original 25% QUAD UV coverage. The next P2d1b experiment
+must compare actual boundary/AFT-dominated and interior QUAD native-tree
+refinements with original contours, quality, UV/XYZ and retry evidence.
+
+Research evidence: evidence/P2D0_P2D1A_QUALIFICATION_20261114.json;
+canonical R3 issue221. Important negative scientific status:
+real_tree_edits=0, adaptive_epochs=0; no production mixed-history adapter,
+source AdaptCurve equivalence, approved quality policy, full M7/R3,
+1993 equivalence, nonmanifold global welding, all-QUAD or anisotropy.
+Main remained outside these research deliveries. This documentation-only
+checkpoint adds no scientific qualification to its own commit SHA.
