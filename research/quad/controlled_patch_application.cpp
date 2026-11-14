@@ -3,6 +3,7 @@
 #include "physical_quadrilateral_adaptive.h"
 #include "data/mesh/sub_mesh.h"
 #include "data/triangle_adaptive.h"
+#include <functional>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -189,13 +190,16 @@ struct PublicationFailure : std::runtime_error {
   using std::runtime_error::runtime_error;
 };
 
-Candidate Generate(PatchBezier& patch, bool fail_before_commit) {
+using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
+
+Candidate Generate(PatchBezier& patch, bool fail_before_commit,
+                   const ResearchSourceTreeFactory& source_tree_factory = {}) {
   ValidateSourceCurves(patch);
-  auto original = MakeSourceTree(true);
+  auto original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
   Require(original->makeTemplateBasedMesh() == Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
           "Original interior TRI reference failed");
   const auto front = SnapshotLegacyFront(*original);
-  auto tree = MakeSourceTree(true);
+  auto tree = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
   InteriorTemplateDispatcher dispatch(*tree);
   const auto selected = dispatch.Select(InteriorTemplateMode::ExperimentalQuad, PointRule);
   auto* raw = tree.get();
@@ -746,7 +750,9 @@ struct ConnectedBandTrial {
   std::string rejection = "none";
 };
 
-ConnectedBandTrial TrialConnectedAftBand(const research::ResidualUv& selected_uv) {
+ConnectedBandTrial TrialConnectedAftBand(
+    const research::ResidualUv& selected_uv,
+    std::unique_ptr<Quadtree>* retained_native_tree = nullptr) {
   Require(std::isfinite(selected_uv[0]) && std::isfinite(selected_uv[1]) &&
               selected_uv[0] > 0.0 && selected_uv[0] < 1.0 &&
               selected_uv[1] > 0.0 && selected_uv[1] < 1.0,
@@ -808,6 +814,8 @@ ConnectedBandTrial TrialConnectedAftBand(const research::ResidualUv& selected_uv
     // Retain the genuine native topological failure as a rejected proposal.
     result.rejection = failure.what();
   }
+  if (result.admitted_uv_disk && retained_native_tree)
+    *retained_native_tree = std::move(tree);
   return result;
 }
 
