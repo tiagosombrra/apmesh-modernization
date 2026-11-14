@@ -6,9 +6,10 @@
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
 M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through
 PR216 with its scoped exact-candidate/research-merge gates. Controlled P1/R2 is integrated through PR217.
-P2a (PR218), P2b (PR219) and P2c (PR220) are bounded research-only
-prerequisites. **P2d/R3 is the active next delivery: two truly distinct
-accepted mixed QUAD/TRI adaptive epochs** ([issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)).
+P2a (PR218), P2b (PR219), P2c (PR220), P2d-0 (PR223) and
+P2d-1a (PR226) are bounded research-only prerequisites. **P2d-1b/R3 is
+active: build and compare actual native AFT/QUAD refinement candidates
+before attempting two truly distinct accepted mixed adaptive epochs** ([issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)).
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 
@@ -19,7 +20,9 @@ or scientific policy.
 | P2a — integrated, PR218 | Typed mixed owner/observer clone and rollback | Bounded real controlled SubMesh clone, existing owner/observers retained on injected failures. No adaptive epoch. |
 | P2b — integrated, PR219 | Polygon-aware vertex links and defect-angle witness | Read-only oriented 3-/4-node vertex-link admission; experimental diagonal-barycentric metric; independent Python OBJ oracle. Not a production QUAD curvature estimator. |
 | P2c — integrated, PR220 | Four-corner physical QUAD quality witnesses and exact feature CI | Source-normal signed corner scaled Jacobians, split-normal cosine, physical edge ratios and negative cases; exact PR-head SHA checkout, 4/4 CI. Does not prove continuous validity or authorize thresholds. |
-| **P2d — NEXT, R3/M7 open** | Two genuinely adapted and accepted mixed epochs | Drive actual previous accepted QUAD/TRI mesh into typed subsequent reconstruction, scientifically review curvature/quality acceptance, preserve original source curve identity, retry/rollback and frozen TRI. Two clones or TRI-only accepted epochs do not satisfy this gate; [issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221). |
+| P2d-0 — integrated, PR223 | Synthetic epoch lineage preflight | Native C++17 metadata state transitions, 14 negative controls and precommit failure rollback; strict retained CMake SHA-256 fixed after a documented CI failure. Exact feature CI 4/4, 85 root CTests and 527 Python; no actual adapted epochs. |
+| P2d-1a — integrated, PR226 | Real physical mixed Bezier residual and source leaf attribution | Four TRI barycentric and five QUAD bilinear sampled XYZ errors per face, independent Bernstein/OBJ oracle, 18 Linux/Windows native contracts, ASan/UBSan, frozen TRI parity and 4/4 exact-head CI. Real QUAD source cell13 and AFT TRI worst face74 mapped, with `real_tree_edits=0 adaptive_epochs=0`. |
+| **P2d-1b — NEXT, R3/M7 open** | History-driven native AFT versus QUAD region refinement trials | AFT errors dominate this fixed16 sample: 0.04639 TRI maximum versus 0.002620 QUAD; only 25% of parametric domain is QUAD. Compare two real source-tree/physical reconstruction proposals: refine AFT-dominated source leaf versus max-error QUAD leaf; verify native AFT seam, QUAD UV coverage, physical quality and error improvement independently. Then define research acceptance/retry/rollback and two real adapted epochs; [issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221). |
 
 R4 model-wide trials follow these functional deliveries. High-valence sheet/weld
 decisions, literal historical-method approval, all-QUAD and anisotropy remain
