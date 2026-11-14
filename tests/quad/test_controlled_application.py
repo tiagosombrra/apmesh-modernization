@@ -466,7 +466,7 @@ def verify_physical_band_candidate(stdout, prefix):
     values = dict(token.split("=", 1) for token in records[0].split()[1:])
     require(values["source"] == "original_native_connected_band" and
             values["previous_physical_owner_preserved"] == "1" and
-            values["original_aft_attempted"] == "1" and
+            values["original_aft_pipeline_requested"] == "1" and
             values["adaptive_epochs"] == "0",
             "Physical band incorrectly claimed ownership/adaptation admission")
     candidate_path = Path(str(prefix) + ".band-candidate.obj")
