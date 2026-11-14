@@ -180,6 +180,23 @@ jobs:
             build/local-serial/r2c10_original_mesh_export.log
           if-no-files-found: error
           retention-days: 14
+      - name: R2c22 independently audit original patch UV and Bezier differential normals
+        shell: bash
+        run: |
+          python3 tools/verify_r2c22_original_patch_uv_bezier_orientation.py \
+            --directory build/local-serial/r2c10_original_detached_meshes \
+            --output build/local-serial/r2c22_original_uv_bezier_orientation
+      - name: Retain R2c22 real original UV / normal provenance and audit
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c22-original-uv-bezier-${{ github.sha }}
+          path: |
+            build/local-serial/r2c22_original_uv_bezier_orientation/r2c22_original_patch_uv_bezier_orientation.json
+            build/local-serial/r2c10_original_detached_meshes/*_original_patch_uv_vertices.csv
+            build/local-serial/r2c10_original_detached_meshes/*_original_bezier_facet_normals.csv
+          if-no-files-found: error
+          retention-days: 14
       - name: R2c21 independently audit original detached QUAD AFT indexed patch topology
         shell: bash
         run: |

@@ -1953,12 +1953,21 @@ void ExportAllSidesPhysicalOriginalModel(
   const auto obj_path = folder / (model + "_all_sides_detached_quad_aft.obj");
   const auto json_path = folder / (model + "_all_sides_detached_quad_aft.json");
   const auto atlas_path = folder / (model + "_original_source_seam_atlas.csv");
+  const auto uv_path = folder / (model + "_original_patch_uv_vertices.csv");
+  const auto normal_path = folder / (model + "_original_bezier_facet_normals.csv");
   std::ofstream obj(obj_path, std::ios::trunc);
   std::ofstream manifest(json_path, std::ios::trunc);
   std::ofstream atlas(atlas_path, std::ios::trunc);
-  Require(obj && manifest && atlas,
-          "R2c11 unable to create physical research mesh/atlas exports");
+  std::ofstream uv_file(uv_path, std::ios::trunc);
+  std::ofstream normal_file(normal_path, std::ios::trunc);
+  Require(obj && manifest && atlas && uv_file && normal_file,
+          "R2c22 unable to create native Bezier facet provenance files");
   obj << std::setprecision(17);
+  uv_file << std::setprecision(17)
+          << "patch_id,obj_vertex_index,u,v,bezier_x,bezier_y,bezier_z\n";
+  normal_file << std::setprecision(17)
+              << "patch_id,face_ordinal,facet_ordinal,center_u,center_v,"
+                 "bezier_nx,bezier_ny,bezier_nz\n";
   atlas << std::setprecision(17)
         << "patch_id,side,curve_registry_index,curve_id,source_node_id,"
         << "source_parameter,source_x,source_y,source_z,"
@@ -1983,6 +1992,8 @@ void ExportAllSidesPhysicalOriginalModel(
   std::size_t total_quads = 0;
   std::size_t total_tris = 0;
   std::size_t source_atlas_sites = 0;
+  std::size_t recorded_uv_vertices = 0;
+  std::size_t recorded_normal_facets = 0;
   std::map<const CurveAdaptiveParametric*, unsigned> original_curve_registry;
   for (unsigned c = 0; c < original.GetNumberCurves(); ++c) {
     auto* curve = dynamic_cast<CurveAdaptiveParametric*>(
@@ -1997,8 +2008,38 @@ void ExportAllSidesPhysicalOriginalModel(
     Require(chart && chart->GetPatch() == nullptr,
             "R2c10 original physical export has a foreign Patch observer");
     DisjointOwnerStage::CheckChart(*chart);
+    auto* source_patch = dynamic_cast<PatchBezier*>(original.GetPatch(patch_id));
+    Require(source_patch && source_patch->GetSubMesh(),
+            "R2c22 original Bezier patch observer is missing");
     obj << "g patch_" << patch_id << '\n';
     std::map<unsigned long, std::size_t> original_node_ids;
+    std::map<std::size_t, UvVertex> original_uv;
+    const auto remember_uv = [&](std::size_t index, UvVertex uv) {
+      Require(std::isfinite(uv.u) && std::isfinite(uv.v) &&
+                  uv.u >= 0.0 && uv.u <= 1.0 &&
+                  uv.v >= 0.0 && uv.v <= 1.0,
+              "R2c22 native element UV lies outside original source patch");
+      const auto pair = original_uv.emplace(index, uv);
+      Require(pair.second ||
+                  (pair.first->second.u == uv.u &&
+                   pair.first->second.v == uv.v),
+              "R2c22 one native physical vertex has conflicting UV");
+    };
+    const auto record_facet = [&](unsigned face, unsigned facet,
+                                  UvVertex a, UvVertex b, UvVertex c) {
+      const UvVertex mid{(a.u + b.u + c.u) / 3.0,
+                         (a.v + b.v + c.v) / 3.0};
+      const Xyz normal = Cross(
+          Values(source_patch->Qu(mid.u, mid.v)),
+          Values(source_patch->Qv(mid.u, mid.v)));
+      Require(Finite(normal) && Norm(normal) > 1e-14,
+              "R2c22 original Bezier normal is zero/nonfinite");
+      normal_file << patch_id << ',' << face << ',' << facet << ','
+                  << mid.u << ',' << mid.v << ','
+                  << normal[0] << ',' << normal[1] << ','
+                  << normal[2] << '\n';
+      ++recorded_normal_facets;
+    };
     for (unsigned i = 0; i < chart->GetNumberNos(); ++i) {
       const auto* node = chart->GetNoh(i);
       Require(node && Finite(Values(*node)) &&
@@ -2015,25 +2056,40 @@ void ExportAllSidesPhysicalOriginalModel(
       if (const auto* quad =
               dynamic_cast<const QuadrilateralAdaptive*>(element)) {
         obj << 'f';
+        std::array<UvVertex, 4> quad_uv{};
+        unsigned corner = 0U;
         for (const auto* node : quad->GetNodeObservers()) {
           const auto found = original_node_ids.find(node->GetId());
           Require(found != original_node_ids.end(),
                   "R2c10 QUAD face references a foreign patch vertex");
+          const auto& native_uv = quad->GetParameters()[corner];
+          quad_uv[corner] = {native_uv[0], native_uv[1]};
+          remember_uv(found->second, quad_uv[corner]);
           obj << ' ' << found->second;
+          ++corner;
         }
         obj << '\n';
+        record_facet(i, 0U, quad_uv[0], quad_uv[1], quad_uv[2]);
+        record_facet(i, 1U, quad_uv[0], quad_uv[2], quad_uv[3]);
         ++quads;
       } else if (const auto* triangle =
                      dynamic_cast<const TriangleAdaptive*>(element)) {
         obj << 'f';
+        std::array<UvVertex, 3> tri_uv{};
         for (unsigned vertex = 1U; vertex <= 3U; ++vertex) {
           const auto point = triangle->GetVertexPoint(vertex);
           const auto found = original_node_ids.find(point.GetId());
           Require(found != original_node_ids.end(),
                   "R2c10 TRI face references a foreign patch vertex");
+          const auto& params = vertex == 1U ? triangle->GetParametersN1()
+              : vertex == 2U ? triangle->GetParametersN2()
+                             : triangle->GetParametersN3();
+          tri_uv[vertex - 1U] = {std::get<0>(params), std::get<1>(params)};
+          remember_uv(found->second, tri_uv[vertex - 1U]);
           obj << ' ' << found->second;
         }
         obj << '\n';
+        record_facet(i, 0U, tri_uv[0], tri_uv[1], tri_uv[2]);
         ++triangles;
       } else {
         throw std::runtime_error(
@@ -2043,12 +2099,25 @@ void ExportAllSidesPhysicalOriginalModel(
     Require(quads > 0U && triangles > 0U &&
                 quads + triangles == chart->GetNumberElements(),
             "R2c10 exported patch dropped a physical mesh element");
+    Require(original_uv.size() == chart->GetNumberNos(),
+            "R2c22 original source UV has unreferenced physical vertices");
+    for (const auto& [index, uv] : original_uv) {
+      Require(index > total_nodes &&
+                  index <= total_nodes + chart->GetNumberNos(),
+              "R2c22 physical UV belongs to a foreign patch");
+      const auto* node = chart->GetNoh(
+          static_cast<unsigned>(index - total_nodes - 1U));
+      const Xyz xyz = Values(source_patch->Parameterize(uv.u, uv.v));
+      Require(node && Finite(xyz) && NearSource(xyz, Values(*node)),
+              "R2c22 native source UV/XYZ does not match original Bezier");
+      uv_file << patch_id << ',' << index << ',' << uv.u << ',' << uv.v
+              << ',' << xyz[0] << ',' << xyz[1] << ',' << xyz[2] << '\n';
+      ++recorded_uv_vertices;
+    }
     // R2c-11 preserves every original source curve site including the terminal
     // corner omitted by the closed AFT ring, with a chart-local physical OBJ
     // vertex witness. It never equates physical node owners across patches.
-    auto* source_patch =
-        dynamic_cast<PatchBezier*>(original.GetPatch(patch_id));
-    Require(source_patch && source_patch->GetSubMesh(),
+    Require(source_patch->GetSubMesh(),
             "R2c11 original source PatchBezier observer is missing");
     auto original_boundary = BuildDetachedSourceBoundaryImpl(
         *source_patch, patch_id, nullptr, true);
@@ -2130,7 +2199,11 @@ void ExportAllSidesPhysicalOriginalModel(
   obj.close();
   manifest.close();
   atlas.close();
-  Require(obj && manifest && atlas &&
+  uv_file.close();
+  normal_file.close();
+  Require(obj && manifest && atlas && uv_file && normal_file &&
+              recorded_uv_vertices == total_nodes &&
+              recorded_normal_facets == 2U * total_quads + total_tris &&
               source_atlas_sites ==
                   (eistute ? 136U : 936U) &&
               total_nodes == report.physical_nodes &&
@@ -2138,8 +2211,16 @@ void ExportAllSidesPhysicalOriginalModel(
               total_tris == report.physical_tris &&
               std::filesystem::file_size(obj_path) > 0U &&
               std::filesystem::file_size(json_path) > 0U &&
-              std::filesystem::file_size(atlas_path) > 0U,
-          "R2c11 serialized original physical/source atlas counts are inconsistent");
+              std::filesystem::file_size(atlas_path) > 0U &&
+              std::filesystem::file_size(uv_path) > 0U &&
+              std::filesystem::file_size(normal_path) > 0U,
+          "R2c22 exported source UV / normal inventory inconsistent");
+  std::cout << "R2C22_ORIGINAL_BEZIER_FACET_PROVENANCE"
+            << " model=" << model
+            << " physical_uv_vertices=" << recorded_uv_vertices
+            << " source_bezier_normal_facets=" << recorded_normal_facets
+            << " original_TRI_unchanged=1"
+            << " global_welding=0\n";
   std::cout << "R2C11_ORIGINAL_SOURCE_SEAM_ATLAS"
             << " model=" << model
             << " original_patches=" << original_patches
