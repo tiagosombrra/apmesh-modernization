@@ -3,6 +3,46 @@
 Updated2026-11-14 Fortaleza. Canonical branch: `quad-templates`.
 Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 
+## P2d-1b2 physically reconstructed — qualified feature CI, adaptive history still OPEN
+
+Research-only full original native AFT physical reconstruction from the real three-leaf
+error-selected connected band was merged through [PR229](https://github.com/tiagosombrra/apmesh-modernization/pull/229),
+research merge `289b6be6e97f787b53471255f9d30fbf3777fbba`.
+Exact feature `bada655ae68a635f4b9664a05b2ab261d2d8d94c` passed
+[CI #43619762822](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43619762822),
+**4/4 jobs**: Linux GCC and Windows MSVC native/real physical application,
+Linux ASan/UBSan/leak application, 85/85 root CTests, 527/527 Python controls,
+and frozen original Eistute/Book TRI parity. A separate exact-merge CI was not
+verified at this checkpoint.
+
+For the original curved Bezier fixed16/vertex-mean source, baseline **69 nodes /
+42 QUAD / 36 AFT TRI** and the new staged, **unaccepted** physical candidate
+**93 nodes / 62 QUAD / 44 original AFT TRI** both retain 16 original source
+boundary edges. Independently audited source UV coverage grew from **25%** to
+**32.8125%**; sampled source maximum is **0.0463899583 -> 0.0367706982**.
+Sampled RMS is **0.0130653586 -> 0.0078639324**, but comparison uses
+**354 vs 486 different sampled sites**, so this is NOT a same-sample convergence
+proof. Candidate OBJ SHA-256 is
+`76b0b4defecc5d534815fb9f41e1405653597a4a0bee6cc7b722ec2460d7afd6`;
+original OBJ remains
+`cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0`.
+[Bounded exact-source receipt](evidence/P2D1B2_REAL_PHYSICAL_CANDIDATE_20261114.json).
+
+**Active next gate (same P2d/R3 milestone):** independent hardening
+[PR230](https://github.com/tiagosombrra/apmesh-modernization/pull/230) is a
+single-file draft Python negative/positive gate on source `71dde5d2a443b48a8e4a9a84dca07f5d7bb64901`.
+It requires real emission (not rejection-only success), the observed typed
+93/62/44 topology, a bounded source-specific maximum residual witness, and
+an adversarial synthetic rejection. **PR230 has not been CI-qualified or merged.**
+Next, qualify/integrate its exact candidate before a distinct independent
+common-UV-sample error comparison, complete accepted-owner fault transaction,
+scientific quality/error/complexity policy and **two genuinely previous-state-driven
+accepted mixed adaptive epochs**. `adaptive_epochs=0`; issue
+[#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
+remains OPEN. Original fixed16 is not production `AdaptCurve`; no high-valence
+model-wide welding, all-QUAD, anisotropy or 1993 method claim. `main` and
+original production TRI remain unchanged.
+
 ## Completed bounded repair
 
 **P0 is integrated through [PR216](https://github.com/tiagosombrra/apmesh-modernization/pull/216)**,
