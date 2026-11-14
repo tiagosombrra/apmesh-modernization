@@ -11,7 +11,10 @@ Bounded P2a/P2b/P2c research prerequisites integrated through
 [PR218](https://github.com/tiagosombrra/apmesh-modernization/pull/218),
 [PR219](https://github.com/tiagosombrra/apmesh-modernization/pull/219),
 [PR220](https://github.com/tiagosombrra/apmesh-modernization/pull/220).
-Next is **P2d/R3 actual adaptive mixed-element history**, tracked in
+P2d-0 synthetic lineage and P2d-1a read-only real physical error metrics
+are also integrated through [PR223](https://github.com/tiagosombrra/apmesh-modernization/pull/223) and
+[PR226](https://github.com/tiagosombrra/apmesh-modernization/pull/226).
+Next is **P2d-1b actual history-driven native tree/AFT refinement**, tracked in
 [issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
 and the [finite queue](IMPLEMENTATION_ROADMAP.md). TRI-only accepted epochs,
 detached charts and clone/quality probes are not accepted mixed epochs.
@@ -27,7 +30,7 @@ detached charts and clone/quality probes are not accepted mixed epochs.
 | **M4 — Physical QUAD elements** | Four-node QUAD, UV/XYZ, area/normal/ownership | R2c-9: 32 detached original Eistute/Book charts, 1,744 physical nodes, 512 QUAD +1,456 AFT TRI; scoped local orientation/quality checks | P0 UV convexity repair integrated through PR216 with scoped85CTest/527Python and60cases/profile; full M4 remains open. Native sanitizers, adversarial coverage and broader geometry remain required. |
 | **M5 — Contorno QUAD/AFT** | Malha híbrida por patch, sem buracos/overlap | **R2c-10:** OBJ exportados e independentemente conferidos, fontes com as quatro curvas adaptadas; AFT TRI exterior | Comparar regra de contorno de 1993, variantes all-quad e qualidade sob outros orçamentos |
 | **M6 — Multipatch e non-manifold** | Incidência, nós e arestas físicos compatíveis entre patches | **R2c-6/7:** 98 curvas originais sincronizadas, 128 lados/944 arestas de fronteira; valências 4 e 28; contornos locais preservados | **BLOQUEIO científico:** política aprovada por Creto/Bento sobre sheets/junções e compartilhamento físico em valência 4/28; geometria coincidente não autoriza soldagem |
-| **M7 — Mixed-element adaptation** | At least two accepted epochs using the actual QUAD/TRI mesh as history, with retry/rollback and typed scientific evaluation | P2a typed clone/ownership and rollback, P2b polygon-aware mixed adjacency and diagonal-barycentric angle-defect witness, P2c source-normal corner quality metric pass bounded CI. All retain `adaptive_epochs=0`. | **OPEN:** No scientifically selected mixed curvature/quality acceptance and no two distinct accepted adaptive QUAD/TRI epochs. P2d [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221) is next; do not count duplicate clones or TRI epochs. |
+| **M7 — Mixed-element adaptation** | At least two accepted epochs using the actual QUAD/TRI mesh as history, with retry/rollback and typed scientific evaluation | P2a ownership/rollback, P2b mixed vertex links, P2c physical corner quality, P2d-0 synthetic lineage (14 negatives) and P2d-1a real Bezier source residual/native leaf attribution pass bounded exact-head CI. P2d-1a is `real_tree_edits=0 adaptive_epochs=0`; 18 native QUAD tests/OS, 85 CTests and 527 tooling Python pass. The QUAD fraction is 25% of UV area despite 42/78 faces. | **OPEN:** No scientifically selected mixed curvature/quality acceptance and no two distinct accepted adaptive QUAD/TRI epochs. P2d [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221) is next; do not count duplicate clones or TRI epochs. |
 | **M8 — Experimentos e modelos** | Comparação TRI × quad-dominant × alternativas, custo/erro/qualidade | Eistute e Book com entradas originais SHA-256 e geração física de pesquisa; candidatos externos mapeados na [issue #215](https://github.com/tiagosombrra/apmesh-modernization/issues/215) | Ampliar corpus e métricas, exportações/auditoria independente, repetibilidade e ablação em igualdade de erro |
 | **M9 — Anisotropia** | Campo métrico e comparação anisotrópica | Fora do escopo certificado | Opcional para primeiro artigo; ainda não implementado nem demonstrado cientificamente |
 
@@ -37,6 +40,8 @@ detached charts and clone/quality probes are not accepted mixed epochs.
 
 | Gate | Estado verificável | Evidência |
 |---|---|---|
+| **P2d-0 / R3** | **Integrado, apenas metadados sintéticos:** PR #223, CI 4/4, 14 casos negativos e rollback pré-commit; 85 CTests/527 Python, sem épocas QUAD reais. Falha inicial do inventário de build foi corrigida com SHA-256 exato, sem relaxamento. | [PR #223](https://github.com/tiagosombrra/apmesh-modernization/pull/223) · [CI](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43605731184) |
+| **P2d-1a / R3** | **Integrado, só diagnóstico físico:** PR #226, 4/4 CI, 18 nativos Linux/Windows, ASan/UBSan/leak, OBJ idêntico. 42 QUAD/36 TRI, erro máximo QUAD 0,002620 versus AFT 0,046390; UV 25% QUAD/75% TRI; célula QUAD 13 atribuída sem editá-la. `real_tree_edits=0 adaptive_epochs=0`. | [PR #226](https://github.com/tiagosombrra/apmesh-modernization/pull/226) · [CI](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43606747684) · [Evidência](evidence/P2D0_P2D1A_QUALIFICATION_20261114.json) |
 | **R2c-6** | 98 curvas originais adaptadas e comparadas em duas execuções CI independentes | [Estado e evidência](evidence/R2C6_WHOLE_ORIGINAL_MODEL_SOURCE_CURVES_20261113.json) |
 | **R2c-7** | Fronteiras AFT com todos os quatro lados: 32 contornos / 944 arestas, single-run CI | [Contornos reais](evidence/R2C7_ALL_SIDES_AFT_BOUNDARIES_20261113.json) |
 | **R2c-8** | Primeiro patch físico original de ambos os modelos: QUAD/AFT válido | [Primeiros patches](evidence/R2C8_ALL_SIDES_FIRST_PATCH_PHYSICAL_TRIAL_20261113.json) |
