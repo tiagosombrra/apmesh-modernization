@@ -180,6 +180,20 @@ jobs:
             build/local-serial/r2c10_original_mesh_export.log
           if-no-files-found: error
           retention-days: 14
+      - name: R2c21 independently audit original detached QUAD AFT indexed patch topology
+        shell: bash
+        run: |
+          python3 tools/verify_r2c21_detached_chart_topology.py \
+            --directory build/local-serial/r2c10_original_detached_meshes \
+            --output build/local-serial/r2c21_patch_topology
+      - name: Retain R2c21 original patch indexed edge and orientation report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c21-patch-topology-${{ github.sha }}
+          path: build/local-serial/r2c21_patch_topology/r2c21_original_detached_indexed_patch_topology.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Record original-source disconnected owner staging and rollback
         shell: bash
         run: |
