@@ -1,0 +1,85 @@
+{
+  "branch": "feature/mesh-studio-fixture-first-20261114",
+  "executed": [
+    {
+      "command": "python -m compileall -q tools/mesh_studio",
+      "result": "PASS"
+    },
+    {
+      "command": "python -m unittest tools.mesh_studio.test_studio tools.mesh_studio.test_storyboards tools.mesh_studio.test_quality_analysis -q",
+      "result": "PASS",
+      "test_methods": 41
+    },
+    {
+      "command": "python -m pytest -q tools/mesh_studio",
+      "result": "PASS",
+      "subtests": 28,
+      "test_methods": 41
+    },
+    {
+      "command": "python -m tools.mesh_studio.fixtures.validate",
+      "invented_epoch_rows": 8,
+      "negative_cases": 6,
+      "positive_cases": 10,
+      "result": "PASS"
+    },
+    {
+      "command": "python -m tools.mesh_studio.storyboard_cli all --output-dir <tmp>",
+      "result": "PASS",
+      "three_svg_sha_equal_source_baseline": true
+    },
+    {
+      "command": "python -m tools.mesh_studio.analyze_cli <synthetic_hybrid.obj> --output <tmp>/report.json --metric-diagonal 16 1",
+      "repeated_report_byte_equal": true,
+      "result": "PASS"
+    }
+  ],
+  "generated_on": "2026-11-14",
+  "limitations": [
+    "S2 reports sample-only orientation against caller-supplied normals",
+    "planar quad Jacobian not available for nonplanar corner sets",
+    "no direct equivalence with the published article historical triangle quality",
+    "raw OBJ group names are not original patch identities",
+    "anisotropic tensor is caller-supplied for this example, not an active APMesh generator field"
+  ],
+  "local_runtime": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "negative_controls": [
+    "quad UV corner concavity",
+    "physical XYZ concave quad with positive UV",
+    "inverted source normal",
+    "nonfinite/degenerate facet",
+    "duplicate indexed edges",
+    "nonmanifold patch edge",
+    "same-winding patch edge",
+    "unsupported SPD sample",
+    "bad metric basis",
+    "missing UV for anisotropic computation",
+    "unapproved source welding"
+  ],
+  "not_executed": [
+    "new GitHub Actions for S2",
+    "native C++ generator CTest",
+    "real P1 runtime OBJ imported",
+    "continuous Bezier Jacobian verification",
+    "Qt/VTK GUI",
+    "vector PDF/PGF and LaTeX",
+    "Windows installer"
+  ],
+  "precommit_head": "67b0ea5c156d9ac580d253d06dae0d841cf6f724",
+  "report_sha256": "202699476bbbd3efe2340bdfa494ccfec8e6ac38d931f3794856e173b3767d99",
+  "schema": "apmesh.meshstudio.s2.deliverable.v1",
+  "source_file_sha256": {
+    "docs/mesh-studio/IMPLEMENTATION_S2_20261114.md": "a48db54ae3d0f9718789ab573699e833941b4be7cf7ed14b8d10d4ea8df2946f",
+    "docs/mesh-studio/evidence/S2_HYBRID_SYNTHETIC_REPORT_20261114.json": "202699476bbbd3efe2340bdfa494ccfec8e6ac38d931f3794856e173b3767d99",
+    "tools/mesh_studio/README.md": "317078575dd425c999519ddccb11c076be8c8867099730777b4efe3f04576f74",
+    "tools/mesh_studio/analyze_cli.py": "448c76221e6774e19ba9b0ba5abbe9b268d0a84f6ee59265996767961d9e9d7c",
+    "tools/mesh_studio/quality_analysis.py": "ceed6157faa5f3a1aec9a8762e9a2ee2552c2aa4e676c0ca234b3c48db5cbc79",
+    "tools/mesh_studio/test_quality_analysis.py": "b0d6337646e57390fe3b2dd37f179be2898f91cd07b7baabcbd56e7d32ec736c",
+    "tools/mesh_studio/topology_audit.py": "a3626431d6f1c0ca80d00e18d6fa54936b1cfc30531d96b9c2b4d13ad59ddbf9"
+  },
+  "source_generator_modified": false,
+  "synthetic_only": true
+}

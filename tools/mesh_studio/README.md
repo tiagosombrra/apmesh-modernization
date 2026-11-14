@@ -51,3 +51,49 @@ frame, units, tensor source and rotation must be supplied when real APMesh
 measurements eventually become available. Local geometry is not a proof of
 continuous physical Jacobian validity. All-quad and tensor-driven adaptation
 remain scientific development goals, not released generator modes.
+
+## S2: independently testable physical/UV quality and indexed topology
+
+No Qt, VTK, NumPy or GPU is needed to analyze the initial fixture corpus.
+The analysis API never silently converts a QUAD into TRI elements in the
+canonical mesh. For a nonplanar QUAD its reported area is explicitly the sum
+of the two discrete facets along diagonal `(0, 2)`, **not** the original
+curved surface area. A planar Jacobian score is `null` for nonplanar cells.
+
+```bash
+python -m unittest \
+  tools.mesh_studio.test_studio \
+  tools.mesh_studio.test_storyboards \
+  tools.mesh_studio.test_quality_analysis -v
+python -m tools.mesh_studio.analyze_cli \
+  tools/mesh_studio/fixtures/cases/synthetic_quad_aft_transition.obj \
+  --output build/mesh-studio/synthetic_hybrid_quality.json \
+  --metric-diagonal 16 1
+```
+
+`quality_analysis.analyze_mesh()` reports normalized triangle mean-ratio
+(shape only), physical facet area, planar-QUAD minimum scaled Jacobian,
+relative coplanarity, indexed topology and separate distributions. The
+historical article's triangle quality score is **not automatically equal**
+to the independently defined mean ratio here. No common TRI+QUAD quality
+average is produced.
+
+An optional `source_normal(u,v)` callback audits physical facet orientation
+only at the two facet centroids of a QUAD; it does not prove global
+orientation of a Bezier surface. The callback and optional 2D SPD field are
+caller-supplied, not authenticated measurements of the generator. An
+anisotropic field must explicitly declare `metric_frame='uv'`, and the
+example CLI metric is labeled USER_SUPPLIED_NOT_ORIGINAL_GENERATOR_FIELD.
+
+OBJ groups are **not necessarily patch IDs**. In the controlled P1 export,
+`QUAD` and `TRI_AFT` classify cells of the same source patch. The topology
+report therefore contains group-local connectivity and an additional joined
+**indexed** face-complex assessment when no patch-owner sidecar exists.
+Neither indexed joining nor coincident XYZ values authorize welding of
+nonmanifold source sheets. Synthetic multi-patch examples use validated
+sidecar ownership to prevent accidental global identity inference.
+
+The report is suitable for measurement and diagnostic presentation, not yet
+scientific certification. Vector figure generation remains S1/S1b. Source
+P1 integration, actual recorded adaptive epochs, all-quad execution,
+tensor-driven generation, PDF/PGF publishing and desktop GUI remain open.
