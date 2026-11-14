@@ -34,6 +34,36 @@ This is a *read-only leaf selection from the previously constructed
 physical mesh*. There is **no quadtree mutation**, re-AFT, adaptive
 reconstruction or accepted epoch in this delivery.
 
+## Independent baseline diagnostic (before implementation qualification)
+
+On the original P1 physical OBJ with SHA-256
+\`cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0\`,
+a separate Python/Bernstein evaluator using the **same preregistered
+sample geometry** measured:
+
+| Source region | Largest sampled XYZ approximation error |
+| --- | ---: |
+| Native interior QUAD (42 faces) | \`0.002620448273121916\` |
+| Original exterior AFT TRI (36 faces) | \`0.04638995827046562\` |
+| Global maximum | \`0.04638995827046562\` |
+| Global 354-point RMS | \`0.013065358552865405\` |
+
+The winning QUAD is face index \`4\`, sample UV
+\`(0.7356770833333334, 0.29296875)\`. The largest
+**TRI/AFT** residual is face index \`74\`, sample UV
+\`(0.2, 0.1)\`. The exterior AFT sampled worst-case error is
+approximately **17.7 times** the sampled interior QUAD worst case.
+
+This is a *critical methodological limitation*: choosing a QUAD to
+refine by its own worst local error is not a global maximum-error
+selection, since the fixed16 boundary/AFT approximation currently
+dominates. P2d-1a reports **both source regions explicitly** and never
+claims that interior-only refinement lowers the global maximum.
+No scientific R3 convergence or efficiency claim is supported.
+The source curve boundary representation and outer AFT strategy may
+need refinement or a different error/complexity objective before
+two scientifically accepted epochs can be demonstrated.
+
 ## Independent checks
 
 - Strict Linux/Windows C++17 native contracts: a known curved polynomial
