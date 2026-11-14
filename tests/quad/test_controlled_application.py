@@ -360,6 +360,42 @@ def verify_native_tree_trials(stdout, residual):
     return values
 
 
+def verify_connected_aft_band(stdout, source_residual):
+    # The band edits a separate native tree, never the accepted physical mesh.
+    lines = stdout.decode().splitlines()
+    entries = [line for line in lines if line.startswith("QUAD_CONNECTED_BAND_TRIAL ")]
+    require(len(entries) == 1, "Connected AFT band result missing or duplicated")
+    record = dict(token.split("=", 1) for token in entries[0].split()[1:])
+    require(record["source"] == "real_candidate_worst_aft_triangle" and
+            int(record["source_cell_id"]) == 6 and
+            len({int(record[key]) for key in ("source_cell_id", "bridge_east_cell_id",
+                "bridge_north_cell_id")}) == 3 and
+            int(record["baseline_leaves"]) == 19 and
+            int(record["refined_leaves"]) >= 28 and
+            int(record["native_leaf_edits"]) == 3 and
+            record["prior_physical_owner_preserved"] == "1" and
+            record["actual_aft_retriangulations"] == "0" and
+            record["adaptive_epochs"] == "0",
+            "Connected band has false tree, physical or adaptive epoch provenance")
+    admitted = int(record["admitted_uv_disk"])
+    require(admitted in (0, 1), "Connected band has an invalid UV-disk status")
+    if admitted:
+        require(float(record["quad_uv_area"]) > 0.265625 and
+                int(record["emitted_quads"]) > 0,
+                "Connected band claimed a disk without expanding QUAD coverage")
+        require(not any(line.startswith("QUAD_CONNECTED_BAND_REJECTION ")
+                        for line in lines),
+                "Connected band both admitted and rejected the same source trial")
+    else:
+        require(int(record["emitted_quads"]) == 0 and
+                any(line.startswith("QUAD_CONNECTED_BAND_REJECTION reason=")
+                    for line in lines),
+                "Rejected source band failed to disclose the topology blocker")
+    require(source_residual["worst_triangle_face"] == 74,
+            "Connected band did not track real initial AFT source error")
+    return record
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -389,6 +425,7 @@ def main():
     quality = verify_quad_physical_quality(r.stdout, root/"accepted.obj")
     residual = verify_mixed_surface_residual(r.stdout, root/"accepted.obj")
     trials = verify_native_tree_trials(r.stdout, residual)
+    band = verify_connected_aft_band(r.stdout, residual)
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -408,6 +445,8 @@ def main():
             "Rollback changed history-dependent source residual")
     require(verify_native_tree_trials(r.stdout, residual) == trials,
             "Rollback native tree trial provenance differs from accepted control")
+    require(verify_connected_aft_band(r.stdout, residual) == band,
+            "Rollback native connected band provenance differs")
     r = execute("unsupported", model="missing.bp")
     require(r.returncode != 0 and not (root/"unsupported.obj").exists(),
             "Invalid source was published")
@@ -430,6 +469,7 @@ def main():
               "typed_physical_quad_quality": quality,
               "mixed_surface_residual": residual,
               "real_native_tree_trials": trials,
+              "connected_native_refinement_band": band,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
