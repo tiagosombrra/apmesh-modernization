@@ -22,9 +22,14 @@ target_include_directories(quad_mesh_mode_contracts PRIVATE ../../include)
 target_compile_features(quad_mesh_mode_contracts PRIVATE cxx_std_17)
 add_executable(quad_uv_demo ../../research/quad/demo.cpp)
 target_link_libraries(quad_uv_demo PRIVATE apmesh_quad_uv)
+# P2d-0 metadata-only preflight; no physical candidate generation or epoch acceptance.
+add_executable(quad_epoch_admission_contracts mixed_epoch_admission_contracts.cpp)
+target_include_directories(quad_epoch_admission_contracts PRIVATE ../../research/quad)
+target_compile_features(quad_epoch_admission_contracts PRIVATE cxx_std_17)
 
 foreach(target IN ITEMS apmesh_quad_uv quad_uv_contracts quad_mesh_mode_contracts quad_uv_demo
-  apmesh_quad_experimental_point quad_experimental_point_contracts quad_visual_export)
+  apmesh_quad_experimental_point quad_experimental_point_contracts quad_visual_export
+  quad_epoch_admission_contracts)
   if(MSVC)
     target_compile_options(${target} PRIVATE /W4 /WX /EHsc /utf-8)
   else()
@@ -32,6 +37,9 @@ foreach(target IN ITEMS apmesh_quad_uv quad_uv_contracts quad_mesh_mode_contract
   endif()
 endforeach()
 
+add_test(NAME quad.p2d0.synthetic_epoch_preflight COMMAND quad_epoch_admission_contracts)
+set_tests_properties(quad.p2d0.synthetic_epoch_preflight PROPERTIES
+  TIMEOUT 20 LABELS "research-quad;synthetic-preflight;negative-controls")
 add_test(NAME quad.mesh_mode.contracts COMMAND quad_mesh_mode_contracts)
 set_tests_properties(quad.mesh_mode.contracts PROPERTIES TIMEOUT 20 LABELS "research-quad")
 add_test(NAME quad.uv.contracts COMMAND quad_uv_contracts)
