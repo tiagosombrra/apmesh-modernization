@@ -1,6 +1,7 @@
 #ifndef APMESH_QUAD_RESEARCH_MIXED_SURFACE_RESIDUAL_H
 #define APMESH_QUAD_RESEARCH_MIXED_SURFACE_RESIDUAL_H
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstddef>
@@ -73,6 +74,7 @@ inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
     }
     double face_maximum = 0.0;
     ResidualUv face_max_uv{0.0, 0.0};
+    bool sampled_face = false;
     const auto sample = [&](const std::array<double, 4>& weights) {
       ResidualUv p{0.0, 0.0};
       ResidualPoint3 interpolated{0.0, 0.0, 0.0};
@@ -91,10 +93,11 @@ inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
       }
       require(std::isfinite(square), "Overflow in mixed surface residual");
       const double error = std::sqrt(square);
-      if (error > face_maximum) {
+      if (!sampled_face || error > face_maximum) {
         face_maximum = error;
         face_max_uv = p;
       }
+      sampled_face = true;
       result.maximum = std::max(result.maximum, error);
       sum_square += square;
       require(std::isfinite(sum_square), "Overflow in total mixed residual error");
