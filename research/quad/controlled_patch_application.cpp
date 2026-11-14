@@ -1083,11 +1083,11 @@ void ProbeSecondNativeAftVariants(const Candidate& previous_physical,
         << " emitted_quads=" << trial.quads
         << " previous_physical_owner_preserved=1"
         << " actual_second_aft_retriangulations=0"
-        << " adaptive_epochs=0\\n";
+        << " adaptive_epochs=0\n";
     std::cout << out.str();
     if (!trial.admitted_uv_disk)
       std::cout << "QUAD_SECOND_NATIVE_BAND_REJECTION variant=" << names[variant]
-                << " reason=" << trial.rejection << '\\n';
+                << " reason=" << trial.rejection << '\n';
   }
 }
 
