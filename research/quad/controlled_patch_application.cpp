@@ -1050,7 +1050,7 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
          << " status=" << (staged ? "staged_unaccepted" : "rejected")
          << " source=original_native_connected_band"
          << " previous_physical_owner_preserved=1"
-         << " original_aft_attempted=1"
+         << " original_aft_pipeline_requested=1"
          << " physical_quads=" << physical_quads
          << " physical_triangles=" << physical_triangles
          << " physical_nodes=" << physical_nodes
