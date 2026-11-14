@@ -340,6 +340,20 @@ def verify_native_tree_trials(stdout, residual):
             require(any(s.startswith("QUAD_NATIVE_TRIAL_REJECTION region=" +
                                      marker + " reason=") for s in lines),
                     "Rejected native QUAD trial has no recorded failure reason")
+    # Pin the real cross-platform negative topology witness on this fixed source.
+    require(int(values["quad_leaves"]) == 22 and
+            int(values["quad_emitted_disk"]) == 1 and
+            int(values["quad_faces"]) == 54 and
+            math.isclose(float(values["quad_uv_area"]), 0.25, abs_tol=1e-12) and
+            int(values["aft_cell_id"]) == 6 and
+            int(values["aft_leaves"]) == 22 and
+            int(values["aft_emitted_disk"]) == 0 and
+            int(values["aft_quad_faces"]) == 0 and
+            math.isclose(float(values["aft_uv_area"]), 0.265625, abs_tol=1e-12),
+            "Changed native boundary-island source witness without review")
+    require(any(line == "QUAD_NATIVE_TRIAL_REJECTION region=aft "
+                        "reason=Boundary vertex is not manifold" for line in lines),
+            "Boundary-refinement nonmanifold rejection was not preserved")
     require(residual["worst_quad_face"] == 4 and
             residual["worst_triangle_face"] == 74,
             "Native trial decision no longer follows actual previous physical errors")
