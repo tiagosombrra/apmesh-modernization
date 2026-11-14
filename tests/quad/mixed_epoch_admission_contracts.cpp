@@ -119,6 +119,17 @@ int main() {
     ExpectRejected(ledger, bad, 1);
   }
 
+  // A valid candidate rejected at the transaction boundary must preserve history.
+  bool injected = false;
+  try {
+    ledger.AdmitCandidate(candidate, true);
+  } catch (const std::runtime_error&) {
+    injected = true;
+  }
+  Require(injected && ledger.RecordedStates() == 1 &&
+          ledger.Latest().mesh_sha256 == baseline.mesh_sha256,
+          "Injected metadata precommit failure modified accepted receipt");
+
   // These two records are fabricated to test metadata transitions ONLY.
   ledger.AdmitCandidate(candidate);
   Require(ledger.RecordedStates() == 2);
@@ -133,5 +144,5 @@ int main() {
   Require(ledger.RecordedStates() == 3);
   Require(ledger.Latest().mesh_sha256 == next.mesh_sha256);
   std::cout << "QUAD_EPOCH_PREFLIGHT synthetic_states=3 negative_cases=14 "
-               "lineage_verified=1 actual_adaptive_epochs=0\n";
+               "lineage_verified=1 precommit_failure_rollback=1 actual_adaptive_epochs=0\n";
 }
