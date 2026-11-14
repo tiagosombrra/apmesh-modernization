@@ -105,8 +105,8 @@ Do not confuse P2a/P2b test passes with completed adaptive history.
 ## P2d-0 and P2d-1a integrated — no accepted adaptation epochs
 
 [P2d-0 PR223](https://github.com/tiagosombrra/apmesh-modernization/pull/223)
-merged at \`82522e0588a650b3c6421565883506a0f0cde831\`;
-its exact feature source \`f1ea9332fa4d322f4578d3b6c46475776efa424f\`
+merged at `82522e0588a650b3c6421565883506a0f0cde831`;
+its exact feature source `f1ea9332fa4d322f4578d3b6c46475776efa424f`
 passed [CI #43605731184](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43605731184):
 4/4 jobs, Linux/Windows native, original frozen TRI, 85 root CTests
 and 527 Python controls. The first run failed strict architecture
@@ -116,30 +116,30 @@ P2d-0 is a synthetic-only lineage metadata gate with fourteen negatives;
 its fabricated three receipts must never count as adaptive epochs.
 
 [P2d-1a PR226](https://github.com/tiagosombrra/apmesh-modernization/pull/226)
-merged at \`c78a4445424d027d7a32a54e419fb129e3ef6622\`.
-Exact feature \`530914390c44916067f258f18e2cba1cae61959f\`
+merged at `c78a4445424d027d7a32a54e419fb129e3ef6622`.
+Exact feature `530914390c44916067f258f18e2cba1cae61959f`
 passed [CI #43606747684](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43606747684):
 4/4 jobs, 18 native QUAD CTests each Linux/Windows, genuine
-\`ap_mesh\` application, Linux ASan/UBSan/leak, 85 root CTests,
+`ap_mesh` application, Linux ASan/UBSan/leak, 85 root CTests,
 527 tooling Python and frozen original TRI Eistute/Book parity.
 The original physical OBJ remains byte-identical across both systems
-(SHA-256 \`cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0\`).
+(SHA-256 `cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0`).
 
 This **read-only source error indicator**, evaluated on real physical
 nodes, QUAD bilinear sampling and AFT TRI barycentric sampling, reports
-\`354\` samples: \`0.0026204483\` maximum interior QUAD error,
-\`0.0463899583\` maximum exterior AFT TRI error and
-\`0.0130653586\` global sampled RMS. The maximal QUAD is face4,
+`354` samples: `0.0026204483` maximum interior QUAD error,
+`0.0463899583` maximum exterior AFT TRI error and
+`0.0130653586` global sampled RMS. The maximal QUAD is face4,
 native source cell13 / leaf ordinal6 / depth2; the worst TRI/AFT
 is face74 near UV (0.2,0.1). An independently computed
-**UV-area** audit finds only \`25%\` QUAD coverage versus \`75%\`
-TRI/AFT; approximately \`29.6%\` versus \`70.4%\` of the faceted
-physical area. TRI/AFT contributes \`~99.53%\` of the *unweighted
-sampled squared* residual and \`~99.84%\` of a supplementary
+**UV-area** audit finds only `25%` QUAD coverage versus `75%`
+TRI/AFT; approximately `29.6%` versus `70.4%` of the faceted
+physical area. TRI/AFT contributes `~99.53%` of the *unweighted
+sampled squared* residual and `~99.84%` of a supplementary
 coarse physical-face-area-weighted sampled estimate. Neither
 value is a certified surface error integral or general policy.
 
-This imbalance is structural: \`CaptureLeafPolygons\` excludes all
+This imbalance is structural: `CaptureLeafPolygons` excludes all
 quadtree leaves touching the source boundary. Refining only an
 existing interior QUAD leaf cannot by itself enlarge the current
 25% UV footprint. P2d-1b must compare **actual native tree/AFT
@@ -147,10 +147,10 @@ refinement** of (a) the maximal-error QUAD interior and (b) the source
 leaf containing the maximal-error AFT triangle; evaluate both
 source-surface error and QUAD area coverage without pretending that
 more QUAD faces imply QUAD dominance. The initial fixed16 source
-boundary still does **not** run \`Adapter::AdaptCurve\`.
+boundary still does **not** run `Adapter::AdaptCurve`.
 
 **R3/M7 remains OPEN:** no second candidate tree has been changed
-or accepted here (\`real_tree_edits=0 adaptive_epochs=0\`). No
+or accepted here (`real_tree_edits=0 adaptive_epochs=0`). No
 general nonmanifold sheet welding, literal 1993 method, all-QUAD
 or anisotropic acceptance is claimed. See [bounded evidence and
 independent numerical caveats](evidence/P2D0_P2D1A_QUALIFICATION_20261114.json)
