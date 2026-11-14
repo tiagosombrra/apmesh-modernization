@@ -8,10 +8,12 @@
 #include <iomanip>
 #include <locale>
 #include <set>
+#include <sstream>
 #include <tuple>
 #include "owned_aft_front.h"
 #include "interior_template_dispatch.h"
 #include "front_interface_audit.h"
+#include "typed_mixed_curvature.h"
 
 #include "crab_mesh/aft/boundary.h"
 #include "crab_mesh/aft/quadtree.h"
@@ -27,6 +29,7 @@
 #include <cmath>
 #include <iostream>
 #include <map>
+#include <limits>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -494,6 +497,59 @@ void ProbeTypedHistory(SubMesh& accepted, const Candidate& layout, PatchBezier& 
                " source_observers_preserved=1 adaptive_epochs=0\n";
 }
 
+// Observe the physical mixed graph without changing its accepted QUAD/TRI faces.
+void ProbeMixedCurvature(SubMesh& mesh, const Candidate& layout) {
+  std::vector<research::MixedPoint3> physical;
+  physical.reserve(mesh.GetNumberNos());
+  for (unsigned i = 0; i < mesh.GetNumberNos(); ++i) {
+    const auto* node = mesh.GetNoh(i);
+    Require(node != nullptr, "Missing node for typed mixed curvature");
+    physical.push_back({node->GetX(), node->GetY(), node->GetZ()});
+  }
+  const auto observed = research::AuditMixedCurvature(physical, layout.faces);
+  Require(observed.vertices.size() == layout.uv.size() &&
+              observed.quadrilaterals == layout.quads &&
+              observed.triangles == layout.faces.size() - layout.quads &&
+              observed.boundary_edges == 16 && observed.boundary_vertices == 16 &&
+              observed.interior_vertices + observed.boundary_vertices == layout.uv.size() &&
+              observed.interior_vertices > 0 && observed.min_barycentric_area > 0,
+          "Mixed TRI/QUAD curvature metrics differ from validated physical chart");
+
+  // Each malformed metric witness is rejected independently of the live mesh.
+  unsigned rejected = 0;
+  const auto must_reject = [&](const std::vector<research::MixedPoint3>& points,
+                               const std::vector<research::MixedFace>& faces) {
+    try {
+      (void)research::AuditMixedCurvature(points, faces);
+    } catch (const std::invalid_argument&) {
+      ++rejected;
+    }
+  };
+  must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, 0}}, {{0, 1, 1}});
+  must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, 0}, {-1, 0, 0}, {0, -1, 0}},
+              {{0, 1, 2}, {0, 3, 4}});
+  must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, 0}, {1, 1, 0}},
+              {{0, 1, 2}, {0, 1, 3}});
+  must_reject({{0, 0, 0}, {1, 0, 0}, {2, 0, 0}}, {{0, 1, 2}});
+  must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, std::numeric_limits<double>::quiet_NaN()}},
+              {{0, 1, 2}});
+  Require(rejected == 5, "Malformed typed mixed curvature input was accepted");
+
+  std::ostringstream output;
+  output.imbue(std::locale::classic());
+  output << std::setprecision(17)
+         << "QUAD_TYPED_CURVATURE quad=" << observed.quadrilaterals
+         << " tri=" << observed.triangles
+         << " boundary_edges=" << observed.boundary_edges
+         << " boundary_vertices=" << observed.boundary_vertices
+         << " interior_vertices=" << observed.interior_vertices
+         << " angle_defect_total=" << observed.total_angle_defect
+         << " min_barycentric_area=" << observed.min_barycentric_area
+         << " negative_cases=" << rejected
+         << " policy=triangulated_barycentric_probe adaptive_epochs=0\n";
+  std::cout << output.str();
+}
+
 void Export(const Candidate& result, const std::filesystem::path& path) {
   Require(!std::filesystem::exists(path), "Controlled output already exists");
   auto staging = path;
@@ -552,6 +608,7 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
   Require(patch != nullptr, "Controlled source must be Bezier");
   auto candidate = Generate(*patch, false);
   ProbeTypedHistory(*candidate.mesh, candidate, *patch);
+  ProbeMixedCurvature(*candidate.mesh, candidate);
   Export(candidate, config.output_prefix + ".obj");
   candidate.mesh->SetPatch(patch);
   patch->SetSubMesh(candidate.mesh.get());
