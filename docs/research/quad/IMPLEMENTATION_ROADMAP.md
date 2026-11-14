@@ -6,10 +6,10 @@
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
 M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through
 PR216 with its scoped exact-candidate/research-merge gates. Controlled P1/R2 is integrated through PR217.
-P2a (PR218), P2b (PR219), P2c (PR220), P2d-0 (PR223) and
-P2d-1a (PR226) are bounded research-only prerequisites. **P2d-1b/R3 is
-active: build and compare actual native AFT/QUAD refinement candidates
-before attempting two truly distinct accepted mixed adaptive epochs** ([issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)).
+P2a (PR218), P2b (PR219), P2c (PR220), P2d-0 (PR223), P2d-1a (PR226), P2d-1b0 (PR227) and
+P2d-1b1 (PR228) are bounded research-only prerequisites. **P2d-1b2/R3
+is active: reconstruct and independently audit a full native AFT/physical
+QUAD/TRI candidate before any acceptance of distinct mixed epochs** ([issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)).
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 
@@ -22,7 +22,9 @@ or scientific policy.
 | P2c — integrated, PR220 | Four-corner physical QUAD quality witnesses and exact feature CI | Source-normal signed corner scaled Jacobians, split-normal cosine, physical edge ratios and negative cases; exact PR-head SHA checkout, 4/4 CI. Does not prove continuous validity or authorize thresholds. |
 | P2d-0 — integrated, PR223 | Synthetic epoch lineage preflight | Native C++17 metadata state transitions, 14 negative controls and precommit failure rollback; strict retained CMake SHA-256 fixed after a documented CI failure. Exact feature CI 4/4, 85 root CTests and 527 Python; no actual adapted epochs. |
 | P2d-1a — integrated, PR226 | Real physical mixed Bezier residual and source leaf attribution | Four TRI barycentric and five QUAD bilinear sampled XYZ errors per face, independent Bernstein/OBJ oracle, 18 Linux/Windows native contracts, ASan/UBSan, frozen TRI parity and 4/4 exact-head CI. Real QUAD source cell13 and AFT TRI worst face74 mapped, with `real_tree_edits=0 adaptive_epochs=0`. |
-| **P2d-1b — NEXT, R3/M7 open** | History-driven native AFT versus QUAD region refinement trials | AFT errors dominate this fixed16 sample: 0.04639 TRI maximum versus 0.002620 QUAD; only 25% of parametric domain is QUAD. Compare two real source-tree/physical reconstruction proposals: refine AFT-dominated source leaf versus max-error QUAD leaf; verify native AFT seam, QUAD UV coverage, physical quality and error improvement independently. Then define research acceptance/retry/rollback and two real adapted epochs; [issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221). |
+| P2d-1b0 — integrated, PR227 | Negative original native QUAD island versus interior edit | 19→22 native leaves for each actual error-selected source cell. AFT source cell6 produces 0.265625 prospective QUAD UV area but is correctly rejected as `Boundary vertex is not manifold`; interior cell13 emits 54 QUAD but retains 0.25 coverage. Exact CI 4/4; no new AFT/physical epochs. |
+| P2d-1b1 — integrated, PR228 | Native connected QUAD disk with verified boundary refinement band | Three real original source cells6/7/9, 19→28 native leaves, 62 QUAD UV elements and 0.328125 UV area; independently proven 21/64 dyadic connected cells without holes. Exact CI 4/4, Linux/Windows/ASan and frozen TRI. No AFT/physical candidate or adaptive epoch. |
+| **P2d-1b2 — ACTIVE, draft PR229** | Reconstruct original native AFT and typed physical QUAD/TRI on connected band | Use two independently rebuilt identical native band trees for original TRI-reference front and experimental QUAD templates. Attempt full original AFT and generate candidate-only physical OBJ; independent Bernstein, topology, quality and source error, no owner publication. Explicit rejection on incomplete seam/quality. **No epoch accepted without later scientific policy and transaction.** [issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221). |
 
 R4 model-wide trials follow these functional deliveries. High-valence sheet/weld
 decisions, literal historical-method approval, all-QUAD and anisotropy remain
