@@ -485,7 +485,7 @@
     },
     {
       "path": "tests/quad/CMakeLists.txt",
-      "sha256": "ccd64c926d7c1c93b3c0c59f3ff5d7dc822656de8ea7fb1f1261be9c7034dbfd"
+      "sha256": "ca50476eb214f91f9de630400d3083a64b5f4c44c258cd50dc7cc151f6f37304"
     },
     {
       "path": "tests/second_edge_memory/CMakeLists.txt",
