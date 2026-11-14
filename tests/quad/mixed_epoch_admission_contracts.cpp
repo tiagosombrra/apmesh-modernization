@@ -1,6 +1,5 @@
 #include "mixed_epoch_admission.h"
 
-#include <cassert>
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -9,6 +8,10 @@ using apmesh::quad::research::MixedEpochPreflight;
 using apmesh::quad::research::MixedEpochReceipt;
 
 namespace {
+void Require(bool condition, const char* message = "Mixed synthetic epoch preflight failed") {
+  if (!condition)
+    throw std::runtime_error(message);
+}
 std::string Hash(char character) { return std::string(64, character); }
 
 MixedEpochReceipt InitialSynthetic() {
@@ -37,8 +40,8 @@ void ExpectRejected(MixedEpochPreflight& ledger, const MixedEpochReceipt& candid
   try {
     ledger.AdmitCandidate(candidate);
   } catch (const std::invalid_argument&) {
-    assert(ledger.RecordedStates() == expected_states);
-    assert(ledger.Latest().mesh_sha256 == original_mesh);
+    Require(ledger.RecordedStates() == expected_states);
+    Require(ledger.Latest().mesh_sha256 == original_mesh);
     return;
   }
   throw std::runtime_error("Malformed synthetic epoch was admitted");
@@ -48,7 +51,7 @@ void ExpectRejected(MixedEpochPreflight& ledger, const MixedEpochReceipt& candid
 int main() {
   const auto baseline = InitialSynthetic();
   MixedEpochPreflight ledger(baseline);
-  assert(ledger.RecordedStates() == 1);
+  Require(ledger.RecordedStates() == 1);
   MixedEpochReceipt candidate = baseline;
   candidate.epoch = 1;
   candidate.parent_mesh_sha256 = baseline.mesh_sha256;
@@ -109,7 +112,7 @@ int main() {
 
   // These two records are fabricated to test metadata transitions ONLY.
   ledger.AdmitCandidate(candidate);
-  assert(ledger.RecordedStates() == 2);
+  Require(ledger.RecordedStates() == 2);
   MixedEpochReceipt next = candidate;
   next.epoch = 2;
   next.parent_mesh_sha256 = candidate.mesh_sha256;
@@ -118,8 +121,8 @@ int main() {
   next.real_tree_edits = 2;
   next.normalized_error = 0.6;
   ledger.AdmitCandidate(next);
-  assert(ledger.RecordedStates() == 3);
-  assert(ledger.Latest().mesh_sha256 == next.mesh_sha256);
+  Require(ledger.RecordedStates() == 3);
+  Require(ledger.Latest().mesh_sha256 == next.mesh_sha256);
   std::cout << "QUAD_EPOCH_PREFLIGHT synthetic_states=3 negative_cases=12 "
                "lineage_verified=1 actual_adaptive_epochs=0\n";
 }
