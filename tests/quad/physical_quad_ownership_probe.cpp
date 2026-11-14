@@ -1,5 +1,7 @@
 #include "physical_quadrilateral_adaptive.h"
 
+#include "four_corner_admission.h"
+
 #include "data/geometry.h"
 #include "data/mesh/sub_mesh.h"
 #include "data/patch/patch_bezier.h"
@@ -41,13 +43,11 @@ void Require(bool value, const char* reason) {
 }
 
 bool Close(double a, double b, double tolerance = 5e-10) {
-  return std::isfinite(a) && std::isfinite(b) &&
-         std::abs(a - b) <= tolerance;
+  return std::isfinite(a) && std::isfinite(b) && std::abs(a - b) <= tolerance;
 }
 
 template <std::size_t N>
-void AddFace(const std::vector<std::size_t>& ids,
-             std::vector<std::array<std::size_t, N>>& target) {
+void AddFace(const std::vector<std::size_t>& ids, std::vector<std::array<std::size_t, N>>& target) {
   Require(ids.size() == N, "Unexpected face arity");
   std::array<std::size_t, N> face{};
   std::set<std::size_t> unique;
@@ -72,8 +72,7 @@ Mesh ReadObj(const std::string& path, bool physical) {
     if (kind == "v") {
       Require(group == 0, "Vertex after mesh face groups");
       Point p{};
-      Require(static_cast<bool>(record >> p[0] >> p[1] >> p[2]),
-              "Invalid OBJ coordinate record");
+      Require(static_cast<bool>(record >> p[0] >> p[1] >> p[2]), "Invalid OBJ coordinate record");
       for (double value : p)
         Require(std::isfinite(value), "Nonfinite XYZ/UV");
       std::string extra;
@@ -83,12 +82,10 @@ Mesh ReadObj(const std::string& path, bool physical) {
       std::string name;
       Require(static_cast<bool>(record >> name), "Empty group name");
       ++group;
-      Require((group == 1 && name ==
-                  (physical ? "QUAD_native_cpp_lifted"
-                            : "QUAD_native_cpp_unmodified")) ||
-              (group == 2 && name ==
-                  (physical ? "TRI_exterior_Lawson_research_lifted"
-                            : "TRI_exterior_local_Lawson_research")),
+      Require((group == 1 &&
+               name == (physical ? "QUAD_native_cpp_lifted" : "QUAD_native_cpp_unmodified")) ||
+                  (group == 2 && name == (physical ? "TRI_exterior_Lawson_research_lifted"
+                                                   : "TRI_exterior_local_Lawson_research")),
               "Source group provenance mismatch");
     } else if (kind == "f") {
       Require(group == 1 || group == 2, "Face outside source groups");
@@ -98,8 +95,7 @@ Mesh ReadObj(const std::string& path, bool physical) {
         Require(value.find_first_not_of("0123456789") == std::string::npos,
                 "Nonintegral face reference");
         const auto parsed = std::stoull(value);
-        Require(parsed > 0 && parsed <= mesh.vertices.size(),
-                "Out-of-range face reference");
+        Require(parsed > 0 && parsed <= mesh.vertices.size(), "Out-of-range face reference");
         ids.push_back(static_cast<std::size_t>(parsed - 1));
       }
       if (group == 1)
@@ -110,8 +106,8 @@ Mesh ReadObj(const std::string& path, bool physical) {
       throw std::runtime_error("Unsupported OBJ record");
     }
   }
-  Require(mesh.vertices.size() == 69 && mesh.quads.size() == 42 &&
-              mesh.tris.size() == 36 && group == 2,
+  Require(mesh.vertices.size() == 69 && mesh.quads.size() == 42 && mesh.tris.size() == 36 &&
+              group == 2,
           "Source 69/42/36 hybrid inventory changed");
   return mesh;
 }
@@ -122,8 +118,7 @@ void CheckMixedTopology(const Mesh& uv) {
     std::size_t from;
     std::size_t to;
   };
-  std::map<std::pair<std::size_t, std::size_t>,
-           std::vector<EdgeIncidence>> edges;
+  std::map<std::pair<std::size_t, std::size_t>, std::vector<EdgeIncidence>> edges;
   const auto add = [&edges](auto face, bool quad) {
     for (std::size_t i = 0; i < face.size(); ++i) {
       const auto a = face[i];
@@ -132,17 +127,17 @@ void CheckMixedTopology(const Mesh& uv) {
       edges[{key.first, key.second}].push_back({quad, a, b});
     }
   };
-  for (auto face : uv.quads) add(face, true);
-  for (auto face : uv.tris) add(face, false);
+  for (auto face : uv.quads)
+    add(face, true);
+  for (auto face : uv.tris)
+    add(face, false);
   unsigned seam = 0;
   unsigned boundary = 0;
   for (const auto& item : edges) {
     const auto& refs = item.second;
-    Require(refs.size() >= 1 && refs.size() <= 2,
-            "Nonmanifold mixed edge incidence");
+    Require(refs.size() >= 1 && refs.size() <= 2, "Nonmanifold mixed edge incidence");
     if (refs.size() == 2) {
-      Require(refs[0].from == refs[1].to &&
-                  refs[0].to == refs[1].from,
+      Require(refs[0].from == refs[1].to && refs[0].to == refs[1].from,
               "Mismatched opposite edge winding");
       if (refs[0].quad != refs[1].quad)
         ++seam;
@@ -155,8 +150,7 @@ void CheckMixedTopology(const Mesh& uv) {
       ++boundary;
     }
   }
-  Require(seam == 20 && boundary == 16,
-          "Native QUAD/M5 TRI seam or boundary changed");
+  Require(seam == 20 && boundary == 16, "Native QUAD/M5 TRI seam or boundary changed");
 }
 
 void ExpectThrows(const std::function<void()>& operation, const char* label) {
@@ -169,45 +163,36 @@ void ExpectThrows(const std::function<void()>& operation, const char* label) {
 }
 
 void TestLifecycleAndFailureAtomicity() {
-  std::array<NodeAdaptive, 4> owned{
-      NodeAdaptive(0, 0, 0), NodeAdaptive(1, 0, 0),
-      NodeAdaptive(1, 1, 0), NodeAdaptive(0, 1, 0)};
+  std::array<NodeAdaptive, 4> owned{NodeAdaptive(0, 0, 0), NodeAdaptive(1, 0, 0),
+                                    NodeAdaptive(1, 1, 0), NodeAdaptive(0, 1, 0)};
   for (std::size_t i = 0; i < owned.size(); ++i)
     owned[i].SetId(500 + static_cast<unsigned long>(i));
-  QuadrilateralAdaptive::Nodes borrowed{
-      &owned[0], &owned[1], &owned[2], &owned[3]};
-  QuadrilateralAdaptive::Parameters uv{{{{0, 0}}, {{1, 0}},
-                                       {{1, 1}}, {{0, 1}}}};
+  QuadrilateralAdaptive::Nodes borrowed{&owned[0], &owned[1], &owned[2], &owned[3]};
+  QuadrilateralAdaptive::Parameters uv{{{{0, 0}}, {{1, 0}}, {{1, 1}}, {{0, 1}}}};
   const VectorAdaptive normal(0, 0, 1);
   {
     auto first = std::make_unique<QuadrilateralAdaptive>(borrowed, uv, normal);
     Require(Close(first->GetArea(), 1.0), "Wrong flat four-node area");
-    Require(Close(first->GetAngle(owned[0]), std::acos(-1.0) / 2.0),
-            "Wrong physical quad angle");
-    Require(first->GetNoh(1).GetNumberElements() == 0 &&
-                first->GetNoh(1).GetId() == 500,
+    Require(Close(first->GetAngle(owned[0]), std::acos(-1.0) / 2.0), "Wrong physical quad angle");
+    Require(first->GetNoh(1).GetNumberElements() == 0 && first->GetNoh(1).GetId() == 500,
             "GetNoh copied foreign element observers");
-    Require(first->GetVertexPoint(4).GetId() == 503,
-            "Quad vertex ID was not retained");
+    Require(first->GetVertexPoint(4).GetId() == 503, "Quad vertex ID was not retained");
     for (auto& node : owned)
-      Require(node.GetNumberElements() == 1,
-              "Missing exactly one quad node observer");
-    ExpectThrows([&] { static_cast<void>(first->GetNoh(0)); },
-                 "zero-based vertex");
-    ExpectThrows([&] { static_cast<void>(first->GetNoh(5)); },
-                 "out-of-range vertex");
-    ExpectThrows([&] {
-      NodeAdaptive identical_location(0, 0, 0);
-      static_cast<void>(first->GetAngle(identical_location));
-    }, "foreign node identity");
+      Require(node.GetNumberElements() == 1, "Missing exactly one quad node observer");
+    ExpectThrows([&] { static_cast<void>(first->GetNoh(0)); }, "zero-based vertex");
+    ExpectThrows([&] { static_cast<void>(first->GetNoh(5)); }, "out-of-range vertex");
+    ExpectThrows(
+        [&] {
+          NodeAdaptive identical_location(0, 0, 0);
+          static_cast<void>(first->GetAngle(identical_location));
+        },
+        "foreign node identity");
 
     for (int fault = 0; fault < 4; ++fault) {
-      ExpectThrows([&] {
-        QuadrilateralAdaptive fail(borrowed, uv, normal, fault);
-      }, "fault injection rollback");
+      ExpectThrows([&] { QuadrilateralAdaptive fail(borrowed, uv, normal, fault); },
+                   "fault injection rollback");
       for (const auto& node : owned)
-        Require(node.GetNumberElements() == 1,
-                "Partial constructor left a stale observer");
+        Require(node.GetNumberElements() == 1, "Partial constructor left a stale observer");
     }
     auto duplicate = borrowed;
     duplicate[3] = duplicate[0];
@@ -215,20 +200,16 @@ void TestLifecycleAndFailureAtomicity() {
                  "duplicate borrowed node");
     duplicate = borrowed;
     duplicate[3] = nullptr;
-    ExpectThrows([&] { QuadrilateralAdaptive bad(duplicate, uv, normal); },
-                 "null borrowed node");
+    ExpectThrows([&] { QuadrilateralAdaptive bad(duplicate, uv, normal); }, "null borrowed node");
     auto bad_uv = uv;
     bad_uv[2][0] = std::numeric_limits<double>::quiet_NaN();
-    ExpectThrows([&] { QuadrilateralAdaptive bad(borrowed, bad_uv, normal); },
-                 "nonfinite uv");
+    ExpectThrows([&] { QuadrilateralAdaptive bad(borrowed, bad_uv, normal); }, "nonfinite uv");
     bad_uv = uv;
     bad_uv[1][0] = 1.1;
-    ExpectThrows([&] { QuadrilateralAdaptive bad(borrowed, bad_uv, normal); },
-                 "out of unit uv");
+    ExpectThrows([&] { QuadrilateralAdaptive bad(borrowed, bad_uv, normal); }, "out of unit uv");
     bad_uv = uv;
     std::swap(bad_uv[1], bad_uv[3]);
-    ExpectThrows([&] { QuadrilateralAdaptive bad(borrowed, bad_uv, normal); },
-                 "negative uv area");
+    ExpectThrows([&] { QuadrilateralAdaptive bad(borrowed, bad_uv, normal); }, "negative uv area");
     const VectorAdaptive reversed(0, 0, -1);
     ExpectThrows([&] { QuadrilateralAdaptive bad(borrowed, uv, reversed); },
                  "reversed physical normal");
@@ -238,8 +219,7 @@ void TestLifecycleAndFailureAtomicity() {
     ExpectThrows([&] { QuadrilateralAdaptive bad(collapsed, uv, normal); },
                  "zero physical subtriangle");
     for (const auto& node : owned)
-      Require(node.GetNumberElements() == 1,
-              "Invalid construction modified existing observers");
+      Require(node.GetNumberElements() == 1, "Invalid construction modified existing observers");
   }
   for (const auto& node : owned)
     Require(node.GetNumberElements() == 0,
@@ -248,14 +228,15 @@ void TestLifecycleAndFailureAtomicity() {
                "invalid_inputs=7 external_observers_retired=4\n";
 }
 
-void CheckAdjacency(SubMesh& mesh,
-                    const std::array<NodeAdaptive*, 69>& identities,
+void CheckAdjacency(SubMesh& mesh, const std::array<NodeAdaptive*, 69>& identities,
                     const Mesh& uv) {
   std::array<unsigned, 69> degree{};
   for (auto face : uv.quads)
-    for (auto id : face) ++degree[id];
+    for (auto id : face)
+      ++degree[id];
   for (auto face : uv.tris)
-    for (auto id : face) ++degree[id];
+    for (auto id : face)
+      ++degree[id];
   unsigned links = 0;
   std::set<ElementAdaptive*> all_elements;
   for (unsigned i = 0; i < mesh.GetNumberElements(); ++i) {
@@ -265,18 +246,15 @@ void CheckAdjacency(SubMesh& mesh,
   }
   for (unsigned i = 0; i < 69; ++i) {
     NodeAdaptive* node = mesh.GetNoh(i);
-    Require(node == identities[i] &&
-                node->GetId() == static_cast<unsigned long>(i + 1) &&
+    Require(node == identities[i] && node->GetId() == static_cast<unsigned long>(i + 1) &&
                 node->GetNumberElements() == degree[i],
             "Shared node pointer, ID or incidence changed after move");
     for (auto* observer : node->GetElements()) {
-      Require(all_elements.count(observer) == 1,
-              "Node references a foreign or retired element");
+      Require(all_elements.count(observer) == 1, "Node references a foreign or retired element");
       ++links;
     }
   }
-  Require(links == 42 * 4 + 36 * 3,
-          "Wrong total reverse quadrilateral/triangle observers");
+  Require(links == 42 * 4 + 36 * 3, "Wrong total reverse quadrilateral/triangle observers");
 }
 
 void TestNativeMixedMesh(const Mesh& uv, const Mesh& xyz) {
@@ -300,10 +278,8 @@ void TestNativeMixedMesh(const Mesh& uv, const Mesh& xyz) {
     node->SetId(static_cast<unsigned long>(i + 1));
     identities[i] = node.get();
     owned->AddNoh(std::move(node));
-    const auto expected = patch->Parameterize(
-        uv.vertices[i][0], uv.vertices[i][1]);
-    Require(Close(p[0], expected.GetX()) &&
-                Close(p[1], expected.GetY()) &&
+    const auto expected = patch->Parameterize(uv.vertices[i][0], uv.vertices[i][1]);
+    Require(Close(p[0], expected.GetX()) && Close(p[1], expected.GetY()) &&
                 Close(p[2], expected.GetZ()),
             "Physical node is detached from its real model UV identity");
   }
@@ -321,19 +297,17 @@ void TestNativeMixedMesh(const Mesh& uv, const Mesh& xyz) {
     const auto du = patch->Qu(u, v);
     const auto dv = patch->Qv(u, v);
     auto quad = std::make_unique<QuadrilateralAdaptive>(four, parameters, du * dv);
-    Require(quad->GetArea() > 1e-12 &&
-                quad->GetVectorNormal().CalculateModule() > 1e-12,
+    Require(quad->GetArea() > 1e-12 && quad->GetVectorNormal().CalculateModule() > 1e-12,
             "Nonpositive physical QUAD size");
     owned->AddElement(std::move(quad));
   }
   for (auto face : uv.tris) {
-    auto tri = std::make_unique<TriangleAdaptive>(
-        identities[face[0]], identities[face[1]], identities[face[2]]);
+    auto tri = std::make_unique<TriangleAdaptive>(identities[face[0]], identities[face[1]],
+                                                  identities[face[2]]);
     Require(tri->GetArea() > 1e-12, "Degenerate physical TRI");
     owned->AddElement(std::move(tri));
   }
-  Require(owned->GetNumberNos() == 69 &&
-              owned->GetNumberElements() == 78,
+  Require(owned->GetNumberNos() == 69 && owned->GetNumberElements() == 78,
           "SubMesh did not adopt 69 physical nodes and 78 mixed elements");
   CheckAdjacency(*owned, identities, uv);
   auto moved = std::make_unique<SubMesh>(std::move(*owned));
@@ -355,13 +329,13 @@ void TestNativeMixedMesh(const Mesh& uv, const Mesh& xyz) {
                "NOT_production_QUAD\n";
 }
 
-}  // namespace
+} // namespace
 
 int main(int argc, char** argv) {
   try {
-    Require(argc == 3,
-            "Usage: quad_four_node_probe NATIVE_UV_MIXED_OBJ PHYSICAL_XYZ_MIXED_OBJ");
+    Require(argc == 3, "Usage: quad_four_node_probe NATIVE_UV_MIXED_OBJ PHYSICAL_XYZ_MIXED_OBJ");
     TestLifecycleAndFailureAtomicity();
+    apmesh::quad::test::TestFourCornerAdmission();
     const Mesh uv = ReadObj(argv[1], false);
     const Mesh xyz = ReadObj(argv[2], true);
     TestNativeMixedMesh(uv, xyz);

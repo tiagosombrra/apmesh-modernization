@@ -1,0 +1,140 @@
+{
+  "schema": "apmesh.quad.four_corner_admission.v1",
+  "date_fortaleza": "2026-11-14",
+  "base": "3809eb78c2fca625bfaf332cf9ab8342fa2d10ad",
+  "classification": "Behavior-changing defect repair of the existing strictly convex CCW UV admission contract in the experimental physical element.",
+  "change": "Retain original012 and023 expressions/evaluation first; add123 and301 with existing1e-14. All validation still precedes observer publication.",
+  "source_sha256": {
+    "research/quad/physical_quadrilateral_adaptive.cpp": "fb7e39dec923f81aec80effda820721b071d44e32192838fa1752c659efd9c3a",
+    "tests/quad/four_corner_admission.h": "21f24d5e24884bb03d6c0761c86a35985d6b3a2826521b7c094bd479c0ad33db",
+    "tests/quad/physical_quad_ownership_probe.cpp": "2f5ffeff9c094066d5445fc1cd2021c837ff0c9a893ba29a3b6a787a65763dba",
+    "tests/quad/test_m4_quad_ownership.py": "c8d5a733e09b2d22c8c1bf6b5251da27c90b61a34e9ef8a3b5fb4200f10d8c45"
+  },
+  "original_failure": {
+    "exit": 1,
+    "message": "Concave UV quad was accepted",
+    "source_sha256": "e3fcacc114cd33a0f91de164a867836bfc444634c1695503d770b6c599d897e4",
+    "fixture_sha256": "f26fcf7cdad709a7e0ea4a3c626508be097b50e79fcb16b0a2e9a5854f2a0a73",
+    "report_sha256": "2e6f78e3079fcbf40ab5b155240041d3b3b03d2333e05ac0c6add9bbef23d1b2"
+  },
+  "native_profiles": {
+    "linux-gcc": {
+      "compiler_version": "13.3.0",
+      "standard": "C++17",
+      "build_type": "Debug",
+      "accepted": 20,
+      "rejected": 40,
+      "binary_sha256": "402e5de14d86887d936954de5fe673d4a2e39ceb54c27f41072027b4ba2788ab",
+      "records_sha256": {
+        "2.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report.json": "6b54f6e9c7d5e58330ce35050ed33880d22737fe09fea1be6522c9bbaf0569bf",
+        "0.stdout": "41d30aba0f771ee9ede8f1bd11e7d58f1390f780573ee3107e0dfe97a5d9ea2c",
+        "0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "2.stdout": "e816c78b96aace2b60bda1d1d20c54baa6d7becabc84478b7502d693411d5397",
+        "1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "1.stdout": "0c1070dfb55f2e8b9323c72141650445ed53e271d3f2575eea0646d68bc8d437"
+      },
+      "translation_units": 7,
+      "observer_values_order_slots": "preserved"
+    },
+    "windows-gcc": {
+      "compiler_version": "16.1.0",
+      "standard": "C++17",
+      "build_type": "Debug",
+      "accepted": 20,
+      "rejected": 40,
+      "binary_sha256": "c2f6bcf6dc5be3262b52d6061bda1c9874cda91d1bcc88af8516c79cea25431b",
+      "records_sha256": {
+        "0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "0.stdout": "854af2cc00f334cbe6aa7889c3ce0c0d3878489070aae57044c5642ceb245669",
+        "1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "1.stdout": "aa278c6f463ea949aae83fd2fbf5a09805a910b93a70947b9e812f6f0d3e3d31",
+        "2.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "2.stdout": "b4d1870d3da64622cec888ad0483f80640798b46c1410c7d8b566a8daa6f5d95",
+        "report.json": "452b6d204262815753e0f19daad3be04fee8036ce6883d54f470ff3fa1df713b"
+      },
+      "translation_units": 7,
+      "observer_values_order_slots": "preserved"
+    },
+    "windows-msvc": {
+      "compiler_version": "19.44.35229.0",
+      "standard": "C++17",
+      "build_type": "Debug",
+      "accepted": 20,
+      "rejected": 40,
+      "binary_sha256": "d4a8a09c8b3adba350c185da4841ab9743fccf49a50528b4f03dfc501fa20ff2",
+      "records_sha256": {
+        "0.stderr": "5cf11d3fc2a9a65e538cde9edcf383e5b2a8d7f8ab8fd1ee4b72f954ec390199",
+        "0.stdout": "c9ab77618093d848e07d80a0c6896195d9b2e34c69be4c8a948ae871c5259eb7",
+        "1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "1.stdout": "8371276b0beae9835c4bc4fab8624a46b30b75ce97d0818f3249a3f73ac66f0b",
+        "2.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "2.stdout": "b4d1870d3da64622cec888ad0483f80640798b46c1410c7d8b566a8daa6f5d95",
+        "report.json": "2c3c5952e7f9404ce5a1b644bb2e612d1c36729d80e5b5c0b55408d646d4f6e6"
+      },
+      "translation_units": 7,
+      "observer_values_order_slots": "preserved"
+    }
+  },
+  "configured_analysis": {
+    "status": "passed",
+    "compiler_metadata": "Actual Linux GCC standalone seven-TU CMake compile database",
+    "units": [
+      "physical element",
+      "driver including complete added positive/negative header"
+    ],
+    "new_header_scope": "Expanded include/src/research/quad/tests/quad header filter; original checks, warnings-as-errors and vendor exclusions retained.",
+    "record_sha256": "1219b44077454339075503d520902bb509557a8832a3a56b832e25591c84e1e1"
+  },
+  "format": {
+    "steps": [
+      {
+        "step": "initial",
+        "exit": 1
+      },
+      {
+        "step": "apply",
+        "exit": 0
+      },
+      {
+        "step": "final",
+        "exit": 0
+      }
+    ],
+    "operation": "Explicit formatting of three touched files before qualification",
+    "whitespace_removed_text_identity": {
+      "research/quad/physical_quadrilateral_adaptive.cpp": true,
+      "tests/quad/four_corner_admission.h": true,
+      "tests/quad/physical_quad_ownership_probe.cpp": true
+    },
+    "prior_setup_error": "Incorrect /mnt/c/c path rejected before file mutation; retained original setup folder."
+  },
+  "preserved_source": {
+    "production_src_include_inputs_presets": "No edits",
+    "existing_012_023_expressions": "Retained in original evaluation order",
+    "physical_area_normal_angle_formulas": "Unchanged",
+    "legacy_lifecycle_and_mixed_mesh_oracles": "Retained; new matrix required additionally"
+  },
+  "admission_limit": "Previously accepted convex UV inputs at a missing corner determinant<=1e-14 are intentionally refused. No universal previous-acceptance identity is claimed.",
+  "pending": [
+    "Full exact-candidate native regression and complete existing physical model ownership test",
+    "Analysis of complete existing physical ownership compilation unit using root metadata",
+    "Fresh remote candidate checks and research integration",
+    "Live curved-patch R2 and mixed-history R3",
+    "Broader M4 sanitizers/coverage and scientific high-valence/historical approvals"
+  ],
+  "raw_records": "build/quad-convexity/session-20261114/",
+  "retained_setup_failures": [
+    "PowerShell brace expansion rejected before reading source; corrected explicit paths.",
+    "Initial format check exposed inherited formatting. A path conversion mistake produced /mnt/c/c and changed no files. Corrected paths and explicitly formatted only three touched files; whitespace-removed text identity retained.",
+    "Initial Windows staged check could not find clang-format in PATH. Existing Visual Studio LLVM19.1.5 selected via child-process PATH and checked identical staged bytes; independent LLVM22 check also passed. No hook bypass or global environment change."
+  ],
+  "staged_checks": {
+    "Linux": "LLVM22.1.8, all11applicable stagedfiles passed",
+    "Windows": {
+      "formatter": "clang-format version 19.1.5",
+      "exit": 0,
+      "scope": "Existing installed formatter; per-process PATH only; staged bytes unchanged"
+    }
+  }
+}
