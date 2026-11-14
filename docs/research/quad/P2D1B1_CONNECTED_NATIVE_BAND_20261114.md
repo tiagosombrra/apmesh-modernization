@@ -48,6 +48,35 @@ independent source oracle remain unchanged.
 The log explicitly reports `actual_aft_retriangulations=0`
 and `adaptive_epochs=0`, even if the band proves topologically viable.
 
+## Observed source-specific qualification candidate
+
+The original Linux and ASan/UBSan/leak-controlled application artifact on
+head `c322769123a3bb0e5b2f791be56df7aa002140f7` independently
+reported the following **native UV-only** result (in contrast to the
+rejected isolated-cell proposal in PR #227):
+
+| Source-specific quantity | P2d-1b0 isolated AFT cell | P2d-1b1 connected band |
+| --- | ---: | ---: |
+| Original selected cell(s) | 6 | 6, 7, 9 |
+| Original native leaves | 19 | 19 |
+| Native leaves after edit | 22 | 28 |
+| Eligible connected QUAD UV area | 0.265625, **invalid island** | **0.328125**, valid disk |
+| Emitted QUAD UV elements | 0 (rejected) | **62** |
+| Original AFT exterior regenerated | 0 | 0 |
+| Accepted adapted physical epochs | 0 | 0 |
+
+The connected band expands the original valid QUAD UV area from 25% to
+**32.8125%**, a gain of 7.8125 percentage points, by one real
+subdivision of the native original cell #6 and two bridging native
+cells #7 and #9. This is evidence for **topological feasibility
+only**, not for physical XYZ element quality, improved source
+approximation error, new AFT seam closure or adaptive acceptance.
+A source-specific independent Python regression now pins the exact
+three cell IDs, leaf count, QUAD count and UV area rather than
+accepting arbitrary reported values. Full exact-head Linux/Windows,
+TRI and sanitizer regression must be rerun on this pinned version
+before integration.
+
 ## Required test and next steps
 
 The independent Python application test must corroborate original
