@@ -458,8 +458,8 @@ def verify_connected_aft_band(stdout, source_residual):
     return record
 
 
-def verify_physical_band_candidate(stdout, prefix):
-    # A separate file is only an experimental *candidate*, never an adopted epoch.
+def verify_physical_band_candidate(stdout, prefix, *, require_staged=False):
+    # This controlled positive gate must not pass on a rollback-only rejection.
     lines = stdout.decode().splitlines()
     records = [line for line in lines if line.startswith("QUAD_BAND_PHYSICAL_CANDIDATE ")]
     require(len(records) == 1, "Missing or duplicate physical native-AFT band attempt")
@@ -477,6 +477,8 @@ def verify_physical_band_candidate(stdout, prefix):
                 not candidate_path.exists() and
                 any(s.startswith("QUAD_BAND_PHYSICAL_REJECTION reason=") for s in lines),
                 "Rejected physical AFT band published an unverified candidate")
+        require(not require_staged,
+                "Controlled source requires a real physical QUAD/AFT candidate, not rejection-only CI")
         return {"status": "rejected"}
     require(values["exported_candidate"] == "1" and candidate_path.is_file(),
             "Full original native AFT candidate was not exported for independent audit")
@@ -537,7 +539,15 @@ def main():
     residual = verify_mixed_surface_residual(r.stdout, root/"accepted.obj")
     trials = verify_native_tree_trials(r.stdout, residual)
     band = verify_connected_aft_band(r.stdout, residual)
-    physical_band = verify_physical_band_candidate(r.stdout, root/"accepted")
+    physical_band = verify_physical_band_candidate(r.stdout, root/"accepted",
+                                                   require_staged=True)
+    # Pin a real typed physical outcome, not merely a valid rejection transcript.
+    require(physical_band["topology"] ==
+            {"nodes": 93, "quads": 62, "triangles": 44, "boundary": 16},
+            "Controlled source did not build its independently observed 62-QUAD physical band")
+    # A bounded source-specific numerical witness; the RMS sampling sets differ.
+    require(physical_band["errors"]["maximum"] < residual["maximum"],
+            "Controlled source-specific sampled maximum did not improve")
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -559,8 +569,27 @@ def main():
             "Rollback native tree trial provenance differs from accepted control")
     require(verify_connected_aft_band(r.stdout, residual) == band,
             "Rollback native connected band provenance differs")
-    require(verify_physical_band_candidate(r.stdout, root/"rollback") == physical_band,
+    require(verify_physical_band_candidate(r.stdout, root/"rollback",
+                                           require_staged=True) == physical_band,
             "Rollback changed actual physical native-AFT band candidate result")
+    # A well-formed rejection still exercises rollback, but must fail the positive gate.
+    rejected_log = (
+        b"QUAD_BAND_PHYSICAL_CANDIDATE status=rejected "
+        b"source=original_native_connected_band previous_physical_owner_preserved=1 "
+        b"original_aft_pipeline_requested=1 exported_candidate=0 adaptive_epochs=0\n"
+        b"QUAD_BAND_PHYSICAL_REJECTION reason=controlled_negative\n"
+    )
+    negative_prefix = root/"negative-only"
+    require(verify_physical_band_candidate(rejected_log, negative_prefix) ==
+            {"status": "rejected"},
+            "Controlled negative rejection contract changed")
+    try:
+        verify_physical_band_candidate(rejected_log, negative_prefix,
+                                       require_staged=True)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("Rejection-only execution incorrectly passed positive physical gate")
     r = execute("unsupported", model="missing.bp")
     require(not (root/"unsupported.band-candidate.obj").exists(),
             "Unsupported source staged an illegal physical band candidate")
