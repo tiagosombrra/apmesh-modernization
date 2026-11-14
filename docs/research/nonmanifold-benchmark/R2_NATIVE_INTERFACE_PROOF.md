@@ -61,3 +61,7 @@ Run prerequisites: Python >=3.10, CadQuery and its Open CASCADE Python runtime f
 6. Run TRI generation with positive real shared-incidence checks, accepted/rejected stage trace and historical regression separately. QUAD/anisotropy are later separately qualified methods.
 
 No external candidate has passed G2, no new BP file has been validated, and no production APMesh code has changed. R2 is PARTIALLY ADVANCED, not closed.
+
+## Follow-on native shared-edge construction
+
+The controlled local interface graph was used to create a distinct, **kernel-valid non-manifold surface complex** through Open CASCADE non-manifold sewing, with one genuine TopoDS edge shared by four faces. See [R2_VALID_NONMANIFOLD_BREP.md](R2_VALID_NONMANIFOLD_BREP.md). This is a constructed research control, not a claim that the original three CAD solids contained a shared topological edge or that a valid APMesh BP has been produced. External G1/G2 admission is still blocked.
