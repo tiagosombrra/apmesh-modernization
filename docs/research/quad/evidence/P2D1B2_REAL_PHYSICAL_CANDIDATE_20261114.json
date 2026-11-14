@@ -1,0 +1,61 @@
+{
+  "schema": "apmesh.quad.p2d1b2.physical_candidate.v1",
+  "date": "2026-11-14",
+  "milestone": "P2d-1b2 research-only staged physical candidate, not adaptive epoch",
+  "model": "builtin:curva_bezier",
+  "policy": "curved_bezier_fixed16_vertex_mean_v1",
+  "exact_feature_sha": "bada655ae68a635f4b9664a05b2ab261d2d8d94c",
+  "research_merge_sha": "289b6be6e97f787b53471255f9d30fbf3777fbba",
+  "feature_ci": {
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43619762822",
+    "jobs_passed": 4,
+    "jobs_total": 4,
+    "native_linux": "success",
+    "native_windows": "success",
+    "linux_asan_ubsan_leak": "success",
+    "root_ctest": "85/85 passed",
+    "python_tooling": "527/527 passed",
+    "frozen_original_eistute_book_tri_parity": "success"
+  },
+  "original_physical_candidate": {
+    "nodes": 69,
+    "quads": 42,
+    "triangles": 36,
+    "source_boundary_edges": 16,
+    "quad_uv_area_fraction": 0.25,
+    "source_maximum_sampled_error": 0.04638995827046562,
+    "source_rms_sampled_error": 0.013065358552865405,
+    "error_sample_count": 354,
+    "obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0"
+  },
+  "refined_unaccepted_physical_candidate": {
+    "nodes": 93,
+    "quads": 62,
+    "triangles": 44,
+    "source_boundary_edges": 16,
+    "quad_uv_area_fraction": 0.328125,
+    "source_maximum_sampled_error": 0.036770698198948695,
+    "source_rms_sampled_error": 0.007863932396973817,
+    "error_sample_count": 486,
+    "minimum_signed_scaled_quad_jacobian": 0.567009347028317,
+    "minimum_warpage_cosine": 0.9970126470841612,
+    "obj_sha256": "76b0b4defecc5d534815fb9f41e1405653597a4a0bee6cc7b722ec2460d7afd6"
+  },
+  "independent_source_oracle": "Python OBJ/Bernstein physical topology, signed QUAD corner quality, 3D orientation and sampled residual on Linux, Windows, and Linux sanitizer applications",
+  "scientific_limits": [
+    "Both residuals use different face/sample distributions; the observed RMS reduction is not a common-grid convergence proof.",
+    "This is a staged research candidate, not an adopted second Patch/SubMesh adaptive epoch.",
+    "fixed16 source boundary is not GeneratorAdaptive/Adapter::AdaptCurve production policy.",
+    "No acceptance/complexity objective and no two genuinely previous-state-driven accepted QUAD/TRI epochs.",
+    "No Eistute/Book high-valence global sheet pairing or welding.",
+    "No all-QUAD, anisotropy, or literal 1993 reconstruction."
+  ],
+  "positive_test_hardening": {
+    "draft_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/230",
+    "feature_sha": "71dde5d2a443b48a8e4a9a84dca07f5d7bb64901",
+    "scope": "test-only positive emission gate and rejection-only anti-false-green test",
+    "ci": "not yet verified",
+    "merge": "pending"
+  },
+  "postmerge_exact_sha_ci": "not verified in this checkpoint"
+}
