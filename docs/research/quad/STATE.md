@@ -40,8 +40,7 @@ disconnected, diagonal-vertex island**. Two bridge alternatives
 (3,0)+(2,0) or (3,0)+(3,1) predict connected 34 leaves/24-of-64;
 both bridges predict 37 leaves/26-of-64. These are **necessary dyadic
 topology estimates, not actual original C++ Quadtree or native AFT execution**.
-[Bounded protocol](P2D1C0_SECOND_BOUNDARY_BAND_PREFLIGHT_20261114.md)
-on the isolated PR branch, not yet on canonical.
+[Bounded protocol on draft PR232](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/p2d1c0-second-error-band-dyadic-preflight-20261114/docs/research/quad/P2D1C0_SECOND_BOUNDARY_BAND_PREFLIGHT_20261114.md), not yet on canonical.
 
 **Next native gate P2d-1c1:** propagate the *current previous physical
 candidate* and source-error-selected site to the real native Quadtree,
