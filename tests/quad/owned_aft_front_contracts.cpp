@@ -284,7 +284,165 @@ int main() {
       s.selected.quad_face_origins = saved;
       CheckSeed(s, 16, 4);
     });
-    Check(accepted == 13, "R2b native positive and negative controls were skipped");
+    run("r2b2-reject-unseeded-exterior-attempt", [] {
+      auto s = Make();
+      Reject([&] { s.aft->AttemptExteriorTriangulation(s.selected); });
+      CheckUnmodified(s);
+    });
+    run("r2b2-reject-unbound-patch-cells", [] {
+      auto s = Make();
+      CheckSeed(s, 16, 4);
+      Reject([&] { s.aft->AttemptExteriorTriangulation(s.selected); });
+      Check(s.aft->Triangles().empty(), "Failed AFT preflight emitted triangles");
+    });
+    run("r2b2-run-native-original-geometry-topology", [] {
+      auto s = Make();
+      CheckSeed(s, 16, 4);
+      // The original production tree registers boundary cells in generate().
+      // This research fixture manually constructs the same already-refined tree.
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        s.aft->getQuadtree()->findCell(edge);
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        Check(edge->getCell() != nullptr,
+              "Native source patch boundary has no valid cell observer");
+      const auto report = s.aft->AttemptExteriorTriangulation(s.selected);
+      Check(report.exterior_triangles == s.aft->Triangles().size() &&
+                s.aft->OwnedSeamEdges().size() == 16 &&
+                s.aft->OwnedSeamVertices().size() == 16 &&
+                report.seam_edges_with_one_tri == 16 &&
+                report.boundary_uv_area > report.quad_uv_area &&
+                report.seam_vertices_unchanged &&
+                report.spatial_overlap_tested && !report.qualified,
+            "R2b2 misrepresented its measured exterior AFT attempt");
+      std::cout << "R2B2_DIAGNOSTIC exterior_triangles="
+                << report.exterior_triangles
+                << " geometry_done=" << report.geometry_done
+                << " topology_attempted=" << report.topology_attempted
+                << " topology_done=" << report.topology_done
+                << " unresolved_front=" << report.unresolved_front_edges
+                << " rejected=" << report.unresolved_rejected_edges
+                << " seam_owned=" << report.seam_edges_with_one_tri
+                << " seam_expected=" << s.aft->OwnedSeamEdges().size()
+                << " area_boundary=" << report.boundary_uv_area
+                << " area_quad=" << report.quad_uv_area
+                << " area_tri=" << report.triangle_uv_area
+                << " area_balanced=" << report.uv_area_balanced << '\n';
+      Reject([&] { s.aft->AttemptExteriorTriangulation(s.selected); });
+      // This is an executable scientific gate: partial or overlapping area
+      // cannot be promoted merely because AFT returned some faces.
+      const bool complete = report.exterior_triangles > 0 &&
+          report.triangles_positive && report.front_drained &&
+          report.seam_orientation_complete && report.uv_area_balanced &&
+          report.spatial_overlap_tested && report.no_spatial_overlap;
+      if (!complete) {
+        throw std::runtime_error(
+            "R2b2 exterior AFT not closed: tri=" +
+            std::to_string(report.exterior_triangles) +
+            " front=" + std::to_string(report.unresolved_front_edges) +
+            " rejected=" + std::to_string(report.unresolved_rejected_edges) +
+            " seam=" + std::to_string(report.seam_edges_with_one_tri) +
+            " triangle_positive=" + std::to_string(report.triangles_positive) +
+            " area_balanced=" + std::to_string(report.uv_area_balanced) +
+            " overlap_area=" + std::to_string(report.cumulative_overlap_area) +
+            " patch=" + std::to_string(report.boundary_uv_area) +
+            " quad=" + std::to_string(report.quad_uv_area) +
+            " tri_area=" + std::to_string(report.triangle_uv_area));
+      }
+    });
+    run("r2b2-uv-overlap-shared-edge-is-not-overlap", [] {
+      apmesh::quad::UvMesh quads;
+      const std::vector<std::array<UvVertex, 3>> triangles{
+          {{{0, 0}, {1, 0}, {0, 1}}},
+          {{{1, 0}, {1, 1}, {0, 1}}}};
+      const auto result = apmesh::quad::AuditUvOverlap(quads, triangles);
+      Check(result.no_overlap && result.overlap_area == 0.0,
+            "Shared TRI edge was incorrectly counted as spatial overlap");
+    });
+    run("r2b2-uv-overlap-triangle-triangle-detected", [] {
+      apmesh::quad::UvMesh quads;
+      const std::vector<std::array<UvVertex, 3>> triangles{
+          {{{0, 0}, {1, 0}, {0, 1}}},
+          {{{0.1, 0.1}, {0.9, 0.1}, {0.1, 0.9}}}};
+      const auto result = apmesh::quad::AuditUvOverlap(quads, triangles);
+      Check(!result.no_overlap && result.tri_tri_pairs == 1 &&
+                result.overlap_area > 0.0,
+            "Positive-area TRI/TRI overlap was missed");
+    });
+    run("r2b2-uv-overlap-triangle-quad-detected", [] {
+      apmesh::quad::UvMesh quads;
+      quads.vertices = {{0, 0}, {0.5, 0}, {0.5, 0.5}, {0, 0.5}};
+      quads.quads.push_back({{0, 1, 2, 3}});
+      const std::vector<std::array<UvVertex, 3>> triangles{
+          {{{0.2, 0.2}, {0.6, 0.2}, {0.2, 0.6}}}};
+      const auto result = apmesh::quad::AuditUvOverlap(quads, triangles);
+      Check(!result.no_overlap && result.tri_quad_pairs == 1 &&
+                result.overlap_area > 0.0,
+            "Positive-area TRI/QUAD overlap was missed");
+    });
+    run("r2b2-refined-20-split-interface-complete", [] {
+      auto s = Make(true);
+      CheckSeed(s, 20, 4);
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        s.aft->getQuadtree()->findCell(edge);
+      const auto result = s.aft->AttemptExteriorTriangulation(s.selected);
+      std::cout << "R2B2_REFINED exterior_triangles=" << result.exterior_triangles
+                << " seam=" << result.seam_edges_with_one_tri
+                << " expected=20"
+                << " area_tri=" << result.triangle_uv_area
+                << " overlap_area=" << result.cumulative_overlap_area << '\n';
+      Check(result.exterior_triangles > 0 && result.front_drained &&
+                result.triangles_positive && result.seam_orientation_complete &&
+                result.seam_edges_with_one_tri == 20 &&
+                result.seam_vertices_unchanged && result.uv_area_balanced &&
+                result.spatial_overlap_tested && result.no_spatial_overlap,
+            "Refined QUAD interface did not complete with correct TRI exterior");
+    });
+    run("r2b2-nonuniform-eight-point-contour-complete", [] {
+      auto s = Make(false, false, true);
+      CheckSeed(s, 16, 8);
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        s.aft->getQuadtree()->findCell(edge);
+      const auto result = s.aft->AttemptExteriorTriangulation(s.selected);
+      std::cout << "R2B2_NONUNIFORM exterior_triangles=" << result.exterior_triangles
+                << " seam=" << result.seam_edges_with_one_tri
+                << " expected=16"
+                << " area_patch=" << result.boundary_uv_area
+                << " area_tri=" << result.triangle_uv_area
+                << " overlap_area=" << result.cumulative_overlap_area << '\n';
+      Check(result.exterior_triangles > 0 && result.front_drained &&
+                result.triangles_positive && result.seam_orientation_complete &&
+                result.seam_edges_with_one_tri == 16 &&
+                result.seam_vertices_unchanged && result.uv_area_balanced &&
+                result.spatial_overlap_tested && result.no_spatial_overlap,
+            "Nonuniform source patch boundary did not complete with TRI exterior");
+    });
+    run("r2b2-abort-after-partial-original-AFT-triangles", [] {
+      auto s = Make();
+      CheckSeed(s, 16, 4);
+      const auto original_faces = s.selected.uv_quads.quads.size();
+      const auto original_seam = s.selected.quad_region_boundary.size();
+      for (auto* edge : s.aft->getBoundary()->getEdges())
+        s.aft->getQuadtree()->findCell(edge);
+      s.aft->SetResearchAbortAfterTriangles(1);
+      bool interrupted = false;
+      try {
+        (void)s.aft->AttemptExteriorTriangulation(s.selected);
+      } catch (const std::runtime_error& error) {
+        interrupted = std::string(error.what()).find(
+            "injected research-only failure") != std::string::npos;
+      }
+      Check(interrupted && s.aft->Triangles().size() >= 1 &&
+                s.aft->getQuadtree()->GetTemplateFaces().empty(),
+            "Native AFT did not abort after partially generated exterior TRI");
+      Reject([&] { (void)s.aft->AttemptExteriorTriangulation(s.selected); });
+      // Retire every partial AFT vertex, edge and face with its owner. The
+      // value-owned QUAD source stays valid; no physical mesh was published.
+      s.aft.reset();
+      Check(s.selected.uv_quads.quads.size() == original_faces &&
+                s.selected.quad_region_boundary.size() == original_seam,
+            "Failed AFT owner destruction corrupted the source QUAD selection");
+    });
+    Check(accepted == 22, "R2b/R2b2 native diagnostic controls were skipped");
     std::cout << "r2b_owned_aft_front=ok outcomes=" << accepted
               << " native_quadtree_and_boundary=1"
               << " aft_active_real_edges=1"

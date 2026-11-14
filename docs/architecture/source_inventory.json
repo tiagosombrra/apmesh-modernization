@@ -412,7 +412,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "10b6503fa492364c289e34b8b608ba55d1b5b559bc6da309f182b73d6cf2b0f1"
+      "sha256": "8d38d10243b683fa0a146b6be76d9340ef8af163d094feae3228aa9b43657a83"
     },
     {
       "path": "CMakePresets.json",
@@ -3723,8 +3723,8 @@
       "path": "src/adapter/adapter.cpp",
       "component_by_directory": "adapter",
       "kind": "translation_unit",
-      "sha256": "bd31eeb99a23814b60aa54d362e9f40c2f3027741e044261d3b22bf5f96dc121",
-      "bytes": 77574,
+      "sha256": "0d0c4db0e0caf6297006209d96e673ae8fab156141c0877e04cdc1ded8212f16",
+      "bytes": 78045,
       "includes": [
         {
           "line": 1,

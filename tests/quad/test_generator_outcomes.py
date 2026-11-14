@@ -44,14 +44,334 @@ def run(executable: Path, root: Path, model: str) -> None:
             timeout=300,
             check=False,
         )
-        markers = [line for line in result.stdout.splitlines()
-                   if line.startswith("real_generator_outcomes=")]
-        if result.returncode != 0 or len(markers) != 1:
+        markers = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("real_generator_outcomes=")
+        ]
+        shared = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_SHARED_CURVE_MODEL ")
+        ]
+        radial = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_SHARED_SHEET_SECTORS ")
+        ]
+        sweep = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_SHARED_SHEET_SWEEP ")
+        ]
+        bernstein = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_SHARED_SHEET_BERNSTEIN ")
+        ]
+        source_rings = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2C0_ORIGINAL_SOURCE_RING ")
+        ]
+        all_patches = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_ALL_PATCH_RESULT ")
+        ]
+        all_summary = [
+            line for line in result.stdout.splitlines()
+            if line.startswith("R2B2_ALL_PATCH_MODEL ")
+        ]
+        if (result.returncode != 0 or len(markers) != 1
+                or len(shared) != 1 or len(radial) != 1
+                or len(sweep) != 1 or len(bernstein) != 1 or len(all_summary) != 1):
             raise AssertionError(
                 f"Generator research probe failed: rc={result.returncode}, "
-                f"markers={markers}, stdout_tail={result.stdout[-5000:]!r}, "
+                f"markers={markers}, shared={shared}, radial={radial}, "
+                f"sweep={sweep}, bernstein={bernstein}, "
+                f"all_summary={all_summary}, all_patch_count={len(all_patches)}, "
+                f"stdout_tail={result.stdout[-5000:]!r}, "
                 f"stderr_tail={result.stderr[-5000:]!r}"
             )
+
+        # Require source-derived, coherent and nonzero real interface evidence.
+        # CTest success does NOT classify rejected interfaces as conforming.
+        fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", shared[0]))
+        expected_patches = 4 if model == "eistute" else 28
+        required = (
+            "patches", "shared_curves", "coherent_epoch_patches",
+            "shared_compared", "shared_matched", "shared_rejected",
+            "shared_unobserved", "shared_geometry_matched",
+            "shared_geometry_rejected", "shared_source_ids_matched",
+            "shared_source_ids_rejected", "shared_node_id_mismatch_pairs",
+            "shared_node_id_mismatch_sites",
+            "shared_node_id_mismatch_endpoints",
+            "shared_node_id_mismatch_interiors",
+            "sheet_policy_pending",
+            "same_orientation_pairs", "opposite_orientation_pairs",
+            "negative_controls", "owner_endpoint_negative_controls",
+            "global_mixed_model_admitted",
+        )
+        if any(field not in fields for field in required):
+            raise AssertionError(f"Missing source interface evidence: {shared[0]!r}")
+        compared = int(fields["shared_compared"])
+        matched = int(fields["shared_matched"])
+        rejected = int(fields["shared_rejected"])
+        geometry_matched = int(fields["shared_geometry_matched"])
+        geometry_rejected = int(fields["shared_geometry_rejected"])
+        source_ids_matched = int(fields["shared_source_ids_matched"])
+        source_ids_rejected = int(fields["shared_source_ids_rejected"])
+        if not (
+            int(fields["patches"]) == expected_patches
+            and int(fields["shared_curves"]) > 0
+            and int(fields["coherent_epoch_patches"]) > 1
+            and compared > 0
+            and matched + rejected == compared
+            and geometry_matched + geometry_rejected == compared
+            and source_ids_matched + source_ids_rejected == compared
+            and (int(fields["same_orientation_pairs"])
+                 + int(fields["opposite_orientation_pairs"])) > 0
+            and int(fields["negative_controls"]) == 1
+            and int(fields["owner_endpoint_negative_controls"]) == 1
+            and int(fields["global_mixed_model_admitted"]) == 0
+        ):
+            raise AssertionError(f"Unqualified or empty source audit: {shared[0]!r}")
+        if (int(fields["shared_node_id_mismatch_endpoints"])
+                + int(fields["shared_node_id_mismatch_interiors"])
+                != int(fields["shared_node_id_mismatch_sites"])):
+            raise AssertionError(f"Source IDs have inconsistent classification: {shared[0]!r}")
+
+        sector_fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", radial[0]))
+        sector_required = (
+            "patches", "high_valence_curves", "curve_incidences",
+            "angular_adjacent_pairs", "radial_coincident_pairs",
+            "minimum_cyclic_angle", "max_patch_curve_xyz_error",
+            "source_geometry_admitted", "automatic_sheet_pairing_enabled",
+            "negative_controls", "reason", "radial_order",
+        )
+        if any(field not in sector_fields for field in sector_required):
+            raise AssertionError(f"Missing real source radial sector evidence: {radial[0]!r}")
+        if not (
+            int(sector_fields["patches"]) == expected_patches
+            and int(sector_fields["high_valence_curves"]) > 0
+            and int(sector_fields["curve_incidences"]) == expected_patches
+            and int(sector_fields["angular_adjacent_pairs"]) == expected_patches
+            and int(sector_fields["negative_controls"]) == 1
+            and int(sector_fields["automatic_sheet_pairing_enabled"]) == 0
+            and len(sector_fields["radial_order"].split(",")) == expected_patches
+        ):
+            raise AssertionError(f"Invalid real source sector observation: {radial[0]!r}")
+
+        # An original high-valence fan is inspected over the actual source
+        # interior samples AND interior interval probes. This is intentionally
+        # discrete evidence: green infrastructure tests cannot imply that a
+        # nonmanifold sheet fan is continuously intersection-free or weldable.
+        sweep_fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", sweep[0]))
+        sweep_required = (
+            "patches", "high_valence_curves", "original_curve_intervals",
+            "parameter_samples", "sector_evaluations",
+            "adjacent_sector_pairs", "order_changes",
+            "coincident_sector_pairs", "invalid_source_samples",
+            "minimum_cyclic_gap", "parameter_at_minimum_gap",
+            "max_curve_xyz_error", "max_inter_sample_sector_rotation",
+            "sampled_order_admitted", "automatic_sheet_pairing_enabled",
+            "negative_controls", "reason", "global_mixed_model_admitted",
+        )
+        if any(key not in sweep_fields for key in sweep_required):
+            raise AssertionError(f"Missing source full-curve sector sweep: {sweep[0]!r}")
+        samples = int(sweep_fields["parameter_samples"])
+        intervals = int(sweep_fields["original_curve_intervals"])
+        evaluated = int(sweep_fields["sector_evaluations"])
+        admitted = int(sweep_fields["sampled_order_admitted"])
+        swaps = int(sweep_fields["order_changes"])
+        collisions = int(sweep_fields["coincident_sector_pairs"])
+        if not (
+            int(sweep_fields["patches"]) == expected_patches
+            and int(sweep_fields["high_valence_curves"]) == 1
+            and intervals > 1 and samples > intervals
+            and evaluated == samples * expected_patches
+            and int(sweep_fields["adjacent_sector_pairs"]) == evaluated
+            and swaps >= 0 and collisions >= 0
+            and int(sweep_fields["invalid_source_samples"]) == 0
+            and admitted in (0, 1)
+            and int(sweep_fields["automatic_sheet_pairing_enabled"]) == 0
+            and int(sweep_fields["global_mixed_model_admitted"]) == 0
+            and int(sweep_fields["negative_controls"]) == 1
+            and (sweep_fields["reason"] == "none") == (admitted == 1)
+            and (admitted == 0 or
+                 (swaps == 0 and collisions == 0
+                  and float(sweep_fields["minimum_cyclic_gap"]) > 1e-6))
+        ):
+            raise AssertionError(
+                f"Invalid original high-valence curve sweep evidence: {sweep[0]!r}"
+            )
+
+        # This report is computed from Bernstein control nets, NOT the
+        # sampled sector sweep. A successful CTest can still report unproved
+        # intervals, which must never be counted as continuous admission.
+        bound_fields = dict(re.findall(r"([a-z_]+)=([^\s]+)", bernstein[0]))
+        required_bounds = (
+            "patches", "high_valence_curves", "adjacent_pairs",
+            "wide_reference_pairs", "ambiguous_reference_pairs",
+            "original_intervals", "pair_intervals_checked",
+            "certified_pair_intervals", "inverted_pair_intervals",
+            "inconclusive_pair_intervals", "smallest_positive_lower",
+            "interval_order_certified", "automatic_sheet_pairing_enabled",
+            "negative_controls", "reason", "global_mixed_model_admitted",
+        )
+        if any(key not in bound_fields for key in required_bounds):
+            raise AssertionError(
+                f"Missing real continuous radial interval evidence: {bernstein[0]!r}"
+            )
+        checked = int(bound_fields["pair_intervals_checked"])
+        certified = int(bound_fields["certified_pair_intervals"])
+        inverted = int(bound_fields["inverted_pair_intervals"])
+        unresolved = int(bound_fields["inconclusive_pair_intervals"])
+        full_certificate = int(bound_fields["interval_order_certified"])
+        if not (
+            int(bound_fields["patches"]) == expected_patches
+            and int(bound_fields["high_valence_curves"]) == 1
+            and int(bound_fields["adjacent_pairs"]) == expected_patches
+            and 0 <= int(bound_fields["wide_reference_pairs"]) <= expected_patches
+            and 0 <= int(bound_fields["ambiguous_reference_pairs"]) <= expected_patches
+            and (full_certificate == 0
+                 or int(bound_fields["ambiguous_reference_pairs"]) == 0)
+            and int(bound_fields["original_intervals"]) == intervals
+            and checked == expected_patches * intervals
+            and checked == certified + inverted + unresolved
+            and full_certificate in (0, 1)
+            and (full_certificate == 1)
+            == (certified == checked and inverted == unresolved == 0)
+            and (bound_fields["reason"] == "strict_positive_bernstein_bounds")
+                == (full_certificate == 1)
+            and (full_certificate == 0
+                 or float(bound_fields["smallest_positive_lower"]) > 0.0)
+            and int(bound_fields["negative_controls"]) == 1
+            and int(bound_fields["automatic_sheet_pairing_enabled"]) == 0
+            and int(bound_fields["global_mixed_model_admitted"]) == 0
+        ):
+            raise AssertionError(
+                f"Invalid actual continuous Bezier sector bounds: {bernstein[0]!r}"
+            )
+
+        # Source subdivision/radial ordering must come from the SAME
+        # original generator epoch, not model-wide coordinate welding.
+        if len(source_rings) != 1:
+            raise AssertionError("Missing unique original source incidence ring")
+        source_ring = dict(re.findall(r"([a-z_]+)=([^\s]+)", source_rings[0]))
+        ring_required = ("patches", "curve_index", "curve_id", "epoch",
+                         "retry", "original_intervals", "parameters",
+                         "node_ids", "radial_order",
+                         "interval_order_certified", "no_welding")
+        if any(key not in source_ring for key in ring_required):
+            raise AssertionError(
+                f"Malformed R2c0 original source curve record: "
+                f"missing={sorted(set(ring_required) - set(source_ring))!r}; "
+                f"line={source_rings[0]!r}"
+            )
+        parameters = [float(x) for x in source_ring["parameters"].split(",")]
+        node_ids = [int(x) for x in source_ring["node_ids"].split(",")]
+        radial_order = source_ring["radial_order"].split(",")
+        measured_order = dict(re.findall(r"([a-z_]+)=([^\s]+)", radial[0]))
+        source_epochs = dict(re.findall(r"([a-z_]+)=([^\s]+)", shared[0]))
+        if not (
+            int(source_ring["patches"]) == expected_patches
+            and int(source_ring["curve_index"]) >= 0
+            # The legacy CurveAdaptive::GetId may legitimately remain zero.
+            # The audited Geometry registry index carries curve identity.
+            and int(source_ring["curve_id"]) >= 0
+            and int(source_ring["original_intervals"]) == intervals
+            and len(parameters) == len(node_ids) == intervals + 1
+            and parameters[0] == 0 and parameters[-1] == 1
+            and all(0 <= a < b <= 1
+                    for a, b in zip(parameters, parameters[1:]))
+            and len(set(node_ids)) == len(node_ids)
+            and all(v > 0 for v in node_ids)
+            and len(radial_order) == len(set(radial_order)) == expected_patches
+            and source_ring["radial_order"] == measured_order["radial_order"]
+            and int(source_ring["epoch"]) == int(source_epochs["coherent_epoch"])
+            and int(source_ring["retry"]) == int(source_epochs["coherent_retry"])
+            and int(source_ring["interval_order_certified"]) == full_certificate
+            and int(source_ring["no_welding"]) == 1
+        ):
+            raise AssertionError(
+                f"Inconsistent original source R2c0 incidence: {source_rings[0]!r}"
+            )
+
+        # Every original model patch must be observed in a SINGLE source
+        # epoch. A rejected UV/AFT/XYZ candidate remains a rejected scientific
+        # result even when CTest passes: never turn coverage into admission.
+        summary = dict(re.findall(r"([A-Za-z_]+)=([^\s]+)", all_summary[0]))
+        all_fields = (
+            "expected", "observed", "coherent_epoch", "coherent_retry",
+            "uv_accepted", "uv_rejected", "physical_accepted",
+            "physical_rejected", "full_patch_coverage",
+            "global_mixed_model_admitted", "physical_SubMesh_published",
+        )
+        if any(key not in summary for key in all_fields):
+            raise AssertionError(f"Missing full-model source evidence: {all_summary[0]!r}")
+        physical_positive = 0
+        uv_positive = 0
+        unique_patches: set[int] = set()
+        if len(all_patches) != expected_patches:
+            raise AssertionError(
+                f"Every source patch must have a measured outcome: "
+                f"{len(all_patches)} vs {expected_patches}"
+            )
+        for line in all_patches:
+            values = dict(re.findall(r"([a-z_]+)=([^\s]+)", line))
+            required_patch = (
+                "patch", "source_sites", "source_leaves", "quad_faces",
+                "exterior_triangles", "uv_admitted", "physical_admitted",
+                "physical_facets", "rejection",
+            )
+            if any(key not in values for key in required_patch):
+                raise AssertionError(f"Missing native patch evidence: {line!r}")
+            patch = int(values["patch"])
+            uv_ok = int(values["uv_admitted"])
+            physical_ok = int(values["physical_admitted"])
+            if not (
+                0 <= patch < expected_patches
+                and patch not in unique_patches
+                and int(values["source_sites"]) > 4
+                and int(values["source_leaves"]) > 0
+                and uv_ok in (0, 1) and physical_ok in (0, 1)
+                and physical_ok <= uv_ok
+                and (values["rejection"] == "none") == (physical_ok == 1)
+                and (
+                    physical_ok == 0
+                    or int(values["physical_facets"]) ==
+                        2 * int(values["quad_faces"]) +
+                        int(values["exterior_triangles"])
+                )
+            ):
+                raise AssertionError(f"Invalid individual source patch admission: {line!r}")
+            unique_patches.add(patch)
+            uv_positive += uv_ok
+            physical_positive += physical_ok
+        if not (
+            len(unique_patches) == expected_patches
+            and int(summary["expected"]) == expected_patches
+            and int(summary["observed"]) == expected_patches
+            and int(summary["coherent_epoch"]) == int(fields["coherent_epoch"])
+            and int(summary["coherent_retry"]) == int(fields["coherent_retry"])
+            and int(summary["uv_accepted"]) == uv_positive
+            and int(summary["uv_rejected"]) == expected_patches - uv_positive
+            and int(summary["physical_accepted"]) == physical_positive
+            and int(summary["physical_rejected"]) ==
+                expected_patches - physical_positive
+            and int(summary["full_patch_coverage"]) == 1
+            and int(summary["global_mixed_model_admitted"]) == 0
+            and int(summary["physical_SubMesh_published"]) == 0
+        ):
+            raise AssertionError(f"Inconsistent full-model source counts: {all_summary[0]!r}")
+
+        # Geometric sector admission is a separate scientific marker. Do not
+        # convert an ambiguous real radial configuration into a CTest pass.
+        for measured_patch in all_patches:
+            print(measured_patch)
+        print(all_summary[0])
+        print(shared[0])
+        print(radial[0])
+        print(sweep[0])
+        # Retain the complete original-source interval certificate report.
+        # CTest success alone is not evidence that every interval was proven.
+        print(bernstein[0])
+        print(source_rings[0])
         print(markers[0])
 
 

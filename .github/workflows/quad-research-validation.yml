@@ -145,6 +145,294 @@ jobs:
       - name: Run full CTest baseline
         shell: bash
         run: ctest --preset local-serial --output-on-failure --no-tests=error
+      - name: Record full original-source QUAD/AFT detached chart inventories
+        shell: bash
+        run: |
+          set -o pipefail
+          # Retain real physical node/element counts and rollbacks on both originals.
+          # This does not authorize source boundary welding or patch observers.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]r2c2[.]full_source_patch_stage$' --no-tests=error | tee build/local-serial/quad_r2c2_full_source_stage.log
+      - name: Retain original full QUAD/AFT source chart staging receipt
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c2-full-source-stage-${{ github.sha }}
+          path: build/local-serial/quad_r2c2_full_source_stage.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Export and independently validate R2c10 original disconnected QUAD AFT models
+        shell: bash
+        run: |
+          set -o pipefail
+          export APMESH_QUAD_R2C10_EXPORT_DIR="$PWD/build/local-serial/r2c10_original_detached_meshes"
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]r2c2[.]full_source_patch_stage$' --no-tests=error | tee build/local-serial/r2c10_original_mesh_export.log
+          python3 tools/verify_r2c10_mesh_export.py --directory build/local-serial/r2c10_original_detached_meshes
+          python3 tools/verify_r2c11_source_seam_atlas.py --directory build/local-serial/r2c10_original_detached_meshes
+      - name: Retain R2c10 original unwelded QUAD AFT OBJ and verification
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c10-original-detached-meshes-${{ github.sha }}
+          path: |
+            build/local-serial/r2c10_original_detached_meshes/*.obj
+            build/local-serial/r2c10_original_detached_meshes/*.csv
+            build/local-serial/r2c10_original_detached_meshes/*.json
+            build/local-serial/r2c10_original_mesh_export.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: R2c22 independently audit original patch UV and Bezier differential normals
+        shell: bash
+        run: |
+          python3 tools/verify_r2c22_original_patch_uv_bezier_orientation.py \
+            --directory build/local-serial/r2c10_original_detached_meshes \
+            --output build/local-serial/r2c22_original_uv_bezier_orientation
+      - name: Retain R2c22 real original UV / normal provenance and audit
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c22-original-uv-bezier-${{ github.sha }}
+          path: |
+            build/local-serial/r2c22_original_uv_bezier_orientation/r2c22_original_patch_uv_bezier_orientation.json
+            build/local-serial/r2c10_original_detached_meshes/*_original_patch_uv_vertices.csv
+            build/local-serial/r2c10_original_detached_meshes/*_original_bezier_facet_normals.csv
+          if-no-files-found: error
+          retention-days: 14
+      - name: R2c21 independently audit original detached QUAD AFT indexed patch topology
+        shell: bash
+        run: |
+          python3 tools/verify_r2c21_detached_chart_topology.py \
+            --directory build/local-serial/r2c10_original_detached_meshes \
+            --output build/local-serial/r2c21_patch_topology
+      - name: Retain R2c21 original patch indexed edge and orientation report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c21-patch-topology-${{ github.sha }}
+          path: build/local-serial/r2c21_patch_topology/r2c21_original_detached_indexed_patch_topology.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Record original-source disconnected owner staging and rollback
+        shell: bash
+        run: |
+          # Retain actual original-model and synthetic chart fault results.
+          # This proof does not authorize cross-patch physical connectivity.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]r2c2[.]disjoint_owner_stage$' --no-tests=error | tee build/local-serial/quad_r2c2_disjoint_stage.log
+      - name: Retain bounded detached source-model QUAD TRI owner receipts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c2-disjoint-owner-${{ github.sha }}
+          path: build/local-serial/quad_r2c2_disjoint_stage.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Record native R2b2 Bezier source patch admission
+        shell: bash
+        run: |
+          # Repeat the already-registered native source test with retained output.
+          # This makes exact per-model ACCEPT/REJECT counts independently visible.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]r2b2[.]real_bezier_aft$' --no-tests=error | tee build/local-serial/quad_r2b2_source_admission.log
+      - name: Retain R2b2 actual Bezier source admission report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2b2-real-bezier-admission-${{ github.sha }}
+          path: build/local-serial/quad_r2b2_source_admission.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Record true Adapter dynamically curved original AFT trial
+        shell: bash
+        run: |
+          # This repeats two already required CTests verbosely to retain the
+          # original AFT admission/rejection and unmodified TRI outcome trace.
+          ctest --test-dir build/local-serial --verbose --tests-regex '^quad[.]generator[.]real_global_outcomes([.]book)?$' --no-tests=error | tee build/local-serial/quad_dynamic_source_aft.log
+      - name: Retain original Adapter dynamic source AFT diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2b2-actual-source-aft-${{ github.sha }}
+          path: build/local-serial/quad_dynamic_source_aft.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Measure R2c13 actual accepted original GeneratorAdaptive source epochs
+        shell: bash
+        run: |
+          python3 tests/quad/test_r2c13_m7_accepted_epochs.py \
+            --exe build/local-serial/bin/quad_generator_outcome_probe \
+            --root . \
+            --directory build/local-serial/r2c13_generator_epochs
+      - name: Diagnose R2c14 original rejected generator candidate quality and patch regressions
+        shell: bash
+        run: |
+          python3 tools/diagnose_r2c14_generator_rejections.py \
+            --directory build/local-serial/r2c13_generator_epochs
+      - name: Diagnose R2c15 exact source-stable GeneratorAdaptive guard inequalities
+        shell: bash
+        run: |
+          python3 tools/verify_r2c15_original_acceptance_guards.py \
+            --directory build/local-serial/r2c13_generator_epochs \
+            --root . \
+            --engine-source src/generator/generator_adaptive.cpp
+      - name: Diagnose R2c17 original Adapter native per-patch fallback attempts
+        shell: bash
+        run: |
+          python3 tools/verify_r2c17_original_adapter_domain_fallback.py \
+            --directory build/local-serial/r2c13_generator_epochs \
+            --root . \
+            --adapter-source src/adapter/adapter.cpp
+      - name: Retain R2c17 exact original Adapter domain CSV and fallback report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c17-original-adapter-domain-${{ github.sha }}
+          path: |
+            build/local-serial/r2c13_generator_epochs/r2c17_original_adapter_fallback_forensics.json
+            build/local-serial/r2c13_generator_epochs/*/*_domain_adaptation.csv
+          if-no-files-found: error
+          retention-days: 14
+      - name: Measure R2c16 bounded original GeneratorAdaptive source-control profiles
+        shell: bash
+        run: |
+          python3 tests/quad/test_r2c16_m7_bounded_research_profiles.py \
+            --exe build/local-serial/bin/quad_generator_outcome_probe \
+            --root . \
+            --directory build/local-serial/r2c16_generator_research_profiles
+      - name: Retain R2c16 source-bound control ablations (no acceptance overrides)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c16-source-ablation-${{ github.sha }}
+          path: |
+            build/local-serial/r2c16_generator_research_profiles/r2c16_original_generator_controlled_profiles.json
+            build/local-serial/r2c16_generator_research_profiles/*/generator_stdout.log
+            build/local-serial/r2c16_generator_research_profiles/*/generator_stderr.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain R2c13 original generator accepted-step and rollback diagnostics
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c13-original-generator-epochs-${{ github.sha }}
+          path: |
+            build/local-serial/r2c13_generator_epochs/r2c13_accepted_generator_epochs.json
+            build/local-serial/r2c13_generator_epochs/r2c14_generator_rejection_forensics.json
+            build/local-serial/r2c13_generator_epochs/r2c15_original_acceptance_guard_inequalities.json
+            build/local-serial/r2c13_generator_epochs/*/*_acceptance_*.log
+            build/local-serial/r2c13_generator_epochs/*/*_curve_adaptation_*.csv
+            build/local-serial/r2c13_generator_epochs/*/*_patch_adaptation_*.csv
+            build/local-serial/r2c13_generator_epochs/*/generator_stdout.log
+            build/local-serial/r2c13_generator_epochs/*/generator_stderr.log
+          if-no-files-found: error
+          retention-days: 14
+      - name: Build fail-closed R2c0 original source radial edge incidence records
+        shell: bash
+        run: |
+          # Cross-check real PatchReader incidence graphs and source Bézier interval
+          # proof logs. This does not publish/weld any physical nodes or elements.
+          python3 tests/quad/test_r2c0_source_radial_incidence.py \
+            --root . \
+            --graph-directory build/local-serial/m4_sheet_incidence \
+            --source-log build/local-serial/quad_dynamic_source_aft.log \
+            --directory build/local-serial/r2c0_radial_incidence
+      - name: Retain bounded source-linked R2c0 incidence and pending policy
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c0-radial-incidence-${{ github.sha }}
+          path: build/local-serial/r2c0_radial_incidence/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Validate source-bound R2c1 sheet review packets and draft semantics
+        shell: bash
+        run: |
+          # All candidate continuations remain unapproved; no node owners change.
+          python3 tests/quad/test_r2c1_sheet_review.py \
+            --root . \
+            --r2c0-directory build/local-serial/r2c0_radial_incidence \
+            --directory build/local-serial/r2c1_sheet_review
+      - name: Retain bounded R2c1 pending scientific review packets
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c1-sheet-review-${{ github.sha }}
+          path: build/local-serial/r2c1_sheet_review/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Bind original radial scientific records to exported physical seam atlas for advisor review
+        shell: bash
+        run: |
+          python3 tools/build_r2c12_advisor_handoff.py \
+            --root . \
+            --radial-directory build/local-serial/r2c0_radial_incidence \
+            --review-directory build/local-serial/r2c1_sheet_review \
+            --mesh-directory build/local-serial/r2c10_original_detached_meshes \
+            --output-directory build/local-serial/r2c12_advisor_handoff
+      - name: Retain R2c12 model SHA-bound scientific advisor handoff (no welding)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c12-advisor-handoff-${{ github.sha }}
+          path: build/local-serial/r2c12_advisor_handoff/*.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Measure R2c18 original AFT postprocess controls without changing TRI admission
+        shell: bash
+        run: |
+          python3 tests/quad/test_r2c18_original_aft_postprocess_profiles.py \
+            --exe build/local-serial/bin/quad_generator_outcome_probe \
+            --root . \
+            --directory build/local-serial/r2c18_aft_postprocess
+      - name: Retain R2c18 original AFT postprocess research profiles and domain evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c18-original-aft-postprocess-${{ github.sha }}
+          path: |
+            build/local-serial/r2c18_aft_postprocess/r2c18_original_aft_postprocess_profiles.json
+            build/local-serial/r2c18_aft_postprocess/*/generator_stdout.log
+            build/local-serial/r2c18_aft_postprocess/*/generator_stderr.log
+            build/local-serial/r2c18_aft_postprocess/*/*_domain_adaptation.csv
+          if-no-files-found: error
+          retention-days: 14
+      - name: Verify R2c19 accepted Eistute TRI quality and bounded Book AFT joint recovery
+        shell: bash
+        run: |
+          python3 tests/quad/test_r2c19_original_accepted_quality_book_joint_recovery.py \
+            --exe build/local-serial/bin/quad_generator_outcome_probe \
+            --root . \
+            --r2c18-directory build/local-serial/r2c18_aft_postprocess \
+            --directory build/local-serial/r2c19_quality_and_book_joint
+      - name: Retain R2c19 native accepted TRI geometry-quality receipts and Book joint profiles
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c19-original-tri-quality-book-joint-${{ github.sha }}
+          path: |
+            build/local-serial/r2c19_quality_and_book_joint/r2c19_original_accepted_tri_quality_book_joint_recovery.json
+            build/local-serial/r2c19_quality_and_book_joint/*/generator_stdout.log
+            build/local-serial/r2c19_quality_and_book_joint/*/generator_stderr.log
+            build/local-serial/r2c19_quality_and_book_joint/*/*_domain_adaptation.csv
+            build/local-serial/r2c18_aft_postprocess/eistute_aft_postprocess_quality_0p80/*_acceptance_accepted.log
+            build/local-serial/r2c18_aft_postprocess/eistute_aft_postprocess_quality_0p80/*_patch_adaptation_accepted.csv
+          if-no-files-found: error
+          retention-days: 14
+      - name: R2c20 independently inspect every original accepted TRI 3D OBJ face
+        shell: bash
+        run: |
+          python3 tools/verify_r2c20_original_accepted_tri_obj_faces.py \
+            --r2c13 build/local-serial/r2c13_generator_epochs \
+            --r2c18 build/local-serial/r2c18_aft_postprocess \
+            --output build/local-serial/r2c20_original_accepted_tri_faces
+      - name: Retain R2c20 accepted original TRI OBJ models and face integrity report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quad-r2c20-original-accepted-tri-face-integrity-${{ github.sha }}
+          path: |
+            build/local-serial/r2c20_original_accepted_tri_faces/r2c20_original_accepted_tri_3d_face_integrity.json
+            build/local-serial/r2c18_aft_postprocess/eistute_aft_postprocess_quality_0p80/*_malha_*.obj
+            build/local-serial/r2c13_generator_epochs/book_pinned_article/*_malha_*.obj
+          if-no-files-found: error
+          retention-days: 14
       - name: Run tooling Python controls
         shell: bash
         run: python3 -m unittest discover -s tests/tooling -p 'test_*.py'

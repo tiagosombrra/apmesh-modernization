@@ -22,6 +22,43 @@ struct OwnedAftFrontReport {
   bool exterior_triangles_qualified = false;
 };
 
+// R2b2 is a one-shot execution diagnostic. It never publishes physical QUAD
+// elements or claims complete hybrid coverage without separate overlap checks.
+struct ExteriorAftReport {
+  bool geometry_done = false;
+  bool topology_attempted = false;
+  bool topology_done = false;
+  bool front_drained = false;
+  bool triangles_positive = false;
+  bool seam_orientation_complete = false;
+  bool seam_vertices_unchanged = false;
+  bool uv_area_balanced = false;
+  bool spatial_overlap_tested = false;
+  bool no_spatial_overlap = false;
+  std::size_t overlapping_tri_quad_pairs = 0;
+  std::size_t overlapping_tri_tri_pairs = 0;
+  double cumulative_overlap_area = 0.0;
+  bool qualified = false;
+  std::size_t exterior_triangles = 0;
+  std::size_t unresolved_front_edges = 0;
+  std::size_t unresolved_rejected_edges = 0;
+  std::size_t seam_edges_with_one_tri = 0;
+  double boundary_uv_area = 0.0;
+  double quad_uv_area = 0.0;
+  double triangle_uv_area = 0.0;
+};
+
+// Independent area-intersection test for CCW convex UV faces. Touching edges
+// are not interior overlap. Production and physical XYZ are not modified.
+struct UvOverlapReport {
+  bool no_overlap = false;
+  std::size_t tri_quad_pairs = 0;
+  std::size_t tri_tri_pairs = 0;
+  double overlap_area = 0.0;
+};
+UvOverlapReport AuditUvOverlap(
+    const UvMesh& quads, const std::vector<std::array<UvVertex, 3>>& triangles);
+
 // Derivation accesses the existing protected AFT front and owner lists without
 // any modification to production AdvancingFront or Quadtree implementations.
 // The legacy AFT class owns its Quadtree, boundary, new edges and new vertices.
@@ -37,17 +74,40 @@ class OwnedQuadAftFront final : public Par2DJMesh::AFT::AdvancingFront {
   OwnedAftFrontReport Seed(const InteriorTemplateSelection& selected,
                            const std::vector<UvFrontSegment>& original_tri_front);
 
+  // Invoke original geometry/topology phases exactly once on seeded AFT edges.
+  // Fails preflight if boundary edges have no valid live QuadtreeCell observer.
+  // This diagnostic deliberately does not invoke improveMesh or fillMesh.
+  ExteriorAftReport AttemptExteriorTriangulation(
+      const InteriorTemplateSelection& selected);
+
+  // Test-only deterministic abort after AFT has generated n TRI faces.
+  // This never applies to the normal generator or a published mixed mesh.
+  void SetResearchAbortAfterTriangles(std::size_t n);
+
   bool IsSeeded() const noexcept { return seeded_; }
   const Par2DJMesh::Basics::EdgeList& ActiveFront() const noexcept { return front; }
-  const Par2DJMesh::Basics::EdgeList& OwnedSeamEdges() const noexcept {
-    return innerEdges;
+  // Immutable observer views for the ORIGINAL QUAD seam only. AFT appends
+  // newly generated TRI edges/vertices to innerEdges/innerVertices later.
+  const std::vector<Par2DJMesh::Basics::Edge*>& OwnedSeamEdges() const noexcept {
+    return seam_edges_;
   }
-  const Par2DJMesh::Basics::VertexList& OwnedSeamVertices() const noexcept {
-    return innerVertices;
+  const std::vector<Par2DJMesh::Basics::Vertex*>& OwnedSeamVertices() const noexcept {
+    return seam_vertices_;
   }
   const Par2DJMesh::Basics::FaceList& Triangles() const noexcept { return mesh; }
 
+ protected:
+  bool findBestVertex(Par2DJMesh::Basics::Edge* edge,
+                      Par2DJMesh::Basics::Vertex*& best,
+                      bool geometry_phase) override;
+
  private:
+  // AFT owns these objects; this vector owns no vertices or edges.
+  std::vector<Par2DJMesh::Basics::Edge*> seam_edges_;
+  std::vector<Par2DJMesh::Basics::Vertex*> seam_vertices_;
+  std::size_t research_abort_after_triangles_ = 0;
+  bool research_abort_enabled_ = false;
+  bool exterior_attempted_ = false;
   bool seeded_ = false;
 };
 
