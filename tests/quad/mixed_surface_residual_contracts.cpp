@@ -37,7 +37,9 @@ int main() {
               observed.samples == 9 && observed.face_maximum.size() == 2 &&
               observed.maximum > 0.0 && observed.rms > 0.0 &&
               observed.quad_maximum > 0.0 && observed.triangle_maximum > 0.0 &&
-              observed.worst_quad_face == 0 &&
+              observed.worst_quad_face == 0 && observed.worst_triangle_face == 1 &&
+              observed.worst_triangle_sample_uv[0] > 0.0 &&
+              observed.worst_triangle_sample_uv[1] > 0.0 &&
               observed.worst_quad_sample_uv[0] > 0.0 &&
               observed.worst_quad_sample_uv[1] > 0.0,
           "Curved QUAD/TRI physical source oracle was not measured");
@@ -49,7 +51,7 @@ int main() {
   const auto zero = MeasureMixedSurfaceResidual(uv, flat, faces, Planar);
   Require(zero.maximum == 0.0 && zero.rms == 0.0 &&
               zero.quad_maximum == 0.0 && zero.triangle_maximum == 0.0 &&
-              zero.worst_quad_face == 0 &&
+              zero.worst_quad_face == 0 && zero.worst_triangle_face == 1 &&
               zero.worst_quad_sample_uv[0] == 0.25 &&
               zero.worst_quad_sample_uv[1] == 0.5,
           "Deterministic planar QUAD residual tie handling is broken");
