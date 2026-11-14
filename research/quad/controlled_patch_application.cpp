@@ -990,8 +990,8 @@ SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_so
   const auto find_leaf = [&tree](double u, double v) -> QuadtreeCell* {
     QuadtreeCell* chosen = nullptr;
     for (auto* cell : tree->getLeaves()) {
-      const auto* low = cell->getMin();
-      const auto* high = cell->getMax();
+      auto* low = cell->getMin();
+      auto* high = cell->getMax();
       if (u > low->getX() && u < high->getX() &&
           v > low->getY() && v < high->getY()) {
         Require(chosen == nullptr, "Ambiguous second-band native source leaf");
