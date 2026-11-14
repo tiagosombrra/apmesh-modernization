@@ -307,6 +307,45 @@ def verify_mixed_surface_residual(stdout, path):
     return expected
 
 
+def verify_native_tree_trials(stdout, residual):
+    # Check independently recorded error locations and native edit isolation.
+    lines = stdout.decode().splitlines()
+    candidates = [s for s in lines if s.startswith("QUAD_NATIVE_TREE_TRIALS ")]
+    require(len(candidates) == 1, "Missing or repeated real native tree alternatives")
+    values = dict(part.split("=", 1) for part in candidates[0].split()[1:])
+    require(values["source"] == "previous_real_mixed_physical_residual" and
+            values["source_candidate_preserved"] == "1" and
+            values["native_trial_refinements"] == "2" and
+            values["actual_adaptive_epochs"] == "0",
+            "Real native quadtree trials incorrectly claimed accepted adaptive epochs")
+    require(int(values["baseline_leaves"]) == 19 and
+            math.isclose(float(values["baseline_quad_uv_area"]), 0.25, abs_tol=1e-12),
+            "Native tree baseline is not the independent fixed16 source")
+    require(int(values["quad_cell_id"]) == 13 and
+            int(values["quad_cell_id"]) != int(values["aft_cell_id"]) and
+            int(values["quad_leaves"]) > 19 and
+            int(values["aft_leaves"]) > 19,
+            "Physical source residual did not select two distinct real tree edits")
+    # A rejected region must be explicitly labeled; no rejected region may
+    # silently acquire an accepted quad count.
+    for region, marker in (("quad", "quad"), ("aft", "aft")):
+        disk = int(values[region + "_emitted_disk"])
+        require(disk in (0, 1), "Invalid real native emitted-disk status")
+        if disk:
+            require(int(values[region + "_faces" if region == "quad"
+                               else "aft_quad_faces"]) > 0 and
+                    float(values[region + "_uv_area"]) >= 0.25,
+                    "Emitted native QUAD candidate lost its source region")
+        else:
+            require(any(s.startswith("QUAD_NATIVE_TRIAL_REJECTION region=" +
+                                     marker + " reason=") for s in lines),
+                    "Rejected native QUAD trial has no recorded failure reason")
+    require(residual["worst_quad_face"] == 4 and
+            residual["worst_triangle_face"] == 74,
+            "Native trial decision no longer follows actual previous physical errors")
+    return values
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -335,6 +374,7 @@ def main():
     metric = verify_mixed_curvature(r.stdout, root/"accepted.obj")
     quality = verify_quad_physical_quality(r.stdout, root/"accepted.obj")
     residual = verify_mixed_surface_residual(r.stdout, root/"accepted.obj")
+    trials = verify_native_tree_trials(r.stdout, residual)
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -352,6 +392,8 @@ def main():
             "Rollback changed typed QUAD physical quality")
     require(verify_mixed_surface_residual(r.stdout, root/"rollback.obj") == residual,
             "Rollback changed history-dependent source residual")
+    require(verify_native_tree_trials(r.stdout, residual) == trials,
+            "Rollback native tree trial provenance differs from accepted control")
     r = execute("unsupported", model="missing.bp")
     require(r.returncode != 0 and not (root/"unsupported.obj").exists(),
             "Invalid source was published")
@@ -373,6 +415,7 @@ def main():
               "typed_mixed_curvature_diagnostic": metric,
               "typed_physical_quad_quality": quality,
               "mixed_surface_residual": residual,
+              "real_native_tree_trials": trials,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
