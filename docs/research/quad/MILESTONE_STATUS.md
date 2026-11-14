@@ -6,9 +6,9 @@
 The larger [PR214](https://github.com/tiagosombrra/apmesh-modernization/pull/214)
 remains draft/unmerged. Main and the default TRI behavior are preserved.
 
-**Execution priority — 2026-11-14:** P0 UV convexity repair is integrated through
-PR216 with its scoped gates passed. Next are a live controlled curved-patch R2
-run and actual mixed-history R3; see the
+**Execution priority — 2026-11-14:** P0 repair and the controlled live P1/R2
+application case are integrated through PR216/217 with scoped gates passed.
+Next is actual mixed-history P2/R3; see the
 [finite execution queue](IMPLEMENTATION_ROADMAP.md). Prior original-TRI
 experiments and detached charts do not close either live application gate.
 
@@ -19,11 +19,11 @@ experiments and detached charts do not close either live application gate.
 | **M0 — Baseline** | Regressão TRI, modelos e ferramentas | Suítes CI Linux/Windows e equivalência TRI original reproduzidas nos gates R2c; oráculos congelados | Qualificação local com sanitizers, cenários fora do escopo serial e revisão das exceções |
 | **M1 — Padrões históricos T1–T6** | Reconstrução fiel da publicação de 1993 | Oráculos, transcrição e experimentos de templates de pesquisa criados | Provar identidade literal de todos os padrões e da regra de seleção histórica, sem confundir versão experimental |
 | **M2 — Topologia QUAD UV** | Vértices, arestas, validações e 2:1 | Construtores e contratos de UV/exterior QUAD+AFT testados em escopo de pesquisa | Campanha completa metamórfica/fuzz, transições e conformidade abrangente |
-| **M3 — Opt-in selector/emitter** | Default TRI and typed interior QUAD | Experimental selection and native interior QUAD fixtures retain default-TRI evidence | Live `ap_mesh --config` still refuses `quad_uv`; controlled curved-patch R2 and delivery qualification remain open. |
+| **M3 — Opt-in selector/emitter** | Default TRI and typed interior QUAD | PR217 runs the controlled curved Bezier QUAD/AFT application with explicit build/case; scoped Linux/Windows and TRI-preservation checks pass | Default build remains TRI; broader application and scientific admission remain open beyond this controlled case. |
 | **M4 — Physical QUAD elements** | Four-node QUAD, UV/XYZ, area/normal/ownership | R2c-9: 32 detached original Eistute/Book charts, 1,744 physical nodes, 512 QUAD +1,456 AFT TRI; scoped local orientation/quality checks | P0 UV convexity repair integrated through PR216 with scoped85CTest/527Python and60cases/profile; full M4 remains open. Native sanitizers, adversarial coverage and broader geometry remain required. |
 | **M5 — Contorno QUAD/AFT** | Malha híbrida por patch, sem buracos/overlap | **R2c-10:** OBJ exportados e independentemente conferidos, fontes com as quatro curvas adaptadas; AFT TRI exterior | Comparar regra de contorno de 1993, variantes all-quad e qualidade sob outros orçamentos |
 | **M6 — Multipatch e non-manifold** | Incidência, nós e arestas físicos compatíveis entre patches | **R2c-6/7:** 98 curvas originais sincronizadas, 128 lados/944 arestas de fronteira; valências 4 e 28; contornos locais preservados | **BLOQUEIO científico:** política aprovada por Creto/Bento sobre sheets/junções e compartilhamento físico em valência 4/28; geometria coincidente não autoriza soldagem |
-| **M7 — Mixed-element adaptation** | At least two accepted epochs using the actual QUAD/TRI mesh as history, with retry/rollback and typed scientific evaluation | Original TRI prerequisite: Eistute steps 1/2/4; Book one accepted step. These do not execute mixed-element history. | Live R2 integration and typed curvature/quality/adaptation remain open; no QUAD M7 closure. See [audit](STATE_PLAN_AUDIT_20261113.md). |
+| **M7 — Mixed-element adaptation** | At least two accepted epochs using the actual QUAD/TRI mesh as history, with retry/rollback and typed scientific evaluation | Controlled one-shot R2 is integrated; original TRI epochs remain prerequisites only | P2 typed mixed-history curvature/quality/adaptation is not implemented; no QUAD M7 closure. |
 | **M8 — Experimentos e modelos** | Comparação TRI × quad-dominant × alternativas, custo/erro/qualidade | Eistute e Book com entradas originais SHA-256 e geração física de pesquisa; candidatos externos mapeados na [issue #215](https://github.com/tiagosombrra/apmesh-modernization/issues/215) | Ampliar corpus e métricas, exportações/auditoria independente, repetibilidade e ablação em igualdade de erro |
 | **M9 — Anisotropia** | Campo métrico e comparação anisotrópica | Fora do escopo certificado | Opcional para primeiro artigo; ainda não implementado nem demonstrado cientificamente |
 

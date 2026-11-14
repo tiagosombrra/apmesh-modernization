@@ -1601,3 +1601,23 @@ with no failures/errors/skips; configured analysis passes4changed TUs. Retained
 initial build/output and minor shell-quoting setup errors; no weakened oracle.
 Final head/Windows/frozenTRI remote/integration and memory qualification remain
 pending. Continue this functional delivery; no new research phase or main change.
+
+
+## 2026-11-14 — Controlled P1 delivered through PR217
+
+Candidate0999769 and identical-tree research merged39bbc447f88e179c3c4ee674bd9309f59c18eed each pass86CTest/
+527Python with no failures/errors/skips. Actual Linux/Windows application
+produces42QUAD/36originalAFT TRI/69nodes with16boundary edges; independent
+production-control-net audit, unique physical IDs and nonempty-owner rollback
+pass. Clang18 address/leak instrumented case and refusal exits are clean; real
+UAF control is detected. Full remote candidate/PR and merged4job checks pass,
+including fresh frozen Eistute/Book with QUAD compiled and TRI selected.
+First remote reference admission failed before comparisons because only the
+two new configs/quad assets were not listed; preserved log and added exactly
+those reviewed paths, retaining frozen model/profile/tolerance/oracle guards.
+Selective PR214 helper reuse only; no wholesale merge or model changes.
+Scoped P1 one-shot application is integrated; default build stays TRI and mode
+is explicitly gated. Fixed16/vertexmean is not AdaptCurve or1993 validation.
+No global XYZ/sheet or broad memory qualification, no P2/mixed epoch claim.
+Next technical delivery: use this actual typed mesh as two accepted adaptive
+history epochs. Checkpoint is brief documentation/evidence, not new science.

@@ -1,6 +1,6 @@
 {
   "schema": "apmesh.quad.controlled_application.v1",
-  "source_revision": "f074e3af64d09594c767ceaabab6c0b35194b417",
+  "source_revision": "0999769722f128d887e1143c8ec1da67da627850",
   "reused_PR214_source": "7cd5014936a417565415d736bad40dc70deb35df",
   "reuse_scope": "Only owned_aft_front.h/.cpp execution/coverage/seam helpers; source patch evaluator/tree construction adapted into an application service. No whole-PR merge.",
   "application": {
@@ -19,11 +19,10 @@
     "adaptive_epochs": 0
   },
   "local_regression": {
-    "experimental_build_enabled": true,
     "ctest": 86,
-    "tooling_python": 527,
-    "failures_errors_skips": 0,
-    "report_sha256": "77b9a31ff09d1514032c2ad4ad3f6f21d1c538c8bcdcc3af16c0d8217b595a69"
+    "python": 527,
+    "failure_error_skip": 0,
+    "report_sha256": "119963aba28497e1db67c67e87d26d9de9f2f3819669eb370870ae67ab230b6b"
   },
   "configured_analysis": [
     {
@@ -47,10 +46,10 @@
   "rollback": "Second candidate fully generated then specifically injected PublicationFailure, previous nonempty owner/node/element/observer identities retained; exit1 and first valid output retained. Not adaptation.",
   "source_policy": "Named experimental fixed16/vertex_mean, unchanged source control net/curves; not original AdaptCurve sampling or 1993 equivalence.",
   "limits": [
-    "Default build remains OFF and rejects QUAD; only explicit serial build/case runs.",
-    "No global/continuous XYZ Jacobian or self-intersection proof, multipatch welding or mixed adaptive history.",
-    "Windows and fresh frozen-TRI remote checks and final delivery revision qualification remain pending.",
-    "Native complete-process sanitizer/denial qualification remains open."
+    "Explicit serial build/case only, default remains TRI",
+    "Fixed16 vertex-mean sampling, not AdaptCurve or literal1993",
+    "No global Jacobian/self-intersection or multipatch welding certification",
+    "No mixed adaptive history yet; broader sanitizer/denial and Windows CRT qualifications remain open"
   ],
   "raw": "build/quad-live/session-20261114/",
   "records_sha256": {
@@ -73,5 +72,158 @@
     "unsupported.conf": "48f0657b206e46196315db91f7ca80506a69b037832ba1a0aabc2a0092f597f8",
     "unsupported.stderr": "de630709a44a1bd8c0be2305caf5000bd225034e796b13e38a0214fe41740974",
     "unsupported.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "delivery": {
+    "candidate": "0999769722f128d887e1143c8ec1da67da627850",
+    "research_merge": "d39bbc447f88e179c3c4ee674bd9309f59c18eed",
+    "PR": 217,
+    "exact_local_gates": {
+      "0999769722f128d887e1143c8ec1da67da627850": {
+        "ctest": 86,
+        "python": 527,
+        "failure_error_skip": 0,
+        "report_sha256": "119963aba28497e1db67c67e87d26d9de9f2f3819669eb370870ae67ab230b6b"
+      },
+      "d39bbc447f88e179c3c4ee674bd9309f59c18eed": {
+        "ctest": 86,
+        "python": 527,
+        "failure_error_skip": 0,
+        "report_sha256": "f152fa13614850da000753fde99d1387d3a0880c5cfd33d86293e29cbe4049a4"
+      }
+    },
+    "post_merge_remote": {
+      "run_id": 43588588497,
+      "status": "success",
+      "jobs": [
+        {
+          "name": "TRI scientific equivalence against frozen baseline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "QUAD native (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "TRI baseline and tooling controls (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "QUAD native (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "real_application_profiles": {
+      "ubuntu-24.04": {
+        "actual_ap_mesh_entry": true,
+        "model": "Models3d::ModelCurvaBezier",
+        "result": {
+          "nodes": 69,
+          "quads": 42,
+          "triangles": 36,
+          "boundary": 16
+        },
+        "rollback_nonempty": true,
+        "native_AFT": true,
+        "independent_Bezier_oracle": true,
+        "OBJ_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+        "adaptive_epochs": 0
+      },
+      "windows-2022": {
+        "actual_ap_mesh_entry": true,
+        "model": "Models3d::ModelCurvaBezier",
+        "result": {
+          "nodes": 69,
+          "quads": 42,
+          "triangles": 36,
+          "boundary": 16
+        },
+        "rollback_nonempty": true,
+        "native_AFT": true,
+        "independent_Bezier_oracle": true,
+        "OBJ_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+        "adaptive_epochs": 0
+      }
+    },
+    "TRI_frozen_comparisons_QUAD_compiled": {
+      "book-comparison.json": {
+        "model": "book",
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 4256,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      },
+      "eistute-comparison.json": {
+        "model": "eistute",
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "last_accepted_step": 1,
+        "last_accepted_triangles": 1168,
+        "boundary_incidence_coverage": "verified",
+        "boundary_regression": "exact"
+      }
+    },
+    "ASan": {
+      "source_revision": "de55cfe935b2e261b13b97f237477f5750477358",
+      "reuse": "All application/build inputs identical to candidate and merge; only workflow/docs differ",
+      "options": "detect_leaks=1:halt_on_error=1",
+      "scope": "Controlled CLI success, nonempty rollback, invalid source, existing-output refusal; no broader or Windows CRT claim",
+      "cache_sha256": "0090e19c7134d30b8a1e84ddf6103b51dd3c97985846407ace861852e3e32135",
+      "binary_sha256": "72ec693886eeaa19c501a3a0912f41bdef20175eca7396cfb2f09c48fcee0741",
+      "UAF_control_log_sha256": "420c124b43170d64e43e87428b8631e22ca8cd62cf77172d48ae9128e57077a8",
+      "actual_report": {
+        "actual_ap_mesh_entry": true,
+        "model": "Models3d::ModelCurvaBezier",
+        "result": {
+          "nodes": 69,
+          "quads": 42,
+          "triangles": 36,
+          "boundary": 16
+        },
+        "rollback_nonempty": true,
+        "native_AFT": true,
+        "independent_Bezier_oracle": true,
+        "OBJ_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+        "adaptive_epochs": 0
+      }
+    },
+    "first_remote_failure": {
+      "source": "de55cfe",
+      "stage": "reference preparation guard before compilation/comparison",
+      "reason": "Two new explicit configs/quad assets absent from reviewed-delta list",
+      "fix": "Added only those two reviewed paths; frozen models, profiles, states, tolerances and scientific oracles unchanged",
+      "raw_log_sha256": "48bbd84a64eb1b3082621e46e4877cb21590072e9c294687587f661d27a1758b"
+    },
+    "scope": "Controlled one-shot curved patch integrated, no mixed adaptive epochs",
+    "candidate_remote_runs": [
+      43587459517,
+      43587465681
+    ]
+  },
+  "initial_measurement_source_revision": "f074e3af64d09594c767ceaabab6c0b35194b417",
+  "integrated_revision": "d39bbc447f88e179c3c4ee674bd9309f59c18eed",
+  "initial_local_regression": {
+    "experimental_build_enabled": true,
+    "ctest": 86,
+    "tooling_python": 527,
+    "failures_errors_skips": 0,
+    "report_sha256": "77b9a31ff09d1514032c2ad4ad3f6f21d1c538c8bcdcc3af16c0d8217b595a69"
+  },
+  "configured_analysis_final_source": {
+    "unchanged_implementation_units": "RuntimeConfig, RunApplication and OwnedAftFront unchanged from analyzed f074",
+    "updated_module": "Controlled application module analyzed again on de55; all application inputs unchanged through final candidate and merge",
+    "refreshed_report": {
+      "revision": "de55cfe935b2e261b13b97f237477f5750477358",
+      "exit": 0
+    },
+    "report_sha256": "4a3c663e6491af4537301217ee7985e02ed385c3c517bddb5f3dd636f90c3d6e"
   }
 }

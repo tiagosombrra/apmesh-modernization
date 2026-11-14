@@ -26,29 +26,28 @@ metrics, production TRI, input and boundary policies remain unchanged.
 [Roadmap](IMPLEMENTATION_ROADMAP.md) · [Milestones](MILESTONE_STATUS.md) ·
 [Protocol](CONTINUATION_PROTOCOL.md) · [Journal](SESSION_LOG.md).
 
-## Next delivery — P1 / live curved-patch R2
+## Controlled P1 integrated — next delivery P2 / R3
 
+[PR217](https://github.com/tiagosombrra/apmesh-modernization/pull/217) is merged at `d39bbc447f88e179c3c4ee674bd9309f59c18eed`.
+The real `ap_mesh --config` controlled case produces 42 physical QUADs,
+36 original-AFT triangles, 69 owned nodes and 16 source boundary intervals on the original
+curved ModelCurvaBezier. Independent Bezier UV/XYZ/winding/topology checks,
+positive quality, stable identities and nonempty publication rollback pass.
+Exact candidate 0999769 and exact merge each pass 86 CTest /527 Python.
+Linux/Windows application checks and Linux frozen TRI equivalence pass.
+Clang18 ASan/leak checks and a real UAF control pass in this bounded case.
+See [evidence](evidence/P1_CONTROLLED_APPLICATION_20261114.json) and
+[build/config instructions](../../../configs/quad/README.md).
 
-**Functional candidate:** `quad/integration-live-patch-20261114`, based on8fe561b.
-An opt-in build/case now executes the real application on the original curved
-ModelCurvaBezier:42QUAD/36nativeAFT TRI/69physical nodes, connected UV disk and
-16original sampled boundary intervals. Independent production-control-net
-UV/XYZ/winding checks and nonempty publication rollback pass. Sourcef074e3a
-passes86CTest/527Python and four changed-TU configured analysis checks locally.
-See [measured evidence](evidence/P1_CONTROLLED_APPLICATION_20261114.json).
-Final exact-head, Windows, frozen-TRI remote and integration gates remain pending.
-Default build/TRI behavior remains protected; this is not adaptive history.
+Default builds retain TRI and QUAD refusal. This one-shot case requires
+`AP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON` plus the named fixed16/vertex_mean policy;
+it does not run AdaptCurve or adaptive history. First failed CI admission for
+two new config assets was preserved and corrected explicitly, without weakening
+reference or scientific checks. Main and the unmerged larger PR214 are preserved.
 
-
-Selective reuse of draftPR214 head7cd5014 is complete for this candidate. The
-controlled application case is operational with the build flag and named policy;
-default builds still refuse QUAD deliberately. Next gate: qualify the final
-candidate revision and its Windows/frozen-TRI checks, then integrate only if all
-required scoped gates pass. No global multipatch/adaptive readiness is claimed.
-
-Then P2/R3 must consume that actual mixed QUAD/TRI mesh as history for at least
-two accepted epochs, with typed curvature, quality, export, cloning, acceptance
-and retry/rollback. Original TRI epochs do not establish mixed-history M7.
+**Next:** P2 must retain this typed hybrid SubMesh as actual history for two
+accepted adaptive epochs, including typed curvature/quality/reconstruction,
+retry/rollback and export. No P2 implementation or mixed epoch claim yet.
 
 ## Explicit remaining limits and history
 
