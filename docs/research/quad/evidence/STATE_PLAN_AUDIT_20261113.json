@@ -313,5 +313,83 @@
       "disposition": "Corrected relative root depth."
     }
   ],
-  "document_gate_repairs_note": "First renewed whitespace check failed on two inherited whitespace-only journal lines; local links failed on inherited wrong depth/missing feature notes. Explicit bounded corrections; neither gate was waived."
+  "document_gate_repairs_note": "First renewed whitespace check failed on two inherited whitespace-only journal lines; local links failed on inherited wrong depth/missing feature notes. Explicit bounded corrections; neither gate was waived.",
+  "local_synchronization_before_checkpoint_publication": {
+    "branch": "quad-templates",
+    "local_head": "7486e8ee9d2064593a502a84e4c189ccba5c6dd2",
+    "remote_head": "7486e8ee9d2064593a502a84e4c189ccba5c6dd2",
+    "clean": true,
+    "method": "Released clean historical worktree to detached HEAD, fast-forwarded the local research ref and switched the primary checkout. Old feature refs and main retained."
+  },
+  "local_checkpoint_regression": {
+    "status": "interrupted_unqualified",
+    "revision": "b8f34bd5950055de222915793ff0024ad89e7ef9",
+    "observed_at": 1794620052.830115,
+    "recorded_process_absent": true,
+    "no_active_build_or_validation": true,
+    "stale_lock_preserved": "/home/apmesh/quad-audit-20261113/build/validation-session/1794619520746506364-7534aaaf/interrupted-run.lock.json",
+    "compiled_progress": "544/922 before interruption",
+    "CTest_started": false,
+    "automatic_retry": false,
+    "next_scope": "User-requested continuation: retain completed Ninja objects, compile remaining work under new checkpoint revision, then first actual CTest execution. No failing test repeated.",
+    "files": [
+      {
+        "name": "progress-0000.json",
+        "sha256": "977ef16ab5137a8dfe8943e6ab8af6acff023ba4587439c15d05e9125b248c90"
+      },
+      {
+        "name": "progress-0006.json",
+        "sha256": "a7be341141ab204ebcf7069adbca569d2faa0ec187d91abc1ceb8f806ce3a2ce"
+      },
+      {
+        "name": "03-architecture.log",
+        "sha256": "3bddf1adc14a8fb860e8770d90f169a70eeddbd5178c93f8b162b27190573788"
+      },
+      {
+        "name": "02-links.log",
+        "sha256": "2cb85db2aa373313cf7d6639e8ca9bc9682ad5873a5f21fc5acf07f4fae282a1"
+      },
+      {
+        "name": "01-whitespace.log",
+        "sha256": "1dadfacf07078e63f4a2a8abc4931eb1f8b31459fa18039d3a95c981b8c2bacb"
+      },
+      {
+        "name": "progress-0005.json",
+        "sha256": "066841472823c63b3d2b1a1dbe9f72dbb11935b79423506b847332a950ec5968"
+      },
+      {
+        "name": "progress-0001.json",
+        "sha256": "f553c8b5ee5780058d212f31c7289ec3f251082737db7f6cb876b233a9a85e6a"
+      },
+      {
+        "name": "progress-0004.json",
+        "sha256": "cb7525f12963772c2f5e46159d1e7052f4fe6685e12a08b5c2508b24d3f35d40"
+      },
+      {
+        "name": "04-build.log",
+        "sha256": "38f0790aeffa646f522acbb88f9a6828730c18c4f37b67c92838f6caf197d102"
+      },
+      {
+        "name": "00-doctor.log",
+        "sha256": "64ba13efae7129edbf4900d4b11e124d083ad5ec34c26ca9c91c7e6e05e60b46"
+      },
+      {
+        "name": "progress-0002.json",
+        "sha256": "46fd6f8ebef71bf1a86dcf9d4743764fdc867d9abd544980db6756e544c8a669"
+      },
+      {
+        "name": "progress-0003.json",
+        "sha256": "eb5bc47bf43f01dddb9d84d845e8a4bc21dd274afeb5e5548353c3db680f6e10"
+      },
+      {
+        "name": "progress-0008.json",
+        "sha256": "dd24b37b963b5a804d64d2d4b11fbfef992b8a5395a4658dc46e8b4cfe25aa28"
+      },
+      {
+        "name": "progress-0007.json",
+        "sha256": "f1e79855162bf2f5093a6e2075af30db8858dfd5b133e111d5d863d64f341736"
+      }
+    ]
+  },
+  "publication_scope": "Mandatory documentation/evidence handoff only. Native full checkpoint regression remains unqualified after external interruption; no feature merge, stage closure or scientific admission."
 }

@@ -1490,3 +1490,22 @@ used exact feature URLs for unmerged notes and linked the existing R2c0 radial
 scope note; recorded original target names. Explicit journal whitespace cleanup
 changes no historical observation. URLs/fragments are not validated by the local
 link gate.
+
+
+### Same-session explicit local/remote synchronization
+
+User requested alignment and a simpler plan explanation. Confirmed primary
+worktree clean; detached the clean old b93bad2 checkpoint worktree, safely
+fast-forwarded local quad-templates to verified remote7486e8e, and switched the
+primary workspace to that canonical branch. Old feature refs, all concurrent
+changes, mainf6050ec1 and draft PR214 head7cd5014 are retained. Remote fetch and
+branch checkout do not imply merging draft feature code.
+
+Full native documentation-checkpoint build was externally interrupted at544/922
+with no final report and zero CTest started. Its previous process is absent and
+no build/validation remains; original logs/progress and stale lock were archived
+before manual lock recovery. No test/campaign retry or local full-pass claim.
+Publish only the mandatory audit/status handoff, with no scientific milestone
+closure or feature integration. Source repair and its required exact-head gates
+remain the next bounded item. Final remote checkpoint SHA/readback is reported
+in the session reply after successful ordinary fast-forward publication.

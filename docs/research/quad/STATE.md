@@ -5,6 +5,16 @@
 
 ## Current audit disposition — 2026-11-13 Fortaleza
 
+
+**Local/remote alignment:** the primary checkout now uses `quad-templates`,
+verified clean at remote `7486e8e` before this documentation checkpoint. PR #214
+remains draft/unmerged at `7cd5014`; its code is separate. Main is unchanged.
+The native full-checkpoint build was externally interrupted at 544/922 before
+CTest; original logs/lock are preserved and no local full-regression pass is
+claimed. This is a documentation handoff, not a feature integration or stage
+closure. Exact native delivery gates remain pending.
+
+
 [State/plan audit](STATE_PLAN_AUDIT_20261113.md) pins feature `7cd5014` and
 canonical `7486e8e`, preserving concurrent session evidence below. Direction:
 technically credible research; live application QUAD and mixed-history M7 remain

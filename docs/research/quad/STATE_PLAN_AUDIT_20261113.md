@@ -10,9 +10,10 @@ original-TRI observations as completed QUAD adaptation.
 Audited feature: `7cd5014936a417565415d736bad40dc70deb35df`; canonical checkpoint:
 `7486e8ee9d2064593a502a84e4c189ccba5c6dd2`; unchanged main:
 `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`. Concurrent canonical advancement
-from `ff4d83e` to `7486e8e` was retained. The primary checkout remains the older
-`bb50b16`; it was not reset or silently advanced. Findings below refer to the
-pinned feature unless a canonical document is explicitly named.
+from `ff4d83e` to `7486e8e` was retained. The primary checkout initially held `bb50b16`. On the subsequent explicit
+synchronization request, it was safely advanced to canonical `quad-templates`
+`7486e8e`, matching the remote; old feature refs and main were retained. Findings
+below refer to the pinned feature unless a canonical document is named.
 
 ## Findings
 
@@ -122,3 +123,19 @@ documentation-checkpoint regression is recorded separately against its exact
 commit. No source fix, application QUAD run, sanitizer campaign, new model study
 or merge is part of this audit. The known concavity failure blocks algorithmic
 admission regardless of a passing unrelated baseline.
+
+
+## Final synchronization and unqualified local regression
+
+The user requested explicit local/remote alignment. Verified the primary clean
+`quad-templates` checkout equals remote `7486e8e`; the unmerged PR #214 still has
+its own `7cd5014` head. Ordinary fetch updates remote references; it does not
+merge a draft PR or automatically advance unrelated local branches.
+
+The separate native full-checkpoint run was externally interrupted at 544/922
+compile steps before any CTest began. No final report was produced. Preserved
+the original progress/build logs and stale lock, verified the recorded process
+and build had ended, and archived the lock. No hidden rerun or test success is
+claimed. Full exact-checkpoint regression remains unqualified. This publication
+is the required documentation handoff; it closes no stage and integrates no
+feature. A subsequent feature delivery still requires all exact-head gates.
