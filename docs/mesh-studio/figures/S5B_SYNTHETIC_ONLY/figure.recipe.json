@@ -1,0 +1,36 @@
+{
+  "all_real_adaptive_study_cells": "NOT_AVAILABLE",
+  "camera_policy": "PER_PANEL_INDEPENDENT_FIT_NOT_MATCHED_PHYSICAL_VIEW",
+  "evidence_kind": "SYNTHETIC_TEST_DATA_NOT_MEASURED",
+  "figure_dimensions_mm": [
+    182,
+    112
+  ],
+  "figure_panels": {
+    "history": [
+      "error_vs_elements",
+      "seconds_vs_epoch"
+    ],
+    "topology": [
+      "tri",
+      "quad_tri",
+      "all_quad"
+    ]
+  },
+  "history_csv_sha256": "254d6b6cc25edd8d3cdd46accdf1f6e542475410e81bdb00a4a0ac8240c928b4",
+  "metric_claims": "NONE_FROM_ACTUAL_SOURCE",
+  "not_comparable_across_methods": true,
+  "output": "TRUE_VECTOR_2D_SVG_PDF",
+  "rejected_epoch_policy": "MARKER_ONLY_NOT_ACCEPTED_SERIES",
+  "schema": "apmesh.meshstudio.synthetic_comparison_recipe.v1",
+  "source_P1_outside_comparison_matrix": true,
+  "source_P1_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "source_input_hashes": {
+    "synthetic_planar_quad_grid.json": "5a7b8abd96421cd9f3b0cb6b9c9700e99e0fdec2e0822c187c2f6bec3914328c",
+    "synthetic_planar_quad_grid.obj": "e0587b79d8c8cfc835a9abf49aca2f2c85186ed62e3f43138c1845423729b2e6",
+    "synthetic_planar_tri_grid.json": "3ec438243eb4949f5262ef9c7e06bfa91ff4014d10f7d045f5ce82d7cf1897fb",
+    "synthetic_planar_tri_grid.obj": "9e4f480ec13b31bac27406fcae62fafd6ad263336ed99b9f6d506ddf5a7b3e96",
+    "synthetic_quad_aft_transition.json": "a97f1acbb500c2d848c138426deca2d7666b1e781651b6632f433a6538fd9df3",
+    "synthetic_quad_aft_transition.obj": "ff0ea68b185902cd1b5c635f5a2a0af33ba7631b927f8b02a892d2d4948c128f"
+  }
+}

@@ -1,0 +1,9 @@
+dataset,method,epoch,status,normalized_error,elements,wall_seconds,synthetic
+synthetic_bezier,hybrid,0,accepted,1,12,0.083000000000000004,true
+synthetic_bezier,hybrid,1,accepted,0.42999999999999999,28,0.112,true
+synthetic_bezier,hybrid,2,rejected,0.57999999999999996,51,0.16600000000000001,true
+synthetic_bezier,hybrid,3,accepted,0.25,64,0.19400000000000001,true
+synthetic_bezier,tri,0,accepted,1,16,0.10000000000000001,true
+synthetic_bezier,tri,1,accepted,0.55000000000000004,38,0.14399999999999999,true
+synthetic_bezier,tri,2,rejected,0.73999999999999999,72,0.20100000000000001,true
+synthetic_bezier,tri,3,accepted,0.31,96,0.25800000000000001,true

@@ -1,0 +1,42 @@
+{
+  "S4b_gui_runtime": "NOT_RUN_PYSIDE6_AND_PYVISTAQT_UNAVAILABLE",
+  "baseline_unittest_methods": 99,
+  "date": "2026-11-14",
+  "failed": 0,
+  "history_csv_sha256": "254d6b6cc25edd8d3cdd46accdf1f6e542475410e81bdb00a4a0ac8240c928b4",
+  "new_figure_export_sha256": {
+    "epoch_events.csv": "240cf50dbd0415a0e0c74ed7afeb46c63b228e2855920ac220351ce1bdd4a423",
+    "epoch_timeline.pdf": "23a20cde5f2f3592303900b36f4469c9f97e80fc5e045ecf134acd28e52ecd81",
+    "epoch_timeline.svg": "59c490cfe7d38a5b993eeee48104502c03b01e7a86cf6a198cfcbbbccb7d3b18",
+    "figure.recipe.json": "d6f065e48450681238824e3b4eddc3de436c34aaa4d46743ed8dcca2e306eadd",
+    "history_summary.json": "6cb5a0c5cc781d26f71652bfb9c37ee75148ce87218c7da536e93c77affad8ae",
+    "include.tex": "26e8668c6c723ad1944a7a33dddad413494a4ef9074d9237b74d0bb37de7951d",
+    "publication.audit.json": "1398261ebda6fb1cf7b6926ecc08e00c5630e1a4968ce0ffc8f7602bdc4d3a54",
+    "study_matrix.json": "4b40954b3a0598e59750307b8e58cacea01a7e2e54de48702558e0d56fc0a712",
+    "topology_gallery.pdf": "43e1a33c109aaaaa1c12b64100a64f8f811566d3930f0d5fde12582771c0b767",
+    "topology_gallery.svg": "7303020ffd59e63d4bdd00dd84e82384dbf09513ea02021fdb06b7c53e9181a2",
+    "topology_inventory.csv": "3e8a3e9bf263d487d1d0acf02d459eb271ff2974f3749590ea6924bc14401da0"
+  },
+  "new_unittest_methods": 16,
+  "original_fixture_contract": {
+    "expected_rejections": 6,
+    "synthetic_history_rows": 8,
+    "valid": 10
+  },
+  "pdf_svg_raster_source": "NONE_IN_TWO_FIGURES",
+  "pdflatex_double_column": "PASS",
+  "python": "3.13.5",
+  "real_source_algorithm_comparison_qualified": false,
+  "remote_studio_ci_on_this_commit": "NOT_RUN",
+  "schema": "apmesh.meshstudio.S5b_local_validation_receipt.v1",
+  "scientific_limits": [
+    "Synthetic topology panels are not matched physical benchmarks",
+    "CSV epoch/time/error values are fabricated fixture data",
+    "No actual anisotropic source metric or all-QUAD output is qualified",
+    "No source mixed-adaptive epochs are inferred from the real P1 OBJ"
+  ],
+  "skipped": 0,
+  "source_P1_synthetic_vs_real_separated": true,
+  "source_base_commit": "4c4183e10007d646ff0e15134a9d2890b006ad62",
+  "total_unittest_methods": 115
+}

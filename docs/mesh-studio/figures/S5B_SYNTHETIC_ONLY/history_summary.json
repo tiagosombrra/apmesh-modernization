@@ -1,0 +1,52 @@
+{
+  "evidence_kind": "SYNTHETIC_TEST_DATA_NOT_MEASURED",
+  "groups": [
+    {
+      "accepted_epochs": [
+        0,
+        1,
+        3
+      ],
+      "accepted_error_values": [
+        1.0,
+        0.43,
+        0.25
+      ],
+      "accepted_nonmonotone_error_steps": [],
+      "dataset": "synthetic_bezier",
+      "method": "hybrid",
+      "rejected_candidate_epochs": [
+        2
+      ],
+      "rejected_error_values": [
+        0.58
+      ]
+    },
+    {
+      "accepted_epochs": [
+        0,
+        1,
+        3
+      ],
+      "accepted_error_values": [
+        1.0,
+        0.55,
+        0.31
+      ],
+      "accepted_nonmonotone_error_steps": [],
+      "dataset": "synthetic_bezier",
+      "method": "tri",
+      "rejected_candidate_epochs": [
+        2
+      ],
+      "rejected_error_values": [
+        0.74
+      ]
+    }
+  ],
+  "metric_scope": "INVENTED_NORMALIZED_ERROR_NOT_CROSS_METHOD_CERTIFICATION",
+  "rejected_candidates_not_accepted_epochs": true,
+  "rows": 8,
+  "schema": "apmesh.meshstudio.synthetic_history.v1",
+  "source_csv_sha256": "254d6b6cc25edd8d3cdd46accdf1f6e542475410e81bdb00a4a0ac8240c928b4"
+}

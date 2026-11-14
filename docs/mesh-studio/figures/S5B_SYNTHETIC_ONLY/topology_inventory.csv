@@ -1,0 +1,4 @@
+fixture,source_sha256,synthetic,triangles,quads
+synthetic_planar_tri_grid.obj,9e4f480ec13b31bac27406fcae62fafd6ad263336ed99b9f6d506ddf5a7b3e96,true,8,0
+synthetic_quad_aft_transition.obj,ff0ea68b185902cd1b5c635f5a2a0af33ba7631b927f8b02a892d2d4948c128f,true,8,1
+synthetic_planar_quad_grid.obj,e0587b79d8c8cfc835a9abf49aca2f2c85186ed62e3f43138c1845423729b2e6,true,0,4

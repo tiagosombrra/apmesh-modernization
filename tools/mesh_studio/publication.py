@@ -53,7 +53,7 @@ def _scan_svg(svg: Path) -> dict:
             "path_elements": tags.count("path"), "local_glyph_references": len(hrefs)}
 
 
-def _scan_pdf(pdf: Path, width_mm: int, height_mm: int) -> dict:
+def _scan_pdf(pdf: Path, width_mm: int, height_mm: int, *, min_drawings: int = 70) -> dict:
     from pypdf import PdfReader
     import fitz
     reader = PdfReader(str(pdf), strict=True)
@@ -68,7 +68,7 @@ def _scan_pdf(pdf: Path, width_mm: int, height_mm: int) -> dict:
     with fitz.open(pdf) as f:
         if f[0].get_images(full=True):
             raise ValueError("pdf_contains_raster_image_xobject")
-        if len(f[0].get_drawings()) < 70:
+        if min_drawings < 20 or len(f[0].get_drawings()) < min_drawings:
             raise ValueError("pdf_insufficient_vector_geometry")
         embedded = f[0].get_fonts(full=True)
         if not embedded or not all(f.extract_font(row[0]) and f.extract_font(row[0])[3]
@@ -81,7 +81,7 @@ def _scan_pdf(pdf: Path, width_mm: int, height_mm: int) -> dict:
         raise ValueError("pdf_inline_raster_image")
     return {"vector_only_no_image_xobjects": True,
             "page_count": 1, "width_mm": width_mm, "height_mm": height_mm,
-            "font_inventory": len(embedded), "vector_drawings_at_least": 70}
+            "font_inventory": len(embedded), "vector_drawings_at_least": min_drawings}
 
 
 def _quality_histogram(scores: list[float]) -> list[int]:

@@ -204,3 +204,37 @@ and remote asset references, actual physical paper size and embedded PDF fonts.
 The PDF and SVG remain byte-for-byte reproducible in the qualified local
 Python/Matplotlib environment, but release builds must pin their own tested
 dependency versions. The LaTeX smoke uses `pdflatex` when available.
+
+## S5b: source-safe multi-model mock figures and experiment histories
+
+S5b adds **two reproducible true-vector figures** for researching figure
+composition before comparable real QUAD/TRI, all-QUAD and anisotropic method
+outputs exist:
+
+```bash
+python -m tools.mesh_studio.compare_cli --output-dir build/mesh-studio/s5b_mock_comparison
+python -m unittest tools.mesh_studio.test_multi_model_publication -v
+```
+
+- `topology_gallery.{pdf,svg}` uses **three distinct synthetic** square-domain
+  OBJ fixtures (8 TRI, 8 TRI + 1 QUAD, 4 QUAD) and independent per-panel
+  plot extents. It does **not** imply matched geometry, element budgets or
+  actually executed source algorithms.
+- `epoch_timeline.{pdf,svg}` imports the eight explicitly invented history
+  rows, traces **accepted states only**, and shows rejected candidates as X
+  markers. Invented time/error values are not numerical research findings.
+- `study_matrix.json` keeps all six topology × sizing scientific comparison
+  cells `NOT_AVAILABLE`. The authentic one-shot P1 is separately recognized
+  outside these adaptive-study cells, after exact control-net/receipt checks.
+- `include.tex` embeds both vector figures in two-column LaTeX; `*.recipe.json`
+  and `*.audit.json`, CSV tables and SHA-256 provenance enable repeated export.
+
+The S5b CSV reader deliberately **rejects real-claiming rows** because the V1
+synthetic history format lacks a source model digest, metric definition and
+software/environment identity. Later real experiments require a separate
+versioned, provenance-checked schema. Never edit these fixtures to make actual
+comparisons look available.
+
+Desktop S4b remains **not qualified**: source-preserving Qt interaction needs
+actual PySide6/PyVistaQt installation and Windows/Linux smoke runs. The
+headless S5b tooling does not change this pending status.

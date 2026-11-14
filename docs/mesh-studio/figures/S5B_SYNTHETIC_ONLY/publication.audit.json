@@ -1,0 +1,62 @@
+{
+  "evidence_kind": "SYNTHETIC_TEST_DATA_NOT_MEASURED",
+  "figure_audits": {
+    "epoch_timeline": {
+      "pdf": {
+        "font_inventory": 2,
+        "height_mm": 112,
+        "page_count": 1,
+        "vector_drawings_at_least": 20,
+        "vector_only_no_image_xobjects": true,
+        "width_mm": 182
+      },
+      "svg": {
+        "image_elements": 0,
+        "local_glyph_references": 655,
+        "path_elements": 141,
+        "vector_only": true
+      }
+    },
+    "topology_gallery": {
+      "pdf": {
+        "font_inventory": 2,
+        "height_mm": 112,
+        "page_count": 1,
+        "vector_drawings_at_least": 20,
+        "vector_only_no_image_xobjects": true,
+        "width_mm": 182
+      },
+      "svg": {
+        "image_elements": 0,
+        "local_glyph_references": 491,
+        "path_elements": 115,
+        "vector_only": true
+      }
+    }
+  },
+  "files_sha256": {
+    "epoch_events.csv": "240cf50dbd0415a0e0c74ed7afeb46c63b228e2855920ac220351ce1bdd4a423",
+    "epoch_timeline.pdf": "23a20cde5f2f3592303900b36f4469c9f97e80fc5e045ecf134acd28e52ecd81",
+    "epoch_timeline.svg": "59c490cfe7d38a5b993eeee48104502c03b01e7a86cf6a198cfcbbbccb7d3b18",
+    "figure.recipe.json": "d6f065e48450681238824e3b4eddc3de436c34aaa4d46743ed8dcca2e306eadd",
+    "history_summary.json": "6cb5a0c5cc781d26f71652bfb9c37ee75148ce87218c7da536e93c77affad8ae",
+    "include.tex": "26e8668c6c723ad1944a7a33dddad413494a4ef9074d9237b74d0bb37de7951d",
+    "study_matrix.json": "4b40954b3a0598e59750307b8e58cacea01a7e2e54de48702558e0d56fc0a712",
+    "topology_gallery.pdf": "43e1a33c109aaaaa1c12b64100a64f8f811566d3930f0d5fde12582771c0b767",
+    "topology_gallery.svg": "7303020ffd59e63d4bdd00dd84e82384dbf09513ea02021fdb06b7c53e9181a2",
+    "topology_inventory.csv": "3e8a3e9bf263d487d1d0acf02d459eb271ff2974f3749590ea6924bc14401da0"
+  },
+  "history_csv_sha256": "254d6b6cc25edd8d3cdd46accdf1f6e542475410e81bdb00a4a0ac8240c928b4",
+  "mock_event_count": 8,
+  "real_source_study_comparison_qualified": false,
+  "schema": "apmesh.meshstudio.synthetic_comparison_receipt.v1",
+  "source_hashes": {
+    "synthetic_planar_quad_grid.json": "5a7b8abd96421cd9f3b0cb6b9c9700e99e0fdec2e0822c187c2f6bec3914328c",
+    "synthetic_planar_quad_grid.obj": "e0587b79d8c8cfc835a9abf49aca2f2c85186ed62e3f43138c1845423729b2e6",
+    "synthetic_planar_tri_grid.json": "3ec438243eb4949f5262ef9c7e06bfa91ff4014d10f7d045f5ce82d7cf1897fb",
+    "synthetic_planar_tri_grid.obj": "9e4f480ec13b31bac27406fcae62fafd6ad263336ed99b9f6d506ddf5a7b3e96",
+    "synthetic_quad_aft_transition.json": "a97f1acbb500c2d848c138426deca2d7666b1e781651b6632f433a6538fd9df3",
+    "synthetic_quad_aft_transition.obj": "ff0ea68b185902cd1b5c635f5a2a0af33ba7631b927f8b02a892d2d4948c128f"
+  },
+  "synthetic_only": true
+}
