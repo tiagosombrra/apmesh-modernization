@@ -10,7 +10,7 @@ It does not make a second adaptive mesh, refine the accepted tree, call
 `GeneratorAdaptive` or `Adapter::AdaptCurve`, publish a multi-patch model, or
 claim an accepted QUAD adaptive epoch.
 
-Before and after a transient `Patch::SetSubMesh` rebind, the probe checks:
+Before OBJ export or publication, the probe stages a fresh mixed candidate, briefly rebinds the real `Patch` to an independent clone and restores whatever observer the `Patch` held beforehand. It checks:
 
 - 69 physical `NodeAdaptive` objects and every reconstructed
   `TriangleAdaptive` / `research::QuadrilateralAdaptive` against their
@@ -22,10 +22,10 @@ Before and after a transient `Patch::SetSubMesh` rebind, the probe checks:
 - exception-safe restoration of the original `Patch` forward observer;
 - deterministic failure **after seven cloned elements** have registered their
   observers, with full partial-graph teardown and unchanged accepted graph;
-- original accepted node/element addresses and observer sequences restored
+- original candidate node/element addresses and observer sequences restored
   after the transient clone is destroyed.
 
-The original non-overwriting OBJ export remains unchanged. The textual gate
+This pre-export ordering ensures a failed clone probe cannot leave a newly published OBJ behind. The original non-overwriting OBJ export remains unchanged. The textual gate
 `QUAD_TYPED_HISTORY_CLONE accepted_clone=1 partial_failure_rollback=1
 source_observers_preserved=1 adaptive_epochs=0` is verified by
 `tests/quad/test_controlled_application.py`, alongside its existing
