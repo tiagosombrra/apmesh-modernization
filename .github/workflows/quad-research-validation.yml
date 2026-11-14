@@ -281,6 +281,9 @@ jobs:
               "src/adapter/adapter.cpp",
               "include/generator/generator_adaptive.h",
               "src/generator/generator_adaptive.cpp",
+              # Explicit new controlled-case assets; frozen model/profile paths stay guarded.
+              "configs/quad/README.md",
+              "configs/quad/curved_patch.conf",
           }
           changed = set(subprocess.check_output(
               ["git", "diff", "--name-only",
@@ -290,7 +293,7 @@ jobs:
           unexpected = changed - allowed
           if unexpected:
               raise SystemExit("Unreviewed production delta: " + ", ".join(sorted(unexpected)))
-          print("Reviewed M3 dispatch-only source delta:", sorted(changed))
+          print("Reviewed TRI-preserving dispatch and explicit controlled-case assets:", sorted(changed))
           PY
           git rev-parse HEAD
           git -C ../apmesh-tri-reference rev-parse HEAD
