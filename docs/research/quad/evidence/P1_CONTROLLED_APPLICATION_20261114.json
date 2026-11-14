@@ -1,0 +1,77 @@
+{
+  "schema": "apmesh.quad.controlled_application.v1",
+  "source_revision": "f074e3af64d09594c767ceaabab6c0b35194b417",
+  "reused_PR214_source": "7cd5014936a417565415d736bad40dc70deb35df",
+  "reuse_scope": "Only owned_aft_front.h/.cpp execution/coverage/seam helpers; source patch evaluator/tree construction adapted into an application service. No whole-PR merge.",
+  "application": {
+    "actual_ap_mesh_entry": true,
+    "model": "Models3d::ModelCurvaBezier",
+    "result": {
+      "nodes": 69,
+      "quads": 42,
+      "triangles": 36,
+      "boundary": 16
+    },
+    "rollback_nonempty": true,
+    "native_AFT": true,
+    "independent_Bezier_oracle": true,
+    "OBJ_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+    "adaptive_epochs": 0
+  },
+  "local_regression": {
+    "experimental_build_enabled": true,
+    "ctest": 86,
+    "tooling_python": 527,
+    "failures_errors_skips": 0,
+    "report_sha256": "77b9a31ff09d1514032c2ad4ad3f6f21d1c538c8bcdcc3af16c0d8217b595a69"
+  },
+  "configured_analysis": [
+    {
+      "source": "research/quad/controlled_patch_application.cpp",
+      "exit": 0
+    },
+    {
+      "source": "research/quad/owned_aft_front.cpp",
+      "exit": 0
+    },
+    {
+      "source": "src/application/runtime_config.cpp",
+      "exit": 0
+    },
+    {
+      "source": "src/application/run_application.cpp",
+      "exit": 0
+    }
+  ],
+  "implementation": "RunApplication explicit case dispatch -> original ModelCurvaBezier (or one real source BP patch) -> source UV sampling16 -> actual quadtree/QUAD -> original AFT exterior -> typed SubMesh -> native Bezier facet checks -> nonoverwriting OBJ publication -> nonthrowing physical Patch observer/owner commit.",
+  "rollback": "Second candidate fully generated then specifically injected PublicationFailure, previous nonempty owner/node/element/observer identities retained; exit1 and first valid output retained. Not adaptation.",
+  "source_policy": "Named experimental fixed16/vertex_mean, unchanged source control net/curves; not original AdaptCurve sampling or 1993 equivalence.",
+  "limits": [
+    "Default build remains OFF and rejects QUAD; only explicit serial build/case runs.",
+    "No global/continuous XYZ Jacobian or self-intersection proof, multipatch welding or mixed adaptive history.",
+    "Windows and fresh frozen-TRI remote checks and final delivery revision qualification remain pending.",
+    "Native complete-process sanitizer/denial qualification remains open."
+  ],
+  "raw": "build/quad-live/session-20261114/",
+  "records_sha256": {
+    "accepted.conf": "27bdf306caa267699a4655d8cc543066757e21bf44d6c59d6c8ddcdd0d49fc52",
+    "accepted.obj": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+    "accepted.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accepted.stdout": "8c7acb93f084709a303de8f94fa7d8e7191bd36424bcdc908e12bcb7fb1e2f8b",
+    "application.json": "1ec6d5e698b6502f117b01d9fce9f2ce9e26048b82b97484da219b747ad908d2",
+    "corrupt-0.obj": "2b2ef3e3ed592577d4ceb1afdd3a41ddc682ddd7aea8356d979256bcc26d857d",
+    "corrupt-1.obj": "c5a11f431db9a58a2d449d942689e3590df9961f0b2c24ed0014dce835a699c2",
+    "ctest.xml": "d5a876dfab87e001d235bf0a37250e0df6c29198431e3c59598d1e2ac0b2bc60",
+    "LastTest.log": "ae4c5ac78bf8097bccc1e46a997511f85cc6e445a90d0c7eea68e1df059fb810",
+    "plan.json": "5583f6bbb3515209de62830da5868766335050ac667cb72e90188430b17734f5",
+    "regression.json": "77b9a31ff09d1514032c2ad4ad3f6f21d1c538c8bcdcc3af16c0d8217b595a69",
+    "report.json": "1ec6d5e698b6502f117b01d9fce9f2ce9e26048b82b97484da219b747ad908d2",
+    "rollback.conf": "4835d0f6c70661fa4675e6c3592deb044bdf97775b806f4ce55f97dadb65dc0f",
+    "rollback.obj": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+    "rollback.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rollback.stdout": "37ed2c5fbfb2321e012aa435b3b08732bfc467554cbb865c96bf2bc9e7cb773a",
+    "unsupported.conf": "48f0657b206e46196315db91f7ca80506a69b037832ba1a0aabc2a0092f597f8",
+    "unsupported.stderr": "de630709a44a1bd8c0be2305caf5000bd225034e796b13e38a0214fe41740974",
+    "unsupported.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

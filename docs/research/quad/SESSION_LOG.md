@@ -1583,3 +1583,21 @@ remain open. Final documentation checkpoint records these exact identities,
 not a new scientific qualification for its own SHA. Next active deliveryP1:
 refresh older PR214 against current canonical repair, then one live complete
 curved manifold QUAD/AFT patch; afterward two accepted mixed-historyR3 epochs.
+
+
+## 2026-11-14 — P1 real application implementation
+
+Verified clean synchronized8fe561b/mainf6050ec1, no active development/test
+process to interrupt. P0 retained. Implemented an explicit serial opt-in CLI
+case on actual production curved Bezier geometry, selectively reusing the
+pinnedPR214 AFT execution/seam/coverage helper pair; no wholesale merge/rebase.
+Real application generates42QUAD/36originalAFT TRI/69owned nodes and publishes
+a typed Patch-linked SubMesh with nonoverwriting OBJ/UV export. Existing Python
+production control-net oracle independently verifies geometry, orientation and
+boundary; injected precommit failure preserves a prior nonempty physical owner
+and node observers. Fixed16 source sampling/vertexmean is explicit experimental
+policy, not AdaptCurve/1993 or adaptation. Sourcef074e3a passes86CTest/527Python
+with no failures/errors/skips; configured analysis passes4changed TUs. Retained
+initial build/output and minor shell-quoting setup errors; no weakened oracle.
+Final head/Windows/frozenTRI remote/integration and memory qualification remain
+pending. Continue this functional delivery; no new research phase or main change.

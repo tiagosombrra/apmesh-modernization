@@ -28,6 +28,18 @@ metrics, production TRI, input and boundary policies remain unchanged.
 
 ## Next delivery — P1 / live curved-patch R2
 
+
+**Functional candidate:** `quad/integration-live-patch-20261114`, based on8fe561b.
+An opt-in build/case now executes the real application on the original curved
+ModelCurvaBezier:42QUAD/36nativeAFT TRI/69physical nodes, connected UV disk and
+16original sampled boundary intervals. Independent production-control-net
+UV/XYZ/winding checks and nonempty publication rollback pass. Sourcef074e3a
+passes86CTest/527Python and four changed-TU configured analysis checks locally.
+See [measured evidence](evidence/P1_CONTROLLED_APPLICATION_20261114.json).
+Final exact-head, Windows, frozen-TRI remote and integration gates remain pending.
+Default build/TRI behavior remains protected; this is not adaptive history.
+
+
 Refresh the older draftPR214 head7cd5014 against this qualified canonical branch
 before new source changes. Reuse the native typed QUAD interior and original AFT
 exterior to execute one complete controlled curved manifold patch through an

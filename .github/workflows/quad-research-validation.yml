@@ -299,10 +299,10 @@ jobs:
         run: |
           cmake -S ../apmesh-tri-reference -B ../apmesh-tri-reference/build/science-reference -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF
           cmake --build ../apmesh-tri-reference/build/science-reference --target ap_mesh --parallel 2
-      - name: Build candidate TRI executable using the same compiler and flags
+      - name: Build candidate with controlled QUAD compiled and unchanged TRI selection
         shell: bash
         run: |
-          cmake -S . -B build/science-candidate -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF
+          cmake -S . -B build/science-candidate -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON
           cmake --build build/science-candidate --target ap_mesh --parallel 2
           sha256sum ../apmesh-tri-reference/build/science-reference/bin/ap_mesh build/science-candidate/bin/ap_mesh
       - name: Execute fixed Eistute and Book models for both revisions
