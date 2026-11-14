@@ -1825,3 +1825,45 @@ warpage/Jacobian/cost and strong-exception owner transaction
 before scientific mixed epochs. R3/M7 issue221 remains OPEN,
 adaptive_epochs=0; global nonmanifold sheets, full AdaptCurve,
 1993 historical equivalence, all-QUAD, anisotropy remain open.
+
+## 2026-11-14 — Correction: exact P2d-1c0 CI-qualified merge and measured native P2d-1c1 alternatives
+
+Earlier continuation explicitly retained first P2d-1c0 run's missing six-case
+test invocation. Corrected feature e0621a9b8b2675c60ba5bfd3cd0dfe0e395b01af
+then executed all six standalone dyadic tests as part of actual Linux,
+Windows MSVC and Linux ASan/UBSan/leak controlled applications; exact
+Actions #43624052194 completed 4/4 success including 85/85 root CTests,
+527/527 Python tooling and original Eistute/Book frozen TRI parity.
+PR232 was merged to quad-templates at
+a03938627ab8bf2aeadc04d1c238c2eb693d651f.
+This is bounded source-grid topology, not a generated second native AFT
+physical mesh. Exact evidence: evidence/P2D1C0_SECOND_BAND_DYADIC_PREFLIGHT_20261114.json.
+
+PR233 was retargeted to quad-templates only to trigger exact-source pull_request
+CI. First workflow #43624612764 failed real application C++ compilation due to
+incorrect const pointers passed to legacy non-const Vertex::getX()/getY().
+No previously failed CI was relabeled as passing. Narrow source
+correction 7b536dc901cae1e8b9410f6fbd9f3540c20dba09 retained
+the same source cell/geometry/policy and corrected native Linux and
+Windows actual application plus Linux ASan/UBSan/leak reported identical:
+second source corner only 31 leaves/0 emitted QUAD/0.34375 possible
+UV (rejected), west bridge 34 leaves/75 emitted QUAD/0.375 UV,
+north bridge 34 leaves/71 emitted QUAD/0.375 UV, both bridges
+37 leaves/82 emitted QUAD/0.40625 UV. The source physical prior
+staged 93-node/62-QUAD/44-AFT-TRI owner and its observers remain
+unchanged, confirmed with independent Python source-grid cross-check.
+Corrected workflow #43624756858 passed native Linux/Windows and
+original frozen TRI equivalence; full root CTest/tooling remained
+IN PROGRESS at this checkpoint, so no complete 4/4 qualification
+or merge is claimed for PR233.
+
+R3/M7 still 0 accepted adapted QUAD/TRI epochs. No second AFT
+exterior physical reconstruction, repeated accepted MixedEpoch,
+scientific error/quality/complexity policy, original AdaptCurve,
+model-global high-valence weld, all-QUAD, anisotropy or 1993
+equivalence. Main remains f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94.
+Next: qualify complete PR233 exact CI and review its final
+post-PR232 merge diff, then attempt actual second AFT physical
+reconstruction for native west/north/both and independent same-site
+geometric-quality/cost gates with fail-closed owner/OBJ publication.
+
