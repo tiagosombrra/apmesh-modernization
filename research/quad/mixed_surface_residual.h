@@ -23,7 +23,9 @@ struct MixedSurfaceResidual {
   std::size_t triangles = 0;
   std::size_t samples = 0;
   std::size_t worst_quad_face = 0;
+  std::size_t worst_triangle_face = 0;
   ResidualUv worst_quad_sample_uv{0.0, 0.0};
+  ResidualUv worst_triangle_sample_uv{0.0, 0.0};
   double maximum = 0.0;
   double rms = 0.0;
   double quad_maximum = 0.0;
@@ -64,6 +66,7 @@ inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
   result.face_maximum.reserve(faces.size());
   double sum_square = 0.0;
   bool seen_quad = false;
+  bool seen_triangle = false;
   for (std::size_t index = 0; index < faces.size(); ++index) {
     const auto& face = faces[index];
     require(face.size() == 3 || face.size() == 4, "Unsupported mixed residual face arity");
@@ -120,8 +123,13 @@ inline MixedSurfaceResidual MeasureMixedSurfaceResidual(
       // Genuine triangle: four barycentric probes, no implicit QUAD split.
       for (const auto& w : tri_weights)
         sample({{w[0], w[1], w[2], 0.0}});
+      if (!seen_triangle || face_maximum > result.triangle_maximum) {
+        result.worst_triangle_face = index;
+        result.worst_triangle_sample_uv = face_max_uv;
+      }
       result.triangle_maximum = std::max(result.triangle_maximum, face_maximum);
       ++result.triangles;
+      seen_triangle = true;
     }
     result.face_maximum.push_back(face_maximum);
   }
