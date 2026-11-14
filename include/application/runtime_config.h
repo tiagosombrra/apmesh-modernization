@@ -19,6 +19,8 @@ struct RuntimeConfig {
   std::string use_template = "n";
   // Mesh selection is separate from the historical template toggle.
   std::string mesh_element_kind = "tri";
+  std::string quad_experimental_case;
+  bool quad_verify_rollback = false;
   std::string adaptive_mode = "adaptive_stable";
   double adaptive_intensity = 0.45;
   double adaptive_quality_priority = 0.75;

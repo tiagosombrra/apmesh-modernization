@@ -91,6 +91,32 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           & "build/quad-ci-msvc/Debug/quad_tree_demo.exe" "$env:RUNNER_TEMP/quad-native-tree.obj"
           exit $LASTEXITCODE
+      - name: Build controlled application QUAD entry (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          cmake -S . -B build/quad-app-linux -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON -DBUILD_TESTING=OFF
+          cmake --build build/quad-app-linux --target ap_mesh --parallel 2
+          python3 tests/quad/test_controlled_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results
+      - name: Build controlled application QUAD entry (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          cmake -S . -B build/quad-app-msvc -G "Visual Studio 17 2022" -A x64 -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON -DBUILD_TESTING=OFF
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build build/quad-app-msvc --target ap_mesh --config Debug --parallel 2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tests/quad/test_controlled_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results
+          exit $LASTEXITCODE
+      - name: Retain controlled application output
+        uses: actions/upload-artifact@v4
+        with:
+          name: controlled-quad-${{ matrix.os }}-${{ github.sha }}
+          path: |
+            build/quad-app-linux/results/
+            build/quad-app-msvc/results/
+          retention-days: 14
+          if-no-files-found: error
       - name: Check experimental OMP Adapter syntax without changing legacy build defaults
         if: runner.os == 'Linux'
         shell: bash

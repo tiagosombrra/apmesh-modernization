@@ -48,6 +48,12 @@ std::unordered_map<std::string, std::string> ReadConfigFile(const std::string& p
       if (!IsSupportedMeshElementKind(value)) {
         throw std::runtime_error("Unsupported configuration value for MESH_ELEMENT_KIND: " + value);
       }
+    } else if (key == "QUAD_EXPERIMENTAL_CASE") {
+      if (value != "curved_bezier_fixed16_vertex_mean_v1")
+        throw std::runtime_error("Unsupported QUAD experimental case");
+    } else if (key == "QUAD_VERIFY_ROLLBACK") {
+      if (value != "0" && value != "1")
+        throw std::runtime_error("QUAD_VERIFY_ROLLBACK must be 0 or 1");
     } else {
       apmesh::io::ValidateConfigValue(key, value);
     }
@@ -79,6 +85,11 @@ RuntimeConfig LoadRuntimeConfig(const std::string& path) {
   config.output_prefix = GetConfigValue(values, "OUTPUT_PREFIX");
   config.use_template = GetConfigValue(values, "USE_TEMPLATE", "y");
   config.mesh_element_kind = GetConfigValue(values, "MESH_ELEMENT_KIND", "tri");
+  config.quad_experimental_case = GetConfigValue(values, "QUAD_EXPERIMENTAL_CASE");
+  config.quad_verify_rollback = GetConfigValue(values, "QUAD_VERIFY_ROLLBACK", "0") == "1";
+  if (config.mesh_element_kind == "tri" &&
+      (values.count("QUAD_EXPERIMENTAL_CASE") || values.count("QUAD_VERIFY_ROLLBACK")))
+    throw std::runtime_error("Experimental QUAD keys require MESH_ELEMENT_KIND=quad_uv");
   config.adaptive_mode = GetConfigValue(values, "ADAPTIVE_MODE", "adaptive_stable");
   config.adaptive_intensity = atof(GetConfigValue(values, "ADAPTIVE_INTENSITY", "0.45").c_str());
   config.adaptive_quality_priority =

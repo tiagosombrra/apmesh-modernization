@@ -43,6 +43,21 @@ target_compile_features(ap_mesh PRIVATE cxx_std_17)
 
 target_include_directories(ap_mesh PRIVATE "${INC_DIR}")
 
+option(AP_MESH_ENABLE_EXPERIMENTAL_QUAD "Enable the controlled serial QUAD application case" OFF)
+if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD)
+  if(AP_MESH_USE_MPI OR AP_MESH_USE_OPENMP)
+    message(FATAL_ERROR "Controlled QUAD requires serial MPI/OMP-disabled configuration")
+  endif()
+  target_compile_definitions(ap_mesh_engine PRIVATE AP_MESH_EXPERIMENTAL_QUAD=1)
+  target_include_directories(ap_mesh_engine PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_sources(ap_mesh_engine PRIVATE
+    research/quad/controlled_patch_application.cpp
+    research/quad/physical_quadrilateral_adaptive.cpp
+    research/quad/uv_mesh.cpp research/quad/quadtree_quad.cpp
+    research/quad/interior_template_dispatch.cpp
+    research/quad/front_interface_audit.cpp research/quad/owned_aft_front.cpp)
+endif()
+
 # Avoid dependence on whichever MinGW runtime DLLs happen to appear first in
 # the reviewer's PATH. Windows system/UCRT dependencies remain dynamic.
 if(MINGW AND AP_MESH_STATIC_MINGW_RUNTIME)
@@ -340,4 +355,12 @@ if(BUILD_TESTING AND NOT AP_MESH_USE_MPI AND NOT AP_MESH_USE_OPENMP)
       --root "${CMAKE_CURRENT_SOURCE_DIR}" --model book)
   set_tests_properties(quad.generator.real_global_outcomes.book PROPERTIES
     LABELS "research-quad;application;required-gate" TIMEOUT 350)
+endif()
+
+if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD AND BUILD_TESTING)
+  add_test(NAME quad.application.controlled
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_controlled_application.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --directory "${CMAKE_CURRENT_BINARY_DIR}/controlled-application")
+  set_tests_properties(quad.application.controlled PROPERTIES
+    TIMEOUT 180 LABELS "research-quad;application;required-gate")
 endif()
