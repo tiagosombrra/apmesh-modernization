@@ -63,8 +63,11 @@ class MixedEpochPreflight final {
     if (candidate.epoch != previous.epoch + 1)
       throw std::invalid_argument("Noncontiguous mixed epoch index");
     if (candidate.model_sha256 != previous.model_sha256 ||
-        candidate.boundary_sha256 != previous.boundary_sha256)
+        candidate.boundary_sha256 != previous.boundary_sha256 ||
+        candidate.source_boundary_edges != previous.source_boundary_edges)
       throw std::invalid_argument("Source model or sampled boundary changed");
+    if (candidate.policy_id != previous.policy_id)
+      throw std::invalid_argument("Mixed epoch policy changed without a new experiment");
     if (candidate.parent_mesh_sha256 != previous.mesh_sha256)
       throw std::invalid_argument("Candidate does not identify previous mixed owner");
     if (candidate.mesh_sha256 == previous.mesh_sha256 ||
