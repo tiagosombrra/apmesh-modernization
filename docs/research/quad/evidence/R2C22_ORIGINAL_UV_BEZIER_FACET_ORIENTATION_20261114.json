@@ -1,0 +1,31 @@
+{
+  "schema": "apmesh.quad.r2c22.original_patch_uv_bezier_source_checkpoint.v1",
+  "date_utc": "2026-11-14",
+  "candidate_sha": "7cd5014936a417565415d736bad40dc70deb35df",
+  "previous_qualified_sha": "5ed7fdd572af195b0b2dce4c223ff6cd5f4c1183",
+  "previous_qualified_ci": {
+    "run_id": 43532150635,
+    "completion": "success_4_of_4"
+  },
+  "exact_source_ci": {
+    "run_id": 43539022938,
+    "state_at_checkpoint": "in_progress_not_qualified"
+  },
+  "candidate_paths": [
+    "tests/quad/full_source_patch_stage_probe.cpp",
+    "tools/verify_r2c22_original_patch_uv_bezier_orientation.py",
+    ".github/workflows/quad-research-validation.yml",
+    "docs/research/quad/R2C22_ORIGINAL_UV_BEZIER_FACET_ORIENTATION_20261114.md"
+  ],
+  "source_native_Bezier_control_net_reconstruction_independent": false,
+  "actual_original_facets_validated_by_new_CI": false,
+  "new_negative_controls_authored": 5,
+  "original_TRI_production_changed": false,
+  "cross_patch_welding": false,
+  "source_SHA_bound_sheet_scientific_approval": false,
+  "valences": {
+    "eistute": 4,
+    "book": 28
+  },
+  "next_gate": "Inspect exact native source CI to certify UV/Bezier differential normal and original OBJ alignment for each original detached patch."
+}

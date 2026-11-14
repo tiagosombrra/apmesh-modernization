@@ -22,5 +22,30 @@
   "original_model_valences": {
     "eistute": 4,
     "book": 28
-  }
+  },
+  "qualified_final_source_sha": "5ed7fdd572af195b0b2dce4c223ff6cd5f4c1183",
+  "qualified_final_workflow": {
+    "id": 43532150635,
+    "conclusion": "success",
+    "jobs": 4,
+    "root_ctest": "89/89",
+    "python": "527/527",
+    "quad_gcc": "16/16",
+    "quad_msvc": "16/16",
+    "frozen_tri": "pass"
+  },
+  "actual_original_source_patches": {
+    "eistute": {
+      "passed": 4,
+      "total": 4
+    },
+    "book": {
+      "passed": 28,
+      "total": 28
+    }
+  },
+  "actual_native_indexed_topology_gate_qualified": true,
+  "actual_native_negative_controls_passed": 7,
+  "global_nonmanifold_sheet_approved": false,
+  "original_Bezier_orientation_source_verified": false
 }
