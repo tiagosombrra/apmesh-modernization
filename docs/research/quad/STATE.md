@@ -3,6 +3,60 @@
 Updated2026-11-14 Fortaleza. Canonical branch: `quad-templates`.
 Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 
+
+## P2d-1b3 integrated, P2d-1c0 second-source topology preflight active
+
+[PR231](https://github.com/tiagosombrra/apmesh-modernization/pull/231)
+merged into research `quad-templates` at
+`4b7f485a0df2c5108dbd822f337d2e38bba2947a`.
+Exact source `1efb13b6a6fb46fca77deba81aa405db5bff90d5`
+passed [CI #43620929978](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43620929978)
+**4/4 jobs**: exact-head Linux/Windows real physical app, Linux
+ASan/UBSan/leak, 85/85 root CTest, 527/527 tooling Python and frozen
+Eistute/Book production TRI scientific equality. Independent Python evaluates
+both first original and staged physical AFT+QUAD candidate on the **same 4096
+UV sites**, not the unequal 354/486 per-element samples: max XYZ
+`0.06564122093 -> 0.05160741346`, uniform-UV RMS
+`0.01729520385 -> 0.01251800084`, source-Jacobian-weighted RMS
+`0.01598126566 -> 0.01181032464`. These are finite-grid diagnostics
+on one original Bezier model, not a continuous bound or adaptive acceptance
+policy. The candidate remains `staged_unaccepted` and
+`adaptive_epochs=0`. Former draft
+[PR230](https://github.com/tiagosombrra/apmesh-modernization/pull/230)
+was **closed unmerged as superseded**: its positive-staging requirement is
+included in PR231; the extra synthetic rejection-negative control was *not*
+integrated or CI qualified and remains an optional independent safeguard.
+
+**Currently active isolated [PR232](https://github.com/tiagosombrra/apmesh-modernization/pull/232)**,
+feature `7a42a496ae5c99fa16c7bed5559ad2f4c61a96c3`,
+implements **source-grid-only P2d-1c0** topology preflight for the next
+actual staged candidate's maximum original AFT residual: face103,
+UV near (0.8,0.1), distinct level-2 source coordinate (3,0).
+Six locally run Python tests pass; **exact-head GitHub CI #43622937311
+was in progress on last inspection**, not yet a confirmed pass.
+With the prior 28-leaf/21-of-64 eligible grid, the selected cell alone
+predicts 31 leaves/22-of-64 QUAD UV but is correctly **rejected as a
+disconnected, diagonal-vertex island**. Two bridge alternatives
+(3,0)+(2,0) or (3,0)+(3,1) predict connected 34 leaves/24-of-64;
+both bridges predict 37 leaves/26-of-64. These are **necessary dyadic
+topology estimates, not actual original C++ Quadtree or native AFT execution**.
+[Bounded protocol](P2D1C0_SECOND_BOUNDARY_BAND_PREFLIGHT_20261114.md)
+on the isolated PR branch, not yet on canonical.
+
+**Next native gate P2d-1c1:** propagate the *current previous physical
+candidate* and source-error-selected site to the real native Quadtree,
+trial both minimal bridge directions and the three-cell band with original
+2:1 balancing and native `EmitLeafQuads`/AFT physical reconstruction.
+Independent common-site source error, QUAD Jacobian, warpage, cost,
+observer/owner rollback, immutable source/OBJ identities and scientifically
+pre-registered acceptance criteria are mandatory. Do not count a source-only
+preflight, original fixed16 proposal, or staged physical output as an
+accepted mixed history epoch. R3/M7 [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
+**OPEN (zero accepted adaptive QUAD/TRI epochs)**; no global Eistute/Book
+high-valence weld, 1993 historical reconstruction, all-QUAD or anisotropy
+claim. `main` and default TRI remain unchanged.
+
+
 ## P2d-1b2 physically reconstructed — qualified feature CI, adaptive history still OPEN
 
 Research-only full original native AFT physical reconstruction from the real three-leaf
