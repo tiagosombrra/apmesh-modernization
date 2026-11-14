@@ -63,6 +63,9 @@ def main():
         verified = execute([str(args.ownership_exe.resolve()),
                             str(uv), str(physical)])
         require("quad_four_node_lifecycle=ok" in verified
+                and "quad_four_corner_admission=ok accepted=20 rejected=40"
+                in verified
+                and "observer_values_order_slots=preserved" in verified
                 and "observer_links=276" in verified
                 and "shared_seam=20 boundary=16" in verified,
                 "Physical quad ownership and mixed-node witness incomplete")
@@ -99,6 +102,8 @@ def main():
             "outer_boundary_edges": 16,
             "deterministic_constructor_failures": 4,
             "invalid_constructor_inputs": 7,
+            "convexity_accepted_inputs": 20,
+            "convexity_rejected_inputs": 40,
             "negative_file_mutations_rejected": rejected,
             "passed": True,
         })
@@ -126,6 +131,7 @@ def main():
     print("m4_quad_ownership=ok model=ModelCurvaBezier "
           "nodes=69 quads=42 tri=36 links=276 mixed_seam=20 "
           "failing_constructors=11_per_mode altered_files_rejected=6 "
+          "four_corner_accepted=20_per_mode four_corner_rejected=40_per_mode "
           "NOT_production")
 
 

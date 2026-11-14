@@ -9,24 +9,22 @@ namespace apmesh::quad::research {
 namespace {
 
 bool Finite(const VectorAdaptive& v) {
-  return std::isfinite(v.GetX()) && std::isfinite(v.GetY()) &&
-         std::isfinite(v.GetZ());
+  return std::isfinite(v.GetX()) && std::isfinite(v.GetY()) && std::isfinite(v.GetZ());
 }
 
-double SignedUvTriangle(const QuadrilateralAdaptive::Parameters& uv,
-                        unsigned a, unsigned b, unsigned c) {
+double SignedUvTriangle(const QuadrilateralAdaptive::Parameters& uv, unsigned a, unsigned b,
+                        unsigned c) {
   const auto& p = uv[a];
   const auto& q = uv[b];
   const auto& r = uv[c];
-  return (q[0] - p[0]) * (r[1] - p[1]) -
-         (q[1] - p[1]) * (r[0] - p[0]);
+  return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]);
 }
 
-}  // namespace
+} // namespace
 
-QuadrilateralAdaptive::QuadrilateralAdaptive(
-    Nodes nodes, Parameters parameters,
-    const VectorAdaptive& reference_normal, int fail_before_slot)
+QuadrilateralAdaptive::QuadrilateralAdaptive(Nodes nodes, Parameters parameters,
+                                             const VectorAdaptive& reference_normal,
+                                             int fail_before_slot)
     : nodes_(nodes), uv_(parameters), reference_normal_(reference_normal) {
   ValidateInput();
   const GeometryMetrics metrics = EvaluateGeometry();
@@ -54,8 +52,7 @@ QuadrilateralAdaptive::~QuadrilateralAdaptive() {
 }
 
 void QuadrilateralAdaptive::ValidateInput() const {
-  if (!Finite(reference_normal_) ||
-      !(reference_normal_.CalculateModule() > 1e-12))
+  if (!Finite(reference_normal_) || !(reference_normal_.CalculateModule() > 1e-12))
     throw std::invalid_argument("Invalid chart normal");
 
   std::set<NodeAdaptive*> unique_nodes;
@@ -70,13 +67,12 @@ void QuadrilateralAdaptive::ValidateInput() const {
       if (!std::isfinite(value) || value < 0.0 || value > 1.0)
         throw std::invalid_argument("Invalid quad UV domain");
   }
-  if (!(SignedUvTriangle(uv_, 0, 1, 2) > 1e-14) ||
-      !(SignedUvTriangle(uv_, 0, 2, 3) > 1e-14))
+  if (!(SignedUvTriangle(uv_, 0, 1, 2) > 1e-14) || !(SignedUvTriangle(uv_, 0, 2, 3) > 1e-14) ||
+      !(SignedUvTriangle(uv_, 1, 2, 3) > 1e-14) || !(SignedUvTriangle(uv_, 3, 0, 1) > 1e-14))
     throw std::invalid_argument("Inverted, concave or collapsed UV quad");
 }
 
-QuadrilateralAdaptive::GeometryMetrics
-QuadrilateralAdaptive::EvaluateGeometry() const {
+QuadrilateralAdaptive::GeometryMetrics QuadrilateralAdaptive::EvaluateGeometry() const {
   const VectorAdaptive a(*nodes_[0], *nodes_[1]);
   const VectorAdaptive b(*nodes_[0], *nodes_[2]);
   const VectorAdaptive c(*nodes_[0], *nodes_[3]);
@@ -86,12 +82,10 @@ QuadrilateralAdaptive::EvaluateGeometry() const {
   const double second_size = second.CalculateModule();
   const double first_signed = first ^ reference_normal_;
   const double second_signed = second ^ reference_normal_;
-  if (!Finite(first) || !Finite(second) ||
-      !std::isfinite(first_size) || !std::isfinite(second_size) ||
-      !(first_size > 1e-14) || !(second_size > 1e-14) ||
+  if (!Finite(first) || !Finite(second) || !std::isfinite(first_size) ||
+      !std::isfinite(second_size) || !(first_size > 1e-14) || !(second_size > 1e-14) ||
       !(first_signed > 1e-12) || !(second_signed > 1e-12))
-    throw std::invalid_argument(
-        "Degenerate or reverse-oriented physical quad subtriangle");
+    throw std::invalid_argument("Degenerate or reverse-oriented physical quad subtriangle");
 
   const double area = 0.5 * (first_size + second_size);
   const VectorAdaptive normal = first + second;
@@ -144,4 +138,4 @@ double QuadrilateralAdaptive::GetAngle(const NodeAdaptive& node) {
   throw std::invalid_argument("Quad angle requires an identical live node");
 }
 
-}  // namespace apmesh::quad::research
+} // namespace apmesh::quad::research
