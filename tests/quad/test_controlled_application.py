@@ -391,6 +391,14 @@ def verify_connected_aft_band(stdout, source_residual):
                 any(line.startswith("QUAD_CONNECTED_BAND_REJECTION reason=")
                     for line in lines),
                 "Rejected source band failed to disclose the topology blocker")
+    # Freeze this source-specific result; any changed topology needs explicit review.
+    require(int(record["bridge_east_cell_id"]) == 7 and
+            int(record["bridge_north_cell_id"]) == 9 and
+            int(record["refined_leaves"]) == 28 and
+            int(record["admitted_uv_disk"]) == 1 and
+            int(record["emitted_quads"]) == 62 and
+            math.isclose(float(record["quad_uv_area"]), 0.328125, abs_tol=1e-12),
+            "Connected source band changed its qualified 2:1 manifold witness")
     require(source_residual["worst_triangle_face"] == 74,
             "Connected band did not track real initial AFT source error")
     return record
