@@ -19,7 +19,8 @@ from .scene_model import (CameraPose, SceneError, build_batch, face_detail,
                           visible_face_ids, with_visibility, write_scene)
 
 
-def launch(obj_path: Path | str | None = None) -> int:
+def launch(obj_path: Path | str | None = None, *,
+           smoke_output: Path | str | None = None) -> int:
     """Start an explicit desktop session; never initialize Qt during import."""
     os.environ.setdefault('QT_API', 'pyside6')
     try:
@@ -384,15 +385,32 @@ def launch(obj_path: Path | str | None = None) -> int:
     default = Path(__file__).parent / 'fixtures' / 'real_p1' / 'accepted.obj'
     window = MeshStudioWindow(Path(obj_path) if obj_path is not None else default)
     window.show()
-    return app.exec()
+    if smoke_output is None:
+        return app.exec()
+
+    # This gate is deliberately not considered executed without real Qt/VTK.
+    from .desktop_smoke import run_gui_smoke
+    status = {"pass": False}
+
+    def run_smoke_once() -> None:
+        try:
+            status["pass"] = run_gui_smoke(window, Path(smoke_output))
+        finally:
+            window.close()
+            app.quit()
+
+    QtCore.QTimer.singleShot(200, run_smoke_once)
+    app.exec()
+    return 0 if status["pass"] else 1
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description='Open APMesh Mesh Studio desktop XYZ/UV preview')
     parser.add_argument('--obj', type=Path, help='Source Wavefront OBJ file (default: real P1)')
+    parser.add_argument('--smoke-output', type=Path, help='Run bounded Qt GUI smoke and write JSON evidence')
     args = parser.parse_args(argv)
     try:
-        return launch(args.obj)
+        return launch(args.obj, smoke_output=args.smoke_output)
     except (RuntimeError, OSError, ValueError) as exc:
         print(f'Mesh Studio desktop unavailable: {exc}', file=sys.stderr)
         return 2

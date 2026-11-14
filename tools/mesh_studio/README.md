@@ -1,4 +1,4 @@
-# APMesh Mesh Studio — headless S0/S1 starter
+# APMesh Mesh Studio — scientific inspection and publication modules S0–S5
 
 This project is isolated under `tools/mesh_studio/`, with no generator production changes.
 
@@ -151,3 +151,56 @@ tests passed. A PySide6/PyVista/pyvistaqt desktop run was NOT executable in this
 environment, so interactive cell picking, Qt ABI and close/reopen memory behavior
 are UNQUALIFIED until an actual GUI smoke run. See
 `docs/mesh-studio/IMPLEMENTATION_S4_20261114.md`.
+
+## S4b: bounded Qt GUI qualification gate (not passed without Qt)
+
+S4a remains verified by VTK headless rendering and scene-model regression.
+The **actual** PySide6/PyVista/PyVistaQt window is a separate, pending gate.
+The automated S4b smoke below opens two Qt-backed VTK panes, toggles the source
+face layers, selects an indexed face via Qt and the VTK cell-data callback,
+preserves camera recipes, renders a screenshot, then closes the widgets.
+It does **not** claim to calibrate a physical mouse click, or provide an
+independent repeat-open/close Windows GPU endurance qualification.
+
+```bash
+python -m pip install -r tools/mesh_studio/requirements-desktop.in
+# Linux with Xvfb/GLX availability:
+xvfb-run -a python -m tools.mesh_studio.desktop_app \
+  --obj tools/mesh_studio/fixtures/real_p1/accepted.obj \
+  --smoke-output build/mesh-studio/qt-smoke.json
+```
+
+On Windows, invoke the same Python command in a regular desktop session without
+`xvfb-run`. A PASS receipt is emitted **only after** real PySide6 and both VTK
+widgets execute; missing dependencies return exit code 2, with no false PASS.
+The programmatic pick callback is distinct from real physical mouse selection,
+which still requires a separate interactive acceptance test.
+
+## S5 pilot: publication-grade vector figure and experiment registry
+
+Install the optional publication dependencies independently of the GUI:
+
+```bash
+python -m pip install -r tools/mesh_studio/requirements-publishing.in
+python -m tools.mesh_studio.publish_cli --output-dir build/mesh-studio/paper-figure
+python -m unittest tools.mesh_studio.test_publication -v
+```
+
+The source-bound command uses the **real PR #217 controlled P1** OBJ and its
+verified generator receipt. It produces a journal-width (178 x 108 mm) PDF,
+SVG, LaTeX `figure*` insertion snippet, CSV of 36 source TRI Studio-computed
+mean-ratio scores, a replayable JSON recipe, a PDF/SVG structural audit and an
+explicit six-cell topology x sizing comparison registry.
+
+No qualified tensor-driven or all-QUAD results exist yet. The real fixed16
+P1 source is deliberately **outside** the isotropic/anisotropic factorial
+comparison, rather than being misrepresented as isotropic adaptation.
+Nonplanar original Bézier QUAD cells are not given a planar scaled-Jacobian
+score; the source's continuous surface validity is still not certified.
+
+The SVG/PDF output is vector-only, not a three-dimensional shaded render.
+Verification checks PDF image XObjects and inline images, SVG `<image>`/script
+and remote asset references, actual physical paper size and embedded PDF fonts.
+The PDF and SVG remain byte-for-byte reproducible in the qualified local
+Python/Matplotlib environment, but release builds must pin their own tested
+dependency versions. The LaTeX smoke uses `pdflatex` when available.

@@ -1,0 +1,52 @@
+{
+  "baseline_tests": 74,
+  "date": "2026-11-14",
+  "desktop_gate": "BLOCKED_UNAVAILABLE_PYSIDE6_PYVISTA_PYVISTAQT",
+  "deterministic_regeneration_all_files": true,
+  "failed": 0,
+  "files": {
+    "comparison_matrix.json": "4b40954b3a0598e59750307b8e58cacea01a7e2e54de48702558e0d56fc0a712",
+    "figure.pdf": "de045eaf67ec94d3b0a8d107d1e9c4a5aeed122745617161c1aa572643c69348",
+    "figure.recipe.json": "c00b39ae135d9de3b6106a7d02c0dafdf367ec5e158462ed8d0b240847de4b27",
+    "figure.svg": "66ed816daea5731ba49c6c9e667547500dd047839dda3dcb3117fc21380003d1",
+    "include.tex": "f6b281079c28cc21a5909e9736a419844422e68fa24bd98a89652dd93e07f5d0",
+    "publication.audit.json": "24f412b503e30ae9f8fb243dbd908facc2aaaf9e6c38ded50d1c36bbd9b18afe",
+    "source_oracle.json": "84fca1414af258719056e97719be41745d48bd77d784f9d057fa05e4e8781c50",
+    "triangle_quality.csv": "d5380edcf585a354487a4001c5bfdfe4e40d10b342f6ec757e5c755e3c3a9b12"
+  },
+  "full_tests_passed": 99,
+  "implementation_stage": "S5_VECTOR_PUBLICATION_PILOT",
+  "latex_smoke": "SUCCESS_2_COLUMN_FIGURE_STAR",
+  "limits": [
+    "Missing interactive Qt GUI runtime; real manual picking still open",
+    "Only controlled P1 geometry, not accepted multi-epoch adaptation",
+    "Original P1 QUAD shape Jacobian not evaluated because nonplanar",
+    "Source anisotropy and all-QUAD results not available",
+    "No GitHub CI on the S5 exact SHA yet"
+  ],
+  "matplotlib": "3.10.8",
+  "new_tests": 25,
+  "pdf_vector": {
+    "font_inventory": 2,
+    "height_mm": 108,
+    "page_count": 1,
+    "vector_drawings_at_least": 70,
+    "vector_only_no_image_xobjects": true,
+    "width_mm": 178
+  },
+  "pymupdf": "1.26.7",
+  "pypdf": "5.9.0",
+  "python": "3.13.5",
+  "qualified_application_window": false,
+  "schema": "apmesh.meshstudio.S4b_S5_local_receipt.v1",
+  "skipped": 0,
+  "source_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "svg_vector": {
+    "image_elements": 0,
+    "local_glyph_references": 735,
+    "path_elements": 210,
+    "vector_only": true
+  },
+  "synthetic_negative": 6,
+  "synthetic_positive": 10
+}

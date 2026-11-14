@@ -1,0 +1,7 @@
+# Scientific vector publisher: independent of Qt, PyVista and GPU rendering.
+# Freeze exact versions after platform-specific publication qualification.
+matplotlib>=3.10,<3.12
+pypdf>=5.0,<7
+PyMuPDF>=1.26,<1.30
+# Used by the independent raster-in-PDF negative control.
+reportlab>=4.4,<5
