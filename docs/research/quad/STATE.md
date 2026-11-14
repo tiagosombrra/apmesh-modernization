@@ -40,12 +40,11 @@ Final exact-head, Windows, frozen-TRI remote and integration gates remain pendin
 Default build/TRI behavior remains protected; this is not adaptive history.
 
 
-Refresh the older draftPR214 head7cd5014 against this qualified canonical branch
-before new source changes. Reuse the native typed QUAD interior and original AFT
-exterior to execute one complete controlled curved manifold patch through an
-explicit application opt-in. Preserve its original boundary, demonstrate UV/XYZ/
-orientation and rollback, and retain exact default-TRI evidence. `quad_uv` is
-still refused by the current CLI; this functional gate remains unimplemented.
+Selective reuse of draftPR214 head7cd5014 is complete for this candidate. The
+controlled application case is operational with the build flag and named policy;
+default builds still refuse QUAD deliberately. Next gate: qualify the final
+candidate revision and its Windows/frozen-TRI checks, then integrate only if all
+required scoped gates pass. No global multipatch/adaptive readiness is claimed.
 
 Then P2/R3 must consume that actual mixed QUAD/TRI mesh as history for at least
 two accepted epochs, with typed curvature, quality, export, cloning, acceptance
