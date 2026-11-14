@@ -1,5 +1,17 @@
 # Plano de pesquisa e implementação QUAD — APMesh
 
+
+## 2026-11-13 execution audit
+
+The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
+M0–M9 acceptance criteria. First repair the reproduced physical convexity
+contract, then finish live controlled curved-patch R2 and mixed-history R3.
+Original TRI epoch observations do not close M7 QUAD history. High-valence
+sheet/weld decisions and literal historical-method approval remain separate
+scientific gates, outside the first controlled R2 patch delivery. No scientific
+scope expansion or stage closure is authorized here.
+
+
 **Estado:** M0 technical baseline inventory **qualified with documented serial-scope exceptions**; no QUAD algorithm implementation in the production pipeline. **Criado em:** 2026-11-08. **Revisão científica prevista:** 2026-11-11 com Joaquim Bento e Creto Vidal.
 **Branch:** `quad-templates`; **baseline imutável de origem:** `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` (PR #183).  
 **Auditoria:** [BASELINE_AUDIT.md](BASELINE_AUDIT.md). **Fonte histórica:** Bento et al., *Combinação das Técnicas de Quadtree e Delaunay para Geração Automática de Malhas de Elementos Finitos*, SIBGRAPI 1993, Figura 7 e seção sobre contorno.
@@ -591,7 +603,7 @@ remain mandatory; see the [bridge receipt](evidence/QUAD_LEAF_BRIDGE_20261108.js
 
 O objetivo do doutorado, conforme decisão do pesquisador, é **reproduzir primeiro o método híbrido de 1993** (templates QUAD em células interiores e processamento externo Delaunay/contração de contorno) e **desenvolver depois uma extensão totalmente QUAD**, selecionável de forma explícita. Isso não altera o TRI atual como comportamento padrão; os dois modos ainda precisam ser implementados e validados na aplicação real. Não se deve tratar a etapa totalmente QUAD como se estivesse descrita integralmente no trabalho original.
 
-O M1 tem agora [uma galeria visual persistente](figures/M1_UV_6_PATTERNS_20261110.svg), um [exportador C++ reprodutível](../../tests/quad/visual_export.cpp) e um [plano de validação visual](MODE_CHOICES_AND_VISUAL_REVIEW_20261110.md). **São malhas UV de pesquisa**, não resultados físicos do pipeline completo. A entrega do modo híbrido exige, além dos templates, classificação de células do quadtree real, fronteira TRI gerada e sincronização/mapeamento físico, acompanhados de evidências visuais e científicas. A extensão totalmente QUAD só seguirá depois da validação híbrida, com interface de escolha e testes separados.
+O M1 tem agora [uma galeria visual persistente](figures/M1_UV_6_PATTERNS_20261110.svg), um [exportador C++ reprodutível](../../../tests/quad/visual_export.cpp) e um [plano de validação visual](MODE_CHOICES_AND_VISUAL_REVIEW_20261110.md). **São malhas UV de pesquisa**, não resultados físicos do pipeline completo. A entrega do modo híbrido exige, além dos templates, classificação de células do quadtree real, fronteira TRI gerada e sincronização/mapeamento físico, acompanhados de evidências visuais e científicas. A extensão totalmente QUAD só seguirá depois da validação híbrida, com interface de escolha e testes separados.
 ## 2026-11-10 — M5 interface research experiment on real C++ Quadtree
 
 [PR #200](https://github.com/tiagosombrra/apmesh-modernization/pull/200) extends real Quadtree candidate visualization (PR #199) with a separate *experimental, nonhistorical* exterior triangulation gate. The actual C++ interior has **42 QUAD** covering 0.25 UV area; the new center-fan **60 TRI** cover remaining 0.75. The combined 81-vertex graph has 20 conforming QUAD/TRI interface edges in a single closed loop and 16 outer edges; four negative geometry mutations reject. [Premerge exact-head CI #42898041678](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/42898041678) completed four successful jobs: native GCC/MSVC 11 CTests each, TRI 78 CTest, 527 Python, seven CLI denials and Eistute/Book strict reference parity.

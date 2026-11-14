@@ -1,0 +1,317 @@
+{
+  "schema": "apmesh.quad.state_plan_audit.v1",
+  "observed_at_utc": "2026-11-14T01:21:34.002081+00:00",
+  "client_date_fortaleza": "2026-11-13",
+  "canonical_base": "7486e8ee9d2064593a502a84e4c189ccba5c6dd2",
+  "feature_head": "7cd5014936a417565415d736bad40dc70deb35df",
+  "main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "scope": "Source, plan, exact remote evidence audit; no scientific approval, code repair, workflow trigger or merge.",
+  "remote": {
+    "feature_head": "7cd5014936a417565415d736bad40dc70deb35df",
+    "runs": {
+      "43532144224": {
+        "id": 43532144224,
+        "head_sha": "5ed7fdd572af195b0b2dce4c223ff6cd5f4c1183",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43532144224",
+        "jobs": [
+          {
+            "name": "TRI baseline and tooling controls (Linux)",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "QUAD native (windows-2022)",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "TRI scientific equivalence against frozen baseline",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "QUAD native (ubuntu-24.04)",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "downloaded": [
+          {
+            "id": 14088820210,
+            "name": "quad-r2c21-patch-topology-5ed7fdd572af195b0b2dce4c223ff6cd5f4c1183",
+            "files": [
+              {
+                "path": "artifact-14088820210\\r2c21_original_detached_indexed_patch_topology.json",
+                "sha256": "c11f6102259b2a5fed06e57ebac89c8b4132e7294b840fa563b51018ca9b1f93"
+              }
+            ]
+          },
+          {
+            "id": 14088067581,
+            "name": "quad-r2c10-original-detached-meshes-5ed7fdd572af195b0b2dce4c223ff6cd5f4c1183",
+            "files": [
+              {
+                "path": "artifact-14088067581\\r2c10_original_mesh_export.log",
+                "sha256": "01cd6edaa75c4f088b98ae69266bffbf053a86aab264cf90fbabfd1e35b12175"
+              },
+              {
+                "path": "artifact-14088067581\\r2c10_original_detached_meshes\\book_all_sides_detached_quad_aft.json",
+                "sha256": "9acdc7845eaa5799043737f550f6c4806b2fd607de31e8668e8ee8536b3c41c1"
+              },
+              {
+                "path": "artifact-14088067581\\r2c10_original_detached_meshes\\book_all_sides_detached_quad_aft.obj",
+                "sha256": "c690e3df31ce87beb268db912db72acaa8defd8e4746db19d7d8332df410cfe9"
+              },
+              {
+                "path": "artifact-14088067581\\r2c10_original_detached_meshes\\book_original_source_seam_atlas.csv",
+                "sha256": "755f17e50b1a7d75009ce058df4963b3dc916201adeb9b1c4247b167cd2d7778"
+              },
+              {
+                "path": "artifact-14088067581\\r2c10_original_detached_meshes\\eistute_all_sides_detached_quad_aft.json",
+                "sha256": "71efd7ce9a6070385117808a9454c3194e15acad9bcd7de05db76f74220906fb"
+              },
+              {
+                "path": "artifact-14088067581\\r2c10_original_detached_meshes\\eistute_all_sides_detached_quad_aft.obj",
+                "sha256": "bfdfbb7015d26c57b28950db63cdab40b97372ca1ddf24a1eef677f974bccbb9"
+              },
+              {
+                "path": "artifact-14088067581\\r2c10_original_detached_meshes\\eistute_original_source_seam_atlas.csv",
+                "sha256": "89fdf4a12407ccda932e6c36ed53d5ef4f8ea8a60c18a5c8531682522b4f94c2"
+              },
+              {
+                "path": "artifact-14088067581\\r2c10_original_detached_meshes\\r2c10_independent_obj_verification.json",
+                "sha256": "fa7e23b16b22cf926a53af868658d5fa9f248078b2700e0bae164c80969fbbe9"
+              },
+              {
+                "path": "artifact-14088067581\\r2c10_original_detached_meshes\\r2c11_source_seam_atlas_verification.json",
+                "sha256": "7c818474c34f6cdf7a3c54f8c1c628fe35c3a31deb09aadd044aa31134f26baa"
+              }
+            ]
+          },
+          {
+            "id": 14087618479,
+            "name": "tri-science-5ed7fdd572af195b0b2dce4c223ff6cd5f4c1183",
+            "files": [
+              {
+                "path": "artifact-14087618479\\book-comparison.json",
+                "sha256": "43b932dbdb41c0cf91e02d281c8339fca7f37edfbc1d6aa77d506e41cea22d6f"
+              },
+              {
+                "path": "artifact-14087618479\\eistute-comparison.json",
+                "sha256": "12526fe427113fc7ffb91bb7446a7ad3c925993f8d901db5fc9ed2803cf0f69b"
+              },
+              {
+                "path": "artifact-14087618479\\reference-book-process.json",
+                "sha256": "5cd2d3e73bbca0f2930668e28298c2f8bd83c7aa0c623fb28dd887e1602fe969"
+              },
+              {
+                "path": "artifact-14087618479\\reference-eistute-process.json",
+                "sha256": "1fcf12fa7825fec348f42d3efc2b2c2358fdca08b7d28e29eeee83e31ccf9e2c"
+              },
+              {
+                "path": "artifact-14087618479\\book\\process.json",
+                "sha256": "996cac3ca392cbc9c1d0109acc8be4e1489dfcbab88b7021586b17b1e5e4c15a"
+              },
+              {
+                "path": "artifact-14087618479\\book\\stderr.log",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "path": "artifact-14087618479\\eistute\\process.json",
+                "sha256": "266ac066642beb356ae0785adb1609f4a3baf3c0574a976a227fa98d3a272f8f"
+              },
+              {
+                "path": "artifact-14087618479\\eistute\\stderr.log",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ]
+          }
+        ]
+      },
+      "43539017852": {
+        "id": 43539017852,
+        "head_sha": "7cd5014936a417565415d736bad40dc70deb35df",
+        "event": "push",
+        "status": "in_progress",
+        "conclusion": null,
+        "html_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43539017852",
+        "jobs": [
+          {
+            "name": "TRI baseline and tooling controls (Linux)",
+            "status": "in_progress",
+            "conclusion": null
+          },
+          {
+            "name": "QUAD native (ubuntu-24.04)",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "QUAD native (windows-2022)",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "TRI scientific equivalence against frozen baseline",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      "43539022938": {
+        "id": 43539022938,
+        "head_sha": "7cd5014936a417565415d736bad40dc70deb35df",
+        "event": "pull_request",
+        "status": "in_progress",
+        "conclusion": null,
+        "html_url": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43539022938",
+        "jobs": [
+          {
+            "name": "TRI scientific equivalence against frozen baseline",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "QUAD native (windows-2022)",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "TRI baseline and tooling controls (Linux)",
+            "status": "in_progress",
+            "conclusion": null
+          },
+          {
+            "name": "QUAD native (ubuntu-24.04)",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    }
+  },
+  "concave_element_negative_observation": {
+    "revision": "7cd5014936a417565415d736bad40dc70deb35df",
+    "compile_command": [
+      "wsl",
+      "-d",
+      "Ubuntu-24.04",
+      "-u",
+      "apmesh",
+      "--",
+      "g++",
+      "-std=c++17",
+      "-O0",
+      "-g",
+      "-I/mnt/c/Users/tiago/Documents/dev/research/apmesh-quad-audit-20261113/include",
+      "-I/mnt/c/Users/tiago/Documents/dev/research/apmesh-quad-audit-20261113/research/quad",
+      "/mnt/c/Users/tiago/Documents/dev/research/apmesh-quad-audit-20261113/research/quad/physical_quadrilateral_adaptive.cpp",
+      "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/quad-audit/session-20261113/concave_probe.cpp",
+      "/home/apmesh/quad-m0-20261108-04/build/local-serial/libap_mesh_engine.a",
+      "-o",
+      "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/quad-audit/session-20261113/concave_probe"
+    ],
+    "compile_exit": 0,
+    "unchanged_link_dependency_files": [
+      "include/data/node_adaptive.h",
+      "include/data/element_adaptive.h",
+      "include/data/point_adaptive.h",
+      "include/data/vector_adaptive.h",
+      "src/data/node_adaptive.cpp",
+      "src/data/element_adaptive.cpp",
+      "src/data/point_adaptive.cpp",
+      "src/data/vector_adaptive.cpp"
+    ],
+    "scope": "Single physical element source compiled with unchanged previously qualified engine archive. Not whole-current-application qualification.",
+    "native_exit": 1,
+    "stdout": "CONCAVE_QUAD_ADMITTED area=0.25 angle_at_reflex_corner=2.2143\n",
+    "expected_rejection_exit": 0,
+    "defect_reproduced": true,
+    "source_sha256": {
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-quad-audit-20261113\\research\\quad\\physical_quadrilateral_adaptive.cpp": "e3fcacc114cd33a0f91de164a867836bfc444634c1695503d770b6c599d897e4",
+      "C:\\Users\\tiago\\Documents\\dev\\research\\apmesh-modernization\\build\\quad-audit\\session-20261113\\concave_probe.cpp": "ed4681326ed019f268a7dc6930fd39617e7eebfe25a6e1994056e104c5b67871"
+    }
+  },
+  "topology_replay": {
+    "exit": 0,
+    "models": {
+      "eistute": 4,
+      "book": 28
+    },
+    "negative_controls": 7,
+    "semantic_equality_with_downloaded_report": true,
+    "report_sha256": "7df15d7b999804799899959672e8879f008c9bd126568a0807ca2da6bed4759c"
+  },
+  "known_local_setup_limits": [
+    "Windows validation environment lacks required tools; initial iteration/delivery plans had no configured baseline. Native WSL environment and configure succeeded in a separate clone. These Windows failures are not passes."
+  ],
+  "qualification_limits": [
+    "Native concavity probe links the unchanged previously qualified Node/Element/Point/Vector engine archive; it is not a whole-current-application qualification.",
+    "Initial R2c22 snapshot was pending; exact push run43539017852 subsequently completed all four jobs successfully. This does not include the newly exposed concavity input or qualify full application QUAD.",
+    "No sanitizer campaign, new model experiment, application QUAD run or mixed-element repeated adaptation was performed.",
+    "Documentation checkpoint regression has its own exact-revision local report; this audit does not close a scientific stage."
+  ],
+  "disposition": "Research direction technically credible; integration blocked by physical convexity contract, live R2 application delivery and mixed-history R3, with independent scientific gates retained.",
+  "final_remote_readback": {
+    "observed_at_utc": "2026-11-14T01:22:49.137265+00:00",
+    "run_id": 43539017852,
+    "head_sha": "7cd5014936a417565415d736bad40dc70deb35df",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "QUAD native (windows-2022)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "local_document_review_failure": "Initial document review exposed unintended LF-to-CRLF conversion by the Windows writer. Original Git documents were LF; explicitly restored LF for these edited documents before renewed checks. No content or diagnostic was suppressed.",
+  "document_gate_repairs": [
+    {
+      "document": "STATE.md",
+      "target": "R2C22_ORIGINAL_UV_BEZIER_FACET_ORIENTATION_20261114.md",
+      "disposition": "Exact pinned feature URL; file is not integrated into canonical base."
+    },
+    {
+      "document": "STATE.md",
+      "target": "R2B2_BERNSTEIN_INTERVAL_ORIENTATION_20261112.md",
+      "disposition": "Exact pinned feature URL; file is not integrated into canonical base."
+    },
+    {
+      "document": "STATE.md",
+      "target": "tests/quad/test_m4_sheet_incidence_graph.py",
+      "disposition": "Corrected relative root depth."
+    },
+    {
+      "document": "SESSION_LOG.md",
+      "target": "R2C0_NONMANIFOLD_RADIAL_OWNERSHIP_DESIGN_20261112.md",
+      "disposition": "Historical missing design target now points to the existing pinned R2c0 source radial scope note; old filename retained in audit evidence."
+    },
+    {
+      "document": "IMPLEMENTATION_ROADMAP.md",
+      "target": "tests/quad/visual_export.cpp",
+      "disposition": "Corrected relative root depth."
+    }
+  ],
+  "document_gate_repairs_note": "First renewed whitespace check failed on two inherited whitespace-only journal lines; local links failed on inherited wrong depth/missing feature notes. Explicit bounded corrections; neither gate was waived."
+}
