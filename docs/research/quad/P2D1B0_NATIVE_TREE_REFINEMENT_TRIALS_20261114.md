@@ -47,6 +47,37 @@ residual. Consequently, a passing *interior-only* real tree refinement
 does not demonstrate reduction of global geometric error or QUAD UV
 area coverage.
 
+## Verified real native trial outcome (fixed model, before full CI admission)
+
+The first successfully compiled and exercised feature head
+`e3318ac932da40771cd5f2fd4c9189d052b506c9` produced
+**byte-for-byte identical** Linux and Windows native trial reports,
+including the Linux ASan/UBSan/leak-instrumented application:
+
+| Actual native quantity | Error-selected interior QUAD | Error-selected AFT outer region |
+| --- | ---: | ---: |
+| Existing source cell | 13 | 6 |
+| Native leaves before edit | 19 | 19 |
+| Native leaves after one real subdivision | 22 | 22 |
+| Potential interior QUAD UV area | 0.25 | 0.265625 |
+| Actual emitted QUAD count | 54 | 0 (rejected) |
+| Connected manifold QUAD disk | PASS | **REJECTED** |
+
+For the AFT-driven case the actual `EmitLeafQuads` negative control
+reported `Boundary vertex is not manifold`. The apparently enlarged
+UV region is **not a publishable manifold QUAD region**: the new
+boundary-source subcell becomes a disconnected / vertex-touching
+QUAD island. No physical mesh/AFT from this proposal is committed.
+The original, prior physical OBJ remains SHA-256
+`cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0`
+in both systems.
+
+The negative behavior is now a fixed-model regression witness rather
+than a reason to weaken `Validate`. Next explore a **connected
+source refinement band** and verify its native 2:1 balance, exact
+QUAD/AFT seam and typed physical reconstruction. A single isolated
+boundary leaf edit is not an acceptable scientific repair.
+
 ## Strict scientific nonclaims
 
 **No AFT exterior re-triangulation is performed for these new trees**,
