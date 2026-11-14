@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import uuid
 from test_m4_real_model_hybrid import golden, approximately, cross, vector, dot
+from independent_common_grid import common_grid_source_error
 
 
 def require(value, message):
@@ -507,6 +508,27 @@ def verify_physical_band_candidate(stdout, prefix):
             "candidate_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest()}
 
 
+def verify_same_site_fixed_grid_error(original_path, candidate_path):
+    # The previous per-element metric uses different numbers of samples as
+    # topology changes. Only a fixed independent grid can compare both meshes.
+    prior = common_grid_source_error(original_path, grid=64)
+    revised = common_grid_source_error(candidate_path, grid=64)
+    require(prior["sample_count"] == revised["sample_count"] == 4096 and
+            prior["quad_sites"] == 1024 and prior["tri_sites"] == 3072 and
+            revised["quad_sites"] == 1344 and revised["tri_sites"] == 2752,
+            "Real native QUAD band changed fixed-grid coverage")
+    for name, prev, curr in (
+            ("max_xyz", .06564122093160714, .05160741345747398),
+            ("rms_uv", .017295203854736017, .012518000838243337),
+            ("rms_source_area", .015981265663966727, .011810324643012932)):
+        require(math.isclose(prior[name], prev, rel_tol=1e-8, abs_tol=1e-9) and
+                math.isclose(revised[name], curr, rel_tol=1e-8, abs_tol=1e-9) and
+                revised[name] < prior[name],
+                "Same-site source-error reduction witness changed: " + name)
+    return {"fixed_64x64_original": prior, "fixed_64x64_band": revised,
+            "adaptive_epochs": 0, "continuous_error_bound": False}
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -538,6 +560,10 @@ def main():
     trials = verify_native_tree_trials(r.stdout, residual)
     band = verify_connected_aft_band(r.stdout, residual)
     physical_band = verify_physical_band_candidate(r.stdout, root/"accepted")
+    require(physical_band["status"] == "staged_unaccepted",
+            "Pinned native connected-band physical candidate is no longer valid")
+    grid_audit = verify_same_site_fixed_grid_error(root/"accepted.obj",
+                                                   root/"accepted.band-candidate.obj")
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -587,6 +613,7 @@ def main():
               "real_native_tree_trials": trials,
               "connected_native_refinement_band": band,
               "physical_native_band_candidate": physical_band,
+              "same_site_source_error": grid_audit,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
