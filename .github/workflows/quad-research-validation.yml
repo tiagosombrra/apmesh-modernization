@@ -98,6 +98,17 @@ jobs:
           cmake -S . -B build/quad-app-linux -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON -DBUILD_TESTING=OFF
           cmake --build build/quad-app-linux --target ap_mesh --parallel 2
           python3 tests/quad/test_controlled_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results
+      - name: AddressSanitizer and UBSan controlled typed history (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        env:
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1:abort_on_error=1
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+        run: |
+          clang++ --version
+          cmake -S . -B build/quad-app-asan -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-omit-frame-pointer" -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined" -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON -DBUILD_TESTING=OFF
+          cmake --build build/quad-app-asan --target ap_mesh --parallel 2
+          python3 tests/quad/test_controlled_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results
       - name: Build controlled application QUAD entry (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -114,6 +125,7 @@ jobs:
           name: controlled-quad-${{ matrix.os }}-${{ github.sha }}
           path: |
             build/quad-app-linux/results/
+            build/quad-app-asan/results/
             build/quad-app-msvc/results/
           retention-days: 14
           if-no-files-found: error
