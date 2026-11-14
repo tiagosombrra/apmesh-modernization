@@ -49,6 +49,34 @@ reference or scientific checks. Main and the unmerged larger PR214 are preserved
 accepted adaptive epochs, including typed curvature/quality/reconstruction,
 retry/rollback and export. No P2 implementation or mixed epoch claim yet.
 
+## Mixed history infrastructure — P2a and P2b integrated, P2c under review
+
+[P2a PR218](https://github.com/tiagosombrra/apmesh-modernization/pull/218)
+merged as \`d40114ed2dc9def294b382557a571e5b62285b83\`.
+It qualifies a bounded typed physical SubMesh clone, partial-construction
+fault rollback, Patch observer restoration and independent element/node
+identities. Exact feature CI: 4/4 success, Linux ASan/UBSan/leak success,
+85 baseline CTests and 527 tooling Python.
+
+[P2b PR219](https://github.com/tiagosombrra/apmesh-modernization/pull/219)
+merged as \`21ba08e55e014d5c9fa7533c9f7361ad4c98c7dc\`.
+It qualifies a research-only polygon-aware 3/4-node vertex-link/topology
+auditor and a *triangulated metric diagnostic*, cross-checked from original
+OBJ via independent Python cosine-law/Heron calculations. Five malformed
+cases are refused. The real 69-node controlled patch has 16 boundary and
+53 interior vertices; its barycentric angle-defect witness sums to 2*pi.
+Exact PR CI: four successful jobs including Linux sanitizers and unchanged
+frozen TRI scientific parity. Neither contribution changes the original
+triangle-specific \`Adjacent\`/\`CurvatureDiscrete\` path.
+
+**P2c active research candidate** adds positive physical four-corner
+source-normal quality/warpage/edge-ratio diagnostics in the controlled case,
+not a production curvature/quality policy. See
+[P2c scope](P2C_TYPED_PHYSICAL_QUAD_QUALITY_20261114.md).
+**P2/R3 and M7 remain OPEN:** no two distinct adapted and accepted
+QUAD/TRI mesh epochs, no production mixed curvature or rejection policy.
+Do not confuse P2a/P2b test passes with completed adaptive history.
+
 ## Explicit remaining limits and history
 
 P0 closes one UV admission defect, not whole M4 or continuous physical Jacobian,
