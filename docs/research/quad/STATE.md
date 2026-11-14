@@ -2,6 +2,15 @@
 
 **Branch:** `quad-templates`
 
+**Status recheck — 2026-11-14 Fortaleza:** local and remote matched `49dd050`
+before this documentation update; main remains `f6050ec1`, draft PR #214 remains
+`7cd5014`. Reconfirmed the open physical convexity defect and explicit CLI
+`quad_uv` refusal in both snapshots. Exact feature run43539017852 is completed
+success. No new native test or algorithm change was performed. Next action stays
+the bounded convexity repair, followed by live curved-patch R2 and mixed-history
+R3. Status/evidence consolidation and smaller review packages remain engineering
+improvements; scientific gates and interrupted local regression remain open.
+
 
 ## Current audit disposition — 2026-11-13 Fortaleza
 
