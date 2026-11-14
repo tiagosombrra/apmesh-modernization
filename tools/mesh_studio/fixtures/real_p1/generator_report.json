@@ -1,0 +1,15 @@
+{
+  "actual_ap_mesh_entry": true,
+  "model": "Models3d::ModelCurvaBezier",
+  "result": {
+    "nodes": 69,
+    "quads": 42,
+    "triangles": 36,
+    "boundary": 16
+  },
+  "rollback_nonempty": true,
+  "native_AFT": true,
+  "independent_Bezier_oracle": true,
+  "OBJ_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "adaptive_epochs": 0
+}

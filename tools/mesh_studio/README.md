@@ -97,3 +97,26 @@ The report is suitable for measurement and diagnostic presentation, not yet
 scientific certification. Vector figure generation remains S1/S1b. Source
 P1 integration, actual recorded adaptive epochs, all-quad execution,
 tensor-driven generation, PDF/PGF publishing and desktop GUI remain open.
+
+
+## S3: controlled real P1 source integration (not a synthetic fixture)
+
+The exact PR #217 `accepted.obj` from the successful Linux/Windows source CI is
+checked into `fixtures/real_p1/`. The original OBJ has 69 physical nodes, 42
+interior QUAD and 36 native original AFT TRI; the 16-edge outer boundary and
+20-edge QUAD/TRI interface are independently audited. Its original SHA-256 is
+`cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0`.
+
+Run the source control-net oracle, geometry, connectivity, quality and **real**
+UV publication figure from the repository root:
+
+```bash
+python -m tools.mesh_studio.real_p1_cli --output-dir /tmp/apmesh-real-p1-figure
+python -m unittest tools.mesh_studio.test_studio tools.mesh_studio.test_storyboards tools.mesh_studio.test_quality_analysis tools.mesh_studio.test_real_p1 -v
+```
+
+The output is a true-vector UV SVG, a repeatable JSON scientific audit and a
+SHA-256 manifest. It is **not** a 3D shaded vector export, continuous Jacobian
+certificate, accepted hybrid adaptive history, global non-manifold welded mesh,
+all-quad result or anisotropic method output. The TRI and QUAD groups classify
+**element types**, not two different physical source patches.

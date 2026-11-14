@@ -1,0 +1,92 @@
+{
+  "evidence_kind": "REAL_SOURCE_CI_ARTIFACT_NOT_SYNTHETIC",
+  "figure": {
+    "format": "svg",
+    "height_mm": 120,
+    "quad_count": 42,
+    "render_class": "source_uv_vector_2d",
+    "schema": "apmesh.meshstudio.vector_figure.v1",
+    "scientific_limit": "Single fixed-sampling curved source patch; no adaptive epochs",
+    "semantic_sidecar_sha256": null,
+    "source_evidence_kind": "REAL_SOURCE_CI_ARTIFACT_NOT_SYNTHETIC",
+    "source_kind": "wavefront_obj",
+    "source_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+    "svg_sha256": "460bb00dad08fe30d329319e848182a8e6bd7dd1eeb37f4436148be6a7ab0bf8",
+    "synthetic": false,
+    "triangle_count": 36,
+    "vector_audit": {
+      "polygon_count": 78,
+      "raster_image_count": 0,
+      "vector_only": true
+    },
+    "vertex_count": 69,
+    "width_mm": 155
+  },
+  "generator_report_sha256": "1ec6d5e698b6502f117b01d9fce9f2ce9e26048b82b97484da219b747ad908d2",
+  "real_mesh_quality": {
+    "original_nonplanar_quads": 42,
+    "physical_orientation": "POSITIVE_AT_SAMPLED_FACETS_ONLY",
+    "planar_quad_count_evaluated": 0,
+    "planar_quad_min_scaled_jacobian_3d_v1": null,
+    "source_global_jacobian_certified": false,
+    "triangle_mean_ratio_3d_v1": {
+      "count": 36,
+      "max": 0.9984615420321392,
+      "mean": 0.7681840384225347,
+      "median": 0.7936068989164642,
+      "min": 0.30094745599415346,
+      "p05": 0.37487217378775833,
+      "p95": 0.9983480625203305
+    }
+  },
+  "schema": "apmesh.meshstudio.p1_real_integration.v1",
+  "source_provenance": {
+    "evidence_kind": "REAL_SOURCE_CI_ARTIFACT_NOT_SYNTHETIC",
+    "generator_candidate_revision": "0999769722f128d887e1143c8ec1da67da627850",
+    "generator_execution_is_not_adaptation": true,
+    "generator_revision": "d39bbc447f88e179c3c4ee674bd9309f59c18eed",
+    "original_actions_run": 43588588497,
+    "original_linux_artifact": 14111372234,
+    "original_windows_artifact": 14111247733,
+    "schema": "apmesh.meshstudio.p1_qualification.v1",
+    "source": {
+      "assertions": {
+        "anisotropic_adaptation_qualified": false,
+        "continuous_source_jacobian_certified": false,
+        "global_source_welding_certified": false,
+        "indexed_uv_and_xyz_correspondence": true,
+        "mixed_adaptive_epoch_qualified": false,
+        "original_outer_curve_location": true,
+        "original_quad_tri_seam_orientation": true,
+        "source_bezier_control_net_match": true
+      },
+      "max_source_xyz_component_error": 1.0408340855860843e-16,
+      "minimum_facet_normal_alignment": 0.9859299598139977,
+      "minimum_sampled_source_jacobian": 1.9513428350741675,
+      "native_aft_triangles": 36,
+      "oriented_physical_facets": 120,
+      "outer_boundary_edges": 16,
+      "quad_tri_seam_edges": 20,
+      "quads": 42,
+      "region_topology": {
+        "mixed": "indexed_disk",
+        "quad": "indexed_disk",
+        "tri_aft": "indexed_annulus"
+      },
+      "schema": "apmesh.meshstudio.p1_real_surface_oracle.v1",
+      "source_geometry": "Models3d::ModelCurvaBezier pinned source 4x4 control net",
+      "source_topology_scope": "single_connected_controlled_patch_only",
+      "total_faces": 78,
+      "total_vertices": 69
+    },
+    "source_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+    "verified_linux_windows_obj_sha256_equal": true
+  },
+  "warnings": [
+    "OBJ groups QUAD/TRI_AFT classify cells, not distinct source patches",
+    "Original all-quad and anisotropic generator output not present",
+    "No accepted mixed adaptation epochs; single bounded source P1 run",
+    "Metric scores from Studio are not source-emitted measured values",
+    "True-vector UV figure does not prove 3D mesh continuous validity"
+  ]
+}

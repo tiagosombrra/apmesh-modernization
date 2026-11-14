@@ -1,0 +1,48 @@
+{
+  "adaptive_epochs": 0,
+  "all_quad_qualified": false,
+  "anisotropic_qualified": false,
+  "figure": {
+    "faces": 78,
+    "format": "SVG",
+    "sha256": "460bb00dad08fe30d329319e848182a8e6bd7dd1eeb37f4436148be6a7ab0bf8",
+    "uv_only": true,
+    "vector_only": true
+  },
+  "local_python_tests": {
+    "failed": 0,
+    "s3_new": 12,
+    "total": 53
+  },
+  "mesh_counts": {
+    "boundary_edges": 16,
+    "oriented_facets": 120,
+    "quads": 42,
+    "seam_edges": 20,
+    "triangles": 36,
+    "vertices": 69
+  },
+  "real_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "schema": "apmesh.meshstudio.s3_delivery.v1",
+  "source_input": "Models3d::ModelCurvaBezier",
+  "source_linux_artifact": 14111372234,
+  "source_merge": "d39bbc447f88e179c3c4ee674bd9309f59c18eed",
+  "source_pr": 217,
+  "source_run": 43588588497,
+  "source_welding_certified": false,
+  "source_windows_artifact": 14111247733,
+  "source_windows_linux_equal": true,
+  "synthetic_fixture_tests": {
+    "changed": false,
+    "expected_invalid": 6,
+    "fake_epoch_rows": 8,
+    "valid": 10
+  },
+  "unexecuted": [
+    "new S3 GitHub Actions checks",
+    "new full original C++ generator CTest",
+    "Windows viewer GUI",
+    "LaTeX paper acceptance",
+    "continuous surface Jacobian certificate"
+  ]
+}

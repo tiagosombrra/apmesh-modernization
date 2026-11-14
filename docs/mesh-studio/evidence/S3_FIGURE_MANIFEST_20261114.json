@@ -1,0 +1,8 @@
+{
+  "audit_json_sha256": "b5e292227ecc544324c85ce0b0228be14c516e2814f2b1d885d6167ea962779e",
+  "published_as_adaptive_epoch": false,
+  "schema": "apmesh.meshstudio.p1_figure_manifest.v1",
+  "source_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "svg_sha256": "460bb00dad08fe30d329319e848182a8e6bd7dd1eeb37f4436148be6a7ab0bf8",
+  "synthetic": false
+}
