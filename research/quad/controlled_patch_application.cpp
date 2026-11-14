@@ -683,7 +683,7 @@ research::MixedSurfaceResidual ProbeMixedSurfaceResidual(const Candidate& candid
   return metrics;
 }
 
-// Mutate only fresh native Quadtree candidates; never modify the accepted mesh.
+// Mutate only fresh native Quadtree proposals; preserve the first physical candidate.
 struct NativeRefinementTrial {
   long chosen_cell_id = -1;
   unsigned initial_leaf_depth = 0;
@@ -740,7 +740,7 @@ void ProbeNativeTreeAlternatives(const Candidate& unchanged,
               residual.worst_quad_face < unchanged.quads &&
               residual.worst_triangle_face >= unchanged.quads &&
               residual.worst_triangle_face < unchanged.faces.size(),
-          "Native tree trials lack a real previous physical error/face owner");
+          "Native tree trials lack a real physical candidate/error-face identity");
   const auto previous_observers = CaptureNodeObservers(*unchanged.mesh);
   const auto* node = unchanged.mesh->GetNoh(0);
   const auto* element = unchanged.mesh->GetElement(0);
@@ -768,7 +768,7 @@ void ProbeNativeTreeAlternatives(const Candidate& unchanged,
   output.imbue(std::locale::classic());
   output << std::setprecision(17)
          << "QUAD_NATIVE_TREE_TRIALS"
-         << " source=previous_real_mixed_physical_residual"
+         << " source=generated_real_mixed_physical_candidate"
          << " baseline_leaves=" << baseline.source_leaves
          << " baseline_quad_uv_area=" << baseline.interior_area
          << " quad_cell_id=" << quad_trial.chosen_cell_id
