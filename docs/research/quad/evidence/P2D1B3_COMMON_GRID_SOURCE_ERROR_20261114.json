@@ -1,0 +1,61 @@
+{
+  "schema": "apmesh.quad.p2d1b3.common_grid.v1",
+  "date": "2026-11-14",
+  "status": "integrated feature CI qualified; bounded finite-grid diagnostic, no accepted epochs",
+  "research_branch": "quad-templates",
+  "feature_sha": "1efb13b6a6fb46fca77deba81aa405db5bff90d5",
+  "merge_sha": "4b7f485a0df2c5108dbd822f337d2e38bba2947a",
+  "pull_request": "https://github.com/tiagosombrra/apmesh-modernization/pull/231",
+  "exact_feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43620929978",
+  "ci": {
+    "jobs": "4/4 success",
+    "Linux_native_18": "passed",
+    "Windows_native_18": "passed",
+    "root_ctest": "85/85 passed",
+    "python_tooling": "527/527 passed",
+    "asan_ubsan_leak": "passed",
+    "frozen_eistute_book_tri": "passed"
+  },
+  "source": "Models3d::ModelCurvaBezier",
+  "geometry_policy": "fixed16_vertex_mean_v1, opt-in serial research mode only",
+  "same_uv_sites": 4096,
+  "grid": "64x64 (midpoint interior cells)",
+  "original": {
+    "nodes": 69,
+    "quads": 42,
+    "triangles": 36,
+    "quad_sample_sites": 1024,
+    "tri_sample_sites": 3072,
+    "max_xyz": 0.06564122093160714,
+    "rms_uv": 0.017295203854736017,
+    "rms_source_area": 0.015981265663966727,
+    "obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0"
+  },
+  "staged_unaccepted": {
+    "nodes": 93,
+    "quads": 62,
+    "triangles": 44,
+    "quad_sample_sites": 1344,
+    "tri_sample_sites": 2752,
+    "max_xyz": 0.05160741345747398,
+    "rms_uv": 0.012518000838243337,
+    "rms_source_area": 0.011810324643012932,
+    "obj_sha256": "76b0b4defecc5d534815fb9f41e1405653597a4a0bee6cc7b722ec2460d7afd6"
+  },
+  "numerical_caveats": [
+    "Identical 4096 UV sites; physical Jacobian-weighted RMS is discrete quadrature, not analytical surface integral.",
+    "Metrics quantify source-surface geometric interpolation error, not FEM solution error.",
+    "No continuous L-infinity certification, scientific acceptance threshold, or complexity policy.",
+    "Physical staged candidate does not count as an accepted mixed adaptive epoch."
+  ],
+  "adaptive_epochs": 0,
+  "next_source_residual": {
+    "face_id": 103,
+    "source_uv": [
+      0.8,
+      0.1
+    ],
+    "region": "tri_aft"
+  },
+  "main_production_tri_unchanged": true
+}
