@@ -26,7 +26,7 @@ metrics, production TRI, input and boundary policies remain unchanged.
 [Roadmap](IMPLEMENTATION_ROADMAP.md) · [Milestones](MILESTONE_STATUS.md) ·
 [Protocol](CONTINUATION_PROTOCOL.md) · [Journal](SESSION_LOG.md).
 
-## Controlled P1 integrated — next delivery P2 / R3
+## Controlled P1 integrated — mixed P2 prerequisites delivered, R3 still open
 
 [PR217](https://github.com/tiagosombrra/apmesh-modernization/pull/217) is merged at `d39bbc447f88e179c3c4ee674bd9309f59c18eed`.
 The real `ap_mesh --config` controlled case produces 42 physical QUADs,
@@ -45,11 +45,13 @@ it does not run AdaptCurve or adaptive history. First failed CI admission for
 two new config assets was preserved and corrected explicitly, without weakening
 reference or scientific checks. Main and the unmerged larger PR214 are preserved.
 
-**Next:** P2 must retain this typed hybrid SubMesh as actual history for two
-accepted adaptive epochs, including typed curvature/quality/reconstruction,
-retry/rollback and export. No P2 implementation or mixed epoch claim yet.
+**P2 functional target:** retain this typed hybrid SubMesh as actual history
+for two different accepted adaptive epochs, including typed curvature,
+quality, reconstruction, retry/rollback and export. P2a/P2b/P2c and
+P2d-0/P2d-1a engineering prerequisites are now integrated; no actual
+mixed adaptive epoch has yet been accepted.
 
-## Mixed history infrastructure — P2a and P2b integrated, P2c under review
+## Mixed-history infrastructure — P2a/P2b/P2c integrated
 
 [P2a PR218](https://github.com/tiagosombrra/apmesh-modernization/pull/218)
 merged as \`d40114ed2dc9def294b382557a571e5b62285b83\`.
@@ -99,6 +101,60 @@ QUAD/TRI mesh epochs, no production mixed curvature or rejection policy. The
 requires two real previous-state-driven accepted mixed epochs with independent
 provenance, quality, rollback and default TRI equivalence.
 Do not confuse P2a/P2b test passes with completed adaptive history.
+
+## P2d-0 and P2d-1a integrated — no accepted adaptation epochs
+
+[P2d-0 PR223](https://github.com/tiagosombrra/apmesh-modernization/pull/223)
+merged at \`82522e0588a650b3c6421565883506a0f0cde831\`;
+its exact feature source \`f1ea9332fa4d322f4578d3b6c46475776efa424f\`
+passed [CI #43605731184](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43605731184):
+4/4 jobs, Linux/Windows native, original frozen TRI, 85 root CTests
+and 527 Python controls. The first run failed strict architecture
+inventory after adding the native test; the retained CMake SHA-256 was
+**corrected without relaxing the inventory test**, then all gates passed.
+P2d-0 is a synthetic-only lineage metadata gate with fourteen negatives;
+its fabricated three receipts must never count as adaptive epochs.
+
+[P2d-1a PR226](https://github.com/tiagosombrra/apmesh-modernization/pull/226)
+merged at \`c78a4445424d027d7a32a54e419fb129e3ef6622\`.
+Exact feature \`530914390c44916067f258f18e2cba1cae61959f\`
+passed [CI #43606747684](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43606747684):
+4/4 jobs, 18 native QUAD CTests each Linux/Windows, genuine
+\`ap_mesh\` application, Linux ASan/UBSan/leak, 85 root CTests,
+527 tooling Python and frozen original TRI Eistute/Book parity.
+The original physical OBJ remains byte-identical across both systems
+(SHA-256 \`cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0\`).
+
+This **read-only source error indicator**, evaluated on real physical
+nodes, QUAD bilinear sampling and AFT TRI barycentric sampling, reports
+\`354\` samples: \`0.0026204483\` maximum interior QUAD error,
+\`0.0463899583\` maximum exterior AFT TRI error and
+\`0.0130653586\` global sampled RMS. The maximal QUAD is face4,
+native source cell13 / leaf ordinal6 / depth2; the worst TRI/AFT
+is face74 near UV (0.2,0.1). An independently computed
+**UV-area** audit finds only \`25%\` QUAD coverage versus \`75%\`
+TRI/AFT; approximately \`29.6%\` versus \`70.4%\` of the faceted
+physical area. TRI/AFT contributes \`~99.53%\` of the *unweighted
+sampled squared* residual and \`~99.84%\` of a supplementary
+coarse physical-face-area-weighted sampled estimate. Neither
+value is a certified surface error integral or general policy.
+
+This imbalance is structural: \`CaptureLeafPolygons\` excludes all
+quadtree leaves touching the source boundary. Refining only an
+existing interior QUAD leaf cannot by itself enlarge the current
+25% UV footprint. P2d-1b must compare **actual native tree/AFT
+refinement** of (a) the maximal-error QUAD interior and (b) the source
+leaf containing the maximal-error AFT triangle; evaluate both
+source-surface error and QUAD area coverage without pretending that
+more QUAD faces imply QUAD dominance. The initial fixed16 source
+boundary still does **not** run \`Adapter::AdaptCurve\`.
+
+**R3/M7 remains OPEN:** no second candidate tree has been changed
+or accepted here (\`real_tree_edits=0 adaptive_epochs=0\`). No
+general nonmanifold sheet welding, literal 1993 method, all-QUAD
+or anisotropic acceptance is claimed. See [bounded evidence and
+independent numerical caveats](evidence/P2D0_P2D1A_QUALIFICATION_20261114.json)
+and the [canonical issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221).
 
 ## Explicit remaining limits and history
 
