@@ -458,6 +458,55 @@ def verify_connected_aft_band(stdout, source_residual):
     return record
 
 
+def verify_physical_band_candidate(stdout, prefix):
+    # A separate file is only an experimental *candidate*, never an adopted epoch.
+    lines = stdout.decode().splitlines()
+    records = [line for line in lines if line.startswith("QUAD_BAND_PHYSICAL_CANDIDATE ")]
+    require(len(records) == 1, "Missing or duplicate physical native-AFT band attempt")
+    values = dict(token.split("=", 1) for token in records[0].split()[1:])
+    require(values["source"] == "original_native_connected_band" and
+            values["previous_physical_owner_preserved"] == "1" and
+            values["original_aft_attempted"] == "1" and
+            values["adaptive_epochs"] == "0",
+            "Physical band incorrectly claimed ownership/adaptation admission")
+    candidate_path = Path(str(prefix) + ".band-candidate.obj")
+    status = values["status"]
+    require(status in ("staged_unaccepted", "rejected"), "Unknown physical band status")
+    if status == "rejected":
+        require(values["exported_candidate"] == "0" and
+                not candidate_path.exists() and
+                any(s.startswith("QUAD_BAND_PHYSICAL_REJECTION reason=") for s in lines),
+                "Rejected physical AFT band published an unverified candidate")
+        return {"status": "rejected"}
+    require(values["exported_candidate"] == "1" and candidate_path.is_file(),
+            "Full original native AFT candidate was not exported for independent audit")
+    topology = audit(candidate_path)
+    quality = independent_quad_physical_quality(candidate_path)
+    errors = independent_mixed_surface_residual(candidate_path)
+    require(topology["quads"] == quality["quads"] == 62 and
+            topology["triangles"] > 0 and topology["boundary"] == 16 and
+            topology["nodes"] == int(values["physical_nodes"]) and
+            topology["triangles"] == int(values["physical_triangles"]) and
+            topology["quads"] == int(values["physical_quads"]),
+            "Physical connected source band has wrong typed topology")
+    require(quality["min_scaled_jacobian"] > 0.0 and
+            quality["min_warpage_cosine"] > 0.0 and
+            errors["maximum"] > 0.0 and
+            errors["samples"] == 5 * topology["quads"] + 4 * topology["triangles"],
+            "Physical native band source/quality is not independently admissible")
+    for actual, field in (("maximum", "max_source_error"),
+                          ("quad_maximum", "max_quad_error"),
+                          ("triangle_maximum", "max_aft_error")):
+        require(math.isclose(errors[actual], float(values[field]), rel_tol=1e-8,
+                             abs_tol=1e-9),
+                "Reported native AFT source residual differs from Bernstein OBJ oracle")
+    require(float(values["min_facet_quality"]) > 0.0,
+            "Candidate physical facet quality was not positive")
+    return {"status": status, "topology": topology,
+            "errors": errors, "physical_quality": quality,
+            "candidate_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest()}
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -488,6 +537,7 @@ def main():
     residual = verify_mixed_surface_residual(r.stdout, root/"accepted.obj")
     trials = verify_native_tree_trials(r.stdout, residual)
     band = verify_connected_aft_band(r.stdout, residual)
+    physical_band = verify_physical_band_candidate(r.stdout, root/"accepted")
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -509,7 +559,11 @@ def main():
             "Rollback native tree trial provenance differs from accepted control")
     require(verify_connected_aft_band(r.stdout, residual) == band,
             "Rollback native connected band provenance differs")
+    require(verify_physical_band_candidate(r.stdout, root/"rollback") == physical_band,
+            "Rollback changed actual physical native-AFT band candidate result")
     r = execute("unsupported", model="missing.bp")
+    require(not (root/"unsupported.band-candidate.obj").exists(),
+            "Unsupported source staged an illegal physical band candidate")
     require(r.returncode != 0 and not (root/"unsupported.obj").exists(),
             "Invalid source was published")
     # Independently reject a physical corruption and reversed topology.
@@ -532,6 +586,7 @@ def main():
               "mixed_surface_residual": residual,
               "real_native_tree_trials": trials,
               "connected_native_refinement_band": band,
+              "physical_native_band_candidate": physical_band,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
