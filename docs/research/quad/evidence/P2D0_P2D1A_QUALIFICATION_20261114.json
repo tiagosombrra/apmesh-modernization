@@ -1,0 +1,82 @@
+{
+  "schema": "apmesh-quad-p2d0-p2d1a-qualification-v1",
+  "date": "2026-11-14",
+  "research_branch": "quad-templates",
+  "default_tri_changed": false,
+  "production_main_modified_by_this_delivery": false,
+  "p2d0": {
+    "pr": 223,
+    "feature_sha": "f1ea9332fa4d322f4578d3b6c46475776efa424f",
+    "merge_sha": "82522e0588a650b3c6421565883506a0f0cde831",
+    "ci_run": 43605731184,
+    "ci_jobs_passed": 4,
+    "ci_jobs_total": 4,
+    "baseline_ctests_passed": 85,
+    "tooling_python_passed": 527,
+    "metric_scope": "synthetic_hash_and_provenance_preflight_only",
+    "negative_cases": 14,
+    "actual_adaptive_epochs": 0
+  },
+  "p2d1a": {
+    "pr": 226,
+    "feature_sha": "530914390c44916067f258f18e2cba1cae61959f",
+    "merge_sha": "c78a4445424d027d7a32a54e419fb129e3ef6622",
+    "ci_run": 43606747684,
+    "ci_jobs_passed": 4,
+    "ci_jobs_total": 4,
+    "native_quad_ctests_linux": 18,
+    "native_quad_ctests_windows": 18,
+    "baseline_ctests_passed": 85,
+    "tooling_python_passed": 527,
+    "asan_ubsan_leak_linux": "success",
+    "frozen_tri_eistute_book": "preserved",
+    "retained_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+    "nodes": 69,
+    "quads": 42,
+    "original_aft_triangles": 36,
+    "sampled_points": 354,
+    "source_error_policy": "physical_bilinear_quad_tri_barycentric_v1",
+    "sampled_max_xyz": 0.04638995827046562,
+    "sampled_rms_xyz": 0.013065358552865405,
+    "quad_sampled_max_xyz": 0.002620448273121916,
+    "aft_tri_sampled_max_xyz": 0.04638995827046562,
+    "max_quad_face_zero_based": 4,
+    "native_quad_cell_id": 13,
+    "native_quad_leaf_ordinal": 6,
+    "native_quad_leaf_depth": 2,
+    "max_quad_sample_uv": [
+      0.7356770833333334,
+      0.29296875
+    ],
+    "max_aft_triangle_face_zero_based": 74,
+    "max_aft_sample_uv": [
+      0.2,
+      0.1
+    ],
+    "real_tree_edits": 0,
+    "actual_adaptive_epochs": 0
+  },
+  "independent_additional_audit_not_a_CI_gate": {
+    "source": "original immutable physical OBJ plus independent Bernstein/source-sampling calculation",
+    "quad_uv_area": 0.25,
+    "aft_tri_uv_area": 0.75,
+    "quad_faceted_xyz_area": 1.0484760946379132,
+    "aft_tri_faceted_xyz_area": 2.4942386195742756,
+    "quad_faceted_area_fraction": 0.29595273094719626,
+    "aft_tri_faceted_area_fraction": 0.7040472690528037,
+    "aft_share_of_unweighted_sampled_squared_error": 0.9953143935501437,
+    "aft_share_of_approximate_facet_area_weighted_sampled_squared_error": 0.9983560669308306,
+    "area_weighted_error_limit": "Coarse physical-facet-area-weighted sample approximation, not true surface integral or error bound"
+  },
+  "scientific_claims_not_supported": [
+    "two actually adapted accepted mixed QUAD/TRI epochs",
+    "full M7 or R3 completion",
+    "true L2 or Linf surface error",
+    "scientifically approved global curvature/quality policy",
+    "adaptive source-curve identity equivalent to legacy AdaptCurve",
+    "general nonmanifold physical welding",
+    "all-QUAD/anisotropic/historical 1993 equivalence"
+  ],
+  "next_gate": "P2d-1b compare actual native boundary/AFT-dominated versus interior-QUAD-driven refinement candidates, validate coverage/error/quality and preserve observer/rollback; R3/M7 remains open",
+  "authoritative_tracking_issue": "https://github.com/tiagosombrra/apmesh-modernization/issues/221"
+}
