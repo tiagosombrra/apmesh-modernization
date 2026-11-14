@@ -1,0 +1,223 @@
+{
+  "schema": "apmesh.quad.four_corner_delivery.v1",
+  "observed_at_utc": "2026-11-14T10:03:24.054432+00:00",
+  "candidate_head": "a2c42776a16cc5e03d643ce916e5c6d81f0aa5dc",
+  "research_merge": "49c9dc3be66dab2f4839e0ab661065a1ec5c5ba3",
+  "pull_request": 216,
+  "candidate_local": {
+    "revision": "a2c42776a16cc5e03d643ce916e5c6d81f0aa5dc",
+    "native_session": "/home/apmesh/quad-audit-20261113/build/validation-session/1794649390817481171-1ac41ca6",
+    "status": "passed",
+    "ctest": 85,
+    "tooling_python": 527,
+    "failure_error_skip": 0,
+    "physical_model_modes": {
+      "vertex_mean": {
+        "accepted": 20,
+        "rejected": 40,
+        "original_oracles_retained": true
+      },
+      "area_centroid": {
+        "accepted": 20,
+        "rejected": 40,
+        "original_oracles_retained": true
+      }
+    },
+    "files_sha256": {
+      "report.json": "b66a3979a6b41f9b125385d386ce70dd76318ae031b4f63b8648e5271d051326",
+      "plan.json": "f87824b38801ee8774b25f304074b9c9d890de9d8e7ad61a659e2dc01a39b5e7",
+      "ctest.xml": "40ed5c531cab618c710f08ec1f0477ad90761b6a47f9d4cd3478cb22c534d24d",
+      "LastTest.log": "32f405cc48451d4e2e3e3fb9708eb436a59ae4c4c103ac379d8a15899bab12e1",
+      "physical_quad_ownership_manifest.json": "f511f4d771b901ede5f5ddea3d4c967d9bfb78019e5f154337b0a7c8616556b7"
+    },
+    "scientific_stage_closed": false
+  },
+  "research_merge_local": {
+    "revision": "49c9dc3be66dab2f4839e0ab661065a1ec5c5ba3",
+    "native_session": "/home/apmesh/quad-audit-20261113/build/validation-session/1794650216931606110-486c59cd",
+    "status": "passed",
+    "ctest": 85,
+    "tooling_python": 527,
+    "failure_error_skip": 0,
+    "physical_model_modes": {
+      "vertex_mean": {
+        "accepted": 20,
+        "rejected": 40,
+        "original_oracles_retained": true
+      },
+      "area_centroid": {
+        "accepted": 20,
+        "rejected": 40,
+        "original_oracles_retained": true
+      }
+    },
+    "files_sha256": {
+      "report.json": "328cc5618997f4c1009c39679d0518d8d0c616a7b3f6e7882d8088c766e7f85c",
+      "plan.json": "abccdfd2b94bc2c1a1da9fcbf299922fbb12a4a50aa1d3a41f5843d092dfa570",
+      "ctest.xml": "e2e9526bef5d2f5540d7bd6290e2cdc7df850cd0fba682df8c600b3377caa001",
+      "LastTest.log": "48eae266a2c0cf19c5bc5930129692c079ae12275d4053029e2481c037376b5b",
+      "physical_quad_ownership_manifest.json": "f511f4d771b901ede5f5ddea3d4c967d9bfb78019e5f154337b0a7c8616556b7"
+    },
+    "scientific_stage_closed": false
+  },
+  "candidate_remote": {
+    "43582204121": {
+      "event": "push",
+      "head": "a2c42776a16cc5e03d643ce916e5c6d81f0aa5dc",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "TRI baseline and tooling controls (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "TRI scientific equivalence against frozen baseline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "QUAD native (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "QUAD native (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "43582214884": {
+      "event": "pull_request",
+      "head": "a2c42776a16cc5e03d643ce916e5c6d81f0aa5dc",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "TRI scientific equivalence against frozen baseline",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "QUAD native (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "TRI baseline and tooling controls (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "QUAD native (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  },
+  "research_merge_remote": {
+    "run_id": 43582873180,
+    "head": "49c9dc3be66dab2f4839e0ab661065a1ec5c5ba3",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "QUAD native (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "TRI scientific equivalence against frozen baseline",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "TRI baseline and tooling controls (Linux)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "QUAD native (windows-2022)",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "fresh_frozen_TRI_comparisons": {
+    "book-comparison": {
+      "model": "book",
+      "compared_meshes": 4,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 4256,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact"
+    },
+    "eistute-comparison": {
+      "model": "eistute",
+      "compared_meshes": 5,
+      "all_obj_byte_identical": true,
+      "all_acceptance_fields_equal": true,
+      "last_accepted_step": 1,
+      "last_accepted_triangles": 1168,
+      "boundary_incidence_coverage": "verified",
+      "boundary_regression": "exact"
+    }
+  },
+  "closure_audit": {
+    "code": "Two missing corner checks; original expressions first. No production/input/build-policy edits.",
+    "tests": "Original failure retained;60 cases per3profiles;85CTest/527Python; original physical mode/fault/negative traces retained.",
+    "contracts": "Same1e-14; intentional near-collinear refusals; observer pointer/order/slot preservation; no new ownership design.",
+    "documentation": "One current state, exact prior-state byte archive, finite P0/R2/R3 queue.",
+    "science": "Fresh frozen Eistute/Book OBJ/acceptance/boundary parity; no new formula/centroid/topology approval.",
+    "remaining_inventory": "Whole M4 sanitizer/denial/generalgeometry, live R2, mixed R3/M7 and independent scientific gates remain open."
+  },
+  "analysis_literal_header_scope": {
+    "revision": "a2c42776a16cc5e03d643ce916e5c6d81f0aa5dc",
+    "reason": "Remove regex-dialect ambiguity in the earlier slash/backslash pattern; literal Linux paths explicitly matched. No check suppression or source change.",
+    "rows": [
+      {
+        "name": "physical",
+        "exit": 0,
+        "command": [
+          "/usr/lib/llvm-22/bin/clang-tidy",
+          "-p",
+          "/home/apmesh/quad-convexity-20261114/candidate-linux/build",
+          "--header-filter=.*/(include|src|research/quad|tests/quad)/.*",
+          "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/research/quad/physical_quadrilateral_adaptive.cpp"
+        ],
+        "compile_database_sha256": "a09644abbb9377fff6864cffe077f2dde4afbe17c121113f52b0b6fc57560b75"
+      },
+      {
+        "name": "added-header",
+        "exit": 0,
+        "command": [
+          "/usr/lib/llvm-22/bin/clang-tidy",
+          "-p",
+          "/home/apmesh/quad-convexity-20261114/candidate-linux/build",
+          "--header-filter=.*/(include|src|research/quad|tests/quad)/.*",
+          "/mnt/c/Users/tiago/Documents/dev/research/apmesh-modernization/build/quad-convexity/session-20261114/driver.cpp"
+        ],
+        "compile_database_sha256": "a09644abbb9377fff6864cffe077f2dde4afbe17c121113f52b0b6fc57560b75"
+      },
+      {
+        "name": "whole-probe",
+        "exit": 0,
+        "command": [
+          "/usr/lib/llvm-22/bin/clang-tidy",
+          "-p",
+          "/home/apmesh/quad-audit-20261113/build/local-serial",
+          "--header-filter=.*/(include|src|research/quad|tests/quad)/.*",
+          "/home/apmesh/quad-audit-20261113/tests/quad/physical_quad_ownership_probe.cpp"
+        ],
+        "compile_database_sha256": "bfcbb9ffbdfb63823229fec5d28b1355dbf9184c62c7b7e4d02a9213894762a1"
+      }
+    ]
+  },
+  "P0_scope_closed": true,
+  "M4_scientific_stage_closed": false,
+  "main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "next": "P1 live controlled curved-patch R2; refresh the older draftPR214 against the qualified research branch before new changes."
+}

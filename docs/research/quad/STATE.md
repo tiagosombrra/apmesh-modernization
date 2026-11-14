@@ -1,57 +1,56 @@
 # APMesh QUAD — current state
 
 Updated2026-11-14 Fortaleza. Canonical branch: `quad-templates`.
-Implementation candidate: `quad/integration-convexity-20261114`, based on
-`3809eb78c2fca625bfaf332cf9ab8342fa2d10ad`. Main remains
-`f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
+Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 
-## One active delivery
+## Completed bounded repair
 
-**P0 — repair four-corner UV admission in the physical QUAD.** Implemented in
-the candidate;60 focused native cases pass per Linux GCC, Windows GCC and
-Windows MSVC. The unchanged original source fails the new concavity witness.
-Full exact-candidate regression, whole existing ownership-probe analysis and
-fresh remote checks remain required before integration.
+**P0 is integrated through [PR216](https://github.com/tiagosombrra/apmesh-modernization/pull/216)**,
+research merge `49c9dc3be66dab2f4839e0ab661065a1ec5c5ba3`. Physical QUAD construction now refuses concave,
+collinear, crossing and inverted UV cycles using all four existing-threshold
+corner checks before observer publication. Original012/023 expressions, physical
+metrics, production TRI, input and boundary policies remain unchanged.
 
-[Repair and evidence](FOUR_CORNER_ADMISSION_20261114.md) ·
+- Unchanged original source fails the new concavity witness; failure retained.
+- Linux GCC13.3, Windows GCC16.1 and MSVC19.44 Debug C++17 pass20accepted and
+  40rejected cases each, with observer pointer/order/list-slot preservation.
+- Exact candidate `a2c42776a16cc5e03d643ce916e5c6d81f0aa5dc` and exact research merge each pass85 CTest/527
+  Python with no failures/errors/skips, including both original physical model
+  modes, original fault slots and negative file mutations.
+- Configured source/header/whole-probe analysis passes. Candidate push/PR and
+  merge remote runs each complete four jobs successfully; fresh Eistute/Book
+  frozen OBJ, acceptance and positive boundary comparisons pass.
+
+[Delivery receipt](evidence/FOUR_CORNER_ADMISSION_DELIVERY_20261114.json) ·
+[Repair/evidence](FOUR_CORNER_ADMISSION_20261114.md) ·
 [Roadmap](IMPLEMENTATION_ROADMAP.md) · [Milestones](MILESTONE_STATUS.md) ·
 [Protocol](CONTINUATION_PROTOCOL.md) · [Journal](SESSION_LOG.md).
 
-## What works and what remains
+## Next delivery — P1 / live curved-patch R2
 
-| Scope | Current bounded state |
-| --- | --- |
-| UV/quadtree and physical patches | Research emitters, four-node elements and QUAD/AFT patch witnesses exist; no complete application QUAD admission |
-| P0 convexity | Candidate adds missing UV turns at unchanged1e-14, before observer publication;20 accepted/40 rejected cases per profile retain observer values/order/slots |
-| R2 application | `quad_uv` is still refused; next functional delivery is one live controlled curved manifold patch |
-| R3/M7 mixed history | No two accepted adaptive epochs consuming the actual QUAD/TRI mesh; original TRI epoch evidence is a prerequisite only |
-| PR214 | Draft/unmerged head7cd5014; source research reports32 detached Eistute/Book charts,512 QUAD+1,456 TRI, not a globally connected accepted model |
-| Scientific approval | Literal1993 method, high-valence sheet ownership/welding and broader comparisons remain separate; no new approval claimed |
+Refresh the older draftPR214 head7cd5014 against this qualified canonical branch
+before new source changes. Reuse the native typed QUAD interior and original AFT
+exterior to execute one complete controlled curved manifold patch through an
+explicit application opt-in. Preserve its original boundary, demonstrate UV/XYZ/
+orientation and rollback, and retain exact default-TRI evidence. `quad_uv` is
+still refused by the current CLI; this functional gate remains unimplemented.
 
-Exact PR214 source7cd5014 push run43539017852 completed four hosted jobs,
-including89 CTest/527 Python and scoped original patch UV/normal checks. This
-is historical evidence for that source and is not a pass for the P0 candidate.
-The previous local checkpoint build was interrupted at544/922 before CTest;
-its archived output remains unqualified. No retry is relabelled as an old pass.
+Then P2/R3 must consume that actual mixed QUAD/TRI mesh as history for at least
+two accepted epochs, with typed curvature, quality, export, cloning, acceptance
+and retry/rollback. Original TRI epochs do not establish mixed-history M7.
 
-## Next exact action and remaining inventory
+## Explicit remaining limits and history
 
-Complete the P0 candidate's existing full native regression and physical-model
-ownership entry, configured whole-probe analysis, pre-commit and exact remote
-checks. Integrate only with those scoped gates passing; repeat the required
-research-branch regression afterward. Then execute the bounded live R2 patch
-delivery before extending model-wide topology experiments.
+P0 closes one UV admission defect, not whole M4 or continuous physical Jacobian,
+global topology, all-QUAD or production readiness. Broader native sanitizer/
+allocation-denial/general-geometry coverage, historical1993 point/formula
+approval, model-wide node ownership and high-valence sheet decisions remain open.
+The prior interrupted544/922 build remains unqualified; fresh successful reports
+above have their own exact identities. Stale R2c19/20 legacy evidence identities
+remain explicitly historical rather than silently certified.
 
-Broader M4 sanitizer/denial/general-geometry coverage, independent historical
-oracles, model-wide connectivity and mixed-element curvature/quality remain
-open. Stale R2c19/20 legacy evidence identities identified by the audit are not
-silently promoted; use the explicit qualified source/run in the relevant report.
-No main/modernization stage closure is claimed.
-
-## Preserved history
-
-The former STATE is [archived byte-for-byte](STATE_HISTORY_20261114.md) from
-source3809eb7, Git blob `bbc4260a41cd92e43ecc0451830e645f4bb9f883`. Its many dated active-checkpoint labels
-are historical observations. Use this concise file as the current entry point.
-The [audit](STATE_PLAN_AUDIT_20261113.md) and original SESSION_LOG entries retain
-failed prefixes, scope corrections and incomplete gates.
+The former state is [preserved byte-for-byte](STATE_HISTORY_20261114.md), source
+3809eb7 Git blob `bbc4260a41cd92e43ecc0451830e645f4bb9f883`.
+The [audit](STATE_PLAN_AUDIT_20261113.md) and append-only journal retain failures
+and scope corrections. This final checkpoint changes documentation/evidence
+only; its own SHA is not a new scientific or complete-process qualification.

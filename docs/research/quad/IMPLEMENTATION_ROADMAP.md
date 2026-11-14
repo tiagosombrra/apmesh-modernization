@@ -4,13 +4,14 @@
 ## Current finite execution queue — 2026-11-14
 
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
-M0–M9 acceptance criteria. Only the physical convexity repair is active; its
-qualification is pending. This is a behavior-changing defect repair of the
-existing admission contract, not a new numerical or scientific policy.
+M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through
+PR216 with its scoped exact-candidate/research-merge gates. P1/R2 is the next
+delivery. P0 repairs the existing admission contract; it introduces no new
+numerical or scientific policy.
 
 | Order | Finite delivery | Acceptance and explicit remaining scope |
 | --- | --- | --- |
-| P0 — active | Reject concave UV cycles in the physical QUAD | Preserve the reproduced failing witness. Check all four UV corner determinants against the existing `1e-14` threshold, including cyclic rotations and reversed winding. Retain valid-element behavior within that four-corner threshold scope, original input and observer/rollback contracts. Do not claim unchanged admission of every previously accepted convex input. Require applicable native, memory, analysis, exact-head and remote delivery gates before integration. |
+| P0 — integrated | Reject concave UV cycles in the physical QUAD | Preserve the reproduced failing witness. Check all four UV corner determinants against the existing `1e-14` threshold, including cyclic rotations and reversed winding. Retain valid-element behavior within that four-corner threshold scope, original input and observer/rollback contracts. Do not claim unchanged admission of every previously accepted convex input. Scoped ordinary native, analysis, exact-head and remote gates passed; see the [delivery receipt](evidence/FOUR_CORNER_ADMISSION_DELIVERY_20261114.json). Broader M4 sanitizer/denial gates remain open. |
 | P1 — next, R2 | Live controlled curved manifold patch | Execute explicit opt-in `ap_mesh --config` with actual typed QUAD interior and original AFT TRI exterior, original source boundary, independent UV/XYZ/orientation checks and failed-publication rollback. Detached chart export alone does not close this gate. |
 | P2 — after R2, R3 | Actual mixed-element adaptive history | Consume the accepted QUAD/TRI mesh as history for at least two accepted epochs; use typed curvature, quality, export, cloning and acceptance, and retain retry/rollback and exact default-TRI evidence. Original TRI epochs remain prerequisites, not QUAD M7 completion. |
 

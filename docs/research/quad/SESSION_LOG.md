@@ -1548,3 +1548,38 @@ replaced the current entry with one concise active item. Legacy evidence scope,
 interrupted prior build and scientific decisions remain explicit. Full current
 native regression, complete model ownership and whole-probe analysis plus fresh
 remote gates are pending at this candidate commit; no stage closure/integration.
+
+
+## 2026-11-14 Fortaleza — P0 admitted and research merge revalidated
+
+Code53d5bef and documented exact candidatea2c42776a16cc5e03d643ce916e5c6d81f0aa5dc retain the original
+concavity failure and pass60 focused cases per LinuxGCC/WindowsGCC/MSVC profile.
+Exact full GNU candidate regression85CTest/527Python and both original physical
+model modes passed with no failure/error/skip. Configured source/header/whole-
+probe LLVM22 analysis passed. Rechecked literal Linux header patterns to remove
+regex-dialect ambiguity, retaining previous records without suppressing checks.
+Initial Windows clang-format PATH discovery failure was resolved using the
+existing installed19.1.5 formatter in a child process; unchanged normal hooks
+and independent LLVM22 staged checks pass. No global environment change.
+
+PR216 candidate push43582204121 and PR43582214884 each completed all4jobs with
+nativeLinux/Windows, complete baseline/tooling and fresh original Eistute/Book
+frozen scientific equivalence. Captured positive nonempty5/4mesh comparisons,
+exact OBJ/acceptance and verified exact boundaries. Scoped source/owner and
+regression review found no additional P0 blocker; no independent scientific
+advisor approval is inferred. Remote main/base/head and exact local seal were
+verified before manual merge; no automatic merge workflow or paid runner.
+
+Research merge49c9dc3be66dab2f4839e0ab661065a1ec5c5ba3 has the identical qualified candidate tree.
+Safely advanced the primary quad-templates ref without checking out old source,
+then repeated full local85CTest/527Python on the exact merge, both model modes,
+with no failure/error/skip. Postmerge run43582873180 completed all4jobs. Main
+f6050ec1 and larger draftPR214 remain preserved. Six-area code/test/contract/doc/
+science/known-inventory audit is retained in the delivery receipt.
+
+P0 is closed only in its existing UV admission scope; broad M4 sanitizers/
+denials, physical Jacobian/global topology, literal1993 and high-valence science
+remain open. Final documentation checkpoint records these exact identities,
+not a new scientific qualification for its own SHA. Next active deliveryP1:
+refresh older PR214 against current canonical repair, then one live complete
+curved manifold QUAD/AFT patch; afterward two accepted mixed-historyR3 epochs.

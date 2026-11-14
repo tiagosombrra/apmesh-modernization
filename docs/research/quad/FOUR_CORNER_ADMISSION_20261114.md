@@ -57,3 +57,16 @@ record hashes and explicit remaining gates. The former STATE is archived
 byte-for-byte as [historical state](STATE_HISTORY_20261114.md), preserving
 earlier failures and contradictory historical checkpoints. The new STATE has
 one active item. This does not retroactively certify old evidence identities.
+
+
+## Qualified research integration
+
+PR216 merged as49c9dc3. Exact candidatea2c4277 and exact research merge each
+passed85CTest/527Python without failure/error/skip; both original physical
+model modes and the additional20/40 matrix passed. Configured source/header/
+whole-probe analysis and all four remote jobs on each required run passed,
+including fresh frozen Eistute/Book comparisons. The earlier pending gates
+above describe the implementation checkpoint, not the final delivery state.
+See the [delivery receipt](evidence/FOUR_CORNER_ADMISSION_DELIVERY_20261114.json).
+Only bounded P0 is closed; all broader scientific/memory/application limits
+remain. No main or larger draftPR214 integration occurred.
