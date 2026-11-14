@@ -6,6 +6,7 @@ import math
 from pathlib import Path
 import subprocess
 import uuid
+import sys
 from test_m4_real_model_hybrid import golden, approximately, cross, vector, dot
 from independent_common_grid import common_grid_source_error
 
@@ -534,6 +535,15 @@ def main():
     p.add_argument("--exe", required=True, type=Path)
     p.add_argument("--directory", required=True, type=Path)
     args = p.parse_args()
+    # Run the standalone six-case dyadic oracle in every actual app CI profile.
+    unit = subprocess.run([sys.executable,
+                           str(Path(__file__).with_name("test_p2d_next_band_dyadic.py")),
+                           "-v"], capture_output=True, timeout=15)
+    require(unit.returncode == 0 and b"Ran 6 tests" in unit.stderr and
+            b"OK" in unit.stderr,
+            "Second-band independent topology test failed: " +
+            unit.stderr.decode(errors="replace"))
+    print("QUAD_SECOND_BAND_DYADIC_ORACLE tests=6 passed=6")
     root = args.directory.resolve() / ("run-" + uuid.uuid4().hex)
     root.mkdir(parents=True, exist_ok=False)
     def execute(name, rollback=False, model="builtin:curva_bezier"):
