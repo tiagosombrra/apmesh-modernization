@@ -33,6 +33,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # A PR's default checkout is a synthetic merge SHA, not the reviewed head.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact source commit
+        shell: bash
+        env:
+          EXPECTED_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_SOURCE_SHA" || { echo "::error::Wrong QUAD source identity: $actual"; exit 1; }
+          test -z "$(git status --porcelain)" || { echo "::error::Dirty QUAD source checkout"; exit 1; }
       - name: Identify revision
         shell: bash
         run: |
@@ -54,7 +64,7 @@ jobs:
         if: runner.os == 'Linux' && success()
         uses: actions/upload-artifact@v4
         with:
-          name: quad-real-tree-visual-${{ github.sha }}
+          name: quad-real-tree-visual-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/quad-ci-linux/real_tree_visual/manifest.json
             build/quad-ci-linux/real_tree_visual/tree_regions.csv
@@ -122,7 +132,7 @@ jobs:
       - name: Retain controlled application output
         uses: actions/upload-artifact@v4
         with:
-          name: controlled-quad-${{ matrix.os }}-${{ github.sha }}
+          name: controlled-quad-${{ matrix.os }}-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/quad-app-linux/results/
             build/quad-app-asan/results/
@@ -138,7 +148,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: quad-failure-${{ matrix.os }}-${{ github.sha }}
+          name: quad-failure-${{ matrix.os }}-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/quad-ci-linux/Testing/Temporary/LastTest.log
             build/quad-ci-msvc/Testing/Temporary/LastTest.log
@@ -153,6 +163,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # A PR's default checkout is a synthetic merge SHA, not the reviewed head.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact source commit
+        shell: bash
+        env:
+          EXPECTED_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_SOURCE_SHA" || { echo "::error::Wrong QUAD source identity: $actual"; exit 1; }
+          test -z "$(git status --porcelain)" || { echo "::error::Dirty QUAD source checkout"; exit 1; }
       - name: Install approved LLVM tools for scientific baseline
         shell: bash
         run: |
@@ -194,7 +214,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: quad-model-catalog-${{ github.sha }}
+          name: quad-model-catalog-${{ github.event.pull_request.head.sha || github.sha }}
           path: build/local-serial/quad_model_catalog.json
           if-no-files-found: error
           retention-days: 14
@@ -205,7 +225,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: quad-m4-real-model-${{ github.sha }}
+          name: quad-m4-real-model-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/local-serial/m4_real_model/physical_model_hybrid_manifest.json
             build/local-serial/m4_real_model/physical_model_hybrid_*.obj
@@ -217,7 +237,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: quad-m4-four-node-ownership-${{ github.sha }}
+          name: quad-m4-four-node-ownership-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/local-serial/m4_quad_ownership/physical_quad_ownership_manifest.json
             build/local-serial/m4_quad_ownership/physical_model_hybrid_*.obj
@@ -228,7 +248,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: quad-m4-pairwise-physical-${{ github.sha }}
+          name: quad-m4-pairwise-physical-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/local-serial/m4_pairwise_physical/pairwise_physical_manifest.json
             build/local-serial/m4_pairwise_physical/pairwise_*.obj
@@ -240,7 +260,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: quad-m4-external-bezier-${{ github.sha }}
+          name: quad-m4-external-bezier-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/local-serial/m4_external_bezier/m4_external_bezier_physical_manifest.json
             build/local-serial/m4_external_bezier/m4_external_bezier_physical_candidates.zip
@@ -250,7 +270,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: quad-m4-sheet-incidence-${{ github.sha }}
+          name: quad-m4-sheet-incidence-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/local-serial/m4_sheet_incidence/m4_sheet_incidence_manifest.json
             build/local-serial/m4_sheet_incidence/sheet_graph_*.json
@@ -261,7 +281,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: tri-failure-${{ github.sha }}
+          name: tri-failure-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/local-serial/Testing/Temporary/LastTest.log
           if-no-files-found: ignore
@@ -276,6 +296,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # A PR's default checkout is a synthetic merge SHA, not the reviewed head.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact source commit
+        shell: bash
+        env:
+          EXPECTED_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_SOURCE_SHA" || { echo "::error::Wrong QUAD source identity: $actual"; exit 1; }
+          test -z "$(git status --porcelain)" || { echo "::error::Dirty QUAD source checkout"; exit 1; }
       - name: Create immutable historical reference worktree
         shell: bash
         run: |
@@ -359,7 +389,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: tri-science-${{ github.sha }}
+          name: tri-science-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             build/science-candidate/*-comparison.json
             build/science-candidate/eistute/process.json
