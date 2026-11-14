@@ -77,6 +77,75 @@ def inspect(xyz, uv, faces):
             "triangles": sum(len(f) == 3 for f in faces), "boundary": boundary}
 
 
+def independent_mixed_angle_defect(path):
+    # Recompute the metric from physical OBJ edges using the cosine law,
+    # independent of the C++ vector-dot/cross angle implementation.
+    positions, faces = [], []
+    for line in path.read_text().splitlines():
+        words = line.split()
+        if words and words[0] == "v":
+            positions.append(tuple(map(float, words[1:])))
+        elif words and words[0] == "f":
+            faces.append([int(token.split("/")[0]) - 1 for token in words[1:]])
+    edge_use = {}
+    for face in faces:
+        for a, b in zip(face, face[1:] + face[:1]):
+            edge_use.setdefault(tuple(sorted((a, b))), 0)
+            edge_use[tuple(sorted((a, b)))] += 1
+    boundary = set()
+    for (a, b), count in edge_use.items():
+        if count == 1:
+            boundary.update((a, b))
+    angles = [0.0] * len(positions)
+    dual_area = [0.0] * len(positions)
+    for face in faces:
+        triples = ((0, 1, 2), (0, 2, 3)) if len(face) == 4 else ((0, 1, 2),)
+        for slots in triples:
+            a, b, c = (face[k] for k in slots)
+            la = math.dist(positions[b], positions[c])
+            lb = math.dist(positions[a], positions[c])
+            lc = math.dist(positions[a], positions[b])
+            semi = (la + lb + lc) / 2.0
+            area = math.sqrt(max(0.0, semi * (semi-la) * (semi-lb) * (semi-lc)))
+            require(area > 0.0, "Independent mixed metric has zero-area facet")
+            for vertex, adjacent_a, adjacent_b, opposite in (
+                    (a, lb, lc, la), (b, la, lc, lb), (c, la, lb, lc)):
+                cosine = (adjacent_a**2 + adjacent_b**2 - opposite**2) / (
+                    2.0 * adjacent_a * adjacent_b)
+                angles[vertex] += math.acos(max(-1.0, min(1.0, cosine)))
+                dual_area[vertex] += area / 3.0
+    defect = sum((math.pi if i in boundary else 2.0 * math.pi) - value
+                 for i, value in enumerate(angles))
+    return {"angle_defect_total": defect, "min_barycentric_area": min(dual_area),
+            "interior_vertices": len(positions)-len(boundary),
+            "boundary_vertices": len(boundary), "boundary_edges":
+            sum(value == 1 for value in edge_use.values())}
+
+
+def verify_mixed_curvature(stdout, path):
+    entries = [line for line in stdout.decode().splitlines()
+               if line.startswith("QUAD_TYPED_CURVATURE ")]
+    require(len(entries) == 1, "Mixed curvature diagnostic missing or duplicated")
+    values = dict(field.split("=", 1) for field in entries[0].split()[1:])
+    oracle = independent_mixed_angle_defect(path)
+    for name in ("boundary_edges", "boundary_vertices", "interior_vertices"):
+        require(int(values[name]) == oracle[name], "Mixed topology diagnostic differs: " + name)
+    require(int(values["quad"]) == 42 and int(values["tri"]) == 36 and
+            int(values["negative_cases"]) == 5 and
+            values["policy"] == "triangulated_barycentric_probe" and
+            values["adaptive_epochs"] == "0",
+            "Mixed diagnostic wrong type/negative-case/epoch contract")
+    for name in ("angle_defect_total", "min_barycentric_area"):
+        actual, expected = float(values[name]), oracle[name]
+        require(math.isfinite(actual) and math.isclose(actual, expected, rel_tol=1e-8,
+                                                        abs_tol=1e-8),
+                "Independent mixed curvature oracle disagrees: " + name)
+    require(oracle["min_barycentric_area"] > 0.0 and
+            math.isclose(oracle["angle_defect_total"], 2.0 * math.pi, abs_tol=1e-8),
+            "Mixed physical disk metric is invalid")
+    return oracle
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -102,6 +171,7 @@ def main():
             b"source_observers_preserved=1 adaptive_epochs=0" in r.stdout,
             "Typed QUAD/TRI history clone or rollback guard did not run")
     result = audit(root/"accepted.obj")
+    metric = verify_mixed_curvature(r.stdout, root/"accepted.obj")
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -113,6 +183,8 @@ def main():
     require(r.returncode == 1 and b"QUAD_ROLLBACK preserved=1 previous_nonempty=1" in r.stdout,
             "Nonempty physical publication rollback not demonstrated")
     require(audit(root/"rollback.obj") == result, "Rollback lost prior valid output")
+    require(verify_mixed_curvature(r.stdout, root/"rollback.obj") == metric,
+            "Rollback changed mixed curvature metrics")
     r = execute("unsupported", model="missing.bp")
     require(r.returncode != 0 and not (root/"unsupported.obj").exists(),
             "Invalid source was published")
@@ -131,6 +203,7 @@ def main():
               "result": result, "rollback_nonempty": True,
               "native_AFT": True, "independent_Bezier_oracle": True,
               "typed_history_clone_guard": True,
+              "typed_mixed_curvature_diagnostic": metric,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
