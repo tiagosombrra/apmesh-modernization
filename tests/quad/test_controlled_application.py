@@ -313,7 +313,7 @@ def verify_native_tree_trials(stdout, residual):
     candidates = [s for s in lines if s.startswith("QUAD_NATIVE_TREE_TRIALS ")]
     require(len(candidates) == 1, "Missing or repeated real native tree alternatives")
     values = dict(part.split("=", 1) for part in candidates[0].split()[1:])
-    require(values["source"] == "previous_real_mixed_physical_residual" and
+    require(values["source"] == "generated_real_mixed_physical_candidate" and
             values["source_candidate_preserved"] == "1" and
             values["native_trial_refinements"] == "2" and
             values["actual_adaptive_epochs"] == "0",
@@ -325,7 +325,7 @@ def verify_native_tree_trials(stdout, residual):
             int(values["quad_cell_id"]) != int(values["aft_cell_id"]) and
             int(values["quad_leaves"]) > 19 and
             int(values["aft_leaves"]) > 19,
-            "Physical source residual did not select two distinct real tree edits")
+            "Physical candidate residual did not select two distinct real tree edits")
     # A rejected region must be explicitly labeled; no rejected region may
     # silently acquire an accepted quad count.
     for region, marker in (("quad", "quad"), ("aft", "aft")):
