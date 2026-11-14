@@ -233,7 +233,8 @@ def independent_mixed_surface_residual(path):
     quadrilateral_samples = (
         (.5, .5), (.25, .25), (.75, .25), (.75, .75), (.25, .75))
     result = {"maximum": 0.0, "rms": 0.0, "quad_maximum": 0.0,
-              "triangle_maximum": 0.0, "worst_quad_face": 0,
+              "triangle_maximum": 0.0, "worst_quad_face": 0, "worst_triangle_face": 0,
+              "tri_sample_u": 0.0, "tri_sample_v": 0.0,
               "quads": 0, "triangles": 0, "samples": 0,
               "select_u": 0.0, "select_v": 0.0}
     squares = []
@@ -267,9 +268,14 @@ def independent_mixed_surface_residual(path):
             result["quads"] += 1
             result["quad_maximum"] = max(result["quad_maximum"], face_max)
         else:
+            if result["triangles"] == 0 or face_max > result["triangle_maximum"]:
+                result["worst_triangle_face"] = i
+                result["tri_sample_u"], result["tri_sample_v"] = face_uv
             result["triangles"] += 1
             result["triangle_maximum"] = max(result["triangle_maximum"], face_max)
     result["rms"] = math.sqrt(math.fsum(squares) / result["samples"])
+    result["dominant_region"] = ("tri_aft" if result["triangle_maximum"] > result["quad_maximum"]
+                                 else "quad_interior")
     return result
 
 
@@ -279,15 +285,17 @@ def verify_mixed_surface_residual(stdout, path):
     require(len(matches) == 1, "Mixed Bezier source residual missing or duplicated")
     observed = dict(part.split("=", 1) for part in matches[0].split()[1:])
     expected = independent_mixed_surface_residual(path)
-    for name in ("samples", "quads", "triangles", "worst_quad_face"):
+    for name in ("samples", "quads", "triangles", "worst_quad_face",
+                 "worst_triangle_face"):
         require(int(observed[name]) == expected[name],
                 "Mixed surface residual identity differs: " + name)
     for name in ("maximum", "rms", "quad_maximum", "triangle_maximum",
-                 "select_u", "select_v"):
+                 "select_u", "select_v", "tri_sample_u", "tri_sample_v"):
         require(math.isclose(float(observed[name]), expected[name],
                              abs_tol=1e-9, rel_tol=1e-8),
                 "Independent physical source residual differs: " + name)
-    require(observed["policy"] == "physical_bilinear_quad_tri_barycentric_v1" and
+    require(observed["dominant_region"] == expected["dominant_region"] and
+            observed["policy"] == "physical_bilinear_quad_tri_barycentric_v1" and
             observed["real_tree_edits"] == "0" and observed["adaptive_epochs"] == "0" and
             int(observed["real_leaf_ordinal"]) >= 0 and
             int(observed["real_cell_id"]) >= 0 and
