@@ -1,0 +1,143 @@
+{
+  "schema": "apmesh.quad.p2d1c0.source_topology_preflight.v1",
+  "date": "2026-11-14",
+  "source_feature_sha": "e0621a9b8b2675c60ba5bfd3cd0dfe0e395b01af",
+  "research_merge_sha": "a03938627ab8bf2aeadc04d1c238c2eb693d651f",
+  "pull_request": "https://github.com/tiagosombrra/apmesh-modernization/pull/232",
+  "ci_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43624052194",
+  "ci": {
+    "jobs": "4/4 success",
+    "linux_native": "success",
+    "windows_native": "success",
+    "linux_asan_ubsan_leak": "success",
+    "original_frozen_tri": "success",
+    "root_ctest": "85/85 passed",
+    "python_tooling": "527/527 passed",
+    "new_dyadic_6_case_oracle": "executed and passed in Linux, Windows and Linux sanitizer application regressions"
+  },
+  "input": {
+    "previous_first_physical_candidate": "93 nodes, 62 QUAD, 44 AFT TRI, staged_unaccepted",
+    "source_selection": "actual previous physical AFT worst residual",
+    "face": 103,
+    "uv": [
+      0.8,
+      0.1
+    ],
+    "new_level2_source_grid_cell": [
+      3,
+      0
+    ],
+    "previous_native_refined_source_grid_cells": [
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "predictions": [
+    {
+      "candidate": "unchanged",
+      "cells": [],
+      "leaves": 28,
+      "eligible_uv_tiles": 21,
+      "quad_uv_coverage": 0.328125,
+      "connected": true
+    },
+    {
+      "candidate": "corner",
+      "cells": [
+        [
+          3,
+          0
+        ]
+      ],
+      "leaves": 31,
+      "eligible_uv_tiles": 22,
+      "quad_uv_coverage": 0.34375,
+      "connected": false,
+      "vertex_manifold": false
+    },
+    {
+      "candidate": "west",
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "leaves": 34,
+      "eligible_uv_tiles": 24,
+      "quad_uv_coverage": 0.375,
+      "connected": true
+    },
+    {
+      "candidate": "north",
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "leaves": 34,
+      "eligible_uv_tiles": 24,
+      "quad_uv_coverage": 0.375,
+      "connected": true
+    },
+    {
+      "candidate": "both",
+      "cells": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "leaves": 37,
+      "eligible_uv_tiles": 26,
+      "quad_uv_coverage": 0.40625,
+      "connected": true
+    }
+  ],
+  "negative_controls": [
+    "source boundary/nonfinite UV",
+    "duplicate/already-refined or invalid level-2 cell",
+    "isolated diagonal-only bow-tie vertex",
+    "unconnected source grid"
+  ],
+  "scope": [
+    "Independent pure Python 8x8 dyadic topology only; reported leaves are predicted source leaves, NOT actual measured native Quadtree node IDs.",
+    "Source-grid connectedness, complement holes and vertex link checks are necessary but not sufficient for native EmitLeafQuads/AFT physical validity.",
+    "No second native AFT/physical XYZ generation, no accepted adaptive epoch, no scientific complexity/error acceptance policy."
+  ],
+  "actual_second_aft_retriangulations": 0,
+  "adaptive_epochs": 0,
+  "next_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/233",
+  "main_production_tri_unchanged": true
+}
