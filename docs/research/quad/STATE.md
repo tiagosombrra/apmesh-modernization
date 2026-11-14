@@ -28,12 +28,18 @@ included in PR231; the extra synthetic rejection-negative control was *not*
 integrated or CI qualified and remains an optional independent safeguard.
 
 **Currently active isolated [PR232](https://github.com/tiagosombrra/apmesh-modernization/pull/232)**,
-feature `7a42a496ae5c99fa16c7bed5559ad2f4c61a96c3`,
+feature `e0621a9b8b2675c60ba5bfd3cd0dfe0e395b01af`,
 implements **source-grid-only P2d-1c0** topology preflight for the next
 actual staged candidate's maximum original AFT residual: face103,
 UV near (0.8,0.1), distinct level-2 source coordinate (3,0).
-Six locally run Python tests pass; **exact-head GitHub CI #43622937311
-was in progress on last inspection**, not yet a confirmed pass.
+Six local Python tests pass; the prior exact feature `7a42a496`
+passed [CI #43622937311](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43622937311)
+4/4, but its workflow did **not** invoke the new six-case oracle.
+Feature `e0621a9b` now explicitly runs all six tests in actual Linux,
+Windows and Linux sanitizer application regressions; its
+[CI #43624052194](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43624052194)
+was in progress on last inspection, so this revised source is **NOT
+yet qualified or merged**.
 With the prior 28-leaf/21-of-64 eligible grid, the selected cell alone
 predicts 31 leaves/22-of-64 QUAD UV but is correctly **rejected as a
 disconnected, diagonal-vertex island**. Two bridge alternatives
@@ -41,6 +47,17 @@ disconnected, diagonal-vertex island**. Two bridge alternatives
 both bridges predict 37 leaves/26-of-64. These are **necessary dyadic
 topology estimates, not actual original C++ Quadtree or native AFT execution**.
 [Bounded protocol on draft PR232](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/p2d1c0-second-error-band-dyadic-preflight-20261114/docs/research/quad/P2D1C0_SECOND_BOUNDARY_BAND_PREFLIGHT_20261114.md), not yet on canonical.
+
+**Native implementation proposal [PR233](https://github.com/tiagosombrra/apmesh-modernization/pull/233)**,
+head `8b62e77bb6de98ce284881c42d17f5ce18afe96f`, is
+**draft, stacked on PR232, not CI qualified**. It takes the actual new
+physical AFT source residual, reconstructs the real previous 28-leaf native
+Quadtree before each trial, and attempts original native
+`subdivideToLevel`, `refineAccordingToNeighbors`,
+`CaptureLeafPolygons` and `EmitLeafQuads` for corner-only, west,
+north and both bridge alternatives. Its real C++ records are independently
+cross-checked by the P2d-1c0 dyadic Python oracle and the six negatives.
+No new physical second AFT reconstruction or accepted epoch is implemented.
 
 **Next native gate P2d-1c1:** propagate the *current previous physical
 candidate* and source-error-selected site to the real native Quadtree,
