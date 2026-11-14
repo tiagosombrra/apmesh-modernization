@@ -156,6 +156,48 @@ or anisotropic acceptance is claimed. See [bounded evidence and
 independent numerical caveats](evidence/P2D0_P2D1A_QUALIFICATION_20261114.json)
 and the [canonical issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221).
 
+## P2d-1b0 and P2d-1b1 integrated — connected native topology only
+
+[P2d-1b0 PR227](https://github.com/tiagosombrra/apmesh-modernization/pull/227)
+merged at `9259de230c3da24ffd4dbced65beae7375c3fc46`
+after exact [CI #43609586259](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43609586259)
+passed four jobs, Linux/Windows native tests, ASan/UBSan/leak,
+85 root CTests, 527 tooling tests, and frozen original TRI.
+The real Quadtree source cell #13 refinement makes a valid
+54-QUAD UV region of unchanged 0.25 area; the higher-error
+AFT source cell #6 refinement instead produces 0.265625
+prospective area but is **rejected** as `Boundary vertex is not manifold`.
+No invalid QUAD island is accepted or published.
+
+[P2d-1b1 PR228](https://github.com/tiagosombrra/apmesh-modernization/pull/228)
+merged at `092b9adfa0f9f03d4c28b5218759b7e89cf5b199`;
+exact source `0c9bdc7f7562ce2c9633b4b44bb07fe7039b16a8`
+passed [CI #43618564496](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43618564496)
+4/4 jobs with Linux/Windows native and application, Linux
+sanitizers, 85 CTests, 527 Python and strict frozen TRI parity.
+A **three-leaf native source refinement band** (#6, #7, #9)
+connects the previous isolated boundary child to the original
+interior QUAD region: 19 to 28 actual native leaves, 62
+**UV-only QUADs**, 0.328125 of the source UV area
+(32.8125%, versus 25% initially). An independent exact
+8-by-8 dyadic grid oracle verifies 21/64 eligible cells,
+four-neighbor connectivity and absence of holes. The original
+physical OBJ remains SHA-256
+`cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0`
+on both platforms and the sanitizer run.
+
+**Scientific limit:** no native AFT or physical SubMesh is
+regenerated from the new band in these gates.
+`actual_aft_retriangulations=0 adaptive_epochs=0` remains
+mandatory. A new draft [P2d-1b2 PR229](https://github.com/tiagosombrra/apmesh-modernization/pull/229)
+attempts physical reconstruction and must independently
+classify any failed candidate; even a physically valid
+candidate is not an accepted adaptive history epoch.
+R3/M7 remains OPEN.
+
+[Bounded original-topology receipt](evidence/P2D1B0_P2D1B1_NATIVE_TREE_BAND_20261114.json)
+and [canonical issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221).
+
 ## Explicit remaining limits and history
 
 P0 closes one UV admission defect, not whole M4 or continuous physical Jacobian,
