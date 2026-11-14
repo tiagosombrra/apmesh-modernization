@@ -448,7 +448,8 @@ std::unique_ptr<SubMesh> CloneTypedHistory(const SubMesh& original,
 }
 
 void ProbeTypedHistory(SubMesh& accepted, const Candidate& layout, PatchBezier& patch) {
-  Require(patch.GetSubMesh() == &accepted, "Missing previously accepted patch owner");
+  // The probe runs before OBJ publication and before the candidate is committed.
+  SubMesh* previous_patch_owner = patch.GetSubMesh();
   CheckTypedIncidence(accepted, layout);
   const auto original_observers = CaptureNodeObservers(accepted);
   const auto* first_original_node = accepted.GetNoh(0);
@@ -463,9 +464,9 @@ void ProbeTypedHistory(SubMesh& accepted, const Candidate& layout, PatchBezier& 
     // Restore the original observer even if a later verification throws.
     struct RestoreOriginalPatch final {
       PatchBezier& patch;
-      SubMesh& previous;
-      ~RestoreOriginalPatch() { patch.SetSubMesh(&previous); }
-    } restore{patch, accepted};
+      SubMesh* previous;
+      ~RestoreOriginalPatch() { patch.SetSubMesh(previous); }
+    } restore{patch, previous_patch_owner};
     clone->SetPatch(&patch);
     patch.SetSubMesh(clone.get());
     Require(patch.GetSubMesh() == clone.get(),
@@ -484,7 +485,7 @@ void ProbeTypedHistory(SubMesh& accepted, const Candidate& layout, PatchBezier& 
     Require(CaptureNodeObservers(accepted) == original_observers,
             "Transient history clone mutated previously accepted node observers");
   }
-  Require(patch.GetSubMesh() == &accepted &&
+  Require(patch.GetSubMesh() == previous_patch_owner &&
               accepted.GetNoh(0) == first_original_node &&
               accepted.GetElement(0) == first_original_element &&
               CaptureNodeObservers(accepted) == original_observers,
@@ -550,12 +551,12 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
   auto* patch = dynamic_cast<PatchBezier*>(geometry.GetPatch(0));
   Require(patch != nullptr, "Controlled source must be Bezier");
   auto candidate = Generate(*patch, false);
+  ProbeTypedHistory(*candidate.mesh, candidate, *patch);
   Export(candidate, config.output_prefix + ".obj");
   candidate.mesh->SetPatch(patch);
   patch->SetSubMesh(candidate.mesh.get());
   std::unique_ptr<SubMesh> accepted;
   accepted.swap(candidate.mesh);
-  ProbeTypedHistory(*accepted, candidate, *patch);
   std::cout << "QUAD_CONTROLLED_PATCH quads=" << candidate.quads
             << " triangles=" << candidate.faces.size() - candidate.quads
             << " nodes=" << accepted->GetNumberNos()
