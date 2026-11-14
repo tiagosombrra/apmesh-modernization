@@ -1,0 +1,51 @@
+{
+  "schema": "apmesh.meshstudio.master_plan_audit.v4",
+  "date_utc": "2026-11-14",
+  "repository": "tiagosombrra/apmesh-modernization",
+  "branch": "feature/mesh-studio-fixture-first-20261114",
+  "preplan_branch_sha": "1a3345fbb28244a677751f5e6531407ca0524568",
+  "source_quad_head_at_audit": "3beec583fd4b95717d62716d819dd4cd81b02239",
+  "production_main_at_audit": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "planning_only": true,
+  "release_viewer_implemented": false,
+  "source_P1": {
+    "merged_pr": 217,
+    "merge_sha": "d39bbc447f88e179c3c4ee674bd9309f59c18eed",
+    "source_ci_run": 43588588497,
+    "source_ci_jobs_success": 4,
+    "physical_nodes": 69,
+    "quads": 42,
+    "native_aft_triangles": 36,
+    "boundary_intervals": 16,
+    "adaptive_epochs": 0,
+    "source_welding_approved": false
+  },
+  "fixture_zip_outside_repository": {
+    "total": 16,
+    "accepted": 10,
+    "deliberately_rejected": 6,
+    "synthetic_epoch_rows": 8,
+    "validator_rerun_twice": true,
+    "manifest_sha256": "dccd142254b17401f2f0c5c5f31b67483fb82f8e2f83e2e68ef1ab248a638ccc",
+    "committed_to_studio_branch": false
+  },
+  "v3_specifications": {
+    "scenarios": 18,
+    "figure_types": 11,
+    "event_types": 21,
+    "new_scenarios_implemented": false
+  },
+  "unexecuted_viewer_tests": [
+    "OBJ import",
+    "true vector figure export",
+    "S1b storyboard",
+    "independent geometry/SPD metrics",
+    "real P1 viewer import",
+    "Qt/VTK GUI",
+    "LaTeX publication",
+    "release packaging"
+  ],
+  "first_next_gate": "Commit V1 fixture corpus and independently verify 10 pass + 6 expected reject and 8 synthetic events, then implement strict headless OBJ importer + proven SVG output.",
+  "generator_code_changed": false,
+  "auto_merge": false
+}
