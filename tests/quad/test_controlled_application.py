@@ -214,6 +214,91 @@ def verify_quad_physical_quality(stdout, path):
     return independent
 
 
+def independent_mixed_surface_residual(path):
+    # Apply independent Bernstein source evaluation at TRI barycentric and
+    # QUAD bilinear sample locations parsed only from the exported physical OBJ.
+    xyz, uv, faces = [], [], []
+    for line in path.read_text().splitlines():
+        words = line.split()
+        if not words:
+            continue
+        if words[0] == "v":
+            xyz.append(tuple(map(float, words[1:])))
+        elif words[0] == "vt":
+            uv.append(tuple(map(float, words[1:])))
+        elif words[0] == "f":
+            faces.append([int(w.split("/")[0])-1 for w in words[1:]])
+    triangle_weights = (
+        (1/3, 1/3, 1/3), (.6, .2, .2), (.2, .6, .2), (.2, .2, .6))
+    quadrilateral_samples = (
+        (.5, .5), (.25, .25), (.75, .25), (.75, .75), (.25, .75))
+    result = {"maximum": 0.0, "rms": 0.0, "quad_maximum": 0.0,
+              "triangle_maximum": 0.0, "worst_quad_face": 0,
+              "quads": 0, "triangles": 0, "samples": 0,
+              "select_u": 0.0, "select_v": 0.0}
+    squares = []
+    for i, face in enumerate(faces):
+        if len(face) == 3:
+            samples = [w for w in triangle_weights]
+        else:
+            samples = [( (1-s)*(1-t), s*(1-t), s*t, (1-s)*t)
+                       for s, t in quadrilateral_samples]
+        face_max = -1.0
+        face_uv = None
+        for weights in samples:
+            at = tuple(sum(weight * uv[index][axis]
+                           for index, weight in zip(face, weights))
+                       for axis in (0, 1))
+            approximate = tuple(sum(weight * xyz[index][axis]
+                                    for index, weight in zip(face, weights))
+                                for axis in (0, 1, 2))
+            exact = golden(*at)[0]
+            distance = math.dist(exact, approximate)
+            squares.append(distance * distance)
+            if distance > face_max:
+                face_max = distance
+                face_uv = at
+            result["maximum"] = max(result["maximum"], distance)
+            result["samples"] += 1
+        if len(face) == 4:
+            if result["quads"] == 0 or face_max > result["quad_maximum"]:
+                result["worst_quad_face"] = i
+                result["select_u"], result["select_v"] = face_uv
+            result["quads"] += 1
+            result["quad_maximum"] = max(result["quad_maximum"], face_max)
+        else:
+            result["triangles"] += 1
+            result["triangle_maximum"] = max(result["triangle_maximum"], face_max)
+    result["rms"] = math.sqrt(math.fsum(squares) / result["samples"])
+    return result
+
+
+def verify_mixed_surface_residual(stdout, path):
+    matches = [line for line in stdout.decode().splitlines()
+               if line.startswith("QUAD_SOURCE_RESIDUAL ")]
+    require(len(matches) == 1, "Mixed Bezier source residual missing or duplicated")
+    observed = dict(part.split("=", 1) for part in matches[0].split()[1:])
+    expected = independent_mixed_surface_residual(path)
+    for name in ("samples", "quads", "triangles", "worst_quad_face"):
+        require(int(observed[name]) == expected[name],
+                "Mixed surface residual identity differs: " + name)
+    for name in ("maximum", "rms", "quad_maximum", "triangle_maximum",
+                 "select_u", "select_v"):
+        require(math.isclose(float(observed[name]), expected[name],
+                             abs_tol=1e-9, rel_tol=1e-8),
+                "Independent physical source residual differs: " + name)
+    require(observed["policy"] == "physical_bilinear_quad_tri_barycentric_v1" and
+            observed["real_tree_edits"] == "0" and observed["adaptive_epochs"] == "0" and
+            int(observed["real_leaf_ordinal"]) >= 0 and
+            int(observed["real_cell_id"]) >= 0 and
+            int(observed["source_depth"]) in (2, 3),
+            "Source residual incorrectly claims an adapted native tree")
+    require(expected["quads"] == 42 and expected["triangles"] == 36 and
+            expected["samples"] == 354 and expected["maximum"] > 0.0,
+            "Controlled physical residual has unexpected topology or error")
+    return expected
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -241,6 +326,7 @@ def main():
     result = audit(root/"accepted.obj")
     metric = verify_mixed_curvature(r.stdout, root/"accepted.obj")
     quality = verify_quad_physical_quality(r.stdout, root/"accepted.obj")
+    residual = verify_mixed_surface_residual(r.stdout, root/"accepted.obj")
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -256,6 +342,8 @@ def main():
             "Rollback changed mixed curvature metrics")
     require(verify_quad_physical_quality(r.stdout, root/"rollback.obj") == quality,
             "Rollback changed typed QUAD physical quality")
+    require(verify_mixed_surface_residual(r.stdout, root/"rollback.obj") == residual,
+            "Rollback changed history-dependent source residual")
     r = execute("unsupported", model="missing.bp")
     require(r.returncode != 0 and not (root/"unsupported.obj").exists(),
             "Invalid source was published")
@@ -276,6 +364,7 @@ def main():
               "typed_history_clone_guard": True,
               "typed_mixed_curvature_diagnostic": metric,
               "typed_physical_quad_quality": quality,
+              "mixed_surface_residual": residual,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
