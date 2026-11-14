@@ -57,7 +57,7 @@ class MixedEpochPreflight final {
 
   // This is a gate for provenance and demonstrable change, not a numerical
   // research policy. A caller must independently establish scientific validity.
-  void AdmitCandidate(const MixedEpochReceipt& candidate) {
+  void AdmitCandidate(const MixedEpochReceipt& candidate, bool inject_precommit_failure = false) {
     ValidateReceipt(candidate);
     const auto& previous = history_.back();
     if (candidate.epoch != previous.epoch + 1)
@@ -77,6 +77,8 @@ class MixedEpochPreflight final {
       throw std::invalid_argument("No actual quadtree edit was recorded");
     if (candidate.normalized_error >= previous.normalized_error)
       throw std::invalid_argument("Experimental monotone-error witness did not improve");
+    if (inject_precommit_failure)
+      throw std::runtime_error("Injected precommit epoch metadata failure");
     // A copyable receipt offers the strong exception guarantee of vector push.
     // No physical observer pointers or output files are changed by this gate.
     history_.push_back(candidate);
