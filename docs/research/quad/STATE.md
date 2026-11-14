@@ -27,19 +27,21 @@ was **closed unmerged as superseded**: its positive-staging requirement is
 included in PR231; the extra synthetic rejection-negative control was *not*
 integrated or CI qualified and remains an optional independent safeguard.
 
-**Currently active isolated [PR232](https://github.com/tiagosombrra/apmesh-modernization/pull/232)**,
-feature `e0621a9b8b2675c60ba5bfd3cd0dfe0e395b01af`,
-implements **source-grid-only P2d-1c0** topology preflight for the next
+**Integrated [P2d-1c0 PR232](https://github.com/tiagosombrra/apmesh-modernization/pull/232)**,
+exact feature `e0621a9b8b2675c60ba5bfd3cd0dfe0e395b01af`,
+merge `a03938627ab8bf2aeadc04d1c238c2eb693d651f`,
+implements **source-grid-only** topology preflight for the next
 actual staged candidate's maximum original AFT residual: face103,
 UV near (0.8,0.1), distinct level-2 source coordinate (3,0).
-Six local Python tests pass; the prior exact feature `7a42a496`
-passed [CI #43622937311](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43622937311)
-4/4, but its workflow did **not** invoke the new six-case oracle.
-Feature `e0621a9b` now explicitly runs all six tests in actual Linux,
-Windows and Linux sanitizer application regressions; its
+Six local Python tests passed; the prior exact feature `7a42a496`
+had 4/4 green CI but did **not execute** the new test file. The corrected
+exact feature `e0621a9b` passed
 [CI #43624052194](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43624052194)
-was in progress on last inspection, so this revised source is **NOT
-yet qualified or merged**.
+**4/4 jobs**, explicitly executing the six independent tests in actual
+Linux/Windows/ASan controlled application, 85/85 root CTests,
+527/527 Python tooling and frozen original Eistute/Book TRI parity.
+[Source-bound receipt](evidence/P2D1C0_SECOND_BAND_DYADIC_PREFLIGHT_20261114.json).
+Source-only predicted topology does **not** count as actual native QUAD output.
 With the prior 28-leaf/21-of-64 eligible grid, the selected cell alone
 predicts 31 leaves/22-of-64 QUAD UV but is correctly **rejected as a
 disconnected, diagonal-vertex island**. Two bridge alternatives
@@ -49,15 +51,24 @@ topology estimates, not actual original C++ Quadtree or native AFT execution**.
 [Bounded protocol on draft PR232](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/p2d1c0-second-error-band-dyadic-preflight-20261114/docs/research/quad/P2D1C0_SECOND_BOUNDARY_BAND_PREFLIGHT_20261114.md), not yet on canonical.
 
 **Native implementation proposal [PR233](https://github.com/tiagosombrra/apmesh-modernization/pull/233)**,
-head `8b62e77bb6de98ce284881c42d17f5ce18afe96f`, is
-**draft, stacked on PR232, not CI qualified**. It takes the actual new
+head `7b536dc901cae1e8b9410f6fbd9f3540c20dba09`, is
+**draft; candidate exact-source CI #43624756858 has Linux/Windows/ASan
+success but baseline root job pending**. The first exact-source CI
+#43624612764 **failed real C++ compilation** on non-const `Vertex::getX/getY`
+accessors; a narrow typed-pointer fix is retained and independently retested. It takes the actual new
 physical AFT source residual, reconstructs the real previous 28-leaf native
 Quadtree before each trial, and attempts original native
 `subdivideToLevel`, `refineAccordingToNeighbors`,
 `CaptureLeafPolygons` and `EmitLeafQuads` for corner-only, west,
 north and both bridge alternatives. Its real C++ records are independently
 cross-checked by the P2d-1c0 dyadic Python oracle and the six negatives.
-No new physical second AFT reconstruction or accepted epoch is implemented.
+Actual native Quadtree trials on the previous first 28-leaf tree returned
+isolated corner **31 leaves / 0 QUAD (rejected)**; west **34 leaves / 75 QUAD**,
+north **34 leaves / 71 QUAD**, and both **37 leaves / 82 QUAD**,
+with UV area respectively `0.34375`, `0.375`, `0.375`, `0.40625`.
+Identical source-native results on Linux/Windows/ASan, not merely
+the previous dyadic predictions. No new physical second AFT reconstruction
+or accepted epoch is implemented.
 
 **Next native gate P2d-1c1:** propagate the *current previous physical
 candidate* and source-error-selected site to the real native Quadtree,
