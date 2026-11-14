@@ -98,6 +98,9 @@ def main():
     r = execute("accepted")
     require(r.returncode == 0 and b"ids_unique=1 published=1" in r.stdout,
             "Real CLI generation or physical identities failed")
+    require(b"QUAD_TYPED_HISTORY_CLONE accepted_clone=1 partial_failure_rollback=1" in r.stdout and
+            b"source_observers_preserved=1 adaptive_epochs=0" in r.stdout,
+            "Typed QUAD/TRI history clone or rollback guard did not run")
     result = audit(root/"accepted.obj")
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
@@ -105,6 +108,8 @@ def main():
     require(r.returncode != 0 and (root/"accepted.obj").read_bytes() == initial,
             "Existing output was overwritten")
     r = execute("rollback", True)
+    require(b"QUAD_TYPED_HISTORY_CLONE accepted_clone=1 partial_failure_rollback=1" in r.stdout,
+            "Rollback case did not preserve the typed history probe")
     require(r.returncode == 1 and b"QUAD_ROLLBACK preserved=1 previous_nonempty=1" in r.stdout,
             "Nonempty physical publication rollback not demonstrated")
     require(audit(root/"rollback.obj") == result, "Rollback lost prior valid output")
@@ -125,6 +130,7 @@ def main():
     report = {"actual_ap_mesh_entry": True, "model": "Models3d::ModelCurvaBezier",
               "result": result, "rollback_nonempty": True,
               "native_AFT": True, "independent_Bezier_oracle": True,
+              "typed_history_clone_guard": True,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
