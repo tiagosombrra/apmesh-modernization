@@ -1705,3 +1705,51 @@ adaptive epoch. Main TRI behavior remains unchanged. Evidence:
 evidence/P2D1B0_P2D1B1_NATIVE_TREE_BAND_20261114.json;
 canonical R3 issue221 remains OPEN. This documentation-only
 checkpoint has no scientific qualification for its own SHA.
+
+## 2026-11-14 — ChatGPT GitHub continuation: P2d-1b2 positive physical candidate
+
+Read canonical STATE/roadmap/protocol/journal and exact GitHub PR and CI status.
+Verified feature PR229 head bada655ae68a635f4b9664a05b2ab261d2d8d94c
+passed GitHub Actions #43619762822 four/four jobs, Linux GCC and Windows
+MSVC full physical application and native tests, Linux ASan/UBSan/leak,
+85/85 root CTests, 527/527 Python and frozen Eistute/Book original TRI
+parity. Native Linux, sanitizer and Windows logs independently reported
+93 physical nodes, 62 genuine QUAD and 44 native-AFT TRI, original 16
+source boundary edges, valid exported candidate 76b0b4de...0d7afd6;
+initial 69/42/36 mesh OBJ unchanged cbf6cd63...90295e0. Maximum
+sampled source residual changed 0.0463899582705 to 0.0367706981989;
+RMS 0.0130653585529 to 0.007863932397 uses different 354/486
+sample sites and is NOT a common-sample scientific convergence claim.
+PR229 concurrently merged to quad-templates at
+289b6be6e97f787b53471255f9d30fbf3777fbba; no exact-merge CI
+was independently established in this session.
+
+Audited P2d-1b2 test false-green logic: previously a reconstruction
+exception with status=rejected could pass the positive regression.
+Created branch quad/p2d1b2-positive-physical-gate-20261114 from
+original feature bada655a; committed only Python test changes at
+71dde5d2a443b48a8e4a9a84dca07f5d7bb64901; opened draft PR230.
+The new positive guard requires actual staged physical OBJ and
+source-specific 93-node/62-QUAD/44-TRI topology; a deliberate well-formed
+negative checks that the rejection-only path remains valid as a
+negative but cannot pass the positive gate. The maximum sampled residual
+positive witness is source-specific; no general scientific threshold
+or RMS convergence requirement was added. After concurrent PR229 merge,
+retargeted PR230 base to canonical quad-templates with only one Python
+file affected. The PR230 exact-feature CI, code review and merge are
+NOT verified. No full native local run was performed; a local raw-file
+syntax download attempt failed due unavailable DNS, not a passing check.
+
+Published explicit scope/evidence JSON, updated STATE and this append-only
+journal on the research branch; main remains
+f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94. A physical unaccepted
+candidate is NOT an accepted second adaptive epoch.
+Science issue221 remains open: original AdaptCurve provenance, paired
+previous-state-driven accepted epochs, owner/observer transactional
+publication, comparable source integration error and policy approval
+are still missing. High-valence scientific sheet/weld decisions, 1993
+equivalence, all-QUAD and anisotropy remain separately open.
+Next: qualify PR230 exact feature SHA in Linux/Windows/sanitizer/frozen TRI,
+then promote only its scoped test to quad-templates after review and
+design the first actual mixed state transition with independent common-grid
+error/quality/complexity evidence. Do not touch main/default TRI.
