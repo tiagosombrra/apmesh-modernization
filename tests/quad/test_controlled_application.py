@@ -146,6 +146,74 @@ def verify_mixed_curvature(stdout, path):
     return oracle
 
 
+def independent_quad_physical_quality(path):
+    # Re-evaluate every retained four-node physical QUAD from OBJ and the
+    # independent source Bezier derivatives, not C++ element quality fields.
+    positions, uv, faces = [], [], []
+    for line in path.read_text().splitlines():
+        fields = line.split()
+        if not fields:
+            continue
+        if fields[0] == "v":
+            positions.append(tuple(map(float, fields[1:])))
+        elif fields[0] == "vt":
+            uv.append(tuple(map(float, fields[1:])))
+        elif fields[0] == "f":
+            faces.append([int(token.split("/")[0]) - 1 for token in fields[1:]])
+    metrics = {"quads": 0, "min_scaled_jacobian": 1.0,
+               "min_warpage_cosine": 1.0, "max_edge_ratio": 1.0}
+    def magnitude(v):
+        return math.sqrt(dot(v, v))
+    for face in faces:
+        if len(face) != 4:
+            continue
+        metrics["quads"] += 1
+        points = [positions[i] for i in face]
+        lengths = []
+        for k, idx in enumerate(face):
+            current = points[k]
+            next_edge = vector(current, points[(k+1) % 4])
+            prev_edge = vector(current, points[(k+3) % 4])
+            lengths.append(magnitude(next_edge))
+            _, du, dv = golden(*uv[idx])
+            reference = cross(du, dv)
+            denominator = magnitude(next_edge) * magnitude(prev_edge) * magnitude(reference)
+            require(denominator > 0, "Independent QUAD corner has zero metric denominator")
+            scaled = dot(cross(next_edge, prev_edge), reference) / denominator
+            metrics["min_scaled_jacobian"] = min(metrics["min_scaled_jacobian"], scaled)
+        normal_first = cross(vector(points[0], points[1]), vector(points[0], points[2]))
+        normal_second = cross(vector(points[0], points[2]), vector(points[0], points[3]))
+        warp = dot(normal_first, normal_second) / (
+            magnitude(normal_first) * magnitude(normal_second))
+        metrics["min_warpage_cosine"] = min(metrics["min_warpage_cosine"], warp)
+        metrics["max_edge_ratio"] = max(metrics["max_edge_ratio"],
+                                         max(lengths) / min(lengths))
+    return metrics
+
+
+def verify_quad_physical_quality(stdout, path):
+    entries = [line for line in stdout.decode().splitlines()
+               if line.startswith("QUAD_TYPED_QUALITY ")]
+    require(len(entries) == 1, "Physical QUAD quality diagnostic missing or duplicated")
+    values = dict(field.split("=", 1) for field in entries[0].split()[1:])
+    independent = independent_quad_physical_quality(path)
+    require(int(values["quads"]) == independent["quads"] == 42 and
+            int(values["negative_cases"]) == 4 and
+            values["policy"] == "corner_normal_metric_probe" and
+            values["adaptive_epochs"] == "0",
+            "Physical QUAD metric type, policy or negative witness invalid")
+    for field in ("min_scaled_jacobian", "min_warpage_cosine", "max_edge_ratio"):
+        actual, expected = float(values[field]), independent[field]
+        require(math.isfinite(actual) and math.isclose(actual, expected,
+                abs_tol=1e-8, rel_tol=1e-8),
+                "Independent physical QUAD quality metric disagrees: " + field)
+    require(independent["min_scaled_jacobian"] > 0.0 and
+            independent["min_warpage_cosine"] > 0.0 and
+            independent["max_edge_ratio"] >= 1.0,
+            "Physical QUAD metric is degenerate or reversed")
+    return independent
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -172,6 +240,7 @@ def main():
             "Typed QUAD/TRI history clone or rollback guard did not run")
     result = audit(root/"accepted.obj")
     metric = verify_mixed_curvature(r.stdout, root/"accepted.obj")
+    quality = verify_quad_physical_quality(r.stdout, root/"accepted.obj")
     initial = (root/"accepted.obj").read_bytes()
     r = subprocess.run([str(args.exe.resolve()), "--config", str(root/"accepted.conf")],
                        capture_output=True, timeout=60)
@@ -185,6 +254,8 @@ def main():
     require(audit(root/"rollback.obj") == result, "Rollback lost prior valid output")
     require(verify_mixed_curvature(r.stdout, root/"rollback.obj") == metric,
             "Rollback changed mixed curvature metrics")
+    require(verify_quad_physical_quality(r.stdout, root/"rollback.obj") == quality,
+            "Rollback changed typed QUAD physical quality")
     r = execute("unsupported", model="missing.bp")
     require(r.returncode != 0 and not (root/"unsupported.obj").exists(),
             "Invalid source was published")
@@ -204,6 +275,7 @@ def main():
               "native_AFT": True, "independent_Bezier_oracle": True,
               "typed_history_clone_guard": True,
               "typed_mixed_curvature_diagnostic": metric,
+              "typed_physical_quad_quality": quality,
               "OBJ_sha256": hashlib.sha256(initial).hexdigest(), "adaptive_epochs": 0}
     (root/"report.json").write_text(json.dumps(report, indent=2)+"\n")
     print(json.dumps(report))
