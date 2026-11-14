@@ -1,0 +1,82 @@
+{
+  "schema": "apmesh-quad-p2d1b0-p2d1b1-native-topology-v1",
+  "date": "2026-11-14",
+  "branch": "quad-templates",
+  "verified_scope": "controlled single native Bezier source patch, serial fixed16, physical P1 unchanged",
+  "p2d1b0": {
+    "pr": 227,
+    "feature_sha": "4dba0421807047975a2163c917bd8bcd802bca8c",
+    "merge_sha": "9259de230c3da24ffd4dbced65beae7375c3fc46",
+    "ci_run": 43609586259,
+    "ci_jobs": {
+      "passed": 4,
+      "total": 4
+    },
+    "baseline_ctests": 85,
+    "tooling_python": 527,
+    "native_quad_ctests_per_os": 18,
+    "original_source_leaves": 19,
+    "isolated_quad_cell": {
+      "id": 13,
+      "resulting_leaves": 22,
+      "quad_uv_area": 0.25,
+      "uv_quads": 54,
+      "valid_disk": true
+    },
+    "isolated_aft_cell": {
+      "id": 6,
+      "resulting_leaves": 22,
+      "prospective_quad_uv_area": 0.265625,
+      "uv_quads_published": 0,
+      "valid_disk": false,
+      "rejection": "Boundary vertex is not manifold"
+    },
+    "accepted_adaptive_epochs": 0
+  },
+  "p2d1b1": {
+    "pr": 228,
+    "feature_sha": "0c9bdc7f7562ce2c9633b4b44bb07fe7039b16a8",
+    "merge_sha": "092b9adfa0f9f03d4c28b5218759b7e89cf5b199",
+    "ci_run": 43618564496,
+    "ci_jobs": {
+      "passed": 4,
+      "total": 4
+    },
+    "baseline_ctests": 85,
+    "tooling_python": 527,
+    "native_quad_ctests_per_os": 18,
+    "real_native_refined_cell_ids": [
+      6,
+      7,
+      9
+    ],
+    "source_leaves_before": 19,
+    "source_leaves_after": 28,
+    "source_quad_uv_area_before": 0.25,
+    "source_quad_uv_area_after": 0.328125,
+    "qualified_uv_quads_after": 62,
+    "valid_connected_uv_disk": true,
+    "independent_source_oracle": {
+      "dyadic_grid": "8x8",
+      "occupied_cells": 21,
+      "edge_connected": true,
+      "no_holes": true
+    },
+    "candidate_artifacts": {
+      "linux": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43618564496/artifacts/14123127274",
+      "windows": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43618564496/artifacts/14123341871"
+    },
+    "original_physical_obj_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+    "original_aft_retriangulations_for_band": 0,
+    "accepted_adaptive_epochs": 0
+  },
+  "strict_scientific_limits": [
+    "connected QUAD UV geometry only, NOT new physical mixed element mesh",
+    "no regenerated native AFT in this gate",
+    "no accepted adaptive epochs or proven reduction of physical error",
+    "fixed16 boundary not original AdaptCurve",
+    "no general nonmanifold welding/all-QUAD/anisotropy/historical Delaunay equivalence"
+  ],
+  "next_gate": "P2d-1b2 physical native AFT on connected band, independently audited candidate only; scientific R3 remains open",
+  "tracker": "https://github.com/tiagosombrra/apmesh-modernization/issues/221"
+}
