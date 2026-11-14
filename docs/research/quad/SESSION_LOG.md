@@ -1753,3 +1753,75 @@ Next: qualify PR230 exact feature SHA in Linux/Windows/sanitizer/frozen TRI,
 then promote only its scoped test to quad-templates after review and
 design the first actual mixed state transition with independent common-grid
 error/quality/complexity evidence. Do not touch main/default TRI.
+
+## 2026-11-14 — Current continuation: independent same-site proof, second error-band native trial
+
+Verified live research quad-templates and preserved main
+f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94. Exact feature
+1efb13b6a6fb46fca77deba81aa405db5bff90d5 of PR231 passed
+Actions #43620929978, four/four jobs: Linux/Windows actual controlled
+physical candidates, Linux ASan/UBSan/leak, 85/85 root CTests,
+527/527 Python and frozen original Eistute/Book TRI parity.
+Independent Bernstein control-net same 4096-site UV metrics verified:
+maximum 0.0656412209316 -> 0.0516074134575; RMS uniform UV
+0.0172952038547 -> 0.0125180008382; source differential-area
+weighted RMS 0.0159812656640 -> 0.0118103246430.
+Merged PR231 at 4b7f485a0df2c5108dbd822f337d2e38bba2947a. Source
+remains controlled fixed16; staged mixed 93-node/62-QUAD/44-AFT-TRI
+physical candidate is not accepted mixed adaptivity. PR230 was
+closed without merge due a duplicative positive staging check
+after PR231 integration; its extra synthetic rejection-only unit
+was not ported and must not be reported as qualified.
+
+Created isolated source-only P2d-1c0 branch and PR232.
+Its original measured staged physical candidate has new worst
+AFT triangle face 103 near UV (0.8,0.1), source level-2 grid
+cell (3,0). An independent 8x8 dyadic surrogate retains the
+previously refined (1,1),(0,0),(1,0),(0,1) cells. Six isolated
+offline Python tests locally PASS: current first 28-leaf/21/64
+QUAD UV, single next error-cell 31-leaf/22/64 disconnected/
+diagonal vertex reject, two alternative two-cell bridges
+34 leaves/24/64 connected, three-cell band 37 leaves/26/64
+connected, plus malformed input/duplicate/vertex-link controls.
+None of these synthetic source-grid leaves are falsely called
+native generated QUAD physical faces or accepted epochs.
+First source commit 7a42a49 passed #43622937311 four CI
+jobs BUT those jobs did not actually execute the new 6-case
+script; preserved the coverage deficiency, amended the existing
+real Linux/Windows/ASan controlled-application regression to
+invoke all six in feature e0621a9b8b2675c60ba5bfd3cd0dfe0e395b01af.
+Exact revised CI #43624052194 was ongoing at checkpoint,
+NOT a verified pass. PR232 remains DRAFT/UNMERGED.
+
+Started stacked native P2d-1c1 draft PR233, current feature
+8b62e77bb6de98ce284881c42d17f5ce18afe96f:
+a real original native Quadtree is reconstructed from the
+current previous 28-leaf source band for each measured next
+AFT error alternative, and original source methods perform
+real second corner, west, north and both bridge edits with
+2:1 balancing and actual `CaptureLeafPolygons` /
+`EmitLeafQuads`. Python independently correlates four
+genuine C++ outcomes with the separate source-only grid and
+checks previous physical element/node observer identity and
+explicit rejection for isolated corner. No second original
+AFT exterior triangulation, physical third mesh, acceptance
+policy, owner transaction or actual accepted adaptive epoch
+is implemented. Native C++ compilation, exact-feature CI
+and runtime evidence for PR233 have NOT been run/verified;
+because its PR initially targets the stacked PR232 feature
+branch, it does NOT yet satisfy the workflow
+`pull_request` branch filter requiring quad-templates.
+Retarget and execute exact CI only after PR232 is qualified/
+merged. No local native C++ compilation was performed.
+
+Next: finish PR232 exact six-case CI, review/merge its strictly
+bounded source-only oracle, then retarget PR233 to canonical
+quad-templates and require Linux/Windows real native output,
+ASan/UBSan, full root/tooling and original frozen TRI.
+Any native failure remains reported as rejected, not converted
+to success. After native disk qualification pursue original AFT
+physical reconstruction per variant, common-site source error,
+warpage/Jacobian/cost and strong-exception owner transaction
+before scientific mixed epochs. R3/M7 issue221 remains OPEN,
+adaptive_epochs=0; global nonmanifold sheets, full AdaptCurve,
+1993 historical equivalence, all-QUAD, anisotropy remain open.
