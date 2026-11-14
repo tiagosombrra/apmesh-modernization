@@ -91,6 +91,32 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           & "build/quad-ci-msvc/Debug/quad_tree_demo.exe" "$env:RUNNER_TEMP/quad-native-tree.obj"
           exit $LASTEXITCODE
+      - name: Build controlled application QUAD entry (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          cmake -S . -B build/quad-app-linux -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON -DBUILD_TESTING=OFF
+          cmake --build build/quad-app-linux --target ap_mesh --parallel 2
+          python3 tests/quad/test_controlled_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results
+      - name: Build controlled application QUAD entry (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          cmake -S . -B build/quad-app-msvc -G "Visual Studio 17 2022" -A x64 -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON -DBUILD_TESTING=OFF
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build build/quad-app-msvc --target ap_mesh --config Debug --parallel 2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tests/quad/test_controlled_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results
+          exit $LASTEXITCODE
+      - name: Retain controlled application output
+        uses: actions/upload-artifact@v4
+        with:
+          name: controlled-quad-${{ matrix.os }}-${{ github.sha }}
+          path: |
+            build/quad-app-linux/results/
+            build/quad-app-msvc/results/
+          retention-days: 14
+          if-no-files-found: error
       - name: Check experimental OMP Adapter syntax without changing legacy build defaults
         if: runner.os == 'Linux'
         shell: bash
@@ -255,6 +281,9 @@ jobs:
               "src/adapter/adapter.cpp",
               "include/generator/generator_adaptive.h",
               "src/generator/generator_adaptive.cpp",
+              # Explicit new controlled-case assets; frozen model/profile paths stay guarded.
+              "configs/quad/README.md",
+              "configs/quad/curved_patch.conf",
           }
           changed = set(subprocess.check_output(
               ["git", "diff", "--name-only",
@@ -264,7 +293,7 @@ jobs:
           unexpected = changed - allowed
           if unexpected:
               raise SystemExit("Unreviewed production delta: " + ", ".join(sorted(unexpected)))
-          print("Reviewed M3 dispatch-only source delta:", sorted(changed))
+          print("Reviewed TRI-preserving dispatch and explicit controlled-case assets:", sorted(changed))
           PY
           git rev-parse HEAD
           git -C ../apmesh-tri-reference rev-parse HEAD
@@ -273,10 +302,10 @@ jobs:
         run: |
           cmake -S ../apmesh-tri-reference -B ../apmesh-tri-reference/build/science-reference -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF
           cmake --build ../apmesh-tri-reference/build/science-reference --target ap_mesh --parallel 2
-      - name: Build candidate TRI executable using the same compiler and flags
+      - name: Build candidate with controlled QUAD compiled and unchanged TRI selection
         shell: bash
         run: |
-          cmake -S . -B build/science-candidate -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF
+          cmake -S . -B build/science-candidate -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_USE_MPI=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON
           cmake --build build/science-candidate --target ap_mesh --parallel 2
           sha256sum ../apmesh-tri-reference/build/science-reference/bin/ap_mesh build/science-candidate/bin/ap_mesh
       - name: Execute fixed Eistute and Book models for both revisions

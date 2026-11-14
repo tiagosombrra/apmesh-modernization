@@ -1,5 +1,8 @@
 #include "application/run_application.h"
 #include "application/runtime_config.h"
+#ifdef AP_MESH_EXPERIMENTAL_QUAD
+#include "controlled_patch_application.h"
+#endif
 #include <algorithm>
 #include "adapter/domain_generation_error.h"
 #include <atomic>
@@ -40,6 +43,14 @@ int RunApplication(int argc, char** argv) {
     try {
       const RuntimeConfig config = LoadRuntimeConfig(argv[2]);
       if (config.mesh_element_kind != "tri") {
+#ifdef AP_MESH_EXPERIMENTAL_QUAD
+        if (config.quad_experimental_case == "curved_bezier_fixed16_vertex_mean_v1") {
+          if (config.num_processes != 1 || config.num_threads != 1)
+            throw std::runtime_error("Controlled QUAD requires serial execution");
+          ApplyRuntimeConfig(config);
+          return apmesh::quad::RunControlledPatch(config);
+        }
+#endif
         // Reject incomplete QUAD mode before changing legacy global state.
         throw std::runtime_error(
             "MESH_ELEMENT_KIND=quad_uv requires an approved interior-point policy; "

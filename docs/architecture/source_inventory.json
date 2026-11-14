@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 669,
+    "literal_include_directives": 670,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -366,6 +366,7 @@
     "cfloat": 5,
     "climits": 2,
     "cmath": 19,
+    "controlled_patch_application.h": 1,
     "cstddef": 2,
     "cstdint": 2,
     "cstdio": 3,
@@ -412,7 +413,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "10b6503fa492364c289e34b8b608ba55d1b5b559bc6da309f182b73d6cf2b0f1"
+      "sha256": "827073404c676232e89d01c6bacba979fb4e74ab599eee7a11555b8cdb28c99b"
     },
     {
       "path": "CMakePresets.json",
@@ -830,8 +831,8 @@
       "path": "include/application/runtime_config.h",
       "component_by_directory": "application",
       "kind": "header",
-      "sha256": "f077388467636384d8bfbf1f75082808e9362c13c2dd0519e5910419dd5060e7",
-      "bytes": 3086,
+      "sha256": "b99cdb05a75a8b831ab67d535c586fcde82b6233a0a2fe1c8fc1bf379c85281c",
+      "bytes": 3161,
       "includes": [
         {
           "line": 4,
@@ -3888,8 +3889,8 @@
       "path": "src/application/run_application.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "752ea62e011748820fab5255157212fe5f0cc3b19459cee055472bcdef6239d6",
-      "bytes": 4289,
+      "sha256": "f12c5a25f21b38c5585a79b567e5f3dc4b557a45297191f50bbe8ae66f4968f5",
+      "bytes": 4756,
       "includes": [
         {
           "line": 1,
@@ -3906,168 +3907,175 @@
           "target": "include/application/runtime_config.h"
         },
         {
-          "line": 3,
+          "line": 4,
+          "spelling": "controlled_patch_application.h",
+          "form": "quote",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 6,
           "spelling": "algorithm",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 4,
+          "line": 7,
           "spelling": "adapter/domain_generation_error.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/adapter/domain_generation_error.h"
         },
         {
-          "line": 5,
+          "line": 8,
           "spelling": "atomic",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 6,
+          "line": 9,
           "spelling": "cctype",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 7,
+          "line": 10,
           "spelling": "cstdlib",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 8,
+          "line": 11,
           "spelling": "fstream",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 9,
+          "line": 12,
           "spelling": "iomanip",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 10,
+          "line": 13,
           "spelling": "stdexcept",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 11,
+          "line": 14,
           "spelling": "string",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 12,
+          "line": 15,
           "spelling": "unordered_map",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 13,
+          "line": 16,
           "spelling": "vector",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
-          "line": 14,
+          "line": 17,
           "spelling": "data/curve/curve_adaptive_parametric_bezier.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/curve/curve_adaptive_parametric_bezier.h"
         },
         {
-          "line": 15,
+          "line": 18,
           "spelling": "data/curve/curve_adaptive_parametric_hermite.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/curve/curve_adaptive_parametric_hermite.h"
         },
         {
-          "line": 16,
+          "line": 19,
           "spelling": "data/definitions.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/definitions.h"
         },
         {
-          "line": 17,
+          "line": 20,
           "spelling": "data/model.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/model.h"
         },
         {
-          "line": 18,
+          "line": 21,
           "spelling": "data/patch/patch_bezier.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_bezier.h"
         },
         {
-          "line": 19,
+          "line": 22,
           "spelling": "data/patch/patch_hermite.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/patch/patch_hermite.h"
         },
         {
-          "line": 20,
+          "line": 23,
           "spelling": "data/vector_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/vector_adaptive.h"
         },
         {
-          "line": 21,
+          "line": 24,
           "spelling": "data/vertex_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/vertex_adaptive.h"
         },
         {
-          "line": 22,
+          "line": 25,
           "spelling": "generator/generator_adaptive.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/generator/generator_adaptive.h"
         },
         {
-          "line": 23,
+          "line": 26,
           "spelling": "input_output/models_3d.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/models_3d.h"
         },
         {
-          "line": 24,
+          "line": 27,
           "spelling": "input_output/input_validation.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/input_validation.h"
         },
         {
-          "line": 25,
+          "line": 28,
           "spelling": "input_output/patch_reader.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/input_output/patch_reader.h"
         },
         {
-          "line": 26,
+          "line": 29,
           "spelling": "timer/timer.h",
           "form": "quote",
           "scope": "first_party",
@@ -4079,8 +4087,8 @@
       "path": "src/application/runtime_config.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "8c2697c4ed8f108ac151761028060b187da5b09df9a0323fb9503d9ce4cfc870",
-      "bytes": 22479,
+      "sha256": "c86c280b39550cc120028a8945c71700991059227dae93ab2f4631c1b453d772",
+      "bytes": 23218,
       "includes": [
         {
           "line": 1,
