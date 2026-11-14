@@ -3,6 +3,7 @@
 #include "physical_quadrilateral_adaptive.h"
 #include "data/mesh/sub_mesh.h"
 #include "data/triangle_adaptive.h"
+#include <functional>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -189,13 +190,16 @@ struct PublicationFailure : std::runtime_error {
   using std::runtime_error::runtime_error;
 };
 
-Candidate Generate(PatchBezier& patch, bool fail_before_commit) {
+using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
+
+Candidate Generate(PatchBezier& patch, bool fail_before_commit,
+                   const ResearchSourceTreeFactory& source_tree_factory = {}) {
   ValidateSourceCurves(patch);
-  auto original = MakeSourceTree(true);
+  auto original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
   Require(original->makeTemplateBasedMesh() == Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
           "Original interior TRI reference failed");
   const auto front = SnapshotLegacyFront(*original);
-  auto tree = MakeSourceTree(true);
+  auto tree = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
   InteriorTemplateDispatcher dispatch(*tree);
   const auto selected = dispatch.Select(InteriorTemplateMode::ExperimentalQuad, PointRule);
   auto* raw = tree.get();
@@ -746,7 +750,9 @@ struct ConnectedBandTrial {
   std::string rejection = "none";
 };
 
-ConnectedBandTrial TrialConnectedAftBand(const research::ResidualUv& selected_uv) {
+ConnectedBandTrial TrialConnectedAftBand(
+    const research::ResidualUv& selected_uv,
+    std::unique_ptr<Quadtree>* retained_native_tree = nullptr) {
   Require(std::isfinite(selected_uv[0]) && std::isfinite(selected_uv[1]) &&
               selected_uv[0] > 0.0 && selected_uv[0] < 1.0 &&
               selected_uv[1] > 0.0 && selected_uv[1] < 1.0,
@@ -808,6 +814,8 @@ ConnectedBandTrial TrialConnectedAftBand(const research::ResidualUv& selected_uv
     // Retain the genuine native topological failure as a rejected proposal.
     result.rejection = failure.what();
   }
+  if (result.admitted_uv_disk && retained_native_tree)
+    *retained_native_tree = std::move(tree);
   return result;
 }
 
@@ -949,6 +957,114 @@ void Export(const Candidate& result, const std::filesystem::path& path) {
   std::filesystem::remove(temporary, ec);
   std::filesystem::remove(staging, ec);
 }
+// A completely separate, non-accepted physical candidate rebuilt from the
+// exact source-error-selected connected native tree and original AFT pipeline.
+void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
+                                const research::MixedSurfaceResidual& source_residual,
+                                const std::filesystem::path& output_prefix) {
+  Require(previous.mesh && previous.quads > 0 &&
+              source_residual.worst_triangle_face >= previous.quads &&
+              source_residual.worst_triangle_face < previous.faces.size(),
+          "Physical connected band requires a genuine preceding mixed candidate");
+  const auto previous_observers = CaptureNodeObservers(*previous.mesh);
+  auto* previous_node = previous.mesh->GetNoh(0);
+  auto* previous_element = previous.mesh->GetElement(0);
+  auto* previous_patch_owner = patch.GetSubMesh();
+  const auto sample = source_residual.worst_triangle_sample_uv;
+  const auto candidate_path = std::filesystem::path(output_prefix.string() + ".band-candidate.obj");
+  const auto factory = [sample]() -> std::unique_ptr<Quadtree> {
+    std::unique_ptr<Quadtree> ready;
+    const auto band = TrialConnectedAftBand(sample, &ready);
+    Require(band.admitted_uv_disk && ready && band.refined_cell_ids[0] == 6 &&
+                band.refined_cell_ids[1] == 7 && band.refined_cell_ids[2] == 9 &&
+                band.leaves == 28 && band.quads == 62 &&
+                band.uv_area == 0.328125L,
+            "Physical connected band lacks an independently admissible original native tree");
+    return ready;
+  };
+  bool staged = false;
+  std::string reason = "none";
+  std::size_t physical_quads = 0;
+  std::size_t physical_triangles = 0;
+  std::size_t physical_nodes = 0;
+  double maximum_error = 0.0;
+  double maximum_triangle_error = 0.0;
+  double maximum_quad_error = 0.0;
+  double minimum_facet_quality = 0.0;
+  try {
+    // The original AFT gets its own real *band-refined* legacy front.
+    // The new QUAD selector consumes a second identical but independent tree.
+    auto candidate = Generate(patch, false, factory);
+    CheckTypedIncidence(*candidate.mesh, candidate);
+    Require(candidate.quads == 62 &&
+                candidate.faces.size() > candidate.quads &&
+                candidate.mesh->GetNumberNos() == candidate.uv.size(),
+            "Band-refined physical proposal lacks both typed QUAD and original AFT TRI");
+    std::vector<research::ResidualUv> uv;
+    std::vector<research::ResidualPoint3> xyz;
+    uv.reserve(candidate.uv.size());
+    xyz.reserve(candidate.uv.size());
+    for (std::size_t i = 0; i < candidate.uv.size(); ++i) {
+      uv.push_back({candidate.uv[i].u, candidate.uv[i].v});
+      const auto* node = candidate.mesh->GetNoh(static_cast<unsigned>(i));
+      Require(node != nullptr, "Physical band has a null typed node");
+      xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
+    }
+    const auto source = [&patch](const research::ResidualUv& uv_site)
+        -> research::ResidualPoint3 {
+      return Evaluate(patch, {uv_site[0], uv_site[1]});
+    };
+    const auto errors = research::MeasureMixedSurfaceResidual(
+        uv, xyz, candidate.faces, source);
+    Require(errors.quadrilaterals == candidate.quads &&
+                errors.triangles == candidate.faces.size() - candidate.quads &&
+                errors.triangles > 0 && std::isfinite(errors.maximum) &&
+                std::isfinite(candidate.min_quality) && candidate.min_quality > 0.0,
+            "Band candidate failed original Bezier source or facet quality admission");
+    physical_quads = candidate.quads;
+    physical_triangles = errors.triangles;
+    physical_nodes = candidate.mesh->GetNumberNos();
+    maximum_error = errors.maximum;
+    maximum_quad_error = errors.quad_maximum;
+    maximum_triangle_error = errors.triangle_maximum;
+    minimum_facet_quality = candidate.min_quality;
+    Require(!std::filesystem::exists(candidate_path),
+            "Nonaccepted physical band candidate output already exists");
+    // Candidate-only artifact; no Patch/SubMesh owner adoption and no epoch commit.
+    Export(candidate, candidate_path);
+    staged = true;
+  } catch (const std::exception& error) {
+    reason = error.what();
+  }
+  Require(patch.GetSubMesh() == previous_patch_owner &&
+              previous.mesh->GetNoh(0) == previous_node &&
+              previous.mesh->GetElement(0) == previous_element &&
+              CaptureNodeObservers(*previous.mesh) == previous_observers,
+          "Rejected or staged physical band damaged the existing mixed owner");
+  Require(staged == std::filesystem::exists(candidate_path),
+          "Physical candidate publication status disagrees with actual file");
+  std::ostringstream output;
+  output.imbue(std::locale::classic());
+  output << std::setprecision(17)
+         << "QUAD_BAND_PHYSICAL_CANDIDATE"
+         << " status=" << (staged ? "staged_unaccepted" : "rejected")
+         << " source=original_native_connected_band"
+         << " previous_physical_owner_preserved=1"
+         << " original_aft_pipeline_requested=1"
+         << " physical_quads=" << physical_quads
+         << " physical_triangles=" << physical_triangles
+         << " physical_nodes=" << physical_nodes
+         << " max_source_error=" << maximum_error
+         << " max_quad_error=" << maximum_quad_error
+         << " max_aft_error=" << maximum_triangle_error
+         << " min_facet_quality=" << minimum_facet_quality
+         << " exported_candidate=" << int(staged)
+         << " adaptive_epochs=0\n";
+  std::cout << output.str();
+  if (!staged)
+    std::cout << "QUAD_BAND_PHYSICAL_REJECTION reason=" << reason << '\n';
+}
+
 } // namespace
 
 int RunControlledPatch(const application::RuntimeConfig& config) {
@@ -970,6 +1086,7 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
   const auto mixed_residual = ProbeMixedSurfaceResidual(candidate, *patch);
   ProbeNativeTreeAlternatives(candidate, mixed_residual);
   ProbeConnectedAftBand(candidate, mixed_residual);
+  ProbePhysicalConnectedBand(candidate, *patch, mixed_residual, config.output_prefix);
   Export(candidate, config.output_prefix + ".obj");
   candidate.mesh->SetPatch(patch);
   patch->SetSubMesh(candidate.mesh.get());
