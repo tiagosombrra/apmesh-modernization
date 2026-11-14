@@ -1,0 +1,328 @@
+{
+  "schema": "apmesh.mesh-studio.scenario-catalog.v3",
+  "version": "0.3.0-planning",
+  "generated_on": "2026-11-14",
+  "source_branch": "feature/mesh-studio-fixture-first-20261114",
+  "source_head_at_design": "7608c6dbe86a072b8a91995c571e256fcde8c715",
+  "note": "This is a scenario design catalog; listed future fixtures are NOT implemented and metric outcomes are NOT measured.",
+  "dimensions": {
+    "cell_topology": [
+      "tri",
+      "quad_tri",
+      "all_quad"
+    ],
+    "sizing_strategy": [
+      "isotropic",
+      "anisotropic"
+    ],
+    "evidence_level": [
+      "synthetic_design",
+      "synthetic_generated",
+      "source_measured",
+      "scientifically_accepted"
+    ],
+    "scene_origin": [
+      "synthetic_internal_state",
+      "recorded_generator_state",
+      "derived_posthoc_view"
+    ],
+    "topology_scope": [
+      "single_patch_manifold",
+      "two_patch",
+      "three_patch_fan",
+      "four_patch_fan",
+      "twenty_eight_patch_fan"
+    ]
+  },
+  "comparability_rules": [
+    "Identify original model SHA, source surface and patch/curve provenance before comparing.",
+    "Use equal camera projection, crop, physical scale, quality definitions, colorbar and mesh format semantics.",
+    "Control target physical geometric error and/or resource budget; report resulting element count and runtime, not just visual density.",
+    "Do not compare a simulated anisotropic source metric with a measured execution as if both were actual generator outputs.",
+    "Report topological infeasibility under fixed boundary parity separately from solver failure.",
+    "Do not conflate isotropic physical sizing, transformed UV metric distortion and truly prescribed anisotropic tensor.",
+    "Separate actual generator acceptance/rejection from viewer validity/rejection."
+  ],
+  "scenarios": [
+    {
+      "id": "SYN-TRI-ISO-PLANE",
+      "topology": "tri",
+      "sizing": "isotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "objective": "Baseline explicit TRI disk and physical/UV quality equations"
+    },
+    {
+      "id": "SYN-TRI-ISO-CURVED",
+      "topology": "tri",
+      "sizing": "isotropic",
+      "surface": "Bezier",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "objective": "Curved TRI reference and UV->XYZ source correspondence"
+    },
+    {
+      "id": "SYN-HYB-ISO-RING",
+      "topology": "quad_tri",
+      "sizing": "isotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "objective": "Interior QUAD, remaining front and exterior TRI AFT-like closure"
+    },
+    {
+      "id": "SYN-HYB-ISO-CURVED",
+      "topology": "quad_tri",
+      "sizing": "isotropic",
+      "surface": "Bezier",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "objective": "Curved source QUAD/TRI bounded analog"
+    },
+    {
+      "id": "SYN-ALLQUAD-2X2",
+      "topology": "all_quad",
+      "sizing": "isotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "objective": "Four regular QUAD cells, even outer edge count and no TRI"
+    },
+    {
+      "id": "SYN-ALLQUAD-EVEN-TRANSITION",
+      "topology": "all_quad",
+      "sizing": "isotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "objective": "2:1 transition templates with positive four-corner UV and boundary parity"
+    },
+    {
+      "id": "SYN-ALLQUAD-ODD-BOUNDARY",
+      "topology": "all_quad",
+      "sizing": "isotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "reject_under_fixed_boundary",
+      "objective": "Odd number of boundary edges violates all-quad parity in a conforming quadrangulation"
+    },
+    {
+      "id": "SYN-ALLQUAD-CURVED",
+      "topology": "all_quad",
+      "sizing": "isotropic",
+      "surface": "Bezier",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "objective": "Curved mapped all-quad shape and source differential normal"
+    },
+    {
+      "id": "SYN-ANISO-CONST-SPD",
+      "topology": "tri",
+      "sizing": "anisotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "metric": "M=diag(16,1)",
+      "objective": "Metric eigenvectors, ellipse, L_M=1 along dx=0.25 and dy=1"
+    },
+    {
+      "id": "SYN-ANISO-ROTATED-SPD",
+      "topology": "quad_tri",
+      "sizing": "anisotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "metric": "M=R(theta)*diag(16,1)*R(theta)^T",
+      "objective": "Rotation-covariant ellipses and metric edge lengths"
+    },
+    {
+      "id": "SYN-ANISO-VARYING-FIELD",
+      "topology": "quad_tri",
+      "sizing": "anisotropic",
+      "surface": "Bezier",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "metric": "Smooth spatially varying SPD tensor",
+      "objective": "Directional field, ratio clipping, gradation and patch UV/physical distinction"
+    },
+    {
+      "id": "SYN-ALLQUAD-ANISO",
+      "topology": "all_quad",
+      "sizing": "anisotropic",
+      "surface": "Bezier",
+      "state": "synthetic_design",
+      "expect": "valid",
+      "metric": "Prescribed local SPD tensor",
+      "objective": "Contrast near-orthogonal quad alignment with metric eigenvectors; never claim generator implementation"
+    },
+    {
+      "id": "SYN-ANISO-NONSPD",
+      "topology": "tri",
+      "sizing": "anisotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "reject",
+      "metric": "diag(1,-1)",
+      "objective": "Indefinite tensor must be rejected"
+    },
+    {
+      "id": "SYN-ANISO-SINGULAR",
+      "topology": "all_quad",
+      "sizing": "anisotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "reject",
+      "metric": "diag(1,0)",
+      "objective": "Zero eigenvalue fails positive-definiteness"
+    },
+    {
+      "id": "SYN-SHARED-28",
+      "topology": "quad_tri",
+      "sizing": "isotropic",
+      "surface": "Bezier",
+      "state": "synthetic_design",
+      "expect": "valid_patch_local_only",
+      "objective": "28 locally owned patches on one logical shared curve; no automatic global weld"
+    },
+    {
+      "id": "SYN-SHARED-ANISO-CONFLICT",
+      "topology": "quad_tri",
+      "sizing": "anisotropic",
+      "surface": "Bezier",
+      "state": "synthetic_design",
+      "expect": "not_solved",
+      "objective": "Contradictory adjacent patch tensor requests need separately defined shared-curve metric reconciliation"
+    },
+    {
+      "id": "SYN-QUALITY-INVERTED-PHYSICAL",
+      "topology": "all_quad",
+      "sizing": "isotropic",
+      "surface": "planar",
+      "state": "synthetic_design",
+      "expect": "reject",
+      "objective": "UV-positive cycle with physically folded or self-overlapping XYZ cannot be called valid"
+    },
+    {
+      "id": "SYN-MULTI-EPOCH-REJECTION",
+      "topology": "quad_tri",
+      "sizing": "anisotropic",
+      "surface": "Bezier",
+      "state": "synthetic_design",
+      "expect": "valid_history_recording",
+      "objective": "Rejected intermediate and nonmonotonic candidate error distinct from accepted history"
+    }
+  ],
+  "figure_templates": [
+    {
+      "id": "F01",
+      "title": "TRI baseline, QUAD/TRI hybrid and all-quad under matched conditions",
+      "output": "3 or 6 panels"
+    },
+    {
+      "id": "F02",
+      "title": "Quadtree/QUAD interior, AFT front, TRI closure and map UV to XYZ",
+      "output": "4-6 panel story"
+    },
+    {
+      "id": "F03",
+      "title": "Parity precondition: even vs odd fixed-boundary all-quad",
+      "output": "2 panels + explicit rejection"
+    },
+    {
+      "id": "F04",
+      "title": "All-quad transition templates and extraordinary vertices",
+      "output": "4 panels + valence labels"
+    },
+    {
+      "id": "F05",
+      "title": "Isotropic scalar h versus anisotropic SPD tensor M",
+      "output": "metric ellipse field + mesh"
+    },
+    {
+      "id": "F06",
+      "title": "Anisotropic eigenvectors and metric alignment error",
+      "output": "double map + histogram"
+    },
+    {
+      "id": "F07",
+      "title": "UV/XYZ geometric distortion versus genuinely prescribed physical anisotropy",
+      "output": "side-by-side controlled example"
+    },
+    {
+      "id": "F08",
+      "title": "Fan-wide shared-curve synchronization and conflict",
+      "output": "exploded/combined patch views"
+    },
+    {
+      "id": "F09",
+      "title": "Physical face quality and type-separated histograms",
+      "output": "3 views + statistics"
+    },
+    {
+      "id": "F10",
+      "title": "Accepted/rejected adaptive epochs with true event snapshots",
+      "output": "line/scatter with status events"
+    },
+    {
+      "id": "F11",
+      "title": "Method comparison at matched target error / element budget",
+      "output": "controlled XY + heatmap+table"
+    }
+  ],
+  "required_snapshot_fields": [
+    "schema",
+    "run_id",
+    "algorithm_variant",
+    "sizing_strategy",
+    "source_model_sha256",
+    "snapshot_id",
+    "parent_snapshot_id",
+    "event_type",
+    "event_status",
+    "source_kind",
+    "patch_ids",
+    "cells_by_type",
+    "mesh_data_ref",
+    "curve_topology_ref",
+    "metric_field_ref",
+    "metric_frame",
+    "metric_units",
+    "figure_recipe_ref",
+    "provenance",
+    "software_revision",
+    "synthetic_watermark"
+  ],
+  "event_types": [
+    "input_model",
+    "sample_shared_curves",
+    "quadtree_build",
+    "template_select",
+    "quad_interior",
+    "all_quad_boundary_parity_check",
+    "all_quad_patch_partition",
+    "all_quad_singularity_placement",
+    "active_aft_front",
+    "aft_triangle_insert",
+    "metric_field_construct",
+    "metric_tensor_eigendecomposition",
+    "metric_edge_refinement",
+    "metric_smoothing_gradation",
+    "metric_update_shared_curve",
+    "uv_xyz_lift",
+    "quality_evaluation",
+    "candidate_accepted",
+    "candidate_rejected",
+    "rollback",
+    "publication"
+  ],
+  "acceptance_safeguards": {
+    "no_implicit_global_node_weld": true,
+    "no_claim_of_existing_all_quad_generator": true,
+    "no_claim_of_existing_anisotropic_adaptation": true,
+    "separate_observed_from_reconstructed_events": true,
+    "no_comparison_of_different_quality_formulas_without_mapping": true,
+    "preserve_accepted_and_rejected_epochs": true,
+    "true_vector_2d_export_requires_image_object_audit": true
+  }
+}
