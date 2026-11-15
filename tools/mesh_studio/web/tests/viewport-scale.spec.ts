@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 // These measurements are synthetic browser visualization observations only.
-test('R2: renderer completes 1k and 50k QUAD and maintains filter control', async ({ page }) => {
+test('R2: renderer completes 1k and 50k QUAD and maintains filter control', async ({ page }, testInfo) => {
   test.setTimeout(180_000);
   await page.goto('/bench.html');
   await expect(page.getByTestId('benchmark-status')).toContainText('As duas cenas foram renderizadas', { timeout: 60_000 });
@@ -43,9 +43,21 @@ test('R2: renderer completes 1k and 50k QUAD and maintains filter control', asyn
   await page.getByTestId('benchmark-edge-filter').check();
   await expect(page.getByTestId('benchmark-edge-filter')).toBeChecked();
   const receipt = await page.getByTestId('benchmark-receipt').innerText();
-  await page.evaluate((text) => {
-    const blob = new Blob([text], { type: 'application/json' });
-    // Keep JSON diagnostic local in the browser, with no network upload.
-    if (!blob.size) throw new Error('empty_benchmark_receipt');
-  }, receipt);
+  // Preserve actual timing observations as GitHub test artifacts, not inferred estimates.
+  const sourceObservation = {
+    schema: 'apmesh.meshstudio.browser_scale_observation.v1',
+    evidence: 'SYNTHETIC_BROWSER_VIEWER_ONLY_NOT_GENERATOR_PERFORMANCE',
+    platform: 'Chromium, CI runner; machine details not calibrated',
+    first,
+    second: JSON.parse(receipt) as unknown,
+    caveats: ['not_fps', 'not_gpu_memory', 'not_physical_mesh_quality', 'not_windows_gpu'],
+  };
+  await testInfo.attach('r2-50k-chromium-observation.json', {
+    body: Buffer.from(JSON.stringify(sourceObservation, null, 2)),
+    contentType: 'application/json',
+  });
+  console.log('R2_SYNTHETIC_BROWSER_OBSERVATION=' + JSON.stringify({
+    cells: second.cells, xyz_ms: second.xyz_first_render_ms,
+    uv_ms: second.uv_first_render_ms, points: second.points,
+  }));
 });
