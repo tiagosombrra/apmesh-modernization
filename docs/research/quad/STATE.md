@@ -1,43 +1,58 @@
 # APMesh QUAD — current state
 
-Updated2026-11-14 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
 Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
+## P2d-1c3 qualified, P2d-1c4a physical-owner rehearsal active
 
-## P2d-1c3 Pareto comparison active — not an accepted mixed epoch
+[PR235](https://github.com/tiagosombrra/apmesh-modernization/pull/235)
+merged into research `quad-templates` at
+`ab1dc62a815f3d56c9b25845bec00863730ddcd5`.
+Exact feature `27851df2625e0c0b37e12023af699a01f3d0304c`
+passed [CI #43664129060](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43664129060)
+**4/4**: Linux GCC/Windows MSVC actual native physical AFT and
+independent OBJ/Pareto comparisons, Linux ASan/UBSan/leak,
+85/85 root CTests, 527/527 Python tooling, original frozen
+Eistute/Book TRI science; six adverse Pareto cases explicitly executed
+on both operating systems and Linux sanitizer application.
+The source-controlled UV-area profile finds north dominates west
+among the staged 93/62/44, 109/75/50, 107/71/54 and 117/82/52
+physical sources; adding *QUAD face count* as an independent objective
+makes all four non-dominated. UV area is integrated directly from
+each exported physical OBJ, not guessed from face counts.
+This is a *profile-dependent diagnostic*, not an accepted
+scientific adaptive policy. [Qualified evidence](evidence/P2D1C3_PROFILED_PARETO_20261114.json).
 
-[Draft PR235](https://github.com/tiagosombrra/apmesh-modernization/pull/235)
-at exact source `27851df2625e0c0b37e12023af699a01f3d0304c`
-adds **independent source-bound physical OBJ multiobjective analysis**
-with two deliberately distinct profiles: (1) independently measured
-true QUAD UV area coverage versus error/complexity/physical quality,
-and (2) the same objectives **plus maximization of QUAD face count**.
-Data are computed from actual original native AFT physical candidates
-integrated in PR234. On the P2d-1c2 4096-site-controlled source,
-north dominates west only in the area profile; with QUAD count
-as a separate objective all four source-specific alternatives become
-non-dominated. This is a **hypothesis/diagnostic**, not a policy
-approved to accept any new mixed owner.
+**Active separate [draft PR236](https://github.com/tiagosombrra/apmesh-modernization/pull/236)**
+implements a **reversible P2d-1c4a physical-owner transaction rehearsal**
+on the actual already-published P1 `Patch/SubMesh` (69 physical nodes,
+42 QUAD, 36 original AFT TRI). Its original P1 source-error
+selected real native AFT successor has 93 physical nodes, 62 QUAD,
+44 original AFT TRI and completely separately cloned typed observers.
+Five targeted pre-publication faults must preserve the previous
+nonempty `Patch/SubMesh` pointer, every node ID/XYZ, element address,
+all **ordered** node observers and exact prior OBJ bytes.
+A successful `noexcept` forward/back pointer swap is rehearsed
+and *reverted* to the original accepted P1 owner. The Python app
+gate requires the exact receipt on normal and injected-rollback
+runs and rejects eight forged receipt variants.
+Latest feature `5c8bc5ae563fdcad9518091e16a9cecf391ca55c`.
+[Exact CI #43703415674](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43703415674)
+was **in progress at this checkpoint**; no PR236 merge or
+successful failure-transaction proof is yet claimed.
+[Bounded transaction protocol](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/p2d1c4a-real-owner-transaction-rehearsal-20261115/docs/research/quad/P2D1C4A_OWNER_TRANSACTION_REHEARSAL_20261115.md).
 
-Feature source independently integrates QUAD polygon UV area from
-every actual exported OBJ; six adversarial unit tests check malformed,
-foreign, inconsistent/nonfinite evidence, order invariance and
-objective-dependent dominance. Exact-head
-[CI #43664129060](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43664129060)
-was **in progress** at this checkpoint. Thus no exact-source
-qualification or PR235 merge is claimed. [Pre-registered objective
-protocol](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/p2d1c3-independent-multiobjective-pareto-20261114/docs/research/quad/P2D1C3_PROFILED_PARETO_20261114.md).
-[Pending evidence](evidence/P2D1C3_PROFILED_PARETO_20261114.json).
-
-Next after qualified independent Pareto gate: define previous
-**accepted** typed `Patch/SubMesh` and native Quadtree history
-transaction with explicit strong exception-safety, failure injection,
-source identity and scientifically pre-registered selection. Do NOT
-conflate the two previous *staged* native AFT physical reconstructions
-with **two accepted adapted epochs**: `adaptive_epochs=0`,
-R3/M7 [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
-still OPEN. Main/default production TRI unchanged, source original
-fixed16 not full production `AdaptCurve`; high-valence welding,
-original 1993 method, all-QUAD and anisotropy separately open.
+**Scientific boundary remains firm:** reversible pointer staging is
+not an adopted second mixed epoch; no replacement next-OBJ output is
+atomically published and no research-approved source-error/quality/
+complexity choice has been adopted. `adaptive_epochs=0`; R3/M7
+[#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
+OPEN. Next P2d-1c4b needs the accepted mixed history/owner
+transaction, archived typed previous state, strong-exception-safe
+filesystem and memory publication, explicit prior-approved selection,
+and two genuinely source-state-driven distinct accepted changes.
+No production `AdaptCurve`, global nonmanifold high-valence weld,
+historical 1993 equivalence, all-QUAD or anisotropy.
+`main` and default original TRI remain unchanged.
 
 
 ## P2d-1c1 integrated, P2d-1c2 physical second-band AFT trial
