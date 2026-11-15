@@ -6,10 +6,9 @@ import type { ViewerHandle } from './Viewer';
 import type { PickObservation, ScriptedOrbitObservation } from './performanceProbe';
 import { chromiumHeapEstimate } from './performanceProbe';
 import type { MeshGeometry } from './contracts';
+import { meshPointCount } from './meshAccess';
+import { syntheticPackedScene } from './syntheticPacked';
 import './style.css';
-
-const ALLOWED_CELLS = [1_000, 50_000, 500_000] as const;
-const SYNTHETIC_SHA = '0'.repeat(64);
 
 type SyntheticSample = {
   xyz: MeshGeometry;
@@ -18,48 +17,7 @@ type SyntheticSample = {
 };
 
 function syntheticScene(cells: number): SyntheticSample {
-  if (!ALLOWED_CELLS.includes(cells as typeof ALLOWED_CELLS[number])) {
-    throw new Error('invalid_synthetic_cell_budget');
-  }
-  const width = Math.floor(Math.sqrt(cells));
-  const height = Math.ceil(cells / width);
-  const started = performance.now();
-  const points: number[][] = [];
-  const uvPoints: number[][] = [];
-  const faces: number[][] = [];
-  const ids: number[] = [];
-  for (let row = 0; row <= height; row += 1) {
-    const v = row / height;
-    for (let col = 0; col <= width; col += 1) {
-      const u = col / width;
-      // Synthetic height is for rendering only; never feed this into scientific metrics.
-      points.push([u, v, 0.08 * Math.sin(u * Math.PI * 2) * Math.cos(v * Math.PI * 2)]);
-      uvPoints.push([u, v, 0]);
-    }
-  }
-  for (let row = 0; row < height && faces.length < cells; row += 1) {
-    for (let col = 0; col < width && faces.length < cells; col += 1) {
-      const first = row * (width + 1) + col;
-      faces.push([first, first + 1, first + width + 2, first + width + 1]);
-      ids.push(faces.length - 1);
-    }
-  }
-  const common = {
-    schema: 'apmesh.meshstudio.web.v1',
-    source_sha256: SYNTHETIC_SHA,
-    source_patch_ownership: 'NOT_APMESH_SOURCE',
-    cells: faces,
-    source_face_ids: ids,
-    cell_types: Array<'quad'>(faces.length).fill('quad'),
-    triangles: 0,
-    quads: faces.length,
-    warning: 'SYNTHETIC BENCHMARK ONLY. Not an APMesh experiment, not adaptive epochs.',
-  };
-  return {
-    xyz: { ...common, coordinate_space: 'xyz', points },
-    uv: { ...common, coordinate_space: 'uv', points: uvPoints },
-    generationMs: performance.now() - started,
-  };
+  return syntheticPackedScene(cells);
 }
 
 type Result = {
@@ -167,7 +125,7 @@ function BrowserBenchmark() {
   }, [count]);
   const measurement: Result | null = sample ? {
     cells: sample.xyz.quads,
-    points: sample.xyz.points.length,
+    points: meshPointCount(sample.xyz),
     synthetic: true,
     generation_ms: Math.round(sample.generationMs * 1000) / 1000,
     xyz_first_render_ms: xyzDuration === null ? null : Math.round(xyzDuration * 1000) / 1000,

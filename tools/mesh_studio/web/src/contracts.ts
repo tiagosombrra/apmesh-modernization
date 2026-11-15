@@ -16,6 +16,14 @@ export interface ModelCatalog {
   models: ModelEntry[];
   study_scope: string;
 }
+export interface PackedMeshData {
+  vertices: Float32Array;
+  polys: Uint32Array;
+  faceIds: Uint32Array;
+  arities: Uint8Array;
+  offsets: Uint32Array;
+}
+
 export interface MeshGeometry {
   schema: string;
   source_sha256: string;
@@ -28,6 +36,8 @@ export interface MeshGeometry {
   triangles: number;
   quads: number;
   warning: string;
+  // Optional zero-copy visual storage; empty nested arrays when present.
+  packed?: PackedMeshData;
 }
 export interface FaceDetail {
   source_sha256: string;

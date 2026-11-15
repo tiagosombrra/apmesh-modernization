@@ -14,6 +14,7 @@ import { summarizeScriptedOrbit } from './performanceProbe';
 import { isCameraPose } from './camera';
 import { asVtkCells, vtkPointBuffer } from './geometry';
 import { buildUvSpatialIndex } from './uvSpatialIndex';
+import { meshCellKind, meshFaceCorners, meshFaceIds, meshPointAt } from './meshAccess';
 
 interface ViewerProps {
   space: Space;
@@ -47,7 +48,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
   const actorRef = useRef<Actor | null>(null);
   const dataRef = useRef<ReturnType<typeof vtkPolyData.newInstance> | null>(null);
   const overlayRef = useRef<Actor | null>(null);
-  const sourceIds = useRef<number[]>([]);
+  const sourceIds = useRef<number[] | Uint32Array>([]);
   const onSelectRef = useRef(onSelect);
   const visibleRef = useRef({ showTri, showQuad, edges });
   const selectedRef = useRef(selectedId);
@@ -75,12 +76,14 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       camera.setFocalPoint(0.5, 0.5, 0);
       camera.setViewUp(0, 1, 0);
     } else {
-      const points = geometry.points;
+      const positions = vtkPointBuffer(geometry);
       const minima = [Infinity, Infinity, Infinity];
       const maxima = [-Infinity, -Infinity, -Infinity];
-      for (const point of points) for (let i = 0; i < 3; i += 1) {
-        minima[i] = Math.min(minima[i], point[i]);
-        maxima[i] = Math.max(maxima[i], point[i]);
+      for (let offset = 0; offset < positions.length; offset += 3) {
+        for (let i = 0; i < 3; i += 1) {
+          minima[i] = Math.min(minima[i], positions[offset + i]);
+          maxima[i] = Math.max(maxima[i], positions[offset + i]);
+        }
       }
       const center = minima.map((v, i) => (v + maxima[i]) / 2);
       const diag = Math.max(Math.hypot(...maxima.map((v, i) => v - minima[i])), 1e-3);
@@ -167,7 +170,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
     const renderer = grw.getRenderer();
     const data = vtkPolyData.newInstance();
     data.getPoints().setData(vtkPointBuffer(geometry), 3);
-    const faceIndexBySource = new Map(geometry.source_face_ids.map((id, i) => [id, i]));
+    const faceIndexBySource = new Map(Array.from(meshFaceIds(geometry), (id, i) => [id, i] as [number, number]));
     const uvIndex = space === 'uv' ? buildUvSpatialIndex(geometry) : null;
     const displayCoordinate = uvIndex ? vtkCoordinate.newInstance() : null;
     displayCoordinate?.setCoordinateSystemToDisplay();
@@ -194,14 +197,14 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       const sourceId = selectedRef.current;
       const index = faceIndexBySource.get(sourceId ?? -1) ?? -1;
       if (sourceId === null || index < 0 ||
-          (geometry.cell_types[index] === 'triangle' && !visibleRef.current.showTri) ||
-          (geometry.cell_types[index] === 'quad' && !visibleRef.current.showQuad)) {
+          (meshCellKind(geometry, index) === 'triangle' && !visibleRef.current.showTri) ||
+          (meshCellKind(geometry, index) === 'quad' && !visibleRef.current.showQuad)) {
         grw.getRenderWindow().render();
         return;
       }
-      const face = geometry.cells[index];
+      const face = meshFaceCorners(geometry, index);
       const highlight = vtkPolyData.newInstance();
-      const coords = new Float32Array(face.flatMap((vertex) => geometry.points[vertex]));
+      const coords = new Float32Array(face.flatMap((vertex) => meshPointAt(geometry, vertex)));
       highlight.getPoints().setData(coords, 3);
       highlight.getPolys().setData(new Uint32Array([face.length, ...face.map((_, i) => i)]));
       const highlightMapper = vtkMapper.newInstance();

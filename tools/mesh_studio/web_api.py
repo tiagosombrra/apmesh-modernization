@@ -9,12 +9,14 @@ from hashlib import sha256
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Query, Response
+from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from .import_obj import import_obj
 from .quality_analysis import analyze_mesh
 from .scene_model import build_batch, face_detail, initial_scene
 from .scene_transport import pack_geometry, SceneTransportError
+from .scene_transport_v2 import prepare_geometry_v2, stream_geometry_v2, GeometryV2Error
 
 SCHEMA = 'apmesh.meshstudio.web.v1'
 ROOT = Path(__file__).resolve().parent / 'fixtures'
@@ -114,6 +116,22 @@ def binary_geometry(model_id: str, space: str = Query('xyz', pattern='^(xyz|uv)$
     return Response(content=wire, media_type='application/vnd.apmesh.geometry.v1',
                     headers={'Cache-Control': 'no-store',
                              'X-Source-SHA256': payload['source_sha256']})
+
+
+@app.get('/api/v1/models/{model_id}/geometry.v2.bin')
+def binary_geometry_v2(model_id: str, space: str = Query('xyz', pattern='^(xyz|uv)$')):
+    """Bounded streamed Float32 view data with exact original source-face mapping."""
+    payload = geometry(model_id, space)
+    payload['warning'] += ' Float32 is a visualization transport, not the numerical source oracle.'
+    try:
+        prepared = prepare_geometry_v2(payload)
+    except GeometryV2Error as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    return StreamingResponse(
+        stream_geometry_v2(prepared), media_type='application/vnd.apmesh.geometry.v2',
+        headers={'Cache-Control': 'no-store', 'Content-Length': str(prepared.total_bytes),
+                 'X-Source-SHA256': payload['source_sha256'],
+                 'X-Visualization-Only': 'float32-not-scientific-source'})
 
 
 @app.get('/api/v1/models/{model_id}/faces/{face_id}')

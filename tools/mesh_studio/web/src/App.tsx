@@ -4,6 +4,7 @@ import { Viewer } from './Viewer';
 import type { ViewerHandle } from './Viewer';
 import { CAMERA_SCHEMA, parseCameraRecipe, storageKey } from './camera';
 import type { FaceDetail, MeshGeometry, ModelEntry } from './contracts';
+import { meshFaceCount, meshFaceIndex, meshCellKind } from './meshAccess';
 import './style.css';
 
 const statuses: Record<string, string> = {
@@ -40,7 +41,7 @@ export default function App() {
     Promise.all([studyApi.geometry(modelId, 'xyz'), studyApi.geometry(modelId, 'uv')])
       .then(([a, b]) => {
         if (cancelled) return;
-        if (a.source_sha256 !== b.source_sha256 || a.cells.length !== b.cells.length) {
+        if (a.source_sha256 !== b.source_sha256 || meshFaceCount(a) !== meshFaceCount(b)) {
           throw new Error('As vistas não possuem a mesma origem científica.');
         }
         setXyz(a); setUv(b);
@@ -62,8 +63,8 @@ export default function App() {
     if (kind === 'triangle') setShowTri(visible);
     else setShowQuad(visible);
     if (!visible && selected !== null && xyz) {
-      const index = xyz.source_face_ids.indexOf(selected);
-      if (index >= 0 && xyz.cell_types[index] === kind) setSelected(null);
+      const index = meshFaceIndex(xyz, selected);
+      if (index >= 0 && meshCellKind(xyz, index) === kind) setSelected(null);
     }
   };
   const saveCameras = () => {
