@@ -2382,3 +2382,31 @@ Next: review the bounded bridge with these limits, integrate only under required
 gates, and continue the queued accepted-history/mixed-feedback work with its
 scientific approvals. Do not equate one adapted-source export with a completed
 adaptive mixed generator.
+
+## 2026-11-15 - investigate coarse curved boundary, return PR238 to draft
+
+User reported that the curved source and progressive meshing behavior were
+not represented as expected. Verified feature79828fc, research4d0b404 and
+main ef40c0f against live remote. Inspected ModelCurvaBezier, initial meshing,
+stable-mode setup, AdaptCurve, RefineCurveSamples, target rebuild and mixed
+entry point. Retained CSV/log/OBJ show two final points per curve at step1,
+four at step2; pre-consistency targets 8/7/7/7 are clamped to 4/4/4/4. The
+curved side has three segments, not twelve; twelve is the four-side total.
+Step2 was rejected (growth7, improvement0.456174, score-2.85629). Mixed
+publication subsequently uses that source and runs once, with no mixed feedback.
+Analytic midpoint/chord distance is0.375; 10,001 samples against exported
+curve-0 segments give sampled maximum0.06280875228120662 near t0.1846.
+No continuous bound or acceptance tolerance is inferred. Actual intermediate
+curve/surface pass counts before rebuild remain unmeasured.
+
+Returned PR238 to draft and superseded integration-ready status in state,
+roadmap and milestone register. Added CURVE_DISCRETIZATION_DIAGNOSIS_20261115.md.
+Existing source/identity/tree tests do not prove curve approximation or mixed
+convergence. Next bounded code action is pass-by-pass parameters/counts and
+step/attempt/stop provenance, then correction of the proven cause. Keep prior
+accepted mixed-state feedback, estimator/selection approval, ownership/history
+and publication gates; do not tune density/acceptance to improve a picture.
+No source/formula/configuration/default TRI changed; no new native tests or
+scientific qualification. Prior exact-feature evidence retains its bounded
+scope; mixed epochs remain zero and functional behavior correction is pending.
+Validate changed docs, push canonical checkpoint and verify readback.

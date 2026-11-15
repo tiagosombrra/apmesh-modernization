@@ -6,18 +6,18 @@
 The larger [PR214](https://github.com/tiagosombrra/apmesh-modernization/pull/214)
 remains draft/unmerged. Main and the default TRI behavior are preserved.
 
-**Execution priority — 2026-11-15:** review and integrate the implemented
-real-boundary application candidate [PR238](https://github.com/tiagosombrra/apmesh-modernization/pull/238),
-head `79828fc`, after independent approval. Exact feature CI 4/4 and local
-GNU/MSVC/ASan, root85, configured LLVM22 and frozen TRI scopes pass;
-see [closure/evidence](REAL_BOUNDARY_APPLICATION_CLOSURE_20261115.md).
-The code is on its feature branch, not integrated into canonical research.
-Research merge and required merge validation remain pending. Fixed16 remains
-the byte-identical regression; accepted mixed epochs stay zero. P2d-1c4b is
-queued after this integration gate, preserving its history/publication/recovery
-and scientifically approved selection requirements. R3/M7 #221 remains open.
+### 2026-11-15 - functional discrepancy: coarse curved boundary
 
-## Visão global, sem percentuais fictícios
+PR238 is now **draft / not ready to integrate**. The curved source exists,
+but adaptive_stable final point budgets leave two points per side at step 1
+and four at step 2. Twelve intervals is the total for four sides; the curved
+side has only three segments. Step-2 targets 8/7/7/7 are clamped to 4/4/4/4;
+its TRI candidate is rejected, then the bridge uses that source to generate
+mixed once. The expected coarse-to-fine mixed loop is still missing.
+See the [diagnosis](CURVE_DISCRETIZATION_DIAGNOSIS_20261115.md).
+Prior exact-feature CI certifies bounded contracts, not this functional goal.
+No new native qualification or scientific control change occurred.
+
 
 | Marco | Entregável global | Comprovação alcançada | Lacuna para encerramento total |
 |---|---|---|---|

@@ -3,7 +3,7 @@
 Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: review and integrate the qualified real-boundary application candidate
+## Active: localize and correct coarse-curve behavior in the mixed path
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,18 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-15 - functional discrepancy: coarse curved boundary
+
+PR238 is now **draft / not ready to integrate**. The curved source exists,
+but adaptive_stable final point budgets leave two points per side at step 1
+and four at step 2. Twelve intervals is the total for four sides; the curved
+side has only three segments. Step-2 targets 8/7/7/7 are clamped to 4/4/4/4;
+its TRI candidate is rejected, then the bridge uses that source to generate
+mixed once. The expected coarse-to-fine mixed loop is still missing.
+See the [diagnosis](CURVE_DISCRETIZATION_DIAGNOSIS_20261115.md).
+Prior exact-feature CI certifies bounded contracts, not this functional goal.
+No new native qualification or scientific control change occurred.
 
 ### 2026-11-15 — functional candidate implemented and exact feature qualified
 
@@ -44,11 +56,15 @@ The first local adapter stopped before CTest on inventory drift 75 -> 85;
 LLVM18 configuration errors are invalid analysis despite zero tool exit.
 The corrected exact feature qualifies with those failures retained.
 
-**One active item / exact next action:** obtain independent review of PR238
-at the qualified SHA, integrate into `quad-templates` only under its required
-gates, then verify the research merge and repeat required validation before
-starting P2d-1c4b. The code remains on the feature branch and in the primary
-local checkout; this canonical checkpoint contains documentation/evidence only.
+**One active item / exact next action:** record source step/attempt and exact
+parameters/counts after the original curve pass, surface pass and final budget
+rebuild on PR238; retain source states and actual stop/acceptance reasons, then
+correct the proven cause. Intermediate pre-budget partitions are unmeasured.
+Resolve this behavior discrepancy before resuming integration review. Mixed
+feedback must use the actual previous accepted mixed mesh under the retained
+scientific gates; do not silently change point caps or acceptance to densify
+an image. Independent approval and corrected-feature/merge validation remain
+required. Source remains visible in the primary feature checkout.
 Auxiliary Doxygen generation in the nested checkpoint worktree failed on
 three unchanged API references; it is not counted as a pass. Repeat required
 documentation checks from a normally located checkout before integration.

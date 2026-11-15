@@ -20,11 +20,23 @@ analysis, respectively. P2d-1c4a [merged PR236](https://github.com/tiagosombrra/
 is an **integrated fault-injected reversible physical owner rehearsal**,
 not a scientifically adopted new mixed state. Exact feature CI #43704424433
 and exact research-merge CI #43705007549 both completed 4/4 SUCCESS.
+### 2026-11-15 - functional discrepancy: coarse curved boundary
+
+PR238 is now **draft / not ready to integrate**. The curved source exists,
+but adaptive_stable final point budgets leave two points per side at step 1
+and four at step 2. Twelve intervals is the total for four sides; the curved
+side has only three segments. Step-2 targets 8/7/7/7 are clamped to 4/4/4/4;
+its TRI candidate is rejected, then the bridge uses that source to generate
+mixed once. The expected coarse-to-fine mixed loop is still missing.
+See the [diagnosis](CURVE_DISCRETIZATION_DIAGNOSIS_20261115.md).
+Prior exact-feature CI certifies bounded contracts, not this functional goal.
+No new native qualification or scientific control change occurred.
+
 The active [real-boundary application integration](REAL_BOUNDARY_APPLICATION_PLAN_20261115.md)
 is implemented and exact-feature qualified on [PR238](https://github.com/tiagosombrra/apmesh-modernization/pull/238),
 head `79828fc`: original curve workflow, native boundary/tree and existing
 QUAD/original-AFT closure, with fixed16 retained as regression. Independent
-review, research integration and exact research-merge validation remain pending. P2d-1c4b follows this gate, retaining accepted-history/publication
+review/integration is deferred pending the coarse-curve behavior correction above. P2d-1c4b remains necessary after this gate, retaining accepted-history/publication
 and scientific selection requirements. True previously **accepted** source-driven adapted
 mixed epochs remain [R3/M7 issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
 OPEN with `adaptive_epochs=0`.
