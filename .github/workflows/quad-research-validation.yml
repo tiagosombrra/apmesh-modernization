@@ -335,6 +335,7 @@ jobs:
               # Explicit new controlled-case assets; frozen model/profile paths stay guarded.
               "configs/quad/README.md",
               "configs/quad/curved_patch.conf",
+              "configs/quad/curved_patch_original_curves.conf",
           }
           changed = set(subprocess.check_output(
               ["git", "diff", "--name-only",

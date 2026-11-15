@@ -3,6 +3,7 @@
 #include "generator/generator_adaptive.h"
 #include "real_boundary_source.h"
 #include "crab_mesh/aft/quadtree.h"
+#include "crab_mesh/aft/quadtree_cell.h"
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
@@ -118,6 +119,13 @@ void Run(const apmesh::application::RuntimeConfig& base, bool reverse, unsigned&
     Require(!reverse || source.reversed_sides > 0, "Original generator lost reversed source side");
     auto replayed = apmesh::quad::ReplayRealSourceTree(*patch, source);
     Require(replayed->GetLeafCount() == original.GetLeafCount(), "Native tree replay differs");
+    const auto original_leaves = original.getLeaves();
+    const auto replayed_leaves = replayed->getLeaves();
+    auto actual = replayed_leaves.begin();
+    for (auto* expected : original_leaves) {
+      Require(expected->getId() == (*actual)->getId(), "Original leaf identity/order changed");
+      ++actual;
+    }
     negatives += CheckNegatives(*patch, source);
     ++captures;
     apmesh::quad::LeafPolygonMesh result;

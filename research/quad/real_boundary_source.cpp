@@ -68,6 +68,7 @@ std::unique_ptr<Boundary> SourceBoundary(PatchBezier& patch,
 std::size_t CaptureCell(QuadtreeCell& cell, std::vector<RealSourceCell>& cells) {
   const auto index = cells.size();
   cells.push_back({Box(cell), static_cast<unsigned long>(cell.getLevel()), {}, cell.subdivided()});
+  cells[index].source_id = cell.getId();
   if (cell.subdivided())
     for (unsigned i = 0; i < 4; ++i) {
       Require(cell.getChild(i) != nullptr, "Original source tree has a missing child");
@@ -76,18 +77,60 @@ std::size_t CaptureCell(QuadtreeCell& cell, std::vector<RealSourceCell>& cells) 
     }
   return index;
 }
-void ReplayCell(QuadtreeCell& cell, const RealBoundarySource& source, std::size_t index,
-                std::set<std::size_t>& visited) {
-  Require(index < source.cells.size() && visited.insert(index).second,
-          "Source tree replay has a missing or repeated cell");
-  const auto& saved = source.cells[index];
-  Require(Box(cell) == saved.box && static_cast<unsigned long>(cell.getLevel()) == saved.level,
-          "Native replay changed original source tree bounds or level");
-  if (saved.subdivided) {
-    cell.subdivideToLevel(saved.level + 1);
-    for (unsigned i = 0; i < 4; ++i)
-      ReplayCell(*cell.getChild(i), source, saved.children[i], visited);
+void ReplayCells(Quadtree& tree, const RealBoundarySource& source) {
+  std::vector<std::size_t> events;
+  std::vector<unsigned> incoming(source.cells.size(), 0);
+  std::set<long> identities;
+  for (std::size_t i = 0; i < source.cells.size(); ++i) {
+    const auto& cell = source.cells[i];
+    Require(cell.source_id > 0 && cell.source_id <= source.tree_counter &&
+                identities.insert(cell.source_id).second,
+            "Source tree has an invalid or duplicated cell identity");
+    if (!cell.subdivided)
+      continue;
+    events.push_back(i);
+    for (const auto child : cell.children) {
+      Require(child < source.cells.size() && child != 0 &&
+                  source.cells[child].source_id > cell.source_id &&
+                  source.cells[child].level == cell.level + 1 && ++incoming[child] == 1,
+              "Source tree has an invalid child or parent relationship");
+    }
   }
+  Require(incoming.front() == 0 &&
+              std::all_of(incoming.begin() + 1, incoming.end(), [](unsigned n) { return n == 1; }),
+          "Source tree has an unreachable or cyclic cell");
+  const auto first_child_id = [&](std::size_t index) {
+    long first = std::numeric_limits<long>::max();
+    for (const auto child : source.cells[index].children)
+      first = std::min(first, source.cells[child].source_id);
+    return first;
+  };
+  // Original cell IDs record subdivision chronology. Replaying that chronology
+  // preserves leaf-list order and native neighbor construction, unlike a DFS.
+  std::sort(events.begin(), events.end(),
+            [&](std::size_t a, std::size_t b) { return first_child_id(a) < first_child_id(b); });
+  std::vector<QuadtreeCell*> cells(source.cells.size(), nullptr);
+  cells[0] = tree.getRoot();
+  for (const auto index : events) {
+    auto* cell = cells[index];
+    Require(cell && !cell->subdivided() && tree.getId() < first_child_id(index),
+            "Original subdivision chronology cannot be replayed");
+    tree.setId(first_child_id(index) - 1);
+    cell->subdivideToLevel(source.cells[index].level + 1);
+    for (unsigned i = 0; i < 4; ++i)
+      cells[source.cells[index].children[i]] = cell->getChild(i);
+  }
+  for (std::size_t i = 0; i < cells.size(); ++i)
+    Require(cells[i] && Box(*cells[i]) == source.cells[i].box &&
+                static_cast<unsigned long>(cells[i]->getLevel()) == source.cells[i].level &&
+                cells[i]->getId() == source.cells[i].source_id,
+            "Native replay changed original cell identity, bounds or level");
+  tree.setId(source.tree_counter);
+  std::vector<long> leaves;
+  for (auto* leaf : tree.getLeaves())
+    leaves.push_back(leaf->getId());
+  Require(leaves == source.leaf_order && leaves.size() == source.source_leaves,
+          "Native replay changed original ordered leaves");
 }
 } // namespace
 
@@ -169,6 +212,9 @@ RealBoundarySource CaptureRealBoundary(PatchBezier& patch, Quadtree& tree) {
   result.low_quality_h = tree.LowQualityHFactor();
   result.template_quality = tree.TemplatePoorScoreThreshold();
   result.source_leaves = tree.GetLeafCount();
+  result.tree_counter = tree.getId();
+  for (auto* leaf : tree.getLeaves())
+    result.leaf_order.push_back(leaf->getId());
   CaptureCell(*tree.getRoot(), result.cells);
   ValidateRealBoundary(patch, result);
   return result;
@@ -176,6 +222,9 @@ RealBoundarySource CaptureRealBoundary(PatchBezier& patch, Quadtree& tree) {
 
 void ValidateRealBoundary(PatchBezier& patch, const RealBoundarySource& source) {
   Require(source.sites.size() >= 4 && !source.cells.empty(), "Missing original source boundary");
+  Require(source.cells.front().source_id > 0 &&
+              source.tree_counter >= source.cells.front().source_id,
+          "Original source root identity/counter is invalid");
   std::map<Key, OriginalCurveSample> original;
   for (unsigned side = 0; side < 4; ++side) {
     const auto& samples = source.original_curves[side];
@@ -249,6 +298,7 @@ std::unique_ptr<Quadtree> ReplayRealSourceTree(PatchBezier& patch,
   tree->setBoundary(boundary.release());
   tree->setMaxLevelCap(source.tree_cap);
   tree->SetQualityControls({source.face_quality, source.low_quality_h, source.template_quality});
+  tree->setId(source.cells.front().source_id - 1);
   const auto& box = source.cells.front().box;
   auto low = std::make_unique<Vertex>(box[0], box[1]);
   auto high = std::make_unique<Vertex>(box[2], box[3]);
@@ -258,10 +308,7 @@ std::unique_ptr<Quadtree> ReplayRealSourceTree(PatchBezier& patch,
   root.release();
   low.release();
   high.release();
-  std::set<std::size_t> visited;
-  ReplayCell(*tree->getRoot(), source, 0, visited);
-  Require(visited.size() == source.cells.size() && tree->GetLeafCount() == source.source_leaves,
-          "Native replay changed the original refined source tree");
+  ReplayCells(*tree, source);
   return tree;
 }
 } // namespace apmesh::quad

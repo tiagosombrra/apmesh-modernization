@@ -26,6 +26,11 @@ and normalized arc length are checked, then the original post-generation
 from the enclosing Geometry, which outlives the replayed native trees and typed
 physical owners. No sampled-node, AFT-edge or source-cell pointer escapes.
 
+The follow-up preserves cell identities, the allocation counter and exact
+ordered leaves as well as bounds/levels: original child IDs reconstruct native
+subdivision chronology, and every resulting cell/leaf sequence is compared.
+This avoids substituting DFS creation order for original native order.
+
 The existing dispatcher emits QUAD interior and the existing owned front calls
 original geometric/conditional topological exterior AFT. The typed physical
 mesh preserves each original boundary node ID/XYZ and directed interval.
@@ -82,3 +87,21 @@ existing installed tool was selected only in the child process. Formatting was
 explicitly applied to the changed C++ files, including the existing controlled
 application unit. Architecture inventory was explicitly regenerated with its
 35 source-backed contracts; no diagnostic, gate or frozen oracle was removed.
+
+## First candidate qualification retained
+
+Feature `bfd501a` passed local GNU, Windows MSVC Debug and Clang
+ASan/UBSan/leak fixed16, native real-source contracts and real-boundary normal,
+rollback, corrupt-source and existing-output checks. Hosted
+[run #43714661426](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43714661426)
+passed Linux native, Windows native and baseline/tooling (3/4 jobs), but the
+frozen TRI job refused the newly added
+`configs/quad/curved_patch_original_curves.conf` before any comparisons. The
+follow-up admits that one explicit new opt-in asset only; all frozen model and
+profile paths stay guarded. No failed job is counted as equivalence evidence.
+
+The first local delivery adapter rebuilt successfully but stopped before CTest
+because its configured inventory changed from 75 to 85. Its report remains a
+failure with zero executed CTests, requiring a fresh plan from the updated
+inventory. Follow-up source chronology checks and the asset admission require
+their own exact-revision native and remote qualification.

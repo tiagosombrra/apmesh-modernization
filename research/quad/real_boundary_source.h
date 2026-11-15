@@ -31,6 +31,7 @@ struct RealSourceCell {
   unsigned long level = 0;
   std::array<std::size_t, 4> children{};
   bool subdivided = false;
+  long source_id = 0;
 };
 
 struct OriginalCurveSample {
@@ -44,6 +45,8 @@ struct RealBoundarySource {
   std::array<bool, 4> reversed_curves{};
   std::vector<RealBoundarySite> sites;
   std::vector<RealSourceCell> cells;
+  std::vector<long> leaf_order;
+  long tree_counter = 0;
   double tree_factor = 0;
   long tree_cap = -1;
   double face_quality = 0;
