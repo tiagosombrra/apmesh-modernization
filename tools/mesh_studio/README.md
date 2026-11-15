@@ -276,3 +276,25 @@ contract and is deliberately refused in S5c.
 See `docs/mesh-studio/IMPLEMENTATION_S5C_20261114.md` for the source
 limitations and negative-first research audit. The S4b interactive Qt smoke is
 still pending; an exit code of 2 for unavailable PySide6/PyVistaQt is not a PASS.
+
+## S5d: five real, source-qualified QUAD/TRI mesh candidates
+
+This source-specific study imports five **real** OBJ artifacts from one
+controlled Bezier source run (the fixed16 P1 control and four staged physical
+candidate meshes), reconstructs the 64x64 identical-site source-geometry
+residual and reports the two approved-for-diagnostics Pareto profiles.
+
+```bash
+python -m tools.mesh_studio.real_study_cli \
+  --output-dir build/mesh-studio/real-candidate-study
+python -m unittest tools.mesh_studio.test_real_candidate_study -v
+```
+
+The command generates a source-qualified JSON receipt, CSV source residual
+measurements, true-vector scientific PDF/SVG figures and LaTeX include file.
+It does not select a winner, adopt a candidate mesh, or assert accepted
+adaptation history, all-QUAD generation, anisotropic adaptation, mesh-wide
+nonmanifold welding or independent statistical repetitions.
+See `fixtures/real_p2d1c3/README.md` and
+`docs/mesh-studio/IMPLEMENTATION_S5D_20261115.md`. The controlled Qt desktop
+smoke S4b remains unqualified until tested with actual PySide6/PyVistaQt.

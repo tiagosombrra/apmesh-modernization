@@ -1,0 +1,402 @@
+{
+  "actual_ap_mesh_entry": true,
+  "model": "Models3d::ModelCurvaBezier",
+  "result": {
+    "nodes": 69,
+    "quads": 42,
+    "triangles": 36,
+    "boundary": 16
+  },
+  "rollback_nonempty": true,
+  "native_AFT": true,
+  "independent_Bezier_oracle": true,
+  "typed_history_clone_guard": true,
+  "typed_mixed_curvature_diagnostic": {
+    "angle_defect_total": 6.283185307179581,
+    "min_barycentric_area": 0.009405829773971346,
+    "interior_vertices": 53,
+    "boundary_vertices": 16,
+    "boundary_edges": 16
+  },
+  "typed_physical_quad_quality": {
+    "quads": 42,
+    "min_scaled_jacobian": 0.567009347028317,
+    "min_warpage_cosine": 0.9991456452498715,
+    "max_edge_ratio": 3.3096530574236422
+  },
+  "mixed_surface_residual": {
+    "maximum": 0.04638995827046562,
+    "rms": 0.013065358552865405,
+    "quad_maximum": 0.002620448273121916,
+    "triangle_maximum": 0.04638995827046562,
+    "worst_quad_face": 4,
+    "worst_triangle_face": 74,
+    "tri_sample_u": 0.2,
+    "tri_sample_v": 0.1,
+    "quads": 42,
+    "triangles": 36,
+    "samples": 354,
+    "select_u": 0.7356770833333334,
+    "select_v": 0.29296875,
+    "dominant_region": "tri_aft"
+  },
+  "real_native_tree_trials": {
+    "source": "generated_real_mixed_physical_candidate",
+    "baseline_leaves": "19",
+    "baseline_quad_uv_area": "0.25",
+    "quad_cell_id": "13",
+    "quad_leaves": "22",
+    "quad_emitted_disk": "1",
+    "quad_uv_area": "0.25",
+    "quad_faces": "54",
+    "aft_cell_id": "6",
+    "aft_leaves": "22",
+    "aft_emitted_disk": "0",
+    "aft_uv_area": "0.265625",
+    "aft_quad_faces": "0",
+    "source_candidate_preserved": "1",
+    "native_trial_refinements": "2",
+    "actual_adaptive_epochs": "0"
+  },
+  "connected_native_refinement_band": {
+    "source": "real_candidate_worst_aft_triangle",
+    "source_cell_id": "6",
+    "bridge_east_cell_id": "7",
+    "bridge_north_cell_id": "9",
+    "baseline_leaves": "19",
+    "refined_leaves": "28",
+    "native_leaf_edits": "3",
+    "admitted_uv_disk": "1",
+    "quad_uv_area": "0.328125",
+    "emitted_quads": "62",
+    "prior_physical_owner_preserved": "1",
+    "actual_aft_retriangulations": "0",
+    "adaptive_epochs": "0"
+  },
+  "physical_native_band_candidate": {
+    "status": "staged_unaccepted",
+    "topology": {
+      "nodes": 93,
+      "quads": 62,
+      "triangles": 44,
+      "boundary": 16
+    },
+    "errors": {
+      "maximum": 0.036770698198948695,
+      "rms": 0.007863932396973817,
+      "quad_maximum": 0.002620448273121916,
+      "triangle_maximum": 0.036770698198948695,
+      "worst_quad_face": 4,
+      "worst_triangle_face": 103,
+      "tri_sample_u": 0.8,
+      "tri_sample_v": 0.1,
+      "quads": 62,
+      "triangles": 44,
+      "samples": 486,
+      "select_u": 0.7356770833333334,
+      "select_v": 0.29296875,
+      "dominant_region": "tri_aft"
+    },
+    "physical_quality": {
+      "quads": 62,
+      "min_scaled_jacobian": 0.567009347028317,
+      "min_warpage_cosine": 0.9970126470841612,
+      "max_edge_ratio": 3.3096530574236422
+    },
+    "second_native_band_trials": {
+      "corner": {
+        "admitted_uv_disk": 0,
+        "leaves": 31,
+        "quad_uv_area": 0.34375,
+        "emitted_quads": 0
+      },
+      "west": {
+        "admitted_uv_disk": 1,
+        "leaves": 34,
+        "quad_uv_area": 0.375,
+        "emitted_quads": 75
+      },
+      "north": {
+        "admitted_uv_disk": 1,
+        "leaves": 34,
+        "quad_uv_area": 0.375,
+        "emitted_quads": 71
+      },
+      "both": {
+        "admitted_uv_disk": 1,
+        "leaves": 37,
+        "quad_uv_area": 0.40625,
+        "emitted_quads": 82
+      }
+    },
+    "second_physical_aft_candidates": {
+      "source_fixed_64x64": {
+        "source_grid": 64,
+        "sample_count": 4096,
+        "max_xyz": 0.05160741345747398,
+        "rms_uv": 0.012518000838243337,
+        "rms_source_area": 0.011810324643012932,
+        "quad_sites": 1344,
+        "tri_sites": 2752
+      },
+      "alternatives": {
+        "corner": {
+          "status": "rejected"
+        },
+        "west": {
+          "status": "staged_unaccepted",
+          "topology": {
+            "nodes": 109,
+            "quads": 75,
+            "triangles": 50,
+            "boundary": 16
+          },
+          "physical_quality": {
+            "quads": 75,
+            "min_scaled_jacobian": 0.567009347028317,
+            "min_warpage_cosine": 0.9970126470841612,
+            "max_edge_ratio": 3.3096530574236422
+          },
+          "mixed_source_residual": {
+            "maximum": 0.023049877945599786,
+            "rms": 0.006480199253181551,
+            "quad_maximum": 0.0035984420973007554,
+            "triangle_maximum": 0.023049877945599786,
+            "worst_quad_face": 0,
+            "worst_triangle_face": 117,
+            "tri_sample_u": 0.08333333333333333,
+            "tri_sample_v": 0.9166666666666666,
+            "quads": 75,
+            "triangles": 50,
+            "samples": 575,
+            "select_u": 0.71875,
+            "select_v": 0.3046875,
+            "dominant_region": "tri_aft"
+          },
+          "quad_uv_area": 0.375,
+          "same_site_source_error": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.02626856930484137,
+            "rms_uv": 0.01018989079529557,
+            "rms_source_area": 0.009960083459157833,
+            "quad_sites": 1536,
+            "tri_sites": 2560
+          },
+          "candidate_sha256": "ca08918f6d71fa672de22a72eb6fef7c106c90c7fd02d40cb19852972b4274ee"
+        },
+        "north": {
+          "status": "staged_unaccepted",
+          "topology": {
+            "nodes": 107,
+            "quads": 71,
+            "triangles": 54,
+            "boundary": 16
+          },
+          "physical_quality": {
+            "quads": 71,
+            "min_scaled_jacobian": 0.567009347028317,
+            "min_warpage_cosine": 0.9970126470841612,
+            "max_edge_ratio": 3.3096530574236422
+          },
+          "mixed_source_residual": {
+            "maximum": 0.023049877945599786,
+            "rms": 0.006133621018858702,
+            "quad_maximum": 0.002516306065513885,
+            "triangle_maximum": 0.023049877945599786,
+            "worst_quad_face": 10,
+            "worst_triangle_face": 115,
+            "tri_sample_u": 0.08333333333333333,
+            "tri_sample_v": 0.9166666666666666,
+            "quads": 71,
+            "triangles": 54,
+            "samples": 571,
+            "select_u": 0.6875,
+            "select_v": 0.6875,
+            "dominant_region": "tri_aft"
+          },
+          "quad_uv_area": 0.375,
+          "same_site_source_error": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.02626856930484137,
+            "rms_uv": 0.009580048643537741,
+            "rms_source_area": 0.00923331923514389,
+            "quad_sites": 1536,
+            "tri_sites": 2560
+          },
+          "candidate_sha256": "6eb4faedeaab44fbfa3d4cb2ca1ea618a3dca513dc241871c57bcc7eae26d500"
+        },
+        "both": {
+          "status": "staged_unaccepted",
+          "topology": {
+            "nodes": 117,
+            "quads": 82,
+            "triangles": 52,
+            "boundary": 16
+          },
+          "physical_quality": {
+            "quads": 82,
+            "min_scaled_jacobian": 0.567009347028317,
+            "min_warpage_cosine": 0.9970126470841612,
+            "max_edge_ratio": 3.3096530574236422
+          },
+          "mixed_source_residual": {
+            "maximum": 0.023049877945599786,
+            "rms": 0.005871532651117199,
+            "quad_maximum": 0.002516306065513885,
+            "triangle_maximum": 0.023049877945599786,
+            "worst_quad_face": 13,
+            "worst_triangle_face": 126,
+            "tri_sample_u": 0.08333333333333333,
+            "tri_sample_v": 0.9166666666666666,
+            "quads": 82,
+            "triangles": 52,
+            "samples": 618,
+            "select_u": 0.6875,
+            "select_v": 0.6875,
+            "dominant_region": "tri_aft"
+          },
+          "quad_uv_area": 0.40625,
+          "same_site_source_error": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.02626856930484137,
+            "rms_uv": 0.009459332493753534,
+            "rms_source_area": 0.009155128673187646,
+            "quad_sites": 1664,
+            "tri_sites": 2432
+          },
+          "candidate_sha256": "b77afb530724f38ff81f0f3e7f06fca6c8dc0cb4a15562ce933a4013724bd36c"
+        }
+      },
+      "accepted_adaptive_epochs": 0
+    },
+    "profiled_dominance": {
+      "source": "independent_common_4096_uv_sites",
+      "profiled_not_scientifically_accepted": true,
+      "adaptive_epochs": 0,
+      "measurements": {
+        "band": {
+          "nodes": 93,
+          "quads": 62,
+          "triangles": 44,
+          "elements": 106,
+          "quad_uv_area": 0.328125,
+          "max_xyz": 0.05160741345747398,
+          "rms_source_area": 0.011810324643012932,
+          "min_scaled_jacobian": 0.567009347028317,
+          "min_warpage_cosine": 0.9970126470841612
+        },
+        "west": {
+          "nodes": 109,
+          "quads": 75,
+          "triangles": 50,
+          "elements": 125,
+          "quad_uv_area": 0.375,
+          "max_xyz": 0.02626856930484137,
+          "rms_source_area": 0.009960083459157833,
+          "min_scaled_jacobian": 0.567009347028317,
+          "min_warpage_cosine": 0.9970126470841612
+        },
+        "north": {
+          "nodes": 107,
+          "quads": 71,
+          "triangles": 54,
+          "elements": 125,
+          "quad_uv_area": 0.375,
+          "max_xyz": 0.02626856930484137,
+          "rms_source_area": 0.00923331923514389,
+          "min_scaled_jacobian": 0.567009347028317,
+          "min_warpage_cosine": 0.9970126470841612
+        },
+        "both": {
+          "nodes": 117,
+          "quads": 82,
+          "triangles": 52,
+          "elements": 134,
+          "quad_uv_area": 0.40625,
+          "max_xyz": 0.02626856930484137,
+          "rms_source_area": 0.009155128673187646,
+          "min_scaled_jacobian": 0.567009347028317,
+          "min_warpage_cosine": 0.9970126470841612
+        }
+      },
+      "profiles": {
+        "uv_area_profile": {
+          "objective_directions": {
+            "max_xyz": "min",
+            "rms_source_area": "min",
+            "elements": "min",
+            "nodes": "min",
+            "quad_uv_area": "max",
+            "min_scaled_jacobian": "max",
+            "min_warpage_cosine": "max"
+          },
+          "nondominated": [
+            "band",
+            "both",
+            "north"
+          ],
+          "dominated_by": {
+            "band": [],
+            "both": [],
+            "north": [],
+            "west": [
+              "north"
+            ]
+          }
+        },
+        "quad_count_profile": {
+          "objective_directions": {
+            "max_xyz": "min",
+            "rms_source_area": "min",
+            "elements": "min",
+            "nodes": "min",
+            "quad_uv_area": "max",
+            "min_scaled_jacobian": "max",
+            "min_warpage_cosine": "max",
+            "quads": "max"
+          },
+          "nondominated": [
+            "band",
+            "both",
+            "north",
+            "west"
+          ],
+          "dominated_by": {
+            "band": [],
+            "both": [],
+            "north": [],
+            "west": []
+          }
+        }
+      }
+    },
+    "candidate_sha256": "76b0b4defecc5d534815fb9f41e1405653597a4a0bee6cc7b722ec2460d7afd6"
+  },
+  "same_site_source_error": {
+    "fixed_64x64_original": {
+      "source_grid": 64,
+      "sample_count": 4096,
+      "max_xyz": 0.06564122093160714,
+      "rms_uv": 0.017295203854736017,
+      "rms_source_area": 0.015981265663966727,
+      "quad_sites": 1024,
+      "tri_sites": 3072
+    },
+    "fixed_64x64_band": {
+      "source_grid": 64,
+      "sample_count": 4096,
+      "max_xyz": 0.05160741345747398,
+      "rms_uv": 0.012518000838243337,
+      "rms_source_area": 0.011810324643012932,
+      "quad_sites": 1344,
+      "tri_sites": 2752
+    },
+    "adaptive_epochs": 0,
+    "continuous_error_bound": false
+  },
+  "OBJ_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "adaptive_epochs": 0
+}

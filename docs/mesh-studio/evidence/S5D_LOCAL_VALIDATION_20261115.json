@@ -1,0 +1,66 @@
+{
+  "accepted_adaptive_epochs": 0,
+  "audit_date": "2026-11-15",
+  "common_fixed_UV_sample_sites": 4096,
+  "evidence_kind": "REAL_ORIGINAL_APMESH_CI_PHYSICAL_CANDIDATE_ARTIFACTS",
+  "expected_studio_parent_sha": "a48a7528bbec9e706169f4e30697e152ee0a8f54",
+  "files_sha256": {
+    "candidate_metrics.csv": "c156ae74f44120b9351a760f69cd5e6059c0b815a27b69a6b0ce79bba57858d2",
+    "figure.recipe.json": "31a7e352d3bc02ea69181f3bf74662b1037f2b3bae5364f252b696b00e97c2a5",
+    "include.tex": "997c826414544b63afda6922f1e704f00ff775a3d5450b3fe0a60bd3561135db",
+    "publication.audit.json": "28adac45d92cf538a5633ce31f74447adc31b8a2257e4375b0845ff70f7305be",
+    "qualified_study.json": "a584e2fa53fe76bf801b06cbeba198afe229fc611966d5a6ad79e1d45c486432",
+    "real_candidate_gallery.pdf": "c3f6c6ea24e7faaf66300c3ac7788c20e363a2b5d208a926b8e250b33e4cefe9",
+    "real_candidate_gallery.svg": "55422fedffe5d3581351a1492f7a4e4d910f0fd64bade9459bec53fd3019e26f",
+    "real_candidate_pareto.pdf": "fc3aed18daa8ab192eca1cd46a914c1bc431a3d564f628512ba9f834bf34568b",
+    "real_candidate_pareto.svg": "3a57f8ec3018303c94bba9f01e440b578d49071a159f970b20596e28b5c6baf8"
+  },
+  "independent_statistical_replications": 0,
+  "original_CI_report_sha256": "9de13e6e9b8f6a5f6ae188f19acd0a6b068ddc066df2f4ff9d5579ef96f9f054",
+  "schema": "apmesh.meshstudio.s5d_closure_receipt.v1",
+  "scientific_nonclaims": [
+    "Candidate outputs are not accepted adaptive epochs",
+    "One controlled run is not statistical replication",
+    "Fixed16 is not the production AdaptCurve protocol",
+    "These are discrete source XYZ approximations, not PDE error or continuous bounds",
+    "Pareto diagnostics are not scientific admission policy",
+    "No all-QUAD or anisotropic generator was qualified",
+    "No general global nonmanifold weld was certified",
+    "Source CI does not qualify Studio CI or S4b Qt GUI"
+  ],
+  "source_mesh_platform_sha256_matches": 5,
+  "source_objects": 5,
+  "source_original_CI": {
+    "conclusion": "success",
+    "jobs_success": 4,
+    "jobs_total": 4,
+    "linux_artifact": 14141039513,
+    "run": 43664129060,
+    "windows_artifact": 14142185137
+  },
+  "source_research_candidate_sha": "27851df2625e0c0b37e12023af699a01f3d0304c",
+  "source_research_merge_sha": "ab1dc62a815f3d56c9b25845bec00863730ddcd5",
+  "staged_unaccepted_physical_candidates": 4,
+  "studio_local_validation": {
+    "compileall": "success",
+    "figure_render_visual_review": "passed_no_clipped_labels",
+    "gitHub_studio_ci": "NOT_RUN",
+    "latex_smoke": "compiled_two_column_3_page_sample",
+    "new_s5d_methods": 28,
+    "prior_methods": 163,
+    "profiled_pareto_source_cross_check": "both_profiles_exact_source_nondominance",
+    "qt_desktop_actual_GUI": "NOT_QUALIFIED_MISSING_PYSIDE6_PYVISTAQT",
+    "repeated_generated_files_byte_identical": 9,
+    "source_same_site_error_oracle": "recomputed_from_original_5_OBJ_files",
+    "synthetic_contract": {
+      "deliberately_rejected": 6,
+      "fake_experiment_rows": 8,
+      "total": 16,
+      "valid": 10
+    },
+    "unittest_errors": 0,
+    "unittest_failures": 0,
+    "unittest_methods_passed": 191,
+    "vector_pdf_svg": "both_figure_pairs_no_raster"
+  }
+}
