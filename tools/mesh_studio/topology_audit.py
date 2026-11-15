@@ -42,9 +42,10 @@ def audit_topology(document: MeshDocument, *, _combined: bool = False) -> dict:
             raise TopologyError("repeated_cell_corner")
         if any(idx < 0 or idx >= len(document.points) for idx in face.vertices):
             raise TopologyError("foreign_point_id")
-        by_group[face.group].append((i, face.vertices))
+        patch = (face.patch_id or face.group) if document.patch_ownership == 'sidecar_patch_local' else face.group
+        by_group[patch].append((i, face.vertices))
         for idx in face.vertices:
-            owners[idx].add(face.group)
+            owners[idx].add(patch)
     reports = []
     for group, local in sorted(by_group.items()):
         edges: dict[tuple[int, int], list[tuple[int, int, int]]] = defaultdict(list)

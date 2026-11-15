@@ -7,7 +7,8 @@ import json
 import math
 from pathlib import Path
 
-from .model import MeshDocument, MeshFace
+from .model import (MeshDocument, MeshFace, immutable_science_metadata,
+                    source_metadata_digest)
 
 MAX_SOURCE_BYTES = 20 * 1024 * 1024
 MAX_POINTS = 800_000
@@ -93,8 +94,29 @@ def _read_sidecar(path: Path | None, obj_hash: str):
     except (ValueError, UnicodeError) as exc:
         raise MeshImportError("invalid_sidecar_json") from exc
     _check(isinstance(sidecar, dict), "invalid_sidecar_json")
-    _check(sidecar.get("schema") == "apmesh.meshstudio.synthetic.v1" and
-           sidecar.get("synthetic") is True, "unsupported_sidecar_schema")
+    is_mock = (sidecar.get("schema") == "apmesh.meshstudio.synthetic.v1" and
+               sidecar.get("synthetic") is True)
+    is_real = (sidecar.get("schema") == "apmesh.meshstudio.real_patch.v1" and
+               sidecar.get("synthetic") is False)
+    _check(is_mock or is_real, "unsupported_sidecar_schema")
+    if is_real:
+        model_hash = sidecar.get("source_model_sha256")
+        commit = sidecar.get("generator_commit")
+        _check(isinstance(model_hash, str) and len(model_hash) == 64 and
+               all(c in '0123456789abcdef' for c in model_hash),
+               "invalid_source_model_hash")
+        _check(isinstance(commit, str) and len(commit) == 40 and
+               all(c in '0123456789abcdef' for c in commit),
+               "invalid_source_generator_commit")
+        patches = sidecar.get("patches")
+        _check(isinstance(patches, list) and len(patches) > 0 and
+               len(patches) <= 1024 and all(isinstance(p, dict) and
+               set(p) == {'patch_id', 'source_surface_id'} and
+               all(isinstance(p[k], str) and 0 < len(p[k]) <= 128
+                   for k in ('patch_id', 'source_surface_id')) for p in patches),
+               "invalid_source_patches")
+        ids = [p['patch_id'] for p in patches]
+        _check(len(set(ids)) == len(ids), "duplicate_source_patch")
     _check(sidecar.get("obj_sha256") == obj_hash, "source_sha_mismatch")
     return sidecar, hashlib.sha256(content).hexdigest()
 
@@ -189,31 +211,67 @@ def import_obj(path: Path | str, sidecar_path: Path | str | None = None,
         sidecar_path = path.with_suffix(".json")
     sidecar, sidecar_hash = _read_sidecar(Path(sidecar_path) if sidecar_path else None, source_hash)
     curves = []
+    source_patches = ()
     if sidecar is not None:
+        if sidecar.get('schema') == 'apmesh.meshstudio.real_patch.v1':
+            source_patches = tuple(p['patch_id'] for p in sidecar['patches'])
         _check(len(sidecar.get("nodes", [])) == len(points) and
                len(sidecar.get("faces", [])) == len(faces), "sidecar_inventory")
         _check(all(tuple(row) == point for row, point in zip(sidecar["nodes"], points)),
                "obj_sidecar_xyz_mismatch")
         reconciled = []
         for face, meta in zip(faces, sidecar["faces"]):
-            uv = tuple(tuple(pair) for pair in meta["uv"])
-            _check(meta["nodes"] == list(face.vertices) and
-                   meta["patch_id"] == face.group and
-                   meta["kind"] == face.element_type and len(uv) == len(face.vertices),
+            _check(isinstance(meta, dict) and
+                   isinstance(meta.get('uv'), list) and
+                   all(isinstance(pair, list) and len(pair) == 2 and
+                       all(type(value) in (int, float) and math.isfinite(value)
+                           for value in pair) for pair in meta['uv']),
+                   'invalid_face_metadata', face.line_number)
+            uv = tuple(tuple(pair) for pair in meta['uv'])
+            real_sidecar = sidecar.get('schema') == 'apmesh.meshstudio.real_patch.v1'
+            patch_id = meta.get('patch_id')
+            _check(meta.get('nodes') == list(face.vertices) and
+                   isinstance(patch_id, str) and
+                   (patch_id in source_patches if real_sidecar
+                    else patch_id == face.group) and
+                   meta.get('kind') == face.element_type and
+                   len(uv) == len(face.vertices),
                    "face_sidecar_mismatch", face.line_number)
             if face.uv is not None:
                 _check(face.uv == uv, "uv_sidecar_mismatch", face.line_number)
             reconciled.append(MeshFace(face.vertices, uv, face.group,
-                                       face.element_type, face.line_number))
+                                       face.element_type, face.line_number,
+                                       patch_id=patch_id if real_sidecar else None))
         faces = reconciled
         point_groups = {}
         for face in faces:
             for index in face.vertices:
-                _check(index not in point_groups or point_groups[index] == face.group,
+                _check(index not in point_groups or point_groups[index] == (face.patch_id or face.group),
                        "cross_patch_node_alias", face.line_number)
-                point_groups[index] = face.group
+                point_groups[index] = face.patch_id or face.group
+        if not isinstance(sidecar.get('curves', []), list):
+            raise MeshImportError('invalid_source_curves')
         for curve in sidecar.get("curves", []):
+            _check(isinstance(curve, dict), 'invalid_source_curve')
             canonical = curve["canonical_xyz"]
+            _check(isinstance(canonical, list) and len(canonical) >= 2 and
+                   all(isinstance(p, list) and len(p) == 3 and
+                       all(type(v) in (int, float) and math.isfinite(v)
+                           for v in p) for p in canonical), 'invalid_curve_samples')
+            parameters = curve.get('sample_parameters')
+            incident = curve.get('incident_patches')
+            _check(isinstance(parameters, list) and len(parameters) == len(canonical)
+                   and all(type(v) in (int, float) and math.isfinite(v)
+                           for v in parameters) and
+                   all(a < b for a, b in zip(parameters, parameters[1:])),
+                   'invalid_curve_parameters')
+            _check(isinstance(incident, list) and len(incident) >= 2 and
+                   len(incident) == len(set(incident)) and
+                   (set(incident).issubset(set(source_patches)) if source_patches
+                    else True), 'invalid_curve_incidence')
+            _check(isinstance(curve.get('by_patch_xyz'), dict) and
+                   set(curve['by_patch_xyz']) == set(incident),
+                   'invalid_curve_owners')
             _check(len(curve["sample_parameters"]) == len(canonical),
                    "shared_curve_sample_count")
             for patch in curve["incident_patches"]:
@@ -223,12 +281,19 @@ def import_obj(path: Path | str, sidecar_path: Path | str | None = None,
                        "shared_curve_mismatch")
             _check(curve["topology_weld_approved"] is False,
                    "source_welding_unsupported")
-            curves.append(curve)
+            curves.append(immutable_science_metadata(curve))
     _validate_geometry(points, faces, sidecar.get("reference_normal") if sidecar else None)
+    real_sidecar = sidecar is not None and sidecar.get('schema') == 'apmesh.meshstudio.real_patch.v1'
     return MeshDocument(
         points=tuple(points), faces=tuple(faces), source_sha256=source_hash,
-        source_name=path.name, source_kind="synthetic_sidecar" if sidecar else
-        "legacy_apmesh_obj" if legacy else "wavefront_obj",
-        synthetic=bool(sidecar), patch_ownership="sidecar_patch_local" if sidecar else "unknown",
+        source_name=path.name, source_kind=("real_patch_sidecar" if real_sidecar
+        else "synthetic_sidecar" if sidecar else
+        "legacy_apmesh_obj" if legacy else "wavefront_obj"),
+        synthetic=bool(sidecar and sidecar.get('synthetic')),
+        patch_ownership="sidecar_patch_local" if sidecar else "unknown",
         source_curves=tuple(curves), semantic_sidecar_sha256=sidecar_hash,
+        semantic_metadata_sha256=source_metadata_digest(sidecar) if sidecar else None,
+        source_model_sha256=sidecar.get('source_model_sha256') if real_sidecar else None,
+        source_generator_commit=sidecar.get('generator_commit') if real_sidecar else None,
+        source_patches=source_patches,
     )

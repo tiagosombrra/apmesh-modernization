@@ -149,6 +149,7 @@ def face_detail(document: MeshDocument, face_id: int) -> dict:
         "source_face_id": face_id,
         "element_type": face.element_type,
         "group": face.group,
+        "patch_id": face.patch_id,
         "vertex_indices": list(face.vertices),
         "xyz": [list(document.points[i]) for i in face.vertices],
         "uv": [list(p) for p in face.uv] if face.uv is not None else None,
