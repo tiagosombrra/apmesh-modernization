@@ -12,6 +12,23 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-15 - refinement jump and same-site error comparison measured
+
+Read-only comparison of the existing e90d5a3 exports: curved-side step1 has9
+points; step2 curve pass17 then surface pass65, an8x interval increase. On the
+same16,384 analytic source sites, area-weighted geometric RMS normalized by
+source corner diagonal is TRI/mixed0.2147235%/0.1987092% at step1 and
+0.03841344%/0.02185673% at step2. Step3 repeats step2. Mixed uses165 versus63
+nodes at step1 and953 versus337 at step2: no equal-cost efficiency claim.
+The original TRI curvature indicator instead worsens0.125829 ->0.382516;
+these objectives differ and no approved mixed curvature value is inferred.
+Grid64/128 ordering, exact existing mixed-kernel agreement and an uncovered-face
+negative control were checked. No native generation/tests, policy changes,
+integration or new accepted epoch. [Comparison](TRI_MIXED_SAME_SITE_ERROR_20261115.md)
+and [receipt](evidence/TRI_MIXED_SAME_SITE_ERROR_20261115.json). The next mixed
+criterion must distinguish geometric gain, curvature and cost; do not choose an
+arbitrary growth cap from these two refinements alone.
+
 ### 2026-11-15 - curvature clipping corrected; four physical steps exported
 
 The latest user instruction rejected artificial point clipping and superseded

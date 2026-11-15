@@ -2453,3 +2453,34 @@ status/evidence only. Main ef40c0f and other concurrent PRs were preserved.
 Next: review profile/export/source identity, resolve required open gates before
 integration, qualify any research merge, then continue actual accepted mixed
 state/error/selection work under its scientific approval requirements.
+
+## 2026-11-15 - measure TRI/mixed error and localize compounded refinement
+
+User asked whether step1->2 discretization grew too fast and requested TRI vs
+QUAD/TRI error. Verified featuree90d5a3, research808e7fa and main ef40c0f from
+remote; prior exact-feature checks remain4/4. Read original trace: curve9 ->
+curve-pass17 ->surface-pass65, eight->64 boundary intervals; mixed188->1008
+faces and165->953 nodes. No controls or source implementation changed.
+
+Measured the eight existing physical OBJ files at identical64x64 and128x128
+UV midpoint grids against the original analytic Bernstein surface. TRI uses
+barycentric, QUAD inverse-bilinear interpolation; RMS weighted by source area
+Jacobian and percentages normalized by source opposite-corner diagonal sqrt8.
+At128: step1 TRI0.2147235%, mixed0.1987092%; step2/3 TRI0.03841344%,
+mixed0.02185673%. Initial outputs identical2.7178804%. Mixed has2.62x/2.83x
+nodes, so no equal-cost efficiency result. Step1 maximum mixed error is slightly
+higher even though RMS is lower. Step3 repeats the rejected candidate, not a
+new accepted mixed epoch. Same source boundary is preserved by both layouts.
+
+Exact equality with the unchanged existing mixed kernel for every actual mixed
+stage/grid; initial equality control and missing-face coverage negative pass.
+The local read-only kernel explicitly supports TRI-only sampling without
+changing face search/tolerances/weights; no source helper/oracle was edited.
+Raw script/logs remain ignored; portable receipt stores script and input hashes.
+Native TRI curvature index0.125829 ->0.382516 increases while geometric RMS falls:
+these are distinct objectives; no mixed curvature index is supplied or approved.
+
+Added comparison/report/receipt and this state checkpoint. No native generation,
+C++ tests, compiler, CI rerun, scientific policy or integration occurred. Review
+mixed geometry/curvature/cost criteria and use matched budgets before efficiency
+claims. Preserve existing profile/export delivery and R3/M7 gates.

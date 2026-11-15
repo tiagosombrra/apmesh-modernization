@@ -1,0 +1,319 @@
+{
+  "schema": "apmesh.quad.same_site_TRI_mixed_error.v1",
+  "source_sha": "e90d5a30963ed0ade9683c69a530847709188fe3",
+  "geometry_source": "ModelCurvaBezier",
+  "reference_scale": {
+    "name": "source corner diagonal",
+    "length": 2.8284271247461903,
+    "units": "source units"
+  },
+  "metric": "Euclidean XYZ interpolation error against original Bernstein source on identical uniform UV midpoint sites; RMS weighted by original source Jacobian",
+  "not_curvature_error": true,
+  "not_continuous_bound": true,
+  "not_scientific_acceptance": true,
+  "same_element_or_node_budget": false,
+  "grids": [
+    64,
+    128
+  ],
+  "results": [
+    {
+      "step": 0,
+      "reference_tri_accepted": true,
+      "reason": "initial",
+      "metrics": {
+        "TRI": {
+          "64": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.36166267639684585,
+            "rms_uv": 0.09255521367916454,
+            "rms_source_area": 0.07685632273915012,
+            "quad_sites": 0,
+            "tri_sites": 4096,
+            "rms_percent_of_corner_diagonal": 2.717281349295745
+          },
+          "128": {
+            "source_grid": 128,
+            "sample_count": 16384,
+            "max_xyz": 0.3683084644323038,
+            "rms_uv": 0.09258865951687162,
+            "rms_source_area": 0.07687326653576475,
+            "quad_sites": 0,
+            "tri_sites": 16384,
+            "rms_percent_of_corner_diagonal": 2.717880402970007
+          }
+        },
+        "QUAD_TRI": {
+          "64": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.36166267639684585,
+            "rms_uv": 0.09255521367916454,
+            "rms_source_area": 0.07685632273915012,
+            "quad_sites": 0,
+            "tri_sites": 4096,
+            "rms_percent_of_corner_diagonal": 2.717281349295745
+          },
+          "128": {
+            "source_grid": 128,
+            "sample_count": 16384,
+            "max_xyz": 0.3683084644323038,
+            "rms_uv": 0.09258865951687162,
+            "rms_source_area": 0.07687326653576475,
+            "quad_sites": 0,
+            "tri_sites": 16384,
+            "rms_percent_of_corner_diagonal": 2.717880402970007
+          }
+        }
+      },
+      "TRI": {
+        "filename": "step_0_retry_-1_accepted_tri.obj",
+        "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "nodes": 5,
+        "triangles": 4,
+        "quads": 0
+      },
+      "QUAD_TRI": {
+        "filename": "step_0_retry_-1_accepted_quad_tri.obj",
+        "sha256": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "nodes": 5,
+        "triangles": 4,
+        "quads": 0
+      }
+    },
+    {
+      "step": 1,
+      "reference_tri_accepted": true,
+      "reason": "accepted",
+      "metrics": {
+        "TRI": {
+          "64": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.01983294498030366,
+            "rms_uv": 0.006396422293924306,
+            "rms_source_area": 0.006068792810146995,
+            "quad_sites": 0,
+            "tri_sites": 4096,
+            "rms_percent_of_corner_diagonal": 0.21456422748355522
+          },
+          "128": {
+            "source_grid": 128,
+            "sample_count": 16384,
+            "max_xyz": 0.02008810113805133,
+            "rms_uv": 0.006402791242660727,
+            "rms_source_area": 0.006073297774680068,
+            "quad_sites": 0,
+            "tri_sites": 16384,
+            "rms_percent_of_corner_diagonal": 0.21472350203207224
+          }
+        },
+        "QUAD_TRI": {
+          "64": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.020014795910265778,
+            "rms_uv": 0.006069866622567142,
+            "rms_source_area": 0.005618884317554138,
+            "quad_sites": 2176,
+            "tri_sites": 1920,
+            "rms_percent_of_corner_diagonal": 0.19865756018226385
+          },
+          "128": {
+            "source_grid": 128,
+            "sample_count": 16384,
+            "max_xyz": 0.02018096207433164,
+            "rms_uv": 0.006072471489927363,
+            "rms_source_area": 0.005620346123471756,
+            "quad_sites": 8704,
+            "tri_sites": 7680,
+            "rms_percent_of_corner_diagonal": 0.19870924282612018
+          }
+        }
+      },
+      "TRI": {
+        "filename": "step_1_retry_0_accepted_tri.obj",
+        "sha256": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+        "nodes": 63,
+        "triangles": 104,
+        "quads": 0
+      },
+      "QUAD_TRI": {
+        "filename": "step_1_retry_0_accepted_quad_tri.obj",
+        "sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+        "nodes": 165,
+        "triangles": 68,
+        "quads": 120
+      }
+    },
+    {
+      "step": 2,
+      "reference_tri_accepted": false,
+      "reason": "global_error_increased",
+      "metrics": {
+        "TRI": {
+          "64": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.004385941506812695,
+            "rms_uv": 0.0011584277867412666,
+            "rms_source_area": 0.001082033887623978,
+            "quad_sites": 0,
+            "tri_sites": 4096,
+            "rms_percent_of_corner_diagonal": 0.03825567497062788
+          },
+          "128": {
+            "source_grid": 128,
+            "sample_count": 16384,
+            "max_xyz": 0.004797344774552427,
+            "rms_uv": 0.0011644965326694078,
+            "rms_source_area": 0.0010864960579059482,
+            "quad_sites": 0,
+            "tri_sites": 16384,
+            "rms_percent_of_corner_diagonal": 0.038413436513887386
+          }
+        },
+        "QUAD_TRI": {
+          "64": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.004057103181433468,
+            "rms_uv": 0.0007058710963951348,
+            "rms_source_area": 0.0006190044308416066,
+            "quad_sites": 3136,
+            "tri_sites": 960,
+            "rms_percent_of_corner_diagonal": 0.021885111531630964
+          },
+          "128": {
+            "source_grid": 128,
+            "sample_count": 16384,
+            "max_xyz": 0.004606095132137213,
+            "rms_uv": 0.0007056736147799973,
+            "rms_source_area": 0.0006182017602512392,
+            "quad_sites": 12544,
+            "tri_sites": 3840,
+            "rms_percent_of_corner_diagonal": 0.021856732840755573
+          }
+        }
+      },
+      "TRI": {
+        "filename": "step_2_retry_0_rejected_tri.obj",
+        "sha256": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+        "nodes": 337,
+        "triangles": 560,
+        "quads": 0
+      },
+      "QUAD_TRI": {
+        "filename": "step_2_retry_0_rejected_quad_tri.obj",
+        "sha256": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+        "nodes": 953,
+        "triangles": 224,
+        "quads": 784
+      }
+    },
+    {
+      "step": 3,
+      "reference_tri_accepted": false,
+      "reason": "global_error_increased",
+      "metrics": {
+        "TRI": {
+          "64": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.004385941506812695,
+            "rms_uv": 0.0011584277867412666,
+            "rms_source_area": 0.001082033887623978,
+            "quad_sites": 0,
+            "tri_sites": 4096,
+            "rms_percent_of_corner_diagonal": 0.03825567497062788
+          },
+          "128": {
+            "source_grid": 128,
+            "sample_count": 16384,
+            "max_xyz": 0.004797344774552427,
+            "rms_uv": 0.0011644965326694078,
+            "rms_source_area": 0.0010864960579059482,
+            "quad_sites": 0,
+            "tri_sites": 16384,
+            "rms_percent_of_corner_diagonal": 0.038413436513887386
+          }
+        },
+        "QUAD_TRI": {
+          "64": {
+            "source_grid": 64,
+            "sample_count": 4096,
+            "max_xyz": 0.004057103181433468,
+            "rms_uv": 0.0007058710963951348,
+            "rms_source_area": 0.0006190044308416066,
+            "quad_sites": 3136,
+            "tri_sites": 960,
+            "rms_percent_of_corner_diagonal": 0.021885111531630964
+          },
+          "128": {
+            "source_grid": 128,
+            "sample_count": 16384,
+            "max_xyz": 0.004606095132137213,
+            "rms_uv": 0.0007056736147799973,
+            "rms_source_area": 0.0006182017602512392,
+            "quad_sites": 12544,
+            "tri_sites": 3840,
+            "rms_percent_of_corner_diagonal": 0.021856732840755573
+          }
+        }
+      },
+      "TRI": {
+        "filename": "step_3_retry_0_rejected_tri.obj",
+        "sha256": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+        "nodes": 337,
+        "triangles": 560,
+        "quads": 0
+      },
+      "QUAD_TRI": {
+        "filename": "step_3_retry_0_rejected_quad_tri.obj",
+        "sha256": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+        "nodes": 953,
+        "triangles": 224,
+        "quads": 784
+      }
+    }
+  ],
+  "negative_missing_face_rejected": true,
+  "mixed_kernel_crosscheck": "exact equality to existing independent_common_grid.common_grid_source_error on every actual mixed stage/grid",
+  "script_sha256": "5ec5924962d35ced9e4df967e5c5fa7eae125e6ac168edb1ee05baf0f767ade5",
+  "curve_growth": {
+    "1": {
+      "input": 0,
+      "curve_pass": 3,
+      "surface_pass": 9,
+      "final_budget": 9
+    },
+    "2": {
+      "input": 9,
+      "curve_pass": 17,
+      "surface_pass": 65,
+      "final_budget": 65
+    },
+    "3": {
+      "input": 65,
+      "curve_pass": 17,
+      "surface_pass": 65,
+      "final_budget": 65
+    }
+  },
+  "TRI_curvature_indicator": {
+    "0": 0.314848,
+    "1": 0.125829,
+    "2": 0.382516,
+    "3": 0.382516
+  },
+  "limitations": [
+    "Not curvature or solution error",
+    "Uniform-UV midpoint sites exclude the boundary itself",
+    "RMS is weighted by original source area Jacobian",
+    "No equal-node/element-budget comparison",
+    "Stage3 repeats rejected stage2; not an accepted mixed epoch",
+    "At stage1 mixed sampled maximum is slightly worse although RMS is lower",
+    "No generation/acceptance controls changed"
+  ]
+}
