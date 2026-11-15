@@ -957,6 +957,140 @@ void Export(const Candidate& result, const std::filesystem::path& path) {
   std::filesystem::remove(temporary, ec);
   std::filesystem::remove(staging, ec);
 }
+// Test the *next* source-error-selected boundary band on actual native trees.
+// The previously refined first band is rebuilt before every candidate trial.
+// This does not publish a second physical SubMesh or accept an adaptive epoch.
+struct SecondNativeBandTrial {
+  std::size_t baseline_leaves = 0;
+  std::size_t leaves = 0;
+  std::size_t quads = 0;
+  long double uv_area = 0.0L;
+  long selected_cell_id = -1;
+  long west_cell_id = -1;
+  long north_cell_id = -1;
+  bool admitted_uv_disk = false;
+  std::string rejection = "none";
+};
+
+SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_source,
+                                            const research::ResidualUv& second_source,
+                                            unsigned variant) {
+  Require(variant < 4 && std::isfinite(second_source[0]) &&
+              std::isfinite(second_source[1]) &&
+              second_source[0] > 0.75 && second_source[0] < 1.0 &&
+              second_source[1] > 0.0 && second_source[1] < 0.25,
+          "Second connected AFT band needs the measured lower-right source chart");
+  std::unique_ptr<Quadtree> tree;
+  const auto first = TrialConnectedAftBand(first_source, &tree);
+  Require(first.admitted_uv_disk && tree && first.leaves == 28 &&
+              first.quads == 62 && first.uv_area == 0.328125L,
+          "Second native trial did not reproduce the first physical source band");
+  SecondNativeBandTrial result;
+  result.baseline_leaves = tree->GetLeafCount();
+  const auto find_leaf = [&tree](double u, double v) -> QuadtreeCell* {
+    QuadtreeCell* chosen = nullptr;
+    for (auto* cell : tree->getLeaves()) {
+      auto* low = cell->getMin();
+      auto* high = cell->getMax();
+      if (u > low->getX() && u < high->getX() &&
+          v > low->getY() && v < high->getY()) {
+        Require(chosen == nullptr, "Ambiguous second-band native source leaf");
+        chosen = cell;
+      }
+    }
+    Require(chosen != nullptr, "Second AFT source site lacks a native leaf");
+    return chosen;
+  };
+  auto* corner = find_leaf(second_source[0], second_source[1]);
+  Require(corner->getLevel() == 2 &&
+              corner->getMin()->getX() == 0.75 &&
+              corner->getMin()->getY() == 0.0,
+          "Second AFT source leaf was not the original lower-right level-2 cell");
+  const double du = corner->getMax()->getX() - corner->getMin()->getX();
+  const double dv = corner->getMax()->getY() - corner->getMin()->getY();
+  Require(du == 0.25 && dv == 0.25,
+          "Second AFT source cell changed its original dyadic extent");
+  const double u = corner->getMin()->getX() + 0.5 * du;
+  const double v = corner->getMin()->getY() + 0.5 * dv;
+  auto* west = find_leaf(u - du, v);
+  auto* north = find_leaf(u, v + dv);
+  Require(west != corner && north != corner && west != north &&
+              west->getLevel() == 2 && north->getLevel() == 2,
+          "Second native AFT bridge cells are not distinct original leaves");
+  result.selected_cell_id = corner->getId();
+  result.west_cell_id = west->getId();
+  result.north_cell_id = north->getId();
+  std::vector<QuadtreeCell*> chosen{corner};
+  if (variant & 1u)
+    chosen.push_back(west);
+  if (variant & 2u)
+    chosen.push_back(north);
+  for (auto* leaf : chosen) {
+    Require(!leaf->subdivided() && leaf->getLevel() == 2,
+            "Second native AFT trial attempted an invalid repeat source edit");
+    leaf->subdivideToLevel(3);
+  }
+  tree->refineAccordingToNeighbors();
+  result.leaves = tree->GetLeafCount();
+  Require(result.leaves >= result.baseline_leaves + 3 * chosen.size(),
+          "Second AFT native trial lost required source leaf edits");
+  try {
+    const auto region = CaptureLeafPolygons(*tree);
+    result.uv_area = region.interior_area;
+    const auto emitted = EmitLeafQuads(*tree, PointRule);
+    result.quads = emitted.quads.size();
+    result.admitted_uv_disk = true;
+  } catch (const std::invalid_argument& failure) {
+    // A disconnected island is reported as a rejected native proposal.
+    result.rejection = failure.what();
+  }
+  return result;
+}
+
+void ProbeSecondNativeAftVariants(const Candidate& previous_physical,
+                                  const research::MixedSurfaceResidual& first_source,
+                                  const research::MixedSurfaceResidual& second_source) {
+  Require(previous_physical.mesh && previous_physical.quads == 62 &&
+              second_source.worst_triangle_face >= previous_physical.quads &&
+              second_source.worst_triangle_face < previous_physical.faces.size(),
+          "Second native refinement lacks the actual preceding physical AFT error");
+  const auto previous_observers = CaptureNodeObservers(*previous_physical.mesh);
+  const auto* previous_node = previous_physical.mesh->GetNoh(0);
+  const auto* previous_element = previous_physical.mesh->GetElement(0);
+  static const std::array<const char*, 4> names{{"corner", "west", "north", "both"}};
+  for (unsigned variant = 0; variant < names.size(); ++variant) {
+    const auto trial = TrialSecondNativeBand(first_source.worst_triangle_sample_uv,
+                                             second_source.worst_triangle_sample_uv,
+                                             variant);
+    Require(previous_physical.mesh->GetNoh(0) == previous_node &&
+                previous_physical.mesh->GetElement(0) == previous_element &&
+                CaptureNodeObservers(*previous_physical.mesh) == previous_observers,
+            "Second temporary native refinement modified the previous physical owner");
+    std::ostringstream out;
+    out.imbue(std::locale::classic());
+    out << std::setprecision(17)
+        << "QUAD_SECOND_NATIVE_BAND"
+        << " variant=" << names[variant]
+        << " source=staged_previous_physical_worst_aft"
+        << " selected_native_id=" << trial.selected_cell_id
+        << " west_native_id=" << trial.west_cell_id
+        << " north_native_id=" << trial.north_cell_id
+        << " baseline_leaves=" << trial.baseline_leaves
+        << " refined_leaves=" << trial.leaves
+        << " native_leaf_edits=" << (1u + ((variant & 1u) != 0u) + ((variant & 2u) != 0u))
+        << " admitted_uv_disk=" << int(trial.admitted_uv_disk)
+        << " quad_uv_area=" << trial.uv_area
+        << " emitted_quads=" << trial.quads
+        << " previous_physical_owner_preserved=1"
+        << " actual_second_aft_retriangulations=0"
+        << " adaptive_epochs=0\n";
+    std::cout << out.str();
+    if (!trial.admitted_uv_disk)
+      std::cout << "QUAD_SECOND_NATIVE_BAND_REJECTION variant=" << names[variant]
+                << " reason=" << trial.rejection << '\n';
+  }
+}
+
 // A completely separate, non-accepted physical candidate rebuilt from the
 // exact source-error-selected connected native tree and original AFT pipeline.
 void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
@@ -1021,6 +1155,7 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
                 errors.triangles > 0 && std::isfinite(errors.maximum) &&
                 std::isfinite(candidate.min_quality) && candidate.min_quality > 0.0,
             "Band candidate failed original Bezier source or facet quality admission");
+    ProbeSecondNativeAftVariants(candidate, source_residual, errors);
     physical_quads = candidate.quads;
     physical_triangles = errors.triangles;
     physical_nodes = candidate.mesh->GetNumberNos();

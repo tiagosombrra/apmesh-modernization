@@ -9,6 +9,8 @@ import uuid
 import sys
 from test_m4_real_model_hybrid import golden, approximately, cross, vector, dot
 from independent_common_grid import common_grid_source_error
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]/"research"/"quad"))
+from p2d_next_band_dyadic import inspect_band
 
 
 def require(value, message):
@@ -460,6 +462,61 @@ def verify_connected_aft_band(stdout, source_residual):
     return record
 
 
+def verify_second_native_band(stdout, previous_physical_residual):
+    # Match actual native C++ Quadtree trials to a separate dyadic topology oracle.
+    require(previous_physical_residual["worst_triangle_face"] == 103 and
+            math.isclose(previous_physical_residual["tri_sample_u"], 0.8, abs_tol=1e-12) and
+            math.isclose(previous_physical_residual["tri_sample_v"], 0.1, abs_tol=1e-12),
+            "Second native trial did not start from the staged previous AFT source error")
+    lines = stdout.decode().splitlines()
+    prefixes = {
+        "corner": ((3, 0),),
+        "west": ((3, 0), (2, 0)),
+        "north": ((3, 0), (3, 1)),
+        "both": ((3, 0), (2, 0), (3, 1)),
+    }
+    actual = {}
+    for line in lines:
+        if not line.startswith("QUAD_SECOND_NATIVE_BAND "):
+            continue
+        values = dict(token.split("=", 1) for token in line.split()[1:])
+        name = values.get("variant")
+        require(name in prefixes and name not in actual and
+                values["source"] == "staged_previous_physical_worst_aft" and
+                values["previous_physical_owner_preserved"] == "1" and
+                values["actual_second_aft_retriangulations"] == "0" and
+                values["adaptive_epochs"] == "0",
+                "Second native AFT-band result has duplicate or false provenance")
+        predicted = inspect_band(prefixes[name])
+        admitted = int(values["admitted_uv_disk"])
+        require(admitted in (0, 1) and int(values["baseline_leaves"]) == 28 and
+                int(values["native_leaf_edits"]) == len(predicted.selected) and
+                int(values["refined_leaves"]) >= predicted.leaves and
+                math.isclose(float(values["quad_uv_area"]), predicted.uv_area,
+                             rel_tol=0, abs_tol=1e-12) and
+                len({int(values[key]) for key in
+                     ("selected_native_id", "west_native_id", "north_native_id")}) == 3,
+                "Original native second-band tree differs from independent source grid")
+        rejected = any(value.startswith("QUAD_SECOND_NATIVE_BAND_REJECTION variant=" +
+                                       name + " reason=") for value in lines)
+        if admitted:
+            require(predicted.admitted_disk and int(values["emitted_quads"]) > 0 and
+                    not rejected,
+                    "Native second-band disk was accepted without independent UV support")
+        else:
+            require(int(values["emitted_quads"]) == 0 and rejected,
+                    "Native second-band rejection lost its mandatory reason")
+        actual[name] = {"admitted_uv_disk": admitted,
+                        "leaves": int(values["refined_leaves"]),
+                        "quad_uv_area": float(values["quad_uv_area"]),
+                        "emitted_quads": int(values["emitted_quads"])}
+    require(set(actual) == set(prefixes) and actual["corner"]["admitted_uv_disk"] == 0,
+            "Next AFT-error native tree did not reject the isolated corner")
+    require(any(actual[key]["admitted_uv_disk"] for key in ("west", "north", "both")),
+            "No native-connected bridge to the next source-error AFT island succeeded")
+    return actual
+
+
 def verify_physical_band_candidate(stdout, prefix):
     # A separate file is only an experimental *candidate*, never an adopted epoch.
     lines = stdout.decode().splitlines()
@@ -504,8 +561,10 @@ def verify_physical_band_candidate(stdout, prefix):
                 "Reported native AFT source residual differs from Bernstein OBJ oracle")
     require(float(values["min_facet_quality"]) > 0.0,
             "Candidate physical facet quality was not positive")
+    second_native = verify_second_native_band(stdout, errors)
     return {"status": status, "topology": topology,
             "errors": errors, "physical_quality": quality,
+            "second_native_band_trials": second_native,
             "candidate_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest()}
 
 
