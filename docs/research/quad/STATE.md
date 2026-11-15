@@ -60,7 +60,7 @@ historical 1993 equivalence, all-QUAD or anisotropy.
 `main` and default original TRI remain unchanged.
 
 
-## P2d-1c1 integrated, P2d-1c2 physical second-band AFT trial
+## P2d-1c1 and P2d-1c2 integrated — original native physical AFT history
 
 [PR233](https://github.com/tiagosombrra/apmesh-modernization/pull/233)
 merged original native source-tree second alternatives at
@@ -128,7 +128,7 @@ algorithm, all-QUAD or anisotropic production support.
 
 
 
-## P2d-1b3 integrated, P2d-1c0 second-source topology preflight active
+## P2d-1b3 and P2d-1c0 integrated — prior bounded source-topology gates
 
 [PR231](https://github.com/tiagosombrra/apmesh-modernization/pull/231)
 merged into research `quad-templates` at
