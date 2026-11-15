@@ -21,10 +21,11 @@ export function decodeGeometry(buffer: ArrayBuffer, expectedSpace: Space): MeshG
   if (expected !== buffer.byteLength) throw new Error('invalid_binary_length');
   const metaText = new TextDecoder('utf-8', { fatal: true }).decode(bytes.slice(24, 24 + metaLength));
   const metadata = JSON.parse(metaText) as Partial<MeshGeometry> & { wire_schema?: string };
+  const schema = metadata.schema;
   if (metadata.wire_schema !== 'apmesh.meshstudio.geometry.bin.v1' ||
       metadata.coordinate_space !== expectedSpace ||
       !/^[0-9a-f]{64}$/.test(metadata.source_sha256 ?? '') ||
-      metadata.schema !== 'apmesh.meshstudio.web.v1') throw new Error('invalid_binary_origin');
+      schema !== 'apmesh.meshstudio.web.v1') throw new Error('invalid_binary_origin');
   let offset = 24 + metaLength;
   const points: number[][] = [];
   for (let i = 0; i < pointCount; i += 1) {
@@ -65,7 +66,7 @@ export function decodeGeometry(buffer: ArrayBuffer, expectedSpace: Space): MeshG
     throw new Error('invalid_element_inventory');
   }
   return {
-    schema: metadata.schema,
+    schema,
     source_sha256: metadata.source_sha256,
     source_patch_ownership: metadata.source_patch_ownership ?? 'UNKNOWN_FROM_OBJ',
     coordinate_space: expectedSpace,
