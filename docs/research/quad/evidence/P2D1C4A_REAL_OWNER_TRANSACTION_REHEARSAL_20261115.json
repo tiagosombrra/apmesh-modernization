@@ -5,7 +5,7 @@
   "source_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/236",
   "feature_sha": "f55b8e4aec4c06eb6603f3cf6f6de54d3fdf1f81",
   "exact_feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43704424433",
-  "ci_qualification": "pending final corrected exact-feature CI (all 4 jobs required)",
+  "ci_qualification": "exact feature f55b8e4a PASS 4/4 including root 85/85 CTests, 527/527 Python tooling and frozen Eistute/Book TRI, Linux GCC+ASan/UBSan/leak, Windows MSVC actual controlled AFT QUAD/TRI; qualified only reversible owner rehearsal",
   "source_previous_owner": {
     "status": "actually_published_P1_patch_submesh",
     "physical_nodes": 69,
@@ -49,13 +49,13 @@
     "fabricated_publication_field"
   ],
   "first_measured_linux": "Earlier source 5c8bc5a Linux native and ASan/UBSan/leak passed, including eight forged receipt negatives; current 4b54460 exact-source CI pending",
-  "ci_completed_jobs_while_recorded": [],
-  "ci_pending_jobs_while_recorded": [
+  "ci_completed_jobs_while_recorded": [
     "QUAD native Linux",
     "QUAD native Windows",
-    "TRI frozen science",
+    "TRI scientific equivalence frozen",
     "TRI baseline/tooling"
   ],
+  "ci_pending_jobs_while_recorded": [],
   "adaptive_epochs": 0,
   "scientific_nonclaims": [
     "Reversible rehearsal does not retain a new scientifically accepted owner",
@@ -76,5 +76,21 @@
       "cause": "Calling legacy non-const ElementAdaptive::GetId on a const ElementAdaptive pointer",
       "fix": "f55b8e4aec4c06eb6603f3cf6f6de54d3fdf1f81 changes source-local read pointer to auto*"
     }
-  ]
+  ],
+  "ci": {
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43704424433",
+    "status": "success",
+    "jobs_total": 4,
+    "jobs_passed": 4,
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "linux_native_and_controlled_app": "success",
+    "windows_native_and_controlled_app": "success",
+    "asan_ubsan_leak": "success",
+    "frozen_eistute_book_tri": "success",
+    "five_real_fault_injections": "pass",
+    "eight_forged_receipts_rejected": "pass_in_native_Linux_Windows_and_Linux_sanitizer"
+  },
+  "research_merge_sha": "8a451eee7fad416d36604a61afd35412c65cd72a",
+  "integrated": true
 }
