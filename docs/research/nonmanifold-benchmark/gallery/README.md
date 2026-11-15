@@ -67,3 +67,18 @@ Render from the repository root:
     python docs/research/nonmanifold-benchmark/probes/r3c2_render.py --output build/research-r3c2/t_cross_decomposition.png
 
 **Scientific boundary:** the new diagrams show source-derived **surface patches** and true reconstructed edges, not an accepted APMesh triangular/quadrilateral mesh. Each source body identity is recorded separately from its material-tag interpretation. Original source file hashes and per-asset image rights are not yet independently reviewed.
+
+## 6. Real complex CAD cohort — verified original STEP references, visual render gate PENDING
+
+The next paper-facing gallery must use **renderings of the pinned real CAD files**. The earlier figures of cubes, T/Cross and synthetic Bezier sheets are explicitly regression visualizations, not the selected complex model set. This update has **not** produced those real source renders, because exact source CAD bytes have not been made available to the native renderer. Do not substitute unrelated stock images or use a visually similar object.
+
+| Original source CAD | Direct source URI (pinned) | Source reference screen | Actual source render |
+|---|---|---|---|
+| MAMBO M5 | [i05o_m5.step](https://github.com/cgg-bern/hex-me-if-you-can/blob/8f00f02579037cc893042f2ee2c910b20e3fb1b0/original/i05o_m5.step) | 41 faces / 102 edges, cylinders, cones and torus | **PENDING** |
+| MAMBO S40 | [i25o_s40.step](https://github.com/cgg-bern/hex-me-if-you-can/blob/8f00f02579037cc893042f2ee2c910b20e3fb1b0/original/i25o_s40.step) | 43 faces / 117 edges, including two B-spline surfaces | **PENDING** |
+| MAMBO S27 | [i22o_s27.step](https://github.com/cgg-bern/hex-me-if-you-can/blob/8f00f02579037cc893042f2ee2c910b20e3fb1b0/original/i22o_s27.step) | 52 faces / 144 edges, feature-density challenge | **PENDING** |
+| MAMBO M3 | [i03o_m3.step](https://github.com/cgg-bern/hex-me-if-you-can/blob/8f00f02579037cc893042f2ee2c910b20e3fb1b0/original/i03o_m3.step) | 60 faces / 169 edges, 10 single-face reference edges | **PENDING** |
+
+**Academic visual context:** [Beaufort et al. (2022), *Hex Me If You Can*, Figure 3](https://www.algohex.eu/publications/hex-me-if-you-can/hexmeifyoucan.pdf) illustrates the original authors' simple/nasty/industrial categories. That published figure is a *source citation* for complexity categories; it is **not** proof our shortlisted original STEP files were rendered or meshed. HexMe's output is **volumetric tetrahedral** and its reference images cannot be passed off as our surface TRI/QUAD method's outputs.
+
+[Scientific model selection v2](../SCIENTIFIC_MODEL_SELECTION_V2.md) and [direct source graph evidence](../R2_COMPLEX_CAD_STEP_SCREEN.md) specify the image receipts, scientific roles and stop conditions. Every source-specific render will require exact CAD file checksum, native importer/kernel versions, model/camera transform, source face IDs, and a caption distinguishing CAD input, feature/sheet graph, bicubic fit and actual accepted mesh.

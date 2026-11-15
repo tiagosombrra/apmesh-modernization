@@ -1,8 +1,18 @@
 # Non-manifold benchmark corpus and reverse-patch feasibility
 
-**Status:** R0 documented; R1 40 source leads; R2 topology controls; **R3 two analytic controls and two bounded CAD-source-mirror partial-contact cases (T/Cross), full R3 and external G1/G2 still OPEN**. Updated 2026-11-15.
+**Status:** scientific focus reprioritized to real complex CAD; **7 actual HexMe/MAMBO STEP entity graphs screened**, 4 source models prioritized for native CAD/visual/geometry qualification; synthetic R2/R3 fixtures remain test-only. Full R3, external multi-sheet G1/G2 and runtime R5 remain OPEN. Updated 2026-11-15.
 **Frozen planning base:** main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 **Research branch:** `research/benchmark-corpus-reverse-patches`, draft PR #225.
+
+## Scientific priority correction — 2026-11-15
+
+**The primary scientific candidates are complex ORIGINAL CAD assets, not three-box, T-Junction or Cross-Junction synthetic controls.** The latter remain conversion/regression fixtures only. Do not use their success counts as external topological generalization. The scientific benchmark needs two separately labeled external populations: geometric-complexity CAD controls versus genuinely original multi-sheet non-manifold sources; currently zero externally validated multi-sheet positives.
+
+- [Reprioritized scientific plan](SCIENTIFIC_MODEL_SELECTION_V2.md): source-real geometry before new synthetic models, per-asset rights, graphical source provenance, native CAD and independent non-manifold gates.
+- [Direct seven-asset original STEP screening](R2_COMPLEX_CAD_STEP_SCREEN.md): seven exact pinned STEP entity graphs inspected; no explicitly 3+-face shared EDGE_CURVE identified, but geometric coincidences and native topology still not checked.
+- [First complex-source cohort](COMPLEX_CAD_SOURCE_SHORTLIST.csv): MAMBO M5, S40, S27, M3 PRIMARY; M1/S8 SECONDARY; Quarter Torus ADVERSARIAL. Original CAD image slots remain **PENDING** until real models can be imported and rendered.
+- [Source STEP reference graph analyzer](probes/step_graph_screen.py), [six local controls](probes/test_step_graph_screen.py): standard-library-only independent reproduction tool. Raw SHA-256 is computed only when actual local original bytes are acquired; it is NOT inferred from upstream Git blob SHA.
+- **No new APMesh TRI/QUAD output or external model admission** is claimed from this screening.
 
 ## Evidence and review sequence
 

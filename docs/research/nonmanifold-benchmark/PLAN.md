@@ -4,6 +4,16 @@
 **Frozen planning base:** main f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94 on 2026-11-14.
 **Working boundary:** documentation and isolated experimental research probes/fixtures ONLY; no production build, Stage 3 modernization or QUAD branch modifications.
 
+## 2026-11-15 priority realignment — source CAD complexity ahead of more synthetic demonstrations
+
+[Scientific selection v2](SCIENTIFIC_MODEL_SELECTION_V2.md) is the authoritative **near-term ordering** without erasing R0-R7 hard gates. R2/R3 three-box, T/Cross and analytic ruled sheets stay as bounded unit/negative fixtures; they are not the primary model roster for a new paper.
+
+**Immediate active work:** source-original CAD cohort MAMBO M5 (mixed cone/cylinder/torus), S40 (B-spline surfaces), S27 (feature adjacency) and M3 (face complexity). Their exact upstream STEP entity graphs have been directly inspected; see [R2.E1 evidence](R2_COMPLEX_CAD_STEP_SCREEN.md). Prioritize true native CAD import and source-specific, reproducibly rendered figures, then a bounded four-sided patch decomposition feasibility audit. Preserve failed/deferred cases.
+
+**Parallel scientific blocker:** find a third-party source with independently verified 3+ incident original surface sheets. Do NOT relabel complexity of manifold CAD as non-manifold incidence or count derived sewing/welding as an original external positive. Keep the older three historical Book/Eistute/Decor models as published comparators.
+
+**Geometry gate:** evaluate rational/NURBS cylinders/cones/toroids and trim loops against the strict polynomial bicubic BP representation; record approximation errors and source-feature constraints with predeclared budgets before fitting. Frozen TRI baseline and mode-specific QUAD/TRI, all-quad and anisotropic comparisons remain downstream and conditional.
+
 ## Objectives, exclusions and evidence hierarchy
 
 O1: curate a small, scientifically defensible benchmark covering intended non-manifold shared-curve junctions and appropriate manifold CAD controls.
