@@ -35,10 +35,15 @@ A successful `noexcept` forward/back pointer swap is rehearsed
 and *reverted* to the original accepted P1 owner. The Python app
 gate requires the exact receipt on normal and injected-rollback
 runs and rejects eight forged receipt variants.
-Latest feature `5c8bc5ae563fdcad9518091e16a9cecf391ca55c`.
-[Exact CI #43703415674](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43703415674)
-was **in progress at this checkpoint**; no PR236 merge or
-successful failure-transaction proof is yet claimed.
+Latest feature `f55b8e4aec4c06eb6603f3cf6f6de54d3fdf1f81`.
+The first feature `5c8bc5ae` passed Linux/Windows/ASan and TRI science,
+but later addition of node curvature/element area integrity and live
+post-publication source remeasurement produced an actual GCC compilation
+failure in feature `4b544600`: the old `ElementAdaptive::GetId` signature
+cannot be called through a `const` pointer. This narrow fix is committed
+in `f55b8e4a`; [exact-source CI #43704424433](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43704424433)
+was **pending** at this checkpoint. Earlier green runs do **not** qualify
+the revised source; PR236 remains **draft and unmerged**.
 [Bounded transaction protocol](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/p2d1c4a-real-owner-transaction-rehearsal-20261115/docs/research/quad/P2D1C4A_OWNER_TRANSACTION_REHEARSAL_20261115.md).
 
 **Scientific boundary remains firm:** reversible pointer staging is
