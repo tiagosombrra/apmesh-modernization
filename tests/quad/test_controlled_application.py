@@ -9,6 +9,7 @@ import uuid
 import sys
 from test_m4_real_model_hybrid import golden, approximately, cross, vector, dot
 from independent_common_grid import common_grid_source_error, load_physical_obj
+from independent_pareto import audit_pareto_profiles
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/"research"/"quad"))
 from p2d_next_band_dyadic import inspect_band
 
@@ -610,6 +611,49 @@ def verify_second_physical_aft_candidates(stdout, prefix, native):
             "accepted_adaptive_epochs": 0}
 
 
+def verify_real_physical_pareto(first_topology, first_quality, second_physical):
+    # Compare only identically sampled source errors; do not select an owner.
+    source = second_physical["source_fixed_64x64"]
+    measurements = {
+        "band": {"nodes": first_topology["nodes"],
+                 "quads": first_topology["quads"],
+                 "triangles": first_topology["triangles"],
+                 "elements": first_topology["quads"] + first_topology["triangles"],
+                 "quad_uv_area": 0.328125,
+                 "max_xyz": source["max_xyz"],
+                 "rms_source_area": source["rms_source_area"],
+                 "min_scaled_jacobian": first_quality["min_scaled_jacobian"],
+                 "min_warpage_cosine": first_quality["min_warpage_cosine"]},
+    }
+    for name in ("west", "north", "both"):
+        candidate = second_physical["alternatives"][name]
+        require(candidate["status"] == "staged_unaccepted",
+                "Controlled source cannot rank an unbuilt physical alternative")
+        topo = candidate["topology"]
+        quality = candidate["physical_quality"]
+        fixed = candidate["same_site_source_error"]
+        measurements[name] = {
+            "nodes": topo["nodes"], "quads": topo["quads"],
+            "triangles": topo["triangles"],
+            "elements": topo["quads"] + topo["triangles"],
+            "quad_uv_area": candidate["quad_uv_area"],
+            "max_xyz": fixed["max_xyz"],
+            "rms_source_area": fixed["rms_source_area"],
+            "min_scaled_jacobian": quality["min_scaled_jacobian"],
+            "min_warpage_cosine": quality["min_warpage_cosine"],
+        }
+    result = audit_pareto_profiles(measurements)
+    require(result["profiles"]["uv_area_profile"]["nondominated"] ==
+                ["band", "both", "north"] and
+            result["profiles"]["uv_area_profile"]["dominated_by"]["west"] ==
+                ["north"] and
+            result["profiles"]["quad_count_profile"]["nondominated"] ==
+                ["band", "both", "north", "west"] and
+            result["adaptive_epochs"] == 0,
+            "Physical source-specific multiobjective profiles changed")
+    return result
+
+
 def verify_physical_band_candidate(stdout, prefix):
     # A separate file is only an experimental *candidate*, never an adopted epoch.
     lines = stdout.decode().splitlines()
@@ -657,10 +701,12 @@ def verify_physical_band_candidate(stdout, prefix):
     second_native = verify_second_native_band(stdout, errors)
     second_physical = verify_second_physical_aft_candidates(
         stdout, prefix, second_native)
+    pareto = verify_real_physical_pareto(topology, quality, second_physical)
     return {"status": status, "topology": topology,
             "errors": errors, "physical_quality": quality,
             "second_native_band_trials": second_native,
             "second_physical_aft_candidates": second_physical,
+            "profiled_dominance": pareto,
             "candidate_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest()}
 
 
@@ -699,6 +745,14 @@ def main():
             "Second-band independent topology test failed: " +
             unit.stderr.decode(errors="replace"))
     print("QUAD_SECOND_BAND_DYADIC_ORACLE tests=6 passed=6")
+    pareto_unit = subprocess.run(
+        [sys.executable, str(Path(__file__).with_name("test_independent_pareto.py")), "-v"],
+        capture_output=True, timeout=15)
+    require(pareto_unit.returncode == 0 and
+            b"Ran 6 tests" in pareto_unit.stderr and b"OK" in pareto_unit.stderr,
+            "Independent Pareto negative controls failed: " +
+            pareto_unit.stderr.decode(errors="replace"))
+    print("QUAD_PHYSICAL_PARETO_ORACLE tests=6 passed=6 adaptive_epochs=0")
     root = args.directory.resolve() / ("run-" + uuid.uuid4().hex)
     root.mkdir(parents=True, exist_ok=False)
     def execute(name, rollback=False, model="builtin:curva_bezier"):
