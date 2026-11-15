@@ -145,7 +145,15 @@ function BrowserBenchmark() {
       </p>
       <label htmlFor="cells" style={{ marginRight: 12 }}>Células QUAD sintéticas</label>
       <select id="cells" data-testid="benchmark-cells" value={count}
-        onChange={(event) => setCount(Number(event.target.value))} style={{ maxWidth: 190 }}>
+        onChange={(event) => {
+          // Invalidate the old measurement synchronously before requesting the new scene.
+          setSample(null);
+          setXyzDuration(null);
+          setUvDuration(null);
+          setSelected(null);
+          setStatus('Preparando um novo ensaio sintético...');
+          setCount(Number(event.target.value));
+        }} style={{ maxWidth: 190 }}>
         {ALLOWED_CELLS.map((value) => <option key={value} value={value}>{value.toLocaleString('pt-BR')}</option>)}
       </select>
       <label style={{ marginLeft: 20 }}><input type="checkbox" checked={showQuads}
