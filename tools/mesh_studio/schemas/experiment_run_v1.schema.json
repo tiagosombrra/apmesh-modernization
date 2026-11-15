@@ -1,0 +1,358 @@
+{
+  "$id": "https://github.com/tiagosombrra/apmesh-modernization/tree/feature/mesh-studio-fixture-first-20261114/tools/mesh_studio/schemas/experiment_run_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural contract only. Scientific qualification requires running experiment_ingest.py and its independent source oracle; this schema does NOT certify data.",
+  "properties": {
+    "artifacts": {
+      "additionalProperties": false,
+      "properties": {
+        "generator_report": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?/)[A-Za-z0-9_./-]+$",
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "mesh": {
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "maxLength": 512,
+              "minLength": 1,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?/)[A-Za-z0-9_./-]+$",
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "mesh",
+        "generator_report"
+      ],
+      "type": "object"
+    },
+    "events": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "adaptive_epoch": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "decision": {
+            "enum": [
+              "CONTROLLED_NONADAPTIVE_OUTPUT",
+              "SYNTHETIC_BASELINE",
+              "CANDIDATE_STAGED_UNACCEPTED",
+              "CANDIDATE_REJECTED",
+              "ACCEPTED_ADAPTIVE_EPOCH"
+            ]
+          },
+          "event_index": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "mesh_sha256": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "trace_sha256": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "event_index",
+          "decision",
+          "mesh_sha256",
+          "adaptive_epoch",
+          "trace_sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "type": "array"
+    },
+    "evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "independent_oracle": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kind": {
+          "enum": [
+            "source_generated_ci",
+            "source_unverified",
+            "synthetic"
+          ]
+        },
+        "synthetic": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "independent_oracle",
+        "synthetic"
+      ],
+      "type": "object"
+    },
+    "execution": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "candidate_commit": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "hardware": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "type": "string"
+        },
+        "platform": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "type": "string"
+        },
+        "repository": {
+          "const": "tiagosombrra/apmesh-modernization"
+        },
+        "wall_seconds": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "workflow_run": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "repository",
+        "commit",
+        "candidate_commit",
+        "workflow_run",
+        "artifact_id",
+        "platform",
+        "wall_seconds",
+        "hardware"
+      ],
+      "type": "object"
+    },
+    "measurements": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "definition_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "frame": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "origin": {
+            "enum": [
+              "studio_derived_independent",
+              "source_reported_unverified"
+            ]
+          },
+          "sampling": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "units": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "value",
+          "units",
+          "frame",
+          "sampling",
+          "definition_sha256",
+          "origin"
+        ],
+        "type": "object"
+      },
+      "maxItems": 64,
+      "type": "array"
+    },
+    "method": {
+      "additionalProperties": false,
+      "properties": {
+        "sizing_policy": {
+          "enum": [
+            "isotropic",
+            "anisotropic",
+            "controlled_fixed16_vertex_mean_v1"
+          ]
+        },
+        "topology": {
+          "enum": [
+            "tri",
+            "quad_tri",
+            "all_quad"
+          ]
+        }
+      },
+      "required": [
+        "topology",
+        "sizing_policy"
+      ],
+      "type": "object"
+    },
+    "run_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+      "type": "string"
+    },
+    "schema": {
+      "const": "apmesh.meshstudio.experiment_run.v1"
+    },
+    "source_model": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "type": "string"
+        },
+        "identity_basis": {
+          "enum": [
+            "independent_control_net_oracle",
+            "source_file_sha256",
+            "unverified_model_identity"
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "sha256",
+        "identity_basis"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "run_id",
+    "method",
+    "source_model",
+    "execution",
+    "artifacts",
+    "measurements",
+    "events",
+    "evidence"
+  ],
+  "title": "APMesh Mesh Studio \u2014 Source-bound experiment manifest V1",
+  "type": "object"
+}

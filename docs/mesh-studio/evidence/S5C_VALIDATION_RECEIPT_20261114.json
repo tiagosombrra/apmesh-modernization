@@ -1,0 +1,89 @@
+{
+  "branch": "feature/mesh-studio-fixture-first-20261114",
+  "branch_base_sha": "0b873347a22cafa5fe2a1016b1c23ab5349a0c10",
+  "executed_gates": {
+    "cli_real_p1": {
+      "adaptive_accepted_epochs": 0,
+      "grade": "REAL_P1_GEOMETRY_AND_SPECIFIED_METRICS_VERIFIED",
+      "source_mesh_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+      "status": "PASS"
+    },
+    "cli_repeat_byte_comparison": {
+      "files": 2,
+      "status": "PASS"
+    },
+    "python_compileall": {
+      "command": "python -m compileall -q tools/mesh_studio",
+      "status": "PASS"
+    },
+    "qt_s4b_desktop": {
+      "command": "python -m tools.mesh_studio.desktop_app --obj tools/mesh_studio/fixtures/real_p1/accepted.obj --smoke-output [path]",
+      "exit_code": 2,
+      "false_pass_receipt_created": false,
+      "status": "NOT_QUALIFIED_MISSING_PYSIDE6_PYVISTA_PYVISTAQT"
+    },
+    "source_p1_ci_run_independent_check": {
+      "status": "SOURCE_CI_SUCCESS_IN_PRIOR_COMMIT_NOT_S5C_TEST"
+    },
+    "synthetic_fixture_corpus": {
+      "accepted": 10,
+      "command": "python tools/mesh_studio/fixtures/validate.py",
+      "rejected_as_designed": 6,
+      "simulated_history_rows": 8,
+      "status": "PASS",
+      "total": 16
+    },
+    "unit_test_suite": {
+      "command": "python -m unittest discover -s tools/mesh_studio -t . -p test_*.py -q",
+      "errors": 0,
+      "failures": 0,
+      "includes_prior_s0_s5b_methods": 115,
+      "methods_passed": 163,
+      "s5c_methods": 48,
+      "skips": 0
+    }
+  },
+  "files_sha256": {
+    "docs/mesh-studio/IMPLEMENTATION_S5C_20261114.md": "c77a163cf5122d90d2341b5f8b55a1899f08383518b0439b2f6a2a1ea7c13718",
+    "docs/mesh-studio/experiments/S5C_3X2_STUDY_MATRIX.json": "13238766dfeb3b656bca2811757fbe60eea5282103d1e6d82a8729422eb403ae",
+    "docs/mesh-studio/experiments/S5C_P1_PR217_QUALIFIED.json": "ed4dfd2602d80302be23f886c6ad16a79ae2dec846d2a3eb1020cc9444123bf9",
+    "tools/mesh_studio/experiment_cli.py": "fb0b12bbf8b722264555dd369779a279866ebee8231aa1decee0984772dce854",
+    "tools/mesh_studio/experiment_ingest.py": "24bde6f33c24487e8ec5aaa13c72fec6ff998eb77619def87a6396211c3357e5",
+    "tools/mesh_studio/fixtures/experiments/real_p1_pr217.json": "12c2cc8c230cd59da804c27057b09598b29dd9012f9c963559e3c6c43d4f7378",
+    "tools/mesh_studio/schemas/experiment_run_v1.schema.json": "601462e9cc025881d8c88d5a157584c3ca1c0edfcaed69b82f01524209bec388",
+    "tools/mesh_studio/test_experiment_ingest.py": "39dd1b07f6235230f5d9f6db529d111f220a63a4d3b130fea9eb0e74a9caf951"
+  },
+  "generated_after_qualification": true,
+  "generator_source_ci": {
+    "conclusion": "success",
+    "head_sha": "d39bbc447f88e179c3c4ee674bd9309f59c18eed",
+    "independent_of_s5c_ci": true,
+    "run_id": 43588588497,
+    "status": "completed"
+  },
+  "limits": [
+    "This receipt covers local source code executed before publication; verify exact pushed Git blob identity separately.",
+    "Source P1 CI belongs to prior generator revision, not the Mesh Studio stage.",
+    "The six empty study cells reflect absence of qualified paired adaptive experiments, not negative measurement values."
+  ],
+  "linux_real_qt_smoke": "NOT_RUN",
+  "local_date": "2026-11-14",
+  "local_runtime": {
+    "PySide6_available": false,
+    "PyVistaQt_available": false,
+    "python": "3.13.5",
+    "vtk_available": true
+  },
+  "s5c_scientific_claims": {
+    "continuous_surface_certification": false,
+    "quad_generator_modified": false,
+    "scientifically_comparable_factorial_cells": 0,
+    "source_adaptive_accepted_epochs": 0,
+    "source_all_quad_qualified": false,
+    "source_anisotropy_qualified": false,
+    "source_p1_geometry_and_three_derived_metrics": true
+  },
+  "schema": "apmesh.meshstudio.stage_receipt.s5c.v1",
+  "studio_remote_ci_for_this_stage": "NOT_RUN",
+  "windows_qt_smoke": "NOT_RUN"
+}

@@ -1,0 +1,76 @@
+{
+  "artifacts": {
+    "generator_report": {
+      "path": "tools/mesh_studio/fixtures/real_p1/generator_report.json",
+      "sha256": "1ec6d5e698b6502f117b01d9fce9f2ce9e26048b82b97484da219b747ad908d2"
+    },
+    "mesh": {
+      "path": "tools/mesh_studio/fixtures/real_p1/accepted.obj",
+      "sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0"
+    }
+  },
+  "events": [
+    {
+      "adaptive_epoch": null,
+      "decision": "CONTROLLED_NONADAPTIVE_OUTPUT",
+      "event_index": 0,
+      "mesh_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+      "trace_sha256": null
+    }
+  ],
+  "evidence": {
+    "independent_oracle": "P1_BEZIER_ORACLE_PR217_V1",
+    "kind": "source_generated_ci",
+    "synthetic": false
+  },
+  "execution": {
+    "artifact_id": 14111372234,
+    "candidate_commit": "0999769722f128d887e1143c8ec1da67da627850",
+    "commit": "d39bbc447f88e179c3c4ee674bd9309f59c18eed",
+    "hardware": "not_recorded",
+    "platform": "ubuntu-24.04",
+    "repository": "tiagosombrra/apmesh-modernization",
+    "wall_seconds": null,
+    "workflow_run": 43588588497
+  },
+  "measurements": [
+    {
+      "definition_sha256": "358fbcb089c634a579e27b38492891037a0d74eb89f6b179f977093039b5e6ab",
+      "frame": "xyz",
+      "id": "p1_max_source_xyz_component_error_v1",
+      "origin": "studio_derived_independent",
+      "sampling": "69_mesh_vertices",
+      "units": "original_xyz_coordinate_units_unspecified",
+      "value": 1.0408340855860843e-16
+    },
+    {
+      "definition_sha256": "822e01a920ab13499fb7196777765aafe9ec675f6f2697cd3bf2efbeec1a5df1",
+      "frame": "xyz",
+      "id": "p1_min_sampled_facet_normal_alignment_v1",
+      "origin": "studio_derived_independent",
+      "sampling": "120_discrete_facets_centroids",
+      "units": "dimensionless",
+      "value": 0.9859299598139977
+    },
+    {
+      "definition_sha256": "63e9f69f1e49a54d789fa445e0eed1090c885e674b27738c6219022f7901b79b",
+      "frame": "xyz",
+      "id": "triangle_mean_ratio_3d_v1",
+      "origin": "studio_derived_independent",
+      "sampling": "36_native_aft_triangles",
+      "units": "dimensionless",
+      "value": 0.7681840384225347
+    }
+  ],
+  "method": {
+    "sizing_policy": "controlled_fixed16_vertex_mean_v1",
+    "topology": "quad_tri"
+  },
+  "run_id": "P1_PR217_CONTROLLED_UBUNTU_2404",
+  "schema": "apmesh.meshstudio.experiment_run.v1",
+  "source_model": {
+    "id": "Models3d::ModelCurvaBezier",
+    "identity_basis": "independent_control_net_oracle",
+    "sha256": null
+  }
+}

@@ -238,3 +238,41 @@ comparisons look available.
 Desktop S4b remains **not qualified**: source-preserving Qt interaction needs
 actual PySide6/PyVistaQt installation and Windows/Linux smoke runs. The
 headless S5b tooling does not change this pending status.
+
+## S5c: versioned, source-bound experiment ingestion
+
+S5c introduces a separate, strict, standard-library scientific experiment
+manifest (`experiment_run.v1`), with an optional published JSON Schema for
+interop. The loader resolves **only** hash-bound, bounded files below the
+specified repository root. Schema validity does **not** qualify scientific
+measurements. A real source claim is only independently qualified when a
+matching dedicated oracle is available.
+
+```bash
+python -m tools.mesh_studio.experiment_cli \
+  tools/mesh_studio/fixtures/experiments/real_p1_pr217.json \
+  --output-dir build/mesh-studio/s5c_real_p1
+
+python -m unittest tools.mesh_studio.test_experiment_ingest -v
+```
+
+P1 original source verification requires its exact CI artifact geometry hash,
+original generator report hash, source and candidate revision, GitHub Actions
+run/artifact IDs, original Bezier control-net oracle, 42 QUAD, 36 native AFT TRI,
+69 nodes and 16 outer edges. Three explicitly defined, Studio-recomputed
+metrics are checked against declared values and stable equation identifiers.
+There is **no** source-proven timing, all-QUAD technique, tensor adaptation,
+model-source file hash, or accepted adaptive epoch in this P1 record.
+
+The importer therefore emits `REAL_P1_GEOMETRY_AND_SPECIFIED_METRICS_VERIFIED`
+and a six-cell `NOT_AVAILABLE` comparative study matrix; P1 remains an excluded
+controlled run because its policy is **fixed16/vertex_mean**, rather than
+isotropic or anisotropic adaptation. Arbitrary new source runs may be ingested
+as `SOURCE_PROVISIONAL_NOT_SCIENTIFICALLY_QUALIFIED`, never silently promoted by
+self-declared metrics or CI names. An adaptive accepted epoch or anisotropic
+source-metric claim requires a *new* independently reviewed oracle/trace
+contract and is deliberately refused in S5c.
+
+See `docs/mesh-studio/IMPLEMENTATION_S5C_20261114.md` for the source
+limitations and negative-first research audit. The S4b interactive Qt smoke is
+still pending; an exit code of 2 for unavailable PySide6/PyVistaQt is not a PASS.

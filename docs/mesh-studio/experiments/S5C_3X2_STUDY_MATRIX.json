@@ -1,0 +1,50 @@
+{
+  "cells": [
+    {
+      "run_ids": [],
+      "sizing": "isotropic",
+      "status": "NOT_AVAILABLE",
+      "topology": "tri"
+    },
+    {
+      "run_ids": [],
+      "sizing": "anisotropic",
+      "status": "NOT_AVAILABLE",
+      "topology": "tri"
+    },
+    {
+      "run_ids": [],
+      "sizing": "isotropic",
+      "status": "NOT_AVAILABLE",
+      "topology": "quad_tri"
+    },
+    {
+      "run_ids": [],
+      "sizing": "anisotropic",
+      "status": "NOT_AVAILABLE",
+      "topology": "quad_tri"
+    },
+    {
+      "run_ids": [],
+      "sizing": "isotropic",
+      "status": "NOT_AVAILABLE",
+      "topology": "all_quad"
+    },
+    {
+      "run_ids": [],
+      "sizing": "anisotropic",
+      "status": "NOT_AVAILABLE",
+      "topology": "all_quad"
+    }
+  ],
+  "comparison_protocol_qualified": false,
+  "excluded_runs": [
+    {
+      "evidence_grade": "REAL_P1_GEOMETRY_AND_SPECIFIED_METRICS_VERIFIED",
+      "reason": "FIXED_SAMPLING_NOT_FACTORIAL",
+      "run_id": "P1_PR217_CONTROLLED_UBUNTU_2404"
+    }
+  ],
+  "schema": "apmesh.meshstudio.real_experiment_matrix.v1",
+  "source_results_not_fabricated": true
+}

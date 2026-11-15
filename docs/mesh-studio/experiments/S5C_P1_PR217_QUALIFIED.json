@@ -1,0 +1,49 @@
+{
+  "accepted_adaptive_epochs": 0,
+  "evidence_grade": "REAL_P1_GEOMETRY_AND_SPECIFIED_METRICS_VERIFIED",
+  "figure_comparison_eligible": false,
+  "manifest_sha256": "12c2cc8c230cd59da804c27057b09598b29dd9012f9c963559e3c6c43d4f7378",
+  "mesh_sha256": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+  "metrics": [
+    {
+      "definition_sha256": "358fbcb089c634a579e27b38492891037a0d74eb89f6b179f977093039b5e6ab",
+      "frame": "xyz",
+      "id": "p1_max_source_xyz_component_error_v1",
+      "origin": "studio_derived_independent",
+      "sampling": "69_mesh_vertices",
+      "units": "original_xyz_coordinate_units_unspecified",
+      "value": 1.0408340855860843e-16
+    },
+    {
+      "definition_sha256": "822e01a920ab13499fb7196777765aafe9ec675f6f2697cd3bf2efbeec1a5df1",
+      "frame": "xyz",
+      "id": "p1_min_sampled_facet_normal_alignment_v1",
+      "origin": "studio_derived_independent",
+      "sampling": "120_discrete_facets_centroids",
+      "units": "dimensionless",
+      "value": 0.9859299598139977
+    },
+    {
+      "definition_sha256": "63e9f69f1e49a54d789fa445e0eed1090c885e674b27738c6219022f7901b79b",
+      "frame": "xyz",
+      "id": "triangle_mean_ratio_3d_v1",
+      "origin": "studio_derived_independent",
+      "sampling": "36_native_aft_triangles",
+      "units": "dimensionless",
+      "value": 0.7681840384225347
+    }
+  ],
+  "rejected_candidates": 0,
+  "run_id": "P1_PR217_CONTROLLED_UBUNTU_2404",
+  "schema": "apmesh.meshstudio.experiment_qualification.v1",
+  "sizing_policy": "controlled_fixed16_vertex_mean_v1",
+  "source_model": "Models3d::ModelCurvaBezier",
+  "source_model_sha256": null,
+  "topology": "quad_tri",
+  "warnings": [
+    "NO_GENERATOR_ADAPTIVE_HISTORY_QUALIFICATION",
+    "NO_GLOBAL_SOURCE_SHEET_WELDING_OR_CONTINUOUS_JACOBIAN_CERTIFICATION",
+    "P1_FIXED16_IS_NOT_ISOTROPIC_OR_ANISOTROPIC_ADAPTATION",
+    "BUILTIN_MODEL_HAS_NO_INDEPENDENT_FILE_SHA"
+  ]
+}
