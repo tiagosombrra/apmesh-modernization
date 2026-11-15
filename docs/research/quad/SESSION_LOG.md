@@ -2086,3 +2086,69 @@ OPEN. No main/default TRI modification or full production
 AdaptCurve, nonmanifold high-valence weld, all-QUAD,
 anisotropy, historical1993 equivalence claim.
 
+## 2026-11-15 — Qualified final real owner rehearsal P2d-1c4a and research merge
+
+This append explicitly supersedes the earlier pending CI status:
+actual previous-owner feature
+f55b8e4aec4c06eb6603f3cf6f6de54d3fdf1f81 passed
+Actions #43704424433 **4/4**. Linux GCC and Windows
+MSVC real original AFT controlled QUAD/TRI app/native tests,
+Linux ASan/UBSan/leak and independent eight forged receipt
+negative controls all passed. Eistute/Book frozen original TRI
+science parity passed; root baseline 85/85 CTests and 527/527
+Python tooling tests passed. Exact independent two Linux
+Release/sanitizer JSON outputs reported a genuine published
+P1 previous owner 69/42/36, new source-error-driven typed
+real AFT candidate 93/62/44, exactly 5 injected
+prepublication fault rejections, one real noexcept pointer
+swap **reverted** to P1, and 0 accepted adaptive epochs.
+
+The previous exact-source head 4b544600 was correctly
+rejected by original GCC application compilation because
+the legacy ElementAdaptive::GetId is non-const, while the
+new previous-element observer witness used a const pointer.
+Fixed narrowly at f55b8e4a by a local mutable observer
+pointer, without production SDK or algorithm change.
+The final variant also checks prior node Ga/Gd/Ha/Hd
+curvature scalars, element ID and area, exact ordered
+node observers, all node identity and XYZ, original
+published OBJ bytes and source error newly measured
+from the ACTUALLY published old Patch/SubMesh pointer.
+No rejected/source-staged candidate was counted as a pass.
+
+Audited final PR236 changed files: one controlled QUAD
+research C++ unit, its actual independent application
+Python test and bounded protocol; no production TRI files.
+Merged to quad-templates as
+8a451eee7fad416d36604a61afd35412c65cd72a.
+Evidence/STATE/roadmap updated at
+evidence/P2D1C4A_REAL_OWNER_TRANSACTION_REHEARSAL_20261115.json.
+Main remains f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94.
+
+Scientific limitation persists: this is deliberately a
+reversible owner TRANSACTION REHEARSAL, not an adopted
+previous-state-driven accepted adaptation. It publishes
+no second output and does not own/archive two actual
+committed adaptive transitions. Even after successful
+node/observer/OBJ invariance, the filesystem-memory
+transaction, post-publication crash/recovery, accepted
+epoch state machine, immutable source/control-net and
+original curve provenance and scientifically preapproved
+error+quality+complexity policy remain unimplemented.
+R3/M7 issue221 OPEN, adaptive_epochs=0. Fixed16
+research chart is not original production AdaptCurve;
+high-valence Eistute/Book global welding, historical
+1993 equivalence, all-QUAD, anisotropy unproved.
+
+Next: P2d-1c4b separately specify a real accepted
+mixed epoch archive and source-history replay,
+two distinct later mixed adaptation transitions
+selected from the actual previous published mixed
+state, original AFT physical independent witnesses,
+failure injection after in-memory swap and during
+output staging/publication, and a pre-registered
+scientifically approved candidate selection policy.
+Do not silently choose north or both from a single
+Pareto profile; preserve true QUAD area vs QUAD count
+and common-grid source error quality tradeoff.
+
