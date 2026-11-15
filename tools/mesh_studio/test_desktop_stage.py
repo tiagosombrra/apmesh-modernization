@@ -7,6 +7,7 @@ import hashlib
 import importlib.util
 import json
 import math
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -183,6 +184,8 @@ class SceneModelTests(unittest.TestCase):
                 desktop_app.launch()
 
 
+@unittest.skipIf(os.name == 'nt' and os.getenv('APMESH_CI_HEADLESS_NO_OPENGL') == '1',
+                 'Windows hosted CI lacks qualified WGL/OSMesa; workstation GPU gate OPEN')
 @unittest.skipUnless(importlib.util.find_spec('vtkmodules'), 'VTK unavailable')
 class VtkAdapterTests(unittest.TestCase):
     @classmethod

@@ -1,0 +1,6 @@
+# Preserve byte-exact scientific source hashes on Windows and Linux.
+tools/mesh_studio/fixtures/**/*.obj text eol=lf
+tools/mesh_studio/fixtures/**/*.json text eol=lf
+tools/mesh_studio/fixtures/**/*.csv text eol=lf
+tools/mesh_studio/fixtures/**/*.py text eol=lf
+docs/mesh-studio/figures/**/*.svg text eol=lf
