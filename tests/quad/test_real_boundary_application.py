@@ -1,5 +1,6 @@
 """Audit real original curve partitions against the live physical QUAD/AFT OBJ."""
 import argparse
+import csv
 from collections import Counter
 import hashlib
 import json
@@ -44,6 +45,8 @@ def audit(path):
             "Source is not an actual adapted original tree")
     require(source.get("reference_tri_accepted") in ("0", "1"),
             "Missing actual global TRI reference outcome")
+    require(int(source.get("domain_generation", "0")) > 0,
+            "Missing selected domain invocation provenance")
     expected, nonuniform, reversed_sides = {}, 0, 0
     for side, samples in curves.items():
         require(len(samples) >= 2, "Missing original source curve")
@@ -62,12 +65,12 @@ def audit(path):
             if at in expected:
                 require(expected[at] == (identity, point), "Shared source endpoint identity differs")
             expected[at] = identity, point
-    require(nonuniform > 0 and nonuniform == int(source["nonuniform_sides"]) and
+    require(nonuniform == int(source["nonuniform_sides"]) and
             reversed_sides == int(source["reversed_sides"]),
             "Original source does not prove its nonuniform/reversal claims")
     require(len(sites) == len(expected) and len({site[2] for site in sites}) == len(sites),
             "Native contour dropped or duplicated original source samples")
-    topology = inspect(xyz, uv, faces, expected_boundary=len(expected))
+    topology = inspect(xyz, uv, faces, expected_boundary=len(expected), require_mixed=False)
     require(set(identities) == set(range(1, len(xyz)+1)) and
             len(set(identities.values())) == len(xyz), "Missing or aliased physical node identities")
     positions = {at: i for i, at in enumerate(uv)}
@@ -92,6 +95,7 @@ def audit(path):
     actual_edges = {(a, b) for a, b in directed if directed[b, a] == 0}
     require(actual_edges == source_edges, "Foreign or missing physical boundary interval")
     return dict(topology, source_step=int(source["step"]), native_leaves=int(source["leaves"]),
+                domain_generation=int(source["domain_generation"]),
                 nonuniform_sides=nonuniform, reversed_sides=reversed_sides,
                 reference_tri_accepted=bool(int(source["reference_tri_accepted"])),
                 mixed_adaptive_epochs=0)
@@ -134,6 +138,71 @@ def negative_controls(path, directory):
     return len(cases)
 
 
+def audit_history(prefix):
+    directory = Path(str(prefix) + ".steps")
+    rows = list(csv.DictReader((directory / "manifest.csv").open()))
+    require([int(row["step"]) for row in rows] == [0, 1, 2], "Missing or reordered physical step")
+    require([row["reference_tri_accepted"] for row in rows] == ["1", "1", "0"],
+            "Rejected reference step was promoted or accepted state was lost")
+    require(rows[-1]["reason"] == "hybrid_criterion_rejected", "Actual stop reason was lost")
+    expected = [(5, 0, 4, 4), (5, 0, 4, 4), (37, 16, 28, 12)]
+    for row, counts in zip(rows, expected):
+        for column in ("tri_obj", "quad_tri_obj"):
+            path = directory / row[column]
+            require(path.parent == directory and path.suffix == ".obj", "Foreign history path")
+            xyz, uv, faces = load_physical_obj(path)
+            physical = inspect(xyz, uv, faces, expected_boundary=counts[3], require_mixed=False)
+            markers = [dict(item.split("=", 1) for item in line.split()[2:])
+                       for line in path.read_text().splitlines()
+                       if line.startswith("# generation_stage ")]
+            require(len(markers) == 1 and markers[0]["step"] == row["step"] and
+                    markers[0]["reference_tri_accepted"] == row["reference_tri_accepted"] and
+                    markers[0]["reason"] == row["reason"] and
+                    markers[0]["mixed_adaptive_epochs"] == "0", "Forged history state")
+            if int(row["step"]) > 0:
+                source = audit(path)
+                require(source["reference_tri_accepted"] == bool(int(row["reference_tri_accepted"])),
+                        "History source outcome differs from its physical stage")
+                require(source["domain_generation"] == int(row["domain_generation"]),
+                        "History source belongs to another domain invocation")
+            if column == "quad_tri_obj":
+                actual = tuple(physical[key] for key in ("nodes", "quads", "triangles", "boundary"))
+                require(actual == counts and actual[:3] ==
+                        tuple(int(row[key]) for key in ("nodes", "quads", "triangles")),
+                        "History geometry or manifest counts differ")
+            else:
+                # The legacy OBJ has six significant digits. Use the existing
+                # full-precision native incidence snapshot for exact geometry.
+                original = Path(str(prefix) + f"_passo_{row['step']}_incidences.json")
+                snapshot = json.loads(original.read_text())["patches"][0]
+                original_xyz = [tuple(node[1:4]) for node in snapshot["nodes"]]
+                indices = {node[0]: i for i, node in enumerate(snapshot["nodes"])}
+                original_faces = [tuple(indices[node[0]] for node in face[1:])
+                                  for face in snapshot["faces"]]
+                require(xyz == original_xyz and faces == original_faces and
+                        all(uv[indices[node[0]]] == tuple(node[1:3])
+                            for face in snapshot["faces"] for node in face[1:]),
+                        "TRI history is not the actual original reference geometry")
+    accepted = directory / rows[1]["quad_tri_obj"]
+    require(prefix.with_suffix(".obj").read_bytes() == accepted.read_bytes(),
+            "Main output did not retain the last accepted source")
+    trace = list(csv.DictReader((directory / "curve_stages.csv").open()))
+    groups = {}
+    for row in trace:
+        parameters = [float(t) for t in row["parameters"].split("|") if t]
+        require(len(parameters) == int(row["parameter_count"]) and
+                all(math.isfinite(t) and 0 <= t <= 1 for t in parameters), "Invalid curve trace")
+        key = (row["step"], row["epoch"], row["retry"], row["curve"])
+        groups.setdefault(key, []).append(row)
+    require(groups and all([r["stage"] for r in group] ==
+                          ["input", "curve_pass", "surface_pass", "final_budget"]
+                          for group in groups.values()), "Incomplete curve-pass provenance")
+    require(all(int(group[-1]["parameter_count"]) == (2 if key[0] == "1" else 4)
+                for key, group in groups.items()), "Original final point budget changed")
+    return {"physical_steps": len(rows), "curve_attempts": len(groups),
+            "last_accepted_step": 1, "rejected_steps": [2]}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--exe", required=True, type=Path)
@@ -157,6 +226,27 @@ def main():
         require(process.returncode == int(rollback), f"Real-boundary application failed: {process.returncode}; {out}")
         obj = prefix.with_suffix(".obj")
         record = audit(obj)
+        require(record["reference_tri_accepted"] and record["source_step"] == 1 and
+                record["boundary"] == 4 and record["quads"] == 0,
+                "Main output promoted a rejected source or fabricated a coarse QUAD region")
+        record["history"] = audit_history(prefix)
+        manifest = Path(str(prefix) + ".steps") / "manifest.csv"
+        original_manifest = manifest.read_text()
+        forged = [original_manifest.replace("hybrid_criterion_rejected", "accepted"),
+                  original_manifest.replace(",0,hybrid_criterion_rejected", ",1,hybrid_criterion_rejected"),
+                  "\n".join(original_manifest.splitlines()[:-1]) + "\n"]
+        for altered in forged:
+            require(altered != original_manifest, "Inactive history negative control")
+            manifest.write_text(altered)
+            try:
+                audit_history(prefix)
+            except AssertionError:
+                pass
+            else:
+                raise AssertionError("Forged or incomplete history accepted")
+            finally:
+                manifest.write_text(original_manifest)
+        record["history_negative_controls_rejected"] = len(forged)
         if rollback:
             require(b"QUAD_REAL_BOUNDARY_ROLLBACK previous_nonempty=1 preserved=1" in process.stdout,
                     "Missing nonempty real-boundary rollback witness")

@@ -609,6 +609,10 @@ void GeneratorAdaptive::SetResearchUvCapture(apmesh::quad::CaptureHooks hooks,
     // Allocate only at explicit research setup, never inside TRI commit.
     audit = std::make_unique<apmesh::quad::GlobalOutcomeLog>();
   }
+  research_curve_stage_sink_ = std::move(hooks.curve_stage_sink);
+  research_mesh_stage_sink_ = std::move(hooks.mesh_stage_sink);
+  research_domain_begin_sink_ = std::move(hooks.domain_begin_sink);
+  research_domain_selection_sink_ = std::move(hooks.domain_selection_sink);
   adapter_.SetResearchUvCapture(std::move(hooks));
   research_global_outcomes_ = std::move(audit);
   research_session_ = enabled ? session : 0;
@@ -2718,6 +2722,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
   this->error_normalized_step_.push_back(1.0);
   this->error_total_reduction_pct_step_.push_back(0.0);
   const MeshQualityStats initial_quality = ComputeMeshQualityStats(mesh_.get());
+  if (research_mesh_stage_sink_)
+    research_mesh_stage_sink_(0, {}, true, *mesh_, "initial");
   quality_min_step_.push_back(initial_quality.quality_min);
   quality_mean_step_.push_back(initial_quality.quality_mean);
   poor_ratio_step_.push_back(initial_quality.poor_ratio);
@@ -3607,6 +3613,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
       if (score_ok || small_mesh_progress_override) {
         accepted_step = true;
 #if !USE_MPI && !USE_OPENMP
+        if (research_mesh_stage_sink_)
+          research_mesh_stage_sink_(step_, current_research_outer_, true, *mesh_, "accepted");
         accepted_mesh = accepted_scope.Commit();
         if (research_global_outcomes_) {
           // Log only after the serial accepted state has been committed.
@@ -3658,6 +3666,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
       if (!current_budget_exceeded_) {
         current_budget_final_status_ = "rejected";
       }
+      if (research_mesh_stage_sink_)
+        research_mesh_stage_sink_(step_, current_research_outer_, false, *mesh_, stop_reason_);
 #if USE_PRINT_RESULTS
       if (this->error_local_process_ < prev_error) {
         cout << "Parando: candidato do step " << this->step_ << " reduziu o erro global de "
@@ -3716,9 +3726,8 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
       restore_curve_snapshots(geometry, accepted_curve_snapshots);
       if (research_global_outcomes_) {
         // Log only after both rejected domain and curve states are restored.
-        research_global_outcomes_->Record(
-            {current_research_outer_, step_,
-             apmesh::quad::GlobalOutcomeKind::RejectedStepRestored});
+        research_global_outcomes_->Record({current_research_outer_, step_,
+                                           apmesh::quad::GlobalOutcomeKind::RejectedStepRestored});
       }
       if (force_min_steps_for_logging && this->step_ < min_steps_for_logging) {
         if (current_policy_.stable_mode && previous_elements > 0ULL && previous_elements <= 64ULL &&
@@ -4189,18 +4198,34 @@ void GeneratorAdaptive::AdaptCurve(Geometry* geometry) {
     const int target_curve_points =
         clamp_curve_target(static_cast<int>(std::round(current_curve_target_points_[i])));
 
+    const auto observe_curve = [&](const char* stage) {
+      if (research_curve_stage_sink_)
+        research_curve_stage_sink_(step_, current_research_outer_, i, stage, *curve);
+    };
+    observe_curve("input");
     apmesh::generation::RefineCurveSamples(
         curve, map_points,
         [&] {
-          return adapter_.AdaptCurveByCurve(curve, map_points, this->id_managers_[0].get(),
-                                            factor_disc_global);
+          if (!research_curve_stage_sink_)
+            return adapter_.AdaptCurveByCurve(curve, map_points, this->id_managers_[0].get(),
+                                              factor_disc_global);
+          auto points = adapter_.AdaptCurveByCurve(curve, map_points, this->id_managers_[0].get(),
+                                                   factor_disc_global);
+          observe_curve("curve_pass");
+          return points;
         },
         [&] {
-          return adapter_.AdaptCurveBySurface(curve, map_points, this->id_managers_[0].get(),
-                                              factor_disc_global);
+          if (!research_curve_stage_sink_)
+            return adapter_.AdaptCurveBySurface(curve, map_points, this->id_managers_[0].get(),
+                                                factor_disc_global);
+          auto points = adapter_.AdaptCurveBySurface(curve, map_points, this->id_managers_[0].get(),
+                                                     factor_disc_global);
+          observe_curve("surface_pass");
+          return points;
         },
         BudgetDrivenAdaptation() == 1 && CurvePointBudgetMode() == 1, target_curve_points,
         this->id_managers_.empty() ? nullptr : this->id_managers_[0].get());
+    observe_curve("final_budget");
     CurveAdaptationSnapshot& snapshot = current_curve_adaptation_[i];
     snapshot.factor = factor_disc_global;
     snapshot.num_points = curve->GetNumBerPoints();
@@ -4529,10 +4554,16 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
     struct DomainCandidate {
       std::unique_ptr<SubMesh> mesh;
       std::optional<Adapter::DomainStructuralStats> structural;
+      unsigned research_generation = 0;
     };
+    unsigned research_generation = 0;
     auto generate_patch_mesh = [&](double local_factor, double local_h, int local_depth,
                                    int local_retry) {
       DomainCandidate candidate;
+      candidate.research_generation = ++research_generation;
+      if (research_domain_begin_sink_)
+        research_domain_begin_sink_(step_, current_research_outer_, i,
+                                    candidate.research_generation);
       candidate.mesh.reset(adapter_.AdaptDomain(p, this->id_managers_[0].get(), local_factor,
                                                 local_h, local_depth,
 #if USE_MPI || USE_OPENMP
@@ -4798,6 +4829,9 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
          sub_mesh)
             ? static_cast<unsigned long long>(sub_mesh->GetNumberElements())
             : 0ULL;
+    if (research_domain_selection_sink_)
+      research_domain_selection_sink_(step_, current_research_outer_, i,
+                                      candidate.research_generation);
     sub_mesh->SetPatch(p);
     mesh->InsertSubMeshAdaptiveByPosition(sub_mesh.release(), i);
     geometry->GetPatch(i)->SetSubMesh(mesh->GetSubMeshAdaptiveByPosition(i));

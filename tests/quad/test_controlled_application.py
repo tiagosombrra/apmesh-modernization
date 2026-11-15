@@ -39,9 +39,10 @@ def audit(path):
     return inspect(xyz, uv, faces)
 
 
-def inspect(xyz, uv, faces, expected_boundary=16):
+def inspect(xyz, uv, faces, expected_boundary=16, require_mixed=True):
     require(len(xyz) == len(uv) > 0 and faces, "Empty application output")
-    require(any(len(f) == 4 for f in faces) and any(len(f) == 3 for f in faces),
+    require(not require_mixed or
+            (any(len(f) == 4 for f in faces) and any(len(f) == 3 for f in faces)),
             "Application did not generate both element types")
     for p, q in zip(xyz, uv):
         require(len(q) == 2 and all(math.isfinite(x) and 0 <= x <= 1 for x in q),

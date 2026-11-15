@@ -874,6 +874,10 @@ private:
   std::uint64_t research_outer_epoch_ = 0;
   apmesh::quad::OuterAttemptIdentity current_research_outer_{};
   std::unique_ptr<apmesh::quad::GlobalOutcomeLog> research_global_outcomes_;
+  decltype(apmesh::quad::CaptureHooks::curve_stage_sink) research_curve_stage_sink_;
+  decltype(apmesh::quad::CaptureHooks::mesh_stage_sink) research_mesh_stage_sink_;
+  decltype(apmesh::quad::CaptureHooks::domain_begin_sink) research_domain_begin_sink_;
+  decltype(apmesh::quad::CaptureHooks::domain_selection_sink) research_domain_selection_sink_;
   std::string stop_reason_;
   unsigned long long current_gauss_nodes_;
   unsigned long long current_mean_nodes_;

@@ -12,6 +12,9 @@
 #include <utility>
 #include <vector>
 
+class CurveAdaptive;
+class MeshAdaptive;
+
 namespace apmesh::quad {
 
 // A research caller defines a unique nonzero session namespace. The epoch
@@ -25,8 +28,7 @@ struct OuterAttemptIdentity {
 
 inline bool SameOuterAttempt(const OuterAttemptIdentity& a,
                              const OuterAttemptIdentity& b) noexcept {
-  return a.session == b.session && a.epoch == b.epoch &&
-         a.global_retry == b.global_retry;
+  return a.session == b.session && a.epoch == b.epoch && a.global_retry == b.global_retry;
 }
 
 inline void ValidateOuterAttempt(const OuterAttemptIdentity& context) {
@@ -47,8 +49,7 @@ struct PatchAttemptIdentity {
   OuterAttemptIdentity outer{};
 };
 
-inline bool SamePatchScope(const PatchAttemptIdentity& a,
-                           const PatchAttemptIdentity& b) noexcept {
+inline bool SamePatchScope(const PatchAttemptIdentity& a, const PatchAttemptIdentity& b) noexcept {
   return a.patch_index == b.patch_index && a.adaptive_step == b.adaptive_step &&
          a.retry_index == b.retry_index && SameOuterAttempt(a.outer, b.outer);
 }
@@ -87,12 +88,18 @@ struct CaptureHooks {
   CaptureProvider provider;
   CaptureSink sink;
   LocalSelectionSink local_selection_sink;
+  // Synchronous research observers; callers must copy values, never retain owners.
+  std::function<void(int, OuterAttemptIdentity, unsigned, const char*, CurveAdaptive&)>
+      curve_stage_sink;
+  std::function<void(int, OuterAttemptIdentity, bool, const MeshAdaptive&, const std::string&)>
+      mesh_stage_sink;
+  std::function<void(int, OuterAttemptIdentity, unsigned, unsigned)> domain_begin_sink;
+  std::function<void(int, OuterAttemptIdentity, unsigned, unsigned)> domain_selection_sink;
 };
 
 // Validate the entire stream before publishing any final decision.
 inline void PublishLocalSelections(const std::vector<LocalAttemptRecord>& attempts,
-                                   int selected_local_attempt,
-                                   const LocalSelectionSink& sink) {
+                                   int selected_local_attempt, const LocalSelectionSink& sink) {
   if (!sink) {
     return;
   }
@@ -124,12 +131,11 @@ inline void PublishLocalSelections(const std::vector<LocalAttemptRecord>& attemp
     }
   }
   for (const auto& record : attempts) {
-    const LocalSelectionKind kind =
-        !record.generation_succeeded
-            ? LocalSelectionKind::GenerationFailed
-            : (record.attempt.local_attempt == selected_local_attempt
-                   ? LocalSelectionKind::SelectedForAdapterReturn
-                   : LocalSelectionKind::Superseded);
+    const LocalSelectionKind kind = !record.generation_succeeded
+                                        ? LocalSelectionKind::GenerationFailed
+                                        : (record.attempt.local_attempt == selected_local_attempt
+                                               ? LocalSelectionKind::SelectedForAdapterReturn
+                                               : LocalSelectionKind::Superseded);
     sink(LocalSelectionEvent{record.attempt, kind, record.generation_status});
   }
 }
@@ -141,21 +147,25 @@ inline void ValidateCaptureHooks(const CaptureHooks& hooks) {
   if (hooks.local_selection_sink && !hooks.provider) {
     throw std::invalid_argument("Local TRI decisions require matching UV capture hooks");
   }
+  if ((hooks.curve_stage_sink || hooks.mesh_stage_sink || hooks.domain_begin_sink ||
+       hooks.domain_selection_sink) &&
+      !hooks.provider) {
+    throw std::invalid_argument("Generation stage observers require matching capture hooks");
+  }
 }
 
-inline void BindRefinedCapture(Par2DJMesh::AFT::AdvancingFront& front,
-                              const CaptureHooks& hooks, PatchAttemptIdentity attempt) {
+inline void BindRefinedCapture(Par2DJMesh::AFT::AdvancingFront& front, const CaptureHooks& hooks,
+                               PatchAttemptIdentity attempt) {
   ValidateCaptureHooks(hooks);
   if (!hooks.provider) {
     return;
   }
   // Copy callbacks into the front's lifetime; the tree must never escape this call.
-  front.SetRefinedQuadtreeObserver(
-      [provider = hooks.provider, sink = hooks.sink, attempt](Par2DJMesh::AFT::Quadtree& tree) {
-        LeafPolygonMesh snapshot = provider(tree);
-        sink(AttemptUvCapture{attempt, std::move(snapshot),
-                              CaptureDisposition::PendingTriDecision});
-      });
+  front.SetRefinedQuadtreeObserver([provider = hooks.provider, sink = hooks.sink,
+                                    attempt](Par2DJMesh::AFT::Quadtree& tree) {
+    LeafPolygonMesh snapshot = provider(tree);
+    sink(AttemptUvCapture{attempt, std::move(snapshot), CaptureDisposition::PendingTriDecision});
+  });
 }
 
 } // namespace apmesh::quad

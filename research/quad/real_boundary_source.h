@@ -55,6 +55,7 @@ struct RealBoundarySource {
   unsigned nonuniform_sides = 0;
   unsigned reversed_sides = 0;
   int source_step = -1;
+  unsigned domain_generation = 0;
   bool reference_tri_accepted = false;
   std::size_t source_leaves = 0;
 };

@@ -190,6 +190,9 @@ struct Candidate {
   double min_quality = 1.0;
   bool real_boundary = false;
   const RealBoundarySource* source_witness = nullptr;
+  int generation_step = -1;
+  bool reference_accepted = false;
+  std::string stage_reason;
 };
 
 struct PublicationFailure : std::runtime_error {
@@ -934,15 +937,22 @@ void Export(const Candidate& result, const std::filesystem::path& path) {
     out.imbue(std::locale::classic());
     Require(bool(out), "Cannot create controlled output");
     out << std::setprecision(17)
-        << (result.real_boundary
+        << (result.generation_step == 0
+                ? "# actual initial TRI reference; no native interior or mixed adaptive epoch\n"
+            : result.real_boundary
                 ? "# original curve workflow/native tree; experimental vertex_mean; mixed "
                   "adaptive_epochs=0\n"
                 : "# controlled curved Bezier; experimental fixed16/vertex_mean; not adaptive\n");
+    if (result.generation_step >= 0)
+      out << "# generation_stage step=" << result.generation_step
+          << " reference_tri_accepted=" << result.reference_accepted
+          << " mixed_adaptive_epochs=0 reason=" << result.stage_reason << '\n';
     if (result.source_witness) {
       const auto& source = *result.source_witness;
       out << "# original_source step=" << source.source_step << " leaves=" << source.source_leaves
           << " nonuniform_sides=" << source.nonuniform_sides
           << " reversed_sides=" << source.reversed_sides
+          << " domain_generation=" << source.domain_generation
           << " reference_tri_accepted=" << source.reference_tri_accepted << '\n';
       for (unsigned side = 0; side < 4; ++side)
         for (const auto& sample : source.original_curves[side])
@@ -1503,12 +1513,53 @@ void ProbePhysicalOwnerTransactionRehearsal(PatchBezier& patch, SubMesh& accepte
             << " accepted_adaptive_epochs=0\n";
 }
 
+// Copy the actual TRI state while its owner is live. Coarse steps with no
+// interior cells remain TRI; no QUAD island or extra source samples are invented.
+Candidate SnapshotTriStage(const SubMesh& mesh, PatchBezier& patch) {
+  Candidate result;
+  result.real_boundary = true;
+  std::map<unsigned long, std::size_t> ids;
+  result.uv.resize(mesh.GetNumberNos());
+  std::vector<bool> assigned(mesh.GetNumberNos(), false);
+  for (unsigned i = 0; i < mesh.GetNumberNos(); ++i) {
+    const auto id = mesh.GetNoh(i)->GetId();
+    Require(ids.emplace(id, i).second, "Reference TRI node IDs are not unique");
+    result.node_ids.push_back(id);
+  }
+  for (unsigned i = 0; i < mesh.GetNumberElements(); ++i) {
+    const auto* tri = dynamic_cast<const TriangleAdaptive*>(mesh.GetElement(i));
+    Require(tri != nullptr, "Reference state contains a non-TRI element");
+    const std::array<std::tuple<double, double>, 3> parameters{
+        tri->GetParametersN1(), tri->GetParametersN2(), tri->GetParametersN3()};
+    std::vector<std::size_t> face;
+    for (unsigned j = 0; j < 3; ++j) {
+      const auto vertex = tri->GetVertexPoint(j + 1);
+      const auto index = ids.at(vertex.GetId());
+      const UvVertex uv{std::get<0>(parameters[j]), std::get<1>(parameters[j])};
+      Require(!assigned[index] || (result.uv[index].u == uv.u && result.uv[index].v == uv.v),
+              "Reference TRI parameter identity is inconsistent");
+      result.uv[index] = uv;
+      assigned[index] = true;
+      face.push_back(index);
+    }
+    result.faces.push_back(std::move(face));
+  }
+  Require(std::all_of(assigned.begin(), assigned.end(), [](bool value) { return value; }),
+          "Reference state has unused nodes");
+  result.mesh = CloneTypedHistory(mesh, result, patch, -1);
+  CheckTypedIncidence(*result.mesh, result);
+  return result;
+}
+
 } // namespace
 
 int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   const auto output = std::filesystem::path(config.output_prefix + ".obj");
+  const auto steps = std::filesystem::path(config.output_prefix + ".steps");
+  const auto staging = std::filesystem::path(config.output_prefix + ".steps.pending");
   Require(!std::filesystem::exists(output) &&
-              !std::filesystem::exists(output.string() + ".pending"),
+              !std::filesystem::exists(output.string() + ".pending") &&
+              !std::filesystem::exists(steps) && !std::filesystem::exists(staging),
           "Real-boundary output or pending publication already exists");
   Require(output.parent_path().empty() || std::filesystem::is_directory(output.parent_path()),
           "Real-boundary output parent directory does not exist");
@@ -1534,10 +1585,56 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     RealBoundarySource source;
     PatchAttemptIdentity attempt;
     bool locally_selected = false;
+    bool domain_selected = false;
   };
   std::vector<Capture> captures;
+  struct Stage {
+    int step;
+    OuterAttemptIdentity outer;
+    bool accepted;
+    std::string reason;
+    Candidate reference;
+  };
+  std::vector<Stage> stages;
+  std::ostringstream curve_trace;
+  curve_trace.imbue(std::locale::classic());
+  curve_trace << std::setprecision(17)
+              << "step,epoch,retry,curve,stage,parameter_count,parameters\n";
   std::optional<RealBoundarySource> pending;
+  unsigned active_domain_generation = 0;
   CaptureHooks hooks;
+  hooks.domain_begin_sink = [&](int, OuterAttemptIdentity, unsigned side, unsigned generation) {
+    Require(side == 0, "Domain generation belongs to a foreign patch");
+    active_domain_generation = generation;
+  };
+  hooks.domain_selection_sink = [&](int step, OuterAttemptIdentity outer, unsigned side,
+                                    unsigned generation) {
+    Require(side == 0, "Selected domain belongs to a foreign patch");
+    for (auto& capture : captures)
+      if (capture.source.source_step == step && SameOuterAttempt(capture.attempt.outer, outer))
+        capture.domain_selected = capture.source.domain_generation == generation;
+  };
+  hooks.curve_stage_sink = [&](int step, OuterAttemptIdentity outer, unsigned side,
+                               const char* stage, CurveAdaptive& curve) {
+    const auto& parameters = static_cast<CurveAdaptiveParametric&>(curve).parameters_;
+    curve_trace << step << ',' << outer.epoch << ',' << outer.global_retry << ',' << side << ','
+                << stage << ',' << parameters.size() << ',';
+    bool first = true;
+    for (double parameter : parameters) {
+      if (!first)
+        curve_trace << '|';
+      curve_trace << parameter;
+      first = false;
+    }
+    curve_trace << '\n';
+  };
+  hooks.mesh_stage_sink = [&](int step, OuterAttemptIdentity outer, bool accepted,
+                              const MeshAdaptive& mesh, const std::string& reason) {
+    Require(mesh.GetNumberSubMeshesAdaptive() == 1, "Stage lost its single source patch");
+    const auto* source = mesh.GetSubMeshAdaptiveByPosition(0);
+    Require(source != nullptr, "Stage lost its physical TRI owner");
+    stages.push_back({step, outer, accepted, reason, SnapshotTriStage(*source, *patch)});
+  };
   hooks.provider = [&](Quadtree& tree) {
     Require(!pending, "Original source capture was not consumed");
     pending = CaptureRealBoundary(*patch, tree);
@@ -1549,12 +1646,14 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     Require(pending.has_value() && value.attempt.patch_index == 0,
             "Original source capture lost its patch identity");
     pending->source_step = value.attempt.adaptive_step;
-    captures.push_back({std::move(*pending), value.attempt, false});
+    pending->domain_generation = active_domain_generation;
+    captures.push_back({std::move(*pending), value.attempt, false, false});
     pending.reset();
   };
   hooks.local_selection_sink = [&](LocalSelectionEvent event) {
     for (auto& capture : captures)
-      if (SamePatchScope(capture.attempt, event.attempt) &&
+      if (capture.source.domain_generation == active_domain_generation &&
+          SamePatchScope(capture.attempt, event.attempt) &&
           capture.attempt.local_attempt == event.attempt.local_attempt)
         capture.locally_selected = event.kind == LocalSelectionKind::SelectedForAdapterReturn;
   };
@@ -1569,15 +1668,17 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
         event.kind != GlobalOutcomeKind::RejectedStepRestored)
       continue;
     for (auto& capture : captures)
-      if (capture.locally_selected && SameOuterAttempt(capture.attempt.outer, event.outer) &&
+      if (capture.locally_selected && capture.domain_selected &&
+          SameOuterAttempt(capture.attempt.outer, event.outer) &&
           capture.attempt.adaptive_step == event.adaptive_step) {
         capture.source.reference_tri_accepted =
             event.kind == GlobalOutcomeKind::AcceptedStepCommitted;
-        selected = &capture.source;
+        if (capture.source.reference_tri_accepted)
+          selected = &capture.source;
       }
   }
   Require(selected != nullptr,
-          "Original workflow produced no complete source-attempt outcome; no synthetic fallback");
+          "Original workflow produced no accepted source-attempt outcome; no rejected fallback");
   // Preserve a uniform partition when that is the original algorithm's result.
   std::cout << "QUAD_ORIGINAL_SOURCE step=" << selected->source_step
             << " boundary=" << selected->sites.size() << " leaves=" << selected->source_leaves
@@ -1585,8 +1686,66 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   Require(patch->GetSubMesh() && patch->GetSubMesh()->GetNumberElements() > 0,
           "Original source workflow retained no nonempty patch owner");
   const auto previous = SnapshotOwnerRehearsal(*patch->GetSubMesh());
-  const auto factory = [&]() { return ReplayRealSourceTree(*patch, *selected); };
-  auto candidate = Generate(*patch, false, factory, selected);
+  Require(std::filesystem::create_directory(staging), "Cannot reserve generation archive");
+  std::ofstream manifest(staging / "manifest.csv", std::ios::binary);
+  manifest << "step,epoch,retry,domain_generation,reference_tri_accepted,reason,tri_obj,quad_tri_"
+              "obj,nodes,quads,"
+              "triangles,boundary\n";
+  Candidate candidate;
+  bool have_accepted = false;
+  for (auto& stage : stages) {
+    const RealBoundarySource* source = nullptr;
+    for (const auto& capture : captures)
+      if (capture.locally_selected && capture.domain_selected &&
+          capture.source.source_step == stage.step &&
+          SameOuterAttempt(capture.attempt.outer, stage.outer)) {
+        Require(source == nullptr, "Stage matched multiple locally selected sources");
+        source = &capture.source;
+      }
+    Require(stage.step == 0 || source != nullptr,
+            "Physical step has no matching curve/tree source");
+    const auto stem = "step_" + std::to_string(stage.step) + "_retry_" +
+                      std::to_string(stage.outer.global_retry) +
+                      (stage.accepted ? "_accepted" : "_rejected");
+    stage.reference.source_witness = source;
+    stage.reference.generation_step = stage.step;
+    stage.reference.reference_accepted = stage.accepted;
+    stage.reference.stage_reason = stage.reason;
+    Export(stage.reference, staging / (stem + "_tri.obj"));
+    auto layout = SnapshotTriStage(*stage.reference.mesh, *patch);
+    if (source) {
+      auto tree = ReplayRealSourceTree(*patch, *source);
+      bool has_interior = false;
+      for (auto* leaf : tree->getLeaves())
+        has_interior = has_interior || !leaf->inBoundary();
+      if (has_interior)
+        layout = Generate(
+            *patch, false, [&]() { return ReplayRealSourceTree(*patch, *source); }, source);
+    }
+    layout.source_witness = source;
+    layout.generation_step = stage.step;
+    layout.reference_accepted = stage.accepted;
+    layout.stage_reason = stage.reason;
+    Export(layout, staging / (stem + "_quad_tri.obj"));
+    manifest << stage.step << ',' << stage.outer.epoch << ',' << stage.outer.global_retry << ','
+             << (source ? source->domain_generation : 0) << ',' << stage.accepted << ','
+             << stage.reason << ',' << stem << "_tri.obj," << stem << "_quad_tri.obj,"
+             << layout.mesh->GetNumberNos() << ',' << layout.quads << ','
+             << layout.faces.size() - layout.quads << ',' << (source ? source->sites.size() : 4)
+             << '\n';
+    if (source == selected && stage.accepted) {
+      candidate = std::move(layout);
+      have_accepted = true;
+    }
+  }
+  Require(have_accepted, "Last accepted source has no exported physical step");
+  manifest.close();
+  Require(bool(manifest), "Cannot complete generation manifest");
+  std::ofstream trace(staging / "curve_stages.csv", std::ios::binary);
+  trace << curve_trace.str();
+  trace.close();
+  Require(bool(trace), "Cannot complete curve-stage trace");
+  std::filesystem::rename(staging, steps);
   RequireOwnerRehearsalUnchanged(*patch, previous);
   CheckTypedIncidence(*candidate.mesh, candidate);
   Export(candidate, config.output_prefix + ".obj");
@@ -1610,7 +1769,7 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     const auto bytes = ReadRehearsalOutput(file);
     bool rejected = false;
     try {
-      auto failed = Generate(*patch, true, factory, selected);
+      auto failed = CloneTypedHistory(*accepted, candidate, *patch, 0);
       (void)failed;
     } catch (const PublicationFailure&) {
       rejected = true;

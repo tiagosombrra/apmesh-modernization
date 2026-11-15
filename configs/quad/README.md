@@ -6,19 +6,20 @@ With the same explicit experimental build, run
 `ap_mesh --config configs/quad/curved_patch_original_curves.conf`.
 This runs the original serial generator's initial TRI evaluation, curve
 discretization, native tree construction and original retry/acceptance logic.
-It captures the last locally selected source attempt with a recorded global
-TRI outcome, then replays that actual boundary and tree for typed interior
-QUAD plus original exterior AFT. No fixed sampling or prescribed tree depth
+It archives the initial and each completed source step with its actual outcome,
+then replays each selected native boundary/tree for typed interior QUAD plus
+original exterior AFT. The primary OBJ retains the last accepted TRI reference
+source; rejected proposals are labelled separately. No fixed sampling or prescribed tree depth
 is substituted. Source nodes, intervals, parametric midpoint/length and the
 post-refinement edge phase are checked; original sample pointers are not kept.
 
-The initial controlled profile measures 12 boundary intervals, 16 native leaves,
-37 physical nodes, 16 QUAD and 28 AFT TRI, with four nonuniform source sides.
-These are measured outputs, not required topology constants. The original
-global TRI candidate at source step 2 is rejected by its existing hybrid
-criterion; the OBJ records `reference_tri_accepted=0`. That rejection is
-retained. The exported initial research QUAD layout does not override the TRI
-decision or implement a scientifically accepted mixed adaptive transition.
+The unchanged profile produces coarse steps 0/1 with five nodes, zero interior
+QUAD and four TRI. Step 2 has 12 boundary intervals, 16 native leaves and a
+37-node/16-QUAD/28-AFT-TRI reconstruction, but its original TRI reference is
+rejected. This proposal stays in `<prefix>.steps/`; the primary OBJ retains
+accepted step 1. Counts are measured outputs. Scoped domain generation identity
+distinguishes candidates created within the same outer attempt. No export
+overrides the original TRI decision or implements accepted mixed adaptation.
 `mixed_adaptive_epochs=0`; global mixed acceptance/history remain open.
 The interior vertex-mean rule remains experimental, not literal 1993 identity.
 
@@ -28,6 +29,14 @@ exported. Existing output/pending publication is refused before the original
 workflow executes. `QUAD_VERIFY_ROLLBACK=1` exercises a failed replacement
 while preserving the nonempty mixed owner, ordered observers and OBJ bytes.
 The unchanged fixed16 case below remains a separate regression.
+
+The step archive also includes `manifest.csv` and `curve_stages.csv`. To create
+a new Blender inspection file, run Blender with `--background --factory-startup
+--python tools/quad_generation_blender.py -- --archive <prefix>.steps --output
+<new-file.blend>`. Open that new file interactively. The scene compares both
+representations by step and overlays the analytic curved boundary, preserving
+actual mesh coordinates and reference acceptance/rejection labels. See
+[generation-step contract](../../docs/research/quad/GENERATION_STEP_EXPORT_20261115.md).
 
 `python tests/quad/test_real_boundary_application.py --exe <ap_mesh> --directory <results>`
 checks independent Bernstein geometry, physical topology/source intervals,
