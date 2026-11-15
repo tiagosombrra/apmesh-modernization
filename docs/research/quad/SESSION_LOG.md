@@ -2280,3 +2280,78 @@ PR. No source changes, native tests or new CI campaign occurred in this
 preference checkpoint; validate these two documentation files and verify remote
 readback after commit. Base b8fa113; main remains f6050ec. R3/M7 open,
 adaptive_epochs=0. No additional experiment or milestone was opened.
+
+## 2026-11-15 — original-curve QUAD/AFT executable implemented, qualified feature PR238
+
+Implemented the authorized functional delivery in the primary checkout on
+quad/real-boundary-application-20261115; feature commits bfd501a then
+79828fcbfc1c4aa20d84576e58f1a3ef8fe2592a, reviewable PR238 to quad-templates.
+Actual original serial Generator curve policies/configuration, native refined
+tree, source parameters/IDs/XYZ/intervals and original AFT geometry/topology
+feed a typed physical initial QUAD/TRI mesh. Snapshot values outlive retired
+curve samples; no source sampled-node/native-cell pointer escapes. Replay
+preserves original cell IDs, counter, subdivision chronology and ordered leaves.
+The old fixed16 mode and default TRI remain preserved. No new scientific
+selection/acceptance rule, tolerance, historical input or oracle was changed.
+
+Measured real layout: 37 nodes/16 QUAD/28 AFT TRI; 12 original boundary
+intervals, four nonuniform sides, 16 native leaves. OBJ SHA-256
+3fbb0c312b81406fb60813caa3ef4b3e76b0b7922208801494b2be61d9d5b03a
+matches GNU, MSVC Debug and Clang ASan/UBSan/leak. Fixed16 retains
+cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0.
+The last locally selected original source attempt has a globally rejected TRI
+reference; reference_tri_accepted=0 remains in receipt/OBJ. A coarse accepted
+TRI source had only four intervals/four leaves/no interior templates. The new
+initial research layout does not override original rejection or count as an
+accepted mixed epoch. mixed_adaptive_epochs=0, R3/M7 #221 OPEN.
+
+Exact79828fc: local GNU Release, MSVC Debug and Clang ASan/UBSan/leak pass
+fixed16 and real application normal/rollback/existing-output checks; each
+profile runs 12 actual source captures/six valid reversed captures/108 corrupt
+source-tree negatives. Independent Bernstein/OBJ/source checks reject nine
+corrupt artifacts per normal and rollback run. Required root local CTest
+passes 85/85; exact hosted run43716128507 passes 4/4, root85/85 and Python527/527.
+Local GNU and hosted frozen Eistute five/Book four accepted/rejected states
+retain all OBJ bytes, acceptance fields and verified exact boundaries. Local
+configured LLVM22.1.8 analysis of five changed TUs emits no diagnostics under
+unchanged project filters. Commands/hashes, source scope and open coverage
+are recorded in REAL_BOUNDARY_APPLICATION_CLOSURE_20261115.md and its JSON receipt.
+
+Retained failures: initial const legacy getter/config admission issues,
+misread original edge len=-1 phase, overly restrictive uniform/source-TRI
+preconditions, sequential-ID assumption and a mistargeted Python corruption.
+First bfd501a CI3/4 failed explicit new config-asset admission before frozen
+comparisons; only that exact new path was admitted. First local delivery
+adapter compiled but stopped before CTest on inventory75->85; a fresh85 plan
+then passed. LLVM18 could not parse the current ExcludeHeaderFilterRegex;
+its zero exits were NOT analysis passes. Installed LLVM22 with actual native
+configured metadata passed without disabling a check or changing config.
+
+Created a separate local Blender5.3 inspection scene from the exact OBJ,
+showing fixed16 beside the real boundary and its 12 source samples. A separate background process created a new file; automation did not replace
+the previous saved scene. The new scene was opened and visually inspected in
+Blender. Visualization is not an oracle. Local outputs/raw failures
+remain under ignored build/quad-review-20261115 and compiler-specific build
+directories; no private machine paths or large binary artifacts are committed.
+
+Concurrent main advanced to ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89 through
+documentation-only PR237; preserved without merging unrelated changes into
+research. Frozen reference remains f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94.
+This canonical checkpoint updates STATE/roadmap/milestone/research evidence
+only; implementation stays visible in the primary feature checkout. Code,
+contracts, tests, docs, scientific scope and unresolved coverage were reviewed.
+Independent approval, research integration and exact merge validation remain
+unperformed; no M7/full-science or main qualification is claimed.
+
+Exact next action: independently review PR238 at qualified79828fc, integrate
+only after required approval/gates, then qualify the research merge before
+the queued P2d-1c4b accepted-history/publication work. Keep one active item;
+do not start another fixed16 experiment or unrelated audit campaign.
+
+Auxiliary checkpoint documentation attempt: `python tools/quality.py docs`
+did not pass in the isolated worktree below `build/`: initial output-directory
+absence was corrected, then Doxygen could not resolve three unchanged API
+evidence references. Doxyfile excludes `*/build/*`. This is not a successful
+documentation build or a new code failure; required integration documentation
+checks remain pending from a normally located checkout. Staged whitespace,
+JSON syntax and changed-document local targets are checked separately.

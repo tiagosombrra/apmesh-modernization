@@ -1,8 +1,9 @@
 # APMesh QUAD — current state
 
 Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
-Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: real-boundary QUAD/AFT application integration
+Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
+Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
+## Active: review and integrate the qualified real-boundary application candidate
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,28 +12,49 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
-### 2026-11-15 execution order adjustment
+### 2026-11-15 — functional candidate implemented and exact feature qualified
 
-**One active work item:** integrate the original serial curve-discretization
-workflow into the live opt-in curved manifold patch application, including
-source-derived boundary/tree, typed QUAD interior, original exterior AFT,
-physical publication and independent source-boundary checks. Keep fixed16 as
-a regression. This is a planned implementation, not a measured new capability.
-The [finite delivery plan](REAL_BOUNDARY_APPLICATION_PLAN_20261115.md) specifies
-reuse, source contracts, negative controls and exact-revision closure gates.
+Original-curve QUAD/AFT application integration is implemented on
+`quad/real-boundary-application-20261115`, exact feature
+`79828fcbfc1c4aa20d84576e58f1a3ef8fe2592a`,
+[PR238](https://github.com/tiagosombrra/apmesh-modernization/pull/238).
+It reuses the original curve workflow and actual refined tree, preserves
+source IDs/XYZ/intervals and exact cell identities/counter/ordered leaves,
+then publishes a typed physical QUAD/original-AFT layout. Measured output:
+**37 nodes, 16 QUAD, 28 TRI, 12 original intervals, four nonuniform sides,
+16 native leaves**. Fixed16 remains an unchanged-byte regression.
 
-**Exact next action:** trace the original `GeneratorAdaptive::AdaptCurve`
-inputs/outputs for the same initial curved source/configuration; select only
-compatible PR214 boundary helpers, then implement the source-partition bridge
-in one feature PR targeting `quad-templates`. Preserve original policies and
-actual source parameters/IDs/XYZ; replace the hardcoded boundary/tree contract
-in the new path rather than inventing another discretizer or forcing counts.
+The curve/tree snapshot comes from the original locally selected source
+attempt. Its global TRI reference is **rejected** by the existing criterion
+and remains `reference_tri_accepted=0`. Initial geometric publication does not
+override that decision or constitute an accepted mixed adaptive epoch.
 
-P2d-1c4a stays integrated and qualified within its reversible-rehearsal scope.
-P2d-1c4b accepted-history/publication work follows the real-boundary application
-gate; its approved selection and two-distinct-accepted-transition requirements
-are retained. `adaptive_epochs=0`, R3/M7 #221 open. No code or native tests were
-changed/run by this sequencing checkpoint; no new scientific policy approved.
+Exact feature [CI #43716128507](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43716128507)
+passes **4/4**. Local GNU, MSVC Debug, Clang ASan/UBSan/leak and configured
+LLVM22 analysis pass their bounded scopes. Local CTest **85/85**, hosted
+CTest **85/85** and Python **527/527** pass. Local/hosted frozen Eistute five
+and Book four accepted/rejected states retain identical OBJ/acceptance fields
+and verified exact boundaries. See the [closure review](REAL_BOUNDARY_APPLICATION_CLOSURE_20261115.md)
+and [qualification receipt](evidence/REAL_BOUNDARY_APPLICATION_20261115.json).
+
+Earlier source/compiler, config-admission, refined-edge phase, fixed-ID and
+test-target errors remain recorded. First candidate bfd501a CI was 3/4, with
+zero frozen comparisons before config admission refusal; it is not a pass.
+The first local adapter stopped before CTest on inventory drift 75 -> 85;
+LLVM18 configuration errors are invalid analysis despite zero tool exit.
+The corrected exact feature qualifies with those failures retained.
+
+**One active item / exact next action:** obtain independent review of PR238
+at the qualified SHA, integrate into `quad-templates` only under its required
+gates, then verify the research merge and repeat required validation before
+starting P2d-1c4b. The code remains on the feature branch and in the primary
+local checkout; this canonical checkpoint contains documentation/evidence only.
+Auxiliary Doxygen generation in the nested checkpoint worktree failed on
+three unchanged API references; it is not counted as a pass. Repeat required
+documentation checks from a normally located checkout before integration.
+Research merge and post-merge tests are **not performed**. `mixed_adaptive_epochs=0`;
+R3/M7 #221 remains OPEN. Global welding, production mixed postprocessing,
+1993 equivalence and wider memory/scientific coverage remain separate gates.
 
 ### Earlier 2026-11-15 status review and local visualization
 
