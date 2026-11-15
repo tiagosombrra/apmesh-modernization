@@ -13,11 +13,16 @@ source; rejected proposals are labelled separately. No fixed sampling or prescri
 is substituted. Source nodes, intervals, parametric midpoint/length and the
 post-refinement edge phase are checked; original sample pointers are not kept.
 
-The unchanged profile produces coarse steps 0/1 with five nodes, zero interior
-QUAD and four TRI. Step 2 has 12 boundary intervals, 16 native leaves and a
-37-node/16-QUAD/28-AFT-TRI reconstruction, but its original TRI reference is
-rejected. This proposal stays in `<prefix>.steps/`; the primary OBJ retains
-accepted step 1. Counts are measured outputs. Scoped domain generation identity
+The research profile now selects existing `ADAPTIVE_MODE=legacy` original
+curvature-driven adaptation, preserving every point from the original curve/
+surface discretizers without stable-mode point budgets. The curved side has
+nine points at step 1 and 65 at steps 2/3. Step 1 reconstructs 165 nodes,
+120 QUAD and 68 AFT TRI with 20 original boundary intervals. Steps 2/3
+reconstruct 953 nodes, 784 QUAD and 224 TRI with 112 intervals; their reference
+TRI states are rejected for increased surface-curvature error, but the generated
+proposals remain exported. The primary OBJ retains accepted step 1. Counts are
+measured outputs. The former stable profile is retained as a test control,
+showing its 2/4-point clipping and hybrid rejection. Scoped domain generation identity
 distinguishes candidates created within the same outer attempt. No export
 overrides the original TRI decision or implements accepted mixed adaptation.
 `mixed_adaptive_epochs=0`; global mixed acceptance/history remain open.

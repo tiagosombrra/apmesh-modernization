@@ -34,7 +34,7 @@ def main():
     scene = bpy.context.scene
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete()
-    scene.name = "Actual generation steps - preserved criteria"
+    scene.name = "Original curvature flow - generation steps"
 
     def material(name, rgba):
         result = bpy.data.materials.new(name)
@@ -143,9 +143,9 @@ def main():
     counts = {r["stage"]: int(r["parameter_count"]) for r in curve_rows}
     label("White: analytic curved boundary | Yellow: actual mesh chords", 0, -3.35, 0.18)
     label(f"Step 1 curve points: curve pass {counts.get('curve_pass')} -> "
-          f"surface pass {counts.get('surface_pass')} -> budget {counts.get('final_budget')}",
+          f"surface pass {counts.get('surface_pass')} -> final {counts.get('final_budget')}",
           0, -3.7, 0.18)
-    label("Existing criteria preserved | mixed accepted adaptive epochs: 0", 0, -4.02, 0.16)
+    label("Original curvature workflow | mixed accepted adaptive epochs: 0", 0, -4.02, 0.16)
     label("Rejected proposals are displayed for inspection; they are not accepted states", 0, -4.3, 0.14)
     note = bpy.data.texts.new("Generation provenance")
     note.write(json.dumps({"artifacts": records, "manifest": rows,

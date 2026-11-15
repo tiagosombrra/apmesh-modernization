@@ -138,14 +138,19 @@ def negative_controls(path, directory):
     return len(cases)
 
 
-def audit_history(prefix):
+def audit_history(prefix, profile):
     directory = Path(str(prefix) + ".steps")
     rows = list(csv.DictReader((directory / "manifest.csv").open()))
-    require([int(row["step"]) for row in rows] == [0, 1, 2], "Missing or reordered physical step")
-    require([row["reference_tri_accepted"] for row in rows] == ["1", "1", "0"],
+    original = profile == "original_curvature"
+    require([int(row["step"]) for row in rows] == ([0, 1, 2, 3] if original else [0, 1, 2]),
+            "Missing or reordered physical step")
+    require([row["reference_tri_accepted"] for row in rows] ==
+            (["1", "1", "0", "0"] if original else ["1", "1", "0"]),
             "Rejected reference step was promoted or accepted state was lost")
-    require(rows[-1]["reason"] == "hybrid_criterion_rejected", "Actual stop reason was lost")
-    expected = [(5, 0, 4, 4), (5, 0, 4, 4), (37, 16, 28, 12)]
+    require(rows[-1]["reason"] == ("global_error_increased" if original else "hybrid_criterion_rejected"),
+            "Actual stop reason was lost")
+    expected = ([(5, 0, 4, 4), (165, 120, 68, 20), (953, 784, 224, 112), (953, 784, 224, 112)]
+                if original else [(5, 0, 4, 4), (5, 0, 4, 4), (37, 16, 28, 12)])
     for row, counts in zip(rows, expected):
         for column in ("tri_obj", "quad_tri_obj"):
             path = directory / row[column]
@@ -173,8 +178,8 @@ def audit_history(prefix):
             else:
                 # The legacy OBJ has six significant digits. Use the existing
                 # full-precision native incidence snapshot for exact geometry.
-                original = Path(str(prefix) + f"_passo_{row['step']}_incidences.json")
-                snapshot = json.loads(original.read_text())["patches"][0]
+                incidence_path = Path(str(prefix) + f"_passo_{row['step']}_incidences.json")
+                snapshot = json.loads(incidence_path.read_text())["patches"][0]
                 original_xyz = [tuple(node[1:4]) for node in snapshot["nodes"]]
                 indices = {node[0]: i for i, node in enumerate(snapshot["nodes"])}
                 original_faces = [tuple(indices[node[0]] for node in face[1:])
@@ -197,10 +202,18 @@ def audit_history(prefix):
     require(groups and all([r["stage"] for r in group] ==
                           ["input", "curve_pass", "surface_pass", "final_budget"]
                           for group in groups.values()), "Incomplete curve-pass provenance")
-    require(all(int(group[-1]["parameter_count"]) == (2 if key[0] == "1" else 4)
-                for key, group in groups.items()), "Original final point budget changed")
+    if original:
+        require(all(group[-1]["parameters"] == group[-2]["parameters"]
+                    for group in groups.values()), "Curvature output was clipped by a point budget")
+        require(all(int(group[-1]["parameter_count"]) ==
+                    ((9 if key[0] == "1" else 65) if key[-1] == "0" else
+                     (5 if key[0] == "1" else 17)) for key, group in groups.items()),
+                "Original curvature partition changed")
+    else:
+        require(all(int(group[-1]["parameter_count"]) == (2 if key[0] == "1" else 4)
+                    for key, group in groups.items()), "Stable-control point budget changed")
     return {"physical_steps": len(rows), "curve_attempts": len(groups),
-            "last_accepted_step": 1, "rejected_steps": [2]}
+            "profile": profile, "last_accepted_step": 1, "rejected_steps": [2, 3] if original else [2]}
 
 
 def main():
@@ -212,9 +225,17 @@ def main():
     out.mkdir(parents=True)
     config = (Path(__file__).resolve().parents[2] / "configs/quad/curved_patch_original_curves.conf").read_text()
     records = []
-    for name, rollback in (("accepted", False), ("rollback", True)):
+    for name, rollback, profile in (("accepted", False, "original_curvature"),
+                                     ("rollback", True, "original_curvature"),
+                                     ("stable-accepted", False, "stable_control"),
+                                     ("stable-rollback", True, "stable_control")):
         prefix = out / name
         text = config.replace("OUTPUT_PREFIX=build/quad_original_curves", f"OUTPUT_PREFIX={prefix.as_posix()}")
+        if profile == "stable_control":
+            text = text.replace("ADAPTIVE_MODE=legacy", "ADAPTIVE_MODE=adaptive_stable")
+            text = text.replace("# Original curvature-driven workflow; stable-mode point budgets are not enabled.",
+                                "# Stable-budget control: original point clipping is intentionally retained.")
+            text += "\nADAPTIVE_MAX_ITERATIONS=2\n"
         if rollback:
             text += "\nQUAD_VERIFY_ROLLBACK=1\n"
         conf = prefix.with_suffix(".conf")
@@ -227,19 +248,21 @@ def main():
         obj = prefix.with_suffix(".obj")
         record = audit(obj)
         require(record["reference_tri_accepted"] and record["source_step"] == 1 and
-                record["boundary"] == 4 and record["quads"] == 0,
+                (record["boundary"], record["quads"]) ==
+                ((20, 120) if profile == "original_curvature" else (4, 0)),
                 "Main output promoted a rejected source or fabricated a coarse QUAD region")
-        record["history"] = audit_history(prefix)
+        record["history"] = audit_history(prefix, profile)
         manifest = Path(str(prefix) + ".steps") / "manifest.csv"
         original_manifest = manifest.read_text()
-        forged = [original_manifest.replace("hybrid_criterion_rejected", "accepted"),
-                  original_manifest.replace(",0,hybrid_criterion_rejected", ",1,hybrid_criterion_rejected"),
+        rejected_reason = "global_error_increased" if profile == "original_curvature" else "hybrid_criterion_rejected"
+        forged = [original_manifest.replace(rejected_reason, "accepted"),
+                  original_manifest.replace(",0," + rejected_reason, ",1," + rejected_reason),
                   "\n".join(original_manifest.splitlines()[:-1]) + "\n"]
         for altered in forged:
             require(altered != original_manifest, "Inactive history negative control")
             manifest.write_text(altered)
             try:
-                audit_history(prefix)
+                audit_history(prefix, profile)
             except AssertionError:
                 pass
             else:
@@ -268,9 +291,11 @@ def main():
                 "Existing output was not refused before original workflow execution")
         record["existing_output_rejected"] = True
         records.append(record)
-    require(records[0] == records[1], "Rollback changed original real-boundary generation")
+    require(records[0] == records[1] and records[2] == records[3],
+            "Rollback changed original or stable-control generation")
     report = {"actual_ap_mesh_entry": True, "original_generator_curve_workflow": True,
-              "original_native_tree": True, "normal_and_rollback": records,
+              "original_native_tree": True, "normal_and_rollback": records[:2],
+              "stable_control_normal_and_rollback": records[2:],
               "mixed_adaptive_epochs": 0}
     (out / "report.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))

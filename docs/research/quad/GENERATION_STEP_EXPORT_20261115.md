@@ -6,6 +6,23 @@ retry/stopping rules and the experimental interior point rule are unchanged.
 The user requested per-step QUAD/TRI output and Blender inspection and explicitly
 chose to preserve current criteria while mixed scientific policy is undecided.
 
+**Subsequent user instruction:** the user explicitly rejected the stable-mode
+point clipping and asked to generate the curved geometry. That supersedes the
+earlier request to preserve those controls. This research case now selects the
+existing `legacy` original-curvature profile, without stable point/element
+budgets. No new discretizer, estimator or numerical acceptance formula is added;
+default TRI configurations remain unchanged. The earlier stable profile is
+retained as an explicit executable control in the application audit.
+
+The curve now retains nine original surface-pass points at step 1 and 65 at
+steps 2/3. The physical reconstructions are 165 nodes/120 QUAD/68 TRI, then
+953 nodes/784 QUAD/224 TRI. All are exported. The existing TRI curvature metric
+accepts step 1 and rejects steps 2/3 for increased relative surface-curvature
+error; those reference outcomes are preserved separately from generation.
+No mixed scientific acceptance is claimed. The native legacy iteration limit
+is unchanged. The analytic model is shown before the generated sequence in
+Blender, clearly labelled as a display evaluation rather than an output mesh.
+
 ## Repair
 
 The former primary export used the last locally selected source even when its
@@ -70,7 +87,9 @@ incidence JSON supplies the exact oracle instead. Exact candidate compiler,
 sanitizer, regression and remote results must be recorded in the canonical
 checkpoint after execution; this implementation note alone is not qualification.
 
-Preserved stable-mode controls can discard curved-boundary samples. This repair
-exposes that behavior and prevents rejected-source promotion; it does not change
-the point budget or introduce a mixed estimator/acceptance policy. The history
-remains TRI-driven, accepted mixed adaptive epochs remain zero, and R3/M7 is open.
+The retained stable-mode control still demonstrates discarded curved-boundary
+samples. The repaired research profile bypasses that controller by selecting the
+existing original-curvature flow and verifies equality between the complete
+surface-pass and final partitions. It does not introduce a mixed estimator or
+acceptance policy. The history remains TRI-driven, accepted mixed adaptive epochs
+remain zero, and R3/M7 is open.
