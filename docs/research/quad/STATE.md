@@ -22,29 +22,33 @@ each exported physical OBJ, not guessed from face counts.
 This is a *profile-dependent diagnostic*, not an accepted
 scientific adaptive policy. [Qualified evidence](evidence/P2D1C3_PROFILED_PARETO_20261114.json).
 
-**Active separate [draft PR236](https://github.com/tiagosombrra/apmesh-modernization/pull/236)**
-implements a **reversible P2d-1c4a physical-owner transaction rehearsal**
-on the actual already-published P1 `Patch/SubMesh` (69 physical nodes,
-42 QUAD, 36 original AFT TRI). Its original P1 source-error
-selected real native AFT successor has 93 physical nodes, 62 QUAD,
-44 original AFT TRI and completely separately cloned typed observers.
-Five targeted pre-publication faults must preserve the previous
-nonempty `Patch/SubMesh` pointer, every node ID/XYZ, element address,
-all **ordered** node observers and exact prior OBJ bytes.
-A successful `noexcept` forward/back pointer swap is rehearsed
-and *reverted* to the original accepted P1 owner. The Python app
-gate requires the exact receipt on normal and injected-rollback
-runs and rejects eight forged receipt variants.
-Latest feature `f55b8e4aec4c06eb6603f3cf6f6de54d3fdf1f81`.
-The first feature `5c8bc5ae` passed Linux/Windows/ASan and TRI science,
-but later addition of node curvature/element area integrity and live
-post-publication source remeasurement produced an actual GCC compilation
-failure in feature `4b544600`: the old `ElementAdaptive::GetId` signature
-cannot be called through a `const` pointer. This narrow fix is committed
-in `f55b8e4a`; [exact-source CI #43704424433](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43704424433)
-was **pending** at this checkpoint. Earlier green runs do **not** qualify
-the revised source; PR236 remains **draft and unmerged**.
-[Bounded transaction protocol](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/p2d1c4a-real-owner-transaction-rehearsal-20261115/docs/research/quad/P2D1C4A_OWNER_TRANSACTION_REHEARSAL_20261115.md).
+**Integrated [P2d-1c4a PR236](https://github.com/tiagosombrra/apmesh-modernization/pull/236)**,
+feature `f55b8e4aec4c06eb6603f3cf6f6de54d3fdf1f81`,
+merge `8a451eee7fad416d36604a61afd35412c65cd72a`,
+qualifies a **reversible real physical-owner transaction rehearsal**.
+The original 69-node/42-QUAD/36-AFT-TRI P1 `Patch/SubMesh` owner
+is **actually published** before the error-driven native AFT
+93-node/62-QUAD/44-AFT-TRI successor is constructed. Its
+source error is independently **recalculated from the live accepted
+P1 owner**, not reused blindly from an unpublished candidate.
+Five real fault injections reject native/clone/prepublication
+failures without changing the previous nonempty Patch forward/back
+owner links, any node pointer/ID/XYZ/four curvature scalars,
+element pointer/ID/area, exact ordered element observers or prior
+OBJ bytes. A physically typed replacement owner is temporarily
+attached using `noexcept` pointer operations and **reverted**,
+with restoration guard; eight forged Python output receipts must
+be independently rejected on normal and rollback app runs.
+
+Exact-head [CI #43704424433](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43704424433)
+**4/4 completed SUCCESS**: native controlled Linux GCC/Windows MSVC,
+Linux ASan/UBSan/leak, frozen original Eistute/Book TRI parity,
+85/85 baseline CTests and 527/527 Python tooling. The intermediate
+feature `4b544600` failed real GCC compilation due to legacy
+non-const `ElementAdaptive::GetId`, fixed narrowly in
+`f55b8e4a`; no failed CI was falsely counted as passing.
+[Bounded transaction protocol](P2D1C4A_OWNER_TRANSACTION_REHEARSAL_20261115.md).
+[Qualified exact evidence](evidence/P2D1C4A_REAL_OWNER_TRANSACTION_REHEARSAL_20261115.json).
 
 **Scientific boundary remains firm:** reversible pointer staging is
 not an adopted second mixed epoch; no replacement next-OBJ output is
