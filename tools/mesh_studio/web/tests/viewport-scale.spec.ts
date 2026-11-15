@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { mkdir, writeFile } from 'node:fs/promises';
 
 // These measurements are synthetic browser visualization observations only.
 test('R2: renderer completes 1k and 50k QUAD and maintains filter control', async ({ page }, testInfo) => {
@@ -56,6 +57,10 @@ test('R2: renderer completes 1k and 50k QUAD and maintains filter control', asyn
     body: Buffer.from(JSON.stringify(sourceObservation, null, 2)),
     contentType: 'application/json',
   });
+  // Persist passing-test evidence at a stable artifact path; Playwright may clean its test output.
+  await mkdir('test-results', { recursive: true });
+  await writeFile('test-results/r2-50k-chromium-observation.json',
+    JSON.stringify(sourceObservation, null, 2) + '\n', 'utf8');
   console.log('R2_SYNTHETIC_BROWSER_OBSERVATION=' + JSON.stringify({
     cells: second.cells, xyz_ms: second.xyz_first_render_ms,
     uv_ms: second.uv_first_render_ms, points: second.points,
