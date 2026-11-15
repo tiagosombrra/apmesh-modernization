@@ -18,7 +18,9 @@ test('R2: renderer completes 1k and 50k QUAD and maintains filter control', asyn
   // A previous 1k receipt must never satisfy the new 50k benchmark gate.
   await expect.poll(async () => {
     const raw = await page.getByTestId('benchmark-receipt').innerText();
-    return raw.trim() ? (JSON.parse(raw) as {cells: number}).cells : 0;
+    if (!raw.trim()) return 0;
+    const parsed = JSON.parse(raw) as { cells?: number } | null;
+    return parsed?.cells ?? 0;
   }, { timeout: 150_000 }).toBe(50_000);
   await expect(page.getByTestId('benchmark-status')).toContainText('As duas cenas foram renderizadas', { timeout: 150_000 });
   const second = JSON.parse(await page.getByTestId('benchmark-receipt').innerText()) as {
