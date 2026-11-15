@@ -6,7 +6,7 @@
   "active_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/235",
   "feature_sha": "27851df2625e0c0b37e12023af699a01f3d0304c",
   "ci_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43664129060",
-  "qualification": "pending exact feature 4/4 CI; source-specific objective profiles PRE-REGISTERED, not yet qualified for feature head",
+  "qualification": "exact feature Linux GCC/Windows MSVC real AFT/physical OBJ/6 Pareto tests + Linux ASan/UBSan/leak + root 85 CTests/527 Python tooling + frozen Eistute/Book TRI science: 4/4 success",
   "source": "Models3d::ModelCurvaBezier, original fixed16 experimental chart",
   "source_site_grid": "64x64 identical UV midpoint sites",
   "objective_common": {
@@ -61,5 +61,20 @@
     "No adopted previous accepted mixed Patch/SubMesh epoch",
     "No full original Adapter::AdaptCurve or nonmanifold global sheet welding"
   ],
-  "adaptive_epochs": 0
+  "adaptive_epochs": 0,
+  "ci": {
+    "status": "success",
+    "jobs": "4/4",
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43664129060",
+    "native_linux": "success",
+    "native_windows": "success",
+    "asan_ubsan_leak": "success",
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "original_frozen_tri": "success",
+    "six_pareto_negatives": "executed in Linux, Windows and sanitizer application"
+  },
+  "research_merge_sha": "ab1dc62a815f3d56c9b25845bec00863730ddcd5",
+  "integrated": true,
+  "next_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/236"
 }
