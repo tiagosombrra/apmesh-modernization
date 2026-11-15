@@ -1,0 +1,54 @@
+{
+  "schema": "apmesh.meshstudio.audit.independent.v1",
+  "date": "2026-11-15",
+  "audited_code_sha": "8ee14e64221212247485bcd4318a871bb1cc8c5f",
+  "archive_sha256": "fb17a6cb5a5f6baed9dd0c71dbc4e154fd33f4096259b46fa6151a7503a98760",
+  "clean_extraction_entries": 149,
+  "unittest": {
+    "total": 191,
+    "failed": 0,
+    "python": "3.13.5",
+    "environment": "Linux"
+  },
+  "synthetic_fixture": {
+    "valid": 10,
+    "deliberate_rejections": 6
+  },
+  "coverage": {
+    "non_test_code_pct": 69,
+    "import_obj_pct": 91,
+    "quality_analysis_pct": 94,
+    "scene_model_pct": 95,
+    "desktop_app_pct": 5
+  },
+  "obj_real": {
+    "source_files": 5,
+    "hash_matches_each_between": "CI Linux, CI Windows, Studio ZIP",
+    "accepted_adaptive_epochs": 0
+  },
+  "publication": {
+    "pdf_files_tested": 2,
+    "svg_files_tested": 2,
+    "pdf_raster_images": 0,
+    "svg_raster_image_nodes": 0,
+    "byte_reproducible": true
+  },
+  "desktop_smoke": {
+    "return_code": 2,
+    "status": "MISSING_OPTIONAL_GUI_DEPENDENCIES",
+    "receipt_produced": false
+  },
+  "no_studio_ci": true,
+  "import_limit_bytes": 20971520,
+  "confirmed_issues": [
+    "real_source_patch_sidecar_not_supported",
+    "source_curves_nested_dict_mutable",
+    "no_real_generator_event_stream",
+    "frontend_not_user_qualified",
+    "large_mesh_not_qualified"
+  ],
+  "candidate_ui_architecture": "React+TypeScript+Vite+vtk.js; existing Python numerical service; Tauri considered only after prototype",
+  "frontend_implemented": false,
+  "source_generator_modified": false,
+  "auto_merged": false
+}
