@@ -20,6 +20,7 @@ interface ViewerProps {
   edges: boolean;
   selectedId: number | null;
   onSelect: (faceId: number | null) => void;
+  onRendered?: () => void;
 }
 
 export interface ViewerHandle {
@@ -32,7 +33,7 @@ type GRW = ReturnType<typeof vtkGenericRenderWindow.newInstance>;
 type Actor = ReturnType<typeof vtkActor.newInstance>;
 
 export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
-  space, geometry, showTri, showQuad, edges, selectedId, onSelect,
+  space, geometry, showTri, showQuad, edges, selectedId, onSelect, onRendered,
 }, ref) {
   const container = useRef<HTMLDivElement>(null);
   const renderRef = useRef<GRW | null>(null);
@@ -44,6 +45,9 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
   const visibleRef = useRef({ showTri, showQuad, edges });
   const selectedRef = useRef(selectedId);
   const initializedRef = useRef(false);
+  const firstFrameReported = useRef(false);
+  const onRenderedRef = useRef(onRendered);
+  onRenderedRef.current = onRendered;
   const updateOverlay = useRef<() => void>(() => {});
   onSelectRef.current = onSelect;
   visibleRef.current = { showTri, showQuad, edges };
@@ -181,6 +185,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
     const observer = new ResizeObserver(() => grw.resize());
     observer.observe(host);
     initializedRef.current = false;
+    firstFrameReported.current = false;
     return () => {
       observer.disconnect();
       host.removeEventListener('pointerdown', down);
@@ -219,6 +224,10 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       initializedRef.current = true;
     }
     updateOverlay.current();
+    if (!firstFrameReported.current) {
+      firstFrameReported.current = true;
+      onRenderedRef.current?.();
+    }
     // Replacing cell data never resets the active camera or renderer context.
   }, [geometry, showTri, showQuad, edges]);
 

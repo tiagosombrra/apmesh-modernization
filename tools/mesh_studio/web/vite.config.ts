@@ -11,5 +11,5 @@ export default defineConfig({
       '/api': { target: 'http://127.0.0.1:8765', changeOrigin: false },
     },
   },
-  build: { target: 'es2022' },
+  build: { target: 'es2022', rollupOptions: { input: { main: 'index.html', bench: 'bench.html' } } },
 });
