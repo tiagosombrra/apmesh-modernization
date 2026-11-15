@@ -14,6 +14,8 @@ Status: research proposal; no advisor approval and no executed technical verific
 | D6 | How to label anisotropy / QUAD/TRI / all-quad scope while code evolves? | separate experimental versions and qualification receipts | method owners + advisors | block cross-method claims |
 | D7 | What is the numerical meaning and representation of curve identity through splitting/trimming? | exact source feature graph + sidecar with canonical edge IDs | topology and CAD reviewers | block positive topology conversion |
 | D8 | When may experimental converter enter core build/runtime? | after standalone prototype, independent oracles, fault injection and exact baseline regression | C++ owner + QA + advisors | block integration; permit independent R&D |
+| D9 | Which **complex source-real CAD** models test geometry generalization, and which independently intended 3+-sheet models test **non-manifold** generalization? | two disjoint labeled external strata; M5/S40/S27/M3 first complex-source cohort, zero external non-manifold positives admitted | advisors + topology/CAD + research methods | prohibit conflating complex manifold CAD with evidence for non-manifold generalization |
+| D10 | What constitutes a scientifically traceable original model image? | a figure rendered from source CAD with exact checksum, importer/kernel, camera/transform and labeled state; upstream figure separately credited | research methods + licensing reviewer | prevent synthetic fixtures or public sample thumbnails from being presented as the tested source mesh |
 
 These decisions can remain OPEN while documentation, discovery and synthetic-negative controls are created. They must be resolved before the gate they govern.
 
@@ -33,6 +35,9 @@ These decisions can remain OPEN while documentation, discovery and synthetic-neg
 | R-10: exponential scope/cost of STL/OBJ reconstruction | high | high | staged B-Rep-first proof, explicit technical stop | unbounded manual tuning or generator refactor required |
 | R-11: inconsistent source units, normalization, near-zero features | high | medium | original units, inverse transform, local feature thresholds | errors cannot be meaningfully measured |
 | R-12: large hostile input / parser failure | high | medium | bounded parsing, resource and interruption controls in isolated converter | hangs, crashes or partial success without classification |
+| R-13: attractive but manifold complex CAD used as a fake non-manifold positive | critical | high | original STEP entity screen + native source topology and two separate scientific strata | absent verified 3+-sheet original source edge despite complexity |
+| R-14: screenshots/renders that do not correspond to tested source files or generator outputs | high | high | source hash + view/camera/kernel evidence; label every model/patch/mesh state | image not traceable to pinned CAD or actual accepted output |
+| R-15: volume/surface comparison or approximate geometry treated as equal input | high | high | match original CAD surface, feature edges, normalized units and geometry error budgets across methods | CAD, tet volume and surface TRI/QUAD are compared without shared domain |
 
 Likelihoods are expert planning estimates to prioritize investigation, NOT observed failure rates.
 
@@ -55,3 +60,11 @@ Each reviewer records PASS / FAIL / BLOCKED / NOT_APPLICABLE, finding ID, source
 - Initial exact planning base: f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94.
 - Concurrent open QUAD PRs at planning time: #223 and #214. Their state may change and must be rechecked before executing work.
 - Initial proposal deliberately does not claim compilation, CTest, Python checks, generator runs, dataset download, conversion success or external reviewer signoff.
+
+## Reprioritization receipt — 2026-11-15
+
+- Research focus was corrected following feedback that the three-box, T/Cross and authored bicubic figures were **too simple to represent the principal scientific models**. These models remain valid bounded regression/control fixtures, not the paper's principal complex case set.
+- The first complex model cohort is [MAMBO M5, S40, S27, M3](COMPLEX_CAD_SOURCE_SHORTLIST.csv), with M1/S8 as secondaries and Quarter Torus as a periodic/topology adversarial case. Per-file source identity and Apache-2.0 declarations are recorded, individual rights signoff is still OPEN.
+- Seven original pinned HexMe/MAMBO STEP entity graphs were directly traversed, with zero explicitly 3+-face EDGE_CURVE references in all seven. This *negative screen* is recorded in [R2_COMPLEX_CAD_STEP_SCREEN.md](R2_COMPLEX_CAD_STEP_SCREEN.md), not rewritten into a manifold proof or a non-manifold positive.
+- Six local synthetic unit tests for [step_graph_screen.py](probes/step_graph_screen.py) passed. No original CAD source bytes were downloaded locally; native CAD import, original renders, raw SHA-256, `.bp` conversion, APMesh generation, 75 CTest/other Python full science gates and QUAD/anisotropy comparisons are NOT RUN.
+- `main` advanced separately on 2026-11-15 to `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (Stage 3 F4 merge); none of its changed files intersects `docs/research/nonmanifold-benchmark/`. Research branch remains isolated/draft and must be rebased and requalified before any integration decision. No supervisor's review is claimed.
