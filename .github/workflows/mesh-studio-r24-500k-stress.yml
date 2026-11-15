@@ -44,5 +44,5 @@ jobs:
         with:
           name: r24-500k-typed-synthetic-${{ github.sha }}
           path: tools/mesh_studio/web/test-results/
-          if-no-files-found: ignore
+          if-no-files-found: error
           retention-days: 7

@@ -144,12 +144,44 @@ test('R2.2 optional bounded 500k synthetic browser stress, no physics or GPU cer
     const sample = JSON.parse(await page.getByTestId('benchmark-receipt').innerText()) as Sample;
     expect(sample.synthetic).toBe(true);
     expect(sample.cells).toBe(500_000);
-    await testInfo.attach('r22-500k-optional-first-render.json', {
-      body: Buffer.from(JSON.stringify({
-        schema: 'apmesh.meshstudio.r22.optional500k.v1',
-        classification: 'SYNTHETIC_FIRST_RENDER_ONLY_NOT_INTERACTIVE_FPS_OR_APMESH',
-        sample,
-      }, null, 2)),
-      contentType: 'application/json',
+    const receipt = sample as Sample & {
+      points: number; generation_ms: number; xyz_first_render_ms: number | null;
+      uv_first_render_ms: number | null; render_scope: string;
+    };
+    expect(receipt.xyz_first_render_ms).toBeGreaterThan(0);
+    expect(receipt.uv_first_render_ms).toBeGreaterThan(0);
+    const session = await page.context().newCDPSession(page);
+    await session.send('Performance.enable');
+    const cdpm = await session.send('Performance.getMetrics');
+    const metrics = Object.fromEntries(cdpm.metrics.map((v) => [v.name, v.value]));
+    const evidence = {
+      schema: 'apmesh.meshstudio.r24.synthetic500k_first_render.v1',
+      classification: 'SYNTHETIC_TYPED_BUFFER_TWO_VIEW_FIRST_RENDER_NOT_APMESH_GENERATOR',
+      source_sha256: '0'.repeat(64),
+      cells: receipt.cells,
+      points: receipt.points,
+      xyz_first_render_ms: receipt.xyz_first_render_ms,
+      uv_first_render_ms: receipt.uv_first_render_ms,
+      synthetic_generation_ms: receipt.generation_ms,
+      chrome_js_heap_used_bytes: metrics.JSHeapUsedSize ?? null,
+      chrome_js_heap_total_bytes: metrics.JSHeapTotalSize ?? null,
+      scope: receipt.render_scope,
+      caveats: ['single_hosted_chromium_execution_not_statistical_replication',
+        'first_render_callback_not_sustained_GPU_frame_presentation',
+        'memory_excludes_process_native_RAM_and_VRAM',
+        'not_a_source_APMesh_algorithm_run',
+        'not_all_quad_generator_scientific_evidence',
+        'no_adaptive_epoch_or_LOD_source_map_qualified'],
+    };
+    const body = JSON.stringify(evidence, null, 2) + '\\n';
+    await mkdir('test-results', { recursive: true });
+    await writeFile('test-results/r24-500k-typed-first-render.json', body, 'utf8');
+    await testInfo.attach('r24-500k-typed-first-render.json', {
+      body: Buffer.from(body), contentType: 'application/json',
     });
+    console.log('R24_500K_TYPED=' + JSON.stringify({
+      cells: evidence.cells, points: evidence.points,
+      xyz_ms: evidence.xyz_first_render_ms, uv_ms: evidence.uv_first_render_ms,
+      js_heap_bytes: evidence.chrome_js_heap_used_bytes,
+    }));
   });
