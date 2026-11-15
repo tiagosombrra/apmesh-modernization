@@ -173,7 +173,7 @@ test('R2.2 optional bounded 500k synthetic browser stress, no physics or GPU cer
         'not_all_quad_generator_scientific_evidence',
         'no_adaptive_epoch_or_LOD_source_map_qualified'],
     };
-    const body = JSON.stringify(evidence, null, 2) + '\\n';
+    const body = JSON.stringify(evidence, null, 2) + String.fromCharCode(10);
     await mkdir('test-results', { recursive: true });
     await writeFile('test-results/r24-500k-typed-first-render.json', body, 'utf8');
     await testInfo.attach('r24-500k-typed-first-render.json', {
