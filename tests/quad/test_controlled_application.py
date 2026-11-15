@@ -756,7 +756,9 @@ def verify_owner_transaction_rehearsal(stdout):
         "injected_failures": "5", "temporary_noexcept_swaps": "1",
         "reverted_to_previous_owner": "1",
         "ordered_node_observers_preserved": "1",
-        "previous_obj_bytes_unchanged": "1", "accepted_adaptive_epochs": "0",
+        "previous_obj_bytes_unchanged": "1",
+        "measured_after_actual_prior_owner_publication": "1",
+        "accepted_adaptive_epochs": "0",
     }
     require(values == expected,
             "Reversible real QUAD/TRI owner proof has missing, foreign or false claims")
