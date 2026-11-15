@@ -1397,7 +1397,29 @@ void ProbePhysicalOwnerTransactionRehearsal(
   const auto witness = SnapshotOwnerRehearsal(accepted);
   const auto previous_file = std::filesystem::path(output_prefix.string() + ".obj");
   const auto original_bytes = ReadRehearsalOutput(previous_file);
-  const auto source_site = first_source.worst_triangle_sample_uv;
+
+  // Recompute the source error from the ACTUAL published previous owner,
+  // not merely from a separate proposal measured before publication.
+  std::vector<research::ResidualUv> accepted_uv;
+  std::vector<research::ResidualPoint3> accepted_xyz;
+  accepted_uv.reserve(original.uv.size());
+  accepted_xyz.reserve(original.uv.size());
+  for (std::size_t i = 0; i < original.uv.size(); ++i) {
+    accepted_uv.push_back({original.uv[i].u, original.uv[i].v});
+    const auto* node = accepted.GetNoh(static_cast<unsigned>(i));
+    Require(node != nullptr, "Accepted prior owner has a missing source-error node");
+    accepted_xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
+  }
+  const auto source = [&patch](const research::ResidualUv& site)
+      -> research::ResidualPoint3 { return Evaluate(patch, {site[0], site[1]}); };
+  const auto actual_prior_source = research::MeasureMixedSurfaceResidual(
+      accepted_uv, accepted_xyz, original.faces, source);
+  Require(actual_prior_source.worst_triangle_face == first_source.worst_triangle_face &&
+              actual_prior_source.worst_triangle_sample_uv ==
+                  first_source.worst_triangle_sample_uv &&
+              std::abs(actual_prior_source.maximum - first_source.maximum) <= 1e-14,
+          "Actual published P1 owner source error diverges from original native AFT");
+  const auto source_site = actual_prior_source.worst_triangle_sample_uv;
   const auto factory = [source_site]() -> std::unique_ptr<Quadtree> {
     std::unique_ptr<Quadtree> tree;
     const auto trial = TrialConnectedAftBand(source_site, &tree);
@@ -1476,6 +1498,7 @@ void ProbePhysicalOwnerTransactionRehearsal(
             << " reverted_to_previous_owner=1"
             << " ordered_node_observers_preserved=1"
             << " previous_obj_bytes_unchanged=1"
+            << " measured_after_actual_prior_owner_publication=1"
             << " accepted_adaptive_epochs=0\n";
 }
 
