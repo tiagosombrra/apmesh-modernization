@@ -1,0 +1,21 @@
+{
+  "schema": "apmesh.meshstudio.r24.synthetic500k_first_render.v1",
+  "classification": "SYNTHETIC_TYPED_BUFFER_TWO_VIEW_FIRST_RENDER_NOT_APMESH_GENERATOR",
+  "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "cells": 500000,
+  "points": 501972,
+  "xyz_first_render_ms": 422,
+  "uv_first_render_ms": 734.9,
+  "synthetic_generation_ms": 35.2,
+  "chrome_js_heap_used_bytes": 32487676,
+  "chrome_js_heap_total_bytes": 100122624,
+  "scope": "SYNTHETIC_CLIENT_GENERATION_TO_FIRST_VTK_RENDER_NOT_FPS",
+  "caveats": [
+    "single_hosted_chromium_execution_not_statistical_replication",
+    "first_render_callback_not_sustained_GPU_frame_presentation",
+    "memory_excludes_process_native_RAM_and_VRAM",
+    "not_a_source_APMesh_algorithm_run",
+    "not_all_quad_generator_scientific_evidence",
+    "no_adaptive_epoch_or_LOD_source_map_qualified"
+  ]
+}
