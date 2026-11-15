@@ -30,6 +30,12 @@ the earlier stable-mode-only display. Independent review/integration, required
 documentation repair and exact merge validation remain pending. The same
 accepted-history/approved mixed estimator/selection gates remain necessary;
 source generation is still TRI-driven and `adaptive_epochs=0`, R3/M7 OPEN.
+The [bounded aggressiveness sensitivity](AGGRESSIVENESS_SENSITIVITY_20261115.md)
+completed with negative and tradeoff results; no new default or numerical policy
+was selected. Coarser external targets reduce same-step counts but degrade
+geometry/transition quality and leave a large interior growth jump. Preserve
+the current source qualification and distinguish mixed boundary and interior
+controls before proposing a new accepted-state controller.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 

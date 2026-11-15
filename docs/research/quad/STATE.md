@@ -12,6 +12,25 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-15 - bounded aggressiveness test completed; no default change
+
+User clarified that the concern is node/element counts. An isolated GNU native
+probe reproduces all eight current OBJ files and curve trace exactly, then
+executes separately recorded sensitivity cases. Curve base1.10 increases nodes
+(185/1073 versus165/953); neutral external floor1.0 is consumed but leaves all
+exports identical. Fixed external target1.5 gives33/615/843 mixed nodes, with
+curved-side points3/5/9. However RMS becomes0.830346%/0.290323%/0.267236% versus
+current0.198709%/0.0218567%/0.0218567%. Step2 TRI minimum quality drops0.245704
+->0.0398114, and the interior still grows16 ->548 QUAD. No variant is promoted.
+See [study](AGGRESSIVENESS_SENSITIVITY_20261115.md) and
+[receipt](evidence/AGGRESSIVENESS_SENSITIVITY_20261115.json). UV/source/disk and
+sample coverage checks pass in their bounded scopes; invalid-factor control
+rejects before generation. First include-path compile failure is retained.
+No production source/default changed, no new MSVC/sanitizer/full CI qualification,
+no mixed acceptance, merge or stage closure. The next controller proposal must
+separate boundary fidelity from interior size damping and specify error/quality/
+growth targets; prior source qualification does not approve these parameters.
+
 ### 2026-11-15 - refinement jump and same-site error comparison measured
 
 Read-only comparison of the existing e90d5a3 exports: curved-side step1 has9

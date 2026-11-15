@@ -2484,3 +2484,45 @@ Added comparison/report/receipt and this state checkpoint. No native generation,
 C++ tests, compiler, CI rerun, scientific policy or integration occurred. Review
 mixed geometry/curvature/cost criteria and use matched budgets before efficiency
 claims. Preserve existing profile/export delivery and R3/M7 gates.
+
+## 2026-11-15 - native aggressiveness sensitivity; count savings versus accuracy
+
+User requested a less aggressive generation test and clarified limits mean
+node/element counts. Read live research05b0628, featuree90d5a3 and main ef40c0f;
+source worktree stayed clean. Existing C++ library/flags were reused for a small
+isolated GNU Release process entry. Default curve base1.414213562 control matches
+all eight qualified OBJ exports and curve trace byte-for-byte. Only process-local
+inputs vary; no engine/default source or scientific tolerance was edited.
+
+The preregistered base1.10 treatment increased straight-side points5->9 and
+17->57, and mixed nodes165->185/953->1073. Its factor also affects coarsening:
+flat-segment base*external becomes0.88, reversing growth in requested length.
+A separately recorded neutral floor1.0 was consumed (curve factors1.0), but
+all eight exports were unchanged. One final coarser fixed external factor1.5
+was recorded before execution to cross the exported subdivision plateau.
+Total four native cases, no additional sweep. First compilation missing the
+private research include stopped before generation; corrected include only and
+retained run1. Invalid factor0 rejects before generation and preserves control.
+
+Coarser stages1/2/3: curved3/5/9 points,33/615/843 nodes,16/548/772 QUAD and
+24/122/126 TRI. Same-site128-grid RMS percentages0.830346/0.290323/0.267236,
+versus control0.198709/0.0218567/0.0218567. Step2 saves35.47% nodes but has
+13.28x geometric RMS and TRI minimum shape quality0.0398114 versus0.245704;
+QUAD corner Jacobian minimum0.520605 versus0.851067. The interior still jumps
+16->548 QUAD. Considering nodes/RMS alone, coarser stages2/3 are worse than
+control step1. No optimal/default setting is inferred; coarser first stage may
+only suit a looser as-yet unspecified geometric target.
+
+All exported states pass existing independent UV/source/disk checks and sampled
+coverage; new mixed metrics exactly match the unchanged64/128 kernel. Paired
+control/neutral metrics reuse byte-identical data. This does not prove global
+physical bounds or continuous error. Coarser reference TRI steps are accepted,
+but no mixed scientific acceptance follows. New MSVC, ASan, CTest/CI, peak memory,
+runtime benchmark and equal-error optimization were not performed. Prior source
+qualification remains its own unchanged scope.
+
+Added study, portable receipt and current state/roadmap evidence. Raw programs,
+configs/plans/logs and copied OBJ files remain in ignored experiment directories.
+No variant was adopted and no integration/stage closed. Next: separate boundary
+fidelity and interior size-field damping, specify geometry/quality/growth targets
+on actual mixed states and obtain the required scientific/independent review.
