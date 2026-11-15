@@ -10,6 +10,8 @@ import { meshPointCount } from './meshAccess';
 import { syntheticPackedScene } from './syntheticPacked';
 import './style.css';
 
+const ALLOWED_CELLS = [1_000, 50_000, 500_000] as const;
+
 type SyntheticSample = {
   xyz: MeshGeometry;
   uv: MeshGeometry;
