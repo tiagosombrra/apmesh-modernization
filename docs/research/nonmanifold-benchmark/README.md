@@ -4,6 +4,10 @@
 **Frozen planning base:** main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 **Research branch:** `research/benchmark-corpus-reverse-patches`, draft PR #225.
 
+## S3.A bounded original-CAD partial atlas (2026-11-15)
+
+A new isolated [source-identity-preserving planar quad to indexed BP extractor](S3A_ORIGINAL_CAD_PLANAR_ATLAS.md) and its independent native BRep auditor have been committed. Eleven local directed tests passed on authored controls; the four pinned industrial original CAD files were **not executed through this new converter** in this delivery. Source images and S1 native import evidence below remain valid; complete curved/trimming decomposition, external 3+-sheet topology, APMesh accepted TRI and future QUAD modes remain OPEN.
+
 ## S1 native original CAD evidence (2026-11-15)
 
 **First actual complex-source gallery:**
