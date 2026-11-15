@@ -563,16 +563,7 @@ def verify_second_physical_aft_candidates(stdout, prefix, native):
         topology = audit(path)
         quality = independent_quad_physical_quality(path)
         residual = independent_mixed_surface_residual(path)
-        xyz, uv, faces = load_physical_obj(path)
-        quad_uv_area = 0.0
-        for face in faces:
-            if len(face) != 4:
-                continue
-            corners = [uv[index] for index in face]
-            quad_uv_area += abs(sum(
-                corners[i][0]*corners[(i+1) % 4][1] -
-                corners[(i+1) % 4][0]*corners[i][1]
-                for i in range(4))) / 2
+        quad_uv_area = independent_quad_uv_area(path)
         require(topology["quads"] == quality["quads"] ==
                     native[name]["emitted_quads"] ==
                     int(values["physical_quads"]) and
@@ -611,7 +602,24 @@ def verify_second_physical_aft_candidates(stdout, prefix, native):
             "accepted_adaptive_epochs": 0}
 
 
-def verify_real_physical_pareto(first_topology, first_quality, second_physical):
+def independent_quad_uv_area(path):
+    # Integrate actual exported four-node QUAD polygons, never face-count coverage.
+    _, uv, faces = load_physical_obj(path)
+    area = 0.0
+    for face in faces:
+        if len(face) != 4:
+            continue
+        corners = [uv[index] for index in face]
+        area += 0.5 * sum(
+            corners[i][0]*corners[(i+1) % 4][1] -
+            corners[(i+1) % 4][0]*corners[i][1]
+            for i in range(4))
+    require(math.isfinite(area) and 0.0 < area < 1.0,
+            "Independent physical QUAD UV coverage is invalid")
+    return area
+
+
+def verify_real_physical_pareto(first_topology, first_quality, second_physical, first_uv_area):
     # Compare only identically sampled source errors; do not select an owner.
     source = second_physical["source_fixed_64x64"]
     measurements = {
@@ -619,7 +627,7 @@ def verify_real_physical_pareto(first_topology, first_quality, second_physical):
                  "quads": first_topology["quads"],
                  "triangles": first_topology["triangles"],
                  "elements": first_topology["quads"] + first_topology["triangles"],
-                 "quad_uv_area": 0.328125,
+                 "quad_uv_area": first_uv_area,
                  "max_xyz": source["max_xyz"],
                  "rms_source_area": source["rms_source_area"],
                  "min_scaled_jacobian": first_quality["min_scaled_jacobian"],
@@ -701,7 +709,11 @@ def verify_physical_band_candidate(stdout, prefix):
     second_native = verify_second_native_band(stdout, errors)
     second_physical = verify_second_physical_aft_candidates(
         stdout, prefix, second_native)
-    pareto = verify_real_physical_pareto(topology, quality, second_physical)
+    first_uv_area = independent_quad_uv_area(candidate_path)
+    require(math.isclose(first_uv_area, 0.328125, rel_tol=0, abs_tol=1e-12),
+            "Original physical band QUAD area differs from native source topology")
+    pareto = verify_real_physical_pareto(
+        topology, quality, second_physical, first_uv_area)
     return {"status": status, "topology": topology,
             "errors": errors, "physical_quality": quality,
             "second_native_band_trials": second_native,
