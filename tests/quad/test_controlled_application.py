@@ -8,7 +8,7 @@ import subprocess
 import uuid
 import sys
 from test_m4_real_model_hybrid import golden, approximately, cross, vector, dot
-from independent_common_grid import common_grid_source_error
+from independent_common_grid import common_grid_source_error, load_physical_obj
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/"research"/"quad"))
 from p2d_next_band_dyadic import inspect_band
 
@@ -517,6 +517,99 @@ def verify_second_native_band(stdout, previous_physical_residual):
     return actual
 
 
+def verify_second_physical_aft_candidates(stdout, prefix, native):
+    # A real second-generation proposal must use original AFT and typed XYZ.
+    # It remains unaccepted until a separate owner transaction is qualified.
+    lines = stdout.decode().splitlines()
+    records = [line for line in lines
+               if line.startswith("QUAD_SECOND_PHYSICAL_AFT_CANDIDATE ")]
+    require(len(records) == 4, "Second physical AFT trial did not report all alternatives")
+    seen = {}
+    reference = common_grid_source_error(
+        Path(str(prefix) + ".band-candidate.obj"), grid=64)
+    for record in records:
+        values = dict(item.split("=", 1) for item in record.split()[1:])
+        name = values.get("variant")
+        require(name in native and name not in seen and
+                values["source"] == "previous_staged_physical_worst_aft" and
+                values["previous_physical_owner_preserved"] == "1" and
+                values["adaptive_epochs"] == "0",
+                "Second physical AFT record lost previous-state provenance")
+        status = values["status"]
+        require(status in ("staged_unaccepted", "rejected") and
+                int(values["native_leaves"]) == native[name]["leaves"] and
+                int(values["native_emitted_quads"]) == native[name]["emitted_quads"] and
+                math.isclose(float(values["native_quad_uv_area"]),
+                             native[name]["quad_uv_area"], abs_tol=1e-12),
+                "Second physical native source record differs from prior Quadtree")
+        path = Path(str(prefix) + "." + name + ".second-band-candidate.obj")
+        emitted = int(values["exported_candidate"])
+        has_rejection = any(line.startswith(
+            "QUAD_SECOND_PHYSICAL_AFT_REJECTION variant=" + name + " reason=")
+            for line in lines)
+        if status == "rejected":
+            require(emitted == 0 and not path.exists() and has_rejection and
+                    int(values["physical_nodes"]) == 0 and
+                    int(values["physical_quads"]) == 0 and
+                    int(values["physical_triangles"]) == 0,
+                    "Rejected second physical AFT proposal created an artifact")
+            seen[name] = {"status": "rejected"}
+            continue
+        require(native[name]["admitted_uv_disk"] == 1 and
+                values["original_aft_pipeline_requested"] == "1" and
+                emitted == 1 and path.is_file() and not has_rejection,
+                "Second physical AFT candidate was not independently published")
+        topology = audit(path)
+        quality = independent_quad_physical_quality(path)
+        residual = independent_mixed_surface_residual(path)
+        xyz, uv, faces = load_physical_obj(path)
+        quad_uv_area = 0.0
+        for face in faces:
+            if len(face) != 4:
+                continue
+            corners = [uv[index] for index in face]
+            quad_uv_area += abs(sum(
+                corners[i][0]*corners[(i+1) % 4][1] -
+                corners[(i+1) % 4][0]*corners[i][1]
+                for i in range(4))) / 2
+        require(topology["quads"] == quality["quads"] ==
+                    native[name]["emitted_quads"] ==
+                    int(values["physical_quads"]) and
+                topology["nodes"] == int(values["physical_nodes"]) and
+                topology["triangles"] == int(values["physical_triangles"]) and
+                topology["boundary"] == 16 and
+                topology["triangles"] > 0 and
+                math.isclose(quad_uv_area, native[name]["quad_uv_area"],
+                             abs_tol=1e-10) and
+                quality["min_scaled_jacobian"] > 0.0 and
+                quality["min_warpage_cosine"] > 0.0 and
+                float(values["min_facet_quality"]) > 0.0 and
+                math.isclose(residual["maximum"],
+                             float(values["max_source_error"]),
+                             rel_tol=1e-8, abs_tol=1e-9),
+                "Independent physical source/quality contradicts native AFT reconstruction")
+        fixed = common_grid_source_error(path, grid=64)
+        require(fixed["sample_count"] == reference["sample_count"] == 4096 and
+                fixed["quad_sites"] > reference["quad_sites"] and
+                all(math.isfinite(fixed[key]) and fixed[key] > 0 for key in
+                    ("max_xyz", "rms_uv", "rms_source_area")),
+                "Second physical candidate lacks a comparable independent UV grid")
+        seen[name] = {"status": status, "topology": topology,
+                      "physical_quality": quality,
+                      "mixed_source_residual": residual,
+                      "quad_uv_area": quad_uv_area,
+                      "same_site_source_error": fixed,
+                      "candidate_sha256":
+                          hashlib.sha256(path.read_bytes()).hexdigest()}
+    require(set(seen) == set(native) and seen["corner"]["status"] == "rejected",
+            "Second physical AFT failed to reject disconnected native corner")
+    require(any(seen[name]["status"] == "staged_unaccepted"
+                for name in ("west", "north", "both")),
+            "No genuine second-stage physical native AFT candidate was generated")
+    return {"source_fixed_64x64": reference, "alternatives": seen,
+            "accepted_adaptive_epochs": 0}
+
+
 def verify_physical_band_candidate(stdout, prefix):
     # A separate file is only an experimental *candidate*, never an adopted epoch.
     lines = stdout.decode().splitlines()
@@ -562,9 +655,12 @@ def verify_physical_band_candidate(stdout, prefix):
     require(float(values["min_facet_quality"]) > 0.0,
             "Candidate physical facet quality was not positive")
     second_native = verify_second_native_band(stdout, errors)
+    second_physical = verify_second_physical_aft_candidates(
+        stdout, prefix, second_native)
     return {"status": status, "topology": topology,
             "errors": errors, "physical_quality": quality,
             "second_native_band_trials": second_native,
+            "second_physical_aft_candidates": second_physical,
             "candidate_sha256": hashlib.sha256(candidate_path.read_bytes()).hexdigest()}
 
 

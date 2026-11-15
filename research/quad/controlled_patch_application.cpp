@@ -974,7 +974,8 @@ struct SecondNativeBandTrial {
 
 SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_source,
                                             const research::ResidualUv& second_source,
-                                            unsigned variant) {
+                                            unsigned variant,
+                                            std::unique_ptr<Quadtree>* retained_native_tree = nullptr) {
   Require(variant < 4 && std::isfinite(second_source[0]) &&
               std::isfinite(second_source[1]) &&
               second_source[0] > 0.75 && second_source[0] < 1.0 &&
@@ -1040,6 +1041,8 @@ SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_so
     const auto emitted = EmitLeafQuads(*tree, PointRule);
     result.quads = emitted.quads.size();
     result.admitted_uv_disk = true;
+    if (retained_native_tree)
+      *retained_native_tree = std::move(tree);
   } catch (const std::invalid_argument& failure) {
     // A disconnected island is reported as a rejected native proposal.
     result.rejection = failure.what();
@@ -1088,6 +1091,129 @@ void ProbeSecondNativeAftVariants(const Candidate& previous_physical,
     if (!trial.admitted_uv_disk)
       std::cout << "QUAD_SECOND_NATIVE_BAND_REJECTION variant=" << names[variant]
                 << " reason=" << trial.rejection << '\n';
+  }
+}
+
+// Reconstruct each new native disk with the ORIGINAL AFT exterior pipeline.
+// A failure remains a rejected proposal: no prior typed owner is replaced.
+// The original source's fixed16 boundary is retained, so no true mixed epoch.
+void ProbeSecondPhysicalAftVariants(const Candidate& previous_physical,
+                                    PatchBezier& patch,
+                                    const research::MixedSurfaceResidual& first_source,
+                                    const research::MixedSurfaceResidual& second_source,
+                                    const std::filesystem::path& output_prefix) {
+  Require(previous_physical.mesh && previous_physical.quads == 62 &&
+              second_source.worst_triangle_face >= previous_physical.quads &&
+              second_source.worst_triangle_face < previous_physical.faces.size(),
+          "Second physical AFT trials require the preceding real mixed source residual");
+  const auto previous_observers = CaptureNodeObservers(*previous_physical.mesh);
+  auto* previous_node = previous_physical.mesh->GetNoh(0);
+  auto* previous_element = previous_physical.mesh->GetElement(0);
+  auto* previous_patch_owner = patch.GetSubMesh();
+  static const std::array<const char*, 4> names{{"corner", "west", "north", "both"}};
+  for (unsigned variant = 0; variant < names.size(); ++variant) {
+    const auto native = TrialSecondNativeBand(first_source.worst_triangle_sample_uv,
+                                               second_source.worst_triangle_sample_uv,
+                                               variant);
+    const auto candidate_path = std::filesystem::path(
+        output_prefix.string() + "." + names[variant] + ".second-band-candidate.obj");
+    bool staged = false;
+    std::string reason = native.rejection;
+    std::size_t physical_nodes = 0;
+    std::size_t physical_quads = 0;
+    std::size_t physical_triangles = 0;
+    double min_facet_quality = 0.0;
+    double max_source_error = 0.0;
+    if (native.admitted_uv_disk) {
+      try {
+        const auto factory = [&first_source, &second_source, variant, &native]()
+            -> std::unique_ptr<Quadtree> {
+          std::unique_ptr<Quadtree> ready;
+          const auto repeat = TrialSecondNativeBand(
+              first_source.worst_triangle_sample_uv,
+              second_source.worst_triangle_sample_uv, variant, &ready);
+          Require(ready && repeat.admitted_uv_disk &&
+                      repeat.quads == native.quads &&
+                      repeat.leaves == native.leaves &&
+                      repeat.uv_area == native.uv_area,
+                  "Original native AFT and QUAD template trees differ for second band");
+          return ready;
+        };
+        // Generate invokes the same native tree factory separately for the
+        // original TRI reference front and typed QUAD/interior AFT pipeline.
+        auto candidate = Generate(patch, false, factory);
+        CheckTypedIncidence(*candidate.mesh, candidate);
+        Require(candidate.quads == native.quads &&
+                    candidate.faces.size() > candidate.quads &&
+                    candidate.mesh->GetNumberNos() == candidate.uv.size(),
+                "Native second physical band lost actual typed QUAD/AFT elements");
+        std::vector<research::ResidualUv> uv;
+        std::vector<research::ResidualPoint3> xyz;
+        uv.reserve(candidate.uv.size());
+        xyz.reserve(candidate.uv.size());
+        for (std::size_t i = 0; i < candidate.uv.size(); ++i) {
+          uv.push_back({candidate.uv[i].u, candidate.uv[i].v});
+          const auto* node = candidate.mesh->GetNoh(static_cast<unsigned>(i));
+          Require(node != nullptr, "Second AFT physical candidate contains a null node");
+          xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
+        }
+        const auto source = [&patch](const research::ResidualUv& site)
+            -> research::ResidualPoint3 {
+          return Evaluate(patch, {site[0], site[1]});
+        };
+        const auto errors = research::MeasureMixedSurfaceResidual(
+            uv, xyz, candidate.faces, source);
+        Require(errors.quadrilaterals == candidate.quads &&
+                    errors.triangles == candidate.faces.size() - candidate.quads &&
+                    errors.triangles > 0 &&
+                    std::isfinite(errors.maximum) &&
+                    std::isfinite(candidate.min_quality) &&
+                    candidate.min_quality > 0.0,
+                "Second AFT physical proposal failed typed Bezier quality/source checks");
+        physical_nodes = candidate.mesh->GetNumberNos();
+        physical_quads = candidate.quads;
+        physical_triangles = errors.triangles;
+        min_facet_quality = candidate.min_quality;
+        max_source_error = errors.maximum;
+        Require(!std::filesystem::exists(candidate_path),
+                "Second unaccepted AFT physical output already exists");
+        // Preserve both previously generated physical owners: artifact only.
+        Export(candidate, candidate_path);
+        staged = true;
+      } catch (const std::exception& failure) {
+        reason = failure.what();
+      }
+    }
+    Require(patch.GetSubMesh() == previous_patch_owner &&
+                previous_physical.mesh->GetNoh(0) == previous_node &&
+                previous_physical.mesh->GetElement(0) == previous_element &&
+                CaptureNodeObservers(*previous_physical.mesh) == previous_observers,
+            "Second AFT physical proposal mutated earlier typed owner/observers");
+    Require(staged == std::filesystem::exists(candidate_path),
+            "Second physical AFT output presence differs from recorded status");
+    std::ostringstream out;
+    out.imbue(std::locale::classic());
+    out << std::setprecision(17)
+        << "QUAD_SECOND_PHYSICAL_AFT_CANDIDATE"
+        << " variant=" << names[variant]
+        << " status=" << (staged ? "staged_unaccepted" : "rejected")
+        << " source=previous_staged_physical_worst_aft"
+        << " native_leaves=" << native.leaves
+        << " native_quad_uv_area=" << native.uv_area
+        << " native_emitted_quads=" << native.quads
+        << " physical_nodes=" << physical_nodes
+        << " physical_quads=" << physical_quads
+        << " physical_triangles=" << physical_triangles
+        << " min_facet_quality=" << min_facet_quality
+        << " max_source_error=" << max_source_error
+        << " original_aft_pipeline_requested=" << int(native.admitted_uv_disk)
+        << " exported_candidate=" << int(staged)
+        << " previous_physical_owner_preserved=1"
+        << " adaptive_epochs=0\n";
+    std::cout << out.str();
+    if (!staged)
+      std::cout << "QUAD_SECOND_PHYSICAL_AFT_REJECTION variant=" << names[variant]
+                << " reason=" << reason << '\n';
   }
 }
 
@@ -1156,6 +1282,7 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
                 std::isfinite(candidate.min_quality) && candidate.min_quality > 0.0,
             "Band candidate failed original Bezier source or facet quality admission");
     ProbeSecondNativeAftVariants(candidate, source_residual, errors);
+    ProbeSecondPhysicalAftVariants(candidate, patch, source_residual, errors, output_prefix);
     physical_quads = candidate.quads;
     physical_triangles = errors.triangles;
     physical_nodes = candidate.mesh->GetNumberNos();
