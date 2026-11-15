@@ -18,17 +18,18 @@ variants yielded **31-leaf corner: rejected**, **34-leaf west: 75
 UV QUAD**, **34-leaf north: 71 UV QUAD**, and **37-leaf both:
 82 UV QUAD**. [Bounded native evidence](evidence/P2D1C1_NATIVE_SECOND_BAND_TRIALS_20261114.json).
 
-**Current research-only [draft PR234](https://github.com/tiagosombrra/apmesh-modernization/pull/234)**,
-feature `32e4653ff80947498c39953ce53f50af618203e9`:
+**Integrated research-only [PR234](https://github.com/tiagosombrra/apmesh-modernization/pull/234)**,
+feature `32e4653ff80947498c39953ce53f50af618203e9`,
+merge `672aa297352d0ee316c57f347e7cd5f69e4f86d1`:
 rebuild two original AFT/QUAD native source trees for each second-band
 variant, run the *original* AFT closure and construct real typed physical
-Bezier QUAD/TRI `SubMesh` candidates. Independently audited real Linux
-and Windows application jobs **SUCCESS**, including Linux sanitizers;
-original frozen TRI science job **SUCCESS**. At checkpoint, the Linux
-baseline/tooling job in
+Bezier QUAD/TRI `SubMesh` candidates. Independently audited actual Linux and Windows physical
+AFT/QUAD application and Linux ASan/UBSan/leak jobs **SUCCESS**,
+frozen Eistute/Book TRI science **SUCCESS**, Linux 85/85 root CTests
+and 527/527 tooling Python **PASS**. Exact-head
 [CI #43663198795](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43663198795)
-was **still running**, so PR234 is **not yet overall 4/4 qualified**.
-No merge occurred.
+**4/4 completed SUCCESS**, feature merged into research only.
+No accepted adaptive epoch or production `main` merge.
 
 All original source boundary edge counts remain 16 and the
 isolated corner is rejected without a physical OBJ. Measured **staged-only**
@@ -53,8 +54,11 @@ cosine 0.997013 remain positive. These are bounded **sampled**
 source approximation metrics, **not a general quality/complexity policy**.
 [Preliminary exact-source evidence](evidence/P2D1C2_SECOND_PHYSICAL_AFT_TRIALS_20261114.json).
 
-**Scientific next gate:** complete exact-head CI for PR234 and independent
-review/merge only after 4/4 success; then compare the west/north/both
+**Scientific next gate:** implement a reproducible, explicitly
+profiled west/north/both multi-objective error/complexity/quality
+audit without silently imposing a scientific acceptance rule;
+then design an actual accepted-owner transaction with fault
+injection. Compare the west/north/both
 element-count/error/quality Pareto trade-offs and develop an explicit
 previous-*accepted*-mixed-owner transaction with fault injection and
 scientific selection policy. New physical candidates remain
