@@ -4,6 +4,10 @@
 **Frozen planning base:** main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 **Research branch:** `research/benchmark-corpus-reverse-patches`, draft PR #225.
 
+## S3.C original STEP source-graph gate (2026-11-15)
+
+[Source-specific S3.C evidence, 45 candidates and the 152 original candidate-to-excluded feature edges](S3C_ORIGINAL_STEP_SOURCE_GRAPH.md) is now committed, with [machine-readable pinned STEP entity receipts](evidence/s3c/original_step_candidate_summary.json), a standalone original STEP source-graph screen and a fail-closed native partial-BP batch. All four original STEP *texts* were inspected through pinned GitHub source files and the source-graph eligibility counts match the earlier S1 native results (M5 6, S40 9, S27 20, M3 10). The actual original CAD source files were not imported or converted in this runtime. Local controls: **46 cases / 45 PASS / 1 explicit original-source SKIP**, not the complete production scientific regression. No external genuine non-manifold positive, complete CAD atlas, accepted TRI or QUAD mesh is claimed.
+
 ## S3.B bounded curved-face feasibility (2026-11-15)
 
 [The S3.B original-CAD support/trim screen, cylindrical approximation pilot and indexed derived-seam atlas](S3B_CURVED_FEASIBILITY.md) are now committed with **19 directed S3.B local tests** passing, in addition to 11 S3.A controls. Four independently audited synthetic quarter-cylinder atlases (1, 2, 4 and 8 patches) demonstrate decreasing sampled error and exact indexed shared *derived* seam controls. The actual M5/S40/S27/M3 original STEP faces were **NOT** converted in this runtime; source-to-feature boundary compatibility, external original 3+-sheet admission and APMesh TRI/QUAD accepted generation remain OPEN. This is a separate scientific research activity, not production C++ modernization.
