@@ -66,7 +66,8 @@ export function asVtkCells(
   const mask = (showTriangle ? 1 : 0) | (showQuad ? 2 : 0);
   const prior = prepared.variants.get(mask);
   if (prior) return prior;
-  if (payload.packed && showTriangle && showQuad) {
+  if (payload.packed && (payload.triangles === 0 || showTriangle) &&
+      (payload.quads === 0 || showQuad)) {
     const typed = payload.packed;
     const colors = new Uint8Array(typed.faceIds.length * 4);
     for (let i = 0; i < typed.faceIds.length; i += 1) {

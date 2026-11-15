@@ -40,7 +40,7 @@ test('picks one real source face in UV and updates the scientific inspector', as
 test('uses source-bound binary scenes rather than copying scientific JSON vertices', async ({ page }) => {
   const binaryPaths: string[] = [];
   page.on('response', (response) => {
-    if (response.url().includes('/geometry.bin?space=')) binaryPaths.push(response.url());
+    if (response.url().includes('/geometry.v2.bin?space=')) binaryPaths.push(response.url());
   });
   await page.goto('/');
   await expect(page.getByTestId('viewport-xyz').locator('canvas').first()).toBeVisible();
