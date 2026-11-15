@@ -1965,3 +1965,51 @@ transaction only after explicit research decision. No full
 production AdaptCurve or nonmanifold global welding/all-QUAD/
 anisotropy/literal 1993 reconstruction.
 
+## 2026-11-14 — P2d-1c3 explicit profiled source-OBJ Pareto CI handoff
+
+Exact P2d1c2 physical original AFT candidate merge
+672aa297352d0ee316c57f347e7cd5f69e4f86d1 is research-only;
+main TRI still f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94.
+Created branch quad/p2d1c3-independent-multiobjective-pareto-20261114
+and draft PR235, exact latest feature
+27851df2625e0c0b37e12023af699a01f3d0304c.
+The one-file Python pure dominance oracle
+tests/quad/independent_pareto.py accepts only measured real physical
+face/node/UV area/error/Jacobian/warpage objectives and validates
+typed totals, finite positive values, full observation keys, and
+order-invariant fronts. Actual controlled application OBJ oracle
+independently integrates the signed QUAD polygon UV areas directly
+from every physical OBJ; computes two explicitly separate
+source-specific objective profiles: UV-area vs the same profile
+with additional QUAD count. Six unit controls are invoked in
+actual Linux/Windows/ASan application regression, not merely
+present but unexecuted.
+
+From real P2d1c2 4096 identical UV sites, the area profile
+has the expected non-dominated band/north/both, with north
+dominating west because both have 125 total physical faces
+and .375 QUAD UV area but north has 107 vs west 109 nodes
+and lower source-area RMS. When QUAD face count is itself an
+additional maximization objective, west has 75 vs north 71
+true QUAD faces, so all four become non-dominated. The
+result is *profile-dependent*: never convert to implicit
+adaptive scientific acceptance policy. Same-site source
+geometric interpolation RMS is not a continuous source bound
+or PDE solution error. Physical QUAD global minima can mask
+local quality degradation; no prior accepted owner transition,
+adaptive_epochs=0.
+
+At checkpoint exact feature [CI #43664129060](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43664129060)
+had Linux native and real application including six explicit
+Pareto tests and ASan/UBSan/leak SUCCESS, frozen original TRI
+scientific parity SUCCESS, but Windows controlled application
+and Linux root baseline/tooling jobs were still in progress.
+No full 4/4 qualification, merge or new accepted owner is
+asserted. Registered pending exact science evidence in
+evidence/P2D1C3_PROFILED_PARETO_20261114.json.
+Next: finish full exact-head PR235 CI, check final changed-file
+set, only then merge to quad-templates if passing. Follow with
+P2d1c4 accepted-owner state machine, strong-exception rollback
+and two real previous-accepted-source-driven mixed transitions,
+without changing default TRI or incorrectly closing R3/M7 issue221.
+
