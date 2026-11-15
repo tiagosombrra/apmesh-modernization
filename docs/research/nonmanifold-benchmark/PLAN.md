@@ -2,7 +2,7 @@
 
 **Classification:** scientific research proposal, NOT a technique-preserving refactor.
 **Frozen planning base:** main f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94 on 2026-11-14.
-**Working boundary:** documentation-only research branch; active Stage 3 modernization and QUAD branches remain independent.
+**Working boundary:** documentation and isolated experimental research probes/fixtures ONLY; no production build, Stage 3 modernization or QUAD branch modifications.
 
 ## Objectives, exclusions and evidence hierarchy
 
@@ -29,7 +29,7 @@ An accepted generator state and a saved rejected candidate are different observa
 | R6 | Research extension and comparisons | separately versioned TRI/QUAD, all-quad, anisotropic evaluation recipes; negative controls | code paths and modes are qualified individually; matched geometry, constraints, output metrics and explicit noncomparability labels |
 | R7 | Publication/reproduction freeze | frozen selection, train/dev vs held-out final set, source provenance, raw outputs, negative results | scientific and engineering review; advisor approval; reproducible artifact and limitations table |
 
-R0-R3 can proceed as a documentary/diagnostic research activity without a production C++ code change. R4 is a new experimental subsystem, not a shortcut into Stage 3. R5-R7 have prerequisites and are not authorized merely because this plan exists.
+R0-R3 can proceed as documentary/diagnostic or isolated experimental research activity without a production C++ code change. R4 is a new experimental subsystem, not a shortcut into Stage 3. R5-R7 have prerequisites and are not authorized merely because this plan exists.
 
 ## Execution order and stop conditions
 
@@ -92,3 +92,14 @@ No review role is claimed to have signed off yet.
 ## Dependencies
 
 See AGENTS.md, docs/PROJECT_STATE.md, docs/MODERNIZATION_PLAN.md, docs/GENERATION_VALIDATION_CONTRACT.md, docs/API_CONTRACTS.md and DATA_PROVENANCE.md. Never modify the historical publication oracle to accept a new research input.
+
+## Evidence update: one R3 controlled pilot (2026-11-14)
+
+- R0: repository baseline and concurrency documented. No new historical CTest/scientific regression executed.
+- R1: 40 traceable leads, none external G1/G2 admitted.
+- R2: one locally constructed four-sheet, one-four-incidence Open CASCADE BRep; source CAD had three different edge identities. External G2 still blocked.
+- R3: a **single planar analytic reference case** has four exact bicubic patches in the indexed BP grammar (52 unique control vertices; four exact references to central cubic C0; 13 distinct curves), a versioned research BP fixture, an independent de Casteljau + native CAD sample audit, and 13 new local adversarial tests. Entire proposed multi-model R3 work package remains open.
+- R4: a narrowly scoped analytic BP writer is available as a **research pilot**, NOT a general CAD reverse converter and NOT an approved production component.
+- R5-R7: untouched. No APMesh TRI/QUAD mesh generation or paper comparison for the new control.
+
+See [R3 pilot measurements](R3_ANALYTIC_BICUBIC_PILOT.md) and [scientific gallery](gallery/README.md). Any novel CAD model admission, tolerance/feature semantics or technique change requires independent review and new evidence. No stage closure beyond the bounded analytic control is claimed.

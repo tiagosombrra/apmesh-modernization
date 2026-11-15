@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" role="img" aria-labelledby="tt dd">
+<title id="tt">Three touching CAD solids and the four-sheet R3 Bezier control</title>
+<desc id="dd">Analytic XY cross-section. The northwest A, northeast B and southwest C boxes occupy three quadrants; the southeast is exterior void. A reconstructed four-sheet surface complex has four radial sheets around the shared vertical curve C0. Each surface is represented by a bicubic Bezier patch with 4 by 4 control points. This is not a generated triangular or quadrilateral mesh.</desc>
+<rect x="0" y="0" width="1120" height="500" rx="20" fill="#fafbfd"/>
+<text x="55" y="50" font-size="23" font-family="Arial, sans-serif" fill="#1b2b3e" font-weight="bold">R2: source solid contact</text>
+<text x="605" y="50" font-size="23" font-family="Arial, sans-serif" fill="#1b2b3e" font-weight="bold">R3: reconstructed Bezier sheets</text>
+<g stroke="#596779" stroke-width="2.5">
+<rect x="120" y="95" width="170" height="170" fill="#efb390"/>
+<rect x="290" y="95" width="170" height="170" fill="#b3d6e9"/>
+<rect x="120" y="265" width="170" height="170" fill="#badfcd"/>
+<rect x="290" y="265" width="170" height="170" fill="#e5e8ed" stroke-dasharray="7 5"/>
+</g>
+<g font-size="30" font-family="Arial, sans-serif" text-anchor="middle" fill="#253348" font-weight="bold">
+<text x="205" y="190">A</text><text x="375" y="190">B</text><text x="205" y="360">C</text>
+</g>
+<text x="375" y="352" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" fill="#677589">VOID</text>
+<circle cx="290" cy="265" r="8" fill="#1d2937" stroke="white" stroke-width="3"/>
+<text x="306" y="252" font-size="17" font-family="Arial, sans-serif" fill="#1d2937">3 distinct source edges</text>
+<path d="M870 265 L1050 265" stroke="#50a879" stroke-width="13" stroke-linecap="round"/>
+<path d="M870 265 L690 265" stroke="#4f9fc9" stroke-width="13" stroke-linecap="round"/>
+<path d="M870 265 L870 85" stroke="#d9844c" stroke-width="13" stroke-linecap="round"/>
+<path d="M870 265 L870 445" stroke="#9e83c5" stroke-width="13" stroke-linecap="round"/>
+<circle cx="870" cy="265" r="12" fill="#1d2937" stroke="white" stroke-width="3"/>
+<g font-size="21" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle" fill="#304153">
+<text x="870" y="69">P0: A / B</text><text x="870" y="480">P3: C / VOID</text>
+<text x="678" y="245">P1: A / C</text><text x="1020" y="245">P2: B / VOID</text>
+</g>
+<text x="890" y="290" font-size="19" font-family="Arial, sans-serif" fill="#1d2937">C0</text>
+<text x="55" y="473" font-size="17" font-family="Arial, sans-serif" fill="#66758b">XY projection; C0 runs along Z, from -2.5 to +2.5</text>
+</svg>
