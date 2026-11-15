@@ -5,8 +5,8 @@
   "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/234",
   "exact_feature_sha": "32e4653ff80947498c39953ce53f50af618203e9",
   "ci_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43663198795",
-  "ci_observation": "Native Linux, Windows, Linux sanitizer and frozen TRI science completed successfully; Linux root baseline/tooling still running when first evidence drafted",
-  "merged": false,
+  "ci_observation": "Exact feature CI run 43663198795 COMPLETED SUCCESS 4/4 (Linux GCC native+original AFT+ASan/UBSan/leak, Windows MSVC native+original AFT, root 85/85 CTests + 527/527 Python tooling, original Eistute/Book frozen TRI parity)",
+  "merged": true,
   "parent_research_merge_sha": "15a57f3604c9fc8b072762ed10f3219aa12c9ad7",
   "controlled_source": "Models3d::ModelCurvaBezier / fixed16 research policy",
   "baseline_first_physical": {
@@ -101,5 +101,18 @@
     "Single original patch; no model-global high valence nonmanifold sheet or welding scientific decision",
     "No all-QUAD, anisotropic metric or literal original 1993 reproduction"
   ],
-  "adaptive_epochs": 0
+  "adaptive_epochs": 0,
+  "ci": {
+    "status": "success",
+    "jobs_passed": 4,
+    "jobs_total": 4,
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "linux_quad": "success",
+    "windows_quad": "success",
+    "linux_asan_ubsan_leak": "success",
+    "frozen_original_tri": "success"
+  },
+  "research_merge_sha": "672aa297352d0ee316c57f347e7cd5f69e4f86d1",
+  "scientific_qualification": "physical staged-candidate validity, NOT accepted adaptive epochs"
 }
