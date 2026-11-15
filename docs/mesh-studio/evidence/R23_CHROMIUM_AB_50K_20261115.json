@@ -1,0 +1,32 @@
+{
+  "schema": "apmesh.meshstudio.r23.viewer_optimization.v1",
+  "classification": "SYNTHETIC_INTERACTION_NOT_GENERATOR_METRICS",
+  "sample_cells": 50000,
+  "point_count": 50624,
+  "picker": {
+    "space": "uv",
+    "source_face_id": 23738,
+    "hit": true,
+    "picker_wall_ms": 0.5,
+    "method": "UV_SPATIAL_INDEX",
+    "spatial_candidates_tested": 1,
+    "scope": "UV_PLANE_SPATIAL_QUERY_NOT_END_TO_END_UI_LATENCY"
+  },
+  "native_picker_same_camera": {
+    "space": "uv",
+    "source_face_id": 23738,
+    "hit": true,
+    "picker_wall_ms": 204,
+    "method": "VTK_CELL_PICKER",
+    "spatial_candidates_tested": null,
+    "scope": "VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY"
+  },
+  "constraints": [
+    "no_GPA_CPU_fps_benchmark",
+    "no_source_patch_inference",
+    "index_never_welds_vertices",
+    "fallback_on_ambiguous_uv_chart",
+    "500k_not_qualified",
+    "single_run_not_statistics"
+  ]
+}

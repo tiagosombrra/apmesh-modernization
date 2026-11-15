@@ -1,0 +1,41 @@
+{
+  "500k_interactive_qualified": false,
+  "baseline_original_mesh_source_modified": false,
+  "branch": "feature/mesh-studio-fixture-first-20261114",
+  "browser": {
+    "native_cellpicker_call_ms": 204,
+    "original_face_id_same_camera": 23738,
+    "real_chromium_render": true,
+    "source_id_equal": true,
+    "spatial_candidates_tested": 1,
+    "synthetic_faces": 50000,
+    "tests_passed": 13,
+    "tests_skipped_optional_500k": 1,
+    "uv_index_call_ms": 0.5
+  },
+  "ci_jobs": 3,
+  "ci_result": "success",
+  "ci_run": 43751555681,
+  "code_sha": "f8546fa3c11d27be76d1711d2a472288122b00da",
+  "date": "2026-11-15",
+  "files_sha256": {
+    "source_r23_picker_report": "f5ddc233b7ed0a3b72ec54fc83f9abf81ac217aa7f1202b8940a52e5bc6c223a"
+  },
+  "limits": [
+    "Single host CI run",
+    "Synchronous picker call only, not end-to-end React screen latency",
+    "Not GPU FPS or VRAM",
+    "Source QUAD/Tri generator not benchmarked",
+    "No global LOD or patch welding certification"
+  ],
+  "native_windows_gpu_qualified": false,
+  "schema": "apmesh.meshstudio.r23.validation_receipt.v1",
+  "science_tests": {
+    "linux_methods": 209,
+    "linux_skipped": 4,
+    "linux_status": "success",
+    "windows_methods": 209,
+    "windows_skipped": 10,
+    "windows_status": "success"
+  }
+}
