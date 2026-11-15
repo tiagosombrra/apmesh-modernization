@@ -2,7 +2,32 @@
 
 Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
 Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## P2d-1c3 qualified, P2d-1c4a physical-owner rehearsal active
+## P2d-1c4a integrated; P2d-1c4b is the next admission gate
+
+### 2026-11-15 status review and local visualization
+
+Reviewed canonical research `392d02c0dc1fd52bcc6cb83320469d1143636ef6`.
+The clean local checkout was fast-forwarded from `3beec583` (162 commits behind);
+other worktrees and branches were preserved. Live GitHub confirms PR236 merged
+and both its exact feature [run #43704424433](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43704424433)
+and exact research merge [run #43705007549](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43705007549)
+completed **4/4 SUCCESS**. The reviewed research head has no code/test/workflow
+changes relative to the qualified feature. This documentation checkpoint is
+not a new native qualification or a closure of R3/M7.
+
+Five exact Windows CI OBJ artifacts were inspected and opened in Blender 5.3.0:
+P1 69/42/36 and unaccepted bands 93/62/44, 107/71/54, 109/75/50,
+117/82/52 (nodes/QUAD/TRI), all with 16 boundary edges. Local replay of
+the existing normal/rollback receipt verifiers rejected eight forged records
+per run. No local native build, CTest, sanitizer or full historical oracle
+campaign was run. See [bounded review](STATUS_REVIEW_20261115.md).
+
+**Exact next action:** specify P2d-1c4b accepted-state ownership/archive,
+source fingerprint and memory/file publication failure matrix; record the
+advisor-approved error/quality/complexity selection policy before accepting
+two distinct transitions from the actual preceding accepted mixed states.
+Keep `adaptive_epochs=0` until those gates pass. No policy approval is inferred
+from the current Pareto profiles. R3/M7 #221 remains open.
 
 [PR235](https://github.com/tiagosombrra/apmesh-modernization/pull/235)
 merged into research `quad-templates` at

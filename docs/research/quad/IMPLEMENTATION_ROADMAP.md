@@ -16,10 +16,11 @@ and P2d-1c3 [PR235](https://github.com/tiagosombrra/apmesh-modernization/pull/23
 are integrated **bounded** stages: independent source-grid topology,
 actual native Quadtree source trials, full original AFT physical
 QUAD/TRI second-stage candidates, and independent real-OBJ Pareto
-analysis, respectively. P2d-1c4a [draft PR236](https://github.com/tiagosombrra/apmesh-modernization/pull/236)
-is a **separate fault-injected reversible physical owner rehearsal**,
-not a scientifically adopted new mixed state; full exact-source CI
-is still required. True previously **accepted** source-driven adapted
+analysis, respectively. P2d-1c4a [merged PR236](https://github.com/tiagosombrra/apmesh-modernization/pull/236)
+is an **integrated fault-injected reversible physical owner rehearsal**,
+not a scientifically adopted new mixed state. Exact feature CI #43704424433
+and exact research-merge CI #43705007549 both completed 4/4 SUCCESS.
+P2d-1c4b is the next admission gate. True previously **accepted** source-driven adapted
 mixed epochs remain [R3/M7 issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
 OPEN with `adaptive_epochs=0`.
 P0 repairs the existing admission contract; it introduces no new numerical

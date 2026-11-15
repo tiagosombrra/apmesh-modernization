@@ -2152,3 +2152,51 @@ Do not silently choose north or both from a single
 Pareto profile; preserve true QUAD area vs QUAD count
 and common-grid source error quality tradeoff.
 
+## 2026-11-15 — advancement review, local alignment and Blender inspection
+
+Reviewed live canonical `392d02c0dc1fd52bcc6cb83320469d1143636ef6` and
+fast-forwarded the clean primary checkout from `3beec583` (162 commits behind).
+Other branches/worktrees were preserved. Remote main remains
+`f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`; PR214 and PR225 remain drafts
+with their separate targets. No implementation or scientific policy was changed.
+
+Live Actions API confirms exact PR236 feature `f55b8e4a` run #43704424433
+and exact research merge `8a451eee` run #43705007549 completed 4/4 SUCCESS.
+The reviewed canonical head has no source/test/workflow changes relative to
+that feature in the inspected paths. Focused source review confirms a real
+published-P1 source-error measurement and reversible successor-owner rehearsal,
+not accepted mixed epochs. R3/M7 issue221 stays OPEN, adaptive_epochs=0.
+
+Downloaded the exact Windows controlled-application artifact. Independently
+counted and SHA-256 hashed five original OBJ files: 69/42/36, 93/62/44,
+107/71/54, 109/75/50 and 117/82/52 nodes/QUAD/TRI, all boundary16.
+Locally replayed the existing receipt verifier on real normal/rollback stdout,
+rejecting eight forged variants per run. An initial helper import-path setup
+failure was corrected locally; no test implementation was changed. Imported
+the five meshes into installed Blender 5.3.0, preserved source geometry/face
+cycles and UV without remeshing, separated objects by translation, saved and
+visually checked `build/quad-review-20261115/APMesh_QUAD_review.blend`.
+The scene distinguishes P1 from unaccepted candidates and labels zero epochs.
+Local build artifacts and helpers remain untracked.
+
+Corrected stale current-state prose that still described PR236 as draft/CI
+pending, retained the failed intermediate GCC evidence, and added live
+research-merge CI readback. Changed documentation: STATE.md,
+IMPLEMENTATION_ROADMAP.md, this append-only log,
+evidence/P2D1C4A_REAL_OWNER_TRANSACTION_REHEARSAL_20261115.json and the
+bounded STATUS_REVIEW_20261115.md. The first commit attempt was rejected by
+the staged-whitespace hook because this log retained an extra blank line at
+EOF. Explicit normalization was confined to this log; the five-file quality
+whitespace check, staged hook and evidence JSON syntax checks then passed.
+No local native build, CTest, sanitizer, full historical oracle or
+new CI campaign was run; this documentation checkpoint does not qualify its
+own revision scientifically or close P2/R3/M7.
+
+Exact next action: specify P2d-1c4b accepted typed-state/archive ownership,
+immutable source fingerprints and memory/file publication fault/recovery
+matrix. Record the advisor-approved error/quality/complexity policy before
+accepting two distinct transitions driven by each actual preceding accepted
+mixed state. Do not infer policy approval from Pareto profiles. Preserve the
+separate production AdaptCurve, high-valence sheet ownership, historical 1993,
+all-QUAD and anisotropy gates. Commit this documentation checkpoint to
+quad-templates and verify remote readback before claiming persistence.

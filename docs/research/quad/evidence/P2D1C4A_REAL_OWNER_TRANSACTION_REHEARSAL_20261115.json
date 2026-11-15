@@ -48,7 +48,7 @@
     "forward_owner_not_restored",
     "fabricated_publication_field"
   ],
-  "first_measured_linux": "Earlier source 5c8bc5a Linux native and ASan/UBSan/leak passed, including eight forged receipt negatives; current 4b54460 exact-source CI pending",
+  "first_measured_linux": "Historical observation: source 5c8bc5a Linux native and ASan/UBSan/leak passed, including eight forged receipt negatives; 4b54460 CI was pending at that recording, subsequently failed GCC compilation as retained below, and was superseded by qualified f55b8e4a",
   "ci_completed_jobs_while_recorded": [
     "QUAD native Linux",
     "QUAD native Windows",
@@ -92,5 +92,14 @@
     "eight_forged_receipts_rejected": "pass_in_native_Linux_Windows_and_Linux_sanitizer"
   },
   "research_merge_sha": "8a451eee7fad416d36604a61afd35412c65cd72a",
+  "research_merge_ci": {
+    "run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43705007549",
+    "head_sha": "8a451eee7fad416d36604a61afd35412c65cd72a",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs_passed": 4,
+    "jobs_total": 4,
+    "verified_date": "2026-11-15"
+  },
   "integrated": true
 }
