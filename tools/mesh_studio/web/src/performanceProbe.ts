@@ -15,6 +15,8 @@ export interface PickObservation {
   source_face_id: number | null;
   hit: boolean;
   picker_wall_ms: number;
+  method?: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER';
+  spatial_candidates_tested?: number | null;
   scope: 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY';
 }
 

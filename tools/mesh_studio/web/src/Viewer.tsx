@@ -6,12 +6,14 @@ import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper';
 import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor';
 import vtkCellPicker from '@kitware/vtk.js/Rendering/Core/CellPicker';
 import vtkDataArray from '@kitware/vtk.js/Common/Core/DataArray';
+import vtkCoordinate from '@kitware/vtk.js/Rendering/Core/Coordinate';
 import type { MeshGeometry, Space } from './contracts';
 import type { CameraPose } from './camera';
 import type { PickObservation, ScriptedOrbitObservation } from './performanceProbe';
 import { summarizeScriptedOrbit } from './performanceProbe';
 import { isCameraPose } from './camera';
-import { asVtkCells } from './geometry';
+import { asVtkCells, vtkPointBuffer } from './geometry';
+import { buildUvSpatialIndex } from './uvSpatialIndex';
 
 interface ViewerProps {
   space: Space;
@@ -161,7 +163,11 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
     renderRef.current = grw;
     const renderer = grw.getRenderer();
     const data = vtkPolyData.newInstance();
-    data.getPoints().setData(new Float32Array(geometry.points.flat()), 3);
+    data.getPoints().setData(vtkPointBuffer(geometry), 3);
+    const faceIndexBySource = new Map(geometry.source_face_ids.map((id, i) => [id, i]));
+    const uvIndex = space === 'uv' ? buildUvSpatialIndex(geometry) : null;
+    const displayCoordinate = uvIndex ? vtkCoordinate.newInstance() : null;
+    displayCoordinate?.setCoordinateSystemToDisplay();
     dataRef.current = data;
     const mapper = vtkMapper.newInstance();
     mapper.setInputData(data);
@@ -183,7 +189,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       }
       overlayRef.current = null;
       const sourceId = selectedRef.current;
-      const index = geometry.source_face_ids.indexOf(sourceId ?? -1);
+      const index = faceIndexBySource.get(sourceId ?? -1) ?? -1;
       if (sourceId === null || index < 0 ||
           (geometry.cell_types[index] === 'triangle' && !visibleRef.current.showTri) ||
           (geometry.cell_types[index] === 'quad' && !visibleRef.current.showQuad)) {
@@ -220,16 +226,54 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       }
       pointerDown = null;
       const rect = host.getBoundingClientRect();
+      const pixelX = event.clientX - rect.left;
+      const pixelY = rect.height - (event.clientY - rect.top);
       const started = performance.now();
-      picker.pick([event.clientX - rect.left, rect.height - (event.clientY - rect.top), 0], renderer);
+      let sourceId: number | null = null;
+      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' = 'VTK_CELL_PICKER';
+      let spatialCandidates: number | null = null;
+      let resolved = false;
+      if (space === 'uv' && uvIndex && displayCoordinate) {
+        try {
+          // Transform a display ray onto the flat UV z=0 plane. Never guess a
+          // UV chart from group color or Euclidean XYZ vertex coincidence.
+          displayCoordinate.setValue(pixelX, pixelY, 0);
+          const near = [...displayCoordinate.getComputedWorldValue(renderer)];
+          displayCoordinate.setValue(pixelX, pixelY, 1);
+          const far = [...displayCoordinate.getComputedWorldValue(renderer)];
+          const dz = far[2] - near[2];
+          const fraction = -near[2] / dz;
+          if (near.every(Number.isFinite) && far.every(Number.isFinite) &&
+              Math.abs(dz) > 1e-12 && fraction >= 0 && fraction <= 1) {
+            const u = near[0] + fraction * (far[0] - near[0]);
+            const v = near[1] + fraction * (far[1] - near[1]);
+            const hit = uvIndex.pick(u, v, visibleRef.current.showTri,
+              visibleRef.current.showQuad);
+            if (hit.kind !== 'ambiguous') {
+              sourceId = hit.kind === 'hit' ? hit.sourceFaceId : null;
+              spatialCandidates = hit.testedFaces;
+              method = 'UV_SPATIAL_INDEX';
+              resolved = true;
+            }
+          }
+        } catch {
+          // Any unsupported projection or overlapping UV patch uses the native picker.
+        }
+      }
+      if (!resolved) {
+        picker.pick([pixelX, pixelY, 0], renderer);
+        const picked = picker.getCellId();
+        sourceId = picked >= 0 ? sourceIds.current[picked] ?? null : null;
+      }
       const pickerMs = performance.now() - started;
-      const id = picker.getCellId();
-      const sourceId = id >= 0 ? sourceIds.current[id] ?? null : null;
       onSelectRef.current(sourceId);
       onPickMeasuredRef.current?.({
         space, source_face_id: sourceId, hit: sourceId !== null,
         picker_wall_ms: Math.round(pickerMs * 1000) / 1000,
-        scope: 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY',
+        method, spatial_candidates_tested: spatialCandidates,
+        scope: method === 'UV_SPATIAL_INDEX'
+          ? 'UV_PLANE_SPATIAL_QUERY_NOT_END_TO_END_UI_LATENCY'
+          : 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY',
       });
     };
     host.addEventListener('pointerdown', down);
@@ -253,6 +297,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       dataRef.current = null;
       sourceIds.current = [];
       picker.delete();
+      displayCoordinate?.delete();
       grw.delete();
     };
     // Recreate the GL context only if the actual source mesh or space changes.
