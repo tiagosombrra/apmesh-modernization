@@ -1327,6 +1327,157 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
     std::cout << "QUAD_BAND_PHYSICAL_REJECTION reason=" << reason << '\n';
 }
 
+// A complete physical owner snapshot also records the ORDERED node observers.
+struct OwnerRehearsalWitness {
+  SubMesh* owner = nullptr;
+  std::vector<NodeAdaptive*> nodes;
+  std::vector<ElementAdaptive*> elements;
+  std::vector<unsigned long> node_ids;
+  std::vector<Xyz> physical_xyz;
+  std::vector<std::vector<ElementAdaptive*>> ordered_observers;
+};
+
+OwnerRehearsalWitness SnapshotOwnerRehearsal(SubMesh& mesh) {
+  OwnerRehearsalWitness result;
+  result.owner = &mesh;
+  result.ordered_observers = CaptureNodeObservers(mesh);
+  for (unsigned i = 0; i < mesh.GetNumberNos(); ++i) {
+    auto* node = mesh.GetNoh(i);
+    Require(node != nullptr, "Accepted owner has a missing physical node");
+    result.nodes.push_back(node);
+    result.node_ids.push_back(node->GetId());
+    result.physical_xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
+  }
+  for (unsigned i = 0; i < mesh.GetNumberElements(); ++i) {
+    auto* element = mesh.GetElement(i);
+    Require(element != nullptr, "Accepted owner has a missing typed element");
+    result.elements.push_back(element);
+  }
+  return result;
+}
+
+void RequireOwnerRehearsalUnchanged(PatchBezier& patch,
+                                   const OwnerRehearsalWitness& original) {
+  Require(original.owner != nullptr && patch.GetSubMesh() == original.owner &&
+              original.owner->GetPatch() == &patch &&
+              original.nodes.size() == original.owner->GetNumberNos() &&
+              original.elements.size() == original.owner->GetNumberElements() &&
+              CaptureNodeObservers(*original.owner) == original.ordered_observers,
+          "Owner rehearsal lost the previously accepted physical graph");
+  for (std::size_t i = 0; i < original.nodes.size(); ++i) {
+    const auto* node = original.owner->GetNoh(static_cast<unsigned>(i));
+    Require(node == original.nodes[i] &&
+                node->GetId() == original.node_ids[i] &&
+                Xyz{node->GetX(), node->GetY(), node->GetZ()} == original.physical_xyz[i],
+            "Failed physical transaction changed accepted node identity or coordinates");
+  }
+  for (std::size_t i = 0; i < original.elements.size(); ++i)
+    Require(original.owner->GetElement(static_cast<unsigned>(i)) == original.elements[i],
+            "Failed physical transaction changed accepted element identity");
+}
+
+std::string ReadRehearsalOutput(const std::filesystem::path& file) {
+  std::ifstream stream(file, std::ios::binary);
+  Require(bool(stream), "Previously accepted physical OBJ was not readable");
+  return {std::istreambuf_iterator<char>(stream), std::istreambuf_iterator<char>()};
+}
+
+// Test only: real native AFT successor of an already-published physical P1
+// graph. Swaps are reversible rehearsals, not scientifically admitted epochs.
+// No second artifact is published; all exceptions precede the noexcept swap.
+void ProbePhysicalOwnerTransactionRehearsal(
+    PatchBezier& patch, SubMesh& accepted, const Candidate& original,
+    const research::MixedSurfaceResidual& first_source,
+    const std::filesystem::path& output_prefix) {
+  Require(accepted.GetNumberNos() == 69 && original.quads == 42 &&
+              original.faces.size() == 78 && patch.GetSubMesh() == &accepted,
+          "Owner transaction rehearsal requires the real previously published P1 graph");
+  CheckTypedIncidence(accepted, original);
+  const auto witness = SnapshotOwnerRehearsal(accepted);
+  const auto previous_file = std::filesystem::path(output_prefix.string() + ".obj");
+  const auto original_bytes = ReadRehearsalOutput(previous_file);
+  const auto source_site = first_source.worst_triangle_sample_uv;
+  const auto factory = [source_site]() -> std::unique_ptr<Quadtree> {
+    std::unique_ptr<Quadtree> tree;
+    const auto trial = TrialConnectedAftBand(source_site, &tree);
+    Require(trial.admitted_uv_disk && tree && trial.leaves == 28 &&
+                trial.quads == 62 && trial.uv_area == 0.328125L,
+            "Owner rehearsal successor differs from the real native error-selected band");
+    return tree;
+  };
+  unsigned injected_failures = 0;
+  for (unsigned stage = 0; stage < 5; ++stage) {
+    try {
+      if (stage == 0)
+        throw PublicationFailure("Injected owner trial failure before native reconstruction");
+      auto layout = Generate(patch, stage == 1, factory);
+      CheckTypedIncidence(*layout.mesh, layout);
+      Require(layout.quads == 62 && layout.mesh->GetNumberNos() == 93 &&
+                  layout.faces.size() == 106,
+              "Owner transaction trial successor is not the genuine typed physical band");
+      auto trial = CloneTypedHistory(*layout.mesh, layout, patch, stage == 2 ? 7 : -1);
+      CheckTypedIncidence(*trial, layout);
+      if (stage == 3) {
+        // A back observer may be prepared without adopting the forward owner.
+        trial->SetPatch(&patch);
+        throw PublicationFailure("Injected failure after back-observer staging");
+      }
+      if (stage == 4)
+        throw PublicationFailure("Injected failure immediately before noexcept owner swap");
+      throw std::runtime_error("Physical owner failure injection did not fire");
+    } catch (const PublicationFailure&) {
+      ++injected_failures;
+    }
+    RequireOwnerRehearsalUnchanged(patch, witness);
+    Require(ReadRehearsalOutput(previous_file) == original_bytes,
+            "Failed physical transaction altered accepted OBJ output bytes");
+  }
+  Require(injected_failures == 5,
+          "Accepted physical owner rehearsal did not reject every injected failure");
+
+  auto physical = Generate(patch, false, factory);
+  Require(physical.quads == 62 && physical.mesh->GetNumberNos() == 93 &&
+              physical.faces.size() == 106,
+          "Owner rehearsal success is not the actual next native AFT physical band");
+  auto staged = CloneTypedHistory(*physical.mesh, physical, patch, -1);
+  CheckTypedIncidence(*staged, physical);
+  Require(staged->GetNoh(0) != witness.nodes.front() &&
+              staged->GetElement(0) != witness.elements.front(),
+          "Replacement typed physical history aliases the accepted owner");
+
+  // No filesystem mutation or unknown-throwing work occurs after this point.
+  // This real patch swap is deliberately REVERSED before the function returns.
+  {
+    struct RestorePrevious final {
+      PatchBezier& patch;
+      SubMesh* prior;
+      ~RestorePrevious() noexcept { patch.SetSubMesh(prior); }
+    } restore{patch, &accepted};
+    staged->SetPatch(&patch);
+    patch.SetSubMesh(staged.get());
+    Require(patch.GetSubMesh() == staged.get() &&
+                staged->GetPatch() == &patch,
+            "Noexcept owner rehearsal could not temporarily adopt the real typed successor");
+    CheckTypedIncidence(*staged, physical);
+    patch.SetSubMesh(&accepted);
+    staged->SetPatch(nullptr);
+  }
+  RequireOwnerRehearsalUnchanged(patch, witness);
+  Require(ReadRehearsalOutput(previous_file) == original_bytes,
+          "Temporary owner swap modified the original published physical OBJ");
+  CheckTypedIncidence(*staged, physical);
+  std::cout << "QUAD_OWNER_TRANSACTION_REHEARSAL"
+            << " source=published_previous_P1_real_AFT"
+            << " prior_nodes=69 prior_quads=42 prior_triangles=36"
+            << " next_nodes=93 next_quads=62 next_triangles=44"
+            << " injected_failures=" << injected_failures
+            << " temporary_noexcept_swaps=1"
+            << " reverted_to_previous_owner=1"
+            << " ordered_node_observers_preserved=1"
+            << " previous_obj_bytes_unchanged=1"
+            << " accepted_adaptive_epochs=0\n";
+}
+
 } // namespace
 
 int RunControlledPatch(const application::RuntimeConfig& config) {
@@ -1359,6 +1510,8 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
             << " nodes=" << accepted->GetNumberNos()
             << " boundary=16 UV_disk=1 overlap=0 min_alignment=" << candidate.min_alignment
             << " min_facet_quality=" << candidate.min_quality << " ids_unique=1 published=1\n";
+  ProbePhysicalOwnerTransactionRehearsal(*patch, *accepted, candidate,
+                                        mixed_residual, config.output_prefix);
   if (config.quad_verify_rollback) {
     auto* old = accepted.get();
     auto* node = old->GetNoh(0);
