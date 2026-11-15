@@ -51,6 +51,18 @@ Individual, source-specific native CAD image receipts:
 4. `BSPLINE` source faces (S40) may be higher degree, rational or trimmed, even if the name alone is insufficient to classify their exact polynomial degree. Inspect poles/knots/weights and trimming boundaries prior to a bicubic exactness/approximation decision.
 5. Candidate success or failure is recorded **per source face and curve**, and must include trimmed-loop combinatorics and source unit scale (mm). No silently welded topology is permitted.
 
+## First S3 face-support eligibility check (no patch fitting)
+
+A second native inspection used `BRep_Tool.Surface` on the **actual imported** S40 B-spline faces:
+
+| Native S40 face index (0-based, this importer revision) | Surface degrees (U,V) | Rational surface? | Pole grid | Classification |
+|---|---|---|---|---|
+| 2 | (1,2) | **Yes**; middle weight 0.733212115234 | 2x3 | Generic polynomial bicubic exactness **NOT demonstrated**; requires a rational/approximation decision |
+| 3 | (1,1) | No | 2x2 | Polynomial bilinear supporting surface, degree elevation mathematically possible; trim graph not yet qualified |
+| 11 | (1,1) | No | 2x2 | Polynomial bilinear supporting surface, degree elevation mathematically possible; trim graph not yet qualified |
+
+This confirms that the native classification `BSPLINE` alone is insufficient to decide exact cubic polynomial representability. Cones/cylinders/toroids and the rational S40 face require a declared feature-preserving approximation or decomposition process. An imported STEP surface being geometrically complex does **not** prove an original 3+-face non-manifold junction. No Bezier fit or geometry tolerance claim is made from these degree/weight readings.
+
 ## Reproduction without copying third-party STEP bytes into the repository
 
 Acquire the four pinned originals from their source links above into a local `sources/` directory (external to the repo, respecting per-file rights), then run:
