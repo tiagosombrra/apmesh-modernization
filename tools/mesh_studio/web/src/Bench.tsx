@@ -2,6 +2,9 @@
 import { createRoot } from 'react-dom/client';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Viewer } from './Viewer';
+import type { ViewerHandle } from './Viewer';
+import type { PickObservation, ScriptedOrbitObservation } from './performanceProbe';
+import { chromiumHeapEstimate } from './performanceProbe';
 import type { MeshGeometry } from './contracts';
 import './style.css';
 
@@ -71,6 +74,14 @@ type Result = {
   gpu_memory_bytes: null;
   frame_rate_fps: null;
   result: 'PRELIMINARY_BROWSER_RENDER_OBSERVATION';
+  scripted_camera_orbit: {
+    xyz: ScriptedOrbitObservation;
+    uv: ScriptedOrbitObservation;
+    heap_before_bytes: number | null;
+    heap_after_bytes: number | null;
+    heap_scope: 'CHROMIUM_PERFORMANCE_MEMORY_ESTIMATE_NOT_TOTAL_RAM_OR_VRAM';
+  } | null;
+  last_picker_call: PickObservation | null;
 };
 
 function BrowserBenchmark() {
@@ -83,6 +94,38 @@ function BrowserBenchmark() {
   const [uvDuration, setUvDuration] = useState<number | null>(null);
   const [status, setStatus] = useState('Sem medição');
   const startTime = useRef(0);
+  const xyzViewer = useRef<ViewerHandle>(null);
+  const uvViewer = useRef<ViewerHandle>(null);
+  const runEpoch = useRef(0);
+  const [motion, setMotion] = useState<Result['scripted_camera_orbit']>(null);
+  const [lastPick, setLastPick] = useState<PickObservation | null>(null);
+  const [motionStatus, setMotionStatus] = useState('Não medido');
+  const [runningMotion, setRunningMotion] = useState(false);
+
+  const measureOrbit = async () => {
+    if (!sample || runningMotion || !xyzViewer.current || !uvViewer.current ||
+        xyzDuration === null || uvDuration === null) return;
+    const epoch = ++runEpoch.current;
+    setRunningMotion(true);
+    setMotion(null);
+    setMotionStatus('Executando órbita controlada em ambas as vistas...');
+    const heapBefore = chromiumHeapEstimate();
+    try {
+      // Run sequentially to avoid contending two WebGL scenes for the same frame budget.
+      const xyz = await xyzViewer.current.probeOrbit(24);
+      if (!xyz || epoch !== runEpoch.current) return;
+      const uv = await uvViewer.current.probeOrbit(24);
+      if (!uv || epoch !== runEpoch.current) return;
+      setMotion({ xyz, uv, heap_before_bytes: heapBefore,
+        heap_after_bytes: chromiumHeapEstimate(),
+        heap_scope: 'CHROMIUM_PERFORMANCE_MEMORY_ESTIMATE_NOT_TOTAL_RAM_OR_VRAM' });
+      setMotionStatus('Medição concluída (órbita sintética, não FPS de apresentação GPU).');
+    } catch (error) {
+      if (epoch === runEpoch.current) setMotionStatus(`Erro na medição: ${String(error)}`);
+    } finally {
+      if (epoch === runEpoch.current) setRunningMotion(false);
+    }
+  };
   const onXyz = useCallback(() => {
     if (startTime.current && xyzDuration === null) {
       setXyzDuration(performance.now() - startTime.current);
@@ -106,6 +149,9 @@ function BrowserBenchmark() {
           setXyzDuration(null);
           setUvDuration(null);
           setSelected(null);
+          setMotion(null);
+          setLastPick(null);
+          setMotionStatus('Não medido');
           setShowQuads(true);
           startTime.current = performance.now();
           const next = syntheticScene(count);
@@ -133,6 +179,8 @@ function BrowserBenchmark() {
     gpu_memory_bytes: null,
     frame_rate_fps: null,
     result: 'PRELIMINARY_BROWSER_RENDER_OBSERVATION',
+    scripted_camera_orbit: motion,
+    last_picker_call: lastPick,
   } : null;
   const complete = xyzDuration !== null && uvDuration !== null;
   return (
@@ -147,10 +195,15 @@ function BrowserBenchmark() {
       <select id="cells" data-testid="benchmark-cells" value={count}
         onChange={(event) => {
           // Invalidate the old measurement synchronously before requesting the new scene.
+          runEpoch.current += 1;
           setSample(null);
           setXyzDuration(null);
           setUvDuration(null);
           setSelected(null);
+          setMotion(null);
+          setLastPick(null);
+          setMotionStatus('Não medido');
+          setRunningMotion(false);
           setStatus('Preparando um novo ensaio sintético...');
           setCount(Number(event.target.value));
         }} style={{ maxWidth: 190 }}>
@@ -160,16 +213,28 @@ function BrowserBenchmark() {
         data-testid="benchmark-quad-filter" onChange={(event) => setShowQuads(event.target.checked)} /> Mostrar QUAD</label>
       <label style={{ marginLeft: 15 }}><input type="checkbox" checked={edges}
         data-testid="benchmark-edge-filter" onChange={(event) => setEdges(event.target.checked)} /> Arestas</label>
+      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, marginTop: 16 }}>
+        <button type="button" data-testid="benchmark-run-motion" disabled={!complete || runningMotion}
+          onClick={() => { void measureOrbit(); }} style={{ padding: '9px 14px', cursor: 'pointer' }}>
+          {runningMotion ? 'Medindo órbita...' : 'Medir órbita XYZ + UV (24 quadros por vista)'}
+        </button>
+        <span role="status" data-testid="benchmark-motion-status">{motionStatus}</span>
+      </div>
+      <p style={{ maxWidth: 850, fontSize: 12, color: '#9cbbcc' }}>
+        A órbita registra intervalos requestAnimationFrame → chamada de renderização VTK, não FPS apresentado pela GPU.
+        O picking registra apenas a chamada síncrona vtkCellPicker. A memória JavaScript é uma estimativa do Chromium;
+        VRAM, memória nativa e FPS de interação humana permanecem desconhecidos.
+      </p>
       <p data-testid="benchmark-status" role="status" style={{ color: complete ? '#91dfbf' : '#f6cb8a' }}>
         {complete ? 'As duas cenas foram renderizadas; dados sintéticos.' : status}
       </p>
       {sample && <div className="view-grid" style={{ marginTop: 16 }}>
-        <Viewer key={`r2-xyz-${count}`} space="xyz" modelId={`SYNTHETIC_${count}`}
+        <Viewer ref={xyzViewer} key={`r2-xyz-${count}`} space="xyz" modelId={`SYNTHETIC_${count}`}
           geometry={sample.xyz} showTri={false} showQuad={showQuads} edges={edges}
-          selectedId={selected} onSelect={setSelected} onRendered={onXyz} />
-        <Viewer key={`r2-uv-${count}`} space="uv" modelId={`SYNTHETIC_${count}`}
+          selectedId={selected} onSelect={setSelected} onRendered={onXyz} onPickMeasured={setLastPick} />
+        <Viewer ref={uvViewer} key={`r2-uv-${count}`} space="uv" modelId={`SYNTHETIC_${count}`}
           geometry={sample.uv} showTri={false} showQuad={showQuads} edges={edges}
-          selectedId={selected} onSelect={setSelected} onRendered={onUv} />
+          selectedId={selected} onSelect={setSelected} onRendered={onUv} onPickMeasured={setLastPick} />
       </div>}
       <p data-testid="benchmark-linked-selection">Face sintética selecionada: {selected ?? 'nenhuma'}</p>
       <pre data-testid="benchmark-receipt" style={{ marginTop: 20, whiteSpace: 'pre-wrap', fontSize: 12,

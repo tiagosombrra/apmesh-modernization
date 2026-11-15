@@ -8,6 +8,8 @@ import vtkCellPicker from '@kitware/vtk.js/Rendering/Core/CellPicker';
 import vtkDataArray from '@kitware/vtk.js/Common/Core/DataArray';
 import type { MeshGeometry, Space } from './contracts';
 import type { CameraPose } from './camera';
+import type { PickObservation, ScriptedOrbitObservation } from './performanceProbe';
+import { summarizeScriptedOrbit } from './performanceProbe';
 import { isCameraPose } from './camera';
 import { asVtkCells } from './geometry';
 
@@ -21,19 +23,21 @@ interface ViewerProps {
   selectedId: number | null;
   onSelect: (faceId: number | null) => void;
   onRendered?: () => void;
+  onPickMeasured?: (observation: PickObservation) => void;
 }
 
 export interface ViewerHandle {
   snapshotCamera(): CameraPose | null;
   restoreCamera(pose: CameraPose): boolean;
   resetCamera(): void;
+  probeOrbit(frames: number): Promise<ScriptedOrbitObservation | null>;
 }
 
 type GRW = ReturnType<typeof vtkGenericRenderWindow.newInstance>;
 type Actor = ReturnType<typeof vtkActor.newInstance>;
 
 export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
-  space, geometry, showTri, showQuad, edges, selectedId, onSelect, onRendered,
+  space, geometry, showTri, showQuad, edges, selectedId, onSelect, onRendered, onPickMeasured,
 }, ref) {
   const container = useRef<HTMLDivElement>(null);
   const renderRef = useRef<GRW | null>(null);
@@ -48,6 +52,8 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
   const firstFrameReported = useRef(false);
   const onRenderedRef = useRef(onRendered);
   onRenderedRef.current = onRendered;
+  const onPickMeasuredRef = useRef(onPickMeasured);
+  onPickMeasuredRef.current = onPickMeasured;
   const updateOverlay = useRef<() => void>(() => {});
   onSelectRef.current = onSelect;
   visibleRef.current = { showTri, showQuad, edges };
@@ -106,6 +112,44 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       return true;
     },
     resetCamera,
+    async probeOrbit(frames: number): Promise<ScriptedOrbitObservation | null> {
+      const grw = renderRef.current;
+      if (!grw || !initializedRef.current || !Number.isSafeInteger(frames) ||
+          frames < 8 || frames > 120) return null;
+      const camera = grw.getRenderer().getActiveCamera();
+      const saved = {
+        position: [...camera.getPosition()] as [number, number, number],
+        focal_point: [...camera.getFocalPoint()] as [number, number, number],
+        view_up: [...camera.getViewUp()] as [number, number, number],
+        scale: camera.getParallelScale(),
+        parallel: camera.getParallelProjection(),
+      };
+      const intervals: number[] = [];
+      const started = performance.now();
+      try {
+        for (let i = 0; i < frames; i += 1) {
+          const frameStarted = performance.now();
+          await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+          if (renderRef.current !== grw) return null;
+          // This is scripted camera motion; measure RAF scheduling and VTK render dispatch.
+          camera.azimuth(2.5);
+          camera.orthogonalizeViewUp();
+          grw.getRenderWindow().render();
+          intervals.push(performance.now() - frameStarted);
+        }
+        return summarizeScriptedOrbit(intervals, performance.now() - started);
+      } finally {
+        // Do not alter the user's persisted camera as a side effect of measurement.
+        if (renderRef.current === grw) {
+          camera.setPosition(...saved.position);
+          camera.setFocalPoint(...saved.focal_point);
+          camera.setViewUp(...saved.view_up);
+          camera.setParallelScale(saved.scale);
+          camera.setParallelProjection(saved.parallel);
+          grw.getRenderWindow().render();
+        }
+      }
+    },
   }));
 
   useEffect(() => {
@@ -176,9 +220,17 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       }
       pointerDown = null;
       const rect = host.getBoundingClientRect();
+      const started = performance.now();
       picker.pick([event.clientX - rect.left, rect.height - (event.clientY - rect.top), 0], renderer);
+      const pickerMs = performance.now() - started;
       const id = picker.getCellId();
-      onSelectRef.current(id >= 0 ? sourceIds.current[id] ?? null : null);
+      const sourceId = id >= 0 ? sourceIds.current[id] ?? null : null;
+      onSelectRef.current(sourceId);
+      onPickMeasuredRef.current?.({
+        space, source_face_id: sourceId, hit: sourceId !== null,
+        picker_wall_ms: Math.round(pickerMs * 1000) / 1000,
+        scope: 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY',
+      });
     };
     host.addEventListener('pointerdown', down);
     host.addEventListener('click', click);

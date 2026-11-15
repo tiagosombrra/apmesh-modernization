@@ -2,6 +2,8 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
+  // Serialize browser GPU tests to prevent concurrent WebGL load from biasing results.
+  workers: 1,
   use: { baseURL: 'http://127.0.0.1:5173', browserName: 'chromium' },
   webServer: [
     { command: 'cd ../../.. && python -m uvicorn tools.mesh_studio.web_api:app --host 127.0.0.1 --port 8765',
