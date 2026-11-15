@@ -743,6 +743,30 @@ def verify_same_site_fixed_grid_error(original_path, candidate_path):
             "adaptive_epochs": 0, "continuous_error_bound": False}
 
 
+def verify_owner_transaction_rehearsal(stdout):
+    # Accept only the reversible transaction proof, never a claimed adaptive epoch.
+    records = [line for line in stdout.decode().splitlines()
+               if line.startswith("QUAD_OWNER_TRANSACTION_REHEARSAL ")]
+    require(len(records) == 1, "Owner transaction rehearsal missing or duplicated")
+    values = dict(item.split("=", 1) for item in records[0].split()[1:])
+    expected = {
+        "source": "published_previous_P1_real_AFT",
+        "prior_nodes": "69", "prior_quads": "42", "prior_triangles": "36",
+        "next_nodes": "93", "next_quads": "62", "next_triangles": "44",
+        "injected_failures": "5", "temporary_noexcept_swaps": "1",
+        "reverted_to_previous_owner": "1",
+        "ordered_node_observers_preserved": "1",
+        "previous_obj_bytes_unchanged": "1", "accepted_adaptive_epochs": "0",
+    }
+    require(values == expected,
+            "Reversible real QUAD/TRI owner proof has missing, foreign or false claims")
+    return {"previous_real_owner": [69, 42, 36],
+            "replacement_real_owner": [93, 62, 44],
+            "injected_faults_rejected": 5,
+            "owner_swap_reverted": True,
+            "accepted_adaptive_epochs": 0}
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -784,6 +808,7 @@ def main():
     require(b"QUAD_TYPED_HISTORY_CLONE accepted_clone=1 partial_failure_rollback=1" in r.stdout and
             b"source_observers_preserved=1 adaptive_epochs=0" in r.stdout,
             "Typed QUAD/TRI history clone or rollback guard did not run")
+    owner_rehearsal = verify_owner_transaction_rehearsal(r.stdout)
     result = audit(root/"accepted.obj")
     metric = verify_mixed_curvature(r.stdout, root/"accepted.obj")
     quality = verify_quad_physical_quality(r.stdout, root/"accepted.obj")
@@ -805,6 +830,8 @@ def main():
             "Rollback case did not preserve the typed history probe")
     require(r.returncode == 1 and b"QUAD_ROLLBACK preserved=1 previous_nonempty=1" in r.stdout,
             "Nonempty physical publication rollback not demonstrated")
+    require(verify_owner_transaction_rehearsal(r.stdout) == owner_rehearsal,
+            "Rollback command changed the five-fault owner transaction rehearsal")
     require(audit(root/"rollback.obj") == result, "Rollback lost prior valid output")
     require(verify_mixed_curvature(r.stdout, root/"rollback.obj") == metric,
             "Rollback changed mixed curvature metrics")
@@ -838,6 +865,7 @@ def main():
               "result": result, "rollback_nonempty": True,
               "native_AFT": True, "independent_Bezier_oracle": True,
               "typed_history_clone_guard": True,
+              "reversible_owner_transaction_rehearsal": owner_rehearsal,
               "typed_mixed_curvature_diagnostic": metric,
               "typed_physical_quad_quality": quality,
               "mixed_surface_residual": residual,
