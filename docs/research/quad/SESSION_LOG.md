@@ -2225,3 +2225,44 @@ no new native tests or CI campaign were run. Apply two-file whitespace/staged
 checks before committing this documentation handoff. The exact next P2d-1c4b
 action and real-boundary integration obligation remain as previously recorded;
 adaptive_epochs=0 and R3/M7 remain open.
+
+## 2026-11-15 — prioritize original real-boundary application integration
+
+The user requested the implementation sequence after questioning the fixed16
+boundary. Reviewed canonical `2b5eadfdbedd1b4169d4866c1680ecbe1f666b98`,
+unchanged main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`, current source,
+state/roadmap and latest handoff. PR214 remains draft at 7cd5014 and PR225
+remains separate at 6873195. Latest research merge CI #43705007549 is still
+successful; no source integration or new native/CI campaign occurred here.
+
+Adjusted execution order: one active functional delivery is now original
+real-curve boundary integration into actual opt-in curved manifold QUAD/AFT
+generation and physical publication. The source-driven native boundary/tree
+must replace both fixed quarter-parameter sampling and prescribed tree edits
+in the new path, while fixed16 stays a named regression. Reuse original curve
+policies/configuration and compatible reviewed PR214 helpers, not its whole
+draft or a new discretizer. Preserve default TRI and all current evidence.
+
+Added REAL_BOUNDARY_APPLICATION_PLAN_20261115.md with finite source identity,
+nonuniform/reversed traversal, seam/UV/XYZ, negative/rollback and exact-revision
+acceptance gates. STATE.md and IMPLEMENTATION_ROADMAP.md now put this delivery
+before P2d-1c4b; accepted-history/publication, recovery, scientific selection
+and two actual successive accepted mixed transitions remain required afterward.
+No new numerical policy is approved. Whole-model high-valence sheet decisions,
+1993 equivalence, all-QUAD and anisotropy keep their separate gates.
+
+Reconciled MILESTONE_STATUS.md: its old priority still named completed P2d-1b2
+as next, and its M7 row incorrectly said physical AFT reconstruction was absent.
+The current M5/M7 rows now distinguish detached real-boundary trials, live
+fixed16 application, physically staged candidates and zero accepted epochs.
+No prior append-only history or negative evidence was removed.
+
+Exact next action: trace original GeneratorAdaptive::AdaptCurve inputs/outputs
+on the same curved source/initial state/configuration, choose compatible source
+boundary helpers and implement the bridge in one feature PR to quad-templates.
+No further fixed16 candidate expansion is the next functional delivery.
+This session changes five documentation files only. Selected whitespace and
+staged checks passed for all five files; all five added relative links resolve.
+Commit the checkpoint and verify remote readback before claiming persistence.
+Implementation/native gates remain unexecuted for the new delivery;
+adaptive_epochs=0 and R3/M7 issue221 OPEN.

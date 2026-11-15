@@ -2,9 +2,32 @@
 
 Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
 Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## P2d-1c4a integrated; P2d-1c4b is the next admission gate
+## Active: real-boundary QUAD/AFT application integration
 
-### 2026-11-15 status review and local visualization
+### 2026-11-15 execution order adjustment
+
+**One active work item:** integrate the original serial curve-discretization
+workflow into the live opt-in curved manifold patch application, including
+source-derived boundary/tree, typed QUAD interior, original exterior AFT,
+physical publication and independent source-boundary checks. Keep fixed16 as
+a regression. This is a planned implementation, not a measured new capability.
+The [finite delivery plan](REAL_BOUNDARY_APPLICATION_PLAN_20261115.md) specifies
+reuse, source contracts, negative controls and exact-revision closure gates.
+
+**Exact next action:** trace the original `GeneratorAdaptive::AdaptCurve`
+inputs/outputs for the same initial curved source/configuration; select only
+compatible PR214 boundary helpers, then implement the source-partition bridge
+in one feature PR targeting `quad-templates`. Preserve original policies and
+actual source parameters/IDs/XYZ; replace the hardcoded boundary/tree contract
+in the new path rather than inventing another discretizer or forcing counts.
+
+P2d-1c4a stays integrated and qualified within its reversible-rehearsal scope.
+P2d-1c4b accepted-history/publication work follows the real-boundary application
+gate; its approved selection and two-distinct-accepted-transition requirements
+are retained. `adaptive_epochs=0`, R3/M7 #221 open. No code or native tests were
+changed/run by this sequencing checkpoint; no new scientific policy approved.
+
+### Earlier 2026-11-15 status review and local visualization
 
 **Boundary/AFT clarification:** the visualized controlled case uses fixed
 quarter-parameter samples (16 boundary intervals), not production `AdaptCurve`.
@@ -33,7 +56,7 @@ the existing normal/rollback receipt verifiers rejected eight forged records
 per run. No local native build, CTest, sanitizer or full historical oracle
 campaign was run. See [bounded review](STATUS_REVIEW_20261115.md).
 
-**Exact next action:** specify P2d-1c4b accepted-state ownership/archive,
+**Subsequent accepted-epoch gate:** specify P2d-1c4b accepted-state ownership/archive,
 source fingerprint and memory/file publication failure matrix; record the
 advisor-approved error/quality/complexity selection policy before accepting
 two distinct transitions from the actual preceding accepted mixed states.
@@ -91,7 +114,7 @@ not an adopted second mixed epoch; no replacement next-OBJ output is
 atomically published and no research-approved source-error/quality/
 complexity choice has been adopted. `adaptive_epochs=0`; R3/M7
 [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
-OPEN. Next P2d-1c4b needs the accepted mixed history/owner
+OPEN. After real-boundary application integration, P2d-1c4b needs the accepted mixed history/owner
 transaction, archived typed previous state, strong-exception-safe
 filesystem and memory publication, explicit prior-approved selection,
 and two genuinely source-state-driven distinct accepted changes.

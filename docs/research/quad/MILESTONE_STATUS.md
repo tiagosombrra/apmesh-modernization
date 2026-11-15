@@ -1,25 +1,24 @@
 # APMESH QUAD — quadro de acompanhamento dos marcos
 
-**Updated:** 2026-11-14. [Authoritative plan](IMPLEMENTATION_ROADMAP.md) and
+**Updated:** 2026-11-15. [Authoritative plan](IMPLEMENTATION_ROADMAP.md) and
 [current state](STATE.md) belong to `quad-templates`. Bounded P0 repair:
 [PR216](https://github.com/tiagosombrra/apmesh-modernization/pull/216), merged.
 The larger [PR214](https://github.com/tiagosombrra/apmesh-modernization/pull/214)
 remains draft/unmerged. Main and the default TRI behavior are preserved.
 
-**Execution priority — 2026-11-14:** P0/P1 integrated through PR216/217.
-Bounded P2a/P2b/P2c research prerequisites integrated through
-[PR218](https://github.com/tiagosombrra/apmesh-modernization/pull/218),
-[PR219](https://github.com/tiagosombrra/apmesh-modernization/pull/219),
-[PR220](https://github.com/tiagosombrra/apmesh-modernization/pull/220).
-P2d-0/P2d-1a and P2d-1b0/P2d-1b1 controlled source-tree refinement
-are integrated through [PR223](https://github.com/tiagosombrra/apmesh-modernization/pull/223),
-[PR226](https://github.com/tiagosombrra/apmesh-modernization/pull/226),
-[PR227](https://github.com/tiagosombrra/apmesh-modernization/pull/227) and
-[PR228](https://github.com/tiagosombrra/apmesh-modernization/pull/228).
-Next is **P2d-1b2 full original AFT/typed physical candidate**, tracked in
-[issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
-and the [finite queue](IMPLEMENTATION_ROADMAP.md). TRI-only accepted epochs,
-detached charts and clone/quality probes are not accepted mixed epochs.
+**Execution priority — 2026-11-15:** original real-boundary application
+integration is the one active work item. Reuse the original curve workflow,
+source-derived boundary/tree and existing QUAD/original-AFT closure in the
+live opt-in curved manifold case; independently verify physical output and
+retain fixed16 as regression. See the [finite plan](REAL_BOUNDARY_APPLICATION_PLAN_20261115.md).
+
+P0/P1 and bounded P2 prerequisites through PR236 remain integrated within
+their measured scopes. Exact PR236 feature and research-merge CI both passed
+4/4; staged physical candidates and the reversible owner rehearsal still
+record zero accepted adaptive epochs. P2d-1c4b follows the real-boundary
+application gate with its durable history, publication/recovery and approved
+selection requirements. R3/M7 [issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
+remains open. The new integration is planned, not yet implemented or measured.
 
 ## Visão global, sem percentuais fictícios
 
@@ -30,9 +29,9 @@ detached charts and clone/quality probes are not accepted mixed epochs.
 | **M2 — Topologia QUAD UV** | Vértices, arestas, validações e 2:1 | Construtores e contratos de UV/exterior QUAD+AFT testados em escopo de pesquisa | Campanha completa metamórfica/fuzz, transições e conformidade abrangente |
 | **M3 — Opt-in selector/emitter** | Default TRI and typed interior QUAD | PR217 runs the controlled curved Bezier QUAD/AFT application with explicit build/case; scoped Linux/Windows and TRI-preservation checks pass | Default build remains TRI; broader application and scientific admission remain open beyond this controlled case. |
 | **M4 — Physical QUAD elements** | Four-node QUAD, UV/XYZ, area/normal/ownership | R2c-9: 32 detached original Eistute/Book charts, 1,744 physical nodes, 512 QUAD +1,456 AFT TRI; scoped local orientation/quality checks | P0 UV convexity repair integrated through PR216 with scoped85CTest/527Python and60cases/profile; full M4 remains open. Native sanitizers, adversarial coverage and broader geometry remain required. |
-| **M5 — Contorno QUAD/AFT** | Malha híbrida por patch, sem buracos/overlap | **R2c-10:** OBJ exportados e independentemente conferidos, fontes com as quatro curvas adaptadas; AFT TRI exterior | Comparar regra de contorno de 1993, variantes all-quad e qualidade sob outros orçamentos |
+| **M5 — QUAD/AFT boundary** | Hybrid patch mesh without holes or overlap | PR214 R2c7/R2c9/R2c10 record detached original all-side adapted boundaries and physical charts; PR217 runs a live fixed16 QUAD/AFT patch | ACTIVE: integrate the original real curve partition and compatible tree into the live CLI with independent boundary/seam/physical checks. Detached source trials do not satisfy this application gate. Historical 1993 boundary equivalence, all-QUAD variants and broader quality remain separate. |
 | **M6 — Multipatch e non-manifold** | Incidência, nós e arestas físicos compatíveis entre patches | **R2c-6/7:** 98 curvas originais sincronizadas, 128 lados/944 arestas de fronteira; valências 4 e 28; contornos locais preservados | **BLOQUEIO científico:** política aprovada por Creto/Bento sobre sheets/junções e compartilhamento físico em valência 4/28; geometria coincidente não autoriza soldagem |
-| **M7 — Mixed-element adaptation** | At least two accepted epochs using the actual QUAD/TRI mesh as history, with retry/rollback and typed scientific evaluation | P2a ownership, P2b mixed links, P2c quality, P2d-0 synthetic lineage, P2d-1a physical source error and P2d-1b0/1 source-driven native tree edits pass exact-feature Linux/Windows CI. Real cells6/7/9 form a connected 62-QUAD UV disk with 28 leaves and 32.8125% QUAD UV coverage; original physical OBJ unchanged. **No native AFT retriangulation/physical SubMesh was completed for that new tree and no adapted epochs were accepted.** | **OPEN:** No scientifically selected mixed curvature/quality acceptance and no two distinct accepted adaptive QUAD/TRI epochs. P2d [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221) is next; do not count duplicate clones or TRI epochs. |
+| **M7 — Mixed-element adaptation** | At least two accepted epochs using actual QUAD/TRI history, with retry/rollback and typed evaluation | Bounded prerequisites through PR236 include physical AFT candidate reconstruction, independent source-error/Pareto witnesses and a five-fault reversible owner rehearsal; zero accepted adaptive epochs | OPEN: first qualify live real-boundary application integration, then P2d-1c4b durable typed accepted history and memory/file recovery with approved selection. Require two distinct transitions from the actual preceding accepted mixed states; do not count detached proposals, clones, reversed pointer swaps or TRI epochs. |
 | **M8 — Experimentos e modelos** | Comparação TRI × quad-dominant × alternativas, custo/erro/qualidade | Eistute e Book com entradas originais SHA-256 e geração física de pesquisa; candidatos externos mapeados na [issue #215](https://github.com/tiagosombrra/apmesh-modernization/issues/215) | Ampliar corpus e métricas, exportações/auditoria independente, repetibilidade e ablação em igualdade de erro |
 | **M9 — Anisotropia** | Campo métrico e comparação anisotrópica | Fora do escopo certificado | Opcional para primeiro artigo; ainda não implementado nem demonstrado cientificamente |
 
