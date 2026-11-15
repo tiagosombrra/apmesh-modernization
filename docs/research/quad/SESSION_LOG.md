@@ -2266,3 +2266,17 @@ staged checks passed for all five files; all five added relative links resolve.
 Commit the checkpoint and verify remote readback before claiming persistence.
 Implementation/native gates remain unexecuted for the new delivery;
 adaptive_epochs=0 and R3/M7 issue221 OPEN.
+
+## 2026-11-15 — functional delivery priority confirmed
+
+The user explicitly prioritized real-curve QUAD/AFT application integration
+over continued fixed-fixture exploration and repeated planning/audits. Updated
+STATE.md: isolate concrete defects or necessary prerequisites, correct and
+validate them within a bounded scope, then return directly to this functional
+objective. Scientific authorization, original policies, ownership contracts,
+negative evidence and mandatory closure gates remain unchanged. The exact next
+implementation action remains the real source-partition bridge in one feature
+PR. No source changes, native tests or new CI campaign occurred in this
+preference checkpoint; validate these two documentation files and verify remote
+readback after commit. Base b8fa113; main remains f6050ec. R3/M7 open,
+adaptive_epochs=0. No additional experiment or milestone was opened.

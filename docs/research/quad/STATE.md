@@ -4,6 +4,13 @@ Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
 Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 ## Active: real-boundary QUAD/AFT application integration
 
+**Execution priority:** deliver this functional integration. Isolate a concrete
+defect or necessary prerequisite when it blocks progress, make the bounded
+correction and required validation, then return directly to this objective.
+Further fixed-fixture experiments, repeated audits or planning are not the
+default successor. Preserve scientific authorization, negative evidence and
+all required closure gates; report delivered capability and remaining work.
+
 ### 2026-11-15 execution order adjustment
 
 **One active work item:** integrate the original serial curve-discretization
