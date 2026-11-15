@@ -56,6 +56,23 @@ Research merge and post-merge tests are **not performed**. `mixed_adaptive_epoch
 R3/M7 #221 remains OPEN. Global welding, production mixed postprocessing,
 1993 equivalence and wider memory/scientific coverage remain separate gates.
 
+### 2026-11-15 clarification: source adaptation precedes one mixed generation
+
+The Blender scene is one mixed layout built from source step 2, not a sequence
+of accepted QUAD-driven refinements. `RunRealBoundaryPatch` first runs the
+original TRI Generator through its configured adaptation attempts, then selects
+the last locally selected curve/tree snapshot with a complete global outcome
+and generates QUAD/AFT once. Recorded TRI source steps 0 and 1 each have four
+boundary intervals and four triangles; step 2 has twelve boundary intervals
+and 28 triangles and is globally rejected. The later mixed export has 37 nodes,
+16 QUAD and 28 AFT TRI; its source boundary is inherited from that step 2.
+There is no feedback from this mixed mesh into the preceding curve adaptation.
+The previous user-facing description overstated completion: real source reuse
+is implemented, but the end-to-end coarse-to-fine mixed adaptive loop is not.
+Integration review must retain this distinction; the queued accepted-history,
+mixed curvature/error and approved selection gates remain necessary. No new
+algorithm, policy or native qualification was performed for this clarification.
+
 ### Earlier 2026-11-15 status review and local visualization
 
 **Boundary/AFT clarification:** the visualized controlled case uses fixed

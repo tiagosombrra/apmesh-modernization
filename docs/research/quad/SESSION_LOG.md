@@ -2355,3 +2355,30 @@ evidence references. Doxyfile excludes `*/build/*`. This is not a successful
 documentation build or a new code failure; required integration documentation
 checks remain pending from a normally located checkout. Staged whitespace,
 JSON syntax and changed-document local targets are checked separately.
+
+## 2026-11-15 ? clarify the actual source-to-mixed execution sequence
+
+The user questioned why the displayed mesh did not show progressive curve
+refinement. Verified exact feature 79828fc source/config and retained Windows
+reference artifacts; no new native execution. `RunRealBoundaryPatch` runs the
+original TRI Generator first, captures curve/native-tree attempts, selects the
+last locally selected source with a complete global outcome, then calls mixed
+Generate once. Source-step progression is 0: five nodes/four TRI/four boundary
+intervals; 1: five/four/four; 2: 21/28/twelve. Step 2 is globally rejected under
+the original criterion. The displayed mixed result is 37 nodes/16 QUAD/28 AFT
+TRI using that step-2 boundary, not a succession of mixed accepted states.
+Confirmed counts by parsing retained OBJ faces and counting singly incident
+undirected edges; checked the OBJ source header and RunRealBoundaryPatch.
+
+Corrected the user-facing completion claim: actual curve-discretization reuse
+works, but curve refinement is currently driven by the preceding TRI reference,
+not by curvature/error on the newly generated mixed mesh. Full coarse-to-fine
+mixed feedback remains unimplemented. STATE now states this explicitly. No
+formula, code, acceptance policy, experimental scope or prior failure changed.
+Remote research e651ec2, main ef40c0f and feature 79828fc were rechecked; PR238
+remains open with four successful exact-feature jobs. This explanation does not
+rerun or newly certify native, sanitizer, Doxygen or scientific gates.
+Next: review the bounded bridge with these limits, integrate only under required
+gates, and continue the queued accepted-history/mixed-feedback work with its
+scientific approvals. Do not equate one adapted-source export with a completed
+adaptive mixed generator.
