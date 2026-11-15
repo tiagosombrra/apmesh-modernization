@@ -9,10 +9,19 @@ PR216 with its scoped exact-candidate/research-merge gates. Controlled P1/R2 is 
 P2a (PR218), P2b (PR219), P2c (PR220), P2d-0 (PR223), P2d-1a (PR226),
 P2d-1b0 (PR227), P2d-1b1 (PR228), physically staged P2d-1b2 (PR229) and
 independent same-site P2d-1b3 (PR231) are integrated bounded experiments.
-**P2d-1c0** is an isolated [draft PR232](https://github.com/tiagosombrra/apmesh-modernization/pull/232)
-testing second residual-driven boundary-band topology on a source-only dyadic
-grid, not yet genuine native Quadtree/AFT physical reconstruction. Real
-previous-mesh-driven mixed accepted epochs remain [R3/M7 issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221).
+P2d-1c0 [PR232](https://github.com/tiagosombrra/apmesh-modernization/pull/232),
+P2d-1c1 [PR233](https://github.com/tiagosombrra/apmesh-modernization/pull/233),
+P2d-1c2 [PR234](https://github.com/tiagosombrra/apmesh-modernization/pull/234)
+and P2d-1c3 [PR235](https://github.com/tiagosombrra/apmesh-modernization/pull/235)
+are integrated **bounded** stages: independent source-grid topology,
+actual native Quadtree source trials, full original AFT physical
+QUAD/TRI second-stage candidates, and independent real-OBJ Pareto
+analysis, respectively. P2d-1c4a [draft PR236](https://github.com/tiagosombrra/apmesh-modernization/pull/236)
+is a **separate fault-injected reversible physical owner rehearsal**,
+not a scientifically adopted new mixed state; full exact-source CI
+is still required. True previously **accepted** source-driven adapted
+mixed epochs remain [R3/M7 issue #221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
+OPEN with `adaptive_epochs=0`.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 
