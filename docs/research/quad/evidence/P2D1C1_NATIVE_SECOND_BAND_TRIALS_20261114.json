@@ -1,0 +1,74 @@
+{
+  "schema": "apmesh.quad.p2d1c1.original_native_second_band.v1",
+  "date": "2026-11-14",
+  "research_parent": "quad-templates",
+  "source_sha": "7b536dc901cae1e8b9410f6fbd9f3540c20dba09",
+  "merge_sha": "15a57f3604c9fc8b072762ed10f3219aa12c9ad7",
+  "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/233",
+  "ci_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43624756858",
+  "ci": {
+    "jobs": "4/4 success",
+    "native_linux": "18/18",
+    "native_windows": "18/18",
+    "controlled_app_linux_windows": "success",
+    "linux_asan_ubsan_leak": "success",
+    "root_ctest": "85/85",
+    "python_tooling": "527/527",
+    "eistute_book_frozen_tri": "success"
+  },
+  "previous_staged_physical": {
+    "nodes": 93,
+    "quads": 62,
+    "triangles": 44,
+    "source_boundary_edges": 16,
+    "source_worst_aft_face": 103,
+    "source_worst_aft_uv": [
+      0.8,
+      0.1
+    ],
+    "accepted_epoch": false
+  },
+  "native_source_variants": [
+    {
+      "variant": "corner",
+      "leaves": 31,
+      "eligible_quad_uv_area": 0.34375,
+      "emitted_uv_quads": 0,
+      "disk_admitted": false
+    },
+    {
+      "variant": "west",
+      "leaves": 34,
+      "eligible_quad_uv_area": 0.375,
+      "emitted_uv_quads": 75,
+      "disk_admitted": true
+    },
+    {
+      "variant": "north",
+      "leaves": 34,
+      "eligible_quad_uv_area": 0.375,
+      "emitted_uv_quads": 71,
+      "disk_admitted": true
+    },
+    {
+      "variant": "both",
+      "leaves": 37,
+      "eligible_quad_uv_area": 0.40625,
+      "emitted_uv_quads": 82,
+      "disk_admitted": true
+    }
+  ],
+  "first_attempt_negative": {
+    "workflow": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43624612764",
+    "failure": "Legacy Vertex::getX/getY accessors non-const; fixed at 7b536dc9",
+    "not_counted_as_pass": true
+  },
+  "limitations": [
+    "Actual original native Quadtree and EmitLeafQuads only, not second stage original AFT retriangulation",
+    "Source-specific fixed16 single Bezier model; source native leaf ids not inferred from source-grid coordinates",
+    "No accepted mixed history, no physical third candidate, no scientific error quality complexity policy"
+  ],
+  "adaptive_epochs": 0,
+  "main_sha_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "next_draft_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/234"
+}
