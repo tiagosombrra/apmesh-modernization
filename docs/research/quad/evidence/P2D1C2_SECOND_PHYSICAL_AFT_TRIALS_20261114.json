@@ -1,0 +1,105 @@
+{
+  "schema": "apmesh.quad.p2d1c2.original_aft_second_physical_candidates.v1",
+  "date": "2026-11-14",
+  "milestone": "P2d-1c2 source-specific physical candidate research, no adaptive acceptance",
+  "pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/234",
+  "exact_feature_sha": "32e4653ff80947498c39953ce53f50af618203e9",
+  "ci_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43663198795",
+  "ci_observation": "Native Linux, Windows, Linux sanitizer and frozen TRI science completed successfully; Linux root baseline/tooling still running when first evidence drafted",
+  "merged": false,
+  "parent_research_merge_sha": "15a57f3604c9fc8b072762ed10f3219aa12c9ad7",
+  "controlled_source": "Models3d::ModelCurvaBezier / fixed16 research policy",
+  "baseline_first_physical": {
+    "nodes": 93,
+    "quads": 62,
+    "triangles": 44,
+    "source_boundary_edges": 16,
+    "quad_uv_area": 0.328125,
+    "max_xyz_4096": 0.05160741345747398,
+    "rms_uv_4096": 0.012518000838243337,
+    "rms_source_area_4096": 0.011810324643012932,
+    "obj_sha256": "76b0b4defecc5d534815fb9f41e1405653597a4a0bee6cc7b722ec2460d7afd6"
+  },
+  "second_stage_selection": {
+    "selected_from": "staged real first physical candidate AFT maximum sampled residual",
+    "worst_aft_face": 103,
+    "uv": [
+      0.8,
+      0.1
+    ],
+    "source_level2_grid_cell": [
+      3,
+      0
+    ]
+  },
+  "alternatives": [
+    {
+      "variant": "corner",
+      "status": "rejected",
+      "leaves": 31,
+      "physical_obj": false,
+      "eligible_quad_uv_area": 0.34375
+    },
+    {
+      "variant": "west",
+      "status": "staged_unaccepted",
+      "nodes": 109,
+      "quads": 75,
+      "triangles": 50,
+      "faces": 125,
+      "leaves": 34,
+      "quad_uv_area": 0.375,
+      "max_xyz_4096": 0.02626856930484137,
+      "rms_uv_4096": 0.01018989079529557,
+      "rms_source_area_4096": 0.009960083459157833,
+      "min_quad_scaled_jacobian": 0.567009347028317,
+      "min_quad_warpage_cosine": 0.9970126470841612,
+      "max_quad_edge_ratio": 3.3096530574236422,
+      "obj_sha256": "ca08918f6d71fa672de22a72eb6fef7c106c90c7fd02d40cb19852972b4274ee"
+    },
+    {
+      "variant": "north",
+      "status": "staged_unaccepted",
+      "nodes": 107,
+      "quads": 71,
+      "triangles": 54,
+      "faces": 125,
+      "leaves": 34,
+      "quad_uv_area": 0.375,
+      "max_xyz_4096": 0.02626856930484137,
+      "rms_uv_4096": 0.009580048643537741,
+      "rms_source_area_4096": 0.00923331923514389,
+      "min_quad_scaled_jacobian": 0.567009347028317,
+      "min_quad_warpage_cosine": 0.9970126470841612,
+      "max_quad_edge_ratio": 3.3096530574236422,
+      "obj_sha256": "6eb4faedeaab44fbfa3d4cb2ca1ea618a3dca513dc241871c57bcc7eae26d500"
+    },
+    {
+      "variant": "both",
+      "status": "staged_unaccepted",
+      "nodes": 117,
+      "quads": 82,
+      "triangles": 52,
+      "faces": 134,
+      "leaves": 37,
+      "quad_uv_area": 0.40625,
+      "max_xyz_4096": 0.02626856930484137,
+      "rms_uv_4096": 0.009459332493753534,
+      "rms_source_area_4096": 0.009155128673187646,
+      "min_quad_scaled_jacobian": 0.567009347028317,
+      "min_quad_warpage_cosine": 0.9970126470841612,
+      "max_quad_edge_ratio": 3.3096530574236422,
+      "obj_sha256": "b77afb530724f38ff81f0f3e7f06fca6c8dc0cb4a15562ce933a4013724bd36c"
+    }
+  ],
+  "cross_platform": "Linux GCC, Windows MSVC and Linux ASan/UBSan controlled application physical candidate hashes/metrics reproduced; original Eistute/Book TRI scientific parity success",
+  "admission": "No new accepted Patch/SubMesh owner; staged candidate-only OBJ, source previous physical mesh remains unchanged; default production TRI unchanged",
+  "scientific_limits": [
+    "All errors computed as discrete 4096-site same-UV source geometry interpolation, not continuous supremum or FEM solution error",
+    "No pre-registered quality+complexity acceptance objective or error estimator for actual PDE adaptivity",
+    "Fixed16 chart boundary, not production Adapter::AdaptCurve",
+    "Single original patch; no model-global high valence nonmanifold sheet or welding scientific decision",
+    "No all-QUAD, anisotropic metric or literal original 1993 reproduction"
+  ],
+  "adaptive_epochs": 0
+}
