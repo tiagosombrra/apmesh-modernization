@@ -82,6 +82,18 @@ test('R2.3 50k UV face picking preserves scientific IDs and records selected alg
     const picked = sample.last_picker_call;
     expect(picked.method).toBe('UV_SPATIAL_INDEX');
     expect(picked.source_face_id).toBeGreaterThanOrEqual(0);
+    // Compare the native picker on exactly the same UV screen pixel and camera.
+    await page.getByTestId('benchmark-native-picker').check();
+    await uv.click({ position: { x: rect.width * 0.473, y: rect.height * 0.519 } });
+    await expect.poll(async () => {
+      const next = JSON.parse(await page.getByTestId('benchmark-receipt').innerText()) as {
+        last_picker_call?: { method?: string };
+      };
+      return next.last_picker_call?.method;
+    }, { timeout: 30_000 }).toBe('VTK_CELL_PICKER');
+    const native = JSON.parse(await page.getByTestId('benchmark-receipt').innerText()).last_picker_call;
+    expect(native.source_face_id).toBe(picked.source_face_id);
+
     await expect(page.getByTestId('selected-xyz')).toContainText(`Face #${picked.source_face_id}`);
     await expect(page.getByTestId('selected-uv')).toContainText(`Face #${picked.source_face_id}`);
     const report = {
@@ -89,6 +101,7 @@ test('R2.3 50k UV face picking preserves scientific IDs and records selected alg
       classification: 'SYNTHETIC_INTERACTION_NOT_GENERATOR_METRICS',
       sample_cells: sample.cells, point_count: sample.points,
       picker: picked,
+      native_picker_same_camera: native,
       constraints: ['no_GPA_CPU_fps_benchmark', 'no_source_patch_inference',
         'index_never_welds_vertices', 'fallback_on_ambiguous_uv_chart',
         '500k_not_qualified', 'single_run_not_statistics'],
@@ -101,6 +114,7 @@ test('R2.3 50k UV face picking preserves scientific IDs and records selected alg
     });
     console.log('R23_50K_UV_PICK=' + JSON.stringify({
       method: picked.method, elapsed_ms: picked.picker_wall_ms,
+      native_ms: native.picker_wall_ms, same_original_id: native.source_face_id === picked.source_face_id,
       tested: picked.spatial_candidates_tested, id: picked.source_face_id,
     }));
   });

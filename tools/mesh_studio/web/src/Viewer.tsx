@@ -26,6 +26,7 @@ interface ViewerProps {
   onSelect: (faceId: number | null) => void;
   onRendered?: () => void;
   onPickMeasured?: (observation: PickObservation) => void;
+  pickingMode?: 'auto' | 'native';
 }
 
 export interface ViewerHandle {
@@ -39,7 +40,7 @@ type GRW = ReturnType<typeof vtkGenericRenderWindow.newInstance>;
 type Actor = ReturnType<typeof vtkActor.newInstance>;
 
 export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
-  space, geometry, showTri, showQuad, edges, selectedId, onSelect, onRendered, onPickMeasured,
+  space, geometry, showTri, showQuad, edges, selectedId, onSelect, onRendered, onPickMeasured, pickingMode = 'auto',
 }, ref) {
   const container = useRef<HTMLDivElement>(null);
   const renderRef = useRef<GRW | null>(null);
@@ -56,6 +57,8 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
   onRenderedRef.current = onRendered;
   const onPickMeasuredRef = useRef(onPickMeasured);
   onPickMeasuredRef.current = onPickMeasured;
+  const pickingModeRef = useRef(pickingMode);
+  pickingModeRef.current = pickingMode;
   const updateOverlay = useRef<() => void>(() => {});
   onSelectRef.current = onSelect;
   visibleRef.current = { showTri, showQuad, edges };
@@ -233,7 +236,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' = 'VTK_CELL_PICKER';
       let spatialCandidates: number | null = null;
       let resolved = false;
-      if (space === 'uv' && uvIndex && displayCoordinate) {
+      if (space === 'uv' && uvIndex && displayCoordinate && pickingModeRef.current !== 'native') {
         try {
           // Transform a display ray onto the flat UV z=0 plane. Never guess a
           // UV chart from group color or Euclidean XYZ vertex coincidence.

@@ -90,6 +90,7 @@ function BrowserBenchmark() {
   const [selected, setSelected] = useState<number | null>(null);
   const [showQuads, setShowQuads] = useState(true);
   const [edges, setEdges] = useState(false);
+  const [nativePicker, setNativePicker] = useState(false);
   const [xyzDuration, setXyzDuration] = useState<number | null>(null);
   const [uvDuration, setUvDuration] = useState<number | null>(null);
   const [status, setStatus] = useState('Sem medição');
@@ -213,6 +214,8 @@ function BrowserBenchmark() {
         data-testid="benchmark-quad-filter" onChange={(event) => setShowQuads(event.target.checked)} /> Mostrar QUAD</label>
       <label style={{ marginLeft: 15 }}><input type="checkbox" checked={edges}
         data-testid="benchmark-edge-filter" onChange={(event) => setEdges(event.target.checked)} /> Arestas</label>
+      <label style={{ marginLeft: 15 }}><input type="checkbox" checked={nativePicker}
+        data-testid="benchmark-native-picker" onChange={(event) => setNativePicker(event.target.checked)} /> vtkCellPicker de controle (A/B)</label>
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, marginTop: 16 }}>
         <button type="button" data-testid="benchmark-run-motion" disabled={!complete || runningMotion}
           onClick={() => { void measureOrbit(); }} style={{ padding: '9px 14px', cursor: 'pointer' }}>
@@ -231,10 +234,12 @@ function BrowserBenchmark() {
       {sample && <div className="view-grid" style={{ marginTop: 16 }}>
         <Viewer ref={xyzViewer} key={`r2-xyz-${count}`} space="xyz" modelId={`SYNTHETIC_${count}`}
           geometry={sample.xyz} showTri={false} showQuad={showQuads} edges={edges}
-          selectedId={selected} onSelect={setSelected} onRendered={onXyz} onPickMeasured={setLastPick} />
+          selectedId={selected} onSelect={setSelected} onRendered={onXyz} onPickMeasured={setLastPick}
+          pickingMode={nativePicker ? 'native' : 'auto'} />
         <Viewer ref={uvViewer} key={`r2-uv-${count}`} space="uv" modelId={`SYNTHETIC_${count}`}
           geometry={sample.uv} showTri={false} showQuad={showQuads} edges={edges}
-          selectedId={selected} onSelect={setSelected} onRendered={onUv} onPickMeasured={setLastPick} />
+          selectedId={selected} onSelect={setSelected} onRendered={onUv} onPickMeasured={setLastPick}
+          pickingMode={nativePicker ? 'native' : 'auto'} />
       </div>}
       <p data-testid="benchmark-linked-selection">Face sintética selecionada: {selected ?? 'nenhuma'}</p>
       <pre data-testid="benchmark-receipt" style={{ marginTop: 20, whiteSpace: 'pre-wrap', fontSize: 12,
