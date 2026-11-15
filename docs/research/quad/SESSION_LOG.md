@@ -2410,3 +2410,46 @@ No source/formula/configuration/default TRI changed; no new native tests or
 scientific qualification. Prior exact-feature evidence retains its bounded
 scope; mixed epochs remain zero and functional behavior correction is pending.
 Validate changed docs, push canonical checkpoint and verify readback.
+
+## 2026-11-15 - correct curvature clipping and export each physical generation step
+
+Implemented native value observations and domain-selection identity atb0e7852,
+analytic-model-first visualization at047c165, then final original-curvature
+profile/audit correction ate90d5a30963ed0ade9683c69a530847709188fe3 (draft PR238).
+The user initially preserved controls, subsequently explicitly rejected the
+stable point clipping. Current opt-in case selects existing legacy curvature
+flow; default TRI configurations/formulas are unchanged. Native source points
+now reach native tree/QUAD/original-AFT unchanged: curved9 then65, straight5
+then17. Four steps/eight OBJ files retain all TRI reference outcomes. Primary
+step1 is165 nodes/120 QUAD/68 TRI; generated rejected-source steps2/3 are
+953/784/224. Actual reference error increases0.125829 ->0.382516 there; mixed
+accepted epochs remain0. Full mixed feedback/approved selection is still open.
+
+Confirmed old stable rejection comes from coherence1.03086 >0.20, not directly
+from negative score under ACCEPTANCE_MODE0. Target5.77422 vs28 elements creates
+overshoot penalty. New geometric sampled curve distance falls to0.00820232 then
+0.000136785; no continuous bound or acceptance tolerance is inferred. All four
+sides are Bezier objects but only one is curved; straight-side point growth
+occurs in the surface pass, with collinearity retained.
+
+Exacte90 local GNU/MSVC/ASan pass both profiles, actual normal/rollback/negative
+histories, six source captures/three reversed/54 native negatives per profile;
+eight original-profile OBJ files are byte-identical across profiles. Exact85/85
+local and CI43750977300 4/4 pass, including85/85 hosted and527 Python. Native
+images matchb0e7852; unchanged-code configured LLVM22 four-TU and local frozen
+Eistute5/Book4 evidence is reused with hashes, and final hosted frozen TRI is
+independently green. Fixed16 bytes stay unchanged. See portable JSON/review.
+
+Blender5.3 scene with analytic source and four steps saved; opening requested.
+User Escape interrupted final visual confirmation; no further UI actions.
+Earlier three-step scene was separately inspected. Retain domain-identity and
+rounded-OBJ development failures. Doxygen reproduced three unchanged missing
+API evidence references in the normal checkout too; prior nested-worktree-only
+explanation was incomplete. No Doxygen pass, independent approval, merge,
+post-merge/native CRT closure, accepted mixed feedback or1993 equivalence.
+
+Source remains visible in primary feature checkout. Canonical checkpoint is
+status/evidence only. Main ef40c0f and other concurrent PRs were preserved.
+Next: review profile/export/source identity, resolve required open gates before
+integration, qualify any research merge, then continue actual accepted mixed
+state/error/selection work under its scientific approval requirements.

@@ -6,6 +6,17 @@
 The larger [PR214](https://github.com/tiagosombrra/apmesh-modernization/pull/214)
 remains draft/unmerged. Main and the default TRI behavior are preserved.
 
+### 2026-11-15 - current bounded delivery
+
+PR238 exacte90d5a3 fixes source promotion/identity and selects original-curvature
+rediscretization without stable point clipping. Four physical source steps and
+eight TRI/QUAD-TRI OBJ files are exported; the analytic-model scene is saved.
+Local GNU/MSVC/ASan, exact85 local CTests and CI4/4/527 Python pass. See the
+[current review](CURVATURE_STEP_EXPORT_REVIEW_20261115.md). Earlier findings
+below are historical. No independent approval, integration or accepted mixed
+epoch is claimed. Required Doxygen references and mixed scientific policy remain
+open, and the last Blender visual confirmation was interrupted by user Escape.
+
 ### 2026-11-15 - functional discrepancy: coarse curved boundary
 
 PR238 is now **draft / not ready to integrate**. The curved source exists,

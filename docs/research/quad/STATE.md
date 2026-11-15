@@ -3,7 +3,7 @@
 Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: localize and correct coarse-curve behavior in the mixed path
+## Active: review the curvature-driven per-step delivery; mixed feedback remains open
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,53 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-15 - curvature clipping corrected; four physical steps exported
+
+The latest user instruction rejected artificial point clipping and superseded
+the earlier request to preserve the stable controller. Exact feature
+`e90d5a30963ed0ade9683c69a530847709188fe3`, draft
+[PR238](https://github.com/tiagosombrra/apmesh-modernization/pull/238), now uses
+the existing original-curvature `legacy` profile in this opt-in research case.
+Default TRI configurations and original formulas are unchanged. Full surface-pass
+parameters reach native tree/QUAD/AFT without the stable-mode point rebuild.
+The stable controller remains an explicitly executed regression control.
+
+| Source step | Curved-side points | Straight-side points each | Physical QUAD/TRI reconstruction | Original TRI outcome |
+| --- | --- | --- | --- | --- |
+| 0 | 2 | 2 | 5 nodes / 0 QUAD / 4 TRI | Initial accepted reference |
+| 1 | 9 | 5 | 165 nodes / 120 QUAD / 68 TRI | Accepted |
+| 2 | 65 | 17 | 953 nodes / 784 QUAD / 224 TRI | Rejected for increased surface-curvature error |
+| 3 | 65 | 17 | 953 nodes / 784 QUAD / 224 TRI | Same reference rejection |
+
+All four steps are exported, with TRI and QUAD/TRI files, actual decisions,
+scoped domain generation identity and original pass traces. The primary OBJ
+retains accepted source step 1. Generation is separate from scientific mixed
+acceptance: `mixed_adaptive_epochs=0`, TRI-driven source history, R3/M7 OPEN.
+The source has one curved side and three geometrically straight Bezier sides.
+The straight-side curve pass retains two points; surface-driven refinement
+adds points without changing their straight shape.
+
+Local GNU, MSVC Debug and Clang ASan/UBSan/leak pass both original-curvature
+and stable-control normal/rollback/history/corruption/existing-output checks.
+Each runs six real source captures, three reversed captures and 54 native
+source/tree negatives. All eight original-profile OBJ files match byte-for-byte
+across the three profiles. Fixed16 retains its prior hash. Exact-head local
+CTest 85/85 and [CI43750977300](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43750977300)
+4/4 pass, including hosted85/85 and Python527/527. Native C++ images are identical
+to the already measured b0e7852 images; unchanged-code configured LLVM22 four-TU
+and local frozen Eistute5/Book4 evidence is reused with hashes; final hosted
+frozen TRI is independently green. [Review](CURVATURE_STEP_EXPORT_REVIEW_20261115.md)
+and [receipt](evidence/CURVATURE_GENERATION_STEPS_20261115.json).
+
+A Blender5.3 scene now contains the analytic source model before all four steps,
+with source curves and actual mesh chords. The new file was saved and opening
+was requested, but final visual confirmation was interrupted by user Escape;
+no further UI actions occurred. Do not claim that final scene was visually
+confirmed. The earlier three-step inspection was separately observed.
+
+Earlier reports below are retained findings, superseded by this profile and
+qualification checkpoint where their status differs.
 
 ### 2026-11-15 - functional discrepancy: coarse curved boundary
 
@@ -56,17 +103,19 @@ The first local adapter stopped before CTest on inventory drift 75 -> 85;
 LLVM18 configuration errors are invalid analysis despite zero tool exit.
 The corrected exact feature qualifies with those failures retained.
 
-**One active item / exact next action:** record source step/attempt and exact
-parameters/counts after the original curve pass, surface pass and final budget
-rebuild on PR238; retain source states and actual stop/acceptance reasons, then
-correct the proven cause. Intermediate pre-budget partitions are unmeasured.
-Resolve this behavior discrepancy before resuming integration review. Mixed
-feedback must use the actual previous accepted mixed mesh under the retained
-scientific gates; do not silently change point caps or acceptance to densify
-an image. Independent approval and corrected-feature/merge validation remain
-required. Source remains visible in the primary feature checkout.
+**One active item / exact next action:** review PR238's corrected original-curvature
+profile, source/domain identity and per-step publication. Resolve required
+open documentation checks and obtain independent approval before integration;
+repeat required research-merge validation after any authorized merge. The next
+functional scientific gate is a defensible mixed curvature/error and selection
+policy using actual prior accepted mixed states, not a TRI reference decision.
+Do not count these four reconstructions as accepted mixed adaptive epochs.
+The code is visible in the primary feature checkout; canonical changes here
+are status/evidence only. Integration and post-merge tests remain unperformed.
 Auxiliary Doxygen generation in the nested checkpoint worktree failed on
-three unchanged API references; it is not counted as a pass. Repeat required
+three unchanged API references; the same failure was reproduced in the normal
+primary checkout, so a nested-worktree explanation alone was insufficient. It is
+not counted as a pass. Repeat required
 documentation checks from a normally located checkout before integration.
 Research merge and post-merge tests are **not performed**. `mixed_adaptive_epochs=0`;
 R3/M7 #221 remains OPEN. Global welding, production mixed postprocessing,

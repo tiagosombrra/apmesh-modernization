@@ -1,0 +1,462 @@
+{
+  "schema": "apmesh.quad.curvature_generation_steps.v1",
+  "date": "2026-11-15",
+  "feature_sha": "e90d5a30963ed0ade9683c69a530847709188fe3",
+  "native_implementation_sha": "b0e7852a5200072a21756567e46878e6ea219db9",
+  "profiles": {
+    "msvc": {
+      "original_curvature": {
+        "nodes": 165,
+        "quads": 120,
+        "triangles": 68,
+        "boundary": 20,
+        "source_step": 1,
+        "native_leaves": 46,
+        "domain_generation": 1,
+        "nonuniform_sides": 4,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "history": {
+          "physical_steps": 4,
+          "curve_attempts": 12,
+          "profile": "original_curvature",
+          "last_accepted_step": 1,
+          "rejected_steps": [
+            2,
+            3
+          ]
+        },
+        "history_negative_controls_rejected": 3,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+        "existing_output_rejected": true
+      },
+      "stable_control": {
+        "nodes": 5,
+        "quads": 0,
+        "triangles": 4,
+        "boundary": 4,
+        "source_step": 1,
+        "native_leaves": 4,
+        "domain_generation": 1,
+        "nonuniform_sides": 0,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "history": {
+          "physical_steps": 3,
+          "curve_attempts": 12,
+          "profile": "stable_control",
+          "last_accepted_step": 1,
+          "rejected_steps": [
+            2
+          ]
+        },
+        "history_negative_controls_rejected": 3,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+        "existing_output_rejected": true
+      },
+      "source_captures": 6,
+      "reversed_captures": 3,
+      "native_source_negatives": 54,
+      "image_sha256": "831a341bd2abc4402466b9fdcf5702cbaf147b5f7ef0d3f761fa6a6af5c88949",
+      "image_identical_to_b0e7852": true,
+      "archive_obj_sha256": {
+        "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+        "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2",
+        "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+        "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+        "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+        "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e"
+      },
+      "stages": [
+        {
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "tri_obj": "step_0_retry_-1_accepted_tri.obj",
+          "quad_tri_obj": "step_0_retry_-1_accepted_quad_tri.obj",
+          "nodes": "5",
+          "quads": "0",
+          "triangles": "4",
+          "boundary": "4"
+        },
+        {
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "tri_obj": "step_1_retry_0_accepted_tri.obj",
+          "quad_tri_obj": "step_1_retry_0_accepted_quad_tri.obj",
+          "nodes": "165",
+          "quads": "120",
+          "triangles": "68",
+          "boundary": "20"
+        },
+        {
+          "step": "2",
+          "epoch": "2",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "tri_obj": "step_2_retry_0_rejected_tri.obj",
+          "quad_tri_obj": "step_2_retry_0_rejected_quad_tri.obj",
+          "nodes": "953",
+          "quads": "784",
+          "triangles": "224",
+          "boundary": "112"
+        },
+        {
+          "step": "3",
+          "epoch": "3",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "tri_obj": "step_3_retry_0_rejected_tri.obj",
+          "quad_tri_obj": "step_3_retry_0_rejected_quad_tri.obj",
+          "nodes": "953",
+          "quads": "784",
+          "triangles": "224",
+          "boundary": "112"
+        }
+      ]
+    },
+    "gcc": {
+      "original_curvature": {
+        "nodes": 165,
+        "quads": 120,
+        "triangles": 68,
+        "boundary": 20,
+        "source_step": 1,
+        "native_leaves": 46,
+        "domain_generation": 1,
+        "nonuniform_sides": 4,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "history": {
+          "physical_steps": 4,
+          "curve_attempts": 12,
+          "profile": "original_curvature",
+          "last_accepted_step": 1,
+          "rejected_steps": [
+            2,
+            3
+          ]
+        },
+        "history_negative_controls_rejected": 3,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+        "existing_output_rejected": true
+      },
+      "stable_control": {
+        "nodes": 5,
+        "quads": 0,
+        "triangles": 4,
+        "boundary": 4,
+        "source_step": 1,
+        "native_leaves": 4,
+        "domain_generation": 1,
+        "nonuniform_sides": 0,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "history": {
+          "physical_steps": 3,
+          "curve_attempts": 12,
+          "profile": "stable_control",
+          "last_accepted_step": 1,
+          "rejected_steps": [
+            2
+          ]
+        },
+        "history_negative_controls_rejected": 3,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+        "existing_output_rejected": true
+      },
+      "source_captures": 6,
+      "reversed_captures": 3,
+      "native_source_negatives": 54,
+      "image_sha256": "d104341f79838401f7d509803781b3ab8d85adf4416d8fbe3f4baa183d7fcef1",
+      "image_identical_to_b0e7852": true,
+      "archive_obj_sha256": {
+        "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+        "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+        "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+        "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+        "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+        "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+      },
+      "stages": [
+        {
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "tri_obj": "step_0_retry_-1_accepted_tri.obj",
+          "quad_tri_obj": "step_0_retry_-1_accepted_quad_tri.obj",
+          "nodes": "5",
+          "quads": "0",
+          "triangles": "4",
+          "boundary": "4"
+        },
+        {
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "tri_obj": "step_1_retry_0_accepted_tri.obj",
+          "quad_tri_obj": "step_1_retry_0_accepted_quad_tri.obj",
+          "nodes": "165",
+          "quads": "120",
+          "triangles": "68",
+          "boundary": "20"
+        },
+        {
+          "step": "2",
+          "epoch": "2",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "tri_obj": "step_2_retry_0_rejected_tri.obj",
+          "quad_tri_obj": "step_2_retry_0_rejected_quad_tri.obj",
+          "nodes": "953",
+          "quads": "784",
+          "triangles": "224",
+          "boundary": "112"
+        },
+        {
+          "step": "3",
+          "epoch": "3",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "tri_obj": "step_3_retry_0_rejected_tri.obj",
+          "quad_tri_obj": "step_3_retry_0_rejected_quad_tri.obj",
+          "nodes": "953",
+          "quads": "784",
+          "triangles": "224",
+          "boundary": "112"
+        }
+      ]
+    },
+    "asan": {
+      "original_curvature": {
+        "nodes": 165,
+        "quads": 120,
+        "triangles": 68,
+        "boundary": 20,
+        "source_step": 1,
+        "native_leaves": 46,
+        "domain_generation": 1,
+        "nonuniform_sides": 4,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "history": {
+          "physical_steps": 4,
+          "curve_attempts": 12,
+          "profile": "original_curvature",
+          "last_accepted_step": 1,
+          "rejected_steps": [
+            2,
+            3
+          ]
+        },
+        "history_negative_controls_rejected": 3,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+        "existing_output_rejected": true
+      },
+      "stable_control": {
+        "nodes": 5,
+        "quads": 0,
+        "triangles": 4,
+        "boundary": 4,
+        "source_step": 1,
+        "native_leaves": 4,
+        "domain_generation": 1,
+        "nonuniform_sides": 0,
+        "reversed_sides": 0,
+        "reference_tri_accepted": true,
+        "mixed_adaptive_epochs": 0,
+        "history": {
+          "physical_steps": 3,
+          "curve_attempts": 12,
+          "profile": "stable_control",
+          "last_accepted_step": 1,
+          "rejected_steps": [
+            2
+          ]
+        },
+        "history_negative_controls_rejected": 3,
+        "negative_controls_rejected": 9,
+        "obj_sha256": "2f5307abf8f2786a513c4c85d427268b2f55dce67af06661801397d5ff4f0501",
+        "existing_output_rejected": true
+      },
+      "source_captures": 6,
+      "reversed_captures": 3,
+      "native_source_negatives": 54,
+      "image_sha256": "66bedd76717f506a0bf77ba8160bbf55d92cadb59d72b193b7253200f57038f4",
+      "image_identical_to_b0e7852": true,
+      "archive_obj_sha256": {
+        "step_3_retry_0_rejected_quad_tri.obj": "811e454871047987793e5d83ebb533718961357c4d0b4f60624a3c7458bb57fb",
+        "step_2_retry_0_rejected_quad_tri.obj": "31ec84b2e8b3a66a375b7d9533381d1c44abec5ed938eb90eedb524481fa856a",
+        "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_3_retry_0_rejected_tri.obj": "1b487ad88a2cfdfff90f6e96425b2b4494c5d5897d7b1be050d58c79adaa185e",
+        "step_2_retry_0_rejected_tri.obj": "53e018ee4da918f9d3a3808773d137b785bd5fcfa1bfcc46e8ecd643c73ebd53",
+        "step_1_retry_0_accepted_quad_tri.obj": "65688f506f6af502a8c12cf009ffb520c4d45cd3f2508749a55731d0a8eaa897",
+        "step_1_retry_0_accepted_tri.obj": "e31700fdc12022000f8542414f06c52a15c2be48c6edb8ff0e1026e8390097b2"
+      },
+      "stages": [
+        {
+          "step": "0",
+          "epoch": "0",
+          "retry": "-1",
+          "domain_generation": "0",
+          "reference_tri_accepted": "1",
+          "reason": "initial",
+          "tri_obj": "step_0_retry_-1_accepted_tri.obj",
+          "quad_tri_obj": "step_0_retry_-1_accepted_quad_tri.obj",
+          "nodes": "5",
+          "quads": "0",
+          "triangles": "4",
+          "boundary": "4"
+        },
+        {
+          "step": "1",
+          "epoch": "1",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "1",
+          "reason": "accepted",
+          "tri_obj": "step_1_retry_0_accepted_tri.obj",
+          "quad_tri_obj": "step_1_retry_0_accepted_quad_tri.obj",
+          "nodes": "165",
+          "quads": "120",
+          "triangles": "68",
+          "boundary": "20"
+        },
+        {
+          "step": "2",
+          "epoch": "2",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "tri_obj": "step_2_retry_0_rejected_tri.obj",
+          "quad_tri_obj": "step_2_retry_0_rejected_quad_tri.obj",
+          "nodes": "953",
+          "quads": "784",
+          "triangles": "224",
+          "boundary": "112"
+        },
+        {
+          "step": "3",
+          "epoch": "3",
+          "retry": "0",
+          "domain_generation": "1",
+          "reference_tri_accepted": "0",
+          "reason": "global_error_increased",
+          "tri_obj": "step_3_retry_0_rejected_tri.obj",
+          "quad_tri_obj": "step_3_retry_0_rejected_quad_tri.obj",
+          "nodes": "953",
+          "quads": "784",
+          "triangles": "224",
+          "boundary": "112"
+        }
+      ]
+    }
+  },
+  "all_profile_obj_bytes_identical": true,
+  "local_regression": {
+    "tests": 85,
+    "status": "passed",
+    "stage_closure": false
+  },
+  "configured_analysis": {
+    "LLVM": "22.1.8",
+    "translation_units": 4,
+    "visible_diagnostics": 0,
+    "reused_unchanged_Cpp_from_b0e7852": true
+  },
+  "frozen_TRI": {
+    "reference_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+    "eistute_states": 5,
+    "book_states": 4,
+    "obj_and_acceptance_equal": true,
+    "boundary_coverage": "verified",
+    "reused_same_image_results_from_b0e7852": true
+  },
+  "native_input_changes_since_b0e7852": [
+    "configs/quad/README.md",
+    "configs/quad/curved_patch_original_curves.conf",
+    "docs/research/quad/GENERATION_STEP_EXPORT_20261115.md",
+    "tests/quad/test_real_boundary_application.py",
+    "tools/quad_generation_blender.py"
+  ],
+  "ci_run": 43750977300,
+  "ci_status": "success",
+  "mixed_adaptive_epochs": 0,
+  "history_source": "original TRI curvature workflow; mixed reconstructions are not mixed feedback",
+  "independent_approval": "pending",
+  "integration": "not_performed",
+  "Doxygen": "failed: three unchanged API evidence references; retained, not a pass",
+  "source_curve_sampled_distance": {
+    "samples": 10001,
+    "original_stable_step2": 0.06280875228120662,
+    "original_curvature_step1": 0.008202316936815056,
+    "original_curvature_steps2_3": 0.00013678455174091452,
+    "continuous_bound": false
+  },
+  "ci_jobs_passed": 4,
+  "hosted_python_tests": 527,
+  "hosted_root_ctests": 85,
+  "blender": {
+    "version": "5.3.0",
+    "scene_created": true,
+    "analytic_display_grid": 64,
+    "generated_obj_files": 8,
+    "launch_requested": true,
+    "final_visual_confirmation": "interrupted by user Escape; no further UI actions",
+    "scene_sha256": "a3e747ea033d919d768d452b087885479b3ff6e1003bfebf8de2baa426d17fb2"
+  },
+  "straight_sides": {
+    "geometrically_curved_sides": 1,
+    "geometrically_straight_sides": 3,
+    "straight_curve_pass_points_step1": 2,
+    "straight_surface_pass_points_step1": 5,
+    "straight_points_steps2_3": 17
+  },
+  "old_stable_rejection": {
+    "acceptance_mode": 0,
+    "diagnostic_score": -2.85629,
+    "deciding_gate": "transition_coherence_ok",
+    "coherence_penalty": 1.03086,
+    "step2_limit": 0.2,
+    "target_elements": 5.77422,
+    "actual_elements": 28,
+    "score_is_direct_gate": false
+  }
+}
