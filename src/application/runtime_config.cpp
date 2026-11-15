@@ -49,7 +49,8 @@ std::unordered_map<std::string, std::string> ReadConfigFile(const std::string& p
         throw std::runtime_error("Unsupported configuration value for MESH_ELEMENT_KIND: " + value);
       }
     } else if (key == "QUAD_EXPERIMENTAL_CASE") {
-      if (value != "curved_bezier_fixed16_vertex_mean_v1")
+      if (value != "curved_bezier_fixed16_vertex_mean_v1" &&
+          value != "curved_bezier_original_curves_vertex_mean_v1")
         throw std::runtime_error("Unsupported QUAD experimental case");
     } else if (key == "QUAD_VERIFY_ROLLBACK") {
       if (value != "0" && value != "1")

@@ -17,6 +17,8 @@
 #include "typed_mixed_curvature.h"
 #include "typed_mixed_quality.h"
 #include "mixed_surface_residual.h"
+#include "real_boundary_source.h"
+#include "generator/generator_adaptive.h"
 
 #include "crab_mesh/aft/boundary.h"
 #include "crab_mesh/aft/quadtree.h"
@@ -180,11 +182,14 @@ void CheckFacet(PatchBezier& patch, const FaceUv& face, double& smallest_alignme
 struct Candidate {
   std::unique_ptr<SubMesh> mesh = std::make_unique<SubMesh>();
   std::vector<UvVertex> uv;
+  std::vector<unsigned long> node_ids;
   std::vector<std::vector<std::size_t>> faces;
   std::vector<LeafPolygonOrigin> quad_origins;
   std::size_t quads = 0;
   double min_alignment = 1.0;
   double min_quality = 1.0;
+  bool real_boundary = false;
+  const RealBoundarySource* source_witness = nullptr;
 };
 
 struct PublicationFailure : std::runtime_error {
@@ -194,7 +199,8 @@ struct PublicationFailure : std::runtime_error {
 using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 
 Candidate Generate(PatchBezier& patch, bool fail_before_commit,
-                   const ResearchSourceTreeFactory& source_tree_factory = {}) {
+                   const ResearchSourceTreeFactory& source_tree_factory = {},
+                   const RealBoundarySource* source = nullptr) {
   ValidateSourceCurves(patch);
   auto original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
   Require(original->makeTemplateBasedMesh() == Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
@@ -216,14 +222,33 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
               report.exterior_triangles > 0,
           "Original AFT failed complete nonoverlapping UV coverage");
   Candidate result;
+  result.real_boundary = source != nullptr;
+  result.source_witness = source;
+  unsigned long source_max_id = 0;
+  if (source)
+    for (const auto& site : source->sites)
+      source_max_id = std::max(source_max_id, site.source_id);
   std::map<std::pair<double, double>, std::size_t> uv_ids;
   const auto add_node = [&](UvVertex uv) {
-    const auto xyz = Evaluate(patch, uv);
+    auto xyz = Evaluate(patch, uv);
     const auto id = result.uv.size();
     Require(uv_ids.emplace(std::make_pair(uv.u, uv.v), id).second,
             "Unpaired coincident UV nodes in controlled chart");
+    unsigned long node_id = static_cast<unsigned long>(id + 1);
+    if (source) {
+      Require(id < std::numeric_limits<unsigned long>::max() - source_max_id,
+              "Real-boundary node identity range overflow");
+      node_id += source_max_id;
+      for (const auto& site : source->sites)
+        if (site.uv.u == uv.u && site.uv.v == uv.v) {
+          xyz = site.xyz;
+          node_id = site.source_id;
+          break;
+        }
+    }
     auto node = std::make_unique<NodeAdaptive>(xyz[0], xyz[1], xyz[2]);
-    node->SetId(static_cast<unsigned long>(id + 1));
+    node->SetId(node_id);
+    result.node_ids.push_back(node_id);
     result.mesh->AddNoh(std::move(node));
     result.uv.push_back(uv);
     return id;
@@ -325,8 +350,22 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
               "Gap or unexpected interior boundary");
       ++boundary_edges;
     }
-  Require(boundary_edges == 16 && result.uv.size() + result.faces.size() == edges.size() + 1,
+  Require(boundary_edges == (source ? source->sites.size() : 16) &&
+              result.uv.size() + result.faces.size() == edges.size() + 1,
           "Original boundary or Euler disk contract changed");
+  if (source)
+    for (std::size_t i = 0; i < source->sites.size(); ++i) {
+      const auto& site = source->sites[i];
+      const auto& next = source->sites[(i + 1) % source->sites.size()];
+      const auto a = uv_ids.at({site.uv.u, site.uv.v});
+      const auto b = uv_ids.at({next.uv.u, next.uv.v});
+      const auto edge = edges.find(std::minmax(a, b));
+      const auto* node = result.mesh->GetNoh(static_cast<unsigned>(a));
+      Require(edge != edges.end() && edge->second.count == 1 && edge->second.a == a &&
+                  edge->second.b == b && node->GetId() == site.source_id &&
+                  Xyz{node->GetX(), node->GetY(), node->GetZ()} == site.xyz,
+              "Physical QUAD/AFT export changed an original source node or interval");
+    }
   std::set<std::size_t> seen{0};
   std::vector<std::size_t> work{0};
   while (!work.empty()) {
@@ -358,6 +397,7 @@ std::vector<std::vector<ElementAdaptive*>> CaptureNodeObservers(SubMesh& mesh) {
 // Verify that a physical history node observes only its own actual elements.
 void CheckTypedIncidence(SubMesh& mesh, const Candidate& layout) {
   Require(mesh.GetNumberNos() == layout.uv.size() &&
+              mesh.GetNumberNos() == layout.node_ids.size() &&
               mesh.GetNumberElements() == layout.faces.size(),
           "Typed history size differs from the accepted QUAD/TRI layout");
   std::vector<std::set<ElementAdaptive*>> expected(mesh.GetNumberNos());
@@ -368,8 +408,7 @@ void CheckTypedIncidence(SubMesh& mesh, const Candidate& layout) {
     Require(face.size() == 3 || face.size() == 4, "Unexpected mixed element arity");
     const bool is_quad = dynamic_cast<research::QuadrilateralAdaptive*>(element) != nullptr;
     const bool is_tri = dynamic_cast<TriangleAdaptive*>(element) != nullptr;
-    Require((face.size() == 4 && is_quad && !is_tri) ||
-                (face.size() == 3 && is_tri && !is_quad),
+    Require((face.size() == 4 && is_quad && !is_tri) || (face.size() == 3 && is_tri && !is_quad),
             "History element type does not match its physical topology");
     for (const auto index : face) {
       Require(index < expected.size() && expected[index].insert(element).second,
@@ -378,7 +417,7 @@ void CheckTypedIncidence(SubMesh& mesh, const Candidate& layout) {
   }
   for (unsigned i = 0; i < mesh.GetNumberNos(); ++i) {
     auto* node = mesh.GetNoh(i);
-    Require(node != nullptr && node->GetId() == static_cast<unsigned long>(i + 1),
+    Require(node != nullptr && node->GetId() == layout.node_ids[i],
             "Typed history node identity changed");
     const auto& actual = node->GetElements();
     Require(actual.size() == expected[i].size() &&
@@ -388,9 +427,8 @@ void CheckTypedIncidence(SubMesh& mesh, const Candidate& layout) {
 }
 
 // Rebuild a true owned mixed-element graph; never copy borrowed observer lists.
-std::unique_ptr<SubMesh> CloneTypedHistory(const SubMesh& original,
-                                           const Candidate& layout, PatchBezier& patch,
-                                           int fail_before_element) {
+std::unique_ptr<SubMesh> CloneTypedHistory(const SubMesh& original, const Candidate& layout,
+                                           PatchBezier& patch, int fail_before_element) {
   Require(original.GetNumberNos() == layout.uv.size() &&
               original.GetNumberElements() == layout.faces.size(),
           "Typed history source/layout count mismatch");
@@ -416,7 +454,8 @@ std::unique_ptr<SubMesh> CloneTypedHistory(const SubMesh& original,
     auto* b = clone->GetNoh(static_cast<unsigned>(face.at(1)));
     auto* c = clone->GetNoh(static_cast<unsigned>(face.at(2)));
     if (face.size() == 4) {
-      const auto* source_quad = dynamic_cast<const research::QuadrilateralAdaptive*>(source_element);
+      const auto* source_quad =
+          dynamic_cast<const research::QuadrilateralAdaptive*>(source_element);
       Require(source_quad != nullptr, "A QUAD was lost during typed history cloning");
       research::QuadrilateralAdaptive::Parameters parameters{};
       double u = 0.0, v = 0.0;
@@ -499,8 +538,7 @@ void ProbeTypedHistory(SubMesh& accepted, const Candidate& layout, PatchBezier& 
     Require(CaptureNodeObservers(accepted) == original_observers,
             "Transient history clone mutated previously accepted node observers");
   }
-  Require(patch.GetSubMesh() == previous_patch_owner &&
-              accepted.GetNoh(0) == first_original_node &&
+  Require(patch.GetSubMesh() == previous_patch_owner && accepted.GetNoh(0) == first_original_node &&
               accepted.GetElement(0) == first_original_element &&
               CaptureNodeObservers(accepted) == original_observers,
           "Typed history clone teardown damaged previously accepted state");
@@ -518,8 +556,7 @@ void ProbeMixedCurvature(SubMesh& mesh, const Candidate& layout) {
     physical.push_back({node->GetX(), node->GetY(), node->GetZ()});
   }
   const auto observed = research::AuditMixedCurvature(physical, layout.faces);
-  Require(observed.vertices.size() == layout.uv.size() &&
-              observed.quadrilaterals == layout.quads &&
+  Require(observed.vertices.size() == layout.uv.size() && observed.quadrilaterals == layout.quads &&
               observed.triangles == layout.faces.size() - layout.quads &&
               observed.boundary_edges == 16 && observed.boundary_vertices == 16 &&
               observed.interior_vertices + observed.boundary_vertices == layout.uv.size() &&
@@ -537,10 +574,8 @@ void ProbeMixedCurvature(SubMesh& mesh, const Candidate& layout) {
     }
   };
   must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, 0}}, {{0, 1, 1}});
-  must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, 0}, {-1, 0, 0}, {0, -1, 0}},
-              {{0, 1, 2}, {0, 3, 4}});
-  must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, 0}, {1, 1, 0}},
-              {{0, 1, 2}, {0, 1, 3}});
+  must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, 0}, {-1, 0, 0}, {0, -1, 0}}, {{0, 1, 2}, {0, 3, 4}});
+  must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, 0}, {1, 1, 0}}, {{0, 1, 2}, {0, 1, 3}});
   must_reject({{0, 0, 0}, {1, 0, 0}, {2, 0, 0}}, {{0, 1, 2}});
   must_reject({{0, 0, 0}, {1, 0, 0}, {0, 1, std::numeric_limits<double>::quiet_NaN()}},
               {{0, 1, 2}});
@@ -548,10 +583,8 @@ void ProbeMixedCurvature(SubMesh& mesh, const Candidate& layout) {
 
   std::ostringstream output;
   output.imbue(std::locale::classic());
-  output << std::setprecision(17)
-         << "QUAD_TYPED_CURVATURE quad=" << observed.quadrilaterals
-         << " tri=" << observed.triangles
-         << " boundary_edges=" << observed.boundary_edges
+  output << std::setprecision(17) << "QUAD_TYPED_CURVATURE quad=" << observed.quadrilaterals
+         << " tri=" << observed.triangles << " boundary_edges=" << observed.boundary_edges
          << " boundary_vertices=" << observed.boundary_vertices
          << " interior_vertices=" << observed.interior_vertices
          << " angle_defect_total=" << observed.total_angle_defect
@@ -569,8 +602,8 @@ void ProbePhysicalQuadQuality(SubMesh& mesh, const Candidate& layout, PatchBezie
   unsigned count = 0;
   for (std::size_t i = 0; i < layout.quads; ++i) {
     const auto& face = layout.faces.at(i);
-    Require(face.size() == 4 &&
-                dynamic_cast<research::QuadrilateralAdaptive*>(mesh.GetElement(static_cast<unsigned>(i))) != nullptr,
+    Require(face.size() == 4 && dynamic_cast<research::QuadrilateralAdaptive*>(
+                                    mesh.GetElement(static_cast<unsigned>(i))) != nullptr,
             "Unexpected physical element in typed QUAD quality gate");
     research::PhysicalQuadCorners points{};
     research::PhysicalQuadCorners normals{};
@@ -588,8 +621,7 @@ void ProbePhysicalQuadQuality(SubMesh& mesh, const Candidate& layout, PatchBezie
     max_edge_ratio = std::max(max_edge_ratio, metric.edge_ratio);
     ++count;
   }
-  Require(count == 42 && min_scaled > 0.0 && min_warp_cosine > 0.0 &&
-              std::isfinite(max_edge_ratio),
+  Require(count == 42 && min_scaled > 0.0 && min_warp_cosine > 0.0 && std::isfinite(max_edge_ratio),
           "Invalid controlled typed QUAD physical quality");
 
   // Independent malformed physical-only witnesses do not mutate the live mesh.
@@ -618,18 +650,16 @@ void ProbePhysicalQuadQuality(SubMesh& mesh, const Candidate& layout, PatchBezie
   Require(rejected == 4, "Malformed typed QUAD physical quality input was admitted");
   std::ostringstream output;
   output.imbue(std::locale::classic());
-  output << std::setprecision(17)
-         << "QUAD_TYPED_QUALITY quads=" << count
-         << " min_scaled_jacobian=" << min_scaled
-         << " min_warpage_cosine=" << min_warp_cosine
-         << " max_edge_ratio=" << max_edge_ratio
-         << " negative_cases=" << rejected
+  output << std::setprecision(17) << "QUAD_TYPED_QUALITY quads=" << count
+         << " min_scaled_jacobian=" << min_scaled << " min_warpage_cosine=" << min_warp_cosine
+         << " max_edge_ratio=" << max_edge_ratio << " negative_cases=" << rejected
          << " policy=corner_normal_metric_probe adaptive_epochs=0\n";
   std::cout << output.str();
 }
 
 // Read the accepted physical candidate and choose a real native source leaf by error.
-research::MixedSurfaceResidual ProbeMixedSurfaceResidual(const Candidate& candidate, PatchBezier& patch) {
+research::MixedSurfaceResidual ProbeMixedSurfaceResidual(const Candidate& candidate,
+                                                         PatchBezier& patch) {
   std::vector<research::ResidualUv> parametric;
   std::vector<research::ResidualPoint3> physical;
   parametric.reserve(candidate.uv.size());
@@ -643,8 +673,8 @@ research::MixedSurfaceResidual ProbeMixedSurfaceResidual(const Candidate& candid
   const auto source = [&patch](const research::ResidualUv& uv) -> research::ResidualPoint3 {
     return Evaluate(patch, UvVertex{uv[0], uv[1]});
   };
-  const auto metrics = research::MeasureMixedSurfaceResidual(
-      parametric, physical, candidate.faces, source);
+  const auto metrics =
+      research::MeasureMixedSurfaceResidual(parametric, physical, candidate.faces, source);
   Require(metrics.quadrilaterals == candidate.quads &&
               metrics.triangles == candidate.faces.size() - candidate.quads &&
               metrics.samples == 5 * metrics.quadrilaterals + 4 * metrics.triangles &&
@@ -655,32 +685,24 @@ research::MixedSurfaceResidual ProbeMixedSurfaceResidual(const Candidate& candid
               metrics.worst_triangle_face < candidate.faces.size(),
           "Mixed physical error/source-leaf witness is invalid");
   const auto& leaf = candidate.quad_origins[metrics.worst_quad_face];
-  Require(leaf.cell_id >= 0 && leaf.relative_depth >= 2 &&
-              metrics.worst_quad_sample_uv[0] > 0.0 &&
-              metrics.worst_quad_sample_uv[0] < 1.0 &&
-              metrics.worst_quad_sample_uv[1] > 0.0 &&
+  Require(leaf.cell_id >= 0 && leaf.relative_depth >= 2 && metrics.worst_quad_sample_uv[0] > 0.0 &&
+              metrics.worst_quad_sample_uv[0] < 1.0 && metrics.worst_quad_sample_uv[1] > 0.0 &&
               metrics.worst_quad_sample_uv[1] < 1.0,
           "Mixed residual selected an invalid real native quadtree source leaf");
   std::ostringstream line;
   line.imbue(std::locale::classic());
-  line << std::setprecision(17)
-       << "QUAD_SOURCE_RESIDUAL samples=" << metrics.samples
-       << " quads=" << metrics.quadrilaterals
-       << " triangles=" << metrics.triangles
-       << " maximum=" << metrics.maximum
-       << " rms=" << metrics.rms
+  line << std::setprecision(17) << "QUAD_SOURCE_RESIDUAL samples=" << metrics.samples
+       << " quads=" << metrics.quadrilaterals << " triangles=" << metrics.triangles
+       << " maximum=" << metrics.maximum << " rms=" << metrics.rms
        << " quad_maximum=" << metrics.quad_maximum
        << " triangle_maximum=" << metrics.triangle_maximum
        << " worst_quad_face=" << metrics.worst_quad_face
-       << " worst_triangle_face=" << metrics.worst_triangle_face
-       << " dominant_region="
+       << " worst_triangle_face=" << metrics.worst_triangle_face << " dominant_region="
        << (metrics.triangle_maximum > metrics.quad_maximum ? "tri_aft" : "quad_interior")
        << " tri_sample_u=" << metrics.worst_triangle_sample_uv[0]
        << " tri_sample_v=" << metrics.worst_triangle_sample_uv[1]
-       << " real_leaf_ordinal=" << leaf.leaf_ordinal
-       << " real_cell_id=" << leaf.cell_id
-       << " source_depth=" << leaf.relative_depth
-       << " select_u=" << metrics.worst_quad_sample_uv[0]
+       << " real_leaf_ordinal=" << leaf.leaf_ordinal << " real_cell_id=" << leaf.cell_id
+       << " source_depth=" << leaf.relative_depth << " select_u=" << metrics.worst_quad_sample_uv[0]
        << " select_v=" << metrics.worst_quad_sample_uv[1]
        << " policy=physical_bilinear_quad_tri_barycentric_v1"
        << " real_tree_edits=0 adaptive_epochs=0\n";
@@ -700,9 +722,8 @@ struct NativeRefinementTrial {
 };
 
 NativeRefinementTrial TrialRealTreeRefinement(const research::ResidualUv& selected_uv) {
-  Require(std::isfinite(selected_uv[0]) && std::isfinite(selected_uv[1]) &&
-              selected_uv[0] > 0.0 && selected_uv[0] < 1.0 &&
-              selected_uv[1] > 0.0 && selected_uv[1] < 1.0,
+  Require(std::isfinite(selected_uv[0]) && std::isfinite(selected_uv[1]) && selected_uv[0] > 0.0 &&
+              selected_uv[0] < 1.0 && selected_uv[1] > 0.0 && selected_uv[1] < 1.0,
           "Native QUAD tree refinement selection requires strict interior UV");
   auto tree = MakeSourceTree(true);
   NativeRefinementTrial trial;
@@ -751,12 +772,11 @@ struct ConnectedBandTrial {
   std::string rejection = "none";
 };
 
-ConnectedBandTrial TrialConnectedAftBand(
-    const research::ResidualUv& selected_uv,
-    std::unique_ptr<Quadtree>* retained_native_tree = nullptr) {
-  Require(std::isfinite(selected_uv[0]) && std::isfinite(selected_uv[1]) &&
-              selected_uv[0] > 0.0 && selected_uv[0] < 1.0 &&
-              selected_uv[1] > 0.0 && selected_uv[1] < 1.0,
+ConnectedBandTrial
+TrialConnectedAftBand(const research::ResidualUv& selected_uv,
+                      std::unique_ptr<Quadtree>* retained_native_tree = nullptr) {
+  Require(std::isfinite(selected_uv[0]) && std::isfinite(selected_uv[1]) && selected_uv[0] > 0.0 &&
+              selected_uv[0] < 1.0 && selected_uv[1] > 0.0 && selected_uv[1] < 1.0,
           "Connected AFT band needs a real interior source residual sample");
   auto tree = MakeSourceTree(true);
   ConnectedBandTrial result;
@@ -766,8 +786,7 @@ ConnectedBandTrial TrialConnectedAftBand(
     for (auto* cell : tree->getLeaves()) {
       auto* low = cell->getMin();
       auto* high = cell->getMax();
-      if (u > low->getX() && u < high->getX() &&
-          v > low->getY() && v < high->getY()) {
+      if (u > low->getX() && u < high->getX() && v > low->getY() && v < high->getY()) {
         Require(chosen == nullptr, "Ambiguous source leaf in connected band");
         chosen = cell;
       }
@@ -784,15 +803,14 @@ ConnectedBandTrial TrialConnectedAftBand(
   const double center_u = u0 + 0.5 * du;
   const double center_v = v0 + 0.5 * dv;
   // Only the current lower-left AFT-dominated corner geometry is qualified.
-  Require(corner->getLevel() == 2 && center_u < 0.5 && center_v < 0.5 &&
-              std::isfinite(du) && std::isfinite(dv) && du > 0.0 && dv > 0.0,
+  Require(corner->getLevel() == 2 && center_u < 0.5 && center_v < 0.5 && std::isfinite(du) &&
+              std::isfinite(dv) && du > 0.0 && dv > 0.0,
           "Connected AFT band requires the pinned corner source chart");
   auto* east = find_leaf(center_u + du, center_v);
   auto* north = find_leaf(center_u, center_v + dv);
   const std::array<QuadtreeCell*, 3> selected{{corner, east, north}};
   std::set<QuadtreeCell*> unique(selected.begin(), selected.end());
-  Require(unique.size() == 3 &&
-              east->getLevel() == corner->getLevel() &&
+  Require(unique.size() == 3 && east->getLevel() == corner->getLevel() &&
               north->getLevel() == corner->getLevel(),
           "Connected band did not select three distinct native source leaves");
   for (std::size_t i = 0; i < selected.size(); ++i) {
@@ -831,26 +849,21 @@ void ProbeConnectedAftBand(const Candidate& unchanged,
   const auto* original_element = unchanged.mesh->GetElement(0);
   const auto band = TrialConnectedAftBand(residual.worst_triangle_sample_uv);
   Require(band.refined_cell_ids[0] == 6 && band.refined_cell_ids[1] > 0 &&
-              band.refined_cell_ids[2] > 0 &&
-              unchanged.mesh->GetNoh(0) == original_node &&
+              band.refined_cell_ids[2] > 0 && unchanged.mesh->GetNoh(0) == original_node &&
               unchanged.mesh->GetElement(0) == original_element &&
               CaptureNodeObservers(*unchanged.mesh) == observers,
           "Connected native band lost physical source selection or prior owner identity");
   std::ostringstream out;
   out.imbue(std::locale::classic());
-  out << std::setprecision(17)
-      << "QUAD_CONNECTED_BAND_TRIAL"
+  out << std::setprecision(17) << "QUAD_CONNECTED_BAND_TRIAL"
       << " source=real_candidate_worst_aft_triangle"
       << " source_cell_id=" << band.refined_cell_ids[0]
       << " bridge_east_cell_id=" << band.refined_cell_ids[1]
       << " bridge_north_cell_id=" << band.refined_cell_ids[2]
-      << " baseline_leaves=" << band.baseline_leaves
-      << " refined_leaves=" << band.leaves
+      << " baseline_leaves=" << band.baseline_leaves << " refined_leaves=" << band.leaves
       << " native_leaf_edits=3"
-      << " admitted_uv_disk=" << int(band.admitted_uv_disk)
-      << " quad_uv_area=" << band.uv_area
-      << " emitted_quads=" << band.quads
-      << " prior_physical_owner_preserved=1"
+      << " admitted_uv_disk=" << int(band.admitted_uv_disk) << " quad_uv_area=" << band.uv_area
+      << " emitted_quads=" << band.quads << " prior_physical_owner_preserved=1"
       << " actual_aft_retriangulations=0"
       << " adaptive_epochs=0\n";
   std::cout << out.str();
@@ -879,8 +892,7 @@ void ProbeNativeTreeAlternatives(const Candidate& unchanged,
               quad_trial.leaves > baseline.source_leaves &&
               aft_trial.leaves > baseline.source_leaves,
           "Mixed source errors did not select two distinct real native level-2 leaves");
-  Require(unchanged.mesh->GetNoh(0) == node &&
-              unchanged.mesh->GetElement(0) == element &&
+  Require(unchanged.mesh->GetNoh(0) == node && unchanged.mesh->GetElement(0) == element &&
               CaptureNodeObservers(*unchanged.mesh) == previous_observers,
           "Transient native tree trials damaged the original accepted physical candidate");
   Require(quad_trial.interior_uv_area >= baseline.interior_area || !quad_trial.emitted_disk,
@@ -890,21 +902,16 @@ void ProbeNativeTreeAlternatives(const Candidate& unchanged,
 
   std::ostringstream output;
   output.imbue(std::locale::classic());
-  output << std::setprecision(17)
-         << "QUAD_NATIVE_TREE_TRIALS"
+  output << std::setprecision(17) << "QUAD_NATIVE_TREE_TRIALS"
          << " source=generated_real_mixed_physical_candidate"
          << " baseline_leaves=" << baseline.source_leaves
          << " baseline_quad_uv_area=" << baseline.interior_area
-         << " quad_cell_id=" << quad_trial.chosen_cell_id
-         << " quad_leaves=" << quad_trial.leaves
+         << " quad_cell_id=" << quad_trial.chosen_cell_id << " quad_leaves=" << quad_trial.leaves
          << " quad_emitted_disk=" << int(quad_trial.emitted_disk)
-         << " quad_uv_area=" << quad_trial.interior_uv_area
-         << " quad_faces=" << quad_trial.quads
-         << " aft_cell_id=" << aft_trial.chosen_cell_id
-         << " aft_leaves=" << aft_trial.leaves
+         << " quad_uv_area=" << quad_trial.interior_uv_area << " quad_faces=" << quad_trial.quads
+         << " aft_cell_id=" << aft_trial.chosen_cell_id << " aft_leaves=" << aft_trial.leaves
          << " aft_emitted_disk=" << int(aft_trial.emitted_disk)
-         << " aft_uv_area=" << aft_trial.interior_uv_area
-         << " aft_quad_faces=" << aft_trial.quads
+         << " aft_uv_area=" << aft_trial.interior_uv_area << " aft_quad_faces=" << aft_trial.quads
          << " source_candidate_preserved=1"
          << " native_trial_refinements=2"
          << " actual_adaptive_epochs=0\n";
@@ -927,10 +934,32 @@ void Export(const Candidate& result, const std::filesystem::path& path) {
     out.imbue(std::locale::classic());
     Require(bool(out), "Cannot create controlled output");
     out << std::setprecision(17)
-        << "# controlled curved Bezier; experimental fixed16/vertex_mean; not adaptive\n";
+        << (result.real_boundary
+                ? "# original curve workflow/native tree; experimental vertex_mean; mixed "
+                  "adaptive_epochs=0\n"
+                : "# controlled curved Bezier; experimental fixed16/vertex_mean; not adaptive\n");
+    if (result.source_witness) {
+      const auto& source = *result.source_witness;
+      out << "# original_source step=" << source.source_step << " leaves=" << source.source_leaves
+          << " nonuniform_sides=" << source.nonuniform_sides
+          << " reversed_sides=" << source.reversed_sides
+          << " reference_tri_accepted=" << source.reference_tri_accepted << '\n';
+      for (unsigned side = 0; side < 4; ++side)
+        for (const auto& sample : source.original_curves[side])
+          out << "# original_curve " << side << ' ' << source.reversed_curves[side] << ' '
+              << sample.parameter << ' ' << sample.source_id << ' ' << sample.xyz[0] << ' '
+              << sample.xyz[1] << ' ' << sample.xyz[2] << '\n';
+      for (const auto& site : source.sites)
+        out << "# source_site " << site.side << ' ' << site.parameter << ' ' << site.uv.u << ' '
+            << site.uv.v << ' ' << site.source_id << ' ' << site.xyz[0] << ' ' << site.xyz[1] << ' '
+            << site.xyz[2] << ' ' << site.edge_mid[0] << ' ' << site.edge_mid[1] << ' '
+            << site.normalized_length << ' ' << site.refined_length << '\n';
+    }
     for (unsigned i = 0; i < result.mesh->GetNumberNos(); ++i) {
       const auto* n = result.mesh->GetNoh(i);
       out << "v " << n->GetX() << ' ' << n->GetY() << ' ' << n->GetZ() << '\n';
+      if (result.real_boundary)
+        out << "# node_id " << i + 1 << ' ' << n->GetId() << '\n';
     }
     for (const auto& uv : result.uv)
       out << "vt " << uv.u << ' ' << uv.v << '\n';
@@ -973,19 +1002,18 @@ struct SecondNativeBandTrial {
   std::string rejection = "none";
 };
 
-SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_source,
-                                            const research::ResidualUv& second_source,
-                                            unsigned variant,
-                                            std::unique_ptr<Quadtree>* retained_native_tree = nullptr) {
-  Require(variant < 4 && std::isfinite(second_source[0]) &&
-              std::isfinite(second_source[1]) &&
-              second_source[0] > 0.75 && second_source[0] < 1.0 &&
-              second_source[1] > 0.0 && second_source[1] < 0.25,
+SecondNativeBandTrial
+TrialSecondNativeBand(const research::ResidualUv& first_source,
+                      const research::ResidualUv& second_source, unsigned variant,
+                      std::unique_ptr<Quadtree>* retained_native_tree = nullptr) {
+  Require(variant < 4 && std::isfinite(second_source[0]) && std::isfinite(second_source[1]) &&
+              second_source[0] > 0.75 && second_source[0] < 1.0 && second_source[1] > 0.0 &&
+              second_source[1] < 0.25,
           "Second connected AFT band needs the measured lower-right source chart");
   std::unique_ptr<Quadtree> tree;
   const auto first = TrialConnectedAftBand(first_source, &tree);
-  Require(first.admitted_uv_disk && tree && first.leaves == 28 &&
-              first.quads == 62 && first.uv_area == 0.328125L,
+  Require(first.admitted_uv_disk && tree && first.leaves == 28 && first.quads == 62 &&
+              first.uv_area == 0.328125L,
           "Second native trial did not reproduce the first physical source band");
   SecondNativeBandTrial result;
   result.baseline_leaves = tree->GetLeafCount();
@@ -994,8 +1022,7 @@ SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_so
     for (auto* cell : tree->getLeaves()) {
       auto* low = cell->getMin();
       auto* high = cell->getMax();
-      if (u > low->getX() && u < high->getX() &&
-          v > low->getY() && v < high->getY()) {
+      if (u > low->getX() && u < high->getX() && v > low->getY() && v < high->getY()) {
         Require(chosen == nullptr, "Ambiguous second-band native source leaf");
         chosen = cell;
       }
@@ -1004,20 +1031,18 @@ SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_so
     return chosen;
   };
   auto* corner = find_leaf(second_source[0], second_source[1]);
-  Require(corner->getLevel() == 2 &&
-              corner->getMin()->getX() == 0.75 &&
+  Require(corner->getLevel() == 2 && corner->getMin()->getX() == 0.75 &&
               corner->getMin()->getY() == 0.0,
           "Second AFT source leaf was not the original lower-right level-2 cell");
   const double du = corner->getMax()->getX() - corner->getMin()->getX();
   const double dv = corner->getMax()->getY() - corner->getMin()->getY();
-  Require(du == 0.25 && dv == 0.25,
-          "Second AFT source cell changed its original dyadic extent");
+  Require(du == 0.25 && dv == 0.25, "Second AFT source cell changed its original dyadic extent");
   const double u = corner->getMin()->getX() + 0.5 * du;
   const double v = corner->getMin()->getY() + 0.5 * dv;
   auto* west = find_leaf(u - du, v);
   auto* north = find_leaf(u, v + dv);
-  Require(west != corner && north != corner && west != north &&
-              west->getLevel() == 2 && north->getLevel() == 2,
+  Require(west != corner && north != corner && west != north && west->getLevel() == 2 &&
+              north->getLevel() == 2,
           "Second native AFT bridge cells are not distinct original leaves");
   result.selected_cell_id = corner->getId();
   result.west_cell_id = west->getId();
@@ -1064,28 +1089,21 @@ void ProbeSecondNativeAftVariants(const Candidate& previous_physical,
   static const std::array<const char*, 4> names{{"corner", "west", "north", "both"}};
   for (unsigned variant = 0; variant < names.size(); ++variant) {
     const auto trial = TrialSecondNativeBand(first_source.worst_triangle_sample_uv,
-                                             second_source.worst_triangle_sample_uv,
-                                             variant);
+                                             second_source.worst_triangle_sample_uv, variant);
     Require(previous_physical.mesh->GetNoh(0) == previous_node &&
                 previous_physical.mesh->GetElement(0) == previous_element &&
                 CaptureNodeObservers(*previous_physical.mesh) == previous_observers,
             "Second temporary native refinement modified the previous physical owner");
     std::ostringstream out;
     out.imbue(std::locale::classic());
-    out << std::setprecision(17)
-        << "QUAD_SECOND_NATIVE_BAND"
-        << " variant=" << names[variant]
-        << " source=staged_previous_physical_worst_aft"
+    out << std::setprecision(17) << "QUAD_SECOND_NATIVE_BAND"
+        << " variant=" << names[variant] << " source=staged_previous_physical_worst_aft"
         << " selected_native_id=" << trial.selected_cell_id
-        << " west_native_id=" << trial.west_cell_id
-        << " north_native_id=" << trial.north_cell_id
-        << " baseline_leaves=" << trial.baseline_leaves
-        << " refined_leaves=" << trial.leaves
+        << " west_native_id=" << trial.west_cell_id << " north_native_id=" << trial.north_cell_id
+        << " baseline_leaves=" << trial.baseline_leaves << " refined_leaves=" << trial.leaves
         << " native_leaf_edits=" << (1u + ((variant & 1u) != 0u) + ((variant & 2u) != 0u))
-        << " admitted_uv_disk=" << int(trial.admitted_uv_disk)
-        << " quad_uv_area=" << trial.uv_area
-        << " emitted_quads=" << trial.quads
-        << " previous_physical_owner_preserved=1"
+        << " admitted_uv_disk=" << int(trial.admitted_uv_disk) << " quad_uv_area=" << trial.uv_area
+        << " emitted_quads=" << trial.quads << " previous_physical_owner_preserved=1"
         << " actual_second_aft_retriangulations=0"
         << " adaptive_epochs=0\n";
     std::cout << out.str();
@@ -1098,8 +1116,7 @@ void ProbeSecondNativeAftVariants(const Candidate& previous_physical,
 // Reconstruct each new native disk with the ORIGINAL AFT exterior pipeline.
 // A failure remains a rejected proposal: no prior typed owner is replaced.
 // The original source's fixed16 boundary is retained, so no true mixed epoch.
-void ProbeSecondPhysicalAftVariants(const Candidate& previous_physical,
-                                    PatchBezier& patch,
+void ProbeSecondPhysicalAftVariants(const Candidate& previous_physical, PatchBezier& patch,
                                     const research::MixedSurfaceResidual& first_source,
                                     const research::MixedSurfaceResidual& second_source,
                                     const std::filesystem::path& output_prefix) {
@@ -1114,8 +1131,7 @@ void ProbeSecondPhysicalAftVariants(const Candidate& previous_physical,
   static const std::array<const char*, 4> names{{"corner", "west", "north", "both"}};
   for (unsigned variant = 0; variant < names.size(); ++variant) {
     const auto native = TrialSecondNativeBand(first_source.worst_triangle_sample_uv,
-                                               second_source.worst_triangle_sample_uv,
-                                               variant);
+                                              second_source.worst_triangle_sample_uv, variant);
     const auto candidate_path = std::filesystem::path(
         output_prefix.string() + "." + names[variant] + ".second-band-candidate.obj");
     bool staged = false;
@@ -1127,16 +1143,14 @@ void ProbeSecondPhysicalAftVariants(const Candidate& previous_physical,
     double max_source_error = 0.0;
     if (native.admitted_uv_disk) {
       try {
-        const auto factory = [&first_source, &second_source, variant, &native]()
-            -> std::unique_ptr<Quadtree> {
+        const auto factory = [&first_source, &second_source, variant,
+                              &native]() -> std::unique_ptr<Quadtree> {
           std::unique_ptr<Quadtree> ready;
-          const auto repeat = TrialSecondNativeBand(
-              first_source.worst_triangle_sample_uv,
-              second_source.worst_triangle_sample_uv, variant, &ready);
-          Require(ready && repeat.admitted_uv_disk &&
-                      repeat.quads == native.quads &&
-                      repeat.leaves == native.leaves &&
-                      repeat.uv_area == native.uv_area,
+          const auto repeat =
+              TrialSecondNativeBand(first_source.worst_triangle_sample_uv,
+                                    second_source.worst_triangle_sample_uv, variant, &ready);
+          Require(ready && repeat.admitted_uv_disk && repeat.quads == native.quads &&
+                      repeat.leaves == native.leaves && repeat.uv_area == native.uv_area,
                   "Original native AFT and QUAD template trees differ for second band");
           return ready;
         };
@@ -1144,8 +1158,7 @@ void ProbeSecondPhysicalAftVariants(const Candidate& previous_physical,
         // original TRI reference front and typed QUAD/interior AFT pipeline.
         auto candidate = Generate(patch, false, factory);
         CheckTypedIncidence(*candidate.mesh, candidate);
-        Require(candidate.quads == native.quads &&
-                    candidate.faces.size() > candidate.quads &&
+        Require(candidate.quads == native.quads && candidate.faces.size() > candidate.quads &&
                     candidate.mesh->GetNumberNos() == candidate.uv.size(),
                 "Native second physical band lost actual typed QUAD/AFT elements");
         std::vector<research::ResidualUv> uv;
@@ -1158,18 +1171,14 @@ void ProbeSecondPhysicalAftVariants(const Candidate& previous_physical,
           Require(node != nullptr, "Second AFT physical candidate contains a null node");
           xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
         }
-        const auto source = [&patch](const research::ResidualUv& site)
-            -> research::ResidualPoint3 {
+        const auto source = [&patch](const research::ResidualUv& site) -> research::ResidualPoint3 {
           return Evaluate(patch, {site[0], site[1]});
         };
-        const auto errors = research::MeasureMixedSurfaceResidual(
-            uv, xyz, candidate.faces, source);
+        const auto errors = research::MeasureMixedSurfaceResidual(uv, xyz, candidate.faces, source);
         Require(errors.quadrilaterals == candidate.quads &&
                     errors.triangles == candidate.faces.size() - candidate.quads &&
-                    errors.triangles > 0 &&
-                    std::isfinite(errors.maximum) &&
-                    std::isfinite(candidate.min_quality) &&
-                    candidate.min_quality > 0.0,
+                    errors.triangles > 0 && std::isfinite(errors.maximum) &&
+                    std::isfinite(candidate.min_quality) && candidate.min_quality > 0.0,
                 "Second AFT physical proposal failed typed Bezier quality/source checks");
         physical_nodes = candidate.mesh->GetNumberNos();
         physical_quads = candidate.quads;
@@ -1194,22 +1203,16 @@ void ProbeSecondPhysicalAftVariants(const Candidate& previous_physical,
             "Second physical AFT output presence differs from recorded status");
     std::ostringstream out;
     out.imbue(std::locale::classic());
-    out << std::setprecision(17)
-        << "QUAD_SECOND_PHYSICAL_AFT_CANDIDATE"
+    out << std::setprecision(17) << "QUAD_SECOND_PHYSICAL_AFT_CANDIDATE"
         << " variant=" << names[variant]
         << " status=" << (staged ? "staged_unaccepted" : "rejected")
         << " source=previous_staged_physical_worst_aft"
-        << " native_leaves=" << native.leaves
-        << " native_quad_uv_area=" << native.uv_area
-        << " native_emitted_quads=" << native.quads
-        << " physical_nodes=" << physical_nodes
-        << " physical_quads=" << physical_quads
-        << " physical_triangles=" << physical_triangles
-        << " min_facet_quality=" << min_facet_quality
-        << " max_source_error=" << max_source_error
+        << " native_leaves=" << native.leaves << " native_quad_uv_area=" << native.uv_area
+        << " native_emitted_quads=" << native.quads << " physical_nodes=" << physical_nodes
+        << " physical_quads=" << physical_quads << " physical_triangles=" << physical_triangles
+        << " min_facet_quality=" << min_facet_quality << " max_source_error=" << max_source_error
         << " original_aft_pipeline_requested=" << int(native.admitted_uv_disk)
-        << " exported_candidate=" << int(staged)
-        << " previous_physical_owner_preserved=1"
+        << " exported_candidate=" << int(staged) << " previous_physical_owner_preserved=1"
         << " adaptive_epochs=0\n";
     std::cout << out.str();
     if (!staged)
@@ -1238,8 +1241,7 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
     const auto band = TrialConnectedAftBand(sample, &ready);
     Require(band.admitted_uv_disk && ready && band.refined_cell_ids[0] == 6 &&
                 band.refined_cell_ids[1] == 7 && band.refined_cell_ids[2] == 9 &&
-                band.leaves == 28 && band.quads == 62 &&
-                band.uv_area == 0.328125L,
+                band.leaves == 28 && band.quads == 62 && band.uv_area == 0.328125L,
             "Physical connected band lacks an independently admissible original native tree");
     return ready;
   };
@@ -1257,8 +1259,7 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
     // The new QUAD selector consumes a second identical but independent tree.
     auto candidate = Generate(patch, false, factory);
     CheckTypedIncidence(*candidate.mesh, candidate);
-    Require(candidate.quads == 62 &&
-                candidate.faces.size() > candidate.quads &&
+    Require(candidate.quads == 62 && candidate.faces.size() > candidate.quads &&
                 candidate.mesh->GetNumberNos() == candidate.uv.size(),
             "Band-refined physical proposal lacks both typed QUAD and original AFT TRI");
     std::vector<research::ResidualUv> uv;
@@ -1271,12 +1272,10 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
       Require(node != nullptr, "Physical band has a null typed node");
       xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
     }
-    const auto source = [&patch](const research::ResidualUv& uv_site)
-        -> research::ResidualPoint3 {
+    const auto source = [&patch](const research::ResidualUv& uv_site) -> research::ResidualPoint3 {
       return Evaluate(patch, {uv_site[0], uv_site[1]});
     };
-    const auto errors = research::MeasureMixedSurfaceResidual(
-        uv, xyz, candidate.faces, source);
+    const auto errors = research::MeasureMixedSurfaceResidual(uv, xyz, candidate.faces, source);
     Require(errors.quadrilaterals == candidate.quads &&
                 errors.triangles == candidate.faces.size() - candidate.quads &&
                 errors.triangles > 0 && std::isfinite(errors.maximum) &&
@@ -1299,8 +1298,7 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
   } catch (const std::exception& error) {
     reason = error.what();
   }
-  Require(patch.GetSubMesh() == previous_patch_owner &&
-              previous.mesh->GetNoh(0) == previous_node &&
+  Require(patch.GetSubMesh() == previous_patch_owner && previous.mesh->GetNoh(0) == previous_node &&
               previous.mesh->GetElement(0) == previous_element &&
               CaptureNodeObservers(*previous.mesh) == previous_observers,
           "Rejected or staged physical band damaged the existing mixed owner");
@@ -1308,20 +1306,15 @@ void ProbePhysicalConnectedBand(const Candidate& previous, PatchBezier& patch,
           "Physical candidate publication status disagrees with actual file");
   std::ostringstream output;
   output.imbue(std::locale::classic());
-  output << std::setprecision(17)
-         << "QUAD_BAND_PHYSICAL_CANDIDATE"
+  output << std::setprecision(17) << "QUAD_BAND_PHYSICAL_CANDIDATE"
          << " status=" << (staged ? "staged_unaccepted" : "rejected")
          << " source=original_native_connected_band"
          << " previous_physical_owner_preserved=1"
          << " original_aft_pipeline_requested=1"
-         << " physical_quads=" << physical_quads
-         << " physical_triangles=" << physical_triangles
-         << " physical_nodes=" << physical_nodes
-         << " max_source_error=" << maximum_error
-         << " max_quad_error=" << maximum_quad_error
-         << " max_aft_error=" << maximum_triangle_error
-         << " min_facet_quality=" << minimum_facet_quality
-         << " exported_candidate=" << int(staged)
+         << " physical_quads=" << physical_quads << " physical_triangles=" << physical_triangles
+         << " physical_nodes=" << physical_nodes << " max_source_error=" << maximum_error
+         << " max_quad_error=" << maximum_quad_error << " max_aft_error=" << maximum_triangle_error
+         << " min_facet_quality=" << minimum_facet_quality << " exported_candidate=" << int(staged)
          << " adaptive_epochs=0\n";
   std::cout << output.str();
   if (!staged)
@@ -1351,8 +1344,7 @@ OwnerRehearsalWitness SnapshotOwnerRehearsal(SubMesh& mesh) {
     result.nodes.push_back(node);
     result.node_ids.push_back(node->GetId());
     result.physical_xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
-    result.node_curvatures.push_back(
-        {node->GetGa(), node->GetGd(), node->GetHa(), node->GetHd()});
+    result.node_curvatures.push_back({node->GetGa(), node->GetGd(), node->GetHa(), node->GetHd()});
   }
   for (unsigned i = 0; i < mesh.GetNumberElements(); ++i) {
     auto* element = mesh.GetElement(i);
@@ -1364,8 +1356,7 @@ OwnerRehearsalWitness SnapshotOwnerRehearsal(SubMesh& mesh) {
   return result;
 }
 
-void RequireOwnerRehearsalUnchanged(PatchBezier& patch,
-                                   const OwnerRehearsalWitness& original) {
+void RequireOwnerRehearsalUnchanged(PatchBezier& patch, const OwnerRehearsalWitness& original) {
   Require(original.owner != nullptr && patch.GetSubMesh() == original.owner &&
               original.owner->GetPatch() == &patch &&
               original.nodes.size() == original.owner->GetNumberNos() &&
@@ -1374,18 +1365,15 @@ void RequireOwnerRehearsalUnchanged(PatchBezier& patch,
           "Owner rehearsal lost the previously accepted physical graph");
   for (std::size_t i = 0; i < original.nodes.size(); ++i) {
     const auto* node = original.owner->GetNoh(static_cast<unsigned>(i));
-    Require(node == original.nodes[i] &&
-                node->GetId() == original.node_ids[i] &&
+    Require(node == original.nodes[i] && node->GetId() == original.node_ids[i] &&
                 Xyz{node->GetX(), node->GetY(), node->GetZ()} == original.physical_xyz[i] &&
-                (std::array<double, 4>{node->GetGa(), node->GetGd(),
-                                       node->GetHa(), node->GetHd()}) ==
-                    original.node_curvatures[i],
+                (std::array<double, 4>{node->GetGa(), node->GetGd(), node->GetHa(),
+                                       node->GetHd()}) == original.node_curvatures[i],
             "Failed physical transaction changed accepted node identity, XYZ or curvature");
   }
   for (std::size_t i = 0; i < original.elements.size(); ++i) {
     auto* element = original.owner->GetElement(static_cast<unsigned>(i));
-    Require(element == original.elements[i] &&
-                element->GetId() == original.element_ids[i] &&
+    Require(element == original.elements[i] && element->GetId() == original.element_ids[i] &&
                 element->GetArea() == original.element_areas[i],
             "Failed physical transaction changed accepted element identity or area");
   }
@@ -1400,12 +1388,12 @@ std::string ReadRehearsalOutput(const std::filesystem::path& file) {
 // Test only: real native AFT successor of an already-published physical P1
 // graph. Swaps are reversible rehearsals, not scientifically admitted epochs.
 // No second artifact is published; all exceptions precede the noexcept swap.
-void ProbePhysicalOwnerTransactionRehearsal(
-    PatchBezier& patch, SubMesh& accepted, const Candidate& original,
-    const research::MixedSurfaceResidual& first_source,
-    const std::filesystem::path& output_prefix) {
-  Require(accepted.GetNumberNos() == 69 && original.quads == 42 &&
-              original.faces.size() == 78 && patch.GetSubMesh() == &accepted,
+void ProbePhysicalOwnerTransactionRehearsal(PatchBezier& patch, SubMesh& accepted,
+                                            const Candidate& original,
+                                            const research::MixedSurfaceResidual& first_source,
+                                            const std::filesystem::path& output_prefix) {
+  Require(accepted.GetNumberNos() == 69 && original.quads == 42 && original.faces.size() == 78 &&
+              patch.GetSubMesh() == &accepted,
           "Owner transaction rehearsal requires the real previously published P1 graph");
   CheckTypedIncidence(accepted, original);
   const auto witness = SnapshotOwnerRehearsal(accepted);
@@ -1424,10 +1412,11 @@ void ProbePhysicalOwnerTransactionRehearsal(
     Require(node != nullptr, "Accepted prior owner has a missing source-error node");
     accepted_xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
   }
-  const auto source = [&patch](const research::ResidualUv& site)
-      -> research::ResidualPoint3 { return Evaluate(patch, {site[0], site[1]}); };
-  const auto actual_prior_source = research::MeasureMixedSurfaceResidual(
-      accepted_uv, accepted_xyz, original.faces, source);
+  const auto source = [&patch](const research::ResidualUv& site) -> research::ResidualPoint3 {
+    return Evaluate(patch, {site[0], site[1]});
+  };
+  const auto actual_prior_source =
+      research::MeasureMixedSurfaceResidual(accepted_uv, accepted_xyz, original.faces, source);
   Require(actual_prior_source.worst_triangle_face == first_source.worst_triangle_face &&
               actual_prior_source.worst_triangle_sample_uv ==
                   first_source.worst_triangle_sample_uv &&
@@ -1437,8 +1426,8 @@ void ProbePhysicalOwnerTransactionRehearsal(
   const auto factory = [source_site]() -> std::unique_ptr<Quadtree> {
     std::unique_ptr<Quadtree> tree;
     const auto trial = TrialConnectedAftBand(source_site, &tree);
-    Require(trial.admitted_uv_disk && tree && trial.leaves == 28 &&
-                trial.quads == 62 && trial.uv_area == 0.328125L,
+    Require(trial.admitted_uv_disk && tree && trial.leaves == 28 && trial.quads == 62 &&
+                trial.uv_area == 0.328125L,
             "Owner rehearsal successor differs from the real native error-selected band");
     return tree;
   };
@@ -1449,8 +1438,7 @@ void ProbePhysicalOwnerTransactionRehearsal(
         throw PublicationFailure("Injected owner trial failure before native reconstruction");
       auto layout = Generate(patch, stage == 1, factory);
       CheckTypedIncidence(*layout.mesh, layout);
-      Require(layout.quads == 62 && layout.mesh->GetNumberNos() == 93 &&
-                  layout.faces.size() == 106,
+      Require(layout.quads == 62 && layout.mesh->GetNumberNos() == 93 && layout.faces.size() == 106,
               "Owner transaction trial successor is not the genuine typed physical band");
       auto trial = CloneTypedHistory(*layout.mesh, layout, patch, stage == 2 ? 7 : -1);
       CheckTypedIncidence(*trial, layout);
@@ -1492,8 +1480,7 @@ void ProbePhysicalOwnerTransactionRehearsal(
     } restore{patch, &accepted};
     staged->SetPatch(&patch);
     patch.SetSubMesh(staged.get());
-    Require(patch.GetSubMesh() == staged.get() &&
-                staged->GetPatch() == &patch,
+    Require(patch.GetSubMesh() == staged.get() && staged->GetPatch() == &patch,
             "Noexcept owner rehearsal could not temporarily adopt the real typed successor");
     CheckTypedIncidence(*staged, physical);
     patch.SetSubMesh(&accepted);
@@ -1507,8 +1494,7 @@ void ProbePhysicalOwnerTransactionRehearsal(
             << " source=published_previous_P1_real_AFT"
             << " prior_nodes=69 prior_quads=42 prior_triangles=36"
             << " next_nodes=93 next_quads=62 next_triangles=44"
-            << " injected_failures=" << injected_failures
-            << " temporary_noexcept_swaps=1"
+            << " injected_failures=" << injected_failures << " temporary_noexcept_swaps=1"
             << " reverted_to_previous_owner=1"
             << " ordered_node_observers_preserved=1"
             << " node_curvature_and_element_area_preserved=1"
@@ -1518,6 +1504,125 @@ void ProbePhysicalOwnerTransactionRehearsal(
 }
 
 } // namespace
+
+int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
+  const auto output = std::filesystem::path(config.output_prefix + ".obj");
+  Require(!std::filesystem::exists(output) &&
+              !std::filesystem::exists(output.string() + ".pending"),
+          "Real-boundary output or pending publication already exists");
+  Require(output.parent_path().empty() || std::filesystem::is_directory(output.parent_path()),
+          "Real-boundary output parent directory does not exist");
+  Geometry geometry;
+  Models3d models;
+  if (config.input_model == "builtin:curva_bezier")
+    models.ModelCurvaBezier(&geometry);
+  else {
+    PatchReader reader;
+    reader.ReaderFilePatches(&geometry, config.input_model);
+  }
+  Require(geometry.GetNumberPatches() == 1, "Real-boundary QUAD requires one source patch");
+  auto* patch = dynamic_cast<PatchBezier*>(geometry.GetPatch(0));
+  Require(patch != nullptr, "Real-boundary QUAD requires a Bezier source");
+
+  // Run the unmodified original generator, including initial TRI curvature,
+  // curve budgets, retries and acceptance. Capture only value witnesses.
+  Model model(&geometry);
+  GeneratorAdaptive generator(application::MakeGenerationContext(config, NUMBER_PROCESS));
+  Timer timer(config.num_processes, config.num_threads, 12);
+  timer.InitTimerParallel(0, 0, 10);
+  struct Capture {
+    RealBoundarySource source;
+    PatchAttemptIdentity attempt;
+    bool locally_selected = false;
+  };
+  std::vector<Capture> captures;
+  std::optional<RealBoundarySource> pending;
+  CaptureHooks hooks;
+  hooks.provider = [&](Quadtree& tree) {
+    Require(!pending, "Original source capture was not consumed");
+    pending = CaptureRealBoundary(*patch, tree);
+    LeafPolygonMesh value;
+    value.source_leaves = pending->source_leaves;
+    return value;
+  };
+  hooks.sink = [&](AttemptUvCapture value) {
+    Require(pending.has_value() && value.attempt.patch_index == 0,
+            "Original source capture lost its patch identity");
+    pending->source_step = value.attempt.adaptive_step;
+    captures.push_back({std::move(*pending), value.attempt, false});
+    pending.reset();
+  };
+  hooks.local_selection_sink = [&](LocalSelectionEvent event) {
+    for (auto& capture : captures)
+      if (SamePatchScope(capture.attempt, event.attempt) &&
+          capture.attempt.local_attempt == event.attempt.local_attempt)
+        capture.locally_selected = event.kind == LocalSelectionKind::SelectedForAdapterReturn;
+  };
+  generator.SetResearchUvCapture(std::move(hooks), 15112026);
+  generator.Generator(model, &timer);
+  const auto* outcomes = generator.GetResearchGlobalOutcomeLog();
+  Require(outcomes && !outcomes->truncated(), "Original generator outcome stream is incomplete");
+  const RealBoundarySource* selected = nullptr;
+  for (std::size_t i = 0; i < outcomes->size(); ++i) {
+    const auto& event = outcomes->data()[i];
+    if (event.kind != GlobalOutcomeKind::AcceptedStepCommitted &&
+        event.kind != GlobalOutcomeKind::RejectedStepRestored)
+      continue;
+    for (auto& capture : captures)
+      if (capture.locally_selected && SameOuterAttempt(capture.attempt.outer, event.outer) &&
+          capture.attempt.adaptive_step == event.adaptive_step) {
+        capture.source.reference_tri_accepted =
+            event.kind == GlobalOutcomeKind::AcceptedStepCommitted;
+        selected = &capture.source;
+      }
+  }
+  Require(selected != nullptr,
+          "Original workflow produced no complete source-attempt outcome; no synthetic fallback");
+  // Preserve a uniform partition when that is the original algorithm's result.
+  std::cout << "QUAD_ORIGINAL_SOURCE step=" << selected->source_step
+            << " boundary=" << selected->sites.size() << " leaves=" << selected->source_leaves
+            << " nonuniform_sides=" << selected->nonuniform_sides << '\n';
+  Require(patch->GetSubMesh() && patch->GetSubMesh()->GetNumberElements() > 0,
+          "Original source workflow retained no nonempty patch owner");
+  const auto previous = SnapshotOwnerRehearsal(*patch->GetSubMesh());
+  const auto factory = [&]() { return ReplayRealSourceTree(*patch, *selected); };
+  auto candidate = Generate(*patch, false, factory, selected);
+  RequireOwnerRehearsalUnchanged(*patch, previous);
+  CheckTypedIncidence(*candidate.mesh, candidate);
+  Export(candidate, config.output_prefix + ".obj");
+  candidate.mesh->SetPatch(patch);
+  patch->SetSubMesh(candidate.mesh.get());
+  std::unique_ptr<SubMesh> accepted;
+  accepted.swap(candidate.mesh);
+  std::cout << "QUAD_REAL_BOUNDARY source=original_generator_curve_attempt"
+            << " reference_tri_accepted=" << selected->reference_tri_accepted
+            << " source_step=" << selected->source_step << " boundary=" << selected->sites.size()
+            << " native_leaves=" << selected->source_leaves
+            << " nonuniform_sides=" << selected->nonuniform_sides
+            << " reversed_sides=" << selected->reversed_sides
+            << " nodes=" << accepted->GetNumberNos() << " quads=" << candidate.quads
+            << " triangles=" << candidate.faces.size() - candidate.quads
+            << " original_intervals_preserved=1 native_tree_replayed=1"
+            << " published=1 mixed_adaptive_epochs=0\n";
+  if (config.quad_verify_rollback) {
+    const auto witness = SnapshotOwnerRehearsal(*accepted);
+    const auto file = std::filesystem::path(config.output_prefix + ".obj");
+    const auto bytes = ReadRehearsalOutput(file);
+    bool rejected = false;
+    try {
+      auto failed = Generate(*patch, true, factory, selected);
+      (void)failed;
+    } catch (const PublicationFailure&) {
+      rejected = true;
+    }
+    Require(rejected, "Real-boundary publication fault did not fire");
+    RequireOwnerRehearsalUnchanged(*patch, witness);
+    Require(ReadRehearsalOutput(file) == bytes, "Real-boundary rollback changed published output");
+    std::cout << "QUAD_REAL_BOUNDARY_ROLLBACK previous_nonempty=1 preserved=1\n";
+    return 1;
+  }
+  return 0;
+}
 
 int RunControlledPatch(const application::RuntimeConfig& config) {
   Geometry geometry;
@@ -1549,8 +1654,8 @@ int RunControlledPatch(const application::RuntimeConfig& config) {
             << " nodes=" << accepted->GetNumberNos()
             << " boundary=16 UV_disk=1 overlap=0 min_alignment=" << candidate.min_alignment
             << " min_facet_quality=" << candidate.min_quality << " ids_unique=1 published=1\n";
-  ProbePhysicalOwnerTransactionRehearsal(*patch, *accepted, candidate,
-                                        mixed_residual, config.output_prefix);
+  ProbePhysicalOwnerTransactionRehearsal(*patch, *accepted, candidate, mixed_residual,
+                                         config.output_prefix);
   if (config.quad_verify_rollback) {
     auto* old = accepted.get();
     auto* node = old->GetNoh(0);

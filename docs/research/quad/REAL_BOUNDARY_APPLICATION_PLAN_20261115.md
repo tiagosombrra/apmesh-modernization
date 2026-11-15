@@ -6,6 +6,14 @@ all prior evidence, R0-R4/M0-M9 criteria and the accepted-epoch gate. One work
 item is active: integrate original curve discretization into the live opt-in
 single curved manifold patch QUAD/AFT application.
 
+Implementation clarification: consume the actual original curve/native-tree
+attempt, retaining its original local selection and global TRI outcome. Global
+acceptance of a separate TRI mesh is not a prerequisite for generating an
+initial research QUAD layout from that curve partition. A rejected TRI outcome
+must stay explicit and must never be counted as a passed TRI or accepted mixed
+epoch. Original curve rules and original TRI acceptance/retry/stopping logic
+remain unchanged; mixed acceptance is still the subsequent P2d-1c4b gate.
+
 ## Functional delivery to implement next
 
 1. **Obtain the real original curve partition.** Reuse the original serial

@@ -39,7 +39,7 @@ def audit(path):
     return inspect(xyz, uv, faces)
 
 
-def inspect(xyz, uv, faces):
+def inspect(xyz, uv, faces, expected_boundary=16):
     require(len(xyz) == len(uv) > 0 and faces, "Empty application output")
     require(any(len(f) == 4 for f in faces) and any(len(f) == 3 for f in faces),
             "Application did not generate both element types")
@@ -75,7 +75,7 @@ def inspect(xyz, uv, faces):
             require(any(a[k] == b[k] and a[k] in (0, 1) for k in (0, 1)),
                     "Interior gap")
             boundary += 1
-    require(boundary == 16 and len(xyz)-len(edges)+len(faces) == 1,
+    require(boundary == expected_boundary and len(xyz)-len(edges)+len(faces) == 1,
             "Source boundary/disk differs")
     require(abs(area - 1) < 1e-8, "Incomplete or overlapping UV area")
     return {"nodes": len(xyz), "quads": sum(len(f) == 4 for f in faces),

@@ -52,10 +52,14 @@ if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD)
   target_include_directories(ap_mesh_engine PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
   target_sources(ap_mesh_engine PRIVATE
     research/quad/controlled_patch_application.cpp
+    research/quad/real_boundary_source.cpp
     research/quad/physical_quadrilateral_adaptive.cpp
     research/quad/uv_mesh.cpp research/quad/quadtree_quad.cpp
     research/quad/interior_template_dispatch.cpp
     research/quad/front_interface_audit.cpp research/quad/owned_aft_front.cpp)
+  add_executable(quad_real_boundary_source_contracts tests/quad/real_boundary_source_contracts.cpp)
+  target_include_directories(quad_real_boundary_source_contracts PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_real_boundary_source_contracts PRIVATE ap_mesh_engine)
 endif()
 
 # Avoid dependence on whichever MinGW runtime DLLs happen to appear first in
