@@ -1867,3 +1867,70 @@ post-PR232 merge diff, then attempt actual second AFT physical
 reconstruction for native west/north/both and independent same-site
 geometric-quality/cost gates with fail-closed owner/OBJ publication.
 
+## 2026-11-14 — P2d-1c1 final qualification and new physical AFT P2d-1c2 proposals
+
+Confirmed previous exact-source feature 7b536dc901cae1e8b9410f6fbd9f3540c20dba09
+PR233 CI #43624756858 4/4 SUCCESS, root 85/85 CTests and 527/527 tooling
+Python, Linux/Windows genuine native/controlled app, Linux sanitizers and
+frozen original Eistute/Book TRI source parity. Reviewed net source diff
+(only C++ controlled research source, Python independent app oracle and
+bounded research doc); merged PR233 into quad-templates as
+15a57f3604c9fc8b072762ed10f3219aa12c9ad7.
+No main/production TRI changes.
+
+Started distinct branch
+quad/p2d1c2-real-second-aft-physical-candidates-20261114 from exact
+research merge 15a57f36 and opened draft PR234. New C++ implementation
+retains actual previously refined native Quadtree alternatives for
+original full native makeTemplateBasedMesh TRI reference front and
+OwnedQuadAftFront AttemptExteriorTriangulation, constructs owned typed
+real Bezier QUAD/TRI candidate and exports only after complete mixed
+topology, orientation, original boundary, AFT closure and physical
+facet/source validation. A disconnected proposal produces explicit
+reason and no OBJ; none is published as Patch/SubMesh accepted epoch.
+
+Independent Python OBJ/Bernstein oracle was extended to inspect
+three candidate files, original 16 boundary edges, mixed UV disk,
+QUAD signed Jacobian/warpage, true four-node QUAD physical interpolation
+and the **same 4096 UV source sites** for maximum XYZ, uniform RMS
+and physical-differential-area-weighted RMS. Preserves previous P1
+and first staged physical SHA and immutable node/element observers
+on failed/successful candidate probes. Source-only six-case dyadic
+negatives still executed in actual app regressions.
+
+Exact PR234 feature 32e4653ff80947498c39953ce53f50af618203e9
+CI #43663198795: Linux GCC QUAD/native/controlled app and Linux
+ASan/UBSan/leak SUCCESS, Windows MSVC same SUCCESS, frozen original
+TRI equivalence SUCCESS; root TRI baseline/tooling Linux job still
+IN PROGRESS at session checkpoint, so **do not call PR234 fully
+qualified or merged**.
+
+Measured actual new physical candidates on both Linux and Windows:
+- isolated new source corner refused, no output;
+- west: 109 nodes, 75 QUAD/50 AFT TRI, UV area .375,
+  4096-site max .026268569305, uniform RMS .010189890795,
+  source-area RMS .009960083459, SHA ca08918f6d71fa67...4274ee;
+- north: 107 nodes, 71 QUAD/54 AFT TRI, UV area .375,
+  max .026268569305, uniform RMS .009580048644,
+  source-area RMS .009233319235, SHA 6eb4faedeaab44fb...e26d500;
+- both: 117 nodes, 82 QUAD/52 AFT TRI, UV area .40625,
+  max .026268569305, uniform RMS .009459332494,
+  source-area RMS .009155128673, SHA b77afb530724f38f...3724bd36c.
+All have 16 source boundaries, positive minimum QUAD scaled
+Jacobian .567009347 and min warp cosine .997012647.
+The first staged physical baseline was 93 nodes, 62 QUAD/44 TRI,
+source-area RMS .011810324643. This is **fixed-grid geometric
+approximation evidence**, not continuous error bound, FEM solution
+error, valid scientific acceptance policy or two accepted epochs.
+Complete hashes and exact source available in
+evidence/P2D1C2_SECOND_PHYSICAL_AFT_TRIALS_20261114.json.
+
+Next: finish exact-head CI #43663198795, source readback/PR review
+and only then consider merge to quad-templates. Study alternative
+multiobjective error, QUAD coverage, element counts and physical
+quality; devise fault-injected accepted owner transaction and
+previous-accepted-state-driven mixed epochs. R3/M7 issue221 remains
+OPEN, adaptive_epochs=0. Full production AdaptCurve, original 1993
+policy, global nonmanifold sheet pairing, all-QUAD and anisotropy
+are still outside certified research candidate.
+
