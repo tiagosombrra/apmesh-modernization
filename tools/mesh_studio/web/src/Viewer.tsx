@@ -237,9 +237,9 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
         try {
           // Transform a display ray onto the flat UV z=0 plane. Never guess a
           // UV chart from group color or Euclidean XYZ vertex coincidence.
-          displayCoordinate.setValue(pixelX, pixelY, 0);
+          displayCoordinate.setValue([pixelX, pixelY, 0]);
           const near = [...displayCoordinate.getComputedWorldValue(renderer)];
-          displayCoordinate.setValue(pixelX, pixelY, 1);
+          displayCoordinate.setValue([pixelX, pixelY, 1]);
           const far = [...displayCoordinate.getComputedWorldValue(renderer)];
           const dz = far[2] - near[2];
           const fraction = -near[2] / dz;
