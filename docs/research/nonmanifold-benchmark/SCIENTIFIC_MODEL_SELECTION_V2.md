@@ -55,3 +55,10 @@ The minimum R5 output report contains requested stage, accepted/rejected state, 
 ## Non-goals for this revision
 
 No model download or raw CAD redistributions committed, no new fake/illustrative CAD render, no new native CAD acceptance claim from the static scanner, no `.bp` generated from the shortlisted complex CAD models, no new APMesh TRI/QUAD outputs, no PR merge, no validation of the original Thingi10K corrupt assets. The legacy R2/R3 synthetic controls remain available for regression; they are not discarded.
+
+
+## Executed S1 update: source originals and real gallery (2026-11-15)
+
+This study now has **byte-exact original source files** for the first four priority models. M5, S40, S27 and M3 passed native Open CASCADE import as valid solids and full native face-edge identity/degenerate-edge profiling; SHA-256 and Git blob identity were checked against the pinned upstream originals. The original CAD shaded images, surface-type-color views and the combined gallery were generated from the true source geometry, not screenshots of synthetic R2/R3 examples. See [S1 report](S1_NATIVE_ORIGINAL_CAD_AUDIT.md) and [source gallery](gallery/source_cad/mambo_originals_native_gallery.png).
+
+The conservative source-face four-sided planar candidate counts are **6 / 9 / 20 / 10** (M5 / S40 / S27 / M3). These are *screening leads*, not qualified Bezier patches or reconstructed mesh input. Multiple-wire topology and rational surface approximation make full conversion a separate S3 exercise. None of these four has a native TopoDS edge incident on three or more distinct faces; they remain complex **geometric** benchmark controls, not external non-manifold positives. Raw third-party STEP files have **not** been committed; declared upstream per-file Apache2 rights still require per-asset review.

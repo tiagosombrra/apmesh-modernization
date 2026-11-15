@@ -1,8 +1,19 @@
 # Non-manifold benchmark corpus and reverse-patch feasibility
 
-**Status:** scientific focus reprioritized to real complex CAD; **7 actual HexMe/MAMBO STEP entity graphs screened**, 4 source models prioritized for native CAD/visual/geometry qualification; synthetic R2/R3 fixtures remain test-only. Full R3, external multi-sheet G1/G2 and runtime R5 remain OPEN. Updated 2026-11-15.
+**Status:** scientific priority is ORIGINAL complex CAD. **Four byte-verified MAMBO STEP originals (M5/S40/S27/M3) have now PASSED native Open CASCADE import, topology profiling and source-rendered visual evidence**; no original multi-sheet positive or APMesh accepted meshing demonstrated. R2/R3 synthetic fixtures remain tests only. Updated 2026-11-15.
 **Frozen planning base:** main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 **Research branch:** `research/benchmark-corpus-reverse-patches`, draft PR #225.
+
+## S1 native original CAD evidence (2026-11-15)
+
+**First actual complex-source gallery:**
+
+![Four original MAMBO industrial models, rendered from their byte-exact STEP originals](gallery/source_cad/mambo_originals_native_gallery.png)
+
+- [Full S1 native CAD audit](S1_NATIVE_ORIGINAL_CAD_AUDIT.md) — original file raw SHA-256, original Git blob SHAs, Open CASCADE solid validity, full face-edge-use histogram, edge degeneracy, support-surface types and per-face complexity.
+- [Four native source-specific image pairs and combined gallery](gallery/source_cad/mambo_originals_native_gallery.png) — real CAD import, **not APMesh surface TRI/QUAD meshes**.
+- [Native importer/render + feature-incidence source](probes/native_source_audit.py), [7 scoped local regression controls](probes/test_native_source_audit.py), [machine-readable receipts](evidence/s1/native_source_summary.json).
+- Per-file rights are still not reviewed for redistribution; **raw CAD source STEP files are NOT in this repository**. Import, native B-Rep validation and rendered provenance pass only for these four; independent external non-manifold G2, general bicubic conversion and TRI R5 remain OPEN.
 
 ## Scientific priority correction — 2026-11-15
 
