@@ -767,6 +767,34 @@ def verify_owner_transaction_rehearsal(stdout):
             "accepted_adaptive_epochs": 0}
 
 
+def verify_owner_rehearsal_negative_controls(stdout):
+    # Mutated receipts must fail even when the real application run succeeded.
+    records = [line for line in stdout.decode().splitlines()
+               if line.startswith("QUAD_OWNER_TRANSACTION_REHEARSAL ")]
+    require(len(records) == 1, "Cannot seed an adversarial receipt without real C++ output")
+    original = records[0]
+    forged = [
+        "",
+        original + "\n" + original,
+        original.replace("injected_failures=5", "injected_failures=4"),
+        original.replace("prior_nodes=69", "prior_nodes=0"),
+        original.replace("ordered_node_observers_preserved=1",
+                         "ordered_node_observers_preserved=0"),
+        original.replace("accepted_adaptive_epochs=0", "accepted_adaptive_epochs=2"),
+        original.replace("reverted_to_previous_owner=1",
+                         "reverted_to_previous_owner=0"),
+        original + " fabricated_publication=1",
+    ]
+    for candidate in forged:
+        require(candidate != original, "Owner negative witness did not mutate")
+        try:
+            verify_owner_transaction_rehearsal(candidate.encode())
+        except AssertionError:
+            continue
+        raise AssertionError("Forged owner transaction record passed independent gate")
+    return len(forged)
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--exe", required=True, type=Path)
@@ -809,6 +837,10 @@ def main():
             b"source_observers_preserved=1 adaptive_epochs=0" in r.stdout,
             "Typed QUAD/TRI history clone or rollback guard did not run")
     owner_rehearsal = verify_owner_transaction_rehearsal(r.stdout)
+    owner_negative_cases = verify_owner_rehearsal_negative_controls(r.stdout)
+    require(owner_negative_cases == 8,
+            "Owner transaction false-positive rejection coverage is incomplete")
+    print("QUAD_OWNER_TRANSACTION_NEGATIVE_ORACLE cases=8 passed=8")
     result = audit(root/"accepted.obj")
     metric = verify_mixed_curvature(r.stdout, root/"accepted.obj")
     quality = verify_quad_physical_quality(r.stdout, root/"accepted.obj")
@@ -866,6 +898,7 @@ def main():
               "native_AFT": True, "independent_Bezier_oracle": True,
               "typed_history_clone_guard": True,
               "reversible_owner_transaction_rehearsal": owner_rehearsal,
+              "owner_transaction_negative_receipts_rejected": owner_negative_cases,
               "typed_mixed_curvature_diagnostic": metric,
               "typed_physical_quad_quality": quality,
               "mixed_surface_residual": residual,
