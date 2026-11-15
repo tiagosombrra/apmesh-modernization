@@ -4,6 +4,10 @@
 **Frozen planning base:** main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 **Research branch:** `research/benchmark-corpus-reverse-patches`, draft PR #225.
 
+## S3.B bounded curved-face feasibility (2026-11-15)
+
+[The S3.B original-CAD support/trim screen, cylindrical approximation pilot and indexed derived-seam atlas](S3B_CURVED_FEASIBILITY.md) are now committed with **19 directed S3.B local tests** passing, in addition to 11 S3.A controls. Four independently audited synthetic quarter-cylinder atlases (1, 2, 4 and 8 patches) demonstrate decreasing sampled error and exact indexed shared *derived* seam controls. The actual M5/S40/S27/M3 original STEP faces were **NOT** converted in this runtime; source-to-feature boundary compatibility, external original 3+-sheet admission and APMesh TRI/QUAD accepted generation remain OPEN. This is a separate scientific research activity, not production C++ modernization.
+
 ## S3.A bounded original-CAD partial atlas (2026-11-15)
 
 A new isolated [source-identity-preserving planar quad to indexed BP extractor](S3A_ORIGINAL_CAD_PLANAR_ATLAS.md) and its independent native BRep auditor have been committed. Eleven local directed tests passed on authored controls; the four pinned industrial original CAD files were **not executed through this new converter** in this delivery. Source images and S1 native import evidence below remain valid; complete curved/trimming decomposition, external 3+-sheet topology, APMesh accepted TRI and future QUAD modes remain OPEN.
