@@ -1,0 +1,1294 @@
+{
+  "apmesh_generation": "NOT_RUN",
+  "bp_edge_incidence_histogram": {
+    "1": 28,
+    "3": 4
+  },
+  "bp_sha256": "49f0880daadfc8ea0dd6ac685eeb2ec9aeb107dcb0d21205f03429e2198f1c68",
+  "case": "cross_junction",
+  "external_model_admission": "NOT_GRANTED",
+  "input_classification": "PINNED_SOURCE_RECIPE_MIRROR",
+  "native_edge_incidence_histogram": {
+    "1": 28,
+    "3": 4
+  },
+  "patch_count": 10,
+  "patches": [
+    {
+      "control_vertex_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "expected_area": 16.0,
+      "expected_centroid": [
+        0.0,
+        -2.0,
+        0.0
+      ],
+      "patch_index": 0,
+      "regions": [
+        "main",
+        "bottom_arm"
+      ],
+      "role": "interface",
+      "sewn_face_index": 0,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "curve_id": "E0",
+          "native_edge_id": 0,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            3,
+            7,
+            11,
+            15
+          ],
+          "curve_id": "E1",
+          "native_edge_id": 1,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            12,
+            13,
+            14,
+            15
+          ],
+          "curve_id": "E2",
+          "native_edge_id": 2,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            0,
+            4,
+            8,
+            12
+          ],
+          "curve_id": "E3",
+          "native_edge_id": 3,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "main",
+          "face_index": 2
+        },
+        {
+          "body": "bottom_arm",
+          "face_index": 3
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        16,
+        17,
+        18,
+        0,
+        19,
+        20,
+        21,
+        4,
+        22,
+        23,
+        24,
+        8,
+        25,
+        26,
+        27,
+        12
+      ],
+      "expected_area": 32.0,
+      "expected_centroid": [
+        -6.0,
+        -2.0,
+        0.0
+      ],
+      "patch_index": 1,
+      "regions": [
+        "main",
+        "VOID"
+      ],
+      "role": "host_exterior_left",
+      "sewn_face_index": 1,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            16,
+            17,
+            18,
+            0
+          ],
+          "curve_id": "E4",
+          "native_edge_id": 4,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            0,
+            4,
+            8,
+            12
+          ],
+          "curve_id": "E3",
+          "native_edge_id": 3,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            25,
+            26,
+            27,
+            12
+          ],
+          "curve_id": "E5",
+          "native_edge_id": 5,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            16,
+            19,
+            22,
+            25
+          ],
+          "curve_id": "E6",
+          "native_edge_id": 6,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "main",
+          "face_index": 2
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        3,
+        28,
+        29,
+        30,
+        7,
+        31,
+        32,
+        33,
+        11,
+        34,
+        35,
+        36,
+        15,
+        37,
+        38,
+        39
+      ],
+      "expected_area": 32.0,
+      "expected_centroid": [
+        6.0,
+        -2.0,
+        0.0
+      ],
+      "patch_index": 2,
+      "regions": [
+        "main",
+        "VOID"
+      ],
+      "role": "host_exterior_right",
+      "sewn_face_index": 2,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            3,
+            28,
+            29,
+            30
+          ],
+          "curve_id": "E7",
+          "native_edge_id": 7,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            30,
+            33,
+            36,
+            39
+          ],
+          "curve_id": "E8",
+          "native_edge_id": 8,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            15,
+            37,
+            38,
+            39
+          ],
+          "curve_id": "E9",
+          "native_edge_id": 9,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            3,
+            7,
+            11,
+            15
+          ],
+          "curve_id": "E1",
+          "native_edge_id": 1,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "main",
+          "face_index": 2
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        40,
+        41,
+        42,
+        0,
+        43,
+        44,
+        45,
+        4,
+        46,
+        47,
+        48,
+        8,
+        49,
+        50,
+        51,
+        12
+      ],
+      "expected_area": 32.0,
+      "expected_centroid": [
+        -2.0,
+        -6.0,
+        0.0
+      ],
+      "patch_index": 3,
+      "regions": [
+        "bottom_arm",
+        "VOID"
+      ],
+      "role": "arm_exterior_left",
+      "sewn_face_index": 3,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            40,
+            41,
+            42,
+            0
+          ],
+          "curve_id": "E10",
+          "native_edge_id": 10,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            0,
+            4,
+            8,
+            12
+          ],
+          "curve_id": "E3",
+          "native_edge_id": 3,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            49,
+            50,
+            51,
+            12
+          ],
+          "curve_id": "E11",
+          "native_edge_id": 11,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            40,
+            43,
+            46,
+            49
+          ],
+          "curve_id": "E12",
+          "native_edge_id": 12,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "bottom_arm",
+          "face_index": 0
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        52,
+        53,
+        54,
+        3,
+        55,
+        56,
+        57,
+        7,
+        58,
+        59,
+        60,
+        11,
+        61,
+        62,
+        63,
+        15
+      ],
+      "expected_area": 32.0,
+      "expected_centroid": [
+        2.0,
+        -6.0,
+        0.0
+      ],
+      "patch_index": 4,
+      "regions": [
+        "bottom_arm",
+        "VOID"
+      ],
+      "role": "arm_exterior_right",
+      "sewn_face_index": 4,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            52,
+            53,
+            54,
+            3
+          ],
+          "curve_id": "E13",
+          "native_edge_id": 13,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            3,
+            7,
+            11,
+            15
+          ],
+          "curve_id": "E1",
+          "native_edge_id": 1,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            61,
+            62,
+            63,
+            15
+          ],
+          "curve_id": "E14",
+          "native_edge_id": 14,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            52,
+            55,
+            58,
+            61
+          ],
+          "curve_id": "E15",
+          "native_edge_id": 15,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "bottom_arm",
+          "face_index": 1
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79
+      ],
+      "expected_area": 16.0,
+      "expected_centroid": [
+        0.0,
+        2.0,
+        0.0
+      ],
+      "patch_index": 5,
+      "regions": [
+        "main",
+        "top_arm"
+      ],
+      "role": "interface",
+      "sewn_face_index": 5,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            64,
+            65,
+            66,
+            67
+          ],
+          "curve_id": "E16",
+          "native_edge_id": 16,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            67,
+            71,
+            75,
+            79
+          ],
+          "curve_id": "E17",
+          "native_edge_id": 17,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            76,
+            77,
+            78,
+            79
+          ],
+          "curve_id": "E18",
+          "native_edge_id": 18,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            64,
+            68,
+            72,
+            76
+          ],
+          "curve_id": "E19",
+          "native_edge_id": 19,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "main",
+          "face_index": 3
+        },
+        {
+          "body": "top_arm",
+          "face_index": 2
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        80,
+        81,
+        82,
+        64,
+        83,
+        84,
+        85,
+        68,
+        86,
+        87,
+        88,
+        72,
+        89,
+        90,
+        91,
+        76
+      ],
+      "expected_area": 32.0,
+      "expected_centroid": [
+        -6.0,
+        2.0,
+        0.0
+      ],
+      "patch_index": 6,
+      "regions": [
+        "main",
+        "VOID"
+      ],
+      "role": "host_exterior_left",
+      "sewn_face_index": 6,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            80,
+            81,
+            82,
+            64
+          ],
+          "curve_id": "E20",
+          "native_edge_id": 20,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            64,
+            68,
+            72,
+            76
+          ],
+          "curve_id": "E19",
+          "native_edge_id": 19,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            89,
+            90,
+            91,
+            76
+          ],
+          "curve_id": "E21",
+          "native_edge_id": 21,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            80,
+            83,
+            86,
+            89
+          ],
+          "curve_id": "E22",
+          "native_edge_id": 22,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "main",
+          "face_index": 3
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        67,
+        92,
+        93,
+        94,
+        71,
+        95,
+        96,
+        97,
+        75,
+        98,
+        99,
+        100,
+        79,
+        101,
+        102,
+        103
+      ],
+      "expected_area": 32.0,
+      "expected_centroid": [
+        6.0,
+        2.0,
+        0.0
+      ],
+      "patch_index": 7,
+      "regions": [
+        "main",
+        "VOID"
+      ],
+      "role": "host_exterior_right",
+      "sewn_face_index": 7,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            67,
+            92,
+            93,
+            94
+          ],
+          "curve_id": "E23",
+          "native_edge_id": 23,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            94,
+            97,
+            100,
+            103
+          ],
+          "curve_id": "E24",
+          "native_edge_id": 24,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            79,
+            101,
+            102,
+            103
+          ],
+          "curve_id": "E25",
+          "native_edge_id": 25,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            67,
+            71,
+            75,
+            79
+          ],
+          "curve_id": "E17",
+          "native_edge_id": 17,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "main",
+          "face_index": 3
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        64,
+        104,
+        105,
+        106,
+        68,
+        107,
+        108,
+        109,
+        72,
+        110,
+        111,
+        112,
+        76,
+        113,
+        114,
+        115
+      ],
+      "expected_area": 32.0,
+      "expected_centroid": [
+        -2.0,
+        6.0,
+        0.0
+      ],
+      "patch_index": 8,
+      "regions": [
+        "top_arm",
+        "VOID"
+      ],
+      "role": "arm_exterior_left",
+      "sewn_face_index": 8,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            64,
+            104,
+            105,
+            106
+          ],
+          "curve_id": "E26",
+          "native_edge_id": 26,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            106,
+            109,
+            112,
+            115
+          ],
+          "curve_id": "E27",
+          "native_edge_id": 27,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            76,
+            113,
+            114,
+            115
+          ],
+          "curve_id": "E28",
+          "native_edge_id": 28,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            64,
+            68,
+            72,
+            76
+          ],
+          "curve_id": "E19",
+          "native_edge_id": 19,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "top_arm",
+          "face_index": 0
+        }
+      ]
+    },
+    {
+      "control_vertex_ids": [
+        67,
+        116,
+        117,
+        118,
+        71,
+        119,
+        120,
+        121,
+        75,
+        122,
+        123,
+        124,
+        79,
+        125,
+        126,
+        127
+      ],
+      "expected_area": 32.0,
+      "expected_centroid": [
+        2.0,
+        6.0,
+        0.0
+      ],
+      "patch_index": 9,
+      "regions": [
+        "top_arm",
+        "VOID"
+      ],
+      "role": "arm_exterior_right",
+      "sewn_face_index": 9,
+      "sides": [
+        {
+          "control_vertex_ids": [
+            67,
+            116,
+            117,
+            118
+          ],
+          "curve_id": "E29",
+          "native_edge_id": 29,
+          "orientation": "forward",
+          "slot": 0
+        },
+        {
+          "control_vertex_ids": [
+            118,
+            121,
+            124,
+            127
+          ],
+          "curve_id": "E30",
+          "native_edge_id": 30,
+          "orientation": "forward",
+          "slot": 1
+        },
+        {
+          "control_vertex_ids": [
+            79,
+            125,
+            126,
+            127
+          ],
+          "curve_id": "E31",
+          "native_edge_id": 31,
+          "orientation": "forward",
+          "slot": 2
+        },
+        {
+          "control_vertex_ids": [
+            67,
+            71,
+            75,
+            79
+          ],
+          "curve_id": "E17",
+          "native_edge_id": 17,
+          "orientation": "forward",
+          "slot": 3
+        }
+      ],
+      "source_faces": [
+        {
+          "body": "top_arm",
+          "face_index": 1
+        }
+      ]
+    }
+  ],
+  "schema": "apmesh-r3c2-partial-interface-bp-v1",
+  "scientific_scope": "BOUNDED_PLANAR_RECTANGULAR_NATIVE_BREP_FACES_ONLY",
+  "source_graph": {
+    "all_sheets_planar_four_sided": true,
+    "apmesh_generation": "NOT_RUN",
+    "case": "cross_junction",
+    "classification": "BOUNDED_SOURCE_RECIPE_MIRROR_PARTIAL_CONTACT_PROOF",
+    "contact_count": 2,
+    "contact_records": [
+      {
+        "arm_body": "bottom_arm",
+        "arm_face_index": 3,
+        "contact_index": 0,
+        "generated_sheet_count": 5,
+        "host_body": "main",
+        "host_face_index": 2,
+        "original_arm_area": 16.0,
+        "original_host_area": 80.0,
+        "overlap_area": 16.0,
+        "wings_area": [
+          32.0,
+          32.0
+        ]
+      },
+      {
+        "arm_body": "top_arm",
+        "arm_face_index": 2,
+        "contact_index": 1,
+        "generated_sheet_count": 5,
+        "host_body": "main",
+        "host_face_index": 3,
+        "original_arm_area": 16.0,
+        "original_host_area": 80.0,
+        "overlap_area": 16.0,
+        "wings_area": [
+          32.0,
+          32.0
+        ]
+      }
+    ],
+    "g2_external_admission": "NOT_GRANTED",
+    "native_topology": {
+      "face_count": 10,
+      "face_per_edge_histogram": {
+        "1": 28,
+        "3": 4
+      },
+      "kernel_valid": true,
+      "shape_type": "Compound",
+      "triple_edges": [
+        {
+          "endpoints": [
+            [
+              -2.0,
+              -2.0,
+              -2.0
+            ],
+            [
+              -2.0,
+              -2.0,
+              2.0
+            ]
+          ],
+          "face_incidence": 3,
+          "length": 4.0
+        },
+        {
+          "endpoints": [
+            [
+              -2.0,
+              2.0,
+              -2.0
+            ],
+            [
+              -2.0,
+              2.0,
+              2.0
+            ]
+          ],
+          "face_incidence": 3,
+          "length": 4.0
+        },
+        {
+          "endpoints": [
+            [
+              2.0,
+              -2.0,
+              -2.0
+            ],
+            [
+              2.0,
+              -2.0,
+              2.0
+            ]
+          ],
+          "face_incidence": 3,
+          "length": 4.0
+        },
+        {
+          "endpoints": [
+            [
+              2.0,
+              2.0,
+              -2.0
+            ],
+            [
+              2.0,
+              2.0,
+              2.0
+            ]
+          ],
+          "face_incidence": 3,
+          "length": 4.0
+        }
+      ],
+      "unique_edge_count": 32
+    },
+    "nonmanifold_mode": true,
+    "schema": "apmesh-r3c2-occt-contact-v1",
+    "sewing_tolerance": 1e-08,
+    "sheet_count": 10,
+    "source_bodies": {
+      "bottom_arm": {
+        "edges": 12,
+        "faces": 6,
+        "valid": true,
+        "volume": 128.0
+      },
+      "main": {
+        "edges": 12,
+        "faces": 6,
+        "valid": true,
+        "volume": 320.0
+      },
+      "top_arm": {
+        "edges": 12,
+        "faces": 6,
+        "valid": true,
+        "volume": 128.0
+      }
+    },
+    "source_contact_distance_budget": 1e-12,
+    "source_face_to_subface": [
+      {
+        "area": 16.0,
+        "centroid": [
+          0.0,
+          -2.0,
+          0.0
+        ],
+        "index": 0,
+        "regions": [
+          "main",
+          "bottom_arm"
+        ],
+        "role": "interface",
+        "sewn_face_index": 0,
+        "source_faces": [
+          {
+            "body": "main",
+            "face_index": 2
+          },
+          {
+            "body": "bottom_arm",
+            "face_index": 3
+          }
+        ]
+      },
+      {
+        "area": 32.0,
+        "centroid": [
+          -6.0,
+          -2.0,
+          0.0
+        ],
+        "index": 1,
+        "regions": [
+          "main",
+          "VOID"
+        ],
+        "role": "host_exterior_left",
+        "sewn_face_index": 1,
+        "source_faces": [
+          {
+            "body": "main",
+            "face_index": 2
+          }
+        ]
+      },
+      {
+        "area": 32.0,
+        "centroid": [
+          6.0,
+          -2.0,
+          0.0
+        ],
+        "index": 2,
+        "regions": [
+          "main",
+          "VOID"
+        ],
+        "role": "host_exterior_right",
+        "sewn_face_index": 2,
+        "source_faces": [
+          {
+            "body": "main",
+            "face_index": 2
+          }
+        ]
+      },
+      {
+        "area": 32.0,
+        "centroid": [
+          -2.0,
+          -6.0,
+          0.0
+        ],
+        "index": 3,
+        "regions": [
+          "bottom_arm",
+          "VOID"
+        ],
+        "role": "arm_exterior_left",
+        "sewn_face_index": 3,
+        "source_faces": [
+          {
+            "body": "bottom_arm",
+            "face_index": 0
+          }
+        ]
+      },
+      {
+        "area": 32.0,
+        "centroid": [
+          2.0,
+          -6.0,
+          0.0
+        ],
+        "index": 4,
+        "regions": [
+          "bottom_arm",
+          "VOID"
+        ],
+        "role": "arm_exterior_right",
+        "sewn_face_index": 4,
+        "source_faces": [
+          {
+            "body": "bottom_arm",
+            "face_index": 1
+          }
+        ]
+      },
+      {
+        "area": 16.0,
+        "centroid": [
+          0.0,
+          2.0,
+          0.0
+        ],
+        "index": 5,
+        "regions": [
+          "main",
+          "top_arm"
+        ],
+        "role": "interface",
+        "sewn_face_index": 5,
+        "source_faces": [
+          {
+            "body": "main",
+            "face_index": 3
+          },
+          {
+            "body": "top_arm",
+            "face_index": 2
+          }
+        ]
+      },
+      {
+        "area": 32.0,
+        "centroid": [
+          -6.0,
+          2.0,
+          0.0
+        ],
+        "index": 6,
+        "regions": [
+          "main",
+          "VOID"
+        ],
+        "role": "host_exterior_left",
+        "sewn_face_index": 6,
+        "source_faces": [
+          {
+            "body": "main",
+            "face_index": 3
+          }
+        ]
+      },
+      {
+        "area": 32.0,
+        "centroid": [
+          6.0,
+          2.0,
+          0.0
+        ],
+        "index": 7,
+        "regions": [
+          "main",
+          "VOID"
+        ],
+        "role": "host_exterior_right",
+        "sewn_face_index": 7,
+        "source_faces": [
+          {
+            "body": "main",
+            "face_index": 3
+          }
+        ]
+      },
+      {
+        "area": 32.0,
+        "centroid": [
+          -2.0,
+          6.0,
+          0.0
+        ],
+        "index": 8,
+        "regions": [
+          "top_arm",
+          "VOID"
+        ],
+        "role": "arm_exterior_left",
+        "sewn_face_index": 8,
+        "source_faces": [
+          {
+            "body": "top_arm",
+            "face_index": 0
+          }
+        ]
+      },
+      {
+        "area": 32.0,
+        "centroid": [
+          2.0,
+          6.0,
+          0.0
+        ],
+        "index": 9,
+        "regions": [
+          "top_arm",
+          "VOID"
+        ],
+        "role": "arm_exterior_right",
+        "sewn_face_index": 9,
+        "source_faces": [
+          {
+            "body": "top_arm",
+            "face_index": 1
+          }
+        ]
+      }
+    ],
+    "source_solid_count": 3,
+    "source_solid_volumes_preserved": true,
+    "upstream": {
+      "repository": "fusion-energy/model_benchmark_zoo",
+      "revision": "3a2e69fe62209e33a1e176d816609d69a2aebadc",
+      "source_mode": "PINNED_DEFAULTS_RECREATED_NOT_UPSTREAM_EXECUTION"
+    }
+  },
+  "triple_edge_curves": [
+    "E1",
+    "E17",
+    "E19",
+    "E3"
+  ],
+  "unique_boundary_curve_count": 32,
+  "unique_control_vertices": 128
+}

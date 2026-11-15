@@ -1,6 +1,6 @@
 # Non-manifold benchmark corpus and reverse-patch feasibility
 
-**Status:** R0 documented; R1 40 source leads; R2 constructed four-sheet BRep; **R3 two bounded analytic controls (planar and nonplanar cubic), full R3 and external G2 still OPEN**. Updated 2026-11-15.
+**Status:** R0 documented; R1 40 source leads; R2 topology controls; **R3 two analytic controls and two bounded CAD-source-mirror partial-contact cases (T/Cross), full R3 and external G1/G2 still OPEN**. Updated 2026-11-15.
 **Frozen planning base:** main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 **Research branch:** `research/benchmark-corpus-reverse-patches`, draft PR #225.
 
@@ -14,9 +14,11 @@
 6. [R3 analytic bicubic pilot](R3_ANALYTIC_BICUBIC_PILOT.md): 4 indexed BP patches, 52 unique control vertices, one canonical 4-incident C0 boundary; 13 new controls and 32 total R2+R3 local tests passed. Not an external admitted model or APMesh mesh generation.
 7. [R3 curved bicubic pilot](R3_CURVED_BICUBIC_PILOT.md): curved spatial cubic C0 with four true kernel face incidences and one reversed local orientation; 12 new tests and 44 local R2/R3 tests; no external CAD conversion.
 8. [R3 representability matrix](R3_REPRESENTABILITY_MATRIX.md): explicit supported, negative, blocked and untested cases.
-9. [Scientific visual gallery](gallery/README.md): attributed source imagery and author-authored schematic with available/unsupported representation stages.
-10. [Candidate register](candidate_register.csv): all 40 are still DISCOVERED; 13 are annotated with screening observations and one extra torus limitation, but no G2 or complete G1-G7 admission.
-11. [Execution plan](PLAN.md), [model admission protocol](MODEL_ADMISSION_PROTOCOL.md), [candidate source inventory](CANDIDATE_SOURCES.md) and [risk/decision register](RISK_AND_DECISION_REGISTER.md).
+9. [R3.C2 T/Cross partial contacts](R3_PARTIAL_CONTACT_PILOT.md): native face Common/Cut, source-to-subface provenance, 5/10 exact rectangular BP patches, 2/4 triple-incidence curves; 19 new local controls.
+10. [R3.C2 case matrix](R3C2_CASE_MATRIX.md): accepted, explicitly rejected and not-yet-supported trims and near-contact controls.
+11. [Scientific visual gallery](gallery/README.md): attributed source imagery and author-authored schematic with available/unsupported representation stages.
+12. [Candidate register](candidate_register.csv): all 40 are still DISCOVERED; 13 are annotated with screening observations and one extra torus limitation, but no G2 or complete G1-G7 admission.
+13. [Execution plan](PLAN.md), [model admission protocol](MODEL_ADMISSION_PROTOCOL.md), [candidate source inventory](CANDIDATE_SOURCES.md) and [risk/decision register](RISK_AND_DECISION_REGISTER.md).
 
 ## Limited research probes
 
@@ -34,9 +36,15 @@ python docs/research/nonmanifold-benchmark/probes/build_analytic_bp.py --graph b
 python docs/research/nonmanifold-benchmark/probes/audit_analytic_bp.py --bp build/research-r2/four_sheet_planar.bp --sidecar build/research-r2/four_sheet_planar.sidecar.json --native-brep build/research-r2/four_sheet_nonmanifold.brep
 python docs/research/nonmanifold-benchmark/probes/curved_bicubic_pilot.py --out-dir build/research-r3-curved
 python docs/research/nonmanifold-benchmark/probes/audit_curved_bicubic.py --bp build/research-r3-curved/four_sheet_curved.bp --sidecar build/research-r3-curved/four_sheet_curved.sidecar.json --brep build/research-r3-curved/four_sheet_curved.brep
+python docs/research/nonmanifold-benchmark/probes/r3c2_native.py --case t_junction --output-dir build/research-r3c2
+python docs/research/nonmanifold-benchmark/probes/r3c2_native.py --case cross_junction --output-dir build/research-r3c2
+python docs/research/nonmanifold-benchmark/probes/r3c2_bp.py --case t_junction --output-dir build/research-r3c2
+python docs/research/nonmanifold-benchmark/probes/r3c2_bp.py --case cross_junction --output-dir build/research-r3c2
+python docs/research/nonmanifold-benchmark/probes/r3c2_audit.py --bp build/research-r3c2/t_junction.bp --sidecar build/research-r3c2/t_junction.sidecar.json --brep build/research-r3c2/t_junction_interface.brep
+python docs/research/nonmanifold-benchmark/probes/r3c2_audit.py --bp build/research-r3c2/cross_junction.bp --sidecar build/research-r3c2/cross_junction.sidecar.json --brep build/research-r3c2/cross_junction_interface.brep
 ```
 
-The STEP scanner requires Python; the CadQuery probes additionally require CadQuery/OCP. The bounded local R2/R3 suite now has **44 passing controls**, including a curved nonplanar cubic source and reversed parametric orientation. Exact source Git blobs and file hashes are recorded in the R3 curved report. This does not certify the original upstream package or the production APMesh build. See R2 report for command scope, results and missing gates.
+The STEP scanner requires Python; the CadQuery probes additionally require CadQuery/OCP. The bounded local R2/R3 suite has **44 passing controls** and R3.C2 adds **19 passing T/Cross source-mirror controls** (**63 total research controls**), including near-contact false-welding rejection. Exact source Git blobs and file hashes are recorded in the R3 curved report. This does not certify the original upstream package or the production APMesh build. See R2 report for command scope, results and missing gates.
 
 ## Corpus partitions
 

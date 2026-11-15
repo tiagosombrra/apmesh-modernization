@@ -1,6 +1,6 @@
 # Scientific model gallery — evidence-indexed, not a claim of meshing success
 
-**Status 2026-11-14:** R0-R1 sources cataloged, R2 constructed non-manifold BRep control, R3 exact **planar and nonplanar curved analytic** bicubic BP pilots; no APMesh TRI/QUAD/all-quad/anisotropic meshes generated on the new pilot. No historical input changed.
+**Status updated 2026-11-15:** R0-R1 sources cataloged, R2 constructed non-manifold BRep control, R3 exact **planar and nonplanar curved analytic** bicubic BP pilots; no APMesh TRI/QUAD/all-quad/anisotropic meshes generated on the new pilot. No historical input changed.
 
 ## 1. Source → reconstructed geometry → Bezier representation
 
@@ -48,3 +48,22 @@ To generate the corresponding rendered image locally:
     python docs/research/nonmanifold-benchmark/probes/render_curved_r3.py --output build/research-r3-curved/curved_gallery.png
 
 The render is a parametric **surface visualization**, not a TRI/QUAD mesh or experimental quality graph. The Python visualization is optional and requires Matplotlib/Numpy; it is not a build dependency. Original upstream media remain hyperlinks, not redistributed images.
+
+## 5. T-Junction and Cross-Junction: native face-splitting controls
+
+These are **local CAD assemblies recreating pinned upstream default source recipes**, not downloaded/executed upstream CAD assets. The two positive controls demonstrate partial face overlap, native Common/Cut feature decomposition, 5/10 four-sided sheets, and 2/4 true three-face TopoDS edge incidences. Each sheet has an exact planar bicubic indexed BP representation; no TRI/QUAD meshing was done.
+
+| Visual source or controlled representation | Evidence |
+|---|---|
+| [Original upstream T-Junction illustration](https://raw.githubusercontent.com/fusion-energy/model_benchmark_zoo/main/images/t_junction.png) | Geometry context only, not non-manifold proof |
+| [Original upstream Cross-Junction illustration](https://raw.githubusercontent.com/fusion-energy/model_benchmark_zoo/main/images/cross_junction.png) | Geometry context only, not non-manifold proof |
+| [R3.C2 contact decomposition and native BRep report](../R3_PARTIAL_CONTACT_PILOT.md) | Exact face splits, 3-way edge identity and source provenance |
+| [R3.C2 T-Junction BP](../fixtures/t_junction_partial.bp) | 5 four-sided patches; 2 native three-face curve groups |
+| [R3.C2 Cross-Junction BP](../fixtures/cross_junction_partial.bp) | 10 four-sided patches; 4 separate native three-face curve groups |
+| [R3.C2 native contact rendering source](../probes/r3c2_render.py) | Generates local PNG directly from the validated Open CASCADE geometry |
+
+Render from the repository root:
+
+    python docs/research/nonmanifold-benchmark/probes/r3c2_render.py --output build/research-r3c2/t_cross_decomposition.png
+
+**Scientific boundary:** the new diagrams show source-derived **surface patches** and true reconstructed edges, not an accepted APMesh triangular/quadrilateral mesh. Each source body identity is recorded separately from its material-tag interpretation. Original source file hashes and per-asset image rights are not yet independently reviewed.
