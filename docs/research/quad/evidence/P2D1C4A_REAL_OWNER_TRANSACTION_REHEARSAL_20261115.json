@@ -3,9 +3,9 @@
   "date": "2026-11-15",
   "canonical_research": "quad-templates",
   "source_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/236",
-  "feature_sha": "5c8bc5ae563fdcad9518091e16a9cecf391ca55c",
-  "exact_feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43703415674",
-  "ci_qualification": "partial as first evidence recorded, not eligible for merge",
+  "feature_sha": "4b544600575f13b7a6de088723f5f29aaf9cb366",
+  "exact_feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43704231390",
+  "ci_qualification": "PENDING exact final feature CI; earlier Linux/Windows/ASan success belonged to prior feature sha",
   "source_previous_owner": {
     "status": "actually_published_P1_patch_submesh",
     "physical_nodes": 69,
@@ -34,7 +34,9 @@
     "All previous node ordered borrowed element observer lists preserved",
     "Exact prior published OBJ bytes unchanged",
     "Real successor forward/reverse owner pointer can swap then restore",
-    "No accepted adaptive epoch increment"
+    "No accepted adaptive epoch increment",
+    "All accepted node curvature scalars Ga, Gd, Ha, Hd unchanged",
+    "Every accepted element ID and computed area unchanged"
   ],
   "negative_python_receipts": [
     "missing",
@@ -46,14 +48,13 @@
     "forward_owner_not_restored",
     "fabricated_publication_field"
   ],
-  "first_measured_linux": "Linux native, controlled real Bezier and ASan/UBSan/leak job success; 8 negative receipt tests run both Release and ASan",
-  "ci_completed_jobs_while_recorded": [
-    "QUAD native (ubuntu-24.04)",
-    "TRI scientific equivalence against frozen baseline"
-  ],
+  "first_measured_linux": "Earlier source 5c8bc5a Linux native and ASan/UBSan/leak passed, including eight forged receipt negatives; current 4b54460 exact-source CI pending",
+  "ci_completed_jobs_while_recorded": [],
   "ci_pending_jobs_while_recorded": [
-    "QUAD native (windows-2022)",
-    "TRI baseline and tooling controls (Linux)"
+    "native Linux",
+    "native Windows",
+    "TRI baseline/tooling",
+    "TRI frozen science"
   ],
   "adaptive_epochs": 0,
   "scientific_nonclaims": [
@@ -64,5 +65,7 @@
     "Global Eistute/Book high-valence nonmanifold welding is not implemented",
     "No original 1993 equivalence/all-QUAD/anisotropy"
   ],
-  "main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94"
+  "main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "actual_prior_source_residual": "remeasured from actually published P1 Patch/SubMesh owner and checked identical to earlier source geometry residual before selecting native refinement",
+  "previous_partial_head_success": "5c8bc5ae563fdcad9518091e16a9cecf391ca55c"
 }
