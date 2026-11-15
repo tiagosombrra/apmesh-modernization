@@ -3,6 +3,69 @@
 Updated2026-11-14 Fortaleza. Canonical branch: `quad-templates`.
 Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 
+## P2d-1c1 integrated, P2d-1c2 physical second-band AFT trial
+
+[PR233](https://github.com/tiagosombrra/apmesh-modernization/pull/233)
+merged original native source-tree second alternatives at
+`15a57f3604c9fc8b072762ed10f3219aa12c9ad7` after
+[exact-head #43624756858](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43624756858)
+**4/4 SUCCESS**: Linux/Windows native+controlled app, ASan/UBSan/leak,
+85/85 baseline CTests, 527/527 Python and frozen Eistute/Book TRI parity.
+Retained first failed C++ const-correctness build separately. Using the
+previous staged 93-node/62-QUAD/44-AFT-TRI physical source's distinct
+worst AFT residual face103 near UV(0.8,0.1), real original Quadtree
+variants yielded **31-leaf corner: rejected**, **34-leaf west: 75
+UV QUAD**, **34-leaf north: 71 UV QUAD**, and **37-leaf both:
+82 UV QUAD**. [Bounded native evidence](evidence/P2D1C1_NATIVE_SECOND_BAND_TRIALS_20261114.json).
+
+**Current research-only [draft PR234](https://github.com/tiagosombrra/apmesh-modernization/pull/234)**,
+feature `32e4653ff80947498c39953ce53f50af618203e9`:
+rebuild two original AFT/QUAD native source trees for each second-band
+variant, run the *original* AFT closure and construct real typed physical
+Bezier QUAD/TRI `SubMesh` candidates. Independently audited real Linux
+and Windows application jobs **SUCCESS**, including Linux sanitizers;
+original frozen TRI science job **SUCCESS**. At checkpoint, the Linux
+baseline/tooling job in
+[CI #43663198795](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43663198795)
+was **still running**, so PR234 is **not yet overall 4/4 qualified**.
+No merge occurred.
+
+All original source boundary edge counts remain 16 and the
+isolated corner is rejected without a physical OBJ. Measured **staged-only**
+new candidates (independent same **4096 UV sites**, 64x64):
+- **west:** 109 physical nodes, 75 QUAD/50 AFT TRI (125 total
+  elements), 37.5% QUAD UV area; maximum error 0.02626857,
+  uniform UV RMS 0.01018989 and source-area RMS **0.00996008**;
+  candidate SHA-256 `ca08918f6d71fa672de22a72eb6fef7c106c90c7fd02d40cb19852972b4274ee`.
+- **north:** 107 nodes, 71 QUAD/54 AFT TRI (125 total),
+  37.5% UV; maximum error 0.02626857, uniform UV RMS 0.00958005,
+  source-area RMS **0.00923332**;
+  SHA-256 `6eb4faedeaab44fbfa3d4cb2ca1ea618a3dca513dc241871c57bcc7eae26d500`.
+- **both:** 117 nodes, 82 QUAD/52 AFT TRI (134 total),
+  40.625% UV; maximum error 0.02626857, uniform UV RMS 0.00945933,
+  source-area RMS **0.00915513**;
+  SHA-256 `b77afb530724f38ff81f0f3e7f06fca6c8dc0cb4a15562ce933a4013724bd36c`.
+The first staged physical band baseline is 93 nodes/62 QUAD/44 AFT TRI,
+32.8125% UV, maximum 0.05160741 and source-area RMS 0.01181032.
+All three candidate SHA-256 results were reproduced on Linux and Windows;
+minimum signed QUAD scaled Jacobian 0.567009 and minimum QUAD split-normal
+cosine 0.997013 remain positive. These are bounded **sampled**
+source approximation metrics, **not a general quality/complexity policy**.
+[Preliminary exact-source evidence](evidence/P2D1C2_SECOND_PHYSICAL_AFT_TRIALS_20261114.json).
+
+**Scientific next gate:** complete exact-head CI for PR234 and independent
+review/merge only after 4/4 success; then compare the west/north/both
+element-count/error/quality Pareto trade-offs and develop an explicit
+previous-*accepted*-mixed-owner transaction with fault injection and
+scientific selection policy. New physical candidates remain
+`staged_unaccepted`, **`adaptive_epochs=0`**.
+R3/M7 [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
+OPEN. Original fixed16 is not full `Adapter::AdaptCurve`; no Eistute/
+Book globally welded nonmanifold hybrid, literal historical1993
+algorithm, all-QUAD or anisotropic production support.
+`main` and original TRI production remain unchanged.
+
+
 
 ## P2d-1b3 integrated, P2d-1c0 second-source topology preflight active
 
