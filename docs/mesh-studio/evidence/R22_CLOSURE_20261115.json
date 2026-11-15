@@ -1,0 +1,94 @@
+{
+  "ci_conclusion": "success",
+  "ci_jobs": {
+    "Chromium": {
+      "e2e_pass": 10,
+      "e2e_skipped": 1,
+      "passed": true
+    },
+    "Linux": {
+      "passed": true,
+      "skips": 4,
+      "unittest_methods": 209
+    },
+    "Windows": {
+      "passed": true,
+      "skips": 10,
+      "unittest_methods": 209
+    }
+  },
+  "ci_run": 43746603645,
+  "code_commit": "1f323d87e5b6dbcc7f2cfdec29d718c8b03044f2",
+  "date": "2026-11-15",
+  "decision": "Continue R2.3 with typed buffers and source-ID-preserving LOD investigation; no scientific generator changes.",
+  "not_qualified": [
+    "500k_interaction",
+    "repeated_session_confidence",
+    "GPU_displayed_FPS",
+    "process_RAM",
+    "GPU_VRAM",
+    "Windows_GPU",
+    "real_large_APMesh_models",
+    "global_nonmanifold_patch_identity",
+    "all_quad_anisotropy",
+    "event_timeline"
+  ],
+  "original_browser_observation": {
+    "browser_user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "classification": "SYNTHETIC_VIEWER_SCRIPTED_INTERACTION_NOT_APMESH_ALGORITHM_EVIDENCE",
+    "heap_after": {
+      "dom_nodes": 136,
+      "js_heap_total_bytes": 61427712,
+      "js_heap_used_bytes": 34407872,
+      "scope": "CHROMIUM_CDP_PERFORMANCE_METRICS_NOT_PROCESS_RAM_OR_GPU_MEMORY"
+    },
+    "heap_before": {
+      "dom_nodes": 120,
+      "js_heap_total_bytes": 54095872,
+      "js_heap_used_bytes": 31438388,
+      "scope": "CHROMIUM_CDP_PERFORMANCE_METRICS_NOT_PROCESS_RAM_OR_GPU_MEMORY"
+    },
+    "limitations": [
+      "requestAnimationFrame_plus_render_wall_time_is_not_GPU_presented_FPS",
+      "picking_measurement_excludes_React_commit_and_paint",
+      "Chromium_CDP_heap_does_not_include_native_RAM_or_VRAM",
+      "single_run_not_statistical_benchmark",
+      "500k_not_automatically_qualified"
+    ],
+    "observed_on": "Github Actions hosted Chromium; GPU model and RAM are not qualified",
+    "orbit_uv": {
+      "frame_wall_max_ms": 138.2,
+      "frame_wall_p50_ms": 51.6,
+      "frame_wall_p95_ms": 76.4,
+      "frames_completed": 24,
+      "frames_requested": 24,
+      "scope": "SCRIPTED_CAMERA_ORBIT_RAF_AND_RENDER_CALL_NOT_GPU_PRESENT_FPS",
+      "scripted_orbit_throughput_fps": 16.82,
+      "wall_elapsed_ms": 1426.7
+    },
+    "orbit_xyz": {
+      "frame_wall_max_ms": 74.4,
+      "frame_wall_p50_ms": 69.5,
+      "frame_wall_p95_ms": 73.9,
+      "frames_completed": 24,
+      "frames_requested": 24,
+      "scope": "SCRIPTED_CAMERA_ORBIT_RAF_AND_RENDER_CALL_NOT_GPU_PRESENT_FPS",
+      "scripted_orbit_throughput_fps": 14.78,
+      "wall_elapsed_ms": 1624.1
+    },
+    "picker": {
+      "hit": true,
+      "picker_wall_ms": 197.4,
+      "scope": "VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY",
+      "source_face_id": 25087,
+      "space": "uv"
+    },
+    "scene": {
+      "cells": 50000,
+      "synthetic": true
+    },
+    "schema": "apmesh.meshstudio.r22.browser_interaction.v1"
+  },
+  "original_browser_receipt_sha256": "2a6b6696b28e7865c9b51dd7542ce8390918b2c1afbc0ebea268a34355595131",
+  "schema": "apmesh.meshstudio.r22.closure.v1"
+}
