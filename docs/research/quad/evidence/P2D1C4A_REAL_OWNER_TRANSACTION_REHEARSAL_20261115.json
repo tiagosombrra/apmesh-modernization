@@ -1,0 +1,68 @@
+{
+  "schema": "apmesh.quad.p2d1c4a.reversible_owner_rehearsal.v1",
+  "date": "2026-11-15",
+  "canonical_research": "quad-templates",
+  "source_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/236",
+  "feature_sha": "5c8bc5ae563fdcad9518091e16a9cecf391ca55c",
+  "exact_feature_ci": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43703415674",
+  "ci_qualification": "partial as first evidence recorded, not eligible for merge",
+  "source_previous_owner": {
+    "status": "actually_published_P1_patch_submesh",
+    "physical_nodes": 69,
+    "quads": 42,
+    "native_aft_tris": 36
+  },
+  "successor": {
+    "status": "real_native_AFT_physically_constructed_and_cloned_then_pointer_swapped_reverted",
+    "nodes": 93,
+    "quads": 62,
+    "native_aft_tris": 44,
+    "accepted_epoch": false
+  },
+  "fault_sites": [
+    "pre-native-source",
+    "post-real-AFT-before-return",
+    "partial-typed-graph-clone-at-element_7",
+    "after-reverse-back-observer-binding",
+    "immediately-before-noexcept-forward-owner-swap"
+  ],
+  "invariants": [
+    "Patch forward pointer unchanged on each fault",
+    "Previous SubMesh reverse Patch observer preserved",
+    "All previous node pointers, IDs, XYZ preserved",
+    "All previous element pointers preserved",
+    "All previous node ordered borrowed element observer lists preserved",
+    "Exact prior published OBJ bytes unchanged",
+    "Real successor forward/reverse owner pointer can swap then restore",
+    "No accepted adaptive epoch increment"
+  ],
+  "negative_python_receipts": [
+    "missing",
+    "duplicate",
+    "fault_count_4_not_5",
+    "wrong_old_node_count",
+    "observer_preserved_zero",
+    "falsely_accepted_2_epochs",
+    "forward_owner_not_restored",
+    "fabricated_publication_field"
+  ],
+  "first_measured_linux": "Linux native, controlled real Bezier and ASan/UBSan/leak job success; 8 negative receipt tests run both Release and ASan",
+  "ci_completed_jobs_while_recorded": [
+    "QUAD native (ubuntu-24.04)",
+    "TRI scientific equivalence against frozen baseline"
+  ],
+  "ci_pending_jobs_while_recorded": [
+    "QUAD native (windows-2022)",
+    "TRI baseline and tooling controls (Linux)"
+  ],
+  "adaptive_epochs": 0,
+  "scientific_nonclaims": [
+    "Reversible rehearsal does not retain a new scientifically accepted owner",
+    "No atomic filesystem plus in-memory publication transaction",
+    "No source selection policy accepted",
+    "Fixed16 source boundary is not production Adapter::AdaptCurve",
+    "Global Eistute/Book high-valence nonmanifold welding is not implemented",
+    "No original 1993 equivalence/all-QUAD/anisotropy"
+  ],
+  "main_unchanged": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94"
+}
