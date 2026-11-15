@@ -2013,3 +2013,76 @@ P2d1c4 accepted-owner state machine, strong-exception rollback
 and two real previous-accepted-source-driven mixed transitions,
 without changing default TRI or incorrectly closing R3/M7 issue221.
 
+## 2026-11-15 — P2d-1c3 qualified and five-fault P2d-1c4a reversible real-owner trial
+
+PR235 actual-physical-OBJ Pareto source
+27851df2625e0c0b37e12023af699a01f3d0304c completed exact
+CI #43664129060: 4/4 jobs SUCCESS, 85/85 root CTests, 527/527
+Python tooling, native Linux and Windows real physical QUAD/AFT
+applications plus Linux ASan/UBSan/leak, frozen original Eistute/
+Book TRI equivalence. Its six independent adversarial Pareto
+tests explicitly ran in actual Linux, Windows and sanitizer apps.
+The area-based source-specific profile finds north dominates
+west because error and node count improve for the same total
+125 physical elements and .375 QUAD UV area. Adding QUAD face
+count as a separate objective makes all four candidates
+nondominated; this is profile-sensitive diagnostic evidence,
+not an acceptance policy. Reviewed net code (one Python
+controlled app test, pure independent Pareto oracle, separate
+six-case unit and research document); merged research PR235
+at ab1dc62a815f3d56c9b25845bec00863730ddcd5.
+Updated evidence/P2D1C3_PROFILED_PARETO_20261114.json.
+
+Source architecture audit read original
+include/data/patch/patch.h and src/data/patch/patch.cpp,
+include/data/mesh/sub_mesh.h and src/data/mesh/sub_mesh.cpp,
+include/data/node_adaptive.h and src/data/node_adaptive.cpp.
+Patch/SubMesh register separate non-owning forward/back
+observers with noexcept setters; SubMesh owns nodes and
+elements, whose exact ordered borrowed observer lists must
+survive failures. Previous physical OBJ must not be changed.
+
+Created isolated
+quad/p2d1c4a-real-owner-transaction-rehearsal-20261115,
+draft PR236. The real P1 69/42/36 has already been physically
+published as Patch/SubMesh when the trial generates the true
+source-error native 93/62/44 successor via original AFT
+and independently clones all typed nodes/elements.
+The C++ trial injects five intentional failures before the
+forward owner swap and checks the previous nonempty live
+owner, every node pointer, ID, XYZ, element pointer, every
+ordered observer list and previous OBJ bytes. A real
+forward/back noexcept pointer swap is rehearsed and reverted,
+with a destructor guard to restore previous owner after a
+validation failure. Independent Python requires exact owner
+receipt in both accepted and rollback cases plus eight
+falsified receipts that must each be rejected. No next OBJ
+publication, owner archival, implicit epoch increment or
+scientific acceptance policy. Detailed limits:
+docs/research/quad/P2D1C4A_OWNER_TRANSACTION_REHEARSAL_20261115.md.
+
+Exact latest PR236 feature
+5c8bc5ae563fdcad9518091e16a9cecf391ca55c,
+CI #43703415674: native Linux app and Linux
+ASan/UBSan/leak PASS, native Windows controlled app PASS,
+frozen Eistute/Book TRI parity PASS. Independent forged
+receipt oracle eight/eight PASS in both Linux Release and
+sanitizer execution. Root TRI baseline/tooling Linux
+job remained IN PROGRESS at this checkpoint, so NO 4/4
+qualification or PR236 merge is asserted. Retain
+evidence/P2D1C4A_REAL_OWNER_TRANSACTION_REHEARSAL_20261115.json,
+and update the pending qualifier only after all exact-head
+jobs really pass.
+
+Next engineering: finish PR236 exact CI, review and integrate
+if qualified. Then separately implement controlled source
+selection and atomic/recoverable actual physical OBJ + owner
+publication, immutable prior accepted typed history,
+post-publication and mid-publish failure injection,
+and two truly accepted previous-state-driven distinct
+QUAD/TRI adaptations with advisor-approved numerical
+criteria. Until then adaptive_epochs=0 and R3/M7 issue221
+OPEN. No main/default TRI modification or full production
+AdaptCurve, nonmanifold high-valence weld, all-QUAD,
+anisotropy, historical1993 equivalence claim.
+
