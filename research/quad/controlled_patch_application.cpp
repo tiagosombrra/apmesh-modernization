@@ -1383,7 +1383,7 @@ void RequireOwnerRehearsalUnchanged(PatchBezier& patch,
             "Failed physical transaction changed accepted node identity, XYZ or curvature");
   }
   for (std::size_t i = 0; i < original.elements.size(); ++i) {
-    const auto* element = original.owner->GetElement(static_cast<unsigned>(i));
+    auto* element = original.owner->GetElement(static_cast<unsigned>(i));
     Require(element == original.elements[i] &&
                 element->GetId() == original.element_ids[i] &&
                 element->GetArea() == original.element_areas[i],
