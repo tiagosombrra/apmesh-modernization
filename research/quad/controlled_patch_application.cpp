@@ -974,7 +974,8 @@ struct SecondNativeBandTrial {
 
 SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_source,
                                             const research::ResidualUv& second_source,
-                                            unsigned variant) {
+                                            unsigned variant,
+                                            std::unique_ptr<Quadtree>* retained_native_tree = nullptr) {
   Require(variant < 4 && std::isfinite(second_source[0]) &&
               std::isfinite(second_source[1]) &&
               second_source[0] > 0.75 && second_source[0] < 1.0 &&
@@ -1040,6 +1041,8 @@ SecondNativeBandTrial TrialSecondNativeBand(const research::ResidualUv& first_so
     const auto emitted = EmitLeafQuads(*tree, PointRule);
     result.quads = emitted.quads.size();
     result.admitted_uv_disk = true;
+    if (retained_native_tree)
+      *retained_native_tree = std::move(tree);
   } catch (const std::invalid_argument& failure) {
     // A disconnected island is reported as a rejected native proposal.
     result.rejection = failure.what();
