@@ -22,9 +22,10 @@ export function decodeGeometry(buffer: ArrayBuffer, expectedSpace: Space): MeshG
   const metaText = new TextDecoder('utf-8', { fatal: true }).decode(bytes.slice(24, 24 + metaLength));
   const metadata = JSON.parse(metaText) as Partial<MeshGeometry> & { wire_schema?: string };
   const schema = metadata.schema;
+  const sourceSha = metadata.source_sha256;
   if (metadata.wire_schema !== 'apmesh.meshstudio.geometry.bin.v1' ||
       metadata.coordinate_space !== expectedSpace ||
-      !/^[0-9a-f]{64}$/.test(metadata.source_sha256 ?? '') ||
+      typeof sourceSha !== 'string' || !/^[0-9a-f]{64}$/.test(sourceSha) ||
       schema !== 'apmesh.meshstudio.web.v1') throw new Error('invalid_binary_origin');
   let offset = 24 + metaLength;
   const points: number[][] = [];
@@ -67,7 +68,7 @@ export function decodeGeometry(buffer: ArrayBuffer, expectedSpace: Space): MeshG
   }
   return {
     schema,
-    source_sha256: metadata.source_sha256,
+    source_sha256: sourceSha,
     source_patch_ownership: metadata.source_patch_ownership ?? 'UNKNOWN_FROM_OBJ',
     coordinate_space: expectedSpace,
     points, cells, source_face_ids: ids, cell_types,
