@@ -2200,3 +2200,28 @@ mixed state. Do not infer policy approval from Pareto profiles. Preserve the
 separate production AdaptCurve, high-valence sheet ownership, historical 1993,
 all-QUAD and anisotropy gates. Commit this documentation checkpoint to
 quad-templates and verify remote readback before claiming persistence.
+
+## 2026-11-15 — clarify fixed boundary sampling versus original exterior AFT
+
+Read-only follow-up at canonical `0ee67f33cd51c48a55d07cd337a896168bb6e1b2`:
+the controlled Blender meshes use quarter-parameter fixed16 source sampling
+in `research/quad/controlled_patch_application.cpp::MakeSourceTree`. Their
+`Generate` path seeds `OwnedQuadAftFront` and calls
+`AttemptExteriorTriangulation`, which invokes original `makeGeometryBasedMesh`
+and conditionally original `makeTopologyBasedMesh`. Its declared diagnostic
+scope excludes `improveMesh` and `fillMesh`. Thus original exterior advancing
+front is already present, while the original curve-adaptation pipeline is not
+integrated into this live case. The finite P1/P2 scope isolates mixed-element
+construction, interface checks and publication/history work; it does not prove
+that fixed sampling is required by the algorithm. Separate PR214 R2c7/R2c9
+evidence records real all-side original curve-adaptation/physical-chart trials.
+Do not conflate those detached trials with accepted application integration.
+
+Updated STATE.md and appended this clarification only; no roadmap sequencing,
+scientific policy or source change. Remote research and main were unchanged;
+PR214 remains draft at 7cd5014. PR225 advanced separately to 6873195 and was
+preserved. Latest exact research-merge CI remains successful #43705007549;
+no new native tests or CI campaign were run. Apply two-file whitespace/staged
+checks before committing this documentation handoff. The exact next P2d-1c4b
+action and real-boundary integration obligation remain as previously recorded;
+adaptive_epochs=0 and R3/M7 remain open.

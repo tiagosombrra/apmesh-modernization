@@ -6,6 +6,17 @@ Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 
 ### 2026-11-15 status review and local visualization
 
+**Boundary/AFT clarification:** the visualized controlled case uses fixed
+quarter-parameter samples (16 boundary intervals), not production `AdaptCurve`.
+Its exterior TRI closure does invoke original `makeGeometryBasedMesh` and,
+on the existing repeated-edge-rejection outcome, `makeTopologyBasedMesh` through
+`OwnedQuadAftFront`. This bounded path deliberately omits `improveMesh` and
+`fillMesh`; it is not the full original generator pipeline. PR214 retains
+separate real all-side curve-adaptation experiments, not an integrated live
+application contract. Fixed sampling bounds the controlled P1/P2 experiment;
+it does not remove the outstanding real-boundary integration gate. No scope,
+selection policy or execution order is changed by this clarification.
+
 Reviewed canonical research `392d02c0dc1fd52bcc6cb83320469d1143636ef6`.
 The clean local checkout was fast-forwarded from `3beec583` (162 commits behind);
 other worktrees and branches were preserved. Live GitHub confirms PR236 merged
