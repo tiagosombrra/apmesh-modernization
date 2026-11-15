@@ -47,6 +47,7 @@ def main():
     green = material("Accepted reference", (0.25, 0.95, 0.45, 1))
     red = material("Rejected reference", (1, 0.25, 0.2, 1))
     yellow = material("Discretized curve points", (1, 0.85, 0.1, 1))
+    blue = material("Analytic model display", (0.18, 0.43, 0.85, 1))
 
     def label(body, x, y, size=0.15, color=white):
         data = bpy.data.curves.new(body, "FONT")
@@ -66,11 +67,36 @@ def main():
             point.co = (*xyz, 1)
         obj = bpy.data.objects.new(name, data)
         scene.collection.objects.link(obj)
+        obj.show_in_front = True
         data.materials.append(color)
+
+    # Dense evaluation is a display reference, never a generated/accepted mesh.
+    analytic_x = -len(rows)*3.45/2
+    grid = 64
+    analytic_xyz = [golden(u/grid, v/grid)[0]
+                    for v in range(grid+1) for u in range(grid+1)]
+    analytic_faces = [(v*(grid+1)+u, v*(grid+1)+u+1,
+                       (v+1)*(grid+1)+u+1, (v+1)*(grid+1)+u)
+                      for v in range(grid) for u in range(grid)]
+    analytic_mesh = bpy.data.meshes.new("Analytic source - display evaluation")
+    analytic_mesh.from_pydata(analytic_xyz, [], analytic_faces)
+    analytic_mesh.update()
+    analytic_mesh.materials.append(blue)
+    for face in analytic_mesh.polygons:
+        face.use_smooth = True
+    analytic_object = bpy.data.objects.new(analytic_mesh.name, analytic_mesh)
+    scene.collection.objects.link(analytic_object)
+    analytic_object.location = (analytic_x, 0, 0)
+    analytic_object["display_reference_only"] = True
+    analytic_object["sampling_grid"] = grid
+    label("Analytic Bezier model", analytic_x, 1.45, 0.2, blue)
+    label("Original source geometry", analytic_x, 1.2, 0.15)
+    label("Display evaluation only", analytic_x, -1.3, 0.14)
+    label("Not a generated/accepted mesh", analytic_x, -1.55, 0.12)
 
     records = []
     for column, row in enumerate(rows):
-        x = (column - (len(rows)-1)/2) * 3.45
+        x = (column + 1 - len(rows)/2) * 3.45
         accepted = row["reference_tri_accepted"] == "1"
         status = "ACCEPTED TRI reference" if accepted else "REJECTED TRI reference"
         label(f"Step {row['step']} | {status}", x, 3.25, 0.15, green if accepted else red)
@@ -125,6 +151,7 @@ def main():
     note.write(json.dumps({"artifacts": records, "manifest": rows,
                            "curve_stage_counts_step1": counts,
                            "analytic_guide": "257 display samples, +0.006 Z offset; not mesh nodes",
+                           "analytic_model": "Original Bezier evaluation on a 64x64 display grid; not generated mesh",
                            "mesh_geometry": "Unmodified source coordinates; native Blender storage precision",
                            "mixed_feedback": False}, indent=2))
     for area in bpy.context.screen.areas:
@@ -136,12 +163,13 @@ def main():
             view.overlay.show_cursor = False
             view.region_3d.view_rotation = Euler((math.radians(8), 0, 0), "XYZ").to_quaternion()
             view.region_3d.view_location = Vector((0, -0.55, 0))
-            view.region_3d.view_distance = max(15, len(rows)*4.7)
+            view.region_3d.view_distance = max(17, (len(rows)+1)*4.2)
             view.region_3d.view_perspective = "ORTHO"
     bpy.ops.object.select_all(action="DESELECT")
     bpy.ops.wm.save_as_mainfile(filepath=str(output))
     output.with_suffix(".json").write_text(json.dumps({"blender": bpy.app.version_string,
-        "artifacts": records, "steps": len(rows), "mixed_adaptive_epochs": 0}, indent=2)+"\n")
+        "artifacts": records, "steps": len(rows), "mixed_adaptive_epochs": 0,
+        "analytic_display_grid": grid}, indent=2)+"\n")
     print("QUAD_GENERATION_SCENE_SAVED", output)
 
 
