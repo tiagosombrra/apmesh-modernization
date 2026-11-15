@@ -1,0 +1,54 @@
+{
+  "candidate_count": 4,
+  "file_sha256": {
+    "candidate_metrics.csv": "c156ae74f44120b9351a760f69cd5e6059c0b815a27b69a6b0ce79bba57858d2",
+    "figure.recipe.json": "31a7e352d3bc02ea69181f3bf74662b1037f2b3bae5364f252b696b00e97c2a5",
+    "include.tex": "997c826414544b63afda6922f1e704f00ff775a3d5450b3fe0a60bd3561135db",
+    "qualified_study.json": "a584e2fa53fe76bf801b06cbeba198afe229fc611966d5a6ad79e1d45c486432",
+    "real_candidate_gallery.pdf": "c3f6c6ea24e7faaf66300c3ac7788c20e363a2b5d208a926b8e250b33e4cefe9",
+    "real_candidate_gallery.svg": "55422fedffe5d3581351a1492f7a4e4d910f0fd64bade9459bec53fd3019e26f",
+    "real_candidate_pareto.pdf": "fc3aed18daa8ab192eca1cd46a914c1bc431a3d564f628512ba9f834bf34568b",
+    "real_candidate_pareto.svg": "3a57f8ec3018303c94bba9f01e440b578d49071a159f970b20596e28b5c6baf8"
+  },
+  "observed_adaptive_epochs": 0,
+  "qt_gui_qualified": false,
+  "same_source_revalidated": true,
+  "schema": "apmesh.meshstudio.real_candidate_publication_audit.v1",
+  "source_CI_does_not_qualify_studio": true,
+  "source_report_sha256": "9de13e6e9b8f6a5f6ae188f19acd0a6b068ddc066df2f4ff9d5579ef96f9f054",
+  "source_run_not_independent_replicates": true,
+  "vector_audits": {
+    "real_candidate_gallery": {
+      "pdf": {
+        "font_inventory": 2,
+        "height_mm": 132,
+        "page_count": 1,
+        "vector_drawings_at_least": 35,
+        "vector_only_no_image_xobjects": true,
+        "width_mm": 190
+      },
+      "svg": {
+        "image_elements": 0,
+        "local_glyph_references": 763,
+        "path_elements": 695,
+        "vector_only": true
+      }
+    },
+    "real_candidate_pareto": {
+      "pdf": {
+        "font_inventory": 2,
+        "height_mm": 132,
+        "page_count": 1,
+        "vector_drawings_at_least": 35,
+        "vector_only_no_image_xobjects": true,
+        "width_mm": 190
+      },
+      "svg": {
+        "image_elements": 0,
+        "local_glyph_references": 875,
+        "path_elements": 144,
+        "vector_only": true
+      }
+    }
+  }
+}

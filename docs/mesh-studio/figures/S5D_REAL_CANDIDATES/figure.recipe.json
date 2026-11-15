@@ -1,0 +1,24 @@
+{
+  "graphic_semantics": "REAL_SOURCE_GEOMETRY_STAGED_NOT_ADAPTIVE_ACCEPTED",
+  "height_mm": 132,
+  "pareto_profiles": [
+    "uv_area_profile",
+    "quad_count_profile"
+  ],
+  "same_uv_camera": [
+    0,
+    1,
+    0,
+    1
+  ],
+  "sampling": "4096 identical UV midpoint sites",
+  "schema": "apmesh.meshstudio.real_candidate_figure_recipe.v1",
+  "source_sha256": {
+    "band": "76b0b4defecc5d534815fb9f41e1405653597a4a0bee6cc7b722ec2460d7afd6",
+    "both": "b77afb530724f38ff81f0f3e7f06fca6c8dc0cb4a15562ce933a4013724bd36c",
+    "control": "cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0",
+    "north": "6eb4faedeaab44fbfa3d4cb2ca1ea618a3dca513dc241871c57bcc7eae26d500",
+    "west": "ca08918f6d71fa672de22a72eb6fef7c106c90c7fd02d40cb19852972b4274ee"
+  },
+  "width_mm": 190
+}
