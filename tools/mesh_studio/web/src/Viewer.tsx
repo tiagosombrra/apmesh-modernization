@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
 import '@kitware/vtk.js/Rendering/Profiles/Geometry';
 import vtkGenericRenderWindow from '@kitware/vtk.js/Rendering/Misc/GenericRenderWindow';
 import vtkPolyData from '@kitware/vtk.js/Common/DataModel/PolyData';
@@ -7,6 +7,8 @@ import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor';
 import vtkCellPicker from '@kitware/vtk.js/Rendering/Core/CellPicker';
 import vtkDataArray from '@kitware/vtk.js/Common/Core/DataArray';
 import type { MeshGeometry, Space } from './contracts';
+import type { CameraPose } from './camera';
+import { isCameraPose } from './camera';
 import { asVtkCells } from './geometry';
 
 interface ViewerProps {
@@ -20,34 +22,99 @@ interface ViewerProps {
   onSelect: (faceId: number | null) => void;
 }
 
-export function Viewer({ space, modelId, geometry, showTri, showQuad, edges,
-                         selectedId, onSelect }: ViewerProps) {
+export interface ViewerHandle {
+  snapshotCamera(): CameraPose | null;
+  restoreCamera(pose: CameraPose): boolean;
+  resetCamera(): void;
+}
+
+type GRW = ReturnType<typeof vtkGenericRenderWindow.newInstance>;
+type Actor = ReturnType<typeof vtkActor.newInstance>;
+
+export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
+  space, geometry, showTri, showQuad, edges, selectedId, onSelect,
+}, ref) {
   const container = useRef<HTMLDivElement>(null);
-  const sourceFaceIds = useRef<number[]>([]);
-  const rendererRef = useRef<ReturnType<typeof vtkGenericRenderWindow.newInstance> | null>(null);
+  const renderRef = useRef<GRW | null>(null);
+  const actorRef = useRef<Actor | null>(null);
+  const dataRef = useRef<ReturnType<typeof vtkPolyData.newInstance> | null>(null);
+  const overlayRef = useRef<Actor | null>(null);
+  const sourceIds = useRef<number[]>([]);
   const onSelectRef = useRef(onSelect);
-  const overlayRef = useRef<ReturnType<typeof vtkActor.newInstance> | null>(null);
-  const geometryRef = useRef<MeshGeometry | null>(null);
-  const rebuildOverlay = useRef<(id: number | null) => void>(() => {});
-  useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
+  const visibleRef = useRef({ showTri, showQuad, edges });
+  const selectedRef = useRef(selectedId);
+  const initializedRef = useRef(false);
+  const updateOverlay = useRef<() => void>(() => {});
+  onSelectRef.current = onSelect;
+  visibleRef.current = { showTri, showQuad, edges };
+  selectedRef.current = selectedId;
+
+  function resetCamera() {
+    const grw = renderRef.current;
+    if (!grw) return;
+    const renderer = grw.getRenderer();
+    const camera = renderer.getActiveCamera();
+    if (space === 'uv') {
+      camera.setParallelProjection(true);
+      camera.setPosition(0.5, 0.5, 4);
+      camera.setFocalPoint(0.5, 0.5, 0);
+      camera.setViewUp(0, 1, 0);
+    } else {
+      const points = geometry.points;
+      const minima = [Infinity, Infinity, Infinity];
+      const maxima = [-Infinity, -Infinity, -Infinity];
+      for (const point of points) for (let i = 0; i < 3; i += 1) {
+        minima[i] = Math.min(minima[i], point[i]);
+        maxima[i] = Math.max(maxima[i], point[i]);
+      }
+      const center = minima.map((v, i) => (v + maxima[i]) / 2);
+      const diag = Math.max(Math.hypot(...maxima.map((v, i) => v - minima[i])), 1e-3);
+      camera.setParallelProjection(false);
+      camera.setFocalPoint(center[0], center[1], center[2]);
+      camera.setPosition(center[0] + diag, center[1] - 1.3 * diag, center[2] + diag);
+      camera.setViewUp(0, 0, 1);
+    }
+    renderer.resetCamera();
+    grw.getRenderWindow().render();
+  }
+
+  useImperativeHandle(ref, () => ({
+    snapshotCamera() {
+      if (!renderRef.current) return null;
+      const camera = renderRef.current.getRenderer().getActiveCamera();
+      return {
+        position: [...camera.getPosition()] as [number, number, number],
+        focal_point: [...camera.getFocalPoint()] as [number, number, number],
+        view_up: [...camera.getViewUp()] as [number, number, number],
+        parallel_scale: camera.getParallelScale(),
+        parallel: camera.getParallelProjection(),
+      };
+    },
+    restoreCamera(pose: CameraPose) {
+      if (!isCameraPose(pose) || !renderRef.current) return false;
+      const camera = renderRef.current.getRenderer().getActiveCamera();
+      camera.setPosition(...pose.position);
+      camera.setFocalPoint(...pose.focal_point);
+      camera.setViewUp(...pose.view_up);
+      camera.setParallelScale(pose.parallel_scale);
+      camera.setParallelProjection(pose.parallel);
+      renderRef.current.getRenderWindow().render();
+      return true;
+    },
+    resetCamera,
+  }));
 
   useEffect(() => {
-    if (!container.current) return;
+    const host = container.current;
+    if (!host) return;
     const grw = vtkGenericRenderWindow.newInstance({ background: [0.047, 0.085, 0.126] });
-    grw.setContainer(container.current);
+    grw.setContainer(host);
     grw.resize();
-    rendererRef.current = grw;
+    renderRef.current = grw;
     const renderer = grw.getRenderer();
-    const renderWindow = grw.getRenderWindow();
-    const vtk = asVtkCells(geometry, showTri, showQuad);
-    sourceFaceIds.current = vtk.sourceIds;
-    geometryRef.current = geometry;
     const data = vtkPolyData.newInstance();
-    data.getPoints().setData(vtk.points, 3);
-    data.getPolys().setData(vtk.polys);
-    data.getCellData().setScalars(vtkDataArray.newInstance({
-      name: 'elementTypeColor', values: vtk.colorBytes, numberOfComponents: 4,
-    }));
+    data.getPoints().setData(new Float32Array(geometry.points.flat()), 3);
+    dataRef.current = data;
     const mapper = vtkMapper.newInstance();
     mapper.setInputData(data);
     mapper.setScalarVisibility(true);
@@ -55,22 +122,31 @@ export function Viewer({ space, modelId, geometry, showTri, showQuad, edges,
     mapper.setColorModeToDirectScalars();
     const actor = vtkActor.newInstance();
     actor.setMapper(mapper);
-    actor.getProperty().setEdgeVisibility(edges);
     actor.getProperty().setEdgeColor(0.08, 0.16, 0.22);
     actor.getProperty().setLineWidth(1);
+    actorRef.current = actor;
     renderer.addActor(actor);
 
-    rebuildOverlay.current = (id) => {
-      if (overlayRef.current) renderer.removeActor(overlayRef.current);
+    // Overlay uses only the selected cell corners, not a duplicate entire mesh.
+    updateOverlay.current = () => {
+      if (overlayRef.current) {
+        renderer.removeActor(overlayRef.current);
+        overlayRef.current.delete();
+      }
       overlayRef.current = null;
-      const g = geometryRef.current;
-      const i = g?.source_face_ids.indexOf(id ?? -1) ?? -1;
-      if (id === null || i < 0 || !g) { renderWindow.render(); return; }
-      if ((!showTri && g.cell_types[i] === 'triangle') ||
-          (!showQuad && g.cell_types[i] === 'quad')) return;
+      const sourceId = selectedRef.current;
+      const index = geometry.source_face_ids.indexOf(sourceId ?? -1);
+      if (sourceId === null || index < 0 ||
+          (geometry.cell_types[index] === 'triangle' && !visibleRef.current.showTri) ||
+          (geometry.cell_types[index] === 'quad' && !visibleRef.current.showQuad)) {
+        grw.getRenderWindow().render();
+        return;
+      }
+      const face = geometry.cells[index];
       const highlight = vtkPolyData.newInstance();
-      highlight.getPoints().setData(new Float32Array(g.points.flat()), 3);
-      highlight.getPolys().setData(new Uint32Array([g.cells[i].length, ...g.cells[i]]));
+      const coords = new Float32Array(face.flatMap((vertex) => geometry.points[vertex]));
+      highlight.getPoints().setData(coords, 3);
+      highlight.getPolys().setData(new Uint32Array([face.length, ...face.map((_, i) => i)]));
       const highlightMapper = vtkMapper.newInstance();
       highlightMapper.setInputData(highlight);
       const highlightActor = vtkActor.newInstance();
@@ -81,45 +157,73 @@ export function Viewer({ space, modelId, geometry, showTri, showQuad, edges,
       highlightActor.getProperty().setColor(1.0, 0.31, 0.20);
       overlayRef.current = highlightActor;
       renderer.addActor(highlightActor);
-      renderWindow.render();
+      grw.getRenderWindow().render();
     };
 
-    const camera = renderer.getActiveCamera();
-    if (space === 'uv') {
-      camera.setParallelProjection(true);
-      camera.setPosition(0.5, 0.5, 4);
-      camera.setFocalPoint(0.5, 0.5, 0);
-      camera.setViewUp(0, 1, 0);
-    }
-    renderer.resetCamera();
-    grw.resize();
-    renderWindow.render();
-    rebuildOverlay.current(selectedId);
     const picker = vtkCellPicker.newInstance();
     picker.setPickFromList(true);
     picker.addPickList(actor);
+    let pointerDown: [number, number] | null = null;
+    const down = (e: PointerEvent) => { pointerDown = [e.clientX, e.clientY]; };
     const click = (event: MouseEvent) => {
-      const host = container.current;
-      if (!host) return;
+      if (pointerDown && Math.hypot(event.clientX - pointerDown[0], event.clientY - pointerDown[1]) > 5) {
+        pointerDown = null;
+        return;
+      }
+      pointerDown = null;
       const rect = host.getBoundingClientRect();
       picker.pick([event.clientX - rect.left, rect.height - (event.clientY - rect.top), 0], renderer);
-      const picked = picker.getCellId();
-      onSelectRef.current(picked >= 0 ? sourceFaceIds.current[picked] ?? null : null);
+      const id = picker.getCellId();
+      onSelectRef.current(id >= 0 ? sourceIds.current[id] ?? null : null);
     };
-    container.current.addEventListener('click', click);
+    host.addEventListener('pointerdown', down);
+    host.addEventListener('click', click);
     const observer = new ResizeObserver(() => grw.resize());
-    observer.observe(container.current);
+    observer.observe(host);
+    initializedRef.current = false;
     return () => {
       observer.disconnect();
-      container.current?.removeEventListener('click', click);
-      rendererRef.current = null;
-      rebuildOverlay.current = () => {};
+      host.removeEventListener('pointerdown', down);
+      host.removeEventListener('click', click);
+      if (overlayRef.current) {
+        renderer.removeActor(overlayRef.current);
+        overlayRef.current.delete();
+      }
+      overlayRef.current = null;
+      updateOverlay.current = () => {};
+      renderRef.current = null;
+      actorRef.current = null;
+      dataRef.current = null;
+      sourceIds.current = [];
+      picker.delete();
       grw.delete();
     };
-    // Rebuild data on model/layer changes; selection update does not reset camera.
-  }, [geometry, modelId, space, showTri, showQuad, edges]);
+    // Recreate the GL context only if the actual source mesh or space changes.
+  }, [geometry, space]);
 
-  useEffect(() => { rebuildOverlay.current(selectedId); }, [selectedId]);
+  useEffect(() => {
+    const grw = renderRef.current;
+    const data = dataRef.current;
+    const actor = actorRef.current;
+    if (!grw || !data || !actor) return;
+    const mesh = asVtkCells(geometry, showTri, showQuad);
+    sourceIds.current = mesh.sourceIds;
+    data.getPolys().setData(mesh.polys);
+    data.getCellData().setScalars(vtkDataArray.newInstance({
+      name: 'elementTypeColor', values: mesh.colorBytes, numberOfComponents: 4,
+    }));
+    data.modified();
+    actor.getProperty().setEdgeVisibility(edges);
+    if (!initializedRef.current) {
+      resetCamera();
+      initializedRef.current = true;
+    }
+    updateOverlay.current();
+    // Replacing cell data never resets the active camera or renderer context.
+  }, [geometry, showTri, showQuad, edges]);
+
+  useEffect(() => { updateOverlay.current(); }, [selectedId]);
+
   return (
     <section className="view-pane" aria-label={`Vista ${space.toUpperCase()}`}>
       <div className="view-heading">
@@ -127,8 +231,12 @@ export function Viewer({ space, modelId, geometry, showTri, showQuad, edges,
           <strong>{space === 'xyz' ? 'Espaço físico' : 'Domínio paramétrico'}</strong></div>
         <span className="view-tag">{space.toUpperCase()}</span>
       </div>
-      <div ref={container} className="vtk-canvas" data-testid={`viewport-${space}`} />
-      <div className="view-footer">{space === 'xyz' ? 'Arraste para orbitar · role para ampliar' : 'A mesma face, na parametrização UV'}</div>
+      <div ref={container} className="vtk-canvas" data-testid={`viewport-${space}`}
+        data-selected-source-face={selectedId ?? ''} />
+      <div className="view-footer">
+        {space === 'xyz' ? 'Arraste para orbitar · role para ampliar' : 'A mesma face, na parametrização UV'}
+        {selectedId !== null && <span className="selected-face-label" data-testid={`selected-${space}`}>Face #{selectedId}</span>}
+      </div>
     </section>
   );
-}
+});

@@ -48,6 +48,17 @@ jobs:
         run: echo 'Windows hosted runner has no qualified WGL/OSMesa; vtkAdapter render tests skipped explicitly. A GPU workstation smoke remains mandatory.'
       - name: Verify original fixture corpus
         run: python tools/mesh_studio/fixtures/validate.py
+      - name: Measure bounded synthetic transfer size (not GPU or generator performance)
+        if: runner.os == 'Linux'
+        run: python -m tools.mesh_studio.scene_benchmark --cells 1000 50000 --output build/mesh-studio/transfer-size.json
+      - name: Retain transport-size preflight receipt
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-transfer-preflight-${{ github.sha }}
+          path: build/mesh-studio/transfer-size.json
+          if-no-files-found: error
+          retention-days: 7
   browser-spike:
     runs-on: ubuntu-24.04
     timeout-minutes: 20

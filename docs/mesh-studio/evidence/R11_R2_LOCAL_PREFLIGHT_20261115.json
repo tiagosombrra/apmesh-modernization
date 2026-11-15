@@ -1,0 +1,51 @@
+{
+  "schema": "apmesh.meshstudio.r11_preflight.v1",
+  "date": "2026-11-15",
+  "base_source_sha": "d713efcae4d8acf03adc1dfbb6f00ddd43e4f949",
+  "local_python_methods_passed": 209,
+  "local_fixture_positive": 10,
+  "local_fixture_negative_rejections": 6,
+  "browser_e2e_tests_written": 8,
+  "browser_e2e_executed": false,
+  "wire_implementation": "apmesh.meshstudio.geometry.bin.v1",
+  "synthetic_benchmark": {
+    "max_binary_bytes": 33554432,
+    "not_browser_frame_rate_or_gpu_test": true,
+    "not_scientific_generator_data": true,
+    "results": [
+      {
+        "binary_bytes": 38426,
+        "binary_pack_s": 0.0016,
+        "cells": 1000,
+        "construction_s": 0.0007,
+        "json_bytes": 75633,
+        "json_encode_s": 0.0013,
+        "points": 1088,
+        "wire_ratio_binary_to_json": 0.50806
+      },
+      {
+        "binary_bytes": 1857859,
+        "binary_pack_s": 0.1187,
+        "cells": 50000,
+        "construction_s": 0.1047,
+        "json_bytes": 4065167,
+        "json_encode_s": 0.0662,
+        "points": 50624,
+        "wire_ratio_binary_to_json": 0.45702
+      },
+      {
+        "binary_bytes": 18524036,
+        "binary_pack_s": 0.8395,
+        "cells": 500000,
+        "construction_s": 1.1469,
+        "json_bytes": 43633825,
+        "json_encode_s": 0.6364,
+        "points": 501972,
+        "wire_ratio_binary_to_json": 0.42453
+      }
+    ],
+    "schema": "apmesh.meshstudio.synthetic_transport_benchmark.v1"
+  },
+  "no_generator_changes": true,
+  "r2_browser_500k_qualified": false
+}

@@ -1,6 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { studyApi } from './api';
 import { Viewer } from './Viewer';
+import type { ViewerHandle } from './Viewer';
+import { CAMERA_SCHEMA, parseCameraRecipe, storageKey } from './camera';
 import type { FaceDetail, MeshGeometry, ModelEntry } from './contracts';
 import './style.css';
 
@@ -21,6 +23,9 @@ export default function App() {
   const [edges, setEdges] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [cameraStatus, setCameraStatus] = useState('');
+  const xyzRef = useRef<ViewerHandle>(null);
+  const uvRef = useRef<ViewerHandle>(null);
   const model = useMemo(() => catalog.find((item) => item.id === modelId), [catalog, modelId]);
 
   useEffect(() => {
@@ -31,7 +36,7 @@ export default function App() {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    setXyz(null); setUv(null); setSelected(null); setDetail(null);
+    setXyz(null); setUv(null); setSelected(null); setDetail(null); setCameraStatus('');
     Promise.all([studyApi.geometry(modelId, 'xyz'), studyApi.geometry(modelId, 'uv')])
       .then(([a, b]) => {
         if (cancelled) return;
@@ -52,8 +57,42 @@ export default function App() {
       .catch((e: Error) => { if (!cancelled) setError(e.message); });
     return () => { cancelled = true; };
   }, [modelId, selected]);
-  const toggleTri = () => { setShowTri(!showTri); setSelected(null); };
-  const toggleQuad = () => { setShowQuad(!showQuad); setSelected(null); };
+  const toggleLayer = (kind: 'triangle' | 'quad') => {
+    const visible = kind === 'triangle' ? !showTri : !showQuad;
+    if (kind === 'triangle') setShowTri(visible);
+    else setShowQuad(visible);
+    if (!visible && selected !== null && xyz) {
+      const index = xyz.source_face_ids.indexOf(selected);
+      if (index >= 0 && xyz.cell_types[index] === kind) setSelected(null);
+    }
+  };
+  const saveCameras = () => {
+    if (!model || !xyz || !uv) return;
+    const camera_xyz = xyzRef.current?.snapshotCamera();
+    const camera_uv = uvRef.current?.snapshotCamera();
+    if (!camera_xyz || !camera_uv) { setCameraStatus('Vistas ainda não inicializadas.'); return; }
+    const recipe = { schema: CAMERA_SCHEMA, source_sha256: xyz.source_sha256, camera_xyz, camera_uv };
+    try {
+      localStorage.setItem(storageKey(xyz.source_sha256), JSON.stringify(recipe));
+      setCameraStatus('Enquadramentos salvos para este SHA-256.');
+    } catch { setCameraStatus('Não foi possível salvar as câmeras no navegador.'); }
+  };
+  const restoreCameras = () => {
+    if (!xyz || !uv) return;
+    try {
+      const raw = localStorage.getItem(storageKey(xyz.source_sha256));
+      if (!raw) throw new Error('no_saved_camera');
+      const recipe = parseCameraRecipe(raw, xyz.source_sha256);
+      if (!xyzRef.current?.restoreCamera(recipe.camera_xyz) ||
+          !uvRef.current?.restoreCamera(recipe.camera_uv)) throw new Error('camera_renderer_unavailable');
+      setCameraStatus('Enquadramentos restaurados com a origem verificada.');
+    } catch { setCameraStatus('Receita ausente, inválida ou de outra malha.'); }
+  };
+  const resetCameras = () => {
+    xyzRef.current?.resetCamera();
+    uvRef.current?.resetCamera();
+    setCameraStatus('Enquadramentos redefinidos.');
+  };
   return (
     <div className="shell">
       <header className="topbar">
@@ -73,8 +112,8 @@ export default function App() {
           </select>
           <div className="section-break" />
           <div className="field-label">CAMADAS</div>
-          <label className="layer-row"><input data-testid="toggle-quad" type="checkbox" checked={showQuad} onChange={toggleQuad}/><span className="layer-dot quad" />Quadriláteros <b>{model?.quads ?? '—'}</b></label>
-          <label className="layer-row"><input data-testid="toggle-tri" type="checkbox" checked={showTri} onChange={toggleTri}/><span className="layer-dot tri" />Triângulos AFT <b>{model?.triangles ?? '—'}</b></label>
+          <label className="layer-row"><input data-testid="toggle-quad" type="checkbox" checked={showQuad} onChange={() => toggleLayer('quad')}/><span className="layer-dot quad" />Quadriláteros <b>{model?.quads ?? '—'}</b></label>
+          <label className="layer-row"><input data-testid="toggle-tri" type="checkbox" checked={showTri} onChange={() => toggleLayer('triangle')}/><span className="layer-dot tri" />Triângulos AFT <b>{model?.triangles ?? '—'}</b></label>
           <label className="layer-row"><input data-testid="toggle-edges" type="checkbox" checked={edges} onChange={() => setEdges(!edges)}/><span className="layer-dot edges" />Arestas <b>ON</b></label>
           <div className="section-break" />
           <div className="field-label">INTEGRIDADE</div>
@@ -85,11 +124,17 @@ export default function App() {
         <main className="main-content">
           <div className="main-header"><div><div className="eyebrow">RESEARCH / VISUALIZATION</div><h1>Geometria sob investigação</h1><p>Uma malha. Dois espaços. Identidade científica preservada.</p></div>
           <div className="main-status">{loading ? 'Carregando' : error ? 'Erro' : 'Dados verificados'}</div></div>
+          <div className="camera-toolbar" aria-label="Controles de câmera">
+            <button type="button" data-testid="save-cameras" disabled={!xyz || !uv} onClick={saveCameras}>Salvar vistas</button>
+            <button type="button" data-testid="restore-cameras" disabled={!xyz || !uv} onClick={restoreCameras}>Restaurar vistas</button>
+            <button type="button" data-testid="reset-cameras" disabled={!xyz || !uv} onClick={resetCameras}>Redefinir câmeras</button>
+            <span role="status" data-testid="camera-status">{cameraStatus}</span>
+          </div>
           {error && <div role="alert" className="error">{error}</div>}
           {loading && <div className="loading">Carregando geometria e verificando a origem...</div>}
           {xyz && uv && <div className="view-grid">
-            <Viewer key={`${modelId}-xyz`} space="xyz" modelId={modelId} geometry={xyz} showTri={showTri} showQuad={showQuad} edges={edges} selectedId={selected} onSelect={setSelected}/>
-            <Viewer key={`${modelId}-uv`} space="uv" modelId={modelId} geometry={uv} showTri={showTri} showQuad={showQuad} edges={edges} selectedId={selected} onSelect={setSelected}/>
+            <Viewer ref={xyzRef} key={`${modelId}-xyz`} space="xyz" modelId={modelId} geometry={xyz} showTri={showTri} showQuad={showQuad} edges={edges} selectedId={selected} onSelect={setSelected}/>
+            <Viewer ref={uvRef} key={`${modelId}-uv`} space="uv" modelId={modelId} geometry={uv} showTri={showTri} showQuad={showQuad} edges={edges} selectedId={selected} onSelect={setSelected}/>
           </div>}
           <div className="model-foot"><div><small>ORIGEM</small><strong>{model ? statuses[model.source_status] : '—'}</strong></div>
           <div><small>ÉPOCAS ADAPTATIVAS ACEITAS</small><strong>0</strong></div>

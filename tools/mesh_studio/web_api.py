@@ -8,12 +8,13 @@ from __future__ import annotations
 from hashlib import sha256
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from .import_obj import import_obj
 from .quality_analysis import analyze_mesh
 from .scene_model import build_batch, face_detail, initial_scene
+from .scene_transport import pack_geometry, SceneTransportError
 
 SCHEMA = 'apmesh.meshstudio.web.v1'
 ROOT = Path(__file__).resolve().parent / 'fixtures'
@@ -99,6 +100,20 @@ def geometry(model_id: str, space: str = Query('xyz', pattern='^(xyz|uv)$')):
             'source_face_ids': list(source_ids), 'cell_types': cell_types,
             'triangles': doc.triangles, 'quads': doc.quads,
             'warning': 'UV is per face corner. Geometry is indexed by source face IDs.'}
+
+
+@app.get('/api/v1/models/{model_id}/geometry.bin')
+def binary_geometry(model_id: str, space: str = Query('xyz', pattern='^(xyz|uv)$')):
+    """Return a bounded little-endian rendering transport, never scientific float64 data."""
+    payload = geometry(model_id, space)
+    payload['warning'] += ' Positions are float32 display data, never the numerical source oracle.'
+    try:
+        wire = pack_geometry(payload)
+    except SceneTransportError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    return Response(content=wire, media_type='application/vnd.apmesh.geometry.v1',
+                    headers={'Cache-Control': 'no-store',
+                             'X-Source-SHA256': payload['source_sha256']})
 
 
 @app.get('/api/v1/models/{model_id}/faces/{face_id}')
