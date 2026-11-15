@@ -1934,3 +1934,34 @@ OPEN, adaptive_epochs=0. Full production AdaptCurve, original 1993
 policy, global nonmanifold sheet pairing, all-QUAD and anisotropy
 are still outside certified research candidate.
 
+## 2026-11-14 — Final exact P2d-1c2 CI and physical research integration
+
+Corrects the previous explicitly pending P2d-1c2 checkpoint: exact
+source 32e4653ff80947498c39953ce53f50af618203e9 completed
+Actions #43663198795 4/4 SUCCESS. Linux GCC and Windows MSVC
+native/controlled original AFT produced three distinct physical
+mixed QUAD/TRI candidate OBJ each with original 16 boundary
+edges and typed positive physical/source oracles. Linux
+ASan/UBSan/leak PASS, independent 64×64 (4096 common sites)
+Bernstein source residual PASS. TRI root baseline 85/85 CTests
+and 527/527 Python tooling PASS; frozen original Eistute/Book
+TRI scientific equivalence PASS. Explicit isolated source corner
+rejected without physical OBJ. Exact emitted west/north/both
+candidate SHA-256/element counts/errors and scientific cautions
+remain in evidence/P2D1C2_SECOND_PHYSICAL_AFT_TRIALS_20261114.json.
+
+Reviewed PR234 exact changed-file set (one bounded native research
+C++ unit, one independent Python application oracle, one research
+protocol) and merged into quad-templates at
+672aa297352d0ee316c57f347e7cd5f69e4f86d1.
+main remains f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94.
+The three candidate physical meshes are not accepted QUAD/TRI
+history epochs: R3/M7 issue221 OPEN and adaptive_epochs=0.
+Next bounded work: independently profile finite-grid source-error,
+typed physical quality, complexity/QUAD UV-area and QUAD-count
+objectives without silently declaring a preferred scientific
+policy; develop fault-injected atomic prior accepted mixed owner
+transaction only after explicit research decision. No full
+production AdaptCurve or nonmanifold global welding/all-QUAD/
+anisotropy/literal 1993 reconstruction.
+
