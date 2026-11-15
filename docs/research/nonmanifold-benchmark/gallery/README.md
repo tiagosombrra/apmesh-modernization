@@ -1,6 +1,6 @@
 # Scientific model gallery — evidence-indexed, not a claim of meshing success
 
-**Status 2026-11-14:** R0-R1 sources cataloged, R2 constructed non-manifold BRep control, R3 exact **planar analytic** bicubic BP pilot; no APMesh TRI/QUAD/all-quad/anisotropic meshes generated on the new pilot. No historical input changed.
+**Status 2026-11-14:** R0-R1 sources cataloged, R2 constructed non-manifold BRep control, R3 exact **planar and nonplanar curved analytic** bicubic BP pilots; no APMesh TRI/QUAD/all-quad/anisotropic meshes generated on the new pilot. No historical input changed.
 
 ## 1. Source → reconstructed geometry → Bezier representation
 
@@ -33,3 +33,18 @@ This diagram is an analytical XY cross-section, **not** a photograph or a genera
 Keep the following scientific states separate, with evidence-verified labels and hashes: source CAD/BRep; edge/sheet graph (source vs reconstructed topology); exact or bounded bicubic BP control net; TRI mesh and accepted/rejected stages; mixed QUAD/TRI; all-quad; anisotropic metric and resulting mesh. At present only the initial source/control/Bezier stages have evidence for the three-cuboid pilot. **Do not draw future mesh results as if they have been computed.**
 
 Image and raw model licensing follow source-file rights review; linked upstream images are not copied or redistributed in this Git repository. MATLAB/Matplotlib renderings in downloadable local research packages are author-generated geometry illustrations, not additional independent dataset assets.
+
+## 4. Curved synthetic control (2026-11-15)
+
+The source-built curved pilot preserves the four-sheet incidence graph but **deforms the straight central curve** into a nonplanar spatial cubic. It does **not** claim to reproduce the original three cuboids. One of the four patch sides is parameter-reversed while referencing the exact same four global BP controls.
+
+- [R3 curved mathematical/control proof](../R3_CURVED_BICUBIC_PILOT.md)
+- [R3 curved indexed BP fixture](../fixtures/four_sheet_curved.bp)
+- [R3 representability matrix](../R3_REPRESENTABILITY_MATRIX.md)
+- [Reproducible geometry rendering script](../probes/render_curved_r3.py)
+
+To generate the corresponding rendered image locally:
+
+    python docs/research/nonmanifold-benchmark/probes/render_curved_r3.py --output build/research-r3-curved/curved_gallery.png
+
+The render is a parametric **surface visualization**, not a TRI/QUAD mesh or experimental quality graph. The Python visualization is optional and requires Matplotlib/Numpy; it is not a build dependency. Original upstream media remain hyperlinks, not redistributed images.

@@ -103,3 +103,9 @@ See AGENTS.md, docs/PROJECT_STATE.md, docs/MODERNIZATION_PLAN.md, docs/GENERATIO
 - R5-R7: untouched. No APMesh TRI/QUAD mesh generation or paper comparison for the new control.
 
 See [R3 pilot measurements](R3_ANALYTIC_BICUBIC_PILOT.md) and [scientific gallery](gallery/README.md). Any novel CAD model admission, tolerance/feature semantics or technique change requires independent review and new evidence. No stage closure beyond the bounded analytic control is claimed.
+
+## 2026-11-15 — additional bounded R3 curved control
+
+One synthetic deformation of the R2 four-sheet incidence graph was constructed with a nonplanar cubic Bezier spine and four ruled bicubic sheets. The canonical C0 is used four times by index, with one patch in reverse local parameter orientation. A native kernel Shell has one true four-face edge; BRep export/import preserves that edge. The R3 analytic power-basis auditor and OCCT BRep distance checks pass the bounded sample budgets. The local R2/R3 research bundle passes 44 tests, including 12 new curved/negative tests and a fixed-parameter nonpolynomial exact-representability rejection. Raw outputs are deterministic in two runs. See [curved proof](R3_CURVED_BICUBIC_PILOT.md) and [case matrix](R3_REPRESENTABILITY_MATRIX.md).
+
+No third-party CAD source was converted: **G1/G2 external admission, full R3, general R4, runtime R5 and comparative R6/R7 gates remain open**. This is an author-created analytic control; no source algorithm change, merge, production test or article-level generalization is claimed.
