@@ -1,0 +1,65 @@
+{
+  "schema": "apmesh.quad.p2d1c3.profiled_pareto.v1",
+  "date": "2026-11-14",
+  "parent_qualified_physical_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/234",
+  "parent_qualified_physical_merge": "672aa297352d0ee316c57f347e7cd5f69e4f86d1",
+  "active_pr": "https://github.com/tiagosombrra/apmesh-modernization/pull/235",
+  "feature_sha": "27851df2625e0c0b37e12023af699a01f3d0304c",
+  "ci_run": "https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43664129060",
+  "qualification": "pending exact feature 4/4 CI; source-specific objective profiles PRE-REGISTERED, not yet qualified for feature head",
+  "source": "Models3d::ModelCurvaBezier, original fixed16 experimental chart",
+  "source_site_grid": "64x64 identical UV midpoint sites",
+  "objective_common": {
+    "minimize": [
+      "max_xyz",
+      "rms_source_area",
+      "elements",
+      "nodes"
+    ],
+    "maximize": [
+      "quad_uv_area",
+      "min_scaled_jacobian",
+      "min_warpage_cosine"
+    ]
+  },
+  "profiles": {
+    "uv_area_profile": {
+      "extra_objectives": {},
+      "expected_dominated_west_by": [
+        "north"
+      ],
+      "expected_nondominated": [
+        "band",
+        "both",
+        "north"
+      ]
+    },
+    "quad_count_profile": {
+      "extra_objectives": {
+        "quads": "maximize"
+      },
+      "expected_dominated_west_by": [],
+      "expected_nondominated": [
+        "band",
+        "both",
+        "north",
+        "west"
+      ]
+    }
+  },
+  "underlying_real_observations": "docs/research/quad/evidence/P2D1C2_SECOND_PHYSICAL_AFT_TRIALS_20261114.json",
+  "negative_controls": [
+    "missing/foreign/nonfinite/nonnumeric measured objectives",
+    "inconsistent QUAD+TRI totals",
+    "permutation invariance",
+    "identical alternatives do not dominate one another",
+    "quad count vs UV area profile difference"
+  ],
+  "scientific_nonclaims": [
+    "No scientific selection/admission policy; objective profiles are diagnostic and compete",
+    "No continuous source-error bound/PDE solution convergence",
+    "No adopted previous accepted mixed Patch/SubMesh epoch",
+    "No full original Adapter::AdaptCurve or nonmanifold global sheet welding"
+  ],
+  "adaptive_epochs": 0
+}
