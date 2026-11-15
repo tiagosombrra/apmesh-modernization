@@ -3,6 +3,43 @@
 Updated2026-11-14 Fortaleza. Canonical branch: `quad-templates`.
 Main remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 
+## P2d-1c3 Pareto comparison active — not an accepted mixed epoch
+
+[Draft PR235](https://github.com/tiagosombrra/apmesh-modernization/pull/235)
+at exact source `27851df2625e0c0b37e12023af699a01f3d0304c`
+adds **independent source-bound physical OBJ multiobjective analysis**
+with two deliberately distinct profiles: (1) independently measured
+true QUAD UV area coverage versus error/complexity/physical quality,
+and (2) the same objectives **plus maximization of QUAD face count**.
+Data are computed from actual original native AFT physical candidates
+integrated in PR234. On the P2d-1c2 4096-site-controlled source,
+north dominates west only in the area profile; with QUAD count
+as a separate objective all four source-specific alternatives become
+non-dominated. This is a **hypothesis/diagnostic**, not a policy
+approved to accept any new mixed owner.
+
+Feature source independently integrates QUAD polygon UV area from
+every actual exported OBJ; six adversarial unit tests check malformed,
+foreign, inconsistent/nonfinite evidence, order invariance and
+objective-dependent dominance. Exact-head
+[CI #43664129060](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43664129060)
+was **in progress** at this checkpoint. Thus no exact-source
+qualification or PR235 merge is claimed. [Pre-registered objective
+protocol](https://github.com/tiagosombrra/apmesh-modernization/blob/quad/p2d1c3-independent-multiobjective-pareto-20261114/docs/research/quad/P2D1C3_PROFILED_PARETO_20261114.md).
+[Pending evidence](evidence/P2D1C3_PROFILED_PARETO_20261114.json).
+
+Next after qualified independent Pareto gate: define previous
+**accepted** typed `Patch/SubMesh` and native Quadtree history
+transaction with explicit strong exception-safety, failure injection,
+source identity and scientifically pre-registered selection. Do NOT
+conflate the two previous *staged* native AFT physical reconstructions
+with **two accepted adapted epochs**: `adaptive_epochs=0`,
+R3/M7 [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
+still OPEN. Main/default production TRI unchanged, source original
+fixed16 not full production `AdaptCurve`; high-valence welding,
+original 1993 method, all-QUAD and anisotropy separately open.
+
+
 ## P2d-1c1 integrated, P2d-1c2 physical second-band AFT trial
 
 [PR233](https://github.com/tiagosombrra/apmesh-modernization/pull/233)
