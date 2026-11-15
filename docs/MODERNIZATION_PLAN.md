@@ -58,16 +58,21 @@ retained and admission-blocked work explicit. Package completion does not imply
 whole-row completion when another mapped package is outstanding. Do not add an
 automatic audit/instrument successor, change support promises or relax a gate.
 
-The current delivery repairs [node copy state and scalar-only mesh cloning](evidence/NODE_COPY_STATE.md),
-the ordinary Node value-copy portion of F2-04/F4-04. Prepare all observer storage
-before scalar/list commit and retain self-copy/list-slot identity on failure.
-Physical clone construction omits discarded adjacency (8 -> 4 measured allocations
-for four observers). Full preparation has its own measured cost; no end-to-end
-performance or foreign-element retirement claim follows. Require current focused
-native controls and exact-head/main gates with fresh changed-image science.
-PR #182 integrated independent forward Patch/SubMesh retirement at main
-`ced438b8b8d7b2d6539081c889c78a7fc29d856a` with its matching receipt. Prior borrowed
-quadtree reads and initial-root adoption retain their bounded qualified scopes.
+The current delivery qualifies the [F4 observer retirement acceptance round](evidence/F4_OBSERVER_RETIREMENT_ACCEPTANCE.md),
+conducting the applicability review for retained replaced-curve observer retirement
+(F4-02). PatchCoons::ReplaceCurve retires old-curve observations upon replacement of
+the last patch incidence while preserving caller-managed destination publication,
+nonallocating synchronization commit, exact foreign observer order, and post-destruction
+clean state across Bezier and Hermite families. Together with forward Patch/SubMesh
+retirement (F4-01/04) and blocked cache mutation (F4-03), this completes the F4
+observer retirement acceptance round. Require all 153 Hermite observer native outcomes
+and exact-head/main 75 CTest / 526 Python controls.
+
+PR #183 integrated node copy state and scalar-only mesh cloning at main
+`f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94` with its matching receipt. PR #182
+integrated independent forward Patch/SubMesh retirement at main
+`ced438b8b8d7b2d6539081c889c78a7fc29d856a`. Prior borrowed quadtree reads and
+initial-root adoption retain their bounded qualified scopes.
 
 PR #179 integrates the defined partial F2 acceptance round at main
 `c9b26cc462ae041089f5c036a45ce7a49743e205` with its matching receipt. F2-02 still

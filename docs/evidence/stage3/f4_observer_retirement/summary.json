@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "entry_main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+  "classification": "F4 observer retirement acceptance round and retained evidence applicability review",
+  "status": "measured_round_pending_exact_head_main",
+  "F4_package_complete": false,
+  "stage_closure": false,
+  "stage3_dispositions": {
+    "bounded_qualified": 3,
+    "partial_open": 7
+  },
+  "item_results": {
+    "F4-01": "registered and forward patch scope qualified in FORWARD_PATCH_RETIREMENT.md",
+    "F4-02": "retained evidence applicability qualified via REPLACED_CURVE_OBSERVERS.md and hermite_observer_probe contracts",
+    "F4-03": "blocked admission for post-publication cache mutation in P4_CACHE_MUTATION_ADMISSION.md",
+    "F4-04": "patch/submesh forward links and node value/observer state qualified; foreign expiry open"
+  },
+  "replaced_curve_observers": {
+    "evidence": "docs/evidence/REPLACED_CURVE_OBSERVERS.md",
+    "probe_target": "hermite_observer_probe",
+    "ctest_gate": "application.hermite_observer_contracts",
+    "modes_verified": [
+      "replacement-hermite",
+      "replacement-bezier"
+    ],
+    "invariants_verified": [
+      "guards_ignored_safely",
+      "repeated_incidences_retained",
+      "last_incidence_retired",
+      "foreign_destination_preserved",
+      "numerical_bitwise_identical",
+      "clean_post_destruction_state"
+    ]
+  },
+  "required_delivery": {
+    "ctest_count": 75,
+    "python_controls": 526,
+    "protected_files": 519,
+    "original_artifacts": 43
+  }
+}

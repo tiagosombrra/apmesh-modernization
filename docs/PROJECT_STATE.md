@@ -7,13 +7,22 @@ Current route: [seven finite Stage 3 packages](architecture/STAGE3_FINITE_PACKAG
 separates measured scopes, retained evidence and blocked admissions; it is not a
 percentage or a deadline. No original obligation or support promise is removed.
 
-Current delivery: [node copy state and scalar-only clones](evidence/NODE_COPY_STATE.md).
-Three original allocation-denial scenarios expose partially changed scalar/list
-state. Node assignment and observer replacement now prepare storage before commit;
-physical mesh cloning no longer copies foreign adjacency merely to discard it.
-Require 22 current native outcomes, all 46 copy/clone denials, frozen GCC/MSVC
-science and exact-head/main 75 CTest /526 Python. This resolves the Node value-copy
-portion of F2-04 while foreign-element expiry and other F2/F3/F4 exits remain open.
+Current delivery: [F4 observer retirement acceptance round](evidence/F4_OBSERVER_RETIREMENT_ACCEPTANCE.md).
+Review and qualify the applicability of retained replaced-curve observer retirement
+evidence (F4-02) within the finite Stage 3 catalog. PatchCoons::ReplaceCurve removes
+old-curve observations upon replacement of the last patch incidence while preserving
+destination publication, observer order, nonallocation during synchronization commit,
+and clean post-destruction state. With F4-01 (forward patch retirement) and F4-04
+qualified and F4-03 admission-blocked, this completes the F4 observer retirement
+acceptance round.
+Require all 153 Hermite observer native outcomes including replacement scenarios,
+exact-head/main 75 CTest / 526 Python controls, and preserved scientific policies.
+
+The [node copy state and scalar-only clones](evidence/NODE_COPY_STATE.md) are
+integrated through PR #183 at main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`, with
+its verified matching head/main receipt. Ordinary Node value-copy failure state and
+scalar-only physical cloning are resolved; foreign-element expiry and other F2/F3/F4 exits
+remain open.
 
 The [forward Patch/SubMesh retirement](evidence/FORWARD_PATCH_RETIREMENT.md) is
 integrated through PR #182 at main `ced438b8b8d7b2d6539081c889c78a7fc29d856a`, with
