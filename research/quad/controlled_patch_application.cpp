@@ -1335,6 +1335,9 @@ struct OwnerRehearsalWitness {
   std::vector<ElementAdaptive*> elements;
   std::vector<unsigned long> node_ids;
   std::vector<Xyz> physical_xyz;
+  std::vector<std::array<double, 4>> node_curvatures;
+  std::vector<unsigned long> element_ids;
+  std::vector<double> element_areas;
   std::vector<std::vector<ElementAdaptive*>> ordered_observers;
 };
 
@@ -1348,11 +1351,15 @@ OwnerRehearsalWitness SnapshotOwnerRehearsal(SubMesh& mesh) {
     result.nodes.push_back(node);
     result.node_ids.push_back(node->GetId());
     result.physical_xyz.push_back({node->GetX(), node->GetY(), node->GetZ()});
+    result.node_curvatures.push_back(
+        {node->GetGa(), node->GetGd(), node->GetHa(), node->GetHd()});
   }
   for (unsigned i = 0; i < mesh.GetNumberElements(); ++i) {
     auto* element = mesh.GetElement(i);
     Require(element != nullptr, "Accepted owner has a missing typed element");
     result.elements.push_back(element);
+    result.element_ids.push_back(element->GetId());
+    result.element_areas.push_back(element->GetArea());
   }
   return result;
 }
@@ -1369,12 +1376,19 @@ void RequireOwnerRehearsalUnchanged(PatchBezier& patch,
     const auto* node = original.owner->GetNoh(static_cast<unsigned>(i));
     Require(node == original.nodes[i] &&
                 node->GetId() == original.node_ids[i] &&
-                Xyz{node->GetX(), node->GetY(), node->GetZ()} == original.physical_xyz[i],
-            "Failed physical transaction changed accepted node identity or coordinates");
+                Xyz{node->GetX(), node->GetY(), node->GetZ()} == original.physical_xyz[i] &&
+                (std::array<double, 4>{node->GetGa(), node->GetGd(),
+                                       node->GetHa(), node->GetHd()}) ==
+                    original.node_curvatures[i],
+            "Failed physical transaction changed accepted node identity, XYZ or curvature");
   }
-  for (std::size_t i = 0; i < original.elements.size(); ++i)
-    Require(original.owner->GetElement(static_cast<unsigned>(i)) == original.elements[i],
-            "Failed physical transaction changed accepted element identity");
+  for (std::size_t i = 0; i < original.elements.size(); ++i) {
+    const auto* element = original.owner->GetElement(static_cast<unsigned>(i));
+    Require(element == original.elements[i] &&
+                element->GetId() == original.element_ids[i] &&
+                element->GetArea() == original.element_areas[i],
+            "Failed physical transaction changed accepted element identity or area");
+  }
 }
 
 std::string ReadRehearsalOutput(const std::filesystem::path& file) {
@@ -1497,6 +1511,7 @@ void ProbePhysicalOwnerTransactionRehearsal(
             << " temporary_noexcept_swaps=1"
             << " reverted_to_previous_owner=1"
             << " ordered_node_observers_preserved=1"
+            << " node_curvature_and_element_area_preserved=1"
             << " previous_obj_bytes_unchanged=1"
             << " measured_after_actual_prior_owner_publication=1"
             << " accepted_adaptive_epochs=0\n";
