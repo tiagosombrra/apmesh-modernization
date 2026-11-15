@@ -79,15 +79,15 @@
       }
     },
     "F4": {
-      "status": "partial_forward_patch_retirement",
+      "status": "partial_observer_retirement_acceptance_round",
       "items": {
         "F4-01": {
           "status": "registered_and_forward_patch_scope_delivery_required",
-          "evidence": "../evidence/FORWARD_PATCH_RETIREMENT.md"
+          "evidence": "../evidence/F4_OBSERVER_RETIREMENT_ACCEPTANCE.md"
         },
         "F4-02": {
-          "status": "retained_evidence_applicability_required",
-          "evidence": "../evidence/REPLACED_CURVE_OBSERVERS.md"
+          "status": "qualified_retained_evidence_applicability",
+          "evidence": "../evidence/F4_OBSERVER_RETIREMENT_ACCEPTANCE.md"
         },
         "F4-03": {
           "status": "blocked_admission",
@@ -96,7 +96,7 @@
         },
         "F4-04": {
           "status": "patch_submesh_forward_scope_qualified_other_links_open",
-          "evidence": "../evidence/FORWARD_PATCH_RETIREMENT.md",
+          "evidence": "../evidence/F4_OBSERVER_RETIREMENT_ACCEPTANCE.md",
           "dependency": "Public live Patch/SubMesh forward links and object moves only; other curve/UV/copied foreign links remain open",
           "qualified_subscopes": [
             "Public live Patch/SubMesh forward retirement",
@@ -173,9 +173,9 @@
     "status": "pending_all_required_exits",
     "evidence": null
   },
-  "active_delivery": "Node copy state and scalar-only physical clones, F2-04/F4-04",
-  "next_package": "Independently admitted F3/F4 work; do not fabricate replacement/mate/retirement or raw-loader histories",
-  "completion_rule": "Prior bounded deliveries have matching main receipts. Node copy state requires its own exact head/main and current-image science; all remaining copy-family/foreign/domain/row exits remain mandatory.",
+  "active_delivery": "F4 observer retirement acceptance round and replaced-curve observer qualification, F4-02",
+  "next_package": "Independently admitted F3/F5 work; do not fabricate replacement/mate/retirement or raw-loader histories",
+  "completion_rule": "Prior bounded deliveries have matching main receipts. F4 observer retirement acceptance requires its own exact head/main gates; remaining F2/F3/F5 exits remain mandatory.",
   "prior_F1_integration": {
     "pr": 178,
     "main": "825c23b94f08a2506e2ceade07954cf120b176b8",
@@ -196,5 +196,9 @@
   "prior_forward_patch_integration": {
     "pr": 182,
     "main": "ced438b8b8d7b2d6539081c889c78a7fc29d856a"
+  },
+  "prior_node_copy_integration": {
+    "pr": 183,
+    "main": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94"
   }
 }

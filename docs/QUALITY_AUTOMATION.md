@@ -1,5 +1,20 @@
 # Local quality automation
 
+## F4 observer retirement acceptance round
+
+The [F4 acceptance round](evidence/F4_OBSERVER_RETIREMENT_ACCEPTANCE.md) requires
+the applicability verification of retained replaced-curve observer evidence (F4-02),
+confirming that PatchCoons::ReplaceCurve retires old-curve observations upon replacement
+of the last patch incidence while preserving caller-managed destination publication,
+nonallocating synchronization commit, exact foreign observer order, bitwise-identical
+scalar evaluations, and clean post-destruction state across Bezier and Hermite families.
+
+Require all 153 Hermite observer native probe outcomes, exact-head/main 75 CTest / 526
+Python controls, 519 other protected file identities, 43 original artifacts, and
+fresh remote/guarded-main checks. Other copy families, expired foreign observers,
+unadmitted F3 root graphs, and broader Stage 3 memory/lifecycle obligations remain open.
+
+
 ## Node copy state and scalar-only mesh clones
 
 The [node-copy package](evidence/NODE_COPY_STATE.md) requires the three original

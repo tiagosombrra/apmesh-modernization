@@ -122,6 +122,11 @@ Existing evidence: [registered retirement](../evidence/PATCH_SUBMESH_RETIREMENT.
 [curve replacement](../evidence/REPLACED_CURVE_OBSERVERS.md),
 [cache admission](../evidence/P4_CACHE_MUTATION_ADMISSION.md).
 
+The [F4 observer retirement acceptance record](../evidence/F4_OBSERVER_RETIREMENT_ACCEPTANCE.md)
+qualifies the applicability of retained replaced-curve observer evidence (F4-02),
+verifies nonallocating destination publication during synchronization, and records
+the completed F4 observer retirement acceptance round.
+
 ## F5: Adaptive rejection, retry and terminal state
 
 Output: a per-field expected-state record and native traces for the existing
