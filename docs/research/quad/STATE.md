@@ -176,20 +176,17 @@ original OBJ remains
 `cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0`.
 [Bounded exact-source receipt](evidence/P2D1B2_REAL_PHYSICAL_CANDIDATE_20261114.json).
 
-**Active next gate (same P2d/R3 milestone):** independent hardening
-[PR230](https://github.com/tiagosombrra/apmesh-modernization/pull/230) is a
-single-file draft Python negative/positive gate on source `71dde5d2a443b48a8e4a9a84dca07f5d7bb64901`.
-It requires real emission (not rejection-only success), the observed typed
-93/62/44 topology, a bounded source-specific maximum residual witness, and
-an adversarial synthetic rejection. **PR230 has not been CI-qualified or merged.**
-Next, qualify/integrate its exact candidate before a distinct independent
-common-UV-sample error comparison, complete accepted-owner fault transaction,
-scientific quality/error/complexity policy and **two genuinely previous-state-driven
-accepted mixed adaptive epochs**. `adaptive_epochs=0`; issue
-[#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221)
-remains OPEN. Original fixed16 is not production `AdaptCurve`; no high-valence
-model-wide welding, all-QUAD, anisotropy or 1993 method claim. `main` and
-original production TRI remain unchanged.
+**Historical P2d-1b2 handoff correction:** earlier draft
+[PR230](https://github.com/tiagosombrra/apmesh-modernization/pull/230)
+was **closed unmerged** after its positive physical-staging requirement
+was independently covered by integrated [PR231](https://github.com/tiagosombrra/apmesh-modernization/pull/231).
+The PR230-specific synthetic rejection-only negative was not qualified
+or merged. Subsequent original AFT physical generation and common-site
+source-error validation are integrated as PR234 and PR231 respectively,
+as documented in the current checkpoint above. This historical
+subsection does not override R3/M7 [#221](https://github.com/tiagosombrra/apmesh-modernization/issues/221):
+`adaptive_epochs=0`, original fixed16 not production `AdaptCurve`,
+no global high-valence weld, all-QUAD, anisotropy or 1993 equivalence.
 
 ## Completed bounded repair
 
