@@ -1,0 +1,108 @@
+{
+  "schema": "apmesh.meshstudio.r25.controlled_chromium.v1",
+  "classification": "SYNTHETIC_RENDERING_AND_ORIGINAL_FACE_SUBSET_NOT_APMESH_GENERATOR",
+  "source_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "original_cells": 500000,
+  "rendered_full_cells": 500000,
+  "rendered_subset_cells": 50000,
+  "subset_coverage": 0.1,
+  "subset_is_lod": false,
+  "subset_is_complete_surface": false,
+  "timings": {
+    "full_xyz_scripted_fps": {
+      "min": 1.92,
+      "median": 2.24,
+      "max": 2.26,
+      "samples": [
+        1.92,
+        2.24,
+        2.26
+      ]
+    },
+    "full_uv_scripted_fps": {
+      "min": 2.38,
+      "median": 2.53,
+      "max": 2.53,
+      "samples": [
+        2.38,
+        2.53,
+        2.53
+      ]
+    },
+    "preview_xyz_scripted_fps": {
+      "min": 20.72,
+      "median": 20.75,
+      "max": 20.78,
+      "samples": [
+        20.78,
+        20.72,
+        20.75
+      ]
+    },
+    "preview_uv_scripted_fps": {
+      "min": 21.67,
+      "median": 23.18,
+      "max": 23.23,
+      "samples": [
+        23.23,
+        21.67,
+        23.18
+      ]
+    },
+    "full_xyz_p95_ms": {
+      "min": 465.9,
+      "median": 472.1,
+      "max": 614.4,
+      "samples": [
+        614.4,
+        472.1,
+        465.9
+      ]
+    },
+    "preview_xyz_p95_ms": {
+      "min": 52.2,
+      "median": 52.4,
+      "max": 53.4,
+      "samples": [
+        52.4,
+        52.2,
+        53.4
+      ]
+    }
+  },
+  "full_view_picker": {
+    "space": "uv",
+    "source_face_id": 237870,
+    "hit": true,
+    "picker_wall_ms": 979.5,
+    "method": "VTK_CELL_PICKER",
+    "spatial_candidates_tested": null,
+    "scope": "VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY"
+  },
+  "memory": {
+    "before": {
+      "used_js_heap_bytes": 33487456,
+      "allocated_js_heap_bytes": 64733184,
+      "dom_nodes": 126
+    },
+    "after_full": {
+      "used_js_heap_bytes": 94165324,
+      "allocated_js_heap_bytes": 140472320,
+      "dom_nodes": 144
+    },
+    "after_partial": {
+      "used_js_heap_bytes": 55214152,
+      "allocated_js_heap_bytes": 57483264,
+      "dom_nodes": 133
+    },
+    "scope": "CDP_JS_HEAP_ONLY_NOT_TOTAL_PROCESS_RAM_OR_VRAM"
+  },
+  "limitations": [
+    "single_runner_three_repeated_scripted_orbits_not_independent_GPU_replicates",
+    "not_presented_FPS_or_human_navigation_latency",
+    "partial_preview_has_holes_and_does_not_cover_source_surface",
+    "partial_preview_cannot_support_mesh_quality_or_anisotropy_claims",
+    "no_scientific_multi_patch_lineage_or_500k_native_generator_evidence",
+    "real_Windows_GPU_and_memory_monitoring_still_open"
+  ]
+}
