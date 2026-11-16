@@ -16,6 +16,7 @@ import { asVtkCells, vtkPointBuffer } from './geometry';
 import { buildUvSpatialIndex } from './uvSpatialIndex';
 import { buildSyntheticXyzRayPicker } from './xyzSyntheticRayPicker';
 import { createXyzBvhWorker } from './xyzBvhClient';
+import { createBoundedXyzBvhMain, MAIN_BVH_METHOD } from './xyzBvhMain';
 import { meshCellKind, meshFaceCorners, meshFaceIds, meshPointAt } from './meshAccess';
 
 interface ViewerProps {
@@ -180,9 +181,17 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       geometry.source_patch_ownership === 'NOT_APMESH_SOURCE';
     let xyzPicker: ReturnType<typeof buildSyntheticXyzRayPicker> | undefined;
     // R2.7 is opt-in until independent real-model A/B qualification.
-    const bvhRequested = space === 'xyz' &&
-      new URLSearchParams(window.location.search).get('xyzPicker') === 'bvh';
-    const bvhClient = bvhRequested ? createXyzBvhWorker(geometry) : null;
+    const xyzPickerFlag = space === 'xyz'
+      ? new URLSearchParams(window.location.search).get('xyzPicker') : null;
+    const bvhClient = xyzPickerFlag === 'bvh' ? createXyzBvhWorker(geometry) : null;
+    // Synchronous index construction is opt-in and bounded before buffer copies.
+    const mainBvh = xyzPickerFlag === 'sync' ? createBoundedXyzBvhMain(geometry) : null;
+    host.dataset.mainBvhReady = String(mainBvh !== null);
+    if (mainBvh) {
+      host.dataset.mainBvhIndexedFaces = String(mainBvh.profile.indexedFaces);
+      host.dataset.mainBvhExcludedQuads = String(mainBvh.profile.excludedQuads);
+      host.dataset.mainBvhBuildMs = String(mainBvh.profile.totalBuildMs);
+    }
     bvhClient?.ready.then(qualified => {
       if (renderRef.current !== grw) return;
       host.dataset.bvhReady = String(qualified);
@@ -192,7 +201,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
         host.dataset.bvhExcludedQuads = String(coverage.excludedQuadFaces);
       }
     });
-    const displayCoordinate = (uvIndex || syntheticXyzEligible || bvhClient)
+    const displayCoordinate = (uvIndex || syntheticXyzEligible || bvhClient || mainBvh)
       ? vtkCoordinate.newInstance() : null;
     displayCoordinate?.setCoordinateSystemToDisplay();
     dataRef.current = data;
@@ -259,7 +268,8 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       const pixelY = rect.height - (event.clientY - rect.top);
       const started = performance.now();
       let sourceId: number | null = null;
-      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' | 'EXPERIMENTAL_XYZ_BVH_WORKER' = 'VTK_CELL_PICKER';
+      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' |
+        'EXPERIMENTAL_XYZ_BVH_WORKER' | typeof MAIN_BVH_METHOD = 'VTK_CELL_PICKER';
       let spatialCandidates: number | null = null;
       let resolved = false;
       // Reset last-worker metrics on each valid click so no prior hit is reused.
@@ -267,6 +277,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       delete host.dataset.lastWorkerRoundTripMs;
       delete host.dataset.lastWorkerNoncomputeMs;
       delete host.dataset.lastWorkerStatus;
+      delete host.dataset.lastMainBvhQueryMs;
       if (space === 'uv' && uvIndex && displayCoordinate && pickingModeRef.current !== 'native') {
         try {
           // Transform a display ray onto the flat UV z=0 plane. Never guess a
@@ -315,6 +326,28 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
           }
         } catch {
           // The general VTK picker remains authoritative on unsupported conditions.
+        }
+      }
+      if (!resolved && mainBvh && displayCoordinate &&
+          pickingModeRef.current !== 'native') {
+        try {
+          displayCoordinate.setValue([pixelX, pixelY, 0]);
+          const near = [...displayCoordinate.getComputedWorldValue(renderer)];
+          displayCoordinate.setValue([pixelX, pixelY, 1]);
+          const far = [...displayCoordinate.getComputedWorldValue(renderer)];
+          const queryStarted = performance.now();
+          const hit = mainBvh.pick(near, far, visibleRef.current.showTri,
+            visibleRef.current.showQuad);
+          host.dataset.lastMainBvhQueryMs = String(performance.now()-queryStarted);
+          if (hit.kind === 'hit') {
+            sourceId = hit.sourceFaceId;
+            spatialCandidates = hit.testedFaces;
+            method = MAIN_BVH_METHOD;
+            resolved = true;
+          }
+          // Curved visible QUADs, boundaries, misses and invalid rays use native VTK.
+        } catch {
+          // A synchronous index never overrides the known-good native selector.
         }
       }
       if (!resolved && bvhClient?.isReady() && displayCoordinate &&
@@ -378,6 +411,8 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
           ? 'SYNTHETIC_XYZ_GRID_RAY_QUERY_NOT_END_TO_END_UI_LATENCY'
           : method === 'EXPERIMENTAL_XYZ_BVH_WORKER'
           ? 'EXPERIMENTAL_XYZ_BVH_WORKER_QUERY_NOT_END_TO_END_UI_LATENCY'
+          : method === MAIN_BVH_METHOD
+          ? 'EXPERIMENTAL_XYZ_BVH_MAIN_QUERY_NOT_END_TO_END_UI_LATENCY'
           : 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY',
       });
     };
