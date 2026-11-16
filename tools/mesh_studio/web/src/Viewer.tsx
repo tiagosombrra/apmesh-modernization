@@ -262,6 +262,11 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' | 'EXPERIMENTAL_XYZ_BVH_WORKER' = 'VTK_CELL_PICKER';
       let spatialCandidates: number | null = null;
       let resolved = false;
+      // Reset last-worker metrics on each valid click so no prior hit is reused.
+      delete host.dataset.lastWorkerQueryMs;
+      delete host.dataset.lastWorkerRoundTripMs;
+      delete host.dataset.lastWorkerNoncomputeMs;
+      delete host.dataset.lastWorkerStatus;
       if (space === 'uv' && uvIndex && displayCoordinate && pickingModeRef.current !== 'native') {
         try {
           // Transform a display ray onto the flat UV z=0 plane. Never guess a
@@ -324,13 +329,23 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
           const near = [...displayCoordinate.getComputedWorldValue(renderer)] as [number,number,number];
           displayCoordinate.setValue([pixelX, pixelY, 1]);
           const far = [...displayCoordinate.getComputedWorldValue(renderer)] as [number,number,number];
-          const hit = await bvhClient.pick(near, far, visibleBefore.showTri, visibleBefore.showQuad);
+          const workerMeasurement = await bvhClient.pickWithMeasurement(
+            near, far, visibleBefore.showTri, visibleBefore.showQuad);
+          const hit = workerMeasurement.outcome;
           if (serial !== clickSerial || renderRef.current !== grw) return;
           const cameraAfter = [...camera.getPosition(), ...camera.getFocalPoint(),
             ...camera.getViewUp(), camera.getParallelScale()];
           if (cameraBefore.some((v, i) => v !== cameraAfter[i]) ||
               visibleBefore.showTri !== visibleRef.current.showTri ||
               visibleBefore.showQuad !== visibleRef.current.showQuad) return;
+          // Message/scheduling residual is not an independently isolated transfer cost.
+          host.dataset.lastWorkerStatus = workerMeasurement.status;
+          if (workerMeasurement.workerQueryWallMs !== null) {
+            host.dataset.lastWorkerQueryMs = String(workerMeasurement.workerQueryWallMs);
+            host.dataset.lastWorkerRoundTripMs = String(workerMeasurement.roundTripWallMs);
+            host.dataset.lastWorkerNoncomputeMs = String(Math.max(0,
+              workerMeasurement.roundTripWallMs - workerMeasurement.workerQueryWallMs));
+          }
           if (hit.kind === 'hit') {
             sourceId = hit.sourceFaceId;
             spatialCandidates = hit.testedFaces;
