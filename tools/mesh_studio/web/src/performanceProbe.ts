@@ -15,11 +15,12 @@ export interface PickObservation {
   source_face_id: number | null;
   hit: boolean;
   picker_wall_ms: number;
-  method?: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY';
+  method?: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' | 'EXPERIMENTAL_XYZ_BVH_WORKER';
   spatial_candidates_tested?: number | null;
   scope: 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY' |
     'UV_PLANE_SPATIAL_QUERY_NOT_END_TO_END_UI_LATENCY' |
-    'SYNTHETIC_XYZ_GRID_RAY_QUERY_NOT_END_TO_END_UI_LATENCY';
+    'SYNTHETIC_XYZ_GRID_RAY_QUERY_NOT_END_TO_END_UI_LATENCY' |
+    'EXPERIMENTAL_XYZ_BVH_WORKER_QUERY_NOT_END_TO_END_UI_LATENCY';
 }
 
 /** Return a browser-specific heap estimate; never interpret it as total RAM or VRAM. */
