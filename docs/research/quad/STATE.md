@@ -12,6 +12,35 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-16 - opt-in factor-bound repair delivered and displayed
+
+Exact feature d59a513a04ea8c9573e006789641f4adbeecedee, draft PR238, adds
+curved_bezier_bounded_domain_vertex_mean_v1 and its explicit1.5-bound config.
+Behavior-changing configured-factor defect repair: the step2 ranked override
+respects that interval only in the new case. Historical TRI/original-curves and
+fixed16 retain their behavior. Boundary points3/5/9 remain untrimmed. The actual
+domain factor is now1.5/1.5/1.5 versus old1.5/1.0/1.5. Mixed nodes33/281/797
+versus33/615/843; step2 QUAD548 ->242, leaves136 ->67. This reduces step2 growth
+but RMS worsens0.290323% ->0.420207%; TRI minimum quality improves while QUAD
+minimum scaled Jacobian decreases. Step3 growth and poor TRI quality remain.
+
+Local exact-head85/85 baseline, configured six-TU LLVM22 analysis, GNU/MSVC/
+Clang sanitizer native old/new/rollback/negative histories and frozen Eistute5/
+Book4 equality with verified boundaries pass. All three profiles give identical
+case reports/OBJ hashes; both old default and old coarse eight-file archives
+reproduce previous bytes. Exact CI43859454045 completes4/4 SUCCESS. See
+[delivery/limitations](DOMAIN_FACTOR_BOUNDS_DELIVERY_20261116.md) and its receipts.
+Blender5.3 opened the corrected four-step analytic/TRI/QUAD-TRI scene; viewport
+was visually confirmed, enlarged and saved. No new mixed accepted epoch,
+scientific adoption, merge, full CRT closure or post-merge validation. Prior
+Doxygen failures remain open. First failed formatting/inventory/harness/launch
+attempts and their bounded corrections are retained in the evidence.
+
+Next action: independent review of the opt-in repair in PR238, including the
+error/quality tradeoff and retained gates before integration. Further interior
+h-growth control needs explicit geometry/quality/cost targets and scientific
+alignment; do not promote fixed1.5 as optimal. R3/M7 and mixed feedback remain OPEN.
+
 ### 2026-11-16 - interior growth traced to requested sizes and step2 override
 
 Read-only source/log inspection corrects the earlier explanation:33 ->615 counts

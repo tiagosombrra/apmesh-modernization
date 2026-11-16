@@ -2553,3 +2553,59 @@ Next action: reconcile configured-factor semantics and the historical step2
 override, classify intended policy versus a behavior-changing defect repair,
 then define the smallest authorized correction/test without changing TRI by
 accident. Mixed adaptive feedback/acceptance remains open.
+
+
+## 2026-11-16 - opt-in domain bounds repaired, tested and opened in Blender
+
+User authorizes fixing the conflicting step2 factor, repeating tests and showing
+all steps in Blender. One work item: a behavior-changing configured-factor defect
+repair under new curved_bezier_bounded_domain_vertex_mean_v1. Existing historical
+TRI, original-curves/fixed16 cases, formulas, ordering, acceptance/stopping and
+ownership remain unchanged. New case clamps the ranked step2 override into the
+configured interval. Feature source e8ac72e plus generated inventory refresh gives
+exact delivery d59a513a04ea8c9573e006789641f4adbeecedee, pushed to draft PR238.
+
+Actual factors1.5/1.0/1.5 ->1.5/1.5/1.5, curved points3/5/9 unchanged. Mixed nodes
+33/615/843 ->33/281/797; step2 QUAD548 ->242 and source leaves136 ->67. Step2
+geometric RMS0.290323% ->0.420207%, TRI minimum shape0.0398114 ->0.135358,
+QUAD minimum scaled Jacobian0.520605 ->0.429872. Step3 RMS0.275132%,797 nodes,
+TRI minimum0.0398114. Counts improve at a cost in geometric error; no uniformly
+better or optimal mesh is claimed. Paired TRI/mixed64/128 sampled error and quality
+receipts retained; old metrics reused only for identical inputs. Old default and
+old coarse each reproduce all eight prior OBJ bytes. New mixed kernels exactly
+agree with the existing independent common-grid implementation.
+
+Exact final revision: GNU Release, MSVC Debug and Clang ASan/UBSan/leak detection
+pass five-case old/new tests, rollback and corruption controls. Profiles agree
+on all case reports/OBJ hashes. Each also passes fixed16, original/stable traces,
+six native source captures, three reversed captures and54 negatives. Required
+baseline85/85 passes via validation_session, report1794828785596882800-532fdd13;
+six configured LLVM22 TUs have no visible first-party diagnostics. New GNU TRI
+Eistute5/Book4 exactly match frozen f6050ec OBJ/acceptance with boundary coverage.
+Exact hosted CI43859454045 completes4/4 SUCCESS. Added opt-in case explicitly to
+the scientific comparison's reviewed config assets; no other guard relaxed.
+
+Retain initial header-format hook failure, stale architecture inventory gate,
+two harness-copy BOM syntax failures before native execution and direct protected
+Blender binary access denial. Apply only the indicated bounded corrections:
+format the new method; regenerate changed source/hash inventory; copy scripts
+with explicit encoding; use the installed application launcher. No hidden native
+retry, tolerance relaxation or permissions change. No new Doxygen/full CRT gate;
+prior limitations and independent approval remain open.
+
+Blender5.3 scene created from actual final MSVC archive, eight objects/four states,
+analytic model at left, TRI above mixed. Source geometry is not scaled/smoothed.
+Opened and visually confirmed the correct named window, enlarged and saved its
+viewport. File:build/quad-domain-bounds-d59a513/QUAD_TRI_domain_bounds_steps_analytic.blend.
+
+Remote main ef40c0f and canonical entry2136130 remain distinct; concurrent work
+on unrelated branches and PR214/225 was inspected and untouched. Updated state,
+roadmap, delivery report and two portable receipts; no merge, stage closure,
+accepted mixed feedback epoch or post-merge/main qualification. Next: independent
+review of PR238, then resolve retained integration gates. A later h-growth policy
+requires declared geometry/quality/cost targets and scientific alignment; fixed1.5
+is not adopted as an optimal default. R3/M7 remains OPEN.
+
+Final checkpoint whitespace check exposed CRLF in the copied comparison receipt.
+Normalize that new file to LF and verify identical parsed JSON before publication;
+retain the rejection as a documentation failure, not a native test failure.

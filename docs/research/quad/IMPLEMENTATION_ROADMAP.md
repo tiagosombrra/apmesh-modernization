@@ -39,7 +39,15 @@ controls before proposing a new accepted-state controller. Read-only follow-up
 on2026-11-16 finds that the step2 ranked-domain override reduces the actual factor
 from1.5 to1.0 despite configured bounds1.5. First reconcile that existing policy
 with the configured-factor contract; the coarser trial is not a constant-domain-
-factor experiment. Preserve all measured outputs and scientific gates.
+factor experiment. The opt-in configured-factor repair is now implemented at
+exact d59a513 in draft PR238: actual domain factors1.5/1.5/1.5, step2 nodes615
+->281 and QUAD548 ->242. Native three-profile cases/rollback/negatives, local85
+baseline, six-TU LLVM22 analysis, frozen Eistute5/Book4 and exact CI43859454045
+4/4 pass in their scopes. The [delivery](DOMAIN_FACTOR_BOUNDS_DELIVERY_20261116.md)
+records higher geometric error and mixed quality tradeoffs; step3 still grows
+to797 nodes. Independent review/integration remains next; further growth control
+requires declared geometry/quality/cost targets and scientific alignment.
+Preserve measured outputs, known Doxygen/CRT limitations and R3/M7 OPEN.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 
