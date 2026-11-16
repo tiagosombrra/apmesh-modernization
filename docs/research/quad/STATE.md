@@ -3,7 +3,7 @@
 Updated 2026-11-16 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: review the curvature-driven per-step delivery; mixed feedback remains open
+## Active: local boundary-transition-interior coupling; mixed feedback remains open
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,31 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-16 - prioritize bidirectional local sizing feedback
+
+After Blender inspection, the user prioritizes balanced local refinement across
+the real curves, transition and interior, with transition quality feeding curve
+requests and low-curvature regions protected from unnecessary refinement.
+See the [concrete proposal](LOCAL_BALANCE_COUPLING_PROPOSAL_20261116.md).
+Source d59a513 remains unchanged: corrected curve points3/5/9 versus mixed
+nodes33/281/797. Existing density/structural responses are partly stable-mode
+guards; this case uses legacy. curve_domain_balance returns neutral1 when no
+positive target h is available, so its logged1 does not establish balance.
+Current regional metrics describe TRI source faces, not a closed mixed feedback
+cycle. Missing data must not be reported as successful balance qualification.
+
+Priority: one opt-in local coupling capability using actual mixed adjacency and
+original source-interval identities. Couple geometry-driven size requests,
+transition quality and graded neighbor sizes; refine implicated curve intervals
+or damp unjustified interior refinement according to cause. No new global scalar
+or automatic refinement of all straight/flat regions. Keep shared-curve sync,
+quadtree/templates, original AFT and accepted/rejected owner contracts explicit.
+Next action: settle the physical metric, local neighborhood and error/quality/
+size-gradient/step-change criteria with the advisors, then implement the bounded
+feedback slice with its diagnostic/request contract. This is a scientific proposal,
+not numerical-policy approval. No new build/test/generation/CI or Blender session.
+PR238 review and existing exact-head evidence remain separate; R3/M7 stays OPEN.
 
 ### 2026-11-16 - opt-in factor-bound repair delivered and displayed
 

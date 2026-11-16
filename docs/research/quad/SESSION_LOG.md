@@ -2609,3 +2609,41 @@ is not adopted as an optimal default. R3/M7 remains OPEN.
 Final checkpoint whitespace check exposed CRLF in the copied comparison receipt.
 Normalize that new file to LF and verify identical parsed JSON before publication;
 retain the rejection as a documentation failure, not a native test failure.
+
+
+## 2026-11-16 - prioritize local bidirectional curve-transition-interior balance
+
+User observes a coarse-looking curve beside increasingly refined interior and
+requests a balance factor that can improve boundary discretization when transition
+elements suffer, while avoiding excessive low-curvature refinement. Prioritize
+that functional coupling; the completed factor-bound repair alone does not solve
+it. No new algorithm or numeric threshold was adopted in this session.
+
+Read current remote state and exact d59a513 source. Existing stable-mode density/
+structural responses are not generally active in the current legacy research
+case. ComputeCurveDomainBalance returns1 for nonpositive target h, matching the
+neutral1 in all corrected-run records; this is not evidence of measured balance.
+Current regional coupling statistics use TRI FaceList and source history remains
+TRI-driven, not actual mixed feedback. No new native execution or measurement.
+
+Add LOCAL_BALANCE_COUPLING_PROPOSAL_20261116.md with a concrete local size/geometry/
+quality feedback contract, shared-curve synchronization, units, graded neighbors,
+bounded/hysteretic requests and cause checks for poor AFT/transition elements.
+A straight interval may need local compatibility points; a distant high-curvature
+region must not force uniform global refinement. Missing measurements are
+unavailable, not a pass. Retain all existing defect-repair outputs and failures.
+
+Plan one opt-in coupling capability, rather than another global-factor sweep.
+Next: align the physical metric, local neighborhood and error/quality/spatial/
+per-step controls with advisors, then implement the bounded mixed-feedback slice.
+This is a scientific proposal under AGENTS.md; no formula, weights, limits,
+acceptance/stopping policy or mixed scientific adoption is implied by the user's
+direction alone. Preserve original curve algorithm, quadtree/templates, AFT,
+shared identities and rollback/rejected trace contracts.
+
+Remote main ef40c0f, canonical entry c37201a and feature d59a513 verified; PR238
+remains draft with4/4 existing exact-head checks successful. PR214/225 untouched.
+Changed proposal/state/roadmap/session documentation only. No native build, test,
+CI or new Blender scene; existing85/85/three-profile evidence is not extended to
+this proposal. Documentation whitespace/link and scope review precede checkpoint
+publication. Independent review, Doxygen/CRT and R3/M7 remain open.

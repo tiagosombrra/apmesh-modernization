@@ -48,6 +48,17 @@ records higher geometric error and mixed quality tradeoffs; step3 still grows
 to797 nodes. Independent review/integration remains next; further growth control
 requires declared geometry/quality/cost targets and scientific alignment.
 Preserve measured outputs, known Doxygen/CRT limitations and R3/M7 OPEN.
+The user's subsequent Blender review prioritizes
+[local boundary-transition-interior coupling](LOCAL_BALANCE_COUPLING_PROPOSAL_20261116.md)
+as the next functional capability. Use actual mixed face/curve-interval adjacency,
+consistent physical size comparisons, geometry-driven requests and transition
+quality in both directions. Protect flat regions and synchronize shared curves;
+do not add a global scalar or treat missing target-h measurements as balanced.
+Existing stable-mode guards and TRI-only regional indicators do not close this
+feedback. Physical metric, quality/error targets, spatial grading, per-step
+change and hysteresis remain scientific choices requiring advisor alignment.
+Implement one opt-in coupling slice after that alignment; retain PR238 review
+and all exact-head/integration gates without claiming adopted mixed epochs.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 
