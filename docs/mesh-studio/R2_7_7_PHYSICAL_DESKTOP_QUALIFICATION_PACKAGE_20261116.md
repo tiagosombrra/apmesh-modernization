@@ -2,6 +2,11 @@
 
 **Date:** 2026-11-16. **PR:** #239, research draft.
 **Status:** executable local qualification infrastructure; **no physical GPU run is claimed by CI**.
+**Final validated source SHA:** `5a19cb9238683ef54db3acf85f647a8d1902699c`.
+**Final CI:** https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43946262768
+(**38 Chromium passed, 5 skipped**, Linux/Windows scientific regression,
+production TypeScript/Vite build and CPU contracts PASS).
+
 
 ## Why a separate physical-desktop gate exists
 
@@ -143,3 +148,32 @@ GPU-present timestamp are required for such claims.
 
 **No automatic merge, main changes, release/tag or scientific C/C++ generator
 changes are part of R2.7.7.**
+
+## Final CI acceptance and unresolved physical evidence
+
+The full final run #43946262768 passed on the current implementation
+(excluding subsequent docs-only edits). The normal Chromium browser probe
+reported:
+
+- WebGL available: **true**;
+- unmasked renderer: `ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)`;
+- `softwareSuspected=true`;
+- `machineQualified=false`, `gpuPresentQualified=false`.
+
+**38 browser tests passed and 5 were intentionally skipped**, including
+the two tests requiring a physical headed desktop. The fail-closed
+launcher tests passed: unattended CI and absent operator attestation
+cannot launch the physical-desktop procedure. The P1/Band exact-source
+matching and scientific regression jobs continued to pass.
+
+The hosted software renderer cannot qualify the GPU. The local
+three-page method deliberately calls `bringToFront()` before each
+measured pointer event; even though browser-local timestamps exclude
+that API call, its effects on scheduling/focus may influence the
+subsequent measurement. The raw order and browser visibility are retained,
+not silently pooled as independent physical machine samples.
+
+**Physical workstation execution has not been performed in this CI**
+and there are no generated local physical GPU, OS RSS, Worker memory,
+driver-present or VRAM qualification values. The status of those
+questions remains **OPEN**, not PASS.
