@@ -4,6 +4,10 @@
 **Isolated research branch:** `feature/mesh-studio-r27-bvh-20261116`.
 **Review PR:** https://github.com/tiagosombrra/apmesh-modernization/pull/239
 **Status:** bounded diagnostic qualification, not an acceptance of new adaptive generator epochs or GPU performance.
+**Final code SHA:** `87ee54c0813e7f3f67529c0b553ca45f6f9ab856`.
+**Final passing CI:** https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43929866229
+(**36 Chromium passed, 3 optional skipped**, Linux/Windows scientific regression,
+TypeScript/Vite build and R2.6/R2.7 contracts PASS).
 
 ## 1. Corpus discovery: Eistute is an archived, larger candidate
 
@@ -165,3 +169,95 @@ Keep PR #239 draft and unmerged; do not tag or release.
 The Git source reference and raw JSON CI receipts are useful for
 future qualification, but their exact provenance classifications must
 travel with all reported timings.
+
+## 7. R2.7.6 final observed results (CI #43929866229)
+
+The final full CI ran the complete original Model Studio suite and **all three
+new R2.7.6 tests**. None of the previous tests were disabled to obtain a pass.
+
+### 7.1 Verified legacy Eistute reference
+
+| Observation | Final passing CI value |
+| --- | ---: |
+| Original OBJ SHA-256 | `378b62da75400c1bfe6871be29d22d8b14d6d6e054a1fa79de062de35c95f9eb` |
+| Git blob SHA-1 | `8f54a95e0192e9af3e76ba5d9f28202cd47dae79` |
+| Historical MANIFEST SHA-256 mismatch | **YES — explicitly retained** |
+| Number of vertices / TRI | 3,691 / 7,184 |
+| Worker BVH qualified | YES — diagnostic ordinal index only |
+| Worker BVH nodes | 2,047 |
+| Worker index build | 28.9 ms |
+| Worker build-to-ready round trip | 36.6 ms |
+| Copied typed input | 223,896 bytes |
+| Local-ray OBJ record ordinals matched | 15/15 |
+| Bounded synchronous main index | **REJECTED — 7,184 > 2,048 faces** |
+
+No geometrical LOD, patch welding or source identity extrapolation was used.
+
+### 7.2 Real P1 pointer-to-two-RAF opportunity proxy
+
+Original controlled P1 source SHA:
+`cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0`.
+One source face **#68**, same pixel, QUAD visibility off, two excluded
+warmups per method, eight measured pointer clicks per method, rotated
+method order. The clicked face ID and post-RAF inspector were matched in
+every measured sample.
+
+| Selector | Browser event to picker callback p50 / p95 | Event to second RAF p50 / p95 |
+| --- | ---: | ---: |
+| Synchronous bounded BVH | 0.2 / 0.3 ms | **29.9 / 31.7 ms** |
+| Native VTK | 0.8 / 0.9 ms | **29.9 / 30.6 ms** |
+| Worker BVH | 20.6 / 21.0 ms | **46.9 / 47.4 ms** |
+
+The synchronous BVH has lower picker-callback latency than VTK here,
+but **not a measurable improvement in the two-RAF render-opportunity
+median**. The Worker retains a longer event-to-RAF median. These are
+same-host browser scheduling observations, **not OS input-to-pixel or
+hardware GPU-present measurements**. The two-RAF metric has an inherent
+frame-scheduling baseline and should not be interpreted as GPU time.
+
+### 7.3 Synthetic main-thread cap envelope
+
+Exactly 2,048 flat-grid TRI faces / 1,089 vertices, typed input **64,272
+bytes**. Four independent synchronous index constructions registered
+**9.6, 5.8, 5.9 and 5.2 ms**. Chrome reported Long Task API support
+and **zero tasks above that API's threshold**, but shorter UI blocks
+are not excluded. Optional Chromium main-thread JS heap estimates
+were approximately **24,500,000 bytes** before/after; this is *not*
+an allocation profile of the BVH, a leak test, process RSS, Worker
+memory or GPU VRAM. The case is labeled **SYNTHETIC** throughout.
+
+### 7.4 Artifact and repeatability contract
+
+The GitHub Actions `mesh-studio-chromium-<SHA>` artifact retains the
+following JSON receipts with raw observed times and classifications:
+
+- `r276-legacy-large-obj-preflight.json`
+- `r276-event-to-two-raf-proxy.json`
+- `r276-synthetic-2048-cap-build.json`
+
+The test output includes searchable markers `R276_LEGACY_LARGE_OBJ`,
+`R276_TWO_RAF_EVENT_PROXY` and `R276_SYNTHETIC_CAP_BUILD`.
+The CI is a hosted Linux Chromium/browser experiment. It does **not**
+run a physical WGL/Windows browser, and the Windows scientific job
+continues to report the GPU gate as unqualified.
+
+### 7.5 Physical desktop follow-up procedure (not executed by CI)
+
+For a legitimate GPU and OS responsiveness claim, run on known physical
+Windows and Linux machines with recorded CPU model/core count, OS,
+display scale, display refresh, GPU vendor/model/driver, browser and
+Chromium/WebGL renderer information. Use the same immutable SHA/face
+IDs/camera/pixels, with a cold build followed by warm repeated randomized
+AB/BA (or A/B/C) rounds across multiple independent sessions. Collect
+both DevTools task/Worker traces **and** external process-level RSS/peak
+working-set measurements; if GPU VRAM cannot be obtained through a
+trustworthy platform mechanism, report it as *unmeasured*.
+Record any event-to-visible-frame evidence with its timing API
+and synchronization limits. Do not reclassify two RAF callbacks as
+GPU-presented frames, or treat the legacy Eistute file as an accepted
+adaptive epoch without original generator acceptance evidence.
+
+**Final disposition:** R2.7.6 targeted diagnostics and strict source
+classifications pass the declared CI gates; no default fast-picker
+promotion, no synchronous cap increase, no curved QUAD admission,
+and no R2.8 geometric LOD authorization.
