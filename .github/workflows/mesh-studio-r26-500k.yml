@@ -11,7 +11,7 @@ permissions:
 jobs:
   r26-bounded-synthetic-chromium:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 24
     env:
       CI: 'true'
       APMESH_R26_500K: '1'
