@@ -1,7 +1,7 @@
 /* Pure TypeScript contract regression, independent of WebGL and browser state. */
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const ts = require('typescript');
+const ts = require('@typescript/typescript6');
 const path = require('node:path');
 const root = path.join(__dirname, '..', 'src');
 require.extensions['.ts'] = (mod, filename) => {
