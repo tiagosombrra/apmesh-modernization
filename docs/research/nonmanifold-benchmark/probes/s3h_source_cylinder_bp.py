@@ -79,19 +79,43 @@ def _source_pcurve_const_u(table, original_edge_id, support_id):
                 continue
             _, representation = entity(table, rep, 'DEFINITIONAL_REPRESENTATION')
             curve_id = refs(representation)[0]
-            _, pcurve = entity(table, curve_id, 'LINE')
-            cp, vector = refs(pcurve)
-            xy = _point2(table, cp)
-            _, vector_raw = entity(table, vector, 'VECTOR')
-            vecid = refs(vector_raw)[0]
-            _, direction = entity(table, vecid, 'DIRECTION')
-            m = COORDINATES.search(direction)
-            if not m:
-                raise ValueError('Invalid source UV PCURVE direction')
-            d = tuple(map(float, m[1].split(',')))
-            if len(d) != 2 or abs(d[0]) > 1e-9 or abs(d[1]) < 1e-12:
-                raise ValueError('Source generator pcurve is not constant-U')
-            return xy[0]
+            curve_type, pcurve = entity(table, curve_id)
+            if curve_type == 'LINE':
+                cp, vector = refs(pcurve)
+                xy = _point2(table, cp)
+                _, vector_raw = entity(table, vector, 'VECTOR')
+                vecid = refs(vector_raw)[0]
+                _, direction = entity(table, vecid, 'DIRECTION')
+                m = COORDINATES.search(direction)
+                if not m:
+                    raise ValueError('Invalid source UV PCURVE direction')
+                d = tuple(map(float, m[1].split(',')))
+                if len(d) != 2 or abs(d[0]) > 1e-9 or abs(d[1]) < 1e-12:
+                    raise ValueError('Source generator pcurve is not constant-U')
+                return xy[0]
+            if curve_type == 'B_SPLINE_CURVE_WITH_KNOTS':
+                # OCCT may serialize an exact straight generator as a degree-one
+                # two-pole clamped spline. Admit only this linear equivalence.
+                import re
+                if re.match(r"^\s*'[^']*'\s*,\s*1\s*,", pcurve) is None:
+                    raise ValueError('Source generator pcurve B-spline degree is not one')
+                poles = refs(pcurve)
+                if len(poles) != 2:
+                    raise ValueError('Source generator pcurve spline must contain two poles')
+                knots = re.search(r'\(\s*2\s*,\s*2\s*\)\s*,\s*\(([-+\d.eE,\s]+)\)', pcurve)
+                if knots is None:
+                    raise ValueError('Source linear PCURVE spline must be clamped')
+                knot_values = tuple(map(float, knots[1].split(',')))
+                if len(knot_values) != 2 or not all(math.isfinite(k) for k in knot_values) or knot_values[1] <= knot_values[0]:
+                    raise ValueError('Source linear PCURVE spline knots are not increasing')
+                a, b = (_point2(table, pole) for pole in poles)
+                if abs(a[0] - b[0]) > 1e-9 or abs(a[1] - b[1]) < 1e-12:
+                    raise ValueError('Source generator pcurve spline is not constant-U')
+                # This restricted, nonrational 2-pole spline traces a segment.
+                if '.T.' in pcurve:
+                    raise ValueError('Unsupported periodic or closed source pcurve')
+                return (a[0] + b[0]) / 2
+            raise ValueError('Unsupported source generator PCURVE geometry')
         wrapper_id = refs(wrapper)[0]
     raise ValueError('Missing source generator cylinder PCURVE')
 
