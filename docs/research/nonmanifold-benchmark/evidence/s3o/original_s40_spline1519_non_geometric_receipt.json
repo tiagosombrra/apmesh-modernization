@@ -1,0 +1,185 @@
+{
+  "added_patch_count": 16,
+  "apmesh_tri_quad": "NOT_RUN",
+  "baseline_patch_count": 43,
+  "budget_mm": 0.001,
+  "combined_control_count": 681,
+  "combined_patch_count": 59,
+  "derived_seams_verified": 21,
+  "full_atlas": false,
+  "global_continuous_Hausdorff_certified": false,
+  "max_guarded_radial_support_error_mm": 0.0006828979518292894,
+  "max_native_cylinder_sampled_projection_error_mm": 0.0006828967915523848,
+  "max_native_original_edge_sampled_distance_mm": 0.0006828948238988339,
+  "model_source_faces": 43,
+  "native_boundary_sample_count": 704,
+  "native_interior_sample_count": 1296,
+  "native_trim_classification_histogram": {
+    "BOUNDARY_IN": 426,
+    "BOUNDARY_ON": 278,
+    "INTERIOR_IN": 1296
+  },
+  "native_trim_scope": "DISCRETE_NATIVE_FACE_CLASSIFICATION",
+  "nonrepresented_original_faces_after_S3O": 28,
+  "original_boundary_scope": "DISCRETE_ORIGINAL_3D_BSPLINE_CURVE_EVALUATION_VIA_NATIVE_PCURVE_INVERSION",
+  "original_face_id": 1519,
+  "original_native_face_index": 12,
+  "original_radius_mm": 16,
+  "original_source_edge_curve_ids": [
+    1523,
+    1548,
+    85,
+    1570,
+    1593,
+    1616,
+    1644,
+    1753
+  ],
+  "original_spline_edge_ids": [
+    85,
+    1644
+  ],
+  "original_upstream_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "preexisting_planar_shared_edges_verified": [
+    1548,
+    1570
+  ],
+  "redistributed_derived_bp_control_coordinates": false,
+  "redistributed_original_step_bytes": false,
+  "represented_original_faces_after_S3O": 15,
+  "schema": "apmesh-s3o-s40-native-1519-spline-trim-audit-v1",
+  "source_original_boundary_receipts": [
+    {
+      "boundary_sample_count": 9,
+      "max_native_edge_distance_mm": 0.0004244260245468124,
+      "native_incident_face_indices": [
+        12,
+        15
+      ],
+      "native_topods_edge_index": 49,
+      "original_curve_type": "CIRCLE",
+      "original_edge_curve_id": 1523,
+      "original_step_owner_face_ids": [
+        1519,
+        1827
+      ]
+    },
+    {
+      "boundary_sample_count": 9,
+      "max_native_edge_distance_mm": 5.000130870176917e-10,
+      "native_incident_face_indices": [
+        12,
+        14
+      ],
+      "native_topods_edge_index": 50,
+      "original_curve_type": "LINE",
+      "original_edge_curve_id": 1548,
+      "original_step_owner_face_ids": [
+        1519,
+        1800
+      ]
+    },
+    {
+      "boundary_sample_count": 63,
+      "max_native_edge_distance_mm": 0.0006828930564027616,
+      "native_incident_face_indices": [
+        0,
+        12
+      ],
+      "native_topods_edge_index": 2,
+      "original_curve_type": "B_SPLINE_CURVE_WITH_KNOTS",
+      "original_edge_curve_id": 85,
+      "original_step_owner_face_ids": [
+        17,
+        1519
+      ]
+    },
+    {
+      "boundary_sample_count": 9,
+      "max_native_edge_distance_mm": 5.000130870176917e-10,
+      "native_incident_face_indices": [
+        12,
+        13
+      ],
+      "native_topods_edge_index": 51,
+      "original_curve_type": "LINE",
+      "original_edge_curve_id": 1570,
+      "original_step_owner_face_ids": [
+        1519,
+        1773
+      ]
+    },
+    {
+      "boundary_sample_count": 9,
+      "max_native_edge_distance_mm": 0.00042442603140147305,
+      "native_incident_face_indices": [
+        12,
+        16
+      ],
+      "native_topods_edge_index": 52,
+      "original_curve_type": "CIRCLE",
+      "original_edge_curve_id": 1593,
+      "original_step_owner_face_ids": [
+        1519,
+        1907
+      ]
+    },
+    {
+      "boundary_sample_count": 9,
+      "max_native_edge_distance_mm": 3.591449450564273e-10,
+      "native_incident_face_indices": [
+        12,
+        22
+      ],
+      "native_topods_edge_index": 53,
+      "original_curve_type": "LINE",
+      "original_edge_curve_id": 1616,
+      "original_step_owner_face_ids": [
+        1519,
+        2457
+      ]
+    },
+    {
+      "boundary_sample_count": 81,
+      "max_native_edge_distance_mm": 0.0006828948238988339,
+      "native_incident_face_indices": [
+        12,
+        19
+      ],
+      "native_topods_edge_index": 54,
+      "original_curve_type": "B_SPLINE_CURVE_WITH_KNOTS",
+      "original_edge_curve_id": 1644,
+      "original_step_owner_face_ids": [
+        1519,
+        2243
+      ]
+    },
+    {
+      "boundary_sample_count": 9,
+      "max_native_edge_distance_mm": 3.591449450564273e-10,
+      "native_incident_face_indices": [
+        12,
+        22
+      ],
+      "native_topods_edge_index": 55,
+      "original_curve_type": "LINE",
+      "original_edge_curve_id": 1753,
+      "original_step_owner_face_ids": [
+        1519,
+        2457
+      ]
+    }
+  ],
+  "source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "tests": {
+    "S3M_S3N_S3O_directed": {
+      "failed": 0,
+      "passed": 45
+    },
+    "S3O_directed": {
+      "failed": 0,
+      "passed": 17
+    },
+    "full_legacy_suite": "NOT_RUN_THIS_DELIVERY"
+  }
+}
