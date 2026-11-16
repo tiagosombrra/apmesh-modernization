@@ -173,6 +173,11 @@ for(const model of MODELS){
           worker.goto('/?xyzPicker=bvh'),
           native.goto('/'),
         ]);
+        if(model.id!=='p1') {
+          // All three views must use the identical source, including staged Band.
+          await Promise.all(pages.map(p=>
+            p.getByTestId('model-select').selectOption(model.id)));
+        }
         for(let i=0;i<3;i++){
           await expect(hosts[i].locator('canvas').first()).toBeVisible();
           await expect(pages[i].locator('.model-foot code')).toHaveAttribute('title',model.sha);
