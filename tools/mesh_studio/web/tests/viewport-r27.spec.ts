@@ -228,3 +228,68 @@ test('R2.7.1 controlled real P1 indexes TRI only while curved QUAD remains VTK-o
   expect(evidence.sourceHash).toBe(
     'cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0');
 });
+
+test('R2.7.1 real P1 visible TRI-only worker hit matches VTK at the same pixel', async ({ page }, info) => {
+  test.setTimeout(100_000);
+  await page.goto('/?xyzPicker=bvh');
+  const xyz = page.getByTestId('viewport-xyz');
+  await expect(xyz.locator('canvas').first()).toBeVisible();
+  await expect.poll(() => xyz.getAttribute('data-bvh-ready'), { timeout: 25_000 }).toBe('true');
+  await page.getByTestId('toggle-quad').uncheck();
+  const rect = await xyz.boundingBox();
+  if (!rect) throw new Error('real_P1_tri_only_viewport_bounds_missing');
+
+  // Search for an interior real triangle: a background miss is never accepted as acceleration.
+  const fractions = [.25,.315,.38,.445,.51,.575,.64,.705,.77];
+  let sample: { x: number; y: number; id: number } | null = null;
+  let attempted = 0;
+  for (const yFraction of fractions) {
+    for (const xFraction of fractions) {
+      const x = rect.width * xFraction, y = rect.height * yFraction;
+      await xyz.evaluate(node => { delete (node as HTMLElement).dataset.lastPickerMethod; });
+      await xyz.click({position:{x,y}});
+      attempted += 1;
+      await expect.poll(() => xyz.getAttribute('data-last-picker-method'), {timeout: 5_000})
+        .toMatch(/^(VTK_CELL_PICKER|EXPERIMENTAL_XYZ_BVH_WORKER)$/);
+      if (await xyz.getAttribute('data-last-picker-method') !== 'EXPERIMENTAL_XYZ_BVH_WORKER') continue;
+      const text = await page.locator('.face-id').innerText();
+      if (!/^#\d+$/.test(text)) throw new Error('worker_pick_missing_original_face_id');
+      sample = {x,y,id:Number(text.slice(1))};
+      break;
+    }
+    if (sample) break;
+  }
+  expect(sample, 'The real P1 TRI-only viewport must demonstrate an accelerated source face hit').not.toBeNull();
+
+  // A fresh VTK-only page with the same camera and visibility is the independent UI reference.
+  await page.goto('/');
+  const native = page.getByTestId('viewport-xyz');
+  await expect(native.locator('canvas').first()).toBeVisible();
+  await page.getByTestId('toggle-quad').uncheck();
+  await native.click({position:{x:sample!.x,y:sample!.y}});
+  await expect(page.locator('.face-id')).toHaveText('#'+sample!.id,{timeout:10_000});
+  expect(await native.getAttribute('data-last-picker-method')).toBe('VTK_CELL_PICKER');
+  const receipt = {
+    schema:'apmesh.meshstudio.r271.p1_real_tri_only_visible_ab.v1',
+    classification:'CONTROLLED_REAL_P1_TRI_ONLY_VIEWPORT_PICK_NOT_SPEED_OR_SCIENTIFIC_CURVE_ORACLE',
+    source_sha256:'cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0',
+    source_face_id:sample!.id,
+    worker_method:'EXPERIMENTAL_XYZ_BVH_WORKER',
+    reference_method:'VTK_CELL_PICKER',
+    original_id_agreement:true,
+    quad_layer_visible:false,
+    attempted_screen_pixels:attempted,
+    pixel:{x:sample!.x,y:sample!.y},
+    caveats:[
+      'one_viewport_pixel_no_latency_distribution',
+      'warped_source_quads_excluded_and_force_native_fallback_when_visible',
+      'not_a_Bezier_curved_surface_or_GPU_accuracy_oracle',
+    ],
+  };
+  await mkdir('test-results',{recursive:true});
+  const json=JSON.stringify(receipt,null,2)+'\n';
+  await writeFile('test-results/r271-p1-tri-only-viewport-ab.json',json,'utf8');
+  await info.attach('r271-p1-tri-only-viewport-ab.json',
+    {body:Buffer.from(json),contentType:'application/json'});
+  console.log('R271_REAL_P1_TRI_VIEWPORT_AB='+JSON.stringify(receipt));
+});
