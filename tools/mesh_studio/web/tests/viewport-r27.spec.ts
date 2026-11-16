@@ -119,7 +119,7 @@ test('R2.7 original P1 XYZ click agrees with native VTK at the same pixel', asyn
       continue;
     }
     const idText = await page.locator('.face-id').innerText();
-    if (!/^#\\d+$/.test(idText)) continue;
+    if (!/^#\d+$/.test(idText)) continue;
     selected = { x, y, id: Number(idText.slice(1)),
       method: await xyz.getAttribute('data-last-picker-method') };
     break;
@@ -154,7 +154,7 @@ test('R2.7 original P1 XYZ click agrees with native VTK at the same pixel', asyn
     ],
   };
   await mkdir('test-results', { recursive: true });
-  const json = JSON.stringify(receipt, null, 2) + '\\n';
+  const json = JSON.stringify(receipt, null, 2) + '\n';
   await writeFile('test-results/r27-real-p1-xyz-pick-ab.json', json, 'utf8');
   await info.attach('r27-real-p1-xyz-pick-ab.json',
     { body: Buffer.from(json), contentType: 'application/json' });
