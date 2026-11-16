@@ -1,0 +1,38 @@
+{
+  "schema": "apmesh.meshstudio.r26.xyz_picking_and_partition.v1",
+  "classification": "SYNTHETIC_500K_XYZ_INDEX_ONLY_NOT_APMESH_OR_SCIENTIFIC_LOD",
+  "cells": 500000,
+  "original_source_face_id": 220923,
+  "synthetic_xyz_fast_picker": {
+    "space": "xyz",
+    "source_face_id": 220923,
+    "hit": true,
+    "picker_wall_ms": 14.5,
+    "method": "SYNTHETIC_XYZ_GRID_RAY",
+    "spatial_candidates_tested": 257,
+    "scope": "SYNTHETIC_XYZ_GRID_RAY_QUERY_NOT_END_TO_END_UI_LATENCY"
+  },
+  "native_vtk_picker_same_view_and_pixel": {
+    "space": "xyz",
+    "source_face_id": 220923,
+    "hit": true,
+    "picker_wall_ms": 1160.7,
+    "method": "VTK_CELL_PICKER",
+    "spatial_candidates_tested": null,
+    "scope": "VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY"
+  },
+  "complete_source_face_partition": {
+    "original_faces": 500000,
+    "aggregate_groups": 7921,
+    "covered_original_faces": 500000,
+    "complete": true,
+    "is_lod": false
+  },
+  "caveats": [
+    "single_hosted_linux_chromium_not_windows_hardware",
+    "synchronous_picker_call_not_end_to_end_react_paint",
+    "grid_ray_qualification_restricts_to_exact_synthetic_heightfield",
+    "all_real_models_keep_native_vtk_picker",
+    "complete_partition_does_not_define_coarse_geometry_or_an_actual_LOD"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "apmesh.meshstudio.r26.closure.v1",
+  "date": "2026-11-16",
+  "branch": "feature/mesh-studio-fixture-first-20261114",
+  "tested_head": "27df9f761943730a6bfc09f9cf6b18f15d39ca6f",
+  "ci": {
+    "regular_run": 43858948123,
+    "regular_conclusion": "success",
+    "python_methods_per_platform": 224,
+    "linux_skipped": 4,
+    "windows_skipped": 10,
+    "chromium_passed": 19,
+    "opt_in_cases_skipped_in_regular_ci": 3,
+    "synthetic_xyz_stress_run": 43859194300,
+    "synthetic_xyz_stress_conclusion": "success"
+  },
+  "browser_observation": {
+    "cells": 500000,
+    "source_face_id": 220923,
+    "fast_method": "SYNTHETIC_XYZ_GRID_RAY",
+    "fast_picker_wall_ms": 14.5,
+    "native_picker_wall_ms": 1160.7,
+    "candidates_tested": 257,
+    "same_source_face": true
+  },
+  "source_face_partition": {
+    "original_faces": 500000,
+    "aggregate_groups": 7921,
+    "covered_original_faces": 500000,
+    "complete": true,
+    "is_lod": false
+  },
+  "uncertified": [
+    "true_geometric_lod",
+    "generic_real_3d_picker",
+    "independent_generator_500k_trajectory",
+    "pde_quality",
+    "real_patch_global_incidence",
+    "windows_gpu",
+    "vram",
+    "end_to_end_ui_latency",
+    "statistical_pick_speedup"
+  ],
+  "code_changes_other_than_studio": false,
+  "evidence_artifact_id": 14221648326,
+  "visualizer_architecture": "React+TypeScript+vtk.js, Python scientific engine unchanged"
+}
