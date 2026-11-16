@@ -7,8 +7,8 @@ const root = path.join(__dirname, '..', 'src');
 require.extensions['.ts'] = (mod, filename) => {
   const input = fs.readFileSync(filename, 'utf8');
   const js = ts.transpileModule(input, { fileName: filename, reportDiagnostics: true,
-    compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS } });
-  const errors = (js.diagnostics ?? []).filter(x => x.category === ts.DiagnosticCategory.Error);
+    compilerOptions: { target: ts.ScriptTarget?.ES2022 ?? 9, module: ts.ModuleKind?.CommonJS ?? 1 } });
+  const errors = (js.diagnostics ?? []).filter(x => x.category === (ts.DiagnosticCategory?.Error ?? 1));
   assert.equal(errors.length, 0, filename + ': ' + errors.map(x => ts.flattenDiagnosticMessageText(x.messageText, '\n')));
   mod._compile(js.outputText, filename);
 };
