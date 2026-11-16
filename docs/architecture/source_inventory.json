@@ -413,7 +413,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "44f551ebe7ae20a3bb16420e7a3ec2589548306d5ec1c0458e458907d15e7edd"
+      "sha256": "fc628af5525bf4e1835bd20f537bb70f4b5f57887d392d79cb1fe26ed33b4782"
     },
     {
       "path": "CMakePresets.json",
@@ -2847,8 +2847,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "ae86bc5a7dc216dee18fd9872d3884643b764076f32b36e767848cdc51bc457a",
-      "bytes": 41927,
+      "sha256": "514e5be16c3ae0654ed8c5e0451989db9fa5da38e0551cb3fa9ee0964638598e",
+      "bytes": 42155,
       "includes": [
         {
           "line": 4,
@@ -3889,8 +3889,8 @@
       "path": "src/application/run_application.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "2bec32d9af3628fb3ec81f7e56e93066fd448ef5b4995d5011a2b17dfecaaa64",
-      "bytes": 5009,
+      "sha256": "c53077780cdfa23c198b99d2c1a46d01ff29cd72821860d71a163388c610c582",
+      "bytes": 5199,
       "includes": [
         {
           "line": 1,
@@ -4087,8 +4087,8 @@
       "path": "src/application/runtime_config.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "15b9376569348612b3fc21ab1accffc3af5ad650b5053a5ec57ddbc799162b7d",
-      "bytes": 23287,
+      "sha256": "163429fe1c32f3540e3e6e93a214a3d5a6c7bab2c6feb76554b37107df073490",
+      "bytes": 23355,
       "includes": [
         {
           "line": 1,
@@ -5850,8 +5850,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "6c5ef8bc32bf4d1457b7a811d0fbb0b0a3b3d132da451a834de426b24748b53e",
-      "bytes": 393342,
+      "sha256": "71b55cba23a8e5f0bbe885712c7a9734188acfb43890c1660b3dae8c2c2a5cc5",
+      "bytes": 393487,
       "includes": [
         {
           "line": 1,
