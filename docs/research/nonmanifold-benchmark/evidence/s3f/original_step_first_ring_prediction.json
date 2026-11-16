@@ -1,0 +1,950 @@
+{
+  "schema": "apmesh-s3f-source-only-first-ring-neighbor-concentration-v1",
+  "source_commit": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "models": {
+    "M5": {
+      "source_faces": 41,
+      "candidate_faces": 6,
+      "first_ring_excluded_faces": 7,
+      "source_original_edge_interfaces": 20,
+      "source_faces_beyond_first_ring": 28,
+      "excluded_neighbor_support_histogram": {
+        "PLANE": 5,
+        "CYLINDRICAL_SURFACE": 2
+      },
+      "original_interface_anchors_per_excluded_face": {
+        "1": 2,
+        "2": 3,
+        "6": 2
+      },
+      "neighbors": [
+        {
+          "source_advanced_face_id": 171,
+          "source_support": "PLANE",
+          "original_interface_count": 6,
+          "edge_curve_ids": [
+            205,
+            233,
+            294,
+            378,
+            435,
+            463
+          ],
+          "source_candidate_face_ids": [
+            3395,
+            3444,
+            3547,
+            3878,
+            3927,
+            4026
+          ]
+        },
+        {
+          "source_advanced_face_id": 491,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            525,
+            547
+          ],
+          "source_candidate_face_ids": [
+            3395,
+            3878
+          ]
+        },
+        {
+          "source_advanced_face_id": 3493,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            3473,
+            3497
+          ],
+          "source_candidate_face_ids": [
+            3444,
+            3547
+          ]
+        },
+        {
+          "source_advanced_face_id": 3596,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3576
+          ],
+          "source_candidate_face_ids": [
+            3547
+          ]
+        },
+        {
+          "source_advanced_face_id": 3976,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            3954,
+            3982
+          ],
+          "source_candidate_face_ids": [
+            3927,
+            4026
+          ]
+        },
+        {
+          "source_advanced_face_id": 4075,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            4053
+          ],
+          "source_candidate_face_ids": [
+            4026
+          ]
+        },
+        {
+          "source_advanced_face_id": 4344,
+          "source_support": "PLANE",
+          "original_interface_count": 6,
+          "edge_curve_ids": [
+            3399,
+            3448,
+            3551,
+            3882,
+            3931,
+            4030
+          ],
+          "source_candidate_face_ids": [
+            3395,
+            3444,
+            3547,
+            3878,
+            3927,
+            4026
+          ]
+        }
+      ],
+      "upstream_step_blob_sha1": "d72e5e3cb3de9ebdec80253cfa9b57fa1b7132f7"
+    },
+    "S40": {
+      "source_faces": 43,
+      "candidate_faces": 9,
+      "first_ring_excluded_faces": 18,
+      "source_original_edge_interfaces": 32,
+      "source_faces_beyond_first_ring": 16,
+      "excluded_neighbor_support_histogram": {
+        "PLANE": 10,
+        "CYLINDRICAL_SURFACE": 8
+      },
+      "original_interface_anchors_per_excluded_face": {
+        "1": 6,
+        "2": 10,
+        "3": 2
+      },
+      "neighbors": [
+        {
+          "source_advanced_face_id": 17,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            57,
+            193
+          ],
+          "source_candidate_face_ids": [
+            1773,
+            1800
+          ]
+        },
+        {
+          "source_advanced_face_id": 218,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            281,
+            303
+          ],
+          "source_candidate_face_ids": [
+            1773,
+            1800
+          ]
+        },
+        {
+          "source_advanced_face_id": 912,
+          "source_support": "PLANE",
+          "original_interface_count": 3,
+          "edge_curve_ids": [
+            916,
+            946,
+            974
+          ],
+          "source_candidate_face_ids": [
+            1105,
+            1181,
+            1230
+          ]
+        },
+        {
+          "source_advanced_face_id": 1279,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            1139
+          ],
+          "source_candidate_face_ids": [
+            1105
+          ]
+        },
+        {
+          "source_advanced_face_id": 1386,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            1259
+          ],
+          "source_candidate_face_ids": [
+            1230
+          ]
+        },
+        {
+          "source_advanced_face_id": 1519,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            1548,
+            1570
+          ],
+          "source_candidate_face_ids": [
+            1773,
+            1800
+          ]
+        },
+        {
+          "source_advanced_face_id": 1827,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            1807,
+            1858
+          ],
+          "source_candidate_face_ids": [
+            1800,
+            2403
+          ]
+        },
+        {
+          "source_advanced_face_id": 1907,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            1778,
+            1934
+          ],
+          "source_candidate_face_ids": [
+            1773,
+            2430
+          ]
+        },
+        {
+          "source_advanced_face_id": 1986,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            2019,
+            2071
+          ],
+          "source_candidate_face_ids": [
+            2403,
+            2430
+          ]
+        },
+        {
+          "source_advanced_face_id": 2092,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            2201,
+            2223
+          ],
+          "source_candidate_face_ids": [
+            2403,
+            2430
+          ]
+        },
+        {
+          "source_advanced_face_id": 2457,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            2407,
+            2434
+          ],
+          "source_candidate_face_ids": [
+            2403,
+            2430
+          ]
+        },
+        {
+          "source_advanced_face_id": 2545,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            2695,
+            2781
+          ],
+          "source_candidate_face_ids": [
+            2806,
+            3100
+          ]
+        },
+        {
+          "source_advanced_face_id": 2882,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            2861
+          ],
+          "source_candidate_face_ids": [
+            2806
+          ]
+        },
+        {
+          "source_advanced_face_id": 2936,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            2810
+          ],
+          "source_candidate_face_ids": [
+            2806
+          ]
+        },
+        {
+          "source_advanced_face_id": 2990,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3022
+          ],
+          "source_candidate_face_ids": [
+            3100
+          ]
+        },
+        {
+          "source_advanced_face_id": 3044,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            2833,
+            3048
+          ],
+          "source_candidate_face_ids": [
+            2806,
+            3100
+          ]
+        },
+        {
+          "source_advanced_face_id": 3127,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3104
+          ],
+          "source_candidate_face_ids": [
+            3100
+          ]
+        },
+        {
+          "source_advanced_face_id": 3737,
+          "source_support": "PLANE",
+          "original_interface_count": 3,
+          "edge_curve_ids": [
+            1109,
+            1185,
+            1234
+          ],
+          "source_candidate_face_ids": [
+            1105,
+            1181,
+            1230
+          ]
+        }
+      ],
+      "upstream_step_blob_sha1": "917ef72a0a91b8b3e7d16e8009a1b1655154174a"
+    },
+    "S27": {
+      "source_faces": 52,
+      "candidate_faces": 20,
+      "first_ring_excluded_faces": 14,
+      "source_original_edge_interfaces": 60,
+      "source_faces_beyond_first_ring": 18,
+      "excluded_neighbor_support_histogram": {
+        "PLANE": 10,
+        "CYLINDRICAL_SURFACE": 4
+      },
+      "original_interface_anchors_per_excluded_face": {
+        "2": 7,
+        "4": 3,
+        "7": 2,
+        "10": 2
+      },
+      "neighbors": [
+        {
+          "source_advanced_face_id": 353,
+          "source_support": "PLANE",
+          "original_interface_count": 10,
+          "edge_curve_ids": [
+            357,
+            387,
+            471,
+            499,
+            527,
+            584,
+            612,
+            640,
+            668,
+            724
+          ],
+          "source_candidate_face_ids": [
+            753,
+            834,
+            1227,
+            1276,
+            1325,
+            1424,
+            1473,
+            1522,
+            1815,
+            3835
+          ]
+        },
+        {
+          "source_advanced_face_id": 910,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            889,
+            991
+          ],
+          "source_candidate_face_ids": [
+            834,
+            2408
+          ]
+        },
+        {
+          "source_advanced_face_id": 1076,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            1156,
+            1202
+          ],
+          "source_candidate_face_ids": [
+            1227,
+            2749
+          ]
+        },
+        {
+          "source_advanced_face_id": 1374,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            1353,
+            1403
+          ],
+          "source_candidate_face_ids": [
+            1325,
+            1424
+          ]
+        },
+        {
+          "source_advanced_face_id": 1571,
+          "source_support": "PLANE",
+          "original_interface_count": 4,
+          "edge_curve_ids": [
+            1576,
+            1627,
+            1678,
+            1735
+          ],
+          "source_candidate_face_ids": [
+            1815,
+            2845,
+            2872,
+            3835
+          ]
+        },
+        {
+          "source_advanced_face_id": 1864,
+          "source_support": "PLANE",
+          "original_interface_count": 4,
+          "edge_curve_ids": [
+            809,
+            1819,
+            1945,
+            1968
+          ],
+          "source_candidate_face_ids": [
+            753,
+            1815,
+            2872,
+            2980
+          ]
+        },
+        {
+          "source_advanced_face_id": 2064,
+          "source_support": "PLANE",
+          "original_interface_count": 10,
+          "edge_curve_ids": [
+            2068,
+            2098,
+            2126,
+            2183,
+            2211,
+            2239,
+            2262,
+            2285,
+            2306,
+            2328
+          ],
+          "source_candidate_face_ids": [
+            2408,
+            2749,
+            2845,
+            2872,
+            2980,
+            3297,
+            3324,
+            3351,
+            3405,
+            3432
+          ]
+        },
+        {
+          "source_advanced_face_id": 2457,
+          "source_support": "PLANE",
+          "original_interface_count": 7,
+          "edge_curve_ids": [
+            2461,
+            2506,
+            2529,
+            2552,
+            2599,
+            2622,
+            2645
+          ],
+          "source_candidate_face_ids": [
+            2749,
+            2980,
+            3297,
+            3324,
+            3351,
+            3405,
+            3432
+          ]
+        },
+        {
+          "source_advanced_face_id": 2776,
+          "source_support": "PLANE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            2782,
+            2804
+          ],
+          "source_candidate_face_ids": [
+            2845,
+            3835
+          ]
+        },
+        {
+          "source_advanced_face_id": 2899,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            1844,
+            2877
+          ],
+          "source_candidate_face_ids": [
+            1815,
+            2872
+          ]
+        },
+        {
+          "source_advanced_face_id": 3378,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            3355,
+            3382
+          ],
+          "source_candidate_face_ids": [
+            3351,
+            3405
+          ]
+        },
+        {
+          "source_advanced_face_id": 3741,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            861,
+            2437
+          ],
+          "source_candidate_face_ids": [
+            834,
+            2408
+          ]
+        },
+        {
+          "source_advanced_face_id": 3802,
+          "source_support": "PLANE",
+          "original_interface_count": 4,
+          "edge_curve_ids": [
+            782,
+            838,
+            2412,
+            2985
+          ],
+          "source_candidate_face_ids": [
+            753,
+            834,
+            2408,
+            2980
+          ]
+        },
+        {
+          "source_advanced_face_id": 3842,
+          "source_support": "PLANE",
+          "original_interface_count": 7,
+          "edge_curve_ids": [
+            757,
+            1232,
+            1281,
+            1330,
+            1429,
+            1478,
+            1527
+          ],
+          "source_candidate_face_ids": [
+            753,
+            1227,
+            1276,
+            1325,
+            1424,
+            1473,
+            1522
+          ]
+        }
+      ],
+      "upstream_step_blob_sha1": "48ada34a4d2fb038ff91131300c6262a9faec217"
+    },
+    "M3": {
+      "source_faces": 60,
+      "candidate_faces": 10,
+      "first_ring_excluded_faces": 23,
+      "source_original_edge_interfaces": 40,
+      "source_faces_beyond_first_ring": 27,
+      "excluded_neighbor_support_histogram": {
+        "PLANE": 8,
+        "CYLINDRICAL_SURFACE": 15
+      },
+      "original_interface_anchors_per_excluded_face": {
+        "1": 16,
+        "2": 5,
+        "6": 1,
+        "8": 1
+      },
+      "neighbors": [
+        {
+          "source_advanced_face_id": 17,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            118
+          ],
+          "source_candidate_face_ids": [
+            4730
+          ]
+        },
+        {
+          "source_advanced_face_id": 232,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            236
+          ],
+          "source_candidate_face_ids": [
+            4730
+          ]
+        },
+        {
+          "source_advanced_face_id": 309,
+          "source_support": "PLANE",
+          "original_interface_count": 8,
+          "edge_curve_ids": [
+            348,
+            405,
+            466,
+            550,
+            766,
+            880,
+            941,
+            998
+          ],
+          "source_candidate_face_ids": [
+            1104,
+            3890,
+            4161,
+            4215,
+            4365,
+            4372,
+            4489,
+            4730
+          ]
+        },
+        {
+          "source_advanced_face_id": 1023,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            1062,
+            1084
+          ],
+          "source_candidate_face_ids": [
+            1104,
+            4161
+          ]
+        },
+        {
+          "source_advanced_face_id": 1153,
+          "source_support": "PLANE",
+          "original_interface_count": 6,
+          "edge_curve_ids": [
+            1109,
+            1158,
+            1205,
+            1252,
+            1299,
+            1350
+          ],
+          "source_candidate_face_ids": [
+            1104,
+            3890,
+            4161,
+            4215,
+            4365,
+            4372
+          ]
+        },
+        {
+          "source_advanced_face_id": 1709,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            1776
+          ],
+          "source_candidate_face_ids": [
+            3489
+          ]
+        },
+        {
+          "source_advanced_face_id": 1931,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            2018
+          ],
+          "source_candidate_face_ids": [
+            3489
+          ]
+        },
+        {
+          "source_advanced_face_id": 2179,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            2376
+          ],
+          "source_candidate_face_ids": [
+            3538
+          ]
+        },
+        {
+          "source_advanced_face_id": 2401,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            2561
+          ],
+          "source_candidate_face_ids": [
+            3538
+          ]
+        },
+        {
+          "source_advanced_face_id": 2649,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            2653,
+            2675
+          ],
+          "source_candidate_face_ids": [
+            4215,
+            4372
+          ]
+        },
+        {
+          "source_advanced_face_id": 3305,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3311
+          ],
+          "source_candidate_face_ids": [
+            3538
+          ]
+        },
+        {
+          "source_advanced_face_id": 3565,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3518
+          ],
+          "source_candidate_face_ids": [
+            3489
+          ]
+        },
+        {
+          "source_advanced_face_id": 3613,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3543
+          ],
+          "source_candidate_face_ids": [
+            3538
+          ]
+        },
+        {
+          "source_advanced_face_id": 3692,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3771
+          ],
+          "source_candidate_face_ids": [
+            4489
+          ]
+        },
+        {
+          "source_advanced_face_id": 3843,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            3848,
+            3870
+          ],
+          "source_candidate_face_ids": [
+            3890,
+            4365
+          ]
+        },
+        {
+          "source_advanced_face_id": 3917,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            1132
+          ],
+          "source_candidate_face_ids": [
+            1104
+          ]
+        },
+        {
+          "source_advanced_face_id": 4087,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3896
+          ],
+          "source_candidate_face_ids": [
+            3890
+          ]
+        },
+        {
+          "source_advanced_face_id": 4114,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            4118,
+            4140
+          ],
+          "source_candidate_face_ids": [
+            4161,
+            4372
+          ]
+        },
+        {
+          "source_advanced_face_id": 4168,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 2,
+          "edge_curve_ids": [
+            4172,
+            4194
+          ],
+          "source_candidate_face_ids": [
+            4215,
+            4365
+          ]
+        },
+        {
+          "source_advanced_face_id": 4442,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            4468
+          ],
+          "source_candidate_face_ids": [
+            4489
+          ]
+        },
+        {
+          "source_advanced_face_id": 4516,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            4543
+          ],
+          "source_candidate_face_ids": [
+            4730
+          ]
+        },
+        {
+          "source_advanced_face_id": 4590,
+          "source_support": "CYLINDRICAL_SURFACE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            4495
+          ],
+          "source_candidate_face_ids": [
+            4489
+          ]
+        },
+        {
+          "source_advanced_face_id": 4737,
+          "source_support": "PLANE",
+          "original_interface_count": 1,
+          "edge_curve_ids": [
+            3495
+          ],
+          "source_candidate_face_ids": [
+            3489
+          ]
+        }
+      ],
+      "upstream_step_blob_sha1": "e472dd5b717b2fdbc7d2bd3e030a856a257d0cb3"
+    }
+  },
+  "source_only": true,
+  "native_original_import": "NOT_RUN",
+  "original_first_ring_bijection": "NOT_RUN",
+  "apmesh_meshing": "NOT_RUN"
+}
