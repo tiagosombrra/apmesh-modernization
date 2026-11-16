@@ -15,6 +15,7 @@ import { isCameraPose } from './camera';
 import { asVtkCells, vtkPointBuffer } from './geometry';
 import { buildUvSpatialIndex } from './uvSpatialIndex';
 import { buildSyntheticXyzRayPicker } from './xyzSyntheticRayPicker';
+import { createXyzBvhWorker } from './xyzBvhClient';
 import { meshCellKind, meshFaceCorners, meshFaceIds, meshPointAt } from './meshAccess';
 
 interface ViewerProps {
@@ -178,7 +179,15 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       geometry.source_sha256 === '0'.repeat(64) &&
       geometry.source_patch_ownership === 'NOT_APMESH_SOURCE';
     let xyzPicker: ReturnType<typeof buildSyntheticXyzRayPicker> | undefined;
-    const displayCoordinate = (uvIndex || syntheticXyzEligible) ? vtkCoordinate.newInstance() : null;
+    // R2.7 is opt-in until independent real-model A/B qualification.
+    const bvhRequested = space === 'xyz' &&
+      new URLSearchParams(window.location.search).get('xyzPicker') === 'bvh';
+    const bvhClient = bvhRequested ? createXyzBvhWorker(geometry) : null;
+    bvhClient?.ready.then(qualified => {
+      if (renderRef.current === grw) host.dataset.bvhReady = String(qualified);
+    });
+    const displayCoordinate = (uvIndex || syntheticXyzEligible || bvhClient)
+      ? vtkCoordinate.newInstance() : null;
     displayCoordinate?.setCoordinateSystemToDisplay();
     dataRef.current = data;
     const mapper = vtkMapper.newInstance();
@@ -230,8 +239,10 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
     picker.setPickFromList(true);
     picker.addPickList(actor);
     let pointerDown: [number, number] | null = null;
+    let clickSerial = 0;
     const down = (e: PointerEvent) => { pointerDown = [e.clientX, e.clientY]; };
-    const click = (event: MouseEvent) => {
+    const click = async (event: MouseEvent) => {
+      const serial = ++clickSerial;
       if (pointerDown && Math.hypot(event.clientX - pointerDown[0], event.clientY - pointerDown[1]) > 5) {
         pointerDown = null;
         return;
@@ -242,7 +253,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       const pixelY = rect.height - (event.clientY - rect.top);
       const started = performance.now();
       let sourceId: number | null = null;
-      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' = 'VTK_CELL_PICKER';
+      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' | 'EXPERIMENTAL_XYZ_BVH_WORKER' = 'VTK_CELL_PICKER';
       let spatialCandidates: number | null = null;
       let resolved = false;
       if (space === 'uv' && uvIndex && displayCoordinate && pickingModeRef.current !== 'native') {
@@ -295,12 +306,43 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
           // The general VTK picker remains authoritative on unsupported conditions.
         }
       }
+      if (!resolved && bvhClient?.isReady() && displayCoordinate &&
+          pickingModeRef.current !== 'native') {
+        try {
+          // The ray is captured from one immutable camera/pixel state.
+          const camera = renderer.getActiveCamera();
+          const cameraBefore = [...camera.getPosition(), ...camera.getFocalPoint(),
+            ...camera.getViewUp(), camera.getParallelScale()];
+          const visibleBefore = { ...visibleRef.current };
+          displayCoordinate.setValue([pixelX, pixelY, 0]);
+          const near = [...displayCoordinate.getComputedWorldValue(renderer)] as [number,number,number];
+          displayCoordinate.setValue([pixelX, pixelY, 1]);
+          const far = [...displayCoordinate.getComputedWorldValue(renderer)] as [number,number,number];
+          const hit = await bvhClient.pick(near, far, visibleBefore.showTri, visibleBefore.showQuad);
+          if (serial !== clickSerial || renderRef.current !== grw) return;
+          const cameraAfter = [...camera.getPosition(), ...camera.getFocalPoint(),
+            ...camera.getViewUp(), camera.getParallelScale()];
+          if (cameraBefore.some((v, i) => v !== cameraAfter[i]) ||
+              visibleBefore.showTri !== visibleRef.current.showTri ||
+              visibleBefore.showQuad !== visibleRef.current.showQuad) return;
+          if (hit.kind === 'hit') {
+            sourceId = hit.sourceFaceId;
+            spatialCandidates = hit.testedFaces;
+            method = 'EXPERIMENTAL_XYZ_BVH_WORKER';
+            resolved = true;
+          }
+          // Misses, overlap, numeric ambiguity and worker errors remain VTK-owned.
+        } catch {
+          // Never replace the native selector with an unqualified result.
+        }
+      }
       if (!resolved) {
         picker.pick([pixelX, pixelY, 0], renderer);
         const picked = picker.getCellId();
         sourceId = picked >= 0 ? sourceIds.current[picked] ?? null : null;
       }
       const pickerMs = performance.now() - started;
+      host.dataset.lastPickerMethod = method;
       onSelectRef.current(sourceId);
       onPickMeasuredRef.current?.({
         space, source_face_id: sourceId, hit: sourceId !== null,
@@ -333,6 +375,8 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       actorRef.current = null;
       dataRef.current = null;
       sourceIds.current = [];
+      clickSerial += 1;
+      bvhClient?.dispose();
       picker.delete();
       displayCoordinate?.delete();
       grw.delete();
