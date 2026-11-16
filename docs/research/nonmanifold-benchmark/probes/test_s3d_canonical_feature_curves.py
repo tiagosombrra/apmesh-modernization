@@ -117,7 +117,9 @@ class FeatureGraphTests(unittest.TestCase):
             graph=construct(data.decode(),model=model,source_sha256=digest)
             self.assertEqual(graph["candidate_face_count"],candidates)
             self.assertGreater(graph["candidate_to_excluded_edges"],0)
-            self.check(data.decode(),graph)
+            # Preserve the real source model identity in the independent original audit.
+            report = audit(data.decode(),graph,expected_model=model,source_sha256=digest)
+            self.assertEqual(report["source_edges_checked"], graph["candidate_to_excluded_edges"])
 
 
 if __name__=="__main__":

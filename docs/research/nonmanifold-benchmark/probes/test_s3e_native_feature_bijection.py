@@ -146,10 +146,23 @@ class S3ENativeCorrespondenceTests(unittest.TestCase):
         self.assertFalse(output.exists())
         self.assertEqual(SOURCES["M5"][2:], (41, 6))
 
-    def test_absent_original_assets_are_not_synthetic_substitutions(self):
+    def test_original_assets_if_mounted_are_natively_correlated(self):
+        import os
+        source_dir = Path(os.getenv('APMESH_MAMBO_SOURCE_DIR', '/external/mambo/sources'))
         if all((self.root / item[0]).exists() for item in SOURCES.values()):
-            self.fail("Unexpected original STEP in synthetic fixture directory")
-        self.skipTest("No original M5/S40 STEP bytes mounted; native original admission NOT_RUN")
+            self.fail('Unexpected original STEP in synthetic fixture directory')
+        if not all((source_dir / SOURCES[model][0]).is_file() for model in ('M5','S40')):
+            self.skipTest('Original pinned M5/S40 STEP files not mounted')
+        for model, interfaces in (('M5',20),('S40',32)):
+            with self.subTest(model=model):
+                name,expected_hash,faces,candidates=SOURCES[model]
+                source=source_dir/name
+                self.assertEqual(sha256(source.read_bytes()).hexdigest(),expected_hash)
+                report=run_one(source,self.root/('original_'+model),model=model)
+                self.assertEqual(report['source_file'],name)
+                self.assertEqual(report['source_sha256'],expected_hash)
+                self.assertEqual(report['candidate_faces'],candidates)
+                self.assertEqual(report['matched_interfaces'],interfaces)
 
 
 if __name__ == "__main__":

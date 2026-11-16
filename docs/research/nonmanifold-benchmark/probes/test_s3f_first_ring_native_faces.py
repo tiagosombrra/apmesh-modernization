@@ -144,10 +144,19 @@ class FirstRingBijectionTests(unittest.TestCase):
         self.assertFalse(dest.exists())
 
     def test_original_step_bytes_required_for_original_native_evidence(self):
-        source = self.root / SOURCES["M5"][0]
+        import os
+        source = self.root / SOURCES['M5'][0]
         if source.exists():
-            self.fail("Synthetic fixture path unexpectedly contains M5 original")
-        self.skipTest("Original industrial M5/S40 STEP bytes absent from local runtime")
+            self.fail('Synthetic fixture path unexpectedly contains M5 original')
+        folder=Path(os.getenv('APMESH_MAMBO_SOURCE_DIR','/external/mambo/sources'))
+        if not all((folder/SOURCES[m][0]).is_file() for m in ('M5','S40')):
+            self.skipTest('Original industrial M5/S40 STEP files absent')
+        for model,neighbors in (('M5',7),('S40',18)):
+            with self.subTest(model=model):
+                name,digest,_,_=SOURCES[model]
+                self.assertEqual(sha256((folder/name).read_bytes()).hexdigest(),digest)
+                result=run_original(folder/name,self.root/('real_'+model),model=model)
+                self.assertEqual(result['excluded_source_faces_mapped_by_edge_identity'],neighbors)
 
 
 if __name__ == "__main__":

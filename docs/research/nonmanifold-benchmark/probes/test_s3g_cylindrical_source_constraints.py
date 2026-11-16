@@ -167,12 +167,21 @@ class OriginalCylinderSourceConstraintsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "explicit expected SHA-256"):
             run_step(self.step, self.folder / "no_sha.json", model="SYNTHETIC", native=False)
 
-    def test_m5_s40_originals_absent_and_cannot_fake_admission(self):
-        for model in ("M5", "S40"):
+    def test_m5_s40_originals_required_for_native_support_admission(self):
+        import os
+        for model in ('M5','S40'):
             with self.subTest(model=model):
-                with self.assertRaisesRegex(ValueError, "Pinned original STEP SHA-256 mismatch"):
+                with self.assertRaisesRegex(ValueError,'Pinned original STEP SHA-256 mismatch'):
                     screen(self.raw, model=model, source_sha256=self.sha)
-        self.skipTest("Actual pinned M5/S40 original STEP bytes are not mounted locally")
+        folder=Path(os.getenv('APMESH_MAMBO_SOURCE_DIR','/external/mambo/sources'))
+        if not all((folder/SOURCES[m][0]).is_file() for m in ('M5','S40')):
+            self.skipTest('Original pinned M5/S40 STEP files absent')
+        for model,expected in (('M5',2),('S40',8)):
+            with self.subTest(model=model):
+                name,digest,_,_=SOURCES[model]
+                self.assertEqual(sha256((folder/name).read_bytes()).hexdigest(),digest)
+                report=run_step(folder/name,self.folder/('original_'+model+'.json'),model=model,native=True)
+                self.assertEqual(report['native_support_crosscheck']['native_cylindrical_source_face_ids_checked'],expected)
 
 
 if __name__ == "__main__":
