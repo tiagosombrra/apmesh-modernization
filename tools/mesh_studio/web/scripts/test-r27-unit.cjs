@@ -62,6 +62,23 @@ const picked=grid.pick([.217,.183,2],[.217,.183,-2],true,true);
 assert.equal(picked.kind,'hit');
 assert.ok(picked.testedFaces<faces.length);
 assert.ok(grid.nodeCount>1);
+// Reject non-finite source coordinates without changing the original geometry.
+const invalidVertex=fixture([[0,0,0],[1,0,0],[0,Infinity,0]],[[0,1,2]],[401]);
+assert.equal(buildXyzBvh(prepareBvhPayload(invalidVertex)),null);
+const invalidVertexNan=fixture([[0,0,0],[1,0,0],[0,NaN,0]],[[0,1,2]],[402]);
+assert.equal(buildXyzBvh(prepareBvhPayload(invalidVertexNan)),null);
+// Occlusion must select the nearest physical face, regardless of source ID order.
+const occlusion=fixture([
+  [0,0,0],[1,0,0],[0,1,0],
+  [0,0,1],[1,0,1],[0,1,1]
+],[[0,1,2],[3,4,5]],[900,17]);
+const occlusionIndex=buildXyzBvh(prepareBvhPayload(occlusion));
+assert.ok(occlusionIndex);
+assert.deepEqual(occlusionIndex.pick([.2,.3,2],[.2,.3,-1],true,true),
+  {kind:'hit',sourceFaceId:17,testedFaces:2});
+assert.deepEqual(occlusionIndex.pick([.2,.3,-1],[.2,.3,2],true,true),
+  {kind:'hit',sourceFaceId:900,testedFaces:2});
+assert.equal(occlusionIndex.pick([.2,.3,2],[.2,.3,-1],false,true).kind,'miss');
 console.log(JSON.stringify({schema:'apmesh.meshstudio.r27.bvh_core.v1',
   qualified_faces_cap:BVH_MAX_FACES,grid_nodes:grid.nodeCount,candidates:picked.testedFaces,
   source_ids_preserved:true,overlap_and_invalid_fallback:true,
