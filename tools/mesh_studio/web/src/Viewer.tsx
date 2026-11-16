@@ -352,6 +352,8 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
           ? 'UV_PLANE_SPATIAL_QUERY_NOT_END_TO_END_UI_LATENCY'
           : method === 'SYNTHETIC_XYZ_GRID_RAY'
           ? 'SYNTHETIC_XYZ_GRID_RAY_QUERY_NOT_END_TO_END_UI_LATENCY'
+          : method === 'EXPERIMENTAL_XYZ_BVH_WORKER'
+          ? 'EXPERIMENTAL_XYZ_BVH_WORKER_QUERY_NOT_END_TO_END_UI_LATENCY'
           : 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY',
       });
     };
