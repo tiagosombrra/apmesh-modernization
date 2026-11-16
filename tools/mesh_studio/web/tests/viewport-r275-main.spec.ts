@@ -15,7 +15,7 @@ const models=[
 ] as const;
 
 function summary(xs:number[]) {
-  if(!xs.length||xs.some(x=>!Number.isFinite(x)||x<0))throw new Error('bad_R275_distribution');
+  if(!xs.length||xs.some(x=>!Number.isFinite(x)))throw new Error('bad_R275_distribution');
   const ordered=[...xs].sort((a,b)=>a-b);
   const p=(f:number)=>Math.round(ordered[Math.ceil(ordered.length*f)-1]*1000)/1000;
   return {n:xs.length,p50_ms:p(.5),p95_ms:p(.95),
@@ -50,6 +50,19 @@ async function readPick(host:Locator,pixel:Pixel,method:Method):Promise<Pick> {
   return {method,wallMs,mainQueryMs,faceId:Number(face)};
 }
 
+/** Camera snapshot is a scientific invariant, not an assumption based on identical URLs. */
+async function snapshot(page:Page,sourceSha:string) {
+  await page.getByTestId('save-cameras').click();
+  return await page.evaluate(sha=>{
+    const key='apmesh.meshstudio.camera.v1.'+sha;
+    const raw=localStorage.getItem(key);
+    if(!raw)throw new Error('R275_camera_snapshot_missing');
+    const data=JSON.parse(raw) as {source_sha256:string;camera_xyz:unknown};
+    if(data.source_sha256!==sha)throw new Error('R275_camera_sha_mismatch');
+    return data.camera_xyz;
+  },sourceSha);
+}
+
 async function ready(page:Page,model:typeof models[number],mode:'sync'|'bvh'|'native') {
   const host=page.getByTestId('viewport-xyz');
   await page.goto(mode==='sync'?'/?xyzPicker=sync':mode==='bvh'?'/?xyzPicker=bvh':'/');
@@ -80,6 +93,10 @@ for(const model of models){
       expect(Math.abs(bounds[0]!.width-bounds[1]!.width)).toBeLessThan(.1);
       expect(Math.abs(bounds[0]!.width-bounds[2]!.width)).toBeLessThan(.1);
       expect(Math.abs(bounds[0]!.height-bounds[2]!.height)).toBeLessThan(.1);
+      const cameraBefore=await Promise.all([page,workerPage,vtkPage]
+        .map(p=>snapshot(p,model.sha)));
+      expect(cameraBefore[1]).toEqual(cameraBefore[0]);
+      expect(cameraBefore[2]).toEqual(cameraBefore[0]);
       const buildMs=Number(await sync.getAttribute('data-main-bvh-build-ms'));
       expect(Number.isFinite(buildMs)&&buildMs>=0).toBe(true);
 
@@ -132,6 +149,9 @@ for(const model of models){
         }
       }
       expect(observations).toHaveLength(ROUNDS*PIXELS);
+      const cameraAfter=await Promise.all([page,workerPage,vtkPage]
+        .map(p=>snapshot(p,model.sha)));
+      expect(cameraAfter).toEqual(cameraBefore);
       const extract=(method:Method)=>observations.map(x=>x.values[method].wallMs);
       const main=extract('EXPERIMENTAL_XYZ_BVH_MAIN'),
         workerMs=extract('EXPERIMENTAL_XYZ_BVH_WORKER'),
@@ -145,9 +165,9 @@ for(const model of models){
         matched_source_faces:candidates.map(p=>p.sourceFaceId),
         warmup_per_method_and_face:WARMUP,rounds:ROUNDS,exact_matched_triples:observations.length,
         main:summary(main),worker:summary(workerMs),vtk:summary(vtkMs),
-        paired_main_minus_vtk:summary(main.map((v,i)=>v-vtkMs[i]).map(Math.abs)),
+        paired_main_minus_vtk:summary(main.map((v,i)=>v-vtkMs[i])),
         main_query_only:summary(observations.map(x=>x.values.EXPERIMENTAL_XYZ_BVH_MAIN.mainQueryMs!)),
-        observations,
+        identical_xyz_camera_before_after:true,observations,
         limitations:[
           'three_concurrent_headless_browser_pages_may_shift_Worker_scheduling',
           'same_source_face_identity_and_viewport_size_not_an_independent_scientific_surface_oracle',
