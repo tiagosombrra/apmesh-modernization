@@ -70,6 +70,8 @@ interface BvhNode {
 }
 export interface BvhIndex {
   readonly faceCount: number;
+  readonly indexedFaceCount: number;
+  readonly excludedQuadCount: number;
   readonly nodeCount: number;
   pick(near: readonly number[], far: readonly number[], showTri: boolean, showQuad: boolean): BvhPick;
 }
@@ -121,10 +123,15 @@ function allFiniteVertices(vertices: Float32Array): boolean {
 }
 
 /**
- * All-or-nothing qualification: malformed connectivity, duplicate IDs, distorted QUADs,
- * degenerate faces and unsafe values fail closed. Input vertices remain patch-local.
+ * Invalid topology, duplicate IDs, degenerate faces and unsafe values fail closed.
+ * Strict mode rejects all warped QUADs. The opt-in partial mode excludes only
+ * warped, otherwise valid convex QUADs; picks with QUAD visibility must fall
+ * back to VTK so excluded surfaces can never be ignored as occluders.
+ * Input vertices remain patch-local.
  */
-export function buildXyzBvh(data: BvhPayload): BvhIndex | null {
+export function buildXyzBvh(
+  data: BvhPayload, options: { allowUnindexedWarpedQuads?: boolean } = {},
+): BvhIndex | null {
   const { vertices, polys, offsets, arities, sourceIds } = data;
   const count = sourceIds.length;
   if (!count || count > BVH_MAX_FACES || vertices.length % 3 !== 0 ||
@@ -135,6 +142,8 @@ export function buildXyzBvh(data: BvhPayload): BvhIndex | null {
   const pointCount = vertices.length / 3;
   const bounds = new Float32Array(count * 6), centroids = new Float32Array(count * 3);
   const corners = new Uint32Array(count * 4);
+  const order: number[] = [];
+  let excludedQuadCount = 0;
   for (let face = 0; face < count; face += 1) {
     const arity = arities[face], begin = offsets[face];
     if ((arity !== 3 && arity !== 4) || begin + arity + 1 !== offsets[face + 1] ||
@@ -152,9 +161,11 @@ export function buildXyzBvh(data: BvhPayload): BvhIndex | null {
     const n = cross(edge0, edge1), lenN = norm(n);
     const extent = Math.max(...pts.flatMap((p, i) => pts.map((q, j) => i === j ? 0 : norm(subtract(p,q)))));
     if (!(extent > 0) || lenN <= 1e-10 * extent * extent) return null;
+    let warped = false;
     if (arity === 4) {
-      // Flat, strictly convex QUADs only. A warped or bow-tie face uses native VTK.
-      if (Math.abs(dot(n, subtract(pts[3], pts[0]))) > 1e-5 * lenN * extent) return null;
+      // A warped QUAD may be ignored only when QUAD visibility is disabled.
+      warped = Math.abs(dot(n, subtract(pts[3], pts[0]))) > 1e-5 * lenN * extent;
+      if (warped && !options.allowUnindexedWarpedQuads) return null;
       const other = cross(subtract(pts[2], pts[0]), subtract(pts[3], pts[0]));
       if (dot(n, other) <= 0 || norm(other) <= 1e-10 * extent * extent) return null;
       for (let i = 0; i < 4; i += 1) {
@@ -163,14 +174,19 @@ export function buildXyzBvh(data: BvhPayload): BvhIndex | null {
         if (dot(cross(e0, e1), n) <= 1e-10 * lenN * extent * extent) return null;
       }
     }
-    for (let axis = 0; axis < 3; axis += 1) {
-      const values = pts.map(p => p[axis]), lo = Math.min(...values), hi = Math.max(...values);
-      bounds[face * 6 + axis] = lo;
-      bounds[face * 6 + axis + 3] = hi;
-      centroids[face * 3 + axis] = (lo + hi) / 2;
+    if (warped) {
+      excludedQuadCount += 1;
+    } else {
+      order.push(face);
+      for (let axis = 0; axis < 3; axis += 1) {
+        const values = pts.map(p => p[axis]), lo = Math.min(...values), hi = Math.max(...values);
+        bounds[face * 6 + axis] = lo;
+        bounds[face * 6 + axis + 3] = hi;
+        centroids[face * 3 + axis] = (lo + hi) / 2;
+      }
     }
   }
-  const order = Array.from({ length: count }, (_, i) => i);
+  if (order.length === 0) return null;
   const nodes: BvhNode[] = [];
   const build = (start: number, end: number): number => {
     const min: Vec3 = [Infinity, Infinity, Infinity], max: Vec3 = [-Infinity, -Infinity, -Infinity];
@@ -194,10 +210,13 @@ export function buildXyzBvh(data: BvhPayload): BvhIndex | null {
     }
     return id;
   };
-  build(0, count);
+  build(0, order.length);
   return {
-    faceCount: count, nodeCount: nodes.length,
+    faceCount: count, indexedFaceCount: order.length, excludedQuadCount,
+    nodeCount: nodes.length,
     pick(near, far, showTri, showQuad): BvhPick {
+      // Excluded curved QUADs may occlude the indexed triangles.
+      if (showQuad && excludedQuadCount > 0) return {kind:'ambiguous',testedFaces:0};
       if (near.length !== 3 || far.length !== 3 ||
           !near.every(Number.isFinite) || !far.every(Number.isFinite)) return {kind:'ambiguous',testedFaces:0};
       const origin: Vec3 = [near[0],near[1],near[2]], direction: Vec3 =
