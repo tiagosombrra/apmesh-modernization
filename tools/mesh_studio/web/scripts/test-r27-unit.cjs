@@ -45,6 +45,31 @@ assert.equal(buildXyzBvh(prepareBvhPayload(bowtie)),null);
 const duplicate=fixture([[0,0,0],[1,0,0],[1,1,0],[0,1,0]],
   [[0,1,2],[0,2,3]],[10,10]);
 assert.equal(buildXyzBvh(prepareBvhPayload(duplicate)),null);
+// A mixed real-like source may index flat TRI only; warped QUAD visibility is never ignored.
+const mixedCurved=fixture([
+  [0,0,0],[1,0,0],[1,1,.6],[0,1,0],
+  [2,0,0],[3,0,0],[2,1,0]
+],[[0,1,2,3],[4,5,6]],[90,91]);
+const mixedPayload=prepareBvhPayload(mixedCurved);
+assert.equal(buildXyzBvh(mixedPayload),null);
+const partial=buildXyzBvh(mixedPayload,{allowUnindexedWarpedQuads:true});
+assert.ok(partial);
+assert.equal(partial.faceCount,2);
+assert.equal(partial.indexedFaceCount,1);
+assert.equal(partial.excludedQuadCount,1);
+assert.deepEqual(partial.pick([2.2,.2,2],[2.2,.2,-2],true,false),
+  {kind:'hit',sourceFaceId:91,testedFaces:1});
+assert.deepEqual(partial.pick([2.2,.2,2],[2.2,.2,-2],true,true),
+  {kind:'ambiguous',testedFaces:0});
+assert.equal(buildXyzBvh(prepareBvhPayload(warped),
+  {allowUnindexedWarpedQuads:true}),null);
+// Invalid crossing connectivity must still reject the entire source in partial mode.
+const invalidMixed=fixture([
+  [0,0,0],[1,1,0],[0,1,0],[1,0,0],
+  [2,0,0],[3,0,0],[2,1,0]
+],[[0,1,2,3],[4,5,6]],[95,96]);
+assert.equal(buildXyzBvh(prepareBvhPayload(invalidMixed),
+  {allowUnindexedWarpedQuads:true}),null);
 const triangle=fixture([[0,0,0],[1,0,0],[0,1,0]],[[0,1,2]],[31]);
 assert.deepEqual(buildXyzBvh(prepareBvhPayload(triangle)).pick([.25,.3,2],[.25,.3,-2],true,true),
   {kind:'hit',sourceFaceId:31,testedFaces:1});
