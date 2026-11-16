@@ -1,6 +1,6 @@
 /** Browser-only viewport benchmark; no source algorithm, acceptance or physics claim. */
 import { createRoot } from 'react-dom/client';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Viewer } from './Viewer';
 import type { ViewerHandle } from './Viewer';
 import type { PickObservation, ScriptedOrbitObservation } from './performanceProbe';
@@ -8,6 +8,7 @@ import { chromiumHeapEstimate } from './performanceProbe';
 import type { MeshGeometry } from './contracts';
 import { meshPointCount } from './meshAccess';
 import { syntheticPackedScene } from './syntheticPacked';
+import { sourceFacePreviewPair } from './sourceFacePreview';
 import './style.css';
 
 const ALLOWED_CELLS = [1_000, 50_000, 500_000] as const;
@@ -34,6 +35,10 @@ type Result = {
   gpu_memory_bytes: null;
   frame_rate_fps: null;
   result: 'PRELIMINARY_BROWSER_RENDER_OBSERVATION';
+  displayed_cells: number;
+  preview_mode: 'FULL_ORIGINAL_FACES' | 'SPARSE_ORIGINAL_FACE_SUBSET_NOT_LOD';
+  source_coverage: number;
+  orbit_run_sequence: number;
   scripted_camera_orbit: {
     xyz: ScriptedOrbitObservation;
     uv: ScriptedOrbitObservation;
@@ -51,6 +56,8 @@ function BrowserBenchmark() {
   const [showQuads, setShowQuads] = useState(true);
   const [edges, setEdges] = useState(false);
   const [nativePicker, setNativePicker] = useState(false);
+  const [preview, setPreview] = useState(false);
+  const [completedOrbits, setCompletedOrbits] = useState(0);
   const [xyzDuration, setXyzDuration] = useState<number | null>(null);
   const [uvDuration, setUvDuration] = useState<number | null>(null);
   const [status, setStatus] = useState('Sem medição');
@@ -62,6 +69,12 @@ function BrowserBenchmark() {
   const [lastPick, setLastPick] = useState<PickObservation | null>(null);
   const [motionStatus, setMotionStatus] = useState('Não medido');
   const [runningMotion, setRunningMotion] = useState(false);
+
+  const viewing = useMemo(() => {
+    if (!sample || !preview || count !== 500_000) return sample;
+    const subset = sourceFacePreviewPair(sample.xyz, sample.uv, 50_000);
+    return { ...sample, xyz: subset.xyz, uv: subset.uv };
+  }, [sample, preview, count]);
 
   const measureOrbit = async () => {
     if (!sample || runningMotion || !xyzViewer.current || !uvViewer.current ||
@@ -81,6 +94,7 @@ function BrowserBenchmark() {
         heap_after_bytes: chromiumHeapEstimate(),
         heap_scope: 'CHROMIUM_PERFORMANCE_MEMORY_ESTIMATE_NOT_TOTAL_RAM_OR_VRAM' });
       setMotionStatus('Medição concluída (órbita sintética, não FPS de apresentação GPU).');
+      setCompletedOrbits((v) => v + 1);
     } catch (error) {
       if (epoch === runEpoch.current) setMotionStatus(`Erro na medição: ${String(error)}`);
     } finally {
@@ -111,6 +125,8 @@ function BrowserBenchmark() {
           setUvDuration(null);
           setSelected(null);
           setMotion(null);
+          setCompletedOrbits(0);
+          setPreview(false);
           setLastPick(null);
           setMotionStatus('Não medido');
           setShowQuads(true);
@@ -142,6 +158,10 @@ function BrowserBenchmark() {
     result: 'PRELIMINARY_BROWSER_RENDER_OBSERVATION',
     scripted_camera_orbit: motion,
     last_picker_call: lastPick,
+    displayed_cells: viewing?.xyz.quads ?? 0,
+    preview_mode: preview ? 'SPARSE_ORIGINAL_FACE_SUBSET_NOT_LOD' : 'FULL_ORIGINAL_FACES',
+    source_coverage: preview ? 0.1 : 1,
+    orbit_run_sequence: completedOrbits,
   } : null;
   const complete = xyzDuration !== null && uvDuration !== null;
   return (
@@ -162,6 +182,8 @@ function BrowserBenchmark() {
           setUvDuration(null);
           setSelected(null);
           setMotion(null);
+          setCompletedOrbits(0);
+          setPreview(false);
           setLastPick(null);
           setMotionStatus('Não medido');
           setRunningMotion(false);
@@ -174,6 +196,16 @@ function BrowserBenchmark() {
         data-testid="benchmark-quad-filter" onChange={(event) => setShowQuads(event.target.checked)} /> Mostrar QUAD</label>
       <label style={{ marginLeft: 15 }}><input type="checkbox" checked={edges}
         data-testid="benchmark-edge-filter" onChange={(event) => setEdges(event.target.checked)} /> Arestas</label>
+      <label style={{ marginLeft: 15 }}><input type="checkbox" data-testid="benchmark-preview"
+        disabled={count !== 500_000 || !sample} checked={preview}
+        onChange={(event) => {
+          runEpoch.current += 1;
+          setPreview(event.target.checked);
+          setXyzDuration(null); setUvDuration(null); setSelected(null);
+          setMotion(null); setLastPick(null); setCompletedOrbits(0);
+          setMotionStatus('Não medido');
+          startTime.current = performance.now();
+        }} /> Pré-visualização parcial (10%, com lacunas; NÃO é LOD)</label>
       <label style={{ marginLeft: 15 }}><input type="checkbox" checked={nativePicker}
         data-testid="benchmark-native-picker" onChange={(event) => setNativePicker(event.target.checked)} /> vtkCellPicker de controle (A/B)</label>
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, marginTop: 16 }}>
@@ -191,13 +223,16 @@ function BrowserBenchmark() {
       <p data-testid="benchmark-status" role="status" style={{ color: complete ? '#91dfbf' : '#f6cb8a' }}>
         {complete ? 'As duas cenas foram renderizadas; dados sintéticos.' : status}
       </p>
-      {sample && <div className="view-grid" style={{ marginTop: 16 }}>
-        <Viewer ref={xyzViewer} key={`r2-xyz-${count}`} space="xyz" modelId={`SYNTHETIC_${count}`}
-          geometry={sample.xyz} showTri={false} showQuad={showQuads} edges={edges}
+      {preview && <p role="status" style={{ color: '#f5b569' }}>
+        ATENÇÃO: Apenas 10% das faces originais estão visíveis. Existem lacunas; não é superfície completa nem LOD científico.
+      </p>}
+      {viewing && <div className="view-grid" style={{ marginTop: 16 }}>
+        <Viewer ref={xyzViewer} key={`r2-xyz-${count}-${preview}`} space="xyz" modelId={`SYNTHETIC_${count}`}
+          geometry={viewing.xyz} showTri={false} showQuad={showQuads} edges={edges}
           selectedId={selected} onSelect={setSelected} onRendered={onXyz} onPickMeasured={setLastPick}
           pickingMode={nativePicker ? 'native' : 'auto'} />
-        <Viewer ref={uvViewer} key={`r2-uv-${count}`} space="uv" modelId={`SYNTHETIC_${count}`}
-          geometry={sample.uv} showTri={false} showQuad={showQuads} edges={edges}
+        <Viewer ref={uvViewer} key={`r2-uv-${count}-${preview}`} space="uv" modelId={`SYNTHETIC_${count}`}
+          geometry={viewing.uv} showTri={false} showQuad={showQuads} edges={edges}
           selectedId={selected} onSelect={setSelected} onRendered={onUv} onPickMeasured={setLastPick}
           pickingMode={nativePicker ? 'native' : 'auto'} />
       </div>}
