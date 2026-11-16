@@ -136,3 +136,48 @@ Recreate it with the same command as above using
 native compiler/library/exporter identities and geometry preservation checks.
 Earlier two-row files/catalogs remain preserved. No new CTest/CI, scientific
 qualification or algorithm work was performed for this presentation change.
+
+
+## Mixed final meshes and the remaining-region pairing gap - 2026-11-16
+
+User asks whether the1993 paper mixes QUAD/TRI throughout internal quadrants.
+Read the verified primary source again: complete printed pages289-291 and the
+previously inspected page288/Figure7. The bibliography corroboration is separate
+from this direct scanned-paper evidence. PDF hash remains49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5.
+No scan or rendered page is redistributed here.
+
+The article supports a final mixed outcome but distinguishes generation roles:
+
+- On printed page288, interior cells use the selected TRI patterns, or the QUAD
+  branch constructs intermediate polygons and then subdivides them into QUADs.
+  This does not describe freely selecting TRI and QUAD independently inside
+  every interior template cell based on local curvature or an arbitrary factor.
+- Printed pages289-290 define the remaining region between the generated interior
+  mesh and the original domain contour. Boundary contraction first identifies a
+  triangle; when requesting QUAD, it considers an adjacent triangle and accepts
+  their combination only under its shape criterion. If no acceptable neighboring
+  triangle is selected, the triangle can remain. The outcome can therefore have
+  adjacent TRI and QUAD. No all-QUAD guarantee follows.
+- Printed page289 explicitly identifies an apparently interior cell near the
+  reentrant contour that is reclassified as boundary under the earlier rule.
+  Thus this remaining region need not look like a thin uniform outer ring;
+  it can extend into the drawing around geometric features. That observation
+  does not prove unrestricted mixed interior templates or a complete per-element
+  census of Figures12/13. A quadtree cell outline is not itself proof of a
+  four-node finite element.
+
+A concrete current implementation gap is now explicit: at exact feature d59a513,
+OwnedQuadAftFront::AttemptExteriorTriangulation generates original AFT triangles;
+controlled_patch_application.cpp appends all selected interior QUAD faces, then
+appends each aft->Triangles() face as three vertices. It does not perform the
+article's optional TRI-pair-to-QUAD step in that remaining region. Current mixed
+output is seeded QUAD plus exterior AFT TRI, not a complete historical remaining-
+region QUAD procedure. This explains why the displayed topology can have a more
+separated QUAD core/TRI region than a pairing-enabled result. It is not evidence
+that the article deliberately places TRI/QUAD arbitrarily in all interior cells.
+
+Keep this in the M5 boundary-policy/historical-coverage inventory. No historical
+shape threshold, pairing priority or acceptance policy is imported into code.
+The article's geometric mixture must also remain separate from the proposed
+curve/transition/interior size feedback. No new native generation/tests/CI,
+Blender edit or scientific adoption occurred in this read-only clarification.

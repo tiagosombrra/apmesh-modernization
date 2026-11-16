@@ -2733,3 +2733,31 @@ Check Python syntax, documentation whitespace/links and remote readback for the
 checkpoint. Next remains local coupling/advisor alignment and PR238 review;
 this requested historical visualization is completed first. M1/R3/M7 and known
 Doxygen/CRT limitations remain open.
+
+
+## 2026-11-16 - clarify historical mixed regions and missing exterior pairing
+
+User asks whether the article mixes QUAD/TRI in all internal quadrants. Re-read
+complete scanned pages289-291 with installed Poppler and prior page288, verify
+primary PDF hash49d297e2..., and inspect exact d59a513 current exterior AFT and
+candidate face assembly. Source interpretation supports mixed final elements,
+not unrestricted mixed templates in every interior cell. Interior QUAD branch
+subdivides source polygons into QUADs; remaining-region boundary contraction can
+join triangles into QUADs when its quality condition permits and retain TRI
+otherwise. Page289 explicitly reclassifies a geometrically internal-looking
+cell near a reentrant contour as boundary, so that region is not a uniform ring.
+Do not count quadtree boxes as finite-element QUAD merely from the drawing.
+
+Record a concrete gap: current AttemptExteriorTriangulation and candidate assembly
+append original AFT triangles without the historical optional remaining-region
+pair-to-QUAD treatment. Seeded QUAD plus exterior TRI is not full1993 equivalence.
+Add this to the existing M5 coverage inventory and gallery comparison record;
+no new algorithm, threshold or historical scientific approval. Keep balancing
+feedback separate from element-type pairing. No source/Blender change, native
+build/test or new CI. Scanned pages/renders remain local/untracked.
+
+Entry canonical aa1d9fd, feature d59a513, main ef40c0f and PR238 current status
+verified. Existing PR238 four-job qualification remains its own scope, draft and
+unmerged. Check documentation whitespace/links and remote readback. Next stays
+advisor-aligned local coupling and PR238 review; M5 historical pairing coverage,
+M1 point rule, R3/M7 and Doxygen/CRT remain open.

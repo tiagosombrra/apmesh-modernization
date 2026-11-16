@@ -66,6 +66,11 @@ analytic/generation scene preserved. This display-only reference changes no
 numerical policy or pending coupling/acceptance gate.
 The clarified layout adds actual source polygons directly below the existing
 TRI/QUAD rows in one scene:18 aligned panels, with original12 meshes unchanged.
+Historical M5 coverage remains incomplete: the article optionally pairs TRI into
+QUAD in the remaining boundary-contraction region, while current d59a513 appends
+only AFT TRI there. Reclassified boundary cells can extend into the geometry;
+this does not authorize arbitrary mixed templates in every interior cell.
+Keep this gap separate from size balancing; no pairing policy is adopted here.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 

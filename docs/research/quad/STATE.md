@@ -12,6 +12,22 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-16 - historical mixed-region scope and pairing gap clarified
+
+Direct paper pages288-291 support mixed final output: interior QUAD templates,
+then optional quality-tested TRI pairing in the remaining boundary-contraction
+region, with TRI retained when no acceptable pair exists. Page289 explicitly
+reclassifies an internal-looking cell near a reentrant contour as boundary;
+this region need not be a thin outer ring. The source does not establish freely
+mixed TRI/QUAD templates in every interior cell or a numerical element census
+from quadtree outlines alone. [Detailed source comparison](TEMPLATE_GALLERY_20261116.md#mixed-final-meshes-and-the-remaining-region-pairing-gap---2026-11-16).
+
+Current d59a513 does not perform that optional exterior TRI-to-QUAD pairing:
+AttemptExteriorTriangulation produces TRI and the candidate appends those three-
+vertex faces after the seeded interior QUAD. Retain this explicit M5 historical
+coverage gap; no formula/threshold, source/scene or scientific policy changed.
+No new native run/test/CI. Active coupling/review priorities remain unchanged.
+
 ### 2026-11-16 - combined meshes and intermediate polygons delivered
 
 User clarified a same-scene comparison. New Blender5.3 file now aligns three
