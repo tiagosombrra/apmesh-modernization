@@ -78,6 +78,9 @@ jobs:
       - name: Install pinned top-level frontend packages
         working-directory: tools/mesh_studio/web
         run: npm install --no-audit --no-fund
+      - name: Check R2.6 source-face lineage and bounded synthetic ray contracts
+        working-directory: tools/mesh_studio/web
+        run: npm run test:contracts
       - name: Verify production build
         working-directory: tools/mesh_studio/web
         run: npm run build

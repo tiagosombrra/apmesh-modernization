@@ -14,6 +14,7 @@ import { summarizeScriptedOrbit } from './performanceProbe';
 import { isCameraPose } from './camera';
 import { asVtkCells, vtkPointBuffer } from './geometry';
 import { buildUvSpatialIndex } from './uvSpatialIndex';
+import { buildSyntheticXyzRayPicker } from './xyzSyntheticRayPicker';
 import { meshCellKind, meshFaceCorners, meshFaceIds, meshPointAt } from './meshAccess';
 
 interface ViewerProps {
@@ -172,7 +173,12 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
     data.getPoints().setData(vtkPointBuffer(geometry), 3);
     const faceIndexBySource = new Map(Array.from(meshFaceIds(geometry), (id, i) => [id, i] as [number, number]));
     const uvIndex = space === 'uv' ? buildUvSpatialIndex(geometry) : null;
-    const displayCoordinate = uvIndex ? vtkCoordinate.newInstance() : null;
+    // Only benchmark-owned exact structured synthetic cells qualify for this fast path.
+    const syntheticXyzEligible = space === 'xyz' && geometry.quads === 500_000 &&
+      geometry.source_sha256 === '0'.repeat(64) &&
+      geometry.source_patch_ownership === 'NOT_APMESH_SOURCE';
+    let xyzPicker: ReturnType<typeof buildSyntheticXyzRayPicker> | undefined;
+    const displayCoordinate = (uvIndex || syntheticXyzEligible) ? vtkCoordinate.newInstance() : null;
     displayCoordinate?.setCoordinateSystemToDisplay();
     dataRef.current = data;
     const mapper = vtkMapper.newInstance();
@@ -236,7 +242,7 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       const pixelY = rect.height - (event.clientY - rect.top);
       const started = performance.now();
       let sourceId: number | null = null;
-      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' = 'VTK_CELL_PICKER';
+      let method: 'UV_SPATIAL_INDEX' | 'VTK_CELL_PICKER' | 'SYNTHETIC_XYZ_GRID_RAY' = 'VTK_CELL_PICKER';
       let spatialCandidates: number | null = null;
       let resolved = false;
       if (space === 'uv' && uvIndex && displayCoordinate && pickingModeRef.current !== 'native') {
@@ -266,6 +272,29 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
           // Any unsupported projection or overlapping UV patch uses the native picker.
         }
       }
+      if (!resolved && syntheticXyzEligible && displayCoordinate &&
+          pickingModeRef.current !== 'native') {
+        try {
+          // Qualified benchmark geometry only: no real source patch/curve inference.
+          if (xyzPicker === undefined) xyzPicker = buildSyntheticXyzRayPicker(geometry);
+          if (xyzPicker) {
+            displayCoordinate.setValue([pixelX, pixelY, 0]);
+            const near = [...displayCoordinate.getComputedWorldValue(renderer)];
+            displayCoordinate.setValue([pixelX, pixelY, 1]);
+            const far = [...displayCoordinate.getComputedWorldValue(renderer)];
+            const hit = xyzPicker.pick(near, far, visibleRef.current.showQuad);
+            if (hit.kind === 'hit') {
+              sourceId = hit.sourceFaceId;
+              spatialCandidates = hit.testedFaces;
+              method = 'SYNTHETIC_XYZ_GRID_RAY';
+              resolved = true;
+            }
+            // Ambiguous edges, unknown geometry and misses use VTK fallback.
+          }
+        } catch {
+          // The general VTK picker remains authoritative on unsupported conditions.
+        }
+      }
       if (!resolved) {
         picker.pick([pixelX, pixelY, 0], renderer);
         const picked = picker.getCellId();
@@ -279,6 +308,8 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
         method, spatial_candidates_tested: spatialCandidates,
         scope: method === 'UV_SPATIAL_INDEX'
           ? 'UV_PLANE_SPATIAL_QUERY_NOT_END_TO_END_UI_LATENCY'
+          : method === 'SYNTHETIC_XYZ_GRID_RAY'
+          ? 'SYNTHETIC_XYZ_GRID_RAY_QUERY_NOT_END_TO_END_UI_LATENCY'
           : 'VTK_CELL_PICKER_SYNCHRONOUS_CALL_NOT_END_TO_END_UI_LATENCY',
       });
     };

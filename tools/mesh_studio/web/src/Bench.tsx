@@ -9,6 +9,7 @@ import type { MeshGeometry } from './contracts';
 import { meshPointCount } from './meshAccess';
 import { syntheticPackedScene } from './syntheticPacked';
 import { sourceFacePreviewPair } from './sourceFacePreview';
+import { syntheticGridFacePartition } from './sourceLodLineage';
 import './style.css';
 
 const ALLOWED_CELLS = [1_000, 50_000, 500_000] as const;
@@ -39,6 +40,8 @@ type Result = {
   preview_mode: 'FULL_ORIGINAL_FACES' | 'SPARSE_ORIGINAL_FACE_SUBSET_NOT_LOD';
   source_coverage: number;
   orbit_run_sequence: number;
+  source_face_partition: { original_faces: number; aggregate_groups: number;
+    covered_original_faces: number; complete: true; is_lod: false } | null;
   scripted_camera_orbit: {
     xyz: ScriptedOrbitObservation;
     uv: ScriptedOrbitObservation;
@@ -56,6 +59,7 @@ function BrowserBenchmark() {
   const [showQuads, setShowQuads] = useState(true);
   const [edges, setEdges] = useState(false);
   const [nativePicker, setNativePicker] = useState(false);
+  const [lineageSummary, setLineageSummary] = useState<Result['source_face_partition']>(null);
   const [preview, setPreview] = useState(false);
   const [completedOrbits, setCompletedOrbits] = useState(0);
   const [xyzDuration, setXyzDuration] = useState<number | null>(null);
@@ -76,6 +80,20 @@ function BrowserBenchmark() {
     return { ...sample, xyz: subset.xyz, uv: subset.uv };
   }, [sample, preview, count]);
 
+  const auditLineage = () => {
+    if (!sample || count !== 500_000) return;
+    try {
+      const partition = syntheticGridFacePartition(sample.xyz, 8);
+      setLineageSummary({ original_faces: partition.source_face_count,
+        aggregate_groups: partition.aggregate_count,
+        covered_original_faces: partition.original_face_ids.length,
+        complete: partition.covers_every_original_face_exactly_once,
+        is_lod: partition.is_geometric_lod });
+    } catch {
+      setLineageSummary(null);
+      setStatus('Falha na auditoria de linhagem: geometria não qualificada.');
+    }
+  };
   const measureOrbit = async () => {
     if (!sample || runningMotion || !xyzViewer.current || !uvViewer.current ||
         xyzDuration === null || uvDuration === null) return;
@@ -121,6 +139,7 @@ function BrowserBenchmark() {
         if (stopped) return;
         try {
           setSample(null);
+          setLineageSummary(null);
           setXyzDuration(null);
           setUvDuration(null);
           setSelected(null);
@@ -158,6 +177,7 @@ function BrowserBenchmark() {
     result: 'PRELIMINARY_BROWSER_RENDER_OBSERVATION',
     scripted_camera_orbit: motion,
     last_picker_call: lastPick,
+    source_face_partition: lineageSummary,
     displayed_cells: viewing?.xyz.quads ?? 0,
     preview_mode: preview ? 'SPARSE_ORIGINAL_FACE_SUBSET_NOT_LOD' : 'FULL_ORIGINAL_FACES',
     source_coverage: preview ? 0.1 : 1,
@@ -178,6 +198,7 @@ function BrowserBenchmark() {
           // Invalidate the old measurement synchronously before requesting the new scene.
           runEpoch.current += 1;
           setSample(null);
+          setLineageSummary(null);
           setXyzDuration(null);
           setUvDuration(null);
           setSelected(null);
@@ -206,6 +227,15 @@ function BrowserBenchmark() {
           setMotionStatus('Não medido');
           startTime.current = performance.now();
         }} /> Pré-visualização parcial (10%, com lacunas; NÃO é LOD)</label>
+      <button type="button" data-testid="benchmark-audit-lineage"
+        disabled={count !== 500_000 || !sample} onClick={auditLineage}
+        style={{ marginLeft: 14, padding: '7px 10px' }}>
+        Auditar 100% dos IDs de origem (sem LOD)
+      </button>
+      {lineageSummary && <span data-testid="benchmark-lineage-status" role="status" style={{color:'#9ce0bc'}}>
+        {lineageSummary.covered_original_faces.toLocaleString('pt-BR')} faces de origem particionadas em
+        {` ${lineageSummary.aggregate_groups.toLocaleString('pt-BR')} grupos`} — sem geometria simplificada.
+      </span>}
       <label style={{ marginLeft: 15 }}><input type="checkbox" checked={nativePicker}
         data-testid="benchmark-native-picker" onChange={(event) => setNativePicker(event.target.checked)} /> vtkCellPicker de controle (A/B)</label>
       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, marginTop: 16 }}>
