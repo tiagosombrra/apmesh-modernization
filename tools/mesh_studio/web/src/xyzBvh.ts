@@ -112,6 +112,14 @@ function intersectBox(origin: Vec3, direction: Vec3, node: BvhNode, limit: numbe
   return true;
 }
 
+/** Validate source coordinates without allocating an additional full-size JS array. */
+function allFiniteVertices(vertices: Float32Array): boolean {
+  for (let i = 0; i < vertices.length; i += 1) {
+    if (!Number.isFinite(vertices[i])) return false;
+  }
+  return true;
+}
+
 /**
  * All-or-nothing qualification: malformed connectivity, duplicate IDs, distorted QUADs,
  * degenerate faces and unsafe values fail closed. Input vertices remain patch-local.
@@ -122,7 +130,7 @@ export function buildXyzBvh(data: BvhPayload): BvhIndex | null {
   if (!count || count > BVH_MAX_FACES || vertices.length % 3 !== 0 ||
       offsets.length !== count + 1 || arities.length !== count || offsets[0] !== 0 ||
       offsets[count] !== polys.length || vertices.length === 0 ||
-      !Array.from(vertices).every(Number.isFinite) ||
+      !allFiniteVertices(vertices) ||
       new Set(sourceIds).size !== count) return null;
   const pointCount = vertices.length / 3;
   const bounds = new Float32Array(count * 6), centroids = new Float32Array(count * 3);
