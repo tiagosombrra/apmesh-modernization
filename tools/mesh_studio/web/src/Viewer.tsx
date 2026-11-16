@@ -349,6 +349,9 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       }
       const pickerMs = performance.now() - started;
       host.dataset.lastPickerMethod = method;
+      // Diagnostic only: this is pick-call wall time, not React commit or GPU paint.
+      host.dataset.lastPickerWallMs = String(Math.round(pickerMs * 1000) / 1000);
+      host.dataset.lastPickerSourceId = sourceId === null ? '' : String(sourceId);
       onSelectRef.current(sourceId);
       onPickMeasuredRef.current?.({
         space, source_face_id: sourceId, hit: sourceId !== null,
