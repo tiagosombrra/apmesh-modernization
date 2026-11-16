@@ -12,9 +12,11 @@ self.onmessage = (event: MessageEvent<Message>) => {
   const message = event.data;
   if (message.type === 'build') {
     try {
-      index = buildXyzBvh(message.payload);
+      // Excluded warped QUADs remain VTK-owned whenever the QUAD layer is visible.
+      index = buildXyzBvh(message.payload, {allowUnindexedWarpedQuads:true});
       self.postMessage({ type:'ready', qualified: Boolean(index),
-        faces:index?.faceCount ?? 0, nodes:index?.nodeCount ?? 0 });
+        faces:index?.faceCount ?? 0, indexedFaces:index?.indexedFaceCount ?? 0,
+        excludedQuadFaces:index?.excludedQuadCount ?? 0, nodes:index?.nodeCount ?? 0 });
     } catch {
       index = null;
       self.postMessage({ type:'ready', qualified:false, faces:0, nodes:0 });
