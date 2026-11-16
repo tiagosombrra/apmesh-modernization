@@ -1,6 +1,6 @@
 # APMesh QUAD — current state
 
-Updated 2026-11-15 Fortaleza. Canonical branch: `quad-templates`.
+Updated 2026-11-16 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 ## Active: review the curvature-driven per-step delivery; mixed feedback remains open
@@ -11,6 +11,23 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-16 - interior growth traced to requested sizes and step2 override
+
+Read-only source/log inspection corrects the earlier explanation:33 ->615 counts
+total mixed nodes, not exclusively interior nodes. The coarser case has boundary
+intervals8 ->10, source leaves16 ->136 and QUAD16 ->548. Boundary binary refinement
+and domain quadtree refinement use different curvature samples and size inputs;
+QUAD templates precede exterior AFT triangulation. Critically, configured patch
+bounds1.5 do not hold the domain factor fixed: the step2 ranked-patch rule applies
+min(domain_factor,1.0) here, matching the recorded factor1.5 ->1.0. Smoothed mean
+domain h falls0.280969 ->0.0901984. This contributes to the jump alongside the
+updated previous-TRI size/curvature inputs; no isolated attribution is claimed.
+See the [source/trace clarification](AGGRESSIVENESS_SENSITIVITY_20261115.md#2026-11-16---boundary-domain-and-aft-clarification).
+Next action: reconcile the configured-factor contract with the step2 override
+before another sensitivity test or controller proposal. Decide whether this is
+an intended policy or a behavior-changing defect repair; do not silently alter
+the historical rule. No native run, source/default change, merge or stage closure.
 
 ### 2026-11-15 - bounded aggressiveness test completed; no default change
 

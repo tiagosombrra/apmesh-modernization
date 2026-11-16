@@ -35,7 +35,11 @@ completed with negative and tradeoff results; no new default or numerical policy
 was selected. Coarser external targets reduce same-step counts but degrade
 geometry/transition quality and leave a large interior growth jump. Preserve
 the current source qualification and distinguish mixed boundary and interior
-controls before proposing a new accepted-state controller.
+controls before proposing a new accepted-state controller. Read-only follow-up
+on2026-11-16 finds that the step2 ranked-domain override reduces the actual factor
+from1.5 to1.0 despite configured bounds1.5. First reconcile that existing policy
+with the configured-factor contract; the coarser trial is not a constant-domain-
+factor experiment. Preserve all measured outputs and scientific gates.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 

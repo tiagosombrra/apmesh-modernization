@@ -2526,3 +2526,30 @@ configs/plans/logs and copied OBJ files remain in ignored experiment directories
 No variant was adopted and no integration/stage closed. Next: separate boundary
 fidelity and interior size-field damping, specify geometry/quality/growth targets
 on actual mixed states and obtain the required scientific/independent review.
+
+
+## 2026-11-16 - explain boundary versus interior refinement and step2 override
+
+User asks why the interior grows faster than the curve and whether AFT controls
+both. Read exact feature e90d5a3 source and retained coarser native CSV/OBJ without
+rerunning generation. Correct prior wording:33 ->615 are total mixed nodes.
+Boundary intervals8 ->10, source leaves16 ->136, QUAD16 ->548. Domain uses old TRI
+surface-curvature/size inputs, separate from one-dimensional boundary intervals;
+QUAD templates precede the exterior original AFT reconstruction.
+
+New concrete finding: configured patch bounds1.5 do not keep the domain factor
+constant. Existing step2 ranked-patch override lowers it to1.0 here; raw domain
+CSV confirms1.5 ->1.0 and smoothed h mean0.280969 ->0.0901984. No counterfactual
+isolates that rule from changed previous-TRI inputs, balancing and template
+selection. Append exact measurements, artifact hashes and source mechanism to
+the sensitivity report; preserve prior observations and refine state/roadmap.
+
+Remote main ef40c0f, canonical entry fbf38b5 and feature e90d5a3 were checked.
+PR238 remains draft with4/4 successful existing exact-feature checks; unrelated
+PR214/225 remain untouched. No production code/default or formula changed. No
+new native run, CTest, sanitizer, CI, merge, scientific adoption or closure.
+Documentation/whitespace and checkpoint checks are recorded by the commit.
+Next action: reconcile configured-factor semantics and the historical step2
+override, classify intended policy versus a behavior-changing defect repair,
+then define the smallest authorized correction/test without changing TRI by
+accident. Mixed adaptive feedback/acceptance remains open.

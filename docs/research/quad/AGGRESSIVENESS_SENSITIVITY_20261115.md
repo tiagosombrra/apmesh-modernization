@@ -160,3 +160,64 @@ int main(int argc, char** argv) {
   }
 }
 ```
+
+
+## 2026-11-16 - boundary, domain and AFT clarification
+
+Read-only inspection of exact feature e90d5a30963ed0ade9683c69a530847709188fe3
+and the retained coarser_target_150 native logs identifies an important treatment
+limitation. PATCH_FACTOR_MIN=PATCH_FACTOR_MAX1.5 does not guarantee an unchanged
+factor at the domain generation call. GeneratorAdaptive::AdaptDomain applies
+min(domain_factor, step2_quality_critical ?0.96 :1.0) for eligible ranked step2
+patches when few_patch_low_error is false (source lines4327-4335). In this
+recorded execution the resulting domain factor is1.0. The curve trace still
+records1.5. Earlier descriptions of a fixed external target refer to configured
+bounds, not a verified constant factor across both generation paths.
+
+| Coarser source step | 1 | 2 |
+| --- | --- | --- |
+| Boundary intervals | 8 | 10 |
+| Actual domain factor | 1.5 | 1.0 |
+| Previous TRI faces | 4 | 24 |
+| Raw requested h minimum / mean / maximum | 0.276469 /0.281609 /0.285104 | 0.0571536 /0.097265 /0.172008 |
+| Smoothed h minimum / mean / maximum | 0.278585 /0.280969 /0.283346 | 0.0766084 /0.0901984 /0.106034 |
+| Source quadtree leaves | 16 | 136 |
+| Reconstructed QUAD / exterior TRI | 16 /24 | 548 /122 |
+| Total mixed nodes | 33 | 615 |
+
+These h values are domain size inputs, not measured physical mesh edge means.
+The earlier conversational33 ->615 description meant total nodes; it did not
+measure exclusively interior nodes. Source leaves in the exported OBJ match the
+retained domain-generation record. Its326 generated step2 faces describe the
+TRI source, not the670 faces of the reconstructed mixed mesh.
+
+Boundary refinement works on one-dimensional curve intervals through the native
+binary tree. Curve and surface passes use interval midpoint/endpoint curvature
+samples. Domain refinement instead derives h for each previous TRI face from
+sqrt(face physical area / total physical area), analytical/discrete nodal surface
+curvature and the internal factor, then multiplies by the actual local domain
+factor and smooths the field (Adapter::AdaptDomain, lines1386-1407). The quadtree
+subdivides for boundary edges and old faces, then balances neighbors
+(Quadtree::make/refineAccordingToNeighbors). Each cell split creates four children;
+in an approximately uniform region, halving h requires roughly four times as
+many cells, versus twice as many intervals along a curve. This dimensional
+scaling is explanatory, not an exact count prediction for this nonuniform case.
+
+In the mixed path, controlled_patch_application.cpp selects QUAD templates from
+the source tree before AttemptExteriorTriangulation invokes original AFT for the
+remaining TRI region. Hence the QUAD growth cannot be attributed solely to AFT.
+The measured mean h decreases about3.12x and leaves increase8.5x. Updated source
+TRI geometry/curvature, the factor override, dyadic thresholds, neighbor balancing
+and template selection all contribute. No counterfactual run separates their
+individual contributions, so none is claimed as the sole cause of33 ->615.
+
+Retained input hashes (SHA256):
+
+- mesh_domain_adaptation.csv:8ec5069376571b418890bb331593166c1b4fd559fa5c6a279a052370341a5909
+- mesh_passo_2_patch_adaptation_accepted.csv:b110c776f0080963507c8144bbef4ca5eedbc3ce6893f9ce3eb144b3a8691f98
+
+Next: reconcile the configured-factor contract and the step2 domain override,
+classifying intended numerical policy versus behavior-changing defect repair,
+before another bounded test. No policy, formula, production default or source
+changed in this clarification. No native generation, CTest, sanitizer or new CI
+was executed; earlier source qualification is not extended to this checkpoint.
