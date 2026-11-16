@@ -13,6 +13,10 @@ type Observation = {
   bvhPickerCallMs: number;
   vtkPickerCallMs: number;
   deltaBvhMinusVtkMs: number;
+  workerCpuMs: number;
+  workerRoundTripMs: number;
+  workerNoncomputeMs: number;
+  uiCallbackOutsideRoundTripMs: number;
 };
 
 const GRID = [.25, .30, .35, .40, .45, .50, .55, .60, .65, .70, .75];
@@ -79,7 +83,21 @@ async function samplePick(page: Page, pixel: Pixel, method: Method) {
   if (id !== pixel.faceId || !Number.isFinite(ms) || ms < 0) {
     throw new Error('picker_original_face_mismatch_or_invalid_time');
   }
-  return ms;
+  if (method==='VTK_CELL_PICKER') return {wallMs:ms,queryMs:null,roundTripMs:null,noncomputeMs:null};
+  const queryText=await host.getAttribute('data-last-worker-query-ms');
+  const tripText=await host.getAttribute('data-last-worker-round-trip-ms');
+  const residualText=await host.getAttribute('data-last-worker-noncompute-ms');
+  const status=await host.getAttribute('data-last-worker-status');
+  if (queryText===null || tripText===null || residualText===null || status!=='completed') {
+    throw new Error('missing_r274_correlated_worker_metrics');
+  }
+  const queryMs=Number(queryText),roundTripMs=Number(tripText),noncomputeMs=Number(residualText);
+  if (![queryMs,roundTripMs,noncomputeMs].every(v=>Number.isFinite(v)&&v>=0) ||
+      roundTripMs+0.1<queryMs || ms+0.2<roundTripMs ||
+      Math.abs(noncomputeMs-Math.max(0,roundTripMs-queryMs))>.1) {
+    throw new Error('inconsistent_r274_worker_metric_boundaries');
+  }
+  return {wallMs:ms,queryMs,roundTripMs,noncomputeMs};
 }
 
 for (const model of models) {
@@ -161,19 +179,26 @@ for (const model of models) {
         // A deterministic reversal also changes the pixel order without changing geometry.
         const ordered=round%2===0 ? [...candidates] : [...candidates].reverse();
         for(const candidate of ordered) {
-          let bvhMs:number, vtkMs:number;
+          let measuredBvh: Awaited<ReturnType<typeof samplePick>>;
+          let measuredVtk: Awaited<ReturnType<typeof samplePick>>;
           if(workerFirst) {
-            bvhMs=await samplePick(page,candidate,'EXPERIMENTAL_XYZ_BVH_WORKER');
-            vtkMs=await samplePick(vtkPage,candidate,'VTK_CELL_PICKER');
+            measuredBvh=await samplePick(page,candidate,'EXPERIMENTAL_XYZ_BVH_WORKER');
+            measuredVtk=await samplePick(vtkPage,candidate,'VTK_CELL_PICKER');
           } else {
-            vtkMs=await samplePick(vtkPage,candidate,'VTK_CELL_PICKER');
-            bvhMs=await samplePick(page,candidate,'EXPERIMENTAL_XYZ_BVH_WORKER');
+            measuredVtk=await samplePick(vtkPage,candidate,'VTK_CELL_PICKER');
+            measuredBvh=await samplePick(page,candidate,'EXPERIMENTAL_XYZ_BVH_WORKER');
           }
+          if (measuredBvh.queryMs===null || measuredBvh.roundTripMs===null ||
+              measuredBvh.noncomputeMs===null) throw new Error('R274_worker_profile_missing');
           pairs.push({
             sourceFaceId:candidate.faceId,x:candidate.x,y:candidate.y,
             round,firstMethod:workerFirst?'EXPERIMENTAL_XYZ_BVH_WORKER':'VTK_CELL_PICKER',
-            bvhPickerCallMs:bvhMs,vtkPickerCallMs:vtkMs,
-            deltaBvhMinusVtkMs:bvhMs-vtkMs,
+            bvhPickerCallMs:measuredBvh.wallMs,vtkPickerCallMs:measuredVtk.wallMs,
+            deltaBvhMinusVtkMs:measuredBvh.wallMs-measuredVtk.wallMs,
+            workerCpuMs:measuredBvh.queryMs,
+            workerRoundTripMs:measuredBvh.roundTripMs,
+            workerNoncomputeMs:measuredBvh.noncomputeMs,
+            uiCallbackOutsideRoundTripMs:Math.max(0,measuredBvh.wallMs-measuredBvh.roundTripMs),
           });
         }
       }
@@ -196,6 +221,13 @@ for (const model of models) {
         native_vtk_picker_call:distribution(nativeMs),
         paired_bvh_minus_vtk_call:distribution(deltaMs),
         observed_p50_bvh_faster:percentile(deltaMs,.5)<0,
+        r274_breakdown:{
+          scope:'WORKER_CPU_VS_ROUND_TRIP_RESIDUAL_NOT_ISOLATED_IPC',
+          worker_cpu_query:distribution(pairs.map(p=>p.workerCpuMs)),
+          worker_message_round_trip:distribution(pairs.map(p=>p.workerRoundTripMs)),
+          round_trip_noncompute_residual:distribution(pairs.map(p=>p.workerNoncomputeMs)),
+          viewport_callback_outside_roundtrip:distribution(pairs.map(p=>p.uiCallbackOutsideRoundTripMs)),
+        },
         identical_cameras_before_after:true,
         exact_source_face_ids_matched:pairs.length,
         samples:pairs,
@@ -222,6 +254,7 @@ for (const model of models) {
         paired_delta:receipt.paired_bvh_minus_vtk_call,
         original_face_ids:receipt.sampled_original_face_ids,
         observed_p50_bvh_faster:receipt.observed_p50_bvh_faster,
+        breakdown:receipt.r274_breakdown,
       }));
     } finally {
       await vtkPage.close();
