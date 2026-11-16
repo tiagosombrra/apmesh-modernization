@@ -184,7 +184,13 @@ export const Viewer = forwardRef<ViewerHandle, ViewerProps>(function Viewer({
       new URLSearchParams(window.location.search).get('xyzPicker') === 'bvh';
     const bvhClient = bvhRequested ? createXyzBvhWorker(geometry) : null;
     bvhClient?.ready.then(qualified => {
-      if (renderRef.current === grw) host.dataset.bvhReady = String(qualified);
+      if (renderRef.current !== grw) return;
+      host.dataset.bvhReady = String(qualified);
+      const coverage = bvhClient.coverage();
+      if (coverage) {
+        host.dataset.bvhIndexedFaces = String(coverage.indexedFaces);
+        host.dataset.bvhExcludedQuads = String(coverage.excludedQuadFaces);
+      }
     });
     const displayCoordinate = (uvIndex || syntheticXyzEligible || bvhClient)
       ? vtkCoordinate.newInstance() : null;
