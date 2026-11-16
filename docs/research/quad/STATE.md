@@ -12,6 +12,26 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-16 - historical native template gallery delivered
+
+At the user's request before further algorithm work, added a Blender reference
+for all six implemented native families T1-T6:12 representative TRI/QUAD panels,
+real node/face counts and split-neighbor sides. Original TRI dispatch and live
+vertex-mean QUAD emission are executed by an isolated diagnostic linked to the
+unchanged d59a513 GNU library. Native export and independent planar disk checks
+pass; retain the initially mismatched physical-checker failure. This does not
+prove per-step use of all families, every quality/rotation branch or1993 identity.
+Exterior AFT is explicitly distinguished from interior templates.
+
+Blender5.3 file QUAD_TRI_history_with_templates.blend opened and visually confirmed.
+It contains the template gallery and preserved analytic/four-step generation
+scene. The source file hash and original mesh geometry/connectivity are unchanged.
+[Gallery and recreation](TEMPLATE_GALLERY_20261116.md) links the portable native
+catalog, provenance receipt and recipe. No application source, algorithm, new
+regression/CI or scientific policy changed. Next remains the local bidirectional
+coupling proposal below, with required advisor alignment; PR238 review and all
+prior scientific/closure limitations remain open.
+
 ### 2026-11-16 - prioritize bidirectional local sizing feedback
 
 After Blender inspection, the user prioritizes balanced local refinement across

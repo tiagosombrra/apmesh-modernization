@@ -2647,3 +2647,38 @@ Changed proposal/state/roadmap/session documentation only. No native build, test
 CI or new Blender scene; existing85/85/three-profile evidence is not extended to
 this proposal. Documentation whitespace/link and scope review precede checkpoint
 publication. Independent review, Doxygen/CRT and R3/M7 remain open.
+
+
+## 2026-11-16 - preserve native TRI and QUAD templates in Blender history
+
+User requests the template reference before any next algorithm step. No balancing
+implementation or scientific decision is advanced. Extract six canonical native
+quadtree neighbor signatures from the unchanged d59a513 GNU engine library.
+Original makeTemplateBasedMesh yields TRI2/3/6/6/5/6; EmitLeafQuads with the live
+vertex-mean rule yields QUAD4/11/8/12/11/16. Output is normalized for display;
+actual nodes/faces are retained. These are representative implemented families,
+not proof of every rotation/quality branch or per-step usage of all six. Exterior
+AFT triangles are dynamically generated, not these fixed interior templates.
+
+Bounded standalone native exporter compiled/executed successfully. Twelve planar
+audits check coordinates/indices, positive area, boundary/manifold/connected disk
+and Euler contracts; a reversed-face negative is rejected. Retain the first
+checker-selection failure: the physical curved-patch helper rejects flat UV
+coordinates under its different input contract. Switch explicitly to a planar
+auditor, without altering native output. No application/source change, native
+regression campaign, new CI or scientific qualification.
+
+New Blender5.3 file QUAD_TRI_history_with_templates.blend contains the original
+analytic/four-step generation scene and a separate labeled template gallery.
+Original file hash and all original mesh coordinate/connectivity snapshots are
+unchanged. Opened and visually confirmed all12 TRI/QUAD panels with split-side
+highlights. Stored portable catalog, image/source/compiler receipt and Blender
+recipe under docs/research/quad/visual plus TEMPLATE_GALLERY_20261116.md.
+Local blend/raw files remain in ignored build/quad-template-catalog-20261116.
+
+Remote main ef40c0f, canonical entry20c37c6 and feature d59a513 checked; existing
+PR238/214/225 and source branch untouched. Update state/roadmap and append this
+checkpoint; Python syntax, documentation whitespace/links and metadata scope
+checked before publication. No merge or stage closure. Next remains the local
+coupling proposal with advisor-aligned metrics/criteria, retaining PR238 review,
+Doxygen/CRT and R3/M7 OPEN.

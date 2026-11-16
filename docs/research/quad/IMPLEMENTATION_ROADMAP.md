@@ -59,6 +59,11 @@ feedback. Physical metric, quality/error targets, spatial grading, per-step
 change and hysteresis remain scientific choices requiring advisor alignment.
 Implement one opt-in coupling slice after that alignment; retain PR238 review
 and all exact-head/integration gates without claiming adopted mixed epochs.
+Before further algorithm work, the user-requested
+[historical template gallery](TEMPLATE_GALLERY_20261116.md) is delivered: six
+native representative families, TRI/QUAD side by side in Blender5.3, original
+analytic/generation scene preserved. This display-only reference changes no
+numerical policy or pending coupling/acceptance gate.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 

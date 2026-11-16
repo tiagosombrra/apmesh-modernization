@@ -1,0 +1,252 @@
+{
+  "source_sha": "d59a513a04ea8c9573e006789641f4adbeecedee",
+  "source_changed": false,
+  "library_sha256": "d796243f38990d75bcb6f871ea9a567764b45e4053d660b62005f4cddd3806ce",
+  "exporter_source_sha256": "3642224acfa6ef83a2116616bed60d3de266fed9f073a6a233b8b5bf7da26777",
+  "exporter_image_sha256": "7f2c5867bbd9e872e50fffc1e9bf0566995a02dcfb7f10c2da3ef0d2a3bbc0ac",
+  "catalog_sha256": "1549fdf5d9616e92d8ebb1b2999db2e5573842e76943d0c47d5a42ac146322f5",
+  "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "compiler_arguments": [
+    "-ISOURCE_ROOT/include",
+    "-O3",
+    "-DNDEBUG",
+    "-std=gnu++17",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wshadow",
+    "-Wconversion",
+    "-Wno-cast-function-type",
+    "-O3",
+    "-fno-strict-aliasing"
+  ],
+  "classification": "native diagnostic export of existing templates; no scientific behavior change",
+  "validated_catalog_sha256": "c2c8a3d6b5d0bc4b16ff35cf7162cd86ec1e40562f609cfc569cca55668d42ad",
+  "independent_topology": [
+    {
+      "type": "T1",
+      "split_mask": 0,
+      "tri": {
+        "vertices": 4,
+        "faces": 2,
+        "boundary_edges": 4,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 9,
+        "faces": 4,
+        "boundary_edges": 8,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      }
+    },
+    {
+      "type": "T2",
+      "split_mask": 8,
+      "tri": {
+        "vertices": 5,
+        "faces": 3,
+        "boundary_edges": 5,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 17,
+        "faces": 11,
+        "boundary_edges": 10,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      }
+    },
+    {
+      "type": "T3",
+      "split_mask": 10,
+      "tri": {
+        "vertices": 7,
+        "faces": 6,
+        "boundary_edges": 6,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 15,
+        "faces": 8,
+        "boundary_edges": 12,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      }
+    },
+    {
+      "type": "T4",
+      "split_mask": 12,
+      "tri": {
+        "vertices": 7,
+        "faces": 6,
+        "boundary_edges": 6,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 19,
+        "faces": 12,
+        "boundary_edges": 12,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      }
+    },
+    {
+      "type": "T5",
+      "split_mask": 13,
+      "tri": {
+        "vertices": 7,
+        "faces": 5,
+        "boundary_edges": 7,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 19,
+        "faces": 11,
+        "boundary_edges": 14,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      }
+    },
+    {
+      "type": "T6",
+      "split_mask": 15,
+      "tri": {
+        "vertices": 8,
+        "faces": 6,
+        "boundary_edges": 8,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      },
+      "quad": {
+        "vertices": 25,
+        "faces": 16,
+        "boundary_edges": 16,
+        "area": 1.0,
+        "connected_disk": true,
+        "positive_facets": true
+      }
+    }
+  ],
+  "negative_control": "reversed native TRI face rejected",
+  "retained_check_failure": "Curved-patch XYZ checker rejected flat UV display coordinates as expected for its different input contract; replaced with an explicit planar disk audit, without changing native export",
+  "blender": {
+    "blender": "5.3.0",
+    "catalog_sha256": "c2c8a3d6b5d0bc4b16ff35cf7162cd86ec1e40562f609cfc569cca55668d42ad",
+    "original_blend_sha256": "d77cf468e2c452a1acc9112d6fedec25a4ec1bec0287225ecbc1041d320e630d",
+    "original_scenes": [
+      "Original curvature flow - generation steps"
+    ],
+    "original_mesh_geometry_unchanged": true,
+    "gallery_scene": "Template catalog - TRI and QUAD",
+    "source_sha": "d59a513a04ea8c9573e006789641f4adbeecedee",
+    "panels": [
+      {
+        "object": "T1 native TRI",
+        "type": "T1",
+        "kind": "tri",
+        "nodes": 4,
+        "faces": 2
+      },
+      {
+        "object": "T1 native QUAD",
+        "type": "T1",
+        "kind": "quad",
+        "nodes": 9,
+        "faces": 4
+      },
+      {
+        "object": "T2 native TRI",
+        "type": "T2",
+        "kind": "tri",
+        "nodes": 5,
+        "faces": 3
+      },
+      {
+        "object": "T2 native QUAD",
+        "type": "T2",
+        "kind": "quad",
+        "nodes": 17,
+        "faces": 11
+      },
+      {
+        "object": "T3 native TRI",
+        "type": "T3",
+        "kind": "tri",
+        "nodes": 7,
+        "faces": 6
+      },
+      {
+        "object": "T3 native QUAD",
+        "type": "T3",
+        "kind": "quad",
+        "nodes": 15,
+        "faces": 8
+      },
+      {
+        "object": "T4 native TRI",
+        "type": "T4",
+        "kind": "tri",
+        "nodes": 7,
+        "faces": 6
+      },
+      {
+        "object": "T4 native QUAD",
+        "type": "T4",
+        "kind": "quad",
+        "nodes": 19,
+        "faces": 12
+      },
+      {
+        "object": "T5 native TRI",
+        "type": "T5",
+        "kind": "tri",
+        "nodes": 7,
+        "faces": 5
+      },
+      {
+        "object": "T5 native QUAD",
+        "type": "T5",
+        "kind": "quad",
+        "nodes": 19,
+        "faces": 11
+      },
+      {
+        "object": "T6 native TRI",
+        "type": "T6",
+        "kind": "tri",
+        "nodes": 8,
+        "faces": 6
+      },
+      {
+        "object": "T6 native QUAD",
+        "type": "T6",
+        "kind": "quad",
+        "nodes": 25,
+        "faces": 16
+      }
+    ],
+    "scope": "six representative canonical native families; not a per-step usage inventory or every diagonal/rotation branch",
+    "aft_note": "Exterior AFT triangles are generated dynamically and are not these interior templates"
+  },
+  "blender_scene_sha256": "2f717cff6fb9821d174ce183825c07a5c47919420dda34292af120c3e74bd1ba",
+  "gallery_recipe_sha256": "eeb12d025a891c1a0d74eedc2a75a0d9df30fb88e5150eaa94552f94e4f44239",
+  "opened_and_visually_confirmed": true,
+  "visual_confirmation": "Blender5.3 gallery window showed all12 labeled panels, original TRI above vertex-mean QUAD, split-side highlights and native node/face counts"
+}
