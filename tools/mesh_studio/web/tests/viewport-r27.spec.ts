@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { mkdir, writeFile } from 'node:fs/promises';
 
 // These tests exercise a real Chromium module Worker, not the Node-only BVH index.
 test('R2.7 opt-in BVH worker keeps source buffers and resolves depth-aware face IDs', async ({ page }) => {
@@ -89,4 +90,73 @@ test('R2.7 real P1 worker qualification is fail-closed and source-preserving', a
   expect(real.sourceFaceIdsPreserved).toBe(true);
   expect(real.originalBuffersAttached).toBe(true);
   expect(appReady).toBe(String(real.qualified));
+});
+
+test('R2.7 original P1 XYZ click agrees with native VTK at the same pixel', async ({ page }, info) => {
+  test.setTimeout(60_000);
+  await page.goto('/?xyzPicker=bvh');
+  const xyz = page.getByTestId('viewport-xyz');
+  await expect(xyz.locator('canvas').first()).toBeVisible();
+  await expect.poll(() => xyz.getAttribute('data-bvh-ready'), { timeout: 25_000 })
+    .toMatch(/^(true|false)$/);
+  const qualified = (await xyz.getAttribute('data-bvh-ready')) === 'true';
+  const box = await xyz.boundingBox();
+  if (!box) throw new Error('real_p1_xyz_bounds_missing');
+
+  // A real source face must be selected; never accept a background miss as A/B evidence.
+  const probes = [
+    [0.50, 0.50], [0.46, 0.50], [0.54, 0.50],
+    [0.50, 0.46], [0.50, 0.54], [0.42, 0.42],
+    [0.58, 0.58], [0.58, 0.42], [0.42, 0.58],
+  ];
+  let selected: { x: number; y: number; id: number; method: string | null } | null = null;
+  for (const [fx, fy] of probes) {
+    const x = box.width * fx, y = box.height * fy;
+    await xyz.click({ position: { x, y } });
+    try {
+      await expect(page.locator('.face-id')).toBeVisible({ timeout: 850 });
+    } catch {
+      continue;
+    }
+    const idText = await page.locator('.face-id').innerText();
+    if (!/^#\\d+$/.test(idText)) continue;
+    selected = { x, y, id: Number(idText.slice(1)),
+      method: await xyz.getAttribute('data-last-picker-method') };
+    break;
+  }
+  expect(selected, 'A/B comparison requires a physical P1 source-face hit').not.toBeNull();
+  expect(['VTK_CELL_PICKER', 'EXPERIMENTAL_XYZ_BVH_WORKER']).toContain(selected!.method);
+  if (!qualified) expect(selected!.method).toBe('VTK_CELL_PICKER');
+
+  const originalSha = await page.locator('.model-foot code').getAttribute('title');
+  await page.goto('/');
+  const native = page.getByTestId('viewport-xyz');
+  await expect(native.locator('canvas').first()).toBeVisible();
+  await native.click({ position: { x: selected!.x, y: selected!.y } });
+  await expect(page.locator('.face-id')).toHaveText('#' + selected!.id, { timeout: 10_000 });
+  expect(await native.getAttribute('data-last-picker-method')).toBe('VTK_CELL_PICKER');
+
+  const receipt = {
+    schema: 'apmesh.meshstudio.r27.real_p1_xyz_pick_ab.v1',
+    classification: 'CONTROLLED_REAL_P1_UI_PICK_CONSISTENCY_NOT_GPU_PERFORMANCE',
+    original_source_sha256: originalSha,
+    original_source_face_id: selected!.id,
+    opt_in_worker_qualified: qualified,
+    opt_in_selection_method: selected!.method,
+    reference_method: 'VTK_CELL_PICKER',
+    same_source_face_id: true,
+    same_relative_pixel: { x: selected!.x, y: selected!.y },
+    caveats: [
+      'single_sample_from_real_p1_not_full_geometric_or_patch_qualification',
+      'vtk_cell_picker_is_a_behavioral_reference_not_scientific_surface_oracle',
+      'hosted_chromium_not_real_windows_gpu_validation',
+      'no_end_to_end_ui_paint_or_ram_vram_measurement',
+    ],
+  };
+  await mkdir('test-results', { recursive: true });
+  const json = JSON.stringify(receipt, null, 2) + '\\n';
+  await writeFile('test-results/r27-real-p1-xyz-pick-ab.json', json, 'utf8');
+  await info.attach('r27-real-p1-xyz-pick-ab.json',
+    { body: Buffer.from(json), contentType: 'application/json' });
+  console.log('R27_REAL_P1_XYZ_AB=' + JSON.stringify(receipt));
 });
