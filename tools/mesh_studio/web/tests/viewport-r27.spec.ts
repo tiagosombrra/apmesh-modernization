@@ -160,3 +160,71 @@ test('R2.7 original P1 XYZ click agrees with native VTK at the same pixel', asyn
     { body: Buffer.from(json), contentType: 'application/json' });
   console.log('R27_REAL_P1_XYZ_AB=' + JSON.stringify(receipt));
 });
+
+test('R2.7.1 controlled real P1 indexes TRI only while curved QUAD remains VTK-owned', async ({ page }) => {
+  await page.goto('/?xyzPicker=bvh');
+  const xyz = page.getByTestId('viewport-xyz');
+  await expect(xyz.locator('canvas').first()).toBeVisible();
+  await expect.poll(() => xyz.getAttribute('data-bvh-ready'), { timeout: 25_000 }).toBe('true');
+  expect(await xyz.getAttribute('data-bvh-indexed-faces')).toBe('36');
+  expect(await xyz.getAttribute('data-bvh-excluded-quads')).toBe('42');
+  const evidence = await page.evaluate(async () => {
+    const { studyApi } = await import('/src/api.ts');
+    const { createXyzBvhWorker } = await import('/src/xyzBvhClient.ts');
+    const source = await studyApi.geometry('p1', 'xyz');
+    const packed = source.packed!;
+    const ownedVertexBytes = packed.vertices.byteLength;
+    const originalIds = Array.from(packed.faceIds);
+    const worker = createXyzBvhWorker(source);
+    if (!worker || !await worker.ready) throw new Error('real_P1_tri_worker_not_ready');
+    try {
+      let tested = 0, matches = 0, mismatches = 0, visibleQuadFallback = 0;
+      for (let face = 0; face < packed.faceIds.length; face += 1) {
+        if (packed.arities[face] !== 3) continue;
+        const start = packed.offsets[face];
+        const point = (corner: number): [number, number, number] => {
+          const id = packed.polys[start + 1 + corner] * 3;
+          return [packed.vertices[id], packed.vertices[id + 1], packed.vertices[id + 2]];
+        };
+        const [a, b, c] = [point(0), point(1), point(2)];
+        const centroid: [number, number, number] = [
+          (a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3,
+          (a[2] + b[2] + c[2]) / 3,
+        ];
+        const e = b.map((v,i) => v - a[i]), f = c.map((v,i) => v - a[i]);
+        const normal = [e[1]*f[2]-e[2]*f[1], e[2]*f[0]-e[0]*f[2],
+          e[0]*f[1]-e[1]*f[0]];
+        const length = Math.hypot(...normal);
+        if (length <= 1e-12) throw new Error('unexpected_degenerate_source_tri');
+        const near = centroid.map((v,i) => v + normal[i] / length * .002) as [number,number,number];
+        const far = centroid.map((v,i) => v - normal[i] / length * .002) as [number,number,number];
+        const hit = await worker.pick(near,far,true,false);
+        const fallback = await worker.pick(near,far,true,true);
+        tested += 1;
+        if (hit.kind === 'hit' && hit.sourceFaceId === packed.faceIds[face]) matches += 1;
+        else mismatches += 1;
+        if (fallback.kind === 'ambiguous') visibleQuadFallback += 1;
+      }
+      return {
+        coverage: worker.coverage(),
+        tested, matches, mismatches, visibleQuadFallback,
+        originalSourceBufferIntact: packed.vertices.byteLength === ownedVertexBytes,
+        originalIdsIntact: originalIds.every((v,i) => packed.faceIds[i] === v),
+        sourceHash: source.source_sha256,
+      };
+    } finally {
+      worker.dispose();
+    }
+  });
+  expect(evidence.coverage).toEqual({
+    sourceFaces: 78, indexedFaces: 36, excludedQuadFaces: 42,
+  });
+  expect(evidence.tested).toBe(36);
+  expect(evidence.matches).toBe(36);
+  expect(evidence.mismatches).toBe(0);
+  expect(evidence.visibleQuadFallback).toBe(36);
+  expect(evidence.originalSourceBufferIntact).toBe(true);
+  expect(evidence.originalIdsIntact).toBe(true);
+  expect(evidence.sourceHash).toBe(
+    'cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0');
+});
