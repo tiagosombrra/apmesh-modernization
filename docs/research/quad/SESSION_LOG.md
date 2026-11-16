@@ -2708,3 +2708,28 @@ geometry unchanged; no new native build/tests/CI or Blender action. Documentatio
 checks and remote checkpoint readback only. Next remains advisor alignment of
 historical point formula/local coupling criteria and existing PR238 review, with
 M1 partial and R3/M7/known Doxygen/CRT obligations retained.
+
+
+## 2026-11-16 - align generated template meshes and intermediate polygons
+
+User clarifies that the desired reference is a combined view: last TRI/QUAD
+examples with intermediate polygons immediately below in the same scene/file.
+Extend only the isolated native extractor to emit CaptureLeafPolygons cycles;
+no production source or balancing algorithm changed. Original12 template arrays
+are byte/value-identical; add six polygon panels1/3/2/3/3/4 and audit all18 planar
+disks. Native compile/export completes successfully against the unchanged d59a513
+GNU library. This is diagnostic/presentation evidence, not a new scientific gate.
+
+Add extended portable catalog, receipt and three-row Blender recipe. New scene
+shows TRI in orange, QUAD in teal and source polygons in purple, aligned by T1-T6.
+Source history file and mesh snapshots are unchanged; its analytic/four-step
+history remains in another scene within the new file. Opened the correct Blender5.3
+window and visually confirmed all18 panels together. Old gallery files preserved.
+Result:build/quad-template-catalog-20261116/with-polygons/QUAD_TRI_templates_and_polygons.blend.
+
+Entry canonical90fdd5d, feature d59a513 and main ef40c0f remain distinct. No new
+application build/regression/CI, scientific centroid approval or stage closure.
+Check Python syntax, documentation whitespace/links and remote readback for the
+checkpoint. Next remains local coupling/advisor alignment and PR238 review;
+this requested historical visualization is completed first. M1/R3/M7 and known
+Doxygen/CRT limitations remain open.

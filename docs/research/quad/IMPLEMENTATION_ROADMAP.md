@@ -64,6 +64,8 @@ Before further algorithm work, the user-requested
 native representative families, TRI/QUAD side by side in Blender5.3, original
 analytic/generation scene preserved. This display-only reference changes no
 numerical policy or pending coupling/acceptance gate.
+The clarified layout adds actual source polygons directly below the existing
+TRI/QUAD rows in one scene:18 aligned panels, with original12 meshes unchanged.
 P0 repairs the existing admission contract; it introduces no new numerical
 or scientific policy.
 

@@ -12,6 +12,19 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-16 - combined meshes and intermediate polygons delivered
+
+User clarified a same-scene comparison. New Blender5.3 file now aligns three
+rows by T1-T6: original TRI, emitted QUAD and actual intermediate polygons directly
+below. The original12 template meshes are unchanged; six native polygon captures
+complete18 independently checked planar panels. The analytic/four-step generation
+history is preserved in the same file, and its source file/mesh geometry remains
+unchanged. Opened and visually confirmed the combined18-panel scene. See
+[layout and recreation](TEMPLATE_GALLERY_20261116.md#combined-meshes-and-polygons-in-one-scene---2026-11-16).
+No application source, new scientific policy or regression/CI campaign changed.
+This historical visualization request is complete; next remains the local
+coupling proposal/advisor alignment and PR238 review, with existing gaps retained.
+
 ### 2026-11-16 - historical correspondence clarified
 
 Direct verified-PDF review of printed page288/Figure7 supports the six structural

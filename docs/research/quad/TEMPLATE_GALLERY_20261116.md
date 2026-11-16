@@ -109,3 +109,30 @@ Conclusion: structural correspondence is supported; literal numerical reproducti
 and advisor adoption are not established. Keep the gallery labeled native TRI
 and experimental vertex-mean QUAD. Do not describe it as a certified1993 replica.
 No source, Blender geometry, policy, test or scientific-stage status changed.
+
+
+## Combined meshes and polygons in one scene - 2026-11-16
+
+The user clarified the desired layout: retain the last TRI/QUAD examples and
+place their intermediate polygons directly below, in the same Blender scene.
+Delivered QUAD_TRI_templates_and_polygons.blend with three aligned T1-T6 rows:
+original TRI, emitted vertex-mean QUAD and source polygons. The original analytic/
+four-step generation history is also preserved in the file's other scene.
+
+Extended the isolated native diagnostic to export actual CaptureLeafPolygons
+cycles from the same canonical cells. All original12 TRI/QUAD vertex/face arrays
+remain exactly equal to the previous catalog. Source polygon counts are1/3/2/3/3/4
+in source type order. All18 normalized panels pass the planar topology checks;
+no hand-drawn polygon table replaces the native capture. The original saved
+history and mesh snapshots remain unchanged. No production build, formula or
+scientific rule changed. The new Blender5.3 window was opened and all18 panels
+visually confirmed together, including the purple polygon row below QUAD.
+
+Local file:build/quad-template-catalog-20261116/with-polygons/QUAD_TRI_templates_and_polygons.blend.
+Recreate it with the same command as above using
+[extended catalog](visual/NATIVE_TEMPLATE_POLYGONS_20261116.json),
+[three-row recipe](visual/template_polygons_blender.py) and a new output path.
+[Extended receipt](visual/NATIVE_TEMPLATE_POLYGONS_RECEIPT_20261116.json) retains
+native compiler/library/exporter identities and geometry preservation checks.
+Earlier two-row files/catalogs remain preserved. No new CTest/CI, scientific
+qualification or algorithm work was performed for this presentation change.
