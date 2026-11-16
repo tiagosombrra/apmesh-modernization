@@ -4,6 +4,10 @@
 **Frozen planning base:** main f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94 on 2026-11-14.
 **Working boundary:** documentation and isolated experimental research probes/fixtures ONLY; no production build, Stage 3 modernization or QUAD branch modifications.
 
+## 2026-11-16 S3.D measured research checkpoint
+
+The [S3.D original feature-curve gate](S3D_FEATURE_CURVE_GATE.md) has directly inspected and numerically screened the 152 original candidate-to-excluded STEP edge identities. All have `LINE` master geometry (108 neighboring excluded planar faces, 44 cylindrical); canonical cubic line representation is analytically exact per edge, with recorded finite STEP master-line and de Casteljau residuals. Source-entity control index construction and its analytic auditor are isolated, with 8 new directed PASS and one real-original SKIP. The next active gate is **source-to-native edge/face bijection and constrained four-sided decomposition of the excluded neighboring faces**, especially M5 and S40. No complete or accepted CAD atlas follows from linear-feature eligibility, and no production/QUAD changes are authorized. Keep the separate third-party original 3+-sheet search open.
+
 ## 2026-11-15 priority realignment — source CAD complexity ahead of more synthetic demonstrations
 
 [Scientific selection v2](SCIENTIFIC_MODEL_SELECTION_V2.md) is the authoritative **near-term ordering** without erasing R0-R7 hard gates. R2/R3 three-box, T/Cross and analytic ruled sheets stay as bounded unit/negative fixtures; they are not the primary model roster for a new paper.

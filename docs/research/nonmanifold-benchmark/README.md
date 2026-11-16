@@ -1,8 +1,12 @@
 # Non-manifold benchmark corpus and reverse-patch feasibility
 
-**Status:** scientific priority is ORIGINAL complex CAD. **Four byte-verified MAMBO STEP originals (M5/S40/S27/M3) have now PASSED native Open CASCADE import, topology profiling and source-rendered visual evidence**; no original multi-sheet positive or APMesh accepted meshing demonstrated. R2/R3 synthetic fixtures remain tests only. Updated 2026-11-15.
+**Status:** scientific priority is ORIGINAL complex CAD. **Four byte-verified MAMBO STEP originals (M5/S40/S27/M3) have now PASSED native Open CASCADE import, topology profiling and source-rendered visual evidence**; no original multi-sheet positive or APMesh accepted meshing demonstrated. R2/R3 synthetic fixtures remain tests only. Updated 2026-11-16.
 **Frozen planning base:** main `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
 **Research branch:** `research/benchmark-corpus-reverse-patches`, draft PR #225.
+
+## S3.D original-feature cubic identity gate (2026-11-16)
+
+[The bounded source-curve study](S3D_FEATURE_CURVE_GATE.md) now identifies all **152 original candidate-to-excluded EDGE_CURVE** entities as 3D master `LINE` segments: 108 connect to excluded planar faces, 44 to cylindrical faces. A second, connector-side numerical check of the pinned original source evaluates endpoint-to-master-line residuals and cubic de Casteljau samples; see [per-model numeric receipt](evidence/s3d/original_step_curve_oracle.json) and [per-edge source identity inventory](evidence/s3d/original_step_interface_inventory.json). A separate research-only canonical cubic control indexer and directed negative tests are committed. Local research suite: **55 cases / 53 PASS / 2 explicit original-asset SKIP**. This qualifies bounded *source-graph linear feature compatibility*, NOT imported CAD/BRep source-edge ID bijection, adjacent curved-face fitting, complete BP patch atlas, accepted TRI/QUAD generation or external genuine non-manifold source admission. Research PR remains draft.
 
 ## S3.C original STEP source-graph gate (2026-11-15)
 
