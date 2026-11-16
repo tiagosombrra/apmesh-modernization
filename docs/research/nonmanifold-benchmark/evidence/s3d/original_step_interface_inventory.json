@@ -1,0 +1,1665 @@
+{
+  "schema": "apmesh-s3d-original-feature-interface-v1",
+  "scope": "EXACT_ORIGINAL_STEP_GRAPH_ONLY",
+  "upstream": "cgg-bern/hex-me-if-you-can",
+  "upstream_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "models": {
+    "M5": {
+      "model": "M5",
+      "source_file": "i05o_m5.step",
+      "source_blob_sha1": "d72e5e3cb3de9ebdec80253cfa9b57fa1b7132f7",
+      "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+      "source_faces": 41,
+      "candidate_faces": 6,
+      "candidate_to_excluded_edges": 20,
+      "neighbor_support_types": {
+        "PLANE": 16,
+        "CYLINDRICAL_SURFACE": 4
+      },
+      "master_curve_types": {
+        "LINE": 20
+      },
+      "interface_buckets": {
+        "PLANE / LINE": 16,
+        "CYLINDRICAL_SURFACE / LINE": 4
+      },
+      "orientation_histogram": {
+        "OPPOSED": 16,
+        "SAME": 4
+      },
+      "interfaces": [
+        {
+          "edge_curve_id": 205,
+          "candidate_advanced_face": 3878,
+          "neighbor_advanced_face": 171,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 206,
+          "source_end_vertex": 178
+        },
+        {
+          "edge_curve_id": 233,
+          "candidate_advanced_face": 3927,
+          "neighbor_advanced_face": 171,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 234,
+          "source_end_vertex": 206
+        },
+        {
+          "edge_curve_id": 294,
+          "candidate_advanced_face": 4026,
+          "neighbor_advanced_face": 171,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 295,
+          "source_end_vertex": 262
+        },
+        {
+          "edge_curve_id": 378,
+          "candidate_advanced_face": 3547,
+          "neighbor_advanced_face": 171,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 379,
+          "source_end_vertex": 351
+        },
+        {
+          "edge_curve_id": 435,
+          "candidate_advanced_face": 3444,
+          "neighbor_advanced_face": 171,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 436,
+          "source_end_vertex": 407
+        },
+        {
+          "edge_curve_id": 463,
+          "candidate_advanced_face": 3395,
+          "neighbor_advanced_face": 171,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 176,
+          "source_end_vertex": 436
+        },
+        {
+          "edge_curve_id": 525,
+          "candidate_advanced_face": 3878,
+          "neighbor_advanced_face": 491,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 178,
+          "source_end_vertex": 498
+        },
+        {
+          "edge_curve_id": 547,
+          "candidate_advanced_face": 3395,
+          "neighbor_advanced_face": 491,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 496,
+          "source_end_vertex": 176
+        },
+        {
+          "edge_curve_id": 3399,
+          "candidate_advanced_face": 3395,
+          "neighbor_advanced_face": 4344,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 3400,
+          "source_end_vertex": 496
+        },
+        {
+          "edge_curve_id": 3448,
+          "candidate_advanced_face": 3444,
+          "neighbor_advanced_face": 4344,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 3449,
+          "source_end_vertex": 3400
+        },
+        {
+          "edge_curve_id": 3473,
+          "candidate_advanced_face": 3444,
+          "neighbor_advanced_face": 3493,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 407,
+          "source_end_vertex": 3449
+        },
+        {
+          "edge_curve_id": 3497,
+          "candidate_advanced_face": 3547,
+          "neighbor_advanced_face": 3493,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 3498,
+          "source_end_vertex": 379
+        },
+        {
+          "edge_curve_id": 3551,
+          "candidate_advanced_face": 3547,
+          "neighbor_advanced_face": 4344,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 3552,
+          "source_end_vertex": 3498
+        },
+        {
+          "edge_curve_id": 3576,
+          "candidate_advanced_face": 3547,
+          "neighbor_advanced_face": 3596,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 351,
+          "source_end_vertex": 3552
+        },
+        {
+          "edge_curve_id": 3882,
+          "candidate_advanced_face": 3878,
+          "neighbor_advanced_face": 4344,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 498,
+          "source_end_vertex": 3883
+        },
+        {
+          "edge_curve_id": 3931,
+          "candidate_advanced_face": 3927,
+          "neighbor_advanced_face": 4344,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 3883,
+          "source_end_vertex": 3932
+        },
+        {
+          "edge_curve_id": 3954,
+          "candidate_advanced_face": 3927,
+          "neighbor_advanced_face": 3976,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 3932,
+          "source_end_vertex": 234
+        },
+        {
+          "edge_curve_id": 3982,
+          "candidate_advanced_face": 4026,
+          "neighbor_advanced_face": 3976,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 262,
+          "source_end_vertex": 3983
+        },
+        {
+          "edge_curve_id": 4030,
+          "candidate_advanced_face": 4026,
+          "neighbor_advanced_face": 4344,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 3983,
+          "source_end_vertex": 4031
+        },
+        {
+          "edge_curve_id": 4053,
+          "candidate_advanced_face": 4026,
+          "neighbor_advanced_face": 4075,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 4031,
+          "source_end_vertex": 295
+        }
+      ],
+      "claims": {
+        "original_nonmanifold_3plus": "NOT_ESTABLISHED",
+        "full_atlas": "NOT_RUN",
+        "native_import_in_this_execution": "NOT_RUN",
+        "apmesh_generation": "NOT_RUN"
+      }
+    },
+    "S40": {
+      "model": "S40",
+      "source_file": "i25o_s40.step",
+      "source_blob_sha1": "917ef72a0a91b8b3e7d16e8009a1b1655154174a",
+      "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+      "source_faces": 43,
+      "candidate_faces": 9,
+      "candidate_to_excluded_edges": 32,
+      "neighbor_support_types": {
+        "PLANE": 20,
+        "CYLINDRICAL_SURFACE": 12
+      },
+      "master_curve_types": {
+        "LINE": 32
+      },
+      "interface_buckets": {
+        "PLANE / LINE": 20,
+        "CYLINDRICAL_SURFACE / LINE": 12
+      },
+      "orientation_histogram": {
+        "OPPOSED": 24,
+        "SAME": 8
+      },
+      "interfaces": [
+        {
+          "edge_curve_id": 57,
+          "candidate_advanced_face": 1800,
+          "neighbor_advanced_face": 17,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 58,
+          "source_end_vertex": 24
+        },
+        {
+          "edge_curve_id": 193,
+          "candidate_advanced_face": 1773,
+          "neighbor_advanced_face": 17,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 22,
+          "source_end_vertex": 86
+        },
+        {
+          "edge_curve_id": 281,
+          "candidate_advanced_face": 1800,
+          "neighbor_advanced_face": 218,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 24,
+          "source_end_vertex": 253
+        },
+        {
+          "edge_curve_id": 303,
+          "candidate_advanced_face": 1773,
+          "neighbor_advanced_face": 218,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 304,
+          "source_end_vertex": 22
+        },
+        {
+          "edge_curve_id": 916,
+          "candidate_advanced_face": 1230,
+          "neighbor_advanced_face": 912,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 919,
+          "source_end_vertex": 917
+        },
+        {
+          "edge_curve_id": 946,
+          "candidate_advanced_face": 1181,
+          "neighbor_advanced_face": 912,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 947,
+          "source_end_vertex": 919
+        },
+        {
+          "edge_curve_id": 974,
+          "candidate_advanced_face": 1105,
+          "neighbor_advanced_face": 912,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 975,
+          "source_end_vertex": 947
+        },
+        {
+          "edge_curve_id": 1109,
+          "candidate_advanced_face": 1105,
+          "neighbor_advanced_face": 3737,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1112,
+          "source_end_vertex": 1110
+        },
+        {
+          "edge_curve_id": 1139,
+          "candidate_advanced_face": 1105,
+          "neighbor_advanced_face": 1279,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1110,
+          "source_end_vertex": 975
+        },
+        {
+          "edge_curve_id": 1185,
+          "candidate_advanced_face": 1181,
+          "neighbor_advanced_face": 3737,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1186,
+          "source_end_vertex": 1112
+        },
+        {
+          "edge_curve_id": 1234,
+          "candidate_advanced_face": 1230,
+          "neighbor_advanced_face": 3737,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1235,
+          "source_end_vertex": 1186
+        },
+        {
+          "edge_curve_id": 1259,
+          "candidate_advanced_face": 1230,
+          "neighbor_advanced_face": 1386,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 917,
+          "source_end_vertex": 1235
+        },
+        {
+          "edge_curve_id": 1548,
+          "candidate_advanced_face": 1800,
+          "neighbor_advanced_face": 1519,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 1524,
+          "source_end_vertex": 58
+        },
+        {
+          "edge_curve_id": 1570,
+          "candidate_advanced_face": 1773,
+          "neighbor_advanced_face": 1519,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 86,
+          "source_end_vertex": 1571
+        },
+        {
+          "edge_curve_id": 1778,
+          "candidate_advanced_face": 1773,
+          "neighbor_advanced_face": 1907,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1571,
+          "source_end_vertex": 304
+        },
+        {
+          "edge_curve_id": 1807,
+          "candidate_advanced_face": 1800,
+          "neighbor_advanced_face": 1827,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 253,
+          "source_end_vertex": 1524
+        },
+        {
+          "edge_curve_id": 1858,
+          "candidate_advanced_face": 2403,
+          "neighbor_advanced_face": 1827,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1859,
+          "source_end_vertex": 1835
+        },
+        {
+          "edge_curve_id": 1934,
+          "candidate_advanced_face": 2430,
+          "neighbor_advanced_face": 1907,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1935,
+          "source_end_vertex": 1912
+        },
+        {
+          "edge_curve_id": 2019,
+          "candidate_advanced_face": 2430,
+          "neighbor_advanced_face": 1986,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2020,
+          "source_end_vertex": 1935
+        },
+        {
+          "edge_curve_id": 2071,
+          "candidate_advanced_face": 2403,
+          "neighbor_advanced_face": 1986,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1835,
+          "source_end_vertex": 2043
+        },
+        {
+          "edge_curve_id": 2201,
+          "candidate_advanced_face": 2403,
+          "neighbor_advanced_face": 2092,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2043,
+          "source_end_vertex": 2099
+        },
+        {
+          "edge_curve_id": 2223,
+          "candidate_advanced_face": 2430,
+          "neighbor_advanced_face": 2092,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2097,
+          "source_end_vertex": 2020
+        },
+        {
+          "edge_curve_id": 2407,
+          "candidate_advanced_face": 2403,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 2099,
+          "source_end_vertex": 1859
+        },
+        {
+          "edge_curve_id": 2434,
+          "candidate_advanced_face": 2430,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 1912,
+          "source_end_vertex": 2097
+        },
+        {
+          "edge_curve_id": 2695,
+          "candidate_advanced_face": 2806,
+          "neighbor_advanced_face": 2545,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2696,
+          "source_end_vertex": 2667
+        },
+        {
+          "edge_curve_id": 2781,
+          "candidate_advanced_face": 3100,
+          "neighbor_advanced_face": 2545,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2636,
+          "source_end_vertex": 2753
+        },
+        {
+          "edge_curve_id": 2810,
+          "candidate_advanced_face": 2806,
+          "neighbor_advanced_face": 2936,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 2667,
+          "source_end_vertex": 2811
+        },
+        {
+          "edge_curve_id": 2833,
+          "candidate_advanced_face": 2806,
+          "neighbor_advanced_face": 3044,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2811,
+          "source_end_vertex": 2834
+        },
+        {
+          "edge_curve_id": 2861,
+          "candidate_advanced_face": 2806,
+          "neighbor_advanced_face": 2882,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 2834,
+          "source_end_vertex": 2696
+        },
+        {
+          "edge_curve_id": 3022,
+          "candidate_advanced_face": 3100,
+          "neighbor_advanced_face": 2990,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 2995,
+          "source_end_vertex": 2636
+        },
+        {
+          "edge_curve_id": 3048,
+          "candidate_advanced_face": 3100,
+          "neighbor_advanced_face": 3044,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 3049,
+          "source_end_vertex": 2995
+        },
+        {
+          "edge_curve_id": 3104,
+          "candidate_advanced_face": 3100,
+          "neighbor_advanced_face": 3127,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 2753,
+          "source_end_vertex": 3049
+        }
+      ],
+      "claims": {
+        "original_nonmanifold_3plus": "NOT_ESTABLISHED",
+        "full_atlas": "NOT_RUN",
+        "native_import_in_this_execution": "NOT_RUN",
+        "apmesh_generation": "NOT_RUN"
+      }
+    },
+    "S27": {
+      "model": "S27",
+      "source_file": "i22o_s27.step",
+      "source_blob_sha1": "48ada34a4d2fb038ff91131300c6262a9faec217",
+      "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+      "source_faces": 52,
+      "candidate_faces": 20,
+      "candidate_to_excluded_edges": 60,
+      "neighbor_support_types": {
+        "PLANE": 52,
+        "CYLINDRICAL_SURFACE": 8
+      },
+      "master_curve_types": {
+        "LINE": 60
+      },
+      "interface_buckets": {
+        "PLANE / LINE": 52,
+        "CYLINDRICAL_SURFACE / LINE": 8
+      },
+      "orientation_histogram": {
+        "OPPOSED": 60
+      },
+      "interfaces": [
+        {
+          "edge_curve_id": 357,
+          "candidate_advanced_face": 753,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 360,
+          "source_end_vertex": 358
+        },
+        {
+          "edge_curve_id": 387,
+          "candidate_advanced_face": 834,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 388,
+          "source_end_vertex": 360
+        },
+        {
+          "edge_curve_id": 471,
+          "candidate_advanced_face": 1227,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 472,
+          "source_end_vertex": 444
+        },
+        {
+          "edge_curve_id": 499,
+          "candidate_advanced_face": 1276,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 500,
+          "source_end_vertex": 472
+        },
+        {
+          "edge_curve_id": 527,
+          "candidate_advanced_face": 1325,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 528,
+          "source_end_vertex": 500
+        },
+        {
+          "edge_curve_id": 584,
+          "candidate_advanced_face": 1424,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 585,
+          "source_end_vertex": 556
+        },
+        {
+          "edge_curve_id": 612,
+          "candidate_advanced_face": 1473,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 613,
+          "source_end_vertex": 585
+        },
+        {
+          "edge_curve_id": 640,
+          "candidate_advanced_face": 1522,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 641,
+          "source_end_vertex": 613
+        },
+        {
+          "edge_curve_id": 668,
+          "candidate_advanced_face": 3835,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 669,
+          "source_end_vertex": 641
+        },
+        {
+          "edge_curve_id": 724,
+          "candidate_advanced_face": 1815,
+          "neighbor_advanced_face": 353,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 358,
+          "source_end_vertex": 697
+        },
+        {
+          "edge_curve_id": 757,
+          "candidate_advanced_face": 753,
+          "neighbor_advanced_face": 3842,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 758,
+          "source_end_vertex": 760
+        },
+        {
+          "edge_curve_id": 782,
+          "candidate_advanced_face": 753,
+          "neighbor_advanced_face": 3802,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 760,
+          "source_end_vertex": 360
+        },
+        {
+          "edge_curve_id": 809,
+          "candidate_advanced_face": 753,
+          "neighbor_advanced_face": 1864,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 358,
+          "source_end_vertex": 758
+        },
+        {
+          "edge_curve_id": 838,
+          "candidate_advanced_face": 834,
+          "neighbor_advanced_face": 3802,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 360,
+          "source_end_vertex": 839
+        },
+        {
+          "edge_curve_id": 861,
+          "candidate_advanced_face": 834,
+          "neighbor_advanced_face": 3741,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 839,
+          "source_end_vertex": 862
+        },
+        {
+          "edge_curve_id": 889,
+          "candidate_advanced_face": 834,
+          "neighbor_advanced_face": 910,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 862,
+          "source_end_vertex": 388
+        },
+        {
+          "edge_curve_id": 991,
+          "candidate_advanced_face": 2408,
+          "neighbor_advanced_face": 910,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 915,
+          "source_end_vertex": 968
+        },
+        {
+          "edge_curve_id": 1156,
+          "candidate_advanced_face": 1227,
+          "neighbor_advanced_face": 1076,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 444,
+          "source_end_vertex": 1134
+        },
+        {
+          "edge_curve_id": 1202,
+          "candidate_advanced_face": 2749,
+          "neighbor_advanced_face": 1076,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1081,
+          "source_end_vertex": 1180
+        },
+        {
+          "edge_curve_id": 1232,
+          "candidate_advanced_face": 1227,
+          "neighbor_advanced_face": 3842,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1134,
+          "source_end_vertex": 1233
+        },
+        {
+          "edge_curve_id": 1281,
+          "candidate_advanced_face": 1276,
+          "neighbor_advanced_face": 3842,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1233,
+          "source_end_vertex": 1282
+        },
+        {
+          "edge_curve_id": 1330,
+          "candidate_advanced_face": 1325,
+          "neighbor_advanced_face": 3842,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1282,
+          "source_end_vertex": 1331
+        },
+        {
+          "edge_curve_id": 1353,
+          "candidate_advanced_face": 1325,
+          "neighbor_advanced_face": 1374,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1331,
+          "source_end_vertex": 528
+        },
+        {
+          "edge_curve_id": 1403,
+          "candidate_advanced_face": 1424,
+          "neighbor_advanced_face": 1374,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 556,
+          "source_end_vertex": 1380
+        },
+        {
+          "edge_curve_id": 1429,
+          "candidate_advanced_face": 1424,
+          "neighbor_advanced_face": 3842,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1380,
+          "source_end_vertex": 1430
+        },
+        {
+          "edge_curve_id": 1478,
+          "candidate_advanced_face": 1473,
+          "neighbor_advanced_face": 3842,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1430,
+          "source_end_vertex": 1479
+        },
+        {
+          "edge_curve_id": 1527,
+          "candidate_advanced_face": 1522,
+          "neighbor_advanced_face": 3842,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1479,
+          "source_end_vertex": 1528
+        },
+        {
+          "edge_curve_id": 1576,
+          "candidate_advanced_face": 3835,
+          "neighbor_advanced_face": 1571,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1577,
+          "source_end_vertex": 669
+        },
+        {
+          "edge_curve_id": 1627,
+          "candidate_advanced_face": 2845,
+          "neighbor_advanced_face": 1571,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1628,
+          "source_end_vertex": 1600
+        },
+        {
+          "edge_curve_id": 1678,
+          "candidate_advanced_face": 2872,
+          "neighbor_advanced_face": 1571,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1679,
+          "source_end_vertex": 1656
+        },
+        {
+          "edge_curve_id": 1735,
+          "candidate_advanced_face": 1815,
+          "neighbor_advanced_face": 1571,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 697,
+          "source_end_vertex": 1707
+        },
+        {
+          "edge_curve_id": 1819,
+          "candidate_advanced_face": 1815,
+          "neighbor_advanced_face": 1864,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1820,
+          "source_end_vertex": 358
+        },
+        {
+          "edge_curve_id": 1844,
+          "candidate_advanced_face": 1815,
+          "neighbor_advanced_face": 2899,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1707,
+          "source_end_vertex": 1820
+        },
+        {
+          "edge_curve_id": 1945,
+          "candidate_advanced_face": 2872,
+          "neighbor_advanced_face": 1864,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1946,
+          "source_end_vertex": 1922
+        },
+        {
+          "edge_curve_id": 1968,
+          "candidate_advanced_face": 2980,
+          "neighbor_advanced_face": 1864,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1969,
+          "source_end_vertex": 1946
+        },
+        {
+          "edge_curve_id": 2068,
+          "candidate_advanced_face": 3297,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2069,
+          "source_end_vertex": 2071
+        },
+        {
+          "edge_curve_id": 2098,
+          "candidate_advanced_face": 3324,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2099,
+          "source_end_vertex": 2069
+        },
+        {
+          "edge_curve_id": 2126,
+          "candidate_advanced_face": 3351,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2127,
+          "source_end_vertex": 2099
+        },
+        {
+          "edge_curve_id": 2183,
+          "candidate_advanced_face": 3405,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2184,
+          "source_end_vertex": 2155
+        },
+        {
+          "edge_curve_id": 2211,
+          "candidate_advanced_face": 3432,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2212,
+          "source_end_vertex": 2184
+        },
+        {
+          "edge_curve_id": 2239,
+          "candidate_advanced_face": 2749,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1180,
+          "source_end_vertex": 2212
+        },
+        {
+          "edge_curve_id": 2262,
+          "candidate_advanced_face": 2408,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2263,
+          "source_end_vertex": 915
+        },
+        {
+          "edge_curve_id": 2285,
+          "candidate_advanced_face": 2980,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1946,
+          "source_end_vertex": 2263
+        },
+        {
+          "edge_curve_id": 2306,
+          "candidate_advanced_face": 2872,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1656,
+          "source_end_vertex": 1946
+        },
+        {
+          "edge_curve_id": 2328,
+          "candidate_advanced_face": 2845,
+          "neighbor_advanced_face": 2064,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2071,
+          "source_end_vertex": 1628
+        },
+        {
+          "edge_curve_id": 2412,
+          "candidate_advanced_face": 2408,
+          "neighbor_advanced_face": 3802,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2413,
+          "source_end_vertex": 2263
+        },
+        {
+          "edge_curve_id": 2437,
+          "candidate_advanced_face": 2408,
+          "neighbor_advanced_face": 3741,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 968,
+          "source_end_vertex": 2413
+        },
+        {
+          "edge_curve_id": 2461,
+          "candidate_advanced_face": 2980,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2462,
+          "source_end_vertex": 1969
+        },
+        {
+          "edge_curve_id": 2506,
+          "candidate_advanced_face": 2749,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2507,
+          "source_end_vertex": 1081
+        },
+        {
+          "edge_curve_id": 2529,
+          "candidate_advanced_face": 3432,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2530,
+          "source_end_vertex": 2507
+        },
+        {
+          "edge_curve_id": 2552,
+          "candidate_advanced_face": 3405,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2553,
+          "source_end_vertex": 2530
+        },
+        {
+          "edge_curve_id": 2599,
+          "candidate_advanced_face": 3351,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2600,
+          "source_end_vertex": 2576
+        },
+        {
+          "edge_curve_id": 2622,
+          "candidate_advanced_face": 3324,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2623,
+          "source_end_vertex": 2600
+        },
+        {
+          "edge_curve_id": 2645,
+          "candidate_advanced_face": 3297,
+          "neighbor_advanced_face": 2457,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2646,
+          "source_end_vertex": 2623
+        },
+        {
+          "edge_curve_id": 2782,
+          "candidate_advanced_face": 2845,
+          "neighbor_advanced_face": 2776,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1600,
+          "source_end_vertex": 2646
+        },
+        {
+          "edge_curve_id": 2804,
+          "candidate_advanced_face": 3835,
+          "neighbor_advanced_face": 2776,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1528,
+          "source_end_vertex": 1577
+        },
+        {
+          "edge_curve_id": 2877,
+          "candidate_advanced_face": 2872,
+          "neighbor_advanced_face": 2899,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1922,
+          "source_end_vertex": 1679
+        },
+        {
+          "edge_curve_id": 2985,
+          "candidate_advanced_face": 2980,
+          "neighbor_advanced_face": 3802,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2263,
+          "source_end_vertex": 2462
+        },
+        {
+          "edge_curve_id": 3355,
+          "candidate_advanced_face": 3351,
+          "neighbor_advanced_face": 3378,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2576,
+          "source_end_vertex": 2127
+        },
+        {
+          "edge_curve_id": 3382,
+          "candidate_advanced_face": 3405,
+          "neighbor_advanced_face": 3378,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2155,
+          "source_end_vertex": 2553
+        }
+      ],
+      "claims": {
+        "original_nonmanifold_3plus": "NOT_ESTABLISHED",
+        "full_atlas": "NOT_RUN",
+        "native_import_in_this_execution": "NOT_RUN",
+        "apmesh_generation": "NOT_RUN"
+      }
+    },
+    "M3": {
+      "model": "M3",
+      "source_file": "i03o_m3.step",
+      "source_blob_sha1": "e472dd5b717b2fdbc7d2bd3e030a856a257d0cb3",
+      "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+      "source_faces": 60,
+      "candidate_faces": 10,
+      "candidate_to_excluded_edges": 40,
+      "neighbor_support_types": {
+        "PLANE": 20,
+        "CYLINDRICAL_SURFACE": 20
+      },
+      "master_curve_types": {
+        "LINE": 40
+      },
+      "interface_buckets": {
+        "PLANE / LINE": 20,
+        "CYLINDRICAL_SURFACE / LINE": 20
+      },
+      "orientation_histogram": {
+        "OPPOSED": 30,
+        "SAME": 10
+      },
+      "interfaces": [
+        {
+          "edge_curve_id": 118,
+          "candidate_advanced_face": 4730,
+          "neighbor_advanced_face": 17,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 119,
+          "source_end_vertex": 90
+        },
+        {
+          "edge_curve_id": 236,
+          "candidate_advanced_face": 4730,
+          "neighbor_advanced_face": 232,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 237,
+          "source_end_vertex": 119
+        },
+        {
+          "edge_curve_id": 348,
+          "candidate_advanced_face": 4372,
+          "neighbor_advanced_face": 309,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 349,
+          "source_end_vertex": 316
+        },
+        {
+          "edge_curve_id": 405,
+          "candidate_advanced_face": 4161,
+          "neighbor_advanced_face": 309,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 406,
+          "source_end_vertex": 377
+        },
+        {
+          "edge_curve_id": 466,
+          "candidate_advanced_face": 1104,
+          "neighbor_advanced_face": 309,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 467,
+          "source_end_vertex": 434
+        },
+        {
+          "edge_curve_id": 550,
+          "candidate_advanced_face": 4730,
+          "neighbor_advanced_face": 309,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 551,
+          "source_end_vertex": 237
+        },
+        {
+          "edge_curve_id": 766,
+          "candidate_advanced_face": 4489,
+          "neighbor_advanced_face": 309,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 767,
+          "source_end_vertex": 734
+        },
+        {
+          "edge_curve_id": 880,
+          "candidate_advanced_face": 3890,
+          "neighbor_advanced_face": 309,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 881,
+          "source_end_vertex": 852
+        },
+        {
+          "edge_curve_id": 941,
+          "candidate_advanced_face": 4365,
+          "neighbor_advanced_face": 309,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 942,
+          "source_end_vertex": 909
+        },
+        {
+          "edge_curve_id": 998,
+          "candidate_advanced_face": 4215,
+          "neighbor_advanced_face": 309,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 314,
+          "source_end_vertex": 970
+        },
+        {
+          "edge_curve_id": 1062,
+          "candidate_advanced_face": 1104,
+          "neighbor_advanced_face": 1023,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 434,
+          "source_end_vertex": 1030
+        },
+        {
+          "edge_curve_id": 1084,
+          "candidate_advanced_face": 4161,
+          "neighbor_advanced_face": 1023,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1028,
+          "source_end_vertex": 406
+        },
+        {
+          "edge_curve_id": 1109,
+          "candidate_advanced_face": 1104,
+          "neighbor_advanced_face": 1153,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1030,
+          "source_end_vertex": 1110
+        },
+        {
+          "edge_curve_id": 1132,
+          "candidate_advanced_face": 1104,
+          "neighbor_advanced_face": 3917,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 1110,
+          "source_end_vertex": 467
+        },
+        {
+          "edge_curve_id": 1158,
+          "candidate_advanced_face": 4161,
+          "neighbor_advanced_face": 1153,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1159,
+          "source_end_vertex": 1028
+        },
+        {
+          "edge_curve_id": 1205,
+          "candidate_advanced_face": 4372,
+          "neighbor_advanced_face": 1153,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1206,
+          "source_end_vertex": 1182
+        },
+        {
+          "edge_curve_id": 1252,
+          "candidate_advanced_face": 4215,
+          "neighbor_advanced_face": 1153,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1253,
+          "source_end_vertex": 1229
+        },
+        {
+          "edge_curve_id": 1299,
+          "candidate_advanced_face": 4365,
+          "neighbor_advanced_face": 1153,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1300,
+          "source_end_vertex": 1276
+        },
+        {
+          "edge_curve_id": 1350,
+          "candidate_advanced_face": 3890,
+          "neighbor_advanced_face": 1153,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1351,
+          "source_end_vertex": 1323
+        },
+        {
+          "edge_curve_id": 1776,
+          "candidate_advanced_face": 3489,
+          "neighbor_advanced_face": 1709,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1777,
+          "source_end_vertex": 1749
+        },
+        {
+          "edge_curve_id": 2018,
+          "candidate_advanced_face": 3489,
+          "neighbor_advanced_face": 1931,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1749,
+          "source_end_vertex": 1991
+        },
+        {
+          "edge_curve_id": 2376,
+          "candidate_advanced_face": 3538,
+          "neighbor_advanced_face": 2179,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2184,
+          "source_end_vertex": 2348
+        },
+        {
+          "edge_curve_id": 2561,
+          "candidate_advanced_face": 3538,
+          "neighbor_advanced_face": 2401,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 2562,
+          "source_end_vertex": 2184
+        },
+        {
+          "edge_curve_id": 2653,
+          "candidate_advanced_face": 4372,
+          "neighbor_advanced_face": 2649,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 316,
+          "source_end_vertex": 1206
+        },
+        {
+          "edge_curve_id": 2675,
+          "candidate_advanced_face": 4215,
+          "neighbor_advanced_face": 2649,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1229,
+          "source_end_vertex": 314
+        },
+        {
+          "edge_curve_id": 3311,
+          "candidate_advanced_face": 3538,
+          "neighbor_advanced_face": 3305,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 3312,
+          "source_end_vertex": 2562
+        },
+        {
+          "edge_curve_id": 3495,
+          "candidate_advanced_face": 3489,
+          "neighbor_advanced_face": 4737,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1991,
+          "source_end_vertex": 3496
+        },
+        {
+          "edge_curve_id": 3518,
+          "candidate_advanced_face": 3489,
+          "neighbor_advanced_face": 3565,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 3496,
+          "source_end_vertex": 1777
+        },
+        {
+          "edge_curve_id": 3543,
+          "candidate_advanced_face": 3538,
+          "neighbor_advanced_face": 3613,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 2348,
+          "source_end_vertex": 3312
+        },
+        {
+          "edge_curve_id": 3771,
+          "candidate_advanced_face": 4489,
+          "neighbor_advanced_face": 3692,
+          "neighbor_support_type": "PLANE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 3772,
+          "source_end_vertex": 3744
+        },
+        {
+          "edge_curve_id": 3848,
+          "candidate_advanced_face": 4365,
+          "neighbor_advanced_face": 3843,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 909,
+          "source_end_vertex": 1300
+        },
+        {
+          "edge_curve_id": 3870,
+          "candidate_advanced_face": 3890,
+          "neighbor_advanced_face": 3843,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 1323,
+          "source_end_vertex": 881
+        },
+        {
+          "edge_curve_id": 3896,
+          "candidate_advanced_face": 3890,
+          "neighbor_advanced_face": 4087,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 852,
+          "source_end_vertex": 1351
+        },
+        {
+          "edge_curve_id": 4118,
+          "candidate_advanced_face": 4161,
+          "neighbor_advanced_face": 4114,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 377,
+          "source_end_vertex": 1159
+        },
+        {
+          "edge_curve_id": 4140,
+          "candidate_advanced_face": 4372,
+          "neighbor_advanced_face": 4114,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 1182,
+          "source_end_vertex": 349
+        },
+        {
+          "edge_curve_id": 4172,
+          "candidate_advanced_face": 4215,
+          "neighbor_advanced_face": 4168,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 970,
+          "source_end_vertex": 1253
+        },
+        {
+          "edge_curve_id": 4194,
+          "candidate_advanced_face": 4365,
+          "neighbor_advanced_face": 4168,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 1276,
+          "source_end_vertex": 942
+        },
+        {
+          "edge_curve_id": 4468,
+          "candidate_advanced_face": 4489,
+          "neighbor_advanced_face": 4442,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "SAME",
+          "source_start_vertex": 3744,
+          "source_end_vertex": 767
+        },
+        {
+          "edge_curve_id": 4495,
+          "candidate_advanced_face": 4489,
+          "neighbor_advanced_face": 4590,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 734,
+          "source_end_vertex": 3772
+        },
+        {
+          "edge_curve_id": 4543,
+          "candidate_advanced_face": 4730,
+          "neighbor_advanced_face": 4516,
+          "neighbor_support_type": "CYLINDRICAL_SURFACE",
+          "master_curve_type": "LINE",
+          "oriented_use_relation": "OPPOSED",
+          "source_start_vertex": 90,
+          "source_end_vertex": 551
+        }
+      ],
+      "claims": {
+        "original_nonmanifold_3plus": "NOT_ESTABLISHED",
+        "full_atlas": "NOT_RUN",
+        "native_import_in_this_execution": "NOT_RUN",
+        "apmesh_generation": "NOT_RUN"
+      }
+    }
+  },
+  "aggregate": {
+    "sources": 4,
+    "face_total": 196,
+    "planar_quad_candidates": 45,
+    "candidate_to_excluded_edges": 152
+  },
+  "raw_original_step_redistributed": false,
+  "rights_review": "OPEN",
+  "native_cad_import": "NOT_RUN",
+  "apmesh_tri_quad": "NOT_RUN"
+}

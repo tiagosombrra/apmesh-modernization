@@ -1,0 +1,96 @@
+{
+  "schema": "apmesh-s3d-exact-feature-cubic-original-step-reference-v1",
+  "source_pinned_git_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "source_repo": "cgg-bern/hex-me-if-you-can",
+  "methods": "Independent connector-side traversal, original EDGE_CURVE identity, LINE endpoint residual and cubic de Casteljau samples",
+  "models": [
+    {
+      "model": "M5",
+      "source_git_blob_sha1": "d72e5e3cb3de9ebdec80253cfa9b57fa1b7132f7",
+      "source_file": "i05o_m5.step",
+      "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+      "eligible_planar_faces": 6,
+      "source_original_linear_interfaces": 20,
+      "excluded_neighbor_supports": {
+        "PLANE": 16,
+        "CYLINDRICAL_SURFACE": 4
+      },
+      "unique_topological_vertex_ids": 20,
+      "canonical_control_records": 60,
+      "max_endpoint_to_master_line_distance_mm": 1.848491343065882e-12,
+      "max_decasteljau_to_linear_parameter_distance_mm": 1.831026719408895e-15,
+      "scope": "DIRECT_PINNED_STEP_SOURCE_GRAPH_NUMERIC_ORACLE_NOT_NATIVE_BREP",
+      "source_raw_sha256_not_recomputed_in_this_connector_execution": true,
+      "apmesh_generation": "NOT_RUN",
+      "original_neighbor_surface_conversion": "NOT_RUN"
+    },
+    {
+      "model": "S40",
+      "source_git_blob_sha1": "917ef72a0a91b8b3e7d16e8009a1b1655154174a",
+      "source_file": "i25o_s40.step",
+      "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+      "eligible_planar_faces": 9,
+      "source_original_linear_interfaces": 32,
+      "excluded_neighbor_supports": {
+        "PLANE": 20,
+        "CYLINDRICAL_SURFACE": 12
+      },
+      "unique_topological_vertex_ids": 32,
+      "canonical_control_records": 96,
+      "max_endpoint_to_master_line_distance_mm": 5.049636154402834e-10,
+      "max_decasteljau_to_linear_parameter_distance_mm": 1.464821375527116e-14,
+      "scope": "DIRECT_PINNED_STEP_SOURCE_GRAPH_NUMERIC_ORACLE_NOT_NATIVE_BREP",
+      "source_raw_sha256_not_recomputed_in_this_connector_execution": true,
+      "apmesh_generation": "NOT_RUN",
+      "original_neighbor_surface_conversion": "NOT_RUN"
+    },
+    {
+      "model": "S27",
+      "source_git_blob_sha1": "48ada34a4d2fb038ff91131300c6262a9faec217",
+      "source_file": "i22o_s27.step",
+      "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+      "eligible_planar_faces": 20,
+      "source_original_linear_interfaces": 60,
+      "excluded_neighbor_supports": {
+        "PLANE": 52,
+        "CYLINDRICAL_SURFACE": 8
+      },
+      "unique_topological_vertex_ids": 56,
+      "canonical_control_records": 176,
+      "max_endpoint_to_master_line_distance_mm": 2.8929456704065194e-10,
+      "max_decasteljau_to_linear_parameter_distance_mm": 1.5888218580782548e-14,
+      "scope": "DIRECT_PINNED_STEP_SOURCE_GRAPH_NUMERIC_ORACLE_NOT_NATIVE_BREP",
+      "source_raw_sha256_not_recomputed_in_this_connector_execution": true,
+      "apmesh_generation": "NOT_RUN",
+      "original_neighbor_surface_conversion": "NOT_RUN"
+    },
+    {
+      "model": "M3",
+      "source_git_blob_sha1": "e472dd5b717b2fdbc7d2bd3e030a856a257d0cb3",
+      "source_file": "i03o_m3.step",
+      "source_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+      "eligible_planar_faces": 10,
+      "source_original_linear_interfaces": 40,
+      "excluded_neighbor_supports": {
+        "PLANE": 20,
+        "CYLINDRICAL_SURFACE": 20
+      },
+      "unique_topological_vertex_ids": 40,
+      "canonical_control_records": 120,
+      "max_endpoint_to_master_line_distance_mm": 2.3366190032970214e-11,
+      "max_decasteljau_to_linear_parameter_distance_mm": 7.944109290391274e-15,
+      "scope": "DIRECT_PINNED_STEP_SOURCE_GRAPH_NUMERIC_ORACLE_NOT_NATIVE_BREP",
+      "source_raw_sha256_not_recomputed_in_this_connector_execution": true,
+      "apmesh_generation": "NOT_RUN",
+      "original_neighbor_surface_conversion": "NOT_RUN"
+    }
+  ],
+  "counts": {
+    "original_linear_interfaces": 152,
+    "unique_model_local_canonical_controls": 452
+  },
+  "original_raw_step_distributed": false,
+  "redistribution_rights_review": "OPEN",
+  "local_occt_run": "NOT_RUN",
+  "production_scientific_regression": "NOT_RUN"
+}
