@@ -73,3 +73,39 @@ catalog is sufficient to recreate the gallery without rebuilding the engine.
 
 Next: resume the existing local coupling proposal and required scientific
 alignment. PR238 review, Doxygen/CRT, accepted mixed feedback and R3/M7 remain open.
+
+
+## Direct comparison with the 1993 paper - 2026-11-16
+
+User asks whether the displayed templates match the article. Re-hashed the
+seven-page local primary-source PDF:49d297e24c1b8695e18c6d1307aa4ccbc39f14e265d251b840a16560aca98dc5,
+5439448 bytes. Read complete printed page288 and a400-dpi Figure7 detail using
+the installed Poppler renderer. PyMuPDF was unavailable in the default Python;
+no installation was needed. The coauthor's public bibliography independently
+confirms the1993 title/authors/pages but is not evidence for the figure geometry.
+Do not redistribute the scanned page/crop in the repository.
+
+The six split-neighbor families and intermediate polygon connectivity correspond
+to the proposed Figure7 transcription. Printed column order is T1,T2,T4,T3,T5,T6;
+the gallery sorts source type numbers T1,T2,T3,T4,T5,T6. The article itself does
+not print these type labels. Its upper row depicts TRI patterns; the lower row
+depicts intermediate polygons for later QUAD subdivision, not the final QUAD
+faces shown in the gallery. Midpoints plus a supplied polygon center yield the
+recorded4/11/12/8/11/16 QUAD counts in printed order.
+
+The paragraph explicitly calls for the polygon centroid but provides no numerical
+formula. Current live/gallery QUAD uses the vertex arithmetic mean; for general
+non-triangular polygons that is not the signed-area centroid. On T2 ABOW the
+former is(3/8,1/4), the latter(7/18,2/9), as already recorded in the M1 review.
+Thus matching incidence/counts does not establish identical interior coordinates
+or the historical software's rule. No new1987-source interpretation is imported.
+Original TRI code can also select quality-dependent centers/diagonals. For
+example the exported canonical T4 center is(0.5,0.524); the scan is schematic
+and supplies no numerical point table, so no geometric error against that drawing
+is inferred. The all-split T6 diagonal can be symmetry-equivalent to the printed
+one. These are family correspondences, not pixel-for-pixel historical identity.
+
+Conclusion: structural correspondence is supported; literal numerical reproduction
+and advisor adoption are not established. Keep the gallery labeled native TRI
+and experimental vertex-mean QUAD. Do not describe it as a certified1993 replica.
+No source, Blender geometry, policy, test or scientific-stage status changed.

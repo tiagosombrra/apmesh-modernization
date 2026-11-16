@@ -12,6 +12,19 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-16 - historical correspondence clarified
+
+Direct verified-PDF review of printed page288/Figure7 supports the six structural
+families and intermediate polygon graph. Printed order T1,T2,T4,T3,T5,T6 differs
+from gallery source-number order. The article shows intermediate polygons before
+final QUAD subdivision, whereas the gallery shows the emitted QUAD faces. Its
+centroid equation is not explicit; current vertex mean is not generally the
+area centroid. Original TRI can adjust centers/diagonals for quality. Therefore
+structural correspondence does not qualify literal numerical1993 reproduction.
+See [direct comparison](TEMPLATE_GALLERY_20261116.md#direct-comparison-with-the-1993-paper---2026-11-16).
+No source/scene change or new native test/CI. Historical point-rule approval and
+M1 partial status remain open; the active local coupling/review queue is unchanged.
+
 ### 2026-11-16 - historical native template gallery delivered
 
 At the user's request before further algorithm work, added a Blender reference

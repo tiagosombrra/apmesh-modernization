@@ -2682,3 +2682,29 @@ checkpoint; Python syntax, documentation whitespace/links and metadata scope
 checked before publication. No merge or stage closure. Next remains the local
 coupling proposal with advisor-aligned metrics/criteria, retaining PR238 review,
 Doxygen/CRT and R3/M7 OPEN.
+
+
+## 2026-11-16 - clarify structural versus numerical1993 template correspondence
+
+User asks whether the Blender templates match the1993 article. Re-read current
+checkpoint and M1 source/centroid reviews, verified original PDF SHA25649d297e2...
+and5439448 bytes, rendered/read all printed page288 and Figure7 detail through
+installed Poppler. Default Python lacked PyMuPDF; no package installed. Public
+coauthor bibliography confirms citation only, not template topology. Local scan
+and renders remain untracked and are not redistributed.
+
+Confirm six split-neighbor families/QUAD intermediate polygon connectivity and
+printed order T1,T2,T4,T3,T5,T6 versus gallery source-number order. Distinguish
+article lower-row intermediate polygons from gallery final subdivided QUAD faces.
+Numerical centroid equation remains unspecified in the paper; current vertex mean
+is not generally area centroid. TRI quality-dependent centers/diagonals also
+prevent a literal-coordinate reproduction claim. The diagram supplies no numeric
+point oracle. Added this comparison and limits to TEMPLATE_GALLERY_20261116.md;
+no historical formula adopted, scientific milestone closed or file regenerated.
+
+Remote main ef40c0f, canonical entry d6eeb3d and feature d59a513 verified. PR238
+remains draft with four existing exact-head checks successful. Source and gallery
+geometry unchanged; no new native build/tests/CI or Blender action. Documentation
+checks and remote checkpoint readback only. Next remains advisor alignment of
+historical point formula/local coupling criteria and existing PR238 review, with
+M1 partial and R3/M7/known Doxygen/CRT obligations retained.
