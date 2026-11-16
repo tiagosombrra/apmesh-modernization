@@ -1,5 +1,7 @@
 import {expect,test} from '@playwright/test';
 import {mkdir,writeFile} from 'node:fs/promises';
+import {spawnSync} from 'node:child_process';
+import {resolve} from 'node:path';
 
 const P1_SHA='cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0';
 
@@ -59,3 +61,21 @@ test('R2.7.7 CI capability instrumentation is explicitly not a physical GPU qual
       gpuPresentQualified:false,
     }));
   });
+
+test('R2.7.7 local runner refuses unattended CI and missing physical attestation',()=>{
+  const script=resolve('scripts/run-r277-desktop.mjs');
+  const blockedCI=spawnSync(process.execPath,[script],{
+    encoding:'utf8',timeout:10_000,
+    env:{...process.env,CI:'true',APMESH_R277_PHYSICAL_DESKTOP:'I_CONFIRM_PHYSICAL_WORKSTATION',
+      APMESH_R277_GPU_MODEL:'test',APMESH_R277_GPU_DRIVER:'test',
+      APMESH_R277_DISPLAY_REFRESH_HZ:'60'},
+  });
+  expect(blockedCI.status).toBe(2);
+  expect(blockedCI.stderr).toContain('hosted CI cannot qualify');
+  const blockedNoAttestation=spawnSync(process.execPath,[script],{
+    encoding:'utf8',timeout:10_000,
+    env:{...process.env,CI:'',APMESH_R277_PHYSICAL_DESKTOP:''},
+  });
+  expect(blockedNoAttestation.status).toBe(2);
+  expect(blockedNoAttestation.stderr).toContain('confirm a local physical workstation');
+});
