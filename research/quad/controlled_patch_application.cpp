@@ -1575,10 +1575,12 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   auto* patch = dynamic_cast<PatchBezier*>(geometry.GetPatch(0));
   Require(patch != nullptr, "Real-boundary QUAD requires a Bezier source");
 
-  // Run the unmodified original generator, including initial TRI curvature,
-  // curve budgets, retries and acceptance. Capture only value witnesses.
+  // Preserve original curvature, retries and acceptance. The bounded-domain case
+  // explicitly repairs the step2 factor override; other cases retain it unchanged.
   Model model(&geometry);
   GeneratorAdaptive generator(application::MakeGenerationContext(config, NUMBER_PROCESS));
+  if (config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1")
+    generator.EnforceResearchDomainFactorBounds();
   Timer timer(config.num_processes, config.num_threads, 12);
   timer.InitTimerParallel(0, 0, 10);
   struct Capture {

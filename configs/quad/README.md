@@ -50,6 +50,19 @@ to overwrite an existing result. `quad_real_boundary_source_contracts` accepts
 the same configuration and checks native source/tree replay, valid reversed
 curve geometry and nine corruptions per captured native attempt.
 
+## Opt-in domain factor-bound repair
+
+`ap_mesh --config configs/quad/curved_patch_bounded_domain.conf` uses a separate
+research case that keeps the step2 ranked-patch override inside the configured
+PATCH_FACTOR_MIN/MAX interval. The example fixes that interval at1.5 without
+trimming curve points. Existing TRI and original-curves cases remain unchanged.
+This repairs a configured-factor inconsistency; it does not establish optimal
+growth, a new estimator or scientifically accepted mixed feedback. See the
+[repair contract](../../docs/research/quad/DOMAIN_FACTOR_BOUNDS_REPAIR_20261116.md).
+Run `python tests/quad/test_domain_factor_bounds_application.py --exe <ap_mesh>
+--directory <new-results>` for the old/new comparison, original in-range control,
+source/topology corruptions and nonempty rollback.
+
 ## Fixed16 regression
 
 Build serial C++17 with `AP_MESH_ENABLE_EXPERIMENTAL_QUAD=ON`,

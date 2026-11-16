@@ -110,6 +110,7 @@ jobs:
           python3 tests/quad/test_controlled_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results
           build/quad-app-linux/bin/quad_real_boundary_source_contracts configs/quad/curved_patch_original_curves.conf > build/quad-app-linux/results/real-source-contracts.stdout
           python3 tests/quad/test_real_boundary_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/real-boundary
+          python3 tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/domain-factor-bounds
       - name: AddressSanitizer and UBSan controlled typed history (Linux)
         if: runner.os == 'Linux'
         shell: bash
@@ -123,6 +124,7 @@ jobs:
           python3 tests/quad/test_controlled_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results
           build/quad-app-asan/bin/quad_real_boundary_source_contracts configs/quad/curved_patch_original_curves.conf > build/quad-app-asan/results/real-source-contracts.stdout
           python3 tests/quad/test_real_boundary_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/real-boundary
+          python3 tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/domain-factor-bounds
       - name: Build controlled application QUAD entry (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -136,6 +138,8 @@ jobs:
           & build/quad-app-msvc/bin/Debug/quad_real_boundary_source_contracts.exe configs/quad/curved_patch_original_curves.conf > build/quad-app-msvc/results/real-source-contracts.stdout
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python tests/quad/test_real_boundary_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/real-boundary
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/domain-factor-bounds
           exit $LASTEXITCODE
       - name: Retain controlled application output
         if: always()
@@ -336,6 +340,7 @@ jobs:
               "configs/quad/README.md",
               "configs/quad/curved_patch.conf",
               "configs/quad/curved_patch_original_curves.conf",
+              "configs/quad/curved_patch_bounded_domain.conf",
           }
           changed = set(subprocess.check_output(
               ["git", "diff", "--name-only",

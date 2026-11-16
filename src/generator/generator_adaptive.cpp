@@ -4329,6 +4329,9 @@ void GeneratorAdaptive::AdaptDomain(Geometry* geometry, MeshAdaptive* mesh) {
         refinement_rank <= static_cast<int>(current_top_patch_count_ + 1U)) {
       if (!few_patch_low_error) {
         domain_factor = std::min(domain_factor, step2_quality_critical ? 0.96 : 1.0);
+        if (research_domain_factor_bounds_) {
+          domain_factor = ClampValue(domain_factor, PatchFactorMin(), PatchFactorMax());
+        }
         if (step2_quality_critical) {
           patch_generation_mode = "quality_stabilized";
         }

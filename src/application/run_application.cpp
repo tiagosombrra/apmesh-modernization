@@ -45,11 +45,13 @@ int RunApplication(int argc, char** argv) {
       if (config.mesh_element_kind != "tri") {
 #ifdef AP_MESH_EXPERIMENTAL_QUAD
         if (config.quad_experimental_case == "curved_bezier_fixed16_vertex_mean_v1" ||
-            config.quad_experimental_case == "curved_bezier_original_curves_vertex_mean_v1") {
+            config.quad_experimental_case == "curved_bezier_original_curves_vertex_mean_v1" ||
+            config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1") {
           if (config.num_processes != 1 || config.num_threads != 1)
             throw std::runtime_error("Controlled QUAD requires serial execution");
           ApplyRuntimeConfig(config);
-          if (config.quad_experimental_case == "curved_bezier_original_curves_vertex_mean_v1")
+          if (config.quad_experimental_case == "curved_bezier_original_curves_vertex_mean_v1" ||
+              config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1")
             return apmesh::quad::RunRealBoundaryPatch(config);
           return apmesh::quad::RunControlledPatch(config);
         }
