@@ -1,6 +1,7 @@
 #include "native_lineage_capture.h"
 
 #include "data/curve/curve_adaptive.h"
+#include "data/curve/curve_adaptive_parametric.h"
 #include "data/element_adaptive.h"
 #include "data/geometry.h"
 #include "data/mesh/mesh_adaptive.h"
@@ -90,6 +91,7 @@ void WriteLineage(const Geometry& source, MeshAdaptive& mesh,
        << ",\"source_curve_count\":" << source.GetNumberCurves()
        << ",\"native_id_semantics\":\"snapshot_local_not_cross_epoch\","
        << "\"face_record_semantics\":\"native_element_id_plus_patch_slot_not_obj_ordinal\","
+       << "\"r2717_corner_observer\":\"native_postcommit_source_curve_endpoints_v1\","
        << "\"scientific_lod_admitted\":false}\n";
 
   unsigned long long total_faces = 0ULL;
@@ -120,11 +122,41 @@ void WriteLineage(const Geometry& source, MeshAdaptive& mesh,
               "curve_not_owned_by_source_geometry");
       if (edge)
         text << ',';
+      // Record the original live source curve endpoints without sorting or
+      // modifying either the source samples or the accepted native mesh.
+      const auto* parametric = dynamic_cast<const CurveAdaptiveParametric*>(curve);
+      Require(parametric != nullptr, "r2717_nonparametric_source_curve");
+      const unsigned int samples = curve->GetNumBerPoints();
+      Require(samples >= 2 && parametric->parameters_.size() == samples,
+              "r2717_original_curve_sample_parameter_count_mismatch");
+      // GetPoint is a read-only accessor lacking a const overload. It neither
+      // changes the source list nor creates/retains a new native point.
+      const PointAdaptive* first = const_cast<CurveAdaptive*>(curve)->GetPoint(0);
+      const PointAdaptive* last = const_cast<CurveAdaptive*>(curve)->GetPoint(samples - 1);
+      Require(first != nullptr && last != nullptr,
+              "r2717_missing_original_curve_corner_point");
+      const std::array<const PointAdaptive*, 2> endpoints{{first, last}};
+      const std::array<double, 2> parameters{{
+          parametric->parameters_.front(), parametric->parameters_.back()}};
       text << "{\"edge_slot\":" << edge << ",\"source_curve_slot\":"
            << found->second << ",\"native_curve_id\":" << curve->GetId()
            << ",\"reversed\":" << (coons->IsCurveReversed(edge) ? "true" : "false")
            << ",\"reported_curve_patch_observers\":" << curve->GetNumBerPatches()
-           << '}';
+           << ",\"r2717_original_curve_endpoints\":[";
+      for (unsigned int index = 0; index < 2; ++index) {
+        const PointAdaptive* p = endpoints[index];
+        Require(std::isfinite(parameters[index]) && std::isfinite(p->GetX()) &&
+                    std::isfinite(p->GetY()) && std::isfinite(p->GetZ()),
+                "r2717_nonfinite_original_source_curve_sample");
+        if (index != 0)
+          text << ',';
+        text << "{\"stored_index\":" << (index == 0 ? 0 : samples - 1)
+             << ",\"stored_parameter\":" << parameters[index]
+             << ",\"original_sample_id\":" << p->GetId()
+             << ",\"xyz\":[" << p->GetX() << ',' << p->GetY()
+             << ',' << p->GetZ() << "]}";
+      }
+      text << "]}";
     }
     text << "]}\n";
 
