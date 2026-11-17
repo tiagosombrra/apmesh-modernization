@@ -4,8 +4,10 @@ import type { Locator, Page } from '@playwright/test';
 /** Shared exact-source XYZ picker protocol for hosted preflight and physical desktop. */
 export type Method='EXPERIMENTAL_XYZ_BVH_MAIN'|'EXPERIMENTAL_XYZ_BVH_WORKER'|'VTK_CELL_PICKER';
 export type Pixel={x:number;y:number;id:number};
-export type Sample={round:number;method:Method;faceId:number;eventToPickerMs:number;
-  eventToTwoRafMs:number;pickerWallMs:number;browserVisibility:string;inspectorId:string};
+export type Sample={round:number;method:Method;faceId:number;
+  pixelX:number;pixelY:number;
+  eventToPickerMs:number;eventToTwoRafMs:number;pickerWallMs:number;
+  browserVisibility:string;inspectorId:string};
 
 export const MODELS=[
   {id:'p1',sha:'cbf6cd6308ba54544d06c5d562c491eb7d43ddb216365e0e9d188fd3430295e0',
