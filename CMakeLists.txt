@@ -43,6 +43,15 @@ target_compile_features(ap_mesh PRIVATE cxx_std_17)
 
 target_include_directories(ap_mesh PRIVATE "${INC_DIR}")
 
+option(AP_MESH_ENABLE_RESEARCH_LINEAGE "Opt in to bounded native TRI accepted-epoch research sidecar" OFF)
+if(AP_MESH_ENABLE_RESEARCH_LINEAGE)
+  if(AP_MESH_USE_MPI OR AP_MESH_USE_OPENMP)
+    message(FATAL_ERROR "Native source lineage research requires serial MPI/OMP-disabled execution")
+  endif()
+  target_sources(ap_mesh_engine PRIVATE research/mesh_studio/native_lineage_capture.cpp)
+  target_compile_definitions(ap_mesh_engine PRIVATE AP_MESH_RESEARCH_NATIVE_LINEAGE=1)
+endif()
+
 option(AP_MESH_ENABLE_EXPERIMENTAL_QUAD "Enable the controlled serial QUAD application case" OFF)
 if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD)
   if(AP_MESH_USE_MPI OR AP_MESH_USE_OPENMP)
