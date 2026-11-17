@@ -190,10 +190,12 @@ was byte-identical to the original.
 
 The complete source-qualified CI #44148365669 also passed
 Linux/Windows Python scientific regression and hosted Chromium.
-A follow-up CI for an **additional synthetic unit test of
-explicit runtime-timing exclusions** is recorded separately;
-the native C++ parity code itself remained unchanged between these
-two tested revisions.
+A subsequent, complete [**CI #44148409247**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44148409247)
+at tested code SHA `cbdd728fd7cc3f72d4359c8ca280d15d7b990afa`
+also finished with **all four jobs SUCCESS** after adding the
+extra negative test of explicit runtime-timing exclusion.
+The native OFF/ON numerical parity code itself was **unchanged**
+between the two successful runs.
 
 **Conclusion:** the optional native observer did not modify
 the accepted/rejected events or **any of the 38 compared scientific
@@ -211,3 +213,48 @@ interepoch face/curve descendants and continuous error bounds are
 **OPEN**. No default visualization picker promotion, source
 acceptance threshold relaxation, C++ numerical change, merge,
 release or tag is permitted by this protocol.
+
+## C. Final complete R2.7.13 CI certification (2026-11-17)
+
+[**GitHub Actions #44148409247**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44148409247)
+at tested research code SHA
+`cbdd728fd7cc3f72d4359c8ca280d15d7b990afa`:
+**four out of four required jobs PASS**.
+
+| Gate | Final confirmed evidence |
+| --- | --- |
+| Compiled serial native GeneratorAdaptive lineage OFF and ON | **PASS** |
+| Same actual original article inputs and effective configuration | **PASS** |
+| Eistute native event and scientific file parity | **21/21 byte-identical: 5 OBJ, 11 CSV, 5 JSON** |
+| Book native event and scientific file parity | **17/17 byte-identical: 4 OBJ, 9 CSV, 4 JSON** |
+| Combined byte-exact scientific file comparison | **38/38 PASS** |
+| Captured original accepted-source face/patch/curve NDJSON re-audited | **PASS, Eistute + Book** |
+| Linux scientific Python tests | **268 run, 4 optional skipped, PASS** |
+| Windows scientific Python tests | **268 run, 10 environment skips, PASS** |
+| Original Chromium source-face/camera/QUAD fallback tests | **42 PASS, 5 intended skips** |
+| Initial full parity failure investigation | **Resolved: absolute output-path metadata, no geometry difference asserted from initial run** |
+| Personal Drive preservation, original R2.7.12 NDJSON and R2.7.13 parity ZIP | **Byte-identical ZIP readback, both archives** |
+
+The final full CI includes an additional synthetic mutation check for
+explicitly excluded `*_runtime_summary.csv` timing reports. Its
+real C++ parity results **independently repeat the same 21 + 17**
+original scientific file hashes and global native event counts from
+the earlier successful #44148365669. New success is not inferred
+solely from identical model face counts.
+
+The final Actions parity artifact is
+`mesh-studio-r2713-native-numerical-parity-cbdd728fd7cc3f72d4359c8ca280d15d7b990afa`,
+artifact ID **14357678069**, configured for 14-day retention.
+The durable personal Drive copy recorded above preserves the earlier
+equivalent successful native-code result #44148365669 and was
+independently roundtrip hash-verified. No new numerical claims
+or extra accepted epochs are attributed to the Drive archive.
+
+**Decision:** R2.7.13 **PASS** for the bounded OFF-versus-ON
+numerical-neutrality experiment on the original Eistute and Book
+serial TRI generator profiles, and **PASS** for source evidence
+preservation and readback integrity. R2.8 remains **BLOCKED**:
+no second accepted adaptive epoch, no qualified cross-epoch
+face/patch/curve descendants, no continuous geometric bound and no
+physical GPU-present/RSS/VRAM results. Keep the PR draft, unmerged;
+no default picker change or C++ acceptance policy adjustment.
