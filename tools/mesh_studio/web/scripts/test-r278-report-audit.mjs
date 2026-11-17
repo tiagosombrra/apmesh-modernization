@@ -15,15 +15,22 @@ function stats(values){
 }
 function fixture(){
   const raw=[];
-  for(let round=0;round<8;round++)for(const faceId of FACE_IDS)
-    for(const method of PICKERS){
+  const pixelTable=FACE_IDS.map((id,i)=>({id,x:100+i*80,y:80+i*35}));
+  for(let round=0;round<8;round++){
+    const order=[0,1,2].slice(round%3).concat([0,1,2].slice(0,round%3));
+    if(round%2)order.reverse();
+    const faces=round%2?[...FACE_IDS].reverse():FACE_IDS;
+    for(const faceId of faces)for(const pickerIndex of order){
+      const method=PICKERS[pickerIndex];
       const base=method==='EXPERIMENTAL_XYZ_BVH_WORKER'?20:
         method==='EXPERIMENTAL_XYZ_BVH_MAIN'?.2:.7;
       const time=base+round*.05;
-      raw.push({round,faceId,method,eventToPickerMs:time,
-        eventToTwoRafMs:time+31,pickerWallMs:time*.95,
+      const point=pixelTable.find(p=>p.id===faceId);
+      raw.push({round,faceId,method,pixelX:point.x,pixelY:point.y,
+        eventToPickerMs:time,eventToTwoRafMs:time+31,pickerWallMs:time*.95,
         browserVisibility:'visible',inspectorId:'#'+faceId});
     }
+  }
   return {
     schema:'apmesh.meshstudio.r277.operator_attested_headed_desktop.v1',
     classification:'PHYSICAL_DESKTOP_ATTESTED_NOT_GPU_PRESENT_OR_TOTAL_RAM_CERTIFIED',
@@ -32,7 +39,17 @@ function fixture(){
     sourceStatus:'CONTROLLED_PHYSICAL_GENERATION',
     cameraXYZ:{position:[0,0,3],focal_point:[0,0,0],view_up:[0,1,0],
       parallel_scale:1,parallel:false},
-    cameraPreserved:true,originalSourceFaceIds:[...FACE_IDS],
+    cameraPreserved:true,
+    cameraXYZBeforeByMethod:Array.from({length:3},()=>({
+      position:[0,0,3],focal_point:[0,0,0],view_up:[0,1,0],
+      parallel_scale:1,parallel:false,
+    })),
+    cameraXYZAfterByMethod:Array.from({length:3},()=>({
+      position:[0,0,3],focal_point:[0,0,0],view_up:[0,1,0],
+      parallel_scale:1,parallel:false,
+    })),
+    viewportCSS:{width:600,height:350},
+    originalSourceFaceIds:[...FACE_IDS],originalFacePixels:pixelTable,
     exactOriginalIdMatches:raw.length,
     conditions:{quadVisible:false,rounds:8,warmupsPerFacePerMethod:2,pickerOrder:'ROTATED_REVERSED'},
     operatorAttestation:{value:'I_CONFIRM_PHYSICAL_WORKSTATION',
@@ -97,4 +114,22 @@ test('R278 rejects altered percentiles and inconsistent picker/RAF evidence',()=
   reject(raf,/invalid_callback_or_two_raf_timing/);
   const inspector=fixture();inspector.rawSamples[0].inspectorId='#999';
   reject(inspector,/inspector_original_id_mismatch/);
+});
+
+test('R2.7.9 rejects reordered samples despite all 72 identities being present',()=>{
+  const changed=fixture();
+  [changed.rawSamples[0],changed.rawSamples[1]]=[changed.rawSamples[1],changed.rawSamples[0]];
+  reject(changed,/raw_measurement_protocol_order_mismatch/);
+});
+test('R2.7.9 rejects different pixels for same original face and unsupported viewport',()=>{
+  const pixels=fixture();pixels.rawSamples[0].pixelX+=1;
+  reject(pixels,/methods_not_picking_identical_original_pixel/);
+  const negative=fixture();negative.originalFacePixels[1].x=negative.viewportCSS.width+2;
+  reject(negative,/source_face_pixel_mismatch/);
+});
+test('R2.7.9 rejects inconsistent stored XYZ camera among methods or after collection',()=>{
+  const after=fixture();after.cameraXYZAfterByMethod[1].position=[0,0,4];
+  reject(after,/camera_changed_or_methods_disagree/);
+  const before=fixture();before.cameraXYZBeforeByMethod.pop();
+  reject(before,/missing_per_method_camera_snapshots/);
 });
