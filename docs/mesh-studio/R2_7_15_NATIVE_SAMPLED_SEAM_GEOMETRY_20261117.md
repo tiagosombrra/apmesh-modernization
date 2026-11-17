@@ -115,9 +115,40 @@ present/RSS/VRAM measurements. Therefore R2.8 scientific LOD stays
 opt-in/bounded, and PR #239 stays draft/unmerged. No generator
 policy change, default-on switch, tag or release.
 
-## Certification status
+## Original native experiment: first qualification and negative result
 
-The first R2.7.15 workflow is an experimental qualification gate.
-A result is never inferred from new source commits alone. Await
-specific successful CI and actual emitted native counters before
-updating the outcome here.
+[**GitHub Actions #44159057629**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44159057629)
+at exact audited implementation `fcf345ff3870ce6239b7b693d900f409bbb68516`
+finished **all four jobs SUCCESS**: original compiled C++ Eistute
+and Book source capture, native raw NDJSON revalidation, R2.7.14
+adjacency, new R2.7.15 seam audit, OFF/ON parity,
+independent Linux and Windows Python regressions and Chromium suite.
+The native scientific job's exact
+`R2715_ORIGINAL_NATIVE_SAMPLED_SEAMS` log reports:
+
+| Native original accepted step 1 | Source shared curves | Original patch-owner pairs checked | Strict sampled concordance |
+| --- | ---: | ---: | ---: |
+| Eistute (4 patches / 13 source curves) | 1 | 6 | **0 / 6** |
+| Book (28 patches / 85 source curves) | 1 | 378 | **0 / 378** |
+
+**Interpretation:** every comparison failed to satisfy **all**
+conditions *simultaneously*. The aggregate alone does **not** identify
+whether missing boundary edge-chain coverage, sampled canonical t,
+XYZ displacement or logical native node-ID differences are responsible;
+it is therefore invalid to infer a proven CAD discontinuity or a
+physical nonmanifold welding defect merely from 0 concordant pairs.
+The audited 4/28 patch original source-curve graph and original
+native OFF/ON numerical file equality remained preserved.
+
+The R2.7.15 follow-up adds source-hash-preserving, **independent
+per-condition** counters, bounded failure examples and translation-
+invariant XYZ tolerance using each sampled seam's original local
+bounding-box diagonal instead of absolute world position. A second
+CI run must qualify these diagnostics before identifying a cause.
+This is an observational diagnostic refinement, not a new generator
+or geometry algorithm. The scientific evidence is **negative for the
+strict combined sampled-concordance hypothesis** in the initial
+observed run, **not a proof that every pair differs geometrically**.
+
+R2.8 remains BLOCKED; no main merge, tag, release, default BVH switch,
+source geometry correction or C++ scientific policy change.
