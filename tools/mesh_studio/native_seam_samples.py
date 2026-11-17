@@ -25,11 +25,24 @@ XYZ_ABS_TOL = 1.0e-9
 XYZ_REL_TOL = 1.0e-9
 
 
-def close_xyz(a: list[float], b: list[float]) -> bool:
-    """Use an explicit scale-aware diagnostic threshold, not a welding rule."""
-    delta = math.dist(a, b)
-    scale = max(1.0, *(abs(x) for x in a), *(abs(x) for x in b))
-    return delta <= XYZ_ABS_TOL + XYZ_REL_TOL * scale
+def close_xyz(a: list[float], b: list[float],
+              characteristic_length: float = 0.0) -> bool:
+    """Scale by the local seam extent, never by absolute world coordinates."""
+    require(math.isfinite(characteristic_length) and characteristic_length >= 0.0,
+            "invalid_source_boundary_characteristic_length")
+    return math.dist(a, b) <= XYZ_ABS_TOL + XYZ_REL_TOL * characteristic_length
+
+
+def sampled_bbox_diagonal(sides: list[list[dict]]) -> float:
+    """A translation-invariant length scale from both observed edge chains."""
+    points = [vertex["xyz"] for side in sides for vertex in side]
+    if not points:
+        return 0.0
+    lower = [min(point[axis] for point in points) for axis in range(3)]
+    upper = [max(point[axis] for point in points) for axis in range(3)]
+    length = math.dist(lower, upper)
+    require(math.isfinite(length), "invalid_source_boundary_bbox_extent")
+    return length
 
 
 def side_parameter(uv: list[float], edge_slot: int) -> tuple[bool, float]:
@@ -127,8 +140,11 @@ def compare_two_sides(a: dict, b: dict) -> dict:
                          for x, y in zip(left, right)), default=None) if equal_count else None
     canonical_t_aligned = equal_count and all(
         abs(x["t"] - y["t"]) <= UV_TOL for x, y in zip(left, right))
+    characteristic_length = sampled_bbox_diagonal([left, right])
+    xyz_tolerance = XYZ_ABS_TOL + XYZ_REL_TOL * characteristic_length
     xyz_aligned = equal_count and all(
-        close_xyz(x["xyz"], y["xyz"]) for x, y in zip(left, right))
+        close_xyz(x["xyz"], y["xyz"], characteristic_length)
+        for x, y in zip(left, right))
     return {
         "patch_slots": [a["patch_slot"], b["patch_slot"]],
         "edge_slots": [a["edge_slot"], b["edge_slot"]],
@@ -140,6 +156,8 @@ def compare_two_sides(a: dict, b: dict) -> dict:
         "native_logical_node_ids_equal": node_ids_equal,
         "max_paired_t_delta": max_t_delta,
         "max_paired_xyz_delta": max_xyz_delta,
+        "sampled_boundary_bbox_diagonal": characteristic_length,
+        "effective_xyz_pair_tolerance": xyz_tolerance,
         "sampled_uv_xyz_logical_id_concordance_observed": (
             complete and canonical_t_aligned and xyz_aligned and node_ids_equal
         ),
