@@ -162,3 +162,47 @@ python -m unittest tools.mesh_studio.test_native_epoch_bridge -v
 **No acceptance gates, adaptive thresholds, source model geometry,
 C++ generator, VTK default selection, 2,048-face sync bound, main
 branch, or release are changed by R2.7.11.**
+
+
+## Validated native-ledger CI evidence and unresolved browser gate
+
+Final scientific code revision: `157ef71a9b6e71aa386d30133529bd377d10747c`.
+
+[Actions #44098287002](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44098287002)
+has qualified the R2.7.11 Python and original-source bridge test suite
+on **Ubuntu 24.04 (244 tests run; 4 optional skipped)** and
+**Windows Server 2022 (244 tests run; 10 optional skipped)**.
+Both scientific-regression jobs completed **SUCCESS**. The **12/12**
+new native epoch/writer tests passed and the Linux read-only
+`r2711-native-epoch-bridge.json` receipt was generated as a retained
+short-lived Actions artifact.
+
+The exact verified receipt reports original archived committed steps
+`{"book":[1],"eistute":[1]}`, with the original Bézier P2d-1c3
+qualification separately at zero accepted epochs, and
+`native_run_replayed_this_ci=false`,
+`original_models_two_commits=false`,
+`r28_admitted=false`.
+
+An initial source-anchor audit erroneously matched a prior
+`restore_geometry_submeshes` occurrence before the targeted
+rejection arm, causing failures on both operating systems in
+[CI #44097431643](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44097431643).
+The corrected verifier explicitly scopes restoration checks
+**after** the current `if (!accepted_step)` branch. No C++ generator
+files, numerical acceptance policy, patch geometry or original research
+artifacts were changed.
+
+**The Chromium frontend job on the final CI was still pending its
+completion at the last recorded check**. Do not cite a successful
+browser end-to-end result from this run unless its job finishes.
+Previous R2.7.10 browser source-ID and multi-camera regression
+remains recorded independently in run #44080872633, not as proof
+that a newer run passed.
+
+**Disposition:** original *archived* native TRI one-accepted-step evidence
+is internally cross-checked, and source C++ hook location and export
+identity gaps are documented. A new independently replayed,
+accepted-mesh-native source-face/patch/curve lineage with at least
+two committed steps per original model remains OPEN; R2.8 LOD
+remains BLOCKED.
