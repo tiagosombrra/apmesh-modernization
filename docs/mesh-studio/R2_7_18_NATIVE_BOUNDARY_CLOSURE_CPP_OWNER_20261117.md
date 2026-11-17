@@ -204,8 +204,11 @@ completed **SUCCESS** in [Actions #44192959042](https://github.com/tiagosombrra/
   ownership validator: **PASS**.
 - Actual Eistute OFF/ON scientific outputs **21/21 byte-identical**;
   actual Book **17/17 byte-identical**.
-- Chromium: **pending at the scientific/native qualification checkpoint**;
-  do not declare full four-job final PASS until it independently finishes.
+- Chromium: **42 browser smoke tests PASS**; the
+  `browser-spike` job completed SUCCESS.
+- **Whole Actions #44192959042: 4/4 jobs SUCCESS**, independently
+  observed at exact tested source revision
+  `f87528c293fbf73837f73e911cc2e1a1129c9ece`.
 
 The exact `R2718_ORIGINAL_BOUNDARY_CPP_OWNERSHIP` marker:
 - Eistute original accepted step 1: **4 actual owned,
@@ -252,12 +255,16 @@ No numerical generator policy or original science output changed.
 
 ## Admission and limitations
 
-**Stage is implementation-only until full CI finishes**.
-The scientific conclusion must be grounded in the exact
-observed C++ pointer-comparison results, the actual provisional
-close events, their counters and source hashes. Source-level
-explanations are only plausible until native evidence confirms
-those specific comparisons.
+**R2.7.18 certified PASS for actual one-epoch native closure
+observation and C++ corner-owner identity** on original Eistute and
+Book, with all four independent Actions jobs successful.
+The scientific conclusion is grounded in directly observed C++
+pointer-comparison results, actual provisional closure events,
+exact source digests and full raw-stderr and native-NDJSON archives.
+This does not certify which original local attempt was selected
+or pointer identity through rollback and final commit; it does
+not certify general global node welding, cross-epoch descendants
+or continuous source-surface fidelity.
 
 VTK remains native/default, both BVH selectors experimental and
 bounded/opt-in, PR #239 draft/unmerged, no main merge, tag
