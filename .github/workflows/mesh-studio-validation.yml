@@ -150,3 +150,20 @@ jobs:
           path: build/r2712-native-evidence/*
           if-no-files-found: error
           retention-days: 7
+      - name: Configure native serial generator with research lineage disabled for numerical parity
+        run: |
+          cmake -S . -B build/r2713-default-off -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_RESEARCH_LINEAGE=OFF
+      - name: Build original serial GeneratorAdaptive with instrumentation OFF
+        run: cmake --build build/r2713-default-off --target quad_generator_outcome_probe --parallel 3
+      - name: Prove Eistute real C++ original acceptance, OBJ and scientific CSV/JSON byte parity OFF vs ON
+        run: python -m tools.mesh_studio.native_lineage_parity --exe-off build/r2713-default-off/bin/quad_generator_outcome_probe --exe-on build/r2712-native/bin/quad_generator_outcome_probe --root . --model eistute --out-dir build/r2713-parity-evidence
+      - name: Prove Book real C++ original acceptance, OBJ and scientific CSV/JSON byte parity OFF vs ON
+        run: python -m tools.mesh_studio.native_lineage_parity --exe-off build/r2713-default-off/bin/quad_generator_outcome_probe --exe-on build/r2712-native/bin/quad_generator_outcome_probe --root . --model book --out-dir build/r2713-parity-evidence
+      - name: Retain native OFF/ON numerical parity receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2713-native-numerical-parity-${{ github.sha }}
+          path: build/r2713-parity-evidence/*.json
+          if-no-files-found: error
+          retention-days: 14
+
