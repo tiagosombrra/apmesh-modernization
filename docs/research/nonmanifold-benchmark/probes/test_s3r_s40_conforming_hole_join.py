@@ -20,7 +20,7 @@ from s3r_s40_conforming_hole_join import (
     BUDGET_MM, ISLAND_PATCHES, ORIGINAL_PATCHES, ORIGINAL_CONTROLS,
     PINNED_S3P_BP_SHA256, PINNED_S3P_MANIFEST_SHA256,
     TARGET_SPLIT_PATCHES, _edge_adjacency, _nets_split, _point_split,
-    _side, audit_join, build_join, propagation,
+    _side, audit_join, build_join, compact_join, propagation,
 )
 
 
@@ -202,6 +202,29 @@ class OriginalS40ConformingHoleJoinTests(unittest.TestCase):
 
     def test_34_private_derived_bp_integrity(self):
         self.assertEqual(self.manifest['joined_bp_sha256'],sha256(self.bp.encode()).hexdigest())
+
+
+    def test_35_retired_legacy_control_ids_are_explicit(self):
+        self.assertEqual(self.manifest['joined_control_count'],1467)
+        self.assertEqual(self.manifest['active_referenced_control_count'],1349)
+        self.assertEqual(self.manifest['unused_historical_control_count'],118)
+        retired=self.manifest['unused_historical_control_indices']
+        self.assertEqual(len(retired),118)
+        self.assertTrue(all(i<ORIGINAL_CONTROLS for i in retired))
+
+    def test_36_dense_compact_export_is_exact_control_reindexing(self):
+        compact,receipt=compact_join(self.bp,self.manifest)
+        compact_vertices,compact_patches=read_bp(compact)
+        self.assertEqual(len(compact_vertices),1349)
+        self.assertEqual(len(compact_patches),126)
+        self.assertEqual(receipt['original_historical_unreferenced_vertices'],118)
+        for old_patch,new_patch in zip(self.patches,compact_patches):
+            self.assertEqual([self.points[i] for i in old_patch],
+                             [compact_vertices[i] for i in new_patch])
+
+    def test_37_compact_export_rejects_changed_parent(self):
+        with self.assertRaises(ValueError):
+            compact_join(self.bp+' ',self.manifest)
 
 
 if __name__=='__main__':unittest.main()

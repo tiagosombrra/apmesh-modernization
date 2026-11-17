@@ -1,7 +1,10 @@
 {
+  "active_referenced_control_count": 1349,
   "apmesh_tri_quad": "NOT_RUN",
+  "compact_bp_sha256": "dffa08c4480c3fa75b61401d7fbe835bd7c5d1e548ec26e143d745baf4cf47a2",
+  "compact_export_control_count": 1349,
   "complete_python_regression": "NOT_RUN",
-  "cumulative_stage_S3M_to_S3R_tests_passed": 125,
+  "cumulative_stage_S3M_to_S3R_tests_passed": 128,
   "fixed_experimental_budget_mm": 0.001,
   "indexed_open_side_count": 146,
   "indexed_two_sided_seam_count": 179,
@@ -28,7 +31,7 @@
   },
   "native_original_inner_hole_edges_checked": 4,
   "native_source_edges_checked": 12,
-  "new_stage_directed_tests_passed": 34,
+  "new_stage_directed_tests_passed": 37,
   "original_faces_represented": 17,
   "original_faces_total": 43,
   "original_generator_edge_ids": [
@@ -48,5 +51,6 @@
   "schema": "apmesh-s3r-original-s40-conforming-hole-join-public-nongeometric-v1",
   "scientific_scope": "PARTIAL_BP_SOURCE_INDEXED_NATIVE_SAMPLE_CHECK_ONLY",
   "source_advanced_face_id": 218,
-  "source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b"
+  "source_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "unused_historical_control_count": 118
 }

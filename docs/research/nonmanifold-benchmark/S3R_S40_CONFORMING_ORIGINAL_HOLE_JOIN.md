@@ -35,7 +35,10 @@ The affected original faces include the previously represented cylindrical faces
 | Previously admitted partial atlas | **77 patches / 864 global controls / 16 original faces** |
 | Previously admitted patches after 19 conforming splits | **96** |
 | S3.Q holed face `#218` added | **30 patches** |
-| **Combined conforming research BP** | **126 patches / 1,467 global controls** |
+| **Combined conforming research BP** | **126 patches / 1,467 declared controls (1,349 active, 118 retained historical IDs)** |
+| Active controls referenced by the combined BP | **1,349** |
+| Historical original controls retained but no longer referenced | **118** |
+| Compact consumer-oriented BP controls, with explicit old→new ID map | **1,349** |
 | Original CAD faces covered | **17 / 43**; **26 remain unrepresented** |
 | Global indexed BP seams of exactly two sides | **179** |
 | Global indexed BP open side segments (partial atlas) | **146** |
@@ -53,13 +56,13 @@ The affected original faces include the previously represented cylindrical faces
 | Neighbor child maximum sampled native cylinder projection deviation (mm) | **0.000892668647** |
 | Predeclared experimental geometric budget (mm) | **0.001** |
 
-The 1,467-control array preserves the first 864 old control indices and reuses exactly source-identified split controls on both sides of all eight joined original-edge pieces. The continuity check audits equality of **integer indices**; coordinate distance is used only as a consistency/rejection test after source identity is established.
+The provenance-preserving array **declares 1,467 control points, of which 1,349 are active**. The remaining **118 unused control points** are exclusively old S3.P declarations superseded by exact de Casteljau subdivision. Their historical original indices are retained in the first 864 declarations so existing source controls and their lineage remain auditable. A separate deterministic **compact BP with 1,349 declared and active controls** deletes those 118 inactive declarations, supplies an explicit old-to-new integer ID mapping, and preserves every patch control net exactly; it is a consumer-oriented derivative rather than the authoritative historical-ID atlas. Source-identified split controls are shared on both sides of all eight joined original-edge pieces. The continuity check audits equality of **integer indices**; coordinate distance is used only as a consistency/rejection test after source identity is established.
 
 ## Execution and explicit limitations
 
-The S3.R builder emits a combined indexed polynomial bicubic `.bp` and manifest only after every original source-input hash, cardinality, original side lineage and resulting topology check passes. A **separate native re-auditor** recomputes the BP, verifies old-surface invariance, reruns original S3.Q native source-edge and hole checks, recomputes the new holed-face boundary/native UV/radial gates, and checks the 34 affected old cylinder children directly on the original native BRep.
+The S3.R builder emits a combined indexed polynomial bicubic `.bp`, a separately compacted `.bp`, an explicit compact-ID map and a scientific manifest only after every original source-input hash, cardinality, original side lineage and resulting topology check passes. A **separate native re-auditor** recomputes the BP, verifies old-surface invariance, reruns original S3.Q native source-edge and hole checks, recomputes the new holed-face boundary/native UV/radial gates, and checks the 34 affected old cylinder children directly on the original native BRep.
 
-Local original-source tests: **34/34 new S3.R PASS**. Cumulative *directed* S3.M–S3.R: **125/125 PASS**, zero skips, zero failures, using the frozen original S40 STEP and the private original-derived parent BP. This is **not** the entire S3.A–S3.R regression or any C++ production scientific regression. Results and original derivative coordinates are preserved privately. A viewer offline displays the whole original S40 CAD, 96 reparameterized prior patches, and 30 joined holed-face patches; the viewer tessellates surfaces for inspection and is **not** an APMesh TRI/QUAD mesh.
+Local original-source tests: **37/37 new S3.R PASS**. Cumulative *directed* S3.M–S3.R: **128/128 PASS**, zero skips, zero failures, using the frozen original S40 STEP and the private original-derived parent BP. This is **not** the entire S3.A–S3.R regression or any C++ production scientific regression. Results and original derivative coordinates are preserved privately. A viewer offline displays the whole original S40 CAD, 96 reparameterized prior patches, and 30 joined holed-face patches; the viewer tessellates surfaces for inspection and is **not** an APMesh TRI/QUAD mesh.
 
 **Important bounded scope:** Although the partial atlas is conforming at its indexed two-sided seams, it is still **not a complete closed 43-face S40 surface**, nor a mathematically continuous certificate of the trimmed hole domain, a directed-rounding interval-bound theorem, an original external 3+-incident non-manifold positive, or evidence of meshing/acceptance by the APMesh C++ engine. The Bernstein bound is evaluated in floating-point arithmetic with an explicit heuristic margin, and native UV/edge checks are sampled. The 0.001-mm budget is an experimental pilot, not an advisor-approved acceptance threshold.
 

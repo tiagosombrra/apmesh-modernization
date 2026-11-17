@@ -312,7 +312,14 @@ def build_join(source,prior_bp,prior_manifest,island_bp,island_manifest,*,budget
     if any(len(v)>2 for v in final_edges.values()):
         raise ValueError('Non-manifold indexed source side introduced')
     joined=_serialize(points,new_patches)
-    # An unshared geometric interface is never converted into a source identity.
+    active_control_ids={idx for patch in new_patches for idx in patch}
+    unused_historical_ids=[i for i in range(ORIGINAL_CONTROLS)
+                           if i not in active_control_ids]
+    if (len(active_control_ids)!=1349 or len(unused_historical_ids)!=118 or
+            any(i not in active_control_ids for i in range(ORIGINAL_CONTROLS,len(points)))):
+        raise ValueError('Unexpected active-control ownership after original subdivision')
+    # Keep original control IDs as historical provenance, even when inactive.
+    # A separate compact export removes these unused declarations for consumers.
     report={'schema':'apmesh-s3r-original-s40-conforming-218-join-v1',
             'source_sha256':part['source_sha256'],'original_baseline_bp_sha256':sha256(prior_bp.encode()).hexdigest(),
             'original_island_bp_sha256':sha256(island_bp.encode()).hexdigest(),
@@ -325,6 +332,9 @@ def build_join(source,prior_bp,prior_manifest,island_bp,island_manifest,*,budget
             'source_seed_edges':seeds,'retopologized_old_patch_count':island_start,
             'island_original_face_id':FACE_ID,'island_patches_added':30,
             'joined_patch_count':len(new_patches),'joined_control_count':len(points),
+            'active_referenced_control_count':len(active_control_ids),
+            'unused_historical_control_count':len(unused_historical_ids),
+            'unused_historical_control_indices':unused_historical_ids,
             'source_original_face_coverage':17,'source_face_count':43,
             'joined_original_generator_controls':per_edge,
             'two_sided_indexed_seam_count':sum(len(x)==2 for x in final_edges.values()),
@@ -350,6 +360,11 @@ def audit_join(source,native,bp,report,prior_bp,prior_manifest,island_bp,island_
     old_points,old_patches=read_bp(prior_bp)
     if len(patches)!=report['joined_patch_count'] or len(points)!=report['joined_control_count']:
         raise ValueError('Joined BP inventory mismatch')
+    active_control_ids={idx for patch in patches for idx in patch}
+    if (len(active_control_ids)!=report['active_referenced_control_count'] or
+            sum(i not in active_control_ids for i in range(ORIGINAL_CONTROLS))!=report['unused_historical_control_count'] or
+            any(i not in active_control_ids for i in range(ORIGINAL_CONTROLS,len(points)))):
+        raise ValueError('Original retired control ownership changed')
     # Exact de Casteljau subdivision preserves all 77 old surfaces.
     max_unchanged=0
     for pid,original in enumerate(old_patches):
@@ -428,6 +443,8 @@ def audit_join(source,native,bp,report,prior_bp,prior_manifest,island_bp,island_
             hole_out+=1
     return {'schema':'apmesh-s3r-original-native-conforming-joint-audit-v1',
             'joined_bp_sha256':report['joined_bp_sha256'],
+            'active_referenced_control_count':len(active_control_ids),
+            'unused_historical_control_count':report['unused_historical_control_count'],
             'native_hole_OUT_samples':hole_out,
             'native_island_trim_classification_histogram':dict(counts),
             'original_source_native_boundary_count':len(edge_stats),
@@ -443,6 +460,48 @@ def audit_join(source,native,bp,report,prior_bp,prior_manifest,island_bp,island_
             'coverage_scope':'ONLY_REINDEXED_ORIGINAL_HOLED_FACE_AND_UNCHANGED_OLD_GEOMETRY',
             'continuous_trim_or_hole_topology_certificate':'NOT_ESTABLISHED',
             'apmesh_tri_quad_mesh':'NOT_RUN'}
+
+
+
+def compact_join(bp,manifest):
+    """Produce a consumer-oriented dense BP with an explicit provenance map.
+
+    This never welds controls: it only deletes unreferenced records and renumbers
+    the remaining original integer-indexed vertices in stable ascending order.
+    """
+    if sha256(bp.encode()).hexdigest()!=manifest.get('joined_bp_sha256'):
+        raise ValueError('Cannot compact an altered source-indexed joined BP')
+    points,patches=read_bp(bp)
+    referenced=sorted({index for patch in patches for index in patch})
+    omitted=[i for i in range(len(points)) if i not in set(referenced)]
+    if (len(referenced)!=manifest['active_referenced_control_count'] or
+            omitted!=manifest['unused_historical_control_indices'] or
+            any(i>=ORIGINAL_CONTROLS for i in omitted)):
+        raise ValueError('Compact BP cannot retire a live source control')
+    remap={i:j for j,i in enumerate(referenced)}
+    compact=_serialize([points[i] for i in referenced],
+                       [tuple(remap[index] for index in patch) for patch in patches])
+    compact_points,compact_patches=read_bp(compact)
+    if len(compact_points)!=len(referenced) or len(compact_patches)!=len(patches):
+        raise ValueError('Compact BP topology count changed')
+    for original,rewritten in zip(patches,compact_patches):
+        if [points[i] for i in original]!=[compact_points[i] for i in rewritten]:
+            raise ValueError('Compact BP changed original indexed surface controls')
+    receipt={
+        'schema':'apmesh-s3r-source-identity-preserving-compact-bp-v1',
+        'source_joined_bp_sha256':manifest['joined_bp_sha256'],
+        'compact_bp_sha256':sha256(compact.encode()).hexdigest(),
+        'source_vertex_declarations':len(points),
+        'compact_vertex_declarations':len(compact_points),
+        'original_historical_unreferenced_vertices':len(omitted),
+        'old_control_index_to_compact_index':{str(i):j for i,j in remap.items()},
+        'unreferenced_old_indices_retired':omitted,
+        'patch_count':len(patches),
+        'control_nets_match_original_exactly':True,
+        'original_source_curve_identity_registry':'PRESERVED_IN_ORIGINAL_MANIFEST_AND_MAP',
+        'apmesh_tri_quad':'NOT_RUN',
+    }
+    return compact,receipt
 
 
 def main():
@@ -465,10 +524,13 @@ def main():
     bp,manifest=build_join(source,prior_bp,prior_manifest,island_bp,island_manifest)
     native=cq.importers.importStep(str(original)).val()
     receipt=audit_join(source,native,bp,manifest,prior_bp,prior_manifest,island_bp,island_manifest)
+    compact_bp,compact_manifest=compact_join(bp,manifest)
     directory=Path(args.output_dir);directory.mkdir(parents=True,exist_ok=True)
     (directory/'s40_218_conforming.partial.bp').write_text(bp)
     (directory/'s40_218_conforming_manifest.json').write_text(json.dumps(manifest,sort_keys=True,indent=2)+'\n')
     (directory/'s40_218_conforming_native_receipt.json').write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n')
+    (directory/'s40_218_conforming_compact.partial.bp').write_text(compact_bp)
+    (directory/'s40_218_conforming_compact_id_map.json').write_text(json.dumps(compact_manifest,sort_keys=True,indent=2)+'\n')
     print(json.dumps({k:v for k,v in receipt.items() if k!='native_island_trim_classification_histogram'},indent=2))
 
 if __name__=='__main__':main()
