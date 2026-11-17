@@ -5,7 +5,7 @@ import unittest
 
 from tools.mesh_studio.native_seam_samples import (
     analyze_sampled_seams, close_xyz, compare_two_sides, extract_native_side,
-    side_parameter,
+    side_parameter, summarize_sampled_diagnostics,
 )
 from tools.mesh_studio.verify_native_lineage import NativeLineageValidationError
 
@@ -150,6 +150,24 @@ class TestNativeSeamSampling(unittest.TestCase):
         self.assertTrue(close_xyz(
             [0.0, 0.0, 0.0], [1.5e-9, 0.0, 0.0],
             characteristic_length=1.0))
+
+    def test_independent_reason_breakdown_does_not_hide_id_or_xyz_drift(self):
+        matching = summarize_sampled_diagnostics(analyze_sampled_seams(source()))
+        self.assertEqual(matching["complete_source_sides"], 2)
+        self.assertEqual(matching["pair_condition_pass_counts"][
+            "sampled_uv_xyz_logical_id_concordance_observed"], 1)
+        self.assertEqual(matching["first_three_nonconcordant_pairs"], [])
+
+        mismatch = summarize_sampled_diagnostics(
+            analyze_sampled_seams(source(drift=0.01, right_second_id=222)))
+        passes = mismatch["pair_condition_pass_counts"]
+        self.assertEqual(passes["same_sample_count"], 1)
+        self.assertEqual(passes["canonical_t_aligned_with_tolerance"], 1)
+        self.assertEqual(passes["native_logical_node_ids_equal"], 0)
+        self.assertEqual(passes["xyz_aligned_with_explicit_tolerance"], 0)
+        self.assertEqual(passes[
+            "sampled_uv_xyz_logical_id_concordance_observed"], 0)
+        self.assertEqual(len(mismatch["first_three_nonconcordant_pairs"]), 1)
 
     def test_same_accepted_face_input_yields_deterministic_result(self):
         a = analyze_sampled_seams(source())
