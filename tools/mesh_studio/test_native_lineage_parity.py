@@ -110,6 +110,8 @@ class NativeLineageNumericalParityUnitTests(unittest.TestCase):
             workspace = Path(tmp)
             (workspace / "mesh.obj").write_text("v 0 0 0\n", encoding="utf-8")
             (workspace / "debug.log").write_text("timing 100ms\n", encoding="utf-8")
+            (workspace / "mesh_runtime_summary.csv").write_text(
+                "elapsed_seconds\n0.113\n", encoding="utf-8")
             (workspace / "original_article.conf").write_text(
                 "ignored\n", encoding="utf-8")
             (workspace / "lineage").mkdir()
@@ -117,7 +119,10 @@ class NativeLineageNumericalParityUnitTests(unittest.TestCase):
                 "{}\n", encoding="utf-8")
             files, excluded = output_inventory(workspace)
             self.assertEqual(list(files), ["mesh.obj"])
-            self.assertEqual(excluded, ["debug.log"])
+            self.assertEqual(excluded, [
+                "debug.log",
+                "NONSCIENTIFIC_RUNTIME_TIMING:mesh_runtime_summary.csv",
+            ])
 
     def test_original_article_config_changes_only_input_output_paths(self) -> None:
         with TemporaryDirectory() as tmp:
