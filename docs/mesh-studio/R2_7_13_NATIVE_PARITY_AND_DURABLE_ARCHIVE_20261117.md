@@ -64,10 +64,12 @@ establish a **fail-closed** experimental protocol:
    for the experimental build. The numerical generator and native
    `AcceptedMeshScope` acceptance gate are otherwise unchanged.
 2. For **each original article config** (`eistute`, `book`), run
-   both binaries in separate fresh temporary workspaces.
-   The config is byte-equivalent except for relocation of
-   `INPUT_MODEL` to the exact same absolute source file and
-   `OUTPUT_PREFIX` to the two corresponding isolated workspaces.
+   both binaries **sequentially in the exact same disposable output
+   directory**, which is **fully removed and recreated** between runs.
+   This ensures identical original absolute `OUTPUT_PREFIX` values in
+   all emitted scientific files. The config is byte-equivalent
+   (same exact original source and path relocation). No generated
+   state or prior file survives the control run.
    Do **not** alter adaptation thresholds, budgets, or source patches.
 3. The control run explicitly has no research lineage environment
    variable and must write **no sidecar**. The instrumented run
@@ -82,8 +84,12 @@ establish a **fail-closed** experimental protocol:
    outputs in each workspace **excluding only** the explicitly
    separate research-lineage directory. Require equal file sets
    and **identical raw file SHA-256 and lengths**. Missing original
-   OBJ, metric CSV or incidence JSON **fails**. This avoids
-   approximate tolerances masking small but real regressions.
+   OBJ, metric CSV or incidence JSON **fails**. The only named
+   `*_runtime_summary.csv` is excluded as an explicit
+   **runtime-timing** record, not a scientific metric; unstructured
+   debug `.log` files are likewise separately classified. This
+   avoids approximate tolerances masking small but real geometric
+   or scientific metric regressions.
 6. Do not compare `stdout`, `stderr`, unstructured debug logs
    or wall-clock measurements byte-for-byte: different executable
    paths, capture status lines and elapsed timings are expected.
@@ -124,9 +130,23 @@ python -m tools.mesh_studio.native_lineage_parity \
   --root . --model book --out-dir build/r2713-parity-evidence
 ```
 
-**Status of R2.7.13 parity:** The protocol is implemented and the
-native C++ CI execution is pending its complete source-qualified
-OFF/ON verdict. Do not declare numerical parity until the
+**First real parity attempt:** [CI #44147253315](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44147253315)
+correctly failed on raw `eistute_compatibility_summary.csv` mismatch
+because that original C++ scientific summary explicitly includes
+`OutputPrefix()` in its first `model` column: comparing different
+absolute directories artificially changes the record without changing
+geometry or a numerical metric. This cause was confirmed in
+`GeneratorAdaptive::WriteCompatibilitySummary()` itself, not guessed.
+
+**Correction:** the two build variants now run serially in the **same
+clean temporary directory**, fully deleting the first run's data after
+recording all its hashes, so the complete `OutputPrefix()` string
+is byte-identical and no CSV field needs to be normalized or hidden.
+The specifically timed `*_runtime_summary.csv` remains explicitly
+excluded. A new regression test asserts this exclusion.
+
+**Current R2.7.13 parity qualification:** pending the new complete
+source-qualified CI run. Do not declare numerical parity until the
 `R2713_NATIVE_OUTPUT_PARITY` markers are observed in a successful
 job for **both original models**.
 
