@@ -1,0 +1,912 @@
+{
+  "schema": "apmesh.quad.live_pair_delivery.v1",
+  "date": "2026-11-17",
+  "source_sha": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+  "tree_sha": "56412019f9c1123464a262a1a33176f3a37a2e6f",
+  "classification": "opt-in research pairing policy implementation plus engineering observation, tests and documentation; no stage closure or integration",
+  "authorization": "User-delegated physical_angle_pair_v1 choices recorded at canonical3cf8d21; default TRI and previous QUAD cases preserved; no formal advisor sign-off or literal1993 claim",
+  "canonical_entry_sha": "3cf8d215a712ef3dca6808ff22f7dec7d17e8d75",
+  "main_sha": "ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89",
+  "pr": 238,
+  "case": "curved_bezier_live_pairs_vertex_mean_v1",
+  "config": "configs/quad/curved_patch_live_pairs.conf",
+  "source_native_and_test_delta_after_0417a5a": "Documentation reconciliation, exact reviewed-config workflow entry and explicit owned snapshot in the pre-existing topology contract; physical pairing/application code unchanged",
+  "local_baseline": {
+    "source_sha": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+    "selected": 85,
+    "status": "passed",
+    "report": "build/validation-session/1794950586476829500-eb4b3a1e/report.json",
+    "report_sha256": "ad920210d42c6372931760846edd1a93f271299839314e049492e2e5897c5f86"
+  },
+  "profiles": {
+    "msvc": {
+      "receipt": {
+        "source": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+        "profile": "msvc",
+        "image_sha256": "11cc74ec2e27d4be06633f8952ecd77660f8a81bb84f4875e50ea5ccbb600c35",
+        "environment": {},
+        "stages": [
+          {
+            "stage": "build",
+            "exit": 0,
+            "seconds": 9.87193775177002
+          },
+          {
+            "stage": "source-contracts",
+            "exit": 0,
+            "seconds": 5.275526285171509
+          },
+          {
+            "stage": "live-pairs",
+            "exit": 0,
+            "seconds": 10.112733602523804
+          },
+          {
+            "stage": "bounds",
+            "exit": 0,
+            "seconds": 25.16658663749695
+          },
+          {
+            "stage": "fixed16",
+            "exit": 0,
+            "seconds": 5.178027153015137
+          },
+          {
+            "stage": "history",
+            "exit": 0,
+            "seconds": 16.227041006088257
+          }
+        ],
+        "status": "passed"
+      },
+      "compiler": {
+        "CMAKE_CXX_COMPILER_ID": "MSVC",
+        "CMAKE_CXX_COMPILER_VERSION": "19.44.35229.0"
+      },
+      "settings": {
+        "AP_MESH_ENABLE_EXPERIMENTAL_QUAD": "ON",
+        "AP_MESH_ENABLE_LTO": "OFF",
+        "AP_MESH_USE_MPI": "OFF",
+        "AP_MESH_USE_OPENMP": "OFF",
+        "CMAKE_CXX_FLAGS": "/DWIN32 /D_WINDOWS /GR /EHsc",
+        "CMAKE_CXX_FLAGS_DEBUG": "/Zi /Ob0 /Od /RTC1",
+        "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG",
+        "CMAKE_CXX_STANDARD": "17"
+      },
+      "live_pairs": {
+        "schema": "apmesh.quad.live_pair_application.v1",
+        "steps": [
+          {
+            "step": 1,
+            "selected_pairs": 2,
+            "statuses": {
+              "rejected_uv": 15,
+              "rejected_shape": 6,
+              "selected": 2,
+              "already_paired": 1
+            },
+            "mixed_nodes": 33,
+            "quads": 18,
+            "triangles": 20,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.08856727834105745,
+              "rms_uv": 0.026278020266195978,
+              "rms_source_area": 0.023406069100086815,
+              "quad_sites": 144,
+              "tri_sites": 432
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.08856727834105745,
+              "rms_uv": 0.026301548979408167,
+              "rms_source_area": 0.023427760104983878,
+              "quad_sites": 240,
+              "tri_sites": 336
+            }
+          },
+          {
+            "step": 2,
+            "selected_pairs": 0,
+            "statuses": {
+              "rejected_uv": 42,
+              "rejected_shape": 24
+            },
+            "mixed_nodes": 281,
+            "quads": 242,
+            "triangles": 66,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.040148706524736344,
+              "rms_uv": 0.012513721875255103,
+              "rms_source_area": 0.011688139399734733,
+              "quad_sites": 303,
+              "tri_sites": 273
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.040148706524736344,
+              "rms_uv": 0.012513721875255103,
+              "rms_source_area": 0.011688139399734733,
+              "quad_sites": 303,
+              "tri_sites": 273
+            }
+          },
+          {
+            "step": 3,
+            "selected_pairs": 3,
+            "statuses": {
+              "rejected_uv": 88,
+              "selected": 3,
+              "rejected_shape": 37,
+              "already_paired": 2
+            },
+            "mixed_nodes": 797,
+            "quads": 727,
+            "triangles": 124,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.03224427259909553,
+              "rms_uv": 0.007666757572949901,
+              "rms_source_area": 0.007235566866455381,
+              "quad_sites": 436,
+              "tri_sites": 140
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.03224427259909553,
+              "rms_uv": 0.007666744150657397,
+              "rms_source_area": 0.00723557052535219,
+              "quad_sites": 443,
+              "tri_sites": 133
+            }
+          }
+        ],
+        "forged_records_rejected": 6,
+        "nonempty_rollback": true,
+        "original_aft_scaffold_preserved": true,
+        "mixed_adaptive_epochs": 0
+      },
+      "paired_history_OBJ_sha256": {
+        "step_0_retry_-1_accepted_aft_source.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_1_retry_0_accepted_aft_source.obj": "d6bc74483c93b9b09639e99d59cbe7fcee48a18a876b3b768b48109474031443",
+        "step_1_retry_0_accepted_quad_tri.obj": "c8cf40fbe23c8a80a57b6e41a918e7b07d2427173b7b0ecc181cf056755a5185",
+        "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+        "step_2_retry_0_accepted_aft_source.obj": "2dd18a4959f78ed9e55b99ceead40e7678cb8eeb564c52c290fbdddea4db2f1f",
+        "step_2_retry_0_accepted_quad_tri.obj": "315ed30ddb222c76611a3dd0aa293ce5f2c47161f2835773bebd9751d9daba29",
+        "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+        "step_3_retry_0_accepted_aft_source.obj": "0ddd10b3aa9beafe0fdc27b5990c4cc1f9c2e7f51190528457cb2fbb6699b115",
+        "step_3_retry_0_accepted_quad_tri.obj": "28dec3be4cf9944d11075b0e251a51e3ec145cb7a9c9b0f30af8bc569429d202",
+        "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c"
+      },
+      "paired_history_CSV_sha256": {
+        "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6",
+        "boundary_pair_stages.csv": "e12929234407f3a4083cf9587f6d3e37ef1a4c262f9b1029782840b15109a085",
+        "curve_stages.csv": "49bcbae592ba8cc3649580fae557da4f99b17b94d0df99c446175e9f7dfd170d",
+        "live_pair_candidates.csv": "6ddfb119fb9ea192439b57d4b7f3eb6ee6d52ed3d16432bf9e9babcd353e2832",
+        "live_pair_stages.csv": "227204f791889e4add81f8f4232299f3c1369ce77aadb5a6801e2b950c976b41",
+        "manifest.csv": "11f115a724e3f50072251a53f37b094761120fd9fa8efde72ae5ec2a7ab3e666"
+      },
+      "previous_case_checks": {
+        "original-default": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-default": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "original-coarse": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-coarse": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-rollback": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        }
+      },
+      "source_contracts": [
+        "BOUNDARY_PAIR_CANDIDATES topology_cases=4 rejected=5 selected=0",
+        "TRIANGLE_COMMIT_OBSERVER cases=4 injected_aborts=1",
+        "LIVE_PAIR_CONTRACTS geometry_cases=7 exact_ties=3 invalid_topologies=3",
+        "REAL_BOUNDARY_SOURCE_CONTRACTS captures=6 reversed_captures=3 negative_controls=54"
+      ],
+      "live_report_sha256": "d389d714b24c3ff99176c7d772c54877fc3d45bb1afda72373abf6befbbb4257",
+      "bound_report_sha256": "16dfdce52a73648d8f11dae7b37d0b01323de54cd4791622fd0d53b814a35c02"
+    },
+    "gcc": {
+      "receipt": {
+        "source": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+        "profile": "gcc",
+        "image_sha256": "a8bf3093b50c276c62a6cdd5f71639ba6650b21e66ef1be8e0a8f8041d663446",
+        "environment": {},
+        "stages": [
+          {
+            "stage": "build",
+            "exit": 0,
+            "seconds": 9.123390913009644
+          },
+          {
+            "stage": "source-contracts",
+            "exit": 0,
+            "seconds": 0.16794490814208984
+          },
+          {
+            "stage": "live-pairs",
+            "exit": 0,
+            "seconds": 1.3987700939178467
+          },
+          {
+            "stage": "bounds",
+            "exit": 0,
+            "seconds": 3.1938235759735107
+          },
+          {
+            "stage": "fixed16",
+            "exit": 0,
+            "seconds": 1.8688108921051025
+          },
+          {
+            "stage": "history",
+            "exit": 0,
+            "seconds": 1.7842953205108643
+          }
+        ],
+        "status": "passed"
+      },
+      "compiler": {
+        "CMAKE_CXX_COMPILER_ID": "GNU",
+        "CMAKE_CXX_COMPILER_VERSION": "13.3.0"
+      },
+      "settings": {
+        "AP_MESH_ENABLE_EXPERIMENTAL_QUAD": "ON",
+        "AP_MESH_ENABLE_LTO": "OFF",
+        "AP_MESH_USE_MPI": "OFF",
+        "AP_MESH_USE_OPENMP": "OFF",
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_FLAGS": "",
+        "CMAKE_CXX_FLAGS_DEBUG": "-g",
+        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+        "CMAKE_CXX_STANDARD": "17"
+      },
+      "live_pairs": {
+        "schema": "apmesh.quad.live_pair_application.v1",
+        "steps": [
+          {
+            "step": 1,
+            "selected_pairs": 2,
+            "statuses": {
+              "rejected_uv": 15,
+              "rejected_shape": 6,
+              "selected": 2,
+              "already_paired": 1
+            },
+            "mixed_nodes": 33,
+            "quads": 18,
+            "triangles": 20,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.08856727834105745,
+              "rms_uv": 0.026278020266195978,
+              "rms_source_area": 0.023406069100086815,
+              "quad_sites": 144,
+              "tri_sites": 432
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.08856727834105745,
+              "rms_uv": 0.026301548979408167,
+              "rms_source_area": 0.023427760104983878,
+              "quad_sites": 240,
+              "tri_sites": 336
+            },
+            "same_site_error_relative_change_percent": 0.09267256626608322
+          },
+          {
+            "step": 2,
+            "selected_pairs": 0,
+            "statuses": {
+              "rejected_uv": 42,
+              "rejected_shape": 24
+            },
+            "mixed_nodes": 281,
+            "quads": 242,
+            "triangles": 66,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.040148706524736344,
+              "rms_uv": 0.012513721875255103,
+              "rms_source_area": 0.011688139399734733,
+              "quad_sites": 303,
+              "tri_sites": 273
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.040148706524736344,
+              "rms_uv": 0.012513721875255103,
+              "rms_source_area": 0.011688139399734733,
+              "quad_sites": 303,
+              "tri_sites": 273
+            },
+            "same_site_error_relative_change_percent": 0.0
+          },
+          {
+            "step": 3,
+            "selected_pairs": 3,
+            "statuses": {
+              "rejected_uv": 88,
+              "selected": 3,
+              "rejected_shape": 37,
+              "already_paired": 2
+            },
+            "mixed_nodes": 797,
+            "quads": 727,
+            "triangles": 124,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.03224427259909553,
+              "rms_uv": 0.007666757572949901,
+              "rms_source_area": 0.007235566866455381,
+              "quad_sites": 436,
+              "tri_sites": 140
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.03224427259909553,
+              "rms_uv": 0.007666744150657397,
+              "rms_source_area": 0.00723557052535219,
+              "quad_sites": 443,
+              "tri_sites": 133
+            },
+            "same_site_error_relative_change_percent": 5.0568212217605435e-05
+          }
+        ],
+        "forged_records_rejected": 6,
+        "nonempty_rollback": true,
+        "original_aft_scaffold_preserved": true,
+        "mixed_adaptive_epochs": 0
+      },
+      "paired_history_OBJ_sha256": {
+        "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+        "step_1_retry_0_accepted_aft_source.obj": "d6bc74483c93b9b09639e99d59cbe7fcee48a18a876b3b768b48109474031443",
+        "step_3_retry_0_accepted_aft_source.obj": "0ddd10b3aa9beafe0fdc27b5990c4cc1f9c2e7f51190528457cb2fbb6699b115",
+        "step_3_retry_0_accepted_quad_tri.obj": "28dec3be4cf9944d11075b0e251a51e3ec145cb7a9c9b0f30af8bc569429d202",
+        "step_0_retry_-1_accepted_aft_source.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+        "step_2_retry_0_accepted_aft_source.obj": "2dd18a4959f78ed9e55b99ceead40e7678cb8eeb564c52c290fbdddea4db2f1f",
+        "step_1_retry_0_accepted_quad_tri.obj": "c8cf40fbe23c8a80a57b6e41a918e7b07d2427173b7b0ecc181cf056755a5185",
+        "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+        "step_2_retry_0_accepted_quad_tri.obj": "315ed30ddb222c76611a3dd0aa293ce5f2c47161f2835773bebd9751d9daba29"
+      },
+      "paired_history_CSV_sha256": {
+        "curve_stages.csv": "49bcbae592ba8cc3649580fae557da4f99b17b94d0df99c446175e9f7dfd170d",
+        "live_pair_stages.csv": "227204f791889e4add81f8f4232299f3c1369ce77aadb5a6801e2b950c976b41",
+        "manifest.csv": "11f115a724e3f50072251a53f37b094761120fd9fa8efde72ae5ec2a7ab3e666",
+        "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6",
+        "boundary_pair_stages.csv": "e12929234407f3a4083cf9587f6d3e37ef1a4c262f9b1029782840b15109a085",
+        "live_pair_candidates.csv": "a9a44dd341c36a18b8f7419a7227a4169c4725cc7c787da147e6e9fffd199efe"
+      },
+      "previous_case_checks": {
+        "original-default": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-default": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "original-coarse": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-coarse": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-rollback": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        }
+      },
+      "source_contracts": [
+        "BOUNDARY_PAIR_CANDIDATES topology_cases=4 rejected=5 selected=0",
+        "TRIANGLE_COMMIT_OBSERVER cases=4 injected_aborts=1",
+        "LIVE_PAIR_CONTRACTS geometry_cases=7 exact_ties=3 invalid_topologies=3",
+        "REAL_BOUNDARY_SOURCE_CONTRACTS captures=6 reversed_captures=3 negative_controls=54"
+      ],
+      "live_report_sha256": "72ddd20e23b33c07cc97b5753c0e619b94c9294a1d00c4697bd4dbc4e5701b7b",
+      "bound_report_sha256": "ebe6c7080cad46ed13acbd9188246fe4d69faf2594c46b714b3e9b46100ce0bc"
+    },
+    "asan": {
+      "receipt": {
+        "source": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+        "profile": "asan",
+        "image_sha256": "e8170837554570119a0581904b5c5df9a6c05039727bdfa2060de4c93ad53344",
+        "environment": {
+          "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1:abort_on_error=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+        },
+        "stages": [
+          {
+            "stage": "build",
+            "exit": 0,
+            "seconds": 6.903700590133667
+          },
+          {
+            "stage": "source-contracts",
+            "exit": 0,
+            "seconds": 5.441879034042358
+          },
+          {
+            "stage": "live-pairs",
+            "exit": 0,
+            "seconds": 14.183772802352905
+          },
+          {
+            "stage": "bounds",
+            "exit": 0,
+            "seconds": 25.59075379371643
+          },
+          {
+            "stage": "fixed16",
+            "exit": 0,
+            "seconds": 5.175692796707153
+          },
+          {
+            "stage": "history",
+            "exit": 0,
+            "seconds": 14.866552829742432
+          }
+        ],
+        "status": "passed"
+      },
+      "compiler": {
+        "CMAKE_CXX_COMPILER_ID": "Clang",
+        "CMAKE_CXX_COMPILER_VERSION": "18.1.3"
+      },
+      "settings": {
+        "AP_MESH_ENABLE_EXPERIMENTAL_QUAD": "ON",
+        "AP_MESH_ENABLE_LTO": "OFF",
+        "AP_MESH_USE_MPI": "OFF",
+        "AP_MESH_USE_OPENMP": "OFF",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_FLAGS": "-fsanitize=address,undefined -fno-omit-frame-pointer",
+        "CMAKE_CXX_FLAGS_DEBUG": "-g",
+        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+        "CMAKE_CXX_STANDARD": "17"
+      },
+      "live_pairs": {
+        "schema": "apmesh.quad.live_pair_application.v1",
+        "steps": [
+          {
+            "step": 1,
+            "selected_pairs": 2,
+            "statuses": {
+              "rejected_uv": 15,
+              "rejected_shape": 6,
+              "selected": 2,
+              "already_paired": 1
+            },
+            "mixed_nodes": 33,
+            "quads": 18,
+            "triangles": 20,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.08856727834105745,
+              "rms_uv": 0.026278020266195978,
+              "rms_source_area": 0.023406069100086815,
+              "quad_sites": 144,
+              "tri_sites": 432
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.08856727834105745,
+              "rms_uv": 0.026301548979408167,
+              "rms_source_area": 0.023427760104983878,
+              "quad_sites": 240,
+              "tri_sites": 336
+            }
+          },
+          {
+            "step": 2,
+            "selected_pairs": 0,
+            "statuses": {
+              "rejected_uv": 42,
+              "rejected_shape": 24
+            },
+            "mixed_nodes": 281,
+            "quads": 242,
+            "triangles": 66,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.040148706524736344,
+              "rms_uv": 0.012513721875255103,
+              "rms_source_area": 0.011688139399734733,
+              "quad_sites": 303,
+              "tri_sites": 273
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.040148706524736344,
+              "rms_uv": 0.012513721875255103,
+              "rms_source_area": 0.011688139399734733,
+              "quad_sites": 303,
+              "tri_sites": 273
+            }
+          },
+          {
+            "step": 3,
+            "selected_pairs": 3,
+            "statuses": {
+              "rejected_uv": 88,
+              "selected": 3,
+              "rejected_shape": 37,
+              "already_paired": 2
+            },
+            "mixed_nodes": 797,
+            "quads": 727,
+            "triangles": 124,
+            "unpaired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.03224427259909553,
+              "rms_uv": 0.007666757572949901,
+              "rms_source_area": 0.007235566866455381,
+              "quad_sites": 436,
+              "tri_sites": 140
+            },
+            "paired_fixed_grid_error": {
+              "source_grid": 24,
+              "sample_count": 576,
+              "max_xyz": 0.03224427259909553,
+              "rms_uv": 0.007666744150657397,
+              "rms_source_area": 0.00723557052535219,
+              "quad_sites": 443,
+              "tri_sites": 133
+            }
+          }
+        ],
+        "forged_records_rejected": 6,
+        "nonempty_rollback": true,
+        "original_aft_scaffold_preserved": true,
+        "mixed_adaptive_epochs": 0
+      },
+      "paired_history_OBJ_sha256": {
+        "step_3_retry_0_accepted_tri.obj": "66337fdf9c245900937f97608640576c2b0a11980de591e559b513584092d20c",
+        "step_1_retry_0_accepted_aft_source.obj": "d6bc74483c93b9b09639e99d59cbe7fcee48a18a876b3b768b48109474031443",
+        "step_3_retry_0_accepted_aft_source.obj": "0ddd10b3aa9beafe0fdc27b5990c4cc1f9c2e7f51190528457cb2fbb6699b115",
+        "step_3_retry_0_accepted_quad_tri.obj": "28dec3be4cf9944d11075b0e251a51e3ec145cb7a9c9b0f30af8bc569429d202",
+        "step_0_retry_-1_accepted_aft_source.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_0_retry_-1_accepted_quad_tri.obj": "d62a9093e209fdb1aa0855b4aa91bd8c2b938cbbeffe3a03fbcdf1df46d16b42",
+        "step_2_retry_0_accepted_tri.obj": "d2391d3e7a6225b888d8a00e7d683da6846989f874ec336bf2c27a981d08bd6f",
+        "step_2_retry_0_accepted_aft_source.obj": "2dd18a4959f78ed9e55b99ceead40e7678cb8eeb564c52c290fbdddea4db2f1f",
+        "step_1_retry_0_accepted_quad_tri.obj": "c8cf40fbe23c8a80a57b6e41a918e7b07d2427173b7b0ecc181cf056755a5185",
+        "step_1_retry_0_accepted_tri.obj": "cdf45db6cd1774475956d55ed649374d75ae58afbd7ab56d18fae66c60f35634",
+        "step_2_retry_0_accepted_quad_tri.obj": "315ed30ddb222c76611a3dd0aa293ce5f2c47161f2835773bebd9751d9daba29"
+      },
+      "paired_history_CSV_sha256": {
+        "curve_stages.csv": "49bcbae592ba8cc3649580fae557da4f99b17b94d0df99c446175e9f7dfd170d",
+        "live_pair_stages.csv": "227204f791889e4add81f8f4232299f3c1369ce77aadb5a6801e2b950c976b41",
+        "manifest.csv": "11f115a724e3f50072251a53f37b094761120fd9fa8efde72ae5ec2a7ab3e666",
+        "boundary_pair_candidates.csv": "eeb8a329748007ed04a0fe0433bea2a18e3ae23a6743d6ee891abc1bcefee5d6",
+        "boundary_pair_stages.csv": "e12929234407f3a4083cf9587f6d3e37ef1a4c262f9b1029782840b15109a085",
+        "live_pair_candidates.csv": "a9a44dd341c36a18b8f7419a7227a4169c4725cc7c787da147e6e9fffd199efe"
+      },
+      "previous_case_checks": {
+        "original-default": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-default": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "original-coarse": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-coarse": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        },
+        "bounded-rollback": {
+          "OBJ_count": 8,
+          "OBJ_hashes_equal_7fc988d": true
+        }
+      },
+      "source_contracts": [
+        "BOUNDARY_PAIR_CANDIDATES topology_cases=4 rejected=5 selected=0",
+        "TRIANGLE_COMMIT_OBSERVER cases=4 injected_aborts=1",
+        "LIVE_PAIR_CONTRACTS geometry_cases=7 exact_ties=3 invalid_topologies=3",
+        "REAL_BOUNDARY_SOURCE_CONTRACTS captures=6 reversed_captures=3 negative_controls=54"
+      ],
+      "live_report_sha256": "72ddd20e23b33c07cc97b5753c0e619b94c9294a1d00c4697bd4dbc4e5701b7b",
+      "bound_report_sha256": "ebe6c7080cad46ed13acbd9188246fe4d69faf2594c46b714b3e9b46100ce0bc"
+    }
+  },
+  "same_site_metrics": [
+    {
+      "step": 1,
+      "selected_pairs": 2,
+      "statuses": {
+        "rejected_uv": 15,
+        "rejected_shape": 6,
+        "selected": 2,
+        "already_paired": 1
+      },
+      "mixed_nodes": 33,
+      "quads": 18,
+      "triangles": 20,
+      "unpaired_fixed_grid_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.08856727834105745,
+        "rms_uv": 0.026278020266195978,
+        "rms_source_area": 0.023406069100086815,
+        "quad_sites": 144,
+        "tri_sites": 432
+      },
+      "paired_fixed_grid_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.08856727834105745,
+        "rms_uv": 0.026301548979408167,
+        "rms_source_area": 0.023427760104983878,
+        "quad_sites": 240,
+        "tri_sites": 336
+      },
+      "same_site_error_relative_change_percent": 0.09267256626608322
+    },
+    {
+      "step": 2,
+      "selected_pairs": 0,
+      "statuses": {
+        "rejected_uv": 42,
+        "rejected_shape": 24
+      },
+      "mixed_nodes": 281,
+      "quads": 242,
+      "triangles": 66,
+      "unpaired_fixed_grid_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.040148706524736344,
+        "rms_uv": 0.012513721875255103,
+        "rms_source_area": 0.011688139399734733,
+        "quad_sites": 303,
+        "tri_sites": 273
+      },
+      "paired_fixed_grid_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.040148706524736344,
+        "rms_uv": 0.012513721875255103,
+        "rms_source_area": 0.011688139399734733,
+        "quad_sites": 303,
+        "tri_sites": 273
+      },
+      "same_site_error_relative_change_percent": 0.0
+    },
+    {
+      "step": 3,
+      "selected_pairs": 3,
+      "statuses": {
+        "rejected_uv": 88,
+        "selected": 3,
+        "rejected_shape": 37,
+        "already_paired": 2
+      },
+      "mixed_nodes": 797,
+      "quads": 727,
+      "triangles": 124,
+      "unpaired_fixed_grid_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.03224427259909553,
+        "rms_uv": 0.007666757572949901,
+        "rms_source_area": 0.007235566866455381,
+        "quad_sites": 436,
+        "tri_sites": 140
+      },
+      "paired_fixed_grid_error": {
+        "source_grid": 24,
+        "sample_count": 576,
+        "max_xyz": 0.03224427259909553,
+        "rms_uv": 0.007666744150657397,
+        "rms_source_area": 0.00723557052535219,
+        "quad_sites": 443,
+        "tri_sites": 133
+      },
+      "same_site_error_relative_change_percent": 5.0568212217605435e-05
+    }
+  ],
+  "same_site_metric_scope": "24x24 UV cell-center samples, physical-source-area-weighted RMS in source coordinate units, independent Bernstein/interpolator; not curvature-estimator rate, continuous bound or acceptance policy",
+  "cross_profile": {
+    "paired_history_OBJ_byte_identical": true,
+    "previous_40_OBJ_per_profile_equal_7fc988d": true,
+    "CSV_comparison": {
+      "boundary_pair_candidates.csv": {
+        "nonidentical_numeric_fields": 0,
+        "maximum_absolute_difference": {},
+        "all_lineage_topology_status_and_selection_fields_equal": true
+      },
+      "boundary_pair_stages.csv": {
+        "nonidentical_numeric_fields": 0,
+        "maximum_absolute_difference": {},
+        "all_lineage_topology_status_and_selection_fields_equal": true
+      },
+      "curve_stages.csv": {
+        "nonidentical_numeric_fields": 0,
+        "maximum_absolute_difference": {},
+        "all_lineage_topology_status_and_selection_fields_equal": true
+      },
+      "live_pair_candidates.csv": {
+        "nonidentical_numeric_fields": 4,
+        "maximum_absolute_difference": {
+          "S_xyz": 4.440892098500626e-16
+        },
+        "all_lineage_topology_status_and_selection_fields_equal": true
+      },
+      "live_pair_stages.csv": {
+        "nonidentical_numeric_fields": 0,
+        "maximum_absolute_difference": {},
+        "all_lineage_topology_status_and_selection_fields_equal": true
+      },
+      "manifest.csv": {
+        "nonidentical_numeric_fields": 0,
+        "maximum_absolute_difference": {},
+        "all_lineage_topology_status_and_selection_fields_equal": true
+      }
+    }
+  },
+  "frozen_TRI": {
+    "source_sha": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+    "reference_identity": {
+      "frozen_reference_sha": "f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94",
+      "reference_image_sha256": "4d5861edfc3bd69cfc03f841550a0e55aa3f74f5b1403459836ffda9de707ab5",
+      "reference_archive_sha256": "67c00b8540f2aa08b497acf3e3b8f5c421100fc714bf6223212788337f9a0703"
+    },
+    "comparisons": {
+      "eistute": {
+        "compared_meshes": 5,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "boundary_regression": "exact",
+        "boundary_incidence_coverage": "verified"
+      },
+      "book": {
+        "compared_meshes": 4,
+        "all_obj_byte_identical": true,
+        "all_acceptance_fields_equal": true,
+        "boundary_regression": "exact",
+        "boundary_incidence_coverage": "verified"
+      }
+    }
+  },
+  "configured_analysis": {
+    "compiler_tool": "LLVM22 clang-tidy",
+    "profile": "build/quad-real-boundary-analysis22-79828fc/compile_commands.json",
+    "TUs": [
+      "src/crab_mesh/aft/advancing_front.cpp",
+      "src/application/runtime_config.cpp",
+      "src/application/run_application.cpp",
+      "research/quad/controlled_patch_application.cpp",
+      "tests/quad/real_boundary_source_contracts.cpp"
+    ],
+    "four_unchanged_TUs_reused_from": "0417a5a9d0b36ef05c3090dbbcd8355b492c793b",
+    "reuse_reason": "Their complete native source/header inputs are unchanged; affected test TU repeated on exact delivery source with first-party headers and no line filter",
+    "exact_delivery_test_TU": "passed; no visible first-party diagnostic; nine non-user warnings suppressed by the configured tool scope",
+    "prior_unfiltered_failure": "Retained unnecessary-copy diagnostic in the older topology snapshot contract, corrected by explicit owning range construction; no reference alias or diagnostic suppression"
+  },
+  "CI": {
+    "run_id": 44179166105,
+    "source_sha": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+    "jobs": [
+      {
+        "name": "TRI scientific equivalence against frozen baseline",
+        "id": 134378653768,
+        "conclusion": "success"
+      },
+      {
+        "name": "QUAD native (windows-2022)",
+        "id": 134378654227,
+        "conclusion": "success"
+      },
+      {
+        "name": "QUAD native (ubuntu-24.04)",
+        "id": 134378654283,
+        "conclusion": "success"
+      },
+      {
+        "name": "TRI baseline and tooling controls (Linux)",
+        "id": 134378654507,
+        "conclusion": "success"
+      }
+    ],
+    "status": "4/4 SUCCESS",
+    "scope": "Hosted default compiler/test evidence, explicitly including live-pair Linux/Windows/sanitizer histories; no replacement for full CRT or independent review"
+  },
+  "retained_failures": [
+    {
+      "kind": "transport",
+      "detail": "Initial Git read failed with connection reset; connected GitHub API and subsequent bounded Git fetch established exact refs"
+    },
+    {
+      "kind": "test harness",
+      "detail": "First forged-record audit raised the intended AssertionError but the harness caught other types; preserve development-cases.stderr and correct the exception contract"
+    },
+    {
+      "kind": "test fixture build",
+      "detail": "Shortcut observer fixture initially had ambiguous legacy names, then referenced an undeclared implementation of addEdgesToFront; use explicit types and a protected-front fixture; preserve both failed build logs"
+    },
+    {
+      "kind": "formatting",
+      "detail": "Strict lexical check stopped on formatter string-literal reflow; preserve format-first-failure.json. Bounded remaining formatting/new-header checks preserve tokens. A direct wrapper invocation lacked PATH lookup; command-local tool environment resolved the installed formatter without global changes"
+    },
+    {
+      "kind": "architecture gate",
+      "report": "build/validation-session/1794949564003965800-b7255348/report.json",
+      "detail": "Stopped before native regression on stale source inventory; regenerated exact file/include/build identities with all35 contracts/277 anchors retained"
+    },
+    {
+      "kind": "base alignment",
+      "detail": "Read-only merge-tree and actual base synchronization found one add/add implementation-document conflict; preserve the recorded scientific decisions and updated implementation contract, merge canonical documentation into the feature without changing native/test inputs"
+    },
+    {
+      "kind": "analysis",
+      "detail": "Expanded first-party header analysis exposed the existing owning-snapshot warning hidden by the prior line scope; resolve the intended owned snapshot rather than aliasing its source"
+    },
+    {
+      "kind": "hosted guard",
+      "run_id": 44178168367,
+      "job_id": 134375026743,
+      "source_sha": "518a7a42b4bbc212379fa2a314f17b71a9974ab0",
+      "detail": "Reference setup stopped on exact new opt-in config missing from reviewed-production list; no comparison ran in that failed job. Add only that reviewed asset; an unreviewed config negative control still rejects",
+      "decoded_log_sha256": "cde38854deedc3a9c6a27781bc4b455ad9770b7d8f3dbbbc7c39b000e095c8ce"
+    }
+  ],
+  "closure_audit": {
+    "code": "Default-empty synchronous observer runs after AFT face ownership; selector retains values only and original scaffold; typed physical candidate owns all selected/unmatched output before publication",
+    "tests": "85 exact-head baseline, three native profiles, real/negative/source/reversed/rollback cases,120 previous OBJ and twelve new stage OBJ per profile, exact frozen9 meshes and4 hosted jobs",
+    "contracts": "Separate native-leaf/AFT-pair provenance, source identity/intervals, oriented seam/coverage/manifold/disk, deterministic available-alternative order and single consumption; bad_alloc is not classified as geometric rejection",
+    "documentation": "Canonical source/plan/evidence/history aligned; no modernization history rewritten",
+    "scientific_scope": "Experimental physical XYZ angular extension, no all-QUAD/global-error/node-count improvement claim, no mixed adaptive accepted epoch",
+    "open_inventory": [
+      "independent review and research integration/exact post-merge gates",
+      "M1 center convention and full1993 identity",
+      "full M5 scope and topology-phase-only observer coverage not independently enumerated",
+      "R3/M7 mixed accepted-state/error feedback",
+      "local curve-transition-interior balancing",
+      "continuous bilinear validity and new-path full CRT/allocation-denial closure",
+      "Doxygen"
+    ]
+  },
+  "mixed_adaptive_epochs": 0,
+  "merged": false,
+  "next_action": "Independent review and research integration qualification of PR238, then actual mixed accepted-state/error feedback before a new local sizing controller"
+}

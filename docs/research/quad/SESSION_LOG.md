@@ -2875,3 +2875,81 @@ positive/rejected/tie/rollback contracts, then finite native/exact-head gates.
 No additional generic questionnaire on these three choices. M1 point convention,
 M5/M7, accepted mixed epochs, local sizing feedback, Doxygen/full CRT,
 independent review and integration remain open.
+
+
+## 2026-11-17 - audit continuity and deliver incremental physical-angle pairing
+
+User requests plan update, audit to date and continuation. Read current canonical
+protocol/state/roadmap/log and separate modernization sources; verify clean local
+worktrees, actual main/research/feature refs and open PR/checks. Git read initially
+reset; use connected GitHub reads and subsequent bounded fetch without changing
+credentials or overwriting concurrent work. One active item remains mixed filling.
+
+Audit confirms prior real-curve/QUAD/AFT capability and read-only7fc988d candidate
+inventory, not an implemented selector. Implement the existing user-delegated
+physical_angle_pair_v1 behind separate curved_bezier_live_pairs_vertex_mean_v1.
+Add synchronous empty-by-default AFT triangle observation after face ownership,
+including the shortcut; an exception aborts the disposable one-shot owner. Select
+among actual already-emitted neighbors, preserve original TRI trajectory, require
+existing UV/physical validity and S_XYZ<=1.5, exact-tie edge ratio/current edge
+order/source IDs, and consume TRI once. Preserve unmatched TRI. Build a new typed
+physical owner with separate native-template/AFT-pair origins and prepublication
+validation/fault rollback; retain source node IDs and shared curve partitions.
+
+Add source scaffold OBJ, source-scoped live event/stage CSV and final-face origin
+comments. Track independent replay of every actual alternative, score/validity,
+choice, disjoint consumption, resulting faces and origin IDs. Reject six forged
+source/cycle/score/face/generation/acceptance records. Add native shape/chart,
+competing-choice, three rank-tie/three bad-topology cases and four shortcut/
+cleared/throwing-observer cases. Keep old malformed topology/source/reversed,
+initial/rejected source states and nonempty owner histories.
+
+Preserve failed development logs: wrong AssertionError catch, ambiguous fixture
+names and a declared-but-undefined legacy helper, strict formatter literal reflow
+and PATH lookup, stale architecture inventory before baseline, and the older
+owning-snapshot warning exposed by expanded header analysis. Correct precise
+causes, retain the independent snapshot via owning range construction, and keep
+configured diagnostics. Scoped formatting retains tokens; no broad format/tidy
+fix or scientific tolerance change. Inventory regeneration preserves35 contracts/
+277 anchors. A bounded shell metadata-query quoting failure changes no profile.
+
+Local source5203c0e publishes identical tree as140ed85 through the authorized
+GitHub connection; CI registration and architecture receipt follow as8f7b7d5 and
+0417a5a. Preserve unpublished local identities on local backup refs. Exact0417a5a
+passes85/three native/frozen scopes. Synchronizing canonical3cf8d21 into the
+feature resolves one add/add implementation-document conflict while preserving
+native/test inputs; identical merge tree publishes as518a7a4 with both parents.
+Repeat exact-head checks. Hosted44178168367 fails before science comparison
+because the exact new config is absent from the reviewed asset list. Retain its
+decoded job log/hash; add only that reviewed asset and keep the unreviewed-config
+negative rejection. No unchanged failed campaign retry or hidden fallback.
+
+Final exact feature6f4ef473b2d248548632d4e0f358f8eea4749f86/tree56412019 qualifies
+the bounded slice: local85/85 report1794950586476829500-eb4b3a1e; GNU13.3 Release,
+MSVC19.44 Debug and Clang18.1 ASan/UBSan/leak real/new/prior/fixed16/source/rollback
+histories pass. Forty old OBJ per profile match7fc988d; twelve new history OBJ
+match across profiles. All trace lineage/topology/selection agrees; four MSVC
+score fields differ by at most4.440892098500626e-16. Configured LLVM22 five-TU
+coverage reuses four unchanged native TUs and repeats the affected first-party
+test headers on final head without a line filter, passing. Current GNU Eistute5/
+Book4 match frozen f6050ec OBJ/acceptance and verified boundaries. Exact hosted
+44179166105 completes4/4 SUCCESS, including live-pair Linux/Windows/sanitizer
+audits and full baseline/science. Prior-head results are not substituted.
+
+Measured adapted paired counts2/0/3, nodes33/281/797, final QUAD18/242/727 and
+TRI20/66/124. Step2 rejects42 UV unions and24 angular shapes. Same-site24x24
+source-area RMS increases approximately0.0927% at step1 and0.0000506% at step3;
+step2 is unchanged. Preserve this negative/tradeoff result; neither node-count
+control, global-error improvement, optimality nor accepted mixed feedback is
+demonstrated. Source adaptation remains TRI-driven, mixed_adaptive_epochs=0.
+
+Explicit closure audit covers code/owners, tests, contracts, documentation,
+scientific scope and failure/coverage inventory. Update canonical state/roadmap,
+implementation contract, finite audit and portable evidence; append this entry.
+Publish/read back the canonical checkpoint with a leased fast-forward and clean
+worktrees. Native tests and GitHub write access are available. No new Blender
+display, main modification, integration, full CRT/denial/Doxygen closure or
+independent approval. Unrelated open PRs remain untouched. Next: independent
+review/research integration qualification of PR238, then actual mixed accepted
+error feedback, then local curve-transition-interior balance. Keep M1/full M5/
+R3/M7 and isolated topology-phase-only coverage explicitly open.

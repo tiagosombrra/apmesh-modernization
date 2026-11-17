@@ -3,7 +3,7 @@
 Updated 2026-11-17 Fortaleza. Canonical branch: `quad-templates`.
 Remote main is `ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89` (concurrent documentation-only PR237).
 Frozen research reference remains `f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94`.
-## Active: complete integrated mixed TRI/QUAD filling before adaptive balancing
+## Active: review the qualified opt-in integrated mixed-fill package
 
 **Execution priority:** deliver this functional integration. Isolate a concrete
 defect or necessary prerequisite when it blocks progress, make the bounded
@@ -11,6 +11,48 @@ correction and required validation, then return directly to this objective.
 Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
+
+### 2026-11-17 - live paired QUAD output implemented, audited and qualified for review
+
+Exact feature6f4ef473b2d248548632d4e0f358f8eea4749f86, tree
+56412019f9c1123464a262a1a33176f3a37a2e6f, draft PR238. The separate
+curved_bezier_live_pairs_vertex_mean_v1 case now selects real adjacent AFT TRI
+pairs at triangle commit using the recorded physical-angle policy. Retain the
+original TRI scaffold/front trajectory and separate native-template/AFT-pair
+origins; construct/validate a new typed owner before publication. Previous
+cases/default TRI, source curves and adaptive decisions remain unchanged.
+See [continuity audit and delivery](MIXED_FILL_LIVE_PAIR_DELIVERY_20261117.md)
+and [portable evidence](evidence/MIXED_FILL_LIVE_PAIR_DELIVERY_20261117.json).
+
+Actual bounded histories select2/0/3 pairs: nodes33/281/797, final QUAD18/242/727,
+TRI20/66/124. Step2 has42 invalid UV unions and24 shape failures, not a forced
+all-QUAD result. Same-site sampled physical RMS is approximately0.0927% higher
+at step1, unchanged at step2 and0.0000506% higher at step3. No geometry-error,
+node-count, global-optimality or mixed-adaptive acceptance improvement is claimed.
+
+Exact local85/85, GNU/MSVC Debug/Clang ASan+UBSan/leak source/history/new/old/
+rollback cases and hosted44179166105 four jobs pass. Six forged live records
+reject; native shortcut/abort, shape, competing-alternative and rank-tie contracts
+pass. All40 previous OBJ per profile match7fc988d. All12 new history OBJ agree
+across profiles; four MSVC S values differ by at most4.44e-16 without changing
+choices. Current GNU frozen Eistute5/Book4 exact OBJ/acceptance and verified
+boundaries pass. Configured LLVM22 five-TU coverage retains explicit reuse of
+unchanged inputs and an exact-head unfiltered affected-header check.
+
+Preserve the earlier regression stop on stale inventory, test/format/fixture
+failures, documentary add/add conflict and failed hosted run44178168367 guard
+before science execution. Regenerate inventory without changing35/277 contracts;
+review only the exact new config; express the owning snapshot without aliasing
+or suppressed diagnostic. Canonical3cf8d21 documentation was reconciled into the
+feature; source/parent/tree publication and remote readback were checked.
+
+Next concrete action: independent review and research integration qualification
+of PR238, with applicable exact post-merge gates before a subsequent stage. Then
+implement actual mixed accepted-state/error feedback before local size coupling.
+No further generic questionnaire on the three pairing choices. No merge or
+scientific stage closure. M1/full M5/R3/M7, continuous validity, topology-only
+phase-specific coverage, Doxygen/full new-path CRT/denials remain open;
+mixed_adaptive_epochs=0. No new Blender session in this delivery.
 
 ### 2026-11-17 - experimental pair metric and ordering decided
 
