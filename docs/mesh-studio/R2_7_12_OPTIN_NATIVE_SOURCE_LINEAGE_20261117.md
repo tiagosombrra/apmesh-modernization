@@ -262,3 +262,68 @@ elements of the provenance chain.
 The amended raw-retention CI result must be checked separately from
 the original passing #44130426062 before any claim that archived
 per-face NDJSON evidence is downloadable.
+
+
+## Final raw-evidence CI qualification (2026-11-17)
+
+The corrected raw-data workflow completed successfully:
+[**GitHub Actions #44132332729**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44132332729),
+tested **source code SHA**
+`d39e01380daf1cece298a85cdc62da23609c4eb3`.
+**All four jobs SUCCESS.**
+
+| Verification | Actual completed result |
+| --- | --- |
+| Original serial C++ engine with default-off experimental flag explicitly enabled | **PASS** |
+| Real Eistute native accepted step | **step 1; 1,168 TRI; 4 original patches; 13 original source curves; 3 rejected/restored** |
+| Real Book native accepted step | **step 1; 4,256 TRI; 28 original patches; 85 original source curves; 2 rejected/restored** |
+| Raw native NDJSON copied out of temporary generator directory | **PASS, both models** |
+| Independent retained-byte SHA-256 + complete face/patch/curve reparse | **PASS, both models** |
+| Additional synthetic raw-retention auditor controls | **4/4 PASS** |
+| Complete Linux scientific Python suite | **258 run, 4 optional skipped; PASS** |
+| Complete Windows scientific Python suite | **258 run, 10 environment-dependent skipped; PASS** |
+| Chromium source picker / QUAD fallback / three-camera tests | **42 PASS, 5 intentionally skipped** |
+| C++ source changes outside explicitly guarded observation, scientific acceptance thresholds, original model/OBJ data | **NONE** |
+| Actual second accepted epoch on either original model | **NOT OBSERVED** |
+| Real GPU-present/RSS/VRAM, cross-epoch certified face descendants, R2.8 LOD | **NOT QUALIFIED** |
+
+The dedicated native job logged the **independent second-pass raw data
+audit**, which read back **every native face** after the original temporary
+generation workspace was retired:
+
+```text
+R2712_RETAINED_NATIVE_EVIDENCE_AUDIT={
+  "all_native_raw_sidecar_sha256_verified": true,
+  "all_original_face_patch_curve_records_reparsed": true,
+  "cross_epoch_face_lineage_qualified": false,
+  "original_native_models": {
+    "book": {"accepted_native_steps":[1], "source_face_counts":[4256],
+             "source_patch_count":28, "source_curve_count":85,
+             "raw_native_face_record_artifacts_retained":true},
+    "eistute": {"accepted_native_steps":[1], "source_face_counts":[1168],
+                "source_patch_count":4, "source_curve_count":13,
+                "raw_native_face_record_artifacts_retained":true}
+  },
+  "scientific_lod_qualified": false
+}
+```
+
+The retained reproducibility evidence is the **complete original
+NDJSON + its SHA-256-linked per-model JSON summaries**, not just a
+textual log. Actions artifact **#14351345847**,
+`mesh-studio-r2712-native-original-source-d39e01380daf1cece298a85cdc62da23609c4eb3`:
+https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44132332729/artifacts/14351345847
+
+**Retention:** GitHub Actions artifact retention is configured to
+**7 days**, so this is a verified temporary research receipt, **not**
+a permanent archival strategy. The next research checkpoint should
+preserve an immutable long-term copy of original source evidence and
+reconcile an explicitly disabled observation build against the opt-in
+build, before any claims of altered or preserved numerical behavior.
+
+**Final scientific decision: R2.7.12 PASS for the narrowly defined
+source-bound, single-accepted-step original TRI lineage instrument.**
+The **R2.8 scientific LOD and cross-epoch lineage gate remain OPEN**.
+Do not merge this draft, promote a faster default renderer, enable
+nonmanifold source-node welding, publish a release or claim physical
+GPU qualification based on these observations.
