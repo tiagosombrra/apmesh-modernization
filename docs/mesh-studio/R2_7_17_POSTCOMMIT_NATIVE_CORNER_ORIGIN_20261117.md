@@ -123,9 +123,80 @@ present/RSS/VRAM is a separate unresolved gate. VTK remains the
 default, both experimental BVHs opt-in/bounded; PR stays draft,
 unmerged; no tags or release.
 
-## Qualification log
+## Observed original C++ native evidence — research run (2026-11-17)
 
-R2.7.17 implementation submitted for full experimental qualification.
-**No real native PASS or corner-origin match result is claimed until
-a successful run and independently inspected original native
-R2.7.17 marker establish both models' measured counters.**
+[GitHub Actions #44172758604](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44172758604)
+at exact tested research code SHA
+`7a58278e0ce09158999eee251f11bf3ba0debd7b`
+independently completed **native-lineage-optin SUCCESS** and
+scientific Python regression **Linux SUCCESS (304 run, 4 skips)**,
+**Windows SUCCESS (304 run, 10 environment skips)**. Chromium was
+**still in progress at the last verification**; no whole-workflow
+all-jobs PASS is inferred before its completion.
+
+The real original native marker
+`R2717_ORIGINAL_NATIVE_CORNER_SOURCE` and separately preserved
+original R2.7.12 post-commit NDJSON bytes establish:
+
+| Accepted native step 1 source observation | Eistute | Book |
+| --- | ---: | ---: |
+| Actual source patches / curves | 4 / 13 | 28 / 85 |
+| Actual native TRI accepted faces | 1,168 | 4,256 |
+| Patches with accepted UV(0,0) ID equal to original edge-0 first-sample ID | **4/4** | **28/28** |
+| Patches with accepted UV(0,0) ID equal to original shared edge-3 first-sample ID | **1/4** | **1/28** |
+| Accepted UV(0,0) XYZ equal to edge-0 source sample XYZ | **4/4** | **28/28** |
+| Accepted UV(0,0) XYZ equal to edge-3 source sample XYZ | **4/4** | **28/28** |
+
+The original shared source curve slot is **3**, attached to
+patch-local edge slot **3** on every original patch with
+`reversed=false`. The first original Eistute patch has accepted
+UV(0,0) ID **21**, equal to both source edges; its second patch
+has accepted ID **90**, equal to its source edge-0 sample but
+different from the common edge-3 source sample **21**.
+In original Book, the first native patch has accepted ID **141**
+(equal to both original source edges); its second patch has
+accepted ID **181**, equal to edge-0 but different from the
+common edge-3 source ID **141**. The same classification holds
+for all remaining patches. This is **independently observed
+post-commit accepted native identity**, not a synthetic fixture.
+
+The real compiled serial generator OFF-versus-ON numerical
+comparison continued to PASS **Eistute 21/21 scientific files
+byte-identical** and **Book 17/17**. No acceptance threshold,
+restored/committed decision, output geometry or measured original
+scientific metric was modified for these profiles.
+
+The source-bound R2.7.17 original report and full raw original
+post-commit NDJSON files were archived as **two separate ZIPs**
+in authenticated personal Google Drive
+`Doutorado/DOUTORADO_APMESH_ACOMPANHAMENTO/05_Experimentos_e_Resultados`.
+They were downloaded again from Drive and independently compared
+byte-for-byte with the original GitHub Actions artifact downloads.
+
+| Original artifact and permanent personal research copy | Bytes | Original GitHub and Drive-readback ZIP SHA-256 |
+| --- | ---: | --- |
+| R2.7.17 accepted corner-origin report, Actions artifact #14367354818 | 1,694 | `1dafc941f47042c2d4f86b3e4f266a7a3d228ba18ba695ee8bf107b1e6be1f6c` |
+| R2.7.17 *original per-face native source* NDJSON plus source-bound summaries, Actions artifact #14367719412 | 269,875 | `a61e8dc0262a366d718b1765b249edf36ca826b2a3f00b684ed6b9c9e689043e` |
+
+The original accepted Eistute NDJSON has SHA-256
+`1484a13cee4859f05c875c65fce763ab1ddd7e1e1f96b4fc1f094a81744adcfa`;
+the original accepted Book NDJSON has
+`a89f4b0a60d90f1fc025f52aaac7c7f1a6a8cf7447a1c3232d8e089d1bfd3457`.
+These are newly generated post-commit source snapshots under
+the new optional observer, not falsely relabeled legacy bytes.
+Private Drive file URLs are intentionally omitted from the
+potentially public Git repository.
+
+**Scientific decision:** R2.7.17 source endpoint-vs-accepted
+corner identity observation **PASS** for the one accepted original
+TRI step of Eistute and Book. The source code's proposed
+`Boundary::close()` mechanism is consistent with the data; the
+accepted corner's original source edge-0 logical ID is directly
+observed. The actual call chain and C++ pointer ownership of
+that boundary closure remain **unproven** by this observer.
+
+R2.8 scientific LOD stays BLOCKED; physical GPU present/RSS/VRAM,
+two original native accepted adaptive epochs, independent
+cross-epoch face/curve descendant identity and continuous error
+bounds stay OPEN. No mesh welding, renumbering, source-policy
+adjustment, main merge, tag, default-picker promotion or release.
