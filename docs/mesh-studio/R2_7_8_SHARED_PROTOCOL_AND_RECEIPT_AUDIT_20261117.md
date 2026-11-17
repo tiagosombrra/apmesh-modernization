@@ -3,6 +3,12 @@
 **Date:** 2026-11-17. **PR:** #239, still an isolated research draft.
 **Scope:** qualification **of the measurement protocol**, not qualification of new
 mesh geometry, hardware GPU output, or accepted adaptive stages.
+**Validated code SHA:** `5c507fb84b002241aca0f39190aed54ec4233940`.
+**Passing CI:** https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44048544999
+(**40 Chromium tests passed, 5 intentionally skipped**, plus **5/5 offline
+receipt-audit unit tests**; Linux and Windows scientific regressions,
+TypeScript/Vite build and R2.6/R2.7 contracts PASS).
+
 
 ## Motivation and failure modes closed
 
@@ -122,3 +128,40 @@ trustworthy VRAM counters, GPU-present timestamps, larger accepted
 real source mesh with per-face generator lineage, Bezier geometry
 error/anisotropy, shared curves and scientific R2.8 LOD remain blocked.
 This stage neither merges the PR nor tags/releases the project.
+
+## Final observed evidence and disposition
+
+At CI #44048544999, the R2.7.8 browser preflight executed the **same
+`measuredClick()` and `camera()` functions** imported by the
+operator-gated physical-desktop campaign.
+
+| Source model | Verified original source faces | Measured picks per method | All method/source ID matches |
+| --- | --- | ---: | --- |
+| Controlled original P1 | 68, 76 | 4 (12 all methods) | PASS |
+| Staged/unaccepted Band | 94, 104 | 4 (12 all methods) | PASS |
+
+Thus the preflight's **24 measured source-face selections** agreed
+for the named positive TRI pixels. There is no claim that this is a
+uniform or exhaustive hit/miss/occlusion distribution. The normal
+R2.7.5 48-triple source tests and R2.7.6 source/provenance controls
+also remained in the passing 40-test Chromium suite.
+
+The receipt auditor's **five in-memory unit tests** passed, including
+strict negative mutations for copied/omitted samples, camera and SHA
+provenance, computed percentiles, source IDs, forged memory/GPU claims
+and synthetic/legacy model substitutions.
+
+Hosted Chromium reported
+`ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)`
+and `softwareSuspected=true`.
+All CI receipts explicitly retain
+`physicalGPUQualified=false`. The two desktop tests were **intentionally
+skipped**, alongside three pre-existing optional tests.
+
+**Decision:** R2.7.8 protocol/code and report-consistency gates PASS
+in CI. Physical Windows/Linux GPU-present measurements, process and
+Worker RSS, GPU VRAM, additional independently qualified larger
+source-face meshes, and R2.8 continuous geometric LOD proof remain
+**OPEN**, not passed. Do not enable experimental picker defaults,
+increase synchronous index caps, change the C++ generator, merge PR
+#239 or publish a release based on these results.
