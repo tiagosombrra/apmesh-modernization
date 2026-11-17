@@ -156,8 +156,10 @@ python -m tools.mesh_studio.verify_native_lineage \
   --root . --model book --out-dir build/r2712-native-evidence
 ```
 
-No real results are declared until this exact native-optin job passes
-and both original generator receipts are independently checked.
+**This real opt-in job has now passed**, including the source-bound
+independent receipt verifier on both original model inputs. The exact
+original source snapshots recorded below are new generation results,
+not synthetic unit-test fixtures and not historical OBJ ordinals.
 
 ## Admission status
 
@@ -171,3 +173,53 @@ separate experimental hardware gates.
 
 Keep PR #239 a research draft; do not merge, tag, release or enable
 a new default selector based on opt-in provenance instruments.
+
+## Measured real C++ source evidence — first full CI completion
+
+[**GitHub Actions #44130426062**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44130426062)
+validated code revision
+`3f30f854395d30c7f7935839dd4f804f6962f12c`.
+All **four** jobs finished **SUCCESS**:
+
+| Evidence | Actual result |
+| --- | --- |
+| Opt-in serial original C++ engine compilation | **PASS**, real `quad_generator_outcome_probe` |
+| Original source Eistute replay | **1 accepted step**, **3 rejected/restored**, **1,168 accepted TRI**, **4 source patches**, **13 source curves** |
+| Original source Book replay | **1 accepted step**, **2 rejected/restored**, **4,256 accepted TRI**, **28 source patches**, **85 source curves** |
+| Independent native sidecar verification | **PASS** both models; real typed global commit/restore event matches sidecar count |
+| Linux scientific/VTK Python suite | **254 tests run; 4 optional skipped; PASS** |
+| Windows scientific Python suite | **254 tests run; 10 environment-dependent skipped; PASS** |
+| New synthetic parser negative controls | **10/10 PASS** in both Linux/Windows unit suites |
+| Chromium/VTK/Worker/multi-camera suite | **42 PASS, 5 intentional skips** |
+| Production TypeScript/Vite build and earlier source contracts | **PASS** |
+| Physical GPU, RSS/VRAM, real presented-frame latency | **NOT MEASURED** |
+| Two consecutive original accepted epochs per model | **NOT OBSERVED** |
+| Cross-epoch face descendant lineage and R2.8 scientific LOD | **NOT QUALIFIED** |
+
+Actual stdout markers from the real compiled native generator:
+
+```text
+R2712_NATIVE_LINEAGE_QUALIFIED={"accepted":1,"cross_epoch_lineage_qualified":false,"faces_per_accepted_step":[1168],"model":"eistute","restored":3,"second_epoch_seen":false,"source_curves":13,"source_patches":4}
+R2712_NATIVE_LINEAGE_QUALIFIED={"accepted":1,"cross_epoch_lineage_qualified":false,"faces_per_accepted_step":[4256],"model":"book","restored":2,"second_epoch_seen":false,"source_curves":85,"source_patches":28}
+```
+
+The Linux Actions job retained the two source-qualified JSON
+reports in artifact
+`mesh-studio-r2712-native-original-source-3f30f854395d30c7f7935839dd4f804f6962f12c`
+(artifact ID **14348759115**, short-lived 7-day retention).
+The reports pin the original model input/config, actual research
+executable, resolved configuration, stdout/stderr and NDJSON source
+hashes. They do **not** replay a second accepted epoch.
+
+The original **scientific/default build remains untouched by the
+opt-in path** when `AP_MESH_ENABLE_RESEARCH_LINEAGE=OFF`; the
+research-only module and hook are behind compile-time guards.
+A separate exact native **default-off-vs-opt-in scientific binary
+parity campaign** remains valuable future evidence, not a proven
+result of the current opt-in-only C++ build.
+
+**Scope decision:** the result closes native *single-accepted-snapshot*
+per-face ID and source patch/curve observation for two real models.
+It does not close acceptance of a second epoch, cross-epoch face
+identity persistence, nonmanifold sheet node welding, continuous
+Bezier error/anisotropy, physical GPU memory or R2.8 LOD approval.
