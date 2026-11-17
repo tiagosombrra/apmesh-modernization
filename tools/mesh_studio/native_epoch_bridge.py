@@ -88,14 +88,26 @@ def audit_native_source(original: str, outcome: str) -> dict:
     """Locate actual existing branch hooks; do not infer runtime execution from text."""
     commit = original.find("accepted_mesh = accepted_scope.Commit();")
     accepted = original.find("GlobalOutcomeKind::AcceptedStepCommitted")
-    restore_domain = original.find("restore_geometry_submeshes(geometry, accepted_mesh);")
-    restore_curve = original.find("restore_curve_snapshots(geometry, accepted_curve_snapshots);")
-    rejected = original.find("GlobalOutcomeKind::RejectedStepRestored")
-    acceptance_branch = original.rfind("if (score_ok || small_mesh_progress_override)", 0, commit)
+    # Multiple restorations can occur earlier during candidate retries. Only
+    # inspect the rejection arm *after* the current accepted-commit branch.
+    rejected_arm = original.find("if (!accepted_step) {", accepted)
+    restore_domain = original.find(
+        "restore_geometry_submeshes(geometry, accepted_mesh);", rejected_arm
+    )
+    restore_curve = original.find(
+        "restore_curve_snapshots(geometry, accepted_curve_snapshots);", restore_domain
+    )
+    rejected = original.find(
+        "GlobalOutcomeKind::RejectedStepRestored", restore_curve
+    )
+    acceptance_branch = original.rfind(
+        "if (score_ok || small_mesh_progress_override)", 0, commit
+    )
     require(all(i >= 0 for i in (commit, accepted, restore_domain, restore_curve,
-                                  rejected, acceptance_branch)),
+                                  rejected, acceptance_branch, rejected_arm)),
             "missing_native_acceptance_or_restore_anchor")
-    require(acceptance_branch < commit < accepted < restore_domain < restore_curve < rejected,
+    require(acceptance_branch < commit < accepted < rejected_arm <
+            restore_domain < restore_curve < rejected,
             "native_commit_restore_event_sequence_changed")
     require(accepted - commit < 800 and rejected - restore_curve < 800,
             "native_event_no_longer_near_lifecycle_boundary")
