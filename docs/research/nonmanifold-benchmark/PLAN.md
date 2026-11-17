@@ -1,4 +1,8 @@
 # Execution plan: external benchmark corpus and reverse-patch feasibility
+## 2026-11-17 S3.V original S40 planar B-spline native-trim blocker
+
+The [S3.V strict native-trim source report](S3V_S40_PLANAR_SPLINE_TRIM_BLOCKER.md) provides a **148-patch CANDIDATE, NOT ADMITTED**, from original S40 STEP source face #17 and #2092, reusing all frozen prior S3.T boundary integer controls. The source-native 18-edge indexed loops each admit eight convex planar Coons patches, 1,619 candidate controls and 239 exactly two-sided indexed seams. Original native trimmed-face classification: **1,296/1,296 interior IN; 135/704 boundary OUT**; all boundary failures occur on original degree-five 3D B-spline edges #85 (63) and #2096 (72), none on new internal diagonals. The maximum sampled original-native boundary curve distance is 0.00089266861645 mm below the unchanged experimental 0.001-mm budget, but proximity is NOT a substitute for strict native trim membership. Candidate BP remains private; **approved S40 remains 132 patches, 19/43 source faces**. Directed tests on original frozen S40: S3.V 30 PASS; independent S3.S–S3.T 45 PASS and S3.U–S3.V 55 PASS; single combined run exceeded timeout and is not claimed. Next S3.W: coordinate original B-spline #85/#2096 boundary remediation across both incident source patches, preserve exact source-indexed controls and revalidate BOTH native trimmed faces and the historical hole #218. No original STEP, derivative BP coordinates or production C++ code is committed; PR #225 remains draft, no merge.
+
 
 ## 2026-11-17 S3.U — Post-octagon original S40 source-native gap census
 
