@@ -60,6 +60,11 @@ class TestScientificSourceEpochInventory(unittest.TestCase):
         self.assertEqual(archive["historic_manifest_sha256"],
                          HISTORIC_EISTUTE_MANIFEST_SHA256)
         self.assertFalse(archive["historical_manifest_matches_file"])
+        self.assertTrue(archive["historic_manifest_matches_crlf_equivalent"])
+        self.assertEqual(archive["crlf_reconstructed_sha256"],
+                         HISTORIC_EISTUTE_MANIFEST_SHA256)
+        self.assertEqual(archive["manifest_discrepancy_explanation"],
+                         "EXACT_LF_TO_CRLF_CONVERSION_NOT_GEOMETRY_CHANGE")
         self.assertFalse(archive["adaptive_acceptance_verified"])
         self.assertFalse(archive["per_face_original_generator_id_verified"])
         self.assertEqual(archive["archived_csv_matching_reference_rows"], 3)
