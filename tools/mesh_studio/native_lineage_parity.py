@@ -168,9 +168,13 @@ def execute(executable: Path, root: Path, model: str, workspace: Path,
         accepted_steps.append(receipt["accepted_step"])
         source_face_counts.append(receipt["native_tri_faces"])
         sidecar_sha[sidecar.name] = sha_bytes(raw)
-    require(accepted_steps == sorted(set(accepted_steps)) ==
-            EXPECTED_ACCEPTED_STEPS[model] if instrumented else accepted == 1,
-            "unexpected_original_accepted_step_sequence")
+    if instrumented:
+        require(accepted_steps == sorted(set(accepted_steps)) ==
+                EXPECTED_ACCEPTED_STEPS[model],
+                "unexpected_original_accepted_step_sequence")
+    else:
+        require(accepted == len(EXPECTED_ACCEPTED_STEPS[model]),
+                "unexpected_uninstrumented_committed_step_count")
     return {
         "executable_sha256": sha256_file(executable),
         "source_config_sha256": sha256_file(source_config),
@@ -198,8 +202,6 @@ def compare_default_off_vs_on(executable_off: Path, executable_on: Path,
     require(executable_off.is_file() and executable_on.is_file() and
             executable_off != executable_on,
             "must_supply_two_distinct_real_native_build_executables")
-    require(out_dir.resolve() != root and
-            not root in out_dir.resolve().parents or False, "") if False else None
     with TemporaryDirectory(prefix="apmesh-r2713-parity-") as temp:
         folder = Path(temp)
         control = execute(executable_off, root, model, folder / "default_off",
