@@ -27,13 +27,13 @@ if(!existsSync(cli)){
   process.stderr.write('R277_REFUSED: run npm install in tools/mesh_studio/web.\n');
   process.exit(2);
 }
-const extra=process.argv.slice(2);
-if(extra.some(x=>x==='--headless'||x==='--project=headless')){
-  process.stderr.write('R277_REFUSED: this protocol requires headed Chromium.\n');
+// Do not allow overrides of config, headed mode, worker count or the test filter.
+if(process.argv.length!==2){
+  process.stderr.write('R277_REFUSED: CLI overrides are forbidden in the certified desktop protocol.\n');
   process.exit(2);
 }
 const command=[
-  cli,'test','--config=playwright.r277.config.ts','--headed',...extra,
+  cli,'test','--config=playwright.r277.config.ts','--headed',
 ];
 const result=spawnSync(process.execPath,command,{
   stdio:'inherit',
