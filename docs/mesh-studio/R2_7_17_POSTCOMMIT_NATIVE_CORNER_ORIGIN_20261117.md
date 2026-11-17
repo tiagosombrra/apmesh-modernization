@@ -128,11 +128,14 @@ unmerged; no tags or release.
 [GitHub Actions #44172758604](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44172758604)
 at exact tested research code SHA
 `7a58278e0ce09158999eee251f11bf3ba0debd7b`
-independently completed **native-lineage-optin SUCCESS** and
-scientific Python regression **Linux SUCCESS (304 run, 4 skips)**,
-**Windows SUCCESS (304 run, 10 environment skips)**. Chromium was
-**still in progress at the last verification**; no whole-workflow
-all-jobs PASS is inferred before its completion.
+completed **ALL FOUR REQUIRED JOBS SUCCESS**:
+**native-lineage-optin SUCCESS** with real original Eistute/Book C++
+observer and OFF/ON parity; scientific Python regression
+**Linux SUCCESS (304 run, 4 optional skips)**,
+**Windows SUCCESS (304 run, 10 environment skips)**, and real
+**Chromium SUCCESS (42 passed)**. The original source-admissibility
+claim is grounded in the native job marker and immutable observed
+source hash; browser PASS is independently confirmed in its own job.
 
 The real original native marker
 `R2717_ORIGINAL_NATIVE_CORNER_SOURCE` and separately preserved
