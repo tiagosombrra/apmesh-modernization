@@ -149,6 +149,15 @@ jobs:
         run: python -m tools.mesh_studio.native_seam_samples --directory build/r2712-native-evidence --output build/r2715-native-sampled-seams.json
       - name: Derive original native read-only nonwelded many-patch seam sample correspondences
         run: python -m tools.mesh_studio.native_seam_correspondence --directory build/r2712-native-evidence --output build/r2716-native-correspondence.json
+      - name: Audit original accepted native UV00 ID versus real postcommit source curve endpoints
+        run: python -m tools.mesh_studio.native_corner_origin --directory build/r2712-native-evidence --output build/r2717-native-corner-origin.json
+      - name: Retain native R2.7.17 original source-corner witness without numeric changes
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2717-original-corner-origin-${{ github.sha }}
+          path: build/r2717-native-corner-origin.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain R2.7.16 original native sample associations without overwriting any node IDs
         uses: actions/upload-artifact@v4
         with:
