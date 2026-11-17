@@ -121,3 +121,28 @@ jobs:
           path: tools/mesh_studio/web/test-results/
           if-no-files-found: ignore
           retention-days: 7
+  native-lineage-optin:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Configure isolated serial C++ original-generator research capture
+        run: |
+          cmake -S . -B build/r2712-native -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DAP_MESH_USE_MPI=OFF -DAP_MESH_USE_OPENMP=OFF -DAP_MESH_ENABLE_LTO=OFF -DAP_MESH_ENABLE_RESEARCH_LINEAGE=ON
+      - name: Build original GeneratorAdaptive with research-only post-commit observation
+        run: cmake --build build/r2712-native --target quad_generator_outcome_probe --parallel 3
+      - name: Verify original Eistute native accepted-epoch face, patch, UV and source-curve records
+        run: python -m tools.mesh_studio.verify_native_lineage --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --model eistute --out-dir build/r2712-native-evidence
+      - name: Verify original Book native accepted-epoch face, patch, UV and source-curve records
+        run: python -m tools.mesh_studio.verify_native_lineage --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --model book --out-dir build/r2712-native-evidence
+      - name: Retain source-locked native generator evidence; no accepted-epoch promotion
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2712-native-original-source-${{ github.sha }}
+          path: build/r2712-native-evidence/*.json
+          if-no-files-found: ignore
+          retention-days: 7
