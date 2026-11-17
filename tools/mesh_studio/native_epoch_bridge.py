@@ -118,6 +118,36 @@ def audit_native_source(original: str, outcome: str) -> dict:
     }
 
 
+def audit_native_obj_identity_gap(source: str) -> dict:
+    """Establish why original OBJ ordinal is not a canonical generator face ID."""
+    first = source.find("void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_) {")
+    next_writer = source.find(
+        "void GeneratorAdaptive::WriteMesh(MeshAdaptive* malha, int step_,",
+        first + 1,
+    )
+    require(first >= 0 and next_writer > first,
+            "original_obj_writer_overload_missing")
+    writer = source[first:next_writer]
+    require("node_index[n->GetId()] = next_index++;" in writer and
+            'obj << "v "' in writer and 'obj << "f "' in writer and
+            "TriangleAdaptive* t = (TriangleAdaptive*)sub->GetElement(j);" in writer,
+            "original_obj_writer_structure_changed")
+    require("t->GetId()" not in writer and
+            "sub->GetPatch()" not in writer and
+            'obj << "g "' not in writer,
+            "original_obj_writer_provenance_revised_reaudit_required")
+    # Native C++ interfaces own IDs, but they are not written to OBJ face records.
+    return {
+        "scope": "FIRST_LEGACY_TRI_OBJ_WRITER_SOURCE_AUDIT",
+        "generator_node_id_used_for_output_vertex_deduplication": True,
+        "generator_element_face_id_serialized": False,
+        "per_face_source_patch_id_serialized": False,
+        "per_face_source_curve_identity_serialized": False,
+        "obj_face_position_equals_native_source_element_id": False,
+        "new_opt_in_native_identity_sidecar_required": True,
+    }
+
+
 def audit_archived_r2c13(original: dict) -> dict:
     require(original.get("schema") ==
             "apmesh.quad.r2c13.m7.genuine_generator_accepted_epochs.v1",
@@ -240,6 +270,7 @@ def build_native_epoch_bridge(root: Path) -> dict:
             "native_r2c14_evidence_sha256": r2c14_digest,
         },
         "source_code_lifecycle": source_hooks,
+        "legacy_native_obj_identity_gap": audit_native_obj_identity_gap(source),
         "original_models": native_models,
         "original_generator_rejections": forensics,
         "other_experiment_not_conflated": {
