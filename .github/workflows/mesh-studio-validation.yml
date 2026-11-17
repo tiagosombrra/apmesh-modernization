@@ -141,11 +141,12 @@ jobs:
         run: python -m tools.mesh_studio.verify_native_lineage --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --model eistute --out-dir build/r2712-native-evidence
       - name: Verify original Book native accepted-epoch face, patch, UV and source-curve records
         run: python -m tools.mesh_studio.verify_native_lineage --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --model book --out-dir build/r2712-native-evidence
-      - name: Retain source-locked native generator evidence; no accepted-epoch promotion
-        if: always()
+      - name: Reparse retained original face/patch/curve bytes against source-bound digests
+        run: python -m tools.mesh_studio.audit_retained_native_lineage --directory build/r2712-native-evidence
+      - name: Retain original NDJSON face records and source-bound summaries together
         uses: actions/upload-artifact@v4
         with:
           name: mesh-studio-r2712-native-original-source-${{ github.sha }}
-          path: build/r2712-native-evidence/*.json
-          if-no-files-found: ignore
+          path: build/r2712-native-evidence/*
+          if-no-files-found: error
           retention-days: 7
