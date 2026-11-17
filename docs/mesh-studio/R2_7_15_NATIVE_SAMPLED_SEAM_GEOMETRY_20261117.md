@@ -49,7 +49,7 @@ source patch in the R2.7.14 graph, it:
 4. Compares all pairs of distinct owning patches for equal sample
    counts, canonical parameter differences, original native logical
    node IDs and Euclidean XYZ displacement. The explicit XYZ rule is
-   `distance <= 1e-9 + 1e-9*max(1, coordinate_magnitudes)`, not a
+   `distance <= 1e-9 + 1e-9*(local two-side XYZ bounding-box diagonal)`, not a
    proof that a common CAD curve has zero continuous error.
 5. Marks `sampled_uv_xyz_logical_id_concordance_observed=true`
    **only when both native side chains are complete and all
