@@ -6,11 +6,14 @@
 #include "data/geometry.h"
 #include "data/mesh/mesh_adaptive.h"
 #include "data/mesh/sub_mesh.h"
+#include "data/node_adaptive.h"
 #include "data/patch/patch_coons.h"
 #include "data/point_adaptive.h"
 #include "data/triangle_adaptive.h"
 
+#include <algorithm>
 #include <array>
+#include <vector>
 #include <cmath>
 #include <cstdlib>
 #include <filesystem>
@@ -49,6 +52,64 @@ std::string SafeOutputStem(const std::string& prefix) {
       stem += '_';
   }
   return stem.empty() ? "model" : stem;
+}
+
+struct AcceptedCornerOwner {
+  const NodeAdaptive* owner = nullptr;
+  unsigned int node_slot = 0;
+  unsigned long native_node_id = 0;
+  bool observed_face_corner_has_this_node = false;
+};
+
+AcceptedCornerOwner ObserveNativeCornerOwner(const SubMesh& sub) {
+  // Inspect accepted UV(0,0) triangle corners, then locate their
+  // actual SubMesh-owned C++ NodeAdaptive object. Never expose an address.
+  bool found_face = false;
+  unsigned long corner_id = 0;
+  std::array<double, 3> corner_xyz{};
+  const ElementAdaptive* corner_element = nullptr;
+  for (unsigned int index = 0; index < sub.GetNumberElements(); ++index) {
+    const auto* tri = dynamic_cast<const TriangleAdaptive*>(sub.GetElement(index));
+    Require(tri != nullptr, "r2718_unsupported_accepted_native_triangle");
+    const std::array<std::tuple<double, double>, 3> uv{{
+        tri->GetParametersN1(), tri->GetParametersN2(), tri->GetParametersN3()}};
+    for (unsigned int i = 0; i < 3; ++i) {
+      if (std::fabs(std::get<0>(uv[i])) > 1e-9 ||
+          std::fabs(std::get<1>(uv[i])) > 1e-9)
+        continue;
+      const PointAdaptive point = tri->GetVertexPoint(i + 1);
+      const std::array<double, 3> xyz{{point.GetX(), point.GetY(), point.GetZ()}};
+      if (found_face) {
+        Require(corner_id == point.GetId() && corner_xyz == xyz,
+                "r2718_ambiguous_original_accepted_uv00_face_node");
+      } else {
+        corner_id = point.GetId();
+        corner_xyz = xyz;
+        corner_element = tri;
+        found_face = true;
+      }
+    }
+  }
+  Require(found_face, "r2718_missing_actual_original_uv00_triangle_corner");
+  AcceptedCornerOwner result;
+  for (unsigned int node_slot = 0; node_slot < sub.GetNumberNos(); ++node_slot) {
+    const NodeAdaptive* node = sub.GetNoh(node_slot);
+    if (node == nullptr || node->GetId() != corner_id ||
+        node->GetX() != corner_xyz[0] ||
+        node->GetY() != corner_xyz[1] ||
+        node->GetZ() != corner_xyz[2])
+      continue;
+    Require(result.owner == nullptr, "r2718_ambiguous_original_submesh_corner_owner");
+    result.owner = node;
+    result.node_slot = node_slot;
+    result.native_node_id = corner_id;
+    const auto& adjacency = node->GetElements();
+    result.observed_face_corner_has_this_node =
+        std::find(adjacency.begin(), adjacency.end(), corner_element) != adjacency.end();
+  }
+  Require(result.owner != nullptr && result.observed_face_corner_has_this_node,
+          "r2718_native_corner_missing_submesh_owned_adjacency");
+  return result;
 }
 
 void WriteLineage(const Geometry& source, MeshAdaptive& mesh,
@@ -92,10 +153,12 @@ void WriteLineage(const Geometry& source, MeshAdaptive& mesh,
        << ",\"native_id_semantics\":\"snapshot_local_not_cross_epoch\","
        << "\"face_record_semantics\":\"native_element_id_plus_patch_slot_not_obj_ordinal\","
        << "\"r2717_corner_observer\":\"native_postcommit_source_curve_endpoints_v1\","
+       << "\"r2718_owner_observer\":\"native_postcommit_submesh_cpp_node_owner_v1\","
        << "\"scientific_lod_admitted\":false}\n";
 
   unsigned long long total_faces = 0ULL;
   unsigned long long total_nodes = 0ULL;
+  std::vector<const NodeAdaptive*> previously_observed_corner_owners;
   for (unsigned int patch_slot = 0; patch_slot < source.GetNumberPatches(); ++patch_slot) {
     const Patch* patch = source.GetPatch(patch_slot);
     SubMesh* sub = mesh.GetSubMeshAdaptiveByPosition(patch_slot);
@@ -105,6 +168,29 @@ void WriteLineage(const Geometry& source, MeshAdaptive& mesh,
     Require(coons != nullptr, "unsupported_native_source_patch");
     const auto node_count = sub->GetNumberNos();
     const auto face_count = sub->GetNumberElements();
+    const AcceptedCornerOwner corner = ObserveNativeCornerOwner(*sub);
+    Require(coons->GetNumBerCurves() == 4,
+            "r2718_original_source_patch_not_four_sided");
+    const CurveAdaptive* edge0 = coons->GetCurve(0);
+    const CurveAdaptive* edge3 = coons->GetCurve(3);
+    Require(edge0 != nullptr && edge3 != nullptr &&
+            edge0->GetNumBerPoints() >= 2 && edge3->GetNumBerPoints() >= 2,
+            "r2718_original_source_corner_curve_not_sampled");
+    const auto original_endpoint = [](const CurveAdaptive* curve, bool reversed) {
+      return const_cast<CurveAdaptive*>(curve)->GetPoint(
+          reversed ? curve->GetNumBerPoints() - 1 : 0);
+    };
+    const PointAdaptive* sample0 =
+        original_endpoint(edge0, coons->IsCurveReversed(0));
+    const PointAdaptive* sample3 =
+        original_endpoint(edge3, coons->IsCurveReversed(3));
+    Require(sample0 != nullptr && sample3 != nullptr,
+            "r2718_original_source_corner_endpoint_missing");
+    const bool reused_cpp_corner = std::find(
+        previously_observed_corner_owners.begin(),
+        previously_observed_corner_owners.end(), corner.owner) !=
+        previously_observed_corner_owners.end();
+    previously_observed_corner_owners.push_back(corner.owner);
     total_nodes += node_count;
     total_faces += face_count;
     Require(total_nodes <= kMaxNodes && total_faces <= kMaxFaces,
@@ -114,7 +200,20 @@ void WriteLineage(const Geometry& source, MeshAdaptive& mesh,
          << ",\"native_patch_id\":" << patch->GetId()
          << ",\"node_count\":" << node_count
          << ",\"face_count\":" << face_count
-         << ",\"source_curves\":[";
+         << ",\"r2718_accepted_cpp_node_owner\":{"
+         << "\"native_node_id\":" << corner.native_node_id
+         << ",\"submesh_node_slot\":" << corner.node_slot
+         << ",\"triangle_has_actual_owner_adjacency\":"
+         << (corner.observed_face_corner_has_this_node ? "true" : "false")
+         << ",\"cpp_owner_reused_between_previous_patch_submeshes\":"
+         << (reused_cpp_corner ? "true" : "false")
+         << ",\"cpp_owner_same_as_edge0_source_point\":"
+         << (static_cast<const PointAdaptive*>(corner.owner) == sample0 ? "true" : "false")
+         << ",\"cpp_owner_same_as_edge3_source_point\":"
+         << (static_cast<const PointAdaptive*>(corner.owner) == sample3 ? "true" : "false")
+         << ",\"original_edge0_and_edge3_source_points_are_same_cpp_object\":"
+         << (sample0 == sample3 ? "true" : "false")
+         << "},\"source_curves\":[";
     for (unsigned int edge = 0; edge < coons->GetNumBerCurves(); ++edge) {
       const CurveAdaptive* curve = coons->GetCurve(edge);
       auto found = curve_slots.find(curve);
