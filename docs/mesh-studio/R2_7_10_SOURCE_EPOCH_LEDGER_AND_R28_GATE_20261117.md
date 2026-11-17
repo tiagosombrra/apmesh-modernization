@@ -74,12 +74,23 @@ It verifies its original Git blob digest; previous cross-revision
 Git checks showed the blob is identical in the published upstream,
 original modernization import, and current branch.
 
-**Unresolved historical manifest discrepancy:** `MANIFEST.sha256`
+**Historical manifest discrepancy resolved as line endings:** `MANIFEST.sha256`
 declares `c0c55cbdf473233408dd21a9a17b542adee12f969e187abaea8116f103080e18`
-for the same path, which differs from the actual/published matching
-blob's SHA-256 `378b62da...`. The ledger explicitly checks
-that the original historical manifest value **remains untouched** and
-records the mismatch rather than silently rewriting the manifest.
+for the OBJ, while the published Git blob's **LF** byte representation
+hashes to `378b62da75400c1bfe6871be29d22d8b14d6d6e054a1fa79de062de35c95f9eb`.
+Recomputing SHA-256 after **only** replacing every LF byte (`0A`)
+with CRLF (`0D 0A`) yields the historical manifest's
+`c0c55cbd...` value **exactly**.
+
+This confirms the original mismatch was an **LF/CRLF byte representation
+difference, not a geometrical change or altered face record**. The
+original historical manifest remains **untouched** and records the
+CRLF representation, while the published Git blob remains LF. To avoid
+Windows altering the research bytes during checkout, `.gitattributes`
+now pins `reference/*.obj` (plus associated original CSV/JSON)
+to `text eol=lf`. The ledger asserts both raw hashes and the exact
+LF→CRLF transformation. Neither representation is rewritten to
+artificially force identical raw hashes.
 
 The reference is a **saved stage-4 candidate**, not an independently
 verified accepted transition. In fact, all **three archived CSV rows**
@@ -111,9 +122,10 @@ a direct Bezier continuity proof by Mesh Studio.
 - writes a read-only JSON classification for each candidate with
   original physical inventory, source error measurement classification
   and explicit absence of accepted adaptive-epoch numbers;
-- independently checks the original Eistute archive and historical
-  manifest contradiction; does not import or normalize its original
-  face IDs into the P1/Band viewport source-ID contract;
+- independently checks the original Eistute archive and **explains
+  the historical manifest hash by exact LF→CRLF byte conversion**; does
+  not import or normalize its original face IDs into the P1/Band
+  viewport source-ID contract;
 - defines an explicit `r28_gate` blocked on the five requirements
   listed below. It rejects a manually edited ledger that incorrectly
   claims accepted adaptive epochs, five independent runs,
