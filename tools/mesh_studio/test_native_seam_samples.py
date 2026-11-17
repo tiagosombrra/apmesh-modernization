@@ -140,6 +140,17 @@ class TestNativeSeamSampling(unittest.TestCase):
         self.assertTrue(close_xyz([0.0, 0.0, 0.0], [1e-10, 0.0, 0.0]))
         self.assertFalse(close_xyz([0.0, 0.0, 0.0], [1e-4, 0.0, 0.0]))
 
+    def test_xyz_comparison_is_translation_invariant(self):
+        self.assertFalse(close_xyz(
+            [1.0e12, 0.0, 0.0], [1.0e12 + 0.001, 0.0, 0.0]))
+        self.assertTrue(close_xyz(
+            [1.0e12, 0.0, 0.0], [1.0e12, 0.0, 0.0]))
+        self.assertFalse(close_xyz(
+            [0.0, 0.0, 0.0], [0.001, 0.0, 0.0]))
+        self.assertTrue(close_xyz(
+            [0.0, 0.0, 0.0], [1.5e-9, 0.0, 0.0],
+            characteristic_length=1.0))
+
     def test_same_accepted_face_input_yields_deterministic_result(self):
         a = analyze_sampled_seams(source())
         b = analyze_sampled_seams(source())
