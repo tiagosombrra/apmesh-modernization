@@ -27,6 +27,38 @@ diagnostics. The difference is in the original *logical native
 node IDs* across patch-local copies, not in the sampled geometric
 agreement in this experiment.
 
+## Source-level explanation for the single divergent corner
+
+The actual R2.7.15 original native records identify the canonical
+shared original source curve as `source_curve_slot=3` on
+**local patch edge 3** of every Eistute/Book patch; all incidences
+have `reversed=false`. The **canonical `t=0` endpoint** is the
+only seam sample whose logical native node ID differs across owner
+patches. All other original samples have one shared logical ID
+across patches, and the accepted native XYZ and canonical t are
+exactly equal in the retained full pairwise R2.7.15 JSON.
+
+The original serial C++ source offers a specific mechanism:
+in `src/adapter/adapter.cpp`'s `AdaptDomain`, local edges 2/3
+traverse `parameters_.rbegin()` to the element before
+`parameters_.rend()`, **omitting their final local endpoint**
+so that the boundary does not duplicate its first vertex.
+`Boundary::close()` in `src/crab_mesh/aft/boundary.cpp` joins
+the final edge-3 vertex to `first`, which was created on the
+initial local edge 0, preserving that vertex's original copied
+logical node ID. As `u=0,v=0` is incident to edge 0 and edge 3,
+the resulting geometric point can be identical while its surviving
+logical ID comes from each patch's edge-0 curve samples, rather
+than the common edge-3 curve endpoint. This is a **source-level
+mechanistic explanation consistent with the observations**, not
+an independent instrumented runtime proof of pointer ownership.
+
+There must be **no automatic global ID correction** based on this
+finding. A subsequent source/ABI-focused observer can investigate
+the actual corner owner and source-curve sample slot under real
+accepted commits without modifying native acceptance, and must
+preserve multi-sheet nonmanifold semantics.
+
 ## R2.7.16 hypothesis and construction
 
 The source graph and native TRI per-face UV/XYZ/IDs support a
