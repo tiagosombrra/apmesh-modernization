@@ -1,4 +1,9 @@
 # Execution plan: external benchmark corpus and reverse-patch feasibility
+
+## 2026-11-17 S3.X — Original S40 post-repair native gap and margin audit
+
+[Original S40 S3.X report](S3X_S40_POST_REPAIR_NATIVE_GAP_AND_MARGIN.md) validates the byte-pinned repaired 148-patch research atlas without adding new faces: **21/43 original STEP faces represented, 22 pending** (13 planar, 6 cylindrical, 3 B-spline), with 16 pending faces one original edge away and six two edges away. Source-native graph 43 faces / 117 edges / 77 vertices; no 3+-incident original edge (S40 remains a manifold control). Stress checking the two repaired shared degree-five spline source edges uses **1,935** original native planar and **1,935** cylinder boundary samples, plus **3,375** samples on the 15 changed older cylinder patches; none classified OUT. Float-guarded bivariate Bernstein radial bound is **0.000980524 mm**, leaving only **0.000019476 mm** under the unchanged 0.001-mm experimental budget; **not** formally interval-certified or a continuous trimmed-face equivalence proof. Next S3.Y prioritizes original planar six-edge faces `#1827/#1907/#3044` (four circular source edges and six source-edge connections each), requiring canonical indexed curve-segment reconciliation and independent native coverage before patch admission. Directed tests: **159/159 PASS** in four completed selections (70 S3.S–U; 30 S3.V; 36 S3.W; 23 S3.X). One combined run timed out; do not claim a single full-suite pass. No APMesh C++ TRI/QUAD execution, genuine original non-manifold positive, or `main` merge. Keep PR #225 draft.
+
 ## 2026-11-17 S3.V original S40 planar B-spline native-trim blocker
 
 ## 2026-11-17 S3.W — Original S40 #85/#2096 shared spline repair pilot
