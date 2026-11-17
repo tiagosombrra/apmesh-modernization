@@ -151,6 +151,15 @@ jobs:
         run: python -m tools.mesh_studio.native_seam_correspondence --directory build/r2712-native-evidence --output build/r2716-native-correspondence.json
       - name: Audit original accepted native UV00 ID versus real postcommit source curve endpoints
         run: python -m tools.mesh_studio.native_corner_origin --directory build/r2712-native-evidence --output build/r2717-native-corner-origin.json
+      - name: Audit actual provisional Adapter boundary closure against accepted C++ submesh ownership
+        run: python -m tools.mesh_studio.native_boundary_ownership --directory build/r2712-native-evidence --output build/r2718-boundary-cpp-ownership.json
+      - name: Retain original R2.7.18 C++ pointer-comparison receipt without raw addresses
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2718-native-boundary-ownership-${{ github.sha }}
+          path: build/r2718-boundary-cpp-ownership.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain native R2.7.17 original source-corner witness without numeric changes
         uses: actions/upload-artifact@v4
         with:
