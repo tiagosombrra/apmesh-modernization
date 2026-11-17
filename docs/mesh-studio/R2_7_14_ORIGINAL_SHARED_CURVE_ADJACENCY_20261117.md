@@ -98,11 +98,41 @@ Keep VTK native as the default, both BVH selectors opt-in and bounded,
 PR #239 draft/unmerged; do not change article configurations merely to
 force an artificial second accepted step, merge, tag or release.
 
-## Qualification log
+## Final exact original-native qualification (2026-11-17)
 
-- Implementation landed in the isolated research branch.
-- Real original-model source adjacency receipt and final four-job CI
-  outcome: **await independent workflow evidence**.
-- This document intentionally does not claim experimental PASS in the
-  absence of an observed successful Actions run and its exact source
-  revision.
+[**GitHub Actions #44153782458**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44153782458)
+at exact implementation commit `60a1017e00e0660e7fb1948ad7367fc382f84b34`
+finished **4/4 jobs SUCCESS**: Linux and Windows scientific
+regressions, Chromium and serial native GeneratorAdaptive.
+Its `native-lineage-optin` job ran Eistute and Book against the
+**real original input configs**, independently verified full original
+source face/patch/curve NDJSON and emitted
+`R2714_ORIGINAL_SOURCE_ADJACENCY`. The retained original graph JSON
+is Actions artifact
+[#14360791421](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44153782458/artifacts/14360791421),
+configured for 14-day retention.
+
+| Original native accepted snapshot | Source patches | Source curves | Curves owned by exactly two patches | Curves owned by 3+ patches | Distinct pair adjacencies |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Eistute accepted step 1 | **4** | **13** | **0** | **1** | **6** |
+| Book accepted step 1 | **28** | **85** | **0** | **1** | **378** |
+
+The direct original graph has **one source curve incident to every
+patch** in each model (all 4 or all 28 patch-owner pairs), rather
+than a set of ordinary two-patch seams. Those are **source curve
+incidences**, not physical mesh-edge welding. The original real
+native generator revalidated exactly one accepted TRI step for each:
+Eistute **1,168 faces, 3 rejected/restored**; Book **4,256 faces,
+2 rejected/restored**. The instrumented OFF/ON Eistute/Book original
+scientific file parities also re-passed **21/21 and 17/17**, respectively.
+
+**Decision:** R2.7.14 PASS for source incidence extraction on these
+original accepted snapshots. It is **not** a physical nonmanifold
+topology, welded-node, continuous geometry or cross-epoch LOD PASS.
+The actual 3+-patch shared-source-curve finding motivates explicit
+many-owner sampled side comparisons in R2.7.15.
+
+No second accepted epoch, physical node pointer equality, certified
+continuous source curve agreement or physical Windows GPU/RSS/VRAM
+was produced. R2.8 remains BLOCKED; VTK remains default; PR #239
+remains draft/unmerged, with no scientific C++ policy change.
