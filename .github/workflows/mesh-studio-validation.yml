@@ -6,6 +6,9 @@ on:
       - feature/mesh-studio-r27-bvh-20261116
     paths:
       - 'tools/mesh_studio/**'
+      - 'research/mesh_studio/**'
+      - 'src/generator/generator_adaptive.cpp'
+      - 'CMakeLists.txt'
       - '.github/workflows/mesh-studio-validation.yml'
       - '.gitattributes'
   workflow_dispatch:
