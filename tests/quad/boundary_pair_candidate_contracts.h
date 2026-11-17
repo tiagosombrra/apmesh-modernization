@@ -14,7 +14,8 @@ inline void BoundaryPairCandidateContracts() {
       throw std::runtime_error("Boundary pair candidate contract failed");
   };
   const std::vector<Triangle> square{{0, 1, 2}, {0, 2, 3}};
-  const auto original = square;
+  // Own an independent snapshot so accidental source mutation remains detectable.
+  const std::vector<Triangle> original(square.begin(), square.end());
   const auto pairs = apmesh::quad::CollectBoundaryPairCandidates(4, square);
   require(square == original && pairs.size() == 1);
   require(pairs[0].first_triangle == 0 && pairs[0].second_triangle == 1 &&

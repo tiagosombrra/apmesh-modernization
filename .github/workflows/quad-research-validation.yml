@@ -345,6 +345,7 @@ jobs:
               "configs/quad/curved_patch.conf",
               "configs/quad/curved_patch_original_curves.conf",
               "configs/quad/curved_patch_bounded_domain.conf",
+              "configs/quad/curved_patch_live_pairs.conf",
           }
           changed = set(subprocess.check_output(
               ["git", "diff", "--name-only",
