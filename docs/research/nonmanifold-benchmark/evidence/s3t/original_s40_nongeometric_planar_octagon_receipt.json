@@ -1,0 +1,69 @@
+{
+  "active_controls": 1409,
+  "derived_original_bp_publicly_committed": false,
+  "excluded_original_faces": 24,
+  "experimental_global_budget_mm": 0.001,
+  "full_original_brep_equivalence": "NOT_CERTIFIED",
+  "global_open_indexed_sides": 150,
+  "global_two_sided_indexed_seams": 189,
+  "inherited_historical_inactive_controls": 118,
+  "maximum_sampled_native_edge_distance_mm": 1.209999878592805e-10,
+  "maximum_sampled_native_plane_distance_mm": 2.940237502212347e-10,
+  "native_3d_original_edge_curve_samples": 176,
+  "native_source_edge_bijection_count": 117,
+  "native_trim_boundary_samples": 264,
+  "native_trim_interior_samples": 486,
+  "new_declared_controls": 60,
+  "new_original_3d_line_edges_audited": 16,
+  "new_original_faces": 2,
+  "new_patches": 6,
+  "new_private_original_bp_sha256": "988d8ed29867927f736838dde20db9efb358c0ee04a202a4f4810ae0e23aa40d",
+  "new_source_to_native_face_indices": {
+    "3737": 42,
+    "912": 5
+  },
+  "original_external_nonmanifold_3plus": "NOT_ESTABLISHED",
+  "original_shared_edge_curve_ids": {
+    "3737": [
+      1234,
+      1185,
+      1109
+    ],
+    "912": [
+      916,
+      946,
+      974
+    ]
+  },
+  "original_step_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "previous_declared_controls": 1467,
+  "previous_original_faces": 17,
+  "previous_patches": 126,
+  "previous_private_original_bp_sha256": "98ff4cbfad08ce3f587607fddf3bb5e1a3697e1513a8ca86889bb28406e4028d",
+  "real_apmesh_tri_quad_meshing": "NOT_RUN",
+  "represented_original_faces": 19,
+  "research_classification": "isolated scientific pilot; no production generator changes",
+  "research_s3m_s3t_tests": {
+    "failed": 0,
+    "passed": 173,
+    "skipped": 0
+  },
+  "research_s3r_s3t_tests": {
+    "failed": 0,
+    "passed": 82,
+    "skipped": 0
+  },
+  "research_targeted_tests": {
+    "failed": 0,
+    "passed": 28,
+    "skipped": 0
+  },
+  "schema": "apmesh-s3t-s40-two-original-planar-octagons-public-receipt-v1",
+  "source_frozen_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "source_model": "S40",
+  "source_raw_step_redistributed": false,
+  "strict_planar_gate_mm": 1e-07,
+  "total_declared_controls": 1527,
+  "total_original_faces": 43,
+  "total_patches": 132
+}
