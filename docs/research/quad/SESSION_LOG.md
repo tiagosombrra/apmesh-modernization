@@ -2953,3 +2953,47 @@ independent approval. Unrelated open PRs remain untouched. Next: independent
 review/research integration qualification of PR238, then actual mixed accepted
 error feedback, then local curve-transition-interior balance. Keep M1/full M5/
 R3/M7 and isolated topology-phase-only coverage explicitly open.
+
+
+## 2026-11-17 - independently review PR238 and repair bounded integration prerequisites
+
+User requests continuation and explicitly authorizes two separate technical
+reviewers. Recheck clean source6f4ef47, canonical fae255e, main ef40c0f, PR238,
+reviews/threads and exact CI44179166105 success. No external review submission
+or independent advisor approval is fabricated. Baseline report hash and current
+three native application image hashes match the qualified receipt; no identical
+native campaign is repeated for the initial source review.
+
+Ownership review traces owner-before-callback, exception disposal, copied
+captures, stable source observers, typed owners and reciprocal retirement;
+no concrete bounded defect. Retain ordinary observer-abort/allocation-denial
+coverage limits. Scientific review verifies85 exact IDs, histories/retries,
+physical rule, independent checks, native/frozen evidence and negative error
+results. It identifies the still-required three documentation references and a
+nonblocking unaccounted-extra-CSV-row checker gap.
+
+Run unchanged Doxyfile from normal checkout:2742 diagnostics including the three
+unresolved API links. Replace exactly those links with immutable ef40c0f targets
+whose Git blobs match. Afterward zero unresolved refs; generated index.html has
+all three hrefs; all remaining2739 diagnostics match exactly. Full Doxygen
+continues to exit1 (2731 undocumented API and8 other unchanged diagnostics).
+No suppression, relaxed warning policy, input exclusion or full Stage8 success.
+Independent follow-up explicitly accepts the specific reference/rendering
+prerequisite repair; broader debt remains open and earlier wording is disposed
+explicitly in STATE/roadmap rather than silently waived.
+
+Harden tracked Python checker with unique full-scope grouping before replay,
+no-seed refusal and total220-event accounting. Add extra foreign-scope/initial-
+stage records to existing six negatives:8/8 reject with2/0/3 selected pairs and
+nonempty rollback. This development uses the unchanged qualified MSVC app; old
+GNU/ASan results remain old-checker evidence. Exact follow-up local b9fd49e
+changes only docs/API_CONTRACTS.md and the checker; technical re-review finds
+both findings resolved. Reconcile canonical fae255e documents into the candidate
+without native/scientific source changes. Record reviewed blobs and conditions.
+
+Next is final remote-head qualification, guarded quad-templates integration and
+exact post-integration validation before a subsequent stage. This entry does
+not claim those unexecuted results, modern-main integration, numerical adoption,
+advisor approval, a Blender display or whole scientific/CRT/documentation closure.
+Keep one package and preserve broader M1/M5/R3/M7, continuous validity and full
+new-path denial obligations. Authoritative closure results follow the actual gates.

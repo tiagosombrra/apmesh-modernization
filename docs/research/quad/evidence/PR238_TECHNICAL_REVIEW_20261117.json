@@ -1,0 +1,85 @@
+{
+  "schema": "apmesh.quad.pr238_technical_review.v1",
+  "date": "2026-11-17",
+  "reviewed_source_sha": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+  "canonical_entry_sha": "fae255e71e1de3d115aeb520940c39af92fd1595",
+  "followup_local_only_sha": "b9fd49ecb2b49444e4f84562deee1e0ec386b195",
+  "followup_blobs": {
+    "docs/API_CONTRACTS.md": "ae3cc6153045c5546bab18ee7fdf8e424bdec328",
+    "tests/quad/test_live_pair_application.py": "7f7c2f49be415f9cc4c583af6daf59bcc62cf3e2"
+  },
+  "review_authorization": "The user explicitly authorizes two separate technical reviewers in the current session",
+  "ownership_lifetime_review": {
+    "subject_sha": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+    "recommendation": "Approve bounded research integration from ownership/lifetime perspective; no concrete ownership defect found",
+    "coverage": [
+      "AFT face ownership before callback/throw",
+      "value-only selector state and disposal on failure",
+      "stable copied real-curve/tree snapshots",
+      "independent typed physical owners and distinct origins",
+      "noexcept Patch/SubMesh publication and reciprocal retirement",
+      "nonempty rollback"
+    ],
+    "retained_limit": "Ordinary-path observer abort and individually enumerated container allocation-denial coverage remain broader obligations; shortcut abort, normal sanitizer and prepublication rollback are measured"
+  },
+  "scientific_regression_review": {
+    "subject_sha": "6f4ef473b2d248548632d4e0f358f8eea4749f86",
+    "followup_subject_local_only_sha": "b9fd49ecb2b49444e4f84562deee1e0ec386b195",
+    "recommendation": "No numerical regression blocker within measured corpus; the two follow-up review findings are resolved, subject to final-head and post-integration gates",
+    "checked": [
+      "85 distinct required tests with matched report hash and zero failures/skips",
+      "accepted/rejected/retry source histories",
+      "experimental physical score/validity/ranking and TRI fallback",
+      "three compiler/instrument profiles and frozen9 meshes with boundaries",
+      "independent geometry/provenance and retained error increases"
+    ],
+    "not_claimed": [
+      "advisor sign-off",
+      "full historical identity",
+      "full Stage8 documentation pass",
+      "unexecuted final-head or merged-revision checks"
+    ]
+  },
+  "documentation_prerequisite": {
+    "full_before_exit": 1,
+    "full_after_exit": 1,
+    "diagnostics_before": 2742,
+    "diagnostics_after": 2739,
+    "unresolved_references_before": 3,
+    "unresolved_references_after": 0,
+    "other_diagnostics_identical": true,
+    "generated_HTML_references": [
+      "https://github.com/tiagosombrra/apmesh-modernization/blob/ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89/docs/evidence/STAGE3_BEZIER_OBSERVERS.md",
+      "https://github.com/tiagosombrra/apmesh-modernization/blob/ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89/docs/evidence/STAGE3_SERIAL_READER.md",
+      "https://github.com/tiagosombrra/apmesh-modernization/blob/ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89/docs/evidence/STAGE3_MODEL_ROOT_AUDIT.md"
+    ],
+    "generated_HTML_sha256": "a54a9dccd7173370556214d59e1f95cd0d1d14ef72c61d52e8cc0cfa524319c1",
+    "Doxyfile_sha256": "8bd2a802eecd38dc2fa9de85d722791e18779c50e0352831496f41b626e7a001",
+    "scope": "Three broken reference/rendering obligations repaired; full API documentation remains failed Stage8 debt; warnings and policy unchanged"
+  },
+  "documentation_disposition": "The specific required three-reference/rendering obligation is repaired and independently inspected. Full Doxygen still fails with2739 unchanged other diagnostics and remains Stage8 debt. Doxyfile/warning policy is unchanged; no full documentation or stage closure is claimed.",
+  "checker_followup": {
+    "development_profile": "unchanged qualified MSVC application image; changed Python checker",
+    "development_report_sha256": "d75797ff2be61a9cdb50ce176f6f3d67d71b08e76c3eaf0bbfe827e08a0254be",
+    "audited_events": 220,
+    "forged_records_rejected": 8,
+    "nonempty_rollback": true,
+    "pair_counts": [
+      2,
+      0,
+      3
+    ],
+    "scope": "The old GNU/ASan checker outcomes remain their old six-control scope until the corrected checker is executed there"
+  },
+  "native_source_delta_from_reviewed_source": [],
+  "prior_gate_evidence": "evidence/MIXED_FILL_LIVE_PAIR_DELIVERY_20261117.json",
+  "integration_conditions": [
+    "fresh exact remote head and base",
+    "full85 baseline plus change-relevant corrected checker profiles on the final candidate",
+    "green configured exact-head checks",
+    "reviewed source/checker identity unchanged or re-review",
+    "research branch merge only; modernization main untouched",
+    "verify merged parents/tree and repeat required research-merge validation"
+  ],
+  "current_status": "Independent technical review and bounded repairs complete; final candidate qualification/integration remain unexecuted at this checkpoint"
+}

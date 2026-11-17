@@ -29,7 +29,7 @@
       "parallel": 25,
       "timer": 2
     },
-    "literal_include_directives": 670,
+    "literal_include_directives": 671,
     "first_party_include_edges": 368
   },
   "cross_component_directives": [
@@ -360,7 +360,7 @@
     "GL/glu.h": 1,
     "GL/glut.h": 1,
     "algorithm": 13,
-    "array": 10,
+    "array": 11,
     "atomic": 5,
     "cctype": 2,
     "cfloat": 5,
@@ -413,7 +413,7 @@
   "build_inputs": [
     {
       "path": "CMakeLists.txt",
-      "sha256": "827073404c676232e89d01c6bacba979fb4e74ab599eee7a11555b8cdb28c99b"
+      "sha256": "758cb3e7753a37ff8090746739331a969881245cbc3bacf01a6c0423b58e6914"
     },
     {
       "path": "CMakePresets.json",
@@ -877,88 +877,95 @@
       "path": "include/crab_mesh/aft/advancing_front.h",
       "component_by_directory": "crab_mesh/aft",
       "kind": "header",
-      "sha256": "c255e84e2f955b87905265bb62410ef6ef4dd81a277dfe3f1c6d70cdb98bf831",
-      "bytes": 5802,
+      "sha256": "caad6f3aaa3b11db514e6a9ba9f6225df9bff1b19edf37e38ef03c8a3d0420b2",
+      "bytes": 6397,
       "includes": [
         {
           "line": 4,
-          "spelling": "functional",
+          "spelling": "array",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 5,
-          "spelling": "optional",
+          "spelling": "functional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 6,
-          "spelling": "string",
+          "spelling": "optional",
           "form": "angle",
           "scope": "toolchain_or_unresolved",
           "target": null
         },
         {
           "line": 7,
+          "spelling": "string",
+          "form": "angle",
+          "scope": "toolchain_or_unresolved",
+          "target": null
+        },
+        {
+          "line": 8,
           "spelling": "../../data/definitions.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/data/definitions.h"
         },
         {
-          "line": 8,
+          "line": 9,
           "spelling": "boundary.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/boundary.h"
         },
         {
-          "line": 9,
+          "line": 10,
           "spelling": "edge.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/edge.h"
         },
         {
-          "line": 10,
+          "line": 11,
           "spelling": "face.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/face.h"
         },
         {
-          "line": 11,
+          "line": 12,
           "spelling": "quadtree.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/quadtree.h"
         },
         {
-          "line": 12,
+          "line": 13,
           "spelling": "quadtree_cell.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/quadtree_cell.h"
         },
         {
-          "line": 13,
+          "line": 14,
           "spelling": "shape.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/shape.h"
         },
         {
-          "line": 14,
+          "line": 15,
           "spelling": "smoothing_adjacency.h",
           "form": "quote",
           "scope": "first_party",
           "target": "include/crab_mesh/aft/smoothing_adjacency.h"
         },
         {
-          "line": 15,
+          "line": 16,
           "spelling": "vertex.h",
           "form": "quote",
           "scope": "first_party",
@@ -2847,8 +2854,8 @@
       "path": "include/generator/generator_adaptive.h",
       "component_by_directory": "generator",
       "kind": "header",
-      "sha256": "a70395e99ea2d25a0eb5d7d045d3d91d636b01bb511e944f754947f9d0eddd12",
-      "bytes": 41577,
+      "sha256": "514e5be16c3ae0654ed8c5e0451989db9fa5da38e0551cb3fa9ee0964638598e",
+      "bytes": 42155,
       "includes": [
         {
           "line": 4,
@@ -3889,8 +3896,8 @@
       "path": "src/application/run_application.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "f12c5a25f21b38c5585a79b567e5f3dc4b557a45297191f50bbe8ae66f4968f5",
-      "bytes": 4756,
+      "sha256": "35f042e07ad197981340fbbf38ebe2c283c14167e88e8f78d6688ccaaa5f4ac8",
+      "bytes": 5381,
       "includes": [
         {
           "line": 1,
@@ -4087,8 +4094,8 @@
       "path": "src/application/runtime_config.cpp",
       "component_by_directory": "application",
       "kind": "translation_unit",
-      "sha256": "c86c280b39550cc120028a8945c71700991059227dae93ab2f4631c1b453d772",
-      "bytes": 23218,
+      "sha256": "25ead89e9cd2c4b894afbadbb726cd0e07ba44911ef78f9566a89cc86c923e45",
+      "bytes": 23419,
       "includes": [
         {
           "line": 1,
@@ -4182,8 +4189,8 @@
       "path": "src/crab_mesh/aft/advancing_front.cpp",
       "component_by_directory": "crab_mesh/aft",
       "kind": "translation_unit",
-      "sha256": "48e1dcc1e8e4f30e730c5ac49bc562242e06fb5db18b7c4888b810ebcf5d5471",
-      "bytes": 49501,
+      "sha256": "fb803b153f5a6bfb51e5fcce57ab06a083b6d3c7eeed23e77282990635817f50",
+      "bytes": 49909,
       "includes": [
         {
           "line": 1,
@@ -5850,8 +5857,8 @@
       "path": "src/generator/generator_adaptive.cpp",
       "component_by_directory": "generator",
       "kind": "translation_unit",
-      "sha256": "86b28e77ec4f561c28b25d7d9745a490fde54edc1f989d42d8ab4ba276d7b7c8",
-      "bytes": 391367,
+      "sha256": "71b55cba23a8e5f0bbe885712c7a9734188acfb43890c1660b3dae8c2c2a5cc5",
+      "bytes": 393487,
       "includes": [
         {
           "line": 1,

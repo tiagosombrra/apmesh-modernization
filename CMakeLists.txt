@@ -52,10 +52,14 @@ if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD)
   target_include_directories(ap_mesh_engine PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
   target_sources(ap_mesh_engine PRIVATE
     research/quad/controlled_patch_application.cpp
+    research/quad/real_boundary_source.cpp
     research/quad/physical_quadrilateral_adaptive.cpp
     research/quad/uv_mesh.cpp research/quad/quadtree_quad.cpp
     research/quad/interior_template_dispatch.cpp
     research/quad/front_interface_audit.cpp research/quad/owned_aft_front.cpp)
+  add_executable(quad_real_boundary_source_contracts tests/quad/real_boundary_source_contracts.cpp)
+  target_include_directories(quad_real_boundary_source_contracts PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/research/quad")
+  target_link_libraries(quad_real_boundary_source_contracts PRIVATE ap_mesh_engine)
 endif()
 
 # Avoid dependence on whichever MinGW runtime DLLs happen to appear first in
@@ -362,5 +366,15 @@ if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD AND BUILD_TESTING)
     COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_controlled_application.py"
       --exe "$<TARGET_FILE:ap_mesh>" --directory "${CMAKE_CURRENT_BINARY_DIR}/controlled-application")
   set_tests_properties(quad.application.controlled PROPERTIES
+    TIMEOUT 180 LABELS "research-quad;application;required-gate")
+  add_test(NAME quad.application.domain_factor_bounds
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_domain_factor_bounds_application.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --directory "${CMAKE_CURRENT_BINARY_DIR}/domain-factor-bounds")
+  set_tests_properties(quad.application.domain_factor_bounds PROPERTIES
+    TIMEOUT 180 LABELS "research-quad;application;required-gate")
+  add_test(NAME quad.application.live_pairs
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_live_pair_application.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --directory "${CMAKE_CURRENT_BINARY_DIR}/live-pairs")
+  set_tests_properties(quad.application.live_pairs PROPERTIES
     TIMEOUT 180 LABELS "research-quad;application;required-gate")
 endif()

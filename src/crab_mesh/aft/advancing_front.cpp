@@ -990,6 +990,8 @@ enum MethodStatus AdvancingFront::makeMesh(bool frontBased, bool geometryPhase) 
 
     mesh.push_back(f.get());
     f.release();
+    if (triangle_commit_observer_)
+      triangle_commit_observer_({mesh.back()->getV1(), mesh.back()->getV2(), mesh.back()->getV3()});
   }
 
   return geometryPhase ? ADVF_GEOMETRY_MESH_DONE : ADVF_TOPOLOGY_MESH_DONE;
@@ -1398,6 +1400,8 @@ enum MethodStatus AdvancingFront::makeGeometryBasedMesh() {
 
     mesh.push_back(pending_face.get());
     pending_face.release();
+    if (triangle_commit_observer_)
+      triangle_commit_observer_({mesh.back()->getV1(), mesh.back()->getV2(), mesh.back()->getV3()});
 
     return ADVF_GEOMETRY_MESH_DONE;
   }
@@ -1820,6 +1824,10 @@ double AdvancingFront::PostprocessBlend() const noexcept {
 
 void AdvancingFront::SetRefinedQuadtreeObserver(RefinedQuadtreeObserver observer) {
   refined_quadtree_observer_ = std::move(observer);
+}
+
+void AdvancingFront::SetTriangleCommitObserver(TriangleCommitObserver observer) {
+  triangle_commit_observer_ = std::move(observer);
 }
 
 void AdvancingFront::SetTemplateMode(std::string mode) { template_mode_.emplace(std::move(mode)); }

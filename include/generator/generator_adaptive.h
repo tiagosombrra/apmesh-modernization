@@ -405,6 +405,8 @@ public:
   // Research-only: the caller must assign a session ID unique among generator
   // invocations whose audit streams will be joined. No CLI enables this.
   void SetResearchUvCapture(apmesh::quad::CaptureHooks hooks, std::uint64_t session);
+  // Opt-in research defect repair: keep the step2 override inside configured bounds.
+  void EnforceResearchDomainFactorBounds() noexcept { research_domain_factor_bounds_ = true; }
   // A research-only, bounded log with explicit overflow status.
   const apmesh::quad::GlobalOutcomeLog* GetResearchGlobalOutcomeLog() const noexcept {
     return research_global_outcomes_.get();
@@ -871,9 +873,14 @@ private:
   std::optional<apmesh::application::GenerationContext> generation_context_;
   Adapter adapter_;
   std::uint64_t research_session_ = 0;
+  bool research_domain_factor_bounds_ = false;
   std::uint64_t research_outer_epoch_ = 0;
   apmesh::quad::OuterAttemptIdentity current_research_outer_{};
   std::unique_ptr<apmesh::quad::GlobalOutcomeLog> research_global_outcomes_;
+  decltype(apmesh::quad::CaptureHooks::curve_stage_sink) research_curve_stage_sink_;
+  decltype(apmesh::quad::CaptureHooks::mesh_stage_sink) research_mesh_stage_sink_;
+  decltype(apmesh::quad::CaptureHooks::domain_begin_sink) research_domain_begin_sink_;
+  decltype(apmesh::quad::CaptureHooks::domain_selection_sink) research_domain_selection_sink_;
   std::string stop_reason_;
   unsigned long long current_gauss_nodes_;
   unsigned long long current_mean_nodes_;

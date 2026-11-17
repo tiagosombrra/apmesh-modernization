@@ -13,7 +13,14 @@ three native profiles, frozen TRI and hosted4/4 qualify this bounded candidate
 for review. Retain failures and sampled-error increases; no global improvement,
 independent approval, integration or M1/M5/R3/M7 closure follows.
 
-Current finite action: independent review and research integration qualification
+Independent technical review and the bounded follow-up repairs are complete:
+see [the review packet](PR238_TECHNICAL_REVIEW_20261117.md). The earlier required
+documentation-reference obligation is measured repaired with generated-link
+inspection; full Doxygen remains failed Stage8 debt, not a passed gate. The
+checker now accounts for all CSV rows and rejects extra foreign/no-seed scopes.
+No production/scientific inputs or numeric policies change.
+
+Current finite action: final-candidate qualification and guarded research integration
 of this one package, including applicable exact post-merge checks. After that:
 actual mixed accepted-state/error feedback, then local bidirectional curve/
 transition/interior sizing. The [realignment](MIXED_FILL_REALIGNMENT_20261117.md)

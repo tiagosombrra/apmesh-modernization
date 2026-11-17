@@ -1,0 +1,107 @@
+# Original-curve QUAD/AFT application candidate
+
+Classification: engineering integration in the opt-in research application.
+Default TRI formulas, curve policies, native tree construction, acceptance,
+retry/stopping rules and historical inputs are unchanged. The interior
+vertex-mean rule remains the existing experimental rule; no 1993 identity,
+global welding or accepted mixed-adaptation policy is claimed.
+
+## Implemented path
+
+`curved_patch_original_curves.conf` executes the original serial Generator
+on the original curved Bezier source and records actual Adapter-native refined
+tree attempts. The original algorithm, not a fixed sample count, produces the
+curve partition. The last locally selected attempt with a complete global TRI
+outcome supplies a value-only source snapshot. Initial QUAD generation does
+not impose the global acceptance of a separate TRI mesh as a prerequisite;
+the actual accepted/rejected TRI outcome is retained in the OBJ and receipt.
+Neither outcome increments accepted mixed epochs.
+
+Original curve nodes are retired by the Generator's existing lifetime scope.
+Only copied parameters, IDs, XYZ, oriented intervals, source tree boxes/levels
+and scalar controls survive. Replay uses the native subdivision implementation
+to reproduce every original cell, bound and level. Source parametric midpoint
+and normalized arc length are checked, then the original post-generation
+`len=-1` phase is restored. Original curve control geometry remains borrowed
+from the enclosing Geometry, which outlives the replayed native trees and typed
+physical owners. No sampled-node, AFT-edge or source-cell pointer escapes.
+
+The follow-up preserves cell identities, the allocation counter and exact
+ordered leaves as well as bounds/levels: original child IDs reconstruct native
+subdivision chronology, and every resulting cell/leaf sequence is compared.
+This avoids substituting DFS creation order for original native order.
+
+The existing dispatcher emits QUAD interior and the existing owned front calls
+original geometric/conditional topological exterior AFT. The typed physical
+mesh preserves each original boundary node ID/XYZ and directed interval.
+Interior identities use a noncolliding range. Fixed16 retains its old values
+and OBJ bytes; immutable layout IDs replace its sequential-only identity
+assumption in the shared incidence verifier.
+
+Output/pending-prefix refusal precedes the original workflow. OBJ publication
+uses the existing staged export and only then attaches the new owner. Normal
+and injected replacement-failure paths retain independent ordered observers
+and exact prior output bytes. This is still not the durable multi-epoch
+memory/filesystem transaction required for P2d-1c4b. Original `fillMesh` and
+`improveMesh` are not invoked on the mixed owner.
+
+## Initial measured GNU evidence, before exact candidate qualification
+
+- Native C++17 GNU application: **37 nodes, 16 QUAD, 28 original AFT TRI**;
+  **12 source intervals, four nonuniform sides, 16 original native leaves**.
+  Normal and rollback outputs have SHA-256
+  `3fbb0c312b81406fb60813caa3ef4b3e76b0b7922208801494b2be61d9d5b03a`.
+- Original reference step 1 retains a coarse 4-interval/4-leaf source without
+  interior templates. Original step 2 supplies the nonuniform source; its TRI
+  candidate is rejected by the unchanged hybrid criterion. This negative
+  outcome stays `reference_tri_accepted=0`; mixed adaptive epochs stay zero.
+- Native source contracts: **12 actual captures**, including **six reversed
+  curve captures**, **108/108 corrupt source/tree attempts rejected** while
+  retaining the original Patch owner. The reversed fixture has the same
+  original physical surface, with one source curve traversed in reverse.
+- Independent Python Bernstein/source/OBJ checks pass normal and rollback
+  geometry, exact source IDs/XYZ/intervals, topology and nine corrupted
+  artifacts per run. The later existing-output preflight requires its own
+  final exact-revision run; initial results do not certify that addition.
+
+These are initial implementation measurements, not exact-head qualification
+or integration. Final native, sanitizer, baseline/tooling, frozen TRI and
+remote results must identify their own candidate revision in the canonical
+STATE/SESSION_LOG checkpoint. Required unmeasured gates block stage closure.
+
+## Failures retained and bounded corrections
+
+Raw development outputs are retained locally, not rewritten as passes:
+legacy non-const Vertex getters required a mutable local observer; config
+admission initially lacked the new opt-in case; source-edge validation first
+mistook the original post-refinement `-1` sentinel for an invalid arc length;
+requiring every real partition to be nonuniform incorrectly rejected a valid
+original result; demanding a globally accepted TRI source selected only the
+coarse source with no interior; shared identity checks still assumed IDs 1..N;
+one Python negative initially changed an unconstrained interior ID rather
+than the source boundary identity it intended to exercise. Corrections preserve
+original policies and expose the reference rejection rather than tuning it.
+
+An initial formatter invocation could not find clang-format on PATH; the
+existing installed tool was selected only in the child process. Formatting was
+explicitly applied to the changed C++ files, including the existing controlled
+application unit. Architecture inventory was explicitly regenerated with its
+35 source-backed contracts; no diagnostic, gate or frozen oracle was removed.
+
+## First candidate qualification retained
+
+Feature `bfd501a` passed local GNU, Windows MSVC Debug and Clang
+ASan/UBSan/leak fixed16, native real-source contracts and real-boundary normal,
+rollback, corrupt-source and existing-output checks. Hosted
+[run #43714661426](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/43714661426)
+passed Linux native, Windows native and baseline/tooling (3/4 jobs), but the
+frozen TRI job refused the newly added
+`configs/quad/curved_patch_original_curves.conf` before any comparisons. The
+follow-up admits that one explicit new opt-in asset only; all frozen model and
+profile paths stay guarded. No failed job is counted as equivalence evidence.
+
+The first local delivery adapter rebuilt successfully but stopped before CTest
+because its configured inventory changed from 75 to 85. Its report remains a
+failure with zero executed CTests, requiring a fresh plan from the updated
+inventory. Follow-up source chronology checks and the asset admission require
+their own exact-revision native and remote qualification.

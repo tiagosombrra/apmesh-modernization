@@ -12,6 +12,33 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-17 - independent reviews complete; integration prerequisites repaired
+
+Two separately authorized technical reviews find no bounded ownership or
+numerical blocker in source6f4ef47. [Review and precise dispositions](PR238_TECHNICAL_REVIEW_20261117.md)
+and [receipt](evidence/PR238_TECHNICAL_REVIEW_20261117.json) identify source,
+follow-up blobs, coverage and limits. They are not advisor or whole-stage approval.
+
+The previously required documentation repair means three broken API evidence
+references: normal-checkout Doxygen plus generated HTML inspection now verifies
+all three immutable targets, zero unresolved references and identical remaining
+diagnostics. Full Doxygen still fails with2739 diagnostics; no full Stage8 pass
+or warning-policy relaxation. This explicitly resolves the earlier package
+reference/rendering prerequisite while retaining broader API-documentation debt.
+
+The checker now audits every live CSV row, rejecting extra foreign/no-seed stage
+records. The development MSVC run audits220 events and rejects8 controls with
+unchanged2/0/3 pairs and nonempty rollback. Production/native/scientific inputs
+and thresholds are unchanged. Previous six-control GNU/ASan results retain their
+old scope until corrected-checker execution. The reviewed follow-up local-only
+snapshot is b9fd49e; final publication identities must be recorded separately.
+
+Next action: exact final-candidate85 baseline, corrected checker profiles and
+configured remote checks, guarded research integration and exact merged-revision
+validation. No integration or unexecuted gate is claimed here. After that,
+actual mixed accepted-state/error feedback precedes local sizing balance;
+mixed_adaptive_epochs=0 and existing M1/M5/R3/M7/CRT/Doxygen limits remain.
+
 ### 2026-11-17 - live paired QUAD output implemented, audited and qualified for review
 
 Exact feature6f4ef473b2d248548632d4e0f358f8eea4749f86, tree

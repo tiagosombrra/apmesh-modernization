@@ -5,5 +5,6 @@ struct RuntimeConfig;
 }
 namespace apmesh::quad {
 int RunControlledPatch(const application::RuntimeConfig& config);
-}
+int RunRealBoundaryPatch(const application::RuntimeConfig& config);
+} // namespace apmesh::quad
 #endif

@@ -22,7 +22,7 @@ move assignment retire old patches before their borrowed curves; incoming
 objects keep their addresses and self move preserves the graph. Borrowing from
 another Geometry's retiring destination owners is invalid; foreign observers
 are not automatically rebound. Actual qualification status and remaining scope
-are in [the observer evidence](evidence/STAGE3_BEZIER_OBSERVERS.md).
+are in [the observer evidence](https://github.com/tiagosombrra/apmesh-modernization/blob/ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89/docs/evidence/STAGE3_BEZIER_OBSERVERS.md).
 
 Serial input (C27/ADR-0034) returns a new list of unique control-only PatchBezier
 owners from LoaderBezierPatchFile. Each result is independent. ReaderFilePatches
@@ -33,14 +33,14 @@ No external raw-result/binary compatibility or complete-reader rollback/retry is
 claimed. Three badbit masks propagate resource errors before partial row indexing;
 normal validation, EOF/failbit, control/ID order, interning tolerance and directions
 are preserved. Other loaders retain separate contracts and pending coverage.
-See [the serial boundary evidence](evidence/STAGE3_SERIAL_READER.md).
+See [the serial boundary evidence](https://github.com/tiagosombrra/apmesh-modernization/blob/ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89/docs/evidence/STAGE3_SERIAL_READER.md).
 
 Model remains an unqualified raw mesh owner under C02. It borrows Geometry and
 deletes stored meshes in reverse insertion order. Original implicit copy and
 rvalue operations duplicate owning pointers; failed vector growth does not adopt
 or destroy the pending mesh. The alternate OpenMP callers have no pending RAII
 owner, while the supported serial Generator owns its mesh separately. The
-[root audit](evidence/STAGE3_MODEL_ROOT_AUDIT.md) reproduces these risks without
+[root audit](https://github.com/tiagosombrra/apmesh-modernization/blob/ef40c0fc16e6913eb8941f2860ef0deb1ee6bd89/docs/evidence/STAGE3_MODEL_ROOT_AUDIT.md) reproduces these risks without
 changing the API. Duplicate adoption is an unsupported ownership arrangement.
 No safe Model copy, transfer, append-failure or parallel contract is established;
 slice 34 must define and qualify it before a production repair is integrated.
