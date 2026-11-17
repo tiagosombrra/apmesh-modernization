@@ -52,6 +52,17 @@ jobs:
       - name: Measure bounded synthetic transfer size (not GPU or generator performance)
         if: runner.os == 'Linux'
         run: python -m tools.mesh_studio.scene_benchmark --cells 1000 50000 --output build/mesh-studio/transfer-size.json
+      - name: Audit pinned real candidates and legacy archive without accepting adaptive epochs
+        if: runner.os == 'Linux'
+        run: python -m tools.mesh_studio.source_epoch_inventory --output build/mesh-studio/r2710-source-epoch-inventory.json
+      - name: Retain read-only source/epoch qualification ledger
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-source-epoch-inventory-${{ github.sha }}
+          path: build/mesh-studio/r2710-source-epoch-inventory.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Retain transport-size preflight receipt
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
