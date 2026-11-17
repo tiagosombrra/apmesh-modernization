@@ -184,6 +184,7 @@ for(const model of MODELS){
           schema:'apmesh.meshstudio.r277.operator_attested_headed_desktop.v1',
           classification:'PHYSICAL_DESKTOP_ATTESTED_NOT_GPU_PRESENT_OR_TOTAL_RAM_CERTIFIED',
           model:model.id,originalSourceSha:model.sha,sourceStatus:model.sourceStatus,
+          cameraXYZ:before[0],cameraPreserved:true,
           originalSourceFaceIds:candidatePixels.map(p=>p.id),
           exactOriginalIdMatches:samples.length,
           conditions:{quadVisible:false,rounds:ROUNDS,
