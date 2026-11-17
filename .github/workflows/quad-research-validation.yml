@@ -111,6 +111,7 @@ jobs:
           build/quad-app-linux/bin/quad_real_boundary_source_contracts configs/quad/curved_patch_original_curves.conf > build/quad-app-linux/results/real-source-contracts.stdout
           python3 tests/quad/test_real_boundary_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/real-boundary
           python3 tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/domain-factor-bounds
+          python3 tests/quad/test_live_pair_application.py --exe build/quad-app-linux/bin/ap_mesh --directory build/quad-app-linux/results/live-pairs
       - name: AddressSanitizer and UBSan controlled typed history (Linux)
         if: runner.os == 'Linux'
         shell: bash
@@ -125,6 +126,7 @@ jobs:
           build/quad-app-asan/bin/quad_real_boundary_source_contracts configs/quad/curved_patch_original_curves.conf > build/quad-app-asan/results/real-source-contracts.stdout
           python3 tests/quad/test_real_boundary_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/real-boundary
           python3 tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/domain-factor-bounds
+          python3 tests/quad/test_live_pair_application.py --exe build/quad-app-asan/bin/ap_mesh --directory build/quad-app-asan/results/live-pairs
       - name: Build controlled application QUAD entry (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -140,6 +142,8 @@ jobs:
           python tests/quad/test_real_boundary_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/real-boundary
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python tests/quad/test_domain_factor_bounds_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/domain-factor-bounds
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tests/quad/test_live_pair_application.py --exe build/quad-app-msvc/bin/Debug/ap_mesh.exe --directory build/quad-app-msvc/results/live-pairs
           exit $LASTEXITCODE
       - name: Retain controlled application output
         if: always()
