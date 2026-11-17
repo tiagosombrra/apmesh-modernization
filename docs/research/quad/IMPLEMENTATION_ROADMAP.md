@@ -3,18 +3,31 @@
 
 ## Current finite execution queue — 2026-11-17
 
-The [current realignment](MIXED_FILL_REALIGNMENT_20261117.md) supersedes the
-balance-first successor: complete integrated remaining-region TRI/QUAD filling,
-then actual mixed accepted-state/error feedback, then local bidirectional sizing.
-Source7fc988d adds read-only actual AFT pair candidates and source-scoped CSV
-contracts. It does not select/publish pairs or adopt scientific numerical policy.
-The user-delegated [experimental pair policy](MIXED_FILL_PAIR_POLICY_20261117.md)
-now specifies S_XYZ <=1.5, existing UV/physical validity, minimum physical score,
-exact-tie edge ratio then frontier/source order, and TRI fallback. No selector
-is activated and no formal advisor sign-off/historical identity is asserted.
-Next is its opt-in in-front implementation with reversible typed publication and
-separate seed-template/AFT-pair provenance. Keep all original M0-M9/R0-R4 gates,
-prior qualified slices, negative evidence and PR238 review; no stage closes here.
+The [continuity audit and live-pair delivery](MIXED_FILL_LIVE_PAIR_DELIVERY_20261117.md)
+implements the user-delegated physical-angle selector on exact feature6f4ef47,
+draft PR238. Actual original AFT triangle commits select2/0/3 disjoint pairs in
+the bounded histories, with distinct AFT-pair provenance and reversible complete
+physical-owner publication. Default TRI, previous cases, original curve nodes,
+templates/front trajectory and adaptation/acceptance remain. Exact85 baseline,
+three native profiles, frozen TRI and hosted4/4 qualify this bounded candidate
+for review. Retain failures and sampled-error increases; no global improvement,
+independent approval, integration or M1/M5/R3/M7 closure follows.
+
+Independent technical review and the bounded follow-up repairs are complete:
+see [the review packet](PR238_TECHNICAL_REVIEW_20261117.md). The earlier required
+documentation-reference obligation is measured repaired with generated-link
+inspection; full Doxygen remains failed Stage8 debt, not a passed gate. The
+checker now accounts for all CSV rows and rejects extra foreign/no-seed scopes.
+No production/scientific inputs or numeric policies change.
+
+Current finite action: final-candidate qualification and guarded research integration
+of this one package, including applicable exact post-merge checks. After that:
+actual mixed accepted-state/error feedback, then local bidirectional curve/
+transition/interior sizing. The [realignment](MIXED_FILL_REALIGNMENT_20261117.md)
+and [recorded policy](MIXED_FILL_PAIR_POLICY_20261117.md) remain the basis. No
+additional generic metric-choice questionnaire or global-factor sweep precedes
+that route; no new mixed estimator/acceptance controller is decided here.
+Preserve all original M0-M9/R0-R4 gates and prior positive/negative evidence.
 
 The [pinned state/plan audit](STATE_PLAN_AUDIT_20261113.md) retains R0–R4 and
 M0–M9 acceptance criteria. The UV convexity repair P0 is integrated through

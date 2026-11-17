@@ -30,6 +30,24 @@ def norm(a):
     return math.sqrt(dot(a, a))
 
 
+SCOPE_FIELDS = ('step', 'epoch', 'retry', 'domain_generation', 'reference_tri_accepted')
+
+
+def group_live_events(events, manifest):
+    """Account for every CSV row before per-stage geometry replay."""
+    stages, grouped = {}, {}
+    for row in manifest:
+        key = tuple(row[field] for field in SCOPE_FIELDS)
+        require(key not in stages, "Duplicate manifest scope")
+        stages[key], grouped[key] = row, []
+    for event in events:
+        key = tuple(event[field] for field in SCOPE_FIELDS)
+        require(key in stages, "Additional live event has a foreign stage scope")
+        require(int(stages[key]['quads']) > 0, "Live event claims a stage without a QUAD seed")
+        grouped[key].append(event)
+    return grouped
+
+
 def independently_measure(cycle, xyz, uv):
     for i, a in enumerate(cycle):
         b, c = cycle[(i+1) % 4], cycle[(i+3) % 4]
@@ -169,10 +187,12 @@ def main():
     _, rollback_archive, rollback_manifest = run(exe, directory, 'rollback', rollback=True)
     require(manifest == rollback_manifest, "Rollback changed paired history")
     events = list(csv.DictReader((archive/'live_pair_candidates.csv').open()))
+    grouped_events = group_live_events(events, manifest)
     stages = list(csv.DictReader((archive/'live_pair_stages.csv').open()))
     require(len(stages) == 4, "Missing live stage accounting")
     report = []
     rejected_controls = 0
+    audited_events = 0
     for old, row, stage in zip(old_manifest, manifest, stages):
         require(all(stage[key] == row[key] for key in ('step', 'epoch', 'retry',
                 'domain_generation', 'reference_tri_accepted')), "Live stage lineage differs")
@@ -186,8 +206,8 @@ def main():
         audit(original)
         scaffold = load_physical_obj(archive/file.replace('_quad_tri.obj', '_aft_source.obj'))
         require(scaffold == load_physical_obj(original), "Original AFT geometry/order changed")
-        scoped = [event for event in events if all(event[key] == row[key] for key in
-                  ('step', 'epoch', 'retry', 'domain_generation', 'reference_tri_accepted'))]
+        scoped = grouped_events[tuple(row[field] for field in SCOPE_FIELDS)]
+        audited_events += len(scoped)
         origins = [tuple(map(int, line.split()[2:])) for line in current.read_text().splitlines()
                    if line.startswith('# aft_pair_origin ')]
         require(origins == [(int(event['final_face']), int(event['first_source_face']),
@@ -217,10 +237,25 @@ def main():
                     rejected_controls += 1
                 else:
                     raise RuntimeError('Forged live decision passed: '+field)
-    require(any(row['selected_pairs'] > 0 for row in report) and rejected_controls == 6,
+    require(audited_events == len(events), "Some live CSV events escaped stage replay")
+    sample = next(event for event in events if event['status'] == 'selected')
+    for extra_scope in ('foreign', 'no_seed'):
+        extra = dict(sample)
+        if extra_scope == 'foreign':
+            extra['domain_generation'] = '999999'
+        else:
+            extra.update({field: manifest[0][field] for field in SCOPE_FIELDS})
+        try:
+            group_live_events(events + [extra], manifest)
+        except AssertionError:
+            rejected_controls += 1
+        else:
+            raise RuntimeError('Additional live event escaped accounting: '+extra_scope)
+    require(any(row['selected_pairs'] > 0 for row in report) and rejected_controls == 8,
             "No actual selected QUAD or insufficient negative controls")
     summary = {'schema': 'apmesh.quad.live_pair_application.v1', 'steps': report,
                'forged_records_rejected': rejected_controls, 'nonempty_rollback': True,
+               'complete_event_population_checked': audited_events,
                'original_aft_scaffold_preserved': True, 'mixed_adaptive_epochs': 0}
     (directory/'report.json').write_text(json.dumps(summary, indent=2)+'\n')
     print(json.dumps(summary, indent=2))
