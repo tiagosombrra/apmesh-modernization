@@ -186,7 +186,46 @@ count or a software-generated LOD visualization. Performance/VRAM,
 actual GPU-presented frame latency and physical Windows/Linux
 workstation runs remain additional independent qualification gates.
 
-## 6. Decision
+## 6. Final validation — original source ledger and line-ending reconstruction
+
+[**GitHub Actions #44080872633**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44080872633)
+validated research code SHA
+`8a1f9827c8a744289ab897d98b22382657c06549`.
+Every job finished with **success**:
+
+| Evidence | Result |
+| --- | --- |
+| Scientific unit suite, Ubuntu 24.04 | **232 tests run, 4 optional skipped, PASS** |
+| Scientific unit suite, Windows Server 2022 | **232 tests run, 10 environment-dependent skipped, PASS** |
+| New original-source/epoch inventory tests | **8/8 PASS on Linux and Windows** |
+| JS report-auditor contracts | **8/8 PASS** |
+| Chromium source-ID / multi-camera / BVH suite | **42 passed, 5 intentionally skipped** |
+| Production TypeScript/Vite build | **PASS** |
+| Source-epoch JSON artifact uploaded by Linux job | **PASS** |
+| Eistute original archived OBJ SHA | **EXACT LF bytes match** |
+| Historical manifest SHA | **EXACT CRLF-derived bytes match** |
+| Original archived Eistute stage-4 CSV decision | **rejected / hybrid_criterion_rejected** |
+| New qualifying accepted adaptive epochs | **0** |
+| R2.8 scientific geometric LOD | **BLOCKED (five independent missing evidence gates)** |
+
+The raw JSON receipt is attached to the Linux job as
+`mesh-studio-source-epoch-inventory-8a1f9827c8a744289ab897d98b22382657c06549`
+(short-lived Actions artifact). This is not a new generator output.
+
+The initial Windows CI #44079777502 failed on a missing explicit
+`reference/*.obj` LF checkout rule and exposed an actual
+platform-specific byte-integrity issue. The correction through
+`.gitattributes` passed both Windows and Linux; the final R2.7.10
+qualification further proved that the historic manifest SHA is
+**precisely** the original LF OBJ after CRLF line-ending conversion,
+not a changed source geometry. No historical source or manifest
+was overwritten.
+
+The archived rejection is **recorded by the source CSV**, not a
+separately replayed native decision trace, and none of the source
+objects qualify a new accepted adaptive epoch.
+
+## 7. Decision
 
 This stage consolidates source evidence and makes scientific admission
 machine-checkable. It **does not authorize** R2.8 geometric decimation,
