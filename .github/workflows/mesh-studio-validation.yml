@@ -63,6 +63,17 @@ jobs:
           path: build/mesh-studio/r2710-source-epoch-inventory.json
           if-no-files-found: error
           retention-days: 7
+      - name: Audit original TRI accepted/rejected native CI evidence (archived, not replayed)
+        if: runner.os == 'Linux'
+        run: python -m tools.mesh_studio.native_epoch_bridge --output build/mesh-studio/r2711-native-epoch-bridge.json
+      - name: Retain original-native-epoch bridge without inventing a second accepted epoch
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-native-epoch-bridge-${{ github.sha }}
+          path: build/mesh-studio/r2711-native-epoch-bridge.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Retain transport-size preflight receipt
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@v4
