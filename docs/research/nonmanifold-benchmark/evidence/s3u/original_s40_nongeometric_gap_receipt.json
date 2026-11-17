@@ -1,0 +1,123 @@
+{
+  "analytic_arc_alternative_source_faces": [
+    1279,
+    1386
+  ],
+  "apmesh_tri_quad_mesh_generation": "NOT_RUN",
+  "covered_source_face_ids": [
+    218,
+    912,
+    1105,
+    1181,
+    1230,
+    1519,
+    1773,
+    1800,
+    1986,
+    2403,
+    2430,
+    2457,
+    2806,
+    2882,
+    2936,
+    2990,
+    3100,
+    3127,
+    3737
+  ],
+  "excluded_original_face_ids": [
+    17,
+    556,
+    807,
+    859,
+    1279,
+    1386,
+    1493,
+    1827,
+    1907,
+    2092,
+    2243,
+    2469,
+    2545,
+    3044,
+    3134,
+    3183,
+    3237,
+    3269,
+    3319,
+    3402,
+    3485,
+    3535,
+    3683,
+    3710
+  ],
+  "frozen_s3r_atlas_bp_sha256": "98ff4cbfad08ce3f587607fddf3bb5e1a3697e1513a8ca86889bb28406e4028d",
+  "frozen_s3t_atlas_bp_sha256": "988d8ed29867927f736838dde20db9efb358c0ee04a202a4f4810ae0e23aa40d",
+  "native_correlated_edge_count": 117,
+  "native_correlated_face_count": 43,
+  "native_correlated_vertex_count": 77,
+  "new_bp_patches_generated": 0,
+  "new_source_faces_admitted": 0,
+  "odd_boundary_requires_subdivision_source_faces": [
+    3269,
+    3485
+  ],
+  "original_hole_face_218_preserved_by_frozen_s3t_prefix": true,
+  "original_source_face_count": 43,
+  "original_step_path": "original/i25o_s40.step",
+  "original_step_repo": "cgg-bern/hex-me-if-you-can",
+  "original_step_revision": "8f00f02579037cc893042f2ee2c910b20e3fb1b0",
+  "original_step_sha256": "b79eb5be1fde71b6a8d086fe14800a1ec62e3a3c4618910c81c64d23718abf3b",
+  "pending_original_face_count": 24,
+  "pending_original_minimum_hops_histogram": {
+    "1": 18,
+    "2": 6
+  },
+  "pending_partition_preflight_histogram": {
+    "CIRCULAR_BOUNDARY_APPROXIMATION_AND_QUAD_PARTITION_REQUIRED": 5,
+    "FOUR_SIDE_CURVED_BOUNDARY_APPROXIMATION_AND_SEAM_AUDIT_REQUIRED": 5,
+    "INNER_WIRE_HOLE_PRESERVING_PARTITION_REQUIRED": 2,
+    "NONPLANAR_SURFACE_RECONSTRUCTION_REQUIRED": 9,
+    "ODD_BOUNDARY_REQUIRES_SPLIT_OR_STEINER_VERTEX": 2,
+    "SPLINE_BOUNDARY_PARTITION_REQUIRED": 1
+  },
+  "pending_source_support_histogram": {
+    "B_SPLINE_SURFACE_WITH_KNOTS": 2,
+    "COMPLEX_RATIONAL_B_SPLINE_SURFACE": 1,
+    "CYLINDRICAL_SURFACE": 6,
+    "PLANE": 15
+  },
+  "pending_with_direct_source_edge_to_existing_atlas": 18,
+  "pending_without_direct_source_edge_to_existing_atlas": 6,
+  "prior_integrated_declared_control_count": 1527,
+  "prior_integrated_original_face_count": 19,
+  "prior_integrated_patch_count": 132,
+  "prioritized_next_candidate_source_faces": [
+    17,
+    2092
+  ],
+  "priority_note": "Heuristic only. Source/native B-spline and existing indexed BP seam conformity are not yet certified for new faces.",
+  "production_cpp_regression": "NOT_RUN",
+  "receipt_sha256": "1c8cef3d4524493e016d40feb8c63e0084420f3923d62f84c4572c8a96f5ecdc",
+  "sampled_original_native_bspline_support": [
+    {
+      "incident_represented_edge_count": 4,
+      "native_original_spline_samples": 33,
+      "native_original_spline_support_max_sampled_mm": 3.987032926033862e-12,
+      "original_master_3d_bspline_degree": 5,
+      "original_spline_edge_curve_id": 85,
+      "source_advanced_face_id": 17
+    },
+    {
+      "incident_represented_edge_count": 4,
+      "native_original_spline_samples": 33,
+      "native_original_spline_support_max_sampled_mm": 3.299671647027935e-11,
+      "original_master_3d_bspline_degree": 5,
+      "original_spline_edge_curve_id": 2096,
+      "source_advanced_face_id": 2092
+    }
+  ],
+  "schema": "apmesh-s3u-s40-post-octagon-source-native-census-v1",
+  "source_edge_max_distinct_face_owners": 2,
+  "source_original_3plus_incident_edges": 0
+}
