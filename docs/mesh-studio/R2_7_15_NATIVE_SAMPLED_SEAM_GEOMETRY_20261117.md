@@ -152,3 +152,49 @@ observed run, **not a proof that every pair differs geometrically**.
 
 R2.8 remains BLOCKED; no main merge, tag, release, default BVH switch,
 source geometry correction or C++ scientific policy change.
+
+
+### Final R2.7.15 diagnostic qualification (2026-11-17)
+
+[**All-four-jobs-success CI #44160223365**](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44160223365)
+at exact implementation source SHA
+`2f9c36756a6ddd96b6f6b81afe01826b598de339`
+passed the compiled original native serial generator/lineage audit,
+Linux and Windows scientific regressions and real Chromium
+contracts. The independently recompiled C++ OFF/ON control again
+matched original scientific outputs Eistute **21/21** and Book
+**17/17** by raw bytes.
+
+The exact real original `R2715_SAMPLED_SEAM_FAILURE_BREAKDOWN`
+native job marker isolates the disagreement:
+
+| Measured condition on accepted native TRI step 1 | Eistute | Book |
+| --- | ---: | ---: |
+| Original shared-source-curve patch-owner comparisons | 6 | 378 |
+| Full original UV boundary chains | **6 / 6** | **378 / 378** |
+| Equal original sampled node counts | **6 / 6** | **378 / 378** |
+| Canonical t within stated tolerance | **6 / 6** | **378 / 378** |
+| Original XYZ within stated tolerance | **6 / 6** | **378 / 378** |
+| Original *native logical* node IDs equal | **0 / 6** | **0 / 378** |
+| Combined all-conditions concordance | **0 / 6** | **0 / 378** |
+| Individual original source-patch side chains complete | **4 / 4** | **28 / 28** |
+| Original per-patch seam sample count | **11** | **13** |
+| Source-side structural edge diagnostic codes | **none** | **none** |
+
+The first three logged pairwise examples for **each** model had
+max paired canonical-t delta **0** and max paired XYZ delta **0.0**,
+but the summary does not certify an exact-zero maximum for all
+384 comparisons; it certifies all samples **within explicitly
+declared tolerance**. In this original experiment **the only
+pairwise criterion not passed is native logical ID equality**,
+not a detected sampled geometric discontinuity. Source-oriented
+XYZ/UV equivalence is not physical C++ node-pointer welding or
+analytic surface continuity.
+
+The source geometry is **not changed**. Native node IDs are **not
+silently unified**. This supports R2.7.16's independent original
+source-scoped seam-sample association, not a topology rewrite.
+R2.8 remains BLOCKED because there is still just one accepted
+native epoch per model, no verified descendant mapping and no
+continuous geometric LOD bound. Physical Windows GPU/RSS/VRAM
+qualification is a separate open task.
