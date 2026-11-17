@@ -1,71 +1,83 @@
 # Integrated mixed fill: implementation alignment - 2026-11-17
 
-Classification: engineering preparation of the historical mixed-fill path.
-Scientific pairing/selection is not activated. One priority: complete coherent
-TRI/QUAD filling before adding new adaptive size-balancing policies. Default TRI,
-real-curve partitions, quadtree/templates, original AFT and accepted/rejected
-history remain unchanged. Preserve previous evidence and known failures.
+Classification: opt-in research implementation of the user-delegated
+[physical-angle pairing policy](https://github.com/tiagosombrra/apmesh-modernization/blob/3cf8d215a712ef3dca6808ff22f7dec7d17e8d75/docs/research/quad/MIXED_FILL_PAIR_POLICY_20261117.md),
+with an engineering-only empty-by-default AFT triangle observer. Default TRI and
+previous QUAD cases retain their numerical selection, curves, quadtree/templates,
+front reconstruction and adaptation/acceptance/stopping contracts. No stage
+closure, merge, formal advisor sign-off or literal1993 identity is asserted.
 
-## Implemented engineering slice
+## Live capability
 
-The real-boundary application archives two additional diagnostic CSV files per
-completed history: boundary_pair_stages.csv and boundary_pair_candidates.csv.
-Only actual exterior TRI faces after a seeded QUAD region are inventoried.
-Initial TRI-only source stages are explicitly not applicable; their source
-triangles are not falsely labeled observed mixed-region AFT triangles.
+`curved_bezier_live_pairs_vertex_mean_v1` is a separate serial experimental case.
+It uses the same real source curves and native tree as the existing bounded-
+domain case. `configs/quad/curved_patch_live_pairs.conf` fixes that source factor
+at1.5; it introduces no new factor, point trimming or accepted-state controller.
 
-boundary_pair_candidates.h enumerates adjacent oriented TRI pairs using value
-indices only. It preserves source triangle order, canonicalizes the four-node
-boundary start without reversing winding, and rejects foreign/repeated indices,
-inconsistent shared-edge directions, duplicate triangles and nonmanifold edges.
-Candidates may conflict, be concave, degenerate or fail physical quality. No
-geometry acceptance, quality score, winner, element replacement or new ownership
-publication is implemented. No candidate is written as an accepted OBJ face.
+The original AdvancingFront invokes a synchronous observer immediately after
+owning each new triangle, in both ordinary geometry/topology emission and the
+three-edge geometry shortcut. Endpoint pointers are borrowed for the call only;
+no callback preserves the ordinary path. An observer exception aborts the
+one-shot AFT attempt; its partial owner must be discarded, not resumed/published.
 
-The archive records step/epoch/retry/domain-generation identity and actual TRI
-reference acceptance. Face and node indices are one-based references to that
-stage's unchanged mixed OBJ. Selection status is not_evaluated, selected count0,
-scope topology_only_policy_pending. Native contracts and an independent Python
-reader check the actual arrays/adjacency/cycle boundaries and forged records.
+The research selector retains value site/triangle IDs and oriented edge uses.
+At each triangle commit it evaluates available, previously emitted adjacent TRI
+alternatives. Existing positive UV corner determinants and physical signed
+corner/split-normal predicates precede S_XYZ<=1.5. Rank by minimum physical S,
+then exact-tie edge ratio, current triangle edge order, source triangle and node
+IDs. Each TRI is consumed at most once; unmatched valid TRI remain. No completed-
+mesh matcher or lookahead to triangles that do not exist yet is used.
 
-This is a completed-output read-only inventory. It is not an implementation of
-the historical in-front pairing algorithm, nor permission to adopt a greedy
-postprocessing matcher. The measurements make actual candidates reviewable for
-the next integrated implementation rather than adding a detached generator.
+The original AFT TRI scaffold remains intact for frontier construction and its
+coverage/overlap audit. Selection does not change the original vertex/edge
+trajectory. This is bounded incremental pairing of that live trajectory; it is
+not proof of every geometrical choice in the historical contraction algorithm.
 
-## Next scientific and ownership slice
+## Physical ownership and source identities
 
-Use the original frontier operation to identify one triangle and its admissible
-neighbor alternatives, evaluate the explicitly aligned shape rule and select a
-pair deterministically. Preserve a valid TRI when no acceptable pair exists.
-The1993 Figure11 defines a planar shape score and threshold; its UV versus XYZ
-interpretation on a curved patch and the order/tie choice among multiple valid
-pairs must be explicit. AGENTS.md requires advisor alignment before activating
-that numerical selection. Do not invent new weights, global factors or thresholds.
+Build one new owned physical candidate from native seed QUADs, selected AFT-pair
+QUADs and unmatched TRI. Seed QUADs retain LeafPolygonOrigin; paired QUADs have
+separate source-TRI pair provenance, never fabricated native-leaf origins.
+Preserve original UV/XYZ, source node IDs and ordered shared-curve intervals.
+Check facet/typed incidence, source boundary, oriented seam, coverage, Euler disk
+and connectedness before the existing whole-SubMesh publication operation.
+An injected failure after construction but before publication destroys only the
+new candidate; retain the prior nonempty owner, observers and published output.
+There is no mutation of two already-published physical TRI elements in place.
 
-Commit a selected pair through one reversible physical owner operation. Preserve
-source nodes/shared curves, oriented seam, coverage, manifold incidence and
-accepted owner/observers; retain failed and rejected candidates. Paired exterior
-QUADs must have AFT-pair provenance, not fabricated native-leaf/template origins.
-Current Candidate.quads/quad_origins describe seeded native QUADs; do not silently
-reuse those invariants to label new exterior QUADs. Both kinds contribute to total
-QUAD count only after their distinct origin/transaction contracts are qualified.
+## Reviewable generation histories
 
-Required change-relevant validation: actual curved source histories, positive and
-rejected pair choices, multiple alternatives/ties, wrong generation/source IDs,
-nonconvex/degenerate candidates, nonempty rollback and independent UV/XYZ/seam
-coverage. Require native compiler/sanitizer profiles, frozen TRI and exact-head
-regression/review. Fewer elements or zero observed pairs is not scientific success.
+Every source step still includes initial/accepted/rejected TRI and mixed OBJ.
+The new case also exports an `_aft_source.obj` with the unchanged seed QUAD/TRI
+scaffold. `live_pair_candidates.csv` records step/epoch/retry/domain identity,
+source scaffold face IDs, current edge order, oriented four-node cycle, validity/
+shape rejection, selected/not-selected/consumed status, physical score, edge ratio
+and final paired face ID. `live_pair_stages.csv` reports seed/paired/retained
+counts. OBJ AFT-pair comments independently identify the two source faces.
 
-## Subsequent work and retained scope
+Existing boundary_pair_candidates/stages CSVs remain completed-source topology
+inventories with selected0; the new-case scope says live selection is separate.
+No-seed initial TRI is not an exterior AFT pairing success or an accepted mixed
+epoch. Empty pair counts are reported as such, not used as success evidence.
 
-After mixed-fill selection/publication is qualified, return to mixed error and
-curve-transition-interior local feedback. The existing local-balance proposal is
-retained but sequenced after integrated filling. No global-factor sweep, uniform
-flat-region refinement or boundary point clipping replaces this objective.
-Current source adaptation remains TRI-driven; mixed_adaptive_epochs=0, R3/M7 OPEN.
-Centroid identity, full1993 equivalence, Doxygen/CRT and independent review are
-separate unresolved obligations. No automatic integration or stage closure.
+## Validation and remaining scope
 
-Exact source/compiler/test evidence is recorded in canonical STATE.md on
-quad-templates; this contract alone is not a qualification receipt.
+Native contracts cover shape/parameterization witnesses, bad physical/UV inputs,
+competing alternatives, exact ties, malformed incidence and the shortcut/cleared/
+throwing observer. Independent Python reconstructs every actual source candidate,
+compares XYZ shape/validity, checks chosen ordering and disjoint consumption,
+rebuilds expected physical faces and source provenance, and rejects forged IDs,
+scores, final faces and generation/acceptance lineage. Normal/unpaired/rollback
+histories compare original geometry, source intervals and owner preservation.
+Same-site fixed-grid Bernstein error describes generated output; it is not an
+acceptance rule, continuous error bound, global optimum or convergence proof.
+
+Read canonical STATE.md and the session evidence for exact executed profiles,
+source SHA, failures, regression and remote checks. A source inventory or prior
+revision's85-test result does not qualify this selector. Preserve negative logs.
+
+One active capability remains integrated mixed filling. Next, after its review
+and applicable qualification, evaluate actual mixed accepted-state/error feedback,
+then local curve/transition/interior balance. Source adaptation remains TRI-driven
+and mixed_adaptive_epochs=0. M1 center identity, full M5/R3/M7, Doxygen/full CRT,
+independent review and integration remain separate open obligations.

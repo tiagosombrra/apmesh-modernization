@@ -1,5 +1,24 @@
 # Isolated UV QUAD prototype
 
+## Current application slice - 2026-11-17
+
+The opt-in application case `curved_bezier_live_pairs_vertex_mean_v1` selects
+adjacent original AFT triangles incrementally at triangle commit, using the
+explicit experimental physical-angle policy. It preserves the original TRI
+scaffold and source curve nodes, then builds typed paired QUADs and retained TRI
+in a separate physical owner. Native-template and AFT-pair origins are distinct.
+Use `configs/quad/curved_patch_live_pairs.conf` only with a serial experimental
+QUAD build. Earlier cases retain their selection and output contracts.
+
+Each history adds `_aft_source.obj` stage witnesses, `live_pair_candidates.csv`
+and `live_pair_stages.csv`. The old boundary-pair CSVs remain an inventory of the
+unmodified source scaffold; their selected count is not the live selector count.
+See [implementation and limits](../../docs/research/quad/MIXED_FILL_IMPLEMENTATION_20261117.md).
+Exact compiler/test evidence belongs to canonical STATE.md on `quad-templates`.
+This capability does not close mixed adaptive feedback or establish1993 identity.
+
+## Original isolated-library scope
+
 This C++17 prototype generates real four-node planar elements from a conforming
 polygon disk. Its core UV library has no dependency on `Face`, `TriangleAdaptive`,
 Eigen or the production application. The optional tree bridge below links the

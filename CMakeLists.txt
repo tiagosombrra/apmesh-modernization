@@ -372,4 +372,9 @@ if(AP_MESH_ENABLE_EXPERIMENTAL_QUAD AND BUILD_TESTING)
       --exe "$<TARGET_FILE:ap_mesh>" --directory "${CMAKE_CURRENT_BINARY_DIR}/domain-factor-bounds")
   set_tests_properties(quad.application.domain_factor_bounds PROPERTIES
     TIMEOUT 180 LABELS "research-quad;application;required-gate")
+  add_test(NAME quad.application.live_pairs
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/quad/test_live_pair_application.py"
+      --exe "$<TARGET_FILE:ap_mesh>" --directory "${CMAKE_CURRENT_BINARY_DIR}/live-pairs")
+  set_tests_properties(quad.application.live_pairs PROPERTIES
+    TIMEOUT 180 LABELS "research-quad;application;required-gate")
 endif()

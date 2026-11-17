@@ -1,6 +1,7 @@
 #ifndef ADVANCING_FRONT_H_
 #define ADVANCING_FRONT_H_
 
+#include <array>
 #include <functional>
 #include <optional>
 #include <string>
@@ -133,6 +134,14 @@ public:
   using RefinedQuadtreeObserver = std::function<void(Quadtree&)>;
   void SetRefinedQuadtreeObserver(RefinedQuadtreeObserver observer);
 
+  // Synchronous, read-only observation after each AFT triangle enters its owner
+  // list, including the three-edge shortcut. No callback preserves TRI behavior.
+  // Endpoint observers are borrowed only for the call and must not be mutated
+  // or retained. Exceptions abort this AFT attempt;
+  // callers must discard its partial owner rather than resume or publish it.
+  using TriangleCommitObserver = std::function<void(const std::array<Vertex*, 3>&)>;
+  void SetTriangleCommitObserver(TriangleCommitObserver observer);
+
   void SetTemplateMode(std::string mode);
   const std::string& TemplateMode() const noexcept;
   void SetPostprocessControls(AftPostprocessControls controls) noexcept;
@@ -188,6 +197,7 @@ public:
   // #endif //#if USE_OPENGL
 private:
   RefinedQuadtreeObserver refined_quadtree_observer_;
+  TriangleCommitObserver triangle_commit_observer_;
   AdvancingFrontRunStats run_stats;
   std::optional<AftPostprocessControls> postprocess_controls_ = std::nullopt;
   std::optional<std::string> template_mode_ = std::nullopt;

@@ -1,5 +1,6 @@
 #include "controlled_patch_application.h"
 #include "boundary_pair_candidates.h"
+#include "live_boundary_pairing.h"
 #include "application/runtime_config.h"
 #include "physical_quadrilateral_adaptive.h"
 #include "data/mesh/sub_mesh.h"
@@ -186,6 +187,10 @@ struct Candidate {
   std::vector<unsigned long> node_ids;
   std::vector<std::vector<std::size_t>> faces;
   std::vector<LeafPolygonOrigin> quad_origins;
+  std::vector<BoundaryPairCandidate> aft_pair_origins;
+  std::vector<LivePairEvent> live_pair_events;
+  std::vector<std::vector<std::size_t>> source_faces;
+  std::size_t seed_quads = 0;
   std::size_t quads = 0;
   double min_alignment = 1.0;
   double min_quality = 1.0;
@@ -204,7 +209,7 @@ using ResearchSourceTreeFactory = std::function<std::unique_ptr<Quadtree>()>;
 
 Candidate Generate(PatchBezier& patch, bool fail_before_commit,
                    const ResearchSourceTreeFactory& source_tree_factory = {},
-                   const RealBoundarySource* source = nullptr) {
+                   const RealBoundarySource* source = nullptr, bool pair_during_front = false) {
   ValidateSourceCurves(patch);
   auto original = source_tree_factory ? source_tree_factory() : MakeSourceTree(true);
   Require(original->makeTemplateBasedMesh() == Par2DJMesh::AFT::QUAD_MAKE_TEMPLATE_BASED_MESH_DONE,
@@ -217,6 +222,42 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
   auto aft = std::make_unique<OwnedQuadAftFront>(raw->getBoundary(), raw);
   tree.release();
   const auto seeded = aft->Seed(selected, front);
+  LiveBoundaryPairing pairing;
+  std::map<Vertex*, std::size_t> live_ids;
+  const auto physical_point = [&](UvVertex uv) {
+    auto xyz = Evaluate(patch, uv);
+    if (source)
+      for (const auto& site : source->sites)
+        if (site.uv.u == uv.u && site.uv.v == uv.v) {
+          xyz = site.xyz;
+          break;
+        }
+    return xyz;
+  };
+  const auto add_pair_site = [&](UvVertex uv) {
+    return pairing.AddSite(
+        {uv, physical_point(uv), Values(patch.Qu(uv.u, uv.v) * patch.Qv(uv.u, uv.v))});
+  };
+  if (pair_during_front) {
+    std::map<std::pair<double, double>, std::size_t> seeded_ids;
+    for (const auto& uv : selected.uv_quads.vertices)
+      seeded_ids.emplace(std::make_pair(uv.u, uv.v), add_pair_site(uv));
+    for (auto* vertex : aft->OwnedSeamVertices())
+      live_ids.emplace(vertex, seeded_ids.at({vertex->getX(), vertex->getY()}));
+    aft->SetTriangleCommitObserver([&](const std::array<Vertex*, 3>& vertices) {
+      std::array<std::size_t, 3> ids{};
+      for (std::size_t i = 0; i < vertices.size(); ++i) {
+        auto found = live_ids.find(vertices[i]);
+        if (found == live_ids.end())
+          found =
+              live_ids
+                  .emplace(vertices[i], add_pair_site({vertices[i]->getX(), vertices[i]->getY()}))
+                  .first;
+        ids[i] = found->second;
+      }
+      pairing.ObserveTriangle(ids);
+    });
+  }
   for (auto* edge : aft->getBoundary()->getEdges())
     aft->getQuadtree()->findCell(edge);
   const auto report = aft->AttemptExteriorTriangulation(selected);
@@ -262,6 +303,7 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
   for (const auto& quad : selected.uv_quads.quads)
     result.faces.emplace_back(quad.vertices.begin(), quad.vertices.end());
   result.quads = result.faces.size();
+  result.seed_quads = result.quads;
   result.quad_origins = selected.quad_face_origins;
   Require(result.quad_origins.size() == result.quads,
           "Mixed residual leaf provenance differs from the real native tree");
@@ -280,6 +322,27 @@ Candidate Generate(PatchBezier& patch, bool fail_before_commit,
       ids.push_back(it->second);
     }
     result.faces.push_back(std::move(ids));
+  }
+  if (pair_during_front) {
+    Require(pairing.Triangles().size() == aft->Triangles().size(),
+            "Live pair observer missed an AFT triangle commit");
+    result.source_faces = result.faces;
+    result.aft_pair_origins = pairing.Selected();
+    result.live_pair_events = pairing.Events();
+    result.faces.resize(result.seed_quads);
+    for (const auto& pair : pairing.Selected())
+      result.faces.emplace_back(pair.boundary_cycle.begin(), pair.boundary_cycle.end());
+    result.quads = result.faces.size();
+    for (std::size_t i = 0; i < pairing.Triangles().size(); ++i) {
+      const auto& triangle = pairing.Triangles()[i];
+      Require(result.source_faces[result.seed_quads + i] ==
+                  std::vector<std::size_t>(triangle.begin(), triangle.end()),
+              "Live pair site identity differs from the retained AFT scaffold");
+      if (!pairing.Consumed()[i])
+        result.faces.emplace_back(triangle.begin(), triangle.end());
+    }
+    Require(result.quads == result.quad_origins.size() + result.aft_pair_origins.size(),
+            "Mixed QUAD origins do not distinguish native templates from AFT pairs");
   }
   struct Incidence {
     unsigned count = 0;
@@ -927,7 +990,8 @@ void ProbeNativeTreeAlternatives(const Candidate& unchanged,
     std::cout << "QUAD_NATIVE_TRIAL_REJECTION region=aft reason=" << aft_trial.rejection << '\n';
 }
 
-void Export(const Candidate& result, const std::filesystem::path& path) {
+void Export(const Candidate& result, const std::filesystem::path& path,
+            bool source_scaffold = false) {
   Require(!std::filesystem::exists(path), "Controlled output already exists");
   auto staging = path;
   staging += ".pending";
@@ -974,13 +1038,28 @@ void Export(const Candidate& result, const std::filesystem::path& path) {
     }
     for (const auto& uv : result.uv)
       out << "vt " << uv.u << ' ' << uv.v << '\n';
-    for (std::size_t i = 0; i < result.faces.size(); ++i) {
+    const auto& faces =
+        source_scaffold && !result.source_faces.empty() ? result.source_faces : result.faces;
+    const auto quads = source_scaffold ? result.seed_quads : result.quads;
+    if (!result.source_faces.empty()) {
+      out << "# live_pair_policy physical_angle_pair_v1 source_scaffold=" << source_scaffold
+          << " seed_quads=" << result.seed_quads
+          << " paired_quads=" << result.aft_pair_origins.size() << '\n';
+      if (!source_scaffold)
+        for (std::size_t i = 0; i < result.aft_pair_origins.size(); ++i) {
+          const auto& pair = result.aft_pair_origins[i];
+          out << "# aft_pair_origin " << result.seed_quads + i + 1 << ' '
+              << result.seed_quads + pair.first_triangle + 1 << ' '
+              << result.seed_quads + pair.second_triangle + 1 << '\n';
+        }
+    }
+    for (std::size_t i = 0; i < faces.size(); ++i) {
       if (i == 0)
         out << "g QUAD\n";
-      if (i == result.quads)
+      if (i == quads)
         out << "g TRI_AFT\n";
       out << "f";
-      for (auto id : result.faces[i])
+      for (auto id : faces[i])
         out << ' ' << id + 1 << '/' << id + 1;
       out << '\n';
     }
@@ -1580,7 +1659,9 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   // explicitly repairs the step2 factor override; other cases retain it unchanged.
   Model model(&geometry);
   GeneratorAdaptive generator(application::MakeGenerationContext(config, NUMBER_PROCESS));
-  if (config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1")
+  const bool live_pairs =
+      config.quad_experimental_case == "curved_bezier_live_pairs_vertex_mean_v1";
+  if (config.quad_experimental_case == "curved_bezier_bounded_domain_vertex_mean_v1" || live_pairs)
     generator.EnforceResearchDomainFactorBounds();
   Timer timer(config.num_processes, config.num_threads, 12);
   timer.InitTimerParallel(0, 0, 10);
@@ -1693,6 +1774,18 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   std::ofstream manifest(staging / "manifest.csv", std::ios::binary);
   std::ofstream pair_trace(staging / "boundary_pair_candidates.csv", std::ios::binary);
   std::ofstream pair_stages(staging / "boundary_pair_stages.csv", std::ios::binary);
+  std::ofstream live_trace, live_stages;
+  if (live_pairs) {
+    live_trace.open(staging / "live_pair_candidates.csv", std::ios::binary);
+    live_stages.open(staging / "live_pair_stages.csv", std::ios::binary);
+    Require(bool(live_trace) && bool(live_stages), "Cannot create live pair history");
+    live_trace << "step,epoch,retry,domain_generation,reference_tri_accepted,first_source_face,"
+                  "second_source_face,front_order,quad_a,quad_b,quad_c,quad_d,status,S_xyz,edge_"
+                  "ratio,final_face\n";
+    live_stages << "step,epoch,retry,domain_generation,reference_tri_accepted,seed_quads,"
+                   "aft_source_triangles,selected_pairs,retained_triangles,scope\n";
+    live_trace << std::setprecision(17);
+  }
   Require(bool(pair_trace) && bool(pair_stages), "Cannot create boundary pair inventory");
   pair_trace << "step,epoch,retry,domain_generation,reference_tri_accepted,first_face,second_face,"
                 "shared_a,shared_b,quad_a,quad_b,quad_c,quad_d,selection_status\n";
@@ -1730,18 +1823,22 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
         has_interior = has_interior || !leaf->inBoundary();
       if (has_interior)
         layout = Generate(
-            *patch, false, [&]() { return ReplayRealSourceTree(*patch, *source); }, source);
+            *patch, false, [&]() { return ReplayRealSourceTree(*patch, *source); }, source,
+            live_pairs);
     }
     layout.source_witness = source;
     layout.generation_step = stage.step;
     layout.reference_accepted = stage.accepted;
     layout.stage_reason = stage.reason;
     Export(layout, staging / (stem + "_quad_tri.obj"));
+    if (live_pairs)
+      Export(layout, staging / (stem + "_aft_source.obj"), true);
     // Completed-output diagnostics only. No candidate replaces any mesh element.
     std::vector<std::array<std::size_t, 3>> exterior;
     if (layout.quads > 0) {
-      for (std::size_t i = layout.quads; i < layout.faces.size(); ++i) {
-        const auto& face = layout.faces[i];
+      const auto& scaffold = layout.source_faces.empty() ? layout.faces : layout.source_faces;
+      for (std::size_t i = layout.seed_quads; i < scaffold.size(); ++i) {
+        const auto& face = scaffold[i];
         Require(face.size() == 3, "Boundary pair inventory received a non-TRI exterior face");
         exterior.push_back({face[0], face[1], face[2]});
       }
@@ -1751,17 +1848,48 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
                         std::to_string(stage.outer.global_retry) + ',' +
                         std::to_string(source ? source->domain_generation : 0) + ',' +
                         std::to_string(stage.accepted) + ',';
-    pair_stages << prefix << layout.quads << ',' << exterior.size() << ',' << pairs.size() << ",0,"
-                << (layout.quads > 0 ? "topology_only_policy_pending"
-                                     : "not_applicable_without_quad_seed")
+    pair_stages << prefix << layout.seed_quads << ',' << exterior.size() << ',' << pairs.size()
+                << ",0,"
+                << (layout.quads > 0
+                        ? (live_pairs ? "source_scaffold_inventory_live_selection_separate"
+                                      : "topology_only_policy_pending")
+                        : "not_applicable_without_quad_seed")
                 << '\n';
     for (const auto& pair : pairs) {
-      pair_trace << prefix << layout.quads + pair.first_triangle + 1 << ','
-                 << layout.quads + pair.second_triangle + 1 << ',' << pair.shared_edge[0] + 1 << ','
-                 << pair.shared_edge[1] + 1;
+      pair_trace << prefix << layout.seed_quads + pair.first_triangle + 1 << ','
+                 << layout.seed_quads + pair.second_triangle + 1 << ',' << pair.shared_edge[0] + 1
+                 << ',' << pair.shared_edge[1] + 1;
       for (auto id : pair.boundary_cycle)
         pair_trace << ',' << id + 1;
       pair_trace << ",not_evaluated\n";
+    }
+    if (live_pairs) {
+      live_stages << prefix << layout.seed_quads << ',' << exterior.size() << ','
+                  << layout.aft_pair_origins.size() << ',' << layout.faces.size() - layout.quads
+                  << ','
+                  << (layout.source_faces.empty() ? "not_applicable_without_quad_seed"
+                                                  : "incremental_triangle_commit_pairing")
+                  << '\n';
+      for (const auto& event : layout.live_pair_events) {
+        const auto& pair = event.candidate;
+        live_trace << prefix << layout.seed_quads + pair.first_triangle + 1 << ','
+                   << layout.seed_quads + pair.second_triangle + 1 << ',' << event.front_order;
+        for (auto id : pair.boundary_cycle)
+          live_trace << ',' << id + 1;
+        live_trace << ',' << event.status << ',';
+        if (event.measured)
+          live_trace << event.score;
+        live_trace << ',';
+        if (event.measured)
+          live_trace << event.edge_ratio;
+        std::size_t final_face = 0;
+        if (event.status == "selected")
+          for (std::size_t i = 0; i < layout.aft_pair_origins.size(); ++i)
+            if (layout.aft_pair_origins[i].first_triangle == pair.first_triangle &&
+                layout.aft_pair_origins[i].second_triangle == pair.second_triangle)
+              final_face = layout.seed_quads + i + 1;
+        live_trace << ',' << final_face << '\n';
+      }
     }
     manifest << stage.step << ',' << stage.outer.epoch << ',' << stage.outer.global_retry << ','
              << (source ? source->domain_generation : 0) << ',' << stage.accepted << ','
@@ -1780,6 +1908,11 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
   pair_trace.close();
   pair_stages.close();
   Require(bool(pair_trace) && bool(pair_stages), "Cannot complete boundary pair inventory");
+  if (live_pairs) {
+    live_trace.close();
+    live_stages.close();
+    Require(bool(live_trace) && bool(live_stages), "Cannot complete live pair history");
+  }
   std::ofstream trace(staging / "curve_stages.csv", std::ios::binary);
   trace << curve_trace.str();
   trace.close();
@@ -1808,8 +1941,15 @@ int RunRealBoundaryPatch(const application::RuntimeConfig& config) {
     const auto bytes = ReadRehearsalOutput(file);
     bool rejected = false;
     try {
-      auto failed = CloneTypedHistory(*accepted, candidate, *patch, 0);
-      (void)failed;
+      if (live_pairs) {
+        auto failed = Generate(
+            *patch, true, [&]() { return ReplayRealSourceTree(*patch, *selected); }, selected,
+            true);
+        (void)failed;
+      } else {
+        auto failed = CloneTypedHistory(*accepted, candidate, *patch, 0);
+        (void)failed;
+      }
     } catch (const PublicationFailure&) {
       rejected = true;
     }
