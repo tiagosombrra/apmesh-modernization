@@ -35,7 +35,7 @@ def face(patch, slot, left_t, right_t, left_id, right_id, center_id,
 
 
 def patch(patch_slot, shared_edge, reversed_incidence):
-    curves = [10 + patch_slot * 4 + i for i in range(4)]
+    curves = [0, 1, 2, 3] if patch_slot == 0 else [4, 5, 0, 6]
     curves[shared_edge] = 0
     return {
         "type": "patch",
@@ -53,7 +53,7 @@ def patch(patch_slot, shared_edge, reversed_incidence):
 def source(reversed_incidence=True, drift=0.0, right_second_id=2):
     """Create 2 original source owners and two complete shared boundary chains."""
     records = [
-        {"type": "accepted_commit", "source_curve_count": 18},
+        {"type": "accepted_commit", "source_curve_count": 7},
         patch(0, 0, False), patch(1, 2, reversed_incidence),
     ]
     for t0, t1, l_id, r_id, c in (
