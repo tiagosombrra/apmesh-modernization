@@ -223,3 +223,42 @@ per-face ID and source patch/curve observation for two real models.
 It does not close acceptance of a second epoch, cross-epoch face
 identity persistence, nonmanifold sheet node welding, continuous
 Bezier error/anisotropy, physical GPU memory or R2.8 LOD approval.
+
+## Raw source evidence retention amendment
+
+The first passing native job verified each original NDJSON sidecar and
+printed its SHA-256, but the per-model temporary working directories
+were then destroyed and the Actions artifact contained only
+the two JSON summary reports. **A summary hash alone is not sufficient
+for external inspection of individual native face records.**
+
+R2.7.12 therefore adds explicit post-verification persistence:
+`verify_native_lineage.py` retains **each exact original NDJSON byte
+stream** in the CI evidence directory and records its filename and
+SHA-256 in the source-bound summary. The operation refuses overwrites
+and rehashes each retained file. The separate command
+
+```bash
+python -m tools.mesh_studio.audit_retained_native_lineage \
+  --directory build/r2712-native-evidence
+```
+
+reopens **both real native source files**, independently reparses all
+face/patch/curve records, cross-checks their SHA-256 and all measured
+source counts against their summaries, and refuses missing,
+modified or unindexed sidecars. Four additional **synthetic negative
+unit tests** protect that audit against false completeness and
+forged count/byte claims. The CI artifact now includes **both raw
+`.ndjson` and summary `.json`** and is uploaded only when the
+real native jobs and the retained-byte audit succeed.
+
+This audit establishes agreement between an original source-bound
+summary and the retained bytes. It does **not** independently
+authenticate a compiler executable that was not itself retained;
+the CI run logs, original pinned code SHA, executable SHA recorded in
+the summaries, and reproducible native build commands remain separate
+elements of the provenance chain.
+
+The amended raw-retention CI result must be checked separately from
+the original passing #44130426062 before any claim that archived
+per-face NDJSON evidence is downloadable.
