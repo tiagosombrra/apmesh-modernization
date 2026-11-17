@@ -12,6 +12,9 @@
 #include "generator/curve_sample_graph.h"
 #include "generator/domain_observer_cleanup.h"
 #include "generator/accepted_mesh_scope.h"
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+#include "../../research/mesh_studio/native_lineage_capture.h"
+#endif
 #include "input_output/incidence_snapshot.h"
 
 #include <array>
@@ -3614,6 +3617,15 @@ void GeneratorAdaptive::Generator(Model& model, Timer* timer, int id_range, int 
               {current_research_outer_, step_,
                apmesh::quad::GlobalOutcomeKind::AcceptedStepCommitted});
         }
+#ifdef AP_MESH_RESEARCH_NATIVE_LINEAGE
+        // Read the already-committed original TRI mesh; never alter acceptance.
+        if (mesh_ != nullptr) {
+          apmesh::mesh_studio::WriteAcceptedEpochIfEnabled(
+              *geometry, *mesh_, step_, retry, current_research_outer_.session,
+              current_research_outer_.epoch, current_research_outer_.global_retry,
+              OutputPrefix());
+        }
+#endif
 #endif
         accepted_retry_attempt = static_cast<unsigned int>(retry);
         current_budget_final_status_ =
