@@ -7,7 +7,6 @@ requires the opt-in compiled original C++ generator and a real accepted commit.
 from __future__ import annotations
 
 import argparse
-from collections import Counter
 import hashlib
 import json
 import math
@@ -243,6 +242,7 @@ def verify_original_generator_run(
         require(len(receipts) == accepted_count, "native_commit_count_vs_sidecar_mismatch")
         require(not list(lineagedir.glob("*.pending")), "unfinished_native_receipt")
         results = []
+        raw_snapshots = []
         last_step = 0
         for sidecar in receipts:
             data = sidecar.read_bytes()
@@ -253,6 +253,9 @@ def verify_original_generator_run(
                     "repeated_or_out_of_order_native_committed_step")
             last_step = verified["accepted_step"]
             verified["source_file_sha256"] = hashlib.sha256(data).hexdigest()
+            retained_name = "r2712-" + model + "-" + sidecar.name
+            verified["raw_native_ndjson_artifact_name"] = retained_name
+            raw_snapshots.append((retained_name, data, verified["source_file_sha256"]))
             results.append(verified)
         summary = {
             "schema": REPORT_SCHEMA,
@@ -276,10 +279,18 @@ def verify_original_generator_run(
             "scientific_lod_qualified": False,
             "operator_physical_gpu_qualified": False,
         }
+        # Retain byte-exact original per-face evidence after full native validation.
+        # No synthetic fixture or rejected candidate is exported as qualified.
         artifact_dir.mkdir(parents=True, exist_ok=True)
+        for filename, data, expected_sha in raw_snapshots:
+            original = artifact_dir / filename
+            with original.open("xb") as output:
+                output.write(data)
+            require(sha256_file(original) == expected_sha,
+                    "retained_native_sidecar_byte_mismatch")
         out = artifact_dir / ("r2712-" + model + "-native-lineage-audit.json")
-        out.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n",
-                       encoding="utf-8")
+        with out.open("x", encoding="utf-8", newline="\n") as stream:
+            stream.write(json.dumps(summary, indent=2, sort_keys=True) + "\n")
         print("R2712_NATIVE_LINEAGE_QUALIFIED=" + json.dumps({
             "model": model, "accepted": accepted_count, "restored": restored_count,
             "faces_per_accepted_step": [x["native_tri_faces"] for x in results],
