@@ -22,6 +22,20 @@ truncation flag. An event recorded without a real `Commit` is not
 accepted. A candidate saved as OBJ after rejection is **not** an
 accepted epoch.
 
+The native original TRI `GeneratorAdaptive::WriteMesh(MeshAdaptive*, int)`
+does hold element and patch data in memory but **only serializes OBJ
+vertex positions and triangle connectivity**. It deduplicates vertices
+by original `NodeAdaptive::GetId()`, then writes `f` records using
+local ordinal indices. It **does not serialize**
+`ElementAdaptive::GetId()`, `Patch::GetId()` or oriented
+source-curve membership with each face. Hence even original
+native application output cannot be interpreted as a cross-epoch
+source-face ID oracle from OBJ record position alone. The bridge now
+checks this exact original writer overload and fails closed if the
+writer changes. An **optional, separately validated native face/patch
+lineage sidecar** is needed in a later step, not silently inferred
+from these OBJs.
+
 R2.7.11 verifies original source Git blob hashes, existence, uniqueness
 and relative order of these hooks. These static checks establish the
 location of the real producer branch, **not execution of the code**.
@@ -104,11 +118,13 @@ physical node welding.
   `scientific_r28_geometry_lod_admitted=false` without
   a user override.
 
-`tools/mesh_studio/test_native_epoch_bridge.py` adds 10 independent
+`tools/mesh_studio/test_native_epoch_bridge.py` adds 12 independent
 negative/positive unit tests. It rejects forged second commits,
 foreign native revision/artifact, corrupted original model/curve
 counts, mutated rejection forensics, missing/duplicated native hook
-and changed bounded-log capacity.
+changed bounded-log capacity, and source writer provenance
+assumptions. The writer mutation tests are in-memory source contracts,
+not a new native build or modified production output.
 
 The existing Mesh Studio Linux and Windows scientific test discovery
 runs this suite. CI Linux also writes and retains a short-lived
