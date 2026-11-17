@@ -257,6 +257,51 @@ def audit_original_sampled_seams(directory: Path) -> dict:
     }
 
 
+def summarize_sampled_diagnostics(sampled: dict) -> dict:
+    """Separate chain, UV, XYZ and logical-ID failures for real-model triage."""
+    dimensions = (
+        "source_boundary_chains_complete",
+        "same_sample_count",
+        "canonical_t_aligned_with_tolerance",
+        "xyz_aligned_with_explicit_tolerance",
+        "native_logical_node_ids_equal",
+        "sampled_uv_xyz_logical_id_concordance_observed",
+    )
+    side_errors: Counter[str] = Counter()
+    sides = []
+    pairs = []
+    for curve in sampled["shared_original_source_seams"]:
+        sides.extend(curve["native_patch_sides"])
+        pairs.extend(curve["pairwise_sample_comparisons"])
+    for side in sides:
+        side_errors.update(side["edge_diagnostics"])
+    counts = {key: sum(row[key] is True for row in pairs) for key in dimensions}
+    mismatches = [row for row in pairs
+                  if not row["sampled_uv_xyz_logical_id_concordance_observed"]]
+    examples = [{
+        "patch_slots": row["patch_slots"],
+        "edge_slots": row["edge_slots"],
+        "sample_counts": row["sample_counts"],
+        "failed_conditions": [key for key in dimensions[:-1] if not row[key]],
+        "max_paired_t_delta": row["max_paired_t_delta"],
+        "max_paired_xyz_delta": row["max_paired_xyz_delta"],
+    } for row in mismatches[:3]]
+    return {
+        "source_sides": len(sides),
+        "complete_source_sides": sum(
+            side["sampled_uv_edge_chain_complete"] for side in sides),
+        "per_side_edge_diagnostics": dict(sorted(side_errors.items())),
+        "sample_count_min_max": [
+            min((side["unique_boundary_node_count"] for side in sides), default=0),
+            max((side["unique_boundary_node_count"] for side in sides), default=0),
+        ],
+        "pair_count": len(pairs),
+        "pair_condition_pass_counts": counts,
+        "first_three_nonconcordant_pairs": examples,
+        "not_a_physical_welding_or_continuous_error_proof": True,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--directory", type=Path, required=True)
@@ -278,6 +323,15 @@ def main() -> None:
         for model, snapshots in result["original_native_models"].items()
     }
     print("R2715_ORIGINAL_NATIVE_SAMPLED_SEAMS=" + json.dumps(compact, sort_keys=True))
+    diagnostics = {
+        model: [{
+            "step": snapshot["original_native_accepted_step"],
+            **summarize_sampled_diagnostics(snapshot["sampled_boundary"]),
+        } for snapshot in snapshots]
+        for model, snapshots in result["original_native_models"].items()
+    }
+    print("R2715_SAMPLED_SEAM_FAILURE_BREAKDOWN=" +
+          json.dumps(diagnostics, sort_keys=True))
 
 
 if __name__ == "__main__":
