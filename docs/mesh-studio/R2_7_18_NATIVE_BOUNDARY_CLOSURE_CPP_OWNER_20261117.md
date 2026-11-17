@@ -186,6 +186,70 @@ all-jobs PASS** until the added R2.7.18 validator, source
 artifact and full Linux/Windows/browser workflow
 at its exact source revision complete successfully.
 
+## R2.7.18 original compiled C++ native and numerical qualification
+
+The **actual native R2.7.18 workflow job** and both independent
+scientific regression jobs at source revision
+`f87528c293fbf73837f73e911cc2e1a1129c9ece`
+completed **SUCCESS** in [Actions #44192959042](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44192959042).
+
+- Linux scientific regression: **316 Python tests run, 4 optional skipped, PASS**.
+- Windows scientific regression: **316 Python tests run, 10 environment skipped, PASS**.
+- Compiled actual original C++ Eistute and Book TRI with opt-in
+  read-only `Boundary::close` and accepted C++ SubMesh ownership
+  observers: **PASS**.
+- Original R2.7.12 source SHA, all genuine accepted faces,
+  R2.7.14–R2.7.17 source audits, the new original-stderr
+  authenticity gate, and R2.7.18 independent source-pinned
+  ownership validator: **PASS**.
+- Actual Eistute OFF/ON scientific outputs **21/21 byte-identical**;
+  actual Book **17/17 byte-identical**.
+- Chromium: **pending at the scientific/native qualification checkpoint**;
+  do not declare full four-job final PASS until it independently finishes.
+
+The exact `R2718_ORIGINAL_BOUNDARY_CPP_OWNERSHIP` marker:
+- Eistute original accepted step 1: **4 actual owned,
+  triangle-adjacent accepted corner objects; 0 cross-patch
+  observed C++ pointer reuse; 4 original accepted native IDs
+  correlated to same-step provisional Adapter closures;
+  104 total original provisional closure events.**
+- Book original accepted step 1: **28 actual owned,
+  triangle-adjacent accepted corner objects; 0 cross-patch
+  observed C++ pointer reuse; 28 original accepted native IDs
+  correlated to same-step provisional Adapter closures;
+  84 total original provisional closure events.**
+
+The full independent source-bound R2.7.18 report retains every
+original event and every actual accepted node observation, explicitly
+declares no global node welding and no observed continuity of
+the provisional C++ pointer into global acceptance.
+No ID or geometry change was applied.
+
+Two new original GitHub Actions ZIP artifacts were copied to
+the authenticated personal doctorate Drive results folder,
+then **downloaded again** and verified as exact original bytes:
+
+| Source artifact | Original ZIP bytes | Original artifact and Drive-readback SHA256 |
+| --- | ---: | --- |
+| R2.7.18 original report #14378930063 | 5,254 | `bce1eb6b0eeada6027947b33e03875d3b98c3d69be9e4f451ec52459ea5c890c` |
+| R2.7.18 original raw accepted native NDJSON plus source-bound summaries **and complete original process stderr** #14377818017 | 279,380 | `c984adf6f01c63fb87caaf7ad009c62b2401e9ca1e8a0802469ef5a37e0a3e5b` |
+
+The raw artifacts were retrieved and re-parsed independently;
+source-bound original process stderr and raw accepted NDJSON
+SHA-256 values matched their original native summaries.
+Private Drive URLs are not embedded in potentially public repository
+documentation. The original native data is deliberately retained
+separately from the derived JSON to support independent re-audit.
+
+**Scientific decision:** R2.7.18 confirms actual **local
+SubMesh-owned physical node objects** (at original accepted
+UV(0,0) corners) and real provisional runtime invocation of
+`Boundary::close` with the edge-0 ID carried into the
+first local boundary node. It does not certify cross-patch
+physical node welding, exact surviving attempt-pointer
+continuity across acceptance, or any LOD descendant.
+No numerical generator policy or original science output changed.
+
 ## Admission and limitations
 
 **Stage is implementation-only until full CI finishes**.
