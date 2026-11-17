@@ -74,7 +74,7 @@ class TestNonweldedCorrespondence(unittest.TestCase):
                          "read_only_original_source_sample_not_native_id")
 
     def test_derived_report_preserves_source_shas_and_no_weld_flags(self):
-        observed = analyze_sampled_seams(source(middle_node=222))
+        observed = analyze_sampled_seams(source(right_second_id=222))
         original = {
             "original_native_models": {
                 "synthetic": [{
