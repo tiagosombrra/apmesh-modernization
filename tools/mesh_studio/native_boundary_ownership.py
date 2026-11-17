@@ -29,7 +29,7 @@ def read_actual_adapter_events(original_stderr: bytes, model: str) -> list[dict]
     require(model in SOURCE_MODELS and len(original_stderr) <= 12_000_000,
             "r2718_original_adapter_stderr_invalid")
     require(b"\x00" not in original_stderr and b"\r" not in original_stderr,
-            "r2718_adapter_stderr_not_canonical")
+            "r2718_adapter_stderr_contains_nul")
     lines = original_stderr.decode("utf-8").splitlines()
     events = []
     for line in lines:
