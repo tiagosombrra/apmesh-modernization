@@ -129,6 +129,63 @@ python -m tools.mesh_studio.native_boundary_ownership \
   --output build/r2718-boundary-cpp-ownership.json
 ```
 
+## Independently inspected authentic native preflight — not final CI
+
+[Original GitHub Actions run #44192451844](https://github.com/tiagosombrra/apmesh-modernization/actions/runs/44192451844)
+at code revision `d2e433d8ae52312e3f84d669aba9fc5b5a0cacd4`
+successfully completed the **actual compiled original serial C++
+native-lineage job**. Its retained original, source-bound raw C++
+postcommit NDJSON and full generator stderr were downloaded
+as original source ZIP artifact #14376578452 and re-parsed
+independently. Raw original ZIP SHA256:
+`d61616b889378d69167403f6bd23704ba164c8feea8a1a8fc1ab1fe00f06f5f8`.
+
+| Actual original observation | Eistute | Book |
+| --- | ---: | ---: |
+| Real provisional `Adapter::AdaptDomain` boundary closes across all steps/retries | **104** | **84** |
+| Actual successful `Boundary::close()` return values | **104/104** | **84/84** |
+| Local closure events scoped to globally accepted *step number* 1 | **24** | **28** |
+| Original accepted native adaptive steps | **1** | **1** |
+| Live accepted original SubMesh corner C++ owners examined | **4** | **28** |
+| Actual owned-corner node ↔ real accepted triangle observer adjacency | **4/4** | **28/28** |
+| C++ node pointer aliases among prior observed patch SubMesh owners | **0** | **0** |
+| Accepted C++ node object pointer equal to either live source-curve endpoint object | **0** | **0** |
+| Two *original source curve* endpoint pointers identical (edge 0 / edge 3) | **1/4** | **1/28** |
+| Accepted patch corner ID corroborated by same-step/same-patch provisional `Boundary::close` | **4/4** | **28/28** |
+| Same native ID provisional closure witnesses on accepted step 1 | **24** | **28** |
+
+For Eistute, the original 24 same-step closure events consist
+of **six local attempts per original patch**, not 24 accepted
+patch meshes. All four original accepted patch IDs were observed
+in those six provisional closures. The original Book native
+step 1 had **one** matching closure per patch.
+
+Actual Eistute provisional closure events by adaptive step:
+**step 1: 24, step 2: 8, step 3: 8, step 4: 64**. Actual Book
+events by step: **step 1: 28, step 2: 28, step 3: 28**.
+Later steps were not accepted in the original native experiment;
+neither rejected candidate IDs nor raw C++ object pointers are
+promoted to accepted Mesh Studio ancestry.
+
+Independent byte-level source verification:
+- Eistute authentic native original stderr SHA256:
+  `e49e97045b15b208afda998ebee9eef5f916b6440d47c4739a11f86ba67260b9`;
+  real original accepted C++ NDJSON SHA256:
+  `57eaa949e382aee4537325e7214694fc250d1cf20eeec96beeb6f923f6b518e6`.
+- Book authentic native original stderr SHA256:
+  `0e03e7c84fcd02ee3bdc8b9e82a40aacd041d99706102fecbb27cc02115e06cd`;
+  real original accepted C++ NDJSON SHA256:
+  `e5be7af26f0064a01929e33f7db9129a50a17959d20d743f09c224551358524a`.
+
+Both stdout/stderr and accepted NDJSON hashes were independently
+recomputed from the **raw GitHub original byte artifact** and
+matched the original native source-bound summary. This is
+positive evidence of authentic C++ pointer comparison and actual
+provisional closure execution, but is **not a final R2.7.18
+all-jobs PASS** until the added R2.7.18 validator, source
+artifact and full Linux/Windows/browser workflow
+at its exact source revision complete successfully.
+
 ## Admission and limitations
 
 **Stage is implementation-only until full CI finishes**.
