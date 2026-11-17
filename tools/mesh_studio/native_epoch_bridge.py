@@ -22,7 +22,7 @@ OUTCOME = Path("research/quad/global_outcome.h")
 PINNED_BLOBS = {
     str(R2C13): "9572f0b8951138e757f8c83df5b9999c4073831e",
     str(R2C14): "2259281b8b16bbd8a089c7f2805b7676dd252082",
-    str(SOURCE): "8ff440abc4e2b9ed2e0c6db8bd93f3a0f85c7e90",
+    str(SOURCE): "e0d1edd28968a684edba1e6c11a72b54e07e283a",
     str(OUTCOME): "ddac6497d4e05b23e0da1448ca59ea427ea18b1a",
 }
 SOURCE_RUN = 43502743922
