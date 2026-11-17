@@ -82,11 +82,18 @@ that the original historical manifest value **remains untouched** and
 records the mismatch rather than silently rewriting the manifest.
 
 The reference is a **saved stage-4 candidate**, not an independently
-verified accepted transition. The original stage counter is not a
-native acceptance decision oracle. Face order in an OBJ is not a
-canonical cross-epoch generator face identity. The archive contains
-no independent per-face patch and shared-curve semantic records that
-would establish continuous nonmanifold sheet correspondence.
+verified accepted transition. In fact, all **three archived CSV rows**
+matching stage `4`, `7184` TRI and the pinned numerical targets record
+`budget_final_status=rejected`, `step_mode=refine` and
+`stop_reason=hybrid_criterion_rejected`. This is **stronger documentary
+evidence of source-reported rejection**, now checked by the ledger, but
+it does **not** constitute an independently replayed native event trace.
+
+The original stage counter is not a native acceptance decision oracle.
+Face order in an OBJ is not a canonical cross-epoch generator face identity.
+The archive contains no independent per-face patch and shared-curve
+semantic records that would establish continuous nonmanifold sheet
+correspondence.
 
 Its archived recorded compatibility target is a claim about the
 historical run, **not** a newly measured interpatch error bound or
