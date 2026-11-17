@@ -147,6 +147,15 @@ jobs:
         run: python -m tools.mesh_studio.native_source_adjacency --directory build/r2712-native-evidence --output build/r2714-source-adjacency.json
       - name: Audit sampled UV XYZ and logical-node seams on real accepted native TRI faces
         run: python -m tools.mesh_studio.native_seam_samples --directory build/r2712-native-evidence --output build/r2715-native-sampled-seams.json
+      - name: Derive original native read-only nonwelded many-patch seam sample correspondences
+        run: python -m tools.mesh_studio.native_seam_correspondence --directory build/r2712-native-evidence --output build/r2716-native-correspondence.json
+      - name: Retain R2.7.16 original native sample associations without overwriting any node IDs
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2716-nonwelded-correspondence-${{ github.sha }}
+          path: build/r2716-native-correspondence.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain R2.7.15 original-source sampled interface report
         uses: actions/upload-artifact@v4
         with:
