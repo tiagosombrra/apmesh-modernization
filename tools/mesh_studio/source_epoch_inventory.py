@@ -140,6 +140,12 @@ def audit_eistute_reference(root: Path) -> dict:
             for k, v in expected_columns.items())
     ]
     require(len(matching) >= 1, "eistute_archived_csv_reference_mismatch")
+    # The archived CSV records rejection of the saved candidate.
+    # This is source-reported history, not an independently replayed native trace.
+    require(all(row.get("budget_final_status") == "rejected" and
+                row.get("stop_reason") == "hybrid_criterion_rejected" and
+                row.get("step_mode") == "refine" for row in matching),
+            "archived_eistute_rejection_status_mismatch")
 
     require(manifest.is_file() and manifest.stat().st_size < 100_000,
             "missing_historical_manifest")
@@ -170,6 +176,11 @@ def audit_eistute_reference(root: Path) -> dict:
                 record["mean_shared_curve_compatibility_error"],
         },
         "record_type": "SAVED_HISTORICAL_STAGE4_CANDIDATE",
+        "archived_csv_matching_reference_rows": len(matching),
+        "archived_csv_budget_final_status": "rejected",
+        "archived_csv_stop_reason": "hybrid_criterion_rejected",
+        "archived_csv_step_mode": "refine",
+        "archived_csv_decision_scope": "SOURCE_REPORTED_REJECTION_NOT_REPLAYED_NATIVE_TRACE",
         "adaptive_acceptance_verified": False,
         "per_face_original_generator_id_verified": False,
         "multi_patch_curve_ownership_verified": False,
@@ -177,7 +188,8 @@ def audit_eistute_reference(root: Path) -> dict:
         "obj_face_index_semantics": "ORDINAL_IN_OBJ_NOT_GENERATOR_FACE_ID",
         "warnings": [
             "GIT_SOURCE_BLOB_PINNED_BUT_HISTORICAL_MANIFEST_DISAGREES",
-            "ARCHIVED_NUMERICAL_TARGET_NOT_NATIVE_ADAPTIVE_ACCEPTANCE_TRACE",
+            "ARCHIVED_CSV_RECORDS_HYBRID_CRITERION_REJECTION_NOT_ADAPTIVE_ACCEPTANCE",
+            "ARCHIVED_CSV_IS_NOT_INDEPENDENT_NATIVE_EVENT_TRACE",
             "OBJ_CONTAINS_NEITHER_CANONICAL_FACE_IDS_NOR_PATCH_CURVE_IDENTITIES",
         ],
     }
@@ -209,7 +221,9 @@ def audit_r28_gate(report: dict) -> dict:
     require(type(legacy) is dict and legacy.get("file_sha256") == EISTUTE_SHA256 and
             legacy.get("historical_manifest_matches_file") is False and
             legacy.get("adaptive_acceptance_verified") is False and
-            legacy.get("per_face_original_generator_id_verified") is False,
+            legacy.get("per_face_original_generator_id_verified") is False and
+            legacy.get("archived_csv_budget_final_status") == "rejected" and
+            legacy.get("archived_csv_stop_reason") == "hybrid_criterion_rejected",
             "unverified_legacy_source_promotion")
     flags = report.get("scientific_evidence")
     require(type(flags) is dict and
