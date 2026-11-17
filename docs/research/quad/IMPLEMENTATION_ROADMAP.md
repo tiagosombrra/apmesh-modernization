@@ -8,7 +8,11 @@ balance-first successor: complete integrated remaining-region TRI/QUAD filling,
 then actual mixed accepted-state/error feedback, then local bidirectional sizing.
 Source7fc988d adds read-only actual AFT pair candidates and source-scoped CSV
 contracts. It does not select/publish pairs or adopt scientific numerical policy.
-Next is advisor-aligned in-front pairing with reversible typed publication and
+The user-delegated [experimental pair policy](MIXED_FILL_PAIR_POLICY_20261117.md)
+now specifies S_XYZ <=1.5, existing UV/physical validity, minimum physical score,
+exact-tie edge ratio then frontier/source order, and TRI fallback. No selector
+is activated and no formal advisor sign-off/historical identity is asserted.
+Next is its opt-in in-front implementation with reversible typed publication and
 separate seed-template/AFT-pair provenance. Keep all original M0-M9/R0-R4 gates,
 prior qualified slices, negative evidence and PR238 review; no stage closes here.
 

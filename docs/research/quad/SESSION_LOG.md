@@ -2823,3 +2823,55 @@ The first documentation whitespace invocation used the source worktree rather
 than the canonical documentation worktree and stopped on a missing canonical-only
 file. Correct the working directory; the seven-file check then passes without
 content relaxation. This is a tooling-scope failure, not a native test failure.
+
+
+## 2026-11-17 - decide the opt-in pair quality space and deterministic ordering
+
+The user asks for technical guidance and explicitly delegates these adjustments.
+Resolve the prior generic questionnaire with physical_angle_pair_v1, documented
+in MIXED_FILL_PAIR_POLICY_20261117.md: retained S<=1.5, physical XYZ corner
+angles, existing four-corner UV and physical validity, minimum S_XYZ, exact-tie
+physical edge ratio then original frontier order and stable source IDs. Preserve
+valid TRI when no acceptable pair exists. This is an experimental curved-surface
+choice, not formal advisor sign-off or source-certified1993 XYZ reproduction.
+No numerical selector, formula/tolerance/adaptive change or source publication.
+
+Read actual archived MSVC Debug candidate CSV and stage OBJ data from exact
+source7fc988d: original-default/original-coarse/bounded-coarse adapted steps1-3,
+including rejected TRI reference stages. Deduplicate full XYZ/UV/connectivity:
+9 observations contain7 distinct geometries and760 overlapping topological pair
+observations. Existing validity plus angular rule:244 UV-eligible,138 XYZ-eligible,
+108 UV-only,2 XYZ-only. UV-invalid410/physical-invalid180 overlap. Among61 base
+TRI observations with multiple common alternatives, score-space ranking differs
+in15; these diagnostic keys do not exercise the future full live-front rank.
+No pair is selected or accepted; candidate counts cannot predict disjoint QUADs.
+
+Command python build/quad-pair-policy-20261117/compare.py computes both spaces
+from unchanged source-scoped OBJ nodes. Three analytic controls: squareS1,
+sheared physicalS1.7048327646991335, inverse-chart physical-squareS1 despite
+distortedUV. Count consistency and input CSV/manifest SHA-256 assertions pass.
+Portable JSON retains analyzer/source/input hashes, witnesses, controls and
+limitations. Analyzer/raw archives remain local, not a self-contained rerun
+bundle. The parameterization examples support metric choice, not global error,
+convergence, optimality, continuous validity or full1993 reproduction.
+
+Fresh remote audit: main ef40c0f, feature7fc988d, canonical entry c05ff0b, open
+draft PR238 and exact source4/4 SUCCESS run44055409865. Other open PR239/225/214
+untouched. No new native build/generation,85-test baseline rerun, sanitizer/CI run
+or Blender session. Prior exact-source evidence remains scoped to read-only
+inventory. A PowerShell rg wildcard path was rejected by Windows; corrected
+file discovery has no bearing on scientific validation.
+
+Update canonical state/roadmap/implementation/realignment and append this entry;
+preserve prior history. Check documentation whitespace, local links, JSON,
+non-documentation identity and neutral publication metadata, then publish the
+canonical checkpoint through the authorized GitHub connection and verify remote
+SHA/blob readback. CLI write access was previously refused403; no retry or
+credential change. This is a decision/diagnostic checkpoint, not stage closure.
+
+Next concrete action is the opt-in original-front implementation with distinct
+AFT-pair provenance, reversible physical owner transaction, TRI fallback and
+positive/rejected/tie/rollback contracts, then finite native/exact-head gates.
+No additional generic questionnaire on these three choices. M1 point convention,
+M5/M7, accepted mixed epochs, local sizing feedback, Doxygen/full CRT,
+independent review and integration remain open.

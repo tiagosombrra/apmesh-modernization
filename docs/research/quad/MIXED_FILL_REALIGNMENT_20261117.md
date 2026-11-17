@@ -47,19 +47,21 @@ nodes, ordered source identities, seam orientation, coverage, manifold adjacency
 accepted/rejected traces and rollback. Keep default TRI and existing opt-in
 case semantics unchanged until a separate explicit research selector is reviewed.
 
-## Required scientific decisions
+## Experimental scientific choices - updated 2026-11-17
 
-No advisor decision on the new pairing rule is recorded. The user authorizes the
-implementation direction, which is separate from scientific numeric approval.
-AGENTS.md says: Scientific changes require explicit advisor alignment.
+The user explicitly delegates these technical choices for the opt-in experiment.
+The [recorded policy](MIXED_FILL_PAIR_POLICY_20261117.md) resolves the previous
+questionnaire: retain S<=1.5, score physical XYZ corners, preserve existing UV
+and physical validity, minimize S_XYZ with exact-tie edge ratio then original
+frontier/source order, and retain TRI if no admissible pair exists. Do not claim
+formal advisor sign-off or literal1993 curved-surface equivalence. No numerical
+selection is activated in source7fc988d by this documentation decision.
 
-Before activation, record whether the Figure11 planar shape rule/threshold is
-used as the reproduction target, whether it is evaluated in UV or physical XYZ
-on a curved patch, deterministic candidate/alternative/tie priority, degenerate/
-nonconvex handling and metric-scaled tolerances. Do not import a numerical default
-merely because topology contracts pass. An async question requests the missing
-alignment; no response is treated as approval. Existing centroid and mixed error/
-acceptance decisions remain distinct. One new global factor is not the successor.
+Read-only actual-candidate observations and analytic parameterization controls
+support choosing the physical score; they do not validate a generated paired mesh
+or optimal global performance. Existing centroid and mixed error/acceptance
+decisions remain distinct. No new tolerance, adaptive factor or broad scientific
+adoption follows; implementation and its exact-head gates remain next.
 
 ## Evidence and limits
 

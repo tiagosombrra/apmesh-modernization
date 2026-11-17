@@ -38,10 +38,13 @@ the next integrated implementation rather than adding a detached generator.
 Use the original frontier operation to identify one triangle and its admissible
 neighbor alternatives, evaluate the explicitly aligned shape rule and select a
 pair deterministically. Preserve a valid TRI when no acceptable pair exists.
-The1993 Figure11 defines a planar shape score and threshold; its UV versus XYZ
-interpretation on a curved patch and the order/tie choice among multiple valid
-pairs must be explicit. AGENTS.md requires advisor alignment before activating
-that numerical selection. Do not invent new weights, global factors or thresholds.
+The user-delegated [experimental policy](MIXED_FILL_PAIR_POLICY_20261117.md) now
+records S_XYZ <=1.5 with existing UV/physical validity, minimum physical score,
+exact-tie edge ratio then frontier/source order. This is a curved-surface
+research choice; formal advisor sign-off and literal1993 identity are not asserted.
+Implement it behind a separate opt-in selector and qualify actual pair outcomes.
+No new weights, global factors, tolerances or adaptive thresholds are authorized
+by this decision. Current source7fc988d remains observation-only.
 
 Commit a selected pair through one reversible physical owner operation. Preserve
 source nodes/shared curves, oriented seam, coverage, manifold incidence and

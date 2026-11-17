@@ -12,6 +12,38 @@ Further fixed-fixture experiments, repeated audits or planning are not the
 default successor. Preserve scientific authorization, negative evidence and
 all required closure gates; report delivered capability and remaining work.
 
+### 2026-11-17 - experimental pair metric and ordering decided
+
+The user explicitly delegates the previously requested metric/limit/ordering
+choices for the opt-in experiment. Use [physical_angle_pair_v1](MIXED_FILL_PAIR_POLICY_20261117.md):
+S_XYZ <=1.5, existing UV convexity/orientation and physical validity checks,
+minimum S_XYZ, exact-tie physical edge ratio, original frontier order and stable
+source IDs. Keep TRI when no admissible pair exists. This resolves the earlier
+generic questionnaire; formal advisor sign-off and historical identity are not
+asserted. No source numerical selection is activated by this checkpoint.
+
+Read-only archived source7fc988d observations:9 adapted stages,7 distinct full
+geometries,760 overlapping topological candidate observations. Existing validity
+plus UV score admits244 versus physical score138;108 are UV-only and2 XYZ-only.
+Three analytic shape/parameterization controls and count/input-hash assertions
+pass. [Portable evidence](evidence/MIXED_FILL_PAIR_POLICY_20261117.json) retains
+input/source hashes, rejected-reference scope and limits. These are not accepted
+pair outcomes, independent experiments or global-error/convergence measurements.
+
+Remote main ef40c0f, source7fc988d and canonical entry c05ff0b were freshly
+checked; PR238 remains draft with exact source4/4 checks SUCCESS. No new native
+build, baseline/sanitizer rerun, CI run, mesh generation or Blender display.
+Previous exact-source85/85/three-profile evidence is unchanged, not a new
+scientific qualification of this documentation revision. Other open PRs are
+untouched. Documentation whitespace/local links/JSON checks apply to this delta.
+
+Exact next action: implement physical_angle_pair_v1 in the original live-front
+operation behind a separate opt-in selector, with AFT-pair provenance, reversible
+physical publication, TRI fallback and positive/rejected/tie/rollback contracts.
+Then run its finite native and exact-head gates. No additional generic policy
+questionnaire precedes that implementation. Mixed adaptive epochs remain0;
+M1/M5/M7, Doxygen/full CRT, independent review and integration remain open.
+
 ### 2026-11-17 - implementation and documentation realigned
 
 Priority order is now integrated mixed fill, actual mixed accepted-state/error
@@ -41,7 +73,7 @@ These are read-only candidate/engineering scopes, not accepted pairing evidence.
 PR238 remains draft; old d59a513 checks are not substituted for this head.
 No new numerical pairing, scientific adoption, stage closure or merge.
 
-Next action: record advisor alignment on shape-space/threshold, alternative/tie
+Superseded next action at that checkpoint: record advisor alignment on shape-space/threshold, alternative/tie
 selection and degenerate handling, then implement in-front pairing with distinct
 AFT-pair provenance and reversible physical publication. An async question asks
 whether those choices exist; pending input is not approval. Retain the local
