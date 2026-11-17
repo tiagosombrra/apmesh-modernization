@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import shutil
 from tempfile import TemporaryDirectory
 
 from .verify_native_lineage import (
@@ -73,6 +74,11 @@ def output_inventory(workspace: Path) -> tuple[dict[str, dict], list[str]]:
         relative = item.relative_to(workspace).as_posix()
         require(not item.is_symlink(), "scientific_output_symlink_rejected")
         if relative == "original_article.conf" or relative.startswith("lineage/"):
+            continue
+        # Runtime timing is expected to change with instrumented I/O.
+        # Only this precisely named non-scientific CSV is excluded.
+        if relative.endswith("_runtime_summary.csv"):
+            excluded.append("NONSCIENTIFIC_RUNTIME_TIMING:" + relative)
             continue
         if item.suffix.lower() not in SCIENTIFIC_SUFFIXES:
             excluded.append(relative)
@@ -204,10 +210,23 @@ def compare_default_off_vs_on(executable_off: Path, executable_on: Path,
             "must_supply_two_distinct_real_native_build_executables")
     with TemporaryDirectory(prefix="apmesh-r2713-parity-") as temp:
         folder = Path(temp)
-        control = execute(executable_off, root, model, folder / "default_off",
+        # The generator writes the absolute OUTPUT_PREFIX in compatibility
+        # reports. Run OFF and ON sequentially in the exact same disposable
+        # location, removing all OFF outputs after recording their hashes.
+        # Comparing different output roots would create a false CSV mismatch.
+        shared_workspace = folder / "same_original_output_root"
+        control = execute(executable_off, root, model, shared_workspace,
                           False, timeout)
-        observed = execute(executable_on, root, model, folder / "instrumented_on",
+        require(shared_workspace.is_dir() and
+                not shared_workspace.is_symlink() and
+                shared_workspace.parent.resolve() == folder.resolve(),
+                "unsafe_parity_workspace_cleanup")
+        shutil.rmtree(shared_workspace)
+        observed = execute(executable_on, root, model, shared_workspace,
                            True, timeout)
+        require(control["relocated_config_sha256"] ==
+                observed["relocated_config_sha256"],
+                "off_on_relocated_original_config_bytes_changed")
         require(control["source_config_sha256"] ==
                 observed["source_config_sha256"] and
                 control["input_model_sha256"] ==
@@ -244,6 +263,8 @@ def compare_default_off_vs_on(executable_off: Path, executable_on: Path,
                 "on": observed["excluded_non_scientific_files"],
             },
             "timer_stdout_stderr_intentionally_not_compared": True,
+            "both_runs_used_the_same_clean_absolute_output_prefix": True,
+            "runtime_summary_csv_excluded_due_to_numerical_wall_timing": True,
             "scientific_outputs_byte_identical_for_tested_inputs": True,
             "only_two_article_profiles_eistute_book_tested": True,
             "second_native_accepted_epoch_qualified": False,
