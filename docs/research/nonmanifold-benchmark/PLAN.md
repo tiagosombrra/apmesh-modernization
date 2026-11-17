@@ -1,5 +1,10 @@
 # Execution plan: external benchmark corpus and reverse-patch feasibility
 
+## 2026-11-17 S3.S — complete source/native original S40 gap census
+
+[Source/native original S40 full face and edge audit](S3S_S40_FULL_ORIGINAL_FACE_GAP_CENSUS.md) maps all **43 original source faces, 117 original EDGE_CURVE entities and 77 original VERTEX_POINT entities** uniquely to native Open CASCADE topology using frozen source identity plus edge/face incidence (including distinct same-endpoint circles #378/#1991). The frozen **S3.R atlas remains 126 patches covering 17 original faces**. The **26 excluded faces** comprise 17 planar, six cylindrical and three B-spline-support faces; 15 are directly adjacent to represented source faces and 11 are two original-edge hops away. Original S40 remains a **manifold-only control**, with no 3+-face original edge. Next bounded S3.T: attempt source-conforming planar polygon partition on original faces **#912 and #3737**, both eight-LINE single-wire faces with three original represented-edge neighbors. **17/17 new S3.S PASS; 54/54 S3.R+S3.S PASS; cumulative S3.M–S3.S 143 PASS + 2 optional SKIP, no failures.** An optional-gate rerun timed out; do not call it 145 PASS. No new BP, accepted TRI/QUAD, original nonmanifold positive, C++ production regression or full atlas claim; keep PR #225 draft and original-derived geometry private.
+
+
 **Classification:** scientific research proposal, NOT a technique-preserving refactor.
 **Frozen planning base:** main f6050ec1b12b508b9d8d761db1fa9a95ab1e3d94 on 2026-11-14.
 **Working boundary:** documentation and isolated experimental research probes/fixtures ONLY; no production build, Stage 3 modernization or QUAD branch modifications.
