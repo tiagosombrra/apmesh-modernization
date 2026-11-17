@@ -143,6 +143,15 @@ jobs:
         run: python -m tools.mesh_studio.verify_native_lineage --exe build/r2712-native/bin/quad_generator_outcome_probe --root . --model book --out-dir build/r2712-native-evidence
       - name: Reparse retained original face/patch/curve bytes against source-bound digests
         run: python -m tools.mesh_studio.audit_retained_native_lineage --directory build/r2712-native-evidence
+      - name: Audit original native shared-source-curve patch adjacency (not physical node welding)
+        run: python -m tools.mesh_studio.native_source_adjacency --directory build/r2712-native-evidence --output build/r2714-source-adjacency.json
+      - name: Retain original-source adjacency evidence with explicit LOD exclusions
+        uses: actions/upload-artifact@v4
+        with:
+          name: mesh-studio-r2714-source-adjacency-${{ github.sha }}
+          path: build/r2714-source-adjacency.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Retain original NDJSON face records and source-bound summaries together
         uses: actions/upload-artifact@v4
         with:
